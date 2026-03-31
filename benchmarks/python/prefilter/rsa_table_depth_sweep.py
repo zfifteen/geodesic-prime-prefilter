@@ -13,7 +13,7 @@ from pathlib import Path
 from typing import Dict, Iterable, List, Sequence
 
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 MODULE_DIR = Path(__file__).resolve().parent
 if str(MODULE_DIR) not in sys.path:
     sys.path.insert(0, str(MODULE_DIR))
@@ -22,7 +22,7 @@ import rsa_keygen_benchmark as rsa_benchmark
 import table_depth_sweep as depth_sweep
 
 
-DEFAULT_OUTPUT_DIR = ROOT / "benchmarks" / "output" / "python" / "rsa-table-depth-sweep"
+DEFAULT_OUTPUT_DIR = ROOT / "benchmarks" / "output" / "python" / "prefilter" / "rsa_table_depth_sweep"
 DEFAULT_RSA_BITS = 8192
 DEFAULT_KEYPAIR_COUNT = 2
 DEFAULT_TABLE_LIMITS = [300007, 1000003, 3000000]
@@ -506,7 +506,7 @@ def run_sweep(
         "prime_fixed_points": fixed_points,
         "rows": rows,
         "reproduction_command": (
-            "python3 benchmarks/python/rsa_table_depth_sweep.py "
+            "python3 benchmarks/python/prefilter/rsa_table_depth_sweep.py "
             f"--output-dir {output_dir} "
             f"--rsa-bits {rsa_bits} "
             f"--keypair-count {keypair_count} "

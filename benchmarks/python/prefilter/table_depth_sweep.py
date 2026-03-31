@@ -15,7 +15,7 @@ from typing import Dict, Iterable, List, Sequence
 from sympy import primerange
 
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 MODULE_DIR = Path(__file__).resolve().parent
 if str(MODULE_DIR) not in sys.path:
     sys.path.insert(0, str(MODULE_DIR))
@@ -23,7 +23,7 @@ if str(MODULE_DIR) not in sys.path:
 import candidate_benchmark as benchmark
 
 
-DEFAULT_OUTPUT_DIR = ROOT / "benchmarks" / "output" / "python" / "table-depth-sweep"
+DEFAULT_OUTPUT_DIR = ROOT / "benchmarks" / "output" / "python" / "prefilter" / "table_depth_sweep"
 DEFAULT_BIT_LENGTHS = [2048, 4096, 8192, 16384]
 DEFAULT_TABLE_LIMITS = [300007, 1000003, 3000000]
 DEFAULT_CANDIDATE_COUNT = 1024
@@ -483,7 +483,7 @@ def run_sweep(
         "rows": rows,
         "summaries": summaries,
         "reproduction_command": (
-            "python3 benchmarks/python/table_depth_sweep.py "
+            "python3 benchmarks/python/prefilter/table_depth_sweep.py "
             f"--output-dir {output_dir} "
             f"--bit-lengths {' '.join(str(value) for value in bit_lengths)} "
             f"--table-limits {' '.join(str(value) for value in table_limits)} "

@@ -16,10 +16,17 @@ from typing import Dict, Iterable, List, Sequence
 from sympy import isprime
 
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 SOURCE_DIR = ROOT / "src" / "python"
 if str(SOURCE_DIR) not in sys.path:
     sys.path.insert(0, str(SOURCE_DIR))
+
+from geodesic_prime_invariant import (
+    FIXED_POINT_TOLERANCE,
+    FIXED_POINT_V,
+    exact_divisor_count,
+    exact_z_normalize,
+)
 
 
 DEFAULT_EXACT_BITS = 20
@@ -37,33 +44,7 @@ DEFAULT_PROXY_TAIL_CHUNK_SIZE = 256
 DEFAULT_PROXY_DEEP_TAIL_PRIME_LIMIT = 1000003
 DEFAULT_PROXY_DEEP_TAIL_CHUNK_SIZE = 256
 DEFAULT_PROXY_DEEP_TAIL_MIN_BITS = 4096
-FIXED_POINT_V = math.e ** 2 / 2.0
-FIXED_POINT_TOLERANCE = 1e-12
 LOG_FLOAT_MIN = math.log(sys.float_info.min)
-
-
-def exact_divisor_count(n: int) -> int:
-    """Compute the exact divisor count with the tractable O(sqrt n) path."""
-    if n < 1:
-        return 0
-
-    count = 0
-    divisor = 1
-    while divisor * divisor <= n:
-        if n % divisor == 0:
-            count += 1 if divisor * divisor == n else 2
-        divisor += 1
-    return count
-
-
-def exact_z_normalize(n: int, v: float = FIXED_POINT_V) -> float:
-    """Apply the exact Divisor Curvature Identity (DCI) normalization used in the calibration corpus."""
-    if n <= 1:
-        return 0.0
-
-    divisor_total = exact_divisor_count(n)
-    exponent = (1.0 - divisor_total / 2.0) * math.log(n)
-    return 0.0 if exponent < LOG_FLOAT_MIN else math.exp(exponent)
 
 
 def deterministic_odd_candidate(
@@ -1025,7 +1006,7 @@ def run_benchmark(
         "bonus_crypto_control": bonus_crypto_control,
         "bonus_proxy_crypto_pipeline": bonus_proxy_crypto_pipeline,
         "reproduction_command": (
-            "python3 benchmarks/python/candidate_benchmark.py "
+            "python3 benchmarks/python/prefilter/candidate_benchmark.py "
             f"--exact-bits {exact_bits} "
             f"--exact-count {exact_count} "
             f"--crypto-bits {crypto_bits} "
@@ -1060,7 +1041,7 @@ def parse_args(argv: Iterable[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--output-dir",
         type=Path,
-        default=ROOT / "benchmarks" / "output" / "python",
+        default=ROOT / "benchmarks" / "output" / "python" / "prefilter",
         help="Directory for JSON and Markdown artifacts.",
     )
     parser.add_argument(

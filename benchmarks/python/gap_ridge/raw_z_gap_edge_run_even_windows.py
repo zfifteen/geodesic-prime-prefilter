@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run exact raw composite Z gap-edge reproductions on fixed-seed windows."""
+"""Run exact raw composite Z gap-edge reproductions on evenly spaced windows."""
 
 from __future__ import annotations
 
@@ -8,24 +8,26 @@ import json
 import sys
 from pathlib import Path
 
+ROOT = Path(__file__).resolve().parents[3]
+SOURCE_DIR = ROOT / "src" / "python"
 SCRIPT_DIR = Path(__file__).resolve().parent
-if str(SCRIPT_DIR) not in sys.path:
-    sys.path.insert(0, str(SCRIPT_DIR))
+for entry in (SOURCE_DIR, SCRIPT_DIR):
+    if str(entry) not in sys.path:
+        sys.path.insert(0, str(entry))
 
 from raw_z_gap_edge_runs import (
-    DEFAULT_RANDOM_SEED,
     DEFAULT_WINDOW_COUNT,
     DEFAULT_WINDOW_SCALES,
     DEFAULT_WINDOW_SIZE,
-    build_seeded_window_starts,
+    build_even_window_starts,
     run_window_sweep,
 )
 
 
 def build_parser() -> argparse.ArgumentParser:
-    """Build the CLI parser for fixed-seed window sweeps."""
+    """Build the CLI parser for evenly spaced window sweeps."""
     parser = argparse.ArgumentParser(
-        description="Run exact raw-Z gap-edge reproductions on fixed-seed windows.",
+        description="Run exact raw-Z gap-edge reproductions on evenly spaced windows.",
     )
     parser.add_argument(
         "--scales",
@@ -46,33 +48,21 @@ def build_parser() -> argparse.ArgumentParser:
         default=DEFAULT_WINDOW_COUNT,
         help="Number of windows per sampled scale.",
     )
-    parser.add_argument(
-        "--seed",
-        type=int,
-        default=DEFAULT_RANDOM_SEED,
-        help="Deterministic seed used to pick sampled windows.",
-    )
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
-    """Run the requested fixed-seed window sweeps and emit JSON."""
+    """Run the requested evenly spaced window sweeps and emit JSON."""
     args = build_parser().parse_args(argv)
     starts_by_scale = {
-        scale: build_seeded_window_starts(
-            scale,
-            args.window_size,
-            args.window_count,
-            args.seed,
-        )
+        scale: build_even_window_starts(scale, args.window_size, args.window_count)
         for scale in args.scales
     }
     rows = run_window_sweep(
         args.scales,
         args.window_size,
         starts_by_scale,
-        window_mode="seeded-random",
-        seed=args.seed,
+        window_mode="even",
     )
     print(json.dumps([row.to_dict() for row in rows], indent=2))
     return 0

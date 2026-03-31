@@ -10,26 +10,12 @@ import pytest
 from sympy import isprime
 
 
-ROOT = Path(__file__).resolve().parents[1]
-SOURCE_DIR = ROOT.parent / "src" / "python"
+SOURCE_DIR = Path(__file__).resolve().parents[3] / "src" / "python"
 if str(SOURCE_DIR) not in sys.path:
     sys.path.insert(0, str(SOURCE_DIR))
 
 import geodesic_prime_prefilter.prefilter as prefilter
-
-
-def exact_divisor_count(n: int) -> int:
-    """Compute the exact divisor count for the small DCI assertion."""
-    if n < 1:
-        return 0
-
-    count = 0
-    divisor = 1
-    while divisor * divisor <= n:
-        if n % divisor == 0:
-            count += 1 if divisor * divisor == n else 2
-        divisor += 1
-    return count
+from geodesic_prime_invariant import exact_divisor_count
 
 
 def test_prefilter_rejects_small_factor_composites_and_keeps_prime_band():

@@ -9,8 +9,8 @@ from pathlib import Path
 import pytest
 
 
-ROOT = Path(__file__).resolve().parents[1]
-BENCHMARKS_DIR = ROOT.parent / "benchmarks" / "python"
+ROOT = Path(__file__).resolve().parents[3]
+BENCHMARKS_DIR = ROOT / "benchmarks" / "python" / "gap_ridge"
 
 
 def load_module(name: str):

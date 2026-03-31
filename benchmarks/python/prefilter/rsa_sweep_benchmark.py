@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Dict, Iterable, List, Sequence, Tuple
 
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 MODULE_DIR = Path(__file__).resolve().parent
 if str(MODULE_DIR) not in sys.path:
     sys.path.insert(0, str(MODULE_DIR))
@@ -162,7 +162,7 @@ def parse_args(argv: Iterable[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--output-dir",
         type=Path,
-        default=ROOT / "benchmarks" / "output" / "python" / "rsa-sweep",
+        default=ROOT / "benchmarks" / "output" / "python" / "prefilter" / "rsa_sweep",
         help="Directory for JSON and Markdown artifacts.",
     )
     parser.add_argument(

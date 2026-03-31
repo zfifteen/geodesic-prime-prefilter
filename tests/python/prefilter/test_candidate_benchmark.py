@@ -6,8 +6,8 @@ import importlib.util
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[1]
-MODULE_PATH = ROOT.parent / "benchmarks" / "python" / "candidate_benchmark.py"
+ROOT = Path(__file__).resolve().parents[3]
+MODULE_PATH = ROOT / "benchmarks" / "python" / "prefilter" / "candidate_benchmark.py"
 
 
 def load_module():

@@ -67,7 +67,7 @@ Gap-size split:
 Run:
 
 ```bash
-python3 benchmarks/python/raw_z_gap_edge_study.py
+python3 benchmarks/python/gap_ridge/raw_z_gap_edge_study.py
 ```
 
 The script prints the exact observed quantities and the exact within-gap baselines used in this note.

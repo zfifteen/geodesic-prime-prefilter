@@ -15,7 +15,7 @@ from typing import Dict, Iterable, Iterator, List, Sequence
 from sympy import isprime
 
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 MODULE_DIR = Path(__file__).resolve().parent
 if str(MODULE_DIR) not in sys.path:
     sys.path.insert(0, str(MODULE_DIR))
@@ -528,7 +528,7 @@ def run_combined_benchmark(
         "public_exponent": public_exponent,
     }
     results["rsa_reproduction_command"] = (
-        "python3 benchmarks/python/rsa_keygen_benchmark.py "
+        "python3 benchmarks/python/prefilter/rsa_keygen_benchmark.py "
         f"--rsa-bits {rsa_bits} "
         f"--rsa-keypair-count {rsa_keypair_count} "
         f"--bonus-rsa-bits {bonus_rsa_bits} "
@@ -551,7 +551,7 @@ def parse_args(argv: Iterable[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--output-dir",
         type=Path,
-        default=ROOT / "benchmarks" / "output" / "python",
+        default=ROOT / "benchmarks" / "output" / "python" / "prefilter",
         help="Directory for JSON and Markdown artifacts.",
     )
     parser.add_argument(

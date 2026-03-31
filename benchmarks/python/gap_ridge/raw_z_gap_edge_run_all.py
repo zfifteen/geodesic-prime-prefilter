@@ -8,9 +8,12 @@ import json
 import sys
 from pathlib import Path
 
+ROOT = Path(__file__).resolve().parents[3]
+SOURCE_DIR = ROOT / "src" / "python"
 SCRIPT_DIR = Path(__file__).resolve().parent
-if str(SCRIPT_DIR) not in sys.path:
-    sys.path.insert(0, str(SCRIPT_DIR))
+for entry in (SOURCE_DIR, SCRIPT_DIR):
+    if str(entry) not in sys.path:
+        sys.path.insert(0, str(entry))
 
 from raw_z_gap_edge_runs import (
     DEFAULT_FULL_LIMITS,
