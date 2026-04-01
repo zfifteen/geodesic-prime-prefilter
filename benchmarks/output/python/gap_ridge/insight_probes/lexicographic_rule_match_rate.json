@@ -1,0 +1,27 @@
+{
+  "stats": {
+    "gap_count": 70327,
+    "lex_match": 70327,
+    "lex_mismatch": 0,
+    "minimal_d_match": 70327,
+    "minimal_d_mismatch": 0,
+    "leftmost_min_d_match": 70327,
+    "leftmost_min_d_mismatch": 0
+  },
+  "by_gap_bin": {
+    "4-10": {
+      "gaps": 34340,
+      "lex_match_rate": 1.0
+    },
+    "12-20": {
+      "gaps": 22429,
+      "lex_match_rate": 1.0
+    },
+    "22+": {
+      "gaps": 13558,
+      "lex_match_rate": 1.0
+    }
+  },
+  "examples": [],
+  "svg": "/Users/velocityworks/IdeaProjects/geodesic-prime-prefilter/benchmarks/output/python/gap_ridge/insight_probes/lexicographic_rule_match_rate.svg"
+}

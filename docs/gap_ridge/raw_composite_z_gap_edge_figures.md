@@ -23,6 +23,10 @@ The strongest supported statement from the current runs is:
 - the `d(n) = 4` carrier enrichment strengthens with scale, rising from `4.116x` at `10^6` to about `5.76x` in even-window `10^10` runs and about `5.93x` in fixed-seed `10^10` runs,
 - the left edge remains the dominant side of the ridge throughout the tested regimes.
 
+On the tested surface, a stronger empirical statement also holds: the exact
+raw-`Z` peak matches the lexicographic winner obtained by first minimizing
+interior divisor count and then taking the leftmost carrier of that minimum.
+
 ## Regime Confirmation
 
 This figure shows that the edge-distance-`2` enrichment remains stable near `2x`, while the `d(n) = 4` carrier enrichment strengthens as the scale increases.
@@ -59,6 +63,14 @@ This figure resolves the carrier effect over gap size and divisor count. The dom
 
 ![Gap-size by carrier-divisor enrichment surface](../../benchmarks/output/python/gap_ridge/raw_z_gap_edge/gap_size_carrier_enrichment_3d.png)
 
+## Lexicographic Validation
+
+This figure records the direct counterexample search for the lexicographic peak
+rule. On the tested surface, the match rate is `100%` in every evaluated
+regime.
+
+![Lexicographic peak validation summary](../../benchmarks/output/python/gap_ridge/lexicographic_peak_validation/lexicographic_peak_validation_summary.svg)
+
 ## Reproduction
 
 Run:
@@ -68,4 +80,6 @@ python3 benchmarks/python/gap_ridge/raw_z_gap_edge_run_all.py \
   > benchmarks/output/python/gap_ridge/raw_z_gap_edge/raw_z_gap_edge_run_all.json
 
 python3 benchmarks/python/gap_ridge/raw_z_gap_edge_plots.py
+
+python3 benchmarks/python/gap_ridge/lexicographic_peak_validation.py
 ```

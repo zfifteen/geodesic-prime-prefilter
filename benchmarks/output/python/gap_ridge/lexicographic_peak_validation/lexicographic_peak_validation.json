@@ -1,0 +1,122 @@
+{
+  "decision_rule": "validated on the tested surface if and only if every tested regime contains zero counterexample gaps where the exact raw-Z peak differs from the lexicographic winner: smallest d(n), then leftmost",
+  "validation_status": "validated_on_tested_surface",
+  "rows": [
+    {
+      "gap_count": 70327,
+      "counterexample_count": 0,
+      "match_count": 70327,
+      "match_rate": 1.0,
+      "counterexample_rate": 0.0,
+      "max_gap": 114,
+      "min_log_score_margin": 1.0000625039197075e-06,
+      "min_margin_gap": {
+        "left_prime": 999931,
+        "right_prime": 999953,
+        "gap": 22,
+        "best_n": 999937,
+        "best_d": 4,
+        "lex_n": 999937,
+        "lex_d": 4,
+        "log_score_margin": 1.0000625039197075e-06
+      },
+      "counterexample_examples": [],
+      "scale": 1000000,
+      "mode": "exact"
+    },
+    {
+      "gap_count": 605597,
+      "counterexample_count": 0,
+      "match_count": 605597,
+      "match_rate": 1.0,
+      "counterexample_rate": 0.0,
+      "max_gap": 154,
+      "min_log_score_margin": 1.00001734892885e-07,
+      "min_margin_gap": {
+        "left_prime": 9999823,
+        "right_prime": 9999863,
+        "gap": 40,
+        "best_n": 9999826,
+        "best_d": 4,
+        "lex_n": 9999826,
+        "lex_d": 4,
+        "log_score_margin": 1.00001734892885e-07
+      },
+      "counterexample_examples": [],
+      "scale": 10000000,
+      "mode": "exact"
+    },
+    {
+      "scale": 100000000,
+      "mode": "even-window",
+      "window_size": 2000000,
+      "window_count": 4,
+      "gap_count": 444133,
+      "counterexample_count": 0,
+      "match_count": 444133,
+      "match_rate": 1.0,
+      "counterexample_rate": 0.0,
+      "max_gap": 176,
+      "min_log_score_margin": 1.0000015038258425e-08,
+      "min_margin_gap": {
+        "left_prime": 99999839,
+        "right_prime": 99999847,
+        "gap": 8,
+        "best_n": 99999841,
+        "best_d": 4,
+        "lex_n": 99999841,
+        "lex_d": 4,
+        "log_score_margin": 1.0000015038258425e-08
+      },
+      "counterexample_examples": []
+    },
+    {
+      "scale": 1000000000,
+      "mode": "even-window",
+      "window_size": 2000000,
+      "window_count": 4,
+      "gap_count": 411157,
+      "counterexample_count": 0,
+      "match_count": 411157,
+      "match_rate": 1.0,
+      "counterexample_rate": 0.0,
+      "max_gap": 192,
+      "min_log_score_margin": 1.000000082740371e-09,
+      "min_margin_gap": {
+        "left_prime": 999996919,
+        "right_prime": 999996983,
+        "gap": 64,
+        "best_n": 999996922,
+        "best_d": 4,
+        "lex_n": 999996922,
+        "lex_d": 4,
+        "log_score_margin": 1.000000082740371e-09
+      },
+      "counterexample_examples": []
+    },
+    {
+      "scale": 10000000000,
+      "mode": "even-window",
+      "window_size": 2000000,
+      "window_count": 4,
+      "gap_count": 384721,
+      "counterexample_count": 0,
+      "match_count": 384721,
+      "match_rate": 1.0,
+      "counterexample_rate": 0.0,
+      "max_gap": 288,
+      "min_log_score_margin": 9.99982319171977e-11,
+      "min_margin_gap": {
+        "left_prime": 9999835669,
+        "right_prime": 9999835771,
+        "gap": 102,
+        "best_n": 9999835681,
+        "best_d": 4,
+        "lex_n": 9999835681,
+        "lex_d": 4,
+        "log_score_margin": 9.99982319171977e-11
+      },
+      "counterexample_examples": []
+    }
+  ]
+}

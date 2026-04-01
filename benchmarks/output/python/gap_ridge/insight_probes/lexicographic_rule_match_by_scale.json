@@ -1,0 +1,32 @@
+[
+  {
+    "scale": 1000000,
+    "mode": "exact",
+    "gaps": 70327,
+    "lex_match_rate": 1.0
+  },
+  {
+    "scale": 10000000,
+    "mode": "exact",
+    "gaps": 605597,
+    "lex_match_rate": 1.0
+  },
+  {
+    "scale": 100000000,
+    "mode": "even-window",
+    "gaps": 444133,
+    "lex_match_rate": 1.0
+  },
+  {
+    "scale": 1000000000,
+    "mode": "even-window",
+    "gaps": 411157,
+    "lex_match_rate": 1.0
+  },
+  {
+    "scale": 10000000000,
+    "mode": "even-window",
+    "gaps": 384721,
+    "lex_match_rate": 1.0
+  }
+]

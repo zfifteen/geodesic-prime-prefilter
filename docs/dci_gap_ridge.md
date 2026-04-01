@@ -87,6 +87,27 @@ Additional structure from the same run sharpens the picture:
 
 The strongest supported reading of this table is that the raw composite field does not build a midpoint ridge. It builds a near-edge low-divisor ridge, and that ridge is carried predominantly by `d(n) = 4` composites.
 
+## Lexicographic Peak Rule
+
+The current repository surface now supports a stronger empirical statement
+about how that ridge is selected.
+
+Across the tested regimes, the exact raw-`Z` peak inside each prime gap matches
+the lexicographic winner:
+
+1. choose the smallest interior divisor count `d(n)`,
+2. if several interior composites share that minimum divisor count, choose the
+   leftmost one.
+
+This was validated directly by a counterexample search over exact `10^6`, exact
+`10^7`, and sampled larger-scale regimes through `10^10`, with zero
+counterexamples on the tested surface.
+
+That does not turn the current result into a proof for all gaps. It does change
+the current best explanation of the measured ridge: on the tested surface, the
+observed near-edge low-divisor ridge is realized exactly through this discrete
+ordering law.
+
 ## Gap-Size Structure
 
 The edge effect is present across gap sizes, but its expression changes by regime.
@@ -119,6 +140,8 @@ This does not widen the claim beyond the current repository surface. It says tha
 The focused result note for the exact `10^6` run is [docs/gap_ridge/raw_composite_z_gap_edge.md](./gap_ridge/raw_composite_z_gap_edge.md).
 
 The figure note for the broader rendered regime surface is [docs/gap_ridge/raw_composite_z_gap_edge_figures.md](./gap_ridge/raw_composite_z_gap_edge_figures.md).
+
+The session finding note for the winner rule is [docs/findings/lexicographic_winner_take_all_peak_rule.md](./findings/lexicographic_winner_take_all_peak_rule.md).
 
 To reproduce the exact `10^6` gap-edge study, run:
 
