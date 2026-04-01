@@ -35,6 +35,25 @@ DEFAULT_OUTPUT_DIR = Path("benchmarks/output/python/gap_ridge/raw_z_gap_edge")
 EDGE_DISTANCE_CUTOFF = 8
 CARRIER_CATEGORY_COUNT = 6
 GAP_SIZE_COUNT_THRESHOLD = 100
+NORMALIZED_POSITION_BIN_COUNT = 12
+HIGH_DIVISOR_THRESHOLD = 12
+ODD_EDGE_DISTANCE_CUTOFF = 12
+DIVISOR_BUCKET_LABELS = ["4", "6", "8", "10", "12", "14", "16+"]
+DIVISOR_BUCKET_VALUES = [4, 6, 8, 10, 12, 14]
+
+
+def divisor_bucket_index(divisor_count: int) -> int:
+    """Map one divisor count to a compact visualization bucket."""
+    if divisor_count <= 4:
+        return 0
+    if divisor_count >= 16:
+        return len(DIVISOR_BUCKET_LABELS) - 1
+    if divisor_count in DIVISOR_BUCKET_VALUES[1:]:
+        return DIVISOR_BUCKET_VALUES.index(divisor_count)
+    for index, cutoff in enumerate(DIVISOR_BUCKET_VALUES[1:], start=1):
+        if divisor_count < cutoff:
+            return index - 1
+    return len(DIVISOR_BUCKET_LABELS) - 1
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -101,6 +120,22 @@ def collect_detail(limit: int) -> dict[str, object]:
     gap_size_edge_baseline: dict[int, Counter[int]] = defaultdict(Counter)
     gap_size_carrier_observed: dict[int, Counter[int]] = defaultdict(Counter)
     gap_size_carrier_baseline: dict[int, Counter[int]] = defaultdict(Counter)
+    normalized_divisor_sum = np.zeros(NORMALIZED_POSITION_BIN_COUNT, dtype=np.float64)
+    normalized_count = np.zeros(NORMALIZED_POSITION_BIN_COUNT, dtype=np.int64)
+    normalized_high_divisor_count = np.zeros(NORMALIZED_POSITION_BIN_COUNT, dtype=np.int64)
+    normalized_d4_count = np.zeros(NORMALIZED_POSITION_BIN_COUNT, dtype=np.int64)
+    normalized_bucket_counts = np.zeros(
+        (len(DIVISOR_BUCKET_LABELS), NORMALIZED_POSITION_BIN_COUNT),
+        dtype=np.int64,
+    )
+    odd_edge_divisor_sum = np.zeros(ODD_EDGE_DISTANCE_CUTOFF // 2, dtype=np.float64)
+    odd_edge_count = np.zeros(ODD_EDGE_DISTANCE_CUTOFF // 2, dtype=np.int64)
+    odd_edge_high_divisor_count = np.zeros(ODD_EDGE_DISTANCE_CUTOFF // 2, dtype=np.int64)
+    odd_edge_d4_count = np.zeros(ODD_EDGE_DISTANCE_CUTOFF // 2, dtype=np.int64)
+    odd_edge_bucket_counts = np.zeros(
+        (len(DIVISOR_BUCKET_LABELS), ODD_EDGE_DISTANCE_CUTOFF // 2),
+        dtype=np.int64,
+    )
 
     representative: dict[str, object] | None = None
 
@@ -129,6 +164,7 @@ def collect_detail(limit: int) -> dict[str, object]:
         gap_size_carrier_observed[gap][best_divisors] += 1
 
         position_count = gap - 1
+        max_edge_distance = gap // 2
         for offset, d_value in enumerate(gap_divisors, start=1):
             edge_distance = min(offset, gap - offset)
             share_increment = 1.0 / position_count
@@ -136,6 +172,41 @@ def collect_detail(limit: int) -> dict[str, object]:
             carrier_baseline[int(d_value)] += share_increment
             gap_size_edge_baseline[gap][edge_distance] += share_increment
             gap_size_carrier_baseline[gap][int(d_value)] += share_increment
+
+            if max_edge_distance > 1:
+                normalized_position = (edge_distance - 1) / (max_edge_distance - 1)
+            else:
+                normalized_position = 1.0
+            normalized_index = min(
+                int(normalized_position * NORMALIZED_POSITION_BIN_COUNT),
+                NORMALIZED_POSITION_BIN_COUNT - 1,
+            )
+            normalized_divisor_sum[normalized_index] += float(d_value)
+            normalized_count[normalized_index] += 1
+            normalized_high_divisor_count[normalized_index] += int(
+                d_value >= HIGH_DIVISOR_THRESHOLD
+            )
+            normalized_d4_count[normalized_index] += int(d_value == 4)
+            normalized_bucket_counts[
+                divisor_bucket_index(int(d_value)), normalized_index
+            ] += 1
+
+            candidate_n = int(gap_values[offset - 1])
+            if (
+                candidate_n % 2 == 1
+                and edge_distance % 2 == 0
+                and 2 <= edge_distance <= ODD_EDGE_DISTANCE_CUTOFF
+            ):
+                odd_edge_index = edge_distance // 2 - 1
+                odd_edge_divisor_sum[odd_edge_index] += float(d_value)
+                odd_edge_count[odd_edge_index] += 1
+                odd_edge_high_divisor_count[odd_edge_index] += int(
+                    d_value >= HIGH_DIVISOR_THRESHOLD
+                )
+                odd_edge_d4_count[odd_edge_index] += int(d_value == 4)
+                odd_edge_bucket_counts[
+                    divisor_bucket_index(int(d_value)), odd_edge_index
+                ] += 1
 
         if best_edge_distance == 2 and best_divisors == 4:
             candidate = {
@@ -167,6 +238,35 @@ def collect_detail(limit: int) -> dict[str, object]:
         "gap_size_edge_baseline": gap_size_edge_baseline,
         "gap_size_carrier_observed": gap_size_carrier_observed,
         "gap_size_carrier_baseline": gap_size_carrier_baseline,
+        "normalized_position_bin_centers": (
+            (np.arange(NORMALIZED_POSITION_BIN_COUNT, dtype=np.float64) + 0.5)
+            / NORMALIZED_POSITION_BIN_COUNT
+        ).tolist(),
+        "normalized_position_mean_divisors": (
+            normalized_divisor_sum / normalized_count
+        ).tolist(),
+        "normalized_position_high_divisor_share": (
+            normalized_high_divisor_count / normalized_count
+        ).tolist(),
+        "normalized_position_d4_share": (
+            normalized_d4_count / normalized_count
+        ).tolist(),
+        "normalized_position_bucket_share": (
+            normalized_bucket_counts / normalized_count[np.newaxis, :]
+        ).tolist(),
+        "odd_edge_distances": list(range(2, ODD_EDGE_DISTANCE_CUTOFF + 1, 2)),
+        "odd_edge_mean_divisors": (
+            odd_edge_divisor_sum / odd_edge_count
+        ).tolist(),
+        "odd_edge_high_divisor_share": (
+            odd_edge_high_divisor_count / odd_edge_count
+        ).tolist(),
+        "odd_edge_d4_share": (
+            odd_edge_d4_count / odd_edge_count
+        ).tolist(),
+        "odd_edge_bucket_share": (
+            odd_edge_bucket_counts / odd_edge_count[np.newaxis, :]
+        ).tolist(),
         "representative": representative,
     }
 
@@ -359,6 +459,182 @@ def render_representative_gap(detail: dict[str, object], output_path: Path) -> N
     plt.close(fig)
 
 
+def render_complexity_gradient(detail: dict[str, object], output_path: Path) -> None:
+    """Render the edge-to-center divisor-complexity gradient."""
+    x_values = np.array(detail["normalized_position_bin_centers"], dtype=np.float64)
+    mean_divisors = np.array(
+        detail["normalized_position_mean_divisors"], dtype=np.float64
+    )
+    high_divisor_share = np.array(
+        detail["normalized_position_high_divisor_share"], dtype=np.float64
+    )
+    d4_share = np.array(detail["normalized_position_d4_share"], dtype=np.float64)
+
+    fig, axes = plt.subplots(2, 1, figsize=(10.8, 9.0), sharex=True)
+    axes[0].plot(
+        x_values,
+        mean_divisors,
+        color="#1f4e79",
+        marker="o",
+        linewidth=2.5,
+        markersize=6,
+    )
+    axes[0].set_title(
+        "Composite divisor complexity rises from the gap edge toward the center",
+        pad=14,
+    )
+    axes[0].set_ylabel("Mean divisor count")
+    axes[0].grid(True, alpha=0.25)
+
+    axes[1].plot(
+        x_values,
+        d4_share,
+        color="#0f8b8d",
+        marker="o",
+        linewidth=2.2,
+        markersize=5,
+        label="d(n)=4 share",
+    )
+    axes[1].plot(
+        x_values,
+        high_divisor_share,
+        color="#c05621",
+        marker="o",
+        linewidth=2.2,
+        markersize=5,
+        label=f"d(n)>={HIGH_DIVISOR_THRESHOLD} share",
+    )
+    axes[1].set_xlabel("Normalized position from nearest edge to gap center")
+    axes[1].set_ylabel("Share of interior composites")
+    axes[1].set_xlim(0.0, 1.0)
+    axes[1].set_xticks(np.linspace(0.0, 1.0, 5))
+    axes[1].yaxis.set_major_formatter(
+        FuncFormatter(lambda value, _: f"{value * 100.0:.0f}%")
+    )
+    axes[1].grid(True, alpha=0.25)
+    axes[1].legend(frameon=False)
+
+    fig.tight_layout()
+    fig.savefig(output_path, format="svg")
+    plt.close(fig)
+
+
+def render_odd_distance_complexity(detail: dict[str, object], output_path: Path) -> None:
+    """Render the parity-controlled odd-composite complexity by edge distance."""
+    distances = np.array(detail["odd_edge_distances"], dtype=np.int64)
+    mean_divisors = np.array(detail["odd_edge_mean_divisors"], dtype=np.float64)
+    high_divisor_share = np.array(
+        detail["odd_edge_high_divisor_share"], dtype=np.float64
+    )
+    d4_share = np.array(detail["odd_edge_d4_share"], dtype=np.float64)
+
+    fig, axes = plt.subplots(2, 1, figsize=(10.8, 9.0), sharex=True)
+    axes[0].plot(
+        distances,
+        mean_divisors,
+        color="#1f4e79",
+        marker="o",
+        linewidth=2.5,
+        markersize=6,
+    )
+    axes[0].set_title(
+        "Odd-composite interior complexity still rises away from the prime boundary",
+        pad=14,
+    )
+    axes[0].set_ylabel("Mean divisor count")
+    axes[0].grid(True, alpha=0.25)
+
+    axes[1].plot(
+        distances,
+        d4_share,
+        color="#0f8b8d",
+        marker="o",
+        linewidth=2.2,
+        markersize=5,
+        label="d(n)=4 share",
+    )
+    axes[1].plot(
+        distances,
+        high_divisor_share,
+        color="#c05621",
+        marker="o",
+        linewidth=2.2,
+        markersize=5,
+        label=f"d(n)>={HIGH_DIVISOR_THRESHOLD} share",
+    )
+    axes[1].set_xlabel("Edge distance among odd composite interior points")
+    axes[1].set_ylabel("Share of odd composites")
+    axes[1].set_xticks(distances)
+    axes[1].yaxis.set_major_formatter(
+        FuncFormatter(lambda value, _: f"{value * 100.0:.0f}%")
+    )
+    axes[1].grid(True, alpha=0.25)
+    axes[1].legend(frameon=False)
+
+    fig.tight_layout()
+    fig.savefig(output_path, format="svg")
+    plt.close(fig)
+
+
+def render_position_bucket_heatmap(detail: dict[str, object], output_path: Path) -> None:
+    """Render divisor-class share from edge to center."""
+    bucket_share = np.array(
+        detail["normalized_position_bucket_share"], dtype=np.float64
+    )
+
+    fig, ax = plt.subplots(figsize=(11.2, 6.0))
+    image = ax.imshow(bucket_share, aspect="auto", cmap="YlOrRd", origin="lower")
+    ax.set_title(
+        "Divisor classes shift from semiprime-heavy edges to divisor-rich centers",
+        pad=14,
+    )
+    ax.set_xlabel("Normalized position from nearest edge to gap center")
+    ax.set_ylabel("Divisor-count bucket")
+    ax.set_xticks(np.arange(NORMALIZED_POSITION_BIN_COUNT))
+    ax.set_xticklabels(
+        [f"{value:.2f}" for value in detail["normalized_position_bin_centers"]],
+        rotation=45,
+        ha="right",
+    )
+    ax.set_yticks(np.arange(len(DIVISOR_BUCKET_LABELS)))
+    ax.set_yticklabels([f"d={label}" for label in DIVISOR_BUCKET_LABELS])
+    colorbar = fig.colorbar(image, ax=ax)
+    colorbar.ax.yaxis.set_major_formatter(
+        FuncFormatter(lambda value, _: f"{value * 100.0:.0f}%")
+    )
+    colorbar.set_label("Share within position bin")
+    fig.tight_layout()
+    fig.savefig(output_path, format="svg")
+    plt.close(fig)
+
+
+def render_odd_distance_bucket_heatmap(detail: dict[str, object], output_path: Path) -> None:
+    """Render divisor-class share by odd composite edge distance."""
+    bucket_share = np.array(detail["odd_edge_bucket_share"], dtype=np.float64)
+    distances = np.array(detail["odd_edge_distances"], dtype=np.int64)
+
+    fig, ax = plt.subplots(figsize=(10.4, 6.0))
+    image = ax.imshow(bucket_share, aspect="auto", cmap="YlGnBu", origin="lower")
+    ax.set_title(
+        "Among odd composites, low-divisor mass is strongest nearest the boundary",
+        pad=14,
+    )
+    ax.set_xlabel("Edge distance among odd composite interior points")
+    ax.set_ylabel("Divisor-count bucket")
+    ax.set_xticks(np.arange(len(distances)))
+    ax.set_xticklabels([str(value) for value in distances])
+    ax.set_yticks(np.arange(len(DIVISOR_BUCKET_LABELS)))
+    ax.set_yticklabels([f"d={label}" for label in DIVISOR_BUCKET_LABELS])
+    colorbar = fig.colorbar(image, ax=ax)
+    colorbar.ax.yaxis.set_major_formatter(
+        FuncFormatter(lambda value, _: f"{value * 100.0:.0f}%")
+    )
+    colorbar.set_label("Share within edge-distance bin")
+    fig.tight_layout()
+    fig.savefig(output_path, format="svg")
+    plt.close(fig)
+
+
 def render_edge_surface(detail: dict[str, object], output_path: Path, threshold: int) -> None:
     """Render a 3D enrichment plot over gap size and edge distance."""
     gap_size_counts: Counter[int] = detail["gap_size_counts"]  # type: ignore[assignment]
@@ -485,6 +761,22 @@ def main(argv: list[str] | None = None) -> int:
     render_edge_distribution(detail, args.output_dir / "edge_distance_distribution_2d.svg")
     render_carrier_distribution(detail, args.output_dir / "carrier_divisor_distribution_2d.svg")
     render_representative_gap(detail, args.output_dir / "representative_gap_profile_2d.svg")
+    render_complexity_gradient(
+        detail,
+        args.output_dir / "complexity_gradient_2d.svg",
+    )
+    render_odd_distance_complexity(
+        detail,
+        args.output_dir / "odd_distance_complexity_2d.svg",
+    )
+    render_position_bucket_heatmap(
+        detail,
+        args.output_dir / "position_bucket_heatmap_2d.svg",
+    )
+    render_odd_distance_bucket_heatmap(
+        detail,
+        args.output_dir / "odd_distance_bucket_heatmap_2d.svg",
+    )
     render_edge_surface(
         detail,
         args.output_dir / "gap_size_edge_distance_enrichment_3d.png",
