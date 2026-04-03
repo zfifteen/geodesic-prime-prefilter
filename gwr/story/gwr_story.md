@@ -13,10 +13,12 @@ limited sense, arithmetically simpler than one with many divisors.
 
 To make that comparison precise, I used the quantity
 
-`Z(n) = (1 - d(n)/2) ln(n)`,
+$$
+Z(n) = \left(1 - \frac{d(n)}{2}\right)\ln(n),
+$$
 
-where `d(n)` means the number of positive divisors of `n`, and `ln(n)` is the
-natural logarithm of `n`. In the project notes, I call this the raw-`Z` score.
+where $d(n)$ means the number of positive divisors of $n$, and $\ln(n)$ is the
+natural logarithm of $n$. In the project notes, I call this the raw-$Z$ score.
 
 At the beginning, I was not looking for a simple winner rule.
 I was only trying to understand a repeated visual pattern: when I plotted this
@@ -27,19 +29,19 @@ That is where the story starts.
 
 ## The score looked geometric before it looked arithmetic
 
-If you look at individual gaps, the raw-`Z` landscape really does look like a
+If you look at individual gaps, the raw-$Z$ landscape really does look like a
 profile. Some carriers sit high, some collapse deep negative, and the peak
 often leans toward the left side of the gap. That is exactly why the result was
 surprising once it appeared.
 
-The key local fact is visible in exemplar gaps: the raw-`Z` winner and the
+The key local fact is visible in exemplar gaps: the raw-$Z$ winner and the
 minimum-divisor leftmost winner land on the same carrier.
 
 ![Exemplar prime gaps: the raw-Z winner and the GWR winner coincide](./plots/figure_01_exemplar_gap_profiles.png)
 
 The top-left panel shows the smallest nontrivial eligible gap. The lower panels
 show tighter-margin examples where several interiors compete more closely. Even
-there, the black star marking the raw-`Z` winner sits exactly on the red ring
+there, the black star marking the raw-$Z$ winner sits exactly on the red ring
 marking the Gap Winner Rule winner.
 
 That identity is the main discovery.
@@ -48,10 +50,10 @@ That identity is the main discovery.
 
 The surprise was that the winner collapsed completely.
 
-On the tested prime-gap surface, the raw-`Z` winner is exactly the same as the
+On the tested prime-gap surface, the raw-$Z$ winner is exactly the same as the
 integer selected by the simple rule:
 
-1. choose the smallest interior divisor count `d(n)`,
+1. choose the smallest interior divisor count $d(n)$,
 2. among ties, choose the leftmost interior integer.
 
 That is the `Gap Winner Rule` (`GWR`).
@@ -73,7 +75,7 @@ the same point.
 
 Before `GWR`, several observations looked like distinct facts:
 
-- `d(n)=4` winners appeared unusually often,
+- $d(n)=4$ winners appeared unusually often,
 - winners appeared unusually often in the left half of the gap,
 - edge-distance `2` showed up again and again.
 
@@ -87,8 +89,8 @@ baseline availability of divisor classes across all interior composites.
 This plot is not showing raw counts. It is showing selection pressure. A bar
 above `1` means that divisor class is chosen more often than its baseline
 availability would predict. The dominant winner classes are the lowest ones
-available, especially `d(n)=3` and `d(n)=4`. On the tested prime-gap surface,
-the frequent winner class is `d(n)=4` because it is the first abundant low-
+available, especially $d(n)=3$ and $d(n)=4$. On the tested prime-gap surface,
+the frequent winner class is $d(n)=4$ because it is the first abundant low-
 divisor class that regularly appears in gap interiors.
 
 The left-edge effect shows up just as clearly if winner positions are compared
@@ -112,7 +114,7 @@ The right reading is that one exact winner law explains them together.
 
 ## The first theorem temptation was stronger than the truth
 
-Once the collapse appeared, the natural next thought was that raw-`Z` might be
+Once the collapse appeared, the natural next thought was that raw-$Z$ might be
 globally lexicographic on composites, not just inside prime gaps.
 
 That stronger claim would say, in effect, that lower divisor count always wins,
@@ -126,7 +128,7 @@ One explicit counterexample is the pair `49` and `6`.
 ![Why the unrestricted global theorem fails: lower d(n) does not always win out of order](./plots/figure_06_counterexample_pair.png)
 
 Here `49` has smaller divisor count than `6`, but it does not have larger
-raw-`Z`. That matters because it tells us not to over-read the empirical prime-
+raw-$Z$. That matters because it tells us not to over-read the empirical prime-
 gap result into a broader unrestricted theorem that the score does not actually
 satisfy.
 
@@ -137,11 +139,11 @@ exactly where the real mathematical question lives.
 
 The exact theorem that survives is narrower and cleaner.
 
-If `a < b` are composite integers and `d(a) <= d(b)`, then `Z(a) > Z(b)`.
+If $a < b$ are composite integers and $d(a) \le d(b)$, then $Z(a) > Z(b)$.
 
 This is the `Lexicographic Raw-Z Dominance Theorem`. It is a directional
 dominance result, not an unrestricted global ordering law. Earlier composite
-plus no larger divisor count forces larger raw-`Z`.
+plus no larger divisor count forces larger raw-$Z$.
 
 That distinction matters. It means the theorem is not “lower divisor count wins
 everywhere.” It is “lower-or-equal divisor count wins when it occurs earlier.”
@@ -162,7 +164,7 @@ It is not:
 It is:
 
 “Why do prime-gap interiors seem always to arrange themselves so that the
-minimum-divisor leftmost carrier dominates the raw-`Z` competition?”
+minimum-divisor leftmost carrier dominates the raw-$Z$ competition?”
 
 The heatmap below shows where the winners actually live on the tested prime-gap
 surface.
