@@ -6,6 +6,15 @@ Deterministic cryptographic prime prefiltering whose production path is a bounde
 
 This repository presents the Z-Band Prime Prefilter as a deterministic cryptographic primitive. It gives the mathematical basis of the method, centered on the **Divisor Normalization Identity** (DNI) $Z(n) = n^{1 - d(n)/2}$, a production Python implementation, and the validation vectors and benchmarks needed to reproduce the result.
 
+## Empirical Findings Without Located Prior Art
+
+The exact DNI is elementary. The stronger novelty surface in this repository is empirical. We have not yet located prior literature for the following exact measured results under the raw DNI field:
+
+- Inside prime gaps up to `10^6`, the gap-local raw-`Z` maximum lands at edge distance `2` in `43.6006%` of tested gaps against an exact within-gap baseline of `22.1859%` (`1.965x` enrichment), and the same peak is carried by a `d(n) = 4` composite in `82.9027%` of tested gaps against a baseline of `20.1401%` (`4.116x` enrichment). See the [gap-edge study](docs/gap_ridge/raw_composite_z_gap_edge.md) and the [figure pack](docs/gap_ridge/raw_composite_z_gap_edge_figures.md).
+- On exact `10^7` and sampled regimes through `10^10`, the gap-local raw-`Z` peak matches the lexicographic winner "minimize interior divisor count, then take the leftmost carrier," with zero observed counterexamples on the tested surface. See the [finding note](docs/findings/lexicographic_winner_take_all_peak_rule.md), the [validation summary](benchmarks/output/python/gap_ridge/lexicographic_peak_validation/lexicographic_peak_validation_summary.svg), and the [validation data](benchmarks/output/python/gap_ridge/lexicographic_peak_validation/lexicographic_peak_validation.json).
+- Most observed `d(n)=4` peak-carrier dominance is availability-driven almost one-for-one: when a gap contains an interior `d(n)=4` composite, the raw-`Z` peak is usually carried by that class, with a thin odd-square exception family whose observed rate stays below `0.216%` on the tested surface. See the [finding note](docs/findings/d4_availability_driven_carrier_dominance.md) and the [availability-vs-peak artifact](benchmarks/output/python/gap_ridge/insight_probes/d4_availability_vs_peak_share.svg).
+- The near-edge ridge is residue-modulated by the left endpoint prime modulo `30`: some residue classes make right-edge wins materially more common, while others reinforce strong left-edge dominance. See the [finding note](docs/findings/residue_mod30_ridge_orientation.md) and the [supporting probe](benchmarks/output/python/gap_ridge/insight_probes/residue_mod30_right_edge_share.svg).
+
 ## Scope At A Glance
 
 - The exact DNI is an arithmetic identity under exact divisor count.
