@@ -7,6 +7,8 @@ one thing wrong. It is right that taking the log does not create a second
 winner law. The log and the raw score pick the same point. But that does not
 mean the full collapse inside prime gaps is automatic.
 
+![Schematic of what the score already builds in](./plots/score_bias_schematic.png)
+
 ---
 
 If the whole rule were already built into the score, then the same winner law
@@ -47,3 +49,5 @@ into a complete winner law.
 That is the actual open question. Not why the score leans left in a loose
 sense, but why prime gaps seem to enforce exactly the local structure needed
 for the collapse to be complete.
+
+![Schematic of what prime gaps still have to explain](./plots/open_question_schematic.png)
