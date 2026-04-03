@@ -78,7 +78,7 @@ Before GWR, several observations looked like distinct facts:
 
 - $d(n)=4$ winners appeared unusually often,
 - winners appeared unusually often in the left half of the gap,
-- edge-distance `2` showed up again and again.
+- edge-distance $2$ showed up again and again.
 
 Once GWR is in view, those observations compress into one mechanism.
 
