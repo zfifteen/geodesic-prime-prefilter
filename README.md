@@ -1,10 +1,35 @@
-# Geodesic Prime Prefilter
+# DCI Prime Prefilter
 
-![Geodesic Prime Prefilter hero](docs/assets/geodesic-prime-prefilter-hero.jpg)
+![DCI Prime Prefilter hero](docs/assets/geodesic-prime-prefilter-hero.jpg)
 
-Deterministic cryptographic prime prefiltering derived from the prime band implied by the **Divisor Curvature Identity** (DCI) \(Z(n) = n^{1 - d(n)/2}\) at $v = e^{2}/2$.
+Deterministic cryptographic prime prefiltering derived from the fixed-point band implied by the **Divisor Curvature Identity** (DCI) \(Z(n) = n^{1 - d(n)/2}\) at the fixed-point rate $v = e^{2}/2$.
 
-This repository presents the geodesic prime prefilter as a deterministic cryptographic primitive. It gives the mathematical basis of the method, centered on the **Divisor Curvature Identity** (DCI) \(Z(n) = n^{1 - d(n)/2}\), a production Python implementation, and the validation vectors and benchmarks needed to reproduce the result.
+This repository presents the DCI prime prefilter as a deterministic cryptographic primitive. It gives the mathematical basis of the method, centered on the **Divisor Curvature Identity** (DCI) \(Z(n) = n^{1 - d(n)/2}\), a production Python implementation, and the validation vectors and benchmarks needed to reproduce the result.
+
+## Terminology
+
+This repository uses geometric language as names for structural roles inside one
+discrete arithmetic normalization. The terminology is intended literally within
+that setting. It does not claim that the integers in this repository have been
+equipped with a smooth Riemannian manifold structure or a physical time
+evolution.
+
+- **Curvature** names the scalar load
+  \(\kappa(n) = d(n)\ln(n)/e^2\). It measures how far an integer has moved away
+  from the minimal-divisor prime case once divisor structure and logarithmic
+  scale are combined.
+- **Geodesic** remains a repository term for the straight fixed-point regime
+  selected by the normalization. Under the exact DCI, primes occupy the
+  fixed-point band \(Z = 1.0\), while composites deviate below it as additional
+  factor structure appears.
+- **Fixed-point rate** names the scalar parameter \(v\) in the Z-transform
+  \(Z(n) = n / \exp(v\kappa(n))\). The distinguished value \(v = e^2/2\) is the
+  exact rate that produces the fixed-point collapse
+  \(Z(n) = n^{1 - d(n)/2}\).
+- **Fixed-point band** names the normalized locus \(Z = 1.0\) picked out by the
+  exact identity for the prime class.
+- **Ridge** names a measured concentration of local maxima in the exact raw
+  composite Z-field inside prime gaps.
 
 ## Overview
 
@@ -31,7 +56,7 @@ where:
 - $\ln(n)$ is the natural logarithm of $n$
 - $e^{2}$ is the normalization constant
 
-This equation measures how much factor structure an integer carries once scale is taken into account. With curvature defined, primes are the minimal case under this measure, while composites carry increasingly more structural load. This is the sense in which the framework speaks of straightness, distortion, or curvature in integer space.
+This equation measures how much factor structure an integer carries once scale is taken into account. With curvature defined, primes are the minimal case under this measure, while composites carry increasingly more structural load. This is the sense in which the framework speaks of straightness or curvature in the discrete integer field used in this repository.
 
 ## Divisor Curvature Identity
 
@@ -41,9 +66,10 @@ $$
 Z(n) = \frac{n}{\exp(v \cdot \kappa(n))}
 $$
 
-where $v$ is a traversal rate.
+where $v$ is a rate parameter. In this repository, the distinguished value
+\(v = e^2/2\) is the fixed-point rate.
 
-For the geodesic prime prefilter, the distinguished value is
+For the DCI prime prefilter, the distinguished value is
 
 $$
 v = \frac{e^{2}}{2}
@@ -101,7 +127,7 @@ The production implementation in this repository therefore uses a deterministic 
 So the logic flows in one direction:
 
 - the Divisor Curvature Equation defines the structural signal
-- the fixed-point traversal rate turns that signal into the prime DCI band
+- the fixed-point rate turns that signal into the prime DCI band
 - the band creates a usable structural separation
 - the production filter exploits that separation to reduce Miller-Rabin work
 
@@ -109,7 +135,7 @@ Empirically, this extracted Python path produced:
 
 - $2.09\times$ end-to-end speedup across $300$ deterministic $2048$-bit RSA keypairs
 - $2.82\times$ end-to-end speedup across $50$ deterministic $4096$-bit RSA keypairs
-- $90.97\,\%$ to $91.07\,\%$ Miller-Rabin reduction while preserving the prime band
+- $90.97\,\%$ to $91.07\,\%$ Miller-Rabin reduction while preserving the fixed-point band
 
 ## Empirical Results
 

@@ -10,7 +10,9 @@ $$
 v = \frac{e^{2}}{2}.
 $$
 
-At that traversal rate, confirmed primes lie on the invariant band \(Z = 1.0\), while composites contract below it under exact divisor counting. The production prefilter keeps that band as its survivor convention and uses concrete factor discovery as its rejection rule.
+Here, the fixed-point rate names the distinguished scalar \(v = e^2/2\) in the normalization, and the fixed-point band names the normalized locus \(Z = 1.0\) occupied by confirmed primes under the exact identity.
+
+At that fixed-point rate, confirmed primes lie on the fixed-point band \(Z = 1.0\), while composites contract below it under exact divisor counting. The production prefilter keeps that band as its survivor convention and uses concrete factor discovery as its rejection rule.
 
 ## Why A Prefilter Matters
 
@@ -80,7 +82,7 @@ The contract is deliberately narrow.
 
 The repository commits to the following production behavior:
 
-- the fixed-point traversal rate is fixed at `v = e^2 / 2`,
+- the fixed-point rate is fixed at `v = e^2 / 2`,
 - candidate generation uses the deterministic SHA-256 namespace/index stream,
 - the prefilter rejects only when it has found a concrete factor in one of the gated prime tables,
 - survivor status is not a primality proof,
