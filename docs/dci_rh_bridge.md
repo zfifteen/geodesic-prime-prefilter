@@ -12,7 +12,7 @@ $$
 Z(n) = n^{1 - d(n)/2}
 $$
 
-at the fixed traversal rate
+at the fixed-point rate
 
 $$
 v = \frac{e^2}{2},
@@ -59,7 +59,7 @@ $$
 K(s) = -\frac{1}{e^2}D'(s).
 $$
 
-At the fixed traversal rate \(v = e^2/2\), the normalized curvature-to-divisor
+At the fixed-point rate \(v = e^2/2\), the normalized curvature-to-divisor
 ratio is therefore
 
 $$
@@ -111,7 +111,7 @@ So the DCI does not merely resemble an analytic prime detector.
 
 Its native generating objects reconstruct the standard one exactly.
 
-## Why the Fixed Rate Is Native Here
+## Why the Fixed-Point Rate Is Native Here
 
 The role of the repository constant
 
@@ -121,7 +121,7 @@ $$
 
 has two exact meanings in this project.
 
-On the integer-field side, it is the fixed traversal rate at which the DCI
+On the integer-field side, it is the fixed-point rate at which the DCI
 collapses to
 
 $$

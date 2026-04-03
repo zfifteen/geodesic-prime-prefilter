@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760">
+<rect width="100%" height="100%" fill="#fcfbf7" />
+<text x="96" y="48" font-family="Menlo, Monaco, monospace" font-size="26" fill="#1f2933">Structural amplification speedup by RSA size</text>
+<text x="96" y="74" font-family="Menlo, Monaco, monospace" font-size="14" fill="#52606d">Median realized speedup versus the fixed-rejection ceiling 1 / (1 - rejection)</text>
+<line x1="96" y1="664.00" x2="1188" y2="664.00" stroke="#d9e2ec" stroke-width="1" />
+<text x="82" y="669.00" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">0.00x</text>
+<line x1="96" y1="550.40" x2="1188" y2="550.40" stroke="#d9e2ec" stroke-width="1" />
+<text x="82" y="555.40" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">2.74x</text>
+<line x1="96" y1="436.80" x2="1188" y2="436.80" stroke="#d9e2ec" stroke-width="1" />
+<text x="82" y="441.80" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">5.49x</text>
+<line x1="96" y1="323.20" x2="1188" y2="323.20" stroke="#d9e2ec" stroke-width="1" />
+<text x="82" y="328.20" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">8.23x</text>
+<line x1="96" y1="209.60" x2="1188" y2="209.60" stroke="#d9e2ec" stroke-width="1" />
+<text x="82" y="214.60" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">10.98x</text>
+<line x1="96" y1="96.00" x2="1188" y2="96.00" stroke="#d9e2ec" stroke-width="1" />
+<text x="82" y="101.00" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">13.72x</text>
+<line x1="96" y1="664" x2="1188" y2="664" stroke="#243b53" stroke-width="1.5" />
+<line x1="96" y1="96" x2="96" y2="664" stroke="#243b53" stroke-width="1.5" />
+<polyline fill="none" stroke="#0b6e4f" stroke-width="3.5" points="96.00,610.91 369.00,579.89 642.00,556.47 915.00,546.82 1188.00,525.60" />
+<polyline fill="none" stroke="#c84c09" stroke-width="3" stroke-dasharray="8 6" points="96.00,187.43 369.00,202.01 642.00,187.36 915.00,188.71 1188.00,156.86" />
+<line x1="96.00" y1="611.66" x2="96.00" y2="609.56" stroke="#0b6e4f" stroke-width="2" />
+<line x1="88.00" y1="611.66" x2="104.00" y2="611.66" stroke="#0b6e4f" stroke-width="2" />
+<line x1="88.00" y1="609.56" x2="104.00" y2="609.56" stroke="#0b6e4f" stroke-width="2" />
+<circle cx="96.00" cy="610.91" r="6" fill="#0b6e4f" stroke="#fcfbf7" stroke-width="2" />
+<circle cx="96.00" cy="187.43" r="5" fill="#c84c09" stroke="#fcfbf7" stroke-width="2" />
+<text x="96.00" y="692.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">1024</text>
+<text x="96.00" y="712.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="12" fill="#52606d">1.28x</text>
+<line x1="369.00" y1="580.23" x2="369.00" y2="575.23" stroke="#0b6e4f" stroke-width="2" />
+<line x1="361.00" y1="580.23" x2="377.00" y2="580.23" stroke="#0b6e4f" stroke-width="2" />
+<line x1="361.00" y1="575.23" x2="377.00" y2="575.23" stroke="#0b6e4f" stroke-width="2" />
+<circle cx="369.00" cy="579.89" r="6" fill="#0b6e4f" stroke="#fcfbf7" stroke-width="2" />
+<circle cx="369.00" cy="202.01" r="5" fill="#c84c09" stroke="#fcfbf7" stroke-width="2" />
+<text x="369.00" y="692.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">2048</text>
+<text x="369.00" y="712.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="12" fill="#52606d">2.03x</text>
+<line x1="642.00" y1="557.63" x2="642.00" y2="555.61" stroke="#0b6e4f" stroke-width="2" />
+<line x1="634.00" y1="557.63" x2="650.00" y2="557.63" stroke="#0b6e4f" stroke-width="2" />
+<line x1="634.00" y1="555.61" x2="650.00" y2="555.61" stroke="#0b6e4f" stroke-width="2" />
+<circle cx="642.00" cy="556.47" r="6" fill="#0b6e4f" stroke="#fcfbf7" stroke-width="2" />
+<circle cx="642.00" cy="187.36" r="5" fill="#c84c09" stroke="#fcfbf7" stroke-width="2" />
+<text x="642.00" y="692.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">3072</text>
+<text x="642.00" y="712.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="12" fill="#52606d">2.60x</text>
+<line x1="915.00" y1="548.49" x2="915.00" y2="545.21" stroke="#0b6e4f" stroke-width="2" />
+<line x1="907.00" y1="548.49" x2="923.00" y2="548.49" stroke="#0b6e4f" stroke-width="2" />
+<line x1="907.00" y1="545.21" x2="923.00" y2="545.21" stroke="#0b6e4f" stroke-width="2" />
+<circle cx="915.00" cy="546.82" r="6" fill="#0b6e4f" stroke="#fcfbf7" stroke-width="2" />
+<circle cx="915.00" cy="188.71" r="5" fill="#c84c09" stroke="#fcfbf7" stroke-width="2" />
+<text x="915.00" y="692.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">4096</text>
+<text x="915.00" y="712.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="12" fill="#52606d">2.83x</text>
+<line x1="1188.00" y1="527.30" x2="1188.00" y2="525.37" stroke="#0b6e4f" stroke-width="2" />
+<line x1="1180.00" y1="527.30" x2="1196.00" y2="527.30" stroke="#0b6e4f" stroke-width="2" />
+<line x1="1180.00" y1="525.37" x2="1196.00" y2="525.37" stroke="#0b6e4f" stroke-width="2" />
+<circle cx="1188.00" cy="525.60" r="6" fill="#0b6e4f" stroke="#fcfbf7" stroke-width="2" />
+<circle cx="1188.00" cy="156.86" r="5" fill="#c84c09" stroke="#fcfbf7" stroke-width="2" />
+<text x="1188.00" y="692.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">8192</text>
+<text x="1188.00" y="712.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="12" fill="#52606d">3.34x</text>
+<line x1="952" y1="114" x2="986" y2="114" stroke="#0b6e4f" stroke-width="3.5" />
+<text x="996" y="119" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">median realized speedup</text>
+<line x1="952" y1="138" x2="986" y2="138" stroke="#c84c09" stroke-width="3" stroke-dasharray="8 6" />
+<text x="996" y="143" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">structural ceiling</text>
+<text x="642.00" y="732" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="14" fill="#243b53">RSA modulus bits</text>
+<text x="26" y="380.00" transform="rotate(-90 26 380.00)" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="14" fill="#243b53">Speedup</text>
+</svg>

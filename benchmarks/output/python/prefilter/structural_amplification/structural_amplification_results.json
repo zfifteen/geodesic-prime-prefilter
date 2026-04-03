@@ -1,0 +1,491 @@
+{
+  "experiment_date": "2026-04-02",
+  "configuration": {
+    "schedule": [
+      {
+        "rsa_bits": 1024,
+        "keypair_count": 24
+      },
+      {
+        "rsa_bits": 2048,
+        "keypair_count": 12
+      },
+      {
+        "rsa_bits": 3072,
+        "keypair_count": 8
+      },
+      {
+        "rsa_bits": 4096,
+        "keypair_count": 6
+      },
+      {
+        "rsa_bits": 8192,
+        "keypair_count": 2
+      }
+    ],
+    "repetitions": 3,
+    "evaluation_min_rsa_bits": 2048,
+    "rejection_stability_tolerance": 0.02,
+    "public_exponent": 65537,
+    "namespace": "cdl-structural-amplification"
+  },
+  "rows": [
+    {
+      "rsa_bits": 1024,
+      "keypair_count": 24,
+      "repeat_count": 3,
+      "matching_keypairs": 24,
+      "saved_miller_rabin_calls": 6772,
+      "saved_miller_rabin_call_rate": 0.9131607335490831,
+      "prime_fixed_points": {
+        "verification_mode": "sympy_isprime_then_closed_form_fixed_point",
+        "confirmed_prime_count": 48,
+        "fixed_point_count": 48,
+        "fixed_point_value": 1.0
+      },
+      "baseline_total_candidates_tested": 7416,
+      "accelerated_total_candidates_tested": 7416,
+      "baseline_total_miller_rabin_calls": 7416,
+      "accelerated_total_miller_rabin_calls": 644,
+      "accelerated_total_proxy_rejections": 6772,
+      "proxy_rejection_rate": 0.9131607335490831,
+      "speedup": {
+        "median": 1.2827604944370754,
+        "min": 1.264698767366264,
+        "max": 1.3154718486723205,
+        "half_range": 0.025386540653028256
+      },
+      "baseline_mean_time_per_keypair_ms": {
+        "median": 87.95960416666667,
+        "min": 87.731420125,
+        "max": 89.63067016666668,
+        "half_range": 0.9496250208333379
+      },
+      "accelerated_mean_time_per_keypair_ms": {
+        "median": 68.570559,
+        "min": 68.13575695833333,
+        "max": 69.369420125,
+        "half_range": 0.6168315833333367
+      },
+      "baseline_mean_miller_rabin_time_per_keypair_ms": {
+        "median": 81.81473708333333,
+        "min": 81.5509115,
+        "max": 82.80947304166668,
+        "half_range": 0.6292807708333399
+      },
+      "accelerated_mean_proxy_time_per_keypair_ms": {
+        "median": 30.75401108333333,
+        "min": 30.61533675,
+        "max": 31.293441666666666,
+        "half_range": 0.33905245833333275
+      },
+      "accelerated_mean_miller_rabin_time_per_keypair_ms": {
+        "median": 31.77462575,
+        "min": 31.517254958333332,
+        "max": 31.96216475,
+        "half_range": 0.22245489583333367
+      },
+      "baseline_to_proxy_cost_ratio": 2.8601018556026676,
+      "baseline_miller_rabin_to_proxy_cost_ratio": 2.660294842895195,
+      "structural_speedup_ceiling": 11.515527950310565,
+      "realized_ceiling_fraction": 0.11139398036913109,
+      "repeat_measurements": [
+        {
+          "speedup": 1.264698767366264,
+          "baseline_mean_time_per_keypair_ms": 87.731420125,
+          "accelerated_mean_time_per_keypair_ms": 69.369420125,
+          "baseline_mean_miller_rabin_time_per_keypair_ms": 81.5509115,
+          "accelerated_mean_proxy_time_per_keypair_ms": 31.293441666666666,
+          "accelerated_mean_miller_rabin_time_per_keypair_ms": 31.96216475
+        },
+        {
+          "speedup": 1.3154718486723205,
+          "baseline_mean_time_per_keypair_ms": 89.63067016666668,
+          "accelerated_mean_time_per_keypair_ms": 68.13575695833333,
+          "baseline_mean_miller_rabin_time_per_keypair_ms": 82.80947304166668,
+          "accelerated_mean_proxy_time_per_keypair_ms": 30.61533675,
+          "accelerated_mean_miller_rabin_time_per_keypair_ms": 31.517254958333332
+        },
+        {
+          "speedup": 1.2827604944370754,
+          "baseline_mean_time_per_keypair_ms": 87.95960416666667,
+          "accelerated_mean_time_per_keypair_ms": 68.570559,
+          "baseline_mean_miller_rabin_time_per_keypair_ms": 81.81473708333333,
+          "accelerated_mean_proxy_time_per_keypair_ms": 30.75401108333333,
+          "accelerated_mean_miller_rabin_time_per_keypair_ms": 31.77462575
+        }
+      ]
+    },
+    {
+      "rsa_bits": 2048,
+      "keypair_count": 12,
+      "repeat_count": 3,
+      "matching_keypairs": 12,
+      "saved_miller_rabin_calls": 5478,
+      "saved_miller_rabin_call_rate": 0.9104204753199269,
+      "prime_fixed_points": {
+        "verification_mode": "sympy_isprime_then_closed_form_fixed_point",
+        "confirmed_prime_count": 24,
+        "fixed_point_count": 24,
+        "fixed_point_value": 1.0
+      },
+      "baseline_total_candidates_tested": 6017,
+      "accelerated_total_candidates_tested": 6017,
+      "baseline_total_miller_rabin_calls": 6017,
+      "accelerated_total_miller_rabin_calls": 539,
+      "accelerated_total_proxy_rejections": 5478,
+      "proxy_rejection_rate": 0.9104204753199269,
+      "speedup": {
+        "median": 2.0323567343980553,
+        "min": 2.02422925285071,
+        "max": 2.1449865160668273,
+        "half_range": 0.060378631608058564
+      },
+      "baseline_mean_time_per_keypair_ms": {
+        "median": 751.221059,
+        "min": 725.3982569166666,
+        "max": 774.655125,
+        "half_range": 24.628434041666708
+      },
+      "accelerated_mean_time_per_keypair_ms": {
+        "median": 361.1468506666667,
+        "min": 356.9246700833333,
+        "max": 371.1146145833333,
+        "half_range": 7.094972250000012
+      },
+      "baseline_mean_miller_rabin_time_per_keypair_ms": {
+        "median": 712.5079179166667,
+        "min": 687.2895651666666,
+        "max": 733.0613779166666,
+        "half_range": 22.88590637499999
+      },
+      "accelerated_mean_proxy_time_per_keypair_ms": {
+        "median": 75.8689695,
+        "min": 75.09226283333332,
+        "max": 79.64994391666667,
+        "half_range": 2.278840541666675
+      },
+      "accelerated_mean_miller_rabin_time_per_keypair_ms": {
+        "median": 247.82356991666666,
+        "min": 245.32972666666666,
+        "max": 251.00846608333333,
+        "half_range": 2.8393697083333365
+      },
+      "baseline_to_proxy_cost_ratio": 9.901558752554296,
+      "baseline_miller_rabin_to_proxy_cost_ratio": 9.391295579896688,
+      "structural_speedup_ceiling": 11.16326530612245,
+      "realized_ceiling_fraction": 0.1820575502477234,
+      "repeat_measurements": [
+        {
+          "speedup": 2.02422925285071,
+          "baseline_mean_time_per_keypair_ms": 751.221059,
+          "accelerated_mean_time_per_keypair_ms": 371.1146145833333,
+          "baseline_mean_miller_rabin_time_per_keypair_ms": 712.5079179166667,
+          "accelerated_mean_proxy_time_per_keypair_ms": 79.64994391666667,
+          "accelerated_mean_miller_rabin_time_per_keypair_ms": 251.00846608333333
+        },
+        {
+          "speedup": 2.0323567343980553,
+          "baseline_mean_time_per_keypair_ms": 725.3982569166666,
+          "accelerated_mean_time_per_keypair_ms": 356.9246700833333,
+          "baseline_mean_miller_rabin_time_per_keypair_ms": 687.2895651666666,
+          "accelerated_mean_proxy_time_per_keypair_ms": 75.09226283333332,
+          "accelerated_mean_miller_rabin_time_per_keypair_ms": 245.32972666666666
+        },
+        {
+          "speedup": 2.1449865160668273,
+          "baseline_mean_time_per_keypair_ms": 774.655125,
+          "accelerated_mean_time_per_keypair_ms": 361.1468506666667,
+          "baseline_mean_miller_rabin_time_per_keypair_ms": 733.0613779166666,
+          "accelerated_mean_proxy_time_per_keypair_ms": 75.8689695,
+          "accelerated_mean_miller_rabin_time_per_keypair_ms": 247.82356991666666
+        }
+      ]
+    },
+    {
+      "rsa_bits": 3072,
+      "keypair_count": 8,
+      "repeat_count": 3,
+      "matching_keypairs": 8,
+      "saved_miller_rabin_calls": 7278,
+      "saved_miller_rabin_call_rate": 0.9131744040150565,
+      "prime_fixed_points": {
+        "verification_mode": "sympy_isprime_then_closed_form_fixed_point",
+        "confirmed_prime_count": 16,
+        "fixed_point_count": 16,
+        "fixed_point_value": 1.0
+      },
+      "baseline_total_candidates_tested": 7970,
+      "accelerated_total_candidates_tested": 7970,
+      "baseline_total_miller_rabin_calls": 7970,
+      "accelerated_total_miller_rabin_calls": 692,
+      "accelerated_total_proxy_rejections": 7278,
+      "proxy_rejection_rate": 0.9131744040150565,
+      "speedup": {
+        "median": 2.598275920864483,
+        "min": 2.5702659037950126,
+        "max": 2.6190379200054035,
+        "half_range": 0.024386008105195423
+      },
+      "baseline_mean_time_per_keypair_ms": {
+        "median": 3991.494651125,
+        "min": 3958.44955725,
+        "max": 4051.87624475,
+        "half_range": 46.71334374999992
+      },
+      "accelerated_mean_time_per_keypair_ms": {
+        "median": 1540.093401,
+        "min": 1536.208921875,
+        "max": 1547.08575,
+        "half_range": 5.438414062499987
+      },
+      "baseline_mean_miller_rabin_time_per_keypair_ms": {
+        "median": 3871.57489675,
+        "min": 3838.606705625,
+        "max": 3930.08058875,
+        "half_range": 45.73694156250008
+      },
+      "accelerated_mean_proxy_time_per_keypair_ms": {
+        "median": 188.524665125,
+        "min": 187.630802375,
+        "max": 189.714740375,
+        "half_range": 1.0419689999999946
+      },
+      "accelerated_mean_miller_rabin_time_per_keypair_ms": {
+        "median": 1234.906690125,
+        "min": 1229.061693125,
+        "max": 1241.064348875,
+        "half_range": 6.001327875000015
+      },
+      "baseline_to_proxy_cost_ratio": 21.172267557024785,
+      "baseline_miller_rabin_to_proxy_cost_ratio": 20.536171721525022,
+      "structural_speedup_ceiling": 11.517341040462426,
+      "realized_ceiling_fraction": 0.22559685536238674,
+      "repeat_measurements": [
+        {
+          "speedup": 2.598275920864483,
+          "baseline_mean_time_per_keypair_ms": 3991.494651125,
+          "accelerated_mean_time_per_keypair_ms": 1536.208921875,
+          "baseline_mean_miller_rabin_time_per_keypair_ms": 3871.57489675,
+          "accelerated_mean_proxy_time_per_keypair_ms": 187.630802375,
+          "accelerated_mean_miller_rabin_time_per_keypair_ms": 1229.061693125
+        },
+        {
+          "speedup": 2.6190379200054035,
+          "baseline_mean_time_per_keypair_ms": 4051.87624475,
+          "accelerated_mean_time_per_keypair_ms": 1547.08575,
+          "baseline_mean_miller_rabin_time_per_keypair_ms": 3930.08058875,
+          "accelerated_mean_proxy_time_per_keypair_ms": 189.714740375,
+          "accelerated_mean_miller_rabin_time_per_keypair_ms": 1241.064348875
+        },
+        {
+          "speedup": 2.5702659037950126,
+          "baseline_mean_time_per_keypair_ms": 3958.44955725,
+          "accelerated_mean_time_per_keypair_ms": 1540.093401,
+          "baseline_mean_miller_rabin_time_per_keypair_ms": 3838.606705625,
+          "accelerated_mean_proxy_time_per_keypair_ms": 188.524665125,
+          "accelerated_mean_miller_rabin_time_per_keypair_ms": 1234.906690125
+        }
+      ]
+    },
+    {
+      "rsa_bits": 4096,
+      "keypair_count": 6,
+      "repeat_count": 3,
+      "matching_keypairs": 6,
+      "saved_miller_rabin_calls": 10967,
+      "saved_miller_rabin_call_rate": 0.9129276616998252,
+      "prime_fixed_points": {
+        "verification_mode": "sympy_isprime_then_closed_form_fixed_point",
+        "confirmed_prime_count": 12,
+        "fixed_point_count": 12,
+        "fixed_point_value": 1.0
+      },
+      "baseline_total_candidates_tested": 12013,
+      "accelerated_total_candidates_tested": 12013,
+      "baseline_total_miller_rabin_calls": 12013,
+      "accelerated_total_miller_rabin_calls": 1046,
+      "accelerated_total_proxy_rejections": 10967,
+      "proxy_rejection_rate": 0.9129276616998252,
+      "speedup": {
+        "median": 2.8313693512718343,
+        "min": 2.791199344550472,
+        "max": 2.870278114940332,
+        "half_range": 0.039539385194929944
+      },
+      "baseline_mean_time_per_keypair_ms": {
+        "median": 16987.298527833333,
+        "min": 16940.328861,
+        "max": 17295.624534833332,
+        "half_range": 177.64783691666526
+      },
+      "accelerated_mean_time_per_keypair_ms": {
+        "median": 6025.766090333333,
+        "min": 5999.675923666667,
+        "max": 6069.193479166667,
+        "half_range": 34.75877775000026
+      },
+      "baseline_mean_miller_rabin_time_per_keypair_ms": {
+        "median": 16695.998808333334,
+        "min": 16656.780007333335,
+        "max": 17005.582041,
+        "half_range": 174.40101683333341
+      },
+      "accelerated_mean_proxy_time_per_keypair_ms": {
+        "median": 460.4994086666667,
+        "min": 454.9998753333333,
+        "max": 460.9585485,
+        "half_range": 2.9793365833333496
+      },
+      "accelerated_mean_miller_rabin_time_per_keypair_ms": {
+        "median": 5290.083007333333,
+        "min": 5269.4907065,
+        "max": 5332.713536,
+        "half_range": 31.611414750000222
+      },
+      "baseline_to_proxy_cost_ratio": 36.888860676322,
+      "baseline_miller_rabin_to_proxy_cost_ratio": 36.256287183245355,
+      "structural_speedup_ceiling": 11.484703632887191,
+      "realized_ceiling_fraction": 0.2465339500066876,
+      "repeat_measurements": [
+        {
+          "speedup": 2.8313693512718343,
+          "baseline_mean_time_per_keypair_ms": 16987.298527833333,
+          "accelerated_mean_time_per_keypair_ms": 5999.675923666667,
+          "baseline_mean_miller_rabin_time_per_keypair_ms": 16695.998808333334,
+          "accelerated_mean_proxy_time_per_keypair_ms": 454.9998753333333,
+          "accelerated_mean_miller_rabin_time_per_keypair_ms": 5269.4907065
+        },
+        {
+          "speedup": 2.791199344550472,
+          "baseline_mean_time_per_keypair_ms": 16940.328861,
+          "accelerated_mean_time_per_keypair_ms": 6069.193479166667,
+          "baseline_mean_miller_rabin_time_per_keypair_ms": 16656.780007333335,
+          "accelerated_mean_proxy_time_per_keypair_ms": 460.9585485,
+          "accelerated_mean_miller_rabin_time_per_keypair_ms": 5332.713536
+        },
+        {
+          "speedup": 2.870278114940332,
+          "baseline_mean_time_per_keypair_ms": 17295.624534833332,
+          "accelerated_mean_time_per_keypair_ms": 6025.766090333333,
+          "baseline_mean_miller_rabin_time_per_keypair_ms": 17005.582041,
+          "accelerated_mean_proxy_time_per_keypair_ms": 460.4994086666667,
+          "accelerated_mean_miller_rabin_time_per_keypair_ms": 5290.083007333333
+        }
+      ]
+    },
+    {
+      "rsa_bits": 8192,
+      "keypair_count": 2,
+      "repeat_count": 3,
+      "matching_keypairs": 2,
+      "saved_miller_rabin_calls": 4603,
+      "saved_miller_rabin_call_rate": 0.9183958499600958,
+      "prime_fixed_points": {
+        "verification_mode": "sympy_isprime_then_closed_form_fixed_point",
+        "confirmed_prime_count": 4,
+        "fixed_point_count": 4,
+        "fixed_point_value": 1.0
+      },
+      "baseline_total_candidates_tested": 5012,
+      "accelerated_total_candidates_tested": 5012,
+      "baseline_total_miller_rabin_calls": 5012,
+      "accelerated_total_miller_rabin_calls": 409,
+      "accelerated_total_proxy_rejections": 4603,
+      "proxy_rejection_rate": 0.9183958499600958,
+      "speedup": {
+        "median": 3.3442388510544063,
+        "min": 3.3030733929719496,
+        "max": 3.349772307411392,
+        "half_range": 0.02334945721972126
+      },
+      "baseline_mean_time_per_keypair_ms": {
+        "median": 170917.934479,
+        "min": 168494.1815205,
+        "max": 172941.828208,
+        "half_range": 2223.823343750002
+      },
+      "accelerated_mean_time_per_keypair_ms": {
+        "median": 51108.172021,
+        "min": 51011.3344375,
+        "max": 51627.935375,
+        "half_range": 308.3004687499997
+      },
+      "baseline_mean_miller_rabin_time_per_keypair_ms": {
+        "median": 168969.1079775,
+        "min": 166524.0272155,
+        "max": 170905.807348,
+        "half_range": 2190.8900662499946
+      },
+      "accelerated_mean_proxy_time_per_keypair_ms": {
+        "median": 2355.057509,
+        "min": 2349.809766,
+        "max": 2378.325847,
+        "half_range": 14.258040500000106
+      },
+      "accelerated_mean_miller_rabin_time_per_keypair_ms": {
+        "median": 46811.805732,
+        "min": 46730.289126,
+        "max": 47305.9279985,
+        "half_range": 287.81943624999985
+      },
+      "baseline_to_proxy_cost_ratio": 72.57484533852204,
+      "baseline_miller_rabin_to_proxy_cost_ratio": 71.74733836934935,
+      "structural_speedup_ceiling": 12.254278728606366,
+      "realized_ceiling_fraction": 0.2729037689707205,
+      "repeat_measurements": [
+        {
+          "speedup": 3.349772307411392,
+          "baseline_mean_time_per_keypair_ms": 172941.828208,
+          "accelerated_mean_time_per_keypair_ms": 51627.935375,
+          "baseline_mean_miller_rabin_time_per_keypair_ms": 170905.807348,
+          "accelerated_mean_proxy_time_per_keypair_ms": 2378.325847,
+          "accelerated_mean_miller_rabin_time_per_keypair_ms": 47305.9279985
+        },
+        {
+          "speedup": 3.3442388510544063,
+          "baseline_mean_time_per_keypair_ms": 170917.934479,
+          "accelerated_mean_time_per_keypair_ms": 51108.172021,
+          "baseline_mean_miller_rabin_time_per_keypair_ms": 168969.1079775,
+          "accelerated_mean_proxy_time_per_keypair_ms": 2355.057509,
+          "accelerated_mean_miller_rabin_time_per_keypair_ms": 46811.805732
+        },
+        {
+          "speedup": 3.3030733929719496,
+          "baseline_mean_time_per_keypair_ms": 168494.1815205,
+          "accelerated_mean_time_per_keypair_ms": 51011.3344375,
+          "baseline_mean_miller_rabin_time_per_keypair_ms": 166524.0272155,
+          "accelerated_mean_proxy_time_per_keypair_ms": 2349.809766,
+          "accelerated_mean_miller_rabin_time_per_keypair_ms": 46730.289126
+        }
+      ]
+    }
+  ],
+  "analysis": {
+    "evaluation_min_rsa_bits": 2048,
+    "rejection_stability_tolerance": 0.02,
+    "evaluated_rsa_bits": [
+      2048,
+      3072,
+      4096,
+      8192
+    ],
+    "rejection_band_width": 0.007975374640168953,
+    "rejection_stable": true,
+    "baseline_cost_rises": true,
+    "proxy_growth_slower_than_baseline": true,
+    "speedup_rises": true,
+    "final_step_bits": [
+      4096,
+      8192
+    ],
+    "final_step_speedup_delta": 0.512869499782572,
+    "final_step_speedup_noise_band": 0.0628888424146512,
+    "final_step_exceeds_noise": true,
+    "baseline_growth_factor": 227.5201585888981,
+    "proxy_growth_factor": 31.041116342037572,
+    "verdict": "verified",
+    "failed_checks": []
+  },
+  "reproduction_command": "python3 benchmarks/python/prefilter/structural_amplification_verifier.py --output-dir /Users/velocityworks/IdeaProjects/geodesic-prime-prefilter/benchmarks/output/python/prefilter/structural_amplification --schedule 1024:24 2048:12 3072:8 4096:6 8192:2 --repetitions 3 --evaluation-min-rsa-bits 2048 --rejection-stability-tolerance 0.02 --public-exponent 65537 --namespace cdl-structural-amplification"
+}

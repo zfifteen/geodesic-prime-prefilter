@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760">
+<rect width="100%" height="100%" fill="#fcfbf7" />
+<text x="96" y="48" font-family="Menlo, Monaco, monospace" font-size="26" fill="#1f2933">Proxy rejection stability by RSA size</text>
+<text x="96" y="74" font-family="Menlo, Monaco, monospace" font-size="14" fill="#52606d">The amplification claim needs a high rejection rate that stays inside one narrow band</text>
+<line x1="96" y1="664.00" x2="1188" y2="664.00" stroke="#d9e2ec" stroke-width="1" />
+<text x="82" y="669.00" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">90.04%</text>
+<line x1="96" y1="550.40" x2="1188" y2="550.40" stroke="#d9e2ec" stroke-width="1" />
+<text x="82" y="555.40" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">90.60%</text>
+<line x1="96" y1="436.80" x2="1188" y2="436.80" stroke="#d9e2ec" stroke-width="1" />
+<text x="82" y="441.80" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">91.16%</text>
+<line x1="96" y1="323.20" x2="1188" y2="323.20" stroke="#d9e2ec" stroke-width="1" />
+<text x="82" y="328.20" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">91.72%</text>
+<line x1="96" y1="209.60" x2="1188" y2="209.60" stroke="#d9e2ec" stroke-width="1" />
+<text x="82" y="214.60" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">92.28%</text>
+<line x1="96" y1="96.00" x2="1188" y2="96.00" stroke="#d9e2ec" stroke-width="1" />
+<text x="82" y="101.00" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">92.84%</text>
+<line x1="96" y1="664" x2="1188" y2="664" stroke="#243b53" stroke-width="1.5" />
+<line x1="96" y1="96" x2="96" y2="664" stroke="#243b53" stroke-width="1.5" />
+<rect x="96" y="299.04" width="1092.00" height="161.93" fill="#d9f2e6" opacity="0.55" />
+<polyline fill="none" stroke="#2b59c3" stroke-width="3.5" points="96.00,405.33 369.00,460.96 642.00,405.05 915.00,410.06 1188.00,299.04" />
+<circle cx="96.00" cy="405.33" r="6" fill="#2b59c3" stroke="#fcfbf7" stroke-width="2" />
+<text x="96.00" y="692.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">1024</text>
+<text x="96.00" y="712.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="12" fill="#52606d">91.32%</text>
+<circle cx="369.00" cy="460.96" r="6" fill="#2b59c3" stroke="#fcfbf7" stroke-width="2" />
+<text x="369.00" y="692.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">2048</text>
+<text x="369.00" y="712.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="12" fill="#52606d">91.04%</text>
+<circle cx="642.00" cy="405.05" r="6" fill="#2b59c3" stroke="#fcfbf7" stroke-width="2" />
+<text x="642.00" y="692.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">3072</text>
+<text x="642.00" y="712.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="12" fill="#52606d">91.32%</text>
+<circle cx="915.00" cy="410.06" r="6" fill="#2b59c3" stroke="#fcfbf7" stroke-width="2" />
+<text x="915.00" y="692.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">4096</text>
+<text x="915.00" y="712.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="12" fill="#52606d">91.29%</text>
+<circle cx="1188.00" cy="299.04" r="6" fill="#2b59c3" stroke="#fcfbf7" stroke-width="2" />
+<text x="1188.00" y="692.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">8192</text>
+<text x="1188.00" y="712.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="12" fill="#52606d">91.84%</text>
+<text x="948.00" y="128.00" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">evaluation band width: 0.798 pp</text>
+<text x="642.00" y="732" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="14" fill="#243b53">RSA modulus bits</text>
+<text x="26" y="380.00" transform="rotate(-90 26 380.00)" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="14" fill="#243b53">Proxy rejection rate</text>
+</svg>

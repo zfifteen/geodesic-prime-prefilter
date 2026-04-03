@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760">
+<rect width="100%" height="100%" fill="#fcfbf7" />
+<text x="96" y="48" font-family="Menlo, Monaco, monospace" font-size="26" fill="#1f2933">Cost separation behind structural amplification</text>
+<text x="96" y="74" font-family="Menlo, Monaco, monospace" font-size="14" fill="#52606d">Baseline cost, proxy cost, and survivor Miller-Rabin cost per keypair on a log scale</text>
+<line x1="96" y1="738.00" x2="1188" y2="738.00" stroke="#d9e2ec" stroke-width="1" />
+<text x="82" y="743.00" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">10.000</text>
+<line x1="96" y1="586.33" x2="1188" y2="586.33" stroke="#d9e2ec" stroke-width="1" />
+<text x="82" y="591.33" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">100.000</text>
+<line x1="96" y1="434.65" x2="1188" y2="434.65" stroke="#d9e2ec" stroke-width="1" />
+<text x="82" y="439.65" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">1000.000</text>
+<line x1="96" y1="282.98" x2="1188" y2="282.98" stroke="#d9e2ec" stroke-width="1" />
+<text x="82" y="287.98" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">10000.000</text>
+<line x1="96" y1="131.31" x2="1188" y2="131.31" stroke="#d9e2ec" stroke-width="1" />
+<text x="82" y="136.31" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">100000.000</text>
+<line x1="96" y1="-20.37" x2="1188" y2="-20.37" stroke="#d9e2ec" stroke-width="1" />
+<text x="82" y="-15.37" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">1000000.000</text>
+<line x1="96" y1="664" x2="1188" y2="664" stroke="#243b53" stroke-width="1.5" />
+<line x1="96" y1="96" x2="96" y2="664" stroke="#243b53" stroke-width="1.5" />
+<polyline fill="none" stroke="#8b1e3f" stroke-width="3.5" points="96.00,594.78 369.00,453.50 642.00,343.48 915.00,248.08 1188.00,96.00" />
+<polyline fill="none" stroke="#0b6e4f" stroke-width="3.5" points="96.00,664.00 369.00,604.52 642.00,544.56 915.00,485.73 1188.00,378.23" />
+<polyline fill="none" stroke="#c84c09" stroke-width="3.5" stroke-dasharray="8 6" points="96.00,661.85 369.00,526.55 642.00,420.76 915.00,324.92 1188.00,181.31" />
+<circle cx="96.00" cy="594.78" r="6" fill="#8b1e3f" stroke="#fcfbf7" stroke-width="2" />
+<circle cx="96.00" cy="664.00" r="6" fill="#0b6e4f" stroke="#fcfbf7" stroke-width="2" />
+<circle cx="96.00" cy="661.85" r="5" fill="#c84c09" stroke="#fcfbf7" stroke-width="2" />
+<text x="96.00" y="692.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">1024</text>
+<circle cx="369.00" cy="453.50" r="6" fill="#8b1e3f" stroke="#fcfbf7" stroke-width="2" />
+<circle cx="369.00" cy="604.52" r="6" fill="#0b6e4f" stroke="#fcfbf7" stroke-width="2" />
+<circle cx="369.00" cy="526.55" r="5" fill="#c84c09" stroke="#fcfbf7" stroke-width="2" />
+<text x="369.00" y="692.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">2048</text>
+<circle cx="642.00" cy="343.48" r="6" fill="#8b1e3f" stroke="#fcfbf7" stroke-width="2" />
+<circle cx="642.00" cy="544.56" r="6" fill="#0b6e4f" stroke="#fcfbf7" stroke-width="2" />
+<circle cx="642.00" cy="420.76" r="5" fill="#c84c09" stroke="#fcfbf7" stroke-width="2" />
+<text x="642.00" y="692.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">3072</text>
+<circle cx="915.00" cy="248.08" r="6" fill="#8b1e3f" stroke="#fcfbf7" stroke-width="2" />
+<circle cx="915.00" cy="485.73" r="6" fill="#0b6e4f" stroke="#fcfbf7" stroke-width="2" />
+<circle cx="915.00" cy="324.92" r="5" fill="#c84c09" stroke="#fcfbf7" stroke-width="2" />
+<text x="915.00" y="692.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">4096</text>
+<circle cx="1188.00" cy="96.00" r="6" fill="#8b1e3f" stroke="#fcfbf7" stroke-width="2" />
+<circle cx="1188.00" cy="378.23" r="6" fill="#0b6e4f" stroke="#fcfbf7" stroke-width="2" />
+<circle cx="1188.00" cy="181.31" r="5" fill="#c84c09" stroke="#fcfbf7" stroke-width="2" />
+<text x="1188.00" y="692.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">8192</text>
+<line x1="868" y1="114" x2="902" y2="114" stroke="#8b1e3f" stroke-width="3.5" />
+<text x="912" y="119" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">baseline mean time per keypair</text>
+<line x1="868" y1="138" x2="902" y2="138" stroke="#0b6e4f" stroke-width="3.5" />
+<text x="912" y="143" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">accelerated proxy mean per keypair</text>
+<line x1="868" y1="162" x2="902" y2="162" stroke="#c84c09" stroke-width="3.5" stroke-dasharray="8 6" />
+<text x="912" y="167" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">accelerated survivor MR mean per keypair</text>
+<text x="642.00" y="732" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="14" fill="#243b53">RSA modulus bits</text>
+<text x="26" y="380.00" transform="rotate(-90 26 380.00)" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="14" fill="#243b53">Mean time per keypair (ms, log scale)</text>
+</svg>

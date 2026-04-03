@@ -197,7 +197,7 @@ This expression has a clear plain-language reading.
 
 - `n` is the observed number itself
 - `κ(n)` is the divisor-curvature load carried by that number
-- `v` is a traversal rate
+- `v` is a fixed-point rate
 - `exp(v × κ(n))` is the exponential cost of carrying that load
 - `Z(n)` is what remains after that cost is applied
 
@@ -206,7 +206,7 @@ because `v` had not yet been fixed.
 
 ## The Fixed Rate
 
-The decisive step was to ask whether there is a special traversal rate that
+The decisive step was to ask whether there is a special fixed-point rate that
 makes the whole construction collapse into something exact and simple.
 
 There is.
@@ -263,7 +263,7 @@ It came from following a simple arithmetic fact step by step:
 - divisor count can be centered on the prime condition
 - divisor structure should be measured on logarithmic scale
 - the resulting load can be normalized
-- at one fixed traversal rate, the whole construction collapses exactly
+- at one fixed-point rate, the whole construction collapses exactly
 
 ## Why This Mattered To Me
 
