@@ -1,0 +1,2688 @@
+{
+  "interval": {
+    "lo": 2,
+    "hi": 1000001
+  },
+  "decision_surface": "Earlier spoilers are the only unresolved universal step once the ordered-dominance theorem has eliminated all later candidates.",
+  "gap_count": 70327,
+  "gap_with_earlier_candidates_count": 62582,
+  "theorem_eliminated_gap_count": 70327,
+  "unresolved_gap_count": 0,
+  "counterexample_gap_count": 0,
+  "earlier_candidate_count": 169021,
+  "theorem_eliminated_candidate_count": 169021,
+  "unresolved_candidate_count": 0,
+  "exact_spoiler_count": 0,
+  "winner_class_summary": [
+    {
+      "winner_divisor_count": 3,
+      "gap_count": 167
+    },
+    {
+      "winner_divisor_count": 4,
+      "gap_count": 58303
+    },
+    {
+      "winner_divisor_count": 6,
+      "gap_count": 2983
+    },
+    {
+      "winner_divisor_count": 8,
+      "gap_count": 7392
+    },
+    {
+      "winner_divisor_count": 9,
+      "gap_count": 6
+    },
+    {
+      "winner_divisor_count": 10,
+      "gap_count": 118
+    },
+    {
+      "winner_divisor_count": 12,
+      "gap_count": 820
+    },
+    {
+      "winner_divisor_count": 14,
+      "gap_count": 15
+    },
+    {
+      "winner_divisor_count": 15,
+      "gap_count": 1
+    },
+    {
+      "winner_divisor_count": 16,
+      "gap_count": 485
+    },
+    {
+      "winner_divisor_count": 18,
+      "gap_count": 4
+    },
+    {
+      "winner_divisor_count": 20,
+      "gap_count": 12
+    },
+    {
+      "winner_divisor_count": 24,
+      "gap_count": 16
+    },
+    {
+      "winner_divisor_count": 32,
+      "gap_count": 5
+    }
+  ],
+  "pair_summary": [
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 4,
+      "candidate_count": 320,
+      "theorem_eliminated_count": 320,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 8,
+      "min_winner_value": 9
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 6,
+      "candidate_count": 86,
+      "theorem_eliminated_count": 86,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 116,
+      "min_winner_value": 121
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 8,
+      "candidate_count": 284,
+      "theorem_eliminated_count": 284,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 24,
+      "min_winner_value": 25
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 10,
+      "candidate_count": 6,
+      "theorem_eliminated_count": 6,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 48,
+      "min_winner_value": 49
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 12,
+      "candidate_count": 139,
+      "theorem_eliminated_count": 139,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 525,
+      "min_winner_value": 529
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 14,
+      "candidate_count": 3,
+      "theorem_eliminated_count": 3,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 96704,
+      "min_winner_value": 96721
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 16,
+      "candidate_count": 153,
+      "theorem_eliminated_count": 153,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 120,
+      "min_winner_value": 121
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 18,
+      "candidate_count": 9,
+      "theorem_eliminated_count": 9,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 288,
+      "min_winner_value": 289
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 20,
+      "candidate_count": 13,
+      "theorem_eliminated_count": 13,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 528,
+      "min_winner_value": 529
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 24,
+      "candidate_count": 71,
+      "theorem_eliminated_count": 71,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 360,
+      "min_winner_value": 361
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 28,
+      "candidate_count": 3,
+      "theorem_eliminated_count": 3,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 960,
+      "min_winner_value": 961
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 30,
+      "candidate_count": 5,
+      "theorem_eliminated_count": 5,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 5328,
+      "min_winner_value": 5329
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 32,
+      "candidate_count": 71,
+      "theorem_eliminated_count": 71,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 840,
+      "min_winner_value": 841
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 36,
+      "candidate_count": 13,
+      "theorem_eliminated_count": 13,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 76725,
+      "min_winner_value": 76729
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 40,
+      "candidate_count": 16,
+      "theorem_eliminated_count": 16,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 1680,
+      "min_winner_value": 1681
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 42,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 9408,
+      "min_winner_value": 9409
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 44,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 259072,
+      "min_winner_value": 259081
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 48,
+      "candidate_count": 37,
+      "theorem_eliminated_count": 37,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 6240,
+      "min_winner_value": 6241
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 54,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 16128,
+      "min_winner_value": 16129
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 56,
+      "candidate_count": 8,
+      "theorem_eliminated_count": 8,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 24640,
+      "min_winner_value": 24649
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 60,
+      "candidate_count": 11,
+      "theorem_eliminated_count": 11,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 5040,
+      "min_winner_value": 5041
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 64,
+      "candidate_count": 33,
+      "theorem_eliminated_count": 33,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 11880,
+      "min_winner_value": 11881
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 72,
+      "candidate_count": 8,
+      "theorem_eliminated_count": 8,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 38808,
+      "min_winner_value": 38809
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 80,
+      "candidate_count": 13,
+      "theorem_eliminated_count": 13,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 78960,
+      "min_winner_value": 78961
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 84,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 299200,
+      "min_winner_value": 299209
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 90,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 39600,
+      "min_winner_value": 39601
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 96,
+      "candidate_count": 18,
+      "theorem_eliminated_count": 18,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 32760,
+      "min_winner_value": 32761
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 100,
+      "candidate_count": 2,
+      "theorem_eliminated_count": 2,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 418608,
+      "min_winner_value": 418609
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 112,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 863040,
+      "min_winner_value": 863041
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 120,
+      "candidate_count": 8,
+      "theorem_eliminated_count": 8,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 271440,
+      "min_winner_value": 271441
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 128,
+      "candidate_count": 6,
+      "theorem_eliminated_count": 6,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 143640,
+      "min_winner_value": 143641
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 144,
+      "candidate_count": 2,
+      "theorem_eliminated_count": 2,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 201600,
+      "min_winner_value": 201601
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 160,
+      "candidate_count": 3,
+      "theorem_eliminated_count": 3,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 591360,
+      "min_winner_value": 591361
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 168,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 982080,
+      "min_winner_value": 982081
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 192,
+      "candidate_count": 2,
+      "theorem_eliminated_count": 2,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 491400,
+      "min_winner_value": 491401
+    },
+    {
+      "winner_divisor_count": 3,
+      "earlier_divisor_count": 216,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 776160,
+      "min_winner_value": 776161
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 5,
+      "candidate_count": 5,
+      "theorem_eliminated_count": 5,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 81,
+      "min_winner_value": 82
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 6,
+      "candidate_count": 8938,
+      "theorem_eliminated_count": 8938,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 20,
+      "min_winner_value": 21
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 7,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 729,
+      "min_winner_value": 731
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 8,
+      "candidate_count": 47910,
+      "theorem_eliminated_count": 47910,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 54,
+      "min_winner_value": 55
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 9,
+      "candidate_count": 66,
+      "theorem_eliminated_count": 66,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 225,
+      "min_winner_value": 226
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 10,
+      "candidate_count": 1694,
+      "theorem_eliminated_count": 1694,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 80,
+      "min_winner_value": 82
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 11,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 1024,
+      "min_winner_value": 1027
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 12,
+      "candidate_count": 19249,
+      "theorem_eliminated_count": 19249,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 84,
+      "min_winner_value": 85
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 13,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 4096,
+      "min_winner_value": 4097
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 14,
+      "candidate_count": 435,
+      "theorem_eliminated_count": 435,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 1472,
+      "min_winner_value": 1473
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 15,
+      "candidate_count": 21,
+      "theorem_eliminated_count": 21,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 3969,
+      "min_winner_value": 3973
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 16,
+      "candidate_count": 27593,
+      "theorem_eliminated_count": 27593,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 264,
+      "min_winner_value": 265
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 18,
+      "candidate_count": 1968,
+      "theorem_eliminated_count": 1968,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 252,
+      "min_winner_value": 253
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 20,
+      "candidate_count": 3239,
+      "theorem_eliminated_count": 3239,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 648,
+      "min_winner_value": 649
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 21,
+      "candidate_count": 9,
+      "theorem_eliminated_count": 9,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 7744,
+      "min_winner_value": 7745
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 22,
+      "candidate_count": 42,
+      "theorem_eliminated_count": 42,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 5120,
+      "min_winner_value": 5123
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 24,
+      "candidate_count": 14986,
+      "theorem_eliminated_count": 14986,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 480,
+      "min_winner_value": 481
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 25,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 194481,
+      "min_winner_value": 194482
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 26,
+      "candidate_count": 11,
+      "theorem_eliminated_count": 11,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 20480,
+      "min_winner_value": 20481
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 27,
+      "candidate_count": 32,
+      "theorem_eliminated_count": 32,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 6400,
+      "min_winner_value": 6401
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 28,
+      "candidate_count": 727,
+      "theorem_eliminated_count": 727,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 4160,
+      "min_winner_value": 4162
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 30,
+      "candidate_count": 601,
+      "theorem_eliminated_count": 601,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 720,
+      "min_winner_value": 721
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 32,
+      "candidate_count": 8878,
+      "theorem_eliminated_count": 8878,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 1512,
+      "min_winner_value": 1513
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 33,
+      "candidate_count": 3,
+      "theorem_eliminated_count": 3,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 173056,
+      "min_winner_value": 173057
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 34,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 458752,
+      "min_winner_value": 458753
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 36,
+      "candidate_count": 2724,
+      "theorem_eliminated_count": 2724,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 1260,
+      "min_winner_value": 1261
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 40,
+      "candidate_count": 2035,
+      "theorem_eliminated_count": 2035,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 3024,
+      "min_winner_value": 3027
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 42,
+      "candidate_count": 141,
+      "theorem_eliminated_count": 141,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 2880,
+      "min_winner_value": 2881
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 44,
+      "candidate_count": 44,
+      "theorem_eliminated_count": 44,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 21504,
+      "min_winner_value": 21506
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 45,
+      "candidate_count": 13,
+      "theorem_eliminated_count": 13,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 19600,
+      "min_winner_value": 19601
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 48,
+      "candidate_count": 5194,
+      "theorem_eliminated_count": 5194,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 3780,
+      "min_winner_value": 3781
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 50,
+      "candidate_count": 30,
+      "theorem_eliminated_count": 30,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 22032,
+      "min_winner_value": 22033
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 52,
+      "candidate_count": 10,
+      "theorem_eliminated_count": 10,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 143360,
+      "min_winner_value": 143363
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 54,
+      "candidate_count": 237,
+      "theorem_eliminated_count": 237,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 11520,
+      "min_winner_value": 11521
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 56,
+      "candidate_count": 386,
+      "theorem_eliminated_count": 386,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 6720,
+      "min_winner_value": 6722
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 60,
+      "candidate_count": 613,
+      "theorem_eliminated_count": 613,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 10800,
+      "min_winner_value": 10801
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 63,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 968256,
+      "min_winner_value": 968257
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 64,
+      "candidate_count": 1522,
+      "theorem_eliminated_count": 1522,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 15960,
+      "min_winner_value": 15961
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 66,
+      "candidate_count": 9,
+      "theorem_eliminated_count": 9,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 156672,
+      "min_winner_value": 156673
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 70,
+      "candidate_count": 19,
+      "theorem_eliminated_count": 19,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 25920,
+      "min_winner_value": 25923
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 72,
+      "candidate_count": 1137,
+      "theorem_eliminated_count": 1137,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 10080,
+      "min_winner_value": 10081
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 75,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 219024,
+      "min_winner_value": 219027
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 78,
+      "candidate_count": 4,
+      "theorem_eliminated_count": 4,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 479232,
+      "min_winner_value": 479233
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 80,
+      "candidate_count": 488,
+      "theorem_eliminated_count": 488,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 22680,
+      "min_winner_value": 22681
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 81,
+      "candidate_count": 2,
+      "theorem_eliminated_count": 2,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 152100,
+      "min_winner_value": 152101
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 84,
+      "candidate_count": 102,
+      "theorem_eliminated_count": 102,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 44352,
+      "min_winner_value": 44353
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 88,
+      "candidate_count": 9,
+      "theorem_eliminated_count": 9,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 199680,
+      "min_winner_value": 199681
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 90,
+      "candidate_count": 57,
+      "theorem_eliminated_count": 57,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 68400,
+      "min_winner_value": 68401
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 96,
+      "candidate_count": 775,
+      "theorem_eliminated_count": 775,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 37800,
+      "min_winner_value": 37801
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 98,
+      "candidate_count": 2,
+      "theorem_eliminated_count": 2,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 233280,
+      "min_winner_value": 233281
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 99,
+      "candidate_count": 2,
+      "theorem_eliminated_count": 2,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 230400,
+      "min_winner_value": 230401
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 100,
+      "candidate_count": 23,
+      "theorem_eliminated_count": 23,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 84240,
+      "min_winner_value": 84241
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 105,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 254016,
+      "min_winner_value": 254017
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 108,
+      "candidate_count": 102,
+      "theorem_eliminated_count": 102,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 126720,
+      "min_winner_value": 126722
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 110,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 580608,
+      "min_winner_value": 580609
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 112,
+      "candidate_count": 55,
+      "theorem_eliminated_count": 55,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 87360,
+      "min_winner_value": 87361
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 120,
+      "candidate_count": 153,
+      "theorem_eliminated_count": 153,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 124740,
+      "min_winner_value": 124741
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 126,
+      "candidate_count": 7,
+      "theorem_eliminated_count": 7,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 235200,
+      "min_winner_value": 235201
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 128,
+      "candidate_count": 75,
+      "theorem_eliminated_count": 75,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 154440,
+      "min_winner_value": 154441
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 132,
+      "candidate_count": 5,
+      "theorem_eliminated_count": 5,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 322560,
+      "min_winner_value": 322561
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 140,
+      "candidate_count": 8,
+      "theorem_eliminated_count": 8,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 181440,
+      "min_winner_value": 181451
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 144,
+      "candidate_count": 100,
+      "theorem_eliminated_count": 100,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 138600,
+      "min_winner_value": 138607
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 150,
+      "candidate_count": 5,
+      "theorem_eliminated_count": 5,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 226800,
+      "min_winner_value": 226801
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 160,
+      "candidate_count": 30,
+      "theorem_eliminated_count": 30,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 166320,
+      "min_winner_value": 166321
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 162,
+      "candidate_count": 2,
+      "theorem_eliminated_count": 2,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 573300,
+      "min_winner_value": 573302
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 168,
+      "candidate_count": 12,
+      "theorem_eliminated_count": 12,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 262080,
+      "min_winner_value": 262081
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 180,
+      "candidate_count": 12,
+      "theorem_eliminated_count": 12,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 327600,
+      "min_winner_value": 327601
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 192,
+      "candidate_count": 9,
+      "theorem_eliminated_count": 9,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 582120,
+      "min_winner_value": 582121
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 210,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 907200,
+      "min_winner_value": 907201
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 216,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 856800,
+      "min_winner_value": 856802
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 224,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 665280,
+      "min_winner_value": 665281
+    },
+    {
+      "winner_divisor_count": 4,
+      "earlier_divisor_count": 240,
+      "candidate_count": 2,
+      "theorem_eliminated_count": 2,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 831600,
+      "min_winner_value": 831601
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 8,
+      "candidate_count": 2324,
+      "theorem_eliminated_count": 2324,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 602,
+      "min_winner_value": 603
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 9,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 616225,
+      "min_winner_value": 616228
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 10,
+      "candidate_count": 46,
+      "theorem_eliminated_count": 46,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 2672,
+      "min_winner_value": 2675
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 12,
+      "candidate_count": 697,
+      "theorem_eliminated_count": 697,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 2673,
+      "min_winner_value": 2675
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 14,
+      "candidate_count": 5,
+      "theorem_eliminated_count": 5,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 56128,
+      "min_winner_value": 56129
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 15,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 110224,
+      "min_winner_value": 110225
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 16,
+      "candidate_count": 1356,
+      "theorem_eliminated_count": 1356,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 1610,
+      "min_winner_value": 1611
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 18,
+      "candidate_count": 68,
+      "theorem_eliminated_count": 68,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 3675,
+      "min_winner_value": 3676
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 20,
+      "candidate_count": 123,
+      "theorem_eliminated_count": 123,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 1104,
+      "min_winner_value": 1108
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 22,
+      "candidate_count": 2,
+      "theorem_eliminated_count": 2,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 553984,
+      "min_winner_value": 553988
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 24,
+      "candidate_count": 506,
+      "theorem_eliminated_count": 506,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 9548,
+      "min_winner_value": 9549
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 26,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 954368,
+      "min_winner_value": 954373
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 28,
+      "candidate_count": 26,
+      "theorem_eliminated_count": 26,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 7104,
+      "min_winner_value": 7108
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 30,
+      "candidate_count": 22,
+      "theorem_eliminated_count": 22,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 12800,
+      "min_winner_value": 12807
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 32,
+      "candidate_count": 380,
+      "theorem_eliminated_count": 380,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 8832,
+      "min_winner_value": 8833
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 36,
+      "candidate_count": 65,
+      "theorem_eliminated_count": 65,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 11808,
+      "min_winner_value": 11809
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 40,
+      "candidate_count": 72,
+      "theorem_eliminated_count": 72,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 8424,
+      "min_winner_value": 8425
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 42,
+      "candidate_count": 2,
+      "theorem_eliminated_count": 2,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 573248,
+      "min_winner_value": 573251
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 45,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 753424,
+      "min_winner_value": 753425
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 48,
+      "candidate_count": 162,
+      "theorem_eliminated_count": 162,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 36270,
+      "min_winner_value": 36275
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 50,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 141264,
+      "min_winner_value": 141268
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 54,
+      "candidate_count": 6,
+      "theorem_eliminated_count": 6,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 25344,
+      "min_winner_value": 25348
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 55,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 640000,
+      "min_winner_value": 640001
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 56,
+      "candidate_count": 18,
+      "theorem_eliminated_count": 18,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 135744,
+      "min_winner_value": 135747
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 60,
+      "candidate_count": 23,
+      "theorem_eliminated_count": 23,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 50544,
+      "min_winner_value": 50548
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 64,
+      "candidate_count": 43,
+      "theorem_eliminated_count": 43,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 35112,
+      "min_winner_value": 35116
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 66,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 852992,
+      "min_winner_value": 852993
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 70,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 768320,
+      "min_winner_value": 768321
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 72,
+      "candidate_count": 22,
+      "theorem_eliminated_count": 22,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 36000,
+      "min_winner_value": 36004
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 80,
+      "candidate_count": 19,
+      "theorem_eliminated_count": 19,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 195888,
+      "min_winner_value": 195892
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 84,
+      "candidate_count": 3,
+      "theorem_eliminated_count": 3,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 431424,
+      "min_winner_value": 431425
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 88,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 758784,
+      "min_winner_value": 758788
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 96,
+      "candidate_count": 23,
+      "theorem_eliminated_count": 23,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 144000,
+      "min_winner_value": 144009
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 100,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 278640,
+      "min_winner_value": 278644
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 108,
+      "candidate_count": 3,
+      "theorem_eliminated_count": 3,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 556800,
+      "min_winner_value": 556804
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 112,
+      "candidate_count": 3,
+      "theorem_eliminated_count": 3,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 456000,
+      "min_winner_value": 456004
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 120,
+      "candidate_count": 3,
+      "theorem_eliminated_count": 3,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 826800,
+      "min_winner_value": 826803
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 126,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 649152,
+      "min_winner_value": 649156
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 128,
+      "candidate_count": 2,
+      "theorem_eliminated_count": 2,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 401280,
+      "min_winner_value": 401283
+    },
+    {
+      "winner_divisor_count": 6,
+      "earlier_divisor_count": 144,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 993888,
+      "min_winner_value": 993889
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 9,
+      "candidate_count": 10,
+      "theorem_eliminated_count": 10,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 441,
+      "min_winner_value": 442
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 10,
+      "candidate_count": 147,
+      "theorem_eliminated_count": 147,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 1424,
+      "min_winner_value": 1426
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 12,
+      "candidate_count": 1794,
+      "theorem_eliminated_count": 1794,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 350,
+      "min_winner_value": 351
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 14,
+      "candidate_count": 47,
+      "theorem_eliminated_count": 47,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 1088,
+      "min_winner_value": 1090
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 15,
+      "candidate_count": 2,
+      "theorem_eliminated_count": 2,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 795664,
+      "min_winner_value": 795665
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 16,
+      "candidate_count": 2310,
+      "theorem_eliminated_count": 2310,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 440,
+      "min_winner_value": 442
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 18,
+      "candidate_count": 185,
+      "theorem_eliminated_count": 185,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 5780,
+      "min_winner_value": 5781
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 20,
+      "candidate_count": 300,
+      "theorem_eliminated_count": 300,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 2000,
+      "min_winner_value": 2001
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 21,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 263169,
+      "min_winner_value": 263170
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 22,
+      "candidate_count": 2,
+      "theorem_eliminated_count": 2,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 263168,
+      "min_winner_value": 263170
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 24,
+      "candidate_count": 1241,
+      "theorem_eliminated_count": 1241,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 4640,
+      "min_winner_value": 4642
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 27,
+      "candidate_count": 4,
+      "theorem_eliminated_count": 4,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 184041,
+      "min_winner_value": 184042
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 28,
+      "candidate_count": 57,
+      "theorem_eliminated_count": 57,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 2240,
+      "min_winner_value": 2241
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 30,
+      "candidate_count": 40,
+      "theorem_eliminated_count": 40,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 8624,
+      "min_winner_value": 8626
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 32,
+      "candidate_count": 671,
+      "theorem_eliminated_count": 671,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 3080,
+      "min_winner_value": 3081
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 36,
+      "candidate_count": 220,
+      "theorem_eliminated_count": 220,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 7524,
+      "min_winner_value": 7526
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 40,
+      "candidate_count": 129,
+      "theorem_eliminated_count": 129,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 19760,
+      "min_winner_value": 19761
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 42,
+      "candidate_count": 7,
+      "theorem_eliminated_count": 7,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 147392,
+      "min_winner_value": 147394
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 44,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 349184,
+      "min_winner_value": 349185
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 45,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 336400,
+      "min_winner_value": 336401
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 48,
+      "candidate_count": 360,
+      "theorem_eliminated_count": 360,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 25760,
+      "min_winner_value": 25761
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 50,
+      "candidate_count": 2,
+      "theorem_eliminated_count": 2,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 737424,
+      "min_winner_value": 737427
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 54,
+      "candidate_count": 16,
+      "theorem_eliminated_count": 16,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 155700,
+      "min_winner_value": 155702
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 56,
+      "candidate_count": 29,
+      "theorem_eliminated_count": 29,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 40824,
+      "min_winner_value": 40826
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 60,
+      "candidate_count": 42,
+      "theorem_eliminated_count": 42,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 18144,
+      "min_winner_value": 18145
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 63,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 893025,
+      "min_winner_value": 893027
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 64,
+      "candidate_count": 82,
+      "theorem_eliminated_count": 82,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 76160,
+      "min_winner_value": 76161
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 70,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 680000,
+      "min_winner_value": 680001
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 72,
+      "candidate_count": 62,
+      "theorem_eliminated_count": 62,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 98208,
+      "min_winner_value": 98209
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 80,
+      "candidate_count": 15,
+      "theorem_eliminated_count": 15,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 80784,
+      "min_winner_value": 80785
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 84,
+      "candidate_count": 9,
+      "theorem_eliminated_count": 9,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 162624,
+      "min_winner_value": 162625
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 90,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 536400,
+      "min_winner_value": 536401
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 96,
+      "candidate_count": 37,
+      "theorem_eliminated_count": 37,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 160160,
+      "min_winner_value": 160161
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 98,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 886464,
+      "min_winner_value": 886465
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 100,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 335664,
+      "min_winner_value": 335666
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 104,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 774144,
+      "min_winner_value": 774145
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 108,
+      "candidate_count": 3,
+      "theorem_eliminated_count": 3,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 525600,
+      "min_winner_value": 525601
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 112,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 331968,
+      "min_winner_value": 331969
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 120,
+      "candidate_count": 4,
+      "theorem_eliminated_count": 4,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 547560,
+      "min_winner_value": 547562
+    },
+    {
+      "winner_divisor_count": 8,
+      "earlier_divisor_count": 144,
+      "candidate_count": 2,
+      "theorem_eliminated_count": 2,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 733824,
+      "min_winner_value": 733826
+    },
+    {
+      "winner_divisor_count": 9,
+      "earlier_divisor_count": 12,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 42434,
+      "min_winner_value": 42436
+    },
+    {
+      "winner_divisor_count": 9,
+      "earlier_divisor_count": 24,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 42435,
+      "min_winner_value": 42436
+    },
+    {
+      "winner_divisor_count": 9,
+      "earlier_divisor_count": 32,
+      "candidate_count": 2,
+      "theorem_eliminated_count": 2,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 56168,
+      "min_winner_value": 56169
+    },
+    {
+      "winner_divisor_count": 9,
+      "earlier_divisor_count": 40,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 651248,
+      "min_winner_value": 651249
+    },
+    {
+      "winner_divisor_count": 9,
+      "earlier_divisor_count": 48,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 946728,
+      "min_winner_value": 946729
+    },
+    {
+      "winner_divisor_count": 9,
+      "earlier_divisor_count": 80,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 70224,
+      "min_winner_value": 70225
+    },
+    {
+      "winner_divisor_count": 10,
+      "earlier_divisor_count": 12,
+      "candidate_count": 29,
+      "theorem_eliminated_count": 29,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 7791,
+      "min_winner_value": 7792
+    },
+    {
+      "winner_divisor_count": 10,
+      "earlier_divisor_count": 16,
+      "candidate_count": 43,
+      "theorem_eliminated_count": 43,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 7208,
+      "min_winner_value": 7209
+    },
+    {
+      "winner_divisor_count": 10,
+      "earlier_divisor_count": 18,
+      "candidate_count": 2,
+      "theorem_eliminated_count": 2,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 53775,
+      "min_winner_value": 53776
+    },
+    {
+      "winner_divisor_count": 10,
+      "earlier_divisor_count": 20,
+      "candidate_count": 5,
+      "theorem_eliminated_count": 5,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 192048,
+      "min_winner_value": 192051
+    },
+    {
+      "winner_divisor_count": 10,
+      "earlier_divisor_count": 24,
+      "candidate_count": 22,
+      "theorem_eliminated_count": 22,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 56780,
+      "min_winner_value": 56781
+    },
+    {
+      "winner_divisor_count": 10,
+      "earlier_divisor_count": 30,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 313551,
+      "min_winner_value": 313552
+    },
+    {
+      "winner_divisor_count": 10,
+      "earlier_divisor_count": 32,
+      "candidate_count": 12,
+      "theorem_eliminated_count": 12,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 101871,
+      "min_winner_value": 101872
+    },
+    {
+      "winner_divisor_count": 10,
+      "earlier_divisor_count": 36,
+      "candidate_count": 6,
+      "theorem_eliminated_count": 6,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 78650,
+      "min_winner_value": 78651
+    },
+    {
+      "winner_divisor_count": 10,
+      "earlier_divisor_count": 40,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 219375,
+      "min_winner_value": 219376
+    },
+    {
+      "winner_divisor_count": 10,
+      "earlier_divisor_count": 48,
+      "candidate_count": 3,
+      "theorem_eliminated_count": 3,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 525770,
+      "min_winner_value": 525771
+    },
+    {
+      "winner_divisor_count": 10,
+      "earlier_divisor_count": 60,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 197964,
+      "min_winner_value": 197968
+    },
+    {
+      "winner_divisor_count": 10,
+      "earlier_divisor_count": 72,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 746900,
+      "min_winner_value": 746901
+    },
+    {
+      "winner_divisor_count": 12,
+      "earlier_divisor_count": 14,
+      "candidate_count": 2,
+      "theorem_eliminated_count": 2,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 21141,
+      "min_winner_value": 21142
+    },
+    {
+      "winner_divisor_count": 12,
+      "earlier_divisor_count": 15,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 13689,
+      "min_winner_value": 13690
+    },
+    {
+      "winner_divisor_count": 12,
+      "earlier_divisor_count": 16,
+      "candidate_count": 397,
+      "theorem_eliminated_count": 397,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 1664,
+      "min_winner_value": 1665
+    },
+    {
+      "winner_divisor_count": 12,
+      "earlier_divisor_count": 18,
+      "candidate_count": 18,
+      "theorem_eliminated_count": 18,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 24548,
+      "min_winner_value": 24549
+    },
+    {
+      "winner_divisor_count": 12,
+      "earlier_divisor_count": 20,
+      "candidate_count": 39,
+      "theorem_eliminated_count": 39,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 79280,
+      "min_winner_value": 79281
+    },
+    {
+      "winner_divisor_count": 12,
+      "earlier_divisor_count": 22,
+      "candidate_count": 2,
+      "theorem_eliminated_count": 2,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 472064,
+      "min_winner_value": 472066
+    },
+    {
+      "winner_divisor_count": 12,
+      "earlier_divisor_count": 24,
+      "candidate_count": 130,
+      "theorem_eliminated_count": 130,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 21140,
+      "min_winner_value": 21142
+    },
+    {
+      "winner_divisor_count": 12,
+      "earlier_divisor_count": 28,
+      "candidate_count": 5,
+      "theorem_eliminated_count": 5,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 18368,
+      "min_winner_value": 18369
+    },
+    {
+      "winner_divisor_count": 12,
+      "earlier_divisor_count": 30,
+      "candidate_count": 4,
+      "theorem_eliminated_count": 4,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 102608,
+      "min_winner_value": 102609
+    },
+    {
+      "winner_divisor_count": 12,
+      "earlier_divisor_count": 32,
+      "candidate_count": 81,
+      "theorem_eliminated_count": 81,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 50048,
+      "min_winner_value": 50049
+    },
+    {
+      "winner_divisor_count": 12,
+      "earlier_divisor_count": 36,
+      "candidate_count": 16,
+      "theorem_eliminated_count": 16,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 84500,
+      "min_winner_value": 84501
+    },
+    {
+      "winner_divisor_count": 12,
+      "earlier_divisor_count": 40,
+      "candidate_count": 13,
+      "theorem_eliminated_count": 13,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 134288,
+      "min_winner_value": 134289
+    },
+    {
+      "winner_divisor_count": 12,
+      "earlier_divisor_count": 42,
+      "candidate_count": 2,
+      "theorem_eliminated_count": 2,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 267200,
+      "min_winner_value": 267201
+    },
+    {
+      "winner_divisor_count": 12,
+      "earlier_divisor_count": 48,
+      "candidate_count": 26,
+      "theorem_eliminated_count": 26,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 84132,
+      "min_winner_value": 84133
+    },
+    {
+      "winner_divisor_count": 12,
+      "earlier_divisor_count": 54,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 569600,
+      "min_winner_value": 569601
+    },
+    {
+      "winner_divisor_count": 12,
+      "earlier_divisor_count": 56,
+      "candidate_count": 2,
+      "theorem_eliminated_count": 2,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 784448,
+      "min_winner_value": 784449
+    },
+    {
+      "winner_divisor_count": 12,
+      "earlier_divisor_count": 60,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 220400,
+      "min_winner_value": 220401
+    },
+    {
+      "winner_divisor_count": 12,
+      "earlier_divisor_count": 64,
+      "candidate_count": 8,
+      "theorem_eliminated_count": 8,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 615230,
+      "min_winner_value": 615231
+    },
+    {
+      "winner_divisor_count": 12,
+      "earlier_divisor_count": 72,
+      "candidate_count": 5,
+      "theorem_eliminated_count": 5,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 740600,
+      "min_winner_value": 740602
+    },
+    {
+      "winner_divisor_count": 12,
+      "earlier_divisor_count": 80,
+      "candidate_count": 2,
+      "theorem_eliminated_count": 2,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 343824,
+      "min_winner_value": 343825
+    },
+    {
+      "winner_divisor_count": 12,
+      "earlier_divisor_count": 90,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 450800,
+      "min_winner_value": 450801
+    },
+    {
+      "winner_divisor_count": 12,
+      "earlier_divisor_count": 100,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 670032,
+      "min_winner_value": 670036
+    },
+    {
+      "winner_divisor_count": 12,
+      "earlier_divisor_count": 108,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 832608,
+      "min_winner_value": 832609
+    },
+    {
+      "winner_divisor_count": 14,
+      "earlier_divisor_count": 16,
+      "candidate_count": 9,
+      "theorem_eliminated_count": 9,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 488894,
+      "min_winner_value": 488896
+    },
+    {
+      "winner_divisor_count": 14,
+      "earlier_divisor_count": 24,
+      "candidate_count": 3,
+      "theorem_eliminated_count": 3,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 112575,
+      "min_winner_value": 112576
+    },
+    {
+      "winner_divisor_count": 14,
+      "earlier_divisor_count": 32,
+      "candidate_count": 2,
+      "theorem_eliminated_count": 2,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 112574,
+      "min_winner_value": 112576
+    },
+    {
+      "winner_divisor_count": 14,
+      "earlier_divisor_count": 36,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 515775,
+      "min_winner_value": 515776
+    },
+    {
+      "winner_divisor_count": 15,
+      "earlier_divisor_count": 16,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 149768,
+      "min_winner_value": 149769
+    },
+    {
+      "winner_divisor_count": 16,
+      "earlier_divisor_count": 18,
+      "candidate_count": 13,
+      "theorem_eliminated_count": 13,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 214784,
+      "min_winner_value": 214786
+    },
+    {
+      "winner_divisor_count": 16,
+      "earlier_divisor_count": 20,
+      "candidate_count": 37,
+      "theorem_eliminated_count": 37,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 21488,
+      "min_winner_value": 21489
+    },
+    {
+      "winner_divisor_count": 16,
+      "earlier_divisor_count": 24,
+      "candidate_count": 111,
+      "theorem_eliminated_count": 111,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 51428,
+      "min_winner_value": 51429
+    },
+    {
+      "winner_divisor_count": 16,
+      "earlier_divisor_count": 27,
+      "candidate_count": 2,
+      "theorem_eliminated_count": 2,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 74529,
+      "min_winner_value": 74530
+    },
+    {
+      "winner_divisor_count": 16,
+      "earlier_divisor_count": 28,
+      "candidate_count": 4,
+      "theorem_eliminated_count": 4,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 274833,
+      "min_winner_value": 274834
+    },
+    {
+      "winner_divisor_count": 16,
+      "earlier_divisor_count": 30,
+      "candidate_count": 4,
+      "theorem_eliminated_count": 4,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 107600,
+      "min_winner_value": 107601
+    },
+    {
+      "winner_divisor_count": 16,
+      "earlier_divisor_count": 32,
+      "candidate_count": 56,
+      "theorem_eliminated_count": 56,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 58310,
+      "min_winner_value": 58312
+    },
+    {
+      "winner_divisor_count": 16,
+      "earlier_divisor_count": 36,
+      "candidate_count": 14,
+      "theorem_eliminated_count": 14,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 266684,
+      "min_winner_value": 266685
+    },
+    {
+      "winner_divisor_count": 16,
+      "earlier_divisor_count": 40,
+      "candidate_count": 13,
+      "theorem_eliminated_count": 13,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 157520,
+      "min_winner_value": 157521
+    },
+    {
+      "winner_divisor_count": 16,
+      "earlier_divisor_count": 42,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 962624,
+      "min_winner_value": 962626
+    },
+    {
+      "winner_divisor_count": 16,
+      "earlier_divisor_count": 48,
+      "candidate_count": 14,
+      "theorem_eliminated_count": 14,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 63800,
+      "min_winner_value": 63801
+    },
+    {
+      "winner_divisor_count": 16,
+      "earlier_divisor_count": 52,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 487424,
+      "min_winner_value": 487426
+    },
+    {
+      "winner_divisor_count": 16,
+      "earlier_divisor_count": 54,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 935900,
+      "min_winner_value": 935901
+    },
+    {
+      "winner_divisor_count": 16,
+      "earlier_divisor_count": 56,
+      "candidate_count": 2,
+      "theorem_eliminated_count": 2,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 616640,
+      "min_winner_value": 616641
+    },
+    {
+      "winner_divisor_count": 16,
+      "earlier_divisor_count": 60,
+      "candidate_count": 3,
+      "theorem_eliminated_count": 3,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 295568,
+      "min_winner_value": 295570
+    },
+    {
+      "winner_divisor_count": 16,
+      "earlier_divisor_count": 64,
+      "candidate_count": 3,
+      "theorem_eliminated_count": 3,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 211640,
+      "min_winner_value": 211641
+    },
+    {
+      "winner_divisor_count": 16,
+      "earlier_divisor_count": 72,
+      "candidate_count": 6,
+      "theorem_eliminated_count": 6,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 86240,
+      "min_winner_value": 86241
+    },
+    {
+      "winner_divisor_count": 16,
+      "earlier_divisor_count": 80,
+      "candidate_count": 3,
+      "theorem_eliminated_count": 3,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 138320,
+      "min_winner_value": 138321
+    },
+    {
+      "winner_divisor_count": 18,
+      "earlier_divisor_count": 24,
+      "candidate_count": 5,
+      "theorem_eliminated_count": 5,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 210824,
+      "min_winner_value": 210825
+    },
+    {
+      "winner_divisor_count": 18,
+      "earlier_divisor_count": 36,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 554300,
+      "min_winner_value": 554301
+    },
+    {
+      "winner_divisor_count": 20,
+      "earlier_divisor_count": 24,
+      "candidate_count": 5,
+      "theorem_eliminated_count": 5,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 122450,
+      "min_winner_value": 122451
+    },
+    {
+      "winner_divisor_count": 20,
+      "earlier_divisor_count": 28,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 911168,
+      "min_winner_value": 911169
+    },
+    {
+      "winner_divisor_count": 20,
+      "earlier_divisor_count": 32,
+      "candidate_count": 4,
+      "theorem_eliminated_count": 4,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 260414,
+      "min_winner_value": 260415
+    },
+    {
+      "winner_divisor_count": 20,
+      "earlier_divisor_count": 40,
+      "candidate_count": 2,
+      "theorem_eliminated_count": 2,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 702351,
+      "min_winner_value": 702352
+    },
+    {
+      "winner_divisor_count": 24,
+      "earlier_divisor_count": 32,
+      "candidate_count": 5,
+      "theorem_eliminated_count": 5,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 222110,
+      "min_winner_value": 222111
+    },
+    {
+      "winner_divisor_count": 24,
+      "earlier_divisor_count": 48,
+      "candidate_count": 2,
+      "theorem_eliminated_count": 2,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 494648,
+      "min_winner_value": 494649
+    },
+    {
+      "winner_divisor_count": 32,
+      "earlier_divisor_count": 36,
+      "candidate_count": 1,
+      "theorem_eliminated_count": 1,
+      "unresolved_count": 0,
+      "exact_spoiler_count": 0,
+      "min_earlier_value": 824228,
+      "min_winner_value": 824229
+    }
+  ],
+  "unresolved_examples": [],
+  "counterexample_examples": []
+}

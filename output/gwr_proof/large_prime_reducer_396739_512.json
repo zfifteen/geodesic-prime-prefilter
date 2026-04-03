@@ -1,0 +1,3080 @@
+{
+  "proof_note_target": "Route B exact base surface plus fixed large-prime reducer",
+  "small_prime_surface": {
+    "interval": {
+      "lo": 2,
+      "hi": 396740
+    },
+    "gap_count": 29830,
+    "exact_spoiler_count": 0,
+    "unresolved_candidate_count": 0,
+    "counterexample_gap_count": 0,
+    "unresolved_gap_count": 0
+  },
+  "large_prime_table": {
+    "prime_threshold": 396739,
+    "fixed_large_prime_factor": 1.000240704655167,
+    "max_divisor_class": 512,
+    "row_count": 509,
+    "unresolved_row_count": 0,
+    "all_rows_eliminated": true,
+    "rows": [
+      {
+        "earlier_divisor_count": 4,
+        "minimal_earlier_value": 6,
+        "worst_case_threshold": 1.000240704655167,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 5,
+        "minimal_earlier_value": 16,
+        "worst_case_threshold": 1.0004814672490647,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 6,
+        "minimal_earlier_value": 12,
+        "worst_case_threshold": 1.0007222877956399,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 7,
+        "minimal_earlier_value": 64,
+        "worst_case_threshold": 1.0009631663088416,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 8,
+        "minimal_earlier_value": 24,
+        "worst_case_threshold": 1.0012041028026226,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 9,
+        "minimal_earlier_value": 36,
+        "worst_case_threshold": 1.0014450972909394,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 10,
+        "minimal_earlier_value": 48,
+        "worst_case_threshold": 1.0016861497877514,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 11,
+        "minimal_earlier_value": 1024,
+        "worst_case_threshold": 1.0019272603070217,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 12,
+        "minimal_earlier_value": 60,
+        "worst_case_threshold": 1.0021684288627162,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 13,
+        "minimal_earlier_value": 4096,
+        "worst_case_threshold": 1.0024096554688047,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 14,
+        "minimal_earlier_value": 192,
+        "worst_case_threshold": 1.0026509401392603,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 15,
+        "minimal_earlier_value": 144,
+        "worst_case_threshold": 1.0028922828880593,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 16,
+        "minimal_earlier_value": 120,
+        "worst_case_threshold": 1.0031336837291813,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 17,
+        "minimal_earlier_value": 65536,
+        "worst_case_threshold": 1.0033751426766098,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 18,
+        "minimal_earlier_value": 180,
+        "worst_case_threshold": 1.0036166597443308,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 19,
+        "minimal_earlier_value": 262144,
+        "worst_case_threshold": 1.0038582349463343,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 20,
+        "minimal_earlier_value": 240,
+        "worst_case_threshold": 1.0040998682966136,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 21,
+        "minimal_earlier_value": 576,
+        "worst_case_threshold": 1.004341559809165,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 22,
+        "minimal_earlier_value": 3072,
+        "worst_case_threshold": 1.0045833094979886,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 23,
+        "minimal_earlier_value": 4194304,
+        "worst_case_threshold": 1.0048251173770877,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 24,
+        "minimal_earlier_value": 360,
+        "worst_case_threshold": 1.005066983460469,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 25,
+        "minimal_earlier_value": 1296,
+        "worst_case_threshold": 1.0053089077621424,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 26,
+        "minimal_earlier_value": 12288,
+        "worst_case_threshold": 1.0055508902961217,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 27,
+        "minimal_earlier_value": 900,
+        "worst_case_threshold": 1.005792931076423,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 28,
+        "minimal_earlier_value": 960,
+        "worst_case_threshold": 1.006035030117067,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 29,
+        "minimal_earlier_value": 268435456,
+        "worst_case_threshold": 1.0062771874320773,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 30,
+        "minimal_earlier_value": 720,
+        "worst_case_threshold": 1.0065194030354805,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 31,
+        "minimal_earlier_value": 1073741824,
+        "worst_case_threshold": 1.006761676941307,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 32,
+        "minimal_earlier_value": 840,
+        "worst_case_threshold": 1.0070040091635903,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 33,
+        "minimal_earlier_value": 9216,
+        "worst_case_threshold": 1.0072463997163676,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 34,
+        "minimal_earlier_value": 196608,
+        "worst_case_threshold": 1.0074888486136795,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 35,
+        "minimal_earlier_value": 5184,
+        "worst_case_threshold": 1.0077313558695695,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 36,
+        "minimal_earlier_value": 1260,
+        "worst_case_threshold": 1.0079739214980852,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 37,
+        "minimal_earlier_value": 68719476736,
+        "worst_case_threshold": 1.0082165455132766,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 38,
+        "minimal_earlier_value": 786432,
+        "worst_case_threshold": 1.008459227929198,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 39,
+        "minimal_earlier_value": 36864,
+        "worst_case_threshold": 1.0087019687599064,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 40,
+        "minimal_earlier_value": 1680,
+        "worst_case_threshold": 1.008944768019463,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 41,
+        "minimal_earlier_value": 1099511627776,
+        "worst_case_threshold": 1.0091876257219314,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 42,
+        "minimal_earlier_value": 2880,
+        "worst_case_threshold": 1.0094305418813796,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 43,
+        "minimal_earlier_value": 4398046511104,
+        "worst_case_threshold": 1.0096735165118782,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 44,
+        "minimal_earlier_value": 15360,
+        "worst_case_threshold": 1.0099165496275013,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 45,
+        "minimal_earlier_value": 3600,
+        "worst_case_threshold": 1.0101596412423266,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 46,
+        "minimal_earlier_value": 12582912,
+        "worst_case_threshold": 1.0104027913704354,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 47,
+        "minimal_earlier_value": 70368744177664,
+        "worst_case_threshold": 1.0106460000259119,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 48,
+        "minimal_earlier_value": 2520,
+        "worst_case_threshold": 1.010889267222844,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 49,
+        "minimal_earlier_value": 46656,
+        "worst_case_threshold": 1.0111325929753228,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 50,
+        "minimal_earlier_value": 6480,
+        "worst_case_threshold": 1.0113759772974429,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 51,
+        "minimal_earlier_value": 589824,
+        "worst_case_threshold": 1.0116194202033024,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 52,
+        "minimal_earlier_value": 61440,
+        "worst_case_threshold": 1.0118629217070025,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 53,
+        "minimal_earlier_value": 4503599627370496,
+        "worst_case_threshold": 1.0121064818226482,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 54,
+        "minimal_earlier_value": 6300,
+        "worst_case_threshold": 1.0123501005643476,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 55,
+        "minimal_earlier_value": 82944,
+        "worst_case_threshold": 1.012593777946212,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 56,
+        "minimal_earlier_value": 6720,
+        "worst_case_threshold": 1.0128375139823567,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 57,
+        "minimal_earlier_value": 2359296,
+        "worst_case_threshold": 1.0130813086869,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 58,
+        "minimal_earlier_value": 805306368,
+        "worst_case_threshold": 1.0133251620739634,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 59,
+        "minimal_earlier_value": 288230376151711744,
+        "worst_case_threshold": 1.0135690741576724,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 60,
+        "minimal_earlier_value": 5040,
+        "worst_case_threshold": 1.0138130449521554,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 61,
+        "minimal_earlier_value": 1152921504606846976,
+        "worst_case_threshold": 1.0140570744715443,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 62,
+        "minimal_earlier_value": 3221225472,
+        "worst_case_threshold": 1.0143011627299745,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 63,
+        "minimal_earlier_value": 14400,
+        "worst_case_threshold": 1.0145453097415849,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 64,
+        "minimal_earlier_value": 7560,
+        "worst_case_threshold": 1.0147895155205173,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 65,
+        "minimal_earlier_value": 331776,
+        "worst_case_threshold": 1.0150337800809177,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 66,
+        "minimal_earlier_value": 46080,
+        "worst_case_threshold": 1.015278103436935,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 67,
+        "minimal_earlier_value": 73786976294838206464,
+        "worst_case_threshold": 1.0155224856027212,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 68,
+        "minimal_earlier_value": 983040,
+        "worst_case_threshold": 1.0157669265924325,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 69,
+        "minimal_earlier_value": 37748736,
+        "worst_case_threshold": 1.0160114264202278,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 70,
+        "minimal_earlier_value": 25920,
+        "worst_case_threshold": 1.01625598510027,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 71,
+        "minimal_earlier_value": 1180591620717411303424,
+        "worst_case_threshold": 1.0165006026467247,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 72,
+        "minimal_earlier_value": 10080,
+        "worst_case_threshold": 1.0167452790737619,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 73,
+        "minimal_earlier_value": 4722366482869645213696,
+        "worst_case_threshold": 1.016990014395554,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 74,
+        "minimal_earlier_value": 206158430208,
+        "worst_case_threshold": 1.017234808626277,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 75,
+        "minimal_earlier_value": 32400,
+        "worst_case_threshold": 1.0174796617801112,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 76,
+        "minimal_earlier_value": 3932160,
+        "worst_case_threshold": 1.0177245738712393,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 77,
+        "minimal_earlier_value": 746496,
+        "worst_case_threshold": 1.017969544913848,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 78,
+        "minimal_earlier_value": 184320,
+        "worst_case_threshold": 1.0182145749221267,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 79,
+        "minimal_earlier_value": 302231454903657293676544,
+        "worst_case_threshold": 1.0184596639102694,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 80,
+        "minimal_earlier_value": 15120,
+        "worst_case_threshold": 1.0187048118924722,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 81,
+        "minimal_earlier_value": 44100,
+        "worst_case_threshold": 1.0189500188829357,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 82,
+        "minimal_earlier_value": 3298534883328,
+        "worst_case_threshold": 1.0191952848958632,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 83,
+        "minimal_earlier_value": 4835703278458516698824704,
+        "worst_case_threshold": 1.0194406099454618,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 84,
+        "minimal_earlier_value": 20160,
+        "worst_case_threshold": 1.019685994045942,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 85,
+        "minimal_earlier_value": 5308416,
+        "worst_case_threshold": 1.0199314372115171,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 86,
+        "minimal_earlier_value": 13194139533312,
+        "worst_case_threshold": 1.020176939456405,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 87,
+        "minimal_earlier_value": 2415919104,
+        "worst_case_threshold": 1.0204225007948262,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 88,
+        "minimal_earlier_value": 107520,
+        "worst_case_threshold": 1.0206681212410045,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 89,
+        "minimal_earlier_value": 309485009821345068724781056,
+        "worst_case_threshold": 1.0209138008091678,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 90,
+        "minimal_earlier_value": 25200,
+        "worst_case_threshold": 1.0211595395135467,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 91,
+        "minimal_earlier_value": 2985984,
+        "worst_case_threshold": 1.0214053373683756,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 92,
+        "minimal_earlier_value": 62914560,
+        "worst_case_threshold": 1.0216511943878925,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 93,
+        "minimal_earlier_value": 9663676416,
+        "worst_case_threshold": 1.0218971105863386,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 94,
+        "minimal_earlier_value": 211106232532992,
+        "worst_case_threshold": 1.0221430859779583,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 95,
+        "minimal_earlier_value": 21233664,
+        "worst_case_threshold": 1.0223891205769997,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 96,
+        "minimal_earlier_value": 27720,
+        "worst_case_threshold": 1.0226352143977147,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 97,
+        "minimal_earlier_value": 79228162514264337593543950336,
+        "worst_case_threshold": 1.0228813674543578,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 98,
+        "minimal_earlier_value": 233280,
+        "worst_case_threshold": 1.0231275797611876,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 99,
+        "minimal_earlier_value": 230400,
+        "worst_case_threshold": 1.0233738513324657,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 100,
+        "minimal_earlier_value": 45360,
+        "worst_case_threshold": 1.0236201821824575,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 101,
+        "minimal_earlier_value": 1267650600228229401496703205376,
+        "worst_case_threshold": 1.0238665723254317,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 102,
+        "minimal_earlier_value": 2949120,
+        "worst_case_threshold": 1.0241130217756602,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 103,
+        "minimal_earlier_value": 5070602400912917605986812821504,
+        "worst_case_threshold": 1.0243595305474187,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 104,
+        "minimal_earlier_value": 430080,
+        "worst_case_threshold": 1.0246060986549859,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 105,
+        "minimal_earlier_value": 129600,
+        "worst_case_threshold": 1.0248527261126446,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 106,
+        "minimal_earlier_value": 13510798882111488,
+        "worst_case_threshold": 1.0250994129346804,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 107,
+        "minimal_earlier_value": 81129638414606681695789005144064,
+        "worst_case_threshold": 1.0253461591353825,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 108,
+        "minimal_earlier_value": 50400,
+        "worst_case_threshold": 1.025592964729044,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 109,
+        "minimal_earlier_value": 324518553658426726783156020576256,
+        "worst_case_threshold": 1.0258398297299607,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 110,
+        "minimal_earlier_value": 414720,
+        "worst_case_threshold": 1.0260867541524323,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 111,
+        "minimal_earlier_value": 618475290624,
+        "worst_case_threshold": 1.026333738010762,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 112,
+        "minimal_earlier_value": 60480,
+        "worst_case_threshold": 1.026580781319256,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 113,
+        "minimal_earlier_value": 5192296858534827628530496329220096,
+        "worst_case_threshold": 1.0268278840922245,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 114,
+        "minimal_earlier_value": 11796480,
+        "worst_case_threshold": 1.0270750463439806,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 115,
+        "minimal_earlier_value": 339738624,
+        "worst_case_threshold": 1.0273222680888414,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 116,
+        "minimal_earlier_value": 4026531840,
+        "worst_case_threshold": 1.027569549341127,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 117,
+        "minimal_earlier_value": 921600,
+        "worst_case_threshold": 1.027816890115161,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 118,
+        "minimal_earlier_value": 864691128455135232,
+        "worst_case_threshold": 1.028064290425271,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 119,
+        "minimal_earlier_value": 47775744,
+        "worst_case_threshold": 1.0283117502857873,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 120,
+        "minimal_earlier_value": 55440,
+        "worst_case_threshold": 1.0285592697110437,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 121,
+        "minimal_earlier_value": 60466176,
+        "worst_case_threshold": 1.0288068487153783,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 122,
+        "minimal_earlier_value": 3458764513820540928,
+        "worst_case_threshold": 1.0290544873131318,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 123,
+        "minimal_earlier_value": 9895604649984,
+        "worst_case_threshold": 1.0293021855186484,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 124,
+        "minimal_earlier_value": 16106127360,
+        "worst_case_threshold": 1.0295499433462763,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 125,
+        "minimal_earlier_value": 810000,
+        "worst_case_threshold": 1.0297977608103663,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 126,
+        "minimal_earlier_value": 100800,
+        "worst_case_threshold": 1.030045637925274,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 127,
+        "minimal_earlier_value": 85070591730234615865843651857942052864,
+        "worst_case_threshold": 1.030293574705357,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 128,
+        "minimal_earlier_value": 83160,
+        "worst_case_threshold": 1.030541571164977,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 129,
+        "minimal_earlier_value": 39582418599936,
+        "worst_case_threshold": 1.0307896273184995,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 130,
+        "minimal_earlier_value": 1658880,
+        "worst_case_threshold": 1.0310377431802928,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 131,
+        "minimal_earlier_value": 1361129467683753853853498429727072845824,
+        "worst_case_threshold": 1.031285918764729,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 132,
+        "minimal_earlier_value": 322560,
+        "worst_case_threshold": 1.0315341540861838,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 133,
+        "minimal_earlier_value": 191102976,
+        "worst_case_threshold": 1.031782449159036,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 134,
+        "minimal_earlier_value": 221360928884514619392,
+        "worst_case_threshold": 1.032030803997668,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 135,
+        "minimal_earlier_value": 176400,
+        "worst_case_threshold": 1.032279218616466,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 136,
+        "minimal_earlier_value": 6881280,
+        "worst_case_threshold": 1.032527693029819,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 137,
+        "minimal_earlier_value": 87112285931760246646623899502532662132736,
+        "worst_case_threshold": 1.03277622725212,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 138,
+        "minimal_earlier_value": 188743680,
+        "worst_case_threshold": 1.0330248212977653,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 139,
+        "minimal_earlier_value": 348449143727040986586495598010130648530944,
+        "worst_case_threshold": 1.0332734751811545,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 140,
+        "minimal_earlier_value": 181440,
+        "worst_case_threshold": 1.0335221889166912,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 141,
+        "minimal_earlier_value": 633318697598976,
+        "worst_case_threshold": 1.0337709625187816,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 142,
+        "minimal_earlier_value": 3541774862152233910272,
+        "worst_case_threshold": 1.0340197960018365,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 143,
+        "minimal_earlier_value": 241864704,
+        "worst_case_threshold": 1.0342686893802688,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 144,
+        "minimal_earlier_value": 110880,
+        "worst_case_threshold": 1.0345176426684959,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 145,
+        "minimal_earlier_value": 21743271936,
+        "worst_case_threshold": 1.0347666558809385,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 146,
+        "minimal_earlier_value": 14167099448608935641088,
+        "worst_case_threshold": 1.0350157290320205,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 147,
+        "minimal_earlier_value": 1166400,
+        "worst_case_threshold": 1.0352648621361695,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 148,
+        "minimal_earlier_value": 1030792151040,
+        "worst_case_threshold": 1.0355140552078164,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 149,
+        "minimal_earlier_value": 356811923176489970264571492362373784095686656,
+        "worst_case_threshold": 1.0357633082613957,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 150,
+        "minimal_earlier_value": 226800,
+        "worst_case_threshold": 1.0360126213113454,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 151,
+        "minimal_earlier_value": 1427247692705959881058285969449495136382746624,
+        "worst_case_threshold": 1.0362619943721065,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 152,
+        "minimal_earlier_value": 27525120,
+        "worst_case_threshold": 1.0365114274581246,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 153,
+        "minimal_earlier_value": 14745600,
+        "worst_case_threshold": 1.0367609205838473,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 154,
+        "minimal_earlier_value": 3732480,
+        "worst_case_threshold": 1.0370104737637271,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 155,
+        "minimal_earlier_value": 86973087744,
+        "worst_case_threshold": 1.0372600870122188,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 156,
+        "minimal_earlier_value": 1290240,
+        "worst_case_threshold": 1.0375097603437815,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 157,
+        "minimal_earlier_value": 91343852333181432387730302044767688728495783936,
+        "worst_case_threshold": 1.0377594937728774,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 158,
+        "minimal_earlier_value": 906694364710971881029632,
+        "worst_case_threshold": 1.0380092873139721,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 159,
+        "minimal_earlier_value": 40532396646334464,
+        "worst_case_threshold": 1.038259140981535,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 160,
+        "minimal_earlier_value": 166320,
+        "worst_case_threshold": 1.0385090547900389,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 161,
+        "minimal_earlier_value": 3057647616,
+        "worst_case_threshold": 1.0387590287539599,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 162,
+        "minimal_earlier_value": 352800,
+        "worst_case_threshold": 1.0390090628877775,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 163,
+        "minimal_earlier_value": 5846006549323611672814739330865132078623730171904,
+        "worst_case_threshold": 1.0392591572059753,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 164,
+        "minimal_earlier_value": 16492674416640,
+        "worst_case_threshold": 1.0395093117230396,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 165,
+        "minimal_earlier_value": 2073600,
+        "worst_case_threshold": 1.0397595264534607,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 166,
+        "minimal_earlier_value": 14507109835375550096474112,
+        "worst_case_threshold": 1.040009801411732,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 167,
+        "minimal_earlier_value": 93536104789177786765035829293842113257979682750464,
+        "worst_case_threshold": 1.0402601366123512,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 168,
+        "minimal_earlier_value": 221760,
+        "worst_case_threshold": 1.0405105320698183,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 169,
+        "minimal_earlier_value": 2176782336,
+        "worst_case_threshold": 1.0407609877986377,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 170,
+        "minimal_earlier_value": 26542080,
+        "worst_case_threshold": 1.041011503813317,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 171,
+        "minimal_earlier_value": 58982400,
+        "worst_case_threshold": 1.041262080128367,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 172,
+        "minimal_earlier_value": 65970697666560,
+        "worst_case_threshold": 1.0415127167583027,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 173,
+        "minimal_earlier_value": 5986310706507378352962293074805895248510699696029696,
+        "worst_case_threshold": 1.041763413717642,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 174,
+        "minimal_earlier_value": 12079595520,
+        "worst_case_threshold": 1.0420141710209063,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 175,
+        "minimal_earlier_value": 3240000,
+        "worst_case_threshold": 1.042264988682621,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 176,
+        "minimal_earlier_value": 967680,
+        "worst_case_threshold": 1.0425158667173144,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 177,
+        "minimal_earlier_value": 2594073385365405696,
+        "worst_case_threshold": 1.0427668051395187,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 178,
+        "minimal_earlier_value": 928455029464035206174343168,
+        "worst_case_threshold": 1.0430178039637692,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 179,
+        "minimal_earlier_value": 383123885216472214589586756787577295904684780545900544,
+        "worst_case_threshold": 1.0432688632046052,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 180,
+        "minimal_earlier_value": 277200,
+        "worst_case_threshold": 1.0435199828765693,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 181,
+        "minimal_earlier_value": 1532495540865888858358347027150309183618739122183602176,
+        "worst_case_threshold": 1.0437711629942072,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 182,
+        "minimal_earlier_value": 14929920,
+        "worst_case_threshold": 1.044022403572069,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 183,
+        "minimal_earlier_value": 10376293541461622784,
+        "worst_case_threshold": 1.0442737046247073,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 184,
+        "minimal_earlier_value": 440401920,
+        "worst_case_threshold": 1.044525066166679,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 185,
+        "minimal_earlier_value": 5566277615616,
+        "worst_case_threshold": 1.0447764882125437,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 186,
+        "minimal_earlier_value": 48318382080,
+        "worst_case_threshold": 1.0450279707768655,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 187,
+        "minimal_earlier_value": 3869835264,
+        "worst_case_threshold": 1.045279513874211,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 188,
+        "minimal_earlier_value": 1055531162664960,
+        "worst_case_threshold": 1.045531117519151,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 189,
+        "minimal_earlier_value": 705600,
+        "worst_case_threshold": 1.04578278172626,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 190,
+        "minimal_earlier_value": 106168320,
+        "worst_case_threshold": 1.0460345065101146,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 191,
+        "minimal_earlier_value": 1569275433846670190958947355801916604025588861116008628224,
+        "worst_case_threshold": 1.0462862918852969,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 192,
+        "minimal_earlier_value": 332640,
+        "worst_case_threshold": 1.0465381378663912,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 193,
+        "minimal_earlier_value": 6277101735386680763835789423207666416102355444464034512896,
+        "worst_case_threshold": 1.0467900444679852,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 194,
+        "minimal_earlier_value": 237684487542793012780631851008,
+        "worst_case_threshold": 1.047042011704671,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 195,
+        "minimal_earlier_value": 8294400,
+        "worst_case_threshold": 1.0472940395910437,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 196,
+        "minimal_earlier_value": 1632960,
+        "worst_case_threshold": 1.0475461281417018,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 197,
+        "minimal_earlier_value": 100433627766186892221372630771322662657637687111424552206336,
+        "worst_case_threshold": 1.0477982773712475,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 198,
+        "minimal_earlier_value": 1612800,
+        "worst_case_threshold": 1.0480504872942866,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 199,
+        "minimal_earlier_value": 401734511064747568885490523085290650630550748445698208825344,
+        "worst_case_threshold": 1.0483027579254283,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 200,
+        "minimal_earlier_value": 498960,
+        "worst_case_threshold": 1.0485550892792852,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 201,
+        "minimal_earlier_value": 664082786653543858176,
+        "worst_case_threshold": 1.0488074813704737,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 202,
+        "minimal_earlier_value": 3802951800684688204490109616128,
+        "worst_case_threshold": 1.0490599342136135,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 203,
+        "minimal_earlier_value": 195689447424,
+        "worst_case_threshold": 1.0493124478233278,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 204,
+        "minimal_earlier_value": 20643840,
+        "worst_case_threshold": 1.0495650222142434,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 205,
+        "minimal_earlier_value": 89060441849856,
+        "worst_case_threshold": 1.0498176574009908,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 206,
+        "minimal_earlier_value": 15211807202738752817960438464512,
+        "worst_case_threshold": 1.0500703533982036,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 207,
+        "minimal_earlier_value": 943718400,
+        "worst_case_threshold": 1.0503231102205193,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 208,
+        "minimal_earlier_value": 3870720,
+        "worst_case_threshold": 1.0505759278825788,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 209,
+        "minimal_earlier_value": 15479341056,
+        "worst_case_threshold": 1.0508288063990263,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 210,
+        "minimal_earlier_value": 907200,
+        "worst_case_threshold": 1.05108174578451,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 211,
+        "minimal_earlier_value": 1645504557321206042154969182557350504982735865633579863348609024,
+        "worst_case_threshold": 1.0513347460536813,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 212,
+        "minimal_earlier_value": 67553994410557440,
+        "worst_case_threshold": 1.0515878072211953,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 213,
+        "minimal_earlier_value": 10625324586456701730816,
+        "worst_case_threshold": 1.0518409293017101,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 214,
+        "minimal_earlier_value": 243388915243820045087367015432192,
+        "worst_case_threshold": 1.0520941123098881,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 215,
+        "minimal_earlier_value": 356241767399424,
+        "worst_case_threshold": 1.0523473562603949,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 216,
+        "minimal_earlier_value": 554400,
+        "worst_case_threshold": 1.0526006611678993,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 217,
+        "minimal_earlier_value": 782757789696,
+        "worst_case_threshold": 1.052854027047074,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 218,
+        "minimal_earlier_value": 973555660975280180349468061728768,
+        "worst_case_threshold": 1.0531074539125955,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 219,
+        "minimal_earlier_value": 42501298345826806923264,
+        "worst_case_threshold": 1.0533609417791432,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 220,
+        "minimal_earlier_value": 2903040,
+        "worst_case_threshold": 1.0536144906614004,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 221,
+        "minimal_earlier_value": 34828517376,
+        "worst_case_threshold": 1.053868100574054,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 222,
+        "minimal_earlier_value": 3092376453120,
+        "worst_case_threshold": 1.054121771531794,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 223,
+        "minimal_earlier_value": 6739986666787659948666753771754907668409286105635143120275902562304,
+        "worst_case_threshold": 1.0543755035493145,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 224,
+        "minimal_earlier_value": 665280,
+        "worst_case_threshold": 1.0546292966413129,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 225,
+        "minimal_earlier_value": 1587600,
+        "worst_case_threshold": 1.0548831508224898,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 226,
+        "minimal_earlier_value": 15576890575604482885591488987660288,
+        "worst_case_threshold": 1.0551370661075499,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 227,
+        "minimal_earlier_value": 107839786668602559178668060348078522694548577690162289924414440996864,
+        "worst_case_threshold": 1.0553910425112012,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 228,
+        "minimal_earlier_value": 82575360,
+        "worst_case_threshold": 1.055645080048155,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 229,
+        "minimal_earlier_value": 431359146674410236714672241392314090778194310760649159697657763987456,
+        "worst_case_threshold": 1.0558991787331267,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 230,
+        "minimal_earlier_value": 1698693120,
+        "worst_case_threshold": 1.0561533385808346,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 231,
+        "minimal_earlier_value": 18662400,
+        "worst_case_threshold": 1.0564075596060012,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 232,
+        "minimal_earlier_value": 28185722880,
+        "worst_case_threshold": 1.0566618418233518,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 233,
+        "minimal_earlier_value": 6901746346790563787434755862277025452451108972170386555162524223799296,
+        "worst_case_threshold": 1.0569161852476159,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 234,
+        "minimal_earlier_value": 6451200,
+        "worst_case_threshold": 1.0571705898935262,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 235,
+        "minimal_earlier_value": 5699868278390784,
+        "worst_case_threshold": 1.0574250557758191,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 236,
+        "minimal_earlier_value": 4323455642275676160,
+        "worst_case_threshold": 1.0576795829092345,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 237,
+        "minimal_earlier_value": 2720083094132915643088896,
+        "worst_case_threshold": 1.0579341713085157,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 238,
+        "minimal_earlier_value": 238878720,
+        "worst_case_threshold": 1.0581888209884098,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 239,
+        "minimal_earlier_value": 441711766194596082395824375185729628956870974218904739530401550323154944,
+        "worst_case_threshold": 1.0584435319636674,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 240,
+        "minimal_earlier_value": 720720,
+        "worst_case_threshold": 1.0586983042490423,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 241,
+        "minimal_earlier_value": 1766847064778384329583297500742918515827483896875618958121606201292619776,
+        "worst_case_threshold": 1.0589531378592922,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 242,
+        "minimal_earlier_value": 302330880,
+        "worst_case_threshold": 1.0592080328091786,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 243,
+        "minimal_earlier_value": 2822400,
+        "worst_case_threshold": 1.059462989113466,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 244,
+        "minimal_earlier_value": 17293822569102704640,
+        "worst_case_threshold": 1.0597180067869227,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 245,
+        "minimal_earlier_value": 29160000,
+        "worst_case_threshold": 1.0599730858443204,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 246,
+        "minimal_earlier_value": 49478023249920,
+        "worst_case_threshold": 1.0602282263004348,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 247,
+        "minimal_earlier_value": 139314069504,
+        "worst_case_threshold": 1.0604834281700446,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 248,
+        "minimal_earlier_value": 112742891520,
+        "worst_case_threshold": 1.0607386914679326,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 249,
+        "minimal_earlier_value": 43521329506126650289422336,
+        "worst_case_threshold": 1.0609940162088844,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 250,
+        "minimal_earlier_value": 5670000,
+        "worst_case_threshold": 1.0612494024076902,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 251,
+        "minimal_earlier_value": 1809251394333065553493296640760748560207343510400633813116524750123642650624,
+        "worst_case_threshold": 1.0615048500791429,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 252,
+        "minimal_earlier_value": 1108800,
+        "worst_case_threshold": 1.0617603592380391,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 253,
+        "minimal_earlier_value": 247669456896,
+        "worst_case_threshold": 1.0620159298991794,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 254,
+        "minimal_earlier_value": 255211775190703847597530955573826158592,
+        "worst_case_threshold": 1.0622715620773675,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 255,
+        "minimal_earlier_value": 132710400,
+        "worst_case_threshold": 1.062527255787411,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 256,
+        "minimal_earlier_value": 1081080,
+        "worst_case_threshold": 1.0627830110441208,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 257,
+        "minimal_earlier_value": 115792089237316195423570985008687907853269984665640564039457584007913129639936,
+        "worst_case_threshold": 1.0630388278623113,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 258,
+        "minimal_earlier_value": 197912092999680,
+        "worst_case_threshold": 1.063294706256801,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 259,
+        "minimal_earlier_value": 50096498540544,
+        "worst_case_threshold": 1.0635506462424114,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 260,
+        "minimal_earlier_value": 11612160,
+        "worst_case_threshold": 1.0638066478339676,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 261,
+        "minimal_earlier_value": 60397977600,
+        "worst_case_threshold": 1.0640627110462988,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 262,
+        "minimal_earlier_value": 4083388403051261561560495289181218537472,
+        "worst_case_threshold": 1.064318835894237,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 263,
+        "minimal_earlier_value": 7410693711188236507108543040556026102609279018600996098525285376506440296955904,
+        "worst_case_threshold": 1.0645750223926187,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 264,
+        "minimal_earlier_value": 3548160,
+        "worst_case_threshold": 1.064831270556283,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 265,
+        "minimal_earlier_value": 364791569817010176,
+        "worst_case_threshold": 1.0650875804000732,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 266,
+        "minimal_earlier_value": 955514880,
+        "worst_case_threshold": 1.065343951938836,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 267,
+        "minimal_earlier_value": 2785365088392105618523029504,
+        "worst_case_threshold": 1.0656003851874216,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 268,
+        "minimal_earlier_value": 1106804644422573096960,
+        "worst_case_threshold": 1.0658568801606838,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 269,
+        "minimal_earlier_value": 474284397516047136454946754595585670566993857190463750305618264096412179005177856,
+        "worst_case_threshold": 1.0661134368734801,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 270,
+        "minimal_earlier_value": 1940400,
+        "worst_case_threshold": 1.0663700553406716,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 271,
+        "minimal_earlier_value": 1897137590064188545819787018382342682267975428761855001222473056385648716020711424,
+        "worst_case_threshold": 1.0666267355771226,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 272,
+        "minimal_earlier_value": 61931520,
+        "worst_case_threshold": 1.0668834775977014,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 273,
+        "minimal_earlier_value": 74649600,
+        "worst_case_threshold": 1.06714028141728,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 274,
+        "minimal_earlier_value": 261336857795280739939871698507597986398208,
+        "worst_case_threshold": 1.0673971470507333,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 275,
+        "minimal_earlier_value": 51840000,
+        "worst_case_threshold": 1.0676540745129401,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 276,
+        "minimal_earlier_value": 1321205760,
+        "worst_case_threshold": 1.0679110638187834,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 277,
+        "minimal_earlier_value": 121416805764108066932466369176469931665150427440758720078238275608681517825325531136,
+        "worst_case_threshold": 1.0681681149831488,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 278,
+        "minimal_earlier_value": 1045347431181122959759486794030391945592832,
+        "worst_case_threshold": 1.068425228020926,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 279,
+        "minimal_earlier_value": 241591910400,
+        "worst_case_threshold": 1.0686824029470086,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 280,
+        "minimal_earlier_value": 1995840,
+        "worst_case_threshold": 1.0689396397762927,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 281,
+        "minimal_earlier_value": 1942668892225729070919461906823518906642406839052139521251812409738904285205208498176,
+        "worst_case_threshold": 1.0691969385236793,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 282,
+        "minimal_earlier_value": 3166593487994880,
+        "worst_case_threshold": 1.069454299204072,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 283,
+        "minimal_earlier_value": 7770675568902916283677847627294075626569627356208558085007249638955617140820833992704,
+        "worst_case_threshold": 1.0697117218323788,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 284,
+        "minimal_earlier_value": 17708874310761169551360,
+        "worst_case_threshold": 1.0699692064235105,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 285,
+        "minimal_earlier_value": 530841600,
+        "worst_case_threshold": 1.070226752992382,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 286,
+        "minimal_earlier_value": 1209323520,
+        "worst_case_threshold": 1.0704843615539112,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 287,
+        "minimal_earlier_value": 801543976648704,
+        "worst_case_threshold": 1.0707420321230208,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 288,
+        "minimal_earlier_value": 1441440,
+        "worst_case_threshold": 1.0709997647146356,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 289,
+        "minimal_earlier_value": 2821109907456,
+        "worst_case_threshold": 1.071257559343685,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 290,
+        "minimal_earlier_value": 108716359680,
+        "worst_case_threshold": 1.071515416025102,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 291,
+        "minimal_earlier_value": 713053462628379038341895553024,
+        "worst_case_threshold": 1.071773334773822,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 292,
+        "minimal_earlier_value": 70835497243044678205440,
+        "worst_case_threshold": 1.072031315604786,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 293,
+        "minimal_earlier_value": 7957171782556586274486115970349133441607298412757563479047423630290551952200534008528896,
+        "worst_case_threshold": 1.0722893585329367,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 294,
+        "minimal_earlier_value": 8164800,
+        "worst_case_threshold": 1.0725474635732215,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 295,
+        "minimal_earlier_value": 23346660468288651264,
+        "worst_case_threshold": 1.072805630740591,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 296,
+        "minimal_earlier_value": 7215545057280,
+        "worst_case_threshold": 1.0730638600499995,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 297,
+        "minimal_earlier_value": 11289600,
+        "worst_case_threshold": 1.073322151516405,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 298,
+        "minimal_earlier_value": 1070435769529469910793714477087121352287059968,
+        "worst_case_threshold": 1.0735805051547687,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 299,
+        "minimal_earlier_value": 2229025112064,
+        "worst_case_threshold": 1.0738389209800558,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 300,
+        "minimal_earlier_value": 2494800,
+        "worst_case_threshold": 1.0740973990072353,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 301,
+        "minimal_earlier_value": 3206175906594816,
+        "worst_case_threshold": 1.074355939251279,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 302,
+        "minimal_earlier_value": 4281743078117879643174857908348485409148239872,
+        "worst_case_threshold": 1.0746145417271629,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 303,
+        "minimal_earlier_value": 11408855402054064613470328848384,
+        "worst_case_threshold": 1.0748732064498667,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 304,
+        "minimal_earlier_value": 247726080,
+        "worst_case_threshold": 1.0751319334343734,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 305,
+        "minimal_earlier_value": 93386641873154605056,
+        "worst_case_threshold": 1.0753907226956696,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 306,
+        "minimal_earlier_value": 103219200,
+        "worst_case_threshold": 1.0756495742487457,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 307,
+        "minimal_earlier_value": 130370302485407109521180524058200202307293977194619920040712988758680403184853549195737432064,
+        "worst_case_threshold": 1.0759084881085956,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 308,
+        "minimal_earlier_value": 26127360,
+        "worst_case_threshold": 1.076167464290217,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 309,
+        "minimal_earlier_value": 45635421608216258453881315393536,
+        "worst_case_threshold": 1.0764265028086109,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 310,
+        "minimal_earlier_value": 434865438720,
+        "worst_case_threshold": 1.076685603678782,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 311,
+        "minimal_earlier_value": 2085924839766513752338888384931203236916703635113918720651407820138886450957656787131798913024,
+        "worst_case_threshold": 1.0769447669157386,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 312,
+        "minimal_earlier_value": 14192640,
+        "worst_case_threshold": 1.0772039925344927,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 313,
+        "minimal_earlier_value": 8343699359066055009355553539724812947666814540455674882605631280555545803830627148527195652096,
+        "worst_case_threshold": 1.0774632805500604,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 314,
+        "minimal_earlier_value": 274031556999544297163190906134303066185487351808,
+        "worst_case_threshold": 1.0777226309774601,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 315,
+        "minimal_earlier_value": 6350400,
+        "worst_case_threshold": 1.0779820438317151,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 316,
+        "minimal_earlier_value": 4533471823554859405148160,
+        "worst_case_threshold": 1.0782415191278516,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 317,
+        "minimal_earlier_value": 133499189745056880149688856635597007162669032647290798121690100488888732861290034376435130433536,
+        "worst_case_threshold": 1.0785010568809,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 318,
+        "minimal_earlier_value": 202661983231672320,
+        "worst_case_threshold": 1.0787606571058936,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 319,
+        "minimal_earlier_value": 15850845241344,
+        "worst_case_threshold": 1.0790203198178698,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 320,
+        "minimal_earlier_value": 2162160,
+        "worst_case_threshold": 1.0792800450318698,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 321,
+        "minimal_earlier_value": 730166745731460135262101046296576,
+        "worst_case_threshold": 1.0795398327629377,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 322,
+        "minimal_earlier_value": 15288238080,
+        "worst_case_threshold": 1.0797996830261218,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 323,
+        "minimal_earlier_value": 11284439629824,
+        "worst_case_threshold": 1.080059595836474,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 324,
+        "minimal_earlier_value": 3880800,
+        "worst_case_threshold": 1.0803195712090494,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 325,
+        "minimal_earlier_value": 207360000,
+        "worst_case_threshold": 1.0805796091589075,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 326,
+        "minimal_earlier_value": 17538019647970835018444217992595396235871190515712,
+        "worst_case_threshold": 1.0808397097011104,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 327,
+        "minimal_earlier_value": 2920666982925840541048404185186304,
+        "worst_case_threshold": 1.0810998728507246,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 328,
+        "minimal_earlier_value": 115448720916480,
+        "worst_case_threshold": 1.0813600986228202,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 329,
+        "minimal_earlier_value": 51298814505517056,
+        "worst_case_threshold": 1.0816203870324705,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 330,
+        "minimal_earlier_value": 14515200,
+        "worst_case_threshold": 1.0818807380947526,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 331,
+        "minimal_earlier_value": 2187250724783011924372502227117621365353169430893212436425770606409952999199375923223513177023053824,
+        "worst_case_threshold": 1.0821411518247475,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 332,
+        "minimal_earlier_value": 72535549176877750482370560,
+        "worst_case_threshold": 1.0824016282375393,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 333,
+        "minimal_earlier_value": 15461882265600,
+        "worst_case_threshold": 1.0826621673482164,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 334,
+        "minimal_earlier_value": 280608314367533360295107487881526339773939048251392,
+        "worst_case_threshold": 1.0829227691718701,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 335,
+        "minimal_earlier_value": 5976745079881894723584,
+        "worst_case_threshold": 1.083183433723596,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 336,
+        "minimal_earlier_value": 2882880,
+        "worst_case_threshold": 1.0834441610184928,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 337,
+        "minimal_earlier_value": 139984046386112763159840142535527767382602843577165595931249318810236991948760059086304843329475444736,
+        "worst_case_threshold": 1.0837049510716634,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 338,
+        "minimal_earlier_value": 10883911680,
+        "worst_case_threshold": 1.0839658038982138,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 339,
+        "minimal_earlier_value": 46730671726813448656774466962980864,
+        "worst_case_threshold": 1.084226719513254,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 340,
+        "minimal_earlier_value": 185794560,
+        "worst_case_threshold": 1.0844876979318971,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 341,
+        "minimal_earlier_value": 63403380965376,
+        "worst_case_threshold": 1.0847487391692605,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 342,
+        "minimal_earlier_value": 412876800,
+        "worst_case_threshold": 1.085009843240465,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 343,
+        "minimal_earlier_value": 729000000,
+        "worst_case_threshold": 1.0852710101606349,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 344,
+        "minimal_earlier_value": 461794883665920,
+        "worst_case_threshold": 1.0855322399448981,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 345,
+        "minimal_earlier_value": 8493465600,
+        "worst_case_threshold": 1.0857935326083867,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 346,
+        "minimal_earlier_value": 17958932119522135058886879224417685745532099088089088,
+        "worst_case_threshold": 1.0860548881662357,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 347,
+        "minimal_earlier_value": 143343663499379469475676305956380433799785311823017570233599302461682679755530300504376159569382855409664,
+        "worst_case_threshold": 1.0863163066335841,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 348,
+        "minimal_earlier_value": 84557168640,
+        "worst_case_threshold": 1.0865777880255745,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 349,
+        "minimal_earlier_value": 573374653997517877902705223825521735199141247292070280934397209846730719022121202017504638277531421638656,
+        "worst_case_threshold": 1.086839332357353,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 350,
+        "minimal_earlier_value": 22680000,
+        "worst_case_threshold": 1.08710093964407,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 351,
+        "minimal_earlier_value": 45158400,
+        "worst_case_threshold": 1.0873626099008786,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 352,
+        "minimal_earlier_value": 10644480,
+        "worst_case_threshold": 1.0876243431429362,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 353,
+        "minimal_earlier_value": 9173994463960286046443283581208347763186259956673124494950355357547691504353939232280074212440502746218496,
+        "worst_case_threshold": 1.0878861393854036,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 354,
+        "minimal_earlier_value": 12970366926827028480,
+        "worst_case_threshold": 1.0881479986434452,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 355,
+        "minimal_earlier_value": 95627921278110315577344,
+        "worst_case_threshold": 1.0884099209322293,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 356,
+        "minimal_earlier_value": 4642275147320176030871715840,
+        "worst_case_threshold": 1.0886719062669274,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 357,
+        "minimal_earlier_value": 1194393600,
+        "worst_case_threshold": 1.0889339546627155,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 358,
+        "minimal_earlier_value": 1149371655649416643768760270362731887714054341637701632,
+        "worst_case_threshold": 1.089196066134772,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 359,
+        "minimal_earlier_value": 587135645693458306972370149197334256843920637227079967676822742883052256278652110865924749596192175757983744,
+        "worst_case_threshold": 1.08945824069828,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 360,
+        "minimal_earlier_value": 3603600,
+        "worst_case_threshold": 1.0897204783684262,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 361,
+        "minimal_earlier_value": 101559956668416,
+        "worst_case_threshold": 1.0899827791604002,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 362,
+        "minimal_earlier_value": 4597486622597666575075041081450927550856217366550806528,
+        "worst_case_threshold": 1.0902451430893958,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 363,
+        "minimal_earlier_value": 1511654400,
+        "worst_case_threshold": 1.0905075701706104,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 364,
+        "minimal_earlier_value": 104509440,
+        "worst_case_threshold": 1.0907700604192454,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 365,
+        "minimal_earlier_value": 382511685112441262309376,
+        "worst_case_threshold": 1.0910326138505049,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 366,
+        "minimal_earlier_value": 51881467707308113920,
+        "worst_case_threshold": 1.0912952304795975,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 367,
+        "minimal_earlier_value": 150306725297525326584926758194517569752043683130132471725266622178061377607334940381676735896625196994043838464,
+        "worst_case_threshold": 1.0915579103217354,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 368,
+        "minimal_earlier_value": 3963617280,
+        "worst_case_threshold": 1.0918206533921342,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 369,
+        "minimal_earlier_value": 247390116249600,
+        "worst_case_threshold": 1.0920834597060132,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 370,
+        "minimal_earlier_value": 27831388078080,
+        "worst_case_threshold": 1.092346329278595,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 371,
+        "minimal_earlier_value": 3283124128353091584,
+        "worst_case_threshold": 1.092609262125107,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 372,
+        "minimal_earlier_value": 338228674560,
+        "worst_case_threshold": 1.0928722582607788,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 373,
+        "minimal_earlier_value": 9619630419041620901435312524449124464130795720328478190417063819395928166869436184427311097384012607618805661696,
+        "worst_case_threshold": 1.093135317700845,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 374,
+        "minimal_earlier_value": 19349176320,
+        "worst_case_threshold": 1.093398440460543,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 375,
+        "minimal_earlier_value": 39690000,
+        "worst_case_threshold": 1.093661626555114,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 376,
+        "minimal_earlier_value": 7388718138654720,
+        "worst_case_threshold": 1.0939248759998033,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 377,
+        "minimal_earlier_value": 142657607172096,
+        "worst_case_threshold": 1.0941881888098592,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 378,
+        "minimal_earlier_value": 7761600,
+        "worst_case_threshold": 1.0944515650005344,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 379,
+        "minimal_earlier_value": 615656346818663737691860001564743965704370926101022604186692084441339402679643915803347910232576806887603562348544,
+        "worst_case_threshold": 1.0947150045870848,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 380,
+        "minimal_earlier_value": 743178240,
+        "worst_case_threshold": 1.09497850758477,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 381,
+        "minimal_earlier_value": 765635325572111542792592866721478475776,
+        "worst_case_threshold": 1.0952420740088533,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 382,
+        "minimal_earlier_value": 4707826301540010572876842067405749812076766583348025884672,
+        "worst_case_threshold": 1.0955057038746019,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 383,
+        "minimal_earlier_value": 9850501549098619803069760025035903451269934817616361666987073351061430442874302652853566563721228910201656997576704,
+        "worst_case_threshold": 1.0957693971972864,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 384,
+        "minimal_earlier_value": 4324320,
+        "worst_case_threshold": 1.0960331539921813,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 385,
+        "minimal_earlier_value": 466560000,
+        "worst_case_threshold": 1.0962969742745645,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 386,
+        "minimal_earlier_value": 18831305206160042291507368269622999248307066333392103538688,
+        "worst_case_threshold": 1.0965608580597177,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 387,
+        "minimal_earlier_value": 989560464998400,
+        "worst_case_threshold": 1.0968248053629266,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 388,
+        "minimal_earlier_value": 1188422437713965063903159255040,
+        "worst_case_threshold": 1.0970888161994798,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 389,
+        "minimal_earlier_value": 630432099142311667396464641602297820881275828327447146687172694467931548343955369782628260078158650252906047844909056,
+        "worst_case_threshold": 1.0973528905846706,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 390,
+        "minimal_earlier_value": 58060800,
+        "worst_case_threshold": 1.0976170285337952,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 391,
+        "minimal_earlier_value": 180551034077184,
+        "worst_case_threshold": 1.0978812300621537,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 392,
+        "minimal_earlier_value": 17962560,
+        "worst_case_threshold": 1.09814549518505,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 393,
+        "minimal_earlier_value": 12250165209153784684681485867543655612416,
+        "worst_case_threshold": 1.0984098239177917,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 394,
+        "minimal_earlier_value": 301300883298560676664117892313967987972913061334273656619008,
+        "worst_case_threshold": 1.0986742162756897,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 395,
+        "minimal_earlier_value": 24480747847196240787800064,
+        "worst_case_threshold": 1.098938672274059,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 396,
+        "minimal_earlier_value": 17740800,
+        "worst_case_threshold": 1.0992031919282184,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 397,
+        "minimal_earlier_value": 161390617380431786853494948250188242145606612051826469551916209783790476376052574664352834580008614464743948248296718336,
+        "worst_case_threshold": 1.0994677752534898,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 398,
+        "minimal_earlier_value": 1205203533194242706656471569255871951891652245337094626476032,
+        "worst_case_threshold": 1.0997324222651994,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 399,
+        "minimal_earlier_value": 4777574400,
+        "worst_case_threshold": 1.0999971329786766,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 400,
+        "minimal_earlier_value": 6486480,
+        "worst_case_threshold": 1.1002619074092548,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 401,
+        "minimal_earlier_value": 2582249878086908589655919172003011874329705792829223512830659356540647622016841194629645353280137831435903171972747493376,
+        "worst_case_threshold": 1.1005267455722711,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 402,
+        "minimal_earlier_value": 3320413933267719290880,
+        "worst_case_threshold": 1.100791647483066,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 403,
+        "minimal_earlier_value": 570630428688384,
+        "worst_case_threshold": 1.1010566131569839,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 404,
+        "minimal_earlier_value": 19014759003423441022450548080640,
+        "worst_case_threshold": 1.1013216426093733,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 405,
+        "minimal_earlier_value": 21344400,
+        "worst_case_threshold": 1.1015867358555853,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 406,
+        "minimal_earlier_value": 978447237120,
+        "worst_case_threshold": 1.101851892910976,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 407,
+        "minimal_earlier_value": 4057816381784064,
+        "worst_case_threshold": 1.102117113790904,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 408,
+        "minimal_earlier_value": 227082240,
+        "worst_case_threshold": 1.1023823985107326,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 409,
+        "minimal_earlier_value": 661055968790248598951915308032771039828404682964281219284648795274405791236311345825189210439715284847591212025023358304256,
+        "worst_case_threshold": 1.1026477470858282,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 410,
+        "minimal_earlier_value": 445302209249280,
+        "worst_case_threshold": 1.102913159531561,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 411,
+        "minimal_earlier_value": 784010573385842219819615095522793959194624,
+        "worst_case_threshold": 1.1031786358633051,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 412,
+        "minimal_earlier_value": 76059036013693764089802192322560,
+        "worst_case_threshold": 1.103444176096438,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 413,
+        "minimal_earlier_value": 210119944214597861376,
+        "worst_case_threshold": 1.1037097802463414,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 414,
+        "minimal_earlier_value": 6606028800,
+        "worst_case_threshold": 1.1039754483283999,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 415,
+        "minimal_earlier_value": 391691965555139852604801024,
+        "worst_case_threshold": 1.1042411803580023,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 416,
+        "minimal_earlier_value": 42577920,
+        "worst_case_threshold": 1.1045069763505415,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 417,
+        "minimal_earlier_value": 3136042293543368879278460382091175836778496,
+        "worst_case_threshold": 1.1047728363214135,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 418,
+        "minimal_earlier_value": 77396705280,
+        "worst_case_threshold": 1.105038760286018,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 419,
+        "minimal_earlier_value": 676921312041214565326761275425557544784286395355423968547480366360991530225982818124993751490268451683933401113623918903558144,
+        "worst_case_threshold": 1.1053047482597587,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 420,
+        "minimal_earlier_value": 9979200,
+        "worst_case_threshold": 1.1055708002580429,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 421,
+        "minimal_earlier_value": 2707685248164858261307045101702230179137145581421695874189921465443966120903931272499975005961073806735733604454495675614232576,
+        "worst_case_threshold": 1.1058369162962816,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 422,
+        "minimal_earlier_value": 4936513671963618126464907547672051514948207596900739590045827072,
+        "worst_case_threshold": 1.1061030963898895,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 423,
+        "minimal_earlier_value": 15832967439974400,
+        "worst_case_threshold": 1.1063693405542852,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 424,
+        "minimal_earlier_value": 472877960873902080,
+        "worst_case_threshold": 1.1066356488048905,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 425,
+        "minimal_earlier_value": 3317760000,
+        "worst_case_threshold": 1.1069020211571314,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 426,
+        "minimal_earlier_value": 53126622932283508654080,
+        "worst_case_threshold": 1.1071684576264376,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 427,
+        "minimal_earlier_value": 840479776858391445504,
+        "worst_case_threshold": 1.1074349582282423,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 428,
+        "minimal_earlier_value": 1216944576219100225436835077160960,
+        "worst_case_threshold": 1.1077015229779823,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 429,
+        "minimal_earlier_value": 6046617600,
+        "worst_case_threshold": 1.1079681518910987,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 430,
+        "minimal_earlier_value": 1781208836997120,
+        "worst_case_threshold": 1.1082348449830355,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 431,
+        "minimal_earlier_value": 2772669694120814859578414184143083703436437075375816575170479580614621307805625623039974406104139578097391210961403571828974157824,
+        "worst_case_threshold": 1.108501602269241,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 432,
+        "minimal_earlier_value": 7207200,
+        "worst_case_threshold": 1.1087684237651672,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 433,
+        "minimal_earlier_value": 11090678776483259438313656736572334813745748301503266300681918322458485231222502492159897624416558312389564843845614287315896631296,
+        "worst_case_threshold": 1.1090353094862695,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 434,
+        "minimal_earlier_value": 3913788948480,
+        "worst_case_threshold": 1.1093022594480073,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 435,
+        "minimal_earlier_value": 543581798400,
+        "worst_case_threshold": 1.1095692736658438,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 436,
+        "minimal_earlier_value": 4867778304876400901747340308643840,
+        "worst_case_threshold": 1.1098363521552452,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 437,
+        "minimal_earlier_value": 1624959306694656,
+        "worst_case_threshold": 1.1101034949316824,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 438,
+        "minimal_earlier_value": 212506491729134034616320,
+        "worst_case_threshold": 1.1103707020106295,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 439,
+        "minimal_earlier_value": 709803441694928604052074031140629428079727891296209043243642772637343054798240159498233447962659731992932150006119314388217384402944,
+        "worst_case_threshold": 1.1106379734075644,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 440,
+        "minimal_earlier_value": 31933440,
+        "worst_case_threshold": 1.1109053091379688,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 441,
+        "minimal_earlier_value": 57153600,
+        "worst_case_threshold": 1.1111727092173278,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 442,
+        "minimal_earlier_value": 174142586880,
+        "worst_case_threshold": 1.111440173661131,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 443,
+        "minimal_earlier_value": 11356855067118857664833184498250070849275646260739344691898284362197488876771842551971735167402555711886914400097909030211478150447104,
+        "worst_case_threshold": 1.1117077024848707,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 444,
+        "minimal_earlier_value": 21646635171840,
+        "worst_case_threshold": 1.1119752957040436,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 445,
+        "minimal_earlier_value": 25068285795528950566707265536,
+        "worst_case_threshold": 1.1122429533341502,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 446,
+        "minimal_earlier_value": 20219960000362979846000261315264723005227858316905429360827707686912,
+        "worst_case_threshold": 1.1125106753906944,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 447,
+        "minimal_earlier_value": 3211307308588409732381143431261364056861179904,
+        "worst_case_threshold": 1.1127784618891838,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 448,
+        "minimal_earlier_value": 8648640,
+        "worst_case_threshold": 1.11304631284513,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 449,
+        "minimal_earlier_value": 726838724295606890549323807888004534353641360687318060281490199180639288113397923326191050713763565560762521606266177933534601628614656,
+        "worst_case_threshold": 1.1133142282740482,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 450,
+        "minimal_earlier_value": 17463600,
+        "worst_case_threshold": 1.1135822081914573,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 451,
+        "minimal_earlier_value": 64925062108545024,
+        "worst_case_threshold": 1.11385025261288,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 452,
+        "minimal_earlier_value": 77884452878022414427957444938301440,
+        "worst_case_threshold": 1.1141183615538428,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 453,
+        "minimal_earlier_value": 12845229234353638929524573725045456227444719616,
+        "worst_case_threshold": 1.1143865350298756,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 454,
+        "minimal_earlier_value": 323519360005807677536004181044235568083645733070486869773243322990592,
+        "worst_case_threshold": 1.1146547730565126,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 455,
+        "minimal_earlier_value": 1866240000,
+        "worst_case_threshold": 1.1149230756492914,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 456,
+        "minimal_earlier_value": 908328960,
+        "worst_case_threshold": 1.115191442823753,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 457,
+        "minimal_earlier_value": 186070713419675363980626894819329160794532188335953423432061490990243657757029868371504908982723472783555205531204141550984858016925351936,
+        "worst_case_threshold": 1.1154598745954432,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 458,
+        "minimal_earlier_value": 1294077440023230710144016724176942272334582932281947479092973291962368,
+        "worst_case_threshold": 1.1157283709799102,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 459,
+        "minimal_earlier_value": 722534400,
+        "worst_case_threshold": 1.1159969319927068,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 460,
+        "minimal_earlier_value": 11890851840,
+        "worst_case_threshold": 1.1162655576493894,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 461,
+        "minimal_earlier_value": 2977131414714805823690030317109266572712515013375254774912983855843898524112477893944078543723575564536883288499266264815757728270805630976,
+        "worst_case_threshold": 1.116534247965518,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 462,
+        "minimal_earlier_value": 130636800,
+        "worst_case_threshold": 1.1168030029566567,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 463,
+        "minimal_earlier_value": 11908525658859223294760121268437066290850060053501019099651935423375594096449911575776314174894302258147533153997065059263030913083222523904,
+        "worst_case_threshold": 1.1170718226383727,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 464,
+        "minimal_earlier_value": 253671505920,
+        "worst_case_threshold": 1.1173407070262376,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 465,
+        "minimal_earlier_value": 2174327193600,
+        "worst_case_threshold": 1.1176096561358262,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 466,
+        "minimal_earlier_value": 20705239040371691362304267586831076357353326916511159665487572671397888,
+        "worst_case_threshold": 1.1178786699827177,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 467,
+        "minimal_earlier_value": 190536410541747572716161940294993060653600960856016305594430966774009505543198585212421026798308836130360530463953040948208494609331560382464,
+        "worst_case_threshold": 1.1181477485824942,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 468,
+        "minimal_earlier_value": 70963200,
+        "worst_case_threshold": 1.1184168919507425,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 469,
+        "minimal_earlier_value": 53790705718937052512256,
+        "worst_case_threshold": 1.1186861001030524,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 470,
+        "minimal_earlier_value": 28499341391953920,
+        "worst_case_threshold": 1.1189553730550175,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 471,
+        "minimal_earlier_value": 822094670998632891489572718402909198556462055424,
+        "worst_case_threshold": 1.119224710822236,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 472,
+        "minimal_earlier_value": 30264189495929733120,
+        "worst_case_threshold": 1.1194941134203087,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 473,
+        "minimal_earlier_value": 259700248434180096,
+        "worst_case_threshold": 1.119763580864841,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 474,
+        "minimal_earlier_value": 13600415470664578215444480,
+        "worst_case_threshold": 1.1200331131714414,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 475,
+        "minimal_earlier_value": 13271040000,
+        "worst_case_threshold": 1.1203027103557228,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 476,
+        "minimal_earlier_value": 1672151040,
+        "worst_case_threshold": 1.1205723724333017,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 477,
+        "minimal_earlier_value": 1013309916158361600,
+        "worst_case_threshold": 1.1208420994197976,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 478,
+        "minimal_earlier_value": 1325135298583788247187473125557188886870612922656714218591204650969464832,
+        "worst_case_threshold": 1.121111891330835,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 479,
+        "minimal_earlier_value": 780437137578998057845399307448291576437149535666242787714789239906342934704941405030076525765872992789956732780351655723861993919822071326572544,
+        "worst_case_threshold": 1.1213817481820414,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 480,
+        "minimal_earlier_value": 10810800,
+        "worst_case_threshold": 1.121651669989048,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 481,
+        "minimal_earlier_value": 36520347436056576,
+        "worst_case_threshold": 1.1219216567674901,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 482,
+        "minimal_earlier_value": 5300541194335152988749892502228755547482451690626856874364818603877859328,
+        "worst_case_threshold": 1.1221917085330066,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 483,
+        "minimal_earlier_value": 76441190400,
+        "worst_case_threshold": 1.1224618253012402,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 484,
+        "minimal_earlier_value": 2116316160,
+        "worst_case_threshold": 1.1227320070878373,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 485,
+        "minimal_earlier_value": 6417481163655411345077059977216,
+        "worst_case_threshold": 1.1230022539084483,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 486,
+        "minimal_earlier_value": 31046400,
+        "worst_case_threshold": 1.123272565778727,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 487,
+        "minimal_earlier_value": 199791907220223502808422222706762643567910281130558153654986045416023791284464999687699590596063486154228923591770023865308670443474450259602571264,
+        "worst_case_threshold": 1.123542942714331,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 488,
+        "minimal_earlier_value": 121056757983718932480,
+        "worst_case_threshold": 1.1238133847309224,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 489,
+        "minimal_earlier_value": 52614058943912505055332653977786188707613571547136,
+        "worst_case_threshold": 1.124083891844166,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 490,
+        "minimal_earlier_value": 204120000,
+        "worst_case_threshold": 1.124354464069731,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 491,
+        "minimal_earlier_value": 3196670515523576044934755563308202297086564498088930458479776726656380660551439995003193449537015778467662777468320381844938727095591204153641140224,
+        "worst_case_threshold": 1.1246251014232902,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 492,
+        "minimal_earlier_value": 346346162749440,
+        "worst_case_threshold": 1.1248958039205204,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 493,
+        "minimal_earlier_value": 11555266180939776,
+        "worst_case_threshold": 1.1251665715771018,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 494,
+        "minimal_earlier_value": 696570347520,
+        "worst_case_threshold": 1.1254374044087185,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 495,
+        "minimal_earlier_value": 101606400,
+        "worst_case_threshold": 1.1257083024310588,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 496,
+        "minimal_earlier_value": 1014686023680,
+        "worst_case_threshold": 1.125979265659814,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 497,
+        "minimal_earlier_value": 860651291502992840196096,
+        "worst_case_threshold": 1.1262502941106796,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 498,
+        "minimal_earlier_value": 217606647530633251447111680,
+        "worst_case_threshold": 1.1265213877993552,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 499,
+        "minimal_earlier_value": 818347651974035467503297424206899788054160511510766197370822842024033449101168638720817523081476039287721671031890017752304314136471348263332131897344,
+        "worst_case_threshold": 1.1267925467415436,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 500,
+        "minimal_earlier_value": 62370000,
+        "worst_case_threshold": 1.1270637709529516,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 501,
+        "minimal_earlier_value": 841824943102600080885322463644579019321817144754176,
+        "worst_case_threshold": 1.12733506044929,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 502,
+        "minimal_earlier_value": 5427754182999196660479889922282245680622030531201901439349574250370927951872,
+        "worst_case_threshold": 1.127606415246273,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 503,
+        "minimal_earlier_value": 13093562431584567480052758787310396608866568184172259157933165472384535185618698219533080369303616628603546736510240284036869026183541572213314110357504,
+        "worst_case_threshold": 1.1278778353596188,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 504,
+        "minimal_earlier_value": 14414400,
+        "worst_case_threshold": 1.1281493208050495,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 505,
+        "minimal_earlier_value": 102679698618486581521232959635456,
+        "worst_case_threshold": 1.1284208715982906,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 506,
+        "minimal_earlier_value": 1238347284480,
+        "worst_case_threshold": 1.1286924877550717,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 507,
+        "minimal_earlier_value": 54419558400,
+        "worst_case_threshold": 1.1289641692911263,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 508,
+        "minimal_earlier_value": 1276058875953519237987654777869130792960,
+        "worst_case_threshold": 1.1292359162221914,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 509,
+        "minimal_earlier_value": 837987995621412318723376562387865382967460363787024586107722590232610251879596686050117143635431464230626991136655378178359617675746660621652103062880256,
+        "worst_case_threshold": 1.1295077285640076,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 510,
+        "minimal_earlier_value": 928972800,
+        "worst_case_threshold": 1.12977960633232,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 511,
+        "minimal_earlier_value": 3442605166011971360784384,
+        "worst_case_threshold": 1.130051549542877,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 512,
+        "minimal_earlier_value": 17297280,
+        "worst_case_threshold": 1.1303235582114304,
+        "eliminated": true
+      }
+    ],
+    "unresolved_rows": []
+  },
+  "current_status": "This artifact exhausts the exact small-prime surface and then tests the fixed-factor large-prime divisor-class table through the chosen maximum divisor class."
+}

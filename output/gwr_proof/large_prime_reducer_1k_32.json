@@ -1,0 +1,200 @@
+{
+  "proof_note_target": "Route B exact base surface plus fixed large-prime reducer",
+  "small_prime_surface": {
+    "interval": {
+      "lo": 2,
+      "hi": 1001
+    },
+    "gap_count": 131,
+    "exact_spoiler_count": 0,
+    "unresolved_candidate_count": 0,
+    "counterexample_gap_count": 0,
+    "unresolved_gap_count": 0
+  },
+  "large_prime_table": {
+    "prime_threshold": 1000,
+    "fixed_large_prime_factor": 1.0008382742089406,
+    "max_divisor_class": 32,
+    "row_count": 29,
+    "unresolved_row_count": 0,
+    "all_rows_eliminated": true,
+    "rows": [
+      {
+        "earlier_divisor_count": 4,
+        "minimal_earlier_value": 6,
+        "worst_case_threshold": 1.0008382742089406,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 5,
+        "minimal_earlier_value": 16,
+        "worst_case_threshold": 1.0016772511215304,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 6,
+        "minimal_earlier_value": 12,
+        "worst_case_threshold": 1.002516931326828,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 7,
+        "minimal_earlier_value": 64,
+        "worst_case_threshold": 1.0033573154143856,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 8,
+        "minimal_earlier_value": 24,
+        "worst_case_threshold": 1.0041984039742493,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 9,
+        "minimal_earlier_value": 36,
+        "worst_case_threshold": 1.0050401975969603,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 10,
+        "minimal_earlier_value": 48,
+        "worst_case_threshold": 1.0058826968735544,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 11,
+        "minimal_earlier_value": 1024,
+        "worst_case_threshold": 1.006725902395563,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 12,
+        "minimal_earlier_value": 60,
+        "worst_case_threshold": 1.0075698147550136,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 13,
+        "minimal_earlier_value": 4096,
+        "worst_case_threshold": 1.0084144345444297,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 14,
+        "minimal_earlier_value": 192,
+        "worst_case_threshold": 1.0092597623568318,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 15,
+        "minimal_earlier_value": 144,
+        "worst_case_threshold": 1.010105798785737,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 16,
+        "minimal_earlier_value": 120,
+        "worst_case_threshold": 1.0109525444251604,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 17,
+        "minimal_earlier_value": 65536,
+        "worst_case_threshold": 1.0117999998696148,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 18,
+        "minimal_earlier_value": 180,
+        "worst_case_threshold": 1.0126481657141115,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 19,
+        "minimal_earlier_value": 262144,
+        "worst_case_threshold": 1.0134970425541607,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 20,
+        "minimal_earlier_value": 240,
+        "worst_case_threshold": 1.0143466309857714,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 21,
+        "minimal_earlier_value": 576,
+        "worst_case_threshold": 1.0151969316054525,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 22,
+        "minimal_earlier_value": 3072,
+        "worst_case_threshold": 1.016047945010213,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 23,
+        "minimal_earlier_value": 4194304,
+        "worst_case_threshold": 1.016899671797562,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 24,
+        "minimal_earlier_value": 360,
+        "worst_case_threshold": 1.01775211256551,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 25,
+        "minimal_earlier_value": 1296,
+        "worst_case_threshold": 1.0186052679125686,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 26,
+        "minimal_earlier_value": 12288,
+        "worst_case_threshold": 1.0194591384377505,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 27,
+        "minimal_earlier_value": 900,
+        "worst_case_threshold": 1.0203137247405716,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 28,
+        "minimal_earlier_value": 960,
+        "worst_case_threshold": 1.0211690274210499,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 29,
+        "minimal_earlier_value": 268435456,
+        "worst_case_threshold": 1.0220250470797057,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 30,
+        "minimal_earlier_value": 720,
+        "worst_case_threshold": 1.022881784317564,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 31,
+        "minimal_earlier_value": 1073741824,
+        "worst_case_threshold": 1.0237392397361524,
+        "eliminated": true
+      },
+      {
+        "earlier_divisor_count": 32,
+        "minimal_earlier_value": 840,
+        "worst_case_threshold": 1.0245974139375036,
+        "eliminated": true
+      }
+    ],
+    "unresolved_rows": []
+  },
+  "current_status": "This artifact exhausts the exact small-prime surface and then tests the fixed-factor large-prime divisor-class table through the chosen maximum divisor class."
+}

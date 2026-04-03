@@ -3,6 +3,12 @@
 This directory tracks the executable and artifact surface for the `Gap Winner
 Rule`.
 
+## Proof Pursuit
+
+- [`proof/`](./proof/):
+  scripts that target the remaining universal proof step rather than only the
+  tested-surface validation surface.
+
 ## Current Validation Entry Points
 
 - [`benchmarks/python/gap_ridge/lexicographic_peak_validation.py`](../../benchmarks/python/gap_ridge/lexicographic_peak_validation.py)

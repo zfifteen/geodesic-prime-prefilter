@@ -37,6 +37,17 @@ refer directly to an older artifact whose title or filename already uses it.
   `GWR`, the square-phase variable for dominant `d=4` closure slack, and the
   early-arrival decomposition developed from the exact $10^6$ and exploratory
   near-$10^{12}$ session probes.
+- [`what_counts_as_gwr_proof.md`](./what_counts_as_gwr_proof.md):
+  Exact proof standard for when it is technically correct to say that the full
+  `Gap Winner Rule` is proven rather than strongly evidenced on a tested
+  surface.
+- [`current_spoiler_bound_no_finite_remainder.md`](./current_spoiler_bound_no_finite_remainder.md):
+  Exact executed result showing that the current earlier-spoiler reduction does
+  not by itself yield the finite remainder bound required by Route `B3`.
+- [`large_prime_reducer_findings.md`](./large_prime_reducer_findings.md):
+  Executed result for the current exact-small-surface plus fixed large-prime
+  reducer, including the full exact scan through $396739$ and the closed
+  divisor-class table through $D = 32768$.
 
 ## Legacy Inputs
 

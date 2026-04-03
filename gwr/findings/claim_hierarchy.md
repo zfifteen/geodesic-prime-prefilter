@@ -54,6 +54,13 @@ but it does not by itself prove GWR on arbitrary gap interiors. GWR remains the
 separate prime-gap statement whose surface is validated empirically in this
 repo.
 
+The exact missing universal step is narrow:
+
+- the theorem already proves that the `GWR` candidate beats every later
+  interior composite,
+- but a separate gap-specific argument is still needed to eliminate every
+  earlier higher-divisor spoiler.
+
 Canonical note:
 
 - [`gap_winner_rule.md`](./gap_winner_rule.md)
