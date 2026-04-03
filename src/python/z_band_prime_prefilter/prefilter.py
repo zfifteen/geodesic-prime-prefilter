@@ -11,7 +11,7 @@ from typing import Sequence
 from z_band_prime_invariant import FIXED_POINT_TOLERANCE, FIXED_POINT_V
 from sympy import isprime
 
-DEFAULT_NAMESPACE = "cdl-prime-geodesic"
+DEFAULT_NAMESPACE = "cdl-prime-z-band"
 DEFAULT_MR_BASES = (2, 3, 5, 7, 11, 13, 17, 19)
 
 DEFAULT_PRIMARY_PRIME_LIMIT = 200003
