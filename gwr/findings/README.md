@@ -32,6 +32,11 @@ refer directly to an older artifact whose title or filename already uses it.
 - [`why_the_dominant_d4_reduction_matters.md`](./why_the_dominant_d4_reduction_matters.md):
   Formal project-level and number-theoretic implications of the dominant
   $d=4$ reduction, including the current through-$10^{18}$ validation status.
+- [`gap_anatomy_decomposition.md`](./gap_anatomy_decomposition.md):
+  Interpretive note introducing the hierarchical first-arrival reading of
+  `GWR`, the square-phase variable for dominant `d=4` closure slack, and the
+  early-arrival decomposition developed from the exact $10^6$ and exploratory
+  near-$10^{12}$ session probes.
 
 ## Legacy Inputs
 
