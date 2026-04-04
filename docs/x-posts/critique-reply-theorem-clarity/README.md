@@ -1,4 +1,4 @@
-# Reply To The Critique, With Theorem Clarity
+# The 'Gap Winner Rule' Explained
 
 I think there is one real terminology issue here, and fixing it makes the
 theorem easier to see. Low-divisor carriers are not highly composite numbers in
