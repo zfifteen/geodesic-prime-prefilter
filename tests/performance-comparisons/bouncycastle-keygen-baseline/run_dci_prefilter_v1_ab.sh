@@ -111,6 +111,14 @@ reduction_percent = (1.0 - (modified_total_ms / baseline_total_ms)) * 100.0
 baseline_throughput = 1000.0 / baseline_mean_ms
 modified_throughput = 1000.0 / modified_mean_ms
 
+if modified_total_ms <= baseline_total_ms:
+    relative_line = f"- Relative speed: `{speedup:.6f}x`"
+    change_line = f"- Wall-clock reduction: `{reduction_percent:.6f}%`"
+else:
+    increase_percent = ((modified_total_ms / baseline_total_ms) - 1.0) * 100.0
+    relative_line = f"- Relative speed: `{speedup:.6f}x` of baseline"
+    change_line = f"- Wall-clock increase: `{increase_percent:.6f}%`"
+
 sample_reference = "./" + sample_behavior_path.name
 baseline_reference = "./" + baseline_path.name
 modified_reference = "./" + modified_path.name
@@ -127,8 +135,8 @@ This experiment measures the real DCI prefilter path. It does not include the ea
 
 - Fresh paired baseline total time: `{baseline_total_ms:.6f}` ms
 - DCI-prefilter total time: `{modified_total_ms:.6f}` ms
-- Relative speed: `{speedup:.6f}x`
-- Wall-clock reduction: `{reduction_percent:.6f}%`
+{relative_line}
+{change_line}
 
 ## A/B Comparison
 
