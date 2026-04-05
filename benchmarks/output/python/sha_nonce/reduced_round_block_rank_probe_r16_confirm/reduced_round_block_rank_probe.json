@@ -1,0 +1,26 @@
+{
+  "headers": 16,
+  "blocks_per_header": 256,
+  "block_size": 128,
+  "keep_fraction": 0.25,
+  "threshold_byte": 1,
+  "rounds": [
+    16
+  ],
+  "rows": [
+    {
+      "rounds": 16,
+      "total_blocks": 4096,
+      "selected_blocks": 1024,
+      "total_hits": 2088,
+      "selected_hits": 530,
+      "selected_fraction": 0.25,
+      "expected_hit_retention_share": 0.25,
+      "hit_retention_share": 0.25383141762452105,
+      "baseline_hits_per_block": 0.509765625,
+      "selected_hits_per_block": 0.517578125,
+      "hit_density_ratio": 1.0153256704980842,
+      "hit_retention_z_score": 0.40431895657541517
+    }
+  ]
+}

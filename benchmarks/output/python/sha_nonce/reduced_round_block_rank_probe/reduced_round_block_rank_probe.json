@@ -1,0 +1,71 @@
+{
+  "headers": 8,
+  "blocks_per_header": 256,
+  "block_size": 128,
+  "keep_fraction": 0.25,
+  "threshold_byte": 1,
+  "rounds": [
+    4,
+    8,
+    12,
+    16
+  ],
+  "rows": [
+    {
+      "rounds": 4,
+      "total_blocks": 2048,
+      "selected_blocks": 512,
+      "total_hits": 1034,
+      "selected_hits": 269,
+      "selected_fraction": 0.25,
+      "expected_hit_retention_share": 0.25,
+      "hit_retention_share": 0.2601547388781431,
+      "baseline_hits_per_block": 0.5048828125,
+      "selected_hits_per_block": 0.525390625,
+      "hit_density_ratio": 1.0406189555125724,
+      "hit_retention_z_score": 0.7540990499768684
+    },
+    {
+      "rounds": 8,
+      "total_blocks": 2048,
+      "selected_blocks": 512,
+      "total_hits": 1034,
+      "selected_hits": 266,
+      "selected_fraction": 0.25,
+      "expected_hit_retention_share": 0.25,
+      "hit_retention_share": 0.2572533849129594,
+      "baseline_hits_per_block": 0.5048828125,
+      "selected_hits_per_block": 0.51953125,
+      "hit_density_ratio": 1.0290135396518376,
+      "hit_retention_z_score": 0.5386421785549059
+    },
+    {
+      "rounds": 12,
+      "total_blocks": 2048,
+      "selected_blocks": 512,
+      "total_hits": 1034,
+      "selected_hits": 255,
+      "selected_fraction": 0.25,
+      "expected_hit_retention_share": 0.25,
+      "hit_retention_share": 0.24661508704061896,
+      "baseline_hits_per_block": 0.5048828125,
+      "selected_hits_per_block": 0.498046875,
+      "hit_density_ratio": 0.9864603481624759,
+      "hit_retention_z_score": -0.25136634999228946
+    },
+    {
+      "rounds": 16,
+      "total_blocks": 2048,
+      "selected_blocks": 512,
+      "total_hits": 1034,
+      "selected_hits": 284,
+      "selected_fraction": 0.25,
+      "expected_hit_retention_share": 0.25,
+      "hit_retention_share": 0.2746615087040619,
+      "baseline_hits_per_block": 0.5048828125,
+      "selected_hits_per_block": 0.5546875,
+      "hit_density_ratio": 1.0986460348162477,
+      "hit_retention_z_score": 1.8313834070866803
+    }
+  ]
+}

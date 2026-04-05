@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420">
+<rect width="900" height="420" fill="white" />
+<text x="450.0" y="28" text-anchor="middle" font-size="18" fill="#111827">First-eighth capture share by window alignment</text>
+<line x1="80" y1="162.5" x2="860" y2="162.5" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 6" />
+<text x="860" y="154.5" text-anchor="end" font-size="12" fill="#dc2626">uniform expectation = 0.125</text>
+<line x1="80" y1="50" x2="80" y2="350" stroke="#111827" stroke-width="1.5" />
+<line x1="80" y1="350" x2="860" y2="350" stroke="#111827" stroke-width="1.5" />
+<polyline fill="none" stroke="#2563eb" stroke-width="3" points="80.0,157.4 470.0,171.7 860.0,158.1" />
+<polyline fill="none" stroke="#059669" stroke-width="3" points="80.0,167.6 470.0,161.0 860.0,156.3" />
+<circle cx="80.0" cy="157.4" r="4" fill="#2563eb" />
+<circle cx="470.0" cy="171.7" r="4" fill="#2563eb" />
+<circle cx="860.0" cy="158.1" r="4" fill="#2563eb" />
+<circle cx="80.0" cy="167.6" r="4" fill="#059669" />
+<circle cx="470.0" cy="161.0" r="4" fill="#059669" />
+<circle cx="860.0" cy="156.3" r="4" fill="#059669" />
+<text x="80.0" y="390" text-anchor="middle" font-size="12" fill="#1f2937">64</text>
+<text x="470.0" y="390" text-anchor="middle" font-size="12" fill="#1f2937">256</text>
+<text x="860.0" y="390" text-anchor="middle" font-size="12" fill="#1f2937">1024</text>
+<text x="68" y="350.0" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#1f2937">0.000</text>
+<text x="68" y="275.0" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#1f2937">0.050</text>
+<text x="68" y="200.0" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#1f2937">0.100</text>
+<text x="68" y="125.0" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#1f2937">0.150</text>
+<text x="68" y="50.0" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#1f2937">0.200</text>
+<rect x="100" y="60" width="14" height="14" fill="#2563eb" />
+<text x="122" y="71" font-size="12" fill="#1f2937">aligned windows</text>
+<rect x="250" y="60" width="14" height="14" fill="#059669" />
+<text x="272" y="71" font-size="12" fill="#1f2937">half-shifted windows</text>
+<text x="450.0" y="412" text-anchor="middle" font-size="12" fill="#1f2937">window size</text>
+<text x="20" y="210.0" text-anchor="middle" font-size="12" fill="#1f2937" transform="rotate(-90 20 210.0)">share of windows whose minimum lands in first 1/8</text>
+</svg>
+

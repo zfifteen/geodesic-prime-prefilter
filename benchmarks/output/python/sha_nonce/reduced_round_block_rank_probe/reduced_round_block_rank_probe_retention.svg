@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420">
+<rect width="900" height="420" fill="white" />
+<text x="450.0" y="28" text-anchor="middle" font-size="18" fill="#111827">Retained final-hit share after reduced-round block ranking</text>
+<line x1="80" y1="200.0" x2="860" y2="200.0" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 6" />
+<text x="860" y="192.0" text-anchor="end" font-size="12" fill="#dc2626">baseline retained share</text>
+<line x1="80" y1="50" x2="80" y2="350" stroke="#111827" stroke-width="1.5" />
+<line x1="80" y1="350" x2="860" y2="350" stroke="#111827" stroke-width="1.5" />
+<polyline fill="none" stroke="#2563eb" stroke-width="3" points="80.0,193.9 340.0,195.6 600.0,202.0 860.0,185.2" />
+<circle cx="80.0" cy="193.9" r="4" fill="#2563eb" />
+<circle cx="340.0" cy="195.6" r="4" fill="#2563eb" />
+<circle cx="600.0" cy="202.0" r="4" fill="#2563eb" />
+<circle cx="860.0" cy="185.2" r="4" fill="#2563eb" />
+<text x="80.0" y="390" text-anchor="middle" font-size="12" fill="#1f2937">4</text>
+<text x="340.0" y="390" text-anchor="middle" font-size="12" fill="#1f2937">8</text>
+<text x="600.0" y="390" text-anchor="middle" font-size="12" fill="#1f2937">12</text>
+<text x="860.0" y="390" text-anchor="middle" font-size="12" fill="#1f2937">16</text>
+<text x="68" y="350.0" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#1f2937">0.000</text>
+<text x="68" y="275.0" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#1f2937">0.125</text>
+<text x="68" y="200.0" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#1f2937">0.250</text>
+<text x="68" y="125.0" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#1f2937">0.375</text>
+<text x="68" y="50.0" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#1f2937">0.500</text>
+<text x="450.0" y="412" text-anchor="middle" font-size="12" fill="#1f2937">reduced-round depth</text>
+<text x="20" y="210.0" text-anchor="middle" font-size="12" fill="#1f2937" transform="rotate(-90 20 210.0)">share of final hits retained in selected blocks</text>
+</svg>
+
