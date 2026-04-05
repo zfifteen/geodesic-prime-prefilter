@@ -61,3 +61,10 @@ They target the exact missing universal step identified in the findings notes:
   - ranks those pairs by critical-ratio slack,
   - and emits the current ratio-form frontier of the no-early-spoiler
     condition.
+- [`large_gap_margin_scan.py`](./large_gap_margin_scan.py):
+  exact large-gap extractor that
+  - records the worst realized no-early-spoiler case inside each of the
+    largest gaps,
+  - records the worst realized case for each exact gap size,
+  - and tests directly whether large gap length is where the current margin
+    surface tightens.

@@ -59,6 +59,10 @@ refer directly to an older artifact whose title or filename already uses it.
   Exact pair-frontier note identifying which winner/earlier divisor-class
   pairs come closest to the ratio-form spoiler threshold on the current exact
   surface.
+- [`large_gap_margin_findings.md`](./large_gap_margin_findings.md):
+  Exact large-gap companion note recording the worst realized no-early-spoiler
+  margin in the largest gaps and for each exact gap size on the current
+  surface.
 
 ## Legacy Inputs
 
