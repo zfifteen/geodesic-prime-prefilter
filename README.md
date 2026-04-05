@@ -44,10 +44,31 @@ before the gap closes.
   [output/gwr_proof/earlier_spoiler_local_dominator_scan_2e7.json](output/gwr_proof/earlier_spoiler_local_dominator_scan_2e7.json)
   reports `1,163,198` gaps, `3,349,874` earlier candidates, and `0`
   unresolved.
+- **Exact no-early-spoiler surface through $2 \times 10^7$.** The committed
+  artifact
+  [output/gwr_proof/no_early_spoiler_margin_scan_2e7.json](output/gwr_proof/no_early_spoiler_margin_scan_2e7.json)
+  reports `1,163,198` gaps, `3,349,874` earlier candidates before the true
+  `GWR` carrier, and `0` exact earlier spoilers. The companion artifacts
+  [output/gwr_proof/no_early_spoiler_ratio_frontier_2e7.json](output/gwr_proof/no_early_spoiler_ratio_frontier_2e7.json),
+  [output/gwr_proof/large_gap_margin_scan_2e7.json](output/gwr_proof/large_gap_margin_scan_2e7.json),
+  and
+  [output/gwr_proof/asymptotic_bridge_load_scan_2e7.json](output/gwr_proof/asymptotic_bridge_load_scan_2e7.json)
+  record the exact pair frontier, large-gap companion surface, and normalized
+  bridge-load surface for the same no-early-spoiler condition.
 - **Square-adjacent stress test at $10^{12}$.** The matched pre-square and
   post-square artifact
   [output/gwr_proof/earlier_spoiler_local_dominator_scan_square_adjacent_1e12.json](output/gwr_proof/earlier_spoiler_local_dominator_scan_square_adjacent_1e12.json)
   reports `137,771` gaps, `649,769` earlier candidates, and `0` unresolved.
+- **Current proof bridge status.** The note
+  [gwr/experiments/proof/proof_bridge_universal_lemma.md](gwr/experiments/proof/proof_bridge_universal_lemma.md)
+  isolates the remaining large-$p$ bridge as an explicit-constant task, and
+  the helper
+  [gwr/experiments/proof/proof_bridge_certificate.py](gwr/experiments/proof/proof_bridge_certificate.py)
+  checks concrete gap-bound and divisor-growth parameter choices against the
+  exact finite base already committed in the repo. The current proof-facing
+  status is therefore: exact finite base through $2 \times 10^7$, explicit
+  normalized bridge target identified, universal closure still dependent on
+  chosen effective constants.
 - **No-Later-Simpler-Composite condition.** Once the implemented winner
   appears inside a tested prime gap, the next prime arrives before any later
   interior composite with strictly smaller divisor count. The dedicated closure
@@ -85,6 +106,18 @@ The formal theorem file expresses this as a hierarchical local-dominator law.
 The executed artifacts in this repo then show zero unresolved earlier spoilers
 on the full exact surface through $2 \times 10^7$ and on the matched
 square-adjacent windows at $10^{12}$.
+
+The newer no-early-spoiler artifacts sharpen that same picture against the
+actual winner itself. On the full exact through-$2 \times 10^7$ surface, the
+repo records zero exact earlier spoilers against the true `GWR` carrier,
+identifies the tightest realized winner/earlier divisor-class frontier, shows
+that the largest gaps are not the hard regime, and packages the remaining
+universal target as a normalized bridge load. See
+[gwr/findings/no_early_spoiler_margin_findings.md](gwr/findings/no_early_spoiler_margin_findings.md),
+[gwr/findings/no_early_spoiler_ratio_frontier_findings.md](gwr/findings/no_early_spoiler_ratio_frontier_findings.md),
+[gwr/findings/large_gap_margin_findings.md](gwr/findings/large_gap_margin_findings.md),
+and
+[gwr/findings/asymptotic_bridge_load_findings.md](gwr/findings/asymptotic_bridge_load_findings.md).
 
 This one law compresses several separate-looking features on the prime-gap
 interior surface:
