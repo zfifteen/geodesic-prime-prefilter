@@ -9,6 +9,6 @@ venv/
 .idea/
 tests/performance-comparisons/bouncycastle-keygen-baseline/vendor/bc-java-r1rv83
 tests/performance-comparisons/bouncycastle-keygen-baseline/vendor/bc-java-r1rv83-rsa-upper-band-v1
-
+tests/performance-comparisons/bouncycastle-keygen-baseline/vendor/bc-java-r1rv83-dci-prefilter-v1
 # OTHER
 AGENTS.md
