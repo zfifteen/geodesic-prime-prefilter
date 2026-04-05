@@ -56,30 +56,20 @@ validation ladder.
 
 Let $(p, q)$ be one prime gap with interior integers
 
-$$
-p + 1,\ p + 2,\ \ldots,\ q - 1.
-$$
+$$p + 1,\ p + 2,\ \ldots,\ q - 1.$$
 
 Write the smallest divisor class present in the interior as
 
-$$
-\delta_{\min}(p, q) = \min_{p < n < q} d(n).
-$$
+$$\delta_{\min}(p, q) = \min_{p < n < q} d(n).$$
 
 For each divisor class $\delta$ present in the gap, write its first-arrival
 offset as
 
-$$
-A_{\delta}(p, q) = \min \{\, r \ge 1 : d(p + r) = \delta \,\}.
-$$
+$$A_{\delta}(p, q) = \min \{r \ge 1 : d(p + r) = \delta\}.$$
 
 The implemented winner is
 
-$$
-w = \arg\max_{p < n < q} L(n),
-\qquad
-L(n) = \left(1 - \frac{d(n)}{2}\right)\ln(n).
-$$
+$$w = \arg\max_{p < n < q} L(n), \quad L(n) = \left(1 - \frac{d(n)}{2}\right)\ln(n).$$
 
 The point of this note is that the current data are better read through
 $\delta_{\min}$ and $A_{\delta}$ than through a generic score-optimization
@@ -94,9 +84,7 @@ The cleanest current reading is:
 
 In symbols, the layered reading is
 
-$$
-w = p + A_{\delta_{\min}(p, q)}(p, q).
-$$
+$$w = p + A_{\delta_{\min}(p, q)}(p, q).$$
 
 This says the competition is hierarchical by divisor layer:
 
@@ -145,9 +133,7 @@ class by class across the whole observed winner surface.
 
 The dominant regime is still `d=4`, so the most useful arrival observable is
 
-$$
-A_4(p, q) = \min \{\, r \ge 1 : d(p + r) = 4 \,\},
-$$
+$$A_4(p, q) = \min \{r \ge 1 : d(p + r) = 4\},$$
 
 when a `d=4` carrier is present.
 
@@ -193,14 +179,8 @@ and more like "an early low-divisor arrival that usually never gets overturned."
 In the dominant `d=4` regime, the first strictly simpler class is `d=3`, and
 that class occurs exactly at prime squares.
 
-So the next later threat to a `d=4` winner is
-
-$$
-\Sigma_{+}(w)
-= \min \{\, s^2 : s^2 > w,\ s \text{ prime} \,\},
-$$
-
-the next prime square after the winner.
+So the next later threat to a `d=4` winner is the next prime square after the
+winner. Write that quantity as $\Sigma_{+}(w)$.
 
 This introduces one hidden variable:
 
@@ -208,15 +188,11 @@ the gap's position relative to that next prime-square boundary.
 
 It is useful to separate two quantities:
 
-$$
-\Phi_{\square}(w) = \Sigma_{+}(w) - w,
-$$
+$$\Phi_{\square}(w) = \Sigma_{+}(w) - w,$$
 
 the winner's remaining distance to the next prime square, and
 
-$$
-M_{\square}(w, q) = \Sigma_{+}(w) - q,
-$$
+$$M_{\square}(w, q) = \Sigma_{+}(w) - q,$$
 
 the closure margin left after the right prime arrives.
 
@@ -253,9 +229,7 @@ The dominant reduction already says:
 
 In that regime, `No-Later-Simpler-Composite` becomes
 
-$$
-q < \Sigma_{+}(w).
-$$
+$$q < \Sigma_{+}(w).$$
 
 So the dominant `d=4` version of `NLCT` can be read as:
 

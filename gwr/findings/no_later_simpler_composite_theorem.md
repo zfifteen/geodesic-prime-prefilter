@@ -14,35 +14,25 @@ That idea can be stated at two different levels.
 Let $(p, q)$ be a prime gap, and let $w$ be the implemented log-score winner on
 the interior composites:
 
-$$
-w = \arg\max_{p < n < q} L(n),
-$$
+$$w = \arg\max_{p < n < q} L(n).$$
 
 where
 
-$$
-L(n) = \left(1 - \frac{d(n)}{2}\right)\ln(n).
-$$
+$$L(n) = \left(1 - \frac{d(n)}{2}\right)\ln(n).$$
 
 Define the later strictly simpler threat horizon of $w$ by
 
-$$
-T_{<}(w) = \min \{\, n > w : d(n) < d(w) \,\},
-$$
+$$T_{<}(w) = \min \{n > w : d(n) < d(w)\}.$$
 
 when such an integer exists.
 
 If GWR holds on the gap, then necessarily
 
-$$
-q \le T_{<}(w).
-$$
+$$q \le T_{<}(w).$$
 
 Equivalently:
 
-$$
-\text{there is no interior integer } n \text{ with } w < n < q \text{ and } d(n) < d(w).
-$$
+There is no interior integer $n$ with $w < n < q$ and $d(n) < d(w)$.
 
 This is an exact corollary of GWR, not a new theorem.
 
@@ -60,16 +50,11 @@ prime-gap law.
 For every prime gap $(p, q)$, let $w$ be the implemented log-score winner on
 the interior composites. Then
 
-$$
-q \le T_{<}(w),
-$$
+$$q \le T_{<}(w),$$
 
 or equivalently,
 
-$$
-\text{there is no later interior composite } n \text{ with } w < n < q
-\text{ and } d(n) < d(w).
-$$
+there is no later interior composite $n$ with $w < n < q$ and $d(n) < d(w)$.
 
 In plain language:
 
@@ -104,15 +89,13 @@ Among composite integers, $d(n)=3$ occurs exactly at prime squares.
 
 So when $d(w)=4$, the threat horizon becomes
 
-$$
-T_{<}(w) = \text{the first prime square strictly larger than } w.
-$$
+$$T_{<}(w) = S_{+}(w).$$
+
+where $S_{+}(w)$ denotes the next prime square after $w$.
 
 In that common case, the candidate theorem says:
 
-$$
-q \le \text{next prime square after } w.
-$$
+$$q \le S_{+}(w).$$
 
 That is a very concrete closure law.
 
@@ -140,17 +123,13 @@ So the current status is:
 
 This framing introduces a concrete observable:
 
-$$
-T_{<}(w) - w,
-$$
+$$T_{<}(w) - w,$$
 
 the distance from the winner to the first later strictly simpler threat.
 
 The prime gap then has a companion closure margin:
 
-$$
-T_{<}(w) - q.
-$$
+$$T_{<}(w) - q.$$
 
 A positive margin means the gap closed before the threat arrived.
 

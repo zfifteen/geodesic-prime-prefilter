@@ -47,9 +47,7 @@ about `0.9999998973`, at the gap `(3851459, 3851587)` of length `128`, with:
 
 By contrast, the global gap-size frontier leader remains the gap-4 pair
 
-$$
-(d_{\min}, d(k)) = (30, 32),
-$$
+$$ (d_{\min}, d(k)) = (30, 32). $$
 
 with critical-ratio margin about `0.0714285168`.
 

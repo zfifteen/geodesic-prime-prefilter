@@ -64,7 +64,9 @@ $$w - k \le g(p).$$
 
 Since
 
-$$\ln(1 + x) \le x \text{ for } x > -1.$$
+For $x > -1$, use
+
+$$\ln(1 + x) \le x.$$
 
 one has
 
@@ -122,10 +124,12 @@ $$B(k,w) < p^{\theta - 1} (\ln p)^{-1} \exp\left(c \frac{\ln p}{\ln\ln p}\right)
 Because $\theta < 1$, the exponent $\theta - 1 + o(1)$ is eventually
 negative. Therefore
 
-$$B(k,w) \to 0 \text{ as } p \to \infty.$$
+$$B(k,w) \to 0.$$
 
-So there exists an effective threshold $N_{\mathrm{bridge}}$ such that for all
-prime gaps with left endpoint $p \ge N_{\mathrm{bridge}}$,
+as $p \to \infty$.
+
+So there exists an effective threshold $N_{bridge}$ such that for all
+prime gaps with left endpoint $p \ge N_{bridge}$,
 
 $$B(k,w) < 1.$$
 
@@ -142,7 +146,7 @@ To close the universal statement of `GWR`, two concrete tasks remain:
 1. choose explicit literature constants for
    - one effective divisor-function majoration, and
    - one effective prime-gap upper bound with exponent $\theta < 1$;
-2. compute an explicit numerical threshold $N_{\mathrm{bridge}}$ and verify
+2. compute an explicit numerical threshold $N_{bridge}$ and verify
    every gap up to that threshold.
 
 The current repo already supplies exact finite verification through

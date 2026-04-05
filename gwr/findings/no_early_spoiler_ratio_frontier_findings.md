@@ -29,9 +29,7 @@ The current top ratio-form frontier pairs are:
 So the tightest ratio-form slack is concentrated in higher winner classes where
 the critical threshold
 
-$$
-\frac{d(k) - 2}{d_{\min} - 2}
-$$
+$$\frac{d(k) - 2}{d_{\min} - 2}$$
 
 already sits close to $1$.
 
@@ -39,13 +37,11 @@ already sits close to $1$.
 
 The current exact leader is the pair
 
-$$
-(d_{\min}, d(k)) = (30, 32),
-$$
+$$ (d_{\min}, d(k)) = (30, 32). $$
 
 realized at the gap $(2486509, 2486513)$ with:
 
-- winner $m^* = 2486512$,
+- winner $w = 2486512$,
 - earlier candidate $k = 2486510$,
 - critical-ratio margin about `0.0714285168`,
 - direct log-score margin about `14.7263794181`.
