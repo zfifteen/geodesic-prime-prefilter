@@ -5,29 +5,21 @@ This note records the executed normalized bridge surface from
 
 The universal proof target for the no-early-spoiler condition is
 
-$$
-\frac{\ln m^*}{\ln k} < 1 + \frac{\delta}{d_{\min} - 2},
-$$
+$$\frac{\ln w}{\ln k} < 1 + \frac{\delta}{d_{\min} - 2}.$$
 
 where
 
-- $m^*$ is the true `GWR` carrier,
+- $w$ is the true `GWR` carrier,
 - $k$ is an earlier interior candidate,
 - $\delta = d(k) - d_{\min}$.
 
 This artifact rewrites that target as one dimensionless load:
 
-$$
-\text{bridge\_load}
-=
-\frac{\frac{\ln m^*}{\ln k} - 1}{\frac{\delta}{d_{\min} - 2}}.
-$$
+$$B(k,w) = \frac{\frac{\ln w}{\ln k} - 1}{\frac{\delta}{d_{\min} - 2}}.$$
 
 So the no-early-spoiler condition is exactly
 
-$$
-\text{bridge\_load} < 1.
-$$
+$$B(k,w) < 1.$$
 
 ## Executed Artifact
 
@@ -44,7 +36,7 @@ On the exact through-$2 \cdot 10^7$ surface:
 
 That maximum normalized load occurs at the gap $(7, 11)$ with:
 
-- winner $m^* = 9$,
+- winner $w = 9$,
 - earlier candidate $k = 8$,
 - winner class $d_{\min} = 3$,
 - earlier class $d = 4$.

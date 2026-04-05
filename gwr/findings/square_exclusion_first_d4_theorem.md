@@ -15,21 +15,15 @@ That idea can be stated at two different levels.
 Let $(p, q)$ be a prime gap, and let $w$ be the implemented log-score winner on
 the interior composites:
 
-$$
-w = \arg\max_{p < n < q} L(n),
-$$
+$$w = \arg\max_{p < n < q} L(n).$$
 
 where
 
-$$
-L(n) = \left(1 - \frac{d(n)}{2}\right)\ln(n).
-$$
+$$L(n) = \left(1 - \frac{d(n)}{2}\right)\ln(n).$$
 
 Assume that GWR holds on the gap and that
 
-$$
-d(w)=4.
-$$
+$$d(w)=4.$$
 
 Then two exact consequences follow.
 
@@ -37,11 +31,7 @@ Then two exact consequences follow.
 
 There is no interior integer $n$ with
 
-$$
-p < n < q
-\qquad\text{and}\qquad
-d(n)=3.
-$$
+$$p < n < q,\ d(n)=3.$$
 
 Equivalently, the gap contains no interior prime square.
 
@@ -49,15 +39,11 @@ Equivalently, the gap contains no interior prime square.
 
 If
 
-$$
-u = \min \{\, n : p < n < q \text{ and } d(n)=4 \,\},
-$$
+$$u = \min \{n : p < n < q,\ d(n)=4\}.$$
 
 then
 
-$$
-w = u.
-$$
+$$w = u.$$
 
 In words:
 
@@ -78,9 +64,7 @@ would force that earlier carrier to win instead.
 So once a GWR winner has divisor count $4$, the whole gap is forced into the
 shape:
 
-$$
->4,\ >4,\ \ldots,\ >4,\ 4,\ \ge 4,\ \ge 4,\ \ldots,\ \ge 4,
-$$
+$$>4,\ >4,\ \ldots,\ >4,\ 4,\ \ge 4,\ \ge 4,\ \ldots,\ \ge 4.$$
 
 with no interior $3$ anywhere.
 
@@ -103,15 +87,11 @@ interior integer with divisor count $4$.
 
 Equivalently, if
 
-$$
-u = \min \{\, n : p < n < q \text{ and } d(n)=4 \,\},
-$$
+$$u = \min \{n : p < n < q,\ d(n)=4\}.$$
 
 then
 
-$$
-u = \arg\max_{p < n < q} L(n).
-$$
+$$u = \arg\max_{p < n < q} L(n).$$
 
 In plain language:
 
