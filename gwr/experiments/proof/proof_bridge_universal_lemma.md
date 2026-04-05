@@ -28,12 +28,12 @@ $$
 L(n) = \left(1 - \frac{d(n)}{2}\right)\ln(n).
 $$
 
-So inside a prime gap, once the leftmost minimum-divisor carrier $m^{*}$ appears,
+So inside a prime gap, once the leftmost minimum-divisor carrier $w$ appears,
 every later candidate is already eliminated.
 
 The only missing universal step is the earlier side:
 
-for every earlier interior candidate $k < m^{*}$ with
+for every earlier interior candidate $k < w$ with
 
 $$
 \delta = d(k) - d_{\min} \ge 1,
@@ -42,13 +42,13 @@ $$
 prove
 
 $$
-L(k) < L(m^{*}).
+L(k) < L(w).
 $$
 
 Equivalently,
 
 $$
-\frac{\ln m^{*}}{\ln k} < 1 + \frac{\delta}{d_{\min} - 2}.
+\frac{\ln w}{\ln k} < 1 + \frac{\delta}{d_{\min} - 2}.
 $$
 
 ## 2. Normalized Bridge Load
@@ -56,16 +56,16 @@ $$
 Define the dimensionless bridge quantity
 
 $$
-B(k,m^{*})
+B(k,w)
 =
-\frac{\frac{\ln m^{*}}{\ln k} - 1}{\frac{\delta}{d_{\min} - 2}}.
+\frac{\frac{\ln w}{\ln k} - 1}{\frac{\delta}{d_{\min} - 2}}.
 $$
 
 $$
-L(k) < L(m^{*})
-\quad\Longleftrightarrow\quad
-B(k,m^{*}) < 1.
+B(k,w) < 1.
 $$
+
+This is equivalent to $L(k) < L(w)$.
 
 This is the normalized quantity measured directly by
 [`asymptotic_bridge_load_scan.py`](./asymptotic_bridge_load_scan.py).
@@ -74,10 +74,10 @@ This is the normalized quantity measured directly by
 
 Let $g(p) = q - p$ denote the prime gap.
 
-For any earlier candidate $k$ and winner $m^{*}$ in the gap interior,
+For any earlier candidate $k$ and winner $w$ in the gap interior,
 
 $$
-m^{*} - k \le g(p).
+w - k \le g(p).
 $$
 
 Since
@@ -89,11 +89,11 @@ $$
 one has
 
 $$
-\ln\frac{m^{*}}{k}
+\ln\frac{w}{k}
 =
-\ln\!\left(1 + \frac{m^{*} - k}{k}\right)
+\ln\left(1 + \frac{w - k}{k}\right)
 \le
-\frac{m^{*} - k}{k}
+\frac{w - k}{k}
 \le
 \frac{g(p)}{p+1}
 <
@@ -103,9 +103,9 @@ $$
 Because $\ln k > \ln p$, it follows that
 
 $$
-\frac{\ln m^{*}}{\ln k} - 1
+\frac{\ln w}{\ln k} - 1
 =
-\frac{\ln(m^{*}/k)}{\ln k}
+\frac{\ln(w/k)}{\ln k}
 <
 \frac{g(p)}{p \ln p}.
 $$
@@ -141,7 +141,7 @@ $$
 
 for all sufficiently large $n$, with an effective absolute constant $c > 0$.
 
-Since $m^{*}$ lies in the gap interior near $p$, this gives
+Since $w$ lies in the gap interior near $p$, this gives
 
 $$
 d_{\min} - 2
@@ -168,7 +168,7 @@ So the bridge denominator is bounded below by a subpolynomial term.
 Combine the numerator and denominator bounds:
 
 $$
-B(k,m^{*})
+B(k,w)
 <
 \frac{g(p)}{p \ln p}
 \cdot
@@ -188,7 +188,7 @@ for all sufficiently large $p$, with some fixed $\theta < 1$.
 Then
 
 $$
-B(k,m^{*})
+B(k,w)
 <
 p^{\theta - 1}
 (\ln p)^{-1}
@@ -203,7 +203,7 @@ Because $\theta < 1$, the exponent $\theta - 1 + o(1)$ is eventually
 negative. Therefore
 
 $$
-B(k,m^{*}) \to 0
+B(k,w) \to 0
 \qquad\text{as } p \to \infty.
 $$
 
@@ -211,7 +211,7 @@ So there exists an effective threshold $N_{\mathrm{bridge}}$ such that for all
 prime gaps with left endpoint $p \ge N_{\mathrm{bridge}}$,
 
 $$
-B(k,m^{*}) < 1
+B(k,w) < 1
 $$
 
 for every earlier candidate $k$.
