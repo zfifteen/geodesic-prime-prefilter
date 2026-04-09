@@ -45,6 +45,9 @@ def test_summary_reports_bundle_ambiguity_and_distributions():
     assert summary["prefix_peak_exact_share"]["1"] > 0.0
     assert summary["next_peak_within_first_open_share"] > 0.0
     assert "4" in summary["next_dmin_distribution"]
+    assert summary["minimal_exact_bundle"] is not None
+    assert summary["minimal_exact_bundle"]["max_target_support_size"] == 1
+    assert summary["minimal_exact_bundle"]["prefix_cutoff"] >= 1
     assert summary["bundle_ambiguity"]
     assert any(
         bundle["state_keys"] == ["residue_mod30", "current_gap_width", "current_dmin", "current_peak_offset"]
@@ -71,4 +74,5 @@ def test_entry_point_writes_transition_artifacts(tmp_path):
     payload = json.loads(summary_path.read_text(encoding="utf-8"))
     assert payload["oracle_exact_rate_nonempty"] == 1.0
     assert payload["prefix_min_match_share"]["1"] > 0.0
+    assert payload["minimal_exact_bundle"] is not None
     assert payload["transition_count"] > 0

@@ -9,6 +9,7 @@ import json
 import sys
 import time
 from collections import Counter, defaultdict
+from itertools import combinations
 from pathlib import Path
 
 from sympy import nextprime
@@ -26,6 +27,13 @@ DEFAULT_OUTPUT_DIR = ROOT / "output"
 DEFAULT_MAX_RIGHT_PRIME = 1_000_000
 PREFIX_OFFSETS = tuple(range(1, 13))
 PREFIX_SIGNATURE_CUTOFFS = (2, 4, 6, 8, 10, 12)
+STATE_COMPONENT_KEYS = (
+    "residue_mod30",
+    "first_open_offset",
+    "current_gap_width",
+    "current_dmin",
+    "current_peak_offset",
+)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -92,6 +100,49 @@ def analyze_bundle(rows: list[dict[str, object]], keys: tuple[str, ...]) -> dict
         "unique_observation_share": unique_observation_count / total_observations,
         "max_target_support_size": max_support_size,
     }
+
+
+def bundle_is_exact(rows: list[dict[str, object]], keys: tuple[str, ...]) -> bool:
+    """Return whether one state bundle determines the next-gap state exactly."""
+    support: dict[tuple[object, ...], tuple[object, object]] = {}
+    for row in rows:
+        signature = state_signature(row, keys)
+        if row["next_gap_empty"]:
+            target = ("empty", None)
+        else:
+            target = (row["next_dmin"], row["next_peak_offset"])
+
+        previous = support.get(signature)
+        if previous is None:
+            support[signature] = target
+            continue
+        if previous != target:
+            return False
+    return True
+
+
+def minimal_exact_bundle(rows: list[dict[str, object]]) -> dict[str, object] | None:
+    """Return the smallest exact next-gap state bundle in the tested candidate family."""
+    best_bundle = None
+    best_score: tuple[int, int, int] | None = None
+    for cutoff in range(1, len(PREFIX_OFFSETS) + 1):
+        prefix_keys = tuple(f"prefix_d_{offset}" for offset in range(1, cutoff + 1))
+        for component_count in range(len(STATE_COMPONENT_KEYS) + 1):
+            for component_keys in combinations(STATE_COMPONENT_KEYS, component_count):
+                keys = component_keys + prefix_keys
+                score = (len(keys), cutoff, component_count)
+                if best_score is not None and score > best_score:
+                    continue
+                if not bundle_is_exact(rows, keys):
+                    continue
+                bundle = analyze_bundle(rows, keys)
+                bundle["prefix_cutoff"] = cutoff
+                bundle["component_keys"] = list(component_keys)
+                bundle["total_key_count"] = len(keys)
+                if best_score is None or score < best_score:
+                    best_score = score
+                    best_bundle = bundle
+    return best_bundle
 
 
 def transition_rows(max_right_prime: int) -> list[dict[str, object]]:
@@ -260,6 +311,7 @@ def summarize_rows(rows: list[dict[str, object]]) -> dict[str, object]:
         "next_dmin_distribution": {str(key): int(value) for key, value in next_dmin_counter.items()},
         "residue_mod30_to_next_dmin": residue_counters,
         "first_open_offset_to_next_dmin": open_offset_counters,
+        "minimal_exact_bundle": minimal_exact_bundle(rows),
         "bundle_ambiguity": [analyze_bundle(rows, keys) for keys in bundle_specs],
     }
 
