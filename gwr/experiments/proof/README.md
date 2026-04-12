@@ -73,19 +73,29 @@ They target the exact universal bridge step identified in the findings notes:
   - rewrites the no-early-spoiler inequality as a dimensionless load,
   - records the maximum realized bridge load on the exact surface,
   - and emits pair and gap-size frontiers in that normalized coordinate.
+- [`parallel_no_early_spoiler_scan.py`](./parallel_no_early_spoiler_scan.py):
+  deterministic segmented scanner that
+  - partitions the left-endpoint prime range into fixed-width segments,
+  - writes one JSON checkpoint per completed segment,
+  - aggregates exact spoiler counts and bridge-load extrema across segments,
+  - and provides the straight execution path for extending the finite GWR base
+    beyond the current $2 \cdot 10^7$ surface.
 - [`proof_bridge_universal_lemma.md`](./proof_bridge_universal_lemma.md):
   theorem-facing bridge note that
   - derives a non-empirical large-$p$ upper bound for the normalized
     no-early-spoiler load,
   - records the exact dependence on explicit literature constants,
-  - and records that the evaluated thresholds land below the committed finite
-    base for the headline $A=1$ closure.
+  - separates the bounded unconditional Dusart regime from the provisional BHP
+    tail,
+  - and records the verified overlap with the committed finite base.
 - [`proof_bridge_certificate.py`](./proof_bridge_certificate.py):
   explicit-constant certificate helper that
   - loads the exact finite bridge artifact,
-  - computes the bridge threshold implied by one chosen gap bound and divisor
-  majoration,
-  - and reports whether the verified finite base already closes that bridge.
+  - computes the provisional BHP tail threshold for one chosen fixed-exponent
+    gap bound and divisor majoration,
+  - computes the bounded unconditional Dusart coverage interval for the same
+    divisor constant,
+  - and reports how those regimes overlap the verified finite base.
 - [`../../../output/gwr_proof/proof_bridge_certificate_2e7.json`](../../../output/gwr_proof/proof_bridge_certificate_2e7.json):
   committed certificate artifact recording the evaluated constants and closure
   status for the $2 \cdot 10^7$ finite base.
