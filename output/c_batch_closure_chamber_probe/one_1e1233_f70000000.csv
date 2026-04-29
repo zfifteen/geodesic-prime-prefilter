@@ -1,0 +1,2 @@
+label,digits,candidate_bound,factor_bound,wheel_open,closed,open,closure_rate,first_open_offset,expected_gap,pre_expected_open,expected_closed,first_open_matches_expected
+single,1234,4096,70000000,1093,973,120,0.890210430009,81,0,0,0,0
