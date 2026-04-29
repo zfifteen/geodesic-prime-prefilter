@@ -1,5 +1,5 @@
 case,scale,candidate_bound,q_gap,factor_bound,witness_count,pre_q_wheel_open,final_closed,certificate_closed,missing,invalid_witness,q_closed,accepted,expected_accept,seconds
-hybrid_complete_10^12,10^12,128,39,10,9,11,11,9,0,0,0,1,1,0.000019
-runtime_complete_10^16,10^16,4096,61,70000000,0,16,16,0,0,0,0,1,1,0.303700
-incomplete_certificate_10^1233,10^1233,4096,1269,200000000,0,339,307,0,32,0,0,0,0,1.525469
-tampered_certificate_10^1233,10^1233,4096,1269,200000000,32,339,307,0,32,32,0,0,0,1.484638
+hybrid_complete_10^12,10^12,128,39,10,9,11,11,9,0,0,0,1,1,0.000031
+runtime_complete_10^16,10^16,4096,61,70000000,0,16,16,0,0,0,0,1,1,0.432514
+incomplete_certificate_10^1233,10^1233,4096,1269,200000000,0,339,307,0,32,0,0,0,0,1.768856
+tampered_certificate_10^1233,10^1233,4096,1269,200000000,32,339,307,0,32,32,0,0,0,1.859051
