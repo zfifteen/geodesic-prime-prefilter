@@ -15,6 +15,7 @@ typedef struct {
 typedef struct {
     size_t offset;
     const char* witness_decimal;
+    pgs_witness_kind_t kind;
 } witness_entry_t;
 
 typedef struct {
@@ -40,30 +41,116 @@ typedef struct {
 } verifier_result_t;
 
 static const witness_entry_t NO_WITNESSES[] = {
-    {0, NULL},
+    {0, NULL, PGS_WITNESS_FACTOR},
 };
 
 static const witness_entry_t FAKE_1E1233_WITNESSES[] = {
-    {81, "3"}, {97, "3"}, {159, "3"}, {217, "3"},
-    {247, "3"}, {259, "3"}, {307, "3"}, {423, "3"},
-    {471, "3"}, {487, "3"}, {511, "3"}, {523, "3"},
-    {531, "3"}, {601, "3"}, {669, "3"}, {679, "3"},
-    {769, "3"}, {783, "3"}, {819, "3"}, {877, "3"},
-    {907, "3"}, {921, "3"}, {931, "3"}, {957, "3"},
-    {987, "3"}, {997, "3"}, {1021, "3"}, {1047, "3"},
-    {1053, "3"}, {1083, "3"}, {1087, "3"}, {1243, "3"},
+    {81, "3", PGS_WITNESS_FACTOR},
+    {97, "3", PGS_WITNESS_FACTOR},
+    {159, "3", PGS_WITNESS_FACTOR},
+    {217, "3", PGS_WITNESS_FACTOR},
+    {247, "3", PGS_WITNESS_FACTOR},
+    {259, "3", PGS_WITNESS_FACTOR},
+    {307, "3", PGS_WITNESS_FACTOR},
+    {423, "3", PGS_WITNESS_FACTOR},
+    {471, "3", PGS_WITNESS_FACTOR},
+    {487, "3", PGS_WITNESS_FACTOR},
+    {511, "3", PGS_WITNESS_FACTOR},
+    {523, "3", PGS_WITNESS_FACTOR},
+    {531, "3", PGS_WITNESS_FACTOR},
+    {601, "3", PGS_WITNESS_FACTOR},
+    {669, "3", PGS_WITNESS_FACTOR},
+    {679, "3", PGS_WITNESS_FACTOR},
+    {769, "3", PGS_WITNESS_FACTOR},
+    {783, "3", PGS_WITNESS_FACTOR},
+    {819, "3", PGS_WITNESS_FACTOR},
+    {877, "3", PGS_WITNESS_FACTOR},
+    {907, "3", PGS_WITNESS_FACTOR},
+    {921, "3", PGS_WITNESS_FACTOR},
+    {931, "3", PGS_WITNESS_FACTOR},
+    {957, "3", PGS_WITNESS_FACTOR},
+    {987, "3", PGS_WITNESS_FACTOR},
+    {997, "3", PGS_WITNESS_FACTOR},
+    {1021, "3", PGS_WITNESS_FACTOR},
+    {1047, "3", PGS_WITNESS_FACTOR},
+    {1053, "3", PGS_WITNESS_FACTOR},
+    {1083, "3", PGS_WITNESS_FACTOR},
+    {1087, "3", PGS_WITNESS_FACTOR},
+    {1243, "3", PGS_WITNESS_FACTOR},
+};
+
+static const witness_entry_t PARTIAL_1E1233_WITNESSES[] = {
+    {97, "13485985878505098653087", PGS_WITNESS_FACTOR},
+    {259, "1596877157", PGS_WITNESS_FACTOR},
+    {423, "263935673443192995592639", PGS_WITNESS_FACTOR},
+    {511, "42743185439", PGS_WITNESS_FACTOR},
+    {523, "223502401", PGS_WITNESS_FACTOR},
+    {531, "459525377", PGS_WITNESS_FACTOR},
+    {601, "800678377553", PGS_WITNESS_FACTOR},
+    {669, "356386241", PGS_WITNESS_FACTOR},
+    {679, "930815410363", PGS_WITNESS_FACTOR},
+    {769, "4113839410693", PGS_WITNESS_FACTOR},
+    {783, "155034584533", PGS_WITNESS_FACTOR},
+    {819, "71209726858447", PGS_WITNESS_FACTOR},
+    {877, "90961441396431761", PGS_WITNESS_FACTOR},
+    {907, "1271987883619", PGS_WITNESS_FACTOR},
+    {921, "1337865161465878931", PGS_WITNESS_FACTOR},
+    {931, "425597759", PGS_WITNESS_FACTOR},
+    {957, "5141226043043", PGS_WITNESS_FACTOR},
+    {987, "24541232753", PGS_WITNESS_FACTOR},
+    {997, "5950437168328181", PGS_WITNESS_FACTOR},
+    {1021, "255164921827", PGS_WITNESS_FACTOR},
+    {1047, "29218369049", PGS_WITNESS_FACTOR},
+    {1083, "2146982215818165508117211", PGS_WITNESS_FACTOR},
+    {1087, "212495643561138799", PGS_WITNESS_FACTOR},
+    {1243, "12828853937981", PGS_WITNESS_FACTOR},
+};
+
+static const witness_entry_t COMPLETE_1E1233_WITNESSES[] = {
+    {81, "2", PGS_WITNESS_COMPOSITE_POWER},
+    {97, "13485985878505098653087", PGS_WITNESS_FACTOR},
+    {159, "2", PGS_WITNESS_COMPOSITE_POWER},
+    {217, "2", PGS_WITNESS_COMPOSITE_POWER},
+    {247, "2", PGS_WITNESS_COMPOSITE_POWER},
+    {259, "1596877157", PGS_WITNESS_FACTOR},
+    {307, "2", PGS_WITNESS_COMPOSITE_POWER},
+    {423, "263935673443192995592639", PGS_WITNESS_FACTOR},
+    {471, "2", PGS_WITNESS_COMPOSITE_POWER},
+    {487, "2", PGS_WITNESS_COMPOSITE_POWER},
+    {511, "42743185439", PGS_WITNESS_FACTOR},
+    {523, "223502401", PGS_WITNESS_FACTOR},
+    {531, "459525377", PGS_WITNESS_FACTOR},
+    {601, "800678377553", PGS_WITNESS_FACTOR},
+    {669, "356386241", PGS_WITNESS_FACTOR},
+    {679, "930815410363", PGS_WITNESS_FACTOR},
+    {769, "4113839410693", PGS_WITNESS_FACTOR},
+    {783, "155034584533", PGS_WITNESS_FACTOR},
+    {819, "71209726858447", PGS_WITNESS_FACTOR},
+    {877, "90961441396431761", PGS_WITNESS_FACTOR},
+    {907, "1271987883619", PGS_WITNESS_FACTOR},
+    {921, "1337865161465878931", PGS_WITNESS_FACTOR},
+    {931, "425597759", PGS_WITNESS_FACTOR},
+    {957, "5141226043043", PGS_WITNESS_FACTOR},
+    {987, "24541232753", PGS_WITNESS_FACTOR},
+    {997, "5950437168328181", PGS_WITNESS_FACTOR},
+    {1021, "255164921827", PGS_WITNESS_FACTOR},
+    {1047, "29218369049", PGS_WITNESS_FACTOR},
+    {1053, "2", PGS_WITNESS_COMPOSITE_POWER},
+    {1083, "2146982215818165508117211", PGS_WITNESS_FACTOR},
+    {1087, "212495643561138799", PGS_WITNESS_FACTOR},
+    {1243, "12828853937981", PGS_WITNESS_FACTOR},
 };
 
 static const witness_entry_t HYBRID_1E12_WITNESSES[] = {
-    {1, "73"},
-    {3, "61"},
-    {7, "34519"},
-    {9, "29"},
-    {19, "1601"},
-    {21, "11"},
-    {31, "19"},
-    {33, "23"},
-    {37, "53"},
+    {1, "73", PGS_WITNESS_FACTOR},
+    {3, "61", PGS_WITNESS_FACTOR},
+    {7, "34519", PGS_WITNESS_FACTOR},
+    {9, "29", PGS_WITNESS_FACTOR},
+    {19, "1601", PGS_WITNESS_FACTOR},
+    {21, "11", PGS_WITNESS_FACTOR},
+    {31, "19", PGS_WITNESS_FACTOR},
+    {33, "23", PGS_WITNESS_FACTOR},
+    {37, "53", PGS_WITNESS_FACTOR},
 };
 
 static const verifier_case_t CASES[] = {
@@ -106,6 +193,26 @@ static const verifier_case_t CASES[] = {
         FAKE_1E1233_WITNESSES,
         sizeof(FAKE_1E1233_WITNESSES) / sizeof(FAKE_1E1233_WITNESSES[0]),
         0,
+    },
+    {
+        "partial_certificate_10^1233",
+        "10^1233",
+        4096,
+        1269,
+        200000000UL,
+        PARTIAL_1E1233_WITNESSES,
+        sizeof(PARTIAL_1E1233_WITNESSES) / sizeof(PARTIAL_1E1233_WITNESSES[0]),
+        0,
+    },
+    {
+        "complete_certificate_10^1233",
+        "10^1233",
+        4096,
+        1269,
+        200000000UL,
+        COMPLETE_1E1233_WITNESSES,
+        sizeof(COMPLETE_1E1233_WITNESSES) / sizeof(COMPLETE_1E1233_WITNESSES[0]),
+        1,
     },
 };
 
@@ -217,7 +324,7 @@ static int apply_runtime_closure(
     return PGS_OK;
 }
 
-static int witness_valid(const mpz_t candidate, const char* witness_decimal) {
+static int factor_witness_valid(const mpz_t candidate, const char* witness_decimal) {
     mpz_t witness, remainder;
     mpz_init(witness);
     mpz_init(remainder);
@@ -233,6 +340,44 @@ static int witness_valid(const mpz_t candidate, const char* witness_decimal) {
     mpz_clear(remainder);
     mpz_clear(witness);
     return valid;
+}
+
+static int composite_power_witness_valid(const mpz_t candidate, const char* witness_decimal) {
+    mpz_t base, common, exponent, residue;
+    mpz_init(base);
+    mpz_init(common);
+    mpz_init(exponent);
+    mpz_init(residue);
+    int valid = 0;
+
+    if (mpz_set_str(base, witness_decimal, 10) == 0 &&
+        mpz_cmp_ui(base, 1UL) > 0 &&
+        mpz_cmp(base, candidate) < 0) {
+        mpz_gcd(common, base, candidate);
+        if (mpz_cmp_ui(common, 1UL) > 0 && mpz_cmp(common, candidate) < 0) {
+            valid = 1;
+        } else {
+            mpz_sub_ui(exponent, candidate, 1UL);
+            mpz_powm(residue, base, exponent, candidate);
+            valid = mpz_cmp_ui(residue, 1UL) != 0;
+        }
+    }
+
+    mpz_clear(residue);
+    mpz_clear(exponent);
+    mpz_clear(common);
+    mpz_clear(base);
+    return valid;
+}
+
+static int witness_valid(const mpz_t candidate, const witness_entry_t* witness) {
+    if (witness->kind == PGS_WITNESS_FACTOR) {
+        return factor_witness_valid(candidate, witness->witness_decimal);
+    }
+    if (witness->kind == PGS_WITNESS_COMPOSITE_POWER) {
+        return composite_power_witness_valid(candidate, witness->witness_decimal);
+    }
+    return 0;
 }
 
 static int run_case(verifier_result_t* result, const verifier_case_t* test_case) {
@@ -280,7 +425,7 @@ static int run_case(verifier_result_t* result, const verifier_case_t* test_case)
             result->invalid_witness_count++;
             continue;
         }
-        if (witness_valid(candidates[offset], test_case->witnesses[index].witness_decimal)) {
+        if (witness_valid(candidates[offset], &test_case->witnesses[index])) {
             if (!closed[offset]) {
                 result->certificate_closed_count++;
             }

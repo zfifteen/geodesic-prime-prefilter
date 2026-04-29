@@ -15,7 +15,7 @@ extern "C" {
 #endif
 
 #define PGS_HIGH_SCALE_VERSION "0.1.0"
-#define PGS_DEFAULT_CANDIDATE_BOUND 128UL
+#define PGS_DEFAULT_CANDIDATE_BOUND 4096UL
 #define PGS_MAX_CANDIDATE_BOUND 1048576UL
 #define PGS_SCALE_MAX_EXPONENT 100000UL
 #define PGS_GMP_CLOSURE_FACTOR_BOUND 200000000UL
@@ -31,9 +31,15 @@ enum {
     PGS_ERR_UNSUPPORTED_SCALE = -8
 };
 
+typedef enum {
+    PGS_WITNESS_FACTOR = 0,
+    PGS_WITNESS_COMPOSITE_POWER = 1
+} pgs_witness_kind_t;
+
 typedef struct {
     size_t offset;
     const char* witness_decimal;
+    pgs_witness_kind_t kind;
 } pgs_witness_t;
 
 typedef struct {

@@ -39,11 +39,16 @@ grep -q "PGS chamber unresolved" "$TMPDIR/unresolved.err"
 test "$(cat "$TMPDIR/success.out")" = '{"n":"1000","q":"1009"}'
 test ! -s "$TMPDIR/success.err"
 
-if "$BIN" 10^1233 >"$TMPDIR/huge.out" 2>"$TMPDIR/huge.err"; then
-    echo "huge chamber unexpectedly succeeded"
-    exit 1
-fi
-test ! -s "$TMPDIR/huge.out"
-grep -q "PGS chamber unresolved" "$TMPDIR/huge.err"
+"$BIN" 10^1233 >"$TMPDIR/huge.out" 2>"$TMPDIR/huge.err"
+python3 - "$TMPDIR/huge.out" <<'PY'
+import sys
+
+expected = '{"n":"' + "1" + ("0" * 1233) + '","q":"' + "1" + ("0" * 1229) + '1269"}\n'
+with open(sys.argv[1], encoding="ascii") as handle:
+    actual = handle.read()
+if actual != expected:
+    raise SystemExit("huge output mismatch")
+PY
+test ! -s "$TMPDIR/huge.err"
 
 printf "PGS CLI tests passed\n"
