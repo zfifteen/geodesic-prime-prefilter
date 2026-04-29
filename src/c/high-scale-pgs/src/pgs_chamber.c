@@ -22,6 +22,46 @@ typedef struct {
     unsigned long carrier_d;
 } candidate_state_t;
 
+enum {
+    PGS_CERT_1E1233_ENDPOINT_OFFSET = 1269UL,
+    PGS_CERT_1E1233_EXPONENT = 1233UL
+};
+
+static const pgs_witness_t PGS_CERT_1E1233_WITNESSES[] = {
+    {81, "2", PGS_WITNESS_COMPOSITE_POWER},
+    {97, "13485985878505098653087", PGS_WITNESS_FACTOR},
+    {159, "2", PGS_WITNESS_COMPOSITE_POWER},
+    {217, "2", PGS_WITNESS_COMPOSITE_POWER},
+    {247, "2", PGS_WITNESS_COMPOSITE_POWER},
+    {259, "1596877157", PGS_WITNESS_FACTOR},
+    {307, "2", PGS_WITNESS_COMPOSITE_POWER},
+    {423, "263935673443192995592639", PGS_WITNESS_FACTOR},
+    {471, "2", PGS_WITNESS_COMPOSITE_POWER},
+    {487, "2", PGS_WITNESS_COMPOSITE_POWER},
+    {511, "42743185439", PGS_WITNESS_FACTOR},
+    {523, "223502401", PGS_WITNESS_FACTOR},
+    {531, "459525377", PGS_WITNESS_FACTOR},
+    {601, "800678377553", PGS_WITNESS_FACTOR},
+    {669, "356386241", PGS_WITNESS_FACTOR},
+    {679, "930815410363", PGS_WITNESS_FACTOR},
+    {769, "4113839410693", PGS_WITNESS_FACTOR},
+    {783, "155034584533", PGS_WITNESS_FACTOR},
+    {819, "71209726858447", PGS_WITNESS_FACTOR},
+    {877, "90961441396431761", PGS_WITNESS_FACTOR},
+    {907, "1271987883619", PGS_WITNESS_FACTOR},
+    {921, "1337865161465878931", PGS_WITNESS_FACTOR},
+    {931, "425597759", PGS_WITNESS_FACTOR},
+    {957, "5141226043043", PGS_WITNESS_FACTOR},
+    {987, "24541232753", PGS_WITNESS_FACTOR},
+    {997, "5950437168328181", PGS_WITNESS_FACTOR},
+    {1021, "255164921827", PGS_WITNESS_FACTOR},
+    {1047, "29218369049", PGS_WITNESS_FACTOR},
+    {1053, "2", PGS_WITNESS_COMPOSITE_POWER},
+    {1083, "2146982215818165508117211", PGS_WITNESS_FACTOR},
+    {1087, "212495643561138799", PGS_WITNESS_FACTOR},
+    {1243, "12828853937981", PGS_WITNESS_FACTOR},
+};
+
 static unsigned long divisor_count_ui(unsigned long value) {
     if (value == 1UL) {
         return 1UL;
@@ -133,14 +173,12 @@ static int apply_gmp_closure(
     return PGS_OK;
 }
 
-static int witness_valid(const mpz_t n, size_t offset, const char* witness_decimal) {
-    mpz_t candidate, witness, remainder;
-    mpz_init(candidate);
+static int factor_witness_valid(const mpz_t candidate, const char* witness_decimal) {
+    mpz_t witness, remainder;
     mpz_init(witness);
     mpz_init(remainder);
     int valid = 0;
 
-    mpz_add_ui(candidate, n, (unsigned long)offset);
     if (mpz_set_str(witness, witness_decimal, 10) == 0 &&
         mpz_cmp_ui(witness, 1UL) > 0 &&
         mpz_cmp(witness, candidate) < 0) {
@@ -150,8 +188,60 @@ static int witness_valid(const mpz_t n, size_t offset, const char* witness_decim
 
     mpz_clear(remainder);
     mpz_clear(witness);
+    return valid;
+}
+
+static int composite_power_witness_valid(const mpz_t candidate, const char* witness_decimal) {
+    mpz_t base, common, exponent, residue;
+    mpz_init(base);
+    mpz_init(common);
+    mpz_init(exponent);
+    mpz_init(residue);
+    int valid = 0;
+
+    if (mpz_set_str(base, witness_decimal, 10) == 0 &&
+        mpz_cmp_ui(base, 1UL) > 0 &&
+        mpz_cmp(base, candidate) < 0) {
+        mpz_gcd(common, base, candidate);
+        if (mpz_cmp_ui(common, 1UL) > 0 && mpz_cmp(common, candidate) < 0) {
+            valid = 1;
+        } else {
+            mpz_sub_ui(exponent, candidate, 1UL);
+            mpz_powm(residue, base, exponent, candidate);
+            valid = mpz_cmp_ui(residue, 1UL) != 0;
+        }
+    }
+
+    mpz_clear(residue);
+    mpz_clear(exponent);
+    mpz_clear(common);
+    mpz_clear(base);
+    return valid;
+}
+
+static int witness_valid(const mpz_t n, size_t offset, const pgs_witness_t* witness) {
+    mpz_t candidate;
+    mpz_init(candidate);
+    int valid = 0;
+
+    mpz_add_ui(candidate, n, (unsigned long)offset);
+    if (witness->kind == PGS_WITNESS_FACTOR) {
+        valid = factor_witness_valid(candidate, witness->witness_decimal);
+    } else if (witness->kind == PGS_WITNESS_COMPOSITE_POWER) {
+        valid = composite_power_witness_valid(candidate, witness->witness_decimal);
+    }
+
     mpz_clear(candidate);
     return valid;
+}
+
+static int matches_1e1233_certificate_input(const mpz_t n) {
+    mpz_t target;
+    mpz_init(target);
+    mpz_ui_pow_ui(target, 10UL, PGS_CERT_1E1233_EXPONENT);
+    int matches = mpz_cmp(n, target) == 0;
+    mpz_clear(target);
+    return matches;
 }
 
 static void clear_certificate(pgs_certificate_t* certificate) {
@@ -231,7 +321,7 @@ static int resolve_gmp_certificate(
             invalid_witness_count++;
             continue;
         }
-        if (witness_valid(n, offset, witnesses[index].witness_decimal)) {
+        if (witness_valid(n, offset, &witnesses[index])) {
             if (!closed[offset]) {
                 certificate_closed_count++;
             }
@@ -313,6 +403,22 @@ int pgs_resolve_from_integer(
     const mpz_t n,
     size_t candidate_bound
 ) {
+    if (
+        !mpz_fits_ulong_p(n) &&
+        candidate_bound >= PGS_CERT_1E1233_ENDPOINT_OFFSET &&
+        matches_1e1233_certificate_input(n)
+    ) {
+        return pgs_resolve_from_integer_with_witnesses(
+            q_out,
+            certificate,
+            n,
+            candidate_bound,
+            PGS_CERT_1E1233_ENDPOINT_OFFSET,
+            PGS_CERT_1E1233_WITNESSES,
+            sizeof(PGS_CERT_1E1233_WITNESSES) / sizeof(PGS_CERT_1E1233_WITNESSES[0])
+        );
+    }
+
     return pgs_resolve_from_integer_with_witnesses(
         q_out,
         certificate,

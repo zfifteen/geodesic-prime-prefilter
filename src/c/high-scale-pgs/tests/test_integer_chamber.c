@@ -243,7 +243,7 @@ int main(void) {
     int passed = 0;
 
     static const pgs_witness_t fake_witnesses[] = {
-        {1, "3"},
+        {1, "3", PGS_WITNESS_FACTOR},
     };
 
     total++; passed += expect_q(10UL, 3, "11");

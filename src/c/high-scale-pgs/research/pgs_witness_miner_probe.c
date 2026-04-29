@@ -16,9 +16,9 @@ typedef struct {
 
 static const size_t DEFAULT_OFFSETS[] = {
     81, 97, 159, 217, 247, 259, 307, 423,
-    471, 487, 511, 601, 679, 769, 783, 819,
-    877, 907, 921, 957, 987, 997, 1021, 1047,
-    1053, 1083, 1087, 1243,
+    471, 487, 511, 523, 531, 601, 669, 679,
+    769, 783, 819, 877, 907, 921, 931, 957,
+    987, 997, 1021, 1047, 1053, 1083, 1087, 1243,
 };
 
 static double monotonic_seconds(void) {
@@ -278,51 +278,6 @@ static int full_prime_scan(
     return PGS_OK;
 }
 
-static int pollard_rho_one(mpz_t factor, const mpz_t value, unsigned long c, unsigned long limit) {
-    mpz_t x, y, d, diff, cc;
-    mpz_init_set_ui(x, 2UL);
-    mpz_init_set_ui(y, 2UL);
-    mpz_init(d);
-    mpz_init(diff);
-    mpz_init_set_ui(cc, c);
-
-    for (unsigned long iteration = 0; iteration < limit; iteration++) {
-        mpz_mul(x, x, x);
-        mpz_add(x, x, cc);
-        mpz_mod(x, x, value);
-
-        mpz_mul(y, y, y);
-        mpz_add(y, y, cc);
-        mpz_mod(y, y, value);
-        mpz_mul(y, y, y);
-        mpz_add(y, y, cc);
-        mpz_mod(y, y, value);
-
-        if (mpz_cmp(x, y) >= 0) {
-            mpz_sub(diff, x, y);
-        } else {
-            mpz_sub(diff, y, x);
-        }
-        mpz_gcd(d, diff, value);
-        if (mpz_cmp_ui(d, 1UL) > 0 && mpz_cmp(d, value) < 0) {
-            mpz_set(factor, d);
-            mpz_clear(cc);
-            mpz_clear(diff);
-            mpz_clear(d);
-            mpz_clear(y);
-            mpz_clear(x);
-            return PGS_OK;
-        }
-    }
-
-    mpz_clear(cc);
-    mpz_clear(diff);
-    mpz_clear(d);
-    mpz_clear(y);
-    mpz_clear(x);
-    return PGS_ERR_UNRESOLVED;
-}
-
 static int pminus_one_scan(target_t* targets, size_t target_count, const mpz_t n, unsigned long bound) {
     unsigned int* primes = NULL;
     size_t prime_count = 0;
@@ -373,12 +328,93 @@ static int pminus_one_scan(target_t* targets, size_t target_count, const mpz_t n
     return PGS_OK;
 }
 
+static void rho_step(mpz_t x, const mpz_t value, const mpz_t c) {
+    mpz_mul(x, x, x);
+    mpz_add(x, x, c);
+    mpz_mod(x, x, value);
+}
+
+static int brent_rho_one(mpz_t factor, const mpz_t value, unsigned long c_value, unsigned long limit) {
+    const unsigned long batch = 128UL;
+    mpz_t y, c, g, r, q, x, ys, diff;
+    mpz_init_set_ui(y, 2UL);
+    mpz_init_set_ui(c, c_value);
+    mpz_init_set_ui(g, 1UL);
+    mpz_init_set_ui(r, 1UL);
+    mpz_init(q);
+    mpz_init(x);
+    mpz_init(ys);
+    mpz_init(diff);
+
+    unsigned long total_steps = 0UL;
+    while (mpz_cmp_ui(g, 1UL) == 0 && total_steps < limit) {
+        mpz_set(x, y);
+        unsigned long r_ui = mpz_get_ui(r);
+        for (unsigned long i = 0UL; i < r_ui && total_steps < limit; i++) {
+            rho_step(y, value, c);
+            total_steps++;
+        }
+
+        unsigned long k = 0UL;
+        while (k < r_ui && mpz_cmp_ui(g, 1UL) == 0 && total_steps < limit) {
+            mpz_set(ys, y);
+            mpz_set_ui(q, 1UL);
+            unsigned long span = batch;
+            if (span > r_ui - k) {
+                span = r_ui - k;
+            }
+            for (unsigned long i = 0UL; i < span && total_steps < limit; i++) {
+                rho_step(y, value, c);
+                if (mpz_cmp(x, y) >= 0) {
+                    mpz_sub(diff, x, y);
+                } else {
+                    mpz_sub(diff, y, x);
+                }
+                mpz_mul(q, q, diff);
+                mpz_mod(q, q, value);
+                total_steps++;
+            }
+            mpz_gcd(g, q, value);
+            k += span;
+        }
+        mpz_mul_2exp(r, r, 1UL);
+    }
+
+    if (mpz_cmp(g, value) == 0) {
+        do {
+            rho_step(ys, value, c);
+            if (mpz_cmp(x, ys) >= 0) {
+                mpz_sub(diff, x, ys);
+            } else {
+                mpz_sub(diff, ys, x);
+            }
+            mpz_gcd(g, diff, value);
+        } while (mpz_cmp_ui(g, 1UL) == 0);
+    }
+
+    int status = PGS_ERR_UNRESOLVED;
+    if (mpz_cmp_ui(g, 1UL) > 0 && mpz_cmp(g, value) < 0) {
+        mpz_set(factor, g);
+        status = PGS_OK;
+    }
+
+    mpz_clear(diff);
+    mpz_clear(ys);
+    mpz_clear(x);
+    mpz_clear(q);
+    mpz_clear(r);
+    mpz_clear(g);
+    mpz_clear(c);
+    mpz_clear(y);
+    return status;
+}
+
 static int rho_scan(target_t* targets, size_t target_count, const mpz_t n) {
     static const unsigned long C_VALUES[] = {
         1UL, 2UL, 3UL, 5UL, 7UL, 11UL, 13UL, 17UL, 19UL, 23UL, 29UL, 31UL,
     };
     static const unsigned long LIMITS[] = {
-        1000UL, 10000UL,
+        100000UL, 1000000UL,
     };
 
     mpz_t candidate, factor;
@@ -394,7 +430,7 @@ static int rho_scan(target_t* targets, size_t target_count, const mpz_t n) {
         mpz_add_ui(candidate, n, (unsigned long)target->offset);
         for (size_t limit_index = 0; limit_index < sizeof(LIMITS) / sizeof(LIMITS[0]); limit_index++) {
             for (size_t c_index = 0; c_index < sizeof(C_VALUES) / sizeof(C_VALUES[0]); c_index++) {
-                int status = pollard_rho_one(
+                int status = brent_rho_one(
                     factor,
                     candidate,
                     C_VALUES[c_index],
@@ -484,6 +520,9 @@ int main(int argc, char** argv) {
     }
     if (status == PGS_OK && scan_start > scan_stop && unsolved_count(targets, target_count) > 0UL) {
         status = pminus_one_scan(targets, target_count, n, segment_size);
+    }
+    if (status == PGS_OK && scan_start > scan_stop && unsolved_count(targets, target_count) > 0UL) {
+        status = rho_scan(targets, target_count, n);
     }
 
     print_header();
