@@ -1,0 +1,2 @@
+scale_digits,candidate_bound,factor_bound,prime_count,candidate_count,exact_count,certified_composite_count,unresolved_no_factor_count,wheel_open_count,wheel_open_certified_count,wheel_open_unresolved_count,first_wheel_unresolved_offset,factor_touch_count,factor_power_count,sieve_seconds,init_seconds,strip_seconds,classify_seconds,total_seconds
+1234,4096,10000000,664579,4096,0,3964,132,1093,961,132,81,12414,15580,0.023107,0.000388,0.039859,0.000015,0.063373

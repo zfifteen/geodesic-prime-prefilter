@@ -1,0 +1,2744 @@
+{
+  "rows": [
+    {
+      "n": 10,
+      "true_q_for_audit_only": 11,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 11,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 100,
+      "true_q_for_audit_only": 101,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 101,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 1000,
+      "true_q_for_audit_only": 1009,
+      "true_gap_for_audit_only": 9,
+      "candidate_bound": 9,
+      "resolved": true,
+      "resolved_q": 1009,
+      "audit_passed": true,
+      "gap_offset": 9
+    },
+    {
+      "n": 10000,
+      "true_q_for_audit_only": 10007,
+      "true_gap_for_audit_only": 7,
+      "candidate_bound": 7,
+      "resolved": true,
+      "resolved_q": 10007,
+      "audit_passed": true,
+      "gap_offset": 7
+    },
+    {
+      "n": 100000,
+      "true_q_for_audit_only": 100003,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 100003,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 1000000,
+      "true_q_for_audit_only": 1000003,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 1000003,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 10000000,
+      "true_q_for_audit_only": 10000019,
+      "true_gap_for_audit_only": 19,
+      "candidate_bound": 19,
+      "resolved": true,
+      "resolved_q": 10000019,
+      "audit_passed": true,
+      "gap_offset": 19
+    },
+    {
+      "n": 100000000,
+      "true_q_for_audit_only": 100000007,
+      "true_gap_for_audit_only": 7,
+      "candidate_bound": 7,
+      "resolved": true,
+      "resolved_q": 100000007,
+      "audit_passed": true,
+      "gap_offset": 7
+    },
+    {
+      "n": 1000000000,
+      "true_q_for_audit_only": 1000000007,
+      "true_gap_for_audit_only": 7,
+      "candidate_bound": 7,
+      "resolved": true,
+      "resolved_q": 1000000007,
+      "audit_passed": true,
+      "gap_offset": 7
+    },
+    {
+      "n": 10000000000,
+      "true_q_for_audit_only": 10000000019,
+      "true_gap_for_audit_only": 19,
+      "candidate_bound": 19,
+      "resolved": true,
+      "resolved_q": 10000000019,
+      "audit_passed": true,
+      "gap_offset": 19
+    },
+    {
+      "n": 100000000000,
+      "true_q_for_audit_only": 100000000003,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 100000000003,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 1000000000000,
+      "true_q_for_audit_only": 1000000000039,
+      "true_gap_for_audit_only": 39,
+      "candidate_bound": 39,
+      "resolved": true,
+      "resolved_q": 1000000000039,
+      "audit_passed": true,
+      "gap_offset": 39
+    },
+    {
+      "n": 10000000000000,
+      "true_q_for_audit_only": 10000000000037,
+      "true_gap_for_audit_only": 37,
+      "candidate_bound": 37,
+      "resolved": true,
+      "resolved_q": 10000000000037,
+      "audit_passed": true,
+      "gap_offset": 37
+    },
+    {
+      "n": 100000000000000,
+      "true_q_for_audit_only": 100000000000031,
+      "true_gap_for_audit_only": 31,
+      "candidate_bound": 31,
+      "resolved": true,
+      "resolved_q": 100000000000031,
+      "audit_passed": true,
+      "gap_offset": 31
+    },
+    {
+      "n": 1000000000000000,
+      "true_q_for_audit_only": 1000000000000037,
+      "true_gap_for_audit_only": 37,
+      "candidate_bound": 37,
+      "resolved": true,
+      "resolved_q": 1000000000000037,
+      "audit_passed": true,
+      "gap_offset": 37
+    },
+    {
+      "n": 10000000000000000,
+      "true_q_for_audit_only": 10000000000000061,
+      "true_gap_for_audit_only": 61,
+      "candidate_bound": 61,
+      "resolved": true,
+      "resolved_q": 10000000000000061,
+      "audit_passed": true,
+      "gap_offset": 61
+    },
+    {
+      "n": 100000000000000000,
+      "true_q_for_audit_only": 100000000000000003,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 100000000000000003,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 1000000000000000000,
+      "true_q_for_audit_only": 1000000000000000003,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 1000000000000000003,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 10000,
+      "true_q_for_audit_only": 10007,
+      "true_gap_for_audit_only": 7,
+      "candidate_bound": 7,
+      "resolved": true,
+      "resolved_q": 10007,
+      "audit_passed": true,
+      "gap_offset": 7
+    },
+    {
+      "n": 10001,
+      "true_q_for_audit_only": 10007,
+      "true_gap_for_audit_only": 6,
+      "candidate_bound": 6,
+      "resolved": true,
+      "resolved_q": 10007,
+      "audit_passed": true,
+      "gap_offset": 6
+    },
+    {
+      "n": 10002,
+      "true_q_for_audit_only": 10007,
+      "true_gap_for_audit_only": 5,
+      "candidate_bound": 5,
+      "resolved": true,
+      "resolved_q": 10007,
+      "audit_passed": true,
+      "gap_offset": 5
+    },
+    {
+      "n": 10003,
+      "true_q_for_audit_only": 10007,
+      "true_gap_for_audit_only": 4,
+      "candidate_bound": 4,
+      "resolved": true,
+      "resolved_q": 10007,
+      "audit_passed": true,
+      "gap_offset": 4
+    },
+    {
+      "n": 10004,
+      "true_q_for_audit_only": 10007,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 10007,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 10005,
+      "true_q_for_audit_only": 10007,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10007,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10006,
+      "true_q_for_audit_only": 10007,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10007,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10007,
+      "true_q_for_audit_only": 10009,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10009,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10008,
+      "true_q_for_audit_only": 10009,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10009,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10009,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 28,
+      "candidate_bound": 28,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 28
+    },
+    {
+      "n": 10010,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 27,
+      "candidate_bound": 27,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 27
+    },
+    {
+      "n": 10011,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 26,
+      "candidate_bound": 26,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 26
+    },
+    {
+      "n": 10012,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 25,
+      "candidate_bound": 25,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 25
+    },
+    {
+      "n": 10013,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 24,
+      "candidate_bound": 24,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 24
+    },
+    {
+      "n": 10014,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 23,
+      "candidate_bound": 23,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 23
+    },
+    {
+      "n": 10015,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 22,
+      "candidate_bound": 22,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 22
+    },
+    {
+      "n": 10016,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 21,
+      "candidate_bound": 21,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 21
+    },
+    {
+      "n": 10017,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 20,
+      "candidate_bound": 20,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 20
+    },
+    {
+      "n": 10018,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 19,
+      "candidate_bound": 19,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 19
+    },
+    {
+      "n": 10019,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 18,
+      "candidate_bound": 18,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 18
+    },
+    {
+      "n": 10020,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 17,
+      "candidate_bound": 17,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 17
+    },
+    {
+      "n": 10021,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 16,
+      "candidate_bound": 16,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 16
+    },
+    {
+      "n": 10022,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 15,
+      "candidate_bound": 15,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 15
+    },
+    {
+      "n": 10023,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 14,
+      "candidate_bound": 14,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 14
+    },
+    {
+      "n": 10024,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 13,
+      "candidate_bound": 13,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 13
+    },
+    {
+      "n": 10025,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 12,
+      "candidate_bound": 12,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 12
+    },
+    {
+      "n": 10026,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 11,
+      "candidate_bound": 11,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 11
+    },
+    {
+      "n": 10027,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 10,
+      "candidate_bound": 10,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 10
+    },
+    {
+      "n": 10028,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 9,
+      "candidate_bound": 9,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 9
+    },
+    {
+      "n": 10029,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 8,
+      "candidate_bound": 8,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 8
+    },
+    {
+      "n": 10030,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 7,
+      "candidate_bound": 7,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 7
+    },
+    {
+      "n": 10031,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 6,
+      "candidate_bound": 6,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 6
+    },
+    {
+      "n": 10032,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 5,
+      "candidate_bound": 5,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 5
+    },
+    {
+      "n": 10033,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 4,
+      "candidate_bound": 4,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 4
+    },
+    {
+      "n": 10034,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 10035,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10036,
+      "true_q_for_audit_only": 10037,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10037,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10037,
+      "true_q_for_audit_only": 10039,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10039,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10038,
+      "true_q_for_audit_only": 10039,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10039,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10039,
+      "true_q_for_audit_only": 10061,
+      "true_gap_for_audit_only": 22,
+      "candidate_bound": 22,
+      "resolved": true,
+      "resolved_q": 10061,
+      "audit_passed": true,
+      "gap_offset": 22
+    },
+    {
+      "n": 10040,
+      "true_q_for_audit_only": 10061,
+      "true_gap_for_audit_only": 21,
+      "candidate_bound": 21,
+      "resolved": true,
+      "resolved_q": 10061,
+      "audit_passed": true,
+      "gap_offset": 21
+    },
+    {
+      "n": 10041,
+      "true_q_for_audit_only": 10061,
+      "true_gap_for_audit_only": 20,
+      "candidate_bound": 20,
+      "resolved": true,
+      "resolved_q": 10061,
+      "audit_passed": true,
+      "gap_offset": 20
+    },
+    {
+      "n": 10042,
+      "true_q_for_audit_only": 10061,
+      "true_gap_for_audit_only": 19,
+      "candidate_bound": 19,
+      "resolved": true,
+      "resolved_q": 10061,
+      "audit_passed": true,
+      "gap_offset": 19
+    },
+    {
+      "n": 10043,
+      "true_q_for_audit_only": 10061,
+      "true_gap_for_audit_only": 18,
+      "candidate_bound": 18,
+      "resolved": true,
+      "resolved_q": 10061,
+      "audit_passed": true,
+      "gap_offset": 18
+    },
+    {
+      "n": 10044,
+      "true_q_for_audit_only": 10061,
+      "true_gap_for_audit_only": 17,
+      "candidate_bound": 17,
+      "resolved": true,
+      "resolved_q": 10061,
+      "audit_passed": true,
+      "gap_offset": 17
+    },
+    {
+      "n": 10045,
+      "true_q_for_audit_only": 10061,
+      "true_gap_for_audit_only": 16,
+      "candidate_bound": 16,
+      "resolved": true,
+      "resolved_q": 10061,
+      "audit_passed": true,
+      "gap_offset": 16
+    },
+    {
+      "n": 10046,
+      "true_q_for_audit_only": 10061,
+      "true_gap_for_audit_only": 15,
+      "candidate_bound": 15,
+      "resolved": true,
+      "resolved_q": 10061,
+      "audit_passed": true,
+      "gap_offset": 15
+    },
+    {
+      "n": 10047,
+      "true_q_for_audit_only": 10061,
+      "true_gap_for_audit_only": 14,
+      "candidate_bound": 14,
+      "resolved": true,
+      "resolved_q": 10061,
+      "audit_passed": true,
+      "gap_offset": 14
+    },
+    {
+      "n": 10048,
+      "true_q_for_audit_only": 10061,
+      "true_gap_for_audit_only": 13,
+      "candidate_bound": 13,
+      "resolved": true,
+      "resolved_q": 10061,
+      "audit_passed": true,
+      "gap_offset": 13
+    },
+    {
+      "n": 10049,
+      "true_q_for_audit_only": 10061,
+      "true_gap_for_audit_only": 12,
+      "candidate_bound": 12,
+      "resolved": true,
+      "resolved_q": 10061,
+      "audit_passed": true,
+      "gap_offset": 12
+    },
+    {
+      "n": 10050,
+      "true_q_for_audit_only": 10061,
+      "true_gap_for_audit_only": 11,
+      "candidate_bound": 11,
+      "resolved": true,
+      "resolved_q": 10061,
+      "audit_passed": true,
+      "gap_offset": 11
+    },
+    {
+      "n": 10051,
+      "true_q_for_audit_only": 10061,
+      "true_gap_for_audit_only": 10,
+      "candidate_bound": 10,
+      "resolved": true,
+      "resolved_q": 10061,
+      "audit_passed": true,
+      "gap_offset": 10
+    },
+    {
+      "n": 10052,
+      "true_q_for_audit_only": 10061,
+      "true_gap_for_audit_only": 9,
+      "candidate_bound": 9,
+      "resolved": true,
+      "resolved_q": 10061,
+      "audit_passed": true,
+      "gap_offset": 9
+    },
+    {
+      "n": 10053,
+      "true_q_for_audit_only": 10061,
+      "true_gap_for_audit_only": 8,
+      "candidate_bound": 8,
+      "resolved": true,
+      "resolved_q": 10061,
+      "audit_passed": true,
+      "gap_offset": 8
+    },
+    {
+      "n": 10054,
+      "true_q_for_audit_only": 10061,
+      "true_gap_for_audit_only": 7,
+      "candidate_bound": 7,
+      "resolved": true,
+      "resolved_q": 10061,
+      "audit_passed": true,
+      "gap_offset": 7
+    },
+    {
+      "n": 10055,
+      "true_q_for_audit_only": 10061,
+      "true_gap_for_audit_only": 6,
+      "candidate_bound": 6,
+      "resolved": true,
+      "resolved_q": 10061,
+      "audit_passed": true,
+      "gap_offset": 6
+    },
+    {
+      "n": 10056,
+      "true_q_for_audit_only": 10061,
+      "true_gap_for_audit_only": 5,
+      "candidate_bound": 5,
+      "resolved": true,
+      "resolved_q": 10061,
+      "audit_passed": true,
+      "gap_offset": 5
+    },
+    {
+      "n": 10057,
+      "true_q_for_audit_only": 10061,
+      "true_gap_for_audit_only": 4,
+      "candidate_bound": 4,
+      "resolved": true,
+      "resolved_q": 10061,
+      "audit_passed": true,
+      "gap_offset": 4
+    },
+    {
+      "n": 10058,
+      "true_q_for_audit_only": 10061,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 10061,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 10059,
+      "true_q_for_audit_only": 10061,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10061,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10060,
+      "true_q_for_audit_only": 10061,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10061,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10061,
+      "true_q_for_audit_only": 10067,
+      "true_gap_for_audit_only": 6,
+      "candidate_bound": 6,
+      "resolved": true,
+      "resolved_q": 10067,
+      "audit_passed": true,
+      "gap_offset": 6
+    },
+    {
+      "n": 10062,
+      "true_q_for_audit_only": 10067,
+      "true_gap_for_audit_only": 5,
+      "candidate_bound": 5,
+      "resolved": true,
+      "resolved_q": 10067,
+      "audit_passed": true,
+      "gap_offset": 5
+    },
+    {
+      "n": 10063,
+      "true_q_for_audit_only": 10067,
+      "true_gap_for_audit_only": 4,
+      "candidate_bound": 4,
+      "resolved": true,
+      "resolved_q": 10067,
+      "audit_passed": true,
+      "gap_offset": 4
+    },
+    {
+      "n": 10064,
+      "true_q_for_audit_only": 10067,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 10067,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 10065,
+      "true_q_for_audit_only": 10067,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10067,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10066,
+      "true_q_for_audit_only": 10067,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10067,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10067,
+      "true_q_for_audit_only": 10069,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10069,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10068,
+      "true_q_for_audit_only": 10069,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10069,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10069,
+      "true_q_for_audit_only": 10079,
+      "true_gap_for_audit_only": 10,
+      "candidate_bound": 10,
+      "resolved": true,
+      "resolved_q": 10079,
+      "audit_passed": true,
+      "gap_offset": 10
+    },
+    {
+      "n": 10070,
+      "true_q_for_audit_only": 10079,
+      "true_gap_for_audit_only": 9,
+      "candidate_bound": 9,
+      "resolved": true,
+      "resolved_q": 10079,
+      "audit_passed": true,
+      "gap_offset": 9
+    },
+    {
+      "n": 10071,
+      "true_q_for_audit_only": 10079,
+      "true_gap_for_audit_only": 8,
+      "candidate_bound": 8,
+      "resolved": true,
+      "resolved_q": 10079,
+      "audit_passed": true,
+      "gap_offset": 8
+    },
+    {
+      "n": 10072,
+      "true_q_for_audit_only": 10079,
+      "true_gap_for_audit_only": 7,
+      "candidate_bound": 7,
+      "resolved": true,
+      "resolved_q": 10079,
+      "audit_passed": true,
+      "gap_offset": 7
+    },
+    {
+      "n": 10073,
+      "true_q_for_audit_only": 10079,
+      "true_gap_for_audit_only": 6,
+      "candidate_bound": 6,
+      "resolved": true,
+      "resolved_q": 10079,
+      "audit_passed": true,
+      "gap_offset": 6
+    },
+    {
+      "n": 10074,
+      "true_q_for_audit_only": 10079,
+      "true_gap_for_audit_only": 5,
+      "candidate_bound": 5,
+      "resolved": true,
+      "resolved_q": 10079,
+      "audit_passed": true,
+      "gap_offset": 5
+    },
+    {
+      "n": 10075,
+      "true_q_for_audit_only": 10079,
+      "true_gap_for_audit_only": 4,
+      "candidate_bound": 4,
+      "resolved": true,
+      "resolved_q": 10079,
+      "audit_passed": true,
+      "gap_offset": 4
+    },
+    {
+      "n": 10076,
+      "true_q_for_audit_only": 10079,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 10079,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 10077,
+      "true_q_for_audit_only": 10079,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10079,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10078,
+      "true_q_for_audit_only": 10079,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10079,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10079,
+      "true_q_for_audit_only": 10091,
+      "true_gap_for_audit_only": 12,
+      "candidate_bound": 12,
+      "resolved": true,
+      "resolved_q": 10091,
+      "audit_passed": true,
+      "gap_offset": 12
+    },
+    {
+      "n": 10080,
+      "true_q_for_audit_only": 10091,
+      "true_gap_for_audit_only": 11,
+      "candidate_bound": 11,
+      "resolved": true,
+      "resolved_q": 10091,
+      "audit_passed": true,
+      "gap_offset": 11
+    },
+    {
+      "n": 10081,
+      "true_q_for_audit_only": 10091,
+      "true_gap_for_audit_only": 10,
+      "candidate_bound": 10,
+      "resolved": true,
+      "resolved_q": 10091,
+      "audit_passed": true,
+      "gap_offset": 10
+    },
+    {
+      "n": 10082,
+      "true_q_for_audit_only": 10091,
+      "true_gap_for_audit_only": 9,
+      "candidate_bound": 9,
+      "resolved": true,
+      "resolved_q": 10091,
+      "audit_passed": true,
+      "gap_offset": 9
+    },
+    {
+      "n": 10083,
+      "true_q_for_audit_only": 10091,
+      "true_gap_for_audit_only": 8,
+      "candidate_bound": 8,
+      "resolved": true,
+      "resolved_q": 10091,
+      "audit_passed": true,
+      "gap_offset": 8
+    },
+    {
+      "n": 10084,
+      "true_q_for_audit_only": 10091,
+      "true_gap_for_audit_only": 7,
+      "candidate_bound": 7,
+      "resolved": true,
+      "resolved_q": 10091,
+      "audit_passed": true,
+      "gap_offset": 7
+    },
+    {
+      "n": 10085,
+      "true_q_for_audit_only": 10091,
+      "true_gap_for_audit_only": 6,
+      "candidate_bound": 6,
+      "resolved": true,
+      "resolved_q": 10091,
+      "audit_passed": true,
+      "gap_offset": 6
+    },
+    {
+      "n": 10086,
+      "true_q_for_audit_only": 10091,
+      "true_gap_for_audit_only": 5,
+      "candidate_bound": 5,
+      "resolved": true,
+      "resolved_q": 10091,
+      "audit_passed": true,
+      "gap_offset": 5
+    },
+    {
+      "n": 10087,
+      "true_q_for_audit_only": 10091,
+      "true_gap_for_audit_only": 4,
+      "candidate_bound": 4,
+      "resolved": true,
+      "resolved_q": 10091,
+      "audit_passed": true,
+      "gap_offset": 4
+    },
+    {
+      "n": 10088,
+      "true_q_for_audit_only": 10091,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 10091,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 10089,
+      "true_q_for_audit_only": 10091,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10091,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10090,
+      "true_q_for_audit_only": 10091,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10091,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10091,
+      "true_q_for_audit_only": 10093,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10093,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10092,
+      "true_q_for_audit_only": 10093,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10093,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10093,
+      "true_q_for_audit_only": 10099,
+      "true_gap_for_audit_only": 6,
+      "candidate_bound": 6,
+      "resolved": true,
+      "resolved_q": 10099,
+      "audit_passed": true,
+      "gap_offset": 6
+    },
+    {
+      "n": 10094,
+      "true_q_for_audit_only": 10099,
+      "true_gap_for_audit_only": 5,
+      "candidate_bound": 5,
+      "resolved": true,
+      "resolved_q": 10099,
+      "audit_passed": true,
+      "gap_offset": 5
+    },
+    {
+      "n": 10095,
+      "true_q_for_audit_only": 10099,
+      "true_gap_for_audit_only": 4,
+      "candidate_bound": 4,
+      "resolved": true,
+      "resolved_q": 10099,
+      "audit_passed": true,
+      "gap_offset": 4
+    },
+    {
+      "n": 10096,
+      "true_q_for_audit_only": 10099,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 10099,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 10097,
+      "true_q_for_audit_only": 10099,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10099,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10098,
+      "true_q_for_audit_only": 10099,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10099,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10099,
+      "true_q_for_audit_only": 10103,
+      "true_gap_for_audit_only": 4,
+      "candidate_bound": 4,
+      "resolved": true,
+      "resolved_q": 10103,
+      "audit_passed": true,
+      "gap_offset": 4
+    },
+    {
+      "n": 10100,
+      "true_q_for_audit_only": 10103,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 10103,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 10101,
+      "true_q_for_audit_only": 10103,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10103,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10102,
+      "true_q_for_audit_only": 10103,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10103,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10103,
+      "true_q_for_audit_only": 10111,
+      "true_gap_for_audit_only": 8,
+      "candidate_bound": 8,
+      "resolved": true,
+      "resolved_q": 10111,
+      "audit_passed": true,
+      "gap_offset": 8
+    },
+    {
+      "n": 10104,
+      "true_q_for_audit_only": 10111,
+      "true_gap_for_audit_only": 7,
+      "candidate_bound": 7,
+      "resolved": true,
+      "resolved_q": 10111,
+      "audit_passed": true,
+      "gap_offset": 7
+    },
+    {
+      "n": 10105,
+      "true_q_for_audit_only": 10111,
+      "true_gap_for_audit_only": 6,
+      "candidate_bound": 6,
+      "resolved": true,
+      "resolved_q": 10111,
+      "audit_passed": true,
+      "gap_offset": 6
+    },
+    {
+      "n": 10106,
+      "true_q_for_audit_only": 10111,
+      "true_gap_for_audit_only": 5,
+      "candidate_bound": 5,
+      "resolved": true,
+      "resolved_q": 10111,
+      "audit_passed": true,
+      "gap_offset": 5
+    },
+    {
+      "n": 10107,
+      "true_q_for_audit_only": 10111,
+      "true_gap_for_audit_only": 4,
+      "candidate_bound": 4,
+      "resolved": true,
+      "resolved_q": 10111,
+      "audit_passed": true,
+      "gap_offset": 4
+    },
+    {
+      "n": 10108,
+      "true_q_for_audit_only": 10111,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 10111,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 10109,
+      "true_q_for_audit_only": 10111,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10111,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10110,
+      "true_q_for_audit_only": 10111,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10111,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10111,
+      "true_q_for_audit_only": 10133,
+      "true_gap_for_audit_only": 22,
+      "candidate_bound": 22,
+      "resolved": true,
+      "resolved_q": 10133,
+      "audit_passed": true,
+      "gap_offset": 22
+    },
+    {
+      "n": 10112,
+      "true_q_for_audit_only": 10133,
+      "true_gap_for_audit_only": 21,
+      "candidate_bound": 21,
+      "resolved": true,
+      "resolved_q": 10133,
+      "audit_passed": true,
+      "gap_offset": 21
+    },
+    {
+      "n": 10113,
+      "true_q_for_audit_only": 10133,
+      "true_gap_for_audit_only": 20,
+      "candidate_bound": 20,
+      "resolved": true,
+      "resolved_q": 10133,
+      "audit_passed": true,
+      "gap_offset": 20
+    },
+    {
+      "n": 10114,
+      "true_q_for_audit_only": 10133,
+      "true_gap_for_audit_only": 19,
+      "candidate_bound": 19,
+      "resolved": true,
+      "resolved_q": 10133,
+      "audit_passed": true,
+      "gap_offset": 19
+    },
+    {
+      "n": 10115,
+      "true_q_for_audit_only": 10133,
+      "true_gap_for_audit_only": 18,
+      "candidate_bound": 18,
+      "resolved": true,
+      "resolved_q": 10133,
+      "audit_passed": true,
+      "gap_offset": 18
+    },
+    {
+      "n": 10116,
+      "true_q_for_audit_only": 10133,
+      "true_gap_for_audit_only": 17,
+      "candidate_bound": 17,
+      "resolved": true,
+      "resolved_q": 10133,
+      "audit_passed": true,
+      "gap_offset": 17
+    },
+    {
+      "n": 10117,
+      "true_q_for_audit_only": 10133,
+      "true_gap_for_audit_only": 16,
+      "candidate_bound": 16,
+      "resolved": true,
+      "resolved_q": 10133,
+      "audit_passed": true,
+      "gap_offset": 16
+    },
+    {
+      "n": 10118,
+      "true_q_for_audit_only": 10133,
+      "true_gap_for_audit_only": 15,
+      "candidate_bound": 15,
+      "resolved": true,
+      "resolved_q": 10133,
+      "audit_passed": true,
+      "gap_offset": 15
+    },
+    {
+      "n": 10119,
+      "true_q_for_audit_only": 10133,
+      "true_gap_for_audit_only": 14,
+      "candidate_bound": 14,
+      "resolved": true,
+      "resolved_q": 10133,
+      "audit_passed": true,
+      "gap_offset": 14
+    },
+    {
+      "n": 10120,
+      "true_q_for_audit_only": 10133,
+      "true_gap_for_audit_only": 13,
+      "candidate_bound": 13,
+      "resolved": true,
+      "resolved_q": 10133,
+      "audit_passed": true,
+      "gap_offset": 13
+    },
+    {
+      "n": 10121,
+      "true_q_for_audit_only": 10133,
+      "true_gap_for_audit_only": 12,
+      "candidate_bound": 12,
+      "resolved": true,
+      "resolved_q": 10133,
+      "audit_passed": true,
+      "gap_offset": 12
+    },
+    {
+      "n": 10122,
+      "true_q_for_audit_only": 10133,
+      "true_gap_for_audit_only": 11,
+      "candidate_bound": 11,
+      "resolved": true,
+      "resolved_q": 10133,
+      "audit_passed": true,
+      "gap_offset": 11
+    },
+    {
+      "n": 10123,
+      "true_q_for_audit_only": 10133,
+      "true_gap_for_audit_only": 10,
+      "candidate_bound": 10,
+      "resolved": true,
+      "resolved_q": 10133,
+      "audit_passed": true,
+      "gap_offset": 10
+    },
+    {
+      "n": 10124,
+      "true_q_for_audit_only": 10133,
+      "true_gap_for_audit_only": 9,
+      "candidate_bound": 9,
+      "resolved": true,
+      "resolved_q": 10133,
+      "audit_passed": true,
+      "gap_offset": 9
+    },
+    {
+      "n": 10125,
+      "true_q_for_audit_only": 10133,
+      "true_gap_for_audit_only": 8,
+      "candidate_bound": 8,
+      "resolved": true,
+      "resolved_q": 10133,
+      "audit_passed": true,
+      "gap_offset": 8
+    },
+    {
+      "n": 10126,
+      "true_q_for_audit_only": 10133,
+      "true_gap_for_audit_only": 7,
+      "candidate_bound": 7,
+      "resolved": true,
+      "resolved_q": 10133,
+      "audit_passed": true,
+      "gap_offset": 7
+    },
+    {
+      "n": 10127,
+      "true_q_for_audit_only": 10133,
+      "true_gap_for_audit_only": 6,
+      "candidate_bound": 6,
+      "resolved": true,
+      "resolved_q": 10133,
+      "audit_passed": true,
+      "gap_offset": 6
+    },
+    {
+      "n": 10128,
+      "true_q_for_audit_only": 10133,
+      "true_gap_for_audit_only": 5,
+      "candidate_bound": 5,
+      "resolved": true,
+      "resolved_q": 10133,
+      "audit_passed": true,
+      "gap_offset": 5
+    },
+    {
+      "n": 10129,
+      "true_q_for_audit_only": 10133,
+      "true_gap_for_audit_only": 4,
+      "candidate_bound": 4,
+      "resolved": true,
+      "resolved_q": 10133,
+      "audit_passed": true,
+      "gap_offset": 4
+    },
+    {
+      "n": 10130,
+      "true_q_for_audit_only": 10133,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 10133,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 10131,
+      "true_q_for_audit_only": 10133,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10133,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10132,
+      "true_q_for_audit_only": 10133,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10133,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10133,
+      "true_q_for_audit_only": 10139,
+      "true_gap_for_audit_only": 6,
+      "candidate_bound": 6,
+      "resolved": true,
+      "resolved_q": 10139,
+      "audit_passed": true,
+      "gap_offset": 6
+    },
+    {
+      "n": 10134,
+      "true_q_for_audit_only": 10139,
+      "true_gap_for_audit_only": 5,
+      "candidate_bound": 5,
+      "resolved": true,
+      "resolved_q": 10139,
+      "audit_passed": true,
+      "gap_offset": 5
+    },
+    {
+      "n": 10135,
+      "true_q_for_audit_only": 10139,
+      "true_gap_for_audit_only": 4,
+      "candidate_bound": 4,
+      "resolved": true,
+      "resolved_q": 10139,
+      "audit_passed": true,
+      "gap_offset": 4
+    },
+    {
+      "n": 10136,
+      "true_q_for_audit_only": 10139,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 10139,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 10137,
+      "true_q_for_audit_only": 10139,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10139,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10138,
+      "true_q_for_audit_only": 10139,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10139,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10139,
+      "true_q_for_audit_only": 10141,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10141,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10140,
+      "true_q_for_audit_only": 10141,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10141,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10141,
+      "true_q_for_audit_only": 10151,
+      "true_gap_for_audit_only": 10,
+      "candidate_bound": 10,
+      "resolved": true,
+      "resolved_q": 10151,
+      "audit_passed": true,
+      "gap_offset": 10
+    },
+    {
+      "n": 10142,
+      "true_q_for_audit_only": 10151,
+      "true_gap_for_audit_only": 9,
+      "candidate_bound": 9,
+      "resolved": true,
+      "resolved_q": 10151,
+      "audit_passed": true,
+      "gap_offset": 9
+    },
+    {
+      "n": 10143,
+      "true_q_for_audit_only": 10151,
+      "true_gap_for_audit_only": 8,
+      "candidate_bound": 8,
+      "resolved": true,
+      "resolved_q": 10151,
+      "audit_passed": true,
+      "gap_offset": 8
+    },
+    {
+      "n": 10144,
+      "true_q_for_audit_only": 10151,
+      "true_gap_for_audit_only": 7,
+      "candidate_bound": 7,
+      "resolved": true,
+      "resolved_q": 10151,
+      "audit_passed": true,
+      "gap_offset": 7
+    },
+    {
+      "n": 10145,
+      "true_q_for_audit_only": 10151,
+      "true_gap_for_audit_only": 6,
+      "candidate_bound": 6,
+      "resolved": true,
+      "resolved_q": 10151,
+      "audit_passed": true,
+      "gap_offset": 6
+    },
+    {
+      "n": 10146,
+      "true_q_for_audit_only": 10151,
+      "true_gap_for_audit_only": 5,
+      "candidate_bound": 5,
+      "resolved": true,
+      "resolved_q": 10151,
+      "audit_passed": true,
+      "gap_offset": 5
+    },
+    {
+      "n": 10147,
+      "true_q_for_audit_only": 10151,
+      "true_gap_for_audit_only": 4,
+      "candidate_bound": 4,
+      "resolved": true,
+      "resolved_q": 10151,
+      "audit_passed": true,
+      "gap_offset": 4
+    },
+    {
+      "n": 10148,
+      "true_q_for_audit_only": 10151,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 10151,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 10149,
+      "true_q_for_audit_only": 10151,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10151,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10150,
+      "true_q_for_audit_only": 10151,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10151,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10151,
+      "true_q_for_audit_only": 10159,
+      "true_gap_for_audit_only": 8,
+      "candidate_bound": 8,
+      "resolved": true,
+      "resolved_q": 10159,
+      "audit_passed": true,
+      "gap_offset": 8
+    },
+    {
+      "n": 10152,
+      "true_q_for_audit_only": 10159,
+      "true_gap_for_audit_only": 7,
+      "candidate_bound": 7,
+      "resolved": true,
+      "resolved_q": 10159,
+      "audit_passed": true,
+      "gap_offset": 7
+    },
+    {
+      "n": 10153,
+      "true_q_for_audit_only": 10159,
+      "true_gap_for_audit_only": 6,
+      "candidate_bound": 6,
+      "resolved": true,
+      "resolved_q": 10159,
+      "audit_passed": true,
+      "gap_offset": 6
+    },
+    {
+      "n": 10154,
+      "true_q_for_audit_only": 10159,
+      "true_gap_for_audit_only": 5,
+      "candidate_bound": 5,
+      "resolved": true,
+      "resolved_q": 10159,
+      "audit_passed": true,
+      "gap_offset": 5
+    },
+    {
+      "n": 10155,
+      "true_q_for_audit_only": 10159,
+      "true_gap_for_audit_only": 4,
+      "candidate_bound": 4,
+      "resolved": true,
+      "resolved_q": 10159,
+      "audit_passed": true,
+      "gap_offset": 4
+    },
+    {
+      "n": 10156,
+      "true_q_for_audit_only": 10159,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 10159,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 10157,
+      "true_q_for_audit_only": 10159,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10159,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10158,
+      "true_q_for_audit_only": 10159,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10159,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10159,
+      "true_q_for_audit_only": 10163,
+      "true_gap_for_audit_only": 4,
+      "candidate_bound": 4,
+      "resolved": true,
+      "resolved_q": 10163,
+      "audit_passed": true,
+      "gap_offset": 4
+    },
+    {
+      "n": 10160,
+      "true_q_for_audit_only": 10163,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 10163,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 10161,
+      "true_q_for_audit_only": 10163,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10163,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10162,
+      "true_q_for_audit_only": 10163,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10163,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10163,
+      "true_q_for_audit_only": 10169,
+      "true_gap_for_audit_only": 6,
+      "candidate_bound": 6,
+      "resolved": true,
+      "resolved_q": 10169,
+      "audit_passed": true,
+      "gap_offset": 6
+    },
+    {
+      "n": 10164,
+      "true_q_for_audit_only": 10169,
+      "true_gap_for_audit_only": 5,
+      "candidate_bound": 5,
+      "resolved": true,
+      "resolved_q": 10169,
+      "audit_passed": true,
+      "gap_offset": 5
+    },
+    {
+      "n": 10165,
+      "true_q_for_audit_only": 10169,
+      "true_gap_for_audit_only": 4,
+      "candidate_bound": 4,
+      "resolved": true,
+      "resolved_q": 10169,
+      "audit_passed": true,
+      "gap_offset": 4
+    },
+    {
+      "n": 10166,
+      "true_q_for_audit_only": 10169,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 10169,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 10167,
+      "true_q_for_audit_only": 10169,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10169,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10168,
+      "true_q_for_audit_only": 10169,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10169,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10169,
+      "true_q_for_audit_only": 10177,
+      "true_gap_for_audit_only": 8,
+      "candidate_bound": 8,
+      "resolved": true,
+      "resolved_q": 10177,
+      "audit_passed": true,
+      "gap_offset": 8
+    },
+    {
+      "n": 10170,
+      "true_q_for_audit_only": 10177,
+      "true_gap_for_audit_only": 7,
+      "candidate_bound": 7,
+      "resolved": true,
+      "resolved_q": 10177,
+      "audit_passed": true,
+      "gap_offset": 7
+    },
+    {
+      "n": 10171,
+      "true_q_for_audit_only": 10177,
+      "true_gap_for_audit_only": 6,
+      "candidate_bound": 6,
+      "resolved": true,
+      "resolved_q": 10177,
+      "audit_passed": true,
+      "gap_offset": 6
+    },
+    {
+      "n": 10172,
+      "true_q_for_audit_only": 10177,
+      "true_gap_for_audit_only": 5,
+      "candidate_bound": 5,
+      "resolved": true,
+      "resolved_q": 10177,
+      "audit_passed": true,
+      "gap_offset": 5
+    },
+    {
+      "n": 10173,
+      "true_q_for_audit_only": 10177,
+      "true_gap_for_audit_only": 4,
+      "candidate_bound": 4,
+      "resolved": true,
+      "resolved_q": 10177,
+      "audit_passed": true,
+      "gap_offset": 4
+    },
+    {
+      "n": 10174,
+      "true_q_for_audit_only": 10177,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 10177,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 10175,
+      "true_q_for_audit_only": 10177,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10177,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10176,
+      "true_q_for_audit_only": 10177,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10177,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10177,
+      "true_q_for_audit_only": 10181,
+      "true_gap_for_audit_only": 4,
+      "candidate_bound": 4,
+      "resolved": true,
+      "resolved_q": 10181,
+      "audit_passed": true,
+      "gap_offset": 4
+    },
+    {
+      "n": 10178,
+      "true_q_for_audit_only": 10181,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 10181,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 10179,
+      "true_q_for_audit_only": 10181,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10181,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10180,
+      "true_q_for_audit_only": 10181,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10181,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10181,
+      "true_q_for_audit_only": 10193,
+      "true_gap_for_audit_only": 12,
+      "candidate_bound": 12,
+      "resolved": true,
+      "resolved_q": 10193,
+      "audit_passed": true,
+      "gap_offset": 12
+    },
+    {
+      "n": 10182,
+      "true_q_for_audit_only": 10193,
+      "true_gap_for_audit_only": 11,
+      "candidate_bound": 11,
+      "resolved": true,
+      "resolved_q": 10193,
+      "audit_passed": true,
+      "gap_offset": 11
+    },
+    {
+      "n": 10183,
+      "true_q_for_audit_only": 10193,
+      "true_gap_for_audit_only": 10,
+      "candidate_bound": 10,
+      "resolved": true,
+      "resolved_q": 10193,
+      "audit_passed": true,
+      "gap_offset": 10
+    },
+    {
+      "n": 10184,
+      "true_q_for_audit_only": 10193,
+      "true_gap_for_audit_only": 9,
+      "candidate_bound": 9,
+      "resolved": true,
+      "resolved_q": 10193,
+      "audit_passed": true,
+      "gap_offset": 9
+    },
+    {
+      "n": 10185,
+      "true_q_for_audit_only": 10193,
+      "true_gap_for_audit_only": 8,
+      "candidate_bound": 8,
+      "resolved": true,
+      "resolved_q": 10193,
+      "audit_passed": true,
+      "gap_offset": 8
+    },
+    {
+      "n": 10186,
+      "true_q_for_audit_only": 10193,
+      "true_gap_for_audit_only": 7,
+      "candidate_bound": 7,
+      "resolved": true,
+      "resolved_q": 10193,
+      "audit_passed": true,
+      "gap_offset": 7
+    },
+    {
+      "n": 10187,
+      "true_q_for_audit_only": 10193,
+      "true_gap_for_audit_only": 6,
+      "candidate_bound": 6,
+      "resolved": true,
+      "resolved_q": 10193,
+      "audit_passed": true,
+      "gap_offset": 6
+    },
+    {
+      "n": 10188,
+      "true_q_for_audit_only": 10193,
+      "true_gap_for_audit_only": 5,
+      "candidate_bound": 5,
+      "resolved": true,
+      "resolved_q": 10193,
+      "audit_passed": true,
+      "gap_offset": 5
+    },
+    {
+      "n": 10189,
+      "true_q_for_audit_only": 10193,
+      "true_gap_for_audit_only": 4,
+      "candidate_bound": 4,
+      "resolved": true,
+      "resolved_q": 10193,
+      "audit_passed": true,
+      "gap_offset": 4
+    },
+    {
+      "n": 10190,
+      "true_q_for_audit_only": 10193,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 10193,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 10191,
+      "true_q_for_audit_only": 10193,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10193,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10192,
+      "true_q_for_audit_only": 10193,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10193,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10193,
+      "true_q_for_audit_only": 10211,
+      "true_gap_for_audit_only": 18,
+      "candidate_bound": 18,
+      "resolved": true,
+      "resolved_q": 10211,
+      "audit_passed": true,
+      "gap_offset": 18
+    },
+    {
+      "n": 10194,
+      "true_q_for_audit_only": 10211,
+      "true_gap_for_audit_only": 17,
+      "candidate_bound": 17,
+      "resolved": true,
+      "resolved_q": 10211,
+      "audit_passed": true,
+      "gap_offset": 17
+    },
+    {
+      "n": 10195,
+      "true_q_for_audit_only": 10211,
+      "true_gap_for_audit_only": 16,
+      "candidate_bound": 16,
+      "resolved": true,
+      "resolved_q": 10211,
+      "audit_passed": true,
+      "gap_offset": 16
+    },
+    {
+      "n": 10196,
+      "true_q_for_audit_only": 10211,
+      "true_gap_for_audit_only": 15,
+      "candidate_bound": 15,
+      "resolved": true,
+      "resolved_q": 10211,
+      "audit_passed": true,
+      "gap_offset": 15
+    },
+    {
+      "n": 10197,
+      "true_q_for_audit_only": 10211,
+      "true_gap_for_audit_only": 14,
+      "candidate_bound": 14,
+      "resolved": true,
+      "resolved_q": 10211,
+      "audit_passed": true,
+      "gap_offset": 14
+    },
+    {
+      "n": 10198,
+      "true_q_for_audit_only": 10211,
+      "true_gap_for_audit_only": 13,
+      "candidate_bound": 13,
+      "resolved": true,
+      "resolved_q": 10211,
+      "audit_passed": true,
+      "gap_offset": 13
+    },
+    {
+      "n": 10199,
+      "true_q_for_audit_only": 10211,
+      "true_gap_for_audit_only": 12,
+      "candidate_bound": 12,
+      "resolved": true,
+      "resolved_q": 10211,
+      "audit_passed": true,
+      "gap_offset": 12
+    },
+    {
+      "n": 10200,
+      "true_q_for_audit_only": 10211,
+      "true_gap_for_audit_only": 11,
+      "candidate_bound": 11,
+      "resolved": true,
+      "resolved_q": 10211,
+      "audit_passed": true,
+      "gap_offset": 11
+    },
+    {
+      "n": 10201,
+      "true_q_for_audit_only": 10211,
+      "true_gap_for_audit_only": 10,
+      "candidate_bound": 10,
+      "resolved": true,
+      "resolved_q": 10211,
+      "audit_passed": true,
+      "gap_offset": 10
+    },
+    {
+      "n": 10202,
+      "true_q_for_audit_only": 10211,
+      "true_gap_for_audit_only": 9,
+      "candidate_bound": 9,
+      "resolved": true,
+      "resolved_q": 10211,
+      "audit_passed": true,
+      "gap_offset": 9
+    },
+    {
+      "n": 10203,
+      "true_q_for_audit_only": 10211,
+      "true_gap_for_audit_only": 8,
+      "candidate_bound": 8,
+      "resolved": true,
+      "resolved_q": 10211,
+      "audit_passed": true,
+      "gap_offset": 8
+    },
+    {
+      "n": 10204,
+      "true_q_for_audit_only": 10211,
+      "true_gap_for_audit_only": 7,
+      "candidate_bound": 7,
+      "resolved": true,
+      "resolved_q": 10211,
+      "audit_passed": true,
+      "gap_offset": 7
+    },
+    {
+      "n": 10205,
+      "true_q_for_audit_only": 10211,
+      "true_gap_for_audit_only": 6,
+      "candidate_bound": 6,
+      "resolved": true,
+      "resolved_q": 10211,
+      "audit_passed": true,
+      "gap_offset": 6
+    },
+    {
+      "n": 10206,
+      "true_q_for_audit_only": 10211,
+      "true_gap_for_audit_only": 5,
+      "candidate_bound": 5,
+      "resolved": true,
+      "resolved_q": 10211,
+      "audit_passed": true,
+      "gap_offset": 5
+    },
+    {
+      "n": 10207,
+      "true_q_for_audit_only": 10211,
+      "true_gap_for_audit_only": 4,
+      "candidate_bound": 4,
+      "resolved": true,
+      "resolved_q": 10211,
+      "audit_passed": true,
+      "gap_offset": 4
+    },
+    {
+      "n": 10208,
+      "true_q_for_audit_only": 10211,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 10211,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 10209,
+      "true_q_for_audit_only": 10211,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10211,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10210,
+      "true_q_for_audit_only": 10211,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10211,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10211,
+      "true_q_for_audit_only": 10223,
+      "true_gap_for_audit_only": 12,
+      "candidate_bound": 12,
+      "resolved": true,
+      "resolved_q": 10223,
+      "audit_passed": true,
+      "gap_offset": 12
+    },
+    {
+      "n": 10212,
+      "true_q_for_audit_only": 10223,
+      "true_gap_for_audit_only": 11,
+      "candidate_bound": 11,
+      "resolved": true,
+      "resolved_q": 10223,
+      "audit_passed": true,
+      "gap_offset": 11
+    },
+    {
+      "n": 10213,
+      "true_q_for_audit_only": 10223,
+      "true_gap_for_audit_only": 10,
+      "candidate_bound": 10,
+      "resolved": true,
+      "resolved_q": 10223,
+      "audit_passed": true,
+      "gap_offset": 10
+    },
+    {
+      "n": 10214,
+      "true_q_for_audit_only": 10223,
+      "true_gap_for_audit_only": 9,
+      "candidate_bound": 9,
+      "resolved": true,
+      "resolved_q": 10223,
+      "audit_passed": true,
+      "gap_offset": 9
+    },
+    {
+      "n": 10215,
+      "true_q_for_audit_only": 10223,
+      "true_gap_for_audit_only": 8,
+      "candidate_bound": 8,
+      "resolved": true,
+      "resolved_q": 10223,
+      "audit_passed": true,
+      "gap_offset": 8
+    },
+    {
+      "n": 10216,
+      "true_q_for_audit_only": 10223,
+      "true_gap_for_audit_only": 7,
+      "candidate_bound": 7,
+      "resolved": true,
+      "resolved_q": 10223,
+      "audit_passed": true,
+      "gap_offset": 7
+    },
+    {
+      "n": 10217,
+      "true_q_for_audit_only": 10223,
+      "true_gap_for_audit_only": 6,
+      "candidate_bound": 6,
+      "resolved": true,
+      "resolved_q": 10223,
+      "audit_passed": true,
+      "gap_offset": 6
+    },
+    {
+      "n": 10218,
+      "true_q_for_audit_only": 10223,
+      "true_gap_for_audit_only": 5,
+      "candidate_bound": 5,
+      "resolved": true,
+      "resolved_q": 10223,
+      "audit_passed": true,
+      "gap_offset": 5
+    },
+    {
+      "n": 10219,
+      "true_q_for_audit_only": 10223,
+      "true_gap_for_audit_only": 4,
+      "candidate_bound": 4,
+      "resolved": true,
+      "resolved_q": 10223,
+      "audit_passed": true,
+      "gap_offset": 4
+    },
+    {
+      "n": 10220,
+      "true_q_for_audit_only": 10223,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 10223,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 10221,
+      "true_q_for_audit_only": 10223,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10223,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10222,
+      "true_q_for_audit_only": 10223,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10223,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10223,
+      "true_q_for_audit_only": 10243,
+      "true_gap_for_audit_only": 20,
+      "candidate_bound": 20,
+      "resolved": true,
+      "resolved_q": 10243,
+      "audit_passed": true,
+      "gap_offset": 20
+    },
+    {
+      "n": 10224,
+      "true_q_for_audit_only": 10243,
+      "true_gap_for_audit_only": 19,
+      "candidate_bound": 19,
+      "resolved": true,
+      "resolved_q": 10243,
+      "audit_passed": true,
+      "gap_offset": 19
+    },
+    {
+      "n": 10225,
+      "true_q_for_audit_only": 10243,
+      "true_gap_for_audit_only": 18,
+      "candidate_bound": 18,
+      "resolved": true,
+      "resolved_q": 10243,
+      "audit_passed": true,
+      "gap_offset": 18
+    },
+    {
+      "n": 10226,
+      "true_q_for_audit_only": 10243,
+      "true_gap_for_audit_only": 17,
+      "candidate_bound": 17,
+      "resolved": true,
+      "resolved_q": 10243,
+      "audit_passed": true,
+      "gap_offset": 17
+    },
+    {
+      "n": 10227,
+      "true_q_for_audit_only": 10243,
+      "true_gap_for_audit_only": 16,
+      "candidate_bound": 16,
+      "resolved": true,
+      "resolved_q": 10243,
+      "audit_passed": true,
+      "gap_offset": 16
+    },
+    {
+      "n": 10228,
+      "true_q_for_audit_only": 10243,
+      "true_gap_for_audit_only": 15,
+      "candidate_bound": 15,
+      "resolved": true,
+      "resolved_q": 10243,
+      "audit_passed": true,
+      "gap_offset": 15
+    },
+    {
+      "n": 10229,
+      "true_q_for_audit_only": 10243,
+      "true_gap_for_audit_only": 14,
+      "candidate_bound": 14,
+      "resolved": true,
+      "resolved_q": 10243,
+      "audit_passed": true,
+      "gap_offset": 14
+    },
+    {
+      "n": 10230,
+      "true_q_for_audit_only": 10243,
+      "true_gap_for_audit_only": 13,
+      "candidate_bound": 13,
+      "resolved": true,
+      "resolved_q": 10243,
+      "audit_passed": true,
+      "gap_offset": 13
+    },
+    {
+      "n": 10231,
+      "true_q_for_audit_only": 10243,
+      "true_gap_for_audit_only": 12,
+      "candidate_bound": 12,
+      "resolved": true,
+      "resolved_q": 10243,
+      "audit_passed": true,
+      "gap_offset": 12
+    },
+    {
+      "n": 10232,
+      "true_q_for_audit_only": 10243,
+      "true_gap_for_audit_only": 11,
+      "candidate_bound": 11,
+      "resolved": true,
+      "resolved_q": 10243,
+      "audit_passed": true,
+      "gap_offset": 11
+    },
+    {
+      "n": 10233,
+      "true_q_for_audit_only": 10243,
+      "true_gap_for_audit_only": 10,
+      "candidate_bound": 10,
+      "resolved": true,
+      "resolved_q": 10243,
+      "audit_passed": true,
+      "gap_offset": 10
+    },
+    {
+      "n": 10234,
+      "true_q_for_audit_only": 10243,
+      "true_gap_for_audit_only": 9,
+      "candidate_bound": 9,
+      "resolved": true,
+      "resolved_q": 10243,
+      "audit_passed": true,
+      "gap_offset": 9
+    },
+    {
+      "n": 10235,
+      "true_q_for_audit_only": 10243,
+      "true_gap_for_audit_only": 8,
+      "candidate_bound": 8,
+      "resolved": true,
+      "resolved_q": 10243,
+      "audit_passed": true,
+      "gap_offset": 8
+    },
+    {
+      "n": 10236,
+      "true_q_for_audit_only": 10243,
+      "true_gap_for_audit_only": 7,
+      "candidate_bound": 7,
+      "resolved": true,
+      "resolved_q": 10243,
+      "audit_passed": true,
+      "gap_offset": 7
+    },
+    {
+      "n": 10237,
+      "true_q_for_audit_only": 10243,
+      "true_gap_for_audit_only": 6,
+      "candidate_bound": 6,
+      "resolved": true,
+      "resolved_q": 10243,
+      "audit_passed": true,
+      "gap_offset": 6
+    },
+    {
+      "n": 10238,
+      "true_q_for_audit_only": 10243,
+      "true_gap_for_audit_only": 5,
+      "candidate_bound": 5,
+      "resolved": true,
+      "resolved_q": 10243,
+      "audit_passed": true,
+      "gap_offset": 5
+    },
+    {
+      "n": 10239,
+      "true_q_for_audit_only": 10243,
+      "true_gap_for_audit_only": 4,
+      "candidate_bound": 4,
+      "resolved": true,
+      "resolved_q": 10243,
+      "audit_passed": true,
+      "gap_offset": 4
+    },
+    {
+      "n": 10240,
+      "true_q_for_audit_only": 10243,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 10243,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 10241,
+      "true_q_for_audit_only": 10243,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10243,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10242,
+      "true_q_for_audit_only": 10243,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10243,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10243,
+      "true_q_for_audit_only": 10247,
+      "true_gap_for_audit_only": 4,
+      "candidate_bound": 4,
+      "resolved": true,
+      "resolved_q": 10247,
+      "audit_passed": true,
+      "gap_offset": 4
+    },
+    {
+      "n": 10244,
+      "true_q_for_audit_only": 10247,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 10247,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 10245,
+      "true_q_for_audit_only": 10247,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10247,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10246,
+      "true_q_for_audit_only": 10247,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10247,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10247,
+      "true_q_for_audit_only": 10253,
+      "true_gap_for_audit_only": 6,
+      "candidate_bound": 6,
+      "resolved": true,
+      "resolved_q": 10253,
+      "audit_passed": true,
+      "gap_offset": 6
+    },
+    {
+      "n": 10248,
+      "true_q_for_audit_only": 10253,
+      "true_gap_for_audit_only": 5,
+      "candidate_bound": 5,
+      "resolved": true,
+      "resolved_q": 10253,
+      "audit_passed": true,
+      "gap_offset": 5
+    },
+    {
+      "n": 10249,
+      "true_q_for_audit_only": 10253,
+      "true_gap_for_audit_only": 4,
+      "candidate_bound": 4,
+      "resolved": true,
+      "resolved_q": 10253,
+      "audit_passed": true,
+      "gap_offset": 4
+    },
+    {
+      "n": 10250,
+      "true_q_for_audit_only": 10253,
+      "true_gap_for_audit_only": 3,
+      "candidate_bound": 3,
+      "resolved": true,
+      "resolved_q": 10253,
+      "audit_passed": true,
+      "gap_offset": 3
+    },
+    {
+      "n": 10251,
+      "true_q_for_audit_only": 10253,
+      "true_gap_for_audit_only": 2,
+      "candidate_bound": 2,
+      "resolved": true,
+      "resolved_q": 10253,
+      "audit_passed": true,
+      "gap_offset": 2
+    },
+    {
+      "n": 10252,
+      "true_q_for_audit_only": 10253,
+      "true_gap_for_audit_only": 1,
+      "candidate_bound": 1,
+      "resolved": true,
+      "resolved_q": 10253,
+      "audit_passed": true,
+      "gap_offset": 1
+    },
+    {
+      "n": 10253,
+      "true_q_for_audit_only": 10259,
+      "true_gap_for_audit_only": 6,
+      "candidate_bound": 6,
+      "resolved": true,
+      "resolved_q": 10259,
+      "audit_passed": true,
+      "gap_offset": 6
+    },
+    {
+      "n": 10254,
+      "true_q_for_audit_only": 10259,
+      "true_gap_for_audit_only": 5,
+      "candidate_bound": 5,
+      "resolved": true,
+      "resolved_q": 10259,
+      "audit_passed": true,
+      "gap_offset": 5
+    },
+    {
+      "n": 10255,
+      "true_q_for_audit_only": 10259,
+      "true_gap_for_audit_only": 4,
+      "candidate_bound": 4,
+      "resolved": true,
+      "resolved_q": 10259,
+      "audit_passed": true,
+      "gap_offset": 4
+    }
+  ]
+}
