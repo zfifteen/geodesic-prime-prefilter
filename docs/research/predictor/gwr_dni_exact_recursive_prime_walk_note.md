@@ -32,11 +32,19 @@ The strongest supported claims are concrete:
   certified on the committed exact consecutive-right-prime surface through
   `q <= 10^7`.
 
-This is not yet a closed-form formula for $p_n$. The unconditional part is a
-sequential next-prime oracle: given one known prime, it recovers the immediate
-next prime by scanning the full next-gap interior and then applying one
-witness lookup. The bounded walker is a finite empirical compression of that
-oracle.
+The repository does contain a direct next-prime expression once the local
+PGS state is specified. Given one known prime and the exact next-gap
+divisor-count state, the unbounded DNI/GWR transition determines the immediate
+successor prime. In compact form, the current generator specification writes
+this as
+
+$$q^+ = B(q, S, w, d(w)),$$
+
+where $S$ is the exact search-interval state, $w$ is the GWR-selected integer,
+and $d(w)$ is its divisor count. The claim not made here is narrower: this
+note does not give a standalone formula for $p_n$ as a function of $n$ alone
+with no local gap state. The bounded walker is a finite empirical compression
+of the unbounded PGS transition.
 
 The mechanism now has a clean split:
 
@@ -372,7 +380,7 @@ This note supports the following claims:
 This note does not support the following stronger claims:
 
 - a proof that the current dynamic cutoff is sufficient at all larger primes;
-- a direct closed-form expression for $p_n$ as a function of $n$ alone.
+- a standalone $n \mapsto p_n$ formula that does not use local PGS state.
 
 So the correct present description is:
 
@@ -383,7 +391,7 @@ So the correct present description is:
 - dynamic square-branch audit through `p <= 10^6` with `7,477` archived fixed-
   cutoff violations and full dynamic-cutoff coverage on that audit surface;
 - not yet an unconditional all-scale theorem for the compression layer;
-- not yet a direct $n \mapsto p_n$ closed form.
+- not yet a standalone $n \mapsto p_n$ formula independent of local PGS state.
 
 ## 9. Reproduction
 
