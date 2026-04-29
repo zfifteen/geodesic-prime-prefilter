@@ -2,6 +2,12 @@
 
 #include <stdlib.h>
 
+typedef struct {
+    unsigned long* values;
+    size_t count;
+    size_t capacity;
+} factor_list_t;
+
 typedef enum {
     CANDIDATE_REJECTED = 0,
     CANDIDATE_RESOLVED_SURVIVOR = 1,
@@ -51,6 +57,103 @@ static unsigned long divisor_count_ui(unsigned long value) {
     return count;
 }
 
+static int append_factor(factor_list_t* list, unsigned long value) {
+    if (list->count == list->capacity) {
+        size_t next_capacity = list->capacity == 0UL ? 1024UL : list->capacity * 2UL;
+        unsigned long* next = (unsigned long*)realloc(
+            list->values,
+            next_capacity * sizeof(unsigned long)
+        );
+        if (next == NULL) {
+            return PGS_ERR_OUTPUT;
+        }
+        list->values = next;
+        list->capacity = next_capacity;
+    }
+    list->values[list->count++] = value;
+    return PGS_OK;
+}
+
+static int build_factor_list(factor_list_t* list, unsigned long limit) {
+    list->values = NULL;
+    list->count = 0;
+    list->capacity = 0;
+
+    unsigned char* composite = (unsigned char*)calloc((size_t)limit + 1UL, 1UL);
+    if (composite == NULL) {
+        return PGS_ERR_OUTPUT;
+    }
+
+    for (unsigned long value = 2UL; value <= limit; value++) {
+        if (composite[value]) {
+            continue;
+        }
+        int status = append_factor(list, value);
+        if (status != PGS_OK) {
+            free(composite);
+            return status;
+        }
+        if (value <= limit / value) {
+            for (unsigned long multiple = value * value; multiple <= limit; multiple += value) {
+                composite[multiple] = 1U;
+            }
+        }
+    }
+
+    free(composite);
+    return PGS_OK;
+}
+
+static int apply_gmp_closure(
+    unsigned char* closed,
+    const mpz_t n,
+    size_t candidate_bound,
+    unsigned long factor_bound
+) {
+    factor_list_t factors;
+    int status = build_factor_list(&factors, factor_bound);
+    if (status != PGS_OK) {
+        return status;
+    }
+
+    for (size_t factor_index = 0; factor_index < factors.count; factor_index++) {
+        unsigned long factor = factors.values[factor_index];
+        unsigned long remainder = mpz_fdiv_ui(n, factor);
+        unsigned long first_offset = (remainder == 0UL) ? factor : factor - remainder;
+        for (
+            size_t offset = (size_t)first_offset;
+            offset <= candidate_bound;
+            offset += (size_t)factor
+        ) {
+            closed[offset] = 1U;
+        }
+    }
+
+    free(factors.values);
+    return PGS_OK;
+}
+
+static int witness_valid(const mpz_t n, size_t offset, const char* witness_decimal) {
+    mpz_t candidate, witness, remainder;
+    mpz_init(candidate);
+    mpz_init(witness);
+    mpz_init(remainder);
+    int valid = 0;
+
+    mpz_add_ui(candidate, n, (unsigned long)offset);
+    if (mpz_set_str(witness, witness_decimal, 10) == 0 &&
+        mpz_cmp_ui(witness, 1UL) > 0 &&
+        mpz_cmp(witness, candidate) < 0) {
+        mpz_mod(remainder, candidate, witness);
+        valid = mpz_cmp_ui(remainder, 0UL) == 0;
+    }
+
+    mpz_clear(remainder);
+    mpz_clear(witness);
+    mpz_clear(candidate);
+    return valid;
+}
+
 static void clear_certificate(pgs_certificate_t* certificate) {
     if (certificate == NULL) {
         return;
@@ -60,6 +163,10 @@ static void clear_certificate(pgs_certificate_t* certificate) {
     certificate->wheel_open_count = 0;
     certificate->active_count = 0;
     certificate->unresolved_count = 0;
+    certificate->closed_count = 0;
+    certificate->certificate_closed_count = 0;
+    certificate->invalid_witness_count = 0;
+    certificate->q_closed = 0;
     certificate->tail_after_reset_count = 0;
     certificate->carrier_offset = 0;
     certificate->carrier_d = 0;
@@ -87,11 +194,144 @@ static void unresolved_certificate(
     certificate->status = PGS_ERR_UNRESOLVED;
 }
 
+static int resolve_gmp_certificate(
+    mpz_t q_out,
+    pgs_certificate_t* certificate,
+    const mpz_t n,
+    size_t candidate_bound,
+    size_t endpoint_offset,
+    const pgs_witness_t* witnesses,
+    size_t witness_count
+) {
+    unsigned char* closed = (unsigned char*)calloc(candidate_bound + 1UL, 1UL);
+    if (closed == NULL) {
+        return PGS_ERR_OUTPUT;
+    }
+
+    int status = apply_gmp_closure(
+        closed,
+        n,
+        candidate_bound,
+        PGS_GMP_CLOSURE_FACTOR_BOUND
+    );
+    if (status != PGS_OK) {
+        free(closed);
+        return status;
+    }
+
+    size_t certificate_closed_count = 0;
+    size_t invalid_witness_count = 0;
+    for (size_t index = 0; index < witness_count; index++) {
+        size_t offset = witnesses[index].offset;
+        if (
+            offset == 0UL ||
+            offset > candidate_bound ||
+            witnesses[index].witness_decimal == NULL
+        ) {
+            invalid_witness_count++;
+            continue;
+        }
+        if (witness_valid(n, offset, witnesses[index].witness_decimal)) {
+            if (!closed[offset]) {
+                certificate_closed_count++;
+            }
+            closed[offset] = 1U;
+        } else {
+            invalid_witness_count++;
+        }
+    }
+
+    unsigned long n_mod_30 = mpz_fdiv_ui(n, 30UL);
+    size_t wheel_open_count = 0;
+    size_t closed_count = 0;
+    size_t unresolved_count = 0;
+    size_t end = candidate_bound;
+    if (endpoint_offset != 0UL && endpoint_offset <= candidate_bound) {
+        end = endpoint_offset - 1UL;
+    }
+
+    for (size_t offset = 1; offset <= end; offset++) {
+        unsigned long residue = (n_mod_30 + (unsigned long)(offset % 30UL)) % 30UL;
+        if (!pgs_wheel_is_open_residue(residue)) {
+            continue;
+        }
+        wheel_open_count++;
+        if (closed[offset]) {
+            closed_count++;
+        } else {
+            unresolved_count++;
+        }
+    }
+
+    size_t q_closed = 0;
+    int endpoint_residue_open = 0;
+    if (endpoint_offset != 0UL && endpoint_offset <= candidate_bound) {
+        unsigned long endpoint_residue =
+            (n_mod_30 + (unsigned long)(endpoint_offset % 30UL)) % 30UL;
+        endpoint_residue_open = pgs_wheel_is_open_residue(endpoint_residue);
+        q_closed = closed[endpoint_offset] ? 1UL : 0UL;
+    }
+
+    if (certificate != NULL) {
+        certificate->candidate_bound = candidate_bound;
+        certificate->resolved_offset = 0;
+        certificate->wheel_open_count = wheel_open_count;
+        certificate->active_count = unresolved_count == 0UL ? 1UL : unresolved_count;
+        certificate->unresolved_count = unresolved_count;
+        certificate->closed_count = closed_count;
+        certificate->certificate_closed_count = certificate_closed_count;
+        certificate->invalid_witness_count = invalid_witness_count;
+        certificate->q_closed = q_closed;
+        certificate->status = PGS_ERR_UNRESOLVED;
+    }
+
+    if (
+        endpoint_offset != 0UL &&
+        endpoint_offset <= candidate_bound &&
+        endpoint_residue_open &&
+        unresolved_count == 0UL &&
+        invalid_witness_count == 0UL &&
+        q_closed == 0UL
+    ) {
+        mpz_add_ui(q_out, n, (unsigned long)endpoint_offset);
+        if (certificate != NULL) {
+            certificate->resolved_offset = endpoint_offset;
+            certificate->active_count = 1UL;
+            certificate->status = PGS_OK;
+        }
+        free(closed);
+        return PGS_OK;
+    }
+
+    free(closed);
+    return PGS_ERR_UNRESOLVED;
+}
+
 int pgs_resolve_from_integer(
     mpz_t q_out,
     pgs_certificate_t* certificate,
     const mpz_t n,
     size_t candidate_bound
+) {
+    return pgs_resolve_from_integer_with_witnesses(
+        q_out,
+        certificate,
+        n,
+        candidate_bound,
+        0,
+        NULL,
+        0
+    );
+}
+
+int pgs_resolve_from_integer_with_witnesses(
+    mpz_t q_out,
+    pgs_certificate_t* certificate,
+    const mpz_t n,
+    size_t candidate_bound,
+    size_t endpoint_offset,
+    const pgs_witness_t* witnesses,
+    size_t witness_count
 ) {
     clear_certificate(certificate);
     if (candidate_bound < 1 || candidate_bound > PGS_MAX_CANDIDATE_BOUND) {
@@ -100,26 +340,19 @@ int pgs_resolve_from_integer(
     if (mpz_sgn(n) < 0 || mpz_cmp_ui(n, 5UL) < 0) {
         return PGS_ERR_UNRESOLVED;
     }
-    if (!mpz_fits_ulong_p(n)) {
-        size_t wheel_open_count = 0;
-        int wheel_status = pgs_collect_wheel_offsets(
-            NULL,
-            0,
-            &wheel_open_count,
-            n,
-            candidate_bound
-        );
-        if (wheel_status != PGS_OK) {
-            return wheel_status;
-        }
-        unresolved_certificate(
-            certificate,
-            candidate_bound,
-            wheel_open_count,
-            wheel_open_count,
-            wheel_open_count
-        );
+    if (witness_count > 0UL && witnesses == NULL) {
         return PGS_ERR_UNRESOLVED;
+    }
+    if (!mpz_fits_ulong_p(n)) {
+        return resolve_gmp_certificate(
+            q_out,
+            certificate,
+            n,
+            candidate_bound,
+            endpoint_offset,
+            witnesses,
+            witness_count
+        );
     }
 
     unsigned long start = mpz_get_ui(n);

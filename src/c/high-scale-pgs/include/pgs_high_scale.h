@@ -18,6 +18,7 @@ extern "C" {
 #define PGS_DEFAULT_CANDIDATE_BOUND 128UL
 #define PGS_MAX_CANDIDATE_BOUND 1048576UL
 #define PGS_SCALE_MAX_EXPONENT 100000UL
+#define PGS_GMP_CLOSURE_FACTOR_BOUND 200000000UL
 
 enum {
     PGS_OK = 0,
@@ -31,11 +32,20 @@ enum {
 };
 
 typedef struct {
+    size_t offset;
+    const char* witness_decimal;
+} pgs_witness_t;
+
+typedef struct {
     size_t candidate_bound;
     size_t resolved_offset;
     size_t wheel_open_count;
     size_t active_count;
     size_t unresolved_count;
+    size_t closed_count;
+    size_t certificate_closed_count;
+    size_t invalid_witness_count;
+    size_t q_closed;
     size_t tail_after_reset_count;
     size_t carrier_offset;
     unsigned long carrier_d;
@@ -61,6 +71,15 @@ int pgs_resolve_from_integer(
     pgs_certificate_t* certificate,
     const mpz_t n,
     size_t candidate_bound
+);
+int pgs_resolve_from_integer_with_witnesses(
+    mpz_t q_out,
+    pgs_certificate_t* certificate,
+    const mpz_t n,
+    size_t candidate_bound,
+    size_t endpoint_offset,
+    const pgs_witness_t* witnesses,
+    size_t witness_count
 );
 int pgs_emit_integer_record(FILE* out, const mpz_t n, const mpz_t q);
 int pgs_write_diagnostics(
