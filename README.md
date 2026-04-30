@@ -6,9 +6,9 @@ This repository now carries three major prime-gap results:
 
 - a proved local arithmetic selection law inside prime gaps;
 - a frozen hierarchical finite-state model for reduced prime-gap types.
-- a Next-Prime Generator that infers the successor prime from the
-  arithmetic structure of the interval after a given prime, instead of scanning
-  candidates until a primality test succeeds.
+- a PGS Prime Generator that infers the successor prime from deterministic
+  prime-gap-structure chamber state, without trial division, Miller-Rabin,
+  sieve generation, fallback prime search, or `nextprime` inside generation.
 
 Take the consecutive primes `23` and `29`. The integers between them are
 `24, 25, 26, 27, 28`. Their divisor counts are:
@@ -45,11 +45,13 @@ These examples show the local arithmetic choice that input primes the repository
 - **Prime Gap Generative Model v1.0:** on the persistent reduced gap-type
   surface, prime-gap types close to a frozen hierarchical finite-state model
   with a stable `14`-state core.
-- **Next-Prime Generator:** the generator outputs one two-key
+- **PGS Prime Generator:** the generator outputs one two-key
   `{"p": ..., "q": ...}` record per given prime `p`, keeps diagnostics outside
-  the outputted stream, and selects the successor prime `q` from the arithmetic
-  consistency of the interval after `p`, rather than by a conventional
-  next-prime search. The current production iteration is `v1.1`.
+  the outputted stream, and selects the successor prime `q` from deterministic
+  prime-gap-structure chamber state. The production path excludes trial
+  division, Miller-Rabin, probabilistic primality tests, sieve-based prime
+  generation, fallback prime search, and oracle-style `nextprime` calls inside
+  generation. The current production iteration is `v1.1`.
 
 ## Leftmost Minimum-Divisor Rule
 
@@ -103,9 +105,9 @@ See also:
 - [Hierarchical model paper draft](docs/research/predictor/prime_gap_hierarchical_engine_paper_draft.md)
 - [Model overview figure](output/gwr_dni_gap_type_engine_v1_overview.png)
 
-## Next-Prime Generator
+## PGS Prime Generator
 
-The third headline result is the Next-Prime Generator. It outputs one
+The third headline result is the PGS Prime Generator. It outputs one
 record for each given prime:
 
 ```json
@@ -118,11 +120,12 @@ diagnostics, verification records, and audit results stay outside the generator 
 The current production iteration is
 [PGS Inference Generator v1.1](docs/releases/pgs_inference_generator_v1_1_pgs_only.md).
 
+The extraordinary result is not that the PGS Prime Generator is fast.
 Conventional prime generation works by scanning candidate numbers and testing
-them until one proves prime. The Next-Prime Generator is different. It
-starts from a given prime `p`, examines a finite interval to the right of `p`,
-and uses the composite numbers in that interval to infer the successor prime
-`q`.
+them until one proves prime. The PGS Prime Generator is different. It starts
+from a given prime `p`, examines a finite chamber to the right of `p`, and
+uses deterministic prime-gap-structure state in that chamber to infer the
+successor prime `q`.
 
 The generator treats the gap as a consistency problem:
 
@@ -137,9 +140,10 @@ distinction turned the remaining not-yet-excluded candidates into evidence
 that the gap had already closed.
 
 The generator is now PGS-only. The production generator contains no trial
-division and no fallback prime search. Probabilistic primality tests,
-Miller-Rabin, sieves, and oracle-style `nextprime` calls are also excluded from
-generation. Classical validation remains downstream audit after generation.
+division, no Miller-Rabin, no probabilistic primality test, no sieve-based
+prime generation, no fallback prime search, and no oracle-style `nextprime`
+call inside generation. Classical verification remains downstream audit after
+generation, not a mechanism for choosing `q`.
 
 On the current production generator surface, exact output is preserved and the
 PGS selection rule applies exact divisor-count GWR/NLSC search-interval-reset state:
@@ -167,6 +171,9 @@ incorrect candidates: 0
 search-window misses: 0
 coverage: 100.00%
 ```
+
+The C high-scale generator also carries a deterministic `10^1233` certificate
+path for the integer-start chamber contract.
 
 The implementation contract and lower-level mechanism are recorded in
 [Generator Logic Specification](docs/specs/prime-gen/minimal_pgs_generator_logic.md).
@@ -220,11 +227,11 @@ This repository now carries three visible lines of work:
 - the proved GWR theorem and its proof surface;
 - the reduced gap-type model and pattern results on the persistent reduced
   surface;
-- the Next-Prime Generator and downstream deterministic DNI-based
+- the PGS Prime Generator and downstream deterministic DNI-based
   predictor and prefilter work.
 
 The GWR theorem remains the theorem foundation. The gap-type model is the second
-headline prime-gap result. The Next-Prime Generator is the current
+headline prime-gap result. The PGS Prime Generator is the current
 operational inferred-prime generator milestone. The recursive walk and
 deterministic filter are downstream deterministic instruments built from the
 same normalization.
@@ -258,12 +265,13 @@ The repository now carries the following named structures and results:
   [docs/releases/prime_gap_generative_engine_v1_0.md](docs/releases/prime_gap_generative_engine_v1_0.md)
   and
   [gwr/findings/gap_type_engine_v1_rulebook.md](gwr/findings/gap_type_engine_v1_rulebook.md).
-- **Next-Prime Generator:** the generator outputs exactly `p` and `q`
+- **PGS Prime Generator:** the generator outputs exactly `p` and `q`
   for each given prime `p`, with downstream audit and source diagnostics
   outside the outputted stream. Unlike a conventional prime generator, it selects
   the successor prime from the arithmetic consistency of the interval after
-  `p`, without a trial-division or fallback prime-search path inside the
-  generator. The current production path has `9588 / 9588` exact PGS outputs
+  `p`, without trial division, Miller-Rabin, probabilistic primality tests,
+  sieve-based prime generation, fallback prime search, or `nextprime` inside
+  generation. The current production path has `9588 / 9588` exact PGS outputs
   with `0` failures on `11..100000`, and
   `2816 / 2816` exact PGS outputs with `0` incorrect candidates on the `10^8`
   through `10^18` decade-window validation surface.
