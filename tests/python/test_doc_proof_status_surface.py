@@ -1,4 +1,4 @@
-"""Doc-surface consistency checks for live proof-status wording."""
+"""Doc-surface consistency checks for the live proof reference."""
 
 from __future__ import annotations
 
@@ -6,56 +6,90 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
+DEPRECATED_DIR = ROOT / "docs" / "deprecated"
 
 
-def iter_live_markdown_files() -> list[Path]:
-    """Return the non-archived markdown files on the live docs surface."""
-    files = [ROOT / "README.md", ROOT / "GWR_PROOF.md"]
-    files.extend((ROOT / "docs").rglob("*.md"))
-    files.extend((ROOT / "gwr").rglob("*.md"))
+def is_deprecated(path: Path) -> bool:
+    """Return whether a path is inside the deprecated document tree."""
+    return DEPRECATED_DIR in path.parents or path == DEPRECATED_DIR
 
-    live_files: list[Path] = []
-    seen: set[Path] = set()
-    for path in files:
-        if "archive" in path.parts:
+
+def test_root_proof_document_is_the_live_reference():
+    """The repository should expose exactly one live proof document."""
+    proof = ROOT / "PROOF.md"
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+
+    assert proof.exists()
+    assert "single live proof reference is [PROOF.md](PROOF.md)" in readme
+    assert "The single live proof reference is `PROOF.md`" in agents
+
+
+def test_old_proof_marked_markdown_is_deprecated():
+    """Proof/theorem/lemma-marked markdown files should not remain live."""
+    offenders: list[str] = []
+    markers = ("proof", "theorem", "lemma")
+
+    for path in ROOT.rglob("*.md"):
+        if is_deprecated(path):
             continue
-        if path in seen or not path.exists():
+        if path == ROOT / "PROOF.md":
             continue
-        seen.add(path)
-        live_files.append(path)
-    return sorted(live_files)
+        relative_parts = path.relative_to(ROOT).parts
+        if any(any(marker in part.lower() for marker in markers) for part in relative_parts):
+            offenders.append(str(path.relative_to(ROOT)))
+
+    assert not offenders, "live proof-marked markdown files found:\n" + "\n".join(offenders)
 
 
-def test_live_markdown_has_no_stale_proof_status_phrases():
-    """Live docs should not contain stale proof-status phrasing."""
-    banned_phrases = [
-        "conditionally proved under the recorded BHP/Robin assumptions",
-        "conditionally proved for every prime gap",
-        "GWR is already conditionally proved",
-        "theorem candidate",
-        "theorem candidates",
-        "gwr/findings/no_later_simpler_composite_theorem.md",
-        "gwr/findings/square_exclusion_first_d4_theorem.md",
-        "standalone-candidates/",
+def test_root_proof_uses_conventional_language():
+    """The live proof should avoid project-invented terms and acronyms."""
+    text = (ROOT / "PROOF.md").read_text(encoding="utf-8").lower()
+    banned_terms = [
+        "dni",
+        "gwr",
+        "pgs",
+        "fixed-point locus",
+        "shadow seed",
+        "endpoint",
+        "chamber",
+        "bridge",
+        "lock",
+        "pressure",
     ]
 
-    offending: list[str] = []
-    for path in iter_live_markdown_files():
-        text = path.read_text(encoding="utf-8")
-        for phrase in banned_phrases:
-            if phrase in text:
-                offending.append(f"{path.relative_to(ROOT)} :: {phrase}")
+    offenders = [term for term in banned_terms if term in text]
 
-    assert not offending, "stale live proof-status wording found:\n" + "\n".join(offending)
+    assert not offenders, "project terms found in PROOF.md: " + ", ".join(offenders)
 
 
-def test_live_proof_status_anchors_remain_present():
-    """The headline proof-status anchors should stay explicit."""
-    gwr_proof = (ROOT / "GWR_PROOF.md").read_text(encoding="utf-8")
-    readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    headline = (ROOT / "docs" / "current_headline_results.md").read_text(encoding="utf-8")
+def test_root_proof_uses_github_safe_math_blocks_only():
+    """Avoid inline dollar math because some Markdown previews show delimiters."""
+    lines = (ROOT / "PROOF.md").read_text(encoding="utf-8").splitlines()
+    offenders: list[str] = []
 
-    assert "current proof surface" in gwr_proof
-    assert "proved and closed" in gwr_proof
-    assert "exact corollary of the proved GWR theorem" in readme
-    assert "fixed cutoff theorem is false" in headline
+    for line_number, line in enumerate(lines, start=1):
+        if "$" not in line:
+            continue
+        stripped = line.strip()
+        if stripped.startswith("$$") and stripped.endswith("$$"):
+            continue
+        offenders.append(f"{line_number}: {line}")
+
+    assert not offenders, "non-block dollar math found:\n" + "\n".join(offenders)
+
+
+def test_root_proof_has_no_hidden_external_proof_dependencies():
+    """The live proof should be readable without proof-critical repo artifacts."""
+    text = (ROOT / "PROOF.md").read_text(encoding="utf-8")
+    banned_phrases = [
+        "the repository records this",
+        "supporting record",
+        "output/",
+        "as shown in",
+        "see also",
+    ]
+
+    offenders = [phrase for phrase in banned_phrases if phrase in text]
+
+    assert not offenders, "external proof dependency language found: " + ", ".join(offenders)

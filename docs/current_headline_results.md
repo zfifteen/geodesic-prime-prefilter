@@ -1,20 +1,14 @@
 # Current Headline Results
 
-- **This file is the public proof-status override for `GWR`.** If another file
-  still describes the theorem as a bridge-era conditional BHP/Robin result,
-  or still presents the bridge verification record as the proof-critical path, treat
-  that file as historical comparison material unless the same claim is repeated
-  here and in [../GWR_PROOF.md](../GWR_PROOF.md).
+- **The single live proof reference is [../PROOF.md](../PROOF.md).** Older
+  proof, theorem, and lemma documents now live under
+  [./deprecated/](./deprecated/) as historical records.
 - **GWR is proved and closed on the repository's current proof surface.** The
-  live theorem statement is
-  [../gwr/findings/gwr_hierarchical_local_dominator_theorem.md](../gwr/findings/gwr_hierarchical_local_dominator_theorem.md),
-  and the live proof summary is [../GWR_PROOF.md](../GWR_PROOF.md).
-- **The later side is closed exactly.** The ordered backbone is
-  [../gwr/findings/lexicographic_raw_z_dominance_theorem.md](../gwr/findings/lexicographic_raw_z_dominance_theorem.md):
-  if `a < b` and `d(a) <= d(b)`, then `L(a) > L(b)`.
-- **The earlier side is closed by the local admissibility route plus the
-  residual-class closure artifacts.** The local admissibility note is
-  [../gwr/findings/prime_gap_admissibility_theorem.md](../gwr/findings/prime_gap_admissibility_theorem.md).
+  live proof statement and status are in [../PROOF.md](../PROOF.md).
+- **The later side is closed exactly.** If `a < b` and `d(a) <= d(b)`, then
+  `L(a) > L(b)`.
+- **The earlier side is closed by local case analysis plus the residual-class
+  closure artifacts.**
   The closing residual artifacts are
   [../output/gwr_proof/residual_class_closure_20260413_0008.json](../output/gwr_proof/residual_class_closure_20260413_0008.json)
   and
@@ -61,11 +55,8 @@
   before Miller-Rabin and produced `2.09x` and `2.82x` end-to-end deterministic
   RSA key-generation speedups on the curated `2048`-bit and `4096`-bit corpora.
   See [./prefilter/benchmarks.md](./prefilter/benchmarks.md).
-- **Pre-proof notes are now archived.** Historical proof-progress material
-  lives under
-  [./archive/pre-proof-gwr/README.md](./archive/pre-proof-gwr/README.md)
-  and
-  [../gwr/archive/pre-proof/README.md](../gwr/archive/pre-proof/README.md).
+- **Deprecated proof notes are now archived under `docs/deprecated/`.** They are
+  retained for provenance, not current proof status.
 - **Bridge-era proof scripts are retained for comparison, not for current
   theorem status.** The current live earlier-side route is the local
   admissibility program. The bridge verification record and related BHP/Robin notes in
