@@ -140,6 +140,8 @@ def test_root_proof_contains_standalone_threshold_classification():
         "Witness Threshold Lemma",
         "Finite Base Lemma",
         "Classification Lemma",
+        "Divisor-Count Tail",
+        "No upper bound on `tau(w)` is needed for this tail argument.",
     ]
 
     missing = [phrase for phrase in required_phrases if phrase not in normalized_text]

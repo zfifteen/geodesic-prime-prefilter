@@ -79,6 +79,40 @@ therefore gives a smaller value of `F` for every integer after `w`.
 
 So no later integer can match or exceed `F(w)`.
 
+## Divisor-Count Tail
+
+The interval has a natural stopping point. Since `q` is prime, `tau(q) = 2`.
+Since there is no prime strictly between `p` and `q`, every integer `n` with
+`p < n < q` has `tau(n) > 2`.
+
+So the first integer after `p` with divisor count `2` is `q`, and the interval
+being studied is exactly the finite set before that first value:
+
+$$I=\{p+1,\ldots,q-1\}$$
+
+For any `x` with `p < x <= q`, define the current minimum divisor count before
+`x` by
+
+$$D(x)=\min\{\tau(n):p<n<x\}$$
+
+when the set is nonempty. At `x = q`, this is the minimum divisor count in the
+whole interval:
+
+$$D(q)=\min\{\tau(n):n\in I\}$$
+
+The chosen integer `w` is the first integer in `I` with `tau(w) = D(q)`.
+
+There cannot be an integer `t` with `w < t < q` and `tau(t) < tau(w)`. If such
+a `t` existed, then the minimum divisor count in `I` would be smaller than
+`tau(w)`, contradicting the definition of `w`.
+
+There also cannot be any competing integer after `q` in the same interval. The
+value `q` has divisor count `2`, so the interval has ended. Integers after `q`
+belong to later intervals, not to `I`.
+
+This closes the right-side divisor-count tail for every possible value of
+`tau(w)`. No upper bound on `tau(w)` is needed for this tail argument.
+
 ## Earlier Integers
 
 Now let `k` be an earlier integer in the gap, so `k < w`. Since `w` is the
