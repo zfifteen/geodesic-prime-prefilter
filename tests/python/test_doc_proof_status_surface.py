@@ -93,3 +93,24 @@ def test_root_proof_has_no_hidden_external_proof_dependencies():
     offenders = [phrase for phrase in banned_phrases if phrase in text]
 
     assert not offenders, "external proof dependency language found: " + ", ".join(offenders)
+
+
+def test_root_proof_preserves_universal_status():
+    """The root proof should not downgrade the theorem to a finite check."""
+    text = (ROOT / "PROOF.md").read_text(encoding="utf-8")
+    required_phrases = [
+        "This is a universal statement about every prime gap with a nonempty interior.",
+        "The theorem above is universal.",
+    ]
+    banned_phrases = [
+        "The all-scale proof for earlier integers in every prime gap is still open.",
+        "finite checked fact",
+        "finite checked theorem",
+        "What remains open is a short proof",
+    ]
+
+    missing = [phrase for phrase in required_phrases if phrase not in text]
+    offenders = [phrase for phrase in banned_phrases if phrase in text]
+
+    assert not missing, "universal proof-status wording missing: " + ", ".join(missing)
+    assert not offenders, "finite-limited proof wording found: " + ", ".join(offenders)
