@@ -1,5 +1,6 @@
 z_band_prime_composite_field
 z_band_prime_gap_ridge
 z_band_prime_invariant
+z_band_prime_predictor
 z_band_prime_prefilter
 z_band_prime_rh_bridge

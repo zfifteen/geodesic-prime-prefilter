@@ -5,6 +5,15 @@ z_band_prime_gap_ridge/__init__.py
 z_band_prime_gap_ridge/runs.py
 z_band_prime_invariant/__init__.py
 z_band_prime_invariant/core.py
+z_band_prime_predictor/__init__.py
+z_band_prime_predictor/gpe_boundary_selector.py
+z_band_prime_predictor/gpe_nlsc_selector.py
+z_band_prime_predictor/gwr_boundary_walk.py
+z_band_prime_predictor/predictor.py
+z_band_prime_predictor/semiprime_factor_walk.py
+z_band_prime_predictor/simple_pgs_audit.py
+z_band_prime_predictor/simple_pgs_controller.py
+z_band_prime_predictor/simple_pgs_generator.py
 z_band_prime_prefilter/__init__.py
 z_band_prime_prefilter/prefilter.py
 z_band_prime_prefilter.egg-info/PKG-INFO
