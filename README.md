@@ -4,7 +4,8 @@
 
 This repository now carries three major prime-gap results:
 
-- a proved local arithmetic selection law inside prime gaps;
+- a proved local arithmetic selection law inside prime gaps, with the live proof
+  reference in [PROOF.md](PROOF.md);
 - a frozen hierarchical finite-state model for reduced prime-gap types.
 - a PGS Prime Generator that infers the successor prime from deterministic
   prime-gap-structure chamber state, without trial division, Miller-Rabin,
@@ -66,9 +67,7 @@ That chosen interior integer is the selected integer of the gap.
 
 The headline mathematical result carried by the repository is that the
 implemented divisor-normalization score picks exactly that same integer in
-every prime gap. The theorem statement is
-[Leftmost Minimum-Divisor Rule — Hierarchical Local-Dominator Law](gwr/findings/gwr_hierarchical_local_dominator_theorem.md),
-and the proof surface is summarized in [GWR_PROOF.md](GWR_PROOF.md).
+every prime gap. The single live proof reference is [PROOF.md](PROOF.md).
 
 ## Prime Gap Generative Model v1.0
 
@@ -224,7 +223,7 @@ rule with jargon.
 
 This repository now carries three visible lines of work:
 
-- the proved GWR theorem and its proof surface;
+- the proved GWR theorem, whose single live proof reference is [PROOF.md](PROOF.md);
 - the reduced gap-type model and pattern results on the persistent reduced
   surface;
 - the PGS Prime Generator and downstream deterministic DNI-based
@@ -243,8 +242,7 @@ The repository now carries the following named structures and results:
 - **Leftmost Minimum-Divisor Rule (GWR):** inside any prime gap, the log-score argmax is
   exactly the leftmost integer with minimum interior divisor count. On the
   repository's current proof surface, this is a proved universal prime-gap
-  maximizer theorem summarized in [GWR_PROOF.md](GWR_PROOF.md) and recorded in
-  [gwr/findings/gwr_hierarchical_local_dominator_theorem.md](gwr/findings/gwr_hierarchical_local_dominator_theorem.md).
+  maximizer theorem. The single live proof reference is [PROOF.md](PROOF.md).
 - **Divisor Normalization Identity (DNI):** `Z(n) = n^(1 - d(n)/2)` is an
   exact arithmetic identity collapsing all primes to `Z = 1.0`.
 - **Gap-type catalog / reduced state surface:** the repository defines a
@@ -363,11 +361,7 @@ low-class remainder, and the exact no-early-counterexample audits through
 $p < 5 \times 10^9$ plus the square-adjacent stress surface at $10^{12}$
 remain clean.
 
-See [gwr/story/README.md](gwr/story/README.md),
-[GWR_PROOF.md](GWR_PROOF.md),
-[gwr/findings/gwr_hierarchical_local_dominator_theorem.md](gwr/findings/gwr_hierarchical_local_dominator_theorem.md),
-[gwr/findings/gap_winner_rule.md](gwr/findings/gap_winner_rule.md), and
-[gwr/findings/prime_gap_admissibility_theorem.md](gwr/findings/prime_gap_admissibility_theorem.md).
+See the single live proof reference in [PROOF.md](PROOF.md).
 
 ## Exact Recursive Prime Walk
 
