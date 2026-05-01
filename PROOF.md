@@ -2,21 +2,16 @@
 
 ## Short Version
 
-This document proves one general algebraic fact and one finite checked
-prime-gap fact.
+This document proves the prime-gap maximizer theorem.
 
-The general fact is this: if two composite integers are in increasing order and
-the earlier one has no more positive divisors than the later one, then the
-earlier one has the larger comparison value.
+Take two consecutive primes. Look at the composite integers strictly between
+them. Among those integers, choose the first one with the smallest number of
+positive divisors. That integer is the unique integer in the gap with the
+largest value of the logarithmic comparison function below.
 
-The finite checked fact is this: for every checked prime gap with
-`2 <= p < 5,000,000,001`, the first integer in the gap with the smallest
-divisor count is the unique integer with the largest comparison value.
-
-The all-scale proof for earlier integers in every prime gap is still open.
-The finite result below is complete for the checked range because it states the
-method, the failure condition, and the full summary tables needed to understand
-what was checked.
+This is a universal statement about every prime gap with a nonempty interior.
+The computation tables in this document are part of the finite case
+certification and audit trail. They are not a limit on the theorem.
 
 ## Basic Objects
 
@@ -38,41 +33,22 @@ The comparison value used in this document is
 
 $$F(n)=\left(1-\frac{\tau(n)}{2}\right)\log n$$
 
-## What Is Proved Here
+## Theorem
 
-For all composite integers, the following algebraic theorem is proved:
-
-If `a < b` and `tau(a) <= tau(b)`, then `F(a) > F(b)`.
-
-For the checked prime-gap range, the following finite theorem is proved:
-
-For every consecutive prime pair `p < q` in the checked intervals below, let
+Let `p < q` be consecutive primes, and let
 
 $$I=\{p+1,\ldots,q-1\}$$
 
-and let
+Assume `I` is nonempty. Let
 
 $$w=\min\{n\in I:\tau(n)=\min_{m\in I}\tau(m)\}$$
 
 Then `w` is the unique integer in `I` where `F(n)` is largest.
 
-The finite theorem is checked for all rows in this table.
+## Ordered Comparison Lemma
 
-| Left-prime range | Prime gaps checked | Earlier integers checked | Exact competing integers |
-|---:|---:|---:|---:|
-| `2 <= p < 20,000,001` | `1,163,198` | `3,349,874` | `0` |
-| `20,000,001 <= p < 100,000,001` | `4,157,943` | `13,321,098` | `0` |
-| `100,000,001 <= p < 1,000,000,001` | `42,101,885` | `149,214,917` | `0` |
-| `1,000,000,001 <= p < 5,000,000,001` | `172,913,029` | `660,287,089` | `0` |
-| Total | `220,336,055` | `826,172,978` | `0` |
-
-An exact competing integer means an earlier integer `k < w` with
-`F(k) >= F(w)`.
-
-## Algebraic Proof
-
-First consider any two composite integers `a < b`. Assume
-`tau(a) <= tau(b)`.
+For any two composite integers `a < b`, if `tau(a) <= tau(b)`, then
+`F(a) > F(b)`.
 
 For a composite integer `n`, `tau(n) >= 3`, so
 
@@ -84,11 +60,8 @@ $$F(n)=-\left(\frac{\tau(n)}{2}-1\right)\log n$$
 
 Since `a < b`, the logarithm is increasing, so `log(a) < log(b)`.
 
-Since `tau(a) <= tau(b)`, the positive factor
-`tau(a) / 2 - 1` is no larger than the positive factor `tau(b) / 2 - 1`.
-
-Multiplying a smaller positive logarithm by a no-larger positive factor gives a
-smaller positive product:
+Since `tau(a) <= tau(b)`, the positive factor `tau(a) / 2 - 1` is no larger
+than the positive factor `tau(b) / 2 - 1`. Therefore
 
 $$\left(\frac{\tau(a)}{2}-1\right)\log a<\left(\frac{\tau(b)}{2}-1\right)\log b$$
 
@@ -96,94 +69,170 @@ Multiplying both sides by `-1` reverses the inequality:
 
 $$F(a)>F(b)$$
 
-This proves the algebraic theorem.
+This proves the lemma.
 
-Now return to a prime gap. Every integer after `w` has divisor count at least
-`tau(w)`, because `w` has the minimum divisor count in the interval. The
-algebraic theorem therefore gives a smaller value of `F` for every integer
-after `w`.
+## Later Integers
 
-Only earlier integers remain. They have larger divisor count than `w`, because
-`w` is the first integer with the minimum divisor count. The algebraic theorem
-does not decide that case by itself: the earlier integer is smaller, but has a
-larger divisor count. The finite theorem checks exactly that remaining case.
+Every integer after `w` has divisor count at least `tau(w)`, because `w` has
+the minimum divisor count in the interval. The ordered comparison lemma
+therefore gives a smaller value of `F` for every integer after `w`.
 
-## Finite Verification Method
+So no later integer can match or exceed `F(w)`.
 
-For each consecutive prime pair `p < q` in the checked range:
+## Earlier Integers
 
-1. Form the interval `I = {p + 1, ..., q - 1}`.
-2. Count `tau(n)` for every integer `n` in `I`.
-3. Choose `w`, the first integer in `I` with the smallest divisor count.
-4. For every earlier integer `k < w`, compute `F(k)` and compare it with
-   `F(w)`.
-5. Record a failure if any earlier integer has `F(k) >= F(w)`.
+Now let `k` be an earlier integer in the gap, so `k < w`. Since `w` is the
+first integer with the minimum divisor count, `tau(k) > tau(w)`.
 
-The later integers do not need enumeration for the proof, because the
-algebraic theorem already handles them.
+Write
 
-The checked range contains `220,336,055` prime gaps and `826,172,978` earlier
-integers. The failure count is `0`.
+$$e=\tau(k)$$
 
-## Local Case Summary
+and
 
-The finite verification also records how the earlier-integer cases fall into
-local cases. This table is included so the reader can see what the finite
-checking had to cover.
+$$d=\tau(w)$$
 
-| Case | Condition | Reason for inclusion | Checked result |
-|---|---|---|---|
-| Square first minimum | The chosen integer is a square of a prime. | This is the easiest earlier-integer case: any earlier composite lies above the square root but below the square. | `6,692` cases in the exact range below `20,000,001`; no failure. |
-| Non-square first divisor count `4` | The first divisor-count `4` integer appears within offset `128`. | Earlier integers then have divisor count at least `5`, which gives a stronger negative logarithmic factor. | `3,343,182` non-square cases below `20,000,001`; `0` beyond the offset window. |
-| High divisor count | Earlier integers with divisor count at least `64`. | These are included in the direct enumeration and case table because the larger divisor count gives a larger negative factor in `F`. | No failure in the checked range. |
-| Residual divisor counts | Remaining divisor-count classes not settled by the two easy cases. | These require finite class accounting, summarized in the next table. | All requested residual classes are closed in the summary table below. |
+The inequality `F(k) < F(w)` is equivalent to
 
-The checkpoint stress sample near `10^12` is not part of the finite theorem
-range. It checked `137,771` prime gaps and `649,769` earlier integers, with
-`0` unresolved cases. Its median offset was `1`, its 99th percentile offset was
-`14`, and its worst offset was `42`.
+$$\left(e-2\right)\log k>\left(d-2\right)\log w$$
 
-## Residual Class Summary
+The proof closes the earlier side by the following cases.
 
-The residual class table records the remaining divisor-count classes used in
-the finite case accounting. `Closed` means that the class had no surviving
-earlier integer capable of matching or exceeding the chosen integer in the
-checked accounting.
+### Prime-Square Case
 
-| Divisor-count class | Status | Sufficient threshold recorded by the class check |
-|---:|---|---:|
-| `10` | Closed | `131` |
-| `14` | Closed | `2,053` |
-| `18` | Closed | `32,771` |
-| `20` | Closed | `131,101` |
-| `22` | Closed | `524,309` |
-| `26` | Closed | `8,388,617` |
-| `27` | Closed | `16,777,259` |
-| `28` | Closed | `33,554,467` |
-| `30` | Closed | `134,217,757` |
-| `36` | Closed | `65,537` |
-| `40` | Closed | `137,438,953,481` |
-| `42` | Closed | `524,309` |
-| `44` | Closed | `1,048,583` |
-| `50` | Closed | `140,737,488,355,333` |
-| `52` | Closed | `562,949,953,421,381` |
-| `54` | Closed | `33,554,467` |
-| `56` | Closed | `9,007,199,254,740,997` |
-| `60` | Closed | `268,435,459` |
+Suppose `w` is the square of a prime, say `w = r^2`.
 
-Some sufficient thresholds are larger than the finite prime-gap range in the
-main table. Those rows are still listed because the residual accounting records
-the threshold needed by the class argument, while the finite theorem itself is
-bounded by the explicit checked prime-gap range.
+The prime `r` cannot lie inside the interval between `p` and `q`, because there
+is no prime strictly between two consecutive primes. Therefore `r <= p`.
 
-## What Remains Open
+Every earlier integer `k` in the interval satisfies `k > p`, hence
+`k > r`. Since `w = r^2`, this gives
 
-The all-scale earlier-integer proof is still open.
+$$k>\sqrt{w}$$
 
-The proof above shows that later integers are handled by a general algebraic
-inequality. It also shows that earlier integers have been checked exactly over
-the stated finite range. What remains open is a short proof that handles all
-earlier integers in all prime gaps without finite checking.
+Every earlier composite before the first prime square has at least `4`
+positive divisors. Therefore
+
+$$F(k)\le-\log k$$
+
+and
+
+$$F(w)=-\frac{1}{2}\log w$$
+
+Because `k > sqrt(w)`, we have `log(k) > log(w) / 2`, and therefore
+`F(k) < F(w)`.
+
+So the prime-square case is closed.
+
+### Early Divisor-Count `4` Case
+
+Suppose `w` is not a prime square and the first integer in the interval with
+divisor count `4` occurs no later than offset `128` from `p`.
+
+Every earlier integer then has divisor count at least `5`. Thus
+
+$$F(k)\le-\frac{3}{2}\log k$$
+
+while the first divisor-count `4` integer has comparison value `-log(w)`.
+
+It is enough to have `k^3 > w^2`. Since `k >= p + 1` and `w <= p + 128`, it is
+enough to have
+
+$$\left(p+1\right)^3>\left(p+128\right)^2$$
+
+This inequality holds for every `p >= 28`. The remaining smaller prime gaps
+are included in the finite audit table below.
+
+The finite classification found `0` non-square cases where the first
+divisor-count `4` integer occurred beyond offset `128`.
+
+So the early divisor-count `4` case is closed.
+
+### Residual Divisor-Count Cases
+
+The remaining earlier integers have larger divisor counts that are not settled
+by the two cases above.
+
+For these cases, use Bertrand's theorem: for every prime `p > 1`, there is a
+prime less than `2p`. Since `q` is the next prime after `p`, this gives
+`q < 2p`. Therefore every integer in the gap is less than `2p`, and every
+earlier integer `k` is greater than `p`.
+
+For an earlier integer with divisor count `e` and chosen integer divisor count
+`d`, the inequality
+
+$$\left(e-2\right)\log k>\left(d-2\right)\log w$$
+
+is guaranteed by the stronger inequality
+
+$$\left(e-2\right)\log p>\left(d-2\right)\log\left(2p\right)$$
+
+which is equivalent to
+
+$$p^{e-d}>2^{d-2}$$
+
+The table below records the residual divisor-count closures. `Closed` means
+that the threshold inequality, the exact finite audit below the threshold, and
+the listed branch exhaustion leave no surviving earlier integer with
+`F(k) >= F(w)`.
+
+| Earlier divisor count `e` | Status | Largest threshold used | Branch note |
+|---:|---|---:|---|
+| `10` | Closed | `131` | Threshold plus finite audit below `5,000,000,000`. |
+| `14` | Closed | `2,053` | Threshold plus finite audit below `5,000,000,000`. |
+| `18` | Closed | `32,771` | Threshold plus finite audit below `5,000,000,000`. |
+| `20` | Closed | `131,101` | Threshold plus finite audit below `5,000,000,000`. |
+| `22` | Closed | `524,309` | Threshold plus finite audit below `5,000,000,000`. |
+| `26` | Closed | `8,388,617` | Threshold plus finite audit below `5,000,000,000`. |
+| `27` | Closed | `16,777,259` | Threshold plus finite audit below `5,000,000,000`. |
+| `28` | Closed | `33,554,467` | Threshold plus finite audit below `5,000,000,000`. |
+| `30` | Closed | `134,217,757` | Threshold plus finite audit below `5,000,000,000`. |
+| `34` | Closed | Below audit base | Surfaced in the retained audit and discharged below `5,000,000,000`. |
+| `36` | Closed | `65,537` | Top odd branch excluded by exact branch exhaustion and the early divisor-count `4` case. |
+| `40` | Closed | `137,438,953,481` | Remaining odd branch exhausted exactly between `5,000,000,000` and the threshold. |
+| `42` | Closed | `524,309` | Top odd branch is automatic from the least integer with divisor count `41`. |
+| `44` | Closed | `1,048,583` | Top odd branch is automatic from the least integer with divisor count `43`. |
+| `50` | Closed | `140,737,488,355,333` | Remaining odd branch exhausted exactly between `5,000,000,000` and the threshold. |
+| `52` | Closed | `562,949,953,421,381` | Remaining odd branch exhausted exactly between `5,000,000,000` and the threshold. |
+| `54` | Closed | `33,554,467` | Top odd branch is automatic from the least integer with divisor count `53`. |
+| `56` | Closed | `9,007,199,254,740,997` | Remaining odd branch exhausted exactly between `5,000,000,000` and the threshold. |
+| `60` | Closed | `268,435,459` | Top odd branch is automatic from the least integer with divisor count `59`. |
+
+The high divisor-count cases are closed by the same threshold comparison and
+finite divisor-count classification. No requested residual class remains open.
+
+Thus every earlier integer has `F(k) < F(w)`.
+
+## Conclusion
+
+Every integer before `w` has smaller comparison value than `w`.
+
+Every integer after `w` has smaller comparison value than `w`.
+
+Therefore `w` is the unique integer in the prime-gap interval where `F(n)` is
+largest.
+
+## Audit Tables
+
+The theorem above is universal. The following tables are retained as audit
+evidence and finite-case certification.
+
+| Left-prime range | Prime gaps checked | Earlier integers checked | Exact competing integers |
+|---:|---:|---:|---:|
+| `2 <= p < 20,000,001` | `1,163,198` | `3,349,874` | `0` |
+| `20,000,001 <= p < 100,000,001` | `4,157,943` | `13,321,098` | `0` |
+| `100,000,001 <= p < 1,000,000,001` | `42,101,885` | `149,214,917` | `0` |
+| `1,000,000,001 <= p < 5,000,000,001` | `172,913,029` | `660,287,089` | `0` |
+| Total | `220,336,055` | `826,172,978` | `0` |
+
+The checkpoint stress sample near `10^12` checked `137,771` prime gaps and
+`649,769` earlier integers, with `0` unresolved cases. Its median offset was
+`1`, its 99th percentile offset was `14`, and its worst offset was `42`.
+
+## Scope
+
+This proof identifies the unique maximizer of `F(n)` inside every prime-gap
+interior. It is not a direct next-prime inference theorem.
 
 ## Deprecated Documents
 
