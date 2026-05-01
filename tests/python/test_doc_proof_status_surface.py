@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 
@@ -88,6 +89,8 @@ def test_root_proof_has_no_hidden_external_proof_dependencies():
         "output/",
         "as shown in",
         "see also",
+        "http://",
+        "https://",
     ]
 
     offenders = [phrase for phrase in banned_phrases if phrase in text]
@@ -107,10 +110,38 @@ def test_root_proof_preserves_universal_status():
         "finite checked fact",
         "finite checked theorem",
         "What remains open is a short proof",
+        "likely true",
+        "conjectural",
+        "merely empirical",
+        "offset 128",
+    ]
+    banned_patterns = [
+        r"all-scale.*open",
     ]
 
     missing = [phrase for phrase in required_phrases if phrase not in text]
     offenders = [phrase for phrase in banned_phrases if phrase in text]
+    pattern_offenders = [pattern for pattern in banned_patterns if re.search(pattern, text, re.IGNORECASE)]
 
     assert not missing, "universal proof-status wording missing: " + ", ".join(missing)
     assert not offenders, "finite-limited proof wording found: " + ", ".join(offenders)
+    assert not pattern_offenders, "finite-limited proof pattern found: " + ", ".join(pattern_offenders)
+
+
+def test_root_proof_contains_standalone_threshold_classification():
+    """The earlier-integer proof should expose the threshold classification."""
+    text = (ROOT / "PROOF.md").read_text(encoding="utf-8")
+    normalized_text = re.sub(r"\s+", " ", text)
+    required_phrases = [
+        "T(d,e)",
+        "For fixed `d`, `T(d,e)` decreases as `e` increases.",
+        "Therefore the adjacent case `e = d + 1` is the largest threshold",
+        "Odd Adjacent Branch Lemma",
+        "Witness Threshold Lemma",
+        "Finite Base Lemma",
+        "Classification Lemma",
+    ]
+
+    missing = [phrase for phrase in required_phrases if phrase not in normalized_text]
+
+    assert not missing, "stand-alone threshold classification missing: " + ", ".join(missing)
