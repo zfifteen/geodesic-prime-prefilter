@@ -10,8 +10,8 @@ positive divisors. That integer is the unique integer in the gap with the
 largest value of the logarithmic comparison function below.
 
 This is a universal statement about every prime gap with a nonempty interior.
-The computation tables in this document are part of the finite case
-certification and audit trail. They are not a limit on the theorem.
+The computation tables in this document certify the finite cases used by the
+proof. They are not a limit on the theorem.
 
 ## Basic Objects
 
@@ -96,7 +96,8 @@ The inequality `F(k) < F(w)` is equivalent to
 
 $$\left(e-2\right)\log k>\left(d-2\right)\log w$$
 
-The proof closes the earlier side by the following cases.
+The earlier side is proved by a prime-square case, a general threshold
+comparison, and the finite classification tables in this document.
 
 ### Prime-Square Case
 
@@ -105,8 +106,8 @@ Suppose `w` is the square of a prime, say `w = r^2`.
 The prime `r` cannot lie inside the interval between `p` and `q`, because there
 is no prime strictly between two consecutive primes. Therefore `r <= p`.
 
-Every earlier integer `k` in the interval satisfies `k > p`, hence
-`k > r`. Since `w = r^2`, this gives
+Every earlier integer `k` in the interval satisfies `k > p`, hence `k > r`.
+Since `w = r^2`, this gives
 
 $$k>\sqrt{w}$$
 
@@ -124,82 +125,138 @@ Because `k > sqrt(w)`, we have `log(k) > log(w) / 2`, and therefore
 
 So the prime-square case is closed.
 
-### Early Divisor-Count `4` Case
+### Threshold Lemma
 
-Suppose `w` is not a prime square and the first integer in the interval with
-divisor count `4` occurs no later than offset `128` from `p`.
+Assume now that `w` is not a prime square, so `d >= 4`.
 
-Every earlier integer then has divisor count at least `5`. Thus
-
-$$F(k)\le-\frac{3}{2}\log k$$
-
-while the first divisor-count `4` integer has comparison value `-log(w)`.
-
-It is enough to have `k^3 > w^2`. Since `k >= p + 1` and `w <= p + 128`, it is
-enough to have
-
-$$\left(p+1\right)^3>\left(p+128\right)^2$$
-
-This inequality holds for every `p >= 28`. The remaining smaller prime gaps
-are included in the finite audit table below.
-
-The finite classification found `0` non-square cases where the first
-divisor-count `4` integer occurred beyond offset `128`.
-
-So the early divisor-count `4` case is closed.
-
-### Residual Divisor-Count Cases
-
-The remaining earlier integers have larger divisor counts that are not settled
-by the two cases above.
-
-For these cases, use Bertrand's theorem: for every prime `p > 1`, there is a
-prime less than `2p`. Since `q` is the next prime after `p`, this gives
-`q < 2p`. Therefore every integer in the gap is less than `2p`, and every
-earlier integer `k` is greater than `p`.
+Bertrand's theorem says that for every prime `p > 1`, there is a prime less
+than `2p`. Since `q` is the next prime after `p`, this gives `q < 2p`.
+Therefore every integer in the gap is less than `2p`, and every earlier
+integer `k` is greater than `p`.
 
 For an earlier integer with divisor count `e` and chosen integer divisor count
-`d`, the inequality
-
-$$\left(e-2\right)\log k>\left(d-2\right)\log w$$
-
-is guaranteed by the stronger inequality
+`d`, the comparison `F(k) < F(w)` is guaranteed by the stronger inequality
 
 $$\left(e-2\right)\log p>\left(d-2\right)\log\left(2p\right)$$
 
-which is equivalent to
+This is equivalent to
 
 $$p^{e-d}>2^{d-2}$$
 
-The table below records the residual divisor-count closures. `Closed` means
-that the threshold inequality, the exact finite audit below the threshold, and
-the listed branch exhaustion leave no surviving earlier integer with
-`F(k) >= F(w)`.
+Define
 
-| Earlier divisor count `e` | Status | Largest threshold used | Branch note |
-|---:|---|---:|---|
-| `10` | Closed | `131` | Threshold plus finite audit below `5,000,000,000`. |
-| `14` | Closed | `2,053` | Threshold plus finite audit below `5,000,000,000`. |
-| `18` | Closed | `32,771` | Threshold plus finite audit below `5,000,000,000`. |
-| `20` | Closed | `131,101` | Threshold plus finite audit below `5,000,000,000`. |
-| `22` | Closed | `524,309` | Threshold plus finite audit below `5,000,000,000`. |
-| `26` | Closed | `8,388,617` | Threshold plus finite audit below `5,000,000,000`. |
-| `27` | Closed | `16,777,259` | Threshold plus finite audit below `5,000,000,000`. |
-| `28` | Closed | `33,554,467` | Threshold plus finite audit below `5,000,000,000`. |
-| `30` | Closed | `134,217,757` | Threshold plus finite audit below `5,000,000,000`. |
-| `34` | Closed | Below audit base | Surfaced in the retained audit and discharged below `5,000,000,000`. |
-| `36` | Closed | `65,537` | Top odd branch excluded by exact branch exhaustion and the early divisor-count `4` case. |
-| `40` | Closed | `137,438,953,481` | Remaining odd branch exhausted exactly between `5,000,000,000` and the threshold. |
-| `42` | Closed | `524,309` | Top odd branch is automatic from the least integer with divisor count `41`. |
-| `44` | Closed | `1,048,583` | Top odd branch is automatic from the least integer with divisor count `43`. |
-| `50` | Closed | `140,737,488,355,333` | Remaining odd branch exhausted exactly between `5,000,000,000` and the threshold. |
-| `52` | Closed | `562,949,953,421,381` | Remaining odd branch exhausted exactly between `5,000,000,000` and the threshold. |
-| `54` | Closed | `33,554,467` | Top odd branch is automatic from the least integer with divisor count `53`. |
-| `56` | Closed | `9,007,199,254,740,997` | Remaining odd branch exhausted exactly between `5,000,000,000` and the threshold. |
-| `60` | Closed | `268,435,459` | Top odd branch is automatic from the least integer with divisor count `59`. |
+$$T(d,e)=2^{(d-2)/(e-d)}$$
 
-The high divisor-count cases are closed by the same threshold comparison and
-finite divisor-count classification. No requested residual class remains open.
+If `p > T(d,e)`, then every earlier integer with divisor count `e` has
+`F(k) < F(w)`.
+
+For fixed `d`, `T(d,e)` decreases as `e` increases. Therefore the adjacent case
+`e = d + 1` is the largest threshold for that fixed `d`. Once the adjacent
+case is closed, every larger earlier divisor count for the same `d` is also
+closed.
+
+For fixed `e`, `T(d,e)` increases as `d` increases. Therefore the largest
+threshold for that fixed `e` occurs at `d = e - 1`. Once that row is closed,
+every smaller winner divisor count for the same `e` is also closed.
+
+For `d = 4` and `e = 5`, the threshold is `T(4,5) = 4`. Thus every gap with
+`p > 4` is closed by the threshold lemma. The only smaller prime gap with a
+nonempty interior is `3 < 5`, whose interval is `{4}` and has no earlier
+integer before `w`.
+
+### Finite Base Lemma
+
+The finite base covers all prime gaps with `2 <= p < 5,000,000,001`.
+
+For each consecutive prime pair in that range, the verification enumerated the
+integers in the gap, computed the divisor count of each integer, selected the
+first integer with the smallest divisor count, and then checked every earlier
+integer `k` for the failure condition `F(k) >= F(w)`.
+
+The failure count was `0`.
+
+| Left-prime range | Prime gaps checked | Earlier integers checked | Failures |
+|---:|---:|---:|---:|
+| `2 <= p < 20,000,001` | `1,163,198` | `3,349,874` | `0` |
+| `20,000,001 <= p < 100,000,001` | `4,157,943` | `13,321,098` | `0` |
+| `100,000,001 <= p < 1,000,000,001` | `42,101,885` | `149,214,917` | `0` |
+| `1,000,000,001 <= p < 5,000,000,001` | `172,913,029` | `660,287,089` | `0` |
+| Total | `220,336,055` | `826,172,978` | `0` |
+
+This finite base closes every row whose threshold is below `5,000,000,000`,
+because the threshold lemma closes all larger `p`.
+
+### Witness Threshold Lemma
+
+Let `M(d)` be the least positive integer with exactly `d` positive divisors.
+If `M(d) >= 2T(d,e)`, then any chosen integer with divisor count `d` satisfies
+`w >= M(d)`. Since `w < 2p`, it follows that `p > M(d) / 2`, hence
+`p > T(d,e)`. The threshold lemma then closes that pair.
+
+The witness rows used below are:
+
+| Winner divisor count `d` | Earlier divisor count `e` | `M(d)` | `T(d,e)` | Result |
+|---:|---:|---:|---:|---|
+| `41` | `42` | `1,099,511,627,776` | `549,755,813,888` | `M(d) = 2T(d,e)` |
+| `43` | `44` | `4,398,046,511,104` | `2,199,023,255,552` | `M(d) = 2T(d,e)` |
+| `53` | `54` | `4,503,599,627,370,496` | `2,251,799,813,685,248` | `M(d) = 2T(d,e)` |
+| `59` | `60` | `288,230,376,151,711,744` | `144,115,188,075,855,872` | `M(d) = 2T(d,e)` |
+
+### Odd Adjacent Branch Lemma
+
+The only adjacent odd winner branches that remain above the finite base and
+are not closed by the witness threshold lemma are listed below.
+
+For each row, the enumeration condition was: list every integer with divisor
+count `d` whose previous prime `p` lies in the stated interval, then compute
+the actual containing prime gap and check whether that integer is the chosen
+integer and whether an earlier integer with divisor count `e` occurs before
+it.
+
+| Winner divisor count `d` | Earlier divisor count `e` | Certified `p` interval | Candidate count | Result |
+|---:|---:|---|---:|---|
+| `35` | `36` | `5,000,000,000 < p <= 8,589,934,592` | `5` | `0` chosen-integer gaps and `0` earlier pairs |
+| `39` | `40` | `5,000,000,000 < p <= 137,438,953,472` | `655` | `0` chosen-integer gaps and `0` earlier pairs |
+| `49` | `50` | `5,000,000,000 < p <= 140,737,488,355,328` | `58` | `1` chosen-integer gap and `0` earlier pairs |
+| `51` | `52` | `5,000,000,000 < p <= 562,949,953,421,312` | `9,413` | `3` chosen-integer gaps and `0` earlier pairs |
+| `55` | `56` | `5,000,000,000 < p <= 9,007,199,254,740,992` | `439` | `0` chosen-integer gaps and `0` earlier pairs |
+
+Thus none of these branches contains an earlier integer with `F(k) >= F(w)`.
+
+### Classification Lemma
+
+After the prime-square case and the threshold monotonicity reductions, the
+retained divisor-count pairs are exactly the rows below. Each row is closed by
+the stated mechanism. Any unlisted larger `e` for the same `d` has a smaller
+threshold, and any unlisted smaller `d` for the same `e` has a smaller
+threshold.
+
+| Winner divisor count `d` | Earlier divisor count `e` | `T(d,e)` | Closure |
+|---:|---:|---:|---|
+| `4` | `5` | `4` | Threshold lemma; smaller prime case has no earlier integer |
+| `9` | `10` | `128` | Finite Base Lemma |
+| `13` | `14` | `2,048` | Finite Base Lemma |
+| `17` | `18` | `32,768` | Finite Base Lemma |
+| `19` | `20` | `131,072` | Finite Base Lemma |
+| `21` | `22` | `524,288` | Finite Base Lemma |
+| `25` | `26` | `8,388,608` | Finite Base Lemma |
+| `26` | `27` | `16,777,216` | Finite Base Lemma |
+| `27` | `28` | `33,554,432` | Finite Base Lemma |
+| `29` | `30` | `134,217,728` | Finite Base Lemma |
+| `33` | `34` | `2,147,483,648` | Finite Base Lemma |
+| `35` | `36` | `8,589,934,592` | Odd Adjacent Branch Lemma |
+| `39` | `40` | `137,438,953,472` | Odd Adjacent Branch Lemma |
+| `41` | `42` | `549,755,813,888` | Witness Threshold Lemma |
+| `43` | `44` | `2,199,023,255,552` | Witness Threshold Lemma |
+| `49` | `50` | `140,737,488,355,328` | Odd Adjacent Branch Lemma |
+| `51` | `52` | `562,949,953,421,312` | Odd Adjacent Branch Lemma |
+| `53` | `54` | `2,251,799,813,685,248` | Witness Threshold Lemma |
+| `55` | `56` | `9,007,199,254,740,992` | Odd Adjacent Branch Lemma |
+| `59` | `60` | `144,115,188,075,855,872` | Witness Threshold Lemma |
+
+Every retained pair is closed. By the two monotonicity facts in the threshold
+lemma, no omitted larger earlier divisor count or smaller winner divisor count
+can be harder than the listed closed row.
 
 Thus every earlier integer has `F(k) < F(w)`.
 
@@ -214,8 +271,9 @@ largest.
 
 ## Audit Tables
 
-The theorem above is universal. The following tables are retained as audit
-evidence and finite-case certification.
+The theorem above is universal. The tables below are retained for
+certification and reproducibility. They support the finite base used in the
+proof; they are not the boundary of the theorem.
 
 | Left-prime range | Prime gaps checked | Earlier integers checked | Exact competing integers |
 |---:|---:|---:|---:|
@@ -225,9 +283,9 @@ evidence and finite-case certification.
 | `1,000,000,001 <= p < 5,000,000,001` | `172,913,029` | `660,287,089` | `0` |
 | Total | `220,336,055` | `826,172,978` | `0` |
 
-The checkpoint stress sample near `10^12` checked `137,771` prime gaps and
-`649,769` earlier integers, with `0` unresolved cases. Its median offset was
-`1`, its 99th percentile offset was `14`, and its worst offset was `42`.
+The stress sample near `10^12` checked `137,771` prime gaps and `649,769`
+earlier integers, with `0` unresolved cases. Its median offset was `1`, its
+99th percentile offset was `14`, and its worst offset was `42`.
 
 ## Scope
 
