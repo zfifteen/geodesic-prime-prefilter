@@ -1,1 +1,4 @@
+gmpy2>=2.2
+mpmath>=1.3
+numpy>=1.26
 sympy>=1.13

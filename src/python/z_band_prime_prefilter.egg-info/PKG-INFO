@@ -4,4 +4,7 @@ Version: 0.1.0
 Summary: Deterministic Z-Band prime prefilter locked to the fixed-point locus.
 Project-URL: Repository, https://github.com/zfifteen/z-band-prime-prefilter
 Requires-Python: >=3.11
+Requires-Dist: gmpy2>=2.2
+Requires-Dist: mpmath>=1.3
+Requires-Dist: numpy>=1.26
 Requires-Dist: sympy>=1.13

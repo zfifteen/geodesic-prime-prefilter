@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PGS Math Explainer</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #07110f;
+      }
+
+      body {
+        font-family: "IBM Plex Sans", "Aptos", sans-serif;
+        color: #eaf2df;
+      }
+
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 18% 20%, rgba(91, 179, 140, 0.22), rgba(91, 179, 140, 0) 34%),
+          radial-gradient(circle at 86% 76%, rgba(215, 168, 79, 0.2), rgba(215, 168, 79, 0) 30%),
+          linear-gradient(135deg, #07110f 0%, #0c1714 52%, #08120f 100%);
+      }
+
+      .clip {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        background-color: #07110f;
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      .scene-content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        padding: 82px 104px 78px;
+        gap: 42px;
+        box-sizing: border-box;
+      }
+
+      .topbar,
+      .footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-family: "IBM Plex Mono", "Menlo", monospace;
+        font-size: 22px;
+        line-height: 1.25;
+        color: #f1f6eb;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 0;
+      }
+
+      .topbar {
+        border-bottom: 2px solid rgba(215, 168, 79, 0.38);
+        padding-bottom: 20px;
+      }
+
+      .footer {
+        border-top: 2px solid rgba(91, 179, 140, 0.35);
+        padding-top: 18px;
+      }
+
+      .topbar span,
+      .footer span {
+        background: #000000;
+        padding: 4px 8px;
+      }
+
+      .footer span {
+        color: #ffffff;
+        font-size: 24px;
+        font-weight: 700;
+      }
+
+      .main-grid {
+        display: grid;
+        grid-template-columns: 0.95fr 1.05fr;
+        align-items: center;
+        gap: 76px;
+        min-height: 0;
+        flex: 1;
+      }
+
+      .stack {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        min-width: 0;
+      }
+
+      .kicker {
+        font-family: "IBM Plex Mono", "Menlo", monospace;
+        font-size: 24px;
+        line-height: 1.2;
+        color: #d7a84f;
+        font-variant-numeric: tabular-nums;
+      }
+
+      h1,
+      h2 {
+        margin: 0;
+        font-family: "Fraunces", "Georgia", serif;
+        font-weight: 900;
+        line-height: 0.96;
+        letter-spacing: 0;
+        color: #eaf2df;
+      }
+
+      h1 {
+        font-size: 126px;
+        max-width: 1280px;
+      }
+
+      h2 {
+        font-size: 92px;
+        max-width: 980px;
+      }
+
+      .body {
+        max-width: 850px;
+        font-size: 36px;
+        line-height: 1.28;
+        font-weight: 350;
+        color: #f1f6eb;
+      }
+
+      .equation {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 196px;
+        padding: 44px 52px;
+        border: 3px solid rgba(215, 168, 79, 0.58);
+        background: rgba(215, 168, 79, 0.1);
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+        box-sizing: border-box;
+        font-family: "IBM Plex Mono", "Menlo", monospace;
+        font-size: 56px;
+        line-height: 1.18;
+        color: #f3e4ba;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .panel {
+        padding: 36px;
+        border: 2px solid rgba(170, 184, 166, 0.26);
+        background: rgba(234, 242, 223, 0.055);
+        box-shadow: inset 0 0 0 1px rgba(91, 179, 140, 0.13);
+      }
+
+      .panel-title {
+        margin-bottom: 18px;
+        font-family: "IBM Plex Mono", "Menlo", monospace;
+        font-size: 22px;
+        color: #5bb38c;
+      }
+
+      .list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        font-size: 31px;
+        line-height: 1.18;
+        color: #dbe5d3;
+      }
+
+      .row {
+        display: grid;
+        grid-template-columns: 82px 1fr;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 72px;
+        height: 44px;
+        padding: 0 14px;
+        border: 2px solid rgba(215, 168, 79, 0.62);
+        color: #f3e4ba;
+        font-family: "IBM Plex Mono", "Menlo", monospace;
+        font-size: 22px;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .prime-line {
+        position: relative;
+        height: 260px;
+        border: 2px solid rgba(170, 184, 166, 0.2);
+        background:
+          linear-gradient(90deg, rgba(234, 242, 223, 0.08) 1px, rgba(234, 242, 223, 0) 1px) 0 0 / 92px 100%,
+          rgba(234, 242, 223, 0.035);
+      }
+
+      .axis {
+        position: absolute;
+        left: 54px;
+        right: 54px;
+        top: 132px;
+        height: 3px;
+        background: #aab8a6;
+      }
+
+      .mark {
+        position: absolute;
+        top: 100px;
+        width: 32px;
+        height: 64px;
+        transform: translateX(-50%);
+        border: 3px solid #d7a84f;
+        background: #07110f;
+      }
+
+      .mark.green {
+        border-color: #5bb38c;
+      }
+
+      .mark.red {
+        border-color: #c66a4a;
+      }
+
+      .mark-label {
+        position: absolute;
+        top: 178px;
+        transform: translateX(-50%);
+        font-family: "IBM Plex Mono", "Menlo", monospace;
+        font-size: 22px;
+        color: #dbe5d3;
+        white-space: nowrap;
+      }
+
+      .ghost {
+        position: absolute;
+        right: -70px;
+        bottom: 18px;
+        font-family: "Fraunces", "Georgia", serif;
+        font-size: 230px;
+        font-weight: 900;
+        line-height: 0.85;
+        color: #748777;
+        pointer-events: none;
+      }
+
+      .glow {
+        position: absolute;
+        width: 520px;
+        height: 520px;
+        border-radius: 999px;
+        background: rgba(91, 179, 140, 0.18);
+        filter: blur(70px);
+        pointer-events: none;
+      }
+
+      .glow.amber {
+        background: rgba(215, 168, 79, 0.18);
+      }
+
+      .caption {
+        max-width: 1140px;
+        font-size: 34px;
+        line-height: 1.25;
+        font-weight: 350;
+        color: #eaf2df;
+      }
+
+      .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .stat {
+        padding: 30px;
+        border: 2px solid rgba(215, 168, 79, 0.35);
+        background: rgba(215, 168, 79, 0.08);
+      }
+
+      .stat-value {
+        font-family: "IBM Plex Mono", "Menlo", monospace;
+        font-size: 54px;
+        color: #f3e4ba;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .stat-label {
+        margin-top: 10px;
+        font-size: 26px;
+        line-height: 1.2;
+        color: #f1f6eb;
+      }
+
+      .forbidden {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .forbidden .badge {
+        border-color: rgba(198, 106, 74, 0.64);
+        color: #efc0ad;
+        background: rgba(198, 106, 74, 0.08);
+      }
+
+      .transition-wash {
+        position: absolute;
+        inset: 0;
+        z-index: 20;
+        pointer-events: none;
+        background: rgba(215, 168, 79, 0.16);
+        mix-blend-mode: screen;
+        opacity: 0;
+      }
+
+      .final-fade {
+        position: absolute;
+        inset: 0;
+        z-index: 30;
+        background: #07110f;
+        opacity: 0;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="pgs-math-explainer" data-start="0" data-width="1920" data-height="1080" data-duration="300">
+      <audio id="grok-voiceover" data-start="0" data-track-index="20" src="narration-grok.mp3" data-volume="1"></audio>
+
+      <div id="scene-01" class="clip scene" data-start="0" data-duration="25.8" data-track-index="1">
+        <div data-layout-ignore class="glow amber" style="left: -160px; top: -140px"></div>
+        <div data-layout-ignore class="ghost">PGS</div>
+        <div class="scene-content">
+          <div class="topbar"><span>PGS INFERENCE GENERATOR v1.1</span><span>CONTRACT / 00:00</span></div>
+          <div class="main-grid">
+            <div class="stack">
+              <div class="kicker">one job</div>
+              <h1>input prime p to next prime q</h1>
+              <div class="body">The generator emits the minimal two-key record. Audit checks the answer afterward; audit does not choose q.</div>
+            </div>
+            <div class="stack">
+              <div class="equation">{"p": 11, "q": 13}</div>
+              <div class="panel">
+                <div class="panel-title">output stream contains</div>
+                <div class="list">
+                  <div class="row"><span class="badge">p</span><span>accepted input prime</span></div>
+                  <div class="row"><span class="badge">q</span><span>PGS-selected next endpoint</span></div>
+                  <div class="row"><span class="badge">no</span><span>diagnostics or proof objects</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer"><span>resolved input prime -> exactly one record</span><span>source: PGS</span></div>
+        </div>
+      </div>
+
+      <div id="scene-02" class="clip scene" data-start="25" data-duration="25.8" data-track-index="2">
+        <div data-layout-ignore class="glow" style="right: -120px; top: 120px"></div>
+        <div data-layout-ignore class="ghost">INTERVAL</div>
+        <div class="scene-content">
+          <div class="topbar"><span>FINITE CHAMBER TO THE RIGHT OF p</span><span>SEARCH INTERVAL / 00:25</span></div>
+          <div class="main-grid">
+            <div class="stack">
+              <div class="kicker">local arithmetic region</div>
+              <h2>The interval is not a primality oracle sweep.</h2>
+              <div class="body">It is the measured region where offsets, divisor counts, GWR structure, and chamber-reset state decide the endpoint.</div>
+            </div>
+            <div class="prime-line">
+              <div class="axis"></div>
+              <div class="mark green" style="left: 11%"></div>
+              <div class="mark-label" style="left: 11%">p</div>
+              <div class="mark" style="left: 34%"></div>
+              <div class="mark-label" style="left: 34%">candidate</div>
+              <div class="mark red" style="left: 57%"></div>
+              <div class="mark-label" style="left: 57%">closed</div>
+              <div class="mark" style="left: 79%"></div>
+              <div class="mark-label" style="left: 79%">resolved</div>
+            </div>
+          </div>
+          <div class="footer"><span>candidate_bound = finite chamber width</span><span>failure state: PGSUnresolvedError</span></div>
+        </div>
+      </div>
+
+      <div id="scene-03" class="clip scene" data-start="50" data-duration="25.8" data-track-index="1">
+        <div data-layout-ignore class="glow amber" style="left: 420px; bottom: -220px"></div>
+        <div data-layout-ignore class="ghost">MOD 30</div>
+        <div class="scene-content">
+          <div class="topbar"><span>WHEEL-OPEN OFFSETS</span><span>CANDIDATE HYPOTHESES / 00:50</span></div>
+          <div class="main-grid">
+            <div class="stack">
+              <div class="kicker">open residues</div>
+              <h2>Only wheel-open positions can become endpoint hypotheses.</h2>
+              <div class="body">The mod thirty wheel removes positions already closed by divisibility by two, three, or five.</div>
+            </div>
+            <div class="panel">
+              <div class="panel-title">WHEEL_OPEN_RESIDUES_MOD30</div>
+              <div class="stat-grid">
+                <div class="stat"><div class="stat-value">1</div><div class="stat-label">open</div></div>
+                <div class="stat"><div class="stat-value">7</div><div class="stat-label">open</div></div>
+                <div class="stat"><div class="stat-value">11</div><div class="stat-label">open</div></div>
+                <div class="stat"><div class="stat-value">13</div><div class="stat-label">open</div></div>
+                <div class="stat"><div class="stat-value">17</div><div class="stat-label">open</div></div>
+                <div class="stat"><div class="stat-value">19</div><div class="stat-label">open</div></div>
+                <div class="stat"><div class="stat-value">23</div><div class="stat-label">open</div></div>
+                <div class="stat"><div class="stat-value">29</div><div class="stat-label">open</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="footer"><span>offset n = p + k</span><span>hypothesis exists only if n mod 30 is open</span></div>
+        </div>
+      </div>
+
+      <div id="scene-04" class="clip scene" data-start="75" data-duration="25.8" data-track-index="2">
+        <div data-layout-ignore class="glow" style="right: 180px; top: -180px"></div>
+        <div data-layout-ignore class="ghost">d(n)</div>
+        <div class="scene-content">
+          <div class="topbar"><span>EXACT DIVISOR-COUNT STATE</span><span>LOAD / 01:15</span></div>
+          <div class="main-grid">
+            <div class="stack">
+              <div class="kicker">integer state</div>
+              <h2>Each chamber integer carries divisor-count load.</h2>
+              <div class="body">A prime has divisor count two. A composite has more than two. The chamber state is exact before endpoint selection.</div>
+            </div>
+            <div class="panel">
+              <div class="panel-title">local states</div>
+              <div class="list">
+                <div class="row"><span class="badge">d=2</span><span>fixed-point candidate state</span></div>
+                <div class="row"><span class="badge">d>2</span><span>composite divisor-count state</span></div>
+                <div class="row"><span class="badge">S</span><span>search-interval state used by B(p, S, w, d(w))</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="footer"><span>exact counts are generation state</span><span>audit remains downstream</span></div>
+        </div>
+      </div>
+
+      <div id="scene-05" class="clip scene" data-start="100" data-duration="25.8" data-track-index="1">
+        <div data-layout-ignore class="glow amber" style="left: 80px; bottom: -190px"></div>
+        <div data-layout-ignore class="ghost">DNI</div>
+        <div class="scene-content">
+          <div class="topbar"><span>DIVISOR NORMALIZATION IDENTITY</span><span>FIXED-POINT LOCUS / 01:40</span></div>
+          <div class="main-grid">
+            <div class="stack">
+              <div class="kicker">state normalized by divisor count</div>
+              <h2>Prime states land at Z equals one.</h2>
+              <div class="body">DNI turns divisor-count load into an ordered score over the interval. Composite states fall below the fixed-point locus.</div>
+            </div>
+            <div class="stack">
+              <div class="equation">Z(n) = n^(1 - d(n)/2)</div>
+              <div class="panel">
+                <div class="list">
+                  <div class="row"><span class="badge">d=2</span><span>Z(n) = 1</span></div>
+                  <div class="row"><span class="badge">d>2</span><span>Z(n) &lt; 1</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer"><span>fixed traversal rate v = e^2 / 2</span><span>load: kappa(n) = d(n) ln(n) / e^2</span></div>
+        </div>
+      </div>
+
+      <div id="scene-06" class="clip scene" data-start="125" data-duration="25.8" data-track-index="2">
+        <div data-layout-ignore class="glow" style="right: -140px; bottom: 10px"></div>
+        <div data-layout-ignore class="ghost">GWR</div>
+        <div class="scene-content">
+          <div class="topbar"><span>LEFTMOST MINIMUM-DIVISOR RULE</span><span>SELECTED INTEGER / 02:05</span></div>
+          <div class="main-grid">
+            <div class="stack">
+              <div class="kicker">landmark, not endpoint</div>
+              <h2>GWR selects w, the leftmost simplest integer.</h2>
+              <div class="body">The selected integer orients local structure. It is not automatically the next prime endpoint.</div>
+            </div>
+            <div class="prime-line">
+              <div class="axis"></div>
+              <div class="mark red" style="left: 22%"></div>
+              <div class="mark-label" style="left: 22%">d=6</div>
+              <div class="mark green" style="left: 43%"></div>
+              <div class="mark-label" style="left: 43%">w: leftmost min</div>
+              <div class="mark" style="left: 71%"></div>
+              <div class="mark-label" style="left: 71%">endpoint candidate</div>
+            </div>
+          </div>
+          <div class="footer"><span>forbidden shortcut: q = w + 1</span><span>w is structural orientation</span></div>
+        </div>
+      </div>
+
+      <div id="scene-07" class="clip scene" data-start="150" data-duration="25.8" data-track-index="1">
+        <div data-layout-ignore class="glow amber" style="right: 120px; top: 90px"></div>
+        <div data-layout-ignore class="ghost">RULE X</div>
+        <div class="scene-content">
+          <div class="topbar"><span>ENDPOINT RULE WITH CHAMBER RESET</span><span>SELECTION / 02:30</span></div>
+          <div class="main-grid">
+            <div class="stack">
+              <div class="kicker">resolved survivor</div>
+              <h2>The first resolved candidate becomes q.</h2>
+              <div class="body">Composite states close. Semiprime-shadow landmarks remain unresolved. After integer lock, the lower-divisor threat ceiling is applied.</div>
+            </div>
+            <div class="panel">
+              <div class="panel-title">production sequence</div>
+              <div class="list">
+                <div class="row"><span class="badge">1</span><span>build wheel-open hypotheses</span></div>
+                <div class="row"><span class="badge">2</span><span>reject composite divisor-count state</span></div>
+                <div class="row"><span class="badge">3</span><span>lock GWR integer after a resolved candidate exists</span></div>
+                <div class="row"><span class="badge">4</span><span>apply lower-divisor threat ceiling</span></div>
+                <div class="row"><span class="badge">5</span><span>reset search interval at first resolved survivor</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="footer"><span>compact form: q = B(p, S, w, d(w))</span><span>chamber_reset_offset = gap_offset</span></div>
+        </div>
+      </div>
+
+      <div id="scene-08" class="clip scene" data-start="175" data-duration="25.8" data-track-index="2">
+        <div data-layout-ignore class="glow" style="left: -120px; top: 210px"></div>
+        <div data-layout-ignore class="ghost">NO FALLBACK</div>
+        <div class="scene-content">
+          <div class="topbar"><span>PGS-ONLY GENERATION</span><span>FAIL EXPLICITLY / 02:55</span></div>
+          <div class="main-grid">
+            <div class="stack">
+              <div class="kicker">one deterministic path</div>
+              <h2>Resolved by PGS, or unresolved by name.</h2>
+              <div class="body">If the selector does not resolve inside the supplied bound, generation raises PGSUnresolvedError.</div>
+            </div>
+            <div class="stack">
+              <div class="forbidden">
+                <span class="badge">trial division</span>
+                <span class="badge">fallback search</span>
+                <span class="badge">Miller-Rabin</span>
+                <span class="badge">nextprime</span>
+                <span class="badge">isprime</span>
+                <span class="badge">ECPP</span>
+                <span class="badge">PARI</span>
+                <span class="badge">sieve generation</span>
+              </div>
+              <div class="equation">PGSUnresolvedError</div>
+            </div>
+          </div>
+          <div class="footer"><span>no silent degradation</span><span>no backup endpoint chooser</span></div>
+        </div>
+      </div>
+
+      <div id="scene-09" class="clip scene" data-start="200" data-duration="25.8" data-track-index="1">
+        <div data-layout-ignore class="glow amber" style="right: -120px; bottom: -180px"></div>
+        <div data-layout-ignore class="ghost">SIDECAR</div>
+        <div class="scene-content">
+          <div class="topbar"><span>OUTPUT AND DIAGNOSTICS STAY SEPARATE</span><span>STREAM HYGIENE / 03:20</span></div>
+          <div class="main-grid">
+            <div class="stack">
+              <div class="kicker">minimal emitted line</div>
+              <h2>The output is not a report.</h2>
+              <div class="body">Source labels, selected integer, counters, proof objects, and audit metadata are sidecar facts.</div>
+            </div>
+            <div class="stack">
+              <div class="equation">{"p": p, "q": q}</div>
+              <div class="panel">
+                <div class="panel-title">sidecar may record</div>
+                <div class="list">
+                  <div class="row"><span class="badge">PGS</span><span>source label</span></div>
+                  <div class="row"><span class="badge">w</span><span>selected-integer landmark</span></div>
+                  <div class="row"><span class="badge">audit</span><span>downstream verification</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer"><span>generation chooses q</span><span>audit confirms q</span></div>
+        </div>
+      </div>
+
+      <div id="scene-10" class="clip scene" data-start="225" data-duration="25.8" data-track-index="2">
+        <div data-layout-ignore class="glow" style="left: 210px; top: -210px"></div>
+        <div data-layout-ignore class="ghost">100%</div>
+        <div class="scene-content">
+          <div class="topbar"><span>AUDIT-CLEAN MEASURED SURFACES</span><span>EMPIRICAL STATUS / 03:45</span></div>
+          <div class="main-grid">
+            <div class="stack">
+              <div class="kicker">declared tested regimes</div>
+              <h2>Every outputted record audited clean.</h2>
+              <div class="body">The strongest supported claim is production correctness on the measured surfaces, with pure PGS source accounting.</div>
+            </div>
+            <div class="panel">
+              <div class="stat-grid">
+                <div class="stat"><div class="stat-value">78,494</div><div class="stat-label">input primes from 11 through 1,000,000</div></div>
+                <div class="stat"><div class="stat-value">0</div><div class="stat-label">unresolved cases on that surface</div></div>
+                <div class="stat"><div class="stat-value">2,816</div><div class="stat-label">high-scale decade-window outputs</div></div>
+                <div class="stat"><div class="stat-value">0</div><div class="stat-label">audit failures in reported surfaces</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="footer"><span>10^8 through 10^18: 256 consecutive inputs per decade</span><span>source share: PGS</span></div>
+        </div>
+      </div>
+
+      <div id="scene-11" class="clip scene" data-start="250" data-duration="25.8" data-track-index="1">
+        <div data-layout-ignore class="glow amber" style="left: -160px; bottom: -160px"></div>
+        <div data-layout-ignore class="ghost">PROOF</div>
+        <div class="scene-content">
+          <div class="topbar"><span>PROOF PRESSURE</span><span>BOUNDARIES / 04:10</span></div>
+          <div class="main-grid">
+            <div class="stack">
+              <div class="kicker">empirical rule is not theorem</div>
+              <h2>Fallback removal is complete; proof is the active pressure.</h2>
+              <div class="body">The fixed cutoff theorem is already false. Current bounded compression is an empirical rule, not an unconditional theorem.</div>
+            </div>
+            <div class="stack">
+              <div class="equation">q = 24,098,209 -> E(q) = 72 &gt; 60</div>
+              <div class="panel">
+                <div class="panel-title">current empirical compression</div>
+                <div class="body">C(q) = max(64, ceil(0.5 * log(q)^2))</div>
+              </div>
+            </div>
+          </div>
+          <div class="footer"><span>theorem proof remains separate from audit confirmation</span><span>direct obstruction first</span></div>
+        </div>
+      </div>
+
+      <div id="scene-12" class="clip scene" data-start="275" data-duration="25" data-track-index="2">
+        <div data-layout-ignore class="glow" style="right: -160px; top: -100px"></div>
+        <div data-layout-ignore class="ghost">Z</div>
+        <div class="scene-content">
+          <div class="topbar"><span>RATIO-FIRST, INVARIANT-FIRST</span><span>CLOSING / 04:35</span></div>
+          <div class="main-grid">
+            <div class="stack">
+              <div class="kicker">state and change against one fixed limit</div>
+              <h2>PGS turns local structure into the next endpoint.</h2>
+              <div class="body">DNI supplies the fixed-point state. GWR selects the landmark. Chamber reset selects the resolved survivor.</div>
+            </div>
+            <div class="stack">
+              <div class="equation">Z = A(B/C)</div>
+              <div class="panel">
+                <div class="list">
+                  <div class="row"><span class="badge">DNI</span><span>fixed-point divisor normalization</span></div>
+                  <div class="row"><span class="badge">GWR</span><span>leftmost minimum-divisor landmark</span></div>
+                  <div class="row"><span class="badge">PGS</span><span>endpoint selected without fallback prime search</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer"><span>input prime p -> output next prime q</span><span>declared surfaces audit-clean</span></div>
+        </div>
+      </div>
+
+      <div class="transition-wash transition-01" data-layout-ignore></div>
+      <div class="transition-wash transition-02" data-layout-ignore></div>
+      <div class="transition-wash transition-03" data-layout-ignore></div>
+      <div class="transition-wash transition-04" data-layout-ignore></div>
+      <div class="transition-wash transition-05" data-layout-ignore></div>
+      <div class="transition-wash transition-06" data-layout-ignore></div>
+      <div class="transition-wash transition-07" data-layout-ignore></div>
+      <div class="transition-wash transition-08" data-layout-ignore></div>
+      <div class="transition-wash transition-09" data-layout-ignore></div>
+      <div class="transition-wash transition-10" data-layout-ignore></div>
+      <div class="transition-wash transition-11" data-layout-ignore></div>
+      <div class="final-fade" data-layout-ignore></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const sceneStarts = [0, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275];
+
+      sceneStarts.forEach((start, index) => {
+        const id = `#scene-${String(index + 1).padStart(2, "0")}`;
+        const duration = index === sceneStarts.length - 1 ? 25 : 25.8;
+        tl.set(id, { visibility: "visible" }, start);
+        tl.fromTo(id, { opacity: 0, filter: "blur(18px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.8, ease: "sine.inOut" }, start);
+        tl.fromTo(`${id} .topbar`, { opacity: 0, y: -34 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, start + 0.18);
+        tl.fromTo(`${id} .kicker`, { opacity: 0, x: -44 }, { opacity: 1, x: 0, duration: 0.46, ease: "back.out(1.3)" }, start + 0.45);
+        tl.fromTo(`${id} h1, ${id} h2`, { opacity: 0, y: 58 }, { opacity: 1, y: 0, duration: 0.82, ease: "expo.out" }, start + 0.66);
+        tl.fromTo(`${id} .body`, { opacity: 0, x: 42 }, { opacity: 1, x: 0, duration: 0.62, ease: "power2.out" }, start + 1.12);
+        tl.fromTo(`${id} .equation, ${id} .panel, ${id} .prime-line, ${id} .forbidden`, { opacity: 0, scale: 0.965 }, { opacity: 1, scale: 1, duration: 0.74, ease: "power4.out" }, start + 1.45);
+        tl.fromTo(`${id} .footer`, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.56, ease: "circ.out" }, start + 2.05);
+        tl.fromTo(`${id} .ghost`, { opacity: 0, x: 46 }, { opacity: 1, x: 0, duration: 1.2, ease: "sine.out" }, start + 0.25);
+        tl.fromTo(`${id} .glow`, { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1.05, duration: 2.0, ease: "sine.out" }, start + 0.1);
+        tl.to(`${id} .glow`, { scale: 1.13, yoyo: true, repeat: 8, duration: 2.45, ease: "sine.inOut" }, start + 2.2);
+        if (index < sceneStarts.length - 1) {
+          tl.set(id, { opacity: 0, visibility: "hidden" }, start + duration);
+        }
+      });
+
+      sceneStarts.slice(1).forEach((start, index) => {
+        const wash = `.transition-${String(index + 1).padStart(2, "0")}`;
+        tl.fromTo(wash, { opacity: 0, x: -1920 }, { opacity: 0.7, x: 0, duration: 0.32, ease: "power3.out" }, start - 0.36);
+        tl.to(wash, { opacity: 0, x: 1920, duration: 0.44, ease: "power2.in" }, start - 0.04);
+      });
+
+      tl.to(".final-fade", { opacity: 1, duration: 2.2, ease: "sine.inOut" }, 297.2);
+      window.__timelines["pgs-math-explainer"] = tl;
+    </script>
+  </body>
+</html>
