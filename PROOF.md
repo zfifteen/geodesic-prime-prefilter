@@ -146,13 +146,9 @@ divisor-count-two value:
 
 $$I=\{p+1,\ldots,q-1\}$$
 
-For any `x` with `p < x <= q`, define the current minimum divisor count before
-`x` by
-
-$$D(x)=\min_{p<n<x}\tau(n)$$
-
-when the set is nonempty. At `x = q`, this is the minimum divisor count in the
-whole interval:
+For any `x` with `p < x <= q`, define `D(x)` as the minimum value of `tau(n)`
+among the integers `n` with `p < n < x`, when that set is nonempty. At `x = q`,
+this is the minimum divisor count in the whole interval:
 
 $$D(q)=\min\{\tau(n):n\in I\}$$
 
