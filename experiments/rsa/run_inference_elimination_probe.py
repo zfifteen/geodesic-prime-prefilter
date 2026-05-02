@@ -78,6 +78,8 @@ TOY_CASES = (
     ToyCase("rsa_like_125bit_skew_18", 47852207848256971175506009106282971019, 262422, 2),
     ToyCase("rsa_like_150bit_skew_20", 802826827147102433094322495052834506987796881, 1048877, 2),
     ToyCase("rsa_like_180bit_skew_22", 862028741737062482826570193487498621145171102080695669, 4194587, 2),
+    ToyCase("rsa_like_200bit_skew_24", 903902649895682029992353676938101012118054495516850682569259, 16777628, 2),
+    ToyCase("rsa_like_250bit_skew_26", 1017703909312349373839979360427921075006087013240130614282365196807062938841, 67109297, 2),
 )
 
 
@@ -107,12 +109,12 @@ def build_divisor_field(intervals: list[tuple[int, int]]) -> DivisorField:
     )
 
 
-def candidate_region(n: int, radius: int) -> list[int]:
+def candidate_region(n: int, radius: int) -> range:
     """Return the deterministic candidate region around sqrt(N)."""
     center = math.isqrt(n)
     lo = max(2, center - radius)
     hi = center + radius
-    return list(range(lo, hi + 1))
+    return range(lo, hi + 1)
 
 
 def wheel_admissible(value: int) -> bool:
@@ -122,7 +124,7 @@ def wheel_admissible(value: int) -> bool:
 
 def endpoint_query_values(
     n: int,
-    candidates: list[int],
+    candidates: range,
     sqrt_n: int,
     balance_band: int,
 ) -> set[int]:
@@ -493,24 +495,37 @@ def run_case(case: ToyCase) -> tuple[dict[str, object], list[dict[str, object]]]
         raise AssertionError(
             f"{case.case_id}: endpoint field equivalence failures={equivalence_failures}"
         )
-    pgs_states = [
-        infer_elimination(n, d, sqrt_n, case.balance_band, endpoint_field)
-        for d in candidates
-    ]
+    pgs_survivors: list[CandidateState] = []
+    reason_counts: Counter[str] = Counter()
+    all_reason_counts: Counter[str] = Counter()
+    eliminated_count = 0
+    for d in candidates:
+        state = infer_elimination(n, d, sqrt_n, case.balance_band, endpoint_field)
+        if state.eliminated:
+            reason_counts[state.reason] += 1
+            all_reason_counts[state.reason] += 1
+            eliminated_count += 1
+        else:
+            pgs_survivors.append(state)
+
     rule_x_values = {
         value
-        for state in pgs_states
-        if not state.eliminated
+        for state in pgs_survivors
         for value in (state.d, state.q_floor)
     }
     rule_x_answers = build_rule_x_answers(rule_x_values)
-    states = [apply_rule_x(state, rule_x_answers) for state in pgs_states]
+    states: list[CandidateState] = []
+    for state in pgs_survivors:
+        final_state = apply_rule_x(state, rule_x_answers)
+        all_reason_counts[final_state.reason] += 1
+        if final_state.eliminated:
+            reason_counts[final_state.reason] += 1
+            eliminated_count += 1
+        else:
+            states.append(final_state)
     ranked = rank_survivors(states, sqrt_n)
 
     generated = len(candidates)
-    eliminated_count = sum(1 for state in states if state.eliminated)
-    reason_counts = Counter(state.reason for state in states if state.eliminated)
-    all_reason_counts = Counter(state.reason for state in states)
     avoided_checks = eliminated_count
 
     summary = {
