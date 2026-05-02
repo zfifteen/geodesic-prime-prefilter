@@ -108,12 +108,13 @@ def test_root_proof_preserves_universal_status():
     text = (ROOT / "PROOF.md").read_text(encoding="utf-8")
     normalized_text = re.sub(r"\s+", " ", text)
     required_phrases = [
-        "## Headline Result",
-        "This repository has a direct deterministic next-prime algorithm",
-        "The theorem proved in this document is the mathematical selection law at the core of that algorithm.",
-        "This is a universal statement about every prime gap with a nonempty interior.",
-        "The theorem above is universal.",
-        "That selected integer is the stable interior point used by the deterministic `p -> q` algorithm.",
+        "## Headline Theorem",
+        "Given a known prime `p`, there is a direct deterministic next-prime algorithm",
+        "q=\\min\\{n>p:\\tau(n)=2\\}",
+        "Thus the algorithm determines the next prime after `p`.",
+        "## Interior Maximizer Theorem",
+        "The theorems above are universal.",
+        "`PROOF.md` is the single live proof reference for the direct deterministic next-prime theorem and the prime-gap maximizer theorem.",
     ]
     banned_phrases = [
         "The all-scale proof for earlier integers in every prime gap is still open.",
@@ -121,6 +122,10 @@ def test_root_proof_preserves_universal_status():
         "finite checked theorem",
         "What remains open is a short proof",
         "It is not a direct next-prime inference theorem.",
+        "not a direct next-prime inference theorem",
+        "only a known-gap theorem",
+        "does not establish a method to infer `q` from `p`",
+        "does not establish a method to infer q from p",
         "likely true",
         "conjectural",
         "merely empirical",
@@ -137,6 +142,20 @@ def test_root_proof_preserves_universal_status():
     assert not missing, "universal proof-status wording missing: " + ", ".join(missing)
     assert not offenders, "finite-limited proof wording found: " + ", ".join(offenders)
     assert not pattern_offenders, "finite-limited proof pattern found: " + ", ".join(pattern_offenders)
+
+
+def test_root_proof_defines_next_prime_before_gap_interior():
+    """The proof should derive q from p before defining the prime-gap interior."""
+    text = (ROOT / "PROOF.md").read_text(encoding="utf-8")
+    algorithm_index = text.index("## The Algorithm")
+    next_prime_index = text.index("## Why The Algorithm Returns The Next Prime")
+    basic_objects_index = text.index("## Basic Objects")
+    maximizer_index = text.index("## Interior Maximizer Theorem")
+
+    assert algorithm_index < basic_objects_index
+    assert next_prime_index < basic_objects_index
+    assert basic_objects_index < maximizer_index
+    assert "tau(n) = 2` exactly when `n` is prime" in text
 
 
 def test_root_proof_contains_standalone_threshold_classification():
@@ -174,6 +193,8 @@ def test_live_markdown_has_no_stale_proof_status_language():
         "does not establish a method to infer `q` from `p`",
         "does not establish a method to infer q from p",
         "not a direct next-prime law",
+        "only a known-gap theorem",
+        "docs/deprecated/",
         "likely true",
         "merely empirical",
         "offset 128",
@@ -212,5 +233,15 @@ def test_live_markdown_points_current_theorem_to_root_proof():
         for path in required_paths
         if "PROOF.md" not in path.read_text(encoding="utf-8")
     ]
+    missing_direct_theorem = [
+        str(path.relative_to(ROOT))
+        for path in required_paths
+        if "direct deterministic next-prime theorem"
+        not in re.sub(r"\s+", " ", path.read_text(encoding="utf-8"))
+    ]
 
     assert not missing, "high-level docs missing PROOF.md reference:\n" + "\n".join(missing)
+    assert not missing_direct_theorem, (
+        "high-level docs missing direct next-prime theorem reference:\n"
+        + "\n".join(missing_direct_theorem)
+    )

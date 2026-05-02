@@ -27,11 +27,13 @@ Any gap where the raw-$Z$ argmax differs from that selected integer is a counter
 ## Current Headline Status
 
 `GWR` is the repository name for the prime-gap maximizer theorem proved in
-[../PROOF.md](../PROOF.md).
+[../PROOF.md](../PROOF.md). That proof document also proves the direct
+deterministic next-prime theorem.
 
-`PROOF.md` is the single live proof reference. It proves that the selected
+`PROOF.md` is the single live proof reference. It proves that exact divisor
+counts determine the next prime from a known prime `p`, and that the selected
 integer is the unique maximizer inside every prime-gap interior. Audit tables
-certify finite cases and preserve provenance; they do not limit the theorem.
+certify finite cases and preserve provenance; they do not limit the theorems.
 
 The public proof-facing summaries are:
 
