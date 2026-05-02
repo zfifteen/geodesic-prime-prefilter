@@ -149,7 +149,7 @@ $$I=\{p+1,\ldots,q-1\}$$
 For any `x` with `p < x <= q`, define the current minimum divisor count before
 `x` by
 
-$$D(x)=\min\{\tau(n):p<n<x\}$$
+$$D(x)=\min_{p<n<x}\tau(n)$$
 
 when the set is nonempty. At `x = q`, this is the minimum divisor count in the
 whole interval:
@@ -322,6 +322,17 @@ retained divisor-count pairs are exactly the rows below. Each row is closed by
 the stated mechanism. Any unlisted larger `e` for the same `d` has a smaller
 threshold, and any unlisted smaller `d` for the same `e` has a smaller
 threshold.
+
+The table is not a catalog of every divisor count that can occur as `tau(w)`.
+Large divisor counts can occur as the minimum divisor count in a gap. A divisor
+count `d` needs a row here only when the adjacent earlier-integer comparison
+`(d, d + 1)` remains a case requiring proof after the preceding reductions. If
+the chosen integer is the first interior integer, or if no earlier integer with
+the adjacent divisor count occurs before it in the checked cases, then there is
+no earlier integer of that class to compare with `w`.
+
+Thus the rows below are the retained adjacent comparison pairs, not the retained
+winner divisor counts.
 
 | Winner divisor count `d` | Earlier divisor count `e` | `T(d,e)` | Closure |
 |---:|---:|---:|---|
