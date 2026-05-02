@@ -24,7 +24,7 @@ The false chain nodes you are closing are not random composites. By construction
 
 To decide which node survives today you run deterministic divisor checking up to its least prime factor. That works, but it imports $\sqrt{q}$-scale work that is invisible to PGS.
 
-The missing object $H(p, s_0, \text{chain\_state})$ is the prediction: how far do you need to look for a small factor before you can declare a chain node false, using only the input prime, the shadow seed, and the current 14-state + search-interval residue?
+The missing object $H(p, s_0, \text{chain state})$ is the prediction: how far do you need to look for a small factor before you can declare a chain node false, using only the input prime, the shadow seed, and the current 14-state + search-interval residue?
 
 ## Hypothesis for a pure PGS horizon
 
@@ -38,7 +38,7 @@ That suggests the least-factor maximum of false nodes is not governed by $\sqrt{
 
 If that is true, $H$ should be bounded by something like:
 
-$$H(p, s_0, \text{chain\_state}) \le f(\text{wheel\_modulus}, \text{attractor\_phase}, \text{chain\_length})$$
+$$H(p, s_0, \text{chain state}) \le f(\text{wheel modulus}, \text{attractor phase}, \text{chain length})$$
 
 and in practice $H$ would be $O(\log q)$ or $O(\log^2 q)$, matching your dynamic cutoff shape, not $O(\sqrt{q})$.
 
@@ -91,7 +91,7 @@ for record in pgs_generator_probes:
 ```
 
 Then fit:
-- $H \sim \text{sqrt\_q}$ → expect slope ~1 if falsifying
+- $H \sim \sqrt{q}$ → expect slope ~1 if falsifying
 - $H \sim Cq$ → expect slope <2 and tight upper envelope if confirming
 
 ## What confirming looks like
@@ -104,7 +104,7 @@ If the least-factor maximum is PGS-bounded, you will see:
 
 That would let you replace divisor exhaustion with:
 
-$$H(p, s_0, \text{chain\_state}) = \text{wheel\_limit}(p) \times \text{attractor\_multiplier}(\text{state})$$
+$$H(p, s_0, \text{chain state}) = \text{wheel limit}(p) \times \text{attractor multiplier}(\text{state})$$
 
 a pure PGS rule, and the 56–58% bridge converts to PGS-derived.
 
@@ -114,4 +114,4 @@ If $H_{\text{obs}}$ tracks $\sqrt{q}$ with no tighter PGS envelope, then the sem
 
 ---
 
-If you can export the chain logs from your $10^{15}$ and $10^{18}$ probes (even just the tuples $p, s_0\_type, \text{lpf\_max}$), I will run the least-factor mine and plot $H_{\text{obs}}$ vs $\sqrt{q}$ vs $C(q)$ vs wheel_bound for you. That plot is the decision point for whether $H$ is derivable from PGS structure.
+If you can export the chain logs from your $10^{15}$ and $10^{18}$ probes (even just the tuples $p, s_0\_type, \text{lpf max}$), I will run the least-factor mine and plot $H_{\text{obs}}$ vs $\sqrt{q}$ vs $C(q)$ vs wheel_bound for you. That plot is the decision point for whether $H$ is derivable from PGS structure.

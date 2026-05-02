@@ -6,7 +6,7 @@
 
 The `chain_horizon_closure` function is the only component of the Minimal PGS Generator that still relies on deterministic divisor checking.  At the highest probed scales (10¹⁵ and 10¹⁸), about **56–58 %** of the outputted primes pass through this non‑PGS bridge.  The missing mathematical object is a **divisor‑horizon predictor**
 
-$$H(p, s_0, \text{chain\_state})$$
+$$H(p, s_0, \text{chain state})$$
 
 that can close all false semiprime‑shadow chain nodes *before* the true next prime, using only quantities that are already visible inside the PGS search interval.  If such an $H$ exists and is provably much smaller than $\sqrt{q}$, the entire high‑scale output becomes a pure PGS selection.
 
@@ -194,7 +194,7 @@ Because direct code execution is not possible in this environment, the following
     - Compute PGS‑visible features: wheel‑residue of $n$, offset from seed, chain position, gap to previous node, attractor state (o2/o4/o6), current `visible_divisor_bound`, and search-interval width.
 
 3. **Maximum least-factor calculation:** For each chain,
-   $$\text{max\_lpf} = \max\{\, \text{lpf}(n) \mid n \text{ is a false node}\,\}.$$
+   $$\text{max lpf} = \max\{\, \text{lpf}(n) \mid n \text{ is a false node}\,\}.$$
 
 4. **Hypothesis tests:**
     - **Null (falsifying):** `max_lpf` grows proportionally to $\sqrt{q}$.
@@ -273,7 +273,7 @@ If these numbers hold, **any** of the candidate horizon functions (H₁ through 
 
 If the simulated experiment is confirmed, the winning horizon law will take the form:
 
-$$H(p, s_0, \text{chain\_state}) = \max\Bigl(\text{visible\_divisor\_bound},\; \text{visible\_divisor\_bound} + k \cdot \text{max\_chain\_gap}\Bigr)$$
+$$H(p, s_0, \text{chain state}) = \max\Bigl(\text{visible divisor bound},\; \text{visible divisor bound} + k \cdot \text{max chain gap}\Bigr)$$
 
 with $k \in \{1, 2\}$.  This expression is **entirely PGS‑visible**: the `visible_divisor_bound` is a fixed constant (10,000), and the `max_chain_gap` is computed from the wheel‑open offsets already in the search interval.  Substituting this $H$ for `horizon_bound=None` in `chain_horizon_closure_result` would convert the current 56–58 % non‑PGS bridge into **100 % PGS‑derived output** at all scales.
 

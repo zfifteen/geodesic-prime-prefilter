@@ -2,7 +2,7 @@
 
 After reading the question and the six LLM answers you committed, then running a controlled least-factor-mining experiment on the exact code paths described in the repo, the data point to one clear conclusion: `chain_horizon_closure` does not need $\sqrt{q}$ work. The horizon needed to close false semiprime-shadow nodes is governed by PGS-visible state, not by the size of $q$.
 
-**The most significant unanswered question** you posed is whether $H(p,s_0,\text{chain\_state})$ can be derived from PGS structure instead of fallback divisor exhaustion. The high-scale bridge you cite — 56.63% at $10^{15}$ and 58.00% at $10^{18}$ — is exactly the portion that would convert to PGS-derived output if such an $H$ exists.
+**The most significant unanswered question** you posed is whether $H(p,s_0,\text{chain state})$ can be derived from PGS structure instead of fallback divisor exhaustion. The high-scale bridge you cite — 56.63% at $10^{15}$ and 58.00% at $10^{18}$ — is exactly the portion that would convert to PGS-derived output if such an $H$ exists.
 
 ## Analysis of each proposed answer
 
