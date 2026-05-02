@@ -16,7 +16,7 @@ candidate endpoints:
 So the universal statement
 
 $$
-\text{for every prime } p,\ \texttt{pgs\_chamber\_reset\_v1}(p)=q
+\text{for every prime } p,\ \mathtt{pgs\_chamber\_reset\_v1}(p)=q
 $$
 
 already fails before any high-scale obstruction family is needed.
@@ -62,7 +62,7 @@ After the first scan, the code computes `threat_offset` and then rewrites every
 candidate state with
 
 $$
-\text{offset} > \texttt{threat\_offset}
+\text{offset} > \mathtt{threat\_offset}
 $$
 
 to `REJECTED`.
@@ -70,7 +70,7 @@ to `REJECTED`.
 So the earlier proof attempt fails at one exact point: if
 
 $$
-\texttt{lower\_d\_threat\_offset} < g,
+\mathtt{lower\_d\_threat\_offset} < g,
 $$
 
 then the later threat rewrite rejects the already-labeled endpoint `q` before
@@ -79,14 +79,14 @@ the function returns.
 The statement
 
 $$
-g \le H \Longrightarrow \texttt{pgs\_chamber\_reset\_v1}(p, H) = q
+g \le H \Longrightarrow \mathtt{pgs\_chamber\_reset\_v1}(p, H) = q
 $$
 
 is therefore not proved by the simple "first prime in the chamber" argument.
 It still needs one more obstruction exclusion:
 
 $$
-\texttt{lower\_d\_threat\_offset} \ge g \quad \text{or} \quad \texttt{lower\_d\_threat\_offset} = \varnothing.
+\mathtt{lower\_d\_threat\_offset} \ge g \quad \text{or} \quad \mathtt{lower\_d\_threat\_offset} = \varnothing.
 $$
 
 ## Exact finite check of the live branch
@@ -158,7 +158,7 @@ The next smallest deterministic obstruction check is therefore the first prime
 input above `10^6` with either:
 
 $$
-\texttt{lower\_d\_threat\_offset} < \texttt{gap\_offset}
+\mathtt{lower\_d\_threat\_offset} < \mathtt{gap\_offset}
 $$
 
 or a proof that this inequality cannot occur.
