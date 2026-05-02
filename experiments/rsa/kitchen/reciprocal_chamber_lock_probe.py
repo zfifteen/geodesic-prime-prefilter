@@ -5,16 +5,16 @@ from __future__ import annotations
 
 import csv
 import json
-import math
 import sys
 from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
+REPO_ROOT = Path(__file__).resolve().parents[3]
 PYTHON_SRC = REPO_ROOT / "src" / "python"
 sys.path.insert(0, str(PYTHON_SRC))
+sys.path.insert(0, str(REPO_ROOT / "experiments" / "rsa"))
 
 from run_inference_elimination_probe import (
     RULE_X_CANDIDATE_BOUND,
@@ -24,8 +24,8 @@ from run_inference_elimination_probe import (
 
 
 SURVIVOR_PATH = Path("experiments/rsa/inference_elimination_survivors.jsonl")
-DETAIL_PATH = Path("experiments/rsa/reciprocal_chamber_lock_details.csv")
-SUMMARY_PATH = Path("experiments/rsa/reciprocal_chamber_lock_summary.csv")
+DETAIL_PATH = Path("experiments/rsa/kitchen/reciprocal_chamber_lock_details.csv")
+SUMMARY_PATH = Path("experiments/rsa/kitchen/reciprocal_chamber_lock_summary.csv")
 MAX_ROUNDS = 4
 
 
@@ -47,6 +47,8 @@ class LockResult:
     q_floor: int
     rounds_locked: int
     pair_product_error: int
+    product_closed: bool
+    canonical_pair: str
     final_p: int
     final_q: int
     signature: str
@@ -107,6 +109,8 @@ def reciprocal_lock(row: dict[str, object], max_rounds: int) -> LockResult:
         q_floor=int(row["q_floor"]),
         rounds_locked=rounds_locked,
         pair_product_error=abs(n - p_value * q_value),
+        product_closed=p_value * q_value == n,
+        canonical_pair=f"{min(p_value, q_value)}:{max(p_value, q_value)}",
         final_p=p_value,
         final_q=q_value,
         signature=";".join(signature_parts),
@@ -123,6 +127,8 @@ def write_detail(rows: list[LockResult], path: Path) -> None:
         "q_floor",
         "rounds_locked",
         "pair_product_error",
+        "product_closed",
+        "canonical_pair",
         "final_p",
         "final_q",
         "signature",
@@ -141,6 +147,8 @@ def write_detail(rows: list[LockResult], path: Path) -> None:
                     "q_floor": row.q_floor,
                     "rounds_locked": row.rounds_locked,
                     "pair_product_error": row.pair_product_error,
+                    "product_closed": int(row.product_closed),
+                    "canonical_pair": row.canonical_pair,
                     "final_p": row.final_p,
                     "final_q": row.final_q,
                     "signature": row.signature,
@@ -162,6 +170,16 @@ def summarize(rows: list[LockResult]) -> list[dict[str, object]]:
             for row in case_rows
             if row.rounds_locked == best_rounds and row.pair_product_error == 0
         ]
+        product_closed_pairs = {
+            row.canonical_pair
+            for row in case_rows
+            if row.rounds_locked == best_rounds and row.product_closed
+        }
+        product_closed_ranks = [
+            row.rank
+            for row in case_rows
+            if row.rounds_locked == best_rounds and row.product_closed
+        ]
         summaries.append(
             {
                 "case_id": case_id,
@@ -172,6 +190,10 @@ def summarize(rows: list[LockResult]) -> list[dict[str, object]]:
                 "recursive_survivors": sum(
                     1 for row in case_rows if row.rounds_locked == best_rounds
                 ),
+                "product_closed_pairs": len(product_closed_pairs),
+                "product_closed_best_rank": ""
+                if not product_closed_ranks
+                else min(product_closed_ranks),
             }
         )
     return summaries
@@ -199,13 +221,15 @@ def main() -> int:
 
     print(
         "case_id,survivors_in,best_rounds_locked,exact_locked_survivors,"
-        "best_rank,recursive_survivors"
+        "best_rank,recursive_survivors,product_closed_pairs,"
+        "product_closed_best_rank"
     )
     for row in summaries:
         print(
             f"{row['case_id']},{row['survivors_in']},{row['best_rounds_locked']},"
             f"{row['exact_locked_survivors']},{row['best_rank']},"
-            f"{row['recursive_survivors']}"
+            f"{row['recursive_survivors']},{row['product_closed_pairs']},"
+            f"{row['product_closed_best_rank']}"
         )
     print(f"wrote {DETAIL_PATH}")
     print(f"wrote {SUMMARY_PATH}")

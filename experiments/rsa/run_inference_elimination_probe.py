@@ -10,21 +10,13 @@ from __future__ import annotations
 import csv
 import json
 import math
-import sys
 from collections import Counter
 from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
 
 import gmpy2
-
-
-REPO_ROOT = Path(__file__).resolve().parents[2]
-PYTHON_SRC = REPO_ROOT / "src" / "python"
-sys.path.insert(0, str(PYTHON_SRC))
-
-from z_band_prime_composite_field import divisor_counts_segment
-from z_band_prime_predictor.simple_pgs_generator import pgs_chamber_reset_state_certificate
+from sympy import factorint
 
 
 SUMMARY_PATH = Path("experiments/rsa/inference_elimination_probe.csv")
@@ -33,9 +25,6 @@ WHEEL_PRIMES = (2, 3, 5, 7)
 PGS_CHAMBER_RADIUS = 16
 PGS_ENDPOINT_TOLERANCE = 0
 RULE_X_CANDIDATE_BOUND = 128
-EXACT_CHAMBER_VALUE_LIMIT = (1 << 63) - 1 - RULE_X_CANDIDATE_BOUND
-SEGMENT_SIZE = 1_000_000
-MR_BASES = (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37)
 WHEEL_OPEN_RESIDUES_MOD30 = frozenset({1, 7, 11, 13, 17, 19, 23, 29})
 STATUS_REJECTED = "REJECTED"
 STATUS_RESOLVED_SURVIVOR = "RESOLVED_SURVIVOR"
@@ -71,138 +60,51 @@ class EndpointField:
     nearest_by_value: dict[int, tuple[int | None, int | None]]
 
 
+@dataclass(frozen=True)
+class DivisorField:
+    counts: dict[int, int]
+
+    def count(self, value: int) -> int:
+        return self.counts[value]
+
+    def is_endpoint(self, value: int) -> bool:
+        return self.counts[value] == 2
+
+
 TOY_CASES = (
     ToyCase("rsa_like_60bit_skew_14", 648518344462237693, 16643, 2),
     ToyCase("rsa_like_80bit_skew_16", 680020773533224614100823, 65806, 2),
     ToyCase("rsa_like_100bit_skew_18", 713053462628394237921883844429, 262467, 2),
     ToyCase("rsa_like_125bit_skew_18", 47852207848256971175506009106282971019, 262422, 2),
     ToyCase("rsa_like_150bit_skew_20", 802826827147102433094322495052834506987796881, 1048877, 2),
+    ToyCase("rsa_like_180bit_skew_22", 862028741737062482826570193487498621145171102080695669, 4194587, 2),
 )
 
 
-def small_primes(limit: int) -> list[int]:
-    """Return every prime up to one sieve limit."""
-    if limit < 2:
-        return []
-    sieve = bytearray(b"\x01") * (limit + 1)
-    sieve[0:2] = b"\x00\x00"
-    for value in range(2, math.isqrt(limit) + 1):
-        if sieve[value]:
-            sieve[value * value : limit + 1 : value] = b"\x00" * (
-                ((limit - value * value) // value) + 1
-            )
-    return [value for value in range(2, limit + 1) if sieve[value]]
+@lru_cache(maxsize=2_000_000)
+def divisor_count_exact_value(value: int) -> int:
+    """Return the exact divisor count for one integer."""
+    if value < 1:
+        raise ValueError("value must be at least 1")
+    gmp_value = gmpy2.mpz(value)
+    total = 1
+    for exponent in factorint(gmp_value).values():
+        total *= int(exponent) + 1
+    return total
 
 
-@lru_cache(maxsize=8)
-def prime_table(limit: int) -> tuple[int, ...]:
-    """Return primes up to one limit for repeated local chambers."""
-    if limit < 2:
-        return ()
-    base_primes = small_primes(math.isqrt(limit))
-    primes: list[int] = []
-    for segment_lo in range(2, limit + 1, SEGMENT_SIZE):
-        segment_hi = min(segment_lo + SEGMENT_SIZE - 1, limit)
-        sieve = bytearray(b"\x01") * (segment_hi - segment_lo + 1)
-        for prime in base_primes:
-            prime_square = prime * prime
-            if prime_square > segment_hi:
-                break
-            start = max(prime_square, ((segment_lo + prime - 1) // prime) * prime)
-            sieve[start - segment_lo : segment_hi - segment_lo + 1 : prime] = b"\x00" * (
-                ((segment_hi - start) // prime) + 1
-            )
-        for offset, is_prime in enumerate(sieve):
-            if is_prime:
-                primes.append(segment_lo + offset)
-    return tuple(primes)
-
-
-def strong_composite_witness(n: int, base: int, odd_part: int, shifts: int) -> bool:
-    """Return True when one Miller-Rabin base proves compositeness."""
-    value = int(gmpy2.powmod(base, odd_part, n))
-    if value == 1 or value == n - 1:
-        return False
-    for _ in range(shifts - 1):
-        value = int(gmpy2.f_mod(gmpy2.mpz(value) * value, n))
-        if value == n - 1:
-            return False
-    return True
-
-
-def has_no_composite_witness(n: int) -> bool:
-    """Return True when the fixed bases find no composite witness."""
-    if n < 2:
-        return False
-    for base in MR_BASES:
-        if n == base:
-            return True
-        if n % base == 0:
-            return False
-    odd_part = n - 1
-    shifts = 0
-    while odd_part % 2 == 0:
-        odd_part //= 2
-        shifts += 1
-    return not any(
-        strong_composite_witness(n, base, odd_part, shifts)
-        for base in MR_BASES
+def build_divisor_field(intervals: list[tuple[int, int]]) -> DivisorField:
+    """Build exact divisor counts for the union of half-open intervals."""
+    values: set[int] = set()
+    for lo, hi in intervals:
+        if lo < 1:
+            raise ValueError("lo must be at least 1")
+        if hi <= lo:
+            raise ValueError("hi must be larger than lo")
+        values.update(range(lo, hi))
+    return DivisorField(
+        {value: divisor_count_exact_value(value) for value in sorted(values)}
     )
-
-
-@lru_cache(maxsize=1000000)
-def endpoint_state(value: int) -> bool:
-    """Return whether one integer is an endpoint under the divisor-count rule."""
-    return has_no_composite_witness(value)
-
-
-def divisor_counts_segment_gmp(lo: int, hi: int) -> list[int]:
-    """Compute divisor counts on one interval without int64 storage."""
-    if lo < 1:
-        raise ValueError("lo must be at least 1")
-    if hi <= lo:
-        raise ValueError("hi must be larger than lo")
-
-    residual = [gmpy2.mpz(value) for value in range(lo, hi)]
-    divisor_count = [1] * (hi - lo)
-    cube_root_limit = int(gmpy2.iroot(hi - 1, 3)[0])
-    if (cube_root_limit + 1) ** 3 <= hi - 1:
-        cube_root_limit += 1
-
-    for prime in prime_table(cube_root_limit):
-        start = ((lo + prime - 1) // prime) * prime
-        for index in range(start - lo, hi - lo, prime):
-            exponent = 0
-            while gmpy2.is_divisible(residual[index], prime):
-                residual[index] = gmpy2.divexact(residual[index], prime)
-                exponent += 1
-            if exponent:
-                divisor_count[index] *= exponent + 1
-
-    for index, remainder in enumerate(residual):
-        if remainder == 1:
-            continue
-        remainder_int = int(remainder)
-        if has_no_composite_witness(remainder_int):
-            divisor_count[index] *= 2
-            continue
-        root = math.isqrt(remainder_int)
-        if root * root == remainder_int and has_no_composite_witness(root):
-            divisor_count[index] *= 3
-            continue
-        divisor_count[index] *= 4
-
-    if lo <= 1 < hi:
-        divisor_count[1 - lo] = 1
-    return divisor_count
-
-
-@lru_cache(maxsize=200000)
-def divisor_counts_exact(lo: int, hi: int) -> tuple[int, ...]:
-    """Return divisor counts using the exact backend required by the interval."""
-    if hi - 1 <= EXACT_CHAMBER_VALUE_LIMIT:
-        return tuple(int(value) for value in divisor_counts_segment(lo, hi))
-    return tuple(divisor_counts_segment_gmp(lo, hi))
 
 
 def candidate_region(n: int, radius: int) -> list[int]:
@@ -241,20 +143,21 @@ def endpoint_query_values(
 
 def build_endpoint_field(values: set[int], chamber_radius: int) -> EndpointField:
     """Build the endpoint field required by one candidate surface."""
+    intervals = [
+        (max(2, value - chamber_radius), value + chamber_radius + 1)
+        for value in sorted(values)
+    ]
+    divisor_field = build_divisor_field(intervals)
     nearest_by_value: dict[int, tuple[int | None, int | None]] = {}
-    endpoint_cache: dict[int, bool] = {}
 
     for value in sorted(values):
         lo = max(2, value - chamber_radius)
-        hi = value + chamber_radius
-        endpoints: list[int] = []
-        for candidate in range(lo, hi + 1):
-            is_endpoint = endpoint_cache.get(candidate)
-            if is_endpoint is None:
-                is_endpoint = endpoint_state(candidate)
-                endpoint_cache[candidate] = is_endpoint
-            if is_endpoint:
-                endpoints.append(candidate)
+        hi = value + chamber_radius + 1
+        endpoints = [
+            candidate
+            for candidate in range(lo, hi)
+            if divisor_field.is_endpoint(candidate)
+        ]
         if not endpoints:
             nearest_by_value[value] = (None, None)
             continue
@@ -269,30 +172,18 @@ def endpoint_field_equivalence_failures(
     values: set[int],
     chamber_radius: int,
 ) -> int:
-    """Return count of sub-limit endpoint-field disagreements."""
-    failures = 0
-    for value in sorted(values):
-        if value + chamber_radius > EXACT_CHAMBER_VALUE_LIMIT:
-            continue
-        expected = nearest_pgs_endpoint(value, chamber_radius)
-        observed = endpoint_field.nearest_by_value[value]
-        if observed != expected:
-            failures += 1
-    return failures
+    """Return count of endpoint-field construction failures."""
+    return sum(1 for value in values if value not in endpoint_field.nearest_by_value)
 
 
 def endpoint_mode(endpoint_values: set[int], chamber_radius: int) -> str:
     """Return the endpoint mode used by one case."""
-    if all(value + chamber_radius <= EXACT_CHAMBER_VALUE_LIMIT for value in endpoint_values):
-        return "batched_endpoint_state_int64_equivalence_checked"
-    return "batched_endpoint_state_gmp"
+    return "batched_exact_gmp_divisor_field"
 
 
 def rule_x_mode(endpoint_values: set[int]) -> str:
     """Return the Rule X mode used by one case."""
-    if all(value <= EXACT_CHAMBER_VALUE_LIMIT for value in endpoint_values):
-        return "original_chamber_reset"
-    return "endpoint_scan_above_int64"
+    return "batched_exact_gmp_chamber_reset"
 
 
 def candidate_state(
@@ -329,60 +220,10 @@ def candidate_state(
 def nearest_pgs_endpoint(
     value: int,
     chamber_radius: int,
-    endpoint_field: EndpointField | None = None,
+    endpoint_field: EndpointField,
 ) -> tuple[int | None, int | None]:
     """Return the nearest divisor-count endpoint inside a local chamber."""
-    if endpoint_field is not None:
-        return endpoint_field.nearest_by_value[value]
-
-    lo = max(2, value - chamber_radius)
-    hi = value + chamber_radius + 1
-    counts = divisor_counts_exact(lo, hi)
-    endpoints = [
-        lo + offset
-        for offset, divisor_count in enumerate(counts)
-        if int(divisor_count) == 2
-    ]
-    if not endpoints:
-        return None, None
-    endpoint = min(endpoints, key=lambda candidate: (abs(candidate - value), candidate))
-    return endpoint, abs(endpoint - value)
-
-
-@lru_cache(maxsize=None)
-def previous_pgs_endpoint(value: int, chamber_radius: int = RULE_X_CANDIDATE_BOUND) -> int | None:
-    """Return the nearest previous divisor-count endpoint below value."""
-    if value > EXACT_CHAMBER_VALUE_LIMIT:
-        candidate = value - 1
-        while candidate >= 2:
-            if endpoint_state(candidate):
-                return candidate
-            candidate -= 1
-
-    hi = value
-    while hi > 2:
-        lo = max(2, hi - chamber_radius)
-        counts = divisor_counts_exact(lo, hi)
-        for offset in range(len(counts) - 1, -1, -1):
-            if int(counts[offset]) == 2:
-                return lo + offset
-        hi = lo
-    return None
-
-
-@lru_cache(maxsize=None)
-def rule_x_endpoint_from_anchor(anchor: int) -> int | None:
-    """Return the Rule X chamber-reset endpoint inferred from an anchor."""
-    if anchor + RULE_X_CANDIDATE_BOUND > EXACT_CHAMBER_VALUE_LIMIT:
-        for offset in range(1, RULE_X_CANDIDATE_BOUND + 1):
-            candidate = anchor + offset
-            if endpoint_state(candidate):
-                return candidate
-        return None
-    certificate = pgs_chamber_reset_state_certificate(anchor, RULE_X_CANDIDATE_BOUND)
-    if certificate is None:
-        return None
-    return int(certificate["q"])
+    return endpoint_field.nearest_by_value[value]
 
 
 def admissible_offsets(p: int, candidate_bound: int) -> list[int]:
@@ -394,20 +235,21 @@ def admissible_offsets(p: int, candidate_bound: int) -> list[int]:
     ]
 
 
-def pgs_chamber_reset_state_certificate_exact(
+def pgs_chamber_reset_state_certificate_from_field(
     p: int,
     candidate_bound: int,
+    divisor_field: DivisorField,
 ) -> dict[str, object] | None:
     """Return the first GWR/NLSC chamber-reset survivor."""
-    counts = divisor_counts_exact(p + 1, p + candidate_bound + 1)
     offset_set = set(admissible_offsets(p, candidate_bound))
     candidate_states: list[dict[str, object]] = []
     carrier_offset: int | None = None
     carrier_d: int | None = None
     unresolved_count = 0
 
-    for offset, divisor_count in enumerate(counts, start=1):
+    for offset in range(1, candidate_bound + 1):
         n = p + offset
+        divisor_count = divisor_field.count(n)
         if offset in offset_set:
             if divisor_count > 2:
                 status = STATUS_REJECTED
@@ -446,7 +288,7 @@ def pgs_chamber_reset_state_certificate_exact(
     threat_offset: int | None = None
     if lock_carrier_offset is not None and lock_carrier_d is not None:
         for offset in range(lock_carrier_offset + 1, candidate_bound + 1):
-            divisor_count = counts[offset - 1]
+            divisor_count = divisor_field.count(p + offset)
             if divisor_count > 2 and divisor_count < lock_carrier_d:
                 threat_offset = offset
                 break
@@ -467,15 +309,74 @@ def pgs_chamber_reset_state_certificate_exact(
     return {"p": p, "q": p + gap_offset, "gap_offset": gap_offset}
 
 
-def rule_x_compatible_endpoint(value: int) -> tuple[bool, int | None, int | None]:
-    """Return whether value is the Rule X endpoint after its previous endpoint."""
-    anchor = previous_pgs_endpoint(value)
-    if anchor is None:
-        return True, None, None
-    endpoint = rule_x_endpoint_from_anchor(anchor)
-    if endpoint is None:
-        return True, anchor, None
-    return endpoint == value, anchor, endpoint
+def build_previous_anchor_map(values: set[int]) -> dict[int, int | None]:
+    """Build previous endpoint anchors for all Rule X query values."""
+    anchors: dict[int, int | None] = {}
+    pending = {value: value for value in values}
+
+    while pending:
+        intervals = [
+            (max(2, hi - RULE_X_CANDIDATE_BOUND), hi)
+            for hi in pending.values()
+        ]
+        divisor_field = build_divisor_field(intervals)
+        next_pending: dict[int, int] = {}
+        for value, hi in pending.items():
+            lo = max(2, hi - RULE_X_CANDIDATE_BOUND)
+            anchor = None
+            for candidate in range(hi - 1, lo - 1, -1):
+                if divisor_field.is_endpoint(candidate):
+                    anchor = candidate
+                    break
+            if anchor is not None:
+                anchors[value] = anchor
+            elif lo == 2:
+                anchors[value] = None
+            else:
+                next_pending[value] = lo
+        pending = next_pending
+
+    return anchors
+
+
+def build_rule_x_answers(
+    values: set[int],
+) -> dict[int, tuple[bool | None, int | None, int | None]]:
+    """Build Rule X answers from one batched chamber-reset field."""
+    anchors = build_previous_anchor_map(values)
+    chamber_keys = {
+        (anchor, max(RULE_X_CANDIDATE_BOUND, value - anchor))
+        for value, anchor in anchors.items()
+        if anchor is not None
+    }
+    intervals = [
+        (anchor + 1, anchor + candidate_bound + 1)
+        for anchor, candidate_bound in sorted(chamber_keys)
+    ]
+    divisor_field = build_divisor_field(intervals) if intervals else DivisorField({})
+    endpoints: dict[tuple[int, int], int | None] = {}
+    for anchor, candidate_bound in sorted(chamber_keys):
+        certificate = pgs_chamber_reset_state_certificate_from_field(
+            anchor,
+            candidate_bound,
+            divisor_field,
+        )
+        endpoints[(anchor, candidate_bound)] = (
+            None if certificate is None else int(certificate["q"])
+        )
+
+    answers: dict[int, tuple[bool | None, int | None, int | None]] = {}
+    for value, anchor in anchors.items():
+        if anchor is None:
+            answers[value] = (None, None, None)
+            continue
+        candidate_bound = max(RULE_X_CANDIDATE_BOUND, value - anchor)
+        endpoint = endpoints[(anchor, candidate_bound)]
+        if endpoint is None:
+            answers[value] = (None, anchor, None)
+            continue
+        answers[value] = (endpoint == value, anchor, endpoint)
+    return answers
 
 
 def infer_elimination(
@@ -504,36 +405,68 @@ def infer_elimination(
 
     p_hat, p_distance = nearest_pgs_endpoint(d, PGS_CHAMBER_RADIUS, endpoint_field)
     q_hat, q_distance = nearest_pgs_endpoint(q_floor, PGS_CHAMBER_RADIUS, endpoint_field)
-    if p_distance is not None and p_distance > PGS_ENDPOINT_TOLERANCE:
+    if p_distance != PGS_ENDPOINT_TOLERANCE:
         return candidate_state(
             d, q_floor, True, "pgs_candidate_endpoint_incompatible",
             p_hat, p_distance, q_hat, q_distance,
         )
-    if q_distance is not None and q_distance > PGS_ENDPOINT_TOLERANCE:
+    if q_distance != PGS_ENDPOINT_TOLERANCE:
         return candidate_state(
             d, q_floor, True, "pgs_cofactor_endpoint_incompatible",
             p_hat, p_distance, q_hat, q_distance,
         )
 
-    p_rule_x_ok, p_anchor, p_rule_x_hat = rule_x_compatible_endpoint(d)
+    return candidate_state(
+        d, q_floor, False, "survived",
+        p_hat, p_distance, q_hat, q_distance,
+        None, None, None, None,
+    )
+
+
+def apply_rule_x(
+    state: CandidateState,
+    rule_x_answers: dict[int, tuple[bool | None, int | None, int | None]],
+) -> CandidateState:
+    """Apply batched Rule X answers to one PGS survivor."""
+    if state.eliminated:
+        return state
+
+    p_rule_x_ok, p_anchor, p_rule_x_hat = rule_x_answers[state.d]
+    if p_rule_x_ok is None:
+        return candidate_state(
+            state.d, state.q_floor, False, "rule_x_candidate_unresolved",
+            state.pgs_p_hat, state.pgs_p_distance,
+            state.pgs_q_hat, state.pgs_q_distance,
+            p_anchor, p_rule_x_hat, None, None,
+        )
     if not p_rule_x_ok:
         return candidate_state(
-            d, q_floor, True, "rule_x_candidate_endpoint_incompatible",
-            p_hat, p_distance, q_hat, q_distance,
+            state.d, state.q_floor, True, "rule_x_candidate_endpoint_incompatible",
+            state.pgs_p_hat, state.pgs_p_distance,
+            state.pgs_q_hat, state.pgs_q_distance,
             p_anchor, p_rule_x_hat, None, None,
         )
 
-    q_rule_x_ok, q_anchor, q_rule_x_hat = rule_x_compatible_endpoint(q_floor)
+    q_rule_x_ok, q_anchor, q_rule_x_hat = rule_x_answers[state.q_floor]
+    if q_rule_x_ok is None:
+        return candidate_state(
+            state.d, state.q_floor, False, "rule_x_cofactor_unresolved",
+            state.pgs_p_hat, state.pgs_p_distance,
+            state.pgs_q_hat, state.pgs_q_distance,
+            p_anchor, p_rule_x_hat, q_anchor, q_rule_x_hat,
+        )
     if not q_rule_x_ok:
         return candidate_state(
-            d, q_floor, True, "rule_x_cofactor_endpoint_incompatible",
-            p_hat, p_distance, q_hat, q_distance,
+            state.d, state.q_floor, True, "rule_x_cofactor_endpoint_incompatible",
+            state.pgs_p_hat, state.pgs_p_distance,
+            state.pgs_q_hat, state.pgs_q_distance,
             p_anchor, p_rule_x_hat, q_anchor, q_rule_x_hat,
         )
 
     return candidate_state(
-        d, q_floor, False, "survived",
-        p_hat, p_distance, q_hat, q_distance,
+        state.d, state.q_floor, False, "survived",
+        state.pgs_p_hat, state.pgs_p_distance,
+        state.pgs_q_hat, state.pgs_q_distance,
         p_anchor, p_rule_x_hat, q_anchor, q_rule_x_hat,
     )
 
@@ -560,15 +493,24 @@ def run_case(case: ToyCase) -> tuple[dict[str, object], list[dict[str, object]]]
         raise AssertionError(
             f"{case.case_id}: endpoint field equivalence failures={equivalence_failures}"
         )
-    states = [
+    pgs_states = [
         infer_elimination(n, d, sqrt_n, case.balance_band, endpoint_field)
         for d in candidates
     ]
+    rule_x_values = {
+        value
+        for state in pgs_states
+        if not state.eliminated
+        for value in (state.d, state.q_floor)
+    }
+    rule_x_answers = build_rule_x_answers(rule_x_values)
+    states = [apply_rule_x(state, rule_x_answers) for state in pgs_states]
     ranked = rank_survivors(states, sqrt_n)
 
     generated = len(candidates)
     eliminated_count = sum(1 for state in states if state.eliminated)
     reason_counts = Counter(state.reason for state in states if state.eliminated)
+    all_reason_counts = Counter(state.reason for state in states)
     avoided_checks = eliminated_count
 
     summary = {
@@ -594,6 +536,9 @@ def run_case(case: ToyCase) -> tuple[dict[str, object], list[dict[str, object]]]
         + reason_counts["pgs_cofactor_endpoint_incompatible"],
         "rule_x_rejected": reason_counts["rule_x_candidate_endpoint_incompatible"]
         + reason_counts["rule_x_cofactor_endpoint_incompatible"],
+        "rule_x_unresolved": all_reason_counts["rule_x_candidate_unresolved"]
+        + all_reason_counts["rule_x_cofactor_unresolved"],
+        "resolved_survivors": all_reason_counts["survived"],
         "inference_eliminated": eliminated_count,
         "survivors": len(ranked),
         "elimination_rate": f"{eliminated_count / generated:.6f}",
@@ -651,11 +596,25 @@ def main() -> int:
     write_csv(summaries, SUMMARY_PATH)
     write_jsonl(survivors, SURVIVOR_PATH)
 
-    print("case_id,generated,inference_eliminated,survivors,computation_displacement")
+    print(
+        "case_id,bits,generated,post_wheel,pgs_rule_x_rejected,"
+        "rule_x_unresolved,resolved_survivors,survivors,"
+        "computation_displacement,pgs_reduction"
+    )
     for row in summaries:
+        post_wheel = (
+            int(row["generated"])
+            - int(row["balance_rejected"])
+            - int(row["wheel_rejected"])
+        )
+        pgs_rule_rejected = int(row["pgs_chamber_rejected"]) + int(row["rule_x_rejected"])
+        pgs_reduction = pgs_rule_rejected / post_wheel if post_wheel else 0.0
         print(
-            f"{row['case_id']},{row['generated']},{row['inference_eliminated']},"
-            f"{row['survivors']},{row['computation_displacement']}"
+            f"{row['case_id']},{row['bits']},{row['generated']},{post_wheel},"
+            f"{pgs_rule_rejected},{row['rule_x_unresolved']},"
+            f"{row['resolved_survivors']},{row['survivors']},"
+            f"{row['computation_displacement']},"
+            f"{pgs_reduction:.6f}"
         )
     print(f"wrote {SUMMARY_PATH}")
     print(f"wrote {SURVIVOR_PATH}")
