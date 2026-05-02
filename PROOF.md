@@ -58,6 +58,25 @@ $$I=\{p+1,\ldots,q-1\}$$
 
 For example, `tau(25) = 3` because the positive divisors of `25` are `1, 5, 25`.
 
+## Divisor Counts And Coprime Factor Channels
+
+The divisor count records how many independent divisor choices are available
+from the prime-power factors of an integer. If
+`n = r_1^{a_1}\cdots r_s^{a_s}` is the prime-power factorization of `n`, then
+the factors `r_i^{a_i}` are pairwise coprime and
+
+$$\tau(n)=\prod_{i=1}^{s}(a_i+1)$$
+
+This product form is the coprimality structure inside the divisor count. A
+divisor of `n` is formed by choosing one exponent from each prime-power factor,
+and the choices multiply because the prime-power factors share no prime
+divisor.
+
+Within a prime-gap interval, every interior integer is composite. Lower
+`tau(n)` means fewer independent coprime factor-choice channels. The integer
+chosen below is therefore the first interior composite where this divisor-choice
+load is minimal.
+
 Inside `I`, look for the smallest divisor count that occurs. Then choose the
 first integer in `I` with that divisor count. Call that integer `w`.
 
