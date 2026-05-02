@@ -148,6 +148,10 @@ prime generation, no fallback prime search, and no oracle-style `nextprime`
 call inside generation. Classical verification remains downstream audit after
 generation, not a mechanism for choosing `q`.
 
+The following surfaces validate the bounded production implementation. They are
+not theorem boundaries: the exact divisor-count next-prime theorem is proved in
+[PROOF.md](PROOF.md).
+
 On the current production generator surface, exact output is preserved and the
 PGS selection rule applies exact divisor-count GWR/NLSC search-interval-reset state:
 
@@ -234,11 +238,13 @@ This repository now carries three visible lines of work:
 - the PGS Prime Generator and downstream deterministic DNI-based
   predictor and prefilter work.
 
-The GWR theorem remains the theorem foundation. The gap-type model is the second
-headline prime-gap result. The PGS Prime Generator is the current
-operational inferred-prime generator milestone. The recursive walk and
-deterministic filter are downstream deterministic instruments built from the
-same normalization.
+The Divisor Normalization Identity supplies the score foundation. The direct
+deterministic next-prime theorem and the GWR theorem are the proved theorem
+foundation. NLSC is an exact closure consequence of GWR and a structural bridge
+to the generator. The gap-type model is the second headline prime-gap result.
+The PGS Prime Generator is the current operational inferred-prime generator
+milestone. The recursive walk and deterministic filter are downstream
+deterministic instruments built from the same normalization.
 
 ## Novel Structures in This Repository
 
@@ -282,7 +288,8 @@ The repository now carries the following named structures and results:
   through `10^18` decade-window validation surface.
 - **No-Later-Simpler-Composite (NLSC) condition:** once the GWR-selected integer
   appears, no later interior composite with strictly smaller divisor count
-  precedes the next prime. Zero violations observed through `10^18`.
+  precedes the next prime. This is an exact corollary of the proved GWR theorem.
+  The separate stress surface through `10^18` records zero observed violations.
 - **Dominant d=4 arrival reduction:** under square exclusion, the GWR-selected integer
   is exactly the first interior integer with `d(n)=4`. Exact on full scans through
   `2x10^7`.
@@ -376,10 +383,11 @@ any later interior composite with strictly smaller divisor count can appear.
 That closure law is what lets the unbounded DNI/GWR walker recover the next
 prime exactly from the ordered divisor structure of the next-gap interior.
 
-Given a known prime `q`, the oracle scans divisor counts to the right until the
-successor prime, takes the lexicographic minimum over the composite
-interior, and recovers the next prime by the witness map. That mechanism is
-exact by construction. No cutoff theorem is involved.
+Given a known prime `p`, the exact divisor-count theorem determines the next
+prime `q` directly: scan integers greater than `p` in increasing order, compute
+`tau(n)` exactly, and stop at the first integer with `tau(n) = 2`. The recursive
+walk uses that exact `p -> q` step as its successor-prime transition. No cutoff
+theorem is involved.
 
 On the current verified surface, that mechanism supports an exact deterministic
 no-skip sequential walk. The transition rule is exact on `743,075 / 743,075`
