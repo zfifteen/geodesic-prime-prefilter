@@ -83,8 +83,9 @@ That discrete ordering explains why:
 - left-edge wins dominate right-edge wins,
 - edge-distance `2` appears so often as the selected integer location.
 
-This remains an empirical repository result rather than a proof for every
-possible gap, but it is stronger than a descriptive score-function metaphor alone.
+The distribution percentages in this note remain empirical measurements on the
+recorded run. The theorem-level statement about the selected integer itself is
+now the universal maximizer theorem in [../../PROOF.md](../../PROOF.md).
 
 ## Reproduction
 

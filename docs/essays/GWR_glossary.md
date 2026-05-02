@@ -276,10 +276,9 @@ Below `1` is safe. At or above `1` would be dangerous.
 **Plain language:** The argument connecting the exact finite base to the
 large-scale theorem.
 
-**In this repo:** “Bridge” often means the no-early-counterexample argument that turns
-the exact finite base into a universal proof. The committed certificate now
-records that the bridge threshold falls below the finite base on the repo's
-current closed proof surface.
+**In this repo:** In older proof-chain notes, “bridge” often meant an argument
+connecting finite checks to a large-scale theorem. Those notes are historical.
+The live proof-status source is now `PROOF.md`.
 
 ### Bridge Load
 
@@ -503,7 +502,7 @@ than the present comparison inequalities alone reveal.
 **Plain language:** Most dangerous-looking abstract patterns seem to be filtered
 out before they ever appear in real gaps.
 
-**In this repo:** This is the central interpretive finding of
+**In this repo:** This was the central interpretive finding of the archived
 `prime_gap_admissibility_censorship_finding.md`.
 
 It does **not** mean the repo has proved a censorship theorem.
@@ -569,8 +568,8 @@ surface.
 **Plain language:** Measured by computation rather than proved from a theorem.
 
 **In this repo:** Older `GWR` validation surfaces were empirical in this sense.
-The current headline `GWR` result is a proved theorem on the repository's
-current proof surface, not only a measured surface.
+The current headline `GWR` result is the universal theorem proved in
+`PROOF.md`, not only a measured surface.
 
 ### Historical Standalone Candidate Note
 

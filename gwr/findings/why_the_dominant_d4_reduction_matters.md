@@ -64,7 +64,7 @@ That is a local exclusion-and-arrival law, not a full gap-wide search story.
 The current repo structure is now cleaner:
 
 - the divisor-normalized score function defines the score surface,
-- GWR gives the proved universal maximizer theorem on the current proof surface,
+- GWR gives the universal maximizer theorem proved in [../../PROOF.md](../../PROOF.md),
 - the dominant $d=4$ reduction explains why most of that surface collapses so
   cleanly,
 - the No-Later-Simpler-Composite condition gives the closure consequence.
@@ -80,7 +80,7 @@ project now has:
 ### 3. The follow-on explanation narrows
 
 The dominant proof target is no longer “prove the whole selection rule at once.”
-GWR is already closed on the current proof surface.
+GWR is already proved in [../../PROOF.md](../../PROOF.md).
 The remaining dominant-regime target is an independent local explanation of the
 largest selected divisor-count class.
 

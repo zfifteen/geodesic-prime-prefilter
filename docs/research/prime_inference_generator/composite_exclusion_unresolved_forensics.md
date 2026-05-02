@@ -129,8 +129,8 @@ additional legal composite-closure record before it can compete.
 
 ## Next Lemma Shape
 
-The next theorem target is not a direct next-prime law. It is an unresolved
-alternative bridge:
+The next theorem target strengthens the repository's direct deterministic
+next-prime law by closing the unresolved alternative branch:
 
 If one candidate is a resolved candidate and another candidate is unresolved
 only because of unclosed wheel-open interior offsets, then either:

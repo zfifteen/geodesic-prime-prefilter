@@ -27,10 +27,10 @@ the composite interior itself.
 
 The strongest supported claim is:
 
-`GWR`, as a proved prime-selected interior integer law on the current proof surface, is not
-only a statement about which
-composite wins inside a gap. It is also a local endpoint-placement constraint
-on where the consecutive primes bounding that gap are allowed to occur.
+`GWR`, as the proved prime-selected interior integer law in
+[../../PROOF.md](../../PROOF.md), is not only a statement about which composite
+wins inside a gap. It is also a local endpoint-placement constraint on where the
+consecutive primes bounding that gap are allowed to occur.
 
 The dominant `d=4` specialization sharpens that into a concrete prime-placement
 bound:
@@ -245,12 +245,9 @@ integers.
 It does mean that the interior composite structure defines a stopping endpoint
 for admissible prime-gap termination.
 
-## Relation To The Admissibility-Censorship Finding
+## Relation To The Earlier Admissibility-Censorship Reading
 
-This note is narrower than
-[`prime_gap_admissibility_censorship_finding.md`](./prime_gap_admissibility_censorship_finding.md).
-
-That earlier finding says:
+That earlier reading says:
 
 - actual prime gaps appear to realize only a thin subset of the divisor-class
   counterexample patterns that class-only algebra leaves unresolved.

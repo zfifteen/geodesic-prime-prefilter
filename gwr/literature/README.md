@@ -5,8 +5,8 @@ positioning of the `Leftmost Minimum-Divisor Rule`.
 
 ## Current Status
 
-The repo now carries a proved universal `GWR` theorem on its current proof
-surface.
+The repo carries the proved universal `GWR` theorem in
+[../../PROOF.md](../../PROOF.md).
 
 It still does not claim that no prior source states the same result. That
 remains a literature and prior-art question.
@@ -24,5 +24,4 @@ The safe current statement is:
 
 ## Existing Inputs
 
-- [../../docs/findings/wolfram_lexicographic_analysis.md](../../docs/findings/wolfram_lexicographic_analysis.md)
 - [../../docs/findings/lexicographic_winner_take_all_peak_rule/](../../docs/findings/lexicographic_winner_take_all_peak_rule/)

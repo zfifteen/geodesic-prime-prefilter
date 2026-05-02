@@ -81,7 +81,11 @@ giving L(a) > L(b). QED.
 
 where d_min(p,q) = min{ d(n) : p < n < q, n composite }.
 
-**Repo status.** `GWR` is the proved universal maximizer theorem on the repository's current proof surface. The measured validation ladder reports zero counterexamples on the full tested surface: exact scan to `2 * 10^7`, deterministic even-band windows at every decade from `10^8` through `10^18`.
+**Repo status.** `GWR` is the proved universal maximizer theorem in
+`PROOF.md`. The measured validation ladder reports zero counterexamples on the
+tested surface: exact scan to `2 * 10^7`, deterministic even-band windows at
+every decade from `10^8` through `10^18`. Those measurements are provenance and
+separate validation, not limits on the theorem.
 
 ### 2.4 The Dominant d=4 Regime
 
@@ -384,14 +388,14 @@ print(f"d=4 gaps tested: {count}, violations: {len(v)}")  # Expected: 0
 
 ## 9. References
 
-1. Leftmost Minimum-Divisor Rule. zfifteen/prime-gap-structure, gwr/findings/gap_winner_rule.md.
-   https://github.com/zfifteen/prime-gap-structure/blob/main/gwr/findings/gap_winner_rule.md
+1. Prime-gap maximizer theorem. zfifteen/prime-gap-structure, PROOF.md.
+   https://github.com/zfifteen/prime-gap-structure/blob/main/PROOF.md
 
 2. Closure Constraint Findings. zfifteen/prime-gap-structure, gwr/findings/closure_constraint_findings.md.
    https://github.com/zfifteen/prime-gap-structure/blob/main/gwr/findings/closure_constraint_findings.md
 
-3. GWR Claim Hierarchy. zfifteen/prime-gap-structure, gwr/findings/claim_hierarchy.md.
-   https://github.com/zfifteen/prime-gap-structure/blob/main/gwr/findings/claim_hierarchy.md
+3. Current Headline Results. zfifteen/prime-gap-structure, docs/current_headline_results.md.
+   https://github.com/zfifteen/prime-gap-structure/blob/main/docs/current_headline_results.md
 
 4. Dominant d=4 Arrival Reduction. zfifteen/prime-gap-structure, gwr/findings/dominant_d4_arrival_reduction_findings.md.
    https://github.com/zfifteen/prime-gap-structure/blob/main/gwr/findings/dominant_d4_arrival_reduction_findings.md
