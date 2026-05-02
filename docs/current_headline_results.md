@@ -1,7 +1,11 @@
 # Current Headline Results
 
 - **The single live proof reference is [../PROOF.md](../PROOF.md).** It is the
-  definitive status source for the prime-gap maximizer theorem.
+  definitive status source for the direct deterministic next-prime theorem and
+  the prime-gap maximizer theorem.
+- **The direct deterministic next-prime theorem is universal under its stated
+  hypotheses.** Given a known prime `p`, exact divisor counts determine the next
+  prime `q`.
 - **The prime-gap maximizer theorem is universal under its stated hypotheses.**
   In every prime gap with a nonempty interior, the log-score maximizer is the
   first interior integer with the smallest divisor count.
@@ -12,7 +16,7 @@
   identifies the selected interior integer used by the repository's direct
   deterministic `p -> q` algorithm.
 - **The exact DNI/GWR next-prime oracle remains exact by construction.** Given
-  a known prime `q`, the unbounded walker recovers the next prime from the
+  a known prime `p`, the unbounded walker recovers the next prime from the
   ordered divisor structure of the next-gap interior. See
   [./research/predictor/gwr_dni_exact_recursive_prime_walk_note.md](./research/predictor/gwr_dni_exact_recursive_prime_walk_note.md).
 - **The recursive walk surface remains exact on the committed tested ladder.**

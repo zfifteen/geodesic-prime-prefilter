@@ -4,8 +4,9 @@
 
 This repository now carries three major prime-gap results:
 
-- a proved local arithmetic selection law inside prime gaps, with the live proof
-  reference in [PROOF.md](PROOF.md);
+- a proved direct deterministic next-prime theorem and local arithmetic
+  selection law inside prime gaps, with the live proof reference in
+  [PROOF.md](PROOF.md);
 - a frozen hierarchical finite-state model for reduced prime-gap types.
 - a PGS Prime Generator that infers the successor prime from deterministic
   prime-gap-structure chamber state, without trial division, Miller-Rabin,
@@ -40,9 +41,11 @@ These examples show the local arithmetic choice that anchors the repository.
 
 ## Three Headline Results
 
-- **Leftmost Minimum-Divisor Rule (GWR):** as proved in [PROOF.md](PROOF.md),
-  the divisor-normalization score picks exactly the leftmost interior integer
-  with minimum divisor count in every prime gap with a nonempty interior.
+- **Direct Deterministic Next-Prime Theorem and Leftmost Minimum-Divisor Rule
+  (GWR):** as proved in [PROOF.md](PROOF.md), exact divisor counts determine the
+  next prime from a known prime `p`, and the divisor-normalization score picks
+  exactly the leftmost interior integer with minimum divisor count in every
+  prime gap with a nonempty interior.
 - **Prime Gap Generative Model v1.0:** on the persistent reduced gap-type
   surface, prime-gap types close to a frozen hierarchical finite-state model
   with a stable `14`-state core.
@@ -65,9 +68,10 @@ The **Leftmost Minimum-Divisor Rule (GWR)** says:
 
 That chosen interior integer is the selected integer of the gap.
 
-The headline mathematical result carried by the repository is that the
-implemented divisor-normalization score picks exactly that same integer in
-every prime gap. The single live proof reference is [PROOF.md](PROOF.md).
+The headline mathematical proof in the repository has two parts: exact divisor
+counts determine the next prime from a known prime `p`, and the implemented
+divisor-normalization score picks exactly that same selected integer in every
+prime gap. The single live proof reference is [PROOF.md](PROOF.md).
 
 ## Prime Gap Generative Model v1.0
 
@@ -223,7 +227,8 @@ rule with jargon.
 
 This repository now carries three visible lines of work:
 
-- the proved GWR theorem, whose single live proof reference is [PROOF.md](PROOF.md);
+- the proved direct next-prime theorem and GWR theorem, whose single live proof
+  reference is [PROOF.md](PROOF.md);
 - the reduced gap-type model and pattern results on the persistent reduced
   surface;
 - the PGS Prime Generator and downstream deterministic DNI-based
@@ -239,10 +244,12 @@ same normalization.
 
 The repository now carries the following named structures and results:
 
-- **Leftmost Minimum-Divisor Rule (GWR):** inside any prime gap with a nonempty
-  interior, the log-score argmax is exactly the leftmost integer with minimum
-  interior divisor count. This is the universal prime-gap maximizer theorem
-  proved in [PROOF.md](PROOF.md), the single live proof reference.
+- **Direct Deterministic Next-Prime Theorem and Leftmost Minimum-Divisor Rule
+  (GWR):** exact divisor counts determine the next prime from a known prime
+  `p`; inside any prime gap with a nonempty interior, the log-score argmax is
+  exactly the leftmost integer with minimum interior divisor count. These are
+  the universal theorems proved in [PROOF.md](PROOF.md), the single live proof
+  reference.
 - **Divisor Normalization Identity (DNI):** `Z(n) = n^(1 - d(n)/2)` is an
   exact arithmetic identity collapsing all primes to `Z = 1.0`.
 - **Gap-type catalog / reduced state surface:** the repository defines a
@@ -354,10 +361,12 @@ a prime gap collapses to a simpler arithmetic choice:
 That is the Leftmost Minimum-Divisor Rule.
 
 The theorem is proved in [PROOF.md](PROOF.md), the single live proof reference.
-That document states the theorem in ordinary mathematical vocabulary and proves
-that the selected integer is the unique maximizer of the comparison function
-inside every prime-gap interior. Its audit tables certify finite cases used by
-the proof and preserve provenance; they are not limits on the theorem.
+That document states the direct next-prime theorem and the selected-integer
+maximizer theorem in ordinary mathematical vocabulary. It proves that exact
+divisor counts determine the next prime from a known prime `p`, and that the
+selected integer is the unique maximizer of the comparison function inside
+every prime-gap interior. Its audit tables certify finite cases used by the
+proof and preserve provenance; they are not limits on the theorems.
 
 ## Exact Recursive Prime Walk
 
@@ -545,11 +554,12 @@ runtime exact DNI evaluation.
   $Z$ value inside a prime gap lands at edge-distance $2$ in $43.6006\%$ of
   gaps versus an exact within-gap baseline of $22.1859\%$, and is carried by a
   $d(n)=4$ composite in $82.9027\%$ of gaps versus a baseline of $20.1401\%$.
-- [PROOF.md](PROOF.md) sharpens that ridge picture into the current selected
-  integer theorem: the log-score maximizer is the arithmetic choice “minimize
-  interior divisor count, then take the leftmost integer.” The theorem is
-  universal under its stated hypotheses. The tested surfaces are certification
-  and provenance, not theorem boundaries.
+- [PROOF.md](PROOF.md) proves the direct deterministic next-prime theorem and
+  sharpens that ridge picture into the current selected integer theorem: the
+  log-score maximizer is the arithmetic choice “minimize interior divisor
+  count, then take the leftmost integer.” The theorems are universal under
+  their stated hypotheses. The tested surfaces are certification and
+  provenance, not theorem boundaries.
 - The dedicated closure study then strengthens the right-edge reading further:
   on the current documented even-band ladder through $10^{18}$, once the
   selected integer appears, no later strictly simpler composite is observed before the

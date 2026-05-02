@@ -1,39 +1,62 @@
 # Proof
 
-## Headline Result
+## Headline Theorem
 
-This repository has a direct deterministic next-prime algorithm: given a known
-prime `p`, it determines the next prime `q` by deterministic prime-gap
-structure.
+Given a known prime `p`, there is a direct deterministic next-prime algorithm:
+compute exact divisor counts for the integers greater than `p`, in increasing
+order, and stop at the first integer with exactly two positive divisors. That
+integer is the next prime `q`.
 
-The theorem proved in this document is the mathematical selection law at the
-core of that algorithm.
+For a positive integer `n`, let `tau(n)` be the number of positive divisors of
+`n`. The theorem defines `q` from `p` alone:
 
-Take two consecutive primes. Look at the composite integers strictly between
-them. Among those integers, choose the first one with the smallest number of
-positive divisors. That integer is the unique integer in the gap with the
-largest value of the logarithmic comparison function below.
+$$q=\min\{n>p:\tau(n)=2\}$$
 
-That selected integer is the stable interior point used by the deterministic
-`p -> q` algorithm. The proof below shows that this point is determined by
-ordinary divisor counts in every prime gap with a nonempty interior.
+This document first proves that this deterministic rule returns the next prime.
+It then proves the selected-integer theorem inside the interval produced by
+that rule: among the integers strictly between `p` and `q`, the first integer
+with the smallest divisor count is the unique maximizer of the logarithmic
+comparison function below.
 
-This is a universal statement about every prime gap with a nonempty interior.
-The computation tables in this document certify the finite cases used by the
-proof. They are not a limit on the theorem.
+Both statements are universal under their stated hypotheses. The computation
+tables in this document certify finite cases used by the proof; they are not
+limits on the theorem.
+
+## The Algorithm
+
+Input a known prime `p`.
+
+Check the integers `p + 1`, `p + 2`, `p + 3`, and so on, in increasing order.
+For each integer `n`, compute `tau(n)` exactly.
+
+Stop at the first integer `n` with `tau(n) = 2`. Output that integer as `q`.
+
+## Why The Algorithm Returns The Next Prime
+
+An integer `n > 1` is prime exactly when its only positive divisors are `1` and
+`n`. Therefore `tau(n) = 2` exactly when `n` is prime.
+
+There is always a prime greater than `p`. The set of primes greater than `p` is
+nonempty, so it has a least element. Call that least prime `q`.
+
+The algorithm checks integers greater than `p` in increasing order. It cannot
+stop before `q`, because any integer `n` with `p < n < q` is not prime and
+therefore has `tau(n) != 2`. It does stop at `q`, because `q` is prime and
+therefore has `tau(q) = 2`.
+
+Thus the algorithm determines the next prime after `p`.
 
 ## Basic Objects
 
-Two primes `p < q` are consecutive if there is no prime strictly between them.
-Every integer strictly between consecutive primes is composite.
+The algorithm has now produced the next prime `q` after `p`. Therefore `p` and
+`q` are consecutive primes, and every integer strictly between them is
+composite.
 
-For consecutive primes `p < q`, define the interval between them as
+Define the interval between them as
 
 $$I=\{p+1,\ldots,q-1\}$$
 
-For a positive integer `n`, let `tau(n)` be the number of positive divisors of
-`n`. For example, `tau(25) = 3` because the positive divisors of `25` are
-`1, 5, 25`.
+For example, `tau(25) = 3` because the positive divisors of `25` are `1, 5, 25`.
 
 Inside `I`, look for the smallest divisor count that occurs. Then choose the
 first integer in `I` with that divisor count. Call that integer `w`.
@@ -42,9 +65,10 @@ The comparison value used in this document is
 
 $$F(n)=\left(1-\frac{\tau(n)}{2}\right)\log n$$
 
-## Theorem
+## Interior Maximizer Theorem
 
-Let `p < q` be consecutive primes, and let
+Let `p` be a known prime, and let `q` be the integer returned by the
+deterministic algorithm above. Let
 
 $$I=\{p+1,\ldots,q-1\}$$
 
@@ -93,12 +117,13 @@ possible value of `tau(w)`.
 
 ## Divisor-Count Tail
 
-The interval has a natural stopping point. Since `q` is prime, `tau(q) = 2`.
-Since there is no prime strictly between `p` and `q`, every integer `n` with
-`p < n < q` has `tau(n) > 2`.
+The interval has a natural stopping point produced by the algorithm. The
+algorithm stops at the first integer after `p` with divisor count `2`, and that
+integer is `q`. Therefore every integer `n` with `p < n < q` has
+`tau(n) > 2`.
 
-So the first integer after `p` with divisor count `2` is `q`, and the interval
-being studied is exactly the finite set before that first value:
+The interval being studied is exactly the finite set before that first
+divisor-count-two value:
 
 $$I=\{p+1,\ldots,q-1\}$$
 
@@ -119,8 +144,8 @@ a `t` existed, then the minimum divisor count in `I` would be smaller than
 `tau(w)`, contradicting the definition of `w`.
 
 There also cannot be any competing integer after `q` in the same interval. The
-value `q` has divisor count `2`, so the interval has ended. Integers after `q`
-belong to later intervals, not to `I`.
+algorithm has already stopped at `q`, so the interval has ended. Integers after
+`q` belong to later intervals, not to `I`.
 
 This closes the right-side divisor-count tail for every possible value of
 `tau(w)`. No upper bound on `tau(w)` is needed for this tail argument.
@@ -310,6 +335,11 @@ Thus every earlier integer has `F(k) < F(w)`.
 
 ## Conclusion
 
+Given a known prime `p`, the algorithm computes exact divisor counts in
+increasing order after `p` and stops at the first integer with divisor count
+`2`. Since `tau(n) = 2` exactly characterizes primes, that stopping point is the
+next prime `q`.
+
 Every integer before `w` has smaller comparison value than `w`.
 
 Every integer after `w` has smaller comparison value than `w`.
@@ -319,9 +349,9 @@ largest.
 
 ## Audit Tables
 
-The theorem above is universal. The tables below are retained for
+The theorems above are universal. The tables below are retained for
 certification and reproducibility. They support the finite base used in the
-proof; they are not the boundary of the theorem.
+maximizer proof; they are not the boundary of either theorem.
 
 | Left-prime range | Prime gaps checked | Earlier integers checked | Exact competing integers |
 |---:|---:|---:|---:|
@@ -337,5 +367,5 @@ earlier integers, with `0` unresolved cases. Its median offset was `1`, its
 
 ## Document Status
 
-`PROOF.md` is the single live proof reference for the prime-gap maximizer
-theorem.
+`PROOF.md` is the single live proof reference for the direct deterministic
+next-prime theorem and the prime-gap maximizer theorem.
