@@ -6,11 +6,9 @@
 
 The `chain_horizon_closure` function is the only component of the Minimal PGS Generator that still relies on deterministic divisor checking.  At the highest probed scales (10¹⁵ and 10¹⁸), about **56–58 %** of the outputted primes pass through this non‑PGS bridge.  The missing mathematical object is a **divisor‑horizon predictor**
 
-\[
-H(p, s_0, \text{chain\_state})
-\]
+$$H(p, s_0, \text{chain\_state})$$
 
-that can close all false semiprime‑shadow chain nodes *before* the true next prime, using only quantities that are already visible inside the PGS search interval.  If such an \(H\) exists and is provably much smaller than \(\sqrt{q}\), the entire high‑scale output becomes a pure PGS selection.
+that can close all false semiprime‑shadow chain nodes *before* the true next prime, using only quantities that are already visible inside the PGS search interval.  If such an $H$ exists and is provably much smaller than $\sqrt{q}$, the entire high‑scale output becomes a pure PGS selection.
 
 This report evaluates six proposed answers to the question *“Can `chain_horizon_closure` be turned into a pure PGS next-prime selection rule?”*, simulates the critical least-factor maximum experiment, and recommends a concrete path forward.
 
@@ -27,7 +25,7 @@ The operational shape is already correct:
 3. **Chain‑horizon closure** closes false chain nodes.
 4. **Downstream audit** confirms zero failures on all tested surfaces.
 
-However, the terminal decision inside `chain_horizon_closure_result` still calls `divisor_witness(candidate, horizon_bound)` with `horizon_bound=None`, which triggers a full trial division up to \(\sqrt{q}\).  This is the non‑PGS portion that must be replaced.
+However, the terminal decision inside `chain_horizon_closure_result` still calls `divisor_witness(candidate, horizon_bound)` with `horizon_bound=None`, which triggers a full trial division up to $\sqrt{q}$.  This is the non‑PGS portion that must be replaced.
 
 ---
 
@@ -66,18 +64,18 @@ However, the terminal decision inside `chain_horizon_closure_result` still calls
 
 - Points to concrete, existing mining scripts that can be extended with minimal effort.
 - Emphasises that the fixed `candidate_bound=128` and the small `visible_divisor_bound` already close most structure, implying that a PGS‑visible horizon is plausible.
-- Provides a clear path: add a `max_spf` collector, histogram the result, and fit a closed‑form \(H\).
+- Provides a clear path: add a `max_spf` collector, histogram the result, and fit a closed‑form $H$.
 
 **Weaknesses:**
 
 - Overly optimistic about the current state of the mining scripts—none of them yet output the exact `max_spf` statistic.
-- Does not propose a specific functional form for \(H\); the suggested `H = 2 × max_chain_gap + residue_dependent_constant` is vague.
+- Does not propose a specific functional form for $H$; the suggested `H = 2 × max_chain_gap + residue_dependent_constant` is vague.
 
 **Simulated experiment:**  Running the proposed extension on the existing probe logs would produce a histogram of `max_spf` values.  Based on the generator’s operational behaviour, we would expect:
 
 - The 99.9 % ile of `max_spf` to be **well under 200**.
 - A clear upper envelope determined by the wheel‑open residue class and the attractor state.
-- No dependence on \(\sqrt{q}\) beyond the trivial fact that \(q\) grows with scale.
+- No dependence on $\sqrt{q}$ beyond the trivial fact that $q$ grows with scale.
 
 **Conclusion:**  This answer is **operationally the closest to a ready‑to‑run experiment**.  It should be executed first, but it needs to be combined with a more rigorous hypothesis‑testing framework.
 
@@ -96,7 +94,7 @@ However, the terminal decision inside `chain_horizon_closure_result` still calls
 
 - No new hypothesis; essentially a paraphrase of the question.
 - Does not leverage the repository’s existing mining infrastructure.
-- Offers no concrete candidate for \(H\).
+- Offers no concrete candidate for $H$.
 
 **Simulated experiment:**  The proposed data‑collection exercise would generate a CSV of false‑node least factors.  Without a specific functional form to test, the analysis would reduce to a descriptive statistics exercise, which the more specific answers already cover.
 
@@ -186,23 +184,21 @@ Because direct code execution is not possible in this environment, the following
 ### 4.1 Experimental Design
 
 1. **Data source:** The `chain_horizon_closure_witnesses` already recorded by `chain_horizon_closure_result`.  For every chain that passes through the fallback, we have:
-    - the input prime \(p\),
-    - the seed offset \(s_0\),
+    - the input prime $p$,
+    - the seed offset $s_0$,
     - the list of closed candidates and their divisor witnesses,
-    - the final remaining candidate \(q\).
+    - the final remaining candidate $q$.
 
-2. **Feature extraction:** For each false node \(n\):
+2. **Feature extraction:** For each false node $n$:
     - Compute `lpf(n)` = the witness stored in `closure_witnesses` (which is the smallest prime factor found by `divisor_witness`).
-    - Compute PGS‑visible features: wheel‑residue of \(n\), offset from seed, chain position, gap to previous node, attractor state (o2/o4/o6), current `visible_divisor_bound`, and search-interval width.
+    - Compute PGS‑visible features: wheel‑residue of $n$, offset from seed, chain position, gap to previous node, attractor state (o2/o4/o6), current `visible_divisor_bound`, and search-interval width.
 
 3. **Maximum least-factor calculation:** For each chain,
-   \[
-   \text{max\_lpf} = \max\{\, \text{lpf}(n) \mid n \text{ is a false node}\,\}.
-   \]
+   $$\text{max\_lpf} = \max\{\, \text{lpf}(n) \mid n \text{ is a false node}\,\}.$$
 
 4. **Hypothesis tests:**
-    - **Null (falsifying):** `max_lpf` grows proportionally to \(\sqrt{q}\).
-    - **PGS‑confirming:** `max_lpf` is bounded above by a function of PGS‑visible quantities that is independent of \(\sqrt{q}\).
+    - **Null (falsifying):** `max_lpf` grows proportionally to $\sqrt{q}$.
+    - **PGS‑confirming:** `max_lpf` is bounded above by a function of PGS‑visible quantities that is independent of $\sqrt{q}$.
 
    Concrete candidate functions (from ChatGPT‑5):
     - `H0 = 10,000` (current visible bound).
@@ -215,7 +211,7 @@ Because direct code execution is not possible in this environment, the following
 
 ### 4.2 Expected Results (Based on Code Analysis)
 
-| Scale | Chains analysed | Expected max\_lpf (99.9 %ile) | \(\sqrt{q}\) (typical) | Verdict |
+| Scale | Chains analysed | Expected max\_lpf (99.9 %ile) | $\sqrt{q}$ (typical) | Verdict |
 |-------|-----------------|-------------------------------|------------------------|---------|
 | 10¹²  | ~256            | ≤ 150                         | 10⁶                    | Confirming |
 | 10¹⁵  | ~249            | ≤ 200                         | 3.2 × 10⁷              | Confirming |
@@ -263,7 +259,7 @@ If these numbers hold, **any** of the candidate horizon functions (H₁ through 
     - Test each of the six candidate horizon laws (H₀–H₆) for:
         - 100 % closure of pre‑terminal false nodes.
         - Correct selection of the first surviving terminal node.
-        - Horizon magnitude relative to \(\sqrt{n}\).
+        - Horizon magnitude relative to $\sqrt{n}$.
 
 2. **Run the Meta‑AI null‑hypothesis test** on the same data: regress `log(max_lpf)` against `log(q)` and against `log(wheel_bound)`.  A slope near 1 for `log(q)` would falsify; a slope near 0 for `wheel_bound` would confirm.
 
@@ -277,11 +273,9 @@ If these numbers hold, **any** of the candidate horizon functions (H₁ through 
 
 If the simulated experiment is confirmed, the winning horizon law will take the form:
 
-\[
-H(p, s_0, \text{chain\_state}) = \max\Bigl(\text{visible\_divisor\_bound},\; \text{visible\_divisor\_bound} + k \cdot \text{max\_chain\_gap}\Bigr)
-\]
+$$H(p, s_0, \text{chain\_state}) = \max\Bigl(\text{visible\_divisor\_bound},\; \text{visible\_divisor\_bound} + k \cdot \text{max\_chain\_gap}\Bigr)$$
 
-with \(k \in \{1, 2\}\).  This expression is **entirely PGS‑visible**: the `visible_divisor_bound` is a fixed constant (10,000), and the `max_chain_gap` is computed from the wheel‑open offsets already in the search interval.  Substituting this \(H\) for `horizon_bound=None` in `chain_horizon_closure_result` would convert the current 56–58 % non‑PGS bridge into **100 % PGS‑derived output** at all scales.
+with $k \in \{1, 2\}$.  This expression is **entirely PGS‑visible**: the `visible_divisor_bound` is a fixed constant (10,000), and the `max_chain_gap` is computed from the wheel‑open offsets already in the search interval.  Substituting this $H$ for `horizon_bound=None` in `chain_horizon_closure_result` would convert the current 56–58 % non‑PGS bridge into **100 % PGS‑derived output** at all scales.
 
 ---
 

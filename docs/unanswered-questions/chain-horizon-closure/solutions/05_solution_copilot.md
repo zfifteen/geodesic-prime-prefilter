@@ -1,7 +1,7 @@
 **Recommendation — Run the least-factor maximum mining experiment now and use its empirical maxima to accept or reject each LLM proposal; do not change `chain_horizon_closure` until that data is in hand.**
 
 ### Quick verdict (1–2 sentences)
-**The single decisive step is an empirical least-factor maximum sweep** (stratified by input prime/gap type, scales \(10^{12}\!-\!10^{18}\)) that records the *maximum* least factor among false chain nodes per input prime. If that maximum admits a PGS‑visible bound \(\ll\sqrt{q}\), implement the corresponding `H(p,s0,chain_state)`; otherwise accept that deterministic divisor exhaustion is necessary.
+**The single decisive step is an empirical least-factor maximum sweep** (stratified by input prime/gap type, scales $10^{12}\!-\!10^{18}$) that records the *maximum* least factor among false chain nodes per input prime. If that maximum admits a PGS‑visible bound $\ll\sqrt{q}$, implement the corresponding `H(p,s0,chain_state)`; otherwise accept that deterministic divisor exhaustion is necessary.
 
 ---
 
@@ -21,8 +21,8 @@
 ### For each answer: experiment to run and expected decisive observation
 
 1. **Meta AI (01)**
-    - **Experiment:** Full least-factor maximum sweep (pilot 10k input primes at \(10^{15}\)).
-    - **Decision rule:** If maximum observed least factor \( \le H_{\text{meta}}(p,s_0,\ldots)\) for all samples → accept.
+    - **Experiment:** Full least-factor maximum sweep (pilot 10k input primes at $10^{15}$).
+    - **Decision rule:** If maximum observed least factor $ \le H_{\text{meta}}(p,s_0,\ldots)$ for all samples → accept.
     - **What to capture:** per‑input prime max least factor, stage where factor found (trial bound B).
 
 2. **Grok residue hypothesis (02)**
@@ -30,8 +30,8 @@
     - **Decisive sign:** maximum observed least factor explained by wheel primes only.
 
 3. **DeepSeek statistical fit (03)**
-    - **Experiment:** Fit least-factor tail to candidate forms: polylog, power law, \(C(\log q)^k\).
-    - **Decisive sign:** fitted bound \( \ll \sqrt{q}\) with negligible false negatives.
+    - **Experiment:** Fit least-factor tail to candidate forms: polylog, power law, $C(\log q)^k$.
+    - **Decisive sign:** fitted bound $ \ll \sqrt{q}$ with negligible false negatives.
 
 4. **Copilot instrumentation (04)**
     - **Experiment:** Implement collector module and run pilot.
@@ -39,7 +39,7 @@
 
 5. **ChatGPT theorem attempt (05)**
     - **Experiment:** Attempt to prove small bound from divisor algebra on sampled counterexamples.
-    - **Decisive sign:** existence of counterexamples with least factor \(\sim\sqrt{q}\) falsifies.
+    - **Decisive sign:** existence of counterexamples with least factor $\sim\sqrt{q}$ falsifies.
 
 6. **xAI hybrid (06)**
     - **Experiment:** Build composite invariant (input prime size, seed residues, gap vector) and test deterministic bound.
@@ -49,7 +49,7 @@
 
 ### Concrete experimental protocol (implementation checklist)
 - **Collector**: hook into `chain_horizon_closure` probe mode; log NDJSON with fields: `p,q,s0,chain_gaps,residues,n,least_factor,found_stage`.
-- **Trial bounds**: Stage A trial up to \(B=2^{20}\); Stage B wheel‑sieved up to wheel max; mark `horizon > B` if not found.
+- **Trial bounds**: Stage A trial up to $B=2^{20}$; Stage B wheel‑sieved up to wheel max; mark `horizon > B` if not found.
 - **Sampling**: stratify by gap type (o2,o4,o6), collect ≥10k input primes per scale.
 - **Analysis**: compute per‑input prime maximum observed least factor, empirical CDF, fit candidate `H` forms, compute false‑negative rate.
 - **Decision thresholds**: require **zero** false negatives for acceptance as deterministic `H` (or vanishing rate with provable tail control).
@@ -57,6 +57,6 @@
 ---
 
 ### Risks, limitations, and next steps
-- **Risk:** Pilot may show rare extreme input primes with least factor \(\sim\sqrt{q}\); that falsifies compressibility at `candidate_bound=128`.
+- **Risk:** Pilot may show rare extreme input primes with least factor $\sim\sqrt{q}$; that falsifies compressibility at `candidate_bound=128`.
 - **Mitigation:** If rare extremes exist, consider raising `candidate_bound` or accept hybrid fallback.
 - **Next step (practical):** I will produce the **collector skeleton** and the **analysis notebook** patches you can drop into the repo; start with the collector so you can run the pilot immediately.
