@@ -36,13 +36,13 @@ Now take `89` and `97`. The interior integers are
 Here the smallest divisor count present is `4`, and the leftmost integer with
 that divisor count is `91`, so `91` wins.
 
-These examples show the local arithmetic choice that input primes the repository.
+These examples show the local arithmetic choice that anchors the repository.
 
 ## Three Headline Results
 
-- **Leftmost Minimum-Divisor Rule (GWR):** on the repository's current proof surface, the
-  implemented divisor-normalization score picks exactly the leftmost interior
-  integer with minimum divisor count in every prime gap.
+- **Leftmost Minimum-Divisor Rule (GWR):** as proved in [PROOF.md](PROOF.md),
+  the divisor-normalization score picks exactly the leftmost interior integer
+  with minimum divisor count in every prime gap with a nonempty interior.
 - **Prime Gap Generative Model v1.0:** on the persistent reduced gap-type
   surface, prime-gap types close to a frozen hierarchical finite-state model
   with a stable `14`-state core.
@@ -239,10 +239,10 @@ same normalization.
 
 The repository now carries the following named structures and results:
 
-- **Leftmost Minimum-Divisor Rule (GWR):** inside any prime gap, the log-score argmax is
-  exactly the leftmost integer with minimum interior divisor count. On the
-  repository's current proof surface, this is a proved universal prime-gap
-  maximizer theorem. The single live proof reference is [PROOF.md](PROOF.md).
+- **Leftmost Minimum-Divisor Rule (GWR):** inside any prime gap with a nonempty
+  interior, the log-score argmax is exactly the leftmost integer with minimum
+  interior divisor count. This is the universal prime-gap maximizer theorem
+  proved in [PROOF.md](PROOF.md), the single live proof reference.
 - **Divisor Normalization Identity (DNI):** `Z(n) = n^(1 - d(n)/2)` is an
   exact arithmetic identity collapsing all primes to `Z = 1.0`.
 - **Gap-type catalog / reduced state surface:** the repository defines a
@@ -343,7 +343,7 @@ This fixed-point collapse is the mathematical base of the repository. It is
 the invariant behind both the prime-gap theorem and the downstream
 deterministic filter.
 
-## GWR Proof Surface
+## GWR Proof
 
 The central maximizer rule in this repository is that the log-score argmax inside
 a prime gap collapses to a simpler arithmetic choice:
@@ -353,15 +353,11 @@ a prime gap collapses to a simpler arithmetic choice:
 
 That is the Leftmost Minimum-Divisor Rule.
 
-The formal theorem file expresses this as a hierarchical local-dominator law.
-The proof is closed on the repository's current proof surface: ordered
-dominance closes the later side, the local admissibility theorem closes the
-earlier side, the residual-class closure artifacts discharge the former
-low-class remainder, and the exact no-early-counterexample audits through
-$p < 5 \times 10^9$ plus the square-adjacent stress surface at $10^{12}$
-remain clean.
-
-See the single live proof reference in [PROOF.md](PROOF.md).
+The theorem is proved in [PROOF.md](PROOF.md), the single live proof reference.
+That document states the theorem in ordinary mathematical vocabulary and proves
+that the selected integer is the unique maximizer of the comparison function
+inside every prime-gap interior. Its audit tables certify finite cases used by
+the proof and preserve provenance; they are not limits on the theorem.
 
 ## Exact Recursive Prime Walk
 
@@ -441,8 +437,8 @@ deterministic even-band ladder at every decade from $10^8$ through $10^{18}$
 with zero observed violations.
 
 See
+[PROOF.md](PROOF.md),
 [gwr/findings/closure_constraint_findings.md](gwr/findings/closure_constraint_findings.md),
-[gwr/findings/claim_hierarchy.md](gwr/findings/claim_hierarchy.md),
 and
 [docs/current_headline_results.md](docs/current_headline_results.md).
 
@@ -459,7 +455,7 @@ prime-cube exception family survives inside the broader `d=4` class.
 See
 [gwr/findings/dominant_d4_arrival_reduction_findings.md](gwr/findings/dominant_d4_arrival_reduction_findings.md)
 and
-[gwr/findings/claim_hierarchy.md](gwr/findings/claim_hierarchy.md).
+[docs/current_headline_results.md](docs/current_headline_results.md).
 
 ## Deterministic Filter Performance
 
@@ -549,19 +545,18 @@ runtime exact DNI evaluation.
   $Z$ value inside a prime gap lands at edge-distance $2$ in $43.6006\%$ of
   gaps versus an exact within-gap baseline of $22.1859\%$, and is carried by a
   $d(n)=4$ composite in $82.9027\%$ of gaps versus a baseline of $20.1401\%$.
-- Later repository notes sharpen that ridge picture into the current selected integer
-  theorem: GWR says the implemented log-score maximizer is the arithmetic choice
-  “minimize interior divisor count, then take the leftmost integer,” and the
-  current proof route reduces the remaining earlier-side burden to a finite
-  local admissibility closure. The tested surfaces
-  remain the finite base, stress surface, and audit record for that proof chain.
+- [PROOF.md](PROOF.md) sharpens that ridge picture into the current selected
+  integer theorem: the log-score maximizer is the arithmetic choice “minimize
+  interior divisor count, then take the leftmost integer.” The theorem is
+  universal under its stated hypotheses. The tested surfaces are certification
+  and provenance, not theorem boundaries.
 - The dedicated closure study then strengthens the right-edge reading further:
   on the current documented even-band ladder through $10^{18}$, once the
   selected integer appears, no later strictly simpler composite is observed before the
   next prime closes the gap.
 
 See [docs/gap_ridge/raw_composite_z_gap_edge.md](docs/gap_ridge/raw_composite_z_gap_edge.md),
-[gwr/findings/gap_winner_rule.md](gwr/findings/gap_winner_rule.md), and
+[PROOF.md](PROOF.md), and
 [gwr/findings/closure_constraint_findings.md](gwr/findings/closure_constraint_findings.md).
 
 See [docs/prefilter/benchmarks.md](docs/prefilter/benchmarks.md) for the curated benchmark summary and [docs/prefilter/manual_validation.md](docs/prefilter/manual_validation.md) for the exact reproduction commands.

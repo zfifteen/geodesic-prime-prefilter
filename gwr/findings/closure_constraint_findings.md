@@ -168,10 +168,9 @@ square, so this measured closure surface reduces to comparing:
 
 That makes the $d=4$ case a concrete analytic observable on the tested surface.
 What this note adds is margin data, not a competing proof-status claim. The
-repo's proof-facing status remains the closed `GWR` surface summarized in
-`GWR_PROOF.md` and `claim_hierarchy.md`. What the present measurements show is
-that the $d=4$ margins stay positive and large on every tested regime,
-including the even-band ladder through $10^{18}$.
+repo's proof-facing status is controlled by [../../PROOF.md](../../PROOF.md).
+What the present measurements show is that the $d=4$ margins stay positive and
+large on every tested regime, including the even-band ladder through $10^{18}$.
 
 ## Scope
 

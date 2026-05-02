@@ -26,14 +26,12 @@ This note combines two kinds of evidence.
 
 The repo already documents:
 
-- the canonical `GWR` statement in
-  [`gap_winner_rule.md`](./gap_winner_rule.md),
+- the canonical `GWR` theorem in
+  [../../PROOF.md](../../PROOF.md),
 - the closure surface in
   [`closure_constraint_findings.md`](./closure_constraint_findings.md),
-- the dominant `d=4` reduction in
-  [`dominant_d4_arrival_reduction_findings.md`](./dominant_d4_arrival_reduction_findings.md),
-- and the current claim structure in
-  [`claim_hierarchy.md`](./claim_hierarchy.md).
+- and the dominant `d=4` reduction in
+  [`dominant_d4_arrival_reduction_findings.md`](./dominant_d4_arrival_reduction_findings.md).
 
 ### New session probe surface
 

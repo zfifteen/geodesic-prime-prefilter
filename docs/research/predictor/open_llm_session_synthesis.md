@@ -1,6 +1,7 @@
 # Open LLM Session Synthesis
 
-Source: [open_llm_session_responses.md](open_llm_session_responses.md)
+Source: open LLM session responses synthesized before the raw response log was
+removed from the live documentation tree.
 
 Synthesized: 2026-04-29
 
@@ -126,7 +127,8 @@ The repository-facing interpretation is:
 
 That framing avoids underselling the result while preserving the distinction
 between a context-free closed expression, the local PGS generator contract, the
-audited empirical surface, and the remaining proof questions.
+audited empirical surface, and proof questions outside the `PROOF.md`
+maximizer theorem.
 
 ## Research Implications
 

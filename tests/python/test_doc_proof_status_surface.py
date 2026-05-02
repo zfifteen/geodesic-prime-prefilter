@@ -7,12 +7,11 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
-DEPRECATED_DIR = ROOT / "docs" / "deprecated"
 
 
-def is_deprecated(path: Path) -> bool:
-    """Return whether a path is inside the deprecated document tree."""
-    return DEPRECATED_DIR in path.parents or path == DEPRECATED_DIR
+def live_markdown_paths() -> list[Path]:
+    """Return Markdown files in deterministic order."""
+    return sorted(ROOT.rglob("*.md"))
 
 
 def test_root_proof_document_is_the_live_reference():
@@ -20,20 +19,26 @@ def test_root_proof_document_is_the_live_reference():
     proof = ROOT / "PROOF.md"
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+    headline = (ROOT / "docs" / "current_headline_results.md").read_text(encoding="utf-8")
 
     assert proof.exists()
     assert "single live proof reference is [PROOF.md](PROOF.md)" in readme
     assert "The single live proof reference is `PROOF.md`" in agents
+    assert "The single live proof reference is [../PROOF.md](../PROOF.md)" in headline
+    assert "PROOF.md` controls theorem status" in agents
 
 
-def test_old_proof_marked_markdown_is_deprecated():
+def test_deprecated_document_tree_is_removed():
+    """The repository should not retain a deprecated proof-document tree."""
+    assert not (ROOT / "docs" / "deprecated").exists()
+
+
+def test_old_proof_marked_markdown_is_removed_from_live_docs():
     """Proof/theorem/lemma-marked markdown files should not remain live."""
     offenders: list[str] = []
     markers = ("proof", "theorem", "lemma")
 
     for path in ROOT.rglob("*.md"):
-        if is_deprecated(path):
-            continue
         if path == ROOT / "PROOF.md":
             continue
         relative_parts = path.relative_to(ROOT).parts
@@ -101,15 +106,21 @@ def test_root_proof_has_no_hidden_external_proof_dependencies():
 def test_root_proof_preserves_universal_status():
     """The root proof should not downgrade the theorem to a finite check."""
     text = (ROOT / "PROOF.md").read_text(encoding="utf-8")
+    normalized_text = re.sub(r"\s+", " ", text)
     required_phrases = [
+        "## Headline Result",
+        "This repository has a direct deterministic next-prime algorithm",
+        "The theorem proved in this document is the mathematical selection law at the core of that algorithm.",
         "This is a universal statement about every prime gap with a nonempty interior.",
         "The theorem above is universal.",
+        "That selected integer is the stable interior point used by the deterministic `p -> q` algorithm.",
     ]
     banned_phrases = [
         "The all-scale proof for earlier integers in every prime gap is still open.",
         "finite checked fact",
         "finite checked theorem",
         "What remains open is a short proof",
+        "It is not a direct next-prime inference theorem.",
         "likely true",
         "conjectural",
         "merely empirical",
@@ -119,7 +130,7 @@ def test_root_proof_preserves_universal_status():
         r"all-scale.*open",
     ]
 
-    missing = [phrase for phrase in required_phrases if phrase not in text]
+    missing = [phrase for phrase in required_phrases if phrase not in normalized_text]
     offenders = [phrase for phrase in banned_phrases if phrase in text]
     pattern_offenders = [pattern for pattern in banned_patterns if re.search(pattern, text, re.IGNORECASE)]
 
@@ -147,3 +158,59 @@ def test_root_proof_contains_standalone_threshold_classification():
     missing = [phrase for phrase in required_phrases if phrase not in normalized_text]
 
     assert not missing, "stand-alone threshold classification missing: " + ", ".join(missing)
+
+
+def test_live_markdown_has_no_stale_proof_status_language():
+    """Live docs should not contradict the root proof status."""
+    banned_literals = [
+        "GWR_PROOF.md",
+        "current proof surface",
+        "hierarchical local-dominator",
+        "local admissibility theorem",
+        "finite checked theorem",
+        "finite checked fact",
+        "not a direct next-prime inference theorem",
+        "not itself a direct next-prime inference theorem",
+        "does not establish a method to infer `q` from `p`",
+        "does not establish a method to infer q from p",
+        "not a direct next-prime law",
+        "likely true",
+        "merely empirical",
+        "offset 128",
+    ]
+    banned_patterns = [
+        re.compile(r"all-scale.*open", re.IGNORECASE),
+        re.compile(r"no-early-counterexample.*proof chain", re.IGNORECASE),
+        re.compile(r"not .*proof for all prime gaps", re.IGNORECASE),
+        re.compile(r"empirical .*rather than .*proof", re.IGNORECASE),
+    ]
+    offenders: list[str] = []
+
+    for path in live_markdown_paths():
+        text = path.read_text(encoding="utf-8")
+        for phrase in banned_literals:
+            if phrase in text:
+                offenders.append(f"{path.relative_to(ROOT)}: {phrase}")
+        for pattern in banned_patterns:
+            if pattern.search(text):
+                offenders.append(f"{path.relative_to(ROOT)}: /{pattern.pattern}/")
+
+    assert not offenders, "stale proof-status language found:\n" + "\n".join(offenders)
+
+
+def test_live_markdown_points_current_theorem_to_root_proof():
+    """High-level docs should reinforce PROOF.md as definitive."""
+    required_paths = [
+        ROOT / "README.md",
+        ROOT / "AGENTS.md",
+        ROOT / "docs" / "current_headline_results.md",
+        ROOT / "gwr" / "README.md",
+    ]
+
+    missing = [
+        str(path.relative_to(ROOT))
+        for path in required_paths
+        if "PROOF.md" not in path.read_text(encoding="utf-8")
+    ]
+
+    assert not missing, "high-level docs missing PROOF.md reference:\n" + "\n".join(missing)

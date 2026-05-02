@@ -26,15 +26,17 @@ Any gap where the raw-$Z$ argmax differs from that selected integer is a counter
 
 ## Current Headline Status
 
-`GWR` is proved and closed on the repository's current proof surface.
+`GWR` is the repository name for the prime-gap maximizer theorem proved in
+[../PROOF.md](../PROOF.md).
 
-The public proof-facing summary is:
+`PROOF.md` is the single live proof reference. It proves that the selected
+integer is the unique maximizer inside every prime-gap interior. Audit tables
+certify finite cases and preserve provenance; they do not limit the theorem.
 
-- [../GWR_PROOF.md](../GWR_PROOF.md)
+The public proof-facing summaries are:
+
+- [../PROOF.md](../PROOF.md)
 - [../docs/current_headline_results.md](../docs/current_headline_results.md)
-
-The live earlier-side route is the local admissibility program plus residual
-class closure and exact no-early-counterexample audit.
 
 Bridge-era BHP/Robin notes and verification scripts are retained under
 [`experiments/proof/`](./experiments/proof/README.md) as historical comparison
@@ -50,7 +52,7 @@ presented in the repo headline files.
 - [`literature/`](./literature/README.md): Novelty search notes and external
   positioning.
 
-## Current Source Of Truth
+## Current Validation Surface
 
 The historical executable validation path remains in the existing near-endpoint raw-Z peak
 code:

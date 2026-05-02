@@ -261,7 +261,16 @@ That is the mathematically derived DNI, an exact prime-gap score-function result
 
 # Limits and Scope
 
-The current note is strong on the tested Python regime. The DNI is exact, and the executable exact divisor-count path has now been upgraded to support $10^{18}$-class interval analysis in code, but the committed finite interval regimes for the raw composite score values studies still stop where the artifact surface has actually been run and recorded. The production prefilter rejects only when one of the gated prime tables finds a concrete factor. The configured band ladder now extends through $10^{18}$, which is the project proof bar, but the near-endpoint raw-Z peak findings remain empirical repository results on the committed execution surface rather than proofs for every possible prime gap. The validated implementation surface is Python. Java and Apple-Silicon C ports are planned in the repo architecture but are not yet parity-complete. The benchmark settings do not exhaust the performance envelope across all bit sizes, machines, or table configurations.
+The current note is strong on the tested Python regime. The DNI is exact, and
+the live prime-gap maximizer theorem is proved in `PROOF.md`. The committed raw
+composite score-value distribution studies still stop where their artifact
+surface has actually been run and recorded; those distribution percentages are
+measurements, not additional theorem statements. The production prefilter
+rejects only when one of the gated prime tables finds a concrete factor. The
+validated implementation surface is Python. Java and Apple-Silicon C ports are
+planned in the repo architecture but are not yet parity-complete. The benchmark
+settings do not exhaust the performance envelope across all bit sizes, machines,
+or table configurations.
 
 # Practical Interpretation
 

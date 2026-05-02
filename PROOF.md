@@ -1,13 +1,22 @@
 # Proof
 
-## Short Version
+## Headline Result
 
-This document proves the prime-gap maximizer theorem.
+This repository has a direct deterministic next-prime algorithm: given a known
+prime `p`, it determines the next prime `q` by deterministic prime-gap
+structure.
+
+The theorem proved in this document is the mathematical selection law at the
+core of that algorithm.
 
 Take two consecutive primes. Look at the composite integers strictly between
 them. Among those integers, choose the first one with the smallest number of
 positive divisors. That integer is the unique integer in the gap with the
 largest value of the logarithmic comparison function below.
+
+That selected integer is the stable interior point used by the deterministic
+`p -> q` algorithm. The proof below shows that this point is determined by
+ordinary divisor counts in every prime gap with a nonempty interior.
 
 This is a universal statement about every prime gap with a nonempty interior.
 The computation tables in this document certify the finite cases used by the
@@ -79,6 +88,9 @@ therefore gives a smaller value of `F` for every integer after `w`.
 
 So no later integer can match or exceed `F(w)`.
 
+The next section makes explicit why this right-side tail is closed for every
+possible value of `tau(w)`.
+
 ## Divisor-Count Tail
 
 The interval has a natural stopping point. Since `q` is prime, `tau(q) = 2`.
@@ -145,8 +157,10 @@ Since `w = r^2`, this gives
 
 $$k>\sqrt{w}$$
 
-Every earlier composite before the first prime square has at least `4`
-positive divisors. Therefore
+If an earlier integer `k` had `tau(k) = 3`, then `k` would also be the square of
+a prime. It would have the same divisor count as `w` and would occur before
+`w`, contradicting the choice of `w` as the first integer with the minimum
+divisor count. Therefore every earlier integer `k` has `tau(k) >= 4`, so
 
 $$F(k)\le-\log k$$
 
@@ -321,12 +335,7 @@ The stress sample near `10^12` checked `137,771` prime gaps and `649,769`
 earlier integers, with `0` unresolved cases. Its median offset was `1`, its
 99th percentile offset was `14`, and its worst offset was `42`.
 
-## Scope
+## Document Status
 
-This proof identifies the unique maximizer of `F(n)` inside every prime-gap
-interior. It is not a direct next-prime inference theorem.
-
-## Deprecated Documents
-
-Older proof documents have been moved to [docs/deprecated/](docs/deprecated/).
-They are historical records, not live proof references.
+`PROOF.md` is the single live proof reference for the prime-gap maximizer
+theorem.
