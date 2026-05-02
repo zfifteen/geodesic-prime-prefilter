@@ -28,8 +28,7 @@ That produced `78,497` nonempty gaps.
 
 On that exact surface:
 
-- `168 / 168` square-present gaps had
-  $$\text{selected-integer offset} = \text{first interior prime-square offset};$$
+- `168 / 168` square-present gaps had $\text{selected-integer offset} = \text{first interior prime-square offset};$
 - every one of those square-present selected integers had divisor class `d=3`;
 - the square branch selected integer-offset distribution had median `6`, `p90 = 18`,
   `p99 = 38`, and maximum `48`;

@@ -114,4 +114,4 @@ If $H_{\text{obs}}$ tracks $\sqrt{q}$ with no tighter PGS envelope, then the sem
 
 ---
 
-If you can export the chain logs from your $10^{15}$ and $10^{18}$ probes (even just the tuples $p, s_0\_type, \text{lpf max}$), I will run the least-factor mine and plot $H_{\text{obs}}$ vs $\sqrt{q}$ vs $C(q)$ vs wheel_bound for you. That plot is the decision point for whether $H$ is derivable from PGS structure.
+If you can export the chain logs from your $10^{15}$ and $10^{18}$ probes (even just the tuples $p$, `s0_type`, and $\text{lpf max}$), I will run the least-factor mine and plot $H_{\text{obs}}$ vs $\sqrt{q}$ vs $C(q)$ vs wheel_bound for you. That plot is the decision point for whether $H$ is derivable from PGS structure.
