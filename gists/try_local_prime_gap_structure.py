@@ -30,7 +30,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 
-OUTPUT_DIR = Path("prime_gap_try_it_yourself_plots")
+OUTPUT_DIR = Path("plots")
 UINT64_LIMIT = 2**64  # Highest integer range covered by the deterministic check.
 OPEN_RESIDUES_MOD_30 = frozenset({1, 7, 11, 13, 17, 19, 23, 29})
 
