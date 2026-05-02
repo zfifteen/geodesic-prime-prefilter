@@ -17,21 +17,15 @@ defined by consecutive primes.
 
 Let $(p, q)$ be a prime gap with interior integers
 
-$$
-p + 1,\; p + 2,\; \ldots,\; q - 1.
-$$
+$$p + 1,\; p + 2,\; \ldots,\; q - 1.$$
 
 Write the selected integer as
 
-$$
-m = p + r
-$$
+$$m = p + r$$
 
 with divisor count
 
-$$
-\delta = d(m).
-$$
+$$\delta = d(m).$$
 
 Under GWR, the selected integer is the leftmost interior integer with minimal divisor
 count.
@@ -41,9 +35,7 @@ count.
 If GWR holds on the gap $(p, q)$ and the selected integer is $m = p + r$ with
 $\delta = d(m)$, then every earlier interior integer satisfies
 
-$$
-d(p + i) > \delta \qquad \text{for all } 1 \le i < r.
-$$
+$$d(p + i) > \delta \qquad \text{for all } 1 \le i < r.$$
 
 In words:
 
@@ -55,26 +47,20 @@ count.
 
 If some earlier interior integer $p + i$ had
 
-$$
-d(p + i) < \delta,
-$$
+$$d(p + i) < \delta,$$
 
 then it would beat $m$ under the GWR rule because it has smaller divisor count.
 
 If some earlier interior integer $p + i$ had
 
-$$
-d(p + i) = \delta,
-$$
+$$d(p + i) = \delta,$$
 
 then it would also beat $m$ under GWR because ties go to the leftmost interior
 integer.
 
 So no earlier interior integer can satisfy
 
-$$
-d(p + i) \le \delta.
-$$
+$$d(p + i) \le \delta.$$
 
 That gives the stated exclusion condition.
 
@@ -83,9 +69,7 @@ That gives the stated exclusion condition.
 If GWR holds on the gap $(p, q)$ and the selected integer is $m = p + r$ with
 $\delta = d(m)$, then every later interior integer satisfies
 
-$$
-d(p + i) \ge \delta \qquad \text{for all } r < i < q - p.
-$$
+$$d(p + i) \ge \delta \qquad \text{for all } r < i < q - p.$$
 
 In words:
 
@@ -96,9 +80,7 @@ integer with strictly smaller divisor count.
 
 If some later interior integer $p + i$ had
 
-$$
-d(p + i) < \delta,
-$$
+$$d(p + i) < \delta,$$
 
 then $m$ would not have minimal divisor count on the gap interior, so it could
 not be the GWR-selected integer.
@@ -112,9 +94,7 @@ The left-prefix and right-suffix statements combine into one clean picture.
 If the selected integer is $m = p + r$ with $\delta = d(m)$, then the divisor counts
 across the gap interior must have the form
 
-$$
->\delta,\ >\delta,\ \ldots,\ >\delta,\ \delta,\ \ge \delta,\ \ge \delta,\ \ldots,\ \ge \delta.
-$$
+$$>\delta,\ >\delta,\ \ldots,\ >\delta,\ \delta,\ \ge \delta,\ \ge \delta,\ \ldots,\ \ge \delta.$$
 
 So the selected integer is the first place in the gap where the divisor-count profile
 reaches its minimum.
@@ -132,27 +112,19 @@ $\delta$ before offset $r$.
 So GWR does not merely identify the selected integer. It also identifies a forbidden
 prefix and a constrained suffix:
 
-$$
-p + 1,\; p + 2,\; \ldots,\; p + r - 1
-$$
+$$p + 1,\; p + 2,\; \ldots,\; p + r - 1$$
 
 must avoid the divisor classes
 
-$$
-d(n) \le \delta.
-$$
+$$d(n) \le \delta.$$
 
 Meanwhile the suffix
 
-$$
-p + r + 1,\; p + r + 2,\; \ldots,\; q - 1
-$$
+$$p + r + 1,\; p + r + 2,\; \ldots,\; q - 1$$
 
 must avoid the divisor classes
 
-$$
-d(n) < \delta.
-$$
+$$d(n) < \delta.$$
 
 That is a genuine exclusion statement about prime-gap interiors.
 

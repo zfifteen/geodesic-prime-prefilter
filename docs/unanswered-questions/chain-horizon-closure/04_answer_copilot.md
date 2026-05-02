@@ -18,7 +18,7 @@ that **predicts the divisor horizon** (how far one must search for a small facto
 - compute the **least factor** $f(n)$ (smallest prime divisor),
 - compute the **horizon** $h(n) = f(n)$ (or equivalently the search bound needed to detect compositeness),
 - record the chain-state tuple $(p, s_0, \text{chain gaps}, \text{residues}, \text{search-interval state})$ and $h(n)$.
-  The **least-factor maximum** for an input prime is $\max_{n \in \text{false chain nodes}} h(n)$. We want to know whether that max is bounded by a PGS-visible function $H(p,s_0,\text{chain_state}) \ll \sqrt{q}$.   [github.com](https://github.com/zfifteen/prime-gap-structure/blob/a1c6a7938c4cd9a234f0508f570ede4513084431/)
+  The **least-factor maximum** for an input prime is $\max_{n \in \text{false chain nodes}} h(n)$. We want to know whether that max is bounded by a PGS-visible function $H(p,s_0,\text{chain state}) \ll \sqrt{q}$.   [github.com](https://github.com/zfifteen/prime-gap-structure/blob/a1c6a7938c4cd9a234f0508f570ede4513084431/)
 
 ---
 
@@ -96,7 +96,7 @@ Fit these forms to the collected least-factor data and measure **false-negative 
 
 **Decision thresholds.**
 - **Falsification:** if the least-factor maximum’s empirical maximum grows like $\sqrt{q}$ (or shows no smaller PGS-bound) and candidate `H` expressions have non-negligible false-negative rates at high scales, conclude the bridge is not compressible into a pure local PGS rule at `candidate_bound=128`.
-- **Confirmation:** if a deterministic `H(p,s_0,chain_state)` built from PGS-visible quantities yields **zero** or vanishingly small false-negative rate across sampled scales (and is provably computable from the PGS state), treat that as the missing theorem and integrate it into `chain_horizon_closure`. Aim for a bound significantly smaller than $\sqrt{q}$ (e.g., polylogarithmic or a small power of $\log q$).   [github.com](https://github.com/zfifteen/prime-gap-structure/blob/a1c6a7938c4cd9a234f0508f570ede4513084431/)
+- **Confirmation:** if a deterministic `H(p, s0, chain_state)` built from PGS-visible quantities yields **zero** or vanishingly small false-negative rate across sampled scales (and is provably computable from the PGS state), treat that as the missing theorem and integrate it into `chain_horizon_closure`. Aim for a bound significantly smaller than $\sqrt{q}$ (e.g., polylogarithmic or a small power of $\log q$).   [github.com](https://github.com/zfifteen/prime-gap-structure/blob/a1c6a7938c4cd9a234f0508f570ede4513084431/)
 
 **Statistical rigor.** Use bootstrap confidence intervals on the maximum and tail quantiles; report the 95% upper CI for the maximum observed least factorimum per scale. If the CI for the maximum lies well below $\sqrt{q}$ and matches a candidate `H`, that strengthens the positive claim.
 
