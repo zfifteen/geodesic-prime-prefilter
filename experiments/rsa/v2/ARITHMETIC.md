@@ -9,9 +9,8 @@ Use `gmpy2` for factorizer arithmetic:
 
 - `N`;
 - `isqrt(N)`;
-- lower candidate coordinates;
-- reciprocal upper coordinates;
-- products;
+- ordered chamber coordinates;
+- reciprocal floor coordinates;
 - interval endpoints;
 - chamber anchors.
 
@@ -80,9 +79,9 @@ comment explaining the quantity being computed.
 Required comments include:
 
 - the integer square root of `N`;
-- the lower chamber interval around `isqrt(N)`;
+- the full chamber interval around `isqrt(N)`;
 - the reciprocal floor `N // x`;
-- the product closure check `x * y == N`;
+- reciprocal reset-deadline transport;
 - any conversion from `gmpy2.mpz` to Python `int`;
 - every divisor-count or chamber-state measurement.
 
@@ -99,4 +98,4 @@ Do not use:
 - random candidate generation;
 - answer-bearing precomputed state rows.
 
-Product closure is allowed only after PGS survivor contraction.
+Product closure must not be used as the contraction rule.

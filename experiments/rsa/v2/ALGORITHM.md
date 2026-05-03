@@ -8,13 +8,14 @@ to be replaced for RSA-260.
 
 ## Input
 
-The inference runner reads a public case row containing:
+The ladder starts from `ladder_spec.json`. Each public case row contains:
 
 - `case_id`;
 - `N`;
-- `bits`;
-- `radius`;
-- `balance_band`.
+- optional `description`.
+
+The fixture builder derives `bits` from `N` and writes `ladder_cases.jsonl`.
+The inference runner reads `ladder_cases.jsonl`, not the audit spec.
 
 The inference runner does not read audit factors.
 
@@ -24,9 +25,14 @@ The first case is:
 case_id = rsa_v2_40bit_static_001
 N = 1099507433251
 bits = 40
-radius = 1024
-balance_band = 2
+description = 40-bit calibration rung for reciprocal PGS deadline-lock machinery.
 ```
+
+The chamber radius, balance band, PGSPG endpoint radius, Rule X candidate
+bound, recursive depth, and deadline-width tolerance are global rule constants
+in the solver. They are not per-rung inputs. Adding a rung means adding another
+public `N` row to `ladder_spec.json` and a physically separate audit row to
+`audit_spec.json`.
 
 ## Stage 1: Public Center
 
@@ -38,25 +44,25 @@ upper factor chambers face each other.
 
 ## Stage 2: Candidate Band
 
-Build the lower-side public candidate band:
+Build the full ordered public candidate band:
 
 ```text
-[isqrt(N) - radius, isqrt(N)]
+[isqrt(N) - radius, isqrt(N) + radius]
 ```
 
-The lower factor of a balanced semiprime lies on this side of the center. The
-upper-side coordinate for a lower candidate `x` is the public reciprocal floor
-`N // x`.
+Each candidate `x` is paired with the public reciprocal floor coordinate
+`N // x`. The ordered surface preserves both orientations of a candidate pair.
 
 ## Stage 3: Public Filters
 
 Apply cheap public filters before any chamber measurement:
 
-1. Keep candidates inside the declared balance band.
-2. Keep lower candidates in wheel-open residue classes.
+1. Keep candidates inside the global balance band.
+2. Keep candidates in wheel-open residue classes.
 3. Compute `y = N // x`.
 4. Keep pairs whose reciprocal floor `y` stays inside the upper balance band.
 5. Keep pairs whose upper coordinate is also wheel-open.
+6. Keep pairs whose reciprocal floor remains inside the full public chamber.
 
 These filters reduce the chamber without testing whether `x` divides `N`.
 
@@ -99,25 +105,35 @@ For each round:
 
 A pair that fails local stability or reciprocal stability is eliminated.
 
-## Stage 6: Product Closure
+## Stage 6: Reciprocal Deadline Lock
 
-After PGS contraction and recursive lock, apply public product closure to the
-remaining survivor set.
+After local endpoint/reset survival, compare the reset-deadline state of both
+sides under the reciprocal map.
 
-Product closure checks:
+The deadline lock requires:
 
 ```text
-x * y == N
+lower reset signature == upper reset signature
+lower reset-deadline margin == upper reset-deadline margin
+transported reciprocal deadline widths agree within floor-rounding tolerance
 ```
 
-This is certification after PGS contraction. It is not the mechanism that builds
-the initial survivor set.
+This is the resolving PGS rule. Product closure is not used to admit a deadline
+lock.
+
+## Stage 7: Audit Certification
+
+Inference emits the unique unordered deadline-locked pair when exactly one such
+pair exists.
+
+Audit is a separate downstream script. Audit checks the separate factor file
+against `N` and then checks whether inference emitted the same pair.
 
 ## Output
 
-If exactly one unordered product-closed pair remains, emit a resolved row.
+If exactly one unordered deadline-locked pair remains, emit a resolved row.
 
-If no product-closed pair remains, or more than one unordered pair remains, emit
+If no deadline-locked pair remains, or more than one unordered pair remains, emit
 an explicit unresolved row.
 
 The runner also emits survivor rows and a summary so the funnel can be reviewed
