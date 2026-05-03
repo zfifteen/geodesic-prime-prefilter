@@ -31,7 +31,8 @@ public N
 -> PGSPG-derived chamber state on each side
 -> reciprocal chamber-state compatibility
 -> small survivor set
--> public product closure / audit
+-> reciprocal deadline lock
+-> downstream audit
 ```
 
 ## Strategy From Prior Progress
@@ -52,10 +53,9 @@ The lesson is not to begin with product testing. The lesson is:
 A wrong candidate can be locally valid without being globally closed.
 ```
 
-PGS chamber logic can make the serious survivor set small. Reciprocal chamber
-logic then asks whether both sides remain stable when each side is viewed as the
-other side's implied cofactor. Product closure is the public certification step
-after PGS has done the contraction.
+PGS chamber logic can make the serious survivor set small. Reciprocal deadline
+logic then asks whether both sides preserve the same reset state when each side
+is viewed through the public reciprocal map.
 
 ## Factorizer Shape
 
@@ -63,33 +63,52 @@ The factorizer should be a survivor funnel:
 
 1. Start from a public candidate band around `isqrt(N)`.
 2. Apply public balance and wheel filters.
-3. For each serious lower-side candidate, derive local PGSPG chamber state.
+3. For each serious ordered candidate, derive local PGSPG chamber state.
 4. Map the candidate to its public reciprocal cofactor side by `N // x`.
 5. Derive local PGSPG chamber state on the reciprocal side.
 6. Keep candidates whose lower and upper chamber states are mutually stable.
-7. Rank or reduce the survivor pairs.
-8. Use public product closure only after the PGS survivor set exists.
+7. Compare reset signatures, reset-deadline margins, and transported deadline widths.
+8. Emit the unique unordered deadline-locked pair, or return unresolved.
 
 The factorizer must never use a hand-authored PGS-state fixture containing
 answer-bearing values. PGS state must be derived from public `N` and local
 PGSPG machinery.
 
-## Product Closure Role
+## Rung Extension Workflow
 
-Product closure is not hidden information. For a public RSA challenge, the
-published modulus `N` is the object to be factored, and `p * q = N` is the final
-certificate.
+Rungs are data, not code.
+
+Add public rungs to `ladder_spec.json`:
+
+```json
+{
+  "case_id": "rsa_v2_50bit_static_001",
+  "description": "50-bit ladder rung.",
+  "N": "..."
+}
+```
+
+Add audit endpoints separately to `audit_spec.json` when audit certification is
+needed. The runner never reads `audit_spec.json`.
+
+Do not add a branch to `run_experiment.py` for a new bit size. The same global
+rule constants and the same solver functions must process every rung.
+
+## Deadline Lock Role
+
+The reciprocal deadline lock is the resolver.
 
 The boundary is:
 
 ```text
 PGS inference contracts the candidate set.
-Product closure certifies or ranks the tiny survivor set.
-Audit verifies after selection.
+Deadline lock selects the unique unordered pair.
+Audit verifies after selection using the separate audit file.
 ```
 
 Do not let product closure replace the PGS contraction step. Do not claim PGS
-selected a pair if the code simply searched candidates until `p * q = N`.
+selected a pair if the code simply searched candidates until multiplication
+matched `N`.
 
 ## Metrics To Preserve
 
@@ -102,10 +121,10 @@ Every serious probe should report the funnel, not only final success:
 | post-wheel candidates | wheel-open contraction |
 | PGS chamber survivors | value added by PGSPG-derived local state |
 | reciprocal-lock survivors | value added by two-sided stability |
-| product-closed pairs | final public closure count |
+| deadline-lock pairs | unique reciprocal reset-deadline locks |
 | false rejects | whether true factors were eliminated before closure |
 | factor rank | rank of the true factor pair among survivors |
-| false survivor product error | separation between locally stable wrong pairs and true closure |
+| reset signature / margin / transported width | state fields that explain the lock |
 
 The target pattern is:
 
@@ -113,7 +132,7 @@ The target pattern is:
 many public candidates
 -> few serious candidates
 -> tiny PGS survivor set
--> unique product-closed pair
+-> unique reciprocal deadline-lock pair
 ```
 
 ## Implementation Direction
@@ -149,7 +168,7 @@ Inference may use:
 - balance and wheel filters;
 - PGSPG-derived chamber state;
 - reciprocal mapping by `N // x`;
-- public product closure after PGS survivor contraction.
+- reciprocal reset-deadline transport.
 
 Inference must not use:
 
@@ -158,18 +177,19 @@ Inference must not use:
 - hand-authored answer-bearing PGS-state rows;
 - `gcd` as a selector;
 - divisibility by `N` as the contraction method;
+- product closure as the contraction method;
 - factorization APIs;
 - primality tests as the endpoint source;
 - randomness;
 - fallback search;
 - silent widening or alternate paths.
 
-If the PGS contraction does not produce a usable survivor surface, return an
+If the deadline lock does not produce a unique unordered pair, return an
 explicit unresolved result.
 
 ## First Clean Milestone
 
-Rebuild the 150-bit survivor funnel cleanly:
+Rebuild the survivor funnel cleanly:
 
 ```text
 public candidate band
@@ -177,10 +197,12 @@ public candidate band
 -> PGSPG-derived chamber state
 -> PGS chamber / Rule X survivors
 -> reciprocal chamber lock
--> product-closed survivor ranking
+-> reciprocal deadline lock
+-> audit certification
 ```
 
-The first milestone is not RSA-260. It is a clean reproduction of the prior
-toy-scale shape with mechanically derived PGS state and honest metrics.
+The first milestone is the current 40-bit rung. It locks in machinery shape:
+public case rows, global rule constants, mechanically derived PGS state, and
+honest metrics.
 
 Only after that surface is clean should the experiment scale upward.
