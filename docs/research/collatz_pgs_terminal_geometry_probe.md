@@ -49,9 +49,11 @@ terminal contact appears to be where the terminal effect is most concentrated,
 while adjacent projected terminal contact looks more like a weaker or noisier
 version of the same geometry.
 
-The next direct question is whether exact terminal witness hits carry the
-terminal reset profile more strongly than adjacent projected terminal hits
-after exact-step and final-`v2` matching.
+The follow-on exact-versus-adjacent probe found that exact terminal hits do not
+carry the terminal reset profile more strongly than adjacent projected terminal
+hits after exact-step and final-`v2` matching. The next direct question is
+whether the adjacent projected terminal advantage is one-sided around the PGS
+witness.
 
 ## Artifact Surface
 
