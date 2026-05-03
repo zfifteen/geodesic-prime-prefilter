@@ -61,15 +61,31 @@ The coarse `v2`-bin rate deltas are small:
 The current signal localizes to exact step strata more strongly than to coarse
 transition-bin composition.
 
+## Follow-On Result
+
+The follow-on source-position carrier probe measured where witness contact
+occurs inside each exact-step block:
+
+```text
+docs/research/collatz_pgs_source_position_carrier_probe.md
+```
+
+Favorable strata have matched-weighted final-source witness hit rate
+`0.6330294377004576`; unfavorable strata have `0.2518013666558681`. Favorable
+strata also carry matched-weighted median final-`v2` delta
+`0.5953211176443776`, while unfavorable strata are nearly flat at
+`0.004912937401824805`.
+
 ## Disposition
 
 The reset-profile line has advanced from a global class comparison to an
-identified carrier surface. The positive matched reset effect is not spread
-evenly across all exact step lengths; it is concentrated in short first-descent
-blocks and partly offset by exact steps `4`, `5`, and `6`.
+identified carrier surface and then to a source-position mechanism candidate.
+The positive matched reset effect is concentrated in short first-descent blocks
+where witness contact is more often terminal and the final transition has a
+larger `v2`.
 
-The next direct question is whether the favorable carrier strata share a PGS
-source-position pattern beyond the block-level witness-contact label.
+The next direct question is whether terminal witness contact alone accounts
+for the favorable reset profile after exact-step and final-`v2` matching.
 
 ## Artifact Surface
 

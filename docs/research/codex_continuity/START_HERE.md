@@ -129,6 +129,12 @@ largest negative delta contributions: `-0.14396095926820723`,
 composition deltas were small, so the current signal localizes more strongly
 to exact step strata than to broad transition-bin composition.
 
-The next direct question is whether the favorable exact-step carrier strata
-share a PGS source-position pattern beyond the block-level witness-contact
-label.
+The source-position carrier probe found the carrier mechanism candidate.
+Favorable strata had matched-weighted final-source witness hit rate
+`0.6330294377004576`; unfavorable strata had `0.2518013666558681`. Favorable
+strata also carried matched-weighted median final-`v2` delta
+`0.5953211176443776`, while unfavorable strata were nearly flat at
+`0.004912937401824805`.
+
+The next direct question is whether terminal witness contact alone accounts
+for the favorable reset profile after exact-step and final-`v2` matching.
