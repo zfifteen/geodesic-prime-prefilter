@@ -93,12 +93,14 @@ invariant from public PGSPG fields.
 ## Current Collatz-PGS Bridge State
 
 As of 2026-05-03, the exploratory Collatz-PGS branch has one deterministic
-first-descent probe, one same-gap scale probe, and one current goal note:
+first-descent probe, one same-gap scale probe, one reset length-strata probe,
+and one current goal note:
 
 ```text
 docs/research/collatz_pgs_goal.md
 docs/research/collatz_pgs_first_descent_probe.md
 docs/research/collatz_pgs_same_gap_scale_probe.md
+docs/research/collatz_pgs_reset_length_strata_probe.md
 ```
 
 The measured `3 <= s <= 19999` odd-seed surface shows a strong prime-endpoint
@@ -111,5 +113,13 @@ The same-gap scale probe reached odd seeds `3 <= s <= 999999`. The same-gap
 witness ratio was `1.7637165846198448` overall and stayed above background in
 every measured `v2(3n+1)` stratum. Witness-contact blocks had median reset
 strength `2.078632113914513`; no-witness-contact blocks had median reset
-strength `1.8728822607686915`. The next direct question is whether that reset
-separation survives matched odd-step strata.
+strength `1.8728822607686915`.
+
+The matched odd-step probe found `37` strata containing both block classes:
+witness-contact median reset was higher in `19` strata, no-witness-contact
+median reset was higher in `18` strata, and the matched-weighted median reset
+ratio was `1.6163417109769`.
+
+The next direct question is which exact step strata carry the matched-weighted
+median reset effect and whether those strata share a stable `v2` composition or
+PGS position pattern.
