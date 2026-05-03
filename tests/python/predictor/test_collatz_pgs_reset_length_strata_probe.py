@@ -6,6 +6,8 @@ import json
 import sys
 from pathlib import Path
 
+import pytest
+
 
 ROOT = Path(__file__).resolve().parents[3]
 BENCHMARK_DIR = ROOT / "benchmarks" / "python" / "predictor"
@@ -102,6 +104,14 @@ def test_run_probe_writes_summary_and_strata_rows(tmp_path):
     assert summary["total_witness_contact_blocks"] == 3
     assert summary["total_no_witness_contact_blocks"] == 2
     assert summary["strata_where_witness_median_reset_is_higher"] == 2
+    assert summary["matched_weighted_mean_of_stratum_median_reset_delta"] == 2.0
+    assert summary["matched_weighted_mean_of_stratum_median_reset_ratio"] == pytest.approx(
+        23.0 / 12.0,
+    )
+    assert summary["matched_weighted_mean_of_stratum_p90_reset_delta"] == 2.0
+    assert "matched_weighted_median_reset_delta" not in summary
+    assert "matched_weighted_median_reset_ratio" not in summary
+    assert "matched_weighted_p90_reset_delta" not in summary
     assert (output_dir / "summary.json").exists()
     assert (output_dir / "strata_rows.jsonl").exists()
 

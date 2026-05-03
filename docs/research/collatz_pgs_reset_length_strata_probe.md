@@ -3,7 +3,8 @@
 ## Strongest Measured Result
 
 Inside exact odd-step strata, witness-contact blocks retain a matched-weighted
-median reset-strength advantage, but the sign is not uniform across strata.
+mean of stratum median reset-strength advantage, but the sign is not uniform
+across strata.
 
 The probe used the `1000000` same-gap scale block rows:
 
@@ -25,13 +26,13 @@ same value of `odd_steps_to_first_descent`.
 | Matched weight total | `117677` |
 | Strata where witness-contact median reset is higher | `19` |
 | Strata where no-witness-contact median reset is higher | `18` |
-| Matched-weighted median reset delta | `0.7056366384084134` |
-| Matched-weighted median reset ratio | `1.6163417109769` |
-| Matched-weighted P90 reset delta | `-0.028322861082362694` |
+| Matched-weighted mean of stratum median reset delta | `0.7056366384084134` |
+| Matched-weighted mean of stratum median reset ratio | `1.6163417109769` |
+| Matched-weighted mean of stratum P90 reset delta | `-0.028322861082362694` |
 
 The median reset-strength separation survives exact odd-step matching in the
-matched-weighted aggregate. The stratum signs are nearly balanced, and the P90
-aggregate does not show the same positive separation.
+matched-weighted mean of stratum medians. The stratum signs are nearly
+balanced, and the P90 aggregate does not show the same positive separation.
 
 ## Interpretation
 

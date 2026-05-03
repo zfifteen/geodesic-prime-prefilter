@@ -117,9 +117,9 @@ strength `1.8728822607686915`.
 
 The matched odd-step probe found `37` strata containing both block classes:
 witness-contact median reset was higher in `19` strata, no-witness-contact
-median reset was higher in `18` strata, and the matched-weighted median reset
-ratio was `1.6163417109769`.
+median reset was higher in `18` strata, and the matched-weighted mean of
+stratum median reset ratios was `1.6163417109769`.
 
 The next direct question is which exact step strata carry the matched-weighted
-median reset effect and whether those strata share a stable `v2` composition or
-PGS position pattern.
+mean of stratum median reset effect and whether those strata share a stable
+`v2` composition or PGS position pattern.

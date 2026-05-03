@@ -162,7 +162,7 @@ def stratum_row(odd_steps: int, stats: dict[str, VectorStats]) -> dict[str, obje
     }
 
 
-def signed_weighted_mean(rows: list[dict[str, object]], field: str) -> float:
+def matched_weighted_mean(rows: list[dict[str, object]], field: str) -> float:
     """Return matched-weighted mean for one stratum field."""
     numerator = 0.0
     denominator = 0
@@ -215,15 +215,15 @@ def run_probe(input_path: Path, output_dir: Path) -> dict[str, object]:
         "strata_where_witness_median_reset_is_higher": witness_higher,
         "strata_where_no_witness_median_reset_is_higher": no_witness_higher,
         "strata_where_median_reset_is_tied": tied,
-        "matched_weighted_median_reset_delta": signed_weighted_mean(
+        "matched_weighted_mean_of_stratum_median_reset_delta": matched_weighted_mean(
             matched_rows,
             "median_reset_strength_delta",
         ),
-        "matched_weighted_median_reset_ratio": signed_weighted_mean(
+        "matched_weighted_mean_of_stratum_median_reset_ratio": matched_weighted_mean(
             matched_rows,
             "median_reset_strength_ratio",
         ),
-        "matched_weighted_p90_reset_delta": signed_weighted_mean(
+        "matched_weighted_mean_of_stratum_p90_reset_delta": matched_weighted_mean(
             matched_rows,
             "p90_reset_strength_delta",
         ),
