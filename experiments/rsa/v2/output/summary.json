@@ -16,6 +16,23 @@
       "recursive_lock_survivors": 10,
       "rule_id": "reciprocal_pgs_deadline_lock_v1",
       "unordered_survivors": 5
+    },
+    {
+      "N": "1027435935526951",
+      "balance_band": "2",
+      "bits": 50,
+      "case_id": "rsa_v2_50bit_static_001",
+      "deadline_lock_ordered_rows": 0,
+      "deadline_lock_pairs": 0,
+      "initial_candidate_integers": 2049,
+      "ordered_survivors": 0,
+      "post_balance_candidates": 2049,
+      "post_wheel_candidates": 0,
+      "radius": "1024",
+      "reciprocal_window_candidates": 0,
+      "recursive_lock_survivors": 0,
+      "rule_id": "reciprocal_pgs_deadline_lock_v1",
+      "unordered_survivors": 0
     }
   ]
 }
