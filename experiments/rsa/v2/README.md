@@ -1,208 +1,145 @@
 # RSA v2 Strategy Memory For Codex
 
-This file is for future Codex sessions working inside `experiments/rsa/v2`.
-Read it as operational memory, not as a public README.
+This file is operational memory for future Codex sessions working inside
+`experiments/rsa/v2`. It is not a traditional package README.
 
-## Center Of Gravity
+## Current State
 
-The active idea is a PGS Factorizer built from the already-working PGS Prime
-Generator.
+The official v2 runner is now a PGS-first anchor-surface probe.
 
-The PGS Prime Generator already implements the concepts needed by the factorizer:
+It does not claim to solve the ladder. It derives public two-sided PGSPG
+endpoint/reset state and returns unresolved until the transported deadline
+invariant is derived.
 
-- search intervals;
-- wheel-open offsets;
-- exact divisor-count interval state;
-- GWR-selected integer structure;
-- no-later-simpler-composite ceilings;
-- search-interval reset;
-- explicit unresolved state;
-- downstream audit separation.
+This is intentional. The previous radius-first solver was withdrawn as the live
+algorithm because it applied a close-factor gate before PGS state was measured.
 
-The factorizer is not a new mathematical engine from nothing. It is a two-sided
-application of the PGSPG chamber-state machinery around `isqrt(N)`.
+## Governing Correction
 
-The high-level map is:
+The wrong front door was:
+
+```text
+isqrt(N) +/- fixed radius
+-> wheel / reciprocal filters
+-> PGSPG state
+-> raw deadline-margin equality
+```
+
+That path solved the 40-bit rung only because the factors were already close to
+`isqrt(N)`. It excluded the 50-bit factors before PGS logic could inspect them.
+
+The live front door is:
 
 ```text
 public N
--> center at isqrt(N)
--> lower and upper chambers
--> PGSPG-derived chamber state on each side
--> reciprocal chamber-state compatibility
--> small survivor set
--> reciprocal deadline lock
--> downstream audit
+-> isqrt(N) as orientation only
+-> walk lower public endpoints from the square-root side
+-> map each endpoint by y = floor(N / x)
+-> require the reciprocal side to be a public endpoint
+-> derive PGSPG reset state on both sides
+-> report two-sided reset locks
+-> return unresolved until the transported deadline invariant is known
 ```
 
-## Strategy From Prior Progress
+The square root orients the lower and upper sides. It is not a fixed additive
+candidate chamber.
 
-The useful prior result was a survivor funnel at toy RSA scale:
+## PGSPG Concepts Carried Forward
+
+The factorizer uses the PGS Prime Generator as the local state engine:
+
+- public endpoints;
+- wheel-open offsets;
+- exact divisor-count interval state;
+- GWR carrier state;
+- search-interval reset;
+- tail and threat reset-deadline fields;
+- explicit unresolved state.
+
+The factorizer does not place factorization logic inside the generator. It calls
+the generator's chamber-reset certificate as a read-only local state adapter.
+
+## What The Current Runner Emits
+
+For each public `N`, the runner reports:
+
+- lower PGS endpoints seen from the square-root side;
+- reciprocal floor rows inside the public balanced interval;
+- reciprocal wheel-open rows;
+- reciprocal endpoint rows;
+- two-sided PGSPG reset-lock rows;
+- transported reset-to-deadline widths;
+- explicit unresolved inference rows.
+
+The unresolved reason is:
 
 ```text
-2,097,755 candidate integers
--> 37 serious candidates after balance + wheel filtering
--> 2 survivors after PGS chamber + Rule X inference
--> no false rejects
--> true factor ranked first
+transported_deadline_invariant_not_derived
 ```
 
-The lesson is not to begin with product testing. The lesson is:
+when two-sided PGS locks exist but no reviewed resolver is available.
+
+## Known Invalid Rules
+
+Do not restore these as live selection rules:
+
+- fixed `isqrt(N) +/- radius` candidate generation;
+- raw equality of lower and upper reset-deadline margins;
+- stationary recursive lock rounds that revisit the same reset endpoint;
+- ranking by closeness to `isqrt(N)` as evidence of correctness;
+- product closure as the PGS contraction rule.
+
+The 50-bit true factor pair has valid PGSPG reset locks on both sides but raw
+deadline margins `2` and `12`. Raw margin equality is therefore false as a
+resolver.
+
+## Arithmetic Boundary
+
+The current interval-measurement backend is small-regime only.
+
+Coordinates are carried as `gmpy2.mpz`, but divisor-count interval measurement
+still calls the repository's NumPy-backed exact interval helper. The official
+runner guards this boundary with:
 
 ```text
-A wrong candidate can be locally valid without being globally closed.
+SMALL_REGIME_MAX_BITS = 50
 ```
 
-PGS chamber logic can make the serious survivor set small. Reciprocal deadline
-logic then asks whether both sides preserve the same reset state when each side
-is viewed through the public reciprocal map.
+Cases above that limit must return unresolved with:
 
-## Factorizer Shape
+```text
+gmp_interval_backend_required
+```
 
-The factorizer should be a survivor funnel:
+until a genuine GMP interval backend exists.
 
-1. Start from a public candidate band around `isqrt(N)`.
-2. Apply public balance and wheel filters.
-3. For each serious ordered candidate, derive local PGSPG chamber state.
-4. Map the candidate to its public reciprocal cofactor side by `N // x`.
-5. Derive local PGSPG chamber state on the reciprocal side.
-6. Keep candidates whose lower and upper chamber states are mutually stable.
-7. Compare reset signatures, reset-deadline margins, and transported deadline widths.
-8. Emit the unique unordered deadline-locked pair, or return unresolved.
-
-The factorizer must never use a hand-authored PGS-state fixture containing
-answer-bearing values. PGS state must be derived from public `N` and local
-PGSPG machinery.
+Do not describe the current runner as RSA-260-ready or GMP-only at the interval
+backend level.
 
 ## Rung Extension Workflow
 
 Rungs are data, not code.
 
-Add public rungs to `ladder_spec.json`:
+Add public rungs to `ladder_spec.json`. Add audit endpoints separately to
+`audit_spec.json` only when audit certification is available. The runner never
+reads audit data.
 
-```json
-{
-  "case_id": "rsa_v2_50bit_static_001",
-  "description": "50-bit ladder rung.",
-  "N": "..."
-}
-```
-
-Add audit endpoints separately to `audit_spec.json` when audit certification is
-needed. The runner never reads `audit_spec.json`.
-
-Do not add a branch to `run_experiment.py` for a new bit size. The same global
-rule constants and the same solver functions must process every rung.
-
-## Deadline Lock Role
-
-The reciprocal deadline lock is the resolver.
-
-The boundary is:
+Starting at RSA-100, use the public RSA Challenge moduli recorded in:
 
 ```text
-PGS inference contracts the candidate set.
-Deadline lock selects the unique unordered pair.
-Audit verifies after selection using the separate audit file.
+RSA_PUBLIC_MODULI_THROUGH_260.md
 ```
 
-Do not let product closure replace the PGS contraction step. Do not claim PGS
-selected a pair if the code simply searched candidates until multiplication
-matched `N`.
+The current runner will explicitly return unresolved for those larger rungs
+until the GMP interval backend exists.
 
-## Metrics To Preserve
+## Next Live Work
 
-Every serious probe should report the funnel, not only final success:
+The next mathematical task is to derive the transported deadline invariant.
 
-| Metric | Meaning |
-|---|---|
-| initial candidate integers | public band size around `isqrt(N)` |
-| post-balance candidates | public size/balance contraction |
-| post-wheel candidates | wheel-open contraction |
-| PGS chamber survivors | value added by PGSPG-derived local state |
-| reciprocal-lock survivors | value added by two-sided stability |
-| deadline-lock pairs | unique reciprocal reset-deadline locks |
-| false rejects | whether true factors were eliminated before closure |
-| factor rank | rank of the true factor pair among survivors |
-| reset signature / margin / transported width | state fields that explain the lock |
+Raw local margins are not invariant under the public reciprocal map. The
+resolver must compare reset/deadline state after transport, using public `N`,
+PGSPG state, and floor-map geometry only.
 
-The target pattern is:
-
-```text
-many public candidates
--> few serious candidates
--> tiny PGS survivor set
--> unique reciprocal deadline-lock pair
-```
-
-## Implementation Direction
-
-Begin with documentation and a clean PGSPG-state adapter.
-
-The first code layer should expose the chamber-state facts from
-`src/python/z_band_prime_predictor/simple_pgs_generator.py` without changing the
-minimal generator output contract.
-
-Useful state fields include:
-
-- `gap_offset`;
-- `carrier_w`;
-- `carrier_d`;
-- `lock_carrier_offset`;
-- `lock_carrier_d`;
-- `lower_d_threat_offset`;
-- `tail_after_reset_offsets`;
-- resolved / unresolved / rejected candidate status.
-
-Keep the production generator narrow. Add factorizer code under
-`experiments/rsa/v2`, or add a small read-only adapter if shared code is needed.
-Do not add factorization logic to the generator.
-
-## Non-Negotiable Boundary
-
-Inference may use:
-
-- public `N`;
-- `isqrt(N)`;
-- public candidate-band parameters;
-- balance and wheel filters;
-- PGSPG-derived chamber state;
-- reciprocal mapping by `N // x`;
-- reciprocal reset-deadline transport.
-
-Inference must not use:
-
-- hidden factors;
-- audit factors;
-- hand-authored answer-bearing PGS-state rows;
-- `gcd` as a selector;
-- divisibility by `N` as the contraction method;
-- product closure as the contraction method;
-- factorization APIs;
-- primality tests as the endpoint source;
-- randomness;
-- fallback search;
-- silent widening or alternate paths.
-
-If the deadline lock does not produce a unique unordered pair, return an
-explicit unresolved result.
-
-## First Clean Milestone
-
-Rebuild the survivor funnel cleanly:
-
-```text
-public candidate band
--> balance + wheel
--> PGSPG-derived chamber state
--> PGS chamber / Rule X survivors
--> reciprocal chamber lock
--> reciprocal deadline lock
--> audit certification
-```
-
-The first milestone is the current 40-bit rung. It locks in machinery shape:
-public case rows, global rule constants, mechanically derived PGS state, and
-honest metrics.
-
-Only after that surface is clean should the experiment scale upward.
+Until that invariant is written down and reviewed, the correct output is
+unresolved.

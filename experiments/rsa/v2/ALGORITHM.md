@@ -1,147 +1,138 @@
-# RSA v2 40-Bit V1 Algorithm
+# RSA v2 PGS-First Anchor-Surface Algorithm
 
-This document defines the first clean factorizer algorithm before implementation.
+This document defines the live v2 algorithm after the radius-first scaffold was
+withdrawn.
 
-The first run is a 40-bit calibration case, but the algorithm is written as the
-smallest RSA-scale path. No step may rely on a low-bit shortcut that would need
-to be replaced for RSA-260.
+The current algorithm is an inference-surface builder, not a factor resolver.
+It derives public reciprocal PGSPG state and returns unresolved until the
+transported deadline invariant is derived.
 
 ## Input
 
-The ladder starts from `ladder_spec.json`. Each public case row contains:
+Inference reads only:
+
+```text
+fixtures/ladder_cases.jsonl
+```
+
+Each row contains public data:
 
 - `case_id`;
+- `bits`;
 - `N`;
 - optional `description`.
 
-The fixture builder derives `bits` from `N` and writes `ladder_cases.jsonl`.
-The inference runner reads `ladder_cases.jsonl`, not the audit spec.
+Inference does not read audit factors.
 
-The inference runner does not read audit factors.
-
-The first case is:
-
-```text
-case_id = rsa_v2_40bit_static_001
-N = 1099507433251
-bits = 40
-description = 40-bit calibration rung for reciprocal PGS deadline-lock machinery.
-```
-
-The chamber radius, balance band, PGSPG endpoint radius, Rule X candidate
-bound, recursive depth, and deadline-width tolerance are global rule constants
-in the solver. They are not per-rung inputs. Adding a rung means adding another
-public `N` row to `ladder_spec.json` and a physically separate audit row to
-`audit_spec.json`.
-
-## Stage 1: Public Center
+## Stage 1: Public Orientation
 
 Compute `isqrt(N)`.
 
-This is the public center of the semiprime chamber. It is not a factor and does
-not reveal either endpoint. It gives the fixed point around which the lower and
-upper factor chambers face each other.
+The square root separates the lower and upper balanced sides. It does not define
+a fixed additive candidate chamber.
 
-## Stage 2: Candidate Band
+## Stage 2: Balanced Endpoint Walk
 
-Build the full ordered public candidate band:
-
-```text
-[isqrt(N) - radius, isqrt(N) + radius]
-```
-
-Each candidate `x` is paired with the public reciprocal floor coordinate
-`N // x`. The ordered surface preserves both orientations of a candidate pair.
-
-## Stage 3: Public Filters
-
-Apply cheap public filters before any chamber measurement:
-
-1. Keep candidates inside the global balance band.
-2. Keep candidates in wheel-open residue classes.
-3. Compute `y = N // x`.
-4. Keep pairs whose reciprocal floor `y` stays inside the upper balance band.
-5. Keep pairs whose upper coordinate is also wheel-open.
-6. Keep pairs whose reciprocal floor remains inside the full public chamber.
-
-These filters reduce the chamber without testing whether `x` divides `N`.
-
-## Stage 4: PGSPG Chamber State
-
-For each serious candidate pair `(x, y)`, derive local PGSPG chamber state on
-both sides.
-
-The lower side asks:
+Compute the public balanced interval:
 
 ```text
-previous PGS endpoint before x -> chamber reset -> does it return to x?
+lower = floor(isqrt(N) / balance_band)
+upper = isqrt(N) * balance_band
 ```
 
-The upper side asks:
+Walk downward from `isqrt(N)` through exact endpoint state. Each endpoint is a
+candidate anchor because PGSPG operates from endpoint anchors, not arbitrary
+integers in a close-in band.
+
+The current implementation uses a bounded endpoint-walk budget. If the endpoint
+walk does not cover enough of the balanced interval, that is a surface-budget
+fact, not a factorization fallback.
+
+## Stage 3: Reciprocal Transport
+
+For each lower endpoint `x`, compute:
 
 ```text
-previous PGS endpoint before y -> chamber reset -> does it return to y?
+y = floor(N / x)
 ```
 
-The state is derived by code from local public intervals. It is not supplied as
-a fixture.
+This is public reciprocal transport. It is not a divisibility test and does not
+check product closure.
 
-## Stage 5: Reciprocal Recursive Lock
+Keep rows where `y` is on the upper balanced side and open under the fixed
+30-wheel.
 
-Apply recursive reciprocal PGS stability for a fixed number of rounds.
+## Stage 4: Reciprocal Endpoint Check
 
-Default depth:
+Measure whether the transported `y` values are also exact endpoints.
+
+Rows where both `x` and `y` are endpoints form the reciprocal endpoint surface.
+
+## Stage 5: PGSPG Reset State
+
+For each reciprocal endpoint row, derive local PGSPG reset state on both sides:
 
 ```text
-recursive_depth = 4
+previous endpoint before x -> PGSPG chamber reset
+previous endpoint before y -> PGSPG chamber reset
 ```
 
-For each round:
+Keep rows where the lower reset returns to `x` and the upper reset returns to
+`y`.
 
-1. Lock the lower side by previous endpoint plus chamber reset.
-2. Lock the upper side by previous endpoint plus chamber reset.
-3. Transport the lower and upper endpoints through the public reciprocal map.
-4. Continue only if both sides remain stable.
+These are the two-sided PGSPG reset-lock rows.
 
-A pair that fails local stability or reciprocal stability is eliminated.
+## Stage 6: Deadline Transport Facts
 
-## Stage 6: Reciprocal Deadline Lock
-
-After local endpoint/reset survival, compare the reset-deadline state of both
-sides under the reciprocal map.
-
-The deadline lock requires:
+For each two-sided reset lock, compute reset-to-deadline transport widths:
 
 ```text
-lower reset signature == upper reset signature
-lower reset-deadline margin == upper reset-deadline margin
-transported reciprocal deadline widths agree within floor-rounding tolerance
+floor(N / reset_endpoint) - floor(N / reset_deadline)
 ```
 
-This is the resolving PGS rule. Product closure is not used to admit a deadline
-lock.
+on each side.
 
-## Stage 7: Audit Certification
+The runner records these facts. It does not currently use them as a resolver.
 
-Inference emits the unique unordered deadline-locked pair when exactly one such
-pair exists.
+## Current Failure Mode
 
-Audit is a separate downstream script. Audit checks the separate factor file
-against `N` and then checks whether inference emitted the same pair.
+The runner emits:
 
-## Output
+```text
+status = unresolved
+unresolved_reason = transported_deadline_invariant_not_derived
+```
 
-If exactly one unordered deadline-locked pair remains, emit a resolved row.
+when two-sided PGSPG reset locks exist.
 
-If no deadline-locked pair remains, or more than one unordered pair remains, emit
-an explicit unresolved row.
+If no two-sided reset locks exist, it emits:
 
-The runner also emits survivor rows and a summary so the funnel can be reviewed
-without relying on prose.
+```text
+status = unresolved
+unresolved_reason = no_two_sided_pgs_lock
+```
 
-## Failure Mode
+If a rung exceeds the current exact interval backend boundary, it emits:
 
-Every failure to resolve is an experiment result.
+```text
+status = unresolved
+unresolved_reason = gmp_interval_backend_required
+```
 
-Do not add fallback paths, alternate algorithms, random retries, hidden widening,
-or a direct factor search to force success.
+## Explicitly Invalidated Rules
+
+The following are not live rules:
+
+- fixed-radius candidate bands around `isqrt(N)`;
+- raw equality of lower and upper reset-deadline margins;
+- stationary recursive reset rounds;
+- product closure as the contraction rule;
+- audit factors as inference inputs.
+
+## Resolver Target
+
+The next algorithmic target is a transported deadline invariant.
+
+The invariant must accept asymmetric raw margins when reciprocal transport
+explains the asymmetry, and it must reject ordinary symmetric near-square false
+locks. It must use only public `N`, PGSPG state, and floor-map transport.

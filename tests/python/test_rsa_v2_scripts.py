@@ -21,7 +21,7 @@ N_VALUE = "1099507433251"
 P_VALUE = "1048559"
 Q_VALUE = "1048589"
 CASE_50_ID = "rsa_v2_50bit_static_001"
-RULE_ID = "reciprocal_pgs_deadline_lock_v1"
+RULE_ID = "pgs_first_reciprocal_anchor_surface_v1"
 GENERATED_50_N = "1027435935526951"
 GENERATED_50_P = "30729371"
 GENERATED_50_Q = "33434981"
@@ -63,6 +63,8 @@ def run_inference(tmp_path: Path) -> Path:
             str(tmp_path / "ladder_cases.jsonl"),
             "--output-dir",
             str(output_dir),
+            "--max-lower-endpoints",
+            "1000",
         ]
     ) == 0
     return output_dir
@@ -208,8 +210,8 @@ def test_public_case_contains_only_public_rung_data(tmp_path):
         assert {"p", "q", "radius", "balance_band"}.isdisjoint(row)
 
 
-def test_runner_reduces_static_40_bit_rung_to_two_deadline_lock_rows(tmp_path):
-    """As a user, I want the official solver to reproduce the 40-bit deadline lock."""
+def test_runner_reports_pgs_first_anchor_surface_without_resolver_claim(tmp_path):
+    """As a reviewer, I want the runner to expose PGS state without false resolution."""
     build_fixtures(tmp_path)
 
     output_dir = run_inference(tmp_path)
@@ -222,9 +224,8 @@ def test_runner_reduces_static_40_bit_rung_to_two_deadline_lock_rows(tmp_path):
             "case_id": CASE_ID,
             "bits": 40,
             "N": N_VALUE,
-            "status": "resolved",
-            "p": P_VALUE,
-            "q": Q_VALUE,
+            "status": "unresolved",
+            "unresolved_reason": "transported_deadline_invariant_not_derived",
             "rule_id": RULE_ID,
         },
         {
@@ -232,44 +233,41 @@ def test_runner_reduces_static_40_bit_rung_to_two_deadline_lock_rows(tmp_path):
             "bits": 50,
             "N": GENERATED_50_N,
             "status": "unresolved",
-            "unresolved_reason": "no_reciprocal_deadline_lock",
+            "unresolved_reason": "transported_deadline_invariant_not_derived",
             "rule_id": RULE_ID,
         }
     ]
-    assert summary["cases"][0]["reciprocal_window_candidates"] == 204
-    assert summary["cases"][0]["recursive_lock_survivors"] == 10
-    assert summary["cases"][0]["deadline_lock_ordered_rows"] == 2
-    assert summary["cases"][0]["deadline_lock_pairs"] == 1
-    assert summary["cases"][1]["reciprocal_window_candidates"] == 0
-    assert summary["cases"][1]["recursive_lock_survivors"] == 0
-    assert summary["cases"][1]["deadline_lock_ordered_rows"] == 0
-    assert summary["cases"][1]["deadline_lock_pairs"] == 0
-    assert [row["deadline_locked"] for row in survivors].count(True) == 2
+    for row in summary["cases"]:
+        assert row["resolver_status"] == "transported_deadline_invariant_not_derived"
+        assert row["lower_pgs_endpoints_seen"] == 1000
+        assert row["reciprocal_wheel_rows"] > 0
+        assert row["reciprocal_endpoint_rows"] > 0
+        assert row["two_sided_pgs_lock_rows"] > 0
+        assert "radius" not in row
+        assert "reciprocal_window_candidates" not in row
+        assert "recursive_lock_survivors" not in row
+        assert "deadline_lock_pairs" not in row
+    assert len(survivors) == sum(row["two_sided_pgs_lock_rows"] for row in summary["cases"])
+    assert {row["resolver_status"] for row in survivors} == {
+        "transported_deadline_invariant_not_derived"
+    }
 
 
-def test_deadline_lock_rows_are_selected_before_audit(tmp_path):
-    """As a reviewer, I want the selected rows to be produced by deadline state."""
+def test_anchor_rows_are_derived_before_audit(tmp_path):
+    """As a reviewer, I want survivor rows to be public PGS-derived anchors."""
     build_fixtures(tmp_path)
     output_dir = run_inference(tmp_path)
 
-    locked = [
-        row
-        for row in read_jsonl(output_dir / "survivor_rows.jsonl")
-        if row["deadline_locked"]
-    ]
-    assert [(row["x"], row["y"]) for row in locked] == [
-        (P_VALUE, Q_VALUE),
-        (Q_VALUE, P_VALUE),
-    ]
-    assert {row["deadline_lock_reason"] for row in locked} == {"reciprocal_deadline_lock"}
-    assert {row["lower_reset_signature"] for row in locked} == {
-        "carrier_d=4;lock_carrier_d=4;threat=False;deadline=tail"
-    }
-    assert {row["upper_reset_signature"] for row in locked} == {
-        "carrier_d=4;lock_carrier_d=4;threat=False;deadline=tail"
-    }
-    assert {row["lower_reset_deadline_margin"] for row in locked} == {12}
-    assert {row["upper_reset_deadline_margin"] for row in locked} == {12}
+    rows = read_jsonl(output_dir / "survivor_rows.jsonl")
+    assert rows
+    for row in rows:
+        assert row["resolver_status"] == "transported_deadline_invariant_not_derived"
+        assert row["lower_reset_endpoint"] == row["x"]
+        assert row["upper_reset_endpoint"] == row["y"]
+        assert row["lower_reset_signature"]
+        assert row["upper_reset_signature"]
+        assert "deadline_locked" not in row
+        assert "deadline_lock_reason" not in row
 
 
 def test_audit_passes_only_with_separate_factor_file(tmp_path):
@@ -300,7 +298,7 @@ def test_audit_passes_only_with_separate_factor_file(tmp_path):
             "bits": "40",
             "N": N_VALUE,
             "audit_integrity_status": "integrity_pass",
-            "inference_audit_status": "inference_audit_pass",
+            "inference_audit_status": "inference_audit_fail",
         },
         {
             "case_id": CASE_50_ID,
@@ -355,6 +353,19 @@ def test_runner_has_no_per_scale_logic_branches():
     )
     for fragment in forbidden_fragments:
         assert fragment not in source
+
+
+def test_runner_declares_small_regime_interval_backend_boundary():
+    """As a reviewer, I want the current interval backend boundary explicit."""
+    module = load_module(V2 / "run_experiment.py")
+
+    assert module.SMALL_REGIME_MAX_BITS == 50
+    assert module.case_supported_by_interval_backend(
+        module.LadderCase("small", 50, module.gmpy2.mpz(1))
+    )
+    assert not module.case_supported_by_interval_backend(
+        module.LadderCase("large", 100, module.gmpy2.mpz(1))
+    )
 
 
 def test_fixture_builder_has_no_generation_or_classical_math_imports():

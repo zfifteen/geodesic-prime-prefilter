@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the RSA v2 reciprocal PGS deadline-lock experiment."""
+"""Run the RSA v2 PGS-first reciprocal anchor-surface experiment."""
 
 from __future__ import annotations
 
@@ -7,6 +7,7 @@ import argparse
 import json
 import sys
 from dataclasses import dataclass
+from functools import lru_cache
 from pathlib import Path
 
 import gmpy2
@@ -23,13 +24,13 @@ from z_band_prime_predictor.simple_pgs_generator import (  # noqa: E402
 )
 
 
-RULE_ID = "reciprocal_pgs_deadline_lock_v1"
-CHAMBER_RADIUS = gmpy2.mpz(1024)
+RULE_ID = "pgs_first_reciprocal_anchor_surface_v1"
+SMALL_REGIME_MAX_BITS = 50
 BALANCE_BAND = gmpy2.mpz(2)
 PGS_ENDPOINT_RADIUS = 16
 RULE_X_CANDIDATE_BOUND = 128
-RECURSIVE_DEPTH = 4
-DEADLINE_WIDTH_TOLERANCE = 1
+DEFAULT_CHUNK_WIDTH = 1_000_000
+DEFAULT_MAX_LOWER_ENDPOINTS = 100_000
 WHEEL_OPEN_RESIDUES_MOD30 = frozenset({1, 7, 11, 13, 17, 19, 23, 29})
 
 
@@ -43,26 +44,13 @@ class LadderCase:
 
 
 @dataclass(frozen=True)
-class CandidateRow:
-    """One public chamber coordinate and its reciprocal floor coordinate."""
-
-    x: gmpy2.mpz
-    y: gmpy2.mpz
-
-
-@dataclass(frozen=True)
 class LocalLock:
-    """One local PGSPG reset state around a candidate endpoint."""
+    """One local PGSPG reset state around a public endpoint."""
 
     value: gmpy2.mpz
-    nearest_endpoint: gmpy2.mpz | None
-    nearest_endpoint_distance: int | None
     previous_endpoint: gmpy2.mpz | None
     reset_endpoint: gmpy2.mpz | None
     reset_gap_offset: int | None
-    active_count: int | None
-    resolved_count: int | None
-    unresolved_count: int | None
     carrier_w: gmpy2.mpz | None
     carrier_d: int | None
     lock_carrier_offset: int | None
@@ -78,29 +66,35 @@ class LocalLock:
 
 
 @dataclass(frozen=True)
-class SurvivorRow:
-    """One ordered survivor row after the public PGS checks."""
+class AnchorRow:
+    """One two-sided PGS endpoint/reset survivor row."""
 
     rank: int
     x: gmpy2.mpz
     y: gmpy2.mpz
     lower_lock: LocalLock
     upper_lock: LocalLock
-    recursive_rounds_locked: int
-    deadline_locked: bool
-    deadline_lock_reason: str
     lower_transported_deadline_width: int | None
     upper_transported_deadline_width: int | None
 
 
 def mpz_to_int(value: gmpy2.mpz) -> int:
-    """Convert one GMP integer for existing local PGSPG helper calls."""
+    """Convert one GMP coordinate for the current exact small-regime backend."""
     return int(value)
+
+
+def case_supported_by_interval_backend(case: LadderCase) -> bool:
+    """Return whether the current exact interval backend supports one rung."""
+    return SMALL_REGIME_MAX_BITS >= case.bits
 
 
 def read_jsonl(path: Path) -> list[dict[str, object]]:
     """Read LF-delimited JSON rows."""
-    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+    return [
+        json.loads(line)
+        for line in path.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
 
 
 def write_json(path: Path, payload: dict[str, object]) -> None:
@@ -134,96 +128,72 @@ def load_cases(path: Path) -> list[LadderCase]:
 
 
 def wheel_open(value: gmpy2.mpz) -> bool:
-    """Return whether one integer sits in a residue class open to endpoints."""
+    """Return whether one integer is open under the fixed 30-wheel."""
     return int(value % 30) in WHEEL_OPEN_RESIDUES_MOD30
 
 
-def candidate_band(n_value: gmpy2.mpz) -> list[gmpy2.mpz]:
-    """Return the full public chamber around the integer square root of N."""
-    # The integer square root gives the public center of the semiprime chamber.
-    center = gmpy2.isqrt(n_value)
-    # The fixed radius defines the lower side of the public chamber.
-    lower = center - CHAMBER_RADIUS
-    # The fixed radius defines the upper side of the public chamber.
-    upper = center + CHAMBER_RADIUS
-    return [lower + offset for offset in range(mpz_to_int(upper - lower) + 1)]
-
-
 def balance_bounds(center: gmpy2.mpz) -> tuple[gmpy2.mpz, gmpy2.mpz]:
-    """Return the global balance interval around the square-root center."""
-    # Division by the balance band gives the smallest accepted balanced endpoint.
+    """Return the public balanced factor interval."""
+    # Dividing the square-root center gives the lower balanced endpoint.
     lower = center // BALANCE_BAND
-    # Multiplication by the balance band gives the largest accepted balanced endpoint.
+    # Multiplying the square-root center gives the upper balanced endpoint.
     upper = center * BALANCE_BAND
     return lower, upper
 
 
 def reciprocal_floor(n_value: gmpy2.mpz, x_value: gmpy2.mpz) -> gmpy2.mpz:
-    """Return the public reciprocal floor coordinate for one candidate."""
-    # The reciprocal floor maps one candidate to its public opposite-side coordinate.
+    """Return the public reciprocal coordinate for one lower endpoint."""
+    # The floor reciprocal maps a lower endpoint to the opposite side of N.
     return n_value // x_value
 
 
-def public_candidate_funnel(n_value: gmpy2.mpz) -> tuple[list[CandidateRow], dict[str, int]]:
-    """Apply the public chamber, balance, wheel, and reciprocal-window filters."""
-    # The integer square root fixes the public center for both sides of the chamber.
-    center = gmpy2.isqrt(n_value)
-    lower_balance, upper_balance = balance_bounds(center)
-    candidates = candidate_band(n_value)
-    post_balance: list[gmpy2.mpz] = []
-    post_wheel: list[CandidateRow] = []
-    reciprocal_window: list[CandidateRow] = []
-
-    for x_value in candidates:
-        if not lower_balance <= x_value <= upper_balance:
-            continue
-        post_balance.append(x_value)
-
-        if not wheel_open(x_value):
-            continue
-
-        y_value = reciprocal_floor(n_value, x_value)
-        if not lower_balance <= y_value <= upper_balance:
-            continue
-        if not wheel_open(y_value):
-            continue
-        post_wheel.append(CandidateRow(x_value, y_value))
-
-        if center - CHAMBER_RADIUS <= y_value <= center + CHAMBER_RADIUS:
-            reciprocal_window.append(CandidateRow(x_value, y_value))
-
-    return reciprocal_window, {
-        "initial_candidate_integers": len(candidates),
-        "post_balance_candidates": len(post_balance),
-        "post_wheel_candidates": len(post_wheel),
-        "reciprocal_window_candidates": len(reciprocal_window),
-    }
+def endpoint_values_descending(
+    lower: gmpy2.mpz,
+    upper: gmpy2.mpz,
+    chunk_width: int,
+    max_endpoints: int,
+) -> tuple[list[gmpy2.mpz], bool]:
+    """Return public endpoints while walking down from the square-root side."""
+    endpoints: list[gmpy2.mpz] = []
+    cursor = mpz_to_int(upper)
+    floor = mpz_to_int(lower)
+    while cursor >= floor and len(endpoints) < max_endpoints:
+        # The chunk lower bound moves the endpoint walk left in PGS space.
+        chunk_lo = max(floor, cursor - chunk_width + 1)
+        # The chunk upper bound is exclusive for interval divisor-count measurement.
+        chunk_hi = cursor + 1
+        counts = divisor_counts_segment(chunk_lo, chunk_hi)
+        for offset in range(len(counts) - 1, -1, -1):
+            if int(counts[offset]) == 2:
+                endpoints.append(gmpy2.mpz(chunk_lo + offset))
+                if len(endpoints) == max_endpoints:
+                    break
+        cursor = chunk_lo - 1
+    exhausted = cursor >= floor
+    return endpoints, exhausted
 
 
-def nearest_endpoint(value: gmpy2.mpz) -> tuple[gmpy2.mpz | None, int | None]:
-    """Return the nearest divisor-count endpoint in a local chamber."""
-    # The local endpoint chamber starts a fixed distance left of the candidate.
-    lo = max(2, mpz_to_int(value) - PGS_ENDPOINT_RADIUS)
-    # The local endpoint chamber ends a fixed distance right of the candidate.
-    hi = mpz_to_int(value) + PGS_ENDPOINT_RADIUS + 1
+def exact_endpoint_values(values: list[gmpy2.mpz]) -> set[str]:
+    """Return values that are exact endpoints using one measured interval."""
+    if not values:
+        return set()
+    # The minimum reciprocal value fixes the left edge of the endpoint field.
+    lo = min(mpz_to_int(value) for value in values)
+    # The maximum reciprocal value fixes the right edge of the endpoint field.
+    hi = max(mpz_to_int(value) for value in values) + 1
     counts = divisor_counts_segment(lo, hi)
-    endpoints = [
-        gmpy2.mpz(lo + offset)
-        for offset, divisor_count in enumerate(counts)
-        if int(divisor_count) == 2
-    ]
-    if not endpoints:
-        return None, None
-    # The nearest endpoint measures whether the candidate is itself endpoint-stable.
-    endpoint = min(endpoints, key=lambda item: (abs(mpz_to_int(item - value)), mpz_to_int(item)))
-    return endpoint, abs(mpz_to_int(endpoint - value))
+    endpoints: set[str] = set()
+    for value in values:
+        if int(counts[mpz_to_int(value) - lo]) == 2:
+            endpoints.add(str(value))
+    return endpoints
 
 
 def previous_endpoint(value: gmpy2.mpz) -> gmpy2.mpz | None:
-    """Return the nearest previous divisor-count endpoint below one value."""
+    """Return the previous public endpoint before one value."""
     hi = mpz_to_int(value)
     while hi > 2:
-        # The backward chunk finds the prior endpoint without using N.
+        # The backward PGSPG chunk finds the prior endpoint anchor.
         lo = max(2, hi - RULE_X_CANDIDATE_BOUND)
         counts = divisor_counts_segment(lo, hi)
         for offset in range(len(counts) - 1, -1, -1):
@@ -233,18 +203,19 @@ def previous_endpoint(value: gmpy2.mpz) -> gmpy2.mpz | None:
     return None
 
 
-def chamber_reset_certificate(anchor: gmpy2.mpz) -> dict[str, object] | None:
-    """Return the PGSPG chamber-reset certificate after one previous endpoint."""
-    return pgs_chamber_reset_state_certificate(mpz_to_int(anchor), RULE_X_CANDIDATE_BOUND)
-
-
-def local_lock(value: gmpy2.mpz) -> LocalLock:
-    """Return the local endpoint, reset, and reset-deadline state."""
-    endpoint, distance = nearest_endpoint(value)
-    anchor = previous_endpoint(value)
-    certificate = None if anchor is None else chamber_reset_certificate(anchor)
+@lru_cache(maxsize=200_000)
+def local_lock_int(value: int) -> LocalLock:
+    """Return the local PGSPG reset lock for one known endpoint value."""
+    value_mpz = gmpy2.mpz(value)
+    anchor = previous_endpoint(value_mpz)
+    certificate = None
+    if anchor is not None:
+        certificate = pgs_chamber_reset_state_certificate(
+            mpz_to_int(anchor),
+            RULE_X_CANDIDATE_BOUND,
+        )
     reset = None if certificate is None else gmpy2.mpz(int(certificate["q"]))
-    locked = endpoint == value and distance == 0 and reset == value
+    locked = reset == value_mpz
     carrier_w = None
     if certificate is not None and certificate["carrier_w"] is not None:
         carrier_w = gmpy2.mpz(int(certificate["carrier_w"]))
@@ -272,11 +243,11 @@ def local_lock(value: gmpy2.mpz) -> LocalLock:
         deadline_offset, deadline_kind = min(deadline_options)
     deadline_value = None
     if anchor is not None and deadline_offset is not None:
-        # The reset deadline value is the first local state boundary after reset.
+        # Adding the deadline offset gives the next local reset boundary.
         deadline_value = anchor + deadline_offset
     deadline_margin = None
     if reset_gap is not None and deadline_offset is not None:
-        # The reset margin is the local distance from the reset endpoint to the deadline.
+        # Subtracting the reset offset measures remaining reset freedom.
         deadline_margin = deadline_offset - reset_gap
     signature = None
     if certificate is not None:
@@ -287,15 +258,10 @@ def local_lock(value: gmpy2.mpz) -> LocalLock:
             f"deadline={deadline_kind}"
         )
     return LocalLock(
-        value=value,
-        nearest_endpoint=endpoint,
-        nearest_endpoint_distance=distance,
+        value=value_mpz,
         previous_endpoint=anchor,
         reset_endpoint=reset,
         reset_gap_offset=reset_gap,
-        active_count=None if certificate is None else int(certificate["active_count"]),
-        resolved_count=None if certificate is None else int(certificate["resolved_count"]),
-        unresolved_count=None if certificate is None else int(certificate["unresolved_count"]),
         carrier_w=carrier_w,
         carrier_d=None if certificate is None or certificate["carrier_d"] is None else int(certificate["carrier_d"]),
         lock_carrier_offset=None if certificate is None or certificate["lock_carrier_offset"] is None else int(certificate["lock_carrier_offset"]),
@@ -311,114 +277,121 @@ def local_lock(value: gmpy2.mpz) -> LocalLock:
     )
 
 
-def recursive_lock_rounds(n_value: gmpy2.mpz, x_value: gmpy2.mpz, y_value: gmpy2.mpz) -> int:
-    """Return how many reciprocal reset rounds one pair survives."""
-    rounds_locked = 0
-    current_x = x_value
-    current_y = y_value
-    for _round_index in range(1, RECURSIVE_DEPTH + 1):
-        lower = local_lock(current_x)
-        upper = local_lock(current_y)
-        if not (lower.locked and upper.locked):
-            break
-        # The lower side transported through the upper reset must return to the lower reset.
-        transported_x = n_value // upper.reset_endpoint
-        # The upper side transported through the lower reset must return to the upper reset.
-        transported_y = n_value // lower.reset_endpoint
-        if transported_x != lower.reset_endpoint or transported_y != upper.reset_endpoint:
-            break
-        rounds_locked += 1
-        current_x = lower.reset_endpoint
-        current_y = upper.reset_endpoint
-    return rounds_locked
+def local_lock(value: gmpy2.mpz) -> LocalLock:
+    """Return the cached local PGSPG reset lock for one known endpoint."""
+    return local_lock_int(mpz_to_int(value))
 
 
 def transported_deadline_width(n_value: gmpy2.mpz, lock: LocalLock) -> int | None:
-    """Return how wide one reset interval becomes under the reciprocal map."""
+    """Return the reciprocal width of one reset-to-deadline interval."""
     if lock.reset_endpoint is None or lock.reset_deadline_value is None:
         return None
-    # The reciprocal map sends the reset endpoint to the opposite-side coordinate.
+    # Mapping the reset endpoint through N gives its opposite-side image.
     reset_image = n_value // lock.reset_endpoint
-    # The reciprocal map sends the reset deadline to the opposite-side deadline image.
+    # Mapping the reset deadline through N gives the transported deadline image.
     deadline_image = n_value // lock.reset_deadline_value
     return abs(mpz_to_int(reset_image - deadline_image))
 
 
-def deadline_lock(
-    n_value: gmpy2.mpz,
-    lower: LocalLock,
-    upper: LocalLock,
-) -> tuple[bool, str, int | None, int | None]:
-    """Return whether two reset states form a reciprocal deadline lock."""
-    lower_width = transported_deadline_width(n_value, lower)
-    upper_width = transported_deadline_width(n_value, upper)
-    if lower.reset_signature != upper.reset_signature:
-        return False, "reset_signature_mismatch", lower_width, upper_width
-    if lower.reset_deadline_margin != upper.reset_deadline_margin:
-        return False, "reset_deadline_margin_mismatch", lower_width, upper_width
-    if lower_width is None or upper_width is None:
-        return False, "transported_deadline_missing", lower_width, upper_width
-    if abs(lower_width - upper_width) > DEADLINE_WIDTH_TOLERANCE:
-        return False, "transported_deadline_width_mismatch", lower_width, upper_width
-    return True, "reciprocal_deadline_lock", lower_width, upper_width
+def pgs_anchor_rows(
+    case: LadderCase,
+    max_lower_endpoints: int,
+    chunk_width: int,
+) -> tuple[list[AnchorRow], dict[str, object]]:
+    """Return the PGS-first reciprocal anchor surface for one public case."""
+    # The integer square root orients the lower and upper sides; it is not a gate.
+    center = gmpy2.isqrt(case.n)
+    lower_balance, upper_balance = balance_bounds(center)
+    lower_endpoints, budget_exhausted = endpoint_values_descending(
+        lower_balance,
+        center,
+        chunk_width,
+        max_lower_endpoints,
+    )
+    reciprocal_balance = 0
+    reciprocal_wheel = 0
+    endpoint_pair_rows: list[tuple[gmpy2.mpz, gmpy2.mpz]] = []
 
+    for x_value in lower_endpoints:
+        # The reciprocal floor gives the public opposite-side coordinate.
+        y_value = reciprocal_floor(case.n, x_value)
+        if not center <= y_value <= upper_balance:
+            continue
+        reciprocal_balance += 1
+        if not wheel_open(y_value):
+            continue
+        reciprocal_wheel += 1
+        endpoint_pair_rows.append((x_value, y_value))
 
-def survivor_rows(case: LadderCase) -> tuple[list[SurvivorRow], dict[str, int]]:
-    """Return all ordered recursive PGS survivors for one public case."""
-    candidates, counts = public_candidate_funnel(case.n)
-    survivors: list[SurvivorRow] = []
-    for row in candidates:
-        lower = local_lock(row.x)
-        upper = local_lock(row.y)
-        if not (lower.locked and upper.locked):
+    reciprocal_endpoint_values = exact_endpoint_values(
+        [y_value for _x_value, y_value in endpoint_pair_rows]
+    )
+    two_endpoint_rows = [
+        (x_value, y_value)
+        for x_value, y_value in endpoint_pair_rows
+        if str(y_value) in reciprocal_endpoint_values
+    ]
+
+    rows: list[AnchorRow] = []
+    upper_locked_rows = 0
+    for x_value, y_value in two_endpoint_rows:
+        lower_lock = local_lock(x_value)
+        upper_lock = local_lock(y_value)
+        if upper_lock.locked:
+            upper_locked_rows += 1
+        if not (lower_lock.locked and upper_lock.locked):
             continue
-        rounds = recursive_lock_rounds(case.n, row.x, row.y)
-        if rounds != RECURSIVE_DEPTH:
-            continue
-        deadline_ok, reason, lower_width, upper_width = deadline_lock(case.n, lower, upper)
-        survivors.append(
-            SurvivorRow(
+        rows.append(
+            AnchorRow(
                 rank=0,
-                x=row.x,
-                y=row.y,
-                lower_lock=lower,
-                upper_lock=upper,
-                recursive_rounds_locked=rounds,
-                deadline_locked=deadline_ok,
-                deadline_lock_reason=reason,
-                lower_transported_deadline_width=lower_width,
-                upper_transported_deadline_width=upper_width,
+                x=x_value,
+                y=y_value,
+                lower_lock=lower_lock,
+                upper_lock=upper_lock,
+                lower_transported_deadline_width=transported_deadline_width(case.n, lower_lock),
+                upper_transported_deadline_width=transported_deadline_width(case.n, upper_lock),
             )
         )
-    # The square-root distance ranking keeps the survivor ordering deterministic.
-    center = gmpy2.isqrt(case.n)
-    ranked = sorted(survivors, key=lambda item: (abs(mpz_to_int(item.x - center)), mpz_to_int(item.x)))
-    return [
-        SurvivorRow(
+
+    ranked = sorted(
+        rows,
+        key=lambda row: (abs(mpz_to_int(row.x - center)), mpz_to_int(row.x)),
+    )
+    ranked_rows = [
+        AnchorRow(
             rank=index,
             x=row.x,
             y=row.y,
             lower_lock=row.lower_lock,
             upper_lock=row.upper_lock,
-            recursive_rounds_locked=row.recursive_rounds_locked,
-            deadline_locked=row.deadline_locked,
-            deadline_lock_reason=row.deadline_lock_reason,
             lower_transported_deadline_width=row.lower_transported_deadline_width,
             upper_transported_deadline_width=row.upper_transported_deadline_width,
         )
         for index, row in enumerate(ranked, start=1)
-    ], counts
+    ]
+    counts: dict[str, object] = {
+        "center": str(center),
+        "balance_lower": str(lower_balance),
+        "balance_upper": str(upper_balance),
+        "max_lower_endpoints": max_lower_endpoints,
+        "lower_pgs_endpoints_seen": len(lower_endpoints),
+        "lower_endpoint_walk_budget_exhausted": budget_exhausted,
+        "lowest_endpoint_seen": None if not lower_endpoints else str(lower_endpoints[-1]),
+        "reciprocal_balance_rows": reciprocal_balance,
+        "reciprocal_wheel_rows": reciprocal_wheel,
+        "reciprocal_endpoint_rows": len(two_endpoint_rows),
+        "upper_locked_rows": upper_locked_rows,
+        "two_sided_pgs_lock_rows": len(ranked_rows),
+    }
+    return ranked_rows, counts
 
 
 def lock_to_json(lock: LocalLock, prefix: str) -> dict[str, object]:
-    """Return public local-lock fields with one side prefix."""
+    """Return local-lock fields with one side prefix."""
     return {
         f"{prefix}_previous_endpoint": None if lock.previous_endpoint is None else str(lock.previous_endpoint),
         f"{prefix}_reset_endpoint": None if lock.reset_endpoint is None else str(lock.reset_endpoint),
         f"{prefix}_reset_gap_offset": lock.reset_gap_offset,
-        f"{prefix}_active_count": lock.active_count,
-        f"{prefix}_resolved_count": lock.resolved_count,
-        f"{prefix}_unresolved_count": lock.unresolved_count,
         f"{prefix}_carrier_w": None if lock.carrier_w is None else str(lock.carrier_w),
         f"{prefix}_carrier_d": lock.carrier_d,
         f"{prefix}_lock_carrier_offset": lock.lock_carrier_offset,
@@ -433,8 +406,8 @@ def lock_to_json(lock: LocalLock, prefix: str) -> dict[str, object]:
     }
 
 
-def survivor_to_json(case: LadderCase, row: SurvivorRow) -> dict[str, object]:
-    """Return one ordered survivor as JSON-safe public fields."""
+def anchor_to_json(case: LadderCase, row: AnchorRow) -> dict[str, object]:
+    """Return one two-sided anchor row as JSON-safe public fields."""
     payload: dict[str, object] = {
         "case_id": case.case_id,
         "bits": case.bits,
@@ -442,11 +415,9 @@ def survivor_to_json(case: LadderCase, row: SurvivorRow) -> dict[str, object]:
         "rank": row.rank,
         "x": str(row.x),
         "y": str(row.y),
-        "recursive_rounds_locked": row.recursive_rounds_locked,
-        "deadline_locked": row.deadline_locked,
-        "deadline_lock_reason": row.deadline_lock_reason,
         "lower_transported_deadline_width": row.lower_transported_deadline_width,
         "upper_transported_deadline_width": row.upper_transported_deadline_width,
+        "resolver_status": "transported_deadline_invariant_not_derived",
         "rule_id": RULE_ID,
     }
     payload.update(lock_to_json(row.lower_lock, "lower"))
@@ -454,69 +425,76 @@ def survivor_to_json(case: LadderCase, row: SurvivorRow) -> dict[str, object]:
     return payload
 
 
-def result_row(case: LadderCase, survivors: list[SurvivorRow]) -> dict[str, object]:
-    """Return the inference result selected by the deadline lock."""
-    locked = [row for row in survivors if row.deadline_locked]
-    locked_pairs = {tuple(sorted((str(row.x), str(row.y)))) for row in locked}
-    if len(locked_pairs) != 1:
-        reason = "no_reciprocal_deadline_lock" if not locked_pairs else "multiple_reciprocal_deadline_locks"
-        return {
-            "case_id": case.case_id,
-            "bits": case.bits,
-            "N": str(case.n),
-            "status": "unresolved",
-            "unresolved_reason": reason,
-            "rule_id": RULE_ID,
-        }
-    lower, upper = next(iter(locked_pairs))
+def result_row(case: LadderCase, anchors: list[AnchorRow]) -> dict[str, object]:
+    """Return unresolved inference until the transported invariant is derived."""
+    reason = (
+        "no_two_sided_pgs_lock"
+        if not anchors
+        else "transported_deadline_invariant_not_derived"
+    )
     return {
         "case_id": case.case_id,
         "bits": case.bits,
         "N": str(case.n),
-        "status": "resolved",
-        "p": lower,
-        "q": upper,
+        "status": "unresolved",
+        "unresolved_reason": reason,
         "rule_id": RULE_ID,
     }
 
 
-def summary_row(case: LadderCase, counts: dict[str, int], survivors: list[SurvivorRow]) -> dict[str, object]:
+def summary_row(case: LadderCase, counts: dict[str, object], anchors: list[AnchorRow]) -> dict[str, object]:
     """Return one public funnel summary row."""
-    locked = [row for row in survivors if row.deadline_locked]
-    survivor_pairs = {tuple(sorted((str(row.x), str(row.y)))) for row in survivors}
-    locked_pairs = {tuple(sorted((str(row.x), str(row.y)))) for row in locked}
     return {
         "case_id": case.case_id,
         "bits": case.bits,
         "N": str(case.n),
-        "radius": str(CHAMBER_RADIUS),
         "balance_band": str(BALANCE_BAND),
         **counts,
-        "recursive_lock_survivors": len(survivors),
-        "ordered_survivors": len(survivors),
-        "unordered_survivors": len(survivor_pairs),
-        "deadline_lock_ordered_rows": len(locked),
-        "deadline_lock_pairs": len(locked_pairs),
+        "ordered_survivors": len(anchors),
+        "unordered_survivors": len({tuple(sorted((str(row.x), str(row.y)))) for row in anchors}),
+        "resolver_status": "transported_deadline_invariant_not_derived",
         "rule_id": RULE_ID,
     }
 
 
-def run_cases(cases: list[LadderCase]) -> tuple[list[dict[str, object]], list[dict[str, object]], list[dict[str, object]]]:
-    """Run every public case through the same global solver rule."""
+def run_cases(
+    cases: list[LadderCase],
+    max_lower_endpoints: int,
+    chunk_width: int,
+) -> tuple[list[dict[str, object]], list[dict[str, object]], list[dict[str, object]]]:
+    """Run every public case through the same PGS-first surface."""
     results: list[dict[str, object]] = []
     summaries: list[dict[str, object]] = []
     survivor_payloads: list[dict[str, object]] = []
     for case in cases:
-        survivors, counts = survivor_rows(case)
-        results.append(result_row(case, survivors))
-        summaries.append(summary_row(case, counts, survivors))
-        survivor_payloads.extend(survivor_to_json(case, row) for row in survivors)
+        if not case_supported_by_interval_backend(case):
+            empty_counts: dict[str, object] = {
+                "small_regime_max_bits": SMALL_REGIME_MAX_BITS,
+                "interval_backend_status": "gmp_interval_backend_required",
+                "two_sided_pgs_lock_rows": 0,
+            }
+            results.append(
+                {
+                    "case_id": case.case_id,
+                    "bits": case.bits,
+                    "N": str(case.n),
+                    "status": "unresolved",
+                    "unresolved_reason": "gmp_interval_backend_required",
+                    "rule_id": RULE_ID,
+                }
+            )
+            summaries.append(summary_row(case, empty_counts, []))
+            continue
+        anchors, counts = pgs_anchor_rows(case, max_lower_endpoints, chunk_width)
+        results.append(result_row(case, anchors))
+        summaries.append(summary_row(case, counts, anchors))
+        survivor_payloads.extend(anchor_to_json(case, row) for row in anchors)
     return results, summaries, survivor_payloads
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     """Parse command-line arguments."""
-    parser = argparse.ArgumentParser(description="Run the RSA v2 PGS deadline-lock experiment.")
+    parser = argparse.ArgumentParser(description="Run the RSA v2 PGS-first experiment.")
     parser.add_argument(
         "--cases",
         type=Path,
@@ -529,6 +507,18 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         default=Path(__file__).resolve().parent / "output",
         help="Directory for inference_rows.jsonl, survivor_rows.jsonl, and summary.json.",
     )
+    parser.add_argument(
+        "--max-lower-endpoints",
+        type=int,
+        default=DEFAULT_MAX_LOWER_ENDPOINTS,
+        help="PGS endpoint-walk budget from the square-root side.",
+    )
+    parser.add_argument(
+        "--chunk-width",
+        type=int,
+        default=DEFAULT_CHUNK_WIDTH,
+        help="Public endpoint-walk chunk width.",
+    )
     return parser.parse_args(argv)
 
 
@@ -537,7 +527,11 @@ def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     args.output_dir.mkdir(parents=True, exist_ok=True)
     cases = load_cases(args.cases)
-    results, summaries, survivors = run_cases(cases)
+    results, summaries, survivors = run_cases(
+        cases,
+        args.max_lower_endpoints,
+        args.chunk_width,
+    )
     write_jsonl(args.output_dir / "inference_rows.jsonl", results)
     write_jsonl(args.output_dir / "survivor_rows.jsonl", survivors)
     write_json(args.output_dir / "summary.json", {"cases": summaries})

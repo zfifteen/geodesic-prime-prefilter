@@ -1,91 +1,86 @@
 # RSA v2 Arithmetic Contract
 
-The 40-bit implementation is the first run of the RSA-scale arithmetic path.
-It is not a toy path.
+The live runner carries public coordinates as GMP integers, but its exact
+divisor-count interval backend is still small-regime.
 
-## GMP From The First Step
+## Current Boundary
 
-Use `gmpy2` for factorizer arithmetic:
+The runner uses `gmpy2.mpz` for:
 
 - `N`;
 - `isqrt(N)`;
-- ordered chamber coordinates;
+- balanced interval endpoints;
+- lower endpoint anchors;
 - reciprocal floor coordinates;
-- interval endpoints;
-- chamber anchors.
+- reset endpoints;
+- reset-deadline coordinates.
 
-The implementation may convert small values to Python `int` only when a library
-interface requires it and the value has already been produced by the GMP path.
-The logical arithmetic path remains GMP-compatible.
+The runner converts those coordinates to Python `int` only when calling the
+current repository interval-measurement helper.
 
-## No Divergent Low-Bit Path
+That helper is NumPy-backed and is not an RSA-260-scale GMP interval backend.
+The official runner therefore declares:
 
-Do not implement separate logic for 40-bit numbers.
+```text
+SMALL_REGIME_MAX_BITS = 50
+```
 
-The same functions that run the 40-bit case must also accept larger moduli. If a
-future optimization is needed, it must preserve the same interface and produce
-the same stage records.
+Rows above that limit return unresolved with:
+
+```text
+gmp_interval_backend_required
+```
+
+## No False GMP Claim
+
+Do not describe the current runner as GMP-only at the interval backend level.
+
+The correct statement is:
+
+```text
+GMP coordinates, small-regime exact interval backend.
+```
+
+## No Divergent Low-Bit Logic
+
+Do not add per-rung or per-bit selection branches.
+
+The small-regime guard is a backend capability boundary, not an alternate
+factorization algorithm. A future GMP interval backend must preserve the same
+PGS-first surface:
+
+```text
+endpoint walk
+-> reciprocal transport
+-> reciprocal endpoint check
+-> two-sided PGSPG reset state
+-> transported deadline facts
+```
 
 ## Batch-First Measurement
 
-The factorizer should not measure local chambers one candidate at a time when
-several candidates need overlapping intervals.
+Measure public endpoint fields in batches when possible:
 
-The intended sequence is:
+- lower endpoint walk by contiguous chunks;
+- reciprocal endpoint check by one measured interval over transported values;
+- local reset state only after both sides are endpoints.
 
-```text
-candidate batch
--> cheap public filters
--> reciprocal floors
--> chamber interval jobs
--> deduplicated / merged interval measurement
--> PGSPG state rows
-```
-
-The first 40-bit implementation may use small batches, but it should keep the
-batch shape explicit so higher regimes do not require a redesign.
-
-## Interval Deduplication
-
-Before chamber measurement, collect the intervals required by candidate
-analysis.
-
-If two chamber intervals overlap, measure the shared region once and reuse the
-result.
-
-This matters because reciprocal candidate surfaces can ask for many nearby
-lower and upper chamber states.
-
-## Avoid Unneeded Expensive Facts
-
-The factorizer needs decision facts, not complete factorization records.
-
-Prefer measuring only what the PGS chamber rule needs:
-
-- wheel-open status;
-- endpoint-like divisor-count state;
-- selected-integer / carrier state;
-- lower-divisor threat state;
-- chamber-reset endpoint state.
-
-Do not compute a full factorization when a capped divisor-count comparison is
-sufficient for the rule being applied.
+Do not measure local reset chambers for arbitrary non-endpoint candidates.
 
 ## Arithmetic Comments
 
-Every arithmetic operation in factorizer code must have a plain-language
-comment explaining the quantity being computed.
+Every nontrivial arithmetic operation in factorizer code must have a plain
+language comment.
 
 Required comments include:
 
 - the integer square root of `N`;
-- the full chamber interval around `isqrt(N)`;
-- the reciprocal floor `N // x`;
-- reciprocal reset-deadline transport;
-- any conversion from `gmpy2.mpz` to Python `int`;
-- every divisor-count or chamber-state measurement.
-
-Comments should explain the arithmetic, not narrate the code.
+- balanced interval construction;
+- endpoint-walk chunk boundaries;
+- reciprocal floor `N // x`;
+- reset-deadline transport;
+- conversion from `gmpy2.mpz` to Python `int`;
+- divisor-count or chamber-state measurement.
 
 ## Forbidden Arithmetic Shortcuts
 
