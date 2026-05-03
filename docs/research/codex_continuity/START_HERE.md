@@ -97,13 +97,13 @@ first-descent probe, a scale and reset-profile probe chain, residue-pressure
 notes, and one current goal note:
 
 ```text
-docs/research/collatz_pgs_goal.md
-docs/research/collatz_pgs_first_descent_probe.md
-docs/research/collatz_pgs_same_gap_scale_probe.md
-docs/research/collatz_pgs_reset_length_strata_probe.md
-docs/research/collatz_pgs_below_witness_family_probe.md
-docs/research/collatz_pgs_terminal_adjacent_residue_probe.md
-docs/research/collatz_pgs_grok_residue_pressure.md
+experiments/collatz/docs/collatz_pgs_goal.md
+experiments/collatz/docs/collatz_pgs_first_descent_probe.md
+experiments/collatz/docs/collatz_pgs_same_gap_scale_probe.md
+experiments/collatz/docs/collatz_pgs_reset_length_strata_probe.md
+experiments/collatz/docs/collatz_pgs_below_witness_family_probe.md
+experiments/collatz/docs/collatz_pgs_terminal_adjacent_residue_probe.md
+experiments/collatz/docs/collatz_pgs_grok_residue_pressure.md
 ```
 
 The measured `3 <= s <= 19999` odd-seed surface shows a strong prime-endpoint
