@@ -89,6 +89,12 @@ def test_run_probe_uses_exact_step_and_final_v2_matching(tmp_path):
         CLASS_NO_WITNESS: 2,
     }
     assert summary["terminal_vs_no_witness"]["matched_strata_count"] == 1
+    top_row = summary["terminal_vs_no_witness"]["top_positive_strata"][0]
+    assert (
+        "matched_weighted_mean_of_stratum_median_delta_contribution"
+        in top_row
+    )
+    assert "matched_weighted_median_delta_contribution" not in top_row
     assert (
         summary["terminal_vs_no_witness"][
             "weighted_mean_of_stratum_median_reset_delta"

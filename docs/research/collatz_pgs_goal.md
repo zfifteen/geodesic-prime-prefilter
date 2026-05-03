@@ -5,9 +5,9 @@
 Determine whether PGS-selected same-gap witness contact predicts Collatz
 first-descent reset behavior.
 
-Current working target: determine whether the reset effect is specifically
-carried by terminal-source witness contact after matching on exact odd-step
-length and final transition `v2`.
+Current working target: determine whether exact terminal witness hits carry
+the terminal reset profile more strongly than adjacent projected terminal hits
+after exact-step and final transition `v2` matching.
 
 The object under study is the accelerated odd Collatz map:
 
@@ -69,6 +69,14 @@ stratum median reset delta `0.33031631110499143` and ratio
 positive against no-witness blocks with matched-weighted mean delta
 `0.3036864937903315`, so the effect is not terminal-only.
 
+The terminal geometry probe found that positive terminal carriers are a
+smaller, sharper subset. They carry matched weight share
+`0.2431613157089351` and weighted mean of stratum median reset delta
+`1.7526101771071119`; negative terminal carriers carry matched weight share
+`0.7568386842910649` and delta `-0.12664612350652749`. Positive carriers also
+have higher terminal exact-witness hit rate: `0.8720123654427132` versus
+`0.7452117085795563`.
+
 The `20000` first-descent surface measured:
 
 | Measurement | Ratio |
@@ -94,14 +102,14 @@ block variable.
 1. Same-gap witness enrichment at `1000000`: complete.
 2. Reset-profile split by witness-contact block class: complete.
 3. Exact odd-step matched reset comparison: complete.
-4. Carrier-strata and coarse `v2` composition probe: complete in this
-   iteration.
-5. PGS source-position pattern inside favorable carrier strata: complete in
-   this iteration.
+4. Carrier-strata and coarse `v2` composition probe: complete.
+5. PGS source-position pattern inside favorable carrier strata: complete.
 6. Terminal witness-contact split under exact-step and final-`v2` matching:
-   complete in this iteration.
+   complete.
 7. Terminal-contact geometry by reset magnitude or final-source prime-gap
-   state: next.
+   state: complete.
+8. Exact terminal witness hits versus adjacent projected terminal hits under
+   exact-step and final-`v2` matching: next.
 
 ## Primary Question
 
@@ -173,6 +181,12 @@ The terminal contact decomposition probe exists:
 benchmarks/python/predictor/collatz_pgs_terminal_contact_decomposition_probe.py
 ```
 
-The next question is whether terminal PGS contact contributes through a small
-number of high-reset carrier strata or through a stable local
-endpoint/witness geometry.
+The terminal geometry probe exists:
+
+```text
+benchmarks/python/predictor/collatz_pgs_terminal_geometry_probe.py
+```
+
+The next question is whether exact terminal witness hits carry the terminal
+reset profile more strongly than adjacent projected terminal hits after
+exact-step and final-`v2` matching.
