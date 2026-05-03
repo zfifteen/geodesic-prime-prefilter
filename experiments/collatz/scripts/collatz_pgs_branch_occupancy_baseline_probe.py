@@ -89,13 +89,22 @@ def candidate_record(
         and terminal_state.next_prime == rank["next_prime"]
         and terminal_state.witness == witness
     )
+    if terminal_state.is_prime:
+        terminal_geometry = "terminal_prime_endpoint"
+    elif below_minimizer_hit:
+        terminal_geometry = "composite_below_minimizer"
+    else:
+        terminal_geometry = "composite_nonhit"
     return {
         "seed": seed,
         "branch": branch,
         "final_v2": final_v2,
         "witness": witness,
+        "witness_gap_offset": witness - int(rank["prev_prime"]),
         "terminal_source": terminal_source,
         "terminal_source_is_prime": terminal_state.is_prime,
+        "terminal_source_gap_offset": terminal_source - int(rank["prev_prime"]),
+        "terminal_geometry": terminal_geometry,
         "below_minimizer_hit": below_minimizer_hit,
         **rank,
     }
@@ -210,6 +219,11 @@ def run_probe(limit: int, output_dir: Path) -> dict[str, object]:
         records,
         ("final_v2", "branch", "leftmost_minimizer", "terminal_source_is_prime"),
     )
+    terminal_geometry_rows = grouped_rows(records, ("final_v2", "branch", "terminal_geometry"))
+    leftmost_gap_width_rows = grouped_rows(
+        records,
+        ("final_v2", "branch", "leftmost_minimizer", "terminal_source_is_prime", "gap_width_bin"),
+    )
     branch_totals = grouped_rows(records, ("branch",))
     hit_counts = Counter(int(record["branch"]) for record in records if record["below_minimizer_hit"])
     candidate_counts = Counter(int(record["branch"]) for record in records)
@@ -240,6 +254,8 @@ def run_probe(limit: int, output_dir: Path) -> dict[str, object]:
     write_jsonl(lower_competitor_rows, output_dir / "lower_competitor_rows.jsonl")
     write_jsonl(terminal_source_rows, output_dir / "terminal_source_rows.jsonl")
     write_jsonl(leftmost_terminal_rows, output_dir / "leftmost_terminal_rows.jsonl")
+    write_jsonl(terminal_geometry_rows, output_dir / "terminal_geometry_rows.jsonl")
+    write_jsonl(leftmost_gap_width_rows, output_dir / "leftmost_gap_width_rows.jsonl")
     return summary
 
 
