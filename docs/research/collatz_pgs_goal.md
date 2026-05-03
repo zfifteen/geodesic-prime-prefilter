@@ -34,6 +34,12 @@ The same-gap scale probe reached `1000000`:
 Witness-contact blocks had median reset strength `2.078632113914513`; no-
 witness-contact blocks had median reset strength `1.8728822607686915`.
 
+The reset length-strata probe compared blocks only inside exact
+`odd_steps_to_first_descent` strata. Witness-contact median reset was higher in
+`19` matched strata; no-witness-contact median reset was higher in `18` matched
+strata. The matched-weighted median reset ratio was `1.6163417109769`, and the
+matched-weighted P90 reset delta was `-0.028322861082362694`.
+
 The `20000` first-descent surface measured:
 
 | Measurement | Ratio |
@@ -100,11 +106,12 @@ The same-gap-only scale probe exists:
 benchmarks/python/predictor/collatz_pgs_same_gap_scale_probe.py
 ```
 
-The next artifact should stratify the reset profile by block length:
+The reset length-strata probe exists:
 
 ```text
 benchmarks/python/predictor/collatz_pgs_reset_length_strata_probe.py
 ```
 
-The question is whether witness-contact blocks retain reset-strength separation
-inside matched odd-step strata.
+The next question is which exact step strata carry the matched-weighted median
+reset effect and whether those strata share a stable `v2` composition or PGS
+position pattern.

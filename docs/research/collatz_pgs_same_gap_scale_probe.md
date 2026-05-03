@@ -59,3 +59,9 @@ strength.
 
 Separate the reset-profile effect from block-length. Compare witness-contact
 and no-witness-contact blocks within matched odd-step strata.
+
+The matched odd-step probe result is recorded in:
+
+```text
+docs/research/collatz_pgs_reset_length_strata_probe.md
+```
