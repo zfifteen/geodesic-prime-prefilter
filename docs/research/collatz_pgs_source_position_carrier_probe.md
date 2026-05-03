@@ -49,18 +49,32 @@ The top unfavorable exact-step carriers are:
 | `5` | `-1.0531645196398938` | `0.0` | `0.2508537085097664` | `0.2944952875290261` |
 | `6` | `-1.40452199173247` | `0.0` | `0.21138211382113822` | `0.2768506632434745` |
 
+## Follow-On Result
+
+The follow-on terminal contact decomposition probe matched blocks inside exact
+`(odd_steps_to_first_descent, final_v2)` strata:
+
+```text
+docs/research/collatz_pgs_terminal_contact_decomposition_probe.md
+```
+
+Terminal witness contact remained positive against no-witness blocks with
+matched-weighted mean of stratum median reset delta `0.33031631110499143`.
+Nonterminal-only witness contact also remained mildly positive with delta
+`0.3036864937903315`, so the effect is not terminal-only.
+
 ## Disposition
 
 The reset line has advanced from class enrichment to a source-position
-mechanism candidate. Favorable blocks are not merely witness-contact blocks;
-their contact is more often at the source that performs the first-descent
-reset, and that source more often has a larger terminal `v2` than the matched
-no-witness class.
+mechanism candidate, and then through a final-`v2` control. Favorable blocks
+are not merely witness-contact blocks; their contact is more often at the
+source that performs the first-descent reset. The terminal split keeps that
+mechanism candidate alive while preserving evidence for a broader block
+geometry effect.
 
-The next direct question is whether the terminal witness-contact effect alone
-accounts for the favorable reset profile, or whether nonterminal witness
-contact still carries independent reset information after exact-step and
-final-`v2` matching.
+The next direct question is whether terminal PGS contact contributes through a
+small number of high-reset carrier strata or through a stable local
+endpoint/witness geometry.
 
 ## Artifact Surface
 

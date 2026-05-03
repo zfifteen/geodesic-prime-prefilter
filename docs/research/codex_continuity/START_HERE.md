@@ -136,5 +136,14 @@ strata also carried matched-weighted median final-`v2` delta
 `0.5953211176443776`, while unfavorable strata were nearly flat at
 `0.004912937401824805`.
 
-The next direct question is whether terminal witness contact alone accounts
-for the favorable reset profile after exact-step and final-`v2` matching.
+The terminal contact decomposition probe matched blocks inside exact
+`(odd_steps_to_first_descent, final_v2)` strata. Terminal witness contact
+remained positive against no-witness blocks with matched-weighted mean of
+stratum median reset delta `0.33031631110499143` and ratio
+`1.0401652897967644`. Nonterminal-only witness contact also remained mildly
+positive against no-witness blocks with matched-weighted mean delta
+`0.3036864937903315`, so the effect is not terminal-only.
+
+The next direct question is whether terminal PGS contact contributes through a
+small number of high-reset carrier strata or through a stable local
+endpoint/witness geometry.
