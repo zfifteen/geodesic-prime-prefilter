@@ -5,6 +5,10 @@
 Determine whether PGS-selected same-gap witness contact predicts Collatz
 first-descent reset behavior.
 
+Current working target: determine whether the reset effect is specifically
+carried by terminal-source witness contact after matching on exact odd-step
+length and final transition `v2`.
+
 The object under study is the accelerated odd Collatz map:
 
 $$C(n)=\frac{3n+1}{2^{v_2(3n+1)}}$$
@@ -57,6 +61,14 @@ strata also carried matched-weighted median final-`v2` delta
 `0.5953211176443776`, while unfavorable strata were nearly flat at
 `0.004912937401824805`.
 
+The terminal contact decomposition probe matched blocks inside exact
+`(odd_steps_to_first_descent, final_v2)` strata. Terminal witness contact
+remained positive against no-witness blocks with matched-weighted mean of
+stratum median reset delta `0.33031631110499143` and ratio
+`1.0401652897967644`. Nonterminal-only witness contact also remained mildly
+positive against no-witness blocks with matched-weighted mean delta
+`0.3036864937903315`, so the effect is not terminal-only.
+
 The `20000` first-descent surface measured:
 
 | Measurement | Ratio |
@@ -87,7 +99,9 @@ block variable.
 5. PGS source-position pattern inside favorable carrier strata: complete in
    this iteration.
 6. Terminal witness-contact split under exact-step and final-`v2` matching:
-   next.
+   complete in this iteration.
+7. Terminal-contact geometry by reset magnitude or final-source prime-gap
+   state: next.
 
 ## Primary Question
 
@@ -153,5 +167,12 @@ The source-position carrier probe exists:
 benchmarks/python/predictor/collatz_pgs_source_position_carrier_probe.py
 ```
 
-The next question is whether terminal witness contact alone accounts for the
-favorable reset profile after exact-step and final-`v2` matching.
+The terminal contact decomposition probe exists:
+
+```text
+benchmarks/python/predictor/collatz_pgs_terminal_contact_decomposition_probe.py
+```
+
+The next question is whether terminal PGS contact contributes through a small
+number of high-reset carrier strata or through a stable local
+endpoint/witness geometry.
