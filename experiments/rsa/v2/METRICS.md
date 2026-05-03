@@ -1,7 +1,7 @@
 # RSA v2 Metrics Contract
 
-The live runner reports the PGS-first reciprocal anchor surface. It does not
-claim a resolved factor pair.
+The live runner reports one reciprocal PGSPG certificate pair per public case.
+It does not claim a resolved factor pair unless the certificates mutually close.
 
 ## Required Summary Fields
 
@@ -12,60 +12,40 @@ Each run writes `summary.json` with one row per public case.
 | `case_id` | Public case identifier |
 | `bits` | Public modulus bit size |
 | `N` | Public modulus |
-| `balance_band` | Global balance-band constant |
 | `center` | `isqrt(N)`, used for orientation only |
-| `balance_lower` | Lower public balanced endpoint |
-| `balance_upper` | Upper public balanced endpoint |
-| `max_lower_endpoints` | Endpoint-walk budget from the square-root side |
-| `lower_pgs_endpoints_seen` | Count of lower endpoints measured by the walk |
-| `lower_endpoint_walk_budget_exhausted` | Whether the walk stopped by budget before the lower balance edge |
-| `lowest_endpoint_seen` | Leftmost endpoint reached by the walk |
-| `reciprocal_balance_rows` | Transported rows whose `floor(N / x)` is on the upper balanced side |
-| `reciprocal_wheel_rows` | Transported rows open under the fixed 30-wheel |
-| `reciprocal_endpoint_rows` | Rows where both sides are endpoints |
-| `upper_locked_rows` | Rows where the upper endpoint is a PGSPG reset endpoint |
-| `two_sided_pgs_lock_rows` | Rows where both endpoints are PGSPG reset endpoints |
-| `ordered_survivors` | Ordered two-sided PGS lock rows |
-| `unordered_survivors` | Canonical unordered two-sided PGS lock pairs |
-| `resolver_status` | Current resolver state |
-| `rule_id` | Surface rule identifier |
+| `balance_band` | Global balance-band constant |
+| `closure_status` | Certificate-pair result state |
+| `lower_certificate_present` | Whether the lower PGSPG certificate exists |
+| `upper_certificate_present` | Whether the upper PGSPG certificate exists |
+| `rule_id` | Certificate-pair rule identifier |
 
 ## Required Survivor Fields
 
-Each survivor row records a two-sided PGSPG reset lock:
+Each survivor row records a public certificate pair:
 
 - `case_id`;
-- `rank`;
-- `x`;
-- `y`;
-- previous endpoint on each side;
-- reset endpoint on each side;
-- carrier state on each side;
-- tail and threat fields on each side;
-- reset-deadline value and margin on each side;
+- `bits`;
+- `N`;
+- `closure_status`;
+- transported reset endpoints;
 - transported reset-to-deadline widths;
-- `resolver_status`.
+- lower certificate fields;
+- upper certificate fields when present;
+- `rule_id`.
 
-Survivor rows may contain final candidate values because they are emitted by
-public inference. They must not contain audit-only labels or audit status.
+Survivor rows may contain public reset endpoints because inference derived
+them. They must not contain audit-only labels or audit status.
 
-## Resolver Status
+## Closure Status
 
-The live resolver status is:
+The current unresolved status is:
 
 ```text
-transported_deadline_invariant_not_derived
+unresolved_by_certificate_pair_not_closed
 ```
 
-This means the PGS surface exists but the final selection invariant is not yet
-reviewed.
-
-## Ranking
-
-Rank rows deterministically for reproducibility.
-
-The current rank key is distance from `isqrt(N)`, then lower coordinate. This
-ordering is not evidence of correctness. It is only a stable display order.
+This means public PGSPG state exists, but the certificate pair did not satisfy
+the current strict reciprocal closure candidate.
 
 ## Acceptance For Current V2
 
@@ -74,11 +54,13 @@ The current v2 surface is acceptable if:
 1. inference reads only public case rows;
 2. PGS state is derived by code;
 3. fixed-radius candidate-band metrics are absent;
-4. stationary recursive-lock metrics are absent;
-5. raw deadline-margin equality is not used as a resolver;
-6. the runner returns unresolved until the transported invariant is derived;
-7. audit remains physically separate;
-8. all text artifacts use LF line endings.
+4. endpoint-budget metrics are absent;
+5. stationary recursive-lock metrics are absent;
+6. raw deadline-margin equality is not used as a resolver;
+7. product closure is not used as a resolver;
+8. the runner returns unresolved when certificate closure fails;
+9. audit remains physically separate;
+10. all text artifacts use LF line endings.
 
 ## Scaling Signal
 
@@ -86,4 +68,4 @@ The current runner is not RSA-260-ready. It has a small-regime exact interval
 backend.
 
 The next scaling signal is a GMP interval backend that preserves the same
-surface fields without changing selection logic.
+certificate fields without changing selection logic.

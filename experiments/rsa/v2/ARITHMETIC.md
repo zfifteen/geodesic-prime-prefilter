@@ -9,8 +9,8 @@ The runner uses `gmpy2.mpz` for:
 
 - `N`;
 - `isqrt(N)`;
-- balanced interval endpoints;
-- lower endpoint anchors;
+- balanced side checks;
+- endpoint anchors;
 - reciprocal floor coordinates;
 - reset endpoints;
 - reset-deadline coordinates.
@@ -18,8 +18,8 @@ The runner uses `gmpy2.mpz` for:
 The runner converts those coordinates to Python `int` only when calling the
 current repository interval-measurement helper.
 
-That helper is NumPy-backed and is not an RSA-260-scale GMP interval backend.
-The official runner therefore declares:
+That helper is not an RSA-260-scale GMP interval backend. The official runner
+therefore declares:
 
 ```text
 SMALL_REGIME_MAX_BITS = 50
@@ -47,23 +47,22 @@ Do not add per-rung or per-bit selection branches.
 
 The small-regime guard is a backend capability boundary, not an alternate
 factorization algorithm. A future GMP interval backend must preserve the same
-PGS-first surface:
+certificate-pair surface:
 
 ```text
-endpoint walk
+lower PGSPG certificate
 -> reciprocal transport
--> reciprocal endpoint check
--> two-sided PGSPG reset state
--> transported deadline facts
+-> upper PGSPG certificate
+-> reciprocal certificate closure
 ```
 
 ## Batch-First Measurement
 
 Measure public endpoint fields in batches when possible:
 
-- lower endpoint walk by contiguous chunks;
-- reciprocal endpoint check by one measured interval over transported values;
-- local reset state only after both sides are endpoints.
+- previous endpoint discovery by contiguous chunks;
+- local reset state only from endpoint anchors;
+- reciprocal transport only from PGSPG reset endpoints.
 
 Do not measure local reset chambers for arbitrary non-endpoint candidates.
 
@@ -75,8 +74,8 @@ language comment.
 Required comments include:
 
 - the integer square root of `N`;
-- balanced interval construction;
-- endpoint-walk chunk boundaries;
+- balanced side checks;
+- endpoint chunk boundaries;
 - reciprocal floor `N // x`;
 - reset-deadline transport;
 - conversion from `gmpy2.mpz` to Python `int`;
@@ -91,6 +90,5 @@ Do not use:
 - direct factorization APIs;
 - primality APIs as endpoint sources;
 - random candidate generation;
-- answer-bearing precomputed state rows.
-
-Product closure must not be used as the contraction rule.
+- answer-bearing precomputed state rows;
+- product closure as the contraction rule.
