@@ -20,6 +20,7 @@ CASE_ID = "rsa_v2_40bit_static_001"
 N_VALUE = "1099507433251"
 P_VALUE = "1048559"
 Q_VALUE = "1048589"
+CASE_50_ID = "rsa_v2_50bit_static_001"
 RULE_ID = "reciprocal_pgs_deadline_lock_v1"
 GENERATED_50_N = "1027435935526951"
 GENERATED_50_P = "30729371"
@@ -117,10 +118,16 @@ def test_ladder_spec_is_public_and_contains_no_audit_factors():
                 "case_id": CASE_ID,
                 "description": "40-bit calibration rung for reciprocal PGS deadline-lock machinery.",
                 "N": N_VALUE,
+            },
+            {
+                "case_id": CASE_50_ID,
+                "description": "50-bit deterministic RSA-like ladder rung generated outside the solver.",
+                "N": GENERATED_50_N,
             }
         ]
     }
-    assert {"p", "q"}.isdisjoint(payload["cases"][0])
+    for row in payload["cases"]:
+        assert {"p", "q"}.isdisjoint(row)
 
 
 def test_fixture_builder_reads_specs_instead_of_python_constants(tmp_path):
@@ -189,9 +196,16 @@ def test_public_case_contains_only_public_rung_data(tmp_path):
             "bits": 40,
             "description": "40-bit calibration rung for reciprocal PGS deadline-lock machinery.",
             "N": N_VALUE,
+        },
+        {
+            "case_id": CASE_50_ID,
+            "bits": 50,
+            "description": "50-bit deterministic RSA-like ladder rung generated outside the solver.",
+            "N": GENERATED_50_N,
         }
     ]
-    assert {"p", "q", "radius", "balance_band"}.isdisjoint(rows[0])
+    for row in rows:
+        assert {"p", "q", "radius", "balance_band"}.isdisjoint(row)
 
 
 def test_runner_reduces_static_40_bit_rung_to_two_deadline_lock_rows(tmp_path):
@@ -212,12 +226,24 @@ def test_runner_reduces_static_40_bit_rung_to_two_deadline_lock_rows(tmp_path):
             "p": P_VALUE,
             "q": Q_VALUE,
             "rule_id": RULE_ID,
+        },
+        {
+            "case_id": CASE_50_ID,
+            "bits": 50,
+            "N": GENERATED_50_N,
+            "status": "unresolved",
+            "unresolved_reason": "no_reciprocal_deadline_lock",
+            "rule_id": RULE_ID,
         }
     ]
     assert summary["cases"][0]["reciprocal_window_candidates"] == 204
     assert summary["cases"][0]["recursive_lock_survivors"] == 10
     assert summary["cases"][0]["deadline_lock_ordered_rows"] == 2
     assert summary["cases"][0]["deadline_lock_pairs"] == 1
+    assert summary["cases"][1]["reciprocal_window_candidates"] == 0
+    assert summary["cases"][1]["recursive_lock_survivors"] == 0
+    assert summary["cases"][1]["deadline_lock_ordered_rows"] == 0
+    assert summary["cases"][1]["deadline_lock_pairs"] == 0
     assert [row["deadline_locked"] for row in survivors].count(True) == 2
 
 
@@ -275,9 +301,17 @@ def test_audit_passes_only_with_separate_factor_file(tmp_path):
             "N": N_VALUE,
             "audit_integrity_status": "integrity_pass",
             "inference_audit_status": "inference_audit_pass",
+        },
+        {
+            "case_id": CASE_50_ID,
+            "bits": "50",
+            "N": GENERATED_50_N,
+            "audit_integrity_status": "integrity_pass",
+            "inference_audit_status": "inference_audit_fail",
         }
     ]
-    assert {"p", "q"}.isdisjoint(rows[0])
+    for row in rows:
+        assert {"p", "q"}.isdisjoint(row)
 
 
 def test_runner_source_has_no_forbidden_constructs_or_hidden_endpoints():
