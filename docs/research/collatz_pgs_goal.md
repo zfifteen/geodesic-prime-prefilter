@@ -5,8 +5,9 @@
 Determine whether PGS-selected same-gap witness contact predicts Collatz
 first-descent reset behavior.
 
-Current working target: determine whether the below-witness terminal carrier
-remains stable under deterministic stratum-level sign and tail checks.
+Current working target: decompose below-vs-no-witness carrier families by exact
+steps and final `v2` to locate the positive median contribution and the
+negative P90/P99 tail reversal.
 
 The object under study is the accelerated odd Collatz map:
 
@@ -96,6 +97,15 @@ delta `0.48311171458205104` and ratio `1.0866506651606216`. Above-witness
 terminal hits did not carry the median-reset delta against no-witness blocks:
 their delta was `-0.20290860147945028`.
 
+The below-witness stability probe kept the same exact
+`(odd_steps_to_first_descent, final_v2)` matching and measured median, P90, and
+P99 reset-strength deltas. Below-witness terminal hits were stable against
+above-witness terminal hits at all three levels: median delta
+`0.9934374958512522`, P90 delta `0.9997759684812527`, and P99 delta
+`0.9754731838240228`. Against no-witness blocks, below-witness contact was
+median-positive with delta `0.48311171458205104`, but tail-negative with P90
+delta `-0.06565152576687666` and P99 delta `-0.08685398078967067`.
+
 The `20000` first-descent surface measured:
 
 | Measurement | Ratio |
@@ -131,7 +141,8 @@ block variable.
    exact-step and final-`v2` matching: complete.
 9. Adjacent terminal side split under exact-step and final-`v2` matching:
    complete.
-10. Below-witness terminal carrier sign and tail-stability check: next.
+10. Below-witness terminal carrier sign and tail-stability check: complete.
+11. Below-vs-no-witness exact carrier-family decomposition: next.
 
 ## Primary Question
 
@@ -221,5 +232,12 @@ The terminal adjacent-side probe exists:
 benchmarks/python/predictor/collatz_pgs_terminal_adjacent_side_probe.py
 ```
 
-The next question is whether the below-witness terminal carrier remains stable
-under deterministic stratum-level sign and tail checks.
+The below-witness stability probe exists:
+
+```text
+benchmarks/python/predictor/collatz_pgs_below_witness_stability_probe.py
+```
+
+The next question is which exact-step and final-`v2` carrier families create
+the positive below-vs-no-witness median contribution, and which families create
+the negative P90/P99 tail reversal.
