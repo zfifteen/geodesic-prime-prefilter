@@ -11,5 +11,6 @@ tests/performance-comparisons/bouncycastle-keygen-baseline/vendor/bc-java-r1rv83
 tests/performance-comparisons/bouncycastle-keygen-baseline/vendor/bc-java-r1rv83-rsa-upper-band-v1
 tests/performance-comparisons/bouncycastle-keygen-baseline/vendor/bc-java-r1rv83-dci-prefilter-v1
 experiments/rule_x_logic_engine/results_11_100000_b128_label_*/candidate_records.csv
+output/collatz_pgs_same_gap_scale_probe/block_rows.jsonl
 # OTHER
 AGENTS.md
