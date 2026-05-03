@@ -10,7 +10,11 @@ short-block terminal-residue families algebraically. The reset-certificate
 experiment has measured same-gap enrichment, separated the reset profiles,
 localized the positive median carrier to below-minimizer terminal adjacency,
 and put that terminal-adjacent carrier into an exact Collatz residue normal
-form.
+form. The exact 3-step, final-`v2` `4` and `8` surface has now reduced to a
+two-branch inverse formula. The universal branch-selection version is false:
+a targeted inverse scan through odd seeds `<= 100000000` found branch-1
+counterexamples. The live target is now the branch-occupancy imbalance:
+below-minimizer hits strongly favor the doubled reset branch.
 
 The object under study is the accelerated odd Collatz map:
 
@@ -188,6 +192,50 @@ $$w \equiv -4\cdot 3^{-1}\pmod {2^{k}}$$
 This gives terminal adjacent PGS contact its exact Collatz residue normal form
 on the PGS witness.
 
+The short-block reset candidate probe extracted the exact 3-step, final-`v2`
+`4` and `8` target surface. It found `249` rows, all with first transition
+`v2=1`, middle transition `v2` in `{1, 2}`, zero seed-formula failures, and
+zero reset-formula failures. The below-minimizer terminal subset had `6` rows:
+`5` at final `v2=4` and `1` at final `v2=8`. All `6` were on the
+`middle_v2=2`, `w mod 9 = 5` inverse branch, with exact below-residue rate
+`1.0`.
+
+Against all no-witness controls in the exact 3-step, final-`v2` target
+surface, below-minimizer terminal rows showed near-`2x` median reset:
+`1.999948151743171` at final `v2=4` and `1.9997055127510488` at final
+`v2=8`. Inside the fixed `middle_v2=2` branch, that extra separation collapsed:
+the ratios were `1.0000093335242783` at final `v2=4` and
+`0.9998475550817735` at final `v2=8`. The result identifies the current
+mechanism as branch selection, not a separate within-branch reset law.
+
+The short-block branch counterexample probe then inverted the exact 3-step
+formulas directly through odd seeds `<= 100000000`. It found branch-1
+counterexamples, so the universal claim that below-minimizer terminal contact
+always selects the `w mod 9 = 5` branch is false. The first branch-1
+counterexample is:
+
+| Field | Value |
+|---|---:|
+| seed | `6000471` |
+| witness `w` | `13501062` |
+| terminal source `w-1` | `13501061` |
+| final `v2` | `4` |
+| middle `v2` | `1` |
+| reset strength | `2.3703700923858233` |
+
+The branch imbalance remained large:
+
+| Family | Candidate count | Hit count | Hit rate |
+|---|---:|---:|---:|
+| `k=4`, branch `1` | `781250` | `36` | `0.00004608` |
+| `k=4`, branch `2` | `390625` | `11510` | `0.0294656` |
+| `k=8`, branch `1` | `48828` | `5` | `0.00010240026214467109` |
+| `k=8`, branch `2` | `24415` | `708` | `0.028998566455048128` |
+
+This changes the proof target from absolute branch selection to a distribution
+law for leftmost divisor-count minimizers across the two inverse residue
+branches.
+
 The `20000` first-descent surface measured:
 
 | Measurement | Ratio |
@@ -226,7 +274,12 @@ block variable.
 10. Below-witness terminal carrier sign and tail-stability check: complete.
 11. Below-vs-no-witness exact carrier-family decomposition: complete.
 12. Terminal adjacent Collatz-residue identity check: complete.
-13. Algebraic closure of the short-block residue families: next.
+13. Exact 3-step final-`v2` `4`/`8` branch algebra and reset-candidate
+   extraction: complete.
+14. Targeted inverse scan for branch-1 counterexamples through `100000000`:
+   complete; universal branch selection is false.
+15. Explain the branch-2 occupancy advantage among inverse-eligible
+   witnesses: next.
 
 ## Primary Question
 
@@ -252,8 +305,8 @@ witness-contact blocks have a distinct reset profile.
 The strongest next positive result would now be:
 
 ```text
-a short-block terminal-residue family yields a closed reset inequality, not
-only a matched empirical reset advantage.
+below-minimizer terminal contact in the exact 3-step final-v2 4/8 surface
+has a provable branch-occupancy advantage for the doubled inverse branch.
 ```
 
 ## Invalidated Path
@@ -330,5 +383,18 @@ The terminal adjacent residue probe exists:
 scripts/collatz_pgs_terminal_adjacent_residue_probe.py
 ```
 
-The next question is whether the exact step `3`, final `v2=4` or final `v2=8`
-below-witness residue families admit a closed reset inequality.
+The short-block reset candidate probe exists:
+
+```text
+scripts/collatz_pgs_short_block_reset_candidate_probe.py
+```
+
+The short-block branch counterexample probe exists:
+
+```text
+scripts/collatz_pgs_short_block_branch_counterexample_probe.py
+```
+
+The next question is why inverse-eligible witnesses on the `middle_v2=2`,
+`w mod 9 = 5` branch become below-minimizer terminal hits far more often than
+inverse-eligible witnesses on the `middle_v2=1`, `w mod 9 = 0` branch.
