@@ -89,3 +89,18 @@ product closure, divisibility selectors, hidden fixtures, or audit leakage.
 
 The next live RSA v2 task is to derive a stronger transported certificate
 invariant from public PGSPG fields.
+
+## Current Collatz-PGS Bridge State
+
+As of 2026-05-03, the exploratory Collatz-PGS branch has one deterministic
+first-descent probe:
+
+```text
+docs/research/collatz_pgs_first_descent_probe.md
+```
+
+The measured `3 <= s <= 19999` odd-seed surface shows a strong prime-endpoint
+enrichment and a same-prime-gap composite interior odd-projected PGS-witness
+enrichment. The same-gap witness ratio is `1.589006897032753` overall and
+stays above background in every measured `v2(3n+1)` stratum. This is an
+empirical block-certificate signal, not a Collatz proof.
