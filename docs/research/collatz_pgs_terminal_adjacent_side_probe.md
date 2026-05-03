@@ -67,14 +67,25 @@ median reset delta, but their P90 delta against no-witness blocks is slightly
 negative. That makes the next question a stability question rather than a
 broader enrichment question.
 
+## Follow-On Stability Result
+
+The follow-on below-witness stability probe found that below-witness terminal
+contact is stable against above-witness terminal contact across median, P90,
+and P99 reset comparisons. Against no-witness blocks, the median signal
+survives with weighted mean delta `0.48311171458205104`, but the tails reverse:
+P90 delta is `-0.06565152576687666` and P99 delta is
+`-0.08685398078967067`.
+
+The next direct question is an exact carrier-family decomposition of the
+below-vs-no-witness comparison.
+
 ## Second-Opinion Check
 
 A second-opinion pressure pass agreed that the estimand supports the measured
 read: the adjacent projected terminal advantage is carried by `witness - 1`,
 not `witness + 1`, under the current matching. It flagged the same residual
 risk: below-vs-no-witness has a positive median-reset delta but a negative P90
-delta. The recommended next action is a deterministic stratum-level sign and
-tail-stability check.
+delta. The follow-on stability check confirmed that split.
 
 ## Artifact Surface
 
