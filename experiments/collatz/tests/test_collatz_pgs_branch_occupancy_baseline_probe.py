@@ -43,6 +43,9 @@ def test_candidate_record_preserves_below_minimizer_hit():
     assert record["branch"] == 2
     assert record["final_v2"] == 4
     assert record["terminal_source"] == 10885
+    assert record["terminal_source_gap_offset"] == 2
+    assert record["witness_gap_offset"] == 3
+    assert record["terminal_geometry"] == "composite_below_minimizer"
     assert record["leftmost_minimizer"]
 
 
@@ -60,3 +63,5 @@ def test_run_probe_writes_compact_baseline_tables(tmp_path):
     assert (tmp_path / "lower_competitor_rows.jsonl").exists()
     assert (tmp_path / "terminal_source_rows.jsonl").exists()
     assert (tmp_path / "leftmost_terminal_rows.jsonl").exists()
+    assert (tmp_path / "terminal_geometry_rows.jsonl").exists()
+    assert (tmp_path / "leftmost_gap_width_rows.jsonl").exists()

@@ -75,6 +75,24 @@ winning the minimizer filter in the wrong geometry: usually with `w` as the
 single even interior point of a twin-prime gap, so the terminal source `w-1` is
 a prime endpoint instead of a composite Collatz source.
 
+The cross-stratified gap-width rows sharpen this point. Of branch 1's `20055`
+terminal-prime leftmost-minimizer cases, `19887` occur in gap width `2`. That
+is `99.16230366517078%` of the branch-1 terminal-prime leftmost-minimizer
+surface. Branch 1's composite-terminal wins are only `41` total, concentrated
+in small non-twin gaps:
+
+| Gap width | Branch-1 composite-terminal hits |
+|---:|---:|
+| `6` | `37` |
+| `8` | `3` |
+| `10` | `1` |
+
+Branch 2 has a different geometry. Its `12218` composite-terminal hits spread
+across the measured gap-width surface, while `18609` terminal-prime wins are
+filtered out. Branch 2 therefore survives both gates at scale: it more often
+has low divisor-count rank, and when it wins that rank it much more often has a
+composite terminal source.
+
 ## Disposition
 
 The divisor-count baseline hypothesis advances, but it does not close the
@@ -100,5 +118,6 @@ experiments/collatz/output/collatz_pgs_branch_occupancy_baseline_probe/summary.j
 experiments/collatz/output/collatz_pgs_branch_occupancy_baseline_probe/branch_rows.jsonl
 experiments/collatz/output/collatz_pgs_branch_occupancy_baseline_probe/terminal_source_rows.jsonl
 experiments/collatz/output/collatz_pgs_branch_occupancy_baseline_probe/leftmost_terminal_rows.jsonl
+experiments/collatz/output/collatz_pgs_branch_occupancy_baseline_probe/terminal_geometry_rows.jsonl
+experiments/collatz/output/collatz_pgs_branch_occupancy_baseline_probe/leftmost_gap_width_rows.jsonl
 ```
-

@@ -60,6 +60,12 @@ below-minimizer terminal hit. The remaining factor appears in terminal-source
 geometry: branch-1 minimizer successes mostly occur when `w-1` is prime, while
 branch 2 retains a large composite-terminal surface.
 
+The refined terminal-geometry rows show the concentration directly. Branch 1
+has `20096` leftmost-minimizer successes, but only `41` have composite terminal
+source `w-1`. The other `20055` have `w-1` prime, and `19887` of those prime
+terminal cases sit in gap width `2`. Branch 2 has `30827` leftmost-minimizer
+successes, of which `12218` have composite terminal source.
+
 ## First Pressure Test
 
 For each inverse-eligible branch candidate in the committed `k=4` and `k=8`
