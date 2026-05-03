@@ -120,6 +120,15 @@ witness-contact median reset was higher in `19` strata, no-witness-contact
 median reset was higher in `18` strata, and the matched-weighted mean of
 stratum median reset ratios was `1.6163417109769`.
 
-The next direct question is which exact step strata carry the matched-weighted
-mean of stratum median reset effect and whether those strata share a stable
-`v2` composition or PGS position pattern.
+The reset carrier-strata probe localized the positive matched reset effect.
+Exact steps `1`, `2`, and `3` supplied the three largest positive delta
+contributions: `0.4382401881898264`, `0.23780172921923806`, and
+`0.23673527139383527`. Exact steps `4`, `5`, and `6` supplied the three
+largest negative delta contributions: `-0.14396095926820723`,
+`-0.11366913299919518`, and `-0.056179924837349154`. Coarse `v2`-bin
+composition deltas were small, so the current signal localizes more strongly
+to exact step strata than to broad transition-bin composition.
+
+The next direct question is whether the favorable exact-step carrier strata
+share a PGS source-position pattern beyond the block-level witness-contact
+label.

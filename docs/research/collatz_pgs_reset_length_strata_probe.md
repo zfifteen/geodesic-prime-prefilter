@@ -54,8 +54,14 @@ PGS or modular structure.
 - Summary: `output/collatz_pgs_reset_length_strata_probe/summary.json`
 - Strata rows: `output/collatz_pgs_reset_length_strata_probe/strata_rows.jsonl`
 
-## Next Concrete Question
+## Follow-On Result
 
-Split the matched reset profile by exact odd-step strata and transition
-composition. The direct target is to identify whether the high-weight favorable
-strata share a stable `v2` composition or PGS position pattern.
+The follow-on carrier-strata probe split the matched reset profile by exact
+odd-step strata and transition composition:
+
+```text
+docs/research/collatz_pgs_reset_carrier_strata_probe.md
+```
+
+The carrier result localizes the positive matched reset effect mainly to exact
+steps `1`, `2`, and `3`. Coarse `v2`-bin composition deltas were small.

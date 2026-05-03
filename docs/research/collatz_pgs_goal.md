@@ -41,6 +41,15 @@ strata. The matched-weighted mean of stratum median reset ratios was
 `1.6163417109769`, and the matched-weighted mean of stratum P90 reset deltas
 was `-0.028322861082362694`.
 
+The reset carrier-strata probe localized the positive matched reset effect.
+Exact steps `1`, `2`, and `3` supplied the three largest positive delta
+contributions: `0.4382401881898264`, `0.23780172921923806`, and
+`0.23673527139383527`. Exact steps `4`, `5`, and `6` supplied the three
+largest negative delta contributions: `-0.14396095926820723`,
+`-0.11366913299919518`, and `-0.056179924837349154`. Favorable strata carried
+matched weight share `0.7457362101345207`; unfavorable strata carried matched
+weight share `0.25426378986547926`.
+
 The `20000` first-descent surface measured:
 
 | Measurement | Ratio |
@@ -60,6 +69,15 @@ The same-gap witness ratio by transition `v2` stratum is:
 
 These measurements justify treating PGS witness contact as a live Collatz
 block variable.
+
+## Current Plan Position
+
+1. Same-gap witness enrichment at `1000000`: complete.
+2. Reset-profile split by witness-contact block class: complete.
+3. Exact odd-step matched reset comparison: complete.
+4. Carrier-strata and coarse `v2` composition probe: complete in this
+   iteration.
+5. PGS source-position pattern inside favorable carrier strata: next.
 
 ## Primary Question
 
@@ -113,6 +131,11 @@ The reset length-strata probe exists:
 benchmarks/python/predictor/collatz_pgs_reset_length_strata_probe.py
 ```
 
-The next question is which exact step strata carry the matched-weighted mean of
-stratum median reset effect and whether those strata share a stable `v2`
-composition or PGS position pattern.
+The reset carrier-strata probe exists:
+
+```text
+benchmarks/python/predictor/collatz_pgs_reset_carrier_strata_probe.py
+```
+
+The next question is whether the favorable exact-step carrier strata share a
+PGS source-position pattern beyond the block-level witness-contact label.
