@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[2]
 V2 = ROOT / "experiments" / "rsa" / "v2"
 SCRIPT_NAMES = (
     "build_ladder_fixtures.py",
+    "generate_ladder_rung.py",
     "run_experiment.py",
     "audit_experiment.py",
 )
@@ -20,6 +21,9 @@ N_VALUE = "1099507433251"
 P_VALUE = "1048559"
 Q_VALUE = "1048589"
 RULE_ID = "reciprocal_pgs_deadline_lock_v1"
+GENERATED_50_N = "1027435935526951"
+GENERATED_50_P = "30729371"
+GENERATED_50_Q = "33434981"
 
 
 def load_module(path: Path):
@@ -342,3 +346,42 @@ def test_fixture_builder_has_no_generation_or_classical_math_imports():
         assert token not in source
     assert P_VALUE not in source
     assert Q_VALUE not in source
+
+
+def test_generation_script_emits_reproducible_50_bit_provenance(tmp_path):
+    """As a reviewer, I want 50-bit rung generation to be reproducible and isolated."""
+    module = load_module(V2 / "generate_ladder_rung.py")
+    output = tmp_path / "rung_50bit_provenance.json"
+
+    assert module.main(["--output", str(output)]) == 0
+
+    payload = json.loads(output.read_text(encoding="utf-8"))
+    assert payload["public_ladder_spec_row"] == {
+        "case_id": "rsa_v2_50bit_static_001",
+        "description": "50-bit externally generated RSA-like ladder rung.",
+        "N": GENERATED_50_N,
+    }
+    assert payload["audit_spec_row"] == {
+        "case_id": "rsa_v2_50bit_static_001",
+        "p": GENERATED_50_P,
+        "q": GENERATED_50_Q,
+    }
+    assert int(GENERATED_50_P) * int(GENERATED_50_Q) == int(GENERATED_50_N)
+    assert int(GENERATED_50_N).bit_length() == 50
+    assert payload["selection_rule"] == "first pair from fixed SHA-256 counter streams satisfying all criteria"
+
+
+def test_generation_script_is_physically_separate_from_solver():
+    """As a reviewer, I want rung generation to stay outside inference."""
+    source = (V2 / "generate_ladder_rung.py").read_text(encoding="utf-8")
+    forbidden = (
+        "run_experiment",
+        "audit_experiment",
+        "ladder_spec.json",
+        "audit_spec.json",
+        "subprocess",
+        "OpenSSL",
+        "random",
+    )
+    for token in forbidden:
+        assert token not in source
