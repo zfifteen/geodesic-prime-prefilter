@@ -50,6 +50,13 @@ largest negative delta contributions: `-0.14396095926820723`,
 matched weight share `0.7457362101345207`; unfavorable strata carried matched
 weight share `0.25426378986547926`.
 
+The source-position carrier probe found the carrier mechanism candidate.
+Favorable strata had matched-weighted final-source witness hit rate
+`0.6330294377004576`; unfavorable strata had `0.2518013666558681`. Favorable
+strata also carried matched-weighted median final-`v2` delta
+`0.5953211176443776`, while unfavorable strata were nearly flat at
+`0.004912937401824805`.
+
 The `20000` first-descent surface measured:
 
 | Measurement | Ratio |
@@ -77,7 +84,10 @@ block variable.
 3. Exact odd-step matched reset comparison: complete.
 4. Carrier-strata and coarse `v2` composition probe: complete in this
    iteration.
-5. PGS source-position pattern inside favorable carrier strata: next.
+5. PGS source-position pattern inside favorable carrier strata: complete in
+   this iteration.
+6. Terminal witness-contact split under exact-step and final-`v2` matching:
+   next.
 
 ## Primary Question
 
@@ -137,5 +147,11 @@ The reset carrier-strata probe exists:
 benchmarks/python/predictor/collatz_pgs_reset_carrier_strata_probe.py
 ```
 
-The next question is whether the favorable exact-step carrier strata share a
-PGS source-position pattern beyond the block-level witness-contact label.
+The source-position carrier probe exists:
+
+```text
+benchmarks/python/predictor/collatz_pgs_source_position_carrier_probe.py
+```
+
+The next question is whether terminal witness contact alone accounts for the
+favorable reset profile after exact-step and final-`v2` matching.
