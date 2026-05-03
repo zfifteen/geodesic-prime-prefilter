@@ -178,7 +178,7 @@ def comparison_summary(
     total_weight = sum(int(row["matched_weight"]) for row in comparison_rows)
     for row in comparison_rows:
         row["matched_weight_share"] = rate(int(row["matched_weight"]), total_weight)
-        row["matched_weighted_median_delta_contribution"] = (
+        row["matched_weighted_mean_of_stratum_median_delta_contribution"] = (
             int(row["matched_weight"])
             * float(row["median_reset_strength_delta"])
             / total_weight
@@ -218,12 +218,16 @@ def comparison_summary(
         ),
         "top_positive_strata": sorted(
             positive_rows,
-            key=lambda row: float(row["matched_weighted_median_delta_contribution"]),
+            key=lambda row: float(
+                row["matched_weighted_mean_of_stratum_median_delta_contribution"]
+            ),
             reverse=True,
         )[:10],
         "top_negative_strata": sorted(
             negative_rows,
-            key=lambda row: float(row["matched_weighted_median_delta_contribution"]),
+            key=lambda row: float(
+                row["matched_weighted_mean_of_stratum_median_delta_contribution"]
+            ),
         )[:10],
     }
 

@@ -72,9 +72,11 @@ source that performs the first-descent reset. The terminal split keeps that
 mechanism candidate alive while preserving evidence for a broader block
 geometry effect.
 
-The next direct question is whether terminal PGS contact contributes through a
-small number of high-reset carrier strata or through a stable local
-endpoint/witness geometry.
+The follow-on terminal geometry probe found that positive terminal carriers
+are more exact-witness-centered than negative terminal carriers. The next
+direct question is whether exact terminal witness hits carry the terminal reset
+profile more strongly than adjacent projected terminal hits after exact-step
+and final-`v2` matching.
 
 ## Artifact Surface
 

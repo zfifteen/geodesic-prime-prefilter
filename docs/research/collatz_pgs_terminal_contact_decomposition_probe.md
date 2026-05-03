@@ -39,23 +39,34 @@ The block counts were:
 | `nonterminal_witness_contact` | `90979` |
 | `no_witness_contact` | `338793` |
 
+## Follow-On Result
+
+The follow-on terminal geometry probe measured final-source prime-gap geometry
+inside the terminal-vs-no-witness comparison:
+
+```text
+docs/research/collatz_pgs_terminal_geometry_probe.md
+```
+
+Positive terminal carriers have higher terminal exact-witness hit rate:
+`0.8720123654427132` versus `0.7452117085795563` in negative terminal
+carriers.
+
 ## Disposition
 
-The terminal-source hypothesis survived its first serious control. Matching on
-final `v2` did not erase the terminal-contact reset advantage, so terminal PGS
-contact is not only a shadow of stronger ordinary Collatz division at the final
-step.
+The terminal-source hypothesis survived its first serious control and now has
+a visible geometric refinement. Matching on final `v2` did not erase the
+terminal-contact reset advantage, and the positive terminal carriers are more
+exact-witness-centered than the negative carriers.
 
-The result is not terminal-only. Nonterminal-only contact also remains mildly
+The result is still not terminal-only. Nonterminal-only contact remains mildly
 positive against no-witness blocks under the same exact-step and final-`v2`
 matching. That keeps the research line broader: terminal contact looks like
 the cleanest reset-local expression of the effect, while nonterminal contact
 still looks like a block-geometry marker.
 
-The next pressure point is to split the terminal-contact comparison by reset
-magnitude bands or by exact final-source prime-gap state. The goal is to learn
-whether terminal PGS contact contributes through a small number of high-reset
-carrier strata or through a stable local endpoint/witness geometry.
+The next pressure point is to split exact terminal witness hits from adjacent
+projected terminal hits under exact-step and final-`v2` matching.
 
 ## Artifact Surface
 

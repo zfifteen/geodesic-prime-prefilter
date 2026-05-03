@@ -144,6 +144,14 @@ stratum median reset delta `0.33031631110499143` and ratio
 positive against no-witness blocks with matched-weighted mean delta
 `0.3036864937903315`, so the effect is not terminal-only.
 
-The next direct question is whether terminal PGS contact contributes through a
-small number of high-reset carrier strata or through a stable local
-endpoint/witness geometry.
+The terminal geometry probe found that positive terminal carriers are a
+smaller, sharper subset. They carry matched weight share
+`0.2431613157089351` and weighted mean of stratum median reset delta
+`1.7526101771071119`; negative terminal carriers carry matched weight share
+`0.7568386842910649` and delta `-0.12664612350652749`. Positive carriers also
+have higher terminal exact-witness hit rate: `0.8720123654427132` versus
+`0.7452117085795563`.
+
+The next direct question is whether exact terminal witness hits carry the
+terminal reset profile more strongly than adjacent projected terminal hits
+after exact-step and final-`v2` matching.
