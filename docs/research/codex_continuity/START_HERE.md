@@ -93,14 +93,17 @@ invariant from public PGSPG fields.
 ## Current Collatz-PGS Bridge State
 
 As of 2026-05-03, the exploratory Collatz-PGS branch has one deterministic
-first-descent probe, one same-gap scale probe, one reset length-strata probe,
-and one current goal note:
+first-descent probe, a scale and reset-profile probe chain, residue-pressure
+notes, and one current goal note:
 
 ```text
 docs/research/collatz_pgs_goal.md
 docs/research/collatz_pgs_first_descent_probe.md
 docs/research/collatz_pgs_same_gap_scale_probe.md
 docs/research/collatz_pgs_reset_length_strata_probe.md
+docs/research/collatz_pgs_below_witness_family_probe.md
+docs/research/collatz_pgs_terminal_adjacent_residue_probe.md
+docs/research/collatz_pgs_grok_residue_pressure.md
 ```
 
 The measured `3 <= s <= 19999` odd-seed surface shows a strong prime-endpoint
@@ -181,6 +184,29 @@ above-witness terminal hits at all three levels: median delta
 median-positive with delta `0.48311171458205104`, but tail-negative with P90
 delta `-0.06565152576687666` and P99 delta `-0.08685398078967067`.
 
-The next direct question is which exact-step and final-`v2` carrier families
-create the positive below-vs-no-witness median contribution, and which families
-create the negative P90/P99 tail reversal.
+The below-witness exact-family probe decomposed the below-vs-no-witness result
+by exact `(odd_steps_to_first_descent, final_v2)` families. It conserved the
+stability-probe aggregate exactly across `175` matched families and total
+matched weight `12813`: median contribution `0.48311171458205115`, P90
+contribution `-0.06565152576687669`, and P99 contribution
+`-0.08685398078967059`. Exact step `1` carried most matched weight but almost
+no contribution. Exact step `3` carried the main positive median contribution:
+`0.2734251548497368` from matched weight `1064`. The
+`positive_positive_positive` sign pattern carried matched weight share
+`0.056817294934831813` and positive median/P90/P99 contributions. The
+`negative_negative_negative` sign pattern carried matched weight share
+`0.28455474908296263` and the main negative upper-tail contribution.
+
+The terminal adjacent residue probe verified the exact arithmetic identity
+behind the side split. Across `15558` terminal adjacent rows, the PGS witness
+matched the forced Collatz residue modulo `2^k`, the exact-`v2`
+non-overdivisibility check, the recomputed `v2`, and the terminal target at
+rate `1.0`. For below-witness terminal source `n=w-1`, the witness satisfies
+`w ≡ 2 * 3^{-1} mod 2^k`; for above-witness terminal source `n=w+1`, the
+witness satisfies `w ≡ -4 * 3^{-1} mod 2^k`.
+
+Grok pressure agreed that terminal adjacent PGS contact is a mechanism-bearing
+arithmetic object, while the upper-tail reversal means the broad reset
+certificate is not globally closed. The next direct question is whether exact
+step `3`, final `v2=4` or final `v2=8` below-witness residue families admit a
+closed reset inequality. More broad enrichment probes are now low value.

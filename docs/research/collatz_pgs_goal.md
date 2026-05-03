@@ -5,9 +5,11 @@
 Determine whether PGS-selected same-gap witness contact predicts Collatz
 first-descent reset behavior.
 
-Current working target: decompose below-vs-no-witness carrier families by exact
-steps and final `v2` to locate the positive median contribution and the
-negative P90/P99 tail reversal.
+Current working target: leave broad reset-profile measurement and attack the
+short-block terminal-residue families algebraically. The reset-certificate
+experiment has located the positive median carrier, the negative tail carrier,
+and the exact Collatz residue identity attached to terminal adjacent PGS
+contact.
 
 The object under study is the accelerated odd Collatz map:
 
@@ -106,6 +108,43 @@ above-witness terminal hits at all three levels: median delta
 median-positive with delta `0.48311171458205104`, but tail-negative with P90
 delta `-0.06565152576687666` and P99 delta `-0.08685398078967067`.
 
+The below-witness exact-family probe decomposed the below-vs-no-witness result
+by exact `(odd_steps_to_first_descent, final_v2)` families. It conserved the
+stability-probe aggregate exactly across `175` matched families and total
+matched weight `12813`: median contribution `0.48311171458205115`, P90
+contribution `-0.06565152576687669`, and P99 contribution
+`-0.08685398078967059`. Exact step `1` carried `0.7998907359712791` of the
+matched weight but almost no contribution. Exact step `3` carried the main
+positive median contribution: `0.2734251548497368` from matched weight `1064`.
+The sign pattern `positive_positive_positive` carried matched weight share
+`0.056817294934831813` and contributed `0.2199992755453345` to the median
+delta and `0.05122416092527163` to the P99 delta. The sign pattern
+`negative_negative_negative` carried matched weight share
+`0.28455474908296263` and contributed `-0.09483951129888446` to the P99 tail.
+
+The terminal adjacent residue probe verified the exact arithmetic identity
+behind the side split. Across `15558` terminal adjacent rows, the PGS witness
+matched the forced Collatz residue modulo `2^k`, the exact-`v2`
+non-overdivisibility check, the recomputed `v2`, and the terminal target at
+rate `1.0`. For a below-witness terminal source `n=w-1`,
+
+$$C(w-1)=\frac{3w-2}{2^{k}}$$
+
+and the witness satisfies:
+
+$$w \equiv 2\cdot 3^{-1}\pmod {2^{k}}$$
+
+For an above-witness terminal source `n=w+1`,
+
+$$C(w+1)=\frac{3w+4}{2^{k}}$$
+
+and the witness satisfies:
+
+$$w \equiv -4\cdot 3^{-1}\pmod {2^{k}}$$
+
+This turns terminal adjacent PGS contact into a concrete Collatz residue
+object on the PGS witness.
+
 The `20000` first-descent surface measured:
 
 | Measurement | Ratio |
@@ -142,7 +181,9 @@ block variable.
 9. Adjacent terminal side split under exact-step and final-`v2` matching:
    complete.
 10. Below-witness terminal carrier sign and tail-stability check: complete.
-11. Below-vs-no-witness exact carrier-family decomposition: next.
+11. Below-vs-no-witness exact carrier-family decomposition: complete.
+12. Terminal adjacent Collatz-residue identity check: complete.
+13. Algebraic closure of the short-block residue families: next.
 
 ## Primary Question
 
@@ -165,15 +206,15 @@ distance `0` against blocks with no such source. Measure:
 
 ## Success Criterion
 
-The next probe is valuable if same-gap witness enrichment remains above
-background at larger scale and witness-contact blocks have a distinct reset
-profile.
+The broad reset-certificate experiment has already met its empirical success
+criterion: same-gap witness enrichment remains above background at scale, and
+witness-contact blocks have a distinct reset profile.
 
-The strongest next positive result would be:
+The strongest next positive result would now be:
 
 ```text
-same-gap witness ratio remains above background at scale, and witness-contact
-blocks reset harder or faster than no-witness-contact blocks.
+a short-block terminal-residue family yields a closed reset inequality, not
+only a matched empirical reset advantage.
 ```
 
 ## Invalidated Path
@@ -238,6 +279,17 @@ The below-witness stability probe exists:
 benchmarks/python/predictor/collatz_pgs_below_witness_stability_probe.py
 ```
 
-The next question is which exact-step and final-`v2` carrier families create
-the positive below-vs-no-witness median contribution, and which families create
-the negative P90/P99 tail reversal.
+The below-witness family probe exists:
+
+```text
+benchmarks/python/predictor/collatz_pgs_below_witness_family_probe.py
+```
+
+The terminal adjacent residue probe exists:
+
+```text
+benchmarks/python/predictor/collatz_pgs_terminal_adjacent_residue_probe.py
+```
+
+The next question is whether the exact step `3`, final `v2=4` or final `v2=8`
+below-witness residue families admit a closed reset inequality.
