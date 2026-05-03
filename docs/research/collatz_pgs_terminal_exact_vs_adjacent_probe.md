@@ -60,11 +60,21 @@ something different: once exact and adjacent terminal hits are compared inside
 the same exact step and final-`v2` strata, adjacent projected hits carry the
 stronger median reset profile.
 
-The signal did not vanish under the split. It moved. Terminal contact remains
-live, but the cleanest next target is no longer exact terminal specificity. The
-next target is adjacent-side geometry: determine whether the adjacent advantage
-is carried by sources immediately below the witness, immediately above the
-witness, or both.
+The signal did not vanish under the split. It moved. Terminal contact remained
+live, but the cleanest follow-on target was no longer exact terminal
+specificity. It became adjacent-side geometry: determine whether the adjacent
+advantage was carried by sources immediately below the witness, immediately
+above the witness, or both.
+
+## Follow-On Side Result
+
+The follow-on adjacent-side probe found that the adjacent projected terminal
+advantage is carried by final sources at `witness - 1`. Below-witness terminal
+hits beat above-witness terminal hits directly with weighted mean of stratum
+median reset delta `0.9934374958512522`, and remained positive against
+no-witness blocks with delta `0.48311171458205104`. Above-witness terminal
+hits did not carry the median-reset delta against no-witness blocks; their
+delta was `-0.20290860147945028`.
 
 ## Second-Opinion Check
 
@@ -72,8 +82,8 @@ A second-opinion pressure pass agreed that the estimand supports the measured
 read: adjacent projected terminal hits carry the stronger median reset profile
 under the current exact-step and final-`v2` matching. It identified the same
 main residual risk: the adjacent class mixes the `witness - 1` and `witness + 1`
-cells. The recommended next action is to split adjacent terminal hits by side
-under the same matching contract.
+cells. The follow-on side split resolved that mixture in favor of
+`witness - 1`.
 
 ## Artifact Surface
 

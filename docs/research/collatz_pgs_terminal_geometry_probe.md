@@ -51,9 +51,9 @@ version of the same geometry.
 
 The follow-on exact-versus-adjacent probe found that exact terminal hits do not
 carry the terminal reset profile more strongly than adjacent projected terminal
-hits after exact-step and final-`v2` matching. The next direct question is
-whether the adjacent projected terminal advantage is one-sided around the PGS
-witness.
+hits after exact-step and final-`v2` matching. The later adjacent-side probe
+found that this adjacent advantage is carried by final sources at
+`witness - 1`, not `witness + 1`.
 
 ## Artifact Surface
 

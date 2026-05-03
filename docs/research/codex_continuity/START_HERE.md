@@ -162,6 +162,15 @@ projected terminal hits were stronger against no-witness blocks with delta
 not beat adjacent projected terminal hits directly: exact-vs-adjacent delta
 was `-0.29644357588214204` and ratio `0.9803814153462154`.
 
-The next direct question is whether the adjacent projected terminal advantage
-is carried by sources immediately below the PGS witness, immediately above the
-PGS witness, or both.
+The terminal adjacent-side probe split adjacent projected terminal hits into
+final sources at `witness - 1` and `witness + 1`, still matched inside exact
+`(odd_steps_to_first_descent, final_v2)` strata. Below-witness terminal hits
+beat above-witness terminal hits directly with matched-weighted mean of stratum
+median reset delta `0.9934374958512522` and ratio `1.1600562928929092`.
+Below-witness terminal hits remained positive against no-witness blocks with
+delta `0.48311171458205104` and ratio `1.0866506651606216`. Above-witness
+terminal hits did not carry the median-reset delta against no-witness blocks:
+their delta was `-0.20290860147945028`.
+
+The next direct question is whether the below-witness terminal carrier remains
+stable under deterministic stratum-level sign and tail checks.
