@@ -93,14 +93,23 @@ invariant from public PGSPG fields.
 ## Current Collatz-PGS Bridge State
 
 As of 2026-05-03, the exploratory Collatz-PGS branch has one deterministic
-first-descent probe:
+first-descent probe, one same-gap scale probe, and one current goal note:
 
 ```text
+docs/research/collatz_pgs_goal.md
 docs/research/collatz_pgs_first_descent_probe.md
+docs/research/collatz_pgs_same_gap_scale_probe.md
 ```
 
 The measured `3 <= s <= 19999` odd-seed surface shows a strong prime-endpoint
 enrichment and a same-prime-gap composite interior odd-projected PGS-witness
 enrichment. The same-gap witness ratio is `1.589006897032753` overall and
 stays above background in every measured `v2(3n+1)` stratum. This is an
-empirical block-certificate signal, not a Collatz proof.
+empirical block-certificate signal.
+
+The same-gap scale probe reached odd seeds `3 <= s <= 999999`. The same-gap
+witness ratio was `1.7637165846198448` overall and stayed above background in
+every measured `v2(3n+1)` stratum. Witness-contact blocks had median reset
+strength `2.078632113914513`; no-witness-contact blocks had median reset
+strength `1.8728822607686915`. The next direct question is whether that reset
+separation survives matched odd-step strata.

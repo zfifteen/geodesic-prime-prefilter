@@ -75,8 +75,7 @@ Background intervals are counted with seed multiplicity.
 
 ## Status
 
-This is an empirical probe result, not a Collatz proof and not a new PGS
-theorem.
+This is an empirical probe result.
 
 The naive one-step prime-ladder monovariant is not the live claim. Under the
 accelerated odd Collatz map, examples such as `3 -> 5`, `7 -> 11`, and
