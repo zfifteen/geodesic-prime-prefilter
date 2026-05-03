@@ -100,21 +100,28 @@ table is an intermediate artifact, not a durable finding.
 
 ## Current Research Target
 
-The broad reset-certificate measurement phase is complete. The next useful
-work is algebra on the short-block terminal-residue families, especially exact
-step `3` with final `v2=4` or final `v2=8`.
+The broad reset-certificate measurement phase is complete. The exact 3-step
+terminal-residue family now has a closed branch formula. A targeted inverse
+scan through odd seeds `<= 100000000` found branch-1 counterexamples, so
+universal branch selection is false; the live signal is the large branch
+occupancy imbalance. Branch 2 produced `12218` below-minimizer hits versus
+`41` branch-1 hits.
 
 The proof-pressure question is:
 
 ```text
-Does a short-block terminal-residue family yield a closed reset inequality,
-not only a matched empirical reset advantage?
+Why do leftmost divisor-count minimizers hit the doubled exact 3-step branch
+far more often than the branch-1 residue class among inverse-eligible
+witnesses?
 ```
 
 Start with:
 
 ```text
+experiments/collatz/PROOF.md
 experiments/collatz/docs/collatz_pgs_goal.md
+experiments/collatz/docs/collatz_pgs_short_block_reset_candidate_probe.md
+experiments/collatz/docs/collatz_pgs_short_block_branch_counterexample_probe.md
 experiments/collatz/docs/collatz_pgs_terminal_adjacent_residue_probe.md
 experiments/collatz/docs/collatz_pgs_below_witness_family_probe.md
 ```

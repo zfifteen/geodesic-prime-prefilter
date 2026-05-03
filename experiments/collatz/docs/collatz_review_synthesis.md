@@ -30,16 +30,20 @@ If `w-1` is odd, then `w` is even. The adopted framing uses the correct
 terminal-adjacent condition: below-minimizer terminal sources have `n=w-1`
 odd, so the corresponding minimizer `w` is even.
 
-## Deferred Pressure Tests
+## Pressure Tests
 
-The following tests remain next-step pressure work, not part of this adoption
-pass:
+The short-block reset candidate probe has now run the first deterministic
+versions of the review-requested pressure tests:
 
-- minimizer parity distribution;
-- gap-length stratification of same-gap enrichment;
-- independent residue-bias check on prime-gap minimizers;
-- explicit `k=4` and `k=8` terminal-residue tables.
+- minimizer parity distribution over unique visited final-source gaps;
+- gap-width stratification for the exact 3-step final-`v2` `4`/`8` surface;
+- independent residue-bias check over unique visited final-source gaps;
+- explicit `k=4` and `k=8` branch tables.
+- targeted inverse counterexample scan through odd seeds `<= 100000000`.
 
-This pass intentionally does not add random permutation tests or new measured
-outputs. The deterministic experiment record remains the source of the current
-claims.
+The remaining stronger version is global rather than visited-surface-local:
+measure minimizer parity, exact below-residue rates, and branch hit rates over
+all prime gaps up to a fixed endpoint bound, independent of Collatz visits.
+
+This work intentionally does not add random permutation tests. The deterministic
+experiment record remains the source of the current claims.

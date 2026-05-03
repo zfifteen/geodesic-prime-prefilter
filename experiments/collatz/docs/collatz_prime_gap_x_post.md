@@ -23,7 +23,8 @@ At the 1M odd-seed run:
 - source hit rate vs same-gap background: 1.76x
 - median reset: 2.08x contact vs 1.87x no-contact
 - terminal adjacent residue checks: 15,558 / 15,558
-- main median-reset carrier: short 3-step blocks
+- short 3-step k=4/8 carrier: exact branch formulas explain the doubled reset
+  scale
 
 This gives a concrete bridge object:
 
@@ -101,7 +102,7 @@ At the 1M odd-seed run:
 - source hit rate vs same-gap background: 1.76x
 - median reset: 2.08x contact vs 1.87x no-contact
 - terminal adjacent residue checks: 15,558 / 15,558
-- the main median-reset carrier localizes to short 3-step blocks
+- exact 3-step k=4/8 rows split into two explicit reset branches
 
 9.
 
@@ -109,8 +110,10 @@ The bridge object is:
 
 prime-gap divisor minimum + Collatz terminal power-of-two residue.
 
-That gives a concrete next problem: prove or break a reset inequality for the
-short 3-step residue families.
+A targeted 100M inverse scan found rare lower-branch counterexamples, but the
+doubled branch dominated below-minimizer hits: 12,218 vs 41.
+
+That gives a concrete next problem: explain the branch imbalance.
 
 Code: <gist link>
 
