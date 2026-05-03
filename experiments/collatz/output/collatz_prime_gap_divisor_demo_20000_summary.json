@@ -1,0 +1,129 @@
+{
+  "block_class_counts": {
+    "minimizer_contact": 3747,
+    "no_minimizer_contact": 6252
+  },
+  "composite_source_count": 24813,
+  "examples": [
+    {
+      "divisor_minimizer": 46,
+      "expected_residue": 6,
+      "factors_of_two": 3,
+      "minimizer_residue": 6,
+      "modulus": 8,
+      "reset_strength": 2.6470588235294117,
+      "seed": 45,
+      "side": "below",
+      "terminal_source": 45,
+      "terminal_target": 17
+    },
+    {
+      "divisor_minimizer": 82,
+      "expected_residue": 2,
+      "factors_of_two": 2,
+      "minimizer_residue": 2,
+      "modulus": 4,
+      "reset_strength": 1.3278688524590163,
+      "seed": 81,
+      "side": "below",
+      "terminal_source": 81,
+      "terminal_target": 61
+    },
+    {
+      "divisor_minimizer": 106,
+      "expected_residue": 2,
+      "factors_of_two": 2,
+      "minimizer_residue": 2,
+      "modulus": 4,
+      "reset_strength": 1.3291139240506329,
+      "seed": 105,
+      "side": "below",
+      "terminal_source": 105,
+      "terminal_target": 79
+    },
+    {
+      "divisor_minimizer": 166,
+      "expected_residue": 6,
+      "factors_of_two": 4,
+      "minimizer_residue": 6,
+      "modulus": 16,
+      "reset_strength": 5.32258064516129,
+      "seed": 165,
+      "side": "below",
+      "terminal_source": 165,
+      "terminal_target": 31
+    },
+    {
+      "divisor_minimizer": 226,
+      "expected_residue": 2,
+      "factors_of_two": 2,
+      "minimizer_residue": 2,
+      "modulus": 4,
+      "reset_strength": 1.331360946745562,
+      "seed": 225,
+      "side": "below",
+      "terminal_source": 225,
+      "terminal_target": 169
+    }
+  ],
+  "limit": 20000,
+  "max_odd_steps_to_first_descent": 66,
+  "max_seen_in_first_descent_blocks": 9038141,
+  "median_reset_strengths": {
+    "minimizer_contact": 2.10624597553123,
+    "no_minimizer_contact": 1.972401576789696,
+    "terminal_above_minimizer": 2.6665294359818854,
+    "terminal_below_minimizer": 2.370105973662011
+  },
+  "most_common_terminal_adjacent_families": [
+    [
+      "1 steps, 2 factors of 2",
+      158
+    ],
+    [
+      "1 steps, 3 factors of 2",
+      82
+    ],
+    [
+      "1 steps, 4 factors of 2",
+      43
+    ],
+    [
+      "1 steps, 5 factors of 2",
+      27
+    ],
+    [
+      "1 steps, 6 factors of 2",
+      14
+    ],
+    [
+      "3 steps, 2 factors of 2",
+      14
+    ],
+    [
+      "3 steps, 3 factors of 2",
+      10
+    ],
+    [
+      "5 steps, 2 factors of 2",
+      6
+    ]
+  ],
+  "odd_seed_count": 9999,
+  "same_gap_background_hit_rate": 0.1489803136927796,
+  "same_gap_background_minimizer_cell_count": 28220,
+  "same_gap_background_odd_cell_count": 189421,
+  "source_minimizer_cell_hit_count": 5874,
+  "source_minimizer_cell_hit_rate": 0.23673074597992988,
+  "source_vs_same_gap_hit_ratio": 1.589006897032753,
+  "terminal_adjacent_counts": {
+    "above": 65,
+    "below": 372
+  },
+  "terminal_adjacent_total": 437,
+  "terminal_exact_residue_rate": 1.0,
+  "terminal_recomputed_step_rate": 1.0,
+  "terminal_residue_identity_rate": 1.0,
+  "terminal_target_match_rate": 1.0,
+  "total_source_states": 34615
+}
