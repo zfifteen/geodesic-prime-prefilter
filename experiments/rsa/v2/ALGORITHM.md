@@ -1,11 +1,11 @@
-# RSA v2 PGS-First Anchor-Surface Algorithm
+# RSA v2 Reciprocal PGSPG Certificate Algorithm
 
-This document defines the live v2 algorithm after the radius-first scaffold was
-withdrawn.
+This document defines the live v2 algorithm after the radius-first and
+endpoint-budget scaffolds were withdrawn.
 
 The current algorithm is an inference-surface builder, not a factor resolver.
-It derives public reciprocal PGSPG state and returns unresolved until the
-transported deadline invariant is derived.
+It derives public reciprocal PGSPG certificate state and returns unresolved
+unless the public certificate pair mutually closes.
 
 ## Input
 
@@ -28,95 +28,63 @@ Inference does not read audit factors.
 
 Compute `isqrt(N)`.
 
-The square root separates the lower and upper balanced sides. It does not define
-a fixed additive candidate chamber.
+The square root separates the lower and upper sides. It does not define a fixed
+additive candidate chamber.
 
-## Stage 2: Balanced Endpoint Walk
+## Stage 2: Lower Certificate
 
-Compute the public balanced interval:
+Find the previous public endpoint before `isqrt(N)`.
 
-```text
-lower = floor(isqrt(N) / balance_band)
-upper = isqrt(N) * balance_band
-```
-
-Walk downward from `isqrt(N)` through exact endpoint state. Each endpoint is a
-candidate anchor because PGSPG operates from endpoint anchors, not arbitrary
-integers in a close-in band.
-
-The current implementation uses a bounded endpoint-walk budget. If the endpoint
-walk does not cover enough of the balanced interval, that is a surface-budget
-fact, not a factorization fallback.
+Derive the PGSPG chamber-reset certificate from that endpoint. The certificate
+contains the reset endpoint, carrier state, closed offsets before reset, threat
+state, tail state, and reset-deadline fields.
 
 ## Stage 3: Reciprocal Transport
 
-For each lower endpoint `x`, compute:
+Transport the lower reset endpoint by:
 
 ```text
-y = floor(N / x)
+y = floor(N / lower.reset_endpoint)
 ```
 
 This is public reciprocal transport. It is not a divisibility test and does not
 check product closure.
 
-Keep rows where `y` is on the upper balanced side and open under the fixed
-30-wheel.
+## Stage 4: Upper Certificate
 
-## Stage 4: Reciprocal Endpoint Check
+Find the previous public endpoint before `y`.
 
-Measure whether the transported `y` values are also exact endpoints.
+Derive the PGSPG chamber-reset certificate from that endpoint.
 
-Rows where both `x` and `y` are endpoints form the reciprocal endpoint surface.
+## Stage 5: Certificate Closure
 
-## Stage 5: PGSPG Reset State
+The current closure candidate is strict.
 
-For each reciprocal endpoint row, derive local PGSPG reset state on both sides:
+It resolves only when:
+
+1. both certificates exist;
+2. `floor(N / lower.reset_endpoint) == upper.reset_endpoint`;
+3. `floor(N / upper.reset_endpoint) == lower.reset_endpoint`;
+4. lower and upper reset signatures match.
+
+If any condition fails, inference emits unresolved.
+
+## Current Failure Modes
+
+The runner may emit:
 
 ```text
-previous endpoint before x -> PGSPG chamber reset
-previous endpoint before y -> PGSPG chamber reset
+resolved_by_mutual_certificate_closure
+unresolved_by_certificate_pair_not_closed
+unresolved_by_missing_lower_certificate
+unresolved_by_missing_upper_certificate
+gmp_interval_backend_required
 ```
 
-Keep rows where the lower reset returns to `x` and the upper reset returns to
-`y`.
-
-These are the two-sided PGSPG reset-lock rows.
-
-## Stage 6: Deadline Transport Facts
-
-For each two-sided reset lock, compute reset-to-deadline transport widths:
+The current 40-bit and 50-bit rungs emit:
 
 ```text
-floor(N / reset_endpoint) - floor(N / reset_deadline)
-```
-
-on each side.
-
-The runner records these facts. It does not currently use them as a resolver.
-
-## Current Failure Mode
-
-The runner emits:
-
-```text
-status = unresolved
-unresolved_reason = transported_deadline_invariant_not_derived
-```
-
-when two-sided PGSPG reset locks exist.
-
-If no two-sided reset locks exist, it emits:
-
-```text
-status = unresolved
-unresolved_reason = no_two_sided_pgs_lock
-```
-
-If a rung exceeds the current exact interval backend boundary, it emits:
-
-```text
-status = unresolved
-unresolved_reason = gmp_interval_backend_required
+unresolved_by_certificate_pair_not_closed
 ```
 
 ## Explicitly Invalidated Rules
@@ -124,6 +92,7 @@ unresolved_reason = gmp_interval_backend_required
 The following are not live rules:
 
 - fixed-radius candidate bands around `isqrt(N)`;
+- endpoint-walk budgets as solver coverage;
 - raw equality of lower and upper reset-deadline margins;
 - stationary recursive reset rounds;
 - product closure as the contraction rule;
@@ -131,8 +100,8 @@ The following are not live rules:
 
 ## Resolver Target
 
-The next algorithmic target is a transported deadline invariant.
+The next algorithmic target is a transported certificate invariant.
 
-The invariant must accept asymmetric raw margins when reciprocal transport
-explains the asymmetry, and it must reject ordinary symmetric near-square false
-locks. It must use only public `N`, PGSPG state, and floor-map transport.
+The invariant must be derived from public `N`, PGSPG certificate fields, and
+floor-map transport. It must not use product closure, divisibility, audit
+factors, factor APIs, primality APIs, random generation, or fallback search.

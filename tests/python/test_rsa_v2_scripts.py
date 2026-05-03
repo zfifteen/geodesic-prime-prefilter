@@ -21,7 +21,7 @@ N_VALUE = "1099507433251"
 P_VALUE = "1048559"
 Q_VALUE = "1048589"
 CASE_50_ID = "rsa_v2_50bit_static_001"
-RULE_ID = "pgs_first_reciprocal_anchor_surface_v1"
+RULE_ID = "reciprocal_pgs_certificate_pair_v1"
 GENERATED_50_N = "1027435935526951"
 GENERATED_50_P = "30729371"
 GENERATED_50_Q = "33434981"
@@ -63,8 +63,6 @@ def run_inference(tmp_path: Path) -> Path:
             str(tmp_path / "ladder_cases.jsonl"),
             "--output-dir",
             str(output_dir),
-            "--max-lower-endpoints",
-            "1000",
         ]
     ) == 0
     return output_dir
@@ -79,6 +77,7 @@ def test_scripts_and_algorithm_docs_exist():
         "ALGORITHM.md",
         "ARITHMETIC.md",
         "METRICS.md",
+        "PGS_CERTIFICATE.md",
         "README.md",
         "ladder_spec.json",
         "audit_spec.json",
@@ -210,8 +209,8 @@ def test_public_case_contains_only_public_rung_data(tmp_path):
         assert {"p", "q", "radius", "balance_band"}.isdisjoint(row)
 
 
-def test_runner_reports_pgs_first_anchor_surface_without_resolver_claim(tmp_path):
-    """As a reviewer, I want the runner to expose PGS state without false resolution."""
+def test_runner_reports_certificate_pairs_without_false_resolution(tmp_path):
+    """As a reviewer, I want the runner to expose PGSPG certificate pairs without false resolution."""
     build_fixtures(tmp_path)
 
     output_dir = run_inference(tmp_path)
@@ -225,7 +224,7 @@ def test_runner_reports_pgs_first_anchor_surface_without_resolver_claim(tmp_path
             "bits": 40,
             "N": N_VALUE,
             "status": "unresolved",
-            "unresolved_reason": "transported_deadline_invariant_not_derived",
+            "unresolved_reason": "unresolved_by_certificate_pair_not_closed",
             "rule_id": RULE_ID,
         },
         {
@@ -233,39 +232,37 @@ def test_runner_reports_pgs_first_anchor_surface_without_resolver_claim(tmp_path
             "bits": 50,
             "N": GENERATED_50_N,
             "status": "unresolved",
-            "unresolved_reason": "transported_deadline_invariant_not_derived",
+            "unresolved_reason": "unresolved_by_certificate_pair_not_closed",
             "rule_id": RULE_ID,
         }
     ]
     for row in summary["cases"]:
-        assert row["resolver_status"] == "transported_deadline_invariant_not_derived"
-        assert row["lower_pgs_endpoints_seen"] == 1000
-        assert row["reciprocal_wheel_rows"] > 0
-        assert row["reciprocal_endpoint_rows"] > 0
-        assert row["two_sided_pgs_lock_rows"] > 0
+        assert row["closure_status"] == "unresolved_by_certificate_pair_not_closed"
+        assert row["lower_certificate_present"]
         assert "radius" not in row
         assert "reciprocal_window_candidates" not in row
         assert "recursive_lock_survivors" not in row
         assert "deadline_lock_pairs" not in row
-    assert len(survivors) == sum(row["two_sided_pgs_lock_rows"] for row in summary["cases"])
-    assert {row["resolver_status"] for row in survivors} == {
-        "transported_deadline_invariant_not_derived"
+        assert "max_lower_endpoints" not in row
+        assert "lower_pgs_endpoints_seen" not in row
+    assert len(survivors) == len(summary["cases"])
+    assert {row["closure_status"] for row in survivors} == {
+        "unresolved_by_certificate_pair_not_closed"
     }
 
 
-def test_anchor_rows_are_derived_before_audit(tmp_path):
-    """As a reviewer, I want survivor rows to be public PGS-derived anchors."""
+def test_certificate_rows_are_derived_before_audit(tmp_path):
+    """As a reviewer, I want survivor rows to be public PGSPG-derived certificates."""
     build_fixtures(tmp_path)
     output_dir = run_inference(tmp_path)
 
     rows = read_jsonl(output_dir / "survivor_rows.jsonl")
     assert rows
     for row in rows:
-        assert row["resolver_status"] == "transported_deadline_invariant_not_derived"
-        assert row["lower_reset_endpoint"] == row["x"]
-        assert row["upper_reset_endpoint"] == row["y"]
+        assert row["closure_status"] == "unresolved_by_certificate_pair_not_closed"
+        assert row["lower_reset_endpoint"]
+        assert row["transported_upper_endpoint"]
         assert row["lower_reset_signature"]
-        assert row["upper_reset_signature"]
         assert "deadline_locked" not in row
         assert "deadline_lock_reason" not in row
 
@@ -330,6 +327,9 @@ def test_runner_source_has_no_forbidden_constructs_or_hidden_endpoints():
         "Miller",
         "sieve",
         "audit_factors",
+        "max_lower_endpoints",
+        "max-lower-endpoints",
+        "CHAMBER_RADIUS",
         P_VALUE,
         Q_VALUE,
     )

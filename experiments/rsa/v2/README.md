@@ -1,117 +1,109 @@
 # RSA v2 Strategy Memory For Codex
 
 This file is operational memory for future Codex sessions working inside
-`experiments/rsa/v2`. It is not a traditional package README.
+`experiments/rsa/v2`. It is written for Codex, not as a package README.
+
+For a fresh session, start with:
+
+```text
+SESSION_BOOTSTRAP.md
+```
 
 ## Current State
 
-The official v2 runner is now a PGS-first anchor-surface probe.
+The live v2 runner is a reciprocal PGSPG certificate-pair probe.
 
-It does not claim to solve the ladder. It derives public two-sided PGSPG
-endpoint/reset state and returns unresolved until the transported deadline
-invariant is derived.
+It does not claim to solve the ladder. It derives one public lower PGSPG reset
+certificate, transports that reset endpoint through `floor(N / x)`, derives the
+opposite-side certificate from the transported coordinate, and returns
+unresolved unless the two certificates close under the reciprocal map.
 
-This is intentional. The previous radius-first solver was withdrawn as the live
-algorithm because it applied a close-factor gate before PGS state was measured.
+This replaced two invalid solver shapes:
 
-## Governing Correction
+- a fixed additive chamber around `isqrt(N)`;
+- a budgeted walk through many lower endpoints.
 
-The wrong front door was:
+The square root is now an orientation coordinate only. It does not define a
+candidate chamber, and it does not limit the possible factor distance.
 
-```text
-isqrt(N) +/- fixed radius
--> wheel / reciprocal filters
--> PGSPG state
--> raw deadline-margin equality
-```
-
-That path solved the 40-bit rung only because the factors were already close to
-`isqrt(N)`. It excluded the 50-bit factors before PGS logic could inspect them.
+## Live Front Door
 
 The live front door is:
 
 ```text
 public N
--> isqrt(N) as orientation only
--> walk lower public endpoints from the square-root side
--> map each endpoint by y = floor(N / x)
--> require the reciprocal side to be a public endpoint
--> derive PGSPG reset state on both sides
--> report two-sided reset locks
--> return unresolved until the transported deadline invariant is known
+-> isqrt(N) as orientation
+-> previous public endpoint before isqrt(N)
+-> PGSPG reset certificate on the lower side
+-> y = floor(N / lower.reset_endpoint)
+-> previous public endpoint before y
+-> PGSPG reset certificate on the upper side
+-> reciprocal certificate-closure check
+-> resolved only if the public certificates mutually close
 ```
 
-The square root orients the lower and upper sides. It is not a fixed additive
-candidate chamber.
+The runner never reads audit factors.
 
 ## PGSPG Concepts Carried Forward
 
 The factorizer uses the PGS Prime Generator as the local state engine:
 
-- public endpoints;
+- public endpoint anchors;
 - wheel-open offsets;
 - exact divisor-count interval state;
 - GWR carrier state;
-- search-interval reset;
+- chamber reset;
 - tail and threat reset-deadline fields;
-- explicit unresolved state.
+- explicit unresolved states.
 
 The factorizer does not place factorization logic inside the generator. It calls
 the generator's chamber-reset certificate as a read-only local state adapter.
 
-## What The Current Runner Emits
+## Current Output
 
-For each public `N`, the runner reports:
+For each public `N`, the runner writes:
 
-- lower PGS endpoints seen from the square-root side;
-- reciprocal floor rows inside the public balanced interval;
-- reciprocal wheel-open rows;
-- reciprocal endpoint rows;
-- two-sided PGSPG reset-lock rows;
-- transported reset-to-deadline widths;
-- explicit unresolved inference rows.
+- `inference_rows.jsonl`;
+- `survivor_rows.jsonl`;
+- `summary.json`.
 
-The unresolved reason is:
+The current 40-bit and 50-bit rungs both return:
 
 ```text
-transported_deadline_invariant_not_derived
+unresolved_by_certificate_pair_not_closed
 ```
 
-when two-sided PGS locks exist but no reviewed resolver is available.
+That is the correct state. The previous 40-bit resolution depended on a
+close-factor assumption and is no longer part of the live experiment.
 
-## Known Invalid Rules
+## Invalid Rules
 
 Do not restore these as live selection rules:
 
 - fixed `isqrt(N) +/- radius` candidate generation;
+- endpoint-walk budgets as solver coverage;
 - raw equality of lower and upper reset-deadline margins;
 - stationary recursive lock rounds that revisit the same reset endpoint;
 - ranking by closeness to `isqrt(N)` as evidence of correctness;
 - product closure as the PGS contraction rule.
-
-The 50-bit true factor pair has valid PGSPG reset locks on both sides but raw
-deadline margins `2` and `12`. Raw margin equality is therefore false as a
-resolver.
 
 ## Arithmetic Boundary
 
 The current interval-measurement backend is small-regime only.
 
 Coordinates are carried as `gmpy2.mpz`, but divisor-count interval measurement
-still calls the repository's NumPy-backed exact interval helper. The official
-runner guards this boundary with:
+still calls the repository's current exact interval helper. The official runner
+guards this backend boundary with:
 
 ```text
 SMALL_REGIME_MAX_BITS = 50
 ```
 
-Cases above that limit must return unresolved with:
+Cases above that limit return:
 
 ```text
 gmp_interval_backend_required
 ```
-
-until a genuine GMP interval backend exists.
 
 Do not describe the current runner as RSA-260-ready or GMP-only at the interval
 backend level.
@@ -130,16 +122,35 @@ Starting at RSA-100, use the public RSA Challenge moduli recorded in:
 RSA_PUBLIC_MODULI_THROUGH_260.md
 ```
 
-The current runner will explicitly return unresolved for those larger rungs
-until the GMP interval backend exists.
+The current runner will explicitly return unresolved for larger rungs until a
+GMP interval backend exists.
 
 ## Next Live Work
 
-The next mathematical task is to derive the transported deadline invariant.
-
-Raw local margins are not invariant under the public reciprocal map. The
-resolver must compare reset/deadline state after transport, using public `N`,
-PGSPG state, and floor-map geometry only.
+The next mathematical task is to derive a stronger transported certificate
+invariant from the PGSPG fields already emitted in `survivor_rows.jsonl`.
 
 Until that invariant is written down and reviewed, the correct output is
 unresolved.
+
+Before substantial implementation, use the continuity and shape contract:
+
+```text
+docs/research/codex_continuity/continuity_and_shape_contract.md
+```
+
+The canonical repository bootstrap is:
+
+```text
+docs/research/codex_continuity/START_HERE.md
+```
+
+For this experiment, Grok should be used as research pressure before major rule
+changes, with code, outputs, failed assumptions, and current hypotheses included
+in the prompt.
+
+Record substantial Grok collaborations in:
+
+```text
+experiments/rsa/v2/grok_sessions/
+```
