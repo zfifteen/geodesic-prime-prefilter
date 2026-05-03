@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="2400" viewBox="0 0 1800 2400">
+  <defs>
+    <style>
+      .bg { fill: #f7f5ef; }
+      .ink { fill: #1f2528; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .muted { fill: #586069; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .small { font-size: 30px; }
+      .body { font-size: 36px; }
+      .label { font-size: 32px; font-weight: 700; letter-spacing: 0; }
+      .h1 { font-size: 76px; font-weight: 800; letter-spacing: 0; }
+      .h2 { font-size: 48px; font-weight: 800; letter-spacing: 0; }
+      .math { font-size: 42px; font-weight: 750; letter-spacing: 0; }
+      .tiny { font-size: 25px; }
+      .box { fill: #ffffff; stroke: #d7d2c8; stroke-width: 3; rx: 10; }
+      .branch1 { fill: #fff4ef; stroke: #bd5b43; stroke-width: 5; rx: 12; }
+      .branch2 { fill: #effaf5; stroke: #238866; stroke-width: 5; rx: 12; }
+      .terminal { fill: #fdf9e8; stroke: #b68a1f; stroke-width: 4; rx: 12; }
+      .measure { fill: #f0f4fb; stroke: #637aa3; stroke-width: 4; rx: 12; }
+      .arrow { stroke: #343a40; stroke-width: 6; fill: none; marker-end: url(#arrow); }
+      .arrow1 { stroke: #bd5b43; stroke-width: 7; fill: none; marker-end: url(#arrow1); }
+      .arrow2 { stroke: #238866; stroke-width: 9; fill: none; marker-end: url(#arrow2); }
+      .drop { stroke: #b68a1f; stroke-width: 8; fill: none; marker-end: url(#arrowDrop); }
+      .bar1 { fill: #bd5b43; }
+      .bar2 { fill: #238866; }
+    </style>
+    <marker id="arrow" markerWidth="16" markerHeight="12" refX="15" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 Z" fill="#343a40"/>
+    </marker>
+    <marker id="arrow1" markerWidth="16" markerHeight="12" refX="15" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 Z" fill="#bd5b43"/>
+    </marker>
+    <marker id="arrow2" markerWidth="16" markerHeight="12" refX="15" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 Z" fill="#238866"/>
+    </marker>
+    <marker id="arrowDrop" markerWidth="16" markerHeight="12" refX="15" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 Z" fill="#b68a1f"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1800" height="2400"/>
+
+  <text class="ink h1" x="120" y="130">Collatz 3-Step Reset Algebra</text>
+  <text class="muted body" x="120" y="190">A first-descent block splits into two exact terminal branches.</text>
+
+  <rect class="box" x="120" y="245" width="1560" height="390"/>
+  <text class="ink h2" x="170" y="320">Shared shape</text>
+  <text class="muted tiny" x="170" y="370">Accelerated odd Collatz map: C(x) = (3x + 1) / 2^v2(3x + 1)</text>
+
+  <rect class="box" x="190" y="435" width="210" height="110"/>
+  <rect class="box" x="540" y="435" width="210" height="110"/>
+  <rect class="box" x="890" y="435" width="210" height="110"/>
+  <rect class="terminal" x="1240" y="435" width="210" height="110"/>
+  <text class="ink math" x="275" y="505">s</text>
+  <text class="ink math" x="625" y="505">a</text>
+  <text class="ink math" x="975" y="505">n</text>
+  <text class="ink math" x="1325" y="505">t</text>
+  <path class="arrow" d="M410 490 H525"/>
+  <path class="arrow" d="M760 490 H875"/>
+  <path class="drop" d="M1110 490 H1225"/>
+  <text class="muted small" x="185" y="590">a >= s</text>
+  <text class="muted small" x="540" y="590">n >= s</text>
+  <text class="muted small" x="1238" y="590">t &lt; s</text>
+  <text class="ink body" x="910" y="405">terminal source: n = w - 1</text>
+
+  <text class="ink h2" x="120" y="735">The fork</text>
+  <path class="arrow1" d="M880 695 C650 720 475 780 360 880"/>
+  <path class="arrow2" d="M920 695 C1150 720 1325 780 1440 880"/>
+
+  <rect class="branch1" x="120" y="805" width="730" height="760"/>
+  <text class="ink h2" x="170" y="885">Branch 1</text>
+  <text class="muted body" x="170" y="940">middle exponent = 1</text>
+
+  <text class="ink label" x="170" y="1025">Terminal residue</text>
+  <text class="ink math" x="170" y="1085">w ≡ 0 mod 18</text>
+  <text class="muted small" x="170" y="1130">forced divisible by 2 · 3^2</text>
+
+  <text class="ink label" x="170" y="1215">Branch formulas</text>
+  <text class="ink math" x="170" y="1275">s = (4w - 9) / 9</text>
+  <text class="ink math" x="170" y="1335">a = (2w - 3) / 3</text>
+
+  <text class="ink label" x="170" y="1420">Exact first two steps</text>
+  <text class="ink body" x="170" y="1475">3s + 1 = 2a</text>
+  <text class="ink body" x="170" y="1525">3a + 1 = 2n</text>
+
+  <rect class="terminal" x="170" y="1388" width="0" height="0"/>
+  <text class="muted small" x="170" y="1605">divisor-count burden starts higher</text>
+
+  <rect class="branch2" x="950" y="805" width="730" height="760"/>
+  <text class="ink h2" x="1000" y="885">Branch 2</text>
+  <text class="muted body" x="1000" y="940">middle exponent = 2</text>
+
+  <text class="ink label" x="1000" y="1025">Terminal residue</text>
+  <text class="ink math" x="1000" y="1085">w ≡ 14 mod 18</text>
+  <text class="muted small" x="1000" y="1130">even, but avoids factor 3</text>
+
+  <text class="ink label" x="1000" y="1215">Branch formulas</text>
+  <text class="ink math" x="1000" y="1275">s = (8w - 13) / 9</text>
+  <text class="ink math" x="1000" y="1335">a = (4w - 5) / 3</text>
+
+  <text class="ink label" x="1000" y="1420">Exact first two steps</text>
+  <text class="ink body" x="1000" y="1475">3s + 1 = 2a</text>
+  <text class="ink body" x="1000" y="1525">3a + 1 = 4n</text>
+
+  <text class="muted small" x="1000" y="1605">lower mandatory small-prime load</text>
+
+  <rect class="terminal" x="120" y="1645" width="1560" height="310"/>
+  <text class="ink h2" x="170" y="1725">Shared terminal drop</text>
+  <text class="ink math" x="170" y="1810">t = (3w - 2) / 2^k</text>
+  <text class="muted body" x="170" y="1870">where k = v2(3w - 2)</text>
+  <text class="ink body" x="910" y="1805">Exact final-exponent condition</text>
+  <text class="ink math" x="910" y="1870">3w ≡ 2 mod 2^k</text>
+  <text class="ink math" x="910" y="1930">3w not ≡ 2 mod 2^(k+1)</text>
+
+  <rect class="measure" x="120" y="2010" width="1560" height="270"/>
+  <text class="ink h2" x="170" y="2090">Reset scale and measured occupancy</text>
+  <text class="ink math" x="170" y="2165">Branch 1: R → 2^(k+2) / 27</text>
+  <text class="ink math" x="170" y="2235">Branch 2: R → 2^(k+3) / 27</text>
+  <text class="muted body" x="820" y="2145">At fixed k:</text>
+  <text class="muted body" x="820" y="2195">branch 2 has 2x</text>
+  <text class="muted body" x="820" y="2245">the asymptotic reset scale.</text>
+
+  <rect class="bar1" x="1340" y="2100" width="8" height="80"/>
+  <rect class="bar2" x="1380" y="2100" width="230" height="80"/>
+  <text class="ink tiny" x="1328" y="2215">41</text>
+  <text class="ink tiny" x="1450" y="2215">12,218</text>
+  <text class="muted tiny" x="1260" y="2255">below-minimizer hits, k = 4 and 8 surface</text>
+
+  <text class="ink body" x="120" y="2345">Core concept: same 3-step shape, two residue branches, different reset scale, different divisor-count burden.</text>
+</svg>
