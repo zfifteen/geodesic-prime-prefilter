@@ -16,9 +16,11 @@ from functools import lru_cache
 from pathlib import Path
 
 import gmpy2
-from sympy import factorint
+import sympy
+from sympy import factorint, nextprime, prevprime, randprime
 
 
+RSA_CASES_PATH = Path("experiments/rsa/rsa_cases.json")
 SUMMARY_PATH = Path("experiments/rsa/inference_elimination_probe.csv")
 SURVIVOR_PATH = Path("experiments/rsa/inference_elimination_survivors.jsonl")
 WHEEL_PRIMES = (2, 3, 5, 7)
@@ -29,6 +31,67 @@ WHEEL_OPEN_RESIDUES_MOD30 = frozenset({1, 7, 11, 13, 17, 19, 23, 29})
 STATUS_REJECTED = "REJECTED"
 STATUS_RESOLVED_SURVIVOR = "RESOLVED_SURVIVOR"
 STATUS_UNRESOLVED = "UNRESOLVED"
+
+
+def generate_rsa_like_skewed_semiprime(target_bits: int, skew_bits: int, max_attempts: int = 500) -> tuple[int, int, int]:
+    """
+    Generate a high-quality RSA-like skewed semiprime.
+    - p and q are strong random primes.
+    - Controlled skew |p - q| ≈ 2^skew_bits.
+    - N has exactly 'target_bits' bits.
+    """
+    half_bits = target_bits // 2
+    attempts = 0
+    while attempts < max_attempts:
+        attempts += 1
+        p = randprime(2**(half_bits - 1), 2**half_bits)
+        offset = 1 << skew_bits
+        q_candidate = p + offset
+        q = nextprime(q_candidate)
+        n = p * q
+        if n.bit_length() == target_bits:
+            return n, p, q
+        # Minimal adjustment
+        if n.bit_length() < target_bits:
+            while n.bit_length() < target_bits and attempts < max_attempts:
+                attempts += 1
+                q = nextprime(q)
+                n = p * q
+        else:
+            while n.bit_length() > target_bits and attempts < max_attempts:
+                attempts += 1
+                q = prevprime(q)
+                n = p * q
+        if n.bit_length() == target_bits:
+            return n, p, q
+    raise ValueError(f"Failed to generate {target_bits}-bit semiprime after {max_attempts} attempts")
+
+
+def save_rsa_cases():
+    """Generate all cases and save them to a shared JSON file for both probe and audit."""
+    cases = []
+    for case_id, bits, skew_bits, radius, balance_band in [
+        ("rsa_like_60bit_skew_14", 60, 14, 16643, 2),
+        ("rsa_like_80bit_skew_16", 80, 16, 65806, 2),
+        ("rsa_like_100bit_skew_18", 100, 18, 262467, 2),
+        ("rsa_like_125bit_skew_18", 126, 18, 262422, 2),
+        ("rsa_like_150bit_skew_20", 150, 20, 1048877, 2),
+        ("rsa_like_180bit_skew_22", 180, 22, 4194587, 2),
+        ("rsa_like_200bit_skew_24", 200, 24, 16777628, 2),
+        # Add future rungs here
+    ]:
+        n, p, q = generate_rsa_like_skewed_semiprime(bits, skew_bits)
+        cases.append({
+            "case_id": case_id,
+            "n": n,
+            "p": p,
+            "q": q,
+            "radius": radius,
+            "balance_band": balance_band,
+        })
+    with RSA_CASES_PATH.open("w") as f:
+        json.dump(cases, f, indent=2)
+    print("Generated and saved rsa_cases.json")
 
 
 @dataclass(frozen=True)
@@ -71,16 +134,23 @@ class DivisorField:
         return self.counts[value] == 2
 
 
-TOY_CASES = (
-    ToyCase("rsa_like_60bit_skew_14", 648518344462237693, 16643, 2),
-    ToyCase("rsa_like_80bit_skew_16", 680020773533224614100823, 65806, 2),
-    ToyCase("rsa_like_100bit_skew_18", 713053462628394237921883844429, 262467, 2),
-    ToyCase("rsa_like_125bit_skew_18", 47852207848256971175506009106282971019, 262422, 2),
-    ToyCase("rsa_like_150bit_skew_20", 802826827147102433094322495052834506987796881, 1048877, 2),
-    ToyCase("rsa_like_180bit_skew_22", 862028741737062482826570193487498621145171102080695669, 4194587, 2),
-    ToyCase("rsa_like_200bit_skew_24", 903902649895682029992353676938101012118054495516850682569259, 16777628, 2),
-    ToyCase("rsa_like_250bit_skew_26", 1017703909312349373839979360427921075006087013240130614282365196807062938841, 67109297, 2),
-)
+def load_toy_cases():
+    if not RSA_CASES_PATH.exists():
+        save_rsa_cases()
+    with RSA_CASES_PATH.open() as f:
+        data = json.load(f)
+    return tuple(
+        ToyCase(
+            case["case_id"],
+            case["n"],
+            case["radius"],
+            case["balance_band"],
+        )
+        for case in data
+    )
+
+
+TOY_CASES = load_toy_cases()
 
 
 @lru_cache(maxsize=2_000_000)

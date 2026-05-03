@@ -13,6 +13,7 @@ from pathlib import Path
 SURVIVOR_PATH = Path("experiments/rsa/inference_elimination_survivors.jsonl")
 SUMMARY_PATH = Path("experiments/rsa/inference_elimination_probe.csv")
 AUDIT_PATH = Path("experiments/rsa/inference_elimination_audit.csv")
+RSA_CASES_PATH = Path("experiments/rsa/rsa_cases.json")
 
 
 @dataclass(frozen=True)
@@ -26,16 +27,20 @@ class AuditCase:
         return self.p * self.q
 
 
-AUDIT_CASES = (
-    AuditCase("rsa_like_60bit_skew_14", 805289981, 805322753),
-    AuditCase("rsa_like_80bit_skew_16", 824633655283, 824633786381),
-    AuditCase("rsa_like_100bit_skew_18", 844424929869767, 844424930394187),
-    AuditCase("rsa_like_125bit_skew_18", 6917529027640819673, 6917529027641344003),
-    AuditCase("rsa_like_150bit_skew_20", 28334198897217870233539, 28334198897217872330779),
-    AuditCase("rsa_like_180bit_skew_22", 928455029464035206170148833, 928455029464035206178537493),
-    AuditCase("rsa_like_200bit_skew_24", 950737950171172051122510626659, 950737950171172051122544181401),
-    AuditCase("rsa_like_250bit_skew_26", 31901471898837980949691369446661160939, 31901471898837980949691369446795379019),
-)
+def load_audit_cases():
+    with RSA_CASES_PATH.open() as f:
+        data = json.load(f)
+    return tuple(
+        AuditCase(
+            case["case_id"],
+            case["p"],
+            case["q"],
+        )
+        for case in data
+    )
+
+
+AUDIT_CASES = load_audit_cases()
 
 
 def read_survivors(path: Path) -> dict[str, list[dict[str, int | str]]]:
