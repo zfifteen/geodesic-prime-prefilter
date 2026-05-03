@@ -1,2 +1,2 @@
-{"N": "1099507433251", "bits": 40, "case_id": "rsa_v2_40bit_static_001", "p": "1048559", "q": "1048589", "rule_id": "reciprocal_pgs_deadline_lock_v1", "status": "resolved"}
-{"N": "1027435935526951", "bits": 50, "case_id": "rsa_v2_50bit_static_001", "rule_id": "reciprocal_pgs_deadline_lock_v1", "status": "unresolved", "unresolved_reason": "no_reciprocal_deadline_lock"}
+{"N": "1099507433251", "bits": 40, "case_id": "rsa_v2_40bit_static_001", "rule_id": "pgs_first_reciprocal_anchor_surface_v1", "status": "unresolved", "unresolved_reason": "transported_deadline_invariant_not_derived"}
+{"N": "1027435935526951", "bits": 50, "case_id": "rsa_v2_50bit_static_001", "rule_id": "pgs_first_reciprocal_anchor_surface_v1", "status": "unresolved", "unresolved_reason": "transported_deadline_invariant_not_derived"}
