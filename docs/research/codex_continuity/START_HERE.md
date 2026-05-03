@@ -152,6 +152,16 @@ smaller, sharper subset. They carry matched weight share
 have higher terminal exact-witness hit rate: `0.8720123654427132` versus
 `0.7452117085795563`.
 
-The next direct question is whether exact terminal witness hits carry the
-terminal reset profile more strongly than adjacent projected terminal hits
-after exact-step and final-`v2` matching.
+The terminal exact-versus-adjacent probe split terminal contact into exact
+witness hits and adjacent projected witness hits, still matched inside exact
+`(odd_steps_to_first_descent, final_v2)` strata. Exact terminal hits remained
+positive against no-witness blocks with matched-weighted mean of stratum median
+reset delta `0.22135903401835988` and ratio `1.0430527903690756`. Adjacent
+projected terminal hits were stronger against no-witness blocks with delta
+`0.4047035698439424` and ratio `1.0756384568540225`. Exact terminal hits did
+not beat adjacent projected terminal hits directly: exact-vs-adjacent delta
+was `-0.29644357588214204` and ratio `0.9803814153462154`.
+
+The next direct question is whether the adjacent projected terminal advantage
+is carried by sources immediately below the PGS witness, immediately above the
+PGS witness, or both.

@@ -73,10 +73,12 @@ mechanism candidate alive while preserving evidence for a broader block
 geometry effect.
 
 The follow-on terminal geometry probe found that positive terminal carriers
-are more exact-witness-centered than negative terminal carriers. The next
-direct question is whether exact terminal witness hits carry the terminal reset
-profile more strongly than adjacent projected terminal hits after exact-step
-and final-`v2` matching.
+are more exact-witness-centered than negative terminal carriers. The later
+exact-versus-adjacent terminal probe corrected the subclass read: exact
+terminal hits remain positive against no-witness blocks, but adjacent projected
+terminal hits are stronger after exact-step and final-`v2` matching. The next
+direct question is whether that adjacent advantage is one-sided around the PGS
+witness.
 
 ## Artifact Surface
 

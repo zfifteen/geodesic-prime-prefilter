@@ -5,9 +5,9 @@
 Determine whether PGS-selected same-gap witness contact predicts Collatz
 first-descent reset behavior.
 
-Current working target: determine whether exact terminal witness hits carry
-the terminal reset profile more strongly than adjacent projected terminal hits
-after exact-step and final transition `v2` matching.
+Current working target: determine whether the adjacent terminal advantage is
+carried by final sources immediately below the PGS witness, immediately above
+the PGS witness, or both.
 
 The object under study is the accelerated odd Collatz map:
 
@@ -77,6 +77,16 @@ smaller, sharper subset. They carry matched weight share
 have higher terminal exact-witness hit rate: `0.8720123654427132` versus
 `0.7452117085795563`.
 
+The terminal exact-versus-adjacent probe split terminal contact into exact
+witness hits and adjacent projected witness hits, still matched inside exact
+`(odd_steps_to_first_descent, final_v2)` strata. Exact terminal hits remained
+positive against no-witness blocks with weighted mean of stratum median reset
+delta `0.22135903401835988` and ratio `1.0430527903690756`. Adjacent projected
+terminal hits were stronger against no-witness blocks with delta
+`0.4047035698439424` and ratio `1.0756384568540225`. Exact terminal hits did
+not beat adjacent projected terminal hits directly: exact-vs-adjacent delta
+was `-0.29644357588214204` and ratio `0.9803814153462154`.
+
 The `20000` first-descent surface measured:
 
 | Measurement | Ratio |
@@ -109,7 +119,8 @@ block variable.
 7. Terminal-contact geometry by reset magnitude or final-source prime-gap
    state: complete.
 8. Exact terminal witness hits versus adjacent projected terminal hits under
-   exact-step and final-`v2` matching: next.
+   exact-step and final-`v2` matching: complete.
+9. Adjacent terminal side split under exact-step and final-`v2` matching: next.
 
 ## Primary Question
 
@@ -187,6 +198,12 @@ The terminal geometry probe exists:
 benchmarks/python/predictor/collatz_pgs_terminal_geometry_probe.py
 ```
 
-The next question is whether exact terminal witness hits carry the terminal
-reset profile more strongly than adjacent projected terminal hits after
-exact-step and final-`v2` matching.
+The terminal exact-versus-adjacent probe exists:
+
+```text
+benchmarks/python/predictor/collatz_pgs_terminal_exact_vs_adjacent_probe.py
+```
+
+The next question is whether the adjacent projected terminal advantage is
+carried by sources immediately below the PGS witness, immediately above the
+PGS witness, or both.
