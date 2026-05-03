@@ -46,12 +46,19 @@ over the branch-1 terminal residue class:
 
 $$w \equiv 0 \pmod {18}$$
 
-The expected mechanism is divisor-count load. Branch 1 forces $w$ to be
+The first measured mechanism is divisor-count load. Branch 1 forces $w$ to be
 divisible by $18$, so every branch-1 witness carries at least the prime-power
 baseline from $2\cdot 3^2$. Branch 2 forces $w\equiv 14\pmod {18}$, so it is
 even but not divisible by $3$. Since the prime-gap filter asks $w$ to minimize
 divisor count inside its gap, branch 1 starts with a larger mandatory
 small-prime divisor burden.
+
+The full baseline probe shows that this is real but incomplete. At
+`s <= 100000000`, branch 2 is about `3.07x` more likely to make $w$ the
+leftmost divisor-count minimizer, but about `596x` more likely to become a
+below-minimizer terminal hit. The remaining factor appears in terminal-source
+geometry: branch-1 minimizer successes mostly occur when `w-1` is prime, while
+branch 2 retains a large composite-terminal surface.
 
 ## First Pressure Test
 
@@ -75,10 +82,16 @@ branch 2: w congruent to 14 mod 18 -> avoids factor 3 -> more minimizers
 
 ## Stop Condition
 
-This line advances if the branch-occupancy imbalance reduces to a deterministic
-divisor-count obstruction for branch 1 inside prime gaps.
+This line advanced to a two-filter target. The branch-occupancy imbalance does
+not reduce to divisor-count obstruction alone.
 
-It stops, or changes shape, if branch-2 dominance persists after controlling
-for the forced divisor-count baseline and gap length. In that case the
-occupancy signal is not explained by the modulo-18 divisor burden alone, and
-the next mechanism must be isolated from the controlled residual.
+The current stop condition is:
+
+```text
+Prove or falsify that branch 1's leftmost-minimizer successes concentrate in
+terminal-prime twin-gap geometry, while branch 2 preserves composite terminal
+source eligibility.
+```
+
+If this terminal-source geometry explains the residual, the proof target
+becomes a combined divisor-load and terminal-eligibility theorem.

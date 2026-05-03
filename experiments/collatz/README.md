@@ -109,9 +109,9 @@ below-minimizer hits versus `41` branch-1 hits.
 The proof-pressure question is:
 
 ```text
-Why do leftmost divisor-count minimizers hit the doubled exact 3-step branch
-far more often than the branch-1 residue class among inverse-eligible
-witnesses?
+Why does branch 2 pass both filters--lower divisor-count load and composite
+terminal-source eligibility--far more often than branch 1 among inverse-eligible
+short-block witnesses?
 ```
 
 Start with:
@@ -122,6 +122,7 @@ experiments/collatz/docs/collatz_pgs_goal.md
 experiments/collatz/docs/collatz_pgs_short_block_reset_candidate_probe.md
 experiments/collatz/docs/collatz_pgs_short_block_branch_counterexample_probe.md
 experiments/collatz/docs/collatz_pgs_branch_occupancy_proof_target.md
+experiments/collatz/docs/collatz_pgs_branch_occupancy_baseline_probe.md
 experiments/collatz/docs/collatz_pgs_terminal_adjacent_residue_probe.md
 experiments/collatz/docs/collatz_pgs_below_witness_family_probe.md
 ```
