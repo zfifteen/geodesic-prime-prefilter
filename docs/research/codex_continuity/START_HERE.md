@@ -89,3 +89,124 @@ product closure, divisibility selectors, hidden fixtures, or audit leakage.
 
 The next live RSA v2 task is to derive a stronger transported certificate
 invariant from public PGSPG fields.
+
+## Current Collatz-PGS Bridge State
+
+As of 2026-05-03, the exploratory Collatz-PGS branch has one deterministic
+first-descent probe, a scale and reset-profile probe chain, residue-pressure
+notes, and one current goal note:
+
+```text
+experiments/collatz/docs/collatz_pgs_goal.md
+experiments/collatz/docs/collatz_pgs_first_descent_probe.md
+experiments/collatz/docs/collatz_pgs_same_gap_scale_probe.md
+experiments/collatz/docs/collatz_pgs_reset_length_strata_probe.md
+experiments/collatz/docs/collatz_pgs_below_witness_family_probe.md
+experiments/collatz/docs/collatz_pgs_terminal_adjacent_residue_probe.md
+experiments/collatz/docs/collatz_pgs_grok_residue_pressure.md
+```
+
+The measured `3 <= s <= 19999` odd-seed surface shows a strong prime-endpoint
+enrichment and a same-prime-gap composite interior odd-projected PGS-witness
+enrichment. The same-gap witness ratio is `1.589006897032753` overall and
+stays above background in every measured `v2(3n+1)` stratum. This is an
+empirical block-certificate signal.
+
+The same-gap scale probe reached odd seeds `3 <= s <= 999999`. The same-gap
+witness ratio was `1.7637165846198448` overall and stayed above background in
+every measured `v2(3n+1)` stratum. Witness-contact blocks had median reset
+strength `2.078632113914513`; no-witness-contact blocks had median reset
+strength `1.8728822607686915`.
+
+The matched odd-step probe found `37` strata containing both block classes:
+witness-contact median reset was higher in `19` strata, no-witness-contact
+median reset was higher in `18` strata, and the matched-weighted mean of
+stratum median reset ratios was `1.6163417109769`.
+
+The reset carrier-strata probe localized the positive matched reset effect.
+Exact steps `1`, `2`, and `3` supplied the three largest positive delta
+contributions: `0.4382401881898264`, `0.23780172921923806`, and
+`0.23673527139383527`. Exact steps `4`, `5`, and `6` supplied the three
+largest negative delta contributions: `-0.14396095926820723`,
+`-0.11366913299919518`, and `-0.056179924837349154`. Coarse `v2`-bin
+composition deltas were small, so the current signal localizes more strongly
+to exact step strata than to broad transition-bin composition.
+
+The source-position carrier probe found the carrier mechanism candidate.
+Favorable strata had matched-weighted final-source witness hit rate
+`0.6330294377004576`; unfavorable strata had `0.2518013666558681`. Favorable
+strata also carried matched-weighted median final-`v2` delta
+`0.5953211176443776`, while unfavorable strata were nearly flat at
+`0.004912937401824805`.
+
+The terminal contact decomposition probe matched blocks inside exact
+`(odd_steps_to_first_descent, final_v2)` strata. Terminal witness contact
+remained positive against no-witness blocks with matched-weighted mean of
+stratum median reset delta `0.33031631110499143` and ratio
+`1.0401652897967644`. Nonterminal-only witness contact also remained mildly
+positive against no-witness blocks with matched-weighted mean delta
+`0.3036864937903315`, so the effect is not terminal-only.
+
+The terminal geometry probe found that positive terminal carriers are a
+smaller, sharper subset. They carry matched weight share
+`0.2431613157089351` and weighted mean of stratum median reset delta
+`1.7526101771071119`; negative terminal carriers carry matched weight share
+`0.7568386842910649` and delta `-0.12664612350652749`. Positive carriers also
+have higher terminal exact-witness hit rate: `0.8720123654427132` versus
+`0.7452117085795563`.
+
+The terminal exact-versus-adjacent probe split terminal contact into exact
+witness hits and adjacent projected witness hits, still matched inside exact
+`(odd_steps_to_first_descent, final_v2)` strata. Exact terminal hits remained
+positive against no-witness blocks with matched-weighted mean of stratum median
+reset delta `0.22135903401835988` and ratio `1.0430527903690756`. Adjacent
+projected terminal hits were stronger against no-witness blocks with delta
+`0.4047035698439424` and ratio `1.0756384568540225`. Exact terminal hits did
+not beat adjacent projected terminal hits directly: exact-vs-adjacent delta
+was `-0.29644357588214204` and ratio `0.9803814153462154`.
+
+The terminal adjacent-side probe split adjacent projected terminal hits into
+final sources at `witness - 1` and `witness + 1`, still matched inside exact
+`(odd_steps_to_first_descent, final_v2)` strata. Below-witness terminal hits
+beat above-witness terminal hits directly with matched-weighted mean of stratum
+median reset delta `0.9934374958512522` and ratio `1.1600562928929092`.
+Below-witness terminal hits remained positive against no-witness blocks with
+delta `0.48311171458205104` and ratio `1.0866506651606216`. Above-witness
+terminal hits did not carry the median-reset delta against no-witness blocks:
+their delta was `-0.20290860147945028`.
+
+The below-witness stability probe kept the same exact
+`(odd_steps_to_first_descent, final_v2)` matching and measured median, P90, and
+P99 reset-strength deltas. Below-witness terminal hits were stable against
+above-witness terminal hits at all three levels: median delta
+`0.9934374958512522`, P90 delta `0.9997759684812527`, and P99 delta
+`0.9754731838240228`. Against no-witness blocks, below-witness contact was
+median-positive with delta `0.48311171458205104`, but tail-negative with P90
+delta `-0.06565152576687666` and P99 delta `-0.08685398078967067`.
+
+The below-witness exact-family probe decomposed the below-vs-no-witness result
+by exact `(odd_steps_to_first_descent, final_v2)` families. It conserved the
+stability-probe aggregate exactly across `175` matched families and total
+matched weight `12813`: median contribution `0.48311171458205115`, P90
+contribution `-0.06565152576687669`, and P99 contribution
+`-0.08685398078967059`. Exact step `1` carried most matched weight but almost
+no contribution. Exact step `3` carried the main positive median contribution:
+`0.2734251548497368` from matched weight `1064`. The
+`positive_positive_positive` sign pattern carried matched weight share
+`0.056817294934831813` and positive median/P90/P99 contributions. The
+`negative_negative_negative` sign pattern carried matched weight share
+`0.28455474908296263` and the main negative upper-tail contribution.
+
+The terminal adjacent residue probe verified the exact arithmetic identity
+behind the side split. Across `15558` terminal adjacent rows, the PGS witness
+matched the forced Collatz residue modulo `2^k`, the exact-`v2`
+non-overdivisibility check, the recomputed `v2`, and the terminal target at
+rate `1.0`. For below-witness terminal source `n=w-1`, the witness satisfies
+`w ≡ 2 * 3^{-1} mod 2^k`; for above-witness terminal source `n=w+1`, the
+witness satisfies `w ≡ -4 * 3^{-1} mod 2^k`.
+
+Grok pressure agreed that terminal adjacent PGS contact is a mechanism-bearing
+arithmetic object, while the upper-tail reversal means the broad reset
+certificate is not globally closed. The next direct question is whether exact
+step `3`, final `v2=4` or final `v2=8` below-witness residue families admit a
+closed reset inequality. More broad enrichment probes are now low value.

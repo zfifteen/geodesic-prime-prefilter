@@ -1,0 +1,452 @@
+{
+  "class_counts": {
+    "no_witness_contact": 338793,
+    "nonterminal_witness_contact": 90979,
+    "terminal_witness_contact": 70227
+  },
+  "input": "output/collatz_pgs_same_gap_scale_probe/block_rows.jsonl",
+  "matched_strata_count": 263,
+  "matched_weight_total": 68617,
+  "negative_geometry_summary": {
+    "matched_weight": 51932,
+    "matched_weight_share": 0.7568386842910649,
+    "strata_count": 122,
+    "weighted_mean_no_witness_final_composite_rate": 0.7921494551344104,
+    "weighted_mean_no_witness_median_final_odd_witness_distance": 6.2612262189016406,
+    "weighted_mean_of_stratum_median_reset_delta": -0.12664612350652749,
+    "weighted_mean_of_stratum_median_reset_ratio": 0.9962916837610672,
+    "weighted_mean_terminal_adjacent_projected_witness_hit_rate": 0.2547882914204434,
+    "weighted_mean_terminal_exact_witness_hit_rate": 0.7452117085795563,
+    "weighted_mean_terminal_hit_offset_rates": {
+      "-1": 0.2139109381484279,
+      "0": 0.7452117085795567,
+      "1": 0.0408773532720155
+    },
+    "weighted_mean_terminal_median_final_endpoint_distance": 2.3052838327043057,
+    "weighted_mean_terminal_median_final_gap_offset_fraction": 0.3303697940752774,
+    "weighted_mean_terminal_median_final_gap_width": 11.859816683355156
+  },
+  "net_geometry_summary": {
+    "matched_weight": 68617,
+    "matched_weight_share": 1.0,
+    "strata_count": 263,
+    "weighted_mean_no_witness_final_composite_rate": 0.7801862266650016,
+    "weighted_mean_no_witness_median_final_odd_witness_distance": 6.40207237273562,
+    "weighted_mean_of_stratum_median_reset_delta": 0.33031631110499143,
+    "weighted_mean_of_stratum_median_reset_ratio": 1.0401652897967644,
+    "weighted_mean_terminal_adjacent_projected_witness_hit_rate": 0.223955276864841,
+    "weighted_mean_terminal_exact_witness_hit_rate": 0.7760447231351586,
+    "weighted_mean_terminal_hit_offset_rates": {
+      "-1": 0.18554203854294662,
+      "0": 0.776044723135159,
+      "1": 0.03841323832189438
+    },
+    "weighted_mean_terminal_median_final_endpoint_distance": 2.590028710086422,
+    "weighted_mean_terminal_median_final_gap_offset_fraction": 0.3264510676187621,
+    "weighted_mean_terminal_median_final_gap_width": 12.106708250142093
+  },
+  "positive_geometry_summary": {
+    "matched_weight": 16685,
+    "matched_weight_share": 0.2431613157089351,
+    "strata_count": 141,
+    "weighted_mean_no_witness_final_composite_rate": 0.7429507228667794,
+    "weighted_mean_no_witness_median_final_odd_witness_distance": 6.840455498951154,
+    "weighted_mean_of_stratum_median_reset_delta": 1.7526101771071119,
+    "weighted_mean_of_stratum_median_reset_ratio": 1.1767217242376298,
+    "weighted_mean_terminal_adjacent_projected_witness_hit_rate": 0.12798763455728673,
+    "weighted_mean_terminal_exact_witness_hit_rate": 0.8720123654427132,
+    "weighted_mean_terminal_hit_offset_rates": {
+      "-1": 0.09724394478736655,
+      "0": 0.8720123654427133,
+      "1": 0.030743689769920195
+    },
+    "weighted_mean_terminal_median_final_endpoint_distance": 3.47629607431825,
+    "weighted_mean_terminal_median_final_gap_offset_fraction": 0.3142540462019352,
+    "weighted_mean_terminal_median_final_gap_width": 12.875157326940366
+  },
+  "strata_count": 533,
+  "top_negative_geometry_carriers": [
+    {
+      "final_v2": 10,
+      "matched_weight": 15,
+      "matched_weight_share": 0.00021860471894719966,
+      "matched_weighted_mean_of_stratum_median_delta_contribution": -0.013101409158040849,
+      "median_reset_strength_delta": -59.93195947981926,
+      "no_witness_final_composite_rate": 0.7222222222222222,
+      "no_witness_median_final_odd_witness_distance": 18.0,
+      "odd_steps_to_first_descent": 7,
+      "terminal_exact_witness_hit_rate": 0.8666666666666667,
+      "terminal_hit_offset_rates": {
+        "-1": 0.06666666666666667,
+        "0": 0.8666666666666667,
+        "1": 0.06666666666666667
+      },
+      "terminal_median_final_endpoint_distance": 4.0,
+      "terminal_median_final_gap_offset_fraction": 0.25,
+      "terminal_median_final_gap_width": 14.0
+    },
+    {
+      "final_v2": 14,
+      "matched_weight": 1,
+      "matched_weight_share": 1.4573647929813312e-05,
+      "matched_weighted_mean_of_stratum_median_delta_contribution": -0.011791316051723677,
+      "median_reset_strength_delta": -809.0847335211236,
+      "no_witness_final_composite_rate": 0.75,
+      "no_witness_median_final_odd_witness_distance": 12.0,
+      "odd_steps_to_first_descent": 4,
+      "terminal_exact_witness_hit_rate": 1.0,
+      "terminal_hit_offset_rates": {
+        "-1": 0.0,
+        "0": 1.0,
+        "1": 0.0
+      },
+      "terminal_median_final_endpoint_distance": 6.0,
+      "terminal_median_final_gap_offset_fraction": 0.23076923076923078,
+      "terminal_median_final_gap_width": 26.0
+    },
+    {
+      "final_v2": 10,
+      "matched_weight": 9,
+      "matched_weight_share": 0.0001311628313683198,
+      "matched_weighted_mean_of_stratum_median_delta_contribution": -0.011791223257241716,
+      "median_reset_strength_delta": -89.89759624912831,
+      "no_witness_final_composite_rate": 0.7619047619047619,
+      "no_witness_median_final_odd_witness_distance": 12.0,
+      "odd_steps_to_first_descent": 6,
+      "terminal_exact_witness_hit_rate": 0.8888888888888888,
+      "terminal_hit_offset_rates": {
+        "-1": 0.1111111111111111,
+        "0": 0.8888888888888888,
+        "1": 0.0
+      },
+      "terminal_median_final_endpoint_distance": 4.0,
+      "terminal_median_final_gap_offset_fraction": 0.25,
+      "terminal_median_final_gap_width": 18.0
+    },
+    {
+      "final_v2": 10,
+      "matched_weight": 4,
+      "matched_weight_share": 5.829459171925325e-05,
+      "matched_weighted_mean_of_stratum_median_delta_contribution": -0.007361006746306762,
+      "median_reset_strength_delta": -126.27254997783277,
+      "no_witness_final_composite_rate": 0.5,
+      "no_witness_median_final_odd_witness_distance": 19.0,
+      "odd_steps_to_first_descent": 13,
+      "terminal_exact_witness_hit_rate": 1.0,
+      "terminal_hit_offset_rates": {
+        "-1": 0.0,
+        "0": 1.0,
+        "1": 0.0
+      },
+      "terminal_median_final_endpoint_distance": 6.0,
+      "terminal_median_final_gap_offset_fraction": 0.3,
+      "terminal_median_final_gap_width": 20.0
+    },
+    {
+      "final_v2": 11,
+      "matched_weight": 2,
+      "matched_weight_share": 2.9147295859626624e-05,
+      "matched_weighted_mean_of_stratum_median_delta_contribution": -0.007246217192690085,
+      "median_reset_strength_delta": -248.60684255540778,
+      "no_witness_final_composite_rate": 0.5,
+      "no_witness_median_final_odd_witness_distance": 2.0,
+      "odd_steps_to_first_descent": 11,
+      "terminal_exact_witness_hit_rate": 1.0,
+      "terminal_hit_offset_rates": {
+        "-1": 0.0,
+        "0": 1.0,
+        "1": 0.0
+      },
+      "terminal_median_final_endpoint_distance": 12.0,
+      "terminal_median_final_gap_offset_fraction": 0.4,
+      "terminal_median_final_gap_width": 30.0
+    },
+    {
+      "final_v2": 11,
+      "matched_weight": 1,
+      "matched_weight_share": 1.4573647929813312e-05,
+      "matched_weighted_mean_of_stratum_median_delta_contribution": -0.005520914602015502,
+      "median_reset_strength_delta": -378.8285972464977,
+      "no_witness_final_composite_rate": 1.0,
+      "no_witness_median_final_odd_witness_distance": 18.0,
+      "odd_steps_to_first_descent": 12,
+      "terminal_exact_witness_hit_rate": 0.0,
+      "terminal_hit_offset_rates": {
+        "-1": 1.0,
+        "0": 0.0,
+        "1": 0.0
+      },
+      "terminal_median_final_endpoint_distance": 2.0,
+      "terminal_median_final_gap_offset_fraction": 0.1111111111111111,
+      "terminal_median_final_gap_width": 18.0
+    },
+    {
+      "final_v2": 11,
+      "matched_weight": 1,
+      "matched_weight_share": 1.4573647929813312e-05,
+      "matched_weighted_mean_of_stratum_median_delta_contribution": -0.0037655761764499875,
+      "median_reset_strength_delta": -258.3825404994688,
+      "no_witness_final_composite_rate": 1.0,
+      "no_witness_median_final_odd_witness_distance": 2.0,
+      "odd_steps_to_first_descent": 27,
+      "terminal_exact_witness_hit_rate": 1.0,
+      "terminal_hit_offset_rates": {
+        "-1": 0.0,
+        "0": 1.0,
+        "1": 0.0
+      },
+      "terminal_median_final_endpoint_distance": 4.0,
+      "terminal_median_final_gap_offset_fraction": 0.08695652173913043,
+      "terminal_median_final_gap_width": 46.0
+    },
+    {
+      "final_v2": 10,
+      "matched_weight": 4,
+      "matched_weight_share": 5.829459171925325e-05,
+      "matched_weighted_mean_of_stratum_median_delta_contribution": -0.0036806348165905997,
+      "median_reset_strength_delta": -63.13852980249929,
+      "no_witness_final_composite_rate": 0.75,
+      "no_witness_median_final_odd_witness_distance": 6.0,
+      "odd_steps_to_first_descent": 14,
+      "terminal_exact_witness_hit_rate": 0.8333333333333334,
+      "terminal_hit_offset_rates": {
+        "-1": 0.0,
+        "0": 0.8333333333333334,
+        "1": 0.16666666666666666
+      },
+      "terminal_median_final_endpoint_distance": 6.0,
+      "terminal_median_final_gap_offset_fraction": 0.46153846153846156,
+      "terminal_median_final_gap_width": 26.0
+    },
+    {
+      "final_v2": 12,
+      "matched_weight": 1,
+      "matched_weight_share": 1.4573647929813312e-05,
+      "matched_weighted_mean_of_stratum_median_delta_contribution": -0.0023290887837597524,
+      "median_reset_strength_delta": -159.81508507524293,
+      "no_witness_final_composite_rate": 1.0,
+      "no_witness_median_final_odd_witness_distance": 2.0,
+      "odd_steps_to_first_descent": 8,
+      "terminal_exact_witness_hit_rate": 1.0,
+      "terminal_hit_offset_rates": {
+        "-1": 0.0,
+        "0": 1.0,
+        "1": 0.0
+      },
+      "terminal_median_final_endpoint_distance": 4.0,
+      "terminal_median_final_gap_offset_fraction": 0.4,
+      "terminal_median_final_gap_width": 10.0
+    },
+    {
+      "final_v2": 7,
+      "matched_weight": 17,
+      "matched_weight_share": 0.0002477520148068263,
+      "matched_weighted_mean_of_stratum_median_delta_contribution": -0.002317373446451857,
+      "median_reset_strength_delta": -9.353600810305121,
+      "no_witness_final_composite_rate": 0.8235294117647058,
+      "no_witness_median_final_odd_witness_distance": 8.0,
+      "odd_steps_to_first_descent": 15,
+      "terminal_exact_witness_hit_rate": 0.8333333333333334,
+      "terminal_hit_offset_rates": {
+        "-1": 0.1111111111111111,
+        "0": 0.8333333333333334,
+        "1": 0.05555555555555555
+      },
+      "terminal_median_final_endpoint_distance": 4.0,
+      "terminal_median_final_gap_offset_fraction": 0.3333333333333333,
+      "terminal_median_final_gap_width": 12.0
+    }
+  ],
+  "top_positive_geometry_carriers": [
+    {
+      "final_v2": 8,
+      "matched_weight": 109,
+      "matched_weight_share": 0.001588527624349651,
+      "matched_weighted_mean_of_stratum_median_delta_contribution": 0.06022183610387091,
+      "median_reset_strength_delta": 37.91047456825055,
+      "no_witness_final_composite_rate": 0.7532751091703057,
+      "no_witness_median_final_odd_witness_distance": 10.0,
+      "odd_steps_to_first_descent": 3,
+      "terminal_exact_witness_hit_rate": 0.8623853211009175,
+      "terminal_hit_offset_rates": {
+        "-1": 0.11009174311926606,
+        "0": 0.8623853211009175,
+        "1": 0.027522935779816515
+      },
+      "terminal_median_final_endpoint_distance": 2.0,
+      "terminal_median_final_gap_offset_fraction": 0.25,
+      "terminal_median_final_gap_width": 14.0
+    },
+    {
+      "final_v2": 9,
+      "matched_weight": 52,
+      "matched_weight_share": 0.0007578296923502922,
+      "matched_weighted_mean_of_stratum_median_delta_contribution": 0.05748203281364107,
+      "median_reset_strength_delta": 75.85085856872325,
+      "no_witness_final_composite_rate": 0.7296137339055794,
+      "no_witness_median_final_odd_witness_distance": 6.0,
+      "odd_steps_to_first_descent": 3,
+      "terminal_exact_witness_hit_rate": 0.8076923076923077,
+      "terminal_hit_offset_rates": {
+        "-1": 0.1346153846153846,
+        "0": 0.8076923076923077,
+        "1": 0.057692307692307696
+      },
+      "terminal_median_final_endpoint_distance": 3.0,
+      "terminal_median_final_gap_offset_fraction": 0.3333333333333333,
+      "terminal_median_final_gap_width": 14.0
+    },
+    {
+      "final_v2": 13,
+      "matched_weight": 2,
+      "matched_weight_share": 2.9147295859626624e-05,
+      "matched_weighted_mean_of_stratum_median_delta_contribution": 0.02794963985565676,
+      "median_reset_strength_delta": 958.9102189877999,
+      "no_witness_final_composite_rate": 0.5,
+      "no_witness_median_final_odd_witness_distance": 2.0,
+      "odd_steps_to_first_descent": 8,
+      "terminal_exact_witness_hit_rate": 1.0,
+      "terminal_hit_offset_rates": {
+        "-1": 0.0,
+        "0": 1.0,
+        "1": 0.0
+      },
+      "terminal_median_final_endpoint_distance": 2.0,
+      "terminal_median_final_gap_offset_fraction": 0.3333333333333333,
+      "terminal_median_final_gap_width": 6.0
+    },
+    {
+      "final_v2": 9,
+      "matched_weight": 37,
+      "matched_weight_share": 0.0005392249734030925,
+      "matched_weighted_mean_of_stratum_median_delta_contribution": 0.027267278943853824,
+      "median_reset_strength_delta": 50.5675372781194,
+      "no_witness_final_composite_rate": 0.7333333333333333,
+      "no_witness_median_final_odd_witness_distance": 6.0,
+      "odd_steps_to_first_descent": 4,
+      "terminal_exact_witness_hit_rate": 0.8378378378378378,
+      "terminal_hit_offset_rates": {
+        "-1": 0.05405405405405406,
+        "0": 0.8378378378378378,
+        "1": 0.10810810810810811
+      },
+      "terminal_median_final_endpoint_distance": 4.0,
+      "terminal_median_final_gap_offset_fraction": 0.3333333333333333,
+      "terminal_median_final_gap_width": 18.0
+    },
+    {
+      "final_v2": 6,
+      "matched_weight": 261,
+      "matched_weight_share": 0.0038037221096812743,
+      "matched_weighted_mean_of_stratum_median_delta_contribution": 0.024043026594038144,
+      "median_reset_strength_delta": 6.320920903460212,
+      "no_witness_final_composite_rate": 0.7332686711930165,
+      "no_witness_median_final_odd_witness_distance": 8.0,
+      "odd_steps_to_first_descent": 4,
+      "terminal_exact_witness_hit_rate": 0.8735632183908046,
+      "terminal_hit_offset_rates": {
+        "-1": 0.07662835249042145,
+        "0": 0.8735632183908046,
+        "1": 0.04980842911877394
+      },
+      "terminal_median_final_endpoint_distance": 4.0,
+      "terminal_median_final_gap_offset_fraction": 0.3333333333333333,
+      "terminal_median_final_gap_width": 12.0
+    },
+    {
+      "final_v2": 5,
+      "matched_weight": 688,
+      "matched_weight_share": 0.010026669775711558,
+      "matched_weighted_mean_of_stratum_median_delta_contribution": 0.023718963992683893,
+      "median_reset_strength_delta": 2.365587430648242,
+      "no_witness_final_composite_rate": 0.7353415814954276,
+      "no_witness_median_final_odd_witness_distance": 6.0,
+      "odd_steps_to_first_descent": 3,
+      "terminal_exact_witness_hit_rate": 0.873546511627907,
+      "terminal_hit_offset_rates": {
+        "-1": 0.09156976744186046,
+        "0": 0.873546511627907,
+        "1": 0.03488372093023256
+      },
+      "terminal_median_final_endpoint_distance": 4.0,
+      "terminal_median_final_gap_offset_fraction": 0.3,
+      "terminal_median_final_gap_width": 12.0
+    },
+    {
+      "final_v2": 11,
+      "matched_weight": 10,
+      "matched_weight_share": 0.00014573647929813313,
+      "matched_weighted_mean_of_stratum_median_delta_contribution": 0.022108514813825326,
+      "median_reset_strength_delta": 151.70199609802523,
+      "no_witness_final_composite_rate": 0.7321428571428571,
+      "no_witness_median_final_odd_witness_distance": 6.0,
+      "odd_steps_to_first_descent": 3,
+      "terminal_exact_witness_hit_rate": 0.8,
+      "terminal_hit_offset_rates": {
+        "-1": 0.2,
+        "0": 0.8,
+        "1": 0.0
+      },
+      "terminal_median_final_endpoint_distance": 4.0,
+      "terminal_median_final_gap_offset_fraction": 0.35416666666666663,
+      "terminal_median_final_gap_width": 13.0
+    },
+    {
+      "final_v2": 4,
+      "matched_weight": 938,
+      "matched_weight_share": 0.013670081758164886,
+      "matched_weighted_mean_of_stratum_median_delta_contribution": 0.021601906339149317,
+      "median_reset_strength_delta": 1.58023241713583,
+      "no_witness_final_composite_rate": 0.7477160927617709,
+      "no_witness_median_final_odd_witness_distance": 6.0,
+      "odd_steps_to_first_descent": 4,
+      "terminal_exact_witness_hit_rate": 0.8987206823027718,
+      "terminal_hit_offset_rates": {
+        "-1": 0.07462686567164178,
+        "0": 0.8987206823027718,
+        "1": 0.026652452025586353
+      },
+      "terminal_median_final_endpoint_distance": 4.0,
+      "terminal_median_final_gap_offset_fraction": 0.3333333333333333,
+      "terminal_median_final_gap_width": 14.0
+    },
+    {
+      "final_v2": 5,
+      "matched_weight": 459,
+      "matched_weight_share": 0.00668930439978431,
+      "matched_weighted_mean_of_stratum_median_delta_contribution": 0.021141330354060385,
+      "median_reset_strength_delta": 3.160467679530635,
+      "no_witness_final_composite_rate": 0.7345882352941177,
+      "no_witness_median_final_odd_witness_distance": 6.0,
+      "odd_steps_to_first_descent": 4,
+      "terminal_exact_witness_hit_rate": 0.8758169934640523,
+      "terminal_hit_offset_rates": {
+        "-1": 0.08278867102396514,
+        "0": 0.8758169934640523,
+        "1": 0.04139433551198257
+      },
+      "terminal_median_final_endpoint_distance": 4.0,
+      "terminal_median_final_gap_offset_fraction": 0.3333333333333333,
+      "terminal_median_final_gap_width": 14.0
+    },
+    {
+      "final_v2": 7,
+      "matched_weight": 110,
+      "matched_weight_share": 0.0016031012722794642,
+      "matched_weighted_mean_of_stratum_median_delta_contribution": 0.020266212581722672,
+      "median_reset_strength_delta": 12.641879170182406,
+      "no_witness_final_composite_rate": 0.7555147058823529,
+      "no_witness_median_final_odd_witness_distance": 8.0,
+      "odd_steps_to_first_descent": 4,
+      "terminal_exact_witness_hit_rate": 0.8727272727272727,
+      "terminal_hit_offset_rates": {
+        "-1": 0.08181818181818182,
+        "0": 0.8727272727272727,
+        "1": 0.045454545454545456
+      },
+      "terminal_median_final_endpoint_distance": 4.0,
+      "terminal_median_final_gap_offset_fraction": 0.3333333333333333,
+      "terminal_median_final_gap_width": 14.0
+    }
+  ]
+}

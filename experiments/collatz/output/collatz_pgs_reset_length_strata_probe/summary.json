@@ -1,0 +1,16 @@
+{
+  "input": "output/collatz_pgs_same_gap_scale_probe/block_rows.jsonl",
+  "matched_no_witness_contact_blocks": 338793,
+  "matched_strata_count": 37,
+  "matched_weight_total": 117677,
+  "matched_weighted_mean_of_stratum_median_reset_delta": 0.7056366384084134,
+  "matched_weighted_mean_of_stratum_median_reset_ratio": 1.6163417109769,
+  "matched_weighted_mean_of_stratum_p90_reset_delta": -0.028322861082362694,
+  "matched_witness_contact_blocks": 159195,
+  "strata_count": 103,
+  "strata_where_median_reset_is_tied": 0,
+  "strata_where_no_witness_median_reset_is_higher": 18,
+  "strata_where_witness_median_reset_is_higher": 19,
+  "total_no_witness_contact_blocks": 338793,
+  "total_witness_contact_blocks": 161206
+}

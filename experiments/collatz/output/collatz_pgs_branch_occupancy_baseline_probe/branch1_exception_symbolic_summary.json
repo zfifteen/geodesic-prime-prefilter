@@ -1,0 +1,62 @@
+{
+  "all_witness_tau": 12,
+  "counts_by_final_v2": [
+    {
+      "count": 36,
+      "final_v2": 4
+    },
+    {
+      "count": 5,
+      "final_v2": 8
+    }
+  ],
+  "counts_by_gap_width": [
+    {
+      "count": 37,
+      "gap_width": 6
+    },
+    {
+      "count": 3,
+      "gap_width": 8
+    },
+    {
+      "count": 1,
+      "gap_width": 10
+    }
+  ],
+  "counts_by_terminal_source_gap_offset": [
+    {
+      "count": 38,
+      "terminal_source_gap_offset": 4
+    },
+    {
+      "count": 3,
+      "terminal_source_gap_offset": 6
+    }
+  ],
+  "counts_by_witness_gap_offset": [
+    {
+      "count": 38,
+      "witness_gap_offset": 5
+    },
+    {
+      "count": 3,
+      "witness_gap_offset": 7
+    }
+  ],
+  "counts_by_witness_tau": [
+    {
+      "count": 41,
+      "witness_tau": 12
+    }
+  ],
+  "factor_form_rows": [
+    {
+      "count": 41,
+      "equivalent_form": "w = 18u, u prime",
+      "factor_form": "w = 2 * 3^2 * u, u prime"
+    }
+  ],
+  "normal_form": "w = 18u, u prime",
+  "row_count": 41
+}
