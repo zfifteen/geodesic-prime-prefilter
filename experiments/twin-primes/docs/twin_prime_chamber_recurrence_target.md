@@ -621,6 +621,56 @@ Decide whether the nine-row normal form should be symbolically explained first
 or pressure-tested by a sixth strip.
 ```
 
+## Sixth-Strip Pressure At `10^18`
+
+The sixth-strip pass focused only on the `9` sixth-layer normal-form rows. It
+used the existing fifth-remainder factor signatures and removed one least
+factor from each row.
+
+The input was:
+
+| Quantity | Value |
+|---|---:|
+| Scale | `10^18` |
+| Sixth-layer normal-form rows | `9` |
+| Input normal-form disposition | `TIGHT_NORMAL_FORM` |
+
+The sixth strip compressed the surface again:
+
+| Quantity | Value |
+|---|---:|
+| Sixth-strip semiprime-distinct remainders | `7` |
+| Sixth-strip prime-power tail remainders | `0` |
+| Sixth-strip accounted rows | `7` |
+| Seventh-layer rows exposed | `2` |
+| Sixth-strip compression rate | `0.7777777777777778` |
+
+The two survivors are the two boundary normal forms:
+
+| Sixth-layer normal form | Count |
+|---|---:|
+| `distinct_4_prime_product` | `1` |
+| `one_square_3_distinct_prime_product` | `1` |
+
+The measured answer to the sixth-strip pressure question is:
+
+```text
+The nine-row sixth layer mostly closes under one more peel. The only survivors
+are the two boundary forms, giving a two-row seventh-layer boundary surface.
+```
+
+The current focused chain is:
+
+```text
+154 -> 55 -> 9 -> 2
+```
+
+The next focused pressure point is now:
+
+```text
+Explain or peel the 2 seventh-layer boundary rows.
+```
+
 ## Stop Condition
 
 The target is closed only in one of two forms:

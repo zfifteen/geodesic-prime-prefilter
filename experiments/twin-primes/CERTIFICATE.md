@@ -500,6 +500,61 @@ The measured normal-form disposition is:
 TIGHT_NORMAL_FORM
 ```
 
+## Sixth-Strip Pressure At `10^18`
+
+The next pressure test attacked only the `9` sixth-layer normal-form rows. It
+used the existing fifth-remainder factor signatures and removed exactly one
+least factor from each row.
+
+The input surface was:
+
+```text
+scale: 10^18
+input sixth-layer rows: 9
+input normal-form surface: TIGHT_NORMAL_FORM
+```
+
+The result was:
+
+| Quantity | Count |
+|---|---:|
+| Input sixth-layer rows | `9` |
+| Sixth strip reaches distinct-semiprime material | `7` |
+| Sixth strip reaches prime-power tail material | `0` |
+| Sixth strip accounted rows | `7` |
+| Seventh-layer rows exposed | `2` |
+| Sixth-strip compression rate | `0.7777777777777778` |
+| Grammar disposition | `SEVENTH_LAYER_FOUND` |
+
+The sixth remainder family distribution was:
+
+| Sixth remainder family | Count |
+|---|---:|
+| `semiprime_distinct` | `7` |
+| `multi_prime_family` | `2` |
+
+Thus the sixth strip compresses the nine-row normal-form surface by:
+
+```text
+7 / 9 = 0.7777777777777778
+```
+
+The `2` seventh-layer rows are exactly the two sixth-layer boundary forms:
+
+| Sixth-layer normal form | Seventh-layer row count |
+|---|---:|
+| `distinct_4_prime_product` | `1` |
+| `one_square_3_distinct_prime_product` | `1` |
+
+The `10^18` chain now has this focused shape:
+
+```text
+154 next-layer rows
+55 fifth-layer rows
+9 sixth-layer normal-form rows
+2 seventh-layer boundary rows
+```
+
 ## Reproducibility
 
 Run the focused tests:
@@ -707,6 +762,44 @@ sixth_layer_count: 9
 normal_form_disposition: TIGHT_NORMAL_FORM
 ```
 
+Run the focused `10^18` sixth-strip pressure test:
+
+```text
+python3 experiments/twin-primes/scripts/twin_prime_sixth_strip_pressure_probe.py --input experiments/twin-primes/output/twin_prime_sixth_layer_normal_form_probe/sixth_layer_normal_form_rows.csv --scale 1000000000000000000 --output-dir experiments/twin-primes/output/twin_prime_sixth_strip_pressure_probe
+```
+
+Check the sixth-strip summary:
+
+```text
+python3 - <<'PY'
+import json
+from pathlib import Path
+
+path = Path("experiments/twin-primes/output/twin_prime_sixth_strip_pressure_probe/summary.json")
+summary = json.loads(path.read_text())
+for key in [
+    "scale",
+    "input_sixth_layer_count",
+    "sixth_strip_accounted_count",
+    "seventh_layer_count",
+    "sixth_strip_compression_rate",
+    "grammar_disposition",
+]:
+    print(f"{key}: {summary[key]}")
+PY
+```
+
+Expected values:
+
+```text
+scale: 1000000000000000000
+input_sixth_layer_count: 9
+sixth_strip_accounted_count: 7
+seventh_layer_count: 2
+sixth_strip_compression_rate: 0.7777777777777778
+grammar_disposition: SEVENTH_LAYER_FOUND
+```
+
 ## Artifact References
 
 The committed certificate artifacts are:
@@ -728,6 +821,9 @@ The committed certificate artifacts are:
 | `output/twin_prime_fifth_strip_pressure_probe/sixth_layer_rows.csv` | The `9` sixth-layer rows. |
 | `output/twin_prime_sixth_layer_normal_form_probe/summary.json` | Focused `10^18` sixth-layer normal-form summary. |
 | `output/twin_prime_sixth_layer_normal_form_probe/sixth_layer_normal_form_rows.csv` | The `9` classified sixth-layer rows. |
+| `output/twin_prime_sixth_strip_pressure_probe/summary.json` | Focused `10^18` sixth-strip summary. |
+| `output/twin_prime_sixth_strip_pressure_probe/sixth_strip_rows.csv` | Classified `10^18` sixth-strip rows. |
+| `output/twin_prime_sixth_strip_pressure_probe/seventh_layer_rows.csv` | The `2` seventh-layer boundary rows. |
 
 ## Open Target
 
@@ -740,7 +836,8 @@ Prove symbolically why low-scale width-2 endpoint misses reduce to fixed-point
 material, distinct-semiprime material, or prime-power tail material, then
 extend the grammar through the high-scale fourth-strip and fifth-layer
 multi-prime surfaces. The next concrete object is the `9`-row sixth-layer
-multi-prime surface at `10^18`, now reduced to the normal forms above.
+multi-prime surface at `10^18`, now compressed to the `2` seventh-layer
+boundary rows above.
 ```
 
 Only after that symbolic obstruction result is proved should the document be
