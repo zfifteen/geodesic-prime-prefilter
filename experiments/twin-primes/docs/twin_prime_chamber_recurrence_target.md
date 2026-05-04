@@ -252,6 +252,34 @@ least factor times either fixed-point prime material or distinct semiprime
 material
 ```
 
+The least-factor reduction separates the obstruction surface into three reduced
+families:
+
+| Reduced obstruction family | Count |
+|---|---:|
+| `least_factor_times_fixed_point_cofactor` | `13308` |
+| `least_factor_times_semiprime_cofactor` | `6464` |
+| `least_factor_times_higher_cofactor` | `1485` |
+
+The residue constraint is exact. For every endpoint miss:
+
+```text
+candidate residue = least-factor residue * cofactor residue mod 30
+```
+
+At `q <= 1000000`, the least-factor residue distribution was:
+
+| Least-factor residue mod `30` | Count |
+|---:|---:|
+| `7` | `6170` |
+| `11` | `3633` |
+| `13` | `2988` |
+| `17` | `2242` |
+| `23` | `1791` |
+| `19` | `1738` |
+| `29` | `1474` |
+| `1` | `1221` |
+
 The first factor distribution begins with small wheel-open factors:
 
 | Least factor | Obstruction count |
@@ -270,6 +298,77 @@ Inside the one-cell chamber, the width-2 contract reduces to endpoint
 fixed-point membership. Endpoint misses are mostly first-factor obstructions
 whose cofactors are still low-complexity fixed-point or semiprime material.
 ```
+
+## Next Exact Target
+
+The least-factor reduction leaves one live obstruction surface:
+
+```text
+least_factor_times_higher_cofactor: 1485 rows
+```
+
+The next pass should not return to outer gap types or transition prediction. It
+should pressure only this remaining family:
+
+```text
+Can the 1485 higher-cofactor endpoint obstructions be reduced by stripping a
+second factor, or do they form the irreducible exception surface of the current
+width-2 grammar?
+```
+
+The acceptance shapes are:
+
+```text
+Closed reduction:
+The higher-cofactor rows reduce after a second factor strip into fixed-point or
+distinct-semiprime material with a bounded residue grammar.
+```
+
+or:
+
+```text
+Open exception surface:
+The higher-cofactor rows remain broad after the second factor strip. The
+current symbolic grammar closes only for the 93.014% low-complexity surface.
+```
+
+## Second-Factor Strip
+
+The second-factor pass attacked only the `1485` higher-cofactor rows. It did not
+return to outer gap types or transition tables.
+
+After stripping the least factor from `q+2`, the higher-cofactor rows have a
+composite cofactor. The pass strips the least factor of that cofactor and
+classifies the second remainder.
+
+Through `q <= 1000000`, the second strip reduced most of the remaining surface:
+
+| Quantity | Value |
+|---|---:|
+| Higher-cofactor rows after first strip | `1485` |
+| Second-strip low-complexity remainders | `1302` |
+| Second-strip low-complexity rate | `0.8767676767676768` |
+| Still higher after second strip | `183` |
+
+The second-strip family distribution was:
+
+| Second-strip family | Count |
+|---|---:|
+| `second_factor_times_semiprime_remainder` | `1239` |
+| `second_factor_times_higher_remainder` | `183` |
+| `second_factor_times_fixed_point_remainder` | `63` |
+
+The cumulative reduction is:
+
+```text
+first-strip low complexity: 19772
+second-strip low complexity from remaining rows: 1302
+covered endpoint obstructions: 21074 / 21257
+remaining higher-remainder rows: 183
+```
+
+So the width-2 endpoint obstruction grammar now reduces `0.9913910702356861`
+of endpoint misses to low-complexity material after at most two factor strips.
 
 ## Stop Condition
 

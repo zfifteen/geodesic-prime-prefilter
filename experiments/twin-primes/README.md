@@ -50,6 +50,18 @@ distinct semiprimes and `7028` were multi-prime composites. Equivalently,
 `19772 / 21257` obstructions (`0.9301406595474432`) had a first factor whose
 cofactor was either fixed-point prime or distinct semiprime material.
 
+The least-factor reduction sharpened that into three obstruction families:
+`13308` least-factor times fixed-point cofactor, `6464` least-factor times
+distinct-semiprime cofactor, and `1485` least-factor times higher cofactor.
+Every endpoint miss also satisfies the exact residue product relation
+`candidate residue = least-factor residue * cofactor residue mod 30`.
+
+The second-factor pass attacked only the remaining `1485` higher-cofactor
+rows. It reduced `1302` of them to fixed-point or distinct-semiprime remainder
+material, leaving `183` higher-remainder rows. Cumulatively, `21074 / 21257`
+endpoint misses (`0.9913910702356861`) reduce to low-complexity material after
+at most two factor strips.
+
 The PGS-native one-cell closure probe through `q <= 10000000` found that
 composite failures of the candidate twin chamber almost always expose immediate
 continued-chamber pressure: `189167 / 190252` composite obstructions
