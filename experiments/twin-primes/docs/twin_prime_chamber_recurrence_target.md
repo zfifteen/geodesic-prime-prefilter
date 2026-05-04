@@ -370,6 +370,93 @@ remaining higher-remainder rows: 183
 So the width-2 endpoint obstruction grammar now reduces `0.9913910702356861`
 of endpoint misses to low-complexity material after at most two factor strips.
 
+## Third-Factor Strip
+
+The third-factor pass attacked only the `183` rows that remained higher after
+the second strip. It kept the same endpoint fixed-point surface and did not add
+outer gap history, transition prediction, random controls, or a wider scan.
+
+Through `q <= 1000000`, the third strip reduced almost all of the remaining
+surface:
+
+| Quantity | Value |
+|---|---:|
+| Higher-remainder rows after second strip | `183` |
+| Third-strip low-complexity remainders | `169` |
+| Third-strip low-complexity rate | `0.9234972677595629` |
+| Still higher after third strip | `14` |
+
+The third-strip family distribution was:
+
+| Third-strip family | Count |
+|---|---:|
+| `third_factor_times_semiprime_remainder` | `108` |
+| `third_factor_times_fixed_point_remainder` | `61` |
+| `third_factor_times_higher_remainder` | `14` |
+
+The third remainder family distribution was:
+
+| Third remainder family | Count |
+|---|---:|
+| `semiprime_distinct` | `108` |
+| `fixed_point` | `61` |
+| `prime_square` | `10` |
+| `two_prime_power_family` | `2` |
+| `prime_cube` | `1` |
+| `prime_power` | `1` |
+
+The cumulative endpoint-obstruction reduction is now:
+
+```text
+first-strip low complexity: 19772
+second-strip low complexity from remaining rows: 1302
+third-strip low complexity from remaining rows: 169
+covered endpoint obstructions: 21243 / 21257
+remaining higher-remainder rows: 14
+```
+
+So the width-2 endpoint obstruction grammar now reduces `0.999341393423342`
+of endpoint misses to fixed-point or distinct-semiprime material after at most
+three factor strips.
+
+The live obstruction surface is now tiny and concrete:
+
+```text
+third_factor_times_higher_remainder: 14 rows
+```
+
+Those `14` rows are not an unstructured residual surface. Each one has
+prime-power tail material after the third factor strip:
+
+| Third remainder family | Count |
+|---|---:|
+| `prime_square` | `10` |
+| `two_prime_power_family` | `2` |
+| `prime_cube` | `1` |
+| `prime_power` | `1` |
+
+Equivalently:
+
+```text
+third-strip higher rows: 14
+prime-power-tail rows among them: 14
+prime-power-tail rate: 1.0
+```
+
+The measured answer to the `14`-row question is therefore:
+
+```text
+The remaining rows are the next rule, not the first true residual surface.
+They are prime-power tails left after three endpoint factor strips.
+```
+
+The current width-2 endpoint obstruction grammar has this bounded form:
+
+```text
+Endpoint misses reduce either to fixed-point material, distinct-semiprime
+material, or prime-power tail material.
+```
+
 ## Stop Condition
 
 The target is closed only in one of two forms:

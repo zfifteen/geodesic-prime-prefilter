@@ -16,6 +16,9 @@ WIDTH2_PROBE_PATH = Path(__file__).with_name("twin_prime_width2_pgs_generator_pr
 DEFAULT_OUTPUT_DIR = ROOT / "experiments" / "twin-primes" / "output" / "twin_prime_endpoint_fixed_point_decomposition_probe"
 DEFAULT_MAX_RIGHT_PRIME = 1_000_000
 LOW_COMPLEXITY_COFACTOR_FAMILIES = frozenset({"fixed_point", "semiprime_distinct"})
+PRIME_POWER_TAIL_FAMILIES = frozenset(
+    {"prime_square", "prime_cube", "prime_power", "two_prime_power_family"}
+)
 
 
 def load_width2_probe():
@@ -131,6 +134,22 @@ def second_strip_family(second_remainder_family: str | None) -> str:
     return "second_factor_times_higher_remainder"
 
 
+def third_strip_family(third_remainder_family: str | None) -> str:
+    """Return the obstruction family after stripping a third factor."""
+    if third_remainder_family is None:
+        return "not_third_stripped"
+    if third_remainder_family == "fixed_point":
+        return "third_factor_times_fixed_point_remainder"
+    if third_remainder_family == "semiprime_distinct":
+        return "third_factor_times_semiprime_remainder"
+    return "third_factor_times_higher_remainder"
+
+
+def is_prime_power_tail(third_remainder_family: str | None) -> bool:
+    """Return whether the third remainder is prime-power tail material."""
+    return third_remainder_family in PRIME_POWER_TAIL_FAMILIES
+
+
 def decomposition_row(row: dict[str, object]) -> dict[str, object]:
     """Return one endpoint fixed-point decomposition row."""
     candidate = int(row["candidate"])
@@ -151,6 +170,12 @@ def decomposition_row(row: dict[str, object]) -> dict[str, object]:
     second_remainder_mod30 = None
     second_remainder_tau = None
     second_remainder_family = None
+    third_factor = None
+    third_factor_mod30 = None
+    third_remainder = None
+    third_remainder_mod30 = None
+    third_remainder_tau = None
+    third_remainder_family = None
     if not endpoint_is_fixed:
         least_factor = factors[0][0]
         cofactor = candidate // least_factor
@@ -168,8 +193,20 @@ def decomposition_row(row: dict[str, object]) -> dict[str, object]:
                 second_remainder_factors,
                 second_remainder_tau,
             )
+            if second_remainder_family not in LOW_COMPLEXITY_COFACTOR_FAMILIES:
+                third_factor = second_remainder_factors[0][0]
+                third_factor_mod30 = third_factor % 30
+                third_remainder = second_remainder // third_factor
+                third_remainder_mod30 = third_remainder % 30
+                third_remainder_factors = factorization(third_remainder)
+                third_remainder_tau = tau_from_factors(third_remainder_factors)
+                third_remainder_family = endpoint_family(
+                    third_remainder_factors,
+                    third_remainder_tau,
+                )
     reduced_family = reduced_obstruction_family(cofactor_family)
     second_family = second_strip_family(second_remainder_family)
+    third_family = third_strip_family(third_remainder_family)
 
     return {
         "q": int(row["q"]),
@@ -205,6 +242,17 @@ def decomposition_row(row: dict[str, object]) -> dict[str, object]:
         "second_strip_low_complexity_remainder": (
             second_remainder_family in LOW_COMPLEXITY_COFACTOR_FAMILIES
         ),
+        "third_factor": third_factor,
+        "third_factor_mod30": third_factor_mod30,
+        "third_remainder": third_remainder,
+        "third_remainder_mod30": third_remainder_mod30,
+        "third_remainder_tau": third_remainder_tau,
+        "third_remainder_family": third_remainder_family,
+        "third_strip_family": third_family,
+        "third_strip_low_complexity_remainder": (
+            third_remainder_family in LOW_COMPLEXITY_COFACTOR_FAMILIES
+        ),
+        "third_strip_prime_power_tail": is_prime_power_tail(third_remainder_family),
     }
 
 
@@ -248,6 +296,26 @@ def summarize(rows: list[dict[str, object]]) -> dict[str, object]:
         for row in higher_cofactor_obstructed
         if bool(row["second_strip_low_complexity_remainder"])
     ]
+    second_strip_higher = [
+        row
+        for row in higher_cofactor_obstructed
+        if row["second_strip_family"] == "second_factor_times_higher_remainder"
+    ]
+    third_strip_low_complexity = [
+        row
+        for row in second_strip_higher
+        if bool(row["third_strip_low_complexity_remainder"])
+    ]
+    third_strip_higher = [
+        row
+        for row in second_strip_higher
+        if row["third_strip_family"] == "third_factor_times_higher_remainder"
+    ]
+    third_strip_prime_power_tail = [
+        row
+        for row in third_strip_higher
+        if bool(row["third_strip_prime_power_tail"])
+    ]
     status_mismatch = [
         row
         for row in rows
@@ -270,11 +338,32 @@ def summarize(rows: list[dict[str, object]]) -> dict[str, object]:
             if higher_cofactor_obstructed
             else 0.0
         ),
+        "second_strip_higher_remainder_count": len(second_strip_higher),
+        "third_strip_low_complexity_remainder_count": len(third_strip_low_complexity),
+        "third_strip_low_complexity_remainder_rate": (
+            len(third_strip_low_complexity) / len(second_strip_higher)
+            if second_strip_higher
+            else 0.0
+        ),
+        "third_strip_higher_remainder_count": len(third_strip_higher),
+        "third_strip_prime_power_tail_count": len(third_strip_prime_power_tail),
+        "third_strip_prime_power_tail_rate": (
+            len(third_strip_prime_power_tail) / len(third_strip_higher)
+            if third_strip_higher
+            else 0.0
+        ),
         "endpoint_family_distribution": count_by(rows, "endpoint_family"),
         "obstruction_family_distribution": count_by(obstructed, "endpoint_family"),
         "reduced_obstruction_family_distribution": count_by(obstructed, "reduced_obstruction_family"),
         "second_strip_family_distribution": count_by(higher_cofactor_obstructed, "second_strip_family"),
         "second_remainder_family_distribution": count_by(higher_cofactor_obstructed, "second_remainder_family"),
+        "third_strip_family_distribution": count_by(second_strip_higher, "third_strip_family"),
+        "third_remainder_family_distribution": count_by(second_strip_higher, "third_remainder_family"),
+        "third_strip_prime_power_tail_distribution": count_by(
+            third_strip_prime_power_tail,
+            "third_remainder_family",
+            "factor_signature",
+        ),
         "tau_candidate_distribution": count_by(rows, "tau_candidate"),
         "least_factor_distribution": count_by(obstructed, "least_factor")[:50],
         "least_factor_low_complexity_distribution": count_by(
@@ -306,6 +395,26 @@ def summarize(rows: list[dict[str, object]]) -> dict[str, object]:
             "second_factor",
             "second_remainder_family",
         )[:100],
+        "third_strip_residue_distribution": count_by(
+            second_strip_higher,
+            "second_remainder_mod30",
+            "third_factor_mod30",
+            "third_remainder_mod30",
+        ),
+        "third_strip_grammar": count_by(
+            second_strip_higher,
+            "candidate_mod30",
+            "least_factor_mod30",
+            "cofactor_mod30",
+            "second_factor_mod30",
+            "second_remainder_mod30",
+            "third_factor_mod30",
+            "third_remainder_mod30",
+            "third_strip_family",
+            "third_factor",
+            "third_remainder_family",
+        )[:100],
+        "third_strip_higher_rows": third_strip_higher,
         "cofactor_family_distribution": count_by(obstructed, "cofactor_family"),
         "compact_obstruction_grammar": count_by(
             obstructed,
@@ -365,6 +474,15 @@ def main(argv: list[str] | None = None) -> int:
         "second_remainder_family",
         "second_strip_family",
         "second_strip_low_complexity_remainder",
+        "third_factor",
+        "third_factor_mod30",
+        "third_remainder",
+        "third_remainder_mod30",
+        "third_remainder_tau",
+        "third_remainder_family",
+        "third_strip_family",
+        "third_strip_low_complexity_remainder",
+        "third_strip_prime_power_tail",
     ]
     grammar_fields = [
         "candidate_mod30",
@@ -395,6 +513,28 @@ def main(argv: list[str] | None = None) -> int:
             "second_remainder_family",
             "count",
         ],
+    )
+    write_csv(
+        args.output_dir / "third_strip_grammar_rows.csv",
+        summary["third_strip_grammar"],
+        [
+            "candidate_mod30",
+            "least_factor_mod30",
+            "cofactor_mod30",
+            "second_factor_mod30",
+            "second_remainder_mod30",
+            "third_factor_mod30",
+            "third_remainder_mod30",
+            "third_strip_family",
+            "third_factor",
+            "third_remainder_family",
+            "count",
+        ],
+    )
+    write_csv(
+        args.output_dir / "third_strip_higher_rows.csv",
+        summary["third_strip_higher_rows"],
+        row_fields,
     )
     (args.output_dir / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     return 0
