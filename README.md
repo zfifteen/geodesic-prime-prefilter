@@ -100,7 +100,6 @@ The rest of the repository develops these ideas in greater depth, including the 
 - [DIVISOR_NORMALIZATION_IDENTITY.md](DIVISOR_NORMALIZATION_IDENTITY.md) explains the normalization that places primes at Z = 1.0.
 - [PRIME_GAP_GENERATOR.md](PRIME_GAP_GENERATOR.md) describes how the generator reads the structure.
 - [PRIME_GAP_GENERATIVE_MODEL.md](PRIME_GAP_GENERATIVE_MODEL.md) and [RECURSIVE_PRIME_WALK.md](RECURSIVE_PRIME_WALK.md) examine the broader model and recursive behavior.
-- [LEGACY_PREFILTER.md](LEGACY_PREFILTER.md) documents the earlier prefilter approach.
 - [RESULTS.md](RESULTS.md) presents the measured results and surfaces.
 
 ## Python API

@@ -105,4 +105,3 @@ Empirical benchmark surfaces include:
 - [PRIME_GAP_GENERATOR.md](PRIME_GAP_GENERATOR.md) explains the minimal `{"p": ..., "q": ...}` generator.
 - [PRIME_GAP_GENERATIVE_MODEL.md](PRIME_GAP_GENERATIVE_MODEL.md) explains the reduced gap-type model.
 - [RECURSIVE_PRIME_WALK.md](RECURSIVE_PRIME_WALK.md) explains the recursive walk, closure condition, cutoff falsification, and dominant `d=4` regime.
-- [LEGACY_PREFILTER.md](LEGACY_PREFILTER.md) explains the legacy prefilter and RSA benchmark surface.
