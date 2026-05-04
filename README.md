@@ -2,582 +2,105 @@
 
 ![Prime Gap Structure hero](docs/assets/prime-gap-structure-hero.jpg)
 
-This repository now carries three major prime-gap results:
+## The First Contradiction
 
-- a proved direct deterministic next-prime theorem and local arithmetic
-  selection law inside prime gaps, with the live proof reference in
-  [PROOF.md](PROOF.md);
-- a frozen hierarchical finite-state model for reduced prime-gap types.
-- a PGS Prime Generator that infers the successor prime from deterministic
-  prime-gap-structure chamber state, without trial division, Miller-Rabin,
-  sieve generation, fallback prime search, or `nextprime` inside generation.
+Most people learn that prime numbers are fundamentally unpredictable. They appear to pop up at irregular intervals, almost as if they are scattered at random across the number line. Textbooks and popular explanations reinforce this view: primes become rarer as numbers grow larger, the gaps between them can be arbitrarily wide, and there is no simple formula that will always tell you exactly where the next one sits. The common belief is that the only practical ways to find the next prime are to test candidates one by one or to rely on probabilistic estimates. Prime gaps themselves are treated as empty stretches of composites, nothing more than the boring distance you have to cross before the next interesting number arrives.
 
-Take the consecutive primes `23` and `29`. The integers between them are
-`24, 25, 26, 27, 28`. Their divisor counts are:
+That picture feels natural because it matches everyday experience with large numbers. When you look at a long stretch of integers, most of them are obviously composite, and the primes seem to hide without any clear signal. The word "gap" itself nudges us to think of the space between two primes as meaningless background noise.
 
-- `d(24) = 8`
-- `d(25) = 3`
-- `d(26) = 4`
-- `d(27) = 4`
-- `d(28) = 6`
+The truth is the exact opposite.
 
-So `25` wins this gap because it has the smallest divisor count present.
+Start with one prime. Look at the integers that come right after it. Those integers are not random obstacles. They carry precise factor structure, and that structure is exactly what determines where the next prime must appear. The next prime can be found directly by reading the numbers that follow the one you already have. Nothing is left to chance or probability once you know how to look.
 
-Now take `89` and `97`. The interior integers are
-`90, 91, 92, 93, 94, 95, 96`. Their divisor counts are:
+## Look Between 23 and 29
 
-- `d(90) = 12`
-- `d(91) = 4`
-- `d(92) = 6`
-- `d(93) = 4`
-- `d(94) = 4`
-- `d(95) = 4`
-- `d(96) = 12`
+It helps to see this idea with a small, concrete example so you can watch the pattern unfold step by step.
 
-Here the smallest divisor count present is `4`, and the leftmost integer with
-that divisor count is `91`, so `91` wins.
+Take the primes 23 and 29. They are consecutive, which means every integer between them is composite. Write them out and you get this simple picture:
 
-These examples show the local arithmetic choice that anchors the repository.
+23 | 24 25 26 27 28 | 29
 
-## Three Headline Results
+At first glance the gap looks like nothing but a distance of six. That is what most people notice, and it is why the middle feels empty. But stop and look more closely at what is actually sitting inside that interval. Each of those five composites has its own complete list of positive divisors. When you count how many divisors each one has, something changes in how you see the gap.
 
-- **Direct Deterministic Next-Prime Theorem and Leftmost Minimum-Divisor Rule
-  (GWR):** as proved in [PROOF.md](PROOF.md), exact divisor counts determine the
-  next prime from a known prime `p`, and the divisor-normalization score picks
-  exactly the leftmost interior integer with minimum divisor count in every
-  prime gap with a nonempty interior.
-- **Prime Gap Generative Model v1.0:** on the persistent reduced gap-type
-  surface, prime-gap types close to a frozen hierarchical finite-state model
-  with a stable `14`-state core.
-- **PGS Prime Generator:** the generator outputs one two-key
-  `{"p": ..., "q": ...}` record per given prime `p`, keeps diagnostics outside
-  the outputted stream, and selects the successor prime `q` from deterministic
-  prime-gap-structure chamber state. The production path excludes trial
-  division, Miller-Rabin, probabilistic primality tests, sieve-based prime
-  generation, fallback prime search, and oracle-style `nextprime` calls inside
-  generation. The current production iteration is `v1.1`.
+Here is the same interval again, but now with the divisor counts written underneath:
 
-## Leftmost Minimum-Divisor Rule
+number:        24  25  26  27  28
+divisor count:  8   3   4   4   6
 
-The **Leftmost Minimum-Divisor Rule (GWR)** says:
+The numbers themselves have not changed. What has changed is that we are now seeing an ordered list of divisor counts. Among those counts the smallest value is 3, and it appears at the very first position where it can, at the number 25.
 
-1. inside a prime gap, find the smallest divisor count present among the
-   interior composites;
-2. if more than one interior composite has that divisor count, take the
-   leftmost one.
+That single observation is surprising because it contradicts the idea that the interior is meaningless. Instead of empty space, the gap now has an internal shape that is completely determined by ordinary arithmetic. The lowest divisor count inside the gap is not hidden or random; it emerges clearly once you simply count.
 
-That chosen interior integer is the selected integer of the gap.
+## When The Lowest Count Appears Multiple Times
 
-The headline mathematical proof in the repository has two parts: exact divisor
-counts determine the next prime from a known prime `p`, and the implemented
-divisor-normalization score picks exactly that same selected integer in every
-prime gap. The single live proof reference is [PROOF.md](PROOF.md).
+One small gap could be a lucky coincidence. To see that the pattern is reliable, it is useful to look at another example where the situation is a little less tidy.
 
-## Prime Gap Generative Model v1.0
+Consider the gap from 89 to 97:
 
-The second headline result in the repository is the frozen model on the
-persistent reduced gap-type surface. This is a result about the persistent
-reduced gap-type surface, not yet a theorem about the full raw gap-size
-sequence.
+89 | 90 91 92 93 94 95 96 | 97
 
-On that reduced surface, the type stream closes to a persistent `14`-state
-core. Its dominant dynamical object is the **Semiprime Wheel Attractor**:
+Again the interior numbers are all composite. Their divisor counts are:
 
-- `o2_odd_semiprime|d<=4`
-- `o4_odd_semiprime|d<=4`
-- `o6_odd_semiprime|d<=4`
+number:        90  91  92  93  94  95  96
+divisor count: 12   4   6   4   4   4  12
 
-The frozen `v1.0` model has three layers:
+This time the smallest count inside the gap is 4. Notice that 4 appears four different times, at 91, 93, 94, and 95. Yet when you read the list from left to right, the very first time that lowest count of 4 shows up is at 91.
 
-1. core grammar;
-2. transition rule;
-3. higher-divisor-triggered long-horizon controller.
+The same principle that appeared in the smaller gap is still at work. Inside any prime gap with at least one interior number, there is always a first interior number that carries the lowest divisor count. The gap is telling you two things at once: what the lowest count is and exactly where that count first occurs. The pattern is not fragile; it survives even when the lowest count repeats.
 
-Its reference operating profiles are:
+What makes this observation powerful is that it comes directly from counting ordinary arithmetic properties that anyone can verify by hand. No advanced machinery is required. The numbers themselves reveal the structure the moment you look at them this way.
 
-- local fidelity: pooled-window concentration L1 `0.0116`
-- balanced operating profile: pooled-window concentration L1 `0.0150`,
-  full-walk three-step concentration `0.5564`
-- long-horizon study: full-walk three-step concentration `0.6278`
+## How The Gap Ends
 
-See also:
+So far we have focused on the interior of the gap. Now shift your attention to the right-hand edge, where the gap actually closes.
 
-- [Prime Gap Generative Model v1.0 release note](docs/releases/prime_gap_generative_engine_v1_0.md)
-- [Gap-type model v1.0 freeze note](gwr/findings/gap_type_engine_v1_freeze.md)
-- [Gap-type model v1.0 rulebook](gwr/findings/gap_type_engine_v1_rulebook.md)
-- [Hierarchical model paper draft](docs/research/predictor/prime_gap_hierarchical_engine_paper_draft.md)
-- [Model overview figure](output/gwr_dni_gap_type_engine_v1_overview.png)
+Recall what makes a number prime: it has exactly two positive divisors, 1 and itself. Every composite number has at least three. If you start at any known prime and simply read forward through the integers, every composite you encounter will have a divisor count strictly greater than 2. The next prime is the first number after your starting prime whose divisor count drops to exactly 2.
 
-## PGS Prime Generator
+Return to the 23-to-29 gap and extend the divisor-count list one more step:
 
-The third headline result is the PGS Prime Generator. It outputs one
-record for each given prime:
+number:        24  25  26  27  28  29
+divisor count:  8   3   4   4   6   2
 
-```json
+You can watch the count stay safely above 2 through the entire interior. Then, at 29, it becomes exactly 2 and the gap ends. The endpoint is not chosen by trial and error or by guessing; it is the inevitable place where the divisor count first reaches 2 after the starting prime.
+
+This is why the interior and the endpoint belong together. They are two parts of the same continuous story told by the same ordered list of divisor counts.
+
+## Interior And Endpoint Together
+
+Once you see the gap as a single ordered sequence rather than a meaningless jump, the whole picture snaps into focus. The [selected composite](LEFTMOST_MINIMUM_DIVISOR_RULE.md) inside the gap (the first interior number with the lowest divisor count) and the endpoint prime (the first later number with divisor count exactly 2) are both visible in the same list. They are not separate phenomena; they are the natural consequences of reading the factor structure that sits between two consecutive primes.
+
+For the gap from 23 to 29 the selected composite is 25 and the endpoint is 29. For the gap from 89 to 97 the selected composite is 91 and the endpoint is 97. In every case the arithmetic inside the gap carries the information that points directly to the next prime.
+
+This is the larger reversal the repository explores. A prime gap is no longer just a size or a distance. It has a clear internal shape, a selected composite that marks the lowest point inside that shape, and a right endpoint that is fixed by the divisor count returning to 2. The middle is not meaningless; it is full of information. The usual story treats the numbers between primes as an obstacle. Here they are the evidence.
+
+## A Different Way To Generate Primes
+
+Because the structure inside each gap is so direct, it becomes possible to [generate the next prime](PRIME_GAP_GENERATOR.md) in a completely different manner from the usual methods.
+
+Traditional prime generators work by proposing candidate numbers and testing them for primality. They reject composites and keep trying until one survives. Even the most efficient sieves or probabilistic tests still follow that propose-test-reject cycle.
+
+The approach in this repository starts from a known prime and reads the factor structure that follows it. Using the divisor-count pattern, it identifies exactly where the next gap must close. The output is therefore tiny and precise:
+
 {"p": 89, "q": 97}
-```
 
-The outputted stream is deliberately small: exactly `p` and `q`. Source labels,
-diagnostics, verification records, and audit results stay outside the generator output.
+That record simply says: start here, the next prime is there. No trial division, no Miller-Rabin rounds, no probabilistic guesses are needed to choose the answer. The arithmetic structure itself shows where the gap ends. Any verification testing that follows is only confirmation; it is not part of the generation step.
 
-The current production iteration is
-[PGS Inference Generator v1.1](docs/releases/pgs_inference_generator_v1_1_pgs_only.md).
+## Where This Leads
 
-The extraordinary result is not that the PGS Prime Generator is fast.
-Conventional prime generation works by scanning candidate numbers and testing
-them until one proves prime. The PGS Prime Generator is different. It starts
-from a given prime `p`, examines a finite chamber to the right of `p`, and
-uses deterministic prime-gap-structure state in that chamber to infer the
-successor prime `q`.
+Once you begin seeing prime gaps through this lens, many natural follow-up questions arise. You can trace what that first special composite inside each nonempty gap actually means and why it always appears where it does. You can examine the [normalized score](DIVISOR_NORMALIZATION_IDENTITY.md) that places every prime at exactly 1.0 and lets you compare all composites below that value in a consistent way. You can watch how the same kind of structure repeats across thousands or millions of gaps and begin to [model its behavior](PRIME_GAP_GENERATIVE_MODEL.md). You can follow the [exact recursive process of walking from prime to prime](RECURSIVE_PRIME_WALK.md) using only the information carried inside each gap.
 
-The generator treats the gap as a consistency problem:
+Every one of these paths grows from the same simple shift in perspective: stop treating the interior as empty space and start counting what is really there. The numbers themselves do the rest of the work.
 
-```text
-Which candidate q leaves a valid prime gap interval after p?
-```
+## Reading Further
 
-The key structural discovery is that once the first candidate `q` is forced by
-the interval to its left, later candidates are no longer possible successors of
-the original `p`. They belong to intervals that begin after `q`. That
-distinction turned the remaining not-yet-excluded candidates into evidence
-that the gap had already closed.
+The rest of the repository develops these ideas in greater depth, including the [measured results and surfaces](RESULTS.md).
 
-The generator is now PGS-only. The production generator contains no trial
-division, no Miller-Rabin, no probabilistic primality test, no sieve-based
-prime generation, no fallback prime search, and no oracle-style `nextprime`
-call inside generation. Classical verification remains downstream audit after
-generation, not a mechanism for choosing `q`.
-
-The following surfaces validate the bounded production implementation. They are
-not theorem boundaries: the exact divisor-count next-prime theorem is proved in
-[PROOF.md](PROOF.md).
-
-On the current production generator surface, exact output is preserved and the
-PGS selection rule applies exact divisor-count GWR/NLSC search-interval-reset state:
-
-```text
-surface: 11..100000
-candidate interval width: 128
-primes tested: 9588
-PGS-labeled outputs: 9588
-failed outputs: 0
-incorrect candidates: 0
-coverage: 100.00%
-```
-
-The same production selection rule now reproduces the high-scale decade-window
-surface through `10^18`:
-
-```text
-surface: 256 consecutive primes per decade, 10^8 through 10^18
-candidate interval width: 1024
-primes tested: 2816
-exact matches: 2816
-undecided cases: 0
-incorrect candidates: 0
-search-window misses: 0
-coverage: 100.00%
-```
-
-The C high-scale generator also carries a deterministic `10^1233` certificate
-path for the integer-start chamber contract.
-
-The implementation contract and lower-level mechanism are recorded in
-[Generator Logic Specification](docs/specs/prime-gen/minimal_pgs_generator_logic.md).
-The current release note is
-[PGS Inference Generator v1.1](docs/releases/pgs_inference_generator_v1_1_pgs_only.md).
-The detailed technical note is the
-[algorithm report](docs/research/prime_inference_generator/rule_x_consistency_collapse_logic_engine.md),
-and the high-scale validation report is
-[Decade-Window Validation Report](experiments/rule_x_logic_engine/chamber_reset_decade_ladder_1e8_1e18_a256_b1024/report.md).
-
-## Why The Score Exists
-
-The score exists because the repo wants one number per interior composite, so a
-whole gap can be compared as a single ordered list of score values rather than as a list of
-cases.
-
-Divisor count already tells part of the story: fewer divisors means less
-factor structure. But divisor count alone does not give one scalar quantity for
-the whole gap, and it does not explain what the selected integer is winning relative to.
-
-The divisor-normalization program builds that scalar by using primes as the
-reference class. Its purpose is to answer one concrete question:
-
-> Which composite in the gap comes closest to the prime baseline?
-
-The normalization is built so that every prime lands at the same fixed point,
-`Z = 1.0`, while composites fall below that point. That makes the selected integer easy
-to interpret: it is the interior composite closest to the prime fixed point
-under the normalization.
-
-The raw quantity is
-
-$$
-Z_{\mathrm{raw}}(n) = n^{1 - d(n)/2}
-$$
-
-and the implementation compares interiors using its logarithm
-
-$$
-L(n) = \ln Z_{\mathrm{raw}}(n) = \left(1 - \frac{d(n)}{2}\right)\ln(n).
-$$
-
-Maximizing `Z_raw(n)` and maximizing `L(n)` pick the same selected integer. The score is
-there to turn the gap interior into one exact competition, not to decorate the
-rule with jargon.
-
-## What This Repository Carries
-
-This repository now carries three visible lines of work:
-
-- the proved direct next-prime theorem and GWR theorem, whose single live proof
-  reference is [PROOF.md](PROOF.md);
-- the reduced gap-type model and pattern results on the persistent reduced
-  surface;
-- the PGS Prime Generator and downstream deterministic DNI-based
-  predictor and prefilter work.
-
-The Divisor Normalization Identity supplies the score foundation. The direct
-deterministic next-prime theorem and the GWR theorem are the proved theorem
-foundation. NLSC is an exact closure consequence of GWR and a structural bridge
-to the generator. The gap-type model is the second headline prime-gap result.
-The PGS Prime Generator is the current operational inferred-prime generator
-milestone. The recursive walk and deterministic filter are downstream
-deterministic instruments built from the same normalization.
-
-## Novel Structures in This Repository
-
-The repository now carries the following named structures and results:
-
-- **Direct Deterministic Next-Prime Theorem and Leftmost Minimum-Divisor Rule
-  (GWR):** exact divisor counts determine the next prime from a known prime
-  `p`; inside any prime gap with a nonempty interior, the log-score argmax is
-  exactly the leftmost integer with minimum interior divisor count. These are
-  the universal theorems proved in [PROOF.md](PROOF.md), the single live proof
-  reference.
-- **Divisor Normalization Identity (DNI):** `Z(n) = n^(1 - d(n)/2)` is an
-  exact arithmetic identity collapsing all primes to `Z = 1.0`.
-- **Gap-type catalog / reduced state surface:** the repository defines a
-  deterministic reduced gap-type surface and catalogs it through sampled
-  windows to `10^18`, with a persistent `14`-state core on the settled
-  high-scale surface. See
-  [gwr/findings/gap_type_catalog_through_1e18.md](gwr/findings/gap_type_catalog_through_1e18.md)
-  and
-  [gwr/findings/gap_type_sequence_grammar_findings.md](gwr/findings/gap_type_sequence_grammar_findings.md).
-- **Semiprime Wheel Attractor:** the triad
-  `o2_odd_semiprime|d<=4`, `o4_odd_semiprime|d<=4`,
-  `o6_odd_semiprime|d<=4` is the dominant dynamical object on the persistent
-  reduced gap-type surface. See
-  [gwr/findings/gap_type_engine_v1_freeze.md](gwr/findings/gap_type_engine_v1_freeze.md).
-- **Hierarchical finite-state model:** on the persistent reduced gap-type
-  surface, the frozen `v1.0` model combines a `14`-state core grammar, a
-  transition-rule layer, and a higher-divisor-triggered long-horizon controller. See
-  [docs/releases/prime_gap_generative_engine_v1_0.md](docs/releases/prime_gap_generative_engine_v1_0.md)
-  and
-  [gwr/findings/gap_type_engine_v1_rulebook.md](gwr/findings/gap_type_engine_v1_rulebook.md).
-- **PGS Prime Generator:** the generator outputs exactly `p` and `q`
-  for each given prime `p`, with downstream audit and source diagnostics
-  outside the outputted stream. Unlike a conventional prime generator, it selects
-  the successor prime from the arithmetic consistency of the interval after
-  `p`, without trial division, Miller-Rabin, probabilistic primality tests,
-  sieve-based prime generation, fallback prime search, or `nextprime` inside
-  generation. The current production path has `9588 / 9588` exact PGS outputs
-  with `0` failures on `11..100000`, and
-  `2816 / 2816` exact PGS outputs with `0` incorrect candidates on the `10^8`
-  through `10^18` decade-window validation surface.
-- **No-Later-Simpler-Composite (NLSC) condition:** once the GWR-selected integer
-  appears, no later interior composite with strictly smaller divisor count
-  precedes the next prime. This is an exact corollary of the proved GWR theorem.
-  The separate stress surface through `10^18` records zero observed violations.
-- **Dominant d=4 arrival reduction:** under square exclusion, the GWR-selected integer
-  is exactly the first interior integer with `d(n)=4`. Exact on full scans through
-  `2x10^7`.
-- **Dynamic cutoff conjecture:** `C(q) = max(64, ceil(0.5 * log(q)^2))` bounds
-  the GWR-selected integer offset for the bounded walker. Empirically calibrated through
-  `p <= 10^6`. The fixed map `{2:44, 4:60, 6:60}` is falsified at
-  `q = 24,098,209`.
-
-## Divisor Normalization Identity
-
-The raw-$Z$ quantity exists because the repo wants a normalization in which the
-entire prime class lands at one fixed point while composites fall below it.
-
-The construction starts from the divisor normalization load
-
-$$
-\kappa(n) = \frac{d(n) \cdot \ln(n)}{e^{2}}
-$$
-
-and then passes that load through the Z-transform:
-
-$$
-Z(n) = \frac{n}{\exp(v \cdot \kappa(n))}
-$$
-
-where $v$ is the normalization scaling parameter.
-
-For the prime-gap structure program in this repository, the distinguished value is
-
-$$
-v = \frac{e^{2}}{2}
-$$
-
-because it produces an exact cancellation. Substitute the Divisor Normalization Equation into the Z-transform:
-
-$$
-Z(n) = \frac{n}{\exp\left(v \cdot \frac{d(n) \cdot \ln(n)}{e^{2}}\right)}
-$$
-
-Now set $v = e^{2}/2$:
-
-$$Z(n) = \frac{n}{\exp\left(\frac{e^{2}}{2} \cdot \frac{d(n) \cdot \ln(n)}{e^{2}}\right)}$$
-
-$$Z(n) = \frac{n}{\exp\left(\frac{d(n)}{2} \cdot \ln(n)\right)}$$
-
-$$Z(n) = \frac{n}{n^{d(n)/2}}$$
-
-$$Z(n) = n^{1 - d(n)/2}$$
-
-So the **Divisor Normalization Identity** (DNI) $Z(n) = n^{1 - d(n)/2}$ is
-
-$$
-Z(n) = n^{1 - d(n)/2}
-$$
-
-This has an immediate effect:
-
-- Prime: $d(p) = 2$, so $Z(p) = 1$
-- Semiprime with two distinct prime factors: $d(n) = 4$, so $Z(n) = 1/n$
-- Composite in general: $d(n) > 2$, so $Z(n) < 1$
-
-Under the exact DNI, the entire prime class collapses to the fixed-point locus $Z = 1.0$. Composites are pushed strictly below that locus.
-
-This fixed-point collapse is the mathematical base of the repository. It is
-the invariant behind both the prime-gap theorem and the downstream
-deterministic filter.
-
-## GWR Proof
-
-The central maximizer rule in this repository is that the log-score argmax inside
-a prime gap collapses to a simpler arithmetic choice:
-
-1. minimize the interior divisor count $d(n)$,
-2. among ties, take the leftmost interior integer.
-
-That is the Leftmost Minimum-Divisor Rule.
-
-The theorem is proved in [PROOF.md](PROOF.md), the single live proof reference.
-That document states the direct next-prime theorem and the selected-integer
-maximizer theorem in ordinary mathematical vocabulary. It proves that exact
-divisor counts determine the next prime from a known prime `p`, and that the
-selected integer is the unique maximizer of the comparison function inside
-every prime-gap interior. Its audit tables certify finite cases used by the
-proof and preserve provenance; they are not limits on the theorems.
-
-## Exact Recursive Prime Walk
-
-The most jarring combined predictor result in the repository is this: once the
-implemented score maximizer appears inside a prime gap, the next prime arrives before
-any later interior composite with strictly smaller divisor count can appear.
-That closure law is what lets the unbounded DNI/GWR walker recover the next
-prime exactly from the ordered divisor structure of the next-gap interior.
-
-Given a known prime `p`, the exact divisor-count theorem determines the next
-prime `q` directly: scan integers greater than `p` in increasing order, compute
-`tau(n)` exactly, and stop at the first integer with `tau(n) = 2`. The recursive
-walk uses that exact `p -> q` step as its successor-prime transition. No cutoff
-theorem is involved.
-
-On the current verified surface, that mechanism supports an exact deterministic
-no-skip sequential walk. The transition rule is exact on `743,075 / 743,075`
-rows from the combined $10^6 + 10^7$ next-gap surface, and the recursive walk
-records `664,578 / 664,578` exact consecutive next-prime recoveries from prime
-`11` through prime `10,000,121` with `0` skipped gaps. The sampled decade
-ladder from $10^2$ through $10^18$ also stayed at exact hit rate `1.0` with
-`0` skipped gaps across `860` measured recursive steps.
-
-The predictor note is documented in
-[docs/research/predictor/gwr_dni_exact_recursive_prime_walk_note.md](docs/research/predictor/gwr_dni_exact_recursive_prime_walk_note.md),
-and the live implementation is
-[benchmarks/python/predictor/gwr_dni_recursive_walk.py](benchmarks/python/predictor/gwr_dni_recursive_walk.py).
-
-![Exact DNI recursive-walk performance](docs/research/predictor/figures/gwr_dni_recursive_gap_scaling_performance.png)
-
-## Dynamic Cutoff and Square-Branch Falsification
-
-The old fixed cutoff theorem `{2:44, 4:60, 6:60}` is false. It fails at
-`q = 24,098,209`, where the square branch gives `E(q) = 72 > 60`. The bounded
-walker in the repo no longer treats that fixed map as live.
-
-The current bounded compression is empirical:
-`C(q) = max(64, ceil(0.5 * log(q)^2))`. Through the direct square-branch audit
-at `p <= 10^6`, the repo tested `78,498` prime squares, found `7,477`
-violations of the old fixed map, and observed maximum square offset `246`.
-The compare mode in the recursive walker is the live falsification instrument:
-it runs the bounded and unbounded walkers in lockstep and records any bounded
-miss immediately.
-
-See
-[benchmarks/python/predictor/square_branch_gap_audit.py](benchmarks/python/predictor/square_branch_gap_audit.py),
-[benchmarks/python/predictor/gwr_dni_recursive_walk.py](benchmarks/python/predictor/gwr_dni_recursive_walk.py),
-and
-[docs/research/predictor/gwr_dni_exact_recursive_prime_walk_note.md](docs/research/predictor/gwr_dni_exact_recursive_prime_walk_note.md).
-
-## No-Later-Simpler-Composite
-
-The strongest closure consequence currently documented in the repository is
-this: once the implemented score maximizer appears inside a prime gap, the next prime
-arrives before any later interior composite with strictly smaller divisor
-count can appear.
-
-This is the closure law behind the exact recursive walk. After the selected integer
-appears, the gap interior does not later produce a simpler composite before
-the next prime closes the interval.
-
-In symbols, if $w$ is the implemented log-score maximizer in the gap $(p, q)$ and
-
-$$
-T_{<}(w) = \min \{\, n > w : d(n) < d(w) \,\},
-$$
-
-then the closure condition is
-
-$$
-q \le T_{<}(w).
-$$
-
-This is an exact corollary of the proved GWR theorem. The separate
-question is whether it can stand on its own as a direct prime-gap theorem without
-using GWR as the parent result. The current documented surface includes a
-deterministic even-band ladder at every decade from $10^8$ through $10^{18}$
-with zero observed violations.
-
-See
-[PROOF.md](PROOF.md),
-[gwr/findings/closure_constraint_findings.md](gwr/findings/closure_constraint_findings.md),
-and
-[docs/current_headline_results.md](docs/current_headline_results.md).
-
-## Dominant d=4 Reduction
-
-In the dominant selected-integer regime, the tested gaps admit no interior prime square,
-and the implemented score maximizer is exactly the first interior integer with
-$d(n)=4$.
-
-That gives the leading regime a visible mechanism: square exclusion first,
-then first-`d=4` arrival. The stricter semiprime-only slogan is false; a thin
-prime-cube exception family survives inside the broader `d=4` class.
-
-See
-[gwr/findings/dominant_d4_arrival_reduction_findings.md](gwr/findings/dominant_d4_arrival_reduction_findings.md)
-and
-[docs/current_headline_results.md](docs/current_headline_results.md).
-
-## Deterministic Filter Performance
-
-This fixed-point separation is one downstream engineering use of the method.
-Cryptographic prime generation spends most of its time on candidates that are
-composite and never need a full probable-prime path. The exact DNI provides
-the invariant target. The production implementation below is the bounded
-deterministic surrogate calibrated against that target rather than a runtime
-exact-divisor evaluator.
-
-Because confirmed primes live at $Z = 1.0$ under the DNI and composites
-contract below it, the filter creates a clean structural separation in
-normalized space. That separation makes it possible to reject many candidates
-before paying the full cost of primality testing on remaining candidates.
-
-Empirically, this extracted Python path produced:
-
-- $2.09\times$ end-to-end speedup across $300$ deterministic $2048$-bit RSA keypairs
-- $2.82\times$ end-to-end speedup across $50$ deterministic $4096$-bit RSA keypairs
-- $90.97\,\%$ to $91.07\,\%$ Miller-Rabin reduction in the current covered-table configuration
-
-Those numbers are not a side note. They are the production consequence of the
-same invariant program, carried through a narrow deterministic runtime path
-that rejects many doomed candidates before Miller-Rabin.
-
-See [docs/prefilter/benchmarks.md](docs/prefilter/benchmarks.md) and
-[technical-note/technical_note.md](technical-note/technical_note.md).
-
-## Production Filter Path
-
-The exact DNI depends on exact divisor count. That exact path is valuable as
-the derivation and as the oracle, but it is not the runtime path for
-cryptographic-scale key generation.
-
-The production implementation in this repository therefore uses a deterministic
-surrogate with the same invariant target:
-
-- generate deterministic odd candidates from a SHA-256 namespace/index stream
-- reject immediately when a concrete factor appears in the gated prime tables
-- keep candidates that survive table rejection on the locus convention
-  `proxy_z = 1.0`
-- run fixed-base Miller-Rabin on those remaining candidates
-- apply final `sympy.isprime` confirmation in the current Python path
-
-In the production path, `proxy_z = 1.0` means only that the candidate survived
-the current gated factor tables and therefore advances to Miller-Rabin. It is
-not a primality proof by itself.
-
-The current measured rejection rate comes from the covered prime-table depth of
-this implementation. The repository includes deterministic table-depth sweeps
-to show that dependence directly rather than attributing the `~91%` figure to
-runtime exact DNI evaluation.
-
-## Empirical Results
-
-### End-to-End RSA Key Generation
-
-- $2048$ bits, $300$ deterministic keypairs:  
-  baseline $291938.126792$ ms  
-  accelerated $139942.831833$ ms  
-  speedup $2.09\times$  
-  Miller-Rabin reduction $90.97\,\%$
-- $4096$ bits, $50$ deterministic keypairs:  
-  baseline $757750.922792$ ms  
-  accelerated $268557.631625$ ms  
-  speedup $2.82\times$  
-  Miller-Rabin reduction $91.07\,\%$
-
-### Candidate-Loop Screening
-
-- $2048$-bit control corpus:  
-  proxy rejection $91.02\,\%$  
-  pipeline speedup $2.95\times$
-- $4096$-bit control corpus:  
-  proxy rejection $91.41\,\%$  
-  pipeline speedup $3.33\times$
-
-### DNI Calibration
-
-- $29/29$ calibration primes stayed on $Z = 1.0$
-- $0$ composite false fixed points
-
-### Exact Raw Composite Z Score Values
-
-- This is a separate exact score-function concern from the production filter.
-- Up to $10^6$ on the natural number line, the strongest exact raw composite
-  $Z$ value inside a prime gap lands at edge-distance $2$ in $43.6006\%$ of
-  gaps versus an exact within-gap baseline of $22.1859\%$, and is carried by a
-  $d(n)=4$ composite in $82.9027\%$ of gaps versus a baseline of $20.1401\%$.
-- [PROOF.md](PROOF.md) proves the direct deterministic next-prime theorem and
-  sharpens that ridge picture into the current selected integer theorem: the
-  log-score maximizer is the arithmetic choice “minimize interior divisor
-  count, then take the leftmost integer.” The theorems are universal under
-  their stated hypotheses. The tested surfaces are certification and
-  provenance, not theorem boundaries.
-- The dedicated closure study then strengthens the right-edge reading further:
-  on the current documented even-band ladder through $10^{18}$, once the
-  selected integer appears, no later strictly simpler composite is observed before the
-  next prime closes the gap.
-
-See [docs/gap_ridge/raw_composite_z_gap_edge.md](docs/gap_ridge/raw_composite_z_gap_edge.md),
-[PROOF.md](PROOF.md), and
-[gwr/findings/closure_constraint_findings.md](gwr/findings/closure_constraint_findings.md).
-
-See [docs/prefilter/benchmarks.md](docs/prefilter/benchmarks.md) for the curated benchmark summary and [docs/prefilter/manual_validation.md](docs/prefilter/manual_validation.md) for the exact reproduction commands.
+- [PROOF.md](PROOF.md) gives the formal statement and proof of the direct next-prime theorem and the prime-gap maximizer theorem.
+- [LEFTMOST_MINIMUM_DIVISOR_RULE.md](LEFTMOST_MINIMUM_DIVISOR_RULE.md) explores the rule that identifies the special composite inside each gap.
+- [DIVISOR_NORMALIZATION_IDENTITY.md](DIVISOR_NORMALIZATION_IDENTITY.md) explains the normalization that places primes at Z = 1.0.
+- [PRIME_GAP_GENERATOR.md](PRIME_GAP_GENERATOR.md) describes how the generator reads the structure.
+- [PRIME_GAP_GENERATIVE_MODEL.md](PRIME_GAP_GENERATIVE_MODEL.md) and [RECURSIVE_PRIME_WALK.md](RECURSIVE_PRIME_WALK.md) examine the broader model and recursive behavior.
+- [RESULTS.md](RESULTS.md) presents the measured results and surfaces.
 
 ## Python API
 
@@ -585,24 +108,3 @@ Install the Python package from the repo root:
 
 ```bash
 python3 -m pip install -e ./src/python
-```
-
-## License
-
-This repository is source-available under the
-[Business Source License 1.1](LICENSE).
-
-The current grant keeps the code open for research, evaluation, and other
-non-production work, and it also permits internal production use for smaller
-organizations under the Additional Use Grant in [LICENSE](LICENSE).
-
-Commercial production use outside that grant requires a separate commercial
-license. For licensing terms, support, or private commercial use, contact
-`dionisio.lopez@icloud.com`.
-
-Each version converts to [Apache License, Version 2.0](LICENSE) four years
-after that version is first publicly distributed under the Business Source
-License 1.1.
-
-Versions that were first publicly distributed before this change under the MIT
-license remain available under those earlier terms.
