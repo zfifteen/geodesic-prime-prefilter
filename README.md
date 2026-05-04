@@ -2,7 +2,7 @@
 
 ![Prime Gap Structure hero](docs/assets/prime-gap-structure-hero.jpg)
 
-## Primes Are Not Random
+## The First Contradiction
 
 Primes are not random. Prime gaps are not chaotic or meaningless.
 
@@ -64,7 +64,7 @@ Between `89` and `97`, the interior integers are
 The lowest count is `4`, but several numbers share it. Reading from left to
 right, the first one is `91`.
 
-That leftmost minimum is the local landmark of the gap. The fuller name is the
+That leftmost minimum is the local landmark of the gap. Its fuller name is the
 [Leftmost Minimum-Divisor Rule](LEFTMOST_MINIMUM_DIVISOR_RULE.md).
 
 The chosen number is not the next prime. It is an interior composite. It marks
@@ -108,7 +108,7 @@ minimum divisor count yet.
 
 That is the interior story in ordinary language.
 
-The score used by the project tells the same story in normalized form. The
+The score used by the project carries this into normalized form. The
 [Divisor Normalization Identity](DIVISOR_NORMALIZATION_IDENTITY.md) puts primes
 on the fixed-point locus `Z = 1.0` and puts composites below that locus. Inside
 a prime gap, that score selects the same local landmark: the leftmost integer
@@ -132,11 +132,10 @@ successor prime as a deliberately small record:
 The output stream contains only `p` and `q`. Diagnostics and audit records stay
 outside that stream.
 
-The production generator is PGS-only. It does not use trial division. It does
-not use Miller-Rabin. It does not use probabilistic primality tests, sieve
-generation, fallback prime search, or `nextprime` inside generation. Classical
-verification remains downstream audit after generation, not the mechanism for
-choosing `q`.
+The production generator is PGS-only. It does not use trial division,
+Miller-Rabin, probabilistic primality tests, sieve generation, fallback prime
+search, or `nextprime` inside generation. Classical verification remains
+downstream audit after generation, not the mechanism for choosing `q`.
 
 ## The Same Lens Opens Other Branches
 
