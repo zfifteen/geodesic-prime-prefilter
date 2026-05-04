@@ -445,6 +445,61 @@ strip removes enough factor load to expose distinct-semiprime material. The
 surviving deeper layer remains multi-prime.
 ```
 
+## Sixth-Layer Normal Form At `10^18`
+
+The next pass did not peel a sixth strip. It inspected the `9` sixth-layer rows
+as a finite object.
+
+The input surface was:
+
+```text
+scale: 10^18
+input sixth-layer rows: 9
+input fifth remainder family: multi_prime_family
+```
+
+The normal-form pass records the full endpoint factor signature, the first five
+least factors stripped from the endpoint, and the remaining factor material
+after five strips.
+
+The endpoint multiplicity distribution was:
+
+| Total prime factors with multiplicity | Count |
+|---:|---:|
+| `8` | `7` |
+| `9` | `1` |
+| `10` | `1` |
+
+The remaining material after five strips had divisor-count distribution:
+
+| `tau` of fifth remainder | Count |
+|---:|---:|
+| `8` | `7` |
+| `16` | `1` |
+| `24` | `1` |
+
+The sixth-layer normal-form distribution was:
+
+| Sixth-layer normal form | Count |
+|---|---:|
+| `distinct_3_prime_product` | `7` |
+| `distinct_4_prime_product` | `1` |
+| `one_square_3_distinct_prime_product` | `1` |
+
+Thus the nine-row sixth layer has a tight normal form:
+
+```text
+After five least-factor strips, 7 / 9 rows are distinct products of three
+primes, 1 / 9 is a distinct product of four primes, and 1 / 9 is one square
+times three distinct primes.
+```
+
+The measured normal-form disposition is:
+
+```text
+TIGHT_NORMAL_FORM
+```
+
 ## Reproducibility
 
 Run the focused tests:
@@ -619,6 +674,39 @@ fifth_strip_compression_rate: 0.8363636363636363
 grammar_disposition: SIXTH_LAYER_FOUND
 ```
 
+Run the focused `10^18` sixth-layer normal-form pass:
+
+```text
+python3 experiments/twin-primes/scripts/twin_prime_sixth_layer_normal_form_probe.py --input experiments/twin-primes/output/twin_prime_fifth_strip_pressure_probe/sixth_layer_rows.csv --scale 1000000000000000000 --output-dir experiments/twin-primes/output/twin_prime_sixth_layer_normal_form_probe
+```
+
+Check the sixth-layer normal-form summary:
+
+```text
+python3 - <<'PY'
+import json
+from pathlib import Path
+
+path = Path("experiments/twin-primes/output/twin_prime_sixth_layer_normal_form_probe/summary.json")
+summary = json.loads(path.read_text())
+for key in [
+    "scale",
+    "sixth_layer_count",
+    "normal_form_disposition",
+]:
+    print(f"{key}: {summary[key]}")
+print(summary["sixth_layer_normal_form_distribution"])
+PY
+```
+
+Expected values:
+
+```text
+scale: 1000000000000000000
+sixth_layer_count: 9
+normal_form_disposition: TIGHT_NORMAL_FORM
+```
+
 ## Artifact References
 
 The committed certificate artifacts are:
@@ -638,6 +726,8 @@ The committed certificate artifacts are:
 | `output/twin_prime_fifth_strip_pressure_probe/summary.json` | Focused `10^18` fifth-strip summary. |
 | `output/twin_prime_fifth_strip_pressure_probe/fifth_strip_rows.csv` | Classified `10^18` fifth-strip rows. |
 | `output/twin_prime_fifth_strip_pressure_probe/sixth_layer_rows.csv` | The `9` sixth-layer rows. |
+| `output/twin_prime_sixth_layer_normal_form_probe/summary.json` | Focused `10^18` sixth-layer normal-form summary. |
+| `output/twin_prime_sixth_layer_normal_form_probe/sixth_layer_normal_form_rows.csv` | The `9` classified sixth-layer rows. |
 
 ## Open Target
 
@@ -650,7 +740,7 @@ Prove symbolically why low-scale width-2 endpoint misses reduce to fixed-point
 material, distinct-semiprime material, or prime-power tail material, then
 extend the grammar through the high-scale fourth-strip and fifth-layer
 multi-prime surfaces. The next concrete object is the `9`-row sixth-layer
-multi-prime surface at `10^18`.
+multi-prime surface at `10^18`, now reduced to the normal forms above.
 ```
 
 Only after that symbolic obstruction result is proved should the document be

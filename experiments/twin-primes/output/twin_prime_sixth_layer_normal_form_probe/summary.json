@@ -1,0 +1,123 @@
+{
+  "scale": 1000000000000000000,
+  "sixth_layer_count": 9,
+  "endpoint_big_omega_distribution": [
+    {
+      "endpoint_big_omega": 8,
+      "count": 7
+    },
+    {
+      "endpoint_big_omega": 10,
+      "count": 1
+    },
+    {
+      "endpoint_big_omega": 9,
+      "count": 1
+    }
+  ],
+  "endpoint_omega_distribution": [
+    {
+      "endpoint_omega": 6,
+      "count": 3
+    },
+    {
+      "endpoint_omega": 7,
+      "count": 3
+    },
+    {
+      "endpoint_omega": 5,
+      "count": 2
+    },
+    {
+      "endpoint_omega": 8,
+      "count": 1
+    }
+  ],
+  "strip_prefix_5_distribution": [
+    {
+      "strip_prefix_5": "7*7*7*7*11",
+      "count": 2
+    },
+    {
+      "strip_prefix_5": "7*11*31*53*101",
+      "count": 1
+    },
+    {
+      "strip_prefix_5": "7*23*23*31*83",
+      "count": 1
+    },
+    {
+      "strip_prefix_5": "7*7*11*23*67",
+      "count": 1
+    },
+    {
+      "strip_prefix_5": "7*7*13*13*139",
+      "count": 1
+    },
+    {
+      "strip_prefix_5": "7*7*17*19*97",
+      "count": 1
+    },
+    {
+      "strip_prefix_5": "7*7*7*53*101",
+      "count": 1
+    },
+    {
+      "strip_prefix_5": "7*7*7*7*43",
+      "count": 1
+    }
+  ],
+  "fifth_remainder_tau_distribution": [
+    {
+      "fifth_remainder_tau": 8,
+      "count": 7
+    },
+    {
+      "fifth_remainder_tau": 16,
+      "count": 1
+    },
+    {
+      "fifth_remainder_tau": 24,
+      "count": 1
+    }
+  ],
+  "fifth_remainder_big_omega_distribution": [
+    {
+      "fifth_remainder_big_omega": 3,
+      "count": 7
+    },
+    {
+      "fifth_remainder_big_omega": 4,
+      "count": 1
+    },
+    {
+      "fifth_remainder_big_omega": 5,
+      "count": 1
+    }
+  ],
+  "fifth_remainder_omega_distribution": [
+    {
+      "fifth_remainder_omega": 3,
+      "count": 7
+    },
+    {
+      "fifth_remainder_omega": 4,
+      "count": 2
+    }
+  ],
+  "sixth_layer_normal_form_distribution": [
+    {
+      "sixth_layer_normal_form": "distinct_3_prime_product",
+      "count": 7
+    },
+    {
+      "sixth_layer_normal_form": "distinct_4_prime_product",
+      "count": 1
+    },
+    {
+      "sixth_layer_normal_form": "one_square_3_distinct_prime_product",
+      "count": 1
+    }
+  ],
+  "normal_form_disposition": "TIGHT_NORMAL_FORM"
+}

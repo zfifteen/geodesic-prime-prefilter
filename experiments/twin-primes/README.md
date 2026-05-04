@@ -102,12 +102,21 @@ The fifth strip then attacked only those `55` fifth-layer rows:
 | Sixth-layer rows exposed | `9` |
 | Fifth-strip compression rate | `0.8363636363636363` |
 
+The sixth-layer normal-form pass inspected those `9` rows directly:
+
+| Sixth-layer normal form | Count |
+|---|---:|
+| Distinct three-prime product after five strips | `7` |
+| Distinct four-prime product after five strips | `1` |
+| One square times three distinct primes after five strips | `1` |
+
 That gives the current high-scale picture:
 
 ```text
 PGS endpoint status remains audit-exact on the sampled decade ladder.
 The obstruction grammar deepens by factor strips: the 10^18 next layer
-compresses at strips four and five and exposes a much smaller sixth layer.
+compresses at strips four and five and exposes a nine-row sixth layer with a
+tight normal form.
 ```
 
 ## The Story In Plain Language
@@ -168,6 +177,7 @@ material, or prime-power tail material.
 | `scripts/twin_prime_endpoint_fixed_point_decomposition_probe.py` | Endpoint obstruction decomposition and factor-strip grammar probe. |
 | `scripts/twin_prime_fourth_strip_pressure_probe.py` | Focused fourth-strip pressure probe for high-scale next-layer rows. |
 | `scripts/twin_prime_fifth_strip_pressure_probe.py` | Focused fifth-strip pressure probe for the `10^18` fifth layer. |
+| `scripts/twin_prime_sixth_layer_normal_form_probe.py` | Normal-form analyzer for the `10^18` sixth layer. |
 | `output/twin_prime_endpoint_fixed_point_decomposition_probe/summary.json` | Committed `q <= 1000000` endpoint obstruction summary. |
 | `output/twin_prime_endpoint_fixed_point_decomposition_probe/third_strip_higher_rows.csv` | The `14` prime-power tail rows. |
 | `output/twin_prime_decade_ladder_probe/summary.json` | `10^6` through `10^18` sampled ladder summary. |
@@ -176,6 +186,8 @@ material, or prime-power tail material.
 | `output/twin_prime_fourth_strip_pressure_probe/fifth_layer_rows.csv` | The `55` exposed fifth-layer rows. |
 | `output/twin_prime_fifth_strip_pressure_probe/summary.json` | Focused `10^18` fifth-strip summary. |
 | `output/twin_prime_fifth_strip_pressure_probe/sixth_layer_rows.csv` | The `9` exposed sixth-layer rows. |
+| `output/twin_prime_sixth_layer_normal_form_probe/summary.json` | Focused `10^18` sixth-layer normal-form summary. |
+| `output/twin_prime_sixth_layer_normal_form_probe/sixth_layer_normal_form_rows.csv` | The `9` classified sixth-layer rows. |
 
 ## Quick Commands
 
@@ -213,4 +225,10 @@ Run the focused `10^18` fifth-strip pressure test:
 
 ```text
 python3 experiments/twin-primes/scripts/twin_prime_fifth_strip_pressure_probe.py --input experiments/twin-primes/output/twin_prime_fourth_strip_pressure_probe/fifth_layer_rows.csv --scale 1000000000000000000 --output-dir experiments/twin-primes/output/twin_prime_fifth_strip_pressure_probe
+```
+
+Run the focused `10^18` sixth-layer normal-form pass:
+
+```text
+python3 experiments/twin-primes/scripts/twin_prime_sixth_layer_normal_form_probe.py --input experiments/twin-primes/output/twin_prime_fifth_strip_pressure_probe/sixth_layer_rows.csv --scale 1000000000000000000 --output-dir experiments/twin-primes/output/twin_prime_sixth_layer_normal_form_probe
 ```
