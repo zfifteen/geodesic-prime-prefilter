@@ -531,6 +531,52 @@ Explain the 55 fifth-layer rows without returning to historical transition
 prediction or broad classical sampling.
 ```
 
+## Fifth-Strip Pressure At `10^18`
+
+The fifth-strip pass focused only on the `55` fifth-layer rows exposed by the
+fourth strip. It did not rerun the full decade ladder and did not broaden the
+experiment.
+
+The input was:
+
+| Quantity | Value |
+|---|---:|
+| Scale | `10^18` |
+| Fifth-layer rows | `55` |
+| Input family | `multi_prime_family` |
+
+After stripping one more least prime factor from the fourth remainder, the
+surface compressed sharply:
+
+| Quantity | Value |
+|---|---:|
+| Fifth-strip semiprime-distinct remainders | `46` |
+| Fifth-strip prime-power tail remainders | `0` |
+| Fifth-strip accounted rows | `46` |
+| Sixth-layer rows exposed | `9` |
+| Fifth-strip compression rate | `0.8363636363636363` |
+
+The fifth remainder family distribution was:
+
+| Fifth remainder family | Count |
+|---|---:|
+| `semiprime_distinct` | `46` |
+| `multi_prime_family` | `9` |
+
+The measured answer to the fifth-strip pressure question is:
+
+```text
+The fifth layer still has recursive peel structure. A fifth strip accounts for
+46 / 55 rows and exposes a smaller sixth-layer multi-prime surface.
+```
+
+The next focused pressure point is now:
+
+```text
+Explain the 9 sixth-layer rows without returning to historical transition
+prediction or broad classical sampling.
+```
+
 ## Stop Condition
 
 The target is closed only in one of two forms:

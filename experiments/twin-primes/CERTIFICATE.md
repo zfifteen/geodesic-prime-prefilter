@@ -389,6 +389,62 @@ At 10^18, a fourth strip accounts for most of that layer and exposes a
 smaller fifth-layer multi-prime surface.
 ```
 
+## Fifth-Strip Pressure At `10^18`
+
+The next focused pressure test attacked only the `55` fifth-layer rows exposed
+by the fourth strip. It did not rerun the ladder and did not read any rows
+outside that fifth-layer surface.
+
+The input surface was:
+
+```text
+scale: 10^18
+input fifth-layer rows: 55
+input fourth remainder family: multi_prime_family
+```
+
+The fifth strip removes one more least prime factor from the fourth remainder
+and classifies the fifth remainder.
+
+The result was:
+
+| Quantity | Count |
+|---|---:|
+| Input fifth-layer rows | `55` |
+| Fifth strip reaches distinct-semiprime material | `46` |
+| Fifth strip reaches prime-power tail material | `0` |
+| Fifth strip accounted rows | `46` |
+| Sixth-layer rows exposed | `9` |
+| Fifth-strip compression rate | `0.8363636363636363` |
+| Grammar disposition | `SIXTH_LAYER_FOUND` |
+
+The fifth remainder family distribution was:
+
+| Fifth remainder family | Count |
+|---|---:|
+| `semiprime_distinct` | `46` |
+| `multi_prime_family` | `9` |
+
+Thus the fifth strip compresses the `10^18` fifth layer by:
+
+```text
+46 / 55 = 0.8363636363636363
+```
+
+and exposes a smaller sixth layer:
+
+```text
+9 sixth-layer rows, all multi_prime_family
+```
+
+The fourth and fifth strips together show the recursive carrier shape:
+
+```text
+The high-scale next layer remains carried by multi-prime material until another
+strip removes enough factor load to expose distinct-semiprime material. The
+surviving deeper layer remains multi-prime.
+```
+
 ## Reproducibility
 
 Run the focused tests:
@@ -525,6 +581,44 @@ fourth_strip_compression_rate: 0.6428571428571429
 grammar_disposition: FIFTH_LAYER_FOUND
 ```
 
+Run the focused `10^18` fifth-strip pressure test:
+
+```text
+python3 experiments/twin-primes/scripts/twin_prime_fifth_strip_pressure_probe.py --input experiments/twin-primes/output/twin_prime_fourth_strip_pressure_probe/fifth_layer_rows.csv --scale 1000000000000000000 --output-dir experiments/twin-primes/output/twin_prime_fifth_strip_pressure_probe
+```
+
+Check the fifth-strip summary:
+
+```text
+python3 - <<'PY'
+import json
+from pathlib import Path
+
+path = Path("experiments/twin-primes/output/twin_prime_fifth_strip_pressure_probe/summary.json")
+summary = json.loads(path.read_text())
+for key in [
+    "scale",
+    "input_fifth_layer_count",
+    "fifth_strip_accounted_count",
+    "sixth_layer_count",
+    "fifth_strip_compression_rate",
+    "grammar_disposition",
+]:
+    print(f"{key}: {summary[key]}")
+PY
+```
+
+Expected values:
+
+```text
+scale: 1000000000000000000
+input_fifth_layer_count: 55
+fifth_strip_accounted_count: 46
+sixth_layer_count: 9
+fifth_strip_compression_rate: 0.8363636363636363
+grammar_disposition: SIXTH_LAYER_FOUND
+```
+
 ## Artifact References
 
 The committed certificate artifacts are:
@@ -541,6 +635,9 @@ The committed certificate artifacts are:
 | `output/twin_prime_fourth_strip_pressure_probe/summary.json` | Focused `10^18` fourth-strip summary. |
 | `output/twin_prime_fourth_strip_pressure_probe/fourth_strip_rows.csv` | Classified `10^18` fourth-strip rows. |
 | `output/twin_prime_fourth_strip_pressure_probe/fifth_layer_rows.csv` | The `55` fifth-layer rows. |
+| `output/twin_prime_fifth_strip_pressure_probe/summary.json` | Focused `10^18` fifth-strip summary. |
+| `output/twin_prime_fifth_strip_pressure_probe/fifth_strip_rows.csv` | Classified `10^18` fifth-strip rows. |
+| `output/twin_prime_fifth_strip_pressure_probe/sixth_layer_rows.csv` | The `9` sixth-layer rows. |
 
 ## Open Target
 
@@ -552,7 +649,8 @@ The next theorem target is:
 Prove symbolically why low-scale width-2 endpoint misses reduce to fixed-point
 material, distinct-semiprime material, or prime-power tail material, then
 extend the grammar through the high-scale fourth-strip and fifth-layer
-multi-prime surfaces.
+multi-prime surfaces. The next concrete object is the `9`-row sixth-layer
+multi-prime surface at `10^18`.
 ```
 
 Only after that symbolic obstruction result is proved should the document be
