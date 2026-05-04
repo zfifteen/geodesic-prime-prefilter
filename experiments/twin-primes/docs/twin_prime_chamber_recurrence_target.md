@@ -461,6 +461,30 @@ Endpoint misses reduce either to fixed-point material, distinct-semiprime
 material, or prime-power tail material.
 ```
 
+## Decade Ladder Update
+
+The `10^6` through `10^18` decade-window ladder kept the PGS endpoint decision
+audit-clean and exposed the next structural layer beyond the low-scale
+three-strip grammar.
+
+Through `4096` eligible anchors per decade scale:
+
+| Quantity | Value |
+|---|---:|
+| Sampled eligible anchors | `53248` |
+| Endpoint obstructions | `45622` |
+| Accounted by low-scale grammar | `44770` |
+| High-scale next-layer rows | `852` |
+| False exclusions | `0` |
+| Unresolved composites | `0` |
+
+All next-layer rows are `multi_prime_family`. The next target is therefore:
+
+```text
+Extend the width-2 obstruction grammar to the high-scale multi-prime layer
+without weakening the PGS decision/audit boundary.
+```
+
 ## Stop Condition
 
 The target is closed only in one of two forms:

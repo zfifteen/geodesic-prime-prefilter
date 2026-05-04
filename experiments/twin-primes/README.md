@@ -61,6 +61,33 @@ The reduction is:
 So inside this measured regime, failed one-cell chambers are fully accounted
 for by endpoint factor structure.
 
+## High-Scale Decade Ladder
+
+A deterministic decade-window ladder sampled `4096` eligible anchors below
+each scale from `10^6` through `10^18`.
+
+The PGS decision audit stayed exact:
+
+| Quantity | Count |
+|---|---:|
+| Sampled eligible anchors | `53248` |
+| Prime closures | `7626` |
+| Composite endpoint failures | `45622` |
+| False exclusions | `0` |
+| Unresolved composites | `0` |
+
+The low-scale three-strip grammar carried most of the high-scale surface and
+then exposed the next structural layer. It accounted for `44770 / 45622`
+endpoint failures. The remaining `852` rows were all `multi_prime_family`
+extension rows.
+
+That gives the current high-scale picture:
+
+```text
+PGS endpoint status remains audit-exact on the sampled decade ladder.
+The obstruction grammar deepens into a high-scale multi-prime layer.
+```
+
 ## The Story In Plain Language
 
 A twin-prime gap has only one integer between the endpoints. That middle
@@ -119,6 +146,8 @@ material, or prime-power tail material.
 | `scripts/twin_prime_endpoint_fixed_point_decomposition_probe.py` | Endpoint obstruction decomposition and factor-strip grammar probe. |
 | `output/twin_prime_endpoint_fixed_point_decomposition_probe/summary.json` | Committed `q <= 1000000` endpoint obstruction summary. |
 | `output/twin_prime_endpoint_fixed_point_decomposition_probe/third_strip_higher_rows.csv` | The `14` prime-power tail rows. |
+| `output/twin_prime_decade_ladder_probe/summary.json` | `10^6` through `10^18` sampled ladder summary. |
+| `output/twin_prime_decade_ladder_probe/next_layer_rows.csv` | High-scale multi-prime extension rows. |
 
 ## Quick Commands
 
@@ -138,4 +167,10 @@ Run the width-2 generator side probe:
 
 ```text
 python3 experiments/twin-primes/scripts/twin_prime_width2_pgs_generator_probe.py --max-right-prime 1000000 --output-dir /tmp/twin_prime_width2_pgs_generator_probe_1e6
+```
+
+Run the high-scale decade ladder:
+
+```text
+python3 experiments/twin-primes/scripts/twin_prime_decade_ladder_probe.py --sample-size 4096 --min-exponent 6 --max-exponent 18 --output-dir experiments/twin-primes/output/twin_prime_decade_ladder_probe
 ```

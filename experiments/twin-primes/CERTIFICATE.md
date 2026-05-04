@@ -250,6 +250,88 @@ second-remainder residue = third-factor residue * third-remainder residue mod 30
 These are not statistical conditions. They are exact arithmetic identities
 recorded to keep the obstruction grammar auditable.
 
+## Decade Ladder
+
+A deterministic high-scale ladder sampled eligible anchor primes immediately
+below each power of ten from `10^6` through `10^18`.
+
+The sample size was:
+
+```text
+4096 eligible anchors per decade scale
+13 decade scales
+53248 total sampled anchors
+```
+
+This ladder is not an exhaustive scan. It is a deterministic sampled
+high-scale certificate surface.
+
+The pooled ladder result was:
+
+| Quantity | Count |
+|---|---:|
+| Sampled eligible anchors | `53248` |
+| Endpoint fixed-point closures | `7626` |
+| Endpoint obstructions | `45622` |
+| Endpoint obstructions accounted by the low-scale grammar | `44770` |
+| Next-layer rows exposed by the low-scale grammar | `852` |
+| False exclusions | `0` |
+| Unresolved composites | `0` |
+| Audit status | `PASS` |
+| Grammar disposition | `NEXT_LAYER_FOUND` |
+
+The PGS endpoint decision remained audit-exact across the ladder:
+
+```text
+false exclusions: 0
+unresolved composites: 0
+```
+
+The low-scale three-strip obstruction grammar carried most of the ladder and
+then exposed the next structural layer. Its ladder coverage was:
+
+```text
+44770 / 45622 = 0.9813247994388672
+```
+
+All `852` next-layer rows had terminal family:
+
+```text
+multi_prime_family
+```
+
+The per-scale ladder summary was:
+
+| Scale | Anchors | Closures | Obstructions | Accounted | Next layer | Coverage | Audit |
+|---:|---:|---:|---:|---:|---:|---:|---|
+| `10^6` | `4096` | `1064` | `3032` | `3032` | `0` | `1.0` | `PASS` |
+| `10^7` | `4096` | `862` | `3234` | `3230` | `4` | `0.9987631416202845` | `PASS` |
+| `10^8` | `4096` | `804` | `3292` | `3282` | `10` | `0.996962332928311` | `PASS` |
+| `10^9` | `4096` | `718` | `3378` | `3365` | `13` | `0.9961515689757253` | `PASS` |
+| `10^10` | `4096` | `609` | `3487` | `3468` | `19` | `0.9945511901347863` | `PASS` |
+| `10^11` | `4096` | `559` | `3537` | `3495` | `42` | `0.9881255301102629` | `PASS` |
+| `10^12` | `4096` | `537` | `3559` | `3508` | `51` | `0.9856701320595673` | `PASS` |
+| `10^13` | `4096` | `501` | `3595` | `3517` | `78` | `0.9783031988873435` | `PASS` |
+| `10^14` | `4096` | `425` | `3671` | `3575` | `96` | `0.9738490874421138` | `PASS` |
+| `10^15` | `4096` | `427` | `3669` | `3558` | `111` | `0.9697465249386754` | `PASS` |
+| `10^16` | `4096` | `415` | `3681` | `3555` | `126` | `0.9657701711491442` | `PASS` |
+| `10^17` | `4096` | `376` | `3720` | `3572` | `148` | `0.9602150537634409` | `PASS` |
+| `10^18` | `4096` | `329` | `3767` | `3613` | `154` | `0.9591186620653039` | `PASS` |
+
+The decade ladder therefore separates two facts:
+
+```text
+The width-2 PGS endpoint status remains audit-exact on the sampled high-scale
+surface.
+```
+
+and:
+
+```text
+The obstruction grammar deepens into a high-scale multi-prime layer. This is
+the next symbolic target, not a defect in the low-scale certificate.
+```
+
 ## Reproducibility
 
 Run the focused tests:
@@ -302,6 +384,52 @@ third_strip_prime_power_tail_count: 14
 audit_status: PASS
 ```
 
+Run the high-scale decade ladder:
+
+```text
+python3 experiments/twin-primes/scripts/twin_prime_decade_ladder_probe.py --sample-size 4096 --min-exponent 6 --max-exponent 18 --output-dir experiments/twin-primes/output/twin_prime_decade_ladder_probe
+```
+
+Check the ladder summary:
+
+```text
+python3 - <<'PY'
+import json
+from pathlib import Path
+
+path = Path("experiments/twin-primes/output/twin_prime_decade_ladder_probe/summary.json")
+summary = json.loads(path.read_text())
+for key in [
+    "scale_count",
+    "eligible_anchor_count",
+    "prime_closure_count",
+    "endpoint_obstruction_count",
+    "low_scale_grammar_accounted_obstruction_count",
+    "next_layer_count",
+    "false_exclusion_count",
+    "unresolved_composite_count",
+    "audit_status",
+    "grammar_disposition",
+]:
+    print(f"{key}: {summary[key]}")
+PY
+```
+
+Expected values:
+
+```text
+scale_count: 13
+eligible_anchor_count: 53248
+prime_closure_count: 7626
+endpoint_obstruction_count: 45622
+low_scale_grammar_accounted_obstruction_count: 44770
+next_layer_count: 852
+false_exclusion_count: 0
+unresolved_composite_count: 0
+audit_status: PASS
+grammar_disposition: NEXT_LAYER_FOUND
+```
+
 ## Artifact References
 
 The committed certificate artifacts are:
@@ -312,6 +440,9 @@ The committed certificate artifacts are:
 | `output/twin_prime_endpoint_fixed_point_decomposition_probe/endpoint_decomposition_rows.csv` | Full endpoint decomposition rows. |
 | `output/twin_prime_endpoint_fixed_point_decomposition_probe/third_strip_higher_rows.csv` | The `14` prime-power tail rows. |
 | `output/twin_prime_endpoint_fixed_point_decomposition_probe/third_strip_grammar_rows.csv` | Compact third-strip grouped grammar. |
+| `output/twin_prime_decade_ladder_probe/summary.json` | Pooled high-scale ladder summary. |
+| `output/twin_prime_decade_ladder_probe/scale_summary_rows.csv` | Per-decade ladder summary rows. |
+| `output/twin_prime_decade_ladder_probe/next_layer_rows.csv` | High-scale multi-prime extension rows. |
 
 ## Open Target
 
@@ -320,8 +451,9 @@ The current result is a bounded certificate, not a general theorem.
 The next theorem target is:
 
 ```text
-Prove symbolically why width-2 endpoint misses reduce to fixed-point material,
-distinct-semiprime material, or prime-power tail material.
+Prove symbolically why low-scale width-2 endpoint misses reduce to fixed-point
+material, distinct-semiprime material, or prime-power tail material, then
+extend the grammar to the high-scale multi-prime layer.
 ```
 
 Only after that symbolic obstruction result is proved should the document be
