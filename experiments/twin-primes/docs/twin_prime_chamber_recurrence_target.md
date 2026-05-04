@@ -577,6 +577,50 @@ Explain the 9 sixth-layer rows without returning to historical transition
 prediction or broad classical sampling.
 ```
 
+## Sixth-Layer Normal Form At `10^18`
+
+The sixth-layer normal-form pass inspected the `9` sixth-layer rows directly.
+It did not run a sixth strip.
+
+The input was:
+
+| Quantity | Value |
+|---|---:|
+| Scale | `10^18` |
+| Sixth-layer rows | `9` |
+| Input family | `multi_prime_family` |
+
+The endpoint total prime-factor multiplicity was:
+
+| Total prime factors with multiplicity | Count |
+|---:|---:|
+| `8` | `7` |
+| `9` | `1` |
+| `10` | `1` |
+
+After five least-factor strips, the remaining material had this normal form:
+
+| Sixth-layer normal form | Count |
+|---|---:|
+| `distinct_3_prime_product` | `7` |
+| `distinct_4_prime_product` | `1` |
+| `one_square_3_distinct_prime_product` | `1` |
+
+The measured answer to the normal-form question is:
+
+```text
+The sixth layer is a tight nine-row normal-form surface. Seven rows are
+distinct three-prime products after five strips; the two boundary rows are a
+distinct four-prime product and one square times three distinct primes.
+```
+
+The next focused pressure point is now:
+
+```text
+Decide whether the nine-row normal form should be symbolically explained first
+or pressure-tested by a sixth strip.
+```
+
 ## Stop Condition
 
 The target is closed only in one of two forms:
