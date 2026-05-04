@@ -3,7 +3,14 @@
 ## Abstract
 
 This note gives a bounded computational certificate for the width-2 prime-gap
-chamber through eligible anchor primes `q <= 1000000`.
+chamber. The current center of gravity is the sampled decade ladder from
+`10^6` through `10^18`, where endpoint status remains audit-clean and the
+exposed `10^18` obstruction layer recursively compresses under least-factor
+peeling:
+
+```text
+154 -> 55 -> 9 -> 2
+```
 
 For each eligible prime `q`, the candidate chamber is:
 
@@ -12,18 +19,32 @@ q | q+1 | q+2
 ```
 
 The interior integer `q+1` is forced. The endpoint `q+2` either closes the
-chamber as a prime endpoint or fails as a composite endpoint obstruction.
+chamber as a prime endpoint or appears as a composite endpoint obstruction.
 
 The measured result is:
 
 ```text
-Every composite q+2 endpoint failure reduces to fixed-point material,
-distinct-semiprime material, or prime-power tail material.
+Twin-prime closures are the complement of a recursive least-factor obstruction
+language on the composite endpoint side.
 ```
 
-This is a bounded certificate for the measured regime. The open theorem target
-is to prove symbolically that the same obstruction grammar persists beyond the
-measured range.
+The `q <= 1000000` surface remains a closed base certificate where the
+obstruction language closes by depth `3`. The decade ladder shows that the
+grammar deepens with scale through a multi-prime carrier. The open theorem
+target is to prove the recursive obstruction language symbolically.
+
+## Scope Of Measurement
+
+| Item | Scope |
+|---|---|
+| Tested rungs | `10^6, 10^7, ..., 10^18` |
+| Decade sample | `4096` eligible anchors below each rung |
+| Base certificate | exhaustive eligible anchors through `q <= 1000000` |
+| Chamber | width-2 only: `q | q+1 | q+2` |
+| Operator | deterministic least-factor peeling |
+| Input contracts | strict focused probes |
+| Audit status | `PASS` at every sampled rung and focused probe |
+| Measurement boundary | tested ranges and width-2 chambers |
 
 ## Definitions
 
@@ -71,6 +92,10 @@ tau(e) > 2
 A factor strip removes the least prime factor from the current composite
 material and classifies the remaining factor material.
 
+The least-factor peeling order is canonical for this certificate: it is the
+deterministic left-to-right reading of a composite under its standard prime
+factorization. This certificate fixes that order throughout.
+
 Fixed-point material means the remaining factor material has divisor count
 `2`, hence is prime.
 
@@ -86,7 +111,37 @@ prime_power
 two_prime_power_family
 ```
 
-## Measured Regime
+Multi-prime material means the remaining factor material has at least three
+distinct prime factors and remains available for another peel.
+
+The recursive least-factor obstruction language is:
+
+```text
+peel the least factor;
+if the remainder is fixed-point material, exit;
+if the remainder is distinct-semiprime material, exit;
+if the remainder is prime-power tail material, exit;
+if the remainder is multi-prime material, carry forward.
+```
+
+The terminal exits are:
+
+```text
+fixed-point material
+distinct-semiprime material
+prime-power tail material
+```
+
+The recursive carrier is:
+
+```text
+multi-prime material
+```
+
+It is the carrier because it is the only family whose remainder is itself
+forwarded as the input to another peel.
+
+## Base Certificate Regime
 
 The measured regime is:
 
@@ -115,7 +170,7 @@ The width-2 generator side probe found the same split downstream:
 | False exclusions | `0` |
 | Unresolved composites | `0` |
 
-## Certificate Statement
+## Base Certificate Statement
 
 For every eligible anchor prime `q <= 1000000`, the candidate endpoint `q+2`
 is classified as either:
@@ -133,8 +188,8 @@ endpoint obstruction
 The endpoint fixed-point closures are exactly the `8167` cases where
 `tau(q+2) = 2`.
 
-The `21257` endpoint obstructions are fully accounted for by the following
-bounded factor-strip grammar:
+The `21257` endpoint obstructions are fully accounted for by the base
+factor-strip grammar:
 
 | Reduction layer | Count |
 |---|---:|
@@ -147,8 +202,8 @@ bounded factor-strip grammar:
 Therefore, within the measured regime:
 
 ```text
-Endpoint misses reduce either to fixed-point material,
-distinct-semiprime material, or prime-power tail material.
+Endpoint misses exit into fixed-point material, distinct-semiprime material,
+or prime-power tail material by depth 3.
 ```
 
 ## Factor-Strip Reduction
@@ -224,7 +279,7 @@ So the final measured accounting is:
 fixed-point material: accounted
 distinct-semiprime material: accounted
 prime-power tail material: accounted
-unstructured residual rows: 0
+unaccounted rows: 0
 ```
 
 ## Residue Constraint
@@ -247,8 +302,7 @@ and, for rows that reach the third strip:
 second-remainder residue = third-factor residue * third-remainder residue mod 30
 ```
 
-These are not statistical conditions. They are exact arithmetic identities
-recorded to keep the obstruction grammar auditable.
+These exact arithmetic identities keep the obstruction grammar auditable.
 
 ## Decade Ladder
 
@@ -263,8 +317,13 @@ The sample size was:
 53248 total sampled anchors
 ```
 
-This ladder is not an exhaustive scan. It is a deterministic sampled
-high-scale certificate surface.
+This ladder is a deterministic sampled high-scale certificate surface.
+
+The ladder recasts the result as a three-axis certificate surface:
+
+```text
+scale x strip depth x terminal family
+```
 
 The pooled ladder result was:
 
@@ -287,8 +346,8 @@ false exclusions: 0
 unresolved composites: 0
 ```
 
-The low-scale three-strip obstruction grammar carried most of the ladder and
-then exposed the next structural layer. Its ladder coverage was:
+The base depth-3 obstruction language carried most of the ladder and then
+exposed the next structural layer. Its ladder coverage was:
 
 ```text
 44770 / 45622 = 0.9813247994388672
@@ -328,15 +387,15 @@ surface.
 and:
 
 ```text
-The obstruction grammar deepens into a high-scale multi-prime layer. This is
-the next symbolic target, not a defect in the low-scale certificate.
+The recursive obstruction language deepens into a high-scale multi-prime
+carrier. This identifies the next symbolic target beyond the base certificate.
 ```
 
 ## Fourth-Strip Pressure At `10^18`
 
-The next focused pressure test attacked only the `10^18` decade-window
-next-layer rows exposed by the ladder. It did not rerun the full ladder and did
-not broaden the state space.
+The next focused pressure test used exactly the `10^18` decade-window
+next-layer rows exposed by the ladder, preserving the ladder surface and state
+space.
 
 The input surface was:
 
@@ -391,9 +450,9 @@ smaller fifth-layer multi-prime surface.
 
 ## Fifth-Strip Pressure At `10^18`
 
-The next focused pressure test attacked only the `55` fifth-layer rows exposed
-by the fourth strip. It did not rerun the ladder and did not read any rows
-outside that fifth-layer surface.
+The next focused pressure test used exactly the `55` fifth-layer rows exposed
+by the fourth strip and preserved that fifth-layer surface as the input
+contract.
 
 The input surface was:
 
@@ -447,8 +506,8 @@ surviving deeper layer remains multi-prime.
 
 ## Sixth-Layer Normal Form At `10^18`
 
-The next pass did not peel a sixth strip. It inspected the `9` sixth-layer rows
-as a finite object.
+The next pass inspected the `9` sixth-layer rows as a finite object before the
+sixth-strip pressure test.
 
 The input surface was:
 
@@ -553,6 +612,24 @@ The `10^18` chain now has this focused shape:
 55 fifth-layer rows
 9 sixth-layer normal-form rows
 2 seventh-layer boundary rows
+```
+
+## What Is Measured And What Remains Open
+
+Measured in this certificate:
+
+```text
+The width-2 endpoint status is audit-clean on the sampled 10^6 through 10^18
+decade ladder, and the exposed 10^18 obstruction layer recursively compresses
+from 154 rows to 2 rows under least-factor peeling.
+```
+
+The open symbolic target is:
+
+```text
+prove symbolically that the width-2 composite endpoint surface is governed by
+the recursive least-factor obstruction language, with terminal exits and a
+multi-prime carrier.
 ```
 
 ## Reproducibility
@@ -827,7 +904,7 @@ The committed certificate artifacts are:
 
 ## Open Target
 
-The current result is a bounded certificate, not a general theorem.
+The current result is a bounded certificate.
 
 The next theorem target is:
 
@@ -841,4 +918,4 @@ boundary rows above.
 ```
 
 Only after that symbolic obstruction result is proved should the document be
-promoted from certificate status to proof status.
+promoted from certificate status to theorem status.

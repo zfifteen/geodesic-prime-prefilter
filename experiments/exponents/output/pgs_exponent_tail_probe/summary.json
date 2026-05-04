@@ -1,0 +1,169 @@
+{
+  "total_exponent_tail_rows": 15,
+  "source_surface_distribution": [
+    {
+      "source_surface": "base_third_strip",
+      "count": 14
+    },
+    {
+      "source_surface": "fourth_strip",
+      "count": 1
+    }
+  ],
+  "strip_depth_distribution": [
+    {
+      "strip_depth": 3,
+      "count": 14
+    },
+    {
+      "strip_depth": 4,
+      "count": 1
+    }
+  ],
+  "tail_family_distribution": [
+    {
+      "tail_family": "prime_square",
+      "count": 10
+    },
+    {
+      "tail_family": "two_prime_power_family",
+      "count": 3
+    },
+    {
+      "tail_family": "prime_cube",
+      "count": 1
+    },
+    {
+      "tail_family": "prime_power",
+      "count": 1
+    }
+  ],
+  "tail_exponent_pattern_distribution": [
+    {
+      "tail_exponent_pattern": "2",
+      "count": 13
+    },
+    {
+      "tail_exponent_pattern": "3",
+      "count": 1
+    },
+    {
+      "tail_exponent_pattern": "4",
+      "count": 1
+    }
+  ],
+  "depth_exponent_distribution": [
+    {
+      "strip_depth": 3,
+      "tail_exponent_pattern": "2",
+      "count": 12
+    },
+    {
+      "strip_depth": 3,
+      "tail_exponent_pattern": "3",
+      "count": 1
+    },
+    {
+      "strip_depth": 3,
+      "tail_exponent_pattern": "4",
+      "count": 1
+    },
+    {
+      "strip_depth": 4,
+      "tail_exponent_pattern": "2",
+      "count": 1
+    }
+  ],
+  "residue_exponent_distribution": [
+    {
+      "peeled_factor_residue_path": "7->7->7",
+      "tail_exponent_pattern": "2",
+      "count": 5
+    },
+    {
+      "peeled_factor_residue_path": "7->11->11",
+      "tail_exponent_pattern": "2",
+      "count": 2
+    },
+    {
+      "peeled_factor_residue_path": "11->13->17",
+      "tail_exponent_pattern": "2",
+      "count": 1
+    },
+    {
+      "peeled_factor_residue_path": "13->13->13",
+      "tail_exponent_pattern": "2",
+      "count": 1
+    },
+    {
+      "peeled_factor_residue_path": "7->11->17",
+      "tail_exponent_pattern": "2",
+      "count": 1
+    },
+    {
+      "peeled_factor_residue_path": "7->13->13",
+      "tail_exponent_pattern": "2",
+      "count": 1
+    },
+    {
+      "peeled_factor_residue_path": "7->17->1->11",
+      "tail_exponent_pattern": "2",
+      "count": 1
+    },
+    {
+      "peeled_factor_residue_path": "7->7->19",
+      "tail_exponent_pattern": "2",
+      "count": 1
+    },
+    {
+      "peeled_factor_residue_path": "7->7->7",
+      "tail_exponent_pattern": "3",
+      "count": 1
+    },
+    {
+      "peeled_factor_residue_path": "7->7->7",
+      "tail_exponent_pattern": "4",
+      "count": 1
+    }
+  ],
+  "dominant_residue_path": "7->7->7",
+  "dominant_residue_path_count": 7,
+  "dominant_residue_path_share": 0.4666666666666667,
+  "high_exponent_tail_count": 2,
+  "high_exponent_tail_on_dominant_residue_path_count": 2,
+  "high_exponent_tail_on_dominant_residue_path_share": 1.0,
+  "dominant_residue_path_exponent_distribution": [
+    {
+      "tail_exponent_pattern": "2",
+      "count": 5
+    },
+    {
+      "tail_exponent_pattern": "3",
+      "count": 1
+    },
+    {
+      "tail_exponent_pattern": "4",
+      "count": 1
+    }
+  ],
+  "dominant_residue_path_family_distribution": [
+    {
+      "tail_family": "prime_square",
+      "count": 3
+    },
+    {
+      "tail_family": "two_prime_power_family",
+      "count": 2
+    },
+    {
+      "tail_family": "prime_cube",
+      "count": 1
+    },
+    {
+      "tail_family": "prime_power",
+      "count": 1
+    }
+  ],
+  "dominant_depth_exponent_share": 0.8,
+  "dominant_residue_exponent_share": 0.3333333333333333
+}
