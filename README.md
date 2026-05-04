@@ -46,7 +46,7 @@ divisor count: 12   4   6   4   4   4  12
 
 This time the smallest count inside the gap is 4. Notice that 4 appears four different times, at 91, 93, 94, and 95. Yet when you read the list from left to right, the very first time that lowest count of 4 shows up is at 91.
 
-The same principle that appeared in the smaller gap is still at work. Inside any prime gap there is always a first interior number that carries the lowest divisor count. The gap is telling you two things at once: what the lowest count is and exactly where that count first occurs. The pattern is not fragile; it survives even when the lowest count repeats.
+The same principle that appeared in the smaller gap is still at work. Inside any prime gap with at least one interior number, there is always a first interior number that carries the lowest divisor count. The gap is telling you two things at once: what the lowest count is and exactly where that count first occurs. The pattern is not fragile; it survives even when the lowest count repeats.
 
 What makes this observation powerful is that it comes directly from counting ordinary arithmetic properties that anyone can verify by hand. No advanced machinery is required. The numbers themselves reveal the structure the moment you look at them this way.
 
@@ -87,7 +87,7 @@ That record simply says: start here, the next prime is there. No trial division,
 
 ## Where This Leads
 
-Once you begin seeing prime gaps through this lens, many natural follow-up questions arise. You can trace what that first special composite inside each gap actually means and why it always appears where it does. You can examine the normalized score that places every prime at exactly 1.0 and lets you compare all composites below that value in a consistent way. You can watch how the same kind of structure repeats across thousands or millions of gaps and begin to model its behavior. You can follow the exact recursive process of walking from prime to prime using only the information carried inside each gap.
+Once you begin seeing prime gaps through this lens, many natural follow-up questions arise. You can trace what that first special composite inside each nonempty gap actually means and why it always appears where it does. You can examine the normalized score that places every prime at exactly 1.0 and lets you compare all composites below that value in a consistent way. You can watch how the same kind of structure repeats across thousands or millions of gaps and begin to model its behavior. You can follow the exact recursive process of walking from prime to prime using only the information carried inside each gap.
 
 Every one of these paths grows from the same simple shift in perspective: stop treating the interior as empty space and start counting what is really there. The numbers themselves do the rest of the work.
 
