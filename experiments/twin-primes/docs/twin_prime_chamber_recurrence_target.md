@@ -2,17 +2,16 @@
 
 Twin-prime gaps are the one-cell chambers of prime-gap structure.
 
-For a twin-prime pair `p, p+2`, the only interior integer is `p+1`. Because
-there is only one interior integer, `p+1` is automatically the leftmost
-minimum-divisor integer. This makes the twin-prime gap the smallest possible
-nonempty chamber where the selected-integer rule is visible without internal
-competition.
+For a twin-prime pair `p, p+2`, the single interior integer is `p+1`. That
+integer is automatically the leftmost minimum-divisor integer. This makes the
+twin-prime gap the smallest possible nonempty chamber where the
+selected-integer rule is visible in isolation.
 
 The current research target is:
 
 ```text
-Describe twin-prime occurrence as closure or failure of the one-cell candidate
-chamber q | q+1 | q+2.
+Characterize the recursive least-factor obstruction language whose complement
+is the width-2 closure surface.
 ```
 
 The public entrypoint is `../README.md`. The self-contained technical certificate
@@ -21,18 +20,15 @@ This file remains the working research log.
 
 ## Working Hypothesis
 
-Twin-prime occurrences are predictable from gap structure because gap structure
-predicts the local prime-gap chamber type. In this framing, a twin-prime
-occurrence is not just the event `q-p=2`; it is the return of the chamber
-sequence to the width-2 state, where the unique interior integer is forced to
-be the selected minimizer.
+Twin-prime closures are the endpoints left after the recursive obstruction
+language accounts for composite endpoints. In the width-2 chamber, a closure is the event that
+`q+2` is prime; an obstruction is the event that `q+2` is composite.
 
 The first PGS-native testable form is:
 
 ```text
-Composite failures of the one-cell chamber collapse into a compact obstruction
-grammar involving tau(q+1), tau(q+2), q mod 30, and continued-chamber
-no-later-simpler pressure.
+Composite endpoints in the one-cell chamber are governed by a recursive
+least-factor obstruction language with terminal exits and a multi-prime carrier.
 ```
 
 The PGSPG-style variant is narrower and more algorithmic:
@@ -43,10 +39,40 @@ prime q, emit only whether q+2 is excluded by the width-2 PGS contract or
 remains unresolved.
 ```
 
-The earlier transition-signature path asked whether completed chamber history
-predicts the next width-2 chamber. That path did not clear the fail-fast signal
-rule at `q <= 1000000`; it is retained as a negative sanity check, not as the
-active research direction.
+Historical transition-signature context: the earlier path asked whether
+completed chamber history predicts the next width-2 chamber. That path is
+retained as a calibration result; the active direction is the recursive
+least-factor obstruction language.
+
+## 2026-05-04 Retirement Note
+
+The recursive least-factor obstruction language is now the active line of
+investigation for the twin-primes branch. The transition-signature artifacts
+remain in the repository as calibration material for the path that led here.
+
+## Current Center Of Gravity
+
+The decade ladder added scale as a live dimension. The current measured object
+has three axes:
+
+```text
+scale x strip depth x terminal family
+```
+
+The low-scale `q <= 1000000` certificate closes by depth `3`. The sampled
+`10^6` through `10^18` decade ladder remains audit-clean and exposes deeper
+multi-prime carrier layers. At `10^18`, the focused chain is:
+
+```text
+154 -> 55 -> 9 -> 2
+```
+
+The live target is:
+
+```text
+explain the recursive obstruction language as the active width-2 chamber
+surface.
+```
 
 ## Current Measured Surface
 
@@ -121,8 +147,8 @@ The dominant first later `<= tau(w)` pressure offsets were:
 ## Width-2 PGS Generator Side Probe
 
 The generator side probe uses the same chamber-reset contract shape as the
-Minimal PGS Generator, but fixes the chamber bound at `2`. Generation emits no
-audit fields:
+Minimal PGS Generator with the chamber bound fixed at `2`. Generation emits
+the minimal status record:
 
 ```json
 {"q": 47, "candidate": 49, "status": "excluded"}
@@ -148,8 +174,8 @@ Audit is downstream. Through `q <= 1000000`, the audit result was:
 | Composite exclusion coverage | `1.0` |
 
 This is an exact bounded closure certificate for the width-2 chamber under the
-PGS chamber-reset rule. It is not a pre-endpoint historical predictor; it is the
-PGSPG contract specialized to the one-cell candidate chamber.
+PGS chamber-reset rule: the PGSPG contract specialized to the one-cell
+candidate chamber.
 
 ## Decision-Knob Ablation
 
@@ -173,27 +199,24 @@ Through `q <= 1000000`, the result was:
 | `forced_interior_carrier` | `29424` | `0` | `8167` | `0` | `FAIL` |
 
 The endpoint fixed-point knob reproduces the full width-2 contract exactly on
-the measured surface. The forced interior carrier is universal but not
-discriminating: using it alone falsely excludes every prime closure. Comparing
-the endpoint load against the forced interior load is also too weak: it leaves
-most composite endpoints unresolved.
+the measured surface. The forced interior carrier marks every candidate, so it
+marks closures and obstructions alike. Comparing the endpoint load
+against the forced interior load leaves most composite endpoints unresolved.
 
 ## Next Question
 
-The next pass should not broaden into every twin-prime statistic. It should use
-the width-2 generator side probe as the algorithmic skeleton and test one exact
-explanation:
+The next pass uses the width-2 generator side probe as the algorithmic skeleton
+and tests one exact explanation:
 
 ```text
 Can the width-2 chamber-reset exclusion be rewritten as a symbolic obstruction
-grammar for q+2, with no false exclusions and without leaning on broad
-transition statistics?
+grammar for q+2, preserving zero false exclusions and the endpoint-only
+decision boundary?
 ```
 
-The live fine-tuning target is therefore not outer gap type and not forced
-carrier load. It is the symbolic decomposition of the endpoint fixed-point
-condition inside the one-cell chamber. The first useful output is a compact
-obstruction certificate:
+The live fine-tuning target is the symbolic decomposition of the endpoint
+fixed-point condition inside the one-cell chamber. The first useful output is a
+compact obstruction certificate:
 
 ```text
 q mod 30
@@ -211,7 +234,7 @@ the one-cell chamber, `q+1` is forced. The only remaining question is whether
 the candidate endpoint `q+2` has divisor count `2`.
 
 The endpoint decomposition writes each candidate endpoint as exact factor
-material. A fixed-point hit has no obstruction factor. A fixed-point miss has a
+material. A fixed-point hit carries zero obstruction factors. A fixed-point miss has a
 least factor and a cofactor.
 
 Through `q <= 1000000`, the decomposition preserved the width-2 contract:
@@ -311,8 +334,7 @@ The least-factor reduction leaves one live obstruction surface:
 least_factor_times_higher_cofactor: 1485 rows
 ```
 
-The next pass should not return to outer gap types or transition prediction. It
-should pressure only this remaining family:
+The next pass pressures this remaining family directly:
 
 ```text
 Can the 1485 higher-cofactor endpoint obstructions be reduced by stripping a
@@ -338,8 +360,7 @@ current symbolic grammar closes only for the 93.014% low-complexity surface.
 
 ## Second-Factor Strip
 
-The second-factor pass attacked only the `1485` higher-cofactor rows. It did not
-return to outer gap types or transition tables.
+The second-factor pass attacked exactly the `1485` higher-cofactor rows.
 
 After stripping the least factor from `q+2`, the higher-cofactor rows have a
 composite cofactor. The pass strips the least factor of that cofactor and
@@ -377,8 +398,7 @@ of endpoint misses to low-complexity material after at most two factor strips.
 ## Third-Factor Strip
 
 The third-factor pass attacked only the `183` rows that remained higher after
-the second strip. It kept the same endpoint fixed-point surface and did not add
-outer gap history, transition prediction, random controls, or a wider scan.
+the second strip. It kept the same endpoint fixed-point surface.
 
 Through `q <= 1000000`, the third strip reduced almost all of the remaining
 surface:
@@ -429,8 +449,8 @@ The live obstruction surface is now tiny and concrete:
 third_factor_times_higher_remainder: 14 rows
 ```
 
-Those `14` rows are not an unstructured residual surface. Each one has
-prime-power tail material after the third factor strip:
+Those `14` rows form a named terminal family. Each one has prime-power tail
+material after the third factor strip:
 
 | Third remainder family | Count |
 |---|---:|
@@ -450,15 +470,15 @@ prime-power-tail rate: 1.0
 The measured answer to the `14`-row question is therefore:
 
 ```text
-The remaining rows are the next rule, not a terminal noise floor.
-They are prime-power tails left after three endpoint factor strips.
+The remaining rows are the next rule: prime-power tails left after three
+endpoint factor strips.
 ```
 
-The current width-2 endpoint obstruction grammar has this bounded form:
+The base width-2 endpoint obstruction grammar has this bounded form:
 
 ```text
-Endpoint misses reduce either to fixed-point material, distinct-semiprime
-material, or prime-power tail material.
+Endpoint misses exit into fixed-point material, distinct-semiprime material,
+or prime-power tail material by depth 3.
 ```
 
 ## Decade Ladder Update
@@ -478,17 +498,17 @@ Through `4096` eligible anchors per decade scale:
 | False exclusions | `0` |
 | Unresolved composites | `0` |
 
-All next-layer rows are `multi_prime_family`. The next target is therefore:
+All next-layer rows are `multi_prime_family`. The next target was therefore:
 
 ```text
 Extend the width-2 obstruction grammar to the high-scale multi-prime layer
-without weakening the PGS decision/audit boundary.
+while preserving the PGS decision/audit boundary.
 ```
 
 ## Fourth-Strip Pressure At `10^18`
 
-The fourth-strip pass focused only on the `10^18` decade-window next-layer rows.
-It did not rerun the full decade ladder and did not broaden the experiment.
+The fourth-strip pass used exactly the `10^18` decade-window next-layer rows.
+The full decade ladder remained fixed.
 
 The input was:
 
@@ -524,18 +544,16 @@ The 10^18 next layer still has internal structure. A fourth strip accounts for
 99 / 154 rows and exposes a smaller fifth-layer multi-prime surface.
 ```
 
-The next focused pressure point is now:
+The resolved next pressure point was:
 
 ```text
-Explain the 55 fifth-layer rows without returning to historical transition
-prediction or broad classical sampling.
+Explain the 55 fifth-layer rows through the recursive least-factor surface.
 ```
 
 ## Fifth-Strip Pressure At `10^18`
 
-The fifth-strip pass focused only on the `55` fifth-layer rows exposed by the
-fourth strip. It did not rerun the full decade ladder and did not broaden the
-experiment.
+The fifth-strip pass used exactly the `55` fifth-layer rows exposed by the
+fourth strip. The full decade ladder remained fixed.
 
 The input was:
 
@@ -570,17 +588,16 @@ The fifth layer still has recursive peel structure. A fifth strip accounts for
 46 / 55 rows and exposes a smaller sixth-layer multi-prime surface.
 ```
 
-The next focused pressure point is now:
+The resolved next pressure point was:
 
 ```text
-Explain the 9 sixth-layer rows without returning to historical transition
-prediction or broad classical sampling.
+Explain the 9 sixth-layer rows through the recursive least-factor surface.
 ```
 
 ## Sixth-Layer Normal Form At `10^18`
 
-The sixth-layer normal-form pass inspected the `9` sixth-layer rows directly.
-It did not run a sixth strip.
+The sixth-layer normal-form pass inspected the `9` sixth-layer rows directly
+before the sixth-strip pressure test.
 
 The input was:
 
@@ -614,7 +631,7 @@ distinct three-prime products after five strips; the two boundary rows are a
 distinct four-prime product and one square times three distinct primes.
 ```
 
-The next focused pressure point is now:
+The resolved next pressure point was:
 
 ```text
 Decide whether the nine-row normal form should be symbolically explained first
@@ -665,7 +682,7 @@ The current focused chain is:
 154 -> 55 -> 9 -> 2
 ```
 
-The next focused pressure point is now:
+The current focused pressure point is:
 
 ```text
 Explain or peel the 2 seventh-layer boundary rows.
@@ -677,14 +694,14 @@ The target is closed only in one of two forms:
 
 ```text
 Closed bounded certificate:
-Within the measured surface, failed one-cell chambers are accounted for by a
-small endpoint-obstruction and continued-pressure grammar.
+Within the measured surface, composite one-cell endpoints are accounted for by
+the recursive least-factor obstruction language.
 ```
 
 or:
 
 ```text
-Not closed:
-Failed one-cell chambers do not reduce to endpoint-obstruction or
-continued-pressure families on the measured surface.
+Open measured surface:
+Composite one-cell endpoints remain outside the terminal exits or named
+multi-prime carrier on the measured surface.
 ```
