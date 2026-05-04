@@ -332,6 +332,63 @@ The obstruction grammar deepens into a high-scale multi-prime layer. This is
 the next symbolic target, not a defect in the low-scale certificate.
 ```
 
+## Fourth-Strip Pressure At `10^18`
+
+The next focused pressure test attacked only the `10^18` decade-window
+next-layer rows exposed by the ladder. It did not rerun the full ladder and did
+not broaden the state space.
+
+The input surface was:
+
+```text
+scale: 10^18
+input next-layer rows: 154
+input terminal family: multi_prime_family
+```
+
+The fourth strip removes one more least prime factor from the third remainder
+and classifies the fourth remainder.
+
+The result was:
+
+| Quantity | Count |
+|---|---:|
+| Input next-layer rows | `154` |
+| Fourth strip reaches distinct-semiprime material | `98` |
+| Fourth strip reaches prime-power tail material | `1` |
+| Fourth strip accounted rows | `99` |
+| Fifth-layer rows exposed | `55` |
+| Fourth-strip compression rate | `0.6428571428571429` |
+| Grammar disposition | `FIFTH_LAYER_FOUND` |
+
+The fourth remainder family distribution was:
+
+| Fourth remainder family | Count |
+|---|---:|
+| `semiprime_distinct` | `98` |
+| `multi_prime_family` | `55` |
+| `two_prime_power_family` | `1` |
+
+Thus the fourth strip compresses the `10^18` next layer by:
+
+```text
+99 / 154 = 0.6428571428571429
+```
+
+and exposes a smaller fifth layer:
+
+```text
+55 fifth-layer rows, all multi_prime_family
+```
+
+The high-scale obstruction grammar now has this measured shape:
+
+```text
+The low-scale three-strip grammar exposes a high-scale multi-prime layer.
+At 10^18, a fourth strip accounts for most of that layer and exposes a
+smaller fifth-layer multi-prime surface.
+```
+
 ## Reproducibility
 
 Run the focused tests:
@@ -430,6 +487,44 @@ audit_status: PASS
 grammar_disposition: NEXT_LAYER_FOUND
 ```
 
+Run the focused `10^18` fourth-strip pressure test:
+
+```text
+python3 experiments/twin-primes/scripts/twin_prime_fourth_strip_pressure_probe.py --input experiments/twin-primes/output/twin_prime_decade_ladder_probe/next_layer_rows.csv --scale 1000000000000000000 --output-dir experiments/twin-primes/output/twin_prime_fourth_strip_pressure_probe
+```
+
+Check the fourth-strip summary:
+
+```text
+python3 - <<'PY'
+import json
+from pathlib import Path
+
+path = Path("experiments/twin-primes/output/twin_prime_fourth_strip_pressure_probe/summary.json")
+summary = json.loads(path.read_text())
+for key in [
+    "scale",
+    "input_next_layer_count",
+    "fourth_strip_accounted_count",
+    "fifth_layer_count",
+    "fourth_strip_compression_rate",
+    "grammar_disposition",
+]:
+    print(f"{key}: {summary[key]}")
+PY
+```
+
+Expected values:
+
+```text
+scale: 1000000000000000000
+input_next_layer_count: 154
+fourth_strip_accounted_count: 99
+fifth_layer_count: 55
+fourth_strip_compression_rate: 0.6428571428571429
+grammar_disposition: FIFTH_LAYER_FOUND
+```
+
 ## Artifact References
 
 The committed certificate artifacts are:
@@ -443,6 +538,9 @@ The committed certificate artifacts are:
 | `output/twin_prime_decade_ladder_probe/summary.json` | Pooled high-scale ladder summary. |
 | `output/twin_prime_decade_ladder_probe/scale_summary_rows.csv` | Per-decade ladder summary rows. |
 | `output/twin_prime_decade_ladder_probe/next_layer_rows.csv` | High-scale multi-prime extension rows. |
+| `output/twin_prime_fourth_strip_pressure_probe/summary.json` | Focused `10^18` fourth-strip summary. |
+| `output/twin_prime_fourth_strip_pressure_probe/fourth_strip_rows.csv` | Classified `10^18` fourth-strip rows. |
+| `output/twin_prime_fourth_strip_pressure_probe/fifth_layer_rows.csv` | The `55` fifth-layer rows. |
 
 ## Open Target
 
@@ -453,7 +551,8 @@ The next theorem target is:
 ```text
 Prove symbolically why low-scale width-2 endpoint misses reduce to fixed-point
 material, distinct-semiprime material, or prime-power tail material, then
-extend the grammar to the high-scale multi-prime layer.
+extend the grammar through the high-scale fourth-strip and fifth-layer
+multi-prime surfaces.
 ```
 
 Only after that symbolic obstruction result is proved should the document be

@@ -1,0 +1,44 @@
+{
+  "scale": 1000000000000000000,
+  "input_next_layer_count": 154,
+  "fourth_strip_low_complexity_count": 98,
+  "fourth_strip_prime_power_tail_count": 1,
+  "fourth_strip_accounted_count": 99,
+  "fifth_layer_count": 55,
+  "fourth_strip_compression_rate": 0.6428571428571429,
+  "fourth_remainder_family_distribution": [
+    {
+      "fourth_remainder_family": "semiprime_distinct",
+      "count": 98
+    },
+    {
+      "fourth_remainder_family": "multi_prime_family",
+      "count": 55
+    },
+    {
+      "fourth_remainder_family": "two_prime_power_family",
+      "count": 1
+    }
+  ],
+  "fourth_strip_terminal_distribution": [
+    {
+      "fourth_strip_terminal": "fourth_strip_semiprime_distinct",
+      "count": 98
+    },
+    {
+      "fourth_strip_terminal": "fifth_layer_multi_prime",
+      "count": 55
+    },
+    {
+      "fourth_strip_terminal": "fourth_strip_prime_power_tail_two_prime_power_family",
+      "count": 1
+    }
+  ],
+  "fifth_layer_family_distribution": [
+    {
+      "fourth_remainder_family": "multi_prime_family",
+      "count": 55
+    }
+  ],
+  "grammar_disposition": "FIFTH_LAYER_FOUND"
+}
