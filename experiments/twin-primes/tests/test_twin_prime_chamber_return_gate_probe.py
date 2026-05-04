@@ -39,7 +39,7 @@ def test_signature_rows_reconcile_split_counts():
     """Aggregated signature support should reconcile with labeled rows."""
     module = load_module()
     rows = module.labeled_rows(1_000, 500)
-    signatures = module.signature_rows(rows)
+    signatures = module.signature_rows(rows, tier="exact")
 
     assert signatures
     assert sum(int(row["train_count"]) for row in signatures) == sum(
@@ -54,6 +54,17 @@ def test_signature_rows_reconcile_split_counts():
     assert sum(int(row["test_twin_return_count"]) for row in signatures) == sum(
         int(row["next_gap_is_twin"]) for row in rows if row["split"] == "test"
     )
+
+
+def test_signature_tiers_reduce_or_preserve_signature_count():
+    """Coarser tiers should not create more signatures than exact signatures."""
+    module = load_module()
+    rows = module.labeled_rows(1_000, 500)
+    exact_count = len(module.signature_rows(rows, tier="exact"))
+
+    assert exact_count > 0
+    for tier in ("type_pair", "family_width", "current_type"):
+        assert len(module.signature_rows(rows, tier=tier)) <= exact_count
 
 
 def test_candidate_gate_rule_requires_out_of_sample_lift():
@@ -114,7 +125,7 @@ def test_entry_point_writes_return_gate_artifacts(tmp_path):
     ) == 0
 
     summary_path = tmp_path / "summary.json"
-    signature_path = tmp_path / "signature_rows.csv"
+    signature_path = tmp_path / "exact_signature_rows.csv"
     assert summary_path.exists()
     assert signature_path.exists()
 
@@ -122,3 +133,8 @@ def test_entry_point_writes_return_gate_artifacts(tmp_path):
     assert summary["row_count"] > 0
     assert summary["distinct_signature_count"] > 0
     assert summary["no_leakage_contract"]["label_field"] == "next_gap_is_twin"
+    assert summary["signature_tiers"] == ["exact", "type_pair", "family_width", "current_type"]
+    assert "tier_summaries" in summary
+    assert (tmp_path / "type_pair_signature_rows.csv").exists()
+    assert (tmp_path / "family_width_signature_rows.csv").exists()
+    assert (tmp_path / "current_type_signature_rows.csv").exists()
