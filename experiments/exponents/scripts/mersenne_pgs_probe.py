@@ -45,6 +45,15 @@ def factor_signature(n: int) -> str:
     return "*".join(parts)
 
 
+def valuation(n: int, prime: int) -> int:
+    """Return the exponent of prime in n."""
+    exponent = 0
+    while n % prime == 0:
+        n //= prime
+        exponent += 1
+    return exponent
+
+
 def scale_ceiling(n: int) -> int:
     """Return the smallest power of ten at least n."""
     scale = 1
@@ -74,6 +83,11 @@ def chamber_row(exponent: int) -> dict[str, object]:
     leftmost_minimizer = min(value for value, value_tau in interior_taus if value_tau == min_tau)
     power_tau = tau(right_power)
     second_cell_tau = tau(second_cell)
+    second_cell_3adic_valuation = valuation(second_cell, 3)
+    second_cell_after_one_3 = second_cell // 3 if second_cell % 3 == 0 else second_cell
+    second_cell_after_one_3_tau = tau(second_cell_after_one_3)
+    second_cell_after_3 = second_cell // (3**second_cell_3adic_valuation)
+    second_cell_after_3_tau = tau(second_cell_after_3)
     return {
         "exponent": exponent,
         "mersenne_prime": mersenne_prime,
@@ -85,6 +99,15 @@ def chamber_row(exponent: int) -> dict[str, object]:
         "second_cell_signature": factor_signature(second_cell),
         "second_cell_tau": second_cell_tau,
         "second_cell_divisible_by_3": second_cell % 3 == 0,
+        "second_cell_3adic_valuation": second_cell_3adic_valuation,
+        "second_cell_after_one_3": second_cell_after_one_3,
+        "second_cell_after_one_3_signature": factor_signature(second_cell_after_one_3),
+        "second_cell_after_one_3_tau": second_cell_after_one_3_tau,
+        "second_cell_after_one_3_prime": second_cell_after_one_3_tau == 2,
+        "second_cell_after_removing_3s": second_cell_after_3,
+        "second_cell_after_removing_3s_signature": factor_signature(second_cell_after_3),
+        "second_cell_after_removing_3s_tau": second_cell_after_3_tau,
+        "second_cell_after_removing_3s_prime": second_cell_after_3_tau == 2,
         "right_prime": right_prime,
         "gap_width": right_prime - mersenne_prime,
         "interior_count": len(interior_values),
@@ -126,6 +149,24 @@ def summarize(rows: list[dict[str, object]], scale_limit: int) -> dict[str, obje
         ),
         "nontrivial_second_cell_divisible_by_3_count": sum(
             bool(row["second_cell_divisible_by_3"]) for row in nontrivial_rows
+        ),
+        "nontrivial_second_cell_after_removing_3s_prime_count": sum(
+            bool(row["second_cell_after_removing_3s_prime"]) for row in nontrivial_rows
+        ),
+        "nontrivial_second_cell_after_one_3_prime_count": sum(
+            bool(row["second_cell_after_one_3_prime"]) for row in nontrivial_rows
+        ),
+        "nontrivial_second_cell_3adic_distribution": grouped_counts(
+            nontrivial_rows,
+            "second_cell_3adic_valuation",
+        ),
+        "nontrivial_second_cell_after_removing_3s_tau_distribution": grouped_counts(
+            nontrivial_rows,
+            "second_cell_after_removing_3s_tau",
+        ),
+        "nontrivial_second_cell_after_one_3_tau_distribution": grouped_counts(
+            nontrivial_rows,
+            "second_cell_after_one_3_tau",
         ),
         "nontrivial_minimizer_offset_distribution": grouped_counts(
             nontrivial_rows,
@@ -178,6 +219,15 @@ def main(argv: list[str] | None = None) -> int:
             "second_cell_signature",
             "second_cell_tau",
             "second_cell_divisible_by_3",
+            "second_cell_3adic_valuation",
+            "second_cell_after_one_3",
+            "second_cell_after_one_3_signature",
+            "second_cell_after_one_3_tau",
+            "second_cell_after_one_3_prime",
+            "second_cell_after_removing_3s",
+            "second_cell_after_removing_3s_signature",
+            "second_cell_after_removing_3s_tau",
+            "second_cell_after_removing_3s_prime",
             "right_prime",
             "gap_width",
             "interior_count",
