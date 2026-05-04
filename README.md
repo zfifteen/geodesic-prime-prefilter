@@ -2,178 +2,162 @@
 
 ![Prime Gap Structure hero](docs/assets/prime-gap-structure-hero.jpg)
 
-## The First Thing To See
+## The Usual Story Is Incomplete
 
-Prime numbers do not arrive one unit apart. After one prime appears, the next
-prime appears some number of steps later.
+Most people meet prime numbers through the same warning: primes are irregular,
+prime gaps are unpredictable, and after a prime appears there is no obvious
+way to know where the next one will be.
 
-Between those two primes sit ordinary composite integers. Each of those
-composites has a divisor count: the number of positive integers that divide it
-evenly. Prime Gap Structure begins with that visible fact. The gap is not
-treated as empty distance. It is treated as an interval whose interior has
+That story is useful as a first impression, but it misses the thing this
+repository studies. A prime gap is not empty space. Between one prime and the
+next prime sit ordinary composite integers, and those composites carry visible
 arithmetic structure.
 
-## What Is A Prime Gap?
+Prime Gap Structure starts there. It looks inside the gap instead of treating
+the gap as a blank distance.
 
-A prime gap is the interval between two consecutive primes. If `p` and `q` are
-consecutive primes, then every integer strictly between them is composite.
+## The Gap Has An Interior
 
-The gap from `23` to `29` contains five interior integers:
+Take two consecutive primes, call them `p` and `q`. The prime gap is the
+interval between them. Every integer strictly between `p` and `q` is composite,
+because if another prime appeared there, then `p` and `q` would not be
+consecutive.
+
+For example, the gap from `23` to `29` looks like this:
 
 ```text
 23 | 24 25 26 27 28 | 29
 ```
 
-Prime Gap Structure begins by asking what arithmetic structure is visible
-inside that interior.
+The primes are the endpoints. The composites in the middle are the interior.
+PGS begins by asking what the interior is telling us.
 
-## Counting The Interior
+## Divisor Counts Are The First Signal
 
-The divisor count of an integer is written `tau(n)` in the proof. For example,
-`25` has three positive divisors:
+Every integer has a divisor count: the number of positive integers that divide
+it evenly. The number `25` has three positive divisors:
 
 ```text
 1, 5, 25
 ```
 
-So `tau(25) = 3`.
+So the divisor count of `25` is `3`.
 
-A prime has exactly two positive divisors: `1` and itself. So `tau(n) = 2` is
-not just a useful signal. It is exactly the condition that `n` is prime.
+A prime has exactly two positive divisors: `1` and itself. A composite has more
+than two. That means divisor count gives a direct way to read the difference
+between the endpoints of a prime gap and the composite interior.
 
-The gap interior goes the other way. If `p` and `q` are consecutive primes,
-then every integer between them is composite, so every interior integer has
-divisor count greater than `2`.
-
-## A First Gap: 23 To 29
-
-Take the consecutive primes `23` and `29`. The integers between them are
+Now look again at the gap from `23` to `29`. The interior integers are
 `24, 25, 26, 27, 28`. Their divisor counts are:
 
-- `tau(24) = 8`
-- `tau(25) = 3`
-- `tau(26) = 4`
-- `tau(27) = 4`
-- `tau(28) = 6`
+- `24` has divisor count `8`
+- `25` has divisor count `3`
+- `26` has divisor count `4`
+- `27` has divisor count `4`
+- `28` has divisor count `6`
 
-So `25` wins this gap because it has the smallest divisor count present.
+The smallest divisor count in this gap is `3`, and it occurs at `25`. So `25`
+is the interior integer that stands out.
 
-## A Second Gap: 89 To 97
+## The Tie Is The Next Clue
 
-Now take `89` and `97`. The interior integers are
-`90, 91, 92, 93, 94, 95, 96`. Their divisor counts are:
+The gap from `89` to `97` shows why the left-to-right order matters. Its
+interior integers are `90, 91, 92, 93, 94, 95, 96`. Their divisor counts are:
 
-- `tau(90) = 12`
-- `tau(91) = 4`
-- `tau(92) = 6`
-- `tau(93) = 4`
-- `tau(94) = 4`
-- `tau(95) = 4`
-- `tau(96) = 12`
+- `90` has divisor count `12`
+- `91` has divisor count `4`
+- `92` has divisor count `6`
+- `93` has divisor count `4`
+- `94` has divisor count `4`
+- `95` has divisor count `4`
+- `96` has divisor count `12`
 
-Here the smallest divisor count present is `4`, and the leftmost integer with
-that divisor count is `91`, so `91` wins.
+Here the smallest divisor count is `4`, but several integers have that count.
+Reading the gap from left to right, the first one is `91`.
 
-These examples show the local arithmetic choice that anchors the repository.
-The chosen number is not the next prime. It is an interior composite that marks
-the lowest divisor-count load inside the gap.
+So the local choice is not merely "find a low divisor count." It is more exact:
+find the smallest divisor count in the gap, and if several integers share it,
+take the first one. That is the
+[Leftmost Minimum-Divisor Rule](LEFTMOST_MINIMUM_DIVISOR_RULE.md).
 
-## The Local Choice
+The chosen number is called the selected integer of the gap. It is not the next
+prime. It is the interior composite where the gap first reaches its lowest
+divisor-count load.
 
-The local rule is the
-[Leftmost Minimum-Divisor Rule](LEFTMOST_MINIMUM_DIVISOR_RULE.md):
+## The Endpoint Has Its Own Signal
 
-1. inside a prime gap, find the smallest divisor count present among the
-   interior composites;
-2. if more than one interior composite has that divisor count, take the
-   leftmost one.
+Now turn from the interior back to the right endpoint.
 
-That chosen interior integer is the selected integer of the gap.
+A prime is exactly a number with two positive divisors. So if you start just
+after a known prime `p` and inspect the integers in order, the first integer
+with divisor count `2` is the next prime `q`.
 
-## From A Local Choice To The Next Prime
-
-The proof uses the same divisor-count language, but it first asks an even more
-direct question.
-
-Given a known prime `p`, look at the integers after `p` in order:
+That is the direct deterministic next-prime statement at the center of the
+repository:
 
 ```text
-p + 1, p + 2, p + 3, ...
+starting from p, the next q is the first later integer with divisor count 2
 ```
 
-Compute the exact divisor count of each one. Stop at the first integer with
-`tau(n) = 2`.
+This does not say the gap is guessed. It says the endpoint has a precise
+divisor-count signature. Before `q`, every integer is composite. At `q`, the
+divisor count drops to `2`, and the gap closes.
 
-That stopping point is the next prime `q`. This is the direct deterministic
-next-prime theorem proved in [PROOF.md](PROOF.md):
+## The Interior Choice And The Endpoint Fit Together
 
-```text
-q is the first integer greater than p with tau(q) = 2.
-```
+Once `q` closes the gap, the interior is a finite list of composites. In that
+finite list, one composite appears first at the lowest divisor count present in
+the gap. That is the selected integer.
 
-This statement is not a finite audit result. It is a theorem. The audit tables
-in `PROOF.md` preserve certification and provenance; they are not the boundary
-of the theorem.
+The selected integer wins two ways at once. It has the smallest divisor count
+inside the gap, and it appears as far left as possible among integers with that
+count. Later integers cannot be earlier than it. Earlier integers did not have
+the minimum divisor count yet.
 
-## Why The Stopping Point Is q
+The score used by the project makes the same choice in normalized form. The
+[Divisor Normalization Identity](DIVISOR_NORMALIZATION_IDENTITY.md) puts primes
+on the fixed-point locus `Z = 1.0` and places composites below that locus.
+Inside a prime gap, that score selects the same interior integer: the leftmost
+integer with minimum divisor count.
 
-The reason is concrete. A number greater than `1` is prime exactly when its
-only positive divisors are `1` and itself. That is exactly what `tau(n) = 2`
-means.
+This is the first real reversal of the usual intuition. The gap is not just the
+distance from `p` to `q`. It has an internal arithmetic landmark.
 
-The integers are checked in increasing order. The algorithm cannot stop before
-the next prime, because every integer between `p` and the next prime is
-composite. It does stop at the next prime, because the next prime has divisor
-count `2`.
+## From Structure To Generator
 
-So the first divisor-count-two value after `p` is not merely a candidate. It is
-the next prime.
-
-## Why The Selected Integer Wins The Gap
-
-Once the stopping point `q` is known, the interval between `p` and `q` is the
-prime gap interior. Every integer in that interval is composite.
-
-Inside that finite interval, the selected integer is the first integer with the
-smallest divisor count. Every later integer has divisor count at least as large
-as the selected integer. Every earlier integer appears before the first
-minimum, so its divisor count is larger.
-
-The proof then compares the interior integers with a logarithmic score. The
-score comes from the
-[Divisor Normalization Identity](DIVISOR_NORMALIZATION_IDENTITY.md), which
-places every prime on the fixed-point locus `Z = 1.0` and places composites
-below that locus.
-
-For the README-level picture, the effect is enough: among the composites inside
-the gap, the selected integer is the unique score winner. In ordinary
-divisor-count language, it is the leftmost interior integer with minimum
-divisor count. In the proof language, it is the unique maximizer of the
-comparison function.
-
-## Where The Generator Enters
-
-The theorem gives the clean mathematical foundation: exact divisor counts
-determine the next prime from a known prime `p`, and the selected integer is
-the leftmost minimum-divisor integer inside the resulting gap.
-
-The [PGS Prime Generator](PRIME_GAP_GENERATOR.md) is the operational generator
-branch built from prime-gap-structure chamber state. Its output stream is
-deliberately small:
+The generator branch asks what can be done with that structure operationally.
+Given a prime `p`, the [PGS Prime Generator](PRIME_GAP_GENERATOR.md) outputs
+the successor prime as a deliberately small record:
 
 ```json
 {"p": 89, "q": 97}
 ```
 
-The generator output contains only `p` and `q`. Diagnostics and audit records
-stay outside the outputted stream. The production generator does not use trial
-division, Miller-Rabin, probabilistic primality tests, sieve generation,
-fallback prime search, or `nextprime` inside generation. Classical verification
-is downstream audit after generation, not a mechanism for choosing `q`.
+The output stream contains only `p` and `q`. Diagnostics and audit records stay
+outside that stream.
+
+The production generator is PGS-only. It does not use trial division,
+Miller-Rabin, probabilistic primality tests, sieve generation, fallback prime
+search, or `nextprime` inside generation. Classical verification remains
+downstream audit after generation, not the mechanism for choosing `q`.
+
+## The Same Lens Opens Other Branches
+
+Once the gap interior is treated as structured, other questions become visible.
+The [Prime Gap Generative Model](PRIME_GAP_GENERATIVE_MODEL.md) studies the
+reduced state surface of prime-gap types. The
+[recursive prime walk](RECURSIVE_PRIME_WALK.md) studies what happens when the
+same divisor-count structure is walked forward gap after gap. The
+[legacy prefilter](LEGACY_PREFILTER.md) records a separate downstream
+engineering path built from the same normalization program.
+
+The common thread is the same one the small examples already showed: look
+inside the prime gap, count what is there, and the interval stops looking like
+empty distance.
 
 ## Reading Further
 
-The proof, generator, and model branches all begin from the same local
+The formal proof, generator, and model branches all begin from the same local
 structure inside prime gaps.
 
 - [PROOF.md](PROOF.md) is the single live proof reference for the direct
