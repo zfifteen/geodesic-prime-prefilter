@@ -15,7 +15,10 @@ divisor-count minimizer inside a prime gap.
 
 The measured result is branch occupancy: in the scanned $k=4$ and $k=8$
 prime-gap surface, the doubled branch occurs vastly more often as a
-below-minimizer terminal hit.
+below-minimizer terminal hit. The terminal-geometry certificate below explains
+the measured imbalance: branch 1's leftmost-minimizer successes are dominated
+by automatic twin-gap terminal-prime wins, while branch 2 keeps a large
+composite-terminal surface.
 
 Both branches occur in the scanned surface. A concrete branch-1 example is
 given below, followed by the measured branch-occupancy certificate.
@@ -424,7 +427,32 @@ so this is a branch-1 below-minimizer terminal hit.
 
 ## Computed Branch Occupancy Certificate
 
-The targeted inverse scan through odd seeds $s \leq 100000000$ produced:
+This section is a bounded computational certificate for the prime-gap
+specialization. It is self-contained but not a universal theorem.
+
+For each inverse-eligible branch candidate, write the terminal source as
+$n=w-1$. The integer $w$ lies in an open prime gap $p < w < q$. A leftmost
+divisor-count minimizer is the first integer in that open interval whose
+divisor count is minimal among all integers in the interval.
+
+The candidate becomes a below-minimizer terminal hit exactly when:
+
+- $w$ is the leftmost divisor-count minimizer in its prime gap;
+- $w-1$ is composite;
+- $w-1$ is the terminal Collatz source of the 3-step block.
+
+### Automatic Twin-Gap Exclusion
+
+If the gap width is $2$, then the open interval contains only one integer.
+That integer is automatically the leftmost divisor-count minimizer. In that
+case $w-1$ is the lower prime endpoint, so it is not a composite terminal
+source. This is the automatic twin-gap terminal-prime channel.
+
+This proves the exclusion for twin gaps: a twin-gap minimizer success is
+automatic, but it cannot be a below-minimizer composite terminal hit.
+
+The targeted inverse scan through odd seeds $s \leq 100000000$, restricted to
+final exponents $k=4$ and $k=8$, produced:
 
 | Family | Candidate count | Hit count | Hit rate |
 |---|---:|---:|---:|
@@ -442,22 +470,65 @@ The corresponding median reset strengths are:
 | `8` | `1` | `5` | `25957527` | `37.925925522691756` |
 | `8` | `2` | `708` | `4171` | `75.85185042289021` |
 
-This table is a computed certificate, not a proof of the branch-occupancy law.
-It supports the next proof target:
+The leftmost-minimizer successes split by terminal geometry as follows:
+
+| Branch | Automatic twin terminal-prime | Terminal-prime non-twin | Composite below-minimizer | Total leftmost |
+|---:|---:|---:|---:|---:|
+| `1` | `19887` | `168` | `41` | `20096` |
+| `2` | `0` | `18609` | `12218` | `30827` |
+
+Thus branch 1 has `20096` leftmost-minimizer successes, but `19887` of them
+are automatic twin-gap terminal-prime wins. These cannot become
+below-minimizer terminal hits because $w-1$ is a prime endpoint. Branch 1 has
+only `41` composite-terminal successes in the measured surface.
+
+Branch 2 has no automatic twin-gap channel in this measured leftmost surface.
+It has `12218` composite below-minimizer terminal hits, which is
+`39.634087001654394%` of its leftmost-minimizer successes.
+
+The `41` branch-1 composite-terminal exceptions in this certificate all have
+divisor count `12` at $w$, and their gap widths are:
+
+| Gap width | Branch-1 composite-terminal exceptions |
+|---:|---:|
+| `6` | `37` |
+| `8` | `3` |
+| `10` | `1` |
+
+Every branch-1 composite-terminal exception has the normal form:
+
+$$w=18u$$
+
+where $u$ is prime. Since $u$ is prime and $u$ is not $2$ or $3$, this gives:
+
+$$w=2\cdot 3^2\cdot u$$
+
+and therefore the divisor count of $w$ is:
+
+$$d(w)=d(2)d(3^2)d(u)=2\cdot 3\cdot 2=12$$
+
+The offsets inside the containing prime gap are also concentrated. In `38` of
+the `41` exceptions, the terminal source has offset `4` from the lower prime
+endpoint and the witness $w$ has offset `5`. In the remaining `3` exceptions,
+the terminal source has offset `6` and the witness $w$ has offset `7`.
+
+The measured explanation is:
 
 ```text
-Explain why leftmost divisor-count minimizers in prime gaps become
-below-minimizer terminal witnesses far more often on branch 2 than branch 1
-among inverse-eligible exact 3-step witnesses.
+Branch 1 concentration is explained by automatic twin-gap terminal-prime wins
+plus a fully enumerated small composite-terminal exception family; branch 2's
+composite-terminal surface persists across nontrivial gaps.
 ```
 
-## Artifact Links
+This closes the explanation for the measured $s \leq 100000000$, $k=4,8$
+surface. The remaining theorem target is symbolic: prove the branch-1
+exception-family constraints and prove the branch-2 nontrivial-gap occupancy
+mechanism.
 
-The deterministic scripts and outputs are:
+The next focused theorem target is narrower than the full occupancy mechanism:
 
 ```text
-scripts/collatz_pgs_short_block_reset_candidate_probe.py
-scripts/collatz_pgs_short_block_branch_counterexample_probe.py
-output/collatz_pgs_short_block_reset_candidate_probe/summary.json
-output/collatz_pgs_short_block_branch_probe/summary.json
+Prove symbolically why the branch-1 composite exception family is restricted
+to w=18u with u prime, divisor count 12, and gap width 6, 8, or 10; only after
+that return to the branch-2 occupancy mechanism.
 ```

@@ -2,13 +2,12 @@
 
 ## Summary
 
-The branch-occupancy imbalance is not explained by reset algebra alone. It has
-two measured layers:
+The focused terminal-geometry pass closes the measured explanation for the
+current scan surface.
 
-1. Branch 2 has a divisor-count baseline advantage.
-2. Branch 1 leftmost-minimizer successes overwhelmingly fall in terminal-prime
-   twin-gap cases, which do not count as below-minimizer Collatz terminal
-   source hits.
+Branch 1 concentration is explained by automatic twin-gap terminal-prime wins
+plus a fully enumerated small composite-terminal exception family. Branch 2's
+composite-terminal surface persists across nontrivial gaps.
 
 At odd seeds `s <= 100000000`, branch 2 produced `12218` below-minimizer hits
 from `415040` inverse-eligible candidates. Branch 1 produced `41` hits from
@@ -23,6 +22,47 @@ The branch-1 hit rate is:
 $$0.000049392948614467553$$
 
 The hit-rate ratio is approximately `596x`.
+
+## Terminal Geometry
+
+A leftmost divisor-count minimizer becomes a below-minimizer terminal hit only
+when `w-1` is composite. If `w-1` is prime, the Collatz terminal source is a
+prime endpoint, not a composite interior source below the minimizer.
+
+Among leftmost-minimizer successes, the measured surface splits as follows:
+
+| Branch | Automatic twin terminal-prime | Terminal-prime non-twin | Composite below-minimizer | Total leftmost |
+|---:|---:|---:|---:|---:|
+| `1` | `19887` | `168` | `41` | `20096` |
+| `2` | `0` | `18609` | `12218` | `30827` |
+
+For branch 1, `19887 / 20096` leftmost successes are automatic twin-gap
+terminal-prime wins. That is `98.9609872611465%` of the branch-1 leftmost
+surface. Among branch-1 terminal-prime leftmost successes, `19887 / 20055`
+are twin-gap cases, or `99.16230366517078%`.
+
+Branch 2 has no automatic twin-gap channel in the measured leftmost surface.
+Its `12218` composite-terminal leftmost successes are `39.634087001654394%`
+of branch-2 leftmost wins.
+
+The branch-1 composite-terminal exceptions are fully enumerated in the output.
+All `41` have `terminal_geometry = composite_below_minimizer` and
+`witness_tau = 12`.
+
+| Gap width | Branch-1 composite-terminal exceptions |
+|---:|---:|
+| `6` | `37` |
+| `8` | `3` |
+| `10` | `1` |
+
+This answers the focused question for the measured `s <= 100000000`, `k=4`
+and `k=8` surface:
+
+```text
+Branch 1 mostly wins the minimizer filter in twin gaps, where w is the only
+interior integer and w-1 is a prime endpoint. Branch 2 wins in nontrivial
+gaps often enough that w-1 remains a composite interior terminal source.
+```
 
 ## Divisor-Count Baseline
 
@@ -95,20 +135,18 @@ composite terminal source.
 
 ## Disposition
 
-The divisor-count baseline hypothesis advances, but it does not close the
-branch-occupancy explanation by itself. It explains the first layer of the
-imbalance: branch 2 has lower divisor-count load and fewer lower-divisor
-competitors.
+The measured explanation is closed as a bounded certificate. Branch 1's
+terminal-prime concentration is not vague; it is the automatic twin-gap channel
+plus `168` non-twin terminal-prime wins and `41` fully enumerated
+composite-terminal exceptions. Branch 2 keeps a large composite-terminal
+surface because its leftmost-minimizer wins are not dominated by the twin
+endpoint channel.
 
-The sharper next target is the terminal-source geometry:
-
-```text
-Why does branch 1's leftmost-minimizer success concentrate in terminal-prime
-twin-gap geometry, while branch 2 keeps a large composite-terminal surface?
-```
-
-This replaces the simpler baseline-only target. The live proof target is now a
-two-filter theorem: divisor-count load plus terminal-source eligibility.
+This is not yet a universal theorem. The next theorem target is branch-1 only:
+prove symbolically why the composite-terminal exception family is restricted
+to $w=18u$ with $u$ prime, divisor count `12`, and gap width `6`, `8`, or `10`.
+The branch-2 nontrivial-gap occupancy mechanism stays parked until that
+obstruction is resolved.
 
 ## Artifacts
 
@@ -119,5 +157,8 @@ experiments/collatz/output/collatz_pgs_branch_occupancy_baseline_probe/branch_ro
 experiments/collatz/output/collatz_pgs_branch_occupancy_baseline_probe/terminal_source_rows.jsonl
 experiments/collatz/output/collatz_pgs_branch_occupancy_baseline_probe/leftmost_terminal_rows.jsonl
 experiments/collatz/output/collatz_pgs_branch_occupancy_baseline_probe/terminal_geometry_rows.jsonl
+experiments/collatz/output/collatz_pgs_branch_occupancy_baseline_probe/leftmost_geometry_rows.jsonl
 experiments/collatz/output/collatz_pgs_branch_occupancy_baseline_probe/leftmost_gap_width_rows.jsonl
+experiments/collatz/output/collatz_pgs_branch_occupancy_baseline_probe/branch1_composite_exception_rows.jsonl
+experiments/collatz/output/collatz_pgs_branch_occupancy_baseline_probe/branch1_exception_symbolic_summary.json
 ```

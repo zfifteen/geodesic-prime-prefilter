@@ -16,9 +16,18 @@ exact 3-step first-descent block
 ```
 
 The remaining live question is not whether the two branches exist. Both occur.
-The remaining question is why the prime-gap divisor-count filter selects branch
-2 far more often than branch 1 in the measured below-minimizer terminal
-surface.
+The measured branch-occupancy explanation is now closed for odd seeds
+`s <= 100000000` and final exponents `k=4` and `k=8`:
+
+```text
+Branch 1 concentration is explained by automatic twin-gap terminal-prime wins
+plus a fully enumerated small composite-terminal exception family; branch 2's
+composite-terminal surface persists across nontrivial gaps.
+```
+
+The remaining open work is theorem conversion, not explanation discovery. The
+next theorem-pressure task is branch-1 only: explain the symbolic structure of
+the composite-terminal exception family before returning to branch 2.
 
 ## Measured Occupancy Signal
 
@@ -33,6 +42,28 @@ The targeted inverse scan through odd seeds `s <= 100000000` found:
 
 Combined across the measured `k=4` and `k=8` surfaces, branch 2 produced
 `12218` below-minimizer terminal hits versus `41` branch-1 hits.
+
+Among leftmost-minimizer successes, the terminal geometry is:
+
+| Branch | Automatic twin terminal-prime | Terminal-prime non-twin | Composite below-minimizer | Total leftmost |
+|---:|---:|---:|---:|---:|
+| `1` | `19887` | `168` | `41` | `20096` |
+| `2` | `0` | `18609` | `12218` | `30827` |
+
+The branch-1 composite-terminal exception family is fully enumerated in
+`../output/collatz_pgs_branch_occupancy_baseline_probe/branch1_composite_exception_rows.jsonl`.
+It has `41` rows. All have `terminal_geometry = composite_below_minimizer` and
+`witness_tau = 12`. The symbolic analyzer confirms that every row has:
+
+$$w=18u$$
+
+with $u$ prime.
+
+| Gap width | Branch-1 composite-terminal exceptions |
+|---:|---:|
+| `6` | `37` |
+| `8` | `3` |
+| `10` | `1` |
 
 ## Theorem Candidate
 
@@ -66,38 +97,35 @@ source `w-1`. The other `20055` have `w-1` prime, and `19887` of those prime
 terminal cases sit in gap width `2`. Branch 2 has `30827` leftmost-minimizer
 successes, of which `12218` have composite terminal source.
 
-## First Pressure Test
+## Result Of The Focused Pressure Test
 
-For each inverse-eligible branch candidate in the committed `k=4` and `k=8`
-surfaces, compare the divisor-count rank of $w$ inside its containing prime
-gap, stratified by:
-
-- branch;
-- final exponent `k`;
-- prime-gap length;
-- exact divisor count of $w$;
-- count of lower-divisor competitors in the same open gap.
-
-The proof pressure is strongest if the observed branch-2 advantage is already
-explained by the forced small-prime baseline:
+The focused terminal-geometry obstruction test supports the two-channel
+explanation on the measured surface:
 
 ```text
-branch 1: w divisible by 18 -> higher divisor-count floor -> fewer minimizers
-branch 2: w congruent to 14 mod 18 -> avoids factor 3 -> more minimizers
+branch 1: mostly automatic twin-gap wins, where w is the only interior integer
+          and w-1 is a prime endpoint
+branch 2: nontrivial-gap wins remain abundant, so w-1 is often composite and
+          remains inside the gap
 ```
 
 ## Stop Condition
 
-This line advanced to a two-filter target. The branch-occupancy imbalance does
-not reduce to divisor-count obstruction alone.
-
-The current stop condition is:
+The explanation stop condition is met for the committed measured regime. The
+bounded certificate is:
 
 ```text
-Prove or falsify that branch 1's leftmost-minimizer successes concentrate in
-terminal-prime twin-gap geometry, while branch 2 preserves composite terminal
-source eligibility.
+automatic twin-gap terminal-prime channel
++ 41 fully enumerated branch-1 composite-terminal exceptions
++ 12218 branch-2 composite-terminal leftmost successes
 ```
 
-If this terminal-source geometry explains the residual, the proof target
-becomes a combined divisor-load and terminal-eligibility theorem.
+The focused branch-1 theorem stop condition remains open:
+
+```text
+Prove symbolically that the branch-1 composite-terminal exception family is
+restricted to w=18u with u prime, divisor count 12, and gap width 6, 8, or 10.
+```
+
+Only after that branch-1 obstruction is converted into symbolic structure
+should the branch-2 nontrivial-gap occupancy mechanism become the active target.

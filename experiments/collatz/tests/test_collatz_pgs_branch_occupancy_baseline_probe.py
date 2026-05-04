@@ -12,9 +12,13 @@ if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
 from collatz_pgs_branch_occupancy_baseline_probe import (  # noqa: E402
+    GEOMETRY_AUTOMATIC_TWIN,
+    GEOMETRY_COMPOSITE_BELOW,
+    branch1_composite_exception_rows,
     candidate_record,
     divisor_rank,
     run_probe,
+    terminal_geometry_label,
 )
 from collatz_pgs_same_gap_scale_probe import PrimeContext  # noqa: E402
 
@@ -45,8 +49,38 @@ def test_candidate_record_preserves_below_minimizer_hit():
     assert record["terminal_source"] == 10885
     assert record["terminal_source_gap_offset"] == 2
     assert record["witness_gap_offset"] == 3
-    assert record["terminal_geometry"] == "composite_below_minimizer"
+    assert record["terminal_geometry"] == GEOMETRY_COMPOSITE_BELOW
     assert record["leftmost_minimizer"]
+
+
+def test_twin_gap_prime_terminal_geometry_is_automatic():
+    """A twin-prime gap leftmost success is automatic but terminal-prime."""
+    assert (
+        terminal_geometry_label(
+            leftmost_minimizer=True,
+            terminal_source_is_prime=True,
+            gap_width=2,
+            below_minimizer_hit=False,
+        )
+        == GEOMETRY_AUTOMATIC_TWIN
+    )
+
+
+def test_known_branch1_exception_is_composite_below_minimizer():
+    """The first branch-1 exception should be emitted as a composite hit."""
+    context = PrimeContext(14_000_000)
+    cache: dict[int, int] = {}
+
+    record = candidate_record(context, cache, 13_501_062, 6_000_471, 4, 1)
+    rows = branch1_composite_exception_rows([record])
+
+    assert record["terminal_geometry"] == GEOMETRY_COMPOSITE_BELOW
+    assert record["below_minimizer_hit"]
+    assert record["leftmost_minimizer"]
+    assert not record["terminal_source_is_prime"]
+    assert len(rows) == 1
+    assert rows[0]["witness"] == 13_501_062
+    assert rows[0]["gap_width"] == 6
 
 
 def test_run_probe_writes_compact_baseline_tables(tmp_path):
@@ -56,6 +90,8 @@ def test_run_probe_writes_compact_baseline_tables(tmp_path):
     assert summary["candidate_count"] > 0
     assert summary["below_minimizer_hit_count_by_branch"]["1"] == 0
     assert summary["below_minimizer_hit_count_by_branch"]["2"] == 2
+    assert summary["branch1_composite_exception_count"] == 0
+    assert summary["leftmost_success_count"] == 23
     assert (tmp_path / "summary.json").exists()
     assert (tmp_path / "branch_rows.jsonl").exists()
     assert (tmp_path / "tau_rows.jsonl").exists()
@@ -65,3 +101,5 @@ def test_run_probe_writes_compact_baseline_tables(tmp_path):
     assert (tmp_path / "leftmost_terminal_rows.jsonl").exists()
     assert (tmp_path / "terminal_geometry_rows.jsonl").exists()
     assert (tmp_path / "leftmost_gap_width_rows.jsonl").exists()
+    assert (tmp_path / "leftmost_geometry_rows.jsonl").exists()
+    assert (tmp_path / "branch1_composite_exception_rows.jsonl").exists()

@@ -19,6 +19,11 @@ from collatz_pgs_short_block_branch_counterexample_probe import (
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_LIMIT = 10_000_000
 DEFAULT_OUTPUT_DIR = ROOT / "output" / "collatz_pgs_branch_occupancy_baseline_probe"
+GEOMETRY_NOT_LEFTMOST = "not_leftmost_minimizer"
+GEOMETRY_AUTOMATIC_TWIN = "automatic_twin_gap_terminal_prime"
+GEOMETRY_TERMINAL_PRIME_NONTWIN = "terminal_prime_non_twin"
+GEOMETRY_COMPOSITE_BELOW = "composite_below_minimizer"
+GEOMETRY_COMPOSITE_NONHIT = "composite_nonhit"
 
 
 def cached_tau(context: PrimeContext, cache: dict[int, int], n: int) -> int:
@@ -71,6 +76,24 @@ def divisor_rank(
     }
 
 
+def terminal_geometry_label(
+    leftmost_minimizer: bool,
+    terminal_source_is_prime: bool,
+    gap_width: int,
+    below_minimizer_hit: bool,
+) -> str:
+    """Return the terminal geometry class for one branch candidate."""
+    if not leftmost_minimizer:
+        return GEOMETRY_NOT_LEFTMOST
+    if terminal_source_is_prime and gap_width == 2:
+        return GEOMETRY_AUTOMATIC_TWIN
+    if terminal_source_is_prime:
+        return GEOMETRY_TERMINAL_PRIME_NONTWIN
+    if below_minimizer_hit:
+        return GEOMETRY_COMPOSITE_BELOW
+    return GEOMETRY_COMPOSITE_NONHIT
+
+
 def candidate_record(
     context: PrimeContext,
     cache: dict[int, int],
@@ -89,12 +112,12 @@ def candidate_record(
         and terminal_state.next_prime == rank["next_prime"]
         and terminal_state.witness == witness
     )
-    if terminal_state.is_prime:
-        terminal_geometry = "terminal_prime_endpoint"
-    elif below_minimizer_hit:
-        terminal_geometry = "composite_below_minimizer"
-    else:
-        terminal_geometry = "composite_nonhit"
+    terminal_geometry = terminal_geometry_label(
+        bool(rank["leftmost_minimizer"]),
+        terminal_state.is_prime,
+        int(rank["gap_width"]),
+        below_minimizer_hit,
+    )
     return {
         "seed": seed,
         "branch": branch,
@@ -184,6 +207,37 @@ def grouped_rows(
     return rows
 
 
+def branch1_composite_exception_rows(
+    records: list[dict[str, object]],
+) -> list[dict[str, object]]:
+    """Return branch-1 composite-terminal leftmost-minimizer exceptions."""
+    rows: list[dict[str, object]] = []
+    for record in records:
+        if int(record["branch"]) != 1:
+            continue
+        if not bool(record["leftmost_minimizer"]):
+            continue
+        if bool(record["terminal_source_is_prime"]):
+            continue
+        rows.append(
+            {
+                "seed": int(record["seed"]),
+                "final_v2": int(record["final_v2"]),
+                "witness": int(record["witness"]),
+                "terminal_source": int(record["terminal_source"]),
+                "prev_prime": int(record["prev_prime"]),
+                "next_prime": int(record["next_prime"]),
+                "gap_width": int(record["gap_width"]),
+                "witness_gap_offset": int(record["witness_gap_offset"]),
+                "terminal_source_gap_offset": int(record["terminal_source_gap_offset"]),
+                "witness_tau": int(record["witness_tau"]),
+                "terminal_geometry": str(record["terminal_geometry"]),
+                "below_minimizer_hit": bool(record["below_minimizer_hit"]),
+            },
+        )
+    return sorted(rows, key=lambda row: (int(row["final_v2"]), int(row["seed"])))
+
+
 def run_probe(limit: int, output_dir: Path) -> dict[str, object]:
     """Run the branch occupancy baseline probe."""
     if limit < 3:
@@ -224,6 +278,12 @@ def run_probe(limit: int, output_dir: Path) -> dict[str, object]:
         records,
         ("final_v2", "branch", "leftmost_minimizer", "terminal_source_is_prime", "gap_width_bin"),
     )
+    leftmost_records = [record for record in records if bool(record["leftmost_minimizer"])]
+    leftmost_geometry_rows = grouped_rows(
+        leftmost_records,
+        ("final_v2", "branch", "terminal_geometry"),
+    )
+    exception_rows = branch1_composite_exception_rows(records)
     branch_totals = grouped_rows(records, ("branch",))
     hit_counts = Counter(int(record["branch"]) for record in records if record["below_minimizer_hit"])
     candidate_counts = Counter(int(record["branch"]) for record in records)
@@ -244,6 +304,8 @@ def run_probe(limit: int, output_dir: Path) -> dict[str, object]:
         },
         "branch_rows": branch_rows,
         "branch_totals": branch_totals,
+        "leftmost_success_count": len(leftmost_records),
+        "branch1_composite_exception_count": len(exception_rows),
     }
 
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -256,6 +318,8 @@ def run_probe(limit: int, output_dir: Path) -> dict[str, object]:
     write_jsonl(leftmost_terminal_rows, output_dir / "leftmost_terminal_rows.jsonl")
     write_jsonl(terminal_geometry_rows, output_dir / "terminal_geometry_rows.jsonl")
     write_jsonl(leftmost_gap_width_rows, output_dir / "leftmost_gap_width_rows.jsonl")
+    write_jsonl(leftmost_geometry_rows, output_dir / "leftmost_geometry_rows.jsonl")
+    write_jsonl(exception_rows, output_dir / "branch1_composite_exception_rows.jsonl")
     return summary
 
 
