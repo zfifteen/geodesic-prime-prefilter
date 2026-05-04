@@ -32,9 +32,11 @@ def write_csv(path: Path, rows: list[dict[str, object]]) -> None:
         writer.writerows(rows)
 
 
-def write_inputs(tmp_path: Path) -> tuple[Path, Path, Path, Path]:
+def write_inputs(tmp_path: Path) -> tuple[Path, Path, Path, Path, Path, Path]:
     """Write tiny input surfaces for the probe."""
     base = tmp_path / "third_strip_higher_rows.csv"
+    base_decomposition = tmp_path / "endpoint_decomposition_rows.csv"
+    decade_next_layer = tmp_path / "next_layer_rows.csv"
     fourth = tmp_path / "fourth_strip_rows.csv"
     fifth = tmp_path / "fifth_strip_rows.csv"
     sixth = tmp_path / "sixth_strip_rows.csv"
@@ -53,6 +55,70 @@ def write_inputs(tmp_path: Path) -> tuple[Path, Path, Path, Path]:
                 "q": 19,
                 "candidate": 21,
                 "factor_signature": "3*7",
+                "third_remainder": "",
+                "third_remainder_family": "",
+                "third_strip_prime_power_tail": "False",
+            },
+        ],
+    )
+    write_csv(
+        decade_next_layer,
+        [
+            {
+                "scale": 1_000_000,
+                "q": 84719,
+                "candidate": 84721,
+                "factor_signature": "7^3*13*19",
+                "third_remainder": 247,
+                "third_remainder_family": "multi_prime_family",
+            },
+            {
+                "scale": 10_000_000,
+                "q": 9930191,
+                "candidate": 9930193,
+                "factor_signature": "7^3*13*17*131",
+                "third_remainder": 28951,
+                "third_remainder_family": "multi_prime_family",
+            },
+            {
+                "scale": 10_000_000,
+                "q": 9999719,
+                "candidate": 9999721,
+                "factor_signature": "11^3*7513",
+                "third_remainder": 7513,
+                "third_remainder_family": "fixed_point",
+            },
+        ],
+    )
+    write_csv(
+        base_decomposition,
+        [
+            {
+                "q": 123821,
+                "candidate": 123823,
+                "endpoint_class": "composite_obstruction",
+                "factor_signature": "7^3*19^2",
+                "second_strip_family": "second_factor_times_higher_remainder",
+                "third_remainder": 361,
+                "third_remainder_family": "prime_square",
+                "third_strip_prime_power_tail": "True",
+            },
+            {
+                "q": 84719,
+                "candidate": 84721,
+                "endpoint_class": "composite_obstruction",
+                "factor_signature": "7^3*13*19",
+                "second_strip_family": "second_factor_times_higher_remainder",
+                "third_remainder": 247,
+                "third_remainder_family": "semiprime_distinct",
+                "third_strip_prime_power_tail": "False",
+            },
+            {
+                "q": 31,
+                "candidate": 33,
+                "endpoint_class": "composite_obstruction",
+                "factor_signature": "3*11",
+                "second_strip_family": "not_second_stripped",
                 "third_remainder": "",
                 "third_remainder_family": "",
                 "third_strip_prime_power_tail": "False",
@@ -101,7 +167,7 @@ def write_inputs(tmp_path: Path) -> tuple[Path, Path, Path, Path]:
             }
         ],
     )
-    return base, fourth, fifth, sixth
+    return base, base_decomposition, decade_next_layer, fourth, fifth, sixth
 
 
 def test_factor_signature_and_exponent_helpers_are_exact():
@@ -158,7 +224,7 @@ def test_tail_row_rejects_non_tail_family():
 def test_collect_tail_rows_from_all_surfaces(tmp_path):
     """The collector should read base and high-scale tail surfaces."""
     module = load_module()
-    base, fourth, fifth, sixth = write_inputs(tmp_path)
+    base, _base_decomposition, _decade_next_layer, fourth, fifth, sixth = write_inputs(tmp_path)
     args = module.build_parser().parse_args(
         [
             "--base-input",
@@ -180,10 +246,110 @@ def test_collect_tail_rows_from_all_surfaces(tmp_path):
     assert rows[1]["tail_signature"] == "7*13^2"
 
 
+def test_base_path_pressure_rows_measure_denominator_surface(tmp_path):
+    """The pressure surface should keep tail rows and denominator rows."""
+    module = load_module()
+    _base, base_decomposition, _decade_next_layer, _fourth, _fifth, _sixth = write_inputs(tmp_path)
+    rows = module.base_path_pressure_rows(base_decomposition)
+    summary = module.path_pressure_summary(rows)
+    capacity = module.carrier_capacity_summary(rows)
+
+    assert len(rows) == 2
+    assert rows[0]["peeled_factor_residue_path"] == "7->7->7"
+    assert rows[0]["residue_path_shape"] == "repeated_7"
+    assert rows[0]["third_remainder_signature"] == "19^2"
+    assert rows[0]["third_strip_prime_power_tail"] is True
+    assert summary[0]["peeled_factor_residue_path"] == "7->7->7"
+    assert summary[0]["third_higher_count"] == 2
+    assert summary[0]["tail_count"] == 1
+    assert summary[0]["tail_rate"] == 0.5
+    assert capacity == [
+        {
+            "residue_path_shape": "repeated_7",
+            "carrier_prime": 7,
+            "third_higher_count": 2,
+            "third_higher_share": 1.0,
+            "post_triple_capacity": 2915,
+            "integer_cube_base_count": 13,
+            "integer_fourth_base_count": 6,
+            "tail_count": 1,
+            "tail_rate": 0.5,
+            "high_exponent_tail_count": 0,
+            "high_exponent_tail_rate": 0.0,
+            "fixed_point_count": 0,
+            "semiprime_distinct_count": 1,
+            "prime_square_count": 1,
+            "prime_cube_count": 0,
+            "prime_power_count": 0,
+            "two_prime_power_family_count": 0,
+        }
+    ]
+
+
+def test_integer_power_base_count_is_exact():
+    """Carrier-capacity power counts should use integer power thresholds."""
+    module = load_module()
+
+    assert module.integer_power_base_count(1, 3) == 0
+    assert module.integer_power_base_count(8, 3) == 1
+    assert module.integer_power_base_count(26, 3) == 1
+    assert module.integer_power_base_count(27, 3) == 2
+    assert module.integer_power_base_count(2915, 3) == 13
+    assert module.integer_power_base_count(2915, 4) == 6
+
+
+def test_decade_next_layer_pressure_rows_measure_scaled_carriers(tmp_path):
+    """The decade next-layer surface should expose repeated carrier capacity."""
+    module = load_module()
+    _base, _base_decomposition, decade_next_layer, _fourth, _fifth, _sixth = write_inputs(tmp_path)
+    rows = module.decade_next_layer_pressure_rows(decade_next_layer)
+    capacity = module.decade_carrier_capacity_summary(rows)
+
+    assert len(rows) == 3
+    assert rows[0]["peeled_factor_residue_path"] == "7->7->7"
+    assert rows[0]["residue_path_shape"] == "repeated_7"
+    assert rows[2]["peeled_factor_residue_path"] == "11->11->11"
+    assert capacity == [
+        {
+            "scale": 1_000_000,
+            "residue_path_shape": "repeated_7",
+            "carrier_prime": 7,
+            "next_layer_count": 1,
+            "scale_next_layer_count": 1,
+            "scale_next_layer_share": 1.0,
+            "post_triple_capacity": 2915,
+            "integer_cube_base_count": 13,
+            "integer_fourth_base_count": 6,
+        },
+        {
+            "scale": 10_000_000,
+            "residue_path_shape": "repeated_7",
+            "carrier_prime": 7,
+            "next_layer_count": 1,
+            "scale_next_layer_count": 2,
+            "scale_next_layer_share": 0.5,
+            "post_triple_capacity": 29154,
+            "integer_cube_base_count": 29,
+            "integer_fourth_base_count": 12,
+        },
+        {
+            "scale": 10_000_000,
+            "residue_path_shape": "repeated_11",
+            "carrier_prime": 11,
+            "next_layer_count": 1,
+            "scale_next_layer_count": 2,
+            "scale_next_layer_share": 0.5,
+            "post_triple_capacity": 7513,
+            "integer_cube_base_count": 18,
+            "integer_fourth_base_count": 8,
+        },
+    ]
+
+
 def test_summary_and_cli_outputs_reconcile_with_lf(tmp_path):
     """The CLI should emit LF-terminated rows and matching summaries."""
     module = load_module()
-    base, fourth, fifth, sixth = write_inputs(tmp_path)
+    base, base_decomposition, decade_next_layer, fourth, fifth, sixth = write_inputs(tmp_path)
     out = tmp_path / "out"
 
     assert (
@@ -191,6 +357,10 @@ def test_summary_and_cli_outputs_reconcile_with_lf(tmp_path):
             [
                 "--base-input",
                 str(base),
+                "--base-decomposition-input",
+                str(base_decomposition),
+                "--decade-next-layer-input",
+                str(decade_next_layer),
                 "--fourth-input",
                 str(fourth),
                 "--fifth-input",
@@ -208,9 +378,28 @@ def test_summary_and_cli_outputs_reconcile_with_lf(tmp_path):
     tail_path = out / "exponent_tail_rows.csv"
     dominant_path = out / "dominant_residue_path_rows.csv"
     high_path = out / "high_exponent_tail_rows.csv"
+    base_pressure_path = out / "base_path_pressure_rows.csv"
+    pressure_summary_path = out / "path_pressure_rows.csv"
+    shape_summary_path = out / "path_shape_pressure_rows.csv"
+    carrier_capacity_path = out / "carrier_capacity_rows.csv"
+    decade_pressure_path = out / "decade_next_layer_pressure_rows.csv"
+    decade_capacity_path = out / "decade_carrier_capacity_rows.csv"
     depth_path = out / "depth_exponent_rows.csv"
     residue_path = out / "residue_exponent_rows.csv"
-    for path in [summary_path, tail_path, dominant_path, high_path, depth_path, residue_path]:
+    for path in [
+        summary_path,
+        tail_path,
+        dominant_path,
+        high_path,
+        base_pressure_path,
+        pressure_summary_path,
+        shape_summary_path,
+        carrier_capacity_path,
+        decade_pressure_path,
+        decade_capacity_path,
+        depth_path,
+        residue_path,
+    ]:
         assert path.exists()
         assert b"\r\n" not in path.read_bytes()
 
@@ -218,10 +407,24 @@ def test_summary_and_cli_outputs_reconcile_with_lf(tmp_path):
     tails = list(csv.DictReader(tail_path.open(encoding="utf-8", newline="")))
     dominant_rows = list(csv.DictReader(dominant_path.open(encoding="utf-8", newline="")))
     high_rows = list(csv.DictReader(high_path.open(encoding="utf-8", newline="")))
+    base_pressure_rows = list(csv.DictReader(base_pressure_path.open(encoding="utf-8", newline="")))
+    pressure_summary_rows = list(csv.DictReader(pressure_summary_path.open(encoding="utf-8", newline="")))
+    shape_summary_rows = list(csv.DictReader(shape_summary_path.open(encoding="utf-8", newline="")))
+    carrier_capacity_rows = list(csv.DictReader(carrier_capacity_path.open(encoding="utf-8", newline="")))
+    decade_pressure_rows = list(csv.DictReader(decade_pressure_path.open(encoding="utf-8", newline="")))
+    decade_capacity_rows = list(csv.DictReader(decade_capacity_path.open(encoding="utf-8", newline="")))
     depth_rows = list(csv.DictReader(depth_path.open(encoding="utf-8", newline="")))
     residue_rows = list(csv.DictReader(residue_path.open(encoding="utf-8", newline="")))
     assert summary["total_exponent_tail_rows"] == len(tails) == 4
     assert summary["dominant_residue_path_count"] == len(dominant_rows)
     assert summary["high_exponent_tail_count"] == len(high_rows)
+    assert summary["base_third_higher_count"] == len(base_pressure_rows)
+    assert summary["decade_next_layer_count"] == len(decade_pressure_rows)
+    assert sum(int(row["third_higher_count"]) for row in pressure_summary_rows) == len(base_pressure_rows)
+    assert sum(int(row["third_higher_count"]) for row in shape_summary_rows) == len(base_pressure_rows)
+    assert sum(int(row["third_higher_count"]) for row in carrier_capacity_rows) == len(base_pressure_rows)
+    assert summary["carrier_capacity_distribution"][0]["post_triple_capacity"] == 2915
+    assert sum(int(row["next_layer_count"]) for row in decade_capacity_rows) == len(decade_pressure_rows)
+    assert summary["decade_repeated_carrier_distribution"][0]["residue_path_shape"] == "repeated_7"
     assert sum(int(row["count"]) for row in depth_rows) == 4
     assert sum(int(row["count"]) for row in residue_rows) == 4

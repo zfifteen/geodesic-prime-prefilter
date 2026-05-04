@@ -52,6 +52,12 @@ experiments/exponents/output/pgs_exponent_tail_probe/summary.json
 experiments/exponents/output/pgs_exponent_tail_probe/exponent_tail_rows.csv
 experiments/exponents/output/pgs_exponent_tail_probe/dominant_residue_path_rows.csv
 experiments/exponents/output/pgs_exponent_tail_probe/high_exponent_tail_rows.csv
+experiments/exponents/output/pgs_exponent_tail_probe/base_path_pressure_rows.csv
+experiments/exponents/output/pgs_exponent_tail_probe/path_pressure_rows.csv
+experiments/exponents/output/pgs_exponent_tail_probe/path_shape_pressure_rows.csv
+experiments/exponents/output/pgs_exponent_tail_probe/carrier_capacity_rows.csv
+experiments/exponents/output/pgs_exponent_tail_probe/decade_next_layer_pressure_rows.csv
+experiments/exponents/output/pgs_exponent_tail_probe/decade_carrier_capacity_rows.csv
 experiments/exponents/output/pgs_exponent_tail_probe/depth_exponent_rows.csv
 experiments/exponents/output/pgs_exponent_tail_probe/residue_exponent_rows.csv
 ```
@@ -71,10 +77,75 @@ total exponent-tail rows: 15
 7->7->7 rows: 7
 high-exponent tails: 2
 high-exponent tails on 7->7->7: 2
+base third-higher denominator rows: 183
+7->7->7 denominator rows: 47
+7->7->7 tail rate inside denominator: 7 / 47
+7->7->7 high-exponent rate inside denominator: 2 / 47
 ```
 
 This path carries the largest square-tail cell and every exposed tail with
 exponent greater than `2` in the current surface.
+
+The denominator pressure makes the signal sharper. The `7->7->7` path is not
+just present among tails; it is the largest third-higher denominator cell and
+the only observed carrier of exponent patterns greater than `2`.
+
+The path-shape pressure makes it sharper again:
+
+```text
+mixed paths: 124 rows, 6 tails, 0 high-exponent tails
+repeated_7: 47 rows, 7 tails, 2 high-exponent tails
+repeated_11: 8 rows, 0 tails, 0 high-exponent tails
+repeated_13: 3 rows, 1 tail, 0 high-exponent tails
+repeated_29: 1 row, 0 tails, 0 high-exponent tails
+```
+
+The current signal is therefore not just repeated residue. It is the repeated
+least-factor residue `7` carrier.
+
+The carrier-capacity comparison explains why `7` is the high-exponent carrier
+on this measured surface:
+
+```text
+repeated_7: 47 rows, capacity floor(1000000 / 7^3) = 2915, 2 high-exponent tails
+repeated_11: 8 rows, capacity floor(1000000 / 11^3) = 751, 0 high-exponent tails
+repeated_13: 3 rows, capacity floor(1000000 / 13^3) = 455, 0 high-exponent tails
+repeated_29: 1 row, capacity floor(1000000 / 29^3) = 41, 0 high-exponent tails
+```
+
+The two high-exponent tails are `13^3 = 2197` and `7^4 = 2401`. Both fit
+inside the `7^3` post-peel window. The larger repeated carriers leave smaller
+windows and have much lower denominator occupancy on this surface, so they do
+not expose the same high-exponent tail material here.
+
+## Scale Increase
+
+The same carrier-pressure analyzer now reads the decade-ladder next-layer
+surface from `10^7` through `10^18`.
+
+Measured on the `852` sampled next-layer rows:
+
+```text
+mixed paths: 729
+repeated_7: 95
+repeated_11: 16
+repeated_13: 5
+repeated_17: 4
+repeated_19: 2
+repeated_23: 1
+```
+
+At the `10^18` rung:
+
+```text
+repeated_7: 12 / 154 next-layer rows, capacity floor(10^18 / 7^3) = 2915451895043731
+repeated_11: 3 / 154 next-layer rows, capacity floor(10^18 / 11^3) = 751314800901577
+repeated_17: 1 / 154 next-layer rows, capacity floor(10^18 / 17^3) = 203541624262161
+```
+
+The scale increase preserves the same ordering: repeated `7` remains the
+dominant repeated least-factor carrier, and it keeps the largest post-triple
+capacity at every tested decade.
 
 ## Run
 
