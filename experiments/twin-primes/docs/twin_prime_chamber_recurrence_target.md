@@ -15,6 +15,10 @@ Describe twin-prime occurrence as closure or failure of the one-cell candidate
 chamber q | q+1 | q+2.
 ```
 
+The public entrypoint is `../README.md`. The self-contained technical certificate
+for the bounded width-2 endpoint obstruction result is `../CERTIFICATE.md`.
+This file remains the working research log.
+
 ## Working Hypothesis
 
 Twin-prime occurrences are predictable from gap structure because gap structure

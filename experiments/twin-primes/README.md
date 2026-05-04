@@ -1,128 +1,124 @@
 # Twin-Prime Chamber Experiment
 
-This experiment studies twin-prime gaps as repeated one-cell chambers in the
-prime-gap chamber sequence.
+Twin primes are pairs of primes with exactly one integer between them.
 
-A twin-prime gap has the form `p, p+2`. Its open interval contains exactly one
-integer:
-
-$$p < p+1 < p+2$$
-
-Therefore the interior selected integer is forced:
-
-$$w=p+1$$
-
-There is no competing interior divisor count, no tie, and no later simpler
-interior integer. In PGS terms, a twin-prime gap is the smallest nonempty
-prime-gap chamber and the selected integer is automatic.
-
-## Strongest Current Finding
-
-The PGSPG-style width-2 chamber side probe gives an exact one-cell closure
-contract on the measured surface `q <= 1000000`. For each eligible prime `q`,
-the generated record contains only:
-
-```json
-{"q": 47, "candidate": 49, "status": "excluded"}
-```
-
-or:
-
-```json
-{"q": 41, "candidate": 43, "status": "unresolved"}
-```
-
-Downstream audit found `21257 / 21257` excluded candidates were composite and
-`8167 / 8167` unresolved candidates were prime closures. There were `0` false
-exclusions and `0` unresolved composites.
-
-The first decision-knob ablation found that the exact width-2 contract collapses
-to the endpoint fixed-point condition in this chamber. At `q <= 1000000`,
-`pgs_width2_full` and `endpoint_fixed_point` both passed with `0` false
-exclusions and `0` unresolved composites. The coarse proxies failed:
-`endpoint_below_forced_load` left `20484` composites unresolved, and
-`forced_interior_carrier` falsely excluded all `8167` prime closures.
-
-The endpoint fixed-point decomposition probe then decomposed why `q+2` does or
-does not hit the fixed-point locus. At `q <= 1000000`, the decomposition had
-`0` status mismatches. Among `21257` endpoint obstructions, `13259` were
-distinct semiprimes and `7028` were multi-prime composites. Equivalently,
-`19772 / 21257` obstructions (`0.9301406595474432`) had a first factor whose
-cofactor was either fixed-point prime or distinct semiprime material.
-
-The least-factor reduction sharpened that into three obstruction families:
-`13308` least-factor times fixed-point cofactor, `6464` least-factor times
-distinct-semiprime cofactor, and `1485` least-factor times higher cofactor.
-Every endpoint miss also satisfies the exact residue product relation
-`candidate residue = least-factor residue * cofactor residue mod 30`.
-
-The second-factor pass attacked only the remaining `1485` higher-cofactor
-rows. It reduced `1302` of them to fixed-point or distinct-semiprime remainder
-material, leaving `183` higher-remainder rows. Cumulatively, `21074 / 21257`
-endpoint misses (`0.9913910702356861`) reduce to low-complexity material after
-at most two factor strips.
-
-The third-factor pass attacked only those `183` rows. It reduced `169` more to
-fixed-point or distinct-semiprime remainder material, leaving `14`
-higher-remainder rows. Cumulatively, `21243 / 21257` endpoint misses
-(`0.999341393423342`) reduce to low-complexity material after at most three
-factor strips. The live obstruction surface is now tiny: `10` prime-square
-remainders, `2` two-prime-power-family remainders, `1` prime-cube remainder,
-and `1` prime-power remainder.
-
-Those `14` rows are not an unstructured residual on the measured surface. Every
-one is prime-power tail material after the third factor strip. The current
-bounded grammar is: endpoint misses reduce either to fixed-point material,
-distinct-semiprime material, or prime-power tail material.
-
-The PGS-native one-cell closure probe through `q <= 10000000` found that
-composite failures of the candidate twin chamber almost always expose immediate
-continued-chamber pressure: `189167 / 190252` composite obstructions
-(`0.9942970376132708`) have a later interior integer with divisor count less
-than or equal to the forced one-cell load `tau(q+1)`.
-
-The dominant later-pressure offsets are:
-
-| Offset from `q` | Count |
-|---:|---:|
-| `3` | `146351` |
-| `4` | `28963` |
-| `5` | `10845` |
-
-This replaces the earlier transition-signature path as the active research
-surface. The transition table is retained as a negative sanity check.
-
-## Current Scope
-
-This experiment does not claim a proof of the twin-prime conjecture. The current
-question is narrower:
+For example:
 
 ```text
-Can the recurrence of twin-prime gaps be studied as recurrence of the one-cell
-selected-minimizer chamber inside the prime-gap chamber sequence?
+11 | 12 | 13
+```
+
+The middle integer is forced. There is no competition inside the gap, because
+there is only one interior integer.
+
+This experiment studies that shape as a one-cell prime-gap chamber:
+
+```text
+q | q+1 | q+2
+```
+
+The question is direct:
+
+```text
+Does q+2 close the one-cell chamber as a prime endpoint, or does it fail as a
+structured composite obstruction?
+```
+
+## Headline Result
+
+On the measured width-2 chamber surface through `q <= 1000000`, every failed
+twin endpoint is accounted for by a three-part obstruction grammar.
+
+The measured split is:
+
+| Quantity | Count |
+|---|---:|
+| Eligible anchor primes `q` | `29424` |
+| Prime closures `q+2` | `8167` |
+| Composite endpoint failures `q+2` | `21257` |
+| False exclusions | `0` |
+| Unresolved composites | `0` |
+
+The `21257` failed endpoints do not behave like featureless composite noise.
+They reduce into this grammar:
+
+```text
+fixed-point material
+distinct-semiprime material
+prime-power tail material
+```
+
+The reduction is:
+
+| Endpoint obstruction layer | Count |
+|---|---:|
+| First strip reaches fixed-point or distinct-semiprime material | `19772` |
+| Second strip reaches fixed-point or distinct-semiprime material | `1302` |
+| Third strip reaches fixed-point or distinct-semiprime material | `169` |
+| Remaining third-strip rows, all prime-power tails | `14` |
+| Total accounted endpoint failures | `21257` |
+
+So inside this measured regime, failed one-cell chambers are fully accounted
+for by endpoint factor structure.
+
+## The Story In Plain Language
+
+A twin-prime gap has only one integer between the endpoints. That middle
+integer is automatically the selected interior integer.
+
+For an eligible prime `q`, the candidate chamber is:
+
+```text
+q | q+1 | q+2
+```
+
+If `q+2` is prime, the chamber closes as a twin-prime gap.
+
+If `q+2` is composite, the chamber fails. The experiment asks what kind of
+failure appears.
+
+The answer is not a broad smear of unrelated composites. When the failed
+endpoint is factored layer by layer, almost all failures immediately expose
+prime or distinct-semiprime material. The few rows that survive three layers
+are not random leftovers; all `14` are prime-power tails.
+
+That is the current prime-gap-structure (PGS) finding:
+
+```text
+The one-cell chamber does not merely fail. It fails through a compact
+endpoint-obstruction grammar.
+```
+
+## Technical Certificate
+
+The technical document is:
+
+```text
+CERTIFICATE.md
+```
+
+It gives the definitions, measured regime, certificate statement, reduction
+tables, verification commands, and open theorem target.
+
+This experiment does not claim to settle the twin-prime conjecture. The current
+claim is narrower and bounded:
+
+```text
+For eligible anchor primes q <= 1000000, every composite q+2 endpoint failure
+in the width-2 chamber reduces to fixed-point material, distinct-semiprime
+material, or prime-power tail material.
 ```
 
 ## Artifact Map
 
 | Path | Role |
 |---|---|
-| `scripts/gwr_dni_gap_type_probe.py` | Classifies exact PGS gap winners into deterministic gap types. |
-| `scripts/gwr_dni_twin_prime_gap_type_probe.py` | Classifies the preceding and following gap types around twin-prime chambers. |
-| `scripts/twin_prime_chamber_return_gate_probe.py` | Negative sanity-check harness for completed-chamber transition signatures. |
-| `scripts/twin_prime_one_cell_closure_probe.py` | Measures one-cell chamber closure and continued-chamber obstruction geometry. |
-| `scripts/twin_prime_width2_pgs_generator_probe.py` | PGSPG-style width-2 chamber exclusion generator with downstream audit. |
-| `scripts/twin_prime_endpoint_fixed_point_decomposition_probe.py` | Decomposes why `q+2` hits or misses the endpoint fixed-point locus. |
-| `tests/test_gwr_dni_twin_prime_gap_type_probe.py` | Focused tests for the twin-prime chamber probe. |
-| `tests/test_twin_prime_chamber_return_gate_probe.py` | Focused tests for the return-gate harness and no-leakage contract. |
-| `tests/test_twin_prime_one_cell_closure_probe.py` | Focused tests for the one-cell closure probe. |
-| `tests/test_twin_prime_width2_pgs_generator_probe.py` | Focused tests for the width-2 PGS generator side probe. |
-| `tests/test_twin_prime_endpoint_fixed_point_decomposition_probe.py` | Focused tests for endpoint fixed-point decomposition. |
-| `output/gwr_dni_twin_prime_gap_type_probe_summary.json` | Committed `q <= 1000000` summary. |
-| `output/gwr_dni_twin_prime_gap_type_probe_details.csv` | Committed `q <= 1000000` twin-pair rows. |
+| `CERTIFICATE.md` | Self-contained technical certificate for the bounded result. |
+| `docs/twin_prime_chamber_recurrence_target.md` | Working research log and next-target note. |
+| `scripts/twin_prime_width2_pgs_generator_probe.py` | Width-2 chamber generator side probe with downstream audit. |
+| `scripts/twin_prime_endpoint_fixed_point_decomposition_probe.py` | Endpoint obstruction decomposition and factor-strip grammar probe. |
 | `output/twin_prime_endpoint_fixed_point_decomposition_probe/summary.json` | Committed `q <= 1000000` endpoint obstruction summary. |
-| `output/twin_prime_endpoint_fixed_point_decomposition_probe/third_strip_grammar_rows.csv` | Compact third-strip obstruction grammar. |
 | `output/twin_prime_endpoint_fixed_point_decomposition_probe/third_strip_higher_rows.csv` | The `14` prime-power tail rows. |
-| `docs/twin_prime_chamber_recurrence_target.md` | Current research target. |
 
 ## Quick Commands
 
@@ -132,57 +128,14 @@ Run the focused tests:
 python3 -m pytest experiments/twin-primes/tests
 ```
 
-Regenerate the committed-scale probe:
+Regenerate the endpoint obstruction certificate output:
 
 ```text
-python3 experiments/twin-primes/scripts/gwr_dni_twin_prime_gap_type_probe.py --max-right-prime 1000000 --output-dir experiments/twin-primes/output
+python3 experiments/twin-primes/scripts/twin_prime_endpoint_fixed_point_decomposition_probe.py --max-right-prime 1000000 --output-dir experiments/twin-primes/output/twin_prime_endpoint_fixed_point_decomposition_probe
 ```
 
-Run a small smoke probe:
-
-```text
-python3 experiments/twin-primes/scripts/gwr_dni_twin_prime_gap_type_probe.py --max-right-prime 1000 --output-dir /tmp/twin_prime_chamber_probe
-```
-
-Run the return-gate harness smoke test:
-
-```text
-python3 experiments/twin-primes/scripts/twin_prime_chamber_return_gate_probe.py --max-right-prime 1000 --train-max-right-prime 500 --output-dir /tmp/twin_prime_return_gate_probe
-```
-
-The return-gate harness emits:
-
-```text
-summary.json
-exact_signature_rows.csv
-type_pair_signature_rows.csv
-family_width_signature_rows.csv
-current_type_signature_rows.csv
-```
-
-Run the PGS-native one-cell closure probe:
-
-```text
-python3 experiments/twin-primes/scripts/twin_prime_one_cell_closure_probe.py --max-right-prime 1000000 --output-dir /tmp/twin_prime_one_cell_closure_probe_1e6
-```
-
-Run the width-2 PGS generator side probe:
+Run the width-2 generator side probe:
 
 ```text
 python3 experiments/twin-primes/scripts/twin_prime_width2_pgs_generator_probe.py --max-right-prime 1000000 --output-dir /tmp/twin_prime_width2_pgs_generator_probe_1e6
-```
-
-The width-2 side probe emits:
-
-```text
-generated_records.jsonl
-audit_rows.csv
-decision_knob_rows.csv
-summary.json
-```
-
-Run the endpoint fixed-point decomposition probe:
-
-```text
-python3 experiments/twin-primes/scripts/twin_prime_endpoint_fixed_point_decomposition_probe.py --max-right-prime 1000000 --output-dir /tmp/twin_prime_endpoint_fixed_point_decomposition_probe_1e6
 ```
