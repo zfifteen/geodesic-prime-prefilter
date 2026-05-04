@@ -200,6 +200,77 @@ factor family of q+2
 first later offset with tau <= tau(q+1)
 ```
 
+## Endpoint Fixed-Point Decomposition
+
+The next focused pass decomposed the endpoint fixed-point condition itself. In
+the one-cell chamber, `q+1` is forced. The only remaining question is whether
+the candidate endpoint `q+2` has divisor count `2`.
+
+The endpoint decomposition writes each candidate endpoint as exact factor
+material. A fixed-point hit has no obstruction factor. A fixed-point miss has a
+least factor and a cofactor.
+
+Through `q <= 1000000`, the decomposition preserved the width-2 contract:
+
+| Quantity | Value |
+|---|---:|
+| Eligible anchors | `29424` |
+| Endpoint fixed-point hits | `8167` |
+| Endpoint obstructions | `21257` |
+| Status mismatches | `0` |
+| Fixed-point hit rate | `0.2775625339858619` |
+
+The endpoint family distribution was:
+
+| Endpoint family | Count |
+|---|---:|
+| `semiprime_distinct` | `13259` |
+| `fixed_point` | `8167` |
+| `multi_prime_family` | `7028` |
+| `two_prime_power_family` | `911` |
+| `prime_square` | `49` |
+| `prime_power` | `6` |
+| `prime_cube` | `4` |
+
+The obstruction-side cofactor distribution was:
+
+| Cofactor family after least factor | Count |
+|---|---:|
+| `fixed_point` | `13308` |
+| `semiprime_distinct` | `6464` |
+| `multi_prime_family` | `1091` |
+| `two_prime_power_family` | `321` |
+| `prime_square` | `63` |
+| `prime_cube` | `8` |
+| `prime_power` | `2` |
+
+Thus `19772 / 21257` endpoint obstructions (`0.9301406595474432`) have this
+first-factor shape:
+
+```text
+least factor times either fixed-point prime material or distinct semiprime
+material
+```
+
+The first factor distribution begins with small wheel-open factors:
+
+| Least factor | Obstruction count |
+|---:|---:|
+| `7` | `4903` |
+| `11` | `2462` |
+| `13` | `1863` |
+| `17` | `1269` |
+| `19` | `1051` |
+| `23` | `802` |
+
+The focused result is:
+
+```text
+Inside the one-cell chamber, the width-2 contract reduces to endpoint
+fixed-point membership. Endpoint misses are mostly first-factor obstructions
+whose cofactors are still low-complexity fixed-point or semiprime material.
+```
+
 ## Stop Condition
 
 The target is closed only in one of two forms:

@@ -43,6 +43,13 @@ exclusions and `0` unresolved composites. The coarse proxies failed:
 `endpoint_below_forced_load` left `20484` composites unresolved, and
 `forced_interior_carrier` falsely excluded all `8167` prime closures.
 
+The endpoint fixed-point decomposition probe then decomposed why `q+2` does or
+does not hit the fixed-point locus. At `q <= 1000000`, the decomposition had
+`0` status mismatches. Among `21257` endpoint obstructions, `13259` were
+distinct semiprimes and `7028` were multi-prime composites. Equivalently,
+`19772 / 21257` obstructions (`0.9301406595474432`) had a first factor whose
+cofactor was either fixed-point prime or distinct semiprime material.
+
 The PGS-native one-cell closure probe through `q <= 10000000` found that
 composite failures of the candidate twin chamber almost always expose immediate
 continued-chamber pressure: `189167 / 190252` composite obstructions
@@ -79,10 +86,12 @@ selected-minimizer chamber inside the prime-gap chamber sequence?
 | `scripts/twin_prime_chamber_return_gate_probe.py` | Negative sanity-check harness for completed-chamber transition signatures. |
 | `scripts/twin_prime_one_cell_closure_probe.py` | Measures one-cell chamber closure and continued-chamber obstruction geometry. |
 | `scripts/twin_prime_width2_pgs_generator_probe.py` | PGSPG-style width-2 chamber exclusion generator with downstream audit. |
+| `scripts/twin_prime_endpoint_fixed_point_decomposition_probe.py` | Decomposes why `q+2` hits or misses the endpoint fixed-point locus. |
 | `tests/test_gwr_dni_twin_prime_gap_type_probe.py` | Focused tests for the twin-prime chamber probe. |
 | `tests/test_twin_prime_chamber_return_gate_probe.py` | Focused tests for the return-gate harness and no-leakage contract. |
 | `tests/test_twin_prime_one_cell_closure_probe.py` | Focused tests for the one-cell closure probe. |
 | `tests/test_twin_prime_width2_pgs_generator_probe.py` | Focused tests for the width-2 PGS generator side probe. |
+| `tests/test_twin_prime_endpoint_fixed_point_decomposition_probe.py` | Focused tests for endpoint fixed-point decomposition. |
 | `output/gwr_dni_twin_prime_gap_type_probe_summary.json` | Committed `q <= 1000000` summary. |
 | `output/gwr_dni_twin_prime_gap_type_probe_details.csv` | Committed `q <= 1000000` twin-pair rows. |
 | `docs/twin_prime_chamber_recurrence_target.md` | Current research target. |
@@ -142,4 +151,10 @@ generated_records.jsonl
 audit_rows.csv
 decision_knob_rows.csv
 summary.json
+```
+
+Run the endpoint fixed-point decomposition probe:
+
+```text
+python3 experiments/twin-primes/scripts/twin_prime_endpoint_fixed_point_decomposition_probe.py --max-right-prime 1000000 --output-dir /tmp/twin_prime_endpoint_fixed_point_decomposition_probe_1e6
 ```
