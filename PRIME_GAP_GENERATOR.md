@@ -1,49 +1,80 @@
-## PGS Prime Generator
+# PGS Prime Generator
 
-The third headline result is the PGS Prime Generator. It outputs one
-record for each given prime:
+Most prime generators are candidate testers.
+
+They propose a number and ask whether it is prime. If the number is composite, they reject it and try another. Better generators can make the test faster, or choose candidates more carefully, but the shape is still familiar: propose, test, reject, repeat.
+
+The PGS Prime Generator is built around a different reading of the interval after a known prime.
+
+It starts with one prime `p`. It reads the arithmetic structure to the right of `p`. Its job is to output the successor prime `q` as a minimal record:
 
 ```json
 {"p": 89, "q": 97}
 ```
 
-The outputted stream is deliberately small: exactly `p` and `q`. Source labels,
-diagnostics, verification records, and audit results stay outside the generator output.
+That record says only what matters: start at `89`; the next prime is `97`.
 
-The current production iteration is
-[PGS Inference Generator v1.1](docs/releases/pgs_inference_generator_v1_1_pgs_only.md).
+## Why The Output Is So Small
 
-The extraordinary result is not that the PGS Prime Generator is fast.
-Conventional prime generation works by scanning candidate numbers and testing
-them until one proves prime. The PGS Prime Generator is different. It starts
-from a given prime `p`, examines a finite chamber to the right of `p`, and
-uses deterministic prime-gap-structure state in that chamber to infer the
-successor prime `q`.
+The output stream is deliberately minimal. For each given prime, the generator outputs exactly `p` and `q`.
 
-The generator treats the gap as a consistency problem:
+It does not mix the answer with diagnostics. It does not attach confidence fields. It does not put source labels, audit records, counters, or proof objects into the generated record.
 
-```text
-Which candidate q leaves a valid prime gap interval after p?
+Those things can still exist, but they belong outside the output stream. The generated record itself stays clean:
+
+```json
+{"p": 89, "q": 97}
 ```
 
-The key structural discovery is that once the first candidate `q` is forced by
-the interval to its left, later candidates are no longer possible successors of
-the original `p`. They belong to intervals that begin after `q`. That
-distinction turned the remaining not-yet-excluded candidates into evidence
-that the gap had already closed.
+This matters because the generator has one job. Given `p`, output the next prime `q`.
 
-The generator is now PGS-only. The production generator contains no trial
-division, no Miller-Rabin, no probabilistic primality test, no sieve-based
-prime generation, no fallback prime search, and no oracle-style `nextprime`
-call inside generation. Classical verification remains downstream audit after
-generation, not a mechanism for choosing `q`.
+## What Makes It Different
 
-The following surfaces validate the bounded production implementation. They are
-not theorem boundaries: the exact divisor-count next-prime theorem is proved in
-[PROOF.md](PROOF.md).
+Conventional prime generation asks a candidate question:
 
-On the current production generator surface, exact output is preserved and the
-PGS selection rule applies exact divisor-count GWR/NLSC search-interval-reset state:
+```text
+Is this candidate prime?
+```
+
+The PGS Prime Generator asks a gap question:
+
+```text
+Where does the interval after p close?
+```
+
+That change is the center of the document. The generator is not trying to make an ordinary primality-testing loop sound new. It uses deterministic prime-gap structure in the chamber after `p` to infer the successor prime.
+
+The current generator is the PGS-only `v1.1` production iteration, documented in [PGS Inference Generator v1.1](docs/releases/pgs_inference_generator_v1_1_pgs_only.md).
+
+## The Boundary
+
+The generation step does not choose `q` by trial division.
+
+It does not choose `q` by Miller-Rabin.
+
+It does not choose `q` by a probabilistic primality test.
+
+It does not generate a sieve.
+
+It does not fall back to a conventional prime search.
+
+It does not call `nextprime` inside generation.
+
+Classical checks still matter, but they happen afterward as audit. Audit verifies the generated answer. Audit does not choose the answer.
+
+## The Consistency Picture
+
+The generator treats the interval after `p` as a consistency problem. A proposed endpoint has to leave a valid prime-gap interval behind it.
+
+The structural discovery is that once the first candidate `q` is forced by the interval to its left, later candidates are no longer possible successors of the original `p`. They belong to intervals that begin after `q`. What had looked like unresolved later possibility becomes evidence that the original gap has already closed.
+
+That is the operational form of the same reversal introduced in the README: the numbers after `p` are not random obstacles. They carry the information that tells the interval where to end.
+
+## Current Validation Surfaces
+
+The following surfaces validate the bounded production implementation. They are not theorem boundaries. The exact divisor-count next-prime theorem is proved in [PROOF.md](PROOF.md).
+
+On the current production generator surface, exact output is preserved and the PGS selection rule applies exact divisor-count GWR/NLSC search-interval-reset state:
 
 ```text
 surface: 11..100000
@@ -55,8 +86,7 @@ incorrect candidates: 0
 coverage: 100.00%
 ```
 
-The same production selection rule now reproduces the high-scale decade-window
-surface through `10^18`:
+The same production selection rule reproduces the high-scale decade-window surface through `10^18`:
 
 ```text
 surface: 256 consecutive primes per decade, 10^8 through 10^18
@@ -69,15 +99,6 @@ search-window misses: 0
 coverage: 100.00%
 ```
 
-The C high-scale generator also carries a deterministic `10^1233` certificate
-path for the integer-start chamber contract.
+The C high-scale generator also carries a deterministic `10^1233` certificate path for the integer-start chamber contract.
 
-The implementation contract and lower-level mechanism are recorded in
-[Generator Logic Specification](docs/specs/prime-gen/minimal_pgs_generator_logic.md).
-The current release note is
-[PGS Inference Generator v1.1](docs/releases/pgs_inference_generator_v1_1_pgs_only.md).
-The detailed technical note is the
-[algorithm report](docs/research/prime_inference_generator/rule_x_consistency_collapse_logic_engine.md),
-and the high-scale validation report is
-[Decade-Window Validation Report](experiments/rule_x_logic_engine/chamber_reset_decade_ladder_1e8_1e18_a256_b1024/report.md).
-
+The implementation contract and lower-level mechanism are recorded in [Generator Logic Specification](docs/specs/prime-gen/minimal_pgs_generator_logic.md). The release note is [PGS Inference Generator v1.1](docs/releases/pgs_inference_generator_v1_1_pgs_only.md). The detailed technical note is the [algorithm report](docs/research/prime_inference_generator/rule_x_consistency_collapse_logic_engine.md), and the high-scale validation report is [Decade-Window Validation Report](experiments/rule_x_logic_engine/chamber_reset_decade_ladder_1e8_1e18_a256_b1024/report.md).

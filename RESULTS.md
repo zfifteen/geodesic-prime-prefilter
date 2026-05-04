@@ -1,89 +1,108 @@
-## Three Headline Results
+# Results Map
 
-- **Direct Deterministic Next-Prime Theorem and Leftmost Minimum-Divisor Rule
-  (GWR):** as proved in [PROOF.md](PROOF.md), exact divisor counts determine the
-  next prime from a known prime `p`, and the divisor-normalization score picks
-  exactly the leftmost interior integer with minimum divisor count in every
-  prime gap with a nonempty interior.
-- **Prime Gap Generative Model v1.0:** on the persistent reduced gap-type
-  surface, prime-gap types close to a frozen hierarchical finite-state model
-  with a stable `14`-state core.
-- **PGS Prime Generator:** the generator outputs one two-key
-  `{"p": ..., "q": ...}` record per given prime `p`, keeps diagnostics outside
-  the outputted stream, and selects the successor prime `q` from deterministic
-  prime-gap-structure chamber state. The production path excludes trial
-  division, Miller-Rabin, probabilistic primality tests, sieve-based prime
-  generation, fallback prime search, and oracle-style `nextprime` calls inside
-  generation. The current production iteration is `v1.1`.
+The README tells the story from the smallest visible facts: one prime, the composites after it, the divisor counts inside the gap, and the next prime at the first later divisor count of `2`.
 
-## What This Repository Carries
+This document is the map of what the repository currently carries.
 
-This repository now carries three visible lines of work:
+It keeps three states separate:
 
-- the proved direct next-prime theorem and GWR theorem, whose single live proof
-  reference is [PROOF.md](PROOF.md);
-- the reduced gap-type model and pattern results on the persistent reduced
-  surface;
-- the PGS Prime Generator and downstream deterministic DNI-based
-  predictor and prefilter work.
+- theorem results proved in `PROOF.md`
+- generator and model surfaces validated by audit or measurement
+- empirical or legacy engineering results whose scope is exactly the tested regime
 
-The Divisor Normalization Identity supplies the score foundation. The direct
-deterministic next-prime theorem and the GWR theorem are the proved theorem
-foundation. NLSC is an exact closure consequence of GWR and a structural bridge
-to the generator. The gap-type model is the second headline prime-gap result.
-The PGS Prime Generator is the current operational inferred-prime generator
-milestone. The recursive walk and deterministic filter are downstream
-deterministic instruments built from the same normalization.
+## Proved Theorem Foundation
 
-## Novel Structures in This Repository
+The formal proof reference is [PROOF.md](PROOF.md).
 
-The repository now carries the following named structures and results:
+It states and proves the direct deterministic next-prime theorem: given a known prime `p`, exact divisor counts determine the next prime `q`.
 
-- **Direct Deterministic Next-Prime Theorem and Leftmost Minimum-Divisor Rule
-  (GWR):** exact divisor counts determine the next prime from a known prime
-  `p`; inside any prime gap with a nonempty interior, the log-score argmax is
-  exactly the leftmost integer with minimum interior divisor count. These are
-  the universal theorems proved in [PROOF.md](PROOF.md), the single live proof
-  reference.
-- **Divisor Normalization Identity (DNI):** `Z(n) = n^(1 - d(n)/2)` is an
-  exact arithmetic identity collapsing all primes to `Z = 1.0`.
-- **Gap-type catalog / reduced state surface:** the repository defines a
-  deterministic reduced gap-type surface and catalogs it through sampled
-  windows to `10^18`, with a persistent `14`-state core on the settled
-  high-scale surface. See
-  [gwr/findings/gap_type_catalog_through_1e18.md](gwr/findings/gap_type_catalog_through_1e18.md)
-  and
-  [gwr/findings/gap_type_sequence_grammar_findings.md](gwr/findings/gap_type_sequence_grammar_findings.md).
-- **Semiprime Wheel Attractor:** the triad
-  `o2_odd_semiprime|d<=4`, `o4_odd_semiprime|d<=4`,
-  `o6_odd_semiprime|d<=4` is the dominant dynamical object on the persistent
-  reduced gap-type surface. See
-  [gwr/findings/gap_type_engine_v1_freeze.md](gwr/findings/gap_type_engine_v1_freeze.md).
-- **Hierarchical finite-state model:** on the persistent reduced gap-type
-  surface, the frozen `v1.0` model combines a `14`-state core grammar, a
-  transition-rule layer, and a higher-divisor-triggered long-horizon controller. See
-  [docs/releases/prime_gap_generative_engine_v1_0.md](docs/releases/prime_gap_generative_engine_v1_0.md)
-  and
-  [gwr/findings/gap_type_engine_v1_rulebook.md](gwr/findings/gap_type_engine_v1_rulebook.md).
-- **PGS Prime Generator:** the generator outputs exactly `p` and `q`
-  for each given prime `p`, with downstream audit and source diagnostics
-  outside the outputted stream. Unlike a conventional prime generator, it selects
-  the successor prime from the arithmetic consistency of the interval after
-  `p`, without trial division, Miller-Rabin, probabilistic primality tests,
-  sieve-based prime generation, fallback prime search, or `nextprime` inside
-  generation. The current production path has `9588 / 9588` exact PGS outputs
-  with `0` failures on `11..100000`, and
-  `2816 / 2816` exact PGS outputs with `0` incorrect candidates on the `10^8`
-  through `10^18` decade-window validation surface.
-- **No-Later-Simpler-Composite (NLSC) condition:** once the GWR-selected integer
-  appears, no later interior composite with strictly smaller divisor count
-  precedes the next prime. This is an exact corollary of the proved GWR theorem.
-  The separate stress surface through `10^18` records zero observed violations.
-- **Dominant d=4 arrival reduction:** under square exclusion, the GWR-selected integer
-  is exactly the first interior integer with `d(n)=4`. Exact on full scans through
-  `2x10^7`.
-- **Dynamic cutoff conjecture:** `C(q) = max(64, ceil(0.5 * log(q)^2))` bounds
-  the GWR-selected integer offset for the bounded walker. Empirically calibrated through
-  `p <= 10^6`. The fixed map `{2:44, 4:60, 6:60}` is falsified at
-  `q = 24,098,209`.
+It also proves the prime-gap maximizer theorem: inside any prime gap with a nonempty interior, the log-score maximizer is exactly the leftmost interior integer with minimum divisor count.
 
+These are universal theorems under their stated hypotheses. Audit tables certify finite cases used by the proof and preserve provenance; they are not theorem boundaries.
+
+## PGS Prime Generator
+
+The prime generator turns the interval story into an output record:
+
+```json
+{"p": 89, "q": 97}
+```
+
+The generator outputs exactly `p` and `q` for each given prime `p`. Diagnostics, source labels, verification records, and audit results stay outside the outputted stream.
+
+Unlike a conventional prime generator, it selects the successor prime from deterministic prime-gap-structure chamber state. Generation excludes trial division, Miller-Rabin, probabilistic primality tests, sieve-based prime generation, fallback prime search, and `nextprime` inside generation.
+
+The current production path has `9588 / 9588` exact PGS outputs with `0` failures on `11..100000`, and `2816 / 2816` exact PGS outputs with `0` incorrect candidates on the `10^8` through `10^18` decade-window validation surface.
+
+## Divisor Normalization Identity
+
+The Divisor Normalization Identity is:
+
+$$Z(n)=n^{1-d(n)/2}$$
+
+It collapses every prime to `Z = 1.0` and places composites below that value. It supplies the fixed prime-centered score foundation behind the selected-composite comparison.
+
+## Reduced Gap-Type Model
+
+The Prime Gap Generative Model v1.0 studies the persistent reduced gap-type surface, not the full raw gap-size sequence as a theorem.
+
+On that reduced surface, the type stream closes to a persistent `14`-state core.
+
+The dominant dynamical object is the Semiprime Wheel Attractor:
+
+- `o2_odd_semiprime|d<=4`
+- `o4_odd_semiprime|d<=4`
+- `o6_odd_semiprime|d<=4`
+
+The frozen `v1.0` model combines a `14`-state core grammar, a transition-rule layer, and a higher-divisor-triggered long-horizon controller.
+
+Reference operating profiles:
+
+- local fidelity: pooled-window concentration L1 `0.0116`
+- balanced operating profile: pooled-window concentration L1 `0.0150`, full-walk three-step concentration `0.5564`
+- long-horizon study: full-walk three-step concentration `0.6278`
+
+## Recursive Walk and Closure
+
+The exact recursive walk repeats the direct divisor-count next-prime step from prime to prime.
+
+On the current verified surface, the transition rule is exact on `743,075 / 743,075` rows from the combined $10^6 + 10^7$ next-gap surface, and the recursive walk records `664,578 / 664,578` exact consecutive next-prime recoveries from prime `11` through prime `10,000,121` with `0` skipped gaps. The sampled decade ladder from $10^2$ through $10^18$ also stayed at exact hit rate `1.0` with `0` skipped gaps across `860` measured recursive steps.
+
+The No-Later-Simpler-Composite condition says that once the GWR-selected integer appears, no later interior composite with strictly smaller divisor count precedes the next prime. This is an exact corollary of the proved GWR theorem. The separate stress surface through `10^18` records zero observed violations.
+
+## Dominant d=4 and Bounded Compression
+
+Under square exclusion, the GWR-selected integer is exactly the first interior integer with `d(n)=4`. This is exact on full scans through `2x10^7`.
+
+The old fixed cutoff theorem `{2:44, 4:60, 6:60}` is false. It fails at `q = 24,098,209`, where the square branch gives `E(q) = 72 > 60`.
+
+The current bounded compression rule is empirical:
+
+```text
+C(q) = max(64, ceil(0.5 * log(q)^2))
+```
+
+It is not an unconditional theorem.
+
+## Legacy Prefilter
+
+The Z-band cryptographic prefilter is a legacy validated artifact and a downstream engineering use of the normalization program.
+
+Its public surface includes `CDLPrimeGeodesicPrefilter`, `generate_prime`, `generate_rsa_prime`, `FIXED_POINT_V`, `DEFAULT_MR_BASES`, `proxy_z()`, and `is_prime_candidate()`.
+
+In that legacy path, `proxy_z = 1.0` means the candidate survived the current gated factor tables and advances to Miller-Rabin. It is not a primality proof by itself.
+
+Empirical benchmark surfaces include:
+
+- $2.09\times$ end-to-end speedup across $300$ deterministic $2048$-bit RSA keypairs
+- $2.82\times$ end-to-end speedup across $50$ deterministic $4096$-bit RSA keypairs
+- $90.97\,\%$ to $91.07\,\%$ Miller-Rabin reduction in the current covered-table configuration
+
+## Links Into The Repository
+
+- [LEFTMOST_MINIMUM_DIVISOR_RULE.md](LEFTMOST_MINIMUM_DIVISOR_RULE.md) explains the selected composite.
+- [DIVISOR_NORMALIZATION_IDENTITY.md](DIVISOR_NORMALIZATION_IDENTITY.md) explains the fixed prime-centered score.
+- [PRIME_GAP_GENERATOR.md](PRIME_GAP_GENERATOR.md) explains the minimal `{"p": ..., "q": ...}` generator.
+- [PRIME_GAP_GENERATIVE_MODEL.md](PRIME_GAP_GENERATIVE_MODEL.md) explains the reduced gap-type model.
+- [RECURSIVE_PRIME_WALK.md](RECURSIVE_PRIME_WALK.md) explains the recursive walk, closure condition, cutoff falsification, and dominant `d=4` regime.
+- [LEGACY_PREFILTER.md](LEGACY_PREFILTER.md) explains the legacy prefilter and RSA benchmark surface.
