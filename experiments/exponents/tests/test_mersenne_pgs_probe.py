@@ -41,6 +41,15 @@ def test_nontrivial_mersenne_chamber_selects_second_cell():
     assert row["second_cell"] == 33
     assert row["second_cell_signature"] == "3*11"
     assert row["second_cell_divisible_by_3"] is True
+    assert row["second_cell_3adic_valuation"] == 1
+    assert row["second_cell_after_one_3"] == 11
+    assert row["second_cell_after_one_3_signature"] == "11"
+    assert row["second_cell_after_one_3_tau"] == 2
+    assert row["second_cell_after_one_3_prime"] is True
+    assert row["second_cell_after_removing_3s"] == 11
+    assert row["second_cell_after_removing_3s_signature"] == "11"
+    assert row["second_cell_after_removing_3s_tau"] == 2
+    assert row["second_cell_after_removing_3s_prime"] is True
     assert row["leftmost_minimizer"] == 33
     assert row["leftmost_minimizer_offset"] == 2
     assert row["leftmost_minimizer_tau"] == 4
@@ -61,6 +70,19 @@ def test_summary_records_power_neighbor_and_second_cell_relation():
     assert summary["nontrivial_second_cell_selected_count"] == 7
     assert summary["nontrivial_second_cell_selected_rate"] == 1.0
     assert summary["nontrivial_second_cell_divisible_by_3_count"] == 7
+    assert summary["nontrivial_second_cell_after_one_3_prime_count"] == 7
+    assert summary["nontrivial_second_cell_after_removing_3s_prime_count"] == 6
+    assert summary["nontrivial_second_cell_3adic_distribution"] == [
+        {"second_cell_3adic_valuation": 1, "count": 6},
+        {"second_cell_3adic_valuation": 2, "count": 1},
+    ]
+    assert summary["nontrivial_second_cell_after_removing_3s_tau_distribution"] == [
+        {"second_cell_after_removing_3s_tau": 2, "count": 6},
+        {"second_cell_after_removing_3s_tau": 1, "count": 1},
+    ]
+    assert summary["nontrivial_second_cell_after_one_3_tau_distribution"] == [
+        {"second_cell_after_one_3_tau": 2, "count": 7}
+    ]
     assert summary["nontrivial_minimizer_offset_distribution"] == [
         {"leftmost_minimizer_offset": 2, "count": 7}
     ]

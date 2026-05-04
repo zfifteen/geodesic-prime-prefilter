@@ -179,12 +179,24 @@ The concrete pattern is:
 ```text
 2^p      has tau p + 1
 2^p + 1  is divisible by 3 for odd p
+(2^p + 1) / 3 is prime in all nontrivial measured rows
 ```
 
 On the measured Mersenne endpoints, `2^p + 1` has divisor count `3` or `4`
 and is always the leftmost minimum-divisor interior integer. The exponent is
 therefore visible as load at offset `1`, while the PGS chamber selection moves
 one step right to offset `2`.
+
+The quotient layer sharpens the relation:
+
+```text
+nontrivial second-cell after one mandatory factor 3 is prime: 7 / 7
+3-adic valuation distribution: v3 = 1 for 6 rows, v3 = 2 for 1 row
+```
+
+So the observed chamber shape is an exponent wall followed immediately by a
+mandatory factor-3 low-load cell. That low-load cell is the selected integer on
+every nontrivial measured Mersenne endpoint.
 
 ## Run
 
