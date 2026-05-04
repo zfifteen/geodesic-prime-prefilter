@@ -1,0 +1,5 @@
+residue_path_shape,carrier_prime,third_higher_count,third_higher_share,post_triple_capacity,integer_cube_base_count,integer_fourth_base_count,tail_count,tail_rate,high_exponent_tail_count,high_exponent_tail_rate,fixed_point_count,semiprime_distinct_count,prime_square_count,prime_cube_count,prime_power_count,two_prime_power_family_count
+repeated_7,7,47,0.2568306010928962,2915,13,6,7,0.14893617021276595,2,0.0425531914893617,3,37,3,1,1,2
+repeated_11,11,8,0.04371584699453552,751,8,4,0,0.0,0,0.0,1,7,0,0,0,0
+repeated_13,13,3,0.01639344262295082,455,6,3,1,0.3333333333333333,0,0.0,1,1,1,0,0,0
+repeated_29,29,1,0.00546448087431694,41,2,1,0,0.0,0,0.0,1,0,0,0,0,0
