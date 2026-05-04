@@ -60,6 +60,8 @@ experiments/exponents/output/pgs_exponent_tail_probe/decade_next_layer_pressure_
 experiments/exponents/output/pgs_exponent_tail_probe/decade_carrier_capacity_rows.csv
 experiments/exponents/output/pgs_exponent_tail_probe/depth_exponent_rows.csv
 experiments/exponents/output/pgs_exponent_tail_probe/residue_exponent_rows.csv
+experiments/exponents/output/mersenne_pgs_probe/summary.json
+experiments/exponents/output/mersenne_pgs_probe/mersenne_chamber_rows.csv
 ```
 
 ## First Signal To Chase
@@ -147,11 +149,51 @@ The scale increase preserves the same ordering: repeated `7` remains the
 dominant repeated least-factor carrier, and it keeps the largest post-triple
 capacity at every tested decade.
 
+## Mersenne Endpoint Probe
+
+Mersenne prime endpoints expose an exponent relation in the chamber immediately
+to their right.
+
+For a Mersenne prime `q = 2^p - 1`, the first interior integer is forced:
+
+```text
+q | 2^p | 2^p + 1
+```
+
+The first interior cell carries the exponent directly because
+`tau(2^p) = p + 1`. The measured PGS relation is that this pure power is a
+divisor-load wall, not the selected chamber integer.
+
+Measured for all Mersenne prime endpoints inside the `10^18` scale ceiling:
+
+```text
+Mersenne prime endpoints: 8
+nontrivial endpoints with p > 2: 7
+nontrivial right-power selected count: 0
+nontrivial second-cell selected count: 7
+nontrivial minimizer offset distribution: offset 2, count 7
+```
+
+The concrete pattern is:
+
+```text
+2^p      has tau p + 1
+2^p + 1  is divisible by 3 for odd p
+```
+
+On the measured Mersenne endpoints, `2^p + 1` has divisor count `3` or `4`
+and is always the leftmost minimum-divisor interior integer. The exponent is
+therefore visible as load at offset `1`, while the PGS chamber selection moves
+one step right to offset `2`.
+
 ## Run
 
 ```text
 python3 experiments/exponents/scripts/pgs_exponent_tail_probe.py \
   --output-dir experiments/exponents/output/pgs_exponent_tail_probe
+
+python3 experiments/exponents/scripts/mersenne_pgs_probe.py \
+  --output-dir experiments/exponents/output/mersenne_pgs_probe
 ```
 
 ## Interpret

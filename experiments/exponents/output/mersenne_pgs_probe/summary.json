@@ -1,0 +1,48 @@
+{
+  "scale_limit": 1000000000000000000,
+  "mersenne_prime_count": 8,
+  "nontrivial_mersenne_prime_count": 7,
+  "max_mersenne_exponent": 31,
+  "max_mersenne_prime": 2147483647,
+  "right_power_selected_count": 1,
+  "nontrivial_right_power_selected_count": 0,
+  "nontrivial_second_cell_selected_count": 7,
+  "nontrivial_second_cell_selected_rate": 1.0,
+  "nontrivial_second_cell_divisible_by_3_count": 7,
+  "nontrivial_minimizer_offset_distribution": [
+    {
+      "leftmost_minimizer_offset": 2,
+      "count": 7
+    }
+  ],
+  "nontrivial_second_cell_signature_distribution": [
+    {
+      "second_cell_signature": "3*11",
+      "count": 1
+    },
+    {
+      "second_cell_signature": "3*174763",
+      "count": 1
+    },
+    {
+      "second_cell_signature": "3*2731",
+      "count": 1
+    },
+    {
+      "second_cell_signature": "3*43",
+      "count": 1
+    },
+    {
+      "second_cell_signature": "3*43691",
+      "count": 1
+    },
+    {
+      "second_cell_signature": "3*715827883",
+      "count": 1
+    },
+    {
+      "second_cell_signature": "3^2",
+      "count": 1
+    }
+  ]
+}
