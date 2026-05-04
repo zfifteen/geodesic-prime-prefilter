@@ -22,6 +22,7 @@ DEFAULT_OUTPUT_DIR = ROOT / "experiments" / "twin-primes" / "output" / "twin_pri
 DEFAULT_MAX_RIGHT_PRIME = 1_000_000
 DEFAULT_TRAIN_MAX_RIGHT_PRIME = 100_000
 GAP_TYPE_PROBE_PATH = Path(__file__).with_name("gwr_dni_gap_type_probe.py")
+SIGNATURE_TIERS = ("exact", "type_pair", "family_width", "current_type")
 
 
 def load_gap_type_probe():
@@ -94,18 +95,34 @@ def split_name(current_prime: int, train_max_right_prime: int) -> str:
     return "test"
 
 
-def signature_key(row: dict[str, object]) -> str:
-    """Return the deterministic chamber signature used as the predictor."""
-    return "|".join(
-        (
-            str(row["previous_type_key"]),
-            str(row["current_type_key"]),
-            f"qmod30={int(row['current_prime_mod30'])}",
-            f"g={int(row['current_gap_width'])}",
-            f"fam={row['current_carrier_family']}",
-            f"a={int(row['current_peak_offset'])}",
+def tier_signature_key(row: dict[str, object], tier: str) -> str:
+    """Return one deterministic chamber signature for one support-density tier."""
+    residue = f"qmod30={int(row['current_prime_mod30'])}"
+    if tier == "exact":
+        return "|".join(
+            (
+                str(row["previous_type_key"]),
+                str(row["current_type_key"]),
+                residue,
+                f"g={int(row['current_gap_width'])}",
+                f"fam={row['current_carrier_family']}",
+                f"a={int(row['current_peak_offset'])}",
+            )
         )
-    )
+    if tier == "type_pair":
+        return "|".join((str(row["previous_type_key"]), str(row["current_type_key"]), residue))
+    if tier == "family_width":
+        return "|".join(
+            (
+                f"prevfam={row['previous_carrier_family']}",
+                f"currfam={row['current_carrier_family']}",
+                f"g={int(row['current_gap_width'])}",
+                residue,
+            )
+        )
+    if tier == "current_type":
+        return "|".join((str(row["current_type_key"]), residue))
+    raise ValueError(f"unknown signature tier: {tier}")
 
 
 def labeled_rows(max_right_prime: int, train_max_right_prime: int) -> list[dict[str, object]]:
@@ -140,7 +157,7 @@ def labeled_rows(max_right_prime: int, train_max_right_prime: int) -> list[dict[
             "current_peak_offset": int(current_gap["next_peak_offset"]),
             "next_gap_is_twin": int(int(next_gap["next_gap_width"]) == 2),
         }
-        row["signature"] = signature_key(row)
+        row["signature"] = tier_signature_key(row, "exact")
         rows.append(row)
 
     return rows
@@ -181,8 +198,10 @@ def summarize_split(rows: list[dict[str, object]], split: str) -> dict[str, obje
     }
 
 
-def signature_rows(rows: list[dict[str, object]]) -> list[dict[str, object]]:
+def signature_rows(rows: list[dict[str, object]], tier: str = "exact") -> list[dict[str, object]]:
     """Aggregate chamber signatures across train and test splits."""
+    if tier not in SIGNATURE_TIERS:
+        raise ValueError(f"unknown signature tier: {tier}")
     split_summaries = {
         "train": summarize_split(rows, "train"),
         "test": summarize_split(rows, "test"),
@@ -197,7 +216,7 @@ def signature_rows(rows: list[dict[str, object]]) -> list[dict[str, object]]:
         "test": Counter(),
     }
     for row in rows:
-        signature = str(row["signature"])
+        signature = tier_signature_key(row, tier)
         by_signature.setdefault(signature, row)
         split = str(row["split"])
         split_counts[split][signature] += 1
@@ -207,6 +226,7 @@ def signature_rows(rows: list[dict[str, object]]) -> list[dict[str, object]]:
     for signature in sorted(by_signature):
         first_row = by_signature[signature]
         out: dict[str, object] = {
+            "tier": tier,
             "signature": signature,
             "previous_type_key": first_row["previous_type_key"],
             "current_type_key": first_row["current_type_key"],
@@ -265,36 +285,87 @@ def candidate_gate_rows(
     return candidates
 
 
-def summarize(
-    rows: list[dict[str, object]],
+def summarize_tier(
     signatures: list[dict[str, object]],
     candidates: list[dict[str, object]],
+) -> dict[str, object]:
+    """Return one compact summary for one signature tier."""
+    supported_train = [row for row in signatures if int(row["train_count"]) >= 50]
+    supported_test = [row for row in signatures if int(row["test_count"]) >= 50]
+    supported_both = [
+        row
+        for row in signatures
+        if int(row["train_count"]) >= 50 and int(row["test_count"]) >= 50
+    ]
+    return {
+        "distinct_signature_count": len(signatures),
+        "supported_train_signature_count": len(supported_train),
+        "supported_test_signature_count": len(supported_test),
+        "supported_both_signature_count": len(supported_both),
+        "candidate_gate_count": len(candidates),
+        "top_train_lift_signatures": signatures[:20],
+        "candidate_gates": candidates[:50],
+    }
+
+
+def first_signal_tier(tier_payload: dict[str, dict[str, object]]) -> str | None:
+    """Return the first tier with a candidate gate under the fixed tier order."""
+    for tier in SIGNATURE_TIERS:
+        if int(tier_payload[tier]["candidate_gate_count"]) > 0:
+            return tier
+    return None
+
+
+def summarize(
+    rows: list[dict[str, object]],
+    tier_payload: dict[str, dict[str, object]],
     max_right_prime: int,
     train_max_right_prime: int,
     runtime_seconds: float,
 ) -> dict[str, object]:
     """Return the compact summary payload."""
+    exact_summary = tier_payload["exact"]
     return {
         "max_right_prime": max_right_prime,
         "train_max_right_prime": train_max_right_prime,
         "row_count": len(rows),
-        "distinct_signature_count": len(signatures),
+        "signature_tiers": list(SIGNATURE_TIERS),
+        "distinct_signature_count": exact_summary["distinct_signature_count"],
         "split_summaries": {
             "train": summarize_split(rows, "train"),
             "test": summarize_split(rows, "test"),
         },
-        "candidate_gate_count": len(candidates),
-        "top_train_lift_signatures": signatures[:20],
-        "candidate_gates": candidates[:50],
+        "candidate_gate_count": exact_summary["candidate_gate_count"],
+        "top_train_lift_signatures": exact_summary["top_train_lift_signatures"],
+        "candidate_gates": exact_summary["candidate_gates"],
+        "tier_summaries": tier_payload,
+        "first_signal_tier": first_signal_tier(tier_payload),
         "no_leakage_contract": {
-            "input_fields": [
-                "previous_type_key",
-                "current_type_key",
-                "current_prime_mod30",
-                "current_gap_width",
-                "current_carrier_family",
-                "current_peak_offset",
-            ],
+            "signature_tiers": {
+                "exact": [
+                    "previous_type_key",
+                    "current_type_key",
+                    "current_prime_mod30",
+                    "current_gap_width",
+                    "current_carrier_family",
+                    "current_peak_offset",
+                ],
+                "type_pair": [
+                    "previous_type_key",
+                    "current_type_key",
+                    "current_prime_mod30",
+                ],
+                "family_width": [
+                    "previous_carrier_family",
+                    "current_carrier_family",
+                    "current_gap_width",
+                    "current_prime_mod30",
+                ],
+                "current_type": [
+                    "current_type_key",
+                    "current_prime_mod30",
+                ],
+            },
             "label_field": "next_gap_is_twin",
             "forbidden_input_fields": [
                 "next_right_prime",
@@ -310,6 +381,7 @@ def summarize(
 def write_signature_rows(path: Path, rows: list[dict[str, object]]) -> None:
     """Write signature rows as LF-terminated CSV."""
     fieldnames = [
+        "tier",
         "signature",
         "previous_type_key",
         "current_type_key",
@@ -341,27 +413,31 @@ def main(argv: list[str] | None = None) -> int:
 
     started = time.perf_counter()
     rows = labeled_rows(args.max_right_prime, args.train_max_right_prime)
-    signatures = signature_rows(rows)
-    candidates = candidate_gate_rows(
-        signatures,
-        min_train_count=args.min_train_count,
-        min_test_count=args.min_test_count,
-        min_train_lift=args.min_train_lift,
-        min_test_lift=args.min_test_lift,
-    )
+    tier_rows: dict[str, list[dict[str, object]]] = {}
+    tier_payload: dict[str, dict[str, object]] = {}
+    for tier in SIGNATURE_TIERS:
+        signatures = signature_rows(rows, tier=tier)
+        candidates = candidate_gate_rows(
+            signatures,
+            min_train_count=args.min_train_count,
+            min_test_count=args.min_test_count,
+            min_train_lift=args.min_train_lift,
+            min_test_lift=args.min_test_lift,
+        )
+        tier_rows[tier] = signatures
+        tier_payload[tier] = summarize_tier(signatures, candidates)
     summary = summarize(
         rows,
-        signatures,
-        candidates,
+        tier_payload,
         max_right_prime=args.max_right_prime,
         train_max_right_prime=args.train_max_right_prime,
         runtime_seconds=time.perf_counter() - started,
     )
 
     summary_path = args.output_dir / "summary.json"
-    signature_path = args.output_dir / "signature_rows.csv"
     summary_path.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
-    write_signature_rows(signature_path, signatures)
+    for tier, signatures in tier_rows.items():
+        write_signature_rows(args.output_dir / f"{tier}_signature_rows.csv", signatures)
     return 0
 
 
