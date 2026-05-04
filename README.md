@@ -23,7 +23,24 @@ Prime Gap Structure begins by refusing that picture. The space between two
 consecutive primes is full of numbers. They are not prime, but they are not
 meaningless. They are composites, and composites have factor structure.
 
+That factor structure is not decoration. It is the information that tells the
+gap where it must close. The next prime is not introduced from outside the
+interval like a surprise. It appears at the first place where the divisor-count
+signal changes from composite to prime.
+
+So the story starts with a reversal. The numbers between primes are usually
+treated as the obstacle. Here they are the evidence.
+
 ## The Gap Speaks First
+
+Prime gaps are usually described by their size. The gap from `23` to `29` has
+size `6`. The gap from `89` to `97` has size `8`. From that point of view, the
+gap is a measurement between primes, and the numbers inside are just the reason
+the measurement is not smaller.
+
+PGS adds a different question. What if the inside of the gap is not just
+absence? What if the composites inside the gap are carrying the structure we
+need to read?
 
 Take the primes `23` and `29`.
 
@@ -60,7 +77,12 @@ others. In this small gap, that number is `25`.
 
 ## The Tie Is The Next Clue
 
-The next example shows why order matters.
+Once the first example is visible, a natural objection appears. Maybe `25`
+stands out only because the gap is small. Maybe the lowest divisor count is
+useful only when one number has it by itself.
+
+The next example removes that comfort. It shows that the gap is not only about
+which divisor count appears. It is also about where that count appears.
 
 Between `89` and `97`, the interior integers are
 `90, 91, 92, 93, 94, 95, 96`.
@@ -90,7 +112,13 @@ the first place where the gap reaches its lowest divisor-count load.
 
 ## The Endpoint Has The Sharpest Signal
 
-Now turn from the interior to the right endpoint.
+The common intuition says the next prime has to be found by looking for primes.
+That sounds obvious. If you want the next prime, test numbers until one turns
+out to be prime.
+
+PGS keeps the same endpoint, but changes the reading. The endpoint is not
+separate from the divisor-count story. It has the sharpest divisor-count signal
+of all.
 
 A prime has exactly two positive divisors: `1` and itself. So the endpoint of a
 prime gap has a divisor-count signal that no composite in the interior has.
@@ -113,6 +141,12 @@ that point, the interval is still inside the composite interior. At that point,
 the next prime has arrived.
 
 ## The Interior Choice And The Endpoint Fit Together
+
+At this point the usual picture has split in two. One part says primes are the
+real objects. The other part treats the composites between them as leftover
+material.
+
+PGS puts them back in the same interval.
 
 Once the right endpoint is found, the gap has a beginning, an end, and a finite
 interior.
@@ -153,6 +187,10 @@ They start with a number, ask whether it is prime, reject it if it is
 composite, and move on. Even sophisticated generators usually keep that basic
 shape: propose a candidate, test the candidate, repeat until a prime is found.
 
+That is the normal way to think about prime generation. The generator does not
+know where the next prime is. It keeps asking candidates whether they are the
+one.
+
 The [PGS Prime Generator](PRIME_GAP_GENERATOR.md) is built from a different
 idea.
 
@@ -160,6 +198,10 @@ It starts with one known prime. Instead of treating the next prime as something
 to find by repeated candidate testing, it reads the structure in the interval
 after that prime. The question changes from "which candidate passes a primality
 test?" to "where does the next gap close?"
+
+That question matters because it changes what the generator is allowed to use.
+The prime generator is not outsourcing the choice of `q` to a primality test.
+It is using the structure of the gap to choose the endpoint.
 
 That is why the output can be so small:
 
@@ -178,8 +220,16 @@ verify the answer. They do not choose it.
 
 ## The Same Lens Opens Other Branches
 
-Once the gap interior is treated as structured, other questions open naturally.
-The same idea can be followed in more than one direction.
+The usual story treats prime gaps as difficult because they vary. One gap is
+small, another is large, and the sizes do not settle into a simple repeating
+pattern.
+
+PGS does not deny that the sizes vary. It changes the object being studied.
+Instead of asking only how wide the gap is, it asks what structure appears
+inside the gap and how that structure changes from one gap to the next.
+
+Once the gap interior is treated that way, other questions open naturally. The
+same idea can be followed in more than one direction.
 
 The [Prime Gap Generative Model](PRIME_GAP_GENERATIVE_MODEL.md) studies the
 types of prime gaps that appear as the number line moves forward. It asks how
@@ -197,8 +247,9 @@ randomness.
 
 ## Reading Further
 
-The formal proof, generator, and model branches all begin from the same local
-structure inside prime gaps.
+The rest of the repository gives the formal proof, the generator details, the
+model results, and the measured surfaces. All of those branches begin from the
+same local structure inside prime gaps.
 
 - [PROOF.md](PROOF.md) gives the formal proof of the direct next-prime theorem
   and the prime-gap maximizer theorem.
