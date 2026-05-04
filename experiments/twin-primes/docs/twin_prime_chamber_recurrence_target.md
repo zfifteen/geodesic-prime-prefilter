@@ -450,7 +450,7 @@ prime-power-tail rate: 1.0
 The measured answer to the `14`-row question is therefore:
 
 ```text
-The remaining rows are the next rule, not the first true residual surface.
+The remaining rows are the next rule, not a terminal noise floor.
 They are prime-power tails left after three endpoint factor strips.
 ```
 
@@ -483,6 +483,52 @@ All next-layer rows are `multi_prime_family`. The next target is therefore:
 ```text
 Extend the width-2 obstruction grammar to the high-scale multi-prime layer
 without weakening the PGS decision/audit boundary.
+```
+
+## Fourth-Strip Pressure At `10^18`
+
+The fourth-strip pass focused only on the `10^18` decade-window next-layer rows.
+It did not rerun the full decade ladder and did not broaden the experiment.
+
+The input was:
+
+| Quantity | Value |
+|---|---:|
+| Scale | `10^18` |
+| Next-layer rows | `154` |
+| Input family | `multi_prime_family` |
+
+After stripping one more least prime factor from the third remainder, the
+surface compressed again:
+
+| Quantity | Value |
+|---|---:|
+| Fourth-strip semiprime-distinct remainders | `98` |
+| Fourth-strip prime-power tail remainders | `1` |
+| Fourth-strip accounted rows | `99` |
+| Fifth-layer rows exposed | `55` |
+| Fourth-strip compression rate | `0.6428571428571429` |
+
+The fourth remainder family distribution was:
+
+| Fourth remainder family | Count |
+|---|---:|
+| `semiprime_distinct` | `98` |
+| `multi_prime_family` | `55` |
+| `two_prime_power_family` | `1` |
+
+The measured answer to the fourth-strip pressure question is:
+
+```text
+The 10^18 next layer still has internal structure. A fourth strip accounts for
+99 / 154 rows and exposes a smaller fifth-layer multi-prime surface.
+```
+
+The next focused pressure point is now:
+
+```text
+Explain the 55 fifth-layer rows without returning to historical transition
+prediction or broad classical sampling.
 ```
 
 ## Stop Condition

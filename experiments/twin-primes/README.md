@@ -81,11 +81,24 @@ then exposed the next structural layer. It accounted for `44770 / 45622`
 endpoint failures. The remaining `852` rows were all `multi_prime_family`
 extension rows.
 
+The focused fourth-strip pressure test on the `10^18` decade-window next-layer
+rows compressed that layer again:
+
+| Quantity | Count |
+|---|---:|
+| `10^18` next-layer rows tested | `154` |
+| Fourth strip reaches distinct-semiprime material | `98` |
+| Fourth strip reaches prime-power tail material | `1` |
+| Fourth strip accounted rows | `99` |
+| Fifth-layer rows exposed | `55` |
+| Fourth-strip compression rate | `0.6428571428571429` |
+
 That gives the current high-scale picture:
 
 ```text
 PGS endpoint status remains audit-exact on the sampled decade ladder.
-The obstruction grammar deepens into a high-scale multi-prime layer.
+The obstruction grammar deepens by factor strips: the 10^18 next layer partly
+compresses at the fourth strip and exposes a smaller fifth layer.
 ```
 
 ## The Story In Plain Language
@@ -144,10 +157,13 @@ material, or prime-power tail material.
 | `docs/twin_prime_chamber_recurrence_target.md` | Working research log and next-target note. |
 | `scripts/twin_prime_width2_pgs_generator_probe.py` | Width-2 chamber generator side probe with downstream audit. |
 | `scripts/twin_prime_endpoint_fixed_point_decomposition_probe.py` | Endpoint obstruction decomposition and factor-strip grammar probe. |
+| `scripts/twin_prime_fourth_strip_pressure_probe.py` | Focused fourth-strip pressure probe for high-scale next-layer rows. |
 | `output/twin_prime_endpoint_fixed_point_decomposition_probe/summary.json` | Committed `q <= 1000000` endpoint obstruction summary. |
 | `output/twin_prime_endpoint_fixed_point_decomposition_probe/third_strip_higher_rows.csv` | The `14` prime-power tail rows. |
 | `output/twin_prime_decade_ladder_probe/summary.json` | `10^6` through `10^18` sampled ladder summary. |
 | `output/twin_prime_decade_ladder_probe/next_layer_rows.csv` | High-scale multi-prime extension rows. |
+| `output/twin_prime_fourth_strip_pressure_probe/summary.json` | Focused `10^18` fourth-strip summary. |
+| `output/twin_prime_fourth_strip_pressure_probe/fifth_layer_rows.csv` | The `55` exposed fifth-layer rows. |
 
 ## Quick Commands
 
@@ -173,4 +189,10 @@ Run the high-scale decade ladder:
 
 ```text
 python3 experiments/twin-primes/scripts/twin_prime_decade_ladder_probe.py --sample-size 4096 --min-exponent 6 --max-exponent 18 --output-dir experiments/twin-primes/output/twin_prime_decade_ladder_probe
+```
+
+Run the focused `10^18` fourth-strip pressure test:
+
+```text
+python3 experiments/twin-primes/scripts/twin_prime_fourth_strip_pressure_probe.py --input experiments/twin-primes/output/twin_prime_decade_ladder_probe/next_layer_rows.csv --scale 1000000000000000000 --output-dir experiments/twin-primes/output/twin_prime_fourth_strip_pressure_probe
 ```
