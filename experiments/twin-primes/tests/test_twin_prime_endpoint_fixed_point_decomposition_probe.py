@@ -61,6 +61,20 @@ def test_factorization_and_endpoint_family_are_exact():
         module.second_strip_family("semiprime_distinct")
         == "second_factor_times_semiprime_remainder"
     )
+    assert module.third_strip_family(None) == "not_third_stripped"
+    assert (
+        module.third_strip_family("fixed_point")
+        == "third_factor_times_fixed_point_remainder"
+    )
+    assert (
+        module.third_strip_family("semiprime_distinct")
+        == "third_factor_times_semiprime_remainder"
+    )
+    assert module.is_prime_power_tail("prime_square") is True
+    assert module.is_prime_power_tail("prime_cube") is True
+    assert module.is_prime_power_tail("prime_power") is True
+    assert module.is_prime_power_tail("two_prime_power_family") is True
+    assert module.is_prime_power_tail("fixed_point") is False
 
 
 def test_decomposition_row_separates_fixed_point_from_obstruction():
@@ -88,6 +102,8 @@ def test_decomposition_row_separates_fixed_point_from_obstruction():
     assert obstruction_row["low_complexity_cofactor_obstruction"] is True
     assert obstruction_row["higher_cofactor_obstruction"] is False
     assert obstruction_row["second_strip_family"] == "not_second_stripped"
+    assert obstruction_row["third_strip_family"] == "not_third_stripped"
+    assert obstruction_row["third_strip_prime_power_tail"] is False
 
 
 def test_small_summary_matches_width2_contract():
@@ -115,6 +131,9 @@ def test_small_summary_matches_width2_contract():
     assert summary["reduced_obstruction_family_distribution"]
     assert summary["least_factor_residue_distribution"]
     assert "second_strip_family_distribution" in summary
+    assert "third_strip_family_distribution" in summary
+    assert "third_strip_higher_remainder_count" in summary
+    assert "third_strip_prime_power_tail_count" in summary
 
     for row in rows:
         if row["endpoint_fixed_point"]:
@@ -126,6 +145,11 @@ def test_small_summary_matches_width2_contract():
             continue
         assert int(row["cofactor_mod30"]) == (
             int(row["second_factor_mod30"]) * int(row["second_remainder_mod30"])
+        ) % 30
+        if row["second_strip_family"] != "second_factor_times_higher_remainder":
+            continue
+        assert int(row["second_remainder_mod30"]) == (
+            int(row["third_factor_mod30"]) * int(row["third_remainder_mod30"])
         ) % 30
 
 
@@ -139,14 +163,20 @@ def test_entry_point_writes_lf_decomposition_artifacts(tmp_path):
     rows_path = tmp_path / "endpoint_decomposition_rows.csv"
     grammar_path = tmp_path / "compact_obstruction_grammar_rows.csv"
     second_strip_path = tmp_path / "second_strip_grammar_rows.csv"
+    third_strip_path = tmp_path / "third_strip_grammar_rows.csv"
+    third_strip_higher_path = tmp_path / "third_strip_higher_rows.csv"
     assert summary_path.exists()
     assert rows_path.exists()
     assert grammar_path.exists()
     assert second_strip_path.exists()
+    assert third_strip_path.exists()
+    assert third_strip_higher_path.exists()
     assert b"\r\n" not in summary_path.read_bytes()
     assert b"\r\n" not in rows_path.read_bytes()
     assert b"\r\n" not in grammar_path.read_bytes()
     assert b"\r\n" not in second_strip_path.read_bytes()
+    assert b"\r\n" not in third_strip_path.read_bytes()
+    assert b"\r\n" not in third_strip_higher_path.read_bytes()
 
     summary = json.loads(summary_path.read_text(encoding="utf-8"))
     rows = list(csv.DictReader(rows_path.open(encoding="utf-8", newline="")))
@@ -157,5 +187,7 @@ def test_entry_point_writes_lf_decomposition_artifacts(tmp_path):
     assert "cofactor_mod30" in rows[0]
     assert "second_strip_family" in rows[0]
     assert "higher_cofactor_obstruction" in rows[0]
+    assert "third_strip_family" in rows[0]
+    assert "third_strip_prime_power_tail" in rows[0]
     assert grammar_rows
     assert summary["audit_status"] == "PASS"

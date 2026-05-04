@@ -62,6 +62,19 @@ material, leaving `183` higher-remainder rows. Cumulatively, `21074 / 21257`
 endpoint misses (`0.9913910702356861`) reduce to low-complexity material after
 at most two factor strips.
 
+The third-factor pass attacked only those `183` rows. It reduced `169` more to
+fixed-point or distinct-semiprime remainder material, leaving `14`
+higher-remainder rows. Cumulatively, `21243 / 21257` endpoint misses
+(`0.999341393423342`) reduce to low-complexity material after at most three
+factor strips. The live obstruction surface is now tiny: `10` prime-square
+remainders, `2` two-prime-power-family remainders, `1` prime-cube remainder,
+and `1` prime-power remainder.
+
+Those `14` rows are not an unstructured residual on the measured surface. Every
+one is prime-power tail material after the third factor strip. The current
+bounded grammar is: endpoint misses reduce either to fixed-point material,
+distinct-semiprime material, or prime-power tail material.
+
 The PGS-native one-cell closure probe through `q <= 10000000` found that
 composite failures of the candidate twin chamber almost always expose immediate
 continued-chamber pressure: `189167 / 190252` composite obstructions
@@ -106,6 +119,9 @@ selected-minimizer chamber inside the prime-gap chamber sequence?
 | `tests/test_twin_prime_endpoint_fixed_point_decomposition_probe.py` | Focused tests for endpoint fixed-point decomposition. |
 | `output/gwr_dni_twin_prime_gap_type_probe_summary.json` | Committed `q <= 1000000` summary. |
 | `output/gwr_dni_twin_prime_gap_type_probe_details.csv` | Committed `q <= 1000000` twin-pair rows. |
+| `output/twin_prime_endpoint_fixed_point_decomposition_probe/summary.json` | Committed `q <= 1000000` endpoint obstruction summary. |
+| `output/twin_prime_endpoint_fixed_point_decomposition_probe/third_strip_grammar_rows.csv` | Compact third-strip obstruction grammar. |
+| `output/twin_prime_endpoint_fixed_point_decomposition_probe/third_strip_higher_rows.csv` | The `14` prime-power tail rows. |
 | `docs/twin_prime_chamber_recurrence_target.md` | Current research target. |
 
 ## Quick Commands
