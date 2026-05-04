@@ -14,6 +14,15 @@ structure in the numbers that follow it.
 This probably contradicts everything you were taught about prime numbers. That
 contradiction is where this repository begins.
 
+The usual picture makes the primes feel like isolated points. One prime
+appears, then some unpredictable distance passes, then another prime appears.
+The space between them is treated like a gap in the ordinary sense: a stretch
+where nothing important happens.
+
+Prime Gap Structure begins by refusing that picture. The space between two
+consecutive primes is full of numbers. They are not prime, but they are not
+meaningless. They are composites, and composites have factor structure.
+
 ## The Gap Speaks First
 
 Take the primes `23` and `29`.
@@ -43,8 +52,11 @@ Now count the whole interior:
 
 The lowest count is `3`, and it appears at `25`.
 
-That is the first visible structure. Inside the gap, one composite reaches the
-lowest divisor-count load before the others.
+That is the first visible structure.
+
+The gap has a shape now. It is no longer only the distance from `23` to `29`.
+Inside the gap, one composite reaches the lowest divisor-count load before the
+others. In this small gap, that number is `25`.
 
 ## The Tie Is The Next Clue
 
@@ -64,8 +76,14 @@ Between `89` and `97`, the interior integers are
 The lowest count is `4`, but several numbers share it. Reading from left to
 right, the first one is `91`.
 
+This is where the left side of the gap starts to matter. The winning number is
+not just any number with the lowest divisor count. It is the first such number
+encountered while reading the gap from left to right.
+
 That leftmost minimum is the local landmark of the gap. Its fuller name is the
-[Leftmost Minimum-Divisor Rule](LEFTMOST_MINIMUM_DIVISOR_RULE.md).
+[Leftmost Minimum-Divisor Rule](LEFTMOST_MINIMUM_DIVISOR_RULE.md), but the
+idea is already visible in the example: lowest divisor count first, then
+leftmost position among ties.
 
 The chosen number is not the next prime. It is an interior composite. It marks
 the first place where the gap reaches its lowest divisor-count load.
@@ -81,14 +99,18 @@ Start with one prime and read forward. Every number before the next prime is
 composite. Each of those numbers has more than two divisors. Then the next
 prime appears, and the divisor count drops to `2`.
 
-So the endpoint is not found by chance. It is the first later integer whose
+That drop is the endpoint signal.
+
+The next prime is not found by chance. It is the first later integer whose
 divisor count is exactly `2`.
 
 ```text
 starting from p, the next q is the first later integer with divisor count 2
 ```
 
-The gap closes there because no earlier integer had the prime signal.
+The gap closes there because no earlier integer had the prime signal. Before
+that point, the interval is still inside the composite interior. At that point,
+the next prime has arrived.
 
 ## The Interior Choice And The Endpoint Fit Together
 
@@ -98,6 +120,11 @@ interior.
 The endpoint is the first later integer with divisor count `2`. The interior is
 everything before that endpoint. Inside that interior, the selected integer is
 the first composite with the lowest divisor count present in the gap.
+
+Those are two different signals in the same interval.
+
+At the right edge, divisor count `2` closes the gap. Inside the gap, the
+leftmost minimum divisor count marks the local landmark.
 
 The selected integer wins two ways at once. It has the smallest divisor count
 inside the gap, and it appears as far left as possible among integers with that
@@ -110,9 +137,9 @@ That is the interior story in ordinary language.
 
 The score used by the project carries this into normalized form. The
 [Divisor Normalization Identity](DIVISOR_NORMALIZATION_IDENTITY.md) puts primes
-on the fixed-point locus `Z = 1.0` and puts composites below that locus. Inside
-a prime gap, that score selects the same local landmark: the leftmost integer
-with minimum divisor count.
+at `Z = 1.0` and puts composites below that value. Inside a prime gap, that
+score selects the same local landmark: the leftmost integer with minimum
+divisor count.
 
 That is the reversal. A prime gap is not just the distance from one prime to
 the next. It has an internal arithmetic landmark, and the endpoint has an exact
@@ -120,33 +147,49 @@ divisor-count signal.
 
 ## From Structure To Generator
 
-The generator branch turns the structure into an operational artifact.
+Most prime generators work by testing candidates.
 
-Given one prime, the [PGS Prime Generator](PRIME_GAP_GENERATOR.md) outputs the
-successor prime as a deliberately small record:
+They start with a number, ask whether it is prime, reject it if it is
+composite, and move on. Even sophisticated generators usually keep that basic
+shape: propose a candidate, test the candidate, repeat until a prime is found.
+
+The [PGS Prime Generator](PRIME_GAP_GENERATOR.md) is built from a different
+idea.
+
+It starts with one known prime. Instead of treating the next prime as something
+to find by repeated candidate testing, it reads the structure in the interval
+after that prime. The question changes from "which candidate passes a primality
+test?" to "where does the next gap close?"
+
+That is why the output can be so small:
 
 ```json
 {"p": 89, "q": 97}
 ```
 
-The output stream contains only `p` and `q`. Diagnostics and audit records stay
-outside that stream.
+The record says: start at `89`; the next prime is `97`.
 
-The production generator is PGS-only. It does not use trial division,
-Miller-Rabin, probabilistic primality tests, sieve generation, fallback prime
-search, or `nextprime` inside generation. Classical verification remains
-downstream audit after generation, not the mechanism for choosing `q`.
+The prime generator only uses prime-gap structure to choose the next prime. It
+does not choose `q` by trial division, Miller-Rabin, probabilistic primality
+tests, sieve generation, fallback prime search, or `nextprime`.
+
+Those checks still matter, but they happen after the answer is generated. They
+verify the answer. They do not choose it.
 
 ## The Same Lens Opens Other Branches
 
 Once the gap interior is treated as structured, other questions open naturally.
+The same idea can be followed in more than one direction.
 
 The [Prime Gap Generative Model](PRIME_GAP_GENERATIVE_MODEL.md) studies the
-reduced state surface of prime-gap types. The
-[recursive prime walk](RECURSIVE_PRIME_WALK.md) studies what happens when the
-same divisor-count structure is walked forward gap after gap. The
-[legacy prefilter](LEGACY_PREFILTER.md) records a separate downstream
-engineering path built from the same normalization program.
+types of prime gaps that appear as the number line moves forward. It asks how
+gap types behave when the local structure is tracked across many gaps.
+
+The [recursive prime walk](RECURSIVE_PRIME_WALK.md) studies what happens when
+the same divisor-count structure is walked forward gap after gap.
+
+The [legacy prefilter](LEGACY_PREFILTER.md) records a separate engineering path
+built from the same divisor-count normalization.
 
 The common thread is the same one the small examples already showed: look
 inside the prime gap, count what is there, and the interval stops looking like
@@ -157,22 +200,22 @@ randomness.
 The formal proof, generator, and model branches all begin from the same local
 structure inside prime gaps.
 
-- [PROOF.md](PROOF.md) is the single live proof reference for the direct
-  deterministic next-prime theorem and the prime-gap maximizer theorem.
+- [PROOF.md](PROOF.md) gives the formal proof of the direct next-prime theorem
+  and the prime-gap maximizer theorem.
 - [LEFTMOST_MINIMUM_DIVISOR_RULE.md](LEFTMOST_MINIMUM_DIVISOR_RULE.md) expands
   the selected-integer rule in accessible prose.
 - [DIVISOR_NORMALIZATION_IDENTITY.md](DIVISOR_NORMALIZATION_IDENTITY.md)
   explains the fixed-point score behind the comparison function.
-- [PRIME_GAP_GENERATOR.md](PRIME_GAP_GENERATOR.md) explains the PGS-only
-  generator and its minimal `{"p": ..., "q": ...}` output contract.
+- [PRIME_GAP_GENERATOR.md](PRIME_GAP_GENERATOR.md) explains how the prime
+  generator uses prime-gap structure and why it outputs only
+  `{"p": ..., "q": ...}`.
 - [PRIME_GAP_GENERATIVE_MODEL.md](PRIME_GAP_GENERATIVE_MODEL.md) explains the
   reduced prime-gap type model and its stable `14`-state core.
 - [RECURSIVE_PRIME_WALK.md](RECURSIVE_PRIME_WALK.md) covers the exact recursive
   walk, no-later-simpler-composite closure, and bounded compression work.
 - [LEGACY_PREFILTER.md](LEGACY_PREFILTER.md) records the legacy Z-band
   prefilter and RSA benchmark surface.
-- [RESULTS.md](RESULTS.md) is the compact index of headline results and
-  measured surfaces.
+- [RESULTS.md](RESULTS.md) collects the headline results and measured surfaces.
 
 ## Python API
 
