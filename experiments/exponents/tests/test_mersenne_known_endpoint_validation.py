@@ -1,4 +1,4 @@
-"""Tests for the Mersenne PGS endpoint probe."""
+"""Tests for the known Mersenne endpoint validation."""
 
 from __future__ import annotations
 
@@ -9,14 +9,19 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
-MODULE_PATH = ROOT / "experiments" / "exponents" / "scripts" / "mersenne_pgs_probe.py"
+MODULE_PATH = (
+    ROOT / "experiments" / "exponents" / "validation" / "mersenne_known_endpoint_validation.py"
+)
 
 
 def load_module():
-    """Load the Mersenne PGS probe."""
-    spec = importlib.util.spec_from_file_location("mersenne_pgs_probe", MODULE_PATH)
+    """Load the known Mersenne endpoint validation."""
+    spec = importlib.util.spec_from_file_location(
+        "mersenne_known_endpoint_validation",
+        MODULE_PATH,
+    )
     if spec is None or spec.loader is None:
-        raise RuntimeError("unable to load Mersenne PGS probe")
+        raise RuntimeError("unable to load known Mersenne endpoint validation")
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module

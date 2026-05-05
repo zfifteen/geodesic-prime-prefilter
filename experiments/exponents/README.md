@@ -60,11 +60,11 @@ experiments/exponents/output/pgs_exponent_tail_probe/decade_next_layer_pressure_
 experiments/exponents/output/pgs_exponent_tail_probe/decade_carrier_capacity_rows.csv
 experiments/exponents/output/pgs_exponent_tail_probe/depth_exponent_rows.csv
 experiments/exponents/output/pgs_exponent_tail_probe/residue_exponent_rows.csv
-experiments/exponents/output/mersenne_pgs_probe/summary.json
-experiments/exponents/output/mersenne_pgs_probe/mersenne_chamber_rows.csv
 experiments/exponents/output/mersenne_boundary_contract_probe/summary.json
 experiments/exponents/output/mersenne_boundary_contract_probe/boundary_contract_rows.csv
 experiments/exponents/output/mersenne_boundary_contract_probe/boundary_failure_rows.csv
+experiments/exponents/output/mersenne_known_endpoint_validation/summary.json
+experiments/exponents/output/mersenne_known_endpoint_validation/mersenne_chamber_rows.csv
 ```
 
 ## First Signal To Chase
@@ -152,22 +152,82 @@ The scale increase preserves the same ordering: repeated `7` remains the
 dominant repeated least-factor carrier, and it keeps the largest post-triple
 capacity at every tested decade.
 
-## Mersenne Endpoint Probe
+## Live PGS Boundary Recovery
 
-Mersenne prime endpoints expose an exponent relation in the chamber immediately
-to their right.
+The live Mersenne-side research path recovers a boundary from the exponent wall
+itself. For each prime exponent `p <= 127`, the probe starts at:
 
-For a Mersenne prime `q = 2^p - 1`, the first interior integer is forced:
+```text
+exponent wall: 2^p
+```
+
+It scans left with exact divisor-count state and stops at the first integer
+with divisor count `2`. That recovered integer is the PGS left boundary
+`L_p`. The load-bearing measurement is:
+
+```text
+boundary distance = 2^p - L_p
+```
+
+The boundary survives exactly when the distance is `1`, meaning the recovered
+PGS boundary is `2^p - 1`.
+
+Measured result through `p <= 127`:
+
+```text
+prime exponents tested: 31
+boundary survival count: 12
+boundary leak count: 19
+candidate-prime audit count: 12
+candidate-composite audit count: 19
+audit false positives: 0
+audit false negatives: 0
+```
+
+The live boundary recovery does not use `prevprime`, `nextprime`, `isprime`,
+known Mersenne exponent lists, or endpoint lookup logic to choose the boundary.
+Exact factorization and candidate divisor signatures are sidecar audit fields
+after the PGS boundary has already been recovered.
+
+On this surface, every candidate-prime audit row has boundary distance `1`, and
+every candidate-composite audit row has boundary distance greater than `1`.
+
+The offset-2 selected-cell pattern is not the full separator:
+
+```text
+survivor second-cell selected count: 9 / 12
+leak second-cell selected count: 0 / 19
+```
+
+The quotient-prime pattern is also not the full separator:
+
+```text
+candidate-prime audit rows with (2^p + 1) / 3 prime: 10 / 12
+candidate-composite audit rows with (2^p + 1) / 3 prime: 5 / 19
+```
+
+The exact separator in this measured exponent range is therefore boundary
+survival, not the later second-cell or quotient-prime condition.
+
+## Post-Run Known-Endpoint Validation
+
+The known-endpoint validation is separate from the live PGS path. It begins
+from known Mersenne prime endpoints and uses classical endpoint lookup to
+inspect the chamber immediately to the right. It validates and explains the
+local chamber shape after the endpoint is already known; it does not recover
+the boundary.
+
+For a known Mersenne prime `q = 2^p - 1`, the first interior integer is forced:
 
 ```text
 q | 2^p | 2^p + 1
 ```
 
 The first interior cell carries the exponent directly because
-`tau(2^p) = p + 1`. The measured PGS relation is that this pure power is a
+`tau(2^p) = p + 1`. The measured relation is that this pure power is a
 divisor-load wall, not the selected chamber integer.
 
-Measured for all Mersenne prime endpoints inside the `10^18` scale ceiling:
+Measured for known Mersenne prime endpoints inside the `10^18` scale ceiling:
 
 ```text
 Mersenne prime endpoints: 8
@@ -177,7 +237,7 @@ nontrivial second-cell selected count: 7
 nontrivial minimizer offset distribution: offset 2, count 7
 ```
 
-The concrete pattern is:
+The concrete validation pattern is:
 
 ```text
 2^p      has tau p + 1
@@ -185,73 +245,9 @@ The concrete pattern is:
 (2^p + 1) / 3 is prime in all nontrivial measured rows
 ```
 
-On the measured Mersenne endpoints, `2^p + 1` has divisor count `3` or `4`
-and is always the leftmost minimum-divisor interior integer. The exponent is
-therefore visible as load at offset `1`, while the PGS chamber selection moves
-one step right to offset `2`.
-
-The quotient layer sharpens the relation:
-
-```text
-nontrivial second-cell after one mandatory factor 3 is prime: 7 / 7
-3-adic valuation distribution: v3 = 1 for 6 rows, v3 = 2 for 1 row
-```
-
-So the observed chamber shape is an exponent wall followed immediately by a
-mandatory factor-3 low-load cell. That low-load cell is the selected integer on
-every nontrivial measured Mersenne endpoint.
-
-## Mersenne Boundary Contract
-
-The stronger question is whether Mersenne-producing exponents are exactly the
-prime exponents whose local PGS boundary contract survives at `2^p - 1`.
-
-For each prime exponent `p <= 127`, the boundary-contract probe compares:
-
-```text
-candidate boundary: 2^p - 1
-exponent wall:      2^p
-mandatory-3 cell:   2^p + 1
-PGS-recovered left boundary before 2^p
-```
-
-Measured result:
-
-```text
-prime exponents tested: 31
-Mersenne-producing exponents: 12
-nonworking prime exponents: 19
-boundary survival count: 12
-false positives: 0
-false negatives: 0
-```
-
-The probe recovers the left boundary by scanning left from the exponent wall
-with exact divisor-count state and stopping at the first integer with divisor
-count `2`. It does not use `prevprime`, `nextprime`, or `isprime` to choose the
-boundary.
-
-On this surface, every working exponent has boundary distance `1` from `2^p`,
-meaning the recovered PGS boundary is `2^p - 1`. Every nonworking prime
-exponent has boundary distance greater than `1`, meaning the would-be boundary
-leaks and the recovered chamber begins earlier.
-
-The offset-2 selected-cell pattern is not the full separator:
-
-```text
-working second-cell selected count: 9 / 12
-nonworking second-cell selected count: 0 / 19
-```
-
-The quotient-prime pattern is also not the full separator:
-
-```text
-working (2^p + 1) / 3 prime count: 10 / 12
-nonworking (2^p + 1) / 3 prime count: 5 / 19
-```
-
-The exact separator in this measured exponent range is therefore boundary
-survival, not the later second-cell or quotient-prime condition.
+On these known endpoints, `2^p + 1` has divisor count `3` or `4` and is always
+the leftmost minimum-divisor interior integer. The exponent is visible as load
+at offset `1`, while the chamber selection moves one step right to offset `2`.
 
 ## Run
 
@@ -259,11 +255,11 @@ survival, not the later second-cell or quotient-prime condition.
 python3 experiments/exponents/scripts/pgs_exponent_tail_probe.py \
   --output-dir experiments/exponents/output/pgs_exponent_tail_probe
 
-python3 experiments/exponents/scripts/mersenne_pgs_probe.py \
-  --output-dir experiments/exponents/output/mersenne_pgs_probe
-
 python3 experiments/exponents/scripts/mersenne_boundary_contract_probe.py \
   --output-dir experiments/exponents/output/mersenne_boundary_contract_probe
+
+python3 experiments/exponents/validation/mersenne_known_endpoint_validation.py \
+  --output-dir experiments/exponents/output/mersenne_known_endpoint_validation
 ```
 
 ## Interpret

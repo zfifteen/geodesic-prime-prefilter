@@ -55,14 +55,15 @@ def test_summary_separates_boundary_survival_from_offset2_selection():
     summary = module.summarize(rows, 127)
 
     assert summary["prime_exponent_count"] == 31
-    assert summary["mersenne_producing_exponent_count"] == 12
-    assert summary["nonworking_prime_exponent_count"] == 19
     assert summary["boundary_survival_count"] == 12
-    assert summary["boundary_survival_false_positive_count"] == 0
-    assert summary["boundary_survival_false_negative_count"] == 0
-    assert summary["working_second_cell_selected_count"] == 9
-    assert summary["working_after_one_3_prime_count"] == 10
-    assert summary["nonworking_after_one_3_prime_count"] == 5
+    assert summary["boundary_leak_count"] == 19
+    assert summary["audit_candidate_prime_count"] == 12
+    assert summary["audit_candidate_composite_count"] == 19
+    assert summary["audit_false_positive_count"] == 0
+    assert summary["audit_false_negative_count"] == 0
+    assert summary["survivor_second_cell_selected_count"] == 9
+    assert summary["audit_prime_after_one_3_prime_count"] == 10
+    assert summary["audit_composite_after_one_3_prime_count"] == 5
 
 
 def test_cli_outputs_lf_and_reconcile(tmp_path):
@@ -82,4 +83,4 @@ def test_cli_outputs_lf_and_reconcile(tmp_path):
     rows = list(csv.DictReader(rows_path.open(encoding="utf-8", newline="")))
     failures = list(csv.DictReader(failure_path.open(encoding="utf-8", newline="")))
     assert summary["prime_exponent_count"] == len(rows)
-    assert summary["nonworking_prime_exponent_count"] == len(failures)
+    assert summary["boundary_leak_count"] == len(failures)

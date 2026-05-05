@@ -1,22 +1,23 @@
 {
   "max_exponent": 127,
   "prime_exponent_count": 31,
-  "mersenne_producing_exponent_count": 12,
-  "nonworking_prime_exponent_count": 19,
   "boundary_survival_count": 12,
-  "boundary_survival_false_positive_count": 0,
-  "boundary_survival_false_negative_count": 0,
-  "working_second_cell_selected_count": 9,
-  "nonworking_second_cell_selected_count": 0,
-  "working_after_one_3_prime_count": 10,
-  "nonworking_after_one_3_prime_count": 5,
-  "working_boundary_distance_distribution": [
+  "boundary_leak_count": 19,
+  "audit_candidate_prime_count": 12,
+  "audit_candidate_composite_count": 19,
+  "audit_false_positive_count": 0,
+  "audit_false_negative_count": 0,
+  "survivor_second_cell_selected_count": 9,
+  "leak_second_cell_selected_count": 0,
+  "audit_prime_after_one_3_prime_count": 10,
+  "audit_composite_after_one_3_prime_count": 5,
+  "survivor_boundary_distance_distribution": [
     {
       "boundary_distance_from_power": 1,
       "count": 12
     }
   ],
-  "nonworking_boundary_distance_distribution": [
+  "leak_boundary_distance_distribution": [
     {
       "boundary_distance_from_power": 55,
       "count": 2
@@ -86,7 +87,7 @@
       "count": 1
     }
   ],
-  "working_minimizer_offset_from_candidate_distribution": [
+  "survivor_minimizer_offset_from_candidate_distribution": [
     {
       "leftmost_minimizer_offset_from_candidate": 2,
       "count": 9
@@ -104,7 +105,7 @@
       "count": 1
     }
   ],
-  "nonworking_minimizer_offset_from_candidate_distribution": [
+  "leak_minimizer_offset_from_candidate_distribution": [
     {
       "leftmost_minimizer_offset_from_candidate": -54,
       "count": 2
