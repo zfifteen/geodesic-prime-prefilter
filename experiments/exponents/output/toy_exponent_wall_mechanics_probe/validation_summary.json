@@ -1,0 +1,10 @@
+{
+  "validated_row_count": 30,
+  "pgs_mersenne_location_inferred_count": 8,
+  "pgs_mersenne_location_not_inferred_count": 22,
+  "classical_mersenne_prime_count": 8,
+  "classical_mersenne_composite_count": 22,
+  "classical_agreement_count": 30,
+  "classical_false_positive_count": 0,
+  "classical_false_negative_count": 0
+}

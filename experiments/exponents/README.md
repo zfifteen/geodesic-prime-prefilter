@@ -61,9 +61,12 @@ experiments/exponents/output/pgs_exponent_tail_probe/decade_carrier_capacity_row
 experiments/exponents/output/pgs_exponent_tail_probe/depth_exponent_rows.csv
 experiments/exponents/output/pgs_exponent_tail_probe/residue_exponent_rows.csv
 experiments/exponents/output/toy_exponent_wall_mechanics_probe/summary.json
-experiments/exponents/output/toy_exponent_wall_mechanics_probe/toy_wall_rows.csv
-experiments/exponents/output/toy_exponent_wall_mechanics_probe/boundary_survival_rows.csv
-experiments/exponents/output/toy_exponent_wall_mechanics_probe/boundary_leak_rows.csv
+experiments/exponents/output/toy_exponent_wall_mechanics_probe/pgs_summary.json
+experiments/exponents/output/toy_exponent_wall_mechanics_probe/pgs_power_of_two_rows.csv
+experiments/exponents/output/toy_exponent_wall_mechanics_probe/validation_summary.json
+experiments/exponents/output/toy_exponent_wall_mechanics_probe/validation_rows.csv
+experiments/exponents/output/toy_exponent_wall_mechanics_probe/mersenne_location_inferred_rows.csv
+experiments/exponents/output/toy_exponent_wall_mechanics_probe/mersenne_location_not_inferred_rows.csv
 experiments/exponents/output/mersenne_boundary_contract_probe/summary.json
 experiments/exponents/output/mersenne_boundary_contract_probe/boundary_contract_rows.csv
 experiments/exponents/output/mersenne_boundary_contract_probe/boundary_failure_rows.csv
@@ -156,43 +159,53 @@ The scale increase preserves the same ordering: repeated `7` remains the
 dominant repeated least-factor carrier, and it keeps the largest post-triple
 capacity at every tested decade.
 
-## Toy Exponent Wall Mechanics
+## Toy Powers Of Two
 
-The reset experiment starts from the smallest exponent wall:
+The reset experiment has three parts:
+
+```text
+PGS mechanism: recovers the nearest prime less than 2^e
+validator: checks the PGS rows with classical primality and factorization
+controller: runs the PGS mechanism first, then the validator
+```
+
+The PGS mechanism starts from powers of two:
 
 ```text
 W = 2^e
 ```
 
-For each wall, the live PGS step scans left with exact divisor-count state and
-stops at the first integer with divisor count `2`. That recovered integer is
-the left boundary `L(W)`. The first measurement is:
+For each power of two, the live PGS mechanism checks admissible candidates less
+than `2^e` with exact divisor-count state and stops at the first integer with
+divisor count `2`. That recovered integer is the nearest prime less than
+`2^e`. The first measurement is:
 
 ```text
-boundary distance = W - L(W)
+distance = 2^e - left prime
 ```
 
-The boundary survives exactly when the distance is `1`.
+PGS infers a Mersenne-prime location exactly when the distance is `1`.
 
-The current rule is `pgs_left_boundary_wheel_open_v1`. It does not scan every
-integer. It builds bounded left-boundary candidates from low fixed points and
-wheel-open residues, rejects candidates with divisor count greater than `2`,
-and fails explicitly if the configured bound does not resolve.
+The current rule is `pgs_left_prime_wheel_open_v1`. It does not scan every
+integer. It builds bounded candidates for the nearest prime less than `2^e`
+from `2`, `3`, `5`, and wheel-open residues, rejects candidates with divisor
+count greater than `2`, and fails explicitly if the configured bound does not
+resolve.
 
 Measured on the toy surface `e = 2..31`:
 
 ```text
 candidate bound: 128
-walls tested: 30
-boundary survival count: 8
-boundary leak count: 22
-candidate fixed-point audit count: 8
-candidate composite audit count: 22
-audit false positives: 0
-audit false negatives: 0
+powers of two tested: 30
+PGS inferred Mersenne locations: 8
+PGS did not infer Mersenne locations: 22
+classical Mersenne primes: 8
+classical composite Mersenne numbers: 22
+classical false positives: 0
+classical false negatives: 0
 ```
 
-The dominant leak distance is `3`:
+The dominant distance from `2^e` to the nearest prime less than `2^e` is `3`:
 
 ```text
 distance 3: 10 rows
@@ -203,7 +216,7 @@ distance 15: 2 rows
 distance 39: 2 rows
 ```
 
-Most rows resolve after very few candidate hypotheses:
+Most rows resolve after very few candidate checks:
 
 ```text
 1 candidate evaluated: 16 rows
@@ -212,10 +225,10 @@ Most rows resolve after very few candidate hypotheses:
 4 candidates evaluated: 2 rows
 ```
 
-This toy pass is mechanism-first. It does not use `prevprime`, `nextprime`,
-`isprime`, known Mersenne exponent lists, or endpoint lookup logic inside the
-live recovery path. Factor signatures are diagnostics after the boundary has
-already been recovered.
+This toy pass is mechanism-first. The PGS mechanism does not use `prevprime`,
+`nextprime`, `isprime`, known Mersenne exponent lists, factorization, or
+endpoint lookup logic. Classical primality and factorization are confined to
+the validator after the PGS rows have already been emitted.
 
 ## Live PGS Boundary Recovery
 

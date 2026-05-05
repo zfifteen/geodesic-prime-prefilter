@@ -1,294 +1,88 @@
 #!/usr/bin/env python3
-"""Measure toy exponent-wall mechanics by exact divisor-count state."""
+"""Controller for toy exponent-wall PGS mechanism and validation."""
 
 from __future__ import annotations
 
 import argparse
-import csv
 import json
+import sys
 from pathlib import Path
 
-from sympy import divisor_count, factorint
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIR))
+
+import toy_exponent_wall_pgs_mechanism as pgs_mechanism
+import toy_exponent_wall_validator as validator
 
 
 ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_OUTPUT_DIR = ROOT / "experiments" / "exponents" / "output" / "toy_exponent_wall_mechanics_probe"
-DEFAULT_MIN_EXPONENT = 2
-DEFAULT_MAX_EXPONENT = 31
-DEFAULT_CANDIDATE_BOUND = 128
-PGS_LEFT_BOUNDARY_RULE_ID = "pgs_left_boundary_wheel_open_v1"
-LOW_FIXED_POINTS = frozenset({2, 3, 5})
-WHEEL_OPEN_RESIDUES_MOD30 = frozenset({1, 7, 11, 13, 17, 19, 23, 29})
-
-
-class PGSBoundaryUnresolvedError(RuntimeError):
-    """Raised when the PGS boundary rule does not resolve inside the bound."""
 
 
 def build_parser() -> argparse.ArgumentParser:
     """Build the CLI parser."""
     parser = argparse.ArgumentParser(
-        description="Measure toy exponent-wall mechanics by divisor-count state.",
+        description="Run toy exponent-wall PGS mechanism followed by validation.",
     )
-    parser.add_argument("--min-exponent", type=int, default=DEFAULT_MIN_EXPONENT)
-    parser.add_argument("--max-exponent", type=int, default=DEFAULT_MAX_EXPONENT)
-    parser.add_argument("--candidate-bound", type=int, default=DEFAULT_CANDIDATE_BOUND)
+    parser.add_argument("--min-exponent", type=int, default=pgs_mechanism.DEFAULT_MIN_EXPONENT)
+    parser.add_argument("--max-exponent", type=int, default=pgs_mechanism.DEFAULT_MAX_EXPONENT)
+    parser.add_argument("--candidate-bound", type=int, default=pgs_mechanism.DEFAULT_CANDIDATE_BOUND)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     return parser
 
 
-def tau(n: int) -> int:
-    """Return exact divisor count."""
-    return int(divisor_count(n))
-
-
-def factor_signature(n: int) -> str:
-    """Return a stable audit factor signature."""
-    parts = []
-    for prime, exponent in sorted(factorint(n).items()):
-        prime = int(prime)
-        exponent = int(exponent)
-        if exponent == 1:
-            parts.append(str(prime))
-        else:
-            parts.append(f"{prime}^{exponent}")
-    return "*".join(parts)
-
-
-def boundary_candidate_offsets(wall: int, candidate_bound: int) -> list[int]:
-    """Return wheel-open left-boundary candidate offsets before wall."""
-    if candidate_bound < 1:
-        raise ValueError("candidate_bound must be positive")
-    return [
-        offset
-        for offset in range(1, candidate_bound + 1)
-        if wall - offset in LOW_FIXED_POINTS
-        or (wall - offset > 5 and (wall - offset) % 30 in WHEEL_OPEN_RESIDUES_MOD30)
-    ]
-
-
-def pgs_left_boundary_certificate(
-    wall: int,
-    candidate_bound: int = DEFAULT_CANDIDATE_BOUND,
-) -> dict[str, object]:
-    """Recover the left boundary before wall from bounded PGS candidate state."""
-    if wall <= 2:
-        raise ValueError("wall must be greater than 2")
-    closed_offsets: list[int] = []
-    for offset in boundary_candidate_offsets(wall, candidate_bound):
-        candidate = wall - offset
-        divisor_count = tau(candidate)
-        if divisor_count == 2:
-            return {
-                "boundary_rule_id": PGS_LEFT_BOUNDARY_RULE_ID,
-                "candidate_bound": candidate_bound,
-                "recovered_left_boundary": candidate,
-                "boundary_distance": offset,
-                "candidate_offsets_evaluated": len(closed_offsets) + 1,
-                "closed_candidate_offsets_before_boundary": ";".join(
-                    str(value) for value in closed_offsets
-                ),
-            }
-        closed_offsets.append(offset)
-    raise PGSBoundaryUnresolvedError(
-        f"PGS left boundary did not resolve wall={wall} within bound={candidate_bound}"
-    )
-
-
-def pgs_left_boundary(wall: int, candidate_bound: int = DEFAULT_CANDIDATE_BOUND) -> int:
-    """Recover the left boundary before wall by bounded PGS candidate state."""
-    return int(pgs_left_boundary_certificate(wall, candidate_bound)["recovered_left_boundary"])
-
-
-def pgs_right_boundary(left_boundary: int) -> int:
-    """Recover the right boundary after a recovered left boundary."""
-    if tau(left_boundary) != 2:
-        raise ValueError("left_boundary must have divisor count 2")
-    n = left_boundary + 1
-    while True:
-        if tau(n) == 2:
-            return n
-        n += 1
-
-
-def leftmost_minimizer(left_boundary: int, right_boundary: int) -> tuple[int, int]:
-    """Return the leftmost minimum-divisor interior integer and divisor count."""
-    interiors = range(left_boundary + 1, right_boundary)
-    values = [(value, tau(value)) for value in interiors]
-    min_tau = min(value_tau for _value, value_tau in values)
-    return min(value for value, value_tau in values if value_tau == min_tau), min_tau
-
-
-def wall_row(exponent: int, candidate_bound: int = DEFAULT_CANDIDATE_BOUND) -> dict[str, object]:
-    """Return one toy exponent-wall mechanics row."""
-    wall = 2**exponent
-    candidate = wall - 1
-    right_neighbor = wall + 1
-    boundary_certificate = pgs_left_boundary_certificate(wall, candidate_bound)
-    recovered_left_boundary = int(boundary_certificate["recovered_left_boundary"])
-    recovered_right_boundary = pgs_right_boundary(recovered_left_boundary)
-    minimizer, minimizer_tau = leftmost_minimizer(
-        recovered_left_boundary,
-        recovered_right_boundary,
-    )
-    boundary_distance = int(boundary_certificate["boundary_distance"])
-    candidate_tau = tau(candidate)
-    return {
-        "exponent": exponent,
-        "boundary_rule_id": PGS_LEFT_BOUNDARY_RULE_ID,
-        "candidate_bound": candidate_bound,
-        "candidate_offsets_evaluated": boundary_certificate["candidate_offsets_evaluated"],
-        "closed_candidate_offsets_before_boundary": boundary_certificate[
-            "closed_candidate_offsets_before_boundary"
-        ],
-        "wall_family": "power_of_2",
-        "wall": wall,
-        "wall_tau": tau(wall),
-        "candidate": candidate,
-        "boundary_distance": boundary_distance,
-        "boundary_survives": boundary_distance == 1,
-        "recovered_left_boundary": recovered_left_boundary,
-        "recovered_right_boundary": recovered_right_boundary,
-        "recovered_chamber_width": recovered_right_boundary - recovered_left_boundary,
-        "right_neighbor": right_neighbor,
-        "right_neighbor_tau": tau(right_neighbor),
-        "leftmost_minimizer": minimizer,
-        "leftmost_minimizer_offset_from_left_boundary": minimizer - recovered_left_boundary,
-        "leftmost_minimizer_offset_from_wall": minimizer - wall,
-        "leftmost_minimizer_tau": minimizer_tau,
-        "candidate_tau": candidate_tau,
-        "candidate_audit_status": "fixed_point" if candidate_tau == 2 else "composite",
-        "candidate_factor_signature": "fixed_point" if candidate_tau == 2 else factor_signature(candidate),
-    }
-
-
-def collect_rows(
-    min_exponent: int,
-    max_exponent: int,
-    candidate_bound: int = DEFAULT_CANDIDATE_BOUND,
-) -> list[dict[str, object]]:
-    """Return toy exponent-wall mechanics rows."""
-    if min_exponent < 2:
-        raise ValueError("min_exponent must be at least 2")
-    if max_exponent < min_exponent:
-        raise ValueError("max_exponent must be at least min_exponent")
-    return [
-        wall_row(exponent, candidate_bound)
-        for exponent in range(min_exponent, max_exponent + 1)
-    ]
-
-
-def grouped_counts(rows: list[dict[str, object]], field: str) -> list[dict[str, object]]:
-    """Return grouped counts for one field."""
-    counts: dict[object, int] = {}
-    for row in rows:
-        value = row[field]
-        counts[value] = counts.get(value, 0) + 1
-    return [
-        {field: value, "count": count}
-        for value, count in sorted(counts.items(), key=lambda item: (-item[1], item[0]))
-    ]
-
-
-def summarize(
-    rows: list[dict[str, object]],
+def run_controller(
+    *,
     min_exponent: int,
     max_exponent: int,
     candidate_bound: int,
+    output_dir: Path,
 ) -> dict[str, object]:
-    """Return compact toy wall summary."""
-    survivors = [row for row in rows if bool(row["boundary_survives"])]
-    leaks = [row for row in rows if not bool(row["boundary_survives"])]
-    audit_fixed = [row for row in rows if row["candidate_audit_status"] == "fixed_point"]
-    audit_composite = [row for row in rows if row["candidate_audit_status"] == "composite"]
-    false_positive_rows = [
-        row for row in survivors if row["candidate_audit_status"] != "fixed_point"
-    ]
-    false_negative_rows = [
-        row for row in leaks if row["candidate_audit_status"] == "fixed_point"
-    ]
-    return {
-        "min_exponent": min_exponent,
-        "max_exponent": max_exponent,
-        "candidate_bound": candidate_bound,
-        "boundary_rule_id": PGS_LEFT_BOUNDARY_RULE_ID,
-        "wall_family": "power_of_2",
-        "wall_count": len(rows),
-        "boundary_survival_count": len(survivors),
-        "boundary_leak_count": len(leaks),
-        "audit_candidate_fixed_point_count": len(audit_fixed),
-        "audit_candidate_composite_count": len(audit_composite),
-        "audit_false_positive_count": len(false_positive_rows),
-        "audit_false_negative_count": len(false_negative_rows),
-        "boundary_distance_distribution": grouped_counts(rows, "boundary_distance"),
-        "candidate_offsets_evaluated_distribution": grouped_counts(
-            rows,
-            "candidate_offsets_evaluated",
-        ),
-        "right_neighbor_tau_distribution": grouped_counts(rows, "right_neighbor_tau"),
-        "minimizer_offset_from_wall_distribution": grouped_counts(
-            rows,
-            "leftmost_minimizer_offset_from_wall",
-        ),
+    """Run PGS mechanism first, then classical validation."""
+    output_dir.mkdir(parents=True, exist_ok=True)
+    pgs_rows = pgs_mechanism.collect_rows(min_exponent, max_exponent, candidate_bound)
+    pgs_mechanism.write_outputs(output_dir, pgs_rows)
+    pgs_summary = pgs_mechanism.summarize(
+        pgs_rows,
+        min_exponent,
+        max_exponent,
+        candidate_bound,
+    )
+    (output_dir / "pgs_summary.json").write_text(
+        json.dumps(pgs_summary, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+    validation_rows = validator.validate_rows(
+        [
+            {key: str(value) for key, value in row.items()}
+            for row in pgs_rows
+        ]
+    )
+    validator.write_outputs(output_dir, validation_rows)
+    validation_summary = validator.summarize(validation_rows)
+    summary = {
+        "pgs_mechanism": pgs_summary,
+        "classical_validation": validation_summary,
+        "controller_order": "pgs_mechanism_then_classical_validation",
     }
-
-
-def write_csv(path: Path, rows: list[dict[str, object]], fieldnames: list[str]) -> None:
-    """Write LF-terminated CSV rows."""
-    with path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
-        writer.writeheader()
-        writer.writerows(rows)
+    (output_dir / "summary.json").write_text(
+        json.dumps(summary, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    return summary
 
 
 def main(argv: list[str] | None = None) -> int:
-    """Run the toy exponent-wall mechanics probe."""
+    """Run the controller."""
     args = build_parser().parse_args(argv)
-    args.output_dir.mkdir(parents=True, exist_ok=True)
-    rows = collect_rows(args.min_exponent, args.max_exponent)
-    fields = [
-        "exponent",
-        "boundary_rule_id",
-        "candidate_bound",
-        "candidate_offsets_evaluated",
-        "closed_candidate_offsets_before_boundary",
-        "wall_family",
-        "wall",
-        "wall_tau",
-        "candidate",
-        "boundary_distance",
-        "boundary_survives",
-        "recovered_left_boundary",
-        "recovered_right_boundary",
-        "recovered_chamber_width",
-        "right_neighbor",
-        "right_neighbor_tau",
-        "leftmost_minimizer",
-        "leftmost_minimizer_offset_from_left_boundary",
-        "leftmost_minimizer_offset_from_wall",
-        "leftmost_minimizer_tau",
-        "candidate_tau",
-        "candidate_audit_status",
-        "candidate_factor_signature",
-    ]
-    write_csv(args.output_dir / "toy_wall_rows.csv", rows, fields)
-    write_csv(
-        args.output_dir / "boundary_survival_rows.csv",
-        [row for row in rows if bool(row["boundary_survives"])],
-        fields,
-    )
-    write_csv(
-        args.output_dir / "boundary_leak_rows.csv",
-        [row for row in rows if not bool(row["boundary_survives"])],
-        fields,
-    )
-    (args.output_dir / "summary.json").write_text(
-        json.dumps(
-            summarize(rows, args.min_exponent, args.max_exponent, args.candidate_bound),
-            indent=2,
-        )
-        + "\n",
-        encoding="utf-8",
+    run_controller(
+        min_exponent=args.min_exponent,
+        max_exponent=args.max_exponent,
+        candidate_bound=args.candidate_bound,
+        output_dir=args.output_dir,
     )
     return 0
 

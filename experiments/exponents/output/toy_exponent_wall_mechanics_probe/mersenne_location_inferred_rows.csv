@@ -1,0 +1,9 @@
+exponent,left_prime_rule_id,candidate_bound,candidate_checks,rejected_candidate_offsets_before_left_prime,number_family,power_of_two,power_of_two_divisor_count,mersenne_number,distance_to_left_prime,mersenne_location_inferred,left_prime,right_prime,prime_gap_length,right_neighbor,right_neighbor_divisor_count,least_divisor_count_integer,least_divisor_count_integer_offset_from_left_prime,least_divisor_count_integer_offset_from_power_of_two,least_divisor_count
+2,pgs_left_prime_wheel_open_v1,128,1,,power_of_two,4,3,3,1,True,3,5,2,5,2,4,1,0,3
+3,pgs_left_prime_wheel_open_v1,128,1,,power_of_two,8,4,7,1,True,7,11,4,9,3,9,2,1,3
+5,pgs_left_prime_wheel_open_v1,128,1,,power_of_two,32,6,31,1,True,31,37,6,33,4,33,2,1,4
+7,pgs_left_prime_wheel_open_v1,128,1,,power_of_two,128,8,127,1,True,127,131,4,129,4,129,2,1,4
+13,pgs_left_prime_wheel_open_v1,128,1,,power_of_two,8192,14,8191,1,True,8191,8209,18,8193,4,8193,2,1,4
+17,pgs_left_prime_wheel_open_v1,128,1,,power_of_two,131072,18,131071,1,True,131071,131101,30,131073,4,131073,2,1,4
+19,pgs_left_prime_wheel_open_v1,128,1,,power_of_two,524288,20,524287,1,True,524287,524309,22,524289,4,524289,2,1,4
+31,pgs_left_prime_wheel_open_v1,128,1,,power_of_two,2147483648,32,2147483647,1,True,2147483647,2147483659,12,2147483649,4,2147483649,2,1,4

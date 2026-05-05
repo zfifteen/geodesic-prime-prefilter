@@ -1,186 +1,195 @@
 {
-  "min_exponent": 2,
-  "max_exponent": 31,
-  "candidate_bound": 128,
-  "boundary_rule_id": "pgs_left_boundary_wheel_open_v1",
-  "wall_family": "power_of_2",
-  "wall_count": 30,
-  "boundary_survival_count": 8,
-  "boundary_leak_count": 22,
-  "audit_candidate_fixed_point_count": 8,
-  "audit_candidate_composite_count": 22,
-  "audit_false_positive_count": 0,
-  "audit_false_negative_count": 0,
-  "boundary_distance_distribution": [
-    {
-      "boundary_distance": 3,
-      "count": 10
-    },
-    {
-      "boundary_distance": 1,
-      "count": 8
-    },
-    {
-      "boundary_distance": 5,
-      "count": 3
-    },
-    {
-      "boundary_distance": 9,
-      "count": 2
-    },
-    {
-      "boundary_distance": 15,
-      "count": 2
-    },
-    {
-      "boundary_distance": 39,
-      "count": 2
-    },
-    {
-      "boundary_distance": 19,
-      "count": 1
-    },
-    {
-      "boundary_distance": 35,
-      "count": 1
-    },
-    {
-      "boundary_distance": 57,
-      "count": 1
-    }
-  ],
-  "candidate_offsets_evaluated_distribution": [
-    {
-      "candidate_offsets_evaluated": 1,
-      "count": 16
-    },
-    {
-      "candidate_offsets_evaluated": 2,
-      "count": 5
-    },
-    {
-      "candidate_offsets_evaluated": 3,
-      "count": 2
-    },
-    {
-      "candidate_offsets_evaluated": 4,
-      "count": 2
-    },
-    {
-      "candidate_offsets_evaluated": 11,
-      "count": 2
-    },
-    {
-      "candidate_offsets_evaluated": 5,
-      "count": 1
-    },
-    {
-      "candidate_offsets_evaluated": 10,
-      "count": 1
-    },
-    {
-      "candidate_offsets_evaluated": 15,
-      "count": 1
-    }
-  ],
-  "right_neighbor_tau_distribution": [
-    {
-      "right_neighbor_tau": 4,
-      "count": 12
-    },
-    {
-      "right_neighbor_tau": 8,
-      "count": 5
-    },
-    {
-      "right_neighbor_tau": 2,
-      "count": 4
-    },
-    {
-      "right_neighbor_tau": 16,
-      "count": 3
-    },
-    {
-      "right_neighbor_tau": 12,
-      "count": 2
-    },
-    {
-      "right_neighbor_tau": 3,
-      "count": 1
-    },
-    {
-      "right_neighbor_tau": 6,
-      "count": 1
-    },
-    {
-      "right_neighbor_tau": 20,
-      "count": 1
-    },
-    {
-      "right_neighbor_tau": 48,
-      "count": 1
-    }
-  ],
-  "minimizer_offset_from_wall_distribution": [
-    {
-      "leftmost_minimizer_offset_from_wall": 1,
-      "count": 8
-    },
-    {
-      "leftmost_minimizer_offset_from_wall": -2,
-      "count": 4
-    },
-    {
-      "leftmost_minimizer_offset_from_wall": -7,
-      "count": 3
-    },
-    {
-      "leftmost_minimizer_offset_from_wall": 3,
-      "count": 3
-    },
-    {
-      "leftmost_minimizer_offset_from_wall": -3,
-      "count": 2
-    },
-    {
-      "leftmost_minimizer_offset_from_wall": -53,
-      "count": 1
-    },
-    {
-      "leftmost_minimizer_offset_from_wall": -37,
-      "count": 1
-    },
-    {
-      "leftmost_minimizer_offset_from_wall": -35,
-      "count": 1
-    },
-    {
-      "leftmost_minimizer_offset_from_wall": -31,
-      "count": 1
-    },
-    {
-      "leftmost_minimizer_offset_from_wall": -13,
-      "count": 1
-    },
-    {
-      "leftmost_minimizer_offset_from_wall": -9,
-      "count": 1
-    },
-    {
-      "leftmost_minimizer_offset_from_wall": -1,
-      "count": 1
-    },
-    {
-      "leftmost_minimizer_offset_from_wall": 0,
-      "count": 1
-    },
-    {
-      "leftmost_minimizer_offset_from_wall": 6,
-      "count": 1
-    },
-    {
-      "leftmost_minimizer_offset_from_wall": 7,
-      "count": 1
-    }
-  ]
+  "pgs_mechanism": {
+    "min_exponent": 2,
+    "max_exponent": 31,
+    "candidate_bound": 128,
+    "left_prime_rule_id": "pgs_left_prime_wheel_open_v1",
+    "number_family": "power_of_two",
+    "row_count": 30,
+    "mersenne_location_inferred_count": 8,
+    "mersenne_location_not_inferred_count": 22,
+    "distance_to_left_prime_distribution": [
+      {
+        "distance_to_left_prime": 3,
+        "count": 10
+      },
+      {
+        "distance_to_left_prime": 1,
+        "count": 8
+      },
+      {
+        "distance_to_left_prime": 5,
+        "count": 3
+      },
+      {
+        "distance_to_left_prime": 9,
+        "count": 2
+      },
+      {
+        "distance_to_left_prime": 15,
+        "count": 2
+      },
+      {
+        "distance_to_left_prime": 39,
+        "count": 2
+      },
+      {
+        "distance_to_left_prime": 19,
+        "count": 1
+      },
+      {
+        "distance_to_left_prime": 35,
+        "count": 1
+      },
+      {
+        "distance_to_left_prime": 57,
+        "count": 1
+      }
+    ],
+    "candidate_checks_distribution": [
+      {
+        "candidate_checks": 1,
+        "count": 16
+      },
+      {
+        "candidate_checks": 2,
+        "count": 5
+      },
+      {
+        "candidate_checks": 3,
+        "count": 2
+      },
+      {
+        "candidate_checks": 4,
+        "count": 2
+      },
+      {
+        "candidate_checks": 11,
+        "count": 2
+      },
+      {
+        "candidate_checks": 5,
+        "count": 1
+      },
+      {
+        "candidate_checks": 10,
+        "count": 1
+      },
+      {
+        "candidate_checks": 15,
+        "count": 1
+      }
+    ],
+    "right_neighbor_divisor_count_distribution": [
+      {
+        "right_neighbor_divisor_count": 4,
+        "count": 12
+      },
+      {
+        "right_neighbor_divisor_count": 8,
+        "count": 5
+      },
+      {
+        "right_neighbor_divisor_count": 2,
+        "count": 4
+      },
+      {
+        "right_neighbor_divisor_count": 16,
+        "count": 3
+      },
+      {
+        "right_neighbor_divisor_count": 12,
+        "count": 2
+      },
+      {
+        "right_neighbor_divisor_count": 3,
+        "count": 1
+      },
+      {
+        "right_neighbor_divisor_count": 6,
+        "count": 1
+      },
+      {
+        "right_neighbor_divisor_count": 20,
+        "count": 1
+      },
+      {
+        "right_neighbor_divisor_count": 48,
+        "count": 1
+      }
+    ],
+    "least_divisor_count_integer_offset_from_power_of_two_distribution": [
+      {
+        "least_divisor_count_integer_offset_from_power_of_two": 1,
+        "count": 8
+      },
+      {
+        "least_divisor_count_integer_offset_from_power_of_two": -2,
+        "count": 4
+      },
+      {
+        "least_divisor_count_integer_offset_from_power_of_two": -7,
+        "count": 3
+      },
+      {
+        "least_divisor_count_integer_offset_from_power_of_two": 3,
+        "count": 3
+      },
+      {
+        "least_divisor_count_integer_offset_from_power_of_two": -3,
+        "count": 2
+      },
+      {
+        "least_divisor_count_integer_offset_from_power_of_two": -53,
+        "count": 1
+      },
+      {
+        "least_divisor_count_integer_offset_from_power_of_two": -37,
+        "count": 1
+      },
+      {
+        "least_divisor_count_integer_offset_from_power_of_two": -35,
+        "count": 1
+      },
+      {
+        "least_divisor_count_integer_offset_from_power_of_two": -31,
+        "count": 1
+      },
+      {
+        "least_divisor_count_integer_offset_from_power_of_two": -13,
+        "count": 1
+      },
+      {
+        "least_divisor_count_integer_offset_from_power_of_two": -9,
+        "count": 1
+      },
+      {
+        "least_divisor_count_integer_offset_from_power_of_two": -1,
+        "count": 1
+      },
+      {
+        "least_divisor_count_integer_offset_from_power_of_two": 0,
+        "count": 1
+      },
+      {
+        "least_divisor_count_integer_offset_from_power_of_two": 6,
+        "count": 1
+      },
+      {
+        "least_divisor_count_integer_offset_from_power_of_two": 7,
+        "count": 1
+      }
+    ]
+  },
+  "classical_validation": {
+    "validated_row_count": 30,
+    "pgs_mersenne_location_inferred_count": 8,
+    "pgs_mersenne_location_not_inferred_count": 22,
+    "classical_mersenne_prime_count": 8,
+    "classical_mersenne_composite_count": 22,
+    "classical_agreement_count": 30,
+    "classical_false_positive_count": 0,
+    "classical_false_negative_count": 0
+  },
+  "controller_order": "pgs_mechanism_then_classical_validation"
 }
