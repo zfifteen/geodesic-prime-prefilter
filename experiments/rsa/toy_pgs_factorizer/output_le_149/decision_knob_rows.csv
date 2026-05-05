@@ -1,0 +1,8 @@
+knob,valid_for_pgs_factorizer,validity_note,total_cases,resolved,unresolved,ambiguous,no_survivor,audit_pass,audit_fail,resolved_precision,resolution_rate
+pgs_endpoint_lock,True,public mutual reciprocal endpoint lock,496,126,370,370,0,126,0,1.0,0.2540322580645161
+upper_native_width_dominance,False,"candidate public PGSPG invariant, validator-side only",496,131,365,361,4,131,0,1.0,0.26411290322580644
+endpoint_lock_then_upper_native_width_dominance,False,staged validator-only candidate after endpoint lock,496,135,361,361,0,135,0,1.0,0.2721774193548387
+reciprocal_floor_boundary_lock,False,divisibility-adjacent reciprocal cell boundary,496,496,0,0,0,496,0,1.0,1.0
+both_chambers_inside,True,public PGSPG certificate diagnostic,496,20,476,0,476,13,7,0.65,0.04032258064516129
+reset_signature_equal,True,public PGSPG certificate diagnostic,496,154,342,28,314,76,78,0.4935064935064935,0.31048387096774194
+carrier_lock_equal,True,public PGSPG certificate diagnostic,496,225,271,95,176,119,106,0.5288888888888889,0.4536290322580645

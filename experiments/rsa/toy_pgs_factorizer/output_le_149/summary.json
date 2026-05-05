@@ -1,0 +1,9 @@
+{
+  "audit_fail": 0,
+  "audit_pass": 126,
+  "resolution_rate": 0.2540322580645161,
+  "resolved": 126,
+  "resolved_precision": 1.0,
+  "total_cases": 496,
+  "unresolved": 370
+}
