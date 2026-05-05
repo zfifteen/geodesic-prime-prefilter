@@ -230,6 +230,78 @@ This toy pass is mechanism-first. The PGS mechanism does not use `prevprime`,
 endpoint lookup logic. Classical primality and factorization are confined to
 the validator after the PGS rows have already been emitted.
 
+## Exponent Decade Ladder
+
+The scale ladder grows by exponent:
+
+```text
+e <= 31
+e <= 100
+e <= 1000
+```
+
+Each row starts with the exponent itself. The first live measurement is
+`tau(e)`. If `tau(e) != 2`, the exponent is recorded as excluded and the
+mechanism does not inspect `2^e - 1`.
+
+If `tau(e) == 2`, the mechanism builds bounded wheel-open candidates less than
+`2^e` and stops at the first candidate with divisor count `2`. The measured
+distance is:
+
+```text
+distance = 2^e - left prime
+```
+
+PGS infers a Mersenne-prime location exactly when the distance is `1`.
+
+If a candidate does not clear within the configured per-candidate work limit,
+the row is recorded as unresolved. The mechanism does not switch to another
+method.
+
+The ladder has the same three-part harness as the toy pass:
+
+```text
+PGS mechanism: exponent gate, then bounded left-prime recovery
+validator: classical endpoint validation after PGS rows exist
+controller: runs PGS first, then validation
+```
+
+The ladder outputs are:
+
+```text
+experiments/exponents/output/exponent_decade_ladder_probe/pgs_ladder_rows.csv
+experiments/exponents/output/exponent_decade_ladder_probe/pgs_rung_summary_rows.csv
+experiments/exponents/output/exponent_decade_ladder_probe/pgs_summary.json
+experiments/exponents/output/exponent_decade_ladder_probe/validation_rows.csv
+experiments/exponents/output/exponent_decade_ladder_probe/validation_summary.json
+experiments/exponents/output/exponent_decade_ladder_probe/summary.json
+experiments/exponents/output/exponent_decade_ladder_probe/mersenne_location_inferred_rows.csv
+experiments/exponents/output/exponent_decade_ladder_probe/pgs_unresolved_rows.csv
+```
+
+Measured with `candidate_bound = 4096` and a `1.0` second per-candidate work
+limit:
+
+```text
+rungs: 31, 100, 1000
+row count: 1128
+excluded by tau(e) != 2: 924
+left-prime resolved rows: 70
+left-prime unresolved rows: 134
+PGS inferred Mersenne locations: 32
+classical Mersenne-prime validations: 32
+classical false positives: 0
+classical false negatives: 0
+```
+
+Per rung:
+
+```text
+e <= 31:   8 inferred, 0 unresolved
+e <= 100: 10 inferred, 0 unresolved
+e <= 1000: 14 inferred, 134 unresolved
+```
+
 ## Live PGS Boundary Recovery
 
 The live Mersenne-side research path recovers a boundary from the exponent wall
