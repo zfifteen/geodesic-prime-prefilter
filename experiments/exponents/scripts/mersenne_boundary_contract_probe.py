@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Recover Mersenne boundary contracts across prime exponents by divisor count."""
+"""Recover Mersenne boundary contracts by exact divisor-count state."""
 
 from __future__ import annotations
 
@@ -19,7 +19,7 @@ DEFAULT_MAX_EXPONENT = 127
 def build_parser() -> argparse.ArgumentParser:
     """Build the CLI parser."""
     parser = argparse.ArgumentParser(
-        description="Compare Mersenne boundary contracts across prime exponents.",
+        description="Recover Mersenne boundary contracts across prime exponents.",
     )
     parser.add_argument("--max-exponent", type=int, default=DEFAULT_MAX_EXPONENT)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
@@ -32,7 +32,7 @@ def tau(n: int) -> int:
 
 
 def factor_signature(n: int) -> str:
-    """Return a stable factor signature."""
+    """Return a stable audit factor signature."""
     if n == 1:
         return "1"
     parts = []
@@ -91,7 +91,8 @@ def boundary_row(exponent: int) -> dict[str, object]:
         recovered_right_boundary,
     )
     candidate_tau = tau(candidate)
-    boundary_survives = recovered_left_boundary == candidate
+    boundary_distance = power - recovered_left_boundary
+    boundary_survives = boundary_distance == 1
     return {
         "exponent": exponent,
         "candidate": candidate,
@@ -99,7 +100,7 @@ def boundary_row(exponent: int) -> dict[str, object]:
         "candidate_factor_signature": "prime" if candidate_tau == 2 else factor_signature(candidate),
         "recovered_left_boundary": recovered_left_boundary,
         "boundary_survives": boundary_survives,
-        "boundary_distance_from_power": power - recovered_left_boundary,
+        "boundary_distance_from_power": boundary_distance,
         "recovered_right_boundary": recovered_right_boundary,
         "recovered_gap_width": recovered_right_boundary - recovered_left_boundary,
         "exponent_wall": exponent_wall,
@@ -137,9 +138,10 @@ def grouped_counts(rows: list[dict[str, object]], field: str) -> list[dict[str, 
 
 def summarize(rows: list[dict[str, object]], max_exponent: int) -> dict[str, object]:
     """Return compact boundary-contract summary."""
-    working = [row for row in rows if int(row["candidate_tau"]) == 2]
-    nonworking = [row for row in rows if int(row["candidate_tau"]) != 2]
     boundary_survivors = [row for row in rows if bool(row["boundary_survives"])]
+    boundary_leaks = [row for row in rows if not bool(row["boundary_survives"])]
+    audit_prime_rows = [row for row in rows if int(row["candidate_tau"]) == 2]
+    audit_composite_rows = [row for row in rows if int(row["candidate_tau"]) != 2]
     false_positive_rows = [
         row for row in rows if bool(row["boundary_survives"]) and int(row["candidate_tau"]) != 2
     ]
@@ -149,35 +151,38 @@ def summarize(rows: list[dict[str, object]], max_exponent: int) -> dict[str, obj
     return {
         "max_exponent": max_exponent,
         "prime_exponent_count": len(rows),
-        "mersenne_producing_exponent_count": len(working),
-        "nonworking_prime_exponent_count": len(nonworking),
         "boundary_survival_count": len(boundary_survivors),
-        "boundary_survival_false_positive_count": len(false_positive_rows),
-        "boundary_survival_false_negative_count": len(false_negative_rows),
-        "working_second_cell_selected_count": sum(bool(row["second_cell_selected"]) for row in working),
-        "nonworking_second_cell_selected_count": sum(
-            bool(row["second_cell_selected"]) for row in nonworking
+        "boundary_leak_count": len(boundary_leaks),
+        "audit_candidate_prime_count": len(audit_prime_rows),
+        "audit_candidate_composite_count": len(audit_composite_rows),
+        "audit_false_positive_count": len(false_positive_rows),
+        "audit_false_negative_count": len(false_negative_rows),
+        "survivor_second_cell_selected_count": sum(
+            bool(row["second_cell_selected"]) for row in boundary_survivors
         ),
-        "working_after_one_3_prime_count": sum(
-            bool(row["second_cell_after_one_3_prime"]) for row in working
+        "leak_second_cell_selected_count": sum(
+            bool(row["second_cell_selected"]) for row in boundary_leaks
         ),
-        "nonworking_after_one_3_prime_count": sum(
-            bool(row["second_cell_after_one_3_prime"]) for row in nonworking
+        "audit_prime_after_one_3_prime_count": sum(
+            bool(row["second_cell_after_one_3_prime"]) for row in audit_prime_rows
         ),
-        "working_boundary_distance_distribution": grouped_counts(
-            working,
+        "audit_composite_after_one_3_prime_count": sum(
+            bool(row["second_cell_after_one_3_prime"]) for row in audit_composite_rows
+        ),
+        "survivor_boundary_distance_distribution": grouped_counts(
+            boundary_survivors,
             "boundary_distance_from_power",
         ),
-        "nonworking_boundary_distance_distribution": grouped_counts(
-            nonworking,
+        "leak_boundary_distance_distribution": grouped_counts(
+            boundary_leaks,
             "boundary_distance_from_power",
         ),
-        "working_minimizer_offset_from_candidate_distribution": grouped_counts(
-            working,
+        "survivor_minimizer_offset_from_candidate_distribution": grouped_counts(
+            boundary_survivors,
             "leftmost_minimizer_offset_from_candidate",
         ),
-        "nonworking_minimizer_offset_from_candidate_distribution": grouped_counts(
-            nonworking,
+        "leak_minimizer_offset_from_candidate_distribution": grouped_counts(
+            boundary_leaks,
             "leftmost_minimizer_offset_from_candidate",
         ),
     }

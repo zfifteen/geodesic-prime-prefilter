@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Measure PGS chamber structure next to Mersenne prime endpoints."""
+"""Validate chamber structure next to known Mersenne prime endpoints."""
 
 from __future__ import annotations
 
@@ -12,7 +12,9 @@ from sympy import divisor_count, factorint, nextprime
 
 
 ROOT = Path(__file__).resolve().parents[3]
-DEFAULT_OUTPUT_DIR = ROOT / "experiments" / "exponents" / "output" / "mersenne_pgs_probe"
+DEFAULT_OUTPUT_DIR = (
+    ROOT / "experiments" / "exponents" / "output" / "mersenne_known_endpoint_validation"
+)
 DEFAULT_SCALE_LIMIT = 10**18
 KNOWN_MERSENNE_PRIME_EXPONENTS_THROUGH_SCALE = (2, 3, 5, 7, 13, 17, 19, 31, 61)
 
@@ -20,7 +22,7 @@ KNOWN_MERSENNE_PRIME_EXPONENTS_THROUGH_SCALE = (2, 3, 5, 7, 13, 17, 19, 31, 61)
 def build_parser() -> argparse.ArgumentParser:
     """Build the CLI parser."""
     parser = argparse.ArgumentParser(
-        description="Measure PGS chamber structure next to Mersenne prime endpoints.",
+        description="Validate chamber structure next to known Mersenne prime endpoints.",
     )
     parser.add_argument("--scale-limit", type=int, default=DEFAULT_SCALE_LIMIT)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
@@ -200,7 +202,7 @@ def write_csv(path: Path, rows: list[dict[str, object]], fieldnames: list[str]) 
 
 
 def main(argv: list[str] | None = None) -> int:
-    """Run the Mersenne PGS probe."""
+    """Run the known-endpoint validation."""
     args = build_parser().parse_args(argv)
     args.output_dir.mkdir(parents=True, exist_ok=True)
     rows = collect_rows(args.scale_limit)
