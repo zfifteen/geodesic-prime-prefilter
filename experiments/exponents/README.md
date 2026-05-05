@@ -312,6 +312,32 @@ e <= 100:  10 inferred, 0 unresolved
 e <= 1000: 14 inferred, 134 unresolved
 ```
 
+## Unresolved-Row Pressure
+
+The first pressure campaign reuses the same PGS rule on the `134` unresolved
+rows from the `e <= 1000` ladder. It does not rerun the full ladder.
+
+Passes:
+
+```text
+3.0 second candidate limit: 134 -> 129 unresolved, 5 resolved, 0 inferred
+10.0 second candidate limit: 129 -> 125 unresolved, 4 resolved, 0 inferred
+```
+
+The remaining surface is not primarily a search-depth problem. The diagnostic
+on the `125` still-unresolved rows found:
+
+```text
+offset 1 work-limit rows: 95 / 125
+offset 1 share: 0.76
+minimum exponent: 167
+maximum exponent: 997
+```
+
+That triggers the pressure stop rule. The next task is not a uniform larger
+time limit. The next task is to improve exact divisor-count handling for the
+first left candidate `2^e - 1` while preserving the PGS-only live path.
+
 ## Live PGS Boundary Recovery
 
 The live Mersenne-side research path recovers a boundary from the exponent wall
