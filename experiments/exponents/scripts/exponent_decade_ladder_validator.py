@@ -17,6 +17,7 @@ DEFAULT_INPUT = DEFAULT_OUTPUT_DIR / "pgs_ladder_rows.csv"
 
 
 VALIDATION_FIELDNAMES = [
+    "rung_min_exponent",
     "rung_max_exponent",
     "exponent",
     "exponent_status",
@@ -69,6 +70,7 @@ def validation_row(row: dict[str, str]) -> dict[str, object]:
         mersenne_is_prime = False
         reason = "no_endpoint_emitted"
     return {
+        "rung_min_exponent": int(row["rung_min_exponent"]),
         "rung_max_exponent": int(row["rung_max_exponent"]),
         "exponent": int(row["exponent"]),
         "exponent_status": row["exponent_status"],

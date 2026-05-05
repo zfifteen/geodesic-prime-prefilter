@@ -45,6 +45,20 @@ def test_composite_exponent_is_excluded_before_wall_recovery():
     assert row["left_prime"] == ""
 
 
+def test_ladder_rows_are_non_cumulative_windows():
+    """The primary ladder rows should contain each exponent once."""
+    mechanism = load_module(MECHANISM_PATH, "exponent_decade_ladder_pgs_mechanism")
+    rows = mechanism.collect_rows([31, 100], candidate_bound=4096)
+    exponents = [int(row["exponent"]) for row in rows]
+
+    assert len(rows) == 99
+    assert len(set(exponents)) == 99
+    assert min(exponents) == 2
+    assert max(exponents) == 100
+    assert {int(row["rung_min_exponent"]) for row in rows if int(row["rung_max_exponent"]) == 31} == {2}
+    assert {int(row["rung_min_exponent"]) for row in rows if int(row["rung_max_exponent"]) == 100} == {32}
+
+
 def test_known_small_inferred_exponents_have_distance_one():
     """Small inferred exponent rows should recover distance one."""
     mechanism = load_module(MECHANISM_PATH, "exponent_decade_ladder_pgs_mechanism")
@@ -78,9 +92,14 @@ def test_unresolved_rows_are_explicit_when_bound_is_too_small():
     assert row["mersenne_location_inferred"] is False
 
 
-def test_unresolved_rows_are_explicit_when_work_limit_is_hit():
+def test_unresolved_rows_are_explicit_when_work_limit_is_hit(monkeypatch):
     """A per-candidate work limit should create an explicit unresolved row."""
     mechanism = load_module(MECHANISM_PATH, "exponent_decade_ladder_pgs_mechanism")
+
+    def raise_work_limit(_candidate, _seconds_limit):
+        raise mechanism.CandidateWorkLimitReached
+
+    monkeypatch.setattr(mechanism, "limited_tau", raise_work_limit)
     row = mechanism.pgs_row(97, 97, candidate_bound=4096, candidate_seconds_limit=0.001)
 
     assert row["exponent_status"] == mechanism.STATUS_LEFT_PRIME_UNRESOLVED
@@ -124,6 +143,7 @@ def test_controller_outputs_reconcile_and_are_lf_terminated(tmp_path):
     paths = [
         out / "pgs_ladder_rows.csv",
         out / "pgs_rung_summary_rows.csv",
+        out / "pgs_cumulative_summary_rows.csv",
         out / "pgs_summary.json",
         out / "validation_rows.csv",
         out / "validation_summary.json",
@@ -145,6 +165,8 @@ def test_controller_outputs_reconcile_and_are_lf_terminated(tmp_path):
     assert summary == json.loads((out / "summary.json").read_text(encoding="utf-8"))
     assert summary["controller_order"] == "pgs_mechanism_then_classical_validation"
     assert pgs_summary["row_count"] == len(pgs_rows)
+    assert pgs_summary["row_model"] == "non_cumulative_exponent_windows"
+    assert pgs_summary["unique_exponents_tested"] == len(pgs_rows)
     assert validation_summary["validated_row_count"] == len(validation_rows)
     assert len(pgs_rows) == len(validation_rows)
     assert validation_summary["classical_false_positive_count"] == 0
