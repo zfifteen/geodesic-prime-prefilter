@@ -62,6 +62,9 @@ experiments/exponents/output/pgs_exponent_tail_probe/depth_exponent_rows.csv
 experiments/exponents/output/pgs_exponent_tail_probe/residue_exponent_rows.csv
 experiments/exponents/output/mersenne_pgs_probe/summary.json
 experiments/exponents/output/mersenne_pgs_probe/mersenne_chamber_rows.csv
+experiments/exponents/output/mersenne_boundary_contract_probe/summary.json
+experiments/exponents/output/mersenne_boundary_contract_probe/boundary_contract_rows.csv
+experiments/exponents/output/mersenne_boundary_contract_probe/boundary_failure_rows.csv
 ```
 
 ## First Signal To Chase
@@ -198,6 +201,58 @@ So the observed chamber shape is an exponent wall followed immediately by a
 mandatory factor-3 low-load cell. That low-load cell is the selected integer on
 every nontrivial measured Mersenne endpoint.
 
+## Mersenne Boundary Contract
+
+The stronger question is whether Mersenne-producing exponents are exactly the
+prime exponents whose local PGS boundary contract survives at `2^p - 1`.
+
+For each prime exponent `p <= 127`, the boundary-contract probe compares:
+
+```text
+candidate boundary: 2^p - 1
+exponent wall:      2^p
+mandatory-3 cell:   2^p + 1
+PGS-recovered left boundary before 2^p
+```
+
+Measured result:
+
+```text
+prime exponents tested: 31
+Mersenne-producing exponents: 12
+nonworking prime exponents: 19
+boundary survival count: 12
+false positives: 0
+false negatives: 0
+```
+
+The probe recovers the left boundary by scanning left from the exponent wall
+with exact divisor-count state and stopping at the first integer with divisor
+count `2`. It does not use `prevprime`, `nextprime`, or `isprime` to choose the
+boundary.
+
+On this surface, every working exponent has boundary distance `1` from `2^p`,
+meaning the recovered PGS boundary is `2^p - 1`. Every nonworking prime
+exponent has boundary distance greater than `1`, meaning the would-be boundary
+leaks and the recovered chamber begins earlier.
+
+The offset-2 selected-cell pattern is not the full separator:
+
+```text
+working second-cell selected count: 9 / 12
+nonworking second-cell selected count: 0 / 19
+```
+
+The quotient-prime pattern is also not the full separator:
+
+```text
+working (2^p + 1) / 3 prime count: 10 / 12
+nonworking (2^p + 1) / 3 prime count: 5 / 19
+```
+
+The exact separator in this measured exponent range is therefore boundary
+survival, not the later second-cell or quotient-prime condition.
+
 ## Run
 
 ```text
@@ -206,6 +261,9 @@ python3 experiments/exponents/scripts/pgs_exponent_tail_probe.py \
 
 python3 experiments/exponents/scripts/mersenne_pgs_probe.py \
   --output-dir experiments/exponents/output/mersenne_pgs_probe
+
+python3 experiments/exponents/scripts/mersenne_boundary_contract_probe.py \
+  --output-dir experiments/exponents/output/mersenne_boundary_contract_probe
 ```
 
 ## Interpret
