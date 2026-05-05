@@ -1,6 +1,8 @@
 {
   "min_exponent": 2,
   "max_exponent": 31,
+  "candidate_bound": 128,
+  "boundary_rule_id": "pgs_left_boundary_wheel_open_v1",
   "wall_family": "power_of_2",
   "wall_count": 30,
   "boundary_survival_count": 8,
@@ -44,6 +46,40 @@
     },
     {
       "boundary_distance": 57,
+      "count": 1
+    }
+  ],
+  "candidate_offsets_evaluated_distribution": [
+    {
+      "candidate_offsets_evaluated": 1,
+      "count": 16
+    },
+    {
+      "candidate_offsets_evaluated": 2,
+      "count": 5
+    },
+    {
+      "candidate_offsets_evaluated": 3,
+      "count": 2
+    },
+    {
+      "candidate_offsets_evaluated": 4,
+      "count": 2
+    },
+    {
+      "candidate_offsets_evaluated": 11,
+      "count": 2
+    },
+    {
+      "candidate_offsets_evaluated": 5,
+      "count": 1
+    },
+    {
+      "candidate_offsets_evaluated": 10,
+      "count": 1
+    },
+    {
+      "candidate_offsets_evaluated": 15,
       "count": 1
     }
   ],
