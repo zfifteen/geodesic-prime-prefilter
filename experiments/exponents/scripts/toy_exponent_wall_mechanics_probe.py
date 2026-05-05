@@ -15,6 +15,14 @@ ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_OUTPUT_DIR = ROOT / "experiments" / "exponents" / "output" / "toy_exponent_wall_mechanics_probe"
 DEFAULT_MIN_EXPONENT = 2
 DEFAULT_MAX_EXPONENT = 31
+DEFAULT_CANDIDATE_BOUND = 128
+PGS_LEFT_BOUNDARY_RULE_ID = "pgs_left_boundary_wheel_open_v1"
+LOW_FIXED_POINTS = frozenset({2, 3, 5})
+WHEEL_OPEN_RESIDUES_MOD30 = frozenset({1, 7, 11, 13, 17, 19, 23, 29})
+
+
+class PGSBoundaryUnresolvedError(RuntimeError):
+    """Raised when the PGS boundary rule does not resolve inside the bound."""
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -24,6 +32,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--min-exponent", type=int, default=DEFAULT_MIN_EXPONENT)
     parser.add_argument("--max-exponent", type=int, default=DEFAULT_MAX_EXPONENT)
+    parser.add_argument("--candidate-bound", type=int, default=DEFAULT_CANDIDATE_BOUND)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     return parser
 
@@ -46,16 +55,49 @@ def factor_signature(n: int) -> str:
     return "*".join(parts)
 
 
-def pgs_left_boundary(wall: int) -> int:
-    """Recover the left boundary before wall by exact divisor-count state."""
+def boundary_candidate_offsets(wall: int, candidate_bound: int) -> list[int]:
+    """Return wheel-open left-boundary candidate offsets before wall."""
+    if candidate_bound < 1:
+        raise ValueError("candidate_bound must be positive")
+    return [
+        offset
+        for offset in range(1, candidate_bound + 1)
+        if wall - offset in LOW_FIXED_POINTS
+        or (wall - offset > 5 and (wall - offset) % 30 in WHEEL_OPEN_RESIDUES_MOD30)
+    ]
+
+
+def pgs_left_boundary_certificate(
+    wall: int,
+    candidate_bound: int = DEFAULT_CANDIDATE_BOUND,
+) -> dict[str, object]:
+    """Recover the left boundary before wall from bounded PGS candidate state."""
     if wall <= 2:
         raise ValueError("wall must be greater than 2")
-    n = wall - 1
-    while n >= 2:
-        if tau(n) == 2:
-            return n
-        n -= 1
-    raise ValueError("no left boundary found")
+    closed_offsets: list[int] = []
+    for offset in boundary_candidate_offsets(wall, candidate_bound):
+        candidate = wall - offset
+        divisor_count = tau(candidate)
+        if divisor_count == 2:
+            return {
+                "boundary_rule_id": PGS_LEFT_BOUNDARY_RULE_ID,
+                "candidate_bound": candidate_bound,
+                "recovered_left_boundary": candidate,
+                "boundary_distance": offset,
+                "candidate_offsets_evaluated": len(closed_offsets) + 1,
+                "closed_candidate_offsets_before_boundary": ";".join(
+                    str(value) for value in closed_offsets
+                ),
+            }
+        closed_offsets.append(offset)
+    raise PGSBoundaryUnresolvedError(
+        f"PGS left boundary did not resolve wall={wall} within bound={candidate_bound}"
+    )
+
+
+def pgs_left_boundary(wall: int, candidate_bound: int = DEFAULT_CANDIDATE_BOUND) -> int:
+    """Recover the left boundary before wall by bounded PGS candidate state."""
+    return int(pgs_left_boundary_certificate(wall, candidate_bound)["recovered_left_boundary"])
 
 
 def pgs_right_boundary(left_boundary: int) -> int:
@@ -77,21 +119,28 @@ def leftmost_minimizer(left_boundary: int, right_boundary: int) -> tuple[int, in
     return min(value for value, value_tau in values if value_tau == min_tau), min_tau
 
 
-def wall_row(exponent: int) -> dict[str, object]:
+def wall_row(exponent: int, candidate_bound: int = DEFAULT_CANDIDATE_BOUND) -> dict[str, object]:
     """Return one toy exponent-wall mechanics row."""
     wall = 2**exponent
     candidate = wall - 1
     right_neighbor = wall + 1
-    recovered_left_boundary = pgs_left_boundary(wall)
+    boundary_certificate = pgs_left_boundary_certificate(wall, candidate_bound)
+    recovered_left_boundary = int(boundary_certificate["recovered_left_boundary"])
     recovered_right_boundary = pgs_right_boundary(recovered_left_boundary)
     minimizer, minimizer_tau = leftmost_minimizer(
         recovered_left_boundary,
         recovered_right_boundary,
     )
-    boundary_distance = wall - recovered_left_boundary
+    boundary_distance = int(boundary_certificate["boundary_distance"])
     candidate_tau = tau(candidate)
     return {
         "exponent": exponent,
+        "boundary_rule_id": PGS_LEFT_BOUNDARY_RULE_ID,
+        "candidate_bound": candidate_bound,
+        "candidate_offsets_evaluated": boundary_certificate["candidate_offsets_evaluated"],
+        "closed_candidate_offsets_before_boundary": boundary_certificate[
+            "closed_candidate_offsets_before_boundary"
+        ],
         "wall_family": "power_of_2",
         "wall": wall,
         "wall_tau": tau(wall),
@@ -113,13 +162,20 @@ def wall_row(exponent: int) -> dict[str, object]:
     }
 
 
-def collect_rows(min_exponent: int, max_exponent: int) -> list[dict[str, object]]:
+def collect_rows(
+    min_exponent: int,
+    max_exponent: int,
+    candidate_bound: int = DEFAULT_CANDIDATE_BOUND,
+) -> list[dict[str, object]]:
     """Return toy exponent-wall mechanics rows."""
     if min_exponent < 2:
         raise ValueError("min_exponent must be at least 2")
     if max_exponent < min_exponent:
         raise ValueError("max_exponent must be at least min_exponent")
-    return [wall_row(exponent) for exponent in range(min_exponent, max_exponent + 1)]
+    return [
+        wall_row(exponent, candidate_bound)
+        for exponent in range(min_exponent, max_exponent + 1)
+    ]
 
 
 def grouped_counts(rows: list[dict[str, object]], field: str) -> list[dict[str, object]]:
@@ -134,7 +190,12 @@ def grouped_counts(rows: list[dict[str, object]], field: str) -> list[dict[str, 
     ]
 
 
-def summarize(rows: list[dict[str, object]], min_exponent: int, max_exponent: int) -> dict[str, object]:
+def summarize(
+    rows: list[dict[str, object]],
+    min_exponent: int,
+    max_exponent: int,
+    candidate_bound: int,
+) -> dict[str, object]:
     """Return compact toy wall summary."""
     survivors = [row for row in rows if bool(row["boundary_survives"])]
     leaks = [row for row in rows if not bool(row["boundary_survives"])]
@@ -149,6 +210,8 @@ def summarize(rows: list[dict[str, object]], min_exponent: int, max_exponent: in
     return {
         "min_exponent": min_exponent,
         "max_exponent": max_exponent,
+        "candidate_bound": candidate_bound,
+        "boundary_rule_id": PGS_LEFT_BOUNDARY_RULE_ID,
         "wall_family": "power_of_2",
         "wall_count": len(rows),
         "boundary_survival_count": len(survivors),
@@ -158,6 +221,10 @@ def summarize(rows: list[dict[str, object]], min_exponent: int, max_exponent: in
         "audit_false_positive_count": len(false_positive_rows),
         "audit_false_negative_count": len(false_negative_rows),
         "boundary_distance_distribution": grouped_counts(rows, "boundary_distance"),
+        "candidate_offsets_evaluated_distribution": grouped_counts(
+            rows,
+            "candidate_offsets_evaluated",
+        ),
         "right_neighbor_tau_distribution": grouped_counts(rows, "right_neighbor_tau"),
         "minimizer_offset_from_wall_distribution": grouped_counts(
             rows,
@@ -181,6 +248,10 @@ def main(argv: list[str] | None = None) -> int:
     rows = collect_rows(args.min_exponent, args.max_exponent)
     fields = [
         "exponent",
+        "boundary_rule_id",
+        "candidate_bound",
+        "candidate_offsets_evaluated",
+        "closed_candidate_offsets_before_boundary",
         "wall_family",
         "wall",
         "wall_tau",
@@ -212,7 +283,11 @@ def main(argv: list[str] | None = None) -> int:
         fields,
     )
     (args.output_dir / "summary.json").write_text(
-        json.dumps(summarize(rows, args.min_exponent, args.max_exponent), indent=2) + "\n",
+        json.dumps(
+            summarize(rows, args.min_exponent, args.max_exponent, args.candidate_bound),
+            indent=2,
+        )
+        + "\n",
         encoding="utf-8",
     )
     return 0

@@ -174,9 +174,15 @@ boundary distance = W - L(W)
 
 The boundary survives exactly when the distance is `1`.
 
+The current rule is `pgs_left_boundary_wheel_open_v1`. It does not scan every
+integer. It builds bounded left-boundary candidates from low fixed points and
+wheel-open residues, rejects candidates with divisor count greater than `2`,
+and fails explicitly if the configured bound does not resolve.
+
 Measured on the toy surface `e = 2..31`:
 
 ```text
+candidate bound: 128
 walls tested: 30
 boundary survival count: 8
 boundary leak count: 22
@@ -195,6 +201,15 @@ distance 5: 3 rows
 distance 9: 2 rows
 distance 15: 2 rows
 distance 39: 2 rows
+```
+
+Most rows resolve after very few candidate hypotheses:
+
+```text
+1 candidate evaluated: 16 rows
+2 candidates evaluated: 5 rows
+3 candidates evaluated: 2 rows
+4 candidates evaluated: 2 rows
 ```
 
 This toy pass is mechanism-first. It does not use `prevprime`, `nextprime`,

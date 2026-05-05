@@ -32,6 +32,7 @@ def test_live_surface_is_power_of_two_walls_only():
     assert [row["exponent"] for row in rows] == [2, 3, 4, 5, 6]
     assert all(row["wall_family"] == "power_of_2" for row in rows)
     assert all(row["wall"] == 2 ** int(row["exponent"]) for row in rows)
+    assert all(row["boundary_rule_id"] == module.PGS_LEFT_BOUNDARY_RULE_ID for row in rows)
 
 
 def test_left_boundary_uses_divisor_count_fixed_point():
@@ -40,6 +41,34 @@ def test_left_boundary_uses_divisor_count_fixed_point():
 
     assert module.pgs_left_boundary(32) == 31
     assert module.pgs_left_boundary(64) == 61
+
+
+def test_boundary_candidates_are_wheel_open_or_low_fixed_points():
+    """The live boundary surface should use wheel-open hypotheses."""
+    module = load_module()
+
+    assert module.boundary_candidate_offsets(64, 8) == [3, 5]
+    assert module.boundary_candidate_offsets(32, 4) == [1, 3]
+    assert module.boundary_candidate_offsets(4, 2) == [1, 2]
+
+
+def test_boundary_certificate_records_closed_candidate_offsets():
+    """The certificate should record rejected candidate offsets before recovery."""
+    module = load_module()
+    certificate = module.pgs_left_boundary_certificate(2048)
+
+    assert certificate["boundary_rule_id"] == module.PGS_LEFT_BOUNDARY_RULE_ID
+    assert certificate["recovered_left_boundary"] == 2039
+    assert certificate["boundary_distance"] == 9
+    assert certificate["closed_candidate_offsets_before_boundary"] == "1;7"
+
+
+def test_boundary_recovery_fails_loudly_when_bound_is_too_small():
+    """A bounded PGS search should raise instead of falling back."""
+    module = load_module()
+
+    with pytest.raises(module.PGSBoundaryUnresolvedError):
+        module.pgs_left_boundary(64, candidate_bound=2)
 
 
 def test_boundary_distance_is_the_hit_criterion():
@@ -95,6 +124,8 @@ def test_cli_outputs_lf_and_reconcile(tmp_path):
     rows = list(csv.DictReader(rows_path.open(encoding="utf-8", newline="")))
     survivors = list(csv.DictReader(survival_path.open(encoding="utf-8", newline="")))
     leaks = list(csv.DictReader(leak_path.open(encoding="utf-8", newline="")))
+    assert summary["candidate_bound"] == module.DEFAULT_CANDIDATE_BOUND
+    assert summary["boundary_rule_id"] == module.PGS_LEFT_BOUNDARY_RULE_ID
     assert summary["wall_count"] == len(rows)
     assert summary["boundary_survival_count"] == len(survivors)
     assert summary["boundary_leak_count"] == len(leaks)
