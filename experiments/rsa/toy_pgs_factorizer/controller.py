@@ -17,10 +17,23 @@ from pgs_factorizer import factorize, write_jsonl  # noqa: E402
 from validator import (  # noqa: E402
     DEFAULT_MAX_AUDIT_FACTOR,
     decision_knob_rows,
+    directed_reset_replay_matrix_rows,
+    none_none_replay_alias_rows,
     prime_pairs,
+    pgspg_law_matrix_rows,
+    rule_audit_matrix_rows,
+    structural_candidate_matrix_rows,
+    upper_width_failure_artifact,
+    upper_width_failure_rows,
     validate_inference_rows,
     write_csv,
     write_decision_knob_csv,
+    write_directed_reset_replay_matrix_csv,
+    write_none_none_replay_alias_csv,
+    write_pgspg_law_matrix_csv,
+    write_rule_audit_matrix_csv,
+    write_structural_candidate_matrix_csv,
+    write_upper_width_failure_csv,
 )
 
 
@@ -104,6 +117,62 @@ def run_experiment(
     write_survivors(output_dir / "survivor_rows.jsonl", survivor_rows)
     write_csv(output_dir / "audit_results.csv", audit_rows)
     write_decision_knob_csv(output_dir / "decision_knob_rows.csv", knob_rows)
+    write_rule_audit_matrix_csv(
+        output_dir / "rule_audit_matrix.csv",
+        rule_audit_matrix_rows(
+            inference_rows,
+            survivor_rows,
+            max_factor=max_audit_factor,
+        ),
+    )
+    write_structural_candidate_matrix_csv(
+        output_dir / "structural_candidate_matrix.csv",
+        structural_candidate_matrix_rows(
+            inference_rows,
+            survivor_rows,
+            max_factor=max_audit_factor,
+        ),
+    )
+    write_pgspg_law_matrix_csv(
+        output_dir / "pgspg_law_matrix.csv",
+        pgspg_law_matrix_rows(
+            inference_rows,
+            survivor_rows,
+            max_factor=max_audit_factor,
+        ),
+    )
+    write_directed_reset_replay_matrix_csv(
+        output_dir / "directed_reset_replay_matrix.csv",
+        directed_reset_replay_matrix_rows(
+            inference_rows,
+            survivor_rows,
+            max_factor=max_audit_factor,
+        ),
+    )
+    write_none_none_replay_alias_csv(
+        output_dir / "none_none_replay_alias_rows.csv",
+        none_none_replay_alias_rows(
+            inference_rows,
+            survivor_rows,
+            max_factor=max_audit_factor,
+        ),
+    )
+    write_upper_width_failure_csv(
+        output_dir / "upper_width_failure_rows.csv",
+        upper_width_failure_rows(
+            inference_rows,
+            survivor_rows,
+            max_factor=max_audit_factor,
+        ),
+    )
+    write_json(
+        output_dir / "upper_width_first_failure.json",
+        upper_width_failure_artifact(
+            inference_rows,
+            survivor_rows,
+            max_factor=max_audit_factor,
+        ),
+    )
     write_json(output_dir / "summary.json", summary)
     return summary
 
