@@ -1,0 +1,9 @@
+exponent,wall_family,wall,wall_tau,candidate,boundary_distance,boundary_survives,recovered_left_boundary,recovered_right_boundary,recovered_chamber_width,right_neighbor,right_neighbor_tau,leftmost_minimizer,leftmost_minimizer_offset_from_left_boundary,leftmost_minimizer_offset_from_wall,leftmost_minimizer_tau,candidate_tau,candidate_audit_status,candidate_factor_signature
+2,power_of_2,4,3,3,1,True,3,5,2,5,2,4,1,0,3,2,fixed_point,fixed_point
+3,power_of_2,8,4,7,1,True,7,11,4,9,3,9,2,1,3,2,fixed_point,fixed_point
+5,power_of_2,32,6,31,1,True,31,37,6,33,4,33,2,1,4,2,fixed_point,fixed_point
+7,power_of_2,128,8,127,1,True,127,131,4,129,4,129,2,1,4,2,fixed_point,fixed_point
+13,power_of_2,8192,14,8191,1,True,8191,8209,18,8193,4,8193,2,1,4,2,fixed_point,fixed_point
+17,power_of_2,131072,18,131071,1,True,131071,131101,30,131073,4,131073,2,1,4,2,fixed_point,fixed_point
+19,power_of_2,524288,20,524287,1,True,524287,524309,22,524289,4,524289,2,1,4,2,fixed_point,fixed_point
+31,power_of_2,2147483648,32,2147483647,1,True,2147483647,2147483659,12,2147483649,4,2147483649,2,1,4,2,fixed_point,fixed_point

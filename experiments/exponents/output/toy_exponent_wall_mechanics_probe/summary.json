@@ -1,0 +1,150 @@
+{
+  "min_exponent": 2,
+  "max_exponent": 31,
+  "wall_family": "power_of_2",
+  "wall_count": 30,
+  "boundary_survival_count": 8,
+  "boundary_leak_count": 22,
+  "audit_candidate_fixed_point_count": 8,
+  "audit_candidate_composite_count": 22,
+  "audit_false_positive_count": 0,
+  "audit_false_negative_count": 0,
+  "boundary_distance_distribution": [
+    {
+      "boundary_distance": 3,
+      "count": 10
+    },
+    {
+      "boundary_distance": 1,
+      "count": 8
+    },
+    {
+      "boundary_distance": 5,
+      "count": 3
+    },
+    {
+      "boundary_distance": 9,
+      "count": 2
+    },
+    {
+      "boundary_distance": 15,
+      "count": 2
+    },
+    {
+      "boundary_distance": 39,
+      "count": 2
+    },
+    {
+      "boundary_distance": 19,
+      "count": 1
+    },
+    {
+      "boundary_distance": 35,
+      "count": 1
+    },
+    {
+      "boundary_distance": 57,
+      "count": 1
+    }
+  ],
+  "right_neighbor_tau_distribution": [
+    {
+      "right_neighbor_tau": 4,
+      "count": 12
+    },
+    {
+      "right_neighbor_tau": 8,
+      "count": 5
+    },
+    {
+      "right_neighbor_tau": 2,
+      "count": 4
+    },
+    {
+      "right_neighbor_tau": 16,
+      "count": 3
+    },
+    {
+      "right_neighbor_tau": 12,
+      "count": 2
+    },
+    {
+      "right_neighbor_tau": 3,
+      "count": 1
+    },
+    {
+      "right_neighbor_tau": 6,
+      "count": 1
+    },
+    {
+      "right_neighbor_tau": 20,
+      "count": 1
+    },
+    {
+      "right_neighbor_tau": 48,
+      "count": 1
+    }
+  ],
+  "minimizer_offset_from_wall_distribution": [
+    {
+      "leftmost_minimizer_offset_from_wall": 1,
+      "count": 8
+    },
+    {
+      "leftmost_minimizer_offset_from_wall": -2,
+      "count": 4
+    },
+    {
+      "leftmost_minimizer_offset_from_wall": -7,
+      "count": 3
+    },
+    {
+      "leftmost_minimizer_offset_from_wall": 3,
+      "count": 3
+    },
+    {
+      "leftmost_minimizer_offset_from_wall": -3,
+      "count": 2
+    },
+    {
+      "leftmost_minimizer_offset_from_wall": -53,
+      "count": 1
+    },
+    {
+      "leftmost_minimizer_offset_from_wall": -37,
+      "count": 1
+    },
+    {
+      "leftmost_minimizer_offset_from_wall": -35,
+      "count": 1
+    },
+    {
+      "leftmost_minimizer_offset_from_wall": -31,
+      "count": 1
+    },
+    {
+      "leftmost_minimizer_offset_from_wall": -13,
+      "count": 1
+    },
+    {
+      "leftmost_minimizer_offset_from_wall": -9,
+      "count": 1
+    },
+    {
+      "leftmost_minimizer_offset_from_wall": -1,
+      "count": 1
+    },
+    {
+      "leftmost_minimizer_offset_from_wall": 0,
+      "count": 1
+    },
+    {
+      "leftmost_minimizer_offset_from_wall": 6,
+      "count": 1
+    },
+    {
+      "leftmost_minimizer_offset_from_wall": 7,
+      "count": 1
+    }
+  ]
+}
