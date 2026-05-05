@@ -1,0 +1,17 @@
+{
+  "pgs_pressure": {
+    "source_unresolved_count": 134,
+    "pressure_candidate_bound": 4096,
+    "pressure_candidate_seconds_limit": 3.0,
+    "pressure_row_count": 134,
+    "resolved_after_pressure_count": 5,
+    "still_unresolved_count": 129,
+    "inferred_after_pressure_count": 0
+  },
+  "classical_validation": {
+    "validated_inferred_count": 0,
+    "classical_confirmed_count": 0,
+    "classical_false_positive_count": 0
+  },
+  "controller_order": "pgs_pressure_then_classical_validation"
+}

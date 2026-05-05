@@ -1,0 +1,12 @@
+{
+  "row_count": 125,
+  "offset_one_count": 95,
+  "offset_one_share": 0.76,
+  "min_exponent": 167,
+  "max_exponent": 997,
+  "most_common_unresolved_offset": {
+    "pressure_unresolved_candidate_offset": "1",
+    "count": 95
+  },
+  "offset_one_stop_rule_triggered": true
+}

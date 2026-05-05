@@ -1,0 +1,9 @@
+{
+  "source_unresolved_count": 129,
+  "pressure_candidate_bound": 4096,
+  "pressure_candidate_seconds_limit": 10.0,
+  "pressure_row_count": 129,
+  "resolved_after_pressure_count": 4,
+  "still_unresolved_count": 125,
+  "inferred_after_pressure_count": 0
+}
