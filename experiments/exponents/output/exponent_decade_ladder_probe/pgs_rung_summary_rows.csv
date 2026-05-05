@@ -1,4 +1,4 @@
-rung_max_exponent,row_count,excluded_exponent_count,left_prime_resolved_count,left_prime_unresolved_count,mersenne_location_inferred_count
-31,30,19,11,0,8
-100,99,74,25,0,10
-1000,999,831,34,134,14
+rung_min_exponent,rung_max_exponent,row_count,excluded_exponent_count,left_prime_resolved_count,left_prime_unresolved_count,mersenne_location_inferred_count
+2,31,30,19,11,0,8
+32,100,69,55,14,0,2
+101,1000,900,757,9,134,4

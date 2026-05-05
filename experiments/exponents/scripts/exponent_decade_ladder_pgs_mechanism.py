@@ -32,6 +32,7 @@ STATUS_LEFT_PRIME_UNRESOLVED = "left_prime_unresolved"
 
 
 PGS_FIELDNAMES = [
+    "rung_min_exponent",
     "rung_max_exponent",
     "exponent",
     "exponent_divisor_count",
@@ -107,6 +108,18 @@ def parse_rungs(value: str) -> list[int]:
     return sorted(dict.fromkeys(rungs))
 
 
+def rung_windows(rungs: list[int]) -> list[tuple[int, int]]:
+    """Return non-cumulative exponent windows for sorted rungs."""
+    windows: list[tuple[int, int]] = []
+    previous = 1
+    for rung in rungs:
+        start = max(2, previous + 1)
+        if start <= rung:
+            windows.append((start, rung))
+        previous = rung
+    return windows
+
+
 def blank_boundary_fields() -> dict[str, object]:
     """Return empty boundary fields for rows without boundary recovery."""
     return {
@@ -125,9 +138,15 @@ def blank_boundary_fields() -> dict[str, object]:
     }
 
 
-def excluded_exponent_row(rung_max_exponent: int, exponent: int, exponent_tau: int) -> dict[str, object]:
+def excluded_exponent_row(
+    rung_min_exponent: int,
+    rung_max_exponent: int,
+    exponent: int,
+    exponent_tau: int,
+) -> dict[str, object]:
     """Return a row excluded by exponent divisor count."""
     return {
+        "rung_min_exponent": rung_min_exponent,
         "rung_max_exponent": rung_max_exponent,
         "exponent": exponent,
         "exponent_divisor_count": exponent_tau,
@@ -138,6 +157,7 @@ def excluded_exponent_row(rung_max_exponent: int, exponent: int, exponent_tau: i
 
 
 def resolved_or_unresolved_row(
+    rung_min_exponent: int,
     rung_max_exponent: int,
     exponent: int,
     exponent_tau: int,
@@ -153,6 +173,7 @@ def resolved_or_unresolved_row(
             candidate_tau = limited_tau(candidate, candidate_seconds_limit)
         except CandidateWorkLimitReached:
             return {
+                "rung_min_exponent": rung_min_exponent,
                 "rung_max_exponent": rung_max_exponent,
                 "exponent": exponent,
                 "exponent_divisor_count": exponent_tau,
@@ -176,6 +197,7 @@ def resolved_or_unresolved_row(
         if candidate_tau == 2:
             distance = offset
             return {
+                "rung_min_exponent": rung_min_exponent,
                 "rung_max_exponent": rung_max_exponent,
                 "exponent": exponent,
                 "exponent_divisor_count": exponent_tau,
@@ -198,6 +220,7 @@ def resolved_or_unresolved_row(
             }
         rejected_offsets.append(offset)
     return {
+        "rung_min_exponent": rung_min_exponent,
         "rung_max_exponent": rung_max_exponent,
         "exponent": exponent,
         "exponent_divisor_count": exponent_tau,
@@ -225,12 +248,19 @@ def pgs_row(
     exponent: int,
     candidate_bound: int,
     candidate_seconds_limit: float = DEFAULT_CANDIDATE_SECONDS_LIMIT,
+    rung_min_exponent: int = 2,
 ) -> dict[str, object]:
     """Return one PGS ladder row."""
     exponent_tau = tau(exponent)
     if exponent_tau != 2:
-        return excluded_exponent_row(rung_max_exponent, exponent, exponent_tau)
+        return excluded_exponent_row(
+            rung_min_exponent,
+            rung_max_exponent,
+            exponent,
+            exponent_tau,
+        )
     return resolved_or_unresolved_row(
+        rung_min_exponent,
         rung_max_exponent,
         exponent,
         exponent_tau,
@@ -250,9 +280,17 @@ def collect_rows(
     if candidate_seconds_limit < 0:
         raise ValueError("candidate_seconds_limit must be nonnegative")
     rows: list[dict[str, object]] = []
-    for rung in rungs:
-        for exponent in range(2, rung + 1):
-            rows.append(pgs_row(rung, exponent, candidate_bound, candidate_seconds_limit))
+    for start, rung in rung_windows(rungs):
+        for exponent in range(start, rung + 1):
+            rows.append(
+                pgs_row(
+                    rung,
+                    exponent,
+                    candidate_bound,
+                    candidate_seconds_limit,
+                    start,
+                )
+            )
     return rows
 
 
@@ -270,13 +308,15 @@ def grouped_counts(rows: list[dict[str, object]], field: str) -> list[dict[str, 
 
 def rung_summary_rows(rows: list[dict[str, object]]) -> list[dict[str, object]]:
     """Return one summary row for each rung."""
-    by_rung: dict[int, list[dict[str, object]]] = {}
+    by_rung: dict[tuple[int, int], list[dict[str, object]]] = {}
     for row in rows:
-        by_rung.setdefault(int(row["rung_max_exponent"]), []).append(row)
+        key = (int(row["rung_min_exponent"]), int(row["rung_max_exponent"]))
+        by_rung.setdefault(key, []).append(row)
     summaries = []
-    for rung, rung_rows in sorted(by_rung.items()):
+    for (start, rung), rung_rows in sorted(by_rung.items()):
         summaries.append(
             {
+                "rung_min_exponent": start,
                 "rung_max_exponent": rung,
                 "row_count": len(rung_rows),
                 "excluded_exponent_count": sum(
@@ -299,6 +339,35 @@ def rung_summary_rows(rows: list[dict[str, object]]) -> list[dict[str, object]]:
     return summaries
 
 
+def cumulative_summary_rows(rows: list[dict[str, object]], rungs: list[int]) -> list[dict[str, object]]:
+    """Return cumulative summary rows through each rung."""
+    summaries = []
+    for rung in rungs:
+        cumulative_rows = [row for row in rows if int(row["exponent"]) <= rung]
+        summaries.append(
+            {
+                "rung_max_exponent": rung,
+                "row_count": len(cumulative_rows),
+                "excluded_exponent_count": sum(
+                    row["exponent_status"] == STATUS_EXPONENT_DIVISOR_COUNT_NOT_TWO
+                    for row in cumulative_rows
+                ),
+                "left_prime_resolved_count": sum(
+                    row["exponent_status"] == STATUS_LEFT_PRIME_RESOLVED
+                    for row in cumulative_rows
+                ),
+                "left_prime_unresolved_count": sum(
+                    row["exponent_status"] == STATUS_LEFT_PRIME_UNRESOLVED
+                    for row in cumulative_rows
+                ),
+                "mersenne_location_inferred_count": sum(
+                    bool(row["mersenne_location_inferred"]) for row in cumulative_rows
+                ),
+            }
+        )
+    return summaries
+
+
 def summarize(
     rows: list[dict[str, object]],
     rungs: list[int],
@@ -308,9 +377,35 @@ def summarize(
     """Return compact PGS ladder summary."""
     return {
         "rungs": rungs,
+        "row_model": "non_cumulative_exponent_windows",
         "candidate_bound": candidate_bound,
         "candidate_seconds_limit": candidate_seconds_limit,
         "row_count": len(rows),
+        "unique_exponents_tested": len({int(row["exponent"]) for row in rows}),
+        "unique_exponents_excluded_by_tau_e": len(
+            {
+                int(row["exponent"])
+                for row in rows
+                if row["exponent_status"] == STATUS_EXPONENT_DIVISOR_COUNT_NOT_TWO
+            }
+        ),
+        "unique_left_prime_resolved": len(
+            {
+                int(row["exponent"])
+                for row in rows
+                if row["exponent_status"] == STATUS_LEFT_PRIME_RESOLVED
+            }
+        ),
+        "unique_left_prime_unresolved": len(
+            {
+                int(row["exponent"])
+                for row in rows
+                if row["exponent_status"] == STATUS_LEFT_PRIME_UNRESOLVED
+            }
+        ),
+        "unique_mersenne_locations_inferred": len(
+            {int(row["exponent"]) for row in rows if bool(row["mersenne_location_inferred"])}
+        ),
         "excluded_exponent_count": sum(
             row["exponent_status"] == STATUS_EXPONENT_DIVISOR_COUNT_NOT_TWO
             for row in rows
@@ -367,6 +462,19 @@ def write_outputs(
     write_csv(
         output_dir / "pgs_rung_summary_rows.csv",
         rung_summary_rows(rows),
+        [
+            "rung_min_exponent",
+            "rung_max_exponent",
+            "row_count",
+            "excluded_exponent_count",
+            "left_prime_resolved_count",
+            "left_prime_unresolved_count",
+            "mersenne_location_inferred_count",
+        ],
+    )
+    write_csv(
+        output_dir / "pgs_cumulative_summary_rows.csv",
+        cumulative_summary_rows(rows, rungs),
         [
             "rung_max_exponent",
             "row_count",

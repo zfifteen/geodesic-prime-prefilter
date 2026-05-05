@@ -271,6 +271,7 @@ The ladder outputs are:
 ```text
 experiments/exponents/output/exponent_decade_ladder_probe/pgs_ladder_rows.csv
 experiments/exponents/output/exponent_decade_ladder_probe/pgs_rung_summary_rows.csv
+experiments/exponents/output/exponent_decade_ladder_probe/pgs_cumulative_summary_rows.csv
 experiments/exponents/output/exponent_decade_ladder_probe/pgs_summary.json
 experiments/exponents/output/exponent_decade_ladder_probe/validation_rows.csv
 experiments/exponents/output/exponent_decade_ladder_probe/validation_summary.json
@@ -284,21 +285,30 @@ limit:
 
 ```text
 rungs: 31, 100, 1000
-row count: 1128
-excluded by tau(e) != 2: 924
-left-prime resolved rows: 70
+row model: non-cumulative exponent windows
+unique exponents tested: 999
+excluded by tau(e) != 2: 831
+left-prime resolved rows: 34
 left-prime unresolved rows: 134
-PGS inferred Mersenne locations: 32
-classical Mersenne-prime validations: 32
+PGS inferred Mersenne locations: 14
+classical Mersenne-prime validations: 14
 classical false positives: 0
 classical false negatives: 0
 ```
 
-Per rung:
+New exponent window per rung:
 
 ```text
-e <= 31:   8 inferred, 0 unresolved
-e <= 100: 10 inferred, 0 unresolved
+2 <= e <= 31:      8 inferred, 0 unresolved
+32 <= e <= 100:    2 inferred, 0 unresolved
+101 <= e <= 1000:  4 inferred, 134 unresolved
+```
+
+Cumulative view:
+
+```text
+e <= 31:    8 inferred, 0 unresolved
+e <= 100:  10 inferred, 0 unresolved
 e <= 1000: 14 inferred, 134 unresolved
 ```
 
