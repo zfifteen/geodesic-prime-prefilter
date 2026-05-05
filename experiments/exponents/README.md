@@ -60,6 +60,10 @@ experiments/exponents/output/pgs_exponent_tail_probe/decade_next_layer_pressure_
 experiments/exponents/output/pgs_exponent_tail_probe/decade_carrier_capacity_rows.csv
 experiments/exponents/output/pgs_exponent_tail_probe/depth_exponent_rows.csv
 experiments/exponents/output/pgs_exponent_tail_probe/residue_exponent_rows.csv
+experiments/exponents/output/toy_exponent_wall_mechanics_probe/summary.json
+experiments/exponents/output/toy_exponent_wall_mechanics_probe/toy_wall_rows.csv
+experiments/exponents/output/toy_exponent_wall_mechanics_probe/boundary_survival_rows.csv
+experiments/exponents/output/toy_exponent_wall_mechanics_probe/boundary_leak_rows.csv
 experiments/exponents/output/mersenne_boundary_contract_probe/summary.json
 experiments/exponents/output/mersenne_boundary_contract_probe/boundary_contract_rows.csv
 experiments/exponents/output/mersenne_boundary_contract_probe/boundary_failure_rows.csv
@@ -151,6 +155,52 @@ repeated_17: 1 / 154 next-layer rows, capacity floor(10^18 / 17^3) = 20354162426
 The scale increase preserves the same ordering: repeated `7` remains the
 dominant repeated least-factor carrier, and it keeps the largest post-triple
 capacity at every tested decade.
+
+## Toy Exponent Wall Mechanics
+
+The reset experiment starts from the smallest exponent wall:
+
+```text
+W = 2^e
+```
+
+For each wall, the live PGS step scans left with exact divisor-count state and
+stops at the first integer with divisor count `2`. That recovered integer is
+the left boundary `L(W)`. The first measurement is:
+
+```text
+boundary distance = W - L(W)
+```
+
+The boundary survives exactly when the distance is `1`.
+
+Measured on the toy surface `e = 2..31`:
+
+```text
+walls tested: 30
+boundary survival count: 8
+boundary leak count: 22
+candidate fixed-point audit count: 8
+candidate composite audit count: 22
+audit false positives: 0
+audit false negatives: 0
+```
+
+The dominant leak distance is `3`:
+
+```text
+distance 3: 10 rows
+distance 1: 8 rows
+distance 5: 3 rows
+distance 9: 2 rows
+distance 15: 2 rows
+distance 39: 2 rows
+```
+
+This toy pass is mechanism-first. It does not use `prevprime`, `nextprime`,
+`isprime`, known Mersenne exponent lists, or endpoint lookup logic inside the
+live recovery path. Factor signatures are diagnostics after the boundary has
+already been recovered.
 
 ## Live PGS Boundary Recovery
 
@@ -254,6 +304,9 @@ at offset `1`, while the chamber selection moves one step right to offset `2`.
 ```text
 python3 experiments/exponents/scripts/pgs_exponent_tail_probe.py \
   --output-dir experiments/exponents/output/pgs_exponent_tail_probe
+
+python3 experiments/exponents/scripts/toy_exponent_wall_mechanics_probe.py \
+  --output-dir experiments/exponents/output/toy_exponent_wall_mechanics_probe
 
 python3 experiments/exponents/scripts/mersenne_boundary_contract_probe.py \
   --output-dir experiments/exponents/output/mersenne_boundary_contract_probe
