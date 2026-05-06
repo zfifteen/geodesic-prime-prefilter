@@ -1,21 +1,21 @@
 #!/usr/bin/env python3
-"""Toy PGS backward chamber lock demonstration.
+"""Toy PGS recursive backward chamber lock demonstration.
 
 This script does not compute divisor counts by trial division. It consumes a
 fixed exact chamber-state table and applies the PGS endpoint law:
 
     tau(k) == 2 locks a prime-chain endpoint.
 
-The toy modulus annotation is n = 35 = 5 * 7. The product relation is printed
-only as audit context. It is not used by the walk.
+It then applies reciprocal floor transport among locked endpoints. The toy
+modulus annotation is n = 35 = 5 * 7. The product relation is printed only as
+audit context after the PGS walk and floor closure have selected the pair.
 """
 
 from __future__ import annotations
 
 
 START_N = 35
-STOP_AT = 5
-AUDIT_FACTOR_ENDPOINTS = frozenset({5, 7})
+MIN_COORDINATE = 2
 
 EXACT_CHAMBER_TAU = {
     35: 4,
@@ -52,57 +52,96 @@ EXACT_CHAMBER_TAU = {
 }
 
 
-def backward_chambers(start: int, stop_at: int) -> list[dict[str, object]]:
-    """Walk backward and lock each endpoint by the tau(k) == 2 law."""
+def reciprocal_floor_closure(modulus: int, endpoints: list[int]) -> tuple[int, int] | None:
+    """Return the first mutual floor-transport closure among locked endpoints."""
+    endpoint_set = frozenset(endpoints)
+    for endpoint in endpoints:
+        transported = modulus // endpoint
+        if transported not in endpoint_set:
+            continue
+        if modulus // transported != endpoint:
+            continue
+        return max(endpoint, transported), min(endpoint, transported)
+    return None
+
+
+def recursive_backward_walk(start: int, min_coordinate: int) -> dict[str, object]:
+    """Walk backward until reciprocal floor closure appears."""
     chambers: list[dict[str, object]] = []
     chamber_numbers: list[int] = []
     chamber_counts: list[int] = []
+    endpoints: list[int] = []
 
-    for k in range(start, stop_at - 1, -1):
+    for k in range(start, min_coordinate - 1, -1):
         tau_k = EXACT_CHAMBER_TAU[k]
         chamber_numbers.append(k)
         chamber_counts.append(tau_k)
 
         if tau_k == 2:
+            endpoints.append(k)
             chambers.append(
                 {
                     "read": tuple(chamber_numbers),
                     "tau": tuple(chamber_counts),
                     "endpoint": k,
-                    "audit_factor_endpoint": k in AUDIT_FACTOR_ENDPOINTS,
+                    "reciprocal_floor_closure": reciprocal_floor_closure(start, endpoints),
                 }
             )
+            if chambers[-1]["reciprocal_floor_closure"] is not None:
+                return {
+                    "chambers": tuple(chambers),
+                    "endpoints": tuple(endpoints),
+                    "closure": chambers[-1]["reciprocal_floor_closure"],
+                    "stop_reason": "reciprocal_floor_closure_locked",
+                }
             chamber_numbers = []
             chamber_counts = []
 
-    return chambers
+    return {
+        "chambers": tuple(chambers),
+        "endpoints": tuple(endpoints),
+        "closure": None,
+        "stop_reason": "unresolved_by_no_reciprocal_floor_closure",
+    }
 
 
 def main() -> None:
-    print("Toy PGS backward chamber lock")
+    print("Toy PGS recursive backward chamber lock")
     print(f"start_n: {START_N}")
-    print("audit_annotation: 35 = 5 * 7")
     print("walk_rule: lock endpoint when tau(k) == 2")
+    print("coupling_rule: stop at mutual floor transport among locked endpoints")
     print("forbidden_methods_used: none")
     print()
 
-    endpoints: list[int] = []
-    for index, chamber in enumerate(backward_chambers(START_N, STOP_AT), start=1):
+    result = recursive_backward_walk(START_N, MIN_COORDINATE)
+    endpoints = list(result["endpoints"])
+    for index, chamber in enumerate(result["chambers"], start=1):
         endpoint = int(chamber["endpoint"])
-        endpoints.append(endpoint)
-        factor_mark = " audit-factor-endpoint" if chamber["audit_factor_endpoint"] else ""
         print(f"chamber_{index}:")
         print(f"  read: {list(chamber['read'])}")
         print(f"  tau:  {list(chamber['tau'])}")
-        print(f"  lock: {endpoint}{factor_mark}")
+        print(f"  lock: {endpoint}")
+        closure = chamber["reciprocal_floor_closure"]
+        if closure is not None:
+            upper, lower = closure
+            print(f"  reciprocal_floor_closure: {upper} -> {lower} and {lower} -> {upper}")
         print()
 
     print("endpoint_chain:")
     print("  " + " -> ".join(str(endpoint) for endpoint in endpoints))
     print()
+    print("stop_reason:")
+    print(f"  {result['stop_reason']}")
+    print()
+    if result["closure"] is not None:
+        upper, lower = result["closure"]
+        print("selected_pair:")
+        print(f"  q = {upper}")
+        print(f"  p = {lower}")
+        print()
     print("toy_result:")
-    print("  The walk traversed 7 and 5 as ordinary chain endpoints.")
-    print("  The product annotation names why those endpoints matter for n = 35.")
+    print("  The recursive backward walk selected 7 and 5 by endpoint locks plus floor closure.")
+    print("  The audit relation is 35 = 5 * 7, after the PGS selection.")
 
 
 if __name__ == "__main__":
