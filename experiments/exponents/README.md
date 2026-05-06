@@ -312,6 +312,246 @@ e <= 100:  10 inferred, 0 unresolved
 e <= 1000: 14 inferred, 134 unresolved
 ```
 
+## PGSMPG v0.1
+
+The Prime Gap Structure Mersenne Prime Generator starts from an accepted
+Mersenne exponent and emits the next exponent inferred by PGS.
+
+The contract is only:
+
+```text
+accepted Mersenne exponent p -> next Mersenne exponent q
+```
+
+The output stream is physically minimal:
+
+```json
+{"p": 31, "q": 61}
+```
+
+For each candidate exponent `e > p`, the live generator first measures
+`tau(e)`. If `tau(e) != 2`, the candidate exponent is excluded before the
+generator inspects `2^e - 1`.
+
+If `tau(e) == 2`, the generator mirrors the PGSPG chamber-reset rule around the
+wall:
+
+```text
+W = 2^e
+candidate boundary = W - offset
+```
+
+The v0.1 live rule scans leftward through wheel-open boundary candidates and
+emits the first exponent whose recovered boundary is at distance `1`.
+
+That full boundary scan is an implementation detail of v0.1, not the permanent
+PGSMPG contract. The successor generator does not need the exact nearest-left
+prime for every rejected exponent. A rejected candidate exponent only needs
+enough PGS state to continue scanning.
+
+Default v0.1 run:
+
+```text
+start exponent: 2
+chain length requested: 10
+max exponent: 127
+candidate bound: 4096
+emitted transition records: 9
+Mersenne exponents recovered: 10
+classical validation agreements: 9
+unresolved records: 0
+```
+
+The recovered exponent chain is:
+
+```text
+2, 3, 5, 7, 13, 17, 19, 31, 61, 89
+```
+
+The emitted transition records are:
+
+```text
+2 -> 3
+3 -> 5
+5 -> 7
+7 -> 13
+13 -> 17
+17 -> 19
+19 -> 31
+31 -> 61
+61 -> 89
+```
+
+The live generator does not use endpoint lookup, factorization, known Mersenne
+exponent lists, `prevprime`, `nextprime`, or `isprime`. The validator checks the
+emitted records after the PGS rows exist.
+
+## PGSMPG Baseline Cost Stats
+
+The baseline stats harness measures the existing PGSMPG path unchanged.
+
+The measured value ceiling is:
+
+```text
+2^p - 1 <= 10^50
+```
+
+That gives the exponent ceiling:
+
+```text
+p <= 166
+```
+
+The recovered Mersenne exponents under this ceiling are:
+
+```text
+2, 3, 5, 7, 13, 17, 19, 31, 61, 89, 107, 127
+```
+
+The harness also records the terminal unresolved scan from `127` through `166`,
+so the measurement means: find every PGSMPG Mersenne exponent under `10^50`,
+then stop at the ceiling.
+
+Baseline with the current SymPy-backed `tau`:
+
+```text
+candidate bound: 4096
+resolved transitions: 11
+terminal unresolved scans: 1
+tau calls: 695
+exponent tau calls: 164
+boundary tau calls: 531
+tau elapsed seconds: 69.73206145729637
+maximum tau call seconds: 9.69560304202605
+maximum boundary input bit length: 163
+```
+
+The terminal scan after `p = 127` dominates the boundary work:
+
+```text
+terminal scan attempted exponents: 128..166
+terminal scan tau calls: 194
+terminal scan boundary tau calls: 155
+```
+
+The generator and stats artifacts now store compact integer diagnostics:
+exponents, offsets, divisor counts, bit lengths, and timing. They do not write
+full `2^p`, `2^p - 1`, left-boundary, or per-candidate integers into sidecar
+records. The live scan also evaluates only admissible left offsets. Offsets
+that cannot be prime candidates do not receive a divisor-count call.
+
+This keeps the rule scale-independent and prevents artifact size or impossible
+candidate offsets from becoming the limiting factor before arithmetic itself
+does.
+
+## Direct Tau Replacement Result
+
+A direct thresholded `tau(n, 2)` replacement was tested and rejected as the next
+implementation path. This test was run before the admissible-offset cleanup, so
+its call count belongs to the earlier full-prefix scan, not the current
+optimized v0.1 baseline.
+
+Measured on the same `10^18` surface:
+
+```text
+same recovered exponent chain: 2, 3, 5, 7, 13, 17, 19, 31
+same tau call count: 475
+SymPy-backed tau elapsed seconds: 0.1290664139087312
+direct thresholded tau elapsed seconds: 59.748020194878336
+direct thresholded maximum tau call seconds: 51.217119958018884
+```
+
+The direct thresholded function reduced no candidate surface. It only changed
+how each candidate was certified. Prime boundary candidates still required a
+full absence-of-divisor check, and that dominated the run.
+
+The result is an invalidated implementation path:
+
+```text
+Do not replace the current generator with a direct divisor scan for tau(n, 2).
+```
+
+## Residue-Return Side Probe
+
+A disposable side probe tested residue-return gating against the actual PGSMPG
+successor contract.
+
+Measured on the `10^18` surface:
+
+```text
+current PGSMPG exponents: 2, 3, 5, 7, 13, 17, 19, 31
+residue-return gated exponents: 2, 3, 5, 7, 13, 17, 19, 31
+current boundary tau calls: 418
+residue-return gated boundary tau calls: 10
+boundary tau call reduction: 408
+```
+
+The side probe preserved the successor output while avoiding exact boundary
+recovery for non-surviving candidate exponents. That matches the PGSMPG
+contract better than the v0.1 full-boundary scan.
+
+The next implementation target is therefore:
+
+```text
+accepted p
+scan e > p
+exclude e when tau(e) != 2
+test offset-1 survival for prime exponents
+use residue-return pressure to reject or defer non-survivors
+emit the first surviving e
+```
+
+Do not compute exact nearest-left-prime distances for non-survivors in PGSMPG
+v0.2.
+
+## Mersenne Order-Filter Validation
+
+For a composite Mersenne number `2^p - 1`, any prime factor must satisfy:
+
+```text
+factor = 1 mod 2p
+factor = 1 or 7 mod 8
+```
+
+The validation probe checks this condition on prime exponents `p <= 127`.
+The measured surface is:
+
+```text
+prime exponents tested: 31
+Mersenne-prime rows: 12
+composite Mersenne rows: 19
+order-filter failures: 0
+```
+
+The same probe now measures fixed-point residue return before the least factor
+appears. For an order-filter candidate `m`, it computes the distance from
+`2^p mod m` to `1`. Only candidates that set a new record-low distance are
+kept. A zero distance is the least-factor obstruction.
+
+Measured with a raw-rank scan limit of `10000`:
+
+```text
+composite rows scanned: 15
+composite rows skipped above rank limit: 4
+record-low residue events: 35
+zero-distance hits found: 15
+maximum compression ratio: 254.33333333333334
+median record-low event count: 2
+```
+
+Example:
+
+```text
+p = 59
+raw order-filter candidates before least factor: 763
+record-low fixed-point return events: 3
+zero-distance event rank: 763
+least factor: 179951
+```
+
+The result changes the immediate implementation target from raw divisor-count
+search to fixed-point residue-return search.
+
 ## Unresolved-Row Pressure
 
 The first pressure campaign reuses the same PGS rule on the `134` unresolved
@@ -449,6 +689,12 @@ python3 experiments/exponents/scripts/mersenne_boundary_contract_probe.py \
 
 python3 experiments/exponents/validation/mersenne_known_endpoint_validation.py \
   --output-dir experiments/exponents/output/mersenne_known_endpoint_validation
+
+python3 experiments/exponents/validation/pgs_mersenne_order_filter_validation.py \
+  --output-dir experiments/exponents/output/pgs_mersenne_order_filter_validation
+
+python3 experiments/exponents/validation/pgs_mersenne_prime_generator_baseline_stats.py \
+  --output-dir experiments/exponents/output/pgs_mersenne_prime_generator_baseline_stats
 ```
 
 ## Interpret
