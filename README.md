@@ -85,7 +85,7 @@ The approach in this repository starts from a known prime and reads the factor s
 
 That record simply says: start here, the next prime is there. No trial division, no Miller-Rabin rounds, no probabilistic guesses are needed to choose the answer. The arithmetic structure itself shows where the gap ends. Any verification testing that follows is only confirmation; it is not part of the generation step.
 
-The same principle now extends to a dedicated [Mersenne-prime generator](experiments/exponents/README.md). Instead of starting from an ordinary prime, the Mersenne variant starts from an accepted Mersenne exponent, reads the prime-gap structure around the exponent wall `2^e`, and emits the next exponent whose left boundary lands exactly at `2^e - 1`. This is a remarkable lift of the core method: the generator is not looking up known Mersenne primes or asking a primality oracle to find them. It is reading the local divisor-count structure of the wall and producing the next Mersenne exponent as a direct PGS successor.
+The same principle extends to a dedicated [Mersenne-prime generator](experiments/exponents/README.md). Instead of starting from an ordinary prime, the Mersenne variant starts from an accepted Mersenne exponent, reads the prime-gap structure around the exponent wall `2^e`, and emits the next exponent whose left boundary lands exactly at `2^e - 1`. This is a remarkable lift of the core method: the generator is not looking up known Mersenne primes or asking a primality oracle to find them. It is reading the local divisor-count structure of the wall and producing the next Mersenne exponent as a direct PGS successor.
 
 ## Where This Leads
 
