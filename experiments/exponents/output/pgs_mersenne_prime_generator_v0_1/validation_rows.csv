@@ -1,0 +1,10 @@
+p,q,classical_next_known_mersenne_exponent,classical_q_is_known_mersenne_exponent,classical_mersenne_number_is_prime,classical_agreement
+2,3,3,True,True,True
+3,5,5,True,True,True
+5,7,7,True,True,True
+7,13,13,True,True,True
+13,17,17,True,True,True
+17,19,19,True,True,True
+19,31,31,True,True,True
+31,61,61,True,True,True
+61,89,89,True,True,True

@@ -1,0 +1,31 @@
+{
+  "pgs_generator": {
+    "version": "0.1.0",
+    "freeze_id": "pgs_mersenne_prime_generator_v0_1",
+    "input_count": 1,
+    "emitted": 9,
+    "unresolved": 0,
+    "max_exponent": 127,
+    "candidate_bound": 4096,
+    "chain_length_requested": 10,
+    "chain_exponent_count": 10,
+    "chain_exponents": [
+      2,
+      3,
+      5,
+      7,
+      13,
+      17,
+      19,
+      31,
+      61,
+      89
+    ]
+  },
+  "classical_validation": {
+    "validated_record_count": 9,
+    "classical_agreement_count": 9,
+    "classical_disagreement_count": 0
+  },
+  "controller_order": "pgs_generator_then_classical_validation"
+}

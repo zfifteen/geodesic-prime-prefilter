@@ -1,0 +1,18 @@
+{
+  "max_exponent": 127,
+  "prime_exponent_count": 31,
+  "mersenne_prime_count": 12,
+  "mersenne_composite_count": 19,
+  "composite_order_filter_pass_count": 19,
+  "composite_order_filter_failure_count": 0,
+  "max_order_filter_candidate_rank": 18396879229,
+  "median_order_filter_candidate_rank": 13,
+  "residue_return_scan_rank_limit": 10000,
+  "residue_return_scanned_composite_count": 15,
+  "residue_return_skipped_composite_count": 4,
+  "residue_return_event_count": 35,
+  "residue_return_zero_pressure_found_count": 15,
+  "max_residue_return_compression_ratio": 254.33333333333334,
+  "median_residue_return_event_count": 2,
+  "result": "SURVIVES"
+}

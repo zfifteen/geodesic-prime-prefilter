@@ -1,0 +1,30 @@
+{
+  "value_ceiling": 100000000000000000000000000000000000000000000000000,
+  "max_exponent": 166,
+  "candidate_bound": 4096,
+  "mersenne_exponents": [
+    2,
+    3,
+    5,
+    7,
+    13,
+    17,
+    19,
+    31,
+    61,
+    89,
+    107,
+    127
+  ],
+  "mersenne_exponent_count": 12,
+  "resolved_transition_count": 11,
+  "terminal_unresolved_count": 1,
+  "tau_call_count": 695,
+  "exponent_tau_call_count": 164,
+  "boundary_tau_call_count": 531,
+  "tau_elapsed_seconds": 69.73206145729637,
+  "max_tau_call_seconds": 9.69560304202605,
+  "max_tau_input_bit_length": 163,
+  "max_boundary_input_bit_length": 163,
+  "transition_rows": 12
+}
