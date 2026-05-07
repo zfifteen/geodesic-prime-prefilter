@@ -1,0 +1,123 @@
+{
+  "feature_summaries": [
+    {
+      "feature": "cell_key+target_side+lag23_reduced_signature",
+      "group_count": 118,
+      "repeated_group_count": 16,
+      "repeated_mixed_group_count": 0,
+      "repeated_pure_group_count": 16,
+      "rule_id": "grammar_recursive_target_catalog_v1",
+      "singleton_group_count": 102
+    },
+    {
+      "feature": "cell_key+target_side+lag2_class_signature",
+      "group_count": 41,
+      "repeated_group_count": 32,
+      "repeated_mixed_group_count": 23,
+      "repeated_pure_group_count": 9,
+      "rule_id": "grammar_recursive_target_catalog_v1",
+      "singleton_group_count": 9
+    },
+    {
+      "feature": "cell_key+target_side+lag2_reduced_signature",
+      "group_count": 108,
+      "repeated_group_count": 24,
+      "repeated_mixed_group_count": 6,
+      "repeated_pure_group_count": 18,
+      "rule_id": "grammar_recursive_target_catalog_v1",
+      "singleton_group_count": 84
+    },
+    {
+      "feature": "cell_key+target_side+lag2_reduced_signature+lag3_reduced_signature",
+      "group_count": 118,
+      "repeated_group_count": 16,
+      "repeated_mixed_group_count": 0,
+      "repeated_pure_group_count": 16,
+      "rule_id": "grammar_recursive_target_catalog_v1",
+      "singleton_group_count": 102
+    },
+    {
+      "feature": "cell_key+target_side+outward_class_signature+inward_class_signature",
+      "group_count": 77,
+      "repeated_group_count": 35,
+      "repeated_mixed_group_count": 0,
+      "repeated_pure_group_count": 35,
+      "rule_id": "grammar_recursive_target_catalog_v1",
+      "singleton_group_count": 42
+    },
+    {
+      "feature": "cell_key+target_side+prime_pair_offset_group+lag2_class_signature",
+      "group_count": 79,
+      "repeated_group_count": 40,
+      "repeated_mixed_group_count": 27,
+      "repeated_pure_group_count": 13,
+      "rule_id": "grammar_recursive_target_catalog_v1",
+      "singleton_group_count": 39
+    },
+    {
+      "feature": "cell_key+target_side+prime_pair_offset_group+recursive_class_signature",
+      "group_count": 122,
+      "repeated_group_count": 16,
+      "repeated_mixed_group_count": 0,
+      "repeated_pure_group_count": 16,
+      "rule_id": "grammar_recursive_target_catalog_v1",
+      "singleton_group_count": 106
+    },
+    {
+      "feature": "cell_key+target_side+recursive_class_signature",
+      "group_count": 100,
+      "repeated_group_count": 29,
+      "repeated_mixed_group_count": 0,
+      "repeated_pure_group_count": 29,
+      "rule_id": "grammar_recursive_target_catalog_v1",
+      "singleton_group_count": 71
+    },
+    {
+      "feature": "cell_key+target_side+recursive_reduced_signature",
+      "group_count": 118,
+      "repeated_group_count": 16,
+      "repeated_mixed_group_count": 0,
+      "repeated_pure_group_count": 16,
+      "rule_id": "grammar_recursive_target_catalog_v1",
+      "singleton_group_count": 102
+    }
+  ],
+  "recursive_class_signature_counts": {
+    "H|H|H|L|L|L": 1,
+    "H|H|L|L|L|H": 2,
+    "H|L|H|L|L|H": 1,
+    "H|L|H|L|L|L": 1,
+    "H|L|L|H|H|L": 2,
+    "H|L|L|L|H|H": 2,
+    "H|L|L|L|H|L": 2,
+    "H|L|L|L|L|H": 1,
+    "H|L|L|L|L|L": 14,
+    "L|H|H|H|L|L": 1,
+    "L|H|H|L|H|H": 1,
+    "L|H|H|L|L|H": 1,
+    "L|H|H|L|L|L": 4,
+    "L|H|L|H|L|H": 1,
+    "L|H|L|H|L|L": 2,
+    "L|H|L|L|H|H": 8,
+    "L|H|L|L|L|H": 3,
+    "L|H|L|L|L|L": 8,
+    "L|L|H|H|H|L": 1,
+    "L|L|H|H|L|L": 7,
+    "L|L|H|L|H|L": 1,
+    "L|L|H|L|L|L": 10,
+    "L|L|L|H|H|L": 2,
+    "L|L|L|H|L|L": 22,
+    "L|L|L|L|H|H": 2,
+    "L|L|L|L|H|L": 14,
+    "L|L|L|L|L|H": 12,
+    "L|L|L|L|L|L": 14
+  },
+  "rule_id": "grammar_recursive_target_catalog_v1",
+  "target_direction_class_counts": {
+    "both": 9,
+    "inward_only": 29,
+    "none": 82,
+    "outward_only": 20
+  },
+  "target_row_count": 140
+}

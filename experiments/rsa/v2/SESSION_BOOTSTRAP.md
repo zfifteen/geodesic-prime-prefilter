@@ -10,6 +10,16 @@ The current v2 experiment is honest but unresolved.
 The official runner derives reciprocal PGSPG certificate-pair state from public
 moduli. It does not currently solve the 40-bit or 50-bit rungs.
 
+The active grammar research track has a new measured result:
+
+```text
+inverse recursive grammar appears as component sharing with ordered-word
+exclusion.
+```
+
+Solved rows reuse recursive pieces from the deterministic expanded surface, but
+avoid that surface's ordered lag-2 + lag-3 reduced words.
+
 ## Current Commands
 
 From `experiments/rsa/v2`:
@@ -24,7 +34,19 @@ pytest -q ../../../tests/python/test_rsa_v2_scripts.py
 Expected test result:
 
 ```text
-15 passed
+43 passed
+```
+
+From the repository root, also preserve:
+
+```bash
+PYTHONPATH=src/python pytest -q tests/python/predictor/test_scale_pgs_chain_modulus_link.py
+```
+
+Expected result:
+
+```text
+5 passed
 ```
 
 ## Current Inference Result
@@ -118,6 +140,59 @@ Do not revive:
 The previous 40-bit resolution was withdrawn because it depended on a
 close-factor shape. Do not treat that result as a live solve.
 
+## Current Grammar Evidence
+
+Read these before extending the grammar track:
+
+```text
+GRAMMAR_EVIDENCE_STATUS.md
+GRAMMAR_PATTERN_SCAN.md
+output/grammar_inverse_word_exclusion/summary.json
+```
+
+Current inverse-word measurement:
+
+```text
+global scope:
+  solved rows: 48
+  lag-2 hits: 30
+  lag-3 hits: 29
+  lag-2 + lag-3 word hits: 0
+  full recursive reduced word hits: 0
+  component-sharing word exclusions: 40
+
+public-cell scope:
+  solved rows: 48
+  lag-2 hits: 14
+  lag-3 hits: 11
+  lag-2 + lag-3 word hits: 0
+  component-sharing word exclusions: 22
+```
+
+Current grammar interpretation:
+
+```text
+The inverse relation is not a simple low/high opposition. It is component
+sharing with ordered-word exclusion.
+```
+
+Status separation:
+
+```text
+hypothesis: public grammar excludes incompatible ordered recursive words
+measured result: solved rows share pieces but avoid expanded lag-2 + lag-3 words
+proof status: not proved
+resolver status: not integrated
+unresolved state: derive and falsify a public PGS exclusion rule
+```
+
+Next grammar task:
+
+```text
+Use combined lag-2 + lag-3 reduced words as exclusion-family labels, then test
+fresh solved rows for component sharing without ordered-word collision.
+```
+
 ## Live Files
 
 Read these before changing the algorithm:
@@ -172,3 +247,8 @@ certificate invariant from public PGSPG fields.
 
 Until that invariant is written down, reviewed, implemented, and tested, the
 correct inference status is unresolved.
+
+For the grammar track, the next valid task is to test the inverse word
+exclusion family on fresh solved rows. Do not translate the measured grammar
+pattern into a resolver until a PGS-native rule has been derived, falsified, and
+reviewed.

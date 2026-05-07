@@ -1,0 +1,350 @@
+{
+  "distinct_transition_count": 40,
+  "labeled_case_source_count": 2,
+  "max_case_bits": 62,
+  "n_containing_match_target_left_count": 8,
+  "n_containing_match_target_right_count": 6,
+  "n_following_match_target_right_count": 9,
+  "n_previous_match_target_left_count": 9,
+  "public_case_count": 24,
+  "public_n_containing_higher_divisor_count": 0,
+  "public_n_containing_state_counts": [
+    {
+      "count": 9,
+      "state": "o2_d4_odd|d<=4"
+    },
+    {
+      "count": 9,
+      "state": "o4_d4_odd|d<=4"
+    },
+    {
+      "count": 4,
+      "state": "o6_d4_odd|d<=4"
+    },
+    {
+      "count": 2,
+      "state": "o2_d4_even|d<=4"
+    }
+  ],
+  "public_n_following_state_counts": [
+    {
+      "count": 7,
+      "state": "o4_d4_odd|d<=4"
+    },
+    {
+      "count": 4,
+      "state": "o6_d4_odd|d<=4"
+    },
+    {
+      "count": 3,
+      "state": "o2_d4_odd|d<=4"
+    },
+    {
+      "count": 2,
+      "state": "o4_higher_divisor_odd|5<=d<=16"
+    },
+    {
+      "count": 1,
+      "state": "o2_d4_even|d<=4"
+    },
+    {
+      "count": 1,
+      "state": "o2_higher_divisor_even|17<=d<=64"
+    },
+    {
+      "count": 1,
+      "state": "o2_higher_divisor_even|d>64"
+    },
+    {
+      "count": 1,
+      "state": "o2_higher_divisor_odd|5<=d<=16"
+    },
+    {
+      "count": 1,
+      "state": "o4_d4_even|d<=4"
+    },
+    {
+      "count": 1,
+      "state": "o4_higher_divisor_even|5<=d<=16"
+    },
+    {
+      "count": 1,
+      "state": "o6_higher_divisor_even|5<=d<=16"
+    },
+    {
+      "count": 1,
+      "state": "o6_higher_divisor_odd|5<=d<=16"
+    }
+  ],
+  "public_n_previous_state_counts": [
+    {
+      "count": 7,
+      "state": "o4_d4_odd|d<=4"
+    },
+    {
+      "count": 7,
+      "state": "o6_d4_odd|d<=4"
+    },
+    {
+      "count": 4,
+      "state": "o2_d4_odd|d<=4"
+    },
+    {
+      "count": 2,
+      "state": "o2_higher_divisor_even|17<=d<=64"
+    },
+    {
+      "count": 2,
+      "state": "o4_d4_even|d<=4"
+    },
+    {
+      "count": 1,
+      "state": "o2_higher_divisor_even|5<=d<=16"
+    },
+    {
+      "count": 1,
+      "state": "o6_higher_divisor_even|5<=d<=16"
+    }
+  ],
+  "rule_id": "modulus_gap_grammar_correlation_v1",
+  "target_left_state_counts": [
+    {
+      "count": 14,
+      "state": "o4_d4_odd|d<=4"
+    },
+    {
+      "count": 9,
+      "state": "o2_d4_odd|d<=4"
+    },
+    {
+      "count": 6,
+      "state": "o4_d4_even|d<=4"
+    },
+    {
+      "count": 6,
+      "state": "o6_d4_odd|d<=4"
+    },
+    {
+      "count": 5,
+      "state": "o6_d4_even|d<=4"
+    },
+    {
+      "count": 3,
+      "state": "o2_d4_even|d<=4"
+    },
+    {
+      "count": 2,
+      "state": "o2_higher_divisor_even|17<=d<=64"
+    },
+    {
+      "count": 2,
+      "state": "o2_higher_divisor_odd|5<=d<=16"
+    },
+    {
+      "count": 1,
+      "state": "o6_higher_divisor_odd|5<=d<=16"
+    }
+  ],
+  "target_right_state_counts": [
+    {
+      "count": 16,
+      "state": "o4_d4_odd|d<=4"
+    },
+    {
+      "count": 9,
+      "state": "o2_d4_odd|d<=4"
+    },
+    {
+      "count": 8,
+      "state": "o6_d4_odd|d<=4"
+    },
+    {
+      "count": 5,
+      "state": "o4_d4_even|d<=4"
+    },
+    {
+      "count": 4,
+      "state": "o6_d4_even|d<=4"
+    },
+    {
+      "count": 2,
+      "state": "o2_higher_divisor_even|17<=d<=64"
+    },
+    {
+      "count": 2,
+      "state": "o2_higher_divisor_odd|5<=d<=16"
+    },
+    {
+      "count": 1,
+      "state": "o2_d4_even|d<=4"
+    },
+    {
+      "count": 1,
+      "state": "o4_higher_divisor_even|5<=d<=16"
+    }
+  ],
+  "target_side_higher_divisor_row_count": 10,
+  "target_side_row_count": 48,
+  "top_transitions": [
+    {
+      "count": 3,
+      "transition_key": "o2_d4_odd|d<=4 -> o4_d4_odd|d<=4 / o4_d4_odd|d<=4"
+    },
+    {
+      "count": 2,
+      "transition_key": "o2_d4_even|d<=4 -> o2_d4_odd|d<=4 / o4_d4_odd|d<=4"
+    },
+    {
+      "count": 2,
+      "transition_key": "o2_d4_odd|d<=4 -> o2_d4_odd|d<=4 / o4_d4_odd|d<=4"
+    },
+    {
+      "count": 2,
+      "transition_key": "o4_d4_odd|d<=4 -> o2_d4_odd|d<=4 / o6_d4_odd|d<=4"
+    },
+    {
+      "count": 2,
+      "transition_key": "o4_d4_odd|d<=4 -> o4_d4_even|d<=4 / o2_higher_divisor_odd|5<=d<=16"
+    },
+    {
+      "count": 2,
+      "transition_key": "o4_d4_odd|d<=4 -> o4_d4_odd|d<=4 / o2_d4_odd|d<=4"
+    },
+    {
+      "count": 2,
+      "transition_key": "o4_d4_odd|d<=4 -> o6_d4_odd|d<=4 / o4_d4_odd|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o2_d4_even|d<=4 -> o2_d4_even|d<=4 / o2_d4_odd|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o2_d4_even|d<=4 -> o6_d4_even|d<=4 / o2_d4_odd|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o2_d4_odd|d<=4 -> o2_higher_divisor_even|17<=d<=64 / o4_d4_odd|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o2_d4_odd|d<=4 -> o2_higher_divisor_even|17<=d<=64 / o6_d4_odd|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o2_d4_odd|d<=4 -> o4_d4_even|d<=4 / o2_d4_even|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o2_d4_odd|d<=4 -> o4_d4_even|d<=4 / o4_d4_even|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o2_d4_odd|d<=4 -> o4_d4_even|d<=4 / o6_d4_even|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o2_d4_odd|d<=4 -> o4_d4_odd|d<=4 / o2_d4_odd|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o2_d4_odd|d<=4 -> o4_d4_odd|d<=4 / o2_higher_divisor_even|17<=d<=64"
+    },
+    {
+      "count": 1,
+      "transition_key": "o2_d4_odd|d<=4 -> o4_d4_odd|d<=4 / o4_d4_even|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o2_d4_odd|d<=4 -> o4_d4_odd|d<=4 / o6_d4_even|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o2_d4_odd|d<=4 -> o4_d4_odd|d<=4 / o6_d4_odd|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o2_d4_odd|d<=4 -> o6_d4_even|d<=4 / o4_d4_odd|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o2_d4_odd|d<=4 -> o6_d4_odd|d<=4 / o4_d4_odd|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o2_d4_odd|d<=4 -> o6_d4_odd|d<=4 / o6_d4_odd|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o4_d4_odd|d<=4 -> o2_d4_even|d<=4 / o4_d4_even|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o4_d4_odd|d<=4 -> o2_d4_odd|d<=4 / o2_d4_odd|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o4_d4_odd|d<=4 -> o2_d4_odd|d<=4 / o4_d4_odd|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o4_d4_odd|d<=4 -> o2_higher_divisor_odd|5<=d<=16 / o4_d4_odd|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o4_d4_odd|d<=4 -> o4_d4_odd|d<=4 / o6_d4_even|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o4_d4_odd|d<=4 -> o4_d4_odd|d<=4 / o6_d4_odd|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o4_d4_odd|d<=4 -> o6_d4_even|d<=4 / o2_d4_odd|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o4_d4_odd|d<=4 -> o6_d4_even|d<=4 / o6_d4_odd|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o4_d4_odd|d<=4 -> o6_d4_odd|d<=4 / o4_d4_even|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o4_d4_odd|d<=4 -> o6_higher_divisor_odd|5<=d<=16 / o2_d4_odd|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o6_d4_odd|d<=4 -> o2_d4_even|d<=4 / o4_d4_even|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o6_d4_odd|d<=4 -> o2_d4_odd|d<=4 / o6_d4_odd|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o6_d4_odd|d<=4 -> o2_higher_divisor_odd|5<=d<=16 / o2_d4_odd|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o6_d4_odd|d<=4 -> o4_d4_even|d<=4 / o6_d4_even|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o6_d4_odd|d<=4 -> o4_d4_odd|d<=4 / o2_higher_divisor_even|17<=d<=64"
+    },
+    {
+      "count": 1,
+      "transition_key": "o6_d4_odd|d<=4 -> o4_d4_odd|d<=4 / o4_higher_divisor_even|5<=d<=16"
+    },
+    {
+      "count": 1,
+      "transition_key": "o6_d4_odd|d<=4 -> o6_d4_even|d<=4 / o4_d4_odd|d<=4"
+    },
+    {
+      "count": 1,
+      "transition_key": "o6_d4_odd|d<=4 -> o6_d4_odd|d<=4 / o4_d4_odd|d<=4"
+    }
+  ]
+}

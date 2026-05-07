@@ -15,3 +15,4 @@ experiments/collatz/output/collatz_pgs_same_gap_scale_probe/block_rows.jsonl
 experiments/collatz/output/collatz_pgs_first_descent_probe/state_rows.jsonl
 # OTHER
 AGENTS.md
+docs/deprecated/AGENTS.bak

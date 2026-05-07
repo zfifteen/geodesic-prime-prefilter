@@ -1,0 +1,129 @@
+{
+  "case_count": 2,
+  "case_summaries": [
+    {
+      "case_id": "rsa_v2_40bit_static_001",
+      "ledger_effective_survivor_count": 109,
+      "ledger_eliminated_count": 53,
+      "ledger_prefix_elimination_count": 49,
+      "ledger_stale_transport_state_count": 101,
+      "ledger_suffix_elimination_count": 10,
+      "ledger_survivor_count": 203,
+      "ledger_threat_ceiling_elimination_count": 0,
+      "row_count": 256
+    },
+    {
+      "case_id": "rsa_v2_50bit_static_001",
+      "ledger_effective_survivor_count": 93,
+      "ledger_eliminated_count": 57,
+      "ledger_prefix_elimination_count": 52,
+      "ledger_stale_transport_state_count": 112,
+      "ledger_suffix_elimination_count": 6,
+      "ledger_survivor_count": 199,
+      "ledger_threat_ceiling_elimination_count": 0,
+      "row_count": 256
+    }
+  ],
+  "cases": [
+    "rsa_v2_40bit_static_001",
+    "rsa_v2_50bit_static_001"
+  ],
+  "fixed_cycle_count": 0,
+  "ledger_effective_survivor_count": 202,
+  "ledger_eliminated_count": 110,
+  "ledger_prefix_elimination_count": 101,
+  "ledger_stale_transport_state_count": 213,
+  "ledger_suffix_elimination_count": 16,
+  "ledger_survivor_count": 402,
+  "ledger_threat_ceiling_elimination_count": 0,
+  "local_descent_collapse_count": 298,
+  "local_width_debt_signal_count": 156,
+  "measured_rows_per_case": 256,
+  "missing_induced_certificate_count": 0,
+  "nonlocal_debt_shock_count": 107,
+  "phase_change_count": 0,
+  "phase_counts": {
+    "negative": 512
+  },
+  "positive_debt_shock_count": 255,
+  "recursive_case_layer_summaries": [
+    {
+      "case_id": "rsa_v2_40bit_static_001",
+      "ledger_eliminated_count": 53,
+      "ledger_recursive_cycle_state_count": 0,
+      "ledger_recursive_survivor_count": 109,
+      "ledger_stale_transport_state_count": 101,
+      "recursion_depth": 0,
+      "row_count": 256
+    },
+    {
+      "case_id": "rsa_v2_40bit_static_001",
+      "ledger_eliminated_count": 19,
+      "ledger_recursive_cycle_state_count": 109,
+      "ledger_recursive_survivor_count": 0,
+      "ledger_stale_transport_state_count": 0,
+      "recursion_depth": 1,
+      "row_count": 109
+    },
+    {
+      "case_id": "rsa_v2_50bit_static_001",
+      "ledger_eliminated_count": 57,
+      "ledger_recursive_cycle_state_count": 2,
+      "ledger_recursive_survivor_count": 91,
+      "ledger_stale_transport_state_count": 112,
+      "recursion_depth": 0,
+      "row_count": 256
+    },
+    {
+      "case_id": "rsa_v2_50bit_static_001",
+      "ledger_eliminated_count": 27,
+      "ledger_recursive_cycle_state_count": 90,
+      "ledger_recursive_survivor_count": 1,
+      "ledger_stale_transport_state_count": 0,
+      "recursion_depth": 1,
+      "row_count": 91
+    },
+    {
+      "case_id": "rsa_v2_50bit_static_001",
+      "ledger_eliminated_count": 0,
+      "ledger_recursive_cycle_state_count": 1,
+      "ledger_recursive_survivor_count": 0,
+      "ledger_stale_transport_state_count": 1,
+      "recursion_depth": 2,
+      "row_count": 1
+    }
+  ],
+  "recursive_depth_limit": 4,
+  "recursive_final_survivor_count": 0,
+  "recursive_layer_count": 3,
+  "recursive_layer_summaries": [
+    {
+      "ledger_eliminated_count": 110,
+      "ledger_recursive_cycle_state_count": 2,
+      "ledger_recursive_survivor_count": 200,
+      "ledger_stale_transport_state_count": 213,
+      "recursion_depth": 0,
+      "row_count": 512
+    },
+    {
+      "ledger_eliminated_count": 46,
+      "ledger_recursive_cycle_state_count": 199,
+      "ledger_recursive_survivor_count": 1,
+      "ledger_stale_transport_state_count": 0,
+      "recursion_depth": 1,
+      "row_count": 200
+    },
+    {
+      "ledger_eliminated_count": 0,
+      "ledger_recursive_cycle_state_count": 1,
+      "ledger_recursive_survivor_count": 0,
+      "ledger_stale_transport_state_count": 1,
+      "recursion_depth": 2,
+      "row_count": 1
+    }
+  ],
+  "recursive_row_count": 713,
+  "row_count": 512,
+  "rule_id": "transported_exclusion_debt_v1",
+  "zero_balance_count": 0
+}

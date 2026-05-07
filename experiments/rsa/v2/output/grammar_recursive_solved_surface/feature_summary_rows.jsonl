@@ -1,0 +1,3 @@
+{"feature": "cell_key+target_side+lag23_reduced_signature", "group_count": 48, "repeated_group_count": 0, "repeated_mixed_group_count": 0, "repeated_pure_group_count": 0, "rule_id": "grammar_recursive_target_catalog_v1", "singleton_group_count": 48}
+{"feature": "cell_key+target_side+lag2_reduced_signature", "group_count": 47, "repeated_group_count": 1, "repeated_mixed_group_count": 1, "repeated_pure_group_count": 0, "rule_id": "grammar_recursive_target_catalog_v1", "singleton_group_count": 46}
+{"feature": "cell_key+target_side+lag2_reduced_signature+lag3_reduced_signature", "group_count": 48, "repeated_group_count": 0, "repeated_mixed_group_count": 0, "repeated_pure_group_count": 0, "rule_id": "grammar_recursive_target_catalog_v1", "singleton_group_count": 48}

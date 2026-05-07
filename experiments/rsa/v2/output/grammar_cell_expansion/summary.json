@@ -1,0 +1,34 @@
+{
+  "candidate_count": 297,
+  "cell_counts": {
+    "H|o4_d4_odd|L": 10,
+    "L|o2_d4_odd|H": 10,
+    "L|o2_d4_odd|L": 10,
+    "L|o4_d4_odd|H": 10,
+    "L|o4_d4_odd|L": 10,
+    "L|o6_d4_odd|H": 10,
+    "L|o6_d4_odd|L": 10
+  },
+  "generated_case_count": 70,
+  "inward_higher_count": 38,
+  "orientation_higher_counts": {
+    "p_inward": 20,
+    "p_outward": 13,
+    "q_inward": 18,
+    "q_outward": 16
+  },
+  "outward_fraction": 0.43283582089552236,
+  "outward_higher_count": 29,
+  "rule_id": "grammar_cell_expander_v1",
+  "target_cells": [
+    "H|o4_d4_odd|L",
+    "L|o6_d4_odd|L",
+    "L|o6_d4_odd|H",
+    "L|o2_d4_odd|L",
+    "L|o2_d4_odd|H",
+    "L|o4_d4_odd|H",
+    "L|o4_d4_odd|L"
+  ],
+  "target_per_cell": 10,
+  "underfilled_cells": []
+}

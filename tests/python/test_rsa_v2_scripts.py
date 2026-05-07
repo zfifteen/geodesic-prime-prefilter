@@ -15,6 +15,15 @@ SCRIPT_NAMES = (
     "generate_ladder_rung.py",
     "run_experiment.py",
     "audit_experiment.py",
+    "transported_exclusion_debt_probe.py",
+    "modulus_gap_grammar_probe.py",
+    "rsa_challenge_exact_grammar_probe.py",
+    "grammar_compatibility_catalog.py",
+    "grammar_cell_expander.py",
+    "grammar_hidden_coordinate_scan.py",
+    "grammar_recursive_target_catalog.py",
+    "grammar_recursive_solved_surface_compare.py",
+    "grammar_inverse_word_exclusion_probe.py",
 )
 CASE_ID = "rsa_v2_40bit_static_001"
 N_VALUE = "1099507433251"
@@ -428,5 +437,1361 @@ def test_generation_script_is_physically_separate_from_solver():
         "OpenSSL",
         "random",
     )
+    for token in forbidden:
+        assert token not in source
+
+
+def test_debt_probe_emits_public_sidecar_rows_without_inference_mutation(tmp_path):
+    """As a reviewer, I want debt rows to stay sidecar evidence."""
+    build_fixtures(tmp_path)
+    output_dir = run_inference(tmp_path)
+    inference_before = (output_dir / "inference_rows.jsonl").read_text(encoding="utf-8")
+    module = load_module(V2 / "transported_exclusion_debt_probe.py")
+    debt_dir = tmp_path / "debt"
+
+    assert module.main(
+        [
+            "--cases",
+            str(tmp_path / "ladder_cases.jsonl"),
+            "--measured-rows",
+            "4",
+            "--recursive-depth",
+            "3",
+            "--output-dir",
+            str(debt_dir),
+        ]
+    ) == 0
+
+    assert (output_dir / "inference_rows.jsonl").read_text(encoding="utf-8") == inference_before
+    rows = read_jsonl(debt_dir / "debt_rows.jsonl")
+    summary = json.loads((debt_dir / "summary.json").read_text(encoding="utf-8"))
+    assert summary["rule_id"] == "transported_exclusion_debt_v1"
+    assert summary["row_count"] == 8
+    assert summary["measured_rows_per_case"] == 4
+    assert {
+        "fixed_cycle_count",
+        "local_descent_collapse_count",
+        "local_width_debt_signal_count",
+        "ledger_eliminated_count",
+        "ledger_prefix_elimination_count",
+        "ledger_suffix_elimination_count",
+        "ledger_stale_transport_state_count",
+        "ledger_threat_ceiling_elimination_count",
+        "ledger_effective_survivor_count",
+        "ledger_survivor_count",
+        "nonlocal_debt_shock_count",
+        "phase_change_count",
+        "positive_debt_shock_count",
+        "recursive_depth_limit",
+        "recursive_case_layer_summaries",
+        "recursive_final_survivor_count",
+        "recursive_layer_count",
+        "recursive_layer_summaries",
+        "recursive_row_count",
+    }.issubset(summary)
+    recursive_rows = read_jsonl(debt_dir / "recursive_rows.jsonl")
+    assert summary["recursive_depth_limit"] == 3
+    assert summary["recursive_row_count"] == len(recursive_rows)
+    assert summary["recursive_layer_count"] == len(summary["recursive_layer_summaries"])
+    seen_by_case: dict[str, set[str]] = {}
+    for row in rows:
+        seen = seen_by_case.setdefault(str(row["case_id"]), set())
+        assert row["frontier_new_transport_state"] == (
+            row["induced_anchor"] is not None and row["induced_anchor"] not in seen
+        )
+        assert row["ledger_stale_transport_state"] != row["frontier_new_transport_state"]
+        if row["induced_anchor"] is not None:
+            seen.add(str(row["induced_anchor"]))
+        assert row["rule_id"] == "transported_exclusion_debt_v1"
+        assert row["source_debt"] == row["source_prefix_debt"] + row["source_suffix_debt"]
+        assert row["source_balance"] == row["source_transport_width"] - row["source_debt"]
+        assert row["nonlocal_debt_shock"] == (
+            row["positive_debt_shock"] and not row["local_descent_collapse"]
+        )
+        if row["width_expansion"] is not None and row["debt_contraction"] is not None:
+            assert row["local_width_debt_signal"] == (
+                row["local_descent_collapse"]
+                and row["width_expansion"] > row["debt_contraction"]
+            )
+        if row["induced_carrier_value"] is not None:
+            induced_carrier = int(row["induced_carrier_value"])
+            prefix_lo = min(int(row["transported_prefix_lo"]), int(row["transported_prefix_hi"]))
+            prefix_hi = max(int(row["transported_prefix_lo"]), int(row["transported_prefix_hi"]))
+            suffix_lo = min(int(row["transported_suffix_lo"]), int(row["transported_suffix_hi"]))
+            suffix_hi = max(int(row["transported_suffix_lo"]), int(row["transported_suffix_hi"]))
+            assert row["induced_carrier_in_prefix_zone"] == (
+                prefix_lo <= induced_carrier <= prefix_hi
+            )
+            assert row["induced_carrier_in_suffix_zone"] == (
+                suffix_lo <= induced_carrier <= suffix_hi
+            )
+            assert row["ledger_prefix_elimination"] == (
+                row["induced_carrier_in_prefix_zone"]
+                and row["induced_lock_carrier_d"] <= row["source_lock_carrier_d"]
+            )
+            assert row["ledger_suffix_elimination"] == (
+                row["induced_carrier_in_suffix_zone"]
+                and row["induced_lock_carrier_d"] < row["source_lock_carrier_d"]
+            )
+        if row["induced_lower_threat_value"] is not None:
+            induced_threat = int(row["induced_lower_threat_value"])
+            suffix_lo = min(int(row["transported_suffix_lo"]), int(row["transported_suffix_hi"]))
+            suffix_hi = max(int(row["transported_suffix_lo"]), int(row["transported_suffix_hi"]))
+            assert row["induced_threat_before_transported_deadline"] == (
+                induced_threat < int(row["source_transport_deadline_image"])
+            )
+            assert row["induced_threat_in_committed_zone"] == (
+                suffix_lo <= induced_threat <= suffix_hi
+            )
+        assert row["ledger_threat_ceiling_elimination"] == (
+            (
+                row["induced_threat_before_transported_deadline"]
+                or row["induced_threat_in_committed_zone"]
+            )
+            and row["induced_lock_carrier_d"] <= row["source_lock_carrier_d"]
+        )
+        assert row["ledger_eliminated"] == (
+            row["ledger_prefix_elimination"]
+            or row["ledger_suffix_elimination"]
+            or row["ledger_threat_ceiling_elimination"]
+        )
+        assert row["ledger_survivor"] == (
+            row["induced_carrier_value"] is not None and not row["ledger_eliminated"]
+        )
+        assert row["ledger_effective_survivor"] == (
+            row["ledger_survivor"] and row["frontier_new_transport_state"]
+        )
+        assert {"p", "q", "audit_integrity_status", "inference_audit_status"}.isdisjoint(row)
+    for row in recursive_rows:
+        assert row["ledger_recursive_survivor"] == (
+            row["ledger_effective_survivor"]
+            and not row["ledger_recursive_cycle_state"]
+        )
+        assert 0 <= row["recursion_depth"] < 3
+        assert {"p", "q", "audit_integrity_status", "inference_audit_status"}.isdisjoint(row)
+
+
+def test_debt_probe_writes_lf_json_sidecars(tmp_path):
+    """As a reviewer, I want debt probe artifacts to be LF-only."""
+    build_fixtures(tmp_path)
+    module = load_module(V2 / "transported_exclusion_debt_probe.py")
+    debt_dir = tmp_path / "debt"
+
+    assert module.main(
+        [
+            "--cases",
+            str(tmp_path / "ladder_cases.jsonl"),
+            "--measured-rows",
+            "2",
+            "--recursive-depth",
+            "2",
+            "--output-dir",
+            str(debt_dir),
+        ]
+    ) == 0
+
+    for path in (
+        debt_dir / "debt_rows.jsonl",
+        debt_dir / "recursive_rows.jsonl",
+        debt_dir / "summary.json",
+    ):
+        raw = path.read_bytes()
+        assert raw.endswith(b"\n")
+        assert b"\r\n" not in raw
+
+
+def test_debt_probe_source_has_no_forbidden_inference_constructs():
+    """As a reviewer, I want the debt probe free of forbidden machinery."""
+    forbidden = (
+        "sympy",
+        "factorint",
+        "isprime",
+        "nextprime",
+        "prevprime",
+        "randprime",
+        "gcd",
+        "OpenSSL",
+        "subprocess",
+        "direct_divisor_count",
+        "prime_basis",
+        "trial_division",
+        "Miller",
+        "sieve",
+        "audit_factors",
+        "audit_spec",
+        "random",
+        "CHAMBER_RADIUS",
+        P_VALUE,
+        Q_VALUE,
+        GENERATED_50_P,
+        GENERATED_50_Q,
+    )
+    source = (V2 / "transported_exclusion_debt_probe.py").read_text(encoding="utf-8")
+    for token in forbidden:
+        assert token not in source
+
+
+def test_modulus_gap_grammar_probe_keeps_public_and_target_rows_separate(tmp_path):
+    """As a reviewer, I want N grammar measured before downstream target labels."""
+    build_fixtures(tmp_path)
+    module = load_module(V2 / "modulus_gap_grammar_probe.py")
+    output_dir = tmp_path / "grammar"
+
+    assert module.main(
+        [
+            "--cases",
+            str(tmp_path / "ladder_cases.jsonl"),
+            "--target-labels",
+            str(tmp_path / "audit_factors.jsonl"),
+            "--output-dir",
+            str(output_dir),
+        ]
+    ) == 0
+
+    public_rows = read_jsonl(output_dir / "public_grammar_rows.jsonl")
+    correlation_rows = read_jsonl(output_dir / "target_correlation_rows.jsonl")
+    summary = json.loads((output_dir / "summary.json").read_text(encoding="utf-8"))
+
+    assert summary["rule_id"] == "modulus_gap_grammar_correlation_v1"
+    assert summary["public_case_count"] == 2
+    assert summary["target_side_row_count"] == 4
+    assert summary["distinct_transition_count"] >= 1
+    for row in public_rows:
+        assert {"p", "q", "target_side", "target_value"}.isdisjoint(row)
+        assert row["rule_id"] == "modulus_gap_grammar_correlation_v1"
+        assert row["n_containing_gap_reduced_state"]
+        assert [gap["role"] for gap in row["gaps"]] == [
+            "previous",
+            "containing",
+            "following",
+        ]
+    for row in correlation_rows:
+        assert row["target_side"] in {"p", "q"}
+        assert row["target_left_gap_reduced_state"]
+        assert row["target_right_gap_reduced_state"]
+        assert row["transition_key"] == (
+            f"{row['n_containing_gap_reduced_state']} -> "
+            f"{row['target_left_gap_reduced_state']} / "
+            f"{row['target_right_gap_reduced_state']}"
+        )
+
+
+def test_modulus_gap_grammar_probe_expands_known_labeled_catalog(tmp_path):
+    """As a reviewer, I want known rows cataloged only within the exact backend."""
+    module = load_module(V2 / "modulus_gap_grammar_probe.py")
+    output_dir = tmp_path / "catalog"
+
+    assert module.main(
+        [
+            "--labeled-case-source",
+            str(ROOT / "benchmarks" / "python" / "predictor" / "midscale_balanced_corpus.json"),
+            "--labeled-case-source",
+            str(ROOT / "benchmarks" / "python" / "predictor" / "scaleup_corpus.json"),
+            "--max-case-bits",
+            "62",
+            "--output-dir",
+            str(output_dir),
+        ]
+    ) == 0
+
+    public_rows = read_jsonl(output_dir / "public_grammar_rows.jsonl")
+    correlation_rows = read_jsonl(output_dir / "target_correlation_rows.jsonl")
+    summary = json.loads((output_dir / "summary.json").read_text(encoding="utf-8"))
+
+    assert summary["public_case_count"] > 2
+    assert summary["target_side_row_count"] == 2 * summary["public_case_count"]
+    assert summary["max_case_bits"] == 62
+    assert sum(
+        row["count"] for row in summary["public_n_containing_state_counts"]
+    ) == summary["public_case_count"]
+    assert sum(
+        row["count"] for row in summary["target_left_state_counts"]
+    ) == summary["target_side_row_count"]
+    assert sum(
+        row["count"] for row in summary["target_right_state_counts"]
+    ) == summary["target_side_row_count"]
+    assert {row["case_id"] for row in public_rows}
+    assert all(int(row["bits"]) <= 62 for row in public_rows)
+    for row in public_rows:
+        assert {"p", "q", "target_value"}.isdisjoint(row)
+    for row in correlation_rows:
+        assert row["target_side"] in {"p", "q"}
+
+
+def test_solved_rsa_challenge_labels_are_collected_for_exact_grammar(tmp_path):
+    """As a reviewer, I want solved RSA challenge labels kept as downstream evidence."""
+    label_path = V2 / "fixtures" / "solved_rsa_challenge_cases.jsonl"
+    rows = read_jsonl(label_path)
+
+    assert [row["case_id"] for row in rows] == [
+        "rsa_100",
+        "rsa_110",
+        "rsa_120",
+        "rsa_129",
+        "rsa_130",
+        "rsa_140",
+        "rsa_150",
+    ]
+    assert min(int(row["bits"]) for row in rows) == 330
+    assert all(row["status"] == "known_labels_collected" for row in rows)
+    for row in rows:
+        n = int(row["n"])
+        p = int(row["p"])
+        q = int(row["q"])
+        assert p < q
+        assert p * q == n
+        assert n.bit_length() == int(row["bits"])
+        assert len(str(n)) == int(row["decimal_digits"])
+
+    module = load_module(V2 / "modulus_gap_grammar_probe.py")
+    output_dir = tmp_path / "rsa_challenge_catalog"
+    assert module.main(
+        [
+            "--labeled-case-source",
+            str(label_path),
+            "--max-case-bits",
+            "62",
+            "--output-dir",
+            str(output_dir),
+        ]
+    ) == 0
+
+    summary = json.loads((output_dir / "summary.json").read_text(encoding="utf-8"))
+    assert summary["public_case_count"] == 0
+    assert summary["target_side_row_count"] == 0
+    assert summary["max_case_bits"] == 62
+
+
+def test_rsa_challenge_exact_grammar_probe_measures_small_fixture(tmp_path):
+    """As a reviewer, I want exact grammar rows from a solved label fixture."""
+    label_path = tmp_path / "solved_labels.jsonl"
+    label_path.write_text(
+        json.dumps(
+            {
+                "case_id": CASE_ID,
+                "bits": 40,
+                "decimal_digits": len(N_VALUE),
+                "family": "test_static",
+                "n": N_VALUE,
+                "p": P_VALUE,
+                "q": Q_VALUE,
+                "source": "test",
+                "source_lines": "test",
+                "status": "known_labels_collected",
+            },
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    module = load_module(V2 / "rsa_challenge_exact_grammar_probe.py")
+    output_dir = tmp_path / "rsa_challenge_exact"
+
+    assert module.main(
+        [
+            "--cases",
+            str(label_path),
+            "--case-limit",
+            "1",
+            "--output-dir",
+            str(output_dir),
+        ]
+    ) == 0
+
+    public_rows = read_jsonl(output_dir / "public_grammar_rows.jsonl")
+    target_rows = read_jsonl(output_dir / "target_grammar_rows.jsonl")
+    summary = json.loads((output_dir / "summary.json").read_text(encoding="utf-8"))
+
+    assert summary["rule_id"] == "rsa_challenge_exact_grammar_evidence_v1"
+    assert summary["case_count"] == 1
+    assert summary["public_row_count"] == 3
+    assert summary["target_row_count"] == 4
+    assert summary["target_unresolved_row_count"] == 0
+    assert [row["role"] for row in public_rows] == [
+        "n_previous",
+        "n_containing",
+        "n_following",
+    ]
+    assert [row["role"] for row in target_rows] == [
+        "p_left",
+        "p_right",
+        "q_left",
+        "q_right",
+    ]
+    for row in public_rows:
+        assert row["anchor"] == "N"
+        assert {"p", "q", "target_side"}.isdisjoint(row)
+        assert row["exact_type_key"]
+        assert row["reduced_state"]
+    for row in target_rows:
+        assert row["target_side"] in {"p", "q"}
+        assert {"p", "q", "anchor"}.isdisjoint(row)
+        assert row["status"] == "exact_closed"
+        assert row["unresolved_reason"] is None
+
+
+def test_rsa_challenge_exact_grammar_probe_writes_lf_sidecars(tmp_path):
+    """As a reviewer, I want exact challenge grammar artifacts to be LF-only."""
+    label_path = tmp_path / "solved_labels.jsonl"
+    label_path.write_text(
+        json.dumps(
+            {
+                "case_id": CASE_ID,
+                "bits": 40,
+                "decimal_digits": len(N_VALUE),
+                "family": "test_static",
+                "n": N_VALUE,
+                "p": P_VALUE,
+                "q": Q_VALUE,
+                "source": "test",
+                "source_lines": "test",
+                "status": "known_labels_collected",
+            },
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    module = load_module(V2 / "rsa_challenge_exact_grammar_probe.py")
+    output_dir = tmp_path / "rsa_challenge_exact"
+
+    assert module.main(
+        [
+            "--cases",
+            str(label_path),
+            "--case-limit",
+            "1",
+            "--output-dir",
+            str(output_dir),
+        ]
+    ) == 0
+
+    for path in (
+        output_dir / "public_grammar_rows.jsonl",
+        output_dir / "target_grammar_rows.jsonl",
+        output_dir / "summary.json",
+    ):
+        raw = path.read_bytes()
+        assert raw.endswith(b"\n")
+        assert b"\r\n" not in raw
+
+
+def test_grammar_compatibility_catalog_builds_observed_and_absence_rows(tmp_path):
+    """As a reviewer, I want grammar evidence converted into compatibility rows."""
+    low_rows = tmp_path / "low_rows.jsonl"
+    low_rows.write_text(
+        json.dumps(
+            {
+                "bits": 47,
+                "case_id": "low_a",
+                "n_previous": "o2_d4_odd|d<=4",
+                "n_containing": "o4_d4_odd|d<=4",
+                "n_following": "o6_d4_odd|d<=4",
+                "n_previous_exact": "o2_d4_a2_d4_odd",
+                "n_containing_exact": "o4_d4_a4_d4_odd",
+                "n_following_exact": "o6_d4_a6_d4_odd",
+                "p_left": "o2_higher_divisor_even|17<=d<=64",
+                "p_left_exact": "o2_d36_a1_higher_divisor_even",
+                "p_right": "o4_d4_odd|d<=4",
+                "p_right_exact": "o4_d4_a2_d4_odd",
+                "q_left": "o4_d4_odd|d<=4",
+                "q_left_exact": "o4_d4_a2_d4_odd",
+                "q_right": "o6_d4_odd|d<=4",
+                "q_right_exact": "o6_d4_a2_d4_odd",
+                "rule_id": "exact_low_regime_grammar_evidence_v1",
+            },
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    public_rows = tmp_path / "public_rows.jsonl"
+    public_rows.write_text(
+        "\n".join(
+            json.dumps(row, sort_keys=True)
+            for row in [
+                {
+                    "bits": 330,
+                    "case_id": "rsa_a",
+                    "role": "n_previous",
+                    "reduced_state": "o4_d4_odd|d<=4",
+                    "exact_type_key": "o4_d4_a34_d4_odd",
+                    "rule_id": "rsa_challenge_exact_grammar_evidence_v1",
+                    "status": "exact_closed",
+                },
+                {
+                    "bits": 330,
+                    "case_id": "rsa_a",
+                    "role": "n_containing",
+                    "reduced_state": "o4_d4_odd|d<=4",
+                    "exact_type_key": "o4_d4_a194_d4_odd",
+                    "rule_id": "rsa_challenge_exact_grammar_evidence_v1",
+                    "status": "unresolved_prior_carrier",
+                },
+                {
+                    "bits": 330,
+                    "case_id": "rsa_a",
+                    "role": "n_following",
+                    "reduced_state": "o4_d4_odd|d<=4",
+                    "exact_type_key": "o4_d4_a44_d4_odd",
+                    "rule_id": "rsa_challenge_exact_grammar_evidence_v1",
+                    "status": "unresolved_prior_carrier",
+                },
+            ]
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    target_rows = tmp_path / "target_rows.jsonl"
+    target_rows.write_text(
+        "\n".join(
+            json.dumps(row, sort_keys=True)
+            for row in [
+                {
+                    "bits": 330,
+                    "case_id": "rsa_a",
+                    "role": "p_left",
+                    "target_side": "p",
+                    "reduced_state": "o2_d4_odd|d<=4",
+                    "exact_type_key": "o2_d4_a6_d4_odd",
+                    "rule_id": "rsa_challenge_exact_grammar_evidence_v1",
+                    "status": "exact_closed",
+                },
+                {
+                    "bits": 330,
+                    "case_id": "rsa_a",
+                    "role": "p_right",
+                    "target_side": "p",
+                    "reduced_state": "o2_d4_even|d<=4",
+                    "exact_type_key": "o2_d4_a35_d4_even",
+                    "rule_id": "rsa_challenge_exact_grammar_evidence_v1",
+                    "status": "exact_closed",
+                },
+                {
+                    "bits": 330,
+                    "case_id": "rsa_a",
+                    "role": "q_left",
+                    "target_side": "q",
+                    "reduced_state": "o2_d4_odd|d<=4",
+                    "exact_type_key": "o2_d4_a2_d4_odd",
+                    "rule_id": "rsa_challenge_exact_grammar_evidence_v1",
+                    "status": "exact_closed",
+                },
+                {
+                    "bits": 330,
+                    "case_id": "rsa_a",
+                    "role": "q_right",
+                    "target_side": "q",
+                    "reduced_state": "o2_d4_odd|d<=4",
+                    "exact_type_key": "o2_d4_a8_d4_odd",
+                    "rule_id": "rsa_challenge_exact_grammar_evidence_v1",
+                    "status": "exact_closed",
+                },
+            ]
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    module = load_module(V2 / "grammar_compatibility_catalog.py")
+    output_dir = tmp_path / "compatibility"
+
+    assert module.main(
+        [
+            "--low-regime-rows",
+            str(low_rows),
+            "--rsa-public-rows",
+            str(public_rows),
+            "--rsa-target-rows",
+            str(target_rows),
+            "--output-dir",
+            str(output_dir),
+        ]
+    ) == 0
+
+    rows = read_jsonl(output_dir / "compatibility_rows.jsonl")
+    observed = read_jsonl(output_dir / "observed_compatibility_rows.jsonl")
+    absent = read_jsonl(output_dir / "measured_absence_rows.jsonl")
+    summary = json.loads((output_dir / "summary.json").read_text(encoding="utf-8"))
+
+    assert summary["rule_id"] == "grammar_compatibility_catalog_v1"
+    assert summary["case_count"] == 2
+    assert summary["public_unresolved_context_count"] == 1
+    assert summary["observed_compatibility_count"] == len(observed)
+    assert summary["measured_absence_count"] == len(absent)
+    assert any(row["surface"] == "rsa_challenge" for row in rows)
+    rsa_row = next(row for row in rows if row["case_id"] == "rsa_a")
+    assert rsa_row["public_status"] == "unresolved_public_context"
+    assert rsa_row["unresolved_public_roles"] == ["n_containing", "n_following"]
+    assert rsa_row["p_outward"] == "o2_d4_odd|d<=4"
+    assert rsa_row["p_inward"] == "o2_d4_even|d<=4"
+    assert {row["status"] for row in absent} == {"not_observed_on_measured_surface"}
+
+
+def test_grammar_compatibility_catalog_writes_lf_sidecars(tmp_path):
+    """As a reviewer, I want compatibility catalog artifacts to be LF-only."""
+    module = load_module(V2 / "grammar_compatibility_catalog.py")
+    output_dir = tmp_path / "compatibility"
+
+    assert module.main(
+        [
+            "--output-dir",
+            str(output_dir),
+        ]
+    ) == 0
+
+    for path in (
+        output_dir / "compatibility_rows.jsonl",
+        output_dir / "observed_compatibility_rows.jsonl",
+        output_dir / "measured_absence_rows.jsonl",
+        output_dir / "summary.json",
+    ):
+        raw = path.read_bytes()
+        assert raw.endswith(b"\n")
+        assert b"\r\n" not in raw
+
+
+def test_grammar_compatibility_catalog_has_no_forbidden_inference_constructs():
+    """As a reviewer, I want compatibility cataloging free of solver machinery."""
+    forbidden = (
+        "sympy",
+        "factorint",
+        "isprime",
+        "is_prime",
+        "nextprime",
+        "prevprime",
+        "randprime",
+        "gcd",
+        "OpenSSL",
+        "subprocess",
+        "random",
+        "audit_factors",
+        "audit_spec",
+        "N %",
+        "% x",
+        P_VALUE,
+        Q_VALUE,
+        GENERATED_50_P,
+        GENERATED_50_Q,
+    )
+    source = (V2 / "grammar_compatibility_catalog.py").read_text(encoding="utf-8")
+    for token in forbidden:
+        assert token not in source
+
+
+def test_grammar_cell_expander_fills_target_cells(tmp_path):
+    """As a reviewer, I want deterministic expansion rows for target grammar cells."""
+    module = load_module(V2 / "grammar_cell_expander.py")
+    output_dir = tmp_path / "cell_expansion"
+
+    assert module.main(
+        [
+            "--target-per-cell",
+            "1",
+            "--prime-count",
+            "40",
+            "--output-dir",
+            str(output_dir),
+        ]
+    ) == 0
+
+    rows = read_jsonl(output_dir / "expanded_compatibility_rows.jsonl")
+    cell_rows = read_jsonl(output_dir / "cell_summary_rows.jsonl")
+    summary = json.loads((output_dir / "summary.json").read_text(encoding="utf-8"))
+
+    assert summary["rule_id"] == "grammar_cell_expander_v1"
+    assert summary["target_per_cell"] == 1
+    assert summary["underfilled_cells"] == []
+    assert summary["generated_case_count"] == len(rows)
+    assert summary["generated_case_count"] == len(summary["target_cells"])
+    assert {row["surface"] for row in rows} == {"deterministic_cell_expansion"}
+    assert {row["public_status"] for row in rows} == {"exact_closed"}
+    assert {row["cell_key"] for row in rows} == set(summary["target_cells"])
+    assert sum(row["case_count"] for row in cell_rows) == len(rows)
+    for row in rows:
+        assert row["n_context_key"]
+        assert row["target_orientation_key"]
+        assert row["prime_pair_offset"] in {1, 2, 3, 5, 8, 13, 21, 34, 55, 89}
+        assert row["prime_pair_offset_group"] in {"small", "mid", "wide"}
+        assert row["prime_start"] in {1_000_000, 10_000_000, 100_000_000, 1_000_000_000}
+        assert int(row["prime_left_index"]) >= 0
+        assert {"audit_integrity_status", "inference_audit_status"}.isdisjoint(row)
+
+
+def test_grammar_cell_expander_writes_lf_sidecars(tmp_path):
+    """As a reviewer, I want cell-expansion artifacts to be LF-only."""
+    module = load_module(V2 / "grammar_cell_expander.py")
+    output_dir = tmp_path / "cell_expansion"
+
+    assert module.main(
+        [
+            "--target-per-cell",
+            "1",
+            "--prime-count",
+            "40",
+            "--output-dir",
+            str(output_dir),
+        ]
+    ) == 0
+
+    for path in (
+        output_dir / "expanded_compatibility_rows.jsonl",
+        output_dir / "cell_summary_rows.jsonl",
+        output_dir / "summary.json",
+    ):
+        raw = path.read_bytes()
+        assert raw.endswith(b"\n")
+        assert b"\r\n" not in raw
+
+
+def test_grammar_cell_expander_has_no_forbidden_inference_constructs():
+    """As a reviewer, I want cell expansion free of resolver machinery."""
+    forbidden = (
+        "sympy",
+        "factorint",
+        "isprime",
+        "is_prime",
+        "nextprime",
+        "prevprime",
+        "randprime",
+        "gcd",
+        "OpenSSL",
+        "subprocess",
+        "random",
+        "audit_factors",
+        "audit_spec",
+        "N %",
+        "% x",
+        P_VALUE,
+        Q_VALUE,
+        GENERATED_50_P,
+        GENERATED_50_Q,
+    )
+    source = (V2 / "grammar_cell_expander.py").read_text(encoding="utf-8")
+    for token in forbidden:
+        assert token not in source
+
+
+def test_grammar_hidden_coordinate_scan_groups_expansion_rows(tmp_path):
+    """As a reviewer, I want mixed grammar cells split by explicit coordinates."""
+    expander = load_module(V2 / "grammar_cell_expander.py")
+    expansion_dir = tmp_path / "cell_expansion"
+    assert expander.main(
+        [
+            "--target-per-cell",
+            "1",
+            "--prime-count",
+            "40",
+            "--output-dir",
+            str(expansion_dir),
+        ]
+    ) == 0
+
+    scanner = load_module(V2 / "grammar_hidden_coordinate_scan.py")
+    output_dir = tmp_path / "hidden_scan"
+    assert scanner.main(
+        [
+            "--rows",
+            str(expansion_dir / "expanded_compatibility_rows.jsonl"),
+            "--output-dir",
+            str(output_dir),
+        ]
+    ) == 0
+
+    grouped = read_jsonl(output_dir / "split_group_rows.jsonl")
+    feature_rows = read_jsonl(output_dir / "feature_summary_rows.jsonl")
+    summary = json.loads((output_dir / "summary.json").read_text(encoding="utf-8"))
+
+    assert summary["rule_id"] == "grammar_hidden_coordinate_scan_v1"
+    assert summary["source_row_count"] == len(read_jsonl(expansion_dir / "expanded_compatibility_rows.jsonl"))
+    assert summary["grouped_row_count"] == len(grouped)
+    assert {row["feature"] for row in feature_rows} == set(summary["features"])
+    assert "cell_key+prime_pair_offset_group" in summary["features"]
+    for row in grouped:
+        assert row["split_status"] in {
+            "no_higher",
+            "outward_only",
+            "inward_only",
+            "both_direction",
+        }
+        assert {"audit_integrity_status", "inference_audit_status"}.isdisjoint(row)
+
+
+def test_grammar_hidden_coordinate_scan_writes_lf_sidecars(tmp_path):
+    """As a reviewer, I want hidden-coordinate scan artifacts to be LF-only."""
+    rows = tmp_path / "rows.jsonl"
+    rows.write_text(
+        json.dumps(
+            {
+                "bits": 40,
+                "case_id": "row_a",
+                "cell_key": "L|o4_d4_odd|L",
+                "n_previous_exact": "o2_d4_a2_d4_odd",
+                "n_containing_exact": "o4_d4_a4_d4_odd",
+                "n_following_exact": "o6_d4_a6_d4_odd",
+                "p_outward": "o2_d4_odd|d<=4",
+                "p_inward": "o2_d4_odd|d<=4",
+                "q_inward": "o2_d4_odd|d<=4",
+                "q_outward": "o2_d4_odd|d<=4",
+                "prime_pair_offset": 1,
+                "prime_pair_offset_group": "small",
+            },
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    module = load_module(V2 / "grammar_hidden_coordinate_scan.py")
+    output_dir = tmp_path / "hidden_scan"
+
+    assert module.main(["--rows", str(rows), "--output-dir", str(output_dir)]) == 0
+
+    for path in (
+        output_dir / "split_group_rows.jsonl",
+        output_dir / "feature_summary_rows.jsonl",
+        output_dir / "summary.json",
+    ):
+        raw = path.read_bytes()
+        assert raw.endswith(b"\n")
+        assert b"\r\n" not in raw
+
+
+def test_grammar_hidden_coordinate_scan_has_no_forbidden_inference_constructs():
+    """As a reviewer, I want hidden-coordinate scanning free of resolver machinery."""
+    forbidden = (
+        "sympy",
+        "factorint",
+        "isprime",
+        "is_prime",
+        "nextprime",
+        "prevprime",
+        "randprime",
+        "gcd",
+        "OpenSSL",
+        "subprocess",
+        "random",
+        "audit_factors",
+        "audit_spec",
+        "N %",
+        "% x",
+        P_VALUE,
+        Q_VALUE,
+        GENERATED_50_P,
+        GENERATED_50_Q,
+    )
+    source = (V2 / "grammar_hidden_coordinate_scan.py").read_text(encoding="utf-8")
+    for token in forbidden:
+        assert token not in source
+
+
+def test_grammar_recursive_target_catalog_builds_recursive_rows(tmp_path):
+    """As a reviewer, I want recursive target-side grammar cataloged explicitly."""
+    expander = load_module(V2 / "grammar_cell_expander.py")
+    expansion_dir = tmp_path / "cell_expansion"
+    assert expander.main(
+        [
+            "--target-per-cell",
+            "1",
+            "--prime-count",
+            "40",
+            "--output-dir",
+            str(expansion_dir),
+        ]
+    ) == 0
+
+    module = load_module(V2 / "grammar_recursive_target_catalog.py")
+    output_dir = tmp_path / "recursive_target"
+    assert module.main(
+        [
+            "--rows",
+            str(expansion_dir / "expanded_compatibility_rows.jsonl"),
+            "--output-dir",
+            str(output_dir),
+        ]
+    ) == 0
+
+    source_rows = read_jsonl(expansion_dir / "expanded_compatibility_rows.jsonl")
+    target_rows = read_jsonl(output_dir / "recursive_target_rows.jsonl")
+    split_rows = read_jsonl(output_dir / "recursive_split_rows.jsonl")
+    feature_rows = read_jsonl(output_dir / "feature_summary_rows.jsonl")
+    summary = json.loads((output_dir / "summary.json").read_text(encoding="utf-8"))
+
+    assert summary["rule_id"] == "grammar_recursive_target_catalog_v1"
+    assert summary["target_row_count"] == 2 * len(source_rows)
+    assert len(target_rows) == summary["target_row_count"]
+    assert split_rows
+    assert feature_rows
+    assert {row["target_side"] for row in target_rows} == {"p", "q"}
+    for row in target_rows:
+        assert row["outward_lag3"]
+        assert row["outward_lag2"]
+        assert row["outward_lag1"]
+        assert row["inward_lag1"]
+        assert row["inward_lag2"]
+        assert row["inward_lag3"]
+        assert row["lag3_reduced_signature"]
+        assert row["lag23_reduced_signature"]
+        assert row["recursive_reduced_signature"]
+        assert row["recursive_class_signature"]
+        assert row["target_direction_class"] in {"none", "outward_only", "inward_only", "both"}
+        assert {"audit_integrity_status", "inference_audit_status"}.isdisjoint(row)
+
+
+def test_grammar_recursive_target_catalog_writes_lf_sidecars(tmp_path):
+    """As a reviewer, I want recursive target artifacts to be LF-only."""
+    expander = load_module(V2 / "grammar_cell_expander.py")
+    expansion_dir = tmp_path / "cell_expansion"
+    assert expander.main(
+        [
+            "--target-per-cell",
+            "1",
+            "--prime-count",
+            "40",
+            "--output-dir",
+            str(expansion_dir),
+        ]
+    ) == 0
+    module = load_module(V2 / "grammar_recursive_target_catalog.py")
+    output_dir = tmp_path / "recursive_target"
+
+    assert module.main(
+        [
+            "--rows",
+            str(expansion_dir / "expanded_compatibility_rows.jsonl"),
+            "--output-dir",
+            str(output_dir),
+        ]
+    ) == 0
+
+    for path in (
+        output_dir / "recursive_target_rows.jsonl",
+        output_dir / "recursive_split_rows.jsonl",
+        output_dir / "feature_summary_rows.jsonl",
+        output_dir / "summary.json",
+    ):
+        raw = path.read_bytes()
+        assert raw.endswith(b"\n")
+        assert b"\r\n" not in raw
+
+
+def test_grammar_recursive_target_catalog_has_no_forbidden_inference_constructs():
+    """As a reviewer, I want recursive target cataloging free of resolver machinery."""
+    forbidden = (
+        "sympy",
+        "factorint",
+        "isprime",
+        "is_prime",
+        "nextprime",
+        "prevprime",
+        "randprime",
+        "gcd",
+        "OpenSSL",
+        "subprocess",
+        "random",
+        "audit_factors",
+        "audit_spec",
+        "N %",
+        "% x",
+        P_VALUE,
+        Q_VALUE,
+        GENERATED_50_P,
+        GENERATED_50_Q,
+    )
+    source = (V2 / "grammar_recursive_target_catalog.py").read_text(encoding="utf-8")
+    for token in forbidden:
+        assert token not in source
+
+
+def test_grammar_recursive_solved_surface_compare_builds_rows(tmp_path):
+    """As a reviewer, I want solved recursive grammar compared as sidecar evidence."""
+    compatibility_rows = tmp_path / "compatibility_rows.jsonl"
+    compatibility_rows.write_text(
+        json.dumps(
+            {
+                "bits": 40,
+                "case_id": "solved_a",
+                "cell_key": "L|o4_d4_odd|L",
+                "n_context_key": "o2_d4_odd|d<=4|o4_d4_odd|d<=4|o6_d4_odd|d<=4",
+                "n_previous": "o2_d4_odd|d<=4",
+                "n_containing": "o4_d4_odd|d<=4",
+                "n_following": "o6_d4_odd|d<=4",
+                "p_outward": "o2_d4_odd|d<=4",
+                "p_inward": "o4_d4_odd|d<=4",
+                "q_inward": "o4_d4_odd|d<=4",
+                "q_outward": "o6_d4_odd|d<=4",
+                "rule_id": "grammar_compatibility_catalog_v1",
+                "surface": "exact_low_regime",
+            },
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    target_rows = tmp_path / "target_rows.jsonl"
+    target_rows.write_text(
+        "\n".join(
+            json.dumps(row, sort_keys=True)
+            for row in [
+                {
+                    "case_id": "solved_a",
+                    "target_side": "p",
+                    "target_value": "1000003",
+                },
+                {
+                    "case_id": "solved_a",
+                    "target_side": "q",
+                    "target_value": "1000033",
+                },
+            ]
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    expanded_rows = tmp_path / "expanded_recursive_rows.jsonl"
+    expanded_rows.write_text("", encoding="utf-8")
+    module = load_module(V2 / "grammar_recursive_solved_surface_compare.py")
+    output_dir = tmp_path / "solved_recursive"
+
+    assert module.main(
+        [
+            "--compatibility-rows",
+            str(compatibility_rows),
+            "--target-rows",
+            str(target_rows),
+            "--expanded-recursive-rows",
+            str(expanded_rows),
+            "--output-dir",
+            str(output_dir),
+        ]
+    ) == 0
+
+    target_output = read_jsonl(output_dir / "recursive_target_rows.jsonl")
+    comparison_rows = read_jsonl(output_dir / "signature_comparison_rows.jsonl")
+    summary = json.loads((output_dir / "summary.json").read_text(encoding="utf-8"))
+
+    assert summary["rule_id"] == "grammar_recursive_solved_surface_compare_v1"
+    assert summary["target_row_count"] == 2
+    assert len(target_output) == 2
+    assert comparison_rows
+    assert {row["target_side"] for row in target_output} == {"p", "q"}
+    for row in target_output:
+        assert row["lag23_reduced_signature"]
+        assert row["prime_start"] is None
+        assert {"audit_integrity_status", "inference_audit_status"}.isdisjoint(row)
+
+
+def test_grammar_recursive_solved_surface_compare_writes_lf_sidecars(tmp_path):
+    """As a reviewer, I want solved recursive comparison artifacts to be LF-only."""
+    compatibility_rows = tmp_path / "compatibility_rows.jsonl"
+    compatibility_rows.write_text(
+        json.dumps(
+            {
+                "bits": 40,
+                "case_id": "solved_a",
+                "cell_key": "L|o4_d4_odd|L",
+                "n_context_key": "o2_d4_odd|d<=4|o4_d4_odd|d<=4|o6_d4_odd|d<=4",
+                "n_previous": "o2_d4_odd|d<=4",
+                "n_containing": "o4_d4_odd|d<=4",
+                "n_following": "o6_d4_odd|d<=4",
+                "p_outward": "o2_d4_odd|d<=4",
+                "p_inward": "o4_d4_odd|d<=4",
+                "q_inward": "o4_d4_odd|d<=4",
+                "q_outward": "o6_d4_odd|d<=4",
+                "rule_id": "grammar_compatibility_catalog_v1",
+                "surface": "exact_low_regime",
+            },
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    target_rows = tmp_path / "target_rows.jsonl"
+    target_rows.write_text(
+        "\n".join(
+            json.dumps(row, sort_keys=True)
+            for row in [
+                {
+                    "case_id": "solved_a",
+                    "target_side": "p",
+                    "target_value": "1000003",
+                },
+                {
+                    "case_id": "solved_a",
+                    "target_side": "q",
+                    "target_value": "1000033",
+                },
+            ]
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    expanded_rows = tmp_path / "expanded_recursive_rows.jsonl"
+    expanded_rows.write_text("", encoding="utf-8")
+    module = load_module(V2 / "grammar_recursive_solved_surface_compare.py")
+    output_dir = tmp_path / "solved_recursive"
+
+    assert module.main(
+        [
+            "--compatibility-rows",
+            str(compatibility_rows),
+            "--target-rows",
+            str(target_rows),
+            "--expanded-recursive-rows",
+            str(expanded_rows),
+            "--output-dir",
+            str(output_dir),
+        ]
+    ) == 0
+
+    for path in (
+        output_dir / "recursive_target_rows.jsonl",
+        output_dir / "recursive_split_rows.jsonl",
+        output_dir / "feature_summary_rows.jsonl",
+        output_dir / "signature_comparison_rows.jsonl",
+        output_dir / "summary.json",
+    ):
+        raw = path.read_bytes()
+        assert raw.endswith(b"\n")
+        assert b"\r\n" not in raw
+
+
+def test_grammar_recursive_solved_surface_compare_has_no_forbidden_inference_constructs():
+    """As a reviewer, I want solved recursive comparison free of resolver machinery."""
+    forbidden = (
+        "sympy",
+        "factorint",
+        "isprime",
+        "is_prime",
+        "nextprime",
+        "prevprime",
+        "randprime",
+        "gcd",
+        "OpenSSL",
+        "subprocess",
+        "random",
+        "audit_factors",
+        "audit_spec",
+        "N %",
+        "% x",
+        P_VALUE,
+        Q_VALUE,
+        GENERATED_50_P,
+        GENERATED_50_Q,
+    )
+    source = (V2 / "grammar_recursive_solved_surface_compare.py").read_text(encoding="utf-8")
+    for token in forbidden:
+        assert token not in source
+
+
+def test_grammar_inverse_word_exclusion_probe_builds_rows(tmp_path):
+    """As a reviewer, I want inverse word exclusion measured as sidecar evidence."""
+    solved_rows = tmp_path / "solved_recursive_rows.jsonl"
+    solved_rows.write_text(
+        json.dumps(
+            {
+                "case_id": "solved_a",
+                "target_side": "p",
+                "target_direction_class": "outward_only",
+                "cell_key": "L|o4_d4_odd|L",
+                "lag2_reduced_signature": "lag2_a",
+                "lag3_reduced_signature": "lag3_a",
+                "lag23_reduced_signature": "lag23_solved",
+                "recursive_reduced_signature": "recursive_solved",
+                "recursive_class_signature": "class_a",
+            },
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    expanded_rows = tmp_path / "expanded_recursive_rows.jsonl"
+    expanded_rows.write_text(
+        json.dumps(
+            {
+                "case_id": "expanded_a",
+                "target_side": "p",
+                "target_direction_class": "none",
+                "cell_key": "L|o4_d4_odd|L",
+                "lag2_reduced_signature": "lag2_a",
+                "lag3_reduced_signature": "lag3_b",
+                "lag23_reduced_signature": "lag23_expanded",
+                "recursive_reduced_signature": "recursive_expanded",
+                "recursive_class_signature": "class_a",
+            },
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    module = load_module(V2 / "grammar_inverse_word_exclusion_probe.py")
+    output_dir = tmp_path / "inverse_words"
+
+    assert module.main(
+        [
+            "--solved-recursive-rows",
+            str(solved_rows),
+            "--expanded-recursive-rows",
+            str(expanded_rows),
+            "--output-dir",
+            str(output_dir),
+        ]
+    ) == 0
+
+    rows = read_jsonl(output_dir / "inverse_word_rows.jsonl")
+    direction_rows = read_jsonl(output_dir / "direction_summary_rows.jsonl")
+    summary = json.loads((output_dir / "summary.json").read_text(encoding="utf-8"))
+
+    assert summary["rule_id"] == "grammar_inverse_word_exclusion_probe_v1"
+    assert summary["comparison_row_count"] == 3
+    assert len(rows) == 3
+    assert direction_rows
+    global_row = next(row for row in rows if row["scope"] == "global")
+    assert global_row["component_piece_hit"]
+    assert global_row["ordered_word_excluded"]
+    assert global_row["component_sharing_word_exclusion"]
+    assert global_row["class_sharing_word_exclusion"]
+
+
+def test_grammar_inverse_word_exclusion_probe_writes_lf_sidecars(tmp_path):
+    """As a reviewer, I want inverse word artifacts to be LF-only."""
+    solved_rows = tmp_path / "solved_recursive_rows.jsonl"
+    solved_rows.write_text(
+        json.dumps(
+            {
+                "case_id": "solved_a",
+                "target_side": "p",
+                "target_direction_class": "outward_only",
+                "cell_key": "L|o4_d4_odd|L",
+                "lag2_reduced_signature": "lag2_a",
+                "lag3_reduced_signature": "lag3_a",
+                "lag23_reduced_signature": "lag23_solved",
+                "recursive_reduced_signature": "recursive_solved",
+                "recursive_class_signature": "class_a",
+            },
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    expanded_rows = tmp_path / "expanded_recursive_rows.jsonl"
+    expanded_rows.write_text(
+        json.dumps(
+            {
+                "case_id": "expanded_a",
+                "target_side": "p",
+                "target_direction_class": "none",
+                "cell_key": "L|o4_d4_odd|L",
+                "lag2_reduced_signature": "lag2_a",
+                "lag3_reduced_signature": "lag3_b",
+                "lag23_reduced_signature": "lag23_expanded",
+                "recursive_reduced_signature": "recursive_expanded",
+                "recursive_class_signature": "class_a",
+            },
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    module = load_module(V2 / "grammar_inverse_word_exclusion_probe.py")
+    output_dir = tmp_path / "inverse_words"
+
+    assert module.main(
+        [
+            "--solved-recursive-rows",
+            str(solved_rows),
+            "--expanded-recursive-rows",
+            str(expanded_rows),
+            "--output-dir",
+            str(output_dir),
+        ]
+    ) == 0
+
+    for path in (
+        output_dir / "inverse_word_rows.jsonl",
+        output_dir / "direction_summary_rows.jsonl",
+        output_dir / "summary.json",
+    ):
+        raw = path.read_bytes()
+        assert raw.endswith(b"\n")
+        assert b"\r\n" not in raw
+
+
+def test_grammar_inverse_word_exclusion_probe_has_no_forbidden_inference_constructs():
+    """As a reviewer, I want inverse word probing free of resolver machinery."""
+    forbidden = (
+        "sympy",
+        "factorint",
+        "isprime",
+        "is_prime",
+        "nextprime",
+        "prevprime",
+        "randprime",
+        "gcd",
+        "OpenSSL",
+        "subprocess",
+        "random",
+        "audit_factors",
+        "audit_spec",
+        "N %",
+        "% x",
+        P_VALUE,
+        Q_VALUE,
+        GENERATED_50_P,
+        GENERATED_50_Q,
+    )
+    source = (V2 / "grammar_inverse_word_exclusion_probe.py").read_text(encoding="utf-8")
+    for token in forbidden:
+        assert token not in source
+
+
+def test_modulus_gap_grammar_probe_writes_lf_sidecars(tmp_path):
+    """As a reviewer, I want grammar probe artifacts to be LF-only."""
+    build_fixtures(tmp_path)
+    module = load_module(V2 / "modulus_gap_grammar_probe.py")
+    output_dir = tmp_path / "grammar"
+
+    assert module.main(
+        [
+            "--cases",
+            str(tmp_path / "ladder_cases.jsonl"),
+            "--target-labels",
+            str(tmp_path / "audit_factors.jsonl"),
+            "--output-dir",
+            str(output_dir),
+        ]
+    ) == 0
+
+    for path in (
+        output_dir / "public_grammar_rows.jsonl",
+        output_dir / "target_correlation_rows.jsonl",
+        output_dir / "summary.json",
+    ):
+        raw = path.read_bytes()
+        assert raw.endswith(b"\n")
+        assert b"\r\n" not in raw
+
+
+def test_modulus_gap_grammar_probe_has_no_classical_inference_imports():
+    """As a reviewer, I want grammar correlation free of factor-search machinery."""
+    forbidden = (
+        "sympy",
+        "factorint",
+        "isprime",
+        "is_prime",
+        "nextprime",
+        "prevprime",
+        "randprime",
+        "gcd",
+        "OpenSSL",
+        "subprocess",
+        "trial_division",
+        "Miller",
+        "sieve",
+        "CHAMBER_RADIUS",
+        P_VALUE,
+        Q_VALUE,
+        GENERATED_50_P,
+        GENERATED_50_Q,
+    )
+    source = (V2 / "modulus_gap_grammar_probe.py").read_text(encoding="utf-8")
     for token in forbidden:
         assert token not in source

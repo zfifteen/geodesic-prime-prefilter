@@ -72,8 +72,9 @@ experiments/rsa/v2/grok_sessions/YYYY-MM-DD-topic.md
 
 ## Current RSA v2 State
 
-As of 2026-05-03, the live RSA v2 runner is a reciprocal PGSPG
-certificate-pair probe.
+As of 2026-05-07, the live RSA v2 runner is a reciprocal PGSPG
+certificate-pair probe, and the active research track is grammar evidence for
+PGS-native modulus decomposition.
 
 It does not solve the 40-bit or 50-bit rungs.
 
@@ -89,6 +90,48 @@ product closure, divisibility selectors, hidden fixtures, or audit leakage.
 
 The next live RSA v2 task is to derive a stronger transported certificate
 invariant from public PGSPG fields.
+
+The current strongest grammar finding is:
+
+```text
+solved rows reuse recursive lag-2 or lag-3 pieces from the deterministic
+expanded surface, but avoid that surface's ordered lag-2 + lag-3 reduced words.
+```
+
+This is a measured result, not a proof and not a solver.
+
+Exact measured inverse-word result:
+
+```text
+global scope:
+  solved rows: 48
+  lag-2 hits: 30
+  lag-3 hits: 29
+  lag-2 + lag-3 word hits: 0
+  full recursive reduced word hits: 0
+  component-sharing word exclusions: 40
+
+public-cell scope:
+  solved rows: 48
+  lag-2 hits: 14
+  lag-3 hits: 11
+  lag-2 + lag-3 word hits: 0
+  component-sharing word exclusions: 22
+```
+
+Read these RSA grammar artifacts before continuing the decomposer grammar
+track:
+
+```text
+experiments/rsa/v2/GRAMMAR_EVIDENCE_STATUS.md
+experiments/rsa/v2/GRAMMAR_PATTERN_SCAN.md
+experiments/rsa/v2/output/grammar_inverse_word_exclusion/summary.json
+```
+
+The next valid grammar task is to use combined lag-2 + lag-3 reduced words as
+exclusion-family labels and test fresh solved rows for component sharing
+without ordered-word collision. Do not turn this into a resolver until a public
+PGS rule has been derived and falsified.
 
 ## Current Collatz Branch State
 

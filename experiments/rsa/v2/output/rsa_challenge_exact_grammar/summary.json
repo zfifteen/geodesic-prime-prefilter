@@ -1,0 +1,13 @@
+{
+  "case_count": 1,
+  "inward_higher_count": 0,
+  "n_containing_higher_count": 0,
+  "outward_fraction": null,
+  "outward_higher_count": 0,
+  "outward_intrusion_index": null,
+  "public_row_count": 3,
+  "public_unresolved_row_count": 2,
+  "rule_id": "rsa_challenge_exact_grammar_evidence_v1",
+  "target_row_count": 4,
+  "target_unresolved_row_count": 0
+}
