@@ -26,6 +26,55 @@ This replaced two invalid solver shapes:
 The square root is now an orientation coordinate only. It does not define a
 candidate chamber, and it does not limit the possible factor distance.
 
+## Active Grammar Evidence Track
+
+The active grammar track is separate from the official runner. It is evidence
+gathering for future PGS-native compatibility and exclusion rules.
+
+Current strongest measured grammar finding:
+
+```text
+inverse recursive grammar appears as component sharing with ordered-word
+exclusion.
+```
+
+Measured result:
+
+```text
+global scope:
+  solved rows: 48
+  lag-2 hits: 30
+  lag-3 hits: 29
+  lag-2 + lag-3 word hits: 0
+  full recursive reduced word hits: 0
+  component-sharing word exclusions: 40
+
+public-cell scope:
+  solved rows: 48
+  lag-2 hits: 14
+  lag-3 hits: 11
+  lag-2 + lag-3 word hits: 0
+  component-sharing word exclusions: 22
+```
+
+Interpretation:
+
+```text
+Solved rows reuse recursive pieces from the deterministic expanded surface, but
+avoid the expanded surface's ordered lag-2 + lag-3 reduced words.
+```
+
+This is a measured grammar result, not a proof and not a resolver.
+
+Primary artifacts:
+
+```text
+GRAMMAR_EVIDENCE_STATUS.md
+GRAMMAR_PATTERN_SCAN.md
+grammar_inverse_word_exclusion_probe.py
+output/grammar_inverse_word_exclusion/
+```
+
 ## Live Front Door
 
 The live front door is:
@@ -133,6 +182,13 @@ invariant from the PGSPG fields already emitted in `survivor_rows.jsonl`.
 Until that invariant is written down and reviewed, the correct output is
 unresolved.
 
+The next grammar-evidence task is:
+
+```text
+Use combined lag-2 + lag-3 reduced words as exclusion-family labels, then test
+fresh solved rows for component sharing without ordered-word collision.
+```
+
 Before substantial implementation, use the continuity and shape contract:
 
 ```text
@@ -145,7 +201,7 @@ The canonical repository bootstrap is:
 docs/research/codex_continuity/START_HERE.md
 ```
 
-For this experiment, Grok should be used as research pressure before major rule
+For this experiment, Grok should be used as research review before major rule
 changes, with code, outputs, failed assumptions, and current hypotheses included
 in the prompt.
 

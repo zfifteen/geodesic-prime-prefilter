@@ -3,11 +3,44 @@
 from __future__ import annotations
 
 import math
+from dataclasses import dataclass
 
+import gmpy2
 import numpy as np
 
 
 SEGMENT_SIZE = 1_000_000
+INT64_FIELD_MAX = int(np.iinfo(np.int64).max)
+
+
+@dataclass(frozen=True)
+class BoundedDivisorCount:
+    """One large-coordinate divisor-count measurement with explicit status."""
+
+    value: int
+    exact_count: int | None
+    lower_bound_count: int
+    residual: int
+    trial_prime_limit: int
+    status: str
+
+    @property
+    def is_exact(self) -> bool:
+        """Return True when the exact divisor count is known."""
+        return self.exact_count is not None
+
+    @property
+    def is_known_higher_divisor(self) -> bool:
+        """Return True when the value is known to have divisor count above 4."""
+        count = self.exact_count if self.exact_count is not None else self.lower_bound_count
+        return count > 4
+
+    @property
+    def count_or_lower_bound(self) -> int:
+        """Return the exact count when known, otherwise the proven lower bound."""
+        if self.exact_count is not None:
+            return self.exact_count
+        return self.lower_bound_count
 
 
 def _integer_cube_root(value: int) -> tuple[int, bool]:
@@ -143,3 +176,106 @@ def divisor_counts_segment(lo: int, hi: int) -> np.ndarray:
     if lo <= 1 < hi:
         divisor_count[1 - lo] = 1
     return divisor_count
+
+
+def _bounded_divisor_count_with_primes(
+    value: int,
+    primes: list[int],
+    trial_prime_limit: int,
+) -> BoundedDivisorCount:
+    """Return one GMP-safe bounded divisor-count measurement."""
+    if value < 1:
+        raise ValueError("value must be at least 1")
+    if trial_prime_limit < 2:
+        raise ValueError("trial_prime_limit must be at least 2")
+    if value == 1:
+        return BoundedDivisorCount(
+            value=1,
+            exact_count=1,
+            lower_bound_count=1,
+            residual=1,
+            trial_prime_limit=trial_prime_limit,
+            status="exact_unit",
+        )
+
+    residual = gmpy2.mpz(value)
+    lower_bound_count = 1
+    largest_trial_prime = 1
+    for prime in primes:
+        largest_trial_prime = prime
+        if gmpy2.mpz(prime * prime) > residual:
+            break
+        exponent = 0
+        while residual % prime == 0:
+            residual //= prime
+            exponent += 1
+        if exponent:
+            lower_bound_count *= exponent + 1
+        if residual == 1:
+            return BoundedDivisorCount(
+                value=value,
+                exact_count=lower_bound_count,
+                lower_bound_count=lower_bound_count,
+                residual=1,
+                trial_prime_limit=largest_trial_prime,
+                status="exact_fully_stripped",
+            )
+
+    if residual == 1:
+        return BoundedDivisorCount(
+            value=value,
+            exact_count=lower_bound_count,
+            lower_bound_count=lower_bound_count,
+            residual=1,
+            trial_prime_limit=largest_trial_prime,
+            status="exact_fully_stripped",
+        )
+
+    if gmpy2.mpz(largest_trial_prime * largest_trial_prime) > residual:
+        exact_count = lower_bound_count * 2
+        return BoundedDivisorCount(
+            value=value,
+            exact_count=exact_count,
+            lower_bound_count=exact_count,
+            residual=int(residual),
+            trial_prime_limit=largest_trial_prime,
+            status="exact_residual_prime_by_trial_bound",
+        )
+
+    status = (
+        "bounded_higher_divisor_lower_bound"
+        if lower_bound_count > 4
+        else "unresolved_large_residual"
+    )
+    return BoundedDivisorCount(
+        value=value,
+        exact_count=None,
+        lower_bound_count=lower_bound_count,
+        residual=int(residual),
+        trial_prime_limit=largest_trial_prime,
+        status=status,
+    )
+
+
+def divisor_counts_segment_gmp_bounded(
+    lo: int,
+    hi: int,
+    trial_prime_limit: int = 1_000_000,
+) -> list[BoundedDivisorCount]:
+    """Measure bounded divisor-count evidence on a large-coordinate interval.
+
+    This backend is deliberately bounded. It never fabricates exact divisor
+    counts for residuals that remain open after the configured trial-prime
+    frontier. Exact counts are returned only when the residual closes by
+    arithmetic already measured inside the interval backend. Otherwise the row
+    carries a lower bound and an explicit unresolved status.
+    """
+    if lo < 1:
+        raise ValueError("lo must be at least 1")
+    if hi <= lo:
+        raise ValueError("hi must be larger than lo")
+    primes = [int(prime) for prime in _segmented_primes(trial_prime_limit)]
+    return [
+        _bounded_divisor_count_with_primes(value, primes, trial_prime_limit)
+        for value in range(lo, hi)
+    ]

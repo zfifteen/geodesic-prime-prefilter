@@ -1,6 +1,16 @@
 """Exact composite-field helpers for DNI studies."""
 
-from .field import divisor_counts_segment
+from .field import (
+    BoundedDivisorCount,
+    INT64_FIELD_MAX,
+    divisor_counts_segment,
+    divisor_counts_segment_gmp_bounded,
+)
 
 
-__all__ = ["divisor_counts_segment"]
+__all__ = [
+    "BoundedDivisorCount",
+    "INT64_FIELD_MAX",
+    "divisor_counts_segment",
+    "divisor_counts_segment_gmp_bounded",
+]

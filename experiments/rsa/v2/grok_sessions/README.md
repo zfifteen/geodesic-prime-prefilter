@@ -2,7 +2,7 @@
 
 Use this directory for substantial RSA v2 Grok collaborations.
 
-Grok is part of the research pressure system, not a checkbox.
+Grok is part of the research review system, not a checkbox.
 
 ## Filename
 
