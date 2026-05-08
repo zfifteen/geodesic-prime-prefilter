@@ -1,0 +1,14 @@
+{
+  "certificate_count": 3,
+  "event_kind_counts": {
+    "carrier_lock": 3,
+    "closed_offset": 85,
+    "deadline": 3,
+    "lower_threat": 1,
+    "reset": 3,
+    "tail": 14
+  },
+  "rule_id": "certificate_commitment_story_v1",
+  "source_certificate_row_count": 2,
+  "story_row_count": 109
+}

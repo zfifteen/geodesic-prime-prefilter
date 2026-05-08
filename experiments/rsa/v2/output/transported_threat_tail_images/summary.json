@@ -1,0 +1,228 @@
+{
+  "broad_regime_position_fields": [
+    "induced_threat_position",
+    "induced_tail_position"
+  ],
+  "broad_regime_threshold": {
+    "denominator": 10,
+    "numerator": 9
+  },
+  "case_count": 2,
+  "case_summaries": [
+    {
+      "case_id": "rsa_v2_40bit_static_001",
+      "position_field_summaries": [
+        {
+          "counts": {
+            "before_upper_reset": 72,
+            "missing": 184
+          },
+          "dominant_count": 184,
+          "dominant_fraction": "184/256",
+          "dominant_value": "missing",
+          "field": "threat_image_position",
+          "is_broad_regime": false,
+          "is_constant": false,
+          "unique_count": 2
+        },
+        {
+          "counts": {
+            "before_upper_reset": 194,
+            "missing": 62
+          },
+          "dominant_count": 194,
+          "dominant_fraction": "194/256",
+          "dominant_value": "before_upper_reset",
+          "field": "tail_image_position",
+          "is_broad_regime": false,
+          "is_constant": false,
+          "unique_count": 2
+        },
+        {
+          "counts": {
+            "after_upper_deadline": 8,
+            "inside_upper_interval": 14,
+            "missing": 234
+          },
+          "dominant_count": 234,
+          "dominant_fraction": "234/256",
+          "dominant_value": "missing",
+          "field": "induced_threat_position",
+          "is_broad_regime": true,
+          "is_constant": false,
+          "unique_count": 3
+        },
+        {
+          "counts": {
+            "inside_upper_interval": 242,
+            "missing": 14
+          },
+          "dominant_count": 242,
+          "dominant_fraction": "242/256",
+          "dominant_value": "inside_upper_interval",
+          "field": "induced_tail_position",
+          "is_broad_regime": true,
+          "is_constant": false,
+          "unique_count": 2
+        }
+      ],
+      "position_signature_counts": {
+        "before_upper_reset|before_upper_reset|missing|inside_upper_interval": 10,
+        "before_upper_reset|missing|after_upper_deadline|inside_upper_interval": 4,
+        "before_upper_reset|missing|inside_upper_interval|missing": 5,
+        "before_upper_reset|missing|missing|inside_upper_interval": 53,
+        "missing|before_upper_reset|after_upper_deadline|inside_upper_interval": 4,
+        "missing|before_upper_reset|inside_upper_interval|missing": 9,
+        "missing|before_upper_reset|missing|inside_upper_interval": 171
+      },
+      "row_count": 256
+    },
+    {
+      "case_id": "rsa_v2_50bit_static_001",
+      "position_field_summaries": [
+        {
+          "counts": {
+            "before_upper_reset": 60,
+            "missing": 196
+          },
+          "dominant_count": 196,
+          "dominant_fraction": "196/256",
+          "dominant_value": "missing",
+          "field": "threat_image_position",
+          "is_broad_regime": false,
+          "is_constant": false,
+          "unique_count": 2
+        },
+        {
+          "counts": {
+            "before_upper_reset": 203,
+            "missing": 53
+          },
+          "dominant_count": 203,
+          "dominant_fraction": "203/256",
+          "dominant_value": "before_upper_reset",
+          "field": "tail_image_position",
+          "is_broad_regime": false,
+          "is_constant": false,
+          "unique_count": 2
+        },
+        {
+          "counts": {
+            "after_upper_deadline": 4,
+            "inside_upper_interval": 9,
+            "missing": 243
+          },
+          "dominant_count": 243,
+          "dominant_fraction": "243/256",
+          "dominant_value": "missing",
+          "field": "induced_threat_position",
+          "is_broad_regime": true,
+          "is_constant": false,
+          "unique_count": 3
+        },
+        {
+          "counts": {
+            "inside_upper_interval": 247,
+            "missing": 9
+          },
+          "dominant_count": 247,
+          "dominant_fraction": "247/256",
+          "dominant_value": "inside_upper_interval",
+          "field": "induced_tail_position",
+          "is_broad_regime": true,
+          "is_constant": false,
+          "unique_count": 2
+        }
+      ],
+      "position_signature_counts": {
+        "before_upper_reset|before_upper_reset|missing|inside_upper_interval": 7,
+        "before_upper_reset|missing|after_upper_deadline|inside_upper_interval": 2,
+        "before_upper_reset|missing|inside_upper_interval|missing": 1,
+        "before_upper_reset|missing|missing|inside_upper_interval": 50,
+        "missing|before_upper_reset|after_upper_deadline|inside_upper_interval": 2,
+        "missing|before_upper_reset|inside_upper_interval|missing": 8,
+        "missing|before_upper_reset|missing|inside_upper_interval": 186
+      },
+      "row_count": 256
+    }
+  ],
+  "cases": [
+    "rsa_v2_40bit_static_001",
+    "rsa_v2_50bit_static_001"
+  ],
+  "constant_position_fields": [],
+  "diagnostic_status": "positions_have_multiple_regimes",
+  "measured_rows_per_case": 256,
+  "position_field_summaries": [
+    {
+      "counts": {
+        "before_upper_reset": 132,
+        "missing": 380
+      },
+      "dominant_count": 380,
+      "dominant_fraction": "380/512",
+      "dominant_value": "missing",
+      "field": "threat_image_position",
+      "is_broad_regime": false,
+      "is_constant": false,
+      "unique_count": 2
+    },
+    {
+      "counts": {
+        "before_upper_reset": 397,
+        "missing": 115
+      },
+      "dominant_count": 397,
+      "dominant_fraction": "397/512",
+      "dominant_value": "before_upper_reset",
+      "field": "tail_image_position",
+      "is_broad_regime": false,
+      "is_constant": false,
+      "unique_count": 2
+    },
+    {
+      "counts": {
+        "after_upper_deadline": 12,
+        "inside_upper_interval": 23,
+        "missing": 477
+      },
+      "dominant_count": 477,
+      "dominant_fraction": "477/512",
+      "dominant_value": "missing",
+      "field": "induced_threat_position",
+      "is_broad_regime": true,
+      "is_constant": false,
+      "unique_count": 3
+    },
+    {
+      "counts": {
+        "inside_upper_interval": 489,
+        "missing": 23
+      },
+      "dominant_count": 489,
+      "dominant_fraction": "489/512",
+      "dominant_value": "inside_upper_interval",
+      "field": "induced_tail_position",
+      "is_broad_regime": true,
+      "is_constant": false,
+      "unique_count": 2
+    }
+  ],
+  "position_fields": [
+    "threat_image_position",
+    "tail_image_position",
+    "induced_threat_position",
+    "induced_tail_position"
+  ],
+  "position_signature_counts": {
+    "before_upper_reset|before_upper_reset|missing|inside_upper_interval": 17,
+    "before_upper_reset|missing|after_upper_deadline|inside_upper_interval": 6,
+    "before_upper_reset|missing|inside_upper_interval|missing": 6,
+    "before_upper_reset|missing|missing|inside_upper_interval": 103,
+    "missing|before_upper_reset|after_upper_deadline|inside_upper_interval": 6,
+    "missing|before_upper_reset|inside_upper_interval|missing": 17,
+    "missing|before_upper_reset|missing|inside_upper_interval": 357
+  },
+  "row_count": 512,
+  "rule_id": "transported_threat_tail_images_v1"
+}
