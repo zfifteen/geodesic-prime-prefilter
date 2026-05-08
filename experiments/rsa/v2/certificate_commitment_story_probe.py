@@ -207,6 +207,144 @@ def certificate_story_rows(
     return rows
 
 
+def pgspg_certificate_story_rows(
+    case_id: str,
+    certificate: object,
+) -> list[dict[str, object]]:
+    """Return story rows for one public PGSPG certificate object."""
+    source_anchor = str(certificate.anchor)
+    anchor_value = int(source_anchor)
+    carrier_d = certificate.carrier_d
+    lock_carrier_d = certificate.lock_carrier_d
+    event_index = 0
+    rows: list[dict[str, object]] = []
+
+    for offset in certificate.closed_offsets_before_q:
+        closed_offset = int(offset)
+        rows.append(
+            event_row(
+                case_id,
+                source_anchor,
+                event_index,
+                "closed_offset",
+                closed_offset,
+                str(anchor_value + closed_offset),
+                None if lock_carrier_d is None else int(lock_carrier_d),
+                None if lock_carrier_d is None else int(lock_carrier_d),
+                closed_offset,
+                closed_offset,
+                "offset_open",
+                "offset_closed",
+            )
+        )
+        event_index += 1
+
+    lock_offset = certificate.lock_carrier_offset
+    if lock_offset is not None:
+        carrier_offset = int(lock_offset)
+        carrier_value = (
+            certificate.anchor + carrier_offset
+            if certificate.carrier_w is None
+            else certificate.carrier_w
+        )
+        rows.append(
+            event_row(
+                case_id,
+                source_anchor,
+                event_index,
+                "carrier_lock",
+                carrier_offset,
+                str(carrier_value),
+                None if carrier_d is None else int(carrier_d),
+                None if lock_carrier_d is None else int(lock_carrier_d),
+                carrier_offset,
+                carrier_offset,
+                "carrier_unlocked",
+                "carrier_locked",
+            )
+        )
+        event_index += 1
+
+    reset_offset = int(certificate.gap_offset)
+    rows.append(
+        event_row(
+            case_id,
+            source_anchor,
+            event_index,
+            "reset",
+            reset_offset,
+            str(certificate.reset_endpoint),
+            None if carrier_d is None else int(carrier_d),
+            None if lock_carrier_d is None else int(lock_carrier_d),
+            reset_offset,
+            reset_offset,
+            "reset_open",
+            "reset_committed",
+        )
+    )
+    event_index += 1
+
+    if certificate.lower_d_threat_offset is not None:
+        lower_threat_offset = int(certificate.lower_d_threat_offset)
+        rows.append(
+            event_row(
+                case_id,
+                source_anchor,
+                event_index,
+                "lower_threat",
+                lower_threat_offset,
+                str(anchor_value + lower_threat_offset),
+                None if carrier_d is None else int(carrier_d),
+                None if lock_carrier_d is None else int(lock_carrier_d),
+                lower_threat_offset,
+                lower_threat_offset,
+                "lower_threat_absent",
+                "lower_threat_present",
+            )
+        )
+        event_index += 1
+
+    for offset in certificate.tail_after_reset_offsets:
+        tail_offset = int(offset)
+        rows.append(
+            event_row(
+                case_id,
+                source_anchor,
+                event_index,
+                "tail",
+                tail_offset,
+                str(anchor_value + tail_offset),
+                None if carrier_d is None else int(carrier_d),
+                None if lock_carrier_d is None else int(lock_carrier_d),
+                tail_offset,
+                tail_offset,
+                "tail_offset_open",
+                "tail_offset_committed",
+            )
+        )
+        event_index += 1
+
+    deadline_value = str(certificate.reset_deadline_value)
+    deadline_offset = int(deadline_value) - anchor_value
+    rows.append(
+        event_row(
+            case_id,
+            source_anchor,
+            event_index,
+            "deadline",
+            deadline_offset,
+            deadline_value,
+            None if carrier_d is None else int(carrier_d),
+            None if lock_carrier_d is None else int(lock_carrier_d),
+            reset_offset,
+            deadline_offset,
+            "deadline_open",
+            "deadline_committed",
+        )
+    )
+    return rows
+
+
 def story_rows_from_certificates(
     certificate_rows: list[dict[str, object]],
 ) -> list[dict[str, object]]:
