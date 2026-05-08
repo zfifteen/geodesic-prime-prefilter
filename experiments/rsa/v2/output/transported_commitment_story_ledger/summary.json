@@ -1,0 +1,32 @@
+{
+  "divergences": [],
+  "expected_counts": {
+    "ledger_effective_survivor_count": 202,
+    "recursive_final_survivor_count": 0,
+    "recursive_row_count": 713,
+    "row_count": 512
+  },
+  "falsification_status": "passed",
+  "induced_event_kind_counts": {
+    "carrier_lock": 301,
+    "reset": 211
+  },
+  "ledger_effective_survivor_count": 202,
+  "ledger_prefix_elimination_count": 101,
+  "ledger_suffix_elimination_count": 16,
+  "lock_carrier_d_relation_counts": {
+    "equal": 360,
+    "higher": 25,
+    "lower": 127
+  },
+  "recursive_final_survivor_count": 0,
+  "recursive_row_count": 713,
+  "row_count": 512,
+  "rule_id": "transported_commitment_story_ledger_v1",
+  "story_rewrite_count": 276,
+  "transported_zone_counts": {
+    "outside": 211,
+    "prefix": 109,
+    "suffix": 192
+  }
+}

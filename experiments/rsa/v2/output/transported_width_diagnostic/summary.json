@@ -1,0 +1,48 @@
+{
+  "carrier_false_positive_against_static_frontier_count": 105,
+  "carrier_false_positive_against_unresolved_count": 208,
+  "carrier_symmetric_width_match_count": 208,
+  "case_count": 2,
+  "case_summaries": [
+    {
+      "carrier_false_positive_against_static_frontier_count": 50,
+      "carrier_false_positive_against_unresolved_count": 109,
+      "carrier_symmetric_width_match_count": 109,
+      "case_id": "rsa_v2_40bit_static_001",
+      "exact_false_positive_against_static_frontier_count": 3,
+      "exact_false_positive_against_unresolved_count": 16,
+      "exact_symmetric_width_match_count": 16,
+      "missing_induced_certificate_count": 0,
+      "official_unresolved_surface_count": 256,
+      "row_count": 256,
+      "static_frontier_class_match_count": 172
+    },
+    {
+      "carrier_false_positive_against_static_frontier_count": 55,
+      "carrier_false_positive_against_unresolved_count": 99,
+      "carrier_symmetric_width_match_count": 99,
+      "case_id": "rsa_v2_50bit_static_001",
+      "exact_false_positive_against_static_frontier_count": 16,
+      "exact_false_positive_against_unresolved_count": 25,
+      "exact_symmetric_width_match_count": 25,
+      "missing_induced_certificate_count": 0,
+      "official_unresolved_surface_count": 256,
+      "row_count": 256,
+      "static_frontier_class_match_count": 186
+    }
+  ],
+  "cases": [
+    "rsa_v2_40bit_static_001",
+    "rsa_v2_50bit_static_001"
+  ],
+  "diagnostic_status": "diagnostic_only_no_closure_claim",
+  "exact_false_positive_against_static_frontier_count": 19,
+  "exact_false_positive_against_unresolved_count": 41,
+  "exact_symmetric_width_match_count": 41,
+  "measured_rows_per_case": 256,
+  "missing_induced_certificate_count": 0,
+  "official_unresolved_surface_count": 512,
+  "row_count": 512,
+  "rule_id": "transported_width_diagnostic_v1",
+  "static_frontier_class_match_count": 358
+}

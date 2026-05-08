@@ -1,0 +1,39 @@
+{
+  "certificate_commitment_story_row_count": 109,
+  "component_sharing_word_exclusion_count": 42,
+  "fresh_rsa_100_lag23_collision_count": 0,
+  "inverse_global_mismatch_count": 0,
+  "projected_lag23_collision_count": 0,
+  "projected_lag2_hit_count": 32,
+  "projected_lag3_hit_count": 30,
+  "projected_recursive_reduced_collision_count": 0,
+  "projection_row_count": 50,
+  "projection_source": "certificate_commitment_story_rows",
+  "rule_id": "commitment_story_word_projection_v1",
+  "solved_lag23_collision_count": 0,
+  "status": "preserved_zero_ordered_lag23_collisions",
+  "surface_summaries": [
+    {
+      "component_sharing_word_exclusion_count": 2,
+      "inverse_global_mismatch_count": 0,
+      "projected_lag23_collision_count": 0,
+      "projected_lag2_hit_count": 2,
+      "projected_lag3_hit_count": 1,
+      "projected_recursive_reduced_collision_count": 0,
+      "row_count": 2,
+      "rule_id": "commitment_story_word_projection_v1",
+      "surface": "fresh_rsa_100"
+    },
+    {
+      "component_sharing_word_exclusion_count": 40,
+      "inverse_global_mismatch_count": 0,
+      "projected_lag23_collision_count": 0,
+      "projected_lag2_hit_count": 30,
+      "projected_lag3_hit_count": 29,
+      "projected_recursive_reduced_collision_count": 0,
+      "row_count": 48,
+      "rule_id": "commitment_story_word_projection_v1",
+      "surface": "solved"
+    }
+  ]
+}
