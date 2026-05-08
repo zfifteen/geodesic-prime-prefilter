@@ -69,6 +69,7 @@ This is a measured grammar result, not a proof and not a resolver.
 Primary artifacts:
 
 ```text
+TRANSPORTED_STORY_LAW_PROOF_OBLIGATIONS.md
 PGS_GRAMMAR_EVIDENCE_FINDINGS.md
 GRAMMAR_EVIDENCE_STATUS.md
 GRAMMAR_PATTERN_SCAN.md
@@ -77,6 +78,29 @@ grammar_inverse_word_exclusion_probe.py
 output/grammar_inverse_word_exclusion/
 output/fresh_rsa_challenge_inverse_word_exclusion/
 ```
+
+## Active Transported Story Law Track
+
+The strongest current transported-story measurement is:
+
+```text
+transported_story_law_v1:
+  row_count = 512
+  ledger_effective_survivor_count = 202
+  recursive_row_count = 713
+  recursive_final_survivor_count = 0
+```
+
+This is measured public evidence, not a theorem and not a resolver promotion.
+The next mathematical task is recorded in:
+
+```text
+TRANSPORTED_STORY_LAW_PROOF_OBLIGATIONS.md
+```
+
+That artifact names the Prefix Non-Rewrite, Suffix Strict-Descent, Recursive
+Anchor Recurrence, and Grammar Projection lemmas required to derive the sidecar
+predicates from GWR/NLSC.
 
 ## Live Front Door
 
@@ -179,18 +203,15 @@ GMP interval backend exists.
 
 ## Next Live Work
 
-The next mathematical task is to derive a stronger transported certificate
-invariant from the PGSPG fields already emitted in `survivor_rows.jsonl`.
-
-Until that invariant is written down and reviewed, the correct output is
-unresolved.
-
-The next grammar-evidence task is:
+The next mathematical task is:
 
 ```text
-connect the inverse-word exclusion family to public PGSPG certificate
-commitment stories through the commitment_story_word_projection_v1 sidecar.
+derive the transported story-law prefix, suffix, and recurrence predicates from
+GWR/NLSC as stated in TRANSPORTED_STORY_LAW_PROOF_OBLIGATIONS.md.
 ```
+
+Until those lemmas are proved and reviewed, the correct official output is
+unresolved.
 
 Before substantial implementation, use the continuity and shape contract:
 

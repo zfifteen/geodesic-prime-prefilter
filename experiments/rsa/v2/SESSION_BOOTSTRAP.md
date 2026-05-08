@@ -10,6 +10,19 @@ The current v2 experiment is honest but unresolved.
 The official runner derives reciprocal PGSPG certificate-pair state from public
 moduli. It does not currently solve the 40-bit or 50-bit rungs.
 
+The current transported-story result is proof-facing:
+
+```text
+transported_story_law_v1 reproduces the public recursive elimination surface
+from certificate stories alone:
+512 public rows -> 202 effective survivors -> 713 recursive rows -> 0 final
+recursive survivors.
+```
+
+Read `TRANSPORTED_STORY_LAW_PROOF_OBLIGATIONS.md` before extending this track.
+It names the four lemmas needed to turn the measured relation into PGSPG-derived
+theorem candidates.
+
 The active grammar research track has a new measured result:
 
 ```text
@@ -201,8 +214,9 @@ certificate-side data
 Next grammar task:
 
 ```text
-Connect the inverse-word exclusion family to public PGSPG certificate
-commitment stories through the commitment_story_word_projection_v1 sidecar.
+Use the Grammar Projection Lemma in TRANSPORTED_STORY_LAW_PROOF_OBLIGATIONS.md
+to derive the ordered lag-2 + lag-3 exclusion as the reduced grammar image of
+transported story conflict.
 ```
 
 ## Live Files
@@ -211,6 +225,7 @@ Read these before changing the algorithm:
 
 - `AGENTS.md`;
 - `README.md`;
+- `TRANSPORTED_STORY_LAW_PROOF_OBLIGATIONS.md`;
 - `ALGORITHM.md`;
 - `ARITHMETIC.md`;
 - `METRICS.md`;
@@ -254,14 +269,9 @@ grok_sessions/YYYY-MM-DD-topic.md
 
 ## Next Valid Work
 
-The next valid mathematical task is to derive a stronger transported
-certificate invariant from public PGSPG fields.
+The next valid mathematical task is to derive the transported story-law
+prefix, suffix, recurrence, and grammar-projection lemmas listed in
+`TRANSPORTED_STORY_LAW_PROOF_OBLIGATIONS.md`.
 
-Until that invariant is written down, reviewed, implemented, and tested, the
-correct inference status is unresolved.
-
-For the grammar track, the fresh solved-row test is complete. The next valid
-task is to test whether the commitment-story projection preserves the measured
-zero ordered-word collisions. Do not translate the measured grammar pattern
-into a resolver until a PGS-native rule has been derived, falsified, and
-reviewed.
+Until those lemmas are proved, reviewed, implemented as an official rule, and
+tested, the correct inference status is unresolved.
