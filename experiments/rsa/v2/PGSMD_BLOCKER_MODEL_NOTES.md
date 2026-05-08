@@ -579,3 +579,193 @@ transported_tail_image =
 
 - Boundary: raw deadline or width containment has no proof status and should be
   discarded if it creates false positives on current unresolved rows.
+
+## Current Narrowed Blocker: `Psi(RB)`
+
+The current active proof target has moved past the broad recursive-word and
+diagnostic hypotheses above.
+
+The strongest measured transported-story result remains:
+
+```text
+transported_story_law_v1
+row_count = 512
+ledger_effective_survivor_count = 202
+recursive_row_count = 713
+recursive_final_survivor_count = 0
+```
+
+This is measured public evidence, not a theorem and not resolver promotion.
+The official runner remains:
+
+```text
+rsa_v2_40bit_static_001 unresolved_by_certificate_pair_not_closed
+rsa_v2_50bit_static_001 unresolved_by_certificate_pair_not_closed
+```
+
+The narrowed frontier interface is:
+
+```text
+DirectFrontier(C, C') := FreshEndpoint(C') and Psi(RB(C, C'))
+
+RB(C, C') =
+(
+  R(C, C'),
+  source_closed_count - source_tail_count,
+  induced_closed_count - induced_tail_count
+)
+```
+
+The bridge theorem candidate is:
+
+```text
+PrefixMaterial(C, C') or ThreatMaterial(C, C')
+=> not Psi(RB(C, C')).
+```
+
+Independent proof obligations:
+
+```text
+T1 prefix commitment transport
+T2 threat-horizon transport
+T3 frontier commitment exclusivity against independently defined Psi(RB)
+```
+
+Current guarded facts:
+
+```text
+Certificate story grammar is fixed and guarded:
+  closed_offset* carrier_lock? reset lower_threat? tail* deadline.
+RB is computable from public pre-ledger fields.
+RB is unchanged after deleting ledger labels, raw frontier novelty, interval
+flags, and threat-ceiling flags.
+RB classes determine induced-carrier interval symbol on the measured surface.
+RB classes determine source/induced lock-label relation on the measured surface.
+RB classes determine source deadline-threat boundary on the measured surface.
+RB classes determine typed branch class on the measured surface.
+TypedMaterial RB classes are disjoint from non-TypedMaterial RB classes.
+PrefixMaterial and ThreatMaterial RB classes have a six-class overlap.
+Broad run-word, simple balance-threshold, and per-run coordinate-monotone
+balance definitions are invalid.
+Observed TypedMaterial RB-class complement is measured-perfect but rejected as
+a finite table lookup.
+FreshEndpoint handles recurrence outside Psi(RB).
+```
+
+Immediate proof blocker:
+
+```text
+RB Sufficiency Sublemma
+measured support: guarded
+structural proof: missing
+```
+
+The sublemma must prove that fixed certificate story grammar plus reciprocal
+interval classification, run-word collapse, and source/induced closed-tail
+balances determine the carrier symbol, lock relation, deadline-threat boundary,
+and typed branch class for valid transported certificate pairs.
+
+Derivation state:
+
+```text
+fixed grammar plus balances alone are insufficient
+symbolic obstruction: O P O O and O O P O both collapse to OPO with the same
+induced closed-tail balance but put the carrier in different interval symbols
+PGS counterexample: not established
+proof-source countermodel: established for grammar plus balances alone
+```
+
+Therefore the first structural proof target is:
+
+```text
+Carrier Localization Under Reciprocal Transport
+```
+
+That law must show that valid PGSPG transport geometry rules out the symbolic
+carrier-position ambiguity before RB can determine lock relation,
+deadline-threat state, and typed branch class.
+
+Measured carrier-localization extension:
+
+```text
+direct RB classes with mixed carrier symbols = 0 / 475
+recursive RB classes with mixed carrier symbols = 0 / 661
+combined direct plus recursive RB classes with mixed carrier symbols = 0 / 661
+combined direct plus recursive RB classes with mixed carrier run ordinals =
+  0 / 661
+```
+
+This strengthens the finite guard only. It does not prove the carrier-local
+transport law.
+
+Do not strengthen this into exact event-index recovery:
+
+```text
+combined direct plus recursive RB classes with mixed exact carrier index = 5
+combined direct plus recursive RB classes with mixed induced closed count = 5
+combined direct plus recursive RB classes with mixed induced story length = 5
+```
+
+The admissible target is collapsed interval-run localization of the induced
+carrier, not reconstruction of the full induced story alignment.
+
+Measured projection boundary on the combined direct plus recursive surface:
+
+```text
+R alone ambiguous for carrier run = 12
+R plus source balance ambiguous for carrier run = 18
+R plus induced balance ambiguous for carrier run = 17
+R plus balance delta ambiguous for carrier run = 6
+full RB ambiguous for carrier run = 0
+```
+
+The proof target must use the full RB triple.
+
+Measured refinement projection boundary:
+
+```text
+deadline-threat boundary is determined by source balance alone on the combined
+surface:
+  source_balance = 8..31  => false
+  source_balance = 32..34 => true
+carrier run, lock relation, and typed branch class require full RB on the
+combined surface
+```
+
+Simple `Psi(RB)` candidates remain invalid. Coarse word-shape predicates and
+balance inequalities leak against `not TypedMaterial`; the typed, non-typed,
+and effective delta ranges overlap. This preserves the boundary: do not replace
+the missing chamber-balance language with a scalar threshold or coarse run-word
+rule.
+
+Lock-relation refinement still needs the full collapsed run word. Carrier-run
+localization plus source/induced balances has 4 measured lock-relation
+ambiguities on the combined public surface; full RB has 0.
+
+The ambiguous groups are:
+
+```text
+(3, 33, 31): BOSPO equal, POBO higher
+(2, 34, 33): OBPO lower, OSBP higher
+(3, 33, 33): OPOP equal, POSBP higher
+(2, 33, 33): BOP equal, OSBO lower, OSBP higher
+```
+
+So the Lock-Relation Balance Law must use off-carrier run context, not only the
+carrier's localized run plus balances.
+
+Typed-branch projection is simpler after the preceding refinements:
+
+```text
+carrier symbol + lock relation + deadline-threat boundary
+=> typed branch class
+```
+
+On the combined public surface this projection has 0 ambiguity. Replacing
+carrier symbol with carrier run ordinal gives measured ambiguity, so the branch
+law needs the interval symbol specifically.
+
+The missing item is not another sidecar or scalar hunt. It is first a structural
+proof of RB Sufficiency, then a public chamber-balance law defining `Psi(RB)`
+before typed rewrite and recurrence labels, followed by a proof that committed
+transported prefix and threat-horizon material lie outside that language.
