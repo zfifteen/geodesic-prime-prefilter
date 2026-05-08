@@ -1479,6 +1479,80 @@ def test_grammar_recursive_solved_surface_compare_builds_rows(tmp_path):
         assert {"audit_integrity_status", "inference_audit_status"}.isdisjoint(row)
 
 
+def test_grammar_recursive_solved_surface_compare_accepts_rsa_challenge_surface(tmp_path):
+    """As a reviewer, I want fresh solved RSA labels measured without changing inference."""
+    compatibility_rows = tmp_path / "compatibility_rows.jsonl"
+    compatibility_rows.write_text(
+        json.dumps(
+            {
+                "bits": 330,
+                "case_id": "rsa_100",
+                "cell_key": "L|o4_d4_odd|L",
+                "n_context_key": "o2_d4_odd|d<=4|o4_d4_odd|d<=4|o6_d4_odd|d<=4",
+                "n_previous": "o2_d4_odd|d<=4",
+                "n_containing": "o4_d4_odd|d<=4",
+                "n_following": "o6_d4_odd|d<=4",
+                "p_outward": "o2_d4_odd|d<=4",
+                "p_inward": "o4_d4_odd|d<=4",
+                "q_inward": "o4_d4_odd|d<=4",
+                "q_outward": "o6_d4_odd|d<=4",
+                "rule_id": "grammar_compatibility_catalog_v1",
+                "surface": "rsa_challenge",
+            },
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    target_rows = tmp_path / "target_rows.jsonl"
+    target_rows.write_text(
+        "\n".join(
+            json.dumps(row, sort_keys=True)
+            for row in [
+                {
+                    "case_id": "rsa_100",
+                    "role": "p_left",
+                    "right_endpoint": "1000003",
+                },
+                {
+                    "case_id": "rsa_100",
+                    "role": "q_left",
+                    "right_endpoint": "1000033",
+                },
+            ]
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    expanded_rows = tmp_path / "expanded_recursive_rows.jsonl"
+    expanded_rows.write_text("", encoding="utf-8")
+    module = load_module(V2 / "grammar_recursive_solved_surface_compare.py")
+    output_dir = tmp_path / "rsa_challenge_recursive"
+
+    assert module.main(
+        [
+            "--compatibility-rows",
+            str(compatibility_rows),
+            "--target-rows",
+            str(target_rows),
+            "--expanded-recursive-rows",
+            str(expanded_rows),
+            "--solved-surface",
+            "rsa_challenge",
+            "--output-dir",
+            str(output_dir),
+        ]
+    ) == 0
+
+    target_output = read_jsonl(output_dir / "recursive_target_rows.jsonl")
+    summary = json.loads((output_dir / "summary.json").read_text(encoding="utf-8"))
+
+    assert summary["solved_surface"] == "rsa_challenge"
+    assert {row["target_value"] for row in target_output} == {"1000003", "1000033"}
+    for row in target_output:
+        assert {"p", "q", "audit_integrity_status", "inference_audit_status"}.isdisjoint(row)
+
+
 def test_grammar_recursive_solved_surface_compare_writes_lf_sidecars(tmp_path):
     """As a reviewer, I want solved recursive comparison artifacts to be LF-only."""
     compatibility_rows = tmp_path / "compatibility_rows.jsonl"

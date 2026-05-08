@@ -86,6 +86,40 @@ recursive class hits: 17
 component-sharing word exclusions: 15
 ```
 
+Fresh RSA-100 challenge target scope:
+
+```text
+solved target rows: 2
+global lag-2 hits: 2
+global lag-3 hits: 1
+global lag-2 + lag-3 ordered word hits: 0
+global full recursive reduced word hits: 0
+global recursive class hits: 2
+global component-sharing word exclusions: 2
+
+public-cell lag-2 hits: 2
+public-cell lag-3 hits: 1
+public-cell lag-2 + lag-3 ordered word hits: 0
+public-cell full recursive reduced word hits: 0
+public-cell recursive class hits: 2
+public-cell component-sharing word exclusions: 2
+
+public-cell plus target-side lag-2 hits: 1
+public-cell plus target-side lag-3 hits: 1
+public-cell plus target-side lag-2 + lag-3 ordered word hits: 0
+public-cell plus target-side full recursive reduced word hits: 0
+public-cell plus target-side recursive class hits: 2
+public-cell plus target-side component-sharing word exclusions: 2
+```
+
+Fresh output artifacts:
+
+```text
+output/fresh_grammar_compatibility/
+output/fresh_rsa_challenge_recursive_surface/
+output/fresh_rsa_challenge_inverse_word_exclusion/
+```
+
 ## Interpretation
 
 The solved rows share components and coarse recursive classes with the expanded

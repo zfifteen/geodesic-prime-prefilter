@@ -16,14 +16,24 @@ if str(THIS_DIR) not in sys.path:
 
 from grammar_recursive_target_catalog import (  # noqa: E402
     feature_summary,
+    oriented_gaps,
     recursive_target_row,
+    row_direction_class,
     split_rows,
+    state_class,
     summary as recursive_summary,
+    target_direction_class,
+)
+from rsa_challenge_exact_grammar_probe import (  # noqa: E402
+    gap_grammar as exact_gap_grammar,
+    next_prime,
+    previous_prime,
 )
 
 
 RULE_ID = "grammar_recursive_solved_surface_compare_v1"
 SOLVED_SURFACE = "exact_low_regime"
+INT64_MAX = 2**63 - 1
 
 
 def read_jsonl(path: Path) -> list[dict[str, object]]:
@@ -46,10 +56,15 @@ def write_jsonl(path: Path, rows: list[dict[str, object]]) -> None:
 
 def target_value_index(target_rows: list[dict[str, object]]) -> dict[tuple[str, str], int]:
     """Return known target coordinate values by case and side."""
-    return {
-        (str(row["case_id"]), str(row["target_side"])): int(row["target_value"])
-        for row in target_rows
-    }
+    values: dict[tuple[str, str], int] = {}
+    for row in target_rows:
+        if "target_value" in row:
+            values[(str(row["case_id"]), str(row["target_side"]))] = int(row["target_value"])
+            continue
+        role = str(row.get("role"))
+        if role in ("p_left", "q_left"):
+            values[(str(row["case_id"]), role[:1])] = int(row["right_endpoint"])
+    return values
 
 
 def is_higher(state: str) -> bool:
@@ -82,22 +97,139 @@ def with_cell_key(row: dict[str, object]) -> dict[str, object]:
     return enriched
 
 
+def large_side_gaps(target_value: int) -> dict[str, dict[str, object]]:
+    """Return three left and three right exact chamber payloads around one large target."""
+    left_1 = previous_prime(target_value - 1)
+    left_2 = previous_prime(left_1 - 1)
+    left_3 = previous_prime(left_2 - 1)
+    right_1 = next_prime(target_value + 1)
+    right_2 = next_prime(right_1 + 1)
+    right_3 = next_prime(right_2 + 1)
+    return {
+        "left_lag3": exact_gap_grammar("left_lag3", left_3, left_2),
+        "left_lag2": exact_gap_grammar("left_lag2", left_2, left_1),
+        "left_lag1": exact_gap_grammar("left_lag1", left_1, target_value),
+        "right_lag1": exact_gap_grammar("right_lag1", target_value, right_1),
+        "right_lag2": exact_gap_grammar("right_lag2", right_1, right_2),
+        "right_lag3": exact_gap_grammar("right_lag3", right_2, right_3),
+    }
+
+
+def recursive_target_row_large(
+    source_row: dict[str, object],
+    target_side: str,
+    target_value: int,
+) -> dict[str, object]:
+    """Return one recursive target row using the large-coordinate exact backend."""
+    oriented = oriented_gaps(target_side, large_side_gaps(target_value))
+    states = {key: str(gap["reduced_state"]) for key, gap in oriented.items()}
+    exact = {f"{key}_exact": str(gap["exact_type_key"]) for key, gap in oriented.items()}
+    widths = {f"{key}_width": int(gap["gap_width"]) for key, gap in oriented.items()}
+    row = {
+        "rule_id": "grammar_recursive_target_catalog_v1",
+        "source_rule_id": str(source_row["rule_id"]),
+        "case_id": str(source_row["case_id"]),
+        "bits": int(source_row["bits"]),
+        "surface": str(source_row["surface"]),
+        "target_side": target_side,
+        "target_value": str(target_value),
+        "cell_key": str(source_row["cell_key"]),
+        "n_context_key": str(source_row["n_context_key"]),
+        "n_previous": str(source_row["n_previous"]),
+        "n_containing": str(source_row["n_containing"]),
+        "n_following": str(source_row["n_following"]),
+        "prime_start": None,
+        "prime_left_index": None,
+        "prime_pair_offset": None,
+        "prime_pair_offset_group": None,
+        "case_direction_class": row_direction_class(source_row),
+        "target_direction_class": target_direction_class(source_row, target_side),
+        "outward_lag3": states["outward_lag3"],
+        "outward_lag2": states["outward_lag2"],
+        "outward_lag1": states["outward_lag1"],
+        "inward_lag1": states["inward_lag1"],
+        "inward_lag2": states["inward_lag2"],
+        "inward_lag3": states["inward_lag3"],
+        "outward_class_signature": "|".join(
+            [state_class(states["outward_lag2"]), state_class(states["outward_lag1"])]
+        ),
+        "inward_class_signature": "|".join(
+            [state_class(states["inward_lag1"]), state_class(states["inward_lag2"])]
+        ),
+        "lag2_class_signature": "|".join(
+            [state_class(states["outward_lag2"]), state_class(states["inward_lag2"])]
+        ),
+        "lag2_reduced_signature": "|".join(
+            [states["outward_lag2"], states["inward_lag2"]]
+        ),
+        "lag3_class_signature": "|".join(
+            [state_class(states["outward_lag3"]), state_class(states["inward_lag3"])]
+        ),
+        "lag3_reduced_signature": "|".join(
+            [states["outward_lag3"], states["inward_lag3"]]
+        ),
+        "lag23_reduced_signature": "|".join(
+            [
+                states["outward_lag3"],
+                states["outward_lag2"],
+                states["inward_lag2"],
+                states["inward_lag3"],
+            ]
+        ),
+        "recursive_reduced_signature": "|".join(
+            [
+                states["outward_lag3"],
+                states["outward_lag2"],
+                states["outward_lag1"],
+                states["inward_lag1"],
+                states["inward_lag2"],
+                states["inward_lag3"],
+            ]
+        ),
+        "recursive_class_signature": "|".join(
+            [
+                state_class(states["outward_lag3"]),
+                state_class(states["outward_lag2"]),
+                state_class(states["outward_lag1"]),
+                state_class(states["inward_lag1"]),
+                state_class(states["inward_lag2"]),
+                state_class(states["inward_lag3"]),
+            ]
+        ),
+    }
+    row.update(exact)
+    row.update(widths)
+    return row
+
+
+def measured_recursive_target_row(
+    row: dict[str, object],
+    target_side: str,
+    target_value: int,
+) -> dict[str, object]:
+    """Return one recursive target row with the coordinate-appropriate exact backend."""
+    if target_value > INT64_MAX:
+        return recursive_target_row_large(row, target_side, target_value)
+    return recursive_target_row(row, target_side, target_value)
+
+
 def solved_rows(
     compatibility_rows: list[dict[str, object]],
     target_rows: list[dict[str, object]],
+    solved_surface: str,
 ) -> list[dict[str, object]]:
     """Return recursive target rows for the solved compatibility surface."""
     values = target_value_index(target_rows)
     output: list[dict[str, object]] = []
     for row in compatibility_rows:
-        if str(row["surface"]) != SOLVED_SURFACE:
+        if str(row["surface"]) != solved_surface:
             continue
         enriched = with_cell_key(row)
         for target_side in ("p", "q"):
             key = (str(row["case_id"]), target_side)
             if key not in values:
                 raise ValueError(f"missing target value for {key}")
-            output.append(recursive_target_row(enriched, target_side, values[key]))
+            output.append(measured_recursive_target_row(enriched, target_side, values[key]))
     return output
 
 
@@ -137,11 +269,12 @@ def comparison_summary(
     expanded: list[dict[str, object]],
     comparison_rows: list[dict[str, object]],
     grouped_rows: list[dict[str, object]],
+    solved_surface: str,
 ) -> dict[str, object]:
     """Return compact solved-vs-expanded recursive comparison summary."""
     payload = recursive_summary(solved, grouped_rows)
     payload["rule_id"] = RULE_ID
-    payload["solved_surface"] = SOLVED_SURFACE
+    payload["solved_surface"] = solved_surface
     payload["expanded_target_row_count"] = len(expanded)
     direction_counts = Counter(str(row["target_direction_class"]) for row in solved)
     payload["solved_target_direction_class_counts"] = dict(sorted(direction_counts.items()))
@@ -223,13 +356,22 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         default=THIS_DIR / "output" / "grammar_recursive_solved_surface",
         help="Output directory.",
     )
+    parser.add_argument(
+        "--solved-surface",
+        default=SOLVED_SURFACE,
+        help="Compatibility-row surface to treat as solved measurement rows.",
+    )
     return parser.parse_args(argv)
 
 
 def main(argv: list[str] | None = None) -> int:
     """Run solved-surface recursive grammar comparison."""
     args = parse_args(argv)
-    solved = solved_rows(read_jsonl(args.compatibility_rows), read_jsonl(args.target_rows))
+    solved = solved_rows(
+        read_jsonl(args.compatibility_rows),
+        read_jsonl(args.target_rows),
+        args.solved_surface,
+    )
     expanded = read_jsonl(args.expanded_recursive_rows)
     features = (
         "cell_key+target_side+lag2_reduced_signature",
@@ -238,7 +380,13 @@ def main(argv: list[str] | None = None) -> int:
     )
     grouped_rows = split_rows(solved, features)
     comparison_rows = compare_signatures(solved, expanded)
-    payload = comparison_summary(solved, expanded, comparison_rows, grouped_rows)
+    payload = comparison_summary(
+        solved,
+        expanded,
+        comparison_rows,
+        grouped_rows,
+        args.solved_surface,
+    )
     args.output_dir.mkdir(parents=True, exist_ok=True)
     write_jsonl(args.output_dir / "recursive_target_rows.jsonl", solved)
     write_jsonl(args.output_dir / "recursive_split_rows.jsonl", grouped_rows)

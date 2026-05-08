@@ -1,0 +1,81 @@
+{
+  "expanded_target_row_count": 140,
+  "feature_summaries": [
+    {
+      "feature": "cell_key+target_side+lag23_reduced_signature",
+      "group_count": 2,
+      "repeated_group_count": 0,
+      "repeated_mixed_group_count": 0,
+      "repeated_pure_group_count": 0,
+      "rule_id": "grammar_recursive_target_catalog_v1",
+      "singleton_group_count": 2
+    },
+    {
+      "feature": "cell_key+target_side+lag2_reduced_signature",
+      "group_count": 2,
+      "repeated_group_count": 0,
+      "repeated_mixed_group_count": 0,
+      "repeated_pure_group_count": 0,
+      "rule_id": "grammar_recursive_target_catalog_v1",
+      "singleton_group_count": 2
+    },
+    {
+      "feature": "cell_key+target_side+lag2_reduced_signature+lag3_reduced_signature",
+      "group_count": 2,
+      "repeated_group_count": 0,
+      "repeated_mixed_group_count": 0,
+      "repeated_pure_group_count": 0,
+      "rule_id": "grammar_recursive_target_catalog_v1",
+      "singleton_group_count": 2
+    }
+  ],
+  "lag23_reduced_expanded_signature_count": 81,
+  "lag23_reduced_signature_overlap_count": 0,
+  "lag23_reduced_solved_outward_overlap_any_direction_count": 0,
+  "lag23_reduced_solved_outward_overlap_outward_count": 0,
+  "lag23_reduced_solved_outward_signature_count": 0,
+  "lag23_reduced_solved_signature_count": 2,
+  "lag23_signature_count": 2,
+  "lag23_signature_overlap_count": 0,
+  "lag2_reduced_expanded_signature_count": 45,
+  "lag2_reduced_signature_overlap_count": 2,
+  "lag2_reduced_solved_outward_overlap_any_direction_count": 0,
+  "lag2_reduced_solved_outward_overlap_outward_count": 0,
+  "lag2_reduced_solved_outward_signature_count": 0,
+  "lag2_reduced_solved_signature_count": 2,
+  "lag3_reduced_expanded_signature_count": 44,
+  "lag3_reduced_signature_overlap_count": 1,
+  "lag3_reduced_solved_outward_overlap_any_direction_count": 0,
+  "lag3_reduced_solved_outward_overlap_outward_count": 0,
+  "lag3_reduced_solved_outward_signature_count": 0,
+  "lag3_reduced_solved_signature_count": 2,
+  "outward_lag23_signature_count": 0,
+  "outward_lag23_signature_overlap_count": 0,
+  "recursive_class_expanded_signature_count": 28,
+  "recursive_class_signature_counts": {
+    "H|L|L|L|L|L": 1,
+    "L|L|L|L|L|L": 1
+  },
+  "recursive_class_signature_overlap_count": 2,
+  "recursive_class_solved_outward_overlap_any_direction_count": 0,
+  "recursive_class_solved_outward_overlap_outward_count": 0,
+  "recursive_class_solved_outward_signature_count": 0,
+  "recursive_class_solved_signature_count": 2,
+  "recursive_reduced_expanded_signature_count": 82,
+  "recursive_reduced_signature_overlap_count": 0,
+  "recursive_reduced_solved_outward_overlap_any_direction_count": 0,
+  "recursive_reduced_solved_outward_overlap_outward_count": 0,
+  "recursive_reduced_solved_outward_signature_count": 0,
+  "recursive_reduced_solved_signature_count": 2,
+  "rule_id": "grammar_recursive_solved_surface_compare_v1",
+  "solved_inward_only_row_count": 0,
+  "solved_outward_only_row_count": 0,
+  "solved_surface": "rsa_challenge",
+  "solved_target_direction_class_counts": {
+    "none": 2
+  },
+  "target_direction_class_counts": {
+    "none": 2
+  },
+  "target_row_count": 2
+}
