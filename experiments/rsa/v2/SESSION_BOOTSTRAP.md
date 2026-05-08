@@ -145,9 +145,12 @@ close-factor shape. Do not treat that result as a live solve.
 Read these before extending the grammar track:
 
 ```text
+PGS_GRAMMAR_EVIDENCE_FINDINGS.md
 GRAMMAR_EVIDENCE_STATUS.md
 GRAMMAR_PATTERN_SCAN.md
+INVERSE_WORD_EXCLUSION_FINDING.md
 output/grammar_inverse_word_exclusion/summary.json
+output/fresh_rsa_challenge_inverse_word_exclusion/summary.json
 ```
 
 Current inverse-word measurement:
@@ -176,6 +179,14 @@ The inverse relation is not a simple low/high opposition. It is component
 sharing with ordered-word exclusion.
 ```
 
+Fresh-row status:
+
+```text
+The RSA-100 fresh solved-row test has been run. It preserves the same shape:
+component sharing exists, combined lag-2 + lag-3 ordered-word hits remain 0,
+and full recursive reduced-word hits remain 0.
+```
+
 Status separation:
 
 ```text
@@ -183,14 +194,15 @@ hypothesis: public grammar excludes incompatible ordered recursive words
 measured result: solved rows share pieces but avoid expanded lag-2 + lag-3 words
 proof status: not proved
 resolver status: not integrated
-unresolved state: derive and falsify a public PGS exclusion rule
+unresolved state: derive and falsify a public PGS exclusion rule from
+certificate-side data
 ```
 
 Next grammar task:
 
 ```text
-Use combined lag-2 + lag-3 reduced words as exclusion-family labels, then test
-fresh solved rows for component sharing without ordered-word collision.
+Connect the inverse-word exclusion family to public PGSPG certificate
+commitment stories through the commitment_story_word_projection_v1 sidecar.
 ```
 
 ## Live Files
@@ -248,7 +260,8 @@ certificate invariant from public PGSPG fields.
 Until that invariant is written down, reviewed, implemented, and tested, the
 correct inference status is unresolved.
 
-For the grammar track, the next valid task is to test the inverse word
-exclusion family on fresh solved rows. Do not translate the measured grammar
-pattern into a resolver until a PGS-native rule has been derived, falsified, and
+For the grammar track, the fresh solved-row test is complete. The next valid
+task is to test whether the commitment-story projection preserves the measured
+zero ordered-word collisions. Do not translate the measured grammar pattern
+into a resolver until a PGS-native rule has been derived, falsified, and
 reviewed.

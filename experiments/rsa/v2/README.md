@@ -69,10 +69,13 @@ This is a measured grammar result, not a proof and not a resolver.
 Primary artifacts:
 
 ```text
+PGS_GRAMMAR_EVIDENCE_FINDINGS.md
 GRAMMAR_EVIDENCE_STATUS.md
 GRAMMAR_PATTERN_SCAN.md
+INVERSE_WORD_EXCLUSION_FINDING.md
 grammar_inverse_word_exclusion_probe.py
 output/grammar_inverse_word_exclusion/
+output/fresh_rsa_challenge_inverse_word_exclusion/
 ```
 
 ## Live Front Door
@@ -185,8 +188,8 @@ unresolved.
 The next grammar-evidence task is:
 
 ```text
-Use combined lag-2 + lag-3 reduced words as exclusion-family labels, then test
-fresh solved rows for component sharing without ordered-word collision.
+connect the inverse-word exclusion family to public PGSPG certificate
+commitment stories through the commitment_story_word_projection_v1 sidecar.
 ```
 
 Before substantial implementation, use the continuity and shape contract:
