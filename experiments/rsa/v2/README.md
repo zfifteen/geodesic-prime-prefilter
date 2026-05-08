@@ -102,6 +102,47 @@ That artifact names the Prefix Non-Rewrite, Suffix Strict-Descent, Recursive
 Anchor Recurrence, and Grammar Projection lemmas required to derive the sidecar
 predicates from GWR/NLSC.
 
+Current narrowed proof target:
+
+```text
+DirectFrontier(C, C') := FreshEndpoint(C') and Psi(RB(C, C'))
+
+RB(C, C') =
+(
+  R(C, C'),
+  source_closed_count - source_tail_count,
+  induced_closed_count - induced_tail_count
+)
+```
+
+`Psi(RB)` must be a public structural chamber-balance language, not an observed
+class lookup. The measured guards for carrier-local prefix/threat equivalence,
+typed material antecedents, and direct RB separation are in
+`tests/python/test_rsa_v2_transported_story_law.py`.
+
+Current proof status:
+
+```text
+RB Sufficiency Sublemma: measured support guarded, structural proof missing
+Carrier Localization Under Reciprocal Transport: structural proof missing
+Psi(RB) structural definition: missing
+PrefixMaterial(C, C') => not Psi(RB(C, C')): unproved
+ThreatMaterial(C, C') => not Psi(RB(C, C')): unproved
+FreshEndpoint recurrence boundary: separated from Psi(RB)
+resolver promotion: blocked
+```
+
+The minimal falsification condition for any proposed `Psi(RB)` is:
+
+```text
+there exists a public certificate pair (C, C') with
+  PrefixMaterial(C, C') or ThreatMaterial(C, C')
+  and Psi(RB(C, C'))
+```
+
+That falsifies the typed exclusion theorem for the proposed `Psi`. It does not
+falsify local GWR/NLSC.
+
 ## Live Front Door
 
 The live front door is:
@@ -206,8 +247,13 @@ GMP interval backend exists.
 The next mathematical task is:
 
 ```text
-derive the transported story-law prefix, suffix, and recurrence predicates from
-GWR/NLSC as stated in TRANSPORTED_STORY_LAW_PROOF_OBLIGATIONS.md.
+prove or falsify the typed transported non-rewrite law stated in
+TRANSPORTED_STORY_LAW_PROOF_OBLIGATIONS.md:
+
+prefix + lower/equal lock label => committed-prefix rewrite, not new frontier
+suffix + lower lock label + deadline=threat => committed-threat-horizon rewrite,
+  not new frontier
+repeated recursive frontier anchor => recurrent frontier material, not new frontier
 ```
 
 Until those lemmas are proved and reviewed, the correct official output is
