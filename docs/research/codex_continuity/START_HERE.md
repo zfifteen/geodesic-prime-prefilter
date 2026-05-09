@@ -133,6 +133,40 @@ exclusion-family labels and test fresh solved rows for component sharing
 without ordered-word collision. Do not turn this into a resolver until a public
 PGS rule has been derived and falsified.
 
+## Current GWR/PGS Generator Optimization State
+
+As of 2026-05-09, an exact interval pre-sieve optimization is measured and
+ready for implementation pressure.
+
+Read:
+
+```text
+docs/research/predictor/gwr_interval_presieve_optimization_note.md
+output/gwr_interval_presieve_benchmark_20260509/summary.json
+```
+
+Strongest supported claim:
+
+```text
+Pre-sieving [q + 1, q + C(q)] through floor(cuberoot(q + C(q))) and then
+scanning the same offsets in order preserves exact GWR recovery while reducing
+divisor-field work by 3.06x to 10.22x on measured surfaces.
+```
+
+The fixed `primes <= 200` variant is invalid. Do not revive it.
+
+Refactor priority:
+
+```text
+benchmarks/python/predictor/gwr_dni_recursive_walk.py
+src/python/z_band_prime_predictor/gwr_boundary_walk.py
+src/python/z_band_prime_predictor/simple_pgs_generator.py
+```
+
+The optimization changes only the exact divisor-field computation path. It must
+not skip offsets, add fallback search, change generator output records, or
+reframe GWR inference.
+
 ## Current Collatz Branch State
 
 As of 2026-05-03, the Collatz work is integrated on `main` under:
