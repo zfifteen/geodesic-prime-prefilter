@@ -35,10 +35,11 @@ This is measured evidence, not a proof of the dynamic cutoff law.
 
 ## Square-Envelope Pressure Surface
 
-The square-envelope search has now tested through `p <= 500,000,000` in
+The square-envelope search has now tested through `p <= 600,000,000` in
 documented surfaces, with no counterexample. The record-law table through
 `p <= 500,000,000` identifies the standing utilization record. The `4e8` to
-`5e8` segment created a new record below `1`.
+`5e8` segment created a new record below `1`; the `5e8` to `6e8` segment
+preserved that record.
 
 | Surface | Square roots tested | First counterexample | Max utilization | Extremal square |
 |---|---:|---|---:|---|
@@ -47,6 +48,7 @@ documented surfaces, with no counterexample. The record-law table through
 | [`2e8 to 3e8 square segment`](./square_offset_envelope_segment_2e8_to_3e8.md) | `5,173,388` | `none` | `0.7209612817089452` | `251,066,071^2` |
 | [`3e8 to 4e8 square segment`](./square_offset_envelope_segment_3e8_to_4e8.md) | `5,084,001` | `none` | `0.7036082474226805` | `358,018,553^2` |
 | [`4e8 to 5e8 square segment`](./square_offset_envelope_segment_4e8_to_5e8.md) | `5,019,541` | `none` | `0.9341772151898734` | `424,171,123^2` |
+| [`5e8 to 6e8 square segment`](./square_offset_envelope_segment_5e8_to_6e8.md) | `4,968,836` | `none` | `0.6691449814126395` | `526,336,897^2` |
 
 Record-law artifact:
 
