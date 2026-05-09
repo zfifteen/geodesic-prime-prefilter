@@ -191,6 +191,17 @@ square exclusion -> first-d=4 arrival -> dynamic cutoff extremal law ->
 bounded recursive prime walk
 ```
 
+The first executable artifact for this branch is:
+
+```text
+benchmarks/python/predictor/bounded_compression_falsification_runner.py
+```
+
+Its narrow contract is to compare each exact unbounded GWR/DNI witness against
+`C(q) = max(64, ceil(0.5 * log(q)^2))`, then emit the first failure or the
+finite certified surface with max witness offset, max cutoff utilization,
+extremal `q`, and square obstruction metadata.
+
 Preserve the state separation:
 
 - proved: divisor-count next-prime theorem and GWR selected-integer theorem in
