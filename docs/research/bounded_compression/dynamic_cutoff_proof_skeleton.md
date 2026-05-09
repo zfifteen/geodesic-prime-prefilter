@@ -63,6 +63,14 @@ If no interior prime square appears in the gap, then the first d=4 carrier is
 the GWR/DNI selected witness.
 ```
 
+Measured status:
+
+```text
+Survived through q <= 10,000,000:
+  no-square d=4 fallback cases: 499,896
+  first failure: none
+```
+
 Role:
 
 ```text
@@ -119,6 +127,15 @@ square witnesses as typical gaps.
 square catalog through 1e7:
   square-witness rows: 444
   top utilization row: 259,081 = 509^2
+
+d=4 no-square fallback through 1e7:
+  no-square d=4 fallback cases: 499,896
+  first failure: none
+
+square-offset envelope through prime roots <= 1e8:
+  odd prime squares tested: 5,761,454
+  first counterexample: none
+  max utilization: 0.8120300751879699
 ```
 
 ## Open Gap
