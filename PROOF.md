@@ -373,11 +373,158 @@ Every integer after `w` has smaller comparison value than `w`.
 Therefore `w` is the unique integer in the prime-gap interval where `F(n)` is
 largest.
 
+## Finite Bounded-Compression Base
+
+This finite lemma is not an all-scale bounded-compression theorem. It records
+the exact small side needed by the dynamic cutoff target.
+
+Let `p < q` be consecutive primes with nonempty interior and with
+`q < ceil(exp(16)) = 8,886,111`. Let `w` be the first integer in
+`{p + 1, ..., q - 1}` whose divisor count is minimal in that interval. Then
+
+```text
+w - p <= 60.
+```
+
+Consequently,
+
+```text
+w - p <= 64 <= max(64, ceil(0.5 * log(q)^2)).
+```
+
+The verification enumerated the exact divisor counts for every consecutive
+prime gap with successor prime below `8,886,111`. It checked `542,081`
+nonempty prime-gap interiors. The maximum selected-witness offset was `60`,
+attained at
+
+```text
+p = 1,885,069
+q = 1,885,151
+w = 1,885,129
+tau(w) = 3
+w - p = 60.
+```
+
+No selected-witness offset exceeded `64` on this finite surface.
+
+## Residual K=128 First-d4 Branch-Elimination Lemma
+
+This lemma records the first-d4 window result that is actually present in the
+residual closure artifacts. It is not a global occupancy theorem for all prime
+gaps.
+
+Let `d` be an odd divisor count and let the adjacent earlier divisor count be
+`d + 1`. In the residual closure branch, enumerate every integer `w` with
+`tau(w) = d` whose preceding prime `p` lies in the retained finite threshold
+window above the committed exact base. For each containing prime gap
+`(p, q)`, compute exact divisor counts in the interior.
+
+If that containing gap has minimum divisor count `4` and its first interior
+integer with divisor count `4` occurs at offset at most `128`, then `w` is not
+the selected witness for that gap. The reason is direct: an earlier interior
+integer has smaller divisor count than `d`, so `w` cannot be the first integer
+where the gap minimum divisor count is attained.
+
+The retained residual closure artifact applies this exact elimination as
+follows:
+
+| Earlier divisor count | Candidate witness divisor count | Preceding-prime window | Candidate carriers | Eliminated by first-d4 window | Remaining exceptions | Result |
+|---:|---:|---|---:|---:|---:|---|
+| `36` | `35` | `(5,000,000,000, 8,589,934,592]` | `5` | `5` | `0` | no `tau=35` winner branch remains |
+| `40` | `39` | `(5,000,000,000, 137,438,953,472]` | `655` | `623` | `32` | exceptions realize `0` `tau=39` winner gaps |
+| `56` | `55` | `(5,000,000,000, 9,007,199,254,740,992]` | `439` | `412` | `27` | exceptions realize `0` `tau=55` winner gaps |
+
+Thus, on these retained odd adjacent residual branches, the `K = 128`
+first-d4 window eliminates the listed candidate witness branches, with the
+remaining exceptions closed by exact enumeration. This is a formal residual
+branch-elimination theorem. It does not prove that every prime gap containing
+a divisor-count-`4` integer has its first such integer within `128`.
+
+## Square-Branch Reduction
+
+This reduction records the remaining bounded-compression obligation. It is not
+a proof of the square branch.
+
+Let `p < q` be consecutive primes with nonempty interior `I`, and let `w` be
+the first integer in `I` whose divisor count is minimal in `I`. In the square
+branch,
+
+```text
+tau(w) = 3.
+```
+
+The integers with divisor count `3` are exactly prime squares. Therefore there
+is a prime `r` such that
+
+```text
+w = r^2.
+```
+
+Since `w` is the leftmost interior minimum, this `r^2` is the first prime
+square in the gap interior.
+
+Equivalently, let `s` be the prime immediately before `r`, and let
+`P(r^2)` be the greatest prime below `r^2`. Then `r^2` is the selected
+prime-square witness for its containing prime gap exactly when
+
+```text
+s^2 < P(r^2) < r^2.
+```
+
+The forward implication holds because, if `P(r^2) <= s^2`, then `s^2` is also
+inside the gap before `r^2`, so `r^2` is not the leftmost divisor-count-`3`
+integer in the gap. The reverse implication holds because the gap after
+`P(r^2)` contains `r^2` and contains no earlier prime square.
+
+Thus the square-branch hypothesis gives the deterministic band bound
+
+```text
+r^2 - P(r^2) < r^2 - s^2 = (r - s)(r + s).
+```
+
+The square-branch bounded-compression target is
+exactly
+
+```text
+r^2 - p <= C(q),
+```
+
+where
+
+```text
+C(q) = max(64, ceil(0.5 * log(q)^2)).
+```
+
+Because `r^2 < q`, the stronger sufficient theorem is
+
+```text
+r^2 - p <= max(64, ceil(0.5 * log(r^2)^2)).
+```
+
+The Interior Maximizer Theorem does not imply this distance bound. In the
+square branch, it identifies the first interior prime square as the selected
+witness after the gap interior is fixed. It does not bound the distance from
+the left endpoint `p` to that first interior prime square.
+
+Thus the square branch is closed exactly by the following independent theorem:
+
+```text
+For every consecutive prime gap whose first interior prime square is r^2,
+r^2 - p <= max(64, ceil(0.5 * log(r^2)^2)).
+```
+
+Until that prime-square proximity theorem is proved, the all-scale bounded
+dynamic cutoff theorem remains unresolved on the square branch.
+
 ## Audit Tables
 
-The theorems above are universal. The tables below are retained for
-certification and reproducibility. They support the finite base used in the
-maximizer proof; they are not the boundary of either theorem.
+The direct next-prime theorem and the Interior Maximizer Theorem are universal.
+The finite bounded-compression base is a finite computational lemma. The
+residual K=128 lemma is a finite residual branch-elimination theorem. The
+square-branch reduction identifies the exact remaining theorem obligation. The
+tables below are retained for certification and reproducibility. They support
+the finite base used in the maximizer proof; they are not the boundary of either
+universal theorem.
 
 | Left-prime range | Prime gaps checked | Earlier integers checked | Exact competing integers |
 |---:|---:|---:|---:|
@@ -394,4 +541,6 @@ earlier integers, with `0` unresolved cases. Its median offset was `1`, its
 ## Document Status
 
 `PROOF.md` is the single live proof reference for the direct deterministic
-next-prime theorem and the prime-gap maximizer theorem.
+next-prime theorem, the prime-gap maximizer theorem, and the finite
+bounded-compression base. It also records the residual K=128 first-d4
+branch-elimination lemma and the square-branch reduction obligation.
