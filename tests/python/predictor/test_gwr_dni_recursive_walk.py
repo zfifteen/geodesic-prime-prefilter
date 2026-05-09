@@ -10,11 +10,6 @@ ROOT = Path(__file__).resolve().parents[3]
 MODULE_PATH = ROOT / "benchmarks" / "python" / "predictor" / "gwr_dni_recursive_walk.py"
 
 
-def offset_calls(q: int, count: int) -> list[tuple[int, int]]:
-    """Return the sequential one-offset divisor segment calls for an anchor."""
-    return [(q + offset, q + offset + 1) for offset in range(1, count + 1)]
-
-
 def load_module():
     """Load the recursive walk script from its file path."""
     spec = importlib.util.spec_from_file_location("gwr_dni_recursive_walk", MODULE_PATH)
@@ -78,17 +73,17 @@ def test_exact_next_gap_profile_small_primes():
     assert profile["next_prime"] == 29
 
 
-def test_bounded_profile_uses_prefix_lock_witness_without_extended_scan(monkeypatch):
-    """Locked delta<=3 prefixes should recover the boundary from the prefix alone."""
+def test_bounded_profile_uses_presieved_scan_for_prefix_lock(monkeypatch):
+    """Locked delta<=3 prefixes should recover through the presieved scanner."""
     module = load_module()
     original = module.divisor_counts_segment
 
     cases = [
-        (229433, 3, 8, 26, 229459, offset_calls(229433, 12)),
-        (1026167, 3, 2, 30, 1026197, offset_calls(1026167, 12)),
+        (229433, 3, 8, 26, 229459),
+        (1026167, 3, 2, 30, 1026197),
     ]
 
-    for q, expected_d, expected_peak, expected_boundary, expected_next_prime, expected_calls in cases:
+    for q, expected_d, expected_peak, expected_boundary, expected_next_prime in cases:
         calls: list[tuple[int, int]] = []
 
         def tracked_divisor_counts_segment(start: int, stop: int):
@@ -102,21 +97,21 @@ def test_bounded_profile_uses_prefix_lock_witness_without_extended_scan(monkeypa
         assert profile["next_peak_offset"] == expected_peak
         assert profile["gap_boundary_offset"] == expected_boundary
         assert profile["next_prime"] == expected_next_prime
-        assert calls == expected_calls
+        assert calls == []
 
 
-def test_bounded_profile_uses_d4_empty_range_witness_without_extended_scan(monkeypatch):
-    """A square-empty bounded tail should recover the d=4 witness without tail scan."""
+def test_bounded_profile_uses_presieved_scan_for_d4_cases(monkeypatch):
+    """D4 cases should recover through the presieved scanner."""
     module = load_module()
     original = module.divisor_counts_segment
 
     cases = [
-        (1000003, 4, 4, 30, 1000033, offset_calls(1000003, 4)),
-        (1300031, 4, 3, 20, 1300051, offset_calls(1300031, 3)),
-        (1411219, 4, 7, 24, 1411243, offset_calls(1411219, 7)),
+        (1000003, 4, 4, 30, 1000033),
+        (1300031, 4, 3, 20, 1300051),
+        (1411219, 4, 7, 24, 1411243),
     ]
 
-    for q, expected_d, expected_peak, expected_boundary, expected_next_prime, expected_calls in cases:
+    for q, expected_d, expected_peak, expected_boundary, expected_next_prime in cases:
         calls: list[tuple[int, int]] = []
 
         def tracked_divisor_counts_segment(start: int, stop: int):
@@ -130,11 +125,11 @@ def test_bounded_profile_uses_d4_empty_range_witness_without_extended_scan(monke
         assert profile["next_peak_offset"] == expected_peak
         assert profile["gap_boundary_offset"] == expected_boundary
         assert profile["next_prime"] == expected_next_prime
-        assert calls == expected_calls
+        assert calls == []
 
 
-def test_bounded_profile_d4_empty_range_still_honors_cutoff_failure(monkeypatch):
-    """The d=4 empty-range witness path must still fail when the boundary exceeds cutoff."""
+def test_bounded_profile_presieved_scan_still_honors_cutoff_failure(monkeypatch):
+    """The presieved bounded path must fail when the boundary exceeds cutoff."""
     module = load_module()
     original = module.divisor_counts_segment
     calls: list[tuple[int, int]] = []
@@ -152,7 +147,7 @@ def test_bounded_profile_d4_empty_range_still_honors_cutoff_failure(monkeypatch)
     else:
         raise AssertionError("bounded_next_gap_profile(31397) should fail by cutoff")
 
-    assert calls == offset_calls(31397, 2)
+    assert calls == []
 
 
 def test_compare_transition_rules_small_prime():
@@ -175,8 +170,8 @@ def test_compare_transition_rules_small_prime():
     assert comparison["overshoot_margin"] == 0
 
 
-def test_unbounded_runtime_path_uses_prefix_then_clipped_tail(monkeypatch):
-    """The live unbounded path should stop segment reads after the 12-offset prefix."""
+def test_unbounded_runtime_path_uses_presieved_clipped_scan(monkeypatch):
+    """The live unbounded path should avoid segment reads in the clipped scanner."""
     module = load_module()
     original = module.divisor_counts_segment
     calls: list[tuple[int, int]] = []
@@ -195,11 +190,11 @@ def test_unbounded_runtime_path_uses_prefix_then_clipped_tail(monkeypatch):
     assert fast["gap_boundary_offset"] == exact["gap_boundary_offset"]
     assert fast["next_dmin"] == exact["next_dmin"]
     assert fast["next_peak_offset"] == exact["next_peak_offset"]
-    assert fast_calls == [(24098210, 24098222)]
+    assert fast_calls == []
 
 
-def test_predict_next_gap_bounded_uses_d4_empty_range_without_extended_scan(monkeypatch):
-    """The bounded lex-min predictor should stop after the prefix on d=4 empty tails."""
+def test_predict_next_gap_bounded_uses_presieved_scan(monkeypatch):
+    """The bounded lex-min predictor should avoid segment reads."""
     module = load_module()
     original = module.divisor_counts_segment
     calls: list[tuple[int, int]] = []
@@ -213,7 +208,28 @@ def test_predict_next_gap_bounded_uses_d4_empty_range_without_extended_scan(monk
 
     assert d == 4
     assert off == 4
-    assert calls == offset_calls(1000003, 4)
+    assert calls == []
+
+
+def test_presieved_scan_classifies_cube_root_counterexample():
+    """The interval pre-sieve must classify the invalid <=200 case exactly."""
+    module = load_module()
+    q = 100000007
+    offset = 24
+    partial_counts, residuals = module._presieve_interval(q, module.dynamic_cutoff(q))
+    d = module._finish_tau_from_presieved_residual(
+        partial_counts[offset - 1],
+        residuals[offset - 1],
+    )
+    assert d == 8
+
+    presieved = module.presieved_capped_gap_scan(q, module.dynamic_cutoff(q))
+    exact = module.exact_next_gap_profile(q)
+    assert presieved == (
+        exact["next_dmin"],
+        exact["next_peak_offset"],
+        exact["gap_boundary_offset"],
+    )
 
 
 def test_dynamic_cutoff_covers_known_counterexample():

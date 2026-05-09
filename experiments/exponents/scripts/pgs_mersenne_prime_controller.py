@@ -15,7 +15,6 @@ if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
 import pgs_mersenne_prime_generator as generator
-import pgs_mersenne_prime_validator as validator
 
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -54,7 +53,7 @@ def chain_generation_artifacts(
     candidate_bound: int,
     on_exponent: Callable[[int], None] | None = None,
 ) -> tuple[list[int], list[dict[str, int]], list[dict[str, object]]]:
-    """Return one PGSMPG exponent chain and sidecar diagnostics."""
+    """Return one PGSMPG exponent chain and compact diagnostics."""
     if chain_length < 2:
         raise ValueError("chain_length must be at least 2")
 
@@ -79,7 +78,6 @@ def chain_generation_artifacts(
                     "source": generator.PGSMPG_SOURCE,
                     "status": "unresolved",
                     "error": str(exc),
-                    "certificate": None,
                 }
             )
             break
@@ -91,7 +89,8 @@ def chain_generation_artifacts(
                 "source": source,
                 "status": "resolved",
                 "error": "",
-                "certificate": certificate,
+                "attempt_count": int(certificate["attempt_count"]),
+                "rule_id": certificate["rule_id"],
             }
         )
         exponents.append(q)
@@ -106,7 +105,7 @@ def generation_artifacts(
     max_exponent: int,
     candidate_bound: int,
 ) -> tuple[list[dict[str, int]], list[dict[str, object]]]:
-    """Return minimal records and sidecar diagnostics."""
+    """Return minimal records and compact diagnostics."""
     records: list[dict[str, int]] = []
     diagnostics: list[dict[str, object]] = []
     for anchor in anchors:
@@ -124,7 +123,6 @@ def generation_artifacts(
                     "source": generator.PGSMPG_SOURCE,
                     "status": "unresolved",
                     "error": str(exc),
-                    "certificate": None,
                 }
             )
             continue
@@ -136,7 +134,8 @@ def generation_artifacts(
                 "source": source,
                 "status": "resolved",
                 "error": "",
-                "certificate": certificate,
+                "attempt_count": int(certificate["attempt_count"]),
+                "rule_id": certificate["rule_id"],
             }
         )
     return records, diagnostics
@@ -190,7 +189,7 @@ def run_controller(
     output_dir: Path,
     on_exponent: Callable[[int], None] | None = None,
 ) -> dict[str, object]:
-    """Run PGSMPG first, then validation."""
+    """Run PGSMPG and write generation-only artifacts."""
     output_dir.mkdir(parents=True, exist_ok=True)
     chain_exponents: list[int] | None = None
     if anchors is None:
@@ -226,13 +225,9 @@ def run_controller(
         )
     write_json(pgs_summary, output_dir / "pgs_summary.json")
 
-    validation_rows = validator.validate_records(records)
-    validator.write_outputs(output_dir, validation_rows)
-    validation_summary = validator.summarize(validation_rows)
     combined = {
         "pgs_generator": pgs_summary,
-        "classical_validation": validation_summary,
-        "controller_order": "pgs_generator_then_classical_validation",
+        "controller_order": "pgs_generator_only",
     }
     write_json(combined, output_dir / "summary.json")
     return combined

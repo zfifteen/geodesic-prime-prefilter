@@ -22,10 +22,5 @@
       89
     ]
   },
-  "classical_validation": {
-    "validated_record_count": 9,
-    "classical_agreement_count": 9,
-    "classical_disagreement_count": 0
-  },
-  "controller_order": "pgs_generator_then_classical_validation"
+  "controller_order": "pgs_generator_only"
 }

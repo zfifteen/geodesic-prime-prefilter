@@ -1,0 +1,40 @@
+{
+  "created_at": "2026-05-09",
+  "phase": "baseline_before",
+  "module": "benchmarks/python/predictor/gwr_dni_recursive_walk.py",
+  "rows": [
+    {
+      "anchor": 10000000,
+      "gap_count": 5000,
+      "first_q": 10000019,
+      "last_q": 10080061,
+      "clipped_scalar_seconds": 1.4904802920063958,
+      "bounded_live_seconds": 1.5896235409891233,
+      "clipped_ms_per_gap": 0.2980960584012792,
+      "bounded_live_ms_per_gap": 0.31792470819782465,
+      "bounded_matches_clipped": true
+    },
+    {
+      "anchor": 100000000,
+      "gap_count": 5000,
+      "first_q": 100000007,
+      "last_q": 100092557,
+      "clipped_scalar_seconds": 1.7759640829171985,
+      "bounded_live_seconds": 2.2552310000173748,
+      "clipped_ms_per_gap": 0.3551928165834397,
+      "bounded_live_ms_per_gap": 0.45104620000347495,
+      "bounded_matches_clipped": true
+    },
+    {
+      "anchor": 1000000000000,
+      "gap_count": 1000,
+      "first_q": 1000000000039,
+      "last_q": 1000000027577,
+      "clipped_scalar_seconds": 1.3740352920722216,
+      "bounded_live_seconds": 4.486282333033159,
+      "clipped_ms_per_gap": 1.3740352920722216,
+      "bounded_live_ms_per_gap": 4.486282333033159,
+      "bounded_matches_clipped": true
+    }
+  ]
+}
