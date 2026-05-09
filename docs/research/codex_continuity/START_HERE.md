@@ -302,6 +302,75 @@ Adding exact previous gap width to the `mod 30` match leaves only `35` decisive
 pairs, so the stricter residual test is support-limited on the current retained
 surface.
 
+PGS-native forbidden-transition follow-up:
+
+```text
+benchmarks/python/predictor/state_budget_forbidden_transition_test.py
+output/state_budget_forbidden_transition_summary.json
+output/state_budget_forbidden_transition_folds.csv
+output/state_budget_forbidden_transition_catalog_2048/state_budget_forbidden_transition_summary.json
+```
+
+The "cannot be" framing tested whether square-room side forbids exact next
+reduced states inside matched current PGS chamber facts. On the current
+256-row retained surface, the broad base cell returns `does_not`: `703`
+eligible held-out rows, `227` violations, violation rate `0.322902`.
+The exact-tail cell has zero violations but only `4` eligible rows, so it is
+`unresolved`.
+
+A larger deterministic retained surface was generated with `2048` consecutive
+catalog rows at each power `10^12..10^18`. It contains `11470` current `d=4`
+transitions. That larger surface rejects exact next-state exclusion in every
+mode:
+
+```text
+base:             10030 eligible, 1698 violations, violation rate 0.169292
+mod30:             5665 eligible,  813 violations, violation rate 0.143513
+exact_tail:        2690 eligible,  746 violations, violation rate 0.277323
+mod30_exact_tail:  1331 eligible,  286 violations, violation rate 0.214876
+```
+
+This invalidates the square-room-side-as-forbidden-transition rule on the
+retained high-window surfaces. The original memory-like signal is not a hard
+next-state exclusion law.
+
+Expanded pairwise readout on the same `2048` surface:
+
+```text
+output/state_budget_forbidden_transition_catalog_2048/state_budget_pairwise_ruler_summary.json
+output/state_budget_forbidden_transition_catalog_2048/state_budget_residue_matched_pair_summary.json
+```
+
+The larger pairwise surface resolves the earlier square-over-tail ambiguity
+against the independent square-boundary interpretation:
+
+```text
+base matched cells:
+  square_ruler signed advantage: +1026 over 37116 decisive pairs
+  tail_length signed advantage:  +1024 over 37116 decisive pairs
+  square-over-tail edge: +2
+
+mod30 matched cells:
+  square_ruler signed advantage: +149 over 14305 decisive pairs
+  tail_length signed advantage:  +135 over 14305 decisive pairs
+  square-over-tail edge: +14, below min_control_margin = 15
+
+mod30 + previous gap:
+  square_ruler signed advantage: -19 over 2463 decisive pairs
+  tail_length signed advantage:  -30 over 2463 decisive pairs
+```
+
+Interpretation: the retained high-window signal is real as a weak ordering
+effect, but the expanded surface does not isolate the next prime-square
+boundary as the independent carrier. The signal tracks endpoint tail length
+too closely. The live research state is:
+
+- measured: weak memory-like ordering exists inside matched current PGS cells;
+- invalidated: square-room side forbids exact next reduced state;
+- invalidated on expanded retained windows: square ruler clearly beats tail
+  length as an independent mechanism;
+- unresolved: the actual PGS-native carrier of the weak residual ordering.
+
 ## Current Collatz Branch State
 
 As of 2026-05-03, the Collatz work is integrated on `main` under:
