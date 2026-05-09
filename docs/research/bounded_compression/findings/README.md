@@ -35,11 +35,23 @@ This is measured evidence, not a proof of the dynamic cutoff law.
 
 ## Square-Envelope Pressure Surface
 
+The square-envelope search has now tested through `p <= 400,000,000` in
+documented surfaces, with no counterexample. The record-law table through
+`p <= 300,000,000` identifies the standing utilization record; the `3e8` to
+`4e8` segment preserves that record.
+
 | Surface | Square roots tested | First counterexample | Max utilization | Extremal square |
 |---|---:|---|---:|---|
 | [`1e8 square branch`](./square_offset_envelope_surface_1e8.md) | `5,761,454` | `none` | `0.8120300751879699` | `82,357,433^2` |
 | [`1e8 to 2e8 square segment`](./square_offset_envelope_segment_1e8_to_2e8.md) | `5,317,482` | `none` | `0.6784140969162996` | `102,017,779^2` |
 | [`2e8 to 3e8 square segment`](./square_offset_envelope_segment_2e8_to_3e8.md) | `5,173,388` | `none` | `0.7209612817089452` | `251,066,071^2` |
+| [`3e8 to 4e8 square segment`](./square_offset_envelope_segment_3e8_to_4e8.md) | `5,084,001` | `none` | `0.7036082474226805` | `358,018,553^2` |
+
+Record-law artifact:
+
+```text
+square_envelope_record_table_to_3e8.md
+```
 
 ## Lemma A Falsification
 
