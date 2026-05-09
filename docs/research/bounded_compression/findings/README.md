@@ -44,3 +44,9 @@ This is measured evidence, not a proof of the dynamic cutoff law.
 | Surface | Gaps tested before failure | First failure | Missing obstruction |
 |---|---:|---|---|
 | [`d=4 fallback 1e7`](./d4_fallback_surface_1e7.md) | `26` | `q = 113` | later square `121 = 11^2` |
+
+## Lemma A' No-Square Fallback
+
+| Surface | Cases | Square-present cases | First failure | Branch status |
+|---|---:|---:|---|---|
+| [`d=4 no-square fallback 1e7`](./d4_no_square_fallback_surface_1e7.md) | `499,896` | `444` | `none` | non-square branch survives on measured surface |
