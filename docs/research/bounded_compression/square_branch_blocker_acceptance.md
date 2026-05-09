@@ -92,6 +92,11 @@ Therefore the square-branch hypothesis gives the deterministic bound
 r^2 - p < r^2 - s^2 = (r - s)(r + s).
 ```
 
+Conversely, if the greatest prime below `r^2` lies between `s^2` and `r^2`,
+then the prime gap after that greatest prime contains `r^2` and contains no
+earlier prime square. In that gap, `r^2` is the selected prime-square witness.
+This is the exact square-branch characterization recorded in `PROOF.md`.
+
 This is a band bound between consecutive prime squares. It does not imply
 
 ```text

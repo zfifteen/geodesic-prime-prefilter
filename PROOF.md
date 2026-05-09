@@ -461,7 +461,28 @@ w = r^2.
 ```
 
 Since `w` is the leftmost interior minimum, this `r^2` is the first prime
-square in the gap interior. The square-branch bounded-compression target is
+square in the gap interior.
+
+Equivalently, let `s` be the prime immediately before `r`, and let
+`P(r^2)` be the greatest prime below `r^2`. Then `r^2` is the selected
+prime-square witness for its containing prime gap exactly when
+
+```text
+s^2 < P(r^2) < r^2.
+```
+
+The forward implication holds because, if `P(r^2) <= s^2`, then `s^2` is also
+inside the gap before `r^2`, so `r^2` is not the leftmost divisor-count-`3`
+integer in the gap. The reverse implication holds because the gap after
+`P(r^2)` contains `r^2` and contains no earlier prime square.
+
+Thus the square-branch hypothesis gives the deterministic band bound
+
+```text
+r^2 - P(r^2) < r^2 - s^2 = (r - s)(r + s).
+```
+
+The square-branch bounded-compression target is
 exactly
 
 ```text
