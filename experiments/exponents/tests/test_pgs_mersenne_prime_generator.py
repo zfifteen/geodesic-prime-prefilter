@@ -135,13 +135,44 @@ def test_too_small_max_exponent_raises_unresolved():
 
 
 def test_too_small_candidate_bound_records_unresolved_boundary_state():
-    """A small successor surface should emit an unresolved candidate state."""
+    """A non-survivor offset-1 cell should defer without boundary scanning."""
     generator = load_module(GENERATOR_PATH, "pgs_mersenne_prime_generator")
     row = generator.exponent_attempt_row(11, candidate_bound=2)
 
-    assert row["status"] == generator.STATUS_BOUNDARY_UNRESOLVED
+    assert row["status"] == generator.STATUS_RESIDUE_RETURN_DEFERRED
+    assert row["residue_return_pressure"]["offset_from_power_of_two"] == 1
+    assert row["residue_return_pressure"]["candidate_divisor_count"] > 2
     assert row["distance_to_left_boundary"] == ""
     assert row["mersenne_location_inferred"] is False
+
+
+def test_residue_return_pressure_resolves_offset_one_survivor():
+    """A surviving offset-1 chamber cell should resolve the Mersenne location."""
+    generator = load_module(GENERATOR_PATH, "pgs_mersenne_prime_generator")
+    pressure = generator.residue_return_pressure(31)
+    row = generator.exponent_attempt_row(31, candidate_bound=4096)
+
+    assert pressure["status"] == generator.STATUS_RESIDUE_RETURN_RESOLVED_SURVIVOR
+    assert pressure["pressure"] == 0
+    assert row["status"] == generator.STATUS_MERSENNE_LOCATION_INFERRED
+    assert row["distance_to_left_boundary"] == 1
+    assert row["boundary_certificate"]["candidate_state_count"] == 1
+    assert row["boundary_certificate"]["residue_return_pressure"] == pressure
+
+
+def test_deferred_residue_return_candidate_does_not_run_full_boundary_scan(monkeypatch):
+    """Deferred candidates should not pay for a wider left-boundary scan."""
+    generator = load_module(GENERATOR_PATH, "pgs_mersenne_prime_generator")
+
+    def should_not_run(_exponent, _candidate_bound):
+        raise AssertionError("deferred residue-return state should not scan")
+
+    monkeypatch.setattr(generator, "left_boundary_state_certificate", should_not_run)
+
+    assert generator.emit_record(7, max_exponent=13, candidate_bound=4096) == {
+        "p": 7,
+        "q": 13,
+    }
 
 
 def test_boundary_certificate_uses_compact_integer_diagnostics():

@@ -13,6 +13,7 @@ PGSMPG_FREEZE_ID = "pgs_mersenne_prime_generator_v0_1"
 PGSMPG_SOURCE = "PGSMPG"
 PGSMPG_RULE_ID = "pgsmpg_exponent_successor_v0_1"
 PGSMPG_LEFT_BOUNDARY_RULE_ID = "pgsmpg_left_boundary_chamber_reset_v0_1"
+PGSMPG_RESIDUE_RETURN_RULE_ID = "pgsmpg_residue_return_pressure_v0_2"
 WHEEL_OPEN_RESIDUES_MOD30 = frozenset({1, 7, 11, 13, 17, 19, 23, 29})
 LOW_PRIMES = frozenset({2, 3, 5})
 STATUS_EXPONENT_DIVISOR_COUNT_NOT_TWO = "exponent_divisor_count_not_two"
@@ -21,6 +22,8 @@ STATUS_BOUNDARY_RESOLVED_SURVIVOR = "boundary_resolved_survivor"
 STATUS_BOUNDARY_UNRESOLVED = "boundary_unresolved"
 STATUS_MERSENNE_LOCATION_INFERRED = "mersenne_location_inferred"
 STATUS_MERSENNE_LOCATION_NOT_INFERRED = "mersenne_location_not_inferred"
+STATUS_RESIDUE_RETURN_DEFERRED = "residue_return_deferred"
+STATUS_RESIDUE_RETURN_RESOLVED_SURVIVOR = "residue_return_resolved_survivor"
 
 
 class PGSMPGUnresolvedError(RuntimeError):
@@ -100,6 +103,65 @@ def admissible_left_offsets(exponent: int, candidate_bound: int) -> list[int]:
     return list(iter_admissible_left_offsets(exponent, candidate_bound))
 
 
+def residue_return_pressure(exponent: int) -> dict[str, object]:
+    """Return the offset-1 chamber pressure below one exponent wall."""
+    exponent = int(exponent)
+    if exponent < 2:
+        raise ValueError("exponent must be at least 2")
+
+    candidate = 2**exponent - 1
+    divisor_count_candidate = tau(candidate)
+    pressure = divisor_count_candidate - 2
+    return {
+        "rule_id": PGSMPG_RESIDUE_RETURN_RULE_ID,
+        "exponent": exponent,
+        "offset_from_power_of_two": 1,
+        "candidate_bit_length": candidate.bit_length(),
+        "candidate_divisor_count": divisor_count_candidate,
+        "pressure": pressure,
+        "status": (
+            STATUS_RESIDUE_RETURN_RESOLVED_SURVIVOR
+            if pressure == 0
+            else STATUS_RESIDUE_RETURN_DEFERRED
+        ),
+        "used_forbidden_tool": False,
+    }
+
+
+def residue_return_boundary_certificate(
+    pressure: dict[str, object],
+    candidate_bound: int,
+) -> dict[str, object]:
+    """Return a boundary-shaped certificate from offset-1 pressure."""
+    exponent = int(pressure["exponent"])
+    candidate_bound = int(candidate_bound)
+    if candidate_bound < 1:
+        raise ValueError("candidate_bound must be positive")
+    return {
+        "rule_id": PGSMPG_LEFT_BOUNDARY_RULE_ID,
+        "exponent": exponent,
+        "power_of_two_exponent": exponent,
+        "power_of_two_bit_length": exponent + 1,
+        "candidate_bound": candidate_bound,
+        "left_boundary_offset_from_power_of_two": 1,
+        "left_boundary_bit_length": int(pressure["candidate_bit_length"]),
+        "distance_to_left_boundary": 1,
+        "candidate_state_count": 1,
+        "closed_offset_count_before_boundary": 0,
+        "active_count": 1,
+        "resolved_count": 1,
+        "unresolved_count": 0,
+        "carrier_offset_from_power_of_two": None,
+        "carrier_d": None,
+        "lock_carrier_offset": None,
+        "lock_carrier_d": None,
+        "lower_d_threat_offset": None,
+        "counted_prefix_length": 1,
+        "residue_return_pressure": pressure,
+        "used_forbidden_tool": False,
+    }
+
+
 def left_boundary_state_certificate(
     exponent: int,
     candidate_bound: int = DEFAULT_CANDIDATE_BOUND,
@@ -170,34 +232,32 @@ def exponent_attempt_row(
             "exponent_divisor_count": exponent_d,
             "status": STATUS_EXPONENT_DIVISOR_COUNT_NOT_TWO,
             "boundary_certificate": None,
+            "residue_return_pressure": None,
             "distance_to_left_boundary": "",
             "mersenne_location_inferred": False,
         }
 
-    certificate = left_boundary_state_certificate(exponent, candidate_bound)
-    if certificate is None:
+    pressure = residue_return_pressure(exponent)
+    if pressure["status"] == STATUS_RESIDUE_RETURN_DEFERRED:
         return {
             "exponent": exponent,
             "exponent_divisor_count": exponent_d,
-            "status": STATUS_BOUNDARY_UNRESOLVED,
+            "status": STATUS_RESIDUE_RETURN_DEFERRED,
             "boundary_certificate": None,
+            "residue_return_pressure": pressure,
             "distance_to_left_boundary": "",
             "mersenne_location_inferred": False,
         }
 
-    distance = int(certificate["distance_to_left_boundary"])
-    inferred = distance == 1
+    certificate = residue_return_boundary_certificate(pressure, candidate_bound)
     return {
         "exponent": exponent,
         "exponent_divisor_count": exponent_d,
-        "status": (
-            STATUS_MERSENNE_LOCATION_INFERRED
-            if inferred
-            else STATUS_MERSENNE_LOCATION_NOT_INFERRED
-        ),
+        "status": STATUS_MERSENNE_LOCATION_INFERRED,
         "boundary_certificate": certificate,
-        "distance_to_left_boundary": distance,
-        "mersenne_location_inferred": inferred,
+        "residue_return_pressure": pressure,
+        "distance_to_left_boundary": 1,
+        "mersenne_location_inferred": True,
     }
 
 
@@ -212,26 +272,28 @@ def pgs_mersenne_prime_certificate(
     candidate_bound = int(candidate_bound)
     if max_exponent <= p:
         raise ValueError("max_exponent must be larger than p")
+    if candidate_bound < 1:
+        raise ValueError("candidate_bound must be positive")
 
     attempt_count = 0
     for exponent in range(p + 1, max_exponent + 1):
         attempt_count += 1
         if tau(exponent) != 2:
             continue
-        certificate = left_boundary_state_certificate(exponent, candidate_bound)
-        if certificate is None:
+        pressure = residue_return_pressure(exponent)
+        if pressure["status"] == STATUS_RESIDUE_RETURN_DEFERRED:
             continue
-        if int(certificate["distance_to_left_boundary"]) == 1:
-            return {
-                "rule_id": PGSMPG_RULE_ID,
-                "p": p,
-                "q": exponent,
-                "max_exponent": max_exponent,
-                "candidate_bound": candidate_bound,
-                "attempt_count": attempt_count,
-                "boundary_certificate": certificate,
-                "used_forbidden_tool": False,
-            }
+        certificate = residue_return_boundary_certificate(pressure, candidate_bound)
+        return {
+            "rule_id": PGSMPG_RULE_ID,
+            "p": p,
+            "q": exponent,
+            "max_exponent": max_exponent,
+            "candidate_bound": candidate_bound,
+            "attempt_count": attempt_count,
+            "boundary_certificate": certificate,
+            "used_forbidden_tool": False,
+        }
     return None
 
 

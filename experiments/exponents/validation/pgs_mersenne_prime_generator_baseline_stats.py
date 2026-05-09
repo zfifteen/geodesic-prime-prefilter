@@ -39,6 +39,7 @@ TRANSITION_FIELDS = [
     "attempted_exponents",
     "tau_call_count",
     "exponent_tau_call_count",
+    "residue_return_tau_call_count",
     "boundary_tau_call_count",
     "tau_elapsed_seconds",
     "wall_elapsed_seconds",
@@ -84,6 +85,7 @@ def measured_transition(
 ) -> tuple[dict[str, object], list[dict[str, object]], int | None]:
     """Run one PGSMPG transition with measured tau calls."""
     original_tau = generator.tau
+    original_residue_return_pressure = generator.residue_return_pressure
     original_left_boundary_state_certificate = generator.left_boundary_state_certificate
     current_call_role = "exponent"
     tau_calls: list[dict[str, object]] = []
@@ -114,8 +116,18 @@ def measured_transition(
         finally:
             current_call_role = previous_call_role
 
+    def measured_residue_return_pressure(exponent: int) -> dict[str, object]:
+        nonlocal current_call_role
+        previous_call_role = current_call_role
+        current_call_role = "residue_return"
+        try:
+            return original_residue_return_pressure(exponent)
+        finally:
+            current_call_role = previous_call_role
+
     started = time.perf_counter()
     generator.tau = measured_tau
+    generator.residue_return_pressure = measured_residue_return_pressure
     generator.left_boundary_state_certificate = measured_left_boundary_state_certificate
     try:
         attempts: list[dict[str, object]] = []
@@ -134,11 +146,15 @@ def measured_transition(
                 break
     finally:
         generator.tau = original_tau
+        generator.residue_return_pressure = original_residue_return_pressure
         generator.left_boundary_state_certificate = original_left_boundary_state_certificate
     wall_elapsed = time.perf_counter() - started
 
     attempted_exponents = [int(row["exponent"]) for row in attempts]
     exponent_tau_call_count = sum(1 for row in tau_calls if row["call_role"] == "exponent")
+    residue_return_calls = [
+        row for row in tau_calls if row["call_role"] == "residue_return"
+    ]
     for index, row in enumerate(tau_calls, start=1):
         row["transition_p"] = int(p)
         row["transition_status"] = status
@@ -156,6 +172,7 @@ def measured_transition(
         "attempted_exponents": ";".join(str(value) for value in attempted_exponents),
         "tau_call_count": len(tau_calls),
         "exponent_tau_call_count": exponent_tau_call_count,
+        "residue_return_tau_call_count": len(residue_return_calls),
         "boundary_tau_call_count": len(boundary_calls),
         "tau_elapsed_seconds": sum(float(row["elapsed_seconds"]) for row in tau_calls),
         "wall_elapsed_seconds": wall_elapsed,
@@ -210,6 +227,9 @@ def summarize(
     resolved = [row for row in transition_rows if row["status"] == "resolved"]
     terminal = [row for row in transition_rows if row["status"] == "terminal_unresolved"]
     boundary_rows = [row for row in tau_rows if row["call_role"] == "boundary"]
+    residue_return_rows = [
+        row for row in tau_rows if row["call_role"] == "residue_return"
+    ]
     return {
         "value_ceiling": int(value_ceiling),
         "max_exponent": max_exponent_for_value_ceiling(value_ceiling),
@@ -222,6 +242,7 @@ def summarize(
         "exponent_tau_call_count": sum(
             1 for row in tau_rows if row["call_role"] == "exponent"
         ),
+        "residue_return_tau_call_count": len(residue_return_rows),
         "boundary_tau_call_count": len(boundary_rows),
         "tau_elapsed_seconds": sum(float(row["elapsed_seconds"]) for row in tau_rows),
         "max_tau_call_seconds": (

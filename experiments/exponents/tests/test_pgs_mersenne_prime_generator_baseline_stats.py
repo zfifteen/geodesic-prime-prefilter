@@ -56,7 +56,7 @@ def test_small_baseline_stats_include_terminal_scan():
 
 
 def test_baseline_stats_preserve_interleaved_tau_call_roles():
-    """Tau call roles should follow actual exponent and boundary execution order."""
+    """Tau call roles should follow actual exponent and pressure execution order."""
     module = load_module()
     _exponents, _transition_rows, tau_rows = module.collect_stats(
         start_exponent=2,
@@ -68,9 +68,10 @@ def test_baseline_stats_preserve_interleaved_tau_call_roles():
         row for row in tau_rows if int(row["transition_p"]) == 7
     ]
     roles = [row["call_role"] for row in transition_rows]
-    first_boundary_index = roles.index("boundary")
+    first_pressure_index = roles.index("residue_return")
 
-    assert "exponent" in roles[first_boundary_index + 1:]
+    assert "exponent" in roles[first_pressure_index + 1:]
+    assert "boundary" not in roles
 
 
 def test_cli_writes_lf_baseline_outputs(tmp_path):
