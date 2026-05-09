@@ -475,6 +475,10 @@
         narrow: no fallback search, no randomized sampling, and no alternate
         inference path.
       </p>
+      <pre><code>python3 benchmarks/python/predictor/bounded_compression_falsification_runner.py \
+  --min-right-prime 11 \
+  --max-right-prime 1000000 \
+  --output-dir /tmp/bounded_compression_falsification_1e6</code></pre>
       <pre><code>python3 benchmarks/python/predictor/gwr_dni_cutoff_counterexample_scan.py \
   --min-right-prime 11 \
   --max-right-prime 10000000 \
