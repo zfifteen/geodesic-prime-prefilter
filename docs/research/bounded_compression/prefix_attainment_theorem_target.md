@@ -11,6 +11,9 @@ The proved baseline remains:
 - the finite bounded-compression base in `PROOF.md`: for every consecutive
   prime pair `p < q` with `q < ceil(exp(16)) = 8,886,111`, the selected witness
   satisfies `w - p <= 60`.
+- the residual K=128 first-d4 branch-elimination lemma in `PROOF.md`, which
+  closes the retained odd adjacent `tau=35`, `tau=39`, and `tau=55` residual
+  branches under exact finite hypotheses.
 
 The current bounded compression rule
 
@@ -83,14 +86,20 @@ This is a genuine deterministic occupancy theorem for semiprime or prime-cube
 arrival inside the gap prefix. It is not a consequence of the Interior
 Maximizer Theorem alone.
 
-Current proof pressure:
+Current extracted theorem:
 
 ```text
-The proof artifacts reference a settled first-d=4 window lemma at K = 128.
+The residual K=128 first-d4 branch-elimination lemma is recorded in PROOF.md.
 ```
 
-If that lemma is extracted as a theorem, then Branch 2 is closed for every
-`q` with
+This is not the global first-d4 occupancy theorem. It applies to retained odd
+adjacent residual branches over explicit finite threshold windows. It shows
+that, when an exact containing gap has minimum divisor count `4` and the first
+`d(n) = 4` integer appears by offset `128`, a later odd candidate witness such
+as `tau=35`, `tau=39`, or `tau=55` cannot be selected.
+
+If a global first-d4 occupancy theorem is later proved, then Branch 2 is closed
+for every `q` with
 
 ```text
 0.5 * log(q)^2 >= 128,
@@ -121,10 +130,11 @@ If d_I >= 5, then the first occurrence of d_I in I satisfies w - p <= C(q).
 A stronger sufficient statement would be that the whole gap interior is already
 inside the cutoff in this branch.
 
-The `K = 128` route also pressures this branch. If a universal first-d4 window
-theorem holds beyond the finite base, then a gap whose minimum divisor count is
-at least `5` cannot extend beyond that window while still lacking a lower
-divisor-count prefix witness. The high-minimum branch then reduces to:
+The residual `K = 128` theorem pressures this branch only inside the retained
+odd adjacent residual classes. If a universal first-d4 occupancy theorem holds
+beyond the finite base, then a gap whose minimum divisor count is at least `5`
+cannot extend beyond that window while still lacking a lower divisor-count
+prefix witness. The high-minimum branch would then reduce to:
 
 ```text
 prove the first-d4 window theorem, or prove that every high-minimum exception
@@ -170,7 +180,8 @@ exclude.
 
 The next theorem-bearing action is to extract the referenced first-d4 window
 lemma and decide whether it is a theorem or only an artifact-level support
-claim:
+claim. The supported residual theorem has now been extracted. The broader
+global theorem remains open:
 
 ```text
 For all consecutive prime gaps beyond the committed finite base, if the gap
@@ -193,6 +204,17 @@ r^2 - p <= C(q).
 That square branch is not closed by the current artifacts. It requires a
 separate theorem bounding the distance from a selected interior prime square to
 the preceding prime by the dynamic logarithmic-square cutoff.
+
+The exact missing theorem is:
+
+```text
+For every prime r, let p be the greatest prime below r^2. If r^2 lies in the
+prime gap after p and is the selected divisor-count minimum, then
+r^2 - p <= max(64, ceil(0.5 * log(r^2)^2)).
+```
+
+The current square-branch search through prime roots `<= 100,000,000` is
+evidence for this theorem, not a proof of it.
 
 The proof must supply deterministic arrival of a semiprime or prime cube, or
 an exact finite-base reduction. Heuristic density, Cramer-style gap
