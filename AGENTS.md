@@ -253,7 +253,23 @@ sources.
 
 ## Writing Standard
 
-Lead with the strongest supported claim.
+Lead with the strongest supported claim in plain concrete terms.
+
+For project documentation, notes, summaries, and engineering artifacts, use the
+default explanatory order:
+
+```text
+observable object -> ordinary-language mechanism -> project term -> formal definition -> measured/proved status -> exact limits
+```
+
+Start with the concrete object the reader can picture or audit. For example,
+write "start at the selected integer `w`, end at the next prime-square
+boundary, and mark where `q` lands on that ruler" before introducing
+`U_square`, `d4_low`, `d4_high`, or "state-budget hidden state."
+
+Do not make the reader decode internal vocabulary before they understand what
+is being measured. Technical labels are allowed and often necessary, but they
+belong underneath the concrete explanation, not in front of it.
 
 State proved theorems directly. Bound theorem claims by their stated
 hypotheses. Bound experiments by exact tested regimes.
@@ -274,6 +290,8 @@ Do not hedge proved PGS laws with:
 Use conventional mathematical language when writing proofs.
 
 Preserve established PGS vocabulary when discussing project mechanisms.
+When preserving that vocabulary in explanatory prose, introduce it after the
+plain object-level description.
 
 ## Documentation Format Preference
 
@@ -301,6 +319,8 @@ When creating HTML documentation:
 - place it under the most relevant `docs/` subfolder;
 - use a dedicated folder when the document has a standalone purpose;
 - make it open directly in a browser from `file://`;
+- open with a plain-English finding or concrete mechanism before tables,
+  acronyms, model labels, or equations;
 - include clear visual hierarchy, tables, diagrams, and checklist structure
   when those improve comprehension;
 - preserve exact research distinctions: theorem, implementation status,
