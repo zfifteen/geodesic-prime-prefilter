@@ -6,7 +6,9 @@ The square branch of bounded prefix attainment remains unresolved.
 
 The finite base below `ceil(exp(16))` is closed in `PROOF.md`. The residual
 `K = 128` first-d4 branch-elimination lemma is also recorded in `PROOF.md`.
-Neither result proves the all-scale square branch.
+The square-branch reduction below is now recorded in `PROOF.md` as the exact
+remaining bounded-compression obligation. Neither the finite base nor the
+residual K=128 theorem proves the all-scale square branch.
 
 ## PGS Object
 

@@ -440,14 +440,70 @@ remaining exceptions closed by exact enumeration. This is a formal residual
 branch-elimination theorem. It does not prove that every prime gap containing
 a divisor-count-`4` integer has its first such integer within `128`.
 
+## Square-Branch Reduction
+
+This reduction records the remaining bounded-compression obligation. It is not
+a proof of the square branch.
+
+Let `p < q` be consecutive primes with nonempty interior `I`, and let `w` be
+the first integer in `I` whose divisor count is minimal in `I`. In the square
+branch,
+
+```text
+tau(w) = 3.
+```
+
+The integers with divisor count `3` are exactly prime squares. Therefore there
+is a prime `r` such that
+
+```text
+w = r^2.
+```
+
+Since `w` is the leftmost interior minimum, this `r^2` is the first prime
+square in the gap interior. The square-branch bounded-compression target is
+exactly
+
+```text
+r^2 - p <= C(q),
+```
+
+where
+
+```text
+C(q) = max(64, ceil(0.5 * log(q)^2)).
+```
+
+Because `r^2 < q`, the stronger sufficient theorem is
+
+```text
+r^2 - p <= max(64, ceil(0.5 * log(r^2)^2)).
+```
+
+The Interior Maximizer Theorem does not imply this distance bound. In the
+square branch, it identifies the first interior prime square as the selected
+witness after the gap interior is fixed. It does not bound the distance from
+the left endpoint `p` to that first interior prime square.
+
+Thus the square branch is closed exactly by the following independent theorem:
+
+```text
+For every consecutive prime gap whose first interior prime square is r^2,
+r^2 - p <= max(64, ceil(0.5 * log(r^2)^2)).
+```
+
+Until that prime-square proximity theorem is proved, the all-scale bounded
+dynamic cutoff theorem remains unresolved on the square branch.
+
 ## Audit Tables
 
 The direct next-prime theorem and the Interior Maximizer Theorem are universal.
 The finite bounded-compression base is a finite computational lemma. The
 residual K=128 lemma is a finite residual branch-elimination theorem. The
+square-branch reduction identifies the exact remaining theorem obligation. The
 tables below are retained for certification and reproducibility. They support
-the finite base used in the maximizer proof; they are not the boundary of
-either universal theorem.
+the finite base used in the maximizer proof; they are not the boundary of either
+universal theorem.
 
 | Left-prime range | Prime gaps checked | Earlier integers checked | Exact competing integers |
 |---:|---:|---:|---:|
@@ -466,4 +522,4 @@ earlier integers, with `0` unresolved cases. Its median offset was `1`, its
 `PROOF.md` is the single live proof reference for the direct deterministic
 next-prime theorem, the prime-gap maximizer theorem, and the finite
 bounded-compression base. It also records the residual K=128 first-d4
-branch-elimination lemma.
+branch-elimination lemma and the square-branch reduction obligation.
