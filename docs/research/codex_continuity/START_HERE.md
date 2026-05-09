@@ -360,16 +360,71 @@ mod30 + previous gap:
   tail_length signed advantage:  -30 over 2463 decisive pairs
 ```
 
-Interpretation: the retained high-window signal is real as a weak ordering
-effect, but the expanded surface does not isolate the next prime-square
-boundary as the independent carrier. The signal tracks endpoint tail length
-too closely. The live research state is:
+Interpretation at the `2048` surface: the retained high-window signal is real
+as a weak ordering effect, but that surface does not isolate the next
+prime-square boundary as the independent carrier. The signal tracks endpoint
+tail length too closely. The research state after this surface was:
 
 - measured: weak memory-like ordering exists inside matched current PGS cells;
 - invalidated: square-room side forbids exact next reduced state;
 - invalidated on expanded retained windows: square ruler clearly beats tail
   length as an independent mechanism;
 - unresolved: the actual PGS-native carrier of the weak residual ordering.
+
+Long-running `8192` breakthrough:
+
+```text
+docs/research/predictor/state_budget_long_running_research_goal/index.html
+output/state_budget_long_running_catalog_8192/state_budget_long_running_research_report.md
+output/state_budget_long_running_catalog_8192/state_budget_divisor_carrier_sweep_summary.json
+output/state_budget_long_running_catalog_8192/state_budget_divisor_carrier_sweep_folds.csv
+benchmarks/python/predictor/state_budget_divisor_carrier_sweep.py
+tests/python/predictor/test_state_budget_divisor_carrier_sweep.py
+```
+
+The long-running goal stopped with:
+
+```text
+breakthrough: ordering carrier found
+```
+
+Strongest supported measured claim:
+
+```text
+On the deterministic retained 8192-row-per-power 10^12..10^18 surface, the
+current chamber's d4_count is a PGS-native ordering carrier for the next triad
+state under the ordering-carrier gate.
+```
+
+Exact breakthrough row:
+
+```text
+match mode: mod30_prev_gap_exact
+measure: d4_count
+decisive pairs: 7881
+held-out powers above 100 decisive pairs: 7 / 7
+positive oriented held-out folds: 6 / 7
+oriented signed advantage: 299
+endpoint-tail control signed advantage: 230
+edge over endpoint-tail control: 69
+required edge: 50
+verdict: ordering_carrier_found
+```
+
+`d4_count` is the number of divisor-count `4` positions inside the current
+ordered prime-gap chamber. It is defined from the current PGS divisor-count
+field, not from the next chamber label.
+
+State separation:
+
+- measured: `d4_count` is a held-out ordering carrier on the retained
+  `8192`-row-per-power `10^12..10^18` surface;
+- invalidated: square-room side as a hard next-state exclusion rule;
+- invalidated: prime-square boundary clearly beating endpoint tail as the
+  independent carrier on expanded retained windows;
+- unresolved: symbolic reason why current-chamber `d4_count` carries next-triad
+  ordering information;
+- unresolved: replication on a disjoint retained high-window construction.
 
 ## Current Collatz Branch State
 
