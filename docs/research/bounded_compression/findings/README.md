@@ -63,6 +63,12 @@ Active record anatomy:
 square_record_anatomy_424171123.md
 ```
 
+High-utilization anatomy catalog:
+
+```text
+high_utilization_square_anatomy_catalog_to_7e8.md
+```
+
 ## Lemma A Falsification
 
 | Surface | Gaps tested before failure | First failure | Missing obstruction |
