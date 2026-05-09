@@ -373,11 +373,47 @@ Every integer after `w` has smaller comparison value than `w`.
 Therefore `w` is the unique integer in the prime-gap interval where `F(n)` is
 largest.
 
+## Finite Bounded-Compression Base
+
+This finite lemma is not an all-scale bounded-compression theorem. It records
+the exact small side needed by the dynamic cutoff target.
+
+Let `p < q` be consecutive primes with nonempty interior and with
+`q < ceil(exp(16)) = 8,886,111`. Let `w` be the first integer in
+`{p + 1, ..., q - 1}` whose divisor count is minimal in that interval. Then
+
+```text
+w - p <= 60.
+```
+
+Consequently,
+
+```text
+w - p <= 64 <= max(64, ceil(0.5 * log(q)^2)).
+```
+
+The verification enumerated the exact divisor counts for every consecutive
+prime gap with successor prime below `8,886,111`. It checked `542,081`
+nonempty prime-gap interiors. The maximum selected-witness offset was `60`,
+attained at
+
+```text
+p = 1,885,069
+q = 1,885,151
+w = 1,885,129
+tau(w) = 3
+w - p = 60.
+```
+
+No selected-witness offset exceeded `64` on this finite surface.
+
 ## Audit Tables
 
-The theorems above are universal. The tables below are retained for
-certification and reproducibility. They support the finite base used in the
-maximizer proof; they are not the boundary of either theorem.
+The direct next-prime theorem and the Interior Maximizer Theorem are universal.
+The finite bounded-compression base is a finite computational lemma. The
+tables below are retained for certification and reproducibility. They support
+the finite base used in the maximizer proof; they are not the boundary of
+either universal theorem.
 
 | Left-prime range | Prime gaps checked | Earlier integers checked | Exact competing integers |
 |---:|---:|---:|---:|
@@ -394,4 +430,5 @@ earlier integers, with `0` unresolved cases. Its median offset was `1`, its
 ## Document Status
 
 `PROOF.md` is the single live proof reference for the direct deterministic
-next-prime theorem and the prime-gap maximizer theorem.
+next-prime theorem, the prime-gap maximizer theorem, and the finite
+bounded-compression base.
