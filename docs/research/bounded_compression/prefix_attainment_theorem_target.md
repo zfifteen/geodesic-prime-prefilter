@@ -8,6 +8,9 @@ The proved baseline remains:
 
 - the direct divisor-count next-prime theorem in `PROOF.md`;
 - the Interior Maximizer Theorem in `PROOF.md`.
+- the finite bounded-compression base in `PROOF.md`: for every consecutive
+  prime pair `p < q` with `q < ceil(exp(16)) = 8,886,111`, the selected witness
+  satisfies `w - p <= 60`.
 
 The current bounded compression rule
 
@@ -175,14 +178,21 @@ has a tau(n) = 4 interior integer, then the first such integer appears within
 128 of the left endpoint.
 ```
 
-If that theorem is recovered, the dynamic cutoff theorem reduces to two exact
-remaining obligations:
+The finite base side is now proved in `PROOF.md`, with maximum selected-witness
+offset `60` across `542,081` nonempty prime-gap interiors below
+`ceil(exp(16))`.
+
+If the `K = 128` theorem is recovered, the dynamic cutoff theorem reduces to
+one exact all-scale remaining obligation:
 
 ```text
-1. finite base: q < exp(16), prove the selected witness offset is <= 64;
-2. square branch: prove every selected prime-square witness satisfies
-   r^2 - p <= C(q).
+square branch: prove every selected prime-square witness satisfies
+r^2 - p <= C(q).
 ```
+
+That square branch is not closed by the current artifacts. It requires a
+separate theorem bounding the distance from a selected interior prime square to
+the preceding prime by the dynamic logarithmic-square cutoff.
 
 The proof must supply deterministic arrival of a semiprime or prime cube, or
 an exact finite-base reduction. Heuristic density, Cramer-style gap
