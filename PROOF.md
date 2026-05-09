@@ -407,10 +407,44 @@ w - p = 60.
 
 No selected-witness offset exceeded `64` on this finite surface.
 
+## Residual K=128 First-d4 Branch-Elimination Lemma
+
+This lemma records the first-d4 window result that is actually present in the
+residual closure artifacts. It is not a global occupancy theorem for all prime
+gaps.
+
+Let `d` be an odd divisor count and let the adjacent earlier divisor count be
+`d + 1`. In the residual closure branch, enumerate every integer `w` with
+`tau(w) = d` whose preceding prime `p` lies in the retained finite threshold
+window above the committed exact base. For each containing prime gap
+`(p, q)`, compute exact divisor counts in the interior.
+
+If that containing gap has minimum divisor count `4` and its first interior
+integer with divisor count `4` occurs at offset at most `128`, then `w` is not
+the selected witness for that gap. The reason is direct: an earlier interior
+integer has smaller divisor count than `d`, so `w` cannot be the first integer
+where the gap minimum divisor count is attained.
+
+The retained residual closure artifact applies this exact elimination as
+follows:
+
+| Earlier divisor count | Candidate witness divisor count | Preceding-prime window | Candidate carriers | Eliminated by first-d4 window | Remaining exceptions | Result |
+|---:|---:|---|---:|---:|---:|---|
+| `36` | `35` | `(5,000,000,000, 8,589,934,592]` | `5` | `5` | `0` | no `tau=35` winner branch remains |
+| `40` | `39` | `(5,000,000,000, 137,438,953,472]` | `655` | `623` | `32` | exceptions realize `0` `tau=39` winner gaps |
+| `56` | `55` | `(5,000,000,000, 9,007,199,254,740,992]` | `439` | `412` | `27` | exceptions realize `0` `tau=55` winner gaps |
+
+Thus, on these retained odd adjacent residual branches, the `K = 128`
+first-d4 window eliminates the listed candidate witness branches, with the
+remaining exceptions closed by exact enumeration. This is a formal residual
+branch-elimination theorem. It does not prove that every prime gap containing
+a divisor-count-`4` integer has its first such integer within `128`.
+
 ## Audit Tables
 
 The direct next-prime theorem and the Interior Maximizer Theorem are universal.
 The finite bounded-compression base is a finite computational lemma. The
+residual K=128 lemma is a finite residual branch-elimination theorem. The
 tables below are retained for certification and reproducibility. They support
 the finite base used in the maximizer proof; they are not the boundary of
 either universal theorem.
@@ -431,4 +465,5 @@ earlier integers, with `0` unresolved cases. Its median offset was `1`, its
 
 `PROOF.md` is the single live proof reference for the direct deterministic
 next-prime theorem, the prime-gap maximizer theorem, and the finite
-bounded-compression base.
+bounded-compression base. It also records the residual K=128 first-d4
+branch-elimination lemma.
