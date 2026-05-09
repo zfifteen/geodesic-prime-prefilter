@@ -216,6 +216,9 @@ r^2 - p <= max(64, ceil(0.5 * log(r^2)^2)).
 The current square-branch search through prime roots `<= 100,000,000` is
 evidence for this theorem, not a proof of it.
 
+The reduction is recorded separately in
+[`square_branch_reduction.md`](./square_branch_reduction.md).
+
 The proof must supply deterministic arrival of a semiprime or prime cube, or
 an exact finite-base reduction. Heuristic density, Cramer-style gap
 assumptions, random arrival language, and finite audit surfaces do not close
