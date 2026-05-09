@@ -38,6 +38,7 @@ This is measured evidence, not a proof of the dynamic cutoff law.
 | Surface | Square roots tested | First counterexample | Max utilization | Extremal square |
 |---|---:|---|---:|---|
 | [`1e8 square branch`](./square_offset_envelope_surface_1e8.md) | `5,761,454` | `none` | `0.8120300751879699` | `82,357,433^2` |
+| [`1e8..2e8 square branch`](./square_offset_envelope_surface_1e8_2e8.md) | `5,317,482` | `none` | `0.6784140969162996` | `102,017,779^2` |
 
 ## Lemma A Falsification
 

@@ -1,0 +1,52 @@
+{
+  "min_prime": 100000001,
+  "max_prime": 200000000,
+  "tested_prime_count": 5317482,
+  "first_tested_prime": 100000007,
+  "last_tested_prime": 199999991,
+  "first_counterexample": null,
+  "max_dynamic_cutoff_utilization": 0.6784140969162996,
+  "max_row": {
+    "p": 102017779,
+    "square": 10407627232092841,
+    "previous_prime": 10407627232092379,
+    "offset": 462,
+    "o_q": 4,
+    "dynamic_cutoff": 681,
+    "dynamic_cutoff_utilization": 0.6784140969162996,
+    "elapsed_seconds": 1.7080230712890625
+  },
+  "max_row_by_o_q": {
+    "2": {
+      "p": 118029731,
+      "square": 13931017399932361,
+      "previous_prime": 13931017399931909,
+      "offset": 452,
+      "o_q": 2,
+      "dynamic_cutoff": 691,
+      "dynamic_cutoff_utilization": 0.6541244573082489,
+      "elapsed_seconds": 15.646700143814087
+    },
+    "4": {
+      "p": 102017779,
+      "square": 10407627232092841,
+      "previous_prime": 10407627232092379,
+      "offset": 462,
+      "o_q": 4,
+      "dynamic_cutoff": 681,
+      "dynamic_cutoff_utilization": 0.6784140969162996,
+      "elapsed_seconds": 1.7080230712890625
+    },
+    "6": {
+      "p": 181928627,
+      "square": 33098025322105129,
+      "previous_prime": 33098025322104653,
+      "offset": 476,
+      "o_q": 6,
+      "dynamic_cutoff": 724,
+      "dynamic_cutoff_utilization": 0.6574585635359116,
+      "elapsed_seconds": 70.66741514205933
+    }
+  },
+  "elapsed_seconds": 86.33853006362915
+}
