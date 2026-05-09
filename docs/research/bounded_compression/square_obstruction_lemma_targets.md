@@ -63,11 +63,25 @@ envelope, not merely below the raw largest observed witness offset.
 
 ### 3. d=4 Fallback
 
-Target claim:
+Invalidated literal target:
 
 ```text
 If no square undercutter appears before the first d=4 carrier, then the first
 d=4 carrier is the selected witness.
+```
+
+Status:
+
+```text
+False at q = 113. The first d=4 carrier is 115, but the exact selected
+witness is the later square 121 = 11^2.
+```
+
+Viable target:
+
+```text
+If no interior prime square appears in the gap, then the first d=4 carrier is
+the selected witness.
 ```
 
 Measured role:
