@@ -20,7 +20,7 @@ within C(q) = max(64, ceil(0.5 * log(q)^2)) of q.
 | Preserve measured finite surfaces | `1e6` and `1e7` findings exist. | `done` |
 | Reduce non-square branch | Lemma A' survives through `q <= 10,000,000` with `499,896` no-square `d=4` fallback cases and no failure. | `measured only` |
 | Identify invalidated reduction | Literal prior-square Lemma A fails at `q = 113`, where the exact witness is later square `121 = 11^2`. | `done` |
-| Pressure-test square branch | Square-offset envelope search through prime roots `p <= 100,000,000` tested `5,761,454` odd prime squares with no counterexample. | `measured only` |
+| Pressure-test square branch | Documented square-offset envelope surfaces through prime roots `p <= 500,000,000` found no counterexample; standing utilization record is `0.9341772151898734`. | `measured only` |
 
 ## Current State
 

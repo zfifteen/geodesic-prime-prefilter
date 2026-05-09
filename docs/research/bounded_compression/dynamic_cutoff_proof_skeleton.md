@@ -136,6 +136,10 @@ square-offset envelope through prime roots <= 1e8:
   odd prime squares tested: 5,761,454
   first counterexample: none
   max utilization: 0.8120300751879699
+
+square-offset envelope through prime roots <= 5e8:
+  first counterexample: none
+  standing record: 0.9341772151898734 at 424,171,123^2
 ```
 
 ## Open Gap
