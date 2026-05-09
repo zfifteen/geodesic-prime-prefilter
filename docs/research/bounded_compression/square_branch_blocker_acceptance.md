@@ -74,6 +74,33 @@ Thus no current PGS theorem in `PROOF.md` supplies the square offset bound.
 The missing input is a distance theorem for primes immediately before prime
 squares.
 
+## What The Square-Branch Hypothesis Gives
+
+Let `s` be the prime immediately before `r`. If `r^2` is the selected
+prime-square witness, then the previous prime `p` must satisfy
+
+```text
+s^2 < p < r^2.
+```
+
+Otherwise `s^2` would also lie in the same gap interior before `r^2`, and the
+selected prime-square witness would be `s^2`, not `r^2`.
+
+Therefore the square-branch hypothesis gives the deterministic bound
+
+```text
+r^2 - p < r^2 - s^2 = (r - s)(r + s).
+```
+
+This is a band bound between consecutive prime squares. It does not imply
+
+```text
+r^2 - p <= max(64, ceil(0.5 * log(r^2)^2)).
+```
+
+The missing theorem must compress this prime-square band down to the dynamic
+logarithmic-square cutoff.
+
 ## Known-Bound Boundary
 
 The inspected unconditional short-interval theorem of Baker, Harman, and
