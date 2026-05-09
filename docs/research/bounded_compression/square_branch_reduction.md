@@ -108,3 +108,6 @@ r^2 - p <= max(64, ceil(0.5 * log(r^2)^2)).
 
 A proof of this theorem closes the square branch. Without it, the all-scale
 bounded dynamic cutoff theorem remains unresolved.
+
+The proof acceptance boundary is recorded in
+[`square_branch_blocker_acceptance.md`](./square_branch_blocker_acceptance.md).
