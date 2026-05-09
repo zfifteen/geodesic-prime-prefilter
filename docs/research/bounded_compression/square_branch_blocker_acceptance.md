@@ -119,6 +119,30 @@ that scale.
 Therefore the square branch is not closed by known general prime-gap bounds
 or by the current PGS maximizer theorem.
 
+## Critical Scale Pressure
+
+The coefficient in the cutoff is not arbitrary. Write `x = r^2` and
+`L = log(r)`. Then
+
+```text
+0.5 * log(x)^2 = 2L^2.
+```
+
+The classical density heuristic near `x` assigns a typical backward
+prime-distance scale of `log(x) = 2L`. The number of prime-square trials with
+prime root at most `r` is on the order of `r / L`. Under the independent
+extreme-value heuristic, the largest backward distance among those trials is
+on the order of
+
+```text
+2L * log(r / L) = 2L^2 - 2L log(L).
+```
+
+So the proposed cutoff sits at the natural critical envelope for prime-square
+trials, with a lower-order margin. This explains why finite utilization below
+`1` is meaningful pressure but not a theorem. The argument is heuristic and
+does not close the square branch.
+
 ## Acceptance Criteria For A Real Proof
 
 A valid proof of the square branch must provide one of the following:
