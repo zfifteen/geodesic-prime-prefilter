@@ -228,6 +228,63 @@ Preserve the state separation:
 - unresolved: the square-branch prime-square proximity theorem
   `r^2 - p <= C(q)`.
 
+## Current State-Budget Hidden-State Branch
+
+As of 2026-05-09, the state-budget hidden-state probe is a live predictor
+research branch.
+
+Read:
+
+```text
+gwr/findings/phase_budget_hidden_state_probe_findings.md
+docs/research/predictor/state_budget_hidden_state_rollout/index.html
+output/gwr_phase_budget_hidden_state_probe_summary.json
+```
+
+Strongest supported claim:
+
+```text
+On the retained 10^12..10^18 catalog window surface, the current
+parity-plus-previous-state hidden model is missing one endpoint-budget bit:
+d4_low / d4_high adds 0.023067 pooled log-loss gain over parity plus previous
+state and separates next-triad share by 0.057217.
+```
+
+First hard-gated held-out result:
+
+```text
+benchmarks/python/predictor/state_budget_heldout_ruler_test.py
+output/state_budget_heldout_ruler_test.csv
+```
+
+With `configured_balance_floor = 0.10`, the current retained surface does not
+promote the state-budget bit. Four held-out folds are unresolved from low/high
+imbalance. Three folds are balanced enough to score, and all three return
+`does_not`.
+
+This preserves the pooled signal as a measured observation, but the first
+strict held-out decision surface does not support upgrading "may carry next-gap
+state" to "does carry next-gap state." The next valid task is balanced retained
+surface construction, not a stronger model.
+
+Matched-pair ruler test:
+
+```text
+benchmarks/python/predictor/state_budget_pairwise_ruler_test.py
+output/state_budget_pairwise_ruler_summary.json
+output/state_budget_pairwise_ruler_per_power.csv
+```
+
+Inside matched current-gap cells, target-next rows sit lower on the square
+ruler with signed advantage `+73` over `589` decisive pairs. The plain
+tail-length control scores `+70` on the same pairs. With
+`min_control_margin = 15`, the square-ruler-specific verdict is `unresolved`.
+
+Interpretation: the current retained surface shows positive memory-like
+ordering, but it does not yet isolate the prime-square boundary as the carrier
+of that ordering. Grok independently reproduced the pairwise totals and agreed
+with the updated `unresolved` verdict after the control-margin rule was added.
+
 ## Current Collatz Branch State
 
 As of 2026-05-03, the Collatz work is integrated on `main` under:

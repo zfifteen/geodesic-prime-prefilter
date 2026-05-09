@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A Small Sign of Memory in Prime Gaps</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #5d6d7e;
+      --line: #d9e1ea;
+      --paper: #fbfcfe;
+      --panel: #ffffff;
+      --blue: #255f99;
+      --green: #257a5f;
+      --gold: #ad6b13;
+      --red: #b42318;
+      --blue-bg: #eef6ff;
+      --green-bg: #eefaf4;
+      --gold-bg: #fff8e8;
+      --red-bg: #fff3f1;
+      --code-bg: #f4f7fb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #f5f9fd 0, #fbfcfe 340px), var(--paper);
+      line-height: 1.58;
+    }
+
+    main {
+      width: min(980px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 42px 0 72px;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      font-size: clamp(2.35rem, 7vw, 4.9rem);
+      max-width: 900px;
+    }
+
+    h2 {
+      font-size: clamp(1.45rem, 3vw, 2.05rem);
+      margin-bottom: 12px;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    p {
+      margin: 0 0 13px;
+    }
+
+    a {
+      color: var(--blue);
+    }
+
+    code {
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 0.92em;
+      background: var(--code-bg);
+      padding: 0.12rem 0.3rem;
+      border-radius: 4px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+
+    li + li {
+      margin-top: 6px;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .lead {
+      color: #33475b;
+      font-size: 1.17rem;
+      max-width: 820px;
+      margin-top: 18px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px;
+      margin-top: 20px;
+    }
+
+    .plain-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .plain-item {
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--blue);
+      border-radius: 8px;
+      background: #ffffff;
+      padding: 14px;
+    }
+
+    .plain-item strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: #ffffff;
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--green);
+      font-size: 1.75rem;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      display: block;
+      font-size: 0.92rem;
+    }
+
+    .callout {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      background: var(--blue-bg);
+    }
+
+    .callout.warn {
+      background: var(--gold-bg);
+      border-color: #ebcc92;
+    }
+
+    .callout.danger {
+      background: var(--red-bg);
+      border-color: #efb0a9;
+    }
+
+    .callout.success {
+      background: var(--green-bg);
+      border-color: #9ed8c4;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: 1fr 42px 1fr 42px 1fr;
+      gap: 10px;
+      align-items: stretch;
+      margin-top: 12px;
+    }
+
+    .step {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: #ffffff;
+    }
+
+    .arrow {
+      align-items: center;
+      color: var(--blue);
+      display: flex;
+      font-size: 1.8rem;
+      font-weight: 800;
+      justify-content: center;
+    }
+
+    @media (max-width: 760px) {
+      main {
+        width: min(100% - 28px, 980px);
+        padding-top: 28px;
+      }
+
+      .metric-row {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .flow {
+        grid-template-columns: 1fr;
+      }
+
+      .arrow {
+        transform: rotate(90deg);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .metric-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="eyebrow">Outside-observer note</div>
+      <h1>A Small Sign of Memory in Prime Gaps</h1>
+      <p class="lead">
+        We found evidence that one prime gap may carry information about the next
+        one. The effect is real enough to measure, but not yet specific enough to
+        call a solved mechanism.
+      </p>
+    </header>
+
+    <section class="panel">
+      <h2>The Object</h2>
+      <p>
+        Take two neighboring prime numbers. The whole-number space between them is a
+        prime gap. Every number inside that gap is composite.
+      </p>
+      <p>
+        This project studies the internal pattern of those composite numbers. In each
+        gap, the method selects one interior number, called <code>w</code>. The prime at
+        the right edge of the gap is <code>q</code>.
+      </p>
+      <p>
+        Now draw a ruler that starts at <code>w</code> and ends at the next prime-square
+        boundary after <code>w</code>. Mark where <code>q</code> lands on that ruler.
+      </p>
+      <div class="flow">
+        <div class="step">
+          <h3>Current Gap</h3>
+          <p>Select an interior composite number <code>w</code>.</p>
+        </div>
+        <div class="arrow">&rarr;</div>
+        <div class="step">
+          <h3>Ruler Mark</h3>
+          <p>Measure where endpoint <code>q</code> lands before the next prime-square boundary.</p>
+        </div>
+        <div class="arrow">&rarr;</div>
+        <div class="step">
+          <h3>Next Gap</h3>
+          <p>Check whether the next gap changes in a predictable way.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>The Question</h2>
+      <p>
+        The simple question is not whether prime gaps are random or non-random in a
+        broad philosophical sense. The question is much narrower:
+      </p>
+      <div class="callout">
+        <p>
+          When two current gaps look the same under the known facts, does the one that
+          leads to a particular next-gap state sit in a different place on the ruler?
+        </p>
+      </div>
+      <p>
+        If yes, the current gap carries a small amount of recoverable information about
+        the next gap. That is what we mean here by memory.
+      </p>
+    </section>
+
+    <section class="panel">
+      <h2>What We Found</h2>
+      <p>
+        The first pooled test found a visible signal. When the selected number had a
+        simple divisor shape, splitting rows into low-ruler and high-ruler groups
+        separated next-gap behavior.
+      </p>
+      <div class="metric-row">
+        <div class="metric">
+          <strong>1778</strong>
+          <span>current-gap to next-gap transitions in the pooled test</span>
+        </div>
+        <div class="metric">
+          <strong>0.712</strong>
+          <span>next-target share for low-ruler rows</span>
+        </div>
+        <div class="metric">
+          <strong>0.655</strong>
+          <span>next-target share for high-ruler rows</span>
+        </div>
+        <div class="metric">
+          <strong>0.057</strong>
+          <span>measured separation between the two groups</span>
+        </div>
+      </div>
+      <p>
+        That was the first sign of memory: a mark inside the current gap separated
+        behavior in the next gap.
+      </p>
+    </section>
+
+    <section class="panel">
+      <h2>The First Correction</h2>
+      <p>
+        We tried a stricter held-out test and it failed to promote the signal. That
+        was surprising, but the failure exposed a design problem.
+      </p>
+      <p>
+        The raw ruler number shrinks across very large scales. A cutoff learned at one
+        scale does not travel cleanly to another scale. That test was partly asking
+        whether a raw number could be reused across powers, not whether the gap carried
+        memory.
+      </p>
+      <div class="callout warn">
+        <p>
+          The failed held-out cutoff test did not erase the signal. It showed that the
+          raw ruler coordinate is not portable enough by itself.
+        </p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>The Cleaner Test</h2>
+      <p>
+        We then used a smaller test. No trained cutoff. No cross-scale threshold. No
+        model.
+      </p>
+      <p>
+        We compared rows only when they already matched on the known current-gap facts.
+        Inside each matched cell, we paired rows whose next gap hit the target state
+        against rows whose next gap did not. Then we asked which row sat lower on the
+        ruler.
+      </p>
+      <div class="metric-row">
+        <div class="metric">
+          <strong>152</strong>
+          <span>matched cells with both next outcomes</span>
+        </div>
+        <div class="metric">
+          <strong>589</strong>
+          <span>target versus non-target row pairs</span>
+        </div>
+        <div class="metric">
+          <strong>+73</strong>
+          <span>signed advantage for the square ruler</span>
+        </div>
+        <div class="metric">
+          <strong>+70</strong>
+          <span>signed advantage for plain tail length</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>The Meaning</h2>
+      <p>
+        The matched-pair test says something real is present: rows whose next gap hits
+        the target state usually sit lower on the current-gap ruler.
+      </p>
+      <p>
+        But plain tail length, the distance from <code>w</code> to <code>q</code>, almost
+        reproduces the same ordering. The square-ruler result is only three signed wins
+        stronger than that simpler control.
+      </p>
+      <div class="callout danger">
+        <p>
+          Current status: memory-like ordering is measured. The prime-square boundary
+          has not yet been isolated as the specific mechanism carrying that memory.
+        </p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Why It Matters</h2>
+      <p>
+        If the memory interpretation survives stronger tests, then prime gaps are not
+        just isolated intervals with internal structure. They form a sequence where the
+        current gap carries detectable information about the next one.
+      </p>
+      <p>
+        That would be a larger claim than "prime gaps contain structure." It would mean
+        prime gaps move through recoverable state.
+      </p>
+      <p>
+        The current evidence does not prove that larger claim. It gives a precise next
+        target: build a larger balanced surface and require the square ruler to beat
+        plain tail length by a meaningful margin.
+      </p>
+    </section>
+
+    <section class="panel">
+      <h2>Bottom Line</h2>
+      <div class="plain-list">
+        <div class="plain-item">
+          <strong>Measured</strong>
+          The current gap contains a detectable ordering connected to the next gap.
+        </div>
+        <div class="plain-item">
+          <strong>Not Yet Proven</strong>
+          The prime-square ruler has not been separated cleanly from the simpler tail
+          length explanation.
+        </div>
+        <div class="plain-item">
+          <strong>Next Test</strong>
+          Run the same matched-pair test on a larger balanced surface and require the
+          square ruler to beat tail length by a fixed signed-win margin.
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

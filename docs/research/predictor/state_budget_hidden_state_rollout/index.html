@@ -1,0 +1,718 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PGS State-Budget Probe Plain-English Plan</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #5d6d7e;
+      --line: #d9e1ea;
+      --paper: #fbfcfe;
+      --panel: #ffffff;
+      --blue: #255f99;
+      --green: #257a5f;
+      --gold: #ad6b13;
+      --red: #b42318;
+      --blue-bg: #eef6ff;
+      --green-bg: #eefaf4;
+      --gold-bg: #fff8e8;
+      --red-bg: #fff3f1;
+      --code-bg: #f4f7fb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #f5f9fd 0, #fbfcfe 340px), var(--paper);
+      line-height: 1.55;
+    }
+
+    main {
+      width: min(1160px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 40px 0 72px;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 6vw, 4.8rem);
+      max-width: 980px;
+    }
+
+    h2 {
+      font-size: clamp(1.45rem, 3vw, 2.05rem);
+      margin-bottom: 12px;
+    }
+
+    h3 {
+      font-size: 1.02rem;
+      margin-bottom: 8px;
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    code {
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 0.92em;
+      background: var(--code-bg);
+      padding: 0.12rem 0.3rem;
+      border-radius: 4px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+      padding: 10px 8px;
+    }
+
+    th {
+      color: #33475b;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+
+    li + li {
+      margin-top: 6px;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .lead {
+      color: #33475b;
+      font-size: 1.16rem;
+      max-width: 860px;
+      margin-top: 18px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+      margin-top: 22px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px;
+    }
+
+    .wide {
+      grid-column: span 12;
+    }
+
+    .half {
+      grid-column: span 6;
+    }
+
+    .third {
+      grid-column: span 4;
+    }
+
+    .two-third {
+      grid-column: span 8;
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: #ffffff;
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--green);
+      font-size: 1.8rem;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      display: block;
+      font-size: 0.92rem;
+    }
+
+    .callout {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      background: var(--blue-bg);
+    }
+
+    .callout.success {
+      background: var(--green-bg);
+      border-color: #9ed8c4;
+    }
+
+    .callout.warn {
+      background: var(--gold-bg);
+      border-color: #ebcc92;
+    }
+
+    .callout.danger {
+      background: var(--red-bg);
+      border-color: #efb0a9;
+    }
+
+    .callout.danger h3 {
+      color: var(--red);
+    }
+
+    .plain-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .plain-item {
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--blue);
+      border-radius: 8px;
+      background: #ffffff;
+      padding: 14px;
+    }
+
+    .plain-item strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: 1fr 42px 1fr 42px 1fr;
+      gap: 10px;
+      align-items: stretch;
+      margin-top: 12px;
+    }
+
+    .step {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: #ffffff;
+    }
+
+    .arrow {
+      align-items: center;
+      color: var(--blue);
+      display: flex;
+      font-size: 1.8rem;
+      font-weight: 800;
+      justify-content: center;
+    }
+
+    .status {
+      display: inline-block;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 0.18rem 0.55rem;
+    }
+
+    .status.measured {
+      background: var(--green-bg);
+      color: var(--green);
+    }
+
+    .status.hypothesis {
+      background: var(--gold-bg);
+      color: var(--gold);
+    }
+
+    .status.unresolved {
+      background: var(--red-bg);
+      color: var(--red);
+    }
+
+    .status.fail {
+      background: var(--red-bg);
+      color: var(--red);
+    }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+    }
+
+    .checklist li {
+      border-bottom: 1px solid var(--line);
+      padding: 10px 0;
+    }
+
+    .checklist li:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    @media (max-width: 860px) {
+      main {
+        width: min(100% - 28px, 1160px);
+        padding-top: 28px;
+      }
+
+      .half, .third, .two-third {
+        grid-column: span 12;
+      }
+
+      .metric-row {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .flow {
+        grid-template-columns: 1fr;
+      }
+
+      .arrow {
+        transform: rotate(90deg);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .metric-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="eyebrow">PGS predictor branch</div>
+      <h1>State-Budget Probe: Plain-English Plan</h1>
+      <p class="lead">
+        Some prime gaps with the same obvious local description behave differently
+        in the next gap. The difference is tied to how close the selected interior
+        integer sits to the next prime-square boundary.
+      </p>
+    </header>
+
+    <section class="grid">
+      <div class="panel wide">
+        <h2>Plain English Finding</h2>
+        <p>
+          PGS already chooses a special composite number inside each prime gap. Call it
+          <code>w</code>. The next prime at the right edge of the gap is <code>q</code>.
+        </p>
+        <p>
+          The probe asks one narrow question: after PGS chooses <code>w</code>, does it
+          matter how much room remains before the next prime-square boundary? On the
+          measured surface, yes. Rows with low budget use and rows with high budget
+          use have different next-gap behavior.
+        </p>
+        <div class="plain-list">
+          <div class="plain-item">
+            <strong>What is being measured?</strong>
+            The fraction of the distance from <code>w</code> to the next prime-square boundary
+            that has already been used by the endpoint <code>q</code>.
+          </div>
+          <div class="plain-item">
+            <strong>Why care?</strong>
+            If that fraction predicts the next gap, then the current gap is carrying
+            a small amount of state into the next gap.
+          </div>
+          <div class="plain-item">
+            <strong>What is the claim?</strong>
+            This is measured evidence for a transition variable, not a theorem yet.
+          </div>
+        </div>
+        <div class="metric-row">
+          <div class="metric">
+            <strong>1778</strong>
+            <span>measured current-gap to next-gap transitions</span>
+          </div>
+          <div class="metric">
+            <strong>0.057217</strong>
+            <span>gap between low-budget and high-budget next behavior</span>
+          </div>
+          <div class="metric">
+            <strong>0.023067</strong>
+            <span>extra prediction gain after existing controls</span>
+          </div>
+          <div class="metric">
+            <strong>16</strong>
+            <span>matched comparison cells where the split can be checked</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel half">
+        <h2>What Is Settled</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Layer</th>
+              <th>Status</th>
+              <th>Claim</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Theorem</td>
+              <td><span class="status measured">proved</span></td>
+              <td>PGS can deterministically define the next prime and the selected interior integer under the hypotheses in <code>PROOF.md</code>.</td>
+            </tr>
+            <tr>
+              <td>Measured result</td>
+              <td><span class="status measured">measured</span></td>
+              <td>The budget split improves next-gap prediction on the retained <code>10^12..10^18</code> catalog surface.</td>
+            </tr>
+            <tr>
+              <td>Hypothesis</td>
+              <td><span class="status hypothesis">hypothesis</span></td>
+              <td>The budget split is a real memory bit passed from one gap to the next.</td>
+            </tr>
+            <tr>
+              <td>Unresolved</td>
+              <td><span class="status unresolved">unresolved</span></td>
+              <td>It still has to survive fresh windows and controls designed to break the signal.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel half">
+        <h2>The Mechanism</h2>
+        <p>
+          The useful picture is a ruler. Start at the selected integer <code>w</code>.
+          End at the next prime-square boundary. Mark where the actual prime endpoint
+          <code>q</code> lands on that ruler. The mark is the budget number.
+        </p>
+        <div class="flow">
+          <div class="step">
+            <h3>Current Gap</h3>
+            <p>PGS selects the interior integer <code>w</code>.</p>
+          </div>
+          <div class="arrow">&rarr;</div>
+          <div class="step">
+            <h3>Budget Split</h3>
+            <p>Low ruler marks become <code>d4_low</code>; high ruler marks become <code>d4_high</code>.</p>
+          </div>
+          <div class="arrow">&rarr;</div>
+          <div class="step">
+            <h3>Next Gap</h3>
+            <p>The low and high groups return to the target next-gap state at different rates.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel two-third">
+        <h2>Exact Baseline Numbers</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Quantity</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Detail source</td>
+              <td><code>output/gwr_dni_gap_type_catalog_details.csv</code></td>
+            </tr>
+            <tr>
+              <td>Runner</td>
+              <td><code>benchmarks/python/predictor/gwr_phase_budget_hidden_state_probe.py</code></td>
+            </tr>
+            <tr>
+              <td>Power range</td>
+              <td><code>10^12..10^18</code></td>
+            </tr>
+            <tr>
+              <td>Baseline prediction error</td>
+              <td><code>0.5993080476093358</code></td>
+            </tr>
+            <tr>
+              <td><code>d4_low</code> row count and next-gap target share</td>
+              <td><code>691</code>, <code>0.7120115774240231</code></td>
+            </tr>
+            <tr>
+              <td><code>d4_high</code> row count and next-gap target share</td>
+              <td><code>730</code>, <code>0.6547945205479452</code></td>
+            </tr>
+            <tr>
+              <td>Best measured prediction gain</td>
+              <td><code>0.13185581900776383</code> when the budget split is added to the existing model</td>
+            </tr>
+            <tr>
+              <td>Extra gain from the budget split</td>
+              <td><code>0.0230667735284712</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel third">
+        <h2>Reproduction Command</h2>
+        <div class="callout">
+          <p><code>python benchmarks/python/predictor/gwr_phase_budget_hidden_state_probe.py</code></p>
+          <p>
+            Expected outputs:
+          </p>
+          <ul>
+            <li><code>output/gwr_phase_budget_hidden_state_probe_summary.json</code></li>
+            <li><code>output/gwr_phase_budget_hidden_state_probe_strata.csv</code></li>
+            <li><code>gwr/findings/phase_budget_hidden_state_probe_findings.md</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panel wide">
+        <h2>First Held-Out Ruler Test</h2>
+        <p>
+          The strict test asks a smaller question than the pooled probe. Train the
+          low/high ruler split on six powers, hold out the seventh power, and score
+          only folds where both held-out classes have enough support. With a
+          <code>0.10</code> balance floor, the current retained surface does not promote
+          the state-budget bit.
+        </p>
+        <div class="metric-row">
+          <div class="metric">
+            <strong>7</strong>
+            <span>held-out powers tested</span>
+          </div>
+          <div class="metric">
+            <strong>4</strong>
+            <span>unresolved folds from imbalance</span>
+          </div>
+          <div class="metric">
+            <strong>3</strong>
+            <span>balanced enough to score</span>
+          </div>
+          <div class="metric">
+            <strong>0</strong>
+            <span>folds with verdict <code>does</code></span>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Held-out power</th>
+              <th>Rows</th>
+              <th>Low</th>
+              <th>High</th>
+              <th>Balance</th>
+              <th>Gain</th>
+              <th>Lift</th>
+              <th>Verdict</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>10^12</code></td>
+              <td><code>154</code></td>
+              <td><code>6</code></td>
+              <td><code>148</code></td>
+              <td><code>0.038961</code></td>
+              <td></td>
+              <td><code>0.137387</code></td>
+              <td><span class="status unresolved">unresolved</span></td>
+            </tr>
+            <tr>
+              <td><code>10^13</code></td>
+              <td><code>144</code></td>
+              <td><code>23</code></td>
+              <td><code>121</code></td>
+              <td><code>0.159722</code></td>
+              <td><code>0.001498</code></td>
+              <td><code>-0.087675</code></td>
+              <td><span class="status fail">does not</span></td>
+            </tr>
+            <tr>
+              <td><code>10^14</code></td>
+              <td><code>157</code></td>
+              <td><code>107</code></td>
+              <td><code>50</code></td>
+              <td><code>0.318471</code></td>
+              <td><code>0.003185</code></td>
+              <td><code>0.012897</code></td>
+              <td><span class="status fail">does not</span></td>
+            </tr>
+            <tr>
+              <td><code>10^15</code></td>
+              <td><code>144</code></td>
+              <td><code>11</code></td>
+              <td><code>133</code></td>
+              <td><code>0.076389</code></td>
+              <td></td>
+              <td><code>0.232399</code></td>
+              <td><span class="status unresolved">unresolved</span></td>
+            </tr>
+            <tr>
+              <td><code>10^16</code></td>
+              <td><code>156</code></td>
+              <td><code>149</code></td>
+              <td><code>7</code></td>
+              <td><code>0.044872</code></td>
+              <td></td>
+              <td><code>0.432407</code></td>
+              <td><span class="status unresolved">unresolved</span></td>
+            </tr>
+            <tr>
+              <td><code>10^17</code></td>
+              <td><code>148</code></td>
+              <td><code>114</code></td>
+              <td><code>34</code></td>
+              <td><code>0.229730</code></td>
+              <td><code>-0.020938</code></td>
+              <td><code>-0.077399</code></td>
+              <td><span class="status fail">does not</span></td>
+            </tr>
+            <tr>
+              <td><code>10^18</code></td>
+              <td><code>157</code></td>
+              <td><code>157</code></td>
+              <td><code>0</code></td>
+              <td><code>0</code></td>
+              <td></td>
+              <td></td>
+              <td><span class="status unresolved">unresolved</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          Plain readout: the pooled ruler signal is still a measured observation, but
+          the first strict held-out decision surface says <code>does not</code> for the
+          balanced scoreable folds and <code>unresolved</code> where support is too lopsided.
+          The next engineering task is balanced surface construction, not a stronger
+          model.
+        </p>
+      </div>
+
+      <div class="panel wide">
+        <h2>Matched-Pair Ruler Test</h2>
+        <p>
+          The simpler memory test does not train a cutoff across powers. It compares
+          rows that already match on the known current-gap facts. Inside each matched
+          cell, target-next rows are paired against non-target-next rows. If the
+          target-next row sits lower on the square ruler, that pair counts as a
+          positive square-ruler win.
+        </p>
+        <div class="metric-row">
+          <div class="metric">
+            <strong>152</strong>
+            <span>matched cells with both next outcomes</span>
+          </div>
+          <div class="metric">
+            <strong>589</strong>
+            <span>target versus non-target pairs</span>
+          </div>
+          <div class="metric">
+            <strong>+73</strong>
+            <span>signed square-ruler advantage</span>
+          </div>
+          <div class="metric">
+            <strong>+70</strong>
+            <span>signed tail-length control advantage</span>
+          </div>
+        </div>
+        <p>
+          Plain readout: current gaps do show a positive within-cell ordering. Rows
+          whose next gap returns to the target state usually sit lower on the current
+          gap's ruler. But plain tail length almost reproduces the same effect. With a
+          required control margin of <code>15</code> signed wins, the square-ruler-specific
+          verdict is <code>unresolved</code>.
+        </p>
+        <p>
+          This is the sharper status: the current gap contains memory-like ordering,
+          but the current retained surface does not yet prove that the prime-square
+          boundary is the mechanism carrying that memory.
+        </p>
+      </div>
+
+      <div class="panel half">
+        <h2>Next Engineering Work</h2>
+        <ul class="checklist">
+          <li>Freeze the current retained-window result as the baseline for this branch.</li>
+          <li>Regenerate the retained-window table from scratch and compare it byte-for-byte where deterministic output ordering applies.</li>
+          <li>Construct fresh windows with balanced retained low/high support.</li>
+          <li>Extend the matched-pair ruler test to a larger retained catalog and require the square ruler to beat tail length by the signed-win margin.</li>
+          <li>Emit one compact table with feature set, retained rows, prediction gain, observed lift, interval estimate, and pass/fail verdict.</li>
+          <li>Add certificate-side fields only after the control surface passes: <code>S_plus_w</code>, <code>U_square</code>, and <code>state_budget_class</code>.</li>
+        </ul>
+      </div>
+
+      <div class="panel half">
+        <h2>Acceptance Criteria</h2>
+        <div class="callout success">
+          <h3>Promote</h3>
+          <p>
+            Promote if the budget split improves prediction on fresh windows and beats
+            the control features.
+          </p>
+        </div>
+        <div class="callout warn" style="margin-top: 12px;">
+          <h3>Keep As Hypothesis</h3>
+          <p>
+            Keep as unresolved if it works on the current retained surface but does not
+            hold cleanly on fresh windows.
+          </p>
+        </div>
+        <div class="callout danger" style="margin-top: 12px;">
+          <h3>Reject</h3>
+          <p>
+            Reject the memory-bit reading if shuffled labels match the signal, or if the
+            fresh-window gain over the existing model is zero or negative.
+          </p>
+        </div>
+      </div>
+
+      <div class="panel wide">
+        <h2>Bottom Line</h2>
+        <p>
+          The pooled evidence says the selected integer has a measurable square-budget
+          signal. The first strict held-out ruler test does not yet turn that signal into
+          a promoted transition-state model. The matched-pair test finds a positive
+          memory-like ordering, but tail length nearly ties the square ruler. The current
+          finite status is sharper now: pooled signal measured, hard-gated held-out
+          promotion not achieved, matched-pair ordering positive but square-specific
+          mechanism unresolved.
+        </p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
