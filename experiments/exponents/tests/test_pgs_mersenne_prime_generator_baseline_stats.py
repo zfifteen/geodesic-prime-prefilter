@@ -55,6 +55,24 @@ def test_small_baseline_stats_include_terminal_scan():
     assert len(tau_rows) == sum(int(row["tau_call_count"]) for row in transition_rows)
 
 
+def test_baseline_stats_preserve_interleaved_tau_call_roles():
+    """Tau call roles should follow actual exponent and boundary execution order."""
+    module = load_module()
+    _exponents, _transition_rows, tau_rows = module.collect_stats(
+        start_exponent=2,
+        value_ceiling=2**31 - 1,
+        candidate_bound=4096,
+    )
+
+    transition_rows = [
+        row for row in tau_rows if int(row["transition_p"]) == 7
+    ]
+    roles = [row["call_role"] for row in transition_rows]
+    first_boundary_index = roles.index("boundary")
+
+    assert "exponent" in roles[first_boundary_index + 1:]
+
+
 def test_cli_writes_lf_baseline_outputs(tmp_path):
     """The CLI should write compact LF-terminated baseline artifacts."""
     module = load_module()

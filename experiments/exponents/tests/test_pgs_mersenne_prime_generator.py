@@ -99,6 +99,33 @@ def test_known_small_transitions_resolve():
     }
 
 
+def test_admissible_left_offsets_match_reference_order():
+    """The direct offset enumerator should preserve the original ordered surface."""
+    generator = load_module(GENERATOR_PATH, "pgs_mersenne_prime_generator")
+
+    def reference_offsets(exponent: int, candidate_bound: int) -> list[int]:
+        power_residue_mod30 = pow(2, exponent, 30)
+        small_power = 2**exponent if exponent <= 3 else None
+        return [
+            offset
+            for offset in range(1, candidate_bound + 1)
+            if (
+                small_power is not None
+                and small_power - offset in generator.LOW_PRIMES
+            )
+            or (
+                power_residue_mod30 - offset
+            ) % 30 in generator.WHEEL_OPEN_RESIDUES_MOD30
+        ]
+
+    for exponent in range(2, 201):
+        for candidate_bound in [1, 2, 3, 29, 30, 31, 59, 60, 61, 128, 4096]:
+            assert generator.admissible_left_offsets(
+                exponent,
+                candidate_bound,
+            ) == reference_offsets(exponent, candidate_bound)
+
+
 def test_too_small_max_exponent_raises_unresolved():
     """A bounded surface with no inferred successor should fail explicitly."""
     generator = load_module(GENERATOR_PATH, "pgs_mersenne_prime_generator")
@@ -129,7 +156,9 @@ def test_boundary_certificate_uses_compact_integer_diagnostics():
     assert "power_of_two" not in certificate
     assert "left_boundary" not in certificate
     assert "carrier_w" not in certificate
-    assert all("n" not in state for state in certificate["candidate_states"])
+    assert "candidate_states" not in certificate
+    assert certificate["candidate_state_count"] == 1
+    assert certificate["closed_offset_count_before_boundary"] == 0
 
 
 def test_boundary_scan_only_counts_admissible_offsets(monkeypatch):
@@ -168,8 +197,8 @@ def test_validator_confirms_records_after_generation():
     assert rows[1]["classical_agreement"] is False
 
 
-def test_controller_writes_minimal_records_and_validation(tmp_path):
-    """The controller should write generation and validation artifacts."""
+def test_controller_writes_minimal_records_and_compact_diagnostics(tmp_path):
+    """The controller should write generation-only artifacts."""
     controller = load_module(CONTROLLER_PATH, "pgs_mersenne_prime_controller")
     out = tmp_path / "out"
 
@@ -186,8 +215,6 @@ def test_controller_writes_minimal_records_and_validation(tmp_path):
         out / "records.jsonl",
         out / "diagnostics.jsonl",
         out / "pgs_summary.json",
-        out / "validation_rows.csv",
-        out / "validation_summary.json",
         out / "summary.json",
     ]
     for path in paths:
@@ -203,9 +230,6 @@ def test_controller_writes_minimal_records_and_validation(tmp_path):
         for line in (out / "diagnostics.jsonl").read_text(encoding="utf-8").splitlines()
     ]
     pgs_summary = json.loads((out / "pgs_summary.json").read_text(encoding="utf-8"))
-    validation_summary = json.loads(
-        (out / "validation_summary.json").read_text(encoding="utf-8")
-    )
 
     assert all(set(record) == {"p", "q"} for record in records)
     assert records == [
@@ -215,12 +239,14 @@ def test_controller_writes_minimal_records_and_validation(tmp_path):
         {"p": 31, "q": 61},
     ]
     assert len(diagnostics) == len(records)
+    assert all("certificate" not in row for row in diagnostics)
+    assert all("attempt_count" in row for row in diagnostics)
     assert pgs_summary["emitted"] == len(records)
     assert pgs_summary["unresolved"] == 0
-    assert validation_summary["validated_record_count"] == len(records)
-    assert validation_summary["classical_disagreement_count"] == 0
+    assert not (out / "validation_rows.csv").exists()
+    assert not (out / "validation_summary.json").exists()
     assert summary == json.loads((out / "summary.json").read_text(encoding="utf-8"))
-    assert summary["controller_order"] == "pgs_generator_then_classical_validation"
+    assert summary["controller_order"] == "pgs_generator_only"
 
 
 def test_controller_default_chain_writes_ten_exponents(tmp_path):
@@ -252,8 +278,8 @@ def test_controller_default_chain_writes_ten_exponents(tmp_path):
     assert records[-1] == {"p": 61, "q": 89}
     assert summary["pgs_generator"]["chain_exponent_count"] == 10
     assert summary["pgs_generator"]["chain_exponents"] == exponents
-    assert summary["classical_validation"]["validated_record_count"] == 9
-    assert summary["classical_validation"]["classical_disagreement_count"] == 0
+    assert summary["controller_order"] == "pgs_generator_only"
+    assert "classical_validation" not in summary
 
 
 def test_controller_cli_streams_chain_exponents(tmp_path, capsys):

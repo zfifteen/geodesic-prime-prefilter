@@ -15,9 +15,8 @@ Modes:
     Run bounded and unbounded in lockstep and record any divergence.
 
 The walk advances by reading the next-gap profile and moving directly to the
-prime boundary. When the 12-offset prefix locks at delta <= 3, the bounded
-path recovers that boundary from the witness map instead of continuing the
-extended divisor scan.
+prime boundary. The bounded path computes one chamber-local interval pre-sieve
+through floor(cuberoot(q + C(q))), then scans the same offsets in order.
 """
 
 from __future__ import annotations
@@ -28,11 +27,10 @@ import json
 import math
 import sys
 import time
-from functools import lru_cache
 from pathlib import Path
 
 import gmpy2
-from sympy import nextprime, prime
+from sympy import prime
 
 ROOT = Path(__file__).resolve().parents[3]
 SOURCE_DIR = ROOT / "src" / "python"
@@ -98,86 +96,6 @@ def dynamic_cutoff(q: int) -> int:
     return max(64, math.ceil(0.5 * math.log(q) ** 2))
 
 
-def _scan_prefix_state(current_right_prime: int) -> tuple[int, int, int | None]:
-    """Return the 12-offset lex-min state and any in-prefix prime boundary."""
-    rp = current_right_prime
-    best_d: int | None = None
-    best_offset: int | None = None
-
-    prefix_counts = divisor_counts_segment(rp + 1, rp + PREFIX_LEN + 1)
-    for index, raw_d in enumerate(prefix_counts):
-        d = int(raw_d)
-        offset = index + 1
-        if d == 2:
-            if best_d is None or best_offset is None:
-                raise ValueError(f"empty next gap from prime {rp}")
-            return best_d, best_offset, offset
-        if best_d is None or d < best_d or (d == best_d and offset < best_offset):
-            best_d = d
-            best_offset = offset
-
-    if best_d is None or best_offset is None:
-        raise ValueError(f"empty next gap from prime {rp}")
-
-    return best_d, best_offset, None
-
-
-def _bounded_tail_from_offset_has_no_square(
-    current_right_prime: int,
-    cutoff: int,
-    start_offset: int,
-) -> bool:
-    """Return whether the bounded tail [q+start_offset, q+cutoff] contains no square."""
-    lo = current_right_prime + start_offset
-    hi = current_right_prime + cutoff
-    if hi < lo:
-        return True
-
-    s_lo = math.isqrt(lo - 1) + 1
-    s_hi = math.isqrt(hi)
-    return s_hi < s_lo
-
-
-def _bounded_tail_has_no_square(current_right_prime: int, cutoff: int) -> bool:
-    """Return whether the bounded tail [q+13, q+cutoff] contains no square."""
-    return _bounded_tail_from_offset_has_no_square(
-        current_right_prime,
-        cutoff,
-        PREFIX_LEN + 1,
-    )
-
-
-def _scan_bounded_prefix_state(
-    current_right_prime: int,
-    cutoff: int,
-) -> tuple[int, int, int | None, int]:
-    """Return the bounded prefix state with adaptive d=4 square-empty termination."""
-    rp = current_right_prime
-    best_d: int | None = None
-    best_offset: int | None = None
-
-    for offset in range(1, PREFIX_LEN + 1):
-        d = int(divisor_counts_segment(rp + offset, rp + offset + 1)[0])
-        if d == 2:
-            if best_d is None or best_offset is None:
-                raise ValueError(f"empty next gap from prime {rp}")
-            return best_d, best_offset, offset, offset
-        if best_d is None or d < best_d or (d == best_d and offset < best_offset):
-            best_d = d
-            best_offset = offset
-        if best_d == 4 and _bounded_tail_from_offset_has_no_square(
-            rp,
-            cutoff,
-            offset + 1,
-        ):
-            return best_d, best_offset, None, offset
-
-    if best_d is None or best_offset is None:
-        raise ValueError(f"empty next gap from prime {rp}")
-
-    return best_d, best_offset, None, PREFIX_LEN
-
-
 def _ensure_trial_primes(limit: int) -> None:
     """Extend the cached trial-prime list through one inclusive limit."""
     if limit <= _TRIAL_PRIMES[-1]:
@@ -198,85 +116,111 @@ def _ensure_trial_primes(limit: int) -> None:
         candidate += 2
 
 
-@lru_cache(maxsize=131072)
-def _divisor_count_capped(n: int, stop_at: int) -> int:
-    """Return d(n) when d(n) <= stop_at, else return stop_at + 1."""
-    if n < 1:
-        raise ValueError("n must be at least 1")
-    if stop_at < 2:
-        raise ValueError("stop_at must be at least 2")
+def _presieve_interval(
+    current_right_prime: int,
+    cutoff: int,
+) -> tuple[list[int], list[int]]:
+    """Return partial tau products and residuals for one chamber interval."""
+    if cutoff < 1:
+        raise ValueError("cutoff must be positive")
 
-    residual = int(n)
-    divisor_count = 1
-    cube_root_limit = int(gmpy2.iroot(residual, 3)[0])
+    lo = current_right_prime + 1
+    hi = current_right_prime + cutoff
+    partial_counts = [1] * cutoff
+    residuals = list(range(lo, hi + 1))
+    cube_root_limit = int(gmpy2.iroot(hi, 3)[0])
     _ensure_trial_primes(cube_root_limit)
 
     for prime_value in _TRIAL_PRIMES:
         if prime_value > cube_root_limit:
             break
-        if residual % prime_value != 0:
-            continue
+        first = ((lo + prime_value - 1) // prime_value) * prime_value
+        for value in range(first, hi + 1, prime_value):
+            index = value - lo
+            exponent_factor = 1
+            while residuals[index] % prime_value == 0:
+                residuals[index] //= prime_value
+                exponent_factor += 1
+            partial_counts[index] *= exponent_factor
 
-        exponent = 1
-        while residual % prime_value == 0:
-            residual //= prime_value
-            exponent += 1
+    return partial_counts, residuals
 
-        divisor_count *= exponent
-        if divisor_count > stop_at:
-            return stop_at + 1
 
+def _finish_tau_from_presieved_residual(partial_count: int, residual: int) -> int:
+    """Return exact tau from the chamber partial count and remaining cofactor."""
+    divisor_count = partial_count
     if residual == 1:
         return divisor_count
 
     residual_mpz = gmpy2.mpz(residual)
     if gmpy2.is_prime(residual_mpz):
-        divisor_count *= 2
-    elif gmpy2.is_square(residual_mpz):
+        return divisor_count * 2
+
+    if gmpy2.is_square(residual_mpz):
         root = gmpy2.isqrt(residual_mpz)
         if gmpy2.is_prime(root):
-            divisor_count *= 3
-        else:
-            divisor_count *= 4
-    else:
-        divisor_count *= 4
+            return divisor_count * 3
 
-    if divisor_count > stop_at:
-        return stop_at + 1
-    return divisor_count
+    return divisor_count * 4
+
+
+def _presieved_capped_scan_state(q: int, cutoff: int) -> tuple[int, int, int | None]:
+    """Return the cutoff chamber lex-min state and optional boundary offset."""
+    partial_counts, residuals = _presieve_interval(q, cutoff)
+    best_d: int | None = None
+    best_offset: int | None = None
+
+    for index, partial_count in enumerate(partial_counts):
+        offset = index + 1
+        needs_endpoint_check = partial_count == 1
+        can_improve = best_d is None or partial_count < best_d
+        if not needs_endpoint_check and not can_improve:
+            continue
+
+        d = _finish_tau_from_presieved_residual(partial_count, residuals[index])
+        if d == 2:
+            if best_d is None or best_offset is None:
+                raise ValueError(f"empty next gap from prime {q}")
+            return best_d, best_offset, offset
+        if best_d is None or d < best_d:
+            best_d = d
+            best_offset = offset
+
+    if best_d is None or best_offset is None:
+        raise ValueError(f"empty next gap from prime {q}")
+    return best_d, best_offset, None
+
+
+def presieved_capped_gap_scan(q: int, cutoff: int) -> tuple[int, int, int]:
+    """Return the exact GWR tuple from one presieved cutoff chamber."""
+    best_d, best_offset, boundary_offset = _presieved_capped_scan_state(q, cutoff)
+    if boundary_offset is not None:
+        return best_d, best_offset, boundary_offset
+
+    raise RuntimeError(
+        f"bounded cutoff missed the next prime boundary for {q} by cutoff {cutoff}"
+    )
 
 
 def _exact_next_gap_profile_clipped(current_right_prime: int) -> dict[str, int]:
     """Return the exact next-gap profile with clipped tail classification."""
     rp = current_right_prime
-    best_d, best_offset, prefix_prime_offset = _scan_prefix_state(rp)
-
-    if prefix_prime_offset is not None:
-        return {
-            "current_right_prime": rp,
-            "next_prime": rp + prefix_prime_offset,
-            "gap_boundary_offset": prefix_prime_offset,
-            "gap_width": prefix_prime_offset,
-            "next_dmin": best_d,
-            "next_peak_offset": best_offset,
-        }
-
-    offset = PREFIX_LEN + 1
+    cutoff = max(dynamic_cutoff(rp), PREFIX_LEN)
     while True:
-        d = _divisor_count_capped(rp + offset, best_d - 1)
-        if d == 2:
+        try:
+            best_d, best_offset, boundary_offset = presieved_capped_gap_scan(rp, cutoff)
             return {
                 "current_right_prime": rp,
-                "next_prime": rp + offset,
-                "gap_boundary_offset": offset,
-                "gap_width": offset,
+                "next_prime": rp + boundary_offset,
+                "gap_boundary_offset": boundary_offset,
+                "gap_width": boundary_offset,
                 "next_dmin": best_d,
                 "next_peak_offset": best_offset,
             }
-        if d < best_d:
-            best_d = d
-            best_offset = offset
-        offset += 1
+        except RuntimeError as exc:
+            if "bounded cutoff missed the next prime boundary" not in str(exc):
+                raise
+            cutoff *= 2
 
 
 def exact_next_gap_profile(
@@ -324,59 +268,14 @@ def bounded_next_gap_profile(current_right_prime: int) -> dict[str, int]:
     """Return the bounded next-gap profile when the prime boundary lies by cutoff."""
     rp = current_right_prime
     cutoff = dynamic_cutoff(rp)
-    best_d, best_offset, prefix_prime_offset, scanned_offset = (
-        _scan_bounded_prefix_state(rp, cutoff)
-    )
-
-    if prefix_prime_offset is not None:
-        return {
-            "current_right_prime": rp,
-            "next_prime": rp + prefix_prime_offset,
-            "gap_boundary_offset": prefix_prime_offset,
-            "next_dmin": best_d,
-            "next_peak_offset": best_offset,
-        }
-
-    if best_d <= 3 or scanned_offset < PREFIX_LEN or (
-        best_d == 4 and _bounded_tail_has_no_square(rp, cutoff)
-    ):
-        next_prime_value = int(nextprime(rp + best_offset - 1))
-        gap_boundary_offset = next_prime_value - rp
-        if gap_boundary_offset > cutoff:
-            raise RuntimeError(
-                f"bounded cutoff missed the next prime boundary for {rp} by cutoff {cutoff}"
-            )
-        return {
-            "current_right_prime": rp,
-            "next_prime": next_prime_value,
-            "gap_boundary_offset": gap_boundary_offset,
-            "next_dmin": best_d,
-            "next_peak_offset": best_offset,
-        }
-
-    ext_lo = rp + PREFIX_LEN + 1
-    ext_hi = rp + cutoff + 1
-    extended_counts = divisor_counts_segment(ext_lo, ext_hi)
-    for index, raw_d in enumerate(extended_counts):
-        d = int(raw_d)
-        offset = PREFIX_LEN + 1 + index
-        if d == 2:
-            if best_d is None or best_offset is None:
-                raise ValueError(f"empty next gap from prime {rp}")
-            return {
-                "current_right_prime": rp,
-                "next_prime": rp + offset,
-                "gap_boundary_offset": offset,
-                "next_dmin": best_d,
-                "next_peak_offset": best_offset,
-            }
-        if d < best_d or (d == best_d and offset < best_offset):
-            best_d = d
-            best_offset = offset
-
-    raise RuntimeError(
-        f"bounded cutoff missed the next prime boundary for {rp} by cutoff {cutoff}"
-    )
+    best_d, best_offset, boundary_offset = presieved_capped_gap_scan(rp, cutoff)
+    return {
+        "current_right_prime": rp,
+        "next_prime": rp + boundary_offset,
+        "gap_boundary_offset": boundary_offset,
+        "next_dmin": best_d,
+        "next_peak_offset": best_offset,
+    }
 
 
 def next_gap_profile(current_right_prime: int, mode: str) -> dict[str, int]:
@@ -403,29 +302,10 @@ def predict_next_gap_unbounded(current_right_prime: int) -> tuple[int, int]:
 
 def predict_next_gap_bounded(current_right_prime: int) -> tuple[int, int]:
     """Return the bounded next-gap lex-min over offsets up to the cutoff."""
-    rp = current_right_prime
-    cutoff = dynamic_cutoff(rp)
-    best_d, best_offset, prefix_prime_offset, scanned_offset = (
-        _scan_bounded_prefix_state(rp, cutoff)
+    best_d, best_offset, _ = _presieved_capped_scan_state(
+        current_right_prime,
+        dynamic_cutoff(current_right_prime),
     )
-    if prefix_prime_offset is not None or best_d <= 3:
-        return best_d, best_offset
-
-    if scanned_offset < PREFIX_LEN or (
-        best_d == 4 and _bounded_tail_has_no_square(rp, cutoff)
-    ):
-        return best_d, best_offset
-
-    counts = divisor_counts_segment(rp + PREFIX_LEN + 1, rp + cutoff + 1)
-    for index, raw_d in enumerate(counts):
-        d = int(raw_d)
-        offset = PREFIX_LEN + 1 + index
-        if d == 2:
-            break
-        if d < best_d or (d == best_d and offset < best_offset):
-            best_d = d
-            best_offset = offset
-
     return best_d, best_offset
 
 

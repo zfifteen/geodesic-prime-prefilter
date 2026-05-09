@@ -44,13 +44,55 @@ def iter_admissible_left_offsets(exponent: int, candidate_bound: int):
     if candidate_bound < 1:
         raise ValueError("candidate_bound must be positive")
     power_residue_mod30 = pow(2, exponent, 30)
-    small_power = 2**exponent if exponent <= 3 else None
-    for offset in range(1, candidate_bound + 1):
-        if (
-            small_power is not None
-            and small_power - offset in LOW_PRIMES
-        ) or (power_residue_mod30 - offset) % 30 in WHEEL_OPEN_RESIDUES_MOD30:
+    open_offset_residues = tuple(
+        offset_residue
+        for offset_residue in range(1, 31)
+        if (power_residue_mod30 - offset_residue) % 30 in WHEEL_OPEN_RESIDUES_MOD30
+    )
+    small_prime_offsets = (
+        sorted(
+            {
+                2**exponent - prime
+                for prime in LOW_PRIMES
+                if 1 <= 2**exponent - prime <= candidate_bound
+            }
+        )
+        if exponent <= 3
+        else []
+    )
+
+    small_index = 0
+    for block_start in range(0, candidate_bound, 30):
+        block_end = min(candidate_bound, block_start + 30)
+        block_small_offsets = []
+        while (
+            small_index < len(small_prime_offsets)
+            and small_prime_offsets[small_index] <= block_end
+        ):
+            block_small_offsets.append(small_prime_offsets[small_index])
+            small_index += 1
+
+        block_small_index = 0
+        for offset_residue in open_offset_residues:
+            offset = block_start + offset_residue
+            if offset > candidate_bound:
+                break
+            while (
+                block_small_index < len(block_small_offsets)
+                and block_small_offsets[block_small_index] < offset
+            ):
+                yield block_small_offsets[block_small_index]
+                block_small_index += 1
+            if (
+                block_small_index < len(block_small_offsets)
+                and block_small_offsets[block_small_index] == offset
+            ):
+                block_small_index += 1
             yield offset
+
+        while block_small_index < len(block_small_offsets):
+            yield block_small_offsets[block_small_index]
+            block_small_index += 1
 
 
 def admissible_left_offsets(exponent: int, candidate_bound: int) -> list[int]:
@@ -71,33 +113,23 @@ def left_boundary_state_certificate(
         raise ValueError("candidate_bound must be positive")
 
     power_of_two = 2**exponent
-    candidate_states: list[dict[str, object]] = []
-    rejected_offsets: list[int] = []
-    unresolved_offsets: list[int] = []
+    scanned_count = 0
+    rejected_count = 0
     carrier_offset: int | None = None
     carrier_d: int | None = None
 
     for offset in iter_admissible_left_offsets(exponent, candidate_bound):
+        scanned_count += 1
         n = power_of_two - offset
         divisor_count_n = tau(n)
         if divisor_count_n > 2:
             status = STATUS_BOUNDARY_REJECTED
-            rejected_offsets.append(offset)
+            rejected_count += 1
             if carrier_d is None or divisor_count_n < carrier_d:
                 carrier_offset = offset
                 carrier_d = divisor_count_n
         else:
             status = STATUS_BOUNDARY_RESOLVED_SURVIVOR
-        state = {
-            "offset": offset,
-            "candidate_bit_length": n.bit_length(),
-            "divisor_count": divisor_count_n,
-            "divisor_state": divisor_state_label(divisor_count_n),
-            "status": status,
-            "carrier_offset": carrier_offset,
-            "carrier_d": carrier_d,
-        }
-        candidate_states.append(state)
         if status == STATUS_BOUNDARY_RESOLVED_SURVIVOR:
             return {
                 "rule_id": PGSMPG_LEFT_BOUNDARY_RULE_ID,
@@ -108,12 +140,11 @@ def left_boundary_state_certificate(
                 "left_boundary_offset_from_power_of_two": offset,
                 "left_boundary_bit_length": n.bit_length(),
                 "distance_to_left_boundary": offset,
-                "candidate_states": candidate_states,
-                "closed_offsets_before_boundary": rejected_offsets,
-                "unresolved_offsets_before_boundary": unresolved_offsets,
-                "active_count": len(candidate_states) - len(rejected_offsets),
+                "candidate_state_count": scanned_count,
+                "closed_offset_count_before_boundary": rejected_count,
+                "active_count": scanned_count - rejected_count,
                 "resolved_count": 1,
-                "unresolved_count": len(unresolved_offsets),
+                "unresolved_count": 0,
                 "carrier_offset_from_power_of_two": carrier_offset,
                 "carrier_d": carrier_d,
                 "lock_carrier_offset": carrier_offset,
@@ -182,19 +213,23 @@ def pgs_mersenne_prime_certificate(
     if max_exponent <= p:
         raise ValueError("max_exponent must be larger than p")
 
-    attempts: list[dict[str, object]] = []
+    attempt_count = 0
     for exponent in range(p + 1, max_exponent + 1):
-        attempt = exponent_attempt_row(exponent, candidate_bound)
-        attempts.append(attempt)
-        if bool(attempt["mersenne_location_inferred"]):
+        attempt_count += 1
+        if tau(exponent) != 2:
+            continue
+        certificate = left_boundary_state_certificate(exponent, candidate_bound)
+        if certificate is None:
+            continue
+        if int(certificate["distance_to_left_boundary"]) == 1:
             return {
                 "rule_id": PGSMPG_RULE_ID,
                 "p": p,
                 "q": exponent,
                 "max_exponent": max_exponent,
                 "candidate_bound": candidate_bound,
-                "attempt_count": len(attempts),
-                "attempts": attempts,
+                "attempt_count": attempt_count,
+                "boundary_certificate": certificate,
                 "used_forbidden_tool": False,
             }
     return None
