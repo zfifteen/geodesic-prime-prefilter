@@ -285,6 +285,23 @@ ordering, but it does not yet isolate the prime-square boundary as the carrier
 of that ordering. Grok independently reproduced the pairwise totals and agreed
 with the updated `unresolved` verdict after the control-margin rule was added.
 
+Residue-matched follow-up:
+
+```text
+benchmarks/python/predictor/state_budget_residue_matched_pair_test.py
+output/state_budget_residue_matched_pair_summary.json
+output/state_budget_residue_matched_pair_per_power.csv
+```
+
+Adding `p_n mod 30` to the matched-cell key leaves `230` decisive pairs. The
+square ruler scores signed advantage `+40`; tail length scores `+33`. This is
+positive after residue matching, but the square-over-tail margin is only `+7`,
+below `min_control_margin = 15`, so the verdict remains `unresolved`.
+
+Adding exact previous gap width to the `mod 30` match leaves only `35` decisive
+pairs, so the stricter residual test is support-limited on the current retained
+surface.
+
 ## Current Collatz Branch State
 
 As of 2026-05-03, the Collatz work is integrated on `main` under:

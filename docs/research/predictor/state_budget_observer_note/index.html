@@ -395,6 +395,40 @@
     </section>
 
     <section class="panel">
+      <h2>What Happens After Residue Matching</h2>
+      <p>
+        A parallel outside check showed that much ordinary gap-to-gap memory is explained
+        by modular residue. So we added a stricter question: after matching the current
+        prime's residue modulo <code>30</code>, does the square ruler still beat plain tail
+        length?
+      </p>
+      <div class="metric-row">
+        <div class="metric">
+          <strong>230</strong>
+          <span>residue-matched target versus non-target pairs</span>
+        </div>
+        <div class="metric">
+          <strong>+40</strong>
+          <span>signed square-ruler advantage after <code>mod 30</code> matching</span>
+        </div>
+        <div class="metric">
+          <strong>+33</strong>
+          <span>signed tail-length advantage after <code>mod 30</code> matching</span>
+        </div>
+        <div class="metric">
+          <strong>+7</strong>
+          <span>square-ruler edge over tail length</span>
+        </div>
+      </div>
+      <p>
+        The square ruler still points in the right direction after residue matching, but
+        the edge is not large enough to promote the mechanism. When we also match the
+        previous gap width exactly, only <code>35</code> pairs remain, so that stricter
+        residual test is support-limited.
+      </p>
+    </section>
+
+    <section class="panel">
       <h2>Why It Matters</h2>
       <p>
         If the memory interpretation survives stronger tests, then prime gaps are not
@@ -407,8 +441,8 @@
       </p>
       <p>
         The current evidence does not prove that larger claim. It gives a precise next
-        target: build a larger balanced surface and require the square ruler to beat
-        plain tail length by a meaningful margin.
+        target: build a larger residue-matched surface and require the square ruler to
+        beat plain tail length by a meaningful margin.
       </p>
     </section>
 
@@ -426,8 +460,8 @@
         </div>
         <div class="plain-item">
           <strong>Next Test</strong>
-          Run the same matched-pair test on a larger balanced surface and require the
-          square ruler to beat tail length by a fixed signed-win margin.
+          Run the same matched-pair test on a larger residue-matched surface and require
+          the square ruler to beat tail length by a fixed signed-win margin.
         </div>
       </div>
     </section>
