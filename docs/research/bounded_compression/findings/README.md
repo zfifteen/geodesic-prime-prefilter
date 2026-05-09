@@ -57,6 +57,12 @@ Record-law artifact:
 square_envelope_record_table_to_5e8.md
 ```
 
+Active record anatomy:
+
+```text
+square_record_anatomy_424171123.md
+```
+
 ## Lemma A Falsification
 
 | Surface | Gaps tested before failure | First failure | Missing obstruction |
