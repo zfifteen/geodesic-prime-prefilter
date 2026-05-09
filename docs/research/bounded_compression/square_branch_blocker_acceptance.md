@@ -143,6 +143,32 @@ trials, with a lower-order margin. This explains why finite utilization below
 `1` is meaningful pressure but not a theorem. The argument is heuristic and
 does not close the square branch.
 
+## Residue-Only Boundary
+
+For any fixed finite offset set, one can try to choose congruence classes for
+`r` so that each integer `r^2 - a` in that fixed set is forced composite.
+Such a construction can show that a fixed collection of offsets is not enough
+to prove the square branch.
+
+That does not produce the required moving-scale obstruction. The theorem
+requires control of all offsets up to
+
+```text
+0.5 * log(r^2)^2,
+```
+
+and this window grows with the prime root `r`. A fixed residue cover does not
+scale with the eventual size of `r`; after `r` is chosen large enough, the
+dynamic cutoff exceeds the covered finite window.
+
+Thus residue-only local exclusions are insufficient in both directions:
+
+- they do not prove the square-branch bound;
+- they do not refute it at the logarithmic-square scale.
+
+The missing theorem must control the moving backward prime distance before
+prime squares, not only finitely many prescribed offsets.
+
 ## Acceptance Criteria For A Real Proof
 
 A valid proof of the square branch must provide one of the following:
