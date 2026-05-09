@@ -167,6 +167,40 @@ The optimization changes only the exact divisor-field computation path. It must
 not skip offsets, add fallback search, change generator output records, or
 reframe GWR inference.
 
+## Current Bounded Compression Branch State
+
+As of 2026-05-09, the next main research branch is bounded GWR/DNI
+compression:
+
+```text
+docs/research/bounded_compression/dynamic_cutoff_conjecture/index.html
+```
+
+Strongest supported frame:
+
+```text
+The unbounded DNI/GWR transition is exact by construction. The unresolved
+theorem target is whether every selected interior witness occurs before
+C(q) = max(64, ceil(0.5 * log(q)^2)).
+```
+
+The branch spine is:
+
+```text
+square exclusion -> first-d=4 arrival -> dynamic cutoff extremal law ->
+bounded recursive prime walk
+```
+
+Preserve the state separation:
+
+- proved: divisor-count next-prime theorem and GWR selected-integer theorem in
+  `PROOF.md`;
+- measured: no bounded-vs-unbounded counterexample through `q <= 10^7`;
+- measured: no square dynamic-cutoff counterexample through odd prime squares
+  with `p <= 10^8`;
+- invalidated: fixed cutoff map `{2:44, 4:60, 6:60}`;
+- unresolved: universality of the dynamic cutoff coefficient `0.5`.
+
 ## Current Collatz Branch State
 
 As of 2026-05-03, the Collatz work is integrated on `main` under:
