@@ -159,3 +159,29 @@ on the selected-square branch, with selected-square condition
 ```text
 s^2 < P(r^2) < r^2.
 ```
+
+## Completion Audit
+
+Objective:
+
+```text
+Extract the first-d=4 window lemma at K=128 as a formal theorem.
+Prove the finite base q < exp(16): selected-witness offset <= 64.
+Prove the square-branch selected-prime-square offset bound <= C(q).
+```
+
+Checklist:
+
+| Requirement | Evidence | Status |
+|---|---|---|
+| first-d4 window lemma at `K = 128` | `PROOF.md`, section `Residual K=128 First-d4 Branch-Elimination Lemma` | complete only in the supported residual branch-elimination scope |
+| finite base `q < exp(16)` selected witness offset `<= 64` | `PROOF.md`, section `Finite Bounded-Compression Base`, maximum offset `60` across `542,081` nonempty interiors | complete |
+| square-branch selected-prime-square offset `<= C(q)` | `PROOF.md`, section `Square-Branch Reduction`, and this handoff | incomplete |
+
+The goal must remain active because the square-branch universal inequality is
+not proved. The current artifacts prove the square-branch characterization and
+record finite evidence, but they do not prove
+
+```text
+r^2 - p <= C(q).
+```
