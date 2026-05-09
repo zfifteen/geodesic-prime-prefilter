@@ -9,6 +9,22 @@ For every right prime q, the exact unbounded GWR/DNI selected witness occurs
 before C(q) = max(64, ceil(0.5 * log(q)^2)).
 ```
 
+## Concrete Goal
+
+Prove or falsify the Dynamic Cutoff Conjecture for bounded GWR/DNI prime walks.
+
+The bounded-compression branch succeeds if it proves the cutoff law, or fails
+usefully by producing the first explicit counterexample and its obstruction
+type.
+
+Mission statement:
+
+```text
+Show that exact next-prime recovery by GWR/DNI does not require scanning the
+whole gap interior. It only requires a dynamic logarithmic-square window,
+unless a square obstruction breaks the law.
+```
+
 ## Reduction
 
 It is enough to control the earliest obstruction before the first `d=4`
