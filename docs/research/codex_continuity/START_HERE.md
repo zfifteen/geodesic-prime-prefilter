@@ -169,8 +169,15 @@ reframe GWR inference.
 
 ## Current Bounded Compression Branch State
 
-As of 2026-05-09, the next main research branch is bounded GWR/DNI
-compression:
+As of 2026-05-09, the active bounded-compression handoff is:
+
+```text
+docs/research/bounded_compression/session_handoff_2026-05-09.md
+```
+
+Read it before continuing this theorem route.
+
+The bounded GWR/DNI compression branch started from:
 
 ```text
 docs/research/bounded_compression/dynamic_cutoff_conjecture/index.html
@@ -206,11 +213,20 @@ Preserve the state separation:
 
 - proved: divisor-count next-prime theorem and GWR selected-integer theorem in
   `PROOF.md`;
+- proved: finite bounded-compression base below `exp(16)`, with max selected
+  witness offset `60`;
+- proved: residual `K = 128` first-d4 branch-elimination theorem for retained
+  odd adjacent residual classes;
+- proved: square-branch characterization
+  `s^2 < P(r^2) < r^2`;
 - measured: no bounded-vs-unbounded counterexample through `q <= 10^7`;
-- measured: no square dynamic-cutoff counterexample through odd prime squares
-  with `p <= 10^8`;
+- measured: no square dynamic-cutoff counterexample through odd prime-square
+  roots `r <= 100,000,000`;
+- measured: no square dynamic-cutoff counterexample through odd prime-square
+  roots `100,000,001 <= r <= 200,000,000`;
 - invalidated: fixed cutoff map `{2:44, 4:60, 6:60}`;
-- unresolved: universality of the dynamic cutoff coefficient `0.5`.
+- unresolved: the square-branch prime-square proximity theorem
+  `r^2 - p <= C(q)`.
 
 ## Current Collatz Branch State
 
