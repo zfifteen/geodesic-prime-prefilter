@@ -33,8 +33,8 @@ carrier.
 The proof route separates the next gap into two branches:
 
 ```text
-square obstruction appears before the first d=4 carrier
-no square obstruction appears before the first d=4 carrier
+an interior square obstruction appears in the gap
+no interior square obstruction appears in the gap
 ```
 
 The square branch carries the extremal pressure. The non-square branch should
@@ -42,11 +42,25 @@ close by the first-`d=4` arrival rule.
 
 ## Lemma A: d=4 Fallback
 
-Target:
+Invalidated literal target:
 
 ```text
 If no square undercutter appears before the first d=4 carrier, then the first
 d=4 carrier is the GWR/DNI selected witness.
+```
+
+Status:
+
+```text
+False. The first failure is q = 113: first d=4 carrier 115, exact witness
+121 = 11^2.
+```
+
+Viable target:
+
+```text
+If no interior prime square appears in the gap, then the first d=4 carrier is
+the GWR/DNI selected witness.
 ```
 
 Role:
