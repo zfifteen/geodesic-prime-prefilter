@@ -375,6 +375,7 @@ Long-running `8192` breakthrough:
 
 ```text
 docs/research/predictor/d4_count_observer_note/index.html
+docs/research/predictor/d4_count_project_implications/index.html
 docs/research/predictor/state_budget_long_running_research_goal/index.html
 output/state_budget_long_running_catalog_8192/state_budget_long_running_research_report.md
 output/state_budget_long_running_catalog_8192/state_budget_divisor_carrier_sweep_summary.json
