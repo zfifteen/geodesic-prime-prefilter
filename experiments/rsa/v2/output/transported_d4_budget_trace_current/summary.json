@@ -1,0 +1,17 @@
+{
+  "budget_row_count": 512,
+  "max_trace_steps": 1,
+  "missing_next_count": 0,
+  "non_depth0_recursive_survivor_count": 1,
+  "non_depth0_survivor_child_terminal_partition": {
+    "stale": 1
+  },
+  "recursive_budget_row_count": 713,
+  "rule_id": "transported_d4_budget_trace_v1",
+  "still_unresolved_count": 0,
+  "strict_candidate_count": 50,
+  "terminal_partition": {
+    "recursive_cycle": 44,
+    "typed": 6
+  }
+}

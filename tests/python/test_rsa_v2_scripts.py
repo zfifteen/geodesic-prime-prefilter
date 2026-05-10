@@ -16,6 +16,8 @@ SCRIPT_NAMES = (
     "run_experiment.py",
     "audit_experiment.py",
     "transported_exclusion_debt_probe.py",
+    "transported_d4_budget_probe.py",
+    "transported_d4_budget_trace.py",
     "modulus_gap_grammar_probe.py",
     "rsa_challenge_exact_grammar_probe.py",
     "grammar_compatibility_catalog.py",
