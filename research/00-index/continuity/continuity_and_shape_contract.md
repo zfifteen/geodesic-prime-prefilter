@@ -95,9 +95,9 @@ For this repository, a future session should first read:
 - `AGENTS.md`;
 - `PROOF.md`;
 - `research/08-collatz/PROOF.md`;
-- `experiments/rsa/v2/README.md`;
-- `experiments/rsa/v2/ALGORITHM.md`;
-- `experiments/rsa/v2/PGS_CERTIFICATE.md`;
+- `research/06-cryptology-rsa/experiments/rsa/v2/README.md`;
+- `research/06-cryptology-rsa/experiments/rsa/v2/ALGORITHM.md`;
+- `research/06-cryptology-rsa/experiments/rsa/v2/PGS_CERTIFICATE.md`;
 - this file.
 
 Then run the narrow relevant tests before claiming progress.

@@ -1,0 +1,38 @@
+{
+  "expected_public_state": {
+    "ledger_effective_survivor_count": 202,
+    "non_strict_live_after_trace": 2,
+    "normalized_live_frontier_count": 2,
+    "strict_d4_collapse_count": 50,
+    "strict_d4_frontier_count": 50,
+    "strict_d4_live_after_trace": 0
+  },
+  "forbidden_mechanism_manifest": [
+    "hidden factor labels",
+    "audit factor labels",
+    "divisibility gates",
+    "gcd gates",
+    "product closure",
+    "factor APIs",
+    "primality APIs",
+    "fixed-radius chambers",
+    "endpoint-budget resolver rules",
+    "per-rung special cases",
+    "randomness",
+    "fallback paths"
+  ],
+  "frozen_public_state": {
+    "ledger_effective_survivor_count": 202,
+    "non_strict_live_after_trace": 2,
+    "normalized_live_frontier_count": 2,
+    "strict_d4_collapse_count": 50,
+    "strict_d4_frontier_count": 50,
+    "strict_d4_live_after_trace": 0
+  },
+  "public_state_matches_expected": true,
+  "rule_id": "normalized_frontier_holdout_closure_v1",
+  "source_artifacts": {
+    "frontier_rows": "/Users/velocityworks/.codex/worktrees/7195/prime-gap-structure/research/06-cryptology-rsa/experiments/rsa/v2/output/toy_normalized_frontier_closure_sweep_current/frontier_rows.jsonl",
+    "sweep_rows": "/Users/velocityworks/.codex/worktrees/7195/prime-gap-structure/research/06-cryptology-rsa/experiments/rsa/v2/output/toy_normalized_frontier_closure_sweep_current/sweep_rows.jsonl"
+  }
+}
