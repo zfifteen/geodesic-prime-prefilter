@@ -39,6 +39,7 @@ following:
 | Exclude pure residue-cover contradiction as sufficient | `square_tail_rough_cover_model_blocker.md` | complete |
 | Exclude root-primality and selected-square constraints alone | `square_tail_rough_cover_model_blocker.md` | complete |
 | Classify the dynamic tail after the source CRT cover | `square_tail_dynamic_tail_audit_509.md` | complete |
+| Project dynamic-tail rough composites to child squares | `square_tail_dynamic_tail_descent_audit_509.md` | complete |
 | Prove a prime-valued M-rough defect must occur before the cutoff | No proof artifact exists. | missing |
 | Produce a counterexample | No counterexample artifact exists. | missing |
 
@@ -158,6 +159,7 @@ The following are useful evidence but do not complete the goal:
 - local CRT rough-cover consistency models;
 - prime representatives of local CRT classes that close after the modeled window;
 - dynamic-tail classifications that restate the remaining rough-prime target;
+- dynamic-tail descent audits without a parent-to-child transport law;
 - Grok agreement with the equivalence.
 
 ## Next Valid Work
