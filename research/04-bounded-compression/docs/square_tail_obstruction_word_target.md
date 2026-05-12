@@ -188,6 +188,21 @@ The audit is recorded in:
 research/04-bounded-compression/docs/findings/square_tail_recursive_projection_audit_424171123.md
 ```
 
+The transitive projection graph for the same record has `208` nodes, `900`
+edges, maximum depth `6`, and no observed open descendant. Every edge strictly
+decreases the root, and every observed node is closed by its own dynamic cutoff
+and satisfies the selected-square condition.
+
+That graph is measured cascade anatomy, not a proof. The missing theorem is
+the edge semantics from complete parent obstruction to eliminated parent
+counterexample.
+
+The graph audit is recorded in:
+
+```text
+research/04-bounded-compression/docs/findings/square_tail_projection_graph_424171123.md
+```
+
 ## Next Lemma Targets
 
 The next theorem work should target one of these exact statements.
