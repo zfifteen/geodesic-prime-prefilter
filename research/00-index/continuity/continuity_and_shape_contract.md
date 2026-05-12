@@ -5,7 +5,7 @@ This note preserves collaboration state for future sessions in this repository.
 The canonical bootstrap file is:
 
 ```text
-docs/research/codex_continuity/START_HERE.md
+research/00-index/continuity/START_HERE.md
 ```
 
 Read that file first when chat context is incomplete.
@@ -91,7 +91,7 @@ unresolved.
 
 For this repository, a future session should first read:
 
-- `docs/research/codex_continuity/START_HERE.md`;
+- `research/00-index/continuity/START_HERE.md`;
 - `AGENTS.md`;
 - `PROOF.md`;
 - `research/08-collatz/PROOF.md`;

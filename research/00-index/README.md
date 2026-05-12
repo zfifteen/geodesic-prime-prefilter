@@ -8,7 +8,7 @@ Root-level authority files remain at the repository root:
 - `PROOF.md`: single live proof reference.
 - `RESULTS.md`: repo-wide measured and audit surfaces.
 - `PRIME_GAP_GENERATOR.md`: public generator contract.
-- `docs/research/codex_continuity/START_HERE.md`: continuity router.
+- `research/00-index/continuity/START_HERE.md`: continuity router.
 
 ## Chapter Map
 

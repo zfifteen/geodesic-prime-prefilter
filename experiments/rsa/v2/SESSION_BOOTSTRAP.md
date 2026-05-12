@@ -1183,7 +1183,7 @@ Read these before changing the algorithm:
 The repository-level continuity bootstrap is:
 
 ```text
-docs/research/codex_continuity/START_HERE.md
+research/00-index/continuity/START_HERE.md
 ```
 
 ## Grok Requirement For Rule Changes
