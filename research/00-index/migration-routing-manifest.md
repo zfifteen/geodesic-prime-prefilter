@@ -30,7 +30,7 @@ old scattered roots after references are repaired.
 | `research/03-gap-types/infographics/prime-gap-grammar-infographics/` | `research/03-gap-types/infographics/` |
 | `research/03-gap-types/experiments/chamber-relationship/` | `research/03-gap-types/chamber-relationship/` |
 | `research/03-gap-types/experiments/insight-001-modular-congestion-scaling/` | `research/03-gap-types/insight-001-modular-congestion-scaling/` |
-| `docs/research/bounded_compression/` | `research/04-bounded-compression/docs/` |
+| `research/04-bounded-compression/docs/` | `research/04-bounded-compression/docs/` |
 | bounded-compression, cutoff, d4 fallback, and square-branch artifacts | `research/04-bounded-compression/` |
 | state-budget and hidden-state artifacts | `research/05-state-budget/` |
 | `experiments/rsa/` | `research/06-cryptology-rsa/experiments/rsa/` |

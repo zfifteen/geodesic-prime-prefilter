@@ -7,12 +7,12 @@ surfaces for bounded GWR/DNI prime walks.
 
 Primary homes:
 
-- `docs/research/bounded_compression/`
+- `research/04-bounded-compression/docs/`
 - `output/gwr_proof/`
-- `output/square_branch_gap_audit_summary.json`
-- `benchmarks/python/predictor/bounded_compression_falsification_runner.py`
-- `benchmarks/python/predictor/square_branch_dynamic_cutoff_search.py`
-- `tests/python/predictor/test_bounded_compression_falsification_runner.py`
+- `research/04-bounded-compression/output/square_branch_gap_audit_summary.json`
+- `research/04-bounded-compression/scripts/bounded_compression_falsification_runner.py`
+- `research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py`
+- `research/04-bounded-compression/tests/test_bounded_compression_falsification_runner.py`
 
 ## Invariant Or Rule
 
@@ -37,7 +37,7 @@ The all-scale dynamic cutoff theorem remains unresolved.
 
 ## Measured Evidence
 
-Measured documentation lives in `docs/research/bounded_compression/` and
+Measured documentation lives in `research/04-bounded-compression/docs/` and
 `output/gwr_proof/`.
 
 The current completion audit states that no proof artifact closes the universal
@@ -48,7 +48,7 @@ cutoff law and no universal counterexample exists in the repository.
 Focused validation passed after the chapter map was finalized:
 
 ```text
-python3 -m pytest tests/python/predictor/test_bounded_compression_falsification_runner.py tests/python/predictor/test_d4_fallback_falsification_runner.py tests/python/predictor/test_d4_no_square_fallback_falsification_runner.py tests/python/predictor/test_square_branch_dynamic_cutoff_search.py tests/python/predictor/test_state_budget_divisor_carrier_sweep.py tests/python/predictor/test_state_budget_pairwise_ruler_test.py
+python3 -m pytest research/04-bounded-compression/tests/test_bounded_compression_falsification_runner.py research/04-bounded-compression/tests/test_d4_fallback_falsification_runner.py research/04-bounded-compression/tests/test_d4_no_square_fallback_falsification_runner.py research/04-bounded-compression/tests/test_square_branch_dynamic_cutoff_search.py tests/python/predictor/test_state_budget_divisor_carrier_sweep.py tests/python/predictor/test_state_budget_pairwise_ruler_test.py
 20 passed in 5.73s
 ```
 
@@ -71,7 +71,7 @@ explicit counterexample.
 Run the focused bounded-compression validation:
 
 ```text
-python3 -m pytest tests/python/predictor/test_bounded_compression_falsification_runner.py tests/python/predictor/test_d4_fallback_falsification_runner.py tests/python/predictor/test_d4_no_square_fallback_falsification_runner.py tests/python/predictor/test_square_branch_dynamic_cutoff_search.py
+python3 -m pytest research/04-bounded-compression/tests/test_bounded_compression_falsification_runner.py research/04-bounded-compression/tests/test_d4_fallback_falsification_runner.py research/04-bounded-compression/tests/test_d4_no_square_fallback_falsification_runner.py research/04-bounded-compression/tests/test_square_branch_dynamic_cutoff_search.py
 ```
 
 ## Provenance

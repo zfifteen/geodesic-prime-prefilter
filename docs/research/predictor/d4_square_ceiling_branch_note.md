@@ -62,7 +62,7 @@ The current exact branch surface is now split into two deterministic regimes.
 ### Floor Package
 
 The floor extremum scan in
-[`../../../output/d4_square_threat_frontier_summary.json`](../../../output/d4_square_threat_frontier_summary.json)
+[`../../../research/04-bounded-compression/output/d4_square_threat_frontier_summary.json`](../../../research/04-bounded-compression/output/d4_square_threat_frontier_summary.json)
 records:
 
 - exact full scan to $10^6$,
@@ -79,7 +79,7 @@ That is the exact floor package:
 ### First Non-Floor Branch
 
 The exact non-floor scan in
-[`../../../output/d4_square_threat_nonfloor_frontier_summary.json`](../../../output/d4_square_threat_nonfloor_frontier_summary.json)
+[`../../../research/04-bounded-compression/output/d4_square_threat_nonfloor_frontier_summary.json`](../../../research/04-bounded-compression/output/d4_square_threat_nonfloor_frontier_summary.json)
 records:
 
 - exact scan through $10^8$,
@@ -109,7 +109,7 @@ This is measured fact on the exact scanned surface, not yet a theorem.
 The missing obstruction is now explicit.
 
 The companion exact obstruction scan in
-[`../../../output/d4_square_threat_r2_minus_4_obstruction_summary.json`](../../../output/d4_square_threat_r2_minus_4_obstruction_summary.json)
+[`../../../research/04-bounded-compression/output/d4_square_threat_r2_minus_4_obstruction_summary.json`](../../../research/04-bounded-compression/output/d4_square_threat_r2_minus_4_obstruction_summary.json)
 tracks the same live branch and asks one direct question:
 
 does any gap close at

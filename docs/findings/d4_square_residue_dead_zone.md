@@ -23,8 +23,8 @@ on the scanned surface. It is wheel-forbidden on the live branch.
 
 Artifacts:
 
-- [d4_square_residue_dead_zone_summary.json](../../output/d4_square_residue_dead_zone_summary.json)
-- [d4_square_residue_dead_zone.csv](../../output/d4_square_residue_dead_zone.csv)
+- [d4_square_residue_dead_zone_summary.json](../../research/04-bounded-compression/output/d4_square_residue_dead_zone_summary.json)
+- [d4_square_residue_dead_zone.csv](../../research/04-bounded-compression/output/d4_square_residue_dead_zone.csv)
 - runner:
   [benchmarks/python/gap_ridge/d4_square_residue_dead_zone_probe.py](../../benchmarks/python/gap_ridge/d4_square_residue_dead_zone_probe.py)
 - tests:

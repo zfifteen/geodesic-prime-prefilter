@@ -62,7 +62,7 @@ Through the direct square-branch audit at `p <= 10^6`, the repository tested `78
 
 The compare mode in the recursive walker is the live falsification instrument. It runs the bounded and unbounded walkers in lockstep and records any bounded miss immediately.
 
-See [benchmarks/python/predictor/square_branch_gap_audit.py](benchmarks/python/predictor/square_branch_gap_audit.py), [research/02-gwr-dni/scripts/gwr_dni_recursive_walk.py](research/02-gwr-dni/scripts/gwr_dni_recursive_walk.py), and [research/02-gwr-dni/docs/gwr_dni_exact_recursive_prime_walk_note.md](research/02-gwr-dni/docs/gwr_dni_exact_recursive_prime_walk_note.md).
+See [research/04-bounded-compression/scripts/square_branch_gap_audit.py](research/04-bounded-compression/scripts/square_branch_gap_audit.py), [research/02-gwr-dni/scripts/gwr_dni_recursive_walk.py](research/02-gwr-dni/scripts/gwr_dni_recursive_walk.py), and [research/02-gwr-dni/docs/gwr_dni_exact_recursive_prime_walk_note.md](research/02-gwr-dni/docs/gwr_dni_exact_recursive_prime_walk_note.md).
 
 ## Dominant d=4 Reduction
 

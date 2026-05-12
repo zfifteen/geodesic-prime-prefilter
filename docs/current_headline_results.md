@@ -36,7 +36,7 @@
   `q <= 10^7`.** The bounded rule is the empirical compression
   `C(q) = max(64, ceil(0.5 * log(q)^2))`, and the live honesty gate is the
   exact compare scan in
-  [../benchmarks/python/predictor/gwr_dni_cutoff_counterexample_scan.py](../benchmarks/python/predictor/gwr_dni_cutoff_counterexample_scan.py).
+  [../research/04-bounded-compression/scripts/gwr_dni_cutoff_counterexample_scan.py](../research/04-bounded-compression/scripts/gwr_dni_cutoff_counterexample_scan.py).
 - **Deterministic prefilter performance remains the practical payoff.** The
   current production Python path rejects about `91%` of tested odd candidates
   before Miller-Rabin and produced `2.09x` and `2.82x` end-to-end deterministic

@@ -194,7 +194,7 @@ $$q^+ = nextprime(W_{\delta(q)}(q+1)-1).$$
 The repository now contains two direct instruments for the bounded layer.
 
 The compare harness is
-[`gwr_dni_cutoff_counterexample_scan.py`](../../../benchmarks/python/predictor/gwr_dni_cutoff_counterexample_scan.py).
+[`gwr_dni_cutoff_counterexample_scan.py`](../../../research/04-bounded-compression/scripts/gwr_dni_cutoff_counterexample_scan.py).
 It iterates consecutive prime gaps in increasing right-prime order and
 compares:
 
@@ -222,9 +222,9 @@ reports:
 The square branch now has two direct instruments:
 
 - the archived fixed-vs-dynamic audit
-  [`square_branch_gap_audit.py`](../../../benchmarks/python/predictor/square_branch_gap_audit.py);
+  [`square_branch_gap_audit.py`](../../../research/04-bounded-compression/scripts/square_branch_gap_audit.py);
 - the direct dynamic-cutoff search
-  [`square_branch_dynamic_cutoff_search.py`](../../../benchmarks/python/predictor/square_branch_dynamic_cutoff_search.py).
+  [`square_branch_dynamic_cutoff_search.py`](../../../research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py).
 
 The retained direct square search through `p <= 10^8` is:
 
@@ -419,20 +419,20 @@ python3 benchmarks/python/predictor/gwr_dni_recursive_gap_scaling_sweep.py \
 ```
 
 ```bash
-python3 benchmarks/python/predictor/square_branch_gap_audit.py \
+python3 research/04-bounded-compression/scripts/square_branch_gap_audit.py \
   --max-prime 1000000 \
   --output-dir /tmp/square_branch_audit_1e6
 ```
 
 ```bash
-python3 benchmarks/python/predictor/square_branch_dynamic_cutoff_search.py \
+python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py \
   --min-prime 3 \
   --max-prime 100000000 \
   --output-dir /tmp/square_branch_dynamic_cutoff_search_1e8
 ```
 
 ```bash
-python3 benchmarks/python/predictor/gwr_dni_cutoff_counterexample_scan.py \
+python3 research/04-bounded-compression/scripts/gwr_dni_cutoff_counterexample_scan.py \
   --min-right-prime 11 \
   --max-right-prime 10000000 \
   --output-dir /tmp/gwr_dni_cutoff_counterexample_scan_1e7
@@ -449,7 +449,7 @@ Focused validation for the new exact walk and scaling surface is:
 ```bash
 pytest -q \
   tests/python/predictor/test_gwr_dni_direct_rule_probe.py \
-  tests/python/predictor/test_gwr_dni_cutoff_counterexample_scan.py \
+  research/04-bounded-compression/tests/test_gwr_dni_cutoff_counterexample_scan.py \
   tests/python/predictor/test_gwr_dni_recursive_walk.py \
   tests/python/predictor/test_gwr_dni_recursive_gap_scaling_sweep.py
 ```
