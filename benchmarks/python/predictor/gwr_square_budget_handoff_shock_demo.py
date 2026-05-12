@@ -447,7 +447,7 @@ def findings_markdown(summary: dict[str, object]) -> str:
             "",
             "- [demo script](../../benchmarks/python/predictor/gwr_square_budget_handoff_shock_demo.py)",
             "- [summary JSON](../../output/gwr_square_budget_handoff_shock_summary.json)",
-            "- [source catalog detail CSV](../../output/gwr_dni_gap_type_catalog_details.csv)",
+            "- [source catalog detail CSV](../../research/03-gap-types/output/gwr_dni_gap_type_catalog_details.csv)",
             "",
         ]
     )

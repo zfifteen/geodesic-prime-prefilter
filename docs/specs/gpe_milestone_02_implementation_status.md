@@ -97,7 +97,7 @@ The non-$d(w)=4$ row $q=23$ remains an explicit unresolved branch target:
 ## Current Catalog Obstruction
 
 The committed catalog at
-[`../../output/gwr_dni_gap_type_catalog_details.csv`](../../output/gwr_dni_gap_type_catalog_details.csv)
+[`../../research/03-gap-types/output/gwr_dni_gap_type_catalog_details.csv`](../../research/03-gap-types/output/gwr_dni_gap_type_catalog_details.csv)
 contains `81,569` rows. Its observed selected divisor-count classes include many non-$4$
 branches, and its $d(w)=4$ surface contains `60,726` rows.
 

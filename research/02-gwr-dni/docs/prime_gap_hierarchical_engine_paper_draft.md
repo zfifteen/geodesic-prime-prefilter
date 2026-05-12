@@ -6,7 +6,7 @@ This manuscript reports a measured generative model on a deterministic reduced
 prime-gap type surface. The result is about the sequence of reduced gap types,
 not yet about the full raw gap-size sequence.
 
-![Prime Gap Generative Model v1.0 overview](../../../output/gwr_dni_gap_type_engine_v1_overview.png)
+![Prime Gap Generative Model v1.0 overview](../../../research/03-gap-types/output/gwr_dni_gap_type_engine_v1_overview.png)
 
 ## Abstract
 
@@ -140,7 +140,7 @@ The same rotor also outputs a `10,000`-row synthetic stream that remains inside
 the persistent core for the full run. That committed synthetic walk is part of
 the release surface:
 
-- [../../../output/gwr_dni_gap_type_generative_probe_synthetic.csv](../../../output/gwr_dni_gap_type_generative_probe_synthetic.csv)
+- [../../../research/03-gap-types/output/gwr_dni_gap_type_generative_probe_synthetic.csv](../../../research/03-gap-types/output/gwr_dni_gap_type_generative_probe_synthetic.csv)
 
 ## 5. Transition-Rule Discovery
 
@@ -299,13 +299,13 @@ statistics on this reduced surface with high fidelity.
 
 The frozen synthesis artifacts for this manuscript are:
 
-- [../../../output/gwr_dni_gap_type_engine_v1_summary.json](../../../output/gwr_dni_gap_type_engine_v1_summary.json)
-- [../../../output/gwr_dni_gap_type_engine_v1_overview.png](../../../output/gwr_dni_gap_type_engine_v1_overview.png)
-- [../../../gwr/findings/gap_type_engine_v1_freeze.md](../../../gwr/findings/gap_type_engine_v1_freeze.md)
-- [../../../gwr/findings/gap_type_engine_v1_rulebook.md](../../../gwr/findings/gap_type_engine_v1_rulebook.md)
+- [../../../research/03-gap-types/output/gwr_dni_gap_type_engine_v1_summary.json](../../../research/03-gap-types/output/gwr_dni_gap_type_engine_v1_summary.json)
+- [../../../research/03-gap-types/output/gwr_dni_gap_type_engine_v1_overview.png](../../../research/03-gap-types/output/gwr_dni_gap_type_engine_v1_overview.png)
+- [../../../research/03-gap-types/docs/gap_type_engine_v1_freeze.md](../../../research/03-gap-types/docs/gap_type_engine_v1_freeze.md)
+- [../../../research/03-gap-types/docs/gap_type_engine_v1_rulebook.md](../../../research/03-gap-types/docs/gap_type_engine_v1_rulebook.md)
 
 The synthesis step is deterministic:
 
 ```bash
-python3 benchmarks/python/predictor/gwr_dni_gap_type_engine_synthesis.py
+python3 research/03-gap-types/scripts/gwr_dni_gap_type_engine_synthesis.py
 ```

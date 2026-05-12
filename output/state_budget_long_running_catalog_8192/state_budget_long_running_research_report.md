@@ -7,7 +7,7 @@ The 8192-row-per-power retained `10^12..10^18` surface found one current-chamber
 ## Commands
 
 ```sh
-python3 benchmarks/python/predictor/gwr_dni_gap_type_catalog.py --output-dir output/state_budget_long_running_catalog_8192 --exact-max-right-prime 1000 --min-power 12 --max-power 18 --window-steps 8192
+python3 research/03-gap-types/scripts/gwr_dni_gap_type_catalog.py --output-dir output/state_budget_long_running_catalog_8192 --exact-max-right-prime 1000 --min-power 12 --max-power 18 --window-steps 8192
 python3 benchmarks/python/predictor/state_budget_pairwise_ruler_test.py --detail-csv output/state_budget_long_running_catalog_8192/gwr_dni_gap_type_catalog_details.csv --output-dir output/state_budget_long_running_catalog_8192 --min-power 12 --max-power 18
 python3 benchmarks/python/predictor/state_budget_residue_matched_pair_test.py --detail-csv output/state_budget_long_running_catalog_8192/gwr_dni_gap_type_catalog_details.csv --output-dir output/state_budget_long_running_catalog_8192 --min-power 12 --max-power 18
 python3 benchmarks/python/predictor/state_budget_forbidden_transition_test.py --detail-csv output/state_budget_long_running_catalog_8192/gwr_dni_gap_type_catalog_details.csv --output-dir output/state_budget_long_running_catalog_8192 --min-power 12 --max-power 18
