@@ -32,15 +32,15 @@ The stricter semiprime-only wording was tested separately:
 ## Current Artifacts
 
 - runner:
-  [`research/11-gap-ridge/scripts/gwr_d4_arrival_validation.py`](../../research/11-gap-ridge/scripts/gwr_d4_arrival_validation.py)
+  [`research/11-gap-ridge/scripts/gwr_d4_arrival_validation.py`](../../11-gap-ridge/scripts/gwr_d4_arrival_validation.py)
 - tests:
-  [`research/11-gap-ridge/tests/test_gwr_d4_arrival_validation.py`](../../research/11-gap-ridge/tests/test_gwr_d4_arrival_validation.py)
+  [`research/11-gap-ridge/tests/test_gwr_d4_arrival_validation.py`](../../11-gap-ridge/tests/test_gwr_d4_arrival_validation.py)
 - JSON summary:
-  [`output/gwr_d4_arrival_validation_summary.json`](../../output/gwr_d4_arrival_validation_summary.json)
+  [`output/gwr_d4_arrival_validation_summary.json`](../output/gwr_d4_arrival_validation_summary.json)
 - exact-surface CSV:
-  [`output/gwr_d4_arrival_validation_exact.csv`](../../output/gwr_d4_arrival_validation_exact.csv)
+  [`output/gwr_d4_arrival_validation_exact.csv`](../output/gwr_d4_arrival_validation_exact.csv)
 - even-band CSV:
-  [`output/gwr_d4_arrival_validation_even_bands.csv`](../../output/gwr_d4_arrival_validation_even_bands.csv)
+  [`output/gwr_d4_arrival_validation_even_bands.csv`](../output/gwr_d4_arrival_validation_even_bands.csv)
 
 ## Tested Surface
 

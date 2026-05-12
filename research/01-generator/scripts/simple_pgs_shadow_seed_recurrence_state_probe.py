@@ -18,7 +18,7 @@ DEFAULT_INPUT = (
     / "candidate_rows.csv"
 )
 DEFAULT_OUTPUT_DIR = (
-    ROOT / "output" / "simple_pgs_shadow_seed_recurrence_state_probe"
+    ROOT / "research" / "01-generator" / "output" / "simple_pgs_shadow_seed_recurrence_state_probe"
 )
 
 

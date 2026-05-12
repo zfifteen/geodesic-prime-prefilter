@@ -26,15 +26,15 @@ log-score argmax and then separately checks the later divisor profile.
 ## Current Artifacts
 
 - runner:
-  [`research/11-gap-ridge/scripts/gwr_closure_constraint.py`](../../research/11-gap-ridge/scripts/gwr_closure_constraint.py)
+  [`research/11-gap-ridge/scripts/gwr_closure_constraint.py`](../../11-gap-ridge/scripts/gwr_closure_constraint.py)
 - tests:
-  [`research/11-gap-ridge/tests/test_gwr_closure_constraint.py`](../../research/11-gap-ridge/tests/test_gwr_closure_constraint.py)
+  [`research/11-gap-ridge/tests/test_gwr_closure_constraint.py`](../../11-gap-ridge/tests/test_gwr_closure_constraint.py)
 - JSON summary:
-  [`output/gwr_closure_constraint_summary.json`](../../output/gwr_closure_constraint_summary.json)
+  [`output/gwr_closure_constraint_summary.json`](../output/gwr_closure_constraint_summary.json)
 - even-band ladder through $10^{18}$:
-  [`output/gwr_closure_constraint_even_bands_through_1e18.json`](../../output/gwr_closure_constraint_even_bands_through_1e18.json)
+  [`output/gwr_closure_constraint_even_bands_through_1e18.json`](../output/gwr_closure_constraint_even_bands_through_1e18.json)
 - sampled CSV:
-  [`output/gwr_closure_constraint_sampled.csv`](../../output/gwr_closure_constraint_sampled.csv)
+  [`output/gwr_closure_constraint_sampled.csv`](../output/gwr_closure_constraint_sampled.csv)
 
 ## Tested Surface
 
@@ -168,7 +168,7 @@ square, so this measured closure surface reduces to comparing:
 
 That makes the $d=4$ case a concrete analytic observable on the tested surface.
 What this note adds is margin data, not a competing proof-status claim. The
-repo's proof-facing status is controlled by [../../PROOF.md](../../PROOF.md).
+repo's proof-facing status is controlled by [../../PROOF.md](../../../PROOF.md).
 What the present measurements show is that the $d=4$ margins stay positive and
 large on every tested regime, including the even-band ladder through $10^{18}$.
 

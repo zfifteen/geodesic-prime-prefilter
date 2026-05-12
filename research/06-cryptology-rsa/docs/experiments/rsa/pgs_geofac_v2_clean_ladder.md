@@ -17,7 +17,7 @@ research/06-cryptology-rsa/experiments/rsa/v2
 The old contaminated artifacts are preserved under:
 
 ```text
-experiments/rsa/chat-gpt-fraud-and-deception
+research/06-cryptology-rsa/experiments/rsa/chat-gpt-fraud-and-deception
 ```
 
 ## Boundary

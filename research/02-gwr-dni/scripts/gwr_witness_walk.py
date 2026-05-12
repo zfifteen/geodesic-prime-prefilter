@@ -32,7 +32,7 @@ if str(SOURCE_DIR) not in sys.path:
 from z_band_prime_composite_field import divisor_counts_segment
 from z_band_prime_predictor import W_d, gwr_next_gap_profile
 
-DEFAULT_OUTPUT_DIR = ROOT / "output"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "02-gwr-dni" / "output"
 DEFAULT_START_PRIME = 11
 DEFAULT_STEPS = 1000
 DEFAULT_SCAN_BLOCK = 64

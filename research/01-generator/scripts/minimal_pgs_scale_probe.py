@@ -30,7 +30,7 @@ from z_band_prime_predictor.simple_pgs_generator import (  # noqa: E402
 )
 
 
-DEFAULT_OUTPUT_DIR = Path("output/minimal_pgs_scale_probe_1e5_to_1e18")
+DEFAULT_OUTPUT_DIR = Path("research/01-generator/output/minimal_pgs_scale_probe_1e5_to_1e18")
 
 
 def full_surface_anchors(limit: int) -> list[int]:

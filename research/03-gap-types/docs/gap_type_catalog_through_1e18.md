@@ -35,17 +35,17 @@ categories themselves look stable.
 ## Artifacts
 
 - runner:
-  [`../../research/03-gap-types/scripts/gwr_dni_gap_type_catalog.py`](../../research/03-gap-types/scripts/gwr_dni_gap_type_catalog.py)
+  [`../../research/03-gap-types/scripts/gwr_dni_gap_type_catalog.py`](../scripts/gwr_dni_gap_type_catalog.py)
 - tests:
-  [`../../research/03-gap-types/tests/test_gwr_dni_gap_type_catalog.py`](../../research/03-gap-types/tests/test_gwr_dni_gap_type_catalog.py)
+  [`../../research/03-gap-types/tests/test_gwr_dni_gap_type_catalog.py`](../tests/test_gwr_dni_gap_type_catalog.py)
 - JSON summary:
-  [`../../research/03-gap-types/output/gwr_dni_gap_type_catalog_summary.json`](../../research/03-gap-types/output/gwr_dni_gap_type_catalog_summary.json)
+  [`../../research/03-gap-types/output/gwr_dni_gap_type_catalog_summary.json`](../output/gwr_dni_gap_type_catalog_summary.json)
 - detail CSV:
-  [`../../research/03-gap-types/output/gwr_dni_gap_type_catalog_details.csv`](../../research/03-gap-types/output/gwr_dni_gap_type_catalog_details.csv)
+  [`../../research/03-gap-types/output/gwr_dni_gap_type_catalog_details.csv`](../output/gwr_dni_gap_type_catalog_details.csv)
 - overview plot:
-  [`../../research/03-gap-types/output/gwr_dni_gap_type_catalog_overview.png`](../../research/03-gap-types/output/gwr_dni_gap_type_catalog_overview.png)
+  [`../../research/03-gap-types/output/gwr_dni_gap_type_catalog_overview.png`](../output/gwr_dni_gap_type_catalog_overview.png)
 
-![Gap-type catalog overview](../../research/03-gap-types/output/gwr_dni_gap_type_catalog_overview.png)
+![Gap-type catalog overview](../output/gwr_dni_gap_type_catalog_overview.png)
 
 ## Type Definition
 

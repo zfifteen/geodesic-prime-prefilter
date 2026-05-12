@@ -28,7 +28,7 @@ the composite interior itself.
 The strongest supported claim is:
 
 `GWR`, as the proved prime-selected interior integer law in
-[../../PROOF.md](../../PROOF.md), is not only a statement about which composite
+[../../PROOF.md](../../../PROOF.md), is not only a statement about which composite
 wins inside a gap. It is also a local endpoint-placement constraint on where the
 consecutive primes bounding that gap are allowed to occur.
 

@@ -40,7 +40,7 @@ except ImportError:  # pragma: no cover - direct script execution
     )
 
 
-DEFAULT_OUTPUT_DIR = Path("output/prime_inference_generator")
+DEFAULT_OUTPUT_DIR = Path("research/01-generator/output/prime_inference_generator")
 SUMMARY_FILENAME = "higher_divisor_pressure_lock_activation_profile_summary.json"
 ACTIVATIONS_FILENAME = "higher_divisor_pressure_lock_activation_records.jsonl"
 NEAR_MISSES_FILENAME = "higher_divisor_pressure_lock_near_miss_records.jsonl"

@@ -24,18 +24,18 @@ The rule was evaluated with a direct counterexample search:
 
 ## Visual Evidence
 
-![Lexicographic peak validation summary](../../research/11-gap-ridge/output/lexicographic_peak_validation/lexicographic_peak_validation_summary.svg)
+![Lexicographic peak validation summary](../../output/lexicographic_peak_validation/lexicographic_peak_validation_summary.svg)
 
 Artifacts:
 
-- [lexicographic_peak_validation_summary.svg](../../research/11-gap-ridge/output/lexicographic_peak_validation/lexicographic_peak_validation_summary.svg)
-- [lexicographic_peak_validation.json](../../research/11-gap-ridge/output/lexicographic_peak_validation/lexicographic_peak_validation.json)
-- [lexicographic_peak_validation.py](../../research/11-gap-ridge/scripts/lexicographic_peak_validation.py)
+- [lexicographic_peak_validation_summary.svg](../../output/lexicographic_peak_validation/lexicographic_peak_validation_summary.svg)
+- [lexicographic_peak_validation.json](../../output/lexicographic_peak_validation/lexicographic_peak_validation.json)
+- [lexicographic_peak_validation.py](../../scripts/lexicographic_peak_validation.py)
 
 Additional probe figures:
 
-- [lexicographic_rule_match_rate.svg](../../research/11-gap-ridge/output/insight_probes/lexicographic_rule_match_rate.svg)
-- [lexicographic_rule_match_by_scale.svg](../../research/11-gap-ridge/output/insight_probes/lexicographic_rule_match_by_scale.svg)
+- [lexicographic_rule_match_rate.svg](../../output/insight_probes/lexicographic_rule_match_rate.svg)
+- [lexicographic_rule_match_by_scale.svg](../../output/insight_probes/lexicographic_rule_match_by_scale.svg)
 
 ## Tested Surface
 

@@ -46,7 +46,7 @@ except ImportError:  # pragma: no cover - direct script execution
     )
 
 
-DEFAULT_OUTPUT_DIR = Path("output/prime_inference_generator")
+DEFAULT_OUTPUT_DIR = Path("research/01-generator/output/prime_inference_generator")
 SUMMARY_FILENAME = "lock_near_miss_profile_summary.json"
 RECORDS_FILENAME = "lock_near_miss_profile_records.jsonl"
 DEFAULT_SURFACES = ("11..1000000", "100000..200000", "1000000..1100000")

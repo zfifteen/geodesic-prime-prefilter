@@ -25,9 +25,9 @@ from z_band_prime_predictor.simple_pgs_generator import (  # noqa: E402
 
 
 DEFAULT_INPUT_ROWS = (
-    ROOT / "output" / "simple_pgs_shadow_seed_gwr_solution_probe" / "rows.jsonl"
+    ROOT / "research" / "01-generator" / "output" / "simple_pgs_shadow_seed_gwr_solution_probe" / "rows.jsonl"
 )
-DEFAULT_OUTPUT_DIR = ROOT / "output" / "simple_pgs_continued_chamber_probe"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "01-generator" / "output" / "simple_pgs_continued_chamber_probe"
 
 
 def read_jsonl(path: Path) -> list[dict[str, object]]:

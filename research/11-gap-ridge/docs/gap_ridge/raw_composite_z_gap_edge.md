@@ -85,7 +85,7 @@ That discrete ordering explains why:
 
 The distribution percentages in this note remain empirical measurements on the
 recorded run. The theorem-level statement about the selected integer itself is
-now the universal maximizer theorem in [../../PROOF.md](../../PROOF.md).
+now the universal maximizer theorem in [../../PROOF.md](../../../../PROOF.md).
 
 ## Reproduction
 

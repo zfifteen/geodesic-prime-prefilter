@@ -636,7 +636,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--output-dir",
         type=Path,
-        default=Path("output/simple_pgs_shadow_chain_horizon_law_probe"),
+        default=Path("research/01-generator/output/simple_pgs_shadow_chain_horizon_law_probe"),
     )
     return parser
 

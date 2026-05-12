@@ -23,7 +23,7 @@ if str(SOURCE_DIR) not in sys.path:
 from z_band_prime_composite_field import divisor_counts_segment
 from z_band_prime_predictor import W_d, divisor_gap_profile, gap_dmin
 
-DEFAULT_OUTPUT_DIR = ROOT / "output"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "02-gwr-dni" / "output"
 DEFAULT_MAX_RIGHT_PRIME = 1_000_000
 PREFIX_OFFSETS = tuple(range(1, 13))
 PREFIX_SIGNATURE_CUTOFFS = (2, 4, 6, 8, 10, 12)

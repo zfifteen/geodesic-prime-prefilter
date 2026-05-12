@@ -39,7 +39,7 @@ if str(SOURCE_DIR) not in sys.path:
 
 from z_band_prime_composite_field import divisor_counts_segment
 
-DEFAULT_OUTPUT_DIR = ROOT / "output"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "02-gwr-dni" / "output"
 DEFAULT_START_GAP_INDEX = 4
 DEFAULT_STEPS = 100
 PREFIX_LEN = 12

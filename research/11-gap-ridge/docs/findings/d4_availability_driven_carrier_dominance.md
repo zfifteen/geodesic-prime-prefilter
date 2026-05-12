@@ -27,12 +27,12 @@ That is the current committed execution surface for this note through sampled
 
 ## Visual Evidence
 
-![d(n)=4 availability vs peak share](../../research/11-gap-ridge/output/insight_probes/d4_availability_vs_peak_share.svg)
+![d(n)=4 availability vs peak share](../../output/insight_probes/d4_availability_vs_peak_share.svg)
 
 Artifacts:
 
-- [d4_availability_vs_peak_share.svg](../../research/11-gap-ridge/output/insight_probes/d4_availability_vs_peak_share.svg)
-- [d4_availability_vs_peak_share.json](../../research/11-gap-ridge/output/insight_probes/d4_availability_vs_peak_share.json)
+- [d4_availability_vs_peak_share.svg](../../output/insight_probes/d4_availability_vs_peak_share.svg)
+- [d4_availability_vs_peak_share.json](../../output/insight_probes/d4_availability_vs_peak_share.json)
 
 ## Residual Exception
 

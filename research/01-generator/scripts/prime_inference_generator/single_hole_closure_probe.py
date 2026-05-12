@@ -40,7 +40,7 @@ except ImportError:  # pragma: no cover - direct script execution
 from sympy import divisor_count, factorint
 
 
-DEFAULT_OUTPUT_DIR = Path("output/prime_inference_generator")
+DEFAULT_OUTPUT_DIR = Path("research/01-generator/output/prime_inference_generator")
 SUMMARY_FILENAME = "single_hole_closure_probe_summary.json"
 RECORDS_FILENAME = "single_hole_closure_probe_records.jsonl"
 EXTENDED_POSITIVE_WITNESS_FACTORS = (

@@ -38,10 +38,10 @@ from z_band_prime_predictor.simple_pgs_generator import (  # noqa: E402
 
 
 DEFAULT_INPUT_ROWS = (
-    ROOT / "output" / "simple_pgs_shadow_seed_gwr_solution_probe" / "rows.jsonl"
+    ROOT / "research" / "01-generator" / "output" / "simple_pgs_shadow_seed_gwr_solution_probe" / "rows.jsonl"
 )
 DEFAULT_OUTPUT_DIR = (
-    ROOT / "output" / "simple_pgs_solution_11_carrier_threat_margin_probe"
+    ROOT / "research" / "01-generator" / "output" / "simple_pgs_solution_11_carrier_threat_margin_probe"
 )
 DEFAULT_THREAT_WITNESS_BOUND = 97
 

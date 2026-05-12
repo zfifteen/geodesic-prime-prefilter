@@ -38,7 +38,7 @@ except ImportError:  # pragma: no cover - direct script execution
 from sympy import isprime, primerange
 
 
-DEFAULT_OUTPUT_DIR = Path("output/prime_inference_generator")
+DEFAULT_OUTPUT_DIR = Path("research/01-generator/output/prime_inference_generator")
 SUMMARY_FILENAME = "higher_divisor_pressure_forensics_summary.json"
 EXACT_AUDITS_FILENAME = "higher_divisor_pressure_forensics_exact_states.jsonl"
 CANDIDATES_FILENAME = "higher_divisor_pressure_forensics_candidates.jsonl"

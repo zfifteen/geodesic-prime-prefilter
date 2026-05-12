@@ -105,6 +105,6 @@ The active gate stays simple:
 
 ## Artifacts
 
-- [ascii_delta_geometry_probe.py](../../research/14-sha-nonce/scripts/ascii_delta_geometry_probe.py)
-- [run_ascii_delta_geometry_experiments.sh](../../research/14-sha-nonce/scripts/run_ascii_delta_geometry_experiments.sh)
-- [steady-state official JSON](../../research/14-sha-nonce/output/ascii_delta_geometry_probe_run1_steady_20260405T032424Z/ascii_delta_geometry_probe.json)
+- [ascii_delta_geometry_probe.py](../../scripts/ascii_delta_geometry_probe.py)
+- [run_ascii_delta_geometry_experiments.sh](../../scripts/run_ascii_delta_geometry_experiments.sh)
+- [steady-state official JSON](../../output/ascii_delta_geometry_probe_run1_steady_20260405T032424Z/ascii_delta_geometry_probe.json)

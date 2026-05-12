@@ -128,9 +128,9 @@ The progress is real, but not complete. The strongest unsupported move at this s
 
 ## Source Artifacts
 
-- [reset_centered_argmin_probe.json](../../research/14-sha-nonce/output/reset_centered_argmin_probe/reset_centered_argmin_probe.json)
-- [reset_centered_argmin_probe.svg](../../research/14-sha-nonce/output/reset_centered_argmin_probe/reset_centered_argmin_probe.svg)
-- [rotr7_phase_probe.json](../../research/14-sha-nonce/output/rotr7_phase_probe/rotr7_phase_probe.json)
-- [rotr7_phase_probe.svg](../../research/14-sha-nonce/output/rotr7_phase_probe/rotr7_phase_probe.svg)
-- [reset_centered_argmin_probe.py](../../research/14-sha-nonce/scripts/reset_centered_argmin_probe.py)
-- [rotr7_phase_probe.py](../../research/14-sha-nonce/scripts/rotr7_phase_probe.py)
+- [reset_centered_argmin_probe.json](../../output/reset_centered_argmin_probe/reset_centered_argmin_probe.json)
+- [reset_centered_argmin_probe.svg](../../output/reset_centered_argmin_probe/reset_centered_argmin_probe.svg)
+- [rotr7_phase_probe.json](../../output/rotr7_phase_probe/rotr7_phase_probe.json)
+- [rotr7_phase_probe.svg](../../output/rotr7_phase_probe/rotr7_phase_probe.svg)
+- [reset_centered_argmin_probe.py](../../scripts/reset_centered_argmin_probe.py)
+- [rotr7_phase_probe.py](../../scripts/rotr7_phase_probe.py)

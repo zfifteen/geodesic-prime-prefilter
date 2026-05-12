@@ -15,7 +15,7 @@ scope in two important ways:
   "always semiprime with four divisors."
 
 The probe script is
-[`../../research/04-bounded-compression/scripts/gwr_square_phase_handoff_threshold_probe.py`](../../research/04-bounded-compression/scripts/gwr_square_phase_handoff_threshold_probe.py),
+[`../../research/04-bounded-compression/scripts/gwr_square_phase_handoff_threshold_probe.py`](../scripts/gwr_square_phase_handoff_threshold_probe.py),
 and the generated summary JSON is
 [`./generated/square_phase_handoff_threshold_exact_1e6/gwr_square_phase_handoff_threshold_summary.json`](./generated/square_phase_handoff_threshold_exact_1e6/gwr_square_phase_handoff_threshold_summary.json).
 

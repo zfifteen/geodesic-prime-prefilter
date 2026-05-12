@@ -23,8 +23,8 @@ from z_band_prime_predictor import gwr_predict  # noqa: E402
 
 
 DEFAULT_ROWS_PATHS = (
-    ROOT / "output" / "simple_pgs_chain_horizon_closure_1e12_probe" / "rows.jsonl",
-    ROOT / "output" / "simple_pgs_chain_horizon_closure_high_scale_probe" / "rows.jsonl",
+    ROOT / "research" / "01-generator" / "output" / "simple_pgs_chain_horizon_closure_1e12_probe" / "rows.jsonl",
+    ROOT / "research" / "01-generator" / "output" / "simple_pgs_chain_horizon_closure_high_scale_probe" / "rows.jsonl",
 )
 DEFAULT_FRONTIER_PATH = (
     ROOT
@@ -32,7 +32,7 @@ DEFAULT_FRONTIER_PATH = (
     / "simple_pgs_shadow_chain_horizon_law_probe"
     / "least_factor_frontier.csv"
 )
-DEFAULT_OUTPUT_DIR = ROOT / "output" / "simple_pgs_shadow_seed_gwr_recovery_probe"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "01-generator" / "output" / "simple_pgs_shadow_seed_gwr_recovery_probe"
 
 
 def build_parser() -> argparse.ArgumentParser:

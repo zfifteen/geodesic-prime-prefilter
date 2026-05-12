@@ -24,7 +24,7 @@ That is a measured `1.652236x` speedup and a `39.475947%` wall-time reduction.
 The change is narrow.
 
 - the baseline vendored Bouncy Castle source tree remains untouched,
-- only the copied [RSAKeyPairGenerator.java](../../tests/performance-comparisons/bouncycastle-keygen-baseline/vendor/bc-java-r1rv83-rsa-upper-band-v1/core/src/main/java/org/bouncycastle/crypto/generators/RSAKeyPairGenerator.java) differs,
+- only the copied [RSAKeyPairGenerator.java](../tests/bouncycastle-keygen-baseline/vendor/bc-java-r1rv83-rsa-upper-band-v1/core/src/main/java/org/bouncycastle/crypto/generators/RSAKeyPairGenerator.java) differs,
 - the later RSA probable-prime and key-assembly logic remain in place,
 - the profitable move is not a new heuristic but the early use of an exact failure condition that BC already applied later.
 
@@ -97,7 +97,7 @@ That hypothesis was the right first thing to test. It was also wrong on the spec
 
 # Bouncy Castle Baseline Path
 
-In the vendored `r1rv83` source snapshot, the RSA prime-choice loop lives in [RSAKeyPairGenerator.java](../../tests/performance-comparisons/bouncycastle-keygen-baseline/vendor/bc-java-r1rv83/core/src/main/java/org/bouncycastle/crypto/generators/RSAKeyPairGenerator.java).
+In the vendored `r1rv83` source snapshot, the RSA prime-choice loop lives in [RSAKeyPairGenerator.java](../tests/bouncycastle-keygen-baseline/vendor/bc-java-r1rv83/core/src/main/java/org/bouncycastle/crypto/generators/RSAKeyPairGenerator.java).
 
 At the relevant level, baseline BC does this inside `chooseRandomPrime(bitlength, e, sqrdBound)`:
 
@@ -108,7 +108,7 @@ At the relevant level, baseline BC does this inside `chooseRandomPrime(bitlength
 5. reject if `gcd(e, p - 1) != 1`,
 6. otherwise accept `p`.
 
-The important fact is step 1. In [BigIntegers.java](../../tests/performance-comparisons/bouncycastle-keygen-baseline/vendor/bc-java-r1rv83/core/src/main/java/org/bouncycastle/util/BigIntegers.java), `createRandomPrime(bitlength, 1, random)` already does nontrivial cleanup before RSA sees the candidate at all:
+The important fact is step 1. In [BigIntegers.java](../tests/bouncycastle-keygen-baseline/vendor/bc-java-r1rv83/core/src/main/java/org/bouncycastle/util/BigIntegers.java), `createRandomPrime(bitlength, 1, random)` already does nontrivial cleanup before RSA sees the candidate at all:
 
 - it makes the candidate odd and full-width,
 - it screens against the product of odd primes from `3` through `743`,
@@ -122,7 +122,7 @@ That observation is what made the direct late-stage factor-gate port a falsifiab
 
 The first BC transfer attempt was the most obvious one: add the repository's deeper deterministic factor tables after BC's existing `createRandomPrime()` work and see whether that removes additional doomed candidates before the later randomized probable-prime path.
 
-That attempt was tested directly in [BouncyCastleKeygenStrategyProbe.java](../../tests/performance-comparisons/bouncycastle-keygen-baseline/src/BouncyCastleKeygenStrategyProbe.java), with results recorded in [the canonical strategy probe JSON](../../tests/performance-comparisons/bouncycastle-keygen-baseline/results/bcprov-jdk18on-1.83-source-r1rv83-rsa4096-strategy-probe-seed-byte-42.json) and summarized in [BC_STRATEGY_DEEP_DIVE.md](../../tests/performance-comparisons/bouncycastle-keygen-baseline/BC_STRATEGY_DEEP_DIVE.md).
+That attempt was tested directly in [BouncyCastleKeygenStrategyProbe.java](../tests/bouncycastle-keygen-baseline/src/BouncyCastleKeygenStrategyProbe.java), with results recorded in [the canonical strategy probe JSON](../tests/bouncycastle-keygen-baseline/results/bcprov-jdk18on-1.83-source-r1rv83-rsa4096-strategy-probe-seed-byte-42.json) and summarized in [BC_STRATEGY_DEEP_DIVE.md](../tests/bouncycastle-keygen-baseline/BC_STRATEGY_DEEP_DIVE.md).
 
 The result was decisive.
 
@@ -204,12 +204,12 @@ That ceiling becomes a useful benchmark for interpreting the later measured expe
 
 The modified BC build lives in a sibling vendored tree:
 
-- baseline tree: [bc-java-r1rv83](../../tests/performance-comparisons/bouncycastle-keygen-baseline/vendor/bc-java-r1rv83/)
-- modified tree: [bc-java-r1rv83-rsa-upper-band-v1](../../tests/performance-comparisons/bouncycastle-keygen-baseline/vendor/bc-java-r1rv83-rsa-upper-band-v1/)
+- baseline tree: [bc-java-r1rv83](../tests/bouncycastle-keygen-baseline/vendor/bc-java-r1rv83/)
+- modified tree: [bc-java-r1rv83-rsa-upper-band-v1](../tests/bouncycastle-keygen-baseline/vendor/bc-java-r1rv83-rsa-upper-band-v1/)
 
 Only one source file differs between those trees:
 
-- [RSAKeyPairGenerator.java](../../tests/performance-comparisons/bouncycastle-keygen-baseline/vendor/bc-java-r1rv83-rsa-upper-band-v1/core/src/main/java/org/bouncycastle/crypto/generators/RSAKeyPairGenerator.java)
+- [RSAKeyPairGenerator.java](../tests/bouncycastle-keygen-baseline/vendor/bc-java-r1rv83-rsa-upper-band-v1/core/src/main/java/org/bouncycastle/crypto/generators/RSAKeyPairGenerator.java)
 
 The change is local to `chooseRandomPrime()`.
 
@@ -280,7 +280,7 @@ The ordinary accuracy question for a prime-generation patch is whether the patch
 
 That is not what this patch does.
 
-The modified build keeps the later BC probable-prime logic in place. It keeps the later RSA key-assembly logic in place. The benchmark harness in [BouncyCastleKeygenUpperBandV1Benchmark.java](../../tests/performance-comparisons/bouncycastle-keygen-baseline/src/BouncyCastleKeygenUpperBandV1Benchmark.java) validates, for every measured keypair:
+The modified build keeps the later BC probable-prime logic in place. It keeps the later RSA key-assembly logic in place. The benchmark harness in [BouncyCastleKeygenUpperBandV1Benchmark.java](../tests/bouncycastle-keygen-baseline/src/BouncyCastleKeygenUpperBandV1Benchmark.java) validates, for every measured keypair:
 
 - modulus bit length `4096`,
 - public exponent `65537`,
@@ -307,7 +307,7 @@ That is a different question from primality accuracy, and it should be treated s
 
 # Experimental Method
 
-The modified benchmark harness is [BouncyCastleKeygenUpperBandV1Benchmark.java](../../tests/performance-comparisons/bouncycastle-keygen-baseline/src/BouncyCastleKeygenUpperBandV1Benchmark.java), run by [run_upper_band_v1.sh](../../tests/performance-comparisons/bouncycastle-keygen-baseline/run_upper_band_v1.sh).
+The modified benchmark harness is [BouncyCastleKeygenUpperBandV1Benchmark.java](../tests/bouncycastle-keygen-baseline/src/BouncyCastleKeygenUpperBandV1Benchmark.java), run by [run_upper_band_v1.sh](../tests/bouncycastle-keygen-baseline/run_upper_band_v1.sh).
 
 The measurement contract matches the source-built baseline:
 
@@ -323,11 +323,11 @@ The measurement contract matches the source-built baseline:
 - build under Homebrew JDK `25.0.2`,
 - run under Homebrew JDK `21.0.10`.
 
-The canonical baseline artifact is [bcprov-jdk18on-1.83-source-r1rv83-rsa4096-direct-core-seed-byte-42-runs-100.json](../../tests/performance-comparisons/bouncycastle-keygen-baseline/results/bcprov-jdk18on-1.83-source-r1rv83-rsa4096-direct-core-seed-byte-42-runs-100.json).
+The canonical baseline artifact is [bcprov-jdk18on-1.83-source-r1rv83-rsa4096-direct-core-seed-byte-42-runs-100.json](../tests/bouncycastle-keygen-baseline/results/bcprov-jdk18on-1.83-source-r1rv83-rsa4096-direct-core-seed-byte-42-runs-100.json).
 
-The canonical modified artifact is [bcprov-jdk18on-1.83-source-r1rv83-rsa-upper-band-v1-rsa4096-direct-core-seed-byte-42-runs-100.json](../../tests/performance-comparisons/bouncycastle-keygen-baseline/results/bcprov-jdk18on-1.83-source-r1rv83-rsa-upper-band-v1-rsa4096-direct-core-seed-byte-42-runs-100.json).
+The canonical modified artifact is [bcprov-jdk18on-1.83-source-r1rv83-rsa-upper-band-v1-rsa4096-direct-core-seed-byte-42-runs-100.json](../tests/bouncycastle-keygen-baseline/results/bcprov-jdk18on-1.83-source-r1rv83-rsa-upper-band-v1-rsa4096-direct-core-seed-byte-42-runs-100.json).
 
-The experiment report is [BOUNCY_CASTLE_RSA_UPPER_BAND_V1_REPORT.md](../../tests/performance-comparisons/bouncycastle-keygen-baseline/results/BOUNCY_CASTLE_RSA_UPPER_BAND_V1_REPORT.md).
+The experiment report is [BOUNCY_CASTLE_RSA_UPPER_BAND_V1_REPORT.md](../tests/bouncycastle-keygen-baseline/results/BOUNCY_CASTLE_RSA_UPPER_BAND_V1_REPORT.md).
 
 # Results
 

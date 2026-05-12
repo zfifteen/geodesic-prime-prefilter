@@ -38,8 +38,8 @@ Here:
 
 The exact artifacts are:
 
-- [../../output/gwr_dni_gap_type_hybrid_transition rule_probe_summary.json](../../research/03-gap-types/output/gwr_dni_gap_type_hybrid_scheduler_probe_summary.json)
-- ![Hybrid transition-rule probe overview](../../research/03-gap-types/output/gwr_dni_gap_type_hybrid_scheduler_probe_overview.png)
+- [../../output/gwr_dni_gap_type_hybrid_transition rule_probe_summary.json](../output/gwr_dni_gap_type_hybrid_scheduler_probe_summary.json)
+- ![Hybrid transition-rule probe overview](../output/gwr_dni_gap_type_hybrid_scheduler_probe_overview.png)
 
 ## Main Result
 

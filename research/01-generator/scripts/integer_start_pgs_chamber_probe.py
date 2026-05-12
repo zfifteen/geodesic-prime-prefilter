@@ -21,7 +21,7 @@ from z_band_prime_predictor.simple_pgs_generator import (  # noqa: E402
 )
 
 
-DEFAULT_OUTPUT_DIR = Path("output/integer_start_pgs_chamber_probe")
+DEFAULT_OUTPUT_DIR = Path("research/01-generator/output/integer_start_pgs_chamber_probe")
 
 
 def write_json(record: dict[str, object], path: Path) -> None:

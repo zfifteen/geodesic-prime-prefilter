@@ -117,7 +117,7 @@ Re-run the latest finite segment:
 python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py \
   --min-prime 100000001 \
   --max-prime 200000000 \
-  --output-dir research/02-gwr-dni/research/02-gwr-dni/output/gwr_proof/square_branch_dynamic_cutoff_search_1e8_2e8
+  --output-dir research/02-gwr-dni/output/gwr_proof/square_branch_dynamic_cutoff_search_1e8_2e8
 ```
 
 Expected summary:

@@ -121,7 +121,7 @@ rulebook state ingredient that separates margins `62` and `32`, or prove that
 this pair requires a later Milestone 3 state refinement.
 
 The nearest existing branch fact is the square-residue dead zone recorded in
-[`../findings/d4_square_residue_dead_zone.md`](../findings/d4_square_residue_dead_zone.md):
+[`../findings/d4_square_residue_dead_zone.md`](../../research/11-gap-ridge/docs/findings/d4_square_residue_dead_zone.md):
 after the floor package $q^+=S_{+}(w)-2$ fails on the live earliest-$d=4$
 semiprime branch, $S_{+}(w)-4$ is wheel-forbidden, and the first admissible
 non-floor margin splits by $S_{+}(w) \bmod 30$. That fact narrows the branch,

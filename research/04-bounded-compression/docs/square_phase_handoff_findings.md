@@ -30,13 +30,13 @@ result is that it also carries one-step transition information.
 Artifacts:
 
 - runner:
-  [`../../research/04-bounded-compression/scripts/gwr_square_phase_handoff_probe.py`](../../research/04-bounded-compression/scripts/gwr_square_phase_handoff_probe.py)
+  [`../../research/04-bounded-compression/scripts/gwr_square_phase_handoff_probe.py`](../scripts/gwr_square_phase_handoff_probe.py)
 - tests:
-  [`../../research/04-bounded-compression/tests/test_gwr_square_phase_handoff_probe.py`](../../research/04-bounded-compression/tests/test_gwr_square_phase_handoff_probe.py)
+  [`../../research/04-bounded-compression/tests/test_gwr_square_phase_handoff_probe.py`](../tests/test_gwr_square_phase_handoff_probe.py)
 - summary JSON:
-  [`../../research/04-bounded-compression/output/gwr_square_phase_handoff_summary.json`](../../research/04-bounded-compression/output/gwr_square_phase_handoff_summary.json)
+  [`../../research/04-bounded-compression/output/gwr_square_phase_handoff_summary.json`](../output/gwr_square_phase_handoff_summary.json)
 - stratum CSV:
-  [`../../research/04-bounded-compression/output/gwr_square_phase_handoff_strata.csv`](../../research/04-bounded-compression/output/gwr_square_phase_handoff_strata.csv)
+  [`../../research/04-bounded-compression/output/gwr_square_phase_handoff_strata.csv`](../output/gwr_square_phase_handoff_strata.csv)
 
 The current executed surface uses the already-committed gap-type catalog detail
 CSV and extracts only transitions whose current gap has `d = 4` selected integer:

@@ -12,8 +12,8 @@ now a measured extremal case with stable reference profiles.
 
 The synthesis artifacts are:
 
-- [../../research/03-gap-types/output/gwr_dni_gap_type_engine_v1_summary.json](../../research/03-gap-types/output/gwr_dni_gap_type_engine_v1_summary.json)
-- ![Prime Gap Generative Model v1.0 overview](../../research/03-gap-types/output/gwr_dni_gap_type_engine_v1_overview.png)
+- [../../research/03-gap-types/output/gwr_dni_gap_type_engine_v1_summary.json](../output/gwr_dni_gap_type_engine_v1_summary.json)
+- ![Prime Gap Generative Model v1.0 overview](../output/gwr_dni_gap_type_engine_v1_overview.png)
 
 ## Frozen Object
 

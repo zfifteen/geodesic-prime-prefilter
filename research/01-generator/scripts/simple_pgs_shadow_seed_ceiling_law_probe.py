@@ -28,7 +28,7 @@ DEFAULT_INPUT = (
     / "simple_pgs_shadow_seed_recovery_displacement_probe"
     / "candidate_rows.csv"
 )
-DEFAULT_OUTPUT_DIR = ROOT / "output" / "simple_pgs_shadow_seed_ceiling_law_probe"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "01-generator" / "output" / "simple_pgs_shadow_seed_ceiling_law_probe"
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:

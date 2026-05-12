@@ -45,8 +45,8 @@ This is the deterministic version of a slow reset-pressure model.
 
 The exact artifacts are:
 
-- [../../research/03-gap-types/output/gwr_dni_gap_type_long_horizon_controller_probe_summary.json](../../research/03-gap-types/output/gwr_dni_gap_type_long_horizon_controller_probe_summary.json)
-- ![Long-horizon controller overview](../../research/03-gap-types/output/gwr_dni_gap_type_long_horizon_controller_probe_overview.png)
+- [../../research/03-gap-types/output/gwr_dni_gap_type_long_horizon_controller_probe_summary.json](../output/gwr_dni_gap_type_long_horizon_controller_probe_summary.json)
+- ![Long-horizon controller overview](../output/gwr_dni_gap_type_long_horizon_controller_probe_overview.png)
 
 ## Main Result
 

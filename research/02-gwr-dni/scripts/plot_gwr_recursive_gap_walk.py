@@ -16,8 +16,8 @@ from matplotlib.lines import Line2D
 
 
 ROOT = Path(__file__).resolve().parents[3]
-DEFAULT_INPUT_DIR = ROOT / "output"
-DEFAULT_OUTPUT_DIR = ROOT / "output"
+DEFAULT_INPUT_DIR = ROOT / "research" / "02-gwr-dni" / "output"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "02-gwr-dni" / "output"
 DETAIL_FILENAME = "gwr_recursive_gap_walk_details.csv"
 SUMMARY_FILENAME = "gwr_recursive_gap_walk_summary.json"
 

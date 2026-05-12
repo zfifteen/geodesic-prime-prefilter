@@ -215,7 +215,7 @@ def main(argv: list[str] | None = None) -> int:
     payload = scan_window_violations(args.lo, args.hi, residual_classes)
     payload["source_artifacts"] = [
         str(args.residual_closure_json.relative_to(ROOT)),
-        "research/02-gwr-dni/research/02-gwr-dni/output/gwr_proof/prime_gap_admissibility_frontier_1e9_checkpoints.json",
+        "research/02-gwr-dni/output/gwr_proof/prime_gap_admissibility_frontier_1e9_checkpoints.json",
         "PROOF.md",
     ]
     payload["warning"] = (

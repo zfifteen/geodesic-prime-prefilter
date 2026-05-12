@@ -62,7 +62,7 @@ $$
 
 only to preserve the ordering of the exact same raw score function without floating-point underflow. The quantity being studied remains raw $Z$.
 
-In the normative Python helpers for this concern, exact divisor counts over intervals are supplied by the exact composite-field path, and the near-endpoint raw-Z peak summaries are produced by [the gap-ridge run helpers](../src/python/z_band_prime_gap_ridge/runs.py).
+In the normative Python helpers for this concern, exact divisor counts over intervals are supplied by the exact composite-field path, and the near-endpoint raw-Z peak summaries are produced by [the gap-ridge run helpers](../../../src/python/z_band_prime_gap_ridge/runs.py).
 
 ## Exact $10^6$ Result
 
@@ -90,7 +90,7 @@ The strongest supported reading of this table is that the raw composite score va
 ## Lexicographic Peak Rule
 
 The current repository now states the lexicographic peak rule as the proved
-leftmost minimum-divisor theorem in [../PROOF.md](../PROOF.md).
+leftmost minimum-divisor theorem in [../PROOF.md](../../../PROOF.md).
 
 Across the tested regimes, the exact raw-$Z$ peak inside each prime gap matches
 the leftmost minimizer:
@@ -102,11 +102,11 @@ the leftmost minimizer:
 This was first validated directly on the committed execution surface by a
 counterexample search over exact $10^6$, exact $10^7$, and sampled larger-scale
 regimes through $10^{18}$, with zero counterexamples on that surface. The live
-proof is now the self-contained argument in [../PROOF.md](../PROOF.md). Those
+proof is now the self-contained argument in [../PROOF.md](../../../PROOF.md). Those
 validation surfaces are certification and provenance, not theorem boundaries.
 
 So the current best explanation of the measured ridge is no longer only
-empirical: under the theorem in [../PROOF.md](../PROOF.md), the observed
+empirical: under the theorem in [../PROOF.md](../../../PROOF.md), the observed
 near-edge low-divisor ridge is the gap-local expression of GWR.
 
 ## Gap-Size Structure
