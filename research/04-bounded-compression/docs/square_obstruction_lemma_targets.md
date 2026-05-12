@@ -1,5 +1,7 @@
 # Square Obstruction Lemma Targets
 
+Proof status: proof target
+
 ## Branch State
 
 The bounded-compression conjecture is:

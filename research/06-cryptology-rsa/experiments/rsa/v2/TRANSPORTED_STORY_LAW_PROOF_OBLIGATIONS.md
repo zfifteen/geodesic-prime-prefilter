@@ -1,5 +1,7 @@
 # Transported Story Law Proof Obligations
 
+Proof status: proof obligation
+
 This file is the proof-facing workbench for `transported_story_law_v1`.
 
 The implemented sidecar has already shown that the recursive transported

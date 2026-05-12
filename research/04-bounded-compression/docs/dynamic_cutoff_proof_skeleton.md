@@ -1,5 +1,7 @@
 # Dynamic Cutoff Proof Skeleton
 
+Proof status: proof target
+
 ## Theorem Target
 
 Dynamic Cutoff Conjecture:

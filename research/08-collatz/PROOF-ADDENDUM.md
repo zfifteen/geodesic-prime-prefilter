@@ -1,5 +1,7 @@
 # Collatz Fork Efficiency Channel Addendum
 
+Proof status: non-authoritative research note
+
 ## Channel Efficiency Framing
 
 The exact 3-step first-descent algebra creates two terminal branches with the
@@ -68,4 +70,3 @@ surface. The proposed next theorem is to prove that the prime-gap
 divisor-count minimizer condition amplifies the branch-2 reset advantage
 because `w = 14 mod 18` avoids the heavier branch-1 divisor path `w = 0 mod
 18`.
-
