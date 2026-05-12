@@ -74,7 +74,7 @@ The high-scale surface uses `256` consecutive input primes per decade.
 ## Validation Command
 
 ```bash
-pytest -q tests/python/predictor/test_simple_pgs_generator.py
+pytest -q research/01-generator/tests/test_simple_pgs_generator.py
 ```
 
 Current result:

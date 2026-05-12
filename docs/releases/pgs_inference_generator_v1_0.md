@@ -86,7 +86,7 @@ Downstream audit confirms q after generation.
 The frozen generator test surface is:
 
 ```bash
-pytest -q tests/python/predictor/test_simple_pgs_generator.py
+pytest -q research/01-generator/tests/test_simple_pgs_generator.py
 ```
 
 Current result:

@@ -417,10 +417,10 @@ Each benchmark run should produce:
 
 Recommended artifact paths:
 
-* output/prime_inference_generator/
-* docs/research/prime_inference_generator/
-* benchmarks/python/prime_inference_generator/
-* tests/python/test_prime_inference_generator.py
+* research/01-generator/output/prime_inference_generator/
+* research/01-generator/docs/
+* research/01-generator/scripts/prime_inference_generator/
+* research/01-generator/tests/test_prime_inference_generator.py
 
 17. Naming
 

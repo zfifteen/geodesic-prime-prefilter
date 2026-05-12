@@ -1,0 +1,77 @@
+# Leftmost Minimum-Divisor Rule
+
+This subtree is the forward home for the `Leftmost Minimum-Divisor Rule` (`GWR`).
+
+`GWR` is the preferred name going forward for the rule previously recorded in
+this repo as the `Lexicographic Winner-Take-All Peak Rule`. The legacy name is
+retained in older artifacts so existing reports, figures, scripts, and links do
+not have to be rewritten.
+
+## Core Statement
+
+Inside a prime gap $(p, q)$ with at least one composite interior, define the
+raw-$Z$ score of an interior integer $n$ by
+
+$$
+Z(n) = \left(1 - \frac{d(n)}{2}\right)\ln(n).
+$$
+
+The `Leftmost Minimum-Divisor Rule` says the raw-$Z$ maximizer is exactly the lexicographic
+selected integer:
+
+1. minimize the interior divisor count $d(n)$,
+2. among ties, choose the leftmost interior integer.
+
+Any gap where the raw-$Z$ argmax differs from that selected integer is a counterexample.
+
+## Current Headline Status
+
+`GWR` is the repository name for the prime-gap maximizer theorem proved in
+[../PROOF.md](../../../PROOF.md). That proof document also proves the direct
+deterministic next-prime theorem.
+
+`PROOF.md` is the single live proof reference. It proves that exact divisor
+counts determine the next prime from a known prime `p`, and that the selected
+integer is the unique maximizer inside every prime-gap interior. Audit tables
+certify finite cases and preserve provenance; they do not limit the theorems.
+
+The public proof-facing summaries are:
+
+- [../PROOF.md](../../../PROOF.md)
+- [../docs/current_headline_results.md](../../../docs/current_headline_results.md)
+
+Bridge-era BHP/Robin notes and verification scripts are retained under the
+chapter proof scripts, tests, and output as historical comparison material.
+They are not the current proof-critical path for the theorem status presented
+in the repo headline files.
+
+## Subtree Layout
+
+- [`docs/`](./README.md): Statements of the rule and synthesized findings.
+- [`experiments/`](../experiments/README.md): Validation entry points, outputs,
+  and experiment registry.
+- [`literature/`](./literature/README.md): Novelty search notes and external
+  positioning.
+
+## Current Validation Surface
+
+The historical executable validation path remains in the existing near-endpoint raw-Z peak
+code:
+
+- [`research/11-gap-ridge/scripts/lexicographic_rule_revalidation.py`](../../11-gap-ridge/scripts/lexicographic_rule_revalidation.py)
+- [`research/11-gap-ridge/scripts/lexicographic_peak_validation.py`](../../11-gap-ridge/scripts/lexicographic_peak_validation.py)
+- [`src/python/z_band_prime_gap_ridge/runs.py`](../../../src/python/z_band_prime_gap_ridge/runs.py)
+
+The current validated summaries and reports are:
+
+- [`output/lexicographic_rule_revalidation_report.md`](../../11-gap-ridge/output/lexicographic_rule_revalidation_report.md)
+- [`output/lexicographic_rule_revalidation_summary.json`](../../11-gap-ridge/output/lexicographic_rule_revalidation_summary.json)
+- [`research/11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule.md`](../../11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule.md)
+
+## Naming Convention
+
+Use this form on first mention in new artifacts:
+
+`Leftmost Minimum-Divisor Rule (GWR; legacy: Lexicographic Winner-Take-All Peak Rule)`
+
+After first mention, use `GWR`.

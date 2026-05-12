@@ -1,0 +1,27 @@
+# GWR Literature
+
+This directory is for novelty-search notes, prior-art tracking, and external
+positioning of the `Leftmost Minimum-Divisor Rule`.
+
+## Current Status
+
+The repo carries the proved universal `GWR` theorem in
+[../../PROOF.md](../../../../PROOF.md).
+
+It still does not claim that no prior source states the same result. That
+remains a literature and prior-art question.
+
+The safe current statement is:
+
+`GWR is a proved universal prime-selected interior integer theorem in this repository, and no matching prior theorem has yet been identified in the literature search done so far.`
+
+## Intended Contents
+
+- novelty search memos,
+- candidate prior-art notes,
+- citations that are safe to use in reports,
+- explicit distinctions between proved repo claims and broader novelty claims.
+
+## Existing Inputs
+
+- [../../../11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule/](../../../11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule/)
