@@ -34,13 +34,38 @@ CRT system is consistent on the `509` root model:
 The CRT residue is coprime to the CRT modulus. The local congruence system does
 not itself force the modeled root class to be composite.
 
-The artifact is:
+The first prime representative found in the CRT class is also selected-square:
+
+| Quantity | Value |
+|---|---:|
+| Representative index `k` | `4` |
+| Representative root | `89726961223544427015292389839` |
+| Previous-prime offset below root square | `338` |
+| Modeled even window | `78` |
+| Dynamic cutoff | `8889` |
+| No prime in modeled window | `true` |
+| Closed by cutoff | `true` |
+| Selected-square condition | `true` |
+
+The prime-representative artifact is:
+
+```text
+research/04-bounded-compression/output/square_tail_rough_cover_prime_class_audit_509.json
+```
+
+The prime-representative executable audit is:
+
+```text
+research/04-bounded-compression/scripts/square_tail_rough_cover_prime_class_audit.py
+```
+
+The base CRT model artifact is:
 
 ```text
 research/04-bounded-compression/output/square_tail_rough_cover_model_509.json
 ```
 
-The executable model builder is:
+The base CRT model executable builder is:
 
 ```text
 research/04-bounded-compression/scripts/square_tail_rough_cover_model.py
@@ -57,7 +82,8 @@ python3 research/04-bounded-compression/scripts/square_tail_rough_cover_model.py
 ## Proof Boundary
 
 This does not produce a square-tail counterexample. It is a local congruence
-model, not a prime root with an actual complete composite window.
+model plus one prime representative audit, not an actual complete composite
+window through the representative's dynamic cutoff.
 
 It does prove that the following route is insufficient:
 
@@ -66,10 +92,14 @@ derive contradiction only from the residue classes of repeat-capable carriers
 and one large carrier per rough defect.
 ```
 
+It also proves that merely adding primality of the root and the selected-square
+condition does not eliminate this local obstruction pattern. The representative
+root has no prime in the modeled window, satisfies the selected-square
+condition, and still closes later by an actual previous prime at offset `338`.
+
 The proof must use additional structure:
 
-1. primality of the root in the actual integer line;
-2. selected-square branch structure;
-3. a new rough-defect transport law;
-4. an exact finite reduction;
-5. or a counterexample certificate.
+1. a law forcing prime-valued M-rough defects before the dynamic cutoff;
+2. a new rough-defect transport law;
+3. an exact finite reduction;
+4. or a counterexample certificate.
