@@ -1,5 +1,7 @@
 # Prefix Attainment Theorem Target
 
+Proof status: proof target
+
 ## Status
 
 The bounded dynamic cutoff theorem is unresolved.

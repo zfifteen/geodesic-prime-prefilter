@@ -1,5 +1,7 @@
 # Collatz Branch-Occupancy Proof Target
 
+Proof status: proof target
+
 ## Status
 
 The short-block Collatz algebra is closed for its stated scope in

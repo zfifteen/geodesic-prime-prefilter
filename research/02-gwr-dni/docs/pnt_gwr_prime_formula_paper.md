@@ -1,5 +1,7 @@
 # A Witness-Based Prime Predictor: Constructing p_n from the Prime Number Theorem and the Leftmost Minimum-Divisor Rule
 
+Proof status: non-authoritative research note
+
 **Attribution:** Big D  
 **Repository:** [zfifteen/prime-gap-structure](https://github.com/zfifteen/prime-gap-structure)  
 **Date:** April 9, 2026  

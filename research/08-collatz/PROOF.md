@@ -1,5 +1,7 @@
 # Collatz Short-Block Reset Algebra
 
+Proof status: local theorem, not repo-wide authority
+
 ## Status
 
 This document proves the exact algebra for 3-step odd Collatz first-descent

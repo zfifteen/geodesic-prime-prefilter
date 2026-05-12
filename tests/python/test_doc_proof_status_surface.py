@@ -7,11 +7,49 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
+PROOF_MARKERS = ("proof", "theorem", "lemma")
+PROOF_STATUS_PREFIX = "Proof status:"
+ALLOWED_NON_ROOT_PROOF_STATUSES = {
+    "Proof status: non-authoritative research note",
+    "Proof status: proof target",
+    "Proof status: proof obligation",
+    "Proof status: conjectural",
+    "Proof status: archived",
+    "Proof status: local theorem, not repo-wide authority",
+    "Proof status: invalidated",
+}
 
 
 def live_markdown_paths() -> list[Path]:
     """Return Markdown files in deterministic order."""
     return sorted(ROOT.rglob("*.md"))
+
+
+def first_markdown_heading(path: Path) -> str:
+    """Return the first Markdown heading in a document."""
+    for line in path.read_text(encoding="utf-8").splitlines():
+        stripped = line.strip()
+        if stripped.startswith("#"):
+            return stripped.lstrip("#").strip()
+    return ""
+
+
+def is_proof_marked_markdown(path: Path) -> bool:
+    """Return whether a non-root Markdown file is proof-adjacent by path or title."""
+    relative_parts = path.relative_to(ROOT).parts
+    path_marked = any(
+        any(marker in part.lower() for marker in PROOF_MARKERS)
+        for part in relative_parts
+    )
+    title = first_markdown_heading(path).lower()
+    title_marked = any(marker in title for marker in PROOF_MARKERS)
+    return path_marked or title_marked
+
+
+def proof_status_lines(path: Path) -> list[str]:
+    """Return near-top proof-status declarations."""
+    lines = path.read_text(encoding="utf-8").splitlines()[:20]
+    return [line.strip() for line in lines if line.strip().startswith(PROOF_STATUS_PREFIX)]
 
 
 def test_root_proof_document_is_the_live_reference():
@@ -33,21 +71,28 @@ def test_deprecated_document_tree_is_removed():
     assert not (ROOT / "docs" / "deprecated").exists()
 
 
-def test_old_proof_marked_markdown_is_removed_from_live_docs():
-    """Proof/theorem/lemma-marked markdown files should not remain live."""
+def test_non_root_proof_marked_markdown_declares_status():
+    """Proof/theorem/lemma-marked research docs must declare epistemic status."""
     offenders: list[str] = []
-    markers = ("proof", "theorem", "lemma")
 
     for path in ROOT.rglob("*.md"):
         if path == ROOT / "PROOF.md":
             continue
-        relative_parts = path.relative_to(ROOT).parts
-        if relative_parts and relative_parts[0] == "research":
+        if not is_proof_marked_markdown(path):
             continue
-        if any(any(marker in part.lower() for marker in markers) for part in relative_parts):
-            offenders.append(str(path.relative_to(ROOT)))
+        statuses = proof_status_lines(path)
+        if not statuses:
+            offenders.append(f"{path.relative_to(ROOT)}: missing proof status")
+            continue
+        invalid_statuses = [
+            status
+            for status in statuses
+            if status not in ALLOWED_NON_ROOT_PROOF_STATUSES
+        ]
+        for status in invalid_statuses:
+            offenders.append(f"{path.relative_to(ROOT)}: invalid proof status `{status}`")
 
-    assert not offenders, "live proof-marked markdown files found:\n" + "\n".join(offenders)
+    assert not offenders, "proof-marked Markdown status errors:\n" + "\n".join(offenders)
 
 
 def test_root_proof_uses_conventional_language():
