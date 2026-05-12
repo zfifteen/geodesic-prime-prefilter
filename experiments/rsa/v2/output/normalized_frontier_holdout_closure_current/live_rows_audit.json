@@ -1,0 +1,40 @@
+[
+  {
+    "N": "1099507433251",
+    "bits": 40,
+    "budget_blocks_frontier": false,
+    "case_id": "rsa_v2_40bit_static_001",
+    "holdout_survivor_reason": "no_public_normalized_frontier_witness_for_non_strict_row",
+    "induced_anchor": "1051601",
+    "induced_carrier_committed": false,
+    "induced_carrier_is_d4": false,
+    "induced_d4_uncommitted_count": 1,
+    "net_frontier_budget": 1,
+    "normalized_live_after_trace": true,
+    "open_d4_carrier": false,
+    "rule_id": "toy_normalized_frontier_closure_sweep_v1",
+    "source_anchor": "1045547",
+    "strict_d4_frontier_candidate": false,
+    "terminal_class": null,
+    "terminal_exit_rule_name": null
+  },
+  {
+    "N": "1027435935526951",
+    "bits": 50,
+    "budget_blocks_frontier": false,
+    "case_id": "rsa_v2_50bit_static_001",
+    "holdout_survivor_reason": "no_public_normalized_frontier_witness_for_non_strict_row",
+    "induced_anchor": "32056459",
+    "induced_carrier_committed": false,
+    "induced_carrier_is_d4": false,
+    "induced_d4_uncommitted_count": 1,
+    "net_frontier_budget": 1,
+    "normalized_live_after_trace": true,
+    "open_d4_carrier": false,
+    "rule_id": "toy_normalized_frontier_closure_sweep_v1",
+    "source_anchor": "32050813",
+    "strict_d4_frontier_candidate": false,
+    "terminal_class": null,
+    "terminal_exit_rule_name": null
+  }
+]
