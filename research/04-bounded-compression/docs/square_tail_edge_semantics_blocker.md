@@ -147,3 +147,9 @@ That model also has a prime selected-square representative whose actual
 previous prime appears after the modeled window. The missing law must therefore
 use the dynamic cutoff tail itself, not only root primality or selected-square
 membership.
+
+The representative dynamic-tail descent audit records the same unresolved edge
+semantics at the next layer: the composite rough-tail rows project to smaller
+closed selected-square children, while the representative closes at the one
+prime-valued rough-tail row. The projection pattern is exact evidence for the
+transport target, not the transport law itself.

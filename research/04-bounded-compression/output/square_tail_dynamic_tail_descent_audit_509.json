@@ -1,0 +1,342 @@
+{
+  "source_root": 509,
+  "actual_root": "89726961223544427015292389839",
+  "actual_M": 4444,
+  "rough_tail_count": 13,
+  "prime_rough_tail_count": 1,
+  "prime_rough_tail_offsets": [
+    338
+  ],
+  "composite_rough_tail_count": 12,
+  "composite_least_factors": [
+    6736351,
+    1714849,
+    665241324811967767,
+    7541,
+    1614712643,
+    13214687,
+    31249,
+    15277,
+    333497,
+    284521,
+    149969,
+    170450107
+  ],
+  "child_projection_count": 12,
+  "child_projection_closed_count": 12,
+  "child_projection_selected_square_count": 12,
+  "child_prime_parent_residue_inside_M_count": 0,
+  "rough_tail_rows": [
+    {
+      "m": 40,
+      "offset": 80,
+      "is_prime": false,
+      "least_factor": 6736351,
+      "factorization": {
+        "6736351": 1,
+        "1195146685558909448024469654707256882290369325022991": 1
+      },
+      "child_projection": {
+        "root": 6736351,
+        "previous_prime_offset": 2,
+        "dynamic_cutoff": 495,
+        "cutoff_utilization": 0.00404040404040404,
+        "closed_by_cutoff": true,
+        "selected_square_condition": true,
+        "previous_root_gap": 8
+      },
+      "child_prime_parent_residue": {
+        "child_prime": "45378424795199",
+        "parent_residue_m": 29194344041272,
+        "inside_parent_M": false
+      }
+    },
+    {
+      "m": 57,
+      "offset": 114,
+      "is_prime": false,
+      "least_factor": 1714849,
+      "factorization": {
+        "1714849": 1,
+        "3844276612573": 1,
+        "1221252330606298548108639678704783923291": 1
+      },
+      "child_projection": {
+        "root": 1714849,
+        "previous_prime_offset": 14,
+        "dynamic_cutoff": 413,
+        "cutoff_utilization": 0.03389830508474576,
+        "closed_by_cutoff": true,
+        "selected_square_condition": true,
+        "previous_root_gap": 12
+      },
+      "child_prime_parent_residue": {
+        "child_prime": "2940707092787",
+        "parent_residue_m": 1555046775254,
+        "inside_parent_M": false
+      }
+    },
+    {
+      "m": 64,
+      "offset": 128,
+      "is_prime": false,
+      "least_factor": 665241324811967767,
+      "factorization": {
+        "665241324811967767": 1,
+        "12102266155349055244966466770699026196679": 1
+      },
+      "child_projection": {
+        "root": 665241324811967767,
+        "previous_prime_offset": 42,
+        "dynamic_cutoff": 3369,
+        "cutoff_utilization": 0.012466607301869992,
+        "closed_by_cutoff": true,
+        "selected_square_condition": true,
+        "previous_root_gap": 54
+      },
+      "child_prime_parent_residue": {
+        "child_prime": "442546020237582001388098670646966247",
+        "parent_residue_m": 116475962020623809413254150675986899,
+        "inside_parent_M": false
+      }
+    },
+    {
+      "m": 66,
+      "offset": 132,
+      "is_prime": false,
+      "least_factor": 7541,
+      "factorization": {
+        "7541": 1,
+        "24767": 1,
+        "10054799401": 1,
+        "1200741951503531": 1,
+        "3570429644951377745427677": 1
+      },
+      "child_projection": {
+        "root": 7541,
+        "previous_prime_offset": 38,
+        "dynamic_cutoff": 160,
+        "cutoff_utilization": 0.2375,
+        "closed_by_cutoff": true,
+        "selected_square_condition": true,
+        "previous_root_gap": 4
+      },
+      "child_prime_parent_residue": {
+        "child_prime": "56866643",
+        "parent_residue_m": 29254543,
+        "inside_parent_M": false
+      }
+    },
+    {
+      "m": 91,
+      "offset": 182,
+      "is_prime": false,
+      "least_factor": 1614712643,
+      "factorization": {
+        "1614712643": 1,
+        "4508621148478264960327": 1,
+        "1105877265467527088029159999": 1
+      },
+      "child_projection": {
+        "root": 1614712643,
+        "previous_prime_offset": 50,
+        "dynamic_cutoff": 900,
+        "cutoff_utilization": 0.05555555555555555,
+        "closed_by_cutoff": true,
+        "selected_square_condition": true,
+        "previous_root_gap": 6
+      },
+      "child_prime_parent_residue": {
+        "child_prime": "2607296919464045399",
+        "parent_residue_m": 2449009643938374808,
+        "inside_parent_M": false
+      }
+    },
+    {
+      "m": 97,
+      "offset": 194,
+      "is_prime": false,
+      "least_factor": 13214687,
+      "factorization": {
+        "13214687": 1,
+        "363124063710331721293": 1,
+        "1677776119594059835582214182597": 1
+      },
+      "child_projection": {
+        "root": 13214687,
+        "previous_prime_offset": 32,
+        "dynamic_cutoff": 538,
+        "cutoff_utilization": 0.05947955390334572,
+        "closed_by_cutoff": true,
+        "selected_square_condition": true,
+        "previous_root_gap": 6
+      },
+      "child_prime_parent_residue": {
+        "child_prime": "174627952507937",
+        "parent_residue_m": 155694616989923,
+        "inside_parent_M": false
+      }
+    },
+    {
+      "m": 126,
+      "offset": 252,
+      "is_prime": false,
+      "least_factor": 31249,
+      "factorization": {
+        "31249": 1,
+        "257405059642453": 1,
+        "1000904671511469307647369610302739478977": 1
+      },
+      "child_projection": {
+        "root": 31249,
+        "previous_prime_offset": 38,
+        "dynamic_cutoff": 215,
+        "cutoff_utilization": 0.17674418604651163,
+        "closed_by_cutoff": true,
+        "selected_square_condition": true,
+        "previous_root_gap": 2
+      },
+      "child_prime_parent_residue": {
+        "child_prime": "976499963",
+        "parent_residue_m": 701299760,
+        "inside_parent_M": false
+      }
+    },
+    {
+      "m": 130,
+      "offset": 260,
+      "is_prime": false,
+      "least_factor": 15277,
+      "factorization": {
+        "15277": 1,
+        "10008403": 1,
+        "52655417005917349390582371390451484067461001131": 1
+      },
+      "child_projection": {
+        "root": 15277,
+        "previous_prime_offset": 8,
+        "dynamic_cutoff": 186,
+        "cutoff_utilization": 0.043010752688172046,
+        "closed_by_cutoff": true,
+        "selected_square_condition": true,
+        "previous_root_gap": 6
+      },
+      "child_prime_parent_residue": {
+        "child_prime": "233386721",
+        "parent_residue_m": 111310662,
+        "inside_parent_M": false
+      }
+    },
+    {
+      "m": 139,
+      "offset": 278,
+      "is_prime": false,
+      "least_factor": 333497,
+      "factorization": {
+        "333497": 1,
+        "182814839": 1,
+        "5498762615317": 1,
+        "24014722488999687757163607591713": 1
+      },
+      "child_projection": {
+        "root": 333497,
+        "previous_prime_offset": 20,
+        "dynamic_cutoff": 324,
+        "cutoff_utilization": 0.06172839506172839,
+        "closed_by_cutoff": true,
+        "selected_square_condition": true,
+        "previous_root_gap": 4
+      },
+      "child_prime_parent_residue": {
+        "child_prime": "111220248989",
+        "parent_residue_m": 33361765546,
+        "inside_parent_M": false
+      }
+    },
+    {
+      "m": 150,
+      "offset": 300,
+      "is_prime": false,
+      "least_factor": 284521,
+      "factorization": {
+        "284521": 1,
+        "349658502612818041564199": 1,
+        "80925892865077663218187946699": 1
+      },
+      "child_projection": {
+        "root": 284521,
+        "previous_prime_offset": 18,
+        "dynamic_cutoff": 316,
+        "cutoff_utilization": 0.056962025316455694,
+        "closed_by_cutoff": true,
+        "selected_square_condition": true,
+        "previous_root_gap": 12
+      },
+      "child_prime_parent_residue": {
+        "child_prime": "80952199423",
+        "parent_residue_m": 65392900111,
+        "inside_parent_M": false
+      }
+    },
+    {
+      "m": 159,
+      "offset": 318,
+      "is_prime": false,
+      "least_factor": 149969,
+      "factorization": {
+        "149969": 1,
+        "5105615574077": 1,
+        "854009178691": 1,
+        "12312146485923253351085339941": 1
+      },
+      "child_projection": {
+        "root": 149969,
+        "previous_prime_offset": 24,
+        "dynamic_cutoff": 285,
+        "cutoff_utilization": 0.08421052631578947,
+        "closed_by_cutoff": true,
+        "selected_square_condition": true,
+        "previous_root_gap": 16
+      },
+      "child_prime_parent_residue": {
+        "child_prime": "22490700937",
+        "parent_residue_m": 18356084925,
+        "inside_parent_M": false
+      }
+    },
+    {
+      "m": 166,
+      "offset": 332,
+      "is_prime": false,
+      "least_factor": 170450107,
+      "factorization": {
+        "170450107": 1,
+        "4949811491": 1,
+        "23379968166677": 1,
+        "408146490314308337171950961": 1
+      },
+      "child_projection": {
+        "root": 170450107,
+        "previous_prime_offset": 80,
+        "dynamic_cutoff": 719,
+        "cutoff_utilization": 0.11126564673157163,
+        "closed_by_cutoff": true,
+        "selected_square_condition": true,
+        "previous_root_gap": 8
+      },
+      "child_prime_parent_residue": {
+        "child_prime": "29053238976311369",
+        "parent_residue_m": 11587942982394625,
+        "inside_parent_M": false
+      }
+    },
+    {
+      "m": 169,
+      "offset": 338,
+      "is_prime": true,
+      "least_factor": null,
+      "factorization": null,
+      "child_projection": null
+    }
+  ]
+}
