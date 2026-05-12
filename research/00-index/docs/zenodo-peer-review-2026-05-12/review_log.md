@@ -14,8 +14,8 @@ This file records outside peer-review feedback for the Zenodo proof draft.
   the prior retained-row assertion
 - Follow-up completed: see
   [`adjacent_pair_closure_investigation.md`](./adjacent_pair_closure_investigation.md)
-  for the deterministic large-prime ratio closure of the reviewer examples and
-  the remaining infinite-tail proof obligation.
+  for the deterministic closure of the reviewer examples and the universal
+  short-interval divisor-average closure now patched into the proof.
 
 ## Feedback Template
 

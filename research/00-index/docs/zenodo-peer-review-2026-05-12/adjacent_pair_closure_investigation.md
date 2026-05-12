@@ -4,10 +4,11 @@ Date: 2026-05-12
 
 ## Finding
 
-The reviewer examples `(36,37)`, `(64,65)`, and `(72,73)` are closed by a
-deterministic large-prime ratio lemma. The pair `(64,65)` also closes by direct
-enumeration of every possible `tau(k)=65` earlier carrier in its Bertrand
-unresolved window.
+The reviewer examples `(36,37)`, `(64,65)`, and `(72,73)` are closed. The
+large-prime ratio lemma closes those concrete rows directly, and the new
+short-interval divisor-average closure closes the full adjacent-pair tail.
+The pair `(64,65)` also closes by direct enumeration of every possible
+`tau(k)=65` earlier carrier in its Bertrand unresolved window.
 
 The reproducibility script is:
 
@@ -21,8 +22,10 @@ The emitted certificate is:
 research/02-gwr-dni/output/gwr_proof/adjacent_pair_closure_certificate_20260512.json
 ```
 
-This fixes the concrete reviewer objection for pairs like `(64,65)`. It does
-not, by itself, close the infinite adjacent-pair tail.
+The large-prime ratio certificate fixes the concrete reviewer objection for
+pairs like `(64,65)`. The universal tail closure is supplied by the
+short-interval divisor-average argument recorded below and patched into the
+proof.
 
 ## Large-Prime Ratio Lemma
 
@@ -145,19 +148,114 @@ probes show later failures of this mechanism:
 | `2^28` | `268,435,455` | `347.18447738327893` | `88.10745538137895` | `89.07983304013777` | not closed by this mechanism |
 | `2^30` | `1,073,741,823` | `486.4563487884003` | `97.0149323589077` | `181.49815514000943` | not closed by this mechanism |
 
-## Proof Implication
+## Universal Adjacent-Pair Closure
 
-The Zenodo proof can safely add the large-prime ratio lemma to close the
-reviewer-cited omitted adjacent pairs, including `(64,65)`.
+The infinite adjacent-pair tail is closed by a deterministic divisor-average
+argument.
 
-The proof must not present the fixed-ratio or two-sided-ratio scans as a
-universal infinite-tail closure. The remaining proof obligation is:
+Let `p<q` be consecutive primes above the finite base, let `w` be the first
+interior integer with minimum divisor count, and put
 
 ```text
-Give a deterministic all-class argument for adjacent pairs (d,e)=(e-1,e)
-not closed by the finite base, witness threshold, odd-branch enumeration,
-fixed-ratio class lemma, or two-sided ratio lemma.
+d = tau(w) >= 4
+L = log(w)
 ```
 
-This is a proof-boundary statement, not a probabilistic qualification. The
-closed pairs above are closed by exact divisor-count arithmetic.
+Bertrand gives `w<q<2p`, hence `p>w/2`. If
+
+```text
+(d - 2) log(2) <= L - log(2),
+```
+
+then `2^(d-2) <= w/2 < p`, so the Threshold Lemma closes the adjacent row
+`(d,d+1)` and therefore every larger earlier divisor count.
+
+In the remaining case,
+
+```text
+(d - 2) log(2) > L - log(2).
+```
+
+Since `w>5e9`, this implies
+
+```text
+d > L + 2 + 32/L.
+```
+
+Set
+
+```text
+H = floor(w L / (4(d - 1))).
+```
+
+For any interval `J={w-H,...,w-1}`,
+
+```text
+sum_{n in J} tau(n) <= H(L + 2) + 2 sqrt(w).
+```
+
+This follows by pairing divisors and counting multiples of each
+`a <= sqrt(w)` across the `H` consecutive integers.
+
+Since `tau(w)=d <= 2 sqrt(w)`, the chosen `H` satisfies
+
+```text
+H >= w L / (8(d - 1)).
+```
+
+Therefore the average divisor count on `J` is at most
+
+```text
+L + 2 + 2 sqrt(w)/H
+<= L + 2 + 32/L
+< d.
+```
+
+So some `n in J` has `tau(n)<d`. That integer cannot lie strictly between
+`p` and `w`, because `w` is the first interior integer where the gap minimum
+divisor count is attained. Hence `n<=p`, and every earlier competitor `k`
+satisfies
+
+```text
+k > p >= n >= w - H.
+```
+
+With `x=H/w`, we have
+
+```text
+x <= L/(4(d - 1)) < 1/4
+```
+
+and therefore
+
+```text
+log(w/(w-H)) < x/(1-x) < L/(d - 1).
+```
+
+Thus
+
+```text
+(d - 1) log(w - H) > (d - 2) log(w).
+```
+
+For every earlier integer with `e=tau(k)>d`,
+
+```text
+e - 2 >= d - 1
+```
+
+and `k>=w-H+1>w-H`, so
+
+```text
+(e - 2) log(k) > (d - 2) log(w).
+```
+
+That is exactly `F(k)<F(w)`.
+
+## Proof Implication
+
+The Zenodo proof no longer needs the retained-row classification table for the
+earlier side. The finite base handles `p<5,000,000,001`; above that base, the
+threshold case and the short-interval divisor-average case close every
+adjacent pair. The concrete rows `(36,37)`, `(64,65)`, and `(72,73)` are
+instances of this deterministic closure.
