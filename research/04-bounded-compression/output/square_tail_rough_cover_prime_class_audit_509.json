@@ -11,8 +11,13 @@
     "root_digits": 29,
     "previous_root_gap": 112,
     "previous_prime_offset": 338,
+    "closing_m": 169,
     "dynamic_cutoff": 8889,
     "modeled_even_window": 78,
+    "closing_offset_beyond_modeled_window": true,
+    "closing_small_carriers": [],
+    "closing_large_carrier_matches": [],
+    "closing_explained_by_modeled_carriers": false,
     "no_prime_in_modeled_window": true,
     "closed_by_cutoff": true,
     "selected_square_condition": true

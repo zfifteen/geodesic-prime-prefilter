@@ -43,8 +43,13 @@ def test_root_509_crt_class_has_prime_selected_square_representative():
     assert row["root"] == "89726961223544427015292389839"
     assert row["previous_root_gap"] == 112
     assert row["previous_prime_offset"] == 338
+    assert row["closing_m"] == 169
     assert row["dynamic_cutoff"] == 8889
     assert row["modeled_even_window"] == 78
+    assert row["closing_offset_beyond_modeled_window"] is True
+    assert row["closing_small_carriers"] == []
+    assert row["closing_large_carrier_matches"] == []
+    assert row["closing_explained_by_modeled_carriers"] is False
     assert row["no_prime_in_modeled_window"] is True
     assert row["closed_by_cutoff"] is True
     assert row["selected_square_condition"] is True

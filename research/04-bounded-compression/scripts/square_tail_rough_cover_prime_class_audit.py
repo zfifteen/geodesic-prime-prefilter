@@ -10,6 +10,7 @@ import sys
 from pathlib import Path
 
 import gmpy2
+from sympy import primerange
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -80,11 +81,20 @@ def build_prime_class_audit(root: int, search_limit: int = 10_000) -> dict[str, 
     previous_prime = int(gmpy2.prev_prime(square))
     previous_root = int(gmpy2.prev_prime(representative))
     previous_prime_offset = square - previous_prime
+    closing_m = previous_prime_offset // 2
     cutoff = dynamic_cutoff(previous_prime)
     no_prime_in_modeled_window = all(
         not gmpy2.is_prime(square - offset)
         for offset in range(2, modeled_even_window + 1, 2)
     )
+    small_primes = [int(prime) for prime in primerange(3, int(model["M"]) + 1)]
+    closing_small_carriers = [
+        prime for prime in small_primes if (square - previous_prime_offset) % prime == 0
+    ]
+    closing_large_carrier_matches = [
+        row for row in model["carrier_rows"]
+        if closing_m % int(row["carrier"]) == int(row["m"]) % int(row["carrier"])
+    ]
 
     return {
         "source_root": root,
@@ -99,8 +109,15 @@ def build_prime_class_audit(root: int, search_limit: int = 10_000) -> dict[str, 
             "root_digits": len(str(representative)),
             "previous_root_gap": representative - previous_root,
             "previous_prime_offset": previous_prime_offset,
+            "closing_m": closing_m,
             "dynamic_cutoff": cutoff,
             "modeled_even_window": modeled_even_window,
+            "closing_offset_beyond_modeled_window": previous_prime_offset > modeled_even_window,
+            "closing_small_carriers": closing_small_carriers,
+            "closing_large_carrier_matches": closing_large_carrier_matches,
+            "closing_explained_by_modeled_carriers": bool(
+                closing_small_carriers or closing_large_carrier_matches
+            ),
             "no_prime_in_modeled_window": no_prime_in_modeled_window,
             "closed_by_cutoff": previous_prime_offset <= cutoff,
             "selected_square_condition": previous_root * previous_root < previous_prime < square,
