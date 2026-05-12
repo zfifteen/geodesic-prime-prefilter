@@ -1,0 +1,5740 @@
+{
+  "type_key_definition": {
+    "format": "o{first_open}_d{winner_d}_a{winner_offset}_{family}",
+    "first_open_offsets_observed": [
+      2,
+      4,
+      6
+    ],
+    "carrier_families": [
+      "prime_square",
+      "prime_cube",
+      "even_semiprime",
+      "odd_semiprime",
+      "higher_divisor_even",
+      "higher_divisor_odd"
+    ]
+  },
+  "exact_baseline_max_right_prime": 1000,
+  "sampled_window_steps": 8192,
+  "surface_count": 8,
+  "surface_order": [
+    "baseline_1e3",
+    "10^12",
+    "10^13",
+    "10^14",
+    "10^15",
+    "10^16",
+    "10^17",
+    "10^18"
+  ],
+  "surface_display_order": [
+    "<=10^3",
+    "10^12",
+    "10^13",
+    "10^14",
+    "10^15",
+    "10^16",
+    "10^17",
+    "10^18"
+  ],
+  "union_distinct_exact_type_count": 411,
+  "post_baseline_new_exact_type_count": 379,
+  "common_exact_type_count": 21,
+  "common_exact_types": [
+    "o2_d12_a1_higher_divisor_even",
+    "o2_d16_a1_higher_divisor_even",
+    "o2_d24_a1_higher_divisor_even",
+    "o2_d4_a2_odd_semiprime",
+    "o2_d4_a4_odd_semiprime",
+    "o2_d8_a1_higher_divisor_even",
+    "o4_d4_a1_even_semiprime",
+    "o4_d4_a2_odd_semiprime",
+    "o4_d4_a3_even_semiprime",
+    "o4_d4_a4_odd_semiprime",
+    "o4_d6_a1_higher_divisor_even",
+    "o4_d8_a1_higher_divisor_even",
+    "o4_d8_a2_higher_divisor_odd",
+    "o4_d8_a3_higher_divisor_even",
+    "o6_d4_a1_even_semiprime",
+    "o6_d4_a2_odd_semiprime",
+    "o6_d4_a3_even_semiprime",
+    "o6_d4_a4_odd_semiprime",
+    "o6_d4_a5_even_semiprime",
+    "o6_d4_a6_odd_semiprime",
+    "o6_d6_a2_higher_divisor_odd"
+  ],
+  "distinct_first_open_offsets": [
+    2,
+    4,
+    6
+  ],
+  "distinct_dmin_values": [
+    3,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18,
+    20,
+    24,
+    28,
+    30,
+    32,
+    36,
+    40,
+    42,
+    48,
+    56,
+    60,
+    64,
+    72,
+    80,
+    96,
+    104,
+    108,
+    110,
+    112,
+    120,
+    128,
+    144,
+    160,
+    168,
+    176,
+    180,
+    192,
+    200,
+    216,
+    224,
+    240,
+    256,
+    288,
+    300,
+    320,
+    336,
+    360,
+    384,
+    392,
+    400,
+    432,
+    448,
+    480,
+    504,
+    512,
+    560,
+    576,
+    640,
+    672,
+    720,
+    768,
+    864,
+    960,
+    1024,
+    1152,
+    1536
+  ],
+  "max_observed_peak_offset": 64,
+  "max_observed_dmin": 1536,
+  "first_seen_counts_by_surface_label": {
+    "baseline_1e3": 32,
+    "10^12": 200,
+    "10^13": 41,
+    "10^14": 38,
+    "10^15": 23,
+    "10^16": 24,
+    "10^17": 25,
+    "10^18": 28
+  },
+  "first_seen_counts_by_surface_display_label": {
+    "<=10^3": 32,
+    "10^12": 200,
+    "10^13": 41,
+    "10^14": 38,
+    "10^15": 23,
+    "10^16": 24,
+    "10^17": 25,
+    "10^18": 28
+  },
+  "post_baseline_new_type_family_distribution": {
+    "even_semiprime": {
+      "count": 45,
+      "share": 0.11873350923482849
+    },
+    "higher_divisor_even": {
+      "count": 162,
+      "share": 0.42744063324538256
+    },
+    "higher_divisor_odd": {
+      "count": 104,
+      "share": 0.27440633245382584
+    },
+    "odd_semiprime": {
+      "count": 68,
+      "share": 0.17941952506596306
+    }
+  },
+  "post_baseline_new_type_dmin_distribution": {
+    "10": {
+      "count": 11,
+      "share": 0.029023746701846966
+    },
+    "1024": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "104": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "108": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "110": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "112": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "1152": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "12": {
+      "count": 26,
+      "share": 0.06860158311345646
+    },
+    "120": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "128": {
+      "count": 2,
+      "share": 0.005277044854881266
+    },
+    "14": {
+      "count": 5,
+      "share": 0.013192612137203167
+    },
+    "144": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "1536": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "16": {
+      "count": 20,
+      "share": 0.052770448548812667
+    },
+    "160": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "168": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "176": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "18": {
+      "count": 3,
+      "share": 0.0079155672823219
+    },
+    "180": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "192": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "20": {
+      "count": 6,
+      "share": 0.0158311345646438
+    },
+    "200": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "216": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "224": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "24": {
+      "count": 12,
+      "share": 0.0316622691292876
+    },
+    "240": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "256": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "28": {
+      "count": 3,
+      "share": 0.0079155672823219
+    },
+    "288": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "30": {
+      "count": 2,
+      "share": 0.005277044854881266
+    },
+    "300": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "32": {
+      "count": 11,
+      "share": 0.029023746701846966
+    },
+    "320": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "336": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "36": {
+      "count": 2,
+      "share": 0.005277044854881266
+    },
+    "360": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "384": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "392": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "4": {
+      "count": 113,
+      "share": 0.29815303430079154
+    },
+    "40": {
+      "count": 4,
+      "share": 0.010554089709762533
+    },
+    "400": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "42": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "432": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "448": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "48": {
+      "count": 4,
+      "share": 0.010554089709762533
+    },
+    "480": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "504": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "512": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "56": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "560": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "576": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "6": {
+      "count": 63,
+      "share": 0.1662269129287599
+    },
+    "60": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "64": {
+      "count": 3,
+      "share": 0.0079155672823219
+    },
+    "640": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "672": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "72": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "720": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "768": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "8": {
+      "count": 42,
+      "share": 0.11081794195250659
+    },
+    "80": {
+      "count": 2,
+      "share": 0.005277044854881266
+    },
+    "864": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "96": {
+      "count": 1,
+      "share": 0.002638522427440633
+    },
+    "960": {
+      "count": 1,
+      "share": 0.002638522427440633
+    }
+  },
+  "overall_family_distribution": {
+    "even_semiprime": {
+      "count": 6867,
+      "share": 0.11940324459668585
+    },
+    "higher_divisor_even": {
+      "count": 6207,
+      "share": 0.10792717914833684
+    },
+    "higher_divisor_odd": {
+      "count": 5567,
+      "share": 0.09679887325902871
+    },
+    "odd_semiprime": {
+      "count": 38859,
+      "share": 0.6756794352384761
+    },
+    "prime_square": {
+      "count": 11,
+      "share": 0.00019126775747248354
+    }
+  },
+  "overall_top_exact_types": [
+    {
+      "type_key": "o2_d4_a2_odd_semiprime",
+      "count": 6085,
+      "share": 0.10580584583818747
+    },
+    {
+      "type_key": "o4_d4_a4_odd_semiprime",
+      "count": 5367,
+      "share": 0.09332127766861992
+    },
+    {
+      "type_key": "o6_d4_a6_odd_semiprime",
+      "count": 3104,
+      "share": 0.053972283563144444
+    },
+    {
+      "type_key": "o2_d4_a6_odd_semiprime",
+      "count": 2606,
+      "share": 0.04531307054302655
+    },
+    {
+      "type_key": "o4_d4_a6_odd_semiprime",
+      "count": 2588,
+      "share": 0.04500008693988976
+    },
+    {
+      "type_key": "o4_d4_a10_odd_semiprime",
+      "count": 2088,
+      "share": 0.03630609796386778
+    },
+    {
+      "type_key": "o2_d4_a8_odd_semiprime",
+      "count": 1868,
+      "share": 0.03248074281441811
+    },
+    {
+      "type_key": "o2_d4_a12_odd_semiprime",
+      "count": 1339,
+      "share": 0.02328250247778686
+    },
+    {
+      "type_key": "o6_d4_a8_odd_semiprime",
+      "count": 1153,
+      "share": 0.020048338578706682
+    },
+    {
+      "type_key": "o6_d4_a2_odd_semiprime",
+      "count": 1147,
+      "share": 0.019944010710994418
+    },
+    {
+      "type_key": "o2_d8_a2_higher_divisor_odd",
+      "count": 1098,
+      "share": 0.019091999791344266
+    },
+    {
+      "type_key": "o4_d4_a12_odd_semiprime",
+      "count": 1000,
+      "share": 0.017387977952043956
+    },
+    {
+      "type_key": "o6_d4_a4_odd_semiprime",
+      "count": 996,
+      "share": 0.01731842604023578
+    },
+    {
+      "type_key": "o4_d4_a2_odd_semiprime",
+      "count": 974,
+      "share": 0.016935890525290813
+    },
+    {
+      "type_key": "o6_d4_a10_odd_semiprime",
+      "count": 974,
+      "share": 0.016935890525290813
+    },
+    {
+      "type_key": "o4_d4_a1_even_semiprime",
+      "count": 805,
+      "share": 0.013997322251395385
+    },
+    {
+      "type_key": "o4_d4_a3_even_semiprime",
+      "count": 759,
+      "share": 0.013197475265601364
+    },
+    {
+      "type_key": "o6_d4_a3_even_semiprime",
+      "count": 745,
+      "share": 0.012954043574272748
+    },
+    {
+      "type_key": "o2_d4_a14_odd_semiprime",
+      "count": 726,
+      "share": 0.012623671993183913
+    },
+    {
+      "type_key": "o2_d4_a5_even_semiprime",
+      "count": 681,
+      "share": 0.011841212985341935
+    }
+  ],
+  "post_baseline_new_exact_types": [
+    {
+      "type_key": "o2_d4_a3_even_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000004831,
+      "next_gap_width": 6,
+      "next_dmin": 4,
+      "next_peak_offset": 3,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a5_even_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000000661,
+      "next_gap_width": 8,
+      "next_dmin": 4,
+      "next_peak_offset": 5,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a6_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000000121,
+      "next_gap_width": 42,
+      "next_dmin": 4,
+      "next_peak_offset": 6,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a6_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000001773,
+      "next_gap_width": 64,
+      "next_dmin": 4,
+      "next_peak_offset": 6,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a7_even_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000000039,
+      "next_gap_width": 22,
+      "next_dmin": 4,
+      "next_peak_offset": 7,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a7_even_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000022431,
+      "next_gap_width": 12,
+      "next_dmin": 4,
+      "next_peak_offset": 7,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a8_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000000211,
+      "next_gap_width": 60,
+      "next_dmin": 4,
+      "next_peak_offset": 8,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a8_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000000609,
+      "next_gap_width": 52,
+      "next_dmin": 4,
+      "next_peak_offset": 8,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a8_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000001963,
+      "next_gap_width": 36,
+      "next_dmin": 4,
+      "next_peak_offset": 8,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a9_even_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000019549,
+      "next_gap_width": 20,
+      "next_dmin": 4,
+      "next_peak_offset": 9,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a9_even_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000002277,
+      "next_gap_width": 64,
+      "next_dmin": 4,
+      "next_peak_offset": 9,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a9_even_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000004873,
+      "next_gap_width": 18,
+      "next_dmin": 4,
+      "next_peak_offset": 9,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a10_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000000949,
+      "next_gap_width": 48,
+      "next_dmin": 4,
+      "next_peak_offset": 10,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a10_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000000669,
+      "next_gap_width": 52,
+      "next_dmin": 4,
+      "next_peak_offset": 10,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a10_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000001911,
+      "next_gap_width": 28,
+      "next_dmin": 4,
+      "next_peak_offset": 10,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a11_even_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000011371,
+      "next_gap_width": 12,
+      "next_dmin": 4,
+      "next_peak_offset": 11,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a11_even_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000002143,
+      "next_gap_width": 24,
+      "next_dmin": 4,
+      "next_peak_offset": 11,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a12_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000003427,
+      "next_gap_width": 36,
+      "next_dmin": 4,
+      "next_peak_offset": 12,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a12_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000001509,
+      "next_gap_width": 78,
+      "next_dmin": 4,
+      "next_peak_offset": 12,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a12_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000002623,
+      "next_gap_width": 14,
+      "next_dmin": 4,
+      "next_peak_offset": 12,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a13_even_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000010509,
+      "next_gap_width": 40,
+      "next_dmin": 4,
+      "next_peak_offset": 13,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a13_even_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000020661,
+      "next_gap_width": 22,
+      "next_dmin": 4,
+      "next_peak_offset": 13,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a14_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000006637,
+      "next_gap_width": 62,
+      "next_dmin": 4,
+      "next_peak_offset": 14,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a14_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000012183,
+      "next_gap_width": 18,
+      "next_dmin": 4,
+      "next_peak_offset": 14,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a14_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000004963,
+      "next_gap_width": 26,
+      "next_dmin": 4,
+      "next_peak_offset": 14,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a15_even_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000024691,
+      "next_gap_width": 30,
+      "next_dmin": 4,
+      "next_peak_offset": 15,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a15_even_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000016419,
+      "next_gap_width": 60,
+      "next_dmin": 4,
+      "next_peak_offset": 15,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a15_even_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000027171,
+      "next_gap_width": 18,
+      "next_dmin": 4,
+      "next_peak_offset": 15,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a16_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000016861,
+      "next_gap_width": 170,
+      "next_dmin": 4,
+      "next_peak_offset": 16,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a16_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000000303,
+      "next_gap_width": 28,
+      "next_dmin": 4,
+      "next_peak_offset": 16,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a16_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000000561,
+      "next_gap_width": 48,
+      "next_dmin": 4,
+      "next_peak_offset": 16,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a17_even_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000087481,
+      "next_gap_width": 42,
+      "next_dmin": 4,
+      "next_peak_offset": 17,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a18_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000026551,
+      "next_gap_width": 32,
+      "next_dmin": 4,
+      "next_peak_offset": 18,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a18_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000013869,
+      "next_gap_width": 64,
+      "next_dmin": 4,
+      "next_peak_offset": 18,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a18_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000004581,
+      "next_gap_width": 22,
+      "next_dmin": 4,
+      "next_peak_offset": 18,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a19_even_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000026967,
+      "next_gap_width": 40,
+      "next_dmin": 4,
+      "next_peak_offset": 19,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a20_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000005491,
+      "next_gap_width": 42,
+      "next_dmin": 4,
+      "next_peak_offset": 20,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a20_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000004329,
+      "next_gap_width": 22,
+      "next_dmin": 4,
+      "next_peak_offset": 20,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a20_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000012441,
+      "next_gap_width": 36,
+      "next_dmin": 4,
+      "next_peak_offset": 20,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a21_even_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000035137,
+      "next_gap_width": 26,
+      "next_dmin": 4,
+      "next_peak_offset": 21,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a21_even_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000019233,
+      "next_gap_width": 34,
+      "next_dmin": 4,
+      "next_peak_offset": 21,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a21_even_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000056413,
+      "next_gap_width": 24,
+      "next_dmin": 4,
+      "next_peak_offset": 21,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a22_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000022921,
+      "next_gap_width": 42,
+      "next_dmin": 4,
+      "next_peak_offset": 22,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a22_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000010719,
+      "next_gap_width": 30,
+      "next_dmin": 4,
+      "next_peak_offset": 22,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a22_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000181881,
+      "next_gap_width": 60,
+      "next_dmin": 4,
+      "next_peak_offset": 22,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a23_even_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000207223,
+      "next_gap_width": 90,
+      "next_dmin": 4,
+      "next_peak_offset": 23,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a24_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000061999,
+      "next_gap_width": 50,
+      "next_dmin": 4,
+      "next_peak_offset": 24,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a24_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000044247,
+      "next_gap_width": 36,
+      "next_dmin": 4,
+      "next_peak_offset": 24,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a24_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000034963,
+      "next_gap_width": 48,
+      "next_dmin": 4,
+      "next_peak_offset": 24,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a25_even_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000102261,
+      "next_gap_width": 40,
+      "next_dmin": 4,
+      "next_peak_offset": 25,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a26_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000076921,
+      "next_gap_width": 30,
+      "next_dmin": 4,
+      "next_peak_offset": 26,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a26_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000022183,
+      "next_gap_width": 30,
+      "next_dmin": 4,
+      "next_peak_offset": 26,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a27_even_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000029031,
+      "next_gap_width": 40,
+      "next_dmin": 4,
+      "next_peak_offset": 27,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a28_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000191319,
+      "next_gap_width": 30,
+      "next_dmin": 4,
+      "next_peak_offset": 28,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a28_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000021591,
+      "next_gap_width": 58,
+      "next_dmin": 4,
+      "next_peak_offset": 28,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a30_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000128221,
+      "next_gap_width": 56,
+      "next_dmin": 4,
+      "next_peak_offset": 30,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a30_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000024927,
+      "next_gap_width": 82,
+      "next_dmin": 4,
+      "next_peak_offset": 30,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a31_even_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000129627,
+      "next_gap_width": 64,
+      "next_dmin": 4,
+      "next_peak_offset": 31,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a32_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000108259,
+      "next_gap_width": 48,
+      "next_dmin": 4,
+      "next_peak_offset": 32,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a38_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000201663,
+      "next_gap_width": 40,
+      "next_dmin": 4,
+      "next_peak_offset": 38,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a38_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000192441,
+      "next_gap_width": 42,
+      "next_dmin": 4,
+      "next_peak_offset": 38,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a40_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000103059,
+      "next_gap_width": 72,
+      "next_dmin": 4,
+      "next_peak_offset": 40,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a42_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000198609,
+      "next_gap_width": 58,
+      "next_dmin": 4,
+      "next_peak_offset": 42,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a50_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000004501,
+      "next_gap_width": 80,
+      "next_dmin": 4,
+      "next_peak_offset": 50,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d6_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000006891,
+      "next_gap_width": 6,
+      "next_dmin": 6,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d6_a2_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000039091,
+      "next_gap_width": 8,
+      "next_dmin": 6,
+      "next_peak_offset": 2,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d6_a2_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000006189,
+      "next_gap_width": 4,
+      "next_dmin": 6,
+      "next_peak_offset": 2,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d6_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000000169,
+      "next_gap_width": 8,
+      "next_dmin": 6,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d6_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000017889,
+      "next_gap_width": 4,
+      "next_dmin": 6,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d6_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000005721,
+      "next_gap_width": 6,
+      "next_dmin": 6,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d6_a4_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000045427,
+      "next_gap_width": 6,
+      "next_dmin": 6,
+      "next_peak_offset": 4,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d6_a4_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000011937,
+      "next_gap_width": 6,
+      "next_dmin": 6,
+      "next_peak_offset": 4,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d6_a4_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000008571,
+      "next_gap_width": 6,
+      "next_dmin": 6,
+      "next_peak_offset": 4,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d6_a5_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000016039,
+      "next_gap_width": 8,
+      "next_dmin": 6,
+      "next_peak_offset": 5,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d6_a5_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000024223,
+      "next_gap_width": 26,
+      "next_dmin": 6,
+      "next_peak_offset": 5,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d6_a6_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000055771,
+      "next_gap_width": 8,
+      "next_dmin": 6,
+      "next_peak_offset": 6,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d6_a6_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000099069,
+      "next_gap_width": 24,
+      "next_dmin": 6,
+      "next_peak_offset": 6,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d6_a7_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000058509,
+      "next_gap_width": 12,
+      "next_dmin": 6,
+      "next_peak_offset": 7,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d6_a7_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000092661,
+      "next_gap_width": 12,
+      "next_dmin": 6,
+      "next_peak_offset": 7,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d6_a8_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000143449,
+      "next_gap_width": 14,
+      "next_dmin": 6,
+      "next_peak_offset": 8,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d6_a8_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000139113,
+      "next_gap_width": 10,
+      "next_dmin": 6,
+      "next_peak_offset": 8,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d6_a8_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000146421,
+      "next_gap_width": 12,
+      "next_dmin": 6,
+      "next_peak_offset": 8,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d6_a9_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000038827,
+      "next_gap_width": 14,
+      "next_dmin": 6,
+      "next_peak_offset": 9,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d6_a9_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000044403,
+      "next_gap_width": 10,
+      "next_dmin": 6,
+      "next_peak_offset": 9,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d6_a10_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000033811,
+      "next_gap_width": 18,
+      "next_dmin": 6,
+      "next_peak_offset": 10,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d6_a10_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000224593,
+      "next_gap_width": 14,
+      "next_dmin": 6,
+      "next_peak_offset": 10,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d6_a11_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000223921,
+      "next_gap_width": 12,
+      "next_dmin": 6,
+      "next_peak_offset": 11,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d6_a11_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000077833,
+      "next_gap_width": 18,
+      "next_dmin": 6,
+      "next_peak_offset": 11,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d6_a12_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000150007,
+      "next_gap_width": 14,
+      "next_dmin": 6,
+      "next_peak_offset": 12,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d6_a12_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000114163,
+      "next_gap_width": 14,
+      "next_dmin": 6,
+      "next_peak_offset": 12,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d6_a13_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000173703,
+      "next_gap_width": 18,
+      "next_dmin": 6,
+      "next_peak_offset": 13,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d6_a13_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000053751,
+      "next_gap_width": 18,
+      "next_dmin": 6,
+      "next_peak_offset": 13,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d6_a15_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000135397,
+      "next_gap_width": 20,
+      "next_dmin": 6,
+      "next_peak_offset": 15,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d6_a15_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000150973,
+      "next_gap_width": 18,
+      "next_dmin": 6,
+      "next_peak_offset": 15,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d6_a16_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000140257,
+      "next_gap_width": 24,
+      "next_dmin": 6,
+      "next_peak_offset": 16,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d6_a16_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000017893,
+      "next_gap_width": 18,
+      "next_dmin": 6,
+      "next_peak_offset": 16,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d6_a17_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000111211,
+      "next_gap_width": 26,
+      "next_dmin": 6,
+      "next_peak_offset": 17,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d6_a25_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000105939,
+      "next_gap_width": 30,
+      "next_dmin": 6,
+      "next_peak_offset": 25,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d8_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000009913,
+      "next_gap_width": 6,
+      "next_dmin": 8,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d8_a2_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000002167,
+      "next_gap_width": 6,
+      "next_dmin": 8,
+      "next_peak_offset": 2,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d8_a2_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000000163,
+      "next_gap_width": 6,
+      "next_dmin": 8,
+      "next_peak_offset": 2,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d8_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000015061,
+      "next_gap_width": 6,
+      "next_dmin": 8,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d8_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000002803,
+      "next_gap_width": 18,
+      "next_dmin": 8,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d8_a4_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000006451,
+      "next_gap_width": 6,
+      "next_dmin": 8,
+      "next_peak_offset": 4,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d8_a4_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000005889,
+      "next_gap_width": 10,
+      "next_dmin": 8,
+      "next_peak_offset": 4,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d8_a4_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000008233,
+      "next_gap_width": 14,
+      "next_dmin": 8,
+      "next_peak_offset": 4,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d8_a5_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000029089,
+      "next_gap_width": 14,
+      "next_dmin": 8,
+      "next_peak_offset": 5,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d8_a5_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000085857,
+      "next_gap_width": 6,
+      "next_dmin": 8,
+      "next_peak_offset": 5,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d8_a5_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000013933,
+      "next_gap_width": 8,
+      "next_dmin": 8,
+      "next_peak_offset": 5,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d8_a6_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000001201,
+      "next_gap_width": 12,
+      "next_dmin": 8,
+      "next_peak_offset": 6,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d8_a6_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000002217,
+      "next_gap_width": 10,
+      "next_dmin": 8,
+      "next_peak_offset": 6,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d8_a6_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000003553,
+      "next_gap_width": 14,
+      "next_dmin": 8,
+      "next_peak_offset": 6,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d8_a7_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000040839,
+      "next_gap_width": 10,
+      "next_dmin": 8,
+      "next_peak_offset": 7,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d8_a7_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000087351,
+      "next_gap_width": 18,
+      "next_dmin": 8,
+      "next_peak_offset": 7,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d8_a8_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000007627,
+      "next_gap_width": 12,
+      "next_dmin": 8,
+      "next_peak_offset": 8,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d8_a8_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000030207,
+      "next_gap_width": 10,
+      "next_dmin": 8,
+      "next_peak_offset": 8,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d8_a8_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000038721,
+      "next_gap_width": 12,
+      "next_dmin": 8,
+      "next_peak_offset": 8,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d8_a9_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000010249,
+      "next_gap_width": 14,
+      "next_dmin": 8,
+      "next_peak_offset": 9,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d8_a9_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000021369,
+      "next_gap_width": 10,
+      "next_dmin": 8,
+      "next_peak_offset": 9,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d8_a10_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000206059,
+      "next_gap_width": 32,
+      "next_dmin": 8,
+      "next_peak_offset": 10,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d10_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000083343,
+      "next_gap_width": 4,
+      "next_dmin": 10,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d10_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000102351,
+      "next_gap_width": 6,
+      "next_dmin": 10,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d10_a2_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000180519,
+      "next_gap_width": 4,
+      "next_dmin": 10,
+      "next_peak_offset": 2,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d10_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000217933,
+      "next_gap_width": 6,
+      "next_dmin": 10,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d12_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000001587,
+      "next_gap_width": 4,
+      "next_dmin": 12,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d12_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000089631,
+      "next_gap_width": 6,
+      "next_dmin": 12,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d12_a2_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000093271,
+      "next_gap_width": 6,
+      "next_dmin": 12,
+      "next_peak_offset": 2,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d12_a2_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000023019,
+      "next_gap_width": 4,
+      "next_dmin": 12,
+      "next_peak_offset": 2,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d12_a2_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000018673,
+      "next_gap_width": 6,
+      "next_dmin": 12,
+      "next_peak_offset": 2,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d12_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000014401,
+      "next_gap_width": 6,
+      "next_dmin": 12,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d12_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000015153,
+      "next_gap_width": 6,
+      "next_dmin": 12,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d12_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000155601,
+      "next_gap_width": 6,
+      "next_dmin": 12,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d12_a4_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000014583,
+      "next_gap_width": 6,
+      "next_dmin": 12,
+      "next_peak_offset": 4,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d12_a4_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000004603,
+      "next_gap_width": 6,
+      "next_dmin": 12,
+      "next_peak_offset": 4,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d12_a5_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000090391,
+      "next_gap_width": 8,
+      "next_dmin": 12,
+      "next_peak_offset": 5,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d12_a5_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000006183,
+      "next_gap_width": 6,
+      "next_dmin": 12,
+      "next_peak_offset": 5,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d12_a5_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000099823,
+      "next_gap_width": 6,
+      "next_dmin": 12,
+      "next_peak_offset": 5,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d12_a7_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000089709,
+      "next_gap_width": 10,
+      "next_dmin": 12,
+      "next_peak_offset": 7,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d12_a7_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000103941,
+      "next_gap_width": 10,
+      "next_dmin": 12,
+      "next_peak_offset": 7,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d12_a8_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000089019,
+      "next_gap_width": 10,
+      "next_dmin": 12,
+      "next_peak_offset": 8,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d16_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000005709,
+      "next_gap_width": 4,
+      "next_dmin": 16,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d16_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000040581,
+      "next_gap_width": 6,
+      "next_dmin": 16,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d16_a2_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000029131,
+      "next_gap_width": 6,
+      "next_dmin": 16,
+      "next_peak_offset": 2,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d16_a2_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000008097,
+      "next_gap_width": 4,
+      "next_dmin": 16,
+      "next_peak_offset": 2,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d16_a2_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000052003,
+      "next_gap_width": 14,
+      "next_dmin": 16,
+      "next_peak_offset": 2,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d16_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000011733,
+      "next_gap_width": 4,
+      "next_dmin": 16,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d16_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000100311,
+      "next_gap_width": 6,
+      "next_dmin": 16,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d16_a4_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000087391,
+      "next_gap_width": 6,
+      "next_dmin": 16,
+      "next_peak_offset": 4,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d16_a4_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000013437,
+      "next_gap_width": 6,
+      "next_dmin": 16,
+      "next_peak_offset": 4,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d16_a4_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000024073,
+      "next_gap_width": 8,
+      "next_dmin": 16,
+      "next_peak_offset": 4,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d16_a5_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000025933,
+      "next_gap_width": 6,
+      "next_dmin": 16,
+      "next_peak_offset": 5,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d16_a6_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000210051,
+      "next_gap_width": 10,
+      "next_dmin": 16,
+      "next_peak_offset": 6,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d16_a7_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000009691,
+      "next_gap_width": 12,
+      "next_dmin": 16,
+      "next_peak_offset": 7,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d18_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000181233,
+      "next_gap_width": 4,
+      "next_dmin": 18,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d20_a2_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000095793,
+      "next_gap_width": 4,
+      "next_dmin": 20,
+      "next_peak_offset": 2,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d20_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000026349,
+      "next_gap_width": 4,
+      "next_dmin": 20,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d20_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000183373,
+      "next_gap_width": 6,
+      "next_dmin": 20,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d20_a4_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000105187,
+      "next_gap_width": 6,
+      "next_dmin": 20,
+      "next_peak_offset": 4,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d24_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000091179,
+      "next_gap_width": 4,
+      "next_dmin": 24,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d24_a2_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000023937,
+      "next_gap_width": 4,
+      "next_dmin": 24,
+      "next_peak_offset": 2,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d24_a2_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000059901,
+      "next_gap_width": 6,
+      "next_dmin": 24,
+      "next_peak_offset": 2,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d24_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000005073,
+      "next_gap_width": 4,
+      "next_dmin": 24,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d24_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000080361,
+      "next_gap_width": 6,
+      "next_dmin": 24,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d28_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000218431,
+      "next_gap_width": 2,
+      "next_dmin": 28,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d32_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000010921,
+      "next_gap_width": 2,
+      "next_dmin": 32,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d32_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000058857,
+      "next_gap_width": 4,
+      "next_dmin": 32,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d32_a2_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000052587,
+      "next_gap_width": 4,
+      "next_dmin": 32,
+      "next_peak_offset": 2,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d32_a2_higher_divisor_odd",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000219711,
+      "next_gap_width": 6,
+      "next_dmin": 32,
+      "next_peak_offset": 2,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d32_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000070899,
+      "next_gap_width": 4,
+      "next_dmin": 32,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d36_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000019267,
+      "next_gap_width": 2,
+      "next_dmin": 36,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d40_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000064207,
+      "next_gap_width": 2,
+      "next_dmin": 40,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d42_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000035647,
+      "next_gap_width": 2,
+      "next_dmin": 42,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d48_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000000061,
+      "next_gap_width": 2,
+      "next_dmin": 48,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d48_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000185259,
+      "next_gap_width": 4,
+      "next_dmin": 48,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d56_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000060991,
+      "next_gap_width": 2,
+      "next_dmin": 56,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d60_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000091087,
+      "next_gap_width": 2,
+      "next_dmin": 60,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d64_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000010489,
+      "next_gap_width": 2,
+      "next_dmin": 64,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d64_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000110229,
+      "next_gap_width": 4,
+      "next_dmin": 64,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d72_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000019099,
+      "next_gap_width": 2,
+      "next_dmin": 72,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d80_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000019897,
+      "next_gap_width": 2,
+      "next_dmin": 80,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d96_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000009499,
+      "next_gap_width": 2,
+      "next_dmin": 96,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d108_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000160099,
+      "next_gap_width": 2,
+      "next_dmin": 108,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d120_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000045199,
+      "next_gap_width": 2,
+      "next_dmin": 120,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d128_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000004681,
+      "next_gap_width": 2,
+      "next_dmin": 128,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d144_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000001771,
+      "next_gap_width": 2,
+      "next_dmin": 144,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d160_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000030319,
+      "next_gap_width": 2,
+      "next_dmin": 160,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d168_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000193471,
+      "next_gap_width": 2,
+      "next_dmin": 168,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d192_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000005707,
+      "next_gap_width": 2,
+      "next_dmin": 192,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d216_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000000331,
+      "next_gap_width": 2,
+      "next_dmin": 216,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d224_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000014527,
+      "next_gap_width": 2,
+      "next_dmin": 224,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d240_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000005647,
+      "next_gap_width": 2,
+      "next_dmin": 240,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d256_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000037189,
+      "next_gap_width": 2,
+      "next_dmin": 256,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d288_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000164599,
+      "next_gap_width": 2,
+      "next_dmin": 288,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d320_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000025039,
+      "next_gap_width": 2,
+      "next_dmin": 320,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d360_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000102499,
+      "next_gap_width": 2,
+      "next_dmin": 360,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d384_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000003799,
+      "next_gap_width": 2,
+      "next_dmin": 384,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d480_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000053359,
+      "next_gap_width": 2,
+      "next_dmin": 480,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d672_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000019519,
+      "next_gap_width": 2,
+      "next_dmin": 672,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d720_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000023749,
+      "next_gap_width": 2,
+      "next_dmin": 720,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d768_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000017719,
+      "next_gap_width": 2,
+      "next_dmin": 768,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d4_a23_even_semiprime",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000153691,
+      "next_gap_width": 32,
+      "next_dmin": 4,
+      "next_peak_offset": 23,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a26_odd_semiprime",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000050457,
+      "next_gap_width": 40,
+      "next_dmin": 4,
+      "next_peak_offset": 26,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a27_even_semiprime",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000110539,
+      "next_gap_width": 32,
+      "next_dmin": 4,
+      "next_peak_offset": 27,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a27_even_semiprime",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000090819,
+      "next_gap_width": 84,
+      "next_dmin": 4,
+      "next_peak_offset": 27,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a28_odd_semiprime",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000173071,
+      "next_gap_width": 32,
+      "next_dmin": 4,
+      "next_peak_offset": 28,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a30_odd_semiprime",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000046873,
+      "next_gap_width": 74,
+      "next_dmin": 4,
+      "next_peak_offset": 30,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a31_even_semiprime",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000104571,
+      "next_gap_width": 42,
+      "next_dmin": 4,
+      "next_peak_offset": 31,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a32_odd_semiprime",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000173979,
+      "next_gap_width": 40,
+      "next_dmin": 4,
+      "next_peak_offset": 32,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a34_odd_semiprime",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000011679,
+      "next_gap_width": 54,
+      "next_dmin": 4,
+      "next_peak_offset": 34,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a35_even_semiprime",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000132907,
+      "next_gap_width": 44,
+      "next_dmin": 4,
+      "next_peak_offset": 35,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a40_odd_semiprime",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000110329,
+      "next_gap_width": 60,
+      "next_dmin": 4,
+      "next_peak_offset": 40,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a42_odd_semiprime",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000226243,
+      "next_gap_width": 56,
+      "next_dmin": 4,
+      "next_peak_offset": 42,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d6_a6_higher_divisor_odd",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000027561,
+      "next_gap_width": 18,
+      "next_dmin": 6,
+      "next_peak_offset": 6,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d6_a9_higher_divisor_even",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000127723,
+      "next_gap_width": 14,
+      "next_dmin": 6,
+      "next_peak_offset": 9,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d6_a10_higher_divisor_odd",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000098289,
+      "next_gap_width": 22,
+      "next_dmin": 6,
+      "next_peak_offset": 10,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d6_a14_higher_divisor_odd",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000036687,
+      "next_gap_width": 16,
+      "next_dmin": 6,
+      "next_peak_offset": 14,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d6_a15_higher_divisor_even",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000160413,
+      "next_gap_width": 16,
+      "next_dmin": 6,
+      "next_peak_offset": 15,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d6_a19_higher_divisor_even",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000017817,
+      "next_gap_width": 24,
+      "next_dmin": 6,
+      "next_peak_offset": 19,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d6_a24_higher_divisor_odd",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000112633,
+      "next_gap_width": 38,
+      "next_dmin": 6,
+      "next_peak_offset": 24,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d6_a26_higher_divisor_odd",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000146853,
+      "next_gap_width": 28,
+      "next_dmin": 6,
+      "next_peak_offset": 26,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d6_a28_higher_divisor_odd",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000119293,
+      "next_gap_width": 30,
+      "next_dmin": 6,
+      "next_peak_offset": 28,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d8_a7_higher_divisor_even",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000157039,
+      "next_gap_width": 18,
+      "next_dmin": 8,
+      "next_peak_offset": 7,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d8_a9_higher_divisor_even",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000004693,
+      "next_gap_width": 20,
+      "next_dmin": 8,
+      "next_peak_offset": 9,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d8_a10_higher_divisor_odd",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000211779,
+      "next_gap_width": 22,
+      "next_dmin": 8,
+      "next_peak_offset": 10,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d8_a10_higher_divisor_odd",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000002121,
+      "next_gap_width": 12,
+      "next_dmin": 8,
+      "next_peak_offset": 10,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d10_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000087309,
+      "next_gap_width": 4,
+      "next_dmin": 10,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d10_a4_higher_divisor_odd",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000064371,
+      "next_gap_width": 6,
+      "next_dmin": 10,
+      "next_peak_offset": 4,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d10_a5_higher_divisor_even",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000175051,
+      "next_gap_width": 6,
+      "next_dmin": 10,
+      "next_peak_offset": 5,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d12_a4_higher_divisor_odd",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000080437,
+      "next_gap_width": 6,
+      "next_dmin": 12,
+      "next_peak_offset": 4,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d12_a6_higher_divisor_odd",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000010219,
+      "next_gap_width": 8,
+      "next_dmin": 12,
+      "next_peak_offset": 6,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d12_a6_higher_divisor_odd",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000211573,
+      "next_gap_width": 8,
+      "next_dmin": 12,
+      "next_peak_offset": 6,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d16_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000008821,
+      "next_gap_width": 6,
+      "next_dmin": 16,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d16_a5_higher_divisor_even",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000067027,
+      "next_gap_width": 6,
+      "next_dmin": 16,
+      "next_peak_offset": 5,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d18_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000025299,
+      "next_gap_width": 4,
+      "next_dmin": 18,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d20_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000164463,
+      "next_gap_width": 4,
+      "next_dmin": 20,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d24_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000159531,
+      "next_gap_width": 6,
+      "next_dmin": 24,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d24_a5_higher_divisor_even",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000233407,
+      "next_gap_width": 6,
+      "next_dmin": 24,
+      "next_peak_offset": 5,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d40_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000142767,
+      "next_gap_width": 4,
+      "next_dmin": 40,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d48_a2_higher_divisor_odd",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000083049,
+      "next_gap_width": 4,
+      "next_dmin": 48,
+      "next_peak_offset": 2,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d336_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000157759,
+      "next_gap_width": 2,
+      "next_dmin": 336,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d432_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000165427,
+      "next_gap_width": 2,
+      "next_dmin": 432,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d4_a25_even_semiprime",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000031857,
+      "next_gap_width": 30,
+      "next_dmin": 4,
+      "next_peak_offset": 25,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a29_even_semiprime",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000201097,
+      "next_gap_width": 54,
+      "next_dmin": 4,
+      "next_peak_offset": 29,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a29_even_semiprime",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000240373,
+      "next_gap_width": 44,
+      "next_dmin": 4,
+      "next_peak_offset": 29,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a34_odd_semiprime",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000233571,
+      "next_gap_width": 36,
+      "next_dmin": 4,
+      "next_peak_offset": 34,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a36_odd_semiprime",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000006817,
+      "next_gap_width": 56,
+      "next_dmin": 4,
+      "next_peak_offset": 36,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a36_odd_semiprime",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000182637,
+      "next_gap_width": 46,
+      "next_dmin": 4,
+      "next_peak_offset": 36,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a36_odd_semiprime",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000025491,
+      "next_gap_width": 82,
+      "next_dmin": 4,
+      "next_peak_offset": 36,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a38_odd_semiprime",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000253081,
+      "next_gap_width": 132,
+      "next_dmin": 4,
+      "next_peak_offset": 38,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a41_even_semiprime",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000099421,
+      "next_gap_width": 102,
+      "next_dmin": 4,
+      "next_peak_offset": 41,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a42_odd_semiprime",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000143767,
+      "next_gap_width": 72,
+      "next_dmin": 4,
+      "next_peak_offset": 42,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d6_a16_higher_divisor_odd",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000231459,
+      "next_gap_width": 30,
+      "next_dmin": 6,
+      "next_peak_offset": 16,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d6_a18_higher_divisor_odd",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000244281,
+      "next_gap_width": 22,
+      "next_dmin": 6,
+      "next_peak_offset": 18,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d6_a20_higher_divisor_odd",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000231603,
+      "next_gap_width": 36,
+      "next_dmin": 6,
+      "next_peak_offset": 20,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d6_a21_higher_divisor_even",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000161143,
+      "next_gap_width": 24,
+      "next_dmin": 6,
+      "next_peak_offset": 21,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d8_a11_higher_divisor_even",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000170107,
+      "next_gap_width": 14,
+      "next_dmin": 8,
+      "next_peak_offset": 11,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d8_a12_higher_divisor_odd",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000061783,
+      "next_gap_width": 24,
+      "next_dmin": 8,
+      "next_peak_offset": 12,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d8_a13_higher_divisor_even",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000115413,
+      "next_gap_width": 16,
+      "next_dmin": 8,
+      "next_peak_offset": 13,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d8_a14_higher_divisor_odd",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000137683,
+      "next_gap_width": 24,
+      "next_dmin": 8,
+      "next_peak_offset": 14,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d10_a2_higher_divisor_odd",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000133123,
+      "next_gap_width": 6,
+      "next_dmin": 10,
+      "next_peak_offset": 2,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d10_a4_higher_divisor_odd",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000150367,
+      "next_gap_width": 6,
+      "next_dmin": 10,
+      "next_peak_offset": 4,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d12_a9_higher_divisor_even",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000188499,
+      "next_gap_width": 10,
+      "next_dmin": 12,
+      "next_peak_offset": 9,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d14_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000157501,
+      "next_gap_width": 6,
+      "next_dmin": 14,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d14_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000114621,
+      "next_gap_width": 6,
+      "next_dmin": 14,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d20_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000235981,
+      "next_gap_width": 6,
+      "next_dmin": 20,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d24_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000072919,
+      "next_gap_width": 8,
+      "next_dmin": 24,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d24_a4_higher_divisor_odd",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000013471,
+      "next_gap_width": 6,
+      "next_dmin": 24,
+      "next_peak_offset": 4,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d30_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000193867,
+      "next_gap_width": 2,
+      "next_dmin": 30,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d30_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000003789,
+      "next_gap_width": 4,
+      "next_dmin": 30,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d36_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000108447,
+      "next_gap_width": 4,
+      "next_dmin": 36,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d40_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000263469,
+      "next_gap_width": 4,
+      "next_dmin": 40,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d112_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000029119,
+      "next_gap_width": 2,
+      "next_dmin": 112,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d392_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000198079,
+      "next_gap_width": 2,
+      "next_dmin": 392,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d504_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000134719,
+      "next_gap_width": 2,
+      "next_dmin": 504,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d512_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000190999,
+      "next_gap_width": 2,
+      "next_dmin": 512,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d560_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000001087,
+      "next_gap_width": 2,
+      "next_dmin": 560,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d576_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000252949,
+      "next_gap_width": 2,
+      "next_dmin": 576,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d640_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000209407,
+      "next_gap_width": 2,
+      "next_dmin": 640,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d1536_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000252679,
+      "next_gap_width": 2,
+      "next_dmin": 1536,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d4_a33_even_semiprime",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000284361,
+      "next_gap_width": 40,
+      "next_dmin": 4,
+      "next_peak_offset": 33,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a35_even_semiprime",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000016483,
+      "next_gap_width": 138,
+      "next_dmin": 4,
+      "next_peak_offset": 35,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a37_even_semiprime",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000125169,
+      "next_gap_width": 42,
+      "next_dmin": 4,
+      "next_peak_offset": 37,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a37_even_semiprime",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000120921,
+      "next_gap_width": 42,
+      "next_dmin": 4,
+      "next_peak_offset": 37,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a39_even_semiprime",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000109087,
+      "next_gap_width": 132,
+      "next_dmin": 4,
+      "next_peak_offset": 39,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a39_even_semiprime",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000206379,
+      "next_gap_width": 42,
+      "next_dmin": 4,
+      "next_peak_offset": 39,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a48_odd_semiprime",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000217369,
+      "next_gap_width": 62,
+      "next_dmin": 4,
+      "next_peak_offset": 48,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a62_odd_semiprime",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000029659,
+      "next_gap_width": 90,
+      "next_dmin": 4,
+      "next_peak_offset": 62,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o2_d6_a22_higher_divisor_odd",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000020407,
+      "next_gap_width": 24,
+      "next_dmin": 6,
+      "next_peak_offset": 22,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d8_a11_higher_divisor_even",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000105763,
+      "next_gap_width": 18,
+      "next_dmin": 8,
+      "next_peak_offset": 11,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d8_a12_higher_divisor_odd",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000061411,
+      "next_gap_width": 26,
+      "next_dmin": 8,
+      "next_peak_offset": 12,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d8_a14_higher_divisor_odd",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000279303,
+      "next_gap_width": 24,
+      "next_dmin": 8,
+      "next_peak_offset": 14,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d12_a10_higher_divisor_odd",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000229579,
+      "next_gap_width": 12,
+      "next_dmin": 12,
+      "next_peak_offset": 10,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d12_a12_higher_divisor_odd",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000019213,
+      "next_gap_width": 14,
+      "next_dmin": 12,
+      "next_peak_offset": 12,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d14_a5_higher_divisor_even",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000088891,
+      "next_gap_width": 6,
+      "next_dmin": 14,
+      "next_peak_offset": 5,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d16_a6_higher_divisor_odd",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000140671,
+      "next_gap_width": 8,
+      "next_dmin": 16,
+      "next_peak_offset": 6,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d16_a6_higher_divisor_odd",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000147627,
+      "next_gap_width": 10,
+      "next_dmin": 16,
+      "next_peak_offset": 6,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d24_a5_higher_divisor_even",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000180583,
+      "next_gap_width": 6,
+      "next_dmin": 24,
+      "next_peak_offset": 5,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d32_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000237951,
+      "next_gap_width": 6,
+      "next_dmin": 32,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d180_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000178549,
+      "next_gap_width": 2,
+      "next_dmin": 180,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d300_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000027727,
+      "next_gap_width": 2,
+      "next_dmin": 300,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d448_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000050239,
+      "next_gap_width": 2,
+      "next_dmin": 448,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d960_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000050479,
+      "next_gap_width": 2,
+      "next_dmin": 960,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d4_a32_odd_semiprime",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000251421,
+      "next_gap_width": 90,
+      "next_dmin": 4,
+      "next_peak_offset": 32,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a33_even_semiprime",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000068853,
+      "next_gap_width": 34,
+      "next_dmin": 4,
+      "next_peak_offset": 33,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a39_even_semiprime",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000144523,
+      "next_gap_width": 50,
+      "next_dmin": 4,
+      "next_peak_offset": 39,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a44_odd_semiprime",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000138439,
+      "next_gap_width": 92,
+      "next_dmin": 4,
+      "next_peak_offset": 44,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d6_a12_higher_divisor_odd",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000045417,
+      "next_gap_width": 22,
+      "next_dmin": 6,
+      "next_peak_offset": 12,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d6_a14_higher_divisor_odd",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000000793,
+      "next_gap_width": 26,
+      "next_dmin": 6,
+      "next_peak_offset": 14,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d6_a21_higher_divisor_even",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000097351,
+      "next_gap_width": 48,
+      "next_dmin": 6,
+      "next_peak_offset": 21,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d6_a22_higher_divisor_odd",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000198903,
+      "next_gap_width": 28,
+      "next_dmin": 6,
+      "next_peak_offset": 22,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d10_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000255469,
+      "next_gap_width": 8,
+      "next_dmin": 10,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d12_a6_higher_divisor_odd",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000213669,
+      "next_gap_width": 12,
+      "next_dmin": 12,
+      "next_peak_offset": 6,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d12_a7_higher_divisor_even",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000151327,
+      "next_gap_width": 12,
+      "next_dmin": 12,
+      "next_peak_offset": 7,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d14_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000040767,
+      "next_gap_width": 6,
+      "next_dmin": 14,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d14_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000151869,
+      "next_gap_width": 4,
+      "next_dmin": 14,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d16_a8_higher_divisor_odd",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000004569,
+      "next_gap_width": 10,
+      "next_dmin": 16,
+      "next_peak_offset": 8,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d16_a8_higher_divisor_odd",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000296421,
+      "next_gap_width": 10,
+      "next_dmin": 16,
+      "next_peak_offset": 8,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d24_a4_higher_divisor_odd",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000001723,
+      "next_gap_width": 8,
+      "next_dmin": 24,
+      "next_peak_offset": 4,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d28_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000144573,
+      "next_gap_width": 4,
+      "next_dmin": 28,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d32_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000220723,
+      "next_gap_width": 6,
+      "next_dmin": 32,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d32_a4_higher_divisor_odd",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000091813,
+      "next_gap_width": 6,
+      "next_dmin": 32,
+      "next_peak_offset": 4,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d48_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000176863,
+      "next_gap_width": 6,
+      "next_dmin": 48,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d104_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000192511,
+      "next_gap_width": 2,
+      "next_dmin": 104,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d176_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000293887,
+      "next_gap_width": 2,
+      "next_dmin": 176,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d400_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000281167,
+      "next_gap_width": 2,
+      "next_dmin": 400,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d1024_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000282151,
+      "next_gap_width": 2,
+      "next_dmin": 1024,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d4_a40_odd_semiprime",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000177441,
+      "next_gap_width": 90,
+      "next_dmin": 4,
+      "next_peak_offset": 40,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a45_even_semiprime",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000129861,
+      "next_gap_width": 58,
+      "next_dmin": 4,
+      "next_peak_offset": 45,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a46_odd_semiprime",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000146817,
+      "next_gap_width": 76,
+      "next_dmin": 4,
+      "next_peak_offset": 46,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a46_odd_semiprime",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000105111,
+      "next_gap_width": 102,
+      "next_dmin": 4,
+      "next_peak_offset": 46,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a54_odd_semiprime",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000141543,
+      "next_gap_width": 148,
+      "next_dmin": 4,
+      "next_peak_offset": 54,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o2_d6_a14_higher_divisor_odd",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000157561,
+      "next_gap_width": 38,
+      "next_dmin": 6,
+      "next_peak_offset": 14,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d6_a20_higher_divisor_odd",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000267351,
+      "next_gap_width": 28,
+      "next_dmin": 6,
+      "next_peak_offset": 20,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d6_a23_higher_divisor_even",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000186469,
+      "next_gap_width": 30,
+      "next_dmin": 6,
+      "next_peak_offset": 23,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d6_a25_higher_divisor_even",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000181371,
+      "next_gap_width": 28,
+      "next_dmin": 6,
+      "next_peak_offset": 25,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d6_a34_higher_divisor_odd",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000106957,
+      "next_gap_width": 36,
+      "next_dmin": 6,
+      "next_peak_offset": 34,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d6_a35_higher_divisor_even",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000290857,
+      "next_gap_width": 42,
+      "next_dmin": 6,
+      "next_peak_offset": 35,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d6_a64_higher_divisor_odd",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000087867,
+      "next_gap_width": 66,
+      "next_dmin": 6,
+      "next_peak_offset": 64,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d8_a12_higher_divisor_odd",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000088893,
+      "next_gap_width": 34,
+      "next_dmin": 8,
+      "next_peak_offset": 12,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d8_a13_higher_divisor_even",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000061281,
+      "next_gap_width": 18,
+      "next_dmin": 8,
+      "next_peak_offset": 13,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d8_a16_higher_divisor_odd",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000119073,
+      "next_gap_width": 18,
+      "next_dmin": 8,
+      "next_peak_offset": 16,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d10_a5_higher_divisor_even",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000064363,
+      "next_gap_width": 8,
+      "next_dmin": 10,
+      "next_peak_offset": 5,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d12_a10_higher_divisor_odd",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000103089,
+      "next_gap_width": 12,
+      "next_dmin": 12,
+      "next_peak_offset": 10,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d18_a2_higher_divisor_odd",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000237273,
+      "next_gap_width": 4,
+      "next_dmin": 18,
+      "next_peak_offset": 2,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d24_a2_higher_divisor_odd",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000132307,
+      "next_gap_width": 6,
+      "next_dmin": 24,
+      "next_peak_offset": 2,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d28_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000231613,
+      "next_gap_width": 8,
+      "next_dmin": 28,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d32_a2_higher_divisor_odd",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000247927,
+      "next_gap_width": 6,
+      "next_dmin": 32,
+      "next_peak_offset": 2,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d32_a4_higher_divisor_odd",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000078483,
+      "next_gap_width": 6,
+      "next_dmin": 32,
+      "next_peak_offset": 4,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d80_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000096249,
+      "next_gap_width": 4,
+      "next_dmin": 80,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d110_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000300031,
+      "next_gap_width": 2,
+      "next_dmin": 110,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d128_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000126423,
+      "next_gap_width": 4,
+      "next_dmin": 128,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d4_a34_odd_semiprime",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000295747,
+      "next_gap_width": 84,
+      "next_dmin": 4,
+      "next_peak_offset": 34,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a41_even_semiprime",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000173413,
+      "next_gap_width": 68,
+      "next_dmin": 4,
+      "next_peak_offset": 41,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a44_odd_semiprime",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000112803,
+      "next_gap_width": 156,
+      "next_dmin": 4,
+      "next_peak_offset": 44,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a48_odd_semiprime",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000110049,
+      "next_gap_width": 84,
+      "next_dmin": 4,
+      "next_peak_offset": 48,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a48_odd_semiprime",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000147381,
+      "next_gap_width": 60,
+      "next_dmin": 4,
+      "next_peak_offset": 48,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a51_even_semiprime",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000250467,
+      "next_gap_width": 84,
+      "next_dmin": 4,
+      "next_peak_offset": 51,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a51_even_semiprime",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000075351,
+      "next_gap_width": 72,
+      "next_dmin": 4,
+      "next_peak_offset": 51,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a52_odd_semiprime",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000282159,
+      "next_gap_width": 54,
+      "next_dmin": 4,
+      "next_peak_offset": 52,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a54_odd_semiprime",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000290791,
+      "next_gap_width": 68,
+      "next_dmin": 4,
+      "next_peak_offset": 54,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a63_even_semiprime",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000239739,
+      "next_gap_width": 64,
+      "next_dmin": 4,
+      "next_peak_offset": 63,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o4_d6_a18_higher_divisor_odd",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000117903,
+      "next_gap_width": 24,
+      "next_dmin": 6,
+      "next_peak_offset": 18,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d6_a21_higher_divisor_even",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000124623,
+      "next_gap_width": 24,
+      "next_dmin": 6,
+      "next_peak_offset": 21,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d6_a33_higher_divisor_even",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000075939,
+      "next_gap_width": 40,
+      "next_dmin": 6,
+      "next_peak_offset": 33,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d6_a42_higher_divisor_odd",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000150483,
+      "next_gap_width": 60,
+      "next_dmin": 6,
+      "next_peak_offset": 42,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d8_a11_higher_divisor_even",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000153543,
+      "next_gap_width": 24,
+      "next_dmin": 8,
+      "next_peak_offset": 11,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d8_a13_higher_divisor_even",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000036901,
+      "next_gap_width": 26,
+      "next_dmin": 8,
+      "next_peak_offset": 13,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d8_a14_higher_divisor_odd",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000329047,
+      "next_gap_width": 20,
+      "next_dmin": 8,
+      "next_peak_offset": 14,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d8_a16_higher_divisor_odd",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000146443,
+      "next_gap_width": 18,
+      "next_dmin": 8,
+      "next_peak_offset": 16,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d8_a18_higher_divisor_odd",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000206409,
+      "next_gap_width": 22,
+      "next_dmin": 8,
+      "next_peak_offset": 18,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d8_a24_higher_divisor_odd",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000076431,
+      "next_gap_width": 28,
+      "next_dmin": 8,
+      "next_peak_offset": 24,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d12_a16_higher_divisor_odd",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000167493,
+      "next_gap_width": 18,
+      "next_dmin": 12,
+      "next_peak_offset": 16,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d16_a7_higher_divisor_even",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000238959,
+      "next_gap_width": 10,
+      "next_dmin": 16,
+      "next_peak_offset": 7,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d32_a4_higher_divisor_odd",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000134011,
+      "next_gap_width": 6,
+      "next_dmin": 32,
+      "next_peak_offset": 4,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d40_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000145741,
+      "next_gap_width": 6,
+      "next_dmin": 40,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d64_a2_higher_divisor_odd",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000197583,
+      "next_gap_width": 4,
+      "next_dmin": 64,
+      "next_peak_offset": 2,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d200_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000289999,
+      "next_gap_width": 2,
+      "next_dmin": 200,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d864_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000049099,
+      "next_gap_width": 2,
+      "next_dmin": 864,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d1152_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000050659,
+      "next_gap_width": 2,
+      "next_dmin": 1152,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    }
+  ],
+  "surface_summaries": [
+    {
+      "surface_label": "baseline_1e3",
+      "surface_display_label": "<=10^3",
+      "surface_kind": "exact_baseline",
+      "power": null,
+      "start_right_prime": 3,
+      "gap_count": 167,
+      "distinct_exact_type_count": 32,
+      "new_exact_type_count": 32,
+      "cumulative_distinct_exact_type_count": 32,
+      "max_next_peak_offset": 8,
+      "max_next_dmin": 24,
+      "family_distribution": {
+        "prime_square": {
+          "count": 11,
+          "share": 0.0658682634730539
+        },
+        "prime_cube": {
+          "count": 0,
+          "share": 0.0
+        },
+        "even_semiprime": {
+          "count": 34,
+          "share": 0.20359281437125748
+        },
+        "odd_semiprime": {
+          "count": 78,
+          "share": 0.46706586826347307
+        },
+        "higher_divisor_even": {
+          "count": 39,
+          "share": 0.23353293413173654
+        },
+        "higher_divisor_odd": {
+          "count": 5,
+          "share": 0.029940119760479042
+        }
+      },
+      "top_exact_types": [
+        {
+          "type_key": "o2_d4_a2_odd_semiprime",
+          "count": 26,
+          "share": 0.15568862275449102
+        },
+        {
+          "type_key": "o6_d4_a2_odd_semiprime",
+          "count": 22,
+          "share": 0.1317365269461078
+        },
+        {
+          "type_key": "o4_d4_a2_odd_semiprime",
+          "count": 18,
+          "share": 0.10778443113772455
+        },
+        {
+          "type_key": "o4_d4_a1_even_semiprime",
+          "count": 15,
+          "share": 0.08982035928143713
+        },
+        {
+          "type_key": "o4_d4_a3_even_semiprime",
+          "count": 9,
+          "share": 0.05389221556886228
+        },
+        {
+          "type_key": "o2_d8_a1_higher_divisor_even",
+          "count": 8,
+          "share": 0.04790419161676647
+        },
+        {
+          "type_key": "o2_d12_a1_higher_divisor_even",
+          "count": 8,
+          "share": 0.04790419161676647
+        },
+        {
+          "type_key": "o4_d4_a4_odd_semiprime",
+          "count": 7,
+          "share": 0.041916167664670656
+        },
+        {
+          "type_key": "o2_d16_a1_higher_divisor_even",
+          "count": 5,
+          "share": 0.029940119760479042
+        },
+        {
+          "type_key": "o2_d3_a2_prime_square",
+          "count": 4,
+          "share": 0.023952095808383235
+        }
+      ],
+      "first_seen_exact_type_examples": [
+        {
+          "type_key": "o4_d3_a1_prime_square",
+          "current_right_prime": 3,
+          "next_gap_width": 2,
+          "next_dmin": 3,
+          "next_peak_offset": 1,
+          "carrier_family": "prime_square"
+        },
+        {
+          "type_key": "o2_d3_a2_prime_square",
+          "current_right_prime": 47,
+          "next_gap_width": 6,
+          "next_dmin": 3,
+          "next_peak_offset": 2,
+          "carrier_family": "prime_square"
+        },
+        {
+          "type_key": "o4_d3_a2_prime_square",
+          "current_right_prime": 7,
+          "next_gap_width": 4,
+          "next_dmin": 3,
+          "next_peak_offset": 2,
+          "carrier_family": "prime_square"
+        },
+        {
+          "type_key": "o6_d3_a2_prime_square",
+          "current_right_prime": 23,
+          "next_gap_width": 6,
+          "next_dmin": 3,
+          "next_peak_offset": 2,
+          "carrier_family": "prime_square"
+        },
+        {
+          "type_key": "o4_d3_a6_prime_square",
+          "current_right_prime": 283,
+          "next_gap_width": 10,
+          "next_dmin": 3,
+          "next_peak_offset": 6,
+          "carrier_family": "prime_square"
+        },
+        {
+          "type_key": "o6_d3_a8_prime_square",
+          "current_right_prime": 113,
+          "next_gap_width": 14,
+          "next_dmin": 3,
+          "next_peak_offset": 8,
+          "carrier_family": "prime_square"
+        },
+        {
+          "type_key": "o2_d4_a1_even_semiprime",
+          "current_right_prime": 5,
+          "next_gap_width": 2,
+          "next_dmin": 4,
+          "next_peak_offset": 1,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o4_d4_a1_even_semiprime",
+          "current_right_prime": 13,
+          "next_gap_width": 4,
+          "next_dmin": 4,
+          "next_peak_offset": 1,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o6_d4_a1_even_semiprime",
+          "current_right_prime": 61,
+          "next_gap_width": 6,
+          "next_dmin": 4,
+          "next_peak_offset": 1,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o2_d4_a2_odd_semiprime",
+          "current_right_prime": 89,
+          "next_gap_width": 8,
+          "next_dmin": 4,
+          "next_peak_offset": 2,
+          "carrier_family": "odd_semiprime"
+        }
+      ]
+    },
+    {
+      "surface_label": "10^12",
+      "surface_display_label": "10^12",
+      "surface_kind": "sampled_decade_window",
+      "power": 12,
+      "start_right_prime": 1000000000039,
+      "gap_count": 8192,
+      "distinct_exact_type_count": 222,
+      "new_exact_type_count": 200,
+      "cumulative_distinct_exact_type_count": 232,
+      "max_next_peak_offset": 50,
+      "max_next_dmin": 768,
+      "family_distribution": {
+        "prime_square": {
+          "count": 0,
+          "share": 0.0
+        },
+        "prime_cube": {
+          "count": 0,
+          "share": 0.0
+        },
+        "even_semiprime": {
+          "count": 1000,
+          "share": 0.1220703125
+        },
+        "odd_semiprime": {
+          "count": 5386,
+          "share": 0.657470703125
+        },
+        "higher_divisor_even": {
+          "count": 1027,
+          "share": 0.1253662109375
+        },
+        "higher_divisor_odd": {
+          "count": 779,
+          "share": 0.0950927734375
+        }
+      },
+      "top_exact_types": [
+        {
+          "type_key": "o2_d4_a2_odd_semiprime",
+          "count": 998,
+          "share": 0.121826171875
+        },
+        {
+          "type_key": "o4_d4_a4_odd_semiprime",
+          "count": 820,
+          "share": 0.10009765625
+        },
+        {
+          "type_key": "o6_d4_a6_odd_semiprime",
+          "count": 462,
+          "share": 0.056396484375
+        },
+        {
+          "type_key": "o4_d4_a6_odd_semiprime",
+          "count": 369,
+          "share": 0.0450439453125
+        },
+        {
+          "type_key": "o2_d4_a6_odd_semiprime",
+          "count": 361,
+          "share": 0.0440673828125
+        },
+        {
+          "type_key": "o4_d4_a10_odd_semiprime",
+          "count": 291,
+          "share": 0.0355224609375
+        },
+        {
+          "type_key": "o2_d4_a8_odd_semiprime",
+          "count": 249,
+          "share": 0.0303955078125
+        },
+        {
+          "type_key": "o6_d4_a2_odd_semiprime",
+          "count": 191,
+          "share": 0.0233154296875
+        },
+        {
+          "type_key": "o6_d4_a4_odd_semiprime",
+          "count": 171,
+          "share": 0.0208740234375
+        },
+        {
+          "type_key": "o2_d4_a12_odd_semiprime",
+          "count": 167,
+          "share": 0.0203857421875
+        }
+      ],
+      "first_seen_exact_type_examples": [
+        {
+          "type_key": "o2_d4_a3_even_semiprime",
+          "current_right_prime": 1000000004831,
+          "next_gap_width": 6,
+          "next_dmin": 4,
+          "next_peak_offset": 3,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o2_d4_a5_even_semiprime",
+          "current_right_prime": 1000000000661,
+          "next_gap_width": 8,
+          "next_dmin": 4,
+          "next_peak_offset": 5,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o2_d4_a6_odd_semiprime",
+          "current_right_prime": 1000000000121,
+          "next_gap_width": 42,
+          "next_dmin": 4,
+          "next_peak_offset": 6,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o4_d4_a6_odd_semiprime",
+          "current_right_prime": 1000000001773,
+          "next_gap_width": 64,
+          "next_dmin": 4,
+          "next_peak_offset": 6,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o4_d4_a7_even_semiprime",
+          "current_right_prime": 1000000000039,
+          "next_gap_width": 22,
+          "next_dmin": 4,
+          "next_peak_offset": 7,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o6_d4_a7_even_semiprime",
+          "current_right_prime": 1000000022431,
+          "next_gap_width": 12,
+          "next_dmin": 4,
+          "next_peak_offset": 7,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o2_d4_a8_odd_semiprime",
+          "current_right_prime": 1000000000211,
+          "next_gap_width": 60,
+          "next_dmin": 4,
+          "next_peak_offset": 8,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o4_d4_a8_odd_semiprime",
+          "current_right_prime": 1000000000609,
+          "next_gap_width": 52,
+          "next_dmin": 4,
+          "next_peak_offset": 8,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o6_d4_a8_odd_semiprime",
+          "current_right_prime": 1000000001963,
+          "next_gap_width": 36,
+          "next_dmin": 4,
+          "next_peak_offset": 8,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o2_d4_a9_even_semiprime",
+          "current_right_prime": 1000000019549,
+          "next_gap_width": 20,
+          "next_dmin": 4,
+          "next_peak_offset": 9,
+          "carrier_family": "even_semiprime"
+        }
+      ]
+    },
+    {
+      "surface_label": "10^13",
+      "surface_display_label": "10^13",
+      "surface_kind": "sampled_decade_window",
+      "power": 13,
+      "start_right_prime": 10000000000037,
+      "gap_count": 8192,
+      "distinct_exact_type_count": 229,
+      "new_exact_type_count": 41,
+      "cumulative_distinct_exact_type_count": 273,
+      "max_next_peak_offset": 42,
+      "max_next_dmin": 768,
+      "family_distribution": {
+        "prime_square": {
+          "count": 0,
+          "share": 0.0
+        },
+        "prime_cube": {
+          "count": 0,
+          "share": 0.0
+        },
+        "even_semiprime": {
+          "count": 980,
+          "share": 0.11962890625
+        },
+        "odd_semiprime": {
+          "count": 5484,
+          "share": 0.66943359375
+        },
+        "higher_divisor_even": {
+          "count": 924,
+          "share": 0.11279296875
+        },
+        "higher_divisor_odd": {
+          "count": 804,
+          "share": 0.09814453125
+        }
+      },
+      "top_exact_types": [
+        {
+          "type_key": "o2_d4_a2_odd_semiprime",
+          "count": 940,
+          "share": 0.11474609375
+        },
+        {
+          "type_key": "o4_d4_a4_odd_semiprime",
+          "count": 830,
+          "share": 0.101318359375
+        },
+        {
+          "type_key": "o6_d4_a6_odd_semiprime",
+          "count": 475,
+          "share": 0.0579833984375
+        },
+        {
+          "type_key": "o4_d4_a6_odd_semiprime",
+          "count": 381,
+          "share": 0.0465087890625
+        },
+        {
+          "type_key": "o2_d4_a6_odd_semiprime",
+          "count": 371,
+          "share": 0.0452880859375
+        },
+        {
+          "type_key": "o4_d4_a10_odd_semiprime",
+          "count": 277,
+          "share": 0.0338134765625
+        },
+        {
+          "type_key": "o2_d4_a8_odd_semiprime",
+          "count": 261,
+          "share": 0.0318603515625
+        },
+        {
+          "type_key": "o2_d8_a2_higher_divisor_odd",
+          "count": 176,
+          "share": 0.021484375
+        },
+        {
+          "type_key": "o6_d4_a2_odd_semiprime",
+          "count": 175,
+          "share": 0.0213623046875
+        },
+        {
+          "type_key": "o6_d4_a8_odd_semiprime",
+          "count": 168,
+          "share": 0.0205078125
+        }
+      ],
+      "first_seen_exact_type_examples": [
+        {
+          "type_key": "o2_d4_a23_even_semiprime",
+          "current_right_prime": 10000000153691,
+          "next_gap_width": 32,
+          "next_dmin": 4,
+          "next_peak_offset": 23,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o4_d4_a26_odd_semiprime",
+          "current_right_prime": 10000000050457,
+          "next_gap_width": 40,
+          "next_dmin": 4,
+          "next_peak_offset": 26,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o2_d4_a27_even_semiprime",
+          "current_right_prime": 10000000110539,
+          "next_gap_width": 32,
+          "next_dmin": 4,
+          "next_peak_offset": 27,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o4_d4_a27_even_semiprime",
+          "current_right_prime": 10000000090819,
+          "next_gap_width": 84,
+          "next_dmin": 4,
+          "next_peak_offset": 27,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o2_d4_a28_odd_semiprime",
+          "current_right_prime": 10000000173071,
+          "next_gap_width": 32,
+          "next_dmin": 4,
+          "next_peak_offset": 28,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o6_d4_a30_odd_semiprime",
+          "current_right_prime": 10000000046873,
+          "next_gap_width": 74,
+          "next_dmin": 4,
+          "next_peak_offset": 30,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o6_d4_a31_even_semiprime",
+          "current_right_prime": 10000000104571,
+          "next_gap_width": 42,
+          "next_dmin": 4,
+          "next_peak_offset": 31,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o4_d4_a32_odd_semiprime",
+          "current_right_prime": 10000000173979,
+          "next_gap_width": 40,
+          "next_dmin": 4,
+          "next_peak_offset": 32,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o4_d4_a34_odd_semiprime",
+          "current_right_prime": 10000000011679,
+          "next_gap_width": 54,
+          "next_dmin": 4,
+          "next_peak_offset": 34,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o2_d4_a35_even_semiprime",
+          "current_right_prime": 10000000132907,
+          "next_gap_width": 44,
+          "next_dmin": 4,
+          "next_peak_offset": 35,
+          "carrier_family": "even_semiprime"
+        }
+      ]
+    },
+    {
+      "surface_label": "10^14",
+      "surface_display_label": "10^14",
+      "surface_kind": "sampled_decade_window",
+      "power": 14,
+      "start_right_prime": 100000000000031,
+      "gap_count": 8192,
+      "distinct_exact_type_count": 248,
+      "new_exact_type_count": 38,
+      "cumulative_distinct_exact_type_count": 311,
+      "max_next_peak_offset": 42,
+      "max_next_dmin": 1536,
+      "family_distribution": {
+        "prime_square": {
+          "count": 0,
+          "share": 0.0
+        },
+        "prime_cube": {
+          "count": 0,
+          "share": 0.0
+        },
+        "even_semiprime": {
+          "count": 970,
+          "share": 0.118408203125
+        },
+        "odd_semiprime": {
+          "count": 5518,
+          "share": 0.673583984375
+        },
+        "higher_divisor_even": {
+          "count": 937,
+          "share": 0.1143798828125
+        },
+        "higher_divisor_odd": {
+          "count": 767,
+          "share": 0.0936279296875
+        }
+      },
+      "top_exact_types": [
+        {
+          "type_key": "o2_d4_a2_odd_semiprime",
+          "count": 915,
+          "share": 0.1116943359375
+        },
+        {
+          "type_key": "o4_d4_a4_odd_semiprime",
+          "count": 746,
+          "share": 0.091064453125
+        },
+        {
+          "type_key": "o6_d4_a6_odd_semiprime",
+          "count": 475,
+          "share": 0.0579833984375
+        },
+        {
+          "type_key": "o2_d4_a6_odd_semiprime",
+          "count": 378,
+          "share": 0.046142578125
+        },
+        {
+          "type_key": "o4_d4_a6_odd_semiprime",
+          "count": 378,
+          "share": 0.046142578125
+        },
+        {
+          "type_key": "o4_d4_a10_odd_semiprime",
+          "count": 301,
+          "share": 0.0367431640625
+        },
+        {
+          "type_key": "o2_d4_a8_odd_semiprime",
+          "count": 274,
+          "share": 0.033447265625
+        },
+        {
+          "type_key": "o6_d4_a8_odd_semiprime",
+          "count": 178,
+          "share": 0.021728515625
+        },
+        {
+          "type_key": "o2_d8_a2_higher_divisor_odd",
+          "count": 166,
+          "share": 0.020263671875
+        },
+        {
+          "type_key": "o6_d4_a10_odd_semiprime",
+          "count": 163,
+          "share": 0.0198974609375
+        }
+      ],
+      "first_seen_exact_type_examples": [
+        {
+          "type_key": "o4_d4_a25_even_semiprime",
+          "current_right_prime": 100000000031857,
+          "next_gap_width": 30,
+          "next_dmin": 4,
+          "next_peak_offset": 25,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o2_d4_a29_even_semiprime",
+          "current_right_prime": 100000000201097,
+          "next_gap_width": 54,
+          "next_dmin": 4,
+          "next_peak_offset": 29,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o6_d4_a29_even_semiprime",
+          "current_right_prime": 100000000240373,
+          "next_gap_width": 44,
+          "next_dmin": 4,
+          "next_peak_offset": 29,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o6_d4_a34_odd_semiprime",
+          "current_right_prime": 100000000233571,
+          "next_gap_width": 36,
+          "next_dmin": 4,
+          "next_peak_offset": 34,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o2_d4_a36_odd_semiprime",
+          "current_right_prime": 100000000006817,
+          "next_gap_width": 56,
+          "next_dmin": 4,
+          "next_peak_offset": 36,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o4_d4_a36_odd_semiprime",
+          "current_right_prime": 100000000182637,
+          "next_gap_width": 46,
+          "next_dmin": 4,
+          "next_peak_offset": 36,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o6_d4_a36_odd_semiprime",
+          "current_right_prime": 100000000025491,
+          "next_gap_width": 82,
+          "next_dmin": 4,
+          "next_peak_offset": 36,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o2_d4_a38_odd_semiprime",
+          "current_right_prime": 100000000253081,
+          "next_gap_width": 132,
+          "next_dmin": 4,
+          "next_peak_offset": 38,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o2_d4_a41_even_semiprime",
+          "current_right_prime": 100000000099421,
+          "next_gap_width": 102,
+          "next_dmin": 4,
+          "next_peak_offset": 41,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o2_d4_a42_odd_semiprime",
+          "current_right_prime": 100000000143767,
+          "next_gap_width": 72,
+          "next_dmin": 4,
+          "next_peak_offset": 42,
+          "carrier_family": "odd_semiprime"
+        }
+      ]
+    },
+    {
+      "surface_label": "10^15",
+      "surface_display_label": "10^15",
+      "surface_kind": "sampled_decade_window",
+      "power": 15,
+      "start_right_prime": 1000000000000037,
+      "gap_count": 8192,
+      "distinct_exact_type_count": 244,
+      "new_exact_type_count": 23,
+      "cumulative_distinct_exact_type_count": 334,
+      "max_next_peak_offset": 62,
+      "max_next_dmin": 1536,
+      "family_distribution": {
+        "prime_square": {
+          "count": 0,
+          "share": 0.0
+        },
+        "prime_cube": {
+          "count": 0,
+          "share": 0.0
+        },
+        "even_semiprime": {
+          "count": 953,
+          "share": 0.1163330078125
+        },
+        "odd_semiprime": {
+          "count": 5601,
+          "share": 0.6837158203125
+        },
+        "higher_divisor_even": {
+          "count": 849,
+          "share": 0.1036376953125
+        },
+        "higher_divisor_odd": {
+          "count": 789,
+          "share": 0.0963134765625
+        }
+      },
+      "top_exact_types": [
+        {
+          "type_key": "o2_d4_a2_odd_semiprime",
+          "count": 849,
+          "share": 0.1036376953125
+        },
+        {
+          "type_key": "o4_d4_a4_odd_semiprime",
+          "count": 786,
+          "share": 0.095947265625
+        },
+        {
+          "type_key": "o6_d4_a6_odd_semiprime",
+          "count": 430,
+          "share": 0.052490234375
+        },
+        {
+          "type_key": "o2_d4_a6_odd_semiprime",
+          "count": 392,
+          "share": 0.0478515625
+        },
+        {
+          "type_key": "o4_d4_a6_odd_semiprime",
+          "count": 387,
+          "share": 0.0472412109375
+        },
+        {
+          "type_key": "o4_d4_a10_odd_semiprime",
+          "count": 297,
+          "share": 0.0362548828125
+        },
+        {
+          "type_key": "o2_d4_a8_odd_semiprime",
+          "count": 281,
+          "share": 0.0343017578125
+        },
+        {
+          "type_key": "o2_d4_a12_odd_semiprime",
+          "count": 201,
+          "share": 0.0245361328125
+        },
+        {
+          "type_key": "o6_d4_a2_odd_semiprime",
+          "count": 174,
+          "share": 0.021240234375
+        },
+        {
+          "type_key": "o6_d4_a8_odd_semiprime",
+          "count": 161,
+          "share": 0.0196533203125
+        }
+      ],
+      "first_seen_exact_type_examples": [
+        {
+          "type_key": "o6_d4_a33_even_semiprime",
+          "current_right_prime": 1000000000284361,
+          "next_gap_width": 40,
+          "next_dmin": 4,
+          "next_peak_offset": 33,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o6_d4_a35_even_semiprime",
+          "current_right_prime": 1000000000016483,
+          "next_gap_width": 138,
+          "next_dmin": 4,
+          "next_peak_offset": 35,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o4_d4_a37_even_semiprime",
+          "current_right_prime": 1000000000125169,
+          "next_gap_width": 42,
+          "next_dmin": 4,
+          "next_peak_offset": 37,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o6_d4_a37_even_semiprime",
+          "current_right_prime": 1000000000120921,
+          "next_gap_width": 42,
+          "next_dmin": 4,
+          "next_peak_offset": 37,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o2_d4_a39_even_semiprime",
+          "current_right_prime": 1000000000109087,
+          "next_gap_width": 132,
+          "next_dmin": 4,
+          "next_peak_offset": 39,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o4_d4_a39_even_semiprime",
+          "current_right_prime": 1000000000206379,
+          "next_gap_width": 42,
+          "next_dmin": 4,
+          "next_peak_offset": 39,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o2_d4_a48_odd_semiprime",
+          "current_right_prime": 1000000000217369,
+          "next_gap_width": 62,
+          "next_dmin": 4,
+          "next_peak_offset": 48,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o2_d4_a62_odd_semiprime",
+          "current_right_prime": 1000000000029659,
+          "next_gap_width": 90,
+          "next_dmin": 4,
+          "next_peak_offset": 62,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o2_d6_a22_higher_divisor_odd",
+          "current_right_prime": 1000000000020407,
+          "next_gap_width": 24,
+          "next_dmin": 6,
+          "next_peak_offset": 22,
+          "carrier_family": "higher_divisor_odd"
+        },
+        {
+          "type_key": "o6_d8_a11_higher_divisor_even",
+          "current_right_prime": 1000000000105763,
+          "next_gap_width": 18,
+          "next_dmin": 8,
+          "next_peak_offset": 11,
+          "carrier_family": "higher_divisor_even"
+        }
+      ]
+    },
+    {
+      "surface_label": "10^16",
+      "surface_display_label": "10^16",
+      "surface_kind": "sampled_decade_window",
+      "power": 16,
+      "start_right_prime": 10000000000000061,
+      "gap_count": 8192,
+      "distinct_exact_type_count": 259,
+      "new_exact_type_count": 24,
+      "cumulative_distinct_exact_type_count": 358,
+      "max_next_peak_offset": 44,
+      "max_next_dmin": 1024,
+      "family_distribution": {
+        "prime_square": {
+          "count": 0,
+          "share": 0.0
+        },
+        "prime_cube": {
+          "count": 0,
+          "share": 0.0
+        },
+        "even_semiprime": {
+          "count": 994,
+          "share": 0.121337890625
+        },
+        "odd_semiprime": {
+          "count": 5571,
+          "share": 0.6800537109375
+        },
+        "higher_divisor_even": {
+          "count": 840,
+          "share": 0.1025390625
+        },
+        "higher_divisor_odd": {
+          "count": 787,
+          "share": 0.0960693359375
+        }
+      },
+      "top_exact_types": [
+        {
+          "type_key": "o2_d4_a2_odd_semiprime",
+          "count": 846,
+          "share": 0.103271484375
+        },
+        {
+          "type_key": "o4_d4_a4_odd_semiprime",
+          "count": 761,
+          "share": 0.0928955078125
+        },
+        {
+          "type_key": "o6_d4_a6_odd_semiprime",
+          "count": 405,
+          "share": 0.0494384765625
+        },
+        {
+          "type_key": "o2_d4_a6_odd_semiprime",
+          "count": 372,
+          "share": 0.04541015625
+        },
+        {
+          "type_key": "o4_d4_a6_odd_semiprime",
+          "count": 351,
+          "share": 0.0428466796875
+        },
+        {
+          "type_key": "o4_d4_a10_odd_semiprime",
+          "count": 299,
+          "share": 0.0364990234375
+        },
+        {
+          "type_key": "o2_d4_a8_odd_semiprime",
+          "count": 294,
+          "share": 0.035888671875
+        },
+        {
+          "type_key": "o2_d4_a12_odd_semiprime",
+          "count": 228,
+          "share": 0.02783203125
+        },
+        {
+          "type_key": "o6_d4_a2_odd_semiprime",
+          "count": 167,
+          "share": 0.0203857421875
+        },
+        {
+          "type_key": "o4_d4_a12_odd_semiprime",
+          "count": 163,
+          "share": 0.0198974609375
+        }
+      ],
+      "first_seen_exact_type_examples": [
+        {
+          "type_key": "o6_d4_a32_odd_semiprime",
+          "current_right_prime": 10000000000251421,
+          "next_gap_width": 90,
+          "next_dmin": 4,
+          "next_peak_offset": 32,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o4_d4_a33_even_semiprime",
+          "current_right_prime": 10000000000068853,
+          "next_gap_width": 34,
+          "next_dmin": 4,
+          "next_peak_offset": 33,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o6_d4_a39_even_semiprime",
+          "current_right_prime": 10000000000144523,
+          "next_gap_width": 50,
+          "next_dmin": 4,
+          "next_peak_offset": 39,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o2_d4_a44_odd_semiprime",
+          "current_right_prime": 10000000000138439,
+          "next_gap_width": 92,
+          "next_dmin": 4,
+          "next_peak_offset": 44,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o4_d6_a12_higher_divisor_odd",
+          "current_right_prime": 10000000000045417,
+          "next_gap_width": 22,
+          "next_dmin": 6,
+          "next_peak_offset": 12,
+          "carrier_family": "higher_divisor_odd"
+        },
+        {
+          "type_key": "o6_d6_a14_higher_divisor_odd",
+          "current_right_prime": 10000000000000793,
+          "next_gap_width": 26,
+          "next_dmin": 6,
+          "next_peak_offset": 14,
+          "carrier_family": "higher_divisor_odd"
+        },
+        {
+          "type_key": "o2_d6_a21_higher_divisor_even",
+          "current_right_prime": 10000000000097351,
+          "next_gap_width": 48,
+          "next_dmin": 6,
+          "next_peak_offset": 21,
+          "carrier_family": "higher_divisor_even"
+        },
+        {
+          "type_key": "o4_d6_a22_higher_divisor_odd",
+          "current_right_prime": 10000000000198903,
+          "next_gap_width": 28,
+          "next_dmin": 6,
+          "next_peak_offset": 22,
+          "carrier_family": "higher_divisor_odd"
+        },
+        {
+          "type_key": "o2_d10_a3_higher_divisor_even",
+          "current_right_prime": 10000000000255469,
+          "next_gap_width": 8,
+          "next_dmin": 10,
+          "next_peak_offset": 3,
+          "carrier_family": "higher_divisor_even"
+        },
+        {
+          "type_key": "o4_d12_a6_higher_divisor_odd",
+          "current_right_prime": 10000000000213669,
+          "next_gap_width": 12,
+          "next_dmin": 12,
+          "next_peak_offset": 6,
+          "carrier_family": "higher_divisor_odd"
+        }
+      ]
+    },
+    {
+      "surface_label": "10^17",
+      "surface_display_label": "10^17",
+      "surface_kind": "sampled_decade_window",
+      "power": 17,
+      "start_right_prime": 100000000000000003,
+      "gap_count": 8192,
+      "distinct_exact_type_count": 280,
+      "new_exact_type_count": 25,
+      "cumulative_distinct_exact_type_count": 383,
+      "max_next_peak_offset": 64,
+      "max_next_dmin": 768,
+      "family_distribution": {
+        "prime_square": {
+          "count": 0,
+          "share": 0.0
+        },
+        "prime_cube": {
+          "count": 0,
+          "share": 0.0
+        },
+        "even_semiprime": {
+          "count": 974,
+          "share": 0.118896484375
+        },
+        "odd_semiprime": {
+          "count": 5563,
+          "share": 0.6790771484375
+        },
+        "higher_divisor_even": {
+          "count": 808,
+          "share": 0.0986328125
+        },
+        "higher_divisor_odd": {
+          "count": 847,
+          "share": 0.1033935546875
+        }
+      },
+      "top_exact_types": [
+        {
+          "type_key": "o4_d4_a4_odd_semiprime",
+          "count": 748,
+          "share": 0.09130859375
+        },
+        {
+          "type_key": "o2_d4_a2_odd_semiprime",
+          "count": 739,
+          "share": 0.0902099609375
+        },
+        {
+          "type_key": "o6_d4_a6_odd_semiprime",
+          "count": 420,
+          "share": 0.05126953125
+        },
+        {
+          "type_key": "o4_d4_a6_odd_semiprime",
+          "count": 371,
+          "share": 0.0452880859375
+        },
+        {
+          "type_key": "o2_d4_a6_odd_semiprime",
+          "count": 367,
+          "share": 0.0447998046875
+        },
+        {
+          "type_key": "o4_d4_a10_odd_semiprime",
+          "count": 316,
+          "share": 0.03857421875
+        },
+        {
+          "type_key": "o2_d4_a8_odd_semiprime",
+          "count": 254,
+          "share": 0.031005859375
+        },
+        {
+          "type_key": "o2_d4_a12_odd_semiprime",
+          "count": 199,
+          "share": 0.0242919921875
+        },
+        {
+          "type_key": "o6_d4_a8_odd_semiprime",
+          "count": 183,
+          "share": 0.0223388671875
+        },
+        {
+          "type_key": "o2_d8_a2_higher_divisor_odd",
+          "count": 175,
+          "share": 0.0213623046875
+        }
+      ],
+      "first_seen_exact_type_examples": [
+        {
+          "type_key": "o6_d4_a40_odd_semiprime",
+          "current_right_prime": 100000000000177441,
+          "next_gap_width": 90,
+          "next_dmin": 4,
+          "next_peak_offset": 40,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o6_d4_a45_even_semiprime",
+          "current_right_prime": 100000000000129861,
+          "next_gap_width": 58,
+          "next_dmin": 4,
+          "next_peak_offset": 45,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o4_d4_a46_odd_semiprime",
+          "current_right_prime": 100000000000146817,
+          "next_gap_width": 76,
+          "next_dmin": 4,
+          "next_peak_offset": 46,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o6_d4_a46_odd_semiprime",
+          "current_right_prime": 100000000000105111,
+          "next_gap_width": 102,
+          "next_dmin": 4,
+          "next_peak_offset": 46,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o4_d4_a54_odd_semiprime",
+          "current_right_prime": 100000000000141543,
+          "next_gap_width": 148,
+          "next_dmin": 4,
+          "next_peak_offset": 54,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o2_d6_a14_higher_divisor_odd",
+          "current_right_prime": 100000000000157561,
+          "next_gap_width": 38,
+          "next_dmin": 6,
+          "next_peak_offset": 14,
+          "carrier_family": "higher_divisor_odd"
+        },
+        {
+          "type_key": "o6_d6_a20_higher_divisor_odd",
+          "current_right_prime": 100000000000267351,
+          "next_gap_width": 28,
+          "next_dmin": 6,
+          "next_peak_offset": 20,
+          "carrier_family": "higher_divisor_odd"
+        },
+        {
+          "type_key": "o2_d6_a23_higher_divisor_even",
+          "current_right_prime": 100000000000186469,
+          "next_gap_width": 30,
+          "next_dmin": 6,
+          "next_peak_offset": 23,
+          "carrier_family": "higher_divisor_even"
+        },
+        {
+          "type_key": "o6_d6_a25_higher_divisor_even",
+          "current_right_prime": 100000000000181371,
+          "next_gap_width": 28,
+          "next_dmin": 6,
+          "next_peak_offset": 25,
+          "carrier_family": "higher_divisor_even"
+        },
+        {
+          "type_key": "o2_d6_a34_higher_divisor_odd",
+          "current_right_prime": 100000000000106957,
+          "next_gap_width": 36,
+          "next_dmin": 6,
+          "next_peak_offset": 34,
+          "carrier_family": "higher_divisor_odd"
+        }
+      ]
+    },
+    {
+      "surface_label": "10^18",
+      "surface_display_label": "10^18",
+      "surface_kind": "sampled_decade_window",
+      "power": 18,
+      "start_right_prime": 1000000000000000003,
+      "gap_count": 8192,
+      "distinct_exact_type_count": 297,
+      "new_exact_type_count": 28,
+      "cumulative_distinct_exact_type_count": 411,
+      "max_next_peak_offset": 63,
+      "max_next_dmin": 1152,
+      "family_distribution": {
+        "prime_square": {
+          "count": 0,
+          "share": 0.0
+        },
+        "prime_cube": {
+          "count": 0,
+          "share": 0.0
+        },
+        "even_semiprime": {
+          "count": 962,
+          "share": 0.117431640625
+        },
+        "odd_semiprime": {
+          "count": 5658,
+          "share": 0.690673828125
+        },
+        "higher_divisor_even": {
+          "count": 783,
+          "share": 0.0955810546875
+        },
+        "higher_divisor_odd": {
+          "count": 789,
+          "share": 0.0963134765625
+        }
+      },
+      "top_exact_types": [
+        {
+          "type_key": "o2_d4_a2_odd_semiprime",
+          "count": 772,
+          "share": 0.09423828125
+        },
+        {
+          "type_key": "o4_d4_a4_odd_semiprime",
+          "count": 669,
+          "share": 0.0816650390625
+        },
+        {
+          "type_key": "o6_d4_a6_odd_semiprime",
+          "count": 436,
+          "share": 0.05322265625
+        },
+        {
+          "type_key": "o2_d4_a6_odd_semiprime",
+          "count": 365,
+          "share": 0.0445556640625
+        },
+        {
+          "type_key": "o4_d4_a6_odd_semiprime",
+          "count": 351,
+          "share": 0.0428466796875
+        },
+        {
+          "type_key": "o4_d4_a10_odd_semiprime",
+          "count": 307,
+          "share": 0.0374755859375
+        },
+        {
+          "type_key": "o2_d4_a8_odd_semiprime",
+          "count": 255,
+          "share": 0.0311279296875
+        },
+        {
+          "type_key": "o2_d4_a12_odd_semiprime",
+          "count": 216,
+          "share": 0.0263671875
+        },
+        {
+          "type_key": "o6_d4_a8_odd_semiprime",
+          "count": 170,
+          "share": 0.020751953125
+        },
+        {
+          "type_key": "o4_d4_a12_odd_semiprime",
+          "count": 155,
+          "share": 0.0189208984375
+        }
+      ],
+      "first_seen_exact_type_examples": [
+        {
+          "type_key": "o2_d4_a34_odd_semiprime",
+          "current_right_prime": 1000000000000295747,
+          "next_gap_width": 84,
+          "next_dmin": 4,
+          "next_peak_offset": 34,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o6_d4_a41_even_semiprime",
+          "current_right_prime": 1000000000000173413,
+          "next_gap_width": 68,
+          "next_dmin": 4,
+          "next_peak_offset": 41,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o4_d4_a44_odd_semiprime",
+          "current_right_prime": 1000000000000112803,
+          "next_gap_width": 156,
+          "next_dmin": 4,
+          "next_peak_offset": 44,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o4_d4_a48_odd_semiprime",
+          "current_right_prime": 1000000000000110049,
+          "next_gap_width": 84,
+          "next_dmin": 4,
+          "next_peak_offset": 48,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o6_d4_a48_odd_semiprime",
+          "current_right_prime": 1000000000000147381,
+          "next_gap_width": 60,
+          "next_dmin": 4,
+          "next_peak_offset": 48,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o4_d4_a51_even_semiprime",
+          "current_right_prime": 1000000000000250467,
+          "next_gap_width": 84,
+          "next_dmin": 4,
+          "next_peak_offset": 51,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o6_d4_a51_even_semiprime",
+          "current_right_prime": 1000000000000075351,
+          "next_gap_width": 72,
+          "next_dmin": 4,
+          "next_peak_offset": 51,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o4_d4_a52_odd_semiprime",
+          "current_right_prime": 1000000000000282159,
+          "next_gap_width": 54,
+          "next_dmin": 4,
+          "next_peak_offset": 52,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o2_d4_a54_odd_semiprime",
+          "current_right_prime": 1000000000000290791,
+          "next_gap_width": 68,
+          "next_dmin": 4,
+          "next_peak_offset": 54,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o4_d4_a63_even_semiprime",
+          "current_right_prime": 1000000000000239739,
+          "next_gap_width": 64,
+          "next_dmin": 4,
+          "next_peak_offset": 63,
+          "carrier_family": "even_semiprime"
+        }
+      ]
+    }
+  ],
+  "runtime_seconds": 1385.1610699999146
+}

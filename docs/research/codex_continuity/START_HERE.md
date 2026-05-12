@@ -228,6 +228,206 @@ Preserve the state separation:
 - unresolved: the square-branch prime-square proximity theorem
   `r^2 - p <= C(q)`.
 
+## Current State-Budget Hidden-State Branch
+
+As of 2026-05-09, the state-budget hidden-state probe is a live predictor
+research branch.
+
+Read:
+
+```text
+gwr/findings/phase_budget_hidden_state_probe_findings.md
+docs/research/predictor/state_budget_hidden_state_rollout/index.html
+output/gwr_phase_budget_hidden_state_probe_summary.json
+```
+
+Strongest supported claim:
+
+```text
+On the retained 10^12..10^18 catalog window surface, the current
+parity-plus-previous-state hidden model is missing one endpoint-budget bit:
+d4_low / d4_high adds 0.023067 pooled log-loss gain over parity plus previous
+state and separates next-triad share by 0.057217.
+```
+
+First hard-gated held-out result:
+
+```text
+benchmarks/python/predictor/state_budget_heldout_ruler_test.py
+output/state_budget_heldout_ruler_test.csv
+```
+
+With `configured_balance_floor = 0.10`, the current retained surface does not
+promote the state-budget bit. Four held-out folds are unresolved from low/high
+imbalance. Three folds are balanced enough to score, and all three return
+`does_not`.
+
+This preserves the pooled signal as a measured observation, but the first
+strict held-out decision surface does not support upgrading "may carry next-gap
+state" to "does carry next-gap state." The next valid task is balanced retained
+surface construction, not a stronger model.
+
+Matched-pair ruler test:
+
+```text
+benchmarks/python/predictor/state_budget_pairwise_ruler_test.py
+output/state_budget_pairwise_ruler_summary.json
+output/state_budget_pairwise_ruler_per_power.csv
+```
+
+Inside matched current-gap cells, target-next rows sit lower on the square
+ruler with signed advantage `+73` over `589` decisive pairs. The plain
+tail-length control scores `+70` on the same pairs. With
+`min_control_margin = 15`, the square-ruler-specific verdict is `unresolved`.
+
+Interpretation: the current retained surface shows positive memory-like
+ordering, but it does not yet isolate the prime-square boundary as the carrier
+of that ordering. Grok independently reproduced the pairwise totals and agreed
+with the updated `unresolved` verdict after the control-margin rule was added.
+
+Residue-matched follow-up:
+
+```text
+benchmarks/python/predictor/state_budget_residue_matched_pair_test.py
+output/state_budget_residue_matched_pair_summary.json
+output/state_budget_residue_matched_pair_per_power.csv
+```
+
+Adding `p_n mod 30` to the matched-cell key leaves `230` decisive pairs. The
+square ruler scores signed advantage `+40`; tail length scores `+33`. This is
+positive after residue matching, but the square-over-tail margin is only `+7`,
+below `min_control_margin = 15`, so the verdict remains `unresolved`.
+
+Adding exact previous gap width to the `mod 30` match leaves only `35` decisive
+pairs, so the stricter residual test is support-limited on the current retained
+surface.
+
+PGS-native forbidden-transition follow-up:
+
+```text
+benchmarks/python/predictor/state_budget_forbidden_transition_test.py
+output/state_budget_forbidden_transition_summary.json
+output/state_budget_forbidden_transition_folds.csv
+output/state_budget_forbidden_transition_catalog_2048/state_budget_forbidden_transition_summary.json
+```
+
+The "cannot be" framing tested whether square-room side forbids exact next
+reduced states inside matched current PGS chamber facts. On the current
+256-row retained surface, the broad base cell returns `does_not`: `703`
+eligible held-out rows, `227` violations, violation rate `0.322902`.
+The exact-tail cell has zero violations but only `4` eligible rows, so it is
+`unresolved`.
+
+A larger deterministic retained surface was generated with `2048` consecutive
+catalog rows at each power `10^12..10^18`. It contains `11470` current `d=4`
+transitions. That larger surface rejects exact next-state exclusion in every
+mode:
+
+```text
+base:             10030 eligible, 1698 violations, violation rate 0.169292
+mod30:             5665 eligible,  813 violations, violation rate 0.143513
+exact_tail:        2690 eligible,  746 violations, violation rate 0.277323
+mod30_exact_tail:  1331 eligible,  286 violations, violation rate 0.214876
+```
+
+This invalidates the square-room-side-as-forbidden-transition rule on the
+retained high-window surfaces. The original memory-like signal is not a hard
+next-state exclusion law.
+
+Expanded pairwise readout on the same `2048` surface:
+
+```text
+output/state_budget_forbidden_transition_catalog_2048/state_budget_pairwise_ruler_summary.json
+output/state_budget_forbidden_transition_catalog_2048/state_budget_residue_matched_pair_summary.json
+```
+
+The larger pairwise surface resolves the earlier square-over-tail ambiguity
+against the independent square-boundary interpretation:
+
+```text
+base matched cells:
+  square_ruler signed advantage: +1026 over 37116 decisive pairs
+  tail_length signed advantage:  +1024 over 37116 decisive pairs
+  square-over-tail edge: +2
+
+mod30 matched cells:
+  square_ruler signed advantage: +149 over 14305 decisive pairs
+  tail_length signed advantage:  +135 over 14305 decisive pairs
+  square-over-tail edge: +14, below min_control_margin = 15
+
+mod30 + previous gap:
+  square_ruler signed advantage: -19 over 2463 decisive pairs
+  tail_length signed advantage:  -30 over 2463 decisive pairs
+```
+
+Interpretation at the `2048` surface: the retained high-window signal is real
+as a weak ordering effect, but that surface does not isolate the next
+prime-square boundary as the independent carrier. The signal tracks endpoint
+tail length too closely. The research state after this surface was:
+
+- measured: weak memory-like ordering exists inside matched current PGS cells;
+- invalidated: square-room side forbids exact next reduced state;
+- invalidated on expanded retained windows: square ruler clearly beats tail
+  length as an independent mechanism;
+- unresolved: the actual PGS-native carrier of the weak residual ordering.
+
+Long-running `8192` breakthrough:
+
+```text
+docs/research/predictor/d4_count_observer_note/index.html
+docs/research/predictor/d4_count_project_implications/index.html
+docs/research/predictor/state_budget_long_running_research_goal/index.html
+output/state_budget_long_running_catalog_8192/state_budget_long_running_research_report.md
+output/state_budget_long_running_catalog_8192/state_budget_divisor_carrier_sweep_summary.json
+output/state_budget_long_running_catalog_8192/state_budget_divisor_carrier_sweep_folds.csv
+benchmarks/python/predictor/state_budget_divisor_carrier_sweep.py
+tests/python/predictor/test_state_budget_divisor_carrier_sweep.py
+```
+
+The long-running goal stopped with:
+
+```text
+breakthrough: ordering carrier found
+```
+
+Strongest supported measured claim:
+
+```text
+On the deterministic retained 8192-row-per-power 10^12..10^18 surface, the
+current chamber's d4_count is a PGS-native ordering carrier for the next triad
+state under the ordering-carrier gate.
+```
+
+Exact breakthrough row:
+
+```text
+match mode: mod30_prev_gap_exact
+measure: d4_count
+decisive pairs: 7881
+held-out powers above 100 decisive pairs: 7 / 7
+positive oriented held-out folds: 6 / 7
+oriented signed advantage: 299
+endpoint-tail control signed advantage: 230
+edge over endpoint-tail control: 69
+required edge: 50
+verdict: ordering_carrier_found
+```
+
+`d4_count` is the number of divisor-count `4` positions inside the current
+ordered prime-gap chamber. It is defined from the current PGS divisor-count
+field, not from the next chamber label.
+
+State separation:
+
+- measured: `d4_count` is a held-out ordering carrier on the retained
+  `8192`-row-per-power `10^12..10^18` surface;
+- invalidated: square-room side as a hard next-state exclusion rule;
+- invalidated: prime-square boundary clearly beating endpoint tail as the
+  independent carrier on expanded retained windows;
+- unresolved: symbolic reason why current-chamber `d4_count` carries next-triad
+  ordering information;
+- unresolved: replication on a disjoint retained high-window construction.
+
 ## Current Collatz Branch State
 
 As of 2026-05-03, the Collatz work is integrated on `main` under:

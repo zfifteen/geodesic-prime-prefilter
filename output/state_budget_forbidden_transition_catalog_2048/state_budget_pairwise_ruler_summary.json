@@ -1,0 +1,26 @@
+{
+  "min_power": 12,
+  "max_power": 18,
+  "min_class_count": 1,
+  "min_decisive_pairs": 100,
+  "min_control_margin": 15,
+  "measure_summaries": [
+    {
+      "measure": "square_ruler",
+      "eligible_cells": 1118,
+      "decisive_pairs": 37116,
+      "signed_advantage": 1026,
+      "tie_pairs": 0,
+      "advantage_share": 0.027643064985451018
+    },
+    {
+      "measure": "tail_length",
+      "eligible_cells": 1118,
+      "decisive_pairs": 37116,
+      "signed_advantage": 1024,
+      "tie_pairs": 1620,
+      "advantage_share": 0.027589179868520313
+    }
+  ],
+  "verdict": "unresolved"
+}
