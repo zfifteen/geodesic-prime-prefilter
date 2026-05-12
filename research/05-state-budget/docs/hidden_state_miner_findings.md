@@ -32,8 +32,8 @@ The main question after this run is whether the best candidate survives once cur
 
 ## Artifacts
 
-- [hidden-state miner script](../../benchmarks/python/predictor/gwr_hidden_state_miner.py)
-- [summary JSON](../../output/gwr_hidden_state_miner_summary.json)
-- [candidate CSV](../../output/gwr_hidden_state_miner_candidates.csv)
-- [history JSONL](../../output/gwr_hidden_state_miner_history.jsonl)
-- ![Hidden-state miner overview](../../output/gwr_hidden_state_miner_overview.png)
+- [hidden-state miner script](../scripts/gwr_hidden_state_miner.py)
+- [summary JSON](../output/gwr_hidden_state_miner_summary.json)
+- [candidate CSV](../output/gwr_hidden_state_miner_candidates.csv)
+- [history JSONL](../output/gwr_hidden_state_miner_history.jsonl)
+- ![Hidden-state miner overview](../output/gwr_hidden_state_miner_overview.png)

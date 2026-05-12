@@ -15,8 +15,8 @@ from sympy import nextprime
 
 
 ROOT = Path(__file__).resolve().parents[3]
-DEFAULT_DETAIL_CSV = ROOT / "output" / "gwr_dni_gap_type_catalog_details.csv"
-DEFAULT_OUTPUT_DIR = ROOT / "output"
+DEFAULT_DETAIL_CSV = ROOT / "research" / "03-gap-types" / "output" / "gwr_dni_gap_type_catalog_details.csv"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "05-state-budget" / "output"
 DEFAULT_TRAIN_MIN_POWER = 7
 DEFAULT_TRAIN_MAX_POWER = 17
 DEFAULT_HELD_POWER = 18

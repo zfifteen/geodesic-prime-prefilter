@@ -22,8 +22,8 @@ import gwr_phase_budget_hidden_state_probe as phase_probe
 
 
 ROOT = Path(__file__).resolve().parents[3]
-DEFAULT_DETAIL_CSV = ROOT / "output" / "gwr_dni_gap_type_catalog_details.csv"
-DEFAULT_OUTPUT_DIR = ROOT / "output"
+DEFAULT_DETAIL_CSV = ROOT / "research" / "03-gap-types" / "output" / "gwr_dni_gap_type_catalog_details.csv"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "05-state-budget" / "output"
 DEFAULT_MIN_POWER = 12
 DEFAULT_MAX_POWER = 18
 MIN_TRAIN_BASE_ROWS = 6

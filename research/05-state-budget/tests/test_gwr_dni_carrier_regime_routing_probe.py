@@ -8,7 +8,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
-MODULE_PATH = ROOT / "benchmarks" / "python" / "predictor" / "gwr_dni_carrier_regime_routing_probe.py"
+MODULE_PATH = ROOT / "research" / "05-state-budget" / "scripts" / "gwr_dni_carrier_regime_routing_probe.py"
 
 
 def load_module():
@@ -27,7 +27,7 @@ def load_module():
 def test_carrier_regime_probe_emits_partition_scores():
     """The held-out probe should score partitions and routing policies."""
     module = load_module()
-    rows = module.load_rows(ROOT / "output" / "gwr_dni_gap_type_catalog_details.csv")
+    rows = module.load_rows(ROOT / "research" / "03-gap-types" / "output" / "gwr_dni_gap_type_catalog_details.csv")
 
     summary, detail_rows = module.evaluate(
         rows,
@@ -65,7 +65,7 @@ def test_carrier_regime_probe_cli_writes_artifacts(tmp_path):
     assert module.main(
         [
             "--detail-csv",
-            str(ROOT / "output" / "gwr_dni_gap_type_catalog_details.csv"),
+            str(ROOT / "research" / "03-gap-types" / "output" / "gwr_dni_gap_type_catalog_details.csv"),
             "--output-dir",
             str(tmp_path),
             "--held-power",

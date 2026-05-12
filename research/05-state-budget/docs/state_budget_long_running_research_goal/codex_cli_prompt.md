@@ -3,7 +3,7 @@
 Read and follow this goal document:
 
 ```text
-docs/research/predictor/state_budget_long_running_research_goal/index.html
+research/05-state-budget/docs/state_budget_long_running_research_goal/index.html
 ```
 
 Run the long-running PGS state-budget research from that contract. Start from

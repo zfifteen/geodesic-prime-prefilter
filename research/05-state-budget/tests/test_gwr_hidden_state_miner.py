@@ -7,7 +7,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
-MODULE_PATH = ROOT / "benchmarks" / "python" / "predictor" / "gwr_hidden_state_miner.py"
+MODULE_PATH = ROOT / "research" / "05-state-budget" / "scripts" / "gwr_hidden_state_miner.py"
 
 
 def load_module():

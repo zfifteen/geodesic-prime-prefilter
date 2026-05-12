@@ -17,8 +17,8 @@ Parity behaves like a genuine state shift on this surface.
 
 ## Artifacts
 
-- [state-reset hunter script](../../benchmarks/python/predictor/gwr_phase_reset_hunter.py)
-- [summary JSON](../../output/gwr_phase_reset_hunter_summary.json)
-- [rules CSV](../../output/gwr_phase_reset_hunter_rules.csv)
-- [history JSONL](../../output/gwr_phase_reset_hunter_history.jsonl)
-- ![State reset overview](../../output/gwr_phase_reset_hunter_overview.png)
+- [state-reset hunter script](../scripts/gwr_phase_reset_hunter.py)
+- [summary JSON](../output/gwr_phase_reset_hunter_summary.json)
+- [rules CSV](../output/gwr_phase_reset_hunter_rules.csv)
+- [history JSONL](../output/gwr_phase_reset_hunter_history.jsonl)
+- ![State reset overview](../output/gwr_phase_reset_hunter_overview.png)

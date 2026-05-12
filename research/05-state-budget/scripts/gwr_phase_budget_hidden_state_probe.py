@@ -15,9 +15,9 @@ from sympy import nextprime
 
 
 ROOT = Path(__file__).resolve().parents[3]
-DEFAULT_DETAIL_CSV = ROOT / "output" / "gwr_dni_gap_type_catalog_details.csv"
-DEFAULT_OUTPUT_DIR = ROOT / "output"
-DEFAULT_FINDINGS_PATH = ROOT / "gwr" / "findings" / "phase_budget_hidden_state_probe_findings.md"
+DEFAULT_DETAIL_CSV = ROOT / "research" / "03-gap-types" / "output" / "gwr_dni_gap_type_catalog_details.csv"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "05-state-budget" / "output"
+DEFAULT_FINDINGS_PATH = ROOT / "research" / "05-state-budget" / "docs" / "phase_budget_hidden_state_probe_findings.md"
 DEFAULT_MIN_POWER = 12
 DEFAULT_MAX_POWER = 18
 MIN_STRATUM_COUNT = 8
@@ -568,9 +568,9 @@ def findings_markdown(summary: dict[str, object]) -> str:
         "",
         "## Artifacts",
         "",
-        "- [phase-budget hidden-state probe](../../benchmarks/python/predictor/gwr_phase_budget_hidden_state_probe.py)",
-        "- [summary JSON](../../output/gwr_phase_budget_hidden_state_probe_summary.json)",
-        "- [strata CSV](../../output/gwr_phase_budget_hidden_state_probe_strata.csv)",
+        "- [phase-budget hidden-state probe](../scripts/gwr_phase_budget_hidden_state_probe.py)",
+        "- [summary JSON](../output/gwr_phase_budget_hidden_state_probe_summary.json)",
+        "- [strata CSV](../output/gwr_phase_budget_hidden_state_probe_strata.csv)",
     ]
     return "\n".join(lines) + "\n"
 

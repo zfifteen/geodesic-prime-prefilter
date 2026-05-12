@@ -8,13 +8,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
-MODULE_PATH = (
-    ROOT
-    / "benchmarks"
-    / "python"
-    / "predictor"
-    / "state_budget_heldout_ruler_test.py"
-)
+MODULE_PATH = ROOT / "research" / "05-state-budget" / "scripts" / "state_budget_heldout_ruler_test.py"
 
 
 def load_module():

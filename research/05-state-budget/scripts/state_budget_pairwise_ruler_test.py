@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run residue-matched pairwise ruler tests for PGS state-budget rows."""
+"""Run the matched-pair square-ruler memory test for PGS state-budget rows."""
 
 from __future__ import annotations
 
@@ -22,23 +22,24 @@ import gwr_phase_budget_hidden_state_probe as phase_probe
 
 
 ROOT = Path(__file__).resolve().parents[3]
-DEFAULT_DETAIL_CSV = ROOT / "output" / "gwr_dni_gap_type_catalog_details.csv"
-DEFAULT_OUTPUT_DIR = ROOT / "output"
+DEFAULT_DETAIL_CSV = ROOT / "research" / "03-gap-types" / "output" / "gwr_dni_gap_type_catalog_details.csv"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "05-state-budget" / "output"
 DEFAULT_MIN_POWER = 12
 DEFAULT_MAX_POWER = 18
 DEFAULT_MIN_CLASS_COUNT = 1
 DEFAULT_MIN_DECISIVE_PAIRS = 100
 DEFAULT_MIN_CONTROL_MARGIN = 15
-MATCH_MODES = (
-    "base",
-    "mod30",
-    "mod30_prev_gap",
-    "mod210",
-)
 PER_POWER_FIELDS = (
-    "match_mode",
     "measure",
     "power",
+    "eligible_cells",
+    "decisive_pairs",
+    "signed_advantage",
+    "tie_pairs",
+    "advantage_share",
+)
+SUMMARY_FIELDS = (
+    "measure",
     "eligible_cells",
     "decisive_pairs",
     "signed_advantage",
@@ -51,8 +52,9 @@ def build_parser() -> argparse.ArgumentParser:
     """Build the CLI parser."""
     parser = argparse.ArgumentParser(
         description=(
-            "Ask whether the square ruler still beats tail length after residue "
-            "context is included in the matched-pair cells."
+            "Compare target and non-target rows inside matched current-gap cells. "
+            "The test asks whether the next-target row usually sits lower on the "
+            "original square-budget ruler."
         ),
     )
     parser.add_argument(
@@ -65,10 +67,20 @@ def build_parser() -> argparse.ArgumentParser:
         "--output-dir",
         type=Path,
         default=DEFAULT_OUTPUT_DIR,
-        help="Directory for residue-matched pairwise outputs.",
+        help="Directory for pairwise ruler outputs.",
     )
-    parser.add_argument("--min-power", type=int, default=DEFAULT_MIN_POWER)
-    parser.add_argument("--max-power", type=int, default=DEFAULT_MAX_POWER)
+    parser.add_argument(
+        "--min-power",
+        type=int,
+        default=DEFAULT_MIN_POWER,
+        help="Smallest retained decade power.",
+    )
+    parser.add_argument(
+        "--max-power",
+        type=int,
+        default=DEFAULT_MAX_POWER,
+        help="Largest retained decade power.",
+    )
     parser.add_argument(
         "--min-class-count",
         type=int,
@@ -92,12 +104,12 @@ def build_parser() -> argparse.ArgumentParser:
 
 def per_power_path(output_dir: Path) -> Path:
     """Return the per-power CSV path."""
-    return output_dir / "state_budget_residue_matched_pair_per_power.csv"
+    return output_dir / "state_budget_pairwise_ruler_per_power.csv"
 
 
 def summary_path(output_dir: Path) -> Path:
     """Return the summary JSON path."""
-    return output_dir / "state_budget_residue_matched_pair_summary.json"
+    return output_dir / "state_budget_pairwise_ruler_summary.json"
 
 
 def build_transitions(
@@ -106,7 +118,7 @@ def build_transitions(
     min_power: int,
     max_power: int,
 ) -> list[dict[str, object]]:
-    """Return current d=4 rows with residue and gap context."""
+    """Return current d=4 rows with previous and next context."""
     by_surface: dict[str, list[dict[str, object]]] = defaultdict(list)
     for row in detail_rows:
         by_surface[str(row["surface_label"])].append(row)
@@ -131,11 +143,12 @@ def build_transitions(
         ):
             if int(current_row["next_dmin"]) != 4:
                 continue
+
             w = int(current_row["winner"])
             q = int(current_row["next_right_prime"])
-            left_prime = int(current_row["current_right_prime"])
             next_prime_square_root = int(nextprime(math.isqrt(w)))
             next_prime_square = next_prime_square_root * next_prime_square_root
+            square_ruler = (q - w) / (next_prime_square - w)
 
             transitions.append(
                 {
@@ -145,15 +158,11 @@ def build_transitions(
                     "current_carrier_family": str(current_row["carrier_family"]),
                     "current_winner_offset": int(current_row["next_peak_offset"]),
                     "current_first_open_offset": int(current_row["first_open_offset"]),
-                    "left_prime_mod30": left_prime % 30,
-                    "left_prime_mod210": left_prime % 210,
-                    "previous_gap_width": int(previous_row["next_gap_width"]),
-                    "current_gap_width": int(current_row["next_gap_width"]),
                     "next_is_triad": int(
                         str(next_row["carrier_family"]) == "odd_semiprime"
                         and int(next_row["next_dmin"]) <= 4
                     ),
-                    "square_ruler": (q - w) / (next_prime_square - w),
+                    "square_ruler": square_ruler,
                     "tail_length": q - w,
                 }
             )
@@ -163,8 +172,8 @@ def build_transitions(
     return transitions
 
 
-def base_key(row: dict[str, object]) -> tuple[object, ...]:
-    """Return the PGS-native matched current-gap fact cell."""
+def matched_cell_key(row: dict[str, object]) -> tuple[object, ...]:
+    """Return the matched current-gap fact cell."""
     return (
         str(row["previous_reduced_state"]),
         str(row["current_winner_parity"]),
@@ -174,31 +183,13 @@ def base_key(row: dict[str, object]) -> tuple[object, ...]:
     )
 
 
-def matched_key(row: dict[str, object], match_mode: str) -> tuple[object, ...]:
-    """Return the matched cell for one residue-control mode."""
-    key = base_key(row)
-    if match_mode == "base":
-        return key
-    if match_mode == "mod30":
-        return (*key, int(row["left_prime_mod30"]))
-    if match_mode == "mod30_prev_gap":
-        return (
-            *key,
-            int(row["left_prime_mod30"]),
-            int(row["previous_gap_width"]),
-        )
-    if match_mode == "mod210":
-        return (*key, int(row["left_prime_mod210"]))
-    raise KeyError(f"unknown match mode: {match_mode}")
-
-
 def compare_pairs(
     targets: list[dict[str, object]],
     non_targets: list[dict[str, object]],
     *,
     value_field: str,
 ) -> tuple[int, int, int]:
-    """Return pair count, signed advantage, and ties."""
+    """Return pair count, signed advantage, and tie count."""
     pairs = 0
     signed_advantage = 0
     ties = 0
@@ -219,19 +210,17 @@ def compare_pairs(
 def measure_rows(
     transitions: list[dict[str, object]],
     *,
-    match_mode: str,
     measure: str,
     value_field: str,
     min_class_count: int,
 ) -> tuple[list[dict[str, object]], dict[str, object]]:
-    """Return per-power and aggregate pairwise rows."""
+    """Return per-power and aggregate rows for one pairwise measure."""
     rows_by_cell: dict[tuple[int, tuple[object, ...]], list[dict[str, object]]] = defaultdict(list)
     for row in transitions:
-        rows_by_cell[(int(row["power"]), matched_key(row, match_mode))].append(row)
+        rows_by_cell[(int(row["power"]), matched_cell_key(row))].append(row)
 
     per_power: dict[int, dict[str, int | str]] = defaultdict(
         lambda: {
-            "match_mode": match_mode,
             "measure": measure,
             "eligible_cells": 0,
             "decisive_pairs": 0,
@@ -239,6 +228,7 @@ def measure_rows(
             "tie_pairs": 0,
         }
     )
+
     for (power, _key), members in rows_by_cell.items():
         targets = [row for row in members if int(row["next_is_triad"]) == 1]
         non_targets = [row for row in members if int(row["next_is_triad"]) == 0]
@@ -257,13 +247,14 @@ def measure_rows(
     per_power_rows = []
     for power in sorted(per_power):
         row = dict(per_power[power])
-        pairs = int(row["decisive_pairs"])
+        decisive_pairs = int(row["decisive_pairs"])
         row["power"] = power
-        row["advantage_share"] = int(row["signed_advantage"]) / pairs if pairs else None
+        row["advantage_share"] = (
+            int(row["signed_advantage"]) / decisive_pairs if decisive_pairs else None
+        )
         per_power_rows.append(row)
 
     summary = {
-        "match_mode": match_mode,
         "measure": measure,
         "eligible_cells": sum(int(row["eligible_cells"]) for row in per_power_rows),
         "decisive_pairs": sum(int(row["decisive_pairs"]) for row in per_power_rows),
@@ -285,8 +276,9 @@ def verdict(
     min_decisive_pairs: int,
     min_control_margin: int,
 ) -> str:
-    """Return the finite residue-matched verdict."""
-    if int(square_summary["decisive_pairs"]) < min_decisive_pairs:
+    """Return the finite pairwise memory verdict."""
+    square_pairs = int(square_summary["decisive_pairs"])
+    if square_pairs < min_decisive_pairs:
         return "unresolved"
     square_advantage = int(square_summary["signed_advantage"])
     tail_advantage = int(tail_summary["signed_advantage"])
@@ -306,53 +298,39 @@ def evaluate_surface(
     min_decisive_pairs: int,
     min_control_margin: int,
 ) -> tuple[list[dict[str, object]], dict[str, object]]:
-    """Return per-power rows and summary for all residue match modes."""
+    """Return per-power rows and summary for the pairwise ruler test."""
     transitions = build_transitions(
         phase_probe.load_detail_rows(detail_csv),
         min_power=min_power,
         max_power=max_power,
     )
-    all_rows = []
-    mode_summaries = []
-    for match_mode in MATCH_MODES:
-        square_rows, square_summary = measure_rows(
-            transitions,
-            match_mode=match_mode,
-            measure="square_ruler",
-            value_field="square_ruler",
-            min_class_count=min_class_count,
-        )
-        tail_rows, tail_summary = measure_rows(
-            transitions,
-            match_mode=match_mode,
-            measure="tail_length",
-            value_field="tail_length",
-            min_class_count=min_class_count,
-        )
-        mode_summaries.append(
-            {
-                "match_mode": match_mode,
-                "measure_summaries": [square_summary, tail_summary],
-                "verdict": verdict(
-                    square_summary,
-                    tail_summary,
-                    min_decisive_pairs=min_decisive_pairs,
-                    min_control_margin=min_control_margin,
-                ),
-            }
-        )
-        all_rows.extend(square_rows)
-        all_rows.extend(tail_rows)
-
+    square_rows, square_summary = measure_rows(
+        transitions,
+        measure="square_ruler",
+        value_field="square_ruler",
+        min_class_count=min_class_count,
+    )
+    tail_rows, tail_summary = measure_rows(
+        transitions,
+        measure="tail_length",
+        value_field="tail_length",
+        min_class_count=min_class_count,
+    )
     summary = {
         "min_power": min_power,
         "max_power": max_power,
         "min_class_count": min_class_count,
         "min_decisive_pairs": min_decisive_pairs,
         "min_control_margin": min_control_margin,
-        "mode_summaries": mode_summaries,
+        "measure_summaries": [square_summary, tail_summary],
+        "verdict": verdict(
+            square_summary,
+            tail_summary,
+            min_decisive_pairs=min_decisive_pairs,
+            min_control_margin=min_control_margin,
+        ),
     }
-    return all_rows, summary
+    return square_rows + tail_rows, summary
 
 
 def format_number(value: object) -> str:
@@ -365,7 +343,7 @@ def format_number(value: object) -> str:
 
 
 def write_per_power(path: Path, rows: list[dict[str, object]]) -> None:
-    """Write per-power rows with LF endings."""
+    """Write per-power pairwise rows with LF endings."""
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(
@@ -385,7 +363,7 @@ def write_summary(path: Path, summary: dict[str, object]) -> None:
 
 
 def main(argv: list[str] | None = None) -> int:
-    """Run the residue-matched pairwise test and write artifacts."""
+    """Run the pairwise ruler test and write artifacts."""
     args = build_parser().parse_args(argv)
     if args.min_class_count < 1:
         raise ValueError("min class count must be at least 1")

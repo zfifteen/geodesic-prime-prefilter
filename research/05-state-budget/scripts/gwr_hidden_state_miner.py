@@ -22,6 +22,9 @@ import matplotlib.pyplot as plt
 SCRIPT_DIR = Path(__file__).resolve().parent
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
+COMMON_DIR = Path(__file__).resolve().parents[3] / "research" / "00-index" / "scripts"
+if str(COMMON_DIR) not in sys.path:
+    sys.path.insert(0, str(COMMON_DIR))
 
 from hourly_research_relay_common import (
     ROOT,
@@ -37,21 +40,21 @@ from hourly_research_relay_common import (
 )
 
 
-DEFAULT_OUTPUT_DIR = ROOT / "output"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "05-state-budget" / "output"
 DEFAULT_POWERS = (12, 13, 14, 15)
 DEFAULT_WINDOW_STEPS = 2048
 TASK_BRANCH = "codex/research-hidden-state-miner"
 FIRST_LAUNCH_BASE_BRANCH = "origin/codex/even-winner-next-opening-probe"
 PARITY_PROBE_REMOTE_BRANCH = "origin/codex/even-winner-next-opening-probe"
 PARITY_PROBE_PATH = ROOT / "research" / "03-gap-types" / "scripts" / "gwr_winner_parity_next_opening_probe.py"
-PARITY_SUMMARY_PATH = ROOT / "output" / "gwr_winner_parity_next_opening_probe_summary.json"
-PARITY_FINDINGS_PATH = ROOT / "gwr" / "findings" / "winner_parity_next_opening_probe_findings.md"
-SUMMARY_PATH = ROOT / "output" / "gwr_hidden_state_miner_summary.json"
-CANDIDATES_CSV_PATH = ROOT / "output" / "gwr_hidden_state_miner_candidates.csv"
-HISTORY_PATH = ROOT / "output" / "gwr_hidden_state_miner_history.jsonl"
-PLOT_PATH = ROOT / "output" / "gwr_hidden_state_miner_overview.png"
-FINDINGS_PATH = ROOT / "gwr" / "findings" / "hidden_state_miner_findings.md"
-TEST_PATH = ROOT / "tests" / "python" / "predictor" / "test_gwr_hidden_state_miner.py"
+PARITY_SUMMARY_PATH = ROOT / "research" / "03-gap-types" / "output" / "gwr_winner_parity_next_opening_probe_summary.json"
+PARITY_FINDINGS_PATH = ROOT / "research" / "03-gap-types" / "docs" / "winner_parity_next_opening_probe_findings.md"
+SUMMARY_PATH = ROOT / "research" / "05-state-budget" / "output" / "gwr_hidden_state_miner_summary.json"
+CANDIDATES_CSV_PATH = ROOT / "research" / "05-state-budget" / "output" / "gwr_hidden_state_miner_candidates.csv"
+HISTORY_PATH = ROOT / "research" / "05-state-budget" / "output" / "gwr_hidden_state_miner_history.jsonl"
+PLOT_PATH = ROOT / "research" / "05-state-budget" / "output" / "gwr_hidden_state_miner_overview.png"
+FINDINGS_PATH = ROOT / "research" / "05-state-budget" / "docs" / "hidden_state_miner_findings.md"
+TEST_PATH = ROOT / "research" / "05-state-budget" / "tests" / "test_gwr_hidden_state_miner.py"
 
 CANDIDATE_SPECS = (
     ("current_winner_parity", ("current_winner_parity",)),
@@ -428,11 +431,11 @@ def findings_markdown(summary: dict[str, object]) -> str:
             "",
             "## Artifacts",
             "",
-            "- [hidden-state miner script](../../benchmarks/python/predictor/gwr_hidden_state_miner.py)",
-            "- [summary JSON](../../output/gwr_hidden_state_miner_summary.json)",
-            "- [candidate CSV](../../output/gwr_hidden_state_miner_candidates.csv)",
-            "- [history JSONL](../../output/gwr_hidden_state_miner_history.jsonl)",
-            "- ![Hidden-state miner overview](../../output/gwr_hidden_state_miner_overview.png)",
+            "- [hidden-state miner script](../scripts/gwr_hidden_state_miner.py)",
+            "- [summary JSON](../output/gwr_hidden_state_miner_summary.json)",
+            "- [candidate CSV](../output/gwr_hidden_state_miner_candidates.csv)",
+            "- [history JSONL](../output/gwr_hidden_state_miner_history.jsonl)",
+            "- ![Hidden-state miner overview](../output/gwr_hidden_state_miner_overview.png)",
         ]
     )
     return "\n".join(lines) + "\n"

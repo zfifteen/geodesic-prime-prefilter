@@ -52,17 +52,17 @@ DEFAULT_MOD_CYCLE_LENGTH = 8
 TASK_BRANCH = "codex/research-compression-shock-probe"
 FIRST_LAUNCH_BASE_BRANCH = "origin/codex/even-winner-next-opening-probe"
 HIDDEN_STATE_REMOTE_BRANCH = "origin/codex/research-hidden-state-miner"
-HIDDEN_STATE_SUMMARY_REMOTE_PATH = "output/gwr_hidden_state_miner_summary.json"
+HIDDEN_STATE_SUMMARY_REMOTE_PATH = "research/05-state-budget/output/gwr_hidden_state_miner_summary.json"
 SUMMARY_PATH = ROOT / "research" / "04-bounded-compression" / "output" / "gwr_compression_shock_probe_summary.json"
 MODELS_CSV_PATH = ROOT / "research" / "04-bounded-compression" / "output" / "gwr_compression_shock_probe_models.csv"
 HISTORY_PATH = ROOT / "research" / "04-bounded-compression" / "output" / "gwr_compression_shock_probe_history.jsonl"
 PLOT_PATH = ROOT / "research" / "04-bounded-compression" / "output" / "gwr_compression_shock_probe_overview.png"
-FINDINGS_PATH = ROOT / "gwr" / "findings" / "compression_shock_probe_findings.md"
-TEST_PATH = ROOT / "tests" / "python" / "predictor" / "test_gwr_compression_shock_probe.py"
+FINDINGS_PATH = ROOT / "research" / "04-bounded-compression" / "docs" / "compression_shock_probe_findings.md"
+TEST_PATH = ROOT / "research" / "04-bounded-compression" / "tests" / "test_gwr_compression_shock_probe.py"
 GEN_PROBE_PATH = ROOT / "research" / "03-gap-types" / "scripts" / "gwr_dni_gap_type_generative_probe.py"
 SCHED_PROBE_PATH = ROOT / "research" / "03-gap-types" / "scripts" / "gwr_dni_gap_type_scheduler_probe.py"
 HYBRID_PROBE_PATH = ROOT / "research" / "03-gap-types" / "scripts" / "gwr_dni_gap_type_hybrid_scheduler_probe.py"
-HIDDEN_STATE_MINER_PATH = ROOT / "benchmarks" / "python" / "predictor" / "gwr_hidden_state_miner.py"
+HIDDEN_STATE_MINER_PATH = ROOT / "research" / "05-state-budget" / "scripts" / "gwr_hidden_state_miner.py"
 
 
 def load_module(module_path: Path, module_name: str):

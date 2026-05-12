@@ -22,6 +22,9 @@ import matplotlib.pyplot as plt
 SCRIPT_DIR = Path(__file__).resolve().parent
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
+COMMON_DIR = Path(__file__).resolve().parents[3] / "research" / "00-index" / "scripts"
+if str(COMMON_DIR) not in sys.path:
+    sys.path.insert(0, str(COMMON_DIR))
 
 from hourly_research_relay_common import (
     ROOT,
@@ -37,8 +40,8 @@ from hourly_research_relay_common import (
 )
 
 
-DEFAULT_OUTPUT_DIR = ROOT / "output"
-DEFAULT_DETAIL_CSV = ROOT / "output" / "gwr_dni_gap_type_catalog_details.csv"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "05-state-budget" / "output"
+DEFAULT_DETAIL_CSV = ROOT / "research" / "03-gap-types" / "output" / "gwr_dni_gap_type_catalog_details.csv"
 DEFAULT_TRAIN_MIN_POWER = 7
 DEFAULT_TRAIN_MAX_POWER = 17
 DEFAULT_REFERENCE_MIN_POWER = 12
@@ -51,14 +54,14 @@ FIRST_LAUNCH_BASE_BRANCH = "origin/codex/even-winner-next-opening-probe"
 COMPRESSION_REMOTE_BRANCH = "origin/codex/research-compression-shock-probe"
 COMPRESSION_SUMMARY_REMOTE_PATH = "research/04-bounded-compression/output/gwr_compression_shock_probe_summary.json"
 HIDDEN_STATE_REMOTE_BRANCH = "origin/codex/research-hidden-state-miner"
-HIDDEN_STATE_SUMMARY_REMOTE_PATH = "output/gwr_hidden_state_miner_summary.json"
-SUMMARY_PATH = ROOT / "output" / "gwr_phase_reset_hunter_summary.json"
-RULES_CSV_PATH = ROOT / "output" / "gwr_phase_reset_hunter_rules.csv"
-HISTORY_PATH = ROOT / "output" / "gwr_phase_reset_hunter_history.jsonl"
-PLOT_PATH = ROOT / "output" / "gwr_phase_reset_hunter_overview.png"
-FINDINGS_PATH = ROOT / "gwr" / "findings" / "phase_reset_hunter_findings.md"
-TEST_PATH = ROOT / "tests" / "python" / "predictor" / "test_gwr_phase_reset_hunter.py"
-COMPRESSION_PATH = Path(__file__).with_name("gwr_compression_shock_probe.py")
+HIDDEN_STATE_SUMMARY_REMOTE_PATH = "research/05-state-budget/output/gwr_hidden_state_miner_summary.json"
+SUMMARY_PATH = ROOT / "research" / "05-state-budget" / "output" / "gwr_phase_reset_hunter_summary.json"
+RULES_CSV_PATH = ROOT / "research" / "05-state-budget" / "output" / "gwr_phase_reset_hunter_rules.csv"
+HISTORY_PATH = ROOT / "research" / "05-state-budget" / "output" / "gwr_phase_reset_hunter_history.jsonl"
+PLOT_PATH = ROOT / "research" / "05-state-budget" / "output" / "gwr_phase_reset_hunter_overview.png"
+FINDINGS_PATH = ROOT / "research" / "05-state-budget" / "docs" / "phase_reset_hunter_findings.md"
+TEST_PATH = ROOT / "research" / "05-state-budget" / "tests" / "test_gwr_phase_reset_hunter.py"
+COMPRESSION_PATH = ROOT / "research" / "04-bounded-compression" / "scripts" / "gwr_compression_shock_probe.py"
 
 
 def load_module(module_path: Path, module_name: str):
@@ -534,9 +537,9 @@ def findings_markdown(summary: dict[str, object]) -> str:
                 "",
                 "## Artifacts",
                 "",
-                "- [phase reset hunter script](../../benchmarks/python/predictor/gwr_phase_reset_hunter.py)",
-                "- [summary JSON](../../output/gwr_phase_reset_hunter_summary.json)",
-                "- [history JSONL](../../output/gwr_phase_reset_hunter_history.jsonl)",
+                "- [phase reset hunter script](../scripts/gwr_phase_reset_hunter.py)",
+                "- [summary JSON](../output/gwr_phase_reset_hunter_summary.json)",
+                "- [history JSONL](../output/gwr_phase_reset_hunter_history.jsonl)",
             ]
         ) + "\n"
 
@@ -587,11 +590,11 @@ def findings_markdown(summary: dict[str, object]) -> str:
             "",
             "## Artifacts",
             "",
-            "- [phase reset hunter script](../../benchmarks/python/predictor/gwr_phase_reset_hunter.py)",
-            "- [summary JSON](../../output/gwr_phase_reset_hunter_summary.json)",
-            "- [rules CSV](../../output/gwr_phase_reset_hunter_rules.csv)",
-            "- [history JSONL](../../output/gwr_phase_reset_hunter_history.jsonl)",
-            "- ![Phase reset overview](../../output/gwr_phase_reset_hunter_overview.png)",
+            "- [phase reset hunter script](../scripts/gwr_phase_reset_hunter.py)",
+            "- [summary JSON](../output/gwr_phase_reset_hunter_summary.json)",
+            "- [rules CSV](../output/gwr_phase_reset_hunter_rules.csv)",
+            "- [history JSONL](../output/gwr_phase_reset_hunter_history.jsonl)",
+            "- ![Phase reset overview](../output/gwr_phase_reset_hunter_overview.png)",
         ]
     )
     return "\n".join(lines) + "\n"
