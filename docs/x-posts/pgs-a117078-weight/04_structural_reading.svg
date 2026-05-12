@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">The structural reading</title>
+  <desc id="desc">Summary infographic stating that PGS resolves the jump and A117078 gives a clean public coordinate on the resolved gap.</desc>
+  <rect width="1600" height="900" fill="#fbfbf7"/>
+  <rect x="70" y="60" width="1460" height="780" rx="28" fill="#ffffff" stroke="#1d2939" stroke-width="4"/>
+  <text x="115" y="145" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700" fill="#1d2939">4/4  The structural reading</text>
+
+  <rect x="140" y="235" width="600" height="360" rx="28" fill="#e7f0ff" stroke="#2563eb" stroke-width="5"/>
+  <text x="440" y="315" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" fill="#1d2939">PGS contribution</text>
+  <text x="440" y="395" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="32" fill="#344054">resolves the next endpoint</text>
+  <text x="440" y="445" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="32" fill="#344054">in the ordered prime-gap state</text>
+  <text x="440" y="520" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#1e40af">upstream structure</text>
+
+  <rect x="860" y="235" width="600" height="360" rx="28" fill="#ecfdf3" stroke="#22c55e" stroke-width="5"/>
+  <text x="1160" y="315" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" fill="#1d2939">A117078 contribution</text>
+  <text x="1160" y="395" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="32" fill="#344054">records the first divisor</text>
+  <text x="1160" y="445" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="32" fill="#344054">above the gap floor</text>
+  <text x="1160" y="520" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#166534">downstream measurement</text>
+
+  <rect x="225" y="685" width="1150" height="92" rx="22" fill="#fff7ed" stroke="#fb923c" stroke-width="4"/>
+  <text x="800" y="745" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#7c2d12">Together: PGS resolves the jump; A117078 gives it a compact weight coordinate.</text>
+</svg>

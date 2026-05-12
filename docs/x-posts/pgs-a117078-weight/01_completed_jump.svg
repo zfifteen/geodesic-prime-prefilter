@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">A117078 starts after the prime jump is known</title>
+  <desc id="desc">Infographic showing that A117078 measures a completed jump from prime p to next prime q.</desc>
+  <rect width="1600" height="900" fill="#fbfbf7"/>
+  <rect x="70" y="60" width="1460" height="780" rx="28" fill="#ffffff" stroke="#1d2939" stroke-width="4"/>
+  <text x="115" y="145" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700" fill="#1d2939">1/4  A117078 starts after the prime jump is known</text>
+  <text x="115" y="225" font-family="Arial, Helvetica, sans-serif" font-size="31" fill="#344054">It needs the finished transition from one prime to the next before it can assign a weight.</text>
+
+  <circle cx="330" cy="465" r="74" fill="#e7f0ff" stroke="#2563eb" stroke-width="5"/>
+  <text x="330" y="478" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700" fill="#1d2939">p</text>
+
+  <line x1="420" y1="465" x2="1130" y2="465" stroke="#f97316" stroke-width="12" stroke-linecap="round"/>
+  <polygon points="1130,465 1088,440 1088,490" fill="#f97316"/>
+  <text x="775" y="425" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" fill="#9a3412">gap g</text>
+
+  <circle cx="1230" cy="465" r="74" fill="#e9f8ef" stroke="#16a34a" stroke-width="5"/>
+  <text x="1230" y="478" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700" fill="#1d2939">q</text>
+  <text x="1230" y="570" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#475467">next prime</text>
+
+  <rect x="170" y="650" width="1260" height="96" rx="20" fill="#fff7ed" stroke="#fdba74" stroke-width="3"/>
+  <text x="800" y="710" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#7c2d12">A117078 does not create the endpoint. It measures the completed jump.</text>
+</svg>

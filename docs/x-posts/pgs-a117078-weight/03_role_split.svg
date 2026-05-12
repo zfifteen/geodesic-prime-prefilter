@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">PGS and A117078 have different roles</title>
+  <desc id="desc">Flowchart showing PGS resolving the ordered prime-gap state and A117078 measuring a divisor coordinate of that resolved state.</desc>
+  <rect width="1600" height="900" fill="#fbfbf7"/>
+  <rect x="70" y="60" width="1460" height="780" rx="28" fill="#ffffff" stroke="#1d2939" stroke-width="4"/>
+  <text x="115" y="145" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700" fill="#1d2939">3/4  Same state, different roles</text>
+  <text x="115" y="218" font-family="Arial, Helvetica, sans-serif" font-size="31" fill="#344054">PGS supplies the resolved endpoint. A117078 measures one divisor coordinate of that endpoint.</text>
+
+  <rect x="135" y="320" width="400" height="220" rx="26" fill="#e7f0ff" stroke="#2563eb" stroke-width="5"/>
+  <text x="335" y="392" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" fill="#1d2939">PGS</text>
+  <text x="335" y="450" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#344054">resolves the ordered</text>
+  <text x="335" y="490" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#344054">prime-gap state</text>
+
+  <line x1="555" y1="430" x2="735" y2="430" stroke="#1d2939" stroke-width="9" stroke-linecap="round"/>
+  <polygon points="735,430 695,407 695,453" fill="#1d2939"/>
+
+  <rect x="760" y="320" width="320" height="220" rx="26" fill="#fff7ed" stroke="#fb923c" stroke-width="5"/>
+  <text x="920" y="395" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" fill="#1d2939">p to q</text>
+  <text x="920" y="455" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#344054">with gap g</text>
+  <text x="920" y="495" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#344054">now known</text>
+
+  <line x1="1100" y1="430" x2="1280" y2="430" stroke="#1d2939" stroke-width="9" stroke-linecap="round"/>
+  <polygon points="1280,430 1240,407 1240,453" fill="#1d2939"/>
+
+  <rect x="1305" y="320" width="160" height="220" rx="26" fill="#ecfdf3" stroke="#22c55e" stroke-width="5"/>
+  <text x="1385" y="392" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#1d2939">A117078</text>
+  <text x="1385" y="452" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="27" fill="#344054">measures</text>
+  <text x="1385" y="490" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="27" fill="#344054">weight</text>
+
+  <rect x="230" y="650" width="1140" height="94" rx="20" fill="#f8fafc" stroke="#cbd5e1" stroke-width="3"/>
+  <text x="800" y="710" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#1d2939">A117078 is downstream of the resolved jump, not a missing PGS ingredient.</text>
+</svg>

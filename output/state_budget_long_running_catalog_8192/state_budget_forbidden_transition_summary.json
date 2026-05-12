@@ -1,0 +1,59 @@
+{
+  "question": "Does square-room side forbid next reduced states inside matched current PGS chamber facts?",
+  "detail_csv": "output/state_budget_long_running_catalog_8192/gwr_dni_gap_type_catalog_details.csv",
+  "min_power": 12,
+  "max_power": 18,
+  "transition_count": 45603,
+  "rules": {
+    "min_train_base_rows": 6,
+    "min_train_side_rows": 3,
+    "min_eligible_rows": 100,
+    "max_violation_rate": 0.05
+  },
+  "modes": [
+    {
+      "match_mode": "base",
+      "folds": 7,
+      "scoreable_folds": 7,
+      "eligible_rows": 44163,
+      "shrunk_rows": 35666,
+      "violations": 3842,
+      "average_shrinkage": 1.6016574960940153,
+      "violation_rate": 0.08699590154654349,
+      "verdict": "does_not"
+    },
+    {
+      "match_mode": "mod30",
+      "folds": 7,
+      "scoreable_folds": 7,
+      "eligible_rows": 35840,
+      "shrunk_rows": 17826,
+      "violations": 3396,
+      "average_shrinkage": 0.6405412946428571,
+      "violation_rate": 0.09475446428571428,
+      "verdict": "does_not"
+    },
+    {
+      "match_mode": "exact_tail",
+      "folds": 7,
+      "scoreable_folds": 7,
+      "eligible_rows": 23724,
+      "shrunk_rows": 17074,
+      "violations": 4494,
+      "average_shrinkage": 1.1533468217838476,
+      "violation_rate": 0.18942842690945877,
+      "verdict": "does_not"
+    },
+    {
+      "match_mode": "mod30_exact_tail",
+      "folds": 7,
+      "scoreable_folds": 7,
+      "eligible_rows": 17842,
+      "shrunk_rows": 10821,
+      "violations": 2961,
+      "average_shrinkage": 0.8035534132944737,
+      "violation_rate": 0.1659567313081493,
+      "verdict": "does_not"
+    }
+  ]
+}

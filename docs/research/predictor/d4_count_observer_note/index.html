@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Simple Memory Signal Inside Prime Gaps</title>
+  <style>
+    :root {
+      --ink: #16212b;
+      --muted: #5b6673;
+      --paper: #fbfcfb;
+      --panel: #ffffff;
+      --line: #d8e0e6;
+      --blue: #245d7a;
+      --green: #267159;
+      --gold: #a66510;
+      --red: #a63b32;
+      --soft-blue: #edf6fa;
+      --soft-green: #ecf8f2;
+      --soft-gold: #fff7e8;
+      --soft-red: #fff1ef;
+      --code: #f3f6f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, #eef6fa 0, #fbfcfb 360px),
+        var(--paper);
+      line-height: 1.58;
+    }
+
+    main {
+      width: min(1040px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 44px 0 76px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 900px;
+      font-size: clamp(2.35rem, 7vw, 5.2rem);
+    }
+
+    h2 {
+      margin-bottom: 14px;
+      font-size: clamp(1.45rem, 3vw, 2.1rem);
+    }
+
+    h3 {
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+
+    p {
+      max-width: 880px;
+      margin: 0 0 13px;
+    }
+
+    code {
+      padding: 0.12rem 0.3rem;
+      border-radius: 4px;
+      background: var(--code);
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 0.92em;
+    }
+
+    section {
+      margin-top: 28px;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 12px;
+      border-collapse: collapse;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th,
+    td {
+      padding: 11px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #eef3f6;
+      font-size: 0.92rem;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    ul {
+      max-width: 880px;
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+
+    li + li {
+      margin-top: 7px;
+    }
+
+    .eyebrow {
+      margin-bottom: 12px;
+      color: var(--blue);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .lead {
+      max-width: 830px;
+      margin-top: 18px;
+      color: #334754;
+      font-size: 1.18rem;
+    }
+
+    .panel {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .callout {
+      padding: 18px 20px;
+      border: 1px solid #9bc8d8;
+      border-left: 6px solid var(--blue);
+      border-radius: 8px;
+      background: var(--soft-blue);
+    }
+
+    .callout strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .callout.success {
+      border-color: #9ed4bf;
+      border-left-color: var(--green);
+      background: var(--soft-green);
+    }
+
+    .callout.warn {
+      border-color: #e4c385;
+      border-left-color: var(--gold);
+      background: var(--soft-gold);
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .comparison .panel {
+      margin: 0;
+    }
+
+    .label {
+      display: inline-block;
+      margin-bottom: 9px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .metric {
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .metric strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--green);
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .chamber {
+      margin-top: 18px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    .strip {
+      display: grid;
+      grid-template-columns: 66px repeat(14, 1fr) 66px;
+      gap: 5px;
+      align-items: stretch;
+    }
+
+    .cell {
+      min-height: 54px;
+      padding: 7px 4px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #f8fafb;
+      text-align: center;
+      font-size: 0.78rem;
+    }
+
+    .endpoint {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #eaf2f6;
+      color: var(--blue);
+      font-weight: 800;
+    }
+
+    .d4 {
+      border-color: #91c8b2;
+      background: var(--soft-green);
+      color: #174e3d;
+      font-weight: 800;
+    }
+
+    .winner {
+      outline: 3px solid rgba(38, 113, 89, 0.28);
+    }
+
+    .cell span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 500;
+    }
+
+    .count-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: var(--soft-green);
+      color: #174e3d;
+      font-weight: 800;
+    }
+
+    .svg-wrap {
+      margin-top: 14px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    svg {
+      display: block;
+      width: 100%;
+      min-width: 720px;
+      height: auto;
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 820px) {
+      main {
+        width: min(100% - 28px, 1040px);
+        padding-top: 30px;
+      }
+
+      .comparison,
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .strip {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .endpoint {
+        min-height: 44px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="eyebrow">Outside-observer note</div>
+      <h1>The Simple Memory Signal Inside Prime Gaps</h1>
+      <p class="lead">
+        A long-running PGS test found a measured carrier of gap-to-gap memory.
+        The carrier is not an exotic outside ruler. It is the number of
+        <code>d=4</code> positions inside the current prime-gap chamber.
+      </p>
+    </header>
+
+    <section class="callout success">
+      <strong>Strongest supported finding</strong>
+      <p>
+        On the deterministic retained <code>8192</code>-row-per-power
+        <code>10^12..10^18</code> surface, <code>d4_count</code> is a measured
+        PGS-native ordering carrier for the next triad state after current
+        chamber facts, endpoint residue modulo <code>30</code>, exact previous
+        gap width, and endpoint tail are controlled.
+      </p>
+    </section>
+
+    <section class="panel">
+      <h2>Start With A Prime Gap</h2>
+      <p>
+        Take two neighboring primes. The whole-number space between them is a
+        prime gap. Every number inside the gap is composite.
+      </p>
+      <p>
+        PGS treats that gap as a chamber with internal structure. Each interior
+        number has a divisor count. A number with divisor count <code>4</code>
+        has exactly four positive divisors. The new carrier simply counts how
+        many such positions occur inside the current chamber.
+      </p>
+
+      <div class="chamber" aria-label="Prime-gap chamber diagram">
+        <div class="strip">
+          <div class="cell endpoint">p</div>
+          <div class="cell">d=2<span>open</span></div>
+          <div class="cell d4">d=4<span>count</span></div>
+          <div class="cell">d=6<span></span></div>
+          <div class="cell d4 winner">d=4<span>selected</span></div>
+          <div class="cell">d=8<span></span></div>
+          <div class="cell">d=3<span></span></div>
+          <div class="cell d4">d=4<span>count</span></div>
+          <div class="cell">d=12<span></span></div>
+          <div class="cell d4">d=4<span>count</span></div>
+          <div class="cell">d=6<span></span></div>
+          <div class="cell">d=10<span></span></div>
+          <div class="cell d4">d=4<span>count</span></div>
+          <div class="cell">d=8<span></span></div>
+          <div class="cell">d=6<span></span></div>
+          <div class="cell endpoint">q</div>
+        </div>
+        <div class="count-badge">d4_count = 5</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>What Changed</h2>
+      <div class="comparison">
+        <div class="panel">
+          <span class="label">First path</span>
+          <h3>The square ruler</h3>
+          <p>
+            The earlier probe measured where the right endpoint <code>q</code>
+            landed between the selected integer <code>w</code> and the next
+            prime-square boundary.
+          </p>
+          <p>
+            That ruler found a signal, but the expanded tests showed that it
+            moved almost the same way as plain endpoint tail length. It was a
+            useful detector, not the independent carrier.
+          </p>
+        </div>
+        <div class="panel">
+          <span class="label">Surviving path</span>
+          <h3>The chamber count</h3>
+          <p>
+            The long-running sweep returned to the chamber itself and counted
+            the divisor-field population.
+          </p>
+          <p>
+            The winning carrier was <code>d4_count</code>: the number of
+            divisor-count <code>4</code> positions in the current chamber.
+          </p>
+        </div>
+      </div>
+
+      <div class="svg-wrap" aria-label="Visual comparison between square ruler and d4 count">
+        <svg viewBox="0 0 920 310" role="img">
+          <defs>
+            <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+              <path d="M0,0 L0,6 L9,3 z" fill="#245d7a"></path>
+            </marker>
+          </defs>
+          <rect x="24" y="28" width="396" height="236" rx="8" fill="#fff7e8" stroke="#e4c385"></rect>
+          <rect x="500" y="28" width="396" height="236" rx="8" fill="#ecf8f2" stroke="#9ed4bf"></rect>
+          <text x="44" y="62" font-size="22" font-weight="700" fill="#16212b">The complicated proxy</text>
+          <text x="520" y="62" font-size="22" font-weight="700" fill="#16212b">The surviving carrier</text>
+          <line x1="70" y1="146" x2="360" y2="146" stroke="#a66510" stroke-width="4" marker-end="url(#arrow)"></line>
+          <circle cx="94" cy="146" r="13" fill="#ffffff" stroke="#a66510" stroke-width="3"></circle>
+          <circle cx="235" cy="146" r="13" fill="#ffffff" stroke="#a66510" stroke-width="3"></circle>
+          <circle cx="354" cy="146" r="13" fill="#ffffff" stroke="#a66510" stroke-width="3"></circle>
+          <text x="82" y="183" font-size="16" fill="#5b6673">w</text>
+          <text x="226" y="183" font-size="16" fill="#5b6673">q</text>
+          <text x="304" y="183" font-size="16" fill="#5b6673">prime square</text>
+          <text x="44" y="232" font-size="17" fill="#5b6673">This detected a signal, then lost to tail length.</text>
+          <g transform="translate(530 116)">
+            <rect x="0" y="0" width="34" height="48" rx="5" fill="#f8fafb" stroke="#d8e0e6"></rect>
+            <rect x="42" y="0" width="34" height="48" rx="5" fill="#ecf8f2" stroke="#267159"></rect>
+            <rect x="84" y="0" width="34" height="48" rx="5" fill="#f8fafb" stroke="#d8e0e6"></rect>
+            <rect x="126" y="0" width="34" height="48" rx="5" fill="#ecf8f2" stroke="#267159"></rect>
+            <rect x="168" y="0" width="34" height="48" rx="5" fill="#ecf8f2" stroke="#267159"></rect>
+            <rect x="210" y="0" width="34" height="48" rx="5" fill="#f8fafb" stroke="#d8e0e6"></rect>
+            <rect x="252" y="0" width="34" height="48" rx="5" fill="#ecf8f2" stroke="#267159"></rect>
+            <text x="51" y="30" font-size="16" font-weight="700" fill="#174e3d">4</text>
+            <text x="135" y="30" font-size="16" font-weight="700" fill="#174e3d">4</text>
+            <text x="177" y="30" font-size="16" font-weight="700" fill="#174e3d">4</text>
+            <text x="261" y="30" font-size="16" font-weight="700" fill="#174e3d">4</text>
+          </g>
+          <text x="520" y="232" font-size="17" fill="#5b6673">Count the d=4 positions in the chamber.</text>
+        </svg>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>The Test</h2>
+      <p>
+        The test compared current gaps whose obvious current facts were already
+        matched. It then asked whether a current-chamber quantity still ordered
+        the next gap's triad state.
+      </p>
+      <p>The winning row used the strictest matching surface:</p>
+      <ul>
+        <li>same current PGS chamber facts;</li>
+        <li>same endpoint residue modulo <code>30</code>;</li>
+        <li>same exact previous gap width;</li>
+        <li>comparison against endpoint tail length.</li>
+      </ul>
+
+      <div class="metrics">
+        <div class="metric">
+          <strong>7881</strong>
+          <span>decisive matched pairs</span>
+        </div>
+        <div class="metric">
+          <strong>7 / 7</strong>
+          <span>held-out powers above support floor</span>
+        </div>
+        <div class="metric">
+          <strong>6 / 7</strong>
+          <span>positive held-out folds</span>
+        </div>
+        <div class="metric">
+          <strong>+69</strong>
+          <span>signed-win edge over tail control</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Why This Is Significant</h2>
+      <p>
+        The first question was whether a prime gap carries any state into the
+        next gap. The new result says the current chamber's internal
+        <code>d=4</code> population carries measured ordering information about
+        the next triad state.
+      </p>
+      <p>
+        That moves the research away from an external ruler and back into the
+        chamber's own divisor-count field. The chamber remembers through its
+        population structure.
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Before</th>
+            <th>After</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>The signal might live in the selected integer's position relative to a prime-square boundary.</td>
+            <td>The surviving measured carrier is the chamber's count of <code>d=4</code> positions.</td>
+          </tr>
+          <tr>
+            <td>The square ruler looked like the hidden state.</td>
+            <td>The square ruler acted like a proxy and did not beat tail length on the expanded surface.</td>
+          </tr>
+          <tr>
+            <td>The branch was searching for one extra memory bit.</td>
+            <td>The branch found a current-chamber population count that orders the next triad state.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="callout warn">
+      <strong>Scope</strong>
+      <p>
+        This is a measured held-out result, not a theorem. It holds on the
+        deterministic retained <code>8192</code>-row-per-power
+        <code>10^12..10^18</code> surface under the stated matching and control
+        rules. The next research question is why <code>d4_count</code> carries
+        the ordering information.
+      </p>
+    </section>
+
+    <section class="panel">
+      <h2>The Plain Version</h2>
+      <p>
+        We first found a faint sign that one prime gap knew something about the
+        next one. We looked for the signal in a complicated place. The stronger
+        test found the cleaner answer.
+      </p>
+      <p>
+        Count the <code>d=4</code> positions inside the current gap chamber.
+        That count carries held-out ordering information about the next gap's
+        triad state.
+      </p>
+      <p class="small">
+        Artifact source:
+        <code>output/state_budget_long_running_catalog_8192/state_budget_long_running_research_report.md</code>
+      </p>
+    </section>
+  </main>
+</body>
+</html>
