@@ -268,6 +268,18 @@ The rough-defect audit is recorded in:
 research/04-bounded-compression/docs/findings/square_tail_rough_defect_audit_424171123.md
 ```
 
+The rough-defect descent audit checks the composite rough defects recursively.
+For the current record, all `62` composite M-rough defect least-factor children
+are smaller roots, and all `62` children have their own prime-valued M-rough
+defect. The missing theorem is still the edge-semantics implication from
+closed children to parent elimination.
+
+The descent audit is recorded in:
+
+```text
+research/04-bounded-compression/docs/findings/square_tail_rough_descent_audit_424171123.md
+```
+
 ## Next Lemma Targets
 
 The next theorem work should target one of these exact statements.
