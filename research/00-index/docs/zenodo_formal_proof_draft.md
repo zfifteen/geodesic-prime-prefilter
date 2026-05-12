@@ -1,21 +1,12 @@
 # An Exact Deterministic Method for Next-Prime Selection
 
-Draft date: 2026-05-12
-
 ## Abstract
 
-The Prime Number Theorem describes the global asymptotic density of primes. It
-does not give a local rule that starts from one known prime and reads the
-ordered composite structure to determine the next prime. In that usual frame,
-prime gaps are understood through size, density, and distribution, while the
-integers inside a specific gap are not treated as an ordered structure that
-selects the next endpoint.
-
-This note proves the local law missing from that global density frame. Between
-a known prime $p$ and its successor $q$, the composite integers form an ordered
-divisor-count chamber. Exact divisor counts in that chamber determine the next
-prime with complete deterministic certainty and single out a unique interior
-maximizer.
+Every positive integer has an exact number of positive divisors. A prime is
+exactly an integer greater than $1$ with divisor count $2$. The Prime Number
+Theorem describes the global asymptotic density of primes, but it does not
+determine the next prime from a given prime. This note addresses that local
+question using divisor counts alone.
 
 The first theorem proves that, given a known prime $p$, the next prime $q$ is
 determined by the exact divisor-count rule
@@ -25,6 +16,9 @@ q=\min\{n>p:\tau(n)=2\},
 $$
 
 where $\tau(n)$ is the number of positive divisors of $n$.
+
+This is an exact characterization and selection rule using $\tau(n)$. It is
+not a closed-form shortcut that bypasses the computation of divisor counts.
 
 The second theorem proves that, if $p<q$ are consecutive primes and
 
@@ -40,10 +34,11 @@ F(n)=\left(1-\frac{\tau(n)}{2}\right)\log n.
 $$
 
 Both statements are universal under their stated hypotheses. Finite
-certificates and measured implementation surfaces are included in appendices
-for review, provenance, and reproducibility. They do not limit the universal
-theorems. The appendices also record the current bounded-compression boundary,
-measured high-scale surfaces, invalidated routes, and explicit non-claims.
+certificates enter only where the proof reduces a branch to an explicit finite
+case split. Implementation audits are included in appendices for provenance
+and reproducibility. They do not limit the universal theorems. The appendices
+also record the current bounded-compression boundary, measured implementation
+surfaces, invalidated routes, and explicit non-claims.
 
 ## 1. Definitions
 
@@ -57,7 +52,7 @@ $$
 n \text{ is prime} \quad\Longleftrightarrow\quad \tau(n)=2.
 $$
 
-For a known prime $p$, define the direct divisor-count successor candidate
+For a known prime $p$, define the divisor-count successor value
 
 $$
 Q(p)=\min\{n>p:\tau(n)=2\}.
@@ -109,13 +104,14 @@ $$
 \tau(n)=\prod_{i=1}^{s}(a_i+1).
 $$
 
-This formula records the coprime factor-channel structure of $n$: a divisor is
-formed by choosing one exponent from each prime-power factor, and the choices
-multiply because the prime-power factors are pairwise coprime.
+This formula counts the divisors of $n$. For each prime power $r_i^{a_i}$, a
+divisor chooses one exponent from $0$ through $a_i$. The choices are independent
+across distinct prime factors, so the counts multiply.
 
 Inside the interior of a prime gap, every integer is composite. A smaller
-divisor count therefore means fewer divisor-choice channels. The witness $w$
-is the first interior composite where this divisor-choice load is minimal.
+divisor count is therefore an ordinary comparison of exact integer values. The
+witness $w$ is the first interior integer where $\tau(n)$ attains its minimum
+on that finite list.
 
 ## 3. Theorem 1: Direct Deterministic Next-Prime Selection
 
@@ -160,8 +156,8 @@ $$
 
 is largest.
 
-The proof separates later integers, earlier integers, and the finite residual
-classification needed for the earlier side.
+The proof treats later and earlier interior integers separately. The earlier
+side reduces to explicit finite case splits after the inequalities below.
 
 ### 4.1 Ordered Comparison Lemma
 
@@ -265,7 +261,7 @@ $$
 $$
 
 The earlier side is closed by the prime-square case, a threshold comparison,
-and a finite residual classification.
+and explicit finite case splits.
 
 ### 4.5 Prime-Square Case
 
@@ -323,8 +319,13 @@ $$
 Every integer in $I$ is less than $2p$, and every earlier integer $k$ is
 greater than $p$.
 
-For an earlier integer with divisor count $e$ and witness divisor count $d$,
-the inequality $F(k)<F(w)$ is guaranteed by the stronger inequality
+For every earlier integer considered in this lemma,
+
+$$
+e=\tau(k)>\tau(w)=d.
+$$
+
+The inequality $F(k)<F(w)$ is guaranteed by the stronger inequality
 
 $$
 (e-2)\log p>(d-2)\log(2p).
@@ -379,7 +380,7 @@ The failure count was $0$.
 | $1,000,000,001\le p<5,000,000,001$ | $172,913,029$ | $660,287,089$ | $0$ |
 | Total | $220,336,055$ | $826,172,978$ | $0$ |
 
-This finite base closes every retained row whose threshold is below
+This finite base closes every row in the case split whose threshold is below
 $5,000,000,000$, because the threshold lemma closes all larger $p$.
 
 ### 4.8 Witness Threshold Lemma
@@ -400,7 +401,7 @@ $$
 
 The threshold lemma then closes that pair.
 
-The witness rows used in the residual proof are:
+The witness rows used in the finite case split are:
 
 | Winner divisor count $d$ | Earlier divisor count $e$ | $M(d)$ | $T(d,e)$ | Result |
 | ---: | ---: | ---: | ---: | --- |
@@ -411,8 +412,8 @@ The witness rows used in the residual proof are:
 
 ### 4.9 Odd Adjacent Branch Lemma
 
-The only adjacent odd winner branches that remain above the finite base and
-are not closed by the witness threshold lemma are listed below.
+The only odd adjacent divisor-count branches that remain above the finite base
+and are not closed by the witness threshold lemma are listed below.
 
 For each row, the enumeration condition was:
 
@@ -422,7 +423,7 @@ For each row, the enumeration condition was:
 3. check whether that integer is the chosen interior witness;
 4. check whether an earlier integer with divisor count $e$ occurs before it.
 
-| Winner divisor count $d$ | Earlier divisor count $e$ | Certified $p$ interval | Candidate count | Result |
+| Winner divisor count $d$ | Earlier divisor count $e$ | Certified $p$ interval | Integers enumerated | Result |
 | ---: | ---: | --- | ---: | --- |
 | $35$ | $36$ | $5,000,000,000<p\le 8,589,934,592$ | $5$ | $0$ chosen-integer gaps and $0$ earlier pairs |
 | $39$ | $40$ | $5,000,000,000<p\le 137,438,953,472$ | $655$ | $0$ chosen-integer gaps and $0$ earlier pairs |
@@ -434,14 +435,30 @@ Thus none of these branches contains an earlier integer with $F(k)\ge F(w)$.
 
 ### 4.10 Classification Lemma
 
-After the prime-square case and the threshold monotonicity reductions, the
-retained adjacent comparison pairs are exactly the rows below. Each row is
-closed by the stated mechanism.
+After the prime-square case and the threshold monotonicity reductions, it
+remains to consider adjacent pairs $e=d+1$. For those pairs,
+
+$$
+T(d,d+1)=2^{d-2}.
+$$
+
+Every adjacent row with $d\le 34$ has $T(d,d+1)<5,000,000,000$, so the Finite
+Base Lemma closes that row. For prime $d\ge 35$, the least integer with exactly
+$d$ positive divisors is
+
+$$
+M(d)=2^{d-1}=2T(d,d+1),
+$$
+
+so the Witness Threshold Lemma closes that row.
+
+The remaining rows are the complete finite case split left by those reductions.
+Each row below is closed by the stated mechanism.
 
 The table is not a catalog of every divisor count that occurs as $\tau(w)$.
 Large divisor counts occur as the minimum divisor count in some gaps. A divisor
 count $d$ needs a row here only when the adjacent earlier-integer comparison
-$(d,d+1)$ remains a case requiring proof after the reductions above.
+$(d,d+1)$ remains after the reductions above.
 
 | Winner divisor count $d$ | Earlier divisor count $e$ | $T(d,e)$ | Closure |
 | ---: | ---: | ---: | --- |
@@ -466,7 +483,7 @@ $(d,d+1)$ remains a case requiring proof after the reductions above.
 | $55$ | $56$ | $9,007,199,254,740,992$ | Odd Adjacent Branch Lemma |
 | $59$ | $60$ | $144,115,188,075,855,872$ | Witness Threshold Lemma |
 
-Every retained pair is closed. By the monotonicity facts in the threshold
+Every listed pair is closed. By the monotonicity facts in the threshold
 lemma, no omitted larger earlier divisor count or smaller winner divisor count
 is harder than the listed closed row.
 
@@ -483,7 +500,7 @@ Therefore $w$ is the unique integer in $I$ where $F(n)$ is largest. $\square$
 ## 5. Boundary Of The Main Theorems
 
 The two universal theorems above do not depend on bounded dynamic cutoff,
-generator implementation surfaces, state-budget carrier evidence, or
+generator implementation surfaces, state-budget measured results, or
 semiprime/RSA audit results.
 
 The direct next-prime theorem is a divisor-count characterization of the next
@@ -503,9 +520,9 @@ satisfies a logarithmic-square distance bound from the left boundary prime.
 That bounded-compression question is independent of the proof that $w$
 maximizes $F$ inside the already fixed gap.
 
-The appendices below preserve additional finite certificates, measured
-surfaces, invalidated routes, and unresolved research boundaries. They do not
-weaken or bound the two main theorems.
+The appendices below record additional finite certificates, implementation
+audits, measured results, invalidated routes, and unresolved research
+boundaries. They do not weaken or bound the two main theorems.
 
 ## Appendix A. Finite Certificates And Residual Theorems
 
@@ -562,12 +579,12 @@ No selected-witness offset exceeded $64$ on this finite surface.
 
 ### A.3 Residual $K=128$ First-d4 Branch-Elimination Lemma
 
-This lemma records the first-d4 window result present in the residual closure
-artifacts. It is not a global occupancy theorem for all prime gaps.
+This lemma records the finite first-d4 case split used by the remaining odd
+adjacent rows. It is not a statement about all prime gaps.
 
 Let $d$ be an odd divisor count and let the adjacent earlier divisor count be
-$d+1$. In the residual closure branch, enumerate every integer $w$ with
-$\tau(w)=d$ whose preceding prime $p$ lies in the retained finite threshold
+$d+1$. In each stated finite interval, enumerate every integer $w$ with
+$\tau(w)=d$ whose preceding prime $p$ lies in the stated finite threshold
 window above the exact base. For each containing prime gap $(p,q)$, compute
 exact divisor counts in the interior.
 
@@ -577,17 +594,17 @@ the selected witness for that gap. An earlier interior integer has smaller
 divisor count than $d$, so $w$ cannot be the first integer where the gap
 minimum divisor count is attained.
 
-The retained residual closure applies this exact elimination as follows:
+The finite case split applies this exact elimination as follows:
 
-| Earlier divisor count | Candidate witness divisor count | Preceding-prime window | Candidate carriers | Eliminated by first-d4 window | Remaining exceptions | Result |
+| Earlier divisor count | Witness divisor count | Preceding-prime window | Integers enumerated | Eliminated by first-d4 window | Remaining exceptions | Result |
 | ---: | ---: | --- | ---: | ---: | ---: | --- |
 | $36$ | $35$ | $(5,000,000,000,8,589,934,592]$ | $5$ | $5$ | $0$ | no $\tau=35$ winner branch remains |
 | $40$ | $39$ | $(5,000,000,000,137,438,953,472]$ | $655$ | $623$ | $32$ | exceptions realize $0$ $\tau=39$ winner gaps |
 | $56$ | $55$ | $(5,000,000,000,9,007,199,254,740,992]$ | $439$ | $412$ | $27$ | exceptions realize $0$ $\tau=55$ winner gaps |
 
-Thus, on these retained odd adjacent residual branches, the $K=128$ first-d4
-window eliminates the listed candidate witness branches, with remaining
-exceptions closed by exact enumeration.
+Thus, on these odd adjacent finite branches, the $K=128$ first-d4 window
+eliminates the listed witness branches, with remaining exceptions closed by
+exact enumeration.
 
 ## Appendix B. Bounded Compression Status
 
@@ -598,8 +615,8 @@ C(q)=\max(64,\lceil 0.5\log(q)^2\rceil).
 $$
 
 The finite base in Appendix A.2 is proved on its stated finite range. The
-residual $K=128$ branch-elimination theorem in Appendix A.3 is proved in its
-retained residual scope.
+$K=128$ branch-elimination theorem in Appendix A.3 is proved on its stated
+finite branches.
 
 The all-scale bounded dynamic cutoff theorem remains unresolved on the square
 branch.
@@ -678,12 +695,12 @@ at
 | ---: | ---: | ---: | ---: | ---: | ---: |
 | $102,017,779$ | $10,407,627,232,092,841$ | $10,407,627,232,092,379$ | $462$ | $681$ | $0.6784140969162996$ |
 
-These are measured finite surfaces. They do not prove the all-scale
+These are finite audit surfaces. They do not prove the all-scale
 prime-square proximity theorem.
 
-## Appendix C. Implementation And Measured High-Scale Evidence
+## Appendix C. Implementation And Audit Surfaces
 
-The following surfaces certify implementation behavior and measured structure.
+The following surfaces certify implementation behavior.
 They are not theorem boundaries for the two universal theorems.
 
 ### C.1 Generator Audit Surfaces
@@ -711,25 +728,24 @@ $10^6+10^7$ next-gap surface.
 The recursive walk records $664,578/664,578$ exact consecutive next-prime
 recoveries from prime $11$ through prime $10,000,121$, with $0$ skipped gaps.
 
-The sampled decade ladder from $10^2$ through $10^{18}$ stayed at exact hit
-rate $1.0$ with $0$ skipped gaps across $860$ measured recursive steps.
+The sampled decade ladder from $10^2$ through $10^{18}$ had exact hit rate
+$1.0$ with $0$ skipped gaps across $860$ measured recursive steps.
 
 The No-Later-Simpler-Composite condition follows exactly from the proved
-interior maximizer theorem: after the selected witness appears, no later
-interior composite with strictly smaller divisor count precedes the next
-prime. A separate stress surface through $10^{18}$ records $0$ observed
-violations.
+interior maximizer theorem: for every interior integer after $w$, no later
+interior composite has strictly smaller divisor count before the next prime. A
+separate stress surface through $10^{18}$ records $0$ violations on that audit
+surface.
 
-## Appendix D. Later Research Evidence Not Used In The Main Proof
+## Appendix D. Later Research Status Not Used In The Main Proof
 
-### D.1 State-Budget Carrier
+### D.1 State-Budget Measured Result
 
-On the deterministic retained $8,192$-row-per-power surface from
-$10^{12}$ through $10^{18}$, the current chamber's $d4\_count$ is a measured
-PGS-native ordering carrier for the next triad state under the ordering-carrier
-gate.
+On the deterministic $8,192$-row-per-power surface from $10^{12}$ through
+$10^{18}$, the measured value $d4\_count$ separates next-triad ordering under
+the stated ordering rule.
 
-The strongest carrier row is:
+The strongest measured row is:
 
 | Field | Value |
 | --- | --- |
@@ -744,9 +760,9 @@ The strongest carrier row is:
 | required edge | $50$ |
 | verdict | `ordering_carrier_found` |
 
-This is measured evidence. The symbolic reason why current-chamber
-$d4\_count$ carries next-triad ordering information remains unresolved, and
-replication on a disjoint retained high-window construction remains unresolved.
+This is a measured result. The symbolic reason why $d4\_count$ carries
+next-triad ordering information remains unresolved, and replication on a
+disjoint high-window construction remains unresolved.
 
 ### D.2 Semiprime Branch Audit
 
@@ -782,7 +798,7 @@ witness is the later square $121=11^2$.
 The dynamic cutoff $C(q)=\max(64,\lceil 0.5\log(q)^2\rceil)$ is not an
 unconditional theorem in this draft.
 
-The $d4\_count$ carrier is not a proved symbolic law.
+The measured $d4\_count$ ordering rule is not a proved symbolic law.
 
 The semiprime $127$-bit audit is not blind factorization, a generic semiprime
 theorem, or an RSA-4096 break.
