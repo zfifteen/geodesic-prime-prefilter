@@ -11,7 +11,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_OUTPUT_DIR = ROOT / "output" / "collatz_pgs_same_gap_scale_probe"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "08-collatz" / "output" / "collatz_pgs_same_gap_scale_probe"
 DEFAULT_LIMIT = 200_000
 V2_BINS = ("1", "2", "3-4", ">=5")
 MR_BASES_64 = (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37)

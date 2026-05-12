@@ -29,13 +29,13 @@ both adjacent sides collapse to one unique Mersenne-specific gap type.
 ## Artifacts
 
 - runner:
-  [`../../benchmarks/python/predictor/gwr_dni_mersenne_gap_type_probe.py`](../../benchmarks/python/predictor/gwr_dni_mersenne_gap_type_probe.py)
+  [`../scripts/gwr_dni_mersenne_gap_type_probe.py`](../scripts/gwr_dni_mersenne_gap_type_probe.py)
 - tests:
-  [`../../tests/python/predictor/test_gwr_dni_mersenne_gap_type_probe.py`](../../tests/python/predictor/test_gwr_dni_mersenne_gap_type_probe.py)
+  [`../tests/test_gwr_dni_mersenne_gap_type_probe.py`](../tests/test_gwr_dni_mersenne_gap_type_probe.py)
 - JSON summary:
-  [`../../output/gwr_dni_mersenne_gap_type_probe_summary.json`](../../output/gwr_dni_mersenne_gap_type_probe_summary.json)
+  [`../output/gwr_dni_mersenne_gap_type_probe_summary.json`](../output/gwr_dni_mersenne_gap_type_probe_summary.json)
 - detail CSV:
-  [`../../output/gwr_dni_mersenne_gap_type_probe_details.csv`](../../output/gwr_dni_mersenne_gap_type_probe_details.csv)
+  [`../output/gwr_dni_mersenne_gap_type_probe_details.csv`](../output/gwr_dni_mersenne_gap_type_probe_details.csv)
 
 ## Exact Tractable Surface
 

@@ -12,7 +12,7 @@ from collatz_pgs_reset_length_strata_probe import write_json
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_OUTPUT_DIR = ROOT / "output" / "collatz_pgs_branch_occupancy_baseline_probe"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "08-collatz" / "output" / "collatz_pgs_branch_occupancy_baseline_probe"
 DEFAULT_INPUT = DEFAULT_OUTPUT_DIR / "branch1_composite_exception_rows.jsonl"
 DEFAULT_OUTPUT = DEFAULT_OUTPUT_DIR / "branch1_exception_symbolic_summary.json"
 EXPECTED_GAP_WIDTHS = {6, 8, 10}

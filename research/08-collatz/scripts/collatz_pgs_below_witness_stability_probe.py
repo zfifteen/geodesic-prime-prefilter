@@ -31,9 +31,9 @@ from collatz_pgs_terminal_contact_decomposition_probe import (
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_INPUT = (
-    ROOT / "output" / "collatz_pgs_same_gap_scale_probe" / "block_rows.jsonl"
+    ROOT / "research" / "08-collatz" / "output" / "collatz_pgs_same_gap_scale_probe" / "block_rows.jsonl"
 )
-DEFAULT_OUTPUT_DIR = ROOT / "output" / "collatz_pgs_below_witness_stability_probe"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "08-collatz" / "output" / "collatz_pgs_below_witness_stability_probe"
 MATCHED_CLASSES = (
     CLASS_BELOW_WITNESS,
     CLASS_ABOVE_WITNESS,

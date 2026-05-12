@@ -27,13 +27,7 @@ The reorganization branch introduced a top-level research corpus at:
 research/
 ```
 
-The exponents chapter has moved from:
-
-```text
-experiments/exponents/
-```
-
-to:
+The exponents chapter now lives at:
 
 ```text
 research/09-exponents/
@@ -45,13 +39,7 @@ The validation command for the moved chapter is:
 python3 -m pytest research/09-exponents/tests
 ```
 
-The twin-primes chapter has moved from:
-
-```text
-experiments/twin-primes/
-```
-
-to:
+The twin-primes chapter now lives at:
 
 ```text
 research/10-twin-primes/
@@ -63,13 +51,7 @@ The validation command for the moved chapter is:
 python3 -m pytest research/10-twin-primes/tests
 ```
 
-The Collatz chapter has moved from:
-
-```text
-experiments/collatz/
-```
-
-to:
+The Collatz chapter now lives at:
 
 ```text
 research/08-collatz/

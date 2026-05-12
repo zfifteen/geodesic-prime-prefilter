@@ -18,7 +18,7 @@ from collatz_pgs_short_block_branch_counterexample_probe import (
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_LIMIT = 10_000_000
-DEFAULT_OUTPUT_DIR = ROOT / "output" / "collatz_pgs_branch_occupancy_baseline_probe"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "08-collatz" / "output" / "collatz_pgs_branch_occupancy_baseline_probe"
 GEOMETRY_NOT_LEFTMOST = "not_leftmost_minimizer"
 GEOMETRY_AUTOMATIC_TWIN = "automatic_twin_gap_terminal_prime"
 GEOMETRY_TERMINAL_PRIME_NONTWIN = "terminal_prime_non_twin"

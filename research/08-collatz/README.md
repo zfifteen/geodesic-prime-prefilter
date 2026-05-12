@@ -2,8 +2,8 @@
 
 ## Migration Note
 
-This chapter moved from `experiments/collatz/` to
-`research/08-collatz/` during the repository reorganization.
+This chapter is the filesystem home for the Collatz PGS research family after
+the repository reorganization.
 
 ## Object
 
@@ -45,13 +45,11 @@ No unresolved-state status changed during migration.
 
 ## Reproduce
 
-Use the commands in the quick demo and validation sections below. The
-relocation changed paths from `experiments/collatz/` to
-`research/08-collatz/`.
+Use the commands in the quick demo and validation sections below.
 
 ## Provenance
 
-Original home: `experiments/collatz/`.
+Original home: legacy experiment-root pointer directory.
 
 ## Summary
 

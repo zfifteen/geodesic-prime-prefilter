@@ -11,9 +11,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_INPUT = (
-    ROOT / "output" / "collatz_pgs_same_gap_scale_probe" / "block_rows.jsonl"
+    ROOT / "research" / "08-collatz" / "output" / "collatz_pgs_same_gap_scale_probe" / "block_rows.jsonl"
 )
-DEFAULT_OUTPUT_DIR = ROOT / "output" / "collatz_pgs_reset_length_strata_probe"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "08-collatz" / "output" / "collatz_pgs_reset_length_strata_probe"
 CLASS_WITNESS = "witness_contact"
 CLASS_NO_WITNESS = "no_witness_contact"
 

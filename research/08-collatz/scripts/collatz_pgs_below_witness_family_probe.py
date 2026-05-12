@@ -17,7 +17,7 @@ DEFAULT_INPUT = (
     / "collatz_pgs_below_witness_stability_probe"
     / "stability_rows.jsonl"
 )
-DEFAULT_OUTPUT_DIR = ROOT / "output" / "collatz_pgs_below_witness_family_probe"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "08-collatz" / "output" / "collatz_pgs_below_witness_family_probe"
 COMPARISON_NAME = "below_vs_no_witness"
 DELTA_FIELDS = (
     "median_reset_strength_delta",

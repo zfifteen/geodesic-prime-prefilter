@@ -2,9 +2,9 @@
 
 ## Migration Note
 
-This chapter moved from `experiments/twin-primes/` to
-`research/10-twin-primes/` during the repository reorganization. The local test
-suite passed after relocation with:
+This chapter is the filesystem home for the twin-prime research family after
+the repository reorganization. The local test suite passed after relocation
+with:
 
 ```text
 python3 -m pytest research/10-twin-primes/tests
@@ -54,12 +54,11 @@ No unresolved-state status changed during migration.
 
 ## Reproduce
 
-Use the reproduce commands in the command section below. The relocation changed
-paths from `experiments/twin-primes/` to `research/10-twin-primes/`.
+Use the reproduce commands in the command section below.
 
 ## Provenance
 
-Original home: `experiments/twin-primes/`.
+Original home: legacy experiment-root pointer directory.
 
 Twin primes are pairs of primes with exactly one integer between them.
 

@@ -28,7 +28,7 @@ if str(SOURCE_DIR) not in sys.path:
 from z_band_prime_composite_field import divisor_counts_segment
 
 
-DEFAULT_OUTPUT_DIR = ROOT / "output"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "09-exponents" / "output"
 CLAIM_D_LIMIT = 8
 CLAIM_GAP_LIMIT = 24
 KNOWN_MERSENNE_EXPONENTS = (

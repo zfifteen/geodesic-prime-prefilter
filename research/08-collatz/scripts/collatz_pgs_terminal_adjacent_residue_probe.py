@@ -12,8 +12,8 @@ from collatz_pgs_same_gap_scale_probe import median, percentile, rate, v2
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_INPUT = ROOT / "output" / "collatz_pgs_same_gap_scale_probe" / "block_rows.jsonl"
-DEFAULT_OUTPUT_DIR = ROOT / "output" / "collatz_pgs_terminal_adjacent_residue_probe"
+DEFAULT_INPUT = ROOT / "research" / "08-collatz" / "output" / "collatz_pgs_same_gap_scale_probe" / "block_rows.jsonl"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "08-collatz" / "output" / "collatz_pgs_terminal_adjacent_residue_probe"
 SIDE_BELOW = "below_witness_terminal_hit"
 SIDE_ABOVE = "above_witness_terminal_hit"
 
