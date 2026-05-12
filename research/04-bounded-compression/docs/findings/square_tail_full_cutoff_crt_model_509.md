@@ -86,6 +86,16 @@ records the ordered version of this separation. Actual carrier arrivals are
 not arbitrary singleton assignments; they occur in prime order, and many rough
 rows have no early arrival.
 
+The CRT model arrival-order audit in
+
+```text
+research/04-bounded-compression/docs/findings/square_tail_crt_model_arrival_order_audit_509.md
+```
+
+shows that first-arrival order alone still does not create a local
+contradiction. The model's residue class has a complete first-arrival cover by
+carrier `14741`.
+
 The artifact is:
 
 ```text
