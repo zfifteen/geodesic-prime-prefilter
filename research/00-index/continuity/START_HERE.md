@@ -256,7 +256,7 @@ reframe GWR inference.
 As of 2026-05-09, the active bounded-compression handoff is:
 
 ```text
-docs/research/bounded_compression/session_handoff_2026-05-09.md
+research/04-bounded-compression/docs/session_handoff_2026-05-09.md
 ```
 
 Read it before continuing this theorem route.
@@ -264,7 +264,7 @@ Read it before continuing this theorem route.
 The bounded GWR/DNI compression branch started from:
 
 ```text
-docs/research/bounded_compression/dynamic_cutoff_conjecture/index.html
+research/04-bounded-compression/docs/dynamic_cutoff_conjecture/index.html
 ```
 
 Strongest supported frame:
@@ -285,7 +285,7 @@ bounded recursive prime walk
 The first executable artifact for this branch is:
 
 ```text
-benchmarks/python/predictor/bounded_compression_falsification_runner.py
+research/04-bounded-compression/scripts/bounded_compression_falsification_runner.py
 ```
 
 Its narrow contract is to compare each exact unbounded GWR/DNI witness against
