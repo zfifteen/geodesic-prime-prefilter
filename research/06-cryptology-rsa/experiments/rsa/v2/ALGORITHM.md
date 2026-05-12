@@ -3,9 +3,9 @@
 This document defines the live v2 algorithm after the radius-first and
 endpoint-budget scaffolds were withdrawn.
 
-The current algorithm is an inference-surface builder, not a factor resolver.
-It derives public reciprocal PGSPG certificate state and returns unresolved
-unless the public certificate pair mutually closes.
+The current algorithm is a public reciprocal PGSPG resolver for the small
+exact-backend regime. It derives reciprocal certificate state and resolves only
+when public certificate endpoints close under floor transport.
 
 ## Input
 
@@ -56,18 +56,45 @@ Find the previous public endpoint before `y`.
 
 Derive the PGSPG chamber-reset certificate from that endpoint.
 
-## Stage 5: Certificate Closure
+## Stage 5: Reset Certificate Closure
 
-The current closure candidate is strict.
-
-It resolves only when:
+The first closure branch is strict reset closure. It resolves when:
 
 1. both certificates exist;
 2. `floor(N / lower.reset_endpoint) == upper.reset_endpoint`;
 3. `floor(N / upper.reset_endpoint) == lower.reset_endpoint`;
 4. lower and upper reset signatures match.
 
-If any condition fails, inference emits unresolved.
+If this branch fails, the runner does not widen into a search budget. It moves
+to one public deadline-correction branch.
+
+## Stage 6: Deadline Signature Correction
+
+When the upper certificate exists but reset closure fails, transport the upper
+reset endpoint back to the lower side:
+
+```text
+z = floor(N / upper.reset_endpoint)
+```
+
+Find the previous public endpoint before `z`. Call it `c`. Derive the PGSPG
+certificate at `c`. Let:
+
+```text
+d = upper.reset_deadline_value
+```
+
+The correction branch resolves only when:
+
+1. `c` is strictly before the original lower anchor;
+2. `d` is strictly after the upper reset endpoint;
+3. `floor(N / c) == d`;
+4. `floor(N / d) == c`;
+5. the corrected-lower reset signature matches the upper reset signature.
+
+This branch uses one reciprocal correction induced by the failed upper
+certificate. It does not test divisibility, multiply candidate endpoints, read
+audit factors, or walk a budgeted list of lower endpoints.
 
 ## Current Failure Modes
 
@@ -75,16 +102,18 @@ The runner may emit:
 
 ```text
 resolved_by_mutual_certificate_closure
+resolved_by_reciprocal_deadline_signature_correction
 unresolved_by_certificate_pair_not_closed
 unresolved_by_missing_lower_certificate
 unresolved_by_missing_upper_certificate
 gmp_interval_backend_required
 ```
 
-The current 40-bit and 50-bit rungs emit:
+The current official rungs emit:
 
 ```text
-unresolved_by_certificate_pair_not_closed
+rsa_v2_40bit_static_001 -> resolved_by_reciprocal_deadline_signature_correction
+rsa_v2_50bit_static_001 -> unresolved_by_certificate_pair_not_closed
 ```
 
 ## Explicitly Invalidated Rules
@@ -100,8 +129,7 @@ The following are not live rules:
 
 ## Resolver Target
 
-The next algorithmic target is a transported certificate invariant.
-
-The invariant must be derived from public `N`, PGSPG certificate fields, and
-floor-map transport. It must not use product closure, divisibility, audit
+The next algorithmic target is scale extension of the same public correction
+rule. The invariant must stay derived from public `N`, PGSPG certificate fields,
+and floor-map transport. It must not use product closure, divisibility, audit
 factors, factor APIs, primality APIs, random generation, or fallback search.

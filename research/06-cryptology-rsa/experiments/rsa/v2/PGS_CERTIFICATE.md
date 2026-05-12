@@ -47,6 +47,19 @@ lower previous endpoint -> lower reset endpoint
 upper previous endpoint -> upper reset endpoint
 ```
 
+If reset closure fails after the upper certificate exists, the runner may use
+one induced correction:
+
+```text
+z = floor(N / upper.reset_endpoint)
+c = previous public endpoint before z
+d = upper.reset_deadline_value
+```
+
+The corrected lower endpoint `c` is certified by deriving the PGSPG certificate
+at `c`. The upper endpoint `d` is the public deadline field of the upper
+certificate.
+
 ## Allowed Transport Facts
 
 Inference may compute:
@@ -54,6 +67,7 @@ Inference may compute:
 - `floor(N / anchor)`;
 - `floor(N / reset_endpoint)`;
 - `floor(N / reset_deadline_value)`;
+- the previous public endpoint before a transported certificate coordinate;
 - differences between transported reset and deadline images;
 - equality of public transported coordinates.
 
@@ -71,19 +85,19 @@ The certificate runner may stop only with one of these states:
 
 ```text
 resolved_by_mutual_certificate_closure
+resolved_by_reciprocal_deadline_signature_correction
 unresolved_by_certificate_pair_not_closed
 unresolved_by_missing_lower_certificate
 unresolved_by_missing_upper_certificate
 gmp_interval_backend_required
 ```
 
-The current implementation is expected to emit unresolved rows until the
-transported certificate-closure invariant is strong enough to certify a unique
-pair before audit.
+The current implementation resolves only when reset closure or deadline
+signature correction certifies a unique public pair before audit.
 
-## Current Closure Candidate
+## Current Closure Rules
 
-The first closure candidate is intentionally strict.
+The reset closure branch is strict.
 
 It requires:
 
@@ -93,11 +107,18 @@ It requires:
 4. the upper reset endpoint transports to the lower reset endpoint;
 5. reset signatures match.
 
-This candidate is not final. It is a measurable starting point for deriving the
-transported deadline invariant.
+The deadline signature correction branch applies only after reset closure fails
+and requires:
+
+1. the upper certificate exists;
+2. the failed upper reset transports to a lower-side coordinate;
+3. the previous public endpoint before that coordinate has a PGSPG certificate;
+4. the upper reset deadline mutually closes with that corrected lower endpoint;
+5. the corrected-lower and upper reset signatures match;
+6. the correction moves outward from the original reset pair.
 
 ## Failure Discipline
 
-If the closure candidate does not hold, return unresolved.
+If neither closure rule holds, return unresolved.
 
 Do not add a search budget, a wider walk, a product check, or a fallback.

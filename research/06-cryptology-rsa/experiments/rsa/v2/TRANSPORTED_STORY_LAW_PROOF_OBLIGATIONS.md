@@ -12,10 +12,10 @@ core PGSPG laws.
 The current result is a measured public relation, not a theorem and not a
 resolver.
 
-The official RSA v2 runner still returns:
+The official RSA v2 runner now returns:
 
 ```text
-rsa_v2_40bit_static_001 unresolved unresolved_by_certificate_pair_not_closed
+rsa_v2_40bit_static_001 resolved resolved_by_reciprocal_deadline_signature_correction
 rsa_v2_50bit_static_001 unresolved unresolved_by_certificate_pair_not_closed
 ```
 
