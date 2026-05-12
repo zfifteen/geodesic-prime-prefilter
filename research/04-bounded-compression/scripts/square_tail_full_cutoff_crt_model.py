@@ -68,7 +68,10 @@ def first_large_carrier(m: int, lower_bound: int, used: set[int], start: int) ->
         candidate = int(gmpy2.next_prime(candidate))
 
 
-def build_full_cutoff_crt_model(source_root: int) -> dict[str, object]:
+def build_full_cutoff_crt_model(
+    source_root: int,
+    include_model_values: bool = False,
+) -> dict[str, object]:
     """Return a full-cutoff local CRT obstruction model for the representative."""
     representative_audit = build_prime_class_audit(source_root)
     representative = representative_audit["first_prime_representative"]
@@ -131,7 +134,7 @@ def build_full_cutoff_crt_model(source_root: int) -> dict[str, object]:
 
     residue_text = str(model_residue)
     modulus_text = str(model_modulus)
-    return {
+    result = {
         "source_root": source_root,
         "representative_root": str(root),
         "M": limit,
@@ -157,6 +160,10 @@ def build_full_cutoff_crt_model(source_root: int) -> dict[str, object]:
         "rough_carrier_failures": rough_carrier_failures,
         "carrier_rows": carrier_rows,
     }
+    if include_model_values:
+        result["model_residue"] = residue_text
+        result["model_modulus"] = modulus_text
+    return result
 
 
 def main(argv: list[str] | None = None) -> int:
