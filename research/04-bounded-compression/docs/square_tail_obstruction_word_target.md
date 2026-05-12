@@ -230,6 +230,22 @@ The moving-cover audit is recorded in:
 research/04-bounded-compression/docs/findings/square_tail_cover_audit_424171123.md
 ```
 
+The carrier-economy audit separates repeat-capable factors from singleton
+factors. For the current record, `43` prefix factors satisfy `ell <= M` and
+cover `329 / 395` positions. The `56` prefix factors with `ell > M` cover one
+position each, raising the prefix cover to `385 / 395`.
+
+This gives the cover route a non-tautological pressure point: a hypothetical
+counterexample must complete the suffix by adding enough non-propagating
+singleton fills, or by introducing new repeat-capable factors, without leaving
+a prime-valued defect.
+
+The carrier-economy audit is recorded in:
+
+```text
+research/04-bounded-compression/docs/findings/square_tail_carrier_economy_424171123.md
+```
+
 ## Next Lemma Targets
 
 The next theorem work should target one of these exact statements.
