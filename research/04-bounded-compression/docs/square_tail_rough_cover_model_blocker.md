@@ -41,8 +41,11 @@ The first prime representative found in the CRT class is also selected-square:
 | Representative index `k` | `4` |
 | Representative root | `89726961223544427015292389839` |
 | Previous-prime offset below root square | `338` |
+| Closing position `m` | `169` |
 | Modeled even window | `78` |
 | Dynamic cutoff | `8889` |
+| Closing offset beyond modeled window | `true` |
+| Closing explained by modeled carriers | `false` |
 | No prime in modeled window | `true` |
 | Closed by cutoff | `true` |
 | Selected-square condition | `true` |
@@ -96,6 +99,8 @@ It also proves that merely adding primality of the root and the selected-square
 condition does not eliminate this local obstruction pattern. The representative
 root has no prime in the modeled window, satisfies the selected-square
 condition, and still closes later by an actual previous prime at offset `338`.
+That closing offset is not explained by the modeled small-prime carriers or the
+nine assigned large-carrier classes.
 
 The proof must use additional structure:
 
