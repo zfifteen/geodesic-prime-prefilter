@@ -94,7 +94,7 @@ For this repository, a future session should first read:
 - `docs/research/codex_continuity/START_HERE.md`;
 - `AGENTS.md`;
 - `PROOF.md`;
-- `experiments/collatz/PROOF.md`;
+- `research/08-collatz/PROOF.md`;
 - `experiments/rsa/v2/README.md`;
 - `experiments/rsa/v2/ALGORITHM.md`;
 - `experiments/rsa/v2/PGS_CERTIFICATE.md`;

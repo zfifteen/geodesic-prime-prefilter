@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PGS Research Repository Reorganization Plan</title>
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --ink: #171b20;
+      --muted: #5d6876;
+      --line: #d7dde5;
+      --panel: #ffffff;
+      --accent: #0f6b5f;
+      --accent-soft: #e4f2ef;
+      --warn: #8a4b00;
+      --warn-soft: #fff1d8;
+      --bad: #8b1e2d;
+      --bad-soft: #f9e2e6;
+      --code: #eef1f5;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 36px 24px 64px;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.16;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 900px;
+      font-size: 34px;
+    }
+
+    h2 {
+      margin-top: 34px;
+      padding-top: 26px;
+      border-top: 1px solid var(--line);
+      font-size: 22px;
+    }
+
+    h3 {
+      margin-top: 20px;
+      font-size: 17px;
+    }
+
+    p {
+      max-width: 900px;
+      margin: 12px 0 0;
+    }
+
+    ul, ol {
+      margin: 12px 0 0;
+      padding-left: 22px;
+    }
+
+    li {
+      margin: 5px 0;
+    }
+
+    code {
+      padding: 1px 5px;
+      border-radius: 4px;
+      background: var(--code);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+    }
+
+    pre {
+      overflow: auto;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfcfd;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 14px;
+      border-collapse: collapse;
+      background: var(--panel);
+    }
+
+    th, td {
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #edf1f5;
+      font-weight: 650;
+    }
+
+    .lead {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border: 1px solid #b9d8d1;
+      border-left: 5px solid var(--accent);
+      border-radius: 6px;
+      background: var(--accent-soft);
+      font-size: 16px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .panel {
+      padding: 15px 16px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--panel);
+    }
+
+    .panel h3 {
+      margin-top: 0;
+    }
+
+    .tag {
+      display: inline-block;
+      margin: 0 6px 6px 0;
+      padding: 3px 7px;
+      border-radius: 4px;
+      background: #e7ebf0;
+      color: #34404c;
+      font-size: 12px;
+      font-weight: 650;
+    }
+
+    .warn {
+      border-color: #e3bd75;
+      border-left: 5px solid var(--warn);
+      background: var(--warn-soft);
+    }
+
+    .bad {
+      border-color: #dfa9b2;
+      border-left: 5px solid var(--bad);
+      background: var(--bad-soft);
+    }
+
+    .status {
+      width: 130px;
+      font-weight: 650;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 820px) {
+      main {
+        padding: 28px 16px 48px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <h1>PGS Research Repository Reorganization Plan</h1>
+  <p class="lead">
+    The repository has become a research corpus. The target shape is chapter-based geography:
+    each research family gets one durable home containing its definitions, scripts, outputs,
+    audit evidence, invalidated attempts, and live unresolved state.
+  </p>
+
+  <section>
+    <h2>Current Finding</h2>
+    <p>
+      The current tree mixes repo-wide authority documents, active research lines, exploratory
+      scripts, and large output surfaces. Some families are already self-contained, such as
+      <code>research/08-collatz/</code>. Others are split across <code>docs/research/</code>,
+      <code>experiments/</code>, <code>gwr/</code>, and top-level <code>output/</code>.
+    </p>
+    <div class="grid">
+      <div class="panel">
+        <h3>Already Close</h3>
+        <span class="tag">collatz</span>
+        <span class="tag">exponents</span>
+        <span class="tag">twin-primes</span>
+        <p>These lines already contain local docs, scripts, tests, and outputs.</p>
+      </div>
+      <div class="panel">
+        <h3>Split Across Roots</h3>
+        <span class="tag">GWR</span>
+        <span class="tag">state budget</span>
+        <span class="tag">bounded compression</span>
+        <span class="tag">generator</span>
+        <p>These lines have key material spread across documentation, experiments, and output directories.</p>
+      </div>
+      <div class="panel">
+        <h3>Needs Care</h3>
+        <span class="tag">RSA v2</span>
+        <span class="tag">cryptology</span>
+        <span class="tag">semiprime branch</span>
+        <p>These lines have strong proof/status boundaries and should move only with explicit continuity notes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Non-Movable Authority</h2>
+    <p>
+      These files should stay at the repository root because they define repo-wide truth,
+      public entrypoints, or operational contracts.
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Artifact</th>
+          <th>Role</th>
+          <th>Reorganization Rule</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>AGENTS.md</code></td>
+          <td>Local Codex contract and PGS reasoning discipline.</td>
+          <td>Keep at root. Add a pointer to the new chapter index after migration.</td>
+        </tr>
+        <tr>
+          <td><code>PROOF.md</code></td>
+          <td>Single live proof reference for proved PGS theorems.</td>
+          <td>Keep at root. Chapters cite it rather than duplicate theorem status.</td>
+        </tr>
+        <tr>
+          <td><code>RESULTS.md</code></td>
+          <td>Repo-wide measured surface and audit summary.</td>
+          <td>Keep at root. Chapter summaries link back to exact measured claims.</td>
+        </tr>
+        <tr>
+          <td><code>PRIME_GAP_GENERATOR.md</code></td>
+          <td>Public generator contract and behavior surface.</td>
+          <td>Keep at root or root-level public docs. Do not bury production contract in a research chapter.</td>
+        </tr>
+        <tr>
+          <td><code>docs/research/codex_continuity/START_HERE.md</code></td>
+          <td>Session bootstrap and continuity routing.</td>
+          <td>Keep as the live continuity router. Update once chapter homes exist.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Target Shape</h2>
+    <p>
+      Use one top-level research root with stable chapter folders. Branches remain temporary
+      Git work surfaces; chapters become permanent knowledge surfaces.
+    </p>
+    <pre>research/
+  00-index/
+    README.md
+    status-map.md
+  01-generator/
+    README.md
+    docs/
+    scripts/
+    outputs/
+    audit/
+  02-gwr-dni/
+    README.md
+    docs/
+    scripts/
+    outputs/
+    audit/
+  03-gap-types/
+    README.md
+    docs/
+    scripts/
+    outputs/
+    audit/
+  04-bounded-compression/
+    README.md
+    docs/
+    scripts/
+    outputs/
+    audit/
+    invalidated/
+  05-state-budget/
+    README.md
+    docs/
+    scripts/
+    outputs/
+    audit/
+    unresolved/
+  06-cryptology-rsa/
+    README.md
+    docs/
+    scripts/
+    fixtures/
+    outputs/
+    audit/
+    unresolved/
+  07-oeis/
+    README.md
+    candidates/
+    scripts/
+    outputs/
+    submissions/
+  08-collatz/
+  09-exponents/
+  10-twin-primes/</pre>
+    <p>
+      The root <code>research/</code> directory becomes the corpus home for research episodes.
+      Root-level production code and authority files remain outside it.
+    </p>
+  </section>
+
+  <section>
+    <h2>Resolved Decisions</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Question</th>
+          <th>Decision</th>
+          <th>Reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Permanent research root</td>
+          <td>Use top-level <code>research/</code>.</td>
+          <td><code>docs/research/</code> currently mixes documentation with research state. A top-level root makes research a first-class corpus and lets each chapter contain docs, scripts, outputs, and audit evidence together.</td>
+        </tr>
+        <tr>
+          <td>Production generator code</td>
+          <td>Keep production code in <code>src/</code>, <code>tests/</code>, and <code>benchmarks/</code>.</td>
+          <td>The generator is a repo-wide implementation surface, not only a research episode. The <code>01-generator</code> chapter points to production files and owns research-specific evidence, not the production source tree.</td>
+        </tr>
+        <tr>
+          <td>Top-level <code>output/</code></td>
+          <td>Dissolve it into chapter <code>outputs/</code> folders, with <code>archive/</code> labels for stale or superseded evidence.</td>
+          <td>Output provenance belongs beside the script, question, and status note that produced it. A global output dump hides whether a result is headline evidence, stale scratch, invalidated, or unresolved.</td>
+        </tr>
+        <tr>
+          <td>Old branch names</td>
+          <td>Preserve branch names in chapter metadata when they explain provenance.</td>
+          <td>Branches encode the history of research episodes. They should not define the folder structure, but they are useful evidence for where a result came from.</td>
+        </tr>
+        <tr>
+          <td>Compatibility pointers</td>
+          <td>Use short README pointers, not symlinks.</td>
+          <td>Plain files are easier to audit and survive GitHub, local browsing, and future tooling without path-resolution surprises.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Chapter Contract</h2>
+    <p>Every chapter gets a short <code>README.md</code> with the same sections.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Section</th>
+          <th>Required Content</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Object</td>
+          <td>The concrete PGS object being studied.</td>
+        </tr>
+        <tr>
+          <td>Invariant Or Rule</td>
+          <td>The relevant PGS invariant, theorem, measured rule, or unresolved candidate.</td>
+        </tr>
+        <tr>
+          <td>Proof Status</td>
+          <td>Direct pointer to <code>PROOF.md</code> when proved; otherwise explicit non-proof status.</td>
+        </tr>
+        <tr>
+          <td>Measured Evidence</td>
+          <td>Exact output paths and tested regimes.</td>
+        </tr>
+        <tr>
+          <td>Audit Status</td>
+          <td>Whether output was independently checked, and by what script or sidecar.</td>
+        </tr>
+        <tr>
+          <td>Invalidated Rules</td>
+          <td>Named failed rules and the artifact that falsified them.</td>
+        </tr>
+        <tr>
+          <td>Unresolved State</td>
+          <td>The current blocker, survivor set, or missing invariant.</td>
+        </tr>
+        <tr>
+          <td>Reproduce</td>
+          <td>The smallest deterministic command that regenerates the headline evidence.</td>
+        </tr>
+        <tr>
+          <td>Provenance</td>
+          <td>Original branch names, old paths, and migration commit when those facts help continuity.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Migration Rules</h2>
+    <div class="panel warn">
+      <h3>No Big-Bang Move</h3>
+      <p>
+        Move one research family at a time. Each move must preserve a working entrypoint,
+        exact output provenance, and a compatibility pointer from the old path when needed.
+      </p>
+    </div>
+    <ol>
+      <li>Create the chapter folder and README first.</li>
+      <li>Move only files belonging to that chapter.</li>
+      <li>Keep generated outputs with the scripts that produced them when the outputs are part of the evidence.</li>
+      <li>Leave large or obsolete scratch outputs in an archived area only after their status is identified.</li>
+      <li>Update imports, command examples, and documentation links in the same commit as each move.</li>
+      <li>Run the smallest deterministic validation for that chapter before moving to the next one.</li>
+      <li>Update <code>START_HERE.md</code> after each completed chapter migration.</li>
+    </ol>
+    <h3>Move Mechanics</h3>
+    <ul>
+      <li>Use <code>git mv</code> for every tracked relocation.</li>
+      <li>Do not copy old files into new locations unless the old copy is explicitly marked as a compatibility pointer.</li>
+      <li>Do not rename concepts while moving files. Terminology changes belong in separate commits.</li>
+      <li>Do not combine family migrations in one commit unless the families already share scripts and outputs.</li>
+      <li>Keep LF line endings in all generated Markdown, JSONL, CSV, and text files.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Initial Mapping</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Chapter</th>
+          <th>Likely Current Sources</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>01-generator</code></td>
+          <td><code>src/</code>, <code>tests/</code>, <code>benchmarks/</code>, <code>output/minimal_pgs_scale_probe_1e5_to_1e18/</code>, root generator docs.</td>
+          <td class="status">Mapped and validated</td>
+        </tr>
+        <tr>
+          <td><code>02-gwr-dni</code></td>
+          <td><code>gwr/</code>, <code>output/gwr_proof/</code>, <code>output/gwr_dni_*</code>, selected docs under <code>docs/research/predictor/</code>.</td>
+          <td class="status">Mapped and validated</td>
+        </tr>
+        <tr>
+          <td><code>03-gap-types</code></td>
+          <td><code>docs/research/prime_gap_grammar_infographics/</code>, gap-type output images and catalogs.</td>
+          <td class="status">Mapped and validated</td>
+        </tr>
+        <tr>
+          <td><code>04-bounded-compression</code></td>
+          <td><code>docs/research/bounded_compression/</code>, <code>output/gwr_proof/</code>, square-branch scan outputs.</td>
+          <td class="status">Mapped and validated</td>
+        </tr>
+        <tr>
+          <td><code>05-state-budget</code></td>
+          <td><code>docs/research/predictor/state_budget_*</code>, <code>output/state_budget_*</code>, <code>output/d4_*</code>.</td>
+          <td class="status">Mapped and validated</td>
+        </tr>
+        <tr>
+          <td><code>06-cryptology-rsa</code></td>
+          <td><code>experiments/rsa/</code>, <code>docs/research/cryptology/</code>, semiprime and modulus-link outputs.</td>
+          <td class="status">Mapped and validated</td>
+        </tr>
+        <tr>
+          <td><code>07-oeis</code></td>
+          <td>New chapter for sequence candidates, duplicate checks, and submission drafts.</td>
+          <td class="status">Workflow initialized</td>
+        </tr>
+        <tr>
+          <td><code>08-collatz</code></td>
+          <td><code>research/08-collatz/</code>.</td>
+          <td class="status">Migrated and validated</td>
+        </tr>
+        <tr>
+          <td><code>09-exponents</code></td>
+          <td><code>research/09-exponents/</code>.</td>
+          <td class="status">Migrated and validated</td>
+        </tr>
+        <tr>
+          <td><code>10-twin-primes</code></td>
+          <td><code>research/10-twin-primes/</code>.</td>
+          <td class="status">Migrated and validated</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>First Execution Pass</h2>
+    <p>
+      The first pass should produce navigability without relocating everything. That gives
+      future moves a stable target and makes the branch reviewable.
+    </p>
+    <ol>
+      <li>Create <code>research/00-index/README.md</code> with chapter map and status legend.</li>
+      <li>Create empty chapter folders with README stubs for the ten planned chapters.</li>
+      <li>Move only already-contained families first: <code>research/08-collatz</code>, <code>research/09-exponents</code>, and <code>research/10-twin-primes</code> are complete.</li>
+      <li>Add compatibility pointers from old paths if external links or scripts refer to them.</li>
+      <li>Run import/path checks for moved scripts and tests.</li>
+      <li>Finalize split-family chapter maps before moving any shared source tree. The remaining split families are now mapped and validated.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Execution Phases</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Phase</th>
+          <th>Scope</th>
+          <th>Required Validation</th>
+          <th>Commit Shape</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1. Skeleton</td>
+          <td>Create <code>research/</code>, chapter folders, README stubs, master index, and status map.</td>
+          <td><code>research/00-index/README.md</code> and <code>research/00-index/status-map.md</code> exist; every chapter has a README.</td>
+          <td>Complete in this branch.</td>
+        </tr>
+        <tr>
+          <td>2. Contained families</td>
+          <td>Move <code>collatz</code>, <code>exponents</code>, and <code>twin-primes</code>.</td>
+          <td><code>collatz</code> moved to <code>research/08-collatz/</code> and passed 55 tests. <code>exponents</code> moved to <code>research/09-exponents/</code> and passed 68 tests. <code>twin-primes</code> moved to <code>research/10-twin-primes/</code> and passed 48 tests. The exponents tail-probe dependency on twin-prime outputs passed 8 focused tests, then the full exponents suite passed again after the path repair.</td>
+          <td>Contained-family migrations complete.</td>
+        </tr>
+        <tr>
+          <td>3. GWR and generator surfaces</td>
+          <td>Map <code>gwr/</code>, generator evidence, and GWR/DNI outputs into chapters without moving production code.</td>
+          <td><code>research/01-generator/</code> and <code>research/02-gwr-dni/</code> are mapped. Focused generator/GWR validation passed 36 tests.</td>
+          <td>Mapped in this branch. No production code was moved.</td>
+        </tr>
+        <tr>
+          <td>4. Bounded compression and state budget</td>
+          <td>Map active bounded-compression, dynamic-cutoff, <code>d4_count</code>, and state-budget evidence.</td>
+          <td><code>research/04-bounded-compression/</code> preserves the square-branch unresolved state and fixed-cutoff invalidation. <code>research/05-state-budget/</code> preserves <code>d4_count</code> as measured. Focused validation passed 20 tests.</td>
+          <td>Mapped in this branch. No proof status was upgraded.</td>
+        </tr>
+        <tr>
+          <td>5. Cryptology and RSA</td>
+          <td>Map RSA v2/v3, modulus-link, semiprime, and cryptology documents into the cryptology chapter.</td>
+          <td><code>research/06-cryptology-rsa/</code> preserves unresolved survivor/blocker states and introduces no resolver logic. Focused RSA validation passed 102 tests.</td>
+          <td>Mapped in this branch. RSA artifacts remain at their current executable homes.</td>
+        </tr>
+        <tr>
+          <td>6. OEIS</td>
+          <td>Create sequence-candidate workflow after the corpus map is stable.</td>
+          <td><code>research/07-oeis/workflow.md</code> and <code>research/07-oeis/candidates/TEMPLATE.md</code> exist. No candidate has been selected in this branch.</td>
+          <td>Workflow initialized. Later commits can add one candidate packet at a time.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Status Vocabulary</h2>
+    <p>Chapter READMEs and index tables should use these exact status labels.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Label</th>
+          <th>Meaning</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>proved</code></td>
+          <td>Universal theorem under the hypotheses stated in <code>PROOF.md</code> or another explicit proof artifact.</td>
+        </tr>
+        <tr>
+          <td><code>measured</code></td>
+          <td>Finite empirical or computational result with exact regime and reproducible output path.</td>
+        </tr>
+        <tr>
+          <td><code>audited</code></td>
+          <td>Generated output independently checked by a separate validation path.</td>
+        </tr>
+        <tr>
+          <td><code>hypothesis</code></td>
+          <td>Live explanatory candidate not proved and not falsified.</td>
+        </tr>
+        <tr>
+          <td><code>unresolved</code></td>
+          <td>Open blocker, survivor, missing invariant, or non-closing rule.</td>
+        </tr>
+        <tr>
+          <td><code>invalidated</code></td>
+          <td>Rule or conjecture falsified by a named artifact.</td>
+        </tr>
+        <tr>
+          <td><code>archived</code></td>
+          <td>Historical output retained for provenance, not active evidence.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Acceptance Criteria</h2>
+    <ul>
+      <li>A new reader can identify every active research family from one index.</li>
+      <li>Every migrated chapter separates theorem status, measured result, audit status, hypothesis, invalidated rule, and unresolved state.</li>
+      <li>No proved theorem wording is weakened during relocation.</li>
+      <li>No unresolved result is made to sound solved by folder placement or summary language.</li>
+      <li>Every moved script has either a passing validation command or an explicit stale/archived label.</li>
+      <li>Root authority files remain stable and easy to find.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Operational Defaults</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Decision Point</th>
+          <th>Default</th>
+          <th>Reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>First contained family to move</td>
+          <td>Move <code>research/09-exponents/</code> first.</td>
+          <td>It is already contained and small enough to validate quickly. It is a lower-risk rehearsal before moving larger families.</td>
+        </tr>
+        <tr>
+          <td>Second contained family</td>
+          <td>Move <code>research/10-twin-primes/</code> second.</td>
+          <td>It is still compact and has the same family-local docs/scripts/tests/output shape.</td>
+        </tr>
+        <tr>
+          <td>Third contained family</td>
+          <td>Move <code>research/08-collatz/</code> third.</td>
+          <td>Completed after the first two rehearsals.</td>
+        </tr>
+        <tr>
+          <td>Large stale outputs</td>
+          <td>Keep tracked evidence in Git until a chapter README names its status. After that, move stale heavy artifacts to an ignored local archive only when their summary is preserved in tracked text.</td>
+          <td>Reorganization should not silently erase audit history. Heavy scratch can leave Git only after its evidence value has been explicitly classified.</td>
+        </tr>
+        <tr>
+          <td>Chapter numbers</td>
+          <td>Treat numbers as stable after the reorganization branch merges.</td>
+          <td>Stable numbers make references easier. During this planning branch, renumbering remains allowed before the first migration commit.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+</body>
+</html>
