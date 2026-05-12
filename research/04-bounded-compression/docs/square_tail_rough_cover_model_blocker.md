@@ -102,6 +102,16 @@ condition, and still closes later by an actual previous prime at offset `338`.
 That closing offset is not explained by the modeled small-prime carriers or the
 nine assigned large-carrier classes.
 
+The dynamic-tail audit in
+
+```text
+research/04-bounded-compression/docs/findings/square_tail_dynamic_tail_audit_509.md
+```
+
+shows the next layer: the representative has `13` rough tail offsets between
+the source modeled window and the actual closing prime, and the only
+prime-valued row among them is the closing offset `338`.
+
 The proof must use additional structure:
 
 1. a law forcing prime-valued M-rough defects before the dynamic cutoff;

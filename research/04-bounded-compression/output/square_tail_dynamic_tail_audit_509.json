@@ -1,0 +1,174 @@
+{
+  "source_root": 509,
+  "source_M": 39,
+  "actual_root": "89726961223544427015292389839",
+  "actual_dynamic_cutoff": 8889,
+  "actual_M": 4444,
+  "closing_m": 169,
+  "closing_offset": 338,
+  "tail_m_range": [
+    40,
+    169
+  ],
+  "tail_even_offset_range": [
+    80,
+    338
+  ],
+  "counts": {
+    "tail_position_count": 130,
+    "source_small_covered_count": 94,
+    "source_assigned_large_covered_count": 20,
+    "source_modeled_covered_count": 98,
+    "new_repeat_capable_covered_count": 65,
+    "actual_rough_count": 13,
+    "prime_value_count": 1
+  },
+  "actual_rough_offsets": [
+    80,
+    114,
+    128,
+    132,
+    182,
+    194,
+    252,
+    260,
+    278,
+    300,
+    318,
+    332,
+    338
+  ],
+  "prime_offsets": [
+    338
+  ],
+  "prime_rows": [
+    {
+      "m": 169,
+      "offset": 338,
+      "actual_rough": true,
+      "is_prime": true,
+      "source_small_carriers": [],
+      "source_assigned_large_carriers": [],
+      "new_repeat_capable_carriers": []
+    }
+  ],
+  "rough_or_prime_rows": [
+    {
+      "m": 40,
+      "offset": 80,
+      "actual_rough": true,
+      "is_prime": false,
+      "source_small_carriers": [],
+      "source_assigned_large_carriers": [],
+      "new_repeat_capable_carriers": []
+    },
+    {
+      "m": 57,
+      "offset": 114,
+      "actual_rough": true,
+      "is_prime": false,
+      "source_small_carriers": [],
+      "source_assigned_large_carriers": [],
+      "new_repeat_capable_carriers": []
+    },
+    {
+      "m": 64,
+      "offset": 128,
+      "actual_rough": true,
+      "is_prime": false,
+      "source_small_carriers": [],
+      "source_assigned_large_carriers": [],
+      "new_repeat_capable_carriers": []
+    },
+    {
+      "m": 66,
+      "offset": 132,
+      "actual_rough": true,
+      "is_prime": false,
+      "source_small_carriers": [],
+      "source_assigned_large_carriers": [],
+      "new_repeat_capable_carriers": []
+    },
+    {
+      "m": 91,
+      "offset": 182,
+      "actual_rough": true,
+      "is_prime": false,
+      "source_small_carriers": [],
+      "source_assigned_large_carriers": [],
+      "new_repeat_capable_carriers": []
+    },
+    {
+      "m": 97,
+      "offset": 194,
+      "actual_rough": true,
+      "is_prime": false,
+      "source_small_carriers": [],
+      "source_assigned_large_carriers": [],
+      "new_repeat_capable_carriers": []
+    },
+    {
+      "m": 126,
+      "offset": 252,
+      "actual_rough": true,
+      "is_prime": false,
+      "source_small_carriers": [],
+      "source_assigned_large_carriers": [],
+      "new_repeat_capable_carriers": []
+    },
+    {
+      "m": 130,
+      "offset": 260,
+      "actual_rough": true,
+      "is_prime": false,
+      "source_small_carriers": [],
+      "source_assigned_large_carriers": [],
+      "new_repeat_capable_carriers": []
+    },
+    {
+      "m": 139,
+      "offset": 278,
+      "actual_rough": true,
+      "is_prime": false,
+      "source_small_carriers": [],
+      "source_assigned_large_carriers": [],
+      "new_repeat_capable_carriers": []
+    },
+    {
+      "m": 150,
+      "offset": 300,
+      "actual_rough": true,
+      "is_prime": false,
+      "source_small_carriers": [],
+      "source_assigned_large_carriers": [],
+      "new_repeat_capable_carriers": []
+    },
+    {
+      "m": 159,
+      "offset": 318,
+      "actual_rough": true,
+      "is_prime": false,
+      "source_small_carriers": [],
+      "source_assigned_large_carriers": [],
+      "new_repeat_capable_carriers": []
+    },
+    {
+      "m": 166,
+      "offset": 332,
+      "actual_rough": true,
+      "is_prime": false,
+      "source_small_carriers": [],
+      "source_assigned_large_carriers": [],
+      "new_repeat_capable_carriers": []
+    },
+    {
+      "m": 169,
+      "offset": 338,
+      "actual_rough": true,
+      "is_prime": true,
+      "source_small_carriers": [],
+      "source_assigned_large_carriers": [],
+      "new_repeat_capable_carriers": []
+    }
+  ]
+}
