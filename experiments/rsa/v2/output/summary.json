@@ -6,9 +6,10 @@
       "bits": 40,
       "case_id": "rsa_v2_40bit_static_001",
       "center": "1048573",
-      "closure_status": "unresolved_by_certificate_pair_not_closed",
+      "closure_status": "resolved_by_reciprocal_deadline_signature_correction",
+      "corrected_lower_certificate_present": true,
       "lower_certificate_present": true,
-      "rule_id": "reciprocal_pgs_certificate_pair_v1",
+      "rule_id": "reciprocal_pgs_certificate_pair_v2",
       "upper_certificate_present": true
     },
     {
@@ -18,8 +19,9 @@
       "case_id": "rsa_v2_50bit_static_001",
       "center": "32053641",
       "closure_status": "unresolved_by_certificate_pair_not_closed",
+      "corrected_lower_certificate_present": false,
       "lower_certificate_present": true,
-      "rule_id": "reciprocal_pgs_certificate_pair_v1",
+      "rule_id": "reciprocal_pgs_certificate_pair_v2",
       "upper_certificate_present": false
     }
   ]

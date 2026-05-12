@@ -1,0 +1,18 @@
+{
+  "exact_landing_count": 679,
+  "exact_landing_signature_false": 678,
+  "exact_landing_signature_true": 1,
+  "first_resolved": [
+    {
+      "L": 0,
+      "U": 0,
+      "closure_status": "resolved_by_mutual_certificate_closure",
+      "pair_index": 1863,
+      "public_endpoint_gap": "2",
+      "signature_match": true
+    }
+  ],
+  "resolved_count": 1,
+  "row_count": 5000,
+  "rule_id": "pre_first_endpoint_pair_defect_sweep_v1"
+}

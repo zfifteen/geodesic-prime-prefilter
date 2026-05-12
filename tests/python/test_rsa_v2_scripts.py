@@ -34,10 +34,14 @@ N_VALUE = "1099507433251"
 P_VALUE = "1048559"
 Q_VALUE = "1048589"
 CASE_50_ID = "rsa_v2_50bit_static_001"
-RULE_ID = "reciprocal_pgs_certificate_pair_v1"
+RULE_ID = "reciprocal_pgs_certificate_pair_v2"
 GENERATED_50_N = "1027435935526951"
 GENERATED_50_P = "30729371"
 GENERATED_50_Q = "33434981"
+TOY_DEADLINE_CASE_ID = "rsa_v2_toy_deadline_17bit_static_001"
+TOY_DEADLINE_N = "73903"
+TOY_DEADLINE_P = "263"
+TOY_DEADLINE_Q = "281"
 
 
 def load_module(path: Path):
@@ -223,7 +227,7 @@ def test_public_case_contains_only_public_rung_data(tmp_path):
 
 
 def test_runner_reports_certificate_pairs_without_false_resolution(tmp_path):
-    """As a reviewer, I want the runner to expose PGSPG certificate pairs without false resolution."""
+    """As a reviewer, I want the runner to resolve only public certificate closures."""
     build_fixtures(tmp_path)
 
     output_dir = run_inference(tmp_path)
@@ -236,8 +240,9 @@ def test_runner_reports_certificate_pairs_without_false_resolution(tmp_path):
             "case_id": CASE_ID,
             "bits": 40,
             "N": N_VALUE,
-            "status": "unresolved",
-            "unresolved_reason": "unresolved_by_certificate_pair_not_closed",
+            "status": "resolved",
+            "p": P_VALUE,
+            "q": Q_VALUE,
             "rule_id": RULE_ID,
         },
         {
@@ -249,8 +254,13 @@ def test_runner_reports_certificate_pairs_without_false_resolution(tmp_path):
             "rule_id": RULE_ID,
         }
     ]
+    assert summary["cases"][0]["closure_status"] == (
+        "resolved_by_reciprocal_deadline_signature_correction"
+    )
+    assert summary["cases"][0]["corrected_lower_certificate_present"]
+    assert summary["cases"][1]["closure_status"] == "unresolved_by_certificate_pair_not_closed"
+    assert not summary["cases"][1]["corrected_lower_certificate_present"]
     for row in summary["cases"]:
-        assert row["closure_status"] == "unresolved_by_certificate_pair_not_closed"
         assert row["lower_certificate_present"]
         assert "radius" not in row
         assert "reciprocal_window_candidates" not in row
@@ -259,9 +269,15 @@ def test_runner_reports_certificate_pairs_without_false_resolution(tmp_path):
         assert "max_lower_endpoints" not in row
         assert "lower_pgs_endpoints_seen" not in row
     assert len(survivors) == len(summary["cases"])
-    assert {row["closure_status"] for row in survivors} == {
-        "unresolved_by_certificate_pair_not_closed"
-    }
+    assert survivors[0]["closure_status"] == (
+        "resolved_by_reciprocal_deadline_signature_correction"
+    )
+    assert survivors[0]["corrected_lower_endpoint"] == P_VALUE
+    assert survivors[0]["corrected_upper_endpoint"] == Q_VALUE
+    assert survivors[0]["transported_corrected_upper_endpoint"] == Q_VALUE
+    assert survivors[0]["transported_corrected_lower_endpoint"] == P_VALUE
+    assert survivors[0]["corrected_lower_reset_signature"] == survivors[0]["upper_reset_signature"]
+    assert survivors[1]["closure_status"] == "unresolved_by_certificate_pair_not_closed"
 
 
 def test_certificate_rows_are_derived_before_audit(tmp_path):
@@ -272,12 +288,61 @@ def test_certificate_rows_are_derived_before_audit(tmp_path):
     rows = read_jsonl(output_dir / "survivor_rows.jsonl")
     assert rows
     for row in rows:
-        assert row["closure_status"] == "unresolved_by_certificate_pair_not_closed"
         assert row["lower_reset_endpoint"]
         assert row["transported_upper_endpoint"]
         assert row["lower_reset_signature"]
         assert "deadline_locked" not in row
         assert "deadline_lock_reason" not in row
+    assert rows[0]["corrected_lower_endpoint"] == P_VALUE
+    assert rows[0]["corrected_upper_endpoint"] == Q_VALUE
+    assert rows[0]["corrected_lower_reset_signature"] == rows[0]["upper_reset_signature"]
+    assert rows[1]["corrected_lower_endpoint"] is None
+
+
+def test_deadline_signature_correction_resolves_public_toy_case(tmp_path):
+    """As a reviewer, I want the correction rule demonstrated below the ladder."""
+    cases_path = tmp_path / "toy_cases.jsonl"
+    cases_path.write_text(
+        json.dumps(
+            {
+                "case_id": TOY_DEADLINE_CASE_ID,
+                "bits": 17,
+                "description": "Public toy row for reciprocal deadline signature correction.",
+                "N": TOY_DEADLINE_N,
+            },
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    module = load_module(V2 / "run_experiment.py")
+    output_dir = tmp_path / "toy_out"
+
+    assert module.main(["--cases", str(cases_path), "--output-dir", str(output_dir)]) == 0
+
+    inference = read_jsonl(output_dir / "inference_rows.jsonl")
+    survivors = read_jsonl(output_dir / "survivor_rows.jsonl")
+    summary = json.loads((output_dir / "summary.json").read_text(encoding="utf-8"))
+
+    assert inference == [
+        {
+            "case_id": TOY_DEADLINE_CASE_ID,
+            "bits": 17,
+            "N": TOY_DEADLINE_N,
+            "status": "resolved",
+            "p": TOY_DEADLINE_P,
+            "q": TOY_DEADLINE_Q,
+            "rule_id": RULE_ID,
+        }
+    ]
+    assert summary["cases"][0]["closure_status"] == (
+        "resolved_by_reciprocal_deadline_signature_correction"
+    )
+    assert survivors[0]["corrected_lower_endpoint"] == TOY_DEADLINE_P
+    assert survivors[0]["corrected_upper_endpoint"] == TOY_DEADLINE_Q
+    assert survivors[0]["transported_corrected_upper_endpoint"] == TOY_DEADLINE_Q
+    assert survivors[0]["transported_corrected_lower_endpoint"] == TOY_DEADLINE_P
+    assert survivors[0]["corrected_lower_reset_signature"] == survivors[0]["upper_reset_signature"]
 
 
 def test_audit_passes_only_with_separate_factor_file(tmp_path):
@@ -308,7 +373,7 @@ def test_audit_passes_only_with_separate_factor_file(tmp_path):
             "bits": "40",
             "N": N_VALUE,
             "audit_integrity_status": "integrity_pass",
-            "inference_audit_status": "inference_audit_fail",
+            "inference_audit_status": "inference_audit_pass",
         },
         {
             "case_id": CASE_50_ID,
@@ -767,7 +832,7 @@ def test_solved_rsa_challenge_labels_are_collected_for_exact_grammar(tmp_path):
 
 
 def test_toy_normalized_frontier_closure_sweep_keeps_current_rows_unresolved(tmp_path):
-    """As a reviewer, I want normalized frontier closure measured without promotion."""
+    """As a reviewer, I want normalized frontier sidecars separated from inference."""
     module = load_module(V2 / "toy_normalized_frontier_closure_sweep.py")
     output_dir = tmp_path / "normalized_frontier"
 
@@ -786,14 +851,20 @@ def test_toy_normalized_frontier_closure_sweep_keeps_current_rows_unresolved(tmp
     assert summary["non_strict_undominated_live_after_trace"] == 2
     assert summary["normalized_live_frontier_count"] == 2
     assert summary["frontier_empty_but_unresolved"] == 0
-    assert summary["frontier_live_but_closed"] == 0
+    assert summary["frontier_live_but_closed"] == 1
     assert summary["terminal_without_named_public_invariant"] == 0
     assert summary["certificate_status_after_partition"] == {
         "sidecar_blocked_by_live_normalized_frontier": 2
     }
     assert {row["case_id"] for row in sweep_rows} == {CASE_ID, CASE_50_ID}
+    by_case = {row["case_id"]: row for row in sweep_rows}
+    assert by_case[CASE_ID]["certificate_status_before"] == "resolved"
+    assert by_case[CASE_ID]["frontier_live_but_closed"]
+    assert by_case[CASE_50_ID]["certificate_status_before"] == (
+        "unresolved_by_certificate_pair_not_closed"
+    )
+    assert not by_case[CASE_50_ID]["frontier_live_but_closed"]
     for row in sweep_rows:
-        assert row["certificate_status_before"] == "unresolved_by_certificate_pair_not_closed"
         assert row["certificate_status_after"] == "sidecar_blocked_by_live_normalized_frontier"
         assert row["normalized_live_frontier_count"] == 1
         assert row["strict_d4_live_after_trace"] == 0
