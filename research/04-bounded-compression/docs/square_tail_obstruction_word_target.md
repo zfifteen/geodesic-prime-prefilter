@@ -246,6 +246,28 @@ The carrier-economy audit is recorded in:
 research/04-bounded-compression/docs/findings/square_tail_carrier_economy_424171123.md
 ```
 
+The M-rough defect audit gives the cleanest equivalent target. Apply every
+repeat-capable carrier `ell <= M` to the whole moving window. The remaining
+positions are exactly the values `r^2 - 2m` with no prime factor at most `M`.
+For the current record, the repeat-capable carriers cover `330 / 395`
+positions, leaving `65` M-rough defects. Three of those defects are prime,
+at offsets:
+
+```text
+738, 756, 758
+```
+
+A complete counterexample is therefore equivalent to every M-rough defect
+being composite with least factor greater than `M`. The square-tail theorem is
+equivalent to forcing at least one prime-valued M-rough defect before the
+cutoff.
+
+The rough-defect audit is recorded in:
+
+```text
+research/04-bounded-compression/docs/findings/square_tail_rough_defect_audit_424171123.md
+```
+
 ## Next Lemma Targets
 
 The next theorem work should target one of these exact statements.

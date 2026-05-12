@@ -1,0 +1,884 @@
+{
+  "root": 424171123,
+  "previous_prime_offset": 738,
+  "dynamic_cutoff": 790,
+  "full_counterexample_even_count": 395,
+  "repeat_capable_prime_count": 76,
+  "repeat_capable_covered_count": 330,
+  "rough_defect_count": 65,
+  "rough_defect_offsets": [
+    6,
+    38,
+    50,
+    56,
+    62,
+    68,
+    78,
+    80,
+    86,
+    108,
+    150,
+    152,
+    156,
+    162,
+    176,
+    206,
+    212,
+    216,
+    240,
+    260,
+    276,
+    278,
+    288,
+    308,
+    318,
+    330,
+    338,
+    348,
+    350,
+    380,
+    390,
+    392,
+    416,
+    420,
+    432,
+    440,
+    462,
+    468,
+    470,
+    486,
+    498,
+    512,
+    516,
+    530,
+    548,
+    566,
+    572,
+    582,
+    596,
+    600,
+    626,
+    650,
+    668,
+    672,
+    698,
+    702,
+    738,
+    740,
+    750,
+    756,
+    758,
+    762,
+    770,
+    776,
+    782
+  ],
+  "rough_prime_defect_count": 3,
+  "rough_prime_defect_offsets": [
+    738,
+    756,
+    758
+  ],
+  "rough_composite_defect_count": 62,
+  "rough_composite_least_factors": [
+    457,
+    419,
+    10280521,
+    76136597,
+    743,
+    490837,
+    6323,
+    2341,
+    881,
+    3697,
+    27344329,
+    159673649,
+    108562759,
+    323801,
+    22110317,
+    907,
+    911,
+    65357,
+    1451,
+    73483,
+    9923,
+    40771,
+    2003801,
+    1198201,
+    1181,
+    471193,
+    33871,
+    88211,
+    1657463,
+    647,
+    2089,
+    20327,
+    429953,
+    613661,
+    726419,
+    2549,
+    1783,
+    11858149,
+    2897,
+    48481,
+    509,
+    1367,
+    464311,
+    3571,
+    617,
+    76001,
+    2997077,
+    38524679,
+    17053,
+    1531,
+    1523,
+    1597,
+    28277,
+    19001,
+    523,
+    4789,
+    683,
+    44971,
+    8880233,
+    2689,
+    503,
+    4219
+  ],
+  "rough_composite_min_least_factor": 419,
+  "all_rough_composite_least_factors_exceed_M": true,
+  "all_rough_rows_uncovered_by_repeat_capable_carriers": true,
+  "counterexample_equivalent_condition": "all rough defect rows are composite with least factor greater than M",
+  "closed_by_rough_prime_defect": true,
+  "rough_rows": [
+    {
+      "m": 3,
+      "offset": 6,
+      "value": 179921141587081123,
+      "is_prime": false,
+      "least_factor": 457,
+      "factorization": {
+        "457": 1,
+        "7253": 1,
+        "54281060063": 1
+      }
+    },
+    {
+      "m": 19,
+      "offset": 38,
+      "value": 179921141587081091,
+      "is_prime": false,
+      "least_factor": 419,
+      "factorization": {
+        "419": 1,
+        "429406065840289": 1
+      }
+    },
+    {
+      "m": 25,
+      "offset": 50,
+      "value": 179921141587081079,
+      "is_prime": false,
+      "least_factor": 10280521,
+      "factorization": {
+        "10280521": 1,
+        "17501169599": 1
+      }
+    },
+    {
+      "m": 28,
+      "offset": 56,
+      "value": 179921141587081073,
+      "is_prime": false,
+      "least_factor": 76136597,
+      "factorization": {
+        "76136597": 1,
+        "2363136109": 1
+      }
+    },
+    {
+      "m": 31,
+      "offset": 62,
+      "value": 179921141587081067,
+      "is_prime": false,
+      "least_factor": 743,
+      "factorization": {
+        "743": 1,
+        "242154968488669": 1
+      }
+    },
+    {
+      "m": 34,
+      "offset": 68,
+      "value": 179921141587081061,
+      "is_prime": false,
+      "least_factor": 490837,
+      "factorization": {
+        "490837": 1,
+        "366559859153": 1
+      }
+    },
+    {
+      "m": 39,
+      "offset": 78,
+      "value": 179921141587081051,
+      "is_prime": false,
+      "least_factor": 6323,
+      "factorization": {
+        "6323": 1,
+        "16073": 1,
+        "1770361969": 1
+      }
+    },
+    {
+      "m": 40,
+      "offset": 80,
+      "value": 179921141587081049,
+      "is_prime": false,
+      "least_factor": 2341,
+      "factorization": {
+        "2341": 1,
+        "35899": 1,
+        "2140910111": 1
+      }
+    },
+    {
+      "m": 43,
+      "offset": 86,
+      "value": 179921141587081043,
+      "is_prime": false,
+      "least_factor": 881,
+      "factorization": {
+        "881": 1,
+        "204223770246403": 1
+      }
+    },
+    {
+      "m": 54,
+      "offset": 108,
+      "value": 179921141587081021,
+      "is_prime": false,
+      "least_factor": 3697,
+      "factorization": {
+        "3697": 1,
+        "48666795127693": 1
+      }
+    },
+    {
+      "m": 75,
+      "offset": 150,
+      "value": 179921141587080979,
+      "is_prime": false,
+      "least_factor": 27344329,
+      "factorization": {
+        "27344329": 1,
+        "6579833851": 1
+      }
+    },
+    {
+      "m": 76,
+      "offset": 152,
+      "value": 179921141587080977,
+      "is_prime": false,
+      "least_factor": 159673649,
+      "factorization": {
+        "159673649": 1,
+        "1126805473": 1
+      }
+    },
+    {
+      "m": 78,
+      "offset": 156,
+      "value": 179921141587080973,
+      "is_prime": false,
+      "least_factor": 108562759,
+      "factorization": {
+        "108562759": 1,
+        "1657300747": 1
+      }
+    },
+    {
+      "m": 81,
+      "offset": 162,
+      "value": 179921141587080967,
+      "is_prime": false,
+      "least_factor": 323801,
+      "factorization": {
+        "323801": 1,
+        "555653446367": 1
+      }
+    },
+    {
+      "m": 88,
+      "offset": 176,
+      "value": 179921141587080953,
+      "is_prime": false,
+      "least_factor": 22110317,
+      "factorization": {
+        "22110317": 1,
+        "8137429309": 1
+      }
+    },
+    {
+      "m": 103,
+      "offset": 206,
+      "value": 179921141587080923,
+      "is_prime": false,
+      "least_factor": 907,
+      "factorization": {
+        "907": 1,
+        "11595967": 1,
+        "17106767": 1
+      }
+    },
+    {
+      "m": 106,
+      "offset": 212,
+      "value": 179921141587080917,
+      "is_prime": false,
+      "least_factor": 911,
+      "factorization": {
+        "911": 1,
+        "197498508877147": 1
+      }
+    },
+    {
+      "m": 108,
+      "offset": 216,
+      "value": 179921141587080913,
+      "is_prime": false,
+      "least_factor": 65357,
+      "factorization": {
+        "65357": 1,
+        "2752897801109": 1
+      }
+    },
+    {
+      "m": 120,
+      "offset": 240,
+      "value": 179921141587080889,
+      "is_prime": false,
+      "least_factor": 1451,
+      "factorization": {
+        "1451": 1,
+        "123998030039339": 1
+      }
+    },
+    {
+      "m": 130,
+      "offset": 260,
+      "value": 179921141587080869,
+      "is_prime": false,
+      "least_factor": 73483,
+      "factorization": {
+        "73483": 1,
+        "2448473001743": 1
+      }
+    },
+    {
+      "m": 138,
+      "offset": 276,
+      "value": 179921141587080853,
+      "is_prime": false,
+      "least_factor": 9923,
+      "factorization": {
+        "9923": 1,
+        "18131728467911": 1
+      }
+    },
+    {
+      "m": 139,
+      "offset": 278,
+      "value": 179921141587080851,
+      "is_prime": false,
+      "least_factor": 40771,
+      "factorization": {
+        "40771": 1,
+        "4412968570481": 1
+      }
+    },
+    {
+      "m": 144,
+      "offset": 288,
+      "value": 179921141587080841,
+      "is_prime": false,
+      "least_factor": 2003801,
+      "factorization": {
+        "2003801": 1,
+        "89789925041": 1
+      }
+    },
+    {
+      "m": 154,
+      "offset": 308,
+      "value": 179921141587080821,
+      "is_prime": false,
+      "least_factor": 1198201,
+      "factorization": {
+        "1198201": 1,
+        "150159398621": 1
+      }
+    },
+    {
+      "m": 159,
+      "offset": 318,
+      "value": 179921141587080811,
+      "is_prime": false,
+      "least_factor": 1181,
+      "factorization": {
+        "1181": 1,
+        "2729": 1,
+        "55825004239": 1
+      }
+    },
+    {
+      "m": 165,
+      "offset": 330,
+      "value": 179921141587080799,
+      "is_prime": false,
+      "least_factor": 471193,
+      "factorization": {
+        "471193": 1,
+        "381841711543": 1
+      }
+    },
+    {
+      "m": 169,
+      "offset": 338,
+      "value": 179921141587080791,
+      "is_prime": false,
+      "least_factor": 33871,
+      "factorization": {
+        "33871": 1,
+        "811703": 1,
+        "6544207": 1
+      }
+    },
+    {
+      "m": 174,
+      "offset": 348,
+      "value": 179921141587080781,
+      "is_prime": false,
+      "least_factor": 88211,
+      "factorization": {
+        "88211": 1,
+        "2039667859871": 1
+      }
+    },
+    {
+      "m": 175,
+      "offset": 350,
+      "value": 179921141587080779,
+      "is_prime": false,
+      "least_factor": 1657463,
+      "factorization": {
+        "1657463": 1,
+        "108552131533": 1
+      }
+    },
+    {
+      "m": 190,
+      "offset": 380,
+      "value": 179921141587080749,
+      "is_prime": false,
+      "least_factor": 647,
+      "factorization": {
+        "647": 1,
+        "7307": 1,
+        "38057373281": 1
+      }
+    },
+    {
+      "m": 195,
+      "offset": 390,
+      "value": 179921141587080739,
+      "is_prime": false,
+      "least_factor": 2089,
+      "factorization": {
+        "2089": 1,
+        "135181": 1,
+        "637130071": 1
+      }
+    },
+    {
+      "m": 196,
+      "offset": 392,
+      "value": 179921141587080737,
+      "is_prime": false,
+      "least_factor": 20327,
+      "factorization": {
+        "1338791": 1,
+        "6611441": 1,
+        "20327": 1
+      }
+    },
+    {
+      "m": 208,
+      "offset": 416,
+      "value": 179921141587080713,
+      "is_prime": false,
+      "least_factor": 429953,
+      "factorization": {
+        "429953": 1,
+        "418466998921": 1
+      }
+    },
+    {
+      "m": 210,
+      "offset": 420,
+      "value": 179921141587080709,
+      "is_prime": false,
+      "least_factor": 613661,
+      "factorization": {
+        "613661": 1,
+        "293193052169": 1
+      }
+    },
+    {
+      "m": 216,
+      "offset": 432,
+      "value": 179921141587080697,
+      "is_prime": false,
+      "least_factor": 726419,
+      "factorization": {
+        "726419": 1,
+        "247682317763": 1
+      }
+    },
+    {
+      "m": 220,
+      "offset": 440,
+      "value": 179921141587080689,
+      "is_prime": false,
+      "least_factor": 2549,
+      "factorization": {
+        "2549": 1,
+        "70584990814861": 1
+      }
+    },
+    {
+      "m": 231,
+      "offset": 462,
+      "value": 179921141587080667,
+      "is_prime": false,
+      "least_factor": 1783,
+      "factorization": {
+        "1783": 1,
+        "100909221305149": 1
+      }
+    },
+    {
+      "m": 234,
+      "offset": 468,
+      "value": 179921141587080661,
+      "is_prime": false,
+      "least_factor": 11858149,
+      "factorization": {
+        "11858149": 1,
+        "15172784689": 1
+      }
+    },
+    {
+      "m": 235,
+      "offset": 470,
+      "value": 179921141587080659,
+      "is_prime": false,
+      "least_factor": 2897,
+      "factorization": {
+        "2897": 2,
+        "21438046451": 1
+      }
+    },
+    {
+      "m": 243,
+      "offset": 486,
+      "value": 179921141587080643,
+      "is_prime": false,
+      "least_factor": 48481,
+      "factorization": {
+        "48481": 1,
+        "655301": 1,
+        "5663303": 1
+      }
+    },
+    {
+      "m": 249,
+      "offset": 498,
+      "value": 179921141587080631,
+      "is_prime": false,
+      "least_factor": 509,
+      "factorization": {
+        "509": 1,
+        "353479649483459": 1
+      }
+    },
+    {
+      "m": 256,
+      "offset": 512,
+      "value": 179921141587080617,
+      "is_prime": false,
+      "least_factor": 1367,
+      "factorization": {
+        "1367": 1,
+        "1889": 1,
+        "47017": 1,
+        "1481927": 1
+      }
+    },
+    {
+      "m": 258,
+      "offset": 516,
+      "value": 179921141587080613,
+      "is_prime": false,
+      "least_factor": 464311,
+      "factorization": {
+        "464311": 1,
+        "387501354883": 1
+      }
+    },
+    {
+      "m": 265,
+      "offset": 530,
+      "value": 179921141587080599,
+      "is_prime": false,
+      "least_factor": 3571,
+      "factorization": {
+        "3571": 1,
+        "50383965720269": 1
+      }
+    },
+    {
+      "m": 274,
+      "offset": 548,
+      "value": 179921141587080581,
+      "is_prime": false,
+      "least_factor": 617,
+      "factorization": {
+        "617": 1,
+        "5419": 1,
+        "53811845047": 1
+      }
+    },
+    {
+      "m": 283,
+      "offset": 566,
+      "value": 179921141587080563,
+      "is_prime": false,
+      "least_factor": 76001,
+      "factorization": {
+        "76001": 1,
+        "2367352292563": 1
+      }
+    },
+    {
+      "m": 286,
+      "offset": 572,
+      "value": 179921141587080557,
+      "is_prime": false,
+      "least_factor": 2997077,
+      "factorization": {
+        "2997077": 1,
+        "60032205241": 1
+      }
+    },
+    {
+      "m": 291,
+      "offset": 582,
+      "value": 179921141587080547,
+      "is_prime": false,
+      "least_factor": 38524679,
+      "factorization": {
+        "38524679": 1,
+        "4670282693": 1
+      }
+    },
+    {
+      "m": 298,
+      "offset": 596,
+      "value": 179921141587080533,
+      "is_prime": false,
+      "least_factor": 17053,
+      "factorization": {
+        "17053": 1,
+        "2743747": 1,
+        "3845363": 1
+      }
+    },
+    {
+      "m": 300,
+      "offset": 600,
+      "value": 179921141587080529,
+      "is_prime": false,
+      "least_factor": 1531,
+      "factorization": {
+        "1531": 1,
+        "117518707764259": 1
+      }
+    },
+    {
+      "m": 313,
+      "offset": 626,
+      "value": 179921141587080503,
+      "is_prime": false,
+      "least_factor": 1523,
+      "factorization": {
+        "1523": 1,
+        "12511": 1,
+        "121309": 1,
+        "77839": 1
+      }
+    },
+    {
+      "m": 325,
+      "offset": 650,
+      "value": 179921141587080479,
+      "is_prime": false,
+      "least_factor": 1597,
+      "factorization": {
+        "1597": 1,
+        "112661954656907": 1
+      }
+    },
+    {
+      "m": 334,
+      "offset": 668,
+      "value": 179921141587080461,
+      "is_prime": false,
+      "least_factor": 28277,
+      "factorization": {
+        "28277": 1,
+        "1823483": 1,
+        "3489371": 1
+      }
+    },
+    {
+      "m": 336,
+      "offset": 672,
+      "value": 179921141587080457,
+      "is_prime": false,
+      "least_factor": 19001,
+      "factorization": {
+        "19001": 1,
+        "31223": 1,
+        "303271159": 1
+      }
+    },
+    {
+      "m": 349,
+      "offset": 698,
+      "value": 179921141587080431,
+      "is_prime": false,
+      "least_factor": 523,
+      "factorization": {
+        "523": 1,
+        "1697": 1,
+        "22079": 1,
+        "9181619": 1
+      }
+    },
+    {
+      "m": 351,
+      "offset": 702,
+      "value": 179921141587080427,
+      "is_prime": false,
+      "least_factor": 4789,
+      "factorization": {
+        "4789": 1,
+        "37569668320543": 1
+      }
+    },
+    {
+      "m": 369,
+      "offset": 738,
+      "value": 179921141587080391,
+      "is_prime": true,
+      "least_factor": null,
+      "factorization": null
+    },
+    {
+      "m": 370,
+      "offset": 740,
+      "value": 179921141587080389,
+      "is_prime": false,
+      "least_factor": 683,
+      "factorization": {
+        "683": 1,
+        "1223": 1,
+        "215394712121": 1
+      }
+    },
+    {
+      "m": 375,
+      "offset": 750,
+      "value": 179921141587080379,
+      "is_prime": false,
+      "least_factor": 44971,
+      "factorization": {
+        "44971": 1,
+        "4000825900849": 1
+      }
+    },
+    {
+      "m": 378,
+      "offset": 756,
+      "value": 179921141587080373,
+      "is_prime": true,
+      "least_factor": null,
+      "factorization": null
+    },
+    {
+      "m": 379,
+      "offset": 758,
+      "value": 179921141587080371,
+      "is_prime": true,
+      "least_factor": null,
+      "factorization": null
+    },
+    {
+      "m": 381,
+      "offset": 762,
+      "value": 179921141587080367,
+      "is_prime": false,
+      "least_factor": 8880233,
+      "factorization": {
+        "8880233": 1,
+        "20260858199": 1
+      }
+    },
+    {
+      "m": 385,
+      "offset": 770,
+      "value": 179921141587080359,
+      "is_prime": false,
+      "least_factor": 2689,
+      "factorization": {
+        "2689": 1,
+        "2819": 1,
+        "23735387149": 1
+      }
+    },
+    {
+      "m": 388,
+      "offset": 776,
+      "value": 179921141587080353,
+      "is_prime": false,
+      "least_factor": 503,
+      "factorization": {
+        "503": 1,
+        "3676237": 1,
+        "97299523": 1
+      }
+    },
+    {
+      "m": 391,
+      "offset": 782,
+      "value": 179921141587080347,
+      "is_prime": false,
+      "least_factor": 4219,
+      "factorization": {
+        "4219": 1,
+        "110939": 1,
+        "384404467": 1
+      }
+    }
+  ]
+}
