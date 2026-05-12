@@ -262,13 +262,13 @@ unresolved.
 Before substantial implementation, use the continuity and shape contract:
 
 ```text
-docs/research/codex_continuity/continuity_and_shape_contract.md
+research/00-index/continuity/continuity_and_shape_contract.md
 ```
 
 The canonical repository bootstrap is:
 
 ```text
-docs/research/codex_continuity/START_HERE.md
+research/00-index/continuity/START_HERE.md
 ```
 
 For this experiment, Grok should be used as research review before major rule

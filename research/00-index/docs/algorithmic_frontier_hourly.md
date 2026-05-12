@@ -8,7 +8,7 @@ The bounded walker took 0.9152082090149634 s. The `sympy.nextprime` baseline too
 Verdict:
 supported
 Artifacts:
-docs/research/algorithmic_frontier_hourly.md
+research/00-index/docs/algorithmic_frontier_hourly.md
 
 ## 2026-04-11 03:55 run
 Mechanism:
@@ -24,7 +24,7 @@ On `664,575` consecutive gaps, the witness existed in `425,526` gaps (`64.03%`).
 Status:
 ADVANCE
 Artifacts:
-`docs/research/algorithmic_frontier_hourly.md`; in-shell Python experiment output with `applicable_share = 0.6402979347703419`, `overall_reduction_fraction = 0.23345507100072263`, and top witness offsets `(6, 120434)`, `(4, 107183)`, `(2, 106819)`.
+`research/00-index/docs/algorithmic_frontier_hourly.md`; in-shell Python experiment output with `applicable_share = 0.6402979347703419`, `overall_reduction_fraction = 0.23345507100072263`, and top witness offsets `(6, 120434)`, `(4, 107183)`, `(2, 106819)`.
 Next step:
 Replace the exact `d(n)=4` oracle in this same handoff with a deterministic low-cost wheel-open semiprime witness detector and re-measure the same candidate-test reduction surface.
 
@@ -42,7 +42,7 @@ On `664,575` consecutive gaps, the best tested short table was primes `<= 47`, w
 Status:
 ADVANCE
 Artifacts:
-`docs/research/algorithmic_frontier_hourly.md`; in-shell Python experiment output with the short-table sweep over `{7}` through primes `<= 47` and exact best-table counts `applicable_gaps = 338906`, `saved_tests = 612968`, `overall_reduction_fraction = 0.22986279887005098`.
+`research/00-index/docs/algorithmic_frontier_hourly.md`; in-shell Python experiment output with the short-table sweep over `{7}` through primes `<= 47` and exact best-table counts `applicable_gaps = 338906`, `saved_tests = 612968`, `overall_reduction_fraction = 0.22986279887005098`.
 Next step:
 Compress the primes-`<= 47` diagnostic-record rule into a residue lookup and test the same safe prefix-pruning yield on a higher-scale surface.
 
@@ -60,7 +60,7 @@ On this `10^12` surface, baseline wheel-open candidate tests totaled `736,450` a
 Status:
 ADVANCE
 Artifacts:
-`docs/research/algorithmic_frontier_hourly.md`; in-shell Python experiment output with `start_prime = 1000000000039`, `saved_total = 92329`, `overall_reduction_fraction = 0.12537035779754227`, `applicable_share = 0.50766`, and prefix histogram head `[(1, 26487), (2, 13747), (3, 6351), (4, 2518), (5, 1054)]`.
+`research/00-index/docs/algorithmic_frontier_hourly.md`; in-shell Python experiment output with `start_prime = 1000000000039`, `saved_total = 92329`, `overall_reduction_fraction = 0.12537035779754227`, `applicable_share = 0.50766`, and prefix histogram head `[(1, 26487), (2, 13747), (3, 6351), (4, 2518), (5, 1054)]`.
 Next step:
 Encode the same primes-`<= 47` opening-prefix rule as a straight-line pretest in the repo’s prime-search path and count the resulting Miller-Rabin call reduction on the existing candidate corpora.
 
@@ -78,7 +78,7 @@ On the same `10^12` surface from `q = 1000000000039`, the residue-mask lookup ma
 Status:
 ADVANCE
 Artifacts:
-`docs/research/algorithmic_frontier_hourly.md`; in-shell Python output with `mismatch_count = 0`, `saved_tests = 92329`, `overall_reduction_fraction = 0.12537035779754227`, `state_entries = 2544`, and `u64_table_bytes = 20352`.
+`research/00-index/docs/algorithmic_frontier_hourly.md`; in-shell Python output with `mismatch_count = 0`, `saved_tests = 92329`, `overall_reduction_fraction = 0.12537035779754227`, `state_entries = 2544`, and `u64_table_bytes = 20352`.
 Next step:
 Thread this same residue-mask lookup into one straight-line next-prime search prototype and count the full candidate-primality tests it removes on the same `10^12` surface.
 
@@ -96,7 +96,7 @@ On the `10^13` surface from `q = 10000000000037`, the hybrid found the same `100
 Status:
 ADVANCE
 Artifacts:
-`docs/research/algorithmic_frontier_hourly.md`; in-shell Python output with `start_prime = 10000000000037`, `saved_isprime_calls = 92454`, `saved_call_fraction = 0.11595493442464636`, `applicable_gap_share = 0.50914`, `max_prefix = 12`, `state_entries = 2544`, and `u64_table_bytes = 20352`.
+`research/00-index/docs/algorithmic_frontier_hourly.md`; in-shell Python output with `start_prime = 10000000000037`, `saved_isprime_calls = 92454`, `saved_call_fraction = 0.11595493442464636`, `applicable_gap_share = 0.50914`, `max_prefix = 12`, `state_entries = 2544`, and `u64_table_bytes = 20352`.
 Next step:
 Run this same residue-mask front gate against a Miller-Rabin-backed next-prime loop so the saved expensive calls are counted in the probable-prime regime rather than only in `sympy.isprime`.
 
@@ -114,7 +114,7 @@ On the `10^13` surface from `q = 10000000000037`, both paths recovered the same 
 Status:
 FAILED
 Artifacts:
-`docs/research/algorithmic_frontier_hourly.md`; in-shell Python output with `saved_mr_calls = 92454`, `saved_pow_calls = 14342`, `saved_pow_fraction = 0.0071227398759703625`, `saved_pow_candidates = 7175`, `baseline_elapsed_s = 5.958472915983293`, `hybrid_elapsed_s = 6.080358917010017`, `state_entries = 2544`, and `u64_table_bytes = 20352`.
+`research/00-index/docs/algorithmic_frontier_hourly.md`; in-shell Python output with `saved_mr_calls = 92454`, `saved_pow_calls = 14342`, `saved_pow_fraction = 0.0071227398759703625`, `saved_pow_candidates = 7175`, `baseline_elapsed_s = 5.958472915983293`, `hybrid_elapsed_s = 6.080358917010017`, `state_entries = 2544`, and `u64_table_bytes = 20352`.
 Next step:
 Fold the same residue-mask lookup into the pre-Miller-Rabin small-prime stage itself so the lookup replaces existing divisibility work instead of duplicating it.
 
@@ -132,7 +132,7 @@ On the `10^13` surface from `q = 10000000000037`, the hybrid matched all `100,00
 Status:
 ADVANCE
 Artifacts:
-`docs/research/algorithmic_frontier_hourly.md`; in-shell Python output with `mask_width = 64`, `state_entries = 1496`, `u64_table_bytes = 11968`, `saved_small_prime_mods = 5144282`, `saved_small_prime_mod_fraction = 0.9998439287203224`, `resolved_in_window_fraction = 0.99989`, `baseline_elapsed_s = 5.7923303749994375`, and `hybrid_elapsed_s = 5.6794587500044145`.
+`research/00-index/docs/algorithmic_frontier_hourly.md`; in-shell Python output with `mask_width = 64`, `state_entries = 1496`, `u64_table_bytes = 11968`, `saved_small_prime_mods = 5144282`, `saved_small_prime_mod_fraction = 0.9998439287203224`, `resolved_in_window_fraction = 0.99989`, `baseline_elapsed_s = 5.7923303749994375`, and `hybrid_elapsed_s = 5.6794587500044145`.
 Next step:
 Replace the in-shell prototype with the same propagated `64`-open mask inside one repo next-prime search path and remeasure on the same `10^13` consecutive surface.
 
@@ -150,7 +150,7 @@ On the same `10^13` surface, the new repo prototype matched all `100,000` next p
 Status:
 ADVANCE
 Artifacts:
-`benchmarks/python/predictor/gwr_dni_boundary_state_mask_search.py`; `docs/research/algorithmic_frontier_hourly.md`; script output with `state_entries = 1496`, `u64_table_bytes = 11968`, `saved_small_prime_mods = 5144291`, `resolved_in_window_fraction = 0.99989`, and `elapsed_speedup = 1.0428044811527897`.
+`benchmarks/python/predictor/gwr_dni_boundary_state_mask_search.py`; `research/00-index/docs/algorithmic_frontier_hourly.md`; script output with `state_entries = 1496`, `u64_table_bytes = 11968`, `saved_small_prime_mods = 5144291`, `resolved_in_window_fraction = 0.99989`, and `elapsed_speedup = 1.0428044811527897`.
 Next step:
 Extend the same propagated endpoint-state mask just far enough to absorb the remaining `11` fallback gaps and rerun the same exact search loop.
 
@@ -168,7 +168,7 @@ On the same `100,000`-gap `10^13` surface, the `96`-open mask matched the exact 
 Status:
 ADVANCE
 Artifacts:
-`docs/research/algorithmic_frontier_hourly.md`; in-shell Python output with `max_open_index = 93`, `count_gt_64 = 11`, `mask_width = 96`, `resolved_in_window_fraction = 1.0`, `saved_small_prime_mod_fraction = 1.0`, `estimated_u64_table_bytes = 23936`, and `elapsed_speedup = 1.034540059922176`.
+`research/00-index/docs/algorithmic_frontier_hourly.md`; in-shell Python output with `max_open_index = 93`, `count_gt_64 = 11`, `mask_width = 96`, `resolved_in_window_fraction = 1.0`, `saved_small_prime_mod_fraction = 1.0`, `estimated_u64_table_bytes = 23936`, and `elapsed_speedup = 1.034540059922176`.
 Next step:
 Rerun this same full-coverage endpoint-state mask at the exact observed ceiling of `93` wheel-open positions to see whether the no-fallback gain survives with no extra mask slack.
 
@@ -186,7 +186,7 @@ The mechanism failed under scale transfer. The training surface produced only `2
 Status:
 FAILED
 Artifacts:
-`docs/research/algorithmic_frontier_hourly.md`; in-shell Python output with `train_rows = 9591`, `train_unique_states = 234`, `applicable = 85`, `exact = 4`, `baseline_offsets = 29844`, `saved_offsets_if_jump_on_exact_supported_states = 30`, and `saved_offset_fraction_total = 0.0010052271813429834`.
+`research/00-index/docs/algorithmic_frontier_hourly.md`; in-shell Python output with `train_rows = 9591`, `train_unique_states = 234`, `applicable = 85`, `exact = 4`, `baseline_offsets = 29844`, `saved_offsets_if_jump_on_exact_supported_states = 30`, and `saved_offset_fraction_total = 0.0010052271813429834`.
 Next step:
 Test the same transition law again only with a fixed next-gap DNI prefix if it can gain cross-scale exact support without collapsing into a near-one-state-per-gap table.
 
@@ -204,7 +204,7 @@ For `q = 229433`, the locked prefix gives `delta = 3` at `omega = 8`. The live l
 Status:
 ADVANCE
 Artifacts:
-`benchmarks/python/predictor/gwr_dni_recursive_walk.py`; `tests/python/predictor/test_gwr_dni_recursive_walk.py`; `docs/research/algorithmic_frontier_hourly.md`; in-shell verification output with old bounded call counts `26` and `30`, live prefix-path divisor-count calls `12` and `12`, and exact recovered endpoints `229459` and `1026197`.
+`benchmarks/python/predictor/gwr_dni_recursive_walk.py`; `tests/python/predictor/test_gwr_dni_recursive_walk.py`; `research/00-index/docs/algorithmic_frontier_hourly.md`; in-shell verification output with old bounded call counts `26` and `30`, live prefix-path divisor-count calls `12` and `12`, and exact recovered endpoints `229459` and `1026197`.
 Next step:
 Derive an exact `delta = 4` sub-condition from the Z-band invariants that certifies when the same selected integer-location prediction can fire without any extended scan.
 
@@ -222,7 +222,7 @@ The selected integer-grounded scan matched the same `5,000` next primes with `0`
 Status:
 ADVANCE
 Artifacts:
-`docs/research/algorithmic_frontier_hourly.md`; in-shell Python output with `steps = 5000`, `search_width_saved_fraction_exact = 0.19933987607489503`, `baseline_integers_read = 356736`, `anchor_integers_read = 347264`, and `elapsed_speedup = 1.0300109322761077`.
+`research/00-index/docs/algorithmic_frontier_hourly.md`; in-shell Python output with `steps = 5000`, `search_width_saved_fraction_exact = 0.19933987607489503`, `baseline_integers_read = 356736`, `anchor_integers_read = 347264`, and `elapsed_speedup = 1.0300109322761077`.
 Next step:
 Inline the same selected integer-grounded tail scan into the exact recursive walker after lex-min localization and re-measure the end-to-end pure DNI/GWR step gain.
 
@@ -240,7 +240,7 @@ The clipped walker recovered the same `1,000` consecutive next primes with `0` m
 Status:
 ADVANCE
 Artifacts:
-`docs/research/algorithmic_frontier_hourly.md`; in-shell Python experiment output with `start_q = 100000007`, `steps = 1000`, `speedup = 1.7903689945248638`, `prime_trial_reduction_fraction = 0.55871539461343`, and `residual_prime_check_reduction_fraction = 0.7722496247051255`.
+`research/00-index/docs/algorithmic_frontier_hourly.md`; in-shell Python experiment output with `start_q = 100000007`, `steps = 1000`, `speedup = 1.7903689945248638`, `prime_trial_reduction_fraction = 0.55871539461343`, and `residual_prime_check_reduction_fraction = 0.7722496247051255`.
 Next step:
 Move the same clipped-divisor rule into a repo-side predictor prototype and re-measure it against the current vectorized exact walk.
 
@@ -258,7 +258,7 @@ On `1,000` consecutive exact next-gap steps starting at `q = 1000000000039`, the
 Status:
 ADVANCE
 Artifacts:
-`docs/research/algorithmic_frontier_hourly.md`; in-shell Python output with `start_q = 1000000000039`, `steps = 1000`, `speedup = 1.3093458321975557`, `segment_slots_read_by_current_exact_walk = 69248`, `candidate_visits_exact_gap_width = 27552`, and `saved_fraction = 0.6021256931608133`.
+`research/00-index/docs/algorithmic_frontier_hourly.md`; in-shell Python output with `start_q = 1000000000039`, `steps = 1000`, `speedup = 1.3093458321975557`, `segment_slots_read_by_current_exact_walk = 69248`, `candidate_visits_exact_gap_width = 27552`, and `saved_fraction = 0.6021256931608133`.
 Next step:
 Inline the same clipped-divisor tail into the exact recursive walker and re-measure the repo path on the same `10^12` chain.
 
@@ -276,7 +276,7 @@ The patched unbounded walk matched the old exact oracle on all `1,000` steps and
 Status:
 ADVANCE
 Artifacts:
-`benchmarks/python/predictor/gwr_dni_recursive_walk.py`; `tests/python/predictor/test_gwr_dni_recursive_walk.py`; `docs/research/algorithmic_frontier_hourly.md`; measured output with `baseline_elapsed = 1.5411759580019861`, `fast_elapsed = 1.134829582995735`, `speedup = 1.3580681902330864`, `baseline_segment_slots = 69248`, `fast_prefix_segment_slots = 12000`, and `saved_segment_fraction = 0.8267097966728281`.
+`benchmarks/python/predictor/gwr_dni_recursive_walk.py`; `tests/python/predictor/test_gwr_dni_recursive_walk.py`; `research/00-index/docs/algorithmic_frontier_hourly.md`; measured output with `baseline_elapsed = 1.5411759580019861`, `fast_elapsed = 1.134829582995735`, `speedup = 1.3580681902330864`, `baseline_segment_slots = 69248`, `fast_prefix_segment_slots = 12000`, and `saved_segment_fraction = 0.8267097966728281`.
 Next step:
 Thread the same clipped divisor classifier into the standalone exact endpoint walk and measure the same `10^12` chain.
 

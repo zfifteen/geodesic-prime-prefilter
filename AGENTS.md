@@ -372,8 +372,8 @@ Corrective action:
 
 Future Codex sessions should read:
 
-- `docs/research/codex_continuity/START_HERE.md`;
-- `docs/research/codex_continuity/continuity_and_shape_contract.md`;
+- `research/00-index/continuity/START_HERE.md`;
+- `research/00-index/continuity/continuity_and_shape_contract.md`;
 - `/Users/velocityworks/.codex/memories/continuity_and_shape_contract.md`;
 - `PROOF.md`;
 - `RESULTS.md`;
