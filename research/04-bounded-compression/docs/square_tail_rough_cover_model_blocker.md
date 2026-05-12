@@ -112,6 +112,16 @@ shows the next layer: the representative has `13` rough tail offsets between
 the source modeled window and the actual closing prime, and the only
 prime-valued row among them is the closing offset `338`.
 
+The full-cutoff CRT model in
+
+```text
+research/04-bounded-compression/docs/findings/square_tail_full_cutoff_crt_model_509.md
+```
+
+extends the blocker through the representative's full dynamic cutoff. Even the
+complete repeat-capable residue pattern through `M = 4444`, plus one singleton
+carrier for each rough row, is locally CRT-consistent.
+
 The proof must use additional structure:
 
 1. a law forcing prime-valued M-rough defects before the dynamic cutoff;
