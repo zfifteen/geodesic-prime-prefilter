@@ -168,15 +168,38 @@ the parent-to-child implication: a complete obstruction word must collapse to
 one or more smaller closed square-tail states in a way that eliminates the
 parent counterexample.
 
+The pointwise projection fact is not a proof. The direct-containment version
+is invalidated by the strongest current child projection:
+
+```text
+parent root = 424,171,123
+child root = 509
+```
+
+The parent word contains `509` once, at offset `498`. The child word for
+`509` has an actual obstruction prefix of length `23` and a counterexample
+length of `39`; it also uses least factors `83` and `449`, which are absent
+from the parent word. The surviving recursive target is therefore a global
+cascade or covering-impossibility theorem, not direct child-word containment.
+
+The audit is recorded in:
+
+```text
+research/04-bounded-compression/docs/findings/square_tail_recursive_projection_audit_424171123.md
+```
+
 ## Next Lemma Targets
 
 The next theorem work should target one of these exact statements.
 
 ### Recursive Collapse Lemma
 
-Every complete obstruction word `W(r)` contains a subword that defines a
-smaller square-tail obstruction word `W(r')` with `r' < r`, unless the
+Every complete obstruction word `W(r)` forces a smaller square-tail obstruction
+state or a finite descending cascade with root strictly below `r`, unless the
 counterexample is already eliminated by a base closure.
+
+The weaker claim that one projected child directly contains its own child word
+inside the parent word is false on the current record.
 
 ### Covering Impossibility Lemma
 
