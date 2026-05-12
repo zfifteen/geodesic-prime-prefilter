@@ -203,6 +203,33 @@ The graph audit is recorded in:
 research/04-bounded-compression/docs/findings/square_tail_projection_graph_424171123.md
 ```
 
+The moving-cover audit records the exact residue-cover burden. The `99`
+observed least-factor classes in the current record cover `385 / 395` positions
+in the full counterexample window and miss the offsets
+
+```text
+738, 740, 750, 756, 758, 762, 770, 776, 782, 786.
+```
+
+The predecessor-prime offset `738` is one of the uncovered positions. The
+remaining proof route must therefore explain why a hypothetical counterexample
+cannot inject new least factors into every uncovered suffix position while
+preserving least-factor minimality and the selected-square condition.
+
+When the seven actual composite-defect least factors are added, the same
+record covers `392 / 395` positions. The remaining uncovered offsets are
+exactly the actual prime positions:
+
+```text
+738, 756, 758
+```
+
+The moving-cover audit is recorded in:
+
+```text
+research/04-bounded-compression/docs/findings/square_tail_cover_audit_424171123.md
+```
+
 ## Next Lemma Targets
 
 The next theorem work should target one of these exact statements.
