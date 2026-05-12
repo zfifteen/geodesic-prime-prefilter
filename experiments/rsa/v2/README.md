@@ -11,12 +11,16 @@ SESSION_BOOTSTRAP.md
 
 ## Current State
 
-The live v2 runner is a reciprocal PGSPG certificate-pair probe.
+The live v2 runner is a reciprocal PGSPG certificate-pair resolver in the small
+exact-backend regime.
 
-It does not claim to solve the ladder. It derives one public lower PGSPG reset
-certificate, transports that reset endpoint through `floor(N / x)`, derives the
-opposite-side certificate from the transported coordinate, and returns
-unresolved unless the two certificates close under the reciprocal map.
+It derives one public lower PGSPG reset certificate, transports that reset
+endpoint through `floor(N / x)`, derives the opposite-side certificate from the
+transported coordinate, and resolves when public certificate endpoints close
+under reciprocal floor transport. The first branch is strict reset closure. The
+second branch is deadline signature correction: a failed upper reset transports
+back to one corrected lower endpoint, and that endpoint must mutually close with
+the upper reset deadline while carrying the same public reset signature.
 
 This replaced two invalid solver shapes:
 
@@ -129,7 +133,8 @@ Psi(RB) structural definition: missing
 PrefixMaterial(C, C') => not Psi(RB(C, C')): unproved
 ThreatMaterial(C, C') => not Psi(RB(C, C')): unproved
 FreshEndpoint recurrence boundary: separated from Psi(RB)
-resolver promotion: blocked
+transported-story resolver promotion: separate from the live deadline
+  correction rule
 ```
 
 The minimal falsification condition for any proposed `Psi(RB)` is:
@@ -155,8 +160,9 @@ public N
 -> y = floor(N / lower.reset_endpoint)
 -> previous public endpoint before y
 -> PGSPG reset certificate on the upper side
--> reciprocal certificate-closure check
--> resolved only if the public certificates mutually close
+-> reciprocal reset-closure check
+-> if reset closure fails, one upper-deadline correction check
+-> resolved only if a public closure rule holds
 ```
 
 The runner never reads audit factors.
@@ -184,14 +190,16 @@ For each public `N`, the runner writes:
 - `survivor_rows.jsonl`;
 - `summary.json`.
 
-The current 40-bit and 50-bit rungs both return:
+The current official rungs return:
 
 ```text
-unresolved_by_certificate_pair_not_closed
+rsa_v2_40bit_static_001 -> resolved_by_reciprocal_deadline_signature_correction
+rsa_v2_50bit_static_001 -> unresolved_by_certificate_pair_not_closed
 ```
 
-That is the correct state. The previous 40-bit resolution depended on a
-close-factor assumption and is no longer part of the live experiment.
+The 40-bit resolution is produced by public reciprocal deadline correction. The
+runner still does not read audit factors; audit certifies the inferred endpoints
+after inference.
 
 ## Invalid Rules
 

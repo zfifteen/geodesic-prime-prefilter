@@ -17,6 +17,7 @@ Each run writes `summary.json` with one row per public case.
 | `closure_status` | Certificate-pair result state |
 | `lower_certificate_present` | Whether the lower PGSPG certificate exists |
 | `upper_certificate_present` | Whether the upper PGSPG certificate exists |
+| `corrected_lower_certificate_present` | Whether deadline correction derived a lower PGSPG certificate |
 | `rule_id` | Certificate-pair rule identifier |
 
 ## Required Survivor Fields
@@ -28,9 +29,12 @@ Each survivor row records a public certificate pair:
 - `N`;
 - `closure_status`;
 - transported reset endpoints;
+- corrected lower and upper deadline endpoints when present;
+- transported corrected endpoints when present;
 - transported reset-to-deadline widths;
 - lower certificate fields;
 - upper certificate fields when present;
+- corrected-lower certificate fields when present;
 - `rule_id`.
 
 Survivor rows may contain public reset endpoints because inference derived
@@ -38,14 +42,21 @@ them. They must not contain audit-only labels or audit status.
 
 ## Closure Status
 
+Resolved closure states are:
+
+```text
+resolved_by_mutual_certificate_closure
+resolved_by_reciprocal_deadline_signature_correction
+```
+
 The current unresolved status is:
 
 ```text
 unresolved_by_certificate_pair_not_closed
 ```
 
-This means public PGSPG state exists, but the certificate pair did not satisfy
-the current strict reciprocal closure candidate.
+This means public PGSPG state exists, but neither public closure rule certified
+a pair.
 
 ## Acceptance For Current V2
 
