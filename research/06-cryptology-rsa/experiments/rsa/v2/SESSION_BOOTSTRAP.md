@@ -5,10 +5,18 @@ without reverse-engineering the previous work.
 
 ## Headline State
 
-The current v2 experiment is honest but unresolved.
+The current v2 experiment has one live public resolver branch.
 
 The official runner derives reciprocal PGSPG certificate-pair state from public
-moduli. It does not currently solve the 40-bit or 50-bit rungs.
+moduli. It resolves the 40-bit rung by reciprocal deadline signature correction
+and leaves the 50-bit rung unresolved.
+
+Current official state:
+
+```text
+rsa_v2_40bit_static_001 -> resolved_by_reciprocal_deadline_signature_correction
+rsa_v2_50bit_static_001 -> unresolved_by_certificate_pair_not_closed
+```
 
 The current transported-story result is proof-facing:
 
@@ -943,8 +951,9 @@ TypedMaterial(C, C') reduction:
              is missing
 
 official runner:
-  status = unresolved
-  evidence = rsa_v2_40bit_static_001 and rsa_v2_50bit_static_001 remain
+  status = partially resolved
+  evidence = rsa_v2_40bit_static_001 resolves by reciprocal deadline
+             signature correction; rsa_v2_50bit_static_001 remains
              unresolved_by_certificate_pair_not_closed
 
 test surface:
@@ -954,9 +963,9 @@ test surface:
   coverage limit = tests do not prove transported theorem or resolver promotion
 ```
 
-The objective is therefore not complete. Do not report victory or mark the goal
-complete until the missing Psi(RB) structural language and typed exclusion
-theorem are proved, reviewed, implemented if needed, and verified.
+The transported-story objective is therefore not complete. Do not report that
+the story-law sidecar proves resolver eligibility until the missing Psi(RB)
+structural language and typed exclusion theorem are proved and reviewed.
 
 The active grammar research track has a new measured result:
 
@@ -1014,14 +1023,15 @@ Expected result:
 The current `output/inference_rows.jsonl` state is:
 
 ```text
-rsa_v2_40bit_static_001 unresolved unresolved_by_certificate_pair_not_closed
+rsa_v2_40bit_static_001 resolved resolved_by_reciprocal_deadline_signature_correction
 rsa_v2_50bit_static_001 unresolved unresolved_by_certificate_pair_not_closed
 ```
 
 The correct interpretation is:
 
 ```text
-PGSPG certificate state is being derived, but no reviewed public invariant has
+PGSPG certificate state resolves 40-bit by deadline correction. The 50-bit
+row remains unresolved because no upper certificate exists for the live rule.
 selected a factor pair.
 ```
 
@@ -1249,7 +1259,7 @@ latest guard suite:
   32 passed in 200.59s
 
 official runner:
-  rsa_v2_40bit_static_001 unresolved_by_certificate_pair_not_closed
+  rsa_v2_40bit_static_001 resolved_by_reciprocal_deadline_signature_correction
   rsa_v2_50bit_static_001 unresolved_by_certificate_pair_not_closed
 ```
 

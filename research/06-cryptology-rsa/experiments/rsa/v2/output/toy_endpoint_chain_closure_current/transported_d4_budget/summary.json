@@ -1,0 +1,583 @@
+{
+  "budget_blocks_frontier_count": 275,
+  "budget_partition": [
+    {
+      "budget_blocks_frontier": false,
+      "count": 73,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": false,
+      "ledger_stale_transport_state": true,
+      "open_d4_carrier": true,
+      "opposite_orientation_polarity": true,
+      "strict_budget_frontier_candidate": false
+    },
+    {
+      "budget_blocks_frontier": true,
+      "count": 31,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": false,
+      "ledger_stale_transport_state": true,
+      "open_d4_carrier": false,
+      "opposite_orientation_polarity": true,
+      "strict_budget_frontier_candidate": false
+    },
+    {
+      "budget_blocks_frontier": true,
+      "count": 35,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": false,
+      "ledger_stale_transport_state": true,
+      "open_d4_carrier": true,
+      "opposite_orientation_polarity": true,
+      "strict_budget_frontier_candidate": false
+    },
+    {
+      "budget_blocks_frontier": false,
+      "count": 1,
+      "ledger_effective_survivor": true,
+      "ledger_eliminated": false,
+      "ledger_stale_transport_state": false,
+      "open_d4_carrier": false,
+      "opposite_orientation_polarity": true,
+      "strict_budget_frontier_candidate": false
+    },
+    {
+      "budget_blocks_frontier": false,
+      "count": 33,
+      "ledger_effective_survivor": true,
+      "ledger_eliminated": false,
+      "ledger_stale_transport_state": false,
+      "open_d4_carrier": true,
+      "opposite_orientation_polarity": true,
+      "strict_budget_frontier_candidate": true
+    },
+    {
+      "budget_blocks_frontier": true,
+      "count": 124,
+      "ledger_effective_survivor": true,
+      "ledger_eliminated": false,
+      "ledger_stale_transport_state": false,
+      "open_d4_carrier": false,
+      "opposite_orientation_polarity": true,
+      "strict_budget_frontier_candidate": false
+    },
+    {
+      "budget_blocks_frontier": true,
+      "count": 1,
+      "ledger_effective_survivor": true,
+      "ledger_eliminated": false,
+      "ledger_stale_transport_state": false,
+      "open_d4_carrier": true,
+      "opposite_orientation_polarity": true,
+      "strict_budget_frontier_candidate": true
+    },
+    {
+      "budget_blocks_frontier": false,
+      "count": 2,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": true,
+      "ledger_stale_transport_state": false,
+      "open_d4_carrier": false,
+      "opposite_orientation_polarity": true,
+      "strict_budget_frontier_candidate": false
+    },
+    {
+      "budget_blocks_frontier": true,
+      "count": 75,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": true,
+      "ledger_stale_transport_state": false,
+      "open_d4_carrier": false,
+      "opposite_orientation_polarity": true,
+      "strict_budget_frontier_candidate": false
+    },
+    {
+      "budget_blocks_frontier": true,
+      "count": 9,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": true,
+      "ledger_stale_transport_state": true,
+      "open_d4_carrier": false,
+      "opposite_orientation_polarity": true,
+      "strict_budget_frontier_candidate": false
+    }
+  ],
+  "case_partition": [
+    {
+      "budget_blocks_frontier": true,
+      "case_id": "rsa_v2_toy_chain_28bit_first_strict_001",
+      "count": 5,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": false,
+      "open_d4_carrier": false,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": false,
+      "case_id": "rsa_v2_toy_chain_28bit_first_strict_001",
+      "count": 15,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": false,
+      "open_d4_carrier": true,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": true,
+      "case_id": "rsa_v2_toy_chain_28bit_first_strict_001",
+      "count": 5,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": false,
+      "open_d4_carrier": true,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": true,
+      "case_id": "rsa_v2_toy_chain_28bit_first_strict_001",
+      "count": 17,
+      "ledger_effective_survivor": true,
+      "ledger_eliminated": false,
+      "open_d4_carrier": false,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": false,
+      "case_id": "rsa_v2_toy_chain_28bit_first_strict_001",
+      "count": 8,
+      "ledger_effective_survivor": true,
+      "ledger_eliminated": false,
+      "open_d4_carrier": true,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": true,
+      "case_id": "rsa_v2_toy_chain_28bit_first_strict_001",
+      "count": 14,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": true,
+      "open_d4_carrier": false,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": true,
+      "case_id": "rsa_v2_toy_chain_34bit_strict_001",
+      "count": 4,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": false,
+      "open_d4_carrier": false,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": false,
+      "case_id": "rsa_v2_toy_chain_34bit_strict_001",
+      "count": 15,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": false,
+      "open_d4_carrier": true,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": true,
+      "case_id": "rsa_v2_toy_chain_34bit_strict_001",
+      "count": 4,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": false,
+      "open_d4_carrier": true,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": false,
+      "case_id": "rsa_v2_toy_chain_34bit_strict_001",
+      "count": 1,
+      "ledger_effective_survivor": true,
+      "ledger_eliminated": false,
+      "open_d4_carrier": false,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": true,
+      "case_id": "rsa_v2_toy_chain_34bit_strict_001",
+      "count": 20,
+      "ledger_effective_survivor": true,
+      "ledger_eliminated": false,
+      "open_d4_carrier": false,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": false,
+      "case_id": "rsa_v2_toy_chain_34bit_strict_001",
+      "count": 4,
+      "ledger_effective_survivor": true,
+      "ledger_eliminated": false,
+      "open_d4_carrier": true,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": false,
+      "case_id": "rsa_v2_toy_chain_34bit_strict_001",
+      "count": 1,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": true,
+      "open_d4_carrier": false,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": true,
+      "case_id": "rsa_v2_toy_chain_34bit_strict_001",
+      "count": 15,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": true,
+      "open_d4_carrier": false,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": true,
+      "case_id": "rsa_v2_toy_chain_35bit_strict_001",
+      "count": 6,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": false,
+      "open_d4_carrier": false,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": false,
+      "case_id": "rsa_v2_toy_chain_35bit_strict_001",
+      "count": 12,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": false,
+      "open_d4_carrier": true,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": true,
+      "case_id": "rsa_v2_toy_chain_35bit_strict_001",
+      "count": 5,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": false,
+      "open_d4_carrier": true,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": true,
+      "case_id": "rsa_v2_toy_chain_35bit_strict_001",
+      "count": 26,
+      "ledger_effective_survivor": true,
+      "ledger_eliminated": false,
+      "open_d4_carrier": false,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": false,
+      "case_id": "rsa_v2_toy_chain_35bit_strict_001",
+      "count": 6,
+      "ledger_effective_survivor": true,
+      "ledger_eliminated": false,
+      "open_d4_carrier": true,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": true,
+      "case_id": "rsa_v2_toy_chain_35bit_strict_001",
+      "count": 1,
+      "ledger_effective_survivor": true,
+      "ledger_eliminated": false,
+      "open_d4_carrier": true,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": false,
+      "case_id": "rsa_v2_toy_chain_35bit_strict_001",
+      "count": 1,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": true,
+      "open_d4_carrier": false,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": true,
+      "case_id": "rsa_v2_toy_chain_35bit_strict_001",
+      "count": 7,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": true,
+      "open_d4_carrier": false,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": true,
+      "case_id": "rsa_v2_toy_chain_35bit_strict_002",
+      "count": 4,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": false,
+      "open_d4_carrier": false,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": false,
+      "case_id": "rsa_v2_toy_chain_35bit_strict_002",
+      "count": 14,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": false,
+      "open_d4_carrier": true,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": true,
+      "case_id": "rsa_v2_toy_chain_35bit_strict_002",
+      "count": 7,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": false,
+      "open_d4_carrier": true,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": true,
+      "case_id": "rsa_v2_toy_chain_35bit_strict_002",
+      "count": 21,
+      "ledger_effective_survivor": true,
+      "ledger_eliminated": false,
+      "open_d4_carrier": false,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": false,
+      "case_id": "rsa_v2_toy_chain_35bit_strict_002",
+      "count": 6,
+      "ledger_effective_survivor": true,
+      "ledger_eliminated": false,
+      "open_d4_carrier": true,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": true,
+      "case_id": "rsa_v2_toy_chain_35bit_strict_002",
+      "count": 12,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": true,
+      "open_d4_carrier": false,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": true,
+      "case_id": "rsa_v2_toy_chain_36bit_strict_001",
+      "count": 6,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": false,
+      "open_d4_carrier": false,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": false,
+      "case_id": "rsa_v2_toy_chain_36bit_strict_001",
+      "count": 7,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": false,
+      "open_d4_carrier": true,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": true,
+      "case_id": "rsa_v2_toy_chain_36bit_strict_001",
+      "count": 7,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": false,
+      "open_d4_carrier": true,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": true,
+      "case_id": "rsa_v2_toy_chain_36bit_strict_001",
+      "count": 18,
+      "ledger_effective_survivor": true,
+      "ledger_eliminated": false,
+      "open_d4_carrier": false,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": false,
+      "case_id": "rsa_v2_toy_chain_36bit_strict_001",
+      "count": 4,
+      "ledger_effective_survivor": true,
+      "ledger_eliminated": false,
+      "open_d4_carrier": true,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": true,
+      "case_id": "rsa_v2_toy_chain_36bit_strict_001",
+      "count": 22,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": true,
+      "open_d4_carrier": false,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": true,
+      "case_id": "rsa_v2_toy_chain_37bit_strict_001",
+      "count": 6,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": false,
+      "open_d4_carrier": false,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": false,
+      "case_id": "rsa_v2_toy_chain_37bit_strict_001",
+      "count": 10,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": false,
+      "open_d4_carrier": true,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": true,
+      "case_id": "rsa_v2_toy_chain_37bit_strict_001",
+      "count": 7,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": false,
+      "open_d4_carrier": true,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": true,
+      "case_id": "rsa_v2_toy_chain_37bit_strict_001",
+      "count": 22,
+      "ledger_effective_survivor": true,
+      "ledger_eliminated": false,
+      "open_d4_carrier": false,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": false,
+      "case_id": "rsa_v2_toy_chain_37bit_strict_001",
+      "count": 5,
+      "ledger_effective_survivor": true,
+      "ledger_eliminated": false,
+      "open_d4_carrier": true,
+      "opposite_orientation_polarity": true
+    },
+    {
+      "budget_blocks_frontier": true,
+      "case_id": "rsa_v2_toy_chain_37bit_strict_001",
+      "count": 14,
+      "ledger_effective_survivor": false,
+      "ledger_eliminated": true,
+      "open_d4_carrier": false,
+      "opposite_orientation_polarity": true
+    }
+  ],
+  "effective_net_frontier_budget": {
+    "max": 20,
+    "min": -29,
+    "negative": 99,
+    "positive": 49,
+    "zero": 11
+  },
+  "ledger_effective_survivor_count": 159,
+  "ledger_eliminated_count": 86,
+  "ledger_stale_transport_state_count": 148,
+  "open_d4_carrier_count": 142,
+  "opposite_orientation_polarity_count": 384,
+  "recursive_partition": [
+    {
+      "budget_blocks_frontier": false,
+      "count": 75,
+      "ledger_recursive_survivor": false,
+      "recursion_depth": 0,
+      "strict_budget_frontier_candidate": false
+    },
+    {
+      "budget_blocks_frontier": true,
+      "count": 150,
+      "ledger_recursive_survivor": false,
+      "recursion_depth": 0,
+      "strict_budget_frontier_candidate": false
+    },
+    {
+      "budget_blocks_frontier": false,
+      "count": 1,
+      "ledger_recursive_survivor": true,
+      "recursion_depth": 0,
+      "strict_budget_frontier_candidate": false
+    },
+    {
+      "budget_blocks_frontier": false,
+      "count": 33,
+      "ledger_recursive_survivor": true,
+      "recursion_depth": 0,
+      "strict_budget_frontier_candidate": true
+    },
+    {
+      "budget_blocks_frontier": true,
+      "count": 124,
+      "ledger_recursive_survivor": true,
+      "recursion_depth": 0,
+      "strict_budget_frontier_candidate": false
+    },
+    {
+      "budget_blocks_frontier": true,
+      "count": 1,
+      "ledger_recursive_survivor": true,
+      "recursion_depth": 0,
+      "strict_budget_frontier_candidate": true
+    },
+    {
+      "budget_blocks_frontier": false,
+      "count": 46,
+      "ledger_recursive_survivor": false,
+      "recursion_depth": 1,
+      "strict_budget_frontier_candidate": false
+    },
+    {
+      "budget_blocks_frontier": true,
+      "count": 112,
+      "ledger_recursive_survivor": false,
+      "recursion_depth": 1,
+      "strict_budget_frontier_candidate": false
+    },
+    {
+      "budget_blocks_frontier": true,
+      "count": 1,
+      "ledger_recursive_survivor": true,
+      "recursion_depth": 1,
+      "strict_budget_frontier_candidate": false
+    },
+    {
+      "budget_blocks_frontier": true,
+      "count": 1,
+      "ledger_recursive_survivor": false,
+      "recursion_depth": 2,
+      "strict_budget_frontier_candidate": false
+    }
+  ],
+  "recursive_row_count": 544,
+  "recursive_survivor_net_frontier_budget": {
+    "max": 20,
+    "min": -29,
+    "negative": 100,
+    "positive": 49,
+    "zero": 11
+  },
+  "row_count": 384,
+  "rule_id": "transported_d4_budget_v1",
+  "stale_net_frontier_budget": {
+    "max": 19,
+    "min": -11,
+    "negative": 54,
+    "positive": 84,
+    "zero": 10
+  },
+  "strict_budget_frontier_candidate_count": 34,
+  "strict_budget_frontier_candidate_net_budget": {
+    "max": 20,
+    "min": -4,
+    "negative": 1,
+    "positive": 33,
+    "zero": 0
+  },
+  "typed_net_frontier_budget": {
+    "max": 12,
+    "min": -17,
+    "negative": 44,
+    "positive": 30,
+    "zero": 12
+  }
+}

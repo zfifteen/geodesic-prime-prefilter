@@ -1,0 +1,68 @@
+{
+  "divergences": [
+    {
+      "expected": 512,
+      "field": "row_count",
+      "observed": 384,
+      "public_story_field": "story_law_rows"
+    },
+    {
+      "expected": 202,
+      "field": "ledger_effective_survivor_count",
+      "observed": 159,
+      "public_story_field": "ledger_effective_survivor"
+    },
+    {
+      "expected": 713,
+      "field": "recursive_row_count",
+      "observed": 544,
+      "public_story_field": "recursive_rows"
+    }
+  ],
+  "expected_counts": {
+    "ledger_effective_survivor_count": 202,
+    "recursive_final_survivor_count": 0,
+    "recursive_row_count": 713,
+    "row_count": 512
+  },
+  "falsification_status": "failed",
+  "ledger_effective_survivor_count": 159,
+  "ledger_eliminated_count": 86,
+  "ledger_prefix_elimination_count": 77,
+  "ledger_stale_transport_state_count": 148,
+  "ledger_suffix_elimination_count": 16,
+  "ledger_survivor_count": 298,
+  "ledger_threat_ceiling_elimination_count": 0,
+  "measured_rows_per_case": 64,
+  "recursive_depth_limit": 4,
+  "recursive_final_survivor_count": 0,
+  "recursive_layer_summaries": [
+    {
+      "ledger_eliminated_count": 86,
+      "ledger_recursive_cycle_state_count": 0,
+      "ledger_recursive_survivor_count": 159,
+      "ledger_stale_transport_state_count": 148,
+      "recursion_depth": 0,
+      "row_count": 384
+    },
+    {
+      "ledger_eliminated_count": 23,
+      "ledger_recursive_cycle_state_count": 157,
+      "ledger_recursive_survivor_count": 1,
+      "ledger_stale_transport_state_count": 0,
+      "recursion_depth": 1,
+      "row_count": 159
+    },
+    {
+      "ledger_eliminated_count": 0,
+      "ledger_recursive_cycle_state_count": 1,
+      "ledger_recursive_survivor_count": 0,
+      "ledger_stale_transport_state_count": 1,
+      "recursion_depth": 2,
+      "row_count": 1
+    }
+  ],
+  "recursive_row_count": 544,
+  "row_count": 384,
+  "rule_id": "transported_story_law_v1"
+}
