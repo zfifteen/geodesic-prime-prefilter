@@ -22,7 +22,7 @@ import gwr_dni_recursive_walk as walk
 
 DEFAULT_MIN_RIGHT_PRIME = 11
 DEFAULT_MAX_RIGHT_PRIME = 10**7
-DEFAULT_OUTPUT = ROOT / "output" / "gwr_proof" / "dni_dynamic_cutoff_branch_frontier_1e7.json"
+DEFAULT_OUTPUT = ROOT / "research" / "02-gwr-dni" / "output" / "gwr_proof" / "dni_dynamic_cutoff_branch_frontier_1e7.json"
 
 
 def build_parser() -> argparse.ArgumentParser:

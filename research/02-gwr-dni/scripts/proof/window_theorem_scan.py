@@ -89,7 +89,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--residual-closure-json",
         type=Path,
-        default=ROOT / "output" / "gwr_proof" / "residual_class_closure_20260412_2048.json",
+        default=ROOT / "research" / "02-gwr-dni" / "output" / "gwr_proof" / "residual_class_closure_20260412_2048.json",
         help="Residual-class closure artifact that defines the target classes.",
     )
     parser.add_argument(

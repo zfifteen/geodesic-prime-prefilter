@@ -38,16 +38,16 @@ old scattered roots after references are repaired.
 | `docs/research/semiprime_branch/` | `research/06-cryptology-rsa/docs/semiprime-branch/` |
 | 256-bit competition, geofac, modulus-link, and semiprime artifacts | `research/06-cryptology-rsa/` |
 | legacy prefilter benchmarks and comparison outputs | `research/06-cryptology-rsa/legacy-prefilter/` |
-| `benchmarks/python/gap_ridge/` | `research/11-gap-ridge/scripts/` |
-| `benchmarks/output/python/gap_ridge/` | `research/11-gap-ridge/output/` |
-| `tests/python/gap_ridge/` | `research/11-gap-ridge/tests/` |
+| `research/11-gap-ridge/scripts/` | `research/11-gap-ridge/scripts/` |
+| `research/11-gap-ridge/output/` | `research/11-gap-ridge/output/` |
+| `research/11-gap-ridge/tests/` | `research/11-gap-ridge/tests/` |
 | RH bridge docs/tests | `research/12-rh-bridge/` |
-| `benchmarks/python/prime_spiral/` | `research/13-prime-spiral/scripts/` |
-| `benchmarks/output/python/prime_spiral/` | `research/13-prime-spiral/output/` |
-| `tests/python/prime_spiral/` | `research/13-prime-spiral/tests/` |
-| `benchmarks/python/sha_nonce/` | `research/14-sha-nonce/scripts/` |
-| `benchmarks/output/python/sha_nonce/` | `research/14-sha-nonce/output/` |
-| `tests/python/sha_nonce/` | `research/14-sha-nonce/tests/` |
+| `research/13-prime-spiral/scripts/` | `research/13-prime-spiral/scripts/` |
+| `research/13-prime-spiral/output/` | `research/13-prime-spiral/output/` |
+| `research/13-prime-spiral/tests/` | `research/13-prime-spiral/tests/` |
+| `research/14-sha-nonce/scripts/` | `research/14-sha-nonce/scripts/` |
+| `research/14-sha-nonce/output/` | `research/14-sha-nonce/output/` |
+| `research/14-sha-nonce/tests/` | `research/14-sha-nonce/tests/` |
 
 ## Stop Rule
 

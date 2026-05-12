@@ -26,7 +26,7 @@ if str(SOURCE_DIR) not in sys.path:
 from z_band_prime_composite_field import divisor_counts_segment
 
 
-SPOILER_SCAN_PATH = ROOT / "gwr" / "experiments" / "proof" / "earlier_spoiler_scan.py"
+SPOILER_SCAN_PATH = ROOT / "research" / "02-gwr-dni" / "scripts" / "proof" / "earlier_spoiler_scan.py"
 
 
 def load_spoiler_scan_module():

@@ -12,15 +12,15 @@ Rule`.
 
 ## Current Validation Entry Points
 
-- [`benchmarks/python/gap_ridge/lexicographic_peak_validation.py`](../../benchmarks/python/gap_ridge/lexicographic_peak_validation.py)
+- [`research/11-gap-ridge/scripts/lexicographic_peak_validation.py`](../../research/11-gap-ridge/scripts/lexicographic_peak_validation.py)
   Legacy validation script for the committed tested surface.
-- [`benchmarks/python/gap_ridge/lexicographic_rule_revalidation.py`](../../benchmarks/python/gap_ridge/lexicographic_rule_revalidation.py)
+- [`research/11-gap-ridge/scripts/lexicographic_rule_revalidation.py`](../../research/11-gap-ridge/scripts/lexicographic_rule_revalidation.py)
   Extended revalidation script with explicit selected integer comparisons, new sampled
   windows, enrichment statistics, and alternative score probes.
 
 ## Current Outputs
 
-- [`benchmarks/output/python/gap_ridge/lexicographic_peak_validation/lexicographic_peak_validation.json`](../../benchmarks/output/python/gap_ridge/lexicographic_peak_validation/lexicographic_peak_validation.json)
+- [`research/11-gap-ridge/output/lexicographic_peak_validation/lexicographic_peak_validation.json`](../../research/11-gap-ridge/output/lexicographic_peak_validation/lexicographic_peak_validation.json)
 - [`output/lexicographic_rule_revalidation_summary.json`](../../output/lexicographic_rule_revalidation_summary.json)
 - [`output/lexicographic_rule_revalidation_report.md`](../../output/lexicographic_rule_revalidation_report.md)
 

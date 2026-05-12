@@ -20,7 +20,7 @@ if str(SOURCE_DIR) not in sys.path:
 from z_band_prime_composite_field import divisor_counts_segment
 
 
-MARGIN_SCAN_PATH = ROOT / "gwr" / "experiments" / "proof" / "no_early_spoiler_margin_scan.py"
+MARGIN_SCAN_PATH = ROOT / "research" / "02-gwr-dni" / "scripts" / "proof" / "no_early_spoiler_margin_scan.py"
 TOP_PAIR_LIMIT = 20
 
 

@@ -23,8 +23,8 @@ if str(SOURCE_DIR) not in sys.path:
 from z_band_prime_composite_field import divisor_counts_segment
 
 
-EARLIER_SPOILER_SCAN_PATH = ROOT / "gwr" / "experiments" / "proof" / "earlier_spoiler_scan.py"
-LARGE_PRIME_REDUCER_PATH = ROOT / "gwr" / "experiments" / "proof" / "large_prime_reducer.py"
+EARLIER_SPOILER_SCAN_PATH = ROOT / "research" / "02-gwr-dni" / "scripts" / "proof" / "earlier_spoiler_scan.py"
+LARGE_PRIME_REDUCER_PATH = ROOT / "research" / "02-gwr-dni" / "scripts" / "proof" / "large_prime_reducer.py"
 
 DEFAULT_WHEEL_MODULUS = 30_030
 DEFAULT_EARLY_WINDOW = 128

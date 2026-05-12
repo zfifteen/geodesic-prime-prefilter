@@ -27,7 +27,7 @@ from z_band_prime_composite_field import divisor_counts_segment
 DEFAULT_LO = 20_000_001
 DEFAULT_HI = 100_000_001
 DEFAULT_SEGMENT_SIZE = 1_000_000
-DEFAULT_SEGMENT_OUTPUT_DIR = ROOT / "output" / "gwr_proof" / "parallel_no_early_spoiler_segments"
+DEFAULT_SEGMENT_OUTPUT_DIR = ROOT / "research" / "02-gwr-dni" / "output" / "gwr_proof" / "parallel_no_early_spoiler_segments"
 TOP_CASE_LIMIT = 20
 
 
