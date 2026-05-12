@@ -1,6 +1,6 @@
 {
   "run_timestamp": "2026-04-13T05:07:30Z",
-  "previous_artifact": "output/gwr_proof/residual_class_closure_20260413_0008.json",
+  "previous_artifact": "research/02-gwr-dni/output/gwr_proof/residual_class_closure_20260413_0008.json",
   "exact_scan_ceiling_p": 5000000000,
   "requested_residual_classes": [
     10,
@@ -3193,5 +3193,5 @@
   "all_requested_classes_closed": false,
   "material_progress": false,
   "progress_kind": "no_material_progress",
-  "notes": "No material progress under the current admissible mechanism list. Reconstructed retained 5e9 unsupported classes match the requested set plus [34]; class 34 remains closed by exact finite base, but the latest prior artifact /Users/velocityworks/IdeaProjects/prime-gap-structure/output/gwr_proof/residual_class_closure_20260413_0008.json treats odd-winner scans above 5e9 as branch eliminations for {36,40,50,52,56}, which this automation brief does not admit. The smallest surviving branch is D=36, d=35, with unresolved p-window [5000000001, 8589934592]. Next deterministic attack: derive a universal inequality or stronger witness lower bound for d=35 that forces p above 8589934592."
+  "notes": "No material progress under the current admissible mechanism list. Reconstructed retained 5e9 unsupported classes match the requested set plus [34]; class 34 remains closed by exact finite base, but the latest prior artifact /Users/velocityworks/IdeaProjects/prime-gap-structure/research/02-gwr-dni/output/gwr_proof/residual_class_closure_20260413_0008.json treats odd-winner scans above 5e9 as branch eliminations for {36,40,50,52,56}, which this automation brief does not admit. The smallest surviving branch is D=36, d=35, with unresolved p-window [5000000001, 8589934592]. Next deterministic attack: derive a universal inequality or stronger witness lower bound for d=35 that forces p above 8589934592."
 }

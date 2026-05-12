@@ -11,7 +11,7 @@ side experiment.
 The active implementation lives under:
 
 ```text
-experiments/rsa/v2
+research/06-cryptology-rsa/experiments/rsa/v2
 ```
 
 The old contaminated artifacts are preserved under:

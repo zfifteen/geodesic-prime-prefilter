@@ -80,5 +80,5 @@ language than `PROOF.md`.
 These older notes remain part of the validated history and are useful when
 continuity matters:
 
-- [../../research/11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule.md](../../research/11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule.md)
-- [../../research/11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule/](../../research/11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule/)
+- [../../../11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule.md](../../../11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule.md)
+- [../../../11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule/](../../../11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule/)

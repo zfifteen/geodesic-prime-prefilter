@@ -11,10 +11,9 @@ Primary homes remain:
 - `LEFTMOST_MINIMUM_DIVISOR_RULE.md`
 - `DIVISOR_NORMALIZATION_IDENTITY.md`
 - `RECURSIVE_PRIME_WALK.md`
-- `gwr/`
-- `output/gwr_proof/`
-- `output/gwr_dni_recursive_gap_scaling_2_to_18/`
-- `docs/research/predictor/`
+- `research/02-gwr-dni/output/gwr_proof/`
+- `research/02-gwr-dni/output/gwr_dni_recursive_gap_scaling_2_to_18/`
+- `research/02-gwr-dni/docs/`
 
 ## Invariant Or Rule
 
@@ -29,7 +28,7 @@ Every prime has `Z = 1`, and composites fall below that value.
 
 ## Proof Status
 
-`PROOF.md` proves the prime-gap maximizer theorem under its stated hypotheses.
+`PROOF.md` proves the direct deterministic next-prime theorem and the prime-gap maximizer theorem under their stated hypotheses.
 The finite audit surfaces certify implementations and measured regimes; they
 do not bound the universal theorem.
 
@@ -37,10 +36,10 @@ do not bound the universal theorem.
 
 Primary measured surfaces:
 
-- `output/gwr_proof/`
-- `output/gwr_dni_recursive_gap_scaling_2_to_18/`
-- `docs/research/predictor/gwr_dni_exact_recursive_prime_walk_note.md`
-- `docs/research/predictor/gwr_interval_presieve_rollout/index.html`
+- `research/02-gwr-dni/output/gwr_proof/`
+- `research/02-gwr-dni/output/gwr_dni_recursive_gap_scaling_2_to_18/`
+- `research/02-gwr-dni/docs/gwr_dni_exact_recursive_prime_walk_note.md`
+- `research/02-gwr-dni/docs/gwr_interval_presieve_rollout/index.html`
 
 The recursive scaling summary records exact hit rate `1.0`, `0` skipped gaps,
 and sampled powers `10^2` through `10^18`.
@@ -50,7 +49,7 @@ and sampled powers `10^2` through `10^18`.
 Focused validation passed after the chapter map was finalized:
 
 ```text
-python3 -m pytest research/01-generator/tests/test_simple_pgs_generator.py tests/python/predictor/test_gwr_dni_recursive_walk.py
+python3 -m pytest research/01-generator/tests/test_simple_pgs_generator.py research/02-gwr-dni/tests/test_gwr_dni_recursive_walk.py
 36 passed in 1.02s
 ```
 
@@ -69,7 +68,7 @@ state-budget, and cryptology questions remain in their own chapters.
 Run the recursive walk validation:
 
 ```text
-python3 -m pytest tests/python/predictor/test_gwr_dni_recursive_walk.py
+python3 -m pytest research/02-gwr-dni/tests/test_gwr_dni_recursive_walk.py
 ```
 
 ## Provenance

@@ -1391,7 +1391,7 @@
     "max": 1736.2639321807303
   },
   "plot_paths": [
-    "output/gwr_proof/d4_left_flank_geometric_probe_2e7_class_thresholds.png",
-    "output/gwr_proof/d4_left_flank_geometric_probe_2e7_class_ratio.png"
+    "research/02-gwr-dni/output/gwr_proof/d4_left_flank_geometric_probe_2e7_class_thresholds.png",
+    "research/02-gwr-dni/output/gwr_proof/d4_left_flank_geometric_probe_2e7_class_ratio.png"
   ]
 }

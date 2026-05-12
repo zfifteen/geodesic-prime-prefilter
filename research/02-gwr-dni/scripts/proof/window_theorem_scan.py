@@ -215,8 +215,8 @@ def main(argv: list[str] | None = None) -> int:
     payload = scan_window_violations(args.lo, args.hi, residual_classes)
     payload["source_artifacts"] = [
         str(args.residual_closure_json.relative_to(ROOT)),
-        "output/gwr_proof/prime_gap_admissibility_frontier_1e9_checkpoints.json",
-        "gwr/findings/prime_gap_admissibility_theorem.md",
+        "research/02-gwr-dni/research/02-gwr-dni/output/gwr_proof/prime_gap_admissibility_frontier_1e9_checkpoints.json",
+        "PROOF.md",
     ]
     payload["warning"] = (
         "This artifact tests only the relaxed surrogate d(w)<=D_w. It does not apply "

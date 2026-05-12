@@ -260,9 +260,9 @@
     }
   ],
   "source_artifacts": [
-    "output/gwr_proof/residual_class_closure_20260412_2048.json",
-    "output/gwr_proof/prime_gap_admissibility_frontier_1e9_checkpoints.json",
-    "gwr/findings/prime_gap_admissibility_theorem.md"
+    "research/02-gwr-dni/output/gwr_proof/residual_class_closure_20260412_2048.json",
+    "research/02-gwr-dni/output/gwr_proof/prime_gap_admissibility_frontier_1e9_checkpoints.json",
+    "PROOF.md"
   ],
   "method": "Exact consecutive-prime gap scan. For each residual class D, record the first gap with a left-of-winner carrier k satisfying d(k)=D, a winner w satisfying d(w)<=D_w, and delta_actual=w-k greater than the retained delta window."
 }

@@ -11,7 +11,7 @@ from sympy import nextprime
 
 ROOT = Path(__file__).resolve().parents[3]
 SOURCE_DIR = ROOT / "src" / "python"
-RECURSIVE_WALK_PATH = ROOT / "benchmarks" / "python" / "predictor" / "gwr_dni_recursive_walk.py"
+RECURSIVE_WALK_PATH = ROOT / "research" / "02-gwr-dni" / "scripts" / "gwr_dni_recursive_walk.py"
 
 if str(SOURCE_DIR) not in sys.path:
     sys.path.insert(0, str(SOURCE_DIR))

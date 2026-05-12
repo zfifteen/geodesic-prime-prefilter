@@ -2,6 +2,8 @@
 
 ![Prime Gap Structure hero](docs/assets/prime-gap-structure-hero.jpg)
 
+The single live proof reference is [PROOF.md](PROOF.md), including the direct deterministic next-prime theorem.
+
 ## The First Contradiction
 
 Most people learn that prime numbers are fundamentally unpredictable. They appear to pop up at irregular intervals, almost as if they are scattered at random across the number line. Textbooks and popular explanations reinforce this view: primes become rarer as numbers grow larger, the gaps between them can be arbitrarily wide, and there is no simple formula that will always tell you exactly where the next one sits. The common belief is that the only practical ways to find the next prime are to test candidates one by one or to rely on probabilistic estimates. Prime gaps themselves are treated as empty stretches of composites, nothing more than the boring distance you have to cross before the next interesting number arrives.

@@ -1,6 +1,6 @@
 {
   "run_timestamp": "2026-04-13T10:12:33Z",
-  "previous_artifact": "output/gwr_proof/residual_class_closure_20260413_0506.json",
+  "previous_artifact": "research/02-gwr-dni/output/gwr_proof/residual_class_closure_20260413_0506.json",
   "exact_scan_ceiling_p": 5000000000,
   "requested_residual_classes": [
     10,

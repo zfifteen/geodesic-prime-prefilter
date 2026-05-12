@@ -20,7 +20,7 @@ Empirically, this extracted Python path produced:
 
 Those numbers are the production consequence of the same invariant program carried through a narrow deterministic runtime path. The prefilter rejects many doomed candidates before Miller-Rabin.
 
-See [benchmarks.md](benchmarks.md) and [technical-note/technical_note.md](../../technical-note/technical_note.md).
+See [benchmarks.md](benchmarks.md) and [technical-note/technical_note.md](../technical-note/technical_note.md).
 
 ## Production Filter Path
 

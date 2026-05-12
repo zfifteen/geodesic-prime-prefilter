@@ -6,8 +6,8 @@ import importlib.util
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[3]
-MODULE_PATH = ROOT / "gwr" / "experiments" / "proof" / "dni_cutoff_branch_frontier.py"
+ROOT = Path(__file__).resolve().parents[4]
+MODULE_PATH = ROOT / "research" / "02-gwr-dni" / "scripts" / "proof" / "dni_cutoff_branch_frontier.py"
 
 
 def load_module():

@@ -897,17 +897,17 @@ The main limitations are finite coverage and sampling density. The new exact ext
 
 - `z_band_prime_composite_field.py` — compatible replacement for the missing divisor-count segment helper
 - `lexi_validation_runs.py` — orchestration and experiment runner
-- `output/edge_run_1e6.json`
-- `output/experiment_a_exact_5e6.json`
-- `output/experiment_b_windowed_validation.json`
-- `output/experiment_b_windowed_validation.csv`
-- `output/experiment_b_windowed_intervals.csv`
-- `output/experiment_c_enrichment_stats.json`
-- `output/experiment_c_enrichment_stats.csv`
-- `output/experiment_d_alt_scoring.json`
-- `output/experiment_d_alt_scoring.csv`
-- `output/lexicographic_rule_revalidation_results.json`
-- `output/lexicographic_rule_revalidation_report.md`
+- `research/11-gap-ridge/output/lexicographic_rule_revalidation/edge_run_1e6.json`
+- `research/11-gap-ridge/output/lexicographic_rule_revalidation/experiment_a_exact_5e6.json`
+- `research/11-gap-ridge/output/lexicographic_rule_revalidation/experiment_b_windowed_validation.json`
+- `research/11-gap-ridge/output/lexicographic_rule_revalidation/experiment_b_windowed_validation.csv`
+- `research/11-gap-ridge/output/lexicographic_rule_revalidation/experiment_b_windowed_intervals.csv`
+- `research/11-gap-ridge/output/lexicographic_rule_revalidation/experiment_c_enrichment_stats.json`
+- `research/11-gap-ridge/output/lexicographic_rule_revalidation/experiment_c_enrichment_stats.csv`
+- `research/11-gap-ridge/output/lexicographic_rule_revalidation/experiment_d_alt_scoring.json`
+- `research/11-gap-ridge/output/lexicographic_rule_revalidation/experiment_d_alt_scoring.csv`
+- `research/11-gap-ridge/output/lexicographic_rule_revalidation_results.json`
+- `research/11-gap-ridge/output/lexicographic_rule_revalidation_report.md`
 
 ### How to run
 

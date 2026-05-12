@@ -1,6 +1,6 @@
 {
   "run_timestamp": "2026-04-13T04:08:54Z",
-  "previous_artifact": "output/gwr_proof/residual_class_closure_20260412_2359.json",
+  "previous_artifact": "research/02-gwr-dni/output/gwr_proof/residual_class_closure_20260412_2359.json",
   "exact_scan_ceiling_p": 5000000000,
   "requested_residual_classes": [
     10,
@@ -3175,5 +3175,5 @@
   "all_requested_classes_closed": true,
   "material_progress": true,
   "progress_kind": "class_closed",
-  "notes": "Compared with output/gwr_proof/residual_class_closure_20260412_2359.json, the requested table is unchanged and remains fully closed. This run closes the only newly surfaced unsupported class on the retained 5e9 frontier: class 34 is discharged immediately because its hardest branch d=33 has Bertrand threshold prime 2147483659, which lies below the committed exact no-counterexample ceiling p<5000000000. So no newly surfaced unsupported class remains open on the newest retained frontier that was loaded."
+  "notes": "Compared with research/02-gwr-dni/output/gwr_proof/residual_class_closure_20260412_2359.json, the requested table is unchanged and remains fully closed. This run closes the only newly surfaced unsupported class on the retained 5e9 frontier: class 34 is discharged immediately because its hardest branch d=33 has Bertrand threshold prime 2147483659, which lies below the committed exact no-counterexample ceiling p<5000000000. So no newly surfaced unsupported class remains open on the newest retained frontier that was loaded."
 }

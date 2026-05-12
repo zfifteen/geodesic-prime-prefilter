@@ -1,7 +1,7 @@
 {
   "created_at": "2026-05-09",
   "phase": "after_walker_refactor",
-  "module": "benchmarks/python/predictor/gwr_dni_recursive_walk.py",
+  "module": "research/02-gwr-dni/scripts/gwr_dni_recursive_walk.py",
   "baseline_summary": "output/gwr_interval_presieve_rollout/baseline_before/summary.json",
   "rows": [
     {

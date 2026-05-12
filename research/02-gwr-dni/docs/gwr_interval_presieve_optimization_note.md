@@ -73,7 +73,7 @@ condition used by the current exact interval field.
 Primary target:
 
 ```text
-benchmarks/python/predictor/gwr_dni_recursive_walk.py
+research/02-gwr-dni/scripts/gwr_dni_recursive_walk.py
 ```
 
 Replace the scalar capped tail path around `_divisor_count_capped` with an

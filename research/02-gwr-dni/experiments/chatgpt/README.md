@@ -13,14 +13,14 @@ Highlights from the new runs:
 
 Key artifacts:
 
-* [Markdown report](sandbox:/mnt/data/output/lexicographic_rule_revalidation_report.md)
-* [Combined results JSON](sandbox:/mnt/data/output/lexicographic_rule_revalidation_results.json)
-* [Experiment B summary CSV](sandbox:/mnt/data/output/experiment_b_windowed_validation.csv)
-* [Experiment B per-window CSV](sandbox:/mnt/data/output/experiment_b_windowed_intervals.csv)
-* [Experiment C stats CSV](sandbox:/mnt/data/output/experiment_c_enrichment_stats.csv)
-* [Experiment D alt-scoring CSV](sandbox:/mnt/data/output/experiment_d_alt_scoring.csv)
-* [Baseline 1e6 reproduction JSON](sandbox:/mnt/data/output/edge_run_1e6.json)
-* [Exact 5e6 validation JSON](sandbox:/mnt/data/output/experiment_a_exact_5e6.json)
+* [Markdown report](sandbox:/mnt/data/research/11-gap-ridge/output/lexicographic_rule_revalidation_report.md)
+* [Combined results JSON](sandbox:/mnt/data/research/11-gap-ridge/output/lexicographic_rule_revalidation_results.json)
+* [Experiment B summary CSV](sandbox:/mnt/data/research/11-gap-ridge/output/lexicographic_rule_revalidation/experiment_b_windowed_validation.csv)
+* [Experiment B per-window CSV](sandbox:/mnt/data/research/11-gap-ridge/output/lexicographic_rule_revalidation/experiment_b_windowed_intervals.csv)
+* [Experiment C stats CSV](sandbox:/mnt/data/research/11-gap-ridge/output/lexicographic_rule_revalidation/experiment_c_enrichment_stats.csv)
+* [Experiment D alt-scoring CSV](sandbox:/mnt/data/research/11-gap-ridge/output/lexicographic_rule_revalidation/experiment_d_alt_scoring.csv)
+* [Baseline 1e6 reproduction JSON](sandbox:/mnt/data/research/11-gap-ridge/output/lexicographic_rule_revalidation/edge_run_1e6.json)
+* [Exact 5e6 validation JSON](sandbox:/mnt/data/research/11-gap-ridge/output/lexicographic_rule_revalidation/experiment_a_exact_5e6.json)
 * [Runner script](sandbox:/mnt/data/lexi_validation_runs.py)
 * [Compatible divisor-count helper](sandbox:/mnt/data/z_band_prime_composite_field.py)
 

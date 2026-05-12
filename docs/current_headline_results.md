@@ -41,4 +41,4 @@
   current production Python path rejects about `91%` of tested odd candidates
   before Miller-Rabin and produced `2.09x` and `2.82x` end-to-end deterministic
   RSA key-generation speedups on the curated `2048`-bit and `4096`-bit corpora.
-  See [./prefilter/benchmarks.md](./prefilter/benchmarks.md).
+  See [research/06-cryptology-rsa/legacy-prefilter/docs/benchmarks.md](../research/06-cryptology-rsa/legacy-prefilter/docs/benchmarks.md).

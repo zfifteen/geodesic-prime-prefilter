@@ -20,7 +20,7 @@ DEFAULT_FINDINGS_PATH = ROOT / "gwr" / "findings" / "square_budget_handoff_shock
 DEFAULT_MIN_POWER = 12
 DEFAULT_MAX_POWER = 18
 SUMMARY_FILENAME = "gwr_square_budget_handoff_shock_summary.json"
-PHASE_PROBE_PATH = ROOT / "benchmarks" / "python" / "predictor" / "gwr_phase_budget_hidden_state_probe.py"
+PHASE_PROBE_PATH = ROOT / "research" / "05-state-budget" / "scripts" / "gwr_phase_budget_hidden_state_probe.py"
 SCALE_NEUTRAL_FIELD = "scale_neutral_phase_budget_bit"
 CANDIDATE_SPECS = {
     "current_winner_parity": ("current_winner_parity",),

@@ -13,7 +13,7 @@ Primary homes:
 - `research/03-gap-types/output/gwr_dni_gap_type_engine_v1_summary.json`
 - `research/03-gap-types/output/gwr_dni_gap_type_sequence_probe_summary.json`
 - `research/03-gap-types/output/gwr_dni_gap_type_generative_probe_summary.json`
-- `benchmarks/python/predictor/gwr_dni_gap_type_*.py`
+- `research/03-gap-types/scripts/gwr_dni_gap_type_*.py`
 
 ## Invariant Or Rule
 

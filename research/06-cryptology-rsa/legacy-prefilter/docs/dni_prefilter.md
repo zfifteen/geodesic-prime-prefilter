@@ -133,9 +133,9 @@ These results describe the production prefilter concern only. The exact invarian
 
 The prefilter concern is reproducible from the committed contract, vectors, tests, and benchmark notes.
 
-For manual validation, see [docs/prefilter/manual_validation.md](./prefilter/manual_validation.md).
+For manual validation, see [research/06-cryptology-rsa/legacy-prefilter/docs/manual_validation.md](./manual_validation.md).
 
-For the curated benchmark summary, see [docs/prefilter/benchmarks.md](./prefilter/benchmarks.md).
+For the curated benchmark summary, see [research/06-cryptology-rsa/legacy-prefilter/docs/benchmarks.md](./benchmarks.md).
 
 The main reproduction surfaces for this concern are:
 

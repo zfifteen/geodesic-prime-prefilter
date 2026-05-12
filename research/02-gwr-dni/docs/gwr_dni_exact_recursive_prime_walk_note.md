@@ -10,10 +10,10 @@ The predictor line now has two distinct layers:
 
 The result is implemented in:
 
-- [`gwr_dni_direct_rule_probe.py`](../../../benchmarks/python/predictor/gwr_dni_direct_rule_probe.py)
-- [`gwr_dni_recursive_walk.py`](../../../benchmarks/python/predictor/gwr_dni_recursive_walk.py)
-- [`gwr_dni_recursive_gap_scaling_sweep.py`](../../../benchmarks/python/predictor/gwr_dni_recursive_gap_scaling_sweep.py)
-- [`plot_gwr_dni_recursive_gap_scaling_sweep.py`](../../../benchmarks/python/predictor/plot_gwr_dni_recursive_gap_scaling_sweep.py)
+- [`gwr_dni_direct_rule_probe.py`](../scripts/gwr_dni_direct_rule_probe.py)
+- [`gwr_dni_recursive_walk.py`](../scripts/gwr_dni_recursive_walk.py)
+- [`gwr_dni_recursive_gap_scaling_sweep.py`](../scripts/gwr_dni_recursive_gap_scaling_sweep.py)
+- [`plot_gwr_dni_recursive_gap_scaling_sweep.py`](../scripts/plot_gwr_dni_recursive_gap_scaling_sweep.py)
 
 The strongest supported claims are concrete:
 
@@ -228,8 +228,8 @@ The square branch now has two direct instruments:
 
 The retained direct square search through `p <= 10^8` is:
 
-- [../../../output/gwr_proof/square_branch_dynamic_cutoff_search_1e8/square_branch_dynamic_cutoff_search_summary.json](../../../output/gwr_proof/square_branch_dynamic_cutoff_search_1e8/square_branch_dynamic_cutoff_search_summary.json)
-- [../../../output/gwr_proof/square_branch_dynamic_cutoff_search_1e8/square_branch_dynamic_cutoff_search_extremal case.csv](../../../output/gwr_proof/square_branch_dynamic_cutoff_search_1e8/square_branch_dynamic_cutoff_search_frontier.csv)
+- [../output/gwr_proof/square_branch_dynamic_cutoff_search_1e8/square_branch_dynamic_cutoff_search_summary.json](../output/gwr_proof/square_branch_dynamic_cutoff_search_1e8/square_branch_dynamic_cutoff_search_summary.json)
+- [../output/gwr_proof/square_branch_dynamic_cutoff_search_1e8/square_branch_dynamic_cutoff_search_extremal case.csv](../output/gwr_proof/square_branch_dynamic_cutoff_search_1e8/square_branch_dynamic_cutoff_search_frontier.csv)
 
 That search tested `5,761,454` odd prime squares, found no dynamic-cutoff
 counterexample on that finite surface, and recorded maximum square-branch
@@ -245,9 +245,9 @@ utilization `0.8120300751879699` at
 ### 4.1 Transition Surface
 
 The exact transition surface was built by
-[`gwr_dni_transition_probe.py`](../../../benchmarks/python/predictor/gwr_dni_transition_probe.py)
+[`gwr_dni_transition_probe.py`](../scripts/gwr_dni_transition_probe.py)
 and re-evaluated by
-[`gwr_dni_direct_rule_probe.py`](../../../benchmarks/python/predictor/gwr_dni_direct_rule_probe.py).
+[`gwr_dni_direct_rule_probe.py`](../scripts/gwr_dni_direct_rule_probe.py).
 
 On the combined exact $10^6 + 10^7$ surface:
 
@@ -263,7 +263,7 @@ for the bounded rule.
 ### 4.2 Exact Recursive Walk
 
 The recursive walk script is
-[`gwr_dni_recursive_walk.py`](../../../benchmarks/python/predictor/gwr_dni_recursive_walk.py).
+[`gwr_dni_recursive_walk.py`](../scripts/gwr_dni_recursive_walk.py).
 
 Its verified long walk starts at gap index $4$, which is the gap $(7,11)$, and
 advances only through its own predicted next primes. On the tested run:
@@ -278,7 +278,7 @@ exact while feeding its own output forward over a long consecutive chain.
 ## 5. Sampled Scaling Through $10^{18}$
 
 The scaling sweep is
-[`gwr_dni_recursive_gap_scaling_sweep.py`](../../../benchmarks/python/predictor/gwr_dni_recursive_gap_scaling_sweep.py).
+[`gwr_dni_recursive_gap_scaling_sweep.py`](../scripts/gwr_dni_recursive_gap_scaling_sweep.py).
 
 It starts at the first prime at or above each decade input prime $10^m$ and runs a
 deterministic exact walk budget in that regime:
@@ -398,21 +398,21 @@ So the correct present description is:
 The main commands are:
 
 ```bash
-python3 benchmarks/python/predictor/gwr_dni_direct_rule_probe.py \
+python3 research/02-gwr-dni/scripts/gwr_dni_direct_rule_probe.py \
   --train-detail-csv /tmp/gwr_dni_transition_probe_1e6_minimal/gwr_dni_transition_probe_details.csv \
   --test-detail-csv /tmp/gwr_dni_transition_probe_1e7_minimal_fast/gwr_dni_transition_probe_details.csv \
   --output-json /tmp/gwr_dni_direct_rule_probe_summary.json
 ```
 
 ```bash
-python3 benchmarks/python/predictor/gwr_dni_recursive_walk.py \
+python3 research/02-gwr-dni/scripts/gwr_dni_recursive_walk.py \
   --start-gap-index 4 \
   --steps 664578 \
   --output-dir /tmp/gwr_dni_recursive_walk_full
 ```
 
 ```bash
-python3 benchmarks/python/predictor/gwr_dni_recursive_gap_scaling_sweep.py \
+python3 research/02-gwr-dni/scripts/gwr_dni_recursive_gap_scaling_sweep.py \
   --min-power 2 \
   --max-power 18 \
   --output-dir /tmp/gwr_dni_recursive_gap_scaling_2_to_18
@@ -439,7 +439,7 @@ python3 research/04-bounded-compression/scripts/gwr_dni_cutoff_counterexample_sc
 ```
 
 ```bash
-python3 benchmarks/python/predictor/plot_gwr_dni_recursive_gap_scaling_sweep.py \
+python3 research/02-gwr-dni/scripts/plot_gwr_dni_recursive_gap_scaling_sweep.py \
   --input-dir /tmp/gwr_dni_recursive_gap_scaling_2_to_18 \
   --output-dir /tmp/gwr_dni_recursive_gap_scaling_2_to_18/plots
 ```
@@ -448,8 +448,8 @@ Focused validation for the new exact walk and scaling surface is:
 
 ```bash
 pytest -q \
-  tests/python/predictor/test_gwr_dni_direct_rule_probe.py \
+  research/02-gwr-dni/tests/test_gwr_dni_direct_rule_probe.py \
   research/04-bounded-compression/tests/test_gwr_dni_cutoff_counterexample_scan.py \
-  tests/python/predictor/test_gwr_dni_recursive_walk.py \
-  tests/python/predictor/test_gwr_dni_recursive_gap_scaling_sweep.py
+  research/02-gwr-dni/tests/test_gwr_dni_recursive_walk.py \
+  research/02-gwr-dni/tests/test_gwr_dni_recursive_gap_scaling_sweep.py
 ```

@@ -1,9 +1,9 @@
 {
   "run_timestamp": "2026-04-12T21:06:08-04:00",
   "source_artifacts": [
-    "output/gwr_proof/residual_class_closure_20260412_2048.json",
-    "output/gwr_proof/prime_gap_admissibility_frontier_1e9_checkpoints.json",
-    "gwr/findings/prime_gap_admissibility_theorem.md"
+    "research/02-gwr-dni/output/gwr_proof/residual_class_closure_20260412_2048.json",
+    "research/02-gwr-dni/output/gwr_proof/prime_gap_admissibility_frontier_1e9_checkpoints.json",
+    "PROOF.md"
   ],
   "search_interval": {
     "lo": 2,

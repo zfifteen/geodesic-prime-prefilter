@@ -16,7 +16,7 @@ This produces the headline numbers you cited:
   (From `simple_pgs_high_scale_chain_probe.py` summaries and `docs/current_headline_results.md` / README.)
 
 ### The Missing Object `H(p, s0, chain_state)` — Already Being Mined
-The repo’s benchmark scripts (`benchmarks/python/predictor/`) are purpose-built for exactly the experiment you propose:
+The repo’s benchmark scripts (`research/02-gwr-dni/scripts/`) are purpose-built for exactly the experiment you propose:
 
 - `simple_pgs_recursive_shadow_chain_state_mine.py` — recursively mines shadow-chain states (prefix + sub-chains), records delta vectors, mod-30 residues, closure vectors (`closure_vector_between`), open densities, ranker mappings (`ranker_b/c/d`), and hidden-obstruction proxies. It evaluates six termination rules and projects PGS-conversion rates.
 - `simple_pgs_shadow_chain_terminal_certificate_mine.py` — the closest match to “mine the least-factor maximum of false chain nodes”. It ingests chain-fallback probe rows, annotates every node not eliminated by bounded factor checks with:

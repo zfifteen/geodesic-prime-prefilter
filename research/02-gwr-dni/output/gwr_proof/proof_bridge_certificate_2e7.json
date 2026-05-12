@@ -4,7 +4,7 @@
     "c": 1.5379,
     "gap_constant": 1.0,
     "verified_hi": 20000001,
-    "artifact": "output/gwr_proof/asymptotic_bridge_load_scan_2e7.json"
+    "artifact": "research/02-gwr-dni/output/gwr_proof/asymptotic_bridge_load_scan_2e7.json"
   },
   "explicit_n0": 3544,
   "bridge_upper_bound_at_n0": 0.9999649723577171,

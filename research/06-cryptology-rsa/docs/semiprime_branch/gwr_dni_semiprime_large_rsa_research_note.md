@@ -157,7 +157,7 @@ It is a focused attempt to determine whether the repo's strongest arithmetic str
 The next artifact after this note should be a measured baseline file under:
 
 ```text
-docs/research/semiprime_branch/d4_layer_baseline.md
+research/06-cryptology-rsa/docs/semiprime_branch/d4_layer_baseline.md
 ```
 
 backed by committed CSV/JSON outputs and one benchmark harness update.

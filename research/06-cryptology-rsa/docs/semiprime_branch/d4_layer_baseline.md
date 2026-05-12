@@ -111,7 +111,7 @@ Primary sources:
 - `research/02-gwr-dni/output/gwr_d4_arrival_validation_summary.json`
 - `research/02-gwr-dni/output/gwr_d4_arrival_validation_exact.csv`
 - `research/02-gwr-dni/output/gwr_d4_arrival_validation_even_bands.csv`
-- `docs/prefilter/benchmarks.md`
+- `research/06-cryptology-rsa/legacy-prefilter/docs/benchmarks.md`
 
 ## Baseline Reading From Current Repo Surface
 

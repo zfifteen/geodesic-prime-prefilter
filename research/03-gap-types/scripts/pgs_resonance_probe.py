@@ -18,7 +18,7 @@ from sympy import primerange
 
 
 ROOT = Path(__file__).resolve().parents[3]
-DEFAULT_OUTPUT_DIR = ROOT / "benchmarks" / "output" / "python" / "predictor" / "pgs_resonance"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "03-gap-types" / "output" / "pgs_resonance"
 DEFAULT_MAX_N = 20_000_000
 DEFAULT_WINDOW_RADIUS = 8
 DEFAULT_RING_INNER = 9

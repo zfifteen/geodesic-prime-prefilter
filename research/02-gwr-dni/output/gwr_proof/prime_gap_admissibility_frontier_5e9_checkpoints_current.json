@@ -1,7 +1,7 @@
 {
   "source_summary": {
     "mode": "checkpoint_frontier",
-    "checkpoint_dir": "output/gwr_proof/scan_checkpoints_5e9",
+    "checkpoint_dir": "research/02-gwr-dni/output/gwr_proof/scan_checkpoints_5e9",
     "checkpoint_case_count": 236111,
     "gap_count": 182466,
     "retained_case_count": 236111,

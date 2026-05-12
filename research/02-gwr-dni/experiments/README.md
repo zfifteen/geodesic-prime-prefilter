@@ -21,8 +21,8 @@ Rule`.
 ## Current Outputs
 
 - [`research/11-gap-ridge/output/lexicographic_peak_validation/lexicographic_peak_validation.json`](../../research/11-gap-ridge/output/lexicographic_peak_validation/lexicographic_peak_validation.json)
-- [`output/lexicographic_rule_revalidation_summary.json`](../../output/lexicographic_rule_revalidation_summary.json)
-- [`output/lexicographic_rule_revalidation_report.md`](../../output/lexicographic_rule_revalidation_report.md)
+- [`output/lexicographic_rule_revalidation_summary.json`](../../11-gap-ridge/output/lexicographic_rule_revalidation_summary.json)
+- [`output/lexicographic_rule_revalidation_report.md`](../../11-gap-ridge/output/lexicographic_rule_revalidation_report.md)
 
 ## Registry
 

@@ -81,7 +81,7 @@ That invariant-first stance is the important transfer principle.
 
 Before the BC modification work began, the repository had already established a measured deterministic acceleration surface on its own normative Python path.
 
-The curated benchmark summary in [benchmarks.md](../benchmarks.md) and the formal note in [technical_note.md](../../technical-note/technical_note.md) report the following validated production-surface results:
+The curated benchmark summary in [benchmarks.md](benchmarks.md) and the formal note in [technical_note.md](../technical-note/technical_note.md) report the following validated production-surface results:
 
 - about `91%` candidate rejection before Miller-Rabin on the tested `2048`-bit and `4096`-bit corpora,
 - `2.09x` end-to-end deterministic RSA key-generation speedup on the curated `2048`-bit benchmark surface,

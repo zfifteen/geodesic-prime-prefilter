@@ -61,7 +61,7 @@ regime.
 The current validated benchmark surface reports about `91%` candidate rejection
 before Miller-Rabin and end-to-end deterministic RSA speedups of `2.09x` at
 `2048` bits and `2.82x` at `4096` bits. See
-[prefilter benchmarks](../prefilter/benchmarks.md).
+[prefilter benchmarks](../benchmarks.md).
 
 The table-depth structural sweep already measures the same endpoint:
 
@@ -71,15 +71,15 @@ The table-depth structural sweep already measures the same endpoint:
 
 The sweep report and plot are:
 
-- [TABLE_DEPTH_SWEEP_REPORT.md](../../benchmarks/output/python/prefilter/table_depth_sweep/TABLE_DEPTH_SWEEP_REPORT.md)
-- [table_depth_collapse.svg](../../benchmarks/output/python/prefilter/table_depth_sweep/table_depth_collapse.svg)
+- [TABLE_DEPTH_SWEEP_REPORT.md](../../research/06-cryptology-rsa/legacy-prefilter/output/prefilter/table_depth_sweep/TABLE_DEPTH_SWEEP_REPORT.md)
+- [table_depth_collapse.svg](../../research/06-cryptology-rsa/legacy-prefilter/output/prefilter/table_depth_sweep/table_depth_collapse.svg)
 
 The end-to-end `8192`-bit RSA table-depth sweep shows the same practical
 pressure: `1,000,003` was the fastest measured cell even though `3,000,000` had
 a higher structural rejection ceiling. At that scale, the extra rejection exists
 but is too small to dominate the added proxy work on the measured Python path.
 See
-[RSA_TABLE_DEPTH_SWEEP_REPORT.md](../../benchmarks/output/python/prefilter/rsa_table_depth_sweep/RSA_TABLE_DEPTH_SWEEP_REPORT.md).
+[RSA_TABLE_DEPTH_SWEEP_REPORT.md](../../research/06-cryptology-rsa/legacy-prefilter/output/prefilter/rsa_table_depth_sweep/RSA_TABLE_DEPTH_SWEEP_REPORT.md).
 
 ## Architectural Consequence
 
