@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Dynamic Cutoff Conjecture for GWR/DNI Prime Walks</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #171717;
+      --muted: #5a646d;
+      --line: #d8dde3;
+      --panel: #f6f8fa;
+      --paper: #ffffff;
+      --accent: #1d6f5f;
+      --accent-2: #7a4b18;
+      --warn: #9a3412;
+      --ok: #1f6b3a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 36px 24px 56px;
+    }
+
+    header {
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 22px;
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 3.8rem);
+      line-height: 1.02;
+      letter-spacing: 0;
+      max-width: 940px;
+    }
+
+    h2 {
+      margin: 36px 0 12px;
+      font-size: 1.35rem;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 22px 0 10px;
+      font-size: 1.02rem;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 14px;
+      max-width: 860px;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.95em;
+      background: #edf1f5;
+      padding: 0.08rem 0.24rem;
+      border-radius: 4px;
+    }
+
+    pre {
+      overflow-x: auto;
+      background: #111827;
+      color: #f9fafb;
+      padding: 16px;
+      border-radius: 6px;
+      line-height: 1.45;
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 22px;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: var(--panel);
+      font-weight: 700;
+    }
+
+    a {
+      color: #0f5caa;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+    }
+
+    .dek {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 900px;
+    }
+
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 20px 0 28px;
+    }
+
+    .status {
+      border: 1px solid var(--line);
+      border-top: 5px solid var(--accent);
+      padding: 14px;
+      min-height: 126px;
+      background: var(--paper);
+    }
+
+    .status strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .status p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .status.unresolved {
+      border-top-color: var(--warn);
+    }
+
+    .status.measured {
+      border-top-color: var(--ok);
+    }
+
+    .status.invalidated {
+      border-top-color: var(--accent-2);
+    }
+
+    .law {
+      border-left: 5px solid var(--accent);
+      background: var(--panel);
+      padding: 16px 18px;
+      margin: 16px 0 24px;
+      max-width: 900px;
+    }
+
+    .spine {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
+      border: 1px solid var(--line);
+      margin: 18px 0 26px;
+    }
+
+    .spine div {
+      padding: 16px;
+      border-right: 1px solid var(--line);
+      min-height: 112px;
+      background: #fbfcfd;
+    }
+
+    .spine div:last-child {
+      border-right: 0;
+    }
+
+    .spine span {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .gate {
+      border: 1px solid var(--line);
+      padding: 16px;
+      background: var(--paper);
+    }
+
+    .gate h3 {
+      margin-top: 0;
+    }
+
+    .gate ul,
+    .scope ul {
+      margin: 10px 0 0;
+      padding-left: 20px;
+    }
+
+    .gate li,
+    .scope li {
+      margin-bottom: 8px;
+    }
+
+    .scope {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 16px 18px;
+      margin: 16px 0 22px;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 860px) {
+      .status-grid,
+      .spine,
+      .checklist {
+        grid-template-columns: 1fr;
+      }
+
+      .spine div {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .spine div:last-child {
+        border-bottom: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>The Dynamic Cutoff Conjecture for GWR/DNI Prime Walks</h1>
+      <p class="dek">
+        The main bounded-compression branch asks whether the exact unbounded
+        GWR/DNI gap scan always compresses to the finite local window
+        <code>C(q) = max(64, ceil(0.5 * log(q)^2))</code>.
+      </p>
+    </header>
+
+    <section>
+      <h2>Headline State</h2>
+      <p>
+        The unbounded DNI/GWR transition is exact by construction. The open
+        theorem target is the bounded compression layer: whether every
+        prime gap's selected interior witness is reached before the dynamic
+        cutoff when scanning from the known right prime <code>q</code> into
+        the next gap.
+      </p>
+      <div class="law">
+        <strong>Research question.</strong>
+        Does every prime gap's GWR/DNI-selected interior witness occur before
+        <code>C(q) = max(64, ceil(0.5 * log(q)^2))</code> when scanning from
+        the known right prime <code>q</code> into the next gap?
+      </div>
+
+      <div class="status-grid" aria-label="Research status separation">
+        <div class="status">
+          <strong>Theorem</strong>
+          <p>
+            <code>PROOF.md</code> controls theorem status. The direct
+            next-prime divisor-count rule and the selected-integer GWR theorem
+            are universal under their stated hypotheses.
+          </p>
+        </div>
+        <div class="status measured">
+          <strong>Measured</strong>
+          <p>
+            The dynamic bounded rule has no counterexample through
+            <code>q &lt;= 10^7</code> on <code>664,575</code> tested gaps, with
+            maximum exact peak offset <code>60</code>.
+          </p>
+        </div>
+        <div class="status unresolved">
+          <strong>Unresolved</strong>
+          <p>
+            Universality of the cutoff coefficient <code>0.5</code> is open.
+            The coefficient either becomes a theorem or yields a first
+            counterexample.
+          </p>
+        </div>
+        <div class="status invalidated">
+          <strong>Invalidated</strong>
+          <p>
+            The fixed cutoff map <code>{2:44, 4:60, 6:60}</code> is false.
+            The committed counterexample has square offset <code>72</code> at
+            <code>q = 24,098,209</code>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>PGS Spine</h2>
+      <p>
+        The bounded-compression branch should stay in PGS-native order:
+        prime-gap state first, divisor-count invariant second, GWR/DNI rule
+        third, and then resolved, unresolved, or invalidated status.
+      </p>
+      <div class="spine" aria-label="Bounded compression research spine">
+        <div>
+          <span>Square Exclusion</span>
+          Prime-square offsets are the dangerous <code>d=3</code> obstruction
+          family for the dominant <code>d=4</code> layer.
+        </div>
+        <div>
+          <span>First d=4 Arrival</span>
+          On the documented surface, if no interior prime square appears and
+          an interior <code>d=4</code> integer appears, the first such integer wins.
+        </div>
+        <div>
+          <span>Dynamic Cutoff</span>
+          The cutoff envelope is <code>max(64, ceil(0.5 * log(q)^2))</code>.
+          The theorem pressure is on extremal utilization.
+        </div>
+        <div>
+          <span>Bounded Walk</span>
+          A proved bound turns the exact but unbounded local oracle into a
+          bounded deterministic prime-walk law.
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Current Evidence</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Surface</th>
+            <th>Result</th>
+            <th>Status Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bounded-vs-unbounded compare scan</td>
+            <td>
+              <code>664,575</code> tested gaps through <code>q &lt;= 10^7</code>,
+              no counterexample, max exact peak offset <code>60</code>, max cutoff
+              utilization <code>0.6153846153846154</code>.
+            </td>
+            <td>Finite certification of the bounded compression layer.</td>
+          </tr>
+          <tr>
+            <td>Recursive decade ladder</td>
+            <td>
+              <code>860</code> measured recursive steps from <code>10^2</code>
+              through <code>10^18</code>, exact hit rate <code>1.0</code>, zero
+              skipped gaps.
+            </td>
+            <td>Implementation evidence for the bounded walker on sampled regimes.</td>
+          </tr>
+          <tr>
+            <td>Square dynamic-cutoff search</td>
+            <td>
+              <code>5,761,454</code> odd prime squares through
+              <code>p &lt;= 10^8</code>, no dynamic-cutoff counterexample, max
+              square-branch utilization <code>0.8120300751879699</code>.
+            </td>
+            <td>Focused pressure on the dangerous square branch.</td>
+          </tr>
+          <tr>
+            <td>Dominant <code>d=4</code> scan</td>
+            <td>
+              Exact <code>2 * 10^7</code> scan: <code>959,730</code>
+              <code>d=4</code> selected gaps out of <code>1,163,198</code>,
+              zero first-<code>d=4</code> misses, zero interior-square violations.
+            </td>
+            <td>Measured reduction target for proof pressure.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Three Gates</h2>
+      <div class="checklist">
+        <article class="gate">
+          <h3>1. Exact Compare Scan Extension</h3>
+          <p>
+            Push the bounded-vs-unbounded counterexample scan beyond
+            <code>10^7</code> while preserving its narrow contract.
+          </p>
+          <ul>
+            <li>Input: consecutive right primes in increasing order.</li>
+            <li>Reference: full unbounded GWR/DNI gap scan.</li>
+            <li>Output: first counterexample or certified finite range.</li>
+          </ul>
+        </article>
+
+        <article class="gate">
+          <h3>2. Square-Branch Extremal Catalog</h3>
+          <p>
+            Treat prime-square offsets as the dangerous family and record the
+            actual envelope pressure.
+          </p>
+          <ul>
+            <li>Track utilization ratio <code>offset / C(q)</code>.</li>
+            <li>Record extremal squares and adjacent gap state.</li>
+            <li>Separate retreating, stable, and approaching frontier behavior.</li>
+          </ul>
+        </article>
+
+        <article class="gate">
+          <h3>3. Dominant d=4 Proof Attempt</h3>
+          <p>
+            Try to convert the observed square-exclusion and first-
+            <code>d=4</code> arrival reduction into a theorem or a finite
+            obstruction list.
+          </p>
+          <ul>
+            <li>Prove square exclusion for the <code>d=4</code> selected regime.</li>
+            <li>Prove first interior <code>d=4</code> dominance after exclusion.</li>
+            <li>If proof fails, isolate explicit obstruction families.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Acceptance Criteria</h2>
+      <div class="scope">
+        <ul>
+          <li>
+            A theorem result states exact hypotheses and proves the dynamic
+            cutoff bound under those hypotheses.
+          </li>
+          <li>
+            A falsification result records the first counterexample with
+            <code>q</code>, next endpoint, witness offset, cutoff, divisor-count
+            class, and square-branch state.
+          </li>
+          <li>
+            Every finite scan reports exact range, row count, maximum peak
+            offset, maximum utilization, and whether the result is measured
+            evidence rather than theorem proof.
+          </li>
+          <li>
+            No classical primality or factorization method chooses the PGS
+            output. Classical checks remain downstream audit only when present.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Canonical Commands</h2>
+      <p>
+        These commands are the current starting instruments. They should remain
+        narrow: no fallback search, no randomized sampling, and no alternate
+        inference path.
+      </p>
+      <pre><code>python3 research/04-bounded-compression/scripts/bounded_compression_falsification_runner.py \
+  --min-right-prime 11 \
+  --max-right-prime 1000000 \
+  --output-dir /tmp/bounded_compression_falsification_1e6</code></pre>
+      <pre><code>python3 research/04-bounded-compression/scripts/gwr_dni_cutoff_counterexample_scan.py \
+  --min-right-prime 11 \
+  --max-right-prime 10000000 \
+  --output-dir /tmp/gwr_dni_cutoff_counterexample_scan_1e7</code></pre>
+      <pre><code>python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py \
+  --min-prime 3 \
+  --max-prime 100000000 \
+  --output-dir /tmp/square_branch_dynamic_cutoff_search_1e8</code></pre>
+      <pre><code>pytest -q \
+  research/04-bounded-compression/tests/test_gwr_dni_cutoff_counterexample_scan.py \
+  research/02-gwr-dni/tests/test_gwr_dni_recursive_walk.py \
+  research/02-gwr-dni/tests/test_gwr_dni_recursive_gap_scaling_sweep.py</code></pre>
+    </section>
+
+    <section>
+      <h2>Source Anchors</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Anchor</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="../../predictor/gwr_dni_exact_recursive_prime_walk_note.md">Exact DNI/GWR Recursive Prime Walk</a></td>
+            <td>Current bounded and unbounded recursive-walk status.</td>
+          </tr>
+          <tr>
+            <td><a href="../../../../PROOF.md">PROOF.md</a></td>
+            <td>Controlling theorem reference for divisor-count next-prime and GWR selected-integer status.</td>
+          </tr>
+          <tr>
+            <td><a href="../../../../research/02-gwr-dni/docs/dominant_d4_arrival_reduction_findings.md">Dominant d=4 Arrival-Reduction Findings</a></td>
+            <td>Measured dominant-regime reduction evidence.</td>
+          </tr>
+          <tr>
+            <td><a href="../../../../research/00-index/continuity/START_HERE.md">Codex Continuity Start Here</a></td>
+            <td>Future-session bootstrap and state-separation contract.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="note">
+        This document is an execution surface for the bounded-compression
+        branch. It does not promote finite scan evidence into theorem proof.
+      </p>
+    </section>
+  </main>
+</body>
+</html>

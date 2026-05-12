@@ -6,7 +6,8 @@ The repository is a single monorepo with one shared contract and separate implem
 
 - `spec/` holds the invariant algorithm contract and the deterministic golden vectors.
 - `src/python/` is the only implementation subtree in `v0.1.0`.
-- `tests/python/` and `benchmarks/python/` validate only the Python path.
+- `tests/python/` holds package-level Python contract tests.
+- Research scripts, tests, and outputs live in chapter directories under `research/`.
 
 ## Future Ports
 
@@ -16,8 +17,7 @@ Java and Apple-Silicon-only C99/GMP/MPFR will land as sibling subtrees:
 - `src/c/`
 - `tests/java/`
 - `tests/c/`
-- `benchmarks/java/`
-- `benchmarks/c/`
+- chapter-owned benchmark scripts under `research/<chapter>/scripts/`
 
 The Python tree will not move when those ports arrive.
 
@@ -30,6 +30,6 @@ The Python tree will not move when those ports arrive.
 
 ## Artifact Separation
 
-- Generated benchmark outputs go to `benchmarks/output/<language>/`.
-- Those outputs are gitignored.
-- Only curated summaries and deterministic golden vectors are committed.
+- Research outputs go to `research/<chapter>/output/`.
+- Package-level generated outputs should stay out of the root unless they are promoted to curated evidence.
+- Only curated summaries, deterministic golden vectors, and chapter-owned evidence artifacts are committed.

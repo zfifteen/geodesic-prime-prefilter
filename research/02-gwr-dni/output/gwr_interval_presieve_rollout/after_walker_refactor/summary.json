@@ -1,0 +1,53 @@
+{
+  "created_at": "2026-05-09",
+  "phase": "after_walker_refactor",
+  "module": "research/02-gwr-dni/scripts/gwr_dni_recursive_walk.py",
+  "baseline_summary": "output/gwr_interval_presieve_rollout/baseline_before/summary.json",
+  "rows": [
+    {
+      "anchor": 10000000,
+      "gap_count": 5000,
+      "first_q": 10000019,
+      "last_q": 10080061,
+      "baseline_clipped_scalar_seconds": 1.4904802920063958,
+      "baseline_bounded_live_seconds": 1.5896235409891233,
+      "presieved_capped_seconds": 0.3054672080324963,
+      "baseline_clipped_ms_per_gap": 0.2980960584012792,
+      "baseline_bounded_live_ms_per_gap": 0.31792470819782465,
+      "presieved_capped_ms_per_gap": 0.06109344160649925,
+      "presieved_speedup_vs_clipped": 4.8793463023626265,
+      "presieved_speedup_vs_bounded_live": 5.203908960401457,
+      "exact_match": true
+    },
+    {
+      "anchor": 100000000,
+      "gap_count": 5000,
+      "first_q": 100000007,
+      "last_q": 100092557,
+      "baseline_clipped_scalar_seconds": 1.7759640829171985,
+      "baseline_bounded_live_seconds": 2.2552310000173748,
+      "presieved_capped_seconds": 0.4367154589854181,
+      "baseline_clipped_ms_per_gap": 0.3551928165834397,
+      "baseline_bounded_live_ms_per_gap": 0.45104620000347495,
+      "presieved_capped_ms_per_gap": 0.08734309179708362,
+      "presieved_speedup_vs_clipped": 4.066638921010804,
+      "presieved_speedup_vs_bounded_live": 5.1640741210690155,
+      "exact_match": true
+    },
+    {
+      "anchor": 1000000000000,
+      "gap_count": 1000,
+      "first_q": 1000000000039,
+      "last_q": 1000000027577,
+      "baseline_clipped_scalar_seconds": 1.3740352920722216,
+      "baseline_bounded_live_seconds": 4.486282333033159,
+      "presieved_capped_seconds": 0.44928854098543525,
+      "baseline_clipped_ms_per_gap": 1.3740352920722216,
+      "baseline_bounded_live_ms_per_gap": 4.486282333033159,
+      "presieved_capped_ms_per_gap": 0.44928854098543525,
+      "presieved_speedup_vs_clipped": 3.0582469097887905,
+      "presieved_speedup_vs_bounded_live": 9.985303260112731,
+      "exact_match": true
+    }
+  ]
+}

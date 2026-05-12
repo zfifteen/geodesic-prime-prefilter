@@ -73,7 +73,7 @@ If the PGS model bounds the least-factor maximum with $R^2 > 0.9$ and residuals 
 I can sketch the analysis loop you would run on your logs:
 
 ```python
-# pseudocode — run inside your benchmarks/python/predictor folder
+# pseudocode — run inside your research/02-gwr-dni/scripts folder
 for record in pgs_generator_probes:
     p, s0, chain = record.anchor, record.shadow_seed, record.chain_state
     false_nodes = [n for n in chain if not n.is_true_boundary]

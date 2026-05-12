@@ -504,7 +504,7 @@ r^2 - p <= max(64, ceil(0.5 * log(r^2)^2)).
 The Interior Maximizer Theorem does not imply this distance bound. In the
 square branch, it identifies the first interior prime square as the selected
 witness after the gap interior is fixed. It does not bound the distance from
-the left endpoint `p` to that first interior prime square.
+the left boundary prime `p` to that first interior prime square.
 
 Thus the square branch is closed exactly by the following independent theorem:
 
@@ -519,6 +519,7 @@ dynamic cutoff theorem remains unresolved on the square branch.
 ## Audit Tables
 
 The direct next-prime theorem and the Interior Maximizer Theorem are universal.
+The theorems above are universal.
 The finite bounded-compression base is a finite computational lemma. The
 residual K=128 lemma is a finite residual branch-elimination theorem. The
 square-branch reduction identifies the exact remaining theorem obligation. The
@@ -540,7 +541,7 @@ earlier integers, with `0` unresolved cases. Its median offset was `1`, its
 
 ## Document Status
 
-`PROOF.md` is the single live proof reference for the direct deterministic
-next-prime theorem, the prime-gap maximizer theorem, and the finite
-bounded-compression base. It also records the residual K=128 first-d4
-branch-elimination lemma and the square-branch reduction obligation.
+`PROOF.md` is the single live proof reference for the direct deterministic next-prime theorem and the prime-gap maximizer theorem.
+
+It also records the finite bounded-compression base, the residual K=128
+first-d4 branch-elimination lemma, and the square-branch reduction obligation.

@@ -20,9 +20,9 @@ That closure law lets the unbounded DNI/GWR walker recover the next prime exactl
 
 On the current verified surface, this supports an exact deterministic no-skip sequential walk. The transition rule is exact on `743,075 / 743,075` rows from the combined $10^6 + 10^7$ next-gap surface. The recursive walk records `664,578 / 664,578` exact consecutive next-prime recoveries from prime `11` through prime `10,000,121` with `0` skipped gaps. The sampled decade ladder from $10^2$ through $10^18$ also stayed at exact hit rate `1.0` with `0` skipped gaps across `860` measured recursive steps.
 
-The predictor note is documented in [docs/research/predictor/gwr_dni_exact_recursive_prime_walk_note.md](docs/research/predictor/gwr_dni_exact_recursive_prime_walk_note.md), and the live implementation is [benchmarks/python/predictor/gwr_dni_recursive_walk.py](benchmarks/python/predictor/gwr_dni_recursive_walk.py).
+The predictor note is documented in [research/02-gwr-dni/docs/gwr_dni_exact_recursive_prime_walk_note.md](research/02-gwr-dni/docs/gwr_dni_exact_recursive_prime_walk_note.md), and the live implementation is [research/02-gwr-dni/scripts/gwr_dni_recursive_walk.py](research/02-gwr-dni/scripts/gwr_dni_recursive_walk.py).
 
-![Exact DNI recursive-walk performance](docs/research/predictor/figures/gwr_dni_recursive_gap_scaling_performance.png)
+![Exact DNI recursive-walk performance](research/02-gwr-dni/assets/gwr_dni_recursive_gap_scaling_performance.png)
 
 ## No-Later-Simpler-Composite
 
@@ -42,7 +42,7 @@ $$q\le T_{<}(w)$$
 
 This is an exact corollary of the proved GWR theorem. A separate question is whether it can stand on its own as a direct prime-gap theorem without using GWR as the parent result. The current documented surface includes a deterministic even-band ladder at every decade from $10^8$ through $10^{18}$ with zero observed violations.
 
-See [PROOF.md](PROOF.md), [gwr/findings/closure_constraint_findings.md](gwr/findings/closure_constraint_findings.md), and [docs/current_headline_results.md](docs/current_headline_results.md).
+See [PROOF.md](PROOF.md), [research/02-gwr-dni/docs/closure_constraint_findings.md](research/02-gwr-dni/docs/closure_constraint_findings.md), and [docs/current_headline_results.md](docs/current_headline_results.md).
 
 ## Dynamic Cutoff and Square-Branch Falsification
 
@@ -62,7 +62,7 @@ Through the direct square-branch audit at `p <= 10^6`, the repository tested `78
 
 The compare mode in the recursive walker is the live falsification instrument. It runs the bounded and unbounded walkers in lockstep and records any bounded miss immediately.
 
-See [benchmarks/python/predictor/square_branch_gap_audit.py](benchmarks/python/predictor/square_branch_gap_audit.py), [benchmarks/python/predictor/gwr_dni_recursive_walk.py](benchmarks/python/predictor/gwr_dni_recursive_walk.py), and [docs/research/predictor/gwr_dni_exact_recursive_prime_walk_note.md](docs/research/predictor/gwr_dni_exact_recursive_prime_walk_note.md).
+See [research/04-bounded-compression/scripts/square_branch_gap_audit.py](research/04-bounded-compression/scripts/square_branch_gap_audit.py), [research/02-gwr-dni/scripts/gwr_dni_recursive_walk.py](research/02-gwr-dni/scripts/gwr_dni_recursive_walk.py), and [research/02-gwr-dni/docs/gwr_dni_exact_recursive_prime_walk_note.md](research/02-gwr-dni/docs/gwr_dni_exact_recursive_prime_walk_note.md).
 
 ## Dominant d=4 Reduction
 
@@ -74,4 +74,4 @@ The stricter semiprime-only slogan is false. A thin prime-cube exception family 
 
 The dominant `d=4` reduction is exact on full scans through `2x10^7`.
 
-See [gwr/findings/dominant_d4_arrival_reduction_findings.md](gwr/findings/dominant_d4_arrival_reduction_findings.md) and [docs/current_headline_results.md](docs/current_headline_results.md).
+See [research/02-gwr-dni/docs/dominant_d4_arrival_reduction_findings.md](research/02-gwr-dni/docs/dominant_d4_arrival_reduction_findings.md) and [docs/current_headline_results.md](docs/current_headline_results.md).

@@ -1,0 +1,12 @@
+{
+  "bit_max": 60,
+  "bit_min": 47,
+  "case_count": 24,
+  "inward_higher_count": 2,
+  "n_containing_higher_count": 0,
+  "outward_fraction": 0.8,
+  "outward_higher_count": 8,
+  "outward_intrusion_index": 4.0,
+  "row_path": "research/06-cryptology-rsa/experiments/rsa/v2/output/grammar_evidence/exact_low_regime_grammar_rows.jsonl",
+  "rule_id": "exact_low_regime_grammar_evidence_v1"
+}

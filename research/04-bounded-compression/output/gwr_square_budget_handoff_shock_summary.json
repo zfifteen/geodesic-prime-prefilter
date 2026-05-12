@@ -1,0 +1,170 @@
+{
+  "title": "Prime-Square Interval Utilization and Next-Gap Semiprime Return",
+  "detail_csv": "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/03-gap-types/output/gwr_dni_gap_type_catalog_details.csv",
+  "power_range": [
+    12,
+    18
+  ],
+  "transition_count": 1778,
+  "baseline_log_loss": 0.5993080476093358,
+  "existing_matched_high_scale_handoff": {
+    "source_summary": "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/04-bounded-compression/output/gwr_square_phase_handoff_summary.json",
+    "low_next_triad_share": 0.6993865030674846,
+    "high_next_triad_share": 0.6595092024539877,
+    "lift": 0.03987730061349693,
+    "matched_total_weight_per_side": 652,
+    "matched_strata_count": 34
+  },
+  "pooled_phase_budget_bit": {
+    "label_definition": "Original retained-window pooled geometry median split from the prime-square utilization probe.",
+    "label_stats": {
+      "d4_high": {
+        "support": 730,
+        "next_triad_share": 0.6547945205479452
+      },
+      "d4_low": {
+        "support": 691,
+        "next_triad_share": 0.7120115774240231
+      },
+      "non_d4": {
+        "support": 357,
+        "next_triad_share": 0.6638655462184874
+      }
+    },
+    "log_loss_gain": 0.02777067574810843
+  },
+  "scale_neutral_phase_budget_bit": {
+    "label_definition": "For current d=4 rows, split U_square at the median inside each decade, factorization-type, selected-offset, first-admissible-offset cell.",
+    "label_stats": {
+      "d4_high": {
+        "support": 803,
+        "next_triad_share": 0.6662515566625156
+      },
+      "d4_low": {
+        "support": 618,
+        "next_triad_share": 0.7038834951456311
+      },
+      "non_d4": {
+        "support": 357,
+        "next_triad_share": 0.6638655462184874
+      }
+    },
+    "low_minus_high_lift": 0.037631938483115523,
+    "all_per_power_phase_gains_positive": true
+  },
+  "candidate_metrics": [
+    {
+      "candidate_id": "current_winner_parity",
+      "candidate_cardinality": 2,
+      "candidate_log_loss": 0.5851798659059969,
+      "log_loss_gain": 0.014128181703338849,
+      "per_power_log_loss_gain": {
+        "12": 0.021692604778378755,
+        "13": 0.02059487218324607,
+        "14": 0.02268550824981852,
+        "15": 0.03656851138325462,
+        "16": 0.02049161131779964,
+        "17": 0.024158199114457046,
+        "18": 0.019903184773112703
+      }
+    },
+    {
+      "candidate_id": "pooled_phase_budget_bit",
+      "candidate_cardinality": 3,
+      "candidate_log_loss": 0.5715373718612273,
+      "log_loss_gain": 0.02777067574810843,
+      "per_power_log_loss_gain": {
+        "12": 0.019193697065233994,
+        "13": 0.017514072948856096,
+        "14": 0.05141989178848605,
+        "15": 0.005703496592807444,
+        "16": 0.023699699761209114,
+        "17": 0.03065972832837105,
+        "18": 0.013615535915740218
+      }
+    },
+    {
+      "candidate_id": "scale_neutral_phase_budget_bit",
+      "candidate_cardinality": 3,
+      "candidate_log_loss": 0.5842595416036636,
+      "log_loss_gain": 0.015048506005672202,
+      "per_power_log_loss_gain": {
+        "12": 0.04428982101348555,
+        "13": 0.03495952595458918,
+        "14": 0.03699516885344345,
+        "15": 0.026144955227579203,
+        "16": 0.0174902931896459,
+        "17": 0.02870658242193269,
+        "18": 0.018098564088888436
+      }
+    },
+    {
+      "candidate_id": "previous_reduced_state",
+      "candidate_cardinality": 17,
+      "candidate_log_loss": 0.5089595517446006,
+      "log_loss_gain": 0.09034849586473515,
+      "per_power_log_loss_gain": {
+        "12": 0.13813065699679,
+        "13": 0.13674707739908892,
+        "14": 0.08482995166964963,
+        "15": 0.10289353904373932,
+        "16": 0.07016182598158405,
+        "17": 0.08143274099790099,
+        "18": 0.05875048777261371
+      }
+    },
+    {
+      "candidate_id": "current_winner_parity+previous_reduced_state",
+      "candidate_cardinality": 33,
+      "candidate_log_loss": 0.49051900213024313,
+      "log_loss_gain": 0.10878904547909263,
+      "per_power_log_loss_gain": {
+        "12": 0.14038251350025321,
+        "13": 0.14342141406617337,
+        "14": 0.09406805476452912,
+        "15": 0.11409742982553489,
+        "16": 0.07301655468082124,
+        "17": 0.10700752593353191,
+        "18": 0.06221821972372826
+      }
+    },
+    {
+      "candidate_id": "current_winner_parity+previous_reduced_state+pooled_phase_budget_bit",
+      "candidate_cardinality": 94,
+      "candidate_log_loss": 0.46745222860157193,
+      "log_loss_gain": 0.13185581900776383,
+      "per_power_log_loss_gain": {
+        "12": 0.14322835626736613,
+        "13": 0.14474272483791029,
+        "14": 0.10662009934557981,
+        "15": 0.11399961470743603,
+        "16": 0.07457796028174324,
+        "17": 0.11913273138132452,
+        "18": 0.06510595924790391
+      }
+    },
+    {
+      "candidate_id": "current_winner_parity+previous_reduced_state+scale_neutral_phase_budget_bit",
+      "candidate_cardinality": 94,
+      "candidate_log_loss": 0.47453004911140195,
+      "log_loss_gain": 0.1247779984979338,
+      "per_power_log_loss_gain": {
+        "12": 0.1458810518811356,
+        "13": 0.1498486728693481,
+        "14": 0.1044133446063667,
+        "15": 0.11040172175180885,
+        "16": 0.07859132335565033,
+        "17": 0.11777717182577352,
+        "18": 0.06933783232684398
+      }
+    }
+  ],
+  "headline_metrics": {
+    "scale_neutral_phase_gain": 0.015048506005672202,
+    "current_winner_parity_gain": 0.014128181703338849,
+    "parity_previous_state_gain": 0.10878904547909263,
+    "parity_previous_state_scale_neutral_phase_gain": 0.1247779984979338
+  },
+  "method_note": "The decade-normalized split is an in-surface retained-window demonstration. The next held-out test is a frozen train-below-target holdout.",
+  "runtime_seconds": 0.37654709815979004
+}

@@ -1,0 +1,586 @@
+#!/usr/bin/env python3
+"""Experimental PGS graph prime generator CLI."""
+
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+import time
+from math import isqrt
+from pathlib import Path
+from typing import Any
+
+try:
+    from .boundary_certificate_graph_solver import (
+        RULE_SET,
+        UNRESOLVED_LATER_DOMINATION_RELATION,
+        UNRESOLVED_LATER_DOMINATION_REPAIRED_V4_RELATION,
+        UNRESOLVED_LATER_DOMINATION_V2_RELATION,
+        UNRESOLVED_LATER_DOMINATION_V3_RELATION,
+        UNRESOLVED_LATER_DOMINATION_V4_RELATION,
+        UNRESOLVED_LATER_DOMINATION_V5_RELATION,
+        base_relations,
+        candidate_nodes,
+        propagate_005a_r,
+        propagate_unresolved_later_domination,
+        propagate_unresolved_later_domination_repaired_v4,
+        propagate_unresolved_later_domination_v2,
+        propagate_unresolved_later_domination_v3,
+        propagate_unresolved_later_domination_v4,
+        propagate_unresolved_later_domination_v5,
+        relation_count,
+    )
+    from .composite_exclusion_boundary_probe import (
+        CANDIDATE_STATUS_REJECTED,
+        CANDIDATE_STATUS_RESOLVED_SURVIVOR,
+        CANDIDATE_STATUS_UNRESOLVED,
+        WHEEL_OPEN_RESIDUES_MOD30,
+        bounded_composite_witness,
+        certified_divisor_class,
+        eliminate_candidates,
+        power_closure_witness,
+    )
+    from .offline_pgs_certificate_emitter import anchor_primes, first_prime_after
+    from .resolved_boundary_lock_separator_probe import jsonable
+except ImportError:  # pragma: no cover - direct script execution
+    MODULE_DIR = Path(__file__).resolve().parent
+    if str(MODULE_DIR) not in sys.path:
+        sys.path.insert(0, str(MODULE_DIR))
+    from boundary_certificate_graph_solver import (
+        RULE_SET,
+        UNRESOLVED_LATER_DOMINATION_RELATION,
+        UNRESOLVED_LATER_DOMINATION_REPAIRED_V4_RELATION,
+        UNRESOLVED_LATER_DOMINATION_V2_RELATION,
+        UNRESOLVED_LATER_DOMINATION_V3_RELATION,
+        UNRESOLVED_LATER_DOMINATION_V4_RELATION,
+        UNRESOLVED_LATER_DOMINATION_V5_RELATION,
+        base_relations,
+        candidate_nodes,
+        propagate_005a_r,
+        propagate_unresolved_later_domination,
+        propagate_unresolved_later_domination_repaired_v4,
+        propagate_unresolved_later_domination_v2,
+        propagate_unresolved_later_domination_v3,
+        propagate_unresolved_later_domination_v4,
+        propagate_unresolved_later_domination_v5,
+        relation_count,
+    )
+    from composite_exclusion_boundary_probe import (
+        CANDIDATE_STATUS_REJECTED,
+        CANDIDATE_STATUS_RESOLVED_SURVIVOR,
+        CANDIDATE_STATUS_UNRESOLVED,
+        WHEEL_OPEN_RESIDUES_MOD30,
+        bounded_composite_witness,
+        certified_divisor_class,
+        eliminate_candidates,
+        power_closure_witness,
+    )
+    from offline_pgs_certificate_emitter import anchor_primes, first_prime_after
+    from resolved_boundary_lock_separator_probe import jsonable
+
+
+DEFAULT_OUTPUT_DIR = Path("research/01-generator/output/prime_inference_generator")
+RECORDS_FILENAME = "experimental_graph_prime_generator_records.jsonl"
+SUMMARY_FILENAME = "experimental_graph_prime_generator_summary.json"
+AUDIT_SUMMARY_FILENAME = "experimental_graph_prime_generator_audit_summary.json"
+SOLVER_VERSIONS = ("v3", "v6", "v7-bounded", "risky-v5", "filtered-v5")
+RESEARCH_SOLVER_VERSIONS = ("risky-v5", "filtered-v5")
+
+
+def ceil_sqrt(value: int) -> int:
+    """Return the least integer whose square is at least value."""
+    root = isqrt(value)
+    if root * root == value:
+        return root
+    return root + 1
+
+
+def required_v7_witness_bound(max_anchor: int, candidate_bound: int) -> int:
+    """Return the sieve-complete witness bound for the requested surface."""
+    return ceil_sqrt(max_anchor + candidate_bound)
+
+
+def build_parser() -> argparse.ArgumentParser:
+    """Build the experimental graph generator CLI."""
+    parser = argparse.ArgumentParser(
+        description="Emit experimental PGS graph inferred-prime records.",
+    )
+    parser.add_argument("--solver-version", choices=SOLVER_VERSIONS, default="v6")
+    parser.add_argument("--start-anchor", type=int, default=11)
+    parser.add_argument("--max-anchor", type=int, default=100_000)
+    parser.add_argument("--candidate-bound", type=int, default=128)
+    parser.add_argument("--witness-bound", type=int, default=127)
+    parser.add_argument("--emit-target", type=int, default=None)
+    parser.add_argument("--audit", action="store_true")
+    parser.add_argument("--fail-on-audit-failure", action="store_true")
+    parser.add_argument("--allow-research-mode", action="store_true")
+    parser.add_argument("--print-dashboard", action="store_true")
+    parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
+    return parser
+
+
+def relation_counts(relations: list[dict[str, Any]]) -> dict[str, int]:
+    """Return the relation counters exposed on generator records."""
+    return {
+        "new_relation_applied_count": (
+            relation_count(relations, UNRESOLVED_LATER_DOMINATION_RELATION)
+            + relation_count(relations, UNRESOLVED_LATER_DOMINATION_V2_RELATION)
+            + relation_count(relations, UNRESOLVED_LATER_DOMINATION_V3_RELATION)
+            + relation_count(relations, UNRESOLVED_LATER_DOMINATION_V4_RELATION)
+            + relation_count(relations, UNRESOLVED_LATER_DOMINATION_V5_RELATION)
+            + relation_count(
+                relations,
+                UNRESOLVED_LATER_DOMINATION_REPAIRED_V4_RELATION,
+            )
+        ),
+        "v1_relation_applied_count": relation_count(
+            relations,
+            UNRESOLVED_LATER_DOMINATION_RELATION,
+        ),
+        "v2_relation_applied_count": relation_count(
+            relations,
+            UNRESOLVED_LATER_DOMINATION_V2_RELATION,
+        ),
+        "v3_relation_applied_count": relation_count(
+            relations,
+            UNRESOLVED_LATER_DOMINATION_V3_RELATION,
+        ),
+        "v4_relation_applied_count": relation_count(
+            relations,
+            UNRESOLVED_LATER_DOMINATION_V4_RELATION,
+        ),
+        "v5_relation_applied_count": relation_count(
+            relations,
+            UNRESOLVED_LATER_DOMINATION_V5_RELATION,
+        ),
+        "repaired_relation_applied_count": relation_count(
+            relations,
+            UNRESOLVED_LATER_DOMINATION_REPAIRED_V4_RELATION,
+        ),
+    }
+
+
+def positive_nonboundary_filter_reasons(
+    candidate_q_hat: int,
+    witness_bound: int,
+) -> list[str]:
+    """Return label-free positive reasons that disqualify an emitted candidate."""
+    reasons: list[str] = []
+    if (
+        bounded_composite_witness(candidate_q_hat) is not None
+        or bounded_divisor_witness(candidate_q_hat, witness_bound) is not None
+    ):
+        reasons.append("bounded_composite_witness")
+    if power_closure_witness(candidate_q_hat) is not None:
+        reasons.append("power_witness")
+    if certified_divisor_class(candidate_q_hat, witness_bound) is not None:
+        reasons.append("certified_divisor_class_nonboundary_certificate")
+    if candidate_q_hat % 30 not in WHEEL_OPEN_RESIDUES_MOD30:
+        reasons.append("wheel_closed_status")
+    return reasons
+
+
+def bounded_divisor_witness(candidate_q_hat: int, witness_bound: int) -> int | None:
+    """Return a concrete divisor within the active witness bound, if present."""
+    for factor in range(2, witness_bound + 1):
+        if factor < candidate_q_hat and candidate_q_hat % factor == 0:
+            return factor
+    return None
+
+
+def solve_anchor_for_version(
+    anchor_p: int,
+    candidate_bound: int,
+    witness_bound: int,
+    solver_version: str,
+) -> dict[str, Any] | None:
+    """Return one experimental graph record, or None when the graph abstains."""
+    row = eliminate_candidates(
+        anchor_p,
+        candidate_bound,
+        enable_single_hole_positive_witness_closure=True,
+        witness_bound=witness_bound,
+        enable_carrier_locked_pressure_ceiling=True,
+        carrier_lock_predicate="unresolved_alternatives_before_threat",
+        enable_higher_divisor_pressure_locked_absorption=False,
+    )
+    nodes = candidate_nodes(row, witness_bound)
+    relations = base_relations(row)
+    relations.extend(propagate_005a_r(anchor_p, nodes, witness_bound))
+    relations.extend(
+        propagate_unresolved_later_domination(anchor_p, nodes, witness_bound)
+    )
+    relations.extend(
+        propagate_unresolved_later_domination_v2(anchor_p, nodes, witness_bound)
+    )
+    relations.extend(
+        propagate_unresolved_later_domination_v3(anchor_p, nodes, witness_bound)
+    )
+    effective_solver_version = (
+        "risky-v5"
+        if solver_version in {"filtered-v5", "v7-bounded"}
+        else solver_version
+    )
+    if effective_solver_version == "v6":
+        relations.extend(
+            propagate_unresolved_later_domination_repaired_v4(
+                anchor_p,
+                nodes,
+                row,
+                witness_bound,
+            )
+        )
+    if effective_solver_version == "risky-v5":
+        relations.extend(
+            propagate_unresolved_later_domination_v4(
+                anchor_p,
+                nodes,
+                witness_bound,
+            )
+        )
+        relations.extend(
+            propagate_unresolved_later_domination_v5(
+                anchor_p,
+                nodes,
+                witness_bound,
+            )
+        )
+
+    resolved_offsets = [
+        offset
+        for offset, node in sorted(nodes.items())
+        if node["status"] == CANDIDATE_STATUS_RESOLVED_SURVIVOR
+    ]
+    unresolved_offsets = [
+        offset
+        for offset, node in sorted(nodes.items())
+        if node["status"] == CANDIDATE_STATUS_UNRESOLVED
+    ]
+    if len(resolved_offsets) != 1 or unresolved_offsets:
+        return None
+
+    boundary_offset = int(resolved_offsets[0])
+    carrier = nodes[boundary_offset]["carrier"]
+    return {
+        "record_type": "PGS_INFERRED_PRIME_EXPERIMENTAL_GRAPH",
+        "inference_status": (
+            "INFERRED_BY_BOUNDARY_CERTIFICATE_GRAPH_"
+            + solver_version.upper().replace("-", "_")
+        ),
+        "rule_set": RULE_SET,
+        "solver_version": effective_solver_version,
+        "anchor_p": anchor_p,
+        "inferred_prime_q_hat": anchor_p + boundary_offset,
+        "boundary_offset": boundary_offset,
+        "absorbed_candidates": [
+            offset for offset, node in sorted(nodes.items()) if bool(node["absorbed"])
+        ],
+        "rejected_candidates": [
+            offset
+            for offset, node in sorted(nodes.items())
+            if node["status"] == CANDIDATE_STATUS_REJECTED
+        ],
+        "resolved_candidates_after_solve": resolved_offsets,
+        "unresolved_candidates_after_solve": unresolved_offsets,
+        "production_approved": False,
+        "cryptographic_use_approved": False,
+        "audit_required": True,
+        "classical_audit_required": True,
+        "classical_audit_status": "NOT_RUN",
+        "candidate_bound": candidate_bound,
+        "witness_bound": witness_bound,
+        "gwr_carrier": carrier["carrier_w"],
+        "gwr_carrier_offset": carrier["carrier_offset"],
+        "gwr_carrier_d": carrier["carrier_d"],
+        "gwr_carrier_family": carrier["carrier_family"],
+        **relation_counts(relations),
+    }
+
+
+def emit_records(
+    solver_version: str,
+    start_anchor: int,
+    max_anchor: int,
+    candidate_bound: int,
+    witness_bound: int,
+    emit_target: int | None,
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    """Emit graph records for one solver version."""
+    started = time.perf_counter()
+    records: list[dict[str, Any]] = []
+    seen: set[tuple[int, int]] = set()
+    filter_reason_counts: dict[str, int] = {}
+    first_filtered_examples: list[dict[str, Any]] = []
+    risky_input_count = 0
+    filtered_count = 0
+    anchors_scanned = 0
+    final_anchor_scanned: int | None = None
+    for anchor_p in anchor_primes(start_anchor, max_anchor):
+        anchors_scanned += 1
+        final_anchor_scanned = anchor_p
+        record = solve_anchor_for_version(
+            anchor_p,
+            candidate_bound,
+            witness_bound,
+            solver_version,
+        )
+        if record is None:
+            continue
+        if solver_version in {"filtered-v5", "v7-bounded"}:
+            risky_input_count += 1
+            filter_reasons = positive_nonboundary_filter_reasons(
+                int(record["inferred_prime_q_hat"]),
+                witness_bound,
+            )
+            if filter_reasons:
+                filtered_count += 1
+                for reason in filter_reasons:
+                    filter_reason_counts[reason] = (
+                        filter_reason_counts.get(reason, 0) + 1
+                    )
+                if len(first_filtered_examples) < 20:
+                    first_filtered_examples.append(
+                        {
+                            "anchor_p": int(record["anchor_p"]),
+                            "inferred_prime_q_hat": int(
+                                record["inferred_prime_q_hat"]
+                            ),
+                            "boundary_offset": int(record["boundary_offset"]),
+                            "filter_status": (
+                                "FILTERED_POSITIVE_NONBOUNDARY_CANDIDATE"
+                            ),
+                            "filter_reasons": filter_reasons,
+                        }
+                    )
+                continue
+            record["solver_version"] = solver_version
+            record["inference_status"] = (
+                "INFERRED_BY_BOUNDARY_CERTIFICATE_GRAPH_"
+                + solver_version.upper().replace("-", "_")
+            )
+            record["filter_status"] = "PASSED_POSITIVE_NONBOUNDARY_FILTER"
+            record["filter_reasons"] = []
+        key = (int(record["anchor_p"]), int(record["inferred_prime_q_hat"]))
+        if key in seen:
+            continue
+        seen.add(key)
+        records.append(record)
+        if emit_target is not None and len(records) >= emit_target:
+            break
+
+    abstained_count = anchors_scanned - len(records)
+    summary = {
+        "record_type": "PGS_EXPERIMENTAL_GRAPH_GENERATOR_SUMMARY",
+        "mode": "experimental_graph_prime_generator",
+        "rule_set": RULE_SET,
+        "solver_version": solver_version,
+        "start_anchor": start_anchor,
+        "max_anchor": max_anchor,
+        "final_anchor_scanned": final_anchor_scanned,
+        "candidate_bound": candidate_bound,
+        "witness_bound": witness_bound,
+        "sieve_complete_witness_bound": required_v7_witness_bound(
+            max_anchor,
+            candidate_bound,
+        ),
+        "sieve_complete_witness_met": witness_bound
+        >= required_v7_witness_bound(max_anchor, candidate_bound),
+        "emit_target": emit_target,
+        "anchors_scanned": anchors_scanned,
+        "emitted_count": len(records),
+        "abstained_count": abstained_count,
+        "coverage_rate": 0.0 if anchors_scanned == 0 else len(records) / anchors_scanned,
+        "risky_input_count": risky_input_count
+        if solver_version in {"filtered-v5", "v7-bounded"}
+        else None,
+        "filtered_count": filtered_count
+        if solver_version in {"filtered-v5", "v7-bounded"}
+        else 0,
+        "filter_reason_counts": filter_reason_counts,
+        "first_filtered_examples": first_filtered_examples,
+        "audit_required": True,
+        "audit_confirmed": None,
+        "audit_failed": None,
+        "first_failure": None,
+        "generator_status": "AUDIT_NOT_RUN",
+        "production_approved": False,
+        "cryptographic_use_approved": False,
+        "runtime_seconds": time.perf_counter() - started,
+    }
+    return records, summary
+
+
+def audit_records(records: list[dict[str, Any]]) -> dict[str, Any]:
+    """Audit emitted graph records after emission."""
+    started = time.perf_counter()
+    confirmed_count = 0
+    first_failure: dict[str, Any] | None = None
+    for record in records:
+        anchor_p = int(record["anchor_p"])
+        inferred_prime_q_hat = int(record["inferred_prime_q_hat"])
+        first_after_anchor = first_prime_after(anchor_p, inferred_prime_q_hat)
+        if first_after_anchor == inferred_prime_q_hat:
+            confirmed_count += 1
+            continue
+        if first_failure is None:
+            first_failure = {
+                "anchor_p": anchor_p,
+                "inferred_prime_q_hat": inferred_prime_q_hat,
+                "first_prime_after_anchor": first_after_anchor,
+            }
+    audited_count = len(records)
+    return {
+        "audited_count": audited_count,
+        "confirmed_count": confirmed_count,
+        "failed_count": audited_count - confirmed_count,
+        "first_failure": first_failure,
+        "validation_backend": "sympy.primerange_first_boundary",
+        "runtime_seconds": time.perf_counter() - started,
+    }
+
+
+def generator_status(summary: dict[str, Any]) -> str:
+    """Return the app-facing run status for the generator summary."""
+    if summary["audit_failed"] is None:
+        return "AUDIT_NOT_RUN"
+    if int(summary["audit_failed"]) > 0:
+        return "AUDIT_FAILED"
+    if summary["solver_version"] == "v7-bounded":
+        return "BOUNDED_ZERO_FAILURE_AUDITED"
+    if summary["solver_version"] in RESEARCH_SOLVER_VERSIONS:
+        return "RESEARCH_ZERO_FAILURE_AUDITED"
+    return "SAFE_ZERO_FAILURE_AUDITED"
+
+
+def write_artifacts(
+    records: list[dict[str, Any]],
+    summary: dict[str, Any],
+    audit_summary: dict[str, Any] | None,
+    output_dir: Path,
+) -> dict[str, Path]:
+    """Write LF-terminated generator artifacts."""
+    output_dir.mkdir(parents=True, exist_ok=True)
+    records_path = output_dir / RECORDS_FILENAME
+    with records_path.open("w", encoding="utf-8", newline="\n") as handle:
+        for record in records:
+            handle.write(json.dumps(jsonable(record), sort_keys=True) + "\n")
+
+    summary_path = output_dir / SUMMARY_FILENAME
+    summary_path.write_text(
+        json.dumps(jsonable(summary), indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    paths = {"records_path": records_path, "summary_path": summary_path}
+    if audit_summary is not None:
+        audit_path = output_dir / AUDIT_SUMMARY_FILENAME
+        audit_path.write_text(
+            json.dumps(jsonable(audit_summary), indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+        paths["audit_summary_path"] = audit_path
+    return paths
+
+
+def dashboard_lines(
+    summary: dict[str, Any],
+    artifact_paths: dict[str, Path] | None = None,
+) -> list[str]:
+    """Return concise terminal dashboard lines for one generator run."""
+    lines = [
+        "PGS experimental graph generator",
+        f"solver_version: {summary['solver_version']}",
+        f"anchors_scanned: {summary['anchors_scanned']}",
+        f"emitted_count: {summary['emitted_count']}",
+        f"abstained_count: {summary['abstained_count']}",
+        f"coverage_rate: {summary['coverage_rate']:.6f}",
+        f"audit_required: {str(summary['audit_required']).lower()}",
+        f"audit_confirmed: {summary['audit_confirmed']}",
+        f"audit_failed: {summary['audit_failed']}",
+        f"generator_status: {summary['generator_status']}",
+        "production_approved: false",
+        "cryptographic_use_approved: false",
+    ]
+    if summary["first_failure"] is not None:
+        lines.append(f"first_failure: {json.dumps(jsonable(summary['first_failure']), sort_keys=True)}")
+    else:
+        lines.append("first_failure: null")
+    if summary["solver_version"] in {"filtered-v5", "v7-bounded"}:
+        lines.extend(
+            [
+                f"risky_input_count: {summary['risky_input_count']}",
+                f"filtered_count: {summary['filtered_count']}",
+                "filter_reason_counts: "
+                + json.dumps(jsonable(summary["filter_reason_counts"]), sort_keys=True),
+            ]
+        )
+    if artifact_paths is not None:
+        for name, path in sorted(artifact_paths.items()):
+            lines.append(f"{name}: {path}")
+    return lines
+
+
+def print_dashboard(
+    summary: dict[str, Any],
+    artifact_paths: dict[str, Path] | None = None,
+) -> None:
+    """Print the terminal dashboard for one generator run."""
+    print("\n".join(dashboard_lines(summary, artifact_paths)))
+
+
+def main(argv: list[str] | None = None) -> int:
+    """Run the experimental graph prime generator."""
+    parser = build_parser()
+    args = parser.parse_args(argv)
+    if (
+        args.solver_version in RESEARCH_SOLVER_VERSIONS
+        and not args.allow_research_mode
+    ):
+        parser.error(
+            "--allow-research-mode is required for risky-v5 and filtered-v5"
+        )
+    if args.solver_version == "v7-bounded":
+        if args.candidate_bound != 128:
+            parser.error("v7-bounded requires --candidate-bound 128")
+        required_witness_bound = required_v7_witness_bound(
+            args.max_anchor,
+            args.candidate_bound,
+        )
+        if args.witness_bound < required_witness_bound:
+            parser.error(
+                "v7-bounded requires --witness-bound >= "
+                f"{required_witness_bound} for this surface"
+            )
+        if not args.audit or not args.fail_on_audit_failure:
+            parser.error(
+                "v7-bounded requires --audit and --fail-on-audit-failure"
+            )
+    records, summary = emit_records(
+        solver_version=args.solver_version,
+        start_anchor=args.start_anchor,
+        max_anchor=args.max_anchor,
+        candidate_bound=args.candidate_bound,
+        witness_bound=args.witness_bound,
+        emit_target=args.emit_target,
+    )
+    audit_summary = None
+    if args.audit:
+        audit_summary = audit_records(records)
+        summary["audit_confirmed"] = audit_summary["confirmed_count"]
+        summary["audit_failed"] = audit_summary["failed_count"]
+        summary["first_failure"] = audit_summary["first_failure"]
+        summary["generator_status"] = generator_status(summary)
+    artifact_paths = write_artifacts(records, summary, audit_summary, args.output_dir)
+    if args.print_dashboard:
+        print_dashboard(summary, artifact_paths)
+    if (
+        args.fail_on_audit_failure
+        and audit_summary is not None
+        and int(audit_summary["failed_count"]) > 0
+    ):
+        return 1
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

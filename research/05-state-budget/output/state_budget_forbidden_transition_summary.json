@@ -1,0 +1,59 @@
+{
+  "question": "Does square-room side forbid next reduced states inside matched current PGS chamber facts?",
+  "detail_csv": "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/03-gap-types/output/gwr_dni_gap_type_catalog_details.csv",
+  "min_power": 12,
+  "max_power": 18,
+  "transition_count": 1421,
+  "rules": {
+    "min_train_base_rows": 6,
+    "min_train_side_rows": 3,
+    "min_eligible_rows": 100,
+    "max_violation_rate": 0.05
+  },
+  "modes": [
+    {
+      "match_mode": "base",
+      "folds": 7,
+      "scoreable_folds": 7,
+      "eligible_rows": 703,
+      "shrunk_rows": 639,
+      "violations": 227,
+      "average_shrinkage": 2.2958748221906116,
+      "violation_rate": 0.3229018492176387,
+      "verdict": "does_not"
+    },
+    {
+      "match_mode": "mod30",
+      "folds": 7,
+      "scoreable_folds": 7,
+      "eligible_rows": 63,
+      "shrunk_rows": 40,
+      "violations": 14,
+      "average_shrinkage": 0.6984126984126984,
+      "violation_rate": 0.2222222222222222,
+      "verdict": "unresolved"
+    },
+    {
+      "match_mode": "exact_tail",
+      "folds": 7,
+      "scoreable_folds": 4,
+      "eligible_rows": 4,
+      "shrunk_rows": 4,
+      "violations": 0,
+      "average_shrinkage": 1.75,
+      "violation_rate": 0.0,
+      "verdict": "unresolved"
+    },
+    {
+      "match_mode": "mod30_exact_tail",
+      "folds": 7,
+      "scoreable_folds": 1,
+      "eligible_rows": 1,
+      "shrunk_rows": 1,
+      "violations": 0,
+      "average_shrinkage": 1.0,
+      "violation_rate": 0.0,
+      "verdict": "unresolved"
+    }
+  ]
+}

@@ -71,7 +71,9 @@ frames for PGS.
 
 ## Theorem Trust Contract
 
-`PROOF.md` is the single live proof reference.
+The single live proof reference is `PROOF.md`.
+
+`PROOF.md` controls theorem status.
 
 The direct deterministic next-prime theorem is universal under its stated
 hypotheses.
@@ -372,13 +374,13 @@ Corrective action:
 
 Future Codex sessions should read:
 
-- `docs/research/codex_continuity/START_HERE.md`;
-- `docs/research/codex_continuity/continuity_and_shape_contract.md`;
+- `research/00-index/continuity/START_HERE.md`;
+- `research/00-index/continuity/continuity_and_shape_contract.md`;
 - `/Users/velocityworks/.codex/memories/continuity_and_shape_contract.md`;
 - `PROOF.md`;
 - `RESULTS.md`;
 - `PRIME_GAP_GENERATOR.md`;
-- `docs/research/cryptology/pgs_cryptologic_implications_whitepaper.md`;
+- `research/06-cryptology-rsa/docs/cryptology/pgs_cryptologic_implications_whitepaper.md`;
 - active task-specific contracts.
 
 Important state must be written into repository artifacts before chat context is

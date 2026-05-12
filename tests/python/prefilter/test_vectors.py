@@ -11,7 +11,14 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 SOURCE_DIR = ROOT / "src" / "python"
-BENCHMARK_PATH = ROOT / "benchmarks" / "python" / "prefilter" / "candidate_benchmark.py"
+BENCHMARK_PATH = (
+    ROOT
+    / "research"
+    / "06-cryptology-rsa"
+    / "legacy-prefilter"
+    / "scripts"
+    / "candidate_benchmark.py"
+)
 VECTORS_DIR = ROOT / "spec" / "vectors"
 
 if str(SOURCE_DIR) not in sys.path:

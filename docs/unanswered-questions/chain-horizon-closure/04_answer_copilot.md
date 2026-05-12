@@ -1,5 +1,7 @@
 ### Summary of the gap and the target theorem
 
+Proof status: proof target
+
 **Problem restatement.** The generator’s pipeline is PGS-native up to the high-scale bridge, but the final survival decision for competing chain nodes still falls back to deterministic divisor checking (divisor exhaustion). The missing object is a PGS-predictor
 ```text
 H(p, s0, chain_state)
