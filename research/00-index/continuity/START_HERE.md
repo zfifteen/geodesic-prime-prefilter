@@ -225,8 +225,8 @@ ready for implementation pressure.
 Read:
 
 ```text
-docs/research/predictor/gwr_interval_presieve_optimization_note.md
-output/gwr_interval_presieve_benchmark_20260509/summary.json
+research/02-gwr-dni/docs/gwr_interval_presieve_optimization_note.md
+research/02-gwr-dni/output/gwr_interval_presieve_benchmark_20260509/summary.json
 ```
 
 Strongest supported claim:
@@ -242,7 +242,7 @@ The fixed `primes <= 200` variant is invalid. Do not revive it.
 Refactor priority:
 
 ```text
-benchmarks/python/predictor/gwr_dni_recursive_walk.py
+research/02-gwr-dni/scripts/gwr_dni_recursive_walk.py
 src/python/z_band_prime_predictor/gwr_boundary_walk.py
 src/python/z_band_prime_predictor/simple_pgs_generator.py
 ```

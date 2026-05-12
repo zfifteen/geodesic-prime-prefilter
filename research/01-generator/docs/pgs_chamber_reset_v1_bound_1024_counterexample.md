@@ -65,4 +65,4 @@ theorem the project wants to claim.
 
 ## Artifact
 
-- [first_bound_1024_counterexample.json](../../../output/gwr_proof/first_bound_1024_counterexample.json)
+- [first_bound_1024_counterexample.json](../../../research/02-gwr-dni/output/gwr_proof/first_bound_1024_counterexample.json)

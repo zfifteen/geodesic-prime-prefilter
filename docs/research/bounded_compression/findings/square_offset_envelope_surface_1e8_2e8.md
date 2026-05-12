@@ -15,8 +15,8 @@ all-scale square-branch theorem.
 ## Source Artifacts
 
 ```text
-output/gwr_proof/square_branch_dynamic_cutoff_search_1e8_2e8/square_branch_dynamic_cutoff_search_summary.json
-output/gwr_proof/square_branch_dynamic_cutoff_search_1e8_2e8/square_branch_dynamic_cutoff_search_frontier.csv
+research/02-gwr-dni/output/gwr_proof/square_branch_dynamic_cutoff_search_1e8_2e8/square_branch_dynamic_cutoff_search_summary.json
+research/02-gwr-dni/output/gwr_proof/square_branch_dynamic_cutoff_search_1e8_2e8/square_branch_dynamic_cutoff_search_frontier.csv
 ```
 
 ## Facts

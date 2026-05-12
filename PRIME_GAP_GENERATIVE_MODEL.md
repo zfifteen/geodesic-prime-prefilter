@@ -57,5 +57,5 @@ The release and model notes give the detailed construction:
 - [Prime Gap Generative Model v1.0 release note](docs/releases/prime_gap_generative_engine_v1_0.md)
 - [Gap-type model v1.0 freeze note](gwr/findings/gap_type_engine_v1_freeze.md)
 - [Gap-type model v1.0 rulebook](gwr/findings/gap_type_engine_v1_rulebook.md)
-- [Hierarchical model paper draft](docs/research/predictor/prime_gap_hierarchical_engine_paper_draft.md)
+- [Hierarchical model paper draft](research/02-gwr-dni/docs/prime_gap_hierarchical_engine_paper_draft.md)
 - [Model overview figure](output/gwr_dni_gap_type_engine_v1_overview.png)

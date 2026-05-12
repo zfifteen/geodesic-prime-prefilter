@@ -2,7 +2,7 @@
 Claim:
 On a deterministic 200-step consecutive surface starting at the first prime at or above 10^13, the current bounded GWR/DNI walker is not computationally superior to direct `sympy.nextprime` for immediate next-prime recovery.
 Method:
-Timed 200 consecutive recoveries from q = 10000000000037 with `benchmarks/python/predictor/gwr_dni_recursive_walk.py:bounded_next_gap_profile`, then timed 200 consecutive `sympy.nextprime(q)` recoveries on the same chain and compared the final primes.
+Timed 200 consecutive recoveries from q = 10000000000037 with `research/02-gwr-dni/scripts/gwr_dni_recursive_walk.py:bounded_next_gap_profile`, then timed 200 consecutive `sympy.nextprime(q)` recoveries on the same chain and compared the final primes.
 Result:
 The bounded walker took 0.9152082090149634 s. The `sympy.nextprime` baseline took 0.002706792001845315 s. The walker was slower by 338.11545489680543x. Both runs ended at 10000000005521, so the walker matched the same 200-step chain on this surface.
 Verdict:
@@ -180,7 +180,7 @@ If exact, it would replace the unbounded exact DNI interior scan with one lookup
 Method:
 Deterministic experiment.
 What was built or tested:
-An in-shell Python experiment built the lookup from exact transition rows with current right prime `<= 10^5` via `benchmarks/python/predictor/gwr_dni_transition_probe.py:transition_rows`, kept only signatures with one observed next gap width, and tested that frozen map on `1,000` consecutive exact next-gap steps starting at `q = 10000000000037` using `benchmarks/python/predictor/gwr_dni_recursive_walk.py:exact_next_gap_profile`.
+An in-shell Python experiment built the lookup from exact transition rows with current right prime `<= 10^5` via `research/02-gwr-dni/scripts/gwr_dni_transition_probe.py:transition_rows`, kept only signatures with one observed next gap width, and tested that frozen map on `1,000` consecutive exact next-gap steps starting at `q = 10000000000037` using `research/02-gwr-dni/scripts/gwr_dni_recursive_walk.py:exact_next_gap_profile`.
 Result:
 The mechanism failed under scale transfer. The training surface produced only `234` unique supported states. On the `1,000`-gap `10^13` chain, the lookup applied to `85` gaps (`8.5%`) and was exact on only `4` of them (`4.71%` of applicable, `0.4%` overall). Even counting only those `4` exact direct jumps, it would remove just `30` scanned offsets out of `29,844` total (`0.10%`).
 Status:
@@ -198,13 +198,13 @@ It replaces the remaining divisor-count walk to the endpoint with one fast next-
 Method:
 Compared the live bounded walker against the pre-shortcut bounded scan reproduced verbatim from the earlier prefix-plus-extended-loop logic on two verified lock-triggering primes.
 What was built or tested:
-Verified the live `benchmarks/python/predictor/gwr_dni_recursive_walk.py:bounded_next_gap_profile` on `q = 229433` and `q = 1026167`, tracked its `divisor_counts_segment` calls, and compared the returned endpoint against the reconstructed old bounded loop that kept counting divisors until the prime endpoint.
+Verified the live `research/02-gwr-dni/scripts/gwr_dni_recursive_walk.py:bounded_next_gap_profile` on `q = 229433` and `q = 1026167`, tracked its `divisor_counts_segment` calls, and compared the returned endpoint against the reconstructed old bounded loop that kept counting divisors until the prime endpoint.
 Result:
 For `q = 229433`, the locked prefix gives `delta = 3` at `omega = 8`. The live lock path used exactly `12` divisor-count calls plus one `nextprime` recovery and returned `229459`, while the old bounded loop used `26` divisor-count calls to reach the same endpoint, eliminating `14` divisor-count operations (`53.85%`). For `q = 1026167`, the locked prefix gives `delta = 3` at `omega = 2`. The live lock path again used `12` divisor-count calls plus one `nextprime` recovery and returned `1026197`, while the old bounded loop used `30` divisor-count calls, eliminating `18` divisor-count operations (`60%`). In both cases the recovered endpoint was identical.
 Status:
 ADVANCE
 Artifacts:
-`benchmarks/python/predictor/gwr_dni_recursive_walk.py`; `tests/python/predictor/test_gwr_dni_recursive_walk.py`; `research/00-index/docs/algorithmic_frontier_hourly.md`; in-shell verification output with old bounded call counts `26` and `30`, live prefix-path divisor-count calls `12` and `12`, and exact recovered endpoints `229459` and `1026197`.
+`research/02-gwr-dni/scripts/gwr_dni_recursive_walk.py`; `research/02-gwr-dni/tests/test_gwr_dni_recursive_walk.py`; `research/00-index/docs/algorithmic_frontier_hourly.md`; in-shell verification output with old bounded call counts `26` and `30`, live prefix-path divisor-count calls `12` and `12`, and exact recovered endpoints `229459` and `1026197`.
 Next step:
 Derive an exact `delta = 4` sub-condition from the Z-band invariants that certifies when the same selected integer-location prediction can fire without any extended scan.
 
@@ -216,7 +216,7 @@ It removes the left prefix `[q + 1, q + omega]` from the exact divisor-count end
 Method:
 Deterministic experiment.
 What was built or tested:
-An in-shell Python experiment used `benchmarks/python/predictor/gwr_dni_recursive_walk.py:exact_next_gap_profile` to collect `5,000` consecutive exact next-gap profiles starting at `q = 10000000000037`, then timed the same exact divisor-count endpoint scan twice on that chain: once from `q + 1`, and once from the exact selected integer input prime `q + omega + 1`.
+An in-shell Python experiment used `research/02-gwr-dni/scripts/gwr_dni_recursive_walk.py:exact_next_gap_profile` to collect `5,000` consecutive exact next-gap profiles starting at `q = 10000000000037`, then timed the same exact divisor-count endpoint scan twice on that chain: once from `q + 1`, and once from the exact selected integer input prime `q + omega + 1`.
 Result:
 The selected integer-grounded scan matched the same `5,000` next primes with `0` mismatches. Mean exact gap width was `29.6308`, mean selected-integer offset was `5.9066`, and the exact search width after the selected integer was `23.7242`, so the DNI/GWR input prime removed `19.93%` of the pure endpoint-search width. In the current `64`-wide block implementation that reduced divisor-count reads from `356,736` to `347,264` (`2.66%`) and improved endpoint-scan wall time from `11.0483 s` to `10.7264 s` (`1.0300x`).
 Status:
@@ -252,7 +252,7 @@ Once a candidate with divisor class `delta` is already known, any later value wi
 Method:
 Deterministic experiment.
 What was built or tested:
-An in-shell Python repo-side prototype kept the current `12`-offset `divisor_counts_segment` prefix from `benchmarks/python/predictor/gwr_dni_recursive_walk.py:exact_next_gap_profile`, then replaced the tail's full `64`-wide block divisor-count scan with candidate-by-candidate clipped classification that stopped factor work at `delta - 1` after each lex-min update.
+An in-shell Python repo-side prototype kept the current `12`-offset `divisor_counts_segment` prefix from `research/02-gwr-dni/scripts/gwr_dni_recursive_walk.py:exact_next_gap_profile`, then replaced the tail's full `64`-wide block divisor-count scan with candidate-by-candidate clipped classification that stopped factor work at `delta - 1` after each lex-min update.
 Result:
 On `1,000` consecutive exact next-gap steps starting at `q = 1000000000039`, the clipped prototype matched the current `exact_next_gap_profile` with `0` mismatches and reached the same final prime `1000000027591`. Wall time fell from `1.4655225839815103 s` to `1.1192784579470754 s` (`1.3093458321975557x`). On the same chain, the current exact walk read `69,248` block slots while the clipped prototype inspected only the `27,552` actual candidates up to the true next primes, removing `41,696` slot evaluations (`60.21256931608133%`).
 Status:
@@ -270,13 +270,13 @@ Once a candidate with divisor class `delta` is already known, no later value wit
 Method:
 sandbox prototype.
 What was built or tested:
-Patched `benchmarks/python/predictor/gwr_dni_recursive_walk.py` so the live unbounded runtime path uses `_exact_next_gap_profile_clipped(...)`, which keeps the existing 12-offset prefix scan and then switches to capped single-candidate classification; measured that path against the old `exact_next_gap_profile(...)` block scan on `1,000` consecutive steps starting at `q = 1000000000039`.
+Patched `research/02-gwr-dni/scripts/gwr_dni_recursive_walk.py` so the live unbounded runtime path uses `_exact_next_gap_profile_clipped(...)`, which keeps the existing 12-offset prefix scan and then switches to capped single-candidate classification; measured that path against the old `exact_next_gap_profile(...)` block scan on `1,000` consecutive steps starting at `q = 1000000000039`.
 Result:
 The patched unbounded walk matched the old exact oracle on all `1,000` steps and reached the same final prime `1000000027591`. Wall time fell from `1.5411759580019861 s` to `1.134829582995735 s` for a `1.3580681902330864x` speedup. Exact divisor-count segment reads fell from `69,248` slots to `12,000`, removing `57,248` slots or `82.67097966728281%`, and the live path made only the prefix segment read on the known long-gap input prime `q = 24098209`.
 Status:
 ADVANCE
 Artifacts:
-`benchmarks/python/predictor/gwr_dni_recursive_walk.py`; `tests/python/predictor/test_gwr_dni_recursive_walk.py`; `research/00-index/docs/algorithmic_frontier_hourly.md`; measured output with `baseline_elapsed = 1.5411759580019861`, `fast_elapsed = 1.134829582995735`, `speedup = 1.3580681902330864`, `baseline_segment_slots = 69248`, `fast_prefix_segment_slots = 12000`, and `saved_segment_fraction = 0.8267097966728281`.
+`research/02-gwr-dni/scripts/gwr_dni_recursive_walk.py`; `research/02-gwr-dni/tests/test_gwr_dni_recursive_walk.py`; `research/00-index/docs/algorithmic_frontier_hourly.md`; measured output with `baseline_elapsed = 1.5411759580019861`, `fast_elapsed = 1.134829582995735`, `speedup = 1.3580681902330864`, `baseline_segment_slots = 69248`, `fast_prefix_segment_slots = 12000`, and `saved_segment_fraction = 0.8267097966728281`.
 Next step:
 Thread the same clipped divisor classifier into the standalone exact endpoint walk and measure the same `10^12` chain.
 
@@ -286,14 +286,14 @@ Partial divisor-field localization via the `delta = 4` square-empty bounded-tail
 Why it could help:
 Once the prefix has exposed a `d(n) = 4` selected integer and the bounded tail contains no square, no later square branch can undercut the locked divisor class before the dynamic cutoff. The endpoint can then be recovered from the selected integer witness without constructing `extended_counts`.
 Method:
-Ran the live `benchmarks/python/predictor/gwr_dni_recursive_walk.py:bounded_next_gap_profile` path on `q = 1411219` while tracking every `divisor_counts_segment` call.
+Ran the live `research/02-gwr-dni/scripts/gwr_dni_recursive_walk.py:bounded_next_gap_profile` path on `q = 1411219` while tracking every `divisor_counts_segment` call.
 What was built or tested:
-The regression was added to `tests/python/predictor/test_gwr_dni_recursive_walk.py` under the existing d=4 empty-range witness test. The measured prefix counts are `[24, 32, 8, 12, 32, 12, 4, 12, 24, 4, 16, 4]`, so the first locked `delta = 4` state is at offset `7`.
+The regression was added to `research/02-gwr-dni/tests/test_gwr_dni_recursive_walk.py` under the existing d=4 empty-range witness test. The measured prefix counts are `[24, 32, 8, 12, 32, 12, 4, 12, 24, 4, 16, 4]`, so the first locked `delta = 4` state is at offset `7`.
 Result:
 The live bounded walker recovered the exact next prime `1411243` with `next_dmin = 4`, `next_peak_offset = 7`, and `gap_boundary_offset = 24`. Because the current implementation checks the square-empty bounded tail during prefix scanning, the shortcut fired after exactly `7` one-offset divisor-count calls and made no `extended_counts` call. Against the canonical bounded scan to the endpoint, that removes `17` divisor-count operations; against a full 12-offset prefix followed by the same predicate, it removes the same `12` extended operations reported by the sandbox prototype.
 Status:
 ADVANCE
 Artifacts:
-`benchmarks/python/predictor/gwr_dni_recursive_walk.py`; `tests/python/predictor/test_gwr_dni_recursive_walk.py`; in-shell verification output for `q = 1411219` with `cutoff = 101`, `calls = 7`, and exact recovered endpoint `1411243`.
+`research/02-gwr-dni/scripts/gwr_dni_recursive_walk.py`; `research/02-gwr-dni/tests/test_gwr_dni_recursive_walk.py`; in-shell verification output for `q = 1411219` with `cutoff = 101`, `calls = 7`, and exact recovered endpoint `1411243`.
 Next step:
 Measure the d=4 square-empty shortcut share on a fixed consecutive-prime surface and separate early-prefix firings from post-prefix firings.

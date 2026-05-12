@@ -99,7 +99,7 @@ The smallest direct obstruction scan is now explicit:
 
 Artifact:
 
-- [`output/gwr_proof/pgs_chamber_reset_v1_pre_q_threat_scan_1e6.json`](../../../output/gwr_proof/pgs_chamber_reset_v1_pre_q_threat_scan_1e6.json)
+- [`research/02-gwr-dni/output/gwr_proof/pgs_chamber_reset_v1_pre_q_threat_scan_1e6.json`](../../../research/02-gwr-dni/output/gwr_proof/pgs_chamber_reset_v1_pre_q_threat_scan_1e6.json)
 
 Exact result on the full prime-input surface `5 <= p <= 10^6`:
 

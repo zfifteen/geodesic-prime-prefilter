@@ -65,8 +65,8 @@ sequence has been selected in this branch.
 
 | Chapter | Status | Validation | Next Action |
 | --- | --- | --- | --- |
-| `01-generator` | mapped | `python3 -m pytest research/01-generator/tests/test_simple_pgs_generator.py tests/python/predictor/test_gwr_dni_recursive_walk.py` passed, 36 tests | Production code remains in place. |
-| `02-gwr-dni` | mapped | `python3 -m pytest research/01-generator/tests/test_simple_pgs_generator.py tests/python/predictor/test_gwr_dni_recursive_walk.py` passed, 36 tests | GWR/DNI evidence routed. |
+| `01-generator` | mapped | `python3 -m pytest research/01-generator/tests/test_simple_pgs_generator.py research/02-gwr-dni/tests/test_gwr_dni_recursive_walk.py` passed, 36 tests | Production code remains in place. |
+| `02-gwr-dni` | mapped | `python3 -m pytest research/01-generator/tests/test_simple_pgs_generator.py research/02-gwr-dni/tests/test_gwr_dni_recursive_walk.py` passed, 36 tests | GWR/DNI evidence routed. |
 | `03-gap-types` | mapped | `python3 -m pytest tests/python/predictor/test_gwr_dni_gap_type_catalog.py tests/python/predictor/test_gwr_dni_gap_type_sequence_probe.py tests/python/predictor/test_gwr_dni_gap_type_engine_synthesis.py` passed, 9 tests | Gap-type model remains measured. |
 | `04-bounded-compression` | mapped | Bounded/state focused command passed, 20 tests | Square branch remains unresolved. |
 | `05-state-budget` | mapped | Bounded/state focused command passed, 20 tests | `d4_count` remains measured. |
@@ -96,7 +96,7 @@ sequence has been selected in this branch.
   python3 -m pytest research/09-exponents/tests
   68 passed in 93.65s
 
-  python3 -m pytest research/01-generator/tests/test_simple_pgs_generator.py tests/python/predictor/test_gwr_dni_recursive_walk.py
+  python3 -m pytest research/01-generator/tests/test_simple_pgs_generator.py research/02-gwr-dni/tests/test_gwr_dni_recursive_walk.py
   36 passed in 1.02s
 
   python3 -m pytest tests/python/predictor/test_gwr_dni_gap_type_catalog.py tests/python/predictor/test_gwr_dni_gap_type_sequence_probe.py tests/python/predictor/test_gwr_dni_gap_type_engine_synthesis.py
