@@ -1,8 +1,8 @@
 {
   "source_artifacts": {
-    "d4_arrival_validation_summary_json": "output/gwr_d4_arrival_validation_summary.json",
-    "d4_arrival_validation_exact_csv": "output/gwr_d4_arrival_validation_exact.csv",
-    "d4_arrival_validation_even_bands_csv": "output/gwr_d4_arrival_validation_even_bands.csv",
+    "d4_arrival_validation_summary_json": "research/02-gwr-dni/output/gwr_d4_arrival_validation_summary.json",
+    "d4_arrival_validation_exact_csv": "research/02-gwr-dni/output/gwr_d4_arrival_validation_exact.csv",
+    "d4_arrival_validation_even_bands_csv": "research/02-gwr-dni/output/gwr_d4_arrival_validation_even_bands.csv",
     "prefilter_benchmark_results_json": "benchmarks/output/python/prefilter/benchmark_results.json"
   },
   "parameters": {

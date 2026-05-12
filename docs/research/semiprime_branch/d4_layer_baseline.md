@@ -107,10 +107,10 @@ The first baseline pass should use existing committed surfaces before adding any
 
 Primary sources:
 
-- `gwr/findings/dominant_d4_arrival_reduction_findings.md`
-- `output/gwr_d4_arrival_validation_summary.json`
-- `output/gwr_d4_arrival_validation_exact.csv`
-- `output/gwr_d4_arrival_validation_even_bands.csv`
+- `research/02-gwr-dni/docs/dominant_d4_arrival_reduction_findings.md`
+- `research/02-gwr-dni/output/gwr_d4_arrival_validation_summary.json`
+- `research/02-gwr-dni/output/gwr_d4_arrival_validation_exact.csv`
+- `research/02-gwr-dni/output/gwr_d4_arrival_validation_even_bands.csv`
 - `docs/prefilter/benchmarks.md`
 
 ## Baseline Reading From Current Repo Surface

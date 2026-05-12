@@ -9,8 +9,8 @@
   "parity_probe_source_commit": "0ba1f7cbff2797717af9c51f056b4670e90cd944",
   "candidate_count": 10,
   "baseline_files": {
-    "parity_summary_json": "output/gwr_winner_parity_next_opening_probe_summary.json",
-    "parity_findings_markdown": "gwr/findings/winner_parity_next_opening_probe_findings.md"
+    "parity_summary_json": "research/02-gwr-dni/output/gwr_winner_parity_next_opening_probe_summary.json",
+    "parity_findings_markdown": "research/02-gwr-dni/docs/winner_parity_next_opening_probe_findings.md"
   },
   "parity_candidate": {
     "candidate_id": "current_winner_parity",

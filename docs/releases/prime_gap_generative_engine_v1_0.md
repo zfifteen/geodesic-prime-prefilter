@@ -50,7 +50,7 @@ target.
 
 ### Submission draft
 
-- [../../docs/research/predictor/prime_gap_hierarchical_engine_paper_draft.md](../../docs/research/predictor/prime_gap_hierarchical_engine_paper_draft.md)
+- [../../research/02-gwr-dni/docs/prime_gap_hierarchical_engine_paper_draft.md](../../research/02-gwr-dni/docs/prime_gap_hierarchical_engine_paper_draft.md)
 
 ### Synthetic example
 

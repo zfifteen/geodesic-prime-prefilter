@@ -37,4 +37,4 @@ The theorem status now splits cleanly:
 
 ## Artifact
 
-- [first_default_bound_128_counterexample.json](../../../output/gwr_proof/first_default_bound_128_counterexample.json)
+- [first_default_bound_128_counterexample.json](../../../research/02-gwr-dni/output/gwr_proof/first_default_bound_128_counterexample.json)

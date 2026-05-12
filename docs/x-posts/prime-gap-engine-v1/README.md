@@ -74,7 +74,7 @@ The frozen package is in the repo:
 
 - [../../releases/prime_gap_generative_engine_v1_0.md](../../releases/prime_gap_generative_engine_v1_0.md)
 - [../../../gwr/findings/gap_type_engine_v1_rulebook.md](../../../gwr/findings/gap_type_engine_v1_rulebook.md)
-- [../../../docs/research/predictor/prime_gap_hierarchical_engine_paper_draft.md](../../../docs/research/predictor/prime_gap_hierarchical_engine_paper_draft.md)
+- [../../../research/02-gwr-dni/docs/prime_gap_hierarchical_engine_paper_draft.md](../../../research/02-gwr-dni/docs/prime_gap_hierarchical_engine_paper_draft.md)
 
 The narrow claim is:
 

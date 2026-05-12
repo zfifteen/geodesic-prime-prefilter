@@ -65,6 +65,6 @@ Up to $10^6$ on the natural number line, the strongest exact raw composite $Z$ v
 
 The dedicated closure study then strengthens the right-edge reading further: on the current documented even-band ladder through $10^{18}$, once the selected integer appears, no later strictly simpler composite is observed before the next prime closes the gap.
 
-See [raw_composite_z_gap_edge.md](../gap_ridge/raw_composite_z_gap_edge.md), [PROOF.md](../../PROOF.md), and [closure_constraint_findings.md](../../gwr/findings/closure_constraint_findings.md).
+See [raw_composite_z_gap_edge.md](../gap_ridge/raw_composite_z_gap_edge.md), [PROOF.md](../../PROOF.md), and [closure_constraint_findings.md](../../research/02-gwr-dni/docs/closure_constraint_findings.md).
 
 See [benchmarks.md](benchmarks.md) for the curated benchmark summary and [manual_validation.md](manual_validation.md) for the exact reproduction commands.

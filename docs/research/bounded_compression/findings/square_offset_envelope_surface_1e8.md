@@ -15,8 +15,8 @@ If the selected witness is r^2 after right-prime q, then r^2 - q < C(q).
 ## Source Artifacts
 
 ```text
-output/gwr_proof/square_branch_dynamic_cutoff_search_1e8/square_branch_dynamic_cutoff_search_summary.json
-output/gwr_proof/square_branch_dynamic_cutoff_search_1e8/square_branch_dynamic_cutoff_search_frontier.csv
+research/02-gwr-dni/output/gwr_proof/square_branch_dynamic_cutoff_search_1e8/square_branch_dynamic_cutoff_search_summary.json
+research/02-gwr-dni/output/gwr_proof/square_branch_dynamic_cutoff_search_1e8/square_branch_dynamic_cutoff_search_frontier.csv
 ```
 
 ## Facts

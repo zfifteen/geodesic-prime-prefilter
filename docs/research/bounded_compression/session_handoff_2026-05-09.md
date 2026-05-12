@@ -62,8 +62,8 @@ Retained surfaces:
 Latest segment artifact:
 
 ```text
-output/gwr_proof/square_branch_dynamic_cutoff_search_1e8_2e8/square_branch_dynamic_cutoff_search_summary.json
-output/gwr_proof/square_branch_dynamic_cutoff_search_1e8_2e8/square_branch_dynamic_cutoff_search_frontier.csv
+research/02-gwr-dni/output/gwr_proof/square_branch_dynamic_cutoff_search_1e8_2e8/square_branch_dynamic_cutoff_search_summary.json
+research/02-gwr-dni/output/gwr_proof/square_branch_dynamic_cutoff_search_1e8_2e8/square_branch_dynamic_cutoff_search_frontier.csv
 ```
 
 The latest segment tested roots from `100,000,007` through `199,999,991`.
@@ -117,7 +117,7 @@ Re-run the latest finite segment:
 python3 benchmarks/python/predictor/square_branch_dynamic_cutoff_search.py \
   --min-prime 100000001 \
   --max-prime 200000000 \
-  --output-dir output/gwr_proof/square_branch_dynamic_cutoff_search_1e8_2e8
+  --output-dir research/02-gwr-dni/output/gwr_proof/square_branch_dynamic_cutoff_search_1e8_2e8
 ```
 
 Expected summary:
