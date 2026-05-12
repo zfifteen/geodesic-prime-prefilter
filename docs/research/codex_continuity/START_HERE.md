@@ -19,6 +19,90 @@ If a session starts with limited chat context, read this file first.
    - `experiments/rsa/v2/METRICS.md`.
 6. Run the narrow relevant test before claiming implementation progress.
 
+## Research Corpus Reorganization
+
+The reorganization branch introduced a top-level research corpus at:
+
+```text
+research/
+```
+
+The exponents chapter has moved from:
+
+```text
+experiments/exponents/
+```
+
+to:
+
+```text
+research/09-exponents/
+```
+
+The validation command for the moved chapter is:
+
+```text
+python3 -m pytest research/09-exponents/tests
+```
+
+The twin-primes chapter has moved from:
+
+```text
+experiments/twin-primes/
+```
+
+to:
+
+```text
+research/10-twin-primes/
+```
+
+The validation command for the moved chapter is:
+
+```text
+python3 -m pytest research/10-twin-primes/tests
+```
+
+The Collatz chapter has moved from:
+
+```text
+experiments/collatz/
+```
+
+to:
+
+```text
+research/08-collatz/
+```
+
+The validation command for the moved chapter is:
+
+```text
+python3 -m pytest research/08-collatz/tests
+```
+
+The remaining chapter homes are mapped routing surfaces:
+
+- `research/01-generator/`: production generator evidence; production code
+  remains in `src/`, `tests/`, and `benchmarks/`.
+- `research/02-gwr-dni/`: GWR, DNI, recursive walk, and proof/audit surfaces.
+- `research/03-gap-types/`: reduced gap-type model and visual grammar
+  surfaces.
+- `research/04-bounded-compression/`: dynamic cutoff, fixed-cutoff
+  invalidation, and square-branch unresolved state.
+- `research/05-state-budget/`: `d4_count` and state-budget carrier evidence,
+  measured only.
+- `research/06-cryptology-rsa/`: RSA v2/v3, modulus-link, semiprime, and
+  unresolved structural-certificate work.
+- `research/07-oeis/`: OEIS candidate workflow. No candidate has been selected
+  in this branch.
+
+The research status map is:
+
+```text
+research/00-index/status-map.md
+```
+
 ## Working Rules
 
 Preserve these distinctions in every research answer:
@@ -433,13 +517,13 @@ State separation:
 As of 2026-05-03, the Collatz work is integrated on `main` under:
 
 ```text
-experiments/collatz/
+research/08-collatz/
 ```
 
 The single self-contained proof and certificate document is:
 
 ```text
-experiments/collatz/PROOF.md
+research/08-collatz/PROOF.md
 ```
 
 The exact 3-step odd Collatz first-descent algebra is closed for its stated
@@ -491,7 +575,7 @@ parked until the branch-1 exception structure is addressed.
 Relevant verification commands:
 
 ```text
-python3 -m pytest experiments/collatz/tests/test_collatz_pgs_branch1_exception_symbolic_analyzer.py
-python3 -m pytest experiments/collatz/tests/test_collatz_pgs_branch_occupancy_baseline_probe.py
-python3 -m pytest experiments/collatz/tests
+python3 -m pytest research/08-collatz/tests/test_collatz_pgs_branch1_exception_symbolic_analyzer.py
+python3 -m pytest research/08-collatz/tests/test_collatz_pgs_branch_occupancy_baseline_probe.py
+python3 -m pytest research/08-collatz/tests
 ```

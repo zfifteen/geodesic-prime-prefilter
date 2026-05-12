@@ -85,7 +85,7 @@ The approach in this repository starts from a known prime and reads the factor s
 
 That record simply says: start here, the next prime is there. No trial division, no Miller-Rabin rounds, no probabilistic guesses are needed to choose the answer. The arithmetic structure itself shows where the gap ends. Any verification testing that follows is only confirmation; it is not part of the generation step.
 
-The same principle extends to a dedicated [Mersenne-prime generator](experiments/exponents/README.md). Instead of starting from an ordinary prime, the Mersenne variant starts from an accepted Mersenne exponent, reads the prime-gap structure around the exponent wall `2^e`, and emits the next exponent whose left boundary lands exactly at `2^e - 1`. This is a remarkable lift of the core method: the generator is not looking up known Mersenne primes or asking a primality oracle to find them. It is reading the local divisor-count structure of the wall and producing the next Mersenne exponent as a direct PGS successor.
+The same principle extends to a dedicated [Mersenne-prime generator](research/09-exponents/README.md). Instead of starting from an ordinary prime, the Mersenne variant starts from an accepted Mersenne exponent, reads the prime-gap structure around the exponent wall `2^e`, and emits the next exponent whose left boundary lands exactly at `2^e - 1`. This is a remarkable lift of the core method: the generator is not looking up known Mersenne primes or asking a primality oracle to find them. It is reading the local divisor-count structure of the wall and producing the next Mersenne exponent as a direct PGS successor.
 
 ## Where This Leads
 
@@ -97,6 +97,7 @@ Every one of these paths grows from the same simple shift in perspective: stop t
 
 The rest of the repository develops these ideas in greater depth, including the [measured results and surfaces](RESULTS.md).
 
+- [research/00-index/README.md](research/00-index/README.md) maps the research corpus by chapter and status.
 - [PROOF.md](PROOF.md) gives the formal statement and proof of the direct next-prime theorem and the prime-gap maximizer theorem.
 - [LEFTMOST_MINIMUM_DIVISOR_RULE.md](LEFTMOST_MINIMUM_DIVISOR_RULE.md) explores the rule that identifies the special composite inside each gap.
 - [DIVISOR_NORMALIZATION_IDENTITY.md](DIVISOR_NORMALIZATION_IDENTITY.md) explains the normalization that places primes at Z = 1.0.
