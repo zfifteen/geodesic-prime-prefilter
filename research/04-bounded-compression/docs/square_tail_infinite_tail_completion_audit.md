@@ -40,6 +40,8 @@ following:
 | Exclude root-primality and selected-square constraints alone | `square_tail_rough_cover_model_blocker.md` | complete |
 | Classify the dynamic tail after the source CRT cover | `square_tail_dynamic_tail_audit_509.md` | complete |
 | Project dynamic-tail rough composites to child squares | `square_tail_dynamic_tail_descent_audit_509.md` | complete |
+| Exclude full-cutoff congruence-only contradiction | `square_tail_full_cutoff_crt_model_509.md` | complete |
+| Separate artificial singleton carriers from actual least factors | `square_tail_model_actual_carrier_compare_509.md` | complete |
 | Prove a prime-valued M-rough defect must occur before the cutoff | No proof artifact exists. | missing |
 | Produce a counterexample | No counterexample artifact exists. | missing |
 
@@ -160,6 +162,8 @@ The following are useful evidence but do not complete the goal:
 - prime representatives of local CRT classes that close after the modeled window;
 - dynamic-tail classifications that restate the remaining rough-prime target;
 - dynamic-tail descent audits without a parent-to-child transport law;
+- full-cutoff CRT obstruction models without an ordered PGS condition;
+- artificial singleton-carrier models that do not encode actual least factors;
 - Grok agreement with the equivalence.
 
 ## Next Valid Work
