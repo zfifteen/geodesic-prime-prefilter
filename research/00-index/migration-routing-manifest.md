@@ -20,9 +20,9 @@ old scattered roots after references are repaired.
 | `docs/research/codex_continuity/` | `research/00-index/continuity/` |
 | `docs/research/cdl_seed_bank/` | `research/00-index/cdl-seed-bank/` |
 | `docs/research/cross_project_portfolio_scan/` | `research/00-index/cross-project-portfolio-scan/` |
-| `docs/research/prime_inference_generator/` | `research/01-generator/docs/` |
-| `benchmarks/python/prime_inference_generator/` | `research/01-generator/scripts/prime_inference_generator/` |
-| `experiments/rule_x_logic_engine/` | `research/01-generator/output/rule_x_logic_engine/` |
+| `research/01-generator/docs/` | `research/01-generator/docs/` |
+| `research/01-generator/scripts/prime_inference_generator/` | `research/01-generator/scripts/prime_inference_generator/` |
+| `research/01-generator/output/rule_x_logic_engine/` | `research/01-generator/output/rule_x_logic_engine/` |
 | generator-specific `output/simple_pgs_*` and `output/minimal_pgs_*` | `research/01-generator/output/` |
 | `gwr/` core proof/story material | `research/02-gwr-dni/` |
 | recursive-walk and PNT-GWR predictor artifacts | `research/02-gwr-dni/` |

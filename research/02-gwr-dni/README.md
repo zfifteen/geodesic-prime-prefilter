@@ -50,7 +50,7 @@ and sampled powers `10^2` through `10^18`.
 Focused validation passed after the chapter map was finalized:
 
 ```text
-python3 -m pytest tests/python/predictor/test_simple_pgs_generator.py tests/python/predictor/test_gwr_dni_recursive_walk.py
+python3 -m pytest research/01-generator/tests/test_simple_pgs_generator.py tests/python/predictor/test_gwr_dni_recursive_walk.py
 36 passed in 1.02s
 ```
 

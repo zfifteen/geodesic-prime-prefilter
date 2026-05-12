@@ -199,7 +199,7 @@ Recommended next implementation
 
 Create:
 
-benchmarks/python/predictor/simple_pgs_shadow_chain_horizon_law_probe.py
+research/01-generator/scripts/simple_pgs_shadow_chain_horizon_law_probe.py
 
 Run:
 
