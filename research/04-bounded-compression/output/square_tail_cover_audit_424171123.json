@@ -1,0 +1,273 @@
+{
+  "root": 424171123,
+  "previous_prime_offset": 738,
+  "dynamic_cutoff": 790,
+  "full_counterexample_even_count": 395,
+  "obstruction_prefix_even_count": 368,
+  "prefix_factor_count": 99,
+  "prefix_factors": [
+    3,
+    5,
+    7,
+    11,
+    13,
+    17,
+    19,
+    23,
+    29,
+    31,
+    37,
+    41,
+    43,
+    47,
+    53,
+    59,
+    61,
+    67,
+    71,
+    73,
+    79,
+    89,
+    97,
+    101,
+    103,
+    107,
+    109,
+    127,
+    131,
+    139,
+    163,
+    167,
+    173,
+    191,
+    199,
+    239,
+    257,
+    269,
+    283,
+    293,
+    311,
+    331,
+    349,
+    419,
+    457,
+    509,
+    523,
+    617,
+    647,
+    743,
+    881,
+    907,
+    911,
+    1181,
+    1367,
+    1451,
+    1523,
+    1531,
+    1597,
+    1783,
+    2089,
+    2341,
+    2549,
+    2897,
+    3571,
+    3697,
+    4789,
+    6323,
+    9923,
+    17053,
+    19001,
+    20327,
+    28277,
+    33871,
+    40771,
+    48481,
+    65357,
+    73483,
+    76001,
+    88211,
+    323801,
+    429953,
+    464311,
+    471193,
+    490837,
+    613661,
+    726419,
+    1198201,
+    1657463,
+    2003801,
+    2997077,
+    10280521,
+    11858149,
+    22110317,
+    27344329,
+    38524679,
+    76136597,
+    108562759,
+    159673649
+  ],
+  "covered_by_prefix_factor_count": 385,
+  "uncovered_by_prefix_factor_count": 10,
+  "uncovered_m": [
+    369,
+    370,
+    375,
+    378,
+    379,
+    381,
+    385,
+    388,
+    391,
+    393
+  ],
+  "uncovered_offsets": [
+    738,
+    740,
+    750,
+    756,
+    758,
+    762,
+    770,
+    776,
+    782,
+    786
+  ],
+  "actual_previous_prime_m": 369,
+  "actual_previous_prime_uncovered_by_prefix_factors": true,
+  "uncovered_prime_count": 3,
+  "uncovered_prime_offsets": [
+    738,
+    756,
+    758
+  ],
+  "uncovered_composite_count": 7,
+  "uncovered_composite_least_factors": [
+    683,
+    44971,
+    8880233,
+    2689,
+    503,
+    4219,
+    367
+  ],
+  "completed_factor_count": 106,
+  "covered_after_composite_defect_factors_count": 392,
+  "remaining_uncovered_after_composite_defect_factors_m": [
+    369,
+    378,
+    379
+  ],
+  "remaining_uncovered_after_composite_defect_factors_offsets": [
+    738,
+    756,
+    758
+  ],
+  "uncovered_rows": [
+    {
+      "m": 369,
+      "offset": 738,
+      "value": 179921141587080391,
+      "is_prime": true,
+      "least_factor": null,
+      "factorization": null
+    },
+    {
+      "m": 370,
+      "offset": 740,
+      "value": 179921141587080389,
+      "is_prime": false,
+      "least_factor": 683,
+      "factorization": {
+        "683": 1,
+        "1223": 1,
+        "215394712121": 1
+      }
+    },
+    {
+      "m": 375,
+      "offset": 750,
+      "value": 179921141587080379,
+      "is_prime": false,
+      "least_factor": 44971,
+      "factorization": {
+        "44971": 1,
+        "4000825900849": 1
+      }
+    },
+    {
+      "m": 378,
+      "offset": 756,
+      "value": 179921141587080373,
+      "is_prime": true,
+      "least_factor": null,
+      "factorization": null
+    },
+    {
+      "m": 379,
+      "offset": 758,
+      "value": 179921141587080371,
+      "is_prime": true,
+      "least_factor": null,
+      "factorization": null
+    },
+    {
+      "m": 381,
+      "offset": 762,
+      "value": 179921141587080367,
+      "is_prime": false,
+      "least_factor": 8880233,
+      "factorization": {
+        "8880233": 1,
+        "20260858199": 1
+      }
+    },
+    {
+      "m": 385,
+      "offset": 770,
+      "value": 179921141587080359,
+      "is_prime": false,
+      "least_factor": 2689,
+      "factorization": {
+        "2689": 1,
+        "2819": 1,
+        "23735387149": 1
+      }
+    },
+    {
+      "m": 388,
+      "offset": 776,
+      "value": 179921141587080353,
+      "is_prime": false,
+      "least_factor": 503,
+      "factorization": {
+        "503": 1,
+        "3676237": 1,
+        "97299523": 1
+      }
+    },
+    {
+      "m": 391,
+      "offset": 782,
+      "value": 179921141587080347,
+      "is_prime": false,
+      "least_factor": 4219,
+      "factorization": {
+        "4219": 1,
+        "110939": 1,
+        "384404467": 1
+      }
+    },
+    {
+      "m": 393,
+      "offset": 786,
+      "value": 179921141587080343,
+      "is_prime": false,
+      "least_factor": 367,
+      "factorization": {
+        "367": 1,
+        "18593": 1,
+        "26367360953": 1
+      }
+    }
+  ]
+}
