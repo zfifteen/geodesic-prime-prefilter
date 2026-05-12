@@ -1,0 +1,51 @@
+{
+  "prime_threshold": 5000000000,
+  "alpha": 1.0000802005564475,
+  "large_prime_ratio_rule": "For p above the finite base, q/p < alpha. If M(e) > alpha^(e-3), then every earlier divisor class e beats no later winner divisor class d<e.",
+  "reviewer_pair_rows": [
+    {
+      "winner_divisor_count": 36,
+      "earlier_divisor_count": 37,
+      "minimal_earlier_value": 68719476736,
+      "ratio_threshold": 1.0027304304325557,
+      "eliminated": true,
+      "bertrand_threshold": 17179869184
+    },
+    {
+      "winner_divisor_count": 64,
+      "earlier_divisor_count": 65,
+      "minimal_earlier_value": 331776,
+      "ratio_threshold": 1.0049846171891061,
+      "eliminated": true,
+      "bertrand_threshold": 4611686018427387904
+    },
+    {
+      "winner_divisor_count": 72,
+      "earlier_divisor_count": 73,
+      "minimal_earlier_value": 4722366482869645213696,
+      "ratio_threshold": 1.0056296008196461,
+      "eliminated": true,
+      "bertrand_threshold": 1180591620717411303424
+    }
+  ],
+  "pair_64_65_exact_enumeration": {
+    "winner_divisor_count": 64,
+    "earlier_divisor_count": 65,
+    "bertrand_threshold": 4611686018427387904,
+    "value_limit": 9223372036854775808,
+    "exponent_patterns": [
+      [
+        64
+      ],
+      [
+        12,
+        4
+      ]
+    ],
+    "carrier_count_below_value_limit": 1318,
+    "carriers_in_unresolved_prime_window": 1118,
+    "realized_winner_count": 0,
+    "realized_pair_count": 0,
+    "worst_log_margin": null
+  }
+}
