@@ -24,4 +24,4 @@ The safe current statement is:
 
 ## Existing Inputs
 
-- [../../docs/findings/lexicographic_winner_take_all_peak_rule/](../../docs/findings/lexicographic_winner_take_all_peak_rule/)
+- [../../research/11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule/](../../research/11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule/)

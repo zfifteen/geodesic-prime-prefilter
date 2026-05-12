@@ -305,7 +305,7 @@ toward generic high-scale windows.
 ## Why This Could Add Information Beyond the RH Bridge
 
 The current `DNI`-to-`RH` bridge in
-[`docs/dni_rh_bridge.md`](../../docs/dni_rh_bridge.md)
+[`research/12-rh-bridge/docs/dni_rh_bridge.md`](../../research/12-rh-bridge/docs/dni_rh_bridge.md)
 is exact, but it reconstructs the classical detector
 $-\zeta'(s)/\zeta(s)$.
 

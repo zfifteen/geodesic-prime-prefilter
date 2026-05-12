@@ -24,12 +24,12 @@ from z_band_prime_composite_field import divisor_counts_segment
 
 EXACT_SCAN_CEILING_P = 5_000_000_000
 REQUESTED_CLASSES = [10, 14, 18, 20, 22, 26, 27, 28, 30, 36, 40, 42, 44, 50, 52, 54, 56, 60]
-PRIOR_FRONTIER_1E9 = ROOT / "output" / "gwr_proof" / "prime_gap_admissibility_frontier_1e9_checkpoints.json"
-CHECKPOINT_FRONTIER_5E9 = ROOT / "output" / "gwr_proof" / "scan_checkpoints_5e9"
-LARGE_PRIME_REDUCER_PATH = ROOT / "gwr" / "experiments" / "proof" / "large_prime_reducer.py"
-ADMISSIBILITY_FRONTIER_PATH = ROOT / "gwr" / "experiments" / "proof" / "prime_gap_admissibility_frontier.py"
-ODD_BRANCH_SCAN_PATH = ROOT / "gwr" / "experiments" / "proof" / "residual_odd_winner_branch_scan.py"
-OUTPUT_DIR = ROOT / "output" / "gwr_proof"
+PRIOR_FRONTIER_1E9 = ROOT / "research" / "02-gwr-dni" / "output" / "gwr_proof" / "prime_gap_admissibility_frontier_1e9_checkpoints.json"
+CHECKPOINT_FRONTIER_5E9 = ROOT / "research" / "02-gwr-dni" / "output" / "gwr_proof" / "scan_checkpoints_5e9"
+LARGE_PRIME_REDUCER_PATH = ROOT / "research" / "02-gwr-dni" / "scripts" / "proof" / "large_prime_reducer.py"
+ADMISSIBILITY_FRONTIER_PATH = ROOT / "research" / "02-gwr-dni" / "scripts" / "proof" / "prime_gap_admissibility_frontier.py"
+ODD_BRANCH_SCAN_PATH = ROOT / "research" / "02-gwr-dni" / "scripts" / "proof" / "residual_odd_winner_branch_scan.py"
+OUTPUT_DIR = ROOT / "research" / "02-gwr-dni" / "output" / "gwr_proof"
 
 
 def load_module(module_name: str, path: Path):

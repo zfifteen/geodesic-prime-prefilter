@@ -88,5 +88,5 @@ python3 benchmarks/python/prefilter/rsa_sweep_benchmark.py \
 ## 8. Run the exact raw composite Z gap-edge study
 
 ```bash
-python3 benchmarks/python/gap_ridge/raw_z_gap_edge_study.py
+python3 research/11-gap-ridge/scripts/raw_z_gap_edge_study.py
 ```

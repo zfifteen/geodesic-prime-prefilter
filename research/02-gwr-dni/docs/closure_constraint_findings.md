@@ -26,9 +26,9 @@ log-score argmax and then separately checks the later divisor profile.
 ## Current Artifacts
 
 - runner:
-  [`benchmarks/python/gap_ridge/gwr_closure_constraint.py`](../../benchmarks/python/gap_ridge/gwr_closure_constraint.py)
+  [`research/11-gap-ridge/scripts/gwr_closure_constraint.py`](../../research/11-gap-ridge/scripts/gwr_closure_constraint.py)
 - tests:
-  [`tests/python/gap_ridge/test_gwr_closure_constraint.py`](../../tests/python/gap_ridge/test_gwr_closure_constraint.py)
+  [`research/11-gap-ridge/tests/test_gwr_closure_constraint.py`](../../research/11-gap-ridge/tests/test_gwr_closure_constraint.py)
 - JSON summary:
   [`output/gwr_closure_constraint_summary.json`](../../output/gwr_closure_constraint_summary.json)
 - even-band ladder through $10^{18}$:

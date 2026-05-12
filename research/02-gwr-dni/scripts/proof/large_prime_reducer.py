@@ -19,7 +19,7 @@ if str(SOURCE_DIR) not in sys.path:
     sys.path.insert(0, str(SOURCE_DIR))
 
 
-SCAN_PATH = ROOT / "gwr" / "experiments" / "proof" / "earlier_spoiler_scan.py"
+SCAN_PATH = ROOT / "research" / "02-gwr-dni" / "scripts" / "proof" / "earlier_spoiler_scan.py"
 INF = 10**1000
 
 

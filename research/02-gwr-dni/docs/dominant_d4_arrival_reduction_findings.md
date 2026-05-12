@@ -32,9 +32,9 @@ The stricter semiprime-only wording was tested separately:
 ## Current Artifacts
 
 - runner:
-  [`benchmarks/python/gap_ridge/gwr_d4_arrival_validation.py`](../../benchmarks/python/gap_ridge/gwr_d4_arrival_validation.py)
+  [`research/11-gap-ridge/scripts/gwr_d4_arrival_validation.py`](../../research/11-gap-ridge/scripts/gwr_d4_arrival_validation.py)
 - tests:
-  [`tests/python/gap_ridge/test_gwr_d4_arrival_validation.py`](../../tests/python/gap_ridge/test_gwr_d4_arrival_validation.py)
+  [`research/11-gap-ridge/tests/test_gwr_d4_arrival_validation.py`](../../research/11-gap-ridge/tests/test_gwr_d4_arrival_validation.py)
 - JSON summary:
   [`output/gwr_d4_arrival_validation_summary.json`](../../output/gwr_d4_arrival_validation_summary.json)
 - exact-surface CSV:

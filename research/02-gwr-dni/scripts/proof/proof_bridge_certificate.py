@@ -10,7 +10,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[4]
-DEFAULT_ARTIFACT = ROOT / "output" / "gwr_proof" / "asymptotic_bridge_load_scan_2e7.json"
+DEFAULT_ARTIFACT = ROOT / "research" / "02-gwr-dni" / "output" / "gwr_proof" / "asymptotic_bridge_load_scan_2e7.json"
 DUSART_X0 = 396_738
 DUSART_GAP_DENOMINATOR = 25.0
 
