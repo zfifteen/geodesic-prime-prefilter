@@ -1,2 +1,0 @@
-scale_digits,candidate_bound,factor_bound,q_gap,prime_count,wheel_open_count,pre_q_wheel_open_count,pre_q_closed_count,pre_q_unresolved_count,q_closed,first_wheel_unresolved_offset,full_certificate_entries,hybrid_certificate_entries,horizon_rule_succeeds,exact_count,pre_q_exact_count,nextprime_seconds,strip_seconds,total_seconds
-1234,4096,1000000,1269,78498,1093,339,299,40,0,81,339,40,0,0,0,0.551239,0.008194,0.562103

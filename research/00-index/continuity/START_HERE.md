@@ -13,10 +13,10 @@ If a session starts with limited chat context, read this file first.
 4. Identify the user's active target from the newest request, not from stale
    context.
 5. If the active target is RSA v2, read:
-   - `experiments/rsa/v2/README.md`;
-   - `experiments/rsa/v2/ALGORITHM.md`;
-   - `experiments/rsa/v2/PGS_CERTIFICATE.md`;
-   - `experiments/rsa/v2/METRICS.md`.
+   - `research/06-cryptology-rsa/experiments/rsa/v2/README.md`;
+   - `research/06-cryptology-rsa/experiments/rsa/v2/ALGORITHM.md`;
+   - `research/06-cryptology-rsa/experiments/rsa/v2/PGS_CERTIFICATE.md`;
+   - `research/06-cryptology-rsa/experiments/rsa/v2/METRICS.md`.
 6. Run the narrow relevant test before claiming implementation progress.
 
 ## Research Corpus Reorganization
@@ -151,7 +151,7 @@ point.
 Record substantial RSA/PGS Grok sessions in:
 
 ```text
-experiments/rsa/v2/grok_sessions/YYYY-MM-DD-topic.md
+research/06-cryptology-rsa/experiments/rsa/v2/grok_sessions/YYYY-MM-DD-topic.md
 ```
 
 ## Current RSA v2 State
@@ -207,9 +207,9 @@ Read these RSA grammar artifacts before continuing the decomposer grammar
 track:
 
 ```text
-experiments/rsa/v2/GRAMMAR_EVIDENCE_STATUS.md
-experiments/rsa/v2/GRAMMAR_PATTERN_SCAN.md
-experiments/rsa/v2/output/grammar_inverse_word_exclusion/summary.json
+research/06-cryptology-rsa/experiments/rsa/v2/GRAMMAR_EVIDENCE_STATUS.md
+research/06-cryptology-rsa/experiments/rsa/v2/GRAMMAR_PATTERN_SCAN.md
+research/06-cryptology-rsa/experiments/rsa/v2/output/grammar_inverse_word_exclusion/summary.json
 ```
 
 The next valid grammar task is to use combined lag-2 + lag-3 reduced words as
@@ -320,9 +320,9 @@ research branch.
 Read:
 
 ```text
-gwr/findings/phase_budget_hidden_state_probe_findings.md
-docs/research/predictor/state_budget_hidden_state_rollout/index.html
-output/gwr_phase_budget_hidden_state_probe_summary.json
+research/05-state-budget/docs/phase_budget_hidden_state_probe_findings.md
+research/05-state-budget/docs/state_budget_hidden_state_rollout/index.html
+research/05-state-budget/output/gwr_phase_budget_hidden_state_probe_summary.json
 ```
 
 Strongest supported claim:
@@ -337,8 +337,8 @@ state and separates next-triad share by 0.057217.
 First hard-gated held-out result:
 
 ```text
-benchmarks/python/predictor/state_budget_heldout_ruler_test.py
-output/state_budget_heldout_ruler_test.csv
+research/05-state-budget/scripts/state_budget_heldout_ruler_test.py
+research/05-state-budget/output/state_budget_heldout_ruler_test.csv
 ```
 
 With `configured_balance_floor = 0.10`, the current retained surface does not
@@ -354,9 +354,9 @@ surface construction, not a stronger model.
 Matched-pair ruler test:
 
 ```text
-benchmarks/python/predictor/state_budget_pairwise_ruler_test.py
-output/state_budget_pairwise_ruler_summary.json
-output/state_budget_pairwise_ruler_per_power.csv
+research/05-state-budget/scripts/state_budget_pairwise_ruler_test.py
+research/05-state-budget/output/state_budget_pairwise_ruler_summary.json
+research/05-state-budget/output/state_budget_pairwise_ruler_per_power.csv
 ```
 
 Inside matched current-gap cells, target-next rows sit lower on the square
@@ -372,9 +372,9 @@ with the updated `unresolved` verdict after the control-margin rule was added.
 Residue-matched follow-up:
 
 ```text
-benchmarks/python/predictor/state_budget_residue_matched_pair_test.py
-output/state_budget_residue_matched_pair_summary.json
-output/state_budget_residue_matched_pair_per_power.csv
+research/05-state-budget/scripts/state_budget_residue_matched_pair_test.py
+research/05-state-budget/output/state_budget_residue_matched_pair_summary.json
+research/05-state-budget/output/state_budget_residue_matched_pair_per_power.csv
 ```
 
 Adding `p_n mod 30` to the matched-cell key leaves `230` decisive pairs. The
@@ -389,10 +389,10 @@ surface.
 PGS-native forbidden-transition follow-up:
 
 ```text
-benchmarks/python/predictor/state_budget_forbidden_transition_test.py
-output/state_budget_forbidden_transition_summary.json
-output/state_budget_forbidden_transition_folds.csv
-output/state_budget_forbidden_transition_catalog_2048/state_budget_forbidden_transition_summary.json
+research/05-state-budget/scripts/state_budget_forbidden_transition_test.py
+research/05-state-budget/output/state_budget_forbidden_transition_summary.json
+research/05-state-budget/output/state_budget_forbidden_transition_folds.csv
+research/05-state-budget/output/state_budget_forbidden_transition_catalog_2048/state_budget_forbidden_transition_summary.json
 ```
 
 The "cannot be" framing tested whether square-room side forbids exact next
@@ -421,8 +421,8 @@ next-state exclusion law.
 Expanded pairwise readout on the same `2048` surface:
 
 ```text
-output/state_budget_forbidden_transition_catalog_2048/state_budget_pairwise_ruler_summary.json
-output/state_budget_forbidden_transition_catalog_2048/state_budget_residue_matched_pair_summary.json
+research/05-state-budget/output/state_budget_forbidden_transition_catalog_2048/state_budget_pairwise_ruler_summary.json
+research/05-state-budget/output/state_budget_forbidden_transition_catalog_2048/state_budget_residue_matched_pair_summary.json
 ```
 
 The larger pairwise surface resolves the earlier square-over-tail ambiguity
@@ -458,14 +458,14 @@ tail length too closely. The research state after this surface was:
 Long-running `8192` breakthrough:
 
 ```text
-docs/research/predictor/d4_count_observer_note/index.html
-docs/research/predictor/d4_count_project_implications/index.html
-docs/research/predictor/state_budget_long_running_research_goal/index.html
-output/state_budget_long_running_catalog_8192/state_budget_long_running_research_report.md
-output/state_budget_long_running_catalog_8192/state_budget_divisor_carrier_sweep_summary.json
-output/state_budget_long_running_catalog_8192/state_budget_divisor_carrier_sweep_folds.csv
-benchmarks/python/predictor/state_budget_divisor_carrier_sweep.py
-tests/python/predictor/test_state_budget_divisor_carrier_sweep.py
+research/05-state-budget/docs/d4_count_observer_note/index.html
+research/05-state-budget/docs/d4_count_project_implications/index.html
+research/05-state-budget/docs/state_budget_long_running_research_goal/index.html
+research/05-state-budget/output/state_budget_long_running_catalog_8192/state_budget_long_running_research_report.md
+research/05-state-budget/output/state_budget_long_running_catalog_8192/state_budget_divisor_carrier_sweep_summary.json
+research/05-state-budget/output/state_budget_long_running_catalog_8192/state_budget_divisor_carrier_sweep_folds.csv
+research/05-state-budget/scripts/state_budget_divisor_carrier_sweep.py
+research/05-state-budget/tests/test_state_budget_divisor_carrier_sweep.py
 ```
 
 The long-running goal stopped with:

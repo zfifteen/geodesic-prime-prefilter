@@ -7,15 +7,15 @@ certificates, and unresolved survivor states.
 
 Primary homes:
 
-- `experiments/rsa/v2/`
-- `experiments/rsa/v3/`
+- `research/06-cryptology-rsa/experiments/rsa/v2/`
+- `research/06-cryptology-rsa/experiments/rsa/v3/`
 - `docs/research/cryptology/`
 - `docs/research/semiprime_branch/`
-- `output/semiprime_branch/`
-- `output/batch_modular_factor_closure_probe/`
-- `output/batch_modular_factor_closure_probe_f50000/`
-- `benchmarks/python/predictor/pgs_semiprime_backward_*.py`
-- `benchmarks/python/predictor/batch_modular_factor_closure_probe.py`
+- `research/06-cryptology-rsa/output/semiprime_branch/`
+- `research/06-cryptology-rsa/output/batch_modular_factor_closure_probe/`
+- `research/06-cryptology-rsa/output/batch_modular_factor_closure_probe_f50000/`
+- `research/06-cryptology-rsa/scripts/pgs_semiprime_backward_*.py`
+- `research/06-cryptology-rsa/scripts/batch_modular_factor_closure_probe.py`
 
 ## Invariant Or Rule
 
@@ -41,7 +41,7 @@ unresolved by the certificate pair:
 closure_status: unresolved_by_certificate_pair_not_closed
 ```
 
-Semiprime backward-law surfaces live under `output/semiprime_branch/`. They are
+Semiprime backward-law surfaces live under `research/06-cryptology-rsa/output/semiprime_branch/`. They are
 measured search surfaces and do not constitute factorization results.
 
 ## Audit Status
@@ -49,7 +49,7 @@ measured search surfaces and do not constitute factorization results.
 Focused RSA validation passed during Phase 5 finalization:
 
 ```text
-python3 -m pytest tests/python/test_rsa_v2_scripts.py tests/python/test_rsa_v2_transported_story_law.py tests/python/test_rsa_v2_certificate_commitment_story.py tests/python/predictor/test_pgs_semiprime_backward_law_search.py tests/python/predictor/test_pgs_semiprime_backward_transition_law_search.py tests/python/predictor/test_toy_modulus_backward_chamber_lock.py
+python3 -m pytest research/06-cryptology-rsa/tests/test_rsa_v2_scripts.py research/06-cryptology-rsa/tests/test_rsa_v2_transported_story_law.py research/06-cryptology-rsa/tests/test_rsa_v2_certificate_commitment_story.py research/06-cryptology-rsa/tests/test_pgs_semiprime_backward_law_search.py research/06-cryptology-rsa/tests/test_pgs_semiprime_backward_transition_law_search.py research/06-cryptology-rsa/tests/test_toy_modulus_backward_chamber_lock.py
 102 passed in 248.72s
 ```
 
