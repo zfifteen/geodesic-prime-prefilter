@@ -18,9 +18,11 @@ that rule: among the integers strictly between `p` and `q`, the first integer
 with the smallest divisor count is the unique maximizer of the logarithmic
 comparison function below.
 
-Both statements are universal under their stated hypotheses. The computation
-tables in this document certify finite cases used by the proof; they are not
-limits on the theorem.
+Both statements are universal under their stated hypotheses. The proof uses a
+finite base below `5,000,000,001` and then closes the remaining earlier-integer
+side by exact divisor-count arithmetic. The computation tables in this document
+certify the finite base and implementation surfaces; they are not limits on the
+theorem.
 
 ## The Algorithm
 
@@ -183,7 +185,7 @@ The inequality `F(k) < F(w)` is equivalent to
 $$\left(e-2\right)\log k>\left(d-2\right)\log w$$
 
 The earlier side is proved by a prime-square case, a general threshold
-comparison, and the finite classification tables in this document.
+comparison, and a short-interval divisor-average argument.
 
 ### Prime-Square Case
 
@@ -271,91 +273,176 @@ The failure count was `0`.
 | `1,000,000,001 <= p < 5,000,000,001` | `172,913,029` | `660,287,089` | `0` |
 | Total | `220,336,055` | `826,172,978` | `0` |
 
-This finite base closes every row whose threshold is below `5,000,000,000`,
-because the threshold lemma closes all larger `p`.
+This finite base closes the theorem for all gaps below the stated left-prime
+bound. The remaining proof assumes `p > 5,000,000,000`.
 
-### Witness Threshold Lemma
+### Short Divisor-Average Lemma
 
-Let `M(d)` be the least positive integer with exactly `d` positive divisors.
-If `M(d) >= 2T(d,e)`, then any chosen integer with divisor count `d` satisfies
-`w >= M(d)`. Since `w < 2p`, it follows that `p > M(d) / 2`, hence
-`p > T(d,e)`. The threshold lemma then closes that pair.
+Let `N > 1`, let `L = log N`, and let `1 <= H < N`. For the interval
 
-The witness rows used below are:
+$$J=\{N-H,\ldots,N-1\}$$
 
-| Winner divisor count `d` | Earlier divisor count `e` | `M(d)` | `T(d,e)` | Result |
-|---:|---:|---:|---:|---|
-| `41` | `42` | `1,099,511,627,776` | `549,755,813,888` | `M(d) = 2T(d,e)` |
-| `43` | `44` | `4,398,046,511,104` | `2,199,023,255,552` | `M(d) = 2T(d,e)` |
-| `53` | `54` | `4,503,599,627,370,496` | `2,251,799,813,685,248` | `M(d) = 2T(d,e)` |
-| `59` | `60` | `288,230,376,151,711,744` | `144,115,188,075,855,872` | `M(d) = 2T(d,e)` |
+we have
 
-### Odd Adjacent Branch Lemma
+$$\sum_{n\in J}\tau(n)\le H(L+2)+2\sqrt N$$
 
-The only adjacent odd winner branches that remain above the finite base and
-are not closed by the witness threshold lemma are listed below.
+For each divisor pair of an integer `n < N`, at least one member of the pair is
+at most `sqrt(n) < sqrt(N)`. Therefore
 
-For each row, the enumeration condition was: list every integer with divisor
-count `d` whose previous prime `p` lies in the stated interval, then compute
-the actual containing prime gap and check whether that integer is the chosen
-integer and whether an earlier integer with divisor count `e` occurs before
-it.
+$$\tau(n)\le 2\#\{a\le\sqrt N:a\mid n\}$$
 
-| Winner divisor count `d` | Earlier divisor count `e` | Certified `p` interval | Candidate count | Result |
-|---:|---:|---|---:|---|
-| `35` | `36` | `5,000,000,000 < p <= 8,589,934,592` | `5` | `0` chosen-integer gaps and `0` earlier pairs |
-| `39` | `40` | `5,000,000,000 < p <= 137,438,953,472` | `655` | `0` chosen-integer gaps and `0` earlier pairs |
-| `49` | `50` | `5,000,000,000 < p <= 140,737,488,355,328` | `58` | `1` chosen-integer gap and `0` earlier pairs |
-| `51` | `52` | `5,000,000,000 < p <= 562,949,953,421,312` | `9,413` | `3` chosen-integer gaps and `0` earlier pairs |
-| `55` | `56` | `5,000,000,000 < p <= 9,007,199,254,740,992` | `439` | `0` chosen-integer gaps and `0` earlier pairs |
+Summing over `J` gives
 
-Thus none of these branches contains an earlier integer with `F(k) >= F(w)`.
+$$
+\sum_{n\in J}\tau(n)
+\le
+2\sum_{a\le\sqrt N}\#\{n\in J:a\mid n\}
+$$
 
-### Classification Lemma
+Among `H` consecutive integers, the number divisible by `a` is at most
+`H/a + 1`. Hence
 
-After the prime-square case and the threshold monotonicity reductions, the
-retained divisor-count pairs are exactly the rows below. Each row is closed by
-the stated mechanism. Any unlisted larger `e` for the same `d` has a smaller
-threshold, and any unlisted smaller `d` for the same `e` has a smaller
-threshold.
+$$
+\sum_{n\in J}\tau(n)
+\le
+2\sum_{a\le\sqrt N}\left(\frac Ha+1\right)
+$$
 
-The table is not a catalog of every divisor count that can occur as `tau(w)`.
-Large divisor counts can occur as the minimum divisor count in a gap. A divisor
-count `d` needs a row here only when the adjacent earlier-integer comparison
-`(d, d + 1)` remains a case requiring proof after the preceding reductions. If
-the chosen integer is the first interior integer, or if no earlier integer with
-the adjacent divisor count occurs before it in the checked cases, then there is
-no earlier integer of that class to compare with `w`.
+Using `sum_{a<=R} 1/a <= 1 + log R` with `R = sqrt(N)`,
 
-Thus the rows below are the retained adjacent comparison pairs, not the retained
-winner divisor counts.
+$$
+\sum_{n\in J}\tau(n)
+\le
+2H(1+\log\sqrt N)+2\sqrt N
+=H(L+2)+2\sqrt N
+$$
 
-| Winner divisor count `d` | Earlier divisor count `e` | `T(d,e)` | Closure |
-|---:|---:|---:|---|
-| `4` | `5` | `4` | Threshold lemma; smaller prime case has no earlier integer |
-| `9` | `10` | `128` | Finite Base Lemma |
-| `13` | `14` | `2,048` | Finite Base Lemma |
-| `17` | `18` | `32,768` | Finite Base Lemma |
-| `19` | `20` | `131,072` | Finite Base Lemma |
-| `21` | `22` | `524,288` | Finite Base Lemma |
-| `25` | `26` | `8,388,608` | Finite Base Lemma |
-| `26` | `27` | `16,777,216` | Finite Base Lemma |
-| `27` | `28` | `33,554,432` | Finite Base Lemma |
-| `29` | `30` | `134,217,728` | Finite Base Lemma |
-| `33` | `34` | `2,147,483,648` | Finite Base Lemma |
-| `35` | `36` | `8,589,934,592` | Odd Adjacent Branch Lemma |
-| `39` | `40` | `137,438,953,472` | Odd Adjacent Branch Lemma |
-| `41` | `42` | `549,755,813,888` | Witness Threshold Lemma |
-| `43` | `44` | `2,199,023,255,552` | Witness Threshold Lemma |
-| `49` | `50` | `140,737,488,355,328` | Odd Adjacent Branch Lemma |
-| `51` | `52` | `562,949,953,421,312` | Odd Adjacent Branch Lemma |
-| `53` | `54` | `2,251,799,813,685,248` | Witness Threshold Lemma |
-| `55` | `56` | `9,007,199,254,740,992` | Odd Adjacent Branch Lemma |
-| `59` | `60` | `144,115,188,075,855,872` | Witness Threshold Lemma |
+### Large-Divisor Adjacent Closure
 
-Every retained pair is closed. By the two monotonicity facts in the threshold
-lemma, no omitted larger earlier divisor count or smaller winner divisor count
-can be harder than the listed closed row.
+Assume `p > 5,000,000,000`, since the finite base has already closed all
+smaller left primes. Let
+
+$$d=\tau(w)\ge 4,\qquad L=\log w$$
+
+By Bertrand's theorem, `w < q < 2p`, so `p > w / 2`.
+
+It is enough to close the adjacent earlier divisor count `e = d + 1`, because
+the threshold `T(d,e)` decreases as `e` increases.
+
+If
+
+$$
+(d-2)\log 2\le L-\log 2
+$$
+
+then
+
+$$
+2^{d-2}\le \frac w2<p
+$$
+
+so the Threshold Lemma closes the adjacent row and every larger earlier divisor
+count.
+
+It remains to consider
+
+$$
+(d-2)\log 2>L-\log 2
+$$
+
+Then
+
+$$
+d-L-2>\left(\frac1{\log 2}-1\right)L-1
+$$
+
+Since `w > 5,000,000,000`,
+
+$$
+\left(\frac1{\log 2}-1\right)L-1>\frac{32}{L}
+$$
+
+The function
+
+$$
+\left(\frac1{\log 2}-1\right)L-1-\frac{32}{L}
+$$
+
+is increasing for `L > 0`, and it is already positive at
+`L = log(5,000,000,000)`.
+
+Therefore
+
+$$d>L+2+\frac{32}{L}$$
+
+Set
+
+$$H=\left\lfloor\frac{wL}{4(d-1)}\right\rfloor$$
+
+For every integer `n`, `tau(n) <= 2sqrt(n)`, so `d = tau(w) <= 2sqrt(w)`.
+Thus
+
+$$
+\frac{wL}{4(d-1)}\ge \frac{\sqrt w\,L}{8}>2
+$$
+
+and therefore
+
+$$H\ge \frac{wL}{8(d-1)}$$
+
+Here we used the elementary fact that if `A > 2`, then `floor(A) >= A / 2`.
+
+Apply the Short Divisor-Average Lemma to
+
+$$J=\{w-H,\ldots,w-1\}$$
+
+The average divisor count on `J` is at most
+
+$$
+L+2+\frac{2\sqrt w}{H}
+\le
+L+2+\frac{16(d-1)}{\sqrt w\,L}
+\le
+L+2+\frac{32}{L}
+<d
+$$
+
+So some `n in J` has `tau(n) < d`. If `p < n < w`, then `n` would be an
+earlier interior integer with smaller divisor count than `w`, contradicting
+the choice of `w`. Hence `n <= p`.
+
+Every earlier integer `k < w` in the gap satisfies
+
+$$k>p\ge n\ge w-H$$
+
+Let `x = H / w`. Since
+
+$$d-1>\frac{L}{\log 2}>L$$
+
+we have
+
+$$x\le \frac{L}{4(d-1)}<\frac14$$
+
+and
+
+$$
+\log\frac{w}{w-H}
+=-\log(1-x)
+< \frac{x}{1-x}
+<\frac{L}{d-1}
+$$
+
+Therefore
+
+$$
+(d-1)\log(w-H)>(d-2)\log w
+$$
+
+Since `k >= w - H + 1 > w - H` and `e - 2 >= d - 1`,
+
+$$
+(e-2)\log k>(d-2)\log w
+$$
 
 Thus every earlier integer has `F(k) < F(w)`.
 

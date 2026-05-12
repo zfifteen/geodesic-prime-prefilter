@@ -33,12 +33,12 @@ $$
 F(n)=\left(1-\frac{\tau(n)}{2}\right)\log n.
 $$
 
-Both statements are universal under their stated hypotheses. Finite
-certificates enter only where the proof reduces a branch to an explicit finite
-case split. Implementation audits are included in appendices for provenance
-and reproducibility. They do not limit the universal theorems. The appendices
-also record the current bounded-compression boundary, measured implementation
-surfaces, invalidated routes, and explicit non-claims.
+Both statements are universal under their stated hypotheses. The proof uses a
+finite base below $5,000,000,001$ and then closes the remaining earlier-integer
+side by exact divisor-count arithmetic. Implementation audits are included in
+appendices for provenance and reproducibility. They do not limit the universal
+theorems. The appendices also record the current bounded-compression boundary,
+measured implementation surfaces, invalidated routes, and explicit non-claims.
 
 ## 1. Definitions
 
@@ -157,7 +157,8 @@ $$
 is largest.
 
 The proof treats later and earlier interior integers separately. The earlier
-side reduces to explicit finite case splits after the inequalities below.
+side is closed by the prime-square case, the threshold comparison, and a
+short-interval divisor-average argument.
 
 ### 4.1 Ordered Comparison Lemma
 
@@ -261,7 +262,7 @@ $$
 $$
 
 The earlier side is closed by the prime-square case, a threshold comparison,
-and explicit finite case splits.
+and a short-interval divisor-average argument.
 
 ### 4.5 Prime-Square Case
 
@@ -380,116 +381,204 @@ The failure count was $0$.
 | $1,000,000,001\le p<5,000,000,001$ | $172,913,029$ | $660,287,089$ | $0$ |
 | Total | $220,336,055$ | $826,172,978$ | $0$ |
 
-This finite base closes every row in the case split whose threshold is below
-$5,000,000,000$, because the threshold lemma closes all larger $p$.
+This finite base closes the theorem for all gaps below the stated left-prime
+bound. The remaining proof assumes $p>5,000,000,000$.
 
-### 4.8 Witness Threshold Lemma
+### 4.8 Short Divisor-Average Lemma
 
-Let $M(d)$ be the least positive integer with exactly $d$ positive divisors.
+**Lemma.** Let $N>1$, let $L=\log N$, and let $1\le H<N$. For the interval
+
+$$
+J=\{N-H,\ldots,N-1\},
+$$
+
+we have
+
+$$
+\sum_{n\in J}\tau(n)\le H(L+2)+2\sqrt N.
+$$
+
+**Proof.** For each divisor pair of an integer $n<N$, at least one member of
+the pair is at most $\sqrt n<\sqrt N$. Therefore
+
+$$
+\tau(n)\le 2\#\{a\le\sqrt N:a\mid n\}.
+$$
+
+Summing over $J$ gives
+
+$$
+\sum_{n\in J}\tau(n)
+\le
+2\sum_{a\le\sqrt N}\#\{n\in J:a\mid n\}.
+$$
+
+Among $H$ consecutive integers, the number divisible by $a$ is at most
+$H/a+1$. Hence
+
+$$
+\sum_{n\in J}\tau(n)
+\le
+2\sum_{a\le\sqrt N}\left(\frac Ha+1\right).
+$$
+
+Using $\sum_{a\le R}1/a\le 1+\log R$ with $R=\sqrt N$,
+
+$$
+\sum_{n\in J}\tau(n)
+\le
+2H(1+\log\sqrt N)+2\sqrt N
+=H(L+2)+2\sqrt N.
+$$
+
+$\square$
+
+### 4.9 Large-Divisor Adjacent Closure
+
+Assume $p>5,000,000,000$, since the finite base has already closed all smaller
+left primes. Let
+
+$$
+d=\tau(w)\ge 4,\qquad L=\log w.
+$$
+
+By Bertrand's theorem, $w<q<2p$, so $p>w/2$.
+
+It is enough to close the adjacent earlier divisor count $e=d+1$, because the
+threshold $T(d,e)$ decreases as $e$ increases.
+
 If
 
 $$
-M(d)\ge 2T(d,e),
+(d-2)\log 2\le L-\log 2,
 $$
 
-then any chosen integer with divisor count $d$ satisfies $w\ge M(d)$. Since
-$w<2p$, it follows that
+then
 
 $$
-p>\frac{M(d)}2\ge T(d,e).
+2^{d-2}\le \frac w2<p,
 $$
 
-The threshold lemma then closes that pair.
+so the Threshold Lemma closes the adjacent row and every larger earlier
+divisor count.
 
-The witness rows used in the finite case split are:
-
-| Winner divisor count $d$ | Earlier divisor count $e$ | $M(d)$ | $T(d,e)$ | Result |
-| ---: | ---: | ---: | ---: | --- |
-| $41$ | $42$ | $1,099,511,627,776$ | $549,755,813,888$ | $M(d)=2T(d,e)$ |
-| $43$ | $44$ | $4,398,046,511,104$ | $2,199,023,255,552$ | $M(d)=2T(d,e)$ |
-| $53$ | $54$ | $4,503,599,627,370,496$ | $2,251,799,813,685,248$ | $M(d)=2T(d,e)$ |
-| $59$ | $60$ | $288,230,376,151,711,744$ | $144,115,188,075,855,872$ | $M(d)=2T(d,e)$ |
-
-### 4.9 Odd Adjacent Branch Lemma
-
-The only odd adjacent divisor-count branches that remain above the finite base
-and are not closed by the witness threshold lemma are listed below.
-
-For each row, the enumeration condition was:
-
-1. list every integer $w$ with divisor count $d$ whose preceding prime $p$
-   lies in the stated interval;
-2. compute the actual containing prime gap;
-3. check whether that integer is the chosen interior witness;
-4. check whether an earlier integer with divisor count $e$ occurs before it.
-
-| Winner divisor count $d$ | Earlier divisor count $e$ | Certified $p$ interval | Integers enumerated | Result |
-| ---: | ---: | --- | ---: | --- |
-| $35$ | $36$ | $5,000,000,000<p\le 8,589,934,592$ | $5$ | $0$ chosen-integer gaps and $0$ earlier pairs |
-| $39$ | $40$ | $5,000,000,000<p\le 137,438,953,472$ | $655$ | $0$ chosen-integer gaps and $0$ earlier pairs |
-| $49$ | $50$ | $5,000,000,000<p\le 140,737,488,355,328$ | $58$ | $1$ chosen-integer gap and $0$ earlier pairs |
-| $51$ | $52$ | $5,000,000,000<p\le 562,949,953,421,312$ | $9,413$ | $3$ chosen-integer gaps and $0$ earlier pairs |
-| $55$ | $56$ | $5,000,000,000<p\le 9,007,199,254,740,992$ | $439$ | $0$ chosen-integer gaps and $0$ earlier pairs |
-
-Thus none of these branches contains an earlier integer with $F(k)\ge F(w)$.
-
-### 4.10 Classification Lemma
-
-After the prime-square case and the threshold monotonicity reductions, it
-remains to consider adjacent pairs $e=d+1$. For those pairs,
+It remains to consider
 
 $$
-T(d,d+1)=2^{d-2}.
+(d-2)\log 2>L-\log 2.
 $$
 
-Every adjacent row with $d\le 34$ has $T(d,d+1)<5,000,000,000$, so the Finite
-Base Lemma closes that row. For prime $d\ge 35$, the least integer with exactly
-$d$ positive divisors is
+Then
 
 $$
-M(d)=2^{d-1}=2T(d,d+1),
+d-L-2>\left(\frac1{\log 2}-1\right)L-1.
 $$
 
-so the Witness Threshold Lemma closes that row.
+Since $w>5,000,000,000$,
 
-The remaining rows are the complete finite case split left by those reductions.
-Each row below is closed by the stated mechanism.
+$$
+\left(\frac1{\log 2}-1\right)L-1>\frac{32}{L}.
+$$
 
-The table is not a catalog of every divisor count that occurs as $\tau(w)$.
-Large divisor counts occur as the minimum divisor count in some gaps. A divisor
-count $d$ needs a row here only when the adjacent earlier-integer comparison
-$(d,d+1)$ remains after the reductions above.
+The function
 
-| Winner divisor count $d$ | Earlier divisor count $e$ | $T(d,e)$ | Closure |
-| ---: | ---: | ---: | --- |
-| $4$ | $5$ | $4$ | Threshold lemma; smaller prime case has no earlier integer |
-| $9$ | $10$ | $128$ | Finite Base Lemma |
-| $13$ | $14$ | $2,048$ | Finite Base Lemma |
-| $17$ | $18$ | $32,768$ | Finite Base Lemma |
-| $19$ | $20$ | $131,072$ | Finite Base Lemma |
-| $21$ | $22$ | $524,288$ | Finite Base Lemma |
-| $25$ | $26$ | $8,388,608$ | Finite Base Lemma |
-| $26$ | $27$ | $16,777,216$ | Finite Base Lemma |
-| $27$ | $28$ | $33,554,432$ | Finite Base Lemma |
-| $29$ | $30$ | $134,217,728$ | Finite Base Lemma |
-| $33$ | $34$ | $2,147,483,648$ | Finite Base Lemma |
-| $35$ | $36$ | $8,589,934,592$ | Odd Adjacent Branch Lemma |
-| $39$ | $40$ | $137,438,953,472$ | Odd Adjacent Branch Lemma |
-| $41$ | $42$ | $549,755,813,888$ | Witness Threshold Lemma |
-| $43$ | $44$ | $2,199,023,255,552$ | Witness Threshold Lemma |
-| $49$ | $50$ | $140,737,488,355,328$ | Odd Adjacent Branch Lemma |
-| $51$ | $52$ | $562,949,953,421,312$ | Odd Adjacent Branch Lemma |
-| $53$ | $54$ | $2,251,799,813,685,248$ | Witness Threshold Lemma |
-| $55$ | $56$ | $9,007,199,254,740,992$ | Odd Adjacent Branch Lemma |
-| $59$ | $60$ | $144,115,188,075,855,872$ | Witness Threshold Lemma |
+$$
+\left(\frac1{\log 2}-1\right)L-1-\frac{32}{L}
+$$
 
-Every listed pair is closed. By the monotonicity facts in the threshold
-lemma, no omitted larger earlier divisor count or smaller winner divisor count
-is harder than the listed closed row.
+is increasing for $L>0$, and it is already positive at
+$L=\log(5,000,000,000)$.
+
+Therefore
+
+$$
+d>L+2+\frac{32}{L}.
+$$
+
+Set
+
+$$
+H=\left\lfloor\frac{wL}{4(d-1)}\right\rfloor.
+$$
+
+For every integer $n$, $\tau(n)\le 2\sqrt n$, so $d=\tau(w)\le 2\sqrt w$.
+Thus
+
+$$
+\frac{wL}{4(d-1)}\ge \frac{\sqrt w\,L}{8}>2,
+$$
+
+and therefore
+
+$$
+H\ge \frac{wL}{8(d-1)}.
+$$
+
+Here we used the elementary fact that if $A>2$, then $\lfloor A\rfloor\ge A/2$.
+
+Apply the Short Divisor-Average Lemma to
+
+$$
+J=\{w-H,\ldots,w-1\}.
+$$
+
+The average divisor count on $J$ is at most
+
+$$
+L+2+\frac{2\sqrt w}{H}
+\le
+L+2+\frac{16(d-1)}{\sqrt w\,L}
+\le
+L+2+\frac{32}{L}
+<d.
+$$
+
+So some $n\in J$ has $\tau(n)<d$. If $p<n<w$, then $n$ would be an earlier
+interior integer with smaller divisor count than $w$, contradicting the choice
+of $w$. Hence $n\le p$.
+
+Every earlier integer $k<w$ in the gap satisfies
+
+$$
+k>p\ge n\ge w-H.
+$$
+
+Let $x=H/w$. Since
+
+$$
+d-1>\frac{L}{\log 2}>L,
+$$
+
+we have
+
+$$
+x\le \frac{L}{4(d-1)}<\frac14,
+$$
+
+and
+
+$$
+\log\frac{w}{w-H}
+=-\log(1-x)
+< \frac{x}{1-x}
+<\frac{L}{d-1}.
+$$
+
+Therefore
+
+$$
+(d-1)\log(w-H)>(d-2)\log w.
+$$
+
+Since $k\ge w-H+1>w-H$ and $e-2\ge d-1$,
+
+$$
+(e-2)\log k>(d-2)\log w.
+$$
 
 Thus every earlier integer $k<w$ satisfies $F(k)<F(w)$.
 
-### 4.11 Proof Of The Maximizer Theorem
+### 4.10 Proof Of The Maximizer Theorem
 
 The later-integer argument gives $F(w)>F(t)$ for every $t>w$ in $I$.
 
@@ -579,8 +668,10 @@ No selected-witness offset exceeded $64$ on this finite surface.
 
 ### A.3 Residual $K=128$ First-d4 Branch-Elimination Lemma
 
-This lemma records the finite first-d4 case split used by the remaining odd
-adjacent rows. It is not a statement about all prime gaps.
+This lemma records finite first-d4 residual checks from the earlier
+classification route. The main maximizer proof now closes the earlier-integer
+side by the divisor-average argument in Section 4.9, so this residual table is
+certified provenance rather than a dependency of the theorem.
 
 Let $d$ be an odd divisor count and let the adjacent earlier divisor count be
 $d+1$. In each stated finite interval, enumerate every integer $w$ with
@@ -594,7 +685,7 @@ the selected witness for that gap. An earlier interior integer has smaller
 divisor count than $d$, so $w$ cannot be the first integer where the gap
 minimum divisor count is attained.
 
-The finite case split applies this exact elimination as follows:
+The residual checks applied this exact elimination as follows:
 
 | Earlier divisor count | Witness divisor count | Preceding-prime window | Integers enumerated | Eliminated by first-d4 window | Remaining exceptions | Result |
 | ---: | ---: | --- | ---: | ---: | ---: | --- |
@@ -602,9 +693,9 @@ The finite case split applies this exact elimination as follows:
 | $40$ | $39$ | $(5,000,000,000,137,438,953,472]$ | $655$ | $623$ | $32$ | exceptions realize $0$ $\tau=39$ winner gaps |
 | $56$ | $55$ | $(5,000,000,000,9,007,199,254,740,992]$ | $439$ | $412$ | $27$ | exceptions realize $0$ $\tau=55$ winner gaps |
 
-Thus, on these odd adjacent finite branches, the $K=128$ first-d4 window
-eliminates the listed witness branches, with remaining exceptions closed by
-exact enumeration.
+Thus, on these residual finite branches, the $K=128$ first-d4 window eliminates
+the listed witness branches, with remaining exceptions closed by exact
+enumeration.
 
 ## Appendix B. Bounded Compression Status
 
