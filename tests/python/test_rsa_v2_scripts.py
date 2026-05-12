@@ -18,6 +18,8 @@ SCRIPT_NAMES = (
     "transported_exclusion_debt_probe.py",
     "transported_d4_budget_probe.py",
     "transported_d4_budget_trace.py",
+    "toy_normalized_frontier_closure_sweep.py",
+    "normalized_frontier_holdout_closure.py",
     "modulus_gap_grammar_probe.py",
     "rsa_challenge_exact_grammar_probe.py",
     "grammar_compatibility_catalog.py",
@@ -762,6 +764,157 @@ def test_solved_rsa_challenge_labels_are_collected_for_exact_grammar(tmp_path):
     assert summary["public_case_count"] == 0
     assert summary["target_side_row_count"] == 0
     assert summary["max_case_bits"] == 62
+
+
+def test_toy_normalized_frontier_closure_sweep_keeps_current_rows_unresolved(tmp_path):
+    """As a reviewer, I want normalized frontier closure measured without promotion."""
+    module = load_module(V2 / "toy_normalized_frontier_closure_sweep.py")
+    output_dir = tmp_path / "normalized_frontier"
+
+    assert module.main(["--output-dir", str(output_dir)]) == 0
+
+    sweep_rows = read_jsonl(output_dir / "sweep_rows.jsonl")
+    frontier_rows = read_jsonl(output_dir / "frontier_rows.jsonl")
+    summary = json.loads((output_dir / "summary.json").read_text(encoding="utf-8"))
+
+    assert summary["rule_id"] == "toy_normalized_frontier_closure_sweep_v1"
+    assert summary["case_count"] == 2
+    assert summary["frontier_row_count"] == 202
+    assert summary["ledger_effective_survivor_count"] == 202
+    assert summary["strict_d4_frontier_count"] == 50
+    assert summary["strict_d4_live_after_trace"] == 0
+    assert summary["non_strict_undominated_live_after_trace"] == 2
+    assert summary["normalized_live_frontier_count"] == 2
+    assert summary["frontier_empty_but_unresolved"] == 0
+    assert summary["frontier_live_but_closed"] == 0
+    assert summary["terminal_without_named_public_invariant"] == 0
+    assert summary["certificate_status_after_partition"] == {
+        "sidecar_blocked_by_live_normalized_frontier": 2
+    }
+    assert {row["case_id"] for row in sweep_rows} == {CASE_ID, CASE_50_ID}
+    for row in sweep_rows:
+        assert row["certificate_status_before"] == "unresolved_by_certificate_pair_not_closed"
+        assert row["certificate_status_after"] == "sidecar_blocked_by_live_normalized_frontier"
+        assert row["normalized_live_frontier_count"] == 1
+        assert row["strict_d4_live_after_trace"] == 0
+        assert row["non_strict_undominated_live_after_trace"] == 1
+        assert row["terminal_without_named_public_invariant"] == 0
+    live_rows = [row for row in frontier_rows if row["normalized_live_after_trace"]]
+    assert len(live_rows) == 2
+    assert all(not row["strict_d4_frontier_candidate"] for row in live_rows)
+    assert all(row["induced_d4_uncommitted_count"] == 1 for row in live_rows)
+    assert all({"p", "q", "audit_integrity_status", "inference_audit_status"}.isdisjoint(row) for row in frontier_rows)
+
+
+def test_toy_normalized_frontier_closure_sweep_writes_lf_sidecars(tmp_path):
+    """As a reviewer, I want normalized frontier artifacts to be LF-only."""
+    module = load_module(V2 / "toy_normalized_frontier_closure_sweep.py")
+    output_dir = tmp_path / "normalized_frontier"
+
+    assert module.main(["--output-dir", str(output_dir)]) == 0
+
+    for path in (
+        output_dir / "sweep_rows.jsonl",
+        output_dir / "frontier_rows.jsonl",
+        output_dir / "summary.json",
+    ):
+        raw = path.read_bytes()
+        assert raw.endswith(b"\n")
+        assert b"\r\n" not in raw
+
+
+def test_toy_normalized_frontier_closure_sweep_has_no_forbidden_inference_constructs():
+    """As a reviewer, I want normalized frontier sweeping free of resolver machinery."""
+    source = (V2 / "toy_normalized_frontier_closure_sweep.py").read_text(encoding="utf-8")
+    forbidden = (
+        "sympy",
+        "factorint",
+        "isprime",
+        "nextprime",
+        "prevprime",
+        "randprime",
+        "gcd",
+        "OpenSSL",
+        "subprocess",
+        "prime_basis",
+        "trial_division",
+        "Miller",
+        "audit_factors",
+        "audit_spec",
+        "random",
+        "product_closure",
+        P_VALUE,
+        Q_VALUE,
+        GENERATED_50_P,
+        GENERATED_50_Q,
+    )
+    for token in forbidden:
+        assert token not in source
+
+
+def test_normalized_frontier_holdout_closure_falsifies_live_survivors(tmp_path):
+    """As a reviewer, I want holdout closure to stay unresolved when rows survive."""
+    module = load_module(V2 / "normalized_frontier_holdout_closure.py")
+    output_dir = tmp_path / "holdout"
+
+    assert module.main(["--output-dir", str(output_dir)]) == 0
+
+    ledger_rows = read_jsonl(output_dir / "before_after_ledger.jsonl")
+    live_rows = json.loads((output_dir / "live_rows_audit.json").read_text(encoding="utf-8"))
+    checker = json.loads((output_dir / "checker_report.json").read_text(encoding="utf-8"))
+    invariant = json.loads(
+        (output_dir / "pre_registered_invariant.json").read_text(encoding="utf-8")
+    )
+    summary = json.loads((output_dir / "summary.json").read_text(encoding="utf-8"))
+
+    assert summary["rule_id"] == "normalized_frontier_holdout_closure_v1"
+    assert summary["invariant_name"] == "Normalized Frontier Dominance Invariant"
+    assert summary["frozen_public_state"] == {
+        "ledger_effective_survivor_count": 202,
+        "strict_d4_frontier_count": 50,
+        "strict_d4_collapse_count": 50,
+        "strict_d4_live_after_trace": 0,
+        "non_strict_live_after_trace": 2,
+        "normalized_live_frontier_count": 2,
+    }
+    assert summary["public_state_matches_expected"]
+    assert summary["before_holdout_live_count"] == 2
+    assert summary["after_holdout_live_count"] == 2
+    assert not summary["resolved"]
+    assert summary["falsified"]
+    assert summary["falsification_reasons"] == ["survivor_remains_after_holdout"]
+    assert not summary["case_specific_logic_used"]
+    assert not summary["threshold_fitted_from_holdout_rows"]
+    assert not summary["forbidden_mechanism_entered"]
+    assert checker["status"] == "passed"
+    assert checker["violations"] == []
+    assert invariant["threshold_policy"] == "no fitted threshold"
+    assert invariant["rung_policy"] == "one rule for every rung"
+    assert len(ledger_rows) == 202
+    assert sum(1 for row in ledger_rows if row["after_holdout_live"]) == 2
+    assert len(live_rows) == 2
+    assert all(not row["strict_d4_frontier_candidate"] for row in live_rows)
+    assert all({"p", "q", "audit_integrity_status", "inference_audit_status"}.isdisjoint(row) for row in live_rows)
+
+
+def test_normalized_frontier_holdout_closure_writes_lf_sidecars(tmp_path):
+    """As a reviewer, I want holdout closure artifacts to be LF-only."""
+    module = load_module(V2 / "normalized_frontier_holdout_closure.py")
+    output_dir = tmp_path / "holdout"
+
+    assert module.main(["--output-dir", str(output_dir)]) == 0
+
+    for path in (
+        output_dir / "input_manifest.json",
+        output_dir / "pre_registered_invariant.json",
+        output_dir / "checker_report.json",
+        output_dir / "before_after_ledger.jsonl",
+        output_dir / "live_rows_audit.json",
+        output_dir / "summary.json",
+    ):
+        raw = path.read_bytes()
+        assert raw.endswith(b"\n")
+        assert b"\r\n" not in raw
 
 
 def test_rsa_challenge_exact_grammar_probe_measures_small_fixture(tmp_path):

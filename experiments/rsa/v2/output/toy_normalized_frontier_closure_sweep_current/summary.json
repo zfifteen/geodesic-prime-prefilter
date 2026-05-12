@@ -1,0 +1,16 @@
+{
+  "case_count": 2,
+  "certificate_status_after_partition": {
+    "sidecar_blocked_by_live_normalized_frontier": 2
+  },
+  "frontier_empty_but_unresolved": 0,
+  "frontier_live_but_closed": 0,
+  "frontier_row_count": 202,
+  "ledger_effective_survivor_count": 202,
+  "non_strict_undominated_live_after_trace": 2,
+  "normalized_live_frontier_count": 2,
+  "rule_id": "toy_normalized_frontier_closure_sweep_v1",
+  "strict_d4_frontier_count": 50,
+  "strict_d4_live_after_trace": 0,
+  "terminal_without_named_public_invariant": 0
+}

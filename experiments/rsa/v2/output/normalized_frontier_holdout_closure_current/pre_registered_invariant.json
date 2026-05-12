@@ -1,0 +1,20 @@
+{
+  "decision_rule": "A normalized frontier row is eliminated only when the public row is a strict d=4 frontier candidate and carries a named public terminal exit from the strict d=4 collapse trace.",
+  "name": "Normalized Frontier Dominance Invariant",
+  "non_strict_clause": "A non-strict live row remains live unless the same public normalized frontier witness eliminates it.",
+  "public_coordinates": [
+    "strict_d4_frontier_candidate",
+    "open_d4_carrier",
+    "induced_carrier_is_d4",
+    "induced_carrier_committed",
+    "induced_d4_uncommitted_count",
+    "net_frontier_budget",
+    "terminal_class",
+    "terminal_exit_rule_name"
+  ],
+  "registration_status": "pre_registered_before_holdout_application",
+  "resolver_policy": "sidecar evidence only",
+  "rule_id": "normalized_frontier_holdout_closure_v1",
+  "rung_policy": "one rule for every rung",
+  "threshold_policy": "no fitted threshold"
+}

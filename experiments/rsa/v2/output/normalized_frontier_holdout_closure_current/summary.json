@@ -1,0 +1,45 @@
+{
+  "after_holdout_live_count": 2,
+  "before_holdout_live_count": 2,
+  "case_live_actions": [
+    {
+      "case_id": "rsa_v2_40bit_static_001",
+      "holdout_action": "remains_live_no_public_normalized_frontier_witness"
+    },
+    {
+      "case_id": "rsa_v2_50bit_static_001",
+      "holdout_action": "remains_live_no_public_normalized_frontier_witness"
+    }
+  ],
+  "case_specific_logic_used": false,
+  "expected_public_state": {
+    "ledger_effective_survivor_count": 202,
+    "non_strict_live_after_trace": 2,
+    "normalized_live_frontier_count": 2,
+    "strict_d4_collapse_count": 50,
+    "strict_d4_frontier_count": 50,
+    "strict_d4_live_after_trace": 0
+  },
+  "falsification_reasons": [
+    "survivor_remains_after_holdout"
+  ],
+  "falsified": true,
+  "forbidden_mechanism_entered": false,
+  "frontier_rows_path": "/Users/velocityworks/.codex/worktrees/7195/prime-gap-structure/experiments/rsa/v2/output/toy_normalized_frontier_closure_sweep_current/frontier_rows.jsonl",
+  "frozen_public_state": {
+    "ledger_effective_survivor_count": 202,
+    "non_strict_live_after_trace": 2,
+    "normalized_live_frontier_count": 2,
+    "strict_d4_collapse_count": 50,
+    "strict_d4_frontier_count": 50,
+    "strict_d4_live_after_trace": 0
+  },
+  "invariant_name": "Normalized Frontier Dominance Invariant",
+  "pre_registered_invariant_applied": true,
+  "public_state_matches_expected": true,
+  "resolved": false,
+  "rule_id": "normalized_frontier_holdout_closure_v1",
+  "status": "unresolved_by_holdout_survivors",
+  "sweep_rows_path": "/Users/velocityworks/.codex/worktrees/7195/prime-gap-structure/experiments/rsa/v2/output/toy_normalized_frontier_closure_sweep_current/sweep_rows.jsonl",
+  "threshold_fitted_from_holdout_rows": false
+}
