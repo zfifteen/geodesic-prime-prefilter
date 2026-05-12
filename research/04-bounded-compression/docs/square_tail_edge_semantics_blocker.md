@@ -133,3 +133,12 @@ The live proof routes are now exactly:
 3. Produce a finite reduction with exact verification.
 
 4. Produce a counterexample certificate.
+
+The local CRT rough-cover model in
+
+```text
+research/04-bounded-compression/docs/square_tail_rough_cover_model_blocker.md
+```
+
+also rules out a pure residue-cover contradiction. The missing transport law
+must use more than local congruence consistency.

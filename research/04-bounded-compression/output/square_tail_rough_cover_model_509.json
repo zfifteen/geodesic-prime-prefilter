@@ -1,0 +1,73 @@
+{
+  "root": 509,
+  "M": 39,
+  "small_prime_count": 11,
+  "rough_defect_count": 9,
+  "assigned_large_carrier_count": 9,
+  "model_residue": "8267600025046378714049742899",
+  "model_modulus": "20364840299624512075310661735",
+  "model_modulus_digits": 29,
+  "model_residue_digits": 28,
+  "model_residue_coprime_to_modulus": true,
+  "local_model_consistent": true,
+  "small_pattern_preserved": true,
+  "rough_carriers_cover_all_defects": true,
+  "small_cover_failures": [],
+  "rough_carrier_failures": [],
+  "carrier_rows": [
+    {
+      "m": 1,
+      "offset": 2,
+      "carrier": 41,
+      "residue": 17
+    },
+    {
+      "m": 4,
+      "offset": 8,
+      "carrier": 47,
+      "residue": 14
+    },
+    {
+      "m": 6,
+      "offset": 12,
+      "carrier": 59,
+      "residue": 22
+    },
+    {
+      "m": 19,
+      "offset": 38,
+      "carrier": 43,
+      "residue": 9
+    },
+    {
+      "m": 24,
+      "offset": 48,
+      "carrier": 61,
+      "residue": 29
+    },
+    {
+      "m": 25,
+      "offset": 50,
+      "carrier": 71,
+      "residue": 11
+    },
+    {
+      "m": 31,
+      "offset": 62,
+      "carrier": 53,
+      "residue": 3
+    },
+    {
+      "m": 34,
+      "offset": 68,
+      "carrier": 67,
+      "residue": 1
+    },
+    {
+      "m": 36,
+      "offset": 72,
+      "carrier": 73,
+      "residue": 27
+    }
+  ]
+}
