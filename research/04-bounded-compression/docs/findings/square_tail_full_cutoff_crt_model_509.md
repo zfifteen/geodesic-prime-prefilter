@@ -76,6 +76,16 @@ research/04-bounded-compression/docs/findings/square_tail_model_actual_carrier_c
 records the exact separation: the model's singleton carriers do not match the
 representative's actual least factors in the measured rough tail.
 
+The carrier-arrival frontier in
+
+```text
+research/04-bounded-compression/docs/findings/square_tail_carrier_arrival_frontier_509.md
+```
+
+records the ordered version of this separation. Actual carrier arrivals are
+not arbitrary singleton assignments; they occur in prime order, and many rough
+rows have no early arrival.
+
 The artifact is:
 
 ```text

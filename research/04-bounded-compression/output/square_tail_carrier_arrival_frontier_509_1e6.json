@@ -1,0 +1,234 @@
+{
+  "source_root": 509,
+  "representative_root": "89726961223544427015292389839",
+  "M": 4444,
+  "dynamic_cutoff": 8889,
+  "arrival_bound": 1000000,
+  "rough_defect_count": 569,
+  "arrived_count": 222,
+  "unarrived_count": 347,
+  "milestones": [
+    {
+      "carrier_bound": 5000,
+      "arrived_count": 14,
+      "unarrived_count": 555
+    },
+    {
+      "carrier_bound": 10000,
+      "arrived_count": 63,
+      "unarrived_count": 506
+    },
+    {
+      "carrier_bound": 20000,
+      "arrived_count": 93,
+      "unarrived_count": 476
+    },
+    {
+      "carrier_bound": 50000,
+      "arrived_count": 136,
+      "unarrived_count": 433
+    },
+    {
+      "carrier_bound": 100000,
+      "arrived_count": 158,
+      "unarrived_count": 411
+    },
+    {
+      "carrier_bound": 500000,
+      "arrived_count": 203,
+      "unarrived_count": 366
+    },
+    {
+      "carrier_bound": 1000000,
+      "arrived_count": 222,
+      "unarrived_count": 347
+    }
+  ],
+  "closing_m": 169,
+  "closing_offset": 338,
+  "closing_row_arrival": null,
+  "first_unarrived_offsets": [
+    80,
+    114,
+    128,
+    182,
+    194,
+    332,
+    338,
+    360,
+    390,
+    428,
+    458,
+    462,
+    464,
+    474,
+    500,
+    540,
+    560,
+    608,
+    642,
+    644,
+    650,
+    674,
+    684,
+    708,
+    770,
+    792,
+    824,
+    842,
+    848,
+    864
+  ],
+  "first_arrival_rows": [
+    {
+      "m": 66,
+      "offset": 132,
+      "first_carrier": 7541
+    },
+    {
+      "m": 126,
+      "offset": 252,
+      "first_carrier": 31249
+    },
+    {
+      "m": 130,
+      "offset": 260,
+      "first_carrier": 15277
+    },
+    {
+      "m": 139,
+      "offset": 278,
+      "first_carrier": 333497
+    },
+    {
+      "m": 150,
+      "offset": 300,
+      "first_carrier": 284521
+    },
+    {
+      "m": 159,
+      "offset": 318,
+      "first_carrier": 149969
+    },
+    {
+      "m": 172,
+      "offset": 344,
+      "first_carrier": 9781
+    },
+    {
+      "m": 181,
+      "offset": 362,
+      "first_carrier": 4673
+    },
+    {
+      "m": 201,
+      "offset": 402,
+      "first_carrier": 166609
+    },
+    {
+      "m": 222,
+      "offset": 444,
+      "first_carrier": 6679
+    },
+    {
+      "m": 297,
+      "offset": 594,
+      "first_carrier": 12757
+    },
+    {
+      "m": 319,
+      "offset": 638,
+      "first_carrier": 9649
+    },
+    {
+      "m": 346,
+      "offset": 692,
+      "first_carrier": 13751
+    },
+    {
+      "m": 357,
+      "offset": 714,
+      "first_carrier": 5527
+    },
+    {
+      "m": 372,
+      "offset": 744,
+      "first_carrier": 8807
+    },
+    {
+      "m": 376,
+      "offset": 752,
+      "first_carrier": 9431
+    },
+    {
+      "m": 381,
+      "offset": 762,
+      "first_carrier": 60601
+    },
+    {
+      "m": 382,
+      "offset": 764,
+      "first_carrier": 340103
+    },
+    {
+      "m": 397,
+      "offset": 794,
+      "first_carrier": 73127
+    },
+    {
+      "m": 454,
+      "offset": 908,
+      "first_carrier": 11287
+    },
+    {
+      "m": 511,
+      "offset": 1022,
+      "first_carrier": 4817
+    },
+    {
+      "m": 514,
+      "offset": 1028,
+      "first_carrier": 218143
+    },
+    {
+      "m": 525,
+      "offset": 1050,
+      "first_carrier": 33581
+    },
+    {
+      "m": 526,
+      "offset": 1052,
+      "first_carrier": 5153
+    },
+    {
+      "m": 531,
+      "offset": 1062,
+      "first_carrier": 15439
+    },
+    {
+      "m": 532,
+      "offset": 1064,
+      "first_carrier": 61121
+    },
+    {
+      "m": 556,
+      "offset": 1112,
+      "first_carrier": 17419
+    },
+    {
+      "m": 585,
+      "offset": 1170,
+      "first_carrier": 26387
+    },
+    {
+      "m": 586,
+      "offset": 1172,
+      "first_carrier": 205063
+    },
+    {
+      "m": 609,
+      "offset": 1218,
+      "first_carrier": 7573
+    }
+  ]
+}

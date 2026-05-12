@@ -1,0 +1,88 @@
+{
+  "frontier_path": "research/04-bounded-compression/output/square_tail_carrier_arrival_frontier_509_1e6.json",
+  "descent_path": "research/04-bounded-compression/output/square_tail_dynamic_tail_descent_audit_509.json",
+  "arrival_bound": 1000000,
+  "dynamic_cutoff": 8889,
+  "row_count": 7,
+  "composite_row_count": 6,
+  "prime_row_count": 1,
+  "rows": [
+    {
+      "m": 40,
+      "offset": 80,
+      "sqrt_boundary": "89726961223544427015292389838",
+      "sqrt_boundary_digits": 29,
+      "sqrt_boundary_exceeds_dynamic_cutoff": true,
+      "actual_status": "composite",
+      "actual_least_factor": 6736351,
+      "least_factor_exceeds_arrival_bound": true,
+      "no_arrival_to_sqrt_required_for_prime": false
+    },
+    {
+      "m": 57,
+      "offset": 114,
+      "sqrt_boundary": "89726961223544427015292389838",
+      "sqrt_boundary_digits": 29,
+      "sqrt_boundary_exceeds_dynamic_cutoff": true,
+      "actual_status": "composite",
+      "actual_least_factor": 1714849,
+      "least_factor_exceeds_arrival_bound": true,
+      "no_arrival_to_sqrt_required_for_prime": false
+    },
+    {
+      "m": 64,
+      "offset": 128,
+      "sqrt_boundary": "89726961223544427015292389838",
+      "sqrt_boundary_digits": 29,
+      "sqrt_boundary_exceeds_dynamic_cutoff": true,
+      "actual_status": "composite",
+      "actual_least_factor": 665241324811967767,
+      "least_factor_exceeds_arrival_bound": true,
+      "no_arrival_to_sqrt_required_for_prime": false
+    },
+    {
+      "m": 91,
+      "offset": 182,
+      "sqrt_boundary": "89726961223544427015292389838",
+      "sqrt_boundary_digits": 29,
+      "sqrt_boundary_exceeds_dynamic_cutoff": true,
+      "actual_status": "composite",
+      "actual_least_factor": 1614712643,
+      "least_factor_exceeds_arrival_bound": true,
+      "no_arrival_to_sqrt_required_for_prime": false
+    },
+    {
+      "m": 97,
+      "offset": 194,
+      "sqrt_boundary": "89726961223544427015292389838",
+      "sqrt_boundary_digits": 29,
+      "sqrt_boundary_exceeds_dynamic_cutoff": true,
+      "actual_status": "composite",
+      "actual_least_factor": 13214687,
+      "least_factor_exceeds_arrival_bound": true,
+      "no_arrival_to_sqrt_required_for_prime": false
+    },
+    {
+      "m": 166,
+      "offset": 332,
+      "sqrt_boundary": "89726961223544427015292389838",
+      "sqrt_boundary_digits": 29,
+      "sqrt_boundary_exceeds_dynamic_cutoff": true,
+      "actual_status": "composite",
+      "actual_least_factor": 170450107,
+      "least_factor_exceeds_arrival_bound": true,
+      "no_arrival_to_sqrt_required_for_prime": false
+    },
+    {
+      "m": 169,
+      "offset": 338,
+      "sqrt_boundary": "89726961223544427015292389838",
+      "sqrt_boundary_digits": 29,
+      "sqrt_boundary_exceeds_dynamic_cutoff": true,
+      "actual_status": "prime",
+      "actual_least_factor": null,
+      "least_factor_exceeds_arrival_bound": false,
+      "no_arrival_to_sqrt_required_for_prime": true
+    }
+  ]
+}
