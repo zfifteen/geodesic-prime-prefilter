@@ -1,0 +1,28 @@
+{
+  "parent_root": 424171123,
+  "child_root": 509,
+  "parent_previous_prime_offset": 738,
+  "parent_dynamic_cutoff": 790,
+  "parent_obstruction_prefix_even_count": 368,
+  "parent_full_counterexample_even_count": 395,
+  "child_previous_prime_offset": 48,
+  "child_dynamic_cutoff": 78,
+  "child_closed_by_cutoff": true,
+  "child_selected_square_condition": true,
+  "child_obstruction_prefix_even_count": 23,
+  "child_full_counterexample_even_count": 39,
+  "child_root_occurs_in_parent_word": true,
+  "parent_child_occurrence_count": 1,
+  "parent_child_occurrence_offsets": [
+    498
+  ],
+  "child_distinct_least_factor_count": 12,
+  "child_word_factors_subset_of_parent_word": false,
+  "missing_child_factors_from_parent_word": [
+    83,
+    449
+  ],
+  "parent_child_occurrences_cover_child_prefix": false,
+  "parent_child_occurrences_cover_child_full_word": false,
+  "direct_recursive_containment_holds": false
+}
