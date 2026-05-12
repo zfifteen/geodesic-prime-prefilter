@@ -35,6 +35,7 @@ following:
 | Separate repeat-capable carriers from singleton carriers | `square_tail_carrier_economy_424171123.md` | complete |
 | Isolate the exact M-rough defect theorem | `square_tail_rough_defect_audit_424171123.md` | complete |
 | Test rough-defect recursive descent | `square_tail_rough_descent_audit_424171123.md` | complete |
+| Identify the missing rough-descent edge semantics | `square_tail_edge_semantics_blocker.md` | complete |
 | Prove a prime-valued M-rough defect must occur before the cutoff | No proof artifact exists. | missing |
 | Produce a counterexample | No counterexample artifact exists. | missing |
 
@@ -150,6 +151,7 @@ The following are useful evidence but do not complete the goal:
 - prefix factor coverage;
 - rough-defect equivalence itself;
 - closed rough-defect child audits without an edge-semantics theorem;
+- rough-descent measurements without a transport law;
 - Grok agreement with the equivalence.
 
 ## Next Valid Work
@@ -164,8 +166,8 @@ Valid routes:
 
 1. A deterministic exclusion showing that all M-rough defects cannot be
    composite with least factor greater than `M`.
-2. A recursive descent from a complete M-rough composite defect set to a
-   smaller complete defect set, ending in a closed base contradiction.
+2. A rough-defect transport law connecting closed child roots to parent
+   elimination.
 3. A finite reduction that leaves only a checked finite root range.
 4. A counterexample certificate.
 

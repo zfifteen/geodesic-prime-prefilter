@@ -280,6 +280,28 @@ The descent audit is recorded in:
 research/04-bounded-compression/docs/findings/square_tail_rough_descent_audit_424171123.md
 ```
 
+The edge-semantics blocker records why this descent is not yet a proof.
+The parent relation
+
+```text
+r^2 - 2m = ell * c
+```
+
+and child closure
+
+```text
+ell^2 - 2u is prime
+```
+
+do not imply parent closure under the current definitions. A new transport law
+is required.
+
+The blocker is recorded in:
+
+```text
+research/04-bounded-compression/docs/square_tail_edge_semantics_blocker.md
+```
+
 ## Next Lemma Targets
 
 The next theorem work should target one of these exact statements.
