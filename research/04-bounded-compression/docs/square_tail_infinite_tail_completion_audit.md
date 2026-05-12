@@ -37,6 +37,7 @@ following:
 | Test rough-defect recursive descent | `square_tail_rough_descent_audit_424171123.md` | complete |
 | Identify the missing rough-descent edge semantics | `square_tail_edge_semantics_blocker.md` | complete |
 | Exclude pure residue-cover contradiction as sufficient | `square_tail_rough_cover_model_blocker.md` | complete |
+| Exclude root-primality and selected-square constraints alone | `square_tail_rough_cover_model_blocker.md` | complete |
 | Prove a prime-valued M-rough defect must occur before the cutoff | No proof artifact exists. | missing |
 | Produce a counterexample | No counterexample artifact exists. | missing |
 
@@ -154,6 +155,7 @@ The following are useful evidence but do not complete the goal:
 - closed rough-defect child audits without an edge-semantics theorem;
 - rough-descent measurements without a transport law;
 - local CRT rough-cover consistency models;
+- prime representatives of local CRT classes that close after the modeled window;
 - Grok agreement with the equivalence.
 
 ## Next Valid Work

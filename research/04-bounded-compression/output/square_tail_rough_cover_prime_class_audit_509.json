@@ -1,0 +1,20 @@
+{
+  "source_root": 509,
+  "search_limit": 10000,
+  "model_residue": "8267600025046378714049742899",
+  "model_modulus": "20364840299624512075310661735",
+  "model_residue_coprime_to_modulus": true,
+  "prime_representative_found": true,
+  "first_prime_representative": {
+    "k": 4,
+    "root": "89726961223544427015292389839",
+    "root_digits": 29,
+    "previous_root_gap": 112,
+    "previous_prime_offset": 338,
+    "dynamic_cutoff": 8889,
+    "modeled_even_window": 78,
+    "no_prime_in_modeled_window": true,
+    "closed_by_cutoff": true,
+    "selected_square_condition": true
+  }
+}
