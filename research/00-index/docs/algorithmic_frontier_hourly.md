@@ -144,13 +144,13 @@ It collapses the composite-heavy left edge of each next-prime search into `9` ca
 Method:
 Moved the mechanism out of an in-shell prototype into one repo benchmark script, then ran one deterministic `100,000`-gap consecutive sweep from `q = 10000000000037` comparing the exact baseline wheel-open loop against the exact endpoint-mask loop.
 What was built or tested:
-Added `benchmarks/python/predictor/gwr_dni_boundary_state_mask_search.py`, which precomputes `1,496` `uint64` certification states, propagates the nine carried residues by the realized gap offset, and verifies exact chain parity against the baseline path on every step.
+Added `research/02-gwr-dni/scripts/gwr_dni_boundary_state_mask_search.py`, which precomputes `1,496` `uint64` certification states, propagates the nine carried residues by the realized gap offset, and verifies exact chain parity against the baseline path on every step.
 Result:
 On the same `10^13` surface, the new repo prototype matched all `100,000` next primes with `0` mismatches and resolved `99,989` gaps (`99.989%`) inside the masked `64`-open window. Candidate-side small-prime modulus checks fell from `5,145,085` to `794`, plus `9` initial residue mods, a `99.9846%` reduction in that stage. Miller-Rabin, `pow`, and final `isprime` call counts stayed identical at `444,678`, `2,013,551`, and `100,000`, while wall time improved from `5.9371 s` to `5.6934 s` (`1.0428x`).
 Status:
 ADVANCE
 Artifacts:
-`benchmarks/python/predictor/gwr_dni_boundary_state_mask_search.py`; `research/00-index/docs/algorithmic_frontier_hourly.md`; script output with `state_entries = 1496`, `u64_table_bytes = 11968`, `saved_small_prime_mods = 5144291`, `resolved_in_window_fraction = 0.99989`, and `elapsed_speedup = 1.0428044811527897`.
+`research/02-gwr-dni/scripts/gwr_dni_boundary_state_mask_search.py`; `research/00-index/docs/algorithmic_frontier_hourly.md`; script output with `state_entries = 1496`, `u64_table_bytes = 11968`, `saved_small_prime_mods = 5144291`, `resolved_in_window_fraction = 0.99989`, and `elapsed_speedup = 1.0428044811527897`.
 Next step:
 Extend the same propagated endpoint-state mask just far enough to absorb the remaining `11` fallback gaps and rerun the same exact search loop.
 

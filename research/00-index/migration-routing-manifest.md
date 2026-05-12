@@ -34,8 +34,8 @@ old scattered roots after references are repaired.
 | bounded-compression, cutoff, d4 fallback, and square-branch artifacts | `research/04-bounded-compression/` |
 | state-budget and hidden-state artifacts | `research/05-state-budget/` |
 | `experiments/rsa/` | `research/06-cryptology-rsa/experiments/rsa/` |
-| `docs/research/cryptology/` | `research/06-cryptology-rsa/docs/cryptology/` |
-| `docs/research/semiprime_branch/` | `research/06-cryptology-rsa/docs/semiprime-branch/` |
+| `research/06-cryptology-rsa/docs/cryptology/` | `research/06-cryptology-rsa/docs/cryptology/` |
+| `research/06-cryptology-rsa/docs/semiprime_branch/` | `research/06-cryptology-rsa/docs/semiprime-branch/` |
 | 256-bit competition, geofac, modulus-link, and semiprime artifacts | `research/06-cryptology-rsa/` |
 | legacy prefilter benchmarks and comparison outputs | `research/06-cryptology-rsa/legacy-prefilter/` |
 | `research/11-gap-ridge/scripts/` | `research/11-gap-ridge/scripts/` |

@@ -8,8 +8,8 @@ import sys
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[3]
-SCRIPT_PATH = ROOT / "gwr" / "experiments" / "proof" / "window_theorem_scan.py"
+ROOT = Path(__file__).resolve().parents[4]
+SCRIPT_PATH = ROOT / "research" / "02-gwr-dni" / "scripts" / "proof" / "window_theorem_scan.py"
 
 
 def load_module():

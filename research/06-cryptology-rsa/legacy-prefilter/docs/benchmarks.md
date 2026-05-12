@@ -40,7 +40,7 @@ tracks table depth rather than prime density.
 Candidate benchmark:
 
 ```bash
-python3 benchmarks/python/prefilter/candidate_benchmark.py \
+python3 research/06-cryptology-rsa/legacy-prefilter/scripts/candidate_benchmark.py \
   --exact-bits 20 \
   --exact-count 256 \
   --crypto-bits 2048 \
@@ -60,7 +60,7 @@ python3 benchmarks/python/prefilter/candidate_benchmark.py \
 RSA benchmark:
 
 ```bash
-python3 benchmarks/python/prefilter/rsa_keygen_benchmark.py \
+python3 research/06-cryptology-rsa/legacy-prefilter/scripts/rsa_keygen_benchmark.py \
   --rsa-bits 2048 \
   --rsa-keypair-count 300 \
   --bonus-rsa-bits 4096 \
@@ -71,17 +71,17 @@ python3 benchmarks/python/prefilter/rsa_keygen_benchmark.py \
 RSA sweep benchmark:
 
 ```bash
-python3 benchmarks/python/prefilter/rsa_sweep_benchmark.py \
+python3 research/06-cryptology-rsa/legacy-prefilter/scripts/rsa_sweep_benchmark.py \
   --max-rsa-bits 4096 \
   --public-exponent 65537 \
-  --output-dir benchmarks/output/python/prefilter/rsa_sweep
+  --output-dir research/06-cryptology-rsa/legacy-prefilter/output/prefilter/rsa_sweep
 ```
 
 Table-depth sweep:
 
 ```bash
-python3 benchmarks/python/prefilter/table_depth_sweep.py \
-  --output-dir benchmarks/output/python/prefilter/table_depth_sweep \
+python3 research/06-cryptology-rsa/legacy-prefilter/scripts/table_depth_sweep.py \
+  --output-dir research/06-cryptology-rsa/legacy-prefilter/output/prefilter/table_depth_sweep \
   --bit-lengths 2048 4096 8192 16384 \
   --table-limits 300007 1000003 3000000 \
   --candidate-count 1024
@@ -90,8 +90,8 @@ python3 benchmarks/python/prefilter/table_depth_sweep.py \
 End-to-end 8192-bit RSA table-depth sweep:
 
 ```bash
-python3 benchmarks/python/prefilter/rsa_table_depth_sweep.py \
-  --output-dir benchmarks/output/python/prefilter/rsa_table_depth_sweep \
+python3 research/06-cryptology-rsa/legacy-prefilter/scripts/rsa_table_depth_sweep.py \
+  --output-dir research/06-cryptology-rsa/legacy-prefilter/output/prefilter/rsa_table_depth_sweep \
   --rsa-bits 8192 \
   --keypair-count 2 \
   --table-limits 300007 1000003 3000000

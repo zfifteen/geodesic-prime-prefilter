@@ -2,7 +2,7 @@
 
 Update:
 the previously open `r^2 - 4` obstruction is now closed by the residue split
-recorded in [research/11-gap-ridge/docs/findings/d4_square_residue_dead_zone.md](../../findings/d4_square_residue_dead_zone.md).
+recorded in [research/11-gap-ridge/docs/findings/d4_square_residue_dead_zone.md](../../11-gap-ridge/docs/findings/d4_square_residue_dead_zone.md).
 This note remains useful as the exact pre-closure surface report.
 
 The strongest new fact about the current `d=4` closure program is this:

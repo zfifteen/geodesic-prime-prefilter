@@ -74,7 +74,7 @@ already exist in low exact diagnostics and high shadow-seed rows.
 
 Artifacts:
 
-- [probe script](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-01-grok-shadow-state-contract/benchmarks/python/predictor/simple_pgs_solution_01_state_contract_probe.py)
+- [probe script](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-01-grok-shadow-state-contract/research/02-gwr-dni/scripts/simple_pgs_solution_01_state_contract_probe.py)
 - [summary JSON](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-01-grok-shadow-state-contract/output/simple_pgs_solution_01_state_contract_probe/summary.json)
 - [field availability CSV](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-01-grok-shadow-state-contract/output/simple_pgs_solution_01_state_contract_probe/field_availability.csv)
 
@@ -131,7 +131,7 @@ The branch tested two literal interpretations:
 
 Artifacts:
 
-- [probe script](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-01b-grok-reinvoke-closure/benchmarks/python/predictor/simple_pgs_solution_01b_reinvoke_closure_probe.py)
+- [probe script](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-01b-grok-reinvoke-closure/research/02-gwr-dni/scripts/simple_pgs_solution_01b_reinvoke_closure_probe.py)
 - [summary JSON](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-01b-grok-reinvoke-closure/output/simple_pgs_solution_01b_reinvoke_closure_probe/summary.json)
 - [summary CSV](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-01b-grok-reinvoke-closure/output/simple_pgs_solution_01b_reinvoke_closure_probe/summary.csv)
 
@@ -184,7 +184,7 @@ The branch checked the current GWR/NLSC implementation contracts:
 
 Artifacts:
 
-- [probe script](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-01c-grok-gwr-later-side-closure/benchmarks/python/predictor/simple_pgs_solution_01c_gwr_later_side_probe.py)
+- [probe script](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-01c-grok-gwr-later-side-closure/research/02-gwr-dni/scripts/simple_pgs_solution_01c_gwr_later_side_probe.py)
 - [summary JSON](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-01c-grok-gwr-later-side-closure/output/simple_pgs_solution_01c_gwr_later_side_probe/summary.json)
 - [summary CSV](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-01c-grok-gwr-later-side-closure/output/simple_pgs_solution_01c_gwr_later_side_probe/summary.csv)
 
@@ -243,7 +243,7 @@ The branch tested three readings:
 
 Artifacts:
 
-- [probe script](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-01d-grok-gwr-locked-chamber/benchmarks/python/predictor/simple_pgs_solution_01d_gwr_locked_chamber_probe.py)
+- [probe script](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-01d-grok-gwr-locked-chamber/research/02-gwr-dni/scripts/simple_pgs_solution_01d_gwr_locked_chamber_probe.py)
 - [summary JSON](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-01d-grok-gwr-locked-chamber/output/simple_pgs_solution_01d_gwr_locked_chamber_probe/summary.json)
 - [summary CSV](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-01d-grok-gwr-locked-chamber/output/simple_pgs_solution_01d_gwr_locked_chamber_probe/summary.csv)
 
@@ -305,7 +305,7 @@ without using its own audit label.
 
 Artifacts:
 
-- [probe script](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-01d-gwr-locked-integration/benchmarks/python/predictor/simple_pgs_solution_01d_locked_state_integration_probe.py)
+- [probe script](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-01d-gwr-locked-integration/research/02-gwr-dni/scripts/simple_pgs_solution_01d_locked_state_integration_probe.py)
 - [summary JSON](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-01d-gwr-locked-integration/output/simple_pgs_solution_01d_locked_state_integration_probe/summary.json)
 - [locked-state key report](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-01d-gwr-locked-integration/output/simple_pgs_solution_01d_locked_state_integration_probe/locked_state_key_report.csv)
 - [locked-state replay summary](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-01d-gwr-locked-integration/output/simple_pgs_solution_01d_locked_state_integration_probe/locked_state_replay_summary.csv)
@@ -377,7 +377,7 @@ using `closure_reason(...)`. It tested:
 
 Artifacts:
 
-- [probe script](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-02-gemini-rst-law/benchmarks/python/predictor/simple_pgs_solution_02_rst_probe.py)
+- [probe script](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-02-gemini-rst-law/research/02-gwr-dni/scripts/simple_pgs_solution_02_rst_probe.py)
 - [summary JSON](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-02-gemini-rst-law/output/simple_pgs_solution_02_rst_probe/summary.json)
 - [RST summary CSV](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-02-gemini-rst-law/output/simple_pgs_solution_02_rst_probe/rst_summary.csv)
 - [RST selection rows](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-02-gemini-rst-law/output/simple_pgs_solution_02_rst_probe/rst_selection_rows.csv)
@@ -445,7 +445,7 @@ tested artifact-native proxy rules using current candidate rows:
 
 Artifacts:
 
-- [probe script](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-03-meta-frontier-exhaustion/benchmarks/python/predictor/simple_pgs_solution_03_frontier_exhaustion_probe.py)
+- [probe script](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-03-meta-frontier-exhaustion/research/02-gwr-dni/scripts/simple_pgs_solution_03_frontier_exhaustion_probe.py)
 - [summary JSON](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-03-meta-frontier-exhaustion/output/simple_pgs_solution_03_frontier_exhaustion_probe/summary.json)
 - [materialized contract](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-03-meta-frontier-exhaustion/output/simple_pgs_solution_03_frontier_exhaustion_probe/materialized_contract.csv)
 - [materialized coverage](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-03-meta-frontier-exhaustion/output/simple_pgs_solution_03_frontier_exhaustion_probe/materialized_coverage.csv)
@@ -534,7 +534,7 @@ Both variants were tested with and without a wheel-open filter, under both
 
 Artifacts:
 
-- [probe script](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-04-deepseek-square-grid-openq/benchmarks/python/predictor/simple_pgs_solution_04_square_grid_openq_probe.py)
+- [probe script](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-04-deepseek-square-grid-openq/research/02-gwr-dni/scripts/simple_pgs_solution_04_square_grid_openq_probe.py)
 - [summary JSON](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-04-deepseek-square-grid-openq/output/simple_pgs_solution_04_square_grid_openq_probe/summary.json)
 - [square-grid summary CSV](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-04-deepseek-square-grid-openq/output/simple_pgs_solution_04_square_grid_openq_probe/square_grid_summary.csv)
 - [selection rows](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-04-deepseek-square-grid-openq/output/simple_pgs_solution_04_square_grid_openq_probe/square_grid_selection_rows.csv)
@@ -620,7 +620,7 @@ The branch tested:
 
 Artifacts:
 
-- [probe script](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-05-claude-ssbrl-residue-advance/benchmarks/python/predictor/simple_pgs_solution_05_ssbrl_probe.py)
+- [probe script](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-05-claude-ssbrl-residue-advance/research/02-gwr-dni/scripts/simple_pgs_solution_05_ssbrl_probe.py)
 - [summary JSON](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-05-claude-ssbrl-residue-advance/output/simple_pgs_solution_05_ssbrl_probe/summary.json)
 - [SSBRL summary CSV](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-05-claude-ssbrl-residue-advance/output/simple_pgs_solution_05_ssbrl_probe/ssbrl_summary.csv)
 - [selection rows](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-05-claude-ssbrl-residue-advance/output/simple_pgs_solution_05_ssbrl_probe/ssbrl_selection_rows.csv)
@@ -707,7 +707,7 @@ closure predicate over a local rightward window and tested:
 
 Artifacts:
 
-- [probe script](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-06-copilot-windowed-stabilization/benchmarks/python/predictor/simple_pgs_solution_06_windowed_stabilization_probe.py)
+- [probe script](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-06-copilot-windowed-stabilization/research/02-gwr-dni/scripts/simple_pgs_solution_06_windowed_stabilization_probe.py)
 - [summary JSON](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-06-copilot-windowed-stabilization/output/simple_pgs_solution_06_windowed_stabilization_probe/summary.json)
 - [stabilization summary CSV](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-06-copilot-windowed-stabilization/output/simple_pgs_solution_06_windowed_stabilization_probe/stabilization_summary.csv)
 - [selection rows](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-06-copilot-windowed-stabilization/output/simple_pgs_solution_06_windowed_stabilization_probe/stabilization_selection_rows.csv)
@@ -795,7 +795,7 @@ Each interpretation was tested with trace windows `128` and `64`.
 
 Artifacts:
 
-- [probe script](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-07-seed-erasure-boundary/benchmarks/python/predictor/simple_pgs_solution_07_seed_erasure_probe.py)
+- [probe script](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-07-seed-erasure-boundary/research/02-gwr-dni/scripts/simple_pgs_solution_07_seed_erasure_probe.py)
 - [window 128 summary JSON](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-07-seed-erasure-boundary/output/simple_pgs_solution_07_seed_erasure_probe/summary.json)
 - [window 128 summary CSV](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-07-seed-erasure-boundary/output/simple_pgs_solution_07_seed_erasure_probe/seed_erasure_summary.csv)
 - [window 64 summary JSON](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-07-seed-erasure-boundary/output/simple_pgs_solution_07_seed_erasure_probe_w64/summary.json)

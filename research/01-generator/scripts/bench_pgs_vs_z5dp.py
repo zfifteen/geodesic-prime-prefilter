@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path('/Users/velocityworks/IdeaProjects/prime-gap-structure')
 PGS = ROOT / 'src/c/high-scale-pgs/bin/pgs_cli'
 Z5D = Path('/Users/velocityworks/IdeaProjects/archive/z5d-prime-predictor/src/c/z5d-predictor-c/bin/z5d_cli')
-OUT = ROOT / 'output/performance_comparisons/pgs_vs_z5dp_cli.csv'
+OUT = ROOT / 'research/01-generator/output/performance_comparisons/pgs_vs_z5dp_cli.csv'
 SCALES = [3, 6, 9, 12, 15, 16, 1233]
 REPS = 3
 TIMEOUT_SECONDS = 90
@@ -71,7 +71,7 @@ with OUT.open('w', newline='') as f:
     writer.writeheader()
     writer.writerows(rows)
 
-summary_path = ROOT / 'output/performance_comparisons/pgs_vs_z5dp_cli_summary.csv'
+summary_path = ROOT / 'research/01-generator/output/performance_comparisons/pgs_vs_z5dp_cli_summary.csv'
 summary_rows = []
 for e in SCALES:
     for tool in ['pgs_cli', 'z5d_cli']:

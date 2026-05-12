@@ -59,15 +59,15 @@ presented in the repo headline files.
 The historical executable validation path remains in the existing near-endpoint raw-Z peak
 code:
 
-- [`research/11-gap-ridge/scripts/lexicographic_rule_revalidation.py`](../research/11-gap-ridge/scripts/lexicographic_rule_revalidation.py)
-- [`research/11-gap-ridge/scripts/lexicographic_peak_validation.py`](../research/11-gap-ridge/scripts/lexicographic_peak_validation.py)
+- [`research/11-gap-ridge/scripts/lexicographic_rule_revalidation.py`](../../11-gap-ridge/scripts/lexicographic_rule_revalidation.py)
+- [`research/11-gap-ridge/scripts/lexicographic_peak_validation.py`](../../11-gap-ridge/scripts/lexicographic_peak_validation.py)
 - [`src/python/z_band_prime_gap_ridge/runs.py`](../src/python/z_band_prime_gap_ridge/runs.py)
 
 The current validated summaries and reports are:
 
 - [`output/lexicographic_rule_revalidation_report.md`](../output/lexicographic_rule_revalidation_report.md)
 - [`output/lexicographic_rule_revalidation_summary.json`](../output/lexicographic_rule_revalidation_summary.json)
-- [`research/11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule.md`](../research/11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule.md)
+- [`research/11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule.md`](../../11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule.md)
 
 ## Naming Convention
 

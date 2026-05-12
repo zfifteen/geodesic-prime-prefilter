@@ -66,7 +66,7 @@ the target gap because no in-gap $d=4$ integer remains.
 ## Small Exact Surface
 
 The executable audit lives in
-[`benchmarks/python/predictor/pnt_gwr_formula_audit.py`](../../../benchmarks/python/predictor/pnt_gwr_formula_audit.py).
+[`research/02-gwr-dni/scripts/pnt_gwr_formula_audit.py`](../scripts/pnt_gwr_formula_audit.py).
 
 On the exact surface up to $10^4$, it reports:
 
@@ -81,7 +81,7 @@ witness theorem in the paper is stronger than the executable behavior.
 ## Current PNT-Seeded d=4 Surface
 
 The current dominant-regime sweep lives in
-[`benchmarks/python/predictor/pnt_gwr_d4_candidate_sweep.py`](../../../benchmarks/python/predictor/pnt_gwr_d4_candidate_sweep.py).
+[`research/02-gwr-dni/scripts/pnt_gwr_d4_candidate_sweep.py`](../scripts/pnt_gwr_d4_candidate_sweep.py).
 
 On the deterministic sweep $n = 10$ through $1000$, it reports:
 

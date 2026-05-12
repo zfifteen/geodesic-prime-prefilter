@@ -19,7 +19,7 @@ The full probe wall time was `36.17` minutes. That is much larger than the model
 The strongest validated repo result is still the deterministic factor-gated win on a less-conditioned candidate stream.
 
 - The production Python path rejects composites only when it finds a concrete factor in gated prime tables, keeps candidates on the fixed-point convention `proxy_z = 1.0`, then runs fixed-base Miller-Rabin and final confirmation.
-- The validated repo benchmark surface in [benchmarks.md](../../../docs/prefilter/benchmarks.md) reports about `91%` candidate rejection before Miller-Rabin and end-to-end deterministic RSA speedups of `2.09x` at `2048` bits and `2.82x` at `4096` bits.
+- The validated repo benchmark surface in [benchmarks.md](../../../research/06-cryptology-rsa/legacy-prefilter/docs/benchmarks.md) reports about `91%` candidate rejection before Miller-Rabin and end-to-end deterministic RSA speedups of `2.09x` at `2048` bits and `2.82x` at `4096` bits.
 - The repo's table-depth sweep in [RSA_TABLE_DEPTH_SWEEP_REPORT.md](../../../research/06-cryptology-rsa/legacy-prefilter/output/prefilter/rsa_table_depth_sweep/RSA_TABLE_DEPTH_SWEEP_REPORT.md) shows that deeper is not automatically better. On the tested Python RSA surface, `1,000,003` beat both `300,007` and `3,000,000`.
 - The repo's broader structural findings remain real but separate from the production prefilter. In [raw_composite_z_gap_edge.md](../../../research/11-gap-ridge/docs/gap_ridge/raw_composite_z_gap_edge.md), the exact raw composite score values forms a near-edge low-divisor ridge, with edge-distance-`2` enrichment `1.965x` and `d(n) = 4` selected-divisor-count enrichment `4.116x`. The leftmost minimizer rule also matched all tested gaps on the committed surface.
 

@@ -9,8 +9,8 @@ Primary homes:
 
 - `research/06-cryptology-rsa/experiments/rsa/v2/`
 - `research/06-cryptology-rsa/experiments/rsa/v3/`
-- `docs/research/cryptology/`
-- `docs/research/semiprime_branch/`
+- `research/06-cryptology-rsa/docs/cryptology/`
+- `research/06-cryptology-rsa/docs/semiprime_branch/`
 - `research/06-cryptology-rsa/output/semiprime_branch/`
 - `research/06-cryptology-rsa/output/batch_modular_factor_closure_probe/`
 - `research/06-cryptology-rsa/output/batch_modular_factor_closure_probe_f50000/`

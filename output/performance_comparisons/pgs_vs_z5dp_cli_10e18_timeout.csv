@@ -1,3 +1,0 @@
-scale_exp,tool,status,elapsed_ms,stdout_bytes,stderr_bytes
-18,pgs_cli,timeout_30s,30000.000,0,0
-18,z5d_cli,0,5.802,79,0

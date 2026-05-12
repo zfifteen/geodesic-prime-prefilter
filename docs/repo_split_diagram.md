@@ -6,8 +6,8 @@ flowchart TB
     A --> C["Repo 2<br/>z-band-prime-gap-ridge<br/><br/>Near-endpoint raw-Z peak research and findings"]
     A --> D["Optional Repo 3<br/>z-band-prime-composite-field<br/><br/>Shared exact divisor-count and field helpers"]
 
-    B --> B1["Keep<br/>src/python/z_band_prime_prefilter/<br/>spec/contract.md<br/>spec/vectors/<br/>tests/python/prefilter/<br/>docs/prefilter/<br/>docs/architecture.md"]
-    C --> C1["Move<br/>research/11-gap-ridge/scripts/<br/>research/11-gap-ridge/output/<br/>research/11-gap-ridge/docs/gap_ridge/<br/>docs/findings/<br/>research/11-gap-ridge/tests/"]
+    B --> B1["Keep<br/>src/python/z_band_prime_prefilter/<br/>spec/contract.md<br/>spec/vectors/<br/>tests/python/prefilter/<br/>research/06-cryptology-rsa/legacy-prefilter/docs/<br/>docs/architecture.md"]
+    C --> C1["Keep together<br/>research/11-gap-ridge/scripts/<br/>research/11-gap-ridge/output/<br/>research/11-gap-ridge/docs/gap_ridge/<br/>research/11-gap-ridge/docs/findings/<br/>research/11-gap-ridge/tests/"]
     D --> D1["Move only if needed<br/>src/python/z_band_prime_composite_field/<br/>src/python/z_band_prime_gap_ridge/<br/>shared field utilities"]
 
     B -. "GitHub links" .-> C

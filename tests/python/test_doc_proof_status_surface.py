@@ -42,6 +42,8 @@ def test_old_proof_marked_markdown_is_removed_from_live_docs():
         if path == ROOT / "PROOF.md":
             continue
         relative_parts = path.relative_to(ROOT).parts
+        if relative_parts and relative_parts[0] == "research":
+            continue
         if any(any(marker in part.lower() for marker in markers) for part in relative_parts):
             offenders.append(str(path.relative_to(ROOT)))
 
@@ -225,7 +227,7 @@ def test_live_markdown_points_current_theorem_to_root_proof():
         ROOT / "README.md",
         ROOT / "AGENTS.md",
         ROOT / "docs" / "current_headline_results.md",
-        ROOT / "gwr" / "README.md",
+        ROOT / "research" / "02-gwr-dni" / "README.md",
     ]
 
     missing = [

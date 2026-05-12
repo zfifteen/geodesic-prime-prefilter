@@ -8,7 +8,7 @@ surfaces for bounded GWR/DNI prime walks.
 Primary homes:
 
 - `research/04-bounded-compression/docs/`
-- `output/gwr_proof/`
+- `research/02-gwr-dni/output/gwr_proof/`
 - `research/04-bounded-compression/output/square_branch_gap_audit_summary.json`
 - `research/04-bounded-compression/scripts/bounded_compression_falsification_runner.py`
 - `research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py`
@@ -38,7 +38,7 @@ The all-scale dynamic cutoff theorem remains unresolved.
 ## Measured Evidence
 
 Measured documentation lives in `research/04-bounded-compression/docs/` and
-`output/gwr_proof/`.
+`research/02-gwr-dni/output/gwr_proof/`.
 
 The current completion audit states that no proof artifact closes the universal
 cutoff law and no universal counterexample exists in the repository.

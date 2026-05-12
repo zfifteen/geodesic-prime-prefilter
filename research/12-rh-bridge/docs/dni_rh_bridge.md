@@ -239,9 +239,9 @@ question:
 
 Those results are documented in:
 
-- [research/11-gap-ridge/docs/dni_gap_ridge.md](./dni_gap_ridge.md)
-- [research/11-gap-ridge/docs/gap_ridge/raw_composite_z_gap_edge.md](./gap_ridge/raw_composite_z_gap_edge.md)
-- [research/11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule.md](./findings/lexicographic_winner_take_all_peak_rule.md)
+- [research/11-gap-ridge/docs/dni_gap_ridge.md](../../11-gap-ridge/docs/dni_gap_ridge.md)
+- [research/11-gap-ridge/docs/gap_ridge/raw_composite_z_gap_edge.md](../../11-gap-ridge/docs/gap_ridge/raw_composite_z_gap_edge.md)
+- [research/11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule.md](../../11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule.md)
 
 This creates a natural division of labor.
 
@@ -293,9 +293,9 @@ The current repository also shows that the orientation of the near-edge ridge
 depends materially on the left endpoint prime modulo `30`.
 
 That result is documented in
-[research/11-gap-ridge/docs/gap_ridge/residue_mod30_ridge_orientation_note.md](./gap_ridge/residue_mod30_ridge_orientation_note.md)
+[research/11-gap-ridge/docs/gap_ridge/residue_mod30_ridge_orientation_note.md](../../11-gap-ridge/docs/gap_ridge/residue_mod30_ridge_orientation_note.md)
 and
-[research/11-gap-ridge/docs/findings/residue_mod30_ridge_orientation.md](./findings/residue_mod30_ridge_orientation.md).
+[research/11-gap-ridge/docs/findings/residue_mod30_ridge_orientation.md](../../11-gap-ridge/docs/findings/residue_mod30_ridge_orientation.md).
 
 This matters because congruence classes are already the natural language for
 Dirichlet characters and L-functions.
@@ -368,14 +368,14 @@ That identity is enough to make the relationship precise:
 
 For the exact DNI and production path:
 
-- [docs/dni_prefilter.md](./dni_prefilter.md)
-- [technical-note/technical_note.md](../technical-note/technical_note.md)
-- [spec/contract.md](../spec/contract.md)
-- [the RH bridge helpers](../src/python/z_band_prime_rh_bridge/bridge.py)
+- [research/06-cryptology-rsa/legacy-prefilter/docs/dni_prefilter.md](../../06-cryptology-rsa/legacy-prefilter/docs/dni_prefilter.md)
+- [research/06-cryptology-rsa/legacy-prefilter/technical-note/technical_note.md](../../06-cryptology-rsa/legacy-prefilter/technical-note/technical_note.md)
+- [spec/contract.md](../../../spec/contract.md)
+- [the RH bridge helpers](../../../src/python/z_band_prime_rh_bridge/bridge.py)
 
 For the exact near-endpoint raw-Z peak research surface:
 
-- [research/11-gap-ridge/docs/dni_gap_ridge.md](./dni_gap_ridge.md)
-- [research/11-gap-ridge/docs/gap_ridge/raw_composite_z_gap_edge.md](./gap_ridge/raw_composite_z_gap_edge.md)
-- [research/11-gap-ridge/docs/gap_ridge/residue_mod30_ridge_orientation_note.md](./gap_ridge/residue_mod30_ridge_orientation_note.md)
-- [research/11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule.md](./findings/lexicographic_winner_take_all_peak_rule.md)
+- [research/11-gap-ridge/docs/dni_gap_ridge.md](../../11-gap-ridge/docs/dni_gap_ridge.md)
+- [research/11-gap-ridge/docs/gap_ridge/raw_composite_z_gap_edge.md](../../11-gap-ridge/docs/gap_ridge/raw_composite_z_gap_edge.md)
+- [research/11-gap-ridge/docs/gap_ridge/residue_mod30_ridge_orientation_note.md](../../11-gap-ridge/docs/gap_ridge/residue_mod30_ridge_orientation_note.md)
+- [research/11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule.md](../../11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule.md)

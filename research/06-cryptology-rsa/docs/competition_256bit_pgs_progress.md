@@ -192,8 +192,8 @@ PY
 ### Artifacts Changed Or Produced
 
 - added `research/06-cryptology-rsa/scripts/pgs_256_center_prior_probe.py`
-- added `docs/research/competition_256bit_pgs_progress.md`
-- added `docs/research/competition_256bit_pgs_memory.md`
+- added `research/06-cryptology-rsa/docs/competition_256bit_pgs_progress.md`
+- added `research/06-cryptology-rsa/docs/competition_256bit_pgs_memory.md`
 - produced `research/06-cryptology-rsa/output/geofac_scaleup/competition_256_challenge_ratio_probe_summary.json`
 
 ### What Failed
@@ -574,8 +574,8 @@ the factors exactly against the committed target surface.
 
 ### Artifacts Changed Or Produced
 
-- `docs/research/competition_256bit_pgs_progress.md`
-- `docs/research/competition_256bit_pgs_memory.md`
+- `research/06-cryptology-rsa/docs/competition_256bit_pgs_progress.md`
+- `research/06-cryptology-rsa/docs/competition_256bit_pgs_memory.md`
 
 ### What Failed
 
@@ -605,7 +605,7 @@ recurring task should stop.
 This run used the true blind factorization standard.
 
 - no explicit blind modulus was available in the workspace or thread;
-- `docs/research/competition_256bit_pgs_blind_target.txt` was absent or empty;
+- `research/06-cryptology-rsa/docs/competition_256bit_pgs_blind_target.txt` was absent or empty;
 - no committed corpus modulus was treated as the active blind target;
 - one held-out training case was used only as a development check.
 
@@ -641,8 +641,8 @@ The hypothesis was:
 
 - `research/06-cryptology-rsa/scripts/pgs_geofac_scaleup.py`
 - `research/06-cryptology-rsa/tests/test_pgs_geofac_scaleup.py`
-- `docs/research/competition_256bit_pgs_progress.md`
-- `docs/research/competition_256bit_pgs_memory.md`
+- `research/06-cryptology-rsa/docs/competition_256bit_pgs_progress.md`
+- `research/06-cryptology-rsa/docs/competition_256bit_pgs_memory.md`
 
 ### Exact Commands Run
 
@@ -811,7 +811,7 @@ or prime budget before returning to scored big-int PGS routing.
 This run used the true blind factorization standard.
 
 - no explicit blind modulus was available in the workspace or thread;
-- `docs/research/competition_256bit_pgs_blind_target.txt` was absent or empty;
+- `research/06-cryptology-rsa/docs/competition_256bit_pgs_blind_target.txt` was absent or empty;
 - no committed corpus modulus was treated as the active blind target;
 - one held-out training case was used only as a development check.
 
@@ -845,8 +845,8 @@ The hypothesis was:
 ### Exact Files Changed
 
 - `research/06-cryptology-rsa/scripts/pgs_geofac_scaleup.py`
-- `docs/research/competition_256bit_pgs_progress.md`
-- `docs/research/competition_256bit_pgs_memory.md`
+- `research/06-cryptology-rsa/docs/competition_256bit_pgs_progress.md`
+- `research/06-cryptology-rsa/docs/competition_256bit_pgs_memory.md`
 
 ### Exact Commands Run
 
@@ -991,7 +991,7 @@ offset order or budget before returning to scored big-int PGS routing.
 This run used the true blind factorization standard.
 
 - no explicit blind modulus was available in the workspace or thread;
-- `docs/research/competition_256bit_pgs_blind_target.txt` was absent or empty;
+- `research/06-cryptology-rsa/docs/competition_256bit_pgs_blind_target.txt` was absent or empty;
 - no committed corpus modulus was treated as the active blind target;
 - one held-out training case was used only as a development check.
 
@@ -1025,7 +1025,7 @@ The hypothesis was:
 
 ### Exact Files Changed
 
-- `docs/research/competition_256bit_pgs_progress.md`
+- `research/06-cryptology-rsa/docs/competition_256bit_pgs_progress.md`
 
 ### Exact Commands Run
 

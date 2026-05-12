@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PGS Research Repository Reorganization Plan</title>
+  <title>PGS Research Repository Reorganization Outcome</title>
   <style>
     :root {
       --bg: #f7f8fa;
@@ -191,20 +191,15 @@
 </head>
 <body>
 <main>
-  <h1>PGS Research Repository Reorganization Plan</h1>
+  <h1>PGS Research Repository Reorganization Outcome</h1>
   <p class="lead">
-    The repository has become a research corpus. The target shape is chapter-based geography:
-    each research family gets one durable home containing its definitions, scripts, outputs,
-    audit evidence, invalidated attempts, and live unresolved state.
+    The repository is now organized as a chapter-based research corpus: each research family has one durable home containing its definitions, scripts, outputs, audit evidence, invalidated attempts, and live unresolved state.
   </p>
 
   <section>
     <h2>Current Finding</h2>
     <p>
-      The current tree mixes repo-wide authority documents, active research lines, exploratory
-      scripts, and large output surfaces. Some families are already self-contained, such as
-      <code>research/08-collatz/</code>. Others are split across <code>docs/research/</code>,
-      <code>experiments/</code>, <code>gwr/</code>, and top-level <code>output/</code>.
+      The old research surfaces have been moved out of <code>docs/research/</code>, <code>experiments/</code>, <code>gwr/</code>, top-level <code>output/</code>, and research-only benchmark roots. Root-level production code and authority files remain outside the chapter corpus.
     </p>
     <div class="grid">
       <div class="panel">
@@ -359,12 +354,12 @@
         </tr>
         <tr>
           <td>Production generator code</td>
-          <td>Keep production code in <code>src/</code>, <code>tests/</code>, and <code>benchmarks/</code>.</td>
+          <td>Keep production code in <code>src/</code> and package/global contract tests in <code>tests/</code>.</td>
           <td>The generator is a repo-wide implementation surface, not only a research episode. The <code>01-generator</code> chapter points to production files and owns research-specific evidence, not the production source tree.</td>
         </tr>
         <tr>
           <td>Top-level <code>output/</code></td>
-          <td>Dissolve it into chapter <code>outputs/</code> folders, with <code>archive/</code> labels for stale or superseded evidence.</td>
+          <td>Dissolve it into chapter <code>output/</code> folders, with <code>archive/</code> labels for stale or superseded evidence.</td>
           <td>Output provenance belongs beside the script, question, and status note that produced it. A global output dump hides whether a result is headline evidence, stale scratch, invalidated, or unresolved.</td>
         </tr>
         <tr>
@@ -374,8 +369,8 @@
         </tr>
         <tr>
           <td>Compatibility pointers</td>
-          <td>Use short README pointers, not symlinks.</td>
-          <td>Plain files are easier to audit and survive GitHub, local browsing, and future tooling without path-resolution surprises.</td>
+          <td>Remove old compatibility pointer roots after references are repaired.</td>
+          <td>The final shape is owned chapter geography rather than an index of pointers.</td>
         </tr>
       </tbody>
     </table>
@@ -473,12 +468,12 @@
       <tbody>
         <tr>
           <td><code>01-generator</code></td>
-          <td><code>src/</code>, <code>tests/</code>, <code>benchmarks/</code>, <code>output/minimal_pgs_scale_probe_1e5_to_1e18/</code>, root generator docs.</td>
+          <td><code>research/01-generator/</code> docs, scripts, tests, output, reviews, and generator-specific assets; package source stays in <code>src/</code>.</td>
           <td class="status">Mapped and validated</td>
         </tr>
         <tr>
           <td><code>02-gwr-dni</code></td>
-          <td><code>gwr/</code>, <code>research/02-gwr-dni/output/gwr_proof/</code>, <code>output/gwr_dni_*</code>, selected docs under <code>docs/research/predictor/</code>.</td>
+          <td><code>research/02-gwr-dni/</code> docs, scripts, proof tests, and output surfaces.</td>
           <td class="status">Mapped and validated</td>
         </tr>
         <tr>
@@ -493,12 +488,12 @@
         </tr>
         <tr>
           <td><code>05-state-budget</code></td>
-          <td><code>docs/research/predictor/state_budget_*</code>, <code>output/state_budget_*</code>, <code>output/d4_*</code>.</td>
+          <td><code>research/05-state-budget/</code> docs, scripts, tests, outputs, and handoff notes.</td>
           <td class="status">Mapped and validated</td>
         </tr>
         <tr>
           <td><code>06-cryptology-rsa</code></td>
-          <td><code>experiments/rsa/</code>, <code>docs/research/cryptology/</code>, semiprime and modulus-link outputs.</td>
+          <td><code>research/06-cryptology-rsa/</code> experiments, docs, scripts, tests, outputs, reviews, semiprime branch material, and legacy prefilter evidence.</td>
           <td class="status">Mapped and validated</td>
         </tr>
         <tr>
@@ -567,7 +562,7 @@
         </tr>
         <tr>
           <td>3. GWR and generator surfaces</td>
-          <td>Map <code>gwr/</code>, generator evidence, and GWR/DNI outputs into chapters without moving production code.</td>
+          <td>Map generator evidence and GWR/DNI outputs into chapters without moving production code.</td>
           <td><code>research/01-generator/</code> and <code>research/02-gwr-dni/</code> are mapped. Focused generator/GWR validation passed 36 tests.</td>
           <td>Mapped in this branch. No production code was moved.</td>
         </tr>
