@@ -8,7 +8,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
-MODULE_PATH = ROOT / "benchmarks" / "python" / "predictor" / "gwr_dni_mersenne_gap_type_probe.py"
+MODULE_PATH = ROOT / "research" / "09-exponents" / "scripts" / "gwr_dni_mersenne_gap_type_probe.py"
 
 
 def load_module():

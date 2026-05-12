@@ -28,9 +28,9 @@ from collatz_pgs_terminal_contact_decomposition_probe import (
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_INPUT = (
-    ROOT / "output" / "collatz_pgs_same_gap_scale_probe" / "block_rows.jsonl"
+    ROOT / "research" / "08-collatz" / "output" / "collatz_pgs_same_gap_scale_probe" / "block_rows.jsonl"
 )
-DEFAULT_OUTPUT_DIR = ROOT / "output" / "collatz_pgs_terminal_exact_vs_adjacent_probe"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "08-collatz" / "output" / "collatz_pgs_terminal_exact_vs_adjacent_probe"
 CLASS_EXACT_TERMINAL = "exact_terminal_witness_hit"
 CLASS_ADJACENT_TERMINAL = "adjacent_projected_terminal_witness_hit"
 MATCHED_CLASSES = (

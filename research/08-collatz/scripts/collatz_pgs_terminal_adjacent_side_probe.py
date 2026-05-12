@@ -26,9 +26,9 @@ from collatz_pgs_terminal_exact_vs_adjacent_probe import (
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_INPUT = (
-    ROOT / "output" / "collatz_pgs_same_gap_scale_probe" / "block_rows.jsonl"
+    ROOT / "research" / "08-collatz" / "output" / "collatz_pgs_same_gap_scale_probe" / "block_rows.jsonl"
 )
-DEFAULT_OUTPUT_DIR = ROOT / "output" / "collatz_pgs_terminal_adjacent_side_probe"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "08-collatz" / "output" / "collatz_pgs_terminal_adjacent_side_probe"
 CLASS_BELOW_WITNESS = "below_witness_terminal_hit"
 CLASS_ABOVE_WITNESS = "above_witness_terminal_hit"
 MATCHED_CLASSES = (

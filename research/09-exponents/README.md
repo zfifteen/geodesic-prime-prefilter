@@ -2,9 +2,9 @@
 
 ## Migration Note
 
-This chapter moved from `experiments/exponents/` to
-`research/09-exponents/` during the repository reorganization. The local test
-suite passed after relocation with:
+This chapter is the filesystem home for the exponent-wall and Mersenne research
+family after the repository reorganization. The local test suite passed after
+relocation with:
 
 ```text
 python3 -m pytest research/09-exponents/tests
@@ -50,12 +50,11 @@ No unresolved-state status changed during migration.
 
 ## Reproduce
 
-Use the reproduce commands in the command section below. The relocation changed
-paths from `experiments/exponents/` to `research/09-exponents/`.
+Use the reproduce commands in the command section below.
 
 ## Provenance
 
-Original home: `experiments/exponents/`.
+Original home: legacy experiment-root pointer directory.
 
 Prime powers are the first place where exponents enter the recursive PGS
 obstruction language directly.

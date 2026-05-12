@@ -18,7 +18,7 @@ SOURCE_DIR = ROOT / "src" / "python"
 if str(SOURCE_DIR) not in sys.path:
     sys.path.insert(0, str(SOURCE_DIR))
 
-DEFAULT_OUTPUT_DIR = ROOT / "output"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "10-twin-primes" / "output"
 DEFAULT_MAX_RIGHT_PRIME = 1_000_000
 LEFT_TWIN_RESIDUES = (11, 17, 29)
 RIGHT_TWIN_RESIDUES = (1, 13, 19)

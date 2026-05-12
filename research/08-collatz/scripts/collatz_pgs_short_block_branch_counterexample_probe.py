@@ -24,7 +24,7 @@ from collatz_pgs_short_block_reset_candidate_probe import (
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_LIMIT = 10_000_000
-DEFAULT_OUTPUT_DIR = ROOT / "output" / "collatz_pgs_short_block_branch_probe"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "08-collatz" / "output" / "collatz_pgs_short_block_branch_probe"
 BRANCH_MIDDLE_V2 = {1: 1, 2: 2}
 BRANCH_MOD9 = {1: 0, 2: 5}
 

@@ -20,10 +20,10 @@ SOURCE_DIR = ROOT / "src" / "python"
 if str(SOURCE_DIR) not in sys.path:
     sys.path.insert(0, str(SOURCE_DIR))
 
-DEFAULT_OUTPUT_DIR = ROOT / "output"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "09-exponents" / "output"
 DEFAULT_WINDOW_RADIUS = 20
 TRACTABLE_MERSENNE_EXPONENTS = (2, 3, 5, 7, 13, 17, 19, 31, 61)
-GAP_TYPE_PROBE_PATH = Path(__file__).with_name("gwr_dni_gap_type_probe.py")
+GAP_TYPE_PROBE_PATH = ROOT / "research" / "03-gap-types" / "scripts" / "gwr_dni_gap_type_probe.py"
 
 
 def load_gap_type_probe():

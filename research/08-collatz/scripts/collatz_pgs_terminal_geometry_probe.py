@@ -28,9 +28,9 @@ from collatz_pgs_terminal_contact_decomposition_probe import (
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_INPUT = (
-    ROOT / "output" / "collatz_pgs_same_gap_scale_probe" / "block_rows.jsonl"
+    ROOT / "research" / "08-collatz" / "output" / "collatz_pgs_same_gap_scale_probe" / "block_rows.jsonl"
 )
-DEFAULT_OUTPUT_DIR = ROOT / "output" / "collatz_pgs_terminal_geometry_probe"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "08-collatz" / "output" / "collatz_pgs_terminal_geometry_probe"
 HIT_OFFSETS = ("-1", "0", "1")
 
 

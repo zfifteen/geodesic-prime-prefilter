@@ -21,7 +21,7 @@ if str(SOURCE_DIR) not in sys.path:
 
 from z_band_prime_predictor import gwr_next_gap_profile
 
-DEFAULT_OUTPUT_DIR = ROOT / "output"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "10-twin-primes" / "output"
 DEFAULT_MAX_RIGHT_PRIME = 1_000_000
 PEAK_OFFSET_CUTOFFS = (1, 2, 4, 6, 8, 10, 12)
 CARRIER_FAMILIES = (
