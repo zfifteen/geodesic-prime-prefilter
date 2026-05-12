@@ -27,7 +27,7 @@ Any gap where the raw-$Z$ argmax differs from that selected integer is a counter
 ## Current Headline Status
 
 `GWR` is the repository name for the prime-gap maximizer theorem proved in
-[../PROOF.md](../PROOF.md). That proof document also proves the direct
+[../PROOF.md](../../../PROOF.md). That proof document also proves the direct
 deterministic next-prime theorem.
 
 `PROOF.md` is the single live proof reference. It proves that exact divisor
@@ -37,19 +37,18 @@ certify finite cases and preserve provenance; they do not limit the theorems.
 
 The public proof-facing summaries are:
 
-- [../PROOF.md](../PROOF.md)
-- [../docs/current_headline_results.md](../docs/current_headline_results.md)
+- [../PROOF.md](../../../PROOF.md)
+- [../docs/current_headline_results.md](../../../docs/current_headline_results.md)
 
-Bridge-era BHP/Robin notes and verification scripts are retained under
-[`experiments/proof/`](./experiments/proof/README.md) as historical comparison
-material. They are not the current proof-critical path for the theorem status
-presented in the repo headline files.
+Bridge-era BHP/Robin notes and verification scripts are retained under the
+chapter proof scripts, tests, and output as historical comparison material.
+They are not the current proof-critical path for the theorem status presented
+in the repo headline files.
 
 ## Subtree Layout
 
-- [`findings/`](./findings/README.md): Statements of the rule and synthesized
-  findings.
-- [`experiments/`](./experiments/README.md): Validation entry points, outputs,
+- [`docs/`](./README.md): Statements of the rule and synthesized findings.
+- [`experiments/`](../experiments/README.md): Validation entry points, outputs,
   and experiment registry.
 - [`literature/`](./literature/README.md): Novelty search notes and external
   positioning.
@@ -61,12 +60,12 @@ code:
 
 - [`research/11-gap-ridge/scripts/lexicographic_rule_revalidation.py`](../../11-gap-ridge/scripts/lexicographic_rule_revalidation.py)
 - [`research/11-gap-ridge/scripts/lexicographic_peak_validation.py`](../../11-gap-ridge/scripts/lexicographic_peak_validation.py)
-- [`src/python/z_band_prime_gap_ridge/runs.py`](../src/python/z_band_prime_gap_ridge/runs.py)
+- [`src/python/z_band_prime_gap_ridge/runs.py`](../../../src/python/z_band_prime_gap_ridge/runs.py)
 
 The current validated summaries and reports are:
 
-- [`output/lexicographic_rule_revalidation_report.md`](../output/lexicographic_rule_revalidation_report.md)
-- [`output/lexicographic_rule_revalidation_summary.json`](../output/lexicographic_rule_revalidation_summary.json)
+- [`output/lexicographic_rule_revalidation_report.md`](../../11-gap-ridge/output/lexicographic_rule_revalidation_report.md)
+- [`output/lexicographic_rule_revalidation_summary.json`](../../11-gap-ridge/output/lexicographic_rule_revalidation_summary.json)
 - [`research/11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule.md`](../../11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule.md)
 
 ## Naming Convention

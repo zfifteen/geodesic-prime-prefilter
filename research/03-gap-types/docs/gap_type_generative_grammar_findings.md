@@ -137,4 +137,4 @@ stress-test whether the second-order rotor law, or a nearby finite-memory law,
 continues to reproduce later-regime statistics when trained strictly below the
 target decade.
 
-![Gap-type generative grammar probe overview](../../research/03-gap-types/output/gwr_dni_gap_type_generative_probe_overview.png)
+![Gap-type generative grammar probe overview](../output/gwr_dni_gap_type_generative_probe_overview.png)

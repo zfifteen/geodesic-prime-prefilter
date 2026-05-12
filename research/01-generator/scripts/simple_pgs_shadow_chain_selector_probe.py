@@ -653,7 +653,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--shadow-rows",
         type=Path,
-        default=Path("output/simple_pgs_semiprime_shadow_reorientation_probe/shadow_rows.jsonl"),
+        default=Path("research/01-generator/output/simple_pgs_semiprime_shadow_reorientation_probe/shadow_rows.jsonl"),
     )
     parser.add_argument("--output-dir", type=Path, required=True)
     return parser

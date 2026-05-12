@@ -30,7 +30,7 @@ except ImportError:  # pragma: no cover - direct script execution
     )
 
 
-DEFAULT_OUTPUT_DIR = Path("output/prime_inference_generator")
+DEFAULT_OUTPUT_DIR = Path("research/01-generator/output/prime_inference_generator")
 SUMMARY_FILENAME = "residual_after_locked_ceiling_forensics_summary.json"
 RECORDS_FILENAME = "residual_after_locked_ceiling_forensics_records.jsonl"
 LOCK_PREDICATE = "unresolved_alternatives_before_threat"

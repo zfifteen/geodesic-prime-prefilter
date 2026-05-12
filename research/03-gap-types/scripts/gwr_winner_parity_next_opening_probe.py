@@ -19,7 +19,7 @@ from sympy import nextprime
 
 
 ROOT = Path(__file__).resolve().parents[3]
-DEFAULT_OUTPUT_DIR = ROOT / "output"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "03-gap-types" / "output"
 DEFAULT_POWERS = (12, 13, 14, 15)
 DEFAULT_WINDOW_STEPS = 2048
 GAP_TYPE_PROBE_PATH = Path(__file__).with_name("gwr_dni_gap_type_probe.py")

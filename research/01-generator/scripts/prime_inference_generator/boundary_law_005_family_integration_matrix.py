@@ -23,7 +23,7 @@ except ImportError:  # pragma: no cover - direct script execution
     from resolved_boundary_lock_separator_probe import jsonable
 
 
-DEFAULT_OUTPUT_DIR = Path("output/prime_inference_generator")
+DEFAULT_OUTPUT_DIR = Path("research/01-generator/output/prime_inference_generator")
 SUMMARY_FILENAME = "boundary_law_005_family_integration_matrix_summary.json"
 ROWS_FILENAME = "boundary_law_005_family_integration_matrix_rows.jsonl"
 DEFAULT_SURFACES = (

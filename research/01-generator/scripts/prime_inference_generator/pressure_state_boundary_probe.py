@@ -42,7 +42,7 @@ except ImportError:  # pragma: no cover - direct script execution
 from sympy import divisor_count, factorint, isprime, nextprime, prevprime, primerange
 
 
-DEFAULT_OUTPUT_DIR = Path("output/prime_inference_generator")
+DEFAULT_OUTPUT_DIR = Path("research/01-generator/output/prime_inference_generator")
 SUMMARY_FILENAME = "pressure_state_boundary_probe_summary.json"
 ROWS_FILENAME = "pressure_state_boundary_probe_rows.jsonl"
 PRESSURE_STATE_NAMES = [

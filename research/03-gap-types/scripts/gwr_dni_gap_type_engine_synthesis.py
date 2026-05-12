@@ -17,7 +17,7 @@ from matplotlib.patches import FancyBboxPatch
 
 
 ROOT = Path(__file__).resolve().parents[3]
-DEFAULT_OUTPUT_DIR = ROOT / "output"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "03-gap-types" / "output"
 DEFAULT_GENERATIVE_SUMMARY = ROOT / "research" / "03-gap-types" / "output" / "gwr_dni_gap_type_generative_probe_summary.json"
 DEFAULT_DECODE_SUMMARY = ROOT / "research" / "03-gap-types" / "output" / "gwr_dni_gap_type_engine_decode_summary.json"
 DEFAULT_SCHEDULER_SUMMARY = ROOT / "research" / "03-gap-types" / "output" / "gwr_dni_gap_type_scheduler_probe_summary.json"

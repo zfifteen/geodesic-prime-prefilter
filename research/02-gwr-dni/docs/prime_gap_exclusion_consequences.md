@@ -201,7 +201,7 @@ low-divisor selected divisor-count classes, especially $d(n) = 4$.
 
 ### Broader distribution reading
 
-Because `GWR` is proved in [../../PROOF.md](../../PROOF.md), one broader
+Because `GWR` is proved in [../../PROOF.md](../../../PROOF.md), one broader
 distribution reading is that prime gaps may be governed by a forbidden-prefix
 principle: later selected integers require increasingly restrictive exclusion of
 low-divisor composites near the left side of the gap.

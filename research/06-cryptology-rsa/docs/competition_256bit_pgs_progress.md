@@ -738,7 +738,7 @@ result = {
         'factor_windows': factor_windows,
     },
 }
-out = ROOT / 'output' / 'geofac_scaleup' / 'pgs_256_balanced_1_centered_interleaved_r1_result.json'
+out = ROOT / 'research' / '06-cryptology-rsa' / 'output' / 'geofac_scaleup' / 'pgs_256_balanced_1_centered_interleaved_r1_result.json'
 out.parent.mkdir(parents=True, exist_ok=True)
 out.write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
 print(json.dumps(result, indent=2))
@@ -928,7 +928,7 @@ result = {
         'factor_windows': factor_windows,
     },
 }
-out = ROOT / 'output' / 'geofac_scaleup' / f"pgs_{public['case_id']}_centered_window_order_r1_result.json"
+out = ROOT / 'research' / '06-cryptology-rsa' / 'output' / 'geofac_scaleup' / f"pgs_{public['case_id']}_centered_window_order_r1_result.json"
 out.parent.mkdir(parents=True, exist_ok=True)
 out.write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
 print(json.dumps(result, indent=2))
@@ -1109,7 +1109,7 @@ result = {
         'factor_windows': factor_windows,
     },
 }
-out = ROOT / 'output' / 'geofac_scaleup' / f"pgs_{public['case_id']}_centered_window_order_r1_result.json"
+out = ROOT / 'research' / '06-cryptology-rsa' / 'output' / 'geofac_scaleup' / f"pgs_{public['case_id']}_centered_window_order_r1_result.json"
 out.parent.mkdir(parents=True, exist_ok=True)
 out.write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
 print(json.dumps(result, indent=2))

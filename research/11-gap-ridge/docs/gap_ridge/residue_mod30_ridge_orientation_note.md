@@ -39,12 +39,12 @@ The figure below groups prime gaps by the residue of the left prime modulo
 dashed line is the global right-edge baseline at the same scale. The bottom row
 shows the lift relative to that global baseline.
 
-![Residue-modulated right-edge share](../../research/11-gap-ridge/output/insight_probes/residue_mod30_right_edge_share.svg)
+![Residue-modulated right-edge share](../../output/insight_probes/residue_mod30_right_edge_share.svg)
 
 The underlying probe artifacts are:
 
-- [residue_mod30_right_edge_share.svg](../../research/11-gap-ridge/output/insight_probes/residue_mod30_right_edge_share.svg)
-- [residue_mod30_right_edge_share.json](../../research/11-gap-ridge/output/insight_probes/residue_mod30_right_edge_share.json)
+- [residue_mod30_right_edge_share.svg](../../output/insight_probes/residue_mod30_right_edge_share.svg)
+- [residue_mod30_right_edge_share.json](../../output/insight_probes/residue_mod30_right_edge_share.json)
 
 ## Measured Surface
 

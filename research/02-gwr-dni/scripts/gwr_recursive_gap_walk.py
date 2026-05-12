@@ -20,7 +20,7 @@ if str(SOURCE_DIR) not in sys.path:
 
 from z_band_prime_predictor import W_d, d4_gap_profile, divisor_gap_profile, gap_dmin
 
-DEFAULT_OUTPUT_DIR = ROOT / "output"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "02-gwr-dni" / "output"
 DEFAULT_START_GAP_INDEX = 10
 DEFAULT_STEPS = 50
 

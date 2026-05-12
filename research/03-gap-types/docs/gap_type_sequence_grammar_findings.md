@@ -120,4 +120,4 @@ memoryless state alphabet. The better target is a second-order grammar on a
 small compressed state, because that is where the measured concentration
 actually tightens.
 
-![Gap-type sequence grammar probe overview](../../research/03-gap-types/output/gwr_dni_gap_type_sequence_probe_overview.png)
+![Gap-type sequence grammar probe overview](../output/gwr_dni_gap_type_sequence_probe_overview.png)

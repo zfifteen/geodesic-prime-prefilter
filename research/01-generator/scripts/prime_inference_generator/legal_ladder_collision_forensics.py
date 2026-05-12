@@ -38,7 +38,7 @@ except ImportError:  # pragma: no cover - direct script execution
 from sympy import isprime, primerange
 
 
-DEFAULT_OUTPUT_DIR = Path("output/prime_inference_generator")
+DEFAULT_OUTPUT_DIR = Path("research/01-generator/output/prime_inference_generator")
 SUMMARY_FILENAME = "legal_ladder_collision_forensics_summary.json"
 BUCKETS_FILENAME = "legal_ladder_collision_forensics_buckets.jsonl"
 DEFAULT_STATE_VECTOR = "known_composite_divisor_ladder"

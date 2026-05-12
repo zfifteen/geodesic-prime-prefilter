@@ -20,7 +20,7 @@ from typing import Any, Callable
 from sympy import nextprime, prevprime, primerange
 
 
-DEFAULT_OUTPUT_DIR = Path("output/prime_inference_generator")
+DEFAULT_OUTPUT_DIR = Path("research/01-generator/output/prime_inference_generator")
 SUMMARY_FILENAME = "legal_candidate_hardening_summary.json"
 CANDIDATES_FILENAME = "legal_candidate_hardening_candidates.jsonl"
 WHEEL_OPEN_RESIDUES_MOD30 = frozenset({1, 7, 11, 13, 17, 19, 23, 29})

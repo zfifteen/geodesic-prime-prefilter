@@ -27,7 +27,7 @@ This note combines two kinds of evidence.
 The repo already documents:
 
 - the canonical `GWR` theorem in
-  [../../PROOF.md](../../PROOF.md),
+  [../../PROOF.md](../../../PROOF.md),
 - the closure surface in
   [`closure_constraint_findings.md`](./closure_constraint_findings.md),
 - and the dominant `d=4` reduction in
@@ -305,7 +305,7 @@ toward generic high-scale windows.
 ## Why This Could Add Information Beyond the RH Bridge
 
 The current `DNI`-to-`RH` bridge in
-[`research/12-rh-bridge/docs/dni_rh_bridge.md`](../../research/12-rh-bridge/docs/dni_rh_bridge.md)
+[`research/12-rh-bridge/docs/dni_rh_bridge.md`](../../12-rh-bridge/docs/dni_rh_bridge.md)
 is exact, but it reconstructs the classical detector
 $-\zeta'(s)/\zeta(s)$.
 

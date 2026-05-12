@@ -89,7 +89,7 @@ The most useful next discriminator is:
 
 ## Artifacts
 
-- [selected integer parity next-opening probe script](../../research/03-gap-types/scripts/gwr_winner_parity_next_opening_probe.py)
-- [summary JSON](../../research/03-gap-types/output/gwr_winner_parity_next_opening_probe_summary.json)
-- [matched-stratum CSV](../../research/03-gap-types/output/gwr_winner_parity_next_opening_probe_strata.csv)
-- ![Selected integer parity next-opening overview](../../research/03-gap-types/output/gwr_winner_parity_next_opening_probe_overview.png)
+- [selected integer parity next-opening probe script](../scripts/gwr_winner_parity_next_opening_probe.py)
+- [summary JSON](../output/gwr_winner_parity_next_opening_probe_summary.json)
+- [matched-stratum CSV](../output/gwr_winner_parity_next_opening_probe_strata.csv)
+- ![Selected integer parity next-opening overview](../output/gwr_winner_parity_next_opening_probe_overview.png)

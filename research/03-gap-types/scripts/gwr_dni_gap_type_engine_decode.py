@@ -19,7 +19,7 @@ import gmpy2
 
 
 ROOT = Path(__file__).resolve().parents[3]
-DEFAULT_OUTPUT_DIR = ROOT / "output"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "03-gap-types" / "output"
 DEFAULT_DETAIL_CSV = ROOT / "research" / "03-gap-types" / "output" / "gwr_dni_gap_type_catalog_details.csv"
 DEFAULT_RECORD_CSV = ROOT / "data" / "external" / "primegap_list_records_1e12_1e18.csv"
 DEFAULT_TRAIN_MIN_POWER = 7

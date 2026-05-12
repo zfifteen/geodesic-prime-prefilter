@@ -37,7 +37,7 @@ except ImportError:  # pragma: no cover - direct script execution
     )
 
 
-DEFAULT_OUTPUT_DIR = Path("output/prime_inference_generator")
+DEFAULT_OUTPUT_DIR = Path("research/01-generator/output/prime_inference_generator")
 CERTIFICATES_FILENAME = "offline_pgs_boundary_certificates.jsonl"
 SUMMARY_FILENAME = "offline_pgs_certificate_emitter_summary.json"
 AUDIT_SUMMARY_FILENAME = "offline_pgs_certificate_audit_summary.json"

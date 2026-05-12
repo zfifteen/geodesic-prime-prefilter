@@ -10,7 +10,7 @@ refer directly to an older artifact whose title or filename already uses it.
 
 The live proof-status source for this surface is:
 
-- [../../PROOF.md](../../PROOF.md)
+- [../../PROOF.md](../../../PROOF.md)
 
 Explanatory notes in this directory may expand consequences, measurements, and
 interpretations, but they must not restate weaker or older proof-status
@@ -18,9 +18,9 @@ language than `PROOF.md`.
 
 ## Primary Surface
 
-- [../../PROOF.md](../../PROOF.md): Single live proof reference for the
+- [../../PROOF.md](../../../PROOF.md): Single live proof reference for the
   prime-gap maximizer theorem.
-- [../../docs/current_headline_results.md](../../docs/current_headline_results.md):
+- [../../docs/current_headline_results.md](../../../docs/current_headline_results.md):
   Current result summary aligned to `PROOF.md`.
 
 ## Exact Consequences And Structure Notes
@@ -39,39 +39,39 @@ language than `PROOF.md`.
   Implications of the dominant `d=4` regime.
 - [gap_anatomy_decomposition.md](./gap_anatomy_decomposition.md):
   Hierarchical and local-arrival reading of the gap interior.
-- [gap_type_catalog_through_1e18.md](./gap_type_catalog_through_1e18.md):
+- [gap_type_catalog_through_1e18.md](../../03-gap-types/docs/gap_type_catalog_through_1e18.md):
   Deterministic catalog of the distinct exact gap types visible on the exact
   `10^6` baseline plus sampled decade windows through `10^18`.
-- [gap_type_sequence_grammar_findings.md](./gap_type_sequence_grammar_findings.md):
+- [gap_type_sequence_grammar_findings.md](../../03-gap-types/docs/gap_type_sequence_grammar_findings.md):
   Measured transition-grammar reading of the gap-type stream, including the
   reduced `open_family|d_bucket` probe.
-- [gap_type_generative_grammar_findings.md](./gap_type_generative_grammar_findings.md):
+- [gap_type_generative_grammar_findings.md](../../03-gap-types/docs/gap_type_generative_grammar_findings.md):
   Deterministic held-out generative test of the persistent `14`-state
   reduced grammar against the sampled `10^18` window.
-- [gap_type_engine_decode_findings.md](./gap_type_engine_decode_findings.md):
+- [gap_type_engine_decode_findings.md](../../03-gap-types/docs/gap_type_engine_decode_findings.md):
   Rulebook, million-step stress test, and record-gap rarity readout for the
   persistent `14`-state model surface.
-- [gap_type_transition rule_findings.md](./gap_type_scheduler_findings.md):
+- [gap_type_transition rule_findings.md](../../03-gap-types/docs/gap_type_scheduler_findings.md):
   Deterministic transition-rule search showing that aligned `256`-window scoring
   nearly closes the higher-order gap with a finite transition rule above the
   persistent `14`-state core.
-- [gap_type_hybrid_transition rule_findings.md](./gap_type_hybrid_scheduler_findings.md):
+- [gap_type_hybrid_transition rule_findings.md](../../03-gap-types/docs/gap_type_hybrid_scheduler_findings.md):
   Hybrid lag-2 plus periodic transition-rule search showing that the local-window
   model closes further, while the stationary long-horizon re-entry law
   remains the missing piece.
-- [gap_type_long_horizon_controller_findings.md](./gap_type_long_horizon_controller_findings.md):
+- [gap_type_long_horizon_controller_findings.md](../../03-gap-types/docs/gap_type_long_horizon_controller_findings.md):
   Deterministic long-horizon controller search showing the current research target
   between local-window fidelity and stationary-walk concentration.
-- [gap_type_engine_v1_freeze.md](./gap_type_engine_v1_freeze.md):
+- [gap_type_engine_v1_freeze.md](../../03-gap-types/docs/gap_type_engine_v1_freeze.md):
   Frozen `v1.0` definition of the hierarchical gap-type model, including the
   reference operating profiles and the current target endpoint.
-- [gap_type_engine_v1_rulebook.md](./gap_type_engine_v1_rulebook.md):
+- [gap_type_engine_v1_rulebook.md](../../03-gap-types/docs/gap_type_engine_v1_rulebook.md):
   Minimal readable rulebook for the frozen `v1.0` model on the persistent
   `14`-state reduced surface.
-- [mersenne_prime_gap_type_probe_findings.md](./mersenne_prime_gap_type_probe_findings.md):
+- [mersenne_prime_gap_type_probe_findings.md](../../09-exponents/docs/mersenne_prime_gap_type_probe_findings.md):
   Exact tractable test of whether known Mersenne primes carry distinctive
   adjacent gap types.
-- [twin_prime_gap_type_probe_findings.md](./twin_prime_gap_type_probe_findings.md):
+- [twin_prime_gap_type_probe_findings.md](../../10-twin-primes/docs/twin_prime_gap_type_probe_findings.md):
   Exact `10^6` test of whether twin primes sit inside distinctive outer
   gap-type shells.
 
@@ -80,5 +80,5 @@ language than `PROOF.md`.
 These older notes remain part of the validated history and are useful when
 continuity matters:
 
-- [../../../11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule.md](../../../11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule.md)
-- [../../../11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule/](../../../11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule/)
+- [../../../11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule.md](../../11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule.md)
+- [../../../11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule/](../../11-gap-ridge/docs/findings/lexicographic_winner_take_all_peak_rule/)

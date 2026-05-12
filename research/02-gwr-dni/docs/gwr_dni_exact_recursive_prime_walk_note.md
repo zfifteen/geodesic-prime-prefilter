@@ -228,8 +228,8 @@ The square branch now has two direct instruments:
 
 The retained direct square search through `p <= 10^8` is:
 
-- [../output/gwr_proof/square_branch_dynamic_cutoff_search_1e8/square_branch_dynamic_cutoff_search_summary.json](../output/gwr_proof/square_branch_dynamic_cutoff_search_1e8/square_branch_dynamic_cutoff_search_summary.json)
-- [../output/gwr_proof/square_branch_dynamic_cutoff_search_1e8/square_branch_dynamic_cutoff_search_extremal case.csv](../output/gwr_proof/square_branch_dynamic_cutoff_search_1e8/square_branch_dynamic_cutoff_search_frontier.csv)
+- [../../04-bounded-compression/output/square_branch_dynamic_cutoff_search_1e8/square_branch_dynamic_cutoff_search_summary.json](../../04-bounded-compression/output/square_branch_dynamic_cutoff_search_1e8/square_branch_dynamic_cutoff_search_summary.json)
+- [../../04-bounded-compression/output/square_branch_dynamic_cutoff_search_1e8/square_branch_dynamic_cutoff_search_frontier.csv](../../04-bounded-compression/output/square_branch_dynamic_cutoff_search_1e8/square_branch_dynamic_cutoff_search_frontier.csv)
 
 That search tested `5,761,454` odd prime squares, found no dynamic-cutoff
 counterexample on that finite surface, and recorded maximum square-branch
@@ -327,14 +327,14 @@ Figure 1 shows the exactness and runtime surface across the decade ladder. The
 exact hit rate stays pinned at $1.0$ and the skipped-gap count stays pinned at
 $0.0$ across the full sampled range.
 
-![Exact DNI recursive-walk performance](./figures/gwr_dni_recursive_gap_scaling_performance.png)
+![Exact DNI recursive-walk performance](../assets/gwr_dni_recursive_gap_scaling_performance.png)
 
 Figure 2 shows the observed peak offsets and the fraction of the tested cutoff
 window actually used on the sampled recursive walk. This figure is a walker
 diagnostic, not a proof of the bounded compression. The real pressure test for
 the compression layer is the compare mode and the square-branch audit.
 
-![Exact DNI recursive-walk offsets](./figures/gwr_dni_recursive_gap_scaling_offsets.png)
+![Exact DNI recursive-walk offsets](../assets/gwr_dni_recursive_gap_scaling_offsets.png)
 
 ## 7. Interpretation
 

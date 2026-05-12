@@ -30,7 +30,7 @@ DEFAULT_HORIZON_SUMMARY_PATH = (
     / "horizon_law_summary.json"
 )
 DEFAULT_OUTPUT_DIR = (
-    ROOT / "output" / "simple_pgs_shadow_chain_two_lane_closure_probe"
+    ROOT / "research" / "01-generator" / "output" / "simple_pgs_shadow_chain_two_lane_closure_probe"
 )
 DEFAULT_FRACTIONS = (0.10, 0.20, 0.25, 1.0 / 3.0, 0.40, 0.50)
 LOW_FACTOR_LANE = "low_factor"

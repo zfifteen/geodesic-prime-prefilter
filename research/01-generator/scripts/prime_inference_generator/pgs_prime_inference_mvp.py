@@ -18,7 +18,7 @@ except ImportError:  # pragma: no cover - direct script execution
     from pure_generator import SUPPORTED_ANCHOR_PRIME, write_pure_artifacts
 
 
-DEFAULT_OUTPUT_DIR = Path("output/prime_inference_generator")
+DEFAULT_OUTPUT_DIR = Path("research/01-generator/output/prime_inference_generator")
 
 
 def build_parser() -> argparse.ArgumentParser:

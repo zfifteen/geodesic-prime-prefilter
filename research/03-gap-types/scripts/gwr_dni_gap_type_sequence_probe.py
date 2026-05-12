@@ -12,7 +12,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
-DEFAULT_OUTPUT_DIR = ROOT / "output"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "03-gap-types" / "output"
 DEFAULT_DETAIL_CSV = ROOT / "research" / "03-gap-types" / "output" / "gwr_dni_gap_type_catalog_details.csv"
 SELECTED_SURFACES = ("<=10^6", "10^12", "10^15", "10^18")
 REDUCED_ALPHABET = "open_family_d_bucket"

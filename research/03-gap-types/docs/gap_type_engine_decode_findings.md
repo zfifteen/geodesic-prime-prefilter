@@ -157,4 +157,4 @@ In practical terms, the next model candidate should preserve the same
 `14`-state scaffold but tighten the long-horizon two-step and three-step
 concentration surface. That is where the present rotor still leaks.
 
-![Gap-type model decode overview](../../research/03-gap-types/output/gwr_dni_gap_type_engine_decode_overview.png)
+![Gap-type model decode overview](../output/gwr_dni_gap_type_engine_decode_overview.png)

@@ -18,14 +18,14 @@ ladder for right-edge share.
 
 ## Visual Evidence
 
-![p+2 wheel gate split](../../research/11-gap-ridge/output/insight_probes/p2_wheel_gate_split.svg)
+![p+2 wheel gate split](../../output/insight_probes/p2_wheel_gate_split.svg)
 
 Artifacts:
 
-- [p2_wheel_gate_split.svg](../../research/11-gap-ridge/output/insight_probes/p2_wheel_gate_split.svg)
-- [p2_wheel_gate_split.json](../../research/11-gap-ridge/output/insight_probes/p2_wheel_gate_split.json)
-- [residue_mod30_right_edge_share.svg](../../research/11-gap-ridge/output/insight_probes/residue_mod30_right_edge_share.svg)
-- [residue_mod30_right_edge_share.json](../../research/11-gap-ridge/output/insight_probes/residue_mod30_right_edge_share.json)
+- [p2_wheel_gate_split.svg](../../output/insight_probes/p2_wheel_gate_split.svg)
+- [p2_wheel_gate_split.json](../../output/insight_probes/p2_wheel_gate_split.json)
+- [residue_mod30_right_edge_share.svg](../../output/insight_probes/residue_mod30_right_edge_share.svg)
+- [residue_mod30_right_edge_share.json](../../output/insight_probes/residue_mod30_right_edge_share.json)
 
 ## Tested Surface
 

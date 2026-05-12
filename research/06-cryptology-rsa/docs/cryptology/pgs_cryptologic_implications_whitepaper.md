@@ -432,11 +432,11 @@ cryptologic research program.
 
 ## References
 
-- [PROOF.md](../../../PROOF.md)
-- [DIVISOR_NORMALIZATION_IDENTITY.md](../../../DIVISOR_NORMALIZATION_IDENTITY.md)
-- [LEFTMOST_MINIMUM_DIVISOR_RULE.md](../../../LEFTMOST_MINIMUM_DIVISOR_RULE.md)
-- [PRIME_GAP_GENERATOR.md](../../../PRIME_GAP_GENERATOR.md)
-- [RECURSIVE_PRIME_WALK.md](../../../RECURSIVE_PRIME_WALK.md)
-- [RESULTS.md](../../../RESULTS.md)
-- [Minimal PGS Generator Logic](../../specs/prime-gen/minimal_pgs_generator_logic.md)
-- [Legacy Prefilter](../../prefilter/LEGACY_PREFILTER.md)
+- [PROOF.md](../../../../PROOF.md)
+- [DIVISOR_NORMALIZATION_IDENTITY.md](../../../../DIVISOR_NORMALIZATION_IDENTITY.md)
+- [LEFTMOST_MINIMUM_DIVISOR_RULE.md](../../../../LEFTMOST_MINIMUM_DIVISOR_RULE.md)
+- [PRIME_GAP_GENERATOR.md](../../../../PRIME_GAP_GENERATOR.md)
+- [RECURSIVE_PRIME_WALK.md](../../../../RECURSIVE_PRIME_WALK.md)
+- [RESULTS.md](../../../../RESULTS.md)
+- [Minimal PGS Generator Logic](../../../../docs/specs/prime-gen/minimal_pgs_generator_logic.md)
+- [Legacy Prefilter](../../legacy-prefilter/docs/LEGACY_PREFILTER.md)

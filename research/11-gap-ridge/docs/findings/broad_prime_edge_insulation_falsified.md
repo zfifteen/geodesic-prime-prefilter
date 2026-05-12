@@ -21,16 +21,16 @@ This remains true in the odd-composite control and in the tested gap-size bins.
 
 ## Visual Evidence
 
-![Validation summary](../../research/11-gap-ridge/output/composite_structure_validation/validation_summary_panel.svg)
+![Validation summary](../../output/composite_structure_validation/validation_summary_panel.svg)
 
-![Gap-bin heatmaps](../../research/11-gap-ridge/output/composite_structure_validation/validation_gap_bin_heatmaps.svg)
+![Gap-bin heatmaps](../../output/composite_structure_validation/validation_gap_bin_heatmaps.svg)
 
 Artifacts:
 
-- [validation_summary_panel.svg](../../research/11-gap-ridge/output/composite_structure_validation/validation_summary_panel.svg)
-- [validation_detail_panel.svg](../../research/11-gap-ridge/output/composite_structure_validation/validation_detail_panel.svg)
-- [validation_gap_bin_heatmaps.svg](../../research/11-gap-ridge/output/composite_structure_validation/validation_gap_bin_heatmaps.svg)
-- [validation_results.json](../../research/11-gap-ridge/output/composite_structure_validation/validation_results.json)
+- [validation_summary_panel.svg](../../output/composite_structure_validation/validation_summary_panel.svg)
+- [validation_detail_panel.svg](../../output/composite_structure_validation/validation_detail_panel.svg)
+- [validation_gap_bin_heatmaps.svg](../../output/composite_structure_validation/validation_gap_bin_heatmaps.svg)
+- [validation_results.json](../../output/composite_structure_validation/validation_results.json)
 
 ## Plain Reading
 

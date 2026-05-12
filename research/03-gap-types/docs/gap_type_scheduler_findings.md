@@ -38,9 +38,9 @@ The new probe tests three deterministic models on the same persistent
    ordinary language, the core grammar keeps one more remembered core symbol.
 
 The exact summary is in
-[../../output/gwr_dni_gap_type_transition rule_probe_summary.json](../../research/03-gap-types/output/gwr_dni_gap_type_scheduler_probe_summary.json)
+[../../output/gwr_dni_gap_type_transition rule_probe_summary.json](../output/gwr_dni_gap_type_scheduler_probe_summary.json)
 and the overview plot is
-![Transition-rule probe overview](../../research/03-gap-types/output/gwr_dni_gap_type_scheduler_probe_overview.png)
+![Transition-rule probe overview](../output/gwr_dni_gap_type_scheduler_probe_overview.png)
 
 ## Main Result
 

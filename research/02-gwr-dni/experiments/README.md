@@ -5,22 +5,22 @@ Rule`.
 
 ## Proof Pursuit
 
-- [`proof/`](./proof/):
+- [`proof scripts`](../scripts/proof/):
   scripts and artifacts behind the proved GWR theorem, including the
   admissibility obstruction list, residual-class closure runs, and the older bridge
   certificate retained as historical comparison.
 
 ## Current Validation Entry Points
 
-- [`research/11-gap-ridge/scripts/lexicographic_peak_validation.py`](../../research/11-gap-ridge/scripts/lexicographic_peak_validation.py)
+- [`research/11-gap-ridge/scripts/lexicographic_peak_validation.py`](../../11-gap-ridge/scripts/lexicographic_peak_validation.py)
   Legacy validation script for the committed tested surface.
-- [`research/11-gap-ridge/scripts/lexicographic_rule_revalidation.py`](../../research/11-gap-ridge/scripts/lexicographic_rule_revalidation.py)
+- [`research/11-gap-ridge/scripts/lexicographic_rule_revalidation.py`](../../11-gap-ridge/scripts/lexicographic_rule_revalidation.py)
   Extended revalidation script with explicit selected integer comparisons, new sampled
   windows, enrichment statistics, and alternative score probes.
 
 ## Current Outputs
 
-- [`research/11-gap-ridge/output/lexicographic_peak_validation/lexicographic_peak_validation.json`](../../research/11-gap-ridge/output/lexicographic_peak_validation/lexicographic_peak_validation.json)
+- [`research/11-gap-ridge/output/lexicographic_peak_validation/lexicographic_peak_validation.json`](../../11-gap-ridge/output/lexicographic_peak_validation/lexicographic_peak_validation.json)
 - [`output/lexicographic_rule_revalidation_summary.json`](../../11-gap-ridge/output/lexicographic_rule_revalidation_summary.json)
 - [`output/lexicographic_rule_revalidation_report.md`](../../11-gap-ridge/output/lexicographic_rule_revalidation_report.md)
 

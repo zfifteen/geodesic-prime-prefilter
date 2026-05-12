@@ -61,10 +61,10 @@ This is a separate exact score-function concern from the production filter.
 
 Up to $10^6$ on the natural number line, the strongest exact raw composite $Z$ value inside a prime gap lands at edge-distance $2$ in $43.6006\%$ of gaps versus an exact within-gap baseline of $22.1859\%$, and is carried by a $d(n)=4$ composite in $82.9027\%$ of gaps versus a baseline of $20.1401\%$.
 
-[PROOF.md](../../PROOF.md) proves the direct deterministic next-prime theorem and sharpens that ridge picture into the current selected integer theorem: the log-score maximizer is the arithmetic choice “minimize interior divisor count, then take the leftmost integer.” The theorems are universal under their stated hypotheses. The tested surfaces are certification and provenance, not theorem boundaries.
+[PROOF.md](../../../../PROOF.md) proves the direct deterministic next-prime theorem and sharpens that ridge picture into the current selected integer theorem: the log-score maximizer is the arithmetic choice “minimize interior divisor count, then take the leftmost integer.” The theorems are universal under their stated hypotheses. The tested surfaces are certification and provenance, not theorem boundaries.
 
 The dedicated closure study then strengthens the right-edge reading further: on the current documented even-band ladder through $10^{18}$, once the selected integer appears, no later strictly simpler composite is observed before the next prime closes the gap.
 
-See [raw_composite_z_gap_edge.md](../gap_ridge/raw_composite_z_gap_edge.md), [PROOF.md](../../PROOF.md), and [closure_constraint_findings.md](../../research/02-gwr-dni/docs/closure_constraint_findings.md).
+See [raw_composite_z_gap_edge.md](../../../11-gap-ridge/docs/gap_ridge/raw_composite_z_gap_edge.md), [PROOF.md](../../../../PROOF.md), and [closure_constraint_findings.md](../../../02-gwr-dni/docs/closure_constraint_findings.md).
 
 See [benchmarks.md](benchmarks.md) for the curated benchmark summary and [manual_validation.md](manual_validation.md) for the exact reproduction commands.

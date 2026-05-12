@@ -23,12 +23,12 @@ on the scanned surface. It is wheel-forbidden on the live branch.
 
 Artifacts:
 
-- [d4_square_residue_dead_zone_summary.json](../../research/04-bounded-compression/output/d4_square_residue_dead_zone_summary.json)
-- [d4_square_residue_dead_zone.csv](../../research/04-bounded-compression/output/d4_square_residue_dead_zone.csv)
+- [d4_square_residue_dead_zone_summary.json](../../../04-bounded-compression/output/d4_square_residue_dead_zone_summary.json)
+- [d4_square_residue_dead_zone.csv](../../../04-bounded-compression/output/d4_square_residue_dead_zone.csv)
 - runner:
-  [research/11-gap-ridge/scripts/d4_square_residue_dead_zone_probe.py](../../research/11-gap-ridge/scripts/d4_square_residue_dead_zone_probe.py)
+  [research/11-gap-ridge/scripts/d4_square_residue_dead_zone_probe.py](../../scripts/d4_square_residue_dead_zone_probe.py)
 - tests:
-  [research/11-gap-ridge/tests/test_d4_square_residue_dead_zone_probe.py](../../research/11-gap-ridge/tests/test_d4_square_residue_dead_zone_probe.py)
+  [research/11-gap-ridge/tests/test_d4_square_residue_dead_zone_probe.py](../../tests/test_d4_square_residue_dead_zone_probe.py)
 
 The current executed run is an exact scan through `10^7` on the same live
 branch used by the earlier obstruction note:

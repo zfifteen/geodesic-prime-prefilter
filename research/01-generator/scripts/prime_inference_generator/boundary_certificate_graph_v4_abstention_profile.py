@@ -58,7 +58,7 @@ except ImportError:  # pragma: no cover - direct script execution
     from resolved_boundary_lock_separator_probe import jsonable
 
 
-DEFAULT_OUTPUT_DIR = Path("output/prime_inference_generator")
+DEFAULT_OUTPUT_DIR = Path("research/01-generator/output/prime_inference_generator")
 SUMMARY_FILENAME = "boundary_certificate_graph_v4_abstention_profile_summary.json"
 ROWS_FILENAME = "boundary_certificate_graph_v4_abstention_profile_rows.jsonl"
 RULE_SET = "005A-R"

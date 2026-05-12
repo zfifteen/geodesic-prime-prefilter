@@ -29,13 +29,13 @@ from z_band_prime_predictor.simple_pgs_generator import (  # noqa: E402
 
 
 DEFAULT_INPUT_ROWS = (
-    ROOT / "output" / "simple_pgs_shadow_seed_gwr_solution_probe" / "rows.jsonl"
+    ROOT / "research" / "01-generator" / "output" / "simple_pgs_shadow_seed_gwr_solution_probe" / "rows.jsonl"
 )
 DEFAULT_LOW_DIAGNOSTICS = (
-    ROOT / "output" / "simple_pgs_shadow_seed_gwr_solution_1e6" / "diagnostics.jsonl"
+    ROOT / "research" / "01-generator" / "output" / "simple_pgs_shadow_seed_gwr_solution_1e6" / "diagnostics.jsonl"
 )
 DEFAULT_OUTPUT_DIR = (
-    ROOT / "output" / "simple_pgs_shadow_seed_recovery_displacement_probe"
+    ROOT / "research" / "01-generator" / "output" / "simple_pgs_shadow_seed_recovery_displacement_probe"
 )
 
 

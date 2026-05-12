@@ -451,7 +451,7 @@ def _demo():
         StageRecord("final", active_offsets=[8, 12], unresolved_offsets=[8, 12]),
     ]
 
-    output_dir = Path("output/entropy_audit_demo")
+    output_dir = Path("research/01-generator/output/entropy_audit_demo")
     with EntropyAuditWriter(output_dir) as writer:
         for anchor_p, stages in [(101, resolved_stages), (10193, stalled_stages)]:
             row = build_entropy_row(

@@ -19,23 +19,34 @@ if str(SOURCE_DIR) not in sys.path:
 from z_band_prime_predictor.simple_pgs_controller import write_json  # noqa: E402
 from z_band_prime_predictor.simple_pgs_generator import (  # noqa: E402
     PGS_SOURCE,
-    SHADOW_SEED_RECOVERY_SOURCE,
     WHEEL_OPEN_RESIDUES_MOD30,
-    closure_reason,
 )
 
 
+SHADOW_SEED_RECOVERY_SOURCE = "shadow_seed_recovery"
 DEFAULT_INPUT_ROWS = (
-    ROOT / "output" / "simple_pgs_shadow_seed_gwr_solution_probe" / "rows.jsonl"
+    ROOT / "research" / "01-generator" / "output" / "simple_pgs_shadow_seed_gwr_solution_probe" / "rows.jsonl"
 )
 DEFAULT_OUTPUT_DIR = (
-    ROOT / "output" / "simple_pgs_solution_08_bidirectional_chamber_probe"
+    ROOT / "research" / "01-generator" / "output" / "simple_pgs_solution_08_bidirectional_chamber_probe"
 )
 DEFAULT_CANDIDATE_BOUND = 128
 DEFAULT_VISIBLE_DIVISOR_BOUND = 10_000
 OPEN_RESIDUES_MOD210 = frozenset(
     residue for residue in range(210) if math.gcd(residue, 210) == 1
 )
+
+
+def closure_reason(p: int, offset: int, max_divisor: int) -> str | None:
+    """Return the legacy probe reason a chamber point is visibly closed."""
+    n = int(p) + int(offset)
+    residue = n % 30
+    if residue not in WHEEL_OPEN_RESIDUES_MOD30:
+        return f"wheel_closed_residue:{residue}"
+    for divisor in range(2, int(max_divisor) + 1):
+        if n % divisor == 0:
+            return f"divisor_witness:{divisor}"
+    return None
 
 
 def read_jsonl(path: Path) -> list[dict[str, object]]:

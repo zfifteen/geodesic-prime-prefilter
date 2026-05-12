@@ -52,14 +52,14 @@ That is the current committed execution surface for this note.
 
 The artifacts are:
 
-- [validation_results.json](../../research/11-gap-ridge/output/composite_structure_validation/validation_results.json)
-- [validation_summary_panel.svg](../../research/11-gap-ridge/output/composite_structure_validation/validation_summary_panel.svg)
-- [validation_detail_panel.svg](../../research/11-gap-ridge/output/composite_structure_validation/validation_detail_panel.svg)
-- [validation_gap_bin_heatmaps.svg](../../research/11-gap-ridge/output/composite_structure_validation/validation_gap_bin_heatmaps.svg)
+- [validation_results.json](../../output/composite_structure_validation/validation_results.json)
+- [validation_summary_panel.svg](../../output/composite_structure_validation/validation_summary_panel.svg)
+- [validation_detail_panel.svg](../../output/composite_structure_validation/validation_detail_panel.svg)
+- [validation_gap_bin_heatmaps.svg](../../output/composite_structure_validation/validation_gap_bin_heatmaps.svg)
 
 The deterministic harness is:
 
-- [composite_structure_validation.py](../../research/11-gap-ridge/scripts/composite_structure_validation.py)
+- [composite_structure_validation.py](../../scripts/composite_structure_validation.py)
 
 ## Outcome
 

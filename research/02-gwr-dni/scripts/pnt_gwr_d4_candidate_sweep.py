@@ -23,7 +23,7 @@ from z_band_prime_predictor import (
     pnt_gwr_d4_candidate,
 )
 
-DEFAULT_OUTPUT_DIR = ROOT / "output"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "02-gwr-dni" / "output"
 DEFAULT_N_START = 10
 DEFAULT_N_END = 1000
 

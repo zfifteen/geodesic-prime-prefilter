@@ -6,7 +6,7 @@ positioning of the `Leftmost Minimum-Divisor Rule`.
 ## Current Status
 
 The repo carries the proved universal `GWR` theorem in
-[../../PROOF.md](../../PROOF.md).
+[../../PROOF.md](../../../../PROOF.md).
 
 It still does not claim that no prior source states the same result. That
 remains a literature and prior-art question.

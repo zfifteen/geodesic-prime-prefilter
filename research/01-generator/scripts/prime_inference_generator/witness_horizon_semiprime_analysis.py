@@ -33,7 +33,7 @@ except ImportError:  # pragma: no cover - direct script execution
     from resolved_boundary_lock_separator_probe import jsonable
 
 
-DEFAULT_OUTPUT_DIR = Path("output/prime_inference_generator")
+DEFAULT_OUTPUT_DIR = Path("research/01-generator/output/prime_inference_generator")
 SUMMARY_FILENAME = "witness_horizon_semiprime_analysis_summary.json"
 ROWS_FILENAME = "witness_horizon_semiprime_analysis_rows.jsonl"
 DEFAULT_WITNESS_BOUNDS = "127,149,197,251,307"

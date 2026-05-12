@@ -61,7 +61,7 @@ except ImportError:  # pragma: no cover - direct script execution
     from resolved_boundary_lock_separator_probe import jsonable
 
 
-DEFAULT_OUTPUT_DIR = Path("output/prime_inference_generator")
+DEFAULT_OUTPUT_DIR = Path("research/01-generator/output/prime_inference_generator")
 SUMMARY_FILENAME = "graph_v4_failure_bug_audit_summary.json"
 RECORD_FILENAME = "graph_v4_failure_bug_audit_record.json"
 

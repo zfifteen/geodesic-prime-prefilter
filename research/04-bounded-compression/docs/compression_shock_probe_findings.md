@@ -22,8 +22,8 @@ This is real compression, not just machine bloat.
 
 ## Artifacts
 
-- [compression shock probe script](../../research/04-bounded-compression/scripts/gwr_compression_shock_probe.py)
-- [summary JSON](../../research/04-bounded-compression/output/gwr_compression_shock_probe_summary.json)
-- [model CSV](../../research/04-bounded-compression/output/gwr_compression_shock_probe_models.csv)
-- [history JSONL](../../research/04-bounded-compression/output/gwr_compression_shock_probe_history.jsonl)
-- ![Compression shock overview](../../research/04-bounded-compression/output/gwr_compression_shock_probe_overview.png)
+- [compression shock probe script](../scripts/gwr_compression_shock_probe.py)
+- [summary JSON](../output/gwr_compression_shock_probe_summary.json)
+- [model CSV](../output/gwr_compression_shock_probe_models.csv)
+- [history JSONL](../output/gwr_compression_shock_probe_history.jsonl)
+- ![Compression shock overview](../output/gwr_compression_shock_probe_overview.png)

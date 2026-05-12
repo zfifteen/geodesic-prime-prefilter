@@ -59,7 +59,7 @@ That identity is the main discovery.
 
 The surprise was that the selected integer collapsed completely.
 
-As proved in [../../PROOF.md](../../PROOF.md), the implemented log-score
+As proved in [../../PROOF.md](../../../../PROOF.md), the implemented log-score
 maximizer is exactly the same as the integer selected by the simple rule:
 
 1. choose the smallest interior divisor count $d(n)$,
@@ -70,7 +70,7 @@ That is the Leftmost Minimum-Divisor Rule (GWR).
 The important point is that GWR is not a loose summary. It was first an exact
 identity on the validation ladder, from exact runs at $10^6$ and
 $2 \times 10^7$ through sampled higher-scale windows out to $10^{12}$. The
-live proof in [../../PROOF.md](../../PROOF.md) closes that maximizer rule rather
+live proof in [../../PROOF.md](../../../../PROOF.md) closes that maximizer rule rather
 than leaving it as a proof-program target.
 
 ![GWR validation surface: every reported tested regime remains at match rate 1.0](./plots/figure_02_match_rate_surface.png)
@@ -181,7 +181,7 @@ It is:
 “Why do prime-gap interiors arrange themselves so that the minimum-divisor
 leftmost integer dominates the log-score competition?”
 
-The answer is now given directly in [../../PROOF.md](../../PROOF.md): later
+The answer is now given directly in [../../PROOF.md](../../../../PROOF.md): later
 integers lose by ordered comparison, the divisor-count tail is closed inside
 the prime-gap interval, and earlier integers lose by the prime-square case,
 threshold comparison, witness rows, branch certification, and finite base.
@@ -209,5 +209,6 @@ The Leftmost Minimum-Divisor Rule is a proved universal maximizer theorem in thi
 and it compresses several previously separate-looking observations into one
 selection rule.
 
-See [../../PROOF.md](../../PROOF.md) for the formal proof and
-[../findings/README.md](../findings/README.md) for current consequence notes.
+See [../../PROOF.md](../../../../PROOF.md) for the formal proof and
+[current consequence notes](../../docs/README.md) for the current research
+notes.

@@ -16,7 +16,7 @@ from sympy import nextprime
 
 
 ROOT = Path(__file__).resolve().parents[3]
-DEFAULT_OUTPUT_DIR = ROOT / "output"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "03-gap-types" / "output"
 DEFAULT_EXACT_MAX_RIGHT_PRIME = 1_000_000
 DEFAULT_MIN_POWER = 7
 DEFAULT_MAX_POWER = 18

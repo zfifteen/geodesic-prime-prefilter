@@ -33,7 +33,7 @@ PRIOR_JSON = (
     / "lexicographic_peak_validation"
     / "lexicographic_peak_validation.json"
 )
-REVALIDATION_JSON = ROOT / "output" / "lexicographic_rule_revalidation_summary.json"
+REVALIDATION_JSON = ROOT / "research" / "11-gap-ridge" / "output" / "lexicographic_rule_revalidation_summary.json"
 
 
 def raw_z(values: np.ndarray, divisors: np.ndarray) -> np.ndarray:

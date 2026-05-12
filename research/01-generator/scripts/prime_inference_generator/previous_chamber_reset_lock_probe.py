@@ -44,7 +44,7 @@ except ImportError:  # pragma: no cover - direct script execution
     from resolved_boundary_lock_separator_probe import gap_width_class, jsonable
 
 
-DEFAULT_OUTPUT_DIR = Path("output/prime_inference_generator")
+DEFAULT_OUTPUT_DIR = Path("research/01-generator/output/prime_inference_generator")
 SUMMARY_FILENAME = "previous_chamber_reset_lock_summary.json"
 RECORDS_FILENAME = "previous_chamber_reset_lock_records.jsonl"
 DEFAULT_SURFACES = ("11..1000000", "100000..200000", "1000000..1100000")

@@ -21,7 +21,7 @@ if str(BENCHMARK_DIR) not in sys.path:
 import gwr_dni_recursive_walk as walk
 
 
-DEFAULT_OUTPUT_DIR = ROOT / "output"
+DEFAULT_OUTPUT_DIR = ROOT / "research" / "02-gwr-dni" / "output"
 DEFAULT_MIN_POWER = 2
 DEFAULT_MAX_POWER = 18
 
