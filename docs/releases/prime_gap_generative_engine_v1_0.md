@@ -35,18 +35,18 @@ target.
 
 ### Frozen synthesis
 
-- [../../output/gwr_dni_gap_type_engine_v1_summary.json](../../output/gwr_dni_gap_type_engine_v1_summary.json)
-- ![Prime Gap Generative Model v1.0 overview](../../output/gwr_dni_gap_type_engine_v1_overview.png)
+- [../../research/03-gap-types/output/gwr_dni_gap_type_engine_v1_summary.json](../../research/03-gap-types/output/gwr_dni_gap_type_engine_v1_summary.json)
+- ![Prime Gap Generative Model v1.0 overview](../../research/03-gap-types/output/gwr_dni_gap_type_engine_v1_overview.png)
 
 ### Model code and tests
 
-- [../../benchmarks/python/predictor/gwr_dni_gap_type_engine_synthesis.py](../../benchmarks/python/predictor/gwr_dni_gap_type_engine_synthesis.py)
-- [../../tests/python/predictor/test_gwr_dni_gap_type_engine_synthesis.py](../../tests/python/predictor/test_gwr_dni_gap_type_engine_synthesis.py)
+- [../../research/03-gap-types/scripts/gwr_dni_gap_type_engine_synthesis.py](../../research/03-gap-types/scripts/gwr_dni_gap_type_engine_synthesis.py)
+- [../../research/03-gap-types/tests/test_gwr_dni_gap_type_engine_synthesis.py](../../research/03-gap-types/tests/test_gwr_dni_gap_type_engine_synthesis.py)
 
 ### Freeze note and rulebook
 
-- [../../gwr/findings/gap_type_engine_v1_freeze.md](../../gwr/findings/gap_type_engine_v1_freeze.md)
-- [../../gwr/findings/gap_type_engine_v1_rulebook.md](../../gwr/findings/gap_type_engine_v1_rulebook.md)
+- [../../research/03-gap-types/docs/gap_type_engine_v1_freeze.md](../../research/03-gap-types/docs/gap_type_engine_v1_freeze.md)
+- [../../research/03-gap-types/docs/gap_type_engine_v1_rulebook.md](../../research/03-gap-types/docs/gap_type_engine_v1_rulebook.md)
 
 ### Submission draft
 
@@ -54,7 +54,7 @@ target.
 
 ### Synthetic example
 
-- [../../output/gwr_dni_gap_type_generative_probe_synthetic.csv](../../output/gwr_dni_gap_type_generative_probe_synthetic.csv)
+- [../../research/03-gap-types/output/gwr_dni_gap_type_generative_probe_synthetic.csv](../../research/03-gap-types/output/gwr_dni_gap_type_generative_probe_synthetic.csv)
 
 The synthetic example contains `10,000` committed rows on the persistent core
 surface. The first row and the last row are both
@@ -67,13 +67,13 @@ The release state is backed by the predictor slice:
 
 ```bash
 pytest -q \
-  tests/python/predictor/test_gwr_dni_gap_type_sequence_probe.py \
-  tests/python/predictor/test_gwr_dni_gap_type_generative_probe.py \
-  tests/python/predictor/test_gwr_dni_gap_type_engine_decode.py \
-  tests/python/predictor/test_gwr_dni_gap_type_scheduler_probe.py \
-  tests/python/predictor/test_gwr_dni_gap_type_hybrid_scheduler_probe.py \
-  tests/python/predictor/test_gwr_dni_gap_type_long_horizon_controller_probe.py \
-  tests/python/predictor/test_gwr_dni_gap_type_engine_synthesis.py
+  research/03-gap-types/tests/test_gwr_dni_gap_type_sequence_probe.py \
+  research/03-gap-types/tests/test_gwr_dni_gap_type_generative_probe.py \
+  research/03-gap-types/tests/test_gwr_dni_gap_type_engine_decode.py \
+  research/03-gap-types/tests/test_gwr_dni_gap_type_scheduler_probe.py \
+  research/03-gap-types/tests/test_gwr_dni_gap_type_hybrid_scheduler_probe.py \
+  research/03-gap-types/tests/test_gwr_dni_gap_type_long_horizon_controller_probe.py \
+  research/03-gap-types/tests/test_gwr_dni_gap_type_engine_synthesis.py
 ```
 
 ## Scope

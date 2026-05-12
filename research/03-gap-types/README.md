@@ -8,11 +8,11 @@ finite-state model evidence.
 Primary homes:
 
 - `PRIME_GAP_GENERATIVE_MODEL.md`
-- `docs/research/prime_gap_grammar_infographics/`
-- `output/gwr_dni_gap_type_catalog_summary.json`
-- `output/gwr_dni_gap_type_engine_v1_summary.json`
-- `output/gwr_dni_gap_type_sequence_probe_summary.json`
-- `output/gwr_dni_gap_type_generative_probe_summary.json`
+- `research/03-gap-types/infographics/prime-gap-grammar-infographics/`
+- `research/03-gap-types/output/gwr_dni_gap_type_catalog_summary.json`
+- `research/03-gap-types/output/gwr_dni_gap_type_engine_v1_summary.json`
+- `research/03-gap-types/output/gwr_dni_gap_type_sequence_probe_summary.json`
+- `research/03-gap-types/output/gwr_dni_gap_type_generative_probe_summary.json`
 - `benchmarks/python/predictor/gwr_dni_gap_type_*.py`
 
 ## Invariant Or Rule
@@ -28,7 +28,7 @@ prime-gap sequence.
 
 ## Measured Evidence
 
-`output/gwr_dni_gap_type_engine_v1_summary.json` records:
+`research/03-gap-types/output/gwr_dni_gap_type_engine_v1_summary.json` records:
 
 - surface: persistent `14`-state reduced gap-type surface;
 - local fidelity pooled-window concentration L1 `0.0116`;
@@ -40,7 +40,7 @@ prime-gap sequence.
 Focused validation passed after the chapter map was finalized:
 
 ```text
-python3 -m pytest tests/python/predictor/test_gwr_dni_gap_type_catalog.py tests/python/predictor/test_gwr_dni_gap_type_sequence_probe.py tests/python/predictor/test_gwr_dni_gap_type_engine_synthesis.py
+python3 -m pytest research/03-gap-types/tests/test_gwr_dni_gap_type_catalog.py research/03-gap-types/tests/test_gwr_dni_gap_type_sequence_probe.py research/03-gap-types/tests/test_gwr_dni_gap_type_engine_synthesis.py
 9 passed in 3.75s
 ```
 
@@ -61,7 +61,7 @@ proved generative law for all prime gaps.
 Run the focused gap-type validation:
 
 ```text
-python3 -m pytest tests/python/predictor/test_gwr_dni_gap_type_catalog.py tests/python/predictor/test_gwr_dni_gap_type_sequence_probe.py tests/python/predictor/test_gwr_dni_gap_type_engine_synthesis.py
+python3 -m pytest research/03-gap-types/tests/test_gwr_dni_gap_type_catalog.py research/03-gap-types/tests/test_gwr_dni_gap_type_sequence_probe.py research/03-gap-types/tests/test_gwr_dni_gap_type_engine_synthesis.py
 ```
 
 ## Provenance

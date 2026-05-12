@@ -5,7 +5,7 @@ selected-integer family, and a coarse divisor bucket. On that reduced surface, t
 stream does not look memoryless. It closes to a stable `14`-state grammar that
 persists from sampled `10^7` through `10^18`.
 
-![Prime Gap Generative Model v1.0 overview](../../../output/gwr_dni_gap_type_engine_v1_overview.png)
+![Prime Gap Generative Model v1.0 overview](../../../research/03-gap-types/output/gwr_dni_gap_type_engine_v1_overview.png)
 
 ---
 
@@ -73,7 +73,7 @@ has multiple timescales.
 The frozen package is in the repo:
 
 - [../../releases/prime_gap_generative_engine_v1_0.md](../../releases/prime_gap_generative_engine_v1_0.md)
-- [../../../gwr/findings/gap_type_engine_v1_rulebook.md](../../../gwr/findings/gap_type_engine_v1_rulebook.md)
+- [../../../research/03-gap-types/docs/gap_type_engine_v1_rulebook.md](../../../research/03-gap-types/docs/gap_type_engine_v1_rulebook.md)
 - [../../../research/02-gwr-dni/docs/prime_gap_hierarchical_engine_paper_draft.md](../../../research/02-gwr-dni/docs/prime_gap_hierarchical_engine_paper_draft.md)
 
 The narrow claim is:

@@ -67,7 +67,7 @@ sequence has been selected in this branch.
 | --- | --- | --- | --- |
 | `01-generator` | mapped | `python3 -m pytest research/01-generator/tests/test_simple_pgs_generator.py research/02-gwr-dni/tests/test_gwr_dni_recursive_walk.py` passed, 36 tests | Production code remains in place. |
 | `02-gwr-dni` | mapped | `python3 -m pytest research/01-generator/tests/test_simple_pgs_generator.py research/02-gwr-dni/tests/test_gwr_dni_recursive_walk.py` passed, 36 tests | GWR/DNI evidence routed. |
-| `03-gap-types` | mapped | `python3 -m pytest tests/python/predictor/test_gwr_dni_gap_type_catalog.py tests/python/predictor/test_gwr_dni_gap_type_sequence_probe.py tests/python/predictor/test_gwr_dni_gap_type_engine_synthesis.py` passed, 9 tests | Gap-type model remains measured. |
+| `03-gap-types` | mapped | `python3 -m pytest research/03-gap-types/tests/test_gwr_dni_gap_type_catalog.py research/03-gap-types/tests/test_gwr_dni_gap_type_sequence_probe.py research/03-gap-types/tests/test_gwr_dni_gap_type_engine_synthesis.py` passed, 9 tests | Gap-type model remains measured. |
 | `04-bounded-compression` | mapped | Bounded/state focused command passed, 20 tests | Square branch remains unresolved. |
 | `05-state-budget` | mapped | Bounded/state focused command passed, 20 tests | `d4_count` remains measured. |
 | `06-cryptology-rsa` | mapped | Focused RSA command passed, 102 tests | RSA v2 unresolved states preserved. |
@@ -99,7 +99,7 @@ sequence has been selected in this branch.
   python3 -m pytest research/01-generator/tests/test_simple_pgs_generator.py research/02-gwr-dni/tests/test_gwr_dni_recursive_walk.py
   36 passed in 1.02s
 
-  python3 -m pytest tests/python/predictor/test_gwr_dni_gap_type_catalog.py tests/python/predictor/test_gwr_dni_gap_type_sequence_probe.py tests/python/predictor/test_gwr_dni_gap_type_engine_synthesis.py
+  python3 -m pytest research/03-gap-types/tests/test_gwr_dni_gap_type_catalog.py research/03-gap-types/tests/test_gwr_dni_gap_type_sequence_probe.py research/03-gap-types/tests/test_gwr_dni_gap_type_engine_synthesis.py
   9 passed in 3.75s
 
   python3 -m pytest tests/python/predictor/test_bounded_compression_falsification_runner.py tests/python/predictor/test_d4_fallback_falsification_runner.py tests/python/predictor/test_d4_no_square_fallback_falsification_runner.py tests/python/predictor/test_square_branch_dynamic_cutoff_search.py tests/python/predictor/test_state_budget_divisor_carrier_sweep.py tests/python/predictor/test_state_budget_pairwise_ruler_test.py

@@ -259,7 +259,7 @@
       }
     }
   },
-  "detail_csv": "/Users/velocityworks/IdeaProjects/prime-gap-structure/output/gwr_dni_gap_type_catalog_details.csv",
+  "detail_csv": "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/03-gap-types/output/gwr_dni_gap_type_catalog_details.csv",
   "transition_count": 60717,
   "runtime_seconds": 0.9871442317962646
 }
