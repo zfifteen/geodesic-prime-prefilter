@@ -32,14 +32,14 @@ def load_module():
 
 
 def test_local_crt_model_does_not_force_obstruction_inheritance():
-    """The local CRT model has a complete parent cover and no obstructed children."""
+    """The local CRT model has a complete cover and no obstructed assigned carriers."""
     module = load_module()
     payload = module.build_local_model_inheritance_audit()
 
     assert payload["parent_local_model_consistent"] is True
     assert payload["parent_rough_defect_count"] == 569
-    assert payload["assigned_child_carrier_count"] == 569
-    assert payload["children_with_O_count"] == 0
-    assert payload["children_closed_count"] == 569
-    assert payload["all_children_closed"] is True
-    assert payload["min_child_rough_prime_defect_count"] >= 1
+    assert payload["assigned_carrier_count"] == 569
+    assert payload["assigned_carriers_with_O_count"] == 0
+    assert payload["assigned_carriers_closed_count"] == 569
+    assert payload["all_assigned_carriers_closed"] is True
+    assert payload["min_assigned_carrier_rough_prime_defect_count"] >= 1

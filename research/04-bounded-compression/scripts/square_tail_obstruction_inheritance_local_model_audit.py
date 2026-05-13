@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit obstruction inheritance on the full-cutoff local CRT model."""
+"""Audit obstruction inheritance on full-cutoff local CRT assigned carriers."""
 
 from __future__ import annotations
 
@@ -27,8 +27,8 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def child_obstruction_row(root: int) -> dict[str, object]:
-    """Return obstruction status for one child root."""
+def carrier_obstruction_row(root: int) -> dict[str, object]:
+    """Return obstruction status for one assigned carrier root."""
     audit = build_rough_defect_audit(root)
     return {
         "root": root,
@@ -41,29 +41,37 @@ def child_obstruction_row(root: int) -> dict[str, object]:
 
 
 def build_local_model_inheritance_audit() -> dict[str, object]:
-    """Return obstruction-inheritance data for the local CRT model children."""
+    """Return obstruction-inheritance data for the local CRT assigned carriers."""
     model = build_full_cutoff_crt_model(SOURCE_ROOT)
     carriers = [int(row["carrier"]) for row in model["carrier_rows"]]
-    child_rows = [child_obstruction_row(root) for root in carriers]
-    obstructed_rows = [row for row in child_rows if bool(row["O_holds"])]
-    prime_counts = [int(row["rough_prime_defect_count"]) for row in child_rows]
+    carrier_rows = [carrier_obstruction_row(root) for root in carriers]
+    obstructed_rows = [row for row in carrier_rows if bool(row["O_holds"])]
+    prime_counts = [int(row["rough_prime_defect_count"]) for row in carrier_rows]
     return {
         "source_root": SOURCE_ROOT,
         "representative_root": model["representative_root"],
         "parent_local_model_consistent": model["local_model_consistent"],
         "parent_rough_defect_count": model["rough_defect_count"],
-        "assigned_child_carrier_count": len(carriers),
-        "children_with_O_count": len(obstructed_rows),
-        "children_closed_count": len(child_rows) - len(obstructed_rows),
-        "all_children_closed": len(obstructed_rows) == 0,
-        "min_child_rough_prime_defect_count": min(prime_counts) if prime_counts else None,
-        "max_child_rough_prime_defect_count": max(prime_counts) if prime_counts else None,
-        "boundary": (
-            "local CRT complete obstruction does not force obstruction inheritance; "
-            "all assigned child carriers are closed"
+        "assigned_carrier_count": len(carriers),
+        "assigned_carriers_with_O_count": len(obstructed_rows),
+        "assigned_carriers_closed_count": len(carrier_rows) - len(obstructed_rows),
+        "all_assigned_carriers_closed": len(obstructed_rows) == 0,
+        "min_assigned_carrier_rough_prime_defect_count": (
+            min(prime_counts) if prime_counts else None
         ),
-        "first_child_rows": child_rows[:20],
-        "obstructed_child_rows": obstructed_rows,
+        "max_assigned_carrier_rough_prime_defect_count": (
+            max(prime_counts) if prime_counts else None
+        ),
+        "least_factor_boundary": (
+            "assigned carriers are congruence carriers, not certified least-factor "
+            "children of the modeled rows"
+        ),
+        "boundary": (
+            "local CRT complete carrier cover does not force obstruction on assigned "
+            "carriers; all assigned carriers are closed"
+        ),
+        "first_assigned_carrier_rows": carrier_rows[:20],
+        "obstructed_assigned_carrier_rows": obstructed_rows,
     }
 
 
