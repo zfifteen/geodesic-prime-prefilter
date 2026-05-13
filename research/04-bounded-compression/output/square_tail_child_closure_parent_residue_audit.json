@@ -1,0 +1,28 @@
+{
+  "all_child_closing_prime_residues_outside_parent_M": true,
+  "boundary": "child closing primes do not directly cover the measured parent windows, so direct back-cover is not the missing transport law",
+  "surfaces": [
+    {
+      "label": "standing_record_actual_composite_rough_children",
+      "parent_root": "424171123",
+      "parent_M": 395,
+      "composite_child_root_count": 62,
+      "child_prime_row_count": 664,
+      "parent_residue_rows_checked": 664,
+      "inside_parent_M_count": 0,
+      "outside_parent_M_count": 664,
+      "first_inside_parent_M_rows": []
+    },
+    {
+      "label": "representative_actual_composite_rough_tail_children",
+      "parent_root": "89726961223544427015292389839",
+      "parent_M": 4444,
+      "composite_child_root_count": 12,
+      "child_prime_row_count": 167,
+      "parent_residue_rows_checked": 167,
+      "inside_parent_M_count": 0,
+      "outside_parent_M_count": 167,
+      "first_inside_parent_M_rows": []
+    }
+  ]
+}

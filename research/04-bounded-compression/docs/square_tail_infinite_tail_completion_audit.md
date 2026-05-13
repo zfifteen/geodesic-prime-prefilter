@@ -47,6 +47,7 @@ following:
 | Exclude local first-arrival ordering contradiction | `square_tail_crt_model_arrival_order_audit_509.md` | complete |
 | Separate selected-square deadline from dynamic cutoff | `square_tail_selected_square_deadline_audit.md` | complete |
 | Exclude child selected-square inheritance alone | `square_tail_child_selected_square_inheritance_audit.md` | complete |
+| Exclude direct child-closing-prime back-cover | `square_tail_child_closure_parent_residue_audit.md` | complete |
 | Prove a prime-valued M-rough defect must occur before the cutoff | No proof artifact exists. | missing |
 | Produce a counterexample | No counterexample artifact exists. | missing |
 
@@ -174,6 +175,7 @@ The following are useful evidence but do not complete the goal:
 - local first-arrival CRT covers without a selected-square prime-root transport law;
 - selected-square deadline audits that do not imply the dynamic cutoff;
 - child selected-square inheritance without a parent-to-child transport law;
+- child closing primes that do not land inside the parent cutoff window;
 - Grok agreement with the equivalence.
 
 ## Next Valid Work
