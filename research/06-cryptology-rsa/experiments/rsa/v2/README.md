@@ -202,6 +202,15 @@ The 40-bit resolution is produced by public reciprocal deadline correction. The
 runner still does not read audit factors; audit certifies exact factor equality
 after inference.
 
+The current implementation baseline is:
+
+```text
+OECC_LINEAR_V1
+```
+
+See `ORIENTED_ENDPOINT_CHAIN_BASELINE.md` for the baseline contract and the
+`OECC_RECURSIVE_V2` pseudocode target.
+
 ## Invalid Rules
 
 Do not restore these as live selection rules:
