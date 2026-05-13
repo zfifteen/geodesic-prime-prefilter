@@ -40,13 +40,9 @@ r0 <= s
 
 If `r0 > s`, then the lower certificate remains valid but its reset endpoint
 has crossed the square-root orientation boundary. It is not a lower-side
-transport coordinate, so the public state is:
-
-```text
-unresolved_by_reset_endpoint_crosses_orientation
-```
-
-No upper certificate is induced in that state.
+transport coordinate. The transport coordinate for that local chamber is the
+lower public anchor `a0`, and the runner enters the oriented endpoint-chain
+branch below.
 
 Let:
 
@@ -114,8 +110,71 @@ When those five conditions hold, the endpoint class is:
 (c, d)
 ```
 
-If any condition fails, the public state is unresolved. The correction is one
-step only; there is no loop and no widening walk.
+If any condition fails at the square-root chamber, the local correction branch
+has not resolved. The runner then enters the oriented endpoint-chain branch.
+
+### Oriented Endpoint-Chain Closure
+
+When the square-root chamber does not resolve by strict reset closure or by the
+single deadline-signature correction, the runner walks the lower public
+endpoint chain outward inside the public balance interval:
+
+```text
+lower_bound = floor(s / 2)
+```
+
+For each public lower endpoint `a >= lower_bound`, derive its PGSPG reset
+certificate `L`. The oriented transport coordinate is:
+
+```text
+x = L.reset_endpoint  if L.reset_endpoint <= s
+x = L.anchor          otherwise
+```
+
+Transport `x` through the public floor map:
+
+```text
+y = floor(N / x)
+```
+
+If `y` is on the upper side and inside the public balance interval, derive the
+upper certificate:
+
+```text
+a1 = previous_public_endpoint_before(y)
+U = PGSPG reset certificate at a1
+r1 = U.reset_endpoint
+d = U.reset_deadline_value
+```
+
+Then transport the upper reset endpoint back:
+
+```text
+z = floor(N / r1)
+c = previous_public_endpoint_before(z)
+L_c = PGSPG reset certificate at c
+```
+
+The oriented endpoint-chain branch resolves when:
+
+```text
+c < a
+d > r1
+floor(N / c) == d
+floor(N / d) == c
+L_c.reset_signature == U.reset_signature
+```
+
+The first lower-chain endpoint satisfying those public conditions emits the
+structural endpoint class:
+
+```text
+(c, d)
+```
+
+The walk has a deterministic stop condition: it ends at `floor(s / 2)`. It does
+not use a fixed candidate radius, a retry ladder, product closure, divisibility,
+`gcd`, primality APIs, hidden factors, or audit endpoints.
 
 The public law emits a structural endpoint class. It does not use `N mod c`,
 `c * d == N`, `gcd`, audit endpoints, hidden factors, or a fallback path as an
@@ -142,16 +201,26 @@ The generated inference row emits:
 
 ## Current Boundary
 
-The official 50-bit RSA v2 rung remains unresolved because its lower reset
-endpoint crosses the orientation boundary:
+The official 50-bit RSA v2 rung now resolves to a structural endpoint class by
+oriented endpoint-chain closure:
 
 ```text
 case_id = rsa_v2_50bit_static_001
-closure_status = unresolved_by_reset_endpoint_crosses_orientation
+closure_status = resolved_by_oriented_endpoint_chain_closure
+endpoint_chain_steps = 389
+endpoint_class = (32046877, 32060407)
 ```
 
-This is not a failure of the law. It is the current unresolved boundary under
-the live public rule.
+The 48-bit modulus `249882542035169` resolves by the same branch:
+
+```text
+closure_status = resolved_by_oriented_endpoint_chain_closure
+endpoint_chain_steps = 296
+endpoint_class = (15802739, 15812609)
+```
+
+These are structural endpoint classes. Exact factor-pair confirmation remains a
+separate downstream audit role and is not an inference predicate.
 
 ## Work Discipline
 
@@ -182,7 +251,7 @@ Shape feels wrong: this is translating deterministic endpoint-structure research
 Corrective action:
 
 ```text
-Return to reciprocal deadline-signature correction and explain the endpoint law already present in the code and generated outputs.
+Return to reciprocal deadline-signature correction, oriented endpoint-chain closure, and the generated endpoint rows.
 ```
 
 ## Archive Note

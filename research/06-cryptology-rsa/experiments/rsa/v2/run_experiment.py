@@ -77,6 +77,9 @@ class CertificatePair:
     lower_transported_deadline_width: int | None
     upper_transported_deadline_width: int | None
     closure_status: str
+    endpoint_chain_steps: int | None = None
+    endpoint_chain_source_anchor: gmpy2.mpz | None = None
+    endpoint_chain_transport_coordinate: gmpy2.mpz | None = None
 
 
 def mpz_to_int(value: gmpy2.mpz) -> int:
@@ -272,6 +275,61 @@ def deadline_correction_closes(
     )
 
 
+def endpoint_chain_closure(
+    n_value: gmpy2.mpz,
+    center: gmpy2.mpz,
+    lower_balance: gmpy2.mpz,
+    upper_balance: gmpy2.mpz,
+    start_anchor: gmpy2.mpz,
+) -> CertificatePair | None:
+    """Return the first oriented endpoint-chain deadline closure."""
+    anchor: gmpy2.mpz | None = start_anchor
+    steps = 0
+    while anchor is not None and anchor >= lower_balance:
+        lower = pgs_certificate(anchor)
+        if lower is not None:
+            transport_coordinate = (
+                lower.reset_endpoint
+                if lower.reset_endpoint <= center
+                else lower.anchor
+            )
+            transported_upper = reciprocal_floor(n_value, transport_coordinate)
+            if center <= transported_upper <= upper_balance:
+                upper_anchor = previous_endpoint(transported_upper)
+                upper = None if upper_anchor is None else pgs_certificate(upper_anchor)
+                if upper is not None:
+                    transported_lower = reciprocal_floor(n_value, upper.reset_endpoint)
+                    (
+                        corrected_lower,
+                        corrected_lower_endpoint,
+                        corrected_upper_endpoint,
+                        transported_corrected_upper,
+                        transported_corrected_lower,
+                        deadline_closed,
+                    ) = deadline_correction_closes(n_value, lower, upper)
+                    if deadline_closed:
+                        return CertificatePair(
+                            lower,
+                            upper,
+                            corrected_lower,
+                            corrected_lower_endpoint,
+                            corrected_upper_endpoint,
+                            transported_upper,
+                            transported_lower,
+                            transported_corrected_upper,
+                            transported_corrected_lower,
+                            transported_deadline_width(n_value, lower),
+                            transported_deadline_width(n_value, upper),
+                            "resolved_by_oriented_endpoint_chain_closure",
+                            endpoint_chain_steps=steps,
+                            endpoint_chain_source_anchor=anchor,
+                            endpoint_chain_transport_coordinate=transport_coordinate,
+                        )
+        anchor = previous_endpoint(anchor)
+        steps += 1
+    return None
+
+
 def certificate_pair(case: LadderCase) -> CertificatePair:
     """Return the reciprocal certificate pair from square-root orientation."""
     # The integer square root orients the lower and upper certificate sides.
@@ -286,6 +344,15 @@ def certificate_pair(case: LadderCase) -> CertificatePair:
         return CertificatePair(None, None, None, None, None, None, None, None, None, None, "unresolved_by_missing_lower_certificate")
 
     if lower.reset_endpoint > center:
+        endpoint_chain_pair = endpoint_chain_closure(
+            case.n,
+            center,
+            lower_balance,
+            upper_balance,
+            lower_anchor,
+        )
+        if endpoint_chain_pair is not None:
+            return endpoint_chain_pair
         return CertificatePair(
             lower,
             None,
@@ -371,6 +438,16 @@ def certificate_pair(case: LadderCase) -> CertificatePair:
         status = "resolved_by_mutual_certificate_closure"
     elif deadline_closed:
         status = "resolved_by_reciprocal_deadline_signature_correction"
+    else:
+        endpoint_chain_pair = endpoint_chain_closure(
+            case.n,
+            center,
+            lower_balance,
+            upper_balance,
+            lower_anchor,
+        )
+        if endpoint_chain_pair is not None:
+            return endpoint_chain_pair
     return CertificatePair(
         lower,
         upper,
@@ -431,6 +508,9 @@ def pair_to_json(case: LadderCase, pair: CertificatePair) -> dict[str, object]:
         "transported_corrected_lower_endpoint": None if pair.transported_corrected_lower_endpoint is None else str(pair.transported_corrected_lower_endpoint),
         "lower_transported_deadline_width": pair.lower_transported_deadline_width,
         "upper_transported_deadline_width": pair.upper_transported_deadline_width,
+        "endpoint_chain_steps": pair.endpoint_chain_steps,
+        "endpoint_chain_source_anchor": None if pair.endpoint_chain_source_anchor is None else str(pair.endpoint_chain_source_anchor),
+        "endpoint_chain_transport_coordinate": None if pair.endpoint_chain_transport_coordinate is None else str(pair.endpoint_chain_transport_coordinate),
         "rule_id": RULE_ID,
     }
     payload.update(certificate_to_json(pair.lower, "lower"))
@@ -465,6 +545,19 @@ def result_row(case: LadderCase, pair: CertificatePair) -> dict[str, object]:
             "q": str(pair.corrected_upper_endpoint),
             "rule_id": RULE_ID,
         }
+    if pair.closure_status == "resolved_by_oriented_endpoint_chain_closure":
+        assert pair.corrected_lower_endpoint is not None
+        assert pair.corrected_upper_endpoint is not None
+        return {
+            "case_id": case.case_id,
+            "bits": case.bits,
+            "N": str(case.n),
+            "status": "resolved",
+            "p": str(pair.corrected_lower_endpoint),
+            "q": str(pair.corrected_upper_endpoint),
+            "endpoint_class_role": "structural_endpoint_class",
+            "rule_id": RULE_ID,
+        }
     return {
         "case_id": case.case_id,
         "bits": case.bits,
@@ -489,6 +582,7 @@ def summary_row(case: LadderCase, pair: CertificatePair) -> dict[str, object]:
         "lower_certificate_present": pair.lower is not None,
         "upper_certificate_present": pair.upper is not None,
         "corrected_lower_certificate_present": pair.corrected_lower is not None,
+        "endpoint_chain_steps": pair.endpoint_chain_steps,
         "rule_id": RULE_ID,
     }
 

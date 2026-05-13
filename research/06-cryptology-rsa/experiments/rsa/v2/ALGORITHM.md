@@ -50,11 +50,8 @@ lower.reset_endpoint <= isqrt(N)
 
 If the lower reset endpoint is greater than `isqrt(N)`, the certificate is
 valid but its reset endpoint has crossed the orientation boundary. It is not a
-lower-side transport coordinate. The runner stops with:
-
-```text
-unresolved_by_reset_endpoint_crosses_orientation
-```
+lower-side transport coordinate. The oriented endpoint-chain branch uses the
+lower public anchor as the transport coordinate for that chamber.
 
 Transport the lower reset endpoint by:
 
@@ -111,6 +108,36 @@ This branch uses one reciprocal correction induced by the failed upper
 certificate. It does not test divisibility, multiply candidate endpoints, read
 audit factors, or walk a budgeted list of lower endpoints.
 
+## Stage 7: Oriented Endpoint-Chain Closure
+
+If the square-root chamber does not close, walk the lower public endpoint chain
+outward down to:
+
+```text
+floor(isqrt(N) / 2)
+```
+
+For each lower public endpoint, derive its PGSPG certificate and choose the
+oriented transport coordinate:
+
+```text
+lower.reset_endpoint  when lower.reset_endpoint <= isqrt(N)
+lower.anchor          when lower.reset_endpoint > isqrt(N)
+```
+
+Transport that coordinate, derive the upper certificate, and apply the same
+deadline-signature correction predicate. The first public lower-chain endpoint
+whose corrected lower endpoint and upper deadline mutually close under
+`floor(N / x)` resolves as:
+
+```text
+resolved_by_oriented_endpoint_chain_closure
+```
+
+This is endpoint-chain traversal over public PGS endpoints. It is not product
+closure, divisibility testing, a fixed-radius candidate band, or a hidden-factor
+search.
+
 ## Current Failure Modes
 
 The runner may emit:
@@ -118,6 +145,7 @@ The runner may emit:
 ```text
 resolved_by_mutual_certificate_closure
 resolved_by_reciprocal_deadline_signature_correction
+resolved_by_oriented_endpoint_chain_closure
 unresolved_by_certificate_pair_not_closed
 unresolved_by_reset_endpoint_crosses_orientation
 unresolved_by_missing_lower_certificate
@@ -129,7 +157,7 @@ The current official rungs emit:
 
 ```text
 rsa_v2_40bit_static_001 -> resolved_by_reciprocal_deadline_signature_correction
-rsa_v2_50bit_static_001 -> unresolved_by_reset_endpoint_crosses_orientation
+rsa_v2_50bit_static_001 -> resolved_by_oriented_endpoint_chain_closure
 ```
 
 ## Explicitly Invalidated Rules

@@ -4,7 +4,7 @@
     "sidecar_blocked_by_live_normalized_frontier": 2
   },
   "frontier_empty_but_unresolved": 0,
-  "frontier_live_but_closed": 1,
+  "frontier_live_but_closed": 2,
   "frontier_row_count": 202,
   "ledger_effective_survivor_count": 202,
   "non_strict_undominated_live_after_trace": 2,
