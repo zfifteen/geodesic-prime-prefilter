@@ -257,6 +257,66 @@ The sparse symmetric rows are the subcase `b_m = 0`. All other rows satisfy
 r = 2a_m + (2a_m^2 - m) / b_m.
 ```
 
+## Nonsymmetric Distance Corollary
+
+For every nonsymmetric M-rough composite row under `2M < r`,
+
+```text
+b >= 1.
+```
+
+Therefore
+
+```text
+d = 2b >= 2.
+```
+
+Using the quotient equation
+
+```text
+d ell = h^2 - 2m
+```
+
+and `ell = r - h`, we get
+
+```text
+h^2 - 2m >= 2ell = 2(r - h).
+```
+
+Thus
+
+```text
+h^2 + 2h >= 2r + 2m.
+```
+
+Since `h = 2a`, this is equivalent to
+
+```text
+2a^2 + 2a >= r + m.
+```
+
+Consequently every nonsymmetric row satisfies
+
+```text
+a >= ceil((-1 + sqrt(1 + 2(r + m))) / 2)
+```
+
+and therefore
+
+```text
+ell <= r - 2 ceil((-1 + sqrt(1 + 2(r + m))) / 2).
+```
+
+In particular, because `m >= 1`, every nonsymmetric least factor is excluded
+from the final band below `r` of width
+
+```text
+2 ceil((-1 + sqrt(1 + 2(r + 1))) / 2).
+```
+
+The symmetric rows are not covered by this corollary. They remain exactly the
+rows `m = 2a^2`.
+
 ## Proof Boundary
 
 This lemma does not prove that `O(r)` is impossible. It removes the parity
@@ -280,3 +340,8 @@ m = 2a^2 - b ell
 
 is correct under the stated `2M < r` boundary. It also flagged the small-root
 edge cases as already excluded by that hypothesis.
+
+Grok response `e12a9f20-fbe3-e36f-1388-1e083fbfb232` agreed that the parity
+corollary strengthens the nonsymmetric distance bound from the previous
+near-root estimate. It also warned that the corollary applies only to
+nonsymmetric rows under `2M < r`.
