@@ -156,6 +156,17 @@ carriers and all first-arrival carriers are closed. Therefore the obstruction
 inheritance theorem must use actual prime-root/global PGS structure, not local
 congruence consistency or local first-arrival ordering alone.
 
+The rough-factor disjointness lemma gives the first universal least-factor
+constraint on a complete obstruction word: every prime factor above `M` is
+private to one row in the parent M-window. The direct impossibility proof must
+use that row-private factorization structure or a stronger invariant.
+
+The lemma is recorded in:
+
+```text
+research/04-bounded-compression/docs/square_tail_rough_factor_disjointness_lemma.md
+```
+
 ## Required Proof Shape
 
 A proof must establish one of the following deterministic statements.
