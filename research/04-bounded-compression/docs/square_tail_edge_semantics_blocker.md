@@ -159,3 +159,10 @@ other side. Actual composite rough-defect children are selected-square roots,
 but so are the assigned singleton carriers in the full-cutoff local CRT model.
 Therefore child selected-square status alone does not separate true PGS descent
 from a local obstruction cover.
+
+The child closure parent-residue audit also rules out the direct back-cover
+version of transport. Child closing primes from the measured composite
+rough-defect descendants do not land inside the parent cutoff windows on the
+standing record or the representative surface. The remaining transport law
+must therefore be a global cascade or covering-impossibility statement, not a
+pointwise return of child closing primes to parent rows.
