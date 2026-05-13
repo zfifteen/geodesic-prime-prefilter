@@ -1,0 +1,87 @@
+{
+  "standing_record_root": 424171123,
+  "representative_source_root": 509,
+  "all_groups_have_only_selected_square_children": true,
+  "boundary": "child selected-square status is present in actual descent and in the local CRT singleton-carrier model, so it is not the missing transport law",
+  "summaries": [
+    {
+      "label": "standing_record_actual_composite_rough_children",
+      "child_root_count": 62,
+      "selected_square_child_count": 62,
+      "not_selected_square_child_count": 0,
+      "first_child_roots": [
+        457,
+        419,
+        10280521,
+        76136597,
+        743,
+        490837,
+        6323,
+        2341,
+        881,
+        3697,
+        27344329,
+        159673649,
+        108562759,
+        323801,
+        22110317,
+        907,
+        911,
+        65357,
+        1451,
+        73483
+      ],
+      "first_not_selected_square_child_roots": []
+    },
+    {
+      "label": "representative_actual_composite_rough_tail_children",
+      "child_root_count": 12,
+      "selected_square_child_count": 12,
+      "not_selected_square_child_count": 0,
+      "first_child_roots": [
+        6736351,
+        1714849,
+        665241324811967767,
+        7541,
+        1614712643,
+        13214687,
+        31249,
+        15277,
+        333497,
+        284521,
+        149969,
+        170450107
+      ],
+      "first_not_selected_square_child_roots": []
+    },
+    {
+      "label": "full_cutoff_crt_model_assigned_singleton_carriers",
+      "child_root_count": 569,
+      "selected_square_child_count": 569,
+      "not_selected_square_child_count": 0,
+      "first_child_roots": [
+        4451,
+        4483,
+        4513,
+        4517,
+        4519,
+        4549,
+        4561,
+        4583,
+        4597,
+        4621,
+        4643,
+        4649,
+        4657,
+        4663,
+        4679,
+        4703,
+        4721,
+        4729,
+        4733,
+        4759
+      ],
+      "first_not_selected_square_child_roots": []
+    }
+  ]
+}
