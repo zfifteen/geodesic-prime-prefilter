@@ -211,6 +211,20 @@ The lemma is recorded in:
 research/04-bounded-compression/docs/square_tail_symmetric_row_lemma.md
 ```
 
+The nonsymmetric quotient lemma turns every remaining composite rough row into
+an exact divisor equation:
+
+```text
+ell_m = (h_m^2 - 2m) / d_m,
+r = h_m + (h_m^2 - 2m) / d_m.
+```
+
+The lemma is recorded in:
+
+```text
+research/04-bounded-compression/docs/square_tail_nonsymmetric_quotient_lemma.md
+```
+
 ## Required Proof Shape
 
 A proof must establish one of the following deterministic statements.
