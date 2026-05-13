@@ -1,0 +1,31 @@
+{
+  "root_count": 2,
+  "all_selected_square": true,
+  "all_deadlines_exceed_dynamic_cutoff": true,
+  "rows": [
+    {
+      "root": "424171123",
+      "previous_root": "424171093",
+      "previous_root_gap": 30,
+      "selected_square_condition": true,
+      "selected_square_deadline_offset": "25450266480",
+      "selected_square_deadline_digits": 11,
+      "actual_previous_prime_offset": 738,
+      "dynamic_cutoff": 790,
+      "deadline_exceeds_dynamic_cutoff": true,
+      "deadline_to_cutoff_ratio": 32215527.189873416
+    },
+    {
+      "root": "89726961223544427015292389839",
+      "previous_root": "89726961223544427015292389727",
+      "previous_root_gap": 112,
+      "selected_square_condition": true,
+      "selected_square_deadline_offset": "20098839314073951651425495311392",
+      "selected_square_deadline_digits": 32,
+      "actual_previous_prime_offset": 338,
+      "dynamic_cutoff": 8889,
+      "deadline_exceeds_dynamic_cutoff": true,
+      "deadline_to_cutoff_ratio": 2.2610911591938297e+27
+    }
+  ]
+}
