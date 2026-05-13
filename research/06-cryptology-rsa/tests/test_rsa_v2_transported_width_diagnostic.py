@@ -7,7 +7,9 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
-V2 = ROOT / "research" / "06-cryptology-rsa" / "experiments" / "rsa" / "v2"
+EXPERIMENTS = ROOT / "research" / "06-cryptology-rsa" / "experiments"
+DATA_V2 = EXPERIMENTS / "data-ladder" / "rsa-v2"
+TRANSPORTED_V2 = EXPERIMENTS / "transported-sidecars" / "rsa-v2"
 CASE_40_ID = "rsa_v2_40bit_static_001"
 CASE_50_ID = "rsa_v2_50bit_static_001"
 P_VALUE = "1048559"
@@ -33,13 +35,13 @@ def read_jsonl(path: Path) -> list[dict[str, object]]:
 
 def test_width_diagnostic_emits_public_sidecar_rows(tmp_path):
     """As a reviewer, I want width diagnostics to stay public sidecar evidence."""
-    module = load_module(V2 / "transported_width_diagnostic_probe.py")
+    module = load_module(TRANSPORTED_V2 / "transported_width_diagnostic_probe.py")
     output_dir = tmp_path / "width"
 
     assert module.main(
         [
             "--cases",
-            str(V2 / "fixtures" / "ladder_cases.jsonl"),
+            str(DATA_V2 / "fixtures" / "ladder_cases.jsonl"),
             "--measured-rows",
             "8",
             "--output-dir",
@@ -98,13 +100,13 @@ def test_width_diagnostic_emits_public_sidecar_rows(tmp_path):
 
 def test_width_diagnostic_reconstructs_documented_static_frontier_surface(tmp_path):
     """As a reviewer, I want the comparator surface to match the documented count."""
-    module = load_module(V2 / "transported_width_diagnostic_probe.py")
+    module = load_module(TRANSPORTED_V2 / "transported_width_diagnostic_probe.py")
     output_dir = tmp_path / "width"
 
     assert module.main(
         [
             "--cases",
-            str(V2 / "fixtures" / "ladder_cases.jsonl"),
+            str(DATA_V2 / "fixtures" / "ladder_cases.jsonl"),
             "--measured-rows",
             "256",
             "--output-dir",
@@ -131,13 +133,13 @@ def test_width_diagnostic_reconstructs_documented_static_frontier_surface(tmp_pa
 
 def test_width_diagnostic_writes_lf_json_sidecars(tmp_path):
     """As a reviewer, I want width diagnostic artifacts to be LF-only."""
-    module = load_module(V2 / "transported_width_diagnostic_probe.py")
+    module = load_module(TRANSPORTED_V2 / "transported_width_diagnostic_probe.py")
     output_dir = tmp_path / "width"
 
     assert module.main(
         [
             "--cases",
-            str(V2 / "fixtures" / "ladder_cases.jsonl"),
+            str(DATA_V2 / "fixtures" / "ladder_cases.jsonl"),
             "--measured-rows",
             "2",
             "--output-dir",
@@ -180,6 +182,6 @@ def test_width_diagnostic_source_has_no_forbidden_inference_constructs():
         GENERATED_50_P,
         GENERATED_50_Q,
     )
-    source = (V2 / "transported_width_diagnostic_probe.py").read_text(encoding="utf-8")
+    source = (TRANSPORTED_V2 / "transported_width_diagnostic_probe.py").read_text(encoding="utf-8")
     for token in forbidden:
         assert token not in source

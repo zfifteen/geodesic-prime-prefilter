@@ -15,8 +15,9 @@ if str(SOURCE) not in sys.path:
 
 from z_band_prime_composite_field import divisor_counts_segment  # noqa: E402
 
-V2 = ROOT / "research" / "06-cryptology-rsa" / "experiments" / "rsa" / "v2"
-SCRIPT = V2 / "transported_story_law_probe.py"
+EXPERIMENTS = ROOT / "research" / "06-cryptology-rsa" / "experiments"
+TRANSPORTED_V2 = EXPERIMENTS / "transported-sidecars" / "rsa-v2"
+SCRIPT = TRANSPORTED_V2 / "transported_story_law_probe.py"
 RULE_ID = "transported_story_law_v1"
 EXPECTED_COUNTS = {
     "row_count": 512,

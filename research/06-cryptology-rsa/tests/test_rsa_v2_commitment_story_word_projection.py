@@ -7,7 +7,8 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
-V2 = ROOT / "research" / "06-cryptology-rsa" / "experiments" / "rsa" / "v2"
+EXPERIMENTS = ROOT / "research" / "06-cryptology-rsa" / "experiments"
+CERTIFICATE_V2 = EXPERIMENTS / "certificate-mechanics" / "rsa-v2"
 
 
 def load_module(path: Path):
@@ -31,7 +32,7 @@ def read_jsonl(path: Path) -> list[dict[str, object]]:
 
 def test_commitment_story_word_projection_preserves_zero_ordered_collisions(tmp_path):
     """Experiment 3 preserves the inverse-word zero collision surface."""
-    module = load_module(V2 / "commitment_story_word_projection_probe.py")
+    module = load_module(CERTIFICATE_V2 / "commitment_story_word_projection_probe.py")
     output_dir = tmp_path / "projection"
 
     assert module.main(["--output-dir", str(output_dir)]) == 0
@@ -74,7 +75,7 @@ def test_commitment_story_word_projection_preserves_zero_ordered_collisions(tmp_
 
 def test_commitment_story_word_projection_writes_lf_json(tmp_path):
     """Experiment 3 sidecars are LF-terminated JSON and JSONL."""
-    module = load_module(V2 / "commitment_story_word_projection_probe.py")
+    module = load_module(CERTIFICATE_V2 / "commitment_story_word_projection_probe.py")
     output_dir = tmp_path / "projection"
 
     assert module.main(["--output-dir", str(output_dir)]) == 0
@@ -87,7 +88,7 @@ def test_commitment_story_word_projection_writes_lf_json(tmp_path):
 
 def test_commitment_story_word_projection_source_stays_sidecar_only():
     """Experiment 3 keeps forbidden solver machinery out of the sidecar."""
-    source = (V2 / "commitment_story_word_projection_probe.py").read_text(encoding="utf-8")
+    source = (CERTIFICATE_V2 / "commitment_story_word_projection_probe.py").read_text(encoding="utf-8")
     forbidden = (
         "sympy",
         "factorint",

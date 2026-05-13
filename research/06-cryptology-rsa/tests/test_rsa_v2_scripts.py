@@ -9,7 +9,71 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
-V2 = ROOT / "research" / "06-cryptology-rsa" / "experiments" / "rsa" / "v2"
+EXPERIMENTS = ROOT / "research" / "06-cryptology-rsa" / "experiments"
+LIVE_V2 = EXPERIMENTS / "live-solver" / "rsa-v2"
+DATA_V2 = EXPERIMENTS / "data-ladder" / "rsa-v2"
+TRANSPORTED_V2 = EXPERIMENTS / "transported-sidecars" / "rsa-v2"
+CERTIFICATE_V2 = EXPERIMENTS / "certificate-mechanics" / "rsa-v2"
+GRAMMAR_V2 = EXPERIMENTS / "grammar-evidence" / "rsa-v2"
+MODULUS_V2 = EXPERIMENTS / "modulus-recursive-catalogs" / "rsa-v2"
+FRONTIER_V2 = EXPERIMENTS / "frontier-holdouts" / "rsa-v2"
+ORDER_V2 = EXPERIMENTS / "order-entropy-sidecars" / "rsa-v2"
+RECURSIVE_V2 = EXPERIMENTS / "recursive-sidecars" / "rsa-v2"
+INVALIDATED_V2 = EXPERIMENTS / "invalidated-solvers" / "rsa-v2"
+PEDK_V2 = EXPERIMENTS / "pedk" / "rsa-v2"
+
+
+SCRIPT_PATHS = {
+    "build_ladder_fixtures.py": DATA_V2 / "build_ladder_fixtures.py",
+    "generate_ladder_rung.py": DATA_V2 / "generate_ladder_rung.py",
+    "run_minimal_typed_solver.py": INVALIDATED_V2 / "run_minimal_typed_solver.py",
+    "run_experiment.py": LIVE_V2 / "run_experiment.py",
+    "run_recursive_v2.py": RECURSIVE_V2 / "run_recursive_v2.py",
+    "audit_experiment.py": LIVE_V2 / "audit_experiment.py",
+    "transported_exclusion_debt_probe.py": TRANSPORTED_V2 / "transported_exclusion_debt_probe.py",
+    "transported_d4_budget_probe.py": TRANSPORTED_V2 / "transported_d4_budget_probe.py",
+    "transported_d4_budget_trace.py": TRANSPORTED_V2 / "transported_d4_budget_trace.py",
+    "toy_normalized_frontier_closure_sweep.py": FRONTIER_V2 / "toy_normalized_frontier_closure_sweep.py",
+    "normalized_frontier_holdout_closure.py": FRONTIER_V2 / "normalized_frontier_holdout_closure.py",
+    "modulus_gap_grammar_probe.py": MODULUS_V2 / "modulus_gap_grammar_probe.py",
+    "rsa_challenge_exact_grammar_probe.py": MODULUS_V2 / "rsa_challenge_exact_grammar_probe.py",
+    "grammar_compatibility_catalog.py": GRAMMAR_V2 / "grammar_compatibility_catalog.py",
+    "grammar_cell_expander.py": GRAMMAR_V2 / "grammar_cell_expander.py",
+    "grammar_hidden_coordinate_scan.py": GRAMMAR_V2 / "grammar_hidden_coordinate_scan.py",
+    "grammar_recursive_target_catalog.py": GRAMMAR_V2 / "grammar_recursive_target_catalog.py",
+    "grammar_recursive_solved_surface_compare.py": GRAMMAR_V2 / "grammar_recursive_solved_surface_compare.py",
+    "grammar_inverse_word_exclusion_probe.py": GRAMMAR_V2 / "grammar_inverse_word_exclusion_probe.py",
+    "shor_order_entropy_probe.py": ORDER_V2 / "shor_order_entropy_probe.py",
+    "pedk.py": PEDK_V2 / "pedk.py",
+}
+
+
+DOC_PATHS = {
+    "AGENTS.md": EXPERIMENTS / "AGENTS.md",
+    "ALGORITHM.md": LIVE_V2 / "ALGORITHM.md",
+    "ARITHMETIC.md": LIVE_V2 / "ARITHMETIC.md",
+    "METRICS.md": LIVE_V2 / "METRICS.md",
+    "PGS_CERTIFICATE.md": LIVE_V2 / "PGS_CERTIFICATE.md",
+    "README.md": LIVE_V2 / "README.md",
+    "ladder_spec.json": DATA_V2 / "ladder_spec.json",
+    "audit_spec.json": DATA_V2 / "audit_spec.json",
+}
+
+
+class V2Route:
+    """Compatibility-free test router for the topic-owned RSA v2 cells."""
+
+    def __truediv__(self, part: str) -> Path:
+        routes = {
+            **SCRIPT_PATHS,
+            **DOC_PATHS,
+            "fixtures": DATA_V2 / "fixtures",
+            "output": LIVE_V2 / "output",
+        }
+        return routes[part]
+
+
+V2 = V2Route()
 SCRIPT_NAMES = (
     "build_ladder_fixtures.py",
     "generate_ladder_rung.py",
@@ -31,6 +95,7 @@ SCRIPT_NAMES = (
     "grammar_recursive_solved_surface_compare.py",
     "grammar_inverse_word_exclusion_probe.py",
     "shor_order_entropy_probe.py",
+    "pedk.py",
 )
 CASE_ID = "rsa_v2_40bit_static_001"
 N_VALUE = "1099507433251"
@@ -264,7 +329,7 @@ def test_runner_reports_certificate_pairs_without_false_resolution(tmp_path):
             "public_structure_found": True,
             "endpoint_class_lower": P_VALUE,
             "endpoint_class_upper": Q_VALUE,
-            "public_closure_status": "resolved_by_reciprocal_deadline_signature_correction",
+            "public_closure_status": "endpoint_class_by_reciprocal_deadline_signature_correction",
             "rule_id": RULE_ID,
         },
         {
@@ -275,7 +340,7 @@ def test_runner_reports_certificate_pairs_without_false_resolution(tmp_path):
             "public_structure_found": True,
             "endpoint_class_lower": "32046877",
             "endpoint_class_upper": "32060407",
-            "public_closure_status": "resolved_by_oriented_endpoint_chain_closure",
+            "public_closure_status": "endpoint_class_by_oriented_endpoint_chain_closure",
             "rule_id": RULE_ID,
         },
         {
@@ -286,20 +351,20 @@ def test_runner_reports_certificate_pairs_without_false_resolution(tmp_path):
             "public_structure_found": True,
             "endpoint_class_lower": "3221224297",
             "endpoint_class_upper": "3221276677",
-            "public_closure_status": "resolved_by_oriented_endpoint_chain_closure",
+            "public_closure_status": "endpoint_class_by_oriented_endpoint_chain_closure",
             "rule_id": RULE_ID,
         },
     ]
     for row in inference:
         assert {"p", "q", "endpoint_class_role"}.isdisjoint(row)
     assert summary["cases"][0]["public_closure_status"] == (
-        "resolved_by_reciprocal_deadline_signature_correction"
+        "endpoint_class_by_reciprocal_deadline_signature_correction"
     )
     assert summary["cases"][0]["corrected_lower_certificate_present"]
-    assert summary["cases"][1]["public_closure_status"] == "resolved_by_oriented_endpoint_chain_closure"
+    assert summary["cases"][1]["public_closure_status"] == "endpoint_class_by_oriented_endpoint_chain_closure"
     assert summary["cases"][1]["corrected_lower_certificate_present"]
     assert summary["cases"][1]["endpoint_chain_steps"] == 389
-    assert summary["cases"][2]["public_closure_status"] == "resolved_by_oriented_endpoint_chain_closure"
+    assert summary["cases"][2]["public_closure_status"] == "endpoint_class_by_oriented_endpoint_chain_closure"
     assert summary["cases"][2]["corrected_lower_certificate_present"]
     assert summary["cases"][2]["endpoint_chain_steps"] == 1205
     for row in summary["cases"]:
@@ -312,21 +377,81 @@ def test_runner_reports_certificate_pairs_without_false_resolution(tmp_path):
         assert "lower_pgs_endpoints_seen" not in row
     assert len(survivors) == len(summary["cases"])
     assert survivors[0]["public_closure_status"] == (
-        "resolved_by_reciprocal_deadline_signature_correction"
+        "endpoint_class_by_reciprocal_deadline_signature_correction"
     )
     assert survivors[0]["corrected_lower_endpoint"] == P_VALUE
     assert survivors[0]["corrected_upper_endpoint"] == Q_VALUE
     assert survivors[0]["transported_corrected_upper_endpoint"] == Q_VALUE
     assert survivors[0]["transported_corrected_lower_endpoint"] == P_VALUE
     assert survivors[0]["corrected_lower_reset_signature"] == survivors[0]["upper_reset_signature"]
-    assert survivors[1]["public_closure_status"] == "resolved_by_oriented_endpoint_chain_closure"
+    assert survivors[1]["public_closure_status"] == "endpoint_class_by_oriented_endpoint_chain_closure"
     assert survivors[1]["corrected_lower_endpoint"] == "32046877"
     assert survivors[1]["corrected_upper_endpoint"] == "32060407"
     assert survivors[1]["endpoint_chain_steps"] == 389
-    assert survivors[2]["public_closure_status"] == "resolved_by_oriented_endpoint_chain_closure"
+    assert survivors[2]["public_closure_status"] == "endpoint_class_by_oriented_endpoint_chain_closure"
     assert survivors[2]["corrected_lower_endpoint"] == "3221224297"
     assert survivors[2]["corrected_upper_endpoint"] == "3221276677"
     assert survivors[2]["endpoint_chain_steps"] == 1205
+
+
+def test_pedk_emits_public_endpoint_determinacy_without_factor_claims(tmp_path):
+    """As a reviewer, I want PEDK to emit only public endpoint determinacy."""
+    build_fixtures(tmp_path)
+    module = load_module(V2 / "pedk.py")
+    output_path = tmp_path / "pedk_rows.jsonl"
+
+    assert module.main(
+        [
+            "--cases",
+            str(tmp_path / "ladder_cases.jsonl"),
+            "--output",
+            str(output_path),
+        ]
+    ) == 0
+
+    rows = read_jsonl(output_path)
+    assert rows == [
+        {
+            "case_id": CASE_ID,
+            "bits": 40,
+            "N": N_VALUE,
+            "pedk_status": "public_endpoint_class_determined",
+            "public_structure_found": True,
+            "public_closure_status": "endpoint_class_by_reciprocal_deadline_signature_correction",
+            "endpoint_class_lower": P_VALUE,
+            "endpoint_class_upper": Q_VALUE,
+            "rule_id": "public_endpoint_determinacy_kernel_v0",
+        },
+        {
+            "case_id": CASE_50_ID,
+            "bits": 50,
+            "N": GENERATED_50_N,
+            "pedk_status": "public_endpoint_class_candidate",
+            "public_structure_found": True,
+            "public_closure_status": "endpoint_class_by_oriented_endpoint_chain_closure",
+            "endpoint_class_lower": "32046877",
+            "endpoint_class_upper": "32060407",
+            "rule_id": "public_endpoint_determinacy_kernel_v0",
+        },
+        {
+            "case_id": CASE_64_ID,
+            "bits": 64,
+            "N": GENERATED_64_N,
+            "pedk_status": "public_endpoint_class_candidate",
+            "public_structure_found": True,
+            "public_closure_status": "endpoint_class_by_oriented_endpoint_chain_closure",
+            "endpoint_class_lower": "3221224297",
+            "endpoint_class_upper": "3221276677",
+            "rule_id": "public_endpoint_determinacy_kernel_v0",
+        },
+    ]
+    for row in rows:
+        assert {"p", "q", "factor_found", "audit_integrity_status"}.isdisjoint(row)
+
+    source = (V2 / "pedk.py").read_text(encoding="utf-8")
+    forbidden = ("factor_found", "audit_factors", "shor_order", "phase_bits", "case.bits ==")
+    for token in forbidden:
+        assert token not in source
 
 
 def test_runner_measurement_mode_is_non_persistent(tmp_path, capsys):
@@ -396,7 +521,7 @@ def test_recursive_v2_runs_side_by_side_without_mutating_linear_outputs(tmp_path
             "public_structure_found": True,
             "endpoint_class_lower": P_VALUE,
             "endpoint_class_upper": Q_VALUE,
-            "public_closure_status": "resolved_by_oriented_endpoint_chain_closure",
+            "public_closure_status": "endpoint_class_by_oriented_endpoint_chain_closure",
             "implementation_label": "OECC_RECURSIVE_V2",
             "rule_id": "OECC_RECURSIVE_V2",
         },
@@ -408,7 +533,7 @@ def test_recursive_v2_runs_side_by_side_without_mutating_linear_outputs(tmp_path
             "public_structure_found": True,
             "endpoint_class_lower": "32046877",
             "endpoint_class_upper": "32060407",
-            "public_closure_status": "resolved_by_oriented_endpoint_chain_closure",
+            "public_closure_status": "endpoint_class_by_oriented_endpoint_chain_closure",
             "implementation_label": "OECC_RECURSIVE_V2",
             "rule_id": "OECC_RECURSIVE_V2",
         },
@@ -420,7 +545,7 @@ def test_recursive_v2_runs_side_by_side_without_mutating_linear_outputs(tmp_path
             "public_structure_found": True,
             "endpoint_class_lower": "3221224297",
             "endpoint_class_upper": "3221276677",
-            "public_closure_status": "resolved_by_oriented_endpoint_chain_closure",
+            "public_closure_status": "endpoint_class_by_oriented_endpoint_chain_closure",
             "implementation_label": "OECC_RECURSIVE_V2",
             "rule_id": "OECC_RECURSIVE_V2",
         },
@@ -468,7 +593,7 @@ def test_recursive_v2_preserves_48bit_baseline_endpoint_class(tmp_path):
             "public_structure_found": True,
             "endpoint_class_lower": "15802739",
             "endpoint_class_upper": "15812609",
-            "public_closure_status": "resolved_by_oriented_endpoint_chain_closure",
+            "public_closure_status": "endpoint_class_by_oriented_endpoint_chain_closure",
             "implementation_label": "OECC_RECURSIVE_V2",
             "rule_id": "OECC_RECURSIVE_V2",
         }
@@ -511,7 +636,7 @@ def test_minimal_typed_solver_resolves_40_and_refuses_50_without_false_endpoint_
             "rule_id": "minimal_typed_coordinate_solver_v0",
             "implementation_label": "MINIMAL_TYPED_SOLVER_V0",
             "endpoint_steps_examined": 1,
-            "status": "resolved",
+            "status": "public_endpoint_class_found",
             "endpoint_class_lower": P_VALUE,
             "endpoint_class_upper": Q_VALUE,
             "lower_coordinate_role": "anchor",
@@ -540,7 +665,7 @@ def test_minimal_typed_solver_resolves_40_and_refuses_50_without_false_endpoint_
     assert closures[1]["upper_coordinate_role"] == "reset_endpoint"
     assert summary == {
         "case_count": 2,
-        "resolved_count": 1,
+        "endpoint_class_count": 1,
         "rule_id": "minimal_typed_coordinate_solver_v0",
         "unresolved_count": 1,
     }
@@ -630,12 +755,12 @@ def test_deadline_signature_correction_resolves_public_toy_case(tmp_path):
             "public_structure_found": True,
             "endpoint_class_lower": TOY_DEADLINE_P,
             "endpoint_class_upper": TOY_DEADLINE_Q,
-            "public_closure_status": "resolved_by_reciprocal_deadline_signature_correction",
+            "public_closure_status": "endpoint_class_by_reciprocal_deadline_signature_correction",
             "rule_id": RULE_ID,
         }
     ]
     assert summary["cases"][0]["public_closure_status"] == (
-        "resolved_by_reciprocal_deadline_signature_correction"
+        "endpoint_class_by_reciprocal_deadline_signature_correction"
     )
     assert survivors[0]["corrected_lower_endpoint"] == TOY_DEADLINE_P
     assert survivors[0]["corrected_upper_endpoint"] == TOY_DEADLINE_Q
@@ -658,7 +783,7 @@ def test_reset_endpoint_crossing_orientation_stops_before_upper_certificate():
     survivor = module.pair_to_json(case, pair)
     inference = module.result_row(case, pair)
 
-    assert summary["public_closure_status"] == "resolved_by_oriented_endpoint_chain_closure"
+    assert summary["public_closure_status"] == "endpoint_class_by_oriented_endpoint_chain_closure"
     assert summary["upper_certificate_present"] is True
     assert summary["endpoint_chain_steps"] == 296
     assert survivor["lower_anchor"] == "15802769"
@@ -684,22 +809,22 @@ def test_oecc_linear_v1_baseline_endpoint_classes_are_preserved():
     ]
     expected = {
         CASE_ID: (
-            "resolved_by_reciprocal_deadline_signature_correction",
+            "endpoint_class_by_reciprocal_deadline_signature_correction",
             P_VALUE,
             Q_VALUE,
         ),
         "rsa_v2_48bit_ad_hoc_001": (
-            "resolved_by_oriented_endpoint_chain_closure",
+            "endpoint_class_by_oriented_endpoint_chain_closure",
             "15802739",
             "15812609",
         ),
         CASE_50_ID: (
-            "resolved_by_oriented_endpoint_chain_closure",
+            "endpoint_class_by_oriented_endpoint_chain_closure",
             "32046877",
             "32060407",
         ),
         CASE_64_ID: (
-            "resolved_by_oriented_endpoint_chain_closure",
+            "endpoint_class_by_oriented_endpoint_chain_closure",
             "3221224297",
             "3221276677",
         ),
@@ -778,6 +903,24 @@ def test_audit_passes_only_with_separate_factor_file(tmp_path):
         assert {"p", "q"}.isdisjoint(row)
 
 
+def test_audit_factor_found_means_at_least_one_factor():
+    """As a reviewer, I want factor_found to require one factor, not the pair."""
+    module = load_module(V2 / "audit_experiment.py")
+
+    row = module.audit_case(
+        {"case_id": CASE_ID, "bits": 40, "N": N_VALUE},
+        {"p": P_VALUE, "q": Q_VALUE},
+        {
+            "case_id": CASE_ID,
+            "endpoint_class_lower": P_VALUE,
+            "endpoint_class_upper": "1",
+        },
+    )
+
+    assert row["factor_found"] == "true"
+    assert row["inference_audit_status"] == "inference_audit_pass"
+
+
 def test_shor_order_entropy_probe_keeps_public_and_audit_states_separate(tmp_path):
     """As a reviewer, I want PGS/Shor collapse measured after public inference."""
     build_fixtures(tmp_path)
@@ -805,13 +948,13 @@ def test_shor_order_entropy_probe_keeps_public_and_audit_states_separate(tmp_pat
     assert public_rows[0]["pgs_upper_endpoint_class"] == Q_VALUE
     assert public_rows[1]["pgs_endpoint_class_present"]
     assert public_rows[1]["pgs_public_closure_status"] == (
-        "resolved_by_oriented_endpoint_chain_closure"
+        "endpoint_class_by_oriented_endpoint_chain_closure"
     )
     assert public_rows[1]["pgs_lower_endpoint_class"] == "32046877"
     assert public_rows[1]["pgs_upper_endpoint_class"] == "32060407"
     assert public_rows[2]["pgs_endpoint_class_present"]
     assert public_rows[2]["pgs_public_closure_status"] == (
-        "resolved_by_oriented_endpoint_chain_closure"
+        "endpoint_class_by_oriented_endpoint_chain_closure"
     )
     assert public_rows[2]["pgs_lower_endpoint_class"] == "3221224297"
     assert public_rows[2]["pgs_upper_endpoint_class"] == "3221276677"
@@ -904,12 +1047,12 @@ def test_runner_accepts_above_50_bit_case_through_global_interval_backend():
     pair = module.certificate_pair(case)
     row = module.result_row(case, pair)
 
-    assert pair.closure_status == "resolved_by_oriented_endpoint_chain_closure"
+    assert pair.closure_status == "endpoint_class_by_oriented_endpoint_chain_closure"
     assert pair.endpoint_chain_steps == 60
     assert row["status"] == "public_endpoint_class_found"
     assert row["endpoint_class_lower"] == "999998683"
     assert row["endpoint_class_upper"] == "1000001333"
-    assert row["public_closure_status"] == "resolved_by_oriented_endpoint_chain_closure"
+    assert row["public_closure_status"] == "endpoint_class_by_oriented_endpoint_chain_closure"
     assert {"p", "q", "endpoint_class_role"}.isdisjoint(row)
 
 
