@@ -40,6 +40,10 @@ RULE_ID = "reciprocal_pgs_certificate_pair_v2"
 GENERATED_50_N = "1027435935526951"
 GENERATED_50_P = "30729371"
 GENERATED_50_Q = "33434981"
+CASE_64_ID = "rsa_v2_64bit_static_001"
+GENERATED_64_N = "10376454699372036973"
+GENERATED_64_P = "3221225473"
+GENERATED_64_Q = "3221275501"
 TOY_DEADLINE_CASE_ID = "rsa_v2_toy_deadline_17bit_static_001"
 TOY_DEADLINE_N = "73903"
 TOY_DEADLINE_P = "263"
@@ -145,7 +149,12 @@ def test_ladder_spec_is_public_and_contains_no_audit_factors():
                 "case_id": CASE_50_ID,
                 "description": "50-bit deterministic RSA-like ladder rung generated outside the solver.",
                 "N": GENERATED_50_N,
-            }
+            },
+            {
+                "case_id": CASE_64_ID,
+                "description": "64-bit deterministic RSA-like ladder rung generated outside the solver.",
+                "N": GENERATED_64_N,
+            },
         ]
     }
     for row in payload["cases"]:
@@ -224,7 +233,13 @@ def test_public_case_contains_only_public_rung_data(tmp_path):
             "bits": 50,
             "description": "50-bit deterministic RSA-like ladder rung generated outside the solver.",
             "N": GENERATED_50_N,
-        }
+        },
+        {
+            "case_id": CASE_64_ID,
+            "bits": 64,
+            "description": "64-bit deterministic RSA-like ladder rung generated outside the solver.",
+            "N": GENERATED_64_N,
+        },
     ]
     for row in rows:
         assert {"p", "q", "radius", "balance_band"}.isdisjoint(row)
@@ -258,7 +273,17 @@ def test_runner_reports_certificate_pairs_without_false_resolution(tmp_path):
             "q": "32060407",
             "endpoint_class_role": "structural_endpoint_class",
             "rule_id": RULE_ID,
-        }
+        },
+        {
+            "case_id": CASE_64_ID,
+            "bits": 64,
+            "N": GENERATED_64_N,
+            "status": "resolved",
+            "p": "3221224297",
+            "q": "3221276677",
+            "endpoint_class_role": "structural_endpoint_class",
+            "rule_id": RULE_ID,
+        },
     ]
     assert summary["cases"][0]["closure_status"] == (
         "resolved_by_reciprocal_deadline_signature_correction"
@@ -267,6 +292,9 @@ def test_runner_reports_certificate_pairs_without_false_resolution(tmp_path):
     assert summary["cases"][1]["closure_status"] == "resolved_by_oriented_endpoint_chain_closure"
     assert summary["cases"][1]["corrected_lower_certificate_present"]
     assert summary["cases"][1]["endpoint_chain_steps"] == 389
+    assert summary["cases"][2]["closure_status"] == "resolved_by_oriented_endpoint_chain_closure"
+    assert summary["cases"][2]["corrected_lower_certificate_present"]
+    assert summary["cases"][2]["endpoint_chain_steps"] == 1205
     for row in summary["cases"]:
         assert row["lower_certificate_present"]
         assert "radius" not in row
@@ -288,6 +316,10 @@ def test_runner_reports_certificate_pairs_without_false_resolution(tmp_path):
     assert survivors[1]["corrected_lower_endpoint"] == "32046877"
     assert survivors[1]["corrected_upper_endpoint"] == "32060407"
     assert survivors[1]["endpoint_chain_steps"] == 389
+    assert survivors[2]["closure_status"] == "resolved_by_oriented_endpoint_chain_closure"
+    assert survivors[2]["corrected_lower_endpoint"] == "3221224297"
+    assert survivors[2]["corrected_upper_endpoint"] == "3221276677"
+    assert survivors[2]["endpoint_chain_steps"] == 1205
 
 
 def test_runner_measurement_mode_is_non_persistent(tmp_path, capsys):
@@ -313,9 +345,10 @@ def test_runner_measurement_mode_is_non_persistent(tmp_path, capsys):
         "summary.json",
         "survivor_rows.jsonl",
     ]
-    assert [row["bits"] for row in stdout["baseline_cost"]] == [40, 50]
+    assert [row["bits"] for row in stdout["baseline_cost"]] == [40, 50, 64]
     assert stdout["baseline_cost"][0]["endpoint_chain_steps"] == 0
     assert stdout["baseline_cost"][1]["endpoint_chain_steps"] == 389
+    assert stdout["baseline_cost"][2]["endpoint_chain_steps"] == 1205
     for row in stdout["baseline_cost"]:
         assert row["cache_lookups"] >= row["cache_misses"]
         assert 0 <= row["cache_hit_rate"] <= 1
@@ -372,12 +405,26 @@ def test_recursive_v2_runs_side_by_side_without_mutating_linear_outputs(tmp_path
             "implementation_label": "OECC_RECURSIVE_V2",
             "rule_id": "OECC_RECURSIVE_V2",
         },
+        {
+            "case_id": CASE_64_ID,
+            "bits": 64,
+            "N": GENERATED_64_N,
+            "status": "resolved",
+            "p": "3221224297",
+            "q": "3221276677",
+            "endpoint_class_role": "structural_endpoint_class",
+            "ladder_rung_resolved": True,
+            "implementation_label": "OECC_RECURSIVE_V2",
+            "rule_id": "OECC_RECURSIVE_V2",
+        },
     ]
     diagnostics = {row["bits"]: row for row in read_jsonl(recursive_output / "recursive_diagnostic_rows.jsonl")}
     summary = json.loads((recursive_output / "summary.json").read_text(encoding="utf-8"))
     pairs = read_jsonl(recursive_output / "recursive_pair_rows.jsonl")
     assert diagnostics[40]["recursion_steps"] == 0
     assert diagnostics[50]["recursion_steps"] == 322
+    assert diagnostics[64]["recursion_steps"] == 987
+    assert diagnostics[64]["visited_anchor_count"] == 988
     assert all(row["ladder_rung_resolved"] for row in diagnostics.values())
     assert all(row["ladder_rung_resolved"] for row in summary["cases"])
     assert all(row["ladder_rung_resolved"] for row in pairs)
@@ -441,6 +488,7 @@ def test_certificate_rows_are_derived_before_audit(tmp_path):
     assert rows[0]["corrected_upper_endpoint"] == Q_VALUE
     assert rows[0]["corrected_lower_reset_signature"] == rows[0]["upper_reset_signature"]
     assert rows[1]["corrected_lower_endpoint"] == "32046877"
+    assert rows[2]["corrected_lower_endpoint"] == "3221224297"
 
 
 def test_deadline_signature_correction_resolves_public_toy_case(tmp_path):
@@ -525,6 +573,7 @@ def test_oecc_linear_v1_baseline_endpoint_classes_are_preserved():
         module.LadderCase(CASE_ID, 40, module.gmpy2.mpz(N_VALUE)),
         module.LadderCase("rsa_v2_48bit_ad_hoc_001", 48, module.gmpy2.mpz(AD_HOC_48_N)),
         module.LadderCase(CASE_50_ID, 50, module.gmpy2.mpz(GENERATED_50_N)),
+        module.LadderCase(CASE_64_ID, 64, module.gmpy2.mpz(GENERATED_64_N)),
     ]
     expected = {
         CASE_ID: (
@@ -543,6 +592,12 @@ def test_oecc_linear_v1_baseline_endpoint_classes_are_preserved():
             "resolved_by_oriented_endpoint_chain_closure",
             "32046877",
             "32060407",
+            "structural_endpoint_class",
+        ),
+        CASE_64_ID: (
+            "resolved_by_oriented_endpoint_chain_closure",
+            "3221224297",
+            "3221276677",
             "structural_endpoint_class",
         ),
     }
@@ -594,7 +649,14 @@ def test_audit_passes_only_with_separate_factor_file(tmp_path):
             "N": GENERATED_50_N,
             "audit_integrity_status": "integrity_pass",
             "inference_audit_status": "inference_audit_fail",
-        }
+        },
+        {
+            "case_id": CASE_64_ID,
+            "bits": "64",
+            "N": GENERATED_64_N,
+            "audit_integrity_status": "integrity_pass",
+            "inference_audit_status": "inference_audit_fail",
+        },
     ]
     for row in rows:
         assert {"p", "q"}.isdisjoint(row)
@@ -631,6 +693,12 @@ def test_shor_order_entropy_probe_keeps_public_and_audit_states_separate(tmp_pat
     )
     assert public_rows[1]["pgs_lower_endpoint_class"] == "32046877"
     assert public_rows[1]["pgs_upper_endpoint_class"] == "32060407"
+    assert public_rows[2]["pgs_endpoint_class_present"]
+    assert public_rows[2]["pgs_public_closure_status"] == (
+        "resolved_by_oriented_endpoint_chain_closure"
+    )
+    assert public_rows[2]["pgs_lower_endpoint_class"] == "3221224297"
+    assert public_rows[2]["pgs_upper_endpoint_class"] == "3221276677"
     for row in public_rows:
         assert {"p", "q", "actual_order_by_base", "audit_endpoint_match"}.isdisjoint(row)
 
@@ -641,6 +709,9 @@ def test_shor_order_entropy_probe_keeps_public_and_audit_states_separate(tmp_pat
     assert not audit_rows[1]["audit_endpoint_match"]
     assert audit_rows[1]["residual_phase_bits_after_pgs"] == 100
     assert audit_rows[1]["phase_bits_removed_by_pgs"] == 0
+    assert not audit_rows[2]["audit_endpoint_match"]
+    assert audit_rows[2]["residual_phase_bits_after_pgs"] == 128
+    assert audit_rows[2]["phase_bits_removed_by_pgs"] == 0
     assert summary["status"] == "mixed_public_pgs_collapse"
     assert summary["order_finding_removed_count"] == 1
     assert "<svg" in svg
@@ -669,6 +740,8 @@ def test_runner_source_has_no_forbidden_constructs_or_hidden_endpoints():
         "CHAMBER_RADIUS",
         P_VALUE,
         Q_VALUE,
+        GENERATED_64_P,
+        GENERATED_64_Q,
     )
     source = (V2 / "run_experiment.py").read_text(encoding="utf-8")
     for token in forbidden:
@@ -812,7 +885,7 @@ def test_debt_probe_emits_public_sidecar_rows_without_inference_mutation(tmp_pat
     rows = read_jsonl(debt_dir / "debt_rows.jsonl")
     summary = json.loads((debt_dir / "summary.json").read_text(encoding="utf-8"))
     assert summary["rule_id"] == "transported_exclusion_debt_v1"
-    assert summary["row_count"] == 8
+    assert summary["row_count"] == 12
     assert summary["measured_rows_per_case"] == 4
     assert {
         "fixed_cycle_count",
@@ -971,6 +1044,8 @@ def test_debt_probe_source_has_no_forbidden_inference_constructs():
         Q_VALUE,
         GENERATED_50_P,
         GENERATED_50_Q,
+        GENERATED_64_P,
+        GENERATED_64_Q,
     )
     source = (V2 / "transported_exclusion_debt_probe.py").read_text(encoding="utf-8")
     for token in forbidden:
@@ -999,8 +1074,8 @@ def test_modulus_gap_grammar_probe_keeps_public_and_target_rows_separate(tmp_pat
     summary = json.loads((output_dir / "summary.json").read_text(encoding="utf-8"))
 
     assert summary["rule_id"] == "modulus_gap_grammar_correlation_v1"
-    assert summary["public_case_count"] == 2
-    assert summary["target_side_row_count"] == 4
+    assert summary["public_case_count"] == 3
+    assert summary["target_side_row_count"] == 6
     assert summary["distinct_transition_count"] >= 1
     for row in public_rows:
         assert {"p", "q", "target_side", "target_value"}.isdisjoint(row)
@@ -1193,6 +1268,8 @@ def test_toy_normalized_frontier_closure_sweep_has_no_forbidden_inference_constr
         Q_VALUE,
         GENERATED_50_P,
         GENERATED_50_Q,
+        GENERATED_64_P,
+        GENERATED_64_Q,
     )
     for token in forbidden:
         assert token not in source
