@@ -211,6 +211,9 @@ OECC_LINEAR_V1
 See `ORIENTED_ENDPOINT_CHAIN_BASELINE.md` for the baseline contract and the
 `OECC_RECURSIVE_V2` pseudocode target.
 
+Use `OECC_IMPROVEMENT_CHECKLIST.md` to track efficiency, scalability, law
+clarity, and candidate-law experiments after `OECC_LINEAR_V1`.
+
 ## Invalid Rules
 
 Do not restore these as live selection rules:
@@ -224,24 +227,15 @@ Do not restore these as live selection rules:
 
 ## Arithmetic Boundary
 
-The current interval-measurement backend is small-regime only.
-
-Coordinates are carried as `gmpy2.mpz`, but divisor-count interval measurement
-still calls the repository's current exact interval helper. The official runner
-guards this backend boundary with:
+Coordinates are carried as `gmpy2.mpz`, and divisor-count interval measurement
+enters through the shared exact interval helper:
 
 ```text
-SMALL_REGIME_MAX_BITS = 50
+divisor_counts_segment(lo, hi)
 ```
 
-Cases above that limit return:
-
-```text
-gmp_interval_backend_required
-```
-
-Do not describe the current runner as RSA-260-ready or GMP-only at the interval
-backend level.
+The RSA v2 runner does not carry a modulus-bit cutoff. Backend capability is a
+property of the shared interval engine, not an RSA-local branch.
 
 ## Rung Extension Workflow
 

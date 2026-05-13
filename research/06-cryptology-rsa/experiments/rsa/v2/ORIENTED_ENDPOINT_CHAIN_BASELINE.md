@@ -111,8 +111,7 @@ Current scaling blockers:
 - repeated `previous_public_endpoint_before(...)` calls;
 - repeated exact `divisor_counts_segment(...)` reconstruction;
 - no production certificate cache;
-- small-regime `mpz_to_int(...)` conversion;
-- `SMALL_REGIME_MAX_BITS = 50`;
+- Python `int` conversion before shared interval measurement;
 - first structural closure stops the run even when downstream audit says it is
   not the exact factor pair.
 
