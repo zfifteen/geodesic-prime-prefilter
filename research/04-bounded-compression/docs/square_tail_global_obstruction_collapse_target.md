@@ -143,6 +143,8 @@ actual descent and in the local CRT singleton-carrier model.
 
 This target is not direct back-cover by child closing primes. On the measured
 surfaces, child closing primes do not land inside the parent cutoff window.
+Equivalently, a child prime-valued rough row cannot be treated as an induced
+smaller factor of a parent row without proving a new global mechanism.
 
 This target is not a local CRT contradiction. Full-cutoff local CRT obstruction
 models exist.
@@ -284,6 +286,13 @@ Grok response `f0953ef5-1ed9-990d-a52a-4f9bd098aad5` agreed that the
 selection-free strengthening is cleaner and sufficient: descent on all
 positive-row prime roots avoids the selected-square child-state obligation,
 with `3`, `5`, and `7` handled by the finite base above.
+
+Grok response `7088e0c9-85bf-8d4f-0368-b051b1c099b0` proposed using child
+prime-valued rough rows to force a smaller parent factor. That route is not
+adopted here because it reduces to direct child-prime back-cover, already
+invalidated by the parent-residue audit. The response also assumed one
+prime-valued rough defect per child; the standing-record descent artifact has
+`62` children with prime-valued rough-defect counts ranging from `3` to `21`.
 
 The already-invalidated local routes are recorded in:
 
