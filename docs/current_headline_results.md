@@ -42,3 +42,11 @@
   before Miller-Rabin and produced `2.09x` and `2.82x` end-to-end deterministic
   RSA key-generation speedups on the curated `2048`-bit and `4096`-bit corpora.
   See [research/06-cryptology-rsa/legacy-prefilter/docs/benchmarks.md](../research/06-cryptology-rsa/legacy-prefilter/docs/benchmarks.md).
+- **The PGS-Shor order entropy sidecar records a measured order-finding
+  collapse on the resolved `40`-bit RSA v2 ladder rung.** Public PGS reciprocal
+  endpoint closure supplies the endpoint class before Shor order finding; audit
+  then confirms the fixed-base order vector matches the actual order vector.
+  The measured phase burden is `80` baseline bits to `0` residual bits on the
+  `40`-bit row, while the unresolved `50`-bit row remains `100` baseline bits
+  to `100` residual bits. This is measured sidecar evidence, not a theorem.
+  See [research/06-cryptology-rsa/docs/shor_order_entropy/index.html](../research/06-cryptology-rsa/docs/shor_order_entropy/index.html).

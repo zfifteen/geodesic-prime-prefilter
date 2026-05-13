@@ -10,6 +10,7 @@ Primary homes:
 - `research/06-cryptology-rsa/experiments/rsa/v2/`
 - `research/06-cryptology-rsa/experiments/rsa/v3/`
 - `research/06-cryptology-rsa/docs/cryptology/`
+- `research/06-cryptology-rsa/docs/shor_order_entropy/`
 - `research/06-cryptology-rsa/docs/semiprime_branch/`
 - `research/06-cryptology-rsa/output/semiprime_branch/`
 - `research/06-cryptology-rsa/output/batch_modular_factor_closure_probe/`
@@ -34,11 +35,23 @@ No RSA-scale resolver theorem is claimed in this chapter.
 
 ## Measured Evidence
 
-RSA v2 currently records certificate-pair probes whose output summary remains
-unresolved by the certificate pair:
+The PGS-Shor order entropy sidecar records a measured collapse on the resolved
+40-bit RSA v2 ladder rung:
 
 ```text
-closure_status: unresolved_by_certificate_pair_not_closed
+rsa_v2_40bit_static_001: 80 baseline phase bits -> 0 residual phase bits
+rsa_v2_50bit_static_001: 100 baseline phase bits -> 100 residual phase bits
+```
+
+The 40-bit row is measured and audit-confirmed after public PGS endpoint-class
+inference. The 50-bit row remains unresolved and preserves the ordinary Shor
+burden. See `docs/shor_order_entropy/index.html`.
+
+RSA v2 records mixed certificate-pair state on the committed ladder:
+
+```text
+rsa_v2_40bit_static_001: resolved_by_reciprocal_deadline_signature_correction
+rsa_v2_50bit_static_001: unresolved_by_certificate_pair_not_closed
 ```
 
 Semiprime backward-law surfaces live under `research/06-cryptology-rsa/output/semiprime_branch/`. They are
@@ -61,12 +74,19 @@ factorization result by this reorganization.
 ## Unresolved State
 
 The RSA v2 certificate-pair state remains unresolved where the artifacts say
-it is unresolved. Scaling remains blocked unless a PGS-native invariant closes
-the survivor state without resolver logic.
+it is unresolved. The 50-bit order-entropy row remains unresolved. Scaling
+remains blocked unless a PGS-native invariant closes the survivor state without
+resolver logic.
 
 ## Reproduce
 
-Run the focused RSA validation command listed in Audit Status.
+Run the focused RSA validation command listed in Audit Status. For the
+PGS-Shor order entropy sidecar, run:
+
+```text
+python3 research/06-cryptology-rsa/experiments/rsa/v2/shor_order_entropy_probe.py
+python3 -m pytest research/06-cryptology-rsa/tests/test_rsa_v2_scripts.py -q
+```
 
 ## Provenance
 

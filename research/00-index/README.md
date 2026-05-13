@@ -23,6 +23,7 @@ for each chapter.
 | `04-bounded-compression` | Dynamic cutoff, bounded compression, square-branch pressure | mapped and validated |
 | `05-state-budget` | State-budget carriers, `d4_count`, and hidden-state probes | mapped and validated |
 | `06-cryptology-rsa` | RSA v2/v3, modulus-link, semiprime, and certificate work | mapped and validated |
+| `06-cryptology-rsa/docs/shor_order_entropy` | PGS-Shor order entropy sidecar finding | topic added |
 | `07-oeis` | OEIS candidate sequence workflow and submission drafts | workflow initialized |
 | `08-collatz` | Collatz-adjacent PGS experiments | migrated and validated |
 | `09-exponents` | Mersenne/exponent-wall PGS experiments | migrated and validated |

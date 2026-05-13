@@ -1,0 +1,1047 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prime Pattern Plot Generator</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --page: #080c10;
+      --surface: #10161d;
+      --surface-2: #151d26;
+      --line: #253140;
+      --line-strong: #344353;
+      --text: #f3f0e8;
+      --muted: #9da9b6;
+      --prime: #8fd3ff;
+      --square: #ffe66d;
+      --cube: #ffb703;
+      --even-semi: #43d4c8;
+      --odd-semi: #ff6468;
+      --higher-even: #6d8cff;
+      --higher-odd: #b76aff;
+      --accent: #7fd8ff;
+      --shadow: rgba(0, 0, 0, 0.32);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--page);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+
+    body {
+      padding: 18px;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    .app {
+      max-width: 1780px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 18px;
+    }
+
+    aside,
+    .topbar,
+    .plot-card,
+    .focus-panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 36px var(--shadow);
+    }
+
+    aside {
+      min-height: calc(100vh - 36px);
+      border-radius: 8px;
+      padding: 18px;
+      position: sticky;
+      top: 18px;
+      align-self: start;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.65rem, 2.6vw, 3.15rem);
+      line-height: 1.02;
+      font-weight: 790;
+    }
+
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.08;
+    }
+
+    h2 {
+      font-size: 1.15rem;
+      font-weight: 760;
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 760;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .brand {
+      display: grid;
+      gap: 8px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand-title {
+      font-size: 1.25rem;
+      line-height: 1.05;
+      font-weight: 800;
+    }
+
+    .brand-copy {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.45;
+    }
+
+    .control-block {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .control-block:last-child {
+      border-bottom: 0;
+    }
+
+    .control-title {
+      margin-bottom: 10px;
+      color: #dbe4ed;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .select,
+    .range-row {
+      width: 100%;
+    }
+
+    select {
+      width: 100%;
+      height: 38px;
+      border: 1px solid var(--line-strong);
+      border-radius: 6px;
+      color: var(--text);
+      background: #0c1117;
+      padding: 0 10px;
+      outline: none;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent);
+    }
+
+    .range-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .toggle-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .toggle {
+      display: grid;
+      grid-template-columns: 18px 1fr auto;
+      gap: 10px;
+      align-items: center;
+      min-height: 32px;
+      color: #d7dee7;
+      font-size: 0.9rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .toggle input {
+      inline-size: 16px;
+      block-size: 16px;
+      margin: 0;
+      accent-color: var(--accent);
+    }
+
+    .swatch {
+      width: 18px;
+      height: 12px;
+      border-radius: 2px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .workspace {
+      min-width: 0;
+      display: grid;
+      gap: 18px;
+    }
+
+    .topbar {
+      min-height: 118px;
+      border-radius: 8px;
+      padding: 22px 24px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .top-copy {
+      display: grid;
+      gap: 10px;
+    }
+
+    .top-copy p {
+      margin: 0;
+      max-width: 900px;
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.45;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(120px, 1fr));
+      gap: 10px;
+      min-width: 460px;
+    }
+
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #0c1117;
+      padding: 12px;
+    }
+
+    .stat-value {
+      font-size: 1.32rem;
+      line-height: 1;
+      font-weight: 820;
+      color: #ffffff;
+    }
+
+    .stat-label {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 720;
+      text-transform: uppercase;
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .action-button {
+      min-height: 36px;
+      border: 1px solid var(--line-strong);
+      border-radius: 6px;
+      background: #0c1117;
+      color: #dbe4ed;
+      padding: 0 12px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .action-button:hover {
+      border-color: #536779;
+      background: #121922;
+    }
+
+    .focus-panel {
+      border-radius: 8px;
+      padding: 18px;
+      display: grid;
+      grid-template-columns: minmax(420px, 1.1fr) minmax(340px, 0.9fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .plot-card {
+      min-width: 0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .plot-card header {
+      min-height: 66px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+      padding: 14px 16px 10px;
+      border-bottom: 1px solid var(--line);
+      background: var(--surface-2);
+    }
+
+    .plot-title {
+      display: grid;
+      gap: 4px;
+    }
+
+    .plot-title p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.76rem;
+      line-height: 1.35;
+    }
+
+    .plot-mode {
+      color: var(--accent);
+      white-space: nowrap;
+      font-size: 0.75rem;
+      font-weight: 780;
+      text-transform: uppercase;
+    }
+
+    canvas {
+      width: 100%;
+      display: block;
+      background: #0b1016;
+    }
+
+    .focus-canvas {
+      height: min(62vh, 740px);
+      min-height: 520px;
+    }
+
+    .library {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .library canvas {
+      height: 240px;
+    }
+
+    .notes {
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+
+    .notes-panel {
+      background: #0c1117;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .notes-panel p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.48;
+    }
+
+    .type-table {
+      display: grid;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .type-row {
+      display: grid;
+      grid-template-columns: 16px 1fr auto;
+      align-items: center;
+      gap: 8px;
+      color: #d7dee7;
+      font-size: 0.86rem;
+    }
+
+    .type-row .count {
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    @media (max-width: 1180px) {
+      .app {
+        grid-template-columns: 1fr;
+      }
+
+      aside {
+        position: static;
+        min-height: auto;
+      }
+
+      .topbar,
+      .focus-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        min-width: 0;
+      }
+
+      .library {
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      body {
+        padding: 12px;
+      }
+
+      .library {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .focus-canvas {
+        min-height: 360px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <aside>
+      <div class="brand">
+        <div class="brand-title">Prime Pattern Plot Generator</div>
+        <p class="brand-copy">Conventional prime plots share one data layer with GWR-selected gap interiors.</p>
+      </div>
+
+      <section class="control-block">
+        <div class="control-title">Plot Type</div>
+        <select id="focusPlot" class="select">
+          <option value="ulam">Ulam square spiral</option>
+          <option value="sacks">Sacks spiral</option>
+          <option value="polar">Polar prime spiral</option>
+          <option value="raster">Integer raster</option>
+          <option value="gapComb">Prime gap comb</option>
+          <option value="wheel">Mod 30 wheel</option>
+          <option value="counting">Prime counting staircase</option>
+          <option value="residue">Residue matrix</option>
+        </select>
+      </section>
+
+      <section class="control-block">
+        <div class="control-title">Range</div>
+        <input id="limitRange" type="range" min="61" max="181" step="10" value="151">
+        <div class="range-meta">
+          <span>spiral side</span>
+          <span id="sideValue">151</span>
+        </div>
+      </section>
+
+      <section class="control-block">
+        <div class="control-title">Layers</div>
+        <div class="toggle-list">
+          <label class="toggle">
+            <input id="showPrimes" type="checkbox" checked>
+            <span>Prime endpoints</span>
+            <span class="swatch" style="background: var(--prime)"></span>
+          </label>
+          <label class="toggle">
+            <input id="showAllGwr" type="checkbox" checked>
+            <span>All GWR winners</span>
+            <span class="swatch" style="background: var(--accent)"></span>
+          </label>
+        </div>
+      </section>
+
+      <section class="control-block">
+        <div class="control-title">GWR Types</div>
+        <div id="typeToggles" class="toggle-list"></div>
+      </section>
+    </aside>
+
+    <section class="workspace">
+      <header class="topbar">
+        <div class="top-copy">
+          <h1>Prime plots with GWR layers</h1>
+          <p>Use familiar prime-pattern views as the coordinate system, then switch the visible signal from prime endpoints to the selected composite winner inside each prime-gap chamber.</p>
+          <div class="top-actions">
+            <button id="resetLayers" class="action-button" type="button">Reset layers</button>
+            <button id="exportPlot" class="action-button" type="button">Export active plot</button>
+          </div>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <div id="statLimit" class="stat-value">22801</div>
+            <div class="stat-label">integers</div>
+          </div>
+          <div class="stat">
+            <div id="statPrimes" class="stat-value">0</div>
+            <div class="stat-label">prime endpoints</div>
+          </div>
+          <div class="stat">
+            <div id="statWinners" class="stat-value">0</div>
+            <div class="stat-label">GWR winners</div>
+          </div>
+        </div>
+      </header>
+
+      <section class="focus-panel">
+        <article class="plot-card">
+          <header>
+            <div class="plot-title">
+              <h2 id="focusTitle">Ulam square spiral</h2>
+              <p id="focusDescription">The familiar square integer spiral, with primes and GWR winners sharing coordinates.</p>
+            </div>
+            <div class="plot-mode">Interactive Preview</div>
+          </header>
+          <canvas id="focusCanvas" class="focus-canvas"></canvas>
+        </article>
+
+        <div class="notes">
+          <div class="notes-panel">
+            <h2>Plot Contract</h2>
+            <p>The plot geometry stays fixed. Toggles change which arithmetic layer is visible: conventional primes, all selected GWR interiors, or one winner family at a time.</p>
+          </div>
+          <div class="notes-panel">
+            <h2>Current Layer Counts</h2>
+            <div id="typeCounts" class="type-table"></div>
+          </div>
+          <div class="notes-panel">
+            <h2>Typical Prime Pattern Views</h2>
+            <p>The gallery below includes Ulam, Sacks, polar spiral, raster, prime-gap comb, modular wheel, prime-counting staircase, and residue matrix views.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="library" id="plotLibrary"></section>
+    </section>
+  </main>
+
+  <script>
+    const TYPES = [
+      { id: "prime_square", label: "Prime square", color: "#ffe66d" },
+      { id: "prime_cube", label: "Prime cube", color: "#ffb703" },
+      { id: "even_semiprime", label: "Even semiprime", color: "#43d4c8" },
+      { id: "odd_semiprime", label: "Odd semiprime", color: "#ff6468" },
+      { id: "higher_even", label: "Higher-divisor even", color: "#6d8cff" },
+      { id: "higher_odd", label: "Higher-divisor odd", color: "#b76aff" }
+    ];
+
+    const PLOTS = [
+      ["ulam", "Ulam square spiral", "Integer cells on the classic square spiral."],
+      ["sacks", "Sacks spiral", "Integers on a square-root spiral."],
+      ["polar", "Polar prime spiral", "A compact polar view of residue and radius."],
+      ["raster", "Integer raster", "Sequential integers wrapped into rows."],
+      ["gapComb", "Prime gap comb", "Gap width as the visible vertical signal."],
+      ["wheel", "Mod 30 wheel", "Residue lanes around the wheel."],
+      ["counting", "Prime counting staircase", "Prime endpoint accumulation over n."],
+      ["residue", "Residue matrix", "Residue columns against integer bands."]
+    ];
+
+    const state = {
+      side: 151,
+      data: null,
+      typeVisible: Object.fromEntries(TYPES.map((type) => [type.id, true]))
+    };
+
+    const focusPlot = document.getElementById("focusPlot");
+    const limitRange = document.getElementById("limitRange");
+    const sideValue = document.getElementById("sideValue");
+    const showPrimes = document.getElementById("showPrimes");
+    const showAllGwr = document.getElementById("showAllGwr");
+    const focusCanvas = document.getElementById("focusCanvas");
+    const focusTitle = document.getElementById("focusTitle");
+    const focusDescription = document.getElementById("focusDescription");
+    const plotLibrary = document.getElementById("plotLibrary");
+    const typeToggles = document.getElementById("typeToggles");
+    const typeCounts = document.getElementById("typeCounts");
+    const resetLayers = document.getElementById("resetLayers");
+    const exportPlot = document.getElementById("exportPlot");
+
+    function primeFlags(limit) {
+      const flags = Array(limit + 1).fill(true);
+      flags[0] = false;
+      flags[1] = false;
+      for (let n = 2; n * n <= limit; n += 1) {
+        if (!flags[n]) continue;
+        for (let multiple = n * n; multiple <= limit; multiple += n) {
+          flags[multiple] = false;
+        }
+      }
+      return flags;
+    }
+
+    function divisorCounts(limit) {
+      const counts = Array(limit + 1).fill(0);
+      for (let d = 1; d <= limit; d += 1) {
+        for (let multiple = d; multiple <= limit; multiple += d) {
+          counts[multiple] += 1;
+        }
+      }
+      return counts;
+    }
+
+    function primeCubeRoot(n, prime) {
+      const root = Math.round(Math.cbrt(n));
+      for (let candidate = Math.max(2, root - 2); candidate <= root + 2; candidate += 1) {
+        if (candidate * candidate * candidate === n && prime[candidate]) return candidate;
+      }
+      return null;
+    }
+
+    function primeFactorTotal(n) {
+      let remaining = n;
+      let factors = 0;
+      let d = 2;
+      while (d * d <= remaining) {
+        while (remaining % d === 0) {
+          factors += 1;
+          remaining = Math.floor(remaining / d);
+        }
+        d += d === 2 ? 1 : 2;
+      }
+      if (remaining > 1) factors += 1;
+      return factors;
+    }
+
+    function winnerType(n, tau, prime) {
+      if (tau === 3) return "prime_square";
+      if (tau === 4 && primeCubeRoot(n, prime) !== null) return "prime_cube";
+      if (tau === 4 && primeFactorTotal(n) === 2) {
+        return n % 2 === 0 ? "even_semiprime" : "odd_semiprime";
+      }
+      return n % 2 === 0 ? "higher_even" : "higher_odd";
+    }
+
+    function spiralXY(n) {
+      if (n === 1) return [0, 0];
+      let layer = 0;
+      while ((2 * layer + 1) ** 2 < n) layer += 1;
+      const side = 2 * layer;
+      const maximum = (2 * layer + 1) ** 2;
+      const offset = maximum - n;
+      if (offset < side) return [layer - offset, -layer];
+      if (offset < 2 * side) return [-layer, -layer + (offset - side)];
+      if (offset < 3 * side) return [-layer + (offset - 2 * side), layer];
+      return [layer, layer - (offset - 3 * side)];
+    }
+
+    function computeData(side) {
+      const limit = side * side;
+      const prime = primeFlags(limit);
+      const tau = divisorCounts(limit);
+      const primes = [];
+      for (let n = 2; n <= limit; n += 1) {
+        if (prime[n]) primes.push(n);
+      }
+
+      const winners = [];
+      const winnerByN = new Map();
+      for (let i = 0; i < primes.length - 1; i += 1) {
+        const p = primes[i];
+        const q = primes[i + 1];
+        if (p + 1 >= q) continue;
+        let minTau = Infinity;
+        let winner = null;
+        for (let n = p + 1; n < q; n += 1) {
+          if (tau[n] < minTau) {
+            minTau = tau[n];
+            winner = n;
+          }
+        }
+        const type = winnerType(winner, minTau, prime);
+        const row = { p, q, gap: q - p, winner, tau: minTau, type };
+        winners.push(row);
+        winnerByN.set(winner, row);
+      }
+      return { limit, side, prime, tau, primes, winners, winnerByN };
+    }
+
+    function activeTypes() {
+      return new Set(TYPES.filter((type) => state.typeVisible[type.id]).map((type) => type.id));
+    }
+
+    function prepareCanvas(canvas) {
+      const rect = canvas.getBoundingClientRect();
+      const ratio = window.devicePixelRatio || 1;
+      const width = Math.max(320, Math.floor(rect.width * ratio));
+      const height = Math.max(240, Math.floor(rect.height * ratio));
+      if (canvas.width !== width || canvas.height !== height) {
+        canvas.width = width;
+        canvas.height = height;
+      }
+      const ctx = canvas.getContext("2d");
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = "#0b1016";
+      ctx.fillRect(0, 0, width, height);
+      return { ctx, width, height, ratio };
+    }
+
+    function drawPoint(ctx, x, y, size, color, alpha = 1) {
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = color;
+      ctx.fillRect(Math.round(x - size / 2), Math.round(y - size / 2), size, size);
+      ctx.globalAlpha = 1;
+    }
+
+    function drawGridPlot(canvas, mode) {
+      const { ctx, width, height } = prepareCanvas(canvas);
+      const data = state.data;
+      const margin = Math.max(16, Math.min(width, height) * 0.035);
+      const usable = Math.min(width, height) - margin * 2;
+      const ox = (width - usable) / 2;
+      const oy = (height - usable) / 2;
+      const side = data.side;
+      const cell = usable / side;
+      const half = Math.floor(side / 2);
+      const types = activeTypes();
+
+      if (showPrimes.checked) {
+        ctx.fillStyle = "#6bbce9";
+        for (const n of data.primes) {
+          const [sx, sy] = mode === "raster"
+            ? [(n - 1) % side - half, Math.floor((n - 1) / side) - half]
+            : spiralXY(n);
+          ctx.fillRect(ox + (sx + half) * cell, oy + (half - sy) * cell, Math.max(1.4, cell * 0.78), Math.max(1.4, cell * 0.78));
+        }
+      }
+
+      for (const row of data.winners) {
+        if (!types.has(row.type)) continue;
+        const type = TYPES.find((item) => item.id === row.type);
+        const [sx, sy] = mode === "raster"
+          ? [(row.winner - 1) % side - half, Math.floor((row.winner - 1) / side) - half]
+          : spiralXY(row.winner);
+        ctx.fillStyle = type.color;
+        ctx.fillRect(ox + (sx + half) * cell, oy + (half - sy) * cell, Math.max(1.4, cell * 0.86), Math.max(1.4, cell * 0.86));
+      }
+    }
+
+    function drawSpiral(canvas, variant) {
+      const { ctx, width, height } = prepareCanvas(canvas);
+      const data = state.data;
+      const centerX = width / 2;
+      const centerY = height / 2;
+      const radiusMax = Math.min(width, height) * 0.46;
+      const types = activeTypes();
+
+      function pos(n) {
+        if (variant === "sacks") {
+          const r = Math.sqrt(n) / Math.sqrt(data.limit) * radiusMax;
+          const theta = Math.sqrt(n) * Math.PI * 2;
+          return [centerX + Math.cos(theta) * r, centerY + Math.sin(theta) * r];
+        }
+        const r = n / data.limit * radiusMax;
+        const theta = n * 0.165;
+        return [centerX + Math.cos(theta) * r, centerY + Math.sin(theta) * r];
+      }
+
+      if (showPrimes.checked) {
+        for (const n of data.primes) {
+          const [x, y] = pos(n);
+          drawPoint(ctx, x, y, 3.1, "#8fd3ff", 0.9);
+        }
+      }
+      for (const row of data.winners) {
+        if (!types.has(row.type)) continue;
+        const type = TYPES.find((item) => item.id === row.type);
+        const [x, y] = pos(row.winner);
+        drawPoint(ctx, x, y, Math.max(3, Math.min(7, row.gap / 4)), type.color, 0.95);
+      }
+    }
+
+    function drawGapComb(canvas) {
+      const { ctx, width, height } = prepareCanvas(canvas);
+      const data = state.data;
+      const margin = 34;
+      const rows = data.winners;
+      const maxGap = Math.max(...rows.map((row) => row.gap));
+      const types = activeTypes();
+      ctx.strokeStyle = "#243240";
+      ctx.lineWidth = 1;
+      for (let i = 0; i < 5; i += 1) {
+        const y = margin + (height - margin * 2) * i / 4;
+        ctx.beginPath();
+        ctx.moveTo(margin, y);
+        ctx.lineTo(width - margin, y);
+        ctx.stroke();
+      }
+      rows.forEach((row, index) => {
+        const x = margin + index / Math.max(1, rows.length - 1) * (width - margin * 2);
+        const h = row.gap / maxGap * (height - margin * 2);
+        const y = height - margin - h;
+        const color = TYPES.find((type) => type.id === row.type).color;
+        ctx.strokeStyle = types.has(row.type) ? color : "#3f718d";
+        ctx.globalAlpha = types.has(row.type) ? 0.95 : 0.2;
+        ctx.beginPath();
+        ctx.moveTo(x, height - margin);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+      });
+      ctx.globalAlpha = 1;
+    }
+
+    function drawWheel(canvas) {
+      const { ctx, width, height } = prepareCanvas(canvas);
+      const data = state.data;
+      const centerX = width / 2;
+      const centerY = height / 2;
+      const radiusMax = Math.min(width, height) * 0.43;
+      const types = activeTypes();
+      ctx.strokeStyle = "#22303d";
+      ctx.lineWidth = 1;
+      for (let ring = 1; ring <= 4; ring += 1) {
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radiusMax * ring / 4, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+      function point(n) {
+        const theta = (n % 30) / 30 * Math.PI * 2 - Math.PI / 2;
+        const r = n / data.limit * radiusMax;
+        return [centerX + Math.cos(theta) * r, centerY + Math.sin(theta) * r];
+      }
+      if (showPrimes.checked) {
+        for (const n of data.primes) {
+          const [x, y] = point(n);
+          drawPoint(ctx, x, y, 2.8, "#8fd3ff", 0.86);
+        }
+      }
+      for (const row of data.winners) {
+        if (!types.has(row.type)) continue;
+        const type = TYPES.find((item) => item.id === row.type);
+        const [x, y] = point(row.winner);
+        drawPoint(ctx, x, y, 4.2, type.color, 0.96);
+      }
+    }
+
+    function drawCounting(canvas) {
+      const { ctx, width, height } = prepareCanvas(canvas);
+      const data = state.data;
+      const margin = 34;
+      const maxPi = data.primes.length;
+      const sx = (width - margin * 2) / data.limit;
+      const sy = (height - margin * 2) / maxPi;
+      ctx.strokeStyle = "#273746";
+      ctx.lineWidth = 1;
+      for (let i = 0; i < 5; i += 1) {
+        const y = margin + (height - margin * 2) * i / 4;
+        ctx.beginPath();
+        ctx.moveTo(margin, y);
+        ctx.lineTo(width - margin, y);
+        ctx.stroke();
+      }
+      ctx.strokeStyle = showPrimes.checked ? "#8fd3ff" : "#3f718d";
+      ctx.lineWidth = 1.3;
+      ctx.beginPath();
+      let count = 0;
+      ctx.moveTo(margin, height - margin);
+      for (let n = 2; n <= data.limit; n += 1) {
+        if (data.prime[n]) count += 1;
+        const x = margin + n * sx;
+        const y = height - margin - count * sy;
+        ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+      const types = activeTypes();
+      for (const row of data.winners) {
+        if (!types.has(row.type)) continue;
+        const type = TYPES.find((item) => item.id === row.type);
+        const pi = data.primes.findIndex((p) => p > row.winner);
+        drawPoint(ctx, margin + row.winner * sx, height - margin - pi * sy, 4, type.color, 0.9);
+      }
+    }
+
+    function drawResidue(canvas) {
+      const { ctx, width, height } = prepareCanvas(canvas);
+      const data = state.data;
+      const cols = 30;
+      const rows = Math.ceil(data.limit / cols);
+      const cellW = width / cols;
+      const cellH = height / rows;
+      const types = activeTypes();
+      if (showPrimes.checked) {
+        for (const n of data.primes) {
+          const x = n % cols;
+          const y = Math.floor(n / cols);
+          ctx.fillStyle = "#6bbce9";
+          ctx.fillRect(x * cellW, y * cellH, Math.max(1, cellW * 0.8), Math.max(1, cellH * 0.8));
+        }
+      }
+      for (const row of data.winners) {
+        if (!types.has(row.type)) continue;
+        const type = TYPES.find((item) => item.id === row.type);
+        const x = row.winner % cols;
+        const y = Math.floor(row.winner / cols);
+        ctx.fillStyle = type.color;
+        ctx.fillRect(x * cellW, y * cellH, Math.max(1.5, cellW * 0.85), Math.max(1.5, cellH * 0.85));
+      }
+    }
+
+    function drawPlot(canvas, id) {
+      if (id === "ulam") drawGridPlot(canvas, "ulam");
+      if (id === "raster") drawGridPlot(canvas, "raster");
+      if (id === "sacks") drawSpiral(canvas, "sacks");
+      if (id === "polar") drawSpiral(canvas, "polar");
+      if (id === "gapComb") drawGapComb(canvas);
+      if (id === "wheel") drawWheel(canvas);
+      if (id === "counting") drawCounting(canvas);
+      if (id === "residue") drawResidue(canvas);
+    }
+
+    function renderControls() {
+      typeToggles.innerHTML = "";
+      for (const type of TYPES) {
+        const label = document.createElement("label");
+        label.className = "toggle";
+        label.innerHTML = `
+          <input type="checkbox" data-type="${type.id}" checked>
+          <span>${type.label}</span>
+          <span class="swatch" style="background: ${type.color}"></span>
+        `;
+        label.querySelector("input").addEventListener("change", (event) => {
+          state.typeVisible[type.id] = event.target.checked;
+          syncMasterToggle();
+          render();
+        });
+        typeToggles.appendChild(label);
+      }
+      syncMasterToggle();
+    }
+
+    function syncTypeControls() {
+      for (const input of document.querySelectorAll("[data-type]")) {
+        input.checked = state.typeVisible[input.dataset.type];
+      }
+      syncMasterToggle();
+    }
+
+    function syncMasterToggle() {
+      const values = Object.values(state.typeVisible);
+      const selected = values.filter(Boolean).length;
+      showAllGwr.checked = selected === values.length;
+      showAllGwr.indeterminate = selected > 0 && selected < values.length;
+    }
+
+    function renderLibrary() {
+      plotLibrary.innerHTML = "";
+      for (const [id, title, description] of PLOTS) {
+        const article = document.createElement("article");
+        article.className = "plot-card";
+        article.innerHTML = `
+          <header>
+            <div class="plot-title">
+              <h3>${title}</h3>
+              <p>${description}</p>
+            </div>
+            <div class="plot-mode">${id}</div>
+          </header>
+          <canvas data-plot="${id}"></canvas>
+        `;
+        article.addEventListener("click", () => {
+          focusPlot.value = id;
+          render();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+        plotLibrary.appendChild(article);
+      }
+    }
+
+    function renderCounts() {
+      const counts = Object.fromEntries(TYPES.map((type) => [type.id, 0]));
+      for (const row of state.data.winners) counts[row.type] += 1;
+      typeCounts.innerHTML = "";
+      for (const type of TYPES) {
+        const row = document.createElement("div");
+        row.className = "type-row";
+        row.innerHTML = `
+          <span class="swatch" style="background: ${type.color}"></span>
+          <span>${type.label}</span>
+          <span class="count">${counts[type.id]}</span>
+        `;
+        typeCounts.appendChild(row);
+      }
+      document.getElementById("statLimit").textContent = state.data.limit.toLocaleString();
+      document.getElementById("statPrimes").textContent = state.data.primes.length.toLocaleString();
+      document.getElementById("statWinners").textContent = state.data.winners.length.toLocaleString();
+    }
+
+    function render() {
+      const active = PLOTS.find(([id]) => id === focusPlot.value);
+      focusTitle.textContent = active[1];
+      focusDescription.textContent = active[2];
+      sideValue.textContent = state.side;
+      drawPlot(focusCanvas, focusPlot.value);
+      for (const canvas of document.querySelectorAll("[data-plot]")) {
+        drawPlot(canvas, canvas.dataset.plot);
+      }
+      renderCounts();
+    }
+
+    function resetLayerVisibility() {
+      showPrimes.checked = true;
+      state.typeVisible = Object.fromEntries(TYPES.map((type) => [type.id, true]));
+      syncTypeControls();
+      render();
+    }
+
+    function setAllGwrVisibility(visible) {
+      state.typeVisible = Object.fromEntries(TYPES.map((type) => [type.id, visible]));
+      syncTypeControls();
+      render();
+    }
+
+    function exportActivePlot() {
+      const active = PLOTS.find(([id]) => id === focusPlot.value);
+      const link = document.createElement("a");
+      link.download = `prime-pattern-${active[0]}-${state.data.limit}.png`;
+      link.href = focusCanvas.toDataURL("image/png");
+      link.click();
+    }
+
+    function rebuildData() {
+      state.side = Number(limitRange.value);
+      state.data = computeData(state.side);
+      render();
+    }
+
+    renderControls();
+    renderLibrary();
+    rebuildData();
+
+    focusPlot.addEventListener("change", render);
+    showPrimes.addEventListener("change", render);
+    showAllGwr.addEventListener("change", () => setAllGwrVisibility(showAllGwr.checked));
+    resetLayers.addEventListener("click", resetLayerVisibility);
+    exportPlot.addEventListener("click", exportActivePlot);
+    limitRange.addEventListener("input", rebuildData);
+    window.addEventListener("resize", render);
+  </script>
+</body>
+</html>

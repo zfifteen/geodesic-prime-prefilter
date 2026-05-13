@@ -28,6 +28,7 @@ SCRIPT_NAMES = (
     "grammar_recursive_target_catalog.py",
     "grammar_recursive_solved_surface_compare.py",
     "grammar_inverse_word_exclusion_probe.py",
+    "shor_order_entropy_probe.py",
 )
 CASE_ID = "rsa_v2_40bit_static_001"
 N_VALUE = "1099507433251"
@@ -385,6 +386,47 @@ def test_audit_passes_only_with_separate_factor_file(tmp_path):
     ]
     for row in rows:
         assert {"p", "q"}.isdisjoint(row)
+
+
+def test_shor_order_entropy_probe_keeps_public_and_audit_states_separate(tmp_path):
+    """As a reviewer, I want PGS/Shor collapse measured after public inference."""
+    build_fixtures(tmp_path)
+    module = load_module(V2 / "shor_order_entropy_probe.py")
+    output_dir = tmp_path / "shor_out"
+
+    assert module.main(
+        [
+            "--cases",
+            str(tmp_path / "ladder_cases.jsonl"),
+            "--factors",
+            str(tmp_path / "audit_factors.jsonl"),
+            "--output-dir",
+            str(output_dir),
+        ]
+    ) == 0
+
+    public_rows = read_jsonl(output_dir / "public_order_entropy_rows.jsonl")
+    audit_rows = read_jsonl(output_dir / "audit_order_entropy_rows.jsonl")
+    summary = json.loads((output_dir / "summary.json").read_text(encoding="utf-8"))
+    svg = (output_dir / "phase_bit_collapse.svg").read_text(encoding="utf-8")
+
+    assert public_rows[0]["pgs_endpoint_class_present"]
+    assert public_rows[0]["pgs_lower_endpoint_class"] == P_VALUE
+    assert public_rows[0]["pgs_upper_endpoint_class"] == Q_VALUE
+    assert not public_rows[1]["pgs_endpoint_class_present"]
+    for row in public_rows:
+        assert {"p", "q", "actual_order_by_base", "audit_endpoint_match"}.isdisjoint(row)
+
+    assert audit_rows[0]["audit_endpoint_match"]
+    assert audit_rows[0]["residual_phase_bits_after_pgs"] == 0
+    assert audit_rows[0]["phase_bits_removed_by_pgs"] == 80
+    assert audit_rows[0]["candidate_order_by_base"] == audit_rows[0]["actual_order_by_base"]
+    assert not audit_rows[1]["audit_endpoint_match"]
+    assert audit_rows[1]["residual_phase_bits_after_pgs"] == 100
+    assert audit_rows[1]["phase_bits_removed_by_pgs"] == 0
+    assert summary["status"] == "mixed_public_pgs_collapse"
+    assert summary["order_finding_removed_count"] == 1
+    assert "<svg" in svg
 
 
 def test_runner_source_has_no_forbidden_constructs_or_hidden_endpoints():
