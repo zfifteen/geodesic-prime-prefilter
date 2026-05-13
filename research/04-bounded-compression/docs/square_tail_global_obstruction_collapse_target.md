@@ -237,6 +237,14 @@ It also strengthens the nonsymmetric distance bound: outside the symmetric rows
 `m = 2a^2`, every least factor is excluded from the final roughly
 `sqrt(2r)`-wide band below `r`.
 
+This band exclusion is not a counting contradiction by itself. Nonsymmetric
+rows can still use smaller row-private least factors outside the final band.
+The boundary is recorded in:
+
+```text
+research/04-bounded-compression/docs/square_tail_band_counting_boundary.md
+```
+
 The lemma is recorded in:
 
 ```text
