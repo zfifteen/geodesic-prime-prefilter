@@ -8,10 +8,11 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
-V2 = ROOT / "research" / "06-cryptology-rsa" / "experiments" / "rsa" / "v2"
-STORY_SCRIPT = V2 / "transported_story_law_probe.py"
-BUDGET_SCRIPT = V2 / "transported_d4_budget_probe.py"
-TRACE_SCRIPT = V2 / "transported_d4_budget_trace.py"
+EXPERIMENTS = ROOT / "research" / "06-cryptology-rsa" / "experiments"
+TRANSPORTED_V2 = EXPERIMENTS / "transported-sidecars" / "rsa-v2"
+STORY_SCRIPT = TRANSPORTED_V2 / "transported_story_law_probe.py"
+BUDGET_SCRIPT = TRANSPORTED_V2 / "transported_d4_budget_probe.py"
+TRACE_SCRIPT = TRANSPORTED_V2 / "transported_d4_budget_trace.py"
 RULE_ID = "transported_d4_budget_trace_v1"
 
 

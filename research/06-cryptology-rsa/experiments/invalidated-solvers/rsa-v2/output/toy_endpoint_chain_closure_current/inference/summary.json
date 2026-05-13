@@ -1,0 +1,70 @@
+{
+  "cases": [
+    {
+      "N": "257987843",
+      "balance_band": "2",
+      "bits": 28,
+      "case_id": "rsa_v2_toy_chain_28bit_first_strict_001",
+      "center": "16061",
+      "closure_status": "endpoint_class_by_mutual_certificate_closure",
+      "lower_certificate_present": true,
+      "rule_id": "reciprocal_pgs_certificate_pair_v1",
+      "upper_certificate_present": true
+    },
+    {
+      "N": "10444431203",
+      "balance_band": "2",
+      "bits": 34,
+      "case_id": "rsa_v2_toy_chain_34bit_strict_001",
+      "center": "102197",
+      "closure_status": "endpoint_class_by_mutual_certificate_closure",
+      "lower_certificate_present": true,
+      "rule_id": "reciprocal_pgs_certificate_pair_v1",
+      "upper_certificate_present": true
+    },
+    {
+      "N": "20592824003",
+      "balance_band": "2",
+      "bits": 35,
+      "case_id": "rsa_v2_toy_chain_35bit_strict_001",
+      "center": "143501",
+      "closure_status": "endpoint_class_by_mutual_certificate_closure",
+      "lower_certificate_present": true,
+      "rule_id": "reciprocal_pgs_certificate_pair_v1",
+      "upper_certificate_present": true
+    },
+    {
+      "N": "27100402883",
+      "balance_band": "2",
+      "bits": 35,
+      "case_id": "rsa_v2_toy_chain_35bit_strict_002",
+      "center": "164621",
+      "closure_status": "endpoint_class_by_mutual_certificate_closure",
+      "lower_certificate_present": true,
+      "rule_id": "reciprocal_pgs_certificate_pair_v1",
+      "upper_certificate_present": true
+    },
+    {
+      "N": "50724949283",
+      "balance_band": "2",
+      "bits": 36,
+      "case_id": "rsa_v2_toy_chain_36bit_strict_001",
+      "center": "225221",
+      "closure_status": "endpoint_class_by_mutual_certificate_closure",
+      "lower_certificate_present": true,
+      "rule_id": "reciprocal_pgs_certificate_pair_v1",
+      "upper_certificate_present": true
+    },
+    {
+      "N": "72243763523",
+      "balance_band": "2",
+      "bits": 37,
+      "case_id": "rsa_v2_toy_chain_37bit_strict_001",
+      "center": "268781",
+      "closure_status": "endpoint_class_by_mutual_certificate_closure",
+      "lower_certificate_present": true,
+      "rule_id": "reciprocal_pgs_certificate_pair_v1",
+      "upper_certificate_present": true
+    }
+  ]
+}

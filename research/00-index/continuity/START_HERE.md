@@ -152,16 +152,16 @@ research/06-cryptology-rsa/experiments/rsa/v2/output/survivor_rows.jsonl
 Strongest supported claim:
 
 ```text
-RSA moduli do expose deterministic endpoint structure. The resolved 40-bit RSA
-v2 ladder rung is a measured member of the public endpoint-structure class under
-reciprocal deadline-signature correction.
+RSA moduli do expose deterministic endpoint structure. The 40-bit RSA v2 ladder
+rung is audit-confirmed as factor_found = true after public endpoint-class
+inference.
 ```
 
 Scope limit:
 
 ```text
-The 50-bit row remains unresolved_by_reset_endpoint_crosses_orientation. No
-universal RSA-scale theorem is claimed.
+The 50-bit and 64-bit OECC rows are public endpoint-class hits with
+factor_found = false. No universal RSA-scale theorem is claimed.
 ```
 
 Live resolver predicate:
@@ -179,19 +179,20 @@ resolve iff:
   corrected_lower.reset_signature == upper.reset_signature
 ```
 
-Historical note: as of 2026-05-07, the RSA v2 runner did not solve the 40-bit
-or 50-bit rungs. That state is superseded for the 40-bit rung by the later
-deadline-signature correction. The 50-bit rung now returns the sharper
-deterministic reason:
+Erratum: earlier OECC_LINEAR_V1 and OECC_RECURSIVE_V2 output used
+`status = resolved` and `p` / `q` for public endpoint classes. That wording was
+wrong for audit-failing rows. The plain result is:
 
 ```text
-unresolved_by_reset_endpoint_crosses_orientation
+40-bit: factor_found = true
+50-bit: factor_found = false
+64-bit: factor_found = false
 ```
 
 The previous pre-correction 40-bit resolution was withdrawn because it depended
 on a close-factor shape. Do not revive fixed radius chambers, endpoint-walk
-budgets, product closure, divisibility selectors, hidden fixtures, or audit
-leakage.
+budgets, product closure, divisibility selectors, hidden fixtures, audit
+leakage, or factor-shaped names for public endpoint classes.
 
 Archived distraction:
 

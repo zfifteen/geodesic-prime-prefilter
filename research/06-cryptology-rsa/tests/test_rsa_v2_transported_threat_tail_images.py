@@ -8,8 +8,10 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
-V2 = ROOT / "research" / "06-cryptology-rsa" / "experiments" / "rsa" / "v2"
-SCRIPT_PATH = V2 / "transported_threat_tail_images_probe.py"
+EXPERIMENTS = ROOT / "research" / "06-cryptology-rsa" / "experiments"
+DATA_V2 = EXPERIMENTS / "data-ladder" / "rsa-v2"
+TRANSPORTED_V2 = EXPERIMENTS / "transported-sidecars" / "rsa-v2"
+SCRIPT_PATH = TRANSPORTED_V2 / "transported_threat_tail_images_probe.py"
 VALID_POSITIONS = {
     "before_upper_reset",
     "inside_upper_interval",
@@ -35,7 +37,7 @@ def read_jsonl(path: Path) -> list[dict[str, object]]:
 
 def build_fixtures(tmp_path: Path) -> None:
     """Write public fixture rows into one temporary directory."""
-    module = load_module(V2 / "build_ladder_fixtures.py")
+    module = load_module(DATA_V2 / "build_ladder_fixtures.py")
     assert module.main(["--output-dir", str(tmp_path)]) == 0
 
 

@@ -8,9 +8,11 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
-V2 = ROOT / "research" / "06-cryptology-rsa" / "experiments" / "rsa" / "v2"
-SCRIPT = V2 / "transported_commitment_story_ledger_probe.py"
-INPUT_DIR = V2 / "output" / "transported_exclusion_debt"
+EXPERIMENTS = ROOT / "research" / "06-cryptology-rsa" / "experiments"
+CERTIFICATE_V2 = EXPERIMENTS / "certificate-mechanics" / "rsa-v2"
+TRANSPORTED_V2 = EXPERIMENTS / "transported-sidecars" / "rsa-v2"
+SCRIPT = CERTIFICATE_V2 / "transported_commitment_story_ledger_probe.py"
+INPUT_DIR = TRANSPORTED_V2 / "output" / "transported_exclusion_debt"
 
 
 def load_module():

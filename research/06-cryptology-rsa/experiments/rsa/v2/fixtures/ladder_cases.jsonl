@@ -1,2 +1,0 @@
-{"N": "1099507433251", "bits": 40, "case_id": "rsa_v2_40bit_static_001", "description": "40-bit calibration rung for reciprocal PGS deadline-lock machinery."}
-{"N": "1027435935526951", "bits": 50, "case_id": "rsa_v2_50bit_static_001", "description": "50-bit deterministic RSA-like ladder rung generated outside the solver."}
