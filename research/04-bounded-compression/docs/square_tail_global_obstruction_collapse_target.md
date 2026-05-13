@@ -197,6 +197,20 @@ The lemma is recorded in:
 research/04-bounded-compression/docs/square_tail_near_root_factor_lemma.md
 ```
 
+The symmetric-row lemma isolates the sparse centered exception:
+
+```text
+m = 2a^2,
+x_m = (r - 2a)(r + 2a),
+gcd(r - 2a, r + 2a) = 1.
+```
+
+The lemma is recorded in:
+
+```text
+research/04-bounded-compression/docs/square_tail_symmetric_row_lemma.md
+```
+
 ## Required Proof Shape
 
 A proof must establish one of the following deterministic statements.

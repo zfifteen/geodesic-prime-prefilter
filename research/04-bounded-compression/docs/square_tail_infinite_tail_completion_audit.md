@@ -53,6 +53,7 @@ following:
 | Exclude local assigned-carrier obstruction inheritance | `square_tail_obstruction_inheritance_local_model_audit.md` | complete |
 | Prove row-private rough-factor disjointness | `square_tail_rough_factor_disjointness_lemma.md` | complete |
 | Prove near-root rough-factor geometry | `square_tail_near_root_factor_lemma.md` | complete |
+| Isolate symmetric rough-row structure | `square_tail_symmetric_row_lemma.md` | complete |
 | Prove a prime-valued M-rough defect must occur before the cutoff | No proof artifact exists. | missing |
 | Produce a counterexample | No counterexample artifact exists. | missing |
 
@@ -184,6 +185,7 @@ The following are useful evidence but do not complete the goal:
 - local assigned-carrier obstruction inheritance without least-factor/global PGS structure;
 - rough-factor disjointness without a row-private obstruction contradiction;
 - near-root factor geometry without a full obstruction contradiction;
+- symmetric rough-row structure without nonsymmetric obstruction contradiction;
 - Grok agreement with the equivalence.
 
 ## Next Valid Work
