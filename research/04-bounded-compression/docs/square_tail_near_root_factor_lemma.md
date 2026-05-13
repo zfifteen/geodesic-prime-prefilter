@@ -209,6 +209,12 @@ The full symmetric-row structure is recorded in:
 research/04-bounded-compression/docs/square_tail_symmetric_row_lemma.md
 ```
 
+The nonsymmetric quotient form is recorded in:
+
+```text
+research/04-bounded-compression/docs/square_tail_nonsymmetric_quotient_lemma.md
+```
+
 ## Consequence For Obstruction Words
 
 In a complete M-rough obstruction word with `2M < r`, every composite rough
