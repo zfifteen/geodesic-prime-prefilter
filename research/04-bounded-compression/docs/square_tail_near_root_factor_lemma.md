@@ -169,6 +169,40 @@ the distance from the root satisfies the explicit lower bound
 h^2 + h >= r + 2m.
 ```
 
+Equivalently, every nonsymmetric M-rough composite row satisfies
+
+```text
+h >= ceil((sqrt(1 + 4(r + 2m)) - 1) / 2).
+```
+
+In terms of the least factor `ell = r - h`,
+
+```text
+ell <= r - ceil((sqrt(1 + 4(r + 2m)) - 1) / 2).
+```
+
+Thus the nonsymmetric least factor cannot occupy the final square-root-width
+band immediately below `r`.
+
+The symmetric case is possible only at rows
+
+```text
+m = 2a^2
+```
+
+with
+
+```text
+h = 2a.
+```
+
+Therefore the number of symmetric candidate rows inside `1 <= m <= M` is at
+most
+
+```text
+floor(sqrt(M / 2)).
+```
+
 ## Consequence For Obstruction Words
 
 In a complete M-rough obstruction word with `2M < r`, every composite rough
@@ -192,6 +226,26 @@ and
 
 The obstruction word is therefore constrained by near-root arithmetic, not
 only by residue cover.
+
+It also splits into two row types:
+
+```text
+symmetric rows:     m = 2a^2
+nonsymmetric rows:  ell_m <= r - ceil((sqrt(1 + 4(r + 2m)) - 1) / 2)
+```
+
+Only the symmetric rows can place a least factor in the final square-root-width
+band below the root.
+
+Therefore, under a complete obstruction `O(r)`, at most
+
+```text
+floor(sqrt(M / 2))
+```
+
+M-rough rows can have their least factor in that final band. Every other
+composite rough row has its least factor bounded by the nonsymmetric inequality
+above.
 
 ## Current Cutoff Boundary
 
@@ -239,3 +293,8 @@ Grok response `b963dfc6-cf5d-9ebe-a9aa-2b57131e7481` agreed that the lemma,
 cutoff boundary, and proof boundary are correct. The useful strengthening is
 the explicit root-distance lower bound `2m <= h^2`, which follows from
 `d >= 0`.
+
+Grok response `7b107015-5944-9bd7-9903-7ff26c63a381` agreed that the
+symmetric/nonsymmetric split and the symmetric row count are correct. The
+result remains a building block: the band restriction alone still permits a
+complete obstruction word.

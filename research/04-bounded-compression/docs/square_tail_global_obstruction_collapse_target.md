@@ -181,6 +181,16 @@ with `t_m >= h_m` and
 2m = h_m^2 - (t_m - h_m)(r - h_m).
 ```
 
+It also separates the only rows whose least factor can sit in the final
+square-root-width band below `r`:
+
+```text
+symmetric rows: m = 2a^2.
+```
+
+Every nonsymmetric row has an explicit lower bound on the root distance
+`h_m = r - ell_m`.
+
 The lemma is recorded in:
 
 ```text
