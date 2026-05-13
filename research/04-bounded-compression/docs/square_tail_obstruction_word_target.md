@@ -109,6 +109,20 @@ D(r) > C(p)
 
 with a complete obstruction word of length `floor(C(p)/2)`.
 
+The selected-square condition also has an offset form. If `s` is the previous
+prime root before `r`, then selected-square means
+
+```text
+r^2 - P(r^2) < r^2 - s^2.
+```
+
+This is a broad deadline. It does not imply the dynamic cutoff. The audit is
+recorded in:
+
+```text
+research/04-bounded-compression/docs/findings/square_tail_selected_square_deadline_audit.md
+```
+
 ## Current Record Calibration
 
 The current high-utilization record is
