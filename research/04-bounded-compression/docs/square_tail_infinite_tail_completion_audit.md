@@ -56,6 +56,7 @@ following:
 | Isolate symmetric rough-row structure | `square_tail_symmetric_row_lemma.md` | complete |
 | Prove nonsymmetric quotient parameterization | `square_tail_nonsymmetric_quotient_lemma.md` | complete |
 | Prove centered halved-quotient parameterization | `square_tail_halved_quotient_lemma.md` | complete |
+| Exclude near-root band counting as sufficient | `square_tail_band_counting_boundary.md` | complete |
 | Prove a prime-valued M-rough defect must occur before the cutoff | No proof artifact exists. | missing |
 | Produce a counterexample | No counterexample artifact exists. | missing |
 
@@ -190,6 +191,7 @@ The following are useful evidence but do not complete the goal:
 - symmetric rough-row structure without nonsymmetric obstruction contradiction;
 - nonsymmetric quotient parameterization without a global obstruction contradiction;
 - halved-quotient parameterization without a global obstruction contradiction;
+- near-root band exclusion without a small-ell placement invariant;
 - Grok agreement with the equivalence.
 
 ## Next Valid Work
