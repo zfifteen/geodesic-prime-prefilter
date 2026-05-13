@@ -356,6 +356,7 @@ def test_recursive_v2_runs_side_by_side_without_mutating_linear_outputs(tmp_path
             "p": P_VALUE,
             "q": Q_VALUE,
             "endpoint_class_role": "structural_endpoint_class",
+            "ladder_rung_resolved": True,
             "implementation_label": "OECC_RECURSIVE_V2",
             "rule_id": "OECC_RECURSIVE_V2",
         },
@@ -367,13 +368,19 @@ def test_recursive_v2_runs_side_by_side_without_mutating_linear_outputs(tmp_path
             "p": "32046877",
             "q": "32060407",
             "endpoint_class_role": "structural_endpoint_class",
+            "ladder_rung_resolved": True,
             "implementation_label": "OECC_RECURSIVE_V2",
             "rule_id": "OECC_RECURSIVE_V2",
         },
     ]
     diagnostics = {row["bits"]: row for row in read_jsonl(recursive_output / "recursive_diagnostic_rows.jsonl")}
+    summary = json.loads((recursive_output / "summary.json").read_text(encoding="utf-8"))
+    pairs = read_jsonl(recursive_output / "recursive_pair_rows.jsonl")
     assert diagnostics[40]["recursion_steps"] == 0
     assert diagnostics[50]["recursion_steps"] == 322
+    assert all(row["ladder_rung_resolved"] for row in diagnostics.values())
+    assert all(row["ladder_rung_resolved"] for row in summary["cases"])
+    assert all(row["ladder_rung_resolved"] for row in pairs)
 
 
 def test_recursive_v2_preserves_48bit_baseline_endpoint_class(tmp_path):
@@ -407,12 +414,14 @@ def test_recursive_v2_preserves_48bit_baseline_endpoint_class(tmp_path):
             "p": "15802739",
             "q": "15812609",
             "endpoint_class_role": "structural_endpoint_class",
+            "ladder_rung_resolved": True,
             "implementation_label": "OECC_RECURSIVE_V2",
             "rule_id": "OECC_RECURSIVE_V2",
         }
     ]
     assert diagnostics[0]["recursion_steps"] == 246
     assert diagnostics[0]["visited_anchor_count"] == 247
+    assert diagnostics[0]["ladder_rung_resolved"] is True
 
 
 def test_certificate_rows_are_derived_before_audit(tmp_path):
