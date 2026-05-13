@@ -50,22 +50,28 @@ state, tail state, and reset-deadline fields.
 
 ## Stage 3: Reciprocal Transport
 
-Before transport, the lower reset endpoint must still lie on the lower side of
-the square-root orientation:
+Choose the oriented lower transport coordinate.
+
+When the lower reset endpoint still lies on the lower side of the square-root
+orientation, the reset endpoint is the transport coordinate:
 
 ```text
-lower.reset_endpoint <= isqrt(N)
+x = lower.reset_endpoint  when lower.reset_endpoint <= isqrt(N)
 ```
 
 If the lower reset endpoint is greater than `isqrt(N)`, the certificate is
 valid but its reset endpoint has crossed the orientation boundary. It is not a
-lower-side transport coordinate. The oriented endpoint-chain branch uses the
-lower public anchor as the transport coordinate for that chamber.
-
-Transport the lower reset endpoint by:
+lower-side transport coordinate. In that chamber, the lower public anchor is
+the transport coordinate:
 
 ```text
-y = floor(N / lower.reset_endpoint)
+x = lower.anchor          when lower.reset_endpoint > isqrt(N)
+```
+
+Transport the oriented coordinate by:
+
+```text
+y = floor(N / x)
 ```
 
 This is public reciprocal transport. It is not a divisibility test and does not
@@ -86,8 +92,8 @@ The first closure branch is strict reset closure. It resolves when:
 3. `floor(N / upper.reset_endpoint) == lower.reset_endpoint`;
 4. lower and upper reset signatures match.
 
-If this branch fails, the runner does not widen into a search budget. It moves
-to one public deadline-correction branch.
+If this branch fails, the runner moves to one public deadline-correction branch.
+This is not a fixed-radius candidate budget and not a fallback search.
 
 ## Stage 6: Deadline Signature Correction
 
@@ -135,9 +141,28 @@ lower.anchor          when lower.reset_endpoint > isqrt(N)
 ```
 
 Transport that coordinate, derive the upper certificate, and apply the same
-deadline-signature correction predicate. The first public lower-chain endpoint
-whose corrected lower endpoint and upper deadline mutually close under
-`floor(N / x)` resolves as:
+deadline-signature correction predicate.
+
+For each upper certificate:
+
+```text
+z = floor(N / upper.reset_endpoint)
+c = previous_public_endpoint_before(z)
+corrected_lower = PGSPG certificate at c
+d = upper.reset_deadline_value
+```
+
+The endpoint-chain branch resolves exactly when:
+
+```text
+c < lower.anchor
+d > upper.reset_endpoint
+floor(N / c) == d
+floor(N / d) == c
+corrected_lower.reset_signature == upper.reset_signature
+```
+
+The first public lower-chain endpoint satisfying those conditions resolves as:
 
 ```text
 resolved_by_oriented_endpoint_chain_closure
@@ -182,7 +207,11 @@ The following are not live rules:
 
 ## Resolver Target
 
-The next algorithmic target is scale extension of the same public correction
-rule. The invariant must stay derived from public `N`, PGSPG certificate fields,
-and floor-map transport. It must not use product closure, divisibility, audit
-factors, factor APIs, primality APIs, random generation, or fallback search.
+The next algorithmic target is `OECC_RECURSIVE_V2`.
+
+That version keeps the same public PGS objects and closure predicate, but
+replaces linear endpoint-chain traversal with recursive transport-induced
+chamber jumps. The invariant must stay derived from public `N`, PGSPG
+certificate fields, and floor-map transport. It must not use product closure,
+divisibility, audit factors, factor APIs, primality APIs, random generation, or
+fallback search.
