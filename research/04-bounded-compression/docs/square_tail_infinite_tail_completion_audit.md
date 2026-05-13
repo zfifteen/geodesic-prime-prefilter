@@ -49,6 +49,7 @@ following:
 | Exclude child selected-square inheritance alone | `square_tail_child_selected_square_inheritance_audit.md` | complete |
 | Exclude direct child-closing-prime back-cover | `square_tail_child_closure_parent_residue_audit.md` | complete |
 | State global obstruction-collapse theorem target | `square_tail_global_obstruction_collapse_target.md` | complete |
+| State selection-free descent target and finite base | `square_tail_global_obstruction_collapse_target.md` | complete |
 | Prove a prime-valued M-rough defect must occur before the cutoff | No proof artifact exists. | missing |
 | Produce a counterexample | No counterexample artifact exists. | missing |
 
