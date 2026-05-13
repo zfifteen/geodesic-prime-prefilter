@@ -350,3 +350,9 @@ inside the cutoff.
 The active proof routes are therefore the recursive collapse lemma and the
 covering impossibility lemma. Both are deterministic. Neither requires density
 language.
+
+The global collapse target is stated in:
+
+```text
+research/04-bounded-compression/docs/square_tail_global_obstruction_collapse_target.md
+```

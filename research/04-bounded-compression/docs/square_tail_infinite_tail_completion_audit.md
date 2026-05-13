@@ -48,6 +48,7 @@ following:
 | Separate selected-square deadline from dynamic cutoff | `square_tail_selected_square_deadline_audit.md` | complete |
 | Exclude child selected-square inheritance alone | `square_tail_child_selected_square_inheritance_audit.md` | complete |
 | Exclude direct child-closing-prime back-cover | `square_tail_child_closure_parent_residue_audit.md` | complete |
+| State global obstruction-collapse theorem target | `square_tail_global_obstruction_collapse_target.md` | complete |
 | Prove a prime-valued M-rough defect must occur before the cutoff | No proof artifact exists. | missing |
 | Produce a counterexample | No counterexample artifact exists. | missing |
 
@@ -194,5 +195,11 @@ Valid routes:
    elimination.
 3. A finite reduction that leaves only a checked finite root range.
 4. A counterexample certificate.
+
+The current transport target is stated in:
+
+```text
+research/04-bounded-compression/docs/square_tail_global_obstruction_collapse_target.md
+```
 
 Until one of these exists, the active goal is not complete.
