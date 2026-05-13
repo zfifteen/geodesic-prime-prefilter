@@ -44,6 +44,7 @@ TOY_DEADLINE_N = "73903"
 TOY_DEADLINE_P = "263"
 TOY_DEADLINE_Q = "281"
 AD_HOC_48_N = "249882542035169"
+AD_HOC_60_N = "1000000016000000063"
 
 
 def load_module(path: Path):
@@ -288,6 +289,38 @@ def test_runner_reports_certificate_pairs_without_false_resolution(tmp_path):
     assert survivors[1]["endpoint_chain_steps"] == 389
 
 
+def test_runner_measurement_mode_is_non_persistent(tmp_path, capsys):
+    """As a reviewer, I want baseline cost measured without adding output files."""
+    build_fixtures(tmp_path)
+    module = load_module(V2 / "run_experiment.py")
+    output_dir = tmp_path / "measured_out"
+
+    assert module.main(
+        [
+            "--cases",
+            str(tmp_path / "ladder_cases.jsonl"),
+            "--output-dir",
+            str(output_dir),
+            "--measure-baseline-cost",
+        ]
+    ) == 0
+
+    stdout = json.loads(capsys.readouterr().out)
+    assert sorted(path.name for path in output_dir.iterdir()) == [
+        "diagnostic_rows.jsonl",
+        "inference_rows.jsonl",
+        "summary.json",
+        "survivor_rows.jsonl",
+    ]
+    assert [row["bits"] for row in stdout["baseline_cost"]] == [40, 50]
+    assert stdout["baseline_cost"][0]["endpoint_chain_steps"] == 0
+    assert stdout["baseline_cost"][1]["endpoint_chain_steps"] == 389
+    for row in stdout["baseline_cost"]:
+        assert row["cache_lookups"] >= row["cache_misses"]
+        assert 0 <= row["cache_hit_rate"] <= 1
+        assert row["elapsed_ms"] >= 0
+
+
 def test_certificate_rows_are_derived_before_audit(tmp_path):
     """As a reviewer, I want survivor rows to be public PGSPG-derived certificates."""
     build_fixtures(tmp_path)
@@ -380,6 +413,46 @@ def test_reset_endpoint_crossing_orientation_stops_before_upper_certificate():
     assert inference["endpoint_class_role"] == "structural_endpoint_class"
     assert inference["p"] == "15802739"
     assert inference["q"] == "15812609"
+
+
+def test_oecc_linear_v1_baseline_endpoint_classes_are_preserved():
+    """As a reviewer, I want optimizations to preserve baseline endpoint classes."""
+    module = load_module(V2 / "run_experiment.py")
+    baseline_cases = [
+        module.LadderCase(CASE_ID, 40, module.gmpy2.mpz(N_VALUE)),
+        module.LadderCase("rsa_v2_48bit_ad_hoc_001", 48, module.gmpy2.mpz(AD_HOC_48_N)),
+        module.LadderCase(CASE_50_ID, 50, module.gmpy2.mpz(GENERATED_50_N)),
+    ]
+    expected = {
+        CASE_ID: (
+            "resolved_by_reciprocal_deadline_signature_correction",
+            P_VALUE,
+            Q_VALUE,
+            None,
+        ),
+        "rsa_v2_48bit_ad_hoc_001": (
+            "resolved_by_oriented_endpoint_chain_closure",
+            "15802739",
+            "15812609",
+            "structural_endpoint_class",
+        ),
+        CASE_50_ID: (
+            "resolved_by_oriented_endpoint_chain_closure",
+            "32046877",
+            "32060407",
+            "structural_endpoint_class",
+        ),
+    }
+
+    for case in baseline_cases:
+        pair = module.certificate_pair(case)
+        row = module.result_row(case, pair)
+        closure_status, lower, upper, role = expected[case.case_id]
+        assert pair.closure_status == closure_status
+        assert row["status"] == "resolved"
+        assert row["p"] == lower
+        assert row["q"] == upper
+        assert row.get("endpoint_class_role") == role
 
 
 def test_audit_passes_only_with_separate_factor_file(tmp_path):
@@ -516,17 +589,35 @@ def test_runner_has_no_per_scale_logic_branches():
         assert fragment not in source
 
 
-def test_runner_declares_small_regime_interval_backend_boundary():
-    """As a reviewer, I want the current interval backend boundary explicit."""
+def test_runner_uses_global_interval_backend_without_bit_gate():
+    """As a reviewer, I want the resolver to avoid RSA-local scale gates."""
     module = load_module(V2 / "run_experiment.py")
 
-    assert module.SMALL_REGIME_MAX_BITS == 50
-    assert module.case_supported_by_interval_backend(
-        module.LadderCase("small", 50, module.gmpy2.mpz(1))
+    assert not hasattr(module, "SMALL_REGIME_MAX_BITS")
+    assert not hasattr(module, "case_supported_by_interval_backend")
+    assert "gmp_interval_backend_required" not in (V2 / "run_experiment.py").read_text(
+        encoding="utf-8"
     )
-    assert not module.case_supported_by_interval_backend(
-        module.LadderCase("large", 100, module.gmpy2.mpz(1))
+
+
+def test_runner_accepts_above_50_bit_case_through_global_interval_backend():
+    """As a reviewer, I want larger public rows to enter the same resolver."""
+    module = load_module(V2 / "run_experiment.py")
+    case = module.LadderCase(
+        case_id="ad_hoc_60bit_semiprime_001",
+        bits=60,
+        n=module.gmpy2.mpz(AD_HOC_60_N),
     )
+
+    pair = module.certificate_pair(case)
+    row = module.result_row(case, pair)
+
+    assert pair.closure_status == "resolved_by_oriented_endpoint_chain_closure"
+    assert pair.endpoint_chain_steps == 60
+    assert row["status"] == "resolved"
+    assert row["p"] == "999998683"
+    assert row["q"] == "1000001333"
+    assert row["endpoint_class_role"] == "structural_endpoint_class"
 
 
 def test_fixture_builder_has_no_generation_or_classical_math_imports():

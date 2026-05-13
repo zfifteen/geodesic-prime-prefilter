@@ -18,27 +18,17 @@ The runner uses `gmpy2.mpz` for:
 The runner converts those coordinates to Python `int` only when calling the
 current repository interval-measurement helper.
 
-That helper is not an RSA-260-scale GMP interval backend. The official runner
-therefore declares:
-
-```text
-SMALL_REGIME_MAX_BITS = 50
-```
-
-Rows above that limit return unresolved with:
-
-```text
-gmp_interval_backend_required
-```
+That helper owns interval-backend capability globally. The official runner no
+longer carries a modulus-bit cutoff or an RSA-local backend-required status.
 
 ## No False GMP Claim
 
-Do not describe the current runner as GMP-only at the interval backend level.
+Do not describe the current runner as an RSA-local arithmetic fork.
 
 The correct statement is:
 
 ```text
-GMP coordinates, small-regime exact interval backend.
+GMP coordinates, shared exact interval backend.
 ```
 
 ## No Divergent Low-Bit Logic

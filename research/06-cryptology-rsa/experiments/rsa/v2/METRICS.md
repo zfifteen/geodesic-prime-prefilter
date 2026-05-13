@@ -57,11 +57,10 @@ unresolved_by_certificate_pair_not_closed
 unresolved_by_reset_endpoint_crosses_orientation
 unresolved_by_missing_lower_certificate
 unresolved_by_missing_upper_certificate
-gmp_interval_backend_required
 ```
 
 These mean public PGSPG state did not close before the deterministic stop
-condition, or the exact interval backend does not cover the row.
+condition.
 
 ## Acceptance For Current V2
 
