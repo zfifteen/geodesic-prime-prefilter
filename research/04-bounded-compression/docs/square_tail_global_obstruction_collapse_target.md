@@ -194,6 +194,70 @@ This statement descends on prime roots rather than selected-square roots. If
 proved with an exact finite base for the small positive-row boundary, it also
 closes the selected-square branch.
 
+The positive-row regime means:
+
+```text
+r^2 - 2M > 1.
+```
+
+With the current cutoff definition, every odd prime root `r >= 11` is in this
+regime. The roots `3`, `5`, and `7` are finite-base cases outside this
+selection-free descent target.
+
+For `r >= 11`, the fixed floor `C = 64` gives `r^2 - 2M >= 121 - 64 > 1`.
+Once the logarithmic cutoff exceeds `64`,
+
+```text
+2M <= C <= 2 log(r)^2 + 1 < r^2 - 1,
+```
+
+where the final inequality holds at the first logarithmic-cutoff prime root
+`293` and then widens with `r`. Thus the positive-row inequality remains true.
+
+This strengthening removes the child-state inheritance obligation. It requires
+only obstruction inheritance:
+
+```text
+O(r)
+-> some least-factor child ell in Child(r) satisfies O(ell).
+```
+
+Since every child satisfies `ell < r`, this gives a well-founded descent on
+prime roots directly.
+
+## Child-State Boundary
+
+Child-state inheritance should not be treated as automatic. For a prime child
+root `ell`, selected-square status says:
+
+```text
+s_ell^2 < P(ell^2) < ell^2,
+```
+
+where `s_ell` is the previous prime root before `ell`. This is a prime between
+consecutive prime-root squares. It is an additional square-gap statement, not a
+consequence of the local parent congruence
+
+```text
+r^2 == 2m mod ell.
+```
+
+The selection-free strengthening avoids this extra obligation.
+
+## Finite Base For Selection-Free Descent
+
+The selected-square roots outside the positive-row regime are exactly:
+
+| Root `r` | `r^2` | `P(r^2)` | Offset `r^2 - P(r^2)` | Cutoff `C` | Closed |
+|---:|---:|---:|---:|---:|---:|
+| `3` | `9` | `7` | `2` | `64` | yes |
+| `5` | `25` | `23` | `2` | `64` | yes |
+| `7` | `49` | `47` | `2` | `64` | yes |
+
+Thus the selection-free descent target only needs to operate on prime roots
+`r >= 11`. If the strengthening is proved there, the roots below `11` are
+already closed by direct arithmetic.
+
 ## Acceptance Criteria
 
 A proposed proof completes this target only if it provides:
@@ -215,6 +279,11 @@ Grok response `52f17e75-b4a3-96e9-806a-750f7e8580ef` agreed that the target is
 non-circular and would close the square-tail branch by infinite descent. It
 also identified child-state inheritance as an auxiliary lemma if the descent
 stays inside the selected-square branch.
+
+Grok response `f0953ef5-1ed9-990d-a52a-4f9bd098aad5` agreed that the
+selection-free strengthening is cleaner and sufficient: descent on all
+positive-row prime roots avoids the selected-square child-state obligation,
+with `3`, `5`, and `7` handled by the finite base above.
 
 The already-invalidated local routes are recorded in:
 
