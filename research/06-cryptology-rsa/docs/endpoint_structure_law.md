@@ -17,12 +17,13 @@ Let `N` be public and let:
 s = floor(sqrt(N))
 ```
 
-Let `L0` be the PGSPG reset certificate at the previous public endpoint before
-`s`. Write:
+Let:
 
 ```text
-a0 = L0.anchor
+a0 = previous_public_endpoint_before(s)
+L0 = PGSPG reset certificate at a0
 r0 = L0.reset_endpoint
+sigma0 = L0.reset_signature
 ```
 
 Transport `r0` through the public reciprocal floor map:
@@ -31,34 +32,57 @@ Transport `r0` through the public reciprocal floor map:
 y = floor(N / r0)
 ```
 
-Let `U` be the PGSPG reset certificate at the previous public endpoint before
-`y`. Write:
+Let:
 
 ```text
-a1 = U.anchor
-r1 = U.reset_endpoint
-d = U.reset_deadline_value
-sigma1 = U.reset_signature
+a1 = previous_public_endpoint_before(y)
+U0 = PGSPG reset certificate at a1
+r1 = U0.reset_endpoint
+d = U0.reset_deadline_value
+sigma1 = U0.reset_signature
 ```
+
+The reset endpoint `r1` is the upper certificate's first reset endpoint. The
+deadline value `d` is the first public upper-side boundary after `r1` where the
+certificate's reset freedom ends. It is computed from the certificate's first
+tail offset, first lower-divisor threat offset, or candidate bound, whichever
+arrives first.
+
+### Strict Reset Closure
 
 Strict reset closure resolves when:
 
 ```text
 floor(N / r0) == r1
 floor(N / r1) == r0
-L0.reset_signature == sigma1
+sigma0 == sigma1
 ```
 
-When strict reset closure fails, the deadline correction is:
+When those three conditions hold, the endpoint class is:
+
+```text
+(r0, r1)
+```
+
+### Deadline-Signature Correction
+
+When strict reset closure fails, the single public deadline correction is:
 
 ```text
 z = floor(N / r1)
 c = previous_public_endpoint_before(z)
-L = PGSPG_certificate(c)
+L = PGSPG reset certificate at c
 sigma = L.reset_signature
 ```
 
-The corrected endpoint class resolves exactly when:
+The correction is asymmetric by construction. The lower side is corrected by
+moving to the previous public endpoint before the transported failed upper
+reset. The upper side moves from its failed reset endpoint `r1` to its own
+certificate deadline `d`. This is the deadline-signature law: the upper
+certificate supplies the deadline, and the lower corrected certificate must
+carry the same reset signature.
+
+The corrected structural endpoint class resolves exactly when:
 
 ```text
 c < a0
@@ -74,13 +98,17 @@ When those five conditions hold, the endpoint class is:
 (c, d)
 ```
 
-If any condition fails, the public state is unresolved. No search budget,
-product check, divisibility test, audit endpoint, hidden factor, or fallback
-path enters the law.
+If any condition fails, the public state is unresolved. The correction is one
+step only; there is no loop and no widening walk.
+
+The public law emits a structural endpoint class. It does not use `N mod c`,
+`c * d == N`, `gcd`, audit endpoints, hidden factors, or a fallback path as an
+inference predicate. Downstream audit may confirm that an emitted endpoint class
+is the exact factor pair, but audit does not define the law.
 
 ## Confirmed Row
 
-The official 40-bit RSA v2 rung resolves under this law:
+The official 40-bit RSA v2 rung resolves by deadline-signature correction:
 
 ```text
 case_id = rsa_v2_40bit_static_001
