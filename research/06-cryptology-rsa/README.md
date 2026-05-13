@@ -10,8 +10,9 @@ Primary homes:
 - `research/06-cryptology-rsa/experiments/rsa/v2/`
 - `research/06-cryptology-rsa/experiments/rsa/v3/`
 - `research/06-cryptology-rsa/docs/cryptology/`
-- `research/06-cryptology-rsa/docs/shor_order_entropy/`
+- `research/06-cryptology-rsa/docs/endpoint_structure_law.md`
 - `research/06-cryptology-rsa/docs/semiprime_branch/`
+- `research/06-cryptology-rsa/archive/2026-05-13-shor-order-entropy-sidecar/`
 - `research/06-cryptology-rsa/output/semiprime_branch/`
 - `research/06-cryptology-rsa/output/batch_modular_factor_closure_probe/`
 - `research/06-cryptology-rsa/output/batch_modular_factor_closure_probe_f50000/`
@@ -33,19 +34,27 @@ APIs are audit or comparison tools only. They are not PGS inference mechanisms.
 
 No RSA-scale resolver theorem is claimed in this chapter.
 
-## Measured Evidence
+## Endpoint Structure Law
 
-The PGS-Shor order entropy sidecar records a measured collapse on the resolved
-40-bit RSA v2 ladder rung:
+RSA moduli do expose deterministic endpoint structure. The live RSA v2 law is
+reciprocal deadline-signature correction:
 
 ```text
-rsa_v2_40bit_static_001: 80 baseline phase bits -> 0 residual phase bits
-rsa_v2_50bit_static_001: 100 baseline phase bits -> 100 residual phase bits
+z = floor(N / upper.reset_endpoint)
+c = previous_public_endpoint_before(z)
+d = upper.reset_deadline_value
+
+resolve iff:
+  c < lower.anchor
+  d > upper.reset_endpoint
+  floor(N / c) == d
+  floor(N / d) == c
+  corrected_lower.reset_signature == upper.reset_signature
 ```
 
-The 40-bit row is measured and audit-confirmed after public PGS endpoint-class
-inference. The 50-bit row remains unresolved and preserves the ordinary Shor
-burden. See `docs/shor_order_entropy/index.html`.
+See `docs/endpoint_structure_law.md`.
+
+## Measured Evidence
 
 RSA v2 records mixed certificate-pair state on the committed ladder:
 
@@ -53,6 +62,13 @@ RSA v2 records mixed certificate-pair state on the committed ladder:
 rsa_v2_40bit_static_001: resolved_by_reciprocal_deadline_signature_correction
 rsa_v2_50bit_static_001: unresolved_by_certificate_pair_not_closed
 ```
+
+The 40-bit row is measured and audit-confirmed after public PGS endpoint-class
+inference. The 50-bit row remains unresolved under the live public rule.
+
+The former PGS-Shor HTML documentation is archived at
+`archive/2026-05-13-shor-order-entropy-sidecar/` because Shor is downstream
+comparison context, not the active RSA v2 research object.
 
 Semiprime backward-law surfaces live under `research/06-cryptology-rsa/output/semiprime_branch/`. They are
 measured search surfaces and do not constitute factorization results.
@@ -74,17 +90,16 @@ factorization result by this reorganization.
 ## Unresolved State
 
 The RSA v2 certificate-pair state remains unresolved where the artifacts say
-it is unresolved. The 50-bit order-entropy row remains unresolved. Scaling
-remains blocked unless a PGS-native invariant closes the survivor state without
-resolver logic.
+it is unresolved. The 50-bit row remains unresolved. The active task is to
+explain the endpoint-structure law already present in the code and generated
+outputs.
 
 ## Reproduce
 
-Run the focused RSA validation command listed in Audit Status. For the
-PGS-Shor order entropy sidecar, run:
+Run the focused RSA validation command listed in Audit Status. For the live RSA
+v2 endpoint law, run:
 
 ```text
-python3 research/06-cryptology-rsa/experiments/rsa/v2/shor_order_entropy_probe.py
 python3 -m pytest research/06-cryptology-rsa/tests/test_rsa_v2_scripts.py -q
 ```
 
