@@ -22,7 +22,7 @@ Use strikethrough for completed items:
 ## Scalability
 
 - [x] ~~Move large-coordinate exact interval support into the shared `divisor_counts_segment(...)` backend and remove `SMALL_REGIME_MAX_BITS = 50`.~~
-- [ ] Implement `OECC_RECURSIVE_V2` as a side-by-side runner, not a replacement.
+- [x] ~~Implement `OECC_RECURSIVE_V2` as a side-by-side runner, not a replacement.~~
 - [ ] Compare recursive jumps against `OECC_LINEAR_V1` and reject the recursive version if it skips the first baseline structural closure.
 - [ ] Add cycle detection for recursive candidate versions.
 - [ ] Add explicit balance-boundary unresolved status for endpoint-chain exhaustion.
