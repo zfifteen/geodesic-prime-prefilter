@@ -149,6 +149,12 @@ smaller factor of a parent row without proving a new global mechanism.
 This target is not a local CRT contradiction. Full-cutoff local CRT obstruction
 models exist.
 
+This target is not local obstruction inheritance. The full-cutoff local CRT
+model has a complete local parent obstruction and `569` assigned child
+carriers, but all `569` children are closed. Therefore the obstruction
+inheritance theorem must use actual prime-root/global PGS structure, not local
+congruence consistency alone.
+
 ## Required Proof Shape
 
 A proof must establish one of the following deterministic statements.
@@ -294,12 +300,19 @@ invalidated by the parent-residue audit. The response also assumed one
 prime-valued rough defect per child; the standing-record descent artifact has
 `62` children with prime-valued rough-defect counts ranging from `3` to `21`.
 
+Grok response `cad9c1e1-0889-9eeb-8b74-feb21382ecd7` agreed that the local CRT
+model rules out local obstruction inheritance. The result does not refute the
+actual-prime-root theorem. It shows that the next proof must use a global PGS
+condition absent from the local CRT construction, or prove direct
+impossibility of `O(r)` for positive-row prime roots.
+
 The already-invalidated local routes are recorded in:
 
 ```text
 research/04-bounded-compression/docs/square_tail_edge_semantics_blocker.md
 research/04-bounded-compression/docs/findings/square_tail_child_selected_square_inheritance_audit.md
 research/04-bounded-compression/docs/findings/square_tail_child_closure_parent_residue_audit.md
+research/04-bounded-compression/docs/findings/square_tail_obstruction_inheritance_local_model_audit.md
 research/04-bounded-compression/docs/findings/square_tail_crt_model_arrival_order_audit_509.md
 research/04-bounded-compression/docs/findings/square_tail_full_cutoff_crt_model_509.md
 ```

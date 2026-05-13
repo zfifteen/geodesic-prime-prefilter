@@ -1,0 +1,176 @@
+{
+  "source_root": 509,
+  "representative_root": "89726961223544427015292389839",
+  "parent_local_model_consistent": true,
+  "parent_rough_defect_count": 569,
+  "assigned_child_carrier_count": 569,
+  "children_with_O_count": 0,
+  "children_closed_count": 569,
+  "all_children_closed": true,
+  "min_child_rough_prime_defect_count": 2,
+  "max_child_rough_prime_defect_count": 15,
+  "boundary": "local CRT complete obstruction does not force obstruction inheritance; all assigned child carriers are closed",
+  "first_child_rows": [
+    {
+      "root": 4451,
+      "M": 71,
+      "rough_defect_count": 17,
+      "rough_prime_defect_count": 7,
+      "closed_by_rough_prime_defect": true,
+      "O_holds": false
+    },
+    {
+      "root": 4483,
+      "M": 71,
+      "rough_defect_count": 19,
+      "rough_prime_defect_count": 9,
+      "closed_by_rough_prime_defect": true,
+      "O_holds": false
+    },
+    {
+      "root": 4513,
+      "M": 71,
+      "rough_defect_count": 16,
+      "rough_prime_defect_count": 4,
+      "closed_by_rough_prime_defect": true,
+      "O_holds": false
+    },
+    {
+      "root": 4517,
+      "M": 71,
+      "rough_defect_count": 16,
+      "rough_prime_defect_count": 7,
+      "closed_by_rough_prime_defect": true,
+      "O_holds": false
+    },
+    {
+      "root": 4519,
+      "M": 71,
+      "rough_defect_count": 18,
+      "rough_prime_defect_count": 11,
+      "closed_by_rough_prime_defect": true,
+      "O_holds": false
+    },
+    {
+      "root": 4549,
+      "M": 71,
+      "rough_defect_count": 22,
+      "rough_prime_defect_count": 13,
+      "closed_by_rough_prime_defect": true,
+      "O_holds": false
+    },
+    {
+      "root": 4561,
+      "M": 71,
+      "rough_defect_count": 14,
+      "rough_prime_defect_count": 5,
+      "closed_by_rough_prime_defect": true,
+      "O_holds": false
+    },
+    {
+      "root": 4583,
+      "M": 71,
+      "rough_defect_count": 20,
+      "rough_prime_defect_count": 8,
+      "closed_by_rough_prime_defect": true,
+      "O_holds": false
+    },
+    {
+      "root": 4597,
+      "M": 71,
+      "rough_defect_count": 18,
+      "rough_prime_defect_count": 7,
+      "closed_by_rough_prime_defect": true,
+      "O_holds": false
+    },
+    {
+      "root": 4621,
+      "M": 71,
+      "rough_defect_count": 20,
+      "rough_prime_defect_count": 12,
+      "closed_by_rough_prime_defect": true,
+      "O_holds": false
+    },
+    {
+      "root": 4643,
+      "M": 71,
+      "rough_defect_count": 18,
+      "rough_prime_defect_count": 8,
+      "closed_by_rough_prime_defect": true,
+      "O_holds": false
+    },
+    {
+      "root": 4649,
+      "M": 71,
+      "rough_defect_count": 17,
+      "rough_prime_defect_count": 7,
+      "closed_by_rough_prime_defect": true,
+      "O_holds": false
+    },
+    {
+      "root": 4657,
+      "M": 71,
+      "rough_defect_count": 21,
+      "rough_prime_defect_count": 12,
+      "closed_by_rough_prime_defect": true,
+      "O_holds": false
+    },
+    {
+      "root": 4663,
+      "M": 71,
+      "rough_defect_count": 15,
+      "rough_prime_defect_count": 7,
+      "closed_by_rough_prime_defect": true,
+      "O_holds": false
+    },
+    {
+      "root": 4679,
+      "M": 71,
+      "rough_defect_count": 19,
+      "rough_prime_defect_count": 7,
+      "closed_by_rough_prime_defect": true,
+      "O_holds": false
+    },
+    {
+      "root": 4703,
+      "M": 72,
+      "rough_defect_count": 21,
+      "rough_prime_defect_count": 11,
+      "closed_by_rough_prime_defect": true,
+      "O_holds": false
+    },
+    {
+      "root": 4721,
+      "M": 72,
+      "rough_defect_count": 16,
+      "rough_prime_defect_count": 9,
+      "closed_by_rough_prime_defect": true,
+      "O_holds": false
+    },
+    {
+      "root": 4729,
+      "M": 72,
+      "rough_defect_count": 17,
+      "rough_prime_defect_count": 10,
+      "closed_by_rough_prime_defect": true,
+      "O_holds": false
+    },
+    {
+      "root": 4733,
+      "M": 72,
+      "rough_defect_count": 18,
+      "rough_prime_defect_count": 8,
+      "closed_by_rough_prime_defect": true,
+      "O_holds": false
+    },
+    {
+      "root": 4759,
+      "M": 72,
+      "rough_defect_count": 19,
+      "rough_prime_defect_count": 8,
+      "closed_by_rough_prime_defect": true,
+      "O_holds": false
+    }
+  ],
+  "obstructed_child_rows": []
+}

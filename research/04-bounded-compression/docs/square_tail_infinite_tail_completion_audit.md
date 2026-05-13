@@ -50,6 +50,7 @@ following:
 | Exclude direct child-closing-prime back-cover | `square_tail_child_closure_parent_residue_audit.md` | complete |
 | State global obstruction-collapse theorem target | `square_tail_global_obstruction_collapse_target.md` | complete |
 | State selection-free descent target and finite base | `square_tail_global_obstruction_collapse_target.md` | complete |
+| Exclude local obstruction inheritance | `square_tail_obstruction_inheritance_local_model_audit.md` | complete |
 | Prove a prime-valued M-rough defect must occur before the cutoff | No proof artifact exists. | missing |
 | Produce a counterexample | No counterexample artifact exists. | missing |
 
@@ -178,6 +179,7 @@ The following are useful evidence but do not complete the goal:
 - selected-square deadline audits that do not imply the dynamic cutoff;
 - child selected-square inheritance without a parent-to-child transport law;
 - child closing primes that do not land inside the parent cutoff window;
+- local obstruction inheritance without actual prime-root/global PGS structure;
 - Grok agreement with the equivalence.
 
 ## Next Valid Work
