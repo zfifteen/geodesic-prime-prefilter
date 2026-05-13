@@ -260,40 +260,46 @@ def test_runner_reports_certificate_pairs_without_false_resolution(tmp_path):
             "case_id": CASE_ID,
             "bits": 40,
             "N": N_VALUE,
-            "status": "resolved",
-            "p": P_VALUE,
-            "q": Q_VALUE,
+            "status": "public_endpoint_class_found",
+            "public_structure_found": True,
+            "endpoint_class_lower": P_VALUE,
+            "endpoint_class_upper": Q_VALUE,
+            "public_closure_status": "resolved_by_reciprocal_deadline_signature_correction",
             "rule_id": RULE_ID,
         },
         {
             "case_id": CASE_50_ID,
             "bits": 50,
             "N": GENERATED_50_N,
-            "status": "resolved",
-            "p": "32046877",
-            "q": "32060407",
-            "endpoint_class_role": "structural_endpoint_class",
+            "status": "public_endpoint_class_found",
+            "public_structure_found": True,
+            "endpoint_class_lower": "32046877",
+            "endpoint_class_upper": "32060407",
+            "public_closure_status": "resolved_by_oriented_endpoint_chain_closure",
             "rule_id": RULE_ID,
         },
         {
             "case_id": CASE_64_ID,
             "bits": 64,
             "N": GENERATED_64_N,
-            "status": "resolved",
-            "p": "3221224297",
-            "q": "3221276677",
-            "endpoint_class_role": "structural_endpoint_class",
+            "status": "public_endpoint_class_found",
+            "public_structure_found": True,
+            "endpoint_class_lower": "3221224297",
+            "endpoint_class_upper": "3221276677",
+            "public_closure_status": "resolved_by_oriented_endpoint_chain_closure",
             "rule_id": RULE_ID,
         },
     ]
-    assert summary["cases"][0]["closure_status"] == (
+    for row in inference:
+        assert {"p", "q", "endpoint_class_role"}.isdisjoint(row)
+    assert summary["cases"][0]["public_closure_status"] == (
         "resolved_by_reciprocal_deadline_signature_correction"
     )
     assert summary["cases"][0]["corrected_lower_certificate_present"]
-    assert summary["cases"][1]["closure_status"] == "resolved_by_oriented_endpoint_chain_closure"
+    assert summary["cases"][1]["public_closure_status"] == "resolved_by_oriented_endpoint_chain_closure"
     assert summary["cases"][1]["corrected_lower_certificate_present"]
     assert summary["cases"][1]["endpoint_chain_steps"] == 389
-    assert summary["cases"][2]["closure_status"] == "resolved_by_oriented_endpoint_chain_closure"
+    assert summary["cases"][2]["public_closure_status"] == "resolved_by_oriented_endpoint_chain_closure"
     assert summary["cases"][2]["corrected_lower_certificate_present"]
     assert summary["cases"][2]["endpoint_chain_steps"] == 1205
     for row in summary["cases"]:
@@ -305,7 +311,7 @@ def test_runner_reports_certificate_pairs_without_false_resolution(tmp_path):
         assert "max_lower_endpoints" not in row
         assert "lower_pgs_endpoints_seen" not in row
     assert len(survivors) == len(summary["cases"])
-    assert survivors[0]["closure_status"] == (
+    assert survivors[0]["public_closure_status"] == (
         "resolved_by_reciprocal_deadline_signature_correction"
     )
     assert survivors[0]["corrected_lower_endpoint"] == P_VALUE
@@ -313,11 +319,11 @@ def test_runner_reports_certificate_pairs_without_false_resolution(tmp_path):
     assert survivors[0]["transported_corrected_upper_endpoint"] == Q_VALUE
     assert survivors[0]["transported_corrected_lower_endpoint"] == P_VALUE
     assert survivors[0]["corrected_lower_reset_signature"] == survivors[0]["upper_reset_signature"]
-    assert survivors[1]["closure_status"] == "resolved_by_oriented_endpoint_chain_closure"
+    assert survivors[1]["public_closure_status"] == "resolved_by_oriented_endpoint_chain_closure"
     assert survivors[1]["corrected_lower_endpoint"] == "32046877"
     assert survivors[1]["corrected_upper_endpoint"] == "32060407"
     assert survivors[1]["endpoint_chain_steps"] == 389
-    assert survivors[2]["closure_status"] == "resolved_by_oriented_endpoint_chain_closure"
+    assert survivors[2]["public_closure_status"] == "resolved_by_oriented_endpoint_chain_closure"
     assert survivors[2]["corrected_lower_endpoint"] == "3221224297"
     assert survivors[2]["corrected_upper_endpoint"] == "3221276677"
     assert survivors[2]["endpoint_chain_steps"] == 1205
@@ -386,11 +392,11 @@ def test_recursive_v2_runs_side_by_side_without_mutating_linear_outputs(tmp_path
             "case_id": CASE_ID,
             "bits": 40,
             "N": N_VALUE,
-            "status": "resolved",
-            "p": P_VALUE,
-            "q": Q_VALUE,
-            "endpoint_class_role": "structural_endpoint_class",
-            "ladder_rung_resolved": True,
+            "status": "public_endpoint_class_found",
+            "public_structure_found": True,
+            "endpoint_class_lower": P_VALUE,
+            "endpoint_class_upper": Q_VALUE,
+            "public_closure_status": "resolved_by_oriented_endpoint_chain_closure",
             "implementation_label": "OECC_RECURSIVE_V2",
             "rule_id": "OECC_RECURSIVE_V2",
         },
@@ -398,11 +404,11 @@ def test_recursive_v2_runs_side_by_side_without_mutating_linear_outputs(tmp_path
             "case_id": CASE_50_ID,
             "bits": 50,
             "N": GENERATED_50_N,
-            "status": "resolved",
-            "p": "32046877",
-            "q": "32060407",
-            "endpoint_class_role": "structural_endpoint_class",
-            "ladder_rung_resolved": True,
+            "status": "public_endpoint_class_found",
+            "public_structure_found": True,
+            "endpoint_class_lower": "32046877",
+            "endpoint_class_upper": "32060407",
+            "public_closure_status": "resolved_by_oriented_endpoint_chain_closure",
             "implementation_label": "OECC_RECURSIVE_V2",
             "rule_id": "OECC_RECURSIVE_V2",
         },
@@ -410,11 +416,11 @@ def test_recursive_v2_runs_side_by_side_without_mutating_linear_outputs(tmp_path
             "case_id": CASE_64_ID,
             "bits": 64,
             "N": GENERATED_64_N,
-            "status": "resolved",
-            "p": "3221224297",
-            "q": "3221276677",
-            "endpoint_class_role": "structural_endpoint_class",
-            "ladder_rung_resolved": True,
+            "status": "public_endpoint_class_found",
+            "public_structure_found": True,
+            "endpoint_class_lower": "3221224297",
+            "endpoint_class_upper": "3221276677",
+            "public_closure_status": "resolved_by_oriented_endpoint_chain_closure",
             "implementation_label": "OECC_RECURSIVE_V2",
             "rule_id": "OECC_RECURSIVE_V2",
         },
@@ -426,9 +432,9 @@ def test_recursive_v2_runs_side_by_side_without_mutating_linear_outputs(tmp_path
     assert diagnostics[50]["recursion_steps"] == 322
     assert diagnostics[64]["recursion_steps"] == 987
     assert diagnostics[64]["visited_anchor_count"] == 988
-    assert all(row["ladder_rung_resolved"] for row in diagnostics.values())
-    assert all(row["ladder_rung_resolved"] for row in summary["cases"])
-    assert all(row["ladder_rung_resolved"] for row in pairs)
+    assert all(row["public_structure_found"] for row in diagnostics.values())
+    assert all(row["public_structure_found"] for row in summary["cases"])
+    assert all(row["public_structure_found"] for row in pairs)
 
 
 def test_recursive_v2_preserves_48bit_baseline_endpoint_class(tmp_path):
@@ -458,18 +464,18 @@ def test_recursive_v2_preserves_48bit_baseline_endpoint_class(tmp_path):
             "case_id": "rsa_v2_48bit_ad_hoc_001",
             "bits": 48,
             "N": AD_HOC_48_N,
-            "status": "resolved",
-            "p": "15802739",
-            "q": "15812609",
-            "endpoint_class_role": "structural_endpoint_class",
-            "ladder_rung_resolved": True,
+            "status": "public_endpoint_class_found",
+            "public_structure_found": True,
+            "endpoint_class_lower": "15802739",
+            "endpoint_class_upper": "15812609",
+            "public_closure_status": "resolved_by_oriented_endpoint_chain_closure",
             "implementation_label": "OECC_RECURSIVE_V2",
             "rule_id": "OECC_RECURSIVE_V2",
         }
     ]
     assert diagnostics[0]["recursion_steps"] == 246
     assert diagnostics[0]["visited_anchor_count"] == 247
-    assert diagnostics[0]["ladder_rung_resolved"] is True
+    assert diagnostics[0]["public_structure_found"] is True
 
 
 def test_minimal_typed_solver_resolves_40_and_refuses_50_without_false_endpoint_class(tmp_path):
@@ -620,13 +626,15 @@ def test_deadline_signature_correction_resolves_public_toy_case(tmp_path):
             "case_id": TOY_DEADLINE_CASE_ID,
             "bits": 17,
             "N": TOY_DEADLINE_N,
-            "status": "resolved",
-            "p": TOY_DEADLINE_P,
-            "q": TOY_DEADLINE_Q,
+            "status": "public_endpoint_class_found",
+            "public_structure_found": True,
+            "endpoint_class_lower": TOY_DEADLINE_P,
+            "endpoint_class_upper": TOY_DEADLINE_Q,
+            "public_closure_status": "resolved_by_reciprocal_deadline_signature_correction",
             "rule_id": RULE_ID,
         }
     ]
-    assert summary["cases"][0]["closure_status"] == (
+    assert summary["cases"][0]["public_closure_status"] == (
         "resolved_by_reciprocal_deadline_signature_correction"
     )
     assert survivors[0]["corrected_lower_endpoint"] == TOY_DEADLINE_P
@@ -650,7 +658,7 @@ def test_reset_endpoint_crossing_orientation_stops_before_upper_certificate():
     survivor = module.pair_to_json(case, pair)
     inference = module.result_row(case, pair)
 
-    assert summary["closure_status"] == "resolved_by_oriented_endpoint_chain_closure"
+    assert summary["public_closure_status"] == "resolved_by_oriented_endpoint_chain_closure"
     assert summary["upper_certificate_present"] is True
     assert summary["endpoint_chain_steps"] == 296
     assert survivor["lower_anchor"] == "15802769"
@@ -659,10 +667,10 @@ def test_reset_endpoint_crossing_orientation_stops_before_upper_certificate():
     assert survivor["corrected_upper_endpoint"] == "15812609"
     assert survivor["transported_corrected_upper_endpoint"] == "15812609"
     assert survivor["transported_corrected_lower_endpoint"] == "15802739"
-    assert inference["status"] == "resolved"
-    assert inference["endpoint_class_role"] == "structural_endpoint_class"
-    assert inference["p"] == "15802739"
-    assert inference["q"] == "15812609"
+    assert inference["status"] == "public_endpoint_class_found"
+    assert inference["endpoint_class_lower"] == "15802739"
+    assert inference["endpoint_class_upper"] == "15812609"
+    assert {"p", "q", "endpoint_class_role"}.isdisjoint(inference)
 
 
 def test_oecc_linear_v1_baseline_endpoint_classes_are_preserved():
@@ -679,37 +687,34 @@ def test_oecc_linear_v1_baseline_endpoint_classes_are_preserved():
             "resolved_by_reciprocal_deadline_signature_correction",
             P_VALUE,
             Q_VALUE,
-            None,
         ),
         "rsa_v2_48bit_ad_hoc_001": (
             "resolved_by_oriented_endpoint_chain_closure",
             "15802739",
             "15812609",
-            "structural_endpoint_class",
         ),
         CASE_50_ID: (
             "resolved_by_oriented_endpoint_chain_closure",
             "32046877",
             "32060407",
-            "structural_endpoint_class",
         ),
         CASE_64_ID: (
             "resolved_by_oriented_endpoint_chain_closure",
             "3221224297",
             "3221276677",
-            "structural_endpoint_class",
         ),
     }
 
     for case in baseline_cases:
         pair = module.certificate_pair(case)
         row = module.result_row(case, pair)
-        closure_status, lower, upper, role = expected[case.case_id]
+        closure_status, lower, upper = expected[case.case_id]
         assert pair.closure_status == closure_status
-        assert row["status"] == "resolved"
-        assert row["p"] == lower
-        assert row["q"] == upper
-        assert row.get("endpoint_class_role") == role
+        assert row["status"] == "public_endpoint_class_found"
+        assert row["endpoint_class_lower"] == lower
+        assert row["endpoint_class_upper"] == upper
+        assert row["public_closure_status"] == closure_status
+        assert {"p", "q", "endpoint_class_role"}.isdisjoint(row)
 
 
 def test_audit_passes_only_with_separate_factor_file(tmp_path):
@@ -717,6 +722,7 @@ def test_audit_passes_only_with_separate_factor_file(tmp_path):
     build_fixtures(tmp_path)
     output_dir = run_inference(tmp_path)
     audit_output = tmp_path / "audit.csv"
+    factor_results = tmp_path / "factor_result_rows.jsonl"
     module = load_module(V2 / "audit_experiment.py")
 
     assert module.main(
@@ -729,6 +735,8 @@ def test_audit_passes_only_with_separate_factor_file(tmp_path):
             str(output_dir / "inference_rows.jsonl"),
             "--output",
             str(audit_output),
+            "--factor-results",
+            str(factor_results),
         ]
     ) == 0
 
@@ -739,6 +747,7 @@ def test_audit_passes_only_with_separate_factor_file(tmp_path):
             "case_id": CASE_ID,
             "bits": "40",
             "N": N_VALUE,
+            "factor_found": "true",
             "audit_integrity_status": "integrity_pass",
             "inference_audit_status": "inference_audit_pass",
         },
@@ -746,6 +755,7 @@ def test_audit_passes_only_with_separate_factor_file(tmp_path):
             "case_id": CASE_50_ID,
             "bits": "50",
             "N": GENERATED_50_N,
+            "factor_found": "false",
             "audit_integrity_status": "integrity_pass",
             "inference_audit_status": "inference_audit_fail",
         },
@@ -753,10 +763,17 @@ def test_audit_passes_only_with_separate_factor_file(tmp_path):
             "case_id": CASE_64_ID,
             "bits": "64",
             "N": GENERATED_64_N,
+            "factor_found": "false",
             "audit_integrity_status": "integrity_pass",
             "inference_audit_status": "inference_audit_fail",
         },
     ]
+    factor_rows = read_jsonl(factor_results)
+    assert [row["factor_found"] for row in factor_rows] == [True, False, False]
+    assert [row["public_structure_found"] for row in factor_rows] == [True, True, True]
+    assert factor_rows[0]["factor_endpoint_lower"] == P_VALUE
+    assert factor_rows[1]["factor_endpoint_lower"] == GENERATED_50_P
+    assert factor_rows[2]["factor_endpoint_lower"] == GENERATED_64_P
     for row in rows:
         assert {"p", "q"}.isdisjoint(row)
 
@@ -889,10 +906,11 @@ def test_runner_accepts_above_50_bit_case_through_global_interval_backend():
 
     assert pair.closure_status == "resolved_by_oriented_endpoint_chain_closure"
     assert pair.endpoint_chain_steps == 60
-    assert row["status"] == "resolved"
-    assert row["p"] == "999998683"
-    assert row["q"] == "1000001333"
-    assert row["endpoint_class_role"] == "structural_endpoint_class"
+    assert row["status"] == "public_endpoint_class_found"
+    assert row["endpoint_class_lower"] == "999998683"
+    assert row["endpoint_class_upper"] == "1000001333"
+    assert row["public_closure_status"] == "resolved_by_oriented_endpoint_chain_closure"
+    assert {"p", "q", "endpoint_class_role"}.isdisjoint(row)
 
 
 def test_fixture_builder_has_no_generation_or_classical_math_imports():
@@ -1309,9 +1327,9 @@ def test_toy_normalized_frontier_closure_sweep_keeps_current_rows_unresolved(tmp
     }
     assert {row["case_id"] for row in sweep_rows} == {CASE_ID, CASE_50_ID}
     by_case = {row["case_id"]: row for row in sweep_rows}
-    assert by_case[CASE_ID]["certificate_status_before"] == "resolved"
+    assert by_case[CASE_ID]["certificate_status_before"] == "public_endpoint_class_found"
     assert by_case[CASE_ID]["frontier_live_but_closed"]
-    assert by_case[CASE_50_ID]["certificate_status_before"] == "resolved"
+    assert by_case[CASE_50_ID]["certificate_status_before"] == "public_endpoint_class_found"
     assert by_case[CASE_50_ID]["frontier_live_but_closed"]
     for row in sweep_rows:
         assert row["certificate_status_after"] == "sidecar_blocked_by_live_normalized_frontier"

@@ -80,22 +80,32 @@ Committed rows:
 
 ```text
 rsa_v2_40bit_static_001
-  status = resolved_by_reciprocal_deadline_signature_correction
+  public_closure_status = resolved_by_reciprocal_deadline_signature_correction
   endpoint class = (1048559, 1048589)
-  audit status = inference_audit_pass
+  factor_found = true
 
 rsa_v2_50bit_static_001
-  status = resolved_by_oriented_endpoint_chain_closure
+  public_closure_status = resolved_by_oriented_endpoint_chain_closure
   endpoint_chain_steps = 389
   endpoint class = (32046877, 32060407)
-  audit status = inference_audit_fail
+  factor_found = false
+
+rsa_v2_64bit_static_001
+  public_closure_status = resolved_by_oriented_endpoint_chain_closure
+  endpoint_chain_steps = 1205
+  endpoint class = (3221224297, 3221276677)
+  factor_found = false
 ```
+
+Erratum: OECC_LINEAR_V1 and OECC_RECURSIVE_V2 found deterministic public
+endpoint structure on 50-bit and 64-bit rungs, but did not find the factors.
+The old shorthand `resolved` is invalidated for audit-failing endpoint classes.
 
 Ad hoc 48-bit row:
 
 ```text
 N = 249882542035169
-status = resolved_by_oriented_endpoint_chain_closure
+public_closure_status = resolved_by_oriented_endpoint_chain_closure
 endpoint_chain_steps = 296
 endpoint class = (15802739, 15812609)
 ```

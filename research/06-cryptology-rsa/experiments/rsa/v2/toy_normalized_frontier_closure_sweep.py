@@ -48,8 +48,8 @@ def case_statuses(rows: list[dict[str, object]]) -> dict[str, str]:
     statuses: dict[str, str] = {}
     for row in rows:
         case_id = str(row["case_id"])
-        if str(row["status"]) == "resolved":
-            statuses[case_id] = "resolved"
+        if str(row["status"]) == "public_endpoint_class_found":
+            statuses[case_id] = "public_endpoint_class_found"
         else:
             statuses[case_id] = str(row["unresolved_reason"])
     return statuses
@@ -191,10 +191,10 @@ def case_row(
         "terminal_without_named_public_invariant": len(terminal_without_named_rule),
         "normalized_live_frontier_count": normalized_live_count,
         "frontier_empty_but_unresolved": (
-            normalized_live_count == 0 and status_before != "resolved"
+            normalized_live_count == 0 and status_before != "public_endpoint_class_found"
         ),
         "frontier_live_but_closed": (
-            normalized_live_count > 0 and status_before == "resolved"
+            normalized_live_count > 0 and status_before == "public_endpoint_class_found"
         ),
         "certificate_status_after": status_after,
     }

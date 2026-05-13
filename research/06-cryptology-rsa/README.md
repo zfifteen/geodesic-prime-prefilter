@@ -56,15 +56,22 @@ See `docs/endpoint_structure_law.md`.
 
 ## Measured Evidence
 
-RSA v2 records mixed certificate-pair state on the committed ladder:
+RSA v2 records public endpoint structure and a separate factor verdict on the
+committed ladder:
 
 ```text
-rsa_v2_40bit_static_001: resolved_by_reciprocal_deadline_signature_correction
-rsa_v2_50bit_static_001: unresolved_by_reset_endpoint_crosses_orientation
+rsa_v2_40bit_static_001: factor_found = true
+rsa_v2_50bit_static_001: factor_found = false
+rsa_v2_64bit_static_001: factor_found = false
 ```
 
 The 40-bit row is measured and audit-confirmed after public PGS endpoint-class
-inference. The 50-bit row remains unresolved under the live public rule.
+inference. The 50-bit and 64-bit rows expose deterministic public endpoint
+structure, but the audit says those endpoint classes are not the factor pairs.
+
+Erratum: earlier OECC_LINEAR_V1 and OECC_RECURSIVE_V2 wording used `resolved`
+and `p` / `q` for audit-failing endpoint classes. That wording is invalidated.
+The plain result is: public structure found, factors not found.
 
 The former PGS-Shor HTML documentation is archived at
 `archive/2026-05-13-shor-order-entropy-sidecar/` because Shor is downstream
@@ -84,15 +91,15 @@ python3 -m pytest research/06-cryptology-rsa/tests/test_rsa_v2_scripts.py resear
 
 ## Invalidated Rules
 
-No unresolved survivor, residual, or blocker state was converted into a
-factorization result by this reorganization.
+No unresolved survivor, residual, blocker state, or public endpoint class is a
+factorization result unless downstream audit reports `factor_found = true`.
 
 ## Unresolved State
 
-The RSA v2 certificate-pair state remains unresolved where the artifacts say
-it is unresolved. The 50-bit row remains unresolved. The active task is to
-explain the endpoint-structure law already present in the code and generated
-outputs.
+The RSA v2 factor-pair state remains unresolved where the audit says
+`factor_found = false`. The 50-bit and 64-bit rows are public-structure hits,
+not factor solves. The active task is to find the PGS-native discriminator that
+separates the factor endpoint class from other public endpoint classes.
 
 ## Reproduce
 
