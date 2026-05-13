@@ -14,6 +14,7 @@ SCRIPT_NAMES = (
     "build_ladder_fixtures.py",
     "generate_ladder_rung.py",
     "run_experiment.py",
+    "run_recursive_v2.py",
     "audit_experiment.py",
     "transported_exclusion_debt_probe.py",
     "transported_d4_budget_probe.py",
@@ -319,6 +320,99 @@ def test_runner_measurement_mode_is_non_persistent(tmp_path, capsys):
         assert row["cache_lookups"] >= row["cache_misses"]
         assert 0 <= row["cache_hit_rate"] <= 1
         assert row["elapsed_ms"] >= 0
+
+
+def test_recursive_v2_runs_side_by_side_without_mutating_linear_outputs(tmp_path):
+    """As a reviewer, I want recursive v2 outputs separate from the baseline."""
+    build_fixtures(tmp_path)
+    linear_output = run_inference(tmp_path)
+    inference_before = (linear_output / "inference_rows.jsonl").read_text(encoding="utf-8")
+    module = load_module(V2 / "run_recursive_v2.py")
+    recursive_output = tmp_path / "recursive_v2"
+
+    assert module.main(
+        [
+            "--cases",
+            str(tmp_path / "ladder_cases.jsonl"),
+            "--output-dir",
+            str(recursive_output),
+        ]
+    ) == 0
+
+    assert (linear_output / "inference_rows.jsonl").read_text(encoding="utf-8") == inference_before
+    assert sorted(path.name for path in recursive_output.iterdir()) == [
+        "recursive_diagnostic_rows.jsonl",
+        "recursive_inference_rows.jsonl",
+        "recursive_pair_rows.jsonl",
+        "summary.json",
+    ]
+    rows = read_jsonl(recursive_output / "recursive_inference_rows.jsonl")
+    assert rows == [
+        {
+            "case_id": CASE_ID,
+            "bits": 40,
+            "N": N_VALUE,
+            "status": "resolved",
+            "p": P_VALUE,
+            "q": Q_VALUE,
+            "endpoint_class_role": "structural_endpoint_class",
+            "implementation_label": "OECC_RECURSIVE_V2",
+            "rule_id": "OECC_RECURSIVE_V2",
+        },
+        {
+            "case_id": CASE_50_ID,
+            "bits": 50,
+            "N": GENERATED_50_N,
+            "status": "resolved",
+            "p": "32046877",
+            "q": "32060407",
+            "endpoint_class_role": "structural_endpoint_class",
+            "implementation_label": "OECC_RECURSIVE_V2",
+            "rule_id": "OECC_RECURSIVE_V2",
+        },
+    ]
+    diagnostics = {row["bits"]: row for row in read_jsonl(recursive_output / "recursive_diagnostic_rows.jsonl")}
+    assert diagnostics[40]["recursion_steps"] == 0
+    assert diagnostics[50]["recursion_steps"] == 322
+
+
+def test_recursive_v2_preserves_48bit_baseline_endpoint_class(tmp_path):
+    """As a reviewer, I want recursive v2 to preserve the 48-bit endpoint class."""
+    cases_path = tmp_path / "cases.jsonl"
+    cases_path.write_text(
+        json.dumps(
+            {
+                "case_id": "rsa_v2_48bit_ad_hoc_001",
+                "bits": 48,
+                "N": AD_HOC_48_N,
+            },
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    module = load_module(V2 / "run_recursive_v2.py")
+    output_dir = tmp_path / "recursive_v2"
+
+    assert module.main(["--cases", str(cases_path), "--output-dir", str(output_dir)]) == 0
+
+    rows = read_jsonl(output_dir / "recursive_inference_rows.jsonl")
+    diagnostics = read_jsonl(output_dir / "recursive_diagnostic_rows.jsonl")
+    assert rows == [
+        {
+            "case_id": "rsa_v2_48bit_ad_hoc_001",
+            "bits": 48,
+            "N": AD_HOC_48_N,
+            "status": "resolved",
+            "p": "15802739",
+            "q": "15812609",
+            "endpoint_class_role": "structural_endpoint_class",
+            "implementation_label": "OECC_RECURSIVE_V2",
+            "rule_id": "OECC_RECURSIVE_V2",
+        }
+    ]
+    assert diagnostics[0]["recursion_steps"] == 246
+    assert diagnostics[0]["visited_anchor_count"] == 247
 
 
 def test_certificate_rows_are_derived_before_audit(tmp_path):
