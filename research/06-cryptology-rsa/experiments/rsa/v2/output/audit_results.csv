@@ -1,3 +1,4 @@
 case_id,bits,N,audit_integrity_status,inference_audit_status
 rsa_v2_40bit_static_001,40,1099507433251,integrity_pass,inference_audit_pass
 rsa_v2_50bit_static_001,50,1027435935526951,integrity_pass,inference_audit_fail
+rsa_v2_64bit_static_001,64,10376454699372036973,integrity_pass,inference_audit_fail
