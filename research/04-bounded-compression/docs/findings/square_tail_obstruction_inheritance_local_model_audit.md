@@ -15,6 +15,11 @@ for the modeled rough rows. They are not certified least factors of the
 modeled row values. Every one of those assigned carriers is closed by at least
 one prime-valued M-rough defect.
 
+The stronger local analogue uses first-arrival carriers: scan primes above `M`
+in order and record the first carrier that reaches each modeled rough row. The
+model has a distinct first-arrival carrier for every modeled rough row. Every
+one of those first-arrival carriers is also closed.
+
 | Quantity | Value |
 |---|---:|
 | Source root | `509` |
@@ -22,6 +27,10 @@ one prime-valued M-rough defect.
 | Assigned singleton carriers | `569` |
 | Assigned carriers with `O(ell)` | `0` |
 | Closed assigned carriers | `569` |
+| First-arrival carriers | `569` |
+| Distinct first-arrival carriers | `569` |
+| First-arrival carriers with `O(ell)` | `0` |
+| Closed first-arrival carriers | `569` |
 
 ## Boundary
 
@@ -35,11 +44,11 @@ local complete carrier cover at r
 
 is false for the full-cutoff local CRT model.
 
-This does not refute obstruction inheritance for actual prime roots, because
-actual `Child(r)` uses least factors of parent rough rows. The local CRT model
-does not certify least-factor minimality above `M`. The remaining theorem must
-use least-factor/global PGS structure, or it must prove direct impossibility of
-`O(r)` for positive-row prime roots.
+This does not refute obstruction inheritance for actual prime roots. The
+first-arrival carriers are local least-factor analogues inside the CRT residue
+model, but the model root is not an actual prime-root theorem instance. The
+remaining theorem must use actual prime-root/global PGS structure, or it must
+prove direct impossibility of `O(r)` for positive-row prime roots.
 
 ## Second Opinion
 
@@ -47,7 +56,14 @@ Grok response `cad9c1e1-0889-9eeb-8b74-feb21382ecd7` agreed that local
 congruence structure alone does not force obstruction inheritance. The response
 described the model as a counterexample to obstruction inheritance; the precise
 statement is narrower. It is a counterexample to assigned-carrier obstruction
-inheritance, not to the least-factor actual-prime-root theorem.
+inheritance and first-arrival-carrier obstruction inheritance, not to the
+actual-prime-root theorem.
+
+Grok response `338a5565-ff4d-9be1-9d2d-75727e0fc1ca` agreed with the corrected
+first-arrival boundary. The useful conclusion is that local congruence
+consistency plus local first-arrival order does not force obstruction
+inheritance. The caveat remains: first-arrival carriers in this model are local
+analogues, not actual least factors from an actual prime-root obstruction word.
 
 The artifact is:
 

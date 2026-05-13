@@ -149,12 +149,12 @@ smaller factor of a parent row without proving a new global mechanism.
 This target is not a local CRT contradiction. Full-cutoff local CRT obstruction
 models exist.
 
-This target is not assigned-carrier inheritance in a local CRT model. The
-full-cutoff local CRT model has a complete local parent carrier cover and `569`
-assigned singleton carriers, but all `569` assigned carriers are closed. These
-assigned carriers are not certified least-factor children. Therefore the
-obstruction inheritance theorem must use least-factor/global PGS structure, not
-local congruence consistency alone.
+This target is not carrier inheritance in a local CRT model. The full-cutoff
+local CRT model has a complete local parent carrier cover, `569` assigned
+singleton carriers, and `569` distinct first-arrival carriers. All assigned
+carriers and all first-arrival carriers are closed. Therefore the obstruction
+inheritance theorem must use actual prime-root/global PGS structure, not local
+congruence consistency or local first-arrival ordering alone.
 
 ## Required Proof Shape
 
@@ -302,11 +302,17 @@ prime-valued rough defect per child; the standing-record descent artifact has
 `62` children with prime-valued rough-defect counts ranging from `3` to `21`.
 
 Grok response `cad9c1e1-0889-9eeb-8b74-feb21382ecd7` agreed that the local CRT
-model rules out assigned-carrier obstruction inheritance. The result does not
-refute the actual-prime-root theorem because actual `Child(r)` uses least
-factors, not arbitrary congruence carriers. It shows that the next proof must
-use least-factor/global PGS structure absent from the local CRT construction,
-or prove direct impossibility of `O(r)` for positive-row prime roots.
+model rules out assigned-carrier obstruction inheritance. The artifact now also
+records the stronger first-arrival-carrier boundary. The result does not refute
+the actual-prime-root theorem because the CRT model root is not an actual
+prime-root theorem instance. It shows that the next proof must use global PGS
+structure absent from the local CRT construction, or prove direct impossibility
+of `O(r)` for positive-row prime roots.
+
+Grok response `338a5565-ff4d-9be1-9d2d-75727e0fc1ca` agreed with the corrected
+first-arrival boundary. The next theorem-bearing target remains direct
+impossibility of `O(r)` for positive-row prime roots, unless a global
+actual-prime-root invariant is isolated.
 
 The already-invalidated local routes are recorded in:
 
