@@ -235,6 +235,18 @@ reframe GWR inference.
 
 ## Current Bounded Compression Branch State
 
+As of 2026-05-12, square-tail infinite-tail research is paused. Read the pause
+handoff first:
+
+```text
+research/04-bounded-compression/docs/square_tail_pause_handoff_2026-05-12.md
+```
+
+The proof remains unresolved. The current missing invariant is a global
+constraint on small-`ell` nonsymmetric placements under actual-root
+least-factor conditions. Do not revive the invalid near-root band-counting
+route.
+
 As of 2026-05-09, the active bounded-compression handoff is:
 
 ```text
