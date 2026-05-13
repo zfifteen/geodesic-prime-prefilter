@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PGS-Shor Math Lockdown</title>
+  <style>
+    :root {
+      --ink: #121826;
+      --muted: #536174;
+      --line: #d8dee8;
+      --paper: #f7f9fc;
+      --white: #ffffff;
+      --blue: #2459d6;
+      --green: #1b8f4d;
+      --amber: #b46b00;
+      --red: #b3261e;
+      --teal: #0f766e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    header, section, footer {
+      padding: 28px clamp(20px, 5vw, 72px);
+    }
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+    }
+
+    main {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 980px;
+      font-size: clamp(34px, 5vw, 64px);
+    }
+
+    h2 {
+      margin-bottom: 14px;
+      font-size: clamp(24px, 3vw, 34px);
+    }
+
+    h3 {
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    p {
+      max-width: 920px;
+      margin: 12px 0 0;
+    }
+
+    code {
+      padding: 1px 4px;
+      border-radius: 4px;
+      background: #eef2f8;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+    }
+
+    .kicker {
+      margin-bottom: 14px;
+      color: var(--teal);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 13px;
+    }
+
+    .claim {
+      margin-top: 20px;
+      max-width: 980px;
+      color: #263143;
+      font-size: clamp(19px, 2vw, 25px);
+      line-height: 1.35;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 3px 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #f8fafc;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .freeze {
+      border-color: #efd7a6;
+      background: #fff7e8;
+      color: #8a4b00;
+    }
+
+    .measured {
+      border-color: #b6c7ef;
+      background: #eef4ff;
+      color: #1f4aa5;
+    }
+
+    .proof {
+      border-color: #b8dbc8;
+      background: #eefaf3;
+      color: #116338;
+    }
+
+    .visual {
+      overflow-x: auto;
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      padding: 18px;
+    }
+
+    svg {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 11px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #eef2f8;
+      color: #263143;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .callout {
+      border-left: 5px solid var(--amber);
+      background: var(--white);
+      padding: 16px 18px;
+      border-radius: 6px;
+    }
+
+    .paths {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px;
+    }
+
+    .paths div {
+      overflow-wrap: anywhere;
+      padding: 9px 10px;
+      background: #eef2f8;
+      border-radius: 6px;
+    }
+
+    footer {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 760px) {
+      .two, .three {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <main>
+      <div class="kicker">Scale Freeze And Mathematical Lockdown</div>
+      <h1>Explain The 40-Bit Structural Lookup Before Scaling</h1>
+      <p class="claim">The current work is frozen at the observed 40-bit PGS-Shor collapse. The next task is mathematical explanation, not a larger run.</p>
+    </main>
+  </header>
+
+  <section>
+    <main>
+      <div class="callout">
+        <p><strong>Freeze rule:</strong> do not add rungs, widen the ladder, tune thresholds, alter resolver logic, or claim scale behavior until the current observed phenomenon has a clear object-level explanation and a falsifiable boundary.</p>
+      </div>
+    </main>
+  </section>
+
+  <section>
+    <main>
+      <h2>Observed Object</h2>
+      <div class="grid three">
+        <div class="card">
+          <span class="status measured">measured</span>
+          <h3>Resolved Member</h3>
+          <p><code>N = 1099507433251</code> enters the public structural-lookup class under the current reciprocal PGS certificate rule.</p>
+        </div>
+        <div class="card">
+          <span class="status proof">audit confirmed</span>
+          <h3>Endpoint Class</h3>
+          <p>The public closure emits <code>1048559, 1048589</code>. Downstream audit confirms this is the factor pair.</p>
+        </div>
+        <div class="card">
+          <span class="status measured">order removed</span>
+          <h3>Shor Burden</h3>
+          <p>The fixed-base order vector implied by the public endpoint class equals the actual order vector, so <code>80</code> baseline phase bits become <code>0</code> residual phase bits.</p>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <section>
+    <main>
+      <h2>Explanation Target</h2>
+      <div class="visual" aria-label="Mathematical explanation target diagram">
+        <svg width="980" height="330" viewBox="0 0 980 330" role="img">
+          <title>Lockdown path from observed phenomenon to proof obligations</title>
+          <defs>
+            <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+              <path d="M0,0 L10,4 L0,8 Z" fill="#536174"/>
+            </marker>
+          </defs>
+          <rect width="980" height="330" fill="#ffffff"/>
+          <text x="26" y="34" font-size="22" font-weight="800" fill="#121826">The math to lock down before scale</text>
+
+          <g font-size="14" font-weight="700">
+            <rect x="34" y="86" width="175" height="72" rx="8" fill="#eef4ff" stroke="#b6c7ef"/>
+            <text x="62" y="116" fill="#1f4aa5">Public modulus</text>
+            <text x="92" y="140" fill="#1f4aa5">N alone</text>
+
+            <rect x="261" y="86" width="190" height="72" rx="8" fill="#f0fdfa" stroke="#99d8d0"/>
+            <text x="291" y="112" fill="#0f766e">Reciprocal floor</text>
+            <text x="305" y="136" fill="#0f766e">transport</text>
+
+            <rect x="503" y="86" width="190" height="72" rx="8" fill="#fff7e8" stroke="#efd7a6"/>
+            <text x="532" y="112" fill="#8a4b00">Deadline-signature</text>
+            <text x="567" y="136" fill="#8a4b00">closure</text>
+
+            <rect x="745" y="86" width="190" height="72" rx="8" fill="#eefaf3" stroke="#b8dbc8"/>
+            <text x="772" y="112" fill="#116338">Endpoint-class</text>
+            <text x="799" y="136" fill="#116338">determinacy</text>
+          </g>
+
+          <line x1="209" y1="122" x2="261" y2="122" stroke="#536174" stroke-width="2" marker-end="url(#arrow)"/>
+          <line x1="451" y1="122" x2="503" y2="122" stroke="#536174" stroke-width="2" marker-end="url(#arrow)"/>
+          <line x1="693" y1="122" x2="745" y2="122" stroke="#536174" stroke-width="2" marker-end="url(#arrow)"/>
+
+          <rect x="92" y="225" width="800" height="64" rx="8" fill="#f8fafc" stroke="#d8dee8"/>
+          <text x="120" y="251" font-size="15" font-weight="700" fill="#121826">Lockdown question</text>
+          <text x="120" y="274" font-size="15" fill="#263143">Why does this public transport state force the endpoint class instead of merely finding a plausible pair?</text>
+        </svg>
+      </div>
+    </main>
+  </section>
+
+  <section>
+    <main>
+      <h2>Named Objects To Define</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Object</th>
+            <th>Working Meaning</th>
+            <th>Needed Explanation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>public structural-lookup class</code></td>
+            <td>Set of public moduli for which reciprocal PGS closure emits a unique endpoint class from <code>N</code> alone.</td>
+            <td>Define membership without audit labels, hidden factors, divisibility gates, or product closure.</td>
+          </tr>
+          <tr>
+            <td><code>endpoint-class determinacy</code></td>
+            <td>State where the public PGS certificate leaves only one endpoint class compatible with the transported chamber structure.</td>
+            <td>Explain why local reciprocal transport eliminates neighboring false endpoint classes.</td>
+          </tr>
+          <tr>
+            <td><code>deadline-signature closure</code></td>
+            <td>The measured closure mechanism that resolves the 40-bit row by matching transported reset timing.</td>
+            <td>Write the arithmetic condition that makes the closure forced, not fitted.</td>
+          </tr>
+          <tr>
+            <td><code>order-bypass consequence</code></td>
+            <td>Once the endpoint class is fixed, Shor's order denominator is fixed as a downstream consequence.</td>
+            <td>Keep this as a consequence of endpoint determinacy, not the primary inference rule.</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </section>
+
+  <section>
+    <main>
+      <h2>Candidate Explanations To Test Against The Observed Row</h2>
+      <div class="grid two">
+        <div class="card">
+          <h3>Reciprocal Interval Identity</h3>
+          <p>The map from a lower interval to an upper interval should be expressed as an exact integer-floor interval statement. The proof target is to show that the observed endpoint class is forced by interval containment, not by search over products.</p>
+        </div>
+        <div class="card">
+          <h3>Reset Deadline Synchronization</h3>
+          <p>The lower and upper PGS walks are independent until the public reciprocal map makes their reset deadlines face the same boundary. The proof target is to define the exact synchronization predicate.</p>
+        </div>
+        <div class="card">
+          <h3>Carrier Signature Invariance</h3>
+          <p>The observed closure uses matching carrier and deadline signatures. The proof target is to explain why the matching signature is selective enough to identify the endpoint class.</p>
+        </div>
+        <div class="card">
+          <h3>False-Class Exclusion</h3>
+          <p>The negative-control role is not the 50-bit row alone. The math must explain why neighboring transported endpoint classes fail the same public closure condition in the resolved row.</p>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <section>
+    <main>
+      <h2>Acceptance Criteria Before Any Scale-Up</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Gate</th>
+            <th>Pass Condition</th>
+            <th>Forbidden Substitute</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Object definition</td>
+            <td>The structural-lookup class is defined using only public PGS fields.</td>
+            <td>Audit endpoint labels, product checks, divisibility checks, or hidden factors.</td>
+          </tr>
+          <tr>
+            <td>Mechanism explanation</td>
+            <td>The 40-bit closure is explained through reciprocal transport, reset timing, and carrier-signature constraints.</td>
+            <td>Restating that the output matches the factors.</td>
+          </tr>
+          <tr>
+            <td>False-class exclusion</td>
+            <td>Nearby public endpoint classes are shown to fail the same closure condition for structural reasons.</td>
+            <td>Counting only the successful row.</td>
+          </tr>
+          <tr>
+            <td>Boundary statement</td>
+            <td>The 50-bit unresolved row remains explicitly outside the class under the current rule.</td>
+            <td>Calling the 50-bit row a partial success or tuning the rule to fit it.</td>
+          </tr>
+          <tr>
+            <td>Proof obligation</td>
+            <td>The missing theorem is reduced to named lemmas with exact hypotheses.</td>
+            <td>Adding rungs before the mechanism is understood.</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </section>
+
+  <section>
+    <main>
+      <h2>Current Classification</h2>
+      <div class="grid two">
+        <div class="card">
+          <h3>40-Bit Row</h3>
+          <p><span class="status proof">inside class</span></p>
+          <p>The row is a measured member of the deterministic structural-lookup class under the current public reciprocal PGS rule.</p>
+        </div>
+        <div class="card">
+          <h3>50-Bit Row</h3>
+          <p><span class="status freeze">outside current class</span></p>
+          <p>The row is unresolved under the current rule and must stay outside the success class until a public invariant closes it unchanged.</p>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <section>
+    <main>
+      <h2>Evidence Paths</h2>
+      <div class="paths">
+        <div>Main finding: research/06-cryptology-rsa/docs/shor_order_entropy/index.html</div>
+        <div>Probe: research/06-cryptology-rsa/experiments/rsa/v2/shor_order_entropy_probe.py</div>
+        <div>Public rows: research/06-cryptology-rsa/experiments/rsa/v2/output/shor_order_entropy_probe/public_order_entropy_rows.jsonl</div>
+        <div>Audit rows: research/06-cryptology-rsa/experiments/rsa/v2/output/shor_order_entropy_probe/audit_order_entropy_rows.jsonl</div>
+        <div>Summary: research/06-cryptology-rsa/experiments/rsa/v2/output/shor_order_entropy_probe/summary.json</div>
+      </div>
+    </main>
+  </section>
+
+  <footer>
+    <main>
+      <p>Created 2026-05-13. This page freezes scale and defines the math-lockdown work for the observed PGS-Shor structural-lookup phenomenon.</p>
+    </main>
+  </footer>
+</body>
+</html>

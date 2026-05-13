@@ -75,7 +75,7 @@ The remaining chapter homes are mapped routing surfaces:
 - `research/05-state-budget/`: `d4_count` and state-budget carrier evidence,
   measured only.
 - `research/06-cryptology-rsa/`: RSA v2/v3, modulus-link, semiprime, and
-  structural-certificate work, including the PGS-Shor order entropy sidecar.
+  structural-certificate work, centered on the RSA endpoint-structure law.
 - `research/07-oeis/`: OEIS candidate workflow. No candidate has been selected
   in this branch.
 
@@ -138,36 +138,50 @@ research/06-cryptology-rsa/experiments/rsa/v2/grok_sessions/YYYY-MM-DD-topic.md
 
 ## Current RSA v2 State
 
-As of 2026-05-13, the PGS-Shor order entropy sidecar is the newest named
-cryptology topic. Read:
+As of 2026-05-13, Shor is no longer the active RSA v2 frame. The newest named
+cryptology topic is the RSA endpoint-structure law. Read:
 
 ```text
-research/06-cryptology-rsa/docs/shor_order_entropy/index.html
-research/06-cryptology-rsa/experiments/rsa/v2/shor_order_entropy_probe.py
-research/06-cryptology-rsa/experiments/rsa/v2/output/shor_order_entropy_probe/summary.json
+research/06-cryptology-rsa/docs/endpoint_structure_law.md
+research/06-cryptology-rsa/experiments/rsa/v2/run_experiment.py
+research/06-cryptology-rsa/experiments/rsa/v2/output/summary.json
+research/06-cryptology-rsa/experiments/rsa/v2/output/inference_rows.jsonl
+research/06-cryptology-rsa/experiments/rsa/v2/output/survivor_rows.jsonl
 ```
 
 Strongest supported claim:
 
 ```text
-On the resolved 40-bit RSA v2 ladder rung, public PGS reciprocal endpoint
-closure supplies the endpoint class before Shor order finding, and downstream
-audit confirms the fixed-base order vector matches the actual order vector.
-The measured phase burden is 80 baseline bits -> 0 residual bits.
+RSA moduli do expose deterministic endpoint structure. The resolved 40-bit RSA
+v2 ladder rung is a measured member of the public endpoint-structure class under
+reciprocal deadline-signature correction.
 ```
 
 Scope limit:
 
 ```text
-The 50-bit row remains unresolved_by_certificate_pair_not_closed and preserves
-100 baseline phase bits -> 100 residual phase bits. This is a measured sidecar
-finding, not a Shor/PGS theorem.
+The 50-bit row remains unresolved_by_certificate_pair_not_closed. No universal
+RSA-scale theorem is claimed.
+```
+
+Live resolver predicate:
+
+```text
+z = floor(N / upper.reset_endpoint)
+c = previous_public_endpoint_before(z)
+d = upper.reset_deadline_value
+
+resolve iff:
+  c < lower.anchor
+  d > upper.reset_endpoint
+  floor(N / c) == d
+  floor(N / d) == c
+  corrected_lower.reset_signature == upper.reset_signature
 ```
 
 Historical note: as of 2026-05-07, the RSA v2 runner did not solve the 40-bit
 or 50-bit rungs. That state is superseded for the 40-bit rung by the later
-deadline-signature correction and the PGS-Shor order entropy sidecar above. The
-50-bit rung still returns:
+deadline-signature correction. The 50-bit rung still returns:
 
 ```text
 unresolved_by_certificate_pair_not_closed
@@ -177,6 +191,15 @@ The previous pre-correction 40-bit resolution was withdrawn because it depended
 on a close-factor shape. Do not revive fixed radius chambers, endpoint-walk
 budgets, product closure, divisibility selectors, hidden fixtures, or audit
 leakage.
+
+Archived distraction:
+
+```text
+research/06-cryptology-rsa/archive/2026-05-13-shor-order-entropy-sidecar/
+```
+
+Use that archive only as downstream comparison context. Do not make it the
+entrypoint for RSA v2 endpoint-structure work.
 
 The next live RSA v2 task is to derive a stronger transported certificate
 invariant from public PGSPG fields.
