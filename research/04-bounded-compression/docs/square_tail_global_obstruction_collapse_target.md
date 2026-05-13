@@ -233,6 +233,10 @@ x_m = (r - 2a_m)(r + 2a_m + 2b_m),
 m = 2a_m^2 - b_m(r - 2a_m).
 ```
 
+It also strengthens the nonsymmetric distance bound: outside the symmetric rows
+`m = 2a^2`, every least factor is excluded from the final roughly
+`sqrt(2r)`-wide band below `r`.
+
 The lemma is recorded in:
 
 ```text
