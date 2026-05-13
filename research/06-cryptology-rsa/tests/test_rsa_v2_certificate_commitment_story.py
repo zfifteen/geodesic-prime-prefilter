@@ -8,8 +8,10 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
-V2 = ROOT / "research" / "06-cryptology-rsa" / "experiments" / "rsa" / "v2"
-SCRIPT = V2 / "certificate_commitment_story_probe.py"
+EXPERIMENTS = ROOT / "research" / "06-cryptology-rsa" / "experiments"
+LIVE_V2 = EXPERIMENTS / "live-solver" / "rsa-v2"
+CERTIFICATE_V2 = EXPERIMENTS / "certificate-mechanics" / "rsa-v2"
+SCRIPT = CERTIFICATE_V2 / "certificate_commitment_story_probe.py"
 RULE_ID = "certificate_commitment_story_v1"
 
 
@@ -96,13 +98,13 @@ def test_story_rows_reconstruct_existing_public_certificates(tmp_path):
     assert module.main(
         [
             "--certificate-rows",
-            str(V2 / "output" / "survivor_rows.jsonl"),
+            str(LIVE_V2 / "output" / "survivor_rows.jsonl"),
             "--output-dir",
             str(output_dir),
         ]
     ) == 0
 
-    source_rows = read_jsonl(V2 / "output" / "survivor_rows.jsonl")
+    source_rows = read_jsonl(LIVE_V2 / "output" / "survivor_rows.jsonl")
     story_rows = read_jsonl(output_dir / "story_rows.jsonl")
     summary = json.loads((output_dir / "summary.json").read_text(encoding="utf-8"))
 
