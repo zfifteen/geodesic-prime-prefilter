@@ -29,6 +29,15 @@ Use strikethrough for completed items:
 - [ ] Test recursive jump policies based on transported corrected coordinates and deadline images.
 - [ ] Add exact first-structural-closure regression tests for 48-bit and 50-bit before scaling.
 
+## Bug Bombs
+
+- [ ] Split `RULE_X_CANDIDATE_BOUND = 128` into separate constructs for previous-endpoint chunk width, certificate measurement width, and certificate horizon exhaustion.
+- [ ] Add an explicit certificate-horizon-exhausted status so `None` does not hide a measurement boundary as missing structure.
+- [ ] Make `BALANCE_BAND = 2` an explicit resolver input contract or emit a named balance-boundary unresolved status.
+- [ ] Distinguish endpoint-chain exhaustion from missing certificate and generic pair-not-closed statuses.
+- [ ] Update stale `mpz_to_int()` boundary language so it no longer implies a small-regime backend.
+- [ ] Rename structural endpoint-class output fields away from `p` and `q`, or add explicit endpoint-class fields and deprecate factor-shaped names.
+
 ## Law Clarity And Research Hygiene
 
 - [ ] Add `implementation_label = OECC_LINEAR_V1` to summary or sidecar output.
