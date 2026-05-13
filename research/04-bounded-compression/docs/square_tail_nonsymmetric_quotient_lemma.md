@@ -178,6 +178,12 @@ symmetric rows:     m = 2a^2
 nonsymmetric rows:  d | (h^2 - 2m), ell = (h^2 - 2m) / d
 ```
 
+The centered halved-quotient form is recorded in:
+
+```text
+research/04-bounded-compression/docs/square_tail_halved_quotient_lemma.md
+```
+
 ## Proof Boundary
 
 This lemma does not prove that `O(r)` is impossible. It converts every

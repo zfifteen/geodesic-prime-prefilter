@@ -141,6 +141,13 @@ such rows.
 All other M-rough composite rows are nonsymmetric and obey the near-root
 distance bound from the near-root factor lemma.
 
+The unified centered form for both symmetric and nonsymmetric rows is recorded
+in:
+
+```text
+research/04-bounded-compression/docs/square_tail_halved_quotient_lemma.md
+```
+
 ## Proof Boundary
 
 This lemma does not prove that `O(r)` is impossible. It isolates the sparse
