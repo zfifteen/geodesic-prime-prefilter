@@ -60,6 +60,12 @@ The corrected lower endpoint `c` is certified by deriving the PGSPG certificate
 at `c`. The upper endpoint `d` is the public deadline field of the upper
 certificate.
 
+If the square-root chamber does not resolve, the runner may walk the lower
+public endpoint chain outward inside the public balance interval and apply the
+same reciprocal deadline correction at each public lower-chain certificate. For
+a chamber whose reset endpoint crosses the square-root orientation, the chamber
+anchor is the transport coordinate.
+
 ## Allowed Transport Facts
 
 Inference may compute:
@@ -86,6 +92,7 @@ The certificate runner may stop only with one of these states:
 ```text
 resolved_by_mutual_certificate_closure
 resolved_by_reciprocal_deadline_signature_correction
+resolved_by_oriented_endpoint_chain_closure
 unresolved_by_certificate_pair_not_closed
 unresolved_by_reset_endpoint_crosses_orientation
 unresolved_by_missing_lower_certificate
@@ -119,8 +126,15 @@ and requires:
 5. the corrected-lower and upper reset signatures match;
 6. the correction moves outward from the original reset pair.
 
+The oriented endpoint-chain branch applies the same deadline-signature
+correction over consecutive lower public endpoints from `floor(sqrt(N))` down
+to `floor(floor(sqrt(N)) / 2)`. The first public endpoint whose corrected lower
+endpoint and upper deadline mutually close emits a structural endpoint class.
+
 ## Failure Discipline
 
-If neither closure rule holds, return unresolved.
+If none of the closure rules holds before the lower balance boundary, return
+unresolved.
 
-Do not add a search budget, a wider walk, a product check, or a fallback.
+Do not add a product check, divisibility test, hidden-factor comparison, or
+fallback.

@@ -94,6 +94,8 @@ def endpoint_class(pair) -> tuple[str, gmpy2.mpz | None, gmpy2.mpz | None]:
         return pair.closure_status, pair.lower.reset_endpoint, pair.upper.reset_endpoint
     if pair.closure_status == "resolved_by_reciprocal_deadline_signature_correction":
         return pair.closure_status, pair.corrected_lower_endpoint, pair.corrected_upper_endpoint
+    if pair.closure_status == "resolved_by_oriented_endpoint_chain_closure":
+        return pair.closure_status, pair.corrected_lower_endpoint, pair.corrected_upper_endpoint
     return pair.closure_status, None, None
 
 

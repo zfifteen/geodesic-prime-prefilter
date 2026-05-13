@@ -101,18 +101,20 @@ Empirical benchmark surfaces include:
 ## RSA Endpoint Structure Law
 
 RSA moduli do expose deterministic endpoint structure. The live RSA v2 law is
-reciprocal deadline-signature correction, a public PGS endpoint-class resolver.
+reciprocal deadline-signature correction plus oriented endpoint-chain closure,
+a public PGS endpoint-class resolver.
 
 On the current committed RSA v2 ladder:
 
 - `rsa_v2_40bit_static_001`: public reciprocal deadline-signature correction
   resolves the endpoint class as `(1048559, 1048589)`.
-- `rsa_v2_50bit_static_001`: public endpoint class remains unresolved with
-  `unresolved_by_reset_endpoint_crosses_orientation`.
+- `rsa_v2_50bit_static_001`: public oriented endpoint-chain closure resolves
+  the structural endpoint class as `(32046877, 32060407)`.
 
 This is a measured RSA v2 endpoint-structure result, not a universal RSA-scale
-theorem. Audit confirms the resolved 40-bit row after public inference. Audit
-does not define the inference rule.
+theorem. Audit confirms the exact 40-bit factor pair after public inference.
+The 50-bit row is a structural endpoint-class resolution and remains audit-fail
+for exact factor equality. Audit does not define the inference rule.
 
 Reference document:
 `research/06-cryptology-rsa/docs/endpoint_structure_law.md`.

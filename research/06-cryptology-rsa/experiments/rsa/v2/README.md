@@ -194,11 +194,12 @@ The current official rungs return:
 
 ```text
 rsa_v2_40bit_static_001 -> resolved_by_reciprocal_deadline_signature_correction
-rsa_v2_50bit_static_001 -> unresolved_by_certificate_pair_not_closed
+rsa_v2_50bit_static_001 -> resolved_by_oriented_endpoint_chain_closure
 ```
 
 The 40-bit resolution is produced by public reciprocal deadline correction. The
-runner still does not read audit factors; audit certifies the inferred endpoints
+50-bit resolution is produced by public oriented endpoint-chain closure. The
+runner still does not read audit factors; audit certifies exact factor equality
 after inference.
 
 ## Invalid Rules

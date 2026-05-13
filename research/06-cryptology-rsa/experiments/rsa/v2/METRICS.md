@@ -47,16 +47,21 @@ Resolved closure states are:
 ```text
 resolved_by_mutual_certificate_closure
 resolved_by_reciprocal_deadline_signature_correction
+resolved_by_oriented_endpoint_chain_closure
 ```
 
-The current unresolved status is:
+The current unresolved statuses are:
 
 ```text
 unresolved_by_certificate_pair_not_closed
+unresolved_by_reset_endpoint_crosses_orientation
+unresolved_by_missing_lower_certificate
+unresolved_by_missing_upper_certificate
+gmp_interval_backend_required
 ```
 
-This means public PGSPG state exists, but neither public closure rule certified
-a pair.
+These mean public PGSPG state did not close before the deterministic stop
+condition, or the exact interval backend does not cover the row.
 
 ## Acceptance For Current V2
 
