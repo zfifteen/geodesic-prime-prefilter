@@ -167,6 +167,26 @@ The lemma is recorded in:
 research/04-bounded-compression/docs/square_tail_rough_factor_disjointness_lemma.md
 ```
 
+The near-root factor lemma gives the corresponding cofactor geometry in the
+infinite tail. When `2M < r`, every M-rough composite row has a private
+factorization straddling the root:
+
+```text
+r^2 - 2m = (r - h_m)(r + t_m)
+```
+
+with `t_m >= h_m` and
+
+```text
+2m = h_m^2 - (t_m - h_m)(r - h_m).
+```
+
+The lemma is recorded in:
+
+```text
+research/04-bounded-compression/docs/square_tail_near_root_factor_lemma.md
+```
+
 ## Required Proof Shape
 
 A proof must establish one of the following deterministic statements.
