@@ -225,6 +225,20 @@ The lemma is recorded in:
 research/04-bounded-compression/docs/square_tail_nonsymmetric_quotient_lemma.md
 ```
 
+The halved-quotient lemma removes the forced parity from both branches. Every
+composite rough row has the centered form
+
+```text
+x_m = (r - 2a_m)(r + 2a_m + 2b_m),
+m = 2a_m^2 - b_m(r - 2a_m).
+```
+
+The lemma is recorded in:
+
+```text
+research/04-bounded-compression/docs/square_tail_halved_quotient_lemma.md
+```
+
 ## Required Proof Shape
 
 A proof must establish one of the following deterministic statements.
