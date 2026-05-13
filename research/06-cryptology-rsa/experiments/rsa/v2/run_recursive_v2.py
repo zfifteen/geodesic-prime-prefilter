@@ -268,6 +268,7 @@ def unresolved_pair_row(case: LadderCase, run: RecursiveRun) -> dict[str, object
         "case_id": case.case_id,
         "bits": case.bits,
         "N": str(case.n),
+        "ladder_rung_resolved": False,
         "implementation_label": IMPLEMENTATION_LABEL,
         "closure_status": run.closure_status,
         "recursion_steps": run.recursion_steps,
@@ -285,10 +286,12 @@ def recursive_result_row(case: LadderCase, run: RecursiveRun) -> dict[str, objec
             "N": str(case.n),
             "status": "unresolved",
             "unresolved_reason": run.closure_status,
+            "ladder_rung_resolved": False,
             "implementation_label": IMPLEMENTATION_LABEL,
             "rule_id": IMPLEMENTATION_LABEL,
         }
     row = result_row(case, run.pair)
+    row["ladder_rung_resolved"] = True
     row["implementation_label"] = IMPLEMENTATION_LABEL
     row["rule_id"] = IMPLEMENTATION_LABEL
     return row
@@ -299,6 +302,7 @@ def recursive_pair_row(case: LadderCase, run: RecursiveRun) -> dict[str, object]
     if run.pair is None:
         return unresolved_pair_row(case, run)
     row = pair_to_json(case, run.pair)
+    row["ladder_rung_resolved"] = True
     row["implementation_label"] = IMPLEMENTATION_LABEL
     row["rule_id"] = IMPLEMENTATION_LABEL
     row["recursion_steps"] = run.recursion_steps
@@ -313,6 +317,7 @@ def recursive_summary_row(case: LadderCase, run: RecursiveRun) -> dict[str, obje
             "case_id": case.case_id,
             "bits": case.bits,
             "N": str(case.n),
+            "ladder_rung_resolved": False,
             "implementation_label": IMPLEMENTATION_LABEL,
             "closure_status": run.closure_status,
             "recursion_steps": run.recursion_steps,
@@ -320,6 +325,7 @@ def recursive_summary_row(case: LadderCase, run: RecursiveRun) -> dict[str, obje
             "rule_id": IMPLEMENTATION_LABEL,
         }
     row = summary_row(case, run.pair)
+    row["ladder_rung_resolved"] = True
     row["implementation_label"] = IMPLEMENTATION_LABEL
     row["rule_id"] = IMPLEMENTATION_LABEL
     row["recursion_steps"] = run.recursion_steps
@@ -333,6 +339,7 @@ def recursive_diagnostic_row(case: LadderCase, run: RecursiveRun) -> dict[str, o
         "case_id": case.case_id,
         "bits": case.bits,
         "N": str(case.n),
+        "ladder_rung_resolved": False,
         "rule_id": IMPLEMENTATION_LABEL,
         "closure_status": run.closure_status,
         "endpoint_chain_steps": run.diagnostics["endpoint_chain_steps"],
@@ -349,6 +356,8 @@ def recursive_diagnostic_row(case: LadderCase, run: RecursiveRun) -> dict[str, o
         "cache_hit_rate": 0.0,
         "elapsed_ms": run.elapsed_ns / 1_000_000,
     }
+    if run.pair is not None:
+        row["ladder_rung_resolved"] = True
     row["implementation_label"] = IMPLEMENTATION_LABEL
     row["rule_id"] = IMPLEMENTATION_LABEL
     row["recursion_steps"] = run.recursion_steps
