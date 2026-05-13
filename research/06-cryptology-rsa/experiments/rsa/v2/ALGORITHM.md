@@ -7,6 +7,15 @@ The current algorithm is a public reciprocal PGSPG resolver for the small
 exact-backend regime. It derives reciprocal certificate state and resolves only
 when public certificate endpoints close under floor transport.
 
+Current implementation label:
+
+```text
+OECC_LINEAR_V1
+```
+
+The baseline and next recursive target are defined in
+`ORIENTED_ENDPOINT_CHAIN_BASELINE.md`.
+
 ## Input
 
 Inference reads only:
