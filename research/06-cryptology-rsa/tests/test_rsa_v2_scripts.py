@@ -13,6 +13,7 @@ V2 = ROOT / "research" / "06-cryptology-rsa" / "experiments" / "rsa" / "v2"
 SCRIPT_NAMES = (
     "build_ladder_fixtures.py",
     "generate_ladder_rung.py",
+    "run_minimal_typed_solver.py",
     "run_experiment.py",
     "run_recursive_v2.py",
     "audit_experiment.py",
@@ -469,6 +470,104 @@ def test_recursive_v2_preserves_48bit_baseline_endpoint_class(tmp_path):
     assert diagnostics[0]["recursion_steps"] == 246
     assert diagnostics[0]["visited_anchor_count"] == 247
     assert diagnostics[0]["ladder_rung_resolved"] is True
+
+
+def test_minimal_typed_solver_resolves_40_and_refuses_50_without_false_endpoint_class(tmp_path):
+    """As a reviewer, I want the fresh solver to avoid the old false 50-bit closure."""
+    build_fixtures(tmp_path)
+    module = load_module(V2 / "run_minimal_typed_solver.py")
+    output_dir = tmp_path / "minimal_typed"
+
+    assert module.main(
+        [
+            "--cases",
+            str(tmp_path / "ladder_cases.jsonl"),
+            "--max-bits",
+            "50",
+            "--output-dir",
+            str(output_dir),
+        ]
+    ) == 0
+
+    assert sorted(path.name for path in output_dir.iterdir()) == [
+        "minimal_inference_rows.jsonl",
+        "summary.json",
+        "typed_closure_rows.jsonl",
+    ]
+    rows = read_jsonl(output_dir / "minimal_inference_rows.jsonl")
+    closures = read_jsonl(output_dir / "typed_closure_rows.jsonl")
+    summary = json.loads((output_dir / "summary.json").read_text(encoding="utf-8"))
+    assert rows == [
+        {
+            "case_id": CASE_ID,
+            "bits": 40,
+            "N": N_VALUE,
+            "rule_id": "minimal_typed_coordinate_solver_v0",
+            "implementation_label": "MINIMAL_TYPED_SOLVER_V0",
+            "endpoint_steps_examined": 1,
+            "status": "resolved",
+            "endpoint_class_lower": P_VALUE,
+            "endpoint_class_upper": Q_VALUE,
+            "lower_coordinate_role": "anchor",
+            "upper_coordinate_role": "reset_endpoint",
+        },
+        {
+            "case_id": CASE_50_ID,
+            "bits": 50,
+            "N": GENERATED_50_N,
+            "rule_id": "minimal_typed_coordinate_solver_v0",
+            "implementation_label": "MINIMAL_TYPED_SOLVER_V0",
+            "endpoint_steps_examined": 13,
+            "status": "unresolved",
+            "unresolved_reason": "unresolved_by_first_typed_closure_not_decisive",
+            "first_closure_lower_coordinate_role": "reset_deadline",
+            "first_closure_lower_coordinate_value": "32053370",
+            "first_closure_upper_coordinate_role": "reset_endpoint",
+            "first_closure_upper_coordinate_value": "32053913",
+        },
+    ]
+    assert len(closures) == 2
+    assert closures[0]["lower_coordinate_role"] == "anchor"
+    assert closures[0]["upper_coordinate_role"] == "reset_endpoint"
+    assert closures[0]["lower_floor_drop"] == 2
+    assert closures[1]["lower_coordinate_role"] == "reset_deadline"
+    assert closures[1]["upper_coordinate_role"] == "reset_endpoint"
+    assert summary == {
+        "case_count": 2,
+        "resolved_count": 1,
+        "rule_id": "minimal_typed_coordinate_solver_v0",
+        "unresolved_count": 1,
+    }
+    for row in rows + closures:
+        assert {"p", "q", "audit_integrity_status", "inference_audit_status"}.isdisjoint(row)
+
+
+def test_minimal_typed_solver_source_has_no_old_solver_or_audit_coupling():
+    """As a reviewer, I want the fresh solver independent from OECC branch logic."""
+    source = (V2 / "run_minimal_typed_solver.py").read_text(encoding="utf-8")
+    forbidden = (
+        "run_experiment",
+        "CertificatePair",
+        "deadline_correction_closes",
+        "endpoint_chain_step_closure",
+        "result_row",
+        "audit_factors",
+        "audit_spec",
+        "factorint",
+        "isprime",
+        "nextprime",
+        "prevprime",
+        "randprime",
+        "gcd",
+        "Miller",
+        "random",
+        GENERATED_50_P,
+        GENERATED_50_Q,
+        GENERATED_64_P,
+        GENERATED_64_Q,
+    )
+    for token in forbidden:
+        assert token not in source
 
 
 def test_certificate_rows_are_derived_before_audit(tmp_path):
