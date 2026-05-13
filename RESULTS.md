@@ -108,7 +108,7 @@ On the current committed RSA v2 ladder:
 - `rsa_v2_40bit_static_001`: public reciprocal deadline-signature correction
   resolves the endpoint class as `(1048559, 1048589)`.
 - `rsa_v2_50bit_static_001`: public endpoint class remains unresolved with
-  `unresolved_by_certificate_pair_not_closed`.
+  `unresolved_by_reset_endpoint_crosses_orientation`.
 
 This is a measured RSA v2 endpoint-structure result, not a universal RSA-scale
 theorem. Audit confirms the resolved 40-bit row after public inference. Audit

@@ -1,2 +1,2 @@
 {"N": "1099507433251", "bits": 40, "case_id": "rsa_v2_40bit_static_001", "p": "1048559", "q": "1048589", "rule_id": "reciprocal_pgs_certificate_pair_v2", "status": "resolved"}
-{"N": "1027435935526951", "bits": 50, "case_id": "rsa_v2_50bit_static_001", "rule_id": "reciprocal_pgs_certificate_pair_v2", "status": "unresolved", "unresolved_reason": "unresolved_by_certificate_pair_not_closed"}
+{"N": "1027435935526951", "bits": 50, "case_id": "rsa_v2_50bit_static_001", "rule_id": "reciprocal_pgs_certificate_pair_v2", "status": "unresolved", "unresolved_reason": "unresolved_by_reset_endpoint_crosses_orientation"}

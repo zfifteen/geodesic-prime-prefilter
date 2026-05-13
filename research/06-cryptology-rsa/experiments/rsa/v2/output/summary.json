@@ -18,7 +18,7 @@
       "bits": 50,
       "case_id": "rsa_v2_50bit_static_001",
       "center": "32053641",
-      "closure_status": "unresolved_by_certificate_pair_not_closed",
+      "closure_status": "unresolved_by_reset_endpoint_crosses_orientation",
       "corrected_lower_certificate_present": false,
       "lower_certificate_present": true,
       "rule_id": "reciprocal_pgs_certificate_pair_v2",
