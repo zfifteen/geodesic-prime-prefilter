@@ -149,11 +149,12 @@ smaller factor of a parent row without proving a new global mechanism.
 This target is not a local CRT contradiction. Full-cutoff local CRT obstruction
 models exist.
 
-This target is not local obstruction inheritance. The full-cutoff local CRT
-model has a complete local parent obstruction and `569` assigned child
-carriers, but all `569` children are closed. Therefore the obstruction
-inheritance theorem must use actual prime-root/global PGS structure, not local
-congruence consistency alone.
+This target is not assigned-carrier inheritance in a local CRT model. The
+full-cutoff local CRT model has a complete local parent carrier cover and `569`
+assigned singleton carriers, but all `569` assigned carriers are closed. These
+assigned carriers are not certified least-factor children. Therefore the
+obstruction inheritance theorem must use least-factor/global PGS structure, not
+local congruence consistency alone.
 
 ## Required Proof Shape
 
@@ -301,10 +302,11 @@ prime-valued rough defect per child; the standing-record descent artifact has
 `62` children with prime-valued rough-defect counts ranging from `3` to `21`.
 
 Grok response `cad9c1e1-0889-9eeb-8b74-feb21382ecd7` agreed that the local CRT
-model rules out local obstruction inheritance. The result does not refute the
-actual-prime-root theorem. It shows that the next proof must use a global PGS
-condition absent from the local CRT construction, or prove direct
-impossibility of `O(r)` for positive-row prime roots.
+model rules out assigned-carrier obstruction inheritance. The result does not
+refute the actual-prime-root theorem because actual `Child(r)` uses least
+factors, not arbitrary congruence carriers. It shows that the next proof must
+use least-factor/global PGS structure absent from the local CRT construction,
+or prove direct impossibility of `O(r)` for positive-row prime roots.
 
 The already-invalidated local routes are recorded in:
 

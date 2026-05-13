@@ -3,14 +3,15 @@
   "representative_root": "89726961223544427015292389839",
   "parent_local_model_consistent": true,
   "parent_rough_defect_count": 569,
-  "assigned_child_carrier_count": 569,
-  "children_with_O_count": 0,
-  "children_closed_count": 569,
-  "all_children_closed": true,
-  "min_child_rough_prime_defect_count": 2,
-  "max_child_rough_prime_defect_count": 15,
-  "boundary": "local CRT complete obstruction does not force obstruction inheritance; all assigned child carriers are closed",
-  "first_child_rows": [
+  "assigned_carrier_count": 569,
+  "assigned_carriers_with_O_count": 0,
+  "assigned_carriers_closed_count": 569,
+  "all_assigned_carriers_closed": true,
+  "min_assigned_carrier_rough_prime_defect_count": 2,
+  "max_assigned_carrier_rough_prime_defect_count": 15,
+  "least_factor_boundary": "assigned carriers are congruence carriers, not certified least-factor children of the modeled rows",
+  "boundary": "local CRT complete carrier cover does not force obstruction on assigned carriers; all assigned carriers are closed",
+  "first_assigned_carrier_rows": [
     {
       "root": 4451,
       "M": 71,
@@ -172,5 +173,5 @@
       "O_holds": false
     }
   ],
-  "obstructed_child_rows": []
+  "obstructed_assigned_carrier_rows": []
 }
