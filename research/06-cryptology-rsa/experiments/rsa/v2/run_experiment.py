@@ -285,6 +285,22 @@ def certificate_pair(case: LadderCase) -> CertificatePair:
     if lower is None:
         return CertificatePair(None, None, None, None, None, None, None, None, None, None, "unresolved_by_missing_lower_certificate")
 
+    if lower.reset_endpoint > center:
+        return CertificatePair(
+            lower,
+            None,
+            None,
+            None,
+            None,
+            None,
+            None,
+            None,
+            None,
+            transported_deadline_width(case.n, lower),
+            None,
+            "unresolved_by_reset_endpoint_crosses_orientation",
+        )
+
     transported_upper = reciprocal_floor(case.n, lower.reset_endpoint)
     if transported_upper < center or transported_upper > upper_balance:
         return CertificatePair(

@@ -41,6 +41,21 @@ state, tail state, and reset-deadline fields.
 
 ## Stage 3: Reciprocal Transport
 
+Before transport, the lower reset endpoint must still lie on the lower side of
+the square-root orientation:
+
+```text
+lower.reset_endpoint <= isqrt(N)
+```
+
+If the lower reset endpoint is greater than `isqrt(N)`, the certificate is
+valid but its reset endpoint has crossed the orientation boundary. It is not a
+lower-side transport coordinate. The runner stops with:
+
+```text
+unresolved_by_reset_endpoint_crosses_orientation
+```
+
 Transport the lower reset endpoint by:
 
 ```text
@@ -104,6 +119,7 @@ The runner may emit:
 resolved_by_mutual_certificate_closure
 resolved_by_reciprocal_deadline_signature_correction
 unresolved_by_certificate_pair_not_closed
+unresolved_by_reset_endpoint_crosses_orientation
 unresolved_by_missing_lower_certificate
 unresolved_by_missing_upper_certificate
 gmp_interval_backend_required
@@ -113,7 +129,7 @@ The current official rungs emit:
 
 ```text
 rsa_v2_40bit_static_001 -> resolved_by_reciprocal_deadline_signature_correction
-rsa_v2_50bit_static_001 -> unresolved_by_certificate_pair_not_closed
+rsa_v2_50bit_static_001 -> unresolved_by_reset_endpoint_crosses_orientation
 ```
 
 ## Explicitly Invalidated Rules

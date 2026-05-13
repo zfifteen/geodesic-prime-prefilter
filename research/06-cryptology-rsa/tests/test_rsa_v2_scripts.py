@@ -43,6 +43,7 @@ TOY_DEADLINE_CASE_ID = "rsa_v2_toy_deadline_17bit_static_001"
 TOY_DEADLINE_N = "73903"
 TOY_DEADLINE_P = "263"
 TOY_DEADLINE_Q = "281"
+AD_HOC_48_N = "249882542035169"
 
 
 def load_module(path: Path):
@@ -251,7 +252,7 @@ def test_runner_reports_certificate_pairs_without_false_resolution(tmp_path):
             "bits": 50,
             "N": GENERATED_50_N,
             "status": "unresolved",
-            "unresolved_reason": "unresolved_by_certificate_pair_not_closed",
+            "unresolved_reason": "unresolved_by_reset_endpoint_crosses_orientation",
             "rule_id": RULE_ID,
         }
     ]
@@ -259,7 +260,7 @@ def test_runner_reports_certificate_pairs_without_false_resolution(tmp_path):
         "resolved_by_reciprocal_deadline_signature_correction"
     )
     assert summary["cases"][0]["corrected_lower_certificate_present"]
-    assert summary["cases"][1]["closure_status"] == "unresolved_by_certificate_pair_not_closed"
+    assert summary["cases"][1]["closure_status"] == "unresolved_by_reset_endpoint_crosses_orientation"
     assert not summary["cases"][1]["corrected_lower_certificate_present"]
     for row in summary["cases"]:
         assert row["lower_certificate_present"]
@@ -278,7 +279,7 @@ def test_runner_reports_certificate_pairs_without_false_resolution(tmp_path):
     assert survivors[0]["transported_corrected_upper_endpoint"] == Q_VALUE
     assert survivors[0]["transported_corrected_lower_endpoint"] == P_VALUE
     assert survivors[0]["corrected_lower_reset_signature"] == survivors[0]["upper_reset_signature"]
-    assert survivors[1]["closure_status"] == "unresolved_by_certificate_pair_not_closed"
+    assert survivors[1]["closure_status"] == "unresolved_by_reset_endpoint_crosses_orientation"
 
 
 def test_certificate_rows_are_derived_before_audit(tmp_path):
@@ -290,7 +291,10 @@ def test_certificate_rows_are_derived_before_audit(tmp_path):
     assert rows
     for row in rows:
         assert row["lower_reset_endpoint"]
-        assert row["transported_upper_endpoint"]
+        if row["closure_status"] == "unresolved_by_reset_endpoint_crosses_orientation":
+            assert row["transported_upper_endpoint"] is None
+        else:
+            assert row["transported_upper_endpoint"]
         assert row["lower_reset_signature"]
         assert "deadline_locked" not in row
         assert "deadline_lock_reason" not in row
@@ -344,6 +348,29 @@ def test_deadline_signature_correction_resolves_public_toy_case(tmp_path):
     assert survivors[0]["transported_corrected_upper_endpoint"] == TOY_DEADLINE_Q
     assert survivors[0]["transported_corrected_lower_endpoint"] == TOY_DEADLINE_P
     assert survivors[0]["corrected_lower_reset_signature"] == survivors[0]["upper_reset_signature"]
+
+
+def test_reset_endpoint_crossing_orientation_stops_before_upper_certificate():
+    """As a reviewer, I want crossed reset endpoints reported deterministically."""
+    module = load_module(V2 / "run_experiment.py")
+    case = module.LadderCase(
+        case_id="ad_hoc_48bit_249882542035169",
+        bits=48,
+        n=module.gmpy2.mpz(AD_HOC_48_N),
+    )
+
+    pair = module.certificate_pair(case)
+    summary = module.summary_row(case, pair)
+    survivor = module.pair_to_json(case, pair)
+    inference = module.result_row(case, pair)
+
+    assert summary["closure_status"] == "unresolved_by_reset_endpoint_crosses_orientation"
+    assert summary["upper_certificate_present"] is False
+    assert survivor["lower_anchor"] == "15807667"
+    assert survivor["lower_reset_endpoint"] == "15807679"
+    assert survivor["transported_upper_endpoint"] is None
+    assert inference["status"] == "unresolved"
+    assert inference["unresolved_reason"] == "unresolved_by_reset_endpoint_crosses_orientation"
 
 
 def test_audit_passes_only_with_separate_factor_file(tmp_path):
@@ -903,7 +930,7 @@ def test_toy_normalized_frontier_closure_sweep_keeps_current_rows_unresolved(tmp
     assert by_case[CASE_ID]["certificate_status_before"] == "resolved"
     assert by_case[CASE_ID]["frontier_live_but_closed"]
     assert by_case[CASE_50_ID]["certificate_status_before"] == (
-        "unresolved_by_certificate_pair_not_closed"
+        "unresolved_by_reset_endpoint_crosses_orientation"
     )
     assert not by_case[CASE_50_ID]["frontier_live_but_closed"]
     for row in sweep_rows:

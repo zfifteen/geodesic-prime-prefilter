@@ -160,8 +160,8 @@ reciprocal deadline-signature correction.
 Scope limit:
 
 ```text
-The 50-bit row remains unresolved_by_certificate_pair_not_closed. No universal
-RSA-scale theorem is claimed.
+The 50-bit row remains unresolved_by_reset_endpoint_crosses_orientation. No
+universal RSA-scale theorem is claimed.
 ```
 
 Live resolver predicate:
@@ -181,10 +181,11 @@ resolve iff:
 
 Historical note: as of 2026-05-07, the RSA v2 runner did not solve the 40-bit
 or 50-bit rungs. That state is superseded for the 40-bit rung by the later
-deadline-signature correction. The 50-bit rung still returns:
+deadline-signature correction. The 50-bit rung now returns the sharper
+deterministic reason:
 
 ```text
-unresolved_by_certificate_pair_not_closed
+unresolved_by_reset_endpoint_crosses_orientation
 ```
 
 The previous pre-correction 40-bit resolution was withdrawn because it depended

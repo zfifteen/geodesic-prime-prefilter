@@ -87,6 +87,7 @@ The certificate runner may stop only with one of these states:
 resolved_by_mutual_certificate_closure
 resolved_by_reciprocal_deadline_signature_correction
 unresolved_by_certificate_pair_not_closed
+unresolved_by_reset_endpoint_crosses_orientation
 unresolved_by_missing_lower_certificate
 unresolved_by_missing_upper_certificate
 gmp_interval_backend_required
@@ -102,10 +103,11 @@ The reset closure branch is strict.
 It requires:
 
 1. lower and upper certificates exist;
-2. both reset endpoints are produced by PGSPG;
-3. the lower reset endpoint transports to the upper reset endpoint;
-4. the upper reset endpoint transports to the lower reset endpoint;
-5. reset signatures match.
+2. the lower reset endpoint remains on the lower side of `floor(sqrt(N))`;
+3. both reset endpoints are produced by PGSPG;
+4. the lower reset endpoint transports to the upper reset endpoint;
+5. the upper reset endpoint transports to the lower reset endpoint;
+6. reset signatures match.
 
 The deadline signature correction branch applies only after reset closure fails
 and requires:

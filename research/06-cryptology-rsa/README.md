@@ -60,7 +60,7 @@ RSA v2 records mixed certificate-pair state on the committed ladder:
 
 ```text
 rsa_v2_40bit_static_001: resolved_by_reciprocal_deadline_signature_correction
-rsa_v2_50bit_static_001: unresolved_by_certificate_pair_not_closed
+rsa_v2_50bit_static_001: unresolved_by_reset_endpoint_crosses_orientation
 ```
 
 The 40-bit row is measured and audit-confirmed after public PGS endpoint-class

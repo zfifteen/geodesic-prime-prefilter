@@ -45,6 +45,6 @@
 - **RSA moduli do expose deterministic endpoint structure on the measured RSA
   v2 surface.** The resolved `40`-bit rung is emitted by reciprocal
   deadline-signature correction as endpoint class `(1048559, 1048589)`. The
-  `50`-bit rung remains `unresolved_by_certificate_pair_not_closed`. This is a
+  `50`-bit rung remains `unresolved_by_reset_endpoint_crosses_orientation`. This is a
   measured endpoint-structure result, not a universal RSA-scale theorem.
   See [research/06-cryptology-rsa/docs/endpoint_structure_law.md](../research/06-cryptology-rsa/docs/endpoint_structure_law.md).

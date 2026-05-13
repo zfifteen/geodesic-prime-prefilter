@@ -32,6 +32,22 @@ Transport `r0` through the public reciprocal floor map:
 y = floor(N / r0)
 ```
 
+This transport is valid only when:
+
+```text
+r0 <= s
+```
+
+If `r0 > s`, then the lower certificate remains valid but its reset endpoint
+has crossed the square-root orientation boundary. It is not a lower-side
+transport coordinate, so the public state is:
+
+```text
+unresolved_by_reset_endpoint_crosses_orientation
+```
+
+No upper certificate is induced in that state.
+
 Let:
 
 ```text
@@ -126,11 +142,12 @@ The generated inference row emits:
 
 ## Current Boundary
 
-The official 50-bit RSA v2 rung remains unresolved:
+The official 50-bit RSA v2 rung remains unresolved because its lower reset
+endpoint crosses the orientation boundary:
 
 ```text
 case_id = rsa_v2_50bit_static_001
-closure_status = unresolved_by_certificate_pair_not_closed
+closure_status = unresolved_by_reset_endpoint_crosses_orientation
 ```
 
 This is not a failure of the law. It is the current unresolved boundary under
