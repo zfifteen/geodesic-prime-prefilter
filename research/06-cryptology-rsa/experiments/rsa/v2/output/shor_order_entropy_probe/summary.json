@@ -1,0 +1,10 @@
+{
+  "audit_row_count": 2,
+  "case_count": 2,
+  "order_finding_removed_count": 1,
+  "rule_id": "pgs_shor_order_entropy_probe_v1",
+  "status": "mixed_public_pgs_collapse",
+  "total_baseline_phase_bits": 180,
+  "total_residual_phase_bits_after_pgs": 100,
+  "unresolved_before_shor_count": 1
+}

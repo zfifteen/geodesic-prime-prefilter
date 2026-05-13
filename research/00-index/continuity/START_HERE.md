@@ -75,7 +75,7 @@ The remaining chapter homes are mapped routing surfaces:
 - `research/05-state-budget/`: `d4_count` and state-budget carrier evidence,
   measured only.
 - `research/06-cryptology-rsa/`: RSA v2/v3, modulus-link, semiprime, and
-  unresolved structural-certificate work.
+  structural-certificate work, including the PGS-Shor order entropy sidecar.
 - `research/07-oeis/`: OEIS candidate workflow. No candidate has been selected
   in this branch.
 
@@ -138,21 +138,45 @@ research/06-cryptology-rsa/experiments/rsa/v2/grok_sessions/YYYY-MM-DD-topic.md
 
 ## Current RSA v2 State
 
-As of 2026-05-07, the live RSA v2 runner is a reciprocal PGSPG
-certificate-pair probe, and the active research track is grammar evidence for
-PGS-native modulus decomposition.
+As of 2026-05-13, the PGS-Shor order entropy sidecar is the newest named
+cryptology topic. Read:
 
-It does not solve the 40-bit or 50-bit rungs.
+```text
+research/06-cryptology-rsa/docs/shor_order_entropy/index.html
+research/06-cryptology-rsa/experiments/rsa/v2/shor_order_entropy_probe.py
+research/06-cryptology-rsa/experiments/rsa/v2/output/shor_order_entropy_probe/summary.json
+```
 
-Both rungs currently return:
+Strongest supported claim:
+
+```text
+On the resolved 40-bit RSA v2 ladder rung, public PGS reciprocal endpoint
+closure supplies the endpoint class before Shor order finding, and downstream
+audit confirms the fixed-base order vector matches the actual order vector.
+The measured phase burden is 80 baseline bits -> 0 residual bits.
+```
+
+Scope limit:
+
+```text
+The 50-bit row remains unresolved_by_certificate_pair_not_closed and preserves
+100 baseline phase bits -> 100 residual phase bits. This is a measured sidecar
+finding, not a Shor/PGS theorem.
+```
+
+Historical note: as of 2026-05-07, the RSA v2 runner did not solve the 40-bit
+or 50-bit rungs. That state is superseded for the 40-bit rung by the later
+deadline-signature correction and the PGS-Shor order entropy sidecar above. The
+50-bit rung still returns:
 
 ```text
 unresolved_by_certificate_pair_not_closed
 ```
 
-The previous 40-bit resolution was withdrawn because it depended on a
-close-factor shape. Do not revive fixed radius chambers, endpoint-walk budgets,
-product closure, divisibility selectors, hidden fixtures, or audit leakage.
+The previous pre-correction 40-bit resolution was withdrawn because it depended
+on a close-factor shape. Do not revive fixed radius chambers, endpoint-walk
+budgets, product closure, divisibility selectors, hidden fixtures, or audit
+leakage.
 
 The next live RSA v2 task is to derive a stronger transported certificate
 invariant from public PGSPG fields.

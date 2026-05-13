@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="202" viewBox="0 0 760 202">
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<text x="24" y="30" font-family="Arial" font-size="18" font-weight="700" fill="#111827">PGS order-entropy collapse before Shor</text>
+<text x="24" y="48" font-family="Arial" font-size="12" fill="#475569">Blue is ordinary phase bits. Green is residual phase bits after public PGS endpoint class.</text>
+<text x="24" y="70" font-family="Arial" font-size="12" fill="#111827">rsa_v2_40bit_static_001 (40-bit)</text>
+<rect x="190" y="52" width="400" height="18" rx="3" fill="#2563eb"/>
+<rect x="190" y="76" width="0" height="18" rx="3" fill="#16a34a"/>
+<text x="598" y="66" font-family="Arial" font-size="12" fill="#1e3a8a">80</text>
+<text x="198" y="90" font-family="Arial" font-size="12" fill="#166534">0</text>
+<text x="24" y="124" font-family="Arial" font-size="12" fill="#111827">rsa_v2_50bit_static_001 (50-bit)</text>
+<rect x="190" y="106" width="500" height="18" rx="3" fill="#2563eb"/>
+<rect x="190" y="130" width="500" height="18" rx="3" fill="#16a34a"/>
+<text x="698" y="120" font-family="Arial" font-size="12" fill="#1e3a8a">100</text>
+<text x="698" y="144" font-family="Arial" font-size="12" fill="#166534">100</text>
+</svg>

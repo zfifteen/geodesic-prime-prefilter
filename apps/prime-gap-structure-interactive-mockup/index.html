@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prime Gap Structure - Interactive Mockup</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --page: #090b0f;
+      --panel: #141821;
+      --panel-soft: #10141c;
+      --line: #282a2d;
+      --line-strong: #383a3f;
+      --text: #f1f2f5;
+      --muted: #aaabb0;
+      --blue: #4b7af0;
+      --yellow: #ffd643;
+      --hot: #ff514e;
+      --row: rgba(255, 221, 64, 0.035);
+      --selected: rgba(255, 79, 73, 0.13);
+      --shadow: rgba(0, 0, 0, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--page);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+
+    body {
+      padding: 24px 24px 42px;
+    }
+
+    main {
+      max-width: 1720px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(1.8rem, 3vw, 3rem);
+      line-height: 1.08;
+      font-weight: 800;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.35rem, 1.8vw, 1.9rem);
+      line-height: 1.1;
+      font-weight: 800;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .topbar,
+    .panel {
+      background: var(--panel);
+      border: 2px solid var(--line);
+      box-shadow: 0 18px 40px var(--shadow);
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 92px;
+      padding: 20px 22px;
+      border-radius: 16px;
+    }
+
+    .field {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    label {
+      white-space: nowrap;
+      font-size: clamp(1rem, 1.15vw, 1.25rem);
+      font-weight: 760;
+    }
+
+    input {
+      width: min(280px, 30vw);
+      height: 48px;
+      border: 2px solid var(--line-strong);
+      border-radius: 10px;
+      padding: 0 16px;
+      background: #0f131b;
+      color: var(--text);
+      font-size: clamp(1rem, 1.1vw, 1.18rem);
+      font-weight: 760;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #5f6f91;
+      box-shadow: 0 0 0 3px rgba(90, 119, 175, 0.2);
+    }
+
+    .primary-actions,
+    .step-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .button {
+      height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border: 2px solid var(--line-strong);
+      border-radius: 10px;
+      padding: 0 18px;
+      background: #11151d;
+      color: var(--text);
+      font-size: clamp(0.98rem, 1.05vw, 1.16rem);
+      font-weight: 760;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      border-color: #51545b;
+      background: #171b24;
+    }
+
+    .button:active {
+      transform: translateY(1px);
+    }
+
+    .button svg {
+      width: 19px;
+      height: 19px;
+      flex: 0 0 auto;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.6;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: clamp(0.92rem, 1vw, 1.1rem);
+      font-weight: 700;
+      margin-left: 20px;
+      white-space: nowrap;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .panel {
+      min-height: 610px;
+      border-radius: 16px;
+      padding: 42px 28px 28px;
+      overflow: hidden;
+    }
+
+    .summary-line {
+      margin: 32px 0 0;
+      display: flex;
+      align-items: baseline;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: clamp(1.3rem, 1.75vw, 1.65rem);
+      line-height: 1.18;
+      font-weight: 790;
+    }
+
+    .summary-line .small {
+      font-weight: 740;
+    }
+
+    .chart-wrap {
+      margin-top: 82px;
+      width: min(460px, 100%);
+    }
+
+    .bars {
+      height: 112px;
+      display: flex;
+      align-items: flex-end;
+      gap: 5px;
+      overflow: hidden;
+    }
+
+    .bar {
+      width: 30px;
+      min-width: 8px;
+      max-width: 30px;
+      background: var(--blue);
+      border-radius: 0;
+      position: relative;
+    }
+
+    .bar.selected {
+      background: var(--yellow);
+      outline: 4px solid var(--hot);
+      outline-offset: -4px;
+    }
+
+    .table-wrap {
+      margin-top: 28px;
+      overflow: auto;
+      max-height: 300px;
+      padding-right: 2px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: clamp(1rem, 1.25vw, 1.25rem);
+      line-height: 1.25;
+      font-weight: 720;
+      table-layout: fixed;
+    }
+
+    th,
+    td {
+      padding: 8px 10px;
+      text-align: right;
+      border-bottom: 2px solid rgba(255, 214, 67, 0.08);
+      white-space: nowrap;
+    }
+
+    th {
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    th:first-child,
+    td:first-child {
+      text-align: left;
+    }
+
+    tr {
+      background: transparent;
+    }
+
+    tbody tr:nth-child(odd) {
+      background: var(--row);
+    }
+
+    tbody tr.selected {
+      background: var(--selected);
+    }
+
+    .readout {
+      margin-top: 34px;
+      max-width: 760px;
+      font-size: clamp(1.15rem, 1.45vw, 1.42rem);
+      line-height: 1.22;
+      font-weight: 720;
+    }
+
+    .readout strong {
+      font-weight: 880;
+    }
+
+    .explain,
+    .try {
+      max-width: 780px;
+      color: var(--muted);
+      font-size: clamp(0.96rem, 1.1vw, 1.12rem);
+      line-height: 1.25;
+      font-weight: 690;
+    }
+
+    .explain {
+      margin-top: 22px;
+    }
+
+    .try {
+      margin-top: 20px;
+    }
+
+    .try button {
+      appearance: none;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .try button:hover {
+      color: var(--text);
+    }
+
+    .status {
+      min-height: 34px;
+      margin: 18px 4px 0;
+      color: #ffb1ad;
+      font-size: 1.05rem;
+      font-weight: 680;
+    }
+
+    .empty {
+      margin-top: 48px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.35;
+      font-weight: 680;
+    }
+
+    @media (max-width: 980px) {
+      body {
+        padding: 20px 18px 34px;
+      }
+
+      .topbar {
+        align-items: stretch;
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      .field,
+      .primary-actions,
+      .step-actions {
+        width: 100%;
+      }
+
+      input {
+        width: 100%;
+      }
+
+      .button {
+        flex: 1 1 0;
+        padding: 0 14px;
+      }
+
+      .note {
+        margin-left: 0;
+        white-space: normal;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .panel {
+        min-height: auto;
+        padding: 32px 22px 26px;
+      }
+
+      .chart-wrap {
+        margin-top: 60px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .primary-actions,
+      .step-actions {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .field {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .summary-line {
+        gap: 10px;
+      }
+
+      table {
+        font-size: 0.92rem;
+      }
+
+      th,
+      td {
+        padding: 7px 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Prime Gap Structure &mdash; Interactive Mockup</h1>
+
+    <section class="topbar" aria-label="Gap controls">
+      <div class="field">
+        <label for="start-prime">Start prime:</label>
+        <input id="start-prime" type="number" inputmode="numeric" min="2" max="1999993" step="1" value="53">
+      </div>
+      <div class="primary-actions">
+        <button id="analyze" class="button" type="button">Analyze gap</button>
+      </div>
+      <div class="step-actions">
+        <button id="next" class="button" type="button" aria-label="Next demo prime">
+          <span>Next</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 12h14"></path>
+            <path d="m13 6 6 6-6 6"></path>
+          </svg>
+        </button>
+        <button id="prev" class="button" type="button" aria-label="Previous demo prime">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M19 12H5"></path>
+            <path d="m11 6-6 6 6 6"></path>
+          </svg>
+          <span>Prev</span>
+        </button>
+      </div>
+      <div class="note">Demo primes up to 2M</div>
+    </section>
+
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+
+    <section class="grid">
+      <article class="panel" aria-label="Gap interior">
+        <h2>Gap interior</h2>
+        <div id="gap-summary" class="summary-line"></div>
+        <div id="chart" class="chart-wrap"></div>
+        <div id="table" class="table-wrap"></div>
+      </article>
+
+      <article class="panel" aria-label="Controls and readouts">
+        <h2>Controls &amp; readouts</h2>
+        <div id="readout" class="readout"></div>
+        <p class="explain">
+          Leftmost minimum = Gap Winner Rule. Peak Z = DNI raw-Z maximum.
+          Mod30 class drives ridge orientation.
+        </p>
+        <p class="try">
+          Try primes:
+          <button type="button" data-prime="23">23</button>,
+          <button type="button" data-prime="89">89</button>,
+          <button type="button" data-prime="113">113</button>,
+          <button type="button" data-prime="199">199</button>,
+          <button type="button" data-prime="1009">1009</button>,
+          <button type="button" data-prime="10007">10007</button>
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const LIMIT = 2000000;
+    const tau = new Uint16Array(LIMIT + 1);
+    const primes = [];
+
+    for (let d = 1; d <= LIMIT; d += 1) {
+      for (let n = d; n <= LIMIT; n += d) {
+        tau[n] += 1;
+      }
+    }
+
+    for (let n = 2; n <= LIMIT; n += 1) {
+      if (tau[n] === 2) {
+        primes.push(n);
+      }
+    }
+
+    const input = document.getElementById("start-prime");
+    const statusEl = document.getElementById("status");
+    const summaryEl = document.getElementById("gap-summary");
+    const chartEl = document.getElementById("chart");
+    const tableEl = document.getElementById("table");
+    const readoutEl = document.getElementById("readout");
+
+    function binaryPrimeIndex(value) {
+      let lo = 0;
+      let hi = primes.length - 1;
+      while (lo <= hi) {
+        const mid = Math.floor((lo + hi) / 2);
+        if (primes[mid] === value) {
+          return mid;
+        }
+        if (primes[mid] < value) {
+          lo = mid + 1;
+        } else {
+          hi = mid - 1;
+        }
+      }
+      return -1;
+    }
+
+    function firstPrimeIndexAtOrAfter(value) {
+      let lo = 0;
+      let hi = primes.length;
+      while (lo < hi) {
+        const mid = Math.floor((lo + hi) / 2);
+        if (primes[mid] < value) {
+          lo = mid + 1;
+        } else {
+          hi = mid;
+        }
+      }
+      return lo;
+    }
+
+    function logZ(n, divisorCount) {
+      return (1 - divisorCount / 2) * Math.log(n);
+    }
+
+    function formatZFromLog(logValue) {
+      if (Math.abs(logValue) < 1e-12) {
+        return "1.00";
+      }
+      const log10 = logValue / Math.LN10;
+      const exponent = Math.floor(log10);
+      const mantissa = Math.pow(10, log10 - exponent);
+      return `${mantissa.toFixed(2)}e${exponent}`;
+    }
+
+    function analyzePrime(p) {
+      statusEl.textContent = "";
+      if (!Number.isInteger(p) || p < 2 || p > LIMIT) {
+        renderEmpty("Enter an integer start prime from 2 through 2,000,000.");
+        return;
+      }
+
+      let index = binaryPrimeIndex(p);
+      if (index === -1) {
+        index = firstPrimeIndexAtOrAfter(p);
+      }
+
+      if (index >= primes.length) {
+        renderEmpty(`${p} has no next demo prime inside the 2,000,000 limit.`);
+        return;
+      }
+
+      if (index >= primes.length - 1) {
+        renderEmpty(`${primes[index]} has no next demo prime inside the 2,000,000 limit.`);
+        return;
+      }
+
+      const startPrime = primes[index];
+      const q = primes[index + 1];
+      input.value = String(startPrime);
+      statusEl.textContent = startPrime === p ? "" : `${p} is composite; advanced to next start prime ${startPrime}.`;
+      renderGap(startPrime, q);
+    }
+
+    function renderEmpty(message) {
+      statusEl.textContent = message;
+      summaryEl.textContent = "";
+      chartEl.innerHTML = `<div class="empty">${message}</div>`;
+      tableEl.innerHTML = "";
+      readoutEl.innerHTML = "";
+    }
+
+    function renderGap(p, q) {
+      const rows = [];
+      for (let n = p + 1; n < q; n += 1) {
+        const d = tau[n];
+        rows.push({
+          n,
+          d,
+          log: logZ(n, d),
+          distL: n - p
+        });
+      }
+
+      summaryEl.innerHTML = `
+        <span>${p} &rarr; ${q}</span>
+        <span class="small">gap=${q - p}</span>
+        <span class="small">mod30=${p % 30}</span>
+      `;
+
+      if (rows.length === 0) {
+        chartEl.innerHTML = `<div class="empty">This gap has no interior integer.</div>`;
+        tableEl.innerHTML = "";
+        readoutEl.innerHTML = `
+          <div>Leftmost min: <strong>none</strong></div>
+          <div>Peak Z: <strong>none</strong></div>
+          <div>d=4 share: <strong>0.0%</strong></div>
+          <div>GWR holds: <strong>no interior</strong></div>
+        `;
+        return;
+      }
+
+      let minD = Infinity;
+      let leftmost = rows[0];
+      let peak = rows[0];
+      let d4Count = 0;
+
+      for (const row of rows) {
+        if (row.d === 4) {
+          d4Count += 1;
+        }
+        if (row.d < minD) {
+          minD = row.d;
+          leftmost = row;
+        }
+        if (row.log > peak.log) {
+          peak = row;
+        }
+      }
+
+      const minLog = Math.min(...rows.map((row) => row.log));
+      const maxLog = Math.max(...rows.map((row) => row.log));
+      const span = Math.max(1e-12, maxLog - minLog);
+
+      chartEl.innerHTML = `
+        <div class="bars" aria-label="DNI raw-Z bars">
+          ${rows.map((row) => {
+            const position = (row.log - minLog) / span;
+            const height = 52 + position * 60;
+            const width = Math.max(8, Math.min(30, Math.floor(190 / rows.length)));
+            const selected = row.n === leftmost.n ? " selected" : "";
+            return `<div class="bar${selected}" title="n=${row.n}, d=${row.d}, Z=${formatZFromLog(row.log)}" style="height:${height.toFixed(1)}px;width:${width}px"></div>`;
+          }).join("")}
+        </div>
+      `;
+
+      tableEl.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>n</th>
+              <th>d(n)</th>
+              <th>Z</th>
+              <th>distL</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows.map((row) => `
+              <tr class="${row.n === leftmost.n ? "selected" : ""}">
+                <td>${row.n}</td>
+                <td>${row.d}</td>
+                <td>${formatZFromLog(row.log)}</td>
+                <td>${row.distL}</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      `;
+
+      const d4Share = (d4Count / rows.length) * 100;
+      const holds = peak.n === leftmost.n ? "peak = leftmost" : "unresolved";
+
+      readoutEl.innerHTML = `
+        <div>Leftmost min: <strong>${leftmost.n}</strong> (d=${leftmost.d})</div>
+        <div>Peak Z: <strong>${peak.n}</strong> (Z=${formatZFromLog(peak.log)}, d=${peak.d}) at dist ${peak.distL}</div>
+        <div>d=4 share: <strong>${d4Share.toFixed(1)}%</strong></div>
+        <div>GWR holds: <strong>${holds}</strong></div>
+      `;
+    }
+
+    document.getElementById("analyze").addEventListener("click", () => {
+      analyzePrime(Number(input.value));
+    });
+
+    input.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        analyzePrime(Number(input.value));
+      }
+    });
+
+    document.getElementById("next").addEventListener("click", () => {
+      const index = binaryPrimeIndex(Number(input.value));
+      if (index >= 0 && index < primes.length - 2) {
+        analyzePrime(primes[index + 1]);
+      }
+    });
+
+    document.getElementById("prev").addEventListener("click", () => {
+      const index = binaryPrimeIndex(Number(input.value));
+      if (index > 0) {
+        analyzePrime(primes[index - 1]);
+      }
+    });
+
+    document.querySelectorAll("[data-prime]").forEach((button) => {
+      button.addEventListener("click", () => {
+        analyzePrime(Number(button.dataset.prime));
+      });
+    });
+
+    analyzePrime(Number(input.value));
+  </script>
+</body>
+</html>

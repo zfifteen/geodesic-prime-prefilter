@@ -61,6 +61,17 @@ Status: complete.
 The OEIS chapter now has a candidate workflow and packet template. No candidate
 sequence has been selected in this branch.
 
+## Phase 7 PGS-Shor Order Entropy Topic
+
+Status: topic added.
+
+The cryptology chapter now includes a PGS-Shor order entropy topic page at
+`research/06-cryptology-rsa/docs/shor_order_entropy/index.html`. It records the
+measured sidecar finding that the resolved 40-bit RSA v2 ladder rung collapses
+from `80` baseline phase bits to `0` residual phase bits after public PGS
+reciprocal endpoint closure, while the unresolved 50-bit rung remains at
+`100` residual phase bits.
+
 ## Migration Status
 
 | Chapter | Status | Validation | Next Action |
@@ -71,6 +82,7 @@ sequence has been selected in this branch.
 | `04-bounded-compression` | mapped | Bounded/state focused command passed, 20 tests | Square branch remains unresolved. |
 | `05-state-budget` | mapped | Bounded/state focused command passed, 20 tests | `d4_count` remains measured. |
 | `06-cryptology-rsa` | mapped | Focused RSA command passed, 102 tests | RSA v2 unresolved states preserved. |
+| `06-cryptology-rsa/docs/shor_order_entropy` | topic added | `python3 -m pytest research/06-cryptology-rsa/tests/test_rsa_v2_scripts.py -q` passed, 51 tests | Add 17-bit toy row and next higher rung without changing the rule. |
 | `07-oeis` | workflow initialized | template audit passed by file presence | First candidate packet remains open. |
 | `08-collatz` | migrated | `python3 -m pytest research/08-collatz/tests` passed, 55 tests | Contained-family migration complete. |
 | `09-exponents` | migrated | `python3 -m pytest research/09-exponents/tests` passed, 68 tests | Contained-family migration complete. |
@@ -107,4 +119,11 @@ sequence has been selected in this branch.
 
   python3 -m pytest research/06-cryptology-rsa/tests/test_rsa_v2_scripts.py research/06-cryptology-rsa/tests/test_rsa_v2_transported_story_law.py research/06-cryptology-rsa/tests/test_rsa_v2_certificate_commitment_story.py research/06-cryptology-rsa/tests/test_pgs_semiprime_backward_law_search.py research/06-cryptology-rsa/tests/test_pgs_semiprime_backward_transition_law_search.py research/06-cryptology-rsa/tests/test_toy_modulus_backward_chamber_lock.py
   102 passed in 248.72s
+
+2026-05-13:
+  python3 research/06-cryptology-rsa/experiments/rsa/v2/shor_order_entropy_probe.py
+  status: mixed_public_pgs_collapse, 180 baseline phase bits -> 100 residual phase bits across 2 audit rows
+
+  python3 -m pytest research/06-cryptology-rsa/tests/test_rsa_v2_scripts.py -q
+  51 passed in 27.53s
 ```

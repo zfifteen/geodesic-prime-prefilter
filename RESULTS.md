@@ -98,6 +98,30 @@ Empirical benchmark surfaces include:
 - $2.82\times$ end-to-end speedup across $50$ deterministic $4096$-bit RSA keypairs
 - $90.97\,\%$ to $91.07\,\%$ Miller-Rabin reduction in the current covered-table configuration
 
+## PGS-Shor Order Entropy Probe
+
+The PGS-Shor order entropy sidecar measures whether public reciprocal PGS
+endpoint closure removes the Shor order-finding burden before quantum phase
+estimation would be needed.
+
+On the current two-row RSA v2 ladder:
+
+- `rsa_v2_40bit_static_001`: public PGS endpoint class present, audit endpoint
+  match true, candidate fixed-base order vector equals the actual fixed-base
+  order vector, `80` baseline phase bits become `0` residual phase bits.
+- `rsa_v2_50bit_static_001`: public PGS endpoint class absent,
+  `unresolved_by_certificate_pair_not_closed`, `100` baseline phase bits remain
+  `100` residual phase bits.
+
+This is a measured sidecar result, not a theorem. It supports the hypothesis
+that when PGS publicly resolves the reciprocal endpoint class, Shor's order
+finding has no remaining order-denominator information to discover for that
+case. The unresolved 50-bit row is a negative control and carries no efficiency
+claim.
+
+Reference document:
+`research/06-cryptology-rsa/docs/shor_order_entropy/index.html`.
+
 ## Links Into The Repository
 
 - [LEFTMOST_MINIMUM_DIVISOR_RULE.md](LEFTMOST_MINIMUM_DIVISOR_RULE.md) explains the selected composite.
