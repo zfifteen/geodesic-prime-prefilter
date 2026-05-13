@@ -46,6 +46,7 @@ following:
 | Separate bounded carrier scans from square-root no-arrival proof | `square_tail_arrival_boundary_gap_509.md` | complete |
 | Exclude local first-arrival ordering contradiction | `square_tail_crt_model_arrival_order_audit_509.md` | complete |
 | Separate selected-square deadline from dynamic cutoff | `square_tail_selected_square_deadline_audit.md` | complete |
+| Exclude child selected-square inheritance alone | `square_tail_child_selected_square_inheritance_audit.md` | complete |
 | Prove a prime-valued M-rough defect must occur before the cutoff | No proof artifact exists. | missing |
 | Produce a counterexample | No counterexample artifact exists. | missing |
 
@@ -172,6 +173,7 @@ The following are useful evidence but do not complete the goal:
 - square-root boundary comparisons that restate the no-arrival target;
 - local first-arrival CRT covers without a selected-square prime-root transport law;
 - selected-square deadline audits that do not imply the dynamic cutoff;
+- child selected-square inheritance without a parent-to-child transport law;
 - Grok agreement with the equivalence.
 
 ## Next Valid Work

@@ -153,3 +153,9 @@ semantics at the next layer: the composite rough-tail rows project to smaller
 closed selected-square children, while the representative closes at the one
 prime-valued rough-tail row. The projection pattern is exact evidence for the
 transport target, not the transport law itself.
+
+The child selected-square inheritance audit records the same boundary from the
+other side. Actual composite rough-defect children are selected-square roots,
+but so are the assigned singleton carriers in the full-cutoff local CRT model.
+Therefore child selected-square status alone does not separate true PGS descent
+from a local obstruction cover.
