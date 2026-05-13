@@ -40,6 +40,11 @@ def test_local_crt_model_does_not_force_obstruction_inheritance():
     assert payload["parent_rough_defect_count"] == 569
     assert payload["assigned_carrier_count"] == 569
     assert payload["assigned_carriers_with_O_count"] == 0
-    assert payload["assigned_carriers_closed_count"] == 569
     assert payload["all_assigned_carriers_closed"] is True
-    assert payload["min_assigned_carrier_rough_prime_defect_count"] >= 1
+    assert payload["first_arrival_carrier_count"] == 569
+    assert payload["first_arrival_distinct_carrier_count"] == 569
+    assert payload["first_arrival_carriers_with_O_count"] == 0
+    assert payload["all_first_arrival_carriers_closed"] is True
+    summaries = {row["label"]: row for row in payload["carrier_summaries"]}
+    assert summaries["assigned_singleton_carriers"]["min_carrier_rough_prime_defect_count"] >= 1
+    assert summaries["first_arrival_carriers"]["min_carrier_rough_prime_defect_count"] >= 1

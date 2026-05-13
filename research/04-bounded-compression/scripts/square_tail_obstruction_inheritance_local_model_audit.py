@@ -8,6 +8,8 @@ import json
 import sys
 from pathlib import Path
 
+from sympy import primerange
+
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 if str(SCRIPT_DIR) not in sys.path:
@@ -40,38 +42,77 @@ def carrier_obstruction_row(root: int) -> dict[str, object]:
     }
 
 
+def first_arrival_carriers(model: dict[str, object]) -> list[int]:
+    """Return first-arrival carriers for every modeled rough row."""
+    model_with_values = build_full_cutoff_crt_model(SOURCE_ROOT, include_model_values=True)
+    root = int(model_with_values["model_residue"])
+    limit = int(model["M"])
+    rough = {int(row["m"]) for row in model["carrier_rows"]}
+    last_assigned = int(model["last_assigned_carrier"])
+    first_arrivals: dict[int, int] = {}
+    for carrier in primerange(limit + 1, last_assigned + 1):
+        carrier_int = int(carrier)
+        residue = (root * root * pow(2, -1, carrier_int)) % carrier_int
+        if 1 <= residue <= limit and residue in rough and residue not in first_arrivals:
+            first_arrivals[residue] = carrier_int
+    if len(first_arrivals) != len(rough):
+        raise RuntimeError("first-arrival cover incomplete")
+    return [first_arrivals[m] for m in sorted(rough)]
+
+
+def carrier_summary(label: str, carriers: list[int]) -> dict[str, object]:
+    """Return obstruction summary for a carrier family."""
+    rows = [carrier_obstruction_row(root) for root in carriers]
+    obstructed_rows = [row for row in rows if bool(row["O_holds"])]
+    prime_counts = [int(row["rough_prime_defect_count"]) for row in rows]
+    return {
+        "label": label,
+        "carrier_count": len(carriers),
+        "distinct_carrier_count": len(set(carriers)),
+        "carriers_with_O_count": len(obstructed_rows),
+        "carriers_closed_count": len(rows) - len(obstructed_rows),
+        "all_carriers_closed": len(obstructed_rows) == 0,
+        "min_carrier_rough_prime_defect_count": min(prime_counts) if prime_counts else None,
+        "max_carrier_rough_prime_defect_count": max(prime_counts) if prime_counts else None,
+        "first_carrier_rows": rows[:20],
+        "obstructed_carrier_rows": obstructed_rows,
+    }
+
+
 def build_local_model_inheritance_audit() -> dict[str, object]:
-    """Return obstruction-inheritance data for the local CRT assigned carriers."""
+    """Return obstruction-inheritance data for the local CRT carrier families."""
     model = build_full_cutoff_crt_model(SOURCE_ROOT)
     carriers = [int(row["carrier"]) for row in model["carrier_rows"]]
-    carrier_rows = [carrier_obstruction_row(root) for root in carriers]
-    obstructed_rows = [row for row in carrier_rows if bool(row["O_holds"])]
-    prime_counts = [int(row["rough_prime_defect_count"]) for row in carrier_rows]
+    first_arrivals = first_arrival_carriers(model)
+    assigned_summary = carrier_summary("assigned_singleton_carriers", carriers)
+    first_arrival_summary = carrier_summary("first_arrival_carriers", first_arrivals)
     return {
         "source_root": SOURCE_ROOT,
         "representative_root": model["representative_root"],
         "parent_local_model_consistent": model["local_model_consistent"],
         "parent_rough_defect_count": model["rough_defect_count"],
-        "assigned_carrier_count": len(carriers),
-        "assigned_carriers_with_O_count": len(obstructed_rows),
-        "assigned_carriers_closed_count": len(carrier_rows) - len(obstructed_rows),
-        "all_assigned_carriers_closed": len(obstructed_rows) == 0,
-        "min_assigned_carrier_rough_prime_defect_count": (
-            min(prime_counts) if prime_counts else None
-        ),
-        "max_assigned_carrier_rough_prime_defect_count": (
-            max(prime_counts) if prime_counts else None
-        ),
+        "assigned_carrier_count": assigned_summary["carrier_count"],
+        "assigned_carriers_with_O_count": assigned_summary["carriers_with_O_count"],
+        "all_assigned_carriers_closed": assigned_summary["all_carriers_closed"],
+        "first_arrival_carrier_count": first_arrival_summary["carrier_count"],
+        "first_arrival_distinct_carrier_count": first_arrival_summary[
+            "distinct_carrier_count"
+        ],
+        "first_arrival_carriers_with_O_count": first_arrival_summary[
+            "carriers_with_O_count"
+        ],
+        "all_first_arrival_carriers_closed": first_arrival_summary[
+            "all_carriers_closed"
+        ],
         "least_factor_boundary": (
-            "assigned carriers are congruence carriers, not certified least-factor "
-            "children of the modeled rows"
+            "first-arrival carriers are local least-factor analogues, but the model "
+            "root is not an actual prime-root theorem instance"
         ),
         "boundary": (
             "local CRT complete carrier cover does not force obstruction on assigned "
-            "carriers; all assigned carriers are closed"
+            "or first-arrival carriers; all such carriers are closed"
         ),
-        "first_assigned_carrier_rows": carrier_rows[:20],
-        "obstructed_assigned_carrier_rows": obstructed_rows,
+        "carrier_summaries": [assigned_summary, first_arrival_summary],
     }
 
 
