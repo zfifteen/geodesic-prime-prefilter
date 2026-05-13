@@ -19,6 +19,48 @@ Created chapter homes:
 - `research/08-collatz/`
 - `research/09-exponents/`
 - `research/10-twin-primes/`
+- `research/11-gap-ridge/`
+- `research/12-rh-bridge/`
+- `research/13-prime-spiral/`
+- `research/14-sha-nonce/`
+
+## Current Center Of Gravity
+
+Status: active theorem frontier.
+
+The current project center is:
+
+```text
+research/12-rh-bridge/
+```
+
+The active research program is:
+
+```text
+DNI/PGS Pole-Placement Program
+```
+
+The controlling thesis is:
+
+```text
+PGS explains the RH shadow. RH does not explain PGS.
+```
+
+The theorem target is unresolved:
+
+```text
+Every nontrivial pole of R(s) = (e^2/2)K(s)/D(s) lies on Re(s)=1/2.
+```
+
+If proved, classical RH follows as a corollary because the nontrivial poles of
+`R(s)` are exactly the nontrivial zeros of `zeta(s)`, with multiplicity encoded
+by residue.
+
+Primary artifact:
+
+```text
+research/12-rh-bridge/docs/pole-placement-program/index.html
+```
 
 ## Phase 2 Contained Families
 
