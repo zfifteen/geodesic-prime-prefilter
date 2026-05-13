@@ -618,7 +618,7 @@ def diagnostic_row(case: LadderCase, pair: CertificatePair, diagnostics: Diagnos
         "bits": case.bits,
         "N": str(case.n),
         "rule_id": RULE_ID,
-        "closure_status": pair.closure_status,
+        "public_closure_status": pair.closure_status,
         "previous_endpoint_lookups": diagnostics["previous_endpoint_lookups"],
         "previous_endpoint_calls": diagnostics["previous_endpoint_calls"],
         "certificate_lookups": diagnostics["certificate_lookups"],
@@ -653,7 +653,7 @@ def baseline_cost_row(
         "bits": case.bits,
         "N": str(case.n),
         "rule_id": RULE_ID,
-        "closure_status": pair.closure_status,
+        "public_closure_status": pair.closure_status,
         "endpoint_chain_steps": diagnostics["endpoint_chain_steps"],
         "cache_lookups": cache_lookups,
         "cache_misses": cache_misses,
@@ -697,7 +697,7 @@ def pair_to_json(case: LadderCase, pair: CertificatePair) -> dict[str, object]:
         "case_id": case.case_id,
         "bits": case.bits,
         "N": str(case.n),
-        "closure_status": pair.closure_status,
+        "public_closure_status": pair.closure_status,
         "transported_upper_endpoint": None if pair.transported_upper_endpoint is None else str(pair.transported_upper_endpoint),
         "transported_lower_endpoint": None if pair.transported_lower_endpoint is None else str(pair.transported_lower_endpoint),
         "corrected_lower_endpoint": None if pair.corrected_lower_endpoint is None else str(pair.corrected_lower_endpoint),
@@ -717,50 +717,61 @@ def pair_to_json(case: LadderCase, pair: CertificatePair) -> dict[str, object]:
     return payload
 
 
+def public_endpoint_class_row(
+    case: LadderCase,
+    lower: gmpy2.mpz,
+    upper: gmpy2.mpz,
+    public_closure_status: str,
+) -> dict[str, object]:
+    """Return one public endpoint-class row without factor-shaped fields."""
+    return {
+        "case_id": case.case_id,
+        "bits": case.bits,
+        "N": str(case.n),
+        "status": "public_endpoint_class_found",
+        "public_structure_found": True,
+        "endpoint_class_lower": str(lower),
+        "endpoint_class_upper": str(upper),
+        "public_closure_status": public_closure_status,
+        "rule_id": RULE_ID,
+    }
+
+
 def result_row(case: LadderCase, pair: CertificatePair) -> dict[str, object]:
-    """Return inference status from certificate closure only."""
+    """Return public endpoint-class status from certificate closure only."""
     if pair.closure_status == "resolved_by_mutual_certificate_closure":
         assert pair.lower is not None
         assert pair.upper is not None
-        return {
-            "case_id": case.case_id,
-            "bits": case.bits,
-            "N": str(case.n),
-            "status": "resolved",
-            "p": str(pair.lower.reset_endpoint),
-            "q": str(pair.upper.reset_endpoint),
-            "rule_id": RULE_ID,
-        }
+        return public_endpoint_class_row(
+            case,
+            pair.lower.reset_endpoint,
+            pair.upper.reset_endpoint,
+            pair.closure_status,
+        )
     if pair.closure_status == "resolved_by_reciprocal_deadline_signature_correction":
         assert pair.corrected_lower_endpoint is not None
         assert pair.corrected_upper_endpoint is not None
-        return {
-            "case_id": case.case_id,
-            "bits": case.bits,
-            "N": str(case.n),
-            "status": "resolved",
-            "p": str(pair.corrected_lower_endpoint),
-            "q": str(pair.corrected_upper_endpoint),
-            "rule_id": RULE_ID,
-        }
+        return public_endpoint_class_row(
+            case,
+            pair.corrected_lower_endpoint,
+            pair.corrected_upper_endpoint,
+            pair.closure_status,
+        )
     if pair.closure_status == "resolved_by_oriented_endpoint_chain_closure":
         assert pair.corrected_lower_endpoint is not None
         assert pair.corrected_upper_endpoint is not None
-        return {
-            "case_id": case.case_id,
-            "bits": case.bits,
-            "N": str(case.n),
-            "status": "resolved",
-            "p": str(pair.corrected_lower_endpoint),
-            "q": str(pair.corrected_upper_endpoint),
-            "endpoint_class_role": "structural_endpoint_class",
-            "rule_id": RULE_ID,
-        }
+        return public_endpoint_class_row(
+            case,
+            pair.corrected_lower_endpoint,
+            pair.corrected_upper_endpoint,
+            pair.closure_status,
+        )
     return {
         "case_id": case.case_id,
         "bits": case.bits,
         "N": str(case.n),
         "status": "unresolved",
+        "public_structure_found": False,
         "unresolved_reason": pair.closure_status,
         "rule_id": RULE_ID,
     }
@@ -776,7 +787,7 @@ def summary_row(case: LadderCase, pair: CertificatePair) -> dict[str, object]:
         "N": str(case.n),
         "center": str(center),
         "balance_band": str(BALANCE_BAND),
-        "closure_status": pair.closure_status,
+        "public_closure_status": pair.closure_status,
         "lower_certificate_present": pair.lower is not None,
         "upper_certificate_present": pair.upper is not None,
         "corrected_lower_certificate_present": pair.corrected_lower is not None,

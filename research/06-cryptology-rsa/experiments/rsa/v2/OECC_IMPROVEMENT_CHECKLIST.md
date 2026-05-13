@@ -36,14 +36,14 @@ Use strikethrough for completed items:
 - [ ] Make `BALANCE_BAND = 2` an explicit resolver input contract or emit a named balance-boundary unresolved status.
 - [ ] Distinguish endpoint-chain exhaustion from missing certificate and generic pair-not-closed statuses.
 - [ ] Update stale `mpz_to_int()` boundary language so it no longer implies a small-regime backend.
-- [ ] Rename structural endpoint-class output fields away from `p` and `q`, or add explicit endpoint-class fields and deprecate factor-shaped names.
+- [x] ~~Rename structural endpoint-class output fields away from `p` and `q`, or add explicit endpoint-class fields and deprecate factor-shaped names.~~
 
 ## Law Clarity And Research Hygiene
 
 - [ ] Add `implementation_label = OECC_LINEAR_V1` to summary or sidecar output.
 - [ ] Add a 48-bit fixture row for `249882542035169`.
-- [ ] Separate structural endpoint class resolved from exact factor pair audit passed in output naming.
-- [ ] Rename structural output fields away from `p` and `q` for non-audit-passing endpoint classes, or add explicit `endpoint_class_lower` and `endpoint_class_upper`.
+- [x] ~~Separate structural endpoint class resolved from exact factor pair audit passed in output naming.~~
+- [x] ~~Rename structural output fields away from `p` and `q` for non-audit-passing endpoint classes, or add explicit `endpoint_class_lower` and `endpoint_class_upper`.~~
 - [ ] Remove or rename stale status `unresolved_by_reset_endpoint_crosses_orientation`.
 - [ ] Add a promotion gate document for candidate law revisions: preserve baseline endpoint classes, reduce measured work, no audit/classical inference.
 

@@ -6,10 +6,10 @@
       "bits": 40,
       "case_id": "rsa_v2_40bit_static_001",
       "center": "1048573",
-      "closure_status": "resolved_by_reciprocal_deadline_signature_correction",
       "corrected_lower_certificate_present": true,
       "endpoint_chain_steps": null,
       "lower_certificate_present": true,
+      "public_closure_status": "resolved_by_reciprocal_deadline_signature_correction",
       "rule_id": "reciprocal_pgs_certificate_pair_v2",
       "upper_certificate_present": true
     },
@@ -19,10 +19,10 @@
       "bits": 50,
       "case_id": "rsa_v2_50bit_static_001",
       "center": "32053641",
-      "closure_status": "resolved_by_oriented_endpoint_chain_closure",
       "corrected_lower_certificate_present": true,
       "endpoint_chain_steps": 389,
       "lower_certificate_present": true,
+      "public_closure_status": "resolved_by_oriented_endpoint_chain_closure",
       "rule_id": "reciprocal_pgs_certificate_pair_v2",
       "upper_certificate_present": true
     },
@@ -32,10 +32,10 @@
       "bits": 64,
       "case_id": "rsa_v2_64bit_static_001",
       "center": "3221250486",
-      "closure_status": "resolved_by_oriented_endpoint_chain_closure",
       "corrected_lower_certificate_present": true,
       "endpoint_chain_steps": 1205,
       "lower_certificate_present": true,
+      "public_closure_status": "resolved_by_oriented_endpoint_chain_closure",
       "rule_id": "reciprocal_pgs_certificate_pair_v2",
       "upper_certificate_present": true
     }

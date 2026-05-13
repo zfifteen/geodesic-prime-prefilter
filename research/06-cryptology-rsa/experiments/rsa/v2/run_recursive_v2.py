@@ -268,9 +268,9 @@ def unresolved_pair_row(case: LadderCase, run: RecursiveRun) -> dict[str, object
         "case_id": case.case_id,
         "bits": case.bits,
         "N": str(case.n),
-        "ladder_rung_resolved": False,
+        "public_structure_found": False,
         "implementation_label": IMPLEMENTATION_LABEL,
-        "closure_status": run.closure_status,
+        "public_closure_status": run.closure_status,
         "recursion_steps": run.recursion_steps,
         "visited_anchor_count": run.visited_anchor_count,
         "rule_id": IMPLEMENTATION_LABEL,
@@ -286,12 +286,11 @@ def recursive_result_row(case: LadderCase, run: RecursiveRun) -> dict[str, objec
             "N": str(case.n),
             "status": "unresolved",
             "unresolved_reason": run.closure_status,
-            "ladder_rung_resolved": False,
+            "public_structure_found": False,
             "implementation_label": IMPLEMENTATION_LABEL,
             "rule_id": IMPLEMENTATION_LABEL,
         }
     row = result_row(case, run.pair)
-    row["ladder_rung_resolved"] = True
     row["implementation_label"] = IMPLEMENTATION_LABEL
     row["rule_id"] = IMPLEMENTATION_LABEL
     return row
@@ -302,7 +301,7 @@ def recursive_pair_row(case: LadderCase, run: RecursiveRun) -> dict[str, object]
     if run.pair is None:
         return unresolved_pair_row(case, run)
     row = pair_to_json(case, run.pair)
-    row["ladder_rung_resolved"] = True
+    row["public_structure_found"] = True
     row["implementation_label"] = IMPLEMENTATION_LABEL
     row["rule_id"] = IMPLEMENTATION_LABEL
     row["recursion_steps"] = run.recursion_steps
@@ -317,15 +316,15 @@ def recursive_summary_row(case: LadderCase, run: RecursiveRun) -> dict[str, obje
             "case_id": case.case_id,
             "bits": case.bits,
             "N": str(case.n),
-            "ladder_rung_resolved": False,
+            "public_structure_found": False,
             "implementation_label": IMPLEMENTATION_LABEL,
-            "closure_status": run.closure_status,
+            "public_closure_status": run.closure_status,
             "recursion_steps": run.recursion_steps,
             "visited_anchor_count": run.visited_anchor_count,
             "rule_id": IMPLEMENTATION_LABEL,
         }
     row = summary_row(case, run.pair)
-    row["ladder_rung_resolved"] = True
+    row["public_structure_found"] = True
     row["implementation_label"] = IMPLEMENTATION_LABEL
     row["rule_id"] = IMPLEMENTATION_LABEL
     row["recursion_steps"] = run.recursion_steps
@@ -339,9 +338,9 @@ def recursive_diagnostic_row(case: LadderCase, run: RecursiveRun) -> dict[str, o
         "case_id": case.case_id,
         "bits": case.bits,
         "N": str(case.n),
-        "ladder_rung_resolved": False,
+        "public_structure_found": False,
         "rule_id": IMPLEMENTATION_LABEL,
-        "closure_status": run.closure_status,
+        "public_closure_status": run.closure_status,
         "endpoint_chain_steps": run.diagnostics["endpoint_chain_steps"],
         "cache_lookups": (
             run.diagnostics["previous_endpoint_lookups"]
@@ -357,7 +356,7 @@ def recursive_diagnostic_row(case: LadderCase, run: RecursiveRun) -> dict[str, o
         "elapsed_ms": run.elapsed_ns / 1_000_000,
     }
     if run.pair is not None:
-        row["ladder_rung_resolved"] = True
+        row["public_structure_found"] = True
     row["implementation_label"] = IMPLEMENTATION_LABEL
     row["rule_id"] = IMPLEMENTATION_LABEL
     row["recursion_steps"] = run.recursion_steps

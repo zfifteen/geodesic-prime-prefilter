@@ -3,9 +3,11 @@
 This document defines the live v2 algorithm after the radius-first and
 endpoint-budget scaffolds were withdrawn.
 
-The current algorithm is a public reciprocal PGSPG resolver for the small
-exact-backend regime. It derives reciprocal certificate state and resolves only
-when public certificate endpoints close under floor transport.
+The current algorithm is a public reciprocal PGSPG endpoint-class instrument
+for the exact-backend regime. It derives reciprocal certificate state and emits
+public endpoint classes when certificate endpoints close under floor transport.
+It does not claim that an endpoint class is the factor pair. Only downstream
+audit may say whether factors were found.
 
 Current implementation label:
 
@@ -162,19 +164,29 @@ floor(N / d) == c
 corrected_lower.reset_signature == upper.reset_signature
 ```
 
-The first public lower-chain endpoint satisfying those conditions resolves as:
+The first public lower-chain endpoint satisfying those conditions emits:
 
 ```text
-resolved_by_oriented_endpoint_chain_closure
+public_closure_status = resolved_by_oriented_endpoint_chain_closure
 ```
 
 This is endpoint-chain traversal over public PGS endpoints. It is not product
 closure, divisibility testing, a fixed-radius candidate band, or a hidden-factor
 search.
 
-## Current Failure Modes
+## Current Status Fields
 
-The runner may emit:
+The runner emits `status = public_endpoint_class_found` when public reciprocal
+structure closes. It emits `endpoint_class_lower` and `endpoint_class_upper`,
+not `p` and `q`. Factor status is absent from inference output.
+
+Audit emits:
+
+```text
+factor_found = true | false
+```
+
+The public closure status may be:
 
 ```text
 resolved_by_mutual_certificate_closure
@@ -189,9 +201,18 @@ unresolved_by_missing_upper_certificate
 The current official rungs emit:
 
 ```text
-rsa_v2_40bit_static_001 -> resolved_by_reciprocal_deadline_signature_correction
-rsa_v2_50bit_static_001 -> resolved_by_oriented_endpoint_chain_closure
+rsa_v2_40bit_static_001 -> public endpoint class found, factor_found = true
+rsa_v2_50bit_static_001 -> public endpoint class found, factor_found = false
+rsa_v2_64bit_static_001 -> public endpoint class found, factor_found = false
 ```
+
+## Erratum: False-Resolution Wording
+
+Earlier OECC output used `status = resolved` and factor-shaped `p` / `q`
+fields for public endpoint classes. That wording was wrong. OECC_LINEAR_V1 and
+OECC_RECURSIVE_V2 found deterministic public endpoint structure on the 50-bit
+and 64-bit rungs, but did not find the factors. The old `resolved` wording is
+invalidated terminology for audit-failing endpoint classes.
 
 ## Explicitly Invalidated Rules
 
@@ -203,6 +224,8 @@ The following are not live rules:
 - stationary recursive reset rounds;
 - product closure as the contraction rule;
 - audit factors as inference inputs.
+- `status = resolved` for audit-failing public endpoint classes;
+- `p` / `q` field names for non-audit inference output.
 
 ## Resolver Target
 
