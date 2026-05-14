@@ -26,7 +26,7 @@ Created chapter homes:
 
 ## Current Center Of Gravity
 
-Status: active theorem frontier.
+Status: active project center.
 
 The current project center is:
 
@@ -37,7 +37,7 @@ research/12-rh-bridge/
 The active research program is:
 
 ```text
-DNI/PGS Pole-Placement Program
+DNI/PGS Prime-Structure Program
 ```
 
 The controlling thesis is:
@@ -46,20 +46,21 @@ The controlling thesis is:
 PGS explains the RH shadow. RH does not explain PGS.
 ```
 
-The theorem target is unresolved:
+The controlling correction is:
 
 ```text
-Every nontrivial pole of R(s) = (e^2/2)K(s)/D(s) lies on Re(s)=1/2.
+Pole placement is a feature of analytic compression, not an explanation of
+the primes.
 ```
 
-If proved, classical RH follows as a corollary because the nontrivial poles of
-`R(s)` are exactly the nontrivial zeros of `zeta(s)`, with multiplicity encoded
-by residue.
+The active program starts from integer-level divisor-count structure and treats
+RH pole or zero placement as a downstream classical translation of the analytic
+shadow.
 
 Primary artifact:
 
 ```text
-research/12-rh-bridge/docs/pole-placement-program/index.html
+research/12-rh-bridge/docs/prime-structure-program/index.html
 ```
 
 ## Phase 2 Contained Families

@@ -13,16 +13,17 @@ If a session starts with limited chat context, read this file first.
 4. Identify the user's active target from the newest request, not from stale
    context.
 5. Treat `research/12-rh-bridge/` as the current project center unless the
-   newest request points elsewhere. The active theorem frontier is the
-   DNI/PGS Pole-Placement Theorem:
+   newest request points elsewhere. The active program is the DNI/PGS
+   Prime-Structure Program:
 
    ```text
-   Every nontrivial pole of R(s) = (e^2/2)K(s)/D(s) lies on Re(s)=1/2.
+   PGS explains primes at the integer level. RH pole placement is a downstream
+   feature of analytic compression, not an explanation of the primes.
    ```
 
    Start with:
    - `research/12-rh-bridge/README.md`;
-   - `research/12-rh-bridge/docs/pole-placement-program/index.html`;
+   - `research/12-rh-bridge/docs/prime-structure-program/index.html`;
    - `research/12-rh-bridge/docs/dni_rh_bridge.md`.
 6. If the active target is RSA v2, read:
    - `research/06-cryptology-rsa/experiments/rsa/v2/README.md`;
