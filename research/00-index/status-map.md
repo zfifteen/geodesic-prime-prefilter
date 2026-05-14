@@ -19,6 +19,49 @@ Created chapter homes:
 - `research/08-collatz/`
 - `research/09-exponents/`
 - `research/10-twin-primes/`
+- `research/11-gap-ridge/`
+- `research/12-rh-bridge/`
+- `research/13-prime-spiral/`
+- `research/14-sha-nonce/`
+
+## Current Center Of Gravity
+
+Status: active project center.
+
+The current project center is:
+
+```text
+research/12-rh-bridge/
+```
+
+The active research program is:
+
+```text
+DNI/PGS Prime-Structure Program
+```
+
+The controlling thesis is:
+
+```text
+PGS explains the RH shadow. RH does not explain PGS.
+```
+
+The controlling correction is:
+
+```text
+Pole placement is a feature of analytic compression, not an explanation of
+the primes.
+```
+
+The active program starts from integer-level divisor-count structure and treats
+RH pole or zero placement as a downstream classical translation of the analytic
+shadow.
+
+Primary artifact:
+
+```text
+research/12-rh-bridge/docs/prime-structure-program/index.html
+```
 
 ## Phase 2 Contained Families
 

@@ -12,12 +12,25 @@ If a session starts with limited chat context, read this file first.
 3. Run `git status --short --untracked-files=all`.
 4. Identify the user's active target from the newest request, not from stale
    context.
-5. If the active target is RSA v2, read:
+5. Treat `research/12-rh-bridge/` as the current project center unless the
+   newest request points elsewhere. The active program is the DNI/PGS
+   Prime-Structure Program:
+
+   ```text
+   PGS explains primes at the integer level. RH pole placement is a downstream
+   feature of analytic compression, not an explanation of the primes.
+   ```
+
+   Start with:
+   - `research/12-rh-bridge/README.md`;
+   - `research/12-rh-bridge/docs/prime-structure-program/index.html`;
+   - `research/12-rh-bridge/docs/dni_rh_bridge.md`.
+6. If the active target is RSA v2, read:
    - `research/06-cryptology-rsa/experiments/rsa/v2/README.md`;
    - `research/06-cryptology-rsa/experiments/rsa/v2/ALGORITHM.md`;
    - `research/06-cryptology-rsa/experiments/rsa/v2/PGS_CERTIFICATE.md`;
    - `research/06-cryptology-rsa/experiments/rsa/v2/METRICS.md`.
-6. Run the narrow relevant test before claiming implementation progress.
+7. Run the narrow relevant test before claiming implementation progress.
 
 ## Research Corpus Reorganization
 

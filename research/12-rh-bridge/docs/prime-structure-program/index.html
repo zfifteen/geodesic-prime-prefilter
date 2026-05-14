@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DNI/PGS Prime-Structure Program</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f8f7f2;
+      --ink: #171717;
+      --muted: #5e625f;
+      --line: #d9d4c5;
+      --panel: #ffffff;
+      --accent: #145c52;
+      --accent-2: #7b2f23;
+      --proof: #0f6848;
+      --bridge: #275b91;
+      --open: #8b4a00;
+      --bad: #7a1f1f;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141413;
+        --ink: #f1f0e8;
+        --muted: #bbb7aa;
+        --line: #34332f;
+        --panel: #1d1c1a;
+        --accent: #7fd0bd;
+        --accent-2: #f0a090;
+        --proof: #76d2a5;
+        --bridge: #8bbaf0;
+        --open: #f5bd72;
+        --bad: #f29a9a;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header .wrap {
+      padding: 28px 0 24px;
+    }
+
+    main.wrap {
+      padding: 22px 0 44px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      line-height: 1.12;
+      letter-spacing: 0;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(1.75rem, 3vw, 2.55rem);
+      max-width: 980px;
+    }
+
+    h2 {
+      font-size: clamp(1.1rem, 1.8vw, 1.45rem);
+      margin-bottom: 12px;
+    }
+
+    h3 {
+      font-size: 0.96rem;
+      margin-bottom: 8px;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    a {
+      color: var(--accent);
+      font-weight: 650;
+    }
+
+    code {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 0.08rem 0.28rem;
+      background: color-mix(in srgb, var(--panel), var(--bg) 38%);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+    }
+
+    .kicker {
+      color: var(--accent-2);
+      font-size: 0.78rem;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: clamp(0.92rem, 1.4vw, 1.05rem);
+      max-width: 860px;
+      margin-top: 12px;
+    }
+
+    section {
+      margin-top: 24px;
+    }
+
+    .thesis {
+      border-left: 6px solid var(--accent);
+      background: var(--panel);
+      padding: 16px 18px;
+      font-size: 1rem;
+      font-weight: 650;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    @media (max-width: 780px) {
+      .two,
+      .three {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 14px;
+    }
+
+    .equation {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 14px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.88rem;
+      white-space: pre;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .flow div {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 12px;
+      min-height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 900px) {
+      .flow {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .status {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 0.15rem 0.55rem;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .proof {
+      color: var(--proof);
+      border: 1px solid color-mix(in srgb, var(--proof), transparent 42%);
+    }
+
+    .bridge {
+      color: var(--bridge);
+      border: 1px solid color-mix(in srgb, var(--bridge), transparent 42%);
+    }
+
+    .open {
+      color: var(--open);
+      border: 1px solid color-mix(in srgb, var(--open), transparent 42%);
+    }
+
+    .translation {
+      color: var(--bridge);
+      border: 1px solid color-mix(in srgb, var(--bridge), transparent 42%);
+    }
+
+    .bad {
+      color: var(--bad);
+      border: 1px solid color-mix(in srgb, var(--bad), transparent 42%);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid var(--line);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 0.76rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    ul,
+    ol {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    li {
+      margin: 0.35rem 0;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="kicker">New project center</div>
+      <h1>DNI/PGS Prime-Structure Program</h1>
+      <p class="subtitle">
+        A research program centered on the arithmetic structure that produces
+        primes before any zeta-zero shadow is drawn.
+      </p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="thesis">
+      PGS explains primes at the integer level. RH records a downstream analytic
+      compression of prime structure. Pole placement is a feature of that
+      compression, not an explanation of the primes.
+    </section>
+
+    <section>
+      <h2>Controlling Direction</h2>
+      <div class="flow" aria-label="PGS to RH direction">
+        <div>divisor-count field</div>
+        <div>gap chambers and endpoint returns</div>
+        <div>DNI series objects</div>
+        <div>DNI normalization</div>
+        <div>analytic shadow</div>
+      </div>
+    </section>
+
+    <section class="grid two">
+      <div class="card">
+        <h2>Core Claim</h2>
+        <p>
+          The upstream object is the ordered arithmetic structure of the
+          integers: divisor counts, chamber interiors, selected integers, and
+          first returns to <code>tau(n)=2</code>.
+        </p>
+        <p>
+          The downstream object is the analytic compression built from the same
+          divisor-count data. Its zero and pole geometry records a shadow of
+          prime structure after the integer object already exists.
+        </p>
+      </div>
+      <div class="card">
+        <h2>Research Frontier</h2>
+        <p>
+          Identify the DNI/PGS chamber invariant that accounts for the centered
+          analytic shadow without making RH or pole placement an input.
+        </p>
+        <p>
+          Classical RH language enters only as translation: once prime structure
+          is pushed through the zeta machinery, the resulting shadow can be read
+          in zero or pole terms.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Native Objects</h2>
+      <div class="equation">D(s) = sum_{n >= 1} tau(n) / n^s = zeta(s)^2
+
+kappa(n) = tau(n) log(n) / e^2
+
+K(s) = sum_{n >= 1} kappa(n) / n^s = -(1/e^2) D'(s)
+
+R(s) = (e^2 / 2) K(s) / D(s) = -zeta'(s) / zeta(s)</div>
+    </section>
+
+    <section>
+      <h2>Status Ledger</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Layer</th>
+            <th>Status</th>
+            <th>Current Authority</th>
+            <th>Meaning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Direct next-prime rule</td>
+            <td><span class="status proof">proved</span></td>
+            <td><a href="../../../../PROOF.md">PROOF.md</a></td>
+            <td>
+              For known prime <code>p</code>, the next prime is
+              <code>min { n &gt; p : tau(n)=2 }</code>.
+            </td>
+          </tr>
+          <tr>
+            <td>Interior Maximizer / GWR</td>
+            <td><span class="status proof">proved</span></td>
+            <td><a href="../../../../PROOF.md">PROOF.md</a></td>
+            <td>
+              Inside a nonempty prime-gap chamber, the leftmost minimum
+              divisor-count carrier uniquely maximizes
+              <code>F(n)=(1-tau(n)/2)log(n)</code>.
+            </td>
+          </tr>
+          <tr>
+            <td>DNI-to-zeta bridge</td>
+            <td><span class="status bridge">exact bridge</span></td>
+            <td><a href="../dni_rh_bridge.md">dni_rh_bridge.md</a></td>
+            <td>
+              The DNI series objects reconstruct
+              <code>-zeta'(s)/zeta(s)</code> exactly on
+              <code>Re(s)&gt;1</code> and by meromorphic continuation.
+            </td>
+          </tr>
+          <tr>
+            <td>RH pole/zero placement</td>
+            <td><span class="status translation">translation</span></td>
+            <td>Classical Translation</td>
+            <td>
+              A downstream way to read the analytic shadow in classical zeta
+              language. It is not the center of PGS and not a condition PGS must
+              satisfy in order to be arithmetic.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Classical Translation</h2>
+      <div class="grid two">
+        <div class="card">
+          <h3>Compression Layer</h3>
+          <p>
+            The completed zeta function is the classical compression layer. It
+            is useful for translating the PGS shadow into familiar RH language;
+            it is not the source of prime structure.
+          </p>
+          <div class="equation">xi(s) = (1/2) s(s-1) pi^(-s/2) Gamma(s/2) zeta(s)</div>
+        </div>
+        <div class="card">
+          <h3>Translation Identity</h3>
+          <p>
+            Define <code>Q(s)=-xi'(s)/xi(s)</code>. Then
+            <code>Q(s)</code> equals the DNI ratio plus explicit elementary
+            correction terms. This identity translates the shadow; it does not
+            define the arithmetic object.
+          </p>
+          <div class="equation">Q(s) = R(s) - 1/s - 1/(s-1)
+       + (1/2)log(pi) - (1/2)psi(s/2)</div>
+        </div>
+      </div>
+      <p class="note">
+        In the centered coordinate <code>u=s-1/2</code>, classical RH becomes a
+        statement about where the compressed shadow places its singularities.
+        That is a consequence-facing translation, not a requirement that PGS
+        explain primes by first solving RH.
+      </p>
+    </section>
+
+    <section>
+      <h2>Program Work</h2>
+      <div class="grid three">
+        <div class="card">
+          <h3>1. Chamber Ledger</h3>
+          <p>
+            Define the PGS chamber ledger from divisor counts, endpoint returns,
+            selected integers, chamber resets, and DNI normalization.
+          </p>
+        </div>
+        <div class="card">
+          <h3>2. Prime-Power Echoes</h3>
+          <p>
+            Describe prime powers as downstream echoes of endpoint structure,
+            then show how <code>Lambda(n)</code> is recovered from the PGS
+            object.
+          </p>
+        </div>
+        <div class="card">
+          <h3>3. Shadow Formation</h3>
+          <p>
+            Derive the analytic shadow from the DNI/PGS ledger. Keep the
+            integer object upstream and the analytic expression downstream.
+          </p>
+        </div>
+        <div class="card">
+          <h3>4. Centered Balance</h3>
+          <p>
+            Identify the integer-level balance that produces a centered shadow.
+            This is the native target; pole language is only the classical
+            reading of the result.
+          </p>
+        </div>
+        <div class="card">
+          <h3>5. Translation Audit</h3>
+          <p>
+            Translate the centered shadow into <code>R(s)</code>,
+            <code>Q(s)</code>, and <code>xi(s)</code> only after the PGS-side
+            object has been stated.
+          </p>
+        </div>
+        <div class="card">
+          <h3>6. Classical Consequence</h3>
+          <p>
+            State RH-style pole or zero placement as a consequence of the
+            centered shadow, not as a condition PGS must satisfy in order to be
+            arithmetic.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Invalid Routes</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Route</th>
+            <th>Status</th>
+            <th>Reason</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Use RH to explain PGS</td>
+            <td><span class="status bad">invalid</span></td>
+            <td>
+              RH is downstream zero geometry. It does not produce the ordered
+              divisor-count chamber, the GWR carrier, or the first return to
+              <code>tau=2</code>.
+            </td>
+          </tr>
+          <tr>
+            <td>Call PGS heuristic</td>
+            <td><span class="status bad">invalid</span></td>
+            <td>
+              PGS starts from exact divisor counts and proved chamber laws.
+              Heuristic language erases the object-level arithmetic.
+            </td>
+          </tr>
+          <tr>
+            <td>Require PGS to prove RH pole placement first</td>
+            <td><span class="status bad">invalid</span></td>
+            <td>
+              Pole placement is a feature of analytic compression. It is not an
+              explanation of primes and is not a prerequisite for PGS arithmetic.
+            </td>
+          </tr>
+          <tr>
+            <td>Collapse the target into prime-count error estimates</td>
+            <td><span class="status bad">invalid</span></td>
+            <td>
+              Error estimates are downstream consequences. The center target is
+              the ordered arithmetic structure of the divisor-count chambers.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>First Acceptance Criteria</h2>
+      <div class="card">
+        <ol>
+          <li>The PGS chamber ledger is defined entirely from integer-level divisor-count structure.</li>
+          <li>The recovery of <code>Lambda(n)</code> is written as a downstream translation, not as the origin of PGS.</li>
+          <li>The completed-ratio derivation is preserved as a classical translation note with sign checks and singularity accounting.</li>
+          <li>RH pole placement is named only as a consequence-facing expression of the analytic shadow.</li>
+          <li>Every artifact keeps theorem proof, exact bridge, measured evidence, unresolved target, and invalidated route separate.</li>
+        </ol>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
