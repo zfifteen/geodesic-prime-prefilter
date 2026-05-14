@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NLSC Deadline Bridge Falsification | Legendre PGS Track</title>
+  <style>
+    :root {
+      --ink: #17212b;
+      --muted: #5e6a75;
+      --line: #d8e0e8;
+      --panel: #f7f9fb;
+      --accent: #0b6b8a;
+      --bad: #9b3b2f;
+      --good: #1f7a4d;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #fff;
+      font: 13px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    header {
+      border-bottom: 1px solid var(--line);
+      background: #f6f9fb;
+    }
+    main, .wrap {
+      width: min(980px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+    .hero { padding: 28px 0 24px; }
+    a { color: var(--accent); text-underline-offset: 3px; }
+    .back { display: inline-block; margin-bottom: 12px; font-weight: 650; }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 860px;
+      margin: 0;
+      font-size: 2rem;
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+    .lede {
+      max-width: 880px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    section {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    h2 {
+      margin: 0 0 12px;
+      font-size: 1.22rem;
+      line-height: 1.2;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+    }
+    p { margin: 0 0 10px; }
+    code {
+      padding: 1px 4px;
+      border-radius: 4px;
+      background: #eef3f6;
+      color: #0f4f68;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: .95em;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .panel {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      width: 210px;
+      background: #eef5f8;
+      color: #24414f;
+      font-size: 12px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    tr:last-child th, tr:last-child td { border-bottom: 0; }
+    .status {
+      display: inline-block;
+      padding: 4px 8px;
+      border: 1px solid #b7dcc8;
+      border-radius: 999px;
+      color: var(--good);
+      background: #eefaf3;
+      font-weight: 700;
+    }
+    .invalidated {
+      color: var(--bad);
+      font-weight: 700;
+    }
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: 1fr; }
+      th { width: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hero">
+      <a class="back" href="./">Back to Legendre track</a>
+      <p class="eyebrow">2026-05-14 research note</p>
+      <h1>NLSC lower-divisor deadlines do not bridge the dominant square chamber</h1>
+      <p class="lede">The No-Later-Simpler-Composite route gives a valid endpoint deadline only when a later composite with strictly smaller divisor count exists before the next square boundary. In the dominant <code>d(w)=4</code> regime, the required smaller composite would be a prime square, and no square lies strictly between <code>n^2</code> and <code>(n + 1)^2</code>.</p>
+    </div>
+  </header>
+  <main>
+    <section>
+      <h2>PGS Objects</h2>
+      <div class="grid">
+        <div class="panel">
+          <h3>Square Chamber</h3>
+          <p>Fix an integer <code>n &gt; 1</code>. The Legendre chamber is the open interval <code>(n^2, (n + 1)^2)</code>.</p>
+        </div>
+        <div class="panel">
+          <h3>Containing Prime Gap</h3>
+          <p>Let <code>p &lt; n^2 &lt; q</code> be the consecutive-prime gap containing the square start, when the right endpoint has not already arrived inside the chamber.</p>
+        </div>
+        <div class="panel">
+          <h3>Selected Integer</h3>
+          <p>Let <code>w</code> be the Leftmost Minimum-Divisor Rule witness in the gap interior: the first interior integer carrying the minimum divisor count.</p>
+        </div>
+        <div class="panel">
+          <h3>NLSC Closure</h3>
+          <p>Once <code>w</code> appears, the gap closes before any later interior composite with divisor count strictly below <code>d(w)</code>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Bridge Tested</h2>
+      <p>The proposed bridge was:</p>
+      <table>
+        <tbody>
+          <tr>
+            <th>Bridge shape</th>
+            <td>Find a square-chamber integer <code>t</code> with <code>n^2 &lt; t &lt; (n + 1)^2</code>, <code>w &lt; t</code>, and <code>d(t) &lt; d(w)</code>. Then NLSC forces <code>q &le; t &lt; (n + 1)^2</code>.</td>
+          </tr>
+          <tr>
+            <th>Why it would work</th>
+            <td>If no prime endpoint arrived before <code>t</code>, then <code>t</code> would be a later simpler composite inside the same gap, contradicting the GWR/NLSC closure law.</td>
+          </tr>
+          <tr>
+            <th>PGS status</th>
+            <td>The implication is valid when such a lower-divisor deadline <code>t</code> exists. The existence clause is the bridge load.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Falsification</h2>
+      <table>
+        <tbody>
+          <tr>
+            <th>Dominant regime</th>
+            <td>The current GWR/DNI and gap-ridge materials identify <code>d(w)=4</code> as the dominant selected-divisor-count regime, with first-<code>d=4</code> arrival under square exclusion on the documented surfaces.</td>
+          </tr>
+          <tr>
+            <th>Lower class</th>
+            <td>For a composite integer, <code>d(t) &lt; 4</code> means <code>d(t)=3</code>. Those composites are exactly prime squares.</td>
+          </tr>
+          <tr>
+            <th>Square chamber fact</th>
+            <td>There is no integer square strictly between consecutive integer squares <code>n^2</code> and <code>(n + 1)^2</code>. Therefore there is no prime square inside the open Legendre chamber.</td>
+          </tr>
+          <tr>
+            <th>Result</th>
+            <td><span class="invalidated">Invalidated bridge:</span> NLSC plus a lower-divisor composite deadline cannot force <code>next_prime(n^2) &lt; (n + 1)^2</code> in the dominant <code>d(w)=4</code> chamber.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Research Consequence</h2>
+      <p>The Legendre track needs a bridge that acts before strict divisor-count descent. For the dominant chamber, the useful target is no longer a lower-divisor deadline. The next proof target must bind endpoint arrival to one of these PGS-native objects:</p>
+      <table>
+        <tbody>
+          <tr><th>Equal-class pressure</th><td>Show that repeated or early <code>d=4</code> availability inside the square chamber forces endpoint closure before the next square boundary.</td></tr>
+          <tr><th>Left-bound position</th><td>Relate the containing gap's left endpoint <code>p</code>, selected integer <code>w</code>, and square start <code>n^2</code> so the GWR winner cannot sit too far before the chamber without endpoint arrival.</td></tr>
+          <tr><th>Square-tail obstruction</th><td>Adapt square-branch obstruction work to show that a gap spanning an entire Legendre chamber would create an impossible square-tail profile.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Status Separation</h2>
+      <table>
+        <tbody>
+          <tr><th>Theorem proof</th><td>GWR and deterministic next-prime status remain controlled by <code>PROOF.md</code>. No Legendre proof is claimed here.</td></tr>
+          <tr><th>Measured evidence</th><td>This note uses existing documented GWR/DNI and gap-ridge evidence about dominant <code>d=4</code> behavior; it adds no new numeric run.</td></tr>
+          <tr><th>Implementation status</th><td>No implementation was added.</td></tr>
+          <tr><th>Audit status</th><td>No downstream audit was run.</td></tr>
+          <tr><th>Hypothesis</th><td>A future bridge should operate through equal-class pressure, left-bound position, or square-tail obstruction.</td></tr>
+          <tr><th>Unresolved state</th><td>The theorem forcing <code>next_prime(n^2) &lt; (n + 1)^2</code> remains unresolved.</td></tr>
+          <tr><th>Invalidated rule</th><td>NLSC lower-divisor deadline forcing is invalidated as a complete dominant-regime bridge.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Run Status</h2>
+      <p><span class="status">ADVANCE</span> One proposed PGS bridge was falsified, and the next missing bridge target was narrowed away from strict lower-divisor deadlines.</p>
+    </section>
+  </main>
+</body>
+</html>

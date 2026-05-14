@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PGS Unsolved Problems Research Program</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17212b;
+      --muted: #5e6a75;
+      --line: #d8e0e8;
+      --panel: #f7f9fb;
+      --paper: #ffffff;
+      --accent: #0b6b8a;
+      --accent-2: #8a5a00;
+      --good: #1f7a4d;
+      --pending: #8a5a00;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #ffffff 0%, #f2f7fa 100%);
+    }
+
+    main, .wrap {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 56px 0 42px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 860px;
+      margin: 0;
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .lede {
+      max-width: 850px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 20px;
+    }
+
+    section {
+      padding: 34px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      font-size: 25px;
+      line-height: 1.2;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    .status-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 5px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .pill.pending {
+      border-color: #e5ca8f;
+      color: var(--pending);
+      background: #fff8ea;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .track {
+      min-height: 250px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .track h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .track p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .track .tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--accent-2);
+      font-size: 12px;
+      font-weight: 750;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .card-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .panel {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .panel h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    ol, ul {
+      margin: 0;
+      padding-left: 22px;
+    }
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    code {
+      padding: 1px 4px;
+      border-radius: 4px;
+      background: #eef3f6;
+      color: #0f4f68;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: .94em;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #eef5f8;
+      color: #24414f;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .flow div {
+      min-height: 82px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    footer {
+      padding: 30px 0 42px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 860px) {
+      .grid, .card-layout, .flow {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hero">
+      <p class="eyebrow">Prime Gap Structure Research Program</p>
+      <h1>PGS-native research tracks for selected unsolved problems.</h1>
+      <p class="lede">This program records where Prime Gap Structure may be informative for open mathematical problems. Its first job is not to claim solutions. Its first job is to define the end goal, research design, bridge theorem, and falsification condition for each selected problem.</p>
+      <div class="status-row">
+        <span class="pill pending">program status: scaffold</span>
+        <span class="pill">artifact type: HTML documentation</span>
+        <span class="pill">implementation code: none</span>
+        <span class="pill">solved claims: none</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>Program Contract</h2>
+      <div class="card-layout">
+        <div class="panel">
+          <h3>Positive Object</h3>
+          <p>The program begins from PGS-native objects: ordered prime-gap state, divisor-count field, GWR, square chambers, gap grammar, endpoint-chain traversal, reciprocal transport, and unresolved state.</p>
+        </div>
+        <div class="panel">
+          <h3>Status Separation</h3>
+          <p>Each track keeps theorem proof, implementation status, measured evidence, hypothesis, unresolved bridge, and invalidated route separate. A probe result is not a proof, and a structural candidate is not a solved theorem.</p>
+        </div>
+      </div>
+      <div class="flow" aria-label="Research-card flow">
+        <div>Original problem statement</div>
+        <div>PGS translation</div>
+        <div>Known PGS assets</div>
+        <div>Missing bridge theorem</div>
+        <div>Research design and falsification</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Initial Problem Tracks</h2>
+      <div class="grid">
+        <article class="track">
+          <span class="tag">Square-chamber occupancy</span>
+          <h3><a href="legendre/">Legendre's Conjecture</a></h3>
+          <p>Asks whether every interval between consecutive integer squares contains a prime. The PGS translation focuses on forcing next-prime endpoint arrival before the next square boundary.</p>
+        </article>
+        <article class="track">
+          <span class="tag">Prime-square chamber occupancy</span>
+          <h3><a href="brocard/">Brocard's Conjecture</a></h3>
+          <p>Asks whether there are at least four primes between consecutive prime squares. The PGS translation treats prime-square chambers as ordered endpoint domains.</p>
+        </article>
+        <article class="track">
+          <span class="tag">Difference grammar</span>
+          <h3><a href="gilbreath/">Gilbreath's Conjecture</a></h3>
+          <p>Asks about repeated absolute differences of the prime sequence. The PGS translation studies whether ordered gap grammar preserves the leading difference condition.</p>
+        </article>
+        <article class="track">
+          <span class="tag">Gap recurrence</span>
+          <h3><a href="polignac-twin/">Polignac and Twin Primes</a></h3>
+          <p>Asks about infinite recurrence of fixed even prime gaps. The PGS translation treats gap values as chamber words whose recurrence must be explained structurally.</p>
+        </article>
+        <article class="track">
+          <span class="tag">Divisor-field extremals</span>
+          <h3><a href="divisor-field-extremals/">Divisor-Field Extremals</a></h3>
+          <p>Covers divisor-count and divisor-sum problems where the divisor field is the primary object rather than a side calculation.</p>
+        </article>
+        <article class="track">
+          <span class="tag">Public endpoint closure</span>
+          <h3><a href="endpoint-determinacy/">Endpoint Determinacy</a></h3>
+          <p>Covers factorization-adjacent public modulus problems through endpoint-class determinacy, not through classical candidate-factor search.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Shared Research Card</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>Meaning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Original problem</td>
+            <td>The ordinary mathematical statement being examined.</td>
+          </tr>
+          <tr>
+            <td>PGS translation</td>
+            <td>The same target expressed through PGS objects and invariants.</td>
+          </tr>
+          <tr>
+            <td>Current PGS assets</td>
+            <td>Existing theorems, measured surfaces, scripts, or documents that are relevant.</td>
+          </tr>
+          <tr>
+            <td>Missing bridge theorem</td>
+            <td>The exact statement that would connect existing PGS machinery to the target problem.</td>
+          </tr>
+          <tr>
+            <td>Deterministic probe design</td>
+            <td>The first non-random research instrument that would measure the bridge without pretending to prove it.</td>
+          </tr>
+          <tr>
+            <td>Falsification condition</td>
+            <td>The condition that would invalidate a proposed PGS bridge or force a narrower statement.</td>
+          </tr>
+          <tr>
+            <td>Status</td>
+            <td>The current state of the track. All initial pages begin as <code>research-design pending</code>.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">PGS Unsolved Problems Research Program. Documentation scaffold only. No problem on this page is claimed solved by this scaffold.</div>
+  </footer>
+</body>
+</html>
