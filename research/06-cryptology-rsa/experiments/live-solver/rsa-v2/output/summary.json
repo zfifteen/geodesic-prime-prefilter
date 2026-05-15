@@ -20,9 +20,9 @@
       "case_id": "rsa_v2_50bit_static_001",
       "center": "32053641",
       "corrected_lower_certificate_present": true,
-      "endpoint_chain_steps": 389,
+      "endpoint_chain_steps": 350,
       "lower_certificate_present": true,
-      "public_closure_status": "endpoint_class_by_oriented_endpoint_chain_closure",
+      "public_closure_status": "endpoint_class_by_mutual_certificate_closure",
       "rule_id": "reciprocal_pgs_certificate_pair_v2",
       "upper_certificate_present": true
     },
@@ -33,9 +33,9 @@
       "case_id": "rsa_v2_64bit_static_001",
       "center": "3221250486",
       "corrected_lower_certificate_present": true,
-      "endpoint_chain_steps": 1205,
+      "endpoint_chain_steps": 1162,
       "lower_certificate_present": true,
-      "public_closure_status": "endpoint_class_by_oriented_endpoint_chain_closure",
+      "public_closure_status": "endpoint_class_by_mutual_certificate_closure",
       "rule_id": "reciprocal_pgs_certificate_pair_v2",
       "upper_certificate_present": true
     }

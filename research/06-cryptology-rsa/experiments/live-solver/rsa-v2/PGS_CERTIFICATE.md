@@ -32,10 +32,13 @@ answer-bearing fixture.
 
 ## Reciprocal Certificate Pair
 
-For a public modulus `N`, a lower certificate is transported by:
+For a public modulus `N`, each lower-chain certificate is transported by an
+oriented coordinate:
 
 ```text
-y = floor(N / lower.reset_endpoint)
+y = floor(N / x)
+x = lower.reset_endpoint  when lower.reset_endpoint <= floor(sqrt(N))
+x = lower.anchor          otherwise
 ```
 
 The upper certificate is derived from the previous endpoint before `y`.
@@ -60,11 +63,10 @@ The corrected lower endpoint `c` is certified by deriving the PGSPG certificate
 at `c`. The upper endpoint `d` is the public deadline field of the upper
 certificate.
 
-If the square-root chamber does not resolve, the runner may walk the lower
-public endpoint chain outward inside the public balance interval and apply the
-same reciprocal deadline correction at each public lower-chain certificate. For
-a chamber whose reset endpoint crosses the square-root orientation, the chamber
-anchor is the transport coordinate.
+The runner walks the lower public endpoint chain inside the public balance
+interval and applies the same closure predicates at each lower-chain
+certificate. The first endpoint before `floor(sqrt(N))` is step zero of this
+same chain, not a separate square-root chamber mode.
 
 ## Allowed Transport Facts
 
@@ -94,7 +96,8 @@ endpoint_class_by_mutual_certificate_closure
 endpoint_class_by_reciprocal_deadline_signature_correction
 endpoint_class_by_oriented_endpoint_chain_closure
 unresolved_by_certificate_pair_not_closed
-unresolved_by_reset_endpoint_crosses_orientation
+unresolved_by_endpoint_chain_boundary
+unresolved_by_endpoint_chain_cycle
 unresolved_by_missing_lower_certificate
 unresolved_by_missing_upper_certificate
 ```
@@ -104,16 +107,16 @@ signature correction certifies a unique public pair before audit.
 
 ## Current Closure Rules
 
-The reset closure branch is strict.
+The reset closure predicate is strict and is evaluated at every lower-chain
+state.
 
 It requires:
 
 1. lower and upper certificates exist;
-2. the lower reset endpoint remains on the lower side of `floor(sqrt(N))`;
-3. both reset endpoints are produced by PGSPG;
-4. the lower reset endpoint transports to the upper reset endpoint;
-5. the upper reset endpoint transports to the lower reset endpoint;
-6. reset signatures match.
+2. both reset endpoints are produced by PGSPG;
+3. the lower reset endpoint transports to the upper reset endpoint;
+4. the upper reset endpoint transports to the lower reset endpoint;
+5. reset signatures match.
 
 The deadline signature correction branch applies only after reset closure fails
 and requires:
@@ -125,10 +128,11 @@ and requires:
 5. the corrected-lower and upper reset signatures match;
 6. the correction moves outward from the original reset pair.
 
-The oriented endpoint-chain branch applies the same deadline-signature
-correction over consecutive lower public endpoints from `floor(sqrt(N))` down
-to `floor(floor(sqrt(N)) / 2)`. The first public endpoint whose corrected lower
-endpoint and upper deadline mutually close emits a structural endpoint class.
+The lower endpoint chain advances from the previous public endpoint before
+`floor(sqrt(N))` down to `floor(floor(sqrt(N)) / 2)`. At each step, strict
+reset closure is evaluated first. If strict reset closure fails,
+deadline-signature correction is evaluated next. The first public endpoint
+whose closure predicate succeeds emits a structural endpoint class.
 
 ## Failure Discipline
 

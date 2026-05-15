@@ -9,14 +9,15 @@ public endpoint classes when certificate endpoints close under floor transport.
 It does not claim that an endpoint class is the factor pair. Only downstream
 audit may say whether factors were found.
 
-Current implementation label:
+Current implementation shape:
 
 ```text
-OECC_LINEAR_V1
+UNIFIED_TRANSPORTED_CERTIFICATE_CHAIN
 ```
 
-The baseline and next recursive target are defined in
-`ORIENTED_ENDPOINT_CHAIN_BASELINE.md`.
+The historical linear baseline is documented in
+`ORIENTED_ENDPOINT_CHAIN_BASELINE.md`. The live runner now applies the same
+closure predicates inside one transported certificate-chain traversal.
 
 ## Input
 
@@ -42,15 +43,19 @@ Compute `isqrt(N)`.
 The square root separates the lower and upper sides. It does not define a fixed
 additive candidate chamber.
 
-## Stage 2: Lower Certificate
+## Stage 2: Initial Lower Anchor
 
 Find the previous public endpoint before `isqrt(N)`.
 
-Derive the PGSPG chamber-reset certificate from that endpoint. The certificate
-contains the reset endpoint, carrier state, closed offsets before reset, threat
-state, tail state, and reset-deadline fields.
+This endpoint is the first lower-chain state. It is not a special chamber or a
+separate pre-chain mode.
 
-## Stage 3: Reciprocal Transport
+## Stage 3: Uniform Chain State
+
+For each lower public endpoint in the chain, derive the PGSPG chamber-reset
+certificate from that endpoint. The certificate contains the reset endpoint,
+carrier state, closed offsets before reset, threat state, tail state, and
+reset-deadline fields.
 
 Choose the oriented lower transport coordinate.
 
@@ -85,22 +90,18 @@ Find the previous public endpoint before `y`.
 
 Derive the PGSPG chamber-reset certificate from that endpoint.
 
-## Stage 5: Reset Certificate Closure
+## Stage 5: Closure Predicates
 
-The first closure branch is strict reset closure. It resolves when:
+At each chain state, evaluate strict reset closure first. It resolves when:
 
 1. both certificates exist;
 2. `floor(N / lower.reset_endpoint) == upper.reset_endpoint`;
 3. `floor(N / upper.reset_endpoint) == lower.reset_endpoint`;
 4. lower and upper reset signatures match.
 
-If this branch fails, the runner moves to one public deadline-correction branch.
-This is not a fixed-radius candidate budget and not a fallback search.
-
-## Stage 6: Deadline Signature Correction
-
-When the upper certificate exists but reset closure fails, transport the upper
-reset endpoint back to the lower side:
+If strict reset closure fails and the upper certificate exists, evaluate one
+public deadline-signature correction. Transport the upper reset endpoint back
+to the lower side:
 
 ```text
 z = floor(N / upper.reset_endpoint)
@@ -121,58 +122,29 @@ The correction branch resolves only when:
 4. `floor(N / d) == c`;
 5. the corrected-lower reset signature matches the upper reset signature.
 
-This branch uses one reciprocal correction induced by the failed upper
+This predicate uses one reciprocal correction induced by the failed upper
 certificate. It does not test divisibility, multiply candidate endpoints, read
 audit factors, or walk a budgeted list of lower endpoints.
 
-## Stage 7: Oriented Endpoint-Chain Closure
+## Stage 6: Chain Transition
 
-If the square-root chamber does not close, walk the lower public endpoint chain
-outward down to:
+If neither closure predicate succeeds at the current lower endpoint, move to
+the previous public endpoint before the current lower endpoint and repeat the
+same state construction.
+
+The current public balance boundary is:
 
 ```text
 floor(isqrt(N) / 2)
 ```
 
-For each lower public endpoint, derive its PGSPG certificate and choose the
-oriented transport coordinate:
-
-```text
-lower.reset_endpoint  when lower.reset_endpoint <= isqrt(N)
-lower.anchor          when lower.reset_endpoint > isqrt(N)
-```
-
-Transport that coordinate, derive the upper certificate, and apply the same
-deadline-signature correction predicate.
-
-For each upper certificate:
-
-```text
-z = floor(N / upper.reset_endpoint)
-c = previous_public_endpoint_before(z)
-corrected_lower = PGSPG certificate at c
-d = upper.reset_deadline_value
-```
-
-The endpoint-chain branch resolves exactly when:
-
-```text
-c < lower.anchor
-d > upper.reset_endpoint
-floor(N / c) == d
-floor(N / d) == c
-corrected_lower.reset_signature == upper.reset_signature
-```
-
-The first public lower-chain endpoint satisfying those conditions emits:
-
-```text
-public_closure_status = endpoint_class_by_oriented_endpoint_chain_closure
-```
+The bound is an explicit public-region contract for this implementation, not a
+bit-size branch. The runner also tracks visited lower endpoints and returns a
+cycle status if the chain repeats.
 
 This is endpoint-chain traversal over public PGS endpoints. It is not product
-closure, divisibility testing, a fixed-radius candidate band, or a hidden-factor
-search.
+closure, divisibility testing, a fixed-radius candidate band, a hidden-factor
+search, or a fallback after a separate square-root chamber mode.
 
 ## Current Status Fields
 
@@ -193,7 +165,8 @@ endpoint_class_by_mutual_certificate_closure
 endpoint_class_by_reciprocal_deadline_signature_correction
 endpoint_class_by_oriented_endpoint_chain_closure
 unresolved_by_certificate_pair_not_closed
-unresolved_by_reset_endpoint_crosses_orientation
+unresolved_by_endpoint_chain_boundary
+unresolved_by_endpoint_chain_cycle
 unresolved_by_missing_lower_certificate
 unresolved_by_missing_upper_certificate
 ```
@@ -203,7 +176,7 @@ The current official rungs emit:
 ```text
 rsa_v2_40bit_static_001 -> public endpoint class found, factor_found = true
 rsa_v2_50bit_static_001 -> public endpoint class found, factor_found = false
-rsa_v2_64bit_static_001 -> public endpoint class found, factor_found = false
+rsa_v2_64bit_static_001 -> public endpoint class found, factor_found = true
 ```
 
 ## Erratum: False-Resolution Wording
@@ -213,6 +186,11 @@ fields for public endpoint classes. That wording was wrong. OECC_LINEAR_V1 and
 OECC_RECURSIVE_V2 found deterministic public endpoint structure on the 50-bit
 and 64-bit rungs, but did not find the factors. The old `resolved` wording is
 invalidated terminology for audit-failing endpoint classes.
+
+The unified chain runner supersedes the old OECC_LINEAR_V1 control shape. It
+evaluates strict reset closure and deadline-signature correction at every lower
+chain state. Under that rule, the 64-bit official row emits an audit-confirmed
+mutual reset endpoint class.
 
 ## Explicitly Invalidated Rules
 
@@ -229,11 +207,9 @@ The following are not live rules:
 
 ## Resolver Target
 
-The next algorithmic target is `OECC_RECURSIVE_V2`.
-
-That version keeps the same public PGS objects and closure predicate, but
-replaces linear endpoint-chain traversal with recursive transport-induced
-chamber jumps. The invariant must stay derived from public `N`, PGSPG
+The next performance target is not a new resolver law. It is a faster traversal
+that preserves the same first public closure emitted by the unified chain. Any
+recursive or jump-based version must stay derived from public `N`, PGSPG
 certificate fields, and floor-map transport. It must not use product closure,
 divisibility, audit factors, factor APIs, primality APIs, random generation, or
 fallback search.

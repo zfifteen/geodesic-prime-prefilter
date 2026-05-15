@@ -338,9 +338,9 @@ def test_runner_reports_certificate_pairs_without_false_resolution(tmp_path):
             "N": GENERATED_50_N,
             "status": "public_endpoint_class_found",
             "public_structure_found": True,
-            "endpoint_class_lower": "32046877",
-            "endpoint_class_upper": "32060407",
-            "public_closure_status": "endpoint_class_by_oriented_endpoint_chain_closure",
+            "endpoint_class_lower": "32047651",
+            "endpoint_class_upper": "32059633",
+            "public_closure_status": "endpoint_class_by_mutual_certificate_closure",
             "rule_id": RULE_ID,
         },
         {
@@ -349,9 +349,9 @@ def test_runner_reports_certificate_pairs_without_false_resolution(tmp_path):
             "N": GENERATED_64_N,
             "status": "public_endpoint_class_found",
             "public_structure_found": True,
-            "endpoint_class_lower": "3221224297",
-            "endpoint_class_upper": "3221276677",
-            "public_closure_status": "endpoint_class_by_oriented_endpoint_chain_closure",
+            "endpoint_class_lower": GENERATED_64_P,
+            "endpoint_class_upper": GENERATED_64_Q,
+            "public_closure_status": "endpoint_class_by_mutual_certificate_closure",
             "rule_id": RULE_ID,
         },
     ]
@@ -361,12 +361,12 @@ def test_runner_reports_certificate_pairs_without_false_resolution(tmp_path):
         "endpoint_class_by_reciprocal_deadline_signature_correction"
     )
     assert summary["cases"][0]["corrected_lower_certificate_present"]
-    assert summary["cases"][1]["public_closure_status"] == "endpoint_class_by_oriented_endpoint_chain_closure"
+    assert summary["cases"][1]["public_closure_status"] == "endpoint_class_by_mutual_certificate_closure"
     assert summary["cases"][1]["corrected_lower_certificate_present"]
-    assert summary["cases"][1]["endpoint_chain_steps"] == 389
-    assert summary["cases"][2]["public_closure_status"] == "endpoint_class_by_oriented_endpoint_chain_closure"
+    assert summary["cases"][1]["endpoint_chain_steps"] == 350
+    assert summary["cases"][2]["public_closure_status"] == "endpoint_class_by_mutual_certificate_closure"
     assert summary["cases"][2]["corrected_lower_certificate_present"]
-    assert summary["cases"][2]["endpoint_chain_steps"] == 1205
+    assert summary["cases"][2]["endpoint_chain_steps"] == 1162
     for row in summary["cases"]:
         assert row["lower_certificate_present"]
         assert "radius" not in row
@@ -384,14 +384,14 @@ def test_runner_reports_certificate_pairs_without_false_resolution(tmp_path):
     assert survivors[0]["transported_corrected_upper_endpoint"] == Q_VALUE
     assert survivors[0]["transported_corrected_lower_endpoint"] == P_VALUE
     assert survivors[0]["corrected_lower_reset_signature"] == survivors[0]["upper_reset_signature"]
-    assert survivors[1]["public_closure_status"] == "endpoint_class_by_oriented_endpoint_chain_closure"
-    assert survivors[1]["corrected_lower_endpoint"] == "32046877"
-    assert survivors[1]["corrected_upper_endpoint"] == "32060407"
-    assert survivors[1]["endpoint_chain_steps"] == 389
-    assert survivors[2]["public_closure_status"] == "endpoint_class_by_oriented_endpoint_chain_closure"
-    assert survivors[2]["corrected_lower_endpoint"] == "3221224297"
-    assert survivors[2]["corrected_upper_endpoint"] == "3221276677"
-    assert survivors[2]["endpoint_chain_steps"] == 1205
+    assert survivors[1]["public_closure_status"] == "endpoint_class_by_mutual_certificate_closure"
+    assert survivors[1]["lower_reset_endpoint"] == "32047651"
+    assert survivors[1]["upper_reset_endpoint"] == "32059633"
+    assert survivors[1]["endpoint_chain_steps"] == 350
+    assert survivors[2]["public_closure_status"] == "endpoint_class_by_mutual_certificate_closure"
+    assert survivors[2]["lower_reset_endpoint"] == GENERATED_64_P
+    assert survivors[2]["upper_reset_endpoint"] == GENERATED_64_Q
+    assert survivors[2]["endpoint_chain_steps"] == 1162
 
 
 def test_pedk_emits_public_endpoint_determinacy_without_factor_claims(tmp_path):
@@ -426,22 +426,22 @@ def test_pedk_emits_public_endpoint_determinacy_without_factor_claims(tmp_path):
             "case_id": CASE_50_ID,
             "bits": 50,
             "N": GENERATED_50_N,
-            "pedk_status": "public_endpoint_class_candidate",
+            "pedk_status": "public_endpoint_class_determined",
             "public_structure_found": True,
-            "public_closure_status": "endpoint_class_by_oriented_endpoint_chain_closure",
-            "endpoint_class_lower": "32046877",
-            "endpoint_class_upper": "32060407",
+            "public_closure_status": "endpoint_class_by_mutual_certificate_closure",
+            "endpoint_class_lower": "32047651",
+            "endpoint_class_upper": "32059633",
             "rule_id": "public_endpoint_determinacy_kernel_v0",
         },
         {
             "case_id": CASE_64_ID,
             "bits": 64,
             "N": GENERATED_64_N,
-            "pedk_status": "public_endpoint_class_candidate",
+            "pedk_status": "public_endpoint_class_determined",
             "public_structure_found": True,
-            "public_closure_status": "endpoint_class_by_oriented_endpoint_chain_closure",
-            "endpoint_class_lower": "3221224297",
-            "endpoint_class_upper": "3221276677",
+            "public_closure_status": "endpoint_class_by_mutual_certificate_closure",
+            "endpoint_class_lower": GENERATED_64_P,
+            "endpoint_class_upper": GENERATED_64_Q,
             "rule_id": "public_endpoint_determinacy_kernel_v0",
         },
     ]
@@ -479,8 +479,8 @@ def test_runner_measurement_mode_is_non_persistent(tmp_path, capsys):
     ]
     assert [row["bits"] for row in stdout["baseline_cost"]] == [40, 50, 64]
     assert stdout["baseline_cost"][0]["endpoint_chain_steps"] == 0
-    assert stdout["baseline_cost"][1]["endpoint_chain_steps"] == 389
-    assert stdout["baseline_cost"][2]["endpoint_chain_steps"] == 1205
+    assert stdout["baseline_cost"][1]["endpoint_chain_steps"] == 350
+    assert stdout["baseline_cost"][2]["endpoint_chain_steps"] == 1162
     for row in stdout["baseline_cost"]:
         assert row["cache_lookups"] >= row["cache_misses"]
         assert 0 <= row["cache_hit_rate"] <= 1
@@ -717,8 +717,8 @@ def test_certificate_rows_are_derived_before_audit(tmp_path):
     assert rows[0]["corrected_lower_endpoint"] == P_VALUE
     assert rows[0]["corrected_upper_endpoint"] == Q_VALUE
     assert rows[0]["corrected_lower_reset_signature"] == rows[0]["upper_reset_signature"]
-    assert rows[1]["corrected_lower_endpoint"] == "32046877"
-    assert rows[2]["corrected_lower_endpoint"] == "3221224297"
+    assert rows[1]["lower_reset_endpoint"] == "32047651"
+    assert rows[2]["lower_reset_endpoint"] == GENERATED_64_P
 
 
 def test_deadline_signature_correction_resolves_public_toy_case(tmp_path):
@@ -769,8 +769,8 @@ def test_deadline_signature_correction_resolves_public_toy_case(tmp_path):
     assert survivors[0]["corrected_lower_reset_signature"] == survivors[0]["upper_reset_signature"]
 
 
-def test_reset_endpoint_crossing_orientation_stops_before_upper_certificate():
-    """As a reviewer, I want crossed reset endpoints to enter endpoint-chain closure."""
+def test_reset_endpoint_crossing_orientation_is_step_zero_not_a_special_path():
+    """As a reviewer, I want crossed reset endpoints to use the same traversal."""
     module = load_module(V2 / "run_experiment.py")
     case = module.LadderCase(
         case_id="ad_hoc_48bit_249882542035169",
@@ -783,23 +783,22 @@ def test_reset_endpoint_crossing_orientation_stops_before_upper_certificate():
     survivor = module.pair_to_json(case, pair)
     inference = module.result_row(case, pair)
 
-    assert summary["public_closure_status"] == "endpoint_class_by_oriented_endpoint_chain_closure"
+    assert summary["public_closure_status"] == "endpoint_class_by_mutual_certificate_closure"
     assert summary["upper_certificate_present"] is True
-    assert summary["endpoint_chain_steps"] == 296
-    assert survivor["lower_anchor"] == "15802769"
-    assert survivor["lower_reset_endpoint"] == "15802781"
-    assert survivor["corrected_lower_endpoint"] == "15802739"
-    assert survivor["corrected_upper_endpoint"] == "15812609"
-    assert survivor["transported_corrected_upper_endpoint"] == "15812609"
-    assert survivor["transported_corrected_lower_endpoint"] == "15802739"
+    assert summary["endpoint_chain_steps"] == 263
+    assert survivor["lower_anchor"] == "15803363"
+    assert survivor["lower_reset_endpoint"] == "15803399"
+    assert survivor["upper_reset_endpoint"] == "15811949"
+    assert survivor["transported_upper_endpoint"] == "15811949"
+    assert survivor["transported_lower_endpoint"] == "15803399"
     assert inference["status"] == "public_endpoint_class_found"
-    assert inference["endpoint_class_lower"] == "15802739"
-    assert inference["endpoint_class_upper"] == "15812609"
+    assert inference["endpoint_class_lower"] == "15803399"
+    assert inference["endpoint_class_upper"] == "15811949"
     assert {"p", "q", "endpoint_class_role"}.isdisjoint(inference)
 
 
-def test_oecc_linear_v1_baseline_endpoint_classes_are_preserved():
-    """As a reviewer, I want optimizations to preserve baseline endpoint classes."""
+def test_unified_chain_endpoint_classes_are_preserved():
+    """As a reviewer, I want the unified chain endpoint classes preserved."""
     module = load_module(V2 / "run_experiment.py")
     baseline_cases = [
         module.LadderCase(CASE_ID, 40, module.gmpy2.mpz(N_VALUE)),
@@ -814,19 +813,19 @@ def test_oecc_linear_v1_baseline_endpoint_classes_are_preserved():
             Q_VALUE,
         ),
         "rsa_v2_48bit_ad_hoc_001": (
-            "endpoint_class_by_oriented_endpoint_chain_closure",
-            "15802739",
-            "15812609",
+            "endpoint_class_by_mutual_certificate_closure",
+            "15803399",
+            "15811949",
         ),
         CASE_50_ID: (
-            "endpoint_class_by_oriented_endpoint_chain_closure",
-            "32046877",
-            "32060407",
+            "endpoint_class_by_mutual_certificate_closure",
+            "32047651",
+            "32059633",
         ),
         CASE_64_ID: (
-            "endpoint_class_by_oriented_endpoint_chain_closure",
-            "3221224297",
-            "3221276677",
+            "endpoint_class_by_mutual_certificate_closure",
+            GENERATED_64_P,
+            GENERATED_64_Q,
         ),
     }
 
@@ -888,13 +887,13 @@ def test_audit_passes_only_with_separate_factor_file(tmp_path):
             "case_id": CASE_64_ID,
             "bits": "64",
             "N": GENERATED_64_N,
-            "factor_found": "false",
+            "factor_found": "true",
             "audit_integrity_status": "integrity_pass",
-            "inference_audit_status": "inference_audit_fail",
+            "inference_audit_status": "inference_audit_pass",
         },
     ]
     factor_rows = read_jsonl(factor_results)
-    assert [row["factor_found"] for row in factor_rows] == [True, False, False]
+    assert [row["factor_found"] for row in factor_rows] == [True, False, True]
     assert [row["public_structure_found"] for row in factor_rows] == [True, True, True]
     assert factor_rows[0]["factor_endpoint_lower"] == P_VALUE
     assert factor_rows[1]["factor_endpoint_lower"] == GENERATED_50_P
@@ -948,16 +947,16 @@ def test_shor_order_entropy_probe_keeps_public_and_audit_states_separate(tmp_pat
     assert public_rows[0]["pgs_upper_endpoint_class"] == Q_VALUE
     assert public_rows[1]["pgs_endpoint_class_present"]
     assert public_rows[1]["pgs_public_closure_status"] == (
-        "endpoint_class_by_oriented_endpoint_chain_closure"
+        "endpoint_class_by_mutual_certificate_closure"
     )
-    assert public_rows[1]["pgs_lower_endpoint_class"] == "32046877"
-    assert public_rows[1]["pgs_upper_endpoint_class"] == "32060407"
+    assert public_rows[1]["pgs_lower_endpoint_class"] == "32047651"
+    assert public_rows[1]["pgs_upper_endpoint_class"] == "32059633"
     assert public_rows[2]["pgs_endpoint_class_present"]
     assert public_rows[2]["pgs_public_closure_status"] == (
-        "endpoint_class_by_oriented_endpoint_chain_closure"
+        "endpoint_class_by_mutual_certificate_closure"
     )
-    assert public_rows[2]["pgs_lower_endpoint_class"] == "3221224297"
-    assert public_rows[2]["pgs_upper_endpoint_class"] == "3221276677"
+    assert public_rows[2]["pgs_lower_endpoint_class"] == GENERATED_64_P
+    assert public_rows[2]["pgs_upper_endpoint_class"] == GENERATED_64_Q
     for row in public_rows:
         assert {"p", "q", "actual_order_by_base", "audit_endpoint_match"}.isdisjoint(row)
 
@@ -968,11 +967,11 @@ def test_shor_order_entropy_probe_keeps_public_and_audit_states_separate(tmp_pat
     assert not audit_rows[1]["audit_endpoint_match"]
     assert audit_rows[1]["residual_phase_bits_after_pgs"] == 100
     assert audit_rows[1]["phase_bits_removed_by_pgs"] == 0
-    assert not audit_rows[2]["audit_endpoint_match"]
-    assert audit_rows[2]["residual_phase_bits_after_pgs"] == 128
-    assert audit_rows[2]["phase_bits_removed_by_pgs"] == 0
+    assert audit_rows[2]["audit_endpoint_match"]
+    assert audit_rows[2]["residual_phase_bits_after_pgs"] == 0
+    assert audit_rows[2]["phase_bits_removed_by_pgs"] == 128
     assert summary["status"] == "mixed_public_pgs_collapse"
-    assert summary["order_finding_removed_count"] == 1
+    assert summary["order_finding_removed_count"] == 2
     assert "<svg" in svg
 
 
@@ -1024,6 +1023,14 @@ def test_runner_has_no_per_scale_logic_branches():
         assert fragment not in source
 
 
+def test_runner_uses_single_transported_certificate_chain():
+    """As a reviewer, I want the square-root chamber to be chain step zero."""
+    source = (V2 / "run_experiment.py").read_text(encoding="utf-8")
+    assert "if lower.reset_endpoint > center" not in source
+    assert "legacy_certificate_pair" not in source
+    assert "certificate_chain_state_closure" in source
+
+
 def test_runner_uses_global_interval_backend_without_bit_gate():
     """As a reviewer, I want the resolver to avoid RSA-local scale gates."""
     module = load_module(V2 / "run_experiment.py")
@@ -1047,12 +1054,12 @@ def test_runner_accepts_above_50_bit_case_through_global_interval_backend():
     pair = module.certificate_pair(case)
     row = module.result_row(case, pair)
 
-    assert pair.closure_status == "endpoint_class_by_oriented_endpoint_chain_closure"
-    assert pair.endpoint_chain_steps == 60
+    assert pair.closure_status == "endpoint_class_by_mutual_certificate_closure"
+    assert pair.endpoint_chain_steps == 2
     assert row["status"] == "public_endpoint_class_found"
-    assert row["endpoint_class_lower"] == "999998683"
-    assert row["endpoint_class_upper"] == "1000001333"
-    assert row["public_closure_status"] == "endpoint_class_by_oriented_endpoint_chain_closure"
+    assert row["endpoint_class_lower"] == "999999929"
+    assert row["endpoint_class_upper"] == "1000000087"
+    assert row["public_closure_status"] == "endpoint_class_by_mutual_certificate_closure"
     assert {"p", "q", "endpoint_class_role"}.isdisjoint(row)
 
 

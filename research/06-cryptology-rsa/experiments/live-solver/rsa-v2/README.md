@@ -11,16 +11,17 @@ SESSION_BOOTSTRAP.md
 
 ## Current State
 
-The live v2 runner is a reciprocal PGSPG certificate-pair resolver in the small
-exact-backend regime.
+The live v2 runner is a reciprocal PGSPG endpoint-chain resolver.
 
-It derives one public lower PGSPG reset certificate, transports that reset
-endpoint through `floor(N / x)`, derives the opposite-side certificate from the
-transported coordinate, and resolves when public certificate endpoints close
-under reciprocal floor transport. The first branch is strict reset closure. The
-second branch is deadline signature correction: a failed upper reset transports
-back to one corrected lower endpoint, and that endpoint must mutually close with
-the upper reset deadline while carrying the same public reset signature.
+It starts at the previous public endpoint before `isqrt(N)` and treats that as
+step zero of a single lower endpoint-chain traversal. At each step it derives
+one lower PGSPG reset certificate, chooses the oriented transport coordinate,
+transports through `floor(N / x)`, derives the opposite-side certificate, and
+evaluates the fixed closure predicates. Strict reset closure is evaluated
+first. Deadline-signature correction is evaluated second: a failed upper reset
+transports back to one corrected lower endpoint, and that endpoint must
+mutually close with the upper reset deadline while carrying the same public
+reset signature.
 
 This replaced two invalid solver shapes:
 
@@ -28,7 +29,9 @@ This replaced two invalid solver shapes:
 - a budgeted walk through many lower endpoints.
 
 The square root is now an orientation coordinate only. It does not define a
-candidate chamber, and it does not limit the possible factor distance.
+candidate chamber, and it does not limit the possible factor distance. The
+square-root chamber is not a separate mode; it is the first endpoint-chain
+state.
 
 ## Active Grammar Evidence Track
 
@@ -194,26 +197,26 @@ The current official rungs return:
 
 ```text
 rsa_v2_40bit_static_001 -> endpoint_class_by_reciprocal_deadline_signature_correction
-rsa_v2_50bit_static_001 -> endpoint_class_by_oriented_endpoint_chain_closure
-rsa_v2_64bit_static_001 -> endpoint_class_by_oriented_endpoint_chain_closure
+rsa_v2_50bit_static_001 -> endpoint_class_by_mutual_certificate_closure
+rsa_v2_64bit_static_001 -> endpoint_class_by_mutual_certificate_closure
 ```
 
 The runner still does not read audit factors. Downstream audit currently reports
-`factor_found = true` for the 40-bit row and `factor_found = false` for the
-50-bit and 64-bit rows. Under the live terminology, only the 40-bit row is
-resolved.
+`factor_found = true` for the 40-bit and 64-bit rows and
+`factor_found = false` for the 50-bit row.
 
-The current implementation baseline is:
+The current implementation shape is:
 
 ```text
-OECC_LINEAR_V1
+UNIFIED_TRANSPORTED_CERTIFICATE_CHAIN
 ```
 
-See `ORIENTED_ENDPOINT_CHAIN_BASELINE.md` for the baseline contract and the
-`OECC_RECURSIVE_V2` pseudocode target.
+See `ORIENTED_ENDPOINT_CHAIN_BASELINE.md` for the historical linear baseline
+and recursive jump comparison target.
 
 Use `OECC_IMPROVEMENT_CHECKLIST.md` to track efficiency, scalability, law
-clarity, and candidate-law experiments after `OECC_LINEAR_V1`.
+clarity, and candidate-law experiments after the old OECC_LINEAR_V1 control
+shape.
 
 ## Invalid Rules
 
