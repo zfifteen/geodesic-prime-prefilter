@@ -4,10 +4,10 @@
 
 RSA moduli do expose deterministic endpoint structure.
 
-The active RSA v2 artifact already defines one public endpoint-structure law:
-reciprocal deadline-signature correction. The law is not a faster factoring
-method, a Shor optimization, a candidate search, or an audit trick. It is a
-public PGS endpoint-class resolver.
+The active RSA v2 artifact defines one public endpoint-structure law over a
+transported certificate chain. The law is not a faster factoring method, a Shor
+optimization, a candidate search, or an audit trick. It is a public PGS
+endpoint-class resolver.
 
 ## Active Law
 
@@ -17,32 +17,33 @@ Let `N` be public and let:
 s = floor(sqrt(N))
 ```
 
-Let:
+The first lower-chain state begins at:
 
 ```text
 a0 = previous_public_endpoint_before(s)
 L0 = PGSPG reset certificate at a0
-r0 = L0.reset_endpoint
-sigma0 = L0.reset_signature
 ```
 
-Transport `r0` through the public reciprocal floor map:
+For any lower-chain state `a`, let:
 
 ```text
-y = floor(N / r0)
+L = PGSPG reset certificate at a
+r0 = L.reset_endpoint
+sigma0 = L.reset_signature
 ```
 
-This transport is valid only when:
+Choose the oriented transport coordinate:
 
 ```text
-r0 <= s
+x = r0       if r0 <= s
+x = L.anchor otherwise
 ```
 
-If `r0 > s`, then the lower certificate remains valid but its reset endpoint
-has crossed the square-root orientation boundary. It is not a lower-side
-transport coordinate. The transport coordinate for that local chamber is the
-lower public anchor `a0`, and the runner enters the oriented endpoint-chain
-branch below.
+Transport `x` through the public reciprocal floor map:
+
+```text
+y = floor(N / x)
+```
 
 Let:
 
@@ -78,7 +79,8 @@ When those three conditions hold, the endpoint class is:
 
 ### Deadline-Signature Correction
 
-When strict reset closure fails, the single public deadline correction is:
+When strict reset closure fails at the current chain state, the single public
+deadline correction is:
 
 ```text
 z = floor(N / r1)
@@ -97,7 +99,7 @@ carry the same reset signature.
 The corrected structural endpoint class resolves exactly when:
 
 ```text
-c < a0
+c < a
 d > r1
 floor(N / c) == d
 floor(N / d) == c
@@ -110,66 +112,18 @@ When those five conditions hold, the endpoint class is:
 (c, d)
 ```
 
-If any condition fails at the square-root chamber, the local correction branch
-has not resolved. The runner then enters the oriented endpoint-chain branch.
+If neither strict reset closure nor deadline-signature correction resolves, the
+runner moves to the previous lower public endpoint and repeats the same state
+construction. The square-root chamber is step zero of this chain, not a
+separate pre-chain mode.
 
-### Oriented Endpoint-Chain Closure
+### Endpoint-Chain Boundary
 
-When the square-root chamber does not resolve by strict reset closure or by the
-single deadline-signature correction, the runner walks the lower public
-endpoint chain outward inside the public balance interval:
+The runner walks the lower public endpoint chain outward inside the public
+balance interval:
 
 ```text
 lower_bound = floor(s / 2)
-```
-
-For each public lower endpoint `a >= lower_bound`, derive its PGSPG reset
-certificate `L`. The oriented transport coordinate is:
-
-```text
-x = L.reset_endpoint  if L.reset_endpoint <= s
-x = L.anchor          otherwise
-```
-
-Transport `x` through the public floor map:
-
-```text
-y = floor(N / x)
-```
-
-If `y` is on the upper side and inside the public balance interval, derive the
-upper certificate:
-
-```text
-a1 = previous_public_endpoint_before(y)
-U = PGSPG reset certificate at a1
-r1 = U.reset_endpoint
-d = U.reset_deadline_value
-```
-
-Then transport the upper reset endpoint back:
-
-```text
-z = floor(N / r1)
-c = previous_public_endpoint_before(z)
-L_c = PGSPG reset certificate at c
-```
-
-The oriented endpoint-chain branch resolves when:
-
-```text
-c < a
-d > r1
-floor(N / c) == d
-floor(N / d) == c
-L_c.reset_signature == U.reset_signature
-```
-
-The first lower-chain endpoint satisfying those public conditions emits the
-structural endpoint class:
-
-```text
-(c, d)
 ```
 
 The walk has a deterministic stop condition: it ends at `floor(s / 2)`. It does
@@ -196,27 +150,30 @@ closure_status = resolved_by_reciprocal_deadline_signature_correction
 The generated inference row emits:
 
 ```json
-{"N": "1099507433251", "bits": 40, "case_id": "rsa_v2_40bit_static_001", "p": "1048559", "q": "1048589", "rule_id": "reciprocal_pgs_certificate_pair_v2", "status": "resolved"}
+{"N": "1099507433251", "bits": 40, "case_id": "rsa_v2_40bit_static_001", "endpoint_class_lower": "1048559", "endpoint_class_upper": "1048589", "public_closure_status": "endpoint_class_by_reciprocal_deadline_signature_correction", "public_structure_found": true, "rule_id": "reciprocal_pgs_certificate_pair_v2", "status": "public_endpoint_class_found"}
 ```
 
 ## Current Boundary
 
 The official 50-bit RSA v2 rung now resolves to a structural endpoint class by
-oriented endpoint-chain closure:
+mutual certificate closure inside the endpoint chain:
 
 ```text
 case_id = rsa_v2_50bit_static_001
-closure_status = resolved_by_oriented_endpoint_chain_closure
-endpoint_chain_steps = 389
-endpoint_class = (32046877, 32060407)
+closure_status = endpoint_class_by_mutual_certificate_closure
+endpoint_chain_steps = 350
+endpoint_class = (32047651, 32059633)
 ```
 
-The 48-bit modulus `249882542035169` resolves by the same branch:
+The official 64-bit RSA v2 rung resolves by the same mutual closure predicate
+and audit confirms the emitted endpoint class as the factor pair:
 
 ```text
-closure_status = resolved_by_oriented_endpoint_chain_closure
-endpoint_chain_steps = 296
-endpoint_class = (15802739, 15812609)
+case_id = rsa_v2_64bit_static_001
+closure_status = endpoint_class_by_mutual_certificate_closure
+endpoint_chain_steps = 1162
+endpoint_class = (3221225473, 3221275501)
+factor_found = true
 ```
 
 These are structural endpoint classes. Exact factor-pair confirmation remains a

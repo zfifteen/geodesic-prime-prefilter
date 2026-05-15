@@ -55,7 +55,8 @@ The current unresolved statuses are:
 
 ```text
 unresolved_by_certificate_pair_not_closed
-unresolved_by_reset_endpoint_crosses_orientation
+unresolved_by_endpoint_chain_boundary
+unresolved_by_endpoint_chain_cycle
 unresolved_by_missing_lower_certificate
 unresolved_by_missing_upper_certificate
 ```
@@ -80,8 +81,12 @@ The current v2 surface is acceptable if:
 
 ## Scaling Signal
 
-The current runner is not RSA-260-ready. It has a small-regime exact interval
-backend.
+The current runner uses one scale-invariant decision structure: lower
+certificate, oriented transport, upper certificate, closure predicates, then
+the previous lower endpoint if unresolved. Larger public moduli increase the
+number of chain states and the cost of deriving each PGSPG certificate. They do
+not introduce new resolver branches.
 
-The next scaling signal is a GMP interval backend that preserves the same
-certificate fields without changing selection logic.
+The next scaling signal is a faster PGSPG certificate backend and any
+chain-jump optimization that preserves the same first public closure emitted by
+the unified traversal.

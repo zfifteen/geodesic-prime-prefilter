@@ -30,6 +30,8 @@ from z_band_prime_predictor.simple_pgs_generator import (  # noqa: E402
 RULE_ID = "reciprocal_pgs_certificate_pair_v2"
 BALANCE_BAND = gmpy2.mpz(2)
 RULE_X_CANDIDATE_BOUND = 128
+UNRESOLVED_BY_ENDPOINT_CHAIN_BOUNDARY = "unresolved_by_endpoint_chain_boundary"
+UNRESOLVED_BY_ENDPOINT_CHAIN_CYCLE = "unresolved_by_endpoint_chain_cycle"
 
 
 @dataclass(frozen=True)
@@ -407,6 +409,89 @@ def endpoint_chain_step_closure(
     )
 
 
+def certificate_chain_state_closure(
+    n_value: gmpy2.mpz,
+    center: gmpy2.mpz,
+    upper_balance: gmpy2.mpz,
+    anchor: gmpy2.mpz,
+    steps: int,
+    lower: PGSCertificate,
+    certificate_cache: CertificateCache,
+    previous_endpoint_cache: PreviousEndpointCache,
+    segment_cache: SegmentCache,
+    diagnostics: DiagnosticCounters,
+) -> CertificatePair | None:
+    """Return one closure result from a uniform transported certificate state."""
+    transport_coordinate = endpoint_chain_transport_coordinate(lower, center)
+    transported_upper = reciprocal_floor(n_value, transport_coordinate)
+    if transported_upper < center or transported_upper > upper_balance:
+        return None
+    upper_anchor = previous_endpoint_at(
+        transported_upper,
+        previous_endpoint_cache,
+        segment_cache,
+        diagnostics,
+    )
+    upper = None if upper_anchor is None else certificate_at(upper_anchor, certificate_cache, diagnostics)
+    if upper is None:
+        return None
+    transported_lower = reciprocal_floor(n_value, upper.reset_endpoint)
+    lower_width = transported_deadline_width(n_value, lower)
+    upper_width = transported_deadline_width(n_value, upper)
+    reset_closed = (
+        transported_upper == upper.reset_endpoint
+        and transported_lower == lower.reset_endpoint
+        and lower.reset_signature == upper.reset_signature
+    )
+    (
+        corrected_lower,
+        corrected_lower_endpoint,
+        corrected_upper_endpoint,
+        transported_corrected_upper,
+        transported_corrected_lower,
+        deadline_closed,
+    ) = deadline_correction_closes(
+        n_value,
+        lower,
+        upper,
+        certificate_cache,
+        previous_endpoint_cache,
+        segment_cache,
+        diagnostics,
+    )
+    if reset_closed:
+        status = "endpoint_class_by_mutual_certificate_closure"
+    elif deadline_closed:
+        status = (
+            "endpoint_class_by_reciprocal_deadline_signature_correction"
+            if steps == 0
+            else "endpoint_class_by_oriented_endpoint_chain_closure"
+        )
+    else:
+        return None
+    return CertificatePair(
+        lower,
+        upper,
+        corrected_lower,
+        corrected_lower_endpoint,
+        corrected_upper_endpoint,
+        transported_upper,
+        transported_lower,
+        transported_corrected_upper,
+        transported_corrected_lower,
+        lower_width,
+        upper_width,
+        status,
+        endpoint_chain_steps=None if steps == 0 and status != "endpoint_class_by_oriented_endpoint_chain_closure" else steps,
+        endpoint_chain_source_anchor=None if steps == 0 and status != "endpoint_class_by_oriented_endpoint_chain_closure" else anchor,
+        endpoint_chain_transport_coordinate=(
+            None
+            if steps == 0 and status != "endpoint_class_by_oriented_endpoint_chain_closure"
+            else transport_coordinate
+        ),
+    )
+
+
 def endpoint_chain_closure(
     n_value: gmpy2.mpz,
     center: gmpy2.mpz,
@@ -424,7 +509,7 @@ def endpoint_chain_closure(
     while anchor is not None and anchor >= lower_balance:
         lower = certificate_at(anchor, certificate_cache, diagnostics)
         if lower is not None:
-            pair = endpoint_chain_step_closure(
+            pair = certificate_chain_state_closure(
                 n_value,
                 center,
                 upper_balance,
@@ -458,7 +543,7 @@ def make_diagnostics() -> DiagnosticCounters:
 
 
 def certificate_pair(case: LadderCase, diagnostics: DiagnosticCounters | None = None) -> CertificatePair:
-    """Return the reciprocal certificate pair from square-root orientation."""
+    """Return the first closure from one uniform transported certificate chain."""
     if diagnostics is None:
         diagnostics = make_diagnostics()
     # The integer square root orients the lower and upper certificate sides.
@@ -471,146 +556,59 @@ def certificate_pair(case: LadderCase, diagnostics: DiagnosticCounters | None = 
     if lower_anchor is None or lower_anchor < lower_balance:
         return CertificatePair(None, None, None, None, None, None, None, None, None, None, "unresolved_by_missing_lower_certificate")
 
-    lower = certificate_at(lower_anchor, certificate_cache, diagnostics)
-    if lower is None:
-        return CertificatePair(None, None, None, None, None, None, None, None, None, None, "unresolved_by_missing_lower_certificate")
+    anchor: gmpy2.mpz | None = lower_anchor
+    steps = 0
+    visited: set[int] = set()
+    while anchor is not None and anchor >= lower_balance:
+        anchor_key = mpz_to_int(anchor)
+        if anchor_key in visited:
+            return CertificatePair(
+                None,
+                None,
+                None,
+                None,
+                None,
+                None,
+                None,
+                None,
+                None,
+                None,
+                UNRESOLVED_BY_ENDPOINT_CHAIN_CYCLE,
+            )
+        visited.add(anchor_key)
+        lower = certificate_at(anchor, certificate_cache, diagnostics)
+        if lower is not None:
+            pair = certificate_chain_state_closure(
+                case.n,
+                center,
+                upper_balance,
+                anchor,
+                steps,
+                lower,
+                certificate_cache,
+                previous_endpoint_cache,
+                segment_cache,
+                diagnostics,
+            )
+            if pair is not None:
+                if pair.endpoint_chain_steps is not None:
+                    diagnostics["endpoint_chain_steps"] = pair.endpoint_chain_steps or 0
+                return pair
+        anchor = previous_endpoint_at(anchor, previous_endpoint_cache, segment_cache, diagnostics)
+        steps += 1
 
-    if lower.reset_endpoint > center:
-        endpoint_chain_pair = endpoint_chain_closure(
-            case.n,
-            center,
-            lower_balance,
-            upper_balance,
-            lower_anchor,
-            certificate_cache,
-            previous_endpoint_cache,
-            segment_cache,
-            diagnostics,
-        )
-        if endpoint_chain_pair is not None:
-            diagnostics["endpoint_chain_steps"] = endpoint_chain_pair.endpoint_chain_steps or 0
-            return endpoint_chain_pair
-        return CertificatePair(
-            lower,
-            None,
-            None,
-            None,
-            None,
-            None,
-            None,
-            None,
-            None,
-            transported_deadline_width(case.n, lower),
-            None,
-            "unresolved_by_reset_endpoint_crosses_orientation",
-        )
-
-    transported_upper = reciprocal_floor(case.n, lower.reset_endpoint)
-    if transported_upper < center or transported_upper > upper_balance:
-        return CertificatePair(
-            lower,
-            None,
-            None,
-            None,
-            None,
-            transported_upper,
-            None,
-            None,
-            None,
-            transported_deadline_width(case.n, lower),
-            None,
-            "unresolved_by_certificate_pair_not_closed",
-        )
-    upper_anchor = previous_endpoint_at(transported_upper, previous_endpoint_cache, segment_cache, diagnostics)
-    if upper_anchor is None:
-        return CertificatePair(
-            lower,
-            None,
-            None,
-            None,
-            None,
-            transported_upper,
-            None,
-            None,
-            None,
-            transported_deadline_width(case.n, lower),
-            None,
-            "unresolved_by_missing_upper_certificate",
-        )
-    upper = certificate_at(upper_anchor, certificate_cache, diagnostics)
-    if upper is None:
-        return CertificatePair(
-            lower,
-            None,
-            None,
-            None,
-            None,
-            transported_upper,
-            None,
-            None,
-            None,
-            transported_deadline_width(case.n, lower),
-            None,
-            "unresolved_by_missing_upper_certificate",
-        )
-
-    transported_lower = reciprocal_floor(case.n, upper.reset_endpoint)
-    lower_width = transported_deadline_width(case.n, lower)
-    upper_width = transported_deadline_width(case.n, upper)
-    closed = (
-        transported_upper == upper.reset_endpoint
-        and transported_lower == lower.reset_endpoint
-        and lower.reset_signature == upper.reset_signature
-    )
-    (
-        corrected_lower,
-        corrected_lower_endpoint,
-        corrected_upper_endpoint,
-        transported_corrected_upper,
-        transported_corrected_lower,
-        deadline_closed,
-    ) = deadline_correction_closes(
-        case.n,
-        lower,
-        upper,
-        certificate_cache,
-        previous_endpoint_cache,
-        segment_cache,
-        diagnostics,
-    )
-    status = "unresolved_by_certificate_pair_not_closed"
-    if closed:
-        status = "endpoint_class_by_mutual_certificate_closure"
-    elif deadline_closed:
-        status = "endpoint_class_by_reciprocal_deadline_signature_correction"
-    else:
-        endpoint_chain_pair = endpoint_chain_closure(
-            case.n,
-            center,
-            lower_balance,
-            upper_balance,
-            lower_anchor,
-            certificate_cache,
-            previous_endpoint_cache,
-            segment_cache,
-            diagnostics,
-        )
-        if endpoint_chain_pair is not None:
-            diagnostics["endpoint_chain_steps"] = endpoint_chain_pair.endpoint_chain_steps or 0
-            return endpoint_chain_pair
     return CertificatePair(
-        lower,
-        upper,
-        corrected_lower,
-        corrected_lower_endpoint,
-        corrected_upper_endpoint,
-        transported_upper,
-        transported_lower,
-        transported_corrected_upper,
-        transported_corrected_lower,
-        lower_width,
-        upper_width,
-        status,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        UNRESOLVED_BY_ENDPOINT_CHAIN_BOUNDARY,
     )
 
 
