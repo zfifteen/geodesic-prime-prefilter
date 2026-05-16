@@ -1,0 +1,25 @@
+{
+  "candidate_class_exclusion_count": 531,
+  "candidate_residue_multiset_counts": {
+    "o2:1|o4:1|o6:2": 34,
+    "o2:1|o4:2|o6:1": 39,
+    "o2:1|o4:3": 22,
+    "o2:1|o6:3": 16,
+    "o2:2|o4:1|o6:1": 24,
+    "o2:2|o4:2": 34,
+    "o2:2|o6:2": 48,
+    "o2:3|o4:1": 43,
+    "o2:3|o6:1": 48,
+    "o2:4": 89,
+    "o4:1|o6:3": 32,
+    "o4:2|o6:2": 36,
+    "o4:3|o6:1": 23,
+    "o4:4": 43
+  },
+  "factor_class_cell_count": 1644,
+  "inference_status": "not_live_pedk_inference",
+  "rule_id": "pedk_public_grammar_factor_exclusion_pivot_v1",
+  "status": "measured_public_grammar_factor_exclusion_pivot",
+  "supported_public_word_count": 23,
+  "theorem_status": "hypothesis_not_proved"
+}

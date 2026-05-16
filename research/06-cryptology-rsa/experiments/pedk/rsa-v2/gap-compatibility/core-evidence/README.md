@@ -25,6 +25,11 @@ FOUR_STATE_ALL_O6_CANDIDATE_RESULTS.md
 PUBLIC_FEATURE_ALL_O6_BOUNDARY.md
 ALL_O6_BOUNDARY_REFINEMENT_601_5500.md
 EXACT_SUBTYPE_ALL_O6_BOUNDARY.md
+GWR_RELATIVE_ALL_O6_BOUNDARY.md
+MULTIPLICATION_MAP_LAW_SURFACE.md
+PUBLIC_GRAMMAR_PIVOT.md
+PUBLIC_GRAMMAR_FACTOR_EXCLUSION_PIVOT.md
+PUBLIC_GRAMMAR_TARGETED_SLICE_RESULTS.md
 ```
 
 Run:
@@ -224,6 +229,55 @@ all_o6_not_observed_cell_count = 46
 strongest_forward_cell = o4_d4_a4_d4_odd@early, rows 770, all-o6 0
 ```
 
+The GWR-relative all-`o6` boundary records:
+
+```text
+bands = factors 601..5500 split into eleven ranges
+relation_cell_count = 72
+distance_cell_count = 530
+all_o6_observation_count = 6
+all_o6_distance_counts = 0:1, 2:1, 14:1, 24:1, 26:1, 37:1
+all_o6_side_counts = at_winner:1, after_winner:5
+```
+
+The multiplication map law surface records:
+
+```text
+bands = factors 601..5500 split into eleven ranges
+public_word_count = 5178
+factor_word_count = 2048
+observed_cell_count = 16710
+supported_public_word_count = 23
+supported_factor_word_count = 198
+candidate_exclusion_count = 3741
+```
+
+The public grammar pivot records:
+
+```text
+pivot_public_word_count = 23
+supported_factor_word_count = 198
+candidate_exclusion_count = 3741
+```
+
+The public grammar factor exclusion pivot records:
+
+```text
+factor_class_cell_count = 1644
+candidate_class_exclusion_count = 531
+top broad residue families = o2:4, o2:2|o6:2, o2:3|o6:1, o2:3|o4:1, o4:4
+```
+
+The public grammar targeted slice check records:
+
+```text
+fresh_bands = factors 5501..6500 and 6501..7500
+candidate_count = 5
+survived_fresh_public_slice = 2
+falsified_fresh_public_slice = 3
+falsification_row_count = 8
+```
+
 ## Rule Status
 
 The preliminary rule is:
@@ -305,3 +359,46 @@ The exact-subtype split shows the next public grammar object is
 `exact_type(gap(N)) @ phase(N inside gap(N))`. The strongest current exact cell
 is `o4_d4_a4_d4_odd@early`, with `770` rows and no all-`o6` observation, while
 `o4_d4_a4_d4_odd@mid` has admitted all-`o6`.
+
+The GWR-relative split shows the next coordinate is the signed distance from
+the containing gap's GWR winner:
+
+```text
+gwr_signed_distance = n_offset_from_left - winner_offset
+```
+
+The compatibility object is now:
+
+```text
+exact_type(gap(N)) @ phase(N inside gap(N)) @ distance_from_GWR_winner
+```
+
+The broad multiplication-map surface turns the research target into a table:
+
+```text
+public N word -> unordered factor-neighborhood word
+```
+
+The next compression problem is to derive the grammar rules that explain the
+`3741` absent cells between supported public words and supported factor words.
+
+The first compression reduces the raw absent-cell surface to `531` candidate
+factor-class exclusions. The broad map's strongest first family is not the
+sparse all-`o6` corner; it is mixed or uniform residue classes under specific
+factor winner-phase multisets, especially `mid:3|late:1`, conditioned by the
+public grammar word.
+
+The first targeted slice check tests the top five compressed candidates on
+fresh public slices. It falsifies three and leaves two surviving candidates:
+
+```text
+prev=o4_higher_divisor_even|5<=d<=16
+containing=o2_d4_a2_d4_odd@mid
+next=o2_d4_odd|d<=4
+excludes residue o2:1|o4:2|o6:1 with phase mid:3|late:1
+
+prev=o2_d4_odd|d<=4
+containing=o2_d4_a2_d4_odd@early
+next=o4_d4_odd|d<=4
+excludes residue o2:1|o4:1|o6:2 with phase mid:3|late:1
+```

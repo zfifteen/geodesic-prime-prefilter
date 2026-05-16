@@ -1,0 +1,24 @@
+{
+  "bands": [
+    {
+      "max_factor": 1000,
+      "max_factor_ratio": "4/1",
+      "min_factor": 601
+    }
+  ],
+  "candidate_exclusion_count": 0,
+  "factor_word_count": 367,
+  "inference_status": "not_live_pedk_inference",
+  "min_factor_support": 20,
+  "min_public_support": 50,
+  "observed_cell_count": 1702,
+  "public_word_count": 1094,
+  "rule_id": "pedk_multiplication_map_law_surface_v1",
+  "semiprime_counts_by_band": {
+    "601_1000": 1711
+  },
+  "status": "measured_multiplication_map_surface",
+  "supported_factor_word_count": 10,
+  "supported_public_word_count": 0,
+  "theorem_status": "hypothesis_not_proved"
+}

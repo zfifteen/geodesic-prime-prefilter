@@ -1,0 +1,22 @@
+{
+  "bands": [
+    {
+      "max_factor": 6500,
+      "max_factor_ratio": "4/1",
+      "min_factor": 5501
+    }
+  ],
+  "candidate_count": 5,
+  "falsification_row_count": 3,
+  "inference_status": "not_live_pedk_inference",
+  "rule_id": "pedk_public_grammar_targeted_slice_check_v1",
+  "semiprime_counts_by_band": {
+    "5501_6500": 6786
+  },
+  "status": "measured_public_grammar_targeted_slice_check",
+  "status_counts": {
+    "falsified_fresh_public_slice": 2,
+    "survived_fresh_public_slice": 3
+  },
+  "theorem_status": "hypothesis_not_proved"
+}
