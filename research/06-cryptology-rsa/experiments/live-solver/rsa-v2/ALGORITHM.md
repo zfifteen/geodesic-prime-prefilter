@@ -126,7 +126,38 @@ This predicate uses one reciprocal correction induced by the failed upper
 certificate. It does not test divisibility, multiply candidate endpoints, read
 audit factors, or walk a budgeted list of lower endpoints.
 
-## Stage 6: Chain Transition
+## Stage 6: Refined Closure Acceptance
+
+A base closure candidate is not accepted until the matched lower certificate
+also satisfies public certificate-geometry filters against the upper
+certificate.
+
+For strict reset closure, the matched lower certificate is the original lower
+certificate. For deadline-signature correction, the matched lower certificate
+is the corrected lower certificate, because that is the certificate whose
+signature is compared to the upper certificate.
+
+The current refined filters are:
+
+```text
+abs(floor(N / matched_lower.carrier_w) - upper.carrier_w)
+  <= max(20, floor(1.2 * matched_lower.gap_offset))
+
+if matched_lower uses deadline=tail:
+  -12 <= floor(N / first_matched_lower_tail_point) - upper.anchor <= 6
+
+for strict reset closure or nonzero endpoint-chain correction:
+  2 * matched_lower.lock_carrier_offset > matched_lower.gap_offset
+  matched_lower.active_count == upper.active_count
+  matched_lower.unresolved_count == upper.unresolved_count
+```
+
+If a base closure candidate fails one of these public filters, the chain stops
+with an unresolved structural state. It does not skip the rejected candidate and
+continue to a later closure, because that would choose among multiple coherent
+closure candidates without a public discriminator.
+
+## Stage 7: Chain Transition
 
 If neither closure predicate succeeds at the current lower endpoint, move to
 the previous public endpoint before the current lower endpoint and repeat the
@@ -167,15 +198,19 @@ endpoint_class_by_oriented_endpoint_chain_closure
 unresolved_by_certificate_pair_not_closed
 unresolved_by_endpoint_chain_boundary
 unresolved_by_endpoint_chain_cycle
+unresolved_by_first_tail_misalignment
+unresolved_by_lower_lock_misalignment
 unresolved_by_missing_lower_certificate
 unresolved_by_missing_upper_certificate
+unresolved_by_profile_count_mismatch
+unresolved_by_reciprocal_carrier_misalignment
 ```
 
 The current official rungs emit:
 
 ```text
 rsa_v2_40bit_static_001 -> public endpoint class found, factor_found = true
-rsa_v2_50bit_static_001 -> public endpoint class found, factor_found = false
+rsa_v2_50bit_static_001 -> unresolved_by_reciprocal_carrier_misalignment
 rsa_v2_64bit_static_001 -> public endpoint class found, factor_found = true
 ```
 
@@ -189,8 +224,8 @@ invalidated terminology for audit-failing endpoint classes.
 
 The unified chain runner supersedes the old OECC_LINEAR_V1 control shape. It
 evaluates strict reset closure and deadline-signature correction at every lower
-chain state. Under that rule, the 64-bit official row emits an audit-confirmed
-mutual reset endpoint class.
+chain state. The refined closure filters reject the 50-bit mutual closure at
+step 350 and preserve the 64-bit audit-confirmed mutual reset endpoint class.
 
 ## Explicitly Invalidated Rules
 

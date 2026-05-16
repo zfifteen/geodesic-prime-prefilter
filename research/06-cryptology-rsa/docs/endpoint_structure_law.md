@@ -112,6 +112,22 @@ When those five conditions hold, the endpoint class is:
 (c, d)
 ```
 
+### Refined Closure Acceptance
+
+A base closure candidate is accepted only after the matched lower certificate
+and the upper certificate pass public certificate-geometry filters.
+
+For strict reset closure, the matched lower certificate is the current lower
+certificate. For deadline-signature correction, it is the corrected lower
+certificate. The active filters compare carrier transport, first-tail transport
+when the matched lower deadline comes from the tail, lower lock placement for
+nonzero chain closure, and active/unresolved profile counts.
+
+If a base closure candidate fails one of these filters, the runner returns an
+unresolved structural state at that chain position. It does not continue past a
+rejected closure candidate to choose a later closure without an additional
+public discriminator.
+
 If neither strict reset closure nor deadline-signature correction resolves, the
 runner moves to the previous lower public endpoint and repeats the same state
 construction. The square-root chamber is step zero of this chain, not a
@@ -155,18 +171,20 @@ The generated inference row emits:
 
 ## Current Boundary
 
-The official 50-bit RSA v2 rung now resolves to a structural endpoint class by
-mutual certificate closure inside the endpoint chain:
+The official 50-bit RSA v2 rung reaches a mutual certificate closure candidate
+inside the endpoint chain, but the candidate fails reciprocal carrier
+alignment. The live runner therefore returns an unresolved structural state:
 
 ```text
 case_id = rsa_v2_50bit_static_001
-closure_status = endpoint_class_by_mutual_certificate_closure
+closure_status = unresolved_by_reciprocal_carrier_misalignment
 endpoint_chain_steps = 350
-endpoint_class = (32047651, 32059633)
+rejected_candidate = (32047651, 32059633)
 ```
 
 The official 64-bit RSA v2 rung resolves by the same mutual closure predicate
-and audit confirms the emitted endpoint class as the factor pair:
+plus the refined public certificate-geometry filters, and audit confirms the
+emitted endpoint class as the factor pair:
 
 ```text
 case_id = rsa_v2_64bit_static_001

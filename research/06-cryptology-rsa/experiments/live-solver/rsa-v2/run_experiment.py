@@ -32,6 +32,10 @@ BALANCE_BAND = gmpy2.mpz(2)
 RULE_X_CANDIDATE_BOUND = 128
 UNRESOLVED_BY_ENDPOINT_CHAIN_BOUNDARY = "unresolved_by_endpoint_chain_boundary"
 UNRESOLVED_BY_ENDPOINT_CHAIN_CYCLE = "unresolved_by_endpoint_chain_cycle"
+UNRESOLVED_BY_RECIPROCAL_CARRIER_MISALIGNMENT = "unresolved_by_reciprocal_carrier_misalignment"
+UNRESOLVED_BY_FIRST_TAIL_MISALIGNMENT = "unresolved_by_first_tail_misalignment"
+UNRESOLVED_BY_LOWER_LOCK_MISALIGNMENT = "unresolved_by_lower_lock_misalignment"
+UNRESOLVED_BY_PROFILE_COUNT_MISMATCH = "unresolved_by_profile_count_mismatch"
 
 
 @dataclass(frozen=True)
@@ -345,6 +349,57 @@ def endpoint_chain_transport_coordinate(lower: PGSCertificate, center: gmpy2.mpz
     return lower.reset_endpoint if lower.reset_endpoint <= center else lower.anchor
 
 
+def reciprocal_carrier_alignment_holds(n_value: gmpy2.mpz, lower: PGSCertificate, upper: PGSCertificate) -> bool:
+    """PGS-native filter: Transported lower carrier_w must land close to upper carrier_w.
+
+    Bound = max(20, floor(1.2 * lower.gap_offset)).
+    """
+    if lower.carrier_w is None or upper.carrier_w is None:
+        return False
+
+    transported = n_value // lower.carrier_w
+    delta = abs(int(transported - upper.carrier_w))
+
+    lower_gap = getattr(lower, "gap_offset", None)
+    if lower_gap is None or lower_gap <= 0:
+        lower_gap = 20
+
+    bound = max(20, (6 * int(lower_gap)) // 5)
+    return delta <= bound
+
+
+def lower_lock_dominance_holds(lower: PGSCertificate) -> bool:
+    """Return whether the matched lower lock sits in the right half of its gap."""
+    if lower.lock_carrier_offset is None or lower.gap_offset <= 0:
+        return False
+    return 2 * lower.lock_carrier_offset > lower.gap_offset
+
+
+def matched_profile_counts_hold(lower: PGSCertificate, upper: PGSCertificate) -> bool:
+    """Return whether the matched certificate pair has the same live profile size."""
+    return (
+        lower.active_count == upper.active_count
+        and lower.unresolved_count == upper.unresolved_count
+    )
+
+
+def first_tail_reciprocal_proximity_holds(
+    n_value: gmpy2.mpz,
+    lower: PGSCertificate,
+    upper: PGSCertificate,
+) -> bool:
+    """PGS-native tail filter for tail-deadline reciprocal certificate pairs."""
+    if lower.reset_signature is None or "deadline=tail" not in lower.reset_signature:
+        return True
+    if not lower.tail_after_reset_offsets:
+        return False
+
+    first_tail_point = lower.reset_endpoint + lower.tail_after_reset_offsets[0]
+    transported = n_value // first_tail_point
+    delta = int(transported - upper.anchor)
+    return -12 <= delta <= 6
+
+
 def endpoint_chain_step_closure(
     n_value: gmpy2.mpz,
     center: gmpy2.mpz,
@@ -461,35 +516,57 @@ def certificate_chain_state_closure(
     )
     if reset_closed:
         status = "endpoint_class_by_mutual_certificate_closure"
+        aligned_lower = lower
     elif deadline_closed:
         status = (
             "endpoint_class_by_reciprocal_deadline_signature_correction"
             if steps == 0
             else "endpoint_class_by_oriented_endpoint_chain_closure"
         )
+        aligned_lower = corrected_lower
     else:
         return None
-    return CertificatePair(
-        lower,
-        upper,
-        corrected_lower,
-        corrected_lower_endpoint,
-        corrected_upper_endpoint,
-        transported_upper,
-        transported_lower,
-        transported_corrected_upper,
-        transported_corrected_lower,
-        lower_width,
-        upper_width,
-        status,
-        endpoint_chain_steps=None if steps == 0 and status != "endpoint_class_by_oriented_endpoint_chain_closure" else steps,
-        endpoint_chain_source_anchor=None if steps == 0 and status != "endpoint_class_by_oriented_endpoint_chain_closure" else anchor,
-        endpoint_chain_transport_coordinate=(
-            None
-            if steps == 0 and status != "endpoint_class_by_oriented_endpoint_chain_closure"
-            else transport_coordinate
-        ),
-    )
+
+    def state_pair(closure_status: str) -> CertificatePair:
+        """Return the current transported certificate-chain state."""
+        return CertificatePair(
+            lower,
+            upper,
+            corrected_lower,
+            corrected_lower_endpoint,
+            corrected_upper_endpoint,
+            transported_upper,
+            transported_lower,
+            transported_corrected_upper,
+            transported_corrected_lower,
+            lower_width,
+            upper_width,
+            closure_status,
+            endpoint_chain_steps=None if steps == 0 and closure_status == status else steps,
+            endpoint_chain_source_anchor=None if steps == 0 and closure_status == status else anchor,
+            endpoint_chain_transport_coordinate=(
+                None if steps == 0 and closure_status == status else transport_coordinate
+            ),
+        )
+
+    if aligned_lower is None:
+        diagnostics["reciprocal_carrier_misalignment_rejections"] += 1
+        return state_pair(UNRESOLVED_BY_RECIPROCAL_CARRIER_MISALIGNMENT)
+    if not reciprocal_carrier_alignment_holds(n_value, aligned_lower, upper):
+        diagnostics["reciprocal_carrier_misalignment_rejections"] += 1
+        return state_pair(UNRESOLVED_BY_RECIPROCAL_CARRIER_MISALIGNMENT)
+    if not first_tail_reciprocal_proximity_holds(n_value, aligned_lower, upper):
+        diagnostics["first_tail_misalignment_rejections"] += 1
+        return state_pair(UNRESOLVED_BY_FIRST_TAIL_MISALIGNMENT)
+    if steps > 0 or reset_closed:
+        if not lower_lock_dominance_holds(aligned_lower):
+            diagnostics["lower_lock_misalignment_rejections"] += 1
+            return state_pair(UNRESOLVED_BY_LOWER_LOCK_MISALIGNMENT)
+        if not matched_profile_counts_hold(aligned_lower, upper):
+            diagnostics["profile_count_mismatch_rejections"] += 1
+            return state_pair(UNRESOLVED_BY_PROFILE_COUNT_MISMATCH)
+
+    return state_pair(status)
 
 
 def endpoint_chain_closure(
@@ -539,6 +616,10 @@ def make_diagnostics() -> DiagnosticCounters:
         "divisor_segment_calls": 0,
         "endpoint_chain_steps": 0,
         "closure_attempts": 0,
+        "lower_lock_misalignment_rejections": 0,
+        "profile_count_mismatch_rejections": 0,
+        "reciprocal_carrier_misalignment_rejections": 0,
+        "first_tail_misalignment_rejections": 0,
     }
 
 
@@ -628,6 +709,18 @@ def diagnostic_row(case: LadderCase, pair: CertificatePair, diagnostics: Diagnos
         "divisor_segment_calls": diagnostics["divisor_segment_calls"],
         "endpoint_chain_steps": diagnostics["endpoint_chain_steps"],
         "closure_attempts": diagnostics["closure_attempts"],
+        "lower_lock_misalignment_rejections": diagnostics[
+            "lower_lock_misalignment_rejections"
+        ],
+        "profile_count_mismatch_rejections": diagnostics[
+            "profile_count_mismatch_rejections"
+        ],
+        "reciprocal_carrier_misalignment_rejections": diagnostics[
+            "reciprocal_carrier_misalignment_rejections"
+        ],
+        "first_tail_misalignment_rejections": diagnostics[
+            "first_tail_misalignment_rejections"
+        ],
     }
 
 
