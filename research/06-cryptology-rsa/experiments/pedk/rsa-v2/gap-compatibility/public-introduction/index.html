@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Finding Factors Without Factorizing</title>
+  <style>
+    :root {
+      --ink: #1c2430;
+      --muted: #526171;
+      --line: #d8e0e8;
+      --soft: #f6f8fb;
+      --panel: #ffffff;
+      --blue: #1c67a8;
+      --green: #167a5b;
+      --red: #b84036;
+      --amber: #9a6400;
+      --violet: #6d5aa8;
+      --code: #243449;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #edf2f7;
+      font: 13px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .page {
+      max-width: 1040px;
+      margin: 0 auto;
+      background: var(--panel);
+      min-height: 100vh;
+      box-shadow: 0 0 0 1px rgba(28, 36, 48, 0.08);
+    }
+
+    header {
+      padding: 34px 42px 22px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(246, 248, 251, 0.9), rgba(255, 255, 255, 1)),
+        repeating-linear-gradient(90deg, rgba(28, 103, 168, 0.07) 0 1px, transparent 1px 32px);
+    }
+
+    main {
+      padding: 26px 42px 46px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      max-width: 780px;
+      font-size: 2.05rem;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 34px 0 10px;
+      padding-top: 3px;
+      font-size: 1.28rem;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 18px 0 8px;
+      font-size: 1rem;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 12px;
+      max-width: 800px;
+    }
+
+    code {
+      color: var(--code);
+      background: #edf2f7;
+      border: 1px solid #dce5ee;
+      border-radius: 4px;
+      padding: 0 4px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+    }
+
+    pre {
+      margin: 10px 0 14px;
+      padding: 12px 14px;
+      overflow-x: auto;
+      background: #f2f5f8;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--code);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 18px;
+      font-size: 0.94rem;
+    }
+
+    th,
+    td {
+      padding: 8px 9px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    th {
+      color: #324253;
+      background: #f4f7fa;
+      font-weight: 700;
+    }
+
+    .lede {
+      max-width: 780px;
+      color: #334356;
+      font-size: 1.02rem;
+    }
+
+    .eyebrow {
+      margin-bottom: 9px;
+      color: var(--blue);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.76rem;
+    }
+
+    .status-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 18px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 22px;
+      padding: 2px 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: #354456;
+      font-size: 0.84rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .badge.measured {
+      color: var(--blue);
+      border-color: #a9c8e7;
+      background: #eef6ff;
+    }
+
+    .badge.invalidated {
+      color: var(--red);
+      border-color: #e4b3ad;
+      background: #fff1f0;
+    }
+
+    .badge.survived {
+      color: var(--green);
+      border-color: #a4d6c5;
+      background: #effaf6;
+    }
+
+    .badge.falsified {
+      color: var(--red);
+      border-color: #e4b3ad;
+      background: #fff1f0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      margin: 16px 0 20px;
+      max-width: 940px;
+    }
+
+    .panel {
+      grid-column: span 6;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: #fff;
+    }
+
+    .panel.wide {
+      grid-column: 1 / -1;
+    }
+
+    .soft {
+      background: var(--soft);
+    }
+
+    .callout {
+      margin: 16px 0 20px;
+      padding: 13px 15px;
+      max-width: 840px;
+      border: 1px solid #c8d7e5;
+      border-left: 4px solid var(--blue);
+      border-radius: 6px;
+      background: #f5f9fc;
+    }
+
+    .callout strong {
+      color: #173d63;
+    }
+
+    .mini-title {
+      margin: 0 0 8px;
+      color: #334356;
+      font-size: 0.84rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .metric {
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #fff;
+    }
+
+    .metric .value {
+      font-size: 1.35rem;
+      line-height: 1.1;
+      font-weight: 800;
+      color: #173d63;
+    }
+
+    .metric .label {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .diagram {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      display: inline-block;
+      background: var(--blue);
+    }
+
+    .dot.green { background: var(--green); }
+    .dot.red { background: var(--red); }
+    .dot.amber { background: var(--amber); }
+    .dot.violet { background: var(--violet); }
+
+    .rule-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 12px 0 16px;
+      max-width: 940px;
+    }
+
+    .rule {
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 12px;
+      background: #fff;
+    }
+
+    .rule.survived {
+      border-left: 4px solid var(--green);
+    }
+
+    .rule.falsified {
+      border-left: 4px solid var(--red);
+    }
+
+    .rule .rule-name {
+      margin-bottom: 6px;
+      font-weight: 800;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .section-kicker {
+      color: var(--muted);
+      font-size: 0.86rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .footer-note {
+      margin-top: 30px;
+      padding-top: 18px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      max-width: 820px;
+    }
+
+    @media (max-width: 780px) {
+      header,
+      main {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .panel,
+      .panel.wide {
+        grid-column: 1 / -1;
+      }
+
+      .metric-row,
+      .rule-list {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="eyebrow">Research branch relaunch</div>
+      <h1>Finding Factors Without Factorizing: A Prime Gap Grammar Research Branch</h1>
+      <p class="lede">
+        The bold thesis is that the gap containing a composite number carries information about the gap neighborhoods around its prime factors. The current evidence does not prove a theorem and does not recover factors, but it shows a strong measured grammar of compatibility and exclusion.
+      </p>
+      <div class="status-row" aria-label="current evidence status">
+        <span class="badge measured">measured signal</span>
+        <span class="badge survived">2 fresh survivors</span>
+        <span class="badge falsified">3 fresh falsifications</span>
+        <span class="badge invalidated">several coarse rules invalidated</span>
+      </div>
+    </header>
+
+    <main>
+      <section id="project">
+        <div class="section-kicker">1</div>
+        <h2>A Project About Gaps Between Primes</h2>
+        <p>
+          This research project studies the exact structure of the spaces between consecutive prime numbers. A prime gap is the stretch of integers after one prime and before the next. Most familiar discussions treat such a gap mainly by its length, but the integers inside the gap also have arithmetic structure. The project asks whether that structure is rich enough to explain how primes are arranged, how composites sit between them, and how the local neighborhood of one number can constrain the possible neighborhoods of related numbers.
+        </p>
+      </section>
+
+      <section id="gap-types">
+        <div class="section-kicker">2</div>
+        <h2>Gap Types And Grammar</h2>
+        <p>
+          A gap between primes is not just an empty interval. Each integer inside it has divisors, residue classes, distances from the endpoints, and a position relative to the other integers in the same interval. Two gaps with the same length can still differ because the arithmetic inside them is arranged differently. When those differences repeat, we can speak of gap types. When certain types tend to appear before, after, or around other types in structured ways, we can speak of a grammar.
+        </p>
+
+        <div class="grid">
+          <div class="panel wide soft">
+            <p class="mini-title">Prime gap ruler</p>
+            <svg class="diagram" viewBox="0 0 900 180" role="img" aria-label="A prime gap ruler diagram showing consecutive primes and a composite number inside the gap">
+              <line x1="90" y1="98" x2="810" y2="98" stroke="#718294" stroke-width="3"/>
+              <circle cx="150" cy="98" r="9" fill="#1c67a8"/>
+              <circle cx="750" cy="98" r="9" fill="#1c67a8"/>
+              <circle cx="520" cy="98" r="8" fill="#9a6400"/>
+              <line x1="150" y1="70" x2="150" y2="125" stroke="#1c67a8" stroke-width="2"/>
+              <line x1="750" y1="70" x2="750" y2="125" stroke="#1c67a8" stroke-width="2"/>
+              <line x1="520" y1="78" x2="520" y2="125" stroke="#9a6400" stroke-width="2"/>
+              <text x="150" y="50" text-anchor="middle" fill="#1c2430" font-size="18">prime</text>
+              <text x="750" y="50" text-anchor="middle" fill="#1c2430" font-size="18">next prime</text>
+              <text x="520" y="148" text-anchor="middle" fill="#1c2430" font-size="18">composite number</text>
+              <text x="450" y="88" text-anchor="middle" fill="#526171" font-size="16">gap interior</text>
+              <path d="M170 132 C260 158 640 158 730 132" fill="none" stroke="#6d5aa8" stroke-width="2"/>
+              <text x="450" y="170" text-anchor="middle" fill="#6d5aa8" font-size="16">position and internal arithmetic create a type</text>
+            </svg>
+            <div class="legend">
+              <span><i class="dot"></i>gap endpoints</span>
+              <span><i class="dot amber"></i>number inside the gap</span>
+              <span><i class="dot violet"></i>local pattern</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="without-factorizing">
+        <div class="section-kicker">3</div>
+        <h2>Finding Factors Without Factorizing</h2>
+        <p>
+          A composite number made from two primes sits in a public location: anyone can find the consecutive primes that surround the composite number and inspect the gap that contains it. Its two prime factors are hidden, but each factor also sits at the endpoint of its own neighboring gaps. The research question is whether the public gap around the composite number restricts the possible gap neighborhoods around the two hidden factors. If some factor-neighborhood patterns are incompatible with the public gap pattern, then those possibilities can be excluded without testing divisibility by candidate factors.
+        </p>
+
+        <div class="grid">
+          <div class="panel">
+            <p class="mini-title">Public side</p>
+            <svg class="diagram" viewBox="0 0 440 180" role="img" aria-label="Composite number inside a public prime gap">
+              <line x1="44" y1="90" x2="396" y2="90" stroke="#718294" stroke-width="3"/>
+              <circle cx="80" cy="90" r="8" fill="#1c67a8"/>
+              <circle cx="360" cy="90" r="8" fill="#1c67a8"/>
+              <circle cx="248" cy="90" r="8" fill="#9a6400"/>
+              <text x="80" y="54" text-anchor="middle" fill="#1c2430" font-size="15">prime</text>
+              <text x="360" y="54" text-anchor="middle" fill="#1c2430" font-size="15">prime</text>
+              <text x="248" y="128" text-anchor="middle" fill="#1c2430" font-size="15">composite</text>
+              <text x="220" y="30" text-anchor="middle" fill="#526171" font-size="14">visible gap pattern</text>
+            </svg>
+          </div>
+          <div class="panel">
+            <p class="mini-title">Hidden factor side</p>
+            <svg class="diagram" viewBox="0 0 440 180" role="img" aria-label="Two hidden factor neighborhoods">
+              <line x1="48" y1="64" x2="188" y2="64" stroke="#718294" stroke-width="3"/>
+              <line x1="252" y1="116" x2="392" y2="116" stroke="#718294" stroke-width="3"/>
+              <circle cx="118" cy="64" r="8" fill="#167a5b"/>
+              <circle cx="322" cy="116" r="8" fill="#167a5b"/>
+              <circle cx="52" cy="64" r="6" fill="#1c67a8"/>
+              <circle cx="184" cy="64" r="6" fill="#1c67a8"/>
+              <circle cx="256" cy="116" r="6" fill="#1c67a8"/>
+              <circle cx="388" cy="116" r="6" fill="#1c67a8"/>
+              <text x="118" y="38" text-anchor="middle" fill="#1c2430" font-size="15">factor</text>
+              <text x="322" y="150" text-anchor="middle" fill="#1c2430" font-size="15">factor</text>
+              <text x="220" y="92" text-anchor="middle" fill="#526171" font-size="14">hidden neighboring patterns</text>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section id="what-did-not-work">
+        <div class="section-kicker">4</div>
+        <h2>What Did Not Work</h2>
+        <p>
+          The first attempts were too coarse. A raw gap label around the composite number was not enough to determine which factor neighborhoods were compatible. Position inside the gap helped, but position alone also collapsed different situations into the same bucket. Broad claims about uniform factor neighborhoods failed: some fully uniform neighborhoods do occur. A narrow all-<code>o6</code> corner produced useful evidence, but several broad all-<code>o6</code> exclusion rules were falsified as the tested bands moved upward.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Approach</th>
+              <th>Status</th>
+              <th>What it taught us</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Raw public gap type</td>
+              <td><span class="badge invalidated">too coarse</span></td>
+              <td>The same broad public label can admit different factor-neighborhood behavior.</td>
+            </tr>
+            <tr>
+              <td>Position inside the gap alone</td>
+              <td><span class="badge invalidated">too coarse</span></td>
+              <td>Position matters, but it must be combined with the gap's internal type.</td>
+            </tr>
+            <tr>
+              <td>Uniform-pattern exclusion</td>
+              <td><span class="badge falsified">falsified</span></td>
+              <td>Fully uniform factor neighborhoods can occur, so uniformity itself is not forbidden.</td>
+            </tr>
+            <tr>
+              <td>Broad all-<code>o6</code> exclusion</td>
+              <td><span class="badge falsified">falsified</span></td>
+              <td>The all-<code>o6</code> corner is informative, but only under a more detailed public word.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="first-signals">
+        <div class="section-kicker">5</div>
+        <h2>The Methods That First Produced Signal</h2>
+        <p>
+          The first real signal appeared when the experiment stopped asking whether one public label excluded one factor label everywhere, and instead used held-out tests. A rule was formed on one range of known examples and then checked on a later range. This removed many finite-range coincidences. Adding a coarse phase for where the composite number sits inside its gap sharpened the signal. After that, residue patterns in the four factor-side gaps began to stand out, especially patterns involving repeated <code>o6</code> residues.
+        </p>
+        <p>
+          At this point the project vocabulary becomes useful. The public object is now a word describing the gap around the composite number <code>N</code>. The factor object is an unordered word describing the two neighborhoods around the hidden primes <code>p</code> and <code>q</code>. The working map is written as <code>S(N) -> F(p,q)</code>: public structure around the composite number points to compatible or incompatible factor-neighborhood structures.
+        </p>
+        <div class="callout">
+          <strong>First signal:</strong> held-out and forward tests turned raw absence into a survivor surface. Many candidate exclusions failed, but some survived long enough to show that the map was not random noise.
+        </div>
+      </section>
+
+      <section id="strong-signals">
+        <div class="section-kicker">6</div>
+        <h2>The Methods That Produced Strong Signal</h2>
+        <p>
+          The strong signal appeared when the public side was treated as a grammar word instead of a single label. The word includes the reduced type of the previous gap, the exact subtype of the gap containing <code>N</code>, the phase of <code>N</code> inside that gap, a position relative to the selected point inside the gap, and the reduced type of the following gap. In project terms, that selected point is the local GWR point, and the useful public coordinate is the GWR-relative distance.
+        </p>
+        <p>
+          This changed the problem from looking for one magic feature to building a multiplication map. The map compares public words around <code>N</code> against unordered factor-neighborhood words around <code>p</code> and <code>q</code>. Some cells in the map are observed. Other cells are absent even though both the public word and the factor word are well supported elsewhere. Those absent cells are the candidate incompatibilities.
+        </p>
+
+        <div class="grid">
+          <div class="panel wide soft">
+            <p class="mini-title">Compatibility map</p>
+            <svg class="diagram" viewBox="0 0 900 260" role="img" aria-label="A visual map from public composite gap word to factor-neighborhood words">
+              <rect x="50" y="44" width="260" height="168" rx="8" fill="#eef6ff" stroke="#a9c8e7"/>
+              <rect x="590" y="28" width="250" height="70" rx="8" fill="#effaf6" stroke="#a4d6c5"/>
+              <rect x="590" y="112" width="250" height="70" rx="8" fill="#fff1f0" stroke="#e4b3ad"/>
+              <rect x="590" y="196" width="250" height="38" rx="8" fill="#f8f4ff" stroke="#c9bee8"/>
+              <path d="M315 84 C420 52 480 52 585 64" fill="none" stroke="#167a5b" stroke-width="3"/>
+              <path d="M315 136 C420 138 480 145 585 148" fill="none" stroke="#b84036" stroke-width="3"/>
+              <path d="M315 184 C425 214 480 218 585 215" fill="none" stroke="#6d5aa8" stroke-width="3"/>
+              <text x="180" y="72" text-anchor="middle" fill="#173d63" font-size="17" font-weight="700">public word around N</text>
+              <text x="180" y="108" text-anchor="middle" fill="#1c2430" font-size="14">previous gap</text>
+              <text x="180" y="134" text-anchor="middle" fill="#1c2430" font-size="14">containing gap type + phase</text>
+              <text x="180" y="160" text-anchor="middle" fill="#1c2430" font-size="14">distance from selected point</text>
+              <text x="180" y="186" text-anchor="middle" fill="#1c2430" font-size="14">following gap</text>
+              <text x="715" y="57" text-anchor="middle" fill="#167a5b" font-size="16" font-weight="700">compatible</text>
+              <text x="715" y="81" text-anchor="middle" fill="#1c2430" font-size="13">observed factor-neighborhood class</text>
+              <text x="715" y="141" text-anchor="middle" fill="#b84036" font-size="16" font-weight="700">incompatible candidate</text>
+              <text x="715" y="165" text-anchor="middle" fill="#1c2430" font-size="13">supported elsewhere, absent here</text>
+              <text x="715" y="220" text-anchor="middle" fill="#6d5aa8" font-size="13">tested by fresh targeted slices</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="metric-row" aria-label="multiplication map metrics">
+          <div class="metric">
+            <div class="value">23</div>
+            <div class="label">supported public grammar words</div>
+          </div>
+          <div class="metric">
+            <div class="value">198</div>
+            <div class="label">supported factor words</div>
+          </div>
+          <div class="metric">
+            <div class="value">3741</div>
+            <div class="label">absent map cells</div>
+          </div>
+          <div class="metric">
+            <div class="value">531</div>
+            <div class="label">compressed candidate class exclusions</div>
+          </div>
+          <div class="metric">
+            <div class="value">5 -> 2</div>
+            <div class="label">top candidates tested, survivors</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="current-findings">
+        <div class="section-kicker">7</div>
+        <h2>Current Findings And Where We Stand</h2>
+        <p>
+          The current result is a strong measured compatibility signal. Across the current multiplication map, there are <code>23</code> supported public grammar words and <code>198</code> supported factor words. Their map contains <code>3741</code> absent cells. Compressing those absent cells by factor residue and winner-phase class gives <code>531</code> candidate class exclusions. A fresh targeted slice test then took the top five compressed candidates into later factor bands. Two survived and three were falsified.
+        </p>
+        <p>
+          The strongest lesson is that the factor-neighborhood law is conditional. A factor class with phase pattern <code>mid:3|late:1</code> is not excluded everywhere. It is excluded only under specific public grammar words. Neighbor context matters. The residue mix matters. The exact containing gap type matters. The research has moved from “there is a signal” to “the signal is a grammar of compatibility and incompatibility.”
+        </p>
+
+        <h3>Surviving candidates</h3>
+        <div class="rule-list">
+          <div class="rule survived">
+            <div class="rule-name"><span class="badge survived">survived</span> Rank 2</div>
+            <p>
+              Public word: <code>prev=o4_higher_divisor_even|5&lt;=d&lt;=16</code>, <code>containing=o2_d4_a2_d4_odd@mid</code>, <code>next=o2_d4_odd|d&lt;=4</code>.
+            </p>
+            <p>
+              Excluded factor class: residue <code>o2:1|o4:2|o6:1</code>, phase <code>mid:3|late:1</code>. Fresh slice: <code>23</code> rows, <code>0</code> hits.
+            </p>
+          </div>
+          <div class="rule survived">
+            <div class="rule-name"><span class="badge survived">survived</span> Rank 4</div>
+            <p>
+              Public word: <code>prev=o2_d4_odd|d&lt;=4</code>, <code>containing=o2_d4_a2_d4_odd@early</code>, <code>next=o4_d4_odd|d&lt;=4</code>.
+            </p>
+            <p>
+              Excluded factor class: residue <code>o2:1|o4:1|o6:2</code>, phase <code>mid:3|late:1</code>. Fresh slice: <code>42</code> rows, <code>0</code> hits.
+            </p>
+          </div>
+        </div>
+
+        <h3>Falsified top candidates</h3>
+        <div class="rule-list">
+          <div class="rule falsified">
+            <div class="rule-name"><span class="badge falsified">falsified</span> Rank 1</div>
+            <p>
+              Same early <code>o2_d4_a2_d4_odd</code> public word as Rank 4, but residue <code>o2:1|o4:2|o6:1</code>. Fresh slice: <code>42</code> rows, <code>4</code> hits.
+            </p>
+          </div>
+          <div class="rule falsified">
+            <div class="rule-name"><span class="badge falsified">falsified</span> Rank 3</div>
+            <p>
+              Public word with <code>containing=o2_d4_a2_d4_odd@mid</code> and <code>next=o6_d4_odd|d&lt;=4</code>, excluding residue <code>o2:2|o4:1|o6:1</code>. Fresh slice: <code>67</code> rows, <code>1</code> hit.
+            </p>
+          </div>
+          <div class="rule falsified">
+            <div class="rule-name"><span class="badge falsified">falsified</span> Rank 5</div>
+            <p>
+              Public word with <code>prev=o4_d4_odd|d&lt;=4</code>, <code>containing=o2_d4_a2_d4_odd@early</code>, and <code>next=o2_d4_odd|d&lt;=4</code>, excluding residue <code>o2:1|o4:1|o6:2</code>. Fresh slice: <code>50</code> rows, <code>3</code> hits.
+            </p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <strong>Current boundary:</strong> this is strong measured evidence for a gap-grammar compatibility law. It is not a theorem, not a completed factor recovery method, and not live factor recovery. The next step is to keep compressing the surviving rules and test them on fresh targeted public slices.
+        </div>
+      </section>
+
+      <p class="footer-note">
+        Evidence source: the current core evidence chain under <code>research/06-cryptology-rsa/experiments/pedk/rsa-v2/gap-compatibility/core-evidence/</code>, especially the multiplication-map, public-grammar pivot, factor-exclusion pivot, and targeted-slice results.
+      </p>
+    </main>
+  </div>
+</body>
+</html>
