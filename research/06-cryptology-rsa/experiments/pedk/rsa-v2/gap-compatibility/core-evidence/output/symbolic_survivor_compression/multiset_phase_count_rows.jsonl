@@ -1,0 +1,6 @@
+{"factor_residue_multiset": "o6,o6,o6,o6", "public_phase_state_count": 6, "public_phase_states": ["o2_d4_odd|d<=4@late", "o4_d4_even|d<=4@mid", "o4_d4_odd|d<=4@early", "o4_d4_odd|d<=4@late", "o4_d4_odd|d<=4@mid", "o6_d4_odd|d<=4@late"], "survivor_count": 6}
+{"factor_residue_multiset": "o2,o4,o6,o6", "public_phase_state_count": 2, "public_phase_states": ["o2_d4_odd|d<=4@early", "o4_d4_odd|d<=4@late"], "survivor_count": 2}
+{"factor_residue_multiset": "o2,o6,o6,o6", "public_phase_state_count": 2, "public_phase_states": ["o2_d4_odd|d<=4@late", "o6_d4_even|d<=4@mid"], "survivor_count": 2}
+{"factor_residue_multiset": "o2,o2,o6,o6", "public_phase_state_count": 2, "public_phase_states": ["o4_d4_odd|d<=4@early", "o4_d4_odd|d<=4@late"], "survivor_count": 2}
+{"factor_residue_multiset": "o4,o6,o6,o6", "public_phase_state_count": 1, "public_phase_states": ["o2_d4_odd|d<=4@late"], "survivor_count": 1}
+{"factor_residue_multiset": "o4,o4,o6,o6", "public_phase_state_count": 1, "public_phase_states": ["o6_d4_odd|d<=4@late"], "survivor_count": 1}

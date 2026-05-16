@@ -22,7 +22,7 @@
       "corrected_lower_certificate_present": true,
       "endpoint_chain_steps": 350,
       "lower_certificate_present": true,
-      "public_closure_status": "endpoint_class_by_mutual_certificate_closure",
+      "public_closure_status": "unresolved_by_reciprocal_carrier_misalignment",
       "rule_id": "reciprocal_pgs_certificate_pair_v2",
       "upper_certificate_present": true
     },

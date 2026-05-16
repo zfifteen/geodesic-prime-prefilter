@@ -1,0 +1,29 @@
+{
+  "candidate_rule": "narrow_all_o6_signature_for_six_phase_states",
+  "candidate_status": "falsified_in_fresh_band",
+  "falsified_public_phase_state_count": 1,
+  "falsified_public_phase_states": [
+    "o4_d4_even|d<=4@mid"
+  ],
+  "falsifying_forward_row_count": 1,
+  "fresh_band": {
+    "max_factor": 2200,
+    "max_factor_ratio": "4/1",
+    "min_factor": 1801,
+    "semiprime_triple_count": 1176
+  },
+  "inference_status": "not_live_pedk_inference",
+  "rule_id": "pedk_all_o6_candidate_rule_check_v1",
+  "source_rule_id": "pedk_symbolic_rule_forward_check_v1",
+  "status": "measured_candidate_rule_check",
+  "survived_public_phase_state_count": 5,
+  "survived_public_phase_states": [
+    "o2_d4_odd|d<=4@late",
+    "o4_d4_odd|d<=4@early",
+    "o4_d4_odd|d<=4@late",
+    "o4_d4_odd|d<=4@mid",
+    "o6_d4_odd|d<=4@late"
+  ],
+  "tested_forward_row_count": 486,
+  "theorem_status": "hypothesis_not_proved"
+}

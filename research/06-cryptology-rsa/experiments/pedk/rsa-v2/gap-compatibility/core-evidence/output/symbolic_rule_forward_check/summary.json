@@ -1,0 +1,18 @@
+{
+  "broad_two_o6_falsifying_row_count": 143,
+  "candidate_rule_count": 2,
+  "falsified_candidate_rule_count": 1,
+  "fresh_band": {
+    "max_factor": 1800,
+    "max_factor_ratio": "4/1",
+    "min_factor": 1401,
+    "semiprime_triple_count": 1540
+  },
+  "inference_status": "not_live_pedk_inference",
+  "narrow_all_o6_falsifying_row_count": 0,
+  "rule_id": "pedk_symbolic_rule_forward_check_v1",
+  "source_rule_id": "pedk_symbolic_survivor_compression_v1",
+  "status": "measured_symbolic_rule_forward_check",
+  "survived_candidate_rule_count": 1,
+  "theorem_status": "hypothesis_not_proved"
+}

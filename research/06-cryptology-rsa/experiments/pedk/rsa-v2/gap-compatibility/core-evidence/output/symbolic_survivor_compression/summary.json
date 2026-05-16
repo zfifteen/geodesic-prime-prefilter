@@ -1,0 +1,144 @@
+{
+  "all_o6_signature_count": 6,
+  "all_right_residues_o6_count": 11,
+  "all_survivors_have_at_least_two_o6_residues": true,
+  "both_factor_neighborhoods_touch_o6_count": 13,
+  "candidate_symbolic_rule_family": "The current survivor surface is o6-heavy: every surviving excluded factor-neighborhood signature contains at least two o6 residues, and the all-o6 factor signature survives across multiple public phase states.",
+  "factor_residue_multiset_distribution": {
+    "o2,o2,o6,o6": 2,
+    "o2,o4,o6,o6": 2,
+    "o2,o6,o6,o6": 2,
+    "o4,o4,o6,o6": 1,
+    "o4,o6,o6,o6": 1,
+    "o6,o6,o6,o6": 6
+  },
+  "has_all_o6_factor_neighborhood_count": 10,
+  "inference_status": "not_live_pedk_inference",
+  "minimum_o6_residue_count": 2,
+  "multiset_phase_counts": [
+    {
+      "factor_residue_multiset": "o6,o6,o6,o6",
+      "public_phase_state_count": 6,
+      "public_phase_states": [
+        "o2_d4_odd|d<=4@late",
+        "o4_d4_even|d<=4@mid",
+        "o4_d4_odd|d<=4@early",
+        "o4_d4_odd|d<=4@late",
+        "o4_d4_odd|d<=4@mid",
+        "o6_d4_odd|d<=4@late"
+      ],
+      "survivor_count": 6
+    },
+    {
+      "factor_residue_multiset": "o2,o4,o6,o6",
+      "public_phase_state_count": 2,
+      "public_phase_states": [
+        "o2_d4_odd|d<=4@early",
+        "o4_d4_odd|d<=4@late"
+      ],
+      "survivor_count": 2
+    },
+    {
+      "factor_residue_multiset": "o2,o6,o6,o6",
+      "public_phase_state_count": 2,
+      "public_phase_states": [
+        "o2_d4_odd|d<=4@late",
+        "o6_d4_even|d<=4@mid"
+      ],
+      "survivor_count": 2
+    },
+    {
+      "factor_residue_multiset": "o2,o2,o6,o6",
+      "public_phase_state_count": 2,
+      "public_phase_states": [
+        "o4_d4_odd|d<=4@early",
+        "o4_d4_odd|d<=4@late"
+      ],
+      "survivor_count": 2
+    },
+    {
+      "factor_residue_multiset": "o4,o6,o6,o6",
+      "public_phase_state_count": 1,
+      "public_phase_states": [
+        "o2_d4_odd|d<=4@late"
+      ],
+      "survivor_count": 1
+    },
+    {
+      "factor_residue_multiset": "o4,o4,o6,o6",
+      "public_phase_state_count": 1,
+      "public_phase_states": [
+        "o6_d4_odd|d<=4@late"
+      ],
+      "survivor_count": 1
+    }
+  ],
+  "o6_count_distribution": {
+    "2": 5,
+    "3": 3,
+    "4": 6
+  },
+  "rule_id": "pedk_symbolic_survivor_compression_v1",
+  "source_rule_id": "pedk_public_width_quantile_stability_check_v1",
+  "status": "symbolic_compression_sidecar",
+  "survivor_count": 14,
+  "theorem_status": "hypothesis_not_proved",
+  "top_signature_phase_counts": [
+    {
+      "excluded_factor_neighborhood_signature": "L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+      "public_phase_state_count": 6,
+      "public_phase_states": [
+        "o2_d4_odd|d<=4@late",
+        "o4_d4_even|d<=4@mid",
+        "o4_d4_odd|d<=4@early",
+        "o4_d4_odd|d<=4@late",
+        "o4_d4_odd|d<=4@mid",
+        "o6_d4_odd|d<=4@late"
+      ]
+    },
+    {
+      "excluded_factor_neighborhood_signature": "L=o2_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+      "public_phase_state_count": 2,
+      "public_phase_states": [
+        "o2_d4_odd|d<=4@late",
+        "o6_d4_even|d<=4@mid"
+      ]
+    },
+    {
+      "excluded_factor_neighborhood_signature": "L=o6_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4",
+      "public_phase_state_count": 2,
+      "public_phase_states": [
+        "o4_d4_odd|d<=4@early",
+        "o4_d4_odd|d<=4@late"
+      ]
+    },
+    {
+      "excluded_factor_neighborhood_signature": "L=o2_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o4_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+      "public_phase_state_count": 1,
+      "public_phase_states": [
+        "o4_d4_odd|d<=4@late"
+      ]
+    },
+    {
+      "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+      "public_phase_state_count": 1,
+      "public_phase_states": [
+        "o2_d4_odd|d<=4@early"
+      ]
+    },
+    {
+      "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o4_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+      "public_phase_state_count": 1,
+      "public_phase_states": [
+        "o6_d4_odd|d<=4@late"
+      ]
+    },
+    {
+      "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+      "public_phase_state_count": 1,
+      "public_phase_states": [
+        "o2_d4_odd|d<=4@late"
+      ]
+    }
+  ]
+}

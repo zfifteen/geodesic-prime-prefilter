@@ -98,12 +98,17 @@ endpoint_class_by_oriented_endpoint_chain_closure
 unresolved_by_certificate_pair_not_closed
 unresolved_by_endpoint_chain_boundary
 unresolved_by_endpoint_chain_cycle
+unresolved_by_first_tail_misalignment
+unresolved_by_lower_lock_misalignment
 unresolved_by_missing_lower_certificate
 unresolved_by_missing_upper_certificate
+unresolved_by_profile_count_mismatch
+unresolved_by_reciprocal_carrier_misalignment
 ```
 
 The current implementation resolves only when reset closure or deadline
-signature correction certifies a unique public pair before audit.
+signature correction certifies a public pair and the matched certificates pass
+the refined public certificate-geometry filters before audit.
 
 ## Current Closure Rules
 

@@ -1,0 +1,9 @@
+{"case_id": "rsa_v2_40bit_static_001", "bits": 40, "N": 1099507433251, "p": 1048559, "q": 1048589, "gap_N_state": "o1_d4_odd|d<=4", "gap_N_bucket": "Mid", "gap_N_rel_pos": 0.545, "gap_N_width": 22}
+{"case_id": "rsa_v2_50bit_static_001", "bits": 50, "N": 1027435935526951, "p": 30729371, "q": 33434981, "gap_N_state": "o1_d4_odd|d<=4", "gap_N_bucket": "Late", "gap_N_rel_pos": 0.81, "gap_N_width": 84}
+{"case_id": "rsa_v2_64bit_static_001", "bits": 64, "N": 10376454699372036973, "p": 3221225473, "q": 3221275501, "gap_N_state": "o1_d4_odd|d<=4", "gap_N_bucket": "Mid", "gap_N_rel_pos": 0.389, "gap_N_width": 108}
+{"case_id": "rsa_v2_toy_28bit_001", "bits": 28, "N": 257987843, "p": 16061, "q": 16063, "gap_N_state": "o1_d4_odd|d<=4", "gap_N_bucket": "Early", "gap_N_rel_pos": 0.25, "gap_N_width": 24}
+{"case_id": "rsa_v2_toy_34bit_001", "bits": 34, "N": 10444431203, "p": 102197, "q": 102199, "gap_N_state": "o1_d4_odd|d<=4", "gap_N_bucket": "Early", "gap_N_rel_pos": 0.167, "gap_N_width": 24}
+{"case_id": "rsa_v2_toy_35bit_001", "bits": 35, "N": 20592824003, "p": 143501, "q": 143503, "gap_N_state": "o1_d4_odd|d<=4", "gap_N_bucket": "Late", "gap_N_rel_pos": 0.727, "gap_N_width": 22}
+{"case_id": "rsa_v2_toy_35bit_002", "bits": 35, "N": 27100402883, "p": 164621, "q": 164623, "gap_N_state": "o1_d4_odd|d<=4", "gap_N_bucket": "Late", "gap_N_rel_pos": 0.741, "gap_N_width": 54}
+{"case_id": "rsa_v2_toy_36bit_001", "bits": 36, "N": 50724949283, "p": 225221, "q": 225223, "gap_N_state": "o1_d4_odd|d<=4", "gap_N_bucket": "Late", "gap_N_rel_pos": 0.667, "gap_N_width": 24}
+{"case_id": "rsa_v2_toy_37bit_001", "bits": 37, "N": 72243763523, "p": 268781, "q": 268783, "gap_N_state": "o1_d4_odd|d<=4", "gap_N_bucket": "Mid", "gap_N_rel_pos": 0.625, "gap_N_width": 64}

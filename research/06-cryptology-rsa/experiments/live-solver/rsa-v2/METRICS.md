@@ -57,12 +57,17 @@ The current unresolved statuses are:
 unresolved_by_certificate_pair_not_closed
 unresolved_by_endpoint_chain_boundary
 unresolved_by_endpoint_chain_cycle
+unresolved_by_first_tail_misalignment
+unresolved_by_lower_lock_misalignment
 unresolved_by_missing_lower_certificate
 unresolved_by_missing_upper_certificate
+unresolved_by_profile_count_mismatch
+unresolved_by_reciprocal_carrier_misalignment
 ```
 
 These mean public PGSPG state did not close before the deterministic stop
-condition.
+condition, or a base closure candidate failed the refined public
+certificate-geometry filters.
 
 ## Acceptance For Current V2
 

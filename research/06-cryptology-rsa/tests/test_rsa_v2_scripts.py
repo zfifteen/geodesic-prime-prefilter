@@ -28,6 +28,7 @@ SCRIPT_PATHS = {
     "generate_ladder_rung.py": DATA_V2 / "generate_ladder_rung.py",
     "run_minimal_typed_solver.py": INVALIDATED_V2 / "run_minimal_typed_solver.py",
     "run_experiment.py": LIVE_V2 / "run_experiment.py",
+    "diagnose_transport_metrics.py": LIVE_V2 / "diagnose_transport_metrics.py",
     "run_recursive_v2.py": RECURSIVE_V2 / "run_recursive_v2.py",
     "audit_experiment.py": LIVE_V2 / "audit_experiment.py",
     "transported_exclusion_debt_probe.py": TRANSPORTED_V2 / "transported_exclusion_debt_probe.py",
@@ -79,6 +80,7 @@ SCRIPT_NAMES = (
     "generate_ladder_rung.py",
     "run_minimal_typed_solver.py",
     "run_experiment.py",
+    "diagnose_transport_metrics.py",
     "run_recursive_v2.py",
     "audit_experiment.py",
     "transported_exclusion_debt_probe.py",
@@ -336,11 +338,9 @@ def test_runner_reports_certificate_pairs_without_false_resolution(tmp_path):
             "case_id": CASE_50_ID,
             "bits": 50,
             "N": GENERATED_50_N,
-            "status": "public_endpoint_class_found",
-            "public_structure_found": True,
-            "endpoint_class_lower": "32047651",
-            "endpoint_class_upper": "32059633",
-            "public_closure_status": "endpoint_class_by_mutual_certificate_closure",
+            "status": "unresolved",
+            "public_structure_found": False,
+            "unresolved_reason": "unresolved_by_reciprocal_carrier_misalignment",
             "rule_id": RULE_ID,
         },
         {
@@ -361,7 +361,9 @@ def test_runner_reports_certificate_pairs_without_false_resolution(tmp_path):
         "endpoint_class_by_reciprocal_deadline_signature_correction"
     )
     assert summary["cases"][0]["corrected_lower_certificate_present"]
-    assert summary["cases"][1]["public_closure_status"] == "endpoint_class_by_mutual_certificate_closure"
+    assert summary["cases"][1]["public_closure_status"] == (
+        "unresolved_by_reciprocal_carrier_misalignment"
+    )
     assert summary["cases"][1]["corrected_lower_certificate_present"]
     assert summary["cases"][1]["endpoint_chain_steps"] == 350
     assert summary["cases"][2]["public_closure_status"] == "endpoint_class_by_mutual_certificate_closure"
@@ -384,7 +386,7 @@ def test_runner_reports_certificate_pairs_without_false_resolution(tmp_path):
     assert survivors[0]["transported_corrected_upper_endpoint"] == Q_VALUE
     assert survivors[0]["transported_corrected_lower_endpoint"] == P_VALUE
     assert survivors[0]["corrected_lower_reset_signature"] == survivors[0]["upper_reset_signature"]
-    assert survivors[1]["public_closure_status"] == "endpoint_class_by_mutual_certificate_closure"
+    assert survivors[1]["public_closure_status"] == "unresolved_by_reciprocal_carrier_misalignment"
     assert survivors[1]["lower_reset_endpoint"] == "32047651"
     assert survivors[1]["upper_reset_endpoint"] == "32059633"
     assert survivors[1]["endpoint_chain_steps"] == 350
@@ -426,11 +428,11 @@ def test_pedk_emits_public_endpoint_determinacy_without_factor_claims(tmp_path):
             "case_id": CASE_50_ID,
             "bits": 50,
             "N": GENERATED_50_N,
-            "pedk_status": "public_endpoint_class_determined",
-            "public_structure_found": True,
-            "public_closure_status": "endpoint_class_by_mutual_certificate_closure",
-            "endpoint_class_lower": "32047651",
-            "endpoint_class_upper": "32059633",
+            "pedk_status": "unresolved_structural_state",
+            "public_structure_found": False,
+            "public_closure_status": "unresolved_by_reciprocal_carrier_misalignment",
+            "endpoint_class_lower": None,
+            "endpoint_class_upper": None,
             "rule_id": "public_endpoint_determinacy_kernel_v0",
         },
         {
@@ -783,7 +785,7 @@ def test_reset_endpoint_crossing_orientation_is_step_zero_not_a_special_path():
     survivor = module.pair_to_json(case, pair)
     inference = module.result_row(case, pair)
 
-    assert summary["public_closure_status"] == "endpoint_class_by_mutual_certificate_closure"
+    assert summary["public_closure_status"] == "unresolved_by_reciprocal_carrier_misalignment"
     assert summary["upper_certificate_present"] is True
     assert summary["endpoint_chain_steps"] == 263
     assert survivor["lower_anchor"] == "15803363"
@@ -791,9 +793,8 @@ def test_reset_endpoint_crossing_orientation_is_step_zero_not_a_special_path():
     assert survivor["upper_reset_endpoint"] == "15811949"
     assert survivor["transported_upper_endpoint"] == "15811949"
     assert survivor["transported_lower_endpoint"] == "15803399"
-    assert inference["status"] == "public_endpoint_class_found"
-    assert inference["endpoint_class_lower"] == "15803399"
-    assert inference["endpoint_class_upper"] == "15811949"
+    assert inference["status"] == "unresolved"
+    assert inference["unresolved_reason"] == "unresolved_by_reciprocal_carrier_misalignment"
     assert {"p", "q", "endpoint_class_role"}.isdisjoint(inference)
 
 
@@ -813,14 +814,14 @@ def test_unified_chain_endpoint_classes_are_preserved():
             Q_VALUE,
         ),
         "rsa_v2_48bit_ad_hoc_001": (
-            "endpoint_class_by_mutual_certificate_closure",
-            "15803399",
-            "15811949",
+            "unresolved_by_reciprocal_carrier_misalignment",
+            None,
+            None,
         ),
         CASE_50_ID: (
-            "endpoint_class_by_mutual_certificate_closure",
-            "32047651",
-            "32059633",
+            "unresolved_by_reciprocal_carrier_misalignment",
+            None,
+            None,
         ),
         CASE_64_ID: (
             "endpoint_class_by_mutual_certificate_closure",
@@ -834,10 +835,14 @@ def test_unified_chain_endpoint_classes_are_preserved():
         row = module.result_row(case, pair)
         closure_status, lower, upper = expected[case.case_id]
         assert pair.closure_status == closure_status
-        assert row["status"] == "public_endpoint_class_found"
-        assert row["endpoint_class_lower"] == lower
-        assert row["endpoint_class_upper"] == upper
-        assert row["public_closure_status"] == closure_status
+        if lower is None:
+            assert row["status"] == "unresolved"
+            assert row["unresolved_reason"] == closure_status
+        else:
+            assert row["status"] == "public_endpoint_class_found"
+            assert row["endpoint_class_lower"] == lower
+            assert row["endpoint_class_upper"] == upper
+            assert row["public_closure_status"] == closure_status
         assert {"p", "q", "endpoint_class_role"}.isdisjoint(row)
 
 
@@ -894,7 +899,7 @@ def test_audit_passes_only_with_separate_factor_file(tmp_path):
     ]
     factor_rows = read_jsonl(factor_results)
     assert [row["factor_found"] for row in factor_rows] == [True, False, True]
-    assert [row["public_structure_found"] for row in factor_rows] == [True, True, True]
+    assert [row["public_structure_found"] for row in factor_rows] == [True, False, True]
     assert factor_rows[0]["factor_endpoint_lower"] == P_VALUE
     assert factor_rows[1]["factor_endpoint_lower"] == GENERATED_50_P
     assert factor_rows[2]["factor_endpoint_lower"] == GENERATED_64_P
@@ -945,12 +950,12 @@ def test_shor_order_entropy_probe_keeps_public_and_audit_states_separate(tmp_pat
     assert public_rows[0]["pgs_endpoint_class_present"]
     assert public_rows[0]["pgs_lower_endpoint_class"] == P_VALUE
     assert public_rows[0]["pgs_upper_endpoint_class"] == Q_VALUE
-    assert public_rows[1]["pgs_endpoint_class_present"]
+    assert not public_rows[1]["pgs_endpoint_class_present"]
     assert public_rows[1]["pgs_public_closure_status"] == (
-        "endpoint_class_by_mutual_certificate_closure"
+        "unresolved_by_reciprocal_carrier_misalignment"
     )
-    assert public_rows[1]["pgs_lower_endpoint_class"] == "32047651"
-    assert public_rows[1]["pgs_upper_endpoint_class"] == "32059633"
+    assert public_rows[1]["pgs_lower_endpoint_class"] is None
+    assert public_rows[1]["pgs_upper_endpoint_class"] is None
     assert public_rows[2]["pgs_endpoint_class_present"]
     assert public_rows[2]["pgs_public_closure_status"] == (
         "endpoint_class_by_mutual_certificate_closure"
@@ -1054,12 +1059,10 @@ def test_runner_accepts_above_50_bit_case_through_global_interval_backend():
     pair = module.certificate_pair(case)
     row = module.result_row(case, pair)
 
-    assert pair.closure_status == "endpoint_class_by_mutual_certificate_closure"
+    assert pair.closure_status == "unresolved_by_reciprocal_carrier_misalignment"
     assert pair.endpoint_chain_steps == 2
-    assert row["status"] == "public_endpoint_class_found"
-    assert row["endpoint_class_lower"] == "999999929"
-    assert row["endpoint_class_upper"] == "1000000087"
-    assert row["public_closure_status"] == "endpoint_class_by_mutual_certificate_closure"
+    assert row["status"] == "unresolved"
+    assert row["unresolved_reason"] == "unresolved_by_reciprocal_carrier_misalignment"
     assert {"p", "q", "endpoint_class_role"}.isdisjoint(row)
 
 

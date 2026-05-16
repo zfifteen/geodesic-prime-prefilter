@@ -6,5 +6,5 @@
   "status": "mixed_public_pgs_collapse",
   "total_baseline_phase_bits": 308,
   "total_residual_phase_bits_after_pgs": 100,
-  "unresolved_before_shor_count": 0
+  "unresolved_before_shor_count": 1
 }

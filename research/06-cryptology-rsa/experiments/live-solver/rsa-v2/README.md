@@ -165,6 +165,7 @@ public N
 -> PGSPG reset certificate on the upper side
 -> reciprocal reset-closure check
 -> if reset closure fails, one upper-deadline correction check
+-> refined public certificate-geometry acceptance
 -> public endpoint class or unresolved
 ```
 
@@ -197,13 +198,13 @@ The current official rungs return:
 
 ```text
 rsa_v2_40bit_static_001 -> endpoint_class_by_reciprocal_deadline_signature_correction
-rsa_v2_50bit_static_001 -> endpoint_class_by_mutual_certificate_closure
+rsa_v2_50bit_static_001 -> unresolved_by_reciprocal_carrier_misalignment
 rsa_v2_64bit_static_001 -> endpoint_class_by_mutual_certificate_closure
 ```
 
 The runner still does not read audit factors. Downstream audit currently reports
-`factor_found = true` for the 40-bit and 64-bit rows and
-`factor_found = false` for the 50-bit row.
+`factor_found = true` for the 40-bit and 64-bit rows. The 50-bit row is
+unresolved before audit and does not emit a public endpoint class.
 
 The current implementation shape is:
 

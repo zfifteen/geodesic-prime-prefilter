@@ -1,0 +1,28 @@
+{
+  "falsified_pair_width_cell_count": 0,
+  "falsifying_forward_row_count": 0,
+  "forward_survivor_count": 27,
+  "fresh_band": {
+    "max_factor": 1000,
+    "max_factor_ratio": "4/1",
+    "min_factor": 601,
+    "semiprime_triple_count": 1711
+  },
+  "fully_width_covered_pair_count": 23,
+  "inference_status": "not_live_pedk_inference",
+  "pair_width_cell_count": 108,
+  "public_axis": "n_containing_gap_width",
+  "public_width_bucket_count": 4,
+  "public_width_buckets": [
+    "width_006_016",
+    "width_018_032",
+    "width_034_048",
+    "width_050_plus"
+  ],
+  "rule_id": "pedk_public_gap_width_stability_check_v1",
+  "source_rule_id": "pedk_forward_stable_survivor_prediction_v1",
+  "status": "measured_public_axis_sidecar_check",
+  "tested_pair_width_cell_count": 104,
+  "theorem_status": "hypothesis_not_proved",
+  "untested_pair_width_cell_count": 4
+}

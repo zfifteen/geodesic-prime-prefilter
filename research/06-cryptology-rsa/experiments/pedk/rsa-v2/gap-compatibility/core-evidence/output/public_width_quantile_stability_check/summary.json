@@ -1,0 +1,30 @@
+{
+  "falsified_pair_count": 13,
+  "falsified_pair_quantile_cell_count": 21,
+  "falsifying_forward_row_count": 29,
+  "forward_survivor_count": 27,
+  "fresh_band": {
+    "max_factor": 1400,
+    "max_factor_ratio": "4/1",
+    "min_factor": 1001,
+    "semiprime_triple_count": 1431
+  },
+  "fully_quantile_covered_pair_count": 27,
+  "inference_status": "not_live_pedk_inference",
+  "pair_quantile_cell_count": 108,
+  "public_axis": "state_local_n_containing_gap_width_quantile",
+  "rule_id": "pedk_public_width_quantile_stability_check_v1",
+  "source_rule_id": "pedk_forward_stable_survivor_prediction_v1",
+  "stable_quantile_survivor_count": 14,
+  "state_width_quantile_count": 4,
+  "state_width_quantiles": [
+    "q1_low_width",
+    "q2_midlow_width",
+    "q3_midhigh_width",
+    "q4_high_width"
+  ],
+  "status": "measured_public_axis_sidecar_check",
+  "tested_pair_quantile_cell_count": 108,
+  "theorem_status": "hypothesis_not_proved",
+  "untested_pair_quantile_cell_count": 0
+}

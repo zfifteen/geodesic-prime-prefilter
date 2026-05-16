@@ -1,0 +1,440 @@
+{
+  "application_boundary": "This rule filters only sidecar compatibility hypotheses. It does not identify p or q, does not close a factor pair, and is not a live PEDK resolver rule.",
+  "candidate_rule_id": "pedk_phase_gap_exclusion_candidate_v1",
+  "corpus_scope": {
+    "max_factor": 600,
+    "max_factor_ratio": "4/1",
+    "min_factor": 31,
+    "min_support_for_exclusion": 50,
+    "semiprime_triple_count": 3834
+  },
+  "downstream_label": [
+    "factor_neighborhood_signature"
+  ],
+  "excluded_signature_count": 64,
+  "exclusions_by_public_phase_state": {
+    "o2_d4_even|d<=4@mid": [
+      {
+        "excluded_factor_neighborhood_signature": "L=o2_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4 || L=o2_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 65,
+        "observed_signature_count_for_n_state": 34
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o2_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o2_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 65,
+        "observed_signature_count_for_n_state": 34
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o2_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o4_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 65,
+        "observed_signature_count_for_n_state": 34
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o2_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 65,
+        "observed_signature_count_for_n_state": 34
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4 || L=o4_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 65,
+        "observed_signature_count_for_n_state": 34
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 65,
+        "observed_signature_count_for_n_state": 34
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4 || L=o4_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 65,
+        "observed_signature_count_for_n_state": 34
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 65,
+        "observed_signature_count_for_n_state": 34
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o6_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 65,
+        "observed_signature_count_for_n_state": 34
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o6_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 65,
+        "observed_signature_count_for_n_state": 34
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 65,
+        "observed_signature_count_for_n_state": 34
+      }
+    ],
+    "o2_d4_odd|d<=4@early": [
+      {
+        "excluded_factor_neighborhood_signature": "L=o2_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 353,
+        "observed_signature_count_for_n_state": 43
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 353,
+        "observed_signature_count_for_n_state": 43
+      }
+    ],
+    "o2_d4_odd|d<=4@late": [
+      {
+        "excluded_factor_neighborhood_signature": "L=o2_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4 || L=o2_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 163,
+        "observed_signature_count_for_n_state": 36
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o2_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o2_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 163,
+        "observed_signature_count_for_n_state": 36
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o2_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o4_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 163,
+        "observed_signature_count_for_n_state": 36
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o2_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 163,
+        "observed_signature_count_for_n_state": 36
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4 || L=o4_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 163,
+        "observed_signature_count_for_n_state": 36
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 163,
+        "observed_signature_count_for_n_state": 36
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o4_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 163,
+        "observed_signature_count_for_n_state": 36
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 163,
+        "observed_signature_count_for_n_state": 36
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 163,
+        "observed_signature_count_for_n_state": 36
+      }
+    ],
+    "o4_d4_even|d<=4@mid": [
+      {
+        "excluded_factor_neighborhood_signature": "L=o2_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o2_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 223,
+        "observed_signature_count_for_n_state": 40
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4 || L=o4_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 223,
+        "observed_signature_count_for_n_state": 40
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4 || L=o4_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 223,
+        "observed_signature_count_for_n_state": 40
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o6_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 223,
+        "observed_signature_count_for_n_state": 40
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 223,
+        "observed_signature_count_for_n_state": 40
+      }
+    ],
+    "o4_d4_odd|d<=4@early": [
+      {
+        "excluded_factor_neighborhood_signature": "L=o2_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 156,
+        "observed_signature_count_for_n_state": 38
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o2_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o4_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 156,
+        "observed_signature_count_for_n_state": 38
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4 || L=o4_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 156,
+        "observed_signature_count_for_n_state": 38
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 156,
+        "observed_signature_count_for_n_state": 38
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o6_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 156,
+        "observed_signature_count_for_n_state": 38
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o6_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 156,
+        "observed_signature_count_for_n_state": 38
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 156,
+        "observed_signature_count_for_n_state": 38
+      }
+    ],
+    "o4_d4_odd|d<=4@late": [
+      {
+        "excluded_factor_neighborhood_signature": "L=o2_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o2_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 163,
+        "observed_signature_count_for_n_state": 39
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o2_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o4_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 163,
+        "observed_signature_count_for_n_state": 39
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 163,
+        "observed_signature_count_for_n_state": 39
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o4_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 163,
+        "observed_signature_count_for_n_state": 39
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o6_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 163,
+        "observed_signature_count_for_n_state": 39
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 163,
+        "observed_signature_count_for_n_state": 39
+      }
+    ],
+    "o4_d4_odd|d<=4@mid": [
+      {
+        "excluded_factor_neighborhood_signature": "L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 735,
+        "observed_signature_count_for_n_state": 44
+      }
+    ],
+    "o6_d4_even|d<=4@late": [
+      {
+        "excluded_factor_neighborhood_signature": "L=o2_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4 || L=o4_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 75,
+        "observed_signature_count_for_n_state": 32
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o2_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 75,
+        "observed_signature_count_for_n_state": 32
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o2_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 75,
+        "observed_signature_count_for_n_state": 32
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o2_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o4_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 75,
+        "observed_signature_count_for_n_state": 32
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4 || L=o4_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 75,
+        "observed_signature_count_for_n_state": 32
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4 || L=o4_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 75,
+        "observed_signature_count_for_n_state": 32
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 75,
+        "observed_signature_count_for_n_state": 32
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o4_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 75,
+        "observed_signature_count_for_n_state": 32
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 75,
+        "observed_signature_count_for_n_state": 32
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 75,
+        "observed_signature_count_for_n_state": 32
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o6_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 75,
+        "observed_signature_count_for_n_state": 32
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o6_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 75,
+        "observed_signature_count_for_n_state": 32
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 75,
+        "observed_signature_count_for_n_state": 32
+      }
+    ],
+    "o6_d4_even|d<=4@mid": [
+      {
+        "excluded_factor_neighborhood_signature": "L=o2_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 168,
+        "observed_signature_count_for_n_state": 41
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o2_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 168,
+        "observed_signature_count_for_n_state": 41
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 168,
+        "observed_signature_count_for_n_state": 41
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o6_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 168,
+        "observed_signature_count_for_n_state": 41
+      }
+    ],
+    "o6_d4_odd|d<=4@late": [
+      {
+        "excluded_factor_neighborhood_signature": "L=o2_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 184,
+        "observed_signature_count_for_n_state": 41
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o4_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 184,
+        "observed_signature_count_for_n_state": 41
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o6_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o4_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 184,
+        "observed_signature_count_for_n_state": 41
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 184,
+        "observed_signature_count_for_n_state": 41
+      }
+    ],
+    "o6_d4_odd|d<=4@mid": [
+      {
+        "excluded_factor_neighborhood_signature": "L=o2_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o2_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 461,
+        "observed_signature_count_for_n_state": 43
+      },
+      {
+        "excluded_factor_neighborhood_signature": "L=o4_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4 || L=o6_higher_divisor_odd|d<=4|R=o6_higher_divisor_odd|d<=4",
+        "global_signature_count": 45,
+        "n_state_support": 461,
+        "observed_signature_count_for_n_state": 43
+      }
+    ]
+  },
+  "formal_candidate_rule": "For a supported public phase state S = reduced_state(gap(N)) @ phase(N in gap(N)), exclude a factor-neighborhood signature F as a candidate if F is absent from all corpus rows labeled by S while S has support at least min_support_for_exclusion.",
+  "inference_status": "not_promoted",
+  "promotion_requirement": [
+    "preserve the same public phase-state definition unchanged",
+    "rerun on a larger exact corpus",
+    "confirm each promoted exclusion survives held-out rows",
+    "reject any exclusion falsified by one valid held-out row",
+    "keep audit labels physically separate from live inference"
+  ],
+  "public_input": [
+    "n_containing_gap_reduced_state",
+    "n_containing_gap_phase_bucket"
+  ],
+  "source_rule_id": "pedk_gap_compatibility_search_v1",
+  "state_count_with_candidate_exclusions": 11,
+  "status": "candidate_sidecar_rule_not_live_pedk_inference",
+  "theorem_status": "hypothesis_not_proved"
+}
