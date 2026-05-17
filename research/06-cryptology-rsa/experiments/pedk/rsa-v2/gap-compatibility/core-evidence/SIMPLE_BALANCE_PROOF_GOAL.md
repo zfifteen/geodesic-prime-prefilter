@@ -426,6 +426,28 @@ prior rows in observed mod-180 lanes with lower terminal lift = 0
 So neither span-36 nor the resulting mod-180 lane is the whole explanation. The
 remaining obstruction is still the lower-factor terminal-twin lift.
 
+The same-lane contrast makes the lift literal. Same-lane prior rows can place
+the lower factor two units after the previous endpoint, but only after short
+preceding gaps:
+
+```text
+same-lane prior lower twin rows = 8
+same-lane prior lower twin preceding gap widths = 4, 10, 12
+same-lane prior maximum preceding gap width = 12
+```
+
+The observed replacement rows have:
+
+```text
+lower twin preceding gap widths = 18 and 22
+```
+
+So the current obstruction is not simply "lower twin." It is:
+
+```text
+lower twin after a preceding gap of width at least 18
+```
+
 So the current proof target has sharpened again:
 
 ```text
@@ -434,7 +456,8 @@ and
 balanced endpoint right boundary
 and
 span-36 reentry
-    -> lower-factor terminal-twin lift
+    -> lower factor is two units after the previous endpoint
+       whose preceding gap has width at least 18
 ```
 
 The former two-zero statement is therefore a shared-boundary statement:
