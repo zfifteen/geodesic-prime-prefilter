@@ -91,6 +91,9 @@ replacement rows, the terminal-twin lift is on the lower factor side.
 The first piece is pure mod-30 arithmetic. The second piece is now the true
 unproved object.
 
+`PUBLIC_O6_RESIDUE_BRIDGE_LEMMA.md` records the first piece as a proved
+mod-30 lemma.
+
 ## Current Proof Target
 
 The current target is:
