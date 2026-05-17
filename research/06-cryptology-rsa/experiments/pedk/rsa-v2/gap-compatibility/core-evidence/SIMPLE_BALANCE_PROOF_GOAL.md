@@ -125,6 +125,23 @@ under shared load equality,
 right-boundary reentry cannot preserve the old left phase arrangement
 ```
 
+The phase-shift probe makes that obstruction concrete:
+
+```text
+load-match boundary reentry rows = 90
+candidate left phases containing very_late = 0
+observed replacement left phases containing very_late = 90
+candidate left phase reappears = 0
+```
+
+So the measured blocked lift is:
+
+```text
+shared load equality
+    -> right-boundary reentry shifts the left phase into a very_late family
+    -> old exact endpoint pair remains absent
+```
+
 The former two-zero statement is therefore a shared-boundary statement:
 
 ```text
@@ -268,21 +285,40 @@ aq + bp + ab
 Thus the endpoint boundary is not decoration around the factors. It is the
 first directed product boundary available from `N`.
 
-### Lemma 4: First-Minimum Balance Lemma
+### Lemma 4: Shared-Load Phase-Shift Lemma
 
-For supported endpoint cells that are absent before the forward band, a true
-balanced endpoint realization under the selected public position would have to
-preserve both:
+For supported endpoint cells that are absent before the forward band, the
+balanced endpoint realization has only one remaining escape route. The coarse
+right-boundary cell can reenter, but the exact endpoint pair can reenter only
+if the old left phase also reappears.
 
 ```text
-N is the first divisor-count-3-or-4 point in the public gap
+right-boundary reentry
 and
-the endpoint product boundary reaches the selected public divisor load without
-overshoot
+old left phase reentry
+    -> exact endpoint-pair reentry remains possible
 ```
 
-The theorem must show that those two requirements are incompatible for a
-previously absent balanced endpoint cell. That gives the desired contradiction:
+The measured load-match rows show the old left phase is forced out:
+
+```text
+candidate left phases: early|late, early|mid, late|late, late|mid, mid|mid
+observed replacement phases: early|very_late, mid|very_late
+```
+
+The theorem target is therefore the phase shift itself:
+
+```text
+first public load 4
+and
+right endpoint boundary 4
+and
+right-boundary reentry
+    -> left phase contains very_late
+```
+
+Since the previously absent balanced candidates avoid `very_late`, the old
+left phase cannot reappear. That gives the desired contradiction:
 
 ```text
 selected public position
@@ -298,8 +334,8 @@ This is the remaining proof step.
 ```text
 theorem_status = hypothesis_not_proved
 measured_status = 45337 exclusions, 0 exact falsifications
-proof_reduction_status = reduced_to_first_minimum_balance_lemma
+proof_reduction_status = reduced_to_shared_load_phase_shift_lemma
 ```
 
-The next move is to prove Lemma 4 directly or find the smaller invariant inside
-it.
+The next move is to prove why shared load equality forces the replacement left
+phase into the `very_late` family.
