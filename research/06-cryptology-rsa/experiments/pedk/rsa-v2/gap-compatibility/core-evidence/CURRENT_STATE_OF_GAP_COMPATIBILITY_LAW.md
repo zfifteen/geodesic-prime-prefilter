@@ -267,6 +267,7 @@ It was tested across three rolling strict-forward windows:
 | `21001..23000` | `15641` | `12765` | `4` | `313` | `0 / 913` |
 | `23001..25000` | `15023` | `9383` | `3` | `319` | `0 / 896` |
 | `25001..27000` | `12572` | `9584` | `4` | `417` | `2 / 840` |
+| `27001..30000` | `13185` | `12404` | `12` | `967` | `3 / 1000` |
 
 This is the first surface in this branch that keeps exact endpoint-pair
 identity while reducing strict exact-pair falsification below one per mille
@@ -275,6 +276,21 @@ across consecutive rolling windows.
 The result also clarifies the role of the right boundary. A collapsed
 right-boundary projection is not the law object. The right boundary is a gate
 that selects high-survival exact endpoint-pair exclusions.
+
+The directional boundary comparison then tested whether this gate is a generic
+boundary effect or a right-following effect. On the non-overlapping
+`27001..30000` forward band, exact-pair falsification rates were:
+
+```text
+right_residues = 967 per million
+right_residue_phases = 9414 per million
+both_residues = 13579 per million
+left_residue_phases = 20096 per million
+left_residues = 20876 per million
+```
+
+The right-following boundary gate is the active directional object. Adding the
+left boundary weakens it. Using the left boundary alone weakens it much more.
 
 ## Stable Individual-Cell Evidence
 
@@ -435,6 +451,7 @@ PUBLIC_GRAMMAR_ENDPOINT_PAIR_PREDICATE_FORWARD_RESULTS.md
 PUBLIC_GRAMMAR_RIGHT_BOUNDARY_SURFACE_RESULTS.md
 PUBLIC_GRAMMAR_HYBRID_ENDPOINT_PAIR_SURFACE_RESULTS.md
 PUBLIC_GRAMMAR_JOINT_ENDPOINT_PAIR_RIGHT_BOUNDARY_RESULTS.md
+PUBLIC_GRAMMAR_DIRECTIONAL_BOUNDARY_GATE_RESULTS.md
 PUBLIC_GRAMMAR_ENDPOINT_SPACE_REDUCTION.md
 PUBLIC_GRAMMAR_TRANSPORTED_CANDIDATE_FILTER.md
 PUBLIC_GRAMMAR_WORD_CONDITIONED_TRANSPORTED_FILTER.md
@@ -457,6 +474,7 @@ endpoint_pair_predicate_forward_test.py
 right_boundary_compatibility_surface.py
 hybrid_endpoint_pair_surface.py
 joint_endpoint_pair_right_boundary_surface.py
+directional_boundary_gate_surface.py
 ```
 
 Primary outputs:
@@ -485,9 +503,15 @@ output/hybrid_endpoint_pair_surface_21001_23000/summary.json
 output/hybrid_endpoint_pair_surface_23001_25000/summary.json
 output/hybrid_endpoint_pair_surface_25001_27000/summary.json
 output/enriched_multiplication_map_corpus_25001_27000/summary.json
+output/enriched_multiplication_map_corpus_27001_30000/summary.json
 output/joint_endpoint_pair_right_boundary_surface_21001_23000/summary.json
 output/joint_endpoint_pair_right_boundary_surface_23001_25000/summary.json
 output/joint_endpoint_pair_right_boundary_surface_25001_27000/summary.json
+output/joint_endpoint_pair_right_boundary_surface_27001_30000/summary.json
+output/directional_boundary_gate_surface_21001_23000/summary.json
+output/directional_boundary_gate_surface_23001_25000/summary.json
+output/directional_boundary_gate_surface_25001_27000/summary.json
+output/directional_boundary_gate_surface_27001_30000/summary.json
 ```
 
 ## Guardrails

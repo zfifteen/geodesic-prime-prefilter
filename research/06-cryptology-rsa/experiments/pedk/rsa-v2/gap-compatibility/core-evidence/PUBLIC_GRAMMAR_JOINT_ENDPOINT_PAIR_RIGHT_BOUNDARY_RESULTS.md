@@ -57,10 +57,11 @@ The experiment was run across three rolling windows.
 | `21001..23000` | `15641` | `12765` | `4` | `313` | `0 / 182` | `0 / 458` | `0 / 913` |
 | `23001..25000` | `15023` | `9383` | `3` | `319` | `0 / 180` | `0 / 447` | `0 / 896` |
 | `25001..27000` | `12572` | `9584` | `4` | `417` | `0 / 169` | `1 / 422` | `2 / 840` |
+| `27001..30000` | `13185` | `12404` | `12` | `967` | `1 / 200` | `1 / 500` | `3 / 1000` |
 
-The rates are below one per mille in all three windows. The integer per-mille
-field in the output is therefore `0`; the per-million field records the
-measured nonzero rate.
+The rates are below one per mille in all four windows. The integer per-mille
+field in the output is therefore `0` for the right-residue gate; the
+per-million field records the measured nonzero rate.
 
 ## Comparison With Prior Surfaces
 
@@ -72,6 +73,7 @@ materially sharpens it.
 | `21001..23000` | `19` per mille | `33` per mille | `313` per million |
 | `23001..25000` | `29` per mille | `50` per mille | `319` per million |
 | `25001..27000` | `23` per mille | `39` per mille | `417` per million |
+| `27001..30000` | `37` per mille | `51` per mille | `967` per million |
 
 The at-winner exact-pair slice by itself is not enough. It is worse than the
 broad carrier. The improvement appears only when exact endpoint-pair absence is
@@ -113,15 +115,23 @@ python3 enriched_multiplication_map_corpus.py \
   --output-dir output/enriched_multiplication_map_corpus_25001_27000
 ```
 
+Build the larger falsification band:
+
+```text
+python3 enriched_multiplication_map_corpus.py \
+  --band 27001:30000 \
+  --output-dir output/enriched_multiplication_map_corpus_27001_30000
+```
+
 Run the latest forward window:
 
 ```text
 python3 joint_endpoint_pair_right_boundary_surface.py \
-  --train-dir output/enriched_multiplication_map_corpus_19001_21000 \
-  --calibration-dir output/enriched_multiplication_map_corpus_21001_23000 \
-  --prior-forward-dir output/enriched_multiplication_map_corpus_23001_25000 \
-  --forward-dir output/enriched_multiplication_map_corpus_25001_27000 \
-  --output-dir output/joint_endpoint_pair_right_boundary_surface_25001_27000
+  --train-dir output/enriched_multiplication_map_corpus_21001_23000 \
+  --calibration-dir output/enriched_multiplication_map_corpus_23001_25000 \
+  --prior-forward-dir output/enriched_multiplication_map_corpus_25001_27000 \
+  --forward-dir output/enriched_multiplication_map_corpus_27001_30000 \
+  --output-dir output/joint_endpoint_pair_right_boundary_surface_27001_30000
 ```
 
 Primary outputs:
@@ -130,5 +140,7 @@ Primary outputs:
 output/joint_endpoint_pair_right_boundary_surface_21001_23000/summary.json
 output/joint_endpoint_pair_right_boundary_surface_23001_25000/summary.json
 output/joint_endpoint_pair_right_boundary_surface_25001_27000/summary.json
+output/joint_endpoint_pair_right_boundary_surface_27001_30000/summary.json
 output/hybrid_endpoint_pair_surface_25001_27000/summary.json
+output/hybrid_endpoint_pair_surface_27001_30000/summary.json
 ```
