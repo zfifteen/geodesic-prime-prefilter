@@ -121,6 +121,24 @@ right endpoint movement at p and q
     -> public containing-gap boundary class
 ```
 
+Current audit:
+
+```text
+DIRECTED_TRANSPORT_AUDIT.md
+```
+
+The audit verifies the arithmetic transport object:
+
+```text
+(p + a)q - pq = aq
+p(q + b) - pq = bp
+(p + a)(q + b) - pq = aq + bp + ab
+```
+
+It also confirms the important boundary: observed at-winner factor pairs
+include all three defect classes. The theorem is therefore an endpoint-space
+absence law, not a universal description of true factor-pair defect.
+
 ### Obligation 2: Winner Balance
 
 Show that the public at-winner condition selects the zero signed deviation of

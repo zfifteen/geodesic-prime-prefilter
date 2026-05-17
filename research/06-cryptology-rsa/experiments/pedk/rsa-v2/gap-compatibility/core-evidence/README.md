@@ -34,6 +34,7 @@ SIMPLE_RIGHT_RESIDUE_INVARIANT.md
 SIMPLE_ENDPOINT_EXCLUSION_RULE.md
 PUBLIC_SELECTED_POSITION_FILTER_MECHANISM.md
 ZERO_DEFECT_THEOREM_TARGET.md
+DIRECTED_TRANSPORT_AUDIT.md
 PUBLIC_GRAMMAR_FORWARD_BOUNDARY_LAW_PROFILE.md
 PUBLIC_GRAMMAR_DIRECTIONAL_BOUNDARY_GATE_RESULTS.md
 PUBLIC_GRAMMAR_JOINT_ENDPOINT_PAIR_RIGHT_BOUNDARY_RESULTS.md
@@ -64,6 +65,7 @@ joint_endpoint_pair_right_boundary_surface.py
 directional_boundary_gate_surface.py
 forward_boundary_law_profile.py
 simple_invariant_probe.py
+directed_transport_audit.py
 ```
 
 Supporting helpers remain in this folder because the active scripts import

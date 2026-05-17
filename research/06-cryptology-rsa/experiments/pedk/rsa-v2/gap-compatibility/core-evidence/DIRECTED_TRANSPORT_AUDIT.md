@@ -1,0 +1,112 @@
+# Directed Transport Audit
+
+## Purpose
+
+This note addresses the first proof obligation in the zero-defect theorem
+target:
+
+```text
+right endpoint movement at p and q
+    -> directed outward movement of pq
+    -> public containing-gap boundary class
+```
+
+The audit is not a factor-recovery method and not the endpoint exclusion rule.
+It checks the arithmetic bridge that makes directed endpoint gaps relevant to
+the public gap containing `N`.
+
+## Transport Formula
+
+Let:
+
+```text
+N = pq
+```
+
+Let `a` be the first right-following wheel-open offset after `p`, and let `b`
+be the first right-following wheel-open offset after `q`.
+
+Then the first directed outward movements transport through multiplication as:
+
+```text
+(p + a)q - pq = aq
+p(q + b) - pq = bp
+(p + a)(q + b) - pq = aq + bp + ab
+```
+
+These are the three public-side movements induced by the two right-following
+factor endpoint gaps.
+
+## Zero-Defect Boundary
+
+The right-boundary defect is:
+
+```text
+right_boundary_defect =
+    max(rank(p_right_residue), rank(q_right_residue)) - rank(o4)
+```
+
+Measured over observed at-winner rows from the current five bands:
+
+| right-boundary defect | observed at-winner rows |
+| ---: | ---: |
+| `-1` | `4139` |
+| `0` | `11132` |
+| `+1` | `11575` |
+
+Total:
+
+```text
+observed_at_winner_row_count = 26846
+distinct_transport_key_count = 55
+```
+
+## Boundary
+
+This audit confirms the arithmetic transport object. It also sharpens the
+claim boundary.
+
+Observed true factor pairs under the public at-winner condition include all
+three defect classes:
+
+```text
+defect = -1
+defect = 0
+defect = +1
+```
+
+Therefore the zero-defect law is not:
+
+```text
+all true factor pairs under public_at_winner have defect = 0
+```
+
+The measured rule is narrower and stronger:
+
+```text
+public_at_winner(W)
+and prior_absent(W, E)
+and supported(E)
+and right_boundary_defect(E) = 0
+    -> exclude E
+```
+
+The theorem must explain why zero defect stabilizes absence in endpoint space,
+while nonzero defects can still occur as observed factor-pair states and can
+leak back into the candidate surface.
+
+## Reproduction
+
+Run:
+
+```text
+python3 directed_transport_audit.py
+```
+
+Primary outputs:
+
+```text
+output/directed_transport_audit/summary.json
+output/directed_transport_audit/transport_rows.jsonl
+output/directed_transport_audit/defect_count_rows.jsonl
+```
