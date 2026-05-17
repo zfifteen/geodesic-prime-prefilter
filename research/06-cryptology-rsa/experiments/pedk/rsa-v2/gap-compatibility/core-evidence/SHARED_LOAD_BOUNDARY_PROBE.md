@@ -80,6 +80,35 @@ and
 endpoint right boundary equals public selected divisor count
 ```
 
+## Locality Check
+
+The shared load-boundary match is clean inside the public grammar itself. It is
+not only clean after aggregation.
+
+At the public containing-gap type level:
+
+```text
+public containing type count = 9
+load-match testable type count = 9
+load-match falsified type count = 0
+load-mismatch testable type count = 9
+load-mismatch falsified type count = 8
+```
+
+At the full public-word level:
+
+```text
+public word count = 198
+load-match testable public word count = 149
+load-match falsified public word count = 0
+load-mismatch testable public word count = 107
+load-mismatch falsified public word count = 19
+```
+
+This matters for the proof target. The clean rule is not the result of
+different public words canceling each other. Wherever the load match is
+testable inside a public type or public word, it stays clean.
+
 ## Why This Matters
 
 The previous statement used two separate labels:
@@ -175,6 +204,8 @@ output/shared_load_boundary_probe/summary.json
 output/shared_load_boundary_probe/shared_load_boundary_rows.jsonl
 output/shared_load_boundary_probe/grouped_rows.jsonl
 output/shared_load_boundary_probe/load_delta_mismatch_rows.jsonl
+output/shared_load_boundary_probe/public_containing_type_rows.jsonl
+output/shared_load_boundary_probe/public_word_rows.jsonl
 ```
 
 The `output/` tree is ignored. The committed script is the reproducible
