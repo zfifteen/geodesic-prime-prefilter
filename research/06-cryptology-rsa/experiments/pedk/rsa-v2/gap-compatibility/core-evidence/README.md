@@ -536,6 +536,21 @@ window_27001_30000_left_residues = 10 / 479, 20876 per million
 direction_status = right_following_boundary_gate_is_active_discriminator
 ```
 
+The forward-boundary law profile records the simple split inside that
+right-following gate:
+
+```text
+all_windows_right_gated_exact_cells = 23 / 44136, 521 per million
+Rres=o2|o4 = 0 / 22509
+Rres=o4|o4 = 0 / 8109
+clean_class_total = 0 / 30618
+Rres=o2|o2 = 2 / 9372
+Rres=o2|o6 = 4 / 712
+Rres=o4|o6 = 8 / 944
+Rres=o6|o6 = 9 / 2490
+clean_rule_status = current_simplest_measured_law_candidate
+```
+
 The exact subtype all-`o6` boundary records:
 
 ```text
@@ -806,3 +821,10 @@ The directional boundary gate check confirms that this is specifically a
 right-following factor-boundary effect. On `27001..30000`, the right-residue
 gate measured `967` per million, while left-residue gating measured `20876`
 per million and both-side residue gating measured `13579` per million.
+
+The forward-boundary profile then exposes the simple core. The clean
+right-following residue classes are `Rres=o2|o4` and `Rres=o4|o4`. Across four
+strict-forward windows, those two classes produced `30618` testable exact
+endpoint-pair exclusions and `0` exact falsifications. The remaining
+right-following residue classes contain all `23` right-gated exact-pair
+falsifications.
