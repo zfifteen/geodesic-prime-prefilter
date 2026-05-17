@@ -292,6 +292,34 @@ left_residues = 20876 per million
 The right-following boundary gate is the active directional object. Adding the
 left boundary weakens it. Using the left boundary alone weakens it much more.
 
+The forward-boundary profile then separated the right-following residue classes
+inside the right-gated exact-pair surface. Across the four strict-forward
+windows, two right-following residue classes were completely clean:
+
+| right-following residue pair | testable exact cells | exact falsifications | rate per million |
+| --- | ---: | ---: | ---: |
+| `Rres=o2|o4` | `22509` | `0` | `0` |
+| `Rres=o4|o4` | `8109` | `0` | `0` |
+
+Together they cover:
+
+```text
+30618 testable exact endpoint-pair exclusions
+0 exact endpoint-pair falsifications
+```
+
+Every observed right-gated exact-pair falsification occurred outside those two
+classes:
+
+```text
+Rres=o2|o2 = 2 / 9372
+Rres=o2|o6 = 4 / 712
+Rres=o4|o6 = 8 / 944
+Rres=o6|o6 = 9 / 2490
+```
+
+This is now the simplest measured law candidate.
+
 ## Stable Individual-Cell Evidence
 
 Before the slot-lock probe, the strongest stable surface used the full public
@@ -391,11 +419,10 @@ The current state is positive but not final:
 ```text
 proved_law = no
 measured_gap_correlation = yes
-compact_rule_layer = right_residue_gated_endpoint_pair_surface_measured
+compact_rule_layer = clean_forward_boundary_residue_classes_measured
 live_factor_recovery = no
-next_required_step = derive the formal compatibility rule that explains why
-                     the right-residue gate selects stable exact endpoint-pair
-                     absences
+next_required_step = prove or falsify the clean-class rule for Rres=o2|o4 and
+                     Rres=o4|o4 under public at-winner grammar
 ```
 
 ## Next Rule-Extraction Step
@@ -452,6 +479,7 @@ PUBLIC_GRAMMAR_RIGHT_BOUNDARY_SURFACE_RESULTS.md
 PUBLIC_GRAMMAR_HYBRID_ENDPOINT_PAIR_SURFACE_RESULTS.md
 PUBLIC_GRAMMAR_JOINT_ENDPOINT_PAIR_RIGHT_BOUNDARY_RESULTS.md
 PUBLIC_GRAMMAR_DIRECTIONAL_BOUNDARY_GATE_RESULTS.md
+PUBLIC_GRAMMAR_FORWARD_BOUNDARY_LAW_PROFILE.md
 PUBLIC_GRAMMAR_ENDPOINT_SPACE_REDUCTION.md
 PUBLIC_GRAMMAR_TRANSPORTED_CANDIDATE_FILTER.md
 PUBLIC_GRAMMAR_WORD_CONDITIONED_TRANSPORTED_FILTER.md
@@ -475,6 +503,7 @@ right_boundary_compatibility_surface.py
 hybrid_endpoint_pair_surface.py
 joint_endpoint_pair_right_boundary_surface.py
 directional_boundary_gate_surface.py
+forward_boundary_law_profile.py
 ```
 
 Primary outputs:
@@ -512,6 +541,7 @@ output/directional_boundary_gate_surface_21001_23000/summary.json
 output/directional_boundary_gate_surface_23001_25000/summary.json
 output/directional_boundary_gate_surface_25001_27000/summary.json
 output/directional_boundary_gate_surface_27001_30000/summary.json
+output/forward_boundary_law_profile/summary.json
 ```
 
 ## Guardrails
