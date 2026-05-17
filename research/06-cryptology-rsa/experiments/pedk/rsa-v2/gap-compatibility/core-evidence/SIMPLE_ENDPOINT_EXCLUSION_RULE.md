@@ -24,6 +24,16 @@ and max(right_residue(E)) = o4
     -> exclude E
 ```
 
+In first right-open offset form:
+
+```text
+public_at_winner(W)
+and prior_absent(W, E)
+and supported(E)
+and max(a_E, b_E) = 4
+    -> exclude E
+```
+
 This is an endpoint-space exclusion rule. It does not claim that every true
 factor pair under `public_at_winner` has `max(right_residue)=o4`. Actual
 factor observations still include other right-residue maxima. The rule applies
@@ -62,6 +72,21 @@ right_residue_max(E) = rank(o4)
 
 The endpoint-pair cell reaches the middle right-following residue and does not
 reach the high right-following residue.
+
+The first right-open offset is fixed by endpoint residue modulo `30`:
+
+```text
+offset 2: endpoint residue in {11, 17, 29}
+offset 4: endpoint residue in {7, 13, 19}
+offset 6: endpoint residue in {1, 23}
+```
+
+The exclusion condition therefore says:
+
+```text
+both endpoint slots avoid the high family {1, 23}
+and at least one endpoint slot reaches the middle family {7, 13, 19}
+```
 
 Equivalently:
 

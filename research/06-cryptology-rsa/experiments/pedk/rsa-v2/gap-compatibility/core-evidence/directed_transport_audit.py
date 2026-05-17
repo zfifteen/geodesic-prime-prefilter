@@ -28,6 +28,16 @@ WINDOWS = (
 RESIDUE_RANK = {"o2": 1, "o4": 2, "o6": 3}
 MIDDLE_RESIDUE = "o4"
 FIRST_OPEN_RE = re.compile(r"^(o[246])_")
+RIGHT_OPEN_OFFSET_BY_ENDPOINT_RESIDUE = {
+    1: 6,
+    7: 4,
+    11: 2,
+    13: 4,
+    17: 2,
+    19: 4,
+    23: 6,
+    29: 2,
+}
 
 
 def read_jsonl(path: Path) -> list[dict[str, object]]:
@@ -50,6 +60,11 @@ def first_open_label(value: str) -> str:
 def first_open_offset(value: str) -> int:
     """Return the first-open offset from one reduced state."""
     return int(first_open_label(value)[1:])
+
+
+def endpoint_residue_step(residue: int) -> int:
+    """Return the first right-open offset from an endpoint residue mod 30."""
+    return RIGHT_OPEN_OFFSET_BY_ENDPOINT_RESIDUE[residue]
 
 
 def transport_balance(p_step: int, q_step: int) -> str:
@@ -78,6 +93,8 @@ def transport_row(row: dict[str, object], window: str) -> dict[str, object]:
     n = int(row["N"])
     p_step = first_open_offset(str(row["p_right_reduced_state"]))
     q_step = first_open_offset(str(row["q_right_reduced_state"]))
+    p_residue_step = endpoint_residue_step(p % 30)
+    q_residue_step = endpoint_residue_step(q % 30)
     delta_p = p_step * q
     delta_q = q_step * p
     delta_both = delta_p + delta_q + (p_step * q_step)
@@ -94,6 +111,11 @@ def transport_row(row: dict[str, object], window: str) -> dict[str, object]:
         "q_right_residue": first_open_label(str(row["q_right_reduced_state"])),
         "p_right_step": p_step,
         "q_right_step": q_step,
+        "p_right_step_from_mod30": p_residue_step,
+        "q_right_step_from_mod30": q_residue_step,
+        "right_step_matches_endpoint_residue": (
+            p_step == p_residue_step and q_step == q_residue_step
+        ),
         "right_open_offset_max": max(p_step, q_step),
         "transport_balance": transport_balance(p_step, q_step),
         "right_boundary_defect": right_boundary_defect(row),
@@ -129,6 +151,10 @@ def summary(rows: list[dict[str, object]]) -> dict[str, object]:
     """Return compact audit summary."""
     defect_counts = Counter(row["right_boundary_defect"] for row in rows)
     balance_counts = Counter(row["transport_balance"] for row in rows)
+    residue_step_mismatches = [
+        row for row in rows
+        if not row["right_step_matches_endpoint_residue"]
+    ]
     transport_counts = Counter(
         (
             row["right_boundary_defect"],
@@ -144,6 +170,8 @@ def summary(rows: list[dict[str, object]]) -> dict[str, object]:
         "theorem_status": "hypothesis_not_proved",
         "inference_status": "not_live_pedk_inference",
         "observed_at_winner_row_count": len(rows),
+        "right_open_offset_by_endpoint_residue_mod30": RIGHT_OPEN_OFFSET_BY_ENDPOINT_RESIDUE,
+        "right_step_endpoint_residue_mismatch_count": len(residue_step_mismatches),
         "defect_counts": dict(sorted(defect_counts.items())),
         "transport_balance_counts": dict(sorted(balance_counts.items())),
         "distinct_transport_key_count": len(transport_counts),

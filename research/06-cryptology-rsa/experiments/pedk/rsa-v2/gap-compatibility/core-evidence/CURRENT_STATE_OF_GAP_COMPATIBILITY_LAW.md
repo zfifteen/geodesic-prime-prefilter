@@ -67,6 +67,21 @@ p(q + b) - pq = bp
 (p + a)(q + b) - pq = aq + bp + ab
 ```
 
+The first right-open offsets are fixed by endpoint residue modulo `30`:
+
+```text
+offset 2: {11, 17, 29}
+offset 4: {7, 13, 19}
+offset 6: {1, 23}
+```
+
+So the clean condition says:
+
+```text
+both endpoint slots avoid {1, 23}
+and at least one endpoint slot lands in {7, 13, 19}
+```
+
 That single condition contains exactly the two previously clean classes:
 
 ```text
