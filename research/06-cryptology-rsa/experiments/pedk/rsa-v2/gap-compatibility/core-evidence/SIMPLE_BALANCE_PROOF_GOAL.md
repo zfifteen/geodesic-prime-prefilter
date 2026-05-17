@@ -310,6 +310,32 @@ inside the supported prior-absent trigger cells,
 the 13|19 balanced residue bridge reenters only through terminal-twin lift
 ```
 
+The lower terminal-twin orientation probe sharpens the lift direction:
+
+```text
+trigger Rres=o4|o4 rows = 11
+terminal side none = 8
+terminal side p = 2
+terminal side p|q = 1
+terminal side q only = 0
+```
+
+For the two supported prior-absent replacement rows:
+
+```text
+observed terminal side p = 2
+observed terminal side q only = 0
+observed terminal side p|q = 0
+```
+
+The current statement is therefore:
+
+```text
+inside the supported prior-absent trigger cells,
+the 13|19 balanced residue bridge reenters only when the lower factor is the
+right endpoint of a terminal twin endpoint pair
+```
+
 The former two-zero statement is therefore a shared-boundary statement:
 
 ```text
@@ -509,4 +535,5 @@ proof_reduction_status = reduced_to_terminal_twin_lift_lemma
 
 The next move is to prove why shared load equality forces the replacement lift
 through terminal-twin lift in the two public o6 trigger neighborhoods after the
-residue bridge has forced factor residues `13` and `19`.
+residue bridge has forced factor residues `13` and `19`, and why that lift is
+lower-factor directed.
