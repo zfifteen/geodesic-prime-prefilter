@@ -3,8 +3,8 @@
 ## Current State
 
 The proof target has been reduced to one remaining bridge, and that bridge now
-uses the public left-neighbor gate rather than the full exact public trigger or
-the coarser public-left residue.
+uses the residue form of the public left-neighbor gate rather than the full
+exact public trigger or the coarser public-left residue.
 
 The stable absence surface began as:
 
@@ -25,7 +25,7 @@ and
 same factor phase mod 36
 and
 supported prior absence
-    -> public-left-neighbor-gate/lower-twin conjunction
+    -> public-left-residue-gate/lower-twin conjunction
 ```
 
 Once that conjunction appears, the lower endpoint chain is:
@@ -148,6 +148,31 @@ Reference:
 PUBLIC_LEFT_NEIGHBOR_GATE_REDUCTION.md
 ```
 
+### 6. Public Left-Gate Arithmetic Reduction
+
+Measured reduction:
+
+```text
+public left-neighbor gate =
+    public previous-left endpoint in {7, 13, 19} mod 30
+    and public containing exact type o6_d4_a6_d4_odd
+```
+
+Inside the same observed factor lanes:
+
+```text
+prior rows = 42
+prior rows with target containing type = 5
+prior rows with previous public left endpoint in {7, 13, 19} = 10
+prior rows with both = 0
+```
+
+Reference:
+
+```text
+PUBLIC_LEFT_GATE_ARITHMETIC_REDUCTION.md
+```
+
 ## Remaining Bridge
 
 The remaining bridge is:
@@ -160,7 +185,7 @@ and
 same factor phase mod 36
 and
 supported prior absence
-    -> public-left-neighbor-gate/lower-twin conjunction
+    -> public-left-residue-gate/lower-twin conjunction
 ```
 
 This is the one live proof obligation.
@@ -177,6 +202,7 @@ same-lane prior rows with lower twin distance = 8
 same-lane prior rows with both = 0
 same-lane prior rows with observed exact public trigger = 0
 same-lane prior rows with public left-neighbor gate = 0
+same-lane prior rows with public left-residue gate = 0
 ```
 
 The observed replacement rows join them:
@@ -187,6 +213,7 @@ observed rows with public left endpoint 31 mod 60 = 2
 observed rows with lower twin distance = 2
 observed rows with both = 2
 observed rows with public left-neighbor gate = 2
+observed rows with public left-residue gate = 2
 ```
 
 So the remaining theorem is not:
@@ -204,7 +231,7 @@ lower twin alone
 and it no longer needs the full exact public trigger. It is the conjunction:
 
 ```text
-public left-neighbor gate and lower twin
+public left-residue gate and lower twin
 ```
 
 ## Current Proof Question
@@ -212,7 +239,7 @@ public left-neighbor gate and lower twin
 The proof question is:
 
 ```text
-Why does shared load equality make the public left-neighbor gate and the
+Why does shared load equality make the public left-residue gate and the
 lower-twin event coincide?
 ```
 
@@ -220,7 +247,7 @@ Equivalently:
 
 ```text
 Why do the prior supported endpoint-pair classes reach the public-left residue
-and lower twin distance separately, but never reach the public left-neighbor
+and lower twin distance separately, but never reach the public left-residue
 gate?
 ```
 
@@ -229,5 +256,5 @@ gate?
 ```text
 theorem_status = hypothesis_not_proved
 measured_status = one_remaining_bridge
-remaining_bridge = public_left_neighbor_gate_lower_twin_conjunction
+remaining_bridge = public_left_residue_gate_lower_twin_conjunction
 ```
