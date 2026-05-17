@@ -7,6 +7,7 @@ This folder contains the current strong evidence for PEDK gap compatibility.
 Read in this order:
 
 ```text
+CURRENT_STATE_OF_GAP_COMPATIBILITY_LAW.md
 GAP_COMPATIBILITY_HYPOTHESIS.md
 FIRST_GAP_COMPATIBILITY_RESULTS.md
 PRELIMINARY_CANDIDATE_EXCLUSION_RULE.md
@@ -30,6 +31,20 @@ MULTIPLICATION_MAP_LAW_SURFACE.md
 PUBLIC_GRAMMAR_PIVOT.md
 PUBLIC_GRAMMAR_FACTOR_EXCLUSION_PIVOT.md
 PUBLIC_GRAMMAR_TARGETED_SLICE_RESULTS.md
+PUBLIC_GRAMMAR_ENDPOINT_SPACE_REDUCTION.md
+PUBLIC_GRAMMAR_TRANSPORTED_CANDIDATE_FILTER.md
+PUBLIC_GRAMMAR_WORD_CONDITIONED_TRANSPORTED_FILTER.md
+PUBLIC_GRAMMAR_FAMILY_FORWARD_RESULTS.md
+PUBLIC_GRAMMAR_REPRESENTATION_RESET.md
+PUBLIC_GRAMMAR_FORWARD_STABLE_INCOMPATIBILITIES.md
+PUBLIC_GRAMMAR_PROTO_FAMILY_FORWARD_RESULTS.md
+PUBLIC_GRAMMAR_SLOT_LOCK_PROBE_RESULTS.md
+PUBLIC_GRAMMAR_DIRECTION_LOCK_PROBE_RESULTS.md
+PUBLIC_GRAMMAR_ROLLING_FORWARD_17001_19000_RESULTS.md
+PUBLIC_GRAMMAR_ENDPOINT_PAIR_FAMILY_FORWARD_RESULTS.md
+PUBLIC_GRAMMAR_ENDPOINT_PAIR_PREDICATE_FORWARD_RESULTS.md
+PUBLIC_GRAMMAR_RIGHT_BOUNDARY_SURFACE_RESULTS.md
+PUBLIC_GRAMMAR_HYBRID_ENDPOINT_PAIR_SURFACE_RESULTS.md
 ```
 
 Run:
@@ -219,6 +234,295 @@ all_o6_observation_count = 6
 surviving_not_observed_states = o2_d4_odd|d<=4@late, o4_d4_odd|d<=4@early
 ```
 
+The public grammar endpoint-pair prevalence baseline records:
+
+```text
+fresh_bands = factors 5501..6500 and 6501..7500
+endpoint_pair_count = 12564
+individual_endpoint_count = 225
+selected_survived_rule_count = 2
+rank_4_eliminated_endpoint_pair_count = 484
+rank_4_eliminated_endpoint_pair_fraction = 3.8523%
+rank_4_fully_eliminated_individual_endpoint_count = 0
+rank_2_eliminated_endpoint_pair_count = 480
+rank_2_eliminated_endpoint_pair_fraction = 3.8204%
+rank_2_fully_eliminated_individual_endpoint_count = 0
+fresh_public_slice_actual_eliminated_count = 0 for both rules
+endpoint_space_kind = unordered_endpoint_pair_space
+```
+
+The fixed-`N` transported candidate bridge records:
+
+```text
+fresh_bands = factors 5501..6500 and 6501..7500
+semiprime_rows = 12564
+candidate_x_count = 569104
+transported_endpoint_candidate_count = 72869
+compatibility_eliminated_candidate_count = 11
+true_p_eliminated_by_compatibility_count = 0
+rank_4_public_word_reduction_over_transported_endpoints = 3.7344%
+rank_2_public_word_reduction_over_transported_endpoints = 1.7391%
+candidate_space_kind = fixed_N_public_endpoint_x_with_floor_transport_y
+transported_class_boundary = existing_endpoint_endpoint_class_only_when_y_is_endpoint
+```
+
+The word-conditioned transported filter records:
+
+```text
+baseline_bands = factors 5501..6500 and 6501..7500
+fresh_band = factors 7501..9000
+selected_public_word_count = 2
+fresh_selected_rows = 81
+fresh_candidate_x_count = 4368
+fresh_transported_endpoint_candidate_count = 550
+fresh_compatibility_eliminated_candidate_count = 11
+fresh_endpoint_reduction = 2.0000%
+true_p_eliminated_by_compatibility_count = 3
+outcome_status = falsified_true_p_eliminated
+```
+
+The public grammar family forward tests record:
+
+```text
+top25_fresh_band = factors 7501..9000
+top25_candidate_count = 25
+top25_survived_count = 13
+top25_falsified_count = 12
+apparent_family = factor_residue_multiset o2:2|o4:2 and factor_phase_multiset mid:3|late:1
+apparent_family_7501_9000_status = 7 / 7 survived
+family_fresh_band = factors 9001..11000
+family_candidate_count = 7
+family_survived_count = 1
+family_falsified_count = 6
+single_public_word_fresh_band = factors 11001..13000
+single_public_word_status = falsified
+family_status = invalidated_as_general_exclusion_family
+```
+
+The representation reset records:
+
+```text
+band_7501_9000_row_count = 13861
+band_7501_9000_current_compressed_collision_keys = 763
+band_7501_9000_factor_phased_word_collision_keys = 157
+band_7501_9000_factor_positioned_word_collision_keys = 4
+band_9001_11000_row_count = 23653
+band_9001_11000_current_compressed_collision_keys = 1786
+band_9001_11000_factor_phased_word_collision_keys = 466
+band_9001_11000_factor_positioned_word_collision_keys = 14
+next_object = GWR-enriched public word -> factor phased word with orientation tracked
+```
+
+The intermediate projection stability check records the frozen working
+representation:
+
+```text
+active_representation = public_word_gwr_side -> oriented_factor_phase_word
+7501_9000_to_9001_11000_min3_rank = 1
+7501_9000_to_9001_11000_min5_rank = 2
+9001_11000_to_11001_13000_min3_rank = 1
+9001_11000_to_11001_13000_min5_rank = 2
+9001_11000_to_11001_13000_min5_testable_absent_cells = 476566
+9001_11000_to_11001_13000_min5_falsified_cells = 5960
+9001_11000_to_11001_13000_min5_falsification_rate = 12 per mille
+```
+
+The forward-stable incompatibility check records:
+
+```text
+train_band = factors 9001..11000
+calibration_band = factors 11001..13000
+forward_band = factors 13001..15000
+selected_candidate_cell_count_top200 = 200
+top200_supported_falsification_count = 0
+selected_candidate_cell_count_top500 = 500
+top500_supported_falsification_count = 0
+selected_candidate_cell_count_top1000 = 1000
+top1000_supported_falsification_count = 0
+selected_candidate_cell_count_top5000 = 5000
+top5000_forward_testable_cell_count = 4951
+top5000_survived_absent_count = 4601
+top5000_thin_observation_count = 350
+top5000_supported_falsification_count = 0
+top5000_supported_falsification_rate = 0 per mille
+```
+
+The stable absent family profile records:
+
+```text
+input_row_count = 5000
+profile_count = 556
+clean_proto_family_count = 192
+mixed_proto_family_count = 364
+min_survived = 10
+```
+
+The proto-family forward test records:
+
+```text
+forward_band = factors 15001..17000
+forward_row_count = 21115
+selected_clean_proto_family_count = 192
+forward_testable_family_count = 185
+survived_forward_family_count = 6
+falsified_forward_family_count = 179
+not_testable_forward_family_count = 7
+strict_falsification_rate = 967 per mille
+proto_family_status = invalidated_as_rule_compression
+```
+
+The full-public/factor-token middle compression diagnostic records:
+
+```text
+axis = public_word_gwr_side__factor_token_multiset
+min_survived = 3
+selected_profile_count = 463
+forward_testable_family_count = 458
+survived_forward_family_count = 224
+falsified_forward_family_count = 234
+not_testable_forward_family_count = 5
+strict_falsification_rate = 510 per mille
+middle_compression_status = insufficient_for_rule_layer
+```
+
+The slot-lock probe records:
+
+```text
+train_band = factors 9001..11000
+calibration_band = factors 11001..13000
+prior_forward_band = factors 13001..15000
+strict_forward_band = factors 15001..17000
+strongest_surface = public_word_gwr_side -> slot_residue_phase
+strongest_surface_testable_cells = 213222
+strongest_surface_survived_cells = 209863
+strongest_surface_falsified_cells = 3359
+strongest_surface_strict_falsification_rate = 15 per mille
+unordered_endpoint_pair_rate = 21 per mille
+unordered_endpoint_lr_multiset_rate = 37 per mille
+slot_residue_phase_multiset_rate = 49 per mille
+slot_lock_status = supported_by_forward_probe
+```
+
+The direction-lock probe records:
+
+```text
+public_side = public_word_gwr_side
+strict_forward_band = factors 15001..17000
+slot_residue_phase_rate = 15 per mille
+unordered_endpoint_pair_residue_phase_rate = 21 per mille
+left_right_boundary_multiset_residue_phase_rate = 24 per mille
+unordered_endpoint_lr_multiset_residue_phase_rate = 37 per mille
+slot_residue_phase_multiset_rate = 49 per mille
+direction_lock_status = refined_to_oriented_endpoint_pair_grammar
+```
+
+The rolling forward endpoint-pair confirmation records:
+
+```text
+train_band = factors 11001..13000
+calibration_band = factors 13001..15000
+prior_forward_band = factors 15001..17000
+strict_forward_band = factors 17001..19000
+fresh_forward_row_count = 19503
+slot_residue_phase_rate = 16 per mille
+unordered_endpoint_pair_residue_phase_rate = 22 per mille
+left_right_boundary_multiset_residue_phase_rate = 24 per mille
+unordered_endpoint_lr_multiset_residue_phase_rate = 35 per mille
+slot_residue_phase_multiset_rate = 43 per mille
+endpoint_pair_candidate_clean_absent_cell_count = 236066
+endpoint_pair_forward_testable_cell_count = 161450
+endpoint_pair_survived_forward_cell_count = 157888
+endpoint_pair_falsified_forward_cell_count = 3562
+endpoint_pair_status = extracted_candidate_exclusion_surface
+```
+
+The endpoint-pair family forward test records:
+
+```text
+source_surface = public_word_gwr_side -> unordered_endpoint_pair_residue_phase
+profile_source_band = factors 17001..19000 rolling test
+forward_band = factors 19001..21000
+profile_count = 33348
+clean_fully_tested_role_family_count = 1973
+selected_clean_role_family_count = 1973
+survived_forward_family_count = 665
+falsified_forward_family_count = 1308
+not_testable_forward_family_count = 0
+strict_falsification_rate = 662 per mille
+family_status = invalidated_as_general_rule_layer
+```
+
+The endpoint-pair predicate forward test records:
+
+```text
+source_family_forward_band = factors 19001..21000
+contrast_input_survived_family_count = 665
+contrast_input_falsified_family_count = 1308
+zero_falsified_contrast_predicate_count = 48
+predicate_forward_band = factors 21001..23000
+predicate_forward_row_count = 20706
+survived_forward_predicate_count = 46
+falsified_forward_predicate_count = 2
+not_testable_forward_predicate_count = 0
+active_candidate_invariant = public at-winner containing grammar ->
+                             endpoint-pair right-boundary values
+```
+
+The direct right-boundary surface records:
+
+```text
+train_band = factors 15001..17000
+calibration_band = factors 17001..19000
+prior_forward_band = factors 19001..21000
+strict_forward_band = factors 21001..23000
+containing_type_at_winner_to_endpoint_left_right_values_rate = 48 per mille
+containing_phase_at_winner_to_endpoint_left_right_values_rate = 53 per mille
+containing_type_at_winner_to_endpoint_right_values_rate = 83 per mille
+containing_type_at_winner_to_endpoint_left_values_rate = 173 per mille
+right_boundary_status = discriminator_supported_but_incomplete
+```
+
+The shifted direct right-boundary surface records:
+
+```text
+train_band = factors 17001..19000
+calibration_band = factors 19001..21000
+prior_forward_band = factors 21001..23000
+strict_forward_band = factors 23001..25000
+containing_phase_at_winner_to_endpoint_right_values_rate = 56 per mille
+containing_type_at_winner_to_endpoint_right_values_rate = 59 per mille
+containing_phase_at_winner_to_endpoint_left_right_values_rate = 82 per mille
+containing_type_at_winner_to_endpoint_left_right_values_rate = 89 per mille
+right_boundary_status = active_discriminator_not_complete_law_object
+```
+
+The hybrid endpoint-pair surface records:
+
+```text
+window_21001_23000_public_word_gwr_side_exact_endpoint_pair_rate = 19 per mille
+window_23001_25000_public_word_gwr_side_exact_endpoint_pair_rate = 29 per mille
+window_25001_27000_public_word_gwr_side_exact_endpoint_pair_rate = 23 per mille
+window_21001_23000_public_word_at_winner_right_values_only_rate = 30 per mille
+window_23001_25000_public_word_at_winner_right_values_only_rate = 16 per mille
+window_25001_27000_public_word_at_winner_right_values_only_rate = 33 per mille
+broad_carrier = public_word_gwr_side -> exact_endpoint_pair
+thin_discriminator = public_word_at_winner -> right_values_only
+hybrid_status = measured_but_not_complete_law_object
+```
+
+The joint endpoint-pair/right-boundary surface records:
+
+```text
+object = exact endpoint-pair exclusion gated by at-winner right-residue absence
+window_21001_23000 = 4 / 12765 exact-pair falsifications, 313 per million
+window_23001_25000 = 3 / 9383 exact-pair falsifications, 319 per million
+window_25001_27000 = 4 / 9584 exact-pair falsifications, 417 per million
+top_1000_21001_23000 = 0 / 913
+top_1000_23001_25000 = 0 / 896
+top_1000_25001_27000 = 2 / 840
+joint_status = current_best_measured_rule_extraction_surface
+```
+
 The exact subtype all-`o6` boundary records:
 
 ```text
@@ -402,3 +706,83 @@ containing=o2_d4_a2_d4_odd@early
 next=o4_d4_odd|d<=4
 excludes residue o2:1|o4:1|o6:2 with phase mid:3|late:1
 ```
+
+That compressed residue/phase track was later treated as too lossy for the
+main rule layer. The current strongest measured incompatibility surface is:
+
+```text
+public_word_gwr_side -> oriented_factor_phase_word
+```
+
+Under support `5/5`, the top `5000` cells that were independently supported
+but jointly absent in both `9001..11000` and `11001..13000` produced zero
+supported falsifications in `13001..15000`. This shifts the active rule object
+from one broad residue/phase candidate to clean proto-families extracted from
+stable absent cells.
+
+The first proto-family compression was then forward-tested on `15001..17000`
+and invalidated. This does not invalidate the stable individual-cell surface.
+It shows that the attempted compression discarded necessary oriented
+factor-neighborhood structure. The next compact grammar must preserve more of
+the full oriented factor phase word than a token multiset or one-sided p/q
+summary preserves.
+
+The slot-lock probe identifies the next stable grammar object:
+
+```text
+public_word_gwr_side -> slot_residue_phase
+```
+
+This keeps the four factor-neighborhood slots `p-left`, `p-right`, `q-left`,
+and `q-right`, while reducing each slot to residue plus phase. It sharply
+outperforms factor-side multiset compression and shows that slot position is a
+measured compatibility variable.
+
+The direction-lock probe refines the object again. The strongest compact
+factor object is the directed left/right boundary pair belonging to each hidden
+factor. Collapsing the downstream `p/q` labels is cheap compared with erasing
+left/right direction inside each factor endpoint. The next target is the
+inner/outer boundary role split: `pL` and `qR` as outer boundaries, `pR` and
+`qL` as inner boundaries.
+
+The endpoint-pair family compression failed as a general rule layer. The
+failure did not erase the exact endpoint-pair surface; it showed that the next
+coordinate had to be inside the directed endpoint pair rather than a looser
+family label.
+
+Predicate contrast and direct boundary tests then isolated the right boundary
+as the strongest active discriminator. Collapsing to right-boundary values by
+itself was too thin and too lossy, but using the right boundary as a gate on
+exact endpoint-pair exclusions produced the current strongest measured
+surface.
+
+The current best measured object is:
+
+```text
+public at-winner grammar
+    gates
+exact unordered directed endpoint-pair exclusions
+    by
+right-boundary residue class
+```
+
+Across three rolling strict-forward windows, the right-residue gated exact-pair
+surface measured:
+
+```text
+21001..23000: 4 / 12765 exact-pair falsifications, 313 per million
+23001..25000: 3 / 9383 exact-pair falsifications, 319 per million
+25001..27000: 4 / 9584 exact-pair falsifications, 417 per million
+```
+
+The top support-ranked cells were especially strong:
+
+```text
+21001..23000: top 1000 = 0 / 913
+23001..25000: top 1000 = 0 / 896
+25001..27000: top 1000 = 2 / 840
+```
+
+This is now the active rule-extraction surface. The right boundary is not the
+factor-side law object by itself. It is the gate that selects unusually stable
+exact directed endpoint-pair absences.

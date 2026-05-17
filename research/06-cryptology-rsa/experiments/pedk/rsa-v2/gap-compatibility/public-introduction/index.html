@@ -524,6 +524,9 @@
         <p>
           This changed the problem from looking for one magic feature to building a multiplication map. The map compares public words around <code>N</code> against unordered factor-neighborhood words around <code>p</code> and <code>q</code>. Some cells in the map are observed. Other cells are absent even though both the public word and the factor word are well supported elsewhere. Those absent cells are the candidate incompatibilities.
         </p>
+        <p>
+          The pipeline now has one more natural step. After a candidate incompatibility survives fresh slices, it should be applied back to the possible endpoint pairs <code>(p, q)</code>. That turns a grammar rule into a measured endpoint-space reduction: how many possible endpoint pairs remain after public gap grammar removes incompatible neighborhoods.
+        </p>
 
         <div class="grid">
           <div class="panel wide soft">
@@ -572,6 +575,39 @@
             <div class="label">top candidates tested, survivors</div>
           </div>
         </div>
+
+        <h3>Tracked pipeline metrics</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Pipeline step</th>
+              <th>Metric</th>
+              <th>Current status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Build the public-to-factor map</td>
+              <td>Supported words and absent cells</td>
+              <td><span class="badge measured">measured</span> <code>23</code> public words, <code>198</code> factor words, <code>3741</code> absent cells</td>
+            </tr>
+            <tr>
+              <td>Compress absent cells into candidate exclusions</td>
+              <td>Class exclusions</td>
+              <td><span class="badge measured">measured</span> <code>531</code> compressed candidates</td>
+            </tr>
+            <tr>
+              <td>Test candidates on fresh slices</td>
+              <td>Survival rate</td>
+              <td><span class="badge measured">measured</span> <code>5</code> tested, <code>2</code> survived, <code>3</code> falsified</td>
+            </tr>
+            <tr>
+              <td>Apply survivors to endpoint pairs</td>
+              <td><code>(p, q)</code> endpoint-pair reduction</td>
+              <td><span class="badge">next metric</span> count eliminated endpoint pairs and survivor percentage per public word</td>
+            </tr>
+          </tbody>
+        </table>
       </section>
 
       <section id="current-findings">
@@ -628,8 +664,47 @@
           </div>
         </div>
 
+        <h3>Next milestone: endpoint-space reduction</h3>
+        <p>
+          The current exclusions act on factor-neighborhood classes. The next measurement converts those class exclusions into concrete endpoint-space reduction. For a fixed composite number, first read the public word around the gap that contains it. Then list the possible endpoint pairs in the selected interval, describe the neighboring prime gaps around each endpoint pair, and remove the pairs whose combined neighborhood words are incompatible with the public word.
+        </p>
+        <p>
+          This is the bridge from a grammar signal to a search-space number. The output is no longer just “this factor-neighborhood class was absent.” The output becomes “this many possible endpoint pairs <code>(p, q)</code> were eliminated by public gap grammar before candidate divisibility was tested.”
+        </p>
+
+        <table class="evidence-table">
+          <thead>
+            <tr>
+              <th>Step</th>
+              <th>Measured object</th>
+              <th>Reduction question</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Public word around the composite number</td>
+              <td>Which factor-neighborhood words are incompatible with this public word?</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Endpoint pairs in the chosen factor interval</td>
+              <td>Which endpoint pairs carry one of the incompatible neighborhood words?</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Remaining endpoint-pair set</td>
+              <td>What fraction of possible endpoint pairs <code>(p, q)</code> survived?</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+          A significant benchmark is reached when this measured endpoint-pair reduction exceeds the reduction supplied by an existing classical method at comparable cost. The present documents do not claim that milestone. They define the compatibility surface needed to measure it.
+        </p>
+
         <div class="callout">
-          <strong>Current boundary:</strong> this is strong measured evidence for a gap-grammar compatibility law. It is not a theorem, not a completed factor recovery method, and not live factor recovery. The next step is to keep compressing the surviving rules and test them on fresh targeted public slices.
+          <strong>Current boundary:</strong> this is strong measured evidence for a gap-grammar compatibility law. It is not a theorem, not a completed factor recovery method, and not live factor recovery. The next step is to keep compressing the surviving rules, test them on fresh targeted public slices, and convert surviving class exclusions into measured <code>(p, q)</code> endpoint-pair reduction.
         </div>
       </section>
 

@@ -13,6 +13,7 @@ tests/performance-comparisons/bouncycastle-keygen-baseline/vendor/bc-java-r1rv83
 research/01-generator/output/rule_x_logic_engine/results_11_100000_b128_label_*/candidate_records.csv
 experiments/collatz/output/collatz_pgs_same_gap_scale_probe/block_rows.jsonl
 experiments/collatz/output/collatz_pgs_first_descent_probe/state_rows.jsonl
+research/06-cryptology-rsa/experiments/pedk/rsa-v2/gap-compatibility/core-evidence/output/
 # OTHER
 AGENTS.md
 docs/deprecated/AGENTS.bak
