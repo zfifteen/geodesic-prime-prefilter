@@ -179,6 +179,32 @@ shared load equality
     -> old candidate left phases cannot reappear
 ```
 
+The factor-left semantics audit gives the literal meaning of that
+right-distance:
+
+```text
+factor-side records audited = 561444
+stored left winner is immediate previous endpoint = 561444
+```
+
+The current factor-left record is a bridge from the second previous endpoint to
+the factor endpoint. Its selected point is the immediate previous endpoint. So:
+
+```text
+left selected point two units before the factor
+    =
+immediate previous endpoint is two units before the factor
+```
+
+The proof target is now:
+
+```text
+shared load equality
+    -> right-boundary reentry lifts through a factor with immediate-left
+       endpoint distance 2
+    -> old exact endpoint pair remains absent
+```
+
 The former two-zero statement is therefore a shared-boundary statement:
 
 ```text
@@ -351,14 +377,13 @@ and
 right endpoint boundary 4
 and
 right-boundary reentry
-    -> one replacement left-side factor gap is selected two units before its
-       right endpoint
+    -> one replacement factor has immediate-left endpoint distance 2
 ```
 
-In the measured rows, that exact two-from-right event is what appears as the
-`very_late` left phase. Since the previously absent balanced candidates avoid
-`very_late`, the old left phase cannot reappear. That gives the desired
-contradiction:
+In the measured rows, that exact endpoint-distance event is what appears as the
+`very_late` left phase in the current bridge representation. Since the
+previously absent balanced candidates avoid `very_late`, the old left phase
+cannot reappear. That gives the desired contradiction:
 
 ```text
 selected public position
@@ -374,8 +399,8 @@ This is the remaining proof step.
 ```text
 theorem_status = hypothesis_not_proved
 measured_status = 45337 exclusions, 0 exact falsifications
-proof_reduction_status = reduced_to_shared_load_reentry_cell_lemma
+proof_reduction_status = reduced_to_immediate_left_endpoint_distance_lemma
 ```
 
 The next move is to prove why shared load equality forces the replacement lift
-through a left-side gap selected two units before its right endpoint.
+through a factor whose immediate-left endpoint distance is `2`.
