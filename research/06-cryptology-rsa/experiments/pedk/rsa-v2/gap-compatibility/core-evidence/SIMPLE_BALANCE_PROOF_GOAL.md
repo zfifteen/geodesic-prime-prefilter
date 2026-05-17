@@ -245,6 +245,32 @@ shared load equality
     -> exact endpoint-pair absence remains stable
 ```
 
+The public o6 terminal-twin trigger probe sharpens the scope. The terminal-twin
+lift is not a general property of every `o6_d4_a6` public row. It appears in the
+supported prior-absent balanced reentry cells for two public keys:
+
+```text
+o4 even -> o6@mid -> o4 odd
+o4 odd  -> o6@early -> o6 odd
+```
+
+Measured per-public-key support:
+
+```text
+candidate rows = 46 and 44
+public-key prior support rows = 8080 and 8063
+prior terminal-twin rows = 0 and 0
+observed replacements = 1 and 1
+observed terminal-twin replacements = 1 and 1
+```
+
+So the current falsifiable arithmetic statement is:
+
+```text
+For the two supported prior-absent public o6_d4_a6 balanced right-boundary
+cells, any forward reentry of Rres=o4|o4 requires terminal-twin lift.
+```
+
 The former two-zero statement is therefore a shared-boundary statement:
 
 ```text
@@ -443,4 +469,4 @@ proof_reduction_status = reduced_to_terminal_twin_lift_lemma
 ```
 
 The next move is to prove why shared load equality forces the replacement lift
-through terminal-twin lift.
+through terminal-twin lift in the two public o6 trigger neighborhoods.
