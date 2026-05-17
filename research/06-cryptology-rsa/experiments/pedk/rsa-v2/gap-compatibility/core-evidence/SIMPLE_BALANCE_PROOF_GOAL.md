@@ -94,6 +94,21 @@ load-match exact falsifications = 0
 
 The leaking rows have comparable pair support and weaker boundary support.
 
+The reentry profile sharpens the target again. The shared load boundary does
+not keep the coarse right-boundary cell absent:
+
+```text
+load-match boundary reentry rows = 90
+load-match exact endpoint-pair reentry rows = 0
+```
+
+So the proof is not a boundary-absence proof. It is a blocked-lift proof:
+
+```text
+under shared load equality,
+right-boundary reentry does not lift to exact endpoint-pair reentry
+```
+
 The former two-zero statement is therefore a shared-boundary statement:
 
 ```text
