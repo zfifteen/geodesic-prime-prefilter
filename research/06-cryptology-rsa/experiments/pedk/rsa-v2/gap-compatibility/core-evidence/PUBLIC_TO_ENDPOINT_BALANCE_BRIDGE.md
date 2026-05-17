@@ -50,7 +50,7 @@ The endpoint transport defect is:
 
 ```text
 endpoint transport defect =
-    max(a, b) - 4
+    (max(a, b) - 4) / 2
 ```
 
 or, in rank form:
