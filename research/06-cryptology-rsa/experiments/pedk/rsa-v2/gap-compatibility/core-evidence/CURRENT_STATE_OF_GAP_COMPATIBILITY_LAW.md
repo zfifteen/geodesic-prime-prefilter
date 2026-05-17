@@ -163,6 +163,7 @@ PUBLIC_GRAMMAR_FORWARD_BOUNDARY_LAW_PROFILE.md
 SIMPLE_RIGHT_RESIDUE_INVARIANT.md
 SIMPLE_ENDPOINT_EXCLUSION_RULE.md
 PUBLIC_SELECTED_POSITION_FILTER_MECHANISM.md
+ZERO_DEFECT_THEOREM_TARGET.md
 PUBLIC_GRAMMAR_DIRECTIONAL_BOUNDARY_GATE_RESULTS.md
 PUBLIC_GRAMMAR_JOINT_ENDPOINT_PAIR_RIGHT_BOUNDARY_RESULTS.md
 PUBLIC_GRAMMAR_HYBRID_ENDPOINT_PAIR_SURFACE_RESULTS.md
@@ -209,7 +210,7 @@ The direct target is:
 ```text
 public_at_winner
     plus public containing-gap grammar
-    determines whether the right-following endpoint residue maximum is o4
+    determines whether the right-boundary defect is zero
 ```
 
 The rule must stay endpoint-space native: it excludes endpoint-pair cells by

@@ -156,3 +156,9 @@ selects the zero-defect right-boundary state. The measured mechanism has the
 right shape for that proof: a selected public position filters the directed
 factor-side boundary to zero signed deviation from the middle available
 residue state.
+
+The proof target is stated in:
+
+```text
+ZERO_DEFECT_THEOREM_TARGET.md
+```
