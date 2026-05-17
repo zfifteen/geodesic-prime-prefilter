@@ -14,6 +14,25 @@ lower-factor terminal-twin lift
 The two observed supported prior-absent replacement rows satisfy both
 conditions.
 
+Under the already-proved mod-30 residue bridge, this is also a phase-lock
+statement:
+
+```text
+{p mod 30, q mod 30} = {13, 19}
+and
+q - p = 0 mod 36
+    =
+p and q occupy the same mod-36 phase
+```
+
+Combining the mod-30 and mod-36 information places the observed replacements in
+two mod-180 lanes:
+
+```text
+43|79
+49|13
+```
+
 ## Measured Profile
 
 Across the 11 public `o6` residue-bridge trigger rows:
@@ -30,6 +49,7 @@ For the supported prior-absent replacement rows:
 observed replacement rows = 2
 observed span mod 36 = 0 rows = 2
 observed span-36 lower-terminal rows = 2
+observed mod-180 lanes = 43|79 and 49|13
 ```
 
 For the old supported pair classes:
@@ -37,12 +57,15 @@ For the old supported pair classes:
 ```text
 prior pair support rows = 8253
 prior span mod 36 = 0 rows = 1336
+prior rows in observed mod-180 lanes = 42
 prior span-36 lower-terminal rows = 0
+prior observed-lane lower-terminal rows = 0
 ```
 
-So span divisibility alone is not the law. The prior surface already contains
-many rows with `q - p` divisible by `36`. The missing lift is the lower terminal
-twin.
+So span divisibility alone is not the law. The mod-180 lane is not the law
+either. The prior surface already contains rows with `q - p` divisible by `36`,
+including rows in the same mod-180 lanes as the replacements. The missing lift
+is the lower terminal twin.
 
 ## Sharper Proof Target
 
@@ -55,7 +78,7 @@ endpoint right boundary 4
 and
 supported prior absence
 and
-factor span divisible by 36
+same factor phase mod 36
     -> lower-factor terminal-twin lift is the only observed reentry route
 ```
 
@@ -63,6 +86,7 @@ Equivalently, the old exact endpoint-pair class remains absent because:
 
 ```text
 old supported pair class has span-36 rows
+and even occupies the observed mod-180 lanes
 but no lower-terminal rows
 ```
 
@@ -85,6 +109,13 @@ p is two units after the previous endpoint
 ```
 
 inside the public selected `o6` residue-bridge trigger.
+
+In the current reduction, `q - p = 0 mod 36` should be read as:
+
+```text
+the two factors have the same mod-36 phase after the mod-30 residue bridge has
+forced them into the 13|19 bridge
+```
 
 ## Reproduction
 

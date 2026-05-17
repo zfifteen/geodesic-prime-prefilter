@@ -399,13 +399,32 @@ and
 the lower factor has terminal-twin lift
 ```
 
+Since the mod-30 residue bridge has already forced the factor residues to
+`13|19` or `19|13`, the span-36 condition is a factor phase-lock:
+
+```text
+p mod 36 = q mod 36
+```
+
+The two observed replacement lanes modulo `180` are:
+
+```text
+43|79
+49|13
+```
+
 Span divisibility alone is not enough:
 
 ```text
 prior pair support rows = 8253
 prior rows with q - p = 0 mod 36 = 1336
+prior rows in observed mod-180 lanes = 42
 prior rows with q - p = 0 mod 36 and lower terminal lift = 0
+prior rows in observed mod-180 lanes with lower terminal lift = 0
 ```
+
+So neither span-36 nor the resulting mod-180 lane is the whole explanation. The
+remaining obstruction is still the lower-factor terminal-twin lift.
 
 So the current proof target has sharpened again:
 

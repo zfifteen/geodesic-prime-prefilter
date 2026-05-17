@@ -18,7 +18,9 @@ OUTPUT_DIR = INPUT_ROOT / "span36_terminal_lift_probe"
 RULE_ID = "pedk_span36_terminal_lift_probe_v1"
 
 
-def enriched_rows_for(payload_rows: list[dict[str, object]]) -> dict[tuple[str, str], dict[str, object]]:
+def enriched_rows_for(
+    payload_rows: list[dict[str, object]],
+) -> dict[tuple[str, str], dict[str, object]]:
     """Return enriched rows keyed by window and case ID."""
     needed_by_window: dict[str, set[str]] = {}
     for row in payload_rows:
@@ -26,7 +28,11 @@ def enriched_rows_for(payload_rows: list[dict[str, object]]) -> dict[tuple[str, 
 
     out = {}
     for window, case_ids in sorted(needed_by_window.items()):
-        path = INPUT_ROOT / f"enriched_multiplication_map_corpus_{window}" / "enriched_rows.jsonl"
+        path = (
+            INPUT_ROOT
+            / f"enriched_multiplication_map_corpus_{window}"
+            / "enriched_rows.jsonl"
+        )
         for row in read_jsonl(path):
             case_id = str(row["case_id"])
             if case_id in case_ids:
@@ -53,6 +59,12 @@ def with_span_fields(rows: list[dict[str, object]]) -> list[dict[str, object]]:
                 "public_key": row.get("public_key"),
                 "p_mod30": p % 30,
                 "q_mod30": q % 30,
+                "p_mod36": p % 36,
+                "q_mod36": q % 36,
+                "p_mod180": p % 180,
+                "q_mod180": q % 180,
+                "factor_mod180_lane": f"{p % 180}|{q % 180}",
+                "same_mod36": p % 36 == q % 36,
                 "span": span,
                 "span_mod36": span % 36,
                 "span_divisible_by_36": span % 36 == 0,
@@ -66,7 +78,10 @@ def with_span_fields(rows: list[dict[str, object]]) -> list[dict[str, object]]:
 
 def count_by(rows: list[dict[str, object]], key: str) -> dict[str, int]:
     """Return JSON-safe counts for one row key."""
-    return {str(value): count for value, count in sorted(Counter(row[key] for row in rows).items())}
+    return {
+        str(value): count
+        for value, count in sorted(Counter(row[key] for row in rows).items())
+    }
 
 
 def conjunction_count(rows: list[dict[str, object]]) -> int:
@@ -78,31 +93,72 @@ def conjunction_count(rows: list[dict[str, object]]) -> int:
     )
 
 
+def rows_in_lanes(
+    rows: list[dict[str, object]],
+    lanes: set[str],
+) -> list[dict[str, object]]:
+    """Return rows occupying one of the supplied mod-180 lanes."""
+    return [
+        row
+        for row in rows
+        if str(row["factor_mod180_lane"]) in lanes
+    ]
+
+
 def summary(
     trigger_rows: list[dict[str, object]],
     observed_rows: list[dict[str, object]],
     prior_rows: list[dict[str, object]],
 ) -> dict[str, object]:
     """Return compact span-36 terminal-lift summary."""
+    observed_lanes = {
+        str(row["factor_mod180_lane"])
+        for row in observed_rows
+    }
+    prior_rows_in_observed_lanes = rows_in_lanes(prior_rows, observed_lanes)
     return {
         "rule_id": RULE_ID,
         "status": "measured_span36_terminal_lift_probe",
         "theorem_status": "hypothesis_not_proved",
         "trigger_row_count": len(trigger_rows),
         "trigger_span_mod36_counts": count_by(trigger_rows, "span_mod36"),
+        "trigger_span36_factor_mod180_lane_counts": count_by(
+            [
+                row
+                for row in trigger_rows
+                if row["span_divisible_by_36"]
+            ],
+            "factor_mod180_lane",
+        ),
         "trigger_span36_lower_terminal_lift_rows": conjunction_count(trigger_rows),
         "observed_replacement_row_count": len(observed_rows),
         "observed_span_mod36_counts": count_by(observed_rows, "span_mod36"),
+        "observed_factor_mod180_lane_counts": count_by(
+            observed_rows,
+            "factor_mod180_lane",
+        ),
         "observed_span36_lower_terminal_lift_rows": conjunction_count(observed_rows),
         "prior_pair_support_row_count": len(prior_rows),
         "prior_span_mod36_counts": count_by(prior_rows, "span_mod36"),
+        "prior_rows_in_observed_mod180_lanes": len(prior_rows_in_observed_lanes),
+        "prior_observed_mod180_lane_counts": count_by(
+            prior_rows_in_observed_lanes,
+            "factor_mod180_lane",
+        ),
+        "prior_observed_lane_lower_terminal_lift_rows": conjunction_count(
+            prior_rows_in_observed_lanes
+        ),
         "prior_span36_lower_terminal_lift_rows": conjunction_count(prior_rows),
         "sharper_arithmetic_statement": (
             "In the current public o6 residue-bridge surface, the observed "
             "supported prior-absent replacements are exactly the rows with "
             "factor span divisible by 36 and lower-factor terminal-twin lift. "
-            "Span divisibility alone is not enough: prior support contains "
-            "span-36 rows, but none with lower terminal lift."
+            "Equivalently, after the mod-30 residue bridge has forced 13|19 "
+            "or 19|13, the replacement rows are the rows where the two "
+            "factors share the same mod-36 phase and then lift through the "
+            "lower terminal twin. The mod-180 lanes alone are not enough: "
+            "prior support already occupies the observed lanes, but none of "
+            "those prior rows has lower terminal lift."
         ),
     }
 
