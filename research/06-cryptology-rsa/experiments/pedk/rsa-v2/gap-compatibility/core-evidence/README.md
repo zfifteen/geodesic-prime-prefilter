@@ -517,10 +517,23 @@ object = exact endpoint-pair exclusion gated by at-winner right-residue absence
 window_21001_23000 = 4 / 12765 exact-pair falsifications, 313 per million
 window_23001_25000 = 3 / 9383 exact-pair falsifications, 319 per million
 window_25001_27000 = 4 / 9584 exact-pair falsifications, 417 per million
+window_27001_30000 = 12 / 12404 exact-pair falsifications, 967 per million
 top_1000_21001_23000 = 0 / 913
 top_1000_23001_25000 = 0 / 896
 top_1000_25001_27000 = 2 / 840
+top_1000_27001_30000 = 3 / 1000
 joint_status = current_best_measured_rule_extraction_surface
+```
+
+The directional boundary comparison records:
+
+```text
+window_27001_30000_right_residues = 12 / 12404, 967 per million
+window_27001_30000_right_residue_phases = 180 / 19119, 9414 per million
+window_27001_30000_both_residues = 280 / 20619, 13579 per million
+window_27001_30000_left_residue_phases = 220 / 10947, 20096 per million
+window_27001_30000_left_residues = 10 / 479, 20876 per million
+direction_status = right_following_boundary_gate_is_active_discriminator
 ```
 
 The exact subtype all-`o6` boundary records:
@@ -766,13 +779,14 @@ exact unordered directed endpoint-pair exclusions
 right-boundary residue class
 ```
 
-Across three rolling strict-forward windows, the right-residue gated exact-pair
+Across four rolling strict-forward windows, the right-residue gated exact-pair
 surface measured:
 
 ```text
 21001..23000: 4 / 12765 exact-pair falsifications, 313 per million
 23001..25000: 3 / 9383 exact-pair falsifications, 319 per million
 25001..27000: 4 / 9584 exact-pair falsifications, 417 per million
+27001..30000: 12 / 12404 exact-pair falsifications, 967 per million
 ```
 
 The top support-ranked cells were especially strong:
@@ -781,8 +795,14 @@ The top support-ranked cells were especially strong:
 21001..23000: top 1000 = 0 / 913
 23001..25000: top 1000 = 0 / 896
 25001..27000: top 1000 = 2 / 840
+27001..30000: top 1000 = 3 / 1000
 ```
 
 This is now the active rule-extraction surface. The right boundary is not the
 factor-side law object by itself. It is the gate that selects unusually stable
 exact directed endpoint-pair absences.
+
+The directional boundary gate check confirms that this is specifically a
+right-following factor-boundary effect. On `27001..30000`, the right-residue
+gate measured `967` per million, while left-residue gating measured `20876`
+per million and both-side residue gating measured `13579` per million.
