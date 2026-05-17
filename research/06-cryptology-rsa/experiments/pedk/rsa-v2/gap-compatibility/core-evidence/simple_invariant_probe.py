@@ -159,7 +159,82 @@ def window_rows(rows: list[dict[str, object]]) -> list[dict[str, object]]:
     return out
 
 
-def summary(rows: list[dict[str, object]], profiles: list[dict[str, object]]) -> dict[str, object]:
+def public_local_rows(rows: list[dict[str, object]], public_axis: str) -> list[dict[str, object]]:
+    """Profile the candidate invariant inside each public word."""
+    groups: dict[str, list[dict[str, object]]] = defaultdict(list)
+    for row in rows:
+        groups[str(row[public_axis])].append(row)
+
+    out = []
+    for public_value, grouped in groups.items():
+        clean = [
+            row for row in grouped
+            if right_residue_max(row) == "o4"
+        ]
+        other = [
+            row for row in grouped
+            if right_residue_max(row) != "o4"
+        ]
+        out.append(
+            {
+                "rule_id": RULE_ID,
+                "public_axis": public_axis,
+                "public_value": public_value,
+                "right_residue_max_o4": status_counts(clean),
+                "right_residue_max_not_o4": status_counts(other),
+            }
+        )
+    out.sort(
+        key=lambda row: (
+            int(row["right_residue_max_o4"]["falsified_count"]),
+            -int(row["right_residue_max_o4"]["testable_count"]),
+            str(row["public_axis"]),
+            str(row["public_value"]),
+        )
+    )
+    return out
+
+
+def public_local_summary(rows: list[dict[str, object]]) -> list[dict[str, object]]:
+    """Return public-local summaries for containing type and full public word."""
+    out = []
+    for public_axis in ("public_containing_exact_type_key", "public_key"):
+        local = public_local_rows(rows, public_axis)
+        o4_testable = [
+            row for row in local
+            if row["right_residue_max_o4"]["testable_count"] > 0
+        ]
+        o4_falsified = [
+            row for row in o4_testable
+            if row["right_residue_max_o4"]["falsified_count"] > 0
+        ]
+        other_testable = [
+            row for row in local
+            if row["right_residue_max_not_o4"]["testable_count"] > 0
+        ]
+        other_falsified = [
+            row for row in other_testable
+            if row["right_residue_max_not_o4"]["falsified_count"] > 0
+        ]
+        out.append(
+            {
+                "rule_id": RULE_ID,
+                "public_axis": public_axis,
+                "public_value_count": len(local),
+                "right_residue_max_o4_testable_public_value_count": len(o4_testable),
+                "right_residue_max_o4_falsified_public_value_count": len(o4_falsified),
+                "right_residue_max_not_o4_testable_public_value_count": len(other_testable),
+                "right_residue_max_not_o4_falsified_public_value_count": len(other_falsified),
+            }
+        )
+    return out
+
+
+def summary(
+    rows: list[dict[str, object]],
+    profiles: list[dict[str, object]],
+    local_summaries: list[dict[str, object]],
+) -> dict[str, object]:
     """Return compact summary for the candidate invariant."""
     clean_rows = [row for row in rows if right_residue_max(row) == "o4"]
     other_rows = [row for row in rows if right_residue_max(row) != "o4"]
@@ -177,6 +252,7 @@ def summary(rows: list[dict[str, object]], profiles: list[dict[str, object]]) ->
         "right_residue_max_o4": status_counts(clean_rows),
         "right_residue_max_not_o4": status_counts(other_rows),
         "right_residue_max_profile": max_rows,
+        "public_local_summary": local_summaries,
     }
 
 
@@ -194,12 +270,17 @@ def main(argv: list[str] | None = None) -> int:
     rows = load_rows(args.input_root)
     profiles = grouped_rows(rows)
     windows = window_rows(rows)
-    out_summary = summary(rows, profiles)
+    local_by_type = public_local_rows(rows, "public_containing_exact_type_key")
+    local_by_word = public_local_rows(rows, "public_key")
+    local_summaries = public_local_summary(rows)
+    out_summary = summary(rows, profiles, local_summaries)
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
     write_json(args.output_dir / "summary.json", out_summary)
     write_jsonl(args.output_dir / "invariant_profile_rows.jsonl", profiles)
     write_jsonl(args.output_dir / "window_rows.jsonl", windows)
+    write_jsonl(args.output_dir / "public_containing_type_rows.jsonl", local_by_type)
+    write_jsonl(args.output_dir / "public_word_rows.jsonl", local_by_word)
     print(json.dumps(out_summary, indent=2, sort_keys=True))
     return 0
 
