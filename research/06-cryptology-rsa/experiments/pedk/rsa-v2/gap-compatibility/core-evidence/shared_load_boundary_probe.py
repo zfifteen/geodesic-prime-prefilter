@@ -102,7 +102,72 @@ def grouped_summary(rows: list[dict[str, object]]) -> list[dict[str, object]]:
     return out
 
 
-def summary(rows: list[dict[str, object]], grouped_rows: list[dict[str, object]]) -> dict[str, object]:
+def local_summary(rows: list[dict[str, object]], public_axis: str) -> list[dict[str, object]]:
+    """Return at-selected local summaries by one public axis."""
+    groups: dict[str, list[dict[str, object]]] = defaultdict(list)
+    for row in rows:
+        if row["public_side"] != "at_winner":
+            continue
+        groups[str(row[public_axis])].append(row)
+
+    out = []
+    for public_value, group in groups.items():
+        load_match = [row for row in group if row["endpoint_matches_public_load"]]
+        load_mismatch = [row for row in group if not row["endpoint_matches_public_load"]]
+        out.append(
+            {
+                "rule_id": RULE_ID,
+                "public_axis": public_axis,
+                "public_value": public_value,
+                "load_match": status_counts(load_match),
+                "load_mismatch": status_counts(load_mismatch),
+            }
+        )
+    out.sort(
+        key=lambda row: (
+            int(row["load_match"]["falsified_count"]),
+            -int(row["load_match"]["testable_count"]),
+            str(row["public_value"]),
+        )
+    )
+    return out
+
+
+def local_summary_index(local_rows: list[dict[str, object]], public_axis: str) -> dict[str, int | str]:
+    """Return compact locality counts for one public axis."""
+    load_match_testable = [
+        row for row in local_rows
+        if int(row["load_match"]["testable_count"]) > 0
+    ]
+    load_match_falsified = [
+        row for row in load_match_testable
+        if int(row["load_match"]["falsified_count"]) > 0
+    ]
+    load_mismatch_testable = [
+        row for row in local_rows
+        if int(row["load_mismatch"]["testable_count"]) > 0
+    ]
+    load_mismatch_falsified = [
+        row for row in load_mismatch_testable
+        if int(row["load_mismatch"]["falsified_count"]) > 0
+    ]
+    return {
+        "rule_id": RULE_ID,
+        "public_axis": public_axis,
+        "public_value_count": len(local_rows),
+        "load_match_testable_public_value_count": len(load_match_testable),
+        "load_match_falsified_public_value_count": len(load_match_falsified),
+        "load_mismatch_testable_public_value_count": len(load_mismatch_testable),
+        "load_mismatch_falsified_public_value_count": len(load_mismatch_falsified),
+    }
+
+
+def summary(
+    rows: list[dict[str, object]],
+    grouped_rows: list[dict[str, object]],
+    local_type_rows: list[dict[str, object]],
+    local_word_rows: list[dict[str, object]],
+) -> dict[str, object]:
     """Return compact shared load-boundary summary."""
     selected = [
         row for row in rows
@@ -128,6 +193,10 @@ def summary(rows: list[dict[str, object]], grouped_rows: list[dict[str, object]]
             len(falsified), len(selected)
         ),
         "grouped_rows": grouped_rows,
+        "locality_summary": [
+            local_summary_index(local_type_rows, "public_containing_exact_type_key"),
+            local_summary_index(local_word_rows, "public_key"),
+        ],
         "sharper_arithmetic_statement": (
             "On the active candidate surface, endpoint transport defect zero is exactly "
             "endpoint_right_boundary == public_selected_divisor_count. The signed "
@@ -142,15 +211,20 @@ def main() -> int:
     """Run the shared load-boundary probe."""
     rows = [load_boundary_row(row) for row in read_jsonl(INPUT_PATH)]
     groups = grouped_summary(rows)
+    local_type_rows = local_summary(rows, "public_containing_exact_type_key")
+    local_word_rows = local_summary(rows, "public_key")
+    out_summary = summary(rows, groups, local_type_rows, local_word_rows)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    write_json(OUTPUT_DIR / "summary.json", summary(rows, groups))
+    write_json(OUTPUT_DIR / "summary.json", out_summary)
     write_jsonl(OUTPUT_DIR / "shared_load_boundary_rows.jsonl", rows)
     write_jsonl(OUTPUT_DIR / "grouped_rows.jsonl", groups)
+    write_jsonl(OUTPUT_DIR / "public_containing_type_rows.jsonl", local_type_rows)
+    write_jsonl(OUTPUT_DIR / "public_word_rows.jsonl", local_word_rows)
     write_jsonl(
         OUTPUT_DIR / "load_delta_mismatch_rows.jsonl",
         [row for row in rows if not row["load_delta_matches_endpoint_defect"]],
     )
-    print(json.dumps(summary(rows, groups), indent=2, sort_keys=True))
+    print(json.dumps(out_summary, indent=2, sort_keys=True))
     return 0
 
 

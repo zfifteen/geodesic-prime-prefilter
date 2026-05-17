@@ -76,6 +76,13 @@ The probe verifies:
 load-delta / endpoint-defect mismatches = 0
 ```
 
+The same load match stays clean locally:
+
+```text
+public containing types with load-match falsification = 0
+public words with load-match falsification = 0
+```
+
 The former two-zero statement is therefore a shared-boundary statement:
 
 ```text
