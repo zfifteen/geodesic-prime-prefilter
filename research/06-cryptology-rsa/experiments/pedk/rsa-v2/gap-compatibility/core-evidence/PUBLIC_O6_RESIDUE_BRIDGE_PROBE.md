@@ -85,6 +85,9 @@ inside the supported prior-absent trigger cells,
 endpoint residues 13|19 or 19|13 lift only through terminal twin
 ```
 
+`LOWER_TERMINAL_TWIN_ORIENTATION_PROBE.md` sharpens this: in the measured
+replacement rows, the terminal-twin lift is on the lower factor side.
+
 The first piece is pure mod-30 arithmetic. The second piece is now the true
 unproved object.
 

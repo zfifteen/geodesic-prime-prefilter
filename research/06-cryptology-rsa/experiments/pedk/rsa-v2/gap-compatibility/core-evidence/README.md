@@ -41,6 +41,7 @@ FACTOR_LEFT_GAP_SEMANTICS_AUDIT.md
 TERMINAL_TWIN_LIFT_PROBE.md
 PUBLIC_O6_TERMINAL_TWIN_TRIGGER_PROBE.md
 PUBLIC_O6_RESIDUE_BRIDGE_PROBE.md
+LOWER_TERMINAL_TWIN_ORIENTATION_PROBE.md
 ZERO_TO_ZERO_LANDED_STATE.md
 CURRENT_STATE_OF_GAP_COMPATIBILITY_LAW.md
 GAP_COMPATIBILITY_HYPOTHESIS.md
@@ -98,6 +99,7 @@ factor_left_gap_semantics_audit.py
 terminal_twin_lift_probe.py
 public_o6_terminal_twin_trigger_probe.py
 public_o6_residue_bridge_probe.py
+lower_terminal_twin_orientation_probe.py
 ```
 
 Supporting helpers remain in this folder because the active scripts import
