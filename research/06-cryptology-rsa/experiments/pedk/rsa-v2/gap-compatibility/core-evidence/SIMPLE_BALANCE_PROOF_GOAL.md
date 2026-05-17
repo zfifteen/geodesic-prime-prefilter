@@ -310,6 +310,28 @@ inside the supported prior-absent trigger cells,
 the 13|19 balanced residue bridge reenters only through terminal-twin lift
 ```
 
+The residue bridge itself is now proved as a mod-30 lemma:
+
+```text
+public o6 selected offset 6
+and
+balanced right endpoint boundary o4|o4
+    -> {p mod 30, q mod 30} = {13, 19}
+```
+
+Reason:
+
+```text
+o4 endpoint residues = {7, 13, 19}
+o4|o4 product residues = {1, 7, 13, 19}
+public o6 selected offset 6 gives N residues {7, 29}
+intersection = {7}
+only o4|o4 products equal to 7 are 13*19 and 19*13
+```
+
+So this part is no longer merely measured. The current unproved object is the
+terminal-twin lift after the residue bridge has forced `{13, 19}`.
+
 The lower terminal-twin orientation probe sharpens the lift direction:
 
 ```text
