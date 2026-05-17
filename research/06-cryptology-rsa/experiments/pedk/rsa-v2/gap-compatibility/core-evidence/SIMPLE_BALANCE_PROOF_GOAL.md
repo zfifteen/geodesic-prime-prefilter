@@ -389,6 +389,35 @@ So the fresh result supports the current reduction. The proof should stay on
 the right-residue boundary and the lower-factor terminal-twin lift, not return
 to a larger phase grammar.
 
+The span-36 terminal-lift probe adds one more arithmetic reduction. In the 11
+public `o6` residue-bridge trigger rows, the two observed supported
+prior-absent replacements are exactly the rows where:
+
+```text
+q - p = 0 mod 36
+and
+the lower factor has terminal-twin lift
+```
+
+Span divisibility alone is not enough:
+
+```text
+prior pair support rows = 8253
+prior rows with q - p = 0 mod 36 = 1336
+prior rows with q - p = 0 mod 36 and lower terminal lift = 0
+```
+
+So the current proof target has sharpened again:
+
+```text
+shared load equality
+and
+balanced endpoint right boundary
+and
+span-36 reentry
+    -> lower-factor terminal-twin lift
+```
+
 The former two-zero statement is therefore a shared-boundary statement:
 
 ```text

@@ -44,6 +44,7 @@ PUBLIC_O6_RESIDUE_BRIDGE_PROBE.md
 PUBLIC_O6_RESIDUE_BRIDGE_LEMMA.md
 LOWER_TERMINAL_TWIN_ORIENTATION_PROBE.md
 FRESH_BAND_34001_35000_FORWARD_CHECK.md
+SPAN36_TERMINAL_LIFT_PROBE.md
 ZERO_TO_ZERO_LANDED_STATE.md
 CURRENT_STATE_OF_GAP_COMPATIBILITY_LAW.md
 GAP_COMPATIBILITY_HYPOTHESIS.md
@@ -102,6 +103,7 @@ terminal_twin_lift_probe.py
 public_o6_terminal_twin_trigger_probe.py
 public_o6_residue_bridge_probe.py
 lower_terminal_twin_orientation_probe.py
+span36_terminal_lift_probe.py
 ```
 
 Supporting helpers remain in this folder because the active scripts import
