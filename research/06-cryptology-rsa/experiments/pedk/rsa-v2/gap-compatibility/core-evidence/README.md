@@ -35,6 +35,7 @@ SHARED_LOAD_BOUNDARY_PROBE.md
 SHARED_LOAD_SUPPORT_PROBE.md
 SHARED_LOAD_REENTRY_PROBE.md
 SHARED_LOAD_LEFT_PHASE_PROBE.md
+SHARED_LOAD_PHASE_SHIFT_PROBE.md
 ZERO_TO_ZERO_LANDED_STATE.md
 CURRENT_STATE_OF_GAP_COMPATIBILITY_LAW.md
 GAP_COMPATIBILITY_HYPOTHESIS.md
@@ -86,6 +87,7 @@ shared_load_boundary_probe.py
 shared_load_support_probe.py
 shared_load_reentry_probe.py
 shared_load_left_phase_probe.py
+shared_load_phase_shift_probe.py
 ```
 
 Supporting helpers remain in this folder because the active scripts import
