@@ -60,6 +60,49 @@ The measured invariant is not a broad compatibility table. It only asks where
 the larger of the two right-following factor offsets lands in that ordered
 three-state set.
 
+## Wheel-Residue Form
+
+The first right-open offset is fixed by the endpoint residue modulo `30`:
+
+| endpoint residue mod 30 | first right-open offset |
+| ---: | ---: |
+| `1` | `6` |
+| `7` | `4` |
+| `11` | `2` |
+| `13` | `4` |
+| `17` | `2` |
+| `19` | `4` |
+| `23` | `6` |
+| `29` | `2` |
+
+So the three endpoint families are:
+
+```text
+offset 2: {11, 17, 29}
+offset 4: {7, 13, 19}
+offset 6: {1, 23}
+```
+
+The clean exclusion surface:
+
+```text
+max(a, b) = 4
+```
+
+therefore has an even smaller endpoint-residue reading:
+
+```text
+both endpoint residues avoid {1, 23}
+and at least one endpoint residue is in {7, 13, 19}
+```
+
+In directed gap language:
+
+```text
+one right side reaches the middle open offset
+neither right side reaches the high open offset
+```
+
 ## Transport
 
 Right movement at `p` and `q` transports through multiplication as:

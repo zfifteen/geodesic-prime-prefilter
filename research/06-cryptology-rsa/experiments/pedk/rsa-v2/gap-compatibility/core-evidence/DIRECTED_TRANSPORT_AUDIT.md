@@ -26,6 +26,19 @@ N = pq
 Let `a` be the first right-following wheel-open offset after `p`, and let `b`
 be the first right-following wheel-open offset after `q`.
 
+The endpoint residue modulo `30` fixes the first right-open offset:
+
+| endpoint residue mod 30 | first right-open offset |
+| ---: | ---: |
+| `1` | `6` |
+| `7` | `4` |
+| `11` | `2` |
+| `13` | `4` |
+| `17` | `2` |
+| `19` | `4` |
+| `23` | `6` |
+| `29` | `2` |
+
 Then the first directed outward movements transport through multiplication as:
 
 ```text
@@ -59,6 +72,11 @@ Total:
 ```text
 observed_at_winner_row_count = 26846
 distinct_transport_key_count = 55
+right_step_endpoint_residue_mismatch_count = 0
+transport_balance_counts:
+    shortfall_below_4 = 4139
+    middle_4_balance = 11132
+    overshoot_above_4 = 11575
 ```
 
 ## Boundary
