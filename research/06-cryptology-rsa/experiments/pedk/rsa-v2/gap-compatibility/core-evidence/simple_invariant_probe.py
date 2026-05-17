@@ -50,6 +50,16 @@ def right_residue_max(row: dict[str, object]) -> str:
     return max(residues, key=lambda label: RESIDUE_RANK[label])
 
 
+def first_open_offset(label: str) -> int:
+    """Return the first right-open offset encoded by one residue label."""
+    return int(label[1:])
+
+
+def right_open_offset_max(row: dict[str, object]) -> int:
+    """Return the larger first right-open offset."""
+    return max(first_open_offset(label) for label in right_residues(row))
+
+
 def right_residue_sum(row: dict[str, object]) -> int:
     """Return the rank sum of the right-following residue pair."""
     return sum(RESIDUE_RANK[label] for label in right_residues(row))
@@ -87,6 +97,8 @@ def invariant_values(row: dict[str, object]) -> dict[str, str]:
         "right_boundary_defect": str(right_boundary_defect(row)),
         "right_residue_pair": str(row["right_boundary_residues"]),
         "right_residue_max": max_residue,
+        "right_open_offset_max": str(right_open_offset_max(row)),
+        "right_open_offset_max_is_4": str(right_open_offset_max(row) == 4).lower(),
         "right_residue_sum": str(right_residue_sum(row)),
         "right_residue_span": str(right_residue_span(row)),
         "right_residue_touches_o6": str("o6" in residues).lower(),
@@ -270,6 +282,7 @@ def exclusion_rule_rows(rows: list[dict[str, object]]) -> list[dict[str, object]
                 "pair_identity_key": row["pair_identity_key"],
                 "right_boundary_residues": row["right_boundary_residues"],
                 "right_residue_max": "o4",
+                "right_open_offset_max": 4,
                 "right_boundary_balance": "middle_o4_balance",
                 "right_boundary_defect": 0,
                 "left_boundary_residues": row["left_boundary_residues"],
@@ -282,7 +295,7 @@ def exclusion_rule_rows(rows: list[dict[str, object]]) -> list[dict[str, object]
                 "forward_observed_count": row["forward_observed_count"],
                 "exact_pair_falsified": row["exact_pair_falsified"],
                 "status": row["status"],
-                "exclusion_rule": "public_at_winner_and_right_residue_max_o4",
+                "exclusion_rule": "public_at_winner_and_max_right_open_offset_4",
             }
         )
     out.sort(
@@ -322,6 +335,7 @@ def summary(
         "theorem_status": "hypothesis_not_proved",
         "inference_status": "not_live_pedk_inference",
         "candidate_invariant": "under public_at_winner, middle_o4_balance is the clean exclusion carrier",
+        "candidate_invariant_offset_form": "under public_at_winner, max(a,b)=4 is the clean exclusion carrier",
         "window_count": len(WINDOWS),
         "right_residue_max_o4": status_counts(clean_rows),
         "right_residue_max_not_o4": status_counts(other_rows),

@@ -11,6 +11,7 @@ The active object is:
 public at-winner condition
     selects the middle right-following factor endpoint maximum
         max(right residues)=o4
+        max(first right-open offsets)=4
     which exclude exact endpoint-pair cells
 ```
 
@@ -50,6 +51,20 @@ For the two factor endpoints together, the clean condition is:
 
 ```text
 max(right endpoint residue)=o4
+```
+
+In the first-open offset form, this is:
+
+```text
+max(a, b)=4
+```
+
+The transport identity is:
+
+```text
+(p + a)q - pq = aq
+p(q + b) - pq = bp
+(p + a)(q + b) - pq = aq + bp + ab
 ```
 
 That single condition contains exactly the two previously clean classes:
@@ -163,6 +178,7 @@ PUBLIC_GRAMMAR_FORWARD_BOUNDARY_LAW_PROFILE.md
 SIMPLE_RIGHT_RESIDUE_INVARIANT.md
 SIMPLE_ENDPOINT_EXCLUSION_RULE.md
 PUBLIC_SELECTED_POSITION_FILTER_MECHANISM.md
+TRANSPORT_BALANCE_INVARIANT.md
 ZERO_DEFECT_THEOREM_TARGET.md
 DIRECTED_TRANSPORT_AUDIT.md
 PUBLIC_GRAMMAR_DIRECTIONAL_BOUNDARY_GATE_RESULTS.md
