@@ -192,7 +192,7 @@ and max(a_E, b_E) = 4
 
 ## Measured Evidence
 
-Across the five strict-forward windows:
+Across the six strict-forward windows:
 
 ```text
 21001..23000
@@ -200,20 +200,21 @@ Across the five strict-forward windows:
 25001..27000
 27001..30000
 30001..32000
+32001..34000
 ```
 
 the zero-defect line has:
 
 ```text
-37834 / 37834 survived
-0 / 37834 exact endpoint-pair falsifications
+45337 / 45337 survived
+0 / 45337 exact endpoint-pair falsifications
 ```
 
 The off-balance lines leak:
 
 ```text
-defect = -1: 2 / 11352 exact endpoint-pair falsifications
-defect = +1: 24 / 4882 exact endpoint-pair falsifications
+defect = -1: 3 / 14232 exact endpoint-pair falsifications
+defect = +1: 27 / 5663 exact endpoint-pair falsifications
 ```
 
 The same zero-defect condition stays clean inside the public grammar:
@@ -222,7 +223,7 @@ The same zero-defect condition stays clean inside the public grammar:
 public_containing_exact_type_count = 9
 right_residue_max_o4_falsified_type_count = 0
 
-full_public_word_testable_count = 143
+full_public_word_testable_count = 149
 right_residue_max_o4_falsified_public_word_count = 0
 ```
 

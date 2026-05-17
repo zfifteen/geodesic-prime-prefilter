@@ -23,6 +23,7 @@ WINDOWS = (
     ("25001_27000", "enriched_multiplication_map_corpus_25001_27000"),
     ("27001_30000", "enriched_multiplication_map_corpus_27001_30000"),
     ("30001_32000", "enriched_multiplication_map_corpus_30001_32000"),
+    ("32001_34000", "enriched_multiplication_map_corpus_32001_34000"),
 )
 
 RESIDUE_RANK = {"o2": 1, "o4": 2, "o6": 3}
@@ -38,6 +39,12 @@ RIGHT_OPEN_OFFSET_BY_ENDPOINT_RESIDUE = {
     23: 6,
     29: 2,
 }
+ENDPOINT_FAMILY_BY_OFFSET = {
+    2: "low_2",
+    4: "middle_4",
+    6: "high_6",
+}
+ENDPOINT_FAMILY_ORDER = {"low_2": 0, "middle_4": 1, "high_6": 2}
 
 
 def read_jsonl(path: Path) -> list[dict[str, object]]:
@@ -77,6 +84,60 @@ def transport_balance(p_step: int, q_step: int) -> str:
     if max_step == 6:
         return "overshoot_above_4"
     raise ValueError(f"unknown right-open offset maximum: {max_step}")
+
+
+def endpoint_family(step: int) -> str:
+    """Return the ordered endpoint family for one first right-open offset."""
+    return ENDPOINT_FAMILY_BY_OFFSET[step]
+
+
+def endpoint_family_pair(first: str, second: str) -> str:
+    """Return a sorted endpoint-family pair label."""
+    values = sorted((first, second), key=lambda item: ENDPOINT_FAMILY_ORDER[item])
+    return "|".join(values)
+
+
+def endpoint_family_truth_rows() -> list[dict[str, object]]:
+    """Return the exact wheel table behind the transport-balance invariant."""
+    residues_by_family: dict[str, list[int]] = {
+        family: sorted(
+            residue
+            for residue, offset in RIGHT_OPEN_OFFSET_BY_ENDPOINT_RESIDUE.items()
+            if ENDPOINT_FAMILY_BY_OFFSET[offset] == family
+        )
+        for family in ENDPOINT_FAMILY_ORDER
+    }
+    rows = []
+    for left_family in ENDPOINT_FAMILY_ORDER:
+        for right_family in ENDPOINT_FAMILY_ORDER:
+            if ENDPOINT_FAMILY_ORDER[left_family] > ENDPOINT_FAMILY_ORDER[right_family]:
+                continue
+            left_residues = residues_by_family[left_family]
+            right_residues = residues_by_family[right_family]
+            offsets = [
+                RIGHT_OPEN_OFFSET_BY_ENDPOINT_RESIDUE[left_residues[0]],
+                RIGHT_OPEN_OFFSET_BY_ENDPOINT_RESIDUE[right_residues[0]],
+            ]
+            product_residues = sorted(
+                {
+                    (left * right) % 30
+                    for left in left_residues
+                    for right in right_residues
+                }
+            )
+            rows.append(
+                {
+                    "rule_id": RULE_ID,
+                    "endpoint_family_pair": endpoint_family_pair(left_family, right_family),
+                    "left_family_residues_mod30": left_residues,
+                    "right_family_residues_mod30": right_residues,
+                    "right_open_offset_max": max(offsets),
+                    "transport_balance": transport_balance(offsets[0], offsets[1]),
+                    "product_residues_mod30": product_residues,
+                    "excluded_by_simple_rule": max(offsets) == 4,
+                }
+            )
+    return rows
 
 
 def right_boundary_defect(row: dict[str, object]) -> int:
@@ -164,6 +225,13 @@ def summary(rows: list[dict[str, object]]) -> dict[str, object]:
         )
         for row in rows
     )
+    family_counts = Counter(
+        endpoint_family_pair(
+            endpoint_family(int(row["p_right_step"])),
+            endpoint_family(int(row["q_right_step"])),
+        )
+        for row in rows
+    )
     return {
         "rule_id": RULE_ID,
         "status": "measured_directed_transport_audit",
@@ -174,6 +242,7 @@ def summary(rows: list[dict[str, object]]) -> dict[str, object]:
         "right_step_endpoint_residue_mismatch_count": len(residue_step_mismatches),
         "defect_counts": dict(sorted(defect_counts.items())),
         "transport_balance_counts": dict(sorted(balance_counts.items())),
+        "observed_endpoint_family_pair_counts": dict(sorted(family_counts.items())),
         "distinct_transport_key_count": len(transport_counts),
         "top_transport_keys": [
             {
@@ -205,12 +274,14 @@ def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     rows = load_rows(args.input_root)
     defect_rows = counter_rows(Counter(row["right_boundary_defect"] for row in rows), "right_boundary_defect")
+    family_truth_rows = endpoint_family_truth_rows()
     out_summary = summary(rows)
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
     write_json(args.output_dir / "summary.json", out_summary)
     write_jsonl(args.output_dir / "transport_rows.jsonl", rows)
     write_jsonl(args.output_dir / "defect_count_rows.jsonl", defect_rows)
+    write_jsonl(args.output_dir / "endpoint_family_truth_rows.jsonl", family_truth_rows)
     print(json.dumps(out_summary, indent=2, sort_keys=True))
     return 0
 

@@ -84,21 +84,21 @@ right_boundary_balance = middle_o4_balance
 The shortfall and overshoot cases do not remain clean. They are exactly where
 forward observations re-enter the candidate surface as falsifications.
 
-Measured over the current five strict-forward windows:
+Measured over the current six strict-forward windows:
 
 | right-boundary balance | condition | testable endpoint cells | falsifications |
 | --- | --- | ---: | ---: |
-| `middle_o4_balance` | `max=o4` | `37834` | `0` |
-| `shortfall_below_o4` | `max=o2` | `11352` | `2` |
-| `overshoot_above_o4` | `max=o6` | `4882` | `24` |
+| `middle_o4_balance` | `max=o4` | `45337` | `0` |
+| `shortfall_below_o4` | `max=o2` | `14232` | `3` |
+| `overshoot_above_o4` | `max=o6` | `5663` | `27` |
 
 In zero-defect form:
 
 | right-boundary defect | testable endpoint cells | falsifications |
 | ---: | ---: | ---: |
-| `0` | `37834` | `0` |
-| `-1` | `11352` | `2` |
-| `+1` | `4882` | `24` |
+| `0` | `45337` | `0` |
+| `-1` | `14232` | `3` |
+| `+1` | `5663` | `27` |
 
 The public selected position therefore does not merely prefer a residue label.
 It separates the candidate endpoint cells into a middle boundary state that
@@ -146,8 +146,8 @@ classical factoring as inference.
 theorem_status = hypothesis_not_proved
 inference_status = not_live_pedk_inference
 measured_status = fresh_forward_supported_mechanism_candidate
-tested_windows = 5
-excluded_endpoint_cell_count = 37834
+tested_windows = 6
+excluded_endpoint_cell_count = 45337
 exact_falsifications = 0
 ```
 

@@ -104,7 +104,7 @@ max=o6 -> defect=+1 -> overshoot_above_o4
 
 ## Measured Status
 
-Across five strict-forward windows:
+Across six strict-forward windows:
 
 ```text
 21001..23000
@@ -112,22 +112,23 @@ Across five strict-forward windows:
 25001..27000
 27001..30000
 30001..32000
+32001..34000
 ```
 
 the rule excludes:
 
 ```text
-excluded_endpoint_cell_count = 37834
+excluded_endpoint_cell_count = 45337
 exact_falsifications = 0
 ```
 
 The complement is not clean:
 
 ```text
-max(right_residue)=o2 -> 2 / 11352 exact-pair falsifications
-max(right_residue)=o6 -> 24 / 4882 exact-pair falsifications
-right_boundary_defect=-1 -> 2 / 11352 exact-pair falsifications
-right_boundary_defect=+1 -> 24 / 4882 exact-pair falsifications
+max(right_residue)=o2 -> 3 / 14232 exact-pair falsifications
+max(right_residue)=o6 -> 27 / 5663 exact-pair falsifications
+right_boundary_defect=-1 -> 3 / 14232 exact-pair falsifications
+right_boundary_defect=+1 -> 27 / 5663 exact-pair falsifications
 ```
 
 Public-locality check:
@@ -135,15 +136,15 @@ Public-locality check:
 ```text
 public_containing_exact_type_count = 9
 right_residue_max_o4_falsified_type_count = 0
-full_public_word_testable_count = 143
+full_public_word_testable_count = 149
 right_residue_max_o4_falsified_public_word_count = 0
 ```
 
-The unchanged rule also survived the first fresh extension window:
+The unchanged rule also survived the newest fresh extension window:
 
 ```text
-fresh_window = 30001..32000
-fresh_testable_endpoint_cells = 7216
+fresh_window = 32001..34000
+fresh_testable_endpoint_cells = 7503
 fresh_exact_falsifications = 0
 ```
 

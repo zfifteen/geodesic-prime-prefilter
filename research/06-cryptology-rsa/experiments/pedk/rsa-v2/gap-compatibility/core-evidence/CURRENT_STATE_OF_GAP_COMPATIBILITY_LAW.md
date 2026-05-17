@@ -92,7 +92,7 @@ Rres=o4|o4
 ## Measured Boundary
 
 The current boundary-law profile measures exact endpoint-pair falsifications
-across five strict-forward windows:
+across six strict-forward windows:
 
 ```text
 21001..23000
@@ -100,53 +100,54 @@ across five strict-forward windows:
 25001..27000
 27001..30000
 30001..32000
+32001..34000
 ```
 
 The clean maximum-residue condition has not falsified:
 
 | right-following maximum residue | exact-pair falsifications | tested exact-pair cells |
 | --- | ---: | ---: |
-| `o4` | `0` | `37834` |
+| `o4` | `0` | `45337` |
 
 In balance language:
 
 | right-boundary balance | exact-pair falsifications | tested exact-pair cells |
 | --- | ---: | ---: |
-| `middle_o4_balance` | `0` | `37834` |
-| `shortfall_below_o4` | `2` | `11352` |
-| `overshoot_above_o4` | `24` | `4882` |
+| `middle_o4_balance` | `0` | `45337` |
+| `shortfall_below_o4` | `3` | `14232` |
+| `overshoot_above_o4` | `27` | `5663` |
 
 Equivalently:
 
 | right-boundary defect | exact-pair falsifications | tested exact-pair cells |
 | ---: | ---: | ---: |
-| `0` | `0` | `37834` |
-| `-1` | `2` | `11352` |
-| `+1` | `24` | `4882` |
+| `0` | `0` | `45337` |
+| `-1` | `3` | `14232` |
+| `+1` | `27` | `5663` |
 
 The neighboring maximum-residue values are not clean:
 
 | right-following maximum residue | exact-pair falsifications | tested exact-pair cells |
 | --- | ---: | ---: |
-| `o2` | `2` | `11352` |
-| `o6` | `24` | `4882` |
+| `o2` | `3` | `14232` |
+| `o6` | `27` | `5663` |
 
 The split by the older pair labels is:
 
 | right-following class | exact-pair falsifications | tested exact-pair cells |
 | --- | ---: | ---: |
-| `Rres=o2|o4` | `0` | `27789` |
-| `Rres=o4|o4` | `0` | `10045` |
-| combined clean classes | `0` | `37834` |
+| `Rres=o2|o4` | `0` | `33318` |
+| `Rres=o4|o4` | `0` | `12019` |
+| combined clean classes | `0` | `45337` |
 
 All observed right-gated falsifications fall outside those clean classes:
 
 | right-following class | exact-pair falsifications | tested exact-pair cells |
 | --- | ---: | ---: |
-| `Rres=o2|o2` | `2` | `11352` |
-| `Rres=o2|o6` | `4` | `874` |
-| `Rres=o4|o6` | `8` | `996` |
-| `Rres=o6|o6` | `12` | `3012` |
+| `Rres=o2|o2` | `3` | `14232` |
+| `Rres=o2|o6` | `4` | `1060` |
+| `Rres=o4|o6` | `11` | `1143` |
+| `Rres=o6|o6` | `12` | `3460` |
 
 This is the strongest current signal because it separates a zero-falsification
 middle-maximum family from neighboring right-following families that do
@@ -154,9 +155,9 @@ falsify.
 
 The middle-maximum family is also public-local. It has zero falsified exact
 endpoint-pair cells inside all `9` public containing-gap exact types where it
-is testable, and zero falsified exact endpoint-pair cells inside all `143`
+is testable, and zero falsified exact endpoint-pair cells inside all `149`
 full public words where it is testable. The complement falsifies inside `8` of
-the `9` containing-gap exact types and inside `17` full public words.
+the `9` containing-gap exact types and inside `19` full public words.
 
 ## Why The Older Ladder Was Moved
 
