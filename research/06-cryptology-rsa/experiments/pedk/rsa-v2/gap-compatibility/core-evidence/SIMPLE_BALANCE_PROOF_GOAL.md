@@ -328,12 +328,20 @@ observed terminal side q only = 0
 observed terminal side p|q = 0
 ```
 
+The lower terminal residue is trigger-specific on the replacement surface:
+
+```text
+o4 even -> o6@mid -> o4 odd: lower terminal residue = 13
+o4 odd  -> o6@early -> o6 odd: lower terminal residue = 19
+```
+
 The current statement is therefore:
 
 ```text
 inside the supported prior-absent trigger cells,
 the 13|19 balanced residue bridge reenters only when the lower factor is the
-right endpoint of a terminal twin endpoint pair
+right endpoint of a terminal twin endpoint pair, with the lower residue chosen
+by the public trigger
 ```
 
 The former two-zero statement is therefore a shared-boundary statement:
