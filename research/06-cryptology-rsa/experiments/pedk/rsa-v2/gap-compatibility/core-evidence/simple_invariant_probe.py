@@ -230,10 +230,53 @@ def public_local_summary(rows: list[dict[str, object]]) -> list[dict[str, object
     return out
 
 
+def exclusion_rule_rows(rows: list[dict[str, object]]) -> list[dict[str, object]]:
+    """Return endpoint-pair cells excluded by the simple invariant."""
+    out = []
+    for row in rows:
+        if row["status"] == "not_testable_forward":
+            continue
+        if right_residue_max(row) != "o4":
+            continue
+        out.append(
+            {
+                "rule_id": RULE_ID,
+                "window": row["window"],
+                "public_key": row["public_key"],
+                "public_containing_exact_type_key": row[
+                    "public_containing_exact_type_key"
+                ],
+                "pair_identity_key": row["pair_identity_key"],
+                "right_boundary_residues": row["right_boundary_residues"],
+                "right_residue_max": "o4",
+                "left_boundary_residues": row["left_boundary_residues"],
+                "right_boundary_phases": row["right_boundary_phases"],
+                "left_boundary_phases": row["left_boundary_phases"],
+                "minimum_prior_pair_support": row["minimum_prior_pair_support"],
+                "minimum_prior_boundary_support": row[
+                    "minimum_prior_boundary_support"
+                ],
+                "forward_observed_count": row["forward_observed_count"],
+                "exact_pair_falsified": row["exact_pair_falsified"],
+                "status": row["status"],
+                "exclusion_rule": "public_at_winner_and_right_residue_max_o4",
+            }
+        )
+    out.sort(
+        key=lambda row: (
+            str(row["window"]),
+            str(row["public_key"]),
+            str(row["pair_identity_key"]),
+        )
+    )
+    return out
+
+
 def summary(
     rows: list[dict[str, object]],
     profiles: list[dict[str, object]],
     local_summaries: list[dict[str, object]],
+    excluded_rows: list[dict[str, object]],
 ) -> dict[str, object]:
     """Return compact summary for the candidate invariant."""
     clean_rows = [row for row in rows if right_residue_max(row) == "o4"]
@@ -251,6 +294,7 @@ def summary(
         "window_count": len(WINDOWS),
         "right_residue_max_o4": status_counts(clean_rows),
         "right_residue_max_not_o4": status_counts(other_rows),
+        "excluded_endpoint_cell_count": len(excluded_rows),
         "right_residue_max_profile": max_rows,
         "public_local_summary": local_summaries,
     }
@@ -273,7 +317,8 @@ def main(argv: list[str] | None = None) -> int:
     local_by_type = public_local_rows(rows, "public_containing_exact_type_key")
     local_by_word = public_local_rows(rows, "public_key")
     local_summaries = public_local_summary(rows)
-    out_summary = summary(rows, profiles, local_summaries)
+    excluded_rows = exclusion_rule_rows(rows)
+    out_summary = summary(rows, profiles, local_summaries, excluded_rows)
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
     write_json(args.output_dir / "summary.json", out_summary)
@@ -281,6 +326,7 @@ def main(argv: list[str] | None = None) -> int:
     write_jsonl(args.output_dir / "window_rows.jsonl", windows)
     write_jsonl(args.output_dir / "public_containing_type_rows.jsonl", local_by_type)
     write_jsonl(args.output_dir / "public_word_rows.jsonl", local_by_word)
+    write_jsonl(args.output_dir / "excluded_endpoint_cell_rows.jsonl", excluded_rows)
     print(json.dumps(out_summary, indent=2, sort_keys=True))
     return 0
 

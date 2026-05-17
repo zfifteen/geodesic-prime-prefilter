@@ -31,6 +31,7 @@ Read these files first:
 CURRENT_STATE_OF_GAP_COMPATIBILITY_LAW.md
 GAP_COMPATIBILITY_HYPOTHESIS.md
 SIMPLE_RIGHT_RESIDUE_INVARIANT.md
+SIMPLE_ENDPOINT_EXCLUSION_RULE.md
 PUBLIC_GRAMMAR_FORWARD_BOUNDARY_LAW_PROFILE.md
 PUBLIC_GRAMMAR_DIRECTIONAL_BOUNDARY_GATE_RESULTS.md
 PUBLIC_GRAMMAR_JOINT_ENDPOINT_PAIR_RIGHT_BOUNDARY_RESULTS.md
@@ -99,6 +100,7 @@ Generated output is written under:
 
 ```text
 output/forward_boundary_law_profile/
+output/simple_invariant_probe/
 ```
 
 The `output/` tree is ignored. It is scratch evidence output, not committed
