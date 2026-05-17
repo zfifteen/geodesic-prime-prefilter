@@ -22,7 +22,15 @@ public_selected_defect(W) =
 The endpoint transport defect is:
 
 ```text
-endpoint_transport_defect(E) = max(a_E, b_E) - 4
+endpoint_transport_defect(E) =
+    (max(a_E, b_E) - 4) / 2
+```
+
+Equivalently:
+
+```text
+endpoint_transport_defect(E) =
+    max(rank(p_right_residue), rank(q_right_residue)) - rank(o4)
 ```
 
 where `a_E` and `b_E` are the first right-open offsets after the two endpoint
@@ -66,6 +74,10 @@ The source surface contains:
 ```text
 source_candidate_rows = 101538
 ```
+
+The kernel consumes candidate rows produced by `public_selected_contrast_probe.py`.
+That upstream surface supplies the `prior_absent(W,E)` and `supported(E)`
+contract. The kernel then filters those rows to the zero-to-zero cell.
 
 The zero-to-zero rule is the only clean supported public-side by
 endpoint-defect cell currently measured:

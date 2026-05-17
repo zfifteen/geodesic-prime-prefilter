@@ -59,7 +59,15 @@ b = first right-open offset after q
 The endpoint transport defect is:
 
 ```text
-endpoint_transport_defect(E) = max(a, b) - 4
+endpoint_transport_defect(E) =
+    (max(a, b) - 4) / 2
+```
+
+Equivalently:
+
+```text
+endpoint_transport_defect(E) =
+    max(rank(p_right_residue), rank(q_right_residue)) - rank(o4)
 ```
 
 The zero endpoint condition is:

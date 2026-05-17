@@ -22,6 +22,7 @@ def is_rule_row(row: dict[str, object]) -> bool:
     return (
         row["public_side"] == "at_winner"
         and int(row["endpoint_transport_defect"]) == 0
+        and bool(row["compact_endpoint_predicate"])
         and row["status"] != "not_testable_forward"
     )
 
@@ -40,6 +41,7 @@ def rule_rows(rows: list[dict[str, object]]) -> list[dict[str, object]]:
                 ),
                 "window": row["window"],
                 "public_key": row["public_key"],
+                "public_side": row["public_side"],
                 "public_containing_exact_type_key": row[
                     "public_containing_exact_type_key"
                 ],
@@ -72,6 +74,10 @@ def summary(rows: list[dict[str, object]], excluded_rows: list[dict[str, object]
         "theorem_status": "hypothesis_not_proved",
         "inference_status": "not_live_pedk_inference",
         "source_candidate_rows": len(rows),
+        "source_surface_contract": (
+            "candidate rows are emitted by public_selected_contrast_probe.py; "
+            "that upstream surface supplies prior_absent(W,E) and supported(E)"
+        ),
         "excluded_endpoint_cell_count": len(excluded_rows),
         "exact_falsification_count": len(falsified),
         "falsification_rate_ppm": rate_ppm(len(falsified), len(excluded_rows)),
