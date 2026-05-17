@@ -68,6 +68,34 @@ The complement is not clean:
 | `25001..27000` | `3136` | `4` |
 | `27001..30000` | `4052` | `12` |
 
+## Public-Local Check
+
+The same condition stays clean inside the public gap grammar itself.
+
+At the containing-gap type level:
+
+```text
+public_containing_exact_type_count = 9
+right_residue_max_o4_testable_type_count = 9
+right_residue_max_o4_falsified_type_count = 0
+right_residue_max_not_o4_testable_type_count = 9
+right_residue_max_not_o4_falsified_type_count = 8
+```
+
+At the full public-word level:
+
+```text
+public_word_count = 168
+right_residue_max_o4_testable_public_word_count = 135
+right_residue_max_o4_falsified_public_word_count = 0
+right_residue_max_not_o4_testable_public_word_count = 97
+right_residue_max_not_o4_falsified_public_word_count = 15
+```
+
+This matters because the clean result is not only an aggregate over all public
+words. Wherever `max(right endpoint residue)=o4` is testable inside a public
+containing-gap type or full public word, it remains clean.
+
 ## Interpretation
 
 The simple measured object is not the pair label itself. It is the upper
@@ -122,4 +150,6 @@ Primary outputs:
 output/simple_invariant_probe/summary.json
 output/simple_invariant_probe/invariant_profile_rows.jsonl
 output/simple_invariant_probe/window_rows.jsonl
+output/simple_invariant_probe/public_containing_type_rows.jsonl
+output/simple_invariant_probe/public_word_rows.jsonl
 ```

@@ -104,6 +104,12 @@ This is the strongest current signal because it separates a zero-falsification
 middle-maximum family from neighboring right-following families that do
 falsify.
 
+The middle-maximum family is also public-local. It has zero falsified exact
+endpoint-pair cells inside all `9` public containing-gap exact types where it
+is testable, and zero falsified exact endpoint-pair cells inside all `135`
+full public words where it is testable. The complement falsifies inside `8` of
+the `9` containing-gap exact types and inside `15` full public words.
+
 ## Why The Older Ladder Was Moved
 
 The earlier branch tried many coarser representations:
@@ -160,6 +166,7 @@ directional_boundary_gate_surface.py
 endpoint_pair_family_profile.py
 enriched_multiplication_map_corpus.py
 first_gap_compatibility_check.py
+forward_boundary_law_profile.py
 gwr_relative_all_o6_boundary.py
 hybrid_endpoint_pair_surface.py
 intermediate_projection_surface.py
