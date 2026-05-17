@@ -41,6 +41,11 @@ The observed factor residues are:
 19|13
 ```
 
+`PUBLIC_O6_RESIDUE_BRIDGE_PROBE.md` shows why these are the only possible
+balanced residues under the two trigger public keys: `Rres=o4|o4` restricts the
+endpoint residues to `7, 13, 19`, and product residue `7` leaves only `13|19`
+or `19|13`.
+
 The observed terminal-twin lifts are:
 
 ```text

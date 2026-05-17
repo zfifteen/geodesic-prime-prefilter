@@ -271,6 +271,45 @@ For the two supported prior-absent public o6_d4_a6 balanced right-boundary
 cells, any forward reentry of Rres=o4|o4 requires terminal-twin lift.
 ```
 
+The public o6 residue bridge probe extracts the wheel arithmetic underneath the
+two triggers:
+
+```text
+endpoint residues with first right-open offset 4 = 7, 13, 19
+N mod 30 = 7
+only ordered o4|o4 factor residue pairs with product 7 = 13|19 and 19|13
+```
+
+So:
+
+```text
+public selected residue 7
+and
+balanced right endpoint boundary o4|o4
+    -> factor residues are 13 and 19, in some order
+```
+
+The residue bridge alone does not force terminal-twin lift:
+
+```text
+trigger Rres=o4|o4 rows = 11
+trigger terminal-twin rows = 3
+```
+
+The supported prior-absent reentry condition is the active filter:
+
+```text
+observed replacement rows = 2
+observed terminal-twin replacement rows = 2
+```
+
+The remaining proof object is therefore:
+
+```text
+inside the supported prior-absent trigger cells,
+the 13|19 balanced residue bridge reenters only through terminal-twin lift
+```
+
 The former two-zero statement is therefore a shared-boundary statement:
 
 ```text
@@ -469,4 +508,5 @@ proof_reduction_status = reduced_to_terminal_twin_lift_lemma
 ```
 
 The next move is to prove why shared load equality forces the replacement lift
-through terminal-twin lift in the two public o6 trigger neighborhoods.
+through terminal-twin lift in the two public o6 trigger neighborhoods after the
+residue bridge has forced factor residues `13` and `19`.
