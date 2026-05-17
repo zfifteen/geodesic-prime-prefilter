@@ -121,6 +121,26 @@ max(right endpoint residue ranks) = 2
 The right-following side must reach the middle residue and must not reach the
 high residue. Too low and too high both leave the clean surface.
 
+Equivalently, define:
+
+```text
+right_boundary_defect =
+    max(right endpoint residue ranks) - 2
+```
+
+The clean condition is:
+
+```text
+right_boundary_defect = 0
+```
+
+The two off-balance cases are:
+
+```text
+right_boundary_defect = -1
+right_boundary_defect = +1
+```
+
 This is the first genuinely simple invariant candidate in this branch:
 
 ```text
@@ -135,6 +155,7 @@ middle right-following endpoint residue maximum
 theorem_status = hypothesis_not_proved
 inference_status = not_live_pedk_inference
 measured_status = zero_falsification_candidate_invariant
+invariant_form = right_boundary_defect_equals_zero
 baseline_tested_exact_cells = 30618
 baseline_exact_falsifications = 0
 fresh_extension_tested_exact_cells = 7216

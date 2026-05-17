@@ -67,13 +67,14 @@ Equivalently:
 
 ```text
 right_boundary_balance(E) = middle_o4_balance
+right_boundary_defect(E) = 0
 ```
 
 with the two off-balance states:
 
 ```text
-max=o2 -> shortfall_below_o4
-max=o6 -> overshoot_above_o4
+max=o2 -> defect=-1 -> shortfall_below_o4
+max=o6 -> defect=+1 -> overshoot_above_o4
 ```
 
 ## Measured Status
@@ -100,6 +101,8 @@ The complement is not clean:
 ```text
 max(right_residue)=o2 -> 2 / 11352 exact-pair falsifications
 max(right_residue)=o6 -> 24 / 4882 exact-pair falsifications
+right_boundary_defect=-1 -> 2 / 11352 exact-pair falsifications
+right_boundary_defect=+1 -> 24 / 4882 exact-pair falsifications
 ```
 
 Public-locality check:

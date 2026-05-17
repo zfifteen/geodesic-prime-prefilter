@@ -24,7 +24,7 @@ theorem_status = hypothesis_not_proved
 inference_status = not_live_pedk_inference
 measured_status = strong_forward_stable_compatibility_signal
 active_surface = public_at_winner -> right_following_endpoint_residue_maximum
-candidate_law = middle_o4_balance excludes exact endpoint-pair cells
+candidate_law = zero right-boundary defect excludes exact endpoint-pair cells
 rule_status = endpoint_space_exclusion_rule_not_factor_recovery
 ```
 
@@ -85,6 +85,14 @@ In balance language:
 | `middle_o4_balance` | `0` | `37834` |
 | `shortfall_below_o4` | `2` | `11352` |
 | `overshoot_above_o4` | `24` | `4882` |
+
+Equivalently:
+
+| right-boundary defect | exact-pair falsifications | tested exact-pair cells |
+| ---: | ---: | ---: |
+| `0` | `0` | `37834` |
+| `-1` | `2` | `11352` |
+| `+1` | `24` | `4882` |
 
 The neighboring maximum-residue values are not clean:
 

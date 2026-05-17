@@ -35,6 +35,37 @@ max = o2  -> shortfall below the middle boundary
 max = o6  -> overshoot above the middle boundary
 ```
 
+## Zero-Defect Form
+
+The same condition has a scalar form. Assign ranks:
+
+```text
+rank(o2) = 1
+rank(o4) = 2
+rank(o6) = 3
+```
+
+Define the right-boundary defect:
+
+```text
+right_boundary_defect(E) =
+    max(rank(p_right_residue), rank(q_right_residue)) - rank(o4)
+```
+
+Then:
+
+```text
+defect = -1  -> shortfall_below_o4
+defect =  0  -> middle_o4_balance
+defect = +1  -> overshoot_above_o4
+```
+
+The measured invariant is the zero-defect condition:
+
+```text
+right_boundary_defect(E) = 0
+```
+
 ## Why This Explains The Filter
 
 The rule is not a statement about every observed true factor pair. It is a
@@ -61,6 +92,14 @@ Measured over the current five strict-forward windows:
 | `shortfall_below_o4` | `max=o2` | `11352` | `2` |
 | `overshoot_above_o4` | `max=o6` | `4882` | `24` |
 
+In zero-defect form:
+
+| right-boundary defect | testable endpoint cells | falsifications |
+| ---: | ---: | ---: |
+| `0` | `37834` | `0` |
+| `-1` | `11352` | `2` |
+| `+1` | `4882` | `24` |
+
 The public selected position therefore does not merely prefer a residue label.
 It separates the candidate endpoint cells into a middle boundary state that
 stays excluded and two off-balance states where actual endpoint observations
@@ -86,7 +125,7 @@ The current exclusion rule is:
 public_at_winner(W)
 and prior_absent(W, E)
 and supported(E)
-and right_boundary_balance(E) = middle_o4_balance
+and right_boundary_defect(E) = 0
     -> exclude E
 ```
 
@@ -113,6 +152,7 @@ exact_falsifications = 0
 ```
 
 The remaining theorem task is to prove why the at-winner public position
-selects the middle right-boundary state. The measured mechanism has the right
-shape for that proof: a selected public midpoint filters the directed
-factor-side boundary to the middle available residue state.
+selects the zero-defect right-boundary state. The measured mechanism has the
+right shape for that proof: a selected public position filters the directed
+factor-side boundary to zero signed deviation from the middle available
+residue state.
