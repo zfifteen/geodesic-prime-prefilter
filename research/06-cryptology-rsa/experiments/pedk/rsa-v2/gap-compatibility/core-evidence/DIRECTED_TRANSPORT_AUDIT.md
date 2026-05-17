@@ -59,24 +59,24 @@ right_boundary_defect =
     max(rank(p_right_residue), rank(q_right_residue)) - rank(o4)
 ```
 
-Measured over observed at-winner rows from the current five bands:
+Measured over observed at-winner rows from the current six bands:
 
 | right-boundary defect | observed at-winner rows |
 | ---: | ---: |
-| `-1` | `4139` |
-| `0` | `11132` |
-| `+1` | `11575` |
+| `-1` | `4865` |
+| `0` | `13029` |
+| `+1` | `13785` |
 
 Total:
 
 ```text
-observed_at_winner_row_count = 26846
+observed_at_winner_row_count = 31679
 distinct_transport_key_count = 55
 right_step_endpoint_residue_mismatch_count = 0
 transport_balance_counts:
-    shortfall_below_4 = 4139
-    middle_4_balance = 11132
-    overshoot_above_4 = 11575
+    shortfall_below_4 = 4865
+    middle_4_balance = 13029
+    overshoot_above_4 = 13785
 ```
 
 ## Boundary

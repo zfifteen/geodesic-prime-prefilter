@@ -103,14 +103,14 @@ right_boundary_defect = 0
 The off-balance cases have measured leakage:
 
 ```text
-defect = -1  -> 2 / 11352 falsifications
-defect = +1  -> 24 / 4882 falsifications
+defect = -1  -> 3 / 14232 falsifications
+defect = +1  -> 27 / 5663 falsifications
 ```
 
 The balanced case has no measured leakage:
 
 ```text
-defect = 0 -> 0 / 37834 falsifications
+defect = 0 -> 0 / 45337 falsifications
 ```
 
 ## Proof Obligations
@@ -181,11 +181,11 @@ public surface while zero defect cannot.
 The current measured evidence is:
 
 ```text
-tested_windows = 5
-defect_zero_testable_endpoint_cells = 37834
+tested_windows = 6
+defect_zero_testable_endpoint_cells = 45337
 defect_zero_exact_falsifications = 0
-defect_negative_one_exact_falsifications = 2
-defect_positive_one_exact_falsifications = 24
+defect_negative_one_exact_falsifications = 3
+defect_positive_one_exact_falsifications = 27
 ```
 
 This evidence supports the theorem target. It does not prove it.

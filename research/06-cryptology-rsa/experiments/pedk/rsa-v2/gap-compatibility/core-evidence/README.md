@@ -17,9 +17,9 @@ Across the strict-forward windows measured so far, that clean middle-maximum
 condition has no exact endpoint-pair falsifications:
 
 ```text
-Rres=o2|o4 = 0 / 27789
-Rres=o4|o4 = 0 / 10045
-combined    = 0 / 37834
+Rres=o2|o4 = 0 / 33318
+Rres=o4|o4 = 0 / 12019
+combined    = 0 / 45337
 ```
 
 All observed right-gated falsifications fall outside those two classes.

@@ -23,10 +23,18 @@ WINDOWS = (
     ("25001_27000", "directional_boundary_gate_surface_25001_27000"),
     ("27001_30000", "directional_boundary_gate_surface_27001_30000"),
     ("30001_32000", "directional_boundary_gate_surface_30001_32000"),
+    ("32001_34000", "directional_boundary_gate_surface_32001_34000"),
 )
 
 RESIDUE_RANK = {"o2": 1, "o4": 2, "o6": 3}
 MIDDLE_RESIDUE = "o4"
+HIGH_RIGHT_OPEN_RESIDUES = {"o6"}
+MIDDLE_RIGHT_OPEN_RESIDUES = {"o4"}
+ENDPOINT_RESIDUE_FAMILY_BY_RIGHT_OPEN = {
+    "o2": "{11,17,29}",
+    "o4": "{7,13,19}",
+    "o6": "{1,23}",
+}
 
 
 def read_jsonl(path: Path) -> list[dict[str, object]]:
@@ -58,6 +66,21 @@ def first_open_offset(label: str) -> int:
 def right_open_offset_max(row: dict[str, object]) -> int:
     """Return the larger first right-open offset."""
     return max(first_open_offset(label) for label in right_residues(row))
+
+
+def compact_endpoint_predicate(row: dict[str, object]) -> bool:
+    """Return true when endpoints avoid high right-open slots and touch middle."""
+    residues = set(right_residues(row))
+    return not (residues & HIGH_RIGHT_OPEN_RESIDUES) and bool(
+        residues & MIDDLE_RIGHT_OPEN_RESIDUES
+    )
+
+
+def endpoint_residue_family_pair(row: dict[str, object]) -> str:
+    """Return the endpoint residue families encoded by the right-open labels."""
+    return "|".join(
+        sorted(ENDPOINT_RESIDUE_FAMILY_BY_RIGHT_OPEN[label] for label in right_residues(row))
+    )
 
 
 def right_residue_sum(row: dict[str, object]) -> int:
@@ -99,6 +122,8 @@ def invariant_values(row: dict[str, object]) -> dict[str, str]:
         "right_residue_max": max_residue,
         "right_open_offset_max": str(right_open_offset_max(row)),
         "right_open_offset_max_is_4": str(right_open_offset_max(row) == 4).lower(),
+        "compact_endpoint_predicate": str(compact_endpoint_predicate(row)).lower(),
+        "endpoint_residue_family_pair": endpoint_residue_family_pair(row),
         "right_residue_sum": str(right_residue_sum(row)),
         "right_residue_span": str(right_residue_span(row)),
         "right_residue_touches_o6": str("o6" in residues).lower(),
@@ -283,6 +308,7 @@ def exclusion_rule_rows(rows: list[dict[str, object]]) -> list[dict[str, object]
                 "right_boundary_residues": row["right_boundary_residues"],
                 "right_residue_max": "o4",
                 "right_open_offset_max": 4,
+                "endpoint_residue_predicate": "avoid_{1,23}_and_touch_{7,13,19}",
                 "right_boundary_balance": "middle_o4_balance",
                 "right_boundary_defect": 0,
                 "left_boundary_residues": row["left_boundary_residues"],
@@ -295,7 +321,7 @@ def exclusion_rule_rows(rows: list[dict[str, object]]) -> list[dict[str, object]
                 "forward_observed_count": row["forward_observed_count"],
                 "exact_pair_falsified": row["exact_pair_falsified"],
                 "status": row["status"],
-                "exclusion_rule": "public_at_winner_and_max_right_open_offset_4",
+                "exclusion_rule": "public_at_winner_and_avoid_1_23_and_touch_7_13_19",
             }
         )
     out.sort(
@@ -317,6 +343,8 @@ def summary(
     """Return compact summary for the candidate invariant."""
     clean_rows = [row for row in rows if right_residue_max(row) == "o4"]
     other_rows = [row for row in rows if right_residue_max(row) != "o4"]
+    compact_rows = [row for row in rows if compact_endpoint_predicate(row)]
+    noncompact_rows = [row for row in rows if not compact_endpoint_predicate(row)]
     max_rows = [
         row for row in profiles
         if row["axis"] == "right_residue_max"
@@ -336,9 +364,13 @@ def summary(
         "inference_status": "not_live_pedk_inference",
         "candidate_invariant": "under public_at_winner, middle_o4_balance is the clean exclusion carrier",
         "candidate_invariant_offset_form": "under public_at_winner, max(a,b)=4 is the clean exclusion carrier",
+        "candidate_invariant_endpoint_form": "avoid high right-open family and touch middle right-open family",
+        "candidate_invariant_endpoint_residue_form": "avoid {1,23} and touch {7,13,19}",
         "window_count": len(WINDOWS),
         "right_residue_max_o4": status_counts(clean_rows),
         "right_residue_max_not_o4": status_counts(other_rows),
+        "compact_endpoint_predicate_true": status_counts(compact_rows),
+        "compact_endpoint_predicate_false": status_counts(noncompact_rows),
         "excluded_endpoint_cell_count": len(excluded_rows),
         "right_boundary_balance_profile": balance_rows,
         "right_boundary_defect_profile": defect_rows,
