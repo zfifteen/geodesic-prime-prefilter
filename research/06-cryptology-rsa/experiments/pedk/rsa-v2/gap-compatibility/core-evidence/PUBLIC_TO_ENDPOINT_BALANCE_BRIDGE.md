@@ -39,6 +39,13 @@ public selected defect = 0
 endpoint transport defect = 0
 ```
 
+The current invariant candidate is the combined zero:
+
+```text
+public selected defect = 0
+and endpoint transport defect = 0
+```
+
 The endpoint transport defect is:
 
 ```text

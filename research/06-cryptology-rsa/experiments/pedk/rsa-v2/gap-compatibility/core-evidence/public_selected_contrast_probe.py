@@ -73,6 +73,7 @@ WINDOWS = (
 )
 
 PUBLIC_SIDES = ("before_winner", "at_winner", "after_winner")
+RIGHT_RESIDUE_RANK = {"o2": 1, "o4": 2, "o6": 3}
 
 
 def side_from_public(public_value: str) -> str:
@@ -84,6 +85,12 @@ def compact_endpoint_predicate(pair_value: str) -> bool:
     """Return the compact endpoint predicate for an endpoint-pair key."""
     residues = set(right_residues_from_pair_key(pair_value).split("|"))
     return "o6" not in residues and "o4" in residues
+
+
+def endpoint_transport_defect(pair_value: str) -> int:
+    """Return the right-boundary transport defect for an endpoint-pair key."""
+    residues = right_residues_from_pair_key(pair_value).split("|")
+    return max(RIGHT_RESIDUE_RANK[value] for value in residues) - RIGHT_RESIDUE_RANK["o4"]
 
 
 def right_surface(rows: list[dict[str, object]], public_side: str) -> dict[str, object]:
@@ -180,6 +187,7 @@ def analyze_window(
                     ),
                     "pair_identity_key": pair_value,
                     "right_boundary_residues": right_residues_from_pair_key(pair_value),
+                    "endpoint_transport_defect": endpoint_transport_defect(pair_value),
                     "compact_endpoint_predicate": compact_endpoint_predicate(pair_value),
                     "forward_observed_count": forward["observed_counts"][
                         (public_value, pair_value)
@@ -191,12 +199,18 @@ def analyze_window(
     return rows
 
 
-def summarize(rows: list[dict[str, object]]) -> tuple[list[dict[str, object]], list[dict[str, object]]]:
-    """Return public-side summaries and window summaries."""
+def summarize(
+    rows: list[dict[str, object]],
+) -> tuple[list[dict[str, object]], list[dict[str, object]], list[dict[str, object]]]:
+    """Return public-side, endpoint-defect, and window summaries."""
     side_groups: dict[tuple[str, bool], list[dict[str, object]]] = defaultdict(list)
+    defect_groups: dict[tuple[str, int], list[dict[str, object]]] = defaultdict(list)
     window_groups: dict[tuple[str, str, bool], list[dict[str, object]]] = defaultdict(list)
     for row in rows:
         side_groups[(str(row["public_side"]), bool(row["compact_endpoint_predicate"]))].append(row)
+        defect_groups[
+            (str(row["public_side"]), int(row["endpoint_transport_defect"]))
+        ].append(row)
         window_groups[
             (
                 str(row["window"]),
@@ -219,6 +233,25 @@ def summarize(rows: list[dict[str, object]]) -> tuple[list[dict[str, object]], l
             )
     side_rows.sort(key=lambda row: (str(row["public_side"]), str(row["compact_endpoint_predicate"])))
 
+    defect_rows = []
+    for side in PUBLIC_SIDES:
+        for defect in (-1, 0, 1):
+            group = defect_groups[(side, defect)]
+            defect_rows.append(
+                {
+                    "rule_id": RULE_ID,
+                    "public_side": side,
+                    "endpoint_transport_defect": defect,
+                    **status_counts(group),
+                }
+            )
+    defect_rows.sort(
+        key=lambda row: (
+            str(row["public_side"]),
+            int(row["endpoint_transport_defect"]),
+        )
+    )
+
     window_rows = [
         {
             "rule_id": RULE_ID,
@@ -236,7 +269,7 @@ def summarize(rows: list[dict[str, object]]) -> tuple[list[dict[str, object]], l
             str(row["compact_endpoint_predicate"]),
         )
     )
-    return side_rows, window_rows
+    return side_rows, defect_rows, window_rows
 
 
 def main() -> int:
@@ -244,7 +277,7 @@ def main() -> int:
     rows = []
     for args in WINDOWS:
         rows.extend(analyze_window(*args))
-    side_rows, window_rows = summarize(rows)
+    side_rows, defect_rows, window_rows = summarize(rows)
     summary = {
         "rule_id": RULE_ID,
         "status": "measured_public_selected_contrast_probe",
@@ -253,11 +286,13 @@ def main() -> int:
         "window_count": len(WINDOWS),
         "candidate_row_count": len(rows),
         "side_rows": side_rows,
+        "endpoint_defect_rows": defect_rows,
     }
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     write_json(OUTPUT_DIR / "summary.json", summary)
     write_jsonl(OUTPUT_DIR / "candidate_rows.jsonl", rows)
     write_jsonl(OUTPUT_DIR / "side_rows.jsonl", side_rows)
+    write_jsonl(OUTPUT_DIR / "endpoint_defect_rows.jsonl", defect_rows)
     write_jsonl(OUTPUT_DIR / "window_rows.jsonl", window_rows)
     print(json.dumps(summary, indent=2, sort_keys=True))
     return 0
