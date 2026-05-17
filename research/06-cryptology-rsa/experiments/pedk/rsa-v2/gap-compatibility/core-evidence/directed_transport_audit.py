@@ -52,6 +52,18 @@ def first_open_offset(value: str) -> int:
     return int(first_open_label(value)[1:])
 
 
+def transport_balance(p_step: int, q_step: int) -> str:
+    """Classify the first right-open transport boundary."""
+    max_step = max(p_step, q_step)
+    if max_step == 2:
+        return "shortfall_below_4"
+    if max_step == 4:
+        return "middle_4_balance"
+    if max_step == 6:
+        return "overshoot_above_4"
+    raise ValueError(f"unknown right-open offset maximum: {max_step}")
+
+
 def right_boundary_defect(row: dict[str, object]) -> int:
     """Return signed distance from the middle right-boundary residue."""
     p_label = first_open_label(str(row["p_right_reduced_state"]))
@@ -82,6 +94,8 @@ def transport_row(row: dict[str, object], window: str) -> dict[str, object]:
         "q_right_residue": first_open_label(str(row["q_right_reduced_state"])),
         "p_right_step": p_step,
         "q_right_step": q_step,
+        "right_open_offset_max": max(p_step, q_step),
+        "transport_balance": transport_balance(p_step, q_step),
         "right_boundary_defect": right_boundary_defect(row),
         "delta_p_side_mod30": delta_p % 30,
         "delta_q_side_mod30": delta_q % 30,
@@ -114,6 +128,7 @@ def counter_rows(counter: Counter[object], field: str) -> list[dict[str, object]
 def summary(rows: list[dict[str, object]]) -> dict[str, object]:
     """Return compact audit summary."""
     defect_counts = Counter(row["right_boundary_defect"] for row in rows)
+    balance_counts = Counter(row["transport_balance"] for row in rows)
     transport_counts = Counter(
         (
             row["right_boundary_defect"],
@@ -130,6 +145,7 @@ def summary(rows: list[dict[str, object]]) -> dict[str, object]:
         "inference_status": "not_live_pedk_inference",
         "observed_at_winner_row_count": len(rows),
         "defect_counts": dict(sorted(defect_counts.items())),
+        "transport_balance_counts": dict(sorted(balance_counts.items())),
         "distinct_transport_key_count": len(transport_counts),
         "top_transport_keys": [
             {

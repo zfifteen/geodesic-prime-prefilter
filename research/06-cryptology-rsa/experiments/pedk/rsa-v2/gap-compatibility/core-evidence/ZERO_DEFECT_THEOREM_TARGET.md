@@ -8,6 +8,15 @@ The measured invariant has reached a simple form:
 right_boundary_defect(E) = 0
 ```
 
+In first-open offset language, the same condition is:
+
+```text
+max(a_E, b_E) = 4
+```
+
+where `a_E` and `b_E` are the first right-following open offsets in the two
+factor endpoint slots described by endpoint cell `E`.
+
 The theorem target is to prove why this zero-defect condition is selected by
 the public at-winner position.
 
@@ -125,6 +134,7 @@ Current audit:
 
 ```text
 DIRECTED_TRANSPORT_AUDIT.md
+TRANSPORT_BALANCE_INVARIANT.md
 ```
 
 The audit verifies the arithmetic transport object:

@@ -9,6 +9,7 @@ The current measured object is compact:
 public at-winner condition
     selects the middle right-following endpoint maximum
         max(right residue)=o4
+        max(first right-open offsets)=4
     which exclude exact endpoint-pair cells
 ```
 
@@ -33,6 +34,7 @@ GAP_COMPATIBILITY_HYPOTHESIS.md
 SIMPLE_RIGHT_RESIDUE_INVARIANT.md
 SIMPLE_ENDPOINT_EXCLUSION_RULE.md
 PUBLIC_SELECTED_POSITION_FILTER_MECHANISM.md
+TRANSPORT_BALANCE_INVARIANT.md
 ZERO_DEFECT_THEOREM_TARGET.md
 DIRECTED_TRANSPORT_AUDIT.md
 PUBLIC_GRAMMAR_FORWARD_BOUNDARY_LAW_PROFILE.md
