@@ -62,44 +62,45 @@ Rres=o4|o4
 ## Measured Boundary
 
 The current boundary-law profile measures exact endpoint-pair falsifications
-across four strict-forward windows:
+across five strict-forward windows:
 
 ```text
 21001..23000
 23001..25000
 25001..27000
 27001..30000
+30001..32000
 ```
 
 The clean maximum-residue condition has not falsified:
 
 | right-following maximum residue | exact-pair falsifications | tested exact-pair cells |
 | --- | ---: | ---: |
-| `o4` | `0` | `30618` |
+| `o4` | `0` | `37834` |
 
 The neighboring maximum-residue values are not clean:
 
 | right-following maximum residue | exact-pair falsifications | tested exact-pair cells |
 | --- | ---: | ---: |
-| `o2` | `2` | `9372` |
-| `o6` | `21` | `4146` |
+| `o2` | `2` | `11352` |
+| `o6` | `24` | `4882` |
 
 The split by the older pair labels is:
 
 | right-following class | exact-pair falsifications | tested exact-pair cells |
 | --- | ---: | ---: |
-| `Rres=o2|o4` | `0` | `22509` |
-| `Rres=o4|o4` | `0` | `8109` |
-| combined clean classes | `0` | `30618` |
+| `Rres=o2|o4` | `0` | `27789` |
+| `Rres=o4|o4` | `0` | `10045` |
+| combined clean classes | `0` | `37834` |
 
 All observed right-gated falsifications fall outside those clean classes:
 
 | right-following class | exact-pair falsifications | tested exact-pair cells |
 | --- | ---: | ---: |
-| `Rres=o2|o2` | `2` | `9372` |
-| `Rres=o2|o6` | `4` | `712` |
-| `Rres=o4|o6` | `8` | `944` |
-| `Rres=o6|o6` | `9` | `2490` |
+| `Rres=o2|o2` | `2` | `11352` |
+| `Rres=o2|o6` | `4` | `874` |
+| `Rres=o4|o6` | `8` | `996` |
+| `Rres=o6|o6` | `12` | `3012` |
 
 This is the strongest current signal because it separates a zero-falsification
 middle-maximum family from neighboring right-following families that do
@@ -107,9 +108,9 @@ falsify.
 
 The middle-maximum family is also public-local. It has zero falsified exact
 endpoint-pair cells inside all `9` public containing-gap exact types where it
-is testable, and zero falsified exact endpoint-pair cells inside all `135`
+is testable, and zero falsified exact endpoint-pair cells inside all `143`
 full public words where it is testable. The complement falsifies inside `8` of
-the `9` containing-gap exact types and inside `15` full public words.
+the `9` containing-gap exact types and inside `17` full public words.
 
 ## Why The Older Ladder Was Moved
 

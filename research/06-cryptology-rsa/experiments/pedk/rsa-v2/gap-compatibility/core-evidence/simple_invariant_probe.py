@@ -22,6 +22,7 @@ WINDOWS = (
     ("23001_25000", "directional_boundary_gate_surface_23001_25000"),
     ("25001_27000", "directional_boundary_gate_surface_25001_27000"),
     ("27001_30000", "directional_boundary_gate_surface_27001_30000"),
+    ("30001_32000", "directional_boundary_gate_surface_30001_32000"),
 )
 
 RESIDUE_RANK = {"o2": 1, "o4": 2, "o6": 3}
