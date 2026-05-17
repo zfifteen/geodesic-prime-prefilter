@@ -188,6 +188,24 @@ The measured falsifications already identify the off-balance classes as
 leaking surfaces. The proof must explain why those classes can re-enter the
 public surface while zero defect cannot.
 
+### Obligation 4: Public-Side Specificity
+
+Show why endpoint zero-defect is stable under `at_winner` but not under
+`after_winner`.
+
+The measured contrast is:
+
+```text
+at_winner and endpoint transport defect = 0
+    -> 0 / 45337 exact endpoint-pair falsifications
+
+after_winner and endpoint transport defect = 0
+    -> 25 / 1810 exact endpoint-pair falsifications
+```
+
+This confirms that the public selected-position condition is part of the law,
+not a redundant label.
+
 ## Current Evidence
 
 The current measured evidence is:

@@ -36,6 +36,7 @@ SIMPLE_ENDPOINT_EXCLUSION_RULE.md
 PUBLIC_SELECTED_POSITION_FILTER_MECHANISM.md
 TRANSPORT_BALANCE_INVARIANT.md
 PUBLIC_TO_ENDPOINT_BALANCE_BRIDGE.md
+PUBLIC_SELECTED_CONTRAST_PROBE.md
 ZERO_DEFECT_THEOREM_TARGET.md
 DIRECTED_TRANSPORT_AUDIT.md
 PUBLIC_GRAMMAR_FORWARD_BOUNDARY_LAW_PROFILE.md
@@ -69,6 +70,7 @@ directional_boundary_gate_surface.py
 forward_boundary_law_profile.py
 simple_invariant_probe.py
 directed_transport_audit.py
+public_selected_contrast_probe.py
 ```
 
 Supporting helpers remain in this folder because the active scripts import

@@ -196,6 +196,19 @@ observed_at_winner_row_count = 31679
 right_step_endpoint_residue_mismatch_count = 0
 ```
 
+The public selected-position contrast is now measured directly:
+
+```text
+at_winner and compact endpoint predicate:
+    0 / 45337 exact endpoint-pair falsifications
+
+after_winner and compact endpoint predicate:
+    25 / 1810 exact endpoint-pair falsifications
+```
+
+This shows that endpoint zero-defect is not clean by itself. It becomes clean
+under the public selected-position condition.
+
 ## Rule Form
 
 Let `W` be a public at-winner composite-gap word. Let `E` be a directed
