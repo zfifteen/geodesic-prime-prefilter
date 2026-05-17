@@ -146,6 +146,15 @@ def lower_twin_rows(rows: list[dict[str, object]]) -> list[dict[str, object]]:
     ]
 
 
+def public_left_31_rows(rows: list[dict[str, object]]) -> list[dict[str, object]]:
+    """Return rows whose public left endpoint is 31 modulo 60."""
+    return [
+        row
+        for row in rows
+        if row["public_left_endpoint_mod60"] == 31
+    ]
+
+
 def max_or_none(values: list[int]) -> int | None:
     """Return max(values), or None for an empty list."""
     return max(values) if values else None
@@ -168,7 +177,13 @@ def summary(
     }
     prior_rows_in_observed_lanes = rows_in_lanes(prior_rows, observed_lanes)
     prior_lane_lower_twins = lower_twin_rows(prior_rows_in_observed_lanes)
+    prior_lane_public_left_31 = public_left_31_rows(prior_rows_in_observed_lanes)
+    prior_lane_public_left_31_lower_twins = lower_twin_rows(
+        prior_lane_public_left_31
+    )
     observed_lower_twins = lower_twin_rows(observed_rows)
+    observed_public_left_31 = public_left_31_rows(observed_rows)
+    observed_public_left_31_lower_twins = lower_twin_rows(observed_public_left_31)
     return {
         "rule_id": RULE_ID,
         "status": "measured_span36_terminal_lift_probe",
@@ -194,6 +209,9 @@ def summary(
         "observed_public_left_mod60_counts": count_by(
             observed_rows,
             "public_left_endpoint_mod60",
+        ),
+        "observed_public_left31_lower_twin_rows": len(
+            observed_public_left_31_lower_twins
         ),
         "observed_lower_twin_rows": len(observed_lower_twins),
         "observed_lower_twin_preceding_gap_min": min_or_none(
@@ -221,6 +239,14 @@ def summary(
         "prior_observed_lane_N_mod60_counts": count_by(
             prior_rows_in_observed_lanes,
             "N_mod60",
+        ),
+        "prior_observed_lane_public_left_mod60_counts": count_by(
+            prior_rows_in_observed_lanes,
+            "public_left_endpoint_mod60",
+        ),
+        "prior_observed_lane_public_left31_rows": len(prior_lane_public_left_31),
+        "prior_observed_lane_public_left31_lower_twin_rows": len(
+            prior_lane_public_left_31_lower_twins
         ),
         "prior_observed_lane_lower_twin_rows": len(prior_lane_lower_twins),
         "prior_observed_lane_lower_twin_preceding_gap_max": max_or_none(
@@ -254,7 +280,9 @@ def summary(
             "do contain lower twin distance 2, but only after preceding gaps "
             "with at most two interior wheel-open slots; the observed "
             "replacements have four interior wheel-open slots before the "
-            "lower twin."
+            "lower twin. Same-lane prior rows also hit public-left 31 mod 60, "
+            "but none of those public-left-31 prior rows has lower twin "
+            "distance."
         ),
     }
 

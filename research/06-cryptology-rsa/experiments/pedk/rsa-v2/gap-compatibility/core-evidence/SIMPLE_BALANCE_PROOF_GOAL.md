@@ -425,6 +425,15 @@ Since the public selected offset is `6`, the public left endpoint is:
 31 mod 60
 ```
 
+Same-lane prior support reaches that public anchor without lifting:
+
+```text
+same-lane prior rows in observed mod-180 lanes = 42
+same-lane prior rows with public left endpoint 31 mod 60 = 7
+same-lane prior rows with lower twin distance = 8
+same-lane prior rows with both = 0
+```
+
 Span divisibility alone is not enough:
 
 ```text
@@ -478,6 +487,8 @@ and
 balanced endpoint right boundary
 and
 span-36 reentry
+and
+lower twin distance
     -> lower factor is two units after the previous endpoint
        whose preceding gap contains four interior wheel-open slots
 ```

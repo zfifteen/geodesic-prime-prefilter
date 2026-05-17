@@ -127,12 +127,22 @@ endpoint right boundary 4
 and
 same factor phase mod 36
 and
-supported prior absence
-    -> balanced reentry must use the four-slot lower-twin chain
+lower factor closes a twin endpoint pair
+    -> balanced reentry uses the four-slot lower-twin chain
+```
+
+The measured same-lane prior support separates the pieces:
+
+```text
+same-lane prior rows in observed mod-180 lanes = 42
+same-lane prior rows with public left endpoint 31 mod 60 = 7
+same-lane prior rows with lower twin distance = 8
+same-lane prior rows with both = 0
 ```
 
 The old supported exact endpoint-pair class remains absent because it occupies
-the same mod-180 lanes but never reaches the four-slot lower-twin chain.
+the same mod-180 lanes, and separately reaches the public-left anchor and the
+lower-twin distance, but never reaches both together.
 
 ## Status
 
