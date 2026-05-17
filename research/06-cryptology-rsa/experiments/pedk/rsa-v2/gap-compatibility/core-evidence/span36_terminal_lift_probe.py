@@ -72,12 +72,16 @@ def with_span_fields(rows: list[dict[str, object]]) -> list[dict[str, object]]:
         public_left_endpoint = int(enriched_row["N"]) - int(
             enriched_row["public_n_offset_from_left"]
         )
+        full_public_key = (
+            row.get("public_key")
+            or f"{enriched_row['public_word']}|{enriched_row['public_gwr_side']}"
+        )
         out.append(
             {
                 "rule_id": RULE_ID,
                 "window": row["window"],
                 "case_id": row["case_id"],
-                "public_key": row.get("public_key"),
+                "public_key": full_public_key,
                 "p_mod30": p % 30,
                 "q_mod30": q % 30,
                 "p_mod36": p % 36,
@@ -155,6 +159,18 @@ def public_left_31_rows(rows: list[dict[str, object]]) -> list[dict[str, object]
     ]
 
 
+def rows_in_public_keys(
+    rows: list[dict[str, object]],
+    public_keys: set[str],
+) -> list[dict[str, object]]:
+    """Return rows whose exact public key is in public_keys."""
+    return [
+        row
+        for row in rows
+        if str(row["public_key"]) in public_keys
+    ]
+
+
 def max_or_none(values: list[int]) -> int | None:
     """Return max(values), or None for an empty list."""
     return max(values) if values else None
@@ -175,7 +191,15 @@ def summary(
         str(row["factor_mod180_lane"])
         for row in observed_rows
     }
+    observed_public_keys = {
+        str(row["public_key"])
+        for row in observed_rows
+    }
     prior_rows_in_observed_lanes = rows_in_lanes(prior_rows, observed_lanes)
+    prior_rows_in_observed_public_keys = rows_in_public_keys(
+        prior_rows_in_observed_lanes,
+        observed_public_keys,
+    )
     prior_lane_lower_twins = lower_twin_rows(prior_rows_in_observed_lanes)
     prior_lane_public_left_31 = public_left_31_rows(prior_rows_in_observed_lanes)
     prior_lane_public_left_31_lower_twins = lower_twin_rows(
@@ -205,6 +229,7 @@ def summary(
             observed_rows,
             "factor_mod180_lane",
         ),
+        "observed_public_key_counts": count_by(observed_rows, "public_key"),
         "observed_N_mod60_counts": count_by(observed_rows, "N_mod60"),
         "observed_public_left_mod60_counts": count_by(
             observed_rows,
@@ -235,6 +260,12 @@ def summary(
         "prior_observed_mod180_lane_counts": count_by(
             prior_rows_in_observed_lanes,
             "factor_mod180_lane",
+        ),
+        "prior_observed_lane_observed_public_key_rows": len(
+            prior_rows_in_observed_public_keys
+        ),
+        "prior_observed_lane_observed_public_key_lower_twin_rows": len(
+            lower_twin_rows(prior_rows_in_observed_public_keys)
         ),
         "prior_observed_lane_N_mod60_counts": count_by(
             prior_rows_in_observed_lanes,
@@ -282,7 +313,8 @@ def summary(
             "replacements have four interior wheel-open slots before the "
             "lower twin. Same-lane prior rows also hit public-left 31 mod 60, "
             "but none of those public-left-31 prior rows has lower twin "
-            "distance."
+            "distance. More sharply, same-lane prior support has no row with "
+            "the exact observed public trigger keys."
         ),
     }
 
