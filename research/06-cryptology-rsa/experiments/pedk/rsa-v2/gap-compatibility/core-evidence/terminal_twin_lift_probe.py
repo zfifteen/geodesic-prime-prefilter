@@ -63,11 +63,13 @@ def left_bridge_records(row: dict[str, object]) -> list[dict[str, object]]:
         width = int(row[f"{side}_left_gap_width"])
         offset = int(row[f"{side}_left_winner_offset"])
         distance = width - offset
+        preceding_gap_width = width - distance
         records.append(
             {
                 "side": side,
                 "left_bridge_width": width,
                 "immediate_left_distance": distance,
+                "preceding_gap_width_before_immediate_left": preceding_gap_width,
                 "terminal_twin_lift": (
                     distance == TERMINAL_TWIN_DISTANCE
                     and width >= TERMINAL_TWIN_MIN_BRIDGE_WIDTH
@@ -229,6 +231,18 @@ def bridge_width_distance_counts(records: list[dict[str, object]]) -> dict[str, 
     }
 
 
+def terminal_twin_preceding_gap_counts(
+    records: list[dict[str, object]],
+) -> dict[str, int]:
+    """Return preceding-gap widths for terminal-twin lift records."""
+    counts = Counter(
+        record["preceding_gap_width_before_immediate_left"]
+        for record in records
+        if record["terminal_twin_lift"]
+    )
+    return {str(width): count for width, count in sorted(counts.items())}
+
+
 def summary(
     candidate_rows: list[dict[str, object]],
     prior_rows: list[dict[str, object]],
@@ -264,10 +278,17 @@ def summary(
         "observed_left_bridge_width_distance_counts": bridge_width_distance_counts(
             observed_records
         ),
+        "prior_terminal_twin_preceding_gap_width_counts": terminal_twin_preceding_gap_counts(
+            prior_records
+        ),
+        "observed_terminal_twin_preceding_gap_width_counts": terminal_twin_preceding_gap_counts(
+            observed_records
+        ),
         "sharper_arithmetic_statement": (
             "For load-match reentered boundary cells, the observed forward "
-            "replacement rows all contain terminal-twin lift: immediate-left "
-            "endpoint distance 2 inside a left bridge of width at least 20."
+            "replacement rows all contain terminal-twin lift: the factor is "
+            "the right member of a twin endpoint pair whose preceding gap is "
+            "at least 18."
         ),
     }
 
