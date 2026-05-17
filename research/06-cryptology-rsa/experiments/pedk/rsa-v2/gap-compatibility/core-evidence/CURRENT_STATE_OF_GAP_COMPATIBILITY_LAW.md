@@ -93,6 +93,17 @@ endpoint predicate has `0 / 45337` exact endpoint-pair falsifications under
 `at_winner`, but `25 / 1810` exact endpoint-pair falsifications under
 `after_winner`.
 
+The active invariant candidate is therefore:
+
+```text
+public_selected_defect = 0
+and endpoint_transport_defect = 0
+```
+
+This zero-to-zero cell is the only supported public-side by endpoint-defect
+cell in the current contrast matrix with zero exact endpoint-pair
+falsifications.
+
 That single condition contains exactly the two previously clean classes:
 
 ```text
@@ -208,6 +219,7 @@ PUBLIC_SELECTED_POSITION_FILTER_MECHANISM.md
 TRANSPORT_BALANCE_INVARIANT.md
 PUBLIC_TO_ENDPOINT_BALANCE_BRIDGE.md
 PUBLIC_SELECTED_CONTRAST_PROBE.md
+ZERO_TO_ZERO_INVARIANT_CANDIDATE.md
 ZERO_DEFECT_THEOREM_TARGET.md
 DIRECTED_TRANSPORT_AUDIT.md
 PUBLIC_GRAMMAR_DIRECTIONAL_BOUNDARY_GATE_RESULTS.md

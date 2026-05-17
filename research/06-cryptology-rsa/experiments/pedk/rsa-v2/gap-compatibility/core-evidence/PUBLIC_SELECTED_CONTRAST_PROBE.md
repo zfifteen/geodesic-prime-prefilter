@@ -53,6 +53,20 @@ public side across the six strict-forward windows.
 | `before_winner` | `true` | `0` | `0` | n/a |
 | `before_winner` | `false` | `0` | `0` | n/a |
 
+The same result in public-side by endpoint-defect form:
+
+| public side | endpoint transport defect | testable cells | exact falsifications | rate ppm |
+| --- | ---: | ---: | ---: | ---: |
+| `at_winner` | `-1` | `14232` | `3` | `210` |
+| `at_winner` | `0` | `45337` | `0` | `0` |
+| `at_winner` | `+1` | `5663` | `27` | `4767` |
+| `after_winner` | `-1` | `1824` | `25` | `13706` |
+| `after_winner` | `0` | `1810` | `25` | `13812` |
+| `after_winner` | `+1` | `5562` | `80` | `14383` |
+| `before_winner` | `-1` | `0` | `0` | n/a |
+| `before_winner` | `0` | `0` | `0` | n/a |
+| `before_winner` | `+1` | `0` | `0` | n/a |
+
 The `before_winner` side has no supported contrast surface in this measured
 range. The corpus contains very few `before_winner` rows, so the useful
 contrast is currently `at_winner` against `after_winner`.
@@ -94,6 +108,9 @@ and endpoint transport defect = 0
     -> stable supported prior absence
 ```
 
+In this contrast surface, that zero-to-zero cell is the only measured cell
+with zero exact endpoint-pair falsifications.
+
 ## Rule Boundary
 
 The rule is still an endpoint-space exclusion rule:
@@ -131,6 +148,7 @@ Primary outputs:
 ```text
 output/public_selected_contrast_probe/summary.json
 output/public_selected_contrast_probe/side_rows.jsonl
+output/public_selected_contrast_probe/endpoint_defect_rows.jsonl
 output/public_selected_contrast_probe/window_rows.jsonl
 output/public_selected_contrast_probe/candidate_rows.jsonl
 ```
