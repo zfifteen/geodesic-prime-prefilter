@@ -2,7 +2,8 @@
 
 ## Current State
 
-The proof target has been reduced to one remaining bridge.
+The proof target has been reduced to one remaining bridge, and that bridge now
+uses the exact public trigger rather than the coarser public-left residue.
 
 The stable absence surface began as:
 
@@ -23,7 +24,7 @@ and
 same factor phase mod 36
 and
 supported prior absence
-    -> public-left-31/lower-twin conjunction
+    -> exact-public-trigger/lower-twin conjunction
 ```
 
 Once that conjunction appears, the lower endpoint chain is:
@@ -99,6 +100,29 @@ Reference:
 PHASE_LOCK_FOUR_SLOT_REDUCTION.md
 ```
 
+### 4. Exact Public Trigger Reduction
+
+Measured reduction:
+
+```text
+public-left 31 mod 60 is too coarse
+exact public trigger is the separating public object
+```
+
+Inside the same observed factor lanes:
+
+```text
+prior rows = 42
+prior rows with public left endpoint 31 mod 60 = 7
+prior rows with observed exact public trigger = 0
+```
+
+Reference:
+
+```text
+EXACT_PUBLIC_TRIGGER_BRIDGE.md
+```
+
 ## Remaining Bridge
 
 The remaining bridge is:
@@ -111,20 +135,22 @@ and
 same factor phase mod 36
 and
 supported prior absence
-    -> public-left-31/lower-twin conjunction
+    -> exact-public-trigger/lower-twin conjunction
 ```
 
 This is the one live proof obligation.
 
 ## Why It Is One Bridge
 
-The same-lane prior support separates the two events:
+The same-lane prior support separates the public-left residue from the exact
+public trigger:
 
 ```text
 same-lane prior rows in observed mod-180 lanes = 42
 same-lane prior rows with public left endpoint 31 mod 60 = 7
 same-lane prior rows with lower twin distance = 8
 same-lane prior rows with both = 0
+same-lane prior rows with observed exact public trigger = 0
 ```
 
 The observed replacement rows join them:
@@ -151,7 +177,7 @@ lower twin alone
 It is the conjunction:
 
 ```text
-public-left 31 and lower twin
+exact public trigger and lower twin
 ```
 
 ## Current Proof Question
@@ -159,15 +185,15 @@ public-left 31 and lower twin
 The proof question is:
 
 ```text
-Why does shared load equality make the public-left anchor and the lower-twin
+Why does shared load equality make the exact public trigger and the lower-twin
 event coincide?
 ```
 
 Equivalently:
 
 ```text
-Why do the prior supported endpoint-pair classes reach public-left 31 and
-lower twin distance separately, while balanced reentry reaches both at once?
+Why do the prior supported endpoint-pair classes reach the public-left residue
+and lower twin distance separately, but never reach the exact public trigger?
 ```
 
 ## Status
@@ -175,5 +201,5 @@ lower twin distance separately, while balanced reentry reaches both at once?
 ```text
 theorem_status = hypothesis_not_proved
 measured_status = one_remaining_bridge
-remaining_bridge = public_left_31_lower_twin_conjunction
+remaining_bridge = exact_public_trigger_lower_twin_conjunction
 ```
