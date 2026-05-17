@@ -40,6 +40,14 @@ def terminal_side_value(row: dict[str, object]) -> str:
     return "|".join(sides) if sides else "none"
 
 
+def lower_terminal_residue(row: dict[str, object]) -> int | None:
+    """Return the lower factor residue when the lower side has terminal lift."""
+    for record in left_bridge_records(row):
+        if record["side"] == "p" and record["terminal_twin_lift"]:
+            return int(row["p"]) % 30
+    return None
+
+
 def trigger_orientation_rows() -> list[dict[str, object]]:
     """Return orientation rows for all public o6 residue-bridge trigger rows."""
     out = []
@@ -59,6 +67,7 @@ def trigger_orientation_rows() -> list[dict[str, object]]:
                 "terminal_side": terminal_side_value(enriched),
                 "p_mod30": int(enriched["p"]) % 30,
                 "q_mod30": int(enriched["q"]) % 30,
+                "lower_terminal_residue_mod30": lower_terminal_residue(enriched),
                 "p_less_than_q": int(enriched["p"]) < int(enriched["q"]),
                 "terminal_records": terminal_records,
                 "left_bridge_records": records,
@@ -81,6 +90,7 @@ def observed_replacement_rows() -> list[dict[str, object]]:
                 "terminal_side": terminal_side_value(enriched),
                 "p_mod30": int(enriched["p"]) % 30,
                 "q_mod30": int(enriched["q"]) % 30,
+                "lower_terminal_residue_mod30": lower_terminal_residue(enriched),
                 "p_less_than_q": int(enriched["p"]) < int(enriched["q"]),
                 "terminal_records": [
                     record
@@ -124,6 +134,14 @@ def summary(
     prior_rows_payload: list[dict[str, object]],
 ) -> dict[str, object]:
     """Return compact lower-terminal orientation summary."""
+    trigger_lower_terminal = [
+        row for row in trigger_rows_payload
+        if row["lower_terminal_residue_mod30"] is not None
+    ]
+    observed_lower_terminal = [
+        row for row in observed_rows_payload
+        if row["lower_terminal_residue_mod30"] is not None
+    ]
     return {
         "rule_id": RULE_ID,
         "status": "measured_lower_terminal_twin_orientation_probe",
@@ -135,6 +153,29 @@ def summary(
         "trigger_p_less_than_q_false_count": sum(
             1 for row in trigger_rows_payload if not row["p_less_than_q"]
         ),
+        "trigger_lower_terminal_residue_counts": dict(
+            sorted(
+                Counter(
+                    row["lower_terminal_residue_mod30"]
+                    for row in trigger_lower_terminal
+                ).items()
+            )
+        ),
+        "trigger_lower_terminal_residue_by_public_key": {
+            public_key: dict(sorted(counts.items()))
+            for public_key, counts in sorted(
+                {
+                    public_key: Counter(
+                        row["lower_terminal_residue_mod30"]
+                        for row in trigger_lower_terminal
+                        if row["public_key"] == public_key
+                    )
+                    for public_key in {
+                        row["public_key"] for row in trigger_rows_payload
+                    }
+                }.items()
+            )
+        },
         "observed_replacement_row_count": len(observed_rows_payload),
         "observed_replacement_terminal_side_counts": dict(
             sorted(Counter(row["terminal_side"] for row in observed_rows_payload).items())
@@ -142,6 +183,29 @@ def summary(
         "observed_replacement_p_less_than_q_false_count": sum(
             1 for row in observed_rows_payload if not row["p_less_than_q"]
         ),
+        "observed_replacement_lower_terminal_residue_counts": dict(
+            sorted(
+                Counter(
+                    row["lower_terminal_residue_mod30"]
+                    for row in observed_lower_terminal
+                ).items()
+            )
+        ),
+        "observed_replacement_lower_terminal_residue_by_public_key": {
+            public_key: dict(sorted(counts.items()))
+            for public_key, counts in sorted(
+                {
+                    public_key: Counter(
+                        row["lower_terminal_residue_mod30"]
+                        for row in observed_lower_terminal
+                        if row["public_key"] == public_key
+                    )
+                    for public_key in {
+                        row["public_key"] for row in observed_rows_payload
+                    }
+                }.items()
+            )
+        },
         "prior_pair_support_row_count": len(prior_rows_payload),
         "prior_pair_support_terminal_side_counts": dict(
             sorted(Counter(row["terminal_side"] for row in prior_rows_payload).items())
@@ -150,7 +214,9 @@ def summary(
             "In the public o6 residue-bridge trigger rows, terminal-twin lift "
             "is lower-factor oriented: every terminal-twin trigger row includes "
             "the p side, and the observed supported prior-absent replacements "
-            "have terminal-twin lift on p only."
+            "have terminal-twin lift on p only, with lower residue 13 for the "
+            "o4-even/o6-mid/o4-odd trigger and lower residue 19 for the "
+            "o4-odd/o6-early/o6-odd trigger."
         ),
     }
 

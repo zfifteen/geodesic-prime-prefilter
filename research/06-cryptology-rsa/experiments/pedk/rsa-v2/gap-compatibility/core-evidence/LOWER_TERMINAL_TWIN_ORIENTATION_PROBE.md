@@ -34,6 +34,13 @@ observed terminal side q only = 0
 observed terminal side p|q = 0
 ```
 
+The replacement lower residue splits by public trigger:
+
+```text
+o4 even -> o6@mid -> o4 odd: lower terminal residue = 13
+o4 odd  -> o6@early -> o6 odd: lower terminal residue = 19
+```
+
 For the old supported pair classes:
 
 ```text
@@ -52,7 +59,8 @@ member of a terminal twin endpoint pair
 ```
 
 This is stronger than "some factor has terminal-twin lift." The measured lift
-is lower-factor directed.
+is lower-factor directed, and the lower residue is determined by the public
+trigger on the replacement surface.
 
 ## Current Proof Target
 
@@ -61,7 +69,8 @@ The current target is:
 ```text
 For the two supported prior-absent public o6_d4_a6 balanced right-boundary
 cells, the residue bridge forces residues 13 and 19, and any forward reentry
-requires the lower factor to be the right endpoint of a terminal twin pair.
+requires the lower factor to be the right endpoint of a terminal twin pair,
+with lower residue 13 in the first trigger and lower residue 19 in the second.
 ```
 
 Then exact endpoint-pair absence follows because the old supported pair classes
