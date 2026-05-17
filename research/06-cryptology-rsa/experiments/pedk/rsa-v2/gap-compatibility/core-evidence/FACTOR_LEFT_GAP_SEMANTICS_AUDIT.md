@@ -87,6 +87,9 @@ candidate pair classes from the observed load-match replacement rows. Distance
 `2` alone is common enough to be too weak. Distance `2` inside a factor-left
 bridge of width at least `20` is the measured replacement lift.
 
+In ordinary endpoint geometry, that means the factor is the right member of a
+twin endpoint pair and the gap before that twin pair has width at least `18`.
+
 Any proof or implementation using this field must treat it as:
 
 ```text

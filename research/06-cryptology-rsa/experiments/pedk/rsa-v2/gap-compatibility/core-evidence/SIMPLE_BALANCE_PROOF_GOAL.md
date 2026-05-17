@@ -224,6 +224,14 @@ terminal-twin lift =
     inside a factor-left bridge of width at least 20
 ```
 
+Equivalently:
+
+```text
+terminal-twin lift =
+    one replacement factor is the right endpoint of a twin endpoint pair
+    whose preceding gap has width at least 18
+```
+
 Distance `2` alone is not enough. Prior support rows do contain distance `2`
 inside shorter bridges. The balanced replacement rows require the terminal
 twin inside a long enough bridge.
