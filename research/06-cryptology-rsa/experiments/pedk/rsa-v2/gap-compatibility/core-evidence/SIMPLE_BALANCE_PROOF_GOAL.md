@@ -366,6 +366,29 @@ right endpoint of a terminal twin endpoint pair, with the lower residue chosen
 by the public trigger
 ```
 
+The next clean band `34001..35000` preserves the simple boundary surface.
+With the earlier windows used as train, calibration, and prior-forward support,
+the fresh band gives:
+
+```text
+right_residues: 1201 testable cells, 0 falsified
+right_residue_phases: 1370 testable cells, 1 falsified
+both_residues: 1394 testable cells, 6 falsified
+left_residue_phases: 441 testable cells, 3 falsified
+```
+
+The terminal-twin trigger counts remain unchanged after the fresh band:
+
+```text
+observed replacement rows = 2
+observed terminal-twin replacement rows = 2
+prior terminal-twin support rows = 0
+```
+
+So the fresh result supports the current reduction. The proof should stay on
+the right-residue boundary and the lower-factor terminal-twin lift, not return
+to a larger phase grammar.
+
 The former two-zero statement is therefore a shared-boundary statement:
 
 ```text
