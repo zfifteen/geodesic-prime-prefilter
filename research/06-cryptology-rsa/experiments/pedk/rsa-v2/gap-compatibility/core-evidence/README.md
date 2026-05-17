@@ -29,6 +29,7 @@ All observed right-gated falsifications fall outside those two classes.
 Read these files first:
 
 ```text
+ZERO_TO_ZERO_LANDED_STATE.md
 CURRENT_STATE_OF_GAP_COMPATIBILITY_LAW.md
 GAP_COMPATIBILITY_HYPOTHESIS.md
 SIMPLE_RIGHT_RESIDUE_INVARIANT.md
