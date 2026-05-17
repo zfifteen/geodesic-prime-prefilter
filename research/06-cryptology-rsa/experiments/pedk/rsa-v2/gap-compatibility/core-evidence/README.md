@@ -50,6 +50,7 @@ PHASE_LOCK_FOUR_SLOT_REDUCTION.md
 PUBLIC_LEFT_LOWER_TWIN_CONJUNCTION_BRIDGE.md
 REMAINING_BRIDGE_INVENTORY.md
 EXACT_PUBLIC_TRIGGER_BRIDGE.md
+PUBLIC_LEFT_NEIGHBOR_GATE_REDUCTION.md
 ZERO_TO_ZERO_LANDED_STATE.md
 CURRENT_STATE_OF_GAP_COMPATIBILITY_LAW.md
 GAP_COMPATIBILITY_HYPOTHESIS.md
@@ -109,6 +110,7 @@ public_o6_terminal_twin_trigger_probe.py
 public_o6_residue_bridge_probe.py
 lower_terminal_twin_orientation_probe.py
 span36_terminal_lift_probe.py
+public_left_neighbor_gate_probe.py
 ```
 
 Supporting helpers remain in this folder because the active scripts import

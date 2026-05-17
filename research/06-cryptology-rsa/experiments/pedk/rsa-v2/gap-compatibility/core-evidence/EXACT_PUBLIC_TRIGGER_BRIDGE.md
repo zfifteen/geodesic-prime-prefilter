@@ -4,6 +4,21 @@
 
 The public-left residue was still too coarse.
 
+This bridge has since compressed further. The current smaller public object is
+the public left-neighbor gate:
+
+```text
+previous public first-open offset o4
+and
+containing public exact type o6_d4_a6_d4_odd
+```
+
+Reference:
+
+```text
+PUBLIC_LEFT_NEIGHBOR_GATE_REDUCTION.md
+```
+
 The observed balanced reentry rows do not merely share:
 
 ```text
