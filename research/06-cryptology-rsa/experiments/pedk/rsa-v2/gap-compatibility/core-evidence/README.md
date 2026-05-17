@@ -30,6 +30,7 @@ Read these files first:
 
 ```text
 SIMPLE_BALANCE_PROOF_GOAL.md
+FIRST_MINIMUM_BALANCE_PROBE.md
 ZERO_TO_ZERO_LANDED_STATE.md
 CURRENT_STATE_OF_GAP_COMPATIBILITY_LAW.md
 GAP_COMPATIBILITY_HYPOTHESIS.md
@@ -76,6 +77,7 @@ simple_invariant_probe.py
 directed_transport_audit.py
 public_selected_contrast_probe.py
 zero_to_zero_exclusion_rule.py
+first_minimum_balance_probe.py
 ```
 
 Supporting helpers remain in this folder because the active scripts import

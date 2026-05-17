@@ -25,23 +25,32 @@ tau(N) = 4
 ```
 
 If `N` is the selected public position inside its containing prime gap, then the
-gap winner has divisor count `4`. The measured corpus verifies:
+gap winner has divisor count `4`. The active six-window corpus verifies:
 
 ```text
-public at selected position, selected divisor count 4: 65137 rows
+public at selected position, selected divisor count 4: 31679 rows
 public at selected position, selected divisor count not 4: 0 rows
 ```
 
 So the public condition can be read without extra terminology:
 
 ```text
-N is the first integer in its public prime gap where the divisor count reaches 4
+N is the first integer in its public prime gap where the divisor count reaches 3 or 4
 ```
 
 Equivalently:
 
 ```text
 no earlier integer in the same public prime gap has divisor count 3 or 4
+```
+
+The first-minimum balance probe verifies that this literal condition is exactly
+equivalent to the public selected-position label in the active six-window
+corpus:
+
+```text
+row_count = 138602
+literal first divisor-count-3-or-4 mismatches = 0
 ```
 
 This is the first simplification. The public side is a first-minimum statement.
@@ -136,7 +145,7 @@ after selected public position and max(a, b) = 4
 So neither side is sufficient alone. The stable surface is the joint event:
 
 ```text
-first divisor-count-4 position in the public gap
+first divisor-count-3-or-4 position in the public gap
 and
 middle right-open endpoint boundary
 ```
@@ -149,7 +158,7 @@ The proof should reduce to four small lemmas.
 
 For a semiprime `N = pq` with `p != q`, if `N` is the selected public position
 inside its containing prime gap, then `N` is the first interior integer in that
-gap with divisor count `4`.
+gap with divisor count `3` or `4`.
 
 This follows from `tau(N) = 4` and the definition of the selected gap position
 as the first integer attaining the minimum divisor count.
@@ -188,7 +197,7 @@ balanced endpoint realization under the selected public position would have to
 preserve both:
 
 ```text
-N is the first divisor-count-4 point in the public gap
+N is the first divisor-count-3-or-4 point in the public gap
 and
 the endpoint product boundary reaches the middle state without overshoot
 ```
