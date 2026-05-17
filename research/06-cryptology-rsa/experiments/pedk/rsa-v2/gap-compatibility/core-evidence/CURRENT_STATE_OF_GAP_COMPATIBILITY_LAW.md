@@ -25,6 +25,7 @@ inference_status = not_live_pedk_inference
 measured_status = strong_forward_stable_compatibility_signal
 active_surface = public_at_winner -> right_following_endpoint_residue_maximum
 candidate_law = max(right endpoint residue)=o4 excludes exact endpoint-pair cells
+rule_status = endpoint_space_exclusion_rule_not_factor_recovery
 ```
 
 ## The Object
@@ -143,6 +144,7 @@ surface:
 ```text
 PUBLIC_GRAMMAR_FORWARD_BOUNDARY_LAW_PROFILE.md
 SIMPLE_RIGHT_RESIDUE_INVARIANT.md
+SIMPLE_ENDPOINT_EXCLUSION_RULE.md
 PUBLIC_GRAMMAR_DIRECTIONAL_BOUNDARY_GATE_RESULTS.md
 PUBLIC_GRAMMAR_JOINT_ENDPOINT_PAIR_RIGHT_BOUNDARY_RESULTS.md
 PUBLIC_GRAMMAR_HYBRID_ENDPOINT_PAIR_SURFACE_RESULTS.md
