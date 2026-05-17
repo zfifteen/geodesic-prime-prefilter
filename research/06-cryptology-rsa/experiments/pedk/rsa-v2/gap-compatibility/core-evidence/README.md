@@ -7,18 +7,18 @@ The current measured object is compact:
 
 ```text
 public at-winner condition
-    selects right-following factor endpoint residue classes
-        Rres=o2|o4 and Rres=o4|o4
+    selects the middle right-following endpoint maximum
+        max(right residue)=o4
     which exclude exact endpoint-pair cells
 ```
 
-Across the strict-forward windows measured so far, those two clean
-right-following classes have no exact endpoint-pair falsifications:
+Across the strict-forward windows measured so far, that clean middle-maximum
+condition has no exact endpoint-pair falsifications:
 
 ```text
-Rres=o2|o4 = 0 / 22509
-Rres=o4|o4 = 0 / 8109
-combined    = 0 / 30618
+Rres=o2|o4 = 0 / 27789
+Rres=o4|o4 = 0 / 10045
+combined    = 0 / 37834
 ```
 
 All observed right-gated falsifications fall outside those two classes.

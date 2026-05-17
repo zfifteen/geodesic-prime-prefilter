@@ -32,7 +32,7 @@ Rres=o6|o6
 
 ## Measured Result
 
-Across the four strict-forward windows already used by the boundary-law
+Across the five strict-forward windows now used by the boundary-law
 profile:
 
 ```text
@@ -40,15 +40,16 @@ profile:
 23001..25000
 25001..27000
 27001..30000
+30001..32000
 ```
 
 the split is:
 
 | right-following maximum residue | testable exact cells | exact falsifications | rate per million |
 | --- | ---: | ---: | ---: |
-| `o4` | `30618` | `0` | `0` |
-| `o2` | `9372` | `2` | `213` |
-| `o6` | `4146` | `21` | `5065` |
+| `o4` | `37834` | `0` | `0` |
+| `o2` | `11352` | `2` | `176` |
+| `o6` | `4882` | `24` | `4916` |
 
 Window by window, `right_residue_max=o4` stays clean:
 
@@ -58,6 +59,7 @@ Window by window, `right_residue_max=o4` stays clean:
 | `23001..25000` | `6915` | `0` |
 | `25001..27000` | `6448` | `0` |
 | `27001..30000` | `8352` | `0` |
+| `30001..32000` | `7216` | `0` |
 
 The complement is not clean:
 
@@ -67,6 +69,7 @@ The complement is not clean:
 | `23001..25000` | `2468` | `3` |
 | `25001..27000` | `3136` | `4` |
 | `27001..30000` | `4052` | `12` |
+| `30001..32000` | `2716` | `3` |
 
 ## Public-Local Check
 
@@ -85,11 +88,11 @@ right_residue_max_not_o4_falsified_type_count = 8
 At the full public-word level:
 
 ```text
-public_word_count = 168
-right_residue_max_o4_testable_public_word_count = 135
+public_word_count = 186
+right_residue_max_o4_testable_public_word_count = 143
 right_residue_max_o4_falsified_public_word_count = 0
-right_residue_max_not_o4_testable_public_word_count = 97
-right_residue_max_not_o4_falsified_public_word_count = 15
+right_residue_max_not_o4_testable_public_word_count = 102
+right_residue_max_not_o4_falsified_public_word_count = 17
 ```
 
 This matters because the clean result is not only an aggregate over all public
@@ -132,8 +135,12 @@ middle right-following endpoint residue maximum
 theorem_status = hypothesis_not_proved
 inference_status = not_live_pedk_inference
 measured_status = zero_falsification_candidate_invariant
-tested_exact_cells = 30618
-exact_falsifications = 0
+baseline_tested_exact_cells = 30618
+baseline_exact_falsifications = 0
+fresh_extension_tested_exact_cells = 7216
+fresh_extension_exact_falsifications = 0
+cumulative_tested_exact_cells = 37834
+cumulative_exact_falsifications = 0
 ```
 
 ## Reproduction

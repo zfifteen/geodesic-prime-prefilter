@@ -12,10 +12,10 @@ Rres=o2|o4
 Rres=o4|o4
 ```
 
-Across four strict-forward windows, those two classes produced:
+Across five strict-forward windows, those two classes produced:
 
 ```text
-30618 testable exact endpoint-pair exclusions
+37834 testable exact endpoint-pair exclusions
 0 exact endpoint-pair falsifications
 ```
 
@@ -27,29 +27,29 @@ factor recovery.
 
 ## Right-Residue Split
 
-The right-residue profile across all four windows is:
+The right-residue profile across all five windows is:
 
 | right-following residue pair | testable exact cells | exact falsifications | rate per million |
 | --- | ---: | ---: | ---: |
-| `Rres=o2|o4` | `22509` | `0` | `0` |
-| `Rres=o4|o4` | `8109` | `0` | `0` |
-| `Rres=o2|o2` | `9372` | `2` | `213` |
-| `Rres=o6|o6` | `2490` | `9` | `3614` |
-| `Rres=o2|o6` | `712` | `4` | `5617` |
-| `Rres=o4|o6` | `944` | `8` | `8474` |
+| `Rres=o2|o4` | `27789` | `0` | `0` |
+| `Rres=o4|o4` | `10045` | `0` | `0` |
+| `Rres=o2|o2` | `11352` | `2` | `176` |
+| `Rres=o6|o6` | `3012` | `12` | `3984` |
+| `Rres=o2|o6` | `874` | `4` | `4576` |
+| `Rres=o4|o6` | `996` | `8` | `8032` |
 
 The aggregate right-gated exact-pair surface was:
 
 ```text
-44136 testable exact cells
-23 exact falsifications
-521 per million
+54068 testable exact cells
+26 exact falsifications
+480 per million
 ```
 
 The clean classes account for most of the testable surface:
 
 ```text
-30618 / 44136 = 69.37 percent
+37834 / 54068 = 69.97 percent
 ```
 
 ## Phase Split
@@ -58,12 +58,12 @@ The right-following phase profile also has a simple boundary:
 
 | right-following phases | testable exact cells | exact falsifications | rate per million |
 | --- | ---: | ---: | ---: |
-| `early|mid` | `11544` | `0` | `0` |
-| `early|late` | `1173` | `0` | `0` |
-| `early|early` | `1170` | `0` | `0` |
-| `late|late` | `484` | `0` | `0` |
-| `late|mid` | `10967` | `7` | `638` |
-| `mid|mid` | `18798` | `16` | `851` |
+| `early|mid` | `14429` | `0` | `0` |
+| `early|late` | `1325` | `0` | `0` |
+| `early|early` | `1378` | `0` | `0` |
+| `late|late` | `550` | `0` | `0` |
+| `late|mid` | `13424` | `9` | `670` |
+| `mid|mid` | `22962` | `17` | `740` |
 
 All observed right-gated exact-pair falsifications occur when the
 right-following phases include `mid|mid` or `late|mid`.
@@ -112,8 +112,8 @@ endpoint-pair cell carrying that right-following pair is excluded.
 Measured status:
 
 ```text
-tested_windows = 4
-testable_exact_cells = 30618
+tested_windows = 5
+testable_exact_cells = 37834
 exact_falsifications = 0
 ```
 
