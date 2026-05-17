@@ -72,8 +72,10 @@ For the old supported pair classes:
 prior pair support rows = 8253
 prior span mod 36 = 0 rows = 1336
 prior rows in observed mod-180 lanes = 42
+prior rows in observed lanes with public left endpoint mod 60 = 31: 7
 prior span-36 lower-terminal rows = 0
 prior observed-lane lower-terminal rows = 0
+prior observed-lane public-left-31 lower-twin rows = 0
 ```
 
 So span divisibility alone is not the law. The mod-180 lane is not the law
@@ -112,6 +114,7 @@ same-lane prior lower twin preceding gap widths = 4, 10, 12
 same-lane prior maximum = 12
 observed lower twin interior open slots = 4
 same-lane prior lower twin interior open slots = 0 or 2
+same-lane prior public-left-31 lower twins = 0
 ```
 
 Equivalently, the old exact endpoint-pair class remains absent because:
