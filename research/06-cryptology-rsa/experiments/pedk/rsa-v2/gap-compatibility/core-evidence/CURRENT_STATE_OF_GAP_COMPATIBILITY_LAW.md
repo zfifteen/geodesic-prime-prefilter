@@ -24,7 +24,7 @@ theorem_status = hypothesis_not_proved
 inference_status = not_live_pedk_inference
 measured_status = strong_forward_stable_compatibility_signal
 active_surface = public_at_winner -> right_following_endpoint_residue_maximum
-candidate_law = max(right endpoint residue)=o4 excludes exact endpoint-pair cells
+candidate_law = middle_o4_balance excludes exact endpoint-pair cells
 rule_status = endpoint_space_exclusion_rule_not_factor_recovery
 ```
 
@@ -77,6 +77,14 @@ The clean maximum-residue condition has not falsified:
 | right-following maximum residue | exact-pair falsifications | tested exact-pair cells |
 | --- | ---: | ---: |
 | `o4` | `0` | `37834` |
+
+In balance language:
+
+| right-boundary balance | exact-pair falsifications | tested exact-pair cells |
+| --- | ---: | ---: |
+| `middle_o4_balance` | `0` | `37834` |
+| `shortfall_below_o4` | `2` | `11352` |
+| `overshoot_above_o4` | `24` | `4882` |
 
 The neighboring maximum-residue values are not clean:
 
@@ -146,6 +154,7 @@ surface:
 PUBLIC_GRAMMAR_FORWARD_BOUNDARY_LAW_PROFILE.md
 SIMPLE_RIGHT_RESIDUE_INVARIANT.md
 SIMPLE_ENDPOINT_EXCLUSION_RULE.md
+PUBLIC_SELECTED_POSITION_FILTER_MECHANISM.md
 PUBLIC_GRAMMAR_DIRECTIONAL_BOUNDARY_GATE_RESULTS.md
 PUBLIC_GRAMMAR_JOINT_ENDPOINT_PAIR_RIGHT_BOUNDARY_RESULTS.md
 PUBLIC_GRAMMAR_HYBRID_ENDPOINT_PAIR_SURFACE_RESULTS.md

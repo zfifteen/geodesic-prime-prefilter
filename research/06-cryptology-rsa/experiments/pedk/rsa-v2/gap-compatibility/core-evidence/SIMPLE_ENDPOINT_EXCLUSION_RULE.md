@@ -63,6 +63,19 @@ right_residue_max(E) = rank(o4)
 The endpoint-pair cell reaches the middle right-following residue and does not
 reach the high right-following residue.
 
+Equivalently:
+
+```text
+right_boundary_balance(E) = middle_o4_balance
+```
+
+with the two off-balance states:
+
+```text
+max=o2 -> shortfall_below_o4
+max=o6 -> overshoot_above_o4
+```
+
 ## Measured Status
 
 Across five strict-forward windows:
@@ -120,6 +133,12 @@ zero-falsification exclusion surface.
 
 This is the current simple invariant candidate beneath the measured PEDK gap
 compatibility signal.
+
+The mechanism is stated directly in:
+
+```text
+PUBLIC_SELECTED_POSITION_FILTER_MECHANISM.md
+```
 
 ## Reproduction
 

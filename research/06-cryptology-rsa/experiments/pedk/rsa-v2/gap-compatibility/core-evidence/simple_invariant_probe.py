@@ -60,11 +60,24 @@ def right_residue_span(row: dict[str, object]) -> int:
     return max(ranks) - min(ranks)
 
 
+def right_boundary_balance(row: dict[str, object]) -> str:
+    """Classify the right boundary relative to the middle residue."""
+    max_residue = right_residue_max(row)
+    if max_residue == "o2":
+        return "shortfall_below_o4"
+    if max_residue == "o4":
+        return "middle_o4_balance"
+    if max_residue == "o6":
+        return "overshoot_above_o4"
+    raise ValueError(f"unknown right residue maximum: {max_residue}")
+
+
 def invariant_values(row: dict[str, object]) -> dict[str, str]:
     """Return simple invariant candidates for one row."""
     residues = right_residues(row)
     max_residue = right_residue_max(row)
     return {
+        "right_boundary_balance": right_boundary_balance(row),
         "right_residue_pair": str(row["right_boundary_residues"]),
         "right_residue_max": max_residue,
         "right_residue_sum": str(right_residue_sum(row)),
@@ -250,6 +263,7 @@ def exclusion_rule_rows(rows: list[dict[str, object]]) -> list[dict[str, object]
                 "pair_identity_key": row["pair_identity_key"],
                 "right_boundary_residues": row["right_boundary_residues"],
                 "right_residue_max": "o4",
+                "right_boundary_balance": "middle_o4_balance",
                 "left_boundary_residues": row["left_boundary_residues"],
                 "right_boundary_phases": row["right_boundary_phases"],
                 "left_boundary_phases": row["left_boundary_phases"],
@@ -286,16 +300,21 @@ def summary(
         row for row in profiles
         if row["axis"] == "right_residue_max"
     ]
+    balance_rows = [
+        row for row in profiles
+        if row["axis"] == "right_boundary_balance"
+    ]
     return {
         "rule_id": RULE_ID,
         "status": "measured_simple_invariant_probe",
         "theorem_status": "hypothesis_not_proved",
         "inference_status": "not_live_pedk_inference",
-        "candidate_invariant": "under public_at_winner, right_residue_max=o4 is the clean exclusion carrier",
+        "candidate_invariant": "under public_at_winner, middle_o4_balance is the clean exclusion carrier",
         "window_count": len(WINDOWS),
         "right_residue_max_o4": status_counts(clean_rows),
         "right_residue_max_not_o4": status_counts(other_rows),
         "excluded_endpoint_cell_count": len(excluded_rows),
+        "right_boundary_balance_profile": balance_rows,
         "right_residue_max_profile": max_rows,
         "public_local_summary": local_summaries,
     }
