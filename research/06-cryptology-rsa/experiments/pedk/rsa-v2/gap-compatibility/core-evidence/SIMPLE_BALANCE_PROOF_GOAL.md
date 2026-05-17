@@ -55,6 +55,22 @@ literal first divisor-count-3-or-4 mismatches = 0
 
 This is the first simplification. The public side is a first-minimum statement.
 
+The shared load-boundary probe gives the next simplification. On the active
+candidate surface, the public selected divisor count is always `4`, and the
+clean endpoint boundary is also `4`:
+
+```text
+endpoint right boundary = public selected divisor count
+```
+
+The former two-zero statement is therefore a shared-boundary statement:
+
+```text
+first public load 4
+and
+right endpoint boundary 4
+```
+
 ## Endpoint Side
 
 Each factor endpoint has a first open position to its right. Let:
@@ -147,7 +163,7 @@ So neither side is sufficient alone. The stable surface is the joint event:
 ```text
 first divisor-count-3-or-4 position in the public gap
 and
-middle right-open endpoint boundary
+right endpoint boundary equal to the selected public divisor load
 ```
 
 ## Proof Shape
@@ -199,7 +215,8 @@ preserve both:
 ```text
 N is the first divisor-count-3-or-4 point in the public gap
 and
-the endpoint product boundary reaches the middle state without overshoot
+the endpoint product boundary reaches the selected public divisor load without
+overshoot
 ```
 
 The theorem must show that those two requirements are incompatible for a
