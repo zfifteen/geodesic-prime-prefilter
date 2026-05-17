@@ -49,8 +49,8 @@ def endpoint_right_boundary(right_boundary_residues: str) -> int:
     return max(RIGHT_RESIDUE_OFFSET[value] for value in right_boundary_residues.split("|"))
 
 
-def shared_load_candidate_rows() -> list[dict[str, object]]:
-    """Return load-match candidate rows whose right-boundary cell reentered."""
+def boundary_reentry_candidate_rows() -> list[dict[str, object]]:
+    """Return candidate rows whose right-boundary cell reentered."""
     rows = []
     for candidate_path in sorted(
         INPUT_ROOT.glob("directional_boundary_gate_surface_*/candidate_rows.jsonl")
@@ -67,10 +67,9 @@ def shared_load_candidate_rows() -> list[dict[str, object]]:
                 str(row["public_containing_exact_type_key"])
             )
             endpoint_boundary = endpoint_right_boundary(str(row["right_boundary_residues"]))
-            if endpoint_boundary != public_load:
-                continue
             out = dict(row)
             out["window"] = window
+            out["shared_load_boundary_delta"] = endpoint_boundary - public_load
             rows.append(out)
     rows.sort(
         key=lambda row: (
@@ -111,10 +110,12 @@ def observed_forward_rows(
 ) -> list[dict[str, object]]:
     """Return exact forward rows occupying the reentered load-match boundary cells."""
     keys_by_window: dict[str, set[tuple[str, str]]] = defaultdict(set)
+    delta_by_key: dict[tuple[str, str, str], int] = {}
     for row in candidate_rows:
-        keys_by_window[str(row["window"])].add(
-            (str(row["public_key"]), str(row["boundary_index_key"]))
-        )
+        window = str(row["window"])
+        key = (str(row["public_key"]), str(row["boundary_index_key"]))
+        keys_by_window[window].add(key)
+        delta_by_key[(window, key[0], key[1])] = int(row["shared_load_boundary_delta"])
 
     rows = []
     for window, keys in sorted(keys_by_window.items()):
@@ -128,6 +129,9 @@ def observed_forward_rows(
                 continue
             values = boundary_values(pair_key)
             left_records = left_slot_records(row)
+            left_distances = sorted(
+                record["left_offset_from_right"] for record in left_records
+            )
             very_late_left_records = [
                 record for record in left_records if record["left_phase"] == "very_late"
             ]
@@ -142,11 +146,16 @@ def observed_forward_rows(
                     ],
                     "pair_identity_key": pair_key,
                     "boundary_index_key": boundary_key,
+                    "shared_load_boundary_delta": delta_by_key[
+                        (window, public_key(row), boundary_key)
+                    ],
                     "left_boundary_residues": values["left_boundary_residues"],
                     "left_boundary_phases": values["left_boundary_phases"],
                     "right_boundary_residues": values["right_boundary_residues"],
                     "right_boundary_phases": values["right_boundary_phases"],
                     "left_slot_records": left_records,
+                    "left_offset_from_right_values": left_distances,
+                    "minimum_left_offset_from_right": min(left_distances),
                     "very_late_left_records": very_late_left_records,
                     "very_late_left_count": len(very_late_left_records),
                     "very_late_left_offset_from_right_values": sorted(
@@ -165,31 +174,84 @@ def observed_forward_rows(
     return rows
 
 
+def contrast_by_delta(observed_rows: list[dict[str, object]]) -> list[dict[str, object]]:
+    """Return observed reentry lift contrast by load-boundary delta."""
+    groups: dict[int, list[dict[str, object]]] = defaultdict(list)
+    for row in observed_rows:
+        groups[int(row["shared_load_boundary_delta"])].append(row)
+
+    out = []
+    for delta, group in sorted(groups.items()):
+        out.append(
+            {
+                "shared_load_boundary_delta": delta,
+                "observed_forward_exact_rows": len(group),
+                "right_boundary_residue_counts": dict(
+                    sorted(Counter(row["right_boundary_residues"] for row in group).items())
+                ),
+                "left_boundary_phase_counts": dict(
+                    sorted(Counter(row["left_boundary_phases"] for row in group).items())
+                ),
+                "minimum_left_offset_from_right_counts": dict(
+                    sorted(
+                        Counter(
+                            row["minimum_left_offset_from_right"] for row in group
+                        ).items()
+                    )
+                ),
+                "rows_with_minimum_left_offset_from_right_2": sum(
+                    1 for row in group if row["minimum_left_offset_from_right"] == 2
+                ),
+                "rows_with_one_very_late_left_record": sum(
+                    1 for row in group if row["very_late_left_count"] == 1
+                ),
+            }
+        )
+    return out
+
+
 def summary(
     candidate_rows: list[dict[str, object]],
     observed_rows: list[dict[str, object]],
 ) -> dict[str, object]:
     """Return the compact shared-load reentry-cell profile."""
-    candidate_cells = {
+    load_match_candidates = [
+        row for row in candidate_rows if row["shared_load_boundary_delta"] == 0
+    ]
+    load_match_observed = [
+        row for row in observed_rows if row["shared_load_boundary_delta"] == 0
+    ]
+    load_match_cells = {
         (row["public_key"], row["boundary_index_key"]) for row in candidate_rows
+        if row["shared_load_boundary_delta"] == 0
     }
     very_late_records = [
         record
-        for row in observed_rows
+        for row in load_match_observed
         for record in row["very_late_left_records"]
     ]
     return {
         "rule_id": RULE_ID,
         "status": "measured_shared_load_reentry_cell_profile",
         "theorem_status": "hypothesis_not_proved",
-        "candidate_load_match_reentry_rows": len(candidate_rows),
-        "distinct_reentered_boundary_cells": len(candidate_cells),
-        "observed_forward_exact_rows_in_reentered_cells": len(observed_rows),
+        "candidate_load_match_reentry_rows": len(load_match_candidates),
+        "distinct_load_match_reentered_boundary_cells": len(load_match_cells),
+        "observed_forward_exact_rows_in_load_match_reentered_cells": len(
+            load_match_observed
+        ),
         "observed_right_boundary_residue_counts": dict(
-            sorted(Counter(row["right_boundary_residues"] for row in observed_rows).items())
+            sorted(
+                Counter(
+                    row["right_boundary_residues"] for row in load_match_observed
+                ).items()
+            )
         ),
         "observed_left_boundary_phase_counts": dict(
-            sorted(Counter(row["left_boundary_phases"] for row in observed_rows).items())
+            sorted(
+                Counter(
+                    row["left_boundary_phases"] for row in load_match_observed
+                ).items()
+            )
         ),
         "observed_very_late_left_record_count": len(very_late_records),
         "observed_very_late_left_offset_from_right_counts": dict(
@@ -200,13 +262,14 @@ def summary(
             )
         ),
         "observed_rows_with_one_very_late_left_record": sum(
-            1 for row in observed_rows if row["very_late_left_count"] == 1
+            1 for row in load_match_observed if row["very_late_left_count"] == 1
         ),
         "observed_rows_whose_very_late_left_is_two_from_right": sum(
             1
-            for row in observed_rows
+            for row in load_match_observed
             if row["very_late_left_offset_from_right_values"] == [2]
         ),
+        "observed_reentry_contrast_by_delta": contrast_by_delta(observed_rows),
         "sharper_arithmetic_statement": (
             "In the measured shared-load reentry cells, right-boundary reentry "
             "collapses to Rres=o4|o4 and each exact forward replacement has one "
@@ -218,12 +281,16 @@ def summary(
 
 def main() -> int:
     """Run the shared-load reentry-cell probe."""
-    candidate_rows = shared_load_candidate_rows()
+    candidate_rows = boundary_reentry_candidate_rows()
     observed_rows = observed_forward_rows(candidate_rows)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     write_json(OUTPUT_DIR / "summary.json", summary(candidate_rows, observed_rows))
     write_jsonl(OUTPUT_DIR / "candidate_rows.jsonl", candidate_rows)
-    write_jsonl(OUTPUT_DIR / "observed_forward_rows.jsonl", observed_rows)
+    write_jsonl(
+        OUTPUT_DIR / "load_match_observed_forward_rows.jsonl",
+        [row for row in observed_rows if row["shared_load_boundary_delta"] == 0],
+    )
+    write_jsonl(OUTPUT_DIR / "all_observed_forward_rows.jsonl", observed_rows)
     print(
         json.dumps(
             summary(candidate_rows, observed_rows),

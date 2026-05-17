@@ -147,8 +147,8 @@ boundary reentry is not a large cloud:
 
 ```text
 candidate load-match reentry rows = 90
-distinct reentered boundary cells = 2
-observed forward exact rows in reentered cells = 2
+distinct load-match reentered boundary cells = 2
+observed forward exact rows in load-match reentered cells = 2
 ```
 
 Both exact replacement rows have the same right boundary:
@@ -161,6 +161,14 @@ In both rows, the `very_late` left phase is a literal endpoint approach:
 
 ```text
 left selected point is two units before the right endpoint
+```
+
+The neighboring load states do not share this exact profile:
+
+```text
+shortfall delta -2: 3 observed exact reentry rows, 0 with minimum left right-distance 2
+balance  delta  0: 2 observed exact reentry rows, 2 with minimum left right-distance 2
+overshoot delta +2: 51 observed exact reentry rows, 14 with minimum left right-distance 2
 ```
 
 So the current arithmetic obstruction is:

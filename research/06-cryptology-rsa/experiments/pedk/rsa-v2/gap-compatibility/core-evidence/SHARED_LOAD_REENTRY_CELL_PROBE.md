@@ -22,8 +22,8 @@ That is the concrete source of the `very_late` phase shift.
 
 ```text
 candidate load-match reentry rows = 90
-distinct reentered boundary cells = 2
-observed forward exact rows in reentered cells = 2
+distinct load-match reentered boundary cells = 2
+observed forward exact rows in load-match reentered cells = 2
 ```
 
 The observed right boundary is fixed:
@@ -46,6 +46,17 @@ two units before the right endpoint:
 ```text
 left offset from right = 2: 2
 ```
+
+The off-load rows do not have this same shape:
+
+| shared load-boundary delta | observed exact reentry rows | rows with minimum left right-distance `2` | rows with one `very_late` left record |
+| ---: | ---: | ---: | ---: |
+| `-2` | `3` | `0` | `0` |
+| `0` | `2` | `2` | `2` |
+| `+2` | `51` | `14` | `1` |
+
+So the balanced row is not merely "sometimes left distance `2` appears." The
+balanced row has no other observed reentry lift in the measured surface.
 
 ## Consequence
 
@@ -95,7 +106,8 @@ Primary outputs:
 ```text
 output/shared_load_reentry_cell_probe/summary.json
 output/shared_load_reentry_cell_probe/candidate_rows.jsonl
-output/shared_load_reentry_cell_probe/observed_forward_rows.jsonl
+output/shared_load_reentry_cell_probe/load_match_observed_forward_rows.jsonl
+output/shared_load_reentry_cell_probe/all_observed_forward_rows.jsonl
 ```
 
 The `output/` tree is ignored. The committed script is the reproducible
