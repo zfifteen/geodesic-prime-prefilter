@@ -83,6 +83,17 @@ public containing types with load-match falsification = 0
 public words with load-match falsification = 0
 ```
 
+The support profile rules out a cheap explanation. The load-match row is not
+clean because it is weakly supported:
+
+```text
+load-match prior pair support median = 14
+load-match prior boundary support median = 1145
+load-match exact falsifications = 0
+```
+
+The leaking rows have comparable pair support and weaker boundary support.
+
 The former two-zero statement is therefore a shared-boundary statement:
 
 ```text
