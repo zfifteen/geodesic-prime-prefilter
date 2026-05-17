@@ -4,6 +4,20 @@
 
 The exact public trigger has compressed again.
 
+This gate has since been rewritten in residue form:
+
+```text
+public previous-left endpoint in {7, 13, 19} mod 30
+and
+public containing exact type o6_d4_a6_d4_odd
+```
+
+Reference:
+
+```text
+PUBLIC_LEFT_GATE_ARITHMETIC_REDUCTION.md
+```
+
 The two observed replacement rows were previously described by their full
 public gap-neighborhood keys:
 
