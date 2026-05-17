@@ -16,6 +16,16 @@ INPUT_ROOT = THIS_DIR / "output"
 ORIENTATION_DIR = INPUT_ROOT / "lower_terminal_twin_orientation_probe"
 OUTPUT_DIR = INPUT_ROOT / "span36_terminal_lift_probe"
 RULE_ID = "pedk_span36_terminal_lift_probe_v1"
+WHEEL_OPEN_RESIDUES = {1, 7, 11, 13, 17, 19, 23, 29}
+
+
+def interior_open_slot_count(left_endpoint: int, width: int) -> int:
+    """Return open wheel slots strictly inside a gap."""
+    return sum(
+        1
+        for value in range(left_endpoint + 1, left_endpoint + width)
+        if value % 30 in WHEEL_OPEN_RESIDUES
+    )
 
 
 def enriched_rows_for(
@@ -54,6 +64,11 @@ def with_span_fields(rows: list[dict[str, object]]) -> list[dict[str, object]]:
         p_left_width = int(enriched_row["p_left_gap_width"])
         p_left_offset = int(enriched_row["p_left_winner_offset"])
         p_left_distance = p_left_width - p_left_offset
+        p_preceding_left_endpoint = p - p_left_width
+        p_preceding_open_slots = interior_open_slot_count(
+            p_preceding_left_endpoint,
+            p_left_offset,
+        )
         out.append(
             {
                 "rule_id": RULE_ID,
@@ -73,9 +88,13 @@ def with_span_fields(rows: list[dict[str, object]]) -> list[dict[str, object]]:
                 "span_divisible_by_36": span % 36 == 0,
                 "p_left_distance": p_left_distance,
                 "p_preceding_gap_width": p_left_offset,
+                "p_preceding_left_endpoint_mod30": p_preceding_left_endpoint % 30,
+                "p_preceding_left_endpoint_mod180": p_preceding_left_endpoint % 180,
+                "p_preceding_open_slots": p_preceding_open_slots,
                 "p_left_bridge_width": p_left_width,
                 "lower_twin_distance": p_left_distance == 2,
                 "lower_long_preceding_gap": p_left_offset >= 18,
+                "lower_four_slot_preceding_gap": p_preceding_open_slots == 4,
                 "terminal_side": terminal_side,
                 "lower_terminal_lift": terminal_side == "p",
                 "any_terminal_lift": terminal_side != "none",
@@ -177,6 +196,10 @@ def summary(
             observed_lower_twins,
             "p_preceding_gap_width",
         ),
+        "observed_lower_twin_open_slot_counts": count_by(
+            observed_lower_twins,
+            "p_preceding_open_slots",
+        ),
         "observed_span36_lower_terminal_lift_rows": conjunction_count(observed_rows),
         "prior_pair_support_row_count": len(prior_rows),
         "prior_span_mod36_counts": count_by(prior_rows, "span_mod36"),
@@ -196,6 +219,10 @@ def summary(
             prior_lane_lower_twins,
             "p_preceding_gap_width",
         ),
+        "prior_observed_lane_lower_twin_open_slot_counts": count_by(
+            prior_lane_lower_twins,
+            "p_preceding_open_slots",
+        ),
         "prior_observed_lane_lower_terminal_lift_rows": conjunction_count(
             prior_rows_in_observed_lanes
         ),
@@ -211,8 +238,9 @@ def summary(
             "prior support already occupies the observed lanes, but none of "
             "those prior rows has lower terminal lift. Same-lane prior rows "
             "do contain lower twin distance 2, but only after preceding gaps "
-            "up to 12; the observed replacements have preceding gaps 18 and "
-            "22."
+            "with at most two interior wheel-open slots; the observed "
+            "replacements have four interior wheel-open slots before the "
+            "lower twin."
         ),
     }
 
