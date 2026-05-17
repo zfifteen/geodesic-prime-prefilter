@@ -104,6 +104,14 @@ This zero-to-zero cell is the only supported public-side by endpoint-defect
 cell in the current contrast matrix with zero exact endpoint-pair
 falsifications.
 
+The executable rule kernel is:
+
+```text
+zero_to_zero_exclusion_rule.py
+```
+
+It emits `45337` excluded endpoint-space cells with `0` exact falsifications.
+
 That single condition contains exactly the two previously clean classes:
 
 ```text
@@ -220,6 +228,7 @@ TRANSPORT_BALANCE_INVARIANT.md
 PUBLIC_TO_ENDPOINT_BALANCE_BRIDGE.md
 PUBLIC_SELECTED_CONTRAST_PROBE.md
 ZERO_TO_ZERO_INVARIANT_CANDIDATE.md
+ZERO_TO_ZERO_EXCLUSION_RULE.md
 ZERO_DEFECT_THEOREM_TARGET.md
 DIRECTED_TRANSPORT_AUDIT.md
 PUBLIC_GRAMMAR_DIRECTIONAL_BOUNDARY_GATE_RESULTS.md

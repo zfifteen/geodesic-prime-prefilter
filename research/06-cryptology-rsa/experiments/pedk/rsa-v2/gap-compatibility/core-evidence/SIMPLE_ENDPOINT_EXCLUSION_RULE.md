@@ -5,16 +5,26 @@
 The current PGS-native exclusion rule is:
 
 ```text
-Given a public at-winner composite-gap word W,
+Given a public composite-gap word W with zero public selected defect,
 and a directed endpoint-pair cell E around the two factor endpoints,
 exclude E when:
 
 1. E is absent for W across the prior measured bands,
 2. E has sufficient prior support as an endpoint-pair cell,
-3. the maximum right-following endpoint residue of E is o4.
+3. E has zero endpoint transport defect.
 ```
 
-In compact form:
+In compact zero-to-zero form:
+
+```text
+public_selected_defect(W) = 0
+and prior_absent(W, E)
+and supported(E)
+and endpoint_transport_defect(E) = 0
+    -> exclude E
+```
+
+In residue form:
 
 ```text
 public_at_winner(W)
