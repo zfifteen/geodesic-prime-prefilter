@@ -47,6 +47,11 @@ two units before the right endpoint:
 left offset from right = 2: 2
 ```
 
+`FACTOR_LEFT_GAP_SEMANTICS_AUDIT.md` identifies that selected point. In the
+current factor-left bridge representation, the selected point is the immediate
+previous endpoint before the factor. Therefore the load-match reentry rows are
+literal immediate-left endpoint distance `2` rows.
+
 The off-load rows do not have this same shape:
 
 | shared load-boundary delta | observed exact reentry rows | rows with minimum left right-distance `2` | rows with one `very_late` left record |
@@ -68,13 +73,13 @@ and
 right endpoint boundary 4
 and
 right-boundary reentry
-    -> a replacement left-side factor gap is selected two units before its
-       right endpoint
+    -> a replacement factor has immediate-left endpoint distance 2
 ```
 
-For the current measured surface, that exact two-from-right condition is what
-appears as a `very_late` left phase. The old supported candidate classes do not
-contain a `very_late` left phase, so they cannot be the exact rows that reenter.
+For the current measured surface, that exact endpoint-distance condition is
+what appears as a `very_late` left phase. The old supported candidate classes do
+not contain a `very_late` left phase, so they cannot be the exact rows that
+reenter.
 
 ## Current Proof Target
 
