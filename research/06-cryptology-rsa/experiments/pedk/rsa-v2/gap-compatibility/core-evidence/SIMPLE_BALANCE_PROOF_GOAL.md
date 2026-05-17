@@ -413,6 +413,18 @@ The two observed replacement lanes modulo `180` are:
 49|13
 ```
 
+The phase lock also fixes the public product residue:
+
+```text
+N = 37 mod 60
+```
+
+Since the public selected offset is `6`, the public left endpoint is:
+
+```text
+31 mod 60
+```
+
 Span divisibility alone is not enough:
 
 ```text
@@ -460,6 +472,8 @@ So the current proof target has sharpened again:
 
 ```text
 shared load equality
+and
+public left endpoint 31 mod 60
 and
 balanced endpoint right boundary
 and
