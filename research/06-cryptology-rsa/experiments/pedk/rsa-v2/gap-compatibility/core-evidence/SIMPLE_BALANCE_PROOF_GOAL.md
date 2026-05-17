@@ -205,6 +205,38 @@ shared load equality
     -> old exact endpoint pair remains absent
 ```
 
+The terminal-twin lift probe separates the replacement rows from the prior
+supported candidate classes:
+
+```text
+candidate load-match reentry rows = 90
+prior pair support rows = 8253
+prior pair support rows with terminal-twin lift = 0
+observed replacement rows = 2
+observed replacement rows with terminal-twin lift = 2
+```
+
+Here:
+
+```text
+terminal-twin lift =
+    immediate-left endpoint distance 2
+    inside a factor-left bridge of width at least 20
+```
+
+Distance `2` alone is not enough. Prior support rows do contain distance `2`
+inside shorter bridges. The balanced replacement rows require the terminal
+twin inside a long enough bridge.
+
+So the current proof target is:
+
+```text
+shared load equality
+    -> right-boundary reentry forces terminal-twin lift
+    -> old supported exact-pair class cannot be the lift
+    -> exact endpoint-pair absence remains stable
+```
+
 The former two-zero statement is therefore a shared-boundary statement:
 
 ```text
@@ -377,13 +409,13 @@ and
 right endpoint boundary 4
 and
 right-boundary reentry
-    -> one replacement factor has immediate-left endpoint distance 2
+    -> terminal-twin lift
 ```
 
-In the measured rows, that exact endpoint-distance event is what appears as the
-`very_late` left phase in the current bridge representation. Since the
-previously absent balanced candidates avoid `very_late`, the old left phase
-cannot reappear. That gives the desired contradiction:
+In the measured rows, terminal-twin lift is what appears as the `very_late`
+left phase in the current bridge representation. Since the previously absent
+balanced candidates do not contain terminal-twin lift in prior support, the old
+left phase cannot reappear. That gives the desired contradiction:
 
 ```text
 selected public position
@@ -399,8 +431,8 @@ This is the remaining proof step.
 ```text
 theorem_status = hypothesis_not_proved
 measured_status = 45337 exclusions, 0 exact falsifications
-proof_reduction_status = reduced_to_immediate_left_endpoint_distance_lemma
+proof_reduction_status = reduced_to_terminal_twin_lift_lemma
 ```
 
 The next move is to prove why shared load equality forces the replacement lift
-through a factor whose immediate-left endpoint distance is `2`.
+through terminal-twin lift.

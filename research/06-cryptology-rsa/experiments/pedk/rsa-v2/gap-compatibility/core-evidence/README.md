@@ -38,6 +38,7 @@ SHARED_LOAD_LEFT_PHASE_PROBE.md
 SHARED_LOAD_PHASE_SHIFT_PROBE.md
 SHARED_LOAD_REENTRY_CELL_PROBE.md
 FACTOR_LEFT_GAP_SEMANTICS_AUDIT.md
+TERMINAL_TWIN_LIFT_PROBE.md
 ZERO_TO_ZERO_LANDED_STATE.md
 CURRENT_STATE_OF_GAP_COMPATIBILITY_LAW.md
 GAP_COMPATIBILITY_HYPOTHESIS.md
@@ -92,6 +93,7 @@ shared_load_left_phase_probe.py
 shared_load_phase_shift_probe.py
 shared_load_reentry_cell_probe.py
 factor_left_gap_semantics_audit.py
+terminal_twin_lift_probe.py
 ```
 
 Supporting helpers remain in this folder because the active scripts import
