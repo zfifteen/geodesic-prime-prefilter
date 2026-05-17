@@ -88,6 +88,11 @@ families, `low|middle` and `middle|middle`, cover all reduced residues of
 position of `N` inside its containing gap, paired with the directed endpoint
 transport boundary.
 
+The contrast probe confirms that this public condition is active. The compact
+endpoint predicate has `0 / 45337` exact endpoint-pair falsifications under
+`at_winner`, but `25 / 1810` exact endpoint-pair falsifications under
+`after_winner`.
+
 That single condition contains exactly the two previously clean classes:
 
 ```text
@@ -202,6 +207,7 @@ SIMPLE_ENDPOINT_EXCLUSION_RULE.md
 PUBLIC_SELECTED_POSITION_FILTER_MECHANISM.md
 TRANSPORT_BALANCE_INVARIANT.md
 PUBLIC_TO_ENDPOINT_BALANCE_BRIDGE.md
+PUBLIC_SELECTED_CONTRAST_PROBE.md
 ZERO_DEFECT_THEOREM_TARGET.md
 DIRECTED_TRANSPORT_AUDIT.md
 PUBLIC_GRAMMAR_DIRECTIONAL_BOUNDARY_GATE_RESULTS.md
