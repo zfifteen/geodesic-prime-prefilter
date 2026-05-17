@@ -109,6 +109,22 @@ under shared load equality,
 right-boundary reentry does not lift to exact endpoint-pair reentry
 ```
 
+The left-phase probe identifies the missing lift component:
+
+```text
+load-match boundary reentry rows = 90
+load-match left residue reappears = 23
+load-match left phase reappears = 0
+load-match exact endpoint-pair reentry = 0
+```
+
+Thus the current obstruction is:
+
+```text
+under shared load equality,
+right-boundary reentry cannot preserve the old left phase arrangement
+```
+
 The former two-zero statement is therefore a shared-boundary statement:
 
 ```text
