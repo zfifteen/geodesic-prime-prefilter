@@ -26,6 +26,7 @@ WINDOWS = (
 )
 
 RESIDUE_RANK = {"o2": 1, "o4": 2, "o6": 3}
+MIDDLE_RESIDUE = "o4"
 
 
 def read_jsonl(path: Path) -> list[dict[str, object]]:
@@ -72,12 +73,18 @@ def right_boundary_balance(row: dict[str, object]) -> str:
     raise ValueError(f"unknown right residue maximum: {max_residue}")
 
 
+def right_boundary_defect(row: dict[str, object]) -> int:
+    """Return signed distance from the middle right-boundary residue."""
+    return RESIDUE_RANK[right_residue_max(row)] - RESIDUE_RANK[MIDDLE_RESIDUE]
+
+
 def invariant_values(row: dict[str, object]) -> dict[str, str]:
     """Return simple invariant candidates for one row."""
     residues = right_residues(row)
     max_residue = right_residue_max(row)
     return {
         "right_boundary_balance": right_boundary_balance(row),
+        "right_boundary_defect": str(right_boundary_defect(row)),
         "right_residue_pair": str(row["right_boundary_residues"]),
         "right_residue_max": max_residue,
         "right_residue_sum": str(right_residue_sum(row)),
@@ -264,6 +271,7 @@ def exclusion_rule_rows(rows: list[dict[str, object]]) -> list[dict[str, object]
                 "right_boundary_residues": row["right_boundary_residues"],
                 "right_residue_max": "o4",
                 "right_boundary_balance": "middle_o4_balance",
+                "right_boundary_defect": 0,
                 "left_boundary_residues": row["left_boundary_residues"],
                 "right_boundary_phases": row["right_boundary_phases"],
                 "left_boundary_phases": row["left_boundary_phases"],
@@ -304,6 +312,10 @@ def summary(
         row for row in profiles
         if row["axis"] == "right_boundary_balance"
     ]
+    defect_rows = [
+        row for row in profiles
+        if row["axis"] == "right_boundary_defect"
+    ]
     return {
         "rule_id": RULE_ID,
         "status": "measured_simple_invariant_probe",
@@ -315,6 +327,7 @@ def summary(
         "right_residue_max_not_o4": status_counts(other_rows),
         "excluded_endpoint_cell_count": len(excluded_rows),
         "right_boundary_balance_profile": balance_rows,
+        "right_boundary_defect_profile": defect_rows,
         "right_residue_max_profile": max_rows,
         "public_local_summary": local_summaries,
     }
