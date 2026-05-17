@@ -142,6 +142,35 @@ shared load equality
     -> old exact endpoint pair remains absent
 ```
 
+The reentry-cell probe removes another layer of vocabulary. The load-match
+boundary reentry is not a large cloud:
+
+```text
+candidate load-match reentry rows = 90
+distinct reentered boundary cells = 2
+observed forward exact rows in reentered cells = 2
+```
+
+Both exact replacement rows have the same right boundary:
+
+```text
+right boundary residues = o4|o4
+```
+
+In both rows, the `very_late` left phase is a literal endpoint approach:
+
+```text
+left selected point is two units before the right endpoint
+```
+
+So the current arithmetic obstruction is:
+
+```text
+shared load equality
+    -> right-boundary reentry lifts through a left gap with right-distance 2
+    -> old candidate left phases cannot reappear
+```
+
 The former two-zero statement is therefore a shared-boundary statement:
 
 ```text
@@ -314,11 +343,14 @@ and
 right endpoint boundary 4
 and
 right-boundary reentry
-    -> left phase contains very_late
+    -> one replacement left-side factor gap is selected two units before its
+       right endpoint
 ```
 
-Since the previously absent balanced candidates avoid `very_late`, the old
-left phase cannot reappear. That gives the desired contradiction:
+In the measured rows, that exact two-from-right event is what appears as the
+`very_late` left phase. Since the previously absent balanced candidates avoid
+`very_late`, the old left phase cannot reappear. That gives the desired
+contradiction:
 
 ```text
 selected public position
@@ -334,8 +366,8 @@ This is the remaining proof step.
 ```text
 theorem_status = hypothesis_not_proved
 measured_status = 45337 exclusions, 0 exact falsifications
-proof_reduction_status = reduced_to_shared_load_phase_shift_lemma
+proof_reduction_status = reduced_to_shared_load_reentry_cell_lemma
 ```
 
-The next move is to prove why shared load equality forces the replacement left
-phase into the `very_late` family.
+The next move is to prove why shared load equality forces the replacement lift
+through a left-side gap selected two units before its right endpoint.

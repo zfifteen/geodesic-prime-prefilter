@@ -95,6 +95,11 @@ right endpoint boundary 4
 
 This is the smallest obstruction currently exposed.
 
+`SHARED_LOAD_REENTRY_CELL_PROBE.md` sharpens the same obstruction further. In
+the measured reentry cells, the `very_late` phase is a literal right-distance
+condition: the selected point in one left-side factor gap is exactly two units
+before the right endpoint.
+
 ## Reproduction
 
 Run:
