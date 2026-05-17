@@ -69,6 +69,9 @@ def with_span_fields(rows: list[dict[str, object]]) -> list[dict[str, object]]:
             p_preceding_left_endpoint,
             p_left_offset,
         )
+        public_left_endpoint = int(enriched_row["N"]) - int(
+            enriched_row["public_n_offset_from_left"]
+        )
         out.append(
             {
                 "rule_id": RULE_ID,
@@ -81,6 +84,8 @@ def with_span_fields(rows: list[dict[str, object]]) -> list[dict[str, object]]:
                 "q_mod36": q % 36,
                 "p_mod180": p % 180,
                 "q_mod180": q % 180,
+                "N_mod60": int(enriched_row["N"]) % 60,
+                "public_left_endpoint_mod60": public_left_endpoint % 60,
                 "factor_mod180_lane": f"{p % 180}|{q % 180}",
                 "same_mod36": p % 36 == q % 36,
                 "span": span,
@@ -185,6 +190,11 @@ def summary(
             observed_rows,
             "factor_mod180_lane",
         ),
+        "observed_N_mod60_counts": count_by(observed_rows, "N_mod60"),
+        "observed_public_left_mod60_counts": count_by(
+            observed_rows,
+            "public_left_endpoint_mod60",
+        ),
         "observed_lower_twin_rows": len(observed_lower_twins),
         "observed_lower_twin_preceding_gap_min": min_or_none(
             [
@@ -207,6 +217,10 @@ def summary(
         "prior_observed_mod180_lane_counts": count_by(
             prior_rows_in_observed_lanes,
             "factor_mod180_lane",
+        ),
+        "prior_observed_lane_N_mod60_counts": count_by(
+            prior_rows_in_observed_lanes,
+            "N_mod60",
         ),
         "prior_observed_lane_lower_twin_rows": len(prior_lane_lower_twins),
         "prior_observed_lane_lower_twin_preceding_gap_max": max_or_none(

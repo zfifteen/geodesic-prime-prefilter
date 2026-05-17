@@ -33,6 +33,18 @@ two mod-180 lanes:
 49|13
 ```
 
+It also fixes the public product residue:
+
+```text
+N = 37 mod 60
+```
+
+Because the public selected offset is `6`, the public left endpoint is:
+
+```text
+31 mod 60
+```
+
 ## Measured Profile
 
 Across the 11 public `o6` residue-bridge trigger rows:
@@ -50,6 +62,8 @@ observed replacement rows = 2
 observed span mod 36 = 0 rows = 2
 observed span-36 lower-terminal rows = 2
 observed mod-180 lanes = 43|79 and 49|13
+observed N mod 60 = 37
+observed public left endpoint mod 60 = 31
 ```
 
 For the old supported pair classes:

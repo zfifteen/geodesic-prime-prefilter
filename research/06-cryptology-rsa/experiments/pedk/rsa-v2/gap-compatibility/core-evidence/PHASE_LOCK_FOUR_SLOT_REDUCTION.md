@@ -40,6 +40,18 @@ p mod 180 = 43
 p mod 180 = 49
 ```
 
+It also fixes the public product residue:
+
+```text
+N = pq = 37 mod 60
+```
+
+Since the public selected offset is `6`, the left endpoint of the public gap is:
+
+```text
+37 - 6 = 31 mod 60
+```
+
 If the lower factor closes a twin pair, the immediate previous endpoint is:
 
 ```text
@@ -108,6 +120,8 @@ The proof target is now:
 
 ```text
 public selected load 4
+and
+public left endpoint 31 mod 60
 and
 endpoint right boundary 4
 and
