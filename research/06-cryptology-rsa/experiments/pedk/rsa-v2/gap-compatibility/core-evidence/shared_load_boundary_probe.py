@@ -43,6 +43,8 @@ def load_boundary_row(row: dict[str, object]) -> dict[str, object]:
         str(row["public_containing_exact_type_key"])
     )
     endpoint_boundary = endpoint_right_boundary(row)
+    load_delta = endpoint_boundary - public_load
+    endpoint_transport_defect = int(row["endpoint_transport_defect"])
     return {
         "rule_id": RULE_ID,
         "window": row["window"],
@@ -53,7 +55,9 @@ def load_boundary_row(row: dict[str, object]) -> dict[str, object]:
         "right_boundary_residues": row["right_boundary_residues"],
         "public_selected_divisor_count": public_load,
         "endpoint_right_boundary": endpoint_boundary,
-        "shared_load_boundary_delta": endpoint_boundary - public_load,
+        "shared_load_boundary_delta": load_delta,
+        "endpoint_transport_defect": endpoint_transport_defect,
+        "load_delta_matches_endpoint_defect": load_delta == 2 * endpoint_transport_defect,
         "endpoint_matches_public_load": endpoint_boundary == public_load,
         "exact_pair_falsified": row["exact_pair_falsified"],
         "status": row["status"],
@@ -108,12 +112,16 @@ def summary(rows: list[dict[str, object]], grouped_rows: list[dict[str, object]]
     ]
     falsified = [row for row in selected if row["exact_pair_falsified"]]
     public_loads = sorted({row["public_selected_divisor_count"] for row in rows})
+    load_delta_mismatches = [
+        row for row in rows if not row["load_delta_matches_endpoint_defect"]
+    ]
     return {
         "rule_id": RULE_ID,
         "status": "measured_shared_load_boundary_probe",
         "theorem_status": "hypothesis_not_proved",
         "candidate_row_count": len(rows),
         "public_selected_divisor_counts": public_loads,
+        "load_delta_endpoint_defect_mismatch_count": len(load_delta_mismatches),
         "selected_public_and_endpoint_matches_load_count": len(selected),
         "selected_public_and_endpoint_matches_load_falsification_count": len(falsified),
         "selected_public_and_endpoint_matches_load_rate_ppm": rate_ppm(
@@ -122,10 +130,10 @@ def summary(rows: list[dict[str, object]], grouped_rows: list[dict[str, object]]
         "grouped_rows": grouped_rows,
         "sharper_arithmetic_statement": (
             "On the active candidate surface, endpoint transport defect zero is exactly "
-            "endpoint_right_boundary == public_selected_divisor_count. Since the "
-            "selected public divisor count is 4 throughout this surface, the clean "
-            "cell is the shared load-boundary match: first public load 4 and right "
-            "endpoint boundary 4."
+            "endpoint_right_boundary == public_selected_divisor_count. The signed "
+            "load delta equals twice the old endpoint transport defect with zero "
+            "mismatches, so the defect language can be replaced by the arithmetic "
+            "condition endpoint boundary minus public load equals 0."
         ),
     }
 
@@ -138,6 +146,10 @@ def main() -> int:
     write_json(OUTPUT_DIR / "summary.json", summary(rows, groups))
     write_jsonl(OUTPUT_DIR / "shared_load_boundary_rows.jsonl", rows)
     write_jsonl(OUTPUT_DIR / "grouped_rows.jsonl", groups)
+    write_jsonl(
+        OUTPUT_DIR / "load_delta_mismatch_rows.jsonl",
+        [row for row in rows if not row["load_delta_matches_endpoint_defect"]],
+    )
     print(json.dumps(summary(rows, groups), indent=2, sort_keys=True))
     return 0
 

@@ -63,6 +63,19 @@ clean endpoint boundary is also `4`:
 endpoint right boundary = public selected divisor count
 ```
 
+The old endpoint transport defect is just the normalized version of this same
+load difference:
+
+```text
+endpoint right boundary - public selected divisor count = 0
+```
+
+The probe verifies:
+
+```text
+load-delta / endpoint-defect mismatches = 0
+```
+
 The former two-zero statement is therefore a shared-boundary statement:
 
 ```text
