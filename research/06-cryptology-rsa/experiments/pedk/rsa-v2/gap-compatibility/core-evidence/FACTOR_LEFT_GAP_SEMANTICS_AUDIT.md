@@ -82,6 +82,11 @@ This audit is also a representation warning. The current factor-left field is
 not the ordinary immediate left interval alone. It is a bridge that includes the
 ordinary immediate left endpoint as its selected point.
 
+`TERMINAL_TWIN_LIFT_PROBE.md` uses this audit to separate the old supported
+candidate pair classes from the observed load-match replacement rows. Distance
+`2` alone is common enough to be too weak. Distance `2` inside a factor-left
+bridge of width at least `20` is the measured replacement lift.
+
 Any proof or implementation using this field must treat it as:
 
 ```text
