@@ -75,6 +75,19 @@ defect = +1  overshoot
 
 ## Mechanism
 
+The public side has its own zero-defect condition:
+
+```text
+public selected defect =
+    public_n_offset_from_left - public_gwr_winner_offset
+```
+
+Under `public_at_winner(W)`:
+
+```text
+public selected defect = 0
+```
+
 Multiplication sends a movement at a factor endpoint into a directed movement
 of the composite:
 
@@ -151,15 +164,14 @@ absence law, not a universal description of true factor-pair defect.
 
 ### Obligation 2: Winner Balance
 
-Show that the public at-winner condition selects the zero signed deviation of
-that outward boundary class:
+Show that the public zero-defect condition stabilizes supported prior absence
+only at the zero signed deviation of the outward endpoint boundary:
 
 ```text
-public_at_winner(W)
-    -> right_boundary_defect(E) = 0
+public selected defect = 0
+and supported prior absence
+    -> stable exclusion at right_boundary_defect(E) = 0
 ```
-
-for supported absent endpoint cells.
 
 This is the core theorem step.
 

@@ -82,6 +82,12 @@ both endpoint slots avoid {1, 23}
 and at least one endpoint slot lands in {7, 13, 19}
 ```
 
+This is not a rule about `N mod 30` by itself. The two clean endpoint
+families, `low|middle` and `middle|middle`, cover all reduced residues of
+`N` modulo `30` when multiplied through. The selector is the public selected
+position of `N` inside its containing gap, paired with the directed endpoint
+transport boundary.
+
 That single condition contains exactly the two previously clean classes:
 
 ```text
@@ -195,6 +201,7 @@ SIMPLE_RIGHT_RESIDUE_INVARIANT.md
 SIMPLE_ENDPOINT_EXCLUSION_RULE.md
 PUBLIC_SELECTED_POSITION_FILTER_MECHANISM.md
 TRANSPORT_BALANCE_INVARIANT.md
+PUBLIC_TO_ENDPOINT_BALANCE_BRIDGE.md
 ZERO_DEFECT_THEOREM_TARGET.md
 DIRECTED_TRANSPORT_AUDIT.md
 PUBLIC_GRAMMAR_DIRECTIONAL_BOUNDARY_GATE_RESULTS.md
