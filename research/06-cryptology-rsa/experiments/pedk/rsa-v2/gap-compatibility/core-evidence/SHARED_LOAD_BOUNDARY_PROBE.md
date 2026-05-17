@@ -40,9 +40,25 @@ It emits:
 ```text
 candidate_row_count = 101538
 public_selected_divisor_counts = [4]
+load_delta_endpoint_defect_mismatch_count = 0
 selected public and endpoint boundary matches load = 45337
 exact falsifications = 0
 rate ppm = 0
+```
+
+The old endpoint defect is exactly the signed load-boundary delta divided by
+two on this surface:
+
+```text
+shared load-boundary delta = endpoint right boundary - public selected divisor count
+endpoint transport defect = shared load-boundary delta / 2
+```
+
+There are no mismatches between these two descriptions. The defect language can
+therefore be replaced by:
+
+```text
+endpoint right boundary - public selected divisor count = 0
 ```
 
 The same surface by signed load-boundary delta is:
@@ -112,6 +128,14 @@ and a supported prior-absent endpoint cell has right endpoint boundary equal
 to that public selected load, then the endpoint cell remains absent.
 ```
 
+Equivalently:
+
+```text
+If N is at the first public low-load point
+and shared load-boundary delta is 0,
+then supported prior absence is stable.
+```
+
 For the current distinct-prime semiprime surface:
 
 ```text
@@ -150,6 +174,7 @@ Primary outputs:
 output/shared_load_boundary_probe/summary.json
 output/shared_load_boundary_probe/shared_load_boundary_rows.jsonl
 output/shared_load_boundary_probe/grouped_rows.jsonl
+output/shared_load_boundary_probe/load_delta_mismatch_rows.jsonl
 ```
 
 The `output/` tree is ignored. The committed script is the reproducible
