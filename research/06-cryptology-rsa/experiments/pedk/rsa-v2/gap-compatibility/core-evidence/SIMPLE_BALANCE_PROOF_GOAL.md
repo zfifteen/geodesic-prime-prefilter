@@ -448,6 +448,14 @@ So the current obstruction is not simply "lower twin." It is:
 lower twin after a preceding gap of width at least 18
 ```
 
+Equivalently, in the observed lanes, that preceding gap contains four interior
+wheel-open slots:
+
+```text
+observed lower twin interior open slots = 4
+same-lane prior lower twin interior open slots = 0 or 2
+```
+
 So the current proof target has sharpened again:
 
 ```text
@@ -457,7 +465,7 @@ balanced endpoint right boundary
 and
 span-36 reentry
     -> lower factor is two units after the previous endpoint
-       whose preceding gap has width at least 18
+       whose preceding gap contains four interior wheel-open slots
 ```
 
 The former two-zero statement is therefore a shared-boundary statement:

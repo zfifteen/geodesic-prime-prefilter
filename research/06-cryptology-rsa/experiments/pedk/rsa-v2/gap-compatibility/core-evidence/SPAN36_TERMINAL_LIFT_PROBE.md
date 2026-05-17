@@ -87,7 +87,7 @@ The terminal lift has a still more literal description:
 ```text
 p is two units after the previous endpoint
 and
-the gap before that previous endpoint has width at least 18
+the gap before that previous endpoint contains four interior wheel-open slots
 ```
 
 The same-lane contrast isolates the threshold:
@@ -96,6 +96,8 @@ The same-lane contrast isolates the threshold:
 observed lower twin preceding gap widths = 18 and 22
 same-lane prior lower twin preceding gap widths = 4, 10, 12
 same-lane prior maximum = 12
+observed lower twin interior open slots = 4
+same-lane prior lower twin interior open slots = 0 or 2
 ```
 
 Equivalently, the old exact endpoint-pair class remains absent because:
@@ -104,7 +106,7 @@ Equivalently, the old exact endpoint-pair class remains absent because:
 old supported pair class has span-36 rows
 and even occupies the observed mod-180 lanes
 and even has lower twin-distance rows
-but no lower twin after a preceding gap of width at least 18
+but no lower twin after a four-slot preceding gap
 ```
 
 while the observed replacements are:
@@ -122,8 +124,8 @@ It is the arithmetic reason that the balanced reentry surface selects:
 ```text
 q - p = 0 mod 36
 and
-p is two units after the previous endpoint whose preceding gap has width at
-least 18
+p is two units after the previous endpoint whose preceding gap contains four
+interior wheel-open slots
 ```
 
 inside the public selected `o6` residue-bridge trigger.
