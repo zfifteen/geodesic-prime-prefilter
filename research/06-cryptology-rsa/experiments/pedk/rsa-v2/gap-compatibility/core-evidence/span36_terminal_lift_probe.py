@@ -51,6 +51,9 @@ def with_span_fields(rows: list[dict[str, object]]) -> list[dict[str, object]]:
         q = int(enriched_row["q"])
         span = q - p
         terminal_side = str(row["terminal_side"])
+        p_left_width = int(enriched_row["p_left_gap_width"])
+        p_left_offset = int(enriched_row["p_left_winner_offset"])
+        p_left_distance = p_left_width - p_left_offset
         out.append(
             {
                 "rule_id": RULE_ID,
@@ -68,6 +71,11 @@ def with_span_fields(rows: list[dict[str, object]]) -> list[dict[str, object]]:
                 "span": span,
                 "span_mod36": span % 36,
                 "span_divisible_by_36": span % 36 == 0,
+                "p_left_distance": p_left_distance,
+                "p_preceding_gap_width": p_left_offset,
+                "p_left_bridge_width": p_left_width,
+                "lower_twin_distance": p_left_distance == 2,
+                "lower_long_preceding_gap": p_left_offset >= 18,
                 "terminal_side": terminal_side,
                 "lower_terminal_lift": terminal_side == "p",
                 "any_terminal_lift": terminal_side != "none",
@@ -105,6 +113,25 @@ def rows_in_lanes(
     ]
 
 
+def lower_twin_rows(rows: list[dict[str, object]]) -> list[dict[str, object]]:
+    """Return rows where the lower factor is two units after the left endpoint."""
+    return [
+        row
+        for row in rows
+        if row["lower_twin_distance"]
+    ]
+
+
+def max_or_none(values: list[int]) -> int | None:
+    """Return max(values), or None for an empty list."""
+    return max(values) if values else None
+
+
+def min_or_none(values: list[int]) -> int | None:
+    """Return min(values), or None for an empty list."""
+    return min(values) if values else None
+
+
 def summary(
     trigger_rows: list[dict[str, object]],
     observed_rows: list[dict[str, object]],
@@ -116,6 +143,8 @@ def summary(
         for row in observed_rows
     }
     prior_rows_in_observed_lanes = rows_in_lanes(prior_rows, observed_lanes)
+    prior_lane_lower_twins = lower_twin_rows(prior_rows_in_observed_lanes)
+    observed_lower_twins = lower_twin_rows(observed_rows)
     return {
         "rule_id": RULE_ID,
         "status": "measured_span36_terminal_lift_probe",
@@ -137,6 +166,17 @@ def summary(
             observed_rows,
             "factor_mod180_lane",
         ),
+        "observed_lower_twin_rows": len(observed_lower_twins),
+        "observed_lower_twin_preceding_gap_min": min_or_none(
+            [
+                int(row["p_preceding_gap_width"])
+                for row in observed_lower_twins
+            ]
+        ),
+        "observed_lower_twin_preceding_gap_counts": count_by(
+            observed_lower_twins,
+            "p_preceding_gap_width",
+        ),
         "observed_span36_lower_terminal_lift_rows": conjunction_count(observed_rows),
         "prior_pair_support_row_count": len(prior_rows),
         "prior_span_mod36_counts": count_by(prior_rows, "span_mod36"),
@@ -144,6 +184,17 @@ def summary(
         "prior_observed_mod180_lane_counts": count_by(
             prior_rows_in_observed_lanes,
             "factor_mod180_lane",
+        ),
+        "prior_observed_lane_lower_twin_rows": len(prior_lane_lower_twins),
+        "prior_observed_lane_lower_twin_preceding_gap_max": max_or_none(
+            [
+                int(row["p_preceding_gap_width"])
+                for row in prior_lane_lower_twins
+            ]
+        ),
+        "prior_observed_lane_lower_twin_preceding_gap_counts": count_by(
+            prior_lane_lower_twins,
+            "p_preceding_gap_width",
         ),
         "prior_observed_lane_lower_terminal_lift_rows": conjunction_count(
             prior_rows_in_observed_lanes
@@ -158,7 +209,10 @@ def summary(
             "factors share the same mod-36 phase and then lift through the "
             "lower terminal twin. The mod-180 lanes alone are not enough: "
             "prior support already occupies the observed lanes, but none of "
-            "those prior rows has lower terminal lift."
+            "those prior rows has lower terminal lift. Same-lane prior rows "
+            "do contain lower twin distance 2, but only after preceding gaps "
+            "up to 12; the observed replacements have preceding gaps 18 and "
+            "22."
         ),
     }
 

@@ -82,12 +82,29 @@ same factor phase mod 36
     -> lower-factor terminal-twin lift is the only observed reentry route
 ```
 
+The terminal lift has a still more literal description:
+
+```text
+p is two units after the previous endpoint
+and
+the gap before that previous endpoint has width at least 18
+```
+
+The same-lane contrast isolates the threshold:
+
+```text
+observed lower twin preceding gap widths = 18 and 22
+same-lane prior lower twin preceding gap widths = 4, 10, 12
+same-lane prior maximum = 12
+```
+
 Equivalently, the old exact endpoint-pair class remains absent because:
 
 ```text
 old supported pair class has span-36 rows
 and even occupies the observed mod-180 lanes
-but no lower-terminal rows
+and even has lower twin-distance rows
+but no lower twin after a preceding gap of width at least 18
 ```
 
 while the observed replacements are:
@@ -105,7 +122,8 @@ It is the arithmetic reason that the balanced reentry surface selects:
 ```text
 q - p = 0 mod 36
 and
-p is two units after the previous endpoint
+p is two units after the previous endpoint whose preceding gap has width at
+least 18
 ```
 
 inside the public selected `o6` residue-bridge trigger.
