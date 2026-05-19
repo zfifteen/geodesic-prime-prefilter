@@ -1,0 +1,188 @@
+{
+  "cases": [
+    {
+      "N": 713,
+      "N_bits": 10,
+      "classification": "one_factor_in_public_top_k",
+      "covered": true,
+      "hit": {
+        "distance": 23,
+        "left_source_count": 17741,
+        "rank": 48,
+        "right_source_count": 8624,
+        "score": [
+          569739,
+          569739,
+          13104,
+          2,
+          4,
+          -23
+        ],
+        "shared_thread_count": 2,
+        "union_thread_count": 4,
+        "which": "p"
+      },
+      "iteration": 3,
+      "name": "toy_23x31",
+      "p": 23,
+      "public_cost": {
+        "elapsed_seconds": 1.719862,
+        "source_rows": 17093,
+        "vote_targets": 32766
+      },
+      "q": 31,
+      "radius": 16384
+    },
+    {
+      "N": 2537,
+      "N_bits": 12,
+      "classification": "one_factor_in_public_top_k",
+      "covered": true,
+      "hit": {
+        "distance": 59,
+        "left_source_count": 15963,
+        "rank": 45,
+        "right_source_count": 9634,
+        "score": [
+          1218762,
+          304440,
+          71907,
+          2,
+          7,
+          -59
+        ],
+        "shared_thread_count": 2,
+        "union_thread_count": 7,
+        "which": "q"
+      },
+      "iteration": 3,
+      "name": "toy_43x59",
+      "p": 43,
+      "public_cost": {
+        "elapsed_seconds": 2.073449,
+        "source_rows": 18917,
+        "vote_targets": 32766
+      },
+      "q": 59,
+      "radius": 16384
+    },
+    {
+      "N": 5063,
+      "N_bits": 13,
+      "classification": "one_factor_in_public_top_k",
+      "covered": true,
+      "hit": {
+        "distance": 61,
+        "left_source_count": 10854,
+        "rank": 71,
+        "right_source_count": 18074,
+        "score": [
+          1107721,
+          289114,
+          67571,
+          2,
+          7,
+          -61
+        ],
+        "shared_thread_count": 2,
+        "union_thread_count": 7,
+        "which": "p"
+      },
+      "iteration": 3,
+      "name": "toy_61x83",
+      "p": 61,
+      "public_cost": {
+        "elapsed_seconds": 2.746478,
+        "source_rows": 21443,
+        "vote_targets": 32766
+      },
+      "q": 83,
+      "radius": 16384
+    },
+    {
+      "N": 10057,
+      "N_bits": 14,
+      "classification": "one_factor_in_public_top_k",
+      "covered": true,
+      "hit": {
+        "distance": 89,
+        "left_source_count": 13426,
+        "rank": 151,
+        "right_source_count": 22192,
+        "score": [
+          829067,
+          208910,
+          73787,
+          2,
+          7,
+          -89
+        ],
+        "shared_thread_count": 2,
+        "union_thread_count": 7,
+        "which": "p"
+      },
+      "iteration": 3,
+      "name": "toy_89x113",
+      "p": 89,
+      "public_cost": {
+        "elapsed_seconds": 4.128779,
+        "source_rows": 26437,
+        "vote_targets": 32766
+      },
+      "q": 113,
+      "radius": 16384
+    },
+    {
+      "N": 18905157503,
+      "N_bits": 35,
+      "classification": "public_window_insufficient_coverage",
+      "covered": false,
+      "hit": null,
+      "iteration": 3,
+      "name": "continuation_00_131101x144203",
+      "p": 131101,
+      "public_cost": {
+        "elapsed_seconds": 0.08118,
+        "source_rows": 24031,
+        "vote_targets": 24031
+      },
+      "q": 144203,
+      "radius": 16384
+    },
+    {
+      "N": 1209478624103,
+      "N_bits": 41,
+      "classification": "public_window_insufficient_coverage",
+      "covered": false,
+      "hit": null,
+      "iteration": 3,
+      "name": "continuation_01_1048583x1153441",
+      "p": 1048583,
+      "public_cost": {
+        "elapsed_seconds": 0.0733,
+        "source_rows": 24031,
+        "vote_targets": 24031
+      },
+      "q": 1153441,
+      "radius": 16384
+    }
+  ],
+  "coverage_failure_count": 2,
+  "covered_failure_count": 0,
+  "iteration": 3,
+  "spec": {
+    "design_reason": "Iteration 2 over-favored far accidental rare residuals. This normalizes rare balanced triangulation by distance to restore the local factor-distance signal while retaining information weighting.",
+    "iteration": 3,
+    "radius": 16384,
+    "residual_limit": 32768,
+    "score_mode": "rare_per_distance",
+    "small_primes": [
+      2,
+      3,
+      5
+    ],
+    "top_k": 1000
+  },
+  "status": "failed_iteration",
+  "success_count": 4
+}

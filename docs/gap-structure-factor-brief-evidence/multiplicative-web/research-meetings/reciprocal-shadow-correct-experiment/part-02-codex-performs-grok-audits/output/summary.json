@@ -1,0 +1,904 @@
+{
+  "cases": [
+    {
+      "N": 713,
+      "case_id": 0,
+      "classification": "boundary_measurement",
+      "p": 23,
+      "p_in_rotated": false,
+      "p_in_synthetic": false,
+      "p_in_true": true,
+      "p_mod_M": 23,
+      "p_over_sqrtN": 0.861357,
+      "p_rank_rotated": null,
+      "p_rank_synthetic": null,
+      "p_rank_true": 6,
+      "q": 31,
+      "rotated": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "synthetic": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "true": {
+        "M": 210,
+        "cardinality": 48,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      }
+    },
+    {
+      "N": 2537,
+      "case_id": 1,
+      "classification": "boundary_measurement",
+      "p": 43,
+      "p_in_rotated": false,
+      "p_in_synthetic": false,
+      "p_in_true": true,
+      "p_mod_M": 43,
+      "p_over_sqrtN": 0.853706,
+      "p_rank_rotated": null,
+      "p_rank_synthetic": null,
+      "p_rank_true": 11,
+      "q": 59,
+      "rotated": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "synthetic": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "true": {
+        "M": 210,
+        "cardinality": 48,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      }
+    },
+    {
+      "N": 5063,
+      "case_id": 2,
+      "classification": "boundary_measurement",
+      "p": 61,
+      "p_in_rotated": false,
+      "p_in_synthetic": false,
+      "p_in_true": true,
+      "p_mod_M": 61,
+      "p_over_sqrtN": 0.857286,
+      "p_rank_rotated": null,
+      "p_rank_synthetic": null,
+      "p_rank_true": 15,
+      "q": 83,
+      "rotated": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "synthetic": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "true": {
+        "M": 210,
+        "cardinality": 48,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      }
+    },
+    {
+      "N": 10057,
+      "case_id": 3,
+      "classification": "boundary_measurement",
+      "p": 89,
+      "p_in_rotated": false,
+      "p_in_synthetic": false,
+      "p_in_true": true,
+      "p_mod_M": 89,
+      "p_over_sqrtN": 0.887474,
+      "p_rank_rotated": null,
+      "p_rank_synthetic": null,
+      "p_rank_true": 21,
+      "q": 113,
+      "rotated": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "synthetic": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "true": {
+        "M": 210,
+        "cardinality": 48,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      }
+    },
+    {
+      "N": 13837,
+      "case_id": 4,
+      "classification": "boundary_measurement",
+      "p": 101,
+      "p_in_rotated": false,
+      "p_in_synthetic": false,
+      "p_in_true": true,
+      "p_mod_M": 101,
+      "p_over_sqrtN": 0.858619,
+      "p_rank_rotated": null,
+      "p_rank_synthetic": null,
+      "p_rank_true": 23,
+      "q": 137,
+      "rotated": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "synthetic": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "true": {
+        "M": 210,
+        "cardinality": 48,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      }
+    },
+    {
+      "N": 21877,
+      "case_id": 5,
+      "classification": "boundary_measurement",
+      "p": 131,
+      "p_in_rotated": false,
+      "p_in_synthetic": false,
+      "p_in_true": true,
+      "p_mod_M": 131,
+      "p_over_sqrtN": 0.885681,
+      "p_rank_rotated": null,
+      "p_rank_synthetic": null,
+      "p_rank_true": 30,
+      "q": 167,
+      "rotated": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "synthetic": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "true": {
+        "M": 210,
+        "cardinality": 48,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      }
+    },
+    {
+      "N": 36503,
+      "case_id": 6,
+      "classification": "boundary_measurement",
+      "p": 173,
+      "p_in_rotated": false,
+      "p_in_synthetic": false,
+      "p_in_true": true,
+      "p_mod_M": 173,
+      "p_over_sqrtN": 0.905486,
+      "p_rank_rotated": null,
+      "p_rank_synthetic": null,
+      "p_rank_true": 40,
+      "q": 211,
+      "rotated": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "synthetic": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "true": {
+        "M": 210,
+        "cardinality": 48,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      }
+    },
+    {
+      "N": 63433,
+      "case_id": 7,
+      "classification": "boundary_measurement",
+      "p": 229,
+      "p_in_rotated": false,
+      "p_in_synthetic": false,
+      "p_in_true": true,
+      "p_mod_M": 19,
+      "p_over_sqrtN": 0.909239,
+      "p_rank_rotated": null,
+      "p_rank_synthetic": null,
+      "p_rank_true": 5,
+      "q": 277,
+      "rotated": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "synthetic": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "true": {
+        "M": 210,
+        "cardinality": 48,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      }
+    },
+    {
+      "N": 112669,
+      "case_id": 8,
+      "classification": "boundary_measurement",
+      "p": 307,
+      "p_in_rotated": false,
+      "p_in_synthetic": false,
+      "p_in_true": true,
+      "p_mod_M": 97,
+      "p_over_sqrtN": 0.91461,
+      "p_rank_rotated": null,
+      "p_rank_synthetic": null,
+      "p_rank_true": 22,
+      "q": 367,
+      "rotated": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "synthetic": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "true": {
+        "M": 210,
+        "cardinality": 48,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      }
+    },
+    {
+      "N": 201703,
+      "case_id": 9,
+      "classification": "boundary_measurement",
+      "p": 401,
+      "p_in_rotated": false,
+      "p_in_synthetic": false,
+      "p_in_true": true,
+      "p_mod_M": 191,
+      "p_over_sqrtN": 0.89287,
+      "p_rank_rotated": null,
+      "p_rank_synthetic": null,
+      "p_rank_true": 44,
+      "q": 503,
+      "rotated": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "synthetic": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "true": {
+        "M": 210,
+        "cardinality": 48,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      }
+    },
+    {
+      "N": 368177,
+      "case_id": 10,
+      "classification": "boundary_measurement",
+      "p": 557,
+      "p_in_rotated": false,
+      "p_in_synthetic": false,
+      "p_in_true": true,
+      "p_mod_M": 137,
+      "p_over_sqrtN": 0.917967,
+      "p_rank_rotated": null,
+      "p_rank_synthetic": null,
+      "p_rank_true": 31,
+      "q": 661,
+      "rotated": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "synthetic": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "true": {
+        "M": 210,
+        "cardinality": 48,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      }
+    },
+    {
+      "N": 621787,
+      "case_id": 11,
+      "classification": "boundary_measurement",
+      "p": 701,
+      "p_in_rotated": false,
+      "p_in_synthetic": false,
+      "p_in_true": true,
+      "p_mod_M": 71,
+      "p_over_sqrtN": 0.888991,
+      "p_rank_rotated": null,
+      "p_rank_synthetic": null,
+      "p_rank_true": 17,
+      "q": 887,
+      "rotated": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "synthetic": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "true": {
+        "M": 210,
+        "cardinality": 48,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      }
+    },
+    {
+      "N": 1242079,
+      "case_id": 12,
+      "classification": "boundary_measurement",
+      "p": 1009,
+      "p_in_rotated": false,
+      "p_in_synthetic": false,
+      "p_in_true": true,
+      "p_mod_M": 169,
+      "p_over_sqrtN": 0.90535,
+      "p_rank_rotated": null,
+      "p_rank_synthetic": null,
+      "p_rank_true": 39,
+      "q": 1231,
+      "rotated": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "synthetic": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "true": {
+        "M": 210,
+        "cardinality": 48,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      }
+    },
+    {
+      "N": 3206803,
+      "case_id": 13,
+      "classification": "boundary_measurement",
+      "p": 1601,
+      "p_in_rotated": false,
+      "p_in_synthetic": false,
+      "p_in_true": true,
+      "p_mod_M": 131,
+      "p_over_sqrtN": 0.894036,
+      "p_rank_rotated": null,
+      "p_rank_synthetic": null,
+      "p_rank_true": 30,
+      "q": 2003,
+      "rotated": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "synthetic": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "true": {
+        "M": 210,
+        "cardinality": 48,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      }
+    },
+    {
+      "N": 12007001,
+      "case_id": 14,
+      "classification": "boundary_measurement",
+      "p": 3001,
+      "p_in_rotated": false,
+      "p_in_synthetic": false,
+      "p_in_true": true,
+      "p_mod_M": 61,
+      "p_over_sqrtN": 0.866061,
+      "p_rank_rotated": null,
+      "p_rank_synthetic": null,
+      "p_rank_true": 15,
+      "q": 4001,
+      "rotated": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "synthetic": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "true": {
+        "M": 210,
+        "cardinality": 48,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      }
+    },
+    {
+      "N": 35026003,
+      "case_id": 15,
+      "classification": "boundary_measurement",
+      "p": 5003,
+      "p_in_rotated": false,
+      "p_in_synthetic": false,
+      "p_in_true": true,
+      "p_mod_M": 173,
+      "p_over_sqrtN": 0.845347,
+      "p_rank_rotated": null,
+      "p_rank_synthetic": null,
+      "p_rank_true": 40,
+      "q": 7001,
+      "rotated": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "synthetic": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "true": {
+        "M": 210,
+        "cardinality": 48,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      }
+    },
+    {
+      "N": 225000307499857,
+      "case_id": 16,
+      "classification": "boundary_measurement",
+      "p": 7500013,
+      "p_in_rotated": false,
+      "p_in_synthetic": false,
+      "p_in_true": true,
+      "p_mod_M": 73,
+      "p_over_sqrtN": 0.500001,
+      "p_rank_rotated": null,
+      "p_rank_synthetic": null,
+      "p_rank_true": 18,
+      "q": 29999989,
+      "rotated": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "synthetic": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "true": {
+        "M": 210,
+        "cardinality": 48,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      }
+    },
+    {
+      "N": 225000094499417,
+      "case_id": 17,
+      "classification": "boundary_measurement",
+      "p": 6000011,
+      "p_in_rotated": false,
+      "p_in_synthetic": false,
+      "p_in_true": true,
+      "p_mod_M": 101,
+      "p_over_sqrtN": 0.400001,
+      "p_rank_rotated": null,
+      "p_rank_synthetic": null,
+      "p_rank_true": 23,
+      "q": 37499947,
+      "rotated": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "synthetic": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "true": {
+        "M": 210,
+        "cardinality": 48,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      }
+    },
+    {
+      "N": 225000309499937,
+      "case_id": 18,
+      "classification": "boundary_measurement",
+      "p": 4500007,
+      "p_in_rotated": false,
+      "p_in_synthetic": false,
+      "p_in_true": true,
+      "p_mod_M": 127,
+      "p_over_sqrtN": 0.3,
+      "p_rank_rotated": null,
+      "p_rank_synthetic": null,
+      "p_rank_true": 29,
+      "q": 49999991,
+      "rotated": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "synthetic": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "true": {
+        "M": 210,
+        "cardinality": 48,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      }
+    },
+    {
+      "N": 225000215993999,
+      "case_id": 19,
+      "classification": "boundary_measurement",
+      "p": 3000017,
+      "p_in_rotated": false,
+      "p_in_synthetic": false,
+      "p_in_true": true,
+      "p_mod_M": 167,
+      "p_over_sqrtN": 0.200001,
+      "p_rank_rotated": null,
+      "p_rank_synthetic": null,
+      "p_rank_true": 38,
+      "q": 74999647,
+      "rotated": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "synthetic": {
+        "M": 210,
+        "cardinality": 0,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "true": {
+        "M": 210,
+        "cardinality": 48,
+        "selected_r": [
+          2,
+          3,
+          5,
+          7
+        ]
+      }
+    }
+  ]
+}

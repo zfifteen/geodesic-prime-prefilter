@@ -1,0 +1,122 @@
+{
+  "N": 18905157503,
+  "N_bits": 35,
+  "R": 262144,
+  "cost": {
+    "elapsed_seconds": 0.134338,
+    "generator_steps": 541765,
+    "top_k_emitted": 20,
+    "unique_nominated_within_R": 384479
+  },
+  "nominated_count": 384479,
+  "policy": "first_thread_proximity_v1",
+  "public_only": true,
+  "threads": [
+    2,
+    3,
+    5
+  ],
+  "top_k": 20,
+  "top_nominated": [
+    {
+      "first_thread": 2,
+      "offset": -1,
+      "value": 18905157502
+    },
+    {
+      "first_thread": 2,
+      "offset": 1,
+      "value": 18905157504
+    },
+    {
+      "first_thread": 3,
+      "offset": -2,
+      "value": 18905157501
+    },
+    {
+      "first_thread": 5,
+      "offset": 2,
+      "value": 18905157505
+    },
+    {
+      "first_thread": 2,
+      "offset": -3,
+      "value": 18905157500
+    },
+    {
+      "first_thread": 2,
+      "offset": 3,
+      "value": 18905157506
+    },
+    {
+      "first_thread": 3,
+      "offset": 4,
+      "value": 18905157507
+    },
+    {
+      "first_thread": 2,
+      "offset": -5,
+      "value": 18905157498
+    },
+    {
+      "first_thread": 2,
+      "offset": 5,
+      "value": 18905157508
+    },
+    {
+      "first_thread": 2,
+      "offset": -7,
+      "value": 18905157496
+    },
+    {
+      "first_thread": 2,
+      "offset": 7,
+      "value": 18905157510
+    },
+    {
+      "first_thread": 3,
+      "offset": -8,
+      "value": 18905157495
+    },
+    {
+      "first_thread": 2,
+      "offset": -9,
+      "value": 18905157494
+    },
+    {
+      "first_thread": 2,
+      "offset": 9,
+      "value": 18905157512
+    },
+    {
+      "first_thread": 3,
+      "offset": 10,
+      "value": 18905157513
+    },
+    {
+      "first_thread": 2,
+      "offset": -11,
+      "value": 18905157492
+    },
+    {
+      "first_thread": 2,
+      "offset": 11,
+      "value": 18905157514
+    },
+    {
+      "first_thread": 5,
+      "offset": 12,
+      "value": 18905157515
+    },
+    {
+      "first_thread": 2,
+      "offset": -13,
+      "value": 18905157490
+    },
+    {
+      "first_thread": 2,
+      "offset": 13,
+      "value": 18905157516
+    }
+  ]
+}

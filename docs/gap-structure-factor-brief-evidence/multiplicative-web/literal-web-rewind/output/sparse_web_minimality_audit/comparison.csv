@@ -1,0 +1,205 @@
+case,policy,classification,public_threads,one_factor_success,recovered_factor,best_hidden_rank,top18_direct_hits,touched,trials,zero_yield
+toy_23x31,dense_first_2,insufficient_thread_diversity,2,False,,1,14,360,716,180
+toy_43x59,dense_first_2,insufficient_thread_diversity,2,False,,1,10,520,1038,260
+toy_61x83,dense_first_2,insufficient_thread_diversity,2,False,,1,10,720,1440,360
+toy_89x113,dense_first_2,insufficient_thread_diversity,2,False,,1,10,1040,2079,520
+toy_23x31,dense_first_3,insufficient_thread_diversity,3,False,,1,9,360,541,240
+toy_43x59,dense_first_3,insufficient_thread_diversity,3,False,,1,7,520,779,346
+toy_61x83,dense_first_3,insufficient_thread_diversity,3,False,,1,7,720,1078,480
+toy_89x113,dense_first_3,insufficient_thread_diversity,3,False,,1,7,1040,1559,693
+toy_23x31,dense_first_5,insufficient_thread_diversity,5,False,,1,5,360,450,288
+toy_43x59,dense_first_5,insufficient_thread_diversity,5,False,,1,5,520,649,416
+toy_61x83,dense_first_5,insufficient_thread_diversity,5,False,,1,4,720,899,576
+toy_89x113,dense_first_5,insufficient_thread_diversity,5,False,,1,4,1040,1299,832
+toy_23x31,dense_first_7,insufficient_thread_diversity,7,False,,,4,360,420,309
+toy_43x59,dense_first_7,insufficient_thread_diversity,7,False,,1,3,520,608,446
+toy_61x83,dense_first_7,insufficient_thread_diversity,7,False,,1,2,720,841,617
+toy_89x113,dense_first_7,insufficient_thread_diversity,7,False,,1,2,1040,1214,891
+toy_23x31,dense_first_11,insufficient_thread_diversity,11,False,,1,2,360,396,327
+toy_43x59,dense_first_11,insufficient_thread_diversity,11,False,,1,2,520,574,472
+toy_61x83,dense_first_11,insufficient_thread_diversity,11,False,,,1,720,793,654
+toy_89x113,dense_first_11,insufficient_thread_diversity,11,False,,1,2,1040,1144,945
+toy_23x31,dense_first_2_3,insufficient_thread_diversity,2 3,False,,1,18,360,988,120
+toy_43x59,dense_first_2_3,insufficient_thread_diversity,2 3,False,,1,14,520,1428,173
+toy_61x83,dense_first_2_3,insufficient_thread_diversity,2 3,False,,1,14,720,1979,240
+toy_89x113,dense_first_2_3,insufficient_thread_diversity,2 3,False,,1,14,1040,2858,346
+toy_23x31,dense_first_2_5,insufficient_thread_diversity,2 5,False,,1,17,360,942,144
+toy_43x59,dense_first_2_5,insufficient_thread_diversity,2 5,False,,1,13,520,1362,208
+toy_61x83,dense_first_2_5,insufficient_thread_diversity,2 5,False,,1,12,720,1889,288
+toy_89x113,dense_first_2_5,insufficient_thread_diversity,2 5,False,,1,12,1040,2728,416
+toy_23x31,dense_first_2_7,insufficient_thread_diversity,2 7,False,,3,16,360,926,154
+toy_43x59,dense_first_2_7,insufficient_thread_diversity,2 7,False,,1,11,520,1343,223
+toy_61x83,dense_first_2_7,insufficient_thread_diversity,2 7,False,,1,11,720,1859,309
+toy_89x113,dense_first_2_7,insufficient_thread_diversity,2 7,False,,1,11,1040,2686,445
+toy_23x31,dense_first_2_11,insufficient_thread_diversity,2 11,False,,1,15,360,915,163
+toy_43x59,dense_first_2_11,insufficient_thread_diversity,2 11,False,,1,11,520,1325,236
+toy_61x83,dense_first_2_11,insufficient_thread_diversity,2 11,False,,2,10,720,1836,327
+toy_89x113,dense_first_2_11,insufficient_thread_diversity,2 11,False,,1,10,1040,2652,472
+toy_23x31,dense_first_3_5,insufficient_thread_diversity,3 5,False,,1,13,360,842,192
+toy_43x59,dense_first_3_5,insufficient_thread_diversity,3 5,False,,1,10,520,1211,277
+toy_61x83,dense_first_3_5,insufficient_thread_diversity,3 5,False,,1,10,720,1677,384
+toy_89x113,dense_first_3_5,insufficient_thread_diversity,3 5,False,,1,10,1040,2424,555
+toy_23x31,dense_first_3_7,insufficient_thread_diversity,3 7,False,,2,12,360,821,206
+toy_43x59,dense_first_3_7,insufficient_thread_diversity,3 7,False,,1,8,520,1184,297
+toy_61x83,dense_first_3_7,insufficient_thread_diversity,3 7,False,,1,7,720,1638,412
+toy_89x113,dense_first_3_7,insufficient_thread_diversity,3 7,False,,1,9,1040,2369,593
+toy_23x31,dense_first_3_11,insufficient_thread_diversity,3 11,False,,2,10,360,805,218
+toy_43x59,dense_first_3_11,insufficient_thread_diversity,3 11,False,,1,9,520,1162,314
+toy_61x83,dense_first_3_11,insufficient_thread_diversity,3 11,False,,1,8,720,1607,436
+toy_89x113,dense_first_3_11,insufficient_thread_diversity,3 11,False,,1,9,1040,2321,630
+toy_23x31,dense_first_5_7,insufficient_thread_diversity,5 7,False,,2,8,360,787,247
+toy_43x59,dense_first_5_7,insufficient_thread_diversity,5 7,False,,1,8,520,1137,356
+toy_61x83,dense_first_5_7,insufficient_thread_diversity,5 7,False,,1,6,720,1572,493
+toy_89x113,dense_first_5_7,insufficient_thread_diversity,5 7,False,,1,6,1040,2269,713
+toy_23x31,dense_first_5_11,insufficient_thread_diversity,5 11,False,,1,7,360,766,262
+toy_43x59,dense_first_5_11,insufficient_thread_diversity,5 11,False,,2,6,520,1109,377
+toy_61x83,dense_first_5_11,insufficient_thread_diversity,5 11,False,,1,5,720,1534,523
+toy_89x113,dense_first_5_11,insufficient_thread_diversity,5 11,False,,2,5,1040,2214,756
+toy_23x31,dense_first_7_11,insufficient_thread_diversity,7 11,False,,1,6,360,759,281
+toy_43x59,dense_first_7_11,insufficient_thread_diversity,7 11,False,,1,5,520,1100,405
+toy_61x83,dense_first_7_11,insufficient_thread_diversity,7 11,False,,1,3,720,1521,560
+toy_89x113,dense_first_7_11,insufficient_thread_diversity,7 11,False,,1,4,1040,2194,810
+toy_23x31,dense_first_2_3_5,one_factor_success,2 3 5,True,23,1,18,360,1140,96
+toy_43x59,dense_first_2_3_5,one_factor_success,2 3 5,True,43,1,16,520,1643,138
+toy_61x83,dense_first_2_3_5,one_factor_success,2 3 5,True,83,1,16,720,2278,192
+toy_89x113,dense_first_2_3_5,one_factor_success,2 3 5,True,113,1,16,1040,3290,277
+toy_23x31,dense_first_2_3_7,one_factor_success,2 3 7,True,23,1,18,360,1129,102
+toy_43x59,dense_first_2_3_7,one_factor_success,2 3 7,True,59,1,14,520,1631,149
+toy_61x83,dense_first_2_3_7,one_factor_success,2 3 7,True,61,1,14,720,2258,206
+toy_89x113,dense_first_2_3_7,one_factor_success,2 3 7,True,89,1,15,1040,3262,296
+toy_23x31,dense_first_2_3_11,one_factor_success,2 3 11,True,23,1,18,360,1121,109
+toy_43x59,dense_first_2_3_11,one_factor_success,2 3 11,True,43,1,15,520,1619,157
+toy_61x83,dense_first_2_3_11,one_factor_success,2 3 11,True,61,1,14,720,2243,218
+toy_89x113,dense_first_2_3_11,one_factor_success,2 3 11,True,89,1,14,1040,3239,314
+toy_23x31,dense_first_2_5_7,one_factor_success,2 5 7,True,23,1,18,360,1110,123
+toy_43x59,dense_first_2_5_7,one_factor_success,2 5 7,True,43,1,14,520,1607,178
+toy_61x83,dense_first_2_5_7,one_factor_success,2 5 7,True,61,1,13,720,2224,247
+toy_89x113,dense_first_2_5_7,one_factor_success,2 5 7,True,89,1,13,1040,3213,356
+toy_23x31,dense_first_2_5_11,one_factor_success,2 5 11,True,23,1,18,360,1101,130
+toy_43x59,dense_first_2_5_11,one_factor_success,2 5 11,True,43,1,13,520,1593,188
+toy_61x83,dense_first_2_5_11,one_factor_success,2 5 11,True,83,1,12,720,2207,261
+toy_89x113,dense_first_2_5_11,one_factor_success,2 5 11,True,113,2,12,1040,3187,377
+toy_23x31,dense_first_2_7_11,one_factor_success,2 7 11,True,31,1,17,360,1095,140
+toy_43x59,dense_first_2_7_11,one_factor_success,2 7 11,True,59,1,12,520,1589,202
+toy_61x83,dense_first_2_7_11,one_factor_success,2 7 11,True,61,1,11,720,2200,280
+toy_89x113,dense_first_2_7_11,one_factor_success,2 7 11,True,89,1,11,1040,3177,404
+toy_23x31,dense_first_3_5_7,one_factor_success,3 5 7,True,23,1,15,360,1067,165
+toy_43x59,dense_first_3_5_7,one_factor_success,3 5 7,True,43,1,11,520,1536,237
+toy_61x83,dense_first_3_5_7,one_factor_success,3 5 7,True,61,1,10,720,2126,329
+toy_89x113,dense_first_3_5_7,one_factor_success,3 5 7,True,113,1,12,1040,3073,475
+toy_23x31,dense_first_3_5_11,one_factor_success,3 5 11,True,23,1,14,360,1052,175
+toy_43x59,dense_first_3_5_11,one_factor_success,3 5 11,True,43,1,11,520,1518,251
+toy_61x83,dense_first_3_5_11,one_factor_success,3 5 11,True,83,1,11,720,2100,349
+toy_89x113,dense_first_3_5_11,one_factor_success,3 5 11,True,113,1,11,1040,3034,504
+toy_23x31,dense_first_3_7_11,one_factor_success,3 7 11,True,23,3,13,360,1046,188
+toy_43x59,dense_first_3_7_11,one_factor_success,3 7 11,True,59,1,10,520,1514,269
+toy_61x83,dense_first_3_7_11,one_factor_success,3 7 11,True,61,1,8,720,2093,374
+toy_89x113,dense_first_3_7_11,one_factor_success,3 7 11,True,89,1,11,1040,3021,540
+toy_23x31,dense_first_5_7_11,one_factor_success,5 7 11,True,23,2,10,360,1057,225
+toy_43x59,dense_first_5_7_11,one_factor_success,5 7 11,True,43,2,9,520,1531,322
+toy_61x83,dense_first_5_7_11,one_factor_success,5 7 11,True,61,1,7,720,2116,447
+toy_89x113,dense_first_5_7_11,one_factor_success,5 7 11,True,89,2,7,1040,3053,648
+toy_23x31,presence_first_2,insufficient_thread_diversity,2,False,,1,14,360,360,180
+toy_43x59,presence_first_2,insufficient_thread_diversity,2,False,,1,10,520,520,260
+toy_61x83,presence_first_2,insufficient_thread_diversity,2,False,,1,10,720,720,360
+toy_89x113,presence_first_2,insufficient_thread_diversity,2,False,,1,10,1040,1040,520
+toy_23x31,presence_first_3,insufficient_thread_diversity,3,False,,1,9,360,360,240
+toy_43x59,presence_first_3,insufficient_thread_diversity,3,False,,1,7,520,520,346
+toy_61x83,presence_first_3,insufficient_thread_diversity,3,False,,1,7,720,720,480
+toy_89x113,presence_first_3,insufficient_thread_diversity,3,False,,1,7,1040,1040,693
+toy_23x31,presence_first_5,insufficient_thread_diversity,5,False,,1,5,360,360,288
+toy_43x59,presence_first_5,insufficient_thread_diversity,5,False,,1,5,520,520,416
+toy_61x83,presence_first_5,insufficient_thread_diversity,5,False,,1,4,720,720,576
+toy_89x113,presence_first_5,insufficient_thread_diversity,5,False,,1,4,1040,1040,832
+toy_23x31,presence_first_7,insufficient_thread_diversity,7,False,,,4,360,360,309
+toy_43x59,presence_first_7,insufficient_thread_diversity,7,False,,1,3,520,520,446
+toy_61x83,presence_first_7,insufficient_thread_diversity,7,False,,1,2,720,720,617
+toy_89x113,presence_first_7,insufficient_thread_diversity,7,False,,1,2,1040,1040,891
+toy_23x31,presence_first_11,insufficient_thread_diversity,11,False,,1,2,360,360,327
+toy_43x59,presence_first_11,insufficient_thread_diversity,11,False,,1,2,520,520,472
+toy_61x83,presence_first_11,insufficient_thread_diversity,11,False,,,1,720,720,654
+toy_89x113,presence_first_11,insufficient_thread_diversity,11,False,,1,2,1040,1040,945
+toy_23x31,presence_first_2_3,insufficient_thread_diversity,2 3,False,,1,18,360,540,120
+toy_43x59,presence_first_2_3,insufficient_thread_diversity,2 3,False,,1,14,520,780,173
+toy_61x83,presence_first_2_3,insufficient_thread_diversity,2 3,False,,1,14,720,1080,240
+toy_89x113,presence_first_2_3,insufficient_thread_diversity,2 3,False,,1,14,1040,1560,346
+toy_23x31,presence_first_2_5,insufficient_thread_diversity,2 5,False,,1,17,360,540,144
+toy_43x59,presence_first_2_5,insufficient_thread_diversity,2 5,False,,1,13,520,780,208
+toy_61x83,presence_first_2_5,insufficient_thread_diversity,2 5,False,,1,12,720,1080,288
+toy_89x113,presence_first_2_5,insufficient_thread_diversity,2 5,False,,1,12,1040,1560,416
+toy_23x31,presence_first_2_7,insufficient_thread_diversity,2 7,False,,3,16,360,540,154
+toy_43x59,presence_first_2_7,insufficient_thread_diversity,2 7,False,,1,11,520,780,223
+toy_61x83,presence_first_2_7,insufficient_thread_diversity,2 7,False,,1,11,720,1080,309
+toy_89x113,presence_first_2_7,insufficient_thread_diversity,2 7,False,,1,11,1040,1560,445
+toy_23x31,presence_first_2_11,insufficient_thread_diversity,2 11,False,,1,15,360,540,163
+toy_43x59,presence_first_2_11,insufficient_thread_diversity,2 11,False,,1,11,520,780,236
+toy_61x83,presence_first_2_11,insufficient_thread_diversity,2 11,False,,2,10,720,1080,327
+toy_89x113,presence_first_2_11,insufficient_thread_diversity,2 11,False,,1,10,1040,1560,472
+toy_23x31,presence_first_3_5,insufficient_thread_diversity,3 5,False,,1,13,360,600,192
+toy_43x59,presence_first_3_5,insufficient_thread_diversity,3 5,False,,1,10,520,866,277
+toy_61x83,presence_first_3_5,insufficient_thread_diversity,3 5,False,,1,10,720,1200,384
+toy_89x113,presence_first_3_5,insufficient_thread_diversity,3 5,False,,1,10,1040,1733,555
+toy_23x31,presence_first_3_7,insufficient_thread_diversity,3 7,False,,2,12,360,600,206
+toy_43x59,presence_first_3_7,insufficient_thread_diversity,3 7,False,,1,8,520,866,297
+toy_61x83,presence_first_3_7,insufficient_thread_diversity,3 7,False,,1,7,720,1200,412
+toy_89x113,presence_first_3_7,insufficient_thread_diversity,3 7,False,,1,9,1040,1733,593
+toy_23x31,presence_first_3_11,insufficient_thread_diversity,3 11,False,,2,10,360,600,218
+toy_43x59,presence_first_3_11,insufficient_thread_diversity,3 11,False,,1,9,520,866,314
+toy_61x83,presence_first_3_11,insufficient_thread_diversity,3 11,False,,1,8,720,1200,436
+toy_89x113,presence_first_3_11,insufficient_thread_diversity,3 11,False,,1,9,1040,1733,630
+toy_23x31,presence_first_5_7,insufficient_thread_diversity,5 7,False,,2,8,360,648,247
+toy_43x59,presence_first_5_7,insufficient_thread_diversity,5 7,False,,1,8,520,936,356
+toy_61x83,presence_first_5_7,insufficient_thread_diversity,5 7,False,,1,6,720,1296,493
+toy_89x113,presence_first_5_7,insufficient_thread_diversity,5 7,False,,1,6,1040,1872,713
+toy_23x31,presence_first_5_11,insufficient_thread_diversity,5 11,False,,1,7,360,648,262
+toy_43x59,presence_first_5_11,insufficient_thread_diversity,5 11,False,,2,6,520,936,377
+toy_61x83,presence_first_5_11,insufficient_thread_diversity,5 11,False,,1,5,720,1296,523
+toy_89x113,presence_first_5_11,insufficient_thread_diversity,5 11,False,,2,5,1040,1872,756
+toy_23x31,presence_first_7_11,insufficient_thread_diversity,7 11,False,,1,6,360,669,281
+toy_43x59,presence_first_7_11,insufficient_thread_diversity,7 11,False,,1,5,520,966,405
+toy_61x83,presence_first_7_11,insufficient_thread_diversity,7 11,False,,1,3,720,1337,560
+toy_89x113,presence_first_7_11,insufficient_thread_diversity,7 11,False,,1,4,1040,1931,810
+toy_23x31,presence_first_2_3_5,one_factor_success,2 3 5,True,23,1,18,360,660,96
+toy_43x59,presence_first_2_3_5,one_factor_success,2 3 5,True,43,1,16,520,953,138
+toy_61x83,presence_first_2_3_5,one_factor_success,2 3 5,True,83,1,16,720,1320,192
+toy_89x113,presence_first_2_3_5,one_factor_success,2 3 5,True,113,1,16,1040,1906,277
+toy_23x31,presence_first_2_3_7,one_factor_success,2 3 7,True,23,1,18,360,660,102
+toy_43x59,presence_first_2_3_7,one_factor_success,2 3 7,True,59,1,14,520,953,149
+toy_61x83,presence_first_2_3_7,one_factor_success,2 3 7,True,61,1,14,720,1320,206
+toy_89x113,presence_first_2_3_7,one_factor_success,2 3 7,True,89,1,15,1040,1906,296
+toy_23x31,presence_first_2_3_11,one_factor_success,2 3 11,True,23,1,18,360,660,109
+toy_43x59,presence_first_2_3_11,one_factor_success,2 3 11,True,43,1,15,520,953,157
+toy_61x83,presence_first_2_3_11,one_factor_success,2 3 11,True,61,1,14,720,1320,218
+toy_89x113,presence_first_2_3_11,one_factor_success,2 3 11,True,89,1,14,1040,1906,314
+toy_23x31,presence_first_2_5_7,one_factor_success,2 5 7,True,23,1,18,360,684,123
+toy_43x59,presence_first_2_5_7,one_factor_success,2 5 7,True,43,1,14,520,988,178
+toy_61x83,presence_first_2_5_7,one_factor_success,2 5 7,True,61,1,13,720,1368,247
+toy_89x113,presence_first_2_5_7,one_factor_success,2 5 7,True,89,1,13,1040,1976,356
+toy_23x31,presence_first_2_5_11,one_factor_success,2 5 11,True,23,1,18,360,684,130
+toy_43x59,presence_first_2_5_11,one_factor_success,2 5 11,True,43,1,13,520,988,188
+toy_61x83,presence_first_2_5_11,one_factor_success,2 5 11,True,83,1,12,720,1368,261
+toy_89x113,presence_first_2_5_11,one_factor_success,2 5 11,True,113,2,12,1040,1976,377
+toy_23x31,presence_first_2_7_11,one_factor_success,2 7 11,True,31,1,17,360,694,140
+toy_43x59,presence_first_2_7_11,one_factor_success,2 7 11,True,59,1,12,520,1003,202
+toy_61x83,presence_first_2_7_11,one_factor_success,2 7 11,True,61,1,11,720,1389,280
+toy_89x113,presence_first_2_7_11,one_factor_success,2 7 11,True,89,1,11,1040,2005,404
+toy_23x31,presence_first_3_5_7,one_factor_success,3 5 7,True,23,1,15,360,792,165
+toy_43x59,presence_first_3_5_7,one_factor_success,3 5 7,True,43,1,11,520,1143,237
+toy_61x83,presence_first_3_5_7,one_factor_success,3 5 7,True,61,1,10,720,1584,329
+toy_89x113,presence_first_3_5_7,one_factor_success,3 5 7,True,113,1,12,1040,2288,475
+toy_23x31,presence_first_3_5_11,one_factor_success,3 5 11,True,23,1,14,360,792,175
+toy_43x59,presence_first_3_5_11,one_factor_success,3 5 11,True,43,1,11,520,1143,251
+toy_61x83,presence_first_3_5_11,one_factor_success,3 5 11,True,83,1,11,720,1584,349
+toy_89x113,presence_first_3_5_11,one_factor_success,3 5 11,True,113,1,11,1040,2288,504
+toy_23x31,presence_first_3_7_11,one_factor_success,3 7 11,True,23,3,13,360,806,188
+toy_43x59,presence_first_3_7_11,one_factor_success,3 7 11,True,59,1,10,520,1163,269
+toy_61x83,presence_first_3_7_11,one_factor_success,3 7 11,True,61,1,8,720,1612,374
+toy_89x113,presence_first_3_7_11,one_factor_success,3 7 11,True,89,1,11,1040,2326,540
+toy_23x31,presence_first_5_7_11,one_factor_success,5 7 11,True,23,2,10,360,895,225
+toy_43x59,presence_first_5_7_11,one_factor_success,5 7 11,True,43,2,9,520,1292,322
+toy_61x83,presence_first_5_7_11,one_factor_success,5 7 11,True,61,1,7,720,1789,447
+toy_89x113,presence_first_5_7_11,one_factor_success,5 7 11,True,89,2,7,1040,2585,648
+toy_23x31,center_out_until_3_first_2_3_5,one_factor_success,2 3 5,True,23,2,1,4,14,0
+toy_43x59,center_out_until_3_first_2_3_5,one_factor_success,2 3 5,True,43,3,1,16,49,4
+toy_61x83,center_out_until_3_first_2_3_5,signal_failure,2 3 5,False,,6,1,4,13,0
+toy_89x113,center_out_until_3_first_2_3_5,signal_failure,2 3 5,False,,8,1,4,13,0

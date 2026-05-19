@@ -1,0 +1,11 @@
+{
+  "iteration": 6,
+  "radius": 262144,
+  "small_primes": [2, 3, 5, 7, 11, 13, 17, 19, 23, 29],
+  "residual_limit": 1,
+  "score_mode": "rare_thread_balance",
+  "band_width": 4096,
+  "top_per_band": 32,
+  "top_k": 2048,
+  "design_reason": "Iteration 5 showed global ranking suppresses factor-scale distances. This keeps residuals off, removes distance normalization, and emits top candidates per public distance band."
+}

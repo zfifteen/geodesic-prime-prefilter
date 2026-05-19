@@ -1,0 +1,188 @@
+{
+  "cases": [
+    {
+      "N": 713,
+      "N_bits": 10,
+      "classification": "one_factor_in_public_top_k",
+      "covered": true,
+      "hit": {
+        "distance": 23,
+        "left_source_count": 271797,
+        "rank": 40,
+        "right_source_count": 131608,
+        "score": [
+          240478,
+          240478,
+          5531,
+          2,
+          4,
+          -23
+        ],
+        "shared_thread_count": 2,
+        "union_thread_count": 4,
+        "which": "p"
+      },
+      "iteration": 4,
+      "name": "toy_23x31",
+      "p": 23,
+      "public_cost": {
+        "elapsed_seconds": 8.585465,
+        "source_rows": 201496,
+        "vote_targets": 485308
+      },
+      "q": 31,
+      "radius": 262144
+    },
+    {
+      "N": 2537,
+      "N_bits": 12,
+      "classification": "one_factor_in_public_top_k",
+      "covered": true,
+      "hit": {
+        "distance": 59,
+        "left_source_count": 221025,
+        "rank": 34,
+        "right_source_count": 132761,
+        "score": [
+          422745,
+          122050,
+          24942,
+          2,
+          7,
+          -59
+        ],
+        "shared_thread_count": 2,
+        "union_thread_count": 7,
+        "which": "q"
+      },
+      "iteration": 4,
+      "name": "toy_43x59",
+      "p": 43,
+      "public_cost": {
+        "elapsed_seconds": 9.222835,
+        "source_rows": 202833,
+        "vote_targets": 485305
+      },
+      "q": 59,
+      "radius": 262144
+    },
+    {
+      "N": 5063,
+      "N_bits": 13,
+      "classification": "one_factor_in_public_top_k",
+      "covered": true,
+      "hit": {
+        "distance": 61,
+        "left_source_count": 133931,
+        "rank": 53,
+        "right_source_count": 223129,
+        "score": [
+          412000,
+          118049,
+          25132,
+          2,
+          7,
+          -61
+        ],
+        "shared_thread_count": 2,
+        "union_thread_count": 7,
+        "which": "p"
+      },
+      "iteration": 4,
+      "name": "toy_61x83",
+      "p": 61,
+      "public_cost": {
+        "elapsed_seconds": 9.075898,
+        "source_rows": 204686,
+        "vote_targets": 485300
+      },
+      "q": 83,
+      "radius": 262144
+    },
+    {
+      "N": 10057,
+      "N_bits": 14,
+      "classification": "one_factor_in_public_top_k",
+      "covered": true,
+      "hit": {
+        "distance": 89,
+        "left_source_count": 136535,
+        "rank": 89,
+        "right_source_count": 227188,
+        "score": [
+          314719,
+          91426,
+          28010,
+          2,
+          7,
+          -89
+        ],
+        "shared_thread_count": 2,
+        "union_thread_count": 7,
+        "which": "p"
+      },
+      "iteration": 4,
+      "name": "toy_89x113",
+      "p": 89,
+      "public_cost": {
+        "elapsed_seconds": 9.151793,
+        "source_rows": 208348,
+        "vote_targets": 485281
+      },
+      "q": 113,
+      "radius": 262144
+    },
+    {
+      "N": 18905157503,
+      "N_bits": 35,
+      "classification": "covered_but_not_ranked_in_top_k",
+      "covered": true,
+      "hit": null,
+      "iteration": 4,
+      "name": "continuation_00_131101x144203",
+      "p": 131101,
+      "public_cost": {
+        "elapsed_seconds": 1.978124,
+        "source_rows": 384479,
+        "vote_targets": 385422
+      },
+      "q": 144203,
+      "radius": 262144
+    },
+    {
+      "N": 1209478624103,
+      "N_bits": 41,
+      "classification": "public_window_insufficient_coverage",
+      "covered": false,
+      "hit": null,
+      "iteration": 4,
+      "name": "continuation_01_1048583x1153441",
+      "p": 1048583,
+      "public_cost": {
+        "elapsed_seconds": 1.80173,
+        "source_rows": 384479,
+        "vote_targets": 384479
+      },
+      "q": 1153441,
+      "radius": 262144
+    }
+  ],
+  "coverage_failure_count": 1,
+  "covered_failure_count": 1,
+  "iteration": 4,
+  "spec": {
+    "design_reason": "Iteration 3 recovered every covered toy case, and failed only by coverage on continuation cases. This keeps the score fixed and expands the public window to cover the first continuation case.",
+    "iteration": 4,
+    "radius": 262144,
+    "residual_limit": 32768,
+    "score_mode": "rare_per_distance",
+    "small_primes": [
+      2,
+      3,
+      5
+    ],
+    "top_k": 1000
+  },
+  "status": "failed_iteration",
+  "success_count": 4
+}

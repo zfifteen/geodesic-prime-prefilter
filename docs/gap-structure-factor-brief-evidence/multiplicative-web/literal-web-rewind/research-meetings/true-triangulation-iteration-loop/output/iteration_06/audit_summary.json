@@ -1,0 +1,133 @@
+{
+  "cases": [
+    {
+      "N": 713,
+      "N_bits": 10,
+      "classification": "covered_but_not_ranked_in_top_k",
+      "covered": true,
+      "hit": null,
+      "iteration": 6,
+      "name": "toy_23x31",
+      "p": 23,
+      "public_cost": {
+        "elapsed_seconds": 2.053616,
+        "source_rows": 221335,
+        "vote_targets": 441478
+      },
+      "q": 31,
+      "radius": 262144
+    },
+    {
+      "N": 2537,
+      "N_bits": 12,
+      "classification": "covered_but_not_ranked_in_top_k",
+      "covered": true,
+      "hit": null,
+      "iteration": 6,
+      "name": "toy_43x59",
+      "p": 43,
+      "public_cost": {
+        "elapsed_seconds": 2.234114,
+        "source_rows": 222874,
+        "vote_targets": 441480
+      },
+      "q": 59,
+      "radius": 262144
+    },
+    {
+      "N": 5063,
+      "N_bits": 13,
+      "classification": "covered_but_not_ranked_in_top_k",
+      "covered": true,
+      "hit": null,
+      "iteration": 6,
+      "name": "toy_61x83",
+      "p": 61,
+      "public_cost": {
+        "elapsed_seconds": 2.098693,
+        "source_rows": 225001,
+        "vote_targets": 441481
+      },
+      "q": 83,
+      "radius": 262144
+    },
+    {
+      "N": 10057,
+      "N_bits": 14,
+      "classification": "covered_but_not_ranked_in_top_k",
+      "covered": true,
+      "hit": null,
+      "iteration": 6,
+      "name": "toy_89x113",
+      "p": 89,
+      "public_cost": {
+        "elapsed_seconds": 2.131342,
+        "source_rows": 229203,
+        "vote_targets": 441478
+      },
+      "q": 113,
+      "radius": 262144
+    },
+    {
+      "N": 18905157503,
+      "N_bits": 35,
+      "classification": "covered_but_not_ranked_in_top_k",
+      "covered": true,
+      "hit": null,
+      "iteration": 6,
+      "name": "continuation_00_131101x144203",
+      "p": 131101,
+      "public_cost": {
+        "elapsed_seconds": 2.621978,
+        "source_rows": 441481,
+        "vote_targets": 441481
+      },
+      "q": 144203,
+      "radius": 262144
+    },
+    {
+      "N": 1209478624103,
+      "N_bits": 41,
+      "classification": "public_window_insufficient_coverage",
+      "covered": false,
+      "hit": null,
+      "iteration": 6,
+      "name": "continuation_01_1048583x1153441",
+      "p": 1048583,
+      "public_cost": {
+        "elapsed_seconds": 2.534949,
+        "source_rows": 441488,
+        "vote_targets": 441488
+      },
+      "q": 1153441,
+      "radius": 262144
+    }
+  ],
+  "coverage_failure_count": 1,
+  "covered_failure_count": 5,
+  "iteration": 6,
+  "spec": {
+    "band_width": 4096,
+    "design_reason": "Iteration 5 showed global ranking suppresses factor-scale distances. This keeps residuals off, removes distance normalization, and emits top candidates per public distance band.",
+    "iteration": 6,
+    "radius": 262144,
+    "residual_limit": 1,
+    "score_mode": "rare_thread_balance",
+    "small_primes": [
+      2,
+      3,
+      5,
+      7,
+      11,
+      13,
+      17,
+      19,
+      23,
+      29
+    ],
+    "top_k": 2048,
+    "top_per_band": 32
+  },
+  "status": "failed_iteration",
+  "success_count": 0
+}

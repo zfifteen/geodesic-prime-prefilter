@@ -1,0 +1,213 @@
+{
+  "cases": [
+    {
+      "N": 713,
+      "N_bits": 10,
+      "classification": "one_factor_in_public_top_k",
+      "covered": true,
+      "hit": {
+        "distance": 23,
+        "left_source_count": 283043,
+        "rank": 7,
+        "right_source_count": 142854,
+        "score": [
+          1,
+          5391,
+          4086,
+          4,
+          2,
+          -23
+        ],
+        "shared_thread_count": 2,
+        "union_thread_count": 4,
+        "which": "p"
+      },
+      "iteration": 9,
+      "name": "toy_23x31",
+      "p": 23,
+      "public_cost": {
+        "elapsed_seconds": 2.043892,
+        "source_rows": 221335,
+        "vote_targets": 441478
+      },
+      "q": 31,
+      "radius": 262144
+    },
+    {
+      "N": 2537,
+      "N_bits": 12,
+      "classification": "one_factor_in_public_top_k",
+      "covered": true,
+      "hit": {
+        "distance": 43,
+        "left_source_count": 141465,
+        "rank": 15,
+        "right_source_count": 273501,
+        "score": [
+          1,
+          2697,
+          162,
+          3,
+          1,
+          -43
+        ],
+        "shared_thread_count": 1,
+        "union_thread_count": 4,
+        "which": "p"
+      },
+      "iteration": 9,
+      "name": "toy_43x59",
+      "p": 43,
+      "public_cost": {
+        "elapsed_seconds": 2.227132,
+        "source_rows": 222874,
+        "vote_targets": 441480
+      },
+      "q": 59,
+      "radius": 262144
+    },
+    {
+      "N": 5063,
+      "N_bits": 13,
+      "classification": "one_factor_in_public_top_k",
+      "covered": true,
+      "hit": {
+        "distance": 61,
+        "left_source_count": 133602,
+        "rank": 42,
+        "right_source_count": 260842,
+        "score": [
+          1,
+          721,
+          114,
+          3,
+          1,
+          -61
+        ],
+        "shared_thread_count": 1,
+        "union_thread_count": 3,
+        "which": "p"
+      },
+      "iteration": 9,
+      "name": "toy_61x83",
+      "p": 61,
+      "public_cost": {
+        "elapsed_seconds": 2.293826,
+        "source_rows": 225001,
+        "vote_targets": 441481
+      },
+      "q": 83,
+      "radius": 262144
+    },
+    {
+      "N": 10057,
+      "N_bits": 14,
+      "classification": "one_factor_in_public_top_k",
+      "covered": true,
+      "hit": {
+        "distance": 89,
+        "left_source_count": 174984,
+        "rank": 30,
+        "right_source_count": 241157,
+        "score": [
+          1,
+          977,
+          78,
+          3,
+          1,
+          -89
+        ],
+        "shared_thread_count": 1,
+        "union_thread_count": 4,
+        "which": "p"
+      },
+      "iteration": 9,
+      "name": "toy_89x113",
+      "p": 89,
+      "public_cost": {
+        "elapsed_seconds": 2.333025,
+        "source_rows": 229203,
+        "vote_targets": 441478
+      },
+      "q": 113,
+      "radius": 262144
+    },
+    {
+      "N": 18905157503,
+      "N_bits": 35,
+      "classification": "one_factor_in_public_top_k",
+      "covered": true,
+      "hit": {
+        "distance": 144203,
+        "left_source_count": 592154,
+        "rank": 5265,
+        "right_source_count": 262144,
+        "score": [
+          1,
+          0,
+          0,
+          5,
+          1,
+          -144203
+        ],
+        "shared_thread_count": 1,
+        "union_thread_count": 5,
+        "which": "q"
+      },
+      "iteration": 9,
+      "name": "continuation_00_131101x144203",
+      "p": 131101,
+      "public_cost": {
+        "elapsed_seconds": 2.716582,
+        "source_rows": 441481,
+        "vote_targets": 441481
+      },
+      "q": 144203,
+      "radius": 262144
+    },
+    {
+      "N": 1209478624103,
+      "N_bits": 41,
+      "classification": "public_window_insufficient_coverage",
+      "covered": false,
+      "hit": null,
+      "iteration": 9,
+      "name": "continuation_01_1048583x1153441",
+      "p": 1048583,
+      "public_cost": {
+        "elapsed_seconds": 2.710599,
+        "source_rows": 441488,
+        "vote_targets": 441488
+      },
+      "q": 1153441,
+      "radius": 262144
+    }
+  ],
+  "coverage_failure_count": 1,
+  "covered_failure_count": 0,
+  "iteration": 9,
+  "spec": {
+    "band_width": 4096,
+    "design_reason": "Iteration 8 showed the first continuation factor has one-sided rich evidence plus opposite-side shared-thread confirmation. This tests an anchor-confirmed score instead of requiring balanced rare evidence.",
+    "iteration": 9,
+    "radius": 262144,
+    "residual_limit": 1,
+    "score_mode": "anchor_confirmed",
+    "small_primes": [
+      2,
+      3,
+      5,
+      7,
+      11,
+      13,
+      17,
+      19,
+      23,
+      29
+    ],
+    "top_k": 16384,
+    "top_per_band": 256
+  },
+  "status": "failed_iteration",
+  "success_count": 5
+}

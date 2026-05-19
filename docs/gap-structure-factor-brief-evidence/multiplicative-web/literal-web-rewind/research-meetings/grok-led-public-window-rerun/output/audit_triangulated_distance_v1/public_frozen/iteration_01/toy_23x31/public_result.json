@@ -1,0 +1,7961 @@
+{
+  "N": 713,
+  "N_bits": 10,
+  "R": 256,
+  "cost": {
+    "distances_scored": 256,
+    "elapsed_seconds": 0.001055,
+    "thread_division_checks": 1536
+  },
+  "distance_count": 256,
+  "iteration": 1,
+  "mode": "balanced_triplets",
+  "policy": "triangulated_distance_v1",
+  "public_only": true,
+  "thread_count": 3,
+  "threads": [
+    2,
+    3,
+    5
+  ],
+  "top_distances": [
+    {
+      "distance": 13,
+      "left_offset": -13,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        5
+      ],
+      "right_offset": 13,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        2,
+        4,
+        1,
+        2,
+        -13
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 17,
+      "left_offset": -17,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 17,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        5
+      ],
+      "score": [
+        0,
+        2,
+        4,
+        1,
+        2,
+        -17
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 43,
+      "left_offset": -43,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        5
+      ],
+      "right_offset": 43,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        2,
+        4,
+        1,
+        2,
+        -43
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 47,
+      "left_offset": -47,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 47,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        5
+      ],
+      "score": [
+        0,
+        2,
+        4,
+        1,
+        2,
+        -47
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 73,
+      "left_offset": -73,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        5
+      ],
+      "right_offset": 73,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        2,
+        4,
+        1,
+        2,
+        -73
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 77,
+      "left_offset": -77,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 77,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        5
+      ],
+      "score": [
+        0,
+        2,
+        4,
+        1,
+        2,
+        -77
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 103,
+      "left_offset": -103,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        5
+      ],
+      "right_offset": 103,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        2,
+        4,
+        1,
+        2,
+        -103
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 107,
+      "left_offset": -107,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 107,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        5
+      ],
+      "score": [
+        0,
+        2,
+        4,
+        1,
+        2,
+        -107
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 133,
+      "left_offset": -133,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        5
+      ],
+      "right_offset": 133,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        2,
+        4,
+        1,
+        2,
+        -133
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 137,
+      "left_offset": -137,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 137,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        5
+      ],
+      "score": [
+        0,
+        2,
+        4,
+        1,
+        2,
+        -137
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 163,
+      "left_offset": -163,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        5
+      ],
+      "right_offset": 163,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        2,
+        4,
+        1,
+        2,
+        -163
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 167,
+      "left_offset": -167,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 167,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        5
+      ],
+      "score": [
+        0,
+        2,
+        4,
+        1,
+        2,
+        -167
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 193,
+      "left_offset": -193,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        5
+      ],
+      "right_offset": 193,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        2,
+        4,
+        1,
+        2,
+        -193
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 197,
+      "left_offset": -197,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 197,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        5
+      ],
+      "score": [
+        0,
+        2,
+        4,
+        1,
+        2,
+        -197
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 223,
+      "left_offset": -223,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        5
+      ],
+      "right_offset": 223,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        2,
+        4,
+        1,
+        2,
+        -223
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 227,
+      "left_offset": -227,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 227,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        5
+      ],
+      "score": [
+        0,
+        2,
+        4,
+        1,
+        2,
+        -227
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 253,
+      "left_offset": -253,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        5
+      ],
+      "right_offset": 253,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        2,
+        4,
+        1,
+        2,
+        -253
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 7,
+      "left_offset": -7,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 7,
+      "right_support": 3,
+      "right_threads": [
+        2,
+        3,
+        5
+      ],
+      "score": [
+        0,
+        1,
+        4,
+        1,
+        2,
+        -7
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 1,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 23,
+      "left_offset": -23,
+      "left_support": 3,
+      "left_threads": [
+        2,
+        3,
+        5
+      ],
+      "right_offset": 23,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        4,
+        1,
+        2,
+        -23
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 1,
+      "triangles_right": 0,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 37,
+      "left_offset": -37,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 37,
+      "right_support": 3,
+      "right_threads": [
+        2,
+        3,
+        5
+      ],
+      "score": [
+        0,
+        1,
+        4,
+        1,
+        2,
+        -37
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 1,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 53,
+      "left_offset": -53,
+      "left_support": 3,
+      "left_threads": [
+        2,
+        3,
+        5
+      ],
+      "right_offset": 53,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        4,
+        1,
+        2,
+        -53
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 1,
+      "triangles_right": 0,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 67,
+      "left_offset": -67,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 67,
+      "right_support": 3,
+      "right_threads": [
+        2,
+        3,
+        5
+      ],
+      "score": [
+        0,
+        1,
+        4,
+        1,
+        2,
+        -67
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 1,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 83,
+      "left_offset": -83,
+      "left_support": 3,
+      "left_threads": [
+        2,
+        3,
+        5
+      ],
+      "right_offset": 83,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        4,
+        1,
+        2,
+        -83
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 1,
+      "triangles_right": 0,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 97,
+      "left_offset": -97,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 97,
+      "right_support": 3,
+      "right_threads": [
+        2,
+        3,
+        5
+      ],
+      "score": [
+        0,
+        1,
+        4,
+        1,
+        2,
+        -97
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 1,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 113,
+      "left_offset": -113,
+      "left_support": 3,
+      "left_threads": [
+        2,
+        3,
+        5
+      ],
+      "right_offset": 113,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        4,
+        1,
+        2,
+        -113
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 1,
+      "triangles_right": 0,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 127,
+      "left_offset": -127,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 127,
+      "right_support": 3,
+      "right_threads": [
+        2,
+        3,
+        5
+      ],
+      "score": [
+        0,
+        1,
+        4,
+        1,
+        2,
+        -127
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 1,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 143,
+      "left_offset": -143,
+      "left_support": 3,
+      "left_threads": [
+        2,
+        3,
+        5
+      ],
+      "right_offset": 143,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        4,
+        1,
+        2,
+        -143
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 1,
+      "triangles_right": 0,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 157,
+      "left_offset": -157,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 157,
+      "right_support": 3,
+      "right_threads": [
+        2,
+        3,
+        5
+      ],
+      "score": [
+        0,
+        1,
+        4,
+        1,
+        2,
+        -157
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 1,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 173,
+      "left_offset": -173,
+      "left_support": 3,
+      "left_threads": [
+        2,
+        3,
+        5
+      ],
+      "right_offset": 173,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        4,
+        1,
+        2,
+        -173
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 1,
+      "triangles_right": 0,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 187,
+      "left_offset": -187,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 187,
+      "right_support": 3,
+      "right_threads": [
+        2,
+        3,
+        5
+      ],
+      "score": [
+        0,
+        1,
+        4,
+        1,
+        2,
+        -187
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 1,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 203,
+      "left_offset": -203,
+      "left_support": 3,
+      "left_threads": [
+        2,
+        3,
+        5
+      ],
+      "right_offset": 203,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        4,
+        1,
+        2,
+        -203
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 1,
+      "triangles_right": 0,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 217,
+      "left_offset": -217,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 217,
+      "right_support": 3,
+      "right_threads": [
+        2,
+        3,
+        5
+      ],
+      "score": [
+        0,
+        1,
+        4,
+        1,
+        2,
+        -217
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 1,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 233,
+      "left_offset": -233,
+      "left_support": 3,
+      "left_threads": [
+        2,
+        3,
+        5
+      ],
+      "right_offset": 233,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        4,
+        1,
+        2,
+        -233
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 1,
+      "triangles_right": 0,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 247,
+      "left_offset": -247,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 247,
+      "right_support": 3,
+      "right_threads": [
+        2,
+        3,
+        5
+      ],
+      "score": [
+        0,
+        1,
+        4,
+        1,
+        2,
+        -247
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 1,
+      "triangles_union": 1,
+      "union_support": 3,
+      "union_threads": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 1,
+      "left_offset": -1,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 1,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -1
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 3,
+      "left_offset": -3,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        5
+      ],
+      "right_offset": 3,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -3
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        5
+      ]
+    },
+    {
+      "distance": 5,
+      "left_offset": -5,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 5,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -5
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 11,
+      "left_offset": -11,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 11,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -11
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 19,
+      "left_offset": -19,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 19,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -19
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 25,
+      "left_offset": -25,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 25,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -25
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 27,
+      "left_offset": -27,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 27,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        5
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -27
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        5
+      ]
+    },
+    {
+      "distance": 29,
+      "left_offset": -29,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 29,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -29
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 31,
+      "left_offset": -31,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 31,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -31
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 33,
+      "left_offset": -33,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        5
+      ],
+      "right_offset": 33,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -33
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        5
+      ]
+    },
+    {
+      "distance": 35,
+      "left_offset": -35,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 35,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -35
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 41,
+      "left_offset": -41,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 41,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -41
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 49,
+      "left_offset": -49,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 49,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -49
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 55,
+      "left_offset": -55,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 55,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -55
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 57,
+      "left_offset": -57,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 57,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        5
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -57
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        5
+      ]
+    },
+    {
+      "distance": 59,
+      "left_offset": -59,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 59,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -59
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 61,
+      "left_offset": -61,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 61,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -61
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 63,
+      "left_offset": -63,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        5
+      ],
+      "right_offset": 63,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -63
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        5
+      ]
+    },
+    {
+      "distance": 65,
+      "left_offset": -65,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 65,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -65
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 71,
+      "left_offset": -71,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 71,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -71
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 79,
+      "left_offset": -79,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 79,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -79
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 85,
+      "left_offset": -85,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 85,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -85
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 87,
+      "left_offset": -87,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 87,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        5
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -87
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        5
+      ]
+    },
+    {
+      "distance": 89,
+      "left_offset": -89,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 89,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -89
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 91,
+      "left_offset": -91,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 91,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -91
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 93,
+      "left_offset": -93,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        5
+      ],
+      "right_offset": 93,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -93
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        5
+      ]
+    },
+    {
+      "distance": 95,
+      "left_offset": -95,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 95,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -95
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 101,
+      "left_offset": -101,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 101,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -101
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 109,
+      "left_offset": -109,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 109,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -109
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 115,
+      "left_offset": -115,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 115,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -115
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 117,
+      "left_offset": -117,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 117,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        5
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -117
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        5
+      ]
+    },
+    {
+      "distance": 119,
+      "left_offset": -119,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 119,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -119
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 121,
+      "left_offset": -121,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 121,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -121
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 123,
+      "left_offset": -123,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        5
+      ],
+      "right_offset": 123,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -123
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        5
+      ]
+    },
+    {
+      "distance": 125,
+      "left_offset": -125,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 125,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -125
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 131,
+      "left_offset": -131,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 131,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -131
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 139,
+      "left_offset": -139,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 139,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -139
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 145,
+      "left_offset": -145,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 145,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -145
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 147,
+      "left_offset": -147,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 147,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        5
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -147
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        5
+      ]
+    },
+    {
+      "distance": 149,
+      "left_offset": -149,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 149,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -149
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 151,
+      "left_offset": -151,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 151,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -151
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 153,
+      "left_offset": -153,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        5
+      ],
+      "right_offset": 153,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -153
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        5
+      ]
+    },
+    {
+      "distance": 155,
+      "left_offset": -155,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 155,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -155
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 161,
+      "left_offset": -161,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 161,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -161
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 169,
+      "left_offset": -169,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 169,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -169
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 175,
+      "left_offset": -175,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 175,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -175
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 177,
+      "left_offset": -177,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 177,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        5
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -177
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        5
+      ]
+    },
+    {
+      "distance": 179,
+      "left_offset": -179,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 179,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -179
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 181,
+      "left_offset": -181,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 181,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -181
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 183,
+      "left_offset": -183,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        5
+      ],
+      "right_offset": 183,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -183
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        5
+      ]
+    },
+    {
+      "distance": 185,
+      "left_offset": -185,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 185,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -185
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 191,
+      "left_offset": -191,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 191,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -191
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 199,
+      "left_offset": -199,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 199,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -199
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 205,
+      "left_offset": -205,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 205,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -205
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 207,
+      "left_offset": -207,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 207,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        5
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -207
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        5
+      ]
+    },
+    {
+      "distance": 209,
+      "left_offset": -209,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 209,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -209
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 211,
+      "left_offset": -211,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 211,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -211
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 213,
+      "left_offset": -213,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        5
+      ],
+      "right_offset": 213,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -213
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        5
+      ]
+    },
+    {
+      "distance": 215,
+      "left_offset": -215,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 215,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -215
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 221,
+      "left_offset": -221,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 221,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -221
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 229,
+      "left_offset": -229,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 229,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -229
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 235,
+      "left_offset": -235,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 235,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -235
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 237,
+      "left_offset": -237,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 237,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        5
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -237
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        5
+      ]
+    },
+    {
+      "distance": 239,
+      "left_offset": -239,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 239,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -239
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 241,
+      "left_offset": -241,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 241,
+      "right_support": 2,
+      "right_threads": [
+        2,
+        3
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -241
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 243,
+      "left_offset": -243,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        5
+      ],
+      "right_offset": 243,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -243
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        5
+      ]
+    },
+    {
+      "distance": 245,
+      "left_offset": -245,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 245,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -245
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 251,
+      "left_offset": -251,
+      "left_support": 2,
+      "left_threads": [
+        2,
+        3
+      ],
+      "right_offset": 251,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        -251
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        2,
+        3
+      ]
+    },
+    {
+      "distance": 9,
+      "left_offset": -9,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 9,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        -9
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        2
+      ]
+    },
+    {
+      "distance": 15,
+      "left_offset": -15,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 15,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        -15
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        2
+      ]
+    },
+    {
+      "distance": 21,
+      "left_offset": -21,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 21,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        -21
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        2
+      ]
+    },
+    {
+      "distance": 39,
+      "left_offset": -39,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 39,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        -39
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        2
+      ]
+    },
+    {
+      "distance": 45,
+      "left_offset": -45,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 45,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        -45
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        2
+      ]
+    },
+    {
+      "distance": 51,
+      "left_offset": -51,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 51,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        -51
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        2
+      ]
+    },
+    {
+      "distance": 69,
+      "left_offset": -69,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 69,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        -69
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        2
+      ]
+    },
+    {
+      "distance": 75,
+      "left_offset": -75,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 75,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        -75
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        2
+      ]
+    },
+    {
+      "distance": 81,
+      "left_offset": -81,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 81,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        -81
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        2
+      ]
+    },
+    {
+      "distance": 99,
+      "left_offset": -99,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 99,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        -99
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        2
+      ]
+    },
+    {
+      "distance": 105,
+      "left_offset": -105,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 105,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        -105
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        2
+      ]
+    },
+    {
+      "distance": 111,
+      "left_offset": -111,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 111,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        -111
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        2
+      ]
+    },
+    {
+      "distance": 129,
+      "left_offset": -129,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 129,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        -129
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        2
+      ]
+    },
+    {
+      "distance": 135,
+      "left_offset": -135,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 135,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        -135
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        2
+      ]
+    },
+    {
+      "distance": 141,
+      "left_offset": -141,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 141,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        -141
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        2
+      ]
+    },
+    {
+      "distance": 159,
+      "left_offset": -159,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 159,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        -159
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        2
+      ]
+    },
+    {
+      "distance": 165,
+      "left_offset": -165,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 165,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        -165
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        2
+      ]
+    },
+    {
+      "distance": 171,
+      "left_offset": -171,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 171,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        -171
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        2
+      ]
+    },
+    {
+      "distance": 189,
+      "left_offset": -189,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 189,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        -189
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        2
+      ]
+    },
+    {
+      "distance": 195,
+      "left_offset": -195,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 195,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        -195
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        2
+      ]
+    },
+    {
+      "distance": 201,
+      "left_offset": -201,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 201,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        -201
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        2
+      ]
+    },
+    {
+      "distance": 219,
+      "left_offset": -219,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 219,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        -219
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        2
+      ]
+    },
+    {
+      "distance": 225,
+      "left_offset": -225,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 225,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        -225
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        2
+      ]
+    },
+    {
+      "distance": 231,
+      "left_offset": -231,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 231,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        -231
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        2
+      ]
+    },
+    {
+      "distance": 249,
+      "left_offset": -249,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 249,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        -249
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        2
+      ]
+    },
+    {
+      "distance": 255,
+      "left_offset": -255,
+      "left_support": 1,
+      "left_threads": [
+        2
+      ],
+      "right_offset": 255,
+      "right_support": 1,
+      "right_threads": [
+        2
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        -255
+      ],
+      "shared_support": 1,
+      "shared_threads": [
+        2
+      ],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        2
+      ]
+    },
+    {
+      "distance": 2,
+      "left_offset": -2,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 2,
+      "right_support": 1,
+      "right_threads": [
+        5
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        0,
+        0,
+        -2
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 28,
+      "left_offset": -28,
+      "left_support": 1,
+      "left_threads": [
+        5
+      ],
+      "right_offset": 28,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        0,
+        0,
+        -28
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 32,
+      "left_offset": -32,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 32,
+      "right_support": 1,
+      "right_threads": [
+        5
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        0,
+        0,
+        -32
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 58,
+      "left_offset": -58,
+      "left_support": 1,
+      "left_threads": [
+        5
+      ],
+      "right_offset": 58,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        0,
+        0,
+        -58
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 62,
+      "left_offset": -62,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 62,
+      "right_support": 1,
+      "right_threads": [
+        5
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        0,
+        0,
+        -62
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 88,
+      "left_offset": -88,
+      "left_support": 1,
+      "left_threads": [
+        5
+      ],
+      "right_offset": 88,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        0,
+        0,
+        -88
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 92,
+      "left_offset": -92,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 92,
+      "right_support": 1,
+      "right_threads": [
+        5
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        0,
+        0,
+        -92
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 118,
+      "left_offset": -118,
+      "left_support": 1,
+      "left_threads": [
+        5
+      ],
+      "right_offset": 118,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        0,
+        0,
+        -118
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 122,
+      "left_offset": -122,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 122,
+      "right_support": 1,
+      "right_threads": [
+        5
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        0,
+        0,
+        -122
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 148,
+      "left_offset": -148,
+      "left_support": 1,
+      "left_threads": [
+        5
+      ],
+      "right_offset": 148,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        0,
+        0,
+        -148
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 152,
+      "left_offset": -152,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 152,
+      "right_support": 1,
+      "right_threads": [
+        5
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        0,
+        0,
+        -152
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 178,
+      "left_offset": -178,
+      "left_support": 1,
+      "left_threads": [
+        5
+      ],
+      "right_offset": 178,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        0,
+        0,
+        -178
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 182,
+      "left_offset": -182,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 182,
+      "right_support": 1,
+      "right_threads": [
+        5
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        0,
+        0,
+        -182
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 208,
+      "left_offset": -208,
+      "left_support": 1,
+      "left_threads": [
+        5
+      ],
+      "right_offset": 208,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        0,
+        0,
+        -208
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 212,
+      "left_offset": -212,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 212,
+      "right_support": 1,
+      "right_threads": [
+        5
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        0,
+        0,
+        -212
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 238,
+      "left_offset": -238,
+      "left_support": 1,
+      "left_threads": [
+        5
+      ],
+      "right_offset": 238,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        0,
+        0,
+        -238
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 242,
+      "left_offset": -242,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 242,
+      "right_support": 1,
+      "right_threads": [
+        5
+      ],
+      "score": [
+        0,
+        1,
+        2,
+        0,
+        0,
+        -242
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 8,
+      "left_offset": -8,
+      "left_support": 2,
+      "left_threads": [
+        3,
+        5
+      ],
+      "right_offset": 8,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        -8
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 22,
+      "left_offset": -22,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 22,
+      "right_support": 2,
+      "right_threads": [
+        3,
+        5
+      ],
+      "score": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        -22
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 38,
+      "left_offset": -38,
+      "left_support": 2,
+      "left_threads": [
+        3,
+        5
+      ],
+      "right_offset": 38,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        -38
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 52,
+      "left_offset": -52,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 52,
+      "right_support": 2,
+      "right_threads": [
+        3,
+        5
+      ],
+      "score": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        -52
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 68,
+      "left_offset": -68,
+      "left_support": 2,
+      "left_threads": [
+        3,
+        5
+      ],
+      "right_offset": 68,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        -68
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 82,
+      "left_offset": -82,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 82,
+      "right_support": 2,
+      "right_threads": [
+        3,
+        5
+      ],
+      "score": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        -82
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 98,
+      "left_offset": -98,
+      "left_support": 2,
+      "left_threads": [
+        3,
+        5
+      ],
+      "right_offset": 98,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        -98
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 112,
+      "left_offset": -112,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 112,
+      "right_support": 2,
+      "right_threads": [
+        3,
+        5
+      ],
+      "score": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        -112
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 128,
+      "left_offset": -128,
+      "left_support": 2,
+      "left_threads": [
+        3,
+        5
+      ],
+      "right_offset": 128,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        -128
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 142,
+      "left_offset": -142,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 142,
+      "right_support": 2,
+      "right_threads": [
+        3,
+        5
+      ],
+      "score": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        -142
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 158,
+      "left_offset": -158,
+      "left_support": 2,
+      "left_threads": [
+        3,
+        5
+      ],
+      "right_offset": 158,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        -158
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 172,
+      "left_offset": -172,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 172,
+      "right_support": 2,
+      "right_threads": [
+        3,
+        5
+      ],
+      "score": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        -172
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 188,
+      "left_offset": -188,
+      "left_support": 2,
+      "left_threads": [
+        3,
+        5
+      ],
+      "right_offset": 188,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        -188
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 202,
+      "left_offset": -202,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 202,
+      "right_support": 2,
+      "right_threads": [
+        3,
+        5
+      ],
+      "score": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        -202
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 218,
+      "left_offset": -218,
+      "left_support": 2,
+      "left_threads": [
+        3,
+        5
+      ],
+      "right_offset": 218,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        -218
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 232,
+      "left_offset": -232,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 232,
+      "right_support": 2,
+      "right_threads": [
+        3,
+        5
+      ],
+      "score": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        -232
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 248,
+      "left_offset": -248,
+      "left_support": 2,
+      "left_threads": [
+        3,
+        5
+      ],
+      "right_offset": 248,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        -248
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 2,
+      "union_threads": [
+        3,
+        5
+      ]
+    },
+    {
+      "distance": 4,
+      "left_offset": -4,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 4,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -4
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 10,
+      "left_offset": -10,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 10,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -10
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 12,
+      "left_offset": -12,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 12,
+      "right_support": 1,
+      "right_threads": [
+        5
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -12
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        5
+      ]
+    },
+    {
+      "distance": 14,
+      "left_offset": -14,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 14,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -14
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 16,
+      "left_offset": -16,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 16,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -16
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 18,
+      "left_offset": -18,
+      "left_support": 1,
+      "left_threads": [
+        5
+      ],
+      "right_offset": 18,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -18
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        5
+      ]
+    },
+    {
+      "distance": 20,
+      "left_offset": -20,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 20,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -20
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 26,
+      "left_offset": -26,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 26,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -26
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 34,
+      "left_offset": -34,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 34,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -34
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 40,
+      "left_offset": -40,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 40,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -40
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 42,
+      "left_offset": -42,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 42,
+      "right_support": 1,
+      "right_threads": [
+        5
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -42
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        5
+      ]
+    },
+    {
+      "distance": 44,
+      "left_offset": -44,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 44,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -44
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 46,
+      "left_offset": -46,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 46,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -46
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 48,
+      "left_offset": -48,
+      "left_support": 1,
+      "left_threads": [
+        5
+      ],
+      "right_offset": 48,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -48
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        5
+      ]
+    },
+    {
+      "distance": 50,
+      "left_offset": -50,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 50,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -50
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 56,
+      "left_offset": -56,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 56,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -56
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 64,
+      "left_offset": -64,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 64,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -64
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 70,
+      "left_offset": -70,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 70,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -70
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 72,
+      "left_offset": -72,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 72,
+      "right_support": 1,
+      "right_threads": [
+        5
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -72
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        5
+      ]
+    },
+    {
+      "distance": 74,
+      "left_offset": -74,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 74,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -74
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 76,
+      "left_offset": -76,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 76,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -76
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 78,
+      "left_offset": -78,
+      "left_support": 1,
+      "left_threads": [
+        5
+      ],
+      "right_offset": 78,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -78
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        5
+      ]
+    },
+    {
+      "distance": 80,
+      "left_offset": -80,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 80,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -80
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 86,
+      "left_offset": -86,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 86,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -86
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 94,
+      "left_offset": -94,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 94,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -94
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 100,
+      "left_offset": -100,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 100,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -100
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 102,
+      "left_offset": -102,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 102,
+      "right_support": 1,
+      "right_threads": [
+        5
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -102
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        5
+      ]
+    },
+    {
+      "distance": 104,
+      "left_offset": -104,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 104,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -104
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 106,
+      "left_offset": -106,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 106,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -106
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 108,
+      "left_offset": -108,
+      "left_support": 1,
+      "left_threads": [
+        5
+      ],
+      "right_offset": 108,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -108
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        5
+      ]
+    },
+    {
+      "distance": 110,
+      "left_offset": -110,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 110,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -110
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 116,
+      "left_offset": -116,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 116,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -116
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 124,
+      "left_offset": -124,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 124,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -124
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 130,
+      "left_offset": -130,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 130,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -130
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 132,
+      "left_offset": -132,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 132,
+      "right_support": 1,
+      "right_threads": [
+        5
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -132
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        5
+      ]
+    },
+    {
+      "distance": 134,
+      "left_offset": -134,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 134,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -134
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 136,
+      "left_offset": -136,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 136,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -136
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 138,
+      "left_offset": -138,
+      "left_support": 1,
+      "left_threads": [
+        5
+      ],
+      "right_offset": 138,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -138
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        5
+      ]
+    },
+    {
+      "distance": 140,
+      "left_offset": -140,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 140,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -140
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 146,
+      "left_offset": -146,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 146,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -146
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 154,
+      "left_offset": -154,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 154,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -154
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 160,
+      "left_offset": -160,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 160,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -160
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 162,
+      "left_offset": -162,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 162,
+      "right_support": 1,
+      "right_threads": [
+        5
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -162
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        5
+      ]
+    },
+    {
+      "distance": 164,
+      "left_offset": -164,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 164,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -164
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 166,
+      "left_offset": -166,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 166,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -166
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 168,
+      "left_offset": -168,
+      "left_support": 1,
+      "left_threads": [
+        5
+      ],
+      "right_offset": 168,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -168
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        5
+      ]
+    },
+    {
+      "distance": 170,
+      "left_offset": -170,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 170,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -170
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 176,
+      "left_offset": -176,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 176,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -176
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 184,
+      "left_offset": -184,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 184,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -184
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 190,
+      "left_offset": -190,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 190,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -190
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 192,
+      "left_offset": -192,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 192,
+      "right_support": 1,
+      "right_threads": [
+        5
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -192
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        5
+      ]
+    },
+    {
+      "distance": 194,
+      "left_offset": -194,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 194,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -194
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 196,
+      "left_offset": -196,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 196,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -196
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 198,
+      "left_offset": -198,
+      "left_support": 1,
+      "left_threads": [
+        5
+      ],
+      "right_offset": 198,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -198
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        5
+      ]
+    },
+    {
+      "distance": 200,
+      "left_offset": -200,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 200,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -200
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 206,
+      "left_offset": -206,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 206,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -206
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 214,
+      "left_offset": -214,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 214,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -214
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 220,
+      "left_offset": -220,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 220,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -220
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 222,
+      "left_offset": -222,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 222,
+      "right_support": 1,
+      "right_threads": [
+        5
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -222
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        5
+      ]
+    },
+    {
+      "distance": 224,
+      "left_offset": -224,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 224,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -224
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 226,
+      "left_offset": -226,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 226,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -226
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 228,
+      "left_offset": -228,
+      "left_support": 1,
+      "left_threads": [
+        5
+      ],
+      "right_offset": 228,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -228
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        5
+      ]
+    },
+    {
+      "distance": 230,
+      "left_offset": -230,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 230,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -230
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 236,
+      "left_offset": -236,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 236,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -236
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 244,
+      "left_offset": -244,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 244,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -244
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 250,
+      "left_offset": -250,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 250,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -250
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 252,
+      "left_offset": -252,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 252,
+      "right_support": 1,
+      "right_threads": [
+        5
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -252
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        5
+      ]
+    },
+    {
+      "distance": 254,
+      "left_offset": -254,
+      "left_support": 1,
+      "left_threads": [
+        3
+      ],
+      "right_offset": 254,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -254
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 256,
+      "left_offset": -256,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 256,
+      "right_support": 1,
+      "right_threads": [
+        3
+      ],
+      "score": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -256
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 1,
+      "union_threads": [
+        3
+      ]
+    },
+    {
+      "distance": 6,
+      "left_offset": -6,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 6,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -6
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 0,
+      "union_threads": []
+    },
+    {
+      "distance": 24,
+      "left_offset": -24,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 24,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -24
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 0,
+      "union_threads": []
+    },
+    {
+      "distance": 30,
+      "left_offset": -30,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 30,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -30
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 0,
+      "union_threads": []
+    },
+    {
+      "distance": 36,
+      "left_offset": -36,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 36,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -36
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 0,
+      "union_threads": []
+    },
+    {
+      "distance": 54,
+      "left_offset": -54,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 54,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -54
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 0,
+      "union_threads": []
+    },
+    {
+      "distance": 60,
+      "left_offset": -60,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 60,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -60
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 0,
+      "union_threads": []
+    },
+    {
+      "distance": 66,
+      "left_offset": -66,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 66,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -66
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 0,
+      "union_threads": []
+    },
+    {
+      "distance": 84,
+      "left_offset": -84,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 84,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -84
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 0,
+      "union_threads": []
+    },
+    {
+      "distance": 90,
+      "left_offset": -90,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 90,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -90
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 0,
+      "union_threads": []
+    },
+    {
+      "distance": 96,
+      "left_offset": -96,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 96,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -96
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 0,
+      "union_threads": []
+    },
+    {
+      "distance": 114,
+      "left_offset": -114,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 114,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -114
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 0,
+      "union_threads": []
+    },
+    {
+      "distance": 120,
+      "left_offset": -120,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 120,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -120
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 0,
+      "union_threads": []
+    },
+    {
+      "distance": 126,
+      "left_offset": -126,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 126,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -126
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 0,
+      "union_threads": []
+    },
+    {
+      "distance": 144,
+      "left_offset": -144,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 144,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -144
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 0,
+      "union_threads": []
+    },
+    {
+      "distance": 150,
+      "left_offset": -150,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 150,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -150
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 0,
+      "union_threads": []
+    },
+    {
+      "distance": 156,
+      "left_offset": -156,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 156,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -156
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 0,
+      "union_threads": []
+    },
+    {
+      "distance": 174,
+      "left_offset": -174,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 174,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -174
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 0,
+      "union_threads": []
+    },
+    {
+      "distance": 180,
+      "left_offset": -180,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 180,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -180
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 0,
+      "union_threads": []
+    },
+    {
+      "distance": 186,
+      "left_offset": -186,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 186,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -186
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 0,
+      "union_threads": []
+    },
+    {
+      "distance": 204,
+      "left_offset": -204,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 204,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -204
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 0,
+      "union_threads": []
+    },
+    {
+      "distance": 210,
+      "left_offset": -210,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 210,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -210
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 0,
+      "union_threads": []
+    },
+    {
+      "distance": 216,
+      "left_offset": -216,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 216,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -216
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 0,
+      "union_threads": []
+    },
+    {
+      "distance": 234,
+      "left_offset": -234,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 234,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -234
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 0,
+      "union_threads": []
+    },
+    {
+      "distance": 240,
+      "left_offset": -240,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 240,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -240
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 0,
+      "union_threads": []
+    },
+    {
+      "distance": 246,
+      "left_offset": -246,
+      "left_support": 0,
+      "left_threads": [],
+      "right_offset": 246,
+      "right_support": 0,
+      "right_threads": [],
+      "score": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -246
+      ],
+      "shared_support": 0,
+      "shared_threads": [],
+      "triangles_left": 0,
+      "triangles_right": 0,
+      "triangles_union": 0,
+      "union_support": 0,
+      "union_threads": []
+    }
+  ],
+  "top_k": 1000
+}

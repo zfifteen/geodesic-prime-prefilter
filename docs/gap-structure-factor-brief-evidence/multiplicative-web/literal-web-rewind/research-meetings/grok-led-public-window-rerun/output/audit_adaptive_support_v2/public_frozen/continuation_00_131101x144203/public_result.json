@@ -1,0 +1,8005 @@
+{
+  "N": 18905157503,
+  "N_bits": 35,
+  "attempts": [
+    {
+      "R": 256,
+      "cost": {
+        "elapsed_seconds": 0.0002,
+        "generator_steps": 529,
+        "top_k_emitted": 100,
+        "unique_nominated_within_R": 376
+      },
+      "nominated_count": 376,
+      "top_nominated": [
+        {
+          "offset": 7,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157510
+        },
+        {
+          "offset": -23,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157480
+        },
+        {
+          "offset": 37,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157540
+        },
+        {
+          "offset": -53,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157450
+        },
+        {
+          "offset": 67,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157570
+        },
+        {
+          "offset": -83,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157420
+        },
+        {
+          "offset": 97,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157600
+        },
+        {
+          "offset": -113,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157390
+        },
+        {
+          "offset": 127,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157630
+        },
+        {
+          "offset": -143,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157360
+        },
+        {
+          "offset": 157,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157660
+        },
+        {
+          "offset": -173,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157330
+        },
+        {
+          "offset": 187,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157690
+        },
+        {
+          "offset": -203,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157300
+        },
+        {
+          "offset": 217,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157720
+        },
+        {
+          "offset": -233,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157270
+        },
+        {
+          "offset": 247,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157750
+        },
+        {
+          "offset": 1,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157504
+        },
+        {
+          "offset": -3,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157500
+        },
+        {
+          "offset": -5,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157498
+        },
+        {
+          "offset": -8,
+          "support_count": 2,
+          "threads": [
+            3,
+            5
+          ],
+          "value": 18905157495
+        },
+        {
+          "offset": -11,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157492
+        },
+        {
+          "offset": -13,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157490
+        },
+        {
+          "offset": 13,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157516
+        },
+        {
+          "offset": -17,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157486
+        },
+        {
+          "offset": 17,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157520
+        },
+        {
+          "offset": 19,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157522
+        },
+        {
+          "offset": 22,
+          "support_count": 2,
+          "threads": [
+            3,
+            5
+          ],
+          "value": 18905157525
+        },
+        {
+          "offset": 25,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157528
+        },
+        {
+          "offset": 27,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157530
+        },
+        {
+          "offset": -29,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157474
+        },
+        {
+          "offset": 31,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157534
+        },
+        {
+          "offset": -33,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157470
+        },
+        {
+          "offset": -35,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157468
+        },
+        {
+          "offset": -38,
+          "support_count": 2,
+          "threads": [
+            3,
+            5
+          ],
+          "value": 18905157465
+        },
+        {
+          "offset": -41,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157462
+        },
+        {
+          "offset": -43,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157460
+        },
+        {
+          "offset": 43,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157546
+        },
+        {
+          "offset": -47,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157456
+        },
+        {
+          "offset": 47,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157550
+        },
+        {
+          "offset": 49,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157552
+        },
+        {
+          "offset": 52,
+          "support_count": 2,
+          "threads": [
+            3,
+            5
+          ],
+          "value": 18905157555
+        },
+        {
+          "offset": 55,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157558
+        },
+        {
+          "offset": 57,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157560
+        },
+        {
+          "offset": -59,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157444
+        },
+        {
+          "offset": 61,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157564
+        },
+        {
+          "offset": -63,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157440
+        },
+        {
+          "offset": -65,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157438
+        },
+        {
+          "offset": -68,
+          "support_count": 2,
+          "threads": [
+            3,
+            5
+          ],
+          "value": 18905157435
+        },
+        {
+          "offset": -71,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157432
+        },
+        {
+          "offset": -73,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157430
+        },
+        {
+          "offset": 73,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157576
+        },
+        {
+          "offset": -77,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157426
+        },
+        {
+          "offset": 77,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157580
+        },
+        {
+          "offset": 79,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157582
+        },
+        {
+          "offset": 82,
+          "support_count": 2,
+          "threads": [
+            3,
+            5
+          ],
+          "value": 18905157585
+        },
+        {
+          "offset": 85,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157588
+        },
+        {
+          "offset": 87,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157590
+        },
+        {
+          "offset": -89,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157414
+        },
+        {
+          "offset": 91,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157594
+        },
+        {
+          "offset": -93,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157410
+        },
+        {
+          "offset": -95,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157408
+        },
+        {
+          "offset": -98,
+          "support_count": 2,
+          "threads": [
+            3,
+            5
+          ],
+          "value": 18905157405
+        },
+        {
+          "offset": -101,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157402
+        },
+        {
+          "offset": -103,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157400
+        },
+        {
+          "offset": 103,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157606
+        },
+        {
+          "offset": -107,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157396
+        },
+        {
+          "offset": 107,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157610
+        },
+        {
+          "offset": 109,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157612
+        },
+        {
+          "offset": 112,
+          "support_count": 2,
+          "threads": [
+            3,
+            5
+          ],
+          "value": 18905157615
+        },
+        {
+          "offset": 115,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157618
+        },
+        {
+          "offset": 117,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157620
+        },
+        {
+          "offset": -119,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157384
+        },
+        {
+          "offset": 121,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157624
+        },
+        {
+          "offset": -123,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157380
+        },
+        {
+          "offset": -125,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157378
+        },
+        {
+          "offset": -128,
+          "support_count": 2,
+          "threads": [
+            3,
+            5
+          ],
+          "value": 18905157375
+        },
+        {
+          "offset": -131,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157372
+        },
+        {
+          "offset": -133,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157370
+        },
+        {
+          "offset": 133,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157636
+        },
+        {
+          "offset": -137,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157366
+        },
+        {
+          "offset": 137,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157640
+        },
+        {
+          "offset": 139,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157642
+        },
+        {
+          "offset": 142,
+          "support_count": 2,
+          "threads": [
+            3,
+            5
+          ],
+          "value": 18905157645
+        },
+        {
+          "offset": 145,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157648
+        },
+        {
+          "offset": 147,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157650
+        },
+        {
+          "offset": -149,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157354
+        },
+        {
+          "offset": 151,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157654
+        },
+        {
+          "offset": -153,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157350
+        },
+        {
+          "offset": -155,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157348
+        },
+        {
+          "offset": -158,
+          "support_count": 2,
+          "threads": [
+            3,
+            5
+          ],
+          "value": 18905157345
+        },
+        {
+          "offset": -161,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157342
+        },
+        {
+          "offset": -163,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157340
+        },
+        {
+          "offset": 163,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157666
+        },
+        {
+          "offset": -167,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157336
+        },
+        {
+          "offset": 167,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157670
+        },
+        {
+          "offset": 169,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157672
+        },
+        {
+          "offset": 172,
+          "support_count": 2,
+          "threads": [
+            3,
+            5
+          ],
+          "value": 18905157675
+        },
+        {
+          "offset": 175,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157678
+        },
+        {
+          "offset": 177,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157680
+        }
+      ]
+    },
+    {
+      "R": 1024,
+      "cost": {
+        "elapsed_seconds": 0.000979,
+        "generator_steps": 2117,
+        "top_k_emitted": 100,
+        "unique_nominated_within_R": 1503
+      },
+      "nominated_count": 1503,
+      "top_nominated": [
+        {
+          "offset": 7,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157510
+        },
+        {
+          "offset": -23,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157480
+        },
+        {
+          "offset": 37,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157540
+        },
+        {
+          "offset": -53,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157450
+        },
+        {
+          "offset": 67,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157570
+        },
+        {
+          "offset": -83,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157420
+        },
+        {
+          "offset": 97,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157600
+        },
+        {
+          "offset": -113,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157390
+        },
+        {
+          "offset": 127,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157630
+        },
+        {
+          "offset": -143,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157360
+        },
+        {
+          "offset": 157,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157660
+        },
+        {
+          "offset": -173,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157330
+        },
+        {
+          "offset": 187,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157690
+        },
+        {
+          "offset": -203,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157300
+        },
+        {
+          "offset": 217,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157720
+        },
+        {
+          "offset": -233,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157270
+        },
+        {
+          "offset": 247,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157750
+        },
+        {
+          "offset": -263,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157240
+        },
+        {
+          "offset": 277,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157780
+        },
+        {
+          "offset": -293,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157210
+        },
+        {
+          "offset": 307,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157810
+        },
+        {
+          "offset": -323,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157180
+        },
+        {
+          "offset": 337,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157840
+        },
+        {
+          "offset": -353,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157150
+        },
+        {
+          "offset": 367,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157870
+        },
+        {
+          "offset": -383,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157120
+        },
+        {
+          "offset": 397,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157900
+        },
+        {
+          "offset": -413,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157090
+        },
+        {
+          "offset": 427,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157930
+        },
+        {
+          "offset": -443,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157060
+        },
+        {
+          "offset": 457,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157960
+        },
+        {
+          "offset": -473,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157030
+        },
+        {
+          "offset": 487,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157990
+        },
+        {
+          "offset": -503,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157000
+        },
+        {
+          "offset": 517,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158020
+        },
+        {
+          "offset": -533,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156970
+        },
+        {
+          "offset": 547,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158050
+        },
+        {
+          "offset": -563,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156940
+        },
+        {
+          "offset": 577,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158080
+        },
+        {
+          "offset": -593,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156910
+        },
+        {
+          "offset": 607,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158110
+        },
+        {
+          "offset": -623,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156880
+        },
+        {
+          "offset": 637,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158140
+        },
+        {
+          "offset": -653,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156850
+        },
+        {
+          "offset": 667,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158170
+        },
+        {
+          "offset": -683,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156820
+        },
+        {
+          "offset": 697,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158200
+        },
+        {
+          "offset": -713,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156790
+        },
+        {
+          "offset": 727,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158230
+        },
+        {
+          "offset": -743,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156760
+        },
+        {
+          "offset": 757,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158260
+        },
+        {
+          "offset": -773,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156730
+        },
+        {
+          "offset": 787,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158290
+        },
+        {
+          "offset": -803,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156700
+        },
+        {
+          "offset": 817,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158320
+        },
+        {
+          "offset": -833,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156670
+        },
+        {
+          "offset": 847,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158350
+        },
+        {
+          "offset": -863,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156640
+        },
+        {
+          "offset": 877,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158380
+        },
+        {
+          "offset": -893,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156610
+        },
+        {
+          "offset": 907,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158410
+        },
+        {
+          "offset": -923,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156580
+        },
+        {
+          "offset": 937,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158440
+        },
+        {
+          "offset": -953,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156550
+        },
+        {
+          "offset": 967,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158470
+        },
+        {
+          "offset": -983,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156520
+        },
+        {
+          "offset": 997,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158500
+        },
+        {
+          "offset": -1013,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156490
+        },
+        {
+          "offset": 1,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157504
+        },
+        {
+          "offset": -3,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157500
+        },
+        {
+          "offset": -5,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157498
+        },
+        {
+          "offset": -8,
+          "support_count": 2,
+          "threads": [
+            3,
+            5
+          ],
+          "value": 18905157495
+        },
+        {
+          "offset": -11,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157492
+        },
+        {
+          "offset": -13,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157490
+        },
+        {
+          "offset": 13,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157516
+        },
+        {
+          "offset": -17,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157486
+        },
+        {
+          "offset": 17,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157520
+        },
+        {
+          "offset": 19,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157522
+        },
+        {
+          "offset": 22,
+          "support_count": 2,
+          "threads": [
+            3,
+            5
+          ],
+          "value": 18905157525
+        },
+        {
+          "offset": 25,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157528
+        },
+        {
+          "offset": 27,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157530
+        },
+        {
+          "offset": -29,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157474
+        },
+        {
+          "offset": 31,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157534
+        },
+        {
+          "offset": -33,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157470
+        },
+        {
+          "offset": -35,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157468
+        },
+        {
+          "offset": -38,
+          "support_count": 2,
+          "threads": [
+            3,
+            5
+          ],
+          "value": 18905157465
+        },
+        {
+          "offset": -41,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157462
+        },
+        {
+          "offset": -43,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157460
+        },
+        {
+          "offset": 43,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157546
+        },
+        {
+          "offset": -47,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157456
+        },
+        {
+          "offset": 47,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157550
+        },
+        {
+          "offset": 49,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157552
+        },
+        {
+          "offset": 52,
+          "support_count": 2,
+          "threads": [
+            3,
+            5
+          ],
+          "value": 18905157555
+        },
+        {
+          "offset": 55,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157558
+        },
+        {
+          "offset": 57,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157560
+        },
+        {
+          "offset": -59,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157444
+        },
+        {
+          "offset": 61,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157564
+        },
+        {
+          "offset": -63,
+          "support_count": 2,
+          "threads": [
+            2,
+            5
+          ],
+          "value": 18905157440
+        },
+        {
+          "offset": -65,
+          "support_count": 2,
+          "threads": [
+            2,
+            3
+          ],
+          "value": 18905157438
+        },
+        {
+          "offset": -68,
+          "support_count": 2,
+          "threads": [
+            3,
+            5
+          ],
+          "value": 18905157435
+        }
+      ]
+    },
+    {
+      "R": 4096,
+      "cost": {
+        "elapsed_seconds": 0.003596,
+        "generator_steps": 8465,
+        "top_k_emitted": 100,
+        "unique_nominated_within_R": 6008
+      },
+      "nominated_count": 6008,
+      "top_nominated": [
+        {
+          "offset": 7,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157510
+        },
+        {
+          "offset": -23,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157480
+        },
+        {
+          "offset": 37,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157540
+        },
+        {
+          "offset": -53,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157450
+        },
+        {
+          "offset": 67,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157570
+        },
+        {
+          "offset": -83,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157420
+        },
+        {
+          "offset": 97,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157600
+        },
+        {
+          "offset": -113,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157390
+        },
+        {
+          "offset": 127,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157630
+        },
+        {
+          "offset": -143,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157360
+        },
+        {
+          "offset": 157,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157660
+        },
+        {
+          "offset": -173,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157330
+        },
+        {
+          "offset": 187,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157690
+        },
+        {
+          "offset": -203,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157300
+        },
+        {
+          "offset": 217,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157720
+        },
+        {
+          "offset": -233,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157270
+        },
+        {
+          "offset": 247,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157750
+        },
+        {
+          "offset": -263,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157240
+        },
+        {
+          "offset": 277,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157780
+        },
+        {
+          "offset": -293,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157210
+        },
+        {
+          "offset": 307,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157810
+        },
+        {
+          "offset": -323,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157180
+        },
+        {
+          "offset": 337,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157840
+        },
+        {
+          "offset": -353,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157150
+        },
+        {
+          "offset": 367,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157870
+        },
+        {
+          "offset": -383,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157120
+        },
+        {
+          "offset": 397,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157900
+        },
+        {
+          "offset": -413,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157090
+        },
+        {
+          "offset": 427,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157930
+        },
+        {
+          "offset": -443,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157060
+        },
+        {
+          "offset": 457,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157960
+        },
+        {
+          "offset": -473,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157030
+        },
+        {
+          "offset": 487,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157990
+        },
+        {
+          "offset": -503,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157000
+        },
+        {
+          "offset": 517,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158020
+        },
+        {
+          "offset": -533,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156970
+        },
+        {
+          "offset": 547,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158050
+        },
+        {
+          "offset": -563,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156940
+        },
+        {
+          "offset": 577,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158080
+        },
+        {
+          "offset": -593,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156910
+        },
+        {
+          "offset": 607,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158110
+        },
+        {
+          "offset": -623,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156880
+        },
+        {
+          "offset": 637,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158140
+        },
+        {
+          "offset": -653,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156850
+        },
+        {
+          "offset": 667,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158170
+        },
+        {
+          "offset": -683,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156820
+        },
+        {
+          "offset": 697,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158200
+        },
+        {
+          "offset": -713,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156790
+        },
+        {
+          "offset": 727,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158230
+        },
+        {
+          "offset": -743,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156760
+        },
+        {
+          "offset": 757,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158260
+        },
+        {
+          "offset": -773,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156730
+        },
+        {
+          "offset": 787,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158290
+        },
+        {
+          "offset": -803,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156700
+        },
+        {
+          "offset": 817,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158320
+        },
+        {
+          "offset": -833,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156670
+        },
+        {
+          "offset": 847,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158350
+        },
+        {
+          "offset": -863,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156640
+        },
+        {
+          "offset": 877,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158380
+        },
+        {
+          "offset": -893,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156610
+        },
+        {
+          "offset": 907,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158410
+        },
+        {
+          "offset": -923,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156580
+        },
+        {
+          "offset": 937,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158440
+        },
+        {
+          "offset": -953,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156550
+        },
+        {
+          "offset": 967,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158470
+        },
+        {
+          "offset": -983,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156520
+        },
+        {
+          "offset": 997,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158500
+        },
+        {
+          "offset": -1013,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156490
+        },
+        {
+          "offset": 1027,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158530
+        },
+        {
+          "offset": -1043,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156460
+        },
+        {
+          "offset": 1057,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158560
+        },
+        {
+          "offset": -1073,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156430
+        },
+        {
+          "offset": 1087,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158590
+        },
+        {
+          "offset": -1103,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156400
+        },
+        {
+          "offset": 1117,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158620
+        },
+        {
+          "offset": -1133,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156370
+        },
+        {
+          "offset": 1147,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158650
+        },
+        {
+          "offset": -1163,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156340
+        },
+        {
+          "offset": 1177,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158680
+        },
+        {
+          "offset": -1193,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156310
+        },
+        {
+          "offset": 1207,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158710
+        },
+        {
+          "offset": -1223,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156280
+        },
+        {
+          "offset": 1237,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158740
+        },
+        {
+          "offset": -1253,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156250
+        },
+        {
+          "offset": 1267,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158770
+        },
+        {
+          "offset": -1283,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156220
+        },
+        {
+          "offset": 1297,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158800
+        },
+        {
+          "offset": -1313,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156190
+        },
+        {
+          "offset": 1327,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158830
+        },
+        {
+          "offset": -1343,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156160
+        },
+        {
+          "offset": 1357,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158860
+        },
+        {
+          "offset": -1373,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156130
+        },
+        {
+          "offset": 1387,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158890
+        },
+        {
+          "offset": -1403,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156100
+        },
+        {
+          "offset": 1417,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158920
+        },
+        {
+          "offset": -1433,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156070
+        },
+        {
+          "offset": 1447,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158950
+        },
+        {
+          "offset": -1463,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156040
+        },
+        {
+          "offset": 1477,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158980
+        },
+        {
+          "offset": -1493,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156010
+        }
+      ]
+    },
+    {
+      "R": 16384,
+      "cost": {
+        "elapsed_seconds": 0.014201,
+        "generator_steps": 33861,
+        "top_k_emitted": 100,
+        "unique_nominated_within_R": 24031
+      },
+      "nominated_count": 24031,
+      "top_nominated": [
+        {
+          "offset": 7,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157510
+        },
+        {
+          "offset": -23,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157480
+        },
+        {
+          "offset": 37,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157540
+        },
+        {
+          "offset": -53,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157450
+        },
+        {
+          "offset": 67,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157570
+        },
+        {
+          "offset": -83,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157420
+        },
+        {
+          "offset": 97,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157600
+        },
+        {
+          "offset": -113,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157390
+        },
+        {
+          "offset": 127,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157630
+        },
+        {
+          "offset": -143,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157360
+        },
+        {
+          "offset": 157,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157660
+        },
+        {
+          "offset": -173,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157330
+        },
+        {
+          "offset": 187,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157690
+        },
+        {
+          "offset": -203,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157300
+        },
+        {
+          "offset": 217,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157720
+        },
+        {
+          "offset": -233,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157270
+        },
+        {
+          "offset": 247,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157750
+        },
+        {
+          "offset": -263,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157240
+        },
+        {
+          "offset": 277,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157780
+        },
+        {
+          "offset": -293,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157210
+        },
+        {
+          "offset": 307,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157810
+        },
+        {
+          "offset": -323,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157180
+        },
+        {
+          "offset": 337,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157840
+        },
+        {
+          "offset": -353,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157150
+        },
+        {
+          "offset": 367,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157870
+        },
+        {
+          "offset": -383,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157120
+        },
+        {
+          "offset": 397,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157900
+        },
+        {
+          "offset": -413,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157090
+        },
+        {
+          "offset": 427,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157930
+        },
+        {
+          "offset": -443,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157060
+        },
+        {
+          "offset": 457,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157960
+        },
+        {
+          "offset": -473,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157030
+        },
+        {
+          "offset": 487,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157990
+        },
+        {
+          "offset": -503,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157000
+        },
+        {
+          "offset": 517,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158020
+        },
+        {
+          "offset": -533,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156970
+        },
+        {
+          "offset": 547,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158050
+        },
+        {
+          "offset": -563,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156940
+        },
+        {
+          "offset": 577,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158080
+        },
+        {
+          "offset": -593,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156910
+        },
+        {
+          "offset": 607,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158110
+        },
+        {
+          "offset": -623,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156880
+        },
+        {
+          "offset": 637,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158140
+        },
+        {
+          "offset": -653,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156850
+        },
+        {
+          "offset": 667,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158170
+        },
+        {
+          "offset": -683,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156820
+        },
+        {
+          "offset": 697,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158200
+        },
+        {
+          "offset": -713,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156790
+        },
+        {
+          "offset": 727,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158230
+        },
+        {
+          "offset": -743,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156760
+        },
+        {
+          "offset": 757,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158260
+        },
+        {
+          "offset": -773,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156730
+        },
+        {
+          "offset": 787,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158290
+        },
+        {
+          "offset": -803,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156700
+        },
+        {
+          "offset": 817,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158320
+        },
+        {
+          "offset": -833,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156670
+        },
+        {
+          "offset": 847,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158350
+        },
+        {
+          "offset": -863,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156640
+        },
+        {
+          "offset": 877,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158380
+        },
+        {
+          "offset": -893,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156610
+        },
+        {
+          "offset": 907,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158410
+        },
+        {
+          "offset": -923,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156580
+        },
+        {
+          "offset": 937,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158440
+        },
+        {
+          "offset": -953,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156550
+        },
+        {
+          "offset": 967,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158470
+        },
+        {
+          "offset": -983,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156520
+        },
+        {
+          "offset": 997,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158500
+        },
+        {
+          "offset": -1013,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156490
+        },
+        {
+          "offset": 1027,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158530
+        },
+        {
+          "offset": -1043,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156460
+        },
+        {
+          "offset": 1057,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158560
+        },
+        {
+          "offset": -1073,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156430
+        },
+        {
+          "offset": 1087,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158590
+        },
+        {
+          "offset": -1103,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156400
+        },
+        {
+          "offset": 1117,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158620
+        },
+        {
+          "offset": -1133,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156370
+        },
+        {
+          "offset": 1147,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158650
+        },
+        {
+          "offset": -1163,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156340
+        },
+        {
+          "offset": 1177,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158680
+        },
+        {
+          "offset": -1193,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156310
+        },
+        {
+          "offset": 1207,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158710
+        },
+        {
+          "offset": -1223,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156280
+        },
+        {
+          "offset": 1237,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158740
+        },
+        {
+          "offset": -1253,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156250
+        },
+        {
+          "offset": 1267,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158770
+        },
+        {
+          "offset": -1283,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156220
+        },
+        {
+          "offset": 1297,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158800
+        },
+        {
+          "offset": -1313,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156190
+        },
+        {
+          "offset": 1327,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158830
+        },
+        {
+          "offset": -1343,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156160
+        },
+        {
+          "offset": 1357,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158860
+        },
+        {
+          "offset": -1373,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156130
+        },
+        {
+          "offset": 1387,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158890
+        },
+        {
+          "offset": -1403,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156100
+        },
+        {
+          "offset": 1417,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158920
+        },
+        {
+          "offset": -1433,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156070
+        },
+        {
+          "offset": 1447,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158950
+        },
+        {
+          "offset": -1463,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156040
+        },
+        {
+          "offset": 1477,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158980
+        },
+        {
+          "offset": -1493,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156010
+        }
+      ]
+    },
+    {
+      "R": 65536,
+      "cost": {
+        "elapsed_seconds": 0.060956,
+        "generator_steps": 135441,
+        "top_k_emitted": 100,
+        "unique_nominated_within_R": 96120
+      },
+      "nominated_count": 96120,
+      "top_nominated": [
+        {
+          "offset": 7,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157510
+        },
+        {
+          "offset": -23,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157480
+        },
+        {
+          "offset": 37,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157540
+        },
+        {
+          "offset": -53,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157450
+        },
+        {
+          "offset": 67,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157570
+        },
+        {
+          "offset": -83,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157420
+        },
+        {
+          "offset": 97,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157600
+        },
+        {
+          "offset": -113,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157390
+        },
+        {
+          "offset": 127,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157630
+        },
+        {
+          "offset": -143,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157360
+        },
+        {
+          "offset": 157,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157660
+        },
+        {
+          "offset": -173,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157330
+        },
+        {
+          "offset": 187,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157690
+        },
+        {
+          "offset": -203,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157300
+        },
+        {
+          "offset": 217,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157720
+        },
+        {
+          "offset": -233,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157270
+        },
+        {
+          "offset": 247,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157750
+        },
+        {
+          "offset": -263,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157240
+        },
+        {
+          "offset": 277,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157780
+        },
+        {
+          "offset": -293,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157210
+        },
+        {
+          "offset": 307,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157810
+        },
+        {
+          "offset": -323,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157180
+        },
+        {
+          "offset": 337,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157840
+        },
+        {
+          "offset": -353,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157150
+        },
+        {
+          "offset": 367,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157870
+        },
+        {
+          "offset": -383,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157120
+        },
+        {
+          "offset": 397,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157900
+        },
+        {
+          "offset": -413,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157090
+        },
+        {
+          "offset": 427,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157930
+        },
+        {
+          "offset": -443,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157060
+        },
+        {
+          "offset": 457,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157960
+        },
+        {
+          "offset": -473,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157030
+        },
+        {
+          "offset": 487,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157990
+        },
+        {
+          "offset": -503,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157000
+        },
+        {
+          "offset": 517,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158020
+        },
+        {
+          "offset": -533,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156970
+        },
+        {
+          "offset": 547,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158050
+        },
+        {
+          "offset": -563,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156940
+        },
+        {
+          "offset": 577,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158080
+        },
+        {
+          "offset": -593,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156910
+        },
+        {
+          "offset": 607,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158110
+        },
+        {
+          "offset": -623,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156880
+        },
+        {
+          "offset": 637,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158140
+        },
+        {
+          "offset": -653,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156850
+        },
+        {
+          "offset": 667,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158170
+        },
+        {
+          "offset": -683,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156820
+        },
+        {
+          "offset": 697,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158200
+        },
+        {
+          "offset": -713,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156790
+        },
+        {
+          "offset": 727,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158230
+        },
+        {
+          "offset": -743,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156760
+        },
+        {
+          "offset": 757,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158260
+        },
+        {
+          "offset": -773,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156730
+        },
+        {
+          "offset": 787,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158290
+        },
+        {
+          "offset": -803,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156700
+        },
+        {
+          "offset": 817,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158320
+        },
+        {
+          "offset": -833,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156670
+        },
+        {
+          "offset": 847,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158350
+        },
+        {
+          "offset": -863,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156640
+        },
+        {
+          "offset": 877,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158380
+        },
+        {
+          "offset": -893,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156610
+        },
+        {
+          "offset": 907,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158410
+        },
+        {
+          "offset": -923,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156580
+        },
+        {
+          "offset": 937,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158440
+        },
+        {
+          "offset": -953,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156550
+        },
+        {
+          "offset": 967,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158470
+        },
+        {
+          "offset": -983,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156520
+        },
+        {
+          "offset": 997,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158500
+        },
+        {
+          "offset": -1013,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156490
+        },
+        {
+          "offset": 1027,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158530
+        },
+        {
+          "offset": -1043,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156460
+        },
+        {
+          "offset": 1057,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158560
+        },
+        {
+          "offset": -1073,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156430
+        },
+        {
+          "offset": 1087,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158590
+        },
+        {
+          "offset": -1103,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156400
+        },
+        {
+          "offset": 1117,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158620
+        },
+        {
+          "offset": -1133,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156370
+        },
+        {
+          "offset": 1147,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158650
+        },
+        {
+          "offset": -1163,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156340
+        },
+        {
+          "offset": 1177,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158680
+        },
+        {
+          "offset": -1193,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156310
+        },
+        {
+          "offset": 1207,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158710
+        },
+        {
+          "offset": -1223,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156280
+        },
+        {
+          "offset": 1237,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158740
+        },
+        {
+          "offset": -1253,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156250
+        },
+        {
+          "offset": 1267,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158770
+        },
+        {
+          "offset": -1283,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156220
+        },
+        {
+          "offset": 1297,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158800
+        },
+        {
+          "offset": -1313,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156190
+        },
+        {
+          "offset": 1327,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158830
+        },
+        {
+          "offset": -1343,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156160
+        },
+        {
+          "offset": 1357,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158860
+        },
+        {
+          "offset": -1373,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156130
+        },
+        {
+          "offset": 1387,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158890
+        },
+        {
+          "offset": -1403,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156100
+        },
+        {
+          "offset": 1417,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158920
+        },
+        {
+          "offset": -1433,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156070
+        },
+        {
+          "offset": 1447,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158950
+        },
+        {
+          "offset": -1463,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156040
+        },
+        {
+          "offset": 1477,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158980
+        },
+        {
+          "offset": -1493,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156010
+        }
+      ]
+    },
+    {
+      "R": 262144,
+      "cost": {
+        "elapsed_seconds": 0.308953,
+        "generator_steps": 541765,
+        "top_k_emitted": 100,
+        "unique_nominated_within_R": 384479
+      },
+      "nominated_count": 384479,
+      "top_nominated": [
+        {
+          "offset": 7,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157510
+        },
+        {
+          "offset": -23,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157480
+        },
+        {
+          "offset": 37,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157540
+        },
+        {
+          "offset": -53,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157450
+        },
+        {
+          "offset": 67,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157570
+        },
+        {
+          "offset": -83,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157420
+        },
+        {
+          "offset": 97,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157600
+        },
+        {
+          "offset": -113,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157390
+        },
+        {
+          "offset": 127,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157630
+        },
+        {
+          "offset": -143,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157360
+        },
+        {
+          "offset": 157,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157660
+        },
+        {
+          "offset": -173,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157330
+        },
+        {
+          "offset": 187,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157690
+        },
+        {
+          "offset": -203,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157300
+        },
+        {
+          "offset": 217,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157720
+        },
+        {
+          "offset": -233,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157270
+        },
+        {
+          "offset": 247,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157750
+        },
+        {
+          "offset": -263,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157240
+        },
+        {
+          "offset": 277,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157780
+        },
+        {
+          "offset": -293,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157210
+        },
+        {
+          "offset": 307,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157810
+        },
+        {
+          "offset": -323,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157180
+        },
+        {
+          "offset": 337,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157840
+        },
+        {
+          "offset": -353,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157150
+        },
+        {
+          "offset": 367,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157870
+        },
+        {
+          "offset": -383,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157120
+        },
+        {
+          "offset": 397,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157900
+        },
+        {
+          "offset": -413,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157090
+        },
+        {
+          "offset": 427,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157930
+        },
+        {
+          "offset": -443,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157060
+        },
+        {
+          "offset": 457,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157960
+        },
+        {
+          "offset": -473,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157030
+        },
+        {
+          "offset": 487,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157990
+        },
+        {
+          "offset": -503,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157000
+        },
+        {
+          "offset": 517,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158020
+        },
+        {
+          "offset": -533,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156970
+        },
+        {
+          "offset": 547,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158050
+        },
+        {
+          "offset": -563,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156940
+        },
+        {
+          "offset": 577,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158080
+        },
+        {
+          "offset": -593,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156910
+        },
+        {
+          "offset": 607,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158110
+        },
+        {
+          "offset": -623,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156880
+        },
+        {
+          "offset": 637,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158140
+        },
+        {
+          "offset": -653,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156850
+        },
+        {
+          "offset": 667,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158170
+        },
+        {
+          "offset": -683,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156820
+        },
+        {
+          "offset": 697,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158200
+        },
+        {
+          "offset": -713,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156790
+        },
+        {
+          "offset": 727,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158230
+        },
+        {
+          "offset": -743,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156760
+        },
+        {
+          "offset": 757,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158260
+        },
+        {
+          "offset": -773,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156730
+        },
+        {
+          "offset": 787,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158290
+        },
+        {
+          "offset": -803,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156700
+        },
+        {
+          "offset": 817,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158320
+        },
+        {
+          "offset": -833,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156670
+        },
+        {
+          "offset": 847,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158350
+        },
+        {
+          "offset": -863,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156640
+        },
+        {
+          "offset": 877,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158380
+        },
+        {
+          "offset": -893,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156610
+        },
+        {
+          "offset": 907,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158410
+        },
+        {
+          "offset": -923,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156580
+        },
+        {
+          "offset": 937,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158440
+        },
+        {
+          "offset": -953,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156550
+        },
+        {
+          "offset": 967,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158470
+        },
+        {
+          "offset": -983,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156520
+        },
+        {
+          "offset": 997,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158500
+        },
+        {
+          "offset": -1013,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156490
+        },
+        {
+          "offset": 1027,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158530
+        },
+        {
+          "offset": -1043,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156460
+        },
+        {
+          "offset": 1057,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158560
+        },
+        {
+          "offset": -1073,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156430
+        },
+        {
+          "offset": 1087,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158590
+        },
+        {
+          "offset": -1103,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156400
+        },
+        {
+          "offset": 1117,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158620
+        },
+        {
+          "offset": -1133,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156370
+        },
+        {
+          "offset": 1147,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158650
+        },
+        {
+          "offset": -1163,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156340
+        },
+        {
+          "offset": 1177,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158680
+        },
+        {
+          "offset": -1193,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156310
+        },
+        {
+          "offset": 1207,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158710
+        },
+        {
+          "offset": -1223,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156280
+        },
+        {
+          "offset": 1237,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158740
+        },
+        {
+          "offset": -1253,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156250
+        },
+        {
+          "offset": 1267,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158770
+        },
+        {
+          "offset": -1283,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156220
+        },
+        {
+          "offset": 1297,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158800
+        },
+        {
+          "offset": -1313,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156190
+        },
+        {
+          "offset": 1327,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158830
+        },
+        {
+          "offset": -1343,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156160
+        },
+        {
+          "offset": 1357,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158860
+        },
+        {
+          "offset": -1373,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156130
+        },
+        {
+          "offset": 1387,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158890
+        },
+        {
+          "offset": -1403,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156100
+        },
+        {
+          "offset": 1417,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158920
+        },
+        {
+          "offset": -1433,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156070
+        },
+        {
+          "offset": 1447,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158950
+        },
+        {
+          "offset": -1463,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156040
+        },
+        {
+          "offset": 1477,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158980
+        },
+        {
+          "offset": -1493,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156010
+        }
+      ]
+    },
+    {
+      "R": 1048576,
+      "cost": {
+        "elapsed_seconds": 1.624884,
+        "generator_steps": 2167057,
+        "top_k_emitted": 100,
+        "unique_nominated_within_R": 1537912
+      },
+      "nominated_count": 1537912,
+      "top_nominated": [
+        {
+          "offset": 7,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157510
+        },
+        {
+          "offset": -23,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157480
+        },
+        {
+          "offset": 37,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157540
+        },
+        {
+          "offset": -53,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157450
+        },
+        {
+          "offset": 67,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157570
+        },
+        {
+          "offset": -83,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157420
+        },
+        {
+          "offset": 97,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157600
+        },
+        {
+          "offset": -113,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157390
+        },
+        {
+          "offset": 127,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157630
+        },
+        {
+          "offset": -143,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157360
+        },
+        {
+          "offset": 157,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157660
+        },
+        {
+          "offset": -173,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157330
+        },
+        {
+          "offset": 187,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157690
+        },
+        {
+          "offset": -203,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157300
+        },
+        {
+          "offset": 217,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157720
+        },
+        {
+          "offset": -233,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157270
+        },
+        {
+          "offset": 247,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157750
+        },
+        {
+          "offset": -263,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157240
+        },
+        {
+          "offset": 277,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157780
+        },
+        {
+          "offset": -293,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157210
+        },
+        {
+          "offset": 307,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157810
+        },
+        {
+          "offset": -323,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157180
+        },
+        {
+          "offset": 337,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157840
+        },
+        {
+          "offset": -353,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157150
+        },
+        {
+          "offset": 367,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157870
+        },
+        {
+          "offset": -383,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157120
+        },
+        {
+          "offset": 397,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157900
+        },
+        {
+          "offset": -413,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157090
+        },
+        {
+          "offset": 427,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157930
+        },
+        {
+          "offset": -443,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157060
+        },
+        {
+          "offset": 457,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157960
+        },
+        {
+          "offset": -473,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157030
+        },
+        {
+          "offset": 487,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157990
+        },
+        {
+          "offset": -503,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157000
+        },
+        {
+          "offset": 517,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158020
+        },
+        {
+          "offset": -533,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156970
+        },
+        {
+          "offset": 547,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158050
+        },
+        {
+          "offset": -563,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156940
+        },
+        {
+          "offset": 577,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158080
+        },
+        {
+          "offset": -593,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156910
+        },
+        {
+          "offset": 607,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158110
+        },
+        {
+          "offset": -623,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156880
+        },
+        {
+          "offset": 637,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158140
+        },
+        {
+          "offset": -653,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156850
+        },
+        {
+          "offset": 667,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158170
+        },
+        {
+          "offset": -683,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156820
+        },
+        {
+          "offset": 697,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158200
+        },
+        {
+          "offset": -713,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156790
+        },
+        {
+          "offset": 727,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158230
+        },
+        {
+          "offset": -743,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156760
+        },
+        {
+          "offset": 757,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158260
+        },
+        {
+          "offset": -773,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156730
+        },
+        {
+          "offset": 787,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158290
+        },
+        {
+          "offset": -803,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156700
+        },
+        {
+          "offset": 817,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158320
+        },
+        {
+          "offset": -833,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156670
+        },
+        {
+          "offset": 847,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158350
+        },
+        {
+          "offset": -863,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156640
+        },
+        {
+          "offset": 877,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158380
+        },
+        {
+          "offset": -893,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156610
+        },
+        {
+          "offset": 907,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158410
+        },
+        {
+          "offset": -923,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156580
+        },
+        {
+          "offset": 937,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158440
+        },
+        {
+          "offset": -953,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156550
+        },
+        {
+          "offset": 967,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158470
+        },
+        {
+          "offset": -983,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156520
+        },
+        {
+          "offset": 997,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158500
+        },
+        {
+          "offset": -1013,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156490
+        },
+        {
+          "offset": 1027,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158530
+        },
+        {
+          "offset": -1043,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156460
+        },
+        {
+          "offset": 1057,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158560
+        },
+        {
+          "offset": -1073,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156430
+        },
+        {
+          "offset": 1087,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158590
+        },
+        {
+          "offset": -1103,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156400
+        },
+        {
+          "offset": 1117,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158620
+        },
+        {
+          "offset": -1133,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156370
+        },
+        {
+          "offset": 1147,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158650
+        },
+        {
+          "offset": -1163,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156340
+        },
+        {
+          "offset": 1177,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158680
+        },
+        {
+          "offset": -1193,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156310
+        },
+        {
+          "offset": 1207,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158710
+        },
+        {
+          "offset": -1223,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156280
+        },
+        {
+          "offset": 1237,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158740
+        },
+        {
+          "offset": -1253,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156250
+        },
+        {
+          "offset": 1267,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158770
+        },
+        {
+          "offset": -1283,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156220
+        },
+        {
+          "offset": 1297,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158800
+        },
+        {
+          "offset": -1313,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156190
+        },
+        {
+          "offset": 1327,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158830
+        },
+        {
+          "offset": -1343,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156160
+        },
+        {
+          "offset": 1357,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158860
+        },
+        {
+          "offset": -1373,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156130
+        },
+        {
+          "offset": 1387,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158890
+        },
+        {
+          "offset": -1403,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156100
+        },
+        {
+          "offset": 1417,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158920
+        },
+        {
+          "offset": -1433,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156070
+        },
+        {
+          "offset": 1447,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158950
+        },
+        {
+          "offset": -1463,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156040
+        },
+        {
+          "offset": 1477,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158980
+        },
+        {
+          "offset": -1493,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156010
+        }
+      ]
+    },
+    {
+      "R": 2097152,
+      "cost": {
+        "elapsed_seconds": 3.465641,
+        "generator_steps": 4334115,
+        "top_k_emitted": 100,
+        "unique_nominated_within_R": 3075824
+      },
+      "nominated_count": 3075824,
+      "top_nominated": [
+        {
+          "offset": 7,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157510
+        },
+        {
+          "offset": -23,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157480
+        },
+        {
+          "offset": 37,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157540
+        },
+        {
+          "offset": -53,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157450
+        },
+        {
+          "offset": 67,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157570
+        },
+        {
+          "offset": -83,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157420
+        },
+        {
+          "offset": 97,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157600
+        },
+        {
+          "offset": -113,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157390
+        },
+        {
+          "offset": 127,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157630
+        },
+        {
+          "offset": -143,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157360
+        },
+        {
+          "offset": 157,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157660
+        },
+        {
+          "offset": -173,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157330
+        },
+        {
+          "offset": 187,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157690
+        },
+        {
+          "offset": -203,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157300
+        },
+        {
+          "offset": 217,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157720
+        },
+        {
+          "offset": -233,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157270
+        },
+        {
+          "offset": 247,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157750
+        },
+        {
+          "offset": -263,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157240
+        },
+        {
+          "offset": 277,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157780
+        },
+        {
+          "offset": -293,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157210
+        },
+        {
+          "offset": 307,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157810
+        },
+        {
+          "offset": -323,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157180
+        },
+        {
+          "offset": 337,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157840
+        },
+        {
+          "offset": -353,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157150
+        },
+        {
+          "offset": 367,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157870
+        },
+        {
+          "offset": -383,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157120
+        },
+        {
+          "offset": 397,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157900
+        },
+        {
+          "offset": -413,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157090
+        },
+        {
+          "offset": 427,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157930
+        },
+        {
+          "offset": -443,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157060
+        },
+        {
+          "offset": 457,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157960
+        },
+        {
+          "offset": -473,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157030
+        },
+        {
+          "offset": 487,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157990
+        },
+        {
+          "offset": -503,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905157000
+        },
+        {
+          "offset": 517,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158020
+        },
+        {
+          "offset": -533,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156970
+        },
+        {
+          "offset": 547,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158050
+        },
+        {
+          "offset": -563,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156940
+        },
+        {
+          "offset": 577,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158080
+        },
+        {
+          "offset": -593,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156910
+        },
+        {
+          "offset": 607,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158110
+        },
+        {
+          "offset": -623,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156880
+        },
+        {
+          "offset": 637,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158140
+        },
+        {
+          "offset": -653,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156850
+        },
+        {
+          "offset": 667,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158170
+        },
+        {
+          "offset": -683,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156820
+        },
+        {
+          "offset": 697,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158200
+        },
+        {
+          "offset": -713,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156790
+        },
+        {
+          "offset": 727,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158230
+        },
+        {
+          "offset": -743,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156760
+        },
+        {
+          "offset": 757,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158260
+        },
+        {
+          "offset": -773,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156730
+        },
+        {
+          "offset": 787,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158290
+        },
+        {
+          "offset": -803,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156700
+        },
+        {
+          "offset": 817,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158320
+        },
+        {
+          "offset": -833,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156670
+        },
+        {
+          "offset": 847,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158350
+        },
+        {
+          "offset": -863,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156640
+        },
+        {
+          "offset": 877,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158380
+        },
+        {
+          "offset": -893,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156610
+        },
+        {
+          "offset": 907,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158410
+        },
+        {
+          "offset": -923,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156580
+        },
+        {
+          "offset": 937,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158440
+        },
+        {
+          "offset": -953,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156550
+        },
+        {
+          "offset": 967,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158470
+        },
+        {
+          "offset": -983,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156520
+        },
+        {
+          "offset": 997,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158500
+        },
+        {
+          "offset": -1013,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156490
+        },
+        {
+          "offset": 1027,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158530
+        },
+        {
+          "offset": -1043,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156460
+        },
+        {
+          "offset": 1057,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158560
+        },
+        {
+          "offset": -1073,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156430
+        },
+        {
+          "offset": 1087,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158590
+        },
+        {
+          "offset": -1103,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156400
+        },
+        {
+          "offset": 1117,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158620
+        },
+        {
+          "offset": -1133,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156370
+        },
+        {
+          "offset": 1147,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158650
+        },
+        {
+          "offset": -1163,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156340
+        },
+        {
+          "offset": 1177,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158680
+        },
+        {
+          "offset": -1193,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156310
+        },
+        {
+          "offset": 1207,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158710
+        },
+        {
+          "offset": -1223,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156280
+        },
+        {
+          "offset": 1237,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158740
+        },
+        {
+          "offset": -1253,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156250
+        },
+        {
+          "offset": 1267,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158770
+        },
+        {
+          "offset": -1283,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156220
+        },
+        {
+          "offset": 1297,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158800
+        },
+        {
+          "offset": -1313,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156190
+        },
+        {
+          "offset": 1327,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158830
+        },
+        {
+          "offset": -1343,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156160
+        },
+        {
+          "offset": 1357,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158860
+        },
+        {
+          "offset": -1373,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156130
+        },
+        {
+          "offset": 1387,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158890
+        },
+        {
+          "offset": -1403,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156100
+        },
+        {
+          "offset": 1417,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158920
+        },
+        {
+          "offset": -1433,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156070
+        },
+        {
+          "offset": 1447,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158950
+        },
+        {
+          "offset": -1463,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156040
+        },
+        {
+          "offset": 1477,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905158980
+        },
+        {
+          "offset": -1493,
+          "support_count": 3,
+          "threads": [
+            2,
+            3,
+            5
+          ],
+          "value": 18905156010
+        }
+      ]
+    }
+  ],
+  "policy": "adaptive_support_v2",
+  "public_only": true,
+  "radii": [
+    256,
+    1024,
+    4096,
+    16384,
+    65536,
+    262144,
+    1048576,
+    2097152
+  ],
+  "threads": [
+    2,
+    3,
+    5
+  ],
+  "top_k": 100
+}

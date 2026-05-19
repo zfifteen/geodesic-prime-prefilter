@@ -1,0 +1,3777 @@
+{
+  "N": 2537,
+  "audit_factor_hits": [
+    43,
+    59
+  ],
+  "composite_count": 126,
+  "edges": [
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2468",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2468",
+      "target": "f:617"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2469",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2469",
+      "target": "f:823"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2470",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2470",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2470",
+      "target": "f:13"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2470",
+      "target": "f:19"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2471",
+      "target": "f:7"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2471",
+      "target": "f:353"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 3,
+      "source": "c:2472",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2472",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2472",
+      "target": "f:103"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2474",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2474",
+      "target": "f:1237"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2475",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2475",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2475",
+      "target": "f:11"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2476",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2476",
+      "target": "f:619"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2478",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2478",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2478",
+      "target": "f:7"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2478",
+      "target": "f:59"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2479",
+      "target": "f:37"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2479",
+      "target": "f:67"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 4,
+      "source": "c:2480",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2480",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2480",
+      "target": "f:31"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2481",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2481",
+      "target": "f:827"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2482",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2482",
+      "target": "f:17"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2482",
+      "target": "f:73"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2483",
+      "target": "f:13"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2483",
+      "target": "f:191"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2484",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 3,
+      "source": "c:2484",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2484",
+      "target": "f:23"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2485",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2485",
+      "target": "f:7"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2485",
+      "target": "f:71"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2486",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2486",
+      "target": "f:11"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2486",
+      "target": "f:113"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2487",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2487",
+      "target": "f:829"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 3,
+      "source": "c:2488",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2488",
+      "target": "f:311"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2489",
+      "target": "f:19"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2489",
+      "target": "f:131"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2490",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2490",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2490",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2490",
+      "target": "f:83"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2491",
+      "target": "f:47"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2491",
+      "target": "f:53"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2492",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2492",
+      "target": "f:7"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2492",
+      "target": "f:89"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2493",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2493",
+      "target": "f:277"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2494",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2494",
+      "target": "f:29"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2494",
+      "target": "f:43"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2495",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2495",
+      "target": "f:499"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 6,
+      "source": "c:2496",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2496",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2496",
+      "target": "f:13"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2497",
+      "target": "f:11"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2497",
+      "target": "f:227"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2498",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2498",
+      "target": "f:1249"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2499",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2499",
+      "target": "f:7"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2499",
+      "target": "f:17"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2500",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 4,
+      "source": "c:2500",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2501",
+      "target": "f:41"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2501",
+      "target": "f:61"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2502",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2502",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2502",
+      "target": "f:139"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 3,
+      "source": "c:2504",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2504",
+      "target": "f:313"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2505",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2505",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2505",
+      "target": "f:167"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2506",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2506",
+      "target": "f:7"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2506",
+      "target": "f:179"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2507",
+      "target": "f:23"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2507",
+      "target": "f:109"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2508",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2508",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2508",
+      "target": "f:11"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2508",
+      "target": "f:19"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2509",
+      "target": "f:13"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2509",
+      "target": "f:193"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2510",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2510",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2510",
+      "target": "f:251"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 4,
+      "source": "c:2511",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2511",
+      "target": "f:31"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 4,
+      "source": "c:2512",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2512",
+      "target": "f:157"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2513",
+      "target": "f:7"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2513",
+      "target": "f:359"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2514",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2514",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2514",
+      "target": "f:419"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2515",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2515",
+      "target": "f:503"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2516",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2516",
+      "target": "f:17"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2516",
+      "target": "f:37"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2517",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2517",
+      "target": "f:839"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2518",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2518",
+      "target": "f:1259"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2519",
+      "target": "f:11"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2519",
+      "target": "f:229"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 3,
+      "source": "c:2520",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2520",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2520",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2520",
+      "target": "f:7"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2522",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2522",
+      "target": "f:13"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2522",
+      "target": "f:97"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2523",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2523",
+      "target": "f:29"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2524",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2524",
+      "target": "f:631"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2525",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2525",
+      "target": "f:101"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2526",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2526",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2526",
+      "target": "f:421"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2527",
+      "target": "f:7"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2527",
+      "target": "f:19"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 5,
+      "source": "c:2528",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2528",
+      "target": "f:79"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2529",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2529",
+      "target": "f:281"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2530",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2530",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2530",
+      "target": "f:11"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2530",
+      "target": "f:23"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2532",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2532",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2532",
+      "target": "f:211"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2533",
+      "target": "f:17"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2533",
+      "target": "f:149"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2534",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2534",
+      "target": "f:7"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2534",
+      "target": "f:181"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2535",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2535",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2535",
+      "target": "f:13"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 3,
+      "source": "c:2536",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2536",
+      "target": "f:317"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2538",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 3,
+      "source": "c:2538",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2538",
+      "target": "f:47"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2540",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2540",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2540",
+      "target": "f:127"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2541",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2541",
+      "target": "f:7"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2541",
+      "target": "f:11"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2542",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2542",
+      "target": "f:31"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2542",
+      "target": "f:41"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 4,
+      "source": "c:2544",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2544",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2544",
+      "target": "f:53"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2545",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2545",
+      "target": "f:509"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2546",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2546",
+      "target": "f:19"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2546",
+      "target": "f:67"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2547",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2547",
+      "target": "f:283"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2548",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2548",
+      "target": "f:7"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2548",
+      "target": "f:13"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2550",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2550",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2550",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2550",
+      "target": "f:17"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 3,
+      "source": "c:2552",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2552",
+      "target": "f:11"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2552",
+      "target": "f:29"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2553",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2553",
+      "target": "f:23"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2553",
+      "target": "f:37"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2554",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2554",
+      "target": "f:1277"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2555",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2555",
+      "target": "f:7"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2555",
+      "target": "f:73"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2556",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2556",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2556",
+      "target": "f:71"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2558",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2558",
+      "target": "f:1279"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2559",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2559",
+      "target": "f:853"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 9,
+      "source": "c:2560",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2560",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2561",
+      "target": "f:13"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2561",
+      "target": "f:197"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2562",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2562",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2562",
+      "target": "f:7"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2562",
+      "target": "f:61"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2563",
+      "target": "f:11"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2563",
+      "target": "f:233"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2564",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2564",
+      "target": "f:641"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 3,
+      "source": "c:2565",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2565",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2565",
+      "target": "f:19"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2566",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2566",
+      "target": "f:1283"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2567",
+      "target": "f:17"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2567",
+      "target": "f:151"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 3,
+      "source": "c:2568",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2568",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2568",
+      "target": "f:107"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2569",
+      "target": "f:7"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2569",
+      "target": "f:367"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2570",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2570",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2570",
+      "target": "f:257"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2571",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2571",
+      "target": "f:857"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2572",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2572",
+      "target": "f:643"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2573",
+      "target": "f:31"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2573",
+      "target": "f:83"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2574",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2574",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2574",
+      "target": "f:11"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2574",
+      "target": "f:13"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2575",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2575",
+      "target": "f:103"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 4,
+      "source": "c:2576",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2576",
+      "target": "f:7"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2576",
+      "target": "f:23"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2577",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2577",
+      "target": "f:859"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2578",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2578",
+      "target": "f:1289"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2580",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2580",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2580",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2580",
+      "target": "f:43"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2581",
+      "target": "f:29"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2581",
+      "target": "f:89"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2582",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2582",
+      "target": "f:1291"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2583",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2583",
+      "target": "f:7"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2583",
+      "target": "f:41"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 3,
+      "source": "c:2584",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2584",
+      "target": "f:17"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2584",
+      "target": "f:19"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2585",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2585",
+      "target": "f:11"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2585",
+      "target": "f:47"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2586",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2586",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2586",
+      "target": "f:431"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2587",
+      "target": "f:13"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2587",
+      "target": "f:199"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2588",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2588",
+      "target": "f:647"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2589",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2589",
+      "target": "f:863"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2590",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2590",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2590",
+      "target": "f:7"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2590",
+      "target": "f:37"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 5,
+      "source": "c:2592",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 4,
+      "source": "c:2592",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2594",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2594",
+      "target": "f:1297"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2595",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2595",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2595",
+      "target": "f:173"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2596",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2596",
+      "target": "f:11"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2596",
+      "target": "f:59"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2597",
+      "target": "f:7"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2597",
+      "target": "f:53"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2598",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2598",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2598",
+      "target": "f:433"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2599",
+      "target": "f:23"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2599",
+      "target": "f:113"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 3,
+      "source": "c:2600",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2600",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2600",
+      "target": "f:13"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2601",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2601",
+      "target": "f:17"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2602",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2602",
+      "target": "f:1301"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2603",
+      "target": "f:19"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2603",
+      "target": "f:137"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 2,
+      "source": "c:2604",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2604",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2604",
+      "target": "f:7"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2604",
+      "target": "f:31"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2605",
+      "target": "f:5"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2605",
+      "target": "f:521"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2606",
+      "target": "f:2"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2606",
+      "target": "f:1303"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2607",
+      "target": "f:3"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2607",
+      "target": "f:11"
+    },
+    {
+      "kind": "factor_thread",
+      "multiplicity": 1,
+      "source": "c:2607",
+      "target": "f:79"
+    }
+  ],
+  "factor_node_count": 93,
+  "nodes": [
+    {
+      "id": "N",
+      "kind": "product",
+      "value": 2537
+    },
+    {
+      "divisor_count": 6,
+      "factorization": "2^2 * 617",
+      "id": "c:2468",
+      "kind": "composite",
+      "offset": -69,
+      "side": "left",
+      "value": 2468
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "3 * 823",
+      "id": "c:2469",
+      "kind": "composite",
+      "offset": -68,
+      "side": "left",
+      "value": 2469
+    },
+    {
+      "divisor_count": 16,
+      "factorization": "2 * 5 * 13 * 19",
+      "id": "c:2470",
+      "kind": "composite",
+      "offset": -67,
+      "side": "left",
+      "value": 2470
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "7 * 353",
+      "id": "c:2471",
+      "kind": "composite",
+      "offset": -66,
+      "side": "left",
+      "value": 2471
+    },
+    {
+      "divisor_count": 16,
+      "factorization": "2^3 * 3 * 103",
+      "id": "c:2472",
+      "kind": "composite",
+      "offset": -65,
+      "side": "left",
+      "value": 2472
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "2 * 1237",
+      "id": "c:2474",
+      "kind": "composite",
+      "offset": -63,
+      "side": "left",
+      "value": 2474
+    },
+    {
+      "divisor_count": 18,
+      "factorization": "3^2 * 5^2 * 11",
+      "id": "c:2475",
+      "kind": "composite",
+      "offset": -62,
+      "side": "left",
+      "value": 2475
+    },
+    {
+      "divisor_count": 6,
+      "factorization": "2^2 * 619",
+      "id": "c:2476",
+      "kind": "composite",
+      "offset": -61,
+      "side": "left",
+      "value": 2476
+    },
+    {
+      "divisor_count": 16,
+      "factorization": "2 * 3 * 7 * 59",
+      "id": "c:2478",
+      "kind": "composite",
+      "offset": -59,
+      "side": "left",
+      "value": 2478
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "37 * 67",
+      "id": "c:2479",
+      "kind": "composite",
+      "offset": -58,
+      "side": "left",
+      "value": 2479
+    },
+    {
+      "divisor_count": 20,
+      "factorization": "2^4 * 5 * 31",
+      "id": "c:2480",
+      "kind": "composite",
+      "offset": -57,
+      "side": "left",
+      "value": 2480
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "3 * 827",
+      "id": "c:2481",
+      "kind": "composite",
+      "offset": -56,
+      "side": "left",
+      "value": 2481
+    },
+    {
+      "divisor_count": 8,
+      "factorization": "2 * 17 * 73",
+      "id": "c:2482",
+      "kind": "composite",
+      "offset": -55,
+      "side": "left",
+      "value": 2482
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "13 * 191",
+      "id": "c:2483",
+      "kind": "composite",
+      "offset": -54,
+      "side": "left",
+      "value": 2483
+    },
+    {
+      "divisor_count": 24,
+      "factorization": "2^2 * 3^3 * 23",
+      "id": "c:2484",
+      "kind": "composite",
+      "offset": -53,
+      "side": "left",
+      "value": 2484
+    },
+    {
+      "divisor_count": 8,
+      "factorization": "5 * 7 * 71",
+      "id": "c:2485",
+      "kind": "composite",
+      "offset": -52,
+      "side": "left",
+      "value": 2485
+    },
+    {
+      "divisor_count": 8,
+      "factorization": "2 * 11 * 113",
+      "id": "c:2486",
+      "kind": "composite",
+      "offset": -51,
+      "side": "left",
+      "value": 2486
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "3 * 829",
+      "id": "c:2487",
+      "kind": "composite",
+      "offset": -50,
+      "side": "left",
+      "value": 2487
+    },
+    {
+      "divisor_count": 8,
+      "factorization": "2^3 * 311",
+      "id": "c:2488",
+      "kind": "composite",
+      "offset": -49,
+      "side": "left",
+      "value": 2488
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "19 * 131",
+      "id": "c:2489",
+      "kind": "composite",
+      "offset": -48,
+      "side": "left",
+      "value": 2489
+    },
+    {
+      "divisor_count": 16,
+      "factorization": "2 * 3 * 5 * 83",
+      "id": "c:2490",
+      "kind": "composite",
+      "offset": -47,
+      "side": "left",
+      "value": 2490
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "47 * 53",
+      "id": "c:2491",
+      "kind": "composite",
+      "offset": -46,
+      "side": "left",
+      "value": 2491
+    },
+    {
+      "divisor_count": 12,
+      "factorization": "2^2 * 7 * 89",
+      "id": "c:2492",
+      "kind": "composite",
+      "offset": -45,
+      "side": "left",
+      "value": 2492
+    },
+    {
+      "divisor_count": 6,
+      "factorization": "3^2 * 277",
+      "id": "c:2493",
+      "kind": "composite",
+      "offset": -44,
+      "side": "left",
+      "value": 2493
+    },
+    {
+      "divisor_count": 8,
+      "factorization": "2 * 29 * 43",
+      "id": "c:2494",
+      "kind": "composite",
+      "offset": -43,
+      "side": "left",
+      "value": 2494
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "5 * 499",
+      "id": "c:2495",
+      "kind": "composite",
+      "offset": -42,
+      "side": "left",
+      "value": 2495
+    },
+    {
+      "divisor_count": 28,
+      "factorization": "2^6 * 3 * 13",
+      "id": "c:2496",
+      "kind": "composite",
+      "offset": -41,
+      "side": "left",
+      "value": 2496
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "11 * 227",
+      "id": "c:2497",
+      "kind": "composite",
+      "offset": -40,
+      "side": "left",
+      "value": 2497
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "2 * 1249",
+      "id": "c:2498",
+      "kind": "composite",
+      "offset": -39,
+      "side": "left",
+      "value": 2498
+    },
+    {
+      "divisor_count": 12,
+      "factorization": "3 * 7^2 * 17",
+      "id": "c:2499",
+      "kind": "composite",
+      "offset": -38,
+      "side": "left",
+      "value": 2499
+    },
+    {
+      "divisor_count": 15,
+      "factorization": "2^2 * 5^4",
+      "id": "c:2500",
+      "kind": "composite",
+      "offset": -37,
+      "side": "left",
+      "value": 2500
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "41 * 61",
+      "id": "c:2501",
+      "kind": "composite",
+      "offset": -36,
+      "side": "left",
+      "value": 2501
+    },
+    {
+      "divisor_count": 12,
+      "factorization": "2 * 3^2 * 139",
+      "id": "c:2502",
+      "kind": "composite",
+      "offset": -35,
+      "side": "left",
+      "value": 2502
+    },
+    {
+      "divisor_count": 8,
+      "factorization": "2^3 * 313",
+      "id": "c:2504",
+      "kind": "composite",
+      "offset": -33,
+      "side": "left",
+      "value": 2504
+    },
+    {
+      "divisor_count": 8,
+      "factorization": "3 * 5 * 167",
+      "id": "c:2505",
+      "kind": "composite",
+      "offset": -32,
+      "side": "left",
+      "value": 2505
+    },
+    {
+      "divisor_count": 8,
+      "factorization": "2 * 7 * 179",
+      "id": "c:2506",
+      "kind": "composite",
+      "offset": -31,
+      "side": "left",
+      "value": 2506
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "23 * 109",
+      "id": "c:2507",
+      "kind": "composite",
+      "offset": -30,
+      "side": "left",
+      "value": 2507
+    },
+    {
+      "divisor_count": 24,
+      "factorization": "2^2 * 3 * 11 * 19",
+      "id": "c:2508",
+      "kind": "composite",
+      "offset": -29,
+      "side": "left",
+      "value": 2508
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "13 * 193",
+      "id": "c:2509",
+      "kind": "composite",
+      "offset": -28,
+      "side": "left",
+      "value": 2509
+    },
+    {
+      "divisor_count": 8,
+      "factorization": "2 * 5 * 251",
+      "id": "c:2510",
+      "kind": "composite",
+      "offset": -27,
+      "side": "left",
+      "value": 2510
+    },
+    {
+      "divisor_count": 10,
+      "factorization": "3^4 * 31",
+      "id": "c:2511",
+      "kind": "composite",
+      "offset": -26,
+      "side": "left",
+      "value": 2511
+    },
+    {
+      "divisor_count": 10,
+      "factorization": "2^4 * 157",
+      "id": "c:2512",
+      "kind": "composite",
+      "offset": -25,
+      "side": "left",
+      "value": 2512
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "7 * 359",
+      "id": "c:2513",
+      "kind": "composite",
+      "offset": -24,
+      "side": "left",
+      "value": 2513
+    },
+    {
+      "divisor_count": 8,
+      "factorization": "2 * 3 * 419",
+      "id": "c:2514",
+      "kind": "composite",
+      "offset": -23,
+      "side": "left",
+      "value": 2514
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "5 * 503",
+      "id": "c:2515",
+      "kind": "composite",
+      "offset": -22,
+      "side": "left",
+      "value": 2515
+    },
+    {
+      "divisor_count": 12,
+      "factorization": "2^2 * 17 * 37",
+      "id": "c:2516",
+      "kind": "composite",
+      "offset": -21,
+      "side": "left",
+      "value": 2516
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "3 * 839",
+      "id": "c:2517",
+      "kind": "composite",
+      "offset": -20,
+      "side": "left",
+      "value": 2517
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "2 * 1259",
+      "id": "c:2518",
+      "kind": "composite",
+      "offset": -19,
+      "side": "left",
+      "value": 2518
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "11 * 229",
+      "id": "c:2519",
+      "kind": "composite",
+      "offset": -18,
+      "side": "left",
+      "value": 2519
+    },
+    {
+      "divisor_count": 48,
+      "factorization": "2^3 * 3^2 * 5 * 7",
+      "id": "c:2520",
+      "kind": "composite",
+      "offset": -17,
+      "side": "left",
+      "value": 2520
+    },
+    {
+      "divisor_count": 8,
+      "factorization": "2 * 13 * 97",
+      "id": "c:2522",
+      "kind": "composite",
+      "offset": -15,
+      "side": "left",
+      "value": 2522
+    },
+    {
+      "divisor_count": 6,
+      "factorization": "3 * 29^2",
+      "id": "c:2523",
+      "kind": "composite",
+      "offset": -14,
+      "side": "left",
+      "value": 2523
+    },
+    {
+      "divisor_count": 6,
+      "factorization": "2^2 * 631",
+      "id": "c:2524",
+      "kind": "composite",
+      "offset": -13,
+      "side": "left",
+      "value": 2524
+    },
+    {
+      "divisor_count": 6,
+      "factorization": "5^2 * 101",
+      "id": "c:2525",
+      "kind": "composite",
+      "offset": -12,
+      "side": "left",
+      "value": 2525
+    },
+    {
+      "divisor_count": 8,
+      "factorization": "2 * 3 * 421",
+      "id": "c:2526",
+      "kind": "composite",
+      "offset": -11,
+      "side": "left",
+      "value": 2526
+    },
+    {
+      "divisor_count": 6,
+      "factorization": "7 * 19^2",
+      "id": "c:2527",
+      "kind": "composite",
+      "offset": -10,
+      "side": "left",
+      "value": 2527
+    },
+    {
+      "divisor_count": 12,
+      "factorization": "2^5 * 79",
+      "id": "c:2528",
+      "kind": "composite",
+      "offset": -9,
+      "side": "left",
+      "value": 2528
+    },
+    {
+      "divisor_count": 6,
+      "factorization": "3^2 * 281",
+      "id": "c:2529",
+      "kind": "composite",
+      "offset": -8,
+      "side": "left",
+      "value": 2529
+    },
+    {
+      "divisor_count": 16,
+      "factorization": "2 * 5 * 11 * 23",
+      "id": "c:2530",
+      "kind": "composite",
+      "offset": -7,
+      "side": "left",
+      "value": 2530
+    },
+    {
+      "divisor_count": 12,
+      "factorization": "2^2 * 3 * 211",
+      "id": "c:2532",
+      "kind": "composite",
+      "offset": -5,
+      "side": "left",
+      "value": 2532
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "17 * 149",
+      "id": "c:2533",
+      "kind": "composite",
+      "offset": -4,
+      "side": "left",
+      "value": 2533
+    },
+    {
+      "divisor_count": 8,
+      "factorization": "2 * 7 * 181",
+      "id": "c:2534",
+      "kind": "composite",
+      "offset": -3,
+      "side": "left",
+      "value": 2534
+    },
+    {
+      "divisor_count": 12,
+      "factorization": "3 * 5 * 13^2",
+      "id": "c:2535",
+      "kind": "composite",
+      "offset": -2,
+      "side": "left",
+      "value": 2535
+    },
+    {
+      "divisor_count": 8,
+      "factorization": "2^3 * 317",
+      "id": "c:2536",
+      "kind": "composite",
+      "offset": -1,
+      "side": "left",
+      "value": 2536
+    },
+    {
+      "divisor_count": 16,
+      "factorization": "2 * 3^3 * 47",
+      "id": "c:2538",
+      "kind": "composite",
+      "offset": 1,
+      "side": "right",
+      "value": 2538
+    },
+    {
+      "divisor_count": 12,
+      "factorization": "2^2 * 5 * 127",
+      "id": "c:2540",
+      "kind": "composite",
+      "offset": 3,
+      "side": "right",
+      "value": 2540
+    },
+    {
+      "divisor_count": 12,
+      "factorization": "3 * 7 * 11^2",
+      "id": "c:2541",
+      "kind": "composite",
+      "offset": 4,
+      "side": "right",
+      "value": 2541
+    },
+    {
+      "divisor_count": 8,
+      "factorization": "2 * 31 * 41",
+      "id": "c:2542",
+      "kind": "composite",
+      "offset": 5,
+      "side": "right",
+      "value": 2542
+    },
+    {
+      "divisor_count": 20,
+      "factorization": "2^4 * 3 * 53",
+      "id": "c:2544",
+      "kind": "composite",
+      "offset": 7,
+      "side": "right",
+      "value": 2544
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "5 * 509",
+      "id": "c:2545",
+      "kind": "composite",
+      "offset": 8,
+      "side": "right",
+      "value": 2545
+    },
+    {
+      "divisor_count": 8,
+      "factorization": "2 * 19 * 67",
+      "id": "c:2546",
+      "kind": "composite",
+      "offset": 9,
+      "side": "right",
+      "value": 2546
+    },
+    {
+      "divisor_count": 6,
+      "factorization": "3^2 * 283",
+      "id": "c:2547",
+      "kind": "composite",
+      "offset": 10,
+      "side": "right",
+      "value": 2547
+    },
+    {
+      "divisor_count": 18,
+      "factorization": "2^2 * 7^2 * 13",
+      "id": "c:2548",
+      "kind": "composite",
+      "offset": 11,
+      "side": "right",
+      "value": 2548
+    },
+    {
+      "divisor_count": 24,
+      "factorization": "2 * 3 * 5^2 * 17",
+      "id": "c:2550",
+      "kind": "composite",
+      "offset": 13,
+      "side": "right",
+      "value": 2550
+    },
+    {
+      "divisor_count": 16,
+      "factorization": "2^3 * 11 * 29",
+      "id": "c:2552",
+      "kind": "composite",
+      "offset": 15,
+      "side": "right",
+      "value": 2552
+    },
+    {
+      "divisor_count": 8,
+      "factorization": "3 * 23 * 37",
+      "id": "c:2553",
+      "kind": "composite",
+      "offset": 16,
+      "side": "right",
+      "value": 2553
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "2 * 1277",
+      "id": "c:2554",
+      "kind": "composite",
+      "offset": 17,
+      "side": "right",
+      "value": 2554
+    },
+    {
+      "divisor_count": 8,
+      "factorization": "5 * 7 * 73",
+      "id": "c:2555",
+      "kind": "composite",
+      "offset": 18,
+      "side": "right",
+      "value": 2555
+    },
+    {
+      "divisor_count": 18,
+      "factorization": "2^2 * 3^2 * 71",
+      "id": "c:2556",
+      "kind": "composite",
+      "offset": 19,
+      "side": "right",
+      "value": 2556
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "2 * 1279",
+      "id": "c:2558",
+      "kind": "composite",
+      "offset": 21,
+      "side": "right",
+      "value": 2558
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "3 * 853",
+      "id": "c:2559",
+      "kind": "composite",
+      "offset": 22,
+      "side": "right",
+      "value": 2559
+    },
+    {
+      "divisor_count": 20,
+      "factorization": "2^9 * 5",
+      "id": "c:2560",
+      "kind": "composite",
+      "offset": 23,
+      "side": "right",
+      "value": 2560
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "13 * 197",
+      "id": "c:2561",
+      "kind": "composite",
+      "offset": 24,
+      "side": "right",
+      "value": 2561
+    },
+    {
+      "divisor_count": 16,
+      "factorization": "2 * 3 * 7 * 61",
+      "id": "c:2562",
+      "kind": "composite",
+      "offset": 25,
+      "side": "right",
+      "value": 2562
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "11 * 233",
+      "id": "c:2563",
+      "kind": "composite",
+      "offset": 26,
+      "side": "right",
+      "value": 2563
+    },
+    {
+      "divisor_count": 6,
+      "factorization": "2^2 * 641",
+      "id": "c:2564",
+      "kind": "composite",
+      "offset": 27,
+      "side": "right",
+      "value": 2564
+    },
+    {
+      "divisor_count": 16,
+      "factorization": "3^3 * 5 * 19",
+      "id": "c:2565",
+      "kind": "composite",
+      "offset": 28,
+      "side": "right",
+      "value": 2565
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "2 * 1283",
+      "id": "c:2566",
+      "kind": "composite",
+      "offset": 29,
+      "side": "right",
+      "value": 2566
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "17 * 151",
+      "id": "c:2567",
+      "kind": "composite",
+      "offset": 30,
+      "side": "right",
+      "value": 2567
+    },
+    {
+      "divisor_count": 16,
+      "factorization": "2^3 * 3 * 107",
+      "id": "c:2568",
+      "kind": "composite",
+      "offset": 31,
+      "side": "right",
+      "value": 2568
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "7 * 367",
+      "id": "c:2569",
+      "kind": "composite",
+      "offset": 32,
+      "side": "right",
+      "value": 2569
+    },
+    {
+      "divisor_count": 8,
+      "factorization": "2 * 5 * 257",
+      "id": "c:2570",
+      "kind": "composite",
+      "offset": 33,
+      "side": "right",
+      "value": 2570
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "3 * 857",
+      "id": "c:2571",
+      "kind": "composite",
+      "offset": 34,
+      "side": "right",
+      "value": 2571
+    },
+    {
+      "divisor_count": 6,
+      "factorization": "2^2 * 643",
+      "id": "c:2572",
+      "kind": "composite",
+      "offset": 35,
+      "side": "right",
+      "value": 2572
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "31 * 83",
+      "id": "c:2573",
+      "kind": "composite",
+      "offset": 36,
+      "side": "right",
+      "value": 2573
+    },
+    {
+      "divisor_count": 24,
+      "factorization": "2 * 3^2 * 11 * 13",
+      "id": "c:2574",
+      "kind": "composite",
+      "offset": 37,
+      "side": "right",
+      "value": 2574
+    },
+    {
+      "divisor_count": 6,
+      "factorization": "5^2 * 103",
+      "id": "c:2575",
+      "kind": "composite",
+      "offset": 38,
+      "side": "right",
+      "value": 2575
+    },
+    {
+      "divisor_count": 20,
+      "factorization": "2^4 * 7 * 23",
+      "id": "c:2576",
+      "kind": "composite",
+      "offset": 39,
+      "side": "right",
+      "value": 2576
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "3 * 859",
+      "id": "c:2577",
+      "kind": "composite",
+      "offset": 40,
+      "side": "right",
+      "value": 2577
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "2 * 1289",
+      "id": "c:2578",
+      "kind": "composite",
+      "offset": 41,
+      "side": "right",
+      "value": 2578
+    },
+    {
+      "divisor_count": 24,
+      "factorization": "2^2 * 3 * 5 * 43",
+      "id": "c:2580",
+      "kind": "composite",
+      "offset": 43,
+      "side": "right",
+      "value": 2580
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "29 * 89",
+      "id": "c:2581",
+      "kind": "composite",
+      "offset": 44,
+      "side": "right",
+      "value": 2581
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "2 * 1291",
+      "id": "c:2582",
+      "kind": "composite",
+      "offset": 45,
+      "side": "right",
+      "value": 2582
+    },
+    {
+      "divisor_count": 12,
+      "factorization": "3^2 * 7 * 41",
+      "id": "c:2583",
+      "kind": "composite",
+      "offset": 46,
+      "side": "right",
+      "value": 2583
+    },
+    {
+      "divisor_count": 16,
+      "factorization": "2^3 * 17 * 19",
+      "id": "c:2584",
+      "kind": "composite",
+      "offset": 47,
+      "side": "right",
+      "value": 2584
+    },
+    {
+      "divisor_count": 8,
+      "factorization": "5 * 11 * 47",
+      "id": "c:2585",
+      "kind": "composite",
+      "offset": 48,
+      "side": "right",
+      "value": 2585
+    },
+    {
+      "divisor_count": 8,
+      "factorization": "2 * 3 * 431",
+      "id": "c:2586",
+      "kind": "composite",
+      "offset": 49,
+      "side": "right",
+      "value": 2586
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "13 * 199",
+      "id": "c:2587",
+      "kind": "composite",
+      "offset": 50,
+      "side": "right",
+      "value": 2587
+    },
+    {
+      "divisor_count": 6,
+      "factorization": "2^2 * 647",
+      "id": "c:2588",
+      "kind": "composite",
+      "offset": 51,
+      "side": "right",
+      "value": 2588
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "3 * 863",
+      "id": "c:2589",
+      "kind": "composite",
+      "offset": 52,
+      "side": "right",
+      "value": 2589
+    },
+    {
+      "divisor_count": 16,
+      "factorization": "2 * 5 * 7 * 37",
+      "id": "c:2590",
+      "kind": "composite",
+      "offset": 53,
+      "side": "right",
+      "value": 2590
+    },
+    {
+      "divisor_count": 30,
+      "factorization": "2^5 * 3^4",
+      "id": "c:2592",
+      "kind": "composite",
+      "offset": 55,
+      "side": "right",
+      "value": 2592
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "2 * 1297",
+      "id": "c:2594",
+      "kind": "composite",
+      "offset": 57,
+      "side": "right",
+      "value": 2594
+    },
+    {
+      "divisor_count": 8,
+      "factorization": "3 * 5 * 173",
+      "id": "c:2595",
+      "kind": "composite",
+      "offset": 58,
+      "side": "right",
+      "value": 2595
+    },
+    {
+      "divisor_count": 12,
+      "factorization": "2^2 * 11 * 59",
+      "id": "c:2596",
+      "kind": "composite",
+      "offset": 59,
+      "side": "right",
+      "value": 2596
+    },
+    {
+      "divisor_count": 6,
+      "factorization": "7^2 * 53",
+      "id": "c:2597",
+      "kind": "composite",
+      "offset": 60,
+      "side": "right",
+      "value": 2597
+    },
+    {
+      "divisor_count": 8,
+      "factorization": "2 * 3 * 433",
+      "id": "c:2598",
+      "kind": "composite",
+      "offset": 61,
+      "side": "right",
+      "value": 2598
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "23 * 113",
+      "id": "c:2599",
+      "kind": "composite",
+      "offset": 62,
+      "side": "right",
+      "value": 2599
+    },
+    {
+      "divisor_count": 24,
+      "factorization": "2^3 * 5^2 * 13",
+      "id": "c:2600",
+      "kind": "composite",
+      "offset": 63,
+      "side": "right",
+      "value": 2600
+    },
+    {
+      "divisor_count": 9,
+      "factorization": "3^2 * 17^2",
+      "id": "c:2601",
+      "kind": "composite",
+      "offset": 64,
+      "side": "right",
+      "value": 2601
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "2 * 1301",
+      "id": "c:2602",
+      "kind": "composite",
+      "offset": 65,
+      "side": "right",
+      "value": 2602
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "19 * 137",
+      "id": "c:2603",
+      "kind": "composite",
+      "offset": 66,
+      "side": "right",
+      "value": 2603
+    },
+    {
+      "divisor_count": 24,
+      "factorization": "2^2 * 3 * 7 * 31",
+      "id": "c:2604",
+      "kind": "composite",
+      "offset": 67,
+      "side": "right",
+      "value": 2604
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "5 * 521",
+      "id": "c:2605",
+      "kind": "composite",
+      "offset": 68,
+      "side": "right",
+      "value": 2605
+    },
+    {
+      "divisor_count": 4,
+      "factorization": "2 * 1303",
+      "id": "c:2606",
+      "kind": "composite",
+      "offset": 69,
+      "side": "right",
+      "value": 2606
+    },
+    {
+      "divisor_count": 8,
+      "factorization": "3 * 11 * 79",
+      "id": "c:2607",
+      "kind": "composite",
+      "offset": 70,
+      "side": "right",
+      "value": 2607
+    },
+    {
+      "degree": 70,
+      "id": "f:2",
+      "kind": "factor",
+      "shared_intersection": true,
+      "value": 2
+    },
+    {
+      "degree": 47,
+      "id": "f:3",
+      "kind": "factor",
+      "shared_intersection": true,
+      "value": 3
+    },
+    {
+      "degree": 28,
+      "id": "f:5",
+      "kind": "factor",
+      "shared_intersection": true,
+      "value": 5
+    },
+    {
+      "degree": 20,
+      "id": "f:7",
+      "kind": "factor",
+      "shared_intersection": true,
+      "value": 7
+    },
+    {
+      "degree": 13,
+      "id": "f:11",
+      "kind": "factor",
+      "shared_intersection": true,
+      "value": 11
+    },
+    {
+      "degree": 11,
+      "id": "f:13",
+      "kind": "factor",
+      "shared_intersection": true,
+      "value": 13
+    },
+    {
+      "degree": 8,
+      "id": "f:17",
+      "kind": "factor",
+      "shared_intersection": true,
+      "value": 17
+    },
+    {
+      "degree": 8,
+      "id": "f:19",
+      "kind": "factor",
+      "shared_intersection": true,
+      "value": 19
+    },
+    {
+      "degree": 6,
+      "id": "f:23",
+      "kind": "factor",
+      "shared_intersection": true,
+      "value": 23
+    },
+    {
+      "degree": 4,
+      "id": "f:29",
+      "kind": "factor",
+      "shared_intersection": true,
+      "value": 29
+    },
+    {
+      "degree": 5,
+      "id": "f:31",
+      "kind": "factor",
+      "shared_intersection": true,
+      "value": 31
+    },
+    {
+      "degree": 4,
+      "id": "f:37",
+      "kind": "factor",
+      "shared_intersection": true,
+      "value": 37
+    },
+    {
+      "degree": 3,
+      "id": "f:41",
+      "kind": "factor",
+      "shared_intersection": true,
+      "value": 41
+    },
+    {
+      "degree": 2,
+      "id": "f:43",
+      "kind": "audit_factor",
+      "shared_intersection": true,
+      "value": 43
+    },
+    {
+      "degree": 3,
+      "id": "f:47",
+      "kind": "factor",
+      "shared_intersection": true,
+      "value": 47
+    },
+    {
+      "degree": 3,
+      "id": "f:53",
+      "kind": "factor",
+      "shared_intersection": true,
+      "value": 53
+    },
+    {
+      "degree": 2,
+      "id": "f:59",
+      "kind": "audit_factor",
+      "shared_intersection": true,
+      "value": 59
+    },
+    {
+      "degree": 2,
+      "id": "f:61",
+      "kind": "factor",
+      "shared_intersection": true,
+      "value": 61
+    },
+    {
+      "degree": 2,
+      "id": "f:67",
+      "kind": "factor",
+      "shared_intersection": true,
+      "value": 67
+    },
+    {
+      "degree": 2,
+      "id": "f:71",
+      "kind": "factor",
+      "shared_intersection": true,
+      "value": 71
+    },
+    {
+      "degree": 2,
+      "id": "f:73",
+      "kind": "factor",
+      "shared_intersection": true,
+      "value": 73
+    },
+    {
+      "degree": 2,
+      "id": "f:79",
+      "kind": "factor",
+      "shared_intersection": true,
+      "value": 79
+    },
+    {
+      "degree": 2,
+      "id": "f:83",
+      "kind": "factor",
+      "shared_intersection": true,
+      "value": 83
+    },
+    {
+      "degree": 2,
+      "id": "f:89",
+      "kind": "factor",
+      "shared_intersection": true,
+      "value": 89
+    },
+    {
+      "degree": 1,
+      "id": "f:97",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 97
+    },
+    {
+      "degree": 1,
+      "id": "f:101",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 101
+    },
+    {
+      "degree": 2,
+      "id": "f:103",
+      "kind": "factor",
+      "shared_intersection": true,
+      "value": 103
+    },
+    {
+      "degree": 1,
+      "id": "f:107",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 107
+    },
+    {
+      "degree": 1,
+      "id": "f:109",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 109
+    },
+    {
+      "degree": 2,
+      "id": "f:113",
+      "kind": "factor",
+      "shared_intersection": true,
+      "value": 113
+    },
+    {
+      "degree": 1,
+      "id": "f:127",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 127
+    },
+    {
+      "degree": 1,
+      "id": "f:131",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 131
+    },
+    {
+      "degree": 1,
+      "id": "f:137",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 137
+    },
+    {
+      "degree": 1,
+      "id": "f:139",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 139
+    },
+    {
+      "degree": 1,
+      "id": "f:149",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 149
+    },
+    {
+      "degree": 1,
+      "id": "f:151",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 151
+    },
+    {
+      "degree": 1,
+      "id": "f:157",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 157
+    },
+    {
+      "degree": 1,
+      "id": "f:167",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 167
+    },
+    {
+      "degree": 1,
+      "id": "f:173",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 173
+    },
+    {
+      "degree": 1,
+      "id": "f:179",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 179
+    },
+    {
+      "degree": 1,
+      "id": "f:181",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 181
+    },
+    {
+      "degree": 1,
+      "id": "f:191",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 191
+    },
+    {
+      "degree": 1,
+      "id": "f:193",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 193
+    },
+    {
+      "degree": 1,
+      "id": "f:197",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 197
+    },
+    {
+      "degree": 1,
+      "id": "f:199",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 199
+    },
+    {
+      "degree": 1,
+      "id": "f:211",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 211
+    },
+    {
+      "degree": 1,
+      "id": "f:227",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 227
+    },
+    {
+      "degree": 1,
+      "id": "f:229",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 229
+    },
+    {
+      "degree": 1,
+      "id": "f:233",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 233
+    },
+    {
+      "degree": 1,
+      "id": "f:251",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 251
+    },
+    {
+      "degree": 1,
+      "id": "f:257",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 257
+    },
+    {
+      "degree": 1,
+      "id": "f:277",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 277
+    },
+    {
+      "degree": 1,
+      "id": "f:281",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 281
+    },
+    {
+      "degree": 1,
+      "id": "f:283",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 283
+    },
+    {
+      "degree": 1,
+      "id": "f:311",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 311
+    },
+    {
+      "degree": 1,
+      "id": "f:313",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 313
+    },
+    {
+      "degree": 1,
+      "id": "f:317",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 317
+    },
+    {
+      "degree": 1,
+      "id": "f:353",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 353
+    },
+    {
+      "degree": 1,
+      "id": "f:359",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 359
+    },
+    {
+      "degree": 1,
+      "id": "f:367",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 367
+    },
+    {
+      "degree": 1,
+      "id": "f:419",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 419
+    },
+    {
+      "degree": 1,
+      "id": "f:421",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 421
+    },
+    {
+      "degree": 1,
+      "id": "f:431",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 431
+    },
+    {
+      "degree": 1,
+      "id": "f:433",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 433
+    },
+    {
+      "degree": 1,
+      "id": "f:499",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 499
+    },
+    {
+      "degree": 1,
+      "id": "f:503",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 503
+    },
+    {
+      "degree": 1,
+      "id": "f:509",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 509
+    },
+    {
+      "degree": 1,
+      "id": "f:521",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 521
+    },
+    {
+      "degree": 1,
+      "id": "f:617",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 617
+    },
+    {
+      "degree": 1,
+      "id": "f:619",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 619
+    },
+    {
+      "degree": 1,
+      "id": "f:631",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 631
+    },
+    {
+      "degree": 1,
+      "id": "f:641",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 641
+    },
+    {
+      "degree": 1,
+      "id": "f:643",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 643
+    },
+    {
+      "degree": 1,
+      "id": "f:647",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 647
+    },
+    {
+      "degree": 1,
+      "id": "f:823",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 823
+    },
+    {
+      "degree": 1,
+      "id": "f:827",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 827
+    },
+    {
+      "degree": 1,
+      "id": "f:829",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 829
+    },
+    {
+      "degree": 1,
+      "id": "f:839",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 839
+    },
+    {
+      "degree": 1,
+      "id": "f:853",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 853
+    },
+    {
+      "degree": 1,
+      "id": "f:857",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 857
+    },
+    {
+      "degree": 1,
+      "id": "f:859",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 859
+    },
+    {
+      "degree": 1,
+      "id": "f:863",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 863
+    },
+    {
+      "degree": 1,
+      "id": "f:1237",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 1237
+    },
+    {
+      "degree": 1,
+      "id": "f:1249",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 1249
+    },
+    {
+      "degree": 1,
+      "id": "f:1259",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 1259
+    },
+    {
+      "degree": 1,
+      "id": "f:1277",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 1277
+    },
+    {
+      "degree": 1,
+      "id": "f:1279",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 1279
+    },
+    {
+      "degree": 1,
+      "id": "f:1283",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 1283
+    },
+    {
+      "degree": 1,
+      "id": "f:1289",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 1289
+    },
+    {
+      "degree": 1,
+      "id": "f:1291",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 1291
+    },
+    {
+      "degree": 1,
+      "id": "f:1297",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 1297
+    },
+    {
+      "degree": 1,
+      "id": "f:1301",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 1301
+    },
+    {
+      "degree": 1,
+      "id": "f:1303",
+      "kind": "factor",
+      "shared_intersection": false,
+      "value": 1303
+    }
+  ],
+  "p": 43,
+  "p_gap": {
+    "factor": 43,
+    "next": 47,
+    "previous": 41
+  },
+  "q": 59,
+  "q_gap": {
+    "factor": 59,
+    "next": 61,
+    "previous": 53
+  },
+  "radius": 70,
+  "shared_factor_count": 26,
+  "shared_factors": [
+    2,
+    3,
+    5,
+    7,
+    11,
+    13,
+    17,
+    19,
+    23,
+    29,
+    31,
+    37,
+    41,
+    43,
+    47,
+    53,
+    59,
+    61,
+    67,
+    71,
+    73,
+    79,
+    83,
+    89,
+    103,
+    113
+  ]
+}

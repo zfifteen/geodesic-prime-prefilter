@@ -1,0 +1,1322 @@
+[
+  {
+    "name": "toy_23x31",
+    "policy": "trial_2_stop_1",
+    "N": 713,
+    "p": 23,
+    "q": 31,
+    "radius": 180,
+    "classification": "insufficient_thread_diversity",
+    "eligible_for_scoring": false,
+    "distinct_public_threads": 1,
+    "public_threads": [
+      2
+    ],
+    "one_factor_success": false,
+    "two_factor_success": false,
+    "top18_direct_hits": 14,
+    "best_hidden_rank": 1,
+    "best_hidden_offset": -23,
+    "best_hidden_kind": "p_thread",
+    "recovered_factor": null,
+    "row_count_sparse": 180,
+    "row_count_public": 166,
+    "direct_row_count": 24,
+    "supported_direct_count": 14,
+    "cost": {
+      "touched": 360,
+      "trials": 716,
+      "zero_yield_inspections": 180,
+      "factors_extracted": 180
+    },
+    "seconds": 0.0005348329432308674,
+    "direct_rows": [
+      {
+        "offset": -161,
+        "kind": "p_thread",
+        "value": 552,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": -155,
+        "kind": "q_thread",
+        "value": 558,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": -138,
+        "kind": "p_thread",
+        "value": 575,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": -124,
+        "kind": "q_thread",
+        "value": 589,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": -115,
+        "kind": "p_thread",
+        "value": 598,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": -93,
+        "kind": "q_thread",
+        "value": 620,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": -92,
+        "kind": "p_thread",
+        "value": 621,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": -69,
+        "kind": "p_thread",
+        "value": 644,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": -62,
+        "kind": "q_thread",
+        "value": 651,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": -46,
+        "kind": "p_thread",
+        "value": 667,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": -31,
+        "kind": "q_thread",
+        "value": 682,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": -23,
+        "kind": "p_thread",
+        "value": 690,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": 23,
+        "kind": "p_thread",
+        "value": 736,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": 31,
+        "kind": "q_thread",
+        "value": 744,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": 46,
+        "kind": "p_thread",
+        "value": 759,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": 62,
+        "kind": "q_thread",
+        "value": 775,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": 69,
+        "kind": "p_thread",
+        "value": 782,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": 92,
+        "kind": "p_thread",
+        "value": 805,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": 93,
+        "kind": "q_thread",
+        "value": 806,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": 115,
+        "kind": "p_thread",
+        "value": 828,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": 124,
+        "kind": "q_thread",
+        "value": 837,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": 138,
+        "kind": "p_thread",
+        "value": 851,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": 155,
+        "kind": "q_thread",
+        "value": 868,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": 161,
+        "kind": "p_thread",
+        "value": 874,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      }
+    ],
+    "top_holes": [
+      {
+        "case": "toy_23x31",
+        "policy": "trial_2_stop_1",
+        "offset": -23,
+        "value": 690,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "p_thread",
+        "audit_factorization": "2"
+      },
+      {
+        "case": "toy_23x31",
+        "policy": "trial_2_stop_1",
+        "offset": 23,
+        "value": 736,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "p_thread",
+        "audit_factorization": "2^5"
+      },
+      {
+        "case": "toy_23x31",
+        "policy": "trial_2_stop_1",
+        "offset": -31,
+        "value": 682,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "q_thread",
+        "audit_factorization": "2"
+      },
+      {
+        "case": "toy_23x31",
+        "policy": "trial_2_stop_1",
+        "offset": 31,
+        "value": 744,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "q_thread",
+        "audit_factorization": "2^3"
+      },
+      {
+        "case": "toy_23x31",
+        "policy": "trial_2_stop_1",
+        "offset": -69,
+        "value": 644,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "p_thread",
+        "audit_factorization": "2^2"
+      },
+      {
+        "case": "toy_23x31",
+        "policy": "trial_2_stop_1",
+        "offset": 69,
+        "value": 782,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "p_thread",
+        "audit_factorization": "2"
+      },
+      {
+        "case": "toy_23x31",
+        "policy": "trial_2_stop_1",
+        "offset": -93,
+        "value": 620,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "q_thread",
+        "audit_factorization": "2^2"
+      },
+      {
+        "case": "toy_23x31",
+        "policy": "trial_2_stop_1",
+        "offset": 93,
+        "value": 806,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "q_thread",
+        "audit_factorization": "2"
+      },
+      {
+        "case": "toy_23x31",
+        "policy": "trial_2_stop_1",
+        "offset": -115,
+        "value": 598,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "p_thread",
+        "audit_factorization": "2"
+      },
+      {
+        "case": "toy_23x31",
+        "policy": "trial_2_stop_1",
+        "offset": 115,
+        "value": 828,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "p_thread",
+        "audit_factorization": "2^2"
+      },
+      {
+        "case": "toy_23x31",
+        "policy": "trial_2_stop_1",
+        "offset": -155,
+        "value": 558,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "q_thread",
+        "audit_factorization": "2"
+      },
+      {
+        "case": "toy_23x31",
+        "policy": "trial_2_stop_1",
+        "offset": 155,
+        "value": 868,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "q_thread",
+        "audit_factorization": "2^2"
+      },
+      {
+        "case": "toy_23x31",
+        "policy": "trial_2_stop_1",
+        "offset": -161,
+        "value": 552,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "p_thread",
+        "audit_factorization": "2^3"
+      },
+      {
+        "case": "toy_23x31",
+        "policy": "trial_2_stop_1",
+        "offset": 161,
+        "value": 874,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "p_thread",
+        "audit_factorization": "2"
+      }
+    ]
+  },
+  {
+    "name": "toy_43x59",
+    "policy": "trial_2_stop_1",
+    "N": 2537,
+    "p": 43,
+    "q": 59,
+    "radius": 260,
+    "classification": "insufficient_thread_diversity",
+    "eligible_for_scoring": false,
+    "distinct_public_threads": 1,
+    "public_threads": [
+      2
+    ],
+    "one_factor_success": false,
+    "two_factor_success": false,
+    "top18_direct_hits": 10,
+    "best_hidden_rank": 1,
+    "best_hidden_offset": -43,
+    "best_hidden_kind": "p_thread",
+    "recovered_factor": null,
+    "row_count_sparse": 260,
+    "row_count_public": 250,
+    "direct_row_count": 20,
+    "supported_direct_count": 10,
+    "cost": {
+      "touched": 520,
+      "trials": 1038,
+      "zero_yield_inspections": 260,
+      "factors_extracted": 260
+    },
+    "seconds": 0.0004752080421894789,
+    "direct_rows": [
+      {
+        "offset": -258,
+        "kind": "p_thread",
+        "value": 2279,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": -236,
+        "kind": "q_thread",
+        "value": 2301,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": -215,
+        "kind": "p_thread",
+        "value": 2322,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": -177,
+        "kind": "q_thread",
+        "value": 2360,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": -172,
+        "kind": "p_thread",
+        "value": 2365,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": -129,
+        "kind": "p_thread",
+        "value": 2408,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": -118,
+        "kind": "q_thread",
+        "value": 2419,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": -86,
+        "kind": "p_thread",
+        "value": 2451,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": -59,
+        "kind": "q_thread",
+        "value": 2478,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": -43,
+        "kind": "p_thread",
+        "value": 2494,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": 43,
+        "kind": "p_thread",
+        "value": 2580,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": 59,
+        "kind": "q_thread",
+        "value": 2596,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": 86,
+        "kind": "p_thread",
+        "value": 2623,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": 118,
+        "kind": "q_thread",
+        "value": 2655,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": 129,
+        "kind": "p_thread",
+        "value": 2666,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": 172,
+        "kind": "p_thread",
+        "value": 2709,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": 177,
+        "kind": "q_thread",
+        "value": 2714,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": 215,
+        "kind": "p_thread",
+        "value": 2752,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": 236,
+        "kind": "q_thread",
+        "value": 2773,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": 258,
+        "kind": "p_thread",
+        "value": 2795,
+        "support": 0,
+        "supporting_factors": []
+      }
+    ],
+    "top_holes": [
+      {
+        "case": "toy_43x59",
+        "policy": "trial_2_stop_1",
+        "offset": -43,
+        "value": 2494,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "p_thread",
+        "audit_factorization": "2"
+      },
+      {
+        "case": "toy_43x59",
+        "policy": "trial_2_stop_1",
+        "offset": 43,
+        "value": 2580,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "p_thread",
+        "audit_factorization": "2^2"
+      },
+      {
+        "case": "toy_43x59",
+        "policy": "trial_2_stop_1",
+        "offset": -59,
+        "value": 2478,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "q_thread",
+        "audit_factorization": "2"
+      },
+      {
+        "case": "toy_43x59",
+        "policy": "trial_2_stop_1",
+        "offset": 59,
+        "value": 2596,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "q_thread",
+        "audit_factorization": "2^2"
+      },
+      {
+        "case": "toy_43x59",
+        "policy": "trial_2_stop_1",
+        "offset": -129,
+        "value": 2408,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "p_thread",
+        "audit_factorization": "2^3"
+      },
+      {
+        "case": "toy_43x59",
+        "policy": "trial_2_stop_1",
+        "offset": 129,
+        "value": 2666,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "p_thread",
+        "audit_factorization": "2"
+      },
+      {
+        "case": "toy_43x59",
+        "policy": "trial_2_stop_1",
+        "offset": -177,
+        "value": 2360,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "q_thread",
+        "audit_factorization": "2^3"
+      },
+      {
+        "case": "toy_43x59",
+        "policy": "trial_2_stop_1",
+        "offset": 177,
+        "value": 2714,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "q_thread",
+        "audit_factorization": "2"
+      },
+      {
+        "case": "toy_43x59",
+        "policy": "trial_2_stop_1",
+        "offset": -215,
+        "value": 2322,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "p_thread",
+        "audit_factorization": "2"
+      },
+      {
+        "case": "toy_43x59",
+        "policy": "trial_2_stop_1",
+        "offset": 215,
+        "value": 2752,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "p_thread",
+        "audit_factorization": "2^6"
+      }
+    ]
+  },
+  {
+    "name": "toy_61x83",
+    "policy": "trial_2_stop_1",
+    "N": 5063,
+    "p": 61,
+    "q": 83,
+    "radius": 360,
+    "classification": "insufficient_thread_diversity",
+    "eligible_for_scoring": false,
+    "distinct_public_threads": 1,
+    "public_threads": [
+      2
+    ],
+    "one_factor_success": false,
+    "two_factor_success": false,
+    "top18_direct_hits": 10,
+    "best_hidden_rank": 1,
+    "best_hidden_offset": -61,
+    "best_hidden_kind": "p_thread",
+    "recovered_factor": null,
+    "row_count_sparse": 360,
+    "row_count_public": 350,
+    "direct_row_count": 18,
+    "supported_direct_count": 10,
+    "cost": {
+      "touched": 720,
+      "trials": 1440,
+      "zero_yield_inspections": 360,
+      "factors_extracted": 360
+    },
+    "seconds": 0.0006244999822229147,
+    "direct_rows": [
+      {
+        "offset": -332,
+        "kind": "q_thread",
+        "value": 4731,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": -305,
+        "kind": "p_thread",
+        "value": 4758,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": -249,
+        "kind": "q_thread",
+        "value": 4814,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": -244,
+        "kind": "p_thread",
+        "value": 4819,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": -183,
+        "kind": "p_thread",
+        "value": 4880,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": -166,
+        "kind": "q_thread",
+        "value": 4897,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": -122,
+        "kind": "p_thread",
+        "value": 4941,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": -83,
+        "kind": "q_thread",
+        "value": 4980,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": -61,
+        "kind": "p_thread",
+        "value": 5002,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": 61,
+        "kind": "p_thread",
+        "value": 5124,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": 83,
+        "kind": "q_thread",
+        "value": 5146,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": 122,
+        "kind": "p_thread",
+        "value": 5185,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": 166,
+        "kind": "q_thread",
+        "value": 5229,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": 183,
+        "kind": "p_thread",
+        "value": 5246,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": 244,
+        "kind": "p_thread",
+        "value": 5307,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": 249,
+        "kind": "q_thread",
+        "value": 5312,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": 305,
+        "kind": "p_thread",
+        "value": 5368,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": 332,
+        "kind": "q_thread",
+        "value": 5395,
+        "support": 0,
+        "supporting_factors": []
+      }
+    ],
+    "top_holes": [
+      {
+        "case": "toy_61x83",
+        "policy": "trial_2_stop_1",
+        "offset": -61,
+        "value": 5002,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "p_thread",
+        "audit_factorization": "2"
+      },
+      {
+        "case": "toy_61x83",
+        "policy": "trial_2_stop_1",
+        "offset": 61,
+        "value": 5124,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "p_thread",
+        "audit_factorization": "2^2"
+      },
+      {
+        "case": "toy_61x83",
+        "policy": "trial_2_stop_1",
+        "offset": -83,
+        "value": 4980,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "q_thread",
+        "audit_factorization": "2^2"
+      },
+      {
+        "case": "toy_61x83",
+        "policy": "trial_2_stop_1",
+        "offset": 83,
+        "value": 5146,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "q_thread",
+        "audit_factorization": "2"
+      },
+      {
+        "case": "toy_61x83",
+        "policy": "trial_2_stop_1",
+        "offset": -183,
+        "value": 4880,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "p_thread",
+        "audit_factorization": "2^4"
+      },
+      {
+        "case": "toy_61x83",
+        "policy": "trial_2_stop_1",
+        "offset": 183,
+        "value": 5246,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "p_thread",
+        "audit_factorization": "2"
+      },
+      {
+        "case": "toy_61x83",
+        "policy": "trial_2_stop_1",
+        "offset": -249,
+        "value": 4814,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "q_thread",
+        "audit_factorization": "2"
+      },
+      {
+        "case": "toy_61x83",
+        "policy": "trial_2_stop_1",
+        "offset": 249,
+        "value": 5312,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "q_thread",
+        "audit_factorization": "2^6"
+      },
+      {
+        "case": "toy_61x83",
+        "policy": "trial_2_stop_1",
+        "offset": -305,
+        "value": 4758,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "p_thread",
+        "audit_factorization": "2"
+      },
+      {
+        "case": "toy_61x83",
+        "policy": "trial_2_stop_1",
+        "offset": 305,
+        "value": 5368,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "p_thread",
+        "audit_factorization": "2^3"
+      }
+    ]
+  },
+  {
+    "name": "toy_89x113",
+    "policy": "trial_2_stop_1",
+    "N": 10057,
+    "p": 89,
+    "q": 113,
+    "radius": 520,
+    "classification": "insufficient_thread_diversity",
+    "eligible_for_scoring": false,
+    "distinct_public_threads": 1,
+    "public_threads": [
+      2
+    ],
+    "one_factor_success": false,
+    "two_factor_success": false,
+    "top18_direct_hits": 10,
+    "best_hidden_rank": 1,
+    "best_hidden_offset": -89,
+    "best_hidden_kind": "p_thread",
+    "recovered_factor": null,
+    "row_count_sparse": 520,
+    "row_count_public": 510,
+    "direct_row_count": 18,
+    "supported_direct_count": 10,
+    "cost": {
+      "touched": 1040,
+      "trials": 2079,
+      "zero_yield_inspections": 520,
+      "factors_extracted": 520
+    },
+    "seconds": 0.0008951250929385424,
+    "direct_rows": [
+      {
+        "offset": -452,
+        "kind": "q_thread",
+        "value": 9605,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": -445,
+        "kind": "p_thread",
+        "value": 9612,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": -356,
+        "kind": "p_thread",
+        "value": 9701,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": -339,
+        "kind": "q_thread",
+        "value": 9718,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": -267,
+        "kind": "p_thread",
+        "value": 9790,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": -226,
+        "kind": "q_thread",
+        "value": 9831,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": -178,
+        "kind": "p_thread",
+        "value": 9879,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": -113,
+        "kind": "q_thread",
+        "value": 9944,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": -89,
+        "kind": "p_thread",
+        "value": 9968,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": 89,
+        "kind": "p_thread",
+        "value": 10146,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": 113,
+        "kind": "q_thread",
+        "value": 10170,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": 178,
+        "kind": "p_thread",
+        "value": 10235,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": 226,
+        "kind": "q_thread",
+        "value": 10283,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": 267,
+        "kind": "p_thread",
+        "value": 10324,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": 339,
+        "kind": "q_thread",
+        "value": 10396,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": 356,
+        "kind": "p_thread",
+        "value": 10413,
+        "support": 0,
+        "supporting_factors": []
+      },
+      {
+        "offset": 445,
+        "kind": "p_thread",
+        "value": 10502,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ]
+      },
+      {
+        "offset": 452,
+        "kind": "q_thread",
+        "value": 10509,
+        "support": 0,
+        "supporting_factors": []
+      }
+    ],
+    "top_holes": [
+      {
+        "case": "toy_89x113",
+        "policy": "trial_2_stop_1",
+        "offset": -89,
+        "value": 9968,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "p_thread",
+        "audit_factorization": "2^4"
+      },
+      {
+        "case": "toy_89x113",
+        "policy": "trial_2_stop_1",
+        "offset": 89,
+        "value": 10146,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "p_thread",
+        "audit_factorization": "2"
+      },
+      {
+        "case": "toy_89x113",
+        "policy": "trial_2_stop_1",
+        "offset": -113,
+        "value": 9944,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "q_thread",
+        "audit_factorization": "2^3"
+      },
+      {
+        "case": "toy_89x113",
+        "policy": "trial_2_stop_1",
+        "offset": 113,
+        "value": 10170,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "q_thread",
+        "audit_factorization": "2"
+      },
+      {
+        "case": "toy_89x113",
+        "policy": "trial_2_stop_1",
+        "offset": -267,
+        "value": 9790,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "p_thread",
+        "audit_factorization": "2"
+      },
+      {
+        "case": "toy_89x113",
+        "policy": "trial_2_stop_1",
+        "offset": 267,
+        "value": 10324,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "p_thread",
+        "audit_factorization": "2^2"
+      },
+      {
+        "case": "toy_89x113",
+        "policy": "trial_2_stop_1",
+        "offset": -339,
+        "value": 9718,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "q_thread",
+        "audit_factorization": "2"
+      },
+      {
+        "case": "toy_89x113",
+        "policy": "trial_2_stop_1",
+        "offset": 339,
+        "value": 10396,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "q_thread",
+        "audit_factorization": "2^2"
+      },
+      {
+        "case": "toy_89x113",
+        "policy": "trial_2_stop_1",
+        "offset": -445,
+        "value": 9612,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "p_thread",
+        "audit_factorization": "2^2"
+      },
+      {
+        "case": "toy_89x113",
+        "policy": "trial_2_stop_1",
+        "offset": 445,
+        "value": 10502,
+        "support": 1,
+        "supporting_factors": [
+          2
+        ],
+        "audit_kind": "p_thread",
+        "audit_factorization": "2"
+      }
+    ]
+  }
+]

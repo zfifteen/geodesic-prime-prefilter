@@ -1,0 +1,4545 @@
+[
+  {
+    "N": 713,
+    "N_bits": 10,
+    "attempts": [
+      {
+        "R": 256,
+        "cost": {
+          "elapsed_seconds": 0.000327,
+          "generator_steps": 529,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 376
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 2,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 376
+          },
+          "-q": {
+            "found": true,
+            "rank": 165,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 376
+          },
+          "p": {
+            "found": true,
+            "rank": 158,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 376
+          },
+          "q": {
+            "found": true,
+            "rank": 32,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 376
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 2,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "-p"
+          },
+          {
+            "found": true,
+            "rank": 32,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "which": "q"
+          }
+        ],
+        "nominated_count": 376,
+        "target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 2,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": true,
+            "rank": 32,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ]
+          }
+        }
+      },
+      {
+        "R": 1024,
+        "cost": {
+          "elapsed_seconds": 0.000751,
+          "generator_steps": 2117,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 1272
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 2,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 1272
+          },
+          "-q": {
+            "found": true,
+            "rank": 492,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 1272
+          },
+          "p": {
+            "found": true,
+            "rank": 485,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 1272
+          },
+          "q": {
+            "found": true,
+            "rank": 72,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 1272
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 2,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "-p"
+          },
+          {
+            "found": true,
+            "rank": 72,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "which": "q"
+          }
+        ],
+        "nominated_count": 1272,
+        "target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 2,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": true,
+            "rank": 72,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ]
+          }
+        }
+      },
+      {
+        "R": 4096,
+        "cost": {
+          "elapsed_seconds": 0.003257,
+          "generator_steps": 8465,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 3525
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 2,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 3525
+          },
+          "-q": {
+            "found": true,
+            "rank": 1310,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 3525
+          },
+          "p": {
+            "found": true,
+            "rank": 1303,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 3525
+          },
+          "q": {
+            "found": true,
+            "rank": 175,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 3525
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 2,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "-p"
+          }
+        ],
+        "nominated_count": 3525,
+        "target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 2,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 16384,
+        "cost": {
+          "elapsed_seconds": 0.008745,
+          "generator_steps": 33861,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 12536
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 2,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 12536
+          },
+          "-q": {
+            "found": true,
+            "rank": 4588,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 12536
+          },
+          "p": {
+            "found": true,
+            "rank": 4581,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 12536
+          },
+          "q": {
+            "found": true,
+            "rank": 584,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 12536
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 2,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "-p"
+          }
+        ],
+        "nominated_count": 12536,
+        "target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 2,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 65536,
+        "cost": {
+          "elapsed_seconds": 0.03722,
+          "generator_steps": 135441,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 48581
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 2,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 48581
+          },
+          "-q": {
+            "found": true,
+            "rank": 17694,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 48581
+          },
+          "p": {
+            "found": true,
+            "rank": 17687,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 48581
+          },
+          "q": {
+            "found": true,
+            "rank": 2223,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 48581
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 2,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "-p"
+          }
+        ],
+        "nominated_count": 48581,
+        "target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 2,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 262144,
+        "cost": {
+          "elapsed_seconds": 0.166555,
+          "generator_steps": 541765,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 192760
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 2,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 192760
+          },
+          "-q": {
+            "found": true,
+            "rank": 70124,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 192760
+          },
+          "p": {
+            "found": true,
+            "rank": 70117,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 192760
+          },
+          "q": {
+            "found": true,
+            "rank": 8776,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 192760
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 2,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "-p"
+          }
+        ],
+        "nominated_count": 192760,
+        "target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 2,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 1048576,
+        "cost": {
+          "elapsed_seconds": 0.777903,
+          "generator_steps": 2167057,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 769477
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 2,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 769477
+          },
+          "-q": {
+            "found": true,
+            "rank": 279838,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 769477
+          },
+          "p": {
+            "found": true,
+            "rank": 279831,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 769477
+          },
+          "q": {
+            "found": true,
+            "rank": 34991,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 769477
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 2,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "-p"
+          }
+        ],
+        "nominated_count": 769477,
+        "target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 2,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 2097152,
+        "cost": {
+          "elapsed_seconds": 1.625063,
+          "generator_steps": 4334115,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 1538432
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 2,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 1538432
+          },
+          "-q": {
+            "found": true,
+            "rank": 559460,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 1538432
+          },
+          "p": {
+            "found": true,
+            "rank": 559453,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 1538432
+          },
+          "q": {
+            "found": true,
+            "rank": 69943,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 1538432
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 2,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "-p"
+          }
+        ],
+        "nominated_count": 1538432,
+        "target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 2,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      }
+    ],
+    "best_final_full_rank": {
+      "found": true,
+      "rank": 2,
+      "support_count": 3,
+      "threads": [
+        2,
+        3,
+        5
+      ],
+      "total_nominated": 1538432,
+      "which": "-p"
+    },
+    "classification": "one_factor_in_public_top_k",
+    "first_hit": {
+      "R": 256,
+      "rank": 2,
+      "support_count": 3,
+      "threads": [
+        2,
+        3,
+        5
+      ],
+      "which": "-p"
+    },
+    "name": "toy_23x31",
+    "p": 23,
+    "policy": "adaptive_support_v2",
+    "q": 31,
+    "radii": [
+      256,
+      1024,
+      4096,
+      16384,
+      65536,
+      262144,
+      1048576,
+      2097152
+    ],
+    "threads": [
+      2,
+      3,
+      5
+    ],
+    "top_k": 100
+  },
+  {
+    "N": 2537,
+    "N_bits": 12,
+    "attempts": [
+      {
+        "R": 256,
+        "cost": {
+          "elapsed_seconds": 0.000197,
+          "generator_steps": 529,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 376
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 176,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 376
+          },
+          "-q": {
+            "found": true,
+            "rank": 45,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 376
+          },
+          "p": {
+            "found": true,
+            "rank": 3,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 376
+          },
+          "q": {
+            "found": true,
+            "rank": 192,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 376
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 3,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "p"
+          },
+          {
+            "found": true,
+            "rank": 45,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "which": "-q"
+          }
+        ],
+        "nominated_count": 376,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": true,
+            "rank": 45,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ]
+          },
+          "p": {
+            "found": true,
+            "rank": 3,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 1024,
+        "cost": {
+          "elapsed_seconds": 0.000821,
+          "generator_steps": 2117,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 1502
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 587,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 1502
+          },
+          "-q": {
+            "found": true,
+            "rank": 96,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 1502
+          },
+          "p": {
+            "found": true,
+            "rank": 3,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 1502
+          },
+          "q": {
+            "found": true,
+            "rank": 603,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 1502
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 3,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "p"
+          },
+          {
+            "found": true,
+            "rank": 96,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "which": "-q"
+          }
+        ],
+        "nominated_count": 1502,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": true,
+            "rank": 96,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ]
+          },
+          "p": {
+            "found": true,
+            "rank": 3,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 4096,
+        "cost": {
+          "elapsed_seconds": 0.003254,
+          "generator_steps": 8465,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 4862
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 1808,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 4862
+          },
+          "-q": {
+            "found": true,
+            "rank": 249,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 4862
+          },
+          "p": {
+            "found": true,
+            "rank": 3,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 4862
+          },
+          "q": {
+            "found": true,
+            "rank": 1824,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 4862
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 3,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "p"
+          }
+        ],
+        "nominated_count": 4862,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": true,
+            "rank": 3,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 16384,
+        "cost": {
+          "elapsed_seconds": 0.008843,
+          "generator_steps": 33861,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 13873
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 5086,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 13873
+          },
+          "-q": {
+            "found": true,
+            "rank": 658,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 13873
+          },
+          "p": {
+            "found": true,
+            "rank": 3,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 13873
+          },
+          "q": {
+            "found": true,
+            "rank": 5102,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 13873
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 3,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "p"
+          }
+        ],
+        "nominated_count": 13873,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": true,
+            "rank": 3,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 65536,
+        "cost": {
+          "elapsed_seconds": 0.035748,
+          "generator_steps": 135441,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 49918
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 18192,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 49918
+          },
+          "-q": {
+            "found": true,
+            "rank": 2297,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 49918
+          },
+          "p": {
+            "found": true,
+            "rank": 3,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 49918
+          },
+          "q": {
+            "found": true,
+            "rank": 18208,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 49918
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 3,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "p"
+          }
+        ],
+        "nominated_count": 49918,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": true,
+            "rank": 3,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 262144,
+        "cost": {
+          "elapsed_seconds": 0.173672,
+          "generator_steps": 541765,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 194097
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 70622,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 194097
+          },
+          "-q": {
+            "found": true,
+            "rank": 8850,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 194097
+          },
+          "p": {
+            "found": true,
+            "rank": 3,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 194097
+          },
+          "q": {
+            "found": true,
+            "rank": 70638,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 194097
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 3,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "p"
+          }
+        ],
+        "nominated_count": 194097,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": true,
+            "rank": 3,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 1048576,
+        "cost": {
+          "elapsed_seconds": 0.810844,
+          "generator_steps": 2167057,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 770814
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 280336,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 770814
+          },
+          "-q": {
+            "found": true,
+            "rank": 35065,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 770814
+          },
+          "p": {
+            "found": true,
+            "rank": 3,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 770814
+          },
+          "q": {
+            "found": true,
+            "rank": 280352,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 770814
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 3,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "p"
+          }
+        ],
+        "nominated_count": 770814,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": true,
+            "rank": 3,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 2097152,
+        "cost": {
+          "elapsed_seconds": 1.709294,
+          "generator_steps": 4334115,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 1539769
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 559957,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 1539769
+          },
+          "-q": {
+            "found": true,
+            "rank": 70017,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 1539769
+          },
+          "p": {
+            "found": true,
+            "rank": 3,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 1539769
+          },
+          "q": {
+            "found": true,
+            "rank": 559973,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 1539769
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 3,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "p"
+          }
+        ],
+        "nominated_count": 1539769,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": true,
+            "rank": 3,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      }
+    ],
+    "best_final_full_rank": {
+      "found": true,
+      "rank": 3,
+      "support_count": 3,
+      "threads": [
+        2,
+        3,
+        5
+      ],
+      "total_nominated": 1539769,
+      "which": "p"
+    },
+    "classification": "one_factor_in_public_top_k",
+    "first_hit": {
+      "R": 256,
+      "rank": 3,
+      "support_count": 3,
+      "threads": [
+        2,
+        3,
+        5
+      ],
+      "which": "p"
+    },
+    "name": "toy_43x59",
+    "p": 43,
+    "policy": "adaptive_support_v2",
+    "q": 59,
+    "radii": [
+      256,
+      1024,
+      4096,
+      16384,
+      65536,
+      262144,
+      1048576,
+      2097152
+    ],
+    "threads": [
+      2,
+      3,
+      5
+    ],
+    "top_k": 100
+  },
+  {
+    "N": 5063,
+    "N_bits": 13,
+    "attempts": [
+      {
+        "R": 256,
+        "cost": {
+          "elapsed_seconds": 0.000207,
+          "generator_steps": 529,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 376
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 193,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 376
+          },
+          "-q": {
+            "found": true,
+            "rank": 6,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 376
+          },
+          "p": {
+            "found": true,
+            "rank": 46,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 376
+          },
+          "q": {
+            "found": true,
+            "rank": 214,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 376
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 46,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "which": "p"
+          },
+          {
+            "found": true,
+            "rank": 6,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "-q"
+          }
+        ],
+        "nominated_count": 376,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": true,
+            "rank": 6,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          },
+          "p": {
+            "found": true,
+            "rank": 46,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ]
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 1024,
+        "cost": {
+          "elapsed_seconds": 0.000799,
+          "generator_steps": 2117,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 1503
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 603,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 1503
+          },
+          "-q": {
+            "found": true,
+            "rank": 6,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 1503
+          },
+          "p": {
+            "found": true,
+            "rank": 97,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 1503
+          },
+          "q": {
+            "found": true,
+            "rank": 624,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 1503
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 97,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "which": "p"
+          },
+          {
+            "found": true,
+            "rank": 6,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "-q"
+          }
+        ],
+        "nominated_count": 1503,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": true,
+            "rank": 6,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          },
+          "p": {
+            "found": true,
+            "rank": 97,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ]
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 4096,
+        "cost": {
+          "elapsed_seconds": 0.003652,
+          "generator_steps": 8465,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 6008
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 2241,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 6008
+          },
+          "-q": {
+            "found": true,
+            "rank": 6,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 6008
+          },
+          "p": {
+            "found": true,
+            "rank": 302,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 6008
+          },
+          "q": {
+            "found": true,
+            "rank": 2262,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 6008
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 6,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "-q"
+          }
+        ],
+        "nominated_count": 6008,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": true,
+            "rank": 6,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 16384,
+        "cost": {
+          "elapsed_seconds": 0.011287,
+          "generator_steps": 33861,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 15726
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 5776,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 15726
+          },
+          "-q": {
+            "found": true,
+            "rank": 6,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 15726
+          },
+          "p": {
+            "found": true,
+            "rank": 743,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 15726
+          },
+          "q": {
+            "found": true,
+            "rank": 5797,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 15726
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 6,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "-q"
+          }
+        ],
+        "nominated_count": 15726,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": true,
+            "rank": 6,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 65536,
+        "cost": {
+          "elapsed_seconds": 0.038451,
+          "generator_steps": 135441,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 51771
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 18882,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 51771
+          },
+          "-q": {
+            "found": true,
+            "rank": 6,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 51771
+          },
+          "p": {
+            "found": true,
+            "rank": 2382,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 51771
+          },
+          "q": {
+            "found": true,
+            "rank": 18903,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 51771
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 6,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "-q"
+          }
+        ],
+        "nominated_count": 51771,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": true,
+            "rank": 6,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 262144,
+        "cost": {
+          "elapsed_seconds": 0.173972,
+          "generator_steps": 541765,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 195950
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 71312,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 195950
+          },
+          "-q": {
+            "found": true,
+            "rank": 6,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 195950
+          },
+          "p": {
+            "found": true,
+            "rank": 8935,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 195950
+          },
+          "q": {
+            "found": true,
+            "rank": 71333,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 195950
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 6,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "-q"
+          }
+        ],
+        "nominated_count": 195950,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": true,
+            "rank": 6,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 1048576,
+        "cost": {
+          "elapsed_seconds": 0.844165,
+          "generator_steps": 2167057,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 772667
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 281026,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 772667
+          },
+          "-q": {
+            "found": true,
+            "rank": 6,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 772667
+          },
+          "p": {
+            "found": true,
+            "rank": 35150,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 772667
+          },
+          "q": {
+            "found": true,
+            "rank": 281047,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 772667
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 6,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "-q"
+          }
+        ],
+        "nominated_count": 772667,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": true,
+            "rank": 6,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 2097152,
+        "cost": {
+          "elapsed_seconds": 1.828246,
+          "generator_steps": 4334115,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 1541622
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 560648,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 1541622
+          },
+          "-q": {
+            "found": true,
+            "rank": 6,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 1541622
+          },
+          "p": {
+            "found": true,
+            "rank": 70102,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 1541622
+          },
+          "q": {
+            "found": true,
+            "rank": 560669,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 1541622
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 6,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "-q"
+          }
+        ],
+        "nominated_count": 1541622,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": true,
+            "rank": 6,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      }
+    ],
+    "best_final_full_rank": {
+      "found": true,
+      "rank": 6,
+      "support_count": 3,
+      "threads": [
+        2,
+        3,
+        5
+      ],
+      "total_nominated": 1541622,
+      "which": "-q"
+    },
+    "classification": "one_factor_in_public_top_k",
+    "first_hit": {
+      "R": 256,
+      "rank": 6,
+      "support_count": 3,
+      "threads": [
+        2,
+        3,
+        5
+      ],
+      "which": "-q"
+    },
+    "name": "toy_61x83",
+    "p": 61,
+    "policy": "adaptive_support_v2",
+    "q": 83,
+    "radii": [
+      256,
+      1024,
+      4096,
+      16384,
+      65536,
+      262144,
+      1048576,
+      2097152
+    ],
+    "threads": [
+      2,
+      3,
+      5
+    ],
+    "top_k": 100
+  },
+  {
+    "N": 10057,
+    "N_bits": 14,
+    "attempts": [
+      {
+        "R": 256,
+        "cost": {
+          "elapsed_seconds": 0.000276,
+          "generator_steps": 529,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 376
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 220,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 376
+          },
+          "-q": {
+            "found": true,
+            "rank": 242,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 376
+          },
+          "p": {
+            "found": true,
+            "rank": 59,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 376
+          },
+          "q": {
+            "found": true,
+            "rank": 8,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 376
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 59,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "which": "p"
+          },
+          {
+            "found": true,
+            "rank": 8,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "q"
+          }
+        ],
+        "nominated_count": 376,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": true,
+            "rank": 59,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ]
+          },
+          "q": {
+            "found": true,
+            "rank": 8,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          }
+        }
+      },
+      {
+        "R": 1024,
+        "cost": {
+          "elapsed_seconds": 0.000801,
+          "generator_steps": 2117,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 1503
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 630,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 1503
+          },
+          "-q": {
+            "found": true,
+            "rank": 652,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 1503
+          },
+          "p": {
+            "found": true,
+            "rank": 110,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 1503
+          },
+          "q": {
+            "found": true,
+            "rank": 8,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 1503
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 8,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "q"
+          }
+        ],
+        "nominated_count": 1503,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": true,
+            "rank": 8,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          }
+        }
+      },
+      {
+        "R": 4096,
+        "cost": {
+          "elapsed_seconds": 0.003507,
+          "generator_steps": 8465,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 6008
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 2268,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 6008
+          },
+          "-q": {
+            "found": true,
+            "rank": 2290,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 6008
+          },
+          "p": {
+            "found": true,
+            "rank": 315,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 6008
+          },
+          "q": {
+            "found": true,
+            "rank": 8,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 6008
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 8,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "q"
+          }
+        ],
+        "nominated_count": 6008,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": true,
+            "rank": 8,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          }
+        }
+      },
+      {
+        "R": 16384,
+        "cost": {
+          "elapsed_seconds": 0.01345,
+          "generator_steps": 33861,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 19388
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 7134,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 19388
+          },
+          "-q": {
+            "found": true,
+            "rank": 7156,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 19388
+          },
+          "p": {
+            "found": true,
+            "rank": 923,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 19388
+          },
+          "q": {
+            "found": true,
+            "rank": 8,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 19388
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 8,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "q"
+          }
+        ],
+        "nominated_count": 19388,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": true,
+            "rank": 8,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          }
+        }
+      },
+      {
+        "R": 65536,
+        "cost": {
+          "elapsed_seconds": 0.040925,
+          "generator_steps": 135441,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 55432
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 20242,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 55432
+          },
+          "-q": {
+            "found": true,
+            "rank": 20264,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 55432
+          },
+          "p": {
+            "found": true,
+            "rank": 2561,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 55432
+          },
+          "q": {
+            "found": true,
+            "rank": 8,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 55432
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 8,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "q"
+          }
+        ],
+        "nominated_count": 55432,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": true,
+            "rank": 8,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          }
+        }
+      },
+      {
+        "R": 262144,
+        "cost": {
+          "elapsed_seconds": 0.179494,
+          "generator_steps": 541765,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 199612
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 72670,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 199612
+          },
+          "-q": {
+            "found": true,
+            "rank": 72692,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 199612
+          },
+          "p": {
+            "found": true,
+            "rank": 9115,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 199612
+          },
+          "q": {
+            "found": true,
+            "rank": 8,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 199612
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 8,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "q"
+          }
+        ],
+        "nominated_count": 199612,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": true,
+            "rank": 8,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          }
+        }
+      },
+      {
+        "R": 1048576,
+        "cost": {
+          "elapsed_seconds": 0.870696,
+          "generator_steps": 2167057,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 776328
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 282386,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 776328
+          },
+          "-q": {
+            "found": true,
+            "rank": 282408,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 776328
+          },
+          "p": {
+            "found": true,
+            "rank": 35329,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 776328
+          },
+          "q": {
+            "found": true,
+            "rank": 8,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 776328
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 8,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "q"
+          }
+        ],
+        "nominated_count": 776328,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": true,
+            "rank": 8,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          }
+        }
+      },
+      {
+        "R": 2097152,
+        "cost": {
+          "elapsed_seconds": 1.914072,
+          "generator_steps": 4334115,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 1545285
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 562005,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 1545285
+          },
+          "-q": {
+            "found": true,
+            "rank": 562027,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 1545285
+          },
+          "p": {
+            "found": true,
+            "rank": 70282,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 1545285
+          },
+          "q": {
+            "found": true,
+            "rank": 8,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 1545285
+          }
+        },
+        "hits": [
+          {
+            "found": true,
+            "rank": 8,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "which": "q"
+          }
+        ],
+        "nominated_count": 1545285,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": true,
+            "rank": 8,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ]
+          }
+        }
+      }
+    ],
+    "best_final_full_rank": {
+      "found": true,
+      "rank": 8,
+      "support_count": 3,
+      "threads": [
+        2,
+        3,
+        5
+      ],
+      "total_nominated": 1545285,
+      "which": "q"
+    },
+    "classification": "one_factor_in_public_top_k",
+    "first_hit": {
+      "R": 256,
+      "rank": 8,
+      "support_count": 3,
+      "threads": [
+        2,
+        3,
+        5
+      ],
+      "which": "q"
+    },
+    "name": "toy_89x113",
+    "p": 89,
+    "policy": "adaptive_support_v2",
+    "q": 113,
+    "radii": [
+      256,
+      1024,
+      4096,
+      16384,
+      65536,
+      262144,
+      1048576,
+      2097152
+    ],
+    "threads": [
+      2,
+      3,
+      5
+    ],
+    "top_k": 100
+  },
+  {
+    "N": 18905157503,
+    "N_bits": 35,
+    "attempts": [
+      {
+        "R": 256,
+        "cost": {
+          "elapsed_seconds": 0.0002,
+          "generator_steps": 529,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 376
+        },
+        "covered_by_R": false,
+        "full_target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 376
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 376
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 376
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 376
+          }
+        },
+        "hits": [],
+        "nominated_count": 376,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 1024,
+        "cost": {
+          "elapsed_seconds": 0.000979,
+          "generator_steps": 2117,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 1503
+        },
+        "covered_by_R": false,
+        "full_target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 1503
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 1503
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 1503
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 1503
+          }
+        },
+        "hits": [],
+        "nominated_count": 1503,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 4096,
+        "cost": {
+          "elapsed_seconds": 0.003596,
+          "generator_steps": 8465,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 6008
+        },
+        "covered_by_R": false,
+        "full_target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 6008
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 6008
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 6008
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 6008
+          }
+        },
+        "hits": [],
+        "nominated_count": 6008,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 16384,
+        "cost": {
+          "elapsed_seconds": 0.014201,
+          "generator_steps": 33861,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 24031
+        },
+        "covered_by_R": false,
+        "full_target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 24031
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 24031
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 24031
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 24031
+          }
+        },
+        "hits": [],
+        "nominated_count": 24031,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 65536,
+        "cost": {
+          "elapsed_seconds": 0.060956,
+          "generator_steps": 135441,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 96120
+        },
+        "covered_by_R": false,
+        "full_target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 96120
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 96120
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 96120
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 96120
+          }
+        },
+        "hits": [],
+        "nominated_count": 96120,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 262144,
+        "cost": {
+          "elapsed_seconds": 0.308953,
+          "generator_steps": 541765,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 384479
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 262171,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 384479
+          },
+          "-q": {
+            "found": true,
+            "rank": 9614,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 384479
+          },
+          "p": {
+            "found": true,
+            "rank": 78657,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 384479
+          },
+          "q": {
+            "found": true,
+            "rank": 274400,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 384479
+          }
+        },
+        "hits": [],
+        "nominated_count": 384479,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 1048576,
+        "cost": {
+          "elapsed_seconds": 1.624884,
+          "generator_steps": 2167057,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 1537912
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 681601,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 1537912
+          },
+          "-q": {
+            "found": true,
+            "rank": 9614,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 1537912
+          },
+          "p": {
+            "found": true,
+            "rank": 131086,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 1537912
+          },
+          "q": {
+            "found": true,
+            "rank": 693830,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 1537912
+          }
+        },
+        "hits": [],
+        "nominated_count": 1537912,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 2097152,
+        "cost": {
+          "elapsed_seconds": 3.465641,
+          "generator_steps": 4334115,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 3075824
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 1240842,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 3075824
+          },
+          "-q": {
+            "found": true,
+            "rank": 9614,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 3075824
+          },
+          "p": {
+            "found": true,
+            "rank": 200991,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 3075824
+          },
+          "q": {
+            "found": true,
+            "rank": 1253071,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 3075824
+          }
+        },
+        "hits": [],
+        "nominated_count": 3075824,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      }
+    ],
+    "best_final_full_rank": {
+      "found": true,
+      "rank": 9614,
+      "support_count": 3,
+      "threads": [
+        2,
+        3,
+        5
+      ],
+      "total_nominated": 3075824,
+      "which": "-q"
+    },
+    "classification": "covered_but_not_ranked_in_top_k",
+    "first_hit": null,
+    "name": "continuation_00_131101x144203",
+    "p": 131101,
+    "policy": "adaptive_support_v2",
+    "q": 144203,
+    "radii": [
+      256,
+      1024,
+      4096,
+      16384,
+      65536,
+      262144,
+      1048576,
+      2097152
+    ],
+    "threads": [
+      2,
+      3,
+      5
+    ],
+    "top_k": 100
+  },
+  {
+    "N": 1209478624103,
+    "N_bits": 41,
+    "attempts": [
+      {
+        "R": 256,
+        "cost": {
+          "elapsed_seconds": 0.000207,
+          "generator_steps": 529,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 376
+        },
+        "covered_by_R": false,
+        "full_target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 376
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 376
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 376
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 376
+          }
+        },
+        "hits": [],
+        "nominated_count": 376,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 1024,
+        "cost": {
+          "elapsed_seconds": 0.000866,
+          "generator_steps": 2117,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 1503
+        },
+        "covered_by_R": false,
+        "full_target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 1503
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 1503
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 1503
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 1503
+          }
+        },
+        "hits": [],
+        "nominated_count": 1503,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 4096,
+        "cost": {
+          "elapsed_seconds": 0.003559,
+          "generator_steps": 8465,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 6008
+        },
+        "covered_by_R": false,
+        "full_target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 6008
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 6008
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 6008
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 6008
+          }
+        },
+        "hits": [],
+        "nominated_count": 6008,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 16384,
+        "cost": {
+          "elapsed_seconds": 0.014887,
+          "generator_steps": 33861,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 24031
+        },
+        "covered_by_R": false,
+        "full_target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 24031
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 24031
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 24031
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 24031
+          }
+        },
+        "hits": [],
+        "nominated_count": 24031,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 65536,
+        "cost": {
+          "elapsed_seconds": 0.06329,
+          "generator_steps": 135441,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 96120
+        },
+        "covered_by_R": false,
+        "full_target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 96120
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 96120
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 96120
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 96120
+          }
+        },
+        "hits": [],
+        "nominated_count": 96120,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 262144,
+        "cost": {
+          "elapsed_seconds": 0.318222,
+          "generator_steps": 541765,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 384479
+        },
+        "covered_by_R": false,
+        "full_target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 384479
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 384479
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 384479
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 384479
+          }
+        },
+        "hits": [],
+        "nominated_count": 384479,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 1048576,
+        "cost": {
+          "elapsed_seconds": 1.691594,
+          "generator_steps": 2167057,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 1537912
+        },
+        "covered_by_R": false,
+        "full_target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 1537912
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 1537912
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 1537912
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": [],
+            "total_nominated": 1537912
+          }
+        },
+        "hits": [],
+        "nominated_count": 1537912,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      },
+      {
+        "R": 2097152,
+        "cost": {
+          "elapsed_seconds": 3.639525,
+          "generator_steps": 4334115,
+          "top_k_emitted": 100,
+          "unique_nominated_within_R": 3075824
+        },
+        "covered_by_R": true,
+        "full_target_ranks": {
+          "-p": {
+            "found": true,
+            "rank": 69906,
+            "support_count": 3,
+            "threads": [
+              2,
+              3,
+              5
+            ],
+            "total_nominated": 3075824
+          },
+          "-q": {
+            "found": true,
+            "rank": 2195026,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 3075824
+          },
+          "p": {
+            "found": true,
+            "rank": 2097159,
+            "support_count": 1,
+            "threads": [
+              2
+            ],
+            "total_nominated": 3075824
+          },
+          "q": {
+            "found": true,
+            "rank": 678083,
+            "support_count": 2,
+            "threads": [
+              2,
+              3
+            ],
+            "total_nominated": 3075824
+          }
+        },
+        "hits": [],
+        "nominated_count": 3075824,
+        "target_ranks": {
+          "-p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "-q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "p": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          },
+          "q": {
+            "found": false,
+            "rank": null,
+            "support_count": null,
+            "threads": []
+          }
+        }
+      }
+    ],
+    "best_final_full_rank": {
+      "found": true,
+      "rank": 69906,
+      "support_count": 3,
+      "threads": [
+        2,
+        3,
+        5
+      ],
+      "total_nominated": 3075824,
+      "which": "-p"
+    },
+    "classification": "covered_but_not_ranked_in_top_k",
+    "first_hit": null,
+    "name": "continuation_01_1048583x1153441",
+    "p": 1048583,
+    "policy": "adaptive_support_v2",
+    "q": 1153441,
+    "radii": [
+      256,
+      1024,
+      4096,
+      16384,
+      65536,
+      262144,
+      1048576,
+      2097152
+    ],
+    "threads": [
+      2,
+      3,
+      5
+    ],
+    "top_k": 100
+  }
+]

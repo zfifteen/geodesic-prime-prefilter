@@ -1,0 +1,11 @@
+{
+  "iteration": 7,
+  "radius": 262144,
+  "small_primes": [2, 3, 5, 7, 11, 13, 17, 19, 23, 29],
+  "residual_limit": 1,
+  "score_mode": "rare_per_distance",
+  "band_width": 4096,
+  "top_per_band": 32,
+  "top_k": 2048,
+  "design_reason": "Iteration 6 showed banding needs the distance-normalized rare score to preserve toy recovery. This combines the iteration 5 score with iteration 6 public distance bands."
+}

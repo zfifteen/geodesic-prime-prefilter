@@ -1,0 +1,5 @@
+case,policy,classification,sparse_public_r_count,sparse_one_factor_success,sparse_two_factor_success,sparse_top18_direct_hits,sparse_trials,sparse_zero_yield,full_web_top18_direct_hits,full_web_direct_rows
+toy_23x31,trial_2_stop_1,insufficient_thread_diversity,1,False,False,14,716,180,18,24
+toy_43x59,trial_2_stop_1,insufficient_thread_diversity,1,False,False,10,1038,260,18,20
+toy_61x83,trial_2_stop_1,insufficient_thread_diversity,1,False,False,10,1440,360,18,18
+toy_89x113,trial_2_stop_1,insufficient_thread_diversity,1,False,False,10,2079,520,18,18

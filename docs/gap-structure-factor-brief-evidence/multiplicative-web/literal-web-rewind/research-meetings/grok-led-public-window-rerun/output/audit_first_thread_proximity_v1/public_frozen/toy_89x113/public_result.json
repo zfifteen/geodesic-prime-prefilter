@@ -1,0 +1,122 @@
+{
+  "N": 10057,
+  "N_bits": 14,
+  "R": 262144,
+  "cost": {
+    "elapsed_seconds": 0.089162,
+    "generator_steps": 541765,
+    "top_k_emitted": 20,
+    "unique_nominated_within_R": 199612
+  },
+  "nominated_count": 199612,
+  "policy": "first_thread_proximity_v1",
+  "public_only": true,
+  "threads": [
+    2,
+    3,
+    5
+  ],
+  "top_k": 20,
+  "top_nominated": [
+    {
+      "first_thread": 2,
+      "offset": -1,
+      "value": 10056
+    },
+    {
+      "first_thread": 2,
+      "offset": 1,
+      "value": 10058
+    },
+    {
+      "first_thread": 5,
+      "offset": -2,
+      "value": 10055
+    },
+    {
+      "first_thread": 3,
+      "offset": 2,
+      "value": 10059
+    },
+    {
+      "first_thread": 2,
+      "offset": -3,
+      "value": 10054
+    },
+    {
+      "first_thread": 2,
+      "offset": 3,
+      "value": 10060
+    },
+    {
+      "first_thread": 3,
+      "offset": -4,
+      "value": 10053
+    },
+    {
+      "first_thread": 2,
+      "offset": -5,
+      "value": 10052
+    },
+    {
+      "first_thread": 2,
+      "offset": 5,
+      "value": 10062
+    },
+    {
+      "first_thread": 2,
+      "offset": -7,
+      "value": 10050
+    },
+    {
+      "first_thread": 2,
+      "offset": 7,
+      "value": 10064
+    },
+    {
+      "first_thread": 3,
+      "offset": 8,
+      "value": 10065
+    },
+    {
+      "first_thread": 2,
+      "offset": -9,
+      "value": 10048
+    },
+    {
+      "first_thread": 2,
+      "offset": 9,
+      "value": 10066
+    },
+    {
+      "first_thread": 3,
+      "offset": -10,
+      "value": 10047
+    },
+    {
+      "first_thread": 2,
+      "offset": -11,
+      "value": 10046
+    },
+    {
+      "first_thread": 2,
+      "offset": 11,
+      "value": 10068
+    },
+    {
+      "first_thread": 5,
+      "offset": -12,
+      "value": 10045
+    },
+    {
+      "first_thread": 2,
+      "offset": -13,
+      "value": 10044
+    },
+    {
+      "first_thread": 2,
+      "offset": 13,
+      "value": 10070
+    }
+  ]
+}

@@ -1,0 +1,213 @@
+{
+  "cases": [
+    {
+      "N": 713,
+      "N_bits": 10,
+      "classification": "one_factor_in_public_top_k",
+      "covered": true,
+      "hit": {
+        "distance": 23,
+        "left_source_count": 2259001,
+        "rank": 7,
+        "right_source_count": 1140141,
+        "score": [
+          1,
+          565,
+          434,
+          4,
+          2,
+          -23
+        ],
+        "shared_thread_count": 2,
+        "union_thread_count": 4,
+        "which": "p"
+      },
+      "iteration": 10,
+      "name": "toy_23x31",
+      "p": 23,
+      "public_cost": {
+        "elapsed_seconds": 15.85926,
+        "source_rows": 1766511,
+        "vote_targets": 3531833
+      },
+      "q": 31,
+      "radius": 2097152
+    },
+    {
+      "N": 2537,
+      "N_bits": 12,
+      "classification": "one_factor_in_public_top_k",
+      "covered": true,
+      "hit": {
+        "distance": 43,
+        "left_source_count": 1122246,
+        "rank": 14,
+        "right_source_count": 2169675,
+        "score": [
+          1,
+          302,
+          0,
+          3,
+          1,
+          -43
+        ],
+        "shared_thread_count": 1,
+        "union_thread_count": 4,
+        "which": "p"
+      },
+      "iteration": 10,
+      "name": "toy_43x59",
+      "p": 43,
+      "public_cost": {
+        "elapsed_seconds": 16.630162,
+        "source_rows": 1768049,
+        "vote_targets": 3531829
+      },
+      "q": 59,
+      "radius": 2097152
+    },
+    {
+      "N": 5063,
+      "N_bits": 13,
+      "classification": "one_factor_in_public_top_k",
+      "covered": true,
+      "hit": {
+        "distance": 61,
+        "left_source_count": 1051106,
+        "rank": 48,
+        "right_source_count": 2052159,
+        "score": [
+          1,
+          65,
+          0,
+          3,
+          1,
+          -61
+        ],
+        "shared_thread_count": 1,
+        "union_thread_count": 3,
+        "which": "p"
+      },
+      "iteration": 10,
+      "name": "toy_61x83",
+      "p": 61,
+      "public_cost": {
+        "elapsed_seconds": 17.861182,
+        "source_rows": 1770174,
+        "vote_targets": 3531832
+      },
+      "q": 83,
+      "radius": 2097152
+    },
+    {
+      "N": 10057,
+      "N_bits": 14,
+      "classification": "one_factor_in_public_top_k",
+      "covered": true,
+      "hit": {
+        "distance": 89,
+        "left_source_count": 1354632,
+        "rank": 28,
+        "right_source_count": 1866910,
+        "score": [
+          1,
+          112,
+          0,
+          3,
+          1,
+          -89
+        ],
+        "shared_thread_count": 1,
+        "union_thread_count": 4,
+        "which": "p"
+      },
+      "iteration": 10,
+      "name": "toy_89x113",
+      "p": 89,
+      "public_cost": {
+        "elapsed_seconds": 17.55727,
+        "source_rows": 1774383,
+        "vote_targets": 3531831
+      },
+      "q": 113,
+      "radius": 2097152
+    },
+    {
+      "N": 18905157503,
+      "N_bits": 35,
+      "classification": "one_factor_in_public_top_k",
+      "covered": true,
+      "hit": {
+        "distance": 144203,
+        "left_source_count": 4737229,
+        "rank": 2897,
+        "right_source_count": 2097152,
+        "score": [
+          1,
+          0,
+          0,
+          5,
+          1,
+          -144203
+        ],
+        "shared_thread_count": 1,
+        "union_thread_count": 5,
+        "which": "q"
+      },
+      "iteration": 10,
+      "name": "continuation_00_131101x144203",
+      "p": 131101,
+      "public_cost": {
+        "elapsed_seconds": 21.938936,
+        "source_rows": 3531828,
+        "vote_targets": 3531828
+      },
+      "q": 144203,
+      "radius": 2097152
+    },
+    {
+      "N": 1209478624103,
+      "N_bits": 41,
+      "classification": "covered_but_not_ranked_in_top_k",
+      "covered": true,
+      "hit": null,
+      "iteration": 10,
+      "name": "continuation_01_1048583x1153441",
+      "p": 1048583,
+      "public_cost": {
+        "elapsed_seconds": 19.124843,
+        "source_rows": 3531821,
+        "vote_targets": 3531821
+      },
+      "q": 1153441,
+      "radius": 2097152
+    }
+  ],
+  "coverage_failure_count": 0,
+  "covered_failure_count": 1,
+  "iteration": 10,
+  "spec": {
+    "band_width": 32768,
+    "design_reason": "Iteration 9 recovered every covered case and failed only by coverage. This keeps the learned anchor-confirmed selector and expands the public radius to cover the larger continuation case, with wider public bands to preserve the same number of bands.",
+    "iteration": 10,
+    "radius": 2097152,
+    "residual_limit": 1,
+    "score_mode": "anchor_confirmed",
+    "small_primes": [
+      2,
+      3,
+      5,
+      7,
+      11,
+      13,
+      17,
+      19,
+      23,
+      29
+    ],
+    "top_k": 16384,
+    "top_per_band": 256
+  },
+  "status": "failed_iteration",
+  "success_count": 5
+}

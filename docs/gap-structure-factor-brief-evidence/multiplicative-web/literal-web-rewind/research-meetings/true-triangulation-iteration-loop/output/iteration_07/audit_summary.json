@@ -1,0 +1,165 @@
+{
+  "cases": [
+    {
+      "N": 713,
+      "N_bits": 10,
+      "classification": "one_factor_in_public_top_k",
+      "covered": true,
+      "hit": {
+        "distance": 23,
+        "left_source_count": 283043,
+        "rank": 4,
+        "right_source_count": 142854,
+        "score": [
+          4086,
+          4086,
+          94,
+          2,
+          4,
+          -23
+        ],
+        "shared_thread_count": 2,
+        "union_thread_count": 4,
+        "which": "p"
+      },
+      "iteration": 7,
+      "name": "toy_23x31",
+      "p": 23,
+      "public_cost": {
+        "elapsed_seconds": 1.939494,
+        "source_rows": 221335,
+        "vote_targets": 441478
+      },
+      "q": 31,
+      "radius": 262144
+    },
+    {
+      "N": 2537,
+      "N_bits": 12,
+      "classification": "one_factor_in_public_top_k",
+      "covered": true,
+      "hit": {
+        "distance": 43,
+        "left_source_count": 141465,
+        "rank": 18,
+        "right_source_count": 273501,
+        "score": [
+          837,
+          162,
+          36,
+          1,
+          4,
+          -43
+        ],
+        "shared_thread_count": 1,
+        "union_thread_count": 4,
+        "which": "p"
+      },
+      "iteration": 7,
+      "name": "toy_43x59",
+      "p": 43,
+      "public_cost": {
+        "elapsed_seconds": 2.074493,
+        "source_rows": 222874,
+        "vote_targets": 441480
+      },
+      "q": 59,
+      "radius": 262144
+    },
+    {
+      "N": 5063,
+      "N_bits": 13,
+      "classification": "covered_but_not_ranked_in_top_k",
+      "covered": true,
+      "hit": null,
+      "iteration": 7,
+      "name": "toy_61x83",
+      "p": 61,
+      "public_cost": {
+        "elapsed_seconds": 2.100702,
+        "source_rows": 225001,
+        "vote_targets": 441481
+      },
+      "q": 83,
+      "radius": 262144
+    },
+    {
+      "N": 10057,
+      "N_bits": 14,
+      "classification": "covered_but_not_ranked_in_top_k",
+      "covered": true,
+      "hit": null,
+      "iteration": 7,
+      "name": "toy_89x113",
+      "p": 89,
+      "public_cost": {
+        "elapsed_seconds": 2.025212,
+        "source_rows": 229203,
+        "vote_targets": 441478
+      },
+      "q": 113,
+      "radius": 262144
+    },
+    {
+      "N": 18905157503,
+      "N_bits": 35,
+      "classification": "covered_but_not_ranked_in_top_k",
+      "covered": true,
+      "hit": null,
+      "iteration": 7,
+      "name": "continuation_00_131101x144203",
+      "p": 131101,
+      "public_cost": {
+        "elapsed_seconds": 2.488821,
+        "source_rows": 441481,
+        "vote_targets": 441481
+      },
+      "q": 144203,
+      "radius": 262144
+    },
+    {
+      "N": 1209478624103,
+      "N_bits": 41,
+      "classification": "public_window_insufficient_coverage",
+      "covered": false,
+      "hit": null,
+      "iteration": 7,
+      "name": "continuation_01_1048583x1153441",
+      "p": 1048583,
+      "public_cost": {
+        "elapsed_seconds": 2.346493,
+        "source_rows": 441488,
+        "vote_targets": 441488
+      },
+      "q": 1153441,
+      "radius": 262144
+    }
+  ],
+  "coverage_failure_count": 1,
+  "covered_failure_count": 3,
+  "iteration": 7,
+  "spec": {
+    "band_width": 4096,
+    "design_reason": "Iteration 6 showed banding needs the distance-normalized rare score to preserve toy recovery. This combines the iteration 5 score with iteration 6 public distance bands.",
+    "iteration": 7,
+    "radius": 262144,
+    "residual_limit": 1,
+    "score_mode": "rare_per_distance",
+    "small_primes": [
+      2,
+      3,
+      5,
+      7,
+      11,
+      13,
+      17,
+      19,
+      23,
+      29
+    ],
+    "top_k": 2048,
+    "top_per_band": 32
+  },
+  "status": "failed_iteration",
+  "success_count": 2
+}

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 360" role="img" aria-labelledby="title desc">
+  <title id="title">Current research status</title>
+  <desc id="desc">A status board separates built artifacts, measured findings, and missing theorem work.</desc>
+  <rect width="920" height="360" fill="#fbfcfd"/>
+  <rect x="34" y="34" width="852" height="292" rx="8" fill="#fff" stroke="#d7dde3"/>
+  <text x="460" y="76" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="22" font-weight="700" fill="#1f2933">Strong progress, bounded claim</text>
+  <g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">
+    <rect x="86" y="120" width="230" height="170" rx="8" fill="#ecfdf5" stroke="#99f6e4"/>
+    <rect x="345" y="120" width="230" height="170" rx="8" fill="#eff6ff" stroke="#bfdbfe"/>
+    <rect x="604" y="120" width="230" height="170" rx="8" fill="#fff7ed" stroke="#fed7aa"/>
+    <text x="201" y="150" text-anchor="middle" font-size="16" font-weight="700" fill="#0f766e">Built</text>
+    <text x="460" y="150" text-anchor="middle" font-size="16" font-weight="700" fill="#1d4ed8">Measured</text>
+    <text x="719" y="150" text-anchor="middle" font-size="16" font-weight="700" fill="#9a3412">Missing</text>
+    <g font-size="13" fill="#334155">
+      <text x="116" y="185">public endpoint runner</text>
+      <text x="116" y="214">status separation</text>
+      <text x="116" y="243">committed audit rows</text>
+      <text x="375" y="185">one remaining bridge</text>
+      <text x="375" y="214">false selector rejected</text>
+      <text x="375" y="243">square-fiber selector</text>
+      <text x="634" y="185">universal selector theorem</text>
+      <text x="634" y="214">forced survivor lane</text>
+      <text x="634" y="243">factor endpoint proof</text>
+    </g>
+  </g>
+</svg>

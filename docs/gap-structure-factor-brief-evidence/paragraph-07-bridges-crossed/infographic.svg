@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 360" role="img" aria-labelledby="title desc">
+  <title id="title">Bridge reductions crossed</title>
+  <desc id="desc">Six completed reductions lead to one remaining open bridge.</desc>
+  <rect width="920" height="360" fill="#fbfcfd"/>
+  <rect x="34" y="34" width="852" height="292" rx="8" fill="#fff" stroke="#d7dde3"/>
+  <text x="460" y="76" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="22" font-weight="700" fill="#1f2933">The remaining bridge is narrower now</text>
+  <g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" text-anchor="middle" font-size="12">
+    <g fill="#ecfdf5" stroke="#99f6e4" stroke-width="2">
+      <rect x="72" y="156" width="92" height="62" rx="8"/><rect x="184" y="156" width="92" height="62" rx="8"/><rect x="296" y="156" width="92" height="62" rx="8"/>
+      <rect x="408" y="156" width="92" height="62" rx="8"/><rect x="520" y="156" width="92" height="62" rx="8"/><rect x="632" y="156" width="92" height="62" rx="8"/>
+    </g>
+    <rect x="744" y="156" width="92" height="62" rx="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="2"/>
+    <g fill="#0f766e" font-weight="700">
+      <text x="118" y="184">residue</text><text x="118" y="200">pair</text>
+      <text x="230" y="184">product</text><text x="230" y="200">residue</text>
+      <text x="342" y="184">four-slot</text><text x="342" y="200">chain</text>
+      <text x="454" y="184">exact</text><text x="454" y="200">trigger</text>
+      <text x="566" y="184">neighbor</text><text x="566" y="200">gate</text>
+      <text x="678" y="184">public</text><text x="678" y="200">arithmetic</text>
+    </g>
+    <text x="790" y="184" fill="#9a3412" font-weight="700">remaining</text><text x="790" y="200" fill="#9a3412" font-weight="700">bridge</text>
+  </g>
+  <line x1="164" y1="187" x2="184" y2="187" stroke="#64748b" stroke-width="3"/>
+  <line x1="276" y1="187" x2="296" y2="187" stroke="#64748b" stroke-width="3"/>
+  <line x1="388" y1="187" x2="408" y2="187" stroke="#64748b" stroke-width="3"/>
+  <line x1="500" y1="187" x2="520" y2="187" stroke="#64748b" stroke-width="3"/>
+  <line x1="612" y1="187" x2="632" y2="187" stroke="#64748b" stroke-width="3"/>
+  <line x1="724" y1="187" x2="744" y2="187" stroke="#64748b" stroke-width="3"/>
+</svg>
+

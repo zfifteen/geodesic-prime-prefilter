@@ -1,0 +1,11 @@
+{
+  "iteration": 10,
+  "radius": 2097152,
+  "small_primes": [2, 3, 5, 7, 11, 13, 17, 19, 23, 29],
+  "residual_limit": 1,
+  "score_mode": "anchor_confirmed",
+  "band_width": 32768,
+  "top_per_band": 256,
+  "top_k": 16384,
+  "design_reason": "Iteration 9 recovered every covered case and failed only by coverage. This keeps the learned anchor-confirmed selector and expands the public radius to cover the larger continuation case, with wider public bands to preserve the same number of bands."
+}

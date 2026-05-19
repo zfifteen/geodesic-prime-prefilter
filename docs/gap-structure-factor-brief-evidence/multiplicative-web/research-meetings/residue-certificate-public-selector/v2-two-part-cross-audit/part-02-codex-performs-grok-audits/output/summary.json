@@ -1,0 +1,705 @@
+{
+  "per_case": [
+    {
+      "case_id": 0,
+      "N": 713,
+      "p": 23,
+      "q": 31,
+      "p_mod_M": 23,
+      "M": 210,
+      "selected_r": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "cardinality_true": 48,
+      "cardinality_rotated": 0,
+      "cardinality_synthetic": 0,
+      "gwr_witness": {
+        "value": 841,
+        "offset": 128,
+        "divisor_count": 3
+      },
+      "support_rows": [
+        {
+          "value": 838,
+          "offset": 125,
+          "divisor_count": 4
+        },
+        {
+          "value": 842,
+          "offset": 129,
+          "divisor_count": 4
+        }
+      ],
+      "structural_winner_a": null,
+      "min_structural_tie_size": 2,
+      "p_is_unique_structural_winner": false,
+      "case_classification": "boundary_measurement"
+    },
+    {
+      "case_id": 1,
+      "N": 2537,
+      "p": 43,
+      "q": 59,
+      "p_mod_M": 43,
+      "M": 210,
+      "selected_r": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "cardinality_true": 48,
+      "cardinality_rotated": 0,
+      "cardinality_synthetic": 0,
+      "gwr_witness": {
+        "value": 2809,
+        "offset": 272,
+        "divisor_count": 3
+      },
+      "support_rows": [
+        {
+          "value": 2807,
+          "offset": 270,
+          "divisor_count": 4
+        },
+        {
+          "value": 2811,
+          "offset": 274,
+          "divisor_count": 4
+        }
+      ],
+      "structural_winner_a": null,
+      "min_structural_tie_size": 2,
+      "p_is_unique_structural_winner": false,
+      "case_classification": "boundary_measurement"
+    },
+    {
+      "case_id": 2,
+      "N": 5063,
+      "p": 61,
+      "q": 83,
+      "p_mod_M": 61,
+      "M": 210,
+      "selected_r": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "cardinality_true": 48,
+      "cardinality_rotated": 0,
+      "cardinality_synthetic": 0,
+      "gwr_witness": {
+        "value": 5041,
+        "offset": -22,
+        "divisor_count": 3
+      },
+      "support_rows": [
+        {
+          "value": 5033,
+          "offset": -30,
+          "divisor_count": 4
+        },
+        {
+          "value": 5042,
+          "offset": -21,
+          "divisor_count": 4
+        }
+      ],
+      "structural_winner_a": null,
+      "min_structural_tie_size": 2,
+      "p_is_unique_structural_winner": false,
+      "case_classification": "boundary_measurement"
+    },
+    {
+      "case_id": 3,
+      "N": 10057,
+      "p": 89,
+      "q": 113,
+      "p_mod_M": 89,
+      "M": 210,
+      "selected_r": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "cardinality_true": 48,
+      "cardinality_rotated": 0,
+      "cardinality_synthetic": 0,
+      "gwr_witness": {
+        "value": 10201,
+        "offset": 144,
+        "divisor_count": 3
+      },
+      "support_rows": [
+        {
+          "value": 10198,
+          "offset": 141,
+          "divisor_count": 4
+        },
+        {
+          "value": 10202,
+          "offset": 145,
+          "divisor_count": 4
+        }
+      ],
+      "structural_winner_a": null,
+      "min_structural_tie_size": 2,
+      "p_is_unique_structural_winner": false,
+      "case_classification": "boundary_measurement"
+    },
+    {
+      "case_id": 4,
+      "N": 13837,
+      "p": 101,
+      "q": 137,
+      "p_mod_M": 101,
+      "M": 210,
+      "selected_r": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "cardinality_true": 48,
+      "cardinality_rotated": 0,
+      "cardinality_synthetic": 0,
+      "gwr_witness": {
+        "value": 13539,
+        "offset": -298,
+        "divisor_count": 4
+      },
+      "support_rows": [
+        {
+          "value": 13541,
+          "offset": -296,
+          "divisor_count": 4
+        }
+      ],
+      "structural_winner_a": null,
+      "min_structural_tie_size": 2,
+      "p_is_unique_structural_winner": false,
+      "case_classification": "boundary_measurement"
+    },
+    {
+      "case_id": 5,
+      "N": 21877,
+      "p": 131,
+      "q": 167,
+      "p_mod_M": 131,
+      "M": 210,
+      "selected_r": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "cardinality_true": 48,
+      "cardinality_rotated": 0,
+      "cardinality_synthetic": 0,
+      "gwr_witness": {
+        "value": 21578,
+        "offset": -299,
+        "divisor_count": 4
+      },
+      "support_rows": [
+        {
+          "value": 21579,
+          "offset": -298,
+          "divisor_count": 4
+        }
+      ],
+      "structural_winner_a": null,
+      "min_structural_tie_size": 2,
+      "p_is_unique_structural_winner": false,
+      "case_classification": "boundary_measurement"
+    },
+    {
+      "case_id": 6,
+      "N": 36503,
+      "p": 173,
+      "q": 211,
+      "p_mod_M": 173,
+      "M": 210,
+      "selected_r": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "cardinality_true": 48,
+      "cardinality_rotated": 0,
+      "cardinality_synthetic": 0,
+      "gwr_witness": {
+        "value": 36481,
+        "offset": -22,
+        "divisor_count": 3
+      },
+      "support_rows": [
+        {
+          "value": 36471,
+          "offset": -32,
+          "divisor_count": 4
+        },
+        {
+          "value": 36483,
+          "offset": -20,
+          "divisor_count": 4
+        }
+      ],
+      "structural_winner_a": null,
+      "min_structural_tie_size": 2,
+      "p_is_unique_structural_winner": false,
+      "case_classification": "boundary_measurement"
+    },
+    {
+      "case_id": 7,
+      "N": 63433,
+      "p": 229,
+      "q": 277,
+      "p_mod_M": 19,
+      "M": 210,
+      "selected_r": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "cardinality_true": 48,
+      "cardinality_rotated": 0,
+      "cardinality_synthetic": 0,
+      "gwr_witness": {
+        "value": 63134,
+        "offset": -299,
+        "divisor_count": 4
+      },
+      "support_rows": [
+        {
+          "value": 63137,
+          "offset": -296,
+          "divisor_count": 4
+        }
+      ],
+      "structural_winner_a": null,
+      "min_structural_tie_size": 2,
+      "p_is_unique_structural_winner": false,
+      "case_classification": "boundary_measurement"
+    },
+    {
+      "case_id": 8,
+      "N": 112669,
+      "p": 307,
+      "q": 367,
+      "p_mod_M": 97,
+      "M": 210,
+      "selected_r": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "cardinality_true": 48,
+      "cardinality_rotated": 0,
+      "cardinality_synthetic": 0,
+      "gwr_witness": {
+        "value": 112369,
+        "offset": -300,
+        "divisor_count": 4
+      },
+      "support_rows": [
+        {
+          "value": 112373,
+          "offset": -296,
+          "divisor_count": 4
+        }
+      ],
+      "structural_winner_a": null,
+      "min_structural_tie_size": 2,
+      "p_is_unique_structural_winner": false,
+      "case_classification": "boundary_measurement"
+    },
+    {
+      "case_id": 9,
+      "N": 201703,
+      "p": 401,
+      "q": 503,
+      "p_mod_M": 191,
+      "M": 210,
+      "selected_r": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "cardinality_true": 48,
+      "cardinality_rotated": 0,
+      "cardinality_synthetic": 0,
+      "gwr_witness": {
+        "value": 201601,
+        "offset": -102,
+        "divisor_count": 3
+      },
+      "support_rows": [
+        {
+          "value": 201598,
+          "offset": -105,
+          "divisor_count": 4
+        },
+        {
+          "value": 201602,
+          "offset": -101,
+          "divisor_count": 4
+        }
+      ],
+      "structural_winner_a": null,
+      "min_structural_tie_size": 2,
+      "p_is_unique_structural_winner": false,
+      "case_classification": "boundary_measurement"
+    },
+    {
+      "case_id": 10,
+      "N": 368177,
+      "p": 557,
+      "q": 661,
+      "p_mod_M": 137,
+      "M": 210,
+      "selected_r": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "cardinality_true": 48,
+      "cardinality_rotated": 0,
+      "cardinality_synthetic": 0,
+      "gwr_witness": {
+        "value": 368449,
+        "offset": 272,
+        "divisor_count": 3
+      },
+      "support_rows": [
+        {
+          "value": 368441,
+          "offset": 264,
+          "divisor_count": 4
+        },
+        {
+          "value": 368457,
+          "offset": 280,
+          "divisor_count": 4
+        }
+      ],
+      "structural_winner_a": null,
+      "min_structural_tie_size": 2,
+      "p_is_unique_structural_winner": false,
+      "case_classification": "boundary_measurement"
+    },
+    {
+      "case_id": 11,
+      "N": 621787,
+      "p": 701,
+      "q": 887,
+      "p_mod_M": 71,
+      "M": 210,
+      "selected_r": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "cardinality_true": 48,
+      "cardinality_rotated": 0,
+      "cardinality_synthetic": 0,
+      "gwr_witness": {
+        "value": 621487,
+        "offset": -300,
+        "divisor_count": 4
+      },
+      "support_rows": [
+        {
+          "value": 621491,
+          "offset": -296,
+          "divisor_count": 4
+        }
+      ],
+      "structural_winner_a": null,
+      "min_structural_tie_size": 2,
+      "p_is_unique_structural_winner": false,
+      "case_classification": "boundary_measurement"
+    },
+    {
+      "case_id": 12,
+      "N": 1242079,
+      "p": 1009,
+      "q": 1231,
+      "p_mod_M": 169,
+      "M": 210,
+      "selected_r": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "cardinality_true": 48,
+      "cardinality_rotated": 0,
+      "cardinality_synthetic": 0,
+      "gwr_witness": {
+        "value": 1241783,
+        "offset": -296,
+        "divisor_count": 4
+      },
+      "support_rows": [
+        {
+          "value": 1241785,
+          "offset": -294,
+          "divisor_count": 4
+        }
+      ],
+      "structural_winner_a": null,
+      "min_structural_tie_size": 2,
+      "p_is_unique_structural_winner": false,
+      "case_classification": "boundary_measurement"
+    },
+    {
+      "case_id": 13,
+      "N": 3206803,
+      "p": 1601,
+      "q": 2003,
+      "p_mod_M": 131,
+      "M": 210,
+      "selected_r": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "cardinality_true": 48,
+      "cardinality_rotated": 0,
+      "cardinality_synthetic": 0,
+      "gwr_witness": {
+        "value": 3206503,
+        "offset": -300,
+        "divisor_count": 4
+      },
+      "support_rows": [
+        {
+          "value": 3206507,
+          "offset": -296,
+          "divisor_count": 4
+        }
+      ],
+      "structural_winner_a": null,
+      "min_structural_tie_size": 2,
+      "p_is_unique_structural_winner": false,
+      "case_classification": "boundary_measurement"
+    },
+    {
+      "case_id": 14,
+      "N": 12007001,
+      "p": 3001,
+      "q": 4001,
+      "p_mod_M": 61,
+      "M": 210,
+      "selected_r": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "cardinality_true": 48,
+      "cardinality_rotated": 0,
+      "cardinality_synthetic": 0,
+      "gwr_witness": {
+        "value": 12006701,
+        "offset": -300,
+        "divisor_count": 4
+      },
+      "support_rows": [
+        {
+          "value": 12006703,
+          "offset": -298,
+          "divisor_count": 4
+        }
+      ],
+      "structural_winner_a": null,
+      "min_structural_tie_size": 2,
+      "p_is_unique_structural_winner": false,
+      "case_classification": "boundary_measurement"
+    },
+    {
+      "case_id": 15,
+      "N": 35026003,
+      "p": 5003,
+      "q": 7001,
+      "p_mod_M": 173,
+      "M": 210,
+      "selected_r": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "cardinality_true": 48,
+      "cardinality_rotated": 0,
+      "cardinality_synthetic": 0,
+      "gwr_witness": {
+        "value": 35025703,
+        "offset": -300,
+        "divisor_count": 4
+      },
+      "support_rows": [
+        {
+          "value": 35025719,
+          "offset": -284,
+          "divisor_count": 4
+        }
+      ],
+      "structural_winner_a": null,
+      "min_structural_tie_size": 2,
+      "p_is_unique_structural_winner": false,
+      "case_classification": "boundary_measurement"
+    },
+    {
+      "case_id": 16,
+      "N": 225000307499857,
+      "p": 7500013,
+      "q": 29999989,
+      "p_mod_M": 73,
+      "M": 210,
+      "selected_r": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "cardinality_true": 48,
+      "cardinality_rotated": 0,
+      "cardinality_synthetic": 0,
+      "gwr_witness": {
+        "value": 225000307499563,
+        "offset": -294,
+        "divisor_count": 4
+      },
+      "support_rows": [
+        {
+          "value": 225000307499571,
+          "offset": -286,
+          "divisor_count": 6
+        }
+      ],
+      "structural_winner_a": null,
+      "min_structural_tie_size": 2,
+      "p_is_unique_structural_winner": false,
+      "case_classification": "boundary_measurement"
+    },
+    {
+      "case_id": 17,
+      "N": 225000094499417,
+      "p": 6000011,
+      "q": 37499947,
+      "p_mod_M": 101,
+      "M": 210,
+      "selected_r": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "cardinality_true": 48,
+      "cardinality_rotated": 0,
+      "cardinality_synthetic": 0,
+      "gwr_witness": {
+        "value": 225000094499129,
+        "offset": -288,
+        "divisor_count": 4
+      },
+      "support_rows": [
+        {
+          "value": 225000094499137,
+          "offset": -280,
+          "divisor_count": 4
+        }
+      ],
+      "structural_winner_a": null,
+      "min_structural_tie_size": 4,
+      "p_is_unique_structural_winner": false,
+      "case_classification": "boundary_measurement"
+    },
+    {
+      "case_id": 18,
+      "N": 225000309499937,
+      "p": 4500007,
+      "q": 49999991,
+      "p_mod_M": 127,
+      "M": 210,
+      "selected_r": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "cardinality_true": 48,
+      "cardinality_rotated": 0,
+      "cardinality_synthetic": 0,
+      "gwr_witness": {
+        "value": 225000309499639,
+        "offset": -298,
+        "divisor_count": 4
+      },
+      "support_rows": [
+        {
+          "value": 225000309499645,
+          "offset": -292,
+          "divisor_count": 4
+        }
+      ],
+      "structural_winner_a": null,
+      "min_structural_tie_size": 2,
+      "p_is_unique_structural_winner": false,
+      "case_classification": "boundary_measurement"
+    },
+    {
+      "case_id": 19,
+      "N": 225000215993999,
+      "p": 3000017,
+      "q": 74999647,
+      "p_mod_M": 167,
+      "M": 210,
+      "selected_r": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "cardinality_true": 48,
+      "cardinality_rotated": 0,
+      "cardinality_synthetic": 0,
+      "gwr_witness": {
+        "value": 225000215993705,
+        "offset": -294,
+        "divisor_count": 4
+      },
+      "support_rows": [
+        {
+          "value": 225000215993711,
+          "offset": -288,
+          "divisor_count": 4
+        }
+      ],
+      "structural_winner_a": null,
+      "min_structural_tie_size": 4,
+      "p_is_unique_structural_winner": false,
+      "case_classification": "boundary_measurement"
+    }
+  ],
+  "aggregate": {
+    "total_cases": 20,
+    "structural_win_count": 0,
+    "controls_all_empty": true,
+    "final_classification": "invalidated_result"
+  }
+}

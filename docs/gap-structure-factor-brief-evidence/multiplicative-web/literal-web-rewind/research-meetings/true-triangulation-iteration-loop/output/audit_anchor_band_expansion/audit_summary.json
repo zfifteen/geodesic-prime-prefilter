@@ -1,0 +1,188 @@
+{
+  "cases": [
+    {
+      "N": 713,
+      "N_bits": 10,
+      "classification": "one_factor_in_public_top_k",
+      "covered": true,
+      "hit": {
+        "band_rank": 7,
+        "distance": 23,
+        "rank": 7,
+        "score": [
+          1,
+          565,
+          434,
+          4,
+          2,
+          -23
+        ],
+        "shared_thread_count": 2,
+        "union_thread_count": 4,
+        "which": "p"
+      },
+      "name": "toy_23x31",
+      "p": 23,
+      "public_cost": {
+        "elapsed_seconds": 15.978188,
+        "source_rows": 1766511,
+        "vote_targets": 3531833
+      },
+      "q": 31
+    },
+    {
+      "N": 2537,
+      "N_bits": 12,
+      "classification": "one_factor_in_public_top_k",
+      "covered": true,
+      "hit": {
+        "band_rank": 14,
+        "distance": 43,
+        "rank": 14,
+        "score": [
+          1,
+          302,
+          0,
+          3,
+          1,
+          -43
+        ],
+        "shared_thread_count": 1,
+        "union_thread_count": 4,
+        "which": "p"
+      },
+      "name": "toy_43x59",
+      "p": 43,
+      "public_cost": {
+        "elapsed_seconds": 17.922657,
+        "source_rows": 1768049,
+        "vote_targets": 3531829
+      },
+      "q": 59
+    },
+    {
+      "N": 5063,
+      "N_bits": 13,
+      "classification": "one_factor_in_public_top_k",
+      "covered": true,
+      "hit": {
+        "band_rank": 48,
+        "distance": 61,
+        "rank": 48,
+        "score": [
+          1,
+          65,
+          0,
+          3,
+          1,
+          -61
+        ],
+        "shared_thread_count": 1,
+        "union_thread_count": 3,
+        "which": "p"
+      },
+      "name": "toy_61x83",
+      "p": 61,
+      "public_cost": {
+        "elapsed_seconds": 19.220643,
+        "source_rows": 1770174,
+        "vote_targets": 3531832
+      },
+      "q": 83
+    },
+    {
+      "N": 10057,
+      "N_bits": 14,
+      "classification": "one_factor_in_public_top_k",
+      "covered": true,
+      "hit": {
+        "band_rank": 28,
+        "distance": 89,
+        "rank": 28,
+        "score": [
+          1,
+          112,
+          0,
+          3,
+          1,
+          -89
+        ],
+        "shared_thread_count": 1,
+        "union_thread_count": 4,
+        "which": "p"
+      },
+      "name": "toy_89x113",
+      "p": 89,
+      "public_cost": {
+        "elapsed_seconds": 19.335769,
+        "source_rows": 1774383,
+        "vote_targets": 3531831
+      },
+      "q": 113
+    },
+    {
+      "N": 18905157503,
+      "N_bits": 35,
+      "classification": "one_factor_in_public_top_k",
+      "covered": true,
+      "hit": {
+        "band_rank": 140,
+        "distance": 144203,
+        "rank": 4466,
+        "score": [
+          1,
+          0,
+          0,
+          5,
+          1,
+          -144203
+        ],
+        "shared_thread_count": 1,
+        "union_thread_count": 5,
+        "which": "q"
+      },
+      "name": "continuation_00_131101x144203",
+      "p": 131101,
+      "public_cost": {
+        "elapsed_seconds": 22.252978,
+        "source_rows": 3531828,
+        "vote_targets": 3531828
+      },
+      "q": 144203
+    },
+    {
+      "N": 1209478624103,
+      "N_bits": 41,
+      "classification": "one_factor_in_public_top_k",
+      "covered": true,
+      "hit": {
+        "band_rank": 2136,
+        "distance": 1048583,
+        "rank": 147823,
+        "score": [
+          1,
+          0,
+          0,
+          3,
+          1,
+          -1048583
+        ],
+        "shared_thread_count": 1,
+        "union_thread_count": 3,
+        "which": "p"
+      },
+      "name": "continuation_01_1048583x1153441",
+      "p": 1048583,
+      "public_cost": {
+        "elapsed_seconds": 21.660882,
+        "source_rows": 3531821,
+        "vote_targets": 3531821
+      },
+      "q": 1153441
+    }
+  ],
+  "coverage_failure_count": 0,
+  "covered_failure_count": 0,
+  "status": "success",
+  "success_count": 6
+}
