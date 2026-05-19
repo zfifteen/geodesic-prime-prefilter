@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Explanatory Evidence Amendment — v01 Candidate-List Runner</title>
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; margin: 24px; font-size: 14px; line-height: 1.5; color: #1f2937; background: #f8fafc; }
+main { max-width: 980px; margin: 0 auto; }
+h1 { font-size: 1.65rem; margin: 0 0 4px; color: #0f172a; }
+h2 { font-size: 1.15rem; margin: 22px 0 8px; color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 3px; }
+h3 { font-size: 1.0rem; margin: 14px 0 6px; color: #334155; }
+.panel { background: #fff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 12px 14px; margin: 10px 0; box-shadow: 0 1px 2px rgba(15,23,42,0.04); }
+.frozen { background: #f0fdf4; border-color: #4ade80; }
+.amendment { background: #fefce8; border-color: #facc15; }
+.forbidden { background: #fef2f2; border-color: #f87171; }
+table { width: 100%; border-collapse: collapse; background: #fff; margin: 8px 0; font-size: 12.5px; }
+th, td { border: 1px solid #cbd5e1; padding: 5px 7px; text-align: left; vertical-align: top; }
+th { background: #f1f5f9; font-weight: 600; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+code, pre { background: #f1f5f9; padding: 1px 4px; border-radius: 3px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+pre { padding: 8px; overflow-x: auto; font-size: 12px; }
+ul, ol { padding-left: 18px; margin: 4px 0; }
+li { margin: 2px 0; }
+.status-ok { color: #166534; font-weight: 600; }
+.status-frozen { color: #166534; font-weight: 700; background: #dcfce7; padding: 1px 5px; border-radius: 2px; font-size: 12px; }
+.highlight { background: #fefce8; padding: 1px 3px; }
+.checklist li { list-style: none; margin: 3px 0; }
+.checklist li:before { content: "☐ "; color: #64748b; }
+footer { margin-top: 24px; font-size: 11px; color: #64748b; border-top: 1px solid #e2e8f0; padding-top: 8px; }
+</style>
+</head>
+<body>
+<main>
+<h1>Explanatory Evidence Amendment<br>to v01 Candidate-List Runner</h1>
+<p><strong>Status:</strong> <span class="status-frozen">FROZEN AMENDMENT CONTRACT — v01.1</span></p>
+<p><strong>Parent Contract:</strong> <code>design_contract.html</code> (v01) in this folder<br>
+<strong>Meeting:</strong> <code>candidate-list-search-space-reduction-runner</code> — Explanatory Evidence Amendment<br>
+<strong>Scope:</strong> Public-only diagnostic fields for the existing toy v01 corpus. No change to recovery criteria, cap, depth threshold, thread set, or nomination logic.</p>
+
+<section class="panel frozen">
+<h2>Objective (Public Only)</h2>
+<p>Add the minimum public aggregate statistics, computed entirely during the N-only public CRT construction phase, that allow post-execution analysis to distinguish the five failure modes listed in the meeting prompt using only data visible before the canonical membership audit.</p>
+<p>Recovery surface, emitted list contents, and hit-rate definition remain identical to v01. The 3/10 result on the declared toy corpus is the baseline; this amendment only supplies explanatory descriptors for that same surface.</p>
+</section>
+
+<section class="panel">
+<h2>Exact Fields Added to <code>public_manifest.json</code></h2>
+<p>All fields below are derived strictly from the <code>candidates</code> dictionary (depth ≥ 5 distances) after the public <code>extend_assignments</code> recursion completes and before any sort or truncation. They are written into the manifest inside <code>write_outputs</code> under the same PUBLIC_FREEZE_RECORD discipline.</p>
+
+<table>
+<thead>
+<tr><th>Field</th><th>Type</th><th>Definition (public computation)</th><th>Purpose</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pre_cap_qualified_count</code></td>
+<td>integer</td>
+<td><code>len(candidates)</code> after all qualifying distances have been inserted by <code>add_candidate</code></td>
+<td>Direct measure of filter density. Small value with cap inactive → “filter too sparse”.</td>
+</tr>
+<tr>
+<td><code>max_observed_triangulation_depth</code></td>
+<td>integer</td>
+<td>maximum <code>triangulation_depth</code> value among the qualified set (0 if empty)</td>
+<td>Upper end of the public signal strength on this N.</td>
+</tr>
+<tr>
+<td><code>depth_counts_pre_cap</code></td>
+<td>object</td>
+<td><code>{str(d): count}</code> for every exact depth d ≥ min_depth present in the qualified set</td>
+<td>Full public distribution of closure strength before the cap is applied.</td>
+</tr>
+<tr>
+<td><code>cap_active</code></td>
+<td>boolean</td>
+<td><code>pre_cap_qualified_count &gt; max_candidates</code></td>
+<td>Immediate indicator of cap saturation for this N.</td>
+</tr>
+<tr>
+<td><code>emitted_depth_counts</code></td>
+<td>object</td>
+<td>identical shape to <code>depth_counts_pre_cap</code> but counted only over the final emitted rows (after cap)</td>
+<td>Allows direct comparison of pre-cap mass vs. what the cap retained; computable from public_output but recorded for audit convenience.</td>
+</tr>
+<tr>
+<td><code>cutoff_triangulation_depth</code></td>
+<td>integer</td>
+<td><code>triangulation_depth</code> of the lowest-ranked row in the emitted list (or 0 if empty)</td>
+<td>When cap_active, shows whether the cap is still cutting at high depth (concentration) or has already reached the min_depth floor.</td>
+</tr>
+<tr>
+<td><code>pre_cap_to_emitted_ratio</code></td>
+<td>number or null</td>
+<td><code>pre_cap_qualified_count / emitted_count</code> when emitted_count &gt; 0, else null</td>
+<td>Quantifies how much of the qualified set was discarded by the cap (scale-pressure signal).</td>
+</tr>
+</tbody>
+</table>
+
+<p>These seven fields are the complete addition. No other public or private values are introduced into the manifest or the public_output.jsonl rows.</p>
+</section>
+
+<section class="panel amendment">
+<h2>Optional Public Sidecar — None Required</h2>
+<p>All explanatory aggregates fit inside the existing <code>public_manifest.json</code>. No new sidecar file is created by this amendment. The public_output.jsonl format and content are unchanged (identical row schema and ordering for any given N under the locked v01 nomination rules).</p>
+</section>
+
+<section class="panel">
+<h2>Unchanged Private-Audit Boundary</h2>
+<ul>
+<li>The canonical membership checker (<code>audit_behavior: "canonical_membership_only"</code>) remains the sole operation permitted to read hidden factors after the PUBLIC_FREEZE_RECORD is emitted.</li>
+<li><code>status.json</code> retains its current schema (<code>status</code>, <code>recovered_factor</code> or null, <code>p_emitted</code>, <code>q_emitted</code>).</li>
+<li>No private rank, containment, band position, or “how close” value is ever written to any artifact under this amendment.</li>
+<li>The <code>private_token_scan</code> and PUBLIC_FREEZE_RECORD gate are executed exactly as in v01 before the checker is invoked.</li>
+<li>Recovery language remains strictly “the frozen public list contained the true distance or it did not.”</li>
+</ul>
+</section>
+
+<section class="panel">
+<h2>Rerun Protocol for the Current Toy Corpus</h2>
+<ol>
+<li>Place the amended runner source (named <code>thread_triangulation_v01_1_runner.py</code> or equivalent) in the meeting directory. The nomination logic (CRT extension, <code>add_candidate</code>, scoring key, <code>[:MAX_CANDIDATES]</code> truncation) must be identical to the certified v01 runner; only the collection of the seven aggregates above is added before the slice.</li>
+<li>Execute the amended runner against the identical public <code>cases/toy_corpus.jsonl</code> (SHA unchanged) using the same per-case command pattern, directing output to a fresh tree:
+   <pre><code>output/toy_v01_amended/&lt;case_id&gt;/public/{public_manifest.json, public_output.jsonl}
+output/toy_v01_amended/&lt;case_id&gt;/audit/status.json</code></pre>
+</li>
+<li>For each N: the runner prints an updated PUBLIC_FREEZE_RECORD that includes the seven new manifest fields and their values. Only after the gate completes is the canonical membership checker invoked (reproducing the same recovered/missed labels as v01 because the emitted list is unchanged).</li>
+<li>Aggregation script (or manual) produces <code>output/toy_v01_amended/summary.json</code> and <code>summary.md</code> containing the original summary rows plus the seven new columns for every case.</li>
+<li>The original v01 output tree is left untouched for baseline comparison.</li>
+</ol>
+</section>
+
+<section class="panel">
+<h2>Grok Pre-Execution Certification (Amended Checklist)</h2>
+<p>Before any execution of the v01.1 runner against the toy corpus, Grok must issue a written certification (separate artifact or appended section) confirming that the following hold for the proposed amended source:</p>
+<ol class="checklist">
+<li>Private-token scan still returns false for all 19 forbidden tokens; the scan list is unchanged or only extended with clearly public labels.</li>
+<li>The seven explanatory fields are computed exclusively from the <code>candidates</code> dict inside the public <code>nominate</code> / <code>write_outputs</code> path, using only N, the fixed THREAD_SET, MIN_DEPTH, and MAX_CANDIDATES — no hidden-factor values, no post-freeze re-processing.</li>
+<li>The code path that builds distances, depths, and scores up to the point of truncation is textually identical (or provably equivalent) to the certified v01 runner, guaranteeing that public_output.jsonl content and recovery membership are byte-for-byte reproducible for every N in the corpus.</li>
+<li>The new fields appear in every manifest with the exact names and semantics defined in this amendment contract; the original v01 manifest keys are all still present and numerically unchanged.</li>
+<li>The PUBLIC_FREEZE_RECORD now also prints the new fields (or the entire manifest); the gate still requires clean token scan and hash publication of both output files before “PRIVATE_AUDIT_UNLOCKED: true”.</li>
+<li>No new command-line flags, environment variables, or configuration that could smuggle private information into the public construction have been added.</li>
+</ol>
+<p>Only after a <span class="status-ok">certified_compliant</span> (or certified with required corrections that are then applied) may the amended runner be executed on the toy corpus.</p>
+</section>
+
+<section class="panel">
+<h2>Findings Reporting Requirements (No Private Diagnostics)</h2>
+<p>The post-execution findings report (to be written after the amended run and canonical re-check) must obey the following constraints:</p>
+<ul>
+<li>Every numeric claim is taken from the public manifests (new fields) or the canonical status.json files only.</li>
+<li>Recovered vs. missed cases are compared solely by bucketed aggregates of the seven public fields (e.g., median and range of <code>pre_cap_qualified_count</code>, distribution of <code>max_observed_triangulation_depth</code>, fraction of cases with <code>cap_active</code> true in each bucket, visual or textual overlap of the depth-count histograms).</li>
+<li>Each of the five desired evidence modes is addressed with a direct public observable:
+  <ul>
+  <li><strong>filter too sparse</strong>: cases where <code>pre_cap_qualified_count</code> is low (e.g. &lt; 64) and <code>cap_active = false</code></li>
+  <li><strong>cap saturation</strong>: cases where <code>cap_active = true</code> and <code>pre_cap_qualified_count</code> ≫ 512</li>
+  <li><strong>score concentration</strong>: among cap-active cases, the fraction of emitted rows that sit at <code>max_observed_triangulation_depth</code> or the gap between <code>cutoff_triangulation_depth</code> and <code>max_observed_triangulation_depth</code></li>
+  <li><strong>weak differential signal</strong>: quantitative or qualitative statement on whether the distributions of <code>pre_cap_qualified_count</code> and <code>max_observed_triangulation_depth</code> for the three recovered N values are clearly separated from or overlap heavily with the seven missed N values</li>
+  <li><strong>scale pressure</strong>: trend of <code>pre_cap_to_emitted_ratio</code> (or raw <code>pre_cap_qualified_count</code>) versus N_bits across the corpus, independent of recovery status</li>
+  </ul>
+</li>
+<li>No sentence may reference the private rank, position, or containment status of any true factor distance. The only per-N private-derived label allowed is the binary “recovered” / “missed” supplied by the canonical checker after the freeze gate.</li>
+<li>The report must state the exact limitation: “These public descriptors explain the shape of the filter’s output surface on the declared toy corpus; they do not explain why any individual missed N’s factor distance failed to qualify.”</li>
+</ul>
+</section>
+
+<section class="panel forbidden">
+<h2>Explicit Prohibitions (Reaffirmed)</h2>
+<ul>
+<li>Do not add, compute, or emit any field whose value requires knowledge of p or q (rank among qualified, distance to nearest qualified, band of the true factor, etc.).</li>
+<li>Do not alter the emitted candidate list or the recovery decision procedure.</li>
+<li>Do not introduce randomness, tunable parameters, or post-freeze re-scoring paths.</li>
+<li>Do not change the toy_corpus.jsonl or claim the amendment validates a new parameter set for future use.</li>
+</ul>
+</section>
+
+<section class="panel">
+<h2>Implementation Notes for the Amended Runner</h2>
+<p>The minimal diff from the certified v01 source is:</p>
+<ol>
+<li>Inside <code>nominate</code> (or immediately after the call to <code>extend_assignments</code> inside <code>write_outputs</code>), before the <code>sorted</code> + slice, capture:
+   <pre><code>qualified = list(candidates.values())
+pre_cap = len(qualified)
+if pre_cap == 0:
+    max_d = 0
+    depth_hist = {}
+else:
+    max_d = max(r["triangulation_depth"] for r in qualified)
+    depth_hist = {}
+    for r in qualified:
+        d = r["triangulation_depth"]
+        depth_hist[d] = depth_hist.get(d, 0) + 1</code></pre>
+</li>
+<li>After truncation to <code>rows</code>, compute the emitted histogram and cutoff depth from <code>rows</code> using the same Counter pattern.</li>
+<li>Insert the seven fields into the <code>manifest</code> dict exactly as named above (JSON numbers, booleans, and object with string keys for depths).</li>
+<li>Update the printed PUBLIC_FREEZE_RECORD block and the final manifest echo to include the new keys.</li>
+<li>Leave <code>private_token_labels</code>, <code>THREAD_SET</code>, <code>MIN_DEPTH</code>, <code>MAX_CANDIDATES</code>, scoring key, and all CRT logic untouched.</li>
+</ol>
+<p>The resulting public_output.jsonl for every N in the toy corpus must be identical (same SHA-256) to the v01 artifact when the only difference is the added manifest fields.</p>
+</section>
+
+<footer>
+<p><strong>This amendment contract is frozen.</strong> It adds only public diagnostic aggregates to the v01 surface. The recovery experiment, the 3/10 baseline, and the public/private quarantine are unchanged. Implementation of the v01.1 runner and the subsequent explanatory findings report may proceed only after Grok certification against the checklist above.</p>
+<p>Contract location: <code>…/candidate-list-search-space-reduction-runner/explanatory_evidence_amendment_contract.html</code><br>
+Parent: <code>design_contract.html</code> (v01) and <code>PUBLIC_EVIDENCE_INTEGRITY_CONTRACT.md</code> (sibling meeting).</p>
+</footer>
+</main>
+</body>
+</html>

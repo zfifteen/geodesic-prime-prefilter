@@ -1,0 +1,37 @@
+{
+  "N": 18902665303,
+  "N_bits": 35,
+  "candidate_reduction_bits": 8.0,
+  "candidate_reduction_ratio": "131072/512",
+  "elapsed_seconds": 0.465884,
+  "emitted_count": 512,
+  "max_candidates": 512,
+  "min_depth": 5,
+  "original_space_definition": "count of odd positive distances d with 1 <= d <= public_radius(N)",
+  "original_space_size": 131072,
+  "policy": "thread_triangulation_v01",
+  "public_only": true,
+  "public_radius": 262144,
+  "reduction_status": "measured",
+  "score_key": [
+    "triangulation_depth descending",
+    "shared_thread_count descending",
+    "total_thread_count descending",
+    "distance ascending"
+  ],
+  "source_sha256": "dd1b0d9f1d69f25c845f2812214da92187f4e3750609b1b94963934d3fd03878",
+  "thread_set": [
+    3,
+    5,
+    7,
+    11,
+    13,
+    17,
+    19,
+    23,
+    29,
+    31,
+    37,
+    41
+  ]
+}

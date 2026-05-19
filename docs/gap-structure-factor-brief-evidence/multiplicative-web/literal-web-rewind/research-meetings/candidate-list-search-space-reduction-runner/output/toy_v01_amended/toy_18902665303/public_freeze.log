@@ -1,0 +1,180 @@
+PUBLIC_FREEZE_RECORD:
+public_source_path: /Users/velocityworks/IdeaProjects/prime-gap-structure/docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/research-meetings/candidate-list-search-space-reduction-runner/thread_triangulation_v01_1_runner.py
+public_source_sha256: e2617cc725de2a9aa0e5dc3859baad9339c042cebd2b6f3a7e47fb83a898a0fa
+public_source_private_token_scan: pass
+  p =: False
+  q =: False
+  CASE: False
+  known_factor: False
+  factor_distance: False
+  exact_factor_rank: False
+  target_distance: False
+  private_distance: False
+  gcd: False
+  factorint: False
+  isprime: False
+  nextprime: False
+  sqrt: False
+  random: False
+public_command: python3 thread_triangulation_v01_1_runner.py --n 18902665303 --out-dir output/toy_v01_amended/toy_18902665303/public
+public_output_path: /Users/velocityworks/IdeaProjects/prime-gap-structure/docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/research-meetings/candidate-list-search-space-reduction-runner/output/toy_v01_amended/toy_18902665303/public/public_output.jsonl
+public_output_sha256: e7c366bd2e1baad641c2d2d3d6a88c231586df2a67b0179347313a818cc09db5
+public_manifest_path: /Users/velocityworks/IdeaProjects/prime-gap-structure/docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/research-meetings/candidate-list-search-space-reduction-runner/output/toy_v01_amended/toy_18902665303/public/public_manifest.json
+public_manifest_sha256: 22da41d84b32cdea1977e6d10e8bfdd99ca7ab2845f9a875617602689d102510
+public_record_count: 512
+original_space_size: 131072
+candidate_reduction_ratio: 131072/512
+candidate_reduction_bits: 8.0
+pre_cap_qualified_count: 4506
+max_observed_triangulation_depth: 9
+depth_counts_pre_cap: {"5": 1230, "6": 2435, "7": 744, "8": 86, "9": 11}
+cap_active: True
+emitted_depth_counts: {"7": 415, "8": 86, "9": 11}
+cutoff_triangulation_depth: 7
+pre_cap_to_emitted_ratio: 8.80078125
+public_nominations_summary:
+  - rank: 1
+    distance: 1523
+    score: [9, 0, 8, -1523]
+  - rank: 2
+    distance: 57943
+    score: [9, 0, 8, -57943]
+  - rank: 3
+    distance: 91613
+    score: [9, 0, 8, -91613]
+  - rank: 4
+    distance: 122237
+    score: [9, 0, 8, -122237]
+  - rank: 5
+    distance: 136823
+    score: [9, 0, 8, -136823]
+  - rank: 6
+    distance: 168053
+    score: [9, 0, 8, -168053]
+  - rank: 7
+    distance: 174367
+    score: [9, 0, 8, -174367]
+  - rank: 8
+    distance: 189217
+    score: [9, 0, 8, -189217]
+  - rank: 9
+    distance: 231853
+    score: [9, 0, 8, -231853]
+  - rank: 10
+    distance: 250267
+    score: [9, 0, 8, -250267]
+  - rank: 11
+    distance: 255227
+    score: [9, 0, 8, -255227]
+  - rank: 12
+    distance: 3937
+    score: [8, 0, 7, -3937]
+  - rank: 13
+    distance: 4903
+    score: [8, 0, 7, -4903]
+  - rank: 14
+    distance: 5107
+    score: [8, 0, 7, -5107]
+  - rank: 15
+    distance: 11567
+    score: [8, 0, 7, -11567]
+  - rank: 16
+    distance: 14647
+    score: [8, 0, 7, -14647]
+  - rank: 17
+    distance: 19387
+    score: [8, 0, 7, -19387]
+  - rank: 18
+    distance: 26197
+    score: [8, 0, 7, -26197]
+  - rank: 19
+    distance: 27527
+    score: [8, 0, 7, -27527]
+  - rank: 20
+    distance: 32917
+    score: [8, 0, 7, -32917]
+  - rank: 21
+    distance: 39583
+    score: [8, 0, 7, -39583]
+  - rank: 22
+    distance: 40637
+    score: [8, 0, 7, -40637]
+  - rank: 23
+    distance: 41443
+    score: [8, 0, 7, -41443]
+  - rank: 24
+    distance: 42697
+    score: [8, 0, 7, -42697]
+  - rank: 25
+    distance: 42773
+    score: [8, 0, 7, -42773]
+  - rank: 26
+    distance: 47933
+    score: [8, 0, 7, -47933]
+  - rank: 27
+    distance: 48457
+    score: [8, 0, 7, -48457]
+  - rank: 28
+    distance: 51133
+    score: [8, 0, 7, -51133]
+  - rank: 29
+    distance: 54169
+    score: [8, 0, 7, -54169]
+  - rank: 30
+    distance: 54667
+    score: [8, 0, 7, -54667]
+PRIVATE_AUDIT_UNLOCKED: true
+{
+  "N": 18902665303,
+  "N_bits": 35,
+  "candidate_reduction_bits": 8.0,
+  "candidate_reduction_ratio": "131072/512",
+  "cap_active": true,
+  "cutoff_triangulation_depth": 7,
+  "depth_counts_pre_cap": {
+    "5": 1230,
+    "6": 2435,
+    "7": 744,
+    "8": 86,
+    "9": 11
+  },
+  "elapsed_seconds": 0.415207,
+  "emitted_count": 512,
+  "emitted_depth_counts": {
+    "7": 415,
+    "8": 86,
+    "9": 11
+  },
+  "max_candidates": 512,
+  "max_observed_triangulation_depth": 9,
+  "min_depth": 5,
+  "original_space_definition": "count of odd positive distances d with 1 <= d <= public_radius(N)",
+  "original_space_size": 131072,
+  "policy": "thread_triangulation_v01",
+  "pre_cap_qualified_count": 4506,
+  "pre_cap_to_emitted_ratio": 8.80078125,
+  "public_only": true,
+  "public_radius": 262144,
+  "reduction_status": "measured",
+  "score_key": [
+    "triangulation_depth descending",
+    "shared_thread_count descending",
+    "total_thread_count descending",
+    "distance ascending"
+  ],
+  "source_sha256": "e2617cc725de2a9aa0e5dc3859baad9339c042cebd2b6f3a7e47fb83a898a0fa",
+  "thread_set": [
+    3,
+    5,
+    7,
+    11,
+    13,
+    17,
+    19,
+    23,
+    29,
+    31,
+    37,
+    41
+  ]
+}

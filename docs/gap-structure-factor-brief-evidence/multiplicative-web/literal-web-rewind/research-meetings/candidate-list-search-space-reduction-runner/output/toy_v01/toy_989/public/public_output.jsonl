@@ -1,0 +1,2 @@
+{"distance": 1, "left_thread_count": 2, "left_threads": [13, 19], "rank": 1, "right_thread_count": 3, "right_threads": [3, 5, 11], "score": [6, 0, 5, -1], "shared_thread_count": 0, "shared_threads": [], "total_thread_count": 5, "triangulation_depth": 6}
+{"distance": 23, "left_thread_count": 3, "left_threads": [3, 7, 23], "rank": 2, "right_thread_count": 2, "right_threads": [11, 23], "score": [5, 1, 5, -23], "shared_thread_count": 1, "shared_threads": [23], "total_thread_count": 5, "triangulation_depth": 5}

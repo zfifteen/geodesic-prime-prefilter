@@ -1,0 +1,156 @@
+PUBLIC_FREEZE_RECORD:
+public_source_path: /Users/velocityworks/IdeaProjects/prime-gap-structure/docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/research-meetings/candidate-list-search-space-reduction-runner/thread_triangulation_v01_runner.py
+public_source_sha256: dd1b0d9f1d69f25c845f2812214da92187f4e3750609b1b94963934d3fd03878
+public_source_private_token_scan: pass
+  p =: False
+  q =: False
+  CASE: False
+  known_factor: False
+  factor_distance: False
+  exact_factor_rank: False
+  target_distance: False
+  private_distance: False
+  gcd: False
+  factorint: False
+  isprime: False
+  nextprime: False
+  sqrt: False
+  random: False
+public_command: python3 thread_triangulation_v01_runner.py --n 1242079 --out-dir output/toy_v01/toy_1242079/public
+public_output_path: /Users/velocityworks/IdeaProjects/prime-gap-structure/docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/research-meetings/candidate-list-search-space-reduction-runner/output/toy_v01/toy_1242079/public/public_output.jsonl
+public_output_sha256: 1c447178d2ff669e0f2d4c12f3b6bb8f7cf8ce4b2501a9251b72079c2e474538
+public_manifest_path: /Users/velocityworks/IdeaProjects/prime-gap-structure/docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/research-meetings/candidate-list-search-space-reduction-runner/output/toy_v01/toy_1242079/public/public_manifest.json
+public_manifest_sha256: 3eb64211ee631b4cf760e5f9d9cafd0ec4326e899d7cc0c6eda56b35affab4f0
+public_record_count: 144
+original_space_size: 1024
+candidate_reduction_ratio: 1024/144
+candidate_reduction_bits: 2.830074998557688
+public_nominations_summary:
+  - rank: 1
+    distance: 281
+    score: [7, 0, 6, -281]
+  - rank: 2
+    distance: 631
+    score: [7, 0, 6, -631]
+  - rank: 3
+    distance: 839
+    score: [7, 0, 6, -839]
+  - rank: 4
+    distance: 1091
+    score: [7, 0, 6, -1091]
+  - rank: 5
+    distance: 1301
+    score: [7, 0, 6, -1301]
+  - rank: 6
+    distance: 1471
+    score: [7, 0, 6, -1471]
+  - rank: 7
+    distance: 1691
+    score: [7, 0, 6, -1691]
+  - rank: 8
+    distance: 1861
+    score: [7, 0, 6, -1861]
+  - rank: 9
+    distance: 1889
+    score: [7, 0, 6, -1889]
+  - rank: 10
+    distance: 59
+    score: [6, 0, 5, -59]
+  - rank: 11
+    distance: 85
+    score: [6, 0, 5, -85]
+  - rank: 12
+    distance: 125
+    score: [6, 0, 5, -125]
+  - rank: 13
+    distance: 179
+    score: [6, 0, 5, -179]
+  - rank: 14
+    distance: 239
+    score: [6, 0, 5, -239]
+  - rank: 15
+    distance: 331
+    score: [6, 0, 5, -331]
+  - rank: 16
+    distance: 349
+    score: [6, 0, 5, -349]
+  - rank: 17
+    distance: 467
+    score: [6, 0, 5, -467]
+  - rank: 18
+    distance: 657
+    score: [6, 0, 5, -657]
+  - rank: 19
+    distance: 773
+    score: [6, 0, 5, -773]
+  - rank: 20
+    distance: 825
+    score: [6, 0, 5, -825]
+  - rank: 21
+    distance: 841
+    score: [6, 0, 5, -841]
+  - rank: 22
+    distance: 877
+    score: [6, 0, 5, -877]
+  - rank: 23
+    distance: 995
+    score: [6, 0, 5, -995]
+  - rank: 24
+    distance: 1009
+    score: [6, 0, 5, -1009]
+  - rank: 25
+    distance: 1021
+    score: [6, 0, 5, -1021]
+  - rank: 26
+    distance: 1151
+    score: [6, 0, 5, -1151]
+  - rank: 27
+    distance: 1163
+    score: [6, 0, 5, -1163]
+  - rank: 28
+    distance: 1189
+    score: [6, 0, 5, -1189]
+  - rank: 29
+    distance: 1229
+    score: [6, 0, 5, -1229]
+  - rank: 30
+    distance: 1459
+    score: [6, 0, 5, -1459]
+PRIVATE_AUDIT_UNLOCKED: true
+{
+  "N": 1242079,
+  "N_bits": 21,
+  "candidate_reduction_bits": 2.830074998557688,
+  "candidate_reduction_ratio": "1024/144",
+  "elapsed_seconds": 0.349627,
+  "emitted_count": 144,
+  "max_candidates": 512,
+  "min_depth": 5,
+  "original_space_definition": "count of odd positive distances d with 1 <= d <= public_radius(N)",
+  "original_space_size": 1024,
+  "policy": "thread_triangulation_v01",
+  "public_only": true,
+  "public_radius": 2048,
+  "reduction_status": "measured",
+  "score_key": [
+    "triangulation_depth descending",
+    "shared_thread_count descending",
+    "total_thread_count descending",
+    "distance ascending"
+  ],
+  "source_sha256": "dd1b0d9f1d69f25c845f2812214da92187f4e3750609b1b94963934d3fd03878",
+  "thread_set": [
+    3,
+    5,
+    7,
+    11,
+    13,
+    17,
+    19,
+    23,
+    29,
+    31,
+    37,
+    41
+  ]
+}

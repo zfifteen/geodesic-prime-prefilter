@@ -1,0 +1,109 @@
+{
+  "case_count": 10,
+  "hit_rate": "3/10",
+  "missed_count": 7,
+  "policy": "thread_triangulation_v01",
+  "recovered_count": 3,
+  "rows": [
+    {
+      "N_bits": 41,
+      "candidate_reduction_bits": 11.0,
+      "candidate_reduction_ratio": "1048576/512",
+      "case": "toy_1209476905903",
+      "emitted_count": 512,
+      "original_space_size": 1048576,
+      "recovered_factor": null,
+      "status": "missed"
+    },
+    {
+      "N_bits": 21,
+      "candidate_reduction_bits": 2.830074998557688,
+      "candidate_reduction_ratio": "1024/144",
+      "case": "toy_1242079",
+      "emitted_count": 144,
+      "original_space_size": 1024,
+      "recovered_factor": "p",
+      "status": "recovered"
+    },
+    {
+      "N_bits": 35,
+      "candidate_reduction_bits": 8.0,
+      "candidate_reduction_ratio": "131072/512",
+      "case": "toy_18902665303",
+      "emitted_count": 512,
+      "original_space_size": 131072,
+      "recovered_factor": null,
+      "status": "missed"
+    },
+    {
+      "N_bits": 28,
+      "candidate_reduction_bits": 4.0,
+      "candidate_reduction_ratio": "8192/512",
+      "case": "toy_200250077",
+      "emitted_count": 512,
+      "original_space_size": 8192,
+      "recovered_factor": null,
+      "status": "missed"
+    },
+    {
+      "N_bits": 15,
+      "candidate_reduction_bits": 2.5405683813627027,
+      "candidate_reduction_ratio": "128/22",
+      "case": "toy_25807",
+      "emitted_count": 22,
+      "original_space_size": 128,
+      "recovered_factor": "q",
+      "status": "recovered"
+    },
+    {
+      "N_bits": 33,
+      "candidate_reduction_bits": 7.0,
+      "candidate_reduction_ratio": "65536/512",
+      "case": "toy_4295229443",
+      "emitted_count": 512,
+      "original_space_size": 65536,
+      "recovered_factor": null,
+      "status": "missed"
+    },
+    {
+      "N_bits": 53,
+      "candidate_reduction_bits": 17.0,
+      "candidate_reduction_ratio": "67108864/512",
+      "case": "toy_4951764003343009",
+      "emitted_count": 512,
+      "original_space_size": 67108864,
+      "recovered_factor": null,
+      "status": "missed"
+    },
+    {
+      "N_bits": 47,
+      "candidate_reduction_bits": 14.0,
+      "candidate_reduction_ratio": "8388608/512",
+      "case": "toy_77468500194643",
+      "emitted_count": 512,
+      "original_space_size": 8388608,
+      "recovered_factor": null,
+      "status": "missed"
+    },
+    {
+      "N_bits": 14,
+      "candidate_reduction_bits": 2.678071905112638,
+      "candidate_reduction_ratio": "64/10",
+      "case": "toy_9379",
+      "emitted_count": 10,
+      "original_space_size": 64,
+      "recovered_factor": null,
+      "status": "missed"
+    },
+    {
+      "N_bits": 10,
+      "candidate_reduction_bits": 3.0,
+      "candidate_reduction_ratio": "16/2",
+      "case": "toy_989",
+      "emitted_count": 2,
+      "original_space_size": 16,
+      "recovered_factor": "p",
+      "status": "recovered"
+    }
+  ]
+}
