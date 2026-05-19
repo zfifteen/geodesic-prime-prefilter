@@ -1,0 +1,23 @@
+{
+  "N": 115792089237312414508386377417178905313976935220826030231122313795589633828143,
+  "N_bits": 256,
+  "elapsed_seconds": 0.003629,
+  "emit_limit": 30,
+  "min_thread_count": 4,
+  "policy": "n_only_sparse_web_crt_nomination",
+  "public_only": true,
+  "public_record_count": 30,
+  "radius": 340282366920938463463374607431768211456,
+  "threads": [
+    2,
+    3,
+    5,
+    7,
+    11,
+    13,
+    17,
+    19,
+    23,
+    29
+  ]
+}
