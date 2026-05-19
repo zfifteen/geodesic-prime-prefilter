@@ -1,0 +1,43 @@
+{
+  "N": 77409474878803,
+  "N_bits": 47,
+  "band_width": 262144,
+  "band_width_ratio": "1/64",
+  "cap_ratio": "1/16",
+  "policy": "anchor_confirmed_band_scale",
+  "public_cost": {
+    "band_count": 64,
+    "elapsed_seconds": 82.863428,
+    "scored_distances": 16777216
+  },
+  "public_only": true,
+  "radius": 16777216,
+  "residual_limit": 1,
+  "score_mode": "anchor_confirmed",
+  "selected_band_rows": 1048576,
+  "small_primes": [
+    2,
+    3,
+    5,
+    7,
+    11,
+    13,
+    17,
+    19,
+    23,
+    29
+  ],
+  "thread_counts": {
+    "2": 16777216,
+    "3": 11184811,
+    "5": 6710886,
+    "7": 4793490,
+    "11": 3050403,
+    "13": 2581110,
+    "17": 1973790,
+    "19": 1766023,
+    "23": 1458888,
+    "29": 1157049
+  },
+  "top_per_band": 16384
+}

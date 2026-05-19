@@ -1,0 +1,447 @@
+{
+  "case_count": 4,
+  "cases": [
+    {
+      "N": 1209478624103,
+      "N_bits": 41,
+      "attempts": [
+        {
+          "cap_ratio": "1/16",
+          "hit": null,
+          "public_cost": {
+            "band_count": 64,
+            "elapsed_seconds": 8.995507,
+            "scored_distances": 2097152
+          },
+          "selected_band_rows": 131072,
+          "top_per_band": 2048
+        },
+        {
+          "cap_ratio": "1/8",
+          "hit": {
+            "band": 32,
+            "band_rank": 2136,
+            "distance": 1048583,
+            "score": [
+              1,
+              0,
+              0,
+              3,
+              1,
+              -1048583
+            ],
+            "shared_thread_count": 1,
+            "union_thread_count": 3,
+            "which": "p"
+          },
+          "public_cost": {
+            "band_count": 64,
+            "elapsed_seconds": 10.968103,
+            "scored_distances": 2097152
+          },
+          "selected_band_rows": 262144,
+          "top_per_band": 4096
+        }
+      ],
+      "cap_ratio_schedule": [
+        "1/16",
+        "1/8",
+        "1/4",
+        "1/2",
+        "1/1"
+      ],
+      "classification": "one_factor_in_public_band_rows",
+      "covered": true,
+      "first_success_cap_ratio": "1/8",
+      "first_success_top_per_band": 4096,
+      "hit": {
+        "band": 32,
+        "band_rank": 2136,
+        "distance": 1048583,
+        "score": [
+          1,
+          0,
+          0,
+          3,
+          1,
+          -1048583
+        ],
+        "shared_thread_count": 1,
+        "union_thread_count": 3,
+        "which": "p"
+      },
+      "name": "baseline_41bit_1048583x1153441",
+      "p": 1048583,
+      "posthoc_target_band_ranks": {
+        "p": {
+          "band": 32,
+          "band_rank": 2136,
+          "band_width": 32768,
+          "distance": 1048583,
+          "score": [
+            1,
+            0,
+            0,
+            3,
+            1,
+            -1048583
+          ]
+        },
+        "q": {
+          "band": 35,
+          "band_rank": 9638,
+          "band_width": 32768,
+          "distance": 1153441,
+          "score": [
+            1,
+            0,
+            0,
+            2,
+            1,
+            -1153441
+          ]
+        }
+      },
+      "public_cost": {
+        "band_count": 64,
+        "elapsed_seconds": 10.968103,
+        "scored_distances": 2097152
+      },
+      "q": 1153441,
+      "radius": 2097152,
+      "selected_band_rows": 262144
+    },
+    {
+      "N": 4838841690817,
+      "N_bits": 43,
+      "attempts": [
+        {
+          "cap_ratio": "1/16",
+          "hit": null,
+          "public_cost": {
+            "band_count": 64,
+            "elapsed_seconds": 18.565855,
+            "scored_distances": 4194304
+          },
+          "selected_band_rows": 262144,
+          "top_per_band": 4096
+        },
+        {
+          "cap_ratio": "1/8",
+          "hit": null,
+          "public_cost": {
+            "band_count": 64,
+            "elapsed_seconds": 21.31412,
+            "scored_distances": 4194304
+          },
+          "selected_band_rows": 524288,
+          "top_per_band": 8192
+        },
+        {
+          "cap_ratio": "1/4",
+          "hit": null,
+          "public_cost": {
+            "band_count": 64,
+            "elapsed_seconds": 29.479654,
+            "scored_distances": 4194304
+          },
+          "selected_band_rows": 1048576,
+          "top_per_band": 16384
+        },
+        {
+          "cap_ratio": "1/2",
+          "hit": {
+            "band": 32,
+            "band_rank": 16490,
+            "distance": 2097287,
+            "score": [
+              1,
+              0,
+              0,
+              2,
+              1,
+              -2097287
+            ],
+            "shared_thread_count": 1,
+            "union_thread_count": 3,
+            "which": "p"
+          },
+          "public_cost": {
+            "band_count": 64,
+            "elapsed_seconds": 39.208996,
+            "scored_distances": 4194304
+          },
+          "selected_band_rows": 2097152,
+          "top_per_band": 32768
+        }
+      ],
+      "cap_ratio_schedule": [
+        "1/16",
+        "1/8",
+        "1/4",
+        "1/2",
+        "1/1"
+      ],
+      "classification": "one_factor_in_public_band_rows",
+      "covered": true,
+      "first_success_cap_ratio": "1/2",
+      "first_success_top_per_band": 32768,
+      "hit": {
+        "band": 32,
+        "band_rank": 16490,
+        "distance": 2097287,
+        "score": [
+          1,
+          0,
+          0,
+          2,
+          1,
+          -2097287
+        ],
+        "shared_thread_count": 1,
+        "union_thread_count": 3,
+        "which": "p"
+      },
+      "name": "scale_43bit_2097287x2307191",
+      "p": 2097287,
+      "posthoc_target_band_ranks": {
+        "p": {
+          "band": 32,
+          "band_rank": 16490,
+          "band_width": 65536,
+          "distance": 2097287,
+          "score": [
+            1,
+            0,
+            0,
+            2,
+            1,
+            -2097287
+          ]
+        },
+        "q": {
+          "band": 35,
+          "band_rank": 19331,
+          "band_width": 65536,
+          "distance": 2307191,
+          "score": [
+            1,
+            0,
+            0,
+            2,
+            1,
+            -2307191
+          ]
+        }
+      },
+      "public_cost": {
+        "band_count": 64,
+        "elapsed_seconds": 39.208996,
+        "scored_distances": 4194304
+      },
+      "q": 2307191,
+      "radius": 4194304,
+      "selected_band_rows": 2097152
+    },
+    {
+      "N": 19353369722413,
+      "N_bits": 45,
+      "attempts": [
+        {
+          "cap_ratio": "1/16",
+          "hit": {
+            "band": 32,
+            "band_rank": 1243,
+            "distance": 4194433,
+            "score": [
+              1,
+              0,
+              0,
+              4,
+              1,
+              -4194433
+            ],
+            "shared_thread_count": 1,
+            "union_thread_count": 4,
+            "which": "p"
+          },
+          "public_cost": {
+            "band_count": 64,
+            "elapsed_seconds": 40.076463,
+            "scored_distances": 8388608
+          },
+          "selected_band_rows": 524288,
+          "top_per_band": 8192
+        }
+      ],
+      "cap_ratio_schedule": [
+        "1/16",
+        "1/8",
+        "1/4",
+        "1/2",
+        "1/1"
+      ],
+      "classification": "one_factor_in_public_band_rows",
+      "covered": true,
+      "first_success_cap_ratio": "1/16",
+      "first_success_top_per_band": 8192,
+      "hit": {
+        "band": 32,
+        "band_rank": 1243,
+        "distance": 4194433,
+        "score": [
+          1,
+          0,
+          0,
+          4,
+          1,
+          -4194433
+        ],
+        "shared_thread_count": 1,
+        "union_thread_count": 4,
+        "which": "p"
+      },
+      "name": "scale_45bit_4194433x4614061",
+      "p": 4194433,
+      "posthoc_target_band_ranks": {
+        "p": {
+          "band": 32,
+          "band_rank": 1243,
+          "band_width": 131072,
+          "distance": 4194433,
+          "score": [
+            1,
+            0,
+            0,
+            4,
+            1,
+            -4194433
+          ]
+        },
+        "q": {
+          "band": 35,
+          "band_rank": 13442,
+          "band_width": 131072,
+          "distance": 4614061,
+          "score": [
+            1,
+            0,
+            0,
+            3,
+            1,
+            -4614061
+          ]
+        }
+      },
+      "public_cost": {
+        "band_count": 64,
+        "elapsed_seconds": 40.076463,
+        "scored_distances": 8388608
+      },
+      "q": 4614061,
+      "radius": 8388608,
+      "selected_band_rows": 524288
+    },
+    {
+      "N": 77409474878803,
+      "N_bits": 47,
+      "attempts": [
+        {
+          "cap_ratio": "1/16",
+          "hit": {
+            "band": 32,
+            "band_rank": 245,
+            "distance": 8388733,
+            "score": [
+              1,
+              0,
+              0,
+              5,
+              1,
+              -8388733
+            ],
+            "shared_thread_count": 1,
+            "union_thread_count": 6,
+            "which": "p"
+          },
+          "public_cost": {
+            "band_count": 64,
+            "elapsed_seconds": 82.863428,
+            "scored_distances": 16777216
+          },
+          "selected_band_rows": 1048576,
+          "top_per_band": 16384
+        }
+      ],
+      "cap_ratio_schedule": [
+        "1/16",
+        "1/8",
+        "1/4",
+        "1/2",
+        "1/1"
+      ],
+      "classification": "one_factor_in_public_band_rows",
+      "covered": true,
+      "first_success_cap_ratio": "1/16",
+      "first_success_top_per_band": 16384,
+      "hit": {
+        "band": 32,
+        "band_rank": 245,
+        "distance": 8388733,
+        "score": [
+          1,
+          0,
+          0,
+          5,
+          1,
+          -8388733
+        ],
+        "shared_thread_count": 1,
+        "union_thread_count": 6,
+        "which": "p"
+      },
+      "name": "scale_47bit_8388733x9227791",
+      "p": 8388733,
+      "posthoc_target_band_ranks": {
+        "p": {
+          "band": 32,
+          "band_rank": 245,
+          "band_width": 262144,
+          "distance": 8388733,
+          "score": [
+            1,
+            0,
+            0,
+            5,
+            1,
+            -8388733
+          ]
+        },
+        "q": {
+          "band": 35,
+          "band_rank": 26850,
+          "band_width": 262144,
+          "distance": 9227791,
+          "score": [
+            1,
+            0,
+            0,
+            3,
+            1,
+            -9227791
+          ]
+        }
+      },
+      "public_cost": {
+        "band_count": 64,
+        "elapsed_seconds": 82.863428,
+        "scored_distances": 16777216
+      },
+      "q": 9227791,
+      "radius": 16777216,
+      "selected_band_rows": 1048576
+    }
+  ],
+  "status": "success",
+  "success_count": 4
+}
