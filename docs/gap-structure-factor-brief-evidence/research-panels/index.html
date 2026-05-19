@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>From Prime Gaps To Factor Recovery - Research Panel Skeleton</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #1f2933;
+      --muted: #5e6a73;
+      --line: #d7dde3;
+      --paper: #fbfcfd;
+      --panel: #ffffff;
+      --accent: #0f766e;
+      --warn: #9a3412;
+      --blue: #1d4ed8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 13px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 28px 18px 40px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 2rem;
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .lede {
+      max-width: 780px;
+      margin: 0 0 22px;
+      color: var(--muted);
+    }
+
+    .panel-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+      gap: 12px;
+      padding: 14px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+    }
+
+    .panel h2 {
+      margin: 0 0 8px;
+      font-size: 1.18rem;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 0 0 8px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 22px;
+      padding: 2px 7px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .tag.active {
+      border-color: #99f6e4;
+      color: var(--accent);
+      background: #ecfdf5;
+    }
+
+    .tag.unresolved {
+      border-color: #fed7aa;
+      color: var(--warn);
+      background: #fff7ed;
+    }
+
+    p {
+      margin: 0 0 8px;
+    }
+
+    .slot {
+      min-height: 120px;
+      padding: 10px;
+      border: 1px dashed #aeb8c2;
+      border-radius: 6px;
+      background: #f8fafc;
+    }
+
+    .slot strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--blue);
+    }
+
+    .graphic {
+      min-height: 120px;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #ffffff;
+      overflow: hidden;
+    }
+
+    .graphic img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12px;
+    }
+
+    @media (max-width: 760px) {
+      main {
+        padding: 20px 12px 32px;
+      }
+
+      .panel {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>From Prime Gaps To Factor Recovery</h1>
+    <p class="lede">Research panel skeleton for a ten-paragraph external status brief. Each panel pairs one plain-language paragraph with one infographic, backed by the evidence folders already collected.</p>
+
+    <div class="panel-grid">
+      <section class="panel">
+        <div>
+          <div class="meta"><span class="tag active">Panel 01</span><span class="tag active">Complete</span></div>
+          <h2>The Public Factor Question</h2>
+          <p>Factoring starts with one visible number and two hidden prime factors. This research branch asks whether the visible order around that number contains enough structure to point back to one of the hidden factors. The work treats the product as sitting inside a public neighborhood whose ordered marks can be carried from one side of the product to the other. The central question is whether that public structure forces a factor endpoint, or whether the honest result remains unresolved.</p>
+          <p>Evidence: <code>../paragraph-01-public-factor-question/</code></p>
+        </div>
+        <figure class="graphic">
+          <img src="../paragraph-01-public-factor-question/infographic.svg" alt="Public product N centered between two hidden factor endpoints, with visible ordered marks and a question arrow from public structure to a factor endpoint.">
+        </figure>
+      </section>
+
+      <section class="panel">
+        <div>
+          <div class="meta"><span class="tag">Panel 02</span></div>
+          <h2>Proved Gap Foundation</h2>
+          <p>The foundation is already proved for ordinary prime gaps. Start with a known prime and inspect the integers after it in order. The first later integer with exactly two divisors is the next prime, because having exactly two divisors is the definition of being prime. Between the two primes, every interior integer is composite, and its divisor count measures how many factor-choice channels it has. The selected interior point is the first composite where that load is as small as it gets inside the gap.</p>
+          <p>Evidence: <code>../paragraph-02-proved-gap-foundation/</code></p>
+        </div>
+        <figure class="graphic">
+          <img src="../paragraph-02-proved-gap-foundation/infographic.svg" alt="A prime gap from p to q with interior divisor counts and the first lowest-load composite highlighted.">
+        </figure>
+      </section>
+
+      <section class="panel">
+        <div>
+          <div class="meta"><span class="tag">Panel 03</span></div>
+          <h2>Public Endpoint Translation</h2>
+          <p>The factor branch translates the gap foundation into a public endpoint chain around a product. Begin with the visible product and the ordered marks near it. Choose a public endpoint on one side, carry that position through division by the product, and inspect the endpoint structure that appears on the other side. When both sides close against each other, the runner emits a public endpoint class. When the public structure fails the closure tests, the runner stops with an unresolved structural state.</p>
+          <p>Evidence: <code>../paragraph-03-public-endpoint-translation/</code></p>
+        </div>
+        <figure class="graphic">
+          <img src="../paragraph-03-public-endpoint-translation/infographic.svg" alt="A lower endpoint chain transports through public product N to an upper endpoint chain.">
+        </figure>
+      </section>
+
+      <section class="panel">
+        <div>
+          <div class="meta"><span class="tag">Panel 04</span></div>
+          <h2>Current Live Runner</h2>
+          <p>The live runner now has a clear committed surface. On the 40-bit row, public endpoint closure emits a factor endpoint and downstream audit confirms it. On the 50-bit row, the public structure reaches a carrier mismatch and the runner returns unresolved before audit. On the 64-bit row, mutual public closure emits a factor endpoint and downstream audit confirms it. These rows are implementation evidence for the current rule, not a universal theorem.</p>
+          <p>Evidence: <code>../paragraph-04-current-live-runner/</code></p>
+        </div>
+        <figure class="graphic">
+          <img src="../paragraph-04-current-live-runner/infographic.svg" alt="Three committed rows showing public inference and audit status for 40-bit, 50-bit, and 64-bit cases.">
+        </figure>
+      </section>
+
+      <section class="panel">
+        <div>
+          <div class="meta"><span class="tag">Panel 05</span></div>
+          <h2>Status Separation</h2>
+          <p>A key branch cleanup was semantic rather than decorative. Public endpoint structure is evidence, but it is not automatically a recovered factor. The current contract says a row is resolved only when public inference finds at least one actual factor endpoint and a separate downstream audit confirms that fact. Sidecar measurements, blocker notes, and survivor states remain useful research evidence, but they do not count as factor recovery.</p>
+          <p>Evidence: <code>../paragraph-05-status-separation-correction/</code></p>
+        </div>
+        <figure class="graphic">
+          <img src="../paragraph-05-status-separation-correction/infographic.svg" alt="Three separate gates for public structure, factor endpoint, and audit confirmation.">
+        </figure>
+      </section>
+
+      <section class="panel">
+        <div>
+          <div class="meta"><span class="tag unresolved">Panel 06</span></div>
+          <h2>One Remaining Bridge</h2>
+          <p>The recent proof search narrowed the open problem to one bridge. In the current surface, the public product lands at a selected point whose load is <code>4</code>, and the transported endpoint side also carries load <code>4</code>. The measured pattern says that this equality pins the right side and forces the decisive motion to the lower left side. The remaining proof obligation is to show why that left-side event must coincide with the public gate that selects the surviving factor lane.</p>
+          <p>Evidence: <code>../paragraph-06-one-remaining-bridge/</code></p>
+        </div>
+        <figure class="graphic">
+          <img src="../paragraph-06-one-remaining-bridge/infographic.svg" alt="Two equal load values pin the right side and point to one remaining proof bridge.">
+        </figure>
+      </section>
+
+      <section class="panel">
+        <div>
+          <div class="meta"><span class="tag">Panel 07</span></div>
+          <h2>Bridges Crossed</h2>
+          <p>Several bridges have already been crossed. The work first forced a residue pair for the hidden factors under the active public condition. It then tied that residue pair to the public product residue, reduced the lower-side motion to a four-slot chain, replaced an overly strong exact trigger with a smaller neighboring-gate condition, and finally translated that gate into public arithmetic. The remaining bridge is narrower because these earlier reductions removed broad alternatives.</p>
+          <p>Evidence: <code>../paragraph-07-bridges-crossed/</code></p>
+        </div>
+        <figure class="graphic">
+          <img src="../paragraph-07-bridges-crossed/infographic.svg" alt="Six completed bridge reductions lead to one remaining bridge.">
+        </figure>
+      </section>
+
+      <section class="panel">
+        <div>
+          <div class="meta"><span class="tag">Panel 08</span></div>
+          <h2>Invalidated Shortcut</h2>
+          <p>The branch also ruled out a tempting shortcut. A broad shadow pattern appeared in the measured surface, and at first it looked like a candidate for separating the wrong lanes from the surviving lanes. The wider check showed the same shadow on the survivor lanes as well. That makes the shadow real, but not selector-grade. The result prevents the project from promoting a local pattern into a proof step that the evidence does not support.</p>
+          <p>Evidence: <code>../paragraph-08-invalidated-shadow-selector/</code></p>
+        </div>
+        <figure class="graphic">
+          <img src="../paragraph-08-invalidated-shadow-selector/infographic.svg" alt="The same shadow mark appears on excluded lanes and survivor lanes, making it real but not a selector.">
+        </figure>
+      </section>
+
+      <section class="panel">
+        <div>
+          <div class="meta"><span class="tag">Panel 09</span></div>
+          <h2>Square-Fiber Selector</h2>
+          <p>The latest positive signal is more specific. The visible product residue groups twelve same-phase candidate lanes into three public square fibers, four lanes per fiber. The product residue alone does not choose the surviving lane, but a second public co-landing test does on the current matrix: one fiber selects no survivor, and the other two select exactly the two survivor lanes. This is a measured selector signal, not yet a universal selector theorem.</p>
+          <p>Evidence: <code>../paragraph-09-square-fiber-selector/</code></p>
+        </div>
+        <figure class="graphic">
+          <img src="../paragraph-09-square-fiber-selector/infographic.svg" alt="Twelve lanes collapse into three public square-fiber boxes, with two survivor lanes selected.">
+        </figure>
+      </section>
+
+      <section class="panel">
+        <div>
+          <div class="meta"><span class="tag unresolved">Panel 10</span></div>
+          <h2>Current Status</h2>
+          <p>The concise status is strong but bounded. The branch has built a public endpoint-chain runner, corrected its result language, recorded factor-confirmed 40-bit and 64-bit rows, preserved the unresolved 50-bit row, reduced the proof search to one bridge, ruled out a false selector, and found a sharper square-fiber selector signal. The remaining task is to turn that measured selector behavior into a public theorem that forces the survivor lane, and then to show that the forced lane carries a factor endpoint.</p>
+          <p>Evidence: <code>../paragraph-10-current-status-and-next-target/</code></p>
+        </div>
+        <figure class="graphic">
+          <img src="../paragraph-10-current-status-and-next-target/infographic.svg" alt="A status board separating built artifacts, measured findings, and missing proof work.">
+        </figure>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

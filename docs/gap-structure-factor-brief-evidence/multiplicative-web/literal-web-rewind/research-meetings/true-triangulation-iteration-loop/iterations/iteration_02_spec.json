@@ -1,0 +1,9 @@
+{
+  "iteration": 2,
+  "radius": 16384,
+  "small_primes": [2, 3, 5],
+  "residual_limit": 32768,
+  "score_mode": "rare_thread_balance",
+  "top_k": 1000,
+  "design_reason": "Iteration 1 failed because dense 2,3,5 source counts dominated. This keeps the same triangulation projection but ranks balanced rare-thread evidence higher than dense-thread evidence."
+}

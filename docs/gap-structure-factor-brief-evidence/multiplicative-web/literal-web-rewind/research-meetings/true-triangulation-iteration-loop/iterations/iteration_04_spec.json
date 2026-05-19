@@ -1,0 +1,9 @@
+{
+  "iteration": 4,
+  "radius": 262144,
+  "small_primes": [2, 3, 5],
+  "residual_limit": 32768,
+  "score_mode": "rare_per_distance",
+  "top_k": 1000,
+  "design_reason": "Iteration 3 recovered every covered toy case, and failed only by coverage on continuation cases. This keeps the score fixed and expands the public window to cover the first continuation case."
+}

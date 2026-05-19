@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 360" role="img" aria-labelledby="title desc">
+  <title id="title">Public square-fiber selector</title>
+  <desc id="desc">Twelve candidate lanes are grouped into three public square fibers; the co-landing test selects none in 37, one in 97, and one in 157.</desc>
+  <rect width="920" height="360" fill="#fbfcfd"/>
+  <rect x="34" y="34" width="852" height="292" rx="8" fill="#fff" stroke="#d7dde3"/>
+  <text x="460" y="76" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="22" font-weight="700" fill="#1f2933">Public residue groups the candidate lanes</text>
+  <g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" text-anchor="middle" font-size="12">
+    <rect x="90" y="135" width="220" height="130" rx="8" fill="#f8fafc" stroke="#d7dde3"/>
+    <rect x="350" y="135" width="220" height="130" rx="8" fill="#f8fafc" stroke="#d7dde3"/>
+    <rect x="610" y="135" width="220" height="130" rx="8" fill="#f8fafc" stroke="#d7dde3"/>
+    <text x="200" y="160" font-size="15" font-weight="700" fill="#334155">fiber 37</text>
+    <text x="460" y="160" font-size="15" font-weight="700" fill="#334155">fiber 97</text>
+    <text x="720" y="160" font-size="15" font-weight="700" fill="#334155">fiber 157</text>
+    <g fill="#e2e8f0" stroke="#94a3b8">
+      <rect x="120" y="185" width="36" height="30" rx="5"/><rect x="170" y="185" width="36" height="30" rx="5"/><rect x="220" y="185" width="36" height="30" rx="5"/><rect x="270" y="185" width="36" height="30" rx="5"/>
+      <rect x="380" y="185" width="36" height="30" rx="5"/><rect x="430" y="185" width="36" height="30" rx="5"/><rect x="480" y="185" width="36" height="30" rx="5"/><rect x="530" y="185" width="36" height="30" rx="5"/>
+      <rect x="640" y="185" width="36" height="30" rx="5"/><rect x="690" y="185" width="36" height="30" rx="5"/><rect x="740" y="185" width="36" height="30" rx="5"/><rect x="790" y="185" width="36" height="30" rx="5"/>
+    </g>
+    <rect x="430" y="185" width="36" height="30" rx="5" fill="#ecfdf5" stroke="#0f766e" stroke-width="3"/>
+    <rect x="690" y="185" width="36" height="30" rx="5" fill="#ecfdf5" stroke="#0f766e" stroke-width="3"/>
+    <text x="200" y="240" fill="#9a3412" font-weight="700">no survivor selected</text>
+    <text x="460" y="240" fill="#0f766e" font-weight="700">selects 49|13</text>
+    <text x="720" y="240" fill="#0f766e" font-weight="700">selects 43|79</text>
+  </g>
+</svg>
+

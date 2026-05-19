@@ -1,0 +1,9 @@
+{
+  "iteration": 3,
+  "radius": 16384,
+  "small_primes": [2, 3, 5],
+  "residual_limit": 32768,
+  "score_mode": "rare_per_distance",
+  "top_k": 1000,
+  "design_reason": "Iteration 2 over-favored far accidental rare residuals. This normalizes rare balanced triangulation by distance to restore the local factor-distance signal while retaining information weighting."
+}

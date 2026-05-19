@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reciprocal Shadow Correct Experiment - Design Contract</title>
+<style>
+:root {
+  --ink: #1f2933; --muted: #5e6a73; --line: #d7dde3; --paper: #fbfcfd;
+  --panel: #ffffff; --accent: #0f766e; --bad: #9f1239; --good: #166534;
+}
+* { box-sizing: border-box; }
+body { margin:0; background:var(--paper); color:var(--ink); font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+main { max-width: 1080px; margin: 0 auto; padding: 32px 20px 60px; }
+h1 { font-size: 1.85rem; margin:0 0 6px; letter-spacing:-0.01em; }
+h2 { font-size: 1.25rem; margin: 28px 0 8px; border-bottom: 1px solid var(--line); padding-bottom: 4px; }
+h3 { font-size: 1.05rem; margin: 18px 0 6px; color: var(--accent); }
+p, li { color: var(--muted); }
+.card { background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:14px 16px; margin:12px 0; }
+table { width:100%; border-collapse:collapse; font-size:12.5px; margin:10px 0; }
+th, td { padding:6px 8px; border:1px solid var(--line); text-align:left; vertical-align:top; }
+th { background:#f4f6f8; font-weight:600; color:#334155; }
+tr:nth-child(even) { background:#fafbfc; }
+.code { font-family: ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; background:#f1f5f9; padding:1px 4px; border-radius:3px; }
+ul { padding-left:1.1em; }
+li { margin:3px 0; }
+.status { display:inline-block; padding:1px 6px; border-radius:3px; font-size:11px; font-weight:600; }
+.measured { background:#dcfce7; color:#166534; }
+.boundary { background:#fef3c7; color:#854d0e; }
+.invalidated { background:#fee2e2; color:#9f1239; }
+.unresolved { background:#e0e7ff; color:#3730a3; }
+.hypothesis { background:#f3e8ff; color:#6b21a8; }
+.checklist li { list-style:none; margin:4px 0; }
+.checklist li:before { content:"[ ] "; color:var(--accent); font-weight:700; }
+.forbidden { background:#fff1f2; }
+.good { border-left:4px solid var(--good); }
+</style>
+</head>
+<body>
+<main>
+<h1>Reciprocal Shadow Correct Experiment - Design Contract</h1>
+<p><strong>Meeting:</strong> Reciprocal Shadow Correct Experiment &nbsp;|&nbsp; <strong>Lead:</strong> Grok &nbsp;|&nbsp; <strong>Facilitator/Recorder:</strong> Codex &nbsp;|&nbsp; <strong>Created:</strong> 2026-05-19</p>
+
+<div class="card">
+<h2>Lead Finding (Plain English)</h2>
+<p>The corrected experiment tests a single, narrow question: does the local multiplicative web around a public semiprime N, using only its held-out divisor threads, emit a <strong>compact residue certificate</strong> (a short list of admissible lower-endpoint residue classes modulo a product of thread factors) such that the hidden lower factor p lies inside one of the nominated classes, while the identical procedure run on a rotated-offset control web does not nominate p's class at the same cardinality or rank?</p>
+<p>This is a <strong>structural-certificate experiment</strong>, not a numeric factor search. The generator never produces or walks candidate integers. It emits only residue classes derived from reciprocal transport and consistency closure on the thread list. Numeric representatives appear only at final audit to test class membership of the known p (or q). The first valid surface therefore measures whether the web itself nominates the correct residue class, not whether a walk eventually lands on the factor.</p>
+</div>
+
+<h2>Status Classifications (from meeting packet + Codex Round 1)</h2>
+<table>
+<tr><th>Claim / Artifact</th><th>Classification</th><th>Exact Boundary</th></tr>
+<tr><td>16/16 fixed-window ranking (probe.py) - p ranks first by shadow coherence after direct-row holdout</td><td><span class="status measured">measured result</span></td><td>Exhaustive prime surface for N <= 35 026 003 only. Valid signal-strength calibration + rotated control. Not a selector.</td></tr>
+<tr><td>48-bit ladder + blind restart (all rungs)</td><td><span class="status boundary">boundary measurement</span></td><td>Public prime walk from sqrtN downward (or 97/100-biased band) until audit factor encountered. Coherence recorded at hit, not at a web-nominated location.</td></tr>
+<tr><td>52-64-bit "new rungs" ladder</td><td><span class="status invalidated">invalidated result</span></td><td>Lower bound of candidate stream = secret p. Direct violation of construction/audit-only rule.</td></tr>
+<tr><td>Reciprocal Residue Closure Invariant (Codex Round 1 definition)</td><td><span class="status unresolved">unresolved invariant</span></td><td>Defined but unproved. Supplies the missing selector on top of modulus-link transport. First probe will test one operationalization only.</td></tr>
+<tr><td>"The web selects the factor via reciprocal shadow" (general claim)</td><td><span class="status hypothesis">hypothesis</span></td><td>Supported inside enumerated regime by the 16/16 result; untested at scale under a residue-certificate generator.</td></tr>
+<tr><td>Target for first corrected probe</td><td><span class="status unresolved">proof target (experiment target)</span></td><td>Compact residue certificate emission test on true web vs. rotated-offset control. Weaker and cleaner than numeric discovery.</td></tr>
+</table>
+
+<h2>Reciprocal Residue Closure Invariant (Codex Round 1 - exact)</h2>
+<div class="card">
+<p><strong>Definition sketch:</strong> Given the held-out local web around public N, construct a finite residue certificate over the thread factors. A lower endpoint class is admissible only if its transported partner residues produce a stable divisor-count shadow across the same offset-indexed web under all offset-preserving controls.</p>
+<p>The generator must emit residue classes or endpoint classes directly from this closure calculation, not from an interval of numeric candidates. Numeric representatives are introduced only after the certificate exists, and only to audit whether the hidden factor lies in the emitted class.</p>
+<p><strong>Hierarchy (Codex):</strong> modulus-link closure supplies the transport plane; reciprocal residue closure supplies the missing selector; endpoint-chain traversal audits or refines the selected endpoint class.</p>
+<p class="status unresolved" style="padding:4px 8px;">This invariant is unresolved, not proved. The experiment design below operationalizes one concrete, auditable version for the first surface only.</p>
+</div>
+
+<h2>1. The Object Being Measured</h2>
+<p>The object is the <strong>reciprocal residue closure selector</strong> operating on the public local multiplicative web (held-out divisor threads of N +/- radius). The measurement asks whether this selector, by itself, emits a compact residue certificate whose classes contain the hidden lower endpoint under the true offset-to-factor pairing and do not contain it (or rank it materially worse) under offset-preserving controls.</p>
+
+<h2>2. Allowed and Forbidden Inputs</h2>
+<table>
+<tr><th>Item</th><th>Status</th><th>Rule</th></tr>
+<tr><td>N (the semiprime), radius (fixed, e.g. 300)</td><td>Allowed everywhere</td><td>Public input. Used to build the web and to compute M from thread factors.</td></tr>
+<tr><td>Thread list (offset, r, divisor_count) after hold-out of any row containing audit p or q</td><td>Allowed for certificate generation</td><td>The sole input to the closure calculation.</td></tr>
+<tr><td>p, q</td><td>Construction + final audit only</td><td>Never appear in generator, M selection logic, closure scoring, admissibility test, or ranking after build_case returns. Audit only asks "does p % M appear in the emitted class list and at what rank by closure score?"</td></tr>
+<tr><td>Any public interval [L, U] or prime stream whose bounds are functions of N alone</td><td>Forbidden for inference</td><td>Includes sqrtN downward scans, 97/100 root bands, or "all primes <= sqrtN" once the surface exceeds the 16-case enumerated regime.</td></tr>
+<tr><td>gcd(candidate, N), N % x, divisibility tests, product closure, primality APIs</td><td>Forbidden as inference gates</td><td>May be used only in web construction (factoring N +/- t) and in the very last audit step on the final certificate.</td></tr>
+</table>
+
+<h2>3. Candidate-Generation / Certificate Mechanism (Residue Certificate Only)</h2>
+<div class="card good">
+<p><strong>Operationalization for v1 probe (concrete, from Codex invariant + meeting synthesis):</strong></p>
+<ol>
+<li>Build held-out thread list exactly as in reciprocal_shadow_vote_probe.py (composite_rows, filter rows containing p or q).</li>
+<li>Select the 4 distinct r values with the highest thread degree (most appearances) in the held-out list. Let M = product of those 4 r's. (If M &gt; 5 000 000 for any case in the first surface, fall back to the 3 highest-degree r's.)</li>
+<li>For every residue a = 0 ... M-1:
+  <ul>
+    <li>For each of the 4 r's, collect the set of all b = (-t * inv(a mod r, r)) mod r predicted by every thread whose factor is that r.</li>
+    <li>If any r has more than one distinct b, the predictions conflict inside that modulus - discard a.</li>
+    <li>Now a single b_r per r. Attempt incremental CRT merge across the 4 (r, b_r) pairs to find whether a single partner class y mod M exists that satisfies all four simultaneously.</li>
+    <li>If the CRT merge succeeds with zero conflicts, a is admissible. Its closure score = (total threads whose r is one of the 4) / (total threads using those r's). Record the implied y mod M as part of the class record.</li>
+  </ul>
+</li>
+<li>The emitted residue certificate C is the list of all admissible a (with their closure scores and the recovered y). Sort by descending closure score; ties broken by smallest a.</li>
+<li>Exactly the same procedure is run on the rotated-offset control thread list to produce C_rot.</li>
+</ol>
+<p>No integer candidate is ever generated. The only numbers that ever appear are the residues a mod M and the merged y mod M. Numeric search or sieving is forbidden until after C is emitted and only for the final membership audit on known p.</p>
+</div>
+
+<h2>4. Exact Success Condition</h2>
+<ul>
+<li>For every case in the surface: p % M appears in the admissible list of the true-web certificate C.</li>
+<li>Its rank by closure score inside C is 1 (or <= 2 if the surface contains documented ties).</li>
+<li>Certificate cardinality |C| <= 64 for all cases in the first surface (the bound may be raised only by explicit amendment).</li>
+<li>On the rotated-offset control web for the same N: either p % M does not appear in C_rot, or its rank in C_rot is worse than |C_rot| / 2, or |C_rot| is materially larger than |C| while still containing p.</li>
+<li>Aggregate: at least 14 / 16 cases on the original 16-case surface satisfy the above four bullets simultaneously.</li>
+</ul>
+
+<h2>5. Exact Falsification Condition</h2>
+<p>The experiment is falsified for the first surface if any of the following occur:</p>
+<ul>
+<li>For 3 or more cases, p % M is absent from the true-web C, or its rank inside C is &gt; 3.</li>
+<li>The rotated control C_rot contains p % M at rank 1 with |C_rot| comparable to |C| on 3 or more cases (the signal is not destroyed by offset rotation).</li>
+<li>|C| &gt; 64 on any case while still being the only way to include p (certificate not compact).</li>
+<li>The generator code (after build_case returns) contains any reference to the numeric values of p or q, or constructs any integer interval whose placement depends on secret factors.</li>
+</ul>
+
+<h2>6. Controls That Catch Candidate-Walk and Hidden-Factor Leakage</h2>
+<table>
+<tr><th>Control</th><th>What It Detects</th><th>Pass Criterion</th></tr>
+<tr><td>Rotated-offset web (exact implementation from probe.py)</td><td>Whether the nomination depends on the true local offset-to-factor pairing rather than marginal factor multiset.</td><td>p's class must not be nominated at equal rank/cardinality on the control.</td></tr>
+<tr><td>Synthetic random-offset web (same r multiset, fresh random offsets)</td><td>Whether any web-like multiset of r's can produce a spurious compact certificate containing the audit p.</td><td>p must not appear in the top ranks of the synthetic certificate.</td></tr>
+<tr><td>Static source audit (grep + manual review)</td><td>Hidden p/q in generator, interval construction, or early stopping.</td><td>Zero occurrences after the build_case call site.</td></tr>
+<tr><td>Runtime log of every arithmetic expression that contributes a member of C</td><td>Implicit numeric walking or external interval.</td><td>Log must show only thread-derived residue arithmetic and CRT steps.</td></tr>
+<tr><td>Natural-ratio case set (p/sqrtN spread 0.05-0.9)</td><td>97/100-style construction bias that shrinks the "search" band.</td><td>At least 4 of the 16 original cases + 2 new larger cases must have p &lt; 0.6 sqrtN.</td></tr>
+</table>
+
+<h2>7. Smallest Implementation Path for the Next Valid Probe</h2>
+<div class="card">
+<p><strong>Artifact:</strong> <code>reciprocal_shadow_residue_certificate_probe.py</code> (<= 220 lines, same output directory style as the 16-case probe).</p>
+<p><strong>Contract:</strong></p>
+<ul>
+<li>Re-uses <code>composite_rows</code>, <code>heldout_rows</code>, and <code>rotated_offset_control_rows</code> verbatim from the existing probe.</li>
+<li>Implements exactly the 4-r (or 3-r fallback) closure procedure defined in section 3.</li>
+<li>Emits one <code>summary.json</code>, <code>certificate.jsonl</code> (one row per admissible (N, a, score, y, is_true_p_member, rank)), and <code>summary.md</code> containing the success/falsification table.</li>
+<li>First surface = the original 16 CASES + 4 additional natural-ratio semiprimes with sqrtN &gt; 10 000 000 (so that full prime enumeration would already be &gt; 1 M candidates).</li>
+<li>Before any number is published, the 12-item acceptance checklist below must be signed by the implementation witness.</li>
+</ul>
+<p><strong>Why this path is smallest:</strong> It lifts the existing thread machinery and the rotated control into a pure residue generator. No new sieving, no partner_estimate = round(N/x), no integer candidates until audit. The only new logic is the per-r conflict check + CRT merge, which is &lt; 40 lines.</p>
+</div>
+
+<h2>Appendix A - Forbidden Code Patterns (Audit Table)</h2>
+<table class="forbidden">
+<tr><th>Pattern</th><th>Concrete example from invalidated artifacts</th><th>Violation</th><th>Audit method</th></tr>
+<tr><td>Secret p/q as stream bound</td><td><code>segmented_prime_flags(p_value, sqrt_n)</code> + <code>candidate = p_value + offset</code> (ladder_64_new_rungs.py:211)</td><td>Hidden-factor leakage</td><td>grep -n "p_value\|case\['p'\]" after build_case</td></tr>
+<tr><td>Public downward walk from sqrtN until audit hit</td><td><code>while high &gt;= 2: ... if candidate in {p,q} or partner in {p,q}: return hit</code> (blind_restart.py:217)</td><td>Ordinary candidate-walk leakage</td><td>grep for "high = sqrt", "segments_read", "scored_candidates_until_hit"</td></tr>
+<tr><td>97/100 root bias in case generator</td><td><code>p_target = (root * 97) // 100</code> + previous_prime_at_or_below (both ladder scripts)</td><td>Construction bias that makes walk distance trivial</td><td>grep P_ROOT_NUMERATOR; require natural ratios in new surface</td></tr>
+<tr><td>Secondary proximity key in ranking</td><td><code>abs(candidate - isqrt(N))</code> inside sort key (probe.py:103)</td><td>Privileges the same near-sqrtN band the ladders exploited</td><td>Remove or document; any new generator must not use distance-to-sqrtN for admissibility</td></tr>
+<tr><td>Early divisibility or product test inside generator</td><td><code>if (candidate * partner + offset) % r == 0</code> used as accept before scoring (some variants)</td><td>Inference gate</td><td>Only the final audit may test actual division by N</td></tr>
+</table>
+
+<h2>Appendix B - Acceptance Checklist (12 Items)</h2>
+<ul class="checklist">
+<li>Generator source (after the single build_case call) contains zero references to p or q values or identifiers.</li>
+<li>No integer interval, prime stream, or segmented sieve is constructed whose bounds depend on anything except the thread list and the chosen r's for M.</li>
+<li>M is computed solely from the 4 (or 3) highest-degree r's in the held-out threads; no secret data enters the selection.</li>
+<li>Every admissible a in C is produced by the conflict-check + CRT-merge procedure; no other numeric search is performed.</li>
+<li>The identical closure procedure is run on the rotated-offset thread list and its C_rot is recorded.</li>
+<li>Success/falsification numbers are computed only from membership of (p % M) in C vs. C_rot and the ranks by closure score.</li>
+<li>At least 4 of the 16 + 2 new cases have p &lt; 0.6 x sqrtN (natural ratios, no 97/100 bias).</li>
+<li>|C| <= 64 on every case that passes the membership test.</li>
+<li>Runtime log (printed or written) lists every arithmetic step that contributed an a to C; the log is free of N-division or gcd(N,*) calls.</li>
+<li>Rotated-control and synthetic-random control both executed and reported; neither nominates p at equal rank/cardinality on more than 2 cases.</li>
+<li>Implementation witness has read this HTML in full and confirms the 7 sections + 2 appendices match the code.</li>
+<li>Raw output files (summary.json, certificate.jsonl, summary.md) are committed alongside the probe script before any interpretive claim is published.</li>
+</ul>
+
+<h2>Meeting Deliverable - Status</h2>
+<div class="card">
+<p><strong>Negotiated deliverable:</strong> This single self-contained HTML file is the complete, implementation-ready contract. It incorporates the Codex Round 1 answer verbatim (the Reciprocal Residue Closure Invariant and the weaker structural-certificate target) and supplies the missing concrete operationalization required for a v1 probe that cannot re-introduce walk or hidden-factor leakage.</p>
+<p>Once the implementation witness (Codex) confirms the checklist can be executed against the written probe, the first corrected surface run may begin. No further design rounds are required unless the v1 run itself reveals an ambiguity in the closure procedure.</p>
+<p class="status unresolved" style="margin-top:12px; padding:4px 8px;">The Reciprocal Residue Closure Invariant remains unresolved. The HTML records one auditable operationalization for the first surface only; stronger or more general statements are future work.</p>
+</div>
+
+<footer style="margin-top:40px; font-size:11px; color:#64748b;">
+PGS-native frame enforced throughout: locked local web -> reciprocal transport (b = (-t*inv(a,r)) mod r) -> modulus-link closure (CRT merge) -> reciprocal residue closure (conflict filter + consistency) -> structural certificate (admissible a list) -> audit membership of hidden endpoint. Classical numeric search is downstream of the certificate and is used only for final verification on known test cases.
+</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 360" role="img" aria-labelledby="title desc">
+  <title id="title">Public endpoint transport</title>
+  <desc id="desc">A public endpoint on the lower side is transported through the product to an upper endpoint chain, where closure either succeeds or remains unresolved.</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#0f766e"/></marker></defs>
+  <rect width="920" height="360" fill="#fbfcfd"/>
+  <rect x="34" y="34" width="852" height="292" rx="8" fill="#fff" stroke="#d7dde3"/>
+  <text x="460" y="74" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="22" font-weight="700" fill="#1f2933">Carry public structure across the product</text>
+  <text x="460" y="101" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="13" fill="#5e6a73">A public endpoint on one side is transported to the opposite-side endpoint chain.</text>
+  <line x1="120" y1="245" x2="370" y2="245" stroke="#94a3b8" stroke-width="3"/>
+  <line x1="550" y1="135" x2="800" y2="135" stroke="#94a3b8" stroke-width="3"/>
+  <g fill="#f8fafc" stroke="#64748b" stroke-width="2">
+    <circle cx="160" cy="245" r="18"/><circle cx="240" cy="245" r="18"/><circle cx="320" cy="245" r="18"/>
+    <circle cx="600" cy="135" r="18"/><circle cx="680" cy="135" r="18"/><circle cx="760" cy="135" r="18"/>
+  </g>
+  <circle cx="320" cy="245" r="25" fill="none" stroke="#1d4ed8" stroke-width="4"/>
+  <circle cx="680" cy="135" r="25" fill="none" stroke="#0f766e" stroke-width="4"/>
+  <rect x="402" y="169" width="116" height="58" rx="8" fill="#0f766e"/>
+  <text x="460" y="194" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="13" font-weight="700" fill="#fff">public</text>
+  <text x="460" y="214" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="22" font-weight="700" fill="#fff">N</text>
+  <path d="M340 230 C390 190, 414 182, 438 178" fill="none" stroke="#0f766e" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M486 176 C526 150, 570 140, 654 136" fill="none" stroke="#0f766e" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="230" y="288" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="13" fill="#334155">lower public endpoint chain</text>
+  <text x="680" y="91" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="13" fill="#334155">upper public endpoint chain</text>
+  <text x="460" y="286" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="13" font-weight="700" fill="#0f766e">closure or unresolved state</text>
+</svg>
+

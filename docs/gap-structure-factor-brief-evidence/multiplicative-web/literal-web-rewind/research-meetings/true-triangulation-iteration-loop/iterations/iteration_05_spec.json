@@ -1,0 +1,9 @@
+{
+  "iteration": 5,
+  "radius": 262144,
+  "small_primes": [2, 3, 5, 7, 11, 13, 17, 19, 23, 29],
+  "residual_limit": 1,
+  "score_mode": "rare_per_distance",
+  "top_k": 1000,
+  "design_reason": "Iteration 4 failed because residual cofactor rarity created false positives while true continuation factors had dense small-thread evidence. This removes residuals and expands the public small-prime alphabet."
+}

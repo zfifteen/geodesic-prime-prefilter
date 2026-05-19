@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Adaptive Support V2 Result</title>
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 28px; font-size: 13px; line-height: 1.45; color: #172033; background: #f8fafc; }
+main { max-width: 980px; margin: 0 auto; }
+h1 { font-size: 2rem; margin: 0 0 8px; }
+h2 { font-size: 1.25rem; margin-top: 26px; }
+.panel { background: #fff; border: 1px solid #d9e2ef; border-radius: 8px; padding: 16px; margin: 14px 0; }
+.ok { color: #116329; font-weight: 700; }
+.boundary { color: #9a3412; font-weight: 700; }
+.invalid { color: #991b1b; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; background: #fff; margin-top: 10px; }
+th, td { border: 1px solid #d9e2ef; padding: 7px 8px; text-align: left; }
+th { background: #eef4fb; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+code { background: #eef4fb; padding: 1px 4px; border-radius: 4px; }
+ul { padding-left: 18px; }
+</style>
+</head>
+<body>
+<main>
+<h1>Adaptive Support V2 Result</h1>
+<p><strong>Finding:</strong> adaptive public windowing fixes the coverage failure on the tested continuation cases, and support-count ranking recovers the four toy cases, but the method still fails on the larger covered cases.</p>
+
+<section class="panel">
+<h2>Public Contract</h2>
+<ul>
+<li>The public runner receives only <code>N</code> and public constants.</li>
+<li>Radii are fixed public values: <code>256, 1024, 4096, 16384, 65536, 262144, 1048576, 2097152</code>.</li>
+<li>Threads remain <code>2, 3, 5</code>.</li>
+<li>Each offset is ranked by public support count, then proximity.</li>
+<li>The private audit uses hidden factors only after public output is frozen.</li>
+</ul>
+</section>
+
+<section class="panel">
+<h2>Measured Result</h2>
+<table>
+<thead>
+<tr>
+<th>case</th>
+<th class="num">bits</th>
+<th>final coverage</th>
+<th>classification</th>
+<th class="num">first hit R</th>
+<th>first hit</th>
+<th class="num">rank</th>
+<th class="num">support</th>
+<th class="num">best final full rank</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>toy_23x31</td><td class="num">10</td><td>yes</td><td class="ok">one_factor_in_public_top_k</td><td class="num">256</td><td>-p</td><td class="num">2</td><td class="num">3</td><td class="num">2</td></tr>
+<tr><td>toy_43x59</td><td class="num">12</td><td>yes</td><td class="ok">one_factor_in_public_top_k</td><td class="num">256</td><td>p</td><td class="num">3</td><td class="num">3</td><td class="num">3</td></tr>
+<tr><td>toy_61x83</td><td class="num">13</td><td>yes</td><td class="ok">one_factor_in_public_top_k</td><td class="num">256</td><td>-q</td><td class="num">6</td><td class="num">3</td><td class="num">6</td></tr>
+<tr><td>toy_89x113</td><td class="num">14</td><td>yes</td><td class="ok">one_factor_in_public_top_k</td><td class="num">256</td><td>q</td><td class="num">8</td><td class="num">3</td><td class="num">8</td></tr>
+<tr><td>continuation_00_131101x144203</td><td class="num">35</td><td>yes</td><td class="boundary">covered_but_not_ranked_in_top_k</td><td class="num">-</td><td>-</td><td class="num">-</td><td class="num">-</td><td class="num">9614</td></tr>
+<tr><td>continuation_01_1048583x1153441</td><td class="num">41</td><td>yes</td><td class="boundary">covered_but_not_ranked_in_top_k</td><td class="num">-</td><td>-</td><td class="num">-</td><td class="num">-</td><td class="num">69906</td></tr>
+</tbody>
+</table>
+</section>
+
+<section class="panel">
+<h2>Classification</h2>
+<p><span class="boundary">Boundary measurement.</span> The adaptive support selector is a real improvement over proximity-only on toy cases, but it does not scale across the first continuation cases. The larger factor offsets are covered by the public window, but their final full ranks are thousands to tens of thousands deep.</p>
+<p><span class="invalid">No RSA-scale factor-recovery claim follows from this experiment.</span> The useful result is narrower: the failure is now primarily selector strength, not window coverage, for the tested continuation cases.</p>
+</section>
+
+<section class="panel">
+<h2>Artifacts</h2>
+<ul>
+<li><code>public_adaptive_support_runner.py</code></li>
+<li><code>private_adaptive_support_audit.py</code></li>
+<li><code>output/audit_adaptive_support_v2/summary.md</code></li>
+<li><code>output/audit_adaptive_support_v2/audit_summary.json</code></li>
+</ul>
+</section>
+</main>
+</body>
+</html>

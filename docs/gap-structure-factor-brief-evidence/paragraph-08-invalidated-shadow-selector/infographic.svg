@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 360" role="img" aria-labelledby="title desc">
+  <title id="title">Invalidated shadow selector</title>
+  <desc id="desc">The same shadow signal appears on excluded lanes and survivor lanes, so it is real but not a selector.</desc>
+  <rect width="920" height="360" fill="#fbfcfd"/>
+  <rect x="34" y="34" width="852" height="292" rx="8" fill="#fff" stroke="#d7dde3"/>
+  <text x="460" y="76" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="22" font-weight="700" fill="#1f2933">A real signal was ruled out as a selector</text>
+  <g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" text-anchor="middle">
+    <text x="270" y="124" font-size="14" font-weight="700" fill="#334155">excluded lanes</text>
+    <text x="650" y="124" font-size="14" font-weight="700" fill="#334155">survivor lanes</text>
+    <g fill="#f8fafc" stroke="#64748b" stroke-width="2">
+      <rect x="150" y="155" width="80" height="50" rx="8"/><rect x="250" y="155" width="80" height="50" rx="8"/><rect x="350" y="155" width="80" height="50" rx="8"/>
+      <rect x="570" y="155" width="80" height="50" rx="8"/><rect x="670" y="155" width="80" height="50" rx="8"/>
+    </g>
+    <g fill="#9a3412" font-size="24" font-weight="700">
+      <text x="190" y="188">shadow</text><text x="290" y="188">shadow</text><text x="390" y="188">shadow</text>
+      <text x="610" y="188">shadow</text><text x="710" y="188">shadow</text>
+    </g>
+    <rect x="347" y="246" width="226" height="44" rx="8" fill="#fff7ed" stroke="#fed7aa"/>
+    <text x="460" y="274" font-size="14" font-weight="700" fill="#9a3412">real signal, not a selector</text>
+  </g>
+</svg>
+
