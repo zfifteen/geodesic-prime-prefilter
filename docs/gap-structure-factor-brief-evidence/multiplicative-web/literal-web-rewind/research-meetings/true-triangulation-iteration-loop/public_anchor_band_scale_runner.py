@@ -20,7 +20,7 @@ from typing import Any
 SMALL_PRIMES = (2, 3, 5, 7, 11, 13, 17, 19, 23, 29)
 RESIDUAL_LIMIT = 1
 BAND_WIDTH_RATIO = Fraction(1, 64)
-DEFAULT_CAP_RATIO = Fraction(1, 8)
+DEFAULT_CAP_RATIO = Fraction(1, 2)
 
 
 def public_radius(n: int) -> int:
