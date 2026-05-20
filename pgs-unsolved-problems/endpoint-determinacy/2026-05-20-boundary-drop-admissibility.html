@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Boundary-Drop Endpoint Promotion | Endpoint Determinacy</title>
+  <style>
+    :root {
+      --ink:#17212b;
+      --muted:#5e6a75;
+      --line:#d8e0e8;
+      --panel:#f7f9fb;
+      --accent:#0b6b8a;
+      --good:#1f7a4d;
+      --warn:#8a5a00;
+      --bad:#a33131;
+    }
+    * { box-sizing:border-box; }
+    body {
+      margin:0;
+      color:var(--ink);
+      background:#fff;
+      font:13px/1.48 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+    .wrap, main { width:min(1040px,calc(100% - 32px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:linear-gradient(180deg,#fff,#f2f7fa); }
+    .hero { padding:30px 0 24px; }
+    a { color:var(--accent); text-underline-offset:3px; }
+    .back { display:inline-block; margin-bottom:14px; font-weight:650; }
+    .eyebrow { margin:0 0 8px; color:var(--accent); font-size:12px; font-weight:750; letter-spacing:.06em; text-transform:uppercase; }
+    h1 { margin:0; max-width:860px; font-size:2rem; line-height:1.06; letter-spacing:0; }
+    .lede { max-width:900px; margin:14px 0 0; color:var(--muted); font-size:15px; }
+    .pillrow { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+    .pill { padding:4px 8px; border:1px solid var(--line); border-radius:999px; background:#fff; color:var(--muted); font-weight:650; }
+    .pill.good { border-color:#b9dec9; color:var(--good); background:#f0faf4; }
+    .pill.warn { border-color:#e5ca8f; color:var(--warn); background:#fff8ea; }
+    section { padding:22px 0; border-bottom:1px solid var(--line); }
+    h2 { margin:0 0 12px; font-size:1.25rem; line-height:1.2; }
+    h3 { margin:0 0 8px; font-size:1rem; }
+    p { margin:0 0 10px; }
+    code {
+      padding:1px 4px;
+      border-radius:4px;
+      background:#eef3f6;
+      color:#0f4f68;
+      font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+      font-size:.95em;
+    }
+    pre {
+      margin:10px 0 0;
+      padding:12px;
+      overflow:auto;
+      border:1px solid var(--line);
+      border-radius:8px;
+      background:#f8fafc;
+      font:12px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;
+    }
+    .grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .panel { padding:14px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
+    table { width:100%; border-collapse:collapse; border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+    th, td { padding:9px 10px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { background:#eef5f8; color:#24414f; font-size:11px; letter-spacing:.05em; text-transform:uppercase; }
+    tr:last-child td { border-bottom:0; }
+    .yes { color:var(--good); font-weight:700; }
+    .no { color:var(--bad); font-weight:700; }
+    .status { color:var(--warn); font-weight:700; }
+    footer { padding:22px 0 34px; color:var(--muted); }
+    @media (max-width:760px) { .grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hero">
+      <a class="back" href="./">Back to endpoint determinacy</a>
+      <p class="eyebrow">2026-05-20 proof-design advance</p>
+      <h1>Boundary-drop is a conditional endpoint-cell promotion theorem.</h1>
+      <p class="lede">An accepted reciprocal endpoint cell becomes a factor-endpoint pair when the public floor map drops across <code>N - 1</code>. The current live certificate rows do not export that boundary-drop field, so the remaining PGS task is to derive it from transported certificate geometry or explicitly admit it as a public endpoint-cell certificate.</p>
+      <div class="pillrow">
+        <span class="pill good">status: ADVANCE</span>
+        <span class="pill">artifact: deterministic probe + proof sketch</span>
+        <span class="pill warn">research state: conditional bridge</span>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section>
+      <h2>Concrete Object</h2>
+      <p>The object is an already produced public reciprocal endpoint cell <code>(L, U)</code>. It is not chosen by divisibility, product closure, hidden factors, or audit labels.</p>
+      <pre>public endpoint-chain closure -> endpoint cell (L, U)
+T_N(x) = floor(N / x)
+boundary neighbor map: T_{N-1}(x) = floor((N - 1) / x)</pre>
+    </section>
+
+    <section>
+      <h2>Bridge Lemma</h2>
+      <div class="grid">
+        <div class="panel">
+          <h3>Statement</h3>
+          <p>If <code>floor(N / L) = U</code> and <code>floor(N / U) = L</code>, then the one-side drop <code>floor((N - 1) / L) = U - 1</code> proves <code>N = L * U</code>. The symmetric upper drop is useful as a mirrored public certificate, but the lower drop already forces the cell to its left boundary.</p>
+        </div>
+        <div class="panel">
+          <h3>Proof</h3>
+          <p>From <code>floor(N / L) = U</code>, the reciprocal floor cell gives <code>L * U <= N</code>. From <code>floor((N - 1) / L) = U - 1</code>, it gives <code>N - 1 < L * U</code>, hence <code>N <= L * U</code>. Therefore <code>N = L * U</code>, so <code>L</code> and <code>U</code> are factor endpoints. This is theorem proof conditional on the public boundary-drop field being admitted or derived.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Measured Public Cells</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Case</th>
+            <th>Cell</th>
+            <th>Closure</th>
+            <th>T_N cell</th>
+            <th>T_{N-1} drop</th>
+            <th>Bridge result</th>
+            <th>Audit-only residual</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>rsa_v2_40bit_static_001</code></td>
+            <td><code>(1048559, 1048589)</code></td>
+            <td>deadline-signature endpoint cell</td>
+            <td><code>T_N(L)=1048589</code><br><code>T_N(U)=1048559</code></td>
+            <td><code>(1, 1)</code></td>
+            <td class="yes">promotes</td>
+            <td><code>0</code></td>
+          </tr>
+          <tr>
+            <td><code>rsa_v2_50bit_static_001</code></td>
+            <td><code>(32047651, 32059633)</code></td>
+            <td>rejected mutual reset cell</td>
+            <td><code>T_N(L)=32059633</code><br><code>T_N(U)=32047651</code></td>
+            <td><code>(0, 0)</code></td>
+            <td class="no">does not promote</td>
+            <td><code>5954868</code></td>
+          </tr>
+          <tr>
+            <td><code>rsa_v2_64bit_static_001</code></td>
+            <td><code>(3221225473, 3221275501)</code></td>
+            <td>mutual reset endpoint cell</td>
+            <td><code>T_N(L)=3221275501</code><br><code>T_N(U)=3221225473</code></td>
+            <td><code>(1, 1)</code></td>
+            <td class="yes">promotes</td>
+            <td><code>0</code></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>The probe output is <a href="2026-05-20-boundary-drop-admissibility-probe.json"><code>2026-05-20-boundary-drop-admissibility-probe.json</code></a>. The script is <a href="2026-05-20-boundary-drop-admissibility-probe.py"><code>2026-05-20-boundary-drop-admissibility-probe.py</code></a>.</p>
+    </section>
+
+    <section>
+      <h2>Status Separation</h2>
+      <table>
+        <tbody>
+          <tr><th>Theorem proof</th><td>The boundary-drop lemma proves endpoint promotion from an accepted reciprocal endpoint cell plus one public <code>T_{N-1}</code> drop.</td></tr>
+          <tr><th>Implementation status</th><td>The sidecar probe reads the live RSA v2 survivor rows and writes a JSON measurement in this track folder. The live solver was not edited.</td></tr>
+          <tr><th>Measured result</th><td>40-bit and 64-bit cells have drop <code>(1, 1)</code>. The rejected 50-bit mutual floor cell has drop <code>(0, 0)</code>.</td></tr>
+          <tr><th>Audit result</th><td>The residual column is audit-only confirmation of the theorem consequence. It is not an inference input.</td></tr>
+          <tr><th>Hypothesis</th><td>The public boundary-neighbor map <code>T_{N-1}</code> is a legitimate endpoint-cell certificate when attached only after PGS endpoint-chain closure emits a cell.</td></tr>
+          <tr><th>Unresolved state</th><td class="status"><code>unresolved_by_missing_boundary_drop_derivation</code>: current certificate geometry has not derived the drop from transported endpoint-chain invariants.</td></tr>
+          <tr><th>Invalidated rule</th><td>Mutual reciprocal floor closure alone remains invalidated as a one-factor promotion rule.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Next Theorem Obligation</h2>
+      <p>The exact next target is the <code>Boundary-Drop Derivation Lemma</code>:</p>
+      <pre>PGS endpoint-chain closure
++ transported certificate geometry
++ modulus-link residual state
+=> floor((N - 1) / L) = U - 1</pre>
+      <p>If that derivation is unavailable, the rule contract must explicitly admit <code>T_{N-1}</code> as a public endpoint-cell boundary certificate and mark the live solver state unresolved until that contract is accepted.</p>
+    </section>
+  </main>
+  <footer><div class="wrap">Endpoint determinacy track. PGS-native proof-design note.</div></footer>
+</body>
+</html>
