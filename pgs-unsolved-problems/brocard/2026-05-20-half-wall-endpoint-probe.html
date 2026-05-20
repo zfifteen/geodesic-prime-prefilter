@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Half-Wall Endpoint Probe | Brocard PGS</title>
+  <style>
+    :root {
+      --ink: #17212b;
+      --muted: #5e6a75;
+      --line: #d8e0e8;
+      --panel: #f7f9fb;
+      --accent: #0b6b8a;
+      --good: #1f7a4d;
+      --warn: #8a5a00;
+      --bad: #a23b3b;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #fff;
+      font: 13px/1.48 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    header {
+      border-bottom: 1px solid var(--line);
+      background: #f7f9fb;
+    }
+    main, .wrap {
+      width: min(1060px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .hero { padding: 30px 0 24px; }
+    a { color: var(--accent); text-underline-offset: 3px; }
+    .back { display: inline-block; margin-bottom: 12px; font-weight: 650; }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      max-width: 860px;
+      font-size: 2rem;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+    .lede {
+      max-width: 900px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .pillrow { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .pill {
+      padding: 4px 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 650;
+    }
+    .good { border-color: #b8d8c7; color: var(--good); background: #f0fbf5; }
+    .warn { border-color: #e5ca8f; color: var(--warn); background: #fff8ea; }
+    section { padding: 22px 0; border-bottom: 1px solid var(--line); }
+    h2 { margin: 0 0 12px; font-size: 1.25rem; line-height: 1.2; }
+    h3 { margin: 0 0 8px; font-size: 1rem; }
+    p { margin: 0 0 10px; }
+    code {
+      padding: 1px 4px;
+      border-radius: 4px;
+      background: #eef3f6;
+      color: #0f4f68;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: .94em;
+    }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .panel { padding: 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+    table { width: 100%; border-collapse: collapse; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    th, td { padding: 9px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { background: #eef5f8; color: #24414f; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; }
+    tr:last-child td { border-bottom: 0; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .94em; }
+    .status-list { margin: 0; padding-left: 18px; }
+    .status-list li + li { margin-top: 6px; }
+    footer { padding: 24px 0 34px; color: var(--muted); }
+    @media (max-width: 780px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hero">
+      <a class="back" href="./">Back to Brocard track</a>
+      <p class="eyebrow">2026-05-20 Brocard PGS probe</p>
+      <h1>The fourth endpoint stayed inside the half-wall for every prime root from 11 through 99991.</h1>
+      <p class="lede">The measured bridge strengthened from <code>e4(a) - a^2 &lt; 4a</code> to <code>e4(a) - a^2 &lt; 2a</code> after the three small roots. A fixed <code>256</code> endpoint wall failed, so the proof path should use a scale-linked square-wall inequality rather than a constant window.</p>
+      <div class="pillrow">
+        <span class="pill good">status: ADVANCE</span>
+        <span class="pill">roots checked: 9591</span>
+        <span class="pill">half-wall failures: 0</span>
+        <span class="pill warn">Brocard status: unresolved</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>PGS Frame</h2>
+      <div class="grid">
+        <div class="panel">
+          <h3>Object</h3>
+          <p>Start at the prime-square wall <code>a^2</code>. Read later integers by exact divisor count. Endpoint arrivals are the later integers with <code>tau(n) = 2</code>.</p>
+        </div>
+        <div class="panel">
+          <h3>Bridge Candidate</h3>
+          <p>Let <code>e4(a)</code> be the fourth endpoint after <code>a^2</code>. The new measured bridge is <code>e4(a) - a^2 &lt; 2a</code> for <code>a &gt;= 11</code>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Measured Surface</h2>
+      <table>
+        <tbody>
+          <tr><th>Root surface</th><td>Prime roots <code>3 <= a <= 100000</code>, first root <code>3</code>, last root <code>99991</code>.</td></tr>
+          <tr><th>Endpoint contract</th><td>For each root, record the first four later integers with exact divisor count <code>2</code>.</td></tr>
+          <tr><th>Prior square wall</th><td><code>e4(a) - a^2 &lt; 4a</code>: <code>0</code> failures across <code>9591</code> roots.</td></tr>
+          <tr><th>Half wall</th><td><code>e4(a) - a^2 &lt; 2a</code> for <code>a >= 11</code>: <code>0</code> failures across <code>9588</code> roots.</td></tr>
+          <tr><th>Small-root exceptions</th><td><code>a = 3, 5, 7</code> fail the half-wall but pass the <code>4a</code> wall directly.</td></tr>
+          <tr><th>Tight half-wall row</th><td><code>a = 13</code>, offsets <code>4|10|12|22</code>, slack <code>2a - S4 = 4</code>, utilization <code>0.846153846154</code>.</td></tr>
+          <tr><th>Largest fourth offset</th><td><code>a = 82651</code>, offsets <code>78|232|256|312</code>, <code>S4 = 312</code>.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Fixed-Window Obstruction</h2>
+      <p>The same probe falsified the candidate constant wall <code>e4(a) - a^2 <= 256</code>. The first failure is <code>a = 41047</code>, with endpoint offsets <code>114|144|252|264</code>. Six rows failed the fixed wall on this surface, and the largest observed fourth offset was <code>312</code>.</p>
+      <p>This blocks a proof route that tries to force four endpoints by a scale-independent constant window after <code>a^2</code>. The surviving route is a square-wall inequality that grows with the root.</p>
+    </section>
+
+    <section>
+      <h2>Proof Obligation</h2>
+      <p>The next theorem target is the half-wall endpoint lemma:</p>
+      <p class="mono">For every prime root a >= 11, the fourth exact-divisor-count endpoint after a^2 satisfies e4(a) - a^2 < 2a.</p>
+      <p>That lemma implies the Brocard chamber bridge for all consecutive odd primes <code>a &lt; b</code> with <code>a >= 11</code>, because <code>b >= a + 2</code>, hence <code>a^2 + 2a &lt; (a + 2)^2 <= b^2</code>. The roots <code>3, 5, 7</code> remain finite direct rows under the original <code>4a</code> wall.</p>
+    </section>
+
+    <section>
+      <h2>Status Separation</h2>
+      <ul class="status-list">
+        <li><strong>Theorem proof:</strong> Brocard's conjecture is not proved by this run.</li>
+        <li><strong>Measured result:</strong> The half-wall bridge had <code>0</code> failures for <code>9588</code> prime roots <code>11 <= a <= 99991</code>.</li>
+        <li><strong>Implementation status:</strong> The probe uses a deterministic exact divisor-count field and writes CSV/JSON outputs in this track folder.</li>
+        <li><strong>Audit status:</strong> CSV/JSON consistency checks and Python compilation passed in this run.</li>
+        <li><strong>Invalidated rule:</strong> The fixed <code>256</code> endpoint wall is false on the measured surface.</li>
+        <li><strong>Unresolved state:</strong> A proof-grade PGS derivation of the half-wall endpoint lemma remains open.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Artifacts</h2>
+      <table>
+        <tbody>
+          <tr><th>Probe code</th><td><a href="2026-05-20_half_wall_endpoint_probe.py">2026-05-20_half_wall_endpoint_probe.py</a></td></tr>
+          <tr><th>CSV output</th><td><a href="2026-05-20_half_wall_endpoint_probe.csv">2026-05-20_half_wall_endpoint_probe.csv</a></td></tr>
+          <tr><th>JSON summary</th><td><a href="2026-05-20_half_wall_endpoint_summary.json">2026-05-20_half_wall_endpoint_summary.json</a></td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">Brocard PGS research track. Exact divisor-count endpoint probe, not a solved claim.</div>
+  </footer>
+</body>
+</html>
