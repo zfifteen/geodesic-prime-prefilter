@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Higher-Tau Reciprocal Blockers | Divisor-Field Extremals</title>
+  <style>
+    :root { --ink:#17212b; --muted:#5e6a75; --line:#d8e0e8; --panel:#f7f9fb; --accent:#0b6b8a; --warn:#8a5a00; --good:#1f7a4d; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:#fff; font:13px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    header { border-bottom:1px solid var(--line); background:#f6f9fb; }
+    .wrap, main { width:min(1040px,calc(100% - 36px)); margin:0 auto; }
+    .hero { padding:28px 0 22px; }
+    a { color:var(--accent); text-underline-offset:3px; }
+    .back { display:inline-block; margin-bottom:12px; font-weight:650; }
+    .eyebrow { margin:0 0 6px; color:var(--accent); font-size:11px; font-weight:750; letter-spacing:.07em; text-transform:uppercase; }
+    h1 { margin:0; max-width:860px; font-size:2rem; line-height:1.08; letter-spacing:0; }
+    .lede { max-width:880px; margin:12px 0 0; color:var(--muted); font-size:1rem; }
+    section { padding:22px 0; border-bottom:1px solid var(--line); }
+    h2 { margin:0 0 12px; font-size:1.25rem; line-height:1.2; }
+    h3 { margin:0 0 8px; font-size:1rem; }
+    p { margin:0 0 10px; }
+    code { padding:1px 4px; border-radius:4px; background:#eef3f6; color:#0f4f68; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.94em; }
+    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+    .panel { padding:12px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
+    .metric { font-size:1.35rem; font-weight:750; }
+    table { width:100%; border-collapse:collapse; border:1px solid var(--line); }
+    th, td { padding:8px 10px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { background:#eef5f8; color:#24414f; font-size:11px; letter-spacing:.05em; text-transform:uppercase; }
+    tr:last-child td { border-bottom:0; }
+    .status { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .pill { border:1px solid var(--line); border-radius:999px; padding:4px 8px; background:#fff; color:var(--muted); font-weight:650; }
+    .pill.good { color:var(--good); border-color:#a8d7bd; background:#f0faf4; }
+    .pill.warn { color:var(--warn); border-color:#e5ca8f; background:#fff8ea; }
+    @media (max-width:820px) { .grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hero">
+      <a class="back" href="./">Back to track</a>
+      <p class="eyebrow">2026-05-20 measured bridge update</p>
+      <h1>Higher-tau competitors break equivalence but preserve a one-way sigma-to-phi order.</h1>
+      <p class="lede">The GWR carrier remains the proved tau object. This probe measures only downstream <code>sigma(n)/n</code> and <code>phi(n)/n</code> roles after selecting the tau-4 carrier.</p>
+      <div class="status">
+        <span class="pill good">status: ADVANCE</span>
+        <span class="pill">surface: q &lt;= 2,000,000</span>
+        <span class="pill warn">claim: measured, not proved</span>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section>
+      <h2>Headline Finding</h2>
+      <p>Same-tau-4 competitors still showed no sigma/phi split on the measured surface, but higher-tau competitors immediately produce <code>phi</code>-only obstructions. The stronger bridge is one-way: every measured higher-tau sigma improvement also improved phi, while phi improvement did not force sigma improvement.</p>
+      <div class="grid">
+        <div class="panel">
+          <h3>Same-tau-4 check</h3>
+          <p class="metric">0 splits</p>
+          <p><code>295,025</code> same-tau-4 pair checks.</p>
+        </div>
+        <div class="panel">
+          <h3>Higher-tau role splits</h3>
+          <p class="metric">19,983 phi-only</p>
+          <p><code>95,400</code> both-role improvements and <code>0</code> sigma-only improvements.</p>
+        </div>
+        <div class="panel">
+          <h3>Higher-tau-only failures</h3>
+          <p class="metric">24,930</p>
+          <p><code>11,629</code> sigma failures and <code>13,301</code> phi failures with no same-tau-4 witness.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>PGS Frame</h2>
+      <table>
+        <tbody>
+          <tr><th>PGS object</th><td>Prime-gap interior, exact divisor-count field, and the GWR-selected carrier <code>w</code>.</td></tr>
+          <tr><th>PGS invariant</th><td><code>tau</code> is primary. Endpoints are detected by <code>tau(n) = 2</code>; the carrier is the leftmost interior minimum of <code>tau</code>.</td></tr>
+          <tr><th>Downstream fields</th><td><code>sigma(n)/n</code> minimum and <code>phi(n)/n</code> maximum are measured after <code>w</code> is fixed.</td></tr>
+          <tr><th>Rule state</th><td>GWR is proved in <code>PROOF.md</code>. The secondary reciprocal-load law below is a measured theorem target.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>First Obstructions</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Role</th>
+            <th>Gap</th>
+            <th>Carrier</th>
+            <th>Competitor</th>
+            <th>Measured inequality</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>phi-only higher-tau split</td>
+            <td><code>13 | 14 15 16 | 17</code></td>
+            <td><code>14 = 2*7</code>, <code>tau=4</code></td>
+            <td><code>16 = 2^4</code>, <code>tau=5</code></td>
+            <td><code>phi(16)/16 &gt; phi(14)/14</code>, but <code>sigma(16)/16 &gt; sigma(14)/14</code>.</td>
+          </tr>
+          <tr>
+            <td>phi higher-tau-only failure</td>
+            <td><code>43 | 44 45 46 | 47</code></td>
+            <td><code>46 = 2*23</code>, <code>tau=4</code></td>
+            <td><code>45 = 3^2*5</code>, <code>tau=6</code></td>
+            <td><code>24/45 &gt; 22/46</code> for phi, while <code>78/45 &gt; 72/46</code> for sigma.</td>
+          </tr>
+          <tr>
+            <td>sigma higher-tau-only failure</td>
+            <td><code>79 | 80 81 82 | 83</code></td>
+            <td><code>82 = 2*41</code>, <code>tau=4</code></td>
+            <td><code>81 = 3^4</code>, <code>tau=5</code></td>
+            <td><code>121/81 &lt; 126/82</code> for sigma and <code>54/81 &gt; 40/82</code> for phi.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Classifier Surface</h2>
+      <table>
+        <thead>
+          <tr><th>Class</th><th>Sigma higher-tau-only</th><th>Phi higher-tau-only</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>three_distinct_primes</code></td><td><code>8,421</code></td><td><code>8,719</code></td></tr>
+          <tr><td><code>square_times_prime</code></td><td><code>1,173</code></td><td><code>1,201</code></td></tr>
+          <tr><td><code>four distinct primes</code></td><td><code>846</code></td><td><code>1,265</code></td></tr>
+          <tr><td><code>prime_fourth_power</code></td><td><code>2</code></td><td><code>2</code></td></tr>
+        </tbody>
+      </table>
+      <p>The first blockers are small prime-power or square-times-prime examples, but the measured bulk is carried by many-factor reciprocal-load competitors.</p>
+    </section>
+
+    <section>
+      <h2>Proof Target</h2>
+      <p>For a tau-4 GWR carrier <code>w</code>, define the downstream reciprocal loads</p>
+      <p><code>E(n) = (sigma(n) - n) / n</code> and <code>D(n) = (n - phi(n)) / n</code>.</p>
+      <p>The measured next lemma is:</p>
+      <p><strong>Higher-tau one-way bridge.</strong> If <code>t &gt; w</code> lies in the same prime-gap interior, <code>tau(w)=4</code>, <code>tau(t)&gt;4</code>, and <code>E(t) &lt; E(w)</code>, then <code>D(t) &lt; D(w)</code>.</p>
+      <p>Falsification condition: one row with a higher-tau competitor that improves sigma but not phi. The probe found <code>0</code> such rows through <code>q &lt;= 2,000,000</code>.</p>
+    </section>
+
+    <section>
+      <h2>Status Separation</h2>
+      <table>
+        <tbody>
+          <tr><th>Theorem proof</th><td>GWR remains proved by <code>PROOF.md</code>. No secondary divisor-field theorem is claimed here.</td></tr>
+          <tr><th>Measured result</th><td>Through <code>q &lt;= 2,000,000</code>, higher-tau competitors have <code>0</code> sigma-only improvements, <code>19,983</code> phi-only improvements, and <code>95,400</code> both-role improvements.</td></tr>
+          <tr><th>Implementation status</th><td>Probe code and outputs are local to this track folder.</td></tr>
+          <tr><th>Audit status</th><td>Generation, JSON parsing, bytecode compile, and LF checks passed for this run.</td></tr>
+          <tr><th>Hypothesis</th><td>The next proof bridge is one-way: higher-tau sigma improvement forces phi improvement against a tau-4 carrier.</td></tr>
+          <tr><th>Unresolved</th><td>The one-way bridge is not proved. Same-tau-4 no-split also remains measured, not proved.</td></tr>
+          <tr><th>Invalidated rule</th><td>The all-tau sigma/phi equivalence bridge is false because higher-tau phi-only obstructions exist.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Artifacts</h2>
+      <ul>
+        <li><a href="higher_tau_reciprocal_blocker_probe.py"><code>higher_tau_reciprocal_blocker_probe.py</code></a></li>
+        <li><a href="output/2026-05-20-higher-tau-reciprocal-blockers-summary.json"><code>output/2026-05-20-higher-tau-reciprocal-blockers-summary.json</code></a></li>
+        <li><a href="output/2026-05-20-higher-tau-reciprocal-blockers-witnesses.csv"><code>output/2026-05-20-higher-tau-reciprocal-blockers-witnesses.csv</code></a></li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
