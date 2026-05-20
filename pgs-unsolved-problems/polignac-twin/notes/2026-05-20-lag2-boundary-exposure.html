@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lag-2 Boundary Exposure Probe | Polignac and Twin Primes</title>
+  <style>
+    :root { --ink:#17212b; --muted:#5e6a75; --line:#d8e0e8; --panel:#f7f9fb; --accent:#0b6b8a; --good:#1f7a4d; --warn:#8a5a00; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:#fff; font:13px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    main { width:min(1040px,calc(100% - 36px)); margin:0 auto; padding:28px 0 40px; }
+    a { color:var(--accent); text-underline-offset:3px; }
+    h1 { margin:8px 0 10px; font-size:2rem; line-height:1.1; letter-spacing:0; }
+    h2 { margin:0 0 12px; font-size:1.25rem; line-height:1.2; }
+    h3 { margin:0 0 8px; font-size:1rem; }
+    p { margin:0 0 10px; }
+    section { padding:18px 0; border-bottom:1px solid var(--line); }
+    code { padding:1px 4px; border-radius:4px; background:#eef3f6; color:#0f4f68; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.94em; }
+    .back { font-weight:650; }
+    .lede { max-width:860px; color:#22313d; font-size:1.08rem; }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+    .panel { padding:12px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
+    .status { display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 0; }
+    .pill { padding:3px 8px; border:1px solid var(--line); border-radius:999px; background:#fff; color:var(--muted); font-size:12px; font-weight:650; }
+    .advance { border-color:#abd8c0; color:var(--good); background:#f0fbf5; }
+    table { width:100%; border-collapse:collapse; border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+    th,td { padding:8px 10px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { background:#eef5f8; color:#24414f; font-size:12px; letter-spacing:.04em; text-transform:uppercase; }
+    tr:last-child td { border-bottom:0; }
+    ul { margin:0; padding-left:18px; }
+    li + li { margin-top:6px; }
+    @media (max-width:760px) { .grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+<main>
+  <a class="back" href="../index.html">Back to Polignac and Twin Primes</a>
+  <h1>Lag-2 boundary exposure localizes the width-2 high-load branch on the held-out exact baseline.</h1>
+  <p class="lede">The top decile of lag-2 residue-lifted arrival pairs caught <code>57.31098430813124%</code> of held-out exact-baseline high-load width-2 exits, compared with <code>50.10699001426534%</code> for the top decile of current lifted states. The margin is <code>7.203994293865901</code> percentage points, so the run does not disconfirm the lag-2 exposure claim under the stated threshold.</p>
+  <div class="status">
+    <span class="pill advance">status: ADVANCE</span>
+    <span class="pill">claim status: measured bridge, unresolved theorem</span>
+    <span class="pill">catalog rows: 81,569</span>
+    <span class="pill">high-load width-2 rows: 5,937</span>
+  </div>
+
+  <section>
+    <h2>PGS Object And Invariant</h2>
+    <div class="grid">
+      <div class="panel">
+        <h3>Object</h3>
+        <p>The ordered object is the residue-lifted reduced chamber-state sequence in the committed gap-type catalog. A row is reduced to <code>o&lt;first_open_offset&gt;_&lt;carrier_family&gt;|&lt;divisor_bucket&gt;|r&lt;q mod 30&gt;</code>.</p>
+      </div>
+      <div class="panel">
+        <h3>Invariant Tested</h3>
+        <p>The lag-2 arrival invariant is the ordered pair of the two lifted states immediately before a target row. A target row is a high-load width-2 boundary when it has width <code>2</code>, carrier <code>higher_divisor_even</code>, first open offset <code>2</code>, and <code>d(w) &gt; 16</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Measured Result</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Evaluation</th>
+          <th>Feature</th>
+          <th>Top share</th>
+          <th>Captured high-load exits</th>
+          <th>Capture share</th>
+          <th>Rate lift</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Exact baseline held-out half</td>
+          <td>Current lifted state</td>
+          <td><code>10%</code></td>
+          <td><code>1405 / 2804</code></td>
+          <td><code>0.5010699001426534</code></td>
+          <td><code>1.0933725752320567</code></td>
+        </tr>
+        <tr>
+          <td>Exact baseline held-out half</td>
+          <td>Lag-2 arrival pair</td>
+          <td><code>10%</code></td>
+          <td><code>1607 / 2804</code></td>
+          <td><code>0.5731098430813124</code></td>
+          <td><code>1.125881587221504</code></td>
+        </tr>
+        <tr>
+          <td>Sampled decade windows</td>
+          <td>Current lifted state</td>
+          <td><code>10%</code></td>
+          <td><code>65 / 134</code></td>
+          <td><code>0.48507462686567165</code></td>
+          <td><code>0.9582031514494926</code></td>
+        </tr>
+        <tr>
+          <td>Sampled decade windows</td>
+          <td>Lag-2 arrival pair</td>
+          <td><code>10%</code></td>
+          <td><code>63 / 134</code></td>
+          <td><code>0.4701492537313433</code></td>
+          <td><code>1.0482918254375526</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Bridge Consequence</h2>
+    <p>The exact-baseline result supports a local boundary-exposure bridge: lag-2 arrival context carries more width-2 high-load boundary information than the current lifted state alone at the top-decile scale. The sampled-decade result prevents upgrading the baseline-trained lag-2 dictionary into a scale-universal recurrence law.</p>
+    <p>The next theorem obligation is therefore not a fixed list of lag-2 pairs. The next theorem obligation is a chamber-state renewal law: prove that the recursive endpoint chain returns infinitely often to a high-exposure lag-2 boundary family, or prove an invariant that excludes infinite confinement to low-exposure lag-2 arrival pairs.</p>
+  </section>
+
+  <section>
+    <h2>Status Separation</h2>
+    <table>
+      <tbody>
+        <tr><th>Theorem proof</th><td>No proof of Polignac's conjecture or the twin prime conjecture is claimed.</td></tr>
+        <tr><th>Measured evidence</th><td>The probe measures <code>81,543</code> lag-2 transition events across <code>13</code> catalog surfaces and <code>5,937</code> high-load width-2 rows.</td></tr>
+        <tr><th>Implementation status</th><td>The deterministic probe, summary, threshold table, and ranked feature ledgers are written inside this track folder.</td></tr>
+        <tr><th>Audit status</th><td>The script compiles, reruns from the committed catalog, and writes LF-terminated JSON and CSV outputs.</td></tr>
+        <tr><th>Hypothesis retained</th><td>Lag-2 residue-lifted arrival structure is a proof-directed localization surface for width-2 high-load recurrence.</td></tr>
+        <tr><th>Invalidated shortcut</th><td>A baseline-trained fixed lag-2 pair dictionary is not a scale-universal recurrence proof surface.</td></tr>
+        <tr><th>Unresolved state</th><td>The proof target remains recurrence of endpoint-closing return words, with width <code>2</code> as the twin-prime case.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Artifacts</h2>
+    <ul>
+      <li>Probe: <a href="../probes/lag2_boundary_exposure_probe.py"><code>probes/lag2_boundary_exposure_probe.py</code></a></li>
+      <li>Summary: <a href="../output/lag2_boundary_exposure_probe/summary.json"><code>output/lag2_boundary_exposure_probe/summary.json</code></a></li>
+      <li>Threshold table: <a href="../output/lag2_boundary_exposure_probe/threshold_summary.csv"><code>output/lag2_boundary_exposure_probe/threshold_summary.csv</code></a></li>
+      <li>Lag-2 ranking: <a href="../output/lag2_boundary_exposure_probe/ranked_lag2_pairs.csv"><code>output/lag2_boundary_exposure_probe/ranked_lag2_pairs.csv</code></a></li>
+      <li>Current-state ranking: <a href="../output/lag2_boundary_exposure_probe/ranked_current_states.csv"><code>output/lag2_boundary_exposure_probe/ranked_current_states.csv</code></a></li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>
