@@ -230,11 +230,11 @@ definition.
 | synthesis | 15 | Generating candidate rules from observed cases. | Keep internally; define if public. | Keep |
 | dominant `d=4` regime | 12 | Common case where the selected interior integer has exactly four divisors. | Keep concept; write as "gaps whose selected integer has `d(n)=4`." | Review |
 | boundary certificate graph | 11 | Graph of candidate constraints used by experimental solvers. | Rename to "candidate-constraint graph." | Review |
-| RH bridge | 8 | Short form for the downstream RH-facing translation of PGS/DNI structure. | Avoid as a leading frame; prefer "DNI-to-zeta translation" or spell out the downstream role. | Restrict |
+| RH bridge | 8 | Short filesystem label for the downstream zeta-language description of PGS/DNI structure. | Avoid as a leading frame; prefer "DNI-to-zeta compression" or spell out that RH language is downstream. | Restrict |
 | geofac | 7 | Experimental shorthand in predictor probes. | Retire. | Retire |
 | taxonomy | 6 | Classification of observed cases. | Keep. | Keep |
 | threat ceiling | 6 | Cutoff induced by a later lower-divisor composite. | Concept may matter; rename toward "lower-divisor cutoff." | Review |
-| DNI-to-RH bridge | 5 | Dirichlet-series helper code relating DNI coefficients to zeta-function expressions. | Avoid as a leading frame because it makes RH sound primary; use "DNI-to-zeta translation" unless naming the module. | Restrict |
+| DNI-to-RH bridge | 5 | Dirichlet-series helper code relating DNI coefficients to zeta-function expressions. | Avoid as a leading frame because it makes RH sound primary; use "DNI-to-zeta compression" unless naming the module. | Restrict |
 | absorption lock | 4 | Experimental commit/acceptance phrase. | Retire unless a precise algorithmic state requires it. | Retire |
 | result surface | 4 | Scope over which a result has been measured or proved. | Usually replace with "result scope." | Review |
 | Rule X with chamber reset | 3 | Candidate-elimination plus reset at the accepted candidate. | Retire phrase; concept should be renamed if kept. | Retire |
