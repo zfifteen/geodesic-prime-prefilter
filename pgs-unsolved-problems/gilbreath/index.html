@@ -43,9 +43,9 @@
       <h1>Gilbreath's Conjecture</h1>
       <p class="lede">This track asks whether PGS gap grammar can explain the stability of the leading value under repeated absolute differences of the prime sequence.</p>
       <div class="pillrow">
-        <span class="pill pending">status: research-design pending</span>
+        <span class="pill pending">status: proof-directed measurement active</span>
         <span class="pill">claim status: unresolved</span>
-        <span class="pill">implementation: none</span>
+        <span class="pill">implementation: deterministic probes</span>
       </div>
     </div>
   </header>
@@ -71,16 +71,31 @@
       <h2>Research Card</h2>
       <table>
         <tbody>
-          <tr><th>First goal</th><td>Define the end goal and research design for a PGS-native difference-grammar account of Gilbreath stability.</td></tr>
+          <tr><th>First goal</th><td>Prove the seeded ordered prime-gap absolute-difference cascade preserves leading value <code>1</code> at every depth.</td></tr>
           <tr><th>Current PGS assets</th><td>Ordered prime-gap state, gap-type research, GWR-selected chamber markers, and existing twin/gap research surfaces.</td></tr>
-          <tr><th>Missing bridge theorem</th><td>A theorem showing that PGS gap grammar preserves the leading <code>1</code> condition under repeated absolute-difference reduction.</td></tr>
-          <tr><th>Deterministic probe design</th><td>Build finite gap-word cascades from exact PGS-generated prime endpoints and classify which local gap words control the leading cascade value.</td></tr>
-          <tr><th>Falsification condition</th><td>A proposed grammar law fails if an allowed local PGS word produces a leading cascade value other than <code>1</code> or if the law requires a nonlocal assumption it does not state.</td></tr>
-          <tr><th>Status</th><td><code>research-design pending</code>. No proof or implementation is claimed by this scaffold.</td></tr>
+          <tr><th>Missing bridge theorem</th><td>Derive prefix admission for every depth from PGS ordered endpoint-gap grammar, with the low-prefix reset corridor as the current concrete attack surface.</td></tr>
+          <tr><th>Deterministic probe design</th><td>Build finite gap-word cascades from exact PGS-generated prime endpoints and classify low-prefix depletion, reset admission, and reset stop-wall behavior.</td></tr>
+          <tr><th>Falsification condition</th><td>A proposed grammar law fails if an actual seeded endpoint-gap cascade row violates its reset admission, stop-wall, or leading-edge preservation claim.</td></tr>
+          <tr><th>Status</th><td><code>unresolved</code>. The measured reset corridor has no leading failure on the current exact endpoint surface, but no Gilbreath proof is claimed.</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <h2>Latest Advance</h2>
+      <p>The reset admission pair remains <code>2,4</code> on the exact seeded endpoint surface, but the closed reset stop-wall is not a single diff-4 law. The 2026-05-20 probe found closed stop-wall differences <code>4:22</code>, <code>6:4</code>, <code>8:1</code>, and <code>10:1</code> across <code>28</code> closed positive resets.</p>
+      <p>The diff-4-only stop-wall shortcut is invalidated. The next theorem obligation is to derive the broader stop-wall alphabet from seeded ordered endpoint-gap grammar after the <code>2,4</code> reset admission pair.</p>
+    </section>
+    <section>
+      <h2>Artifacts</h2>
+      <table>
+        <tbody>
+          <tr><th>2026-05-20</th><td><a href="2026-05-20-reset-stop-wall-classification.html">Reset stop-wall classification</a>: deterministic probe and note falsifying the diff-4-only stop-wall shortcut.</td></tr>
+          <tr><th>Probe</th><td><a href="2026-05-20-reset_stop_wall_probe.py">2026-05-20-reset_stop_wall_probe.py</a></td></tr>
+          <tr><th>Outputs</th><td><a href="2026-05-20-reset_stop_wall_summary.json">summary JSON</a> and <a href="2026-05-20-reset_stop_wall_rows.csv">reset rows CSV</a></td></tr>
         </tbody>
       </table>
     </section>
   </main>
-  <footer><div class="wrap">PGS Unsolved Problems Research Program. Documentation scaffold only.</div></footer>
+  <footer><div class="wrap">PGS Unsolved Problems Research Program. Track status: unresolved, proof-directed measurement active.</div></footer>
 </body>
 </html>
