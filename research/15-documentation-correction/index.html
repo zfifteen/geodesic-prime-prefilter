@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PGS Documentation Correction Audit</title>
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --ink: #17130f;
+      --muted: #665f55;
+      --line: #d7cfc2;
+      --panel: #fffdf8;
+      --accent: #0f6b5f;
+      --warn: #8a4f10;
+      --bad: #7a2634;
+      --good: #22613a;
+      --code: #efe8da;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 13px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 28px 20px 42px;
+    }
+    header {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 16px;
+      margin-bottom: 18px;
+    }
+    h1 {
+      font-size: 2rem;
+      line-height: 1.08;
+      margin: 0 0 8px;
+      letter-spacing: 0;
+    }
+    h2 {
+      font-size: 1.25rem;
+      margin: 24px 0 10px;
+      letter-spacing: 0;
+    }
+    h3 {
+      font-size: 1rem;
+      margin: 16px 0 6px;
+      letter-spacing: 0;
+    }
+    p { margin: 0 0 10px; }
+    a { color: var(--accent); }
+    code, pre {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12px;
+    }
+    code {
+      background: var(--code);
+      padding: 1px 4px;
+      border-radius: 4px;
+    }
+    pre {
+      background: var(--code);
+      border: 1px solid var(--line);
+      padding: 10px;
+      overflow-x: auto;
+      border-radius: 6px;
+    }
+    .lede {
+      max-width: 880px;
+      font-size: 14px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .card strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .tag {
+      display: inline-block;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 2px 8px;
+      margin: 0 6px 6px 0;
+      background: var(--panel);
+      color: var(--muted);
+      font-size: 12px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 10px 0 16px;
+    }
+    th, td {
+      vertical-align: top;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      padding: 8px 9px;
+    }
+    th {
+      background: #eee6d8;
+      font-weight: 700;
+    }
+    tr:last-child td { border-bottom: 0; }
+    .good { color: var(--good); font-weight: 700; }
+    .warn { color: var(--warn); font-weight: 700; }
+    .bad { color: var(--bad); font-weight: 700; }
+    .callout {
+      border-left: 4px solid var(--accent);
+      background: var(--panel);
+      padding: 10px 12px;
+      margin: 14px 0;
+    }
+    .compact-list {
+      margin: 8px 0 0;
+      padding-left: 18px;
+    }
+    .compact-list li { margin: 4px 0; }
+    @media (max-width: 760px) {
+      main { padding: 20px 14px 34px; }
+      .grid { grid-template-columns: 1fr; }
+      h1 { font-size: 1.65rem; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>PGS Documentation Correction Audit</h1>
+    <p class="lede">
+      Prime Gap Structure defines the integer-level arithmetic structure of
+      prime placement. The documentation must state that source structure
+      first, then describe RH, PNT, zeta language, measurements, and audits as
+      downstream or separate artifacts.
+    </p>
+  </header>
+
+  <section class="callout">
+    <strong>Correction thesis.</strong>
+    Prime Gap Structure proves the Riemann Hypothesis by proving the exact
+    arithmetic structure whose zeta-compressed description is RH. Documentation
+    fails when it makes the downstream pole sentence the judge of the source
+    arithmetic object.
+  </section>
+
+  <section>
+    <h2>Sub-Project Contract</h2>
+    <div class="grid">
+      <div class="card">
+        <strong>Object</strong>
+        Repository documentation, public essays, index pages, bridge notes, and
+        continuity files that describe PGS theorem status or consequences.
+      </div>
+      <div class="card">
+        <strong>Invariant</strong>
+        PGS source order is preserved:
+        <code>divisor counts -> DNI/GWR -> prime placement -> zeta compression</code>.
+      </div>
+      <div class="card">
+        <strong>Rule</strong>
+        State exact arithmetic first. Attach measurement, audit, and unresolved
+        labels to their actual surfaces without downgrading proved PGS laws.
+      </div>
+    </div>
+    <p>
+      The correction project does not rewrite mathematics to fit rhetoric. It
+      rewrites repository language so the existing arithmetic reality is not
+      demoted by inherited classical framing.
+    </p>
+  </section>
+
+  <section>
+    <h2>Initial Scan</h2>
+    <p>
+      The first pass inspected core/public documentation rather than generated
+      caches and deep archive output. The scan covered root overview files,
+      public essays, vocabulary notes, the continuity index, and the RH bridge
+      chapter.
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Scan family</th>
+          <th>Files flagged</th>
+          <th>Meaning</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Downgrade-sensitive terms</td>
+          <td>28</td>
+          <td>
+            Phrases around proof denial, residual targets, downstream restatement,
+            or narrow qualifiers. Some are legitimate in bounded-compression
+            notes; each needs scope review.
+          </td>
+        </tr>
+        <tr>
+          <td>Status and statistics terms</td>
+          <td>28</td>
+          <td>
+            Words around measurement, audit, empirical regimes, probability, and
+            randomness. These belong to implementation evidence and classical
+            comparison, not to the proved source law.
+          </td>
+        </tr>
+        <tr>
+          <td>RH and zeta terms</td>
+          <td>13</td>
+          <td>
+            Files that mention RH, pole placement, zero geometry, zeta language,
+            or bridge naming. These are the highest priority correction surface
+            because they can invert the explanatory order.
+          </td>
+        </tr>
+        <tr>
+          <td>GitHub math macro check</td>
+          <td>0</td>
+          <td>
+            No current hits for the unsupported operator-name LaTeX macro in
+            the audited docs/research surface.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <pre>rg -l "&lt;downgrade-sensitive wording&gt;" ...
+rg -l "&lt;status, audit, probability, and measurement wording&gt;" ...
+rg -l "&lt;RH, pole, zero-geometry, bridge, and zeta wording&gt;" ...
+rg -n -F "&lt;unsupported operator-name macro&gt;" ...</pre>
+  </section>
+
+  <section>
+    <h2>Where The Documentation Falls Short</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Failure family</th>
+          <th>Current symptom</th>
+          <th>Correction rule</th>
+          <th>Priority surface</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="bad">RH-first framing</span></td>
+          <td>
+            A reader can enter through RH, pole placement, zero geometry, or
+            bridge naming before seeing the integer-level mechanism.
+          </td>
+          <td>
+            Open with divisor counts, DNI normalization, fixed-line prime
+            returns, and ordered gap interiors. Introduce RH language after the
+            source structure is already on the page.
+          </td>
+          <td>
+            <a href="../12-rh-bridge/docs/dni_rh_bridge.md">DNI bridge note</a>,
+            <a href="../12-rh-bridge/README.md">RH bridge README</a>,
+            <a href="../../docs/essays/the-riemann-hypothesis-is-obsolete.md">RH essay</a>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="bad">Pole sentence as judge</span></td>
+          <td>
+            Classical pole-placement language still reads like the first-level
+            object that PGS must satisfy.
+          </td>
+          <td>
+            Describe pole placement as the zeta-compressed description of the
+            proved arithmetic source. Do not make it the starting object.
+          </td>
+          <td>
+            <a href="../12-rh-bridge/docs/prime-structure-program/index.html">Prime-structure program</a>,
+            <a href="../00-index/status-map.md">status map</a>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="bad">Source law demotion</span></td>
+          <td>
+            Words tied to heuristics, estimates, empirical support, or
+            probability appear close enough to theorem statements that the reader
+            can misclassify PGS as a measured pattern.
+          </td>
+          <td>
+            Put theorem status first. Then separately label implementation
+            measurements, audit surfaces, hypotheses, unresolved states, and
+            invalidated rules.
+          </td>
+          <td>
+            <a href="../../PROOF.md">PROOF.md</a>,
+            <a href="../../RESULTS.md">RESULTS.md</a>,
+            root overview files
+          </td>
+        </tr>
+        <tr>
+          <td><span class="warn">Bridge naming drift</span></td>
+          <td>
+            The phrase "RH bridge" is useful as a repository route, but it makes
+            RH sound primary when used as explanatory language.
+          </td>
+          <td>
+            Prefer "DNI-to-zeta translation" or "zeta compression" in prose.
+            Keep legacy path names only as filesystem labels.
+          </td>
+          <td>
+            <a href="../../docs/vocabulary/nonstandard_terms_dictionary.md">vocabulary dictionary</a>,
+            <a href="../00-index/migration-routing-manifest.md">routing manifest</a>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="warn">Archive bleed-through</span></td>
+          <td>
+            Old model answers, generated research notes, and archived scratch
+            files contain weaker or classical framing.
+          </td>
+          <td>
+            Mark archive material as provenance. Do not let archive prose define
+            the public repository position.
+          </td>
+          <td>
+            <a href="../../docs/unanswered-questions/">unanswered question archives</a>,
+            deep research archives
+          </td>
+        </tr>
+        <tr>
+          <td><span class="warn">Math rendering fragility</span></td>
+          <td>
+            GitHub rejects some LaTeX macros. A correct statement becomes
+            unreadable when the renderer fails.
+          </td>
+          <td>
+            Use GitHub-friendly Markdown math: <code>$...$</code>,
+            <code>$$...$$</code>, <code>\mathrm{Re}</code>, plain ASCII
+            functions, and compact formulas.
+          </td>
+          <td>
+            Markdown essays and proof notes
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Correction Ledger</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Status</th>
+          <th>Claim type</th>
+          <th>Documentation obligation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="good">Proved</td>
+          <td>Direct deterministic next-prime rule</td>
+          <td>
+            State as exact arithmetic under the hypotheses in
+            <a href="../../PROOF.md">PROOF.md</a>. Do not attach probability or
+            empirical qualifiers.
+          </td>
+        </tr>
+        <tr>
+          <td class="good">Proved</td>
+          <td>Interior maximizer theorem / GWR</td>
+          <td>
+            State as ordered gap-interior structure, not as a curiosity about
+            composites.
+          </td>
+        </tr>
+        <tr>
+          <td class="good">Exact translation</td>
+          <td>DNI divisor-count data compressed through zeta language</td>
+          <td>
+            Present as downstream analytic compression of source arithmetic.
+            Avoid wording that makes RH the source object.
+          </td>
+        </tr>
+        <tr>
+          <td class="warn">Measured</td>
+          <td>Generator surfaces and implementation audits</td>
+          <td>
+            Keep exact tested ranges attached to implementation evidence. Audit
+            confirms emitted records; audit does not choose the next prime.
+          </td>
+        </tr>
+        <tr>
+          <td class="warn">Separate obligation</td>
+          <td>Bounded-compression and square-branch work</td>
+          <td>
+            Keep these under their own research chapter. They do not weaken the
+            universal local theorems or the PGS source claim.
+          </td>
+        </tr>
+        <tr>
+          <td class="bad">Invalid documentation route</td>
+          <td>Classical frame controls PGS meaning</td>
+          <td>
+            Remove or rewrite language that asks PGS to earn permission from
+            RH-facing pole language before stating the source arithmetic.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Remediation Order</h2>
+    <ol class="compact-list">
+      <li>
+        Lock the public spine: <a href="../../README.md">README.md</a>,
+        <a href="../../PROOF.md">PROOF.md</a>,
+        <a href="../../RESULTS.md">RESULTS.md</a>, and
+        <a href="../00-index/continuity/START_HERE.md">START_HERE.md</a>.
+      </li>
+      <li>
+        Repair the RH-facing public docs so every file opens from PGS source
+        structure before zeta language.
+      </li>
+      <li>
+        Rename explanatory language from "RH bridge" to "DNI-to-zeta
+        translation" wherever the filesystem name is not being cited.
+      </li>
+      <li>
+        Review older essays and X-post assets for shadow-first phrasing.
+      </li>
+      <li>
+        Quarantine archive prose by adding provenance labels rather than
+        silently treating old model answers as current doctrine.
+      </li>
+      <li>
+        Run GitHub math checks after every Markdown pass.
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Acceptance Criteria</h2>
+    <span class="tag">PGS first</span>
+    <span class="tag">exact arithmetic</span>
+    <span class="tag">source before zeta</span>
+    <span class="tag">theorem status preserved</span>
+    <span class="tag">audit separated</span>
+    <span class="tag">GitHub math renders</span>
+    <ul class="compact-list">
+      <li>Core docs state the integer-level mechanism before RH, PNT, or zeta language.</li>
+      <li>No public-facing correction text demotes PGS to a statistical pattern.</li>
+      <li>Every measured result names its exact scope.</li>
+      <li>Every audit result stays downstream from generation or theorem status.</li>
+      <li>Bounded-compression blockers remain separate from the direct next-prime and GWR theorems.</li>
+      <li>GitHub preview renders all touched formulas without unsupported-macro errors.</li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>

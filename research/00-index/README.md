@@ -28,13 +28,18 @@ for each chapter.
 | `08-collatz` | Collatz-adjacent PGS experiments | migrated and validated |
 | `09-exponents` | Mersenne/exponent-wall PGS experiments | migrated and validated |
 | `10-twin-primes` | Twin-prime PGS experiments | migrated and validated |
+| `11-gap-ridge` | Gap-ridge and chamber-ridge investigations | mapped |
+| `12-rh-bridge` | DNI-to-zeta translation and RH-facing explanation | active |
+| `13-prime-spiral` | Prime-spiral visualization and structure work | mapped |
+| `14-sha-nonce` | SHA/nonce adjacency probes | mapped |
+| `15-documentation-correction` | Public documentation correction and framing audit | active |
 
 ## Status Vocabulary
 
 - `proved`: universal theorem under the hypotheses stated in a proof artifact.
 - `measured`: finite computational result with exact regime and output path.
 - `audited`: generated output checked by a separate validation path.
-- `hypothesis`: live explanatory candidate, not proved and not falsified.
+- `hypothesis`: live explanatory candidate awaiting proof or falsification.
 - `unresolved`: open blocker, survivor, missing invariant, or non-closing rule.
 - `invalidated`: rule or conjecture falsified by a named artifact.
 - `archived`: historical output retained for provenance, not active evidence.

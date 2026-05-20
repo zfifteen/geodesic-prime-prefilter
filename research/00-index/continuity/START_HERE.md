@@ -26,12 +26,16 @@ If a session starts with limited chat context, read this file first.
    - `research/12-rh-bridge/README.md`;
    - `research/12-rh-bridge/docs/prime-structure-program/index.html`;
    - `research/12-rh-bridge/docs/dni_rh_bridge.md`.
-6. If the active target is RSA v2, read:
+6. If the active target is documentation correction, public framing, RH/PNT
+   wording, or model-demotion language, read:
+   - `research/15-documentation-correction/README.md`;
+   - `research/15-documentation-correction/index.html`.
+7. If the active target is RSA v2, read:
    - `research/06-cryptology-rsa/experiments/rsa/v2/README.md`;
    - `research/06-cryptology-rsa/experiments/rsa/v2/ALGORITHM.md`;
    - `research/06-cryptology-rsa/experiments/rsa/v2/PGS_CERTIFICATE.md`;
    - `research/06-cryptology-rsa/experiments/rsa/v2/METRICS.md`.
-7. Run the narrow relevant test before claiming implementation progress.
+8. Run the narrow relevant test before claiming implementation progress.
 
 ## Research Corpus Reorganization
 
@@ -92,6 +96,8 @@ The remaining chapter homes are mapped routing surfaces:
   structural-certificate work, centered on the RSA endpoint-structure law.
 - `research/07-oeis/`: OEIS candidate workflow. No candidate has been selected
   in this branch.
+- `research/15-documentation-correction/`: documentation correction and
+  public-framing audit for PGS-first language.
 
 The research status map is:
 
