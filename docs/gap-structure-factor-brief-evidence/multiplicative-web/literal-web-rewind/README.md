@@ -1,5 +1,11 @@
 # Literal Web Rewind
 
+## Current Reset
+
+The active research path has been rewound to the literal multiplicative web.
+
+Read `REWIND_TO_LITERAL_WEB.md` before modifying or extending this branch. It parks the ratio candidate-list detour and defines the current success boundary: public web evidence must emit the exact offset `p` or `q` before audit labels are read.
+
 ## Finding
 
 The literal web object has signal before any residue compression is introduced.
