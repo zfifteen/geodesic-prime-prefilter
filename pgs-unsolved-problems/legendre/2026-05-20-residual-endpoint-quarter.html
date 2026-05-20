@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Residual Endpoint-Quarter Bridge | Legendre PGS Track</title>
+  <style>
+    :root {
+      --ink:#17212b;
+      --muted:#5e6a75;
+      --line:#d8e0e8;
+      --panel:#f7f9fb;
+      --accent:#0b6b8a;
+      --good:#1f7a4d;
+      --warn:#8a5a00;
+    }
+    * { box-sizing:border-box; }
+    body {
+      margin:0;
+      color:var(--ink);
+      background:#fff;
+      font:13px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+    header { border-bottom:1px solid var(--line); background:#f6f9fb; }
+    main, .wrap { width:min(980px,calc(100% - 32px)); margin:0 auto; }
+    .hero { padding:28px 0 24px; }
+    a { color:var(--accent); text-underline-offset:3px; }
+    .back { display:inline-block; margin-bottom:12px; font-weight:650; }
+    .eyebrow {
+      margin:0 0 8px;
+      color:var(--accent);
+      font-size:12px;
+      font-weight:750;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+    h1 { max-width:900px; margin:0; font-size:2rem; line-height:1.1; letter-spacing:0; }
+    .lede { max-width:900px; margin:14px 0 0; color:var(--muted); font-size:15px; }
+    section { padding:22px 0; border-bottom:1px solid var(--line); }
+    h2 { margin:0 0 12px; font-size:1.22rem; line-height:1.2; }
+    h3 { margin:0 0 8px; font-size:1rem; }
+    p { margin:0 0 10px; }
+    code {
+      padding:1px 4px;
+      border-radius:4px;
+      background:#eef3f6;
+      color:#0f4f68;
+      font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+      font-size:.95em;
+    }
+    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+    .panel { padding:14px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
+    .metric { font-size:1.45rem; font-weight:760; color:#22313d; }
+    table { width:100%; border-collapse:collapse; border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+    th, td { padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { width:230px; background:#eef5f8; color:#24414f; font-size:12px; letter-spacing:.04em; text-transform:uppercase; }
+    tr:last-child th, tr:last-child td { border-bottom:0; }
+    .status {
+      display:inline-block;
+      padding:4px 8px;
+      border:1px solid #b7dcc8;
+      border-radius:999px;
+      color:var(--good);
+      background:#eefaf3;
+      font-weight:700;
+    }
+    .warn { color:var(--warn); font-weight:700; }
+    @media (max-width:760px) {
+      .grid { grid-template-columns:1fr; }
+      th { width:auto; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hero">
+      <a class="back" href="./">Back to Legendre track</a>
+      <p class="eyebrow">2026-05-20 research note</p>
+      <h1>The selected-d4 residual endpoints stayed inside the first quarter of the square chamber</h1>
+      <p class="lede">The narrowed residual contract from automation memory was tested directly: <code>tau(w)=4</code>, <code>w &lt; n^2</code>, both chamber roots composite, and the next prime-square ceiling after <code>w</code> beyond <code>(n + 1)^2</code>. On the measured surface, every endpoint satisfies <code>4(q - n^2) &lt; 2n + 1</code>.</p>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>Headline Advance</h2>
+      <p><span class="status">ADVANCE</span> The selected-<code>d=4</code> composite-boundary residual now has a focused endpoint-position bridge target: prove the first-quarter inequality <code>4(q - n^2) &lt; 2n + 1</code>. This is stronger than Legendre for this residual branch because it places <code>q</code> inside the first quarter of <code>(n^2, (n + 1)^2)</code>.</p>
+      <div class="grid">
+        <div class="panel">
+          <h3>Residual Rows</h3>
+          <p class="metric">2632</p>
+          <p>Rows satisfying the narrowed selected-<code>d=4</code> composite-boundary residual predicate for <code>2 <= n <= 5000</code>.</p>
+        </div>
+        <div class="panel">
+          <h3>Quarter Violations</h3>
+          <p class="metric">0</p>
+          <p>No residual row violated <code>4(q - n^2) &lt; 2n + 1</code>.</p>
+        </div>
+        <div class="panel">
+          <h3>Crossings</h3>
+          <p class="metric">0</p>
+          <p>No residual endpoint crossed or reached <code>(n + 1)^2</code>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>PGS Objects</h2>
+      <table>
+        <tbody>
+          <tr><th>Square chamber</th><td>The open interval <code>(n^2, (n + 1)^2)</code>, with width <code>2n + 1</code>.</td></tr>
+          <tr><th>Endpoint state</th><td><code>q</code> is the first later <code>tau=2</code> endpoint after <code>n^2</code>, computed by exact divisor counts.</td></tr>
+          <tr><th>Selected witness</th><td><code>w</code> is the leftmost minimum-divisor interior witness of the containing endpoint gap.</td></tr>
+          <tr><th>Residual predicate</th><td><code>tau(w)=4</code>, <code>w &lt; n^2</code>, <code>tau(n) != 2</code>, <code>tau(n + 1) != 2</code>, and <code>S_+(w) &gt; (n + 1)^2</code>.</td></tr>
+          <tr><th>Endpoint-position bridge</th><td>Prove <code>q - n^2</code> is always less than one quarter of the chamber width in this residual branch.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Measured Extremes</h2>
+      <table>
+        <tbody>
+          <tr><th>Scan</th><td><code>4999</code> square chambers, <code>2 <= n <= 5000</code>, exact divisor-count table through <code>36,000,000</code>.</td></tr>
+          <tr><th>Tightest fraction</th><td><code>n=8</code>, gap <code>(61, 67)</code>, <code>w=62</code>, chamber <code>(64, 81)</code>, endpoint offset <code>3</code>, chamber width <code>17</code>, quarter slack <code>5</code>.</td></tr>
+          <tr><th>Largest endpoint offset</th><td><code>n=1165</code>, gap <code>(1,357,201, 1,357,333)</code>, <code>w=1,357,203</code>, endpoint offset <code>108</code>, chamber width <code>2331</code>, quarter slack <code>1899</code>.</td></tr>
+          <tr><th>Tail carrier obstruction</th><td><code>731</code> residual rows had no later <code>d=4</code> carrier after <code>n^2</code> before endpoint closure. A proof route that requires a later tail <code>d=4</code> carrier is therefore not a complete residual bridge.</td></tr>
+          <tr><th>Artifacts</th><td><a href="residual_endpoint_quarter_probe.py">probe</a>, <a href="2026-05-20-residual-endpoint-quarter-summary.json">summary JSON</a>, and <a href="2026-05-20-residual-endpoint-quarter-frontier.csv">frontier CSV</a>.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Proof Obligation</h2>
+      <p>The next proof target is narrow and explicit:</p>
+      <table>
+        <tbody>
+          <tr><th>Lemma target</th><td>For every selected-<code>d=4</code> composite-boundary residual row, prove <code>4(q - n^2) &lt; 2n + 1</code>.</td></tr>
+          <tr><th>Why it proves the branch</th><td>The inequality gives <code>q &lt; n^2 + (2n + 1) = (n + 1)^2</code>, and in fact gives the stronger first-quarter placement.</td></tr>
+          <tr><th>Falsification condition</th><td>One residual row with <code>4(q - n^2) >= 2n + 1</code> falsifies this endpoint-quarter bridge.</td></tr>
+          <tr><th>What not to repeat</th><td>Do not use the strict lower-divisor deadline, the selected-<code>d=4</code> equal-class deadline, or the lower-divisor square-ceiling closure as the next route. Those have already been reduced or falsified in prior runs.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Status Separation</h2>
+      <table>
+        <tbody>
+          <tr><th>Theorem proof</th><td>No Legendre proof is claimed. <code>PROOF.md</code> still controls the proved next-prime and GWR theorems.</td></tr>
+          <tr><th>Measured result</th><td>On <code>2 <= n <= 5000</code>, the narrowed residual has <code>0</code> endpoint-quarter violations and <code>0</code> square crossings.</td></tr>
+          <tr><th>Implementation status</th><td><code>residual_endpoint_quarter_probe.py</code> builds exact divisor counts and writes one summary JSON plus one frontier CSV.</td></tr>
+          <tr><th>Audit status</th><td>The probe was run locally and compiled with <code>python3 -m py_compile</code>. The HTML note was parser-checked after creation.</td></tr>
+          <tr><th>Hypothesis</th><td>The composite-boundary residual is governed by an endpoint-position law, not by existence of a later equal-class tail carrier.</td></tr>
+          <tr><th>Unresolved state</th><td>The all-scale proof of <code>4(q - n^2) &lt; 2n + 1</code> remains open.</td></tr>
+          <tr><th>Invalidated rule</th><td>Later tail <code>d=4</code> existence is not a complete bridge because <code>731</code> measured residual rows close before any such carrier appears.</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer><div class="wrap">Legendre PGS track. Status: ADVANCE, unresolved theorem.</div></footer>
+</body>
+</html>
