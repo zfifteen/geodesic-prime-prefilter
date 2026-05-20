@@ -58,7 +58,7 @@ the arithmetic structure casting it.
 ## Exact Dirichlet-Series Bridge
 
 Start with the divisor-count Dirichlet series on the half-plane
-$\operatorname{Re}(s) > 1$:
+$\mathrm{Re}(s) > 1$:
 
 $$
 D(s) = \sum_{n \ge 1} \frac{d(n)}{n^s} = \zeta(s)^2.
@@ -114,7 +114,7 @@ That bridge is already present before any spectral interpretation is added.
 
 ## Proposition
 
-On the half-plane $\operatorname{Re}(s) > 1$,
+On the half-plane $\mathrm{Re}(s) > 1$,
 
 $$
 D(s) = \zeta(s)^2,
@@ -188,7 +188,7 @@ For the DNI:
 For the Riemann Hypothesis:
 
 - the nontrivial zeros of $\zeta(s)$ are conjectured to satisfy
-  $\operatorname{Re}(s)=1/2$,
+  $\mathrm{Re}(s)=1/2$,
 - so the zero set collapses onto one vertical line in the complex plane.
 
 These are different objects, but they have the same formal shape:
@@ -232,7 +232,7 @@ continued DNI ratio:
 
 all nontrivial poles of
 $\frac{e^2}{2}\frac{K(s)}{D(s)}$ lie on the critical line
-$\operatorname{Re}(s)=1/2$.
+$\mathrm{Re}(s)=1/2$.
 
 This is a precise analytic reading, not a metaphor.
 
