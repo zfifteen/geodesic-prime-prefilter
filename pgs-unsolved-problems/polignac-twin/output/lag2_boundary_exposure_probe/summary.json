@@ -1,0 +1,153 @@
+{
+  "catalog_path": "research/03-gap-types/output/gwr_dni_gap_type_catalog_details.csv",
+  "output_dir": "pgs-unsolved-problems/polignac-twin/output/lag2_boundary_exposure_probe",
+  "pgs_object": "residue-lifted reduced chamber-state sequence",
+  "pgs_invariant": "lag-2 ordered arrival pair before a width-2 high-load endpoint-closing state",
+  "pgs_rule_or_law_tested": "lag-2 boundary exposure as a candidate bridge toward high-load width-2 recurrence",
+  "status": "ADVANCE",
+  "surface_count": 13,
+  "catalog_row_count": 81569,
+  "event_count_with_lag2_context": 81543,
+  "high_load_width2_row_count": 5937,
+  "non_width2_high_load_row_count": 0,
+  "exact_baseline_train_event_count": 39246,
+  "exact_baseline_test_event_count": 39249,
+  "sampled_decade_event_count": 3048,
+  "exact_heldout_top_decile": {
+    "current_lifted_capture": 0.5010699001426534,
+    "lag2_arrival_pair_capture": 0.5731098430813124,
+    "lag2_minus_current_capture": 0.07203994293865901,
+    "disconfirmed_by_contract": false,
+    "disconfirmation_rule": "lag-2 top decile captures <= 45% of held-out high-load exits or beats current lifted state by <= 5 percentage points"
+  },
+  "sampled_decade_top_decile": {
+    "current_lifted_capture": 0.48507462686567165,
+    "lag2_arrival_pair_capture": 0.4701492537313433,
+    "lag2_minus_current_capture": -0.014925373134328346
+  },
+  "surface_summary": [
+    {
+      "surface_label": "10^10",
+      "surface_display_label": "10^10",
+      "surface_kind": "sampled_decade_window",
+      "row_count": 256,
+      "event_count_with_lag2_context": 254,
+      "high_load_width2_rows": 10,
+      "high_load_exits_with_lag2_context": 10
+    },
+    {
+      "surface_label": "10^11",
+      "surface_display_label": "10^11",
+      "surface_kind": "sampled_decade_window",
+      "row_count": 256,
+      "event_count_with_lag2_context": 254,
+      "high_load_width2_rows": 15,
+      "high_load_exits_with_lag2_context": 15
+    },
+    {
+      "surface_label": "10^12",
+      "surface_display_label": "10^12",
+      "surface_kind": "sampled_decade_window",
+      "row_count": 256,
+      "event_count_with_lag2_context": 254,
+      "high_load_width2_rows": 12,
+      "high_load_exits_with_lag2_context": 11
+    },
+    {
+      "surface_label": "10^13",
+      "surface_display_label": "10^13",
+      "surface_kind": "sampled_decade_window",
+      "row_count": 256,
+      "event_count_with_lag2_context": 254,
+      "high_load_width2_rows": 10,
+      "high_load_exits_with_lag2_context": 10
+    },
+    {
+      "surface_label": "10^14",
+      "surface_display_label": "10^14",
+      "surface_kind": "sampled_decade_window",
+      "row_count": 256,
+      "event_count_with_lag2_context": 254,
+      "high_load_width2_rows": 8,
+      "high_load_exits_with_lag2_context": 8
+    },
+    {
+      "surface_label": "10^15",
+      "surface_display_label": "10^15",
+      "surface_kind": "sampled_decade_window",
+      "row_count": 256,
+      "event_count_with_lag2_context": 254,
+      "high_load_width2_rows": 8,
+      "high_load_exits_with_lag2_context": 8
+    },
+    {
+      "surface_label": "10^16",
+      "surface_display_label": "10^16",
+      "surface_kind": "sampled_decade_window",
+      "row_count": 256,
+      "event_count_with_lag2_context": 254,
+      "high_load_width2_rows": 6,
+      "high_load_exits_with_lag2_context": 6
+    },
+    {
+      "surface_label": "10^17",
+      "surface_display_label": "10^17",
+      "surface_kind": "sampled_decade_window",
+      "row_count": 256,
+      "event_count_with_lag2_context": 254,
+      "high_load_width2_rows": 11,
+      "high_load_exits_with_lag2_context": 11
+    },
+    {
+      "surface_label": "10^18",
+      "surface_display_label": "10^18",
+      "surface_kind": "sampled_decade_window",
+      "row_count": 256,
+      "event_count_with_lag2_context": 254,
+      "high_load_width2_rows": 9,
+      "high_load_exits_with_lag2_context": 9
+    },
+    {
+      "surface_label": "10^7",
+      "surface_display_label": "10^7",
+      "surface_kind": "sampled_decade_window",
+      "row_count": 256,
+      "event_count_with_lag2_context": 254,
+      "high_load_width2_rows": 15,
+      "high_load_exits_with_lag2_context": 15
+    },
+    {
+      "surface_label": "10^8",
+      "surface_display_label": "10^8",
+      "surface_kind": "sampled_decade_window",
+      "row_count": 256,
+      "event_count_with_lag2_context": 254,
+      "high_load_width2_rows": 16,
+      "high_load_exits_with_lag2_context": 16
+    },
+    {
+      "surface_label": "10^9",
+      "surface_display_label": "10^9",
+      "surface_kind": "sampled_decade_window",
+      "row_count": 256,
+      "event_count_with_lag2_context": 254,
+      "high_load_width2_rows": 16,
+      "high_load_exits_with_lag2_context": 15
+    },
+    {
+      "surface_label": "baseline_1e6",
+      "surface_display_label": "<=10^6",
+      "surface_kind": "exact_baseline",
+      "row_count": 78497,
+      "event_count_with_lag2_context": 78495,
+      "high_load_width2_rows": 5801,
+      "high_load_exits_with_lag2_context": 5801
+    }
+  ],
+  "output_files": [
+    "summary.json",
+    "threshold_summary.csv",
+    "ranked_current_states.csv",
+    "ranked_lag2_pairs.csv"
+  ]
+}
