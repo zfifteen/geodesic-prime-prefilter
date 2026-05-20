@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reset Stop-Wall Classification | Gilbreath PGS Track</title>
+  <style>
+    :root { --ink:#17212b; --muted:#5e6a75; --line:#d8e0e8; --panel:#f7f9fb; --accent:#0b6b8a; --bad:#8a3b00; --good:#1f6b45; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:#fff; font:13px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    main { width:min(1040px,calc(100% - 36px)); margin:0 auto; padding:28px 0 38px; }
+    header { padding:0 0 18px; border-bottom:1px solid var(--line); }
+    h1 { margin:0 0 8px; font-size:2rem; line-height:1.08; letter-spacing:0; }
+    h2 { margin:0 0 12px; font-size:1.25rem; line-height:1.2; }
+    h3 { margin:0 0 8px; font-size:1rem; }
+    p { margin:0 0 11px; }
+    section { padding:20px 0; border-bottom:1px solid var(--line); }
+    a { color:var(--accent); text-underline-offset:3px; }
+    code { padding:1px 4px; border-radius:4px; background:#eef3f6; color:#0f4f68; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.94em; }
+    .lede { max-width:860px; color:#263845; font-size:1.05rem; }
+    .muted { color:var(--muted); }
+    .grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .panel { padding:14px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
+    .pillrow { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .pill { padding:4px 8px; border:1px solid var(--line); border-radius:999px; color:var(--muted); background:#fff; font-weight:650; }
+    .good { color:var(--good); border-color:#b8dcc9; background:#f1faf5; }
+    .bad { color:var(--bad); border-color:#e7c3a8; background:#fff7ef; }
+    table { width:100%; border-collapse:collapse; border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+    th, td { padding:9px 11px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { background:#eef5f8; color:#24414f; font-size:.82rem; letter-spacing:.04em; text-transform:uppercase; }
+    tr:last-child td { border-bottom:0; }
+    ul { margin:0; padding-left:19px; }
+    li + li { margin-top:5px; }
+    .mono { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
+    @media (max-width:780px) { .grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <p><a href="./">Back to Gilbreath track</a></p>
+    <h1>Reset stop-wall classification</h1>
+    <p class="lede">The actual seeded PGS cascade keeps the reset admission pair fixed at <code>2,4</code>, but closed positive resets do not stop only at absolute difference <code>4</code>. The measured closed stop-wall alphabet on this surface is <code>{4,6,8,10}</code>.</p>
+    <div class="pillrow">
+      <span class="pill good">ADVANCE</span>
+      <span class="pill">exact endpoint-count surface</span>
+      <span class="pill bad">diff-4 stop shortcut falsified</span>
+      <span class="pill">Gilbreath proof unresolved</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>PGS Objects</h2>
+    <div class="grid">
+      <div class="panel">
+        <h3>Seeded endpoint gaps</h3>
+        <p>The probe starts at endpoint <code>2</code> and repeatedly advances by the exact divisor-count stopping rule <code>tau(n)=2</code>. The first difference row is the ordered endpoint-gap row beginning <code>1,2,2,4,...</code>.</p>
+      </div>
+      <div class="panel">
+        <h3>Low-prefix corridor</h3>
+        <p>For cascade row <code>R^t</code>, <code>ell(t)</code> counts consecutive non-leading left lanes in <code>{0,2}</code>. A positive reset occurs when <code>ell(t+1)</code> exceeds ordinary depletion <code>ell(t)-1</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Measured Result</h2>
+    <table>
+      <tbody>
+        <tr><th>Endpoint surface</th><td><code>16,384</code> seeded gaps from endpoint <code>2</code> through final endpoint <code>180,511</code>.</td></tr>
+        <tr><th>Cascade transitions</th><td><code>16,383</code>.</td></tr>
+        <tr><th>Failures</th><td><code>0</code> leading failures, <code>0</code> tail-parity failures, <code>0</code> depletion failures.</td></tr>
+        <tr><th>Positive resets</th><td><code>29</code> total: <code>28</code> closed positive resets and <code>1</code> finite-edge truncated reset.</td></tr>
+        <tr><th>Reset admission</th><td>All <code>29 / 29</code> positive resets had boundary pair <code>2,4</code>.</td></tr>
+        <tr><th>Closed stop-wall differences</th><td><code>4:22</code>, <code>6:4</code>, <code>8:1</code>, <code>10:1</code>.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Falsified Shortcut</h2>
+    <p>The shortcut "closed positive reset extensions always stop at absolute difference <code>4</code>" is false on the exact seeded endpoint-gap surface.</p>
+    <table>
+      <thead>
+        <tr><th>Depth</th><th>ell before</th><th>ell after</th><th>Reset gain</th><th>Stop pair</th><th>Stop diff</th><th>Local window</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>3</code></td><td><code>13</code></td><td><code>24</code></td><td><code>12</code></td><td><code>0,8</code></td><td><code>8</code></td><td class="mono">0 0 2 2 4 2 2 2 0 2 0 2</td></tr>
+        <tr><td><code>18</code></td><td><code>175</code></td><td><code>290</code></td><td><code>116</code></td><td><code>0,6</code></td><td><code>6</code></td><td class="mono">0 2 0 2 4 2 0 0 2 2 2 2</td></tr>
+        <tr><td><code>37</code></td><td><code>2176</code></td><td><code>2770</code></td><td><code>595</code></td><td><code>0,10</code></td><td><code>10</code></td><td class="mono">0 2 0 2 4 2 2 2 2 0 0 2</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Proof Consequence</h2>
+    <p>The reset-admission bridge remains narrow: positive replenishment starts at boundary pair <code>2,4</code>. The next theorem obligation is broader at the right edge of the reset extension: derive the observed closed stop-wall alphabet from seeded ordered endpoint-gap grammar after that <code>2,4</code> admission.</p>
+    <p>The proof route should not compress the reset extension to a single stop-difference law. The measured surface requires a stop-wall grammar that admits at least <code>4</code>, <code>6</code>, <code>8</code>, and <code>10</code> without allowing a leading-edge failure.</p>
+  </section>
+
+  <section>
+    <h2>Status Separation</h2>
+    <table>
+      <tbody>
+        <tr><th>Theorem proof</th><td>Unresolved. No proof of Gilbreath's conjecture is claimed.</td></tr>
+        <tr><th>Measured evidence</th><td>The exact seeded endpoint surface recorded <code>0</code> leading failures and the stop-wall counts above.</td></tr>
+        <tr><th>Implementation status</th><td>Probe code and outputs are local to this track folder.</td></tr>
+        <tr><th>Audit status</th><td>JSON parsing, Python compilation, HTML parsing, diff check, and LF checks are the required verification surface for this run.</td></tr>
+        <tr><th>Invalidated rule</th><td>The diff-4-only closed stop-wall shortcut is invalidated.</td></tr>
+        <tr><th>Unresolved state</th><td>Derive the reset admission and broader stop-wall alphabet from PGS ordered endpoint-gap grammar, GWR-selected chamber state, or DNI chamber structure.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Reproduce</h2>
+    <p>Run:</p>
+    <p><code>python3 pgs-unsolved-problems/gilbreath/2026-05-20-reset_stop_wall_probe.py</code></p>
+    <ul>
+      <li><a href="2026-05-20-reset_stop_wall_probe.py">Probe code</a></li>
+      <li><a href="2026-05-20-reset_stop_wall_summary.json">Summary JSON</a></li>
+      <li><a href="2026-05-20-reset_stop_wall_rows.csv">Reset rows CSV</a></li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>
