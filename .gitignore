@@ -17,3 +17,4 @@ research/06-cryptology-rsa/experiments/pedk/rsa-v2/gap-compatibility/core-eviden
 # OTHER
 AGENTS.md
 docs/deprecated/AGENTS.bak
+**/output/*
