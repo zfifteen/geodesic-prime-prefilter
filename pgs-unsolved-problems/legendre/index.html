@@ -5,34 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Legendre's Conjecture | PGS Research Track</title>
   <style>
-    :root { --ink:#17212b; --muted:#5e6a75; --line:#d8e0e8; --panel:#f7f9fb; --accent:#0b6b8a; --pending:#8a5a00; }
-    * { box-sizing: border-box; }
-    body { margin:0; color:var(--ink); font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:#fff; }
-    header { background:linear-gradient(180deg,#fff,#f2f7fa); border-bottom:1px solid var(--line); }
-    .wrap, main { width:min(1080px,calc(100% - 40px)); margin:0 auto; }
-    .hero { padding:46px 0 34px; }
+    :root { --ink:#17212b; --muted:#5e6a75; --line:#d8e0e8; --panel:#f7f9fb; --accent:#0b6b8a; --pending:#8a5a00; --good:#1f7a4d; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); font:13px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:#fff; }
+    header { background:#f6f9fb; border-bottom:1px solid var(--line); }
+    .wrap, main { width:min(980px,calc(100% - 32px)); margin:0 auto; }
+    .hero { padding:30px 0 24px; }
     a { color:var(--accent); text-underline-offset:3px; }
-    .back { display:inline-block; margin-bottom:18px; font-size:14px; font-weight:650; }
-    .eyebrow { margin:0 0 10px; color:var(--accent); font-size:13px; font-weight:750; letter-spacing:.07em; text-transform:uppercase; }
-    h1 { margin:0; max-width:820px; font-size:clamp(32px,5vw,52px); line-height:1.03; letter-spacing:0; }
-    .lede { max-width:840px; margin:20px 0 0; color:var(--muted); font-size:20px; }
-    .pillrow { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
-    .pill { padding:5px 10px; border:1px solid var(--line); border-radius:999px; background:#fff; color:var(--muted); font-size:13px; font-weight:650; }
+    .back { display:inline-block; margin-bottom:12px; font-weight:650; }
+    .eyebrow { margin:0 0 8px; color:var(--accent); font-size:12px; font-weight:750; letter-spacing:.06em; text-transform:uppercase; }
+    h1 { margin:0; max-width:860px; font-size:2.05rem; line-height:1.1; letter-spacing:0; }
+    .lede { max-width:880px; margin:14px 0 0; color:var(--muted); font-size:15px; }
+    .pillrow { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+    .pill { padding:4px 8px; border:1px solid var(--line); border-radius:999px; background:#fff; color:var(--muted); font-size:12px; font-weight:650; }
+    .advance { border-color:#b7dcc8; color:var(--good); background:#eefaf3; }
     .pending { border-color:#e5ca8f; color:var(--pending); background:#fff8ea; }
-    section { padding:30px 0; border-bottom:1px solid var(--line); }
-    h2 { margin:0 0 16px; font-size:24px; line-height:1.2; }
-    h3 { margin:0 0 10px; font-size:18px; }
-    p { margin:0 0 14px; }
-    code { padding:1px 4px; border-radius:4px; background:#eef3f6; color:#0f4f68; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
-    .grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-    .panel { padding:18px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
-    .statement { font-size:20px; color:#22313d; }
+    section { padding:22px 0; border-bottom:1px solid var(--line); }
+    h2 { margin:0 0 12px; font-size:1.22rem; line-height:1.2; }
+    h3 { margin:0 0 8px; font-size:1rem; }
+    p { margin:0 0 10px; }
+    code { padding:1px 4px; border-radius:4px; background:#eef3f6; color:#0f4f68; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.95em; }
+    .grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .panel { padding:14px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
     table { width:100%; border-collapse:collapse; border:1px solid var(--line); border-radius:8px; overflow:hidden; }
-    th,td { padding:12px 14px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
-    th { background:#eef5f8; color:#24414f; font-size:13px; letter-spacing:.05em; text-transform:uppercase; }
-    tr:last-child td { border-bottom:0; }
-    footer { padding:28px 0 40px; color:var(--muted); font-size:14px; }
-    @media (max-width:820px) { .grid { grid-template-columns:1fr; } }
+    th,td { padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { width:220px; background:#eef5f8; color:#24414f; font-size:12px; letter-spacing:.04em; text-transform:uppercase; }
+    tr:last-child td, tr:last-child th { border-bottom:0; }
+    footer { padding:24px 0 34px; color:var(--muted); font-size:12px; }
+    @media (max-width:760px) { .grid { grid-template-columns:1fr; } th { width:auto; } }
   </style>
 </head>
 <body>
@@ -41,47 +41,56 @@
       <a class="back" href="../">Back to program</a>
       <p class="eyebrow">Square-chamber occupancy</p>
       <h1>Legendre's Conjecture</h1>
-      <p class="lede">This track asks whether PGS can force next-prime endpoint arrival inside every interval between consecutive integer squares.</p>
+      <p class="lede">This track attacks Legendre's conjecture through PGS square-chamber endpoint structure: exclude any prime gap whose open interior contains a full chamber <code>(n^2, (n + 1)^2)</code>.</p>
       <div class="pillrow">
-        <span class="pill pending">status: bridge falsification recorded</span>
-        <span class="pill">claim status: unresolved</span>
-        <span class="pill">latest run: ADVANCE</span>
+        <span class="pill advance">latest run: ADVANCE</span>
+        <span class="pill pending">claim status: unresolved</span>
+        <span class="pill">active branch: selected-d4 residual</span>
       </div>
     </div>
   </header>
+
   <main>
     <section>
-      <h2>Original Problem</h2>
-      <p class="statement">For every positive integer <code>n</code>, there exists a prime number strictly between <code>n^2</code> and <code>(n + 1)^2</code>.</p>
-    </section>
-    <section>
-      <h2>PGS Translation</h2>
+      <h2>Target</h2>
       <div class="grid">
         <div class="panel">
-          <h3>Object</h3>
-          <p>The interval <code>(n^2, (n + 1)^2)</code> is treated as a square-bounded chamber on the integer line.</p>
+          <h3>Classical Statement</h3>
+          <p>For every integer <code>n >= 1</code>, there is a prime strictly between <code>n^2</code> and <code>(n + 1)^2</code>.</p>
         </div>
         <div class="panel">
-          <h3>Endpoint Form</h3>
-          <p>The target becomes <code>next_prime(n^2) &lt; (n + 1)^2</code>, expressed through deterministic endpoint arrival rather than probabilistic prime density.</p>
+          <h3>PGS Endpoint Form</h3>
+          <p>The first exact-divisor-count endpoint <code>q</code> after <code>n^2</code> must satisfy <code>q &lt; (n + 1)^2</code>.</p>
         </div>
       </div>
     </section>
+
     <section>
-      <h2>Research Card</h2>
+      <h2>Latest Advance</h2>
       <table>
         <tbody>
-          <tr><th>First goal</th><td>Define the end goal and research design for a PGS proof path or falsifiable bridge toward Legendre's interval occupancy statement.</td></tr>
-          <tr><th>Current PGS assets</th><td>Direct deterministic next-prime theorem, GWR selected-integer theorem, square-branch characterization, and bounded-compression square-branch evidence.</td></tr>
-          <tr><th>Missing bridge theorem</th><td>A theorem forcing the PGS endpoint after <code>n^2</code> to arrive before the next square boundary <code>(n + 1)^2</code>.</td></tr>
-          <tr><th>Latest advance</th><td><a href="2026-05-14-nlsc-deadline-bridge-falsification.html">2026-05-14 NLSC deadline bridge falsification</a>: strict lower-divisor deadlines cannot bridge the dominant <code>d(w)=4</code> square chamber because the needed lower composite class is a prime square, and no square lies strictly between consecutive square boundaries.</td></tr>
-          <tr><th>Deterministic probe design</th><td>For square starts <code>n^2</code>, record the containing prime-gap state, GWR witness, square-bound distance, and endpoint arrival margin.</td></tr>
-          <tr><th>Falsification condition</th><td>A proposed PGS bridge fails if it permits a square chamber whose endpoint arrival is not forced before <code>(n + 1)^2</code>, or if its conditions exclude infinitely many square starts without a replacement rule.</td></tr>
-          <tr><th>Status</th><td><code>ADVANCE</code>. Legendre remains unresolved; one proposed PGS bridge has been invalidated as a complete dominant-regime route.</td></tr>
+          <tr><th>2026-05-20</th><td><a href="2026-05-20-residual-endpoint-quarter.html">Residual endpoint-quarter bridge</a>: in the narrowed selected-<code>d=4</code> composite-boundary residual, all measured endpoints for <code>2 <= n <= 5000</code> satisfy <code>4(q - n^2) &lt; 2n + 1</code>.</td></tr>
+          <tr><th>Measured surface</th><td><code>4999</code> square chambers checked, <code>2632</code> residual rows, <code>0</code> endpoint-quarter violations, <code>0</code> residual square crossings.</td></tr>
+          <tr><th>Proof target</th><td>Prove the endpoint-quarter inequality for every selected-<code>d=4</code> composite-boundary residual row. This would close that residual branch with a stronger-than-Legendre endpoint-position law.</td></tr>
+          <tr><th>Artifacts</th><td><a href="residual_endpoint_quarter_probe.py">probe</a>, <a href="2026-05-20-residual-endpoint-quarter-summary.json">summary JSON</a>, <a href="2026-05-20-residual-endpoint-quarter-frontier.csv">frontier CSV</a>.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Research State</h2>
+      <table>
+        <tbody>
+          <tr><th>Proved foundation</th><td><code>PROOF.md</code> proves exact next-prime endpoint selection by <code>tau=2</code> and the GWR leftmost minimum-divisor theorem.</td></tr>
+          <tr><th>Invalidated route</th><td><a href="2026-05-14-nlsc-deadline-bridge-falsification.html">NLSC lower-divisor deadlines</a> do not bridge the dominant <code>d(w)=4</code> chamber.</td></tr>
+          <tr><th>Reduced branch</th><td>Automation memory records prior reductions to the selected-square and selected-<code>d=4</code> branches, then to the selected-<code>d=4</code> composite-boundary residual after square-ceiling closure is removed.</td></tr>
+          <tr><th>Current residual predicate</th><td><code>tau(w)=4</code>, <code>w &lt; n^2</code>, <code>tau(n) != 2</code>, <code>tau(n + 1) != 2</code>, and <code>S_+(w) &gt; (n + 1)^2</code>.</td></tr>
+          <tr><th>Unresolved state</th><td>No proof of Legendre's conjecture is claimed. The endpoint-quarter bridge is a measured theorem target and remains open at all scale.</td></tr>
         </tbody>
       </table>
     </section>
   </main>
-  <footer><div class="wrap">PGS Unsolved Problems Research Program. Documentation scaffold only.</div></footer>
+
+  <footer><div class="wrap">PGS Unsolved Problems Research Program. Legendre track status: ADVANCE, unresolved theorem.</div></footer>
 </body>
 </html>
