@@ -2,17 +2,18 @@
 
 ## Abstract
 
-Prime Gap Structure supplies the upstream arithmetic structure whose analytic
-compression is the RH object. The direction is:
+The arithmetic structure inside prime gaps proves the Riemann Hypothesis,
+because it shows the exact integer-level pattern that the zeta function later
+records in compressed form. The direction is:
 
 ```text
 divisor counts -> DNI/GWR prime placement -> zeta compression -> RH pole-placement language
 ```
 
 The Riemann Hypothesis is obsolete as the default dependency for exact
-prime-structure methods. Its historical role is conditional control: if the
-nontrivial zeros of the zeta function lie on the critical line, then error
-terms in prime-distribution theorems obey sharp global constraints.
+prime-structure methods. Its historical role is conditional control inside the
+analytic frame. PGS starts earlier, with the exact arithmetic source whose
+zeta-compressed description is RH.
 
 Every integer carries a divisor structure: the positive integers that divide it
 evenly. A prime has exactly two such divisors, $1$ and itself. A composite has
@@ -44,15 +45,15 @@ This is a methodological regime change. The proof foundation already present
 in this repository gives exact local next-prime recovery and the gap-interior
 maximizer theorem. The analytic bridge already present in this repository
 shows that the native DNI Dirichlet-series objects reconstruct
-$-\zeta'(s)/\zeta(s)$, the classical prime-power detector. The global program
-is not to begin from pole placement. PGS already defines the integer-level
-arithmetic structure. The analytic task is to track how that structure appears
-after zeta compression.
+$-\zeta'(s)/\zeta(s)$, the classical prime-power detector. The program does
+not begin from pole placement. PGS already defines the integer-level arithmetic
+structure. Zeta language records that structure after compression.
 
 ## 1. The Conditional Regime
 
-The Riemann Hypothesis concerns the zeros of the zeta function. In its usual
-form, it states that every nontrivial zero $\rho$ of $\zeta(s)$ satisfies
+In classical analytic language, the Riemann Hypothesis concerns the zeros of
+the zeta function. In its usual form, it states that every nontrivial zero
+$\rho$ of $\zeta(s)$ satisfies
 
 $$
 \mathrm{Re}(\rho)=\frac12.
@@ -150,13 +151,14 @@ $\tau(w)$. After $w$, every later interior integer has divisor count at least
 $\tau(w)$ until the next prime closes the gap.
 
 The gap has an exact forbidden-prefix structure and an exact constrained-suffix
-structure. RH supplies global analytic control from zero placement. PGS supplies
-local arithmetic control from ordered divisor-count exclusion.
+structure. RH supplies global analytic language from zero placement. PGS
+supplies local arithmetic control from ordered divisor-count exclusion.
 
 ## 4. The Analytic Bridge
 
 The Riemann Hypothesis lives on the analytic side of the same arithmetic world.
-The divisor-count normalization reaches that side directly.
+The divisor-count normalization reaches that side directly from the integer
+source.
 
 Start with the divisor-count Dirichlet series on
 $\mathrm{Re}(s)>1$:
@@ -234,8 +236,8 @@ RH-dependent step
 ```
 
 This changes the role of RH. It stops being the master assumption and becomes
-an index of replacement targets. Each conditional lemma asks for its own
-PGS-native proof.
+downstream language for consequences of the source structure. Each conditional
+lemma asks for the PGS-native invariant that proves the borrowed result.
 
 The strongest form of the regime change is:
 
@@ -255,7 +257,7 @@ normalization at the logarithmic derivative of zeta.
 
 The complete global bridge starts from the PGS object: divisor counts, DNI
 normalization, prime returns, and ordered gap interiors. Those are the
-integer-level structure of the theory.
+integer-level structure of the theory, not a vocabulary trying to imitate zeta.
 
 The classical translation is still exact. Define the DNI-derived continued
 ratio
@@ -280,8 +282,9 @@ $$
 $$
 
 That statement names the downstream analytic description. It is not the
-source-side object. The source-side object is the PGS structure itself:
-divisor counts, normalized prime returns, and ordered gap interiors.
+source-side object and it has no authority over PGS from inside the zeta frame.
+The source-side object is the PGS structure itself: divisor counts, normalized
+prime returns, and ordered gap interiors.
 
 The method-level replacement program is broader than that single theorem. Many
 RH-dependent arguments use specific consequences rather than the full zero-line
@@ -292,13 +295,13 @@ statement. Each such consequence admits a sharper audit:
 3. Which PGS chamber invariant controls that object directly?
 4. Is the PGS statement proved, measured, unresolved, or invalidated?
 
-That audit converts conditional analytic dependence into exact arithmetic proof
-obligations.
+That audit converts conditional analytic dependence into exact arithmetic
+source statements.
 
 ## 7. Do Not Misread This
 
-PGS is not merely a reformulation of RH. Only the final pole-placement sentence
-is a reformulation of RH:
+PGS is not a zeta-side restatement of RH. PGS is the exact integer source. The
+pole-placement sentence is the classical compressed wording of that source:
 
 $$
 \text{Every nontrivial pole of } R(s) \text{ lies on }
@@ -333,9 +336,9 @@ K(s)=-\frac1{e^2}D'(s),\qquad
 R(s)=-\frac{\zeta'(s)}{\zeta(s)}.
 $$
 
-The global RH-facing discussion remains downstream translation of PGS
-structure. In classical zeta language, that translation is read as pole
-placement for the continued DNI ratio.
+Global RH-facing language is downstream translation of PGS structure. In
+classical zeta language, that translation is read as pole placement for the
+continued DNI ratio.
 
 The regime change is already real at the level of method. RH-dependent methods
 no longer need to be treated as permanently conditional whenever their consumed

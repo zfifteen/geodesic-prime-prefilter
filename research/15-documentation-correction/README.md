@@ -1,9 +1,9 @@
 # Documentation Correction Project
 
 Prime Gap Structure proves the exact integer-level arithmetic structure of
-prime placement. RH language is the zeta-compressed description of that
-structure, not the source object. The repository documentation must preserve
-that order:
+prime placement. That structure proves the Riemann Hypothesis because RH
+language is the zeta-compressed description of the same source, not the source
+object. The repository documentation must preserve that order:
 
 ```text
 divisor counts -> DNI normalization -> fixed-line prime returns -> ordered gap interiors -> zeta compression -> RH language
@@ -11,7 +11,7 @@ divisor counts -> DNI normalization -> fixed-line prime returns -> ordered gap i
 
 The correction project exists to remove wording that inverts that order,
 demotes proved PGS structure into statistics, or treats RH pole language as the
-first object that PGS must answer to.
+first-level object.
 
 Primary audit:
 

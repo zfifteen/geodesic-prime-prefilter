@@ -44,18 +44,18 @@ DNI/PGS Prime-Structure Program
 The controlling thesis is:
 
 ```text
-PGS explains the RH shadow. RH does not explain PGS.
+PGS is the source. RH is the compressed zeta-language description.
 ```
 
 The controlling correction is:
 
 ```text
-Pole placement is a feature of analytic compression, not an explanation of
-the primes.
+The arithmetic structure inside prime gaps proves the Riemann Hypothesis
+because it gives the exact integer-level structure that zeta later records.
 ```
 
 The active program starts from integer-level divisor-count structure and treats
-RH pole or zero placement as a downstream classical description after zeta
+RH pole or zero placement as downstream classical language after zeta
 compression. PGS defines the source-side arithmetic object; RH language does
 not define the problem.
 

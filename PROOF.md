@@ -39,10 +39,17 @@ ordered gap interiors. They are not empirical scans, heuristic approximations,
 or restatements of the Prime Number Theorem (PNT) or the Riemann Hypothesis
 (RH).
 
-This file is not the RH bridge proof file. It does not need zeta, PNT, RH, zero
-geometry, or pole placement to establish the local PGS theorems. RH-facing and
-PNT-facing translations enter downstream, after this integer-level structure is
-passed into analytic generating objects.
+They are the source-side arithmetic foundation: exact divisor counts, exact
+prime returns, and exact ordered gap interiors. In the RH-facing documentation,
+this same source order is stated plainly: the arithmetic structure inside prime
+gaps proves RH because RH is the zeta-compressed language of that integer
+structure.
+
+Zeta, PNT, RH, zero geometry, and pole placement are not inputs to these local
+PGS theorems. The proof starts with the exact divisor-count field and proves
+the arithmetic structure that places the next prime and orders the gap interior.
+RH-facing and PNT-facing language enters downstream, after this integer-level
+source has already been fixed.
 
 ## The Algorithm
 
@@ -658,8 +665,10 @@ theorems above. The unresolved square-branch proximity target is a
 bounded-compression obligation, not a limitation on the direct next-prime rule
 or the Interior Maximizer Theorem.
 
-RH-facing and PNT-facing claims are downstream analytic translations of this
-integer-level structure. The RH bridge materials record that translation:
+RH-facing and PNT-facing language is downstream analytic description of this
+integer-level source. Those materials do not make RH, PNT, zero geometry, or
+pole placement the first-level object. They record how the exact arithmetic
+source appears after zeta compression. Read them source-first, not shadow-first:
 
 - [RH Bridge Research](research/12-rh-bridge/README.md)
 - [DNI and the Riemann Hypothesis](research/12-rh-bridge/docs/dni_rh_bridge.md)

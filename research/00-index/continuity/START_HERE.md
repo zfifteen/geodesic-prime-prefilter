@@ -18,8 +18,9 @@ If a session starts with limited chat context, read this file first.
 
    ```text
    PGS defines primes at the integer level through exact divisor-count
-   structure. RH pole placement is a downstream zeta-language description, not
-   the source object.
+   structure. The arithmetic structure inside prime gaps proves RH because RH
+   pole placement is the downstream zeta-language description, not the source
+   object.
    ```
 
    Start with:
