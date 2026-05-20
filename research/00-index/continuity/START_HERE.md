@@ -17,8 +17,9 @@ If a session starts with limited chat context, read this file first.
    Prime-Structure Program:
 
    ```text
-   PGS explains primes at the integer level. RH pole placement is a downstream
-   feature of analytic compression, not an explanation of the primes.
+   PGS defines primes at the integer level through exact divisor-count
+   structure. RH pole placement is a downstream zeta-language description, not
+   the source object.
    ```
 
    Start with:

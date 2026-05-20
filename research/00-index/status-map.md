@@ -54,8 +54,9 @@ the primes.
 ```
 
 The active program starts from integer-level divisor-count structure and treats
-RH pole or zero placement as a downstream classical translation of the analytic
-shadow.
+RH pole or zero placement as a downstream classical description after zeta
+compression. PGS defines the source-side arithmetic object; RH language does
+not define the problem.
 
 Primary artifact:
 

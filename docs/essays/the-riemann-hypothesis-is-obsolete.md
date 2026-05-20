@@ -55,7 +55,7 @@ The Riemann Hypothesis concerns the zeros of the zeta function. In its usual
 form, it states that every nontrivial zero $\rho$ of $\zeta(s)$ satisfies
 
 $$
-\operatorname{Re}(\rho)=\frac12.
+\mathrm{Re}(\rho)=\frac12.
 $$
 
 Its power in number theory comes from translation. Zero placement controls
@@ -159,7 +159,7 @@ The Riemann Hypothesis lives on the analytic side of the same arithmetic world.
 The divisor-count normalization reaches that side directly.
 
 Start with the divisor-count Dirichlet series on
-$\operatorname{Re}(s)>1$:
+$\mathrm{Re}(s)>1$:
 
 $$
 D(s)=\sum_{n\ge1}\frac{\tau(n)}{n^s}=\zeta(s)^2.
@@ -264,7 +264,7 @@ $$
 R(s)=\frac{e^2}{2}\frac{K(s)}{D(s)}.
 $$
 
-On $\operatorname{Re}(s)>1$,
+On $\mathrm{Re}(s)>1$,
 
 $$
 R(s)=-\frac{\zeta'(s)}{\zeta(s)}.
@@ -276,7 +276,7 @@ reading is therefore:
 
 $$
 \text{Every nontrivial pole of } R(s) \text{ lies on }
-\operatorname{Re}(s)=\frac12.
+\mathrm{Re}(s)=\frac12.
 $$
 
 That statement names the downstream analytic description. It is not the
@@ -302,7 +302,7 @@ is a reformulation of RH:
 
 $$
 \text{Every nontrivial pole of } R(s) \text{ lies on }
-\operatorname{Re}(s)=\frac12.
+\mathrm{Re}(s)=\frac12.
 $$
 
 PGS enters before that sentence. It is the integer-level mechanism built from
@@ -324,7 +324,7 @@ The measured implementation surfaces certify generator behavior and recursive
 walk behavior over their recorded regimes. They are implementation evidence
 rather than theorem boundaries.
 
-The analytic bridge is exact on $\operatorname{Re}(s)>1$ and determines the
+The analytic bridge is exact on $\mathrm{Re}(s)>1$ and determines the
 same meromorphic continuation through the zeta identity:
 
 $$

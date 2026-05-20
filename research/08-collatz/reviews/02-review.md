@@ -50,7 +50,7 @@ $$\mathcal{T}_k = \{ \text{odd } s: \text{ first-descent block of } s \text{ has
 
 Prove or disprove that for $s \in \mathcal{T}_k$ with $w \equiv 2\cdot3^{-1} \pmod{2^k}$,
 
-$$\operatorname{med}_{s\in\mathcal{T}_k} \frac{C^3(s)}{s} < \operatorname{med}_{s'\in\mathcal{C}_k} \frac{C^3(s')}{s'}$$
+$$\mathrm{median}_{s\in\mathcal{T}_k} \frac{C^3(s)}{s} < \mathrm{median}_{s'\in\mathcal{C}_k} \frac{C^3(s')}{s'}$$
 
 where $\mathcal{C}_k$ is a matched control set of 3-step blocks with same $k$ but $t \neq w\pm1$.
 
