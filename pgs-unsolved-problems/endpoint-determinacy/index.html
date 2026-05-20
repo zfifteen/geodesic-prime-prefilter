@@ -41,11 +41,11 @@
       <a class="back" href="../">Back to program</a>
       <p class="eyebrow">Public endpoint closure</p>
       <h1>Endpoint Determinacy</h1>
-      <p class="lede">This track studies public modulus structure through endpoint-class determinacy and reciprocal closure, not through classical candidate-factor search.</p>
+      <p class="lede">This track studies when public reciprocal endpoint cells promote to actual factor endpoints by PGS inference, with audit kept downstream.</p>
       <div class="pillrow">
-        <span class="pill pending">status: research-design pending</span>
-        <span class="pill">claim status: unresolved</span>
-        <span class="pill">implementation: none</span>
+        <span class="pill pending">status: active proof design</span>
+        <span class="pill">claim status: conditional bridge isolated</span>
+        <span class="pill">implementation: sidecar probe</span>
       </div>
     </div>
   </header>
@@ -71,12 +71,25 @@
       <h2>Research Card</h2>
       <table>
         <tbody>
-          <tr><th>First goal</th><td>Define the end goal and research design for a scalable Public Endpoint Determinacy Kernel research program.</td></tr>
+          <tr><th>First goal</th><td>Prove conditions under which a public PGS endpoint cell determines at least one actual factor endpoint of <code>N</code>.</td></tr>
           <tr><th>Current PGS assets</th><td>PEDK scaffold, RSA v2 live-solver artifacts, endpoint structure law notes, transported certificate sidecars, and invalidated false-resolution reports.</td></tr>
-          <tr><th>Missing bridge theorem</th><td>A public-<code>N</code> endpoint closure law that identifies when endpoint-class determinacy is decisive and when the correct output is unresolved.</td></tr>
-          <tr><th>Deterministic probe design</th><td>Run public-only endpoint transport from <code>floor(sqrt(N))</code>, record structural closure states, and keep downstream audit physically separate from inference.</td></tr>
+          <tr><th>Current bridge theorem</th><td>Boundary-drop endpoint promotion: after public reciprocal cell closure, <code>floor((N - 1) / L) = U - 1</code> proves <code>N = L * U</code>.</td></tr>
+          <tr><th>Missing bridge theorem</th><td>A transported certificate derivation of that boundary drop from PGS endpoint-chain geometry, or an explicit rule contract admitting <code>T_{N-1}</code> as a public endpoint-cell certificate.</td></tr>
+          <tr><th>Deterministic probe design</th><td>Measure <code>T_N</code> and <code>T_{N-1}</code> on already emitted or already rejected public endpoint cells, keeping residual/product audit separate from inference.</td></tr>
           <tr><th>Falsification condition</th><td>A proposed law fails if it reports factor discovery without audit, depends on hidden factors inside inference, or accepts structural endpoint candidates as factors.</td></tr>
-          <tr><th>Status</th><td><code>research-design pending</code>. No proof or implementation is claimed by this scaffold.</td></tr>
+          <tr><th>Status</th><td><code>unresolved_by_missing_boundary_drop_derivation</code>. The conditional promotion theorem is isolated; the current live certificate contract does not yet derive the boundary drop.</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <h2>Latest Advance</h2>
+      <table>
+        <tbody>
+          <tr><th>Date</th><td>2026-05-20</td></tr>
+          <tr><th>Artifact</th><td><a href="2026-05-20-boundary-drop-admissibility.html">Boundary-drop endpoint promotion proof-design note</a></td></tr>
+          <tr><th>Probe</th><td><a href="2026-05-20-boundary-drop-admissibility-probe.py">deterministic sidecar</a> and <a href="2026-05-20-boundary-drop-admissibility-probe.json">JSON output</a></td></tr>
+          <tr><th>Finding</th><td>The accepted 40-bit and 64-bit endpoint cells have public boundary drops <code>(1, 1)</code>; the rejected 50-bit mutual floor cell has <code>(0, 0)</code>. The live rows do not export a boundary-drop certificate field.</td></tr>
+          <tr><th>Next target</th><td>Prove the <code>Boundary-Drop Derivation Lemma</code> from transported certificate geometry, or mark <code>T_{N-1}</code> as a new public endpoint-cell promotion field.</td></tr>
         </tbody>
       </table>
     </section>
