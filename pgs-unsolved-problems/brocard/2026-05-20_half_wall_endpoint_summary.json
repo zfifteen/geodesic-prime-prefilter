@@ -1,0 +1,493 @@
+{
+  "root_limit": 100000,
+  "prime_roots_checked": 9591,
+  "first_root": 3,
+  "last_root": 99991,
+  "four_wall_statement": "e4(a) - a^2 < 4a",
+  "four_wall_failures": 0,
+  "half_wall_statement": "e4(a) - a^2 < 2a for a >= 11",
+  "half_wall_root_floor": 11,
+  "half_wall_failures": 0,
+  "small_half_wall_exception_count": 3,
+  "small_half_wall_exceptions": [
+    {
+      "a": 3,
+      "square": 9,
+      "endpoint_offsets": "2|4|8|10",
+      "component_word": "2|2|4|2",
+      "s4": 10,
+      "slack_4a": 2,
+      "slack_2a": -4,
+      "utilization_4a": 0.833333333333,
+      "utilization_2a": 1.666666666667,
+      "half_wall_status": "not_applicable_small_root",
+      "fixed_256_status": "pass",
+      "a_mod_30": 3
+    },
+    {
+      "a": 5,
+      "square": 25,
+      "endpoint_offsets": "4|6|12|16",
+      "component_word": "4|2|6|4",
+      "s4": 16,
+      "slack_4a": 4,
+      "slack_2a": -6,
+      "utilization_4a": 0.8,
+      "utilization_2a": 1.6,
+      "half_wall_status": "not_applicable_small_root",
+      "fixed_256_status": "pass",
+      "a_mod_30": 5
+    },
+    {
+      "a": 7,
+      "square": 49,
+      "endpoint_offsets": "4|10|12|18",
+      "component_word": "4|6|2|6",
+      "s4": 18,
+      "slack_4a": 10,
+      "slack_2a": -4,
+      "utilization_4a": 0.642857142857,
+      "utilization_2a": 1.285714285714,
+      "half_wall_status": "not_applicable_small_root",
+      "fixed_256_status": "pass",
+      "a_mod_30": 7
+    }
+  ],
+  "fixed_wall_statement": "e4(a) - a^2 <= 256",
+  "fixed_wall_failures": 6,
+  "first_fixed_wall_failure": {
+    "a": 41047,
+    "square": 1684856209,
+    "endpoint_offsets": "114|144|252|264",
+    "component_word": "114|30|108|12",
+    "s4": 264,
+    "slack_4a": 163924,
+    "slack_2a": 81830,
+    "utilization_4a": 0.00160791288,
+    "utilization_2a": 0.003215825761,
+    "half_wall_status": "pass",
+    "fixed_256_status": "fail",
+    "a_mod_30": 7
+  },
+  "fixed_wall_failure_residues_mod_30": {
+    "1": 3,
+    "7": 1,
+    "13": 2
+  },
+  "max_s4_row": {
+    "a": 82651,
+    "square": 6831187801,
+    "endpoint_offsets": "78|232|256|312",
+    "component_word": "78|154|24|56",
+    "s4": 312,
+    "slack_4a": 330292,
+    "slack_2a": 164990,
+    "utilization_4a": 0.000943727239,
+    "utilization_2a": 0.001887454477,
+    "half_wall_status": "pass",
+    "fixed_256_status": "fail",
+    "a_mod_30": 1
+  },
+  "max_utilization_4a_row": {
+    "a": 3,
+    "square": 9,
+    "endpoint_offsets": "2|4|8|10",
+    "component_word": "2|2|4|2",
+    "s4": 10,
+    "slack_4a": 2,
+    "slack_2a": -4,
+    "utilization_4a": 0.833333333333,
+    "utilization_2a": 1.666666666667,
+    "half_wall_status": "not_applicable_small_root",
+    "fixed_256_status": "pass",
+    "a_mod_30": 3
+  },
+  "max_utilization_2a_row_a_ge_11": {
+    "a": 13,
+    "square": 169,
+    "endpoint_offsets": "4|10|12|22",
+    "component_word": "4|6|2|10",
+    "s4": 22,
+    "slack_4a": 30,
+    "slack_2a": 4,
+    "utilization_4a": 0.423076923077,
+    "utilization_2a": 0.846153846154,
+    "half_wall_status": "pass",
+    "fixed_256_status": "pass",
+    "a_mod_30": 13
+  },
+  "threshold_summaries": [
+    {
+      "floor": 11,
+      "roots": 9588,
+      "max_s4": 312,
+      "max_s4_at_a": 82651,
+      "max_utilization_2a": 0.846153846154,
+      "max_utilization_2a_at_a": 13,
+      "min_slack_2a": 4
+    },
+    {
+      "floor": 101,
+      "roots": 9567,
+      "max_s4": 312,
+      "max_s4_at_a": 82651,
+      "max_utilization_2a": 0.234899328859,
+      "max_utilization_2a_at_a": 149,
+      "min_slack_2a": 156
+    },
+    {
+      "floor": 1009,
+      "roots": 9424,
+      "max_s4": 312,
+      "max_s4_at_a": 82651,
+      "max_utilization_2a": 0.047656870532,
+      "max_utilization_2a_at_a": 1259,
+      "min_slack_2a": 1964
+    },
+    {
+      "floor": 10007,
+      "roots": 8363,
+      "max_s4": 312,
+      "max_s4_at_a": 82651,
+      "max_utilization_2a": 0.007722949354,
+      "max_utilization_2a_at_a": 12301,
+      "min_slack_2a": 19922
+    },
+    {
+      "floor": 50021,
+      "roots": 4459,
+      "max_s4": 312,
+      "max_s4_at_a": 82651,
+      "max_utilization_2a": 0.002565558841,
+      "max_utilization_2a_at_a": 51061,
+      "min_slack_2a": 99912
+    }
+  ],
+  "top_s4_rows": [
+    {
+      "a": 82651,
+      "square": 6831187801,
+      "endpoint_offsets": "78|232|256|312",
+      "component_word": "78|154|24|56",
+      "s4": 312,
+      "slack_4a": 330292,
+      "slack_2a": 164990,
+      "utilization_4a": 0.000943727239,
+      "utilization_2a": 0.001887454477,
+      "half_wall_status": "pass",
+      "fixed_256_status": "fail",
+      "a_mod_30": 1
+    },
+    {
+      "a": 86923,
+      "square": 7555607929,
+      "endpoint_offsets": "88|90|174|282",
+      "component_word": "88|2|84|108",
+      "s4": 282,
+      "slack_4a": 347410,
+      "slack_2a": 173564,
+      "utilization_4a": 0.000811062665,
+      "utilization_2a": 0.001622125329,
+      "half_wall_status": "pass",
+      "fixed_256_status": "fail",
+      "a_mod_30": 13
+    },
+    {
+      "a": 41047,
+      "square": 1684856209,
+      "endpoint_offsets": "114|144|252|264",
+      "component_word": "114|30|108|12",
+      "s4": 264,
+      "slack_4a": 163924,
+      "slack_2a": 81830,
+      "utilization_4a": 0.00160791288,
+      "utilization_2a": 0.003215825761,
+      "half_wall_status": "pass",
+      "fixed_256_status": "fail",
+      "a_mod_30": 7
+    },
+    {
+      "a": 77773,
+      "square": 6048639529,
+      "endpoint_offsets": "28|100|214|262",
+      "component_word": "28|72|114|48",
+      "s4": 262,
+      "slack_4a": 310830,
+      "slack_2a": 155284,
+      "utilization_4a": 0.000842194592,
+      "utilization_2a": 0.001684389184,
+      "half_wall_status": "pass",
+      "fixed_256_status": "fail",
+      "a_mod_30": 13
+    },
+    {
+      "a": 51061,
+      "square": 2607225721,
+      "endpoint_offsets": "28|130|148|262",
+      "component_word": "28|102|18|114",
+      "s4": 262,
+      "slack_4a": 203982,
+      "slack_2a": 101860,
+      "utilization_4a": 0.001282779421,
+      "utilization_2a": 0.002565558841,
+      "half_wall_status": "pass",
+      "fixed_256_status": "fail",
+      "a_mod_30": 1
+    },
+    {
+      "a": 87721,
+      "square": 7694973841,
+      "endpoint_offsets": "36|142|150|258",
+      "component_word": "36|106|8|108",
+      "s4": 258,
+      "slack_4a": 350626,
+      "slack_2a": 175184,
+      "utilization_4a": 0.000735285735,
+      "utilization_2a": 0.001470571471,
+      "half_wall_status": "pass",
+      "fixed_256_status": "fail",
+      "a_mod_30": 1
+    },
+    {
+      "a": 64609,
+      "square": 4174322881,
+      "endpoint_offsets": "16|58|66|256",
+      "component_word": "16|42|8|190",
+      "s4": 256,
+      "slack_4a": 258180,
+      "slack_2a": 128962,
+      "utilization_4a": 0.000990574069,
+      "utilization_2a": 0.001981148137,
+      "half_wall_status": "pass",
+      "fixed_256_status": "pass",
+      "a_mod_30": 19
+    },
+    {
+      "a": 33647,
+      "square": 1132120609,
+      "endpoint_offsets": "28|162|240|250",
+      "component_word": "28|134|78|10",
+      "s4": 250,
+      "slack_4a": 134338,
+      "slack_2a": 67044,
+      "utilization_4a": 0.00185752073,
+      "utilization_2a": 0.00371504146,
+      "half_wall_status": "pass",
+      "fixed_256_status": "pass",
+      "a_mod_30": 17
+    },
+    {
+      "a": 70919,
+      "square": 5029504561,
+      "endpoint_offsets": "70|90|102|246",
+      "component_word": "70|20|12|144",
+      "s4": 246,
+      "slack_4a": 283430,
+      "slack_2a": 141592,
+      "utilization_4a": 0.000867186509,
+      "utilization_2a": 0.001734373017,
+      "half_wall_status": "pass",
+      "fixed_256_status": "pass",
+      "a_mod_30": 29
+    },
+    {
+      "a": 90313,
+      "square": 8156437969,
+      "endpoint_offsets": "10|138|184|238",
+      "component_word": "10|128|46|54",
+      "s4": 238,
+      "slack_4a": 361014,
+      "slack_2a": 180388,
+      "utilization_4a": 0.000658819882,
+      "utilization_2a": 0.001317639764,
+      "half_wall_status": "pass",
+      "fixed_256_status": "pass",
+      "a_mod_30": 13
+    }
+  ],
+  "top_half_wall_utilization_rows": [
+    {
+      "a": 13,
+      "square": 169,
+      "endpoint_offsets": "4|10|12|22",
+      "component_word": "4|6|2|10",
+      "s4": 22,
+      "slack_4a": 30,
+      "slack_2a": 4,
+      "utilization_4a": 0.423076923077,
+      "utilization_2a": 0.846153846154,
+      "half_wall_status": "pass",
+      "fixed_256_status": "pass",
+      "a_mod_30": 13
+    },
+    {
+      "a": 11,
+      "square": 121,
+      "endpoint_offsets": "6|10|16|18",
+      "component_word": "6|4|6|2",
+      "s4": 18,
+      "slack_4a": 26,
+      "slack_2a": 4,
+      "utilization_4a": 0.409090909091,
+      "utilization_2a": 0.818181818182,
+      "half_wall_status": "pass",
+      "fixed_256_status": "pass",
+      "a_mod_30": 11
+    },
+    {
+      "a": 23,
+      "square": 529,
+      "endpoint_offsets": "12|18|28|34",
+      "component_word": "12|6|10|6",
+      "s4": 34,
+      "slack_4a": 58,
+      "slack_2a": 12,
+      "utilization_4a": 0.369565217391,
+      "utilization_2a": 0.739130434783,
+      "half_wall_status": "pass",
+      "fixed_256_status": "pass",
+      "a_mod_30": 23
+    },
+    {
+      "a": 17,
+      "square": 289,
+      "endpoint_offsets": "4|18|22|24",
+      "component_word": "4|14|4|2",
+      "s4": 24,
+      "slack_4a": 44,
+      "slack_2a": 10,
+      "utilization_4a": 0.352941176471,
+      "utilization_2a": 0.705882352941,
+      "half_wall_status": "pass",
+      "fixed_256_status": "pass",
+      "a_mod_30": 17
+    },
+    {
+      "a": 19,
+      "square": 361,
+      "endpoint_offsets": "6|12|18|22",
+      "component_word": "6|6|6|4",
+      "s4": 22,
+      "slack_4a": 54,
+      "slack_2a": 16,
+      "utilization_4a": 0.289473684211,
+      "utilization_2a": 0.578947368421,
+      "half_wall_status": "pass",
+      "fixed_256_status": "pass",
+      "a_mod_30": 19
+    },
+    {
+      "a": 37,
+      "square": 1369,
+      "endpoint_offsets": "4|12|30|40",
+      "component_word": "4|8|18|10",
+      "s4": 40,
+      "slack_4a": 108,
+      "slack_2a": 34,
+      "utilization_4a": 0.27027027027,
+      "utilization_2a": 0.540540540541,
+      "half_wall_status": "pass",
+      "fixed_256_status": "pass",
+      "a_mod_30": 7
+    },
+    {
+      "a": 29,
+      "square": 841,
+      "endpoint_offsets": "12|16|18|22",
+      "component_word": "12|4|2|4",
+      "s4": 22,
+      "slack_4a": 94,
+      "slack_2a": 36,
+      "utilization_4a": 0.189655172414,
+      "utilization_2a": 0.379310344828,
+      "half_wall_status": "pass",
+      "fixed_256_status": "pass",
+      "a_mod_30": 29
+    },
+    {
+      "a": 73,
+      "square": 5329,
+      "endpoint_offsets": "4|18|22|52",
+      "component_word": "4|14|4|30",
+      "s4": 52,
+      "slack_4a": 240,
+      "slack_2a": 94,
+      "utilization_4a": 0.178082191781,
+      "utilization_2a": 0.356164383562,
+      "half_wall_status": "pass",
+      "fixed_256_status": "pass",
+      "a_mod_30": 13
+    },
+    {
+      "a": 31,
+      "square": 961,
+      "endpoint_offsets": "6|10|16|22",
+      "component_word": "6|4|6|6",
+      "s4": 22,
+      "slack_4a": 102,
+      "slack_2a": 40,
+      "utilization_4a": 0.177419354839,
+      "utilization_2a": 0.354838709677,
+      "half_wall_status": "pass",
+      "fixed_256_status": "pass",
+      "a_mod_30": 1
+    },
+    {
+      "a": 41,
+      "square": 1681,
+      "endpoint_offsets": "12|16|18|28",
+      "component_word": "12|4|2|10",
+      "s4": 28,
+      "slack_4a": 136,
+      "slack_2a": 54,
+      "utilization_4a": 0.170731707317,
+      "utilization_2a": 0.341463414634,
+      "half_wall_status": "pass",
+      "fixed_256_status": "pass",
+      "a_mod_30": 11
+    }
+  ],
+  "dominant_component_words": [
+    [
+      "12|6|4|6",
+      13
+    ],
+    [
+      "12|4|2|10",
+      11
+    ],
+    [
+      "4|6|2|6",
+      8
+    ],
+    [
+      "6|10|6|14",
+      8
+    ],
+    [
+      "12|4|2|4",
+      7
+    ],
+    [
+      "4|14|6|4",
+      7
+    ],
+    [
+      "6|10|6|6",
+      7
+    ],
+    [
+      "10|8|4|6",
+      7
+    ],
+    [
+      "4|24|14|16",
+      7
+    ],
+    [
+      "12|10|6|8",
+      7
+    ]
+  ],
+  "csv": "2026-05-20_half_wall_endpoint_probe.csv"
+}
