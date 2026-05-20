@@ -42,8 +42,9 @@ source-side arithmetic mechanism.
   `R(s) = -zeta'(s)/zeta(s)` exactly on `Re(s) > 1`, with the same
   meromorphic continuation through the zeta identity.
 - Formal artifact status: `PROOF.md` proves the local next-prime and
-  gap-interior theorems. The global pole-location theorem for the continued
-  DNI ratio remains the explicit RH-level target.
+  gap-interior theorems. The RH-facing program records how that integer-level
+  structure appears after zeta compression. Pole placement is the downstream
+  zeta-language description, not the object that defines PGS.
 
 The controlling direction is:
 
@@ -346,12 +347,13 @@ sides:
 
 ## What This Suggests Technically
 
-The strongest next research path is not to force an operator story too early.
+The strongest next research path is not to force an operator story or a
+classical pole-location certificate too early.
 
 The stronger immediate move is to treat the DNI as a coefficient-side geometry
 whose native generating functions already recover the classical zeta detector.
 
-That yields several concrete targets.
+That yields several concrete PGS-side tasks.
 
 1. Study the DNI divisor series $D(s)=\zeta(s)^2$ and normalization series
    $K(s)=-(1/e^2)D'(s)$ as the canonical analytic envelope of the DNI score function.
@@ -359,14 +361,16 @@ That yields several concrete targets.
    especially interior peak location and `d(n)=4` selected-divisor-count share.
 3. Build residue-conditioned versions of those observables and compare them to
    the arithmetic-progression side of prime distribution.
-4. Search for a Hilbert-space or transfer-operator formulation only after the
-   coefficient-side and residue-conditioned structures are written cleanly.
+4. State the PGS integer structure before translating it into Hilbert-space,
+   transfer-operator, or pole-placement language.
 
 This order keeps the arithmetic facts in front:
 
 - first identify the exact generating objects,
 - then identify the tested local observables,
-- then ask whether a spectral realization exists that preserves both.
+- then identify which PGS invariant is being carried into the analytic object,
+- then read the classical pole-placement statement as the downstream
+  translation of that integer-level structure.
 
 ## Scope
 

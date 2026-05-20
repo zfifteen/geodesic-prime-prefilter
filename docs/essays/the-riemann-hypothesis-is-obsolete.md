@@ -44,9 +44,10 @@ This is a methodological regime change. The proof foundation already present
 in this repository gives exact local next-prime recovery and the gap-interior
 maximizer theorem. The analytic bridge already present in this repository
 shows that the native DNI Dirichlet-series objects reconstruct
-$-\zeta'(s)/\zeta(s)$, the classical prime-power detector. The remaining global
-theorem target is equally precise: show that the DNI-derived continued ratio
-has all nontrivial poles on $\operatorname{Re}(s)=1/2$.
+$-\zeta'(s)/\zeta(s)$, the classical prime-power detector. The global program
+is not to begin from pole placement. PGS already defines the integer-level
+arithmetic structure. The analytic task is to track how that structure appears
+after zeta compression.
 
 ## 1. The Conditional Regime
 
@@ -250,10 +251,14 @@ theorem identifies the unique gap-selected integer from the ordered
 divisor-count profile. The analytic bridge places the same divisor-count
 normalization at the logarithmic derivative of zeta.
 
-## 6. The Global Theorem Target
+## 6. The Global PGS Direction
 
-The complete global bridge has a precise theorem target. Define the
-DNI-derived continued ratio
+The complete global bridge starts from the PGS object: divisor counts, DNI
+normalization, prime returns, and ordered gap interiors. Those are the
+integer-level structure of the theory.
+
+The classical translation is still exact. Define the DNI-derived continued
+ratio
 
 $$
 R(s)=\frac{e^2}{2}\frac{K(s)}{D(s)}.
@@ -266,16 +271,17 @@ R(s)=-\frac{\zeta'(s)}{\zeta(s)}.
 $$
 
 The poles of $-\zeta'(s)/\zeta(s)$ occur at zeros and poles of $\zeta(s)$,
-with residues recording their multiplicities. The literal RH-level theorem
-target is therefore:
+with residues recording their multiplicities. The classical pole-placement
+reading is therefore:
 
 $$
 \text{Every nontrivial pole of } R(s) \text{ lies on }
 \operatorname{Re}(s)=\frac12.
 $$
 
-That statement is the exact algebraic form of the claim that DNI proves RH. It
-names the object, the continuation, and the pole placement property.
+That statement names the downstream analytic description. It is not the
+source-side object. The source-side object is the PGS structure itself:
+divisor counts, normalized prime returns, and ordered gap interiors.
 
 The method-level replacement program is broader than that single theorem. Many
 RH-dependent arguments use specific consequences rather than the full zero-line
@@ -303,9 +309,10 @@ PGS enters before that sentence. It is the integer-level mechanism built from
 divisor counts, normalized prime returns, and ordered gap interiors. The zeta
 ratio is the analytic compression of that mechanism.
 
-The current public repository has not written the final global pole-location
-proof. That is a formal artifact-status boundary. It does not turn the PGS
-mechanism into a downstream synonym for RH.
+The current public repository should not be read as postponing PGS until a
+classical pole-location proof is written. Pole placement is the downstream
+translation. PGS defines the integer-level structure that pole language
+describes after zeta compression.
 
 ## 8. Status
 
@@ -326,7 +333,9 @@ K(s)=-\frac1{e^2}D'(s),\qquad
 R(s)=-\frac{\zeta'(s)}{\zeta(s)}.
 $$
 
-The global pole-location theorem remains the explicit RH-level target.
+The global RH-facing discussion remains downstream translation of PGS
+structure. In classical zeta language, that translation is read as pole
+placement for the continued DNI ratio.
 
 The regime change is already real at the level of method. RH-dependent methods
 no longer need to be treated as permanently conditional whenever their consumed
