@@ -32,8 +32,8 @@ divisor counts -> DNI/GWR prime placement -> zeta compression -> RH pole-placeme
 - Valid: PGS is the integer-level mechanism; RH is downstream pole-placement
   language.
 - Valid: only the final pole-placement sentence is a reformulation of RH.
-- Valid: the current public repo has not written the final global
-  pole-location proof.
+- Valid: PGS already defines the integer-level structure; classical pole
+  placement is the downstream reading of that structure.
 
 Start here:
 
