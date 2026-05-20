@@ -48,6 +48,7 @@ old scattered roots after references are repaired.
 | `research/14-sha-nonce/scripts/` | `research/14-sha-nonce/scripts/` |
 | `research/14-sha-nonce/output/` | `research/14-sha-nonce/output/` |
 | `research/14-sha-nonce/tests/` | `research/14-sha-nonce/tests/` |
+| documentation correction audits and public-framing repair surfaces | `research/15-documentation-correction/` |
 
 ## Stop Rule
 

@@ -23,6 +23,7 @@ Created chapter homes:
 - `research/12-rh-bridge/`
 - `research/13-prime-spiral/`
 - `research/14-sha-nonce/`
+- `research/15-documentation-correction/`
 
 ## Current Center Of Gravity
 
@@ -63,6 +64,16 @@ Primary artifact:
 ```text
 research/12-rh-bridge/docs/prime-structure-program/index.html
 ```
+
+Active documentation-correction artifact:
+
+```text
+research/15-documentation-correction/index.html
+```
+
+The documentation-correction project audits and repairs wording that makes RH,
+PNT, zeta, statistics, or audit language appear upstream of PGS source
+structure.
 
 ## Phase 2 Contained Families
 
@@ -115,6 +126,29 @@ measured sidecar finding that the resolved 40-bit RSA v2 ladder rung collapses
 from `80` baseline phase bits to `0` residual phase bits after public PGS
 reciprocal endpoint closure, while the unresolved 50-bit rung remains at
 `100` residual phase bits.
+
+## Phase 8 Documentation Correction
+
+Status: active.
+
+The documentation-correction chapter lives at:
+
+```text
+research/15-documentation-correction/
+```
+
+Its first artifact is the correction audit:
+
+```text
+research/15-documentation-correction/index.html
+```
+
+The track exists to keep the repository language aligned with the PGS-first
+order:
+
+```text
+divisor counts -> DNI/GWR prime placement -> zeta compression -> RH language
+```
 
 ## Migration Status
 
