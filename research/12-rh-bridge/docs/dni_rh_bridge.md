@@ -30,6 +30,30 @@ The Riemann Hypothesis concerns the zero geometry of the same zeta object on
 the analytic side. The shared structure is not a loose resemblance. It can be
 written down exactly.
 
+## Status And Direction
+
+This bridge is not presented as a mere reformulation of RH. The final
+pole-placement sentence is the reformulation. PGS itself enters earlier as the
+source-side arithmetic mechanism.
+
+- Explanatory status: PGS supplies the upstream divisor-count structure whose
+  analytic compression produces the RH object.
+- Bridge status: the DNI Dirichlet-series objects recover
+  `R(s) = -zeta'(s)/zeta(s)` exactly on `Re(s) > 1`, with the same
+  meromorphic continuation through the zeta identity.
+- Formal artifact status: `PROOF.md` proves the local next-prime and
+  gap-interior theorems. The global pole-location theorem for the continued
+  DNI ratio remains the explicit RH-level target.
+
+The controlling direction is:
+
+```text
+divisor counts -> DNI/GWR prime placement -> zeta compression -> RH pole-placement language
+```
+
+Classical approaches begin with the analytic shadow. This bridge identifies
+the arithmetic structure casting it.
+
 ## Exact Dirichlet-Series Bridge
 
 Start with the divisor-count Dirichlet series on the half-plane
@@ -193,7 +217,10 @@ $$
 R(s) = -\frac{\zeta'(s)}{\zeta(s)}.
 $$
 
-That gives one direct reformulation of the RH connection.
+That gives the downstream classical translation of the RH connection. Only the
+final pole-placement sentence is a reformulation of RH. PGS itself is the
+source-side arithmetic mechanism whose analytic compression produces the
+ratio.
 
 - the simple pole at $s=1$ is the prime-number-theorem pole,
 - the trivial zeros of $\zeta$ become trivial poles of $R(s)$,

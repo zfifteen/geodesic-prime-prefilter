@@ -24,6 +24,26 @@ side by exact divisor-count arithmetic. The computation tables in this document
 certify the finite base and implementation surfaces; they are not limits on the
 theorem.
 
+## What This Proof Establishes
+
+This file proves the local integer-level foundation of Prime Gap Structure.
+
+- Direct next-prime rule: given a known prime `p`, exact divisor-count traversal
+  returns the next prime `q`.
+- Interior maximizer theorem: inside a nonempty prime-gap interval, the
+  leftmost integer with minimum divisor count is the unique maximizer of
+  `F(n)=(1-tau(n)/2)log(n)`.
+
+These theorems are the arithmetic base layer built from divisor counts and
+ordered gap interiors. They are not empirical scans, heuristic approximations,
+or restatements of the Prime Number Theorem (PNT) or the Riemann Hypothesis
+(RH).
+
+This file is not the RH bridge proof file. It does not need zeta, PNT, RH, zero
+geometry, or pole placement to establish the local PGS theorems. RH-facing and
+PNT-facing translations enter downstream, after this integer-level structure is
+passed into analytic generating objects.
+
 ## The Algorithm
 
 Input a known prime `p`.
@@ -632,3 +652,14 @@ earlier integers, with `0` unresolved cases. Its median offset was `1`, its
 
 It also records the finite bounded-compression base, the residual K=128
 first-d4 branch-elimination lemma, and the square-branch reduction obligation.
+
+The bounded-compression records remain separate from the universal local
+theorems above. The unresolved square-branch proximity target is a
+bounded-compression obligation, not a limitation on the direct next-prime rule
+or the Interior Maximizer Theorem.
+
+RH-facing and PNT-facing claims are downstream analytic translations of this
+integer-level structure. The RH bridge materials record that translation:
+
+- [RH Bridge Research](research/12-rh-bridge/README.md)
+- [DNI and the Riemann Hypothesis](research/12-rh-bridge/docs/dni_rh_bridge.md)

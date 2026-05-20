@@ -20,6 +20,21 @@ endpoint returns, selected integers, and DNI normalization. RH pole or zero
 placement enters only as a classical translation of the downstream analytic
 shadow.
 
+The controlling direction is:
+
+```text
+divisor counts -> DNI/GWR prime placement -> zeta compression -> RH pole-placement language
+```
+
+## Do Not Misread This
+
+- Invalid: PGS is merely a reformulation of RH.
+- Valid: PGS is the integer-level mechanism; RH is downstream pole-placement
+  language.
+- Valid: only the final pole-placement sentence is a reformulation of RH.
+- Valid: the current public repo has not written the final global
+  pole-location proof.
+
 Start here:
 
 - `docs/prime-structure-program/index.html`

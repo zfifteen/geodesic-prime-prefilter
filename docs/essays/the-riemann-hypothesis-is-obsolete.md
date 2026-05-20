@@ -2,6 +2,13 @@
 
 ## Abstract
 
+Prime Gap Structure supplies the upstream arithmetic structure whose analytic
+compression is the RH object. The direction is:
+
+```text
+divisor counts -> DNI/GWR prime placement -> zeta compression -> RH pole-placement language
+```
+
 The Riemann Hypothesis is obsolete as the default dependency for exact
 prime-structure methods. Its historical role is conditional control: if the
 nontrivial zeros of the zeta function lie on the critical line, then error
@@ -282,7 +289,25 @@ statement. Each such consequence admits a sharper audit:
 That audit converts conditional analytic dependence into exact arithmetic proof
 obligations.
 
-## 7. Status
+## 7. Do Not Misread This
+
+PGS is not merely a reformulation of RH. Only the final pole-placement sentence
+is a reformulation of RH:
+
+$$
+\text{Every nontrivial pole of } R(s) \text{ lies on }
+\operatorname{Re}(s)=\frac12.
+$$
+
+PGS enters before that sentence. It is the integer-level mechanism built from
+divisor counts, normalized prime returns, and ordered gap interiors. The zeta
+ratio is the analytic compression of that mechanism.
+
+The current public repository has not written the final global pole-location
+proof. That is a formal artifact-status boundary. It does not turn the PGS
+mechanism into a downstream synonym for RH.
+
+## 8. Status
 
 The proved theorem foundation is local and exact. It includes the direct
 deterministic next-prime rule and the gap-interior maximizer theorem under
