@@ -43,9 +43,9 @@
       <h1>Polignac and Twin Primes</h1>
       <p class="lede">This track treats fixed even prime gaps as chamber words whose infinite recurrence must be described by PGS structure.</p>
       <div class="pillrow">
-        <span class="pill pending">status: research-design pending</span>
+        <span class="pill pending">status: proof-directed probe track</span>
         <span class="pill">claim status: unresolved</span>
-        <span class="pill">implementation: none</span>
+        <span class="pill">latest implementation: lag-2 exposure probe</span>
       </div>
     </div>
   </header>
@@ -74,11 +74,26 @@
           <tr><th>First goal</th><td>Define the end goal and research design for a PGS recurrence theorem over fixed even gap words.</td></tr>
           <tr><th>Current PGS assets</th><td>Gap-type research, twin-prime research folder, GWR selected-integer theorem, No-Later-Simpler-Composite condition, and ordered chamber state.</td></tr>
           <tr><th>Missing bridge theorem</th><td>An infinite recurrence theorem for PGS chamber words representing each fixed even gap value.</td></tr>
-          <tr><th>Deterministic probe design</th><td>Classify gap-word signatures by width, residue state, GWR witness class, and interior divisor grammar across exact consecutive-prime surfaces.</td></tr>
+          <tr><th>Deterministic probe design</th><td>Classify gap-word signatures by width, residue state, GWR witness class, interior divisor grammar, and lagged residue-lifted chamber context across exact consecutive-prime surfaces.</td></tr>
           <tr><th>Falsification condition</th><td>A proposed recurrence law fails if it forbids an observed allowed word, fails to generate a known recurring word class, or depends on a density assumption outside the PGS state.</td></tr>
-          <tr><th>Status</th><td><code>research-design pending</code>. No proof or implementation is claimed by this scaffold.</td></tr>
+          <tr><th>Status</th><td><code>unresolved</code>. The track now has deterministic probe artifacts; no proof of Polignac or twin primes is claimed.</td></tr>
         </tbody>
       </table>
+    </section>
+    <section>
+      <h2>Latest Advance</h2>
+      <div class="grid">
+        <div class="panel">
+          <h3>Lag-2 Boundary Exposure Probe</h3>
+          <p>The top decile of lag-2 residue-lifted arrival pairs captures <code>57.31098430813124%</code> of held-out exact-baseline high-load width-2 exits, compared with <code>50.10699001426534%</code> for the top decile of current lifted states.</p>
+          <p><a href="notes/2026-05-20-lag2-boundary-exposure.html">Read the dated research note</a></p>
+        </div>
+        <div class="panel">
+          <h3>Artifact Links</h3>
+          <p>Probe: <a href="probes/lag2_boundary_exposure_probe.py"><code>probes/lag2_boundary_exposure_probe.py</code></a></p>
+          <p>Output: <a href="output/lag2_boundary_exposure_probe/summary.json"><code>output/lag2_boundary_exposure_probe/summary.json</code></a></p>
+        </div>
+      </div>
     </section>
   </main>
   <footer><div class="wrap">PGS Unsolved Problems Research Program. Documentation scaffold only.</div></footer>
