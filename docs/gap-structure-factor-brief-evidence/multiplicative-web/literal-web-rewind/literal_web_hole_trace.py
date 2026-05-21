@@ -18,11 +18,21 @@ HERE = Path(__file__).resolve().parent
 OUT = HERE / "output"
 
 CASES = [
-    {"name": "toy_23x31", "p": 23, "q": 31, "radius": 180},
-    {"name": "toy_43x59", "p": 43, "q": 59, "radius": 260},
-    {"name": "toy_61x83", "p": 61, "q": 83, "radius": 360},
-    {"name": "toy_89x113", "p": 89, "q": 113, "radius": 520},
+    {"name": "toy_23x31", "p": 23, "q": 31},
+    {"name": "toy_43x59", "p": 43, "q": 59},
+    {"name": "toy_61x83", "p": 61, "q": 83},
+    {"name": "toy_89x113", "p": 89, "q": 113},
 ]
+
+WINDOW_N_RATIO = (1, 18)
+
+
+def ceil_ratio(value, numerator, denominator):
+    return (value * numerator + denominator - 1) // denominator
+
+
+def public_radius(n):
+    return ceil_ratio(n, *WINDOW_N_RATIO)
 
 
 def factor_label(factors):
@@ -70,8 +80,9 @@ def direct_kind(row, p, q):
 
 
 def analyze_case(case):
-    p, q, radius = case["p"], case["q"], case["radius"]
+    p, q = case["p"], case["q"]
     n = p * q
+    radius = public_radius(n)
     rows = rows_around(n, radius)
     by_offset = {row["offset"]: row for row in rows}
     direct_offsets = {
