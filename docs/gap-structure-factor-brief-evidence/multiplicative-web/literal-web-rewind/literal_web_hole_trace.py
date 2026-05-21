@@ -24,7 +24,7 @@ CASES = [
     {"name": "toy_89x113", "p": 89, "q": 113},
 ]
 
-WINDOW_N_RATIO = (1, 18)
+WINDOW_SQRT_RATIO = (1, 1)
 EMITTED_HOLE_RATIO = (1, 20)
 SUPPORT_PREVIEW_RATIO = (8, 9)
 MD_PREVIEW_RATIO = (4, 9)
@@ -36,7 +36,8 @@ def ceil_ratio(value, numerator, denominator):
 
 
 def public_radius(n):
-    return ceil_ratio(n, *WINDOW_N_RATIO)
+    numerator, denominator = WINDOW_SQRT_RATIO
+    return (math.isqrt(n) * numerator) // denominator
 
 
 def emitted_hole_count(radius):
