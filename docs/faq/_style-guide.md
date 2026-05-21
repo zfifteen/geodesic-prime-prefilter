@@ -23,7 +23,8 @@ records in compressed form.
 - Keep the reader on the integer carrier object.
 - Use short paragraphs.
 - Use GitHub-safe Markdown math.
-- Use `\mathrm{Re}` for real part notation.
+- Use inline math `$...$` for TeX expressions, not code ticks.
+- Write real part as $\mathrm{Re}$ in rendered math.
 - Avoid transcript language and model names.
 - Avoid em dashes.
 
