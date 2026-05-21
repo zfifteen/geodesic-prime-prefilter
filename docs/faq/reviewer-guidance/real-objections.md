@@ -23,7 +23,7 @@ A real objection would identify a concrete fault in one of these places:
 - the definition or use of $\tau(n)$;
 - the proof of the direct next-prime rule;
 - the proof of the gap-interior maximizer theorem;
-- the identity $D(s)=\zeta(s)^2$;
+- the identity $D(s)=\zeta(s)^2$ on $\mathrm{Re}(s)>1$;
 - the DNI ratio computation that recovers $-\zeta'(s)/\zeta(s)$;
 - a status claim that assigns a result to the wrong category.
 

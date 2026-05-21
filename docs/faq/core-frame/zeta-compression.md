@@ -31,13 +31,14 @@ $$
 D(s)=\zeta(s)^2.
 $$
 
-The derivative of this series carries the weighted divisor-count load. With
+The derivative of this series carries the weighted divisor-count load. Define
+the weighted load by:
 
 $$
 K(s)=-\frac{1}{e^2}D'(s),
 $$
 
-on the same half-plane, the DNI ratio gives:
+On the same half-plane, the DNI ratio gives:
 
 $$
 R(s)=\frac{e^2}{2}\frac{K(s)}{D(s)}

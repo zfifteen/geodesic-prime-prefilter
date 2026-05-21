@@ -2,8 +2,8 @@
 
 ## Short Answer
 
-The divisor-count series is the zeta square. That identity carries the
-integer-level divisor-count field into analytic language.
+On $\mathrm{Re}(s)>1$, the divisor-count series is the zeta square. That
+identity carries the integer-level divisor-count field into analytic language.
 
 ## Source Order
 

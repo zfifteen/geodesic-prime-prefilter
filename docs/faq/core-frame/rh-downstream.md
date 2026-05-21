@@ -41,8 +41,8 @@ interior divisor count is the unique maximizer of the logarithmic comparison
 score.
 
 The zeta function records multiplicative arithmetic in compressed analytic
-form. The DNI-to-zeta bridge shows that divisor-count structure recovers the
-classical prime-power detector:
+form. On $\mathrm{Re}(s)>1$, the DNI-to-zeta bridge shows that divisor-count
+structure recovers the classical prime-power detector:
 
 $$
 R(s)=\frac{e^2}{2}\frac{K(s)}{D(s)}=-\frac{\zeta'(s)}{\zeta(s)}.
