@@ -85,3 +85,21 @@ Parameter rationale: both preview sizes now derive from the emitted public list.
 Baseline result after change: passed. All four toy cases still emitted an exact factor-distance offset at rank 1.
 
 Commit: `9a2ae501`.
+
+## Accepted: HTML Supporting-Factor Table Preview
+
+Original constant: HTML table support-factor preview `8`.
+
+Role: limits the support-factor list shown inside the human-readable HTML table.
+
+Ratio formula:
+
+```text
+html_support_preview_count = ceil((8 / 9) * emitted_hole_count)
+```
+
+Parameter rationale: this reuses the accepted support-preview ratio so the HTML table reflects the same public preview budget as the JSON records.
+
+Baseline result after change: passed. All four toy cases still emitted an exact factor-distance offset at rank 1.
+
+Commit: recorded in final report after commit creation.
