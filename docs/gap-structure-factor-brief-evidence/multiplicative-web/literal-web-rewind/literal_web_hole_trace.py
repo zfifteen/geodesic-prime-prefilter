@@ -25,7 +25,6 @@ CASES = [
 ]
 
 WINDOW_SQRT_RATIO = (1, 1)
-EMITTED_HOLE_RATIO = (1, 20)
 SUPPORT_PREVIEW_RATIO = (8, 9)
 MD_PREVIEW_RATIO = (4, 9)
 HTML_PREVIEW_RATIO = (5, 9)
@@ -38,10 +37,6 @@ def ceil_ratio(value, numerator, denominator):
 def public_radius(n):
     numerator, denominator = WINDOW_SQRT_RATIO
     return (math.isqrt(n) * numerator) // denominator
-
-
-def emitted_hole_count(radius):
-    return ceil_ratio(radius, *EMITTED_HOLE_RATIO)
 
 
 def support_preview_count(emitted_count):
@@ -104,8 +99,6 @@ def analyze_case(case):
     p, q = case["p"], case["q"]
     n = p * q
     radius = public_radius(n)
-    emitted_count = emitted_hole_count(radius)
-    support_preview = support_preview_count(emitted_count)
     rows = rows_around(n, radius)
     by_offset = {row["offset"]: row for row in rows}
     direct_offsets = {
@@ -123,6 +116,15 @@ def analyze_case(case):
             if offset not in heldout_offsets:
                 support[offset].append(r)
 
+    max_support = max((len(supporters) for supporters in support.values()), default=0)
+    top_offsets = {
+        offset
+        for offset, supporters in support.items()
+        if len(supporters) == max_support
+    }
+    emitted_count = len(top_offsets)
+    support_preview = support_preview_count(emitted_count)
+
     holes = []
     for offset, supporters in sorted(support.items(), key=lambda item: (-len(item[1]), abs(item[0]), item[0])):
         row = by_offset.get(offset)
@@ -137,7 +139,7 @@ def analyze_case(case):
             "audit_factorization": row["factorization"] if row else None,
         })
 
-    top_holes = holes[:emitted_count]
+    top_holes = [hole for hole in holes if hole["offset"] in top_offsets]
     direct_rows = []
     for offset, kind in sorted(direct_offsets.items(), key=lambda item: item[0]):
         row = by_offset[offset]
@@ -160,6 +162,7 @@ def analyze_case(case):
         "radius": radius,
         "row_count_full": len(rows),
         "row_count_heldout": len(heldout),
+        "max_support": max_support,
         "emitted_hole_count": len(top_holes),
         "direct_row_count": len(direct_rows),
         "supported_direct_count": supported_direct,

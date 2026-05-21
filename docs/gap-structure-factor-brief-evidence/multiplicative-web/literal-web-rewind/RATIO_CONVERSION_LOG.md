@@ -1,123 +1,79 @@
-# Literal Web Ratio Conversion Log
+# Literal Web Ratio Rules
 
-## Baseline
+This file records the active ratio rules used by `literal_web_hole_trace.py`.
 
-Starting point: the rewound literal-web runner used hard-coded toy radii and fixed output preview counts.
+The ratios below are current method parameters. They are not a changelog.
 
-Baseline command set:
+## Radius
 
-```text
-python3 -m py_compile docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/literal_web_hole_trace.py
-python3 docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/literal_web_hole_trace.py
-```
-
-Baseline result: all four toy cases passed. Each case emitted an exact factor-distance offset at public rank 1, and every direct held-out row had public support.
-
-## Superseded: Toy Case Radii
-
-Original constant: per-case hard-coded `radius`.
-
-Role: selects the public composite window around `N`.
-
-Superseded formula:
+Formula:
 
 ```text
-radius = ceil((1 / 18) * N)
+radius = floor(sqrt(N))
 ```
 
-Reason superseded: `1 / 18` was fitted from the prior toy radii. It was public, but it was not derived from the semiprime structure or the visible web. Treating it as a research ratio was ratio theater.
-
-Baseline result after change: passed. The four toy radii became `40`, `141`, `282`, and `559`; each case still emitted an exact factor-distance offset at rank 1.
-
-Commit: `90cee3e7`.
-
-## Accepted: Semiprime-Bound Radius
-
-Original constant: fitted radius formula `ceil((1 / 18) * N)`.
-
-Role: selects the public composite window around `N`.
-
-Ratio formula:
+Ratio form:
 
 ```text
 radius = floor((1 / 1) * sqrt(N))
 ```
 
-Parameter rationale: for a semiprime `N = p * q` with `p <= q`, the smaller factor satisfies `p <= sqrt(N)`. The exact factor-thread offsets at `N - p` and `N + p` therefore lie inside the public window `[-floor(sqrt(N)), floor(sqrt(N))]` without using `p` or `q`. The ratio `1 / 1` is the full public first-factor coverage ratio against the semiprime square-root bound.
+Rationale: for a semiprime `N = p * q` with `p <= q`, the smaller factor satisfies `p <= sqrt(N)`. The factor-thread offsets at `N - p` and `N + p` therefore lie inside the public window `[-floor(sqrt(N)), floor(sqrt(N))]` without using `p` or `q`.
 
-Baseline result after change: passed. The four public radii became `26`, `50`, `71`, and `100`; each case still emitted an exact factor-distance offset at rank 1.
+This is the full public first-factor coverage window. Smaller radii should be treated as later compression experiments, not as the baseline rule.
 
-Commit: recorded in final report after commit creation.
+## Emitted Hole Set
 
-## Accepted: Emitted Hole Count
-
-Original constant: `top_holes = holes[:18]`.
-
-Role: sets the number of public supported holes emitted for audit.
-
-Ratio formula:
+Formula:
 
 ```text
-emitted_hole_count = ceil((1 / 20) * radius)
+max_support = maximum support count over all public holes
+support_ratio(hole) = support(hole) / max_support
+emit hole if support_ratio(hole) = 1
+emitted_hole_count = count(emitted holes)
 ```
 
-Parameter rationale: `1 / 20` derives the output size from the public inspected window. It keeps the candidate list small at toy scale while making the emitted list grow when the visible web window grows.
+Rationale: the emitted set is the strongest public support shell. The web determines the output size by its own support distribution instead of receiving a fixed top-k budget or a fitted fraction of the window.
 
-Baseline result after change: passed. The four emitted public list sizes became `2`, `8`, `14`, and `20`; each case still emitted an exact factor-distance offset at rank 1.
+This rule uses only public thread evidence. A later failure means the strongest support shell did not isolate a factor-thread offset; it is not a candidate-cap failure.
 
-Commit: `04547cdb`.
+## Support Preview Count
 
-## Accepted: Supporting-Factor Display Cap
-
-Original constant: `supporting_factors[:16]`.
-
-Role: limits the number of supporting public factors written into each output record.
-
-Ratio formula:
+Formula:
 
 ```text
 support_preview_count = ceil((8 / 9) * emitted_hole_count)
 ```
 
-Parameter rationale: `8 / 9` ties support-detail visibility to the emitted public list size. This converts a display cap without changing support counts, sorting, or the public hole list itself.
+Rationale: support previews are report detail, not inference. Their size follows the emitted public list so JSON and HTML artifacts show a proportionate amount of supporting-thread evidence.
 
-Baseline result after change: passed. The public hole ranking and exact factor-distance rank-1 recovery were unchanged. The smallest case now truncates one support preview list while retaining the true support count.
+The true support count is always retained separately.
 
-Commit: `223a79e5`.
+## Report Preview Counts
 
-## Accepted: Summary Preview Counts
-
-Original constants: Markdown preview `8`; HTML preview `10`.
-
-Role: limits the number of emitted public holes shown in human-readable reports.
-
-Ratio formulas:
+Formulas:
 
 ```text
 md_preview_count = ceil((4 / 9) * emitted_hole_count)
 html_preview_count = ceil((5 / 9) * emitted_hole_count)
 ```
 
-Parameter rationale: both preview sizes now derive from the emitted public list. The Markdown report remains more compact, while the HTML report shows a slightly larger slice for visual inspection. Neither ratio changes the public ranking or emitted candidate records.
+Rationale: the Markdown report stays compact while the HTML report shows a slightly larger visual slice. These ratios affect only human-readable report length.
 
-Baseline result after change: passed. All four toy cases still emitted an exact factor-distance offset at rank 1.
+## Current Toy Result
 
-Commit: `9a2ae501`.
+Current runner output:
 
-## Accepted: HTML Supporting-Factor Table Preview
+| case | N | radius | emitted holes | first exact factor offset |
+| --- | ---: | ---: | ---: | --- |
+| `toy_23x31` | 713 | 26 | 1 | rank 1, `-23` |
+| `toy_43x59` | 2537 | 50 | 1 | rank 1, `43` |
+| `toy_61x83` | 5063 | 71 | 1 | rank 1, `61` |
+| `toy_89x113` | 10057 | 100 | 1 | rank 1, `89` |
 
-Original constant: HTML table support-factor preview `8`.
-
-Role: limits the support-factor list shown inside the human-readable HTML table.
-
-Ratio formula:
+Verification commands:
 
 ```text
-html_support_preview_count = ceil((8 / 9) * emitted_hole_count)
+python3 -m py_compile docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/literal_web_hole_trace.py
+python3 docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/literal_web_hole_trace.py
 ```
-
-Parameter rationale: this reuses the accepted support-preview ratio so the HTML table reflects the same public preview budget as the JSON records.
-
-Baseline result after change: passed. All four toy cases still emitted an exact factor-distance offset at rank 1.
-
-Commit: `d25a9c35`.

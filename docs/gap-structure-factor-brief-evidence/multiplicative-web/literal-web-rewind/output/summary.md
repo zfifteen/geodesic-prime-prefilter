@@ -4,10 +4,10 @@ This resets the experiment to the original multiplicative-web object: factor thr
 
 | case | radius | emitted holes | heldout rows | direct rows | supported direct rows | direct hits in emitted holes |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| toy_23x31 | 26 | 2 | 43 | 2 | 2 | 2 |
-| toy_43x59 | 50 | 2 | 89 | 2 | 2 | 2 |
-| toy_61x83 | 71 | 2 | 122 | 2 | 2 | 2 |
-| toy_89x113 | 100 | 2 | 179 | 2 | 2 | 2 |
+| toy_23x31 | 26 | 1 | 43 | 2 | 2 | 1 |
+| toy_43x59 | 50 | 1 | 89 | 2 | 2 | 1 |
+| toy_61x83 | 71 | 1 | 122 | 2 | 2 | 1 |
+| toy_89x113 | 100 | 1 | 179 | 2 | 2 | 1 |
 
 ## Per-Case Notes
 

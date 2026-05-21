@@ -7,10 +7,11 @@
     "radius": 26,
     "row_count_full": 45,
     "row_count_heldout": 43,
-    "emitted_hole_count": 2,
+    "max_support": 3,
+    "emitted_hole_count": 1,
     "direct_row_count": 2,
     "supported_direct_count": 2,
-    "emitted_direct_hits": 2,
+    "emitted_direct_hits": 1,
     "direct_rows": [
       {
         "offset": -23,
@@ -19,8 +20,7 @@
         "factorization": "2 * 3 * 5 * 23",
         "support": 3,
         "supporting_factors": [
-          2,
-          3
+          2
         ]
       },
       {
@@ -40,23 +40,11 @@
         "value": 690,
         "support": 3,
         "supporting_factors": [
-          2,
-          3
+          2
         ],
         "support_truncated": true,
         "audit_kind": "p_thread",
         "audit_factorization": "2 * 3 * 5 * 23"
-      },
-      {
-        "offset": 23,
-        "value": 736,
-        "support": 1,
-        "supporting_factors": [
-          2
-        ],
-        "support_truncated": false,
-        "audit_kind": "p_thread",
-        "audit_factorization": "2^5 * 23"
       }
     ]
   },
@@ -68,10 +56,11 @@
     "radius": 50,
     "row_count_full": 91,
     "row_count_heldout": 89,
-    "emitted_hole_count": 2,
+    "max_support": 3,
+    "emitted_hole_count": 1,
     "direct_row_count": 2,
     "supported_direct_count": 2,
-    "emitted_direct_hits": 2,
+    "emitted_direct_hits": 1,
     "direct_rows": [
       {
         "offset": -43,
@@ -80,8 +69,7 @@
         "factorization": "2 * 29 * 43",
         "support": 2,
         "supporting_factors": [
-          2,
-          29
+          2
         ]
       },
       {
@@ -91,9 +79,7 @@
         "factorization": "2^2 * 3 * 5 * 43",
         "support": 3,
         "supporting_factors": [
-          2,
-          3,
-          5
+          2
         ]
       }
     ],
@@ -103,25 +89,11 @@
         "value": 2580,
         "support": 3,
         "supporting_factors": [
-          2,
-          3,
-          5
+          2
         ],
-        "support_truncated": false,
+        "support_truncated": true,
         "audit_kind": "p_thread",
         "audit_factorization": "2^2 * 3 * 5 * 43"
-      },
-      {
-        "offset": -43,
-        "value": 2494,
-        "support": 2,
-        "supporting_factors": [
-          2,
-          29
-        ],
-        "support_truncated": false,
-        "audit_kind": "p_thread",
-        "audit_factorization": "2 * 29 * 43"
       }
     ]
   },
@@ -133,10 +105,11 @@
     "radius": 71,
     "row_count_full": 124,
     "row_count_heldout": 122,
-    "emitted_hole_count": 2,
+    "max_support": 3,
+    "emitted_hole_count": 1,
     "direct_row_count": 2,
     "supported_direct_count": 2,
-    "emitted_direct_hits": 2,
+    "emitted_direct_hits": 1,
     "direct_rows": [
       {
         "offset": -61,
@@ -145,8 +118,7 @@
         "factorization": "2 * 41 * 61",
         "support": 2,
         "supporting_factors": [
-          2,
-          41
+          2
         ]
       },
       {
@@ -156,9 +128,7 @@
         "factorization": "2^2 * 3 * 7 * 61",
         "support": 3,
         "supporting_factors": [
-          2,
-          3,
-          7
+          2
         ]
       }
     ],
@@ -168,25 +138,11 @@
         "value": 5124,
         "support": 3,
         "supporting_factors": [
-          2,
-          3,
-          7
+          2
         ],
-        "support_truncated": false,
+        "support_truncated": true,
         "audit_kind": "p_thread",
         "audit_factorization": "2^2 * 3 * 7 * 61"
-      },
-      {
-        "offset": -61,
-        "value": 5002,
-        "support": 2,
-        "supporting_factors": [
-          2,
-          41
-        ],
-        "support_truncated": false,
-        "audit_kind": "p_thread",
-        "audit_factorization": "2 * 41 * 61"
       }
     ]
   },
@@ -198,10 +154,11 @@
     "radius": 100,
     "row_count_full": 181,
     "row_count_heldout": 179,
-    "emitted_hole_count": 2,
+    "max_support": 3,
+    "emitted_hole_count": 1,
     "direct_row_count": 2,
     "supported_direct_count": 2,
-    "emitted_direct_hits": 2,
+    "emitted_direct_hits": 1,
     "direct_rows": [
       {
         "offset": -89,
@@ -210,8 +167,7 @@
         "factorization": "2^4 * 7 * 89",
         "support": 2,
         "supporting_factors": [
-          2,
-          7
+          2
         ]
       },
       {
@@ -221,9 +177,7 @@
         "factorization": "2 * 3 * 19 * 89",
         "support": 3,
         "supporting_factors": [
-          2,
-          3,
-          19
+          2
         ]
       }
     ],
@@ -233,25 +187,11 @@
         "value": 10146,
         "support": 3,
         "supporting_factors": [
-          2,
-          3,
-          19
+          2
         ],
-        "support_truncated": false,
+        "support_truncated": true,
         "audit_kind": "p_thread",
         "audit_factorization": "2 * 3 * 19 * 89"
-      },
-      {
-        "offset": -89,
-        "value": 9968,
-        "support": 2,
-        "supporting_factors": [
-          2,
-          7
-        ],
-        "support_truncated": false,
-        "audit_kind": "p_thread",
-        "audit_factorization": "2^4 * 7 * 89"
       }
     ]
   }
