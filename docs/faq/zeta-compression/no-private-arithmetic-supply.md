@@ -19,11 +19,14 @@ record. The integer structure is prior.
 ## Full Answer
 
 The zeta function is powerful because it compresses multiplicative arithmetic.
-Its Euler product records primes. Its square records divisor counts. Its
-logarithmic derivative records prime powers.
+On the usual half-plane of convergence, `\mathrm{Re}(s)>1`, its Euler product
+records primes, its square records divisor counts, and its logarithmic
+derivative records prime powers.
 
-Those are records of integer structure. Prime gap structure identifies the
-source layer directly:
+Those identities are first read on that convergent side and then carried into
+the analytic language by continuation where the continued object is being
+discussed. They are records of integer structure. Prime gap structure
+identifies the source layer directly:
 
 - primes are returns to divisor count two;
 - gap interiors are ordered divisor-count profiles;

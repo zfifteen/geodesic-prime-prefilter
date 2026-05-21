@@ -39,9 +39,10 @@ $$
 Z(n)=n^{1-\tau(n)/2}.
 $$
 
-Primes land exactly on `Z=1`. Composites land below it. The source object is not
-an analytic estimate of prime behavior. It is the exact divisor-count field
-that places the primes and orders the interiors between them.
+For `n>1`, primes land exactly on `Z=1`. Composites land below it. The source
+object is not an analytic estimate of prime behavior. It is the exact
+divisor-count field that places the primes and orders the interiors between
+them.
 
 ## Status
 

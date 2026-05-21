@@ -42,7 +42,8 @@ $$
 Z(n)=n^{1-\tau(n)/2}.
 $$
 
-Primes are exactly the returns to `Z=1`. Composites sit below that level.
+For `n>1`, primes are exactly the returns to `Z=1`. Composites sit below that
+level.
 
 ## Status
 
