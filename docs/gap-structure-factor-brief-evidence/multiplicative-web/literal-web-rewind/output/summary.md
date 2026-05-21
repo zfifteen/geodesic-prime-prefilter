@@ -4,10 +4,10 @@ This resets the experiment to the original multiplicative-web object: factor thr
 
 | case | radius | heldout rows | direct rows | supported direct rows | direct hits in top 18 holes |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| toy_23x31 | 180 | 281 | 24 | 24 | 18 |
-| toy_43x59 | 260 | 431 | 20 | 20 | 18 |
-| toy_61x83 | 360 | 620 | 18 | 18 | 18 |
-| toy_89x113 | 520 | 912 | 18 | 18 | 18 |
+| toy_23x31 | 40 | 64 | 4 | 4 | 4 |
+| toy_43x59 | 141 | 240 | 10 | 10 | 10 |
+| toy_61x83 | 282 | 485 | 14 | 14 | 14 |
+| toy_89x113 | 559 | 980 | 20 | 20 | 18 |
 
 ## Per-Case Notes
 
@@ -17,11 +17,7 @@ Top supported holes:
 - offset -23: support 3, audit `p_thread`
 - offset -31: support 2, audit `q_thread`
 - offset 31: support 2, audit `q_thread`
-- offset 46: support 2, audit `p_thread`
-- offset -62: support 2, audit `q_thread`
-- offset -69: support 2, audit `p_thread`
-- offset 69: support 2, audit `p_thread`
-- offset 92: support 2, audit `p_thread`
+- offset 23: support 1, audit `p_thread`
 
 ### toy_43x59
 
@@ -40,12 +36,12 @@ Top supported holes:
 Top supported holes:
 - offset 61: support 3, audit `p_thread`
 - offset -83: support 3, audit `q_thread`
-- offset -305: support 3, audit `p_thread`
 - offset -61: support 2, audit `p_thread`
 - offset 83: support 2, audit `q_thread`
 - offset 122: support 2, audit `p_thread`
 - offset 166: support 2, audit `q_thread`
 - offset -183: support 2, audit `p_thread`
+- offset 183: support 2, audit `p_thread`
 
 ### toy_89x113
 
