@@ -156,9 +156,9 @@ supplies local arithmetic control from ordered divisor-count exclusion.
 
 ## 4. The Analytic Bridge
 
-The Riemann Hypothesis lives on the analytic side of the same arithmetic world.
-The divisor-count normalization reaches that side directly from the integer
-source.
+The Riemann Hypothesis is the analytic-side language for the same arithmetic
+source. The divisor-count normalization reaches that side directly from the
+integer source.
 
 Start with the divisor-count Dirichlet series on
 $\mathrm{Re}(s)>1$:
@@ -222,8 +222,9 @@ $\zeta(s)^2$, then normalizes its logarithmic derivative to recover
 $-\zeta'(s)/\zeta(s)$. That is the DNI bridge in analytic form.
 
 The consequence is structural. A method that currently relies on RH should be
-decomposed into the exact statement it borrows from RH. That borrowed statement
-then becomes a proof target inside Prime Gap Structure.
+decomposed into the exact analytic consequence it uses. That consequence is
+then translated back into the integer-level structure that PGS already
+controls.
 
 The replacement ledger has the following form:
 
@@ -232,12 +233,12 @@ RH-dependent step
 -> exact analytic consequence being used
 -> relevant PGS object
 -> relevant PGS invariant
--> proved PGS theorem, unresolved PGS target, or invalidated route
+-> proved theorem, measured surface, unresolved source state, or invalidated route
 ```
 
 This changes the role of RH. It stops being the master assumption and becomes
-downstream language for consequences of the source structure. Each conditional
-lemma asks for the PGS-native invariant that proves the borrowed result.
+classical language for consequences of the source structure. Each conditional
+lemma is traced back to the PGS-native invariant that proves the result.
 
 The strongest form of the regime change is:
 
@@ -296,7 +297,7 @@ statement. Each such consequence admits a sharper audit:
 4. Is the PGS statement proved, measured, unresolved, or invalidated?
 
 That audit converts conditional analytic dependence into exact arithmetic
-source statements.
+source structure.
 
 ## 7. Do Not Misread This
 
