@@ -55,16 +55,23 @@ support_truncated = false
 
 Rationale: supporting factors are public evidence. Since the emitted hole set is already restricted to the max-support shell, the raw artifact should retain the complete public thread support for every emitted hole. If later displays need shortening, that belongs in presentation rendering, not in the evidence record.
 
-## Report Preview Counts
+## Report Emission
 
-Formulas:
+Formula:
 
 ```text
-md_preview_count = ceil((4 / 9) * emitted_hole_count)
-html_preview_count = ceil((5 / 9) * emitted_hole_count)
+report_detail_ratio = displayed_emitted_holes / total_emitted_holes
+report_detail_ratio = 1
 ```
 
-Rationale: the Markdown report stays compact while the HTML report shows a slightly larger visual slice. These ratios affect only human-readable report length.
+Implementation rule:
+
+```text
+Markdown report shows every emitted hole.
+HTML report shows every emitted hole.
+```
+
+Rationale: the emitted hole set is already the strongest public support shell. Human-readable reports should display the complete public nomination set instead of applying a second arbitrary preview filter.
 
 ## Current Toy Result
 

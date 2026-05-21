@@ -25,8 +25,6 @@ CASES = [
 ]
 
 WINDOW_SQRT_RATIO = (1, 1)
-MD_PREVIEW_RATIO = (4, 9)
-HTML_PREVIEW_RATIO = (5, 9)
 
 
 def ceil_ratio(value, numerator, denominator):
@@ -36,14 +34,6 @@ def ceil_ratio(value, numerator, denominator):
 def public_radius(n):
     numerator, denominator = WINDOW_SQRT_RATIO
     return (math.isqrt(n) * numerator) // denominator
-
-
-def md_preview_count(emitted_count):
-    return ceil_ratio(emitted_count, *MD_PREVIEW_RATIO)
-
-
-def html_preview_count(emitted_count):
-    return ceil_ratio(emitted_count, *HTML_PREVIEW_RATIO)
 
 
 def factor_label(factors):
@@ -190,7 +180,7 @@ def write_summary_md(results):
         lines.append(f"### {result['name']}")
         lines.append("")
         lines.append("Top supported holes:")
-        for hole in result["top_holes"][:md_preview_count(result["emitted_hole_count"])]:
+        for hole in result["top_holes"]:
             lines.append(
                 f"- offset {hole['offset']}: support {hole['support']}, "
                 f"audit `{hole['audit_kind']}`"
@@ -230,7 +220,7 @@ def write_index_html(results):
     cards = []
     for result in results:
         rows = []
-        for hole in result["top_holes"][:html_preview_count(result["emitted_hole_count"])]:
+        for hole in result["top_holes"]:
             rows.append(
                 "<tr>"
                 f"<td>{hole['offset']}</td>"
