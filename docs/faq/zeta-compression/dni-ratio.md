@@ -19,7 +19,8 @@ compressed analytic form of divisor-count arithmetic.
 
 ## Full Answer
 
-Start with the divisor-count series:
+Start with the divisor-count series. On its half-plane of convergence
+`\mathrm{Re}(s)>1`, it satisfies:
 
 $$
 D(s)=\sum_{n\ge 1}\frac{\tau(n)}{n^s}=\zeta(s)^2.
@@ -37,7 +38,7 @@ $$
 R(s)=\frac{e^2}{2}\frac{K(s)}{D(s)}.
 $$
 
-Since `D(s)=\zeta(s)^2`, this gives:
+On the same half-plane, `D(s)=\zeta(s)^2`, so this gives:
 
 $$
 R(s)=-\frac12\frac{D'(s)}{D(s)}
