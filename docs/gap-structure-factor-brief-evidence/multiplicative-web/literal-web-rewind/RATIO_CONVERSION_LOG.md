@@ -102,4 +102,4 @@ Parameter rationale: this reuses the accepted support-preview ratio so the HTML 
 
 Baseline result after change: passed. All four toy cases still emitted an exact factor-distance offset at rank 1.
 
-Commit: recorded in final report after commit creation.
+Commit: `d25a9c35`.
