@@ -2,9 +2,9 @@
 
 ## Short Answer
 
-Every claim should be assigned to its correct status. A proved source theorem,
-an exact zeta compression, a measurement, an unresolved bounded-compression
-obligation, and an invalidated route are different kinds of statements.
+Every claim should be assigned to its exact status label: proved theorem, exact
+zeta compression, measured implementation evidence, unresolved
+bounded-compression obligation, invalidated route, or explanatory consequence.
 
 ## Source Order
 
