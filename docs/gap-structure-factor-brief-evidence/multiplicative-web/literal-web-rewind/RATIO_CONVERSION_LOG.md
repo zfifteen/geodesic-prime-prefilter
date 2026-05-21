@@ -84,4 +84,4 @@ Parameter rationale: both preview sizes now derive from the emitted public list.
 
 Baseline result after change: passed. All four toy cases still emitted an exact factor-distance offset at rank 1.
 
-Commit: recorded in final report after commit creation.
+Commit: `9a2ae501`.
