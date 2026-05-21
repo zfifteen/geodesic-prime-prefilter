@@ -197,6 +197,7 @@ def render_axis(result):
     radius = result["radius"]
     width = 980
     height = 92
+    marker_radius = height / 8
     mid = width / 2
     scale = (width - 60) / (2 * radius)
     parts = [
@@ -210,8 +211,7 @@ def render_axis(result):
             continue
         x = mid + hole["offset"] * scale
         color = "#dc2626" if hole["audit_kind"] in {"p_thread", "q_thread"} else "#2563eb"
-        r = min(12, 3 + hole["support"])
-        parts.append(f'<circle cx="{x:.1f}" cy="46" r="{r}" fill="{color}" opacity="0.72"/>')
+        parts.append(f'<circle cx="{x:.1f}" cy="46" r="{marker_radius:.1f}" fill="{color}" opacity="0.72"/>')
     parts.append('</svg>')
     return "".join(parts)
 
