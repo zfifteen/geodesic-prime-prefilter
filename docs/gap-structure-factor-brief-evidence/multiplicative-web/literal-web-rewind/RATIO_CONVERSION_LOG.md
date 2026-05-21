@@ -13,23 +13,41 @@ python3 docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-
 
 Baseline result: all four toy cases passed. Each case emitted an exact factor-distance offset at public rank 1, and every direct held-out row had public support.
 
-## Accepted: Toy Case Radii
+## Superseded: Toy Case Radii
 
 Original constant: per-case hard-coded `radius`.
+
+Role: selects the public composite window around `N`.
+
+Superseded formula:
+
+```text
+radius = ceil((1 / 18) * N)
+```
+
+Reason superseded: `1 / 18` was fitted from the prior toy radii. It was public, but it was not derived from the semiprime structure or the visible web. Treating it as a research ratio was ratio theater.
+
+Baseline result after change: passed. The four toy radii became `40`, `141`, `282`, and `559`; each case still emitted an exact factor-distance offset at rank 1.
+
+Commit: `90cee3e7`.
+
+## Accepted: Semiprime-Bound Radius
+
+Original constant: fitted radius formula `ceil((1 / 18) * N)`.
 
 Role: selects the public composite window around `N`.
 
 Ratio formula:
 
 ```text
-radius = ceil((1 / 18) * N)
+radius = floor((1 / 1) * sqrt(N))
 ```
 
-Parameter rationale: `1 / 18` is public and depends only on `N`. It keeps the window large enough to preserve rank-1 exact factor-distance recovery on all four toy cases while removing the per-case manually chosen radii.
+Parameter rationale: for a semiprime `N = p * q` with `p <= q`, the smaller factor satisfies `p <= sqrt(N)`. The exact factor-thread offsets at `N - p` and `N + p` therefore lie inside the public window `[-floor(sqrt(N)), floor(sqrt(N))]` without using `p` or `q`. The ratio `1 / 1` is the full public first-factor coverage ratio against the semiprime square-root bound.
 
-Baseline result after change: passed. The four toy radii became `40`, `141`, `282`, and `559`; each case still emitted an exact factor-distance offset at rank 1.
+Baseline result after change: passed. The four public radii became `26`, `50`, `71`, and `100`; each case still emitted an exact factor-distance offset at rank 1.
 
-Commit: `90cee3e7`.
+Commit: recorded in final report after commit creation.
 
 ## Accepted: Emitted Hole Count
 
