@@ -47,4 +47,22 @@ Parameter rationale: `1 / 20` derives the output size from the public inspected 
 
 Baseline result after change: passed. The four emitted public list sizes became `2`, `8`, `14`, and `20`; each case still emitted an exact factor-distance offset at rank 1.
 
+Commit: `04547cdb`.
+
+## Accepted: Supporting-Factor Display Cap
+
+Original constant: `supporting_factors[:16]`.
+
+Role: limits the number of supporting public factors written into each output record.
+
+Ratio formula:
+
+```text
+support_preview_count = ceil((8 / 9) * emitted_hole_count)
+```
+
+Parameter rationale: `8 / 9` ties support-detail visibility to the emitted public list size. This converts a display cap without changing support counts, sorting, or the public hole list itself.
+
+Baseline result after change: passed. The public hole ranking and exact factor-distance rank-1 recovery were unchanged. The smallest case now truncates one support preview list while retaining the true support count.
+
 Commit: recorded in final report after commit creation.
