@@ -24,7 +24,7 @@ $$
 D(s)=\sum_{n\ge 1}\frac{\tau(n)}{n^s}.
 $$
 
-For `\mathrm{Re}(s)>1`, the classical identity is:
+For $\mathrm{Re}(s)>1$, the classical identity is:
 
 $$
 D(s)=\zeta(s)^2.
@@ -39,7 +39,7 @@ object records the integer source.
 
 ## Status
 
-- exact zeta compression: `D(s)=\zeta(s)^2` for `\mathrm{Re}(s)>1`.
+- exact zeta compression: $D(s)=\zeta(s)^2$ for $\mathrm{Re}(s)>1$.
 - explanatory consequence: zeta square records divisor-count arithmetic.
 
 ## Related Docs

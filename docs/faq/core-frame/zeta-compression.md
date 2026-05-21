@@ -25,7 +25,7 @@ $$
 D(s)=\sum_{n\ge 1}\frac{\tau(n)}{n^s}.
 $$
 
-For `\mathrm{Re}(s)>1`, it equals:
+For $\mathrm{Re}(s)>1$, it equals:
 
 $$
 D(s)=\zeta(s)^2.
@@ -37,7 +37,7 @@ $$
 K(s)=-\frac{1}{e^2}D'(s),
 $$
 
-the DNI ratio gives:
+on the same half-plane, the DNI ratio gives:
 
 $$
 R(s)=\frac{e^2}{2}\frac{K(s)}{D(s)}

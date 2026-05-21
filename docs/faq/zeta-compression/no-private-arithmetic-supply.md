@@ -19,7 +19,7 @@ record. The integer structure is prior.
 ## Full Answer
 
 The zeta function is powerful because it compresses multiplicative arithmetic.
-On the usual half-plane of convergence, `\mathrm{Re}(s)>1`, its Euler product
+On the usual half-plane of convergence, $\mathrm{Re}(s)>1$, its Euler product
 records primes, its square records divisor counts, and its logarithmic
 derivative records prime powers.
 
@@ -30,7 +30,7 @@ identifies the source layer directly:
 
 - primes are returns to divisor count two;
 - gap interiors are ordered divisor-count profiles;
-- the normalized prime state is `Z=1`;
+- for $n>1$, the normalized prime state is $Z=1$;
 - the zeta-side detector is recovered from the divisor-count series.
 
 The analytic layer is not empty or unimportant. It is the compressed language
