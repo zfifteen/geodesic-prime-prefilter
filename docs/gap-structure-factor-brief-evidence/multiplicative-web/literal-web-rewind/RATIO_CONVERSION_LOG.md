@@ -37,17 +37,23 @@ Rationale: the emitted set is the strongest public support shell. The web determ
 
 This rule uses only public thread evidence. A later failure means the strongest support shell did not isolate a factor-thread offset; it is not a candidate-cap failure.
 
-## Support Preview Count
+## Supporting Factor Retention
 
 Formula:
 
 ```text
-support_preview_count = ceil((8 / 9) * emitted_hole_count)
+support_detail_ratio(hole) = emitted_supporting_factors(hole) / total_supporting_factors(hole)
+support_detail_ratio(hole) = 1
 ```
 
-Rationale: support previews are report detail, not inference. Their size follows the emitted public list so JSON and HTML artifacts show a proportionate amount of supporting-thread evidence.
+Implementation rule:
 
-The true support count is always retained separately.
+```text
+supporting_factors = all public supporters for the emitted hole
+support_truncated = false
+```
+
+Rationale: supporting factors are public evidence. Since the emitted hole set is already restricted to the max-support shell, the raw artifact should retain the complete public thread support for every emitted hole. If later displays need shortening, that belongs in presentation rendering, not in the evidence record.
 
 ## Report Preview Counts
 

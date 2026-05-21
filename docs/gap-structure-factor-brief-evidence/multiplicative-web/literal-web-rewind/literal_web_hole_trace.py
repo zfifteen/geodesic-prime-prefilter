@@ -25,7 +25,6 @@ CASES = [
 ]
 
 WINDOW_SQRT_RATIO = (1, 1)
-SUPPORT_PREVIEW_RATIO = (8, 9)
 MD_PREVIEW_RATIO = (4, 9)
 HTML_PREVIEW_RATIO = (5, 9)
 
@@ -37,10 +36,6 @@ def ceil_ratio(value, numerator, denominator):
 def public_radius(n):
     numerator, denominator = WINDOW_SQRT_RATIO
     return (math.isqrt(n) * numerator) // denominator
-
-
-def support_preview_count(emitted_count):
-    return ceil_ratio(emitted_count, *SUPPORT_PREVIEW_RATIO)
 
 
 def md_preview_count(emitted_count):
@@ -123,7 +118,6 @@ def analyze_case(case):
         if len(supporters) == max_support
     }
     emitted_count = len(top_offsets)
-    support_preview = support_preview_count(emitted_count)
 
     holes = []
     for offset, supporters in sorted(support.items(), key=lambda item: (-len(item[1]), abs(item[0]), item[0])):
@@ -133,8 +127,8 @@ def analyze_case(case):
             "offset": offset,
             "value": n + offset,
             "support": len(supporters),
-            "supporting_factors": supporters[:support_preview],
-            "support_truncated": len(supporters) > support_preview,
+            "supporting_factors": supporters,
+            "support_truncated": False,
             "audit_kind": audit if audit else ("other_composite" if row else "not_composite"),
             "audit_factorization": row["factorization"] if row else None,
         })
@@ -149,7 +143,7 @@ def analyze_case(case):
             "value": row["value"],
             "factorization": row["factorization"],
             "support": len(support.get(offset, [])),
-            "supporting_factors": support.get(offset, [])[:support_preview],
+            "supporting_factors": support.get(offset, []),
         })
 
     emitted_direct_hits = sum(1 for hole in top_holes if hole["audit_kind"] in {"p_thread", "q_thread"})
@@ -236,14 +230,13 @@ def write_index_html(results):
     cards = []
     for result in results:
         rows = []
-        support_preview = support_preview_count(result["emitted_hole_count"])
         for hole in result["top_holes"][:html_preview_count(result["emitted_hole_count"])]:
             rows.append(
                 "<tr>"
                 f"<td>{hole['offset']}</td>"
                 f"<td>{hole['support']}</td>"
                 f"<td>{html_escape(hole['audit_kind'])}</td>"
-                f"<td>{html_escape(', '.join(map(str, hole['supporting_factors'][:support_preview])))}</td>"
+                f"<td>{html_escape(', '.join(map(str, hole['supporting_factors'])))}</td>"
                 "</tr>"
             )
         cards.append(
