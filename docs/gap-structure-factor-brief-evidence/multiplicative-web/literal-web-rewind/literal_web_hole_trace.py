@@ -26,6 +26,7 @@ CASES = [
 
 WINDOW_N_RATIO = (1, 18)
 EMITTED_HOLE_RATIO = (1, 20)
+SUPPORT_PREVIEW_RATIO = (8, 9)
 
 
 def ceil_ratio(value, numerator, denominator):
@@ -38,6 +39,10 @@ def public_radius(n):
 
 def emitted_hole_count(radius):
     return ceil_ratio(radius, *EMITTED_HOLE_RATIO)
+
+
+def support_preview_count(emitted_count):
+    return ceil_ratio(emitted_count, *SUPPORT_PREVIEW_RATIO)
 
 
 def factor_label(factors):
@@ -88,6 +93,8 @@ def analyze_case(case):
     p, q = case["p"], case["q"]
     n = p * q
     radius = public_radius(n)
+    emitted_count = emitted_hole_count(radius)
+    support_preview = support_preview_count(emitted_count)
     rows = rows_around(n, radius)
     by_offset = {row["offset"]: row for row in rows}
     direct_offsets = {
@@ -113,13 +120,13 @@ def analyze_case(case):
             "offset": offset,
             "value": n + offset,
             "support": len(supporters),
-            "supporting_factors": supporters[:16],
-            "support_truncated": len(supporters) > 16,
+            "supporting_factors": supporters[:support_preview],
+            "support_truncated": len(supporters) > support_preview,
             "audit_kind": audit if audit else ("other_composite" if row else "not_composite"),
             "audit_factorization": row["factorization"] if row else None,
         })
 
-    top_holes = holes[:emitted_hole_count(radius)]
+    top_holes = holes[:emitted_count]
     direct_rows = []
     for offset, kind in sorted(direct_offsets.items(), key=lambda item: item[0]):
         row = by_offset[offset]
@@ -129,7 +136,7 @@ def analyze_case(case):
             "value": row["value"],
             "factorization": row["factorization"],
             "support": len(support.get(offset, [])),
-            "supporting_factors": support.get(offset, [])[:16],
+            "supporting_factors": support.get(offset, [])[:support_preview],
         })
 
     emitted_direct_hits = sum(1 for hole in top_holes if hole["audit_kind"] in {"p_thread", "q_thread"})

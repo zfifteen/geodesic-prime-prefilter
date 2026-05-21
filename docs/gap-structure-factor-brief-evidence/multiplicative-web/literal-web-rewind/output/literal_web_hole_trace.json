@@ -31,8 +31,7 @@
         "support": 3,
         "supporting_factors": [
           2,
-          3,
-          5
+          3
         ]
       },
       {
@@ -64,10 +63,9 @@
         "support": 3,
         "supporting_factors": [
           2,
-          3,
-          5
+          3
         ],
-        "support_truncated": false,
+        "support_truncated": true,
         "audit_kind": "p_thread",
         "audit_factorization": "2 * 3 * 5 * 23"
       },
