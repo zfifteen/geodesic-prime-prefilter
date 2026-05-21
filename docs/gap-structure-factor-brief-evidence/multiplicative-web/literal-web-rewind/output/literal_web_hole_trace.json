@@ -20,7 +20,9 @@
         "factorization": "2 * 3 * 5 * 23",
         "support": 3,
         "supporting_factors": [
-          2
+          2,
+          3,
+          5
         ]
       },
       {
@@ -40,9 +42,11 @@
         "value": 690,
         "support": 3,
         "supporting_factors": [
-          2
+          2,
+          3,
+          5
         ],
-        "support_truncated": true,
+        "support_truncated": false,
         "audit_kind": "p_thread",
         "audit_factorization": "2 * 3 * 5 * 23"
       }
@@ -69,7 +73,8 @@
         "factorization": "2 * 29 * 43",
         "support": 2,
         "supporting_factors": [
-          2
+          2,
+          29
         ]
       },
       {
@@ -79,7 +84,9 @@
         "factorization": "2^2 * 3 * 5 * 43",
         "support": 3,
         "supporting_factors": [
-          2
+          2,
+          3,
+          5
         ]
       }
     ],
@@ -89,9 +96,11 @@
         "value": 2580,
         "support": 3,
         "supporting_factors": [
-          2
+          2,
+          3,
+          5
         ],
-        "support_truncated": true,
+        "support_truncated": false,
         "audit_kind": "p_thread",
         "audit_factorization": "2^2 * 3 * 5 * 43"
       }
@@ -118,7 +127,8 @@
         "factorization": "2 * 41 * 61",
         "support": 2,
         "supporting_factors": [
-          2
+          2,
+          41
         ]
       },
       {
@@ -128,7 +138,9 @@
         "factorization": "2^2 * 3 * 7 * 61",
         "support": 3,
         "supporting_factors": [
-          2
+          2,
+          3,
+          7
         ]
       }
     ],
@@ -138,9 +150,11 @@
         "value": 5124,
         "support": 3,
         "supporting_factors": [
-          2
+          2,
+          3,
+          7
         ],
-        "support_truncated": true,
+        "support_truncated": false,
         "audit_kind": "p_thread",
         "audit_factorization": "2^2 * 3 * 7 * 61"
       }
@@ -167,7 +181,8 @@
         "factorization": "2^4 * 7 * 89",
         "support": 2,
         "supporting_factors": [
-          2
+          2,
+          7
         ]
       },
       {
@@ -177,7 +192,9 @@
         "factorization": "2 * 3 * 19 * 89",
         "support": 3,
         "supporting_factors": [
-          2
+          2,
+          3,
+          19
         ]
       }
     ],
@@ -187,9 +204,11 @@
         "value": 10146,
         "support": 3,
         "supporting_factors": [
-          2
+          2,
+          3,
+          19
         ],
-        "support_truncated": true,
+        "support_truncated": false,
         "audit_kind": "p_thread",
         "audit_factorization": "2 * 3 * 19 * 89"
       }

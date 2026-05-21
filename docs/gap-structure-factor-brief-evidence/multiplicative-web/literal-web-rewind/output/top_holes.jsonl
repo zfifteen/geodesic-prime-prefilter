@@ -1,4 +1,4 @@
-{"audit_factorization": "2 * 3 * 5 * 23", "audit_kind": "p_thread", "case": "toy_23x31", "offset": -23, "support": 3, "support_truncated": true, "supporting_factors": [2], "value": 690}
-{"audit_factorization": "2^2 * 3 * 5 * 43", "audit_kind": "p_thread", "case": "toy_43x59", "offset": 43, "support": 3, "support_truncated": true, "supporting_factors": [2], "value": 2580}
-{"audit_factorization": "2^2 * 3 * 7 * 61", "audit_kind": "p_thread", "case": "toy_61x83", "offset": 61, "support": 3, "support_truncated": true, "supporting_factors": [2], "value": 5124}
-{"audit_factorization": "2 * 3 * 19 * 89", "audit_kind": "p_thread", "case": "toy_89x113", "offset": 89, "support": 3, "support_truncated": true, "supporting_factors": [2], "value": 10146}
+{"audit_factorization": "2 * 3 * 5 * 23", "audit_kind": "p_thread", "case": "toy_23x31", "offset": -23, "support": 3, "support_truncated": false, "supporting_factors": [2, 3, 5], "value": 690}
+{"audit_factorization": "2^2 * 3 * 5 * 43", "audit_kind": "p_thread", "case": "toy_43x59", "offset": 43, "support": 3, "support_truncated": false, "supporting_factors": [2, 3, 5], "value": 2580}
+{"audit_factorization": "2^2 * 3 * 7 * 61", "audit_kind": "p_thread", "case": "toy_61x83", "offset": 61, "support": 3, "support_truncated": false, "supporting_factors": [2, 3, 7], "value": 5124}
+{"audit_factorization": "2 * 3 * 19 * 89", "audit_kind": "p_thread", "case": "toy_89x113", "offset": 89, "support": 3, "support_truncated": false, "supporting_factors": [2, 3, 19], "value": 10146}
