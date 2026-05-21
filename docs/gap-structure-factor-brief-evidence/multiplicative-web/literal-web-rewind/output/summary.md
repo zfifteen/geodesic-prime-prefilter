@@ -2,12 +2,12 @@
 
 This resets the experiment to the original multiplicative-web object: factor threads around N, direct p/q rows held out for audit, and public thread holes left behind by those held-out intersections.
 
-| case | radius | heldout rows | direct rows | supported direct rows | direct hits in top 18 holes |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| toy_23x31 | 40 | 64 | 4 | 4 | 4 |
-| toy_43x59 | 141 | 240 | 10 | 10 | 10 |
-| toy_61x83 | 282 | 485 | 14 | 14 | 14 |
-| toy_89x113 | 559 | 980 | 20 | 20 | 18 |
+| case | radius | emitted holes | heldout rows | direct rows | supported direct rows | direct hits in emitted holes |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| toy_23x31 | 40 | 2 | 64 | 4 | 4 | 2 |
+| toy_43x59 | 141 | 8 | 240 | 10 | 10 | 8 |
+| toy_61x83 | 282 | 14 | 485 | 14 | 14 | 14 |
+| toy_89x113 | 559 | 20 | 980 | 20 | 20 | 20 |
 
 ## Per-Case Notes
 
@@ -16,8 +16,6 @@ This resets the experiment to the original multiplicative-web object: factor thr
 Top supported holes:
 - offset -23: support 3, audit `p_thread`
 - offset -31: support 2, audit `q_thread`
-- offset 31: support 2, audit `q_thread`
-- offset 23: support 1, audit `p_thread`
 
 ### toy_43x59
 

@@ -7,9 +7,10 @@
     "radius": 40,
     "row_count_full": 68,
     "row_count_heldout": 64,
+    "emitted_hole_count": 2,
     "direct_row_count": 4,
     "supported_direct_count": 4,
-    "top18_direct_hits": 4,
+    "emitted_direct_hits": 2,
     "direct_rows": [
       {
         "offset": -31,
@@ -81,29 +82,6 @@
         "support_truncated": false,
         "audit_kind": "q_thread",
         "audit_factorization": "2 * 11 * 31"
-      },
-      {
-        "offset": 31,
-        "value": 744,
-        "support": 2,
-        "supporting_factors": [
-          2,
-          3
-        ],
-        "support_truncated": false,
-        "audit_kind": "q_thread",
-        "audit_factorization": "2^3 * 3 * 31"
-      },
-      {
-        "offset": 23,
-        "value": 736,
-        "support": 1,
-        "supporting_factors": [
-          2
-        ],
-        "support_truncated": false,
-        "audit_kind": "p_thread",
-        "audit_factorization": "2^5 * 23"
       }
     ]
   },
@@ -115,9 +93,10 @@
     "radius": 141,
     "row_count_full": 250,
     "row_count_heldout": 240,
+    "emitted_hole_count": 8,
     "direct_row_count": 10,
     "supported_direct_count": 10,
-    "top18_direct_hits": 10,
+    "emitted_direct_hits": 8,
     "direct_rows": [
       {
         "offset": -129,
@@ -328,28 +307,6 @@
         "support_truncated": false,
         "audit_kind": "p_thread",
         "audit_factorization": "2 * 31 * 43"
-      },
-      {
-        "offset": 86,
-        "value": 2623,
-        "support": 1,
-        "supporting_factors": [
-          61
-        ],
-        "support_truncated": false,
-        "audit_kind": "p_thread",
-        "audit_factorization": "43 * 61"
-      },
-      {
-        "offset": -118,
-        "value": 2419,
-        "support": 1,
-        "supporting_factors": [
-          41
-        ],
-        "support_truncated": false,
-        "audit_kind": "q_thread",
-        "audit_factorization": "41 * 59"
       }
     ]
   },
@@ -361,9 +318,10 @@
     "radius": 282,
     "row_count_full": 499,
     "row_count_heldout": 485,
+    "emitted_hole_count": 14,
     "direct_row_count": 14,
     "supported_direct_count": 14,
-    "top18_direct_hits": 14,
+    "emitted_direct_hits": 14,
     "direct_rows": [
       {
         "offset": -249,
@@ -695,9 +653,10 @@
     "radius": 559,
     "row_count_full": 1000,
     "row_count_heldout": 980,
+    "emitted_hole_count": 20,
     "direct_row_count": 20,
     "supported_direct_count": 20,
-    "top18_direct_hits": 18,
+    "emitted_direct_hits": 20,
     "direct_rows": [
       {
         "offset": -534,
@@ -1140,6 +1099,28 @@
         "support_truncated": false,
         "audit_kind": "p_thread",
         "audit_factorization": "7 * 17 * 89"
+      },
+      {
+        "offset": -356,
+        "value": 9701,
+        "support": 1,
+        "supporting_factors": [
+          109
+        ],
+        "support_truncated": false,
+        "audit_kind": "p_thread",
+        "audit_factorization": "89 * 109"
+      },
+      {
+        "offset": -534,
+        "value": 9523,
+        "support": 1,
+        "supporting_factors": [
+          107
+        ],
+        "support_truncated": false,
+        "audit_kind": "p_thread",
+        "audit_factorization": "89 * 107"
       }
     ]
   }

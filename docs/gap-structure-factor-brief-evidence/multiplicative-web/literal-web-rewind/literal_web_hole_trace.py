@@ -25,6 +25,7 @@ CASES = [
 ]
 
 WINDOW_N_RATIO = (1, 18)
+EMITTED_HOLE_RATIO = (1, 20)
 
 
 def ceil_ratio(value, numerator, denominator):
@@ -33,6 +34,10 @@ def ceil_ratio(value, numerator, denominator):
 
 def public_radius(n):
     return ceil_ratio(n, *WINDOW_N_RATIO)
+
+
+def emitted_hole_count(radius):
+    return ceil_ratio(radius, *EMITTED_HOLE_RATIO)
 
 
 def factor_label(factors):
@@ -114,7 +119,7 @@ def analyze_case(case):
             "audit_factorization": row["factorization"] if row else None,
         })
 
-    top_holes = holes[:18]
+    top_holes = holes[:emitted_hole_count(radius)]
     direct_rows = []
     for offset, kind in sorted(direct_offsets.items(), key=lambda item: item[0]):
         row = by_offset[offset]
@@ -127,7 +132,7 @@ def analyze_case(case):
             "supporting_factors": support.get(offset, [])[:16],
         })
 
-    top_direct = sum(1 for hole in top_holes if hole["audit_kind"] in {"p_thread", "q_thread"})
+    emitted_direct_hits = sum(1 for hole in top_holes if hole["audit_kind"] in {"p_thread", "q_thread"})
     supported_direct = sum(1 for row in direct_rows if row["support"] > 0)
     return {
         "name": case["name"],
@@ -137,9 +142,10 @@ def analyze_case(case):
         "radius": radius,
         "row_count_full": len(rows),
         "row_count_heldout": len(heldout),
+        "emitted_hole_count": len(top_holes),
         "direct_row_count": len(direct_rows),
         "supported_direct_count": supported_direct,
-        "top18_direct_hits": top_direct,
+        "emitted_direct_hits": emitted_direct_hits,
         "direct_rows": direct_rows,
         "top_holes": top_holes,
     }
@@ -155,13 +161,14 @@ def write_summary_md(results):
         "",
         "This resets the experiment to the original multiplicative-web object: factor threads around N, direct p/q rows held out for audit, and public thread holes left behind by those held-out intersections.",
         "",
-        "| case | radius | heldout rows | direct rows | supported direct rows | direct hits in top 18 holes |",
-        "| --- | ---: | ---: | ---: | ---: | ---: |",
+        "| case | radius | emitted holes | heldout rows | direct rows | supported direct rows | direct hits in emitted holes |",
+        "| --- | ---: | ---: | ---: | ---: | ---: | ---: |",
     ]
     for result in results:
         lines.append(
-            f"| {result['name']} | {result['radius']} | {result['row_count_heldout']} | "
-            f"{result['direct_row_count']} | {result['supported_direct_count']} | {result['top18_direct_hits']} |"
+            f"| {result['name']} | {result['radius']} | {result['emitted_hole_count']} | "
+            f"{result['row_count_heldout']} | {result['direct_row_count']} | "
+            f"{result['supported_direct_count']} | {result['emitted_direct_hits']} |"
         )
     lines += ["", "## Per-Case Notes", ""]
     for result in results:
