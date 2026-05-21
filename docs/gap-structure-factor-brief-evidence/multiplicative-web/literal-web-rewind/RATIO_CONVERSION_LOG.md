@@ -73,6 +73,16 @@ HTML report shows every emitted hole.
 
 Rationale: the emitted hole set is already the strongest public support shell. Human-readable reports should display the complete public nomination set instead of applying a second arbitrary preview filter.
 
+## Marker Size
+
+Formula:
+
+```text
+marker_radius = axis_height / 8
+```
+
+Rationale: marker size is display geometry, not inference. The report currently shows only the max-support shell, so every displayed hole has support ratio `1`. The marker size therefore derives from the SVG axis height instead of hard-coded support pixels.
+
 ## Current Toy Result
 
 Current runner output:
