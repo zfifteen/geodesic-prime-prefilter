@@ -65,4 +65,23 @@ Parameter rationale: `8 / 9` ties support-detail visibility to the emitted publi
 
 Baseline result after change: passed. The public hole ranking and exact factor-distance rank-1 recovery were unchanged. The smallest case now truncates one support preview list while retaining the true support count.
 
+Commit: `223a79e5`.
+
+## Accepted: Summary Preview Counts
+
+Original constants: Markdown preview `8`; HTML preview `10`.
+
+Role: limits the number of emitted public holes shown in human-readable reports.
+
+Ratio formulas:
+
+```text
+md_preview_count = ceil((4 / 9) * emitted_hole_count)
+html_preview_count = ceil((5 / 9) * emitted_hole_count)
+```
+
+Parameter rationale: both preview sizes now derive from the emitted public list. The Markdown report remains more compact, while the HTML report shows a slightly larger slice for visual inspection. Neither ratio changes the public ranking or emitted candidate records.
+
+Baseline result after change: passed. All four toy cases still emitted an exact factor-distance offset at rank 1.
+
 Commit: recorded in final report after commit creation.

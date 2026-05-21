@@ -15,7 +15,6 @@ This resets the experiment to the original multiplicative-web object: factor thr
 
 Top supported holes:
 - offset -23: support 3, audit `p_thread`
-- offset -31: support 2, audit `q_thread`
 
 ### toy_43x59
 
@@ -24,10 +23,6 @@ Top supported holes:
 - offset -59: support 3, audit `q_thread`
 - offset -43: support 2, audit `p_thread`
 - offset 59: support 2, audit `q_thread`
-- offset -86: support 2, audit `p_thread`
-- offset 118: support 2, audit `q_thread`
-- offset -129: support 2, audit `p_thread`
-- offset 129: support 2, audit `p_thread`
 
 ### toy_61x83
 
@@ -39,7 +34,6 @@ Top supported holes:
 - offset 122: support 2, audit `p_thread`
 - offset 166: support 2, audit `q_thread`
 - offset -183: support 2, audit `p_thread`
-- offset 183: support 2, audit `p_thread`
 
 ### toy_89x113
 
@@ -52,4 +46,5 @@ Top supported holes:
 - offset -178: support 2, audit `p_thread`
 - offset 178: support 2, audit `p_thread`
 - offset -226: support 2, audit `q_thread`
+- offset 226: support 2, audit `q_thread`
 
