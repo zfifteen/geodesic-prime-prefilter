@@ -232,13 +232,14 @@ def write_index_html(results):
     cards = []
     for result in results:
         rows = []
+        support_preview = support_preview_count(result["emitted_hole_count"])
         for hole in result["top_holes"][:html_preview_count(result["emitted_hole_count"])]:
             rows.append(
                 "<tr>"
                 f"<td>{hole['offset']}</td>"
                 f"<td>{hole['support']}</td>"
                 f"<td>{html_escape(hole['audit_kind'])}</td>"
-                f"<td>{html_escape(', '.join(map(str, hole['supporting_factors'][:8])))}</td>"
+                f"<td>{html_escape(', '.join(map(str, hole['supporting_factors'][:support_preview])))}</td>"
                 "</tr>"
             )
         cards.append(
