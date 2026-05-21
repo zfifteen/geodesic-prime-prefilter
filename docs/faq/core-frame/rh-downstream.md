@@ -54,7 +54,7 @@ zeta-side description of the source, not the origin of the source.
 ## Status
 
 - proved theorem: exact local prime placement and ordered gap interior theorem.
-- exact zeta compression: the DNI bridge recovers `-\zeta'(s)/\zeta(s)`.
+- exact zeta compression: the DNI bridge recovers $-\zeta'(s)/\zeta(s)$.
 - explanatory consequence: RH language is downstream of the integer source.
 
 ## Related Docs

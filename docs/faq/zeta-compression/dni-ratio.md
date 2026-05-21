@@ -3,7 +3,7 @@
 ## Short Answer
 
 The DNI bridge builds a ratio from the divisor-count series and its derivative.
-That ratio is exactly `-\zeta'(s)/\zeta(s)`, the classical detector of prime
+That ratio is exactly $-\zeta'(s)/\zeta(s)$, the classical detector of prime
 powers.
 
 ## Source Order
@@ -20,7 +20,7 @@ compressed analytic form of divisor-count arithmetic.
 ## Full Answer
 
 Start with the divisor-count series. On its half-plane of convergence
-`\mathrm{Re}(s)>1`, it satisfies:
+$\mathrm{Re}(s)>1$, it satisfies:
 
 $$
 D(s)=\sum_{n\ge 1}\frac{\tau(n)}{n^s}=\zeta(s)^2.
@@ -38,7 +38,7 @@ $$
 R(s)=\frac{e^2}{2}\frac{K(s)}{D(s)}.
 $$
 
-On the same half-plane, `D(s)=\zeta(s)^2`, so this gives:
+On the same half-plane, $D(s)=\zeta(s)^2$, so this gives:
 
 $$
 R(s)=-\frac12\frac{D'(s)}{D(s)}
@@ -50,7 +50,7 @@ that this detector is recovered from the divisor-count source.
 
 ## Status
 
-- exact zeta compression: the DNI ratio recovers `-\zeta'(s)/\zeta(s)`.
+- exact zeta compression: the DNI ratio recovers $-\zeta'(s)/\zeta(s)$.
 - explanatory consequence: the classical detector is downstream of the
   divisor-count source.
 
