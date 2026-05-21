@@ -20,7 +20,7 @@ of prime placement.
 2. [Why is RH downstream?](core-frame/rh-downstream.md)
 3. [What does zeta compression record?](core-frame/zeta-compression.md)
 4. [Why is pole placement not the first object?](category-errors/pole-placement-is-not-first.md)
-5. [What does PROOF.md establish?](reviewer-guidance/status-ledger.md)
+5. [How should claim status be read?](reviewer-guidance/status-ledger.md)
 
 ## Core Frame
 
@@ -30,7 +30,7 @@ of prime placement.
 
 ## Category Errors
 
-- [Is prime gap structure only another wording of RH?](category-errors/not-a-%72eformulation.md)
+- [Is prime gap structure only another wording of RH?](category-errors/not-a-reformulation.md)
 - [Is prime gap structure a zeta-side method?](category-errors/not-a-zeta-method.md)
 - [Why is pole placement not the first object?](category-errors/pole-placement-is-not-first.md)
 - [Does analytic opacity weaken the arithmetic source?](category-errors/analytic-opacity.md)
@@ -39,7 +39,7 @@ of prime placement.
 
 ## Exact Arithmetic
 
-- [Is prime gap structure exact arithmetic or trend language?](exact-arithmetic/deterministic-not-%73tatistical.md)
+- [Is prime gap structure exact arithmetic or trend language?](exact-arithmetic/deterministic-not-statistical.md)
 - [What role do divisor counts play?](exact-arithmetic/divisor-counts.md)
 - [How does the next-prime placement rule work?](exact-arithmetic/next-prime-placement.md)
 - [Why do ordered gap interiors matter?](exact-arithmetic/ordered-gap-interiors.md)
