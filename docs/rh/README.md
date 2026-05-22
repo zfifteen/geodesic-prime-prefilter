@@ -24,6 +24,10 @@ objection-handling surface. The `research/12-rh-bridge` tree remains the
 workbench where bridge details, downstream translation notes, and draft
 technical artifacts live.
 
+For Zero-Excess DNI Phase 1, zero-excess is an exact coordinate
+reformulation. The zero-excess floor is integer-side; the critical line is
+zeta-side.
+
 ## Table Of Contents
 
 | Page | Role | Status |
@@ -51,8 +55,9 @@ technical artifacts live.
 | Source Layer | Object | Status Label |
 | --- | --- | --- |
 | Divisor counts | Each integer carries `tau(n)`, with primes exactly at `tau(n)=2`. | arithmetic source |
+| Zero-Excess DNI | The zero-excess floor is the integer-side coordinate $E(n)=0$ under the $n>1$ prime guard. | exact coordinate reformulation |
 | PGS local theorems | `PROOF.md` controls the next-prime theorem and the interior maximizer theorem. | proved theorem |
-| DNI-to-zeta compression | The native DNI series gives `(e^2/2)K(s)/D(s) = -zeta'(s)/zeta(s)`. | exact zeta compression |
+| DNI-to-zeta compression | The native DNI series gives `(e^2/2)K(s)/D(s) = -zeta'(s)/zeta(s)`; in zero-excess notation the bridge load is $H(n)=\log n+E(n)$, not $E(n)$ alone. | exact zeta compression |
 | Source-side residual closure | The residual test closes failed identities, independent gap-length freedom, chamber log-weight remainders, and divisor-count remainders. | source-side residual closure |
 | Pole placement/RH sentence | Zeros of `zeta` become poles of the continued DNI ratio, and nontrivial off-critical poles have no surviving source-side carrier. | source-side residual closure |
 | Explicit-formula bridge | The `R(s) -> Lambda(n) -> psi(x)` path restates the result in classical zero-term and error-term language. | downstream translation bridge |

@@ -75,19 +75,30 @@ For the gap from 23 to 29 the selected composite is 25 and the endpoint is 29. F
 
 This is the larger reversal the repository explores. A prime gap is no longer just a size or a distance. It has a clear internal shape, a selected composite that marks the lowest point inside that shape, and a right endpoint that is fixed by the divisor count returning to 2. The middle is not meaningless; it is full of information. The usual story treats the numbers between primes as an obstacle. Here they are the evidence.
 
+The preferred coordinate for that same reading is now zero excess. For an integer `n > 1`, the Divisor Normalization Identity writes
+
+$$E(n)=\left(\frac{d(n)}{2}-1\right)\ln n$$
+
+Primes greater than `1` are exactly the zero-excess floor, `E(n)=0`. Composites sit above that floor. The older `Z` score remains the exact dual coordinate:
+
+$$Z(n)=e^{-E(n)}$$
+
+So the statement "primes greater than `1` sit at `Z = 1.0`" and the statement "primes greater than `1` have zero excess" are the same normalization read in opposite coordinates.
+
 ## PGS-To-RH Reading Path
 
 The PGS-to-RH argument starts from the same observable object: divisor counts
 inside prime gaps and endpoint returns to `tau(n)=2`. Read
-[docs/rh](docs/rh/README.md) for the downstream RH chain:
+[docs/rh](docs/rh/README.md) for the downstream RH chain, where the bridge
+coordinate is `H(n)=log n+E(n)`:
 
 ```text
 divisor counts -> PGS local theorems -> DNI-to-zeta compression
 -> source-side residual closure -> pole placement/RH sentence
 ```
 
-`PROOF.md` proves the local source theorems. `docs/rh` carries the RH reading
-path built on that source layer.
+`PROOF.md` proves the local source theorems. It does not itself prove RH.
+`docs/rh` carries the RH reading path built on that source layer.
 
 ## A Different Way To Generate Primes
 
@@ -105,7 +116,7 @@ The same principle extends to a dedicated [Mersenne-prime generator](research/09
 
 ## Where This Leads
 
-Once you begin seeing prime gaps through this lens, many natural follow-up questions arise. You can trace what that first special composite inside each nonempty gap actually means and why it always appears where it does. You can examine the [normalized score](DIVISOR_NORMALIZATION_IDENTITY.md) that places every prime at exactly 1.0 and lets you compare all composites below that value in a consistent way. You can watch how the same kind of structure repeats across thousands or millions of gaps and begin to [model its behavior](PRIME_GAP_GENERATIVE_MODEL.md). You can follow the [exact recursive process of walking from prime to prime](RECURSIVE_PRIME_WALK.md) using only the information carried inside each gap.
+Once you begin seeing prime gaps through this lens, many natural follow-up questions arise. You can trace what that first special composite inside each nonempty gap actually means and why it always appears where it does. You can examine the [zero-excess normalization](DIVISOR_NORMALIZATION_IDENTITY.md) that places every prime greater than `1` at exactly `E = 0`, keeps composites at positive excess, and preserves `Z(n)=e^{-E(n)}` as the dual coordinate. You can watch how the same kind of structure repeats across thousands or millions of gaps and begin to [model its behavior](PRIME_GAP_GENERATIVE_MODEL.md). You can follow the [exact recursive process of walking from prime to prime](RECURSIVE_PRIME_WALK.md) using only the information carried inside each gap.
 
 Every one of these paths grows from the same simple shift in perspective: stop treating the interior as empty space and start counting what is really there. The numbers themselves do the rest of the work.
 
@@ -118,7 +129,7 @@ The rest of the repository develops these ideas in greater depth, including the 
 - [PROOF.md](PROOF.md) gives the formal statement and proof of the direct next-prime theorem and the prime-gap maximizer theorem.
 - [docs/rh](docs/rh/README.md) gives the PGS-to-RH reading path and status ledger.
 - [LEFTMOST_MINIMUM_DIVISOR_RULE.md](LEFTMOST_MINIMUM_DIVISOR_RULE.md) explores the rule that identifies the special composite inside each gap.
-- [DIVISOR_NORMALIZATION_IDENTITY.md](DIVISOR_NORMALIZATION_IDENTITY.md) explains the normalization that places primes at Z = 1.0.
+- [DIVISOR_NORMALIZATION_IDENTITY.md](DIVISOR_NORMALIZATION_IDENTITY.md) explains the zero-excess normalization and its dual `Z(n)=e^{-E(n)}` coordinate.
 - [PRIME_GAP_GENERATOR.md](PRIME_GAP_GENERATOR.md) describes how the generator reads the structure.
 - [PRIME_GAP_GENERATIVE_MODEL.md](PRIME_GAP_GENERATIVE_MODEL.md) and [RECURSIVE_PRIME_WALK.md](RECURSIVE_PRIME_WALK.md) examine the broader model and recursive behavior.
 - [RESULTS.md](RESULTS.md) presents the measured results and surfaces.

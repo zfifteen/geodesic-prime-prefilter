@@ -53,6 +53,7 @@ Each FAQ page uses:
 Use these labels exactly when a page needs a status claim:
 
 - proved theorem;
+- exact coordinate reformulation;
 - exact zeta compression;
 - measured implementation evidence;
 - unresolved bounded-compression obligation;
@@ -64,6 +65,15 @@ Use these labels exactly when a page needs a status claim:
 Do not treat RH language as the first-level object.
 
 Do not turn prime gap structure into a zeta-side technique.
+
+Do not identify the zero-excess floor with the critical line. The
+zero-excess floor is integer-side; the critical line is zeta-side.
+
+Do not describe DNI-to-zeta compression as using $E(n)$ alone. The bridge load
+is $H(n)=\log n+E(n)$.
+
+Do not claim `PROOF.md` itself directly proves RH. `PROOF.md` controls local
+PGS theorem status.
 
 Do not make the Prime Number Theorem or zero geometry an input to local prime
 placement.

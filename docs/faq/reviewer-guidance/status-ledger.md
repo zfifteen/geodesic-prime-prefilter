@@ -3,9 +3,9 @@
 ## Short Answer
 
 Every claim should be assigned to its exact status label: proved theorem, exact
-zeta compression, source-side residual closure, measured implementation
-evidence, unresolved bounded-compression obligation, invalidated route,
-downstream translation bridge, or explanatory consequence.
+coordinate reformulation, exact zeta compression, source-side residual closure,
+measured implementation evidence, unresolved bounded-compression obligation,
+invalidated route, downstream translation bridge, or explanatory consequence.
 
 ## Source Order
 
@@ -24,8 +24,11 @@ proved arithmetic or overstates an implementation measurement.
 Use these labels:
 
 - proved theorem: a universal result proved under stated hypotheses.
+- exact coordinate reformulation: a same-source coordinate change, including
+  Zero-Excess DNI, that does not add a new theorem.
 - exact zeta compression: an identity or bridge that carries integer structure
-  into analytic language.
+  into analytic language. In Zero-Excess DNI notation, the bridge load is
+  $H(n)=\log n+E(n)$, not $E(n)$ alone.
 - source-side residual closure: the off-critical-pole residual test after local
   PGS closure and exact DNI compression.
 - measured implementation evidence: a finite implementation or benchmark
@@ -45,6 +48,9 @@ residual test controls off-critical-pole residual closure in the RH bundle.
 Benchmarks and audits certify implementation surfaces. They do not define the
 source laws.
 
+The zero-excess floor is integer-side. The critical line is zeta-side. Treat
+that relation as an analogy after compression, not an identity of objects.
+
 PGS is not an analytical method. It does not require a classical zero-estimate
 or explicit-formula error-term proof to close the source-side RH sentence.
 Those explicit-formula objects remain downstream translation/proof-detail
@@ -53,6 +59,8 @@ bridges.
 ## Status
 
 - proved theorem: controlled by `PROOF.md`.
+- exact coordinate reformulation: controlled by the zero-excess notation
+  contract and root-doc migration scope.
 - exact zeta compression: controlled by the DNI-to-zeta bridge.
 - source-side residual closure: controlled by the RH off-critical-pole
   residual test.
