@@ -3,12 +3,13 @@
 The explicit formula belongs downstream of the source order:
 
 ```text
-divisor counts -> PGS local theorems -> DNI-to-zeta compression -> pole placement -> RH sentence
+divisor counts -> PGS local theorems -> DNI-to-zeta compression
+-> source-side residual closure -> pole placement/RH sentence
 ```
 
-This page records the analytic bridge surface. It does not prove a new RH
-theorem. Unless a full proof is written here, the explicit-formula material is
-a proof target and translation layer.
+This page records the downstream analytic bridge surface. It translates the
+continued DNI ratio into `Lambda`, `psi`, zero-term, and error-term language.
+It is not a prerequisite for the source-side PGS-to-RH proof path.
 
 ## Source To Analytic Chain
 
@@ -97,22 +98,29 @@ The bridge claim is:
   `Delta_Li(p,q)=1-int_p^q dt/log(t)` are downstream analytic shadows of fixed
   prime-gap endpoint structure.
 
-This is a downstream analytic bridge. It is not, by itself, a proof that the
-nontrivial zero terms obey the RH critical-line constraint.
+This is a downstream analytic bridge. The source-side closure belongs to the
+local PGS theorems, exact DNI compression, and the off-critical residual test,
+not to a classical zero-estimate or prime-counting error-term argument.
 
-## Proof Target / Needs Proof
+## Translation Status
 
-To promote this page from bridge to theorem, a proof must show how the PGS
-source structure and exact DNI compression force the nontrivial zero-term
-geometry in the explicit formula, equivalently:
+The explicit formula restates the continued ratio in classical counting
+language:
 
-$$
-\text{every nontrivial pole of } R(s) \text{ lies on } \mathrm{Re}(s)=1/2.
-$$
+```text
+R(s) -> Lambda(n) -> psi(x) -> zero terms -> error-term language
+```
 
-Until that proof is written, the correct status is:
+The correct status split is:
 
 - exact zeta compression for the identity defining `R(s)`;
 - downstream analytic bridge for
   `R(s) -> Lambda(n) -> psi(x) -> zero terms`;
-- proof target for the critical-line placement of the nontrivial zero terms.
+- source-side residual closure for the off-critical-pole exclusion recorded in
+  `off-critical-pole-exclusion.md`;
+- translation/proof-detail bridge for reviewers who want the RH sentence
+  expressed through `psi`, `Lambda`, zero-term, or error-term estimates.
+
+PGS is not an analytical method. It does not require an explicit-formula
+error-term proof to close the source-side pole-placement sentence, and
+`PROOF.md` controls only the local PGS theorems.

@@ -3,7 +3,8 @@
 The source order is:
 
 ```text
-divisor counts -> PGS local theorems -> DNI-to-zeta compression -> pole placement -> RH sentence
+divisor counts -> PGS local theorems -> DNI-to-zeta compression
+-> source-side residual closure -> pole placement/RH sentence
 ```
 
 The critical strip and critical line are downstream coordinate language for the
@@ -49,8 +50,8 @@ R(s)=-\frac{\zeta'(s)}{\zeta(s)}.
 $$
 
 Thus the critical strip is the downstream coordinate band where nontrivial
-poles of the continued DNI ratio are located. The critical line is the proposed
-placement line for all of those nontrivial poles.
+poles of the continued DNI ratio are located. The critical line is the
+placement line after source-side residual closure.
 
 ## Exact Translation
 
@@ -79,27 +80,31 @@ $$
 \mathrm{Re}(s)=\frac{1}{2}.
 $$
 
-This is a translation of the classical RH statement into the continued
-DNI-ratio object. It is not a probability statement or a numerical
-restatement.
+This is the classical RH statement read through the continued DNI-ratio object
+after source-side residual closure. It is not a probability statement or a
+numerical restatement.
 
-## Proof Target
+## Source-Side Closure
 
-The translation itself does not place the poles. It identifies the exact object
-whose nontrivial pole placement is RH.
+The translation identifies the exact object whose nontrivial pole placement is
+RH. Placement is closed by the source-side residual test, not by a classical
+zero-estimate or error-term argument.
 
-A proof must establish, from the source-side divisor-count and PGS structure
-after DNI-to-zeta compression, that the continued ratio has no nontrivial poles
-off
+A nontrivial pole off
 
 $$
 \mathrm{Re}(s)=\frac{1}{2}.
 $$
 
+would have to be carried by a surviving source residual in `D,K,R`, the
+endpoint chain, the chamber log-weight source, or the divisor-count field. The
+residual test closes those carriers. A conclusion-only assertion that the whole
+sequence might carry an off-critical pole does not name a source object.
+
 The local PGS theorems are source-side arithmetic theorems about divisor
-counts, prime returns, and ordered gap interiors. The zeta-compressed statement
-is the downstream RH sentence. The proof target is the bridge from that local
-source structure to global nontrivial pole placement.
+counts, prime returns, and ordered gap interiors. `PROOF.md` controls those
+local theorem claims. The zeta-compressed statement is the downstream RH
+sentence after source-side residual closure.
 
 ## Geometry Ledger
 
@@ -109,6 +114,7 @@ source structure to global nontrivial pole placement.
 | local PGS theorems | prime returns and gap-interior order | upstream arithmetic structure |
 | $D(s)=\zeta(s)^2$ | divisor-count compression | denominator of the DNI ratio |
 | $R(s)=-\zeta'(s)/\zeta(s)$ | continued normalized ratio | pole-carrying analytic object |
+| source-side residual closure | exclusion of leftover carriers in the exact quotient | off-critical-pole exclusion |
 | critical strip | downstream zeta coordinate band | nontrivial pole band |
 | critical line | downstream zeta coordinate line | RH pole-placement line |
 
@@ -121,5 +127,6 @@ compressed into the continued DNI ratio.
 - [RH bundle README](README.md)
 - [DNI-to-zeta compression](dni-to-zeta-compression.md)
 - [Pole placement](pole-placement.md)
+- [Off-critical pole exclusion](off-critical-pole-exclusion.md)
 - [Status ledger](status-ledger.md)
 - [Full DNI-RH bridge note](../../research/12-rh-bridge/docs/dni_rh_bridge.md)
