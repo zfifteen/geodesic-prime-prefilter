@@ -1,21 +1,22 @@
 # DNI-To-Zeta Compression
 
-[README](README.md) | [Pole placement](pole-placement.md) | [Long bridge note](../../research/12-rh-bridge/docs/dni_rh_bridge.md)
+[README](README.md) | [Pole placement](pole-placement.md) | [Off-critical pole exclusion](off-critical-pole-exclusion.md) | [Long bridge note](../../research/12-rh-bridge/docs/dni_rh_bridge.md)
 
 The bridge starts with divisor counts on integers, passes through the local
 PGS theorems, compresses the same coefficient field into zeta language, and
-ends with the Riemann Hypothesis as a pole-placement sentence for the
-continued DNI ratio.
+then applies source-side residual closure before reading the Riemann
+Hypothesis as a pole-placement sentence for the continued DNI ratio.
 
 Required source order:
 
 ```text
-divisor counts -> PGS local theorems -> DNI-to-zeta compression -> pole placement -> RH sentence
+divisor counts -> PGS local theorems -> DNI-to-zeta compression
+-> source-side residual closure -> pole placement/RH sentence
 ```
 
 ## 1. Divisor Counts
 
-Status: exact zeta compression.
+Status: arithmetic source and exact zeta compression.
 
 Let $\tau(n)$ be the number of positive divisors of $n$. The square of the
 zeta function counts ordered factor pairs:
@@ -49,7 +50,7 @@ $$
 
 ## 2. PGS Local Theorems
 
-Status: explanatory consequence.
+Status: proved theorem, controlled by [PROOF.md](../../PROOF.md).
 
 The local PGS layer uses the same divisor-count field before any zeta
 compression is introduced.
@@ -172,7 +173,7 @@ derivative record of the pole and zeros of $\zeta(s)$:
 
 ## 5. RH Sentence
 
-Status: explanatory consequence.
+Status: source-side residual closure read in pole-placement language.
 
 Since
 
@@ -196,4 +197,6 @@ $$
 $$
 
 The exact identities are the zeta-compression layer. The pole-placement
-sentence is the RH interpretation of that exact compressed ratio.
+sentence is the RH interpretation of that exact compressed ratio after the
+source-side residual test closes failed identities, independent gap-length
+freedom, chamber log-weight remainders, and extra divisor-count fields.

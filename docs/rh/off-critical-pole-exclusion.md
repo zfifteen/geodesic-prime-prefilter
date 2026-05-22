@@ -27,7 +27,8 @@ So the source order is fixed before any analytic vocabulary enters:
 
 ```text
 divisor-count source -> tau(n)=2 prime returns -> endpoint closure
--> chamber log-weight order -> DNI compression -> pole placement
+-> chamber log-weight order -> DNI compression -> source-side residual test
+-> pole placement
 ```
 
 ## The Objection

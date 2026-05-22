@@ -12,7 +12,8 @@ The RH-facing language enters only after this integer source is compressed into
 Dirichlet-series form.
 
 ```text
-divisor counts -> PGS local theorems -> DNI-to-zeta compression -> pole placement -> RH sentence
+divisor counts -> PGS local theorems -> DNI-to-zeta compression
+-> source-side residual closure -> pole placement/RH sentence
 ```
 
 ## Source-To-Pole Ladder
@@ -21,7 +22,7 @@ The ladder is:
 
 $$
 \tau(n) \to D(s) \to K(s) \to R(s)=-\frac{\zeta'(s)}{\zeta(s)}
-\to \text{pole placement}.
+\to \text{source-side residual closure} \to \text{pole placement}.
 $$
 
 Start with the divisor-count Dirichlet series on $\mathrm{Re}(s)>1$:
@@ -66,7 +67,8 @@ $$
 
 So pole placement is not an extra zeta-side object added to PGS. It is the
 singularity geometry of the continued DNI ratio after the divisor-count source
-has been compressed.
+has been compressed and the source-side residual test has closed off-critical
+carriers.
 
 ## Singularity Ledger
 
@@ -136,13 +138,16 @@ $$
 $$
 
 This sentence is downstream coordinate language. The source order remains:
-divisor counts, local PGS theorems, DNI-to-zeta compression, pole placement,
-then the RH sentence.
+divisor counts, local PGS theorems, DNI-to-zeta compression, source-side
+residual closure, then pole-placement/RH language. PGS is not an analytical
+method and does not require a classical zero-estimate or error-term proof to
+close this sentence.
 
 ## Links
 
 - [RH bundle README](README.md)
 - [DNI-to-zeta compression](dni-to-zeta-compression.md)
+- [Off-critical pole exclusion](off-critical-pole-exclusion.md)
 - [Critical line and zero geometry](critical-line-and-zero-geometry.md)
 - [Status ledger](status-ledger.md)
 - [Full DNI-RH bridge note](../../research/12-rh-bridge/docs/dni_rh_bridge.md)

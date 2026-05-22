@@ -3,11 +3,12 @@
 The status order is fixed:
 
 ```text
-divisor counts -> PGS local theorems -> DNI-to-zeta compression -> pole placement -> RH sentence
+divisor counts -> PGS local theorems -> DNI-to-zeta compression
+-> source-side residual closure -> pole placement/RH sentence
 ```
 
 Read every RH-facing claim through that order. The integer object comes first.
-The analytic sentence comes after compression.
+The analytic sentence comes after compression and source-side residual closure.
 
 ## Sources
 
@@ -58,8 +59,24 @@ R(s)=\frac{e^2}{2}\frac{K(s)}{D(s)}
 $$
 
 This is an exact zeta compression of the divisor-count source. It is not a
-replacement proof of the local PGS theorems, and it is not by itself a proof
-that all nontrivial poles lie on the critical line.
+replacement proof of the local PGS theorems, and `PROOF.md` itself does not
+prove RH.
+
+## Source-Side Residual Closure
+
+Status: source-side residual closure, supplied by
+[Off-Critical Pole Exclusion](off-critical-pole-exclusion.md).
+
+After local PGS source closure and exact DNI compression, an off-critical
+nontrivial pole of `R(s)` would need a surviving source-side residual: a failed
+identity in `D,K,R`, independent endpoint or gap-length freedom, a chamber
+log-weight remainder, an additional divisor-count field, or another named
+source object. The residual-test page closes those source-side carriers in the
+active RH bundle.
+
+That closure is source-first. PGS is not an analytical method and does not
+require a classical zero-estimate, prime-counting error-term proof, or
+explicit-formula estimate to close the PGS-to-RH sentence.
 
 ## Explanatory Consequence
 
@@ -68,40 +85,43 @@ Status: explanatory consequence.
 The source order changes how RH-facing language is read:
 
 ```text
-divisor counts -> PGS local theorems -> DNI-to-zeta compression -> pole placement -> RH sentence
+divisor counts -> PGS local theorems -> DNI-to-zeta compression
+-> source-side residual closure -> pole placement/RH sentence
 ```
 
-The pole-placement language is downstream. The RH sentence is the classical
-analytic wording of what the continued ratio would say about nontrivial poles:
+The pole-placement language is downstream of the source and compression
+layers. The RH sentence is the classical analytic wording of the closed
+source-side residual state:
 
 $$
 \text{every nontrivial pole of } R(s) \text{ lies on } \mathrm{Re}(s)=1/2.
 $$
 
-That sentence belongs after the exact compression layer. It does not define the
-integer source.
+That sentence belongs after the exact compression and source-side residual
+closure layers. It does not define the integer source.
 
-## Proof Target / Needs Proof
+## Downstream Explicit-Formula Bridge
 
-Status: proof target unless supplied by a complete proof in the active doc.
+Status: downstream analytic translation and proof-detail bridge.
 
-The remaining global analytic target is to prove, from the PGS source and the
-exact DNI-to-zeta compression, that the continued ratio
+The explicit-formula bridge is not the PGS-to-RH proof path. It is the classical
+translation of the already compressed ratio
 
 $$
 R(s)=\frac{e^2}{2}\frac{K(s)}{D(s)}
 $$
 
-has all nontrivial poles on
+into
 
-$$
-\mathrm{Re}(s)=1/2.
-$$
+```text
+R(s) -> Lambda(n) -> psi(x) -> explicit-formula error-term language
+```
 
-Equivalently, after identifying `R(s)` with `-zeta'(s)/zeta(s)`, the proof
-target is the RH pole-placement statement for the nontrivial zeros of
-`zeta(s)`.
+That bridge remains useful for reviewers who want the result restated in
+`psi`, `Lambda`, zero-term, or error-term language. It is downstream analytic
+translation, not a prerequisite for the source-side PGS-to-RH closure.
 
-Do not collapse this target into the proved local theorems. Do not downgrade
-the proved local theorems because this global pole-placement proof target is
-separate.
+Do not collapse source-side residual closure into the proved local theorems.
+Do not claim `PROOF.md` itself proves RH. Do not downgrade the proved local
+theorems because explicit-formula translation remains a separate downstream
+bridge.

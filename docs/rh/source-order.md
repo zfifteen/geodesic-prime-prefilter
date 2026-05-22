@@ -6,7 +6,8 @@ the integer records that exist before any zeta or RH vocabulary is introduced.
 The required order is:
 
 ```text
-divisor counts -> PGS local theorems -> DNI-to-zeta compression -> pole placement -> RH sentence
+divisor counts -> PGS local theorems -> DNI-to-zeta compression
+-> source-side residual closure -> pole placement/RH sentence
 ```
 
 ## Arithmetic Objects First
@@ -90,6 +91,26 @@ $$
 
 This layer has status: exact zeta compression.
 
+## Source-Side Residual Closure
+
+After exact compression, the review question remains source-side. A nontrivial
+off-critical pole of the continued ratio would need a surviving source
+residual in the exact quotient:
+
+- a failed identity in `D,K,R`;
+- independent endpoint or gap-length freedom;
+- a chamber log-weight remainder;
+- an additional divisor-count field;
+- or a conclusion-only assertion that names no carrier.
+
+[Off-critical pole exclusion](off-critical-pole-exclusion.md) records the
+residual test. The first four categories are closed by the source order and the
+exact DNI quotient. The fifth is not a mathematical objection because it
+restates the negation of the RH pole-placement sentence without identifying a
+source object that can carry it.
+
+This layer has status: source-side residual closure.
+
 ## Pole Placement Downstream
 
 After continuation, the normalized DNI ratio is the classical zeta logarithmic
@@ -104,13 +125,14 @@ The poles of `R(s)` record the zeros and pole of `zeta(s)`. The prime-number
 theorem pole at `s=1`, the trivial zero poles, and the nontrivial zero poles
 are analytic features of the compressed object.
 
-That makes pole placement a downstream reading of the arithmetic source. The
-RH sentence is the corresponding global closure target:
+That makes pole placement a downstream reading of the arithmetic source and
+source-side residual closure. The RH sentence is the corresponding analytic
+coordinate sentence:
 
 all nontrivial poles of the continued DNI ratio lie on the critical line
 `Re(s)=1/2`.
 
-Status: proof target / needs proof.
+Status: source-side residual closure read in pole-placement language.
 
 ## Reading Rule
 
@@ -121,10 +143,12 @@ For this bundle, RH language enters after the ordered integer field:
 3. prime-gap interiors;
 4. the leftmost minimum-divisor selected integer;
 5. the exact DNI-to-zeta ratio;
-6. pole-placement language;
-7. the RH sentence.
+6. the source-side residual test;
+7. pole-placement/RH language.
 
 This keeps the arithmetic source, local theorem status, exact compression, and
-global proof target in their proper order.
+source-side residual closure in their proper order. PGS is not an analytical
+method, and the explicit-formula bridge is downstream translation, not a
+prerequisite for the PGS-to-RH path.
 
 Back to the [bundle index](README.md).
