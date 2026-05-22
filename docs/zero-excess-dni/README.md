@@ -16,6 +16,9 @@ to see: primes are exact zero-excess returns, gap interiors are positive-excess
 chambers, and the selected interior integer is the leftmost minimum-excess
 point before the next zero return.
 
+For the deeper repo-wide scope inventory, see
+[Zero-Excess DNI Change Scope](change-scope.md).
+
 ## Branch Scope
 
 Working branch:
