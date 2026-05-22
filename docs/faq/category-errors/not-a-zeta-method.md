@@ -25,10 +25,10 @@ integer objects:
 - the divisor-count field `tau(n)`;
 - the prime return condition `tau(n)=2`;
 - the ordered composite interior between consecutive primes;
-- the first interior point where the minimum divisor count appears.
+- the first interior point with the minimum divisor count.
 
 Those objects define prime placement before zeta language enters. The zeta
-bridge then records how this source appears in analytic form.
+bridge then records this source in analytic form.
 
 That direction matters. A method inside the zeta frame asks the analytic layer
 to explain prime order. Prime gap structure uses the integer source to explain
@@ -42,6 +42,7 @@ why the analytic layer has the form it has.
 
 ## Related Docs
 
+- [Why is analytical-proof expectation the wrong frame?](analytical-proof-expectation.md)
 - [Why is RH downstream?](../core-frame/rh-downstream.md)
 - [What does zeta compression record?](../core-frame/zeta-compression.md)
 - [RH bridge research home](../../../research/12-rh-bridge/README.md)

@@ -30,6 +30,7 @@ artifacts live.
 | [Source Order](source-order.md) | Establishes the direction from integer objects to RH language. | explanatory consequence |
 | [DNI-to-Zeta Compression](dni-to-zeta-compression.md) | Shows the coefficient bridge from divisor counts to $R(s)=-\zeta'(s)/\zeta(s)$. | exact zeta compression |
 | [Pole Placement](pole-placement.md) | Records how zeros of $\zeta$ become poles of the continued DNI ratio. | exact zeta compression |
+| [Off-Critical Pole Exclusion](off-critical-pole-exclusion.md) | Gives the source-side residual test for excluding nontrivial off-critical poles. | source-side bridge |
 | [Critical Line And Zero Geometry](critical-line-and-zero-geometry.md) | Names the critical strip and critical line as downstream coordinate language. | explanatory consequence |
 | [Explicit Formula Bridge](explicit-formula-bridge.md) | Connects $R(s)$ to $\Lambda(n)$, $\psi(x)$, and zero terms. | proof target / needs proof |
 | [Status Ledger](status-ledger.md) | Separates proved theorems, exact compression, interpretation, and proof targets. | reviewer control |
@@ -52,6 +53,7 @@ artifacts live.
 | PGS local theorems | `PROOF.md` controls the next-prime theorem and the interior maximizer theorem. | proved theorem |
 | DNI-to-zeta compression | The native DNI series gives `(e^2/2)K(s)/D(s) = -zeta'(s)/zeta(s)`. | exact zeta compression |
 | Pole placement | Zeros of `zeta` become poles of the continued DNI ratio. | explanatory consequence |
+| Off-critical pole exclusion | The source-side residual test closes failed identities, independent gap-length freedom, chamber log-weight remainders, and divisor-count remainders. | source-side bridge |
 | RH sentence | The global closure sentence to prove places all nontrivial poles on `Re(s)=1/2`. | proof target / needs proof |
 
 ## Bundle Boundary
@@ -66,4 +68,5 @@ The spine is constructive:
 3. Apply the local PGS theorems controlled by `PROOF.md`.
 4. Compress the same divisor-count source into the DNI zeta ratio.
 5. Translate the continued ratio into pole-placement language.
-6. State the RH sentence as the downstream global proof target.
+6. Apply the source-side residual test for off-critical poles.
+7. State the RH sentence as the downstream global proof target.

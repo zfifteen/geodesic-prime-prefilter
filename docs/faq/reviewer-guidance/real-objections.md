@@ -46,4 +46,5 @@ compression of that source.
 
 - [What should a reviewer check first?](evaluation-order.md)
 - [How should claim status be read?](status-ledger.md)
+- [Why is analytical-proof expectation the wrong frame?](../category-errors/analytical-proof-expectation.md)
 - [What is the source object?](../core-frame/source-object.md)

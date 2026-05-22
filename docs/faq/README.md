@@ -19,8 +19,9 @@ of prime placement.
 1. [What is the source object?](core-frame/source-object.md)
 2. [Why is RH downstream?](core-frame/rh-downstream.md)
 3. [What does zeta compression record?](core-frame/zeta-compression.md)
-4. [Why is pole placement not the first object?](category-errors/pole-placement-is-not-first.md)
-5. [How should claim status be read?](reviewer-guidance/status-ledger.md)
+4. [Why is analytical-proof expectation the wrong frame?](category-errors/analytical-proof-expectation.md)
+5. [Why is pole placement not the first object?](category-errors/pole-placement-is-not-first.md)
+6. [How should claim status be read?](reviewer-guidance/status-ledger.md)
 
 ## Core Frame
 
@@ -32,6 +33,7 @@ of prime placement.
 
 - [Is prime gap structure only another wording of RH?](category-errors/not-a-reformulation.md)
 - [Is prime gap structure a zeta-side method?](category-errors/not-a-zeta-method.md)
+- [Why is analytical-proof expectation the wrong frame?](category-errors/analytical-proof-expectation.md)
 - [Why is pole placement not the first object?](category-errors/pole-placement-is-not-first.md)
 - [Does analytic opacity weaken the arithmetic source?](category-errors/analytic-opacity.md)
 - [What about hidden patterns in the divisor-count field?](category-errors/hidden-patterns.md)

@@ -2,7 +2,7 @@
 
 ## Short Answer
 
-Pole placement is analytic language that appears after zeta compression. The
+Pole placement is analytic language introduced after zeta compression. The
 first object is the integer divisor-count structure that places primes and
 orders prime-gap interiors.
 
@@ -47,5 +47,6 @@ language records the consequence.
 ## Related Docs
 
 - [Root proof authority](../../../PROOF.md)
+- [Why is analytical-proof expectation the wrong frame?](analytical-proof-expectation.md)
 - [DNI-to-zeta bridge](../../../research/12-rh-bridge/docs/dni_rh_bridge.md)
 - [What should a reviewer check first?](../reviewer-guidance/evaluation-order.md)
