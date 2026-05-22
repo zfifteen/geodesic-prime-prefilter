@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import math
 import sys
 from pathlib import Path
 
@@ -20,7 +21,9 @@ from z_band_prime_rh_bridge import (
     evaluate_analytic_bridge,
     evaluate_partial_sum_bridge,
     mangoldt_values_up_to,
+    normalization_load_coefficients_up_to,
 )
+from z_band_prime_invariant import FIXED_POINT_V, exact_zero_excess
 
 
 def test_small_divisor_counts_match_known_values():
@@ -53,6 +56,17 @@ def test_bridge_rows_recover_scaled_normalization_load_coefficients():
     assert rows[0].scaled_bridge_coefficient == 0.0
     assert rows[1].mangoldt > 0.0
     assert rows[5].mangoldt == 0.0
+
+
+def test_scaled_normalization_load_is_log_plus_zero_excess():
+    """The DNI-to-zeta numerator is H(n)=log(n)+E(n), not E(n) alone."""
+    counts = divisor_counts_up_to(64)
+    normalization_load = normalization_load_coefficients_up_to(64, counts)
+
+    for n in range(2, 65):
+        scaled_load = FIXED_POINT_V * normalization_load[n]
+
+        assert scaled_load == pytest.approx(math.log(n) + exact_zero_excess(n))
 
 
 def test_analytic_bridge_matches_negative_zeta_log_derivative():

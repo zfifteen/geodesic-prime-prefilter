@@ -25,6 +25,17 @@ def exact_divisor_count(n: int) -> int:
     return count
 
 
+def exact_zero_excess(n: int) -> float:
+    """Evaluate the exact zero-excess DNI coordinate."""
+    if n < 1:
+        raise ValueError("n must be at least 1")
+    if n == 1:
+        return 0.0
+
+    divisor_total = exact_divisor_count(n)
+    return (divisor_total / 2.0 - 1.0) * math.log(n)
+
+
 def exact_z_normalize(n: int, v: float = FIXED_POINT_V) -> float:
     """Evaluate the exact DNI normalization at the fixed-point rate."""
     if n <= 1:
