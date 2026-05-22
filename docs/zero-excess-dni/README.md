@@ -36,6 +36,10 @@ Phase 3 launch control:
 
 - [Phase 3 Risk Verdict Gate](phase-3-risk-verdict.md)
 
+Phase 4 compatibility control:
+
+- [Phase 4 Compatibility Verdict](phase-4-compatibility-verdict.md)
+
 ## Branch Scope
 
 Working branch:
