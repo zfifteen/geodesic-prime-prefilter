@@ -1,21 +1,24 @@
 # RSA v2 Session Bootstrap
 
-This file exists so a future Codex session can start in `research/06-cryptology-rsa/experiments/rsa/v2`
+This file exists so a future Codex session starts in `research/06-cryptology-rsa/experiments/live-solver/rsa-v2`
 without reverse-engineering the previous work.
 
 ## Headline State
 
-The current v2 experiment has one live public resolver branch.
+The current v2 experiment has one live unified transported certificate-chain
+runner.
 
 The official runner derives reciprocal PGSPG certificate-pair state from public
 moduli. It resolves the 40-bit rung by reciprocal deadline signature correction
-and leaves the 50-bit rung unresolved.
+and the 64-bit rung by mutual certificate closure. It leaves the 50-bit rung
+unresolved by reciprocal carrier misalignment.
 
 Current official state:
 
 ```text
 rsa_v2_40bit_static_001 -> endpoint_class_by_reciprocal_deadline_signature_correction
-rsa_v2_50bit_static_001 -> unresolved_by_certificate_pair_not_closed
+rsa_v2_50bit_static_001 -> unresolved_by_reciprocal_carrier_misalignment
+rsa_v2_64bit_static_001 -> endpoint_class_by_mutual_certificate_closure
 ```
 
 The current transported-story result is proof-facing:
@@ -951,10 +954,11 @@ TypedMaterial(C, C') reduction:
              is missing
 
 official runner:
-  status = partially resolved
+  status = live three-rung ladder aligned
   evidence = rsa_v2_40bit_static_001 resolves by reciprocal deadline
              signature correction; rsa_v2_50bit_static_001 remains
-             unresolved_by_certificate_pair_not_closed
+             unresolved_by_reciprocal_carrier_misalignment;
+             rsa_v2_64bit_static_001 resolves by mutual certificate closure
 
 test surface:
   status = passing
@@ -979,13 +983,12 @@ avoid that surface's ordered lag-2 + lag-3 reduced words.
 
 ## Current Commands
 
-From `research/06-cryptology-rsa/experiments/rsa/v2`:
+From `research/06-cryptology-rsa/experiments/live-solver/rsa-v2`:
 
 ```bash
-python3 build_ladder_fixtures.py
 python3 run_experiment.py
 python3 audit_experiment.py
-pytest -q ../../../research/06-cryptology-rsa/tests/test_rsa_v2_scripts.py
+python3 -m pytest research/06-cryptology-rsa/tests/test_rsa_v2_scripts.py
 ```
 
 Expected test result:
@@ -1023,16 +1026,17 @@ Expected result:
 The current `output/inference_rows.jsonl` state is:
 
 ```text
-rsa_v2_40bit_static_001 resolved endpoint_class_by_reciprocal_deadline_signature_correction
-rsa_v2_50bit_static_001 unresolved unresolved_by_certificate_pair_not_closed
+rsa_v2_40bit_static_001 public_endpoint_class_found endpoint_class_by_reciprocal_deadline_signature_correction
+rsa_v2_50bit_static_001 unresolved unresolved_by_reciprocal_carrier_misalignment
+rsa_v2_64bit_static_001 public_endpoint_class_found endpoint_class_by_mutual_certificate_closure
 ```
 
 The correct interpretation is:
 
 ```text
-PGSPG certificate state resolves 40-bit by deadline correction. The 50-bit
-row remains unresolved because no upper certificate exists for the live rule.
-selected a factor pair.
+PGSPG certificate state emits public endpoint classes for the 40-bit and
+64-bit rows. The 50-bit row remains unresolved before audit because refined
+public closure rejects the historical mutual-closure candidate.
 ```
 
 ## Current Audit Result
@@ -1040,12 +1044,14 @@ selected a factor pair.
 The current `output/audit_results.csv` state is:
 
 ```text
-rsa_v2_40bit_static_001 integrity_pass inference_audit_fail
+rsa_v2_40bit_static_001 integrity_pass inference_audit_pass
 rsa_v2_50bit_static_001 integrity_pass inference_audit_fail
+rsa_v2_64bit_static_001 integrity_pass inference_audit_pass
 ```
 
-The audit factor file certifies the public moduli, but inference does not match
-the audit factors because inference is unresolved.
+The audit factor file certifies the public moduli. Audit confirms exact factor
+equality for the public endpoint classes emitted on the 40-bit and 64-bit rows.
+The 50-bit row remains unresolved and emits no public endpoint class.
 
 ## Active Algorithm
 
@@ -1056,11 +1062,14 @@ public N
 -> isqrt(N) as orientation
 -> previous public endpoint before isqrt(N)
 -> lower PGSPG chamber-reset certificate
--> y = floor(N / lower.reset_endpoint)
+-> oriented lower transport coordinate
+-> y = floor(N / oriented lower coordinate)
 -> previous public endpoint before y
 -> upper PGSPG chamber-reset certificate
 -> strict reciprocal certificate closure
--> resolved only if certificates mutually close
+-> deadline-signature correction if strict closure fails
+-> refined public closure filters
+-> public endpoint class or unresolved state
 ```
 
 The current strict closure candidate requires:
@@ -1071,26 +1080,34 @@ floor(N / upper.reset_endpoint) == lower.reset_endpoint
 lower.reset_signature == upper.reset_signature
 ```
 
-If those conditions fail, inference returns unresolved.
+If strict closure fails, the runner evaluates deadline-signature correction and
+the refined public closure filters. If the public closure conditions fail,
+inference returns unresolved.
 
 ## Current 40-Bit Certificate Snapshot
 
 ```text
-lower_reset_endpoint = 1048573
-transported_upper_endpoint = 1048574
-upper_reset_endpoint = 1048583
-transported_lower_endpoint = 1048564
-closure_status = unresolved_by_certificate_pair_not_closed
+endpoint_class_lower = 1048559
+endpoint_class_upper = 1048589
+closure_status = endpoint_class_by_reciprocal_deadline_signature_correction
+audit_status = inference_audit_pass
 ```
 
 ## Current 50-Bit Certificate Snapshot
 
 ```text
-lower_reset_endpoint = 32053649
-transported_upper_endpoint = 32053634
-upper_reset_endpoint = null
-transported_lower_endpoint = null
-closure_status = unresolved_by_certificate_pair_not_closed
+public_structure_found = false
+closure_status = unresolved_by_reciprocal_carrier_misalignment
+audit_status = inference_audit_fail
+```
+
+## Current 64-Bit Certificate Snapshot
+
+```text
+endpoint_class_lower = 3221225473
+endpoint_class_upper = 3221275501
+closure_status = endpoint_class_by_mutual_certificate_closure
+audit_status = inference_audit_pass
 ```
 
 ## Invalidated Rules
@@ -1107,8 +1124,9 @@ Do not revive:
 - audit factors or answer-bearing PGS-state fixtures inside inference;
 - per-bit or per-rung resolver branches.
 
-The previous 40-bit resolution was withdrawn because it depended on a
-close-factor shape. Do not treat that result as a live solve.
+The previous close-factor-shaped 40-bit resolution was withdrawn. The current
+40-bit resolution is live because reciprocal deadline-signature correction
+emits the audit-confirmed public endpoint class without reading audit factors.
 
 ## Current Grammar Evidence
 
@@ -1260,7 +1278,8 @@ latest guard suite:
 
 official runner:
   rsa_v2_40bit_static_001 endpoint_class_by_reciprocal_deadline_signature_correction
-  rsa_v2_50bit_static_001 unresolved_by_certificate_pair_not_closed
+  rsa_v2_50bit_static_001 unresolved_by_reciprocal_carrier_misalignment
+  rsa_v2_64bit_static_001 endpoint_class_by_mutual_certificate_closure
 ```
 
 Proof boundary at pause:

@@ -1,0 +1,1008 @@
+[
+  {
+    "stage": "coarse",
+    "name": "rung_00_23x31",
+    "p": 23,
+    "q": 31,
+    "N": 713,
+    "bits": 10,
+    "radius": 26,
+    "row_count_full": 45,
+    "row_count_heldout": 43,
+    "max_support": 3,
+    "emitted_hole_count": 1,
+    "emitted_offsets": [
+      -23
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": -23,
+        "factor": 23,
+        "support": 3,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 0.22145524993538857,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_01_43x59",
+    "p": 43,
+    "q": 59,
+    "N": 2537,
+    "bits": 12,
+    "radius": 50,
+    "row_count_full": 91,
+    "row_count_heldout": 89,
+    "max_support": 3,
+    "emitted_hole_count": 1,
+    "emitted_offsets": [
+      43
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": 43,
+        "factor": 43,
+        "support": 3,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 0.21116645797155797,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_02_61x83",
+    "p": 61,
+    "q": 83,
+    "N": 5063,
+    "bits": 13,
+    "radius": 71,
+    "row_count_full": 124,
+    "row_count_heldout": 122,
+    "max_support": 3,
+    "emitted_hole_count": 1,
+    "emitted_offsets": [
+      61
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": 61,
+        "factor": 61,
+        "support": 3,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 0.21353525016456842,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_03_89x113",
+    "p": 89,
+    "q": 113,
+    "N": 10057,
+    "bits": 14,
+    "radius": 100,
+    "row_count_full": 181,
+    "row_count_heldout": 179,
+    "max_support": 3,
+    "emitted_hole_count": 1,
+    "emitted_offsets": [
+      89
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": 89,
+        "factor": 89,
+        "support": 3,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 0.2113530000206083,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_04_101x137",
+    "p": 101,
+    "q": 137,
+    "N": 13837,
+    "bits": 14,
+    "radius": 117,
+    "row_count_full": 208,
+    "row_count_heldout": 206,
+    "max_support": 3,
+    "emitted_hole_count": 1,
+    "emitted_offsets": [
+      101
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": 101,
+        "factor": 101,
+        "support": 3,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 0.21402812493033707,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_05_131x167",
+    "p": 131,
+    "q": 167,
+    "N": 21877,
+    "bits": 15,
+    "radius": 147,
+    "row_count_full": 265,
+    "row_count_heldout": 263,
+    "max_support": 3,
+    "emitted_hole_count": 1,
+    "emitted_offsets": [
+      131
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": 131,
+        "factor": 131,
+        "support": 3,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 0.21697095804847777,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_06_173x211",
+    "p": 173,
+    "q": 211,
+    "N": 36503,
+    "bits": 16,
+    "radius": 191,
+    "row_count_full": 345,
+    "row_count_heldout": 343,
+    "max_support": 4,
+    "emitted_hole_count": 1,
+    "emitted_offsets": [
+      -173
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": -173,
+        "factor": 173,
+        "support": 4,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 0.2110251251142472,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_07_229x277",
+    "p": 229,
+    "q": 277,
+    "N": 63433,
+    "bits": 16,
+    "radius": 251,
+    "row_count_full": 451,
+    "row_count_heldout": 449,
+    "max_support": 3,
+    "emitted_hole_count": 1,
+    "emitted_offsets": [
+      -229
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": -229,
+        "factor": 229,
+        "support": 3,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 0.21194545784965158,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_08_307x367",
+    "p": 307,
+    "q": 367,
+    "N": 112669,
+    "bits": 17,
+    "radius": 335,
+    "row_count_full": 621,
+    "row_count_heldout": 619,
+    "max_support": 3,
+    "emitted_hole_count": 1,
+    "emitted_offsets": [
+      -307
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": -307,
+        "factor": 307,
+        "support": 3,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 0.21416325005702674,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_09_401x503",
+    "p": 401,
+    "q": 503,
+    "N": 201703,
+    "bits": 18,
+    "radius": 449,
+    "row_count_full": 819,
+    "row_count_heldout": 817,
+    "max_support": 3,
+    "emitted_hole_count": 1,
+    "emitted_offsets": [
+      401
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": 401,
+        "factor": 401,
+        "support": 3,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 0.21985987504012883,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_10_557x661",
+    "p": 557,
+    "q": 661,
+    "N": 368177,
+    "bits": 19,
+    "radius": 606,
+    "row_count_full": 1119,
+    "row_count_heldout": 1117,
+    "max_support": 4,
+    "emitted_hole_count": 1,
+    "emitted_offsets": [
+      -557
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": -557,
+        "factor": 557,
+        "support": 4,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 0.22025066707283258,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_11_701x887",
+    "p": 701,
+    "q": 887,
+    "N": 621787,
+    "bits": 20,
+    "radius": 788,
+    "row_count_full": 1460,
+    "row_count_heldout": 1458,
+    "max_support": 3,
+    "emitted_hole_count": 1,
+    "emitted_offsets": [
+      701
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": 701,
+        "factor": 701,
+        "support": 3,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 0.21953483391553164,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_12_1009x1231",
+    "p": 1009,
+    "q": 1231,
+    "N": 1242079,
+    "bits": 21,
+    "radius": 1114,
+    "row_count_full": 2072,
+    "row_count_heldout": 2070,
+    "max_support": 4,
+    "emitted_hole_count": 1,
+    "emitted_offsets": [
+      -1009
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": -1009,
+        "factor": 1009,
+        "support": 4,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 0.23186624981462955,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_13_1601x2003",
+    "p": 1601,
+    "q": 2003,
+    "N": 3206803,
+    "bits": 22,
+    "radius": 1790,
+    "row_count_full": 3343,
+    "row_count_heldout": 3341,
+    "max_support": 4,
+    "emitted_hole_count": 1,
+    "emitted_offsets": [
+      -1601
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": -1601,
+        "factor": 1601,
+        "support": 4,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 0.2593741249293089,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_14_3001x4001",
+    "p": 3001,
+    "q": 4001,
+    "N": 12007001,
+    "bits": 24,
+    "radius": 3465,
+    "row_count_full": 6508,
+    "row_count_heldout": 6506,
+    "max_support": 4,
+    "emitted_hole_count": 1,
+    "emitted_offsets": [
+      3001
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": 3001,
+        "factor": 3001,
+        "support": 4,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 0.34951162501238286,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_15_5003x7001",
+    "p": 5003,
+    "q": 7001,
+    "N": 35026003,
+    "bits": 26,
+    "radius": 5918,
+    "row_count_full": 11156,
+    "row_count_heldout": 11154,
+    "max_support": 3,
+    "emitted_hole_count": 2,
+    "emitted_offsets": [
+      -5003,
+      5003
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": -5003,
+        "factor": 5003,
+        "support": 3,
+        "audit_kind": "p_thread"
+      },
+      {
+        "rank": 2,
+        "offset": 5003,
+        "factor": 5003,
+        "support": 3,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 0.5254937498830259,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_16_6007x8009",
+    "p": 6007,
+    "q": 8009,
+    "N": 48110063,
+    "bits": 26,
+    "radius": 6936,
+    "row_count_full": 13091,
+    "row_count_heldout": 13089,
+    "max_support": 4,
+    "emitted_hole_count": 2,
+    "emitted_offsets": [
+      -6007,
+      6007
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": -6007,
+        "factor": 6007,
+        "support": 4,
+        "audit_kind": "p_thread"
+      },
+      {
+        "rank": 2,
+        "offset": 6007,
+        "factor": 6007,
+        "support": 4,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 0.6121889580972493,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_17_7001x9001",
+    "p": 7001,
+    "q": 9001,
+    "N": 63016001,
+    "bits": 26,
+    "radius": 7938,
+    "row_count_full": 14981,
+    "row_count_heldout": 14979,
+    "max_support": 3,
+    "emitted_hole_count": 2,
+    "emitted_offsets": [
+      -7001,
+      7001
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": -7001,
+        "factor": 7001,
+        "support": 3,
+        "audit_kind": "p_thread"
+      },
+      {
+        "rank": 2,
+        "offset": 7001,
+        "factor": 7001,
+        "support": 3,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 0.6910103340633214,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_18_8009x10007",
+    "p": 8009,
+    "q": 10007,
+    "N": 80146063,
+    "bits": 27,
+    "radius": 8952,
+    "row_count_full": 16921,
+    "row_count_heldout": 16919,
+    "max_support": 3,
+    "emitted_hole_count": 1,
+    "emitted_offsets": [
+      8009
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": 8009,
+        "factor": 8009,
+        "support": 3,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 0.7828714170027524,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_19_9001x11003",
+    "p": 9001,
+    "q": 11003,
+    "N": 99038003,
+    "bits": 27,
+    "radius": 9951,
+    "row_count_full": 18784,
+    "row_count_heldout": 18782,
+    "max_support": 4,
+    "emitted_hole_count": 1,
+    "emitted_offsets": [
+      9001
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": 9001,
+        "factor": 9001,
+        "support": 4,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 0.8665293750818819,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_20_12007x14009",
+    "p": 12007,
+    "q": 14009,
+    "N": 168206063,
+    "bits": 28,
+    "radius": 12969,
+    "row_count_full": 24564,
+    "row_count_heldout": 24562,
+    "max_support": 4,
+    "emitted_hole_count": 1,
+    "emitted_offsets": [
+      12007
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": 12007,
+        "factor": 12007,
+        "support": 4,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 1.1679281250108033,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_21_16001x18013",
+    "p": 16001,
+    "q": 18013,
+    "N": 288226013,
+    "bits": 29,
+    "radius": 16977,
+    "row_count_full": 32210,
+    "row_count_heldout": 32208,
+    "max_support": 4,
+    "emitted_hole_count": 1,
+    "emitted_offsets": [
+      -16001
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": -16001,
+        "factor": 16001,
+        "support": 4,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 1.6033880000468343,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_22_20011x24001",
+    "p": 20011,
+    "q": 24001,
+    "N": 480284011,
+    "bits": 29,
+    "radius": 21915,
+    "row_count_full": 41680,
+    "row_count_heldout": 41678,
+    "max_support": 3,
+    "emitted_hole_count": 2,
+    "emitted_offsets": [
+      -20011,
+      20011
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": -20011,
+        "factor": 20011,
+        "support": 3,
+        "audit_kind": "p_thread"
+      },
+      {
+        "rank": 2,
+        "offset": 20011,
+        "factor": 20011,
+        "support": 3,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 2.154509040992707,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_23_30011x36007",
+    "p": 30011,
+    "q": 36007,
+    "N": 1080606077,
+    "bits": 31,
+    "radius": 32872,
+    "row_count_full": 62658,
+    "row_count_heldout": 62656,
+    "max_support": 4,
+    "emitted_hole_count": 1,
+    "emitted_offsets": [
+      -30011
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": -30011,
+        "factor": 30011,
+        "support": 4,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 3.822600624989718,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_24_40009x48017",
+    "p": 40009,
+    "q": 48017,
+    "N": 1921112153,
+    "bits": 31,
+    "radius": 43830,
+    "row_count_full": 83573,
+    "row_count_heldout": 83571,
+    "max_support": 4,
+    "emitted_hole_count": 1,
+    "emitted_offsets": [
+      40009
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": 40009,
+        "factor": 40009,
+        "support": 4,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 5.470014750026166,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_25_50021x60013",
+    "p": 50021,
+    "q": 60013,
+    "N": 3001910273,
+    "bits": 32,
+    "radius": 54789,
+    "row_count_full": 104543,
+    "row_count_heldout": 104541,
+    "max_support": 3,
+    "emitted_hole_count": 2,
+    "emitted_offsets": [
+      -50021,
+      50021
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": -50021,
+        "factor": 50021,
+        "support": 3,
+        "audit_kind": "p_thread"
+      },
+      {
+        "rank": 2,
+        "offset": 50021,
+        "factor": 50021,
+        "support": 3,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 7.408921624999493,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_26_75011x90001",
+    "p": 75011,
+    "q": 90001,
+    "N": 6751065011,
+    "bits": 33,
+    "radius": 82164,
+    "row_count_full": 157084,
+    "row_count_heldout": 157082,
+    "max_support": 3,
+    "emitted_hole_count": 2,
+    "emitted_offsets": [
+      -75011,
+      75011
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": -75011,
+        "factor": 75011,
+        "support": 3,
+        "audit_kind": "p_thread"
+      },
+      {
+        "rank": 2,
+        "offset": 75011,
+        "factor": 75011,
+        "support": 3,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 12.883401916828007,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_27_100003x120011",
+    "p": 100003,
+    "q": 120011,
+    "N": 12001460033,
+    "bits": 34,
+    "radius": 109551,
+    "row_count_full": 209641,
+    "row_count_heldout": 209639,
+    "max_support": 4,
+    "emitted_hole_count": 2,
+    "emitted_offsets": [
+      -100003,
+      100003
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": -100003,
+        "factor": 100003,
+        "support": 4,
+        "audit_kind": "p_thread"
+      },
+      {
+        "rank": 2,
+        "offset": 100003,
+        "factor": 100003,
+        "support": 4,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 18.724804042140022,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_28_131101x144203",
+    "p": 131101,
+    "q": 144203,
+    "N": 18905157503,
+    "bits": 35,
+    "radius": 137496,
+    "row_count_full": 263375,
+    "row_count_heldout": 263373,
+    "max_support": 4,
+    "emitted_hole_count": 1,
+    "emitted_offsets": [
+      131101
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": 131101,
+        "factor": 131101,
+        "support": 4,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 25.249461124883965,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_29_160001x180001",
+    "p": 160001,
+    "q": 180001,
+    "N": 28800340001,
+    "bits": 35,
+    "radius": 169706,
+    "row_count_full": 325326,
+    "row_count_heldout": 325324,
+    "max_support": 3,
+    "emitted_hole_count": 1,
+    "emitted_offsets": [
+      -160001
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": -160001,
+        "factor": 160001,
+        "support": 3,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 33.89823012496345,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_30_200003x240007",
+    "p": 200003,
+    "q": 240007,
+    "N": 48002120021,
+    "bits": 36,
+    "radius": 219093,
+    "row_count_full": 420325,
+    "row_count_heldout": 420323,
+    "max_support": 5,
+    "emitted_hole_count": 1,
+    "emitted_offsets": [
+      -200003
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": -200003,
+        "factor": 200003,
+        "support": 5,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 45.79788162512705,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_31_300007x360007",
+    "p": 300007,
+    "q": 360007,
+    "N": 108004620049,
+    "bits": 37,
+    "radius": 328640,
+    "row_count_full": 631397,
+    "row_count_heldout": 631395,
+    "max_support": 4,
+    "emitted_hole_count": 1,
+    "emitted_offsets": [
+      -300007
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": -300007,
+        "factor": 300007,
+        "support": 4,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 76.25744129205123,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_32_500009x600011",
+    "p": 500009,
+    "q": 600011,
+    "N": 300010900099,
+    "bits": 39,
+    "radius": 547732,
+    "row_count_full": 1054140,
+    "row_count_heldout": 1054138,
+    "max_support": 4,
+    "emitted_hole_count": 2,
+    "emitted_offsets": [
+      -500009,
+      500009
+    ],
+    "factor_hit": true,
+    "factor_hits": [
+      {
+        "rank": 1,
+        "offset": -500009,
+        "factor": 500009,
+        "support": 4,
+        "audit_kind": "p_thread"
+      },
+      {
+        "rank": 2,
+        "offset": 500009,
+        "factor": 500009,
+        "support": 4,
+        "audit_kind": "p_thread"
+      }
+    ],
+    "seconds": 144.99102020799182,
+    "classification": "success"
+  },
+  {
+    "stage": "coarse",
+    "name": "rung_33_750019x900001",
+    "p": 750019,
+    "q": 900001,
+    "N": 675017850019,
+    "bits": 40,
+    "radius": 821594,
+    "row_count_full": null,
+    "row_count_heldout": null,
+    "max_support": null,
+    "emitted_hole_count": null,
+    "emitted_offsets": [],
+    "factor_hit": false,
+    "factor_hits": [],
+    "seconds": 180.00389104196802,
+    "classification": "feasibility_break"
+  }
+]
