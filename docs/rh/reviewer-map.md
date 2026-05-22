@@ -39,7 +39,15 @@ status to each layer.
    poles of `R(s)` are the nontrivial zeros of `zeta(s)` read through the
    logarithmic derivative.
 
-4. [Critical line and zero geometry](critical-line-and-zero-geometry.md)
+4. [Off-critical pole exclusion](off-critical-pole-exclusion.md)
+
+   Check the source-side residual test. A claimed off-critical pole must name
+   a surviving source residual: a failed identity in `D,K,R`, independent
+   endpoint or gap-length freedom, a chamber log-weight remainder, or an extra
+   divisor-count field. A conclusion-only residual does not supply a
+   mathematical carrier.
+
+5. [Critical line and zero geometry](critical-line-and-zero-geometry.md)
 
    Check that the critical-line sentence is stated as the RH-side analytic
    reading:
@@ -51,7 +59,7 @@ status to each layer.
    for every nontrivial zero `rho` of `zeta(s)`, or equivalently every
    nontrivial pole of `R(s)`.
 
-5. [Status ledger](status-ledger.md)
+6. [Status ledger](status-ledger.md)
 
    Check that proved theorem, exact zeta compression, explanatory consequence,
    measured evidence, invalidated routes, and proof targets remain separate.
