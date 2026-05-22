@@ -4,6 +4,21 @@
 
 The single live proof reference is [PROOF.md](PROOF.md), including the direct deterministic next-prime theorem.
 
+## PGS-To-RH Reading Path
+
+For the PGS-to-RH argument, read [docs/rh](docs/rh/README.md). `PROOF.md`
+proves the local divisor-count theorems. The RH bundle records the downstream
+chain:
+
+```text
+divisor counts -> PGS local theorems -> DNI-to-zeta compression
+-> source-side residual closure -> pole placement/RH sentence
+```
+
+This keeps the proof authority and the RH resolution surface separate:
+`PROOF.md` controls the local theorem status, and `docs/rh` carries the
+affirmative PGS-to-RH reading path built on that source layer.
+
 ## The First Contradiction
 
 Most people learn that prime numbers are fundamentally unpredictable. They appear to pop up at irregular intervals, almost as if they are scattered at random across the number line. Textbooks and popular explanations reinforce this view: primes become rarer as numbers grow larger, the gaps between them can be arbitrarily wide, and there is no simple formula that will always tell you exactly where the next one sits. The common belief is that the only practical ways to find the next prime are to test candidates one by one or to rely on probabilistic estimates. Prime gaps themselves are treated as empty stretches of composites, nothing more than the boring distance you have to cross before the next interesting number arrives.
@@ -102,6 +117,7 @@ The rest of the repository develops these ideas in greater depth, including the 
 - [research/00-index/continuity/START_HERE.md](research/00-index/continuity/START_HERE.md) is the continuity and resume entrypoint for future Codex sessions.
 - [research/00-index/README.md](research/00-index/README.md) maps the research corpus by chapter and status.
 - [PROOF.md](PROOF.md) gives the formal statement and proof of the direct next-prime theorem and the prime-gap maximizer theorem.
+- [docs/rh](docs/rh/README.md) gives the affirmative PGS-to-RH reading path from divisor counts to source-side residual closure and the RH pole-placement sentence.
 - [LEFTMOST_MINIMUM_DIVISOR_RULE.md](LEFTMOST_MINIMUM_DIVISOR_RULE.md) explores the rule that identifies the special composite inside each gap.
 - [DIVISOR_NORMALIZATION_IDENTITY.md](DIVISOR_NORMALIZATION_IDENTITY.md) explains the normalization that places primes at Z = 1.0.
 - [PRIME_GAP_GENERATOR.md](PRIME_GAP_GENERATOR.md) describes how the generator reads the structure.
