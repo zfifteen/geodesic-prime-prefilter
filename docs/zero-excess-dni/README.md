@@ -19,6 +19,9 @@ point before the next zero return.
 For the deeper repo-wide scope inventory, see
 [Zero-Excess DNI Change Scope](change-scope.md).
 
+For the four-agent risk conference and revised migration gates, see
+[Zero-Excess DNI Risk Conference](zero-excess-risk-conference.md).
+
 ## Branch Scope
 
 Working branch:
