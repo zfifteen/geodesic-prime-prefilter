@@ -32,6 +32,10 @@ Phase 2 launch control:
 
 - [Phase 2 Risk Verdict Gate](phase-2-risk-verdict.md)
 
+Phase 3 launch control:
+
+- [Phase 3 Risk Verdict Gate](phase-3-risk-verdict.md)
+
 ## Branch Scope
 
 Working branch:
