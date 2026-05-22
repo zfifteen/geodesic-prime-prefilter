@@ -1,0 +1,321 @@
+{
+  "levels": {
+    "48": {
+      "average_reduction_percent": 71.21,
+      "bit_length": 48,
+      "max_reduction": 71.21,
+      "min_reduction": 71.21,
+      "reduction_distribution": {
+        "0-20%": 0,
+        "20-40%": 0,
+        "40-60%": 0,
+        "60-80%": 30,
+        "80%+": 0
+      },
+      "samples": 30,
+      "std_dev": 0.0,
+      "top_motifs": [
+        [
+          "o2_d4_a2_d4_odd@mid",
+          30
+        ]
+      ],
+      "top_rules": [
+        [
+          "PG-001",
+          30
+        ],
+        [
+          "PG-002",
+          30
+        ],
+        [
+          "PG-008",
+          30
+        ],
+        [
+          "PG-010",
+          30
+        ],
+        [
+          "PG-018",
+          30
+        ],
+        [
+          "PG-022",
+          30
+        ],
+        [
+          "PG-026",
+          30
+        ],
+        [
+          "PG-030",
+          30
+        ]
+      ],
+      "unresolved_count": 0,
+      "unresolved_examples": []
+    },
+    "56": {
+      "average_reduction_percent": 49.75,
+      "bit_length": 56,
+      "max_reduction": 71.21,
+      "min_reduction": 42.42,
+      "reduction_distribution": {
+        "0-20%": 0,
+        "20-40%": 0,
+        "40-60%": 27,
+        "60-80%": 3,
+        "80%+": 0
+      },
+      "samples": 30,
+      "std_dev": 8.87,
+      "top_motifs": [
+        [
+          "o4_d4_a4_d4_odd@mid",
+          15
+        ],
+        [
+          "o2_d4_a2_d4_odd@early",
+          12
+        ],
+        [
+          "o2_d4_a2_d4_odd@mid",
+          3
+        ]
+      ],
+      "top_rules": [
+        [
+          "PG-003",
+          15
+        ],
+        [
+          "PG-005",
+          15
+        ],
+        [
+          "PG-007",
+          15
+        ],
+        [
+          "PG-049",
+          15
+        ],
+        [
+          "PG-050",
+          15
+        ],
+        [
+          "PG-053",
+          15
+        ],
+        [
+          "PG-054",
+          15
+        ],
+        [
+          "PG-055",
+          15
+        ]
+      ],
+      "unresolved_count": 0,
+      "unresolved_examples": []
+    },
+    "64": {
+      "average_reduction_percent": 60.4,
+      "bit_length": 64,
+      "max_reduction": 74.75,
+      "min_reduction": 15.66,
+      "reduction_distribution": {
+        "0-20%": 5,
+        "20-40%": 0,
+        "40-60%": 3,
+        "60-80%": 22,
+        "80%+": 0
+      },
+      "samples": 30,
+      "std_dev": 20.98,
+      "top_motifs": [
+        [
+          "o2_d4_a2_d4_odd@mid",
+          18
+        ],
+        [
+          "o6_d4_a6_d4_odd@mid",
+          5
+        ],
+        [
+          "o2_d4_a2_d4_odd@mid + o4_d4_odd prev",
+          4
+        ],
+        [
+          "o4_d4_a4_d4_odd@mid + o2_d4_odd prev",
+          3
+        ]
+      ],
+      "top_rules": [
+        [
+          "PG-001",
+          22
+        ],
+        [
+          "PG-002",
+          22
+        ],
+        [
+          "PG-008",
+          22
+        ],
+        [
+          "PG-010",
+          22
+        ],
+        [
+          "PG-018",
+          22
+        ],
+        [
+          "PG-022",
+          22
+        ],
+        [
+          "PG-026",
+          22
+        ],
+        [
+          "PG-030",
+          22
+        ]
+      ],
+      "unresolved_count": 0,
+      "unresolved_examples": []
+    },
+    "72": {
+      "average_reduction_percent": 71.21,
+      "bit_length": 72,
+      "max_reduction": 71.21,
+      "min_reduction": 71.21,
+      "reduction_distribution": {
+        "0-20%": 0,
+        "20-40%": 0,
+        "40-60%": 0,
+        "60-80%": 30,
+        "80%+": 0
+      },
+      "samples": 30,
+      "std_dev": 0.0,
+      "top_motifs": [
+        [
+          "o2_d4_a2_d4_odd@mid",
+          30
+        ]
+      ],
+      "top_rules": [
+        [
+          "PG-001",
+          30
+        ],
+        [
+          "PG-002",
+          30
+        ],
+        [
+          "PG-008",
+          30
+        ],
+        [
+          "PG-010",
+          30
+        ],
+        [
+          "PG-018",
+          30
+        ],
+        [
+          "PG-022",
+          30
+        ],
+        [
+          "PG-026",
+          30
+        ],
+        [
+          "PG-030",
+          30
+        ]
+      ],
+      "unresolved_count": 0,
+      "unresolved_examples": []
+    },
+    "80": {
+      "average_reduction_percent": 40.55,
+      "bit_length": 80,
+      "max_reduction": 53.54,
+      "min_reduction": 15.66,
+      "reduction_distribution": {
+        "0-20%": 5,
+        "20-40%": 0,
+        "40-60%": 25,
+        "60-80%": 0,
+        "80%+": 0
+      },
+      "samples": 30,
+      "std_dev": 12.03,
+      "top_motifs": [
+        [
+          "o4_d4_a4_d4_odd@mid",
+          18
+        ],
+        [
+          "o2_d4_a2_d4_odd@early",
+          7
+        ],
+        [
+          "o6_d4_a6_d4_odd@mid",
+          5
+        ]
+      ],
+      "top_rules": [
+        [
+          "PG-003",
+          18
+        ],
+        [
+          "PG-005",
+          18
+        ],
+        [
+          "PG-007",
+          18
+        ],
+        [
+          "PG-049",
+          18
+        ],
+        [
+          "PG-050",
+          18
+        ],
+        [
+          "PG-053",
+          18
+        ],
+        [
+          "PG-054",
+          18
+        ],
+        [
+          "PG-055",
+          18
+        ]
+      ],
+      "unresolved_count": 0,
+      "unresolved_examples": []
+    }
+  },
+  "mode": "synthetic",
+  "reference_space": 198,
+  "samples_per_level": 30,
+  "timestamp": "2026-05-22T22:34:22.878617+00:00"
+}

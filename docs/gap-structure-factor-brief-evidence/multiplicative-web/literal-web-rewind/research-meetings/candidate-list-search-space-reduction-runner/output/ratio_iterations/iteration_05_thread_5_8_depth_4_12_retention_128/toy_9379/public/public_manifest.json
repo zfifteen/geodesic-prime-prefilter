@@ -1,0 +1,48 @@
+{
+  "N": 9379,
+  "N_bits": 14,
+  "active_thread_count": 5,
+  "candidate_reduction_bits": 6.0,
+  "candidate_reduction_ratio": "64/1",
+  "cap_active": true,
+  "cutoff_triangulation_depth": 5,
+  "depth_counts_pre_cap": {
+    "2": 2,
+    "3": 7,
+    "4": 8,
+    "5": 3
+  },
+  "depth_ratio": "4/12",
+  "elapsed_seconds": 0.000834,
+  "emitted_count": 1,
+  "emitted_depth_counts": {
+    "5": 1
+  },
+  "max_candidates": 1,
+  "max_observed_triangulation_depth": 5,
+  "min_depth": 2,
+  "original_space_definition": "count of odd positive distances d with 1 <= d <= public_radius(N)",
+  "original_space_size": 64,
+  "policy": "thread_triangulation_ratio_probe",
+  "pre_cap_qualified_count": 20,
+  "pre_cap_to_emitted_ratio": 20.0,
+  "public_only": true,
+  "public_radius": 128,
+  "reduction_status": "measured",
+  "retention_divisor": 128,
+  "score_key": [
+    "triangulation_depth descending",
+    "shared_thread_count descending",
+    "total_thread_count descending",
+    "distance ascending"
+  ],
+  "source_sha256": "8dc166e92045bf0871c5d1069380dd933833c82241185473f0a79960a6e8a594",
+  "thread_count_ratio": "5/8",
+  "thread_set": [
+    3,
+    5,
+    7,
+    11,
+    13
+  ]
+}

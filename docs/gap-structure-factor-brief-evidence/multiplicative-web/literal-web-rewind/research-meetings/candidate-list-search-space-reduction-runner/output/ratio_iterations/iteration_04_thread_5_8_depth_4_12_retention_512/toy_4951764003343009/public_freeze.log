@@ -1,0 +1,33 @@
+PUBLIC_FREEZE_RECORD:
+public_source_path: /Users/velocityworks/IdeaProjects/prime-gap-structure/docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/research-meetings/candidate-list-search-space-reduction-runner/thread_triangulation_ratio_probe.py
+public_source_sha256: 8dc166e92045bf0871c5d1069380dd933833c82241185473f0a79960a6e8a594
+public_source_private_token_scan: pass
+  p =: False
+  q =: False
+  CASE: False
+  known_factor: False
+  factor_distance: False
+  exact_factor_rank: False
+  target_distance: False
+  private_distance: False
+  gcd: False
+  factorint: False
+  isprime: False
+  nextprime: False
+  sqrt: False
+  random: False
+public_command: python3 thread_triangulation_ratio_probe.py --n 4951764003343009 --out-dir /Users/velocityworks/IdeaProjects/prime-gap-structure/docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/research-meetings/candidate-list-search-space-reduction-runner/output/ratio_iterations/iteration_04_thread_5_8_depth_4_12_retention_512/toy_4951764003343009/public --thread-count-num 5 --thread-count-den 8 --depth-num 4 --depth-den 12 --retention-divisor 512
+public_output_path: /Users/velocityworks/IdeaProjects/prime-gap-structure/docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/research-meetings/candidate-list-search-space-reduction-runner/output/ratio_iterations/iteration_04_thread_5_8_depth_4_12_retention_512/toy_4951764003343009/public/public_output.jsonl
+public_output_sha256: a9e457e48529b06923c4bedd16ceaacc87c8acae99966f4fe0b3f4945c0568b5
+public_manifest_path: /Users/velocityworks/IdeaProjects/prime-gap-structure/docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/research-meetings/candidate-list-search-space-reduction-runner/output/ratio_iterations/iteration_04_thread_5_8_depth_4_12_retention_512/toy_4951764003343009/public/public_manifest.json
+public_manifest_sha256: 90a59087652bcd303f244080dbf7ea9c1953e1799cbaa2713085d55cae819434
+public_record_count: 131072
+original_space_size: 67108864
+candidate_reduction_ratio: 67108864/131072
+candidate_reduction_bits: 9.0
+active_thread_count: 18
+min_depth: 6
+max_candidates: 131072
+pre_cap_qualified_count: 284797
+cap_active: True
+PRIVATE_AUDIT_UNLOCKED: true

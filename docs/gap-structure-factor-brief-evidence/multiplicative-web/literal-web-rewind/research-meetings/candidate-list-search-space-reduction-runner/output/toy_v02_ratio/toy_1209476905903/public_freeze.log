@@ -1,0 +1,95 @@
+PUBLIC_FREEZE_RECORD:
+public_source_path: /Users/velocityworks/IdeaProjects/prime-gap-structure/docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/research-meetings/candidate-list-search-space-reduction-runner/thread_triangulation_v02_ratio_runner.py
+public_source_sha256: 15be58e3d1fb9e026a76fc67b69ca6c5999ecc01351f65e90e84cc2c6211c465
+public_source_private_token_scan: pass
+  p =: False
+  q =: False
+  CASE: False
+  known_factor: False
+  factor_distance: False
+  exact_factor_rank: False
+  target_distance: False
+  private_distance: False
+  gcd: False
+  factorint: False
+  isprime: False
+  nextprime: False
+  sqrt: False
+  random: False
+public_command: python3 thread_triangulation_v02_ratio_runner.py --n 1209476905903 --out-dir /Users/velocityworks/IdeaProjects/prime-gap-structure/docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/research-meetings/candidate-list-search-space-reduction-runner/output/toy_v02_ratio/toy_1209476905903/public
+public_output_path: /Users/velocityworks/IdeaProjects/prime-gap-structure/docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/research-meetings/candidate-list-search-space-reduction-runner/output/toy_v02_ratio/toy_1209476905903/public/public_output.jsonl
+public_output_sha256: 4e70860c1bc851029811da9b6f7a8b5e840a12e1f6ba12136e5e51f47361289f
+public_manifest_path: /Users/velocityworks/IdeaProjects/prime-gap-structure/docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/research-meetings/candidate-list-search-space-reduction-runner/output/toy_v02_ratio/toy_1209476905903/public/public_manifest.json
+public_manifest_sha256: 173b7449aaa0f9d92882708762d21596fabee6d97a52e981bc23b46cee59308b
+public_record_count: 1024
+original_space_size: 1048576
+candidate_reduction_ratio: 1048576/1024
+candidate_reduction_bits: 10.0
+active_thread_count: 9
+min_depth: 4
+max_candidates: 1024
+pre_cap_qualified_count: 2890
+max_observed_triangulation_depth: 9
+depth_counts_pre_cap: {"4": 121, "5": 430, "6": 1081, "7": 1128, "8": 127, "9": 3}
+cap_active: True
+emitted_depth_counts: {"7": 894, "8": 127, "9": 3}
+cutoff_triangulation_depth: 7
+pre_cap_to_emitted_ratio: 2.822265625
+public_nominations_summary: see public_output.jsonl
+PRIVATE_AUDIT_UNLOCKED: true
+{
+  "N": 1209476905903,
+  "N_bits": 41,
+  "active_thread_count": 9,
+  "candidate_reduction_bits": 10.0,
+  "candidate_reduction_ratio": "1048576/1024",
+  "cap_active": true,
+  "cutoff_triangulation_depth": 7,
+  "depth_counts_pre_cap": {
+    "4": 121,
+    "5": 430,
+    "6": 1081,
+    "7": 1128,
+    "8": 127,
+    "9": 3
+  },
+  "depth_ratio": "5/12",
+  "elapsed_seconds": 0.059284,
+  "emitted_count": 1024,
+  "emitted_depth_counts": {
+    "7": 894,
+    "8": 127,
+    "9": 3
+  },
+  "max_candidates": 1024,
+  "max_observed_triangulation_depth": 9,
+  "min_depth": 4,
+  "original_space_definition": "count of odd positive distances d with 1 <= d <= public_radius(N)",
+  "original_space_size": 1048576,
+  "policy": "thread_triangulation_v02_ratio",
+  "pre_cap_qualified_count": 2890,
+  "pre_cap_to_emitted_ratio": 2.822265625,
+  "public_only": true,
+  "public_radius": 2097152,
+  "reduction_status": "measured",
+  "retention_divisor": 1024,
+  "score_key": [
+    "triangulation_depth descending",
+    "shared_thread_count descending",
+    "total_thread_count descending",
+    "distance ascending"
+  ],
+  "source_sha256": "15be58e3d1fb9e026a76fc67b69ca6c5999ecc01351f65e90e84cc2c6211c465",
+  "thread_count_ratio": "3/8",
+  "thread_set": [
+    3,
+    5,
+    7,
+    11,
+    13,
+    17,
+    19,
+    23,
+    29
+  ]
+}

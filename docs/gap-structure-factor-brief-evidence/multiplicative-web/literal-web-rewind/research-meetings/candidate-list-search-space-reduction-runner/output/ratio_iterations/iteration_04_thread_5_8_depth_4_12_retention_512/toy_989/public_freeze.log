@@ -1,0 +1,33 @@
+PUBLIC_FREEZE_RECORD:
+public_source_path: /Users/velocityworks/IdeaProjects/prime-gap-structure/docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/research-meetings/candidate-list-search-space-reduction-runner/thread_triangulation_ratio_probe.py
+public_source_sha256: 8dc166e92045bf0871c5d1069380dd933833c82241185473f0a79960a6e8a594
+public_source_private_token_scan: pass
+  p =: False
+  q =: False
+  CASE: False
+  known_factor: False
+  factor_distance: False
+  exact_factor_rank: False
+  target_distance: False
+  private_distance: False
+  gcd: False
+  factorint: False
+  isprime: False
+  nextprime: False
+  sqrt: False
+  random: False
+public_command: python3 thread_triangulation_ratio_probe.py --n 989 --out-dir /Users/velocityworks/IdeaProjects/prime-gap-structure/docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/research-meetings/candidate-list-search-space-reduction-runner/output/ratio_iterations/iteration_04_thread_5_8_depth_4_12_retention_512/toy_989/public --thread-count-num 5 --thread-count-den 8 --depth-num 4 --depth-den 12 --retention-divisor 512
+public_output_path: /Users/velocityworks/IdeaProjects/prime-gap-structure/docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/research-meetings/candidate-list-search-space-reduction-runner/output/ratio_iterations/iteration_04_thread_5_8_depth_4_12_retention_512/toy_989/public/public_output.jsonl
+public_output_sha256: ae20201ac9e8959ac469ea35ca02a5b2c9dfbf74ce998e9ead88cf1d3dd62e63
+public_manifest_path: /Users/velocityworks/IdeaProjects/prime-gap-structure/docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/research-meetings/candidate-list-search-space-reduction-runner/output/ratio_iterations/iteration_04_thread_5_8_depth_4_12_retention_512/toy_989/public/public_manifest.json
+public_manifest_sha256: 99c67071a5d76b2f2f7e0dc2cdd097f611ed12bbec2e27d70d31d747100d109e
+public_record_count: 1
+original_space_size: 16
+candidate_reduction_ratio: 16/1
+candidate_reduction_bits: 4.0
+active_thread_count: 4
+min_depth: 2
+max_candidates: 1
+pre_cap_qualified_count: 8
+cap_active: True
+PRIVATE_AUDIT_UNLOCKED: true

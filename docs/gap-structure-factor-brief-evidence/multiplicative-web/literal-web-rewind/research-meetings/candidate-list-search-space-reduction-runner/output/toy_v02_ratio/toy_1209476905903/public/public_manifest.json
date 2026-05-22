@@ -1,0 +1,56 @@
+{
+  "N": 1209476905903,
+  "N_bits": 41,
+  "active_thread_count": 9,
+  "candidate_reduction_bits": 10.0,
+  "candidate_reduction_ratio": "1048576/1024",
+  "cap_active": true,
+  "cutoff_triangulation_depth": 7,
+  "depth_counts_pre_cap": {
+    "4": 121,
+    "5": 430,
+    "6": 1081,
+    "7": 1128,
+    "8": 127,
+    "9": 3
+  },
+  "depth_ratio": "5/12",
+  "elapsed_seconds": 0.059284,
+  "emitted_count": 1024,
+  "emitted_depth_counts": {
+    "7": 894,
+    "8": 127,
+    "9": 3
+  },
+  "max_candidates": 1024,
+  "max_observed_triangulation_depth": 9,
+  "min_depth": 4,
+  "original_space_definition": "count of odd positive distances d with 1 <= d <= public_radius(N)",
+  "original_space_size": 1048576,
+  "policy": "thread_triangulation_v02_ratio",
+  "pre_cap_qualified_count": 2890,
+  "pre_cap_to_emitted_ratio": 2.822265625,
+  "public_only": true,
+  "public_radius": 2097152,
+  "reduction_status": "measured",
+  "retention_divisor": 1024,
+  "score_key": [
+    "triangulation_depth descending",
+    "shared_thread_count descending",
+    "total_thread_count descending",
+    "distance ascending"
+  ],
+  "source_sha256": "15be58e3d1fb9e026a76fc67b69ca6c5999ecc01351f65e90e84cc2c6211c465",
+  "thread_count_ratio": "3/8",
+  "thread_set": [
+    3,
+    5,
+    7,
+    11,
+    13,
+    17,
+    19,
+    23,
+    29
+  ]
+}

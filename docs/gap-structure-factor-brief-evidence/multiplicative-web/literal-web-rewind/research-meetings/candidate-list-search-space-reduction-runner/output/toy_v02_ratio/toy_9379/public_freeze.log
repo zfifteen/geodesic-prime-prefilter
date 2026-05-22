@@ -1,0 +1,84 @@
+PUBLIC_FREEZE_RECORD:
+public_source_path: /Users/velocityworks/IdeaProjects/prime-gap-structure/docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/research-meetings/candidate-list-search-space-reduction-runner/thread_triangulation_v02_ratio_runner.py
+public_source_sha256: 15be58e3d1fb9e026a76fc67b69ca6c5999ecc01351f65e90e84cc2c6211c465
+public_source_private_token_scan: pass
+  p =: False
+  q =: False
+  CASE: False
+  known_factor: False
+  factor_distance: False
+  exact_factor_rank: False
+  target_distance: False
+  private_distance: False
+  gcd: False
+  factorint: False
+  isprime: False
+  nextprime: False
+  sqrt: False
+  random: False
+public_command: python3 thread_triangulation_v02_ratio_runner.py --n 9379 --out-dir /Users/velocityworks/IdeaProjects/prime-gap-structure/docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/research-meetings/candidate-list-search-space-reduction-runner/output/toy_v02_ratio/toy_9379/public
+public_output_path: /Users/velocityworks/IdeaProjects/prime-gap-structure/docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/research-meetings/candidate-list-search-space-reduction-runner/output/toy_v02_ratio/toy_9379/public/public_output.jsonl
+public_output_sha256: 01cfe69ae9c84150d100523882f858a7e05a9bd249541579331f49ffb9fd6d2a
+public_manifest_path: /Users/velocityworks/IdeaProjects/prime-gap-structure/docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/research-meetings/candidate-list-search-space-reduction-runner/output/toy_v02_ratio/toy_9379/public/public_manifest.json
+public_manifest_sha256: c238316004b8acfa00c1052cc09579c6f740f54091ba70df5fefe78df23d892c
+public_record_count: 1
+original_space_size: 64
+candidate_reduction_ratio: 64/1
+candidate_reduction_bits: 6.0
+active_thread_count: 3
+min_depth: 2
+max_candidates: 1
+pre_cap_qualified_count: 10
+max_observed_triangulation_depth: 4
+depth_counts_pre_cap: {"2": 2, "3": 4, "4": 4}
+cap_active: True
+emitted_depth_counts: {"4": 1}
+cutoff_triangulation_depth: 4
+pre_cap_to_emitted_ratio: 10.0
+public_nominations_summary: see public_output.jsonl
+PRIVATE_AUDIT_UNLOCKED: true
+{
+  "N": 9379,
+  "N_bits": 14,
+  "active_thread_count": 3,
+  "candidate_reduction_bits": 6.0,
+  "candidate_reduction_ratio": "64/1",
+  "cap_active": true,
+  "cutoff_triangulation_depth": 4,
+  "depth_counts_pre_cap": {
+    "2": 2,
+    "3": 4,
+    "4": 4
+  },
+  "depth_ratio": "5/12",
+  "elapsed_seconds": 0.001021,
+  "emitted_count": 1,
+  "emitted_depth_counts": {
+    "4": 1
+  },
+  "max_candidates": 1,
+  "max_observed_triangulation_depth": 4,
+  "min_depth": 2,
+  "original_space_definition": "count of odd positive distances d with 1 <= d <= public_radius(N)",
+  "original_space_size": 64,
+  "policy": "thread_triangulation_v02_ratio",
+  "pre_cap_qualified_count": 10,
+  "pre_cap_to_emitted_ratio": 10.0,
+  "public_only": true,
+  "public_radius": 128,
+  "reduction_status": "measured",
+  "retention_divisor": 1024,
+  "score_key": [
+    "triangulation_depth descending",
+    "shared_thread_count descending",
+    "total_thread_count descending",
+    "distance ascending"
+  ],
+  "source_sha256": "15be58e3d1fb9e026a76fc67b69ca6c5999ecc01351f65e90e84cc2c6211c465",
+  "thread_count_ratio": "3/8",
+  "thread_set": [
+    3,
+    5,
+    7
+  ]
+}
