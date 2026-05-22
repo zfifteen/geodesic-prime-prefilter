@@ -13,8 +13,8 @@ rename public schemas, or treat generated history as live migration material.
 agent: Agent 7, Risk Register And Gatekeeper
 branch: codex/zero-excess-dni
 phase: Phase 1
-verdict: pending
-reviewed diff: pending integrator handoff
+verdict: pass
+reviewed diff: Phase 1 integrated diff on codex/zero-excess-dni
 ```
 
 ## Verdict Categories
@@ -68,14 +68,14 @@ verdict review.
 
 | Risk | Stop condition | Expected cleared condition | Status |
 | --- | --- | --- | --- |
-| missing n > 1 guard | A changed prime-characterization statement says $E(n)=0$ means prime without excluding `1`. | Every prime-characterization statement using $E(n)=0$ includes `n > 1` or an equivalent exclusion of `1`. | pending |
-| F=-E extremum flip | A changed statement says the selected integer maximizes $E$, minimizes $F$, or otherwise reverses the extremum. | Changed text says maximizing $F$ is equivalent to minimizing $E$, with the leftmost minimum convention where needed. | pending |
-| H(n)=log n+E(n) lost or replaced by E(n) alone | A bridge, numerator, load, $K/R$, or ratio expression uses $E(n)$ alone where the DNI-to-zeta bridge requires $H(n)$. | Bridge text preserves $H(n)=\log n+E(n)=\tau(n)\log n/2$. | pending |
-| zero-excess floor / critical-line identity confusion | A changed statement identifies the zero-excess floor with the critical line or says RH places primes on or near the floor. | Changed text keeps the zero-excess floor integer-side and the critical line zeta-side. | pending |
-| PROOF.md direct-RH misread | A changed statement says `PROOF.md` directly proves RH or that the direct-RH result is already proved there. | Changed text says `PROOF.md` controls local PGS theorem status, while RH-facing bridge status is separate. | pending |
-| public API/schema rename | A Phase 1 edit renames `Z-Band`, `proxy_z`, `FIXED_POINT_V`, `exact_z_normalize`, committed vectors, output fields, or benchmark schemas without explicit approval. | Public APIs and schemas remain stable, or the diff contains explicit approved migration scope. | pending |
-| generated artifact churn | A Phase 1 edit rewrites historical JSON, CSV, PDF, SVG, PNG, MP3, MP4, benchmark outputs, or archive artifacts without explicit approval. | Generated and historical artifacts are untouched except for separately approved regeneration. | pending |
-| unresolved E(n) symbol collision | A changed file uses `E(n)` for zero-excess while another local `E` meaning remains active without renaming, reservation, or explicit disambiguation. | Each changed file defines `E(n)` as zero-excess before use or resolves unrelated `E` meanings. | pending |
+| missing n > 1 guard | A changed prime-characterization statement says $E(n)=0$ means prime without excluding `1`. | Every prime-characterization statement using $E(n)=0$ includes `n > 1` or an equivalent exclusion of `1`. | cleared |
+| F=-E extremum flip | A changed statement says the selected integer maximizes $E$, minimizes $F$, or otherwise reverses the extremum. | Changed text says maximizing $F$ is equivalent to minimizing $E$, with the leftmost minimum convention where needed. | cleared |
+| H(n)=log n+E(n) lost or replaced by E(n) alone | A bridge, numerator, load, $K/R$, or ratio expression uses $E(n)$ alone where the DNI-to-zeta bridge requires $H(n)$. | Bridge text preserves $H(n)=\log n+E(n)=\tau(n)\log n/2$. | cleared |
+| zero-excess floor / critical-line identity confusion | A changed statement identifies the zero-excess floor with the critical line or says RH places primes on or near the floor. | Changed text keeps the zero-excess floor integer-side and the critical line zeta-side. | cleared |
+| PROOF.md direct-RH misread | A changed statement says `PROOF.md` directly proves RH or that the direct-RH result is already proved there. | Changed text says `PROOF.md` controls local PGS theorem status, while RH-facing bridge status is separate. | cleared |
+| public API/schema rename | A Phase 1 edit renames `Z-Band`, `proxy_z`, `FIXED_POINT_V`, `exact_z_normalize`, committed vectors, output fields, or benchmark schemas without explicit approval. | Public APIs and schemas remain stable, or the diff contains explicit approved migration scope. | cleared |
+| generated artifact churn | A Phase 1 edit rewrites historical JSON, CSV, PDF, SVG, PNG, MP3, MP4, benchmark outputs, or archive artifacts without explicit approval. | Generated and historical artifacts are untouched except for separately approved regeneration. | cleared |
+| unresolved E(n) symbol collision | A changed file uses `E(n)` for zero-excess while another local `E` meaning remains active without renaming, reservation, or explicit disambiguation. | Each changed file defines `E(n)` as zero-excess before use or resolves unrelated `E` meanings. | cleared |
 
 ## Required Scans And Checks
 

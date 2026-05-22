@@ -55,9 +55,11 @@ Use these labels exactly when a page needs a status claim:
 - proved theorem;
 - exact coordinate reformulation;
 - exact zeta compression;
+- source-side residual closure;
 - measured implementation evidence;
 - unresolved bounded-compression obligation;
 - invalidated route;
+- downstream translation bridge;
 - explanatory consequence.
 
 ## Boundaries
