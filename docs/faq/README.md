@@ -55,6 +55,9 @@ of prime placement.
 ## PGS-To-RH Case
 
 - [Affirmative PGS-to-RH documentation bundle](../rh/README.md)
+- Root entry pointers: [README](../../README.md#pgs-to-rh-reading-path),
+  [RESULTS](../../RESULTS.md#pgs-to-rh-reading-path), and
+  [PROOF](../../PROOF.md#pgs-to-rh-reading-path).
 
 ## Local And Global Language
 

@@ -4,21 +4,6 @@
 
 The single live proof reference is [PROOF.md](PROOF.md), including the direct deterministic next-prime theorem.
 
-## PGS-To-RH Reading Path
-
-For the PGS-to-RH argument, read [docs/rh](docs/rh/README.md). `PROOF.md`
-proves the local divisor-count theorems. The RH bundle records the downstream
-chain:
-
-```text
-divisor counts -> PGS local theorems -> DNI-to-zeta compression
--> source-side residual closure -> pole placement/RH sentence
-```
-
-This keeps the proof authority and the RH resolution surface separate:
-`PROOF.md` controls the local theorem status, and `docs/rh` carries the
-affirmative PGS-to-RH reading path built on that source layer.
-
 ## The First Contradiction
 
 Most people learn that prime numbers are fundamentally unpredictable. They appear to pop up at irregular intervals, almost as if they are scattered at random across the number line. Textbooks and popular explanations reinforce this view: primes become rarer as numbers grow larger, the gaps between them can be arbitrarily wide, and there is no simple formula that will always tell you exactly where the next one sits. The common belief is that the only practical ways to find the next prime are to test candidates one by one or to rely on probabilistic estimates. Prime gaps themselves are treated as empty stretches of composites, nothing more than the boring distance you have to cross before the next interesting number arrives.
@@ -90,6 +75,20 @@ For the gap from 23 to 29 the selected composite is 25 and the endpoint is 29. F
 
 This is the larger reversal the repository explores. A prime gap is no longer just a size or a distance. It has a clear internal shape, a selected composite that marks the lowest point inside that shape, and a right endpoint that is fixed by the divisor count returning to 2. The middle is not meaningless; it is full of information. The usual story treats the numbers between primes as an obstacle. Here they are the evidence.
 
+## PGS-To-RH Reading Path
+
+The PGS-to-RH argument starts from the same observable object: divisor counts
+inside prime gaps and endpoint returns to `tau(n)=2`. Read
+[docs/rh](docs/rh/README.md) for the downstream RH chain:
+
+```text
+divisor counts -> PGS local theorems -> DNI-to-zeta compression
+-> source-side residual closure -> pole placement/RH sentence
+```
+
+`PROOF.md` proves the local source theorems. `docs/rh` carries the RH reading
+path built on that source layer.
+
 ## A Different Way To Generate Primes
 
 Because the structure inside each gap is so direct, it becomes possible to [generate the next prime](PRIME_GAP_GENERATOR.md) in a completely different manner from the usual methods.
@@ -117,7 +116,7 @@ The rest of the repository develops these ideas in greater depth, including the 
 - [research/00-index/continuity/START_HERE.md](research/00-index/continuity/START_HERE.md) is the continuity and resume entrypoint for future Codex sessions.
 - [research/00-index/README.md](research/00-index/README.md) maps the research corpus by chapter and status.
 - [PROOF.md](PROOF.md) gives the formal statement and proof of the direct next-prime theorem and the prime-gap maximizer theorem.
-- [docs/rh](docs/rh/README.md) gives the affirmative PGS-to-RH reading path from divisor counts to source-side residual closure and the RH pole-placement sentence.
+- [docs/rh](docs/rh/README.md) gives the PGS-to-RH reading path and status ledger.
 - [LEFTMOST_MINIMUM_DIVISOR_RULE.md](LEFTMOST_MINIMUM_DIVISOR_RULE.md) explores the rule that identifies the special composite inside each gap.
 - [DIVISOR_NORMALIZATION_IDENTITY.md](DIVISOR_NORMALIZATION_IDENTITY.md) explains the normalization that places primes at Z = 1.0.
 - [PRIME_GAP_GENERATOR.md](PRIME_GAP_GENERATOR.md) describes how the generator reads the structure.

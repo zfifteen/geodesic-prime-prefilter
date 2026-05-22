@@ -19,15 +19,16 @@ If a session starts with limited chat context, read this file first.
    | --- | --- | --- |
    | continuity, resume, routing, status map | `research/00-index/continuity/START_HERE.md`, `research/00-index/status-map.md` | Edit only the requested continuity surface unless the user expands scope. |
    | root docs, public framing, theorem wording, RH/PNT demotion | `research/15-documentation-correction/README.md`, `research/15-documentation-correction/index.html` | Keep PGS source structure before zeta, RH, PNT, statistics, and audit language. |
-   | RH bridge, zeta compression, prime-structure program | `research/12-rh-bridge/README.md`, `research/12-rh-bridge/docs/prime-structure-program/index.html`, `research/12-rh-bridge/docs/dni_rh_bridge.md` | Treat PGS as the source object and RH as downstream compressed language. |
+   | RH bridge, PGS-to-RH, zeta compression, prime-structure program | `docs/rh/README.md`, `research/12-rh-bridge/README.md`, `research/12-rh-bridge/docs/prime-structure-program/index.html`, `research/12-rh-bridge/docs/dni_rh_bridge.md` | Read `docs/rh` as the public narrative spine and `research/12-rh-bridge` as the workbench. Treat PGS as the source object and RH as downstream compressed language. |
    | RSA v2, endpoint structure, modulus-link, cryptology | `research/06-cryptology-rsa/experiments/live-solver/rsa-v2/README.md`, `research/06-cryptology-rsa/experiments/live-solver/rsa-v2/ALGORITHM.md`, `research/06-cryptology-rsa/experiments/live-solver/rsa-v2/PGS_CERTIFICATE.md`, `research/06-cryptology-rsa/experiments/live-solver/rsa-v2/METRICS.md` | Preserve resolved, unresolved, audit, and implementation status separately. |
    | generator, C high-scale, `10^1233`, integer-start chamber | `PRIME_GAP_GENERATOR.md`, `docs/specs/prime-gen/high_scale_pgs_c99_generator_requirements.md`, `src/c/high-scale-pgs/Makefile` | Generation stays PGS-native; audit and tests confirm after generation. |
    | chapters 08-10 | `research/08-collatz/README.md`, `research/09-exponents/README.md`, or `research/10-twin-primes/README.md` | Use chapter-local tests listed below. |
    | chapters 11-15 | `research/00-index/status-map.md`, then the chapter README | These chapters have status rows below; not-yet-gated means no status-map validation gate has been recorded. |
    | anything else | the exact file or folder named by the user | Do not widen into the default project center. |
 
-6. Treat `research/12-rh-bridge/` as the default project center only when the
-   newest request does not name another target. The active program is the DNI/PGS
+6. Treat `docs/rh/` as the public narrative entry and
+   `research/12-rh-bridge/` as the technical workbench when the newest request
+   does not name another target. The active program is the DNI/PGS
    Prime-Structure Program:
 
    ```text
@@ -38,6 +39,7 @@ If a session starts with limited chat context, read this file first.
    ```
 
    Start with:
+   - `docs/rh/README.md`;
    - `research/12-rh-bridge/README.md`;
    - `research/12-rh-bridge/docs/prime-structure-program/index.html`;
    - `research/12-rh-bridge/docs/dni_rh_bridge.md`.
@@ -64,7 +66,7 @@ If a session starts with limited chat context, read this file first.
 | C high-scale generator | Apple Silicon GMP/MPFR high-scale path | `src/c/high-scale-pgs/Makefile` | `make -C src/c/high-scale-pgs test` |
 | GWR/DNI | selected integer, DNI, recursive walk | `research/02-gwr-dni/README.md` | chapter tests named in `research/00-index/status-map.md` |
 | RSA endpoint structure | locked endpoint chain and public certificates | `research/06-cryptology-rsa/experiments/live-solver/rsa-v2/README.md` | focused RSA command in `research/00-index/status-map.md` |
-| RH bridge | DNI/PGS source to zeta compression | `research/12-rh-bridge/README.md` | not-yet-gated in the status map unless a fresh row says otherwise |
+| RH bridge | DNI/PGS source to zeta compression | `docs/rh/README.md`, then `research/12-rh-bridge/README.md` | not-yet-gated in the status map unless a fresh row says otherwise |
 | Documentation correction | PGS-first wording audit | `research/15-documentation-correction/README.md` | not-yet-gated in the status map unless a fresh row says otherwise |
 
 ## Research Corpus Reorganization
