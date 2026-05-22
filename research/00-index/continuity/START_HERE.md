@@ -10,10 +10,24 @@ If a session starts with limited chat context, read this file first.
 1. Read `AGENTS.md`.
 2. Read this directory's `continuity_and_shape_contract.md`.
 3. Run `git status --short --untracked-files=all`.
-4. Identify the user's active target from the newest request, not from stale
-   context.
-5. Treat `research/12-rh-bridge/` as the current project center unless the
-   newest request points elsewhere. The active program is the DNI/PGS
+4. Identify the user's active target from the newest request. The newest
+   request overrides stale chat context, prior branch momentum, old session
+   summaries, and the default project center.
+5. Route by the newest request before opening old active-project files:
+
+   | Newest request mentions | Start here | Status rule |
+   | --- | --- | --- |
+   | continuity, resume, routing, status map | `research/00-index/continuity/START_HERE.md`, `research/00-index/status-map.md` | Edit only the requested continuity surface unless the user expands scope. |
+   | root docs, public framing, theorem wording, RH/PNT demotion | `research/15-documentation-correction/README.md`, `research/15-documentation-correction/index.html` | Keep PGS source structure before zeta, RH, PNT, statistics, and audit language. |
+   | RH bridge, zeta compression, prime-structure program | `research/12-rh-bridge/README.md`, `research/12-rh-bridge/docs/prime-structure-program/index.html`, `research/12-rh-bridge/docs/dni_rh_bridge.md` | Treat PGS as the source object and RH as downstream compressed language. |
+   | RSA v2, endpoint structure, modulus-link, cryptology | `research/06-cryptology-rsa/experiments/live-solver/rsa-v2/README.md`, `research/06-cryptology-rsa/experiments/live-solver/rsa-v2/ALGORITHM.md`, `research/06-cryptology-rsa/experiments/live-solver/rsa-v2/PGS_CERTIFICATE.md`, `research/06-cryptology-rsa/experiments/live-solver/rsa-v2/METRICS.md` | Preserve resolved, unresolved, audit, and implementation status separately. |
+   | generator, C high-scale, `10^1233`, integer-start chamber | `PRIME_GAP_GENERATOR.md`, `docs/specs/prime-gen/high_scale_pgs_c99_generator_requirements.md`, `src/c/high-scale-pgs/Makefile` | Generation stays PGS-native; audit and tests confirm after generation. |
+   | chapters 08-10 | `research/08-collatz/README.md`, `research/09-exponents/README.md`, or `research/10-twin-primes/README.md` | Use chapter-local tests listed below. |
+   | chapters 11-15 | `research/00-index/status-map.md`, then the chapter README | These chapters have status rows below; not-yet-gated means no status-map validation gate has been recorded. |
+   | anything else | the exact file or folder named by the user | Do not widen into the default project center. |
+
+6. Treat `research/12-rh-bridge/` as the default project center only when the
+   newest request does not name another target. The active program is the DNI/PGS
    Prime-Structure Program:
 
    ```text
@@ -27,16 +41,31 @@ If a session starts with limited chat context, read this file first.
    - `research/12-rh-bridge/README.md`;
    - `research/12-rh-bridge/docs/prime-structure-program/index.html`;
    - `research/12-rh-bridge/docs/dni_rh_bridge.md`.
-6. If the active target is documentation correction, public framing, RH/PNT
+7. If the active target is documentation correction, public framing, RH/PNT
    wording, or model-demotion language, read:
    - `research/15-documentation-correction/README.md`;
    - `research/15-documentation-correction/index.html`.
-7. If the active target is RSA v2, read:
-   - `research/06-cryptology-rsa/experiments/rsa/v2/README.md`;
-   - `research/06-cryptology-rsa/experiments/rsa/v2/ALGORITHM.md`;
-   - `research/06-cryptology-rsa/experiments/rsa/v2/PGS_CERTIFICATE.md`;
-   - `research/06-cryptology-rsa/experiments/rsa/v2/METRICS.md`.
-8. Run the narrow relevant test before claiming implementation progress.
+8. If the active target is RSA v2, read:
+   - `research/06-cryptology-rsa/experiments/live-solver/rsa-v2/README.md`;
+   - `research/06-cryptology-rsa/experiments/live-solver/rsa-v2/ALGORITHM.md`;
+   - `research/06-cryptology-rsa/experiments/live-solver/rsa-v2/PGS_CERTIFICATE.md`;
+   - `research/06-cryptology-rsa/experiments/live-solver/rsa-v2/METRICS.md`.
+9. Run the narrow relevant test before claiming implementation progress.
+
+## Compact Resume Matrix
+
+| Surface | Object | Read First | Validation Entry |
+| --- | --- | --- | --- |
+| Root theorem status | proved PGS theorems | `PROOF.md` | Theorem status is not bounded by finite tests. |
+| Measured repository surfaces | implementation and audit summaries | `RESULTS.md` | Use exact listed commands or artifact paths before updating claims. |
+| Research routing | corpus location and chapter status | `research/00-index/status-map.md` | Status-map validation rows control migration gate language. |
+| Continuity contract | session bootstrap and shape guardrails | this file, `continuity_and_shape_contract.md` | `git status --short --untracked-files=all` before edits. |
+| Production generator | `p -> q` PGS generator | `PRIME_GAP_GENERATOR.md`, `research/01-generator/README.md` | `python3 -m pytest research/01-generator/tests/test_simple_pgs_generator.py research/02-gwr-dni/tests/test_gwr_dni_recursive_walk.py` |
+| C high-scale generator | Apple Silicon GMP/MPFR high-scale path | `src/c/high-scale-pgs/Makefile` | `make -C src/c/high-scale-pgs test` |
+| GWR/DNI | selected integer, DNI, recursive walk | `research/02-gwr-dni/README.md` | chapter tests named in `research/00-index/status-map.md` |
+| RSA endpoint structure | locked endpoint chain and public certificates | `research/06-cryptology-rsa/experiments/live-solver/rsa-v2/README.md` | focused RSA command in `research/00-index/status-map.md` |
+| RH bridge | DNI/PGS source to zeta compression | `research/12-rh-bridge/README.md` | not-yet-gated in the status map unless a fresh row says otherwise |
+| Documentation correction | PGS-first wording audit | `research/15-documentation-correction/README.md` | not-yet-gated in the status map unless a fresh row says otherwise |
 
 ## Research Corpus Reorganization
 
@@ -154,7 +183,7 @@ point.
 Record substantial RSA/PGS Grok sessions in:
 
 ```text
-research/06-cryptology-rsa/experiments/rsa/v2/grok_sessions/YYYY-MM-DD-topic.md
+research/06-cryptology-rsa/experiments/live-solver/rsa-v2/grok_sessions/YYYY-MM-DD-topic.md
 ```
 
 ## Current RSA v2 State
@@ -164,25 +193,26 @@ cryptology topic is the RSA endpoint-structure law. Read:
 
 ```text
 research/06-cryptology-rsa/docs/endpoint_structure_law.md
-research/06-cryptology-rsa/experiments/rsa/v2/run_experiment.py
-research/06-cryptology-rsa/experiments/rsa/v2/output/summary.json
-research/06-cryptology-rsa/experiments/rsa/v2/output/inference_rows.jsonl
-research/06-cryptology-rsa/experiments/rsa/v2/output/survivor_rows.jsonl
+research/06-cryptology-rsa/experiments/live-solver/rsa-v2/run_experiment.py
+research/06-cryptology-rsa/experiments/live-solver/rsa-v2/output/summary.json
+research/06-cryptology-rsa/experiments/live-solver/rsa-v2/output/inference_rows.jsonl
+research/06-cryptology-rsa/experiments/live-solver/rsa-v2/output/survivor_rows.jsonl
 ```
 
 Strongest supported claim:
 
 ```text
 RSA moduli do expose deterministic endpoint structure. The 40-bit RSA v2 ladder
-rung is audit-confirmed as factor_found = true after public endpoint-class
-inference.
+rung is audit-confirmed after reciprocal deadline-signature correction. The
+64-bit rung is audit-confirmed after public mutual certificate closure. The
+50-bit rung returns unresolved_by_reciprocal_carrier_misalignment before audit.
 ```
 
 Scope limit:
 
 ```text
-The 50-bit and 64-bit OECC rows are public endpoint-class hits with
-factor_found = false. No universal RSA-scale theorem is claimed.
+The live ladder is a measured RSA v2 endpoint-structure result. It is not a
+universal RSA-scale theorem.
 ```
 
 Live resolver predicate:
@@ -202,12 +232,12 @@ resolve iff:
 
 Erratum: earlier OECC_LINEAR_V1 and OECC_RECURSIVE_V2 output used
 `status = resolved` and `p` / `q` for public endpoint classes. That wording was
-wrong for audit-failing rows. The plain result is:
+wrong for audit-failing rows and is historical. The live ladder result is:
 
 ```text
 40-bit: factor_found = true
 50-bit: factor_found = false
-64-bit: factor_found = false
+64-bit: factor_found = true
 ```
 
 The previous pre-correction 40-bit resolution was withdrawn because it depended
@@ -259,9 +289,9 @@ Read these RSA grammar artifacts before continuing the decomposer grammar
 track:
 
 ```text
-research/06-cryptology-rsa/experiments/rsa/v2/GRAMMAR_EVIDENCE_STATUS.md
-research/06-cryptology-rsa/experiments/rsa/v2/GRAMMAR_PATTERN_SCAN.md
-research/06-cryptology-rsa/experiments/rsa/v2/output/grammar_inverse_word_exclusion/summary.json
+research/06-cryptology-rsa/experiments/live-solver/rsa-v2/GRAMMAR_EVIDENCE_STATUS.md
+research/06-cryptology-rsa/experiments/live-solver/rsa-v2/GRAMMAR_PATTERN_SCAN.md
+research/06-cryptology-rsa/experiments/live-solver/rsa-v2/output/grammar_inverse_word_exclusion/summary.json
 ```
 
 The next valid grammar task is to use combined lag-2 + lag-3 reduced words as

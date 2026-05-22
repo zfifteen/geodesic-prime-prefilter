@@ -1,4 +1,8 @@
-"""Probe batch modular factor closure for integer-start PGS chambers."""
+"""Probe batch modular factor closure for integer-start PGS chambers.
+
+Classical divisibility and next-prime calls are benchmark/audit instruments here.
+They do not select PGS-native endpoints.
+"""
 
 from __future__ import annotations
 
@@ -50,7 +54,7 @@ def wheel_open_offsets(n: int, candidate_bound: int) -> list[int]:
 
 
 def witness_for_offset(n: int, offset: int, factor_bound: int) -> int | None:
-    """Return the first positive factor witness within the bound."""
+    """Return the first benchmark divisibility witness within the bound."""
     candidate = int(n) + int(offset)
     max_factor = min(int(factor_bound), candidate - 1)
     for factor in range(2, max_factor + 1):
@@ -75,6 +79,7 @@ def closure_row(
     closed_offsets = sorted(witnesses)
     open_offsets = [offset for offset in offsets if offset not in witnesses]
 
+    # Classical nextprime is an audit label for measuring closure, not inference.
     audit_q = int(nextprime(n)) if audit else None
     audit_gap = None if audit_q is None else audit_q - int(n)
     pre_q_offsets = [

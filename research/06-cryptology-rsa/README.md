@@ -7,8 +7,8 @@ certificates, and unresolved survivor states.
 
 Primary homes:
 
-- `research/06-cryptology-rsa/experiments/rsa/v2/`
-- `research/06-cryptology-rsa/experiments/rsa/v3/`
+- `research/06-cryptology-rsa/experiments/live-solver/rsa-v2/`
+- `research/06-cryptology-rsa/experiments/live-solver/rsa-v3/`
 - `research/06-cryptology-rsa/docs/cryptology/`
 - `research/06-cryptology-rsa/docs/endpoint_structure_law.md`
 - `research/06-cryptology-rsa/docs/semiprime_branch/`
@@ -62,16 +62,19 @@ committed ladder:
 ```text
 rsa_v2_40bit_static_001: factor_found = true
 rsa_v2_50bit_static_001: factor_found = false
-rsa_v2_64bit_static_001: factor_found = false
+rsa_v2_64bit_static_001: factor_found = true
 ```
 
 The 40-bit row is measured and audit-confirmed after public PGS endpoint-class
-inference. The 50-bit and 64-bit rows expose deterministic public endpoint
-structure, but the audit says those endpoint classes are not the factor pairs.
+inference. The 64-bit row is measured and audit-confirmed after public mutual
+certificate closure. The 50-bit row is unresolved before audit and emits no
+public endpoint class.
 
 Erratum: earlier OECC_LINEAR_V1 and OECC_RECURSIVE_V2 wording used `resolved`
 and `p` / `q` for audit-failing endpoint classes. That wording is invalidated.
-The plain result is: public structure found, factors not found.
+The historical 50-bit mutual-closure result is a rejected public-structure
+candidate, not a factor solve. The current live runner preserves the
+audit-confirmed 64-bit endpoint class and rejects the 50-bit false positive.
 
 The former PGS-Shor HTML documentation is archived at
 `archive/2026-05-13-shor-order-entropy-sidecar/` because Shor is downstream
@@ -97,9 +100,9 @@ factorization result unless downstream audit reports `factor_found = true`.
 ## Unresolved State
 
 The RSA v2 factor-pair state remains unresolved where the audit says
-`factor_found = false`. The 50-bit and 64-bit rows are public-structure hits,
-not factor solves. The active task is to find the PGS-native discriminator that
-separates the factor endpoint class from other public endpoint classes.
+`factor_found = false`. The 50-bit row is unresolved before audit and is not a
+factor solve. The active task is to find the PGS-native discriminator that
+separates the factor endpoint class from rejected public closure candidates.
 
 ## Reproduce
 

@@ -18,11 +18,22 @@ HERE = Path(__file__).resolve().parent
 OUT = HERE / "output"
 
 CASES = [
-    {"name": "toy_23x31", "p": 23, "q": 31, "radius": 180},
-    {"name": "toy_43x59", "p": 43, "q": 59, "radius": 260},
-    {"name": "toy_61x83", "p": 61, "q": 83, "radius": 360},
-    {"name": "toy_89x113", "p": 89, "q": 113, "radius": 520},
+    {"name": "toy_23x31", "p": 23, "q": 31},
+    {"name": "toy_43x59", "p": 43, "q": 59},
+    {"name": "toy_61x83", "p": 61, "q": 83},
+    {"name": "toy_89x113", "p": 89, "q": 113},
 ]
+
+WINDOW_SQRT_RATIO = (1, 1)
+
+
+def ceil_ratio(value, numerator, denominator):
+    return (value * numerator + denominator - 1) // denominator
+
+
+def public_radius(n):
+    numerator, denominator = WINDOW_SQRT_RATIO
+    return (math.isqrt(n) * numerator) // denominator
 
 
 def factor_label(factors):
@@ -70,8 +81,9 @@ def direct_kind(row, p, q):
 
 
 def analyze_case(case):
-    p, q, radius = case["p"], case["q"], case["radius"]
+    p, q = case["p"], case["q"]
     n = p * q
+    radius = public_radius(n)
     rows = rows_around(n, radius)
     by_offset = {row["offset"]: row for row in rows}
     direct_offsets = {
@@ -89,6 +101,14 @@ def analyze_case(case):
             if offset not in heldout_offsets:
                 support[offset].append(r)
 
+    max_support = max((len(supporters) for supporters in support.values()), default=0)
+    top_offsets = {
+        offset
+        for offset, supporters in support.items()
+        if len(supporters) == max_support
+    }
+    emitted_count = len(top_offsets)
+
     holes = []
     for offset, supporters in sorted(support.items(), key=lambda item: (-len(item[1]), abs(item[0]), item[0])):
         row = by_offset.get(offset)
@@ -97,13 +117,13 @@ def analyze_case(case):
             "offset": offset,
             "value": n + offset,
             "support": len(supporters),
-            "supporting_factors": supporters[:16],
-            "support_truncated": len(supporters) > 16,
+            "supporting_factors": supporters,
+            "support_truncated": False,
             "audit_kind": audit if audit else ("other_composite" if row else "not_composite"),
             "audit_factorization": row["factorization"] if row else None,
         })
 
-    top_holes = holes[:18]
+    top_holes = [hole for hole in holes if hole["offset"] in top_offsets]
     direct_rows = []
     for offset, kind in sorted(direct_offsets.items(), key=lambda item: item[0]):
         row = by_offset[offset]
@@ -113,10 +133,10 @@ def analyze_case(case):
             "value": row["value"],
             "factorization": row["factorization"],
             "support": len(support.get(offset, [])),
-            "supporting_factors": support.get(offset, [])[:16],
+            "supporting_factors": support.get(offset, []),
         })
 
-    top_direct = sum(1 for hole in top_holes if hole["audit_kind"] in {"p_thread", "q_thread"})
+    emitted_direct_hits = sum(1 for hole in top_holes if hole["audit_kind"] in {"p_thread", "q_thread"})
     supported_direct = sum(1 for row in direct_rows if row["support"] > 0)
     return {
         "name": case["name"],
@@ -126,9 +146,11 @@ def analyze_case(case):
         "radius": radius,
         "row_count_full": len(rows),
         "row_count_heldout": len(heldout),
+        "max_support": max_support,
+        "emitted_hole_count": len(top_holes),
         "direct_row_count": len(direct_rows),
         "supported_direct_count": supported_direct,
-        "top18_direct_hits": top_direct,
+        "emitted_direct_hits": emitted_direct_hits,
         "direct_rows": direct_rows,
         "top_holes": top_holes,
     }
@@ -144,20 +166,21 @@ def write_summary_md(results):
         "",
         "This resets the experiment to the original multiplicative-web object: factor threads around N, direct p/q rows held out for audit, and public thread holes left behind by those held-out intersections.",
         "",
-        "| case | radius | heldout rows | direct rows | supported direct rows | direct hits in top 18 holes |",
-        "| --- | ---: | ---: | ---: | ---: | ---: |",
+        "| case | radius | emitted holes | heldout rows | direct rows | supported direct rows | direct hits in emitted holes |",
+        "| --- | ---: | ---: | ---: | ---: | ---: | ---: |",
     ]
     for result in results:
         lines.append(
-            f"| {result['name']} | {result['radius']} | {result['row_count_heldout']} | "
-            f"{result['direct_row_count']} | {result['supported_direct_count']} | {result['top18_direct_hits']} |"
+            f"| {result['name']} | {result['radius']} | {result['emitted_hole_count']} | "
+            f"{result['row_count_heldout']} | {result['direct_row_count']} | "
+            f"{result['supported_direct_count']} | {result['emitted_direct_hits']} |"
         )
     lines += ["", "## Per-Case Notes", ""]
     for result in results:
         lines.append(f"### {result['name']}")
         lines.append("")
         lines.append("Top supported holes:")
-        for hole in result["top_holes"][:8]:
+        for hole in result["top_holes"]:
             lines.append(
                 f"- offset {hole['offset']}: support {hole['support']}, "
                 f"audit `{hole['audit_kind']}`"
@@ -174,6 +197,7 @@ def render_axis(result):
     radius = result["radius"]
     width = 980
     height = 92
+    marker_radius = height / 8
     mid = width / 2
     scale = (width - 60) / (2 * radius)
     parts = [
@@ -187,8 +211,7 @@ def render_axis(result):
             continue
         x = mid + hole["offset"] * scale
         color = "#dc2626" if hole["audit_kind"] in {"p_thread", "q_thread"} else "#2563eb"
-        r = min(12, 3 + hole["support"])
-        parts.append(f'<circle cx="{x:.1f}" cy="46" r="{r}" fill="{color}" opacity="0.72"/>')
+        parts.append(f'<circle cx="{x:.1f}" cy="46" r="{marker_radius:.1f}" fill="{color}" opacity="0.72"/>')
     parts.append('</svg>')
     return "".join(parts)
 
@@ -197,13 +220,13 @@ def write_index_html(results):
     cards = []
     for result in results:
         rows = []
-        for hole in result["top_holes"][:10]:
+        for hole in result["top_holes"]:
             rows.append(
                 "<tr>"
                 f"<td>{hole['offset']}</td>"
                 f"<td>{hole['support']}</td>"
                 f"<td>{html_escape(hole['audit_kind'])}</td>"
-                f"<td>{html_escape(', '.join(map(str, hole['supporting_factors'][:8])))}</td>"
+                f"<td>{html_escape(', '.join(map(str, hole['supporting_factors'])))}</td>"
                 "</tr>"
             )
         cards.append(
