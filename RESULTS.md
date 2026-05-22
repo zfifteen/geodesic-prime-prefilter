@@ -22,18 +22,17 @@ These are universal theorems under their stated hypotheses. Audit tables certify
 
 ## PGS-To-RH Reading Path
 
-The RH-facing result lives in [docs/rh](docs/rh/README.md). That bundle reads
-the proved local theorem foundation through exact DNI-to-zeta compression and
-source-side residual closure:
+For the PGS-to-RH argument, read [docs/rh](docs/rh/README.md). That bundle
+reads the proved local theorem foundation through exact DNI-to-zeta compression
+and source-side residual closure:
 
 ```text
 divisor counts -> PGS local theorems -> DNI-to-zeta compression
 -> source-side residual closure -> pole placement/RH sentence
 ```
 
-Read this as a status split, not a downgrade. `PROOF.md` controls the local
-PGS theorem status. `docs/rh` carries the affirmative PGS-to-RH chain that
-uses those local theorems as the arithmetic source layer.
+`PROOF.md` controls the local PGS theorem status. `docs/rh` carries the RH
+reading path built on that source layer.
 
 ## PGS Prime Generator
 
@@ -141,7 +140,7 @@ Reference document:
 
 - [LEFTMOST_MINIMUM_DIVISOR_RULE.md](LEFTMOST_MINIMUM_DIVISOR_RULE.md) explains the selected composite.
 - [DIVISOR_NORMALIZATION_IDENTITY.md](DIVISOR_NORMALIZATION_IDENTITY.md) explains the fixed prime-centered score.
-- [docs/rh](docs/rh/README.md) gives the affirmative PGS-to-RH reading path and status ledger.
+- [docs/rh](docs/rh/README.md) gives the PGS-to-RH reading path and status ledger.
 - [PRIME_GAP_GENERATOR.md](PRIME_GAP_GENERATOR.md) explains the minimal `{"p": ..., "q": ...}` generator.
 - [PRIME_GAP_GENERATIVE_MODEL.md](PRIME_GAP_GENERATIVE_MODEL.md) explains the reduced gap-type model.
 - [RECURSIVE_PRIME_WALK.md](RECURSIVE_PRIME_WALK.md) explains the recursive walk, closure condition, cutoff falsification, and dominant `d=4` regime.

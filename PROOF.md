@@ -26,18 +26,17 @@ theorem.
 
 ## PGS-To-RH Reading Path
 
-This document proves the local divisor-count source theorems. The full
-RH-facing chain lives in [docs/rh](docs/rh/README.md), which uses this source
-layer in the downstream order:
+This document proves the direct next-prime rule and the interior maximizer
+theorem. For the PGS-to-RH argument, read [docs/rh](docs/rh/README.md), which
+uses this source layer in the downstream order:
 
 ```text
 divisor counts -> PGS local theorems -> DNI-to-zeta compression
 -> source-side residual closure -> pole placement/RH sentence
 ```
 
-That placement preserves the proof boundary. `PROOF.md` controls the local PGS
-theorems; `docs/rh` records how those theorems enter the affirmative RH
-resolution after exact zeta compression and source-side residual closure.
+`PROOF.md` controls the local PGS theorem status. `docs/rh` carries the RH
+reading path built on that source layer.
 
 ## What This Proof Establishes
 
@@ -685,6 +684,6 @@ integer-level source. Those materials do not make RH, PNT, zero geometry, or
 pole placement the first-level object. They record how the exact arithmetic
 source appears after zeta compression. Read them source-first, not shadow-first:
 
-- [PGS to RH](docs/rh/README.md)
+- [PGS-to-RH reading path](docs/rh/README.md)
 - [RH Bridge Research](research/12-rh-bridge/README.md)
 - [DNI and the Riemann Hypothesis](research/12-rh-bridge/docs/dni_rh_bridge.md)
