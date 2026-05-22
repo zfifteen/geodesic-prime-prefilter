@@ -22,6 +22,12 @@ For the deeper repo-wide scope inventory, see
 For the four-agent risk conference and revised migration gates, see
 [Zero-Excess DNI Risk Conference](zero-excess-risk-conference.md).
 
+Phase 1 launch controls:
+
+- [Notation Contract](notation-contract.md)
+- [Boundary Checklist](phase-1-boundary-checklist.md)
+- [Risk Verdict Gate](phase-1-risk-verdict.md)
+
 ## Branch Scope
 
 Working branch:

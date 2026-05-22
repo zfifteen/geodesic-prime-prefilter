@@ -42,7 +42,7 @@ The lowest count is `4`, and it appears at `91`, `93`, `94`, and `95`. The gap i
 
 That is the Leftmost Minimum-Divisor Rule: inside a prime gap with at least one interior integer, find the lowest divisor count in the interior, then take the first integer where that count appears.
 
-The repository also uses the historical name `GWR` for this rule. The name matters less than the visible arithmetic. The selected composite is the first interior number that carries the minimum divisor count of the gap.
+The repository also uses the historical name `GWR` for this rule. The name matters less than the visible arithmetic. The selected composite is the first interior number that carries the minimum divisor count of the gap. In the preferred zero-excess coordinate, it is the leftmost interior number with minimum excess.
 
 ## What The Rule Contradicts
 
@@ -56,20 +56,22 @@ This is why the rule is a local arithmetic choice rather than a statistical summ
 
 Divisor count already shows the rule in ordinary arithmetic. But the project also wants a single comparison value for every interior composite, so the whole gap can be read as an ordered list of scores.
 
-The score is built around the prime baseline. A prime has divisor count `2`. Under the divisor-normalization score, every prime lands at `Z = 1.0`, while composites land below that value. That makes the selected composite easy to interpret: among the composites inside the gap, it is the one closest to the prime baseline under this normalization.
+The score is built around the prime baseline. A prime greater than `1` has divisor count `2`. Under the zero-excess coordinate, every prime greater than `1` lands at `E = 0`, while composites have positive excess:
 
-The raw score is:
+$$E(n)=\left(\frac{d(n)}{2}-1\right)\ln(n)$$
 
-$$Z_{\mathrm{raw}}(n)=n^{1-d(n)/2}$$
+That makes the selected composite easy to interpret: among the composites inside the gap, it is the first one at the minimum excess level. The historical normalized score remains the exact dual coordinate:
 
-The implementation compares interiors using the logarithm of that score:
+$$Z(n)=n^{1-d(n)/2}=e^{-E(n)}$$
 
-$$L(n)=\ln Z_{\mathrm{raw}}(n)=\left(1-\frac{d(n)}{2}\right)\ln(n)$$
+The logarithm of the dual score is:
 
-Maximizing `Z_raw(n)` and maximizing `L(n)` pick the same selected composite. The score is not decorative language. It is the normalized version of the same choice the divisor-count table already made visible: lowest divisor count first, then leftmost position among ties.
+$$F(n)=\ln Z(n)=\left(1-\frac{d(n)}{2}\right)\ln(n)$$
+
+Since `F(n)=-E(n)`, maximizing `F(n)` is the same ordered comparison as minimizing `E(n)`. Maximizing `Z(n)` picks the same selected composite. The score is not decorative language. It is the normalized version of the same choice the divisor-count table already made visible: lowest divisor count first, then leftmost position among ties.
 
 ## Proof Status
 
-The theorem proved in [PROOF.md](PROOF.md) has two connected parts. First, exact divisor counts determine the next prime after a known prime. Second, inside the resulting prime gap with nonempty interior, the logarithmic comparison function is maximized at exactly the leftmost interior integer with minimum divisor count.
+The theorem proved in [PROOF.md](PROOF.md) has two connected parts. First, exact divisor counts determine the next prime after a known prime. Second, inside the resulting prime gap with nonempty interior, the logarithmic comparison function is maximized at exactly the leftmost interior integer with minimum divisor count. In zero-excess coordinates, this says the selected integer is the leftmost minimum-excess interior integer.
 
 The theorem is universal under its stated hypotheses. Audit tables in `PROOF.md` preserve certification and provenance; they are not limits on the theorem.

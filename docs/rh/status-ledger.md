@@ -32,6 +32,16 @@ These are PGS local theorems. They begin with divisor counts and ordered gap
 interiors. Zeta, pole placement, zero geometry, PNT, and RH are not inputs to
 these theorems.
 
+## Exact Coordinate Reformulation
+
+Status: exact coordinate reformulation.
+
+Zero-Excess DNI is an integer-side coordinate reformulation of the same
+divisor-count source. The zero-excess floor is the integer-side coordinate
+$E(n)=0$ under the $n>1$ prime guard. The critical line is zeta-side coordinate
+language after compression. The floor and the critical line may be compared by
+analogy, but they are not the same object.
+
 ## Exact Zeta Compression
 
 Status: exact identity on `Re(s) > 1`, with the same meromorphic continuation
@@ -57,6 +67,9 @@ R(s)=\frac{e^2}{2}\frac{K(s)}{D(s)}
 =-\frac{\zeta'(s)}{\zeta(s)}
 =\sum_{n\ge1}\frac{\Lambda(n)}{n^s}.
 $$
+
+In Zero-Excess DNI notation, the bridge load is
+$H(n)=\log n+E(n)=\tau(n)\log n/2$, not $E(n)$ alone.
 
 This is an exact zeta compression of the divisor-count source. It is not a
 replacement proof of the local PGS theorems, and `PROOF.md` itself does not

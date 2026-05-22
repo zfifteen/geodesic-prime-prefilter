@@ -16,23 +16,23 @@ The formal proof reference is [PROOF.md](PROOF.md).
 
 It states and proves the direct deterministic next-prime theorem: given a known prime `p`, exact divisor counts determine the next prime `q`.
 
-It also proves the prime-gap maximizer theorem: inside any prime gap with a nonempty interior, the log-score maximizer is exactly the leftmost interior integer with minimum divisor count.
+It also proves the prime-gap maximizer theorem: inside any prime gap with a nonempty interior, the comparison function `F(n)` is maximized exactly at the leftmost interior integer with minimum divisor count. In zero-excess coordinates, `F(n)=-E(n)`, so the same theorem says that this integer is the leftmost minimum-excess interior integer.
 
 These are universal theorems under their stated hypotheses. Audit tables certify finite cases used by the proof and preserve provenance; they are not theorem boundaries.
 
 ## PGS-To-RH Reading Path
 
 For the PGS-to-RH argument, read [docs/rh](docs/rh/README.md). That bundle
-reads the proved local theorem foundation through exact DNI-to-zeta compression
-and source-side residual closure:
+reads the proved local theorem foundation through exact DNI-to-zeta compression,
+with bridge coordinate `H(n)=log n+E(n)`, and source-side residual closure:
 
 ```text
 divisor counts -> PGS local theorems -> DNI-to-zeta compression
 -> source-side residual closure -> pole placement/RH sentence
 ```
 
-`PROOF.md` controls the local PGS theorem status. `docs/rh` carries the RH
-reading path built on that source layer.
+`PROOF.md` controls the local PGS theorem status. It does not itself prove RH.
+`docs/rh` carries the RH reading path built on that source layer.
 
 ## PGS Prime Generator
 
@@ -50,11 +50,19 @@ The current production path has `9588 / 9588` exact PGS outputs with `0` failure
 
 ## Divisor Normalization Identity
 
-The Divisor Normalization Identity is:
+The preferred Divisor Normalization Identity coordinate is zero excess:
+
+$$E(n)=\left(\frac{d(n)}{2}-1\right)\log n$$
+
+For every integer `n > 1`, primes are exactly the zero-excess integers. The
+dual coordinate remains:
 
 $$Z(n)=n^{1-d(n)/2}$$
 
-It collapses every prime to `Z = 1.0` and places composites below that value. It supplies the fixed prime-centered score foundation behind the selected-composite comparison.
+Equivalently, `Z(n)=e^{-E(n)}`. This is an exact coordinate reformulation, not
+a new theorem. It supplies the fixed prime-centered score foundation behind the
+selected-composite comparison: minimizing `E(n)` is the same selection as
+maximizing `Z(n)` or maximizing `F(n)=-E(n)`.
 
 ## Reduced Gap-Type Model
 
@@ -139,7 +147,7 @@ Reference document:
 ## Links Into The Repository
 
 - [LEFTMOST_MINIMUM_DIVISOR_RULE.md](LEFTMOST_MINIMUM_DIVISOR_RULE.md) explains the selected composite.
-- [DIVISOR_NORMALIZATION_IDENTITY.md](DIVISOR_NORMALIZATION_IDENTITY.md) explains the fixed prime-centered score.
+- [DIVISOR_NORMALIZATION_IDENTITY.md](DIVISOR_NORMALIZATION_IDENTITY.md) explains zero excess and the dual fixed prime-centered score.
 - [docs/rh](docs/rh/README.md) gives the PGS-to-RH reading path and status ledger.
 - [PRIME_GAP_GENERATOR.md](PRIME_GAP_GENERATOR.md) explains the minimal `{"p": ..., "q": ...}` generator.
 - [PRIME_GAP_GENERATIVE_MODEL.md](PRIME_GAP_GENERATIVE_MODEL.md) explains the reduced gap-type model.

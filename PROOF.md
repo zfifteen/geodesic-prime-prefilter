@@ -24,19 +24,20 @@ side by exact divisor-count arithmetic. The computation tables in this document
 certify the finite base and implementation surfaces; they are not limits on the
 theorem.
 
-## PGS-To-RH Reading Path
+## Downstream Riemann-Hypothesis Reading
 
 This document proves the direct next-prime rule and the interior maximizer
-theorem. For the PGS-to-RH argument, read [docs/rh](docs/rh/README.md), which
-uses this source layer in the downstream order:
+theorem. The Riemann-hypothesis-facing documentation uses this source layer in
+the downstream order. In that downstream zeta compression, the load is
+`H(n)=log n+E(n)`:
 
 ```text
-divisor counts -> PGS local theorems -> DNI-to-zeta compression
+divisor counts -> local theorems -> zeta compression
 -> source-side residual closure -> pole placement/RH sentence
 ```
 
-`PROOF.md` controls the local PGS theorem status. `docs/rh` carries the RH
-reading path built on that source layer.
+`PROOF.md` controls the local theorem status. It does not itself prove RH. The
+Riemann-hypothesis-facing reading path is built on that source layer.
 
 ## What This Proof Establishes
 
@@ -54,13 +55,12 @@ or restatements of the Prime Number Theorem (PNT) or the Riemann Hypothesis
 (RH).
 
 They are the source-side arithmetic foundation: exact divisor counts, exact
-prime returns, and exact ordered gap interiors. In the RH-facing documentation,
-this same source order is stated plainly: the arithmetic structure inside prime
-gaps proves RH because RH is the zeta-compressed language of that integer
-structure.
+prime returns, and exact ordered gap interiors. RH-facing documentation reads
+that source layer through downstream zeta-compressed language. That downstream
+reading is not a theorem proved by this file.
 
 Zeta, PNT, RH, zero geometry, and pole placement are not inputs to these local
-PGS theorems. The proof starts with the exact divisor-count field and proves
+theorems. The proof starts with the exact divisor-count field and proves
 the arithmetic structure that places the next prime and orders the gap interior.
 RH-facing and PNT-facing language enters downstream, after this integer-level
 source has already been fixed.
@@ -126,6 +126,20 @@ first integer in `I` with that divisor count. Call that integer `w`.
 The comparison value used in this document is
 
 $$F(n)=\left(1-\frac{\tau(n)}{2}\right)\log n$$
+
+The zero-excess coordinate for the same divisor normalization is
+
+$$E(n)=\left(\frac{\tau(n)}{2}-1\right)\log n$$
+
+For every integer `n > 1`, primes are exactly the zero-excess integers. The
+dual multiplicative coordinate is `Z(n)=e^{-E(n)}`. The comparison function in
+this proof is the negative of the excess coordinate:
+
+$$F(n)=-E(n)$$
+
+Thus maximizing `F` is the same ordered comparison as minimizing `E`. The
+selected-integer theorem below is unchanged: its older log-score statement
+translates directly into a leftmost minimum-excess statement.
 
 ## Interior Maximizer Theorem
 
@@ -256,7 +270,7 @@ Because `k > sqrt(w)`, we have `log(k) > log(w) / 2`, and therefore
 
 So the prime-square case is closed.
 
-### Threshold Lemma
+### Witness Threshold Lemma
 
 Assume now that `w` is not a prime square, so `d >= 4`.
 
@@ -289,6 +303,11 @@ closed.
 For fixed `e`, `T(d,e)` increases as `d` increases. Therefore the largest
 threshold for that fixed `e` occurs at `d = e - 1`. Once that row is closed,
 every smaller winner divisor count for the same `e` is also closed.
+
+This is the Odd Adjacent Branch Lemma: the adjacent divisor-count row gives the
+largest threshold that must be closed for the remaining earlier integers.
+Together with the monotonicity in `d` and `e`, it gives the Classification
+Lemma for the threshold rows.
 
 For `d = 4` and `e = 5`, the threshold is `T(4,5) = 4`. Thus every gap with
 `p > 4` is closed by the threshold lemma. The only smaller prime gap with a
@@ -682,8 +701,6 @@ or the Interior Maximizer Theorem.
 RH-facing and PNT-facing language is downstream analytic description of this
 integer-level source. Those materials do not make RH, PNT, zero geometry, or
 pole placement the first-level object. They record how the exact arithmetic
-source appears after zeta compression. Read them source-first, not shadow-first:
-
-- [PGS-to-RH reading path](docs/rh/README.md)
-- [RH Bridge Research](research/12-rh-bridge/README.md)
-- [DNI and the Riemann Hypothesis](research/12-rh-bridge/docs/dni_rh_bridge.md)
+source appears after zeta compression, using `H(n)=log n+E(n)` in the
+zeta-compression load. This file does not itself prove RH. Read them
+source-first, not shadow-first.
