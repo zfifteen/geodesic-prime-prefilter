@@ -6,24 +6,30 @@ the integer records that exist before any zeta or RH vocabulary is introduced.
 The required order is:
 
 ```text
-divisor counts -> PGS local theorems -> DNI-to-zeta compression
--> source-side residual closure -> pole placement/RH sentence
+divisor counts -> zero-excess returns -> local theorems
+-> DNI-to-zeta compression -> residual closure -> pole placement/RH sentence
 ```
 
 ## Arithmetic Objects First
 
-Every positive integer has a divisor count. For an integer `n > 1`, the prime
-state is the exact condition
+Every positive integer has a divisor count. The zero-excess coordinate is
 
 $$
-\tau(n)=2.
+E(n)=\left(\frac{\tau(n)}{2}-1\right)\log n.
+$$
+
+For an integer `n > 1`, the prime state is the exact zero-excess return
+
+$$
+E(n)=0 \iff \tau(n)=2.
 $$
 
 Given a known prime `p`, the next prime `q` is the first later integer whose
-divisor count returns to `2`:
+zero-excess coordinate returns to `0`:
 
 $$
-q=\min\{n>p:\tau(n)=2\}.
+q=\min\{n>p:E(n)=0\}
+=\min\{n>p:\tau(n)=2\}.
 $$
 
 The integers between `p` and `q` form a finite ordered interior:
@@ -32,17 +38,16 @@ $$
 I=\{p+1,\ldots,q-1\}.
 $$
 
-Each integer in that interior is composite, so each has divisor count greater
-than `2`. The first location where the smallest interior divisor count occurs
-is the selected integer:
+Each integer in that interior is composite, so each has positive excess. The
+first location where the smallest interior divisor count occurs is the same
+location where the smallest positive excess occurs:
 
 $$
 w=\min\{n\in I:\tau(n)=\min_{m\in I}\tau(m)\}.
 $$
 
-These are the source objects: the divisor-count field, the return to
-`tau=2`, the finite prime-gap interior, and the selected integer inside that
-interior.
+These are the source objects: the divisor-count field, zero-excess returns,
+the finite prime-gap interior, and the selected integer inside that interior.
 
 ## Local Theorem Authority
 
@@ -52,8 +57,8 @@ It proves two local PGS statements under their stated hypotheses:
 
 | Statement | Status |
 | --- | --- |
-| Exact divisor-count traversal after a known prime returns the next prime. | proved theorem |
-| In a nonempty gap interior, the leftmost integer with minimum divisor count is the unique maximizer of `F(n)=(1-tau(n)/2)log(n)`. | proved theorem |
+| Exact divisor-count traversal after a known prime returns the next prime, equivalently the next `n > p` with `E(n)=0`. | proved theorem |
+| In a nonempty gap interior, the leftmost integer with minimum divisor count is the unique maximizer of `F(n)=(1-tau(n)/2)log(n)`. Since `F(n)=-E(n)`, this is the leftmost argmin of `E(n)`. | proved theorem |
 
 Those theorems fix the arithmetic side of the bundle. If another document
 speaks about local PGS theorem status differently, `PROOF.md` controls.
@@ -82,6 +87,17 @@ $$
 K(s)=\sum_{n\ge1}\frac{\kappa(n)}{n^s}.
 $$
 
+In zero-excess notation, the bridge load is preserved as
+
+$$
+H(n)=\log n+E(n)=\frac{\tau(n)\log n}{2}.
+$$
+
+Equivalently, `H(n)=log n+E(n)=tau(n)log(n)/2`.
+
+The numerator bridge is the `H(n)` load, equivalently the scaled
+divisor-normalization load. It is not `E(n)` alone.
+
 The bridge gives the exact compression
 
 $$
@@ -109,7 +125,9 @@ exact DNI quotient. The fifth is not a mathematical objection because it
 restates the negation of the RH pole-placement sentence without identifying a
 source object that can carry it.
 
-This layer has status: source-side residual closure.
+This layer has status: source-side residual closure. Zero-excess is the
+integer-side source coordinate used to name prime returns and chamber
+minimizers; it does not add another residual category.
 
 ## Pole Placement Downstream
 
@@ -132,6 +150,9 @@ coordinate sentence:
 all nontrivial poles of the continued DNI ratio lie on the critical line
 `Re(s)=1/2`.
 
+The zero-excess floor is integer-side. The critical line is zeta-side. The
+analogy is permitted; identity is not.
+
 Status: source-side residual closure read in pole-placement language.
 
 ## Reading Rule
@@ -139,12 +160,13 @@ Status: source-side residual closure read in pole-placement language.
 For this bundle, RH language enters after the ordered integer field:
 
 1. divisor counts;
-2. prime returns at `tau=2`;
-3. prime-gap interiors;
-4. the leftmost minimum-divisor selected integer;
-5. the exact DNI-to-zeta ratio;
-6. the source-side residual test;
-7. pole-placement/RH language.
+2. zero-excess returns with the `n > 1` prime guard;
+3. local theorems for next-prime traversal and leftmost minimum-excess
+   selection;
+4. the exact DNI-to-zeta ratio with bridge load
+   `H(n)=log n+E(n)=tau(n)log(n)/2`;
+5. the source-side residual test;
+6. pole-placement/RH language.
 
 This keeps the arithmetic source, local theorem status, exact compression, and
 source-side residual closure in their proper order. PGS is not an analytical

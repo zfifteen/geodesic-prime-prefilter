@@ -9,7 +9,7 @@ divisors.
 ## Source Order
 
 ```text
-divisor counts -> prime gap structure -> zeta compression -> RH language
+divisor counts -> zero-excess returns -> prime gap structure -> zeta compression -> RH language
 ```
 
 ## Common Mistake
@@ -34,14 +34,20 @@ The normalized version says the same thing through the Divisor Normalization
 Identity:
 
 $$
-Z(n)=n^{1-\tau(n)/2}.
+E(n)=\left(\frac{\tau(n)}{2}-1\right)\log n.
 $$
 
-The next prime is the first return to `Z=1` after `p`.
+For `n>1`, $E(n)=0$ exactly when $\tau(n)=2$. The next prime is the first
+zero-excess return after `p`. This is the same exact placement rule in a
+different coordinate.
+
+The dual multiplicative coordinate is $Z(n)=e^{-E(n)}$.
 
 ## Status
 
 - proved theorem: `PROOF.md` proves the direct deterministic next-prime rule.
+- exact coordinate reformulation: zero-excess restates first return to
+  $\tau(n)=2$.
 - explanatory consequence: the rule explains exact placement before density
   language enters.
 

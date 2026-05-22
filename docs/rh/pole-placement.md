@@ -1,19 +1,27 @@
 # Pole Placement
 
-The source object is the divisor-count field.
+The source object is the divisor-count field, read through the zero-excess
+coordinate on the integer side.
 
 For each positive integer `n`, let $\tau(n)$ be the number of positive
-divisors of `n`. Primes are exactly the returns to $\tau(n)=2$, and a prime
-gap is the finite interval between two consecutive returns. The local PGS
-theorems begin there: exact divisor counts determine the next prime, and the
-gap interior is ordered by the leftmost minimum-divisor rule.
+divisors of `n`, and define
 
-The RH-facing language enters only after this integer source is compressed into
-Dirichlet-series form.
+$$
+E(n)=\left(\frac{\tau(n)}{2}-1\right)\log n.
+$$
+
+For `n > 1`, primes are exactly the returns to $E(n)=0$, equivalently
+$\tau(n)=2$. A prime gap is the finite interval between two consecutive
+zero-excess returns. The local PGS theorems begin there: exact divisor counts
+determine the next prime, and the gap interior is ordered by the leftmost
+minimum-divisor rule.
+
+The RH-facing language enters only after this integer source is compressed
+into Dirichlet-series form.
 
 ```text
-divisor counts -> PGS local theorems -> DNI-to-zeta compression
--> source-side residual closure -> pole placement/RH sentence
+divisor counts -> zero-excess returns -> local theorems
+-> DNI-to-zeta compression -> residual closure -> pole placement/RH sentence
 ```
 
 ## Source-To-Pole Ladder
@@ -36,6 +44,17 @@ The DNI load is
 $$
 \kappa(n)=\frac{\tau(n)\log n}{e^2}.
 $$
+
+In zero-excess notation the bridge load is
+
+$$
+H(n)=\log n+E(n)=\frac{\tau(n)\log n}{2}.
+$$
+
+Equivalently, `H(n)=log n+E(n)=tau(n)log(n)/2`.
+
+This preserves the existing bridge. `H(n)` is the scaled load behind `K(s)`;
+`E(n)` alone is not substituted for the `D,K,R` identities.
 
 Its Dirichlet series is
 
@@ -138,8 +157,10 @@ $$
 $$
 
 This sentence is downstream coordinate language. The source order remains:
-divisor counts, local PGS theorems, DNI-to-zeta compression, source-side
-residual closure, then pole-placement/RH language. PGS is not an analytical
+divisor counts, zero-excess returns, local PGS theorems, DNI-to-zeta
+compression, source-side residual closure, then pole-placement/RH language.
+The zero-excess floor is integer-side; the critical line is zeta-side. Analogy
+is permitted, identity is not. PGS is not an analytical
 method and does not require a classical zero-estimate or error-term proof to
 close this sentence.
 

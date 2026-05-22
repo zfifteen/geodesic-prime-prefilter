@@ -1,5 +1,7 @@
 # Why can the Prime Number Theorem describe density without placing the next prime?
 
+Proof status: non-authoritative research note
+
 ## Short Answer
 
 The Prime Number Theorem describes the average density of primes. It does not
@@ -8,7 +10,7 @@ identify the next integer where the divisor count returns to two.
 ## Source Order
 
 ```text
-divisor counts -> prime gap structure -> zeta compression -> RH language
+divisor counts -> zero-excess returns -> prime gap structure -> zeta compression -> RH language
 ```
 
 ## Common Mistake
@@ -37,9 +39,15 @@ That rule identifies the exact next return to the prime divisor-count state.
 The density theorem does not do that. It gives global scale. The divisor-count
 rule gives exact local placement.
 
+Zero-excess says the same thing in the DNI coordinate: for `n>1`, primes are
+exactly the returns to $E(n)=0$. The Prime Number Theorem does not place that
+next zero-excess return.
+
 ## Status
 
 - proved theorem: direct next-prime placement is proved in `PROOF.md`.
+- exact coordinate reformulation: zero-excess is a local integer-side
+  coordinate for the same return.
 - explanatory consequence: density language is downstream from exact
   placement.
 

@@ -8,7 +8,7 @@ zeta-side language that records that object after compression.
 ## Source Order
 
 ```text
-divisor counts -> prime gap structure -> zeta compression -> RH language
+divisor counts -> zero-excess returns -> prime gap structure -> zeta compression -> RH language
 ```
 
 ## Common Mistake
@@ -23,8 +23,12 @@ It places primes by the condition `tau(n)=2`, orders the interior of each prime
 gap, and centers the prime state through the divisor normalization:
 
 $$
-Z(n)=n^{1-\tau(n)/2}.
+E(n)=\left(\frac{\tau(n)}{2}-1\right)\log n.
 $$
+
+For `n>1`, the zero-excess returns $E(n)=0$ are exactly the primes. This is an
+exact coordinate reformulation of the divisor-count source, not a new theorem
+and not an RH-side replacement for the source.
 
 The classical RH sentence belongs to the analytic layer. It speaks in the
 coordinates of zeta zeros. That sentence is a compressed description of the
@@ -37,6 +41,8 @@ that field in analytic language.
 ## Status
 
 - proved theorem: the local source laws are proved in `PROOF.md`.
+- exact coordinate reformulation: zero-excess is the integer-side DNI
+  coordinate.
 - exact zeta compression: the bridge identifies the analytic expression
   recovered from the source.
 - explanatory consequence: RH is read after the source is fixed.

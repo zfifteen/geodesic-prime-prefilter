@@ -1,5 +1,7 @@
 # Why is analytical-proof expectation the wrong frame?
 
+Proof status: non-authoritative research note
+
 ## Short Answer
 
 Prime gap structure is not an analytical method. It does not prove RH by
@@ -9,7 +11,7 @@ zero-control argument.
 ## Source Order
 
 ```text
-divisor counts -> prime gap structure -> zeta compression -> RH language
+divisor counts -> zero-excess returns -> prime gap structure -> zeta compression -> RH language
 ```
 
 ## Common Mistake
@@ -27,9 +29,12 @@ divisor-count field $\tau(n)$.
 The source order fixes the arithmetic carrier first:
 
 - primes are exactly the returns to $\tau(n)=2$;
+- for `n>1`, those same returns are the zero-excess returns $E(n)=0$;
 - the endpoint chain is fixed by $q=\min\{n>p:\tau(n)=2\}$;
 - nonempty gap interiors are ordered by the leftmost minimum-divisor rule;
 - the log-weight source is $\tau(n)\log n$;
+- in zero-excess notation, the bridge load is
+  $H(n)=\log n+E(n)=\tau(n)\log n/2$;
 - the DNI quotient compresses the same source into
   $R(s)=(e^2/2)K(s)/D(s)=-\zeta'(s)/\zeta(s)$.
 
@@ -55,7 +60,8 @@ source object that can carry that possibility.
 When a review returns to zero estimates, prime-counting error terms, or an
 unspecified "global analytic property," stop and correct the frame. The review
 has left the source order and is treating prime gap structure as an analytical
-method. The right question is:
+method. Zero-excess does not change that: it is an integer-side coordinate, not
+a zero-control technique. The right question is:
 
 ```text
 What source-side residual remains in the exact DNI quotient?
@@ -68,6 +74,8 @@ objection to prime gap structure.
 
 - proved theorem: local prime placement and interior ordering are controlled by
   `PROOF.md`.
+- exact coordinate reformulation: zero-excess rewrites the source-side DNI
+  coordinate without adding a new theorem.
 - exact zeta compression: the DNI quotient identifies the downstream analytic
   record of the source.
 - explanatory consequence: analytical-proof expectation is a category error.

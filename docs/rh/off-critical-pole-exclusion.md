@@ -2,11 +2,19 @@
 
 The arithmetic source is the divisor-count field $\tau(n)$.
 
-For each integer `n > 1`, prime return means $\tau(n)=2$. Given a known prime
-`p`, the next endpoint is fixed by the first later return to that value:
+Define the zero-excess coordinate by
 
 $$
-q=\min\{n>p:\tau(n)=2\}.
+E(n)=\left(\frac{\tau(n)}{2}-1\right)\log n.
+$$
+
+For each integer `n > 1`, prime return means $E(n)=0$, equivalently
+$\tau(n)=2$. Given a known prime `p`, the next endpoint is fixed by the first
+later return to that value:
+
+$$
+q=\min\{n>p:E(n)=0\}
+=\min\{n>p:\tau(n)=2\}.
 $$
 
 Between consecutive endpoints, the chamber interior is the finite ordered set
@@ -23,12 +31,14 @@ $$
 F(n)=\left(1-\frac{\tau(n)}{2}\right)\log n.
 $$
 
+Since $F(n)=-E(n)$, the same source theorem says the selected integer is the
+leftmost argmin of $E(n)$ in the chamber interior.
+
 So the source order is fixed before any analytic vocabulary enters:
 
 ```text
-divisor-count source -> tau(n)=2 prime returns -> endpoint closure
--> chamber log-weight order -> DNI compression -> source-side residual test
--> pole placement
+divisor counts -> zero-excess returns -> local theorems
+-> DNI-to-zeta compression -> residual closure -> pole placement/RH sentence
 ```
 
 ## The Objection
@@ -59,6 +69,18 @@ with Dirichlet series
 $$
 K(s)=\sum_{n \ge 1}\frac{\kappa(n)}{n^s}.
 $$
+
+In zero-excess notation, the bridge load is
+
+$$
+H(n)=\log n+E(n)=\frac{\tau(n)\log n}{2}.
+$$
+
+Equivalently, `H(n)=log n+E(n)=tau(n)log(n)/2`.
+
+The zero-excess coordinate names the integer-side return and chamber
+minimizer. It does not replace the `D,K,R` quotient, and it does not create a
+new residual category.
 
 Since
 
@@ -125,7 +147,7 @@ are finite:
 | --- | --- | --- |
 | 1. Failed identity in $D,K,R$ | The compression would need $D(s)\neq\zeta(s)^2$, $K(s)\neq-D'(s)/e^2$, or $R(s)\neq-\zeta'(s)/\zeta(s)$. | Closed by exact identities. |
 | 2. Independent prime-gap or gap-length freedom | The endpoint sequence would need degrees of freedom not fixed by $\tau(n)=2$ returns. | Closed by endpoint closure: $q=\min\{n>p:\tau(n)=2\}$ fixes every next endpoint from the divisor-count field. |
-| 3. Chamber log-weight residual | The chamber ordering would need a log-weight term outside the DNI load. | Closed by the PGS chamber order and derivative identity: the log-weight source is $\tau(n)\log n$, and that source is exactly the numerator load $K(s)=-D'(s)/e^2$. |
+| 3. Chamber log-weight residual | The chamber ordering would need a log-weight term outside the DNI load. | Closed by the PGS chamber order and derivative identity: the log-weight source is $\tau(n)\log n$, equivalently $H(n)=\log n+E(n)=\tau(n)\log n/2$ after scaling, and that source is exactly the numerator load $K(s)=-D'(s)/e^2$. |
 | 4. Multiplicative or divisor-count residual | The factor-pair source would need an additional multiplicative coefficient field outside $\tau(n)$. | Closed by $D(s)=\zeta(s)^2$: the ordered factor-pair count is exactly $\tau(n)$, and the quotient $K(s)/D(s)$ exhausts the divisor-count source used by the bridge. |
 | 5. Conclusion-only residual | The critic says the whole $\tau(n)$ sequence could carry an off-critical pole, but names no failed identity, no independent endpoint freedom, no log-weight remainder, and no extra divisor-count field. | Not a mathematical objection. It restates the negation of the pole-placement conclusion without identifying a source object that could carry it. |
 
@@ -159,7 +181,7 @@ The positive source-side bridge is:
 ```text
 tau(n) fixes prime returns -> endpoint closure fixes gap lengths
 -> chamber order fixes the log-weight source -> DNI quotient exhausts tau(n)
-and tau(n)log n -> no off-critical source residual remains
+and H(n)=log n+E(n)=tau(n)log(n)/2 -> no off-critical source residual remains
 ```
 
 Therefore nontrivial off-critical poles of $R(s)$ would require a surviving
