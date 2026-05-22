@@ -150,6 +150,23 @@ order:
 divisor counts -> DNI/GWR prime placement -> zeta compression -> RH language
 ```
 
+## Phase 9 Chapters 11-15 Routing
+
+Status: mapped, with explicit validation state.
+
+Chapters 11 through 15 are now routed in the corpus map. A chapter marked
+`not-yet-gated` has a home and a status description, but no status-map
+validation gate has been recorded for that chapter in this file.
+
+The C high-scale implementation has its own validation entrypoint:
+
+```text
+make -C src/c/high-scale-pgs test
+```
+
+That command builds and runs the Apple Silicon GMP/MPFR C high-scale tests. It
+confirms the C implementation surface; it does not change theorem status.
+
 ## Migration Status
 
 | Chapter | Status | Validation | Next Action |
@@ -165,6 +182,12 @@ divisor counts -> DNI/GWR prime placement -> zeta compression -> RH language
 | `08-collatz` | migrated | `python3 -m pytest research/08-collatz/tests` passed, 55 tests | Contained-family migration complete. |
 | `09-exponents` | migrated | `python3 -m pytest research/09-exponents/tests` passed, 68 tests | Contained-family migration complete. |
 | `10-twin-primes` | migrated | `python3 -m pytest research/10-twin-primes/tests` passed, 48 tests | Contained-family migration complete. |
+| `11-gap-ridge` | mapped, not-yet-gated | no status-map validation gate recorded | Add a focused chapter validation row after the ridge tests are run for this migrated surface. |
+| `12-rh-bridge` | active project center, not-yet-gated | no status-map validation gate recorded | Keep PGS source structure upstream of zeta/RH language; add a focused bridge validation row after the chapter tests are run. |
+| `13-prime-spiral` | mapped, not-yet-gated | no status-map validation gate recorded | Keep diagnostics measured; add a focused chapter validation row after the modular-lift tests are run. |
+| `14-sha-nonce` | mapped, not-yet-gated | no status-map validation gate recorded | Preserve SHA nonce evidence as measured probe output; add a focused chapter validation row after nonce tests are run. |
+| `15-documentation-correction` | active documentation correction, not-yet-gated | no status-map validation gate recorded | Continue correcting wording that inverts PGS source order; add a gate only when a concrete validation command or audit checklist exists. |
+| `src/c/high-scale-pgs` | C high-scale implementation surface | entrypoint: `make -C src/c/high-scale-pgs test` | Use as the C high-scale make test route before claiming C implementation progress. |
 
 ## Validation Log
 
@@ -199,7 +222,7 @@ divisor counts -> DNI/GWR prime placement -> zeta compression -> RH language
   102 passed in 248.72s
 
 2026-05-13:
-  python3 research/06-cryptology-rsa/experiments/rsa/v2/shor_order_entropy_probe.py
+  python3 research/06-cryptology-rsa/experiments/order-entropy-sidecars/rsa-v2/shor_order_entropy_probe.py
   status: mixed_public_pgs_collapse, 180 baseline phase bits -> 100 residual phase bits across 2 audit rows
 
   python3 -m pytest research/06-cryptology-rsa/tests/test_rsa_v2_scripts.py -q

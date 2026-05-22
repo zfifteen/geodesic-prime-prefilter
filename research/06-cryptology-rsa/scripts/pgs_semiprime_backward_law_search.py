@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Search pure-PGS backward lane laws on a toy odd-semiprime surface."""
+"""Search pure-PGS backward lane laws on a toy odd-semiprime surface.
+
+Classical factor and primality checks build the toy corpus and audit lane labels.
+They do not rank candidates or define the PGS-native backward law.
+"""
 
 from __future__ import annotations
 
@@ -73,7 +77,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def validate_anchor(anchor: int) -> None:
-    """Validate one composite anchor in the exact field regime."""
+    """Validate one benchmark composite anchor in the exact field regime."""
     if anchor < 4:
         raise ValueError("anchor must be at least 4")
     if anchor > MAX_FIELD_VALUE:
@@ -104,7 +108,7 @@ def previous_prime_before(n: int, block: int = SCAN_BLOCK) -> int:
 
 
 def prime_cube_root(n: int) -> int | None:
-    """Return the prime cube root of n when n is exactly p^3."""
+    """Return the audit prime-cube label when n is exactly p^3."""
     root, exact = gmpy2.iroot(gmpy2.mpz(n), 3)
     if not exact or not gmpy2.is_prime(root):
         return None
@@ -129,7 +133,7 @@ def carrier_family(n: int, divisor_count: int) -> str:
 
 
 def factor_pair(n: int) -> tuple[int, int]:
-    """Return the deterministic odd distinct prime factor pair for one toy semiprime."""
+    """Return the toy-corpus factor pair used for audit labels."""
     for divisor in range(3, int(math.isqrt(n)) + 1, 2):
         if n % divisor == 0:
             other = n // divisor
@@ -139,7 +143,7 @@ def factor_pair(n: int) -> tuple[int, int]:
 
 
 def generate_toy_corpus(max_n: int) -> list[int]:
-    """Return all odd distinct semiprimes up to one deterministic cutoff."""
+    """Return the deterministic toy semiprime corpus for law benchmarking."""
     if max_n < 15:
         return []
 
@@ -338,7 +342,7 @@ def build_candidate_pool(
 
 
 def odd_candidate_lane_factors(candidate: dict[str, object], left_factor: int, right_factor: int) -> set[int]:
-    """Return the factor-side intersection for one odd-semiprime candidate."""
+    """Return the audit lane-label intersection for one odd-semiprime candidate."""
     if str(candidate["kind"]) != "odd_semiprime":
         return set()
 
