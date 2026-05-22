@@ -72,6 +72,24 @@ def odd_prime_stream(limit: int) -> tuple[int, ...]:
     return tuple(primes)
 
 
+def select_best_threads(n_value: int, count: int) -> tuple[int, ...]:
+    """Public, cheap, N-adaptive thread selection.
+    Scores primes by residue quality + diversity of short distances they can support.
+    """
+    pool = odd_prime_stream(count * 5)
+    scored = []
+    radius = public_radius(n_value)
+    for p in pool:
+        r = n_value % p
+        r2 = p - r
+        residue_quality = min(r, r2)
+        diversity = min(12, (radius // (p * 2)) + 2)
+        score = residue_quality * 10 - diversity
+        scored.append((score, p))
+    scored.sort()
+    return tuple(p for _, p in scored[:count])
+
+
 def crt_pair(base_modulus: int, base_residue: int, next_modulus: int, next_residue: int) -> tuple[int, int]:
     inverse = pow(base_modulus, -1, next_modulus)
     advance = ((next_residue - base_residue) * inverse) % next_modulus
@@ -187,27 +205,67 @@ def depth_counts(rows: list[dict[str, object]]) -> dict[str, int]:
 def nominate(n_value: int, args: argparse.Namespace) -> tuple[list[dict[str, object]], dict[str, object]]:
     radius = public_radius(n_value)
     thread_count = ceil_ratio(public_radius(n_value).bit_length(), args.thread_count_num, args.thread_count_den)
-    thread_set = odd_prime_stream(thread_count)
-    min_depth = ceil_ratio(thread_count, args.depth_num, args.depth_den)
     max_candidates = (original_space_size(n_value) + args.retention_divisor - 1) // args.retention_divisor
-    candidates: dict[int, dict[str, object]] = {}
-    extend_assignments(n_value, radius, thread_set, min_depth, 0, 2, 1, 1, candidates)
+
+    # Phase 1: Very aggressive broad pass (high budget, almost full power, very low bar)
+    cheap_thread_count = max(5, int(thread_count * 0.9))
+    cheap_min_depth = 1   # almost no filtering in Phase 1
+    cheap_threads = select_best_threads(n_value, cheap_thread_count)
+    candidates = {}
+    extend_assignments(n_value, radius, cheap_threads, cheap_min_depth, 0, 2, 1, 1, candidates)
     qualified = list(candidates.values())
-    rows = sorted(qualified, key=lambda row: row["score"], reverse=True)[:max_candidates]
+
+    # Phase 2: Extremely aggressive selective deepening (take a huge number of survivors)
+    if qualified:
+        m = min(2000, len(qualified) * 8)   # very large selection into deepening
+        qualified.sort(key=lambda r: r.get("score", [0]), reverse=True)
+        to_deepen = qualified[:m]
+
+        # Use more threads in Phase 2 for higher quality
+        deep_thread_count = thread_count + max(3, thread_count // 3)
+        full_threads = select_best_threads(n_value, deep_thread_count)
+        min_depth = ceil_ratio(thread_count, args.depth_num, args.depth_den)
+
+        deepened = {}
+        for row in to_deepen:
+            d = row["distance"]
+            left, right, shared = thread_profile(n_value, d, full_threads)
+            total = len(left) + len(right)
+            depth = total
+            if depth >= min_depth:
+                deepened[d] = {
+                    "distance": d,
+                    "triangulation_depth": depth,
+                    "left_thread_count": len(left),
+                    "right_thread_count": len(right),
+                    "total_thread_count": total,
+                    "shared_thread_count": len(shared),
+                    "left_threads": list(left),
+                    "right_threads": list(right),
+                    "shared_threads": list(shared),
+                    "score": [depth, len(shared), total, -d],
+                }
+        qualified = list(deepened.values())
+
+    rows = sorted(qualified, key=lambda row: row.get("score", [0]), reverse=True)[:max_candidates]
+
+    # Use full_threads for reporting if available
+    active_threads = len(select_best_threads(n_value, thread_count)) if 'full_threads' in locals() else thread_count
+
     explanatory_fields = {
         "retention_divisor": args.retention_divisor,
         "thread_count_ratio": f"{args.thread_count_num}/{args.thread_count_den}",
         "depth_ratio": f"{args.depth_num}/{args.depth_den}",
-        "active_thread_count": thread_count,
-        "thread_set": list(thread_set),
-        "min_depth": min_depth,
+        "active_thread_count": active_threads,
+        "thread_set": list(select_best_threads(n_value, min(20, thread_count))),
+        "min_depth": ceil_ratio(thread_count, args.depth_num, args.depth_den),
         "max_candidates": max_candidates,
         "pre_cap_qualified_count": len(qualified),
-        "max_observed_triangulation_depth": max((int(row["triangulation_depth"]) for row in qualified), default=0),
-        "depth_counts_pre_cap": depth_counts(qualified),
+        "max_observed_triangulation_depth": max((int(row.get("triangulation_depth", 0)) for row in qualified), default=0),
+        "depth_counts_pre_cap": depth_counts(qualified) if qualified else {},
         "cap_active": len(qualified) > max_candidates,
-        "emitted_depth_counts": depth_counts(rows),
-        "cutoff_triangulation_depth": int(rows[-1]["triangulation_depth"]) if rows else 0,
+        "emitted_depth_counts": depth_counts(rows) if rows else {},
+        "cutoff_triangulation_depth": int(rows[-1].get("triangulation_depth", 0)) if rows else 0,
         "pre_cap_to_emitted_ratio": (len(qualified) / len(rows)) if rows else None,
     }
     return rows, explanatory_fields
