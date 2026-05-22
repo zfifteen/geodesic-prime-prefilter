@@ -4,12 +4,14 @@
 
 Zeta compression records the same integer arithmetic in analytic form. It does
 not create prime order. It packages divisor counts, prime powers, and related
-integer structure into functions of a complex variable.
+integer structure into functions of a complex variable. In Zero-Excess DNI
+notation, the bridge load is $H(n)=\log n+E(n)=\tau(n)\log(n)/2$.
 
 ## Source Order
 
 ```text
-divisor counts -> prime gap structure -> zeta compression -> RH language
+divisor counts -> zero-excess prime returns -> PGS local theorems
+-> DNI-to-zeta compression -> source-side residual closure -> RH language
 ```
 
 ## Common Mistake
@@ -31,11 +33,23 @@ $$
 D(s)=\zeta(s)^2.
 $$
 
-The derivative of this series carries the weighted divisor-count load. Define
-the weighted load by:
+The derivative of this series carries the weighted divisor-count load. In
+Zero-Excess DNI notation, define the bridge load by:
 
 $$
-K(s)=-\frac{1}{e^2}D'(s),
+H(n)=\log n+E(n)=\frac{\tau(n)\log n}{2}.
+$$
+
+Then:
+
+$$
+\sum_{n\ge 1}\frac{H(n)}{n^s}=-\frac12D'(s).
+$$
+
+Equivalently, with the existing normalization:
+
+$$
+K(s)=-\frac{1}{e^2}D'(s).
 $$
 
 On the same half-plane, the DNI ratio gives:
@@ -47,11 +61,18 @@ $$
 
 That expression is the classical prime-power detector. The bridge is exact.
 The analytic expression is a compressed record of divisor-count arithmetic.
+$E(n)$ alone is not the numerator. It is the source-side excess above the prime
+floor. The zeta bridge numerator is the full load
+$H(n)=\log n+E(n)=\tau(n)\log(n)/2$.
 
 ## Status
 
 - exact zeta compression: the bridge identifies the analytic object recovered
   from divisor-count data.
+- exact coordinate reformulation: Zero-Excess DNI supplies $E(n)$ and
+  $Z(n)=e^{-E(n)}$ as same-source coordinates.
+- source-side residual closure: off-critical residual closure is a later
+  source-side step, not the divisor-series identity itself.
 - explanatory consequence: zeta language reads the source structure after
   compression.
 

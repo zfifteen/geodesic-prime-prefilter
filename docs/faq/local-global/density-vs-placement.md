@@ -8,7 +8,7 @@ which integer is the next prime.
 ## Source Order
 
 ```text
-divisor counts -> prime gap structure -> zeta compression -> RH language
+divisor counts -> zero-excess returns -> prime gap structure -> zeta compression -> RH language
 ```
 
 ## Common Mistake
@@ -37,6 +37,10 @@ $$
 q=\min\{n>p:\tau(n)=2\}.
 $$
 
+In zero-excess coordinates, this is the first return to $E(n)=0$ after `p`,
+with the prime characterization guarded by `n>1`. The coordinate changes the
+reading surface, not the theorem.
+
 Prime gap structure also reads the ordered composite interior between `p` and
 `q`. That interior structure is not supplied by an average density law. It is
 read directly from the integer divisor-count field.
@@ -44,6 +48,8 @@ read directly from the integer divisor-count field.
 ## Status
 
 - proved theorem: exact next-prime placement and gap-interior ordering.
+- exact coordinate reformulation: zero-excess restates exact placement as
+  first return to the floor.
 - explanatory consequence: density descriptions do not replace the source
   structure.
 

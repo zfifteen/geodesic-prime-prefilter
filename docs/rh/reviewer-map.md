@@ -3,8 +3,8 @@
 Check the bundle in this order:
 
 ```text
-divisor counts -> PGS local theorems -> DNI-to-zeta compression
--> source-side residual closure -> pole placement/RH sentence
+divisor counts -> zero-excess returns -> local theorems
+-> DNI-to-zeta compression -> residual closure -> pole placement/RH sentence
 ```
 
 The review question is not whether each page says something RH-adjacent. The
@@ -15,8 +15,13 @@ status to each layer.
 
 1. [Source order](source-order.md)
 
-   Confirm that the document begins from divisor counts and PGS local
-   theorems, not from zeta zeros, pole language, PNT, or RH.
+   Confirm that the document begins from divisor counts, the zero-excess
+   coordinate
+   $E(n)=((\tau(n)/2)-1)\log n$, and the `n > 1` guard for prime-zero
+   language. It must not begin from zeta zeros, pole language, PNT, or RH.
+
+   Check the local theorem translation: `F(n)=-E(n)`, so `argmax F` is the
+   leftmost argmin of `E(n)`.
 
 2. [DNI-to-zeta compression](dni-to-zeta-compression.md)
 
@@ -32,7 +37,9 @@ status to each layer.
    $$
 
    This is the compression layer. It must not be presented as the source of
-   PGS local theorems.
+   PGS local theorems. In zero-excess wording, preserve the bridge load exactly:
+   $H(n)=\log n+E(n)=\tau(n)\log(n)/2$. Do not replace the `D,K,R` identities
+   with $E(n)$ alone.
 
 3. [Off-critical pole exclusion](off-critical-pole-exclusion.md)
 
@@ -60,6 +67,9 @@ status to each layer.
    for every nontrivial zero `rho` of `zeta(s)`, or equivalently every
    nontrivial pole of `R(s)`.
 
+   Check the category boundary: the zero-excess floor is integer-side, and the
+   critical line is zeta-side. Analogy yes, identity no.
+
 6. [Status ledger](status-ledger.md)
 
    Check that proved theorem, exact zeta compression, explanatory consequence,
@@ -69,6 +79,8 @@ status to each layer.
 ## Status Discipline
 
 - Proved local PGS theorems are controlled by `PROOF.md`.
+- Zero-Excess DNI is an exact coordinate reformulation of the same source
+  arithmetic. For `n > 1`, `E(n)=0` is prime-zero language.
 - Exact DNI-to-zeta compression is controlled by the bridge identity.
 - Source-side off-critical-pole residual closure is controlled by
   `off-critical-pole-exclusion.md`.
@@ -86,6 +98,10 @@ status to each layer.
 Reject the page for revision if it:
 
 - starts from zero geometry before divisor counts;
+- uses `E(n)=0` to characterize primes without the `n > 1` guard;
+- replaces `H(n)=log n+E(n)=tau(n)log(n)/2` or the `D,K,R` bridge with
+  `E(n)` alone;
+- identifies the zero-excess floor with the critical line;
 - treats RH as an input to PGS local theorems;
 - calls proved local PGS theorems empirical approximations;
 - treats `PROOF.md` as proving RH rather than the local PGS theorems;

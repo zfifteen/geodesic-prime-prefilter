@@ -3,8 +3,8 @@
 The explicit formula belongs downstream of the source order:
 
 ```text
-divisor counts -> PGS local theorems -> DNI-to-zeta compression
--> source-side residual closure -> pole placement/RH sentence
+divisor counts -> zero-excess returns -> local theorems
+-> DNI-to-zeta compression -> residual closure -> pole placement/RH sentence
 ```
 
 This page records the downstream analytic bridge surface. It translates the
@@ -18,6 +18,25 @@ The established compression starts with divisor counts:
 $$
 D(s)=\sum_{n\ge1}\frac{\tau(n)}{n^s}=\zeta(s)^2.
 $$
+
+The zero-excess coordinate on the integer side is
+
+$$
+E(n)=\left(\frac{\tau(n)}{2}-1\right)\log n.
+$$
+
+For `n > 1`, prime returns are exactly $E(n)=0$. In a nonempty gap interior,
+the local theorem function satisfies $F(n)=-E(n)$, so the selected integer is
+the leftmost argmin of $E(n)$. That is the source-side coordinate. It is not
+the explicit-formula object.
+
+The bridge load remains
+
+$$
+H(n)=\log n+E(n)=\frac{\tau(n)\log n}{2}.
+$$
+
+Equivalently, `H(n)=log n+E(n)=tau(n)log(n)/2`.
 
 With the DNI normalization series
 
@@ -87,7 +106,7 @@ fixed chamber endpoints -> local counting error -> explicit-formula shadow
 The bridge claim is:
 
 - PGS local theorems determine exact source-side chamber structure from divisor
-  counts.
+  counts and zero-excess returns.
 - DNI-to-zeta compression recovers
   `R(s) = -zeta'(s)/zeta(s)`.
 - The coefficients of `R(s)` are `Lambda(n)`.
@@ -99,8 +118,9 @@ The bridge claim is:
   prime-gap endpoint structure.
 
 This is a downstream analytic bridge. The source-side closure belongs to the
-local PGS theorems, exact DNI compression, and the off-critical residual test,
-not to a classical zero-estimate or prime-counting error-term argument.
+local PGS theorems, exact DNI compression with
+`H(n)=log n+E(n)=tau(n)log(n)/2`, and the off-critical residual test, not to a
+classical zero-estimate or prime-counting error-term argument.
 
 ## Translation Status
 

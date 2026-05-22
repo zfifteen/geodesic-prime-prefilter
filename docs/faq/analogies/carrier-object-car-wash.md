@@ -9,7 +9,7 @@ structure of the integers.
 ## Source Order
 
 ```text
-divisor counts -> prime gap structure -> zeta compression -> RH language
+divisor counts -> zero-excess returns -> prime gap structure -> zeta compression -> RH language
 ```
 
 ## Common Mistake
@@ -33,6 +33,7 @@ Prime gap structure carries the object:
 
 - divisor counts on the integer line;
 - exact prime returns at `tau(n)=2`;
+- the same prime returns as zero-excess returns $E(n)=0$ for `n>1`;
 - ordered composite interiors between consecutive primes;
 - zeta compression that records the same source.
 
@@ -45,6 +46,8 @@ is read.
 - explanatory consequence: the source object must be carried into the
   downstream reading.
 - proved theorem: the carried local structure is proved in `PROOF.md`.
+- exact coordinate reformulation: zero-excess is part of the carried integer
+  object.
 - exact zeta compression: the analytic bridge records that carried source.
 
 ## Related Docs

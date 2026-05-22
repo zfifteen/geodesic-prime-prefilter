@@ -9,7 +9,7 @@ between endpoints.
 ## Source Order
 
 ```text
-divisor counts -> prime gap structure -> zeta compression -> RH language
+divisor counts -> zero-excess returns -> prime gap structure -> zeta compression -> RH language
 ```
 
 ## Common Mistake
@@ -40,12 +40,24 @@ $$
 F(n)=\left(1-\frac{\tau(n)}{2}\right)\log n.
 $$
 
+In Zero-Excess DNI coordinates,
+
+$$
+E(n)=\left(\frac{\tau(n)}{2}-1\right)\log n,
+$$
+
+so $F(n)=-E(n)$. The theorem status is unchanged: the selected integer is the
+leftmost interior argmin of $E$, equivalently the leftmost interior argmax of
+$F$.
+
 That theorem is the ordered interior structure. It shows that prime gaps are
 not explained by endpoints alone.
 
 ## Status
 
 - proved theorem: the gap-interior maximizer theorem is proved in `PROOF.md`.
+- exact coordinate reformulation: zero-excess translates the theorem as a
+  leftmost minimum-excess statement.
 - explanatory consequence: the gap interior carries ordered structure.
 
 ## Related Docs

@@ -4,12 +4,14 @@
 
 The DNI bridge builds a ratio from the divisor-count series and its derivative.
 That ratio is exactly $-\zeta'(s)/\zeta(s)$, the classical detector of prime
-powers.
+powers. In Zero-Excess DNI notation, the bridge numerator uses
+$H(n)=\log n+E(n)=\tau(n)\log(n)/2$, not $E(n)$ alone.
 
 ## Source Order
 
 ```text
-divisor counts -> prime gap structure -> zeta compression -> RH language
+divisor counts -> zero-excess prime returns -> PGS local theorems
+-> DNI-to-zeta compression -> source-side residual closure -> RH language
 ```
 
 ## Common Mistake
@@ -32,6 +34,18 @@ $$
 K(s)=-\frac{1}{e^2}D'(s).
 $$
 
+In zero-excess coordinates, the same derivative load is:
+
+$$
+H(n)=\log n+E(n)=\frac{\tau(n)\log n}{2}.
+$$
+
+So:
+
+$$
+\sum_{n\ge 1}\frac{H(n)}{n^s}=-\frac12D'(s).
+$$
+
 Then the DNI ratio is:
 
 $$
@@ -46,11 +60,17 @@ R(s)=-\frac12\frac{D'(s)}{D(s)}
 $$
 
 The right-hand side is the classical prime-power detector. The bridge shows
-that this detector is recovered from the divisor-count source.
+that this detector is recovered from the divisor-count source. $E(n)$ alone is
+not the numerator. It is the residual excess coordinate. The numerator carries
+the full bridge load $H(n)$.
 
 ## Status
 
 - exact zeta compression: the DNI ratio recovers $-\zeta'(s)/\zeta(s)$.
+- exact coordinate reformulation: Zero-Excess DNI supplies the same source
+  through $E(n)$ and $Z(n)=e^{-E(n)}$.
+- source-side residual closure: RH-facing residual closure is distinct from
+  this exact ratio identity.
 - explanatory consequence: the classical detector is downstream of the
   divisor-count source.
 

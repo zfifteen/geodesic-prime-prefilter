@@ -3,15 +3,16 @@
 [README](README.md) | [Pole placement](pole-placement.md) | [Off-critical pole exclusion](off-critical-pole-exclusion.md) | [Long bridge note](../../research/12-rh-bridge/docs/dni_rh_bridge.md)
 
 The bridge starts with divisor counts on integers, passes through the local
-PGS theorems, compresses the same coefficient field into zeta language, and
-then applies source-side residual closure before reading the Riemann
+zero-excess returns and local PGS theorems, compresses the same coefficient
+field into zeta language, and then applies source-side residual closure before
+reading the Riemann
 Hypothesis as a pole-placement sentence for the continued DNI ratio.
 
 Required source order:
 
 ```text
-divisor counts -> PGS local theorems -> DNI-to-zeta compression
--> source-side residual closure -> pole placement/RH sentence
+divisor counts -> zero-excess returns -> local theorems
+-> DNI-to-zeta compression -> residual closure -> pole placement/RH sentence
 ```
 
 ## 1. Divisor Counts
@@ -48,18 +49,31 @@ D(s)=\sum_{n \ge 1}\frac{\tau(n)}{n^s}=\zeta(s)^2,
 \qquad \mathrm{Re}(s)>1.
 $$
 
-## 2. PGS Local Theorems
+## 2. Zero-Excess Returns And PGS Local Theorems
 
 Status: proved theorem, controlled by [PROOF.md](../../PROOF.md).
 
 The local PGS layer uses the same divisor-count field before any zeta
 compression is introduced.
 
+Define the zero-excess coordinate by
+
+$$
+E(n)=\left(\frac{\tau(n)}{2}-1\right)\log n.
+$$
+
+For `n > 1`, primes are exactly the zero-excess returns:
+
+$$
+E(n)=0 \iff \tau(n)=2.
+$$
+
 Given a known prime $p$, the direct deterministic next-prime theorem defines
 the next prime by
 
 $$
-q=\min\{n>p:\tau(n)=2\}.
+q=\min\{n>p:E(n)=0\}
+=\min\{n>p:\tau(n)=2\}.
 $$
 
 Inside a nonempty prime-gap interior
@@ -80,6 +94,14 @@ $$
 F(n)=\left(1-\frac{\tau(n)}{2}\right)\log n.
 $$
 
+Since
+
+$$
+F(n)=-E(n),
+$$
+
+the same theorem says that $w$ is the leftmost interior argmin of $E(n)$.
+
 These are local integer theorems. They supply the source-side arithmetic
 objects that the zeta series records after compression.
 
@@ -92,6 +114,17 @@ The DNI divisor normalization load is
 $$
 \kappa(n)=\frac{\tau(n)\log n}{e^2}.
 $$
+
+Zero-excess does not replace this load. It rewrites the same bridge load as
+
+$$
+H(n)=\log n+E(n)=\frac{\tau(n)\log n}{2}.
+$$
+
+Equivalently, `H(n)=log n+E(n)=tau(n)log(n)/2`.
+
+Thus $H(n)=(e^2/2)\kappa(n)$. The zeta-compression identities below remain
+the `D,K,R` identities; the numerator is not $E(n)$ alone.
 
 Its Dirichlet series is
 
@@ -200,3 +233,7 @@ The exact identities are the zeta-compression layer. The pole-placement
 sentence is the RH interpretation of that exact compressed ratio after the
 source-side residual test closes failed identities, independent gap-length
 freedom, chamber log-weight remainders, and extra divisor-count fields.
+
+The zero-excess floor is the integer-side coordinate for prime returns. The
+critical line is the zeta-side coordinate for nontrivial pole placement.
+Analogy is allowed; identity is not.

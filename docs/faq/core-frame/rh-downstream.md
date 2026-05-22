@@ -4,13 +4,14 @@
 
 RH is downstream because it is classical analytic language for a structure that
 already exists at the integer level. Prime gap structure begins with divisor
-counts and prime-gap interiors. Zeta language records that source after
-compression.
+counts, zero-excess prime returns, and prime-gap interiors. Zeta language
+records that source after compression.
 
 ## Source Order
 
 ```text
-divisor counts -> prime gap structure -> zeta compression -> RH language
+divisor counts -> zero-excess prime returns -> PGS local theorems
+-> DNI-to-zeta compression -> source-side residual closure -> RH language
 ```
 
 ## Common Mistake
@@ -35,10 +36,23 @@ $$
 q=\min\{n>p:\tau(n)=2\}.
 $$
 
+In zero-excess coordinates, the same source-side return condition is:
+
+$$
+E(n)=\left(\frac{\tau(n)}{2}-1\right)\log n=0
+\quad (n>1).
+$$
+
 That rule places the next prime after a known prime. The gap interior then has
 an ordered divisor-count profile, and the first occurrence of the smallest
 interior divisor count is the unique maximizer of the logarithmic comparison
 score.
+
+The zero-excess floor is source-side. It is the integer-side return level where
+the divisor-count source reaches prime state. The RH critical line is
+zeta-side. It is the analytic coordinate sentence after compression. The two
+belong to the same source-to-compression relation, but they are not the same
+object.
 
 The zeta function records multiplicative arithmetic in compressed analytic
 form. On $\mathrm{Re}(s)>1$, the DNI-to-zeta bridge shows that divisor-count
@@ -54,7 +68,11 @@ zeta-side description of the source, not the origin of the source.
 ## Status
 
 - proved theorem: exact local prime placement and ordered gap interior theorem.
+- exact coordinate reformulation: Zero-Excess DNI rewrites the prime return
+  as $E(n)=0$ for `n>1`.
 - exact zeta compression: the DNI bridge recovers $-\zeta'(s)/\zeta(s)$.
+- source-side residual closure: RH-facing closure belongs after local PGS
+  closure and exact DNI-to-zeta compression.
 - explanatory consequence: RH language is downstream of the integer source.
 
 ## Related Docs

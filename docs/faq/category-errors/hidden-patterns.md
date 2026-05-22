@@ -8,7 +8,7 @@ not outside prime gap structure.
 ## Source Order
 
 ```text
-divisor counts -> prime gap structure -> zeta compression -> RH language
+divisor counts -> zero-excess returns -> prime gap structure -> zeta compression -> RH language
 ```
 
 ## Common Mistake
@@ -24,6 +24,10 @@ inside that field are source-side relations. If a global relation exists among
 divisor counts, prime returns, and gap interiors, it belongs to the same
 integer object.
 
+Zero-excess is a coordinate on that same object. It does not add a hidden
+pattern, hidden theorem, or second source. For `n>1`, $E(n)=0$ is the same
+prime return condition as $\tau(n)=2$.
+
 The analytic layer cannot receive arithmetic that was not carried by the
 integer source. Zeta compression records the multiplicative structure of the
 integers. It does not import a private supply of prime order from outside the
@@ -38,6 +42,8 @@ is hard to unpack.
 
 - explanatory consequence: relations in the divisor-count field are source-side
   relations.
+- exact coordinate reformulation: zero-excess records the same source field in
+  a prime-centered coordinate.
 - exact zeta compression: the zeta object records the source field.
 
 ## Related Docs

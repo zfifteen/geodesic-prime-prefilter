@@ -3,16 +3,25 @@
 The source order is:
 
 ```text
-divisor counts -> PGS local theorems -> DNI-to-zeta compression
--> source-side residual closure -> pole placement/RH sentence
+divisor counts -> zero-excess returns -> local theorems
+-> DNI-to-zeta compression -> residual closure -> pole placement/RH sentence
 ```
 
 The critical strip and critical line are downstream coordinate language for the
 continued analytic object. They are not the source objects of PGS.
 
 The divisor-count field $\tau(n)$ gives the local integer source. The PGS local
-theorems use that field to determine prime returns and order gap interiors. The
-DNI-to-zeta compression then builds
+theorems use that field to determine prime returns and order gap interiors.
+Zero-excess is the integer-side coordinate
+
+$$
+E(n)=\left(\frac{\tau(n)}{2}-1\right)\log n.
+$$
+
+For `n > 1`, prime returns are exactly $E(n)=0$. Inside a nonempty gap
+interior, the proof function satisfies $F(n)=-E(n)$, so the leftmost
+argmax of $F$ is the leftmost argmin of $E$. The DNI-to-zeta compression then
+builds
 
 $$
 D(s)=\sum_{n \ge 1}\frac{\tau(n)}{n^s}=\zeta(s)^2
@@ -53,17 +62,25 @@ Thus the critical strip is the downstream coordinate band where nontrivial
 poles of the continued DNI ratio are located. The critical line is the
 placement line after source-side residual closure.
 
+The zero-excess floor is integer-side. The critical line is zeta-side. The
+analogy is permitted because both are distinguished coordinates in their own
+domains; identity is not permitted.
+
 ## Exact Translation
 
 The exact translation is:
 
 1. The divisor-count series gives $D(s)=\zeta(s)^2$ on
    $\mathrm{Re}(s)>1$.
-2. The DNI load series satisfies $K(s)=-D'(s)/e^2$ on the same half-plane.
-3. The normalized ratio continues as
+2. The zero-excess bridge load is
+   $H(n)=\log n+E(n)=\tau(n)\log n/2$, equivalently
+   `H(n)=log n+E(n)=tau(n)log(n)/2`, preserving the original `D,K,R`
+   bridge rather than replacing it with $E(n)$ alone.
+3. The DNI load series satisfies $K(s)=-D'(s)/e^2$ on the same half-plane.
+4. The normalized ratio continues as
    $R(s)=(e^2/2)K(s)/D(s)=-\zeta'(s)/\zeta(s)$.
-4. Zeros of $\zeta(s)$ become poles of $R(s)$.
-5. Nontrivial zeros of $\zeta(s)$ become nontrivial poles of $R(s)$ in the
+5. Zeros of $\zeta(s)$ become poles of $R(s)$.
+6. Nontrivial zeros of $\zeta(s)$ become nontrivial poles of $R(s)$ in the
    critical strip.
 
 Therefore RH translates exactly into this pole-placement sentence:
@@ -111,6 +128,7 @@ sentence after source-side residual closure.
 | Object | Source role | DNI-ratio role |
 | --- | --- | --- |
 | divisor counts $\tau(n)$ | integer-level source field | coefficient source for $D(s)$ |
+| zero-excess floor $E(n)=0$ for `n > 1` | integer-side prime-return coordinate | source-side analogy only |
 | local PGS theorems | prime returns and gap-interior order | upstream arithmetic structure |
 | $D(s)=\zeta(s)^2$ | divisor-count compression | denominator of the DNI ratio |
 | $R(s)=-\zeta'(s)/\zeta(s)$ | continued normalized ratio | pole-carrying analytic object |

@@ -9,7 +9,7 @@ estimates, to place the next prime.
 ## Source Order
 
 ```text
-divisor counts -> prime gap structure -> zeta compression -> RH language
+divisor counts -> zero-excess returns -> prime gap structure -> zeta compression -> RH language
 ```
 
 ## Common Mistake
@@ -36,18 +36,26 @@ occur on average. It checks the ordered divisor-count field and stops at the
 first return to divisor count two.
 
 The Divisor Normalization Identity makes the same fact visible as a fixed
-level:
+integer-side coordinate:
+
+$$
+E(n)=\left(\frac{\tau(n)}{2}-1\right)\log n.
+$$
+
+For `n>1`, primes are exactly the zero-excess returns $E(n)=0$. Composites
+have positive excess. This is an exact coordinate reformulation of the same
+divisor-count condition, not a new theorem.
+
+The dual multiplicative coordinate is:
 
 $$
 Z(n)=n^{1-\tau(n)/2}.
 $$
 
-For `n>1`, primes are exactly the returns to `Z=1`. Composites sit below that
-level.
-
 ## Status
 
 - proved theorem: the direct next-prime rule is proved in `PROOF.md`.
+- exact coordinate reformulation: zero-excess rewrites the same DNI condition.
 - explanatory consequence: exact placement precedes density language.
 
 ## Related Docs

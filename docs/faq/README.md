@@ -7,7 +7,8 @@ records in compressed form.
 The source order is:
 
 ```text
-divisor counts -> prime gap structure -> zeta compression -> RH language
+divisor counts -> zero-excess prime returns -> PGS local theorems
+-> DNI-to-zeta compression -> source-side residual closure -> RH language
 ```
 
 This FAQ is a reviewer guide. It answers recurring objections without replaying
@@ -20,8 +21,9 @@ of prime placement.
 2. [Why is RH downstream?](core-frame/rh-downstream.md)
 3. [What does zeta compression record?](core-frame/zeta-compression.md)
 4. [Why is analytical-proof expectation the wrong frame?](category-errors/analytical-proof-expectation.md)
-5. [Why is pole placement not the first object?](category-errors/pole-placement-is-not-first.md)
-6. [How should claim status be read?](reviewer-guidance/status-ledger.md)
+5. [Is the zero-excess floor the same as the critical line?](category-errors/zero-excess-floor-vs-critical-line.md)
+6. [Why is pole placement not the first object?](category-errors/pole-placement-is-not-first.md)
+7. [How should claim status be read?](reviewer-guidance/status-ledger.md)
 
 ## Core Frame
 
@@ -35,6 +37,7 @@ of prime placement.
 - [Is prime gap structure a zeta-side method?](category-errors/not-a-zeta-method.md)
 - [Why is analytical-proof expectation the wrong frame?](category-errors/analytical-proof-expectation.md)
 - [Why is pole placement not the first object?](category-errors/pole-placement-is-not-first.md)
+- [Is the zero-excess floor the same as the critical line?](category-errors/zero-excess-floor-vs-critical-line.md)
 - [Does analytic opacity weaken the arithmetic source?](category-errors/analytic-opacity.md)
 - [What about hidden patterns in the divisor-count field?](category-errors/hidden-patterns.md)
 - [Why is an exhaustion demand the wrong objection?](category-errors/exhaustion-proof.md)

@@ -28,6 +28,10 @@ Phase 1 launch controls:
 - [Boundary Checklist](phase-1-boundary-checklist.md)
 - [Risk Verdict Gate](phase-1-risk-verdict.md)
 
+Phase 2 launch control:
+
+- [Phase 2 Risk Verdict Gate](phase-2-risk-verdict.md)
+
 ## Branch Scope
 
 Working branch:
