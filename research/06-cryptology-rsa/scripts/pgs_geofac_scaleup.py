@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Research-only PGS-first scale-up harness."""
+"""Research-only PGS-first scale-up harness.
+
+Classical primality and divisibility checks are audit, benchmark, and legacy
+comparison instruments in this script. They do not define PGS-native inference.
+"""
 
 from __future__ import annotations
 
@@ -402,7 +406,7 @@ def _next_wheel_open_candidate(boundary: int) -> int:
 
 
 def _next_prime_after_scaleup(boundary: int) -> int:
-    """Return the next prime after boundary on the scale-up runtime path."""
+    """Return the next prime after boundary for benchmark candidate ordering."""
     if boundary <= MAX_GWR_BOUNDARY:
         return int(next_prime_after(int(boundary)))
 
@@ -413,7 +417,7 @@ def _next_prime_after_scaleup(boundary: int) -> int:
 
 
 def _next_prime_successor_scaleup(prime: int) -> int:
-    """Return the prime immediately after prime on the scale-up runtime path."""
+    """Return the next benchmark candidate prime after one prime."""
     if prime <= MAX_GWR_BOUNDARY:
         return int(gwr_next_prime(int(prime)))
 
@@ -432,7 +436,7 @@ def _right_prime_seed(boundary: int, upper_bound: int) -> int | None:
 
 
 def _center_out_primes_in_interval(midpoint: int, low: int, high: int, limit: int):
-    """Yield the exact repo-PGS center-out prime sequence inside one integer interval."""
+    """Yield the deterministic PGS-ordered benchmark candidate sequence."""
     if limit < 1 or high < low:
         return
 
@@ -468,7 +472,7 @@ def _center_out_primes_in_interval(midpoint: int, low: int, high: int, limit: in
 
 
 def _previous_composite(candidate: int, lower_bound: int) -> int | None:
-    """Return the nearest composite at or below candidate."""
+    """Return the nearest benchmark composite seed at or below candidate."""
     current = candidate
     while current >= lower_bound:
         if current >= 4 and not isprime(current):
@@ -478,7 +482,7 @@ def _previous_composite(candidate: int, lower_bound: int) -> int | None:
 
 
 def _next_composite(candidate: int, upper_bound: int) -> int | None:
-    """Return the nearest composite at or above candidate."""
+    """Return the nearest benchmark composite seed at or above candidate."""
     current = max(4, candidate)
     while current <= upper_bound:
         if not isprime(current):
@@ -585,6 +589,7 @@ def _recover_prime_from_seed_bigint(seed: int) -> int:
     """Recover one prime from one large composite seed by the exact gap-local rule."""
     if seed < 4:
         raise ValueError("seed must be at least 4")
+    # isprime/nextprime are bigint audit scaffolding around the gap-local rule.
     if isprime(seed):
         raise ValueError("seed must be composite")
 
@@ -696,10 +701,11 @@ def _ordered_factor_hit(
     case: ScaleupCase,
     clusters: list[PrimeCluster],
 ) -> tuple[bool, int]:
-    """Return whether one ordered cluster list recovers a factor and how many prime tests it used."""
+    """Return the benchmark factor-hit label and local test count."""
     prime_tests = 0
     for cluster in clusters:
         prime_tests += 1
+        # Divisibility is the benchmark hit label, not a PGS-native selector.
         if case.n % cluster.recovered_prime == 0:
             return True, prime_tests
     return False, prime_tests
@@ -951,12 +957,13 @@ def _local_router_only_prime_walk(
     windows: list[BitWindow],
     prime_budget: int,
 ) -> tuple[bool, int]:
-    """Run the exact prime-step helper used only on router-only stages."""
+    """Run the benchmark prime-step helper used only on router-only stages."""
     total_prime_tests = 0
     for window in windows:
         low, high, midpoint = _window_to_interval(window)
         for prime in _center_out_primes_in_interval(midpoint, low, high, prime_budget):
             total_prime_tests += 1
+            # Divisibility is the benchmark hit label for routed windows.
             if case.n % prime == 0:
                 return True, total_prime_tests
     return False, total_prime_tests

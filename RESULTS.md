@@ -108,13 +108,16 @@ On the current committed RSA v2 ladder:
 
 - `rsa_v2_40bit_static_001`: public reciprocal deadline-signature correction
   resolves the endpoint class as `(1048559, 1048589)`.
-- `rsa_v2_50bit_static_001`: public oriented endpoint-chain closure resolves
-  the structural endpoint class as `(32046877, 32060407)`.
+- `rsa_v2_50bit_static_001`: refined public closure rejects the historical
+  mutual-closure candidate and returns
+  `unresolved_by_reciprocal_carrier_misalignment`.
+- `rsa_v2_64bit_static_001`: public mutual certificate closure resolves the
+  endpoint class as `(3221225473, 3221275501)`.
 
 This is a measured RSA v2 endpoint-structure result, not a universal RSA-scale
-theorem. Audit confirms the exact 40-bit factor pair after public inference.
-The 50-bit row is a structural endpoint-class resolution and remains audit-fail
-for exact factor equality. Audit does not define the inference rule.
+theorem. Audit confirms the exact 40-bit and 64-bit factor pairs after public
+inference. The 50-bit row is unresolved before audit and emits no public
+endpoint class. Audit does not define the inference rule.
 
 Reference document:
 `research/06-cryptology-rsa/docs/endpoint_structure_law.md`.

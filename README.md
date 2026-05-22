@@ -99,6 +99,7 @@ Every one of these paths grows from the same simple shift in perspective: stop t
 
 The rest of the repository develops these ideas in greater depth, including the [measured results and surfaces](RESULTS.md).
 
+- [research/00-index/continuity/START_HERE.md](research/00-index/continuity/START_HERE.md) is the continuity and resume entrypoint for future Codex sessions.
 - [research/00-index/README.md](research/00-index/README.md) maps the research corpus by chapter and status.
 - [PROOF.md](PROOF.md) gives the formal statement and proof of the direct next-prime theorem and the prime-gap maximizer theorem.
 - [LEFTMOST_MINIMUM_DIVISOR_RULE.md](LEFTMOST_MINIMUM_DIVISOR_RULE.md) explores the rule that identifies the special composite inside each gap.

@@ -37,8 +37,8 @@ class ScaleCase:
     label: str
     n: int
     seed: int
-    expected_q: int
-    expected_p: int
+    expected_upper_endpoint: int
+    expected_lower_endpoint: int
 
 
 @dataclass(frozen=True)
@@ -47,8 +47,8 @@ class WalkResult:
 
     n: int
     seed: int
-    q: int
-    p: int
+    endpoint_class_upper: int
+    endpoint_class_lower: int
     chain_steps: int
     locked_endpoint_count: int
     skipped_floor_closures: int
@@ -111,17 +111,17 @@ def recursive_chain_modulus_lock(
         if not reciprocal_floor_closes(modulus, current, transported):
             continue
 
-        q = max(current, transported)
-        p = min(current, transported)
-        if modulus_link_residual(modulus, p, q) != 0:
+        endpoint_class_upper = max(current, transported)
+        endpoint_class_lower = min(current, transported)
+        if modulus_link_residual(modulus, endpoint_class_lower, endpoint_class_upper) != 0:
             skipped_floor_closures += 1
             continue
 
         return WalkResult(
             n=modulus,
             seed=seed,
-            q=q,
-            p=p,
+            endpoint_class_upper=endpoint_class_upper,
+            endpoint_class_lower=endpoint_class_lower,
             chain_steps=step,
             locked_endpoint_count=len(locked_endpoints),
             skipped_floor_closures=skipped_floor_closures,
@@ -146,17 +146,22 @@ def main() -> int:
     print(f"pgs_candidate_bound: {PGS_CANDIDATE_BOUND}")
     print()
     print(
-        "case,n,seed,selected_q,selected_p,chain_steps,locked_endpoints,"
-        "skipped_floor_closures,audit_match,stop_reason,inference_seconds"
+        "case,n,seed,selected_upper_endpoint,selected_lower_endpoint,"
+        "chain_steps,locked_endpoints,skipped_floor_closures,audit_match,"
+        "stop_reason,inference_seconds"
     )
 
     for case in SCALE_CASES:
         walk_start = perf_counter()
         result = recursive_chain_modulus_lock(case.n, case.seed)
         walk_elapsed = perf_counter() - walk_start
-        audit_match = result.q == case.expected_q and result.p == case.expected_p
+        audit_match = (
+            result.endpoint_class_upper == case.expected_upper_endpoint
+            and result.endpoint_class_lower == case.expected_lower_endpoint
+        )
         print(
-            f"{case.label},{result.n},{result.seed},{result.q},{result.p},"
+            f"{case.label},{result.n},{result.seed},"
+            f"{result.endpoint_class_upper},{result.endpoint_class_lower},"
             f"{result.chain_steps},{result.locked_endpoint_count},"
             f"{result.skipped_floor_closures},{audit_match},"
             f"{result.stop_reason},{walk_elapsed:.6f}"

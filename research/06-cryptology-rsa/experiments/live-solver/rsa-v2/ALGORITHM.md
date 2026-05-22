@@ -7,7 +7,7 @@ The current algorithm is a public reciprocal PGSPG endpoint-class instrument
 for the exact-backend regime. It derives reciprocal certificate state and emits
 public endpoint classes when certificate endpoints close under floor transport.
 It does not claim that an endpoint class is the factor pair. Only downstream
-audit may say whether factors were found.
+audit reports whether factors were found.
 
 Current implementation shape:
 
@@ -189,7 +189,7 @@ Audit emits:
 factor_found = true | false
 ```
 
-The public closure status may be:
+The public closure status is one of:
 
 ```text
 endpoint_class_by_mutual_certificate_closure
@@ -218,9 +218,10 @@ rsa_v2_64bit_static_001 -> public endpoint class found, factor_found = true
 
 Earlier OECC output used `status = resolved` and factor-shaped `p` / `q`
 fields for public endpoint classes. That wording was wrong. OECC_LINEAR_V1 and
-OECC_RECURSIVE_V2 found deterministic public endpoint structure on the 50-bit
-and 64-bit rungs, but did not find the factors. The old `resolved` wording is
-invalidated terminology for audit-failing endpoint classes.
+OECC_RECURSIVE_V2 are historical baselines, not live status sources. The old
+50-bit mutual-closure result is now rejected by refined public closure filters.
+The 64-bit mutual certificate closure remains live and audit-confirmed. The old
+`resolved` wording is invalidated terminology for public endpoint classes.
 
 The unified chain runner supersedes the old OECC_LINEAR_V1 control shape. It
 evaluates strict reset closure and deadline-signature correction at every lower

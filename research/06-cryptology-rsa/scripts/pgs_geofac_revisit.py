@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Research-only PGS-assisted geofac revisit harness."""
+"""Research-only PGS-assisted geofac revisit harness.
+
+Classical primality and divisibility checks are benchmark and legacy-comparison
+instruments in this script. They do not define PGS-native inference.
+"""
 
 from __future__ import annotations
 
@@ -410,7 +414,7 @@ def _next_wheel_open_candidate(boundary: int) -> int:
 
 
 def _next_prime_after_revisit(boundary: int) -> int:
-    """Return the next prime after boundary on the revisit runtime path."""
+    """Return the next prime after boundary for benchmark candidate ordering."""
     if boundary <= MAX_GWR_BOUNDARY:
         return int(next_prime_after(int(boundary)))
 
@@ -421,7 +425,7 @@ def _next_prime_after_revisit(boundary: int) -> int:
 
 
 def _next_prime_successor_revisit(prime: int) -> int:
-    """Return the prime immediately after prime on the revisit runtime path."""
+    """Return the next benchmark candidate prime after one prime."""
     if prime <= MAX_GWR_BOUNDARY:
         return int(gwr_next_prime(int(prime)))
 
@@ -445,7 +449,7 @@ def _pgs_shell_prime_candidates(
     outer_half_width: int,
     limit: int | None = None,
 ) -> list[int]:
-    """Return one deterministic center-out prime sequence from one shell."""
+    """Return one deterministic PGS-ordered benchmark candidate sequence."""
     if limit is not None and limit < 1:
         return []
 
@@ -648,6 +652,7 @@ def _evaluate_case(
                 break
 
             candidate_tests += 1
+            # prime_tests is a benchmark counter; primality is not a PGS selector.
             if method in ("pgs_controller", "hybrid"):
                 prime_tests += 1
             else:
@@ -667,6 +672,7 @@ def _evaluate_case(
                 shell_hit_index,
             )
 
+            # Divisibility is the benchmark hit label against known semiprime cases.
             if case.n % candidate == 0 and candidate not in (1, case.n):
                 factor_found = True
                 factor_in_budget = True
