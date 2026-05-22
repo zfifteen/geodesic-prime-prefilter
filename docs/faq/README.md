@@ -50,6 +50,10 @@ of prime placement.
 - [How does the DNI ratio recover the classical prime-power detector?](zeta-compression/dni-ratio.md)
 - [Does zeta have its own arithmetic supply?](zeta-compression/no-private-arithmetic-supply.md)
 
+## PGS-To-RH Case
+
+- [Affirmative PGS-to-RH documentation bundle](../rh/README.md)
+
 ## Local And Global Language
 
 - [Why can the Prime Number Theorem describe density without placing the next prime?](local-global/pnt-vs-exact-placement.md)
