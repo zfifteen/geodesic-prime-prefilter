@@ -51,7 +51,8 @@ $$
 
 ## 2. Zero-Excess Returns And PGS Local Theorems
 
-Status: proved theorem, controlled by [PROOF.md](../../PROOF.md).
+Status: exact coordinate reformulation for $E(n)$; proved theorem for the
+local PGS results, controlled by [PROOF.md](../../PROOF.md).
 
 The local PGS layer uses the same divisor-count field before any zeta
 compression is introduced.

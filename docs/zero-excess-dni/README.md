@@ -7,7 +7,7 @@ system:
 
 ```text
 old coordinate: primes have Z(n) = 1
-new coordinate: primes have E(n) = 0
+new coordinate: primes n > 1 have E(n) = 0
 ```
 
 This is a significant documentation and script migration. The goal is not to

@@ -12,8 +12,8 @@ or historical artifacts.
 agent: Integrator plus Risk Gatekeeper
 branch: codex/zero-excess-dni
 phase: Phase 2
-verdict: pending
-reviewed diff: pending integration
+verdict: pass
+reviewed diff: Phase 2 integrated diff on codex/zero-excess-dni
 ```
 
 ## Phase 2 Scope
@@ -40,12 +40,12 @@ Out of scope:
 
 | Risk | Stop condition | Expected cleared condition | Status |
 | --- | --- | --- | --- |
-| missing `n > 1` guard | A page says $E(n)=0$ characterizes primes without excluding `1`. | Prime-zero statements include `n > 1` or explicitly exclude `1`. | pending |
-| bridge load drift | A page uses $E(n)$ alone as the DNI-to-zeta numerator. | Bridge pages preserve $H(n)=\log n+E(n)=\tau(n)\log n/2$. | pending |
-| source/compression identity confusion | A page identifies the zero-excess floor with the critical line. | Pages say the floor is integer-side and the critical line is zeta-side. | pending |
-| proof-status drift | A page treats Zero-Excess DNI as a new theorem or says `PROOF.md` directly proves RH. | Pages label zero-excess as exact coordinate reformulation and keep `PROOF.md` local. | pending |
-| theorem downgrade | A page describes proved local PGS theorems as heuristic, empirical, likely, suggestive, or validated only by tests. | Proved local theorem status remains direct. | pending |
-| API/schema/artifact churn | Phase 2 touches code, vectors, generated artifacts, or unrelated experiment files. | Phase 2 diff is documentation-only and scoped to RH/FAQ/zero-excess docs. | pending |
+| missing `n > 1` guard | A page says $E(n)=0$ characterizes primes without excluding `1`. | Prime-zero statements include `n > 1` or explicitly exclude `1`. | cleared |
+| bridge load drift | A page uses $E(n)$ alone as the DNI-to-zeta numerator. | Bridge pages preserve $H(n)=\log n+E(n)=\tau(n)\log n/2$. | cleared |
+| source/compression identity confusion | A page identifies the zero-excess floor with the critical line. | Pages say the floor is integer-side and the critical line is zeta-side. | cleared |
+| proof-status drift | A page treats Zero-Excess DNI as a new theorem or says `PROOF.md` directly proves RH. | Pages label zero-excess as exact coordinate reformulation and keep `PROOF.md` local. | cleared |
+| theorem downgrade | A page describes proved local PGS theorems as heuristic, empirical, likely, suggestive, or validated only by tests. | Proved local theorem status remains direct. | cleared |
+| API/schema/artifact churn | Phase 2 touches code, vectors, generated artifacts, or unrelated experiment files. | Phase 2 diff is documentation-only and scoped to RH/FAQ/zero-excess docs. | cleared |
 
 ## Required Checks
 
