@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Low-Prefix Transfer-Guard Obstruction | Gilbreath PGS Track</title>
+  <style>
+    :root { --ink:#17212b; --muted:#5e6a75; --line:#d8e0e8; --panel:#f7f9fb; --accent:#0b6b8a; --bad:#8a3b00; --good:#1f6b45; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:#fff; font:13px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    main { width:min(1040px,calc(100% - 36px)); margin:0 auto; padding:28px 0 38px; }
+    header { padding:0 0 18px; border-bottom:1px solid var(--line); }
+    h1 { margin:0 0 8px; font-size:2rem; line-height:1.08; letter-spacing:0; }
+    h2 { margin:0 0 12px; font-size:1.25rem; line-height:1.2; }
+    h3 { margin:0 0 8px; font-size:1rem; }
+    p { margin:0 0 11px; }
+    section { padding:20px 0; border-bottom:1px solid var(--line); }
+    a { color:var(--accent); text-underline-offset:3px; }
+    code { padding:1px 4px; border-radius:4px; background:#eef3f6; color:#0f4f68; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.94em; }
+    .lede { max-width:880px; color:#263845; font-size:1.05rem; }
+    .muted { color:var(--muted); }
+    .grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .panel { padding:14px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
+    .pillrow { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .pill { padding:4px 8px; border:1px solid var(--line); border-radius:999px; color:var(--muted); background:#fff; font-weight:650; }
+    .good { color:var(--good); border-color:#b8dcc9; background:#f1faf5; }
+    .bad { color:var(--bad); border-color:#e7c3a8; background:#fff7ef; }
+    table { width:100%; border-collapse:collapse; border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+    th, td { padding:9px 11px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { background:#eef5f8; color:#24414f; font-size:.82rem; letter-spacing:.04em; text-transform:uppercase; }
+    tr:last-child td { border-bottom:0; }
+    ul { margin:0; padding-left:19px; }
+    li + li { margin-top:5px; }
+    pre { margin:0; padding:12px; overflow:auto; border:1px solid var(--line); border-radius:8px; background:#f8fafc; font:12px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace; }
+    .mono { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
+    @media (max-width:780px) { .grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <p><a href="./">Back to Gilbreath track</a></p>
+    <h1>Low-prefix transfer-guard obstruction</h1>
+    <p class="lede">The low-prefix corridor does not force the right-edge fold-transfer guard. The admitted word <code>(1,2,2,6,2)</code> has low-prefix length <code>2</code>, but its right-edge diagonal violates the transfer guard. The actual seeded PGS endpoint prefixes still satisfy the guard on the measured surface.</p>
+    <div class="pillrow">
+      <span class="pill good">ADVANCE</span>
+      <span class="pill bad">low-prefix shortcut invalidated</span>
+      <span class="pill">20,000 exact endpoints</span>
+      <span class="pill">Gilbreath proof unresolved</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>PGS Objects</h2>
+    <div class="grid">
+      <div class="panel">
+        <h3>Seeded endpoint gaps</h3>
+        <p>The first row is the ordered endpoint-gap word beginning <code>1,2,2,4,...</code>, generated from endpoint <code>2</code> by the exact divisor-count stopping rule <code>tau(n)=2</code>.</p>
+      </div>
+      <div class="panel">
+        <h3>Right-edge fold guard</h3>
+        <p>For an admitted prefix, the right-edge diagonal folds a candidate next gap into the next leading value. The backward ceiling starts at <code>2</code>; every transfer lane must be at most the current ceiling to keep admitted even candidates as one initial interval.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Formal Obstruction</h2>
+    <p><strong>Lemma.</strong> Seeded prefix admission plus low-prefix length at least <code>2</code> does not imply the right-edge fold-transfer guard.</p>
+    <p>Take the seeded word <code>W=(1,2,2,6,2)</code>. Its absolute-difference cascade is:</p>
+    <pre>1 2 2 6 2
+1 0 4 4
+1 4 0
+3 4
+1</pre>
+    <p>So <code>W</code> is admitted: the final leading value is <code>1</code>. Its non-leading left prefix begins <code>2,2</code>, so <code>ell(W)=2</code>. Its right-edge diagonal is <code>2,4,0,4,1</code>. Removing the terminal admitted <code>1</code> and running the backward transfer ceiling gives a failure at lane value <code>4</code> against ceiling <code>2</code>.</p>
+    <p>The extension candidates expose the damage. For positive even candidate next gaps up to <code>30</code>, the admitted set is <code>{2,4,8,10,12}</code>. It is not the initial interval <code>{2,4,6,...}</code>, because <code>6</code> is rejected. A proof that relies on a single upper bound for the next endpoint gap therefore needs the actual PGS transfer guard, not only the low-prefix corridor.</p>
+  </section>
+
+  <section>
+    <h2>Deterministic Evidence</h2>
+    <table>
+      <tbody>
+        <tr><th>Actual endpoint surface</th><td><code>20,000</code> seeded endpoint gaps from endpoint <code>2</code> through final endpoint <code>224,743</code>.</td></tr>
+        <tr><th>Prefix extensions checked</th><td><code>19,999</code>.</td></tr>
+        <tr><th>Actual failures</th><td><code>0</code> leading failures, <code>0</code> transfer-guard failures, <code>0</code> actual ceiling failures.</td></tr>
+        <tr><th>Actual pressure front</th><td><code>2</code> tight rows, <code>94</code> rows with ceiling margin at most <code>100</code>, and <code>19,032</code> rows with margin above <code>1000</code>.</td></tr>
+        <tr><th>Last margin <= 100</th><td>Prefix index <code>105</code>, endpoint <code>577</code>, next gap <code>10</code>, transfer ceiling <code>100</code>, margin <code>90</code>.</td></tr>
+        <tr><th>Abstract low-prefix enumeration</th><td>Over alphabet <code>{2,4,6,8,10}</code> through word length <code>8</code>, the probe found <code>553</code> admitted low-prefix words that violate the transfer guard.</td></tr>
+        <tr><th>Minimal abstract failure</th><td><code>(1,2,2,6,2)</code> with right-edge diagonal <code>2,4,0,4,1</code>.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Proof-Tree Change</h2>
+    <p>The low-prefix depletion and reset corridor remains useful, but it cannot be the whole bridge to right-edge fold admission. The proof must add an actual ordered PGS endpoint-gap exclusion law for the guard-failure family beginning with <code>(1,2,2,6,2)</code>, or prove another PGS invariant that supplies the same right-edge guard.</p>
+    <p>This shifts the next attack away from a generic low-prefix theorem and toward actual endpoint-gap grammar: why seeded PGS produces the <code>2,4</code> reset admission boundary instead of the abstract <code>2,6</code> guard-failure boundary.</p>
+  </section>
+
+  <section>
+    <h2>Status Separation</h2>
+    <table>
+      <tbody>
+        <tr><th>Theorem proof</th><td>Unresolved. No proof of Gilbreath's conjecture is claimed.</td></tr>
+        <tr><th>Measured evidence</th><td>The exact seeded endpoint surface recorded <code>0</code> transfer-guard failures and <code>0</code> actual ceiling failures across <code>19,999</code> prefix extensions.</td></tr>
+        <tr><th>Implementation status</th><td>Probe code and outputs are local to this track folder.</td></tr>
+        <tr><th>Audit status</th><td>Probe rerun, JSON parsing, Python compilation, HTML parsing, diff check, and LF checks are the verification surface for this run.</td></tr>
+        <tr><th>Invalidated rule</th><td>The shortcut "admitted low-prefix corridor implies the fold-transfer guard" is false.</td></tr>
+        <tr><th>Unresolved state</th><td>Derive the actual PGS exclusion of low-prefix guard-failure words from ordered endpoint-gap grammar, GWR-selected chamber state, or DNI chamber structure.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Reproduce</h2>
+    <p>Run:</p>
+    <p><code>python3 pgs-unsolved-problems/gilbreath/2026-05-23-low_prefix_transfer_guard_probe.py</code></p>
+    <ul>
+      <li><a href="2026-05-23-low_prefix_transfer_guard_probe.py">Probe code</a></li>
+      <li><a href="2026-05-23-low_prefix_transfer_guard_summary.json">Summary JSON</a></li>
+      <li><a href="2026-05-23-low_prefix_transfer_guard_critical_rows.csv">Critical rows CSV</a></li>
+      <li><a href="2026-05-23-low_prefix_transfer_guard_abstract_failures.csv">Abstract guard failures CSV</a></li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>

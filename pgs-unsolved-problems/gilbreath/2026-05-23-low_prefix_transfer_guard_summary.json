@@ -1,0 +1,140 @@
+{
+  "status": "ADVANCE",
+  "headline": "The low-prefix corridor does not imply the right-edge fold-transfer guard; actual PGS prefixes satisfy the guard on the measured surface.",
+  "actual_pgs_surface": {
+    "endpoint_count": 20000,
+    "seed_endpoint": 2,
+    "final_endpoint": 224743,
+    "prefix_extensions_checked": 19999,
+    "leading_failures": 0,
+    "transfer_guard_failures": 0,
+    "actual_ceiling_failures": 0,
+    "max_actual_next_gap": 86,
+    "max_transfer_ceiling": 21056,
+    "min_ceiling_margin": 0,
+    "pressure_counts": {
+      "1..20": 16,
+      "101..1000": 873,
+      "21..100": 76,
+      ">1000": 19032,
+      "tight": 2
+    },
+    "max_prefix_index_by_margin_band": {
+      "0": 3,
+      "20": 22,
+      "100": 105,
+      "1000": 1031
+    },
+    "critical_margin_limit": 100,
+    "critical_row_count": 94,
+    "critical_last_row": {
+      "prefix_index": 105,
+      "current_endpoint": 577,
+      "next_endpoint": 587,
+      "actual_next_gap": 10,
+      "transfer_ceiling": 100,
+      "ceiling_margin": 90,
+      "right_edge_tail": "0 0 0 0 0 0 2 0 2 0 0 1",
+      "first_open_offset": 4,
+      "winner_d": 4,
+      "winner_offset": 2,
+      "carrier_family": "odd_semiprime",
+      "type_key": "o4_d4_a2_odd_semiprime"
+    },
+    "critical_gap_counts": {
+      "2": 24,
+      "4": 23,
+      "6": 24,
+      "8": 6,
+      "10": 9,
+      "12": 4,
+      "14": 3,
+      "18": 1
+    },
+    "critical_type_counts": {
+      "o4_d4_a2_odd_semiprime": 11,
+      "o6_d4_a2_odd_semiprime": 11,
+      "o2_d4_a2_odd_semiprime": 11,
+      "o4_d4_a1_even_semiprime": 9,
+      "o2_d12_a1_higher_divisor_even": 7,
+      "o4_d4_a3_even_semiprime": 6,
+      "o2_d8_a1_higher_divisor_even": 5,
+      "o4_d4_a4_odd_semiprime": 4,
+      "o2_d3_a2_prime_square": 3,
+      "o2_d16_a1_higher_divisor_even": 3,
+      "o2_d6_a1_higher_divisor_even": 2,
+      "o6_d4_a1_even_semiprime": 2,
+      "o6_d4_a4_odd_semiprime": 2,
+      "o2_d20_a1_higher_divisor_even": 2,
+      "o6_d4_a3_even_semiprime": 2,
+      "o4_d3_a6_prime_square": 2,
+      "o4_d3_a1_prime_square": 1,
+      "o2_d4_a1_even_semiprime": 1,
+      "o4_d3_a2_prime_square": 1,
+      "o6_d3_a2_prime_square": 1,
+      "o4_d6_a1_higher_divisor_even": 1,
+      "o6_d3_a8_prime_square": 1,
+      "o2_d18_a1_higher_divisor_even": 1,
+      "o2_d14_a1_higher_divisor_even": 1,
+      "o4_d8_a1_higher_divisor_even": 1,
+      "o6_d4_a6_odd_semiprime": 1,
+      "o4_d8_a2_higher_divisor_odd": 1,
+      "o2_d24_a1_higher_divisor_even": 1
+    }
+  },
+  "abstract_low_prefix_surface": {
+    "alphabet": [
+      2,
+      4,
+      6,
+      8,
+      10
+    ],
+    "max_word_length": 8,
+    "admitted_low_prefix_counts_by_length": {
+      "3": 1,
+      "4": 2,
+      "5": 15,
+      "6": 80,
+      "7": 491,
+      "8": 2605
+    },
+    "transfer_guard_failure_counts_by_length": {
+      "5": 6,
+      "6": 29,
+      "7": 143,
+      "8": 375
+    },
+    "transfer_guard_failure_count": 553,
+    "failure_lane_counts": {
+      "0": 112,
+      "1": 19,
+      "2": 16,
+      "3": 43,
+      "4": 63,
+      "5": 141,
+      "6": 159
+    },
+    "failure_value_counts": {
+      "4": 280,
+      "6": 125,
+      "8": 75,
+      "10": 73
+    },
+    "minimal_failure": {
+      "word_length": 5,
+      "word": "1,2,2,6,2",
+      "right_edge": "2,4,0,4,1",
+      "low_prefix_len": 2,
+      "failed_lane": 3,
+      "failed_value": 4,
+      "lane_ceiling": 2,
+      "admitted_even_candidates_up_to_30": "2,4,8,10,12"
+    },
+    "invalidated_shortcut": "Seeded prefix admission plus low-prefix length at least 2 does not imply the right-edge fold-transfer guard."
+  },
+  "proof_tree_change": "The proof cannot derive fold admission from low-prefix depletion/reset alone. It must prove an actual ordered PGS endpoint-gap exclusion law for the abstract low-prefix guard-failure family, beginning with (1,2,2,6,2), or prove another PGS invariant that supplies the same right-edge guard.",
+  "theorem_status": "unresolved",
+  "implementation_status": "deterministic exact-divisor-count endpoint probe plus finite abstract grammar enumeration",
+  "audit_status": "verify with probe rerun, json.tool on summary, py_compile on probe, HTMLParser on notes, git diff --check, and CR scan"
+}

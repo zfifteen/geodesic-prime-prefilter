@@ -1,0 +1,95 @@
+prefix_index,current_endpoint,next_endpoint,actual_next_gap,transfer_ceiling,ceiling_margin,right_edge_tail,first_open_offset,winner_d,winner_offset,carrier_family,type_key
+1,3,5,2,2,0,1,4,3,1,prime_square,o4_d3_a1_prime_square
+2,5,7,2,4,2,2 1,2,4,1,even_semiprime,o2_d4_a1_even_semiprime
+3,7,11,4,4,0,2 0 1,4,3,2,prime_square,o4_d3_a2_prime_square
+4,11,13,2,10,8,4 2 2 1,2,6,1,higher_divisor_even,o2_d6_a1_higher_divisor_even
+5,13,17,4,8,4,2 2 0 2 1,4,4,1,even_semiprime,o4_d4_a1_even_semiprime
+6,17,19,2,10,8,4 2 0 0 2 1,2,6,1,higher_divisor_even,o2_d6_a1_higher_divisor_even
+7,19,23,4,8,4,2 2 0 0 0 2 1,4,4,2,odd_semiprime,o4_d4_a2_odd_semiprime
+8,23,29,6,10,4,4 2 0 0 0 0 2 1,6,3,2,prime_square,o6_d3_a2_prime_square
+9,29,31,2,12,10,6 2 0 0 0 0 0 2 1,2,8,1,higher_divisor_even,o2_d8_a1_higher_divisor_even
+10,31,37,6,20,14,2 4 2 2 2 2 2 2 0 1,6,4,2,odd_semiprime,o6_d4_a2_odd_semiprime
+11,37,41,4,18,14,6 4 0 2 0 2 0 2 0 0 1,4,4,1,even_semiprime,o4_d4_a1_even_semiprime
+12,41,43,2,16,14,4 2 2 2 0 0 2 2 0 0 0 1,2,8,1,higher_divisor_even,o2_d8_a1_higher_divisor_even
+13,43,47,4,10,6,2 0 2 0 0 0 2 0 0 0 0 1,4,4,3,even_semiprime,o4_d4_a3_even_semiprime
+14,47,53,6,16,10,0 0 2 2 2 2 0 0 0 0 0 1,2,3,2,prime_square,o2_d3_a2_prime_square
+15,53,59,6,14,8,0 0 2 0 2 0 0 0 0 0 0 1,6,4,2,odd_semiprime,o6_d4_a2_odd_semiprime
+16,59,61,2,30,28,2 2 0 0 2 2 2 2 2 2 2 1,2,12,1,higher_divisor_even,o2_d12_a1_higher_divisor_even
+17,61,67,6,24,18,2 0 0 0 2 0 2 0 2 0 2 1,6,4,1,even_semiprime,o6_d4_a1_even_semiprime
+18,67,71,4,28,24,0 0 0 0 2 2 0 0 2 2 0 1,4,4,2,odd_semiprime,o4_d4_a2_odd_semiprime
+19,71,73,2,34,32,2 2 2 2 0 2 2 2 0 2 2 1,2,12,1,higher_divisor_even,o2_d12_a1_higher_divisor_even
+20,73,79,6,24,18,2 0 2 0 0 2 0 2 2 0 2 1,4,4,1,even_semiprime,o4_d4_a1_even_semiprime
+21,79,83,4,30,26,2 2 0 0 0 2 2 0 2 2 0 1,4,4,3,even_semiprime,o4_d4_a3_even_semiprime
+22,83,89,6,22,16,2 0 0 0 0 2 0 0 2 0 0 1,6,4,2,odd_semiprime,o6_d4_a2_odd_semiprime
+23,89,97,8,32,24,2 2 2 2 2 0 0 0 2 2 2 1,2,4,2,odd_semiprime,o2_d4_a2_odd_semiprime
+24,97,101,4,32,28,0 2 0 2 0 0 0 0 2 0 2 1,4,6,1,higher_divisor_even,o4_d6_a1_higher_divisor_even
+25,101,103,2,36,34,2 0 0 2 2 2 2 2 0 0 2 1,2,8,1,higher_divisor_even,o2_d8_a1_higher_divisor_even
+26,103,107,4,26,22,0 0 0 2 0 2 0 2 2 2 0 1,4,4,3,even_semiprime,o4_d4_a3_even_semiprime
+27,107,109,2,28,26,2 2 2 0 0 2 2 0 2 0 0 1,2,12,1,higher_divisor_even,o2_d12_a1_higher_divisor_even
+28,109,113,4,28,24,2 0 2 2 2 0 2 2 0 0 0 1,4,4,2,odd_semiprime,o4_d4_a2_odd_semiprime
+29,113,127,14,42,28,0 0 2 0 2 2 0 2 2 2 2 1,6,3,8,prime_square,o6_d3_a8_prime_square
+30,127,131,4,90,86,0 0 2 2 0 2 2 0 2 0 2 1,4,4,2,odd_semiprime,o4_d4_a2_odd_semiprime
+31,131,137,6,58,52,0 0 2 0 0 2 0 0 2 2 0 1,2,4,2,odd_semiprime,o2_d4_a2_odd_semiprime
+32,137,139,2,68,66,2 2 0 0 0 2 2 2 0 2 2 1,2,8,1,higher_divisor_even,o2_d8_a1_higher_divisor_even
+33,139,149,10,52,42,0 2 2 2 2 0 2 0 0 2 0 1,4,4,2,odd_semiprime,o4_d4_a2_odd_semiprime
+34,149,151,2,64,62,0 2 0 2 0 0 2 2 2 0 0 1,2,12,1,higher_divisor_even,o2_d12_a1_higher_divisor_even
+35,151,157,6,50,44,2 0 0 2 2 2 0 2 0 0 0 1,6,4,4,odd_semiprime,o6_d4_a4_odd_semiprime
+36,157,163,6,50,44,2 2 2 0 2 0 0 2 2 2 2 1,4,4,1,even_semiprime,o4_d4_a1_even_semiprime
+37,163,167,4,50,46,0 2 0 0 2 2 2 0 2 0 2 1,4,4,3,even_semiprime,o4_d4_a3_even_semiprime
+38,167,173,6,44,38,0 2 2 2 0 2 0 0 2 2 0 1,2,3,2,prime_square,o2_d3_a2_prime_square
+39,173,179,6,40,34,0 2 0 2 2 0 0 0 2 0 0 1,6,4,4,odd_semiprime,o6_d4_a4_odd_semiprime
+40,179,181,2,52,50,0 2 2 0 2 2 2 2 0 0 0 1,2,18,1,higher_divisor_even,o2_d18_a1_higher_divisor_even
+41,181,191,10,40,30,0 2 0 0 2 0 2 0 0 0 0 1,6,4,2,odd_semiprime,o6_d4_a2_odd_semiprime
+42,191,193,2,64,62,2 0 0 0 2 2 0 0 0 0 0 1,2,14,1,higher_divisor_even,o2_d14_a1_higher_divisor_even
+43,193,197,4,48,44,0 0 0 0 2 0 0 0 0 0 0 1,4,4,1,even_semiprime,o4_d4_a1_even_semiprime
+44,197,199,2,66,64,0 0 0 0 2 2 2 2 2 2 2 1,2,12,1,higher_divisor_even,o2_d12_a1_higher_divisor_even
+45,199,211,12,46,34,0 0 0 0 2 0 2 0 2 0 2 1,4,4,2,odd_semiprime,o4_d4_a2_odd_semiprime
+46,211,223,12,76,64,0 0 0 0 2 2 0 0 2 2 0 1,6,4,2,odd_semiprime,o6_d4_a2_odd_semiprime
+47,223,227,4,96,92,2 2 2 2 0 2 2 2 0 2 2 1,4,4,3,even_semiprime,o4_d4_a3_even_semiprime
+48,227,229,2,72,70,2 0 2 0 0 2 0 2 2 0 2 1,2,12,1,higher_divisor_even,o2_d12_a1_higher_divisor_even
+49,229,233,4,68,64,2 2 0 0 0 2 2 0 2 2 0 1,4,8,1,higher_divisor_even,o4_d8_a1_higher_divisor_even
+50,233,239,6,80,74,0 2 2 2 2 0 2 2 0 2 2 1,6,4,2,odd_semiprime,o6_d4_a2_odd_semiprime
+51,239,241,2,60,58,0 2 0 2 0 0 2 0 0 2 0 1,2,20,1,higher_divisor_even,o2_d20_a1_higher_divisor_even
+52,241,251,10,62,52,0 2 2 0 0 0 2 2 2 0 0 1,6,4,6,odd_semiprime,o6_d4_a6_odd_semiprime
+53,251,257,6,60,54,0 2 0 0 0 0 2 0 2 2 2 1,2,4,2,odd_semiprime,o2_d4_a2_odd_semiprime
+54,257,263,6,74,68,2 0 0 0 0 0 2 2 0 2 0 1,2,4,2,odd_semiprime,o2_d4_a2_odd_semiprime
+55,263,269,6,62,56,0 0 0 0 0 0 2 0 0 2 2 1,6,4,2,odd_semiprime,o6_d4_a2_odd_semiprime
+56,269,271,2,66,64,0 0 0 0 0 0 2 2 2 0 2 1,2,16,1,higher_divisor_even,o2_d16_a1_higher_divisor_even
+57,271,277,6,78,72,2 2 2 2 2 2 0 2 0 0 2 1,6,4,3,even_semiprime,o6_d4_a3_even_semiprime
+58,277,281,4,74,70,0 2 0 2 0 2 2 0 0 0 2 1,4,4,1,even_semiprime,o4_d4_a1_even_semiprime
+59,281,283,2,76,74,2 0 0 2 2 0 2 2 2 2 0 1,2,8,1,higher_divisor_even,o2_d8_a1_higher_divisor_even
+60,283,293,10,64,54,0 0 0 2 0 0 2 0 2 0 0 1,4,3,6,prime_square,o4_d3_a6_prime_square
+61,293,307,14,96,82,2 2 2 0 0 0 2 2 0 0 0 1,6,4,2,odd_semiprime,o6_d4_a2_odd_semiprime
+62,307,311,4,82,78,0 2 0 0 0 0 2 0 0 0 0 1,4,4,2,odd_semiprime,o4_d4_a2_odd_semiprime
+63,311,313,2,88,86,0 2 2 2 2 2 0 0 0 0 0 1,2,16,1,higher_divisor_even,o2_d16_a1_higher_divisor_even
+64,313,317,4,72,68,2 0 2 0 2 0 0 0 0 0 0 1,4,4,1,even_semiprime,o4_d4_a1_even_semiprime
+65,317,331,14,104,90,2 2 0 0 2 2 2 2 2 2 2 1,2,4,2,odd_semiprime,o2_d4_a2_odd_semiprime
+67,337,347,10,86,76,0 2 0 2 2 0 0 2 2 0 0 1,4,4,2,odd_semiprime,o4_d4_a2_odd_semiprime
+68,347,349,2,86,84,0 2 2 0 2 2 2 0 2 2 2 1,2,12,1,higher_divisor_even,o2_d12_a1_higher_divisor_even
+69,349,353,4,102,98,2 0 2 2 0 2 0 0 2 0 2 1,4,8,2,higher_divisor_odd,o4_d8_a2_higher_divisor_odd
+70,353,359,6,88,82,2 2 0 2 2 0 0 0 2 2 0 1,6,4,2,odd_semiprime,o6_d4_a2_odd_semiprime
+71,359,367,8,72,64,2 0 0 2 0 0 0 0 2 0 0 1,2,3,2,prime_square,o2_d3_a2_prime_square
+72,367,373,6,90,84,2 2 2 0 0 0 0 0 2 2 2 1,4,4,4,odd_semiprime,o4_d4_a4_odd_semiprime
+73,373,379,6,88,82,0 2 0 0 0 0 0 0 2 0 2 1,4,4,4,odd_semiprime,o4_d4_a4_odd_semiprime
+74,379,383,4,88,84,2 0 0 0 0 0 0 0 2 2 0 1,4,4,2,odd_semiprime,o4_d4_a2_odd_semiprime
+75,383,389,6,100,94,2 2 2 2 2 2 2 2 0 2 2 1,6,4,3,even_semiprime,o6_d4_a3_even_semiprime
+76,389,397,8,74,66,2 0 2 0 2 0 2 0 0 2 0 1,2,4,2,odd_semiprime,o2_d4_a2_odd_semiprime
+77,397,401,4,82,78,0 0 2 2 0 0 2 2 2 0 0 1,4,4,1,even_semiprime,o4_d4_a1_even_semiprime
+78,401,409,8,86,78,2 2 0 2 2 2 0 2 0 0 0 1,2,4,2,odd_semiprime,o2_d4_a2_odd_semiprime
+79,409,419,10,84,74,2 0 0 2 0 2 2 0 0 0 0 1,4,4,2,odd_semiprime,o4_d4_a2_odd_semiprime
+80,419,421,2,86,84,2 2 2 0 0 2 0 0 0 0 0 1,2,24,1,higher_divisor_even,o2_d24_a1_higher_divisor_even
+81,421,431,10,92,82,0 2 0 0 0 2 2 2 2 2 2 1,6,4,1,even_semiprime,o6_d4_a1_even_semiprime
+82,431,433,2,102,100,2 0 0 0 0 2 0 2 0 2 0 1,2,20,1,higher_divisor_even,o2_d20_a1_higher_divisor_even
+83,433,439,6,102,96,0 0 0 0 0 2 2 0 0 2 2 1,4,4,4,odd_semiprime,o4_d4_a4_odd_semiprime
+85,443,449,6,102,96,2 0 2 0 2 2 0 2 0 0 2 1,6,4,2,odd_semiprime,o6_d4_a2_odd_semiprime
+86,449,457,8,100,92,0 0 2 2 0 2 2 0 0 0 2 1,2,4,2,odd_semiprime,o2_d4_a2_odd_semiprime
+87,457,461,4,98,94,0 0 2 0 0 2 0 0 0 0 2 1,4,4,1,even_semiprime,o4_d4_a1_even_semiprime
+88,461,463,2,100,98,2 2 0 0 0 2 2 2 2 2 0 1,2,16,1,higher_divisor_even,o2_d16_a1_higher_divisor_even
+89,463,467,4,92,88,0 2 2 2 2 0 2 0 2 0 0 1,4,4,3,even_semiprime,o4_d4_a3_even_semiprime
+90,467,479,12,96,84,2 0 2 0 2 2 0 0 2 2 2 1,2,4,2,odd_semiprime,o2_d4_a2_odd_semiprime
+93,491,499,8,100,92,2 0 2 0 0 0 0 0 2 0 0 1,2,4,2,odd_semiprime,o2_d4_a2_odd_semiprime
+95,503,509,6,100,94,2 0 0 0 0 0 0 0 2 0 2 1,6,4,2,odd_semiprime,o6_d4_a2_odd_semiprime
+96,509,521,12,98,86,0 0 0 0 0 0 0 0 2 2 0 1,2,4,2,odd_semiprime,o2_d4_a2_odd_semiprime
+98,523,541,18,108,90,2 2 2 2 2 2 2 2 0 0 0 1,4,3,6,prime_square,o4_d3_a6_prime_square
+100,547,557,10,110,100,0 0 2 2 0 0 2 2 2 2 2 1,4,4,4,odd_semiprime,o4_d4_a4_odd_semiprime
+105,577,587,10,100,90,0 0 0 0 0 0 2 0 2 0 0 1,4,4,2,odd_semiprime,o4_d4_a2_odd_semiprime

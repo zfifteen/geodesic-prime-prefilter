@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Boundary Reserve Exclusion | Gilbreath PGS Track</title>
+  <style>
+    :root { --ink:#17212b; --muted:#5e6a75; --line:#d8e0e8; --panel:#f7f9fb; --accent:#0b6b8a; --bad:#8a3b00; --good:#1f6b45; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:#fff; font:13px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    main { width:min(1040px,calc(100% - 36px)); margin:0 auto; padding:28px 0 38px; }
+    header { padding:0 0 18px; border-bottom:1px solid var(--line); }
+    h1 { margin:0 0 8px; font-size:2rem; line-height:1.08; letter-spacing:0; }
+    h2 { margin:0 0 12px; font-size:1.25rem; line-height:1.2; }
+    h3 { margin:0 0 8px; font-size:1rem; }
+    p { margin:0 0 11px; }
+    section { padding:20px 0; border-bottom:1px solid var(--line); }
+    a { color:var(--accent); text-underline-offset:3px; }
+    code { padding:1px 4px; border-radius:4px; background:#eef3f6; color:#0f4f68; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.94em; }
+    .lede { max-width:890px; color:#263845; font-size:1.05rem; }
+    .muted { color:var(--muted); }
+    .grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .panel { padding:14px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
+    .pillrow { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .pill { padding:4px 8px; border:1px solid var(--line); border-radius:999px; color:var(--muted); background:#fff; font-weight:650; }
+    .good { color:var(--good); border-color:#b8dcc9; background:#f1faf5; }
+    .bad { color:var(--bad); border-color:#e7c3a8; background:#fff7ef; }
+    table { width:100%; border-collapse:collapse; border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+    th, td { padding:9px 11px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { background:#eef5f8; color:#24414f; font-size:.82rem; letter-spacing:.04em; text-transform:uppercase; }
+    tr:last-child td { border-bottom:0; }
+    ul { margin:0; padding-left:19px; }
+    li + li { margin-top:5px; }
+    pre { margin:0; padding:12px; overflow:auto; border:1px solid var(--line); border-radius:8px; background:#f8fafc; font:12px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace; }
+    .mono { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
+    @media (max-width:780px) { .grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <p><a href="./">Back to Gilbreath track</a></p>
+    <h1>Boundary reserve exclusion</h1>
+    <p class="lede">Actual PGS does contain high low-prefix boundary pairs such as <code>2,6</code>. They occur with enough low-prefix reserve for ordinary depletion to keep the leading edge safe. The live theorem target is reserve separation from the floor, not absolute exclusion of the <code>2,6</code> boundary.</p>
+    <div class="pillrow">
+      <span class="pill good">ADVANCE</span>
+      <span class="pill bad">absolute 2,6 exclusion falsified</span>
+      <span class="pill">20,000 exact endpoints</span>
+      <span class="pill">Gilbreath proof unresolved</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>PGS Objects</h2>
+    <div class="grid">
+      <div class="panel">
+        <h3>Low-prefix reserve</h3>
+        <p>For cascade row <code>R</code>, <code>ell(R)</code> is the number of consecutive non-leading left lanes in <code>{0,2}</code>. The floor is <code>ell=2</code>, because one ordinary depletion step then leaves only <code>ell=1</code> unless a reset begins.</p>
+      </div>
+      <div class="panel">
+        <h3>Boundary exit</h3>
+        <p>The boundary pair is <code>R_ell, R_{ell+1}</code>. The prior abstract obstruction begins with floor reserve and boundary <code>2,6</code>: <code>(1,2,2,6,2)</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Reserve-Safety Lemma</h2>
+    <p><strong>Lemma.</strong> If a cascade row has leading value <code>1</code>, all non-leading lanes even, and <code>ell(R) >= 3</code>, then one ordinary difference step preserves leading value <code>1</code> and leaves <code>ell(Delta R) >= 2</code>, independently of the boundary pair.</p>
+    <p><strong>Proof.</strong> The first non-leading lane is either <code>0</code> or <code>2</code>, so <code>|R_1 - R_0| = 1</code>. Every adjacent pair inside the first <code>ell</code> non-leading lanes is drawn from <code>{0,2}</code>, so each corresponding difference is also in <code>{0,2}</code>. Therefore the next row has at least <code>ell-1</code> low-prefix lanes. If <code>ell >= 3</code>, then <code>ell(Delta R) >= 2</code>.</p>
+    <p>The boundary pair matters only at the floor. A high boundary after a long low-prefix corridor is safe for one step by reserve alone.</p>
+  </section>
+
+  <section>
+    <h2>Measured Result</h2>
+    <table>
+      <tbody>
+        <tr><th>Endpoint surface</th><td><code>20,000</code> seeded endpoint gaps from endpoint <code>2</code> through final endpoint <code>224,743</code>.</td></tr>
+        <tr><th>Cascade rows checked</th><td><code>19,996</code>.</td></tr>
+        <tr><th>Failures</th><td><code>0</code> leading failures, <code>0</code> tail-parity failures, <code>0</code> depletion failures.</td></tr>
+        <tr><th>Forbidden prefix</th><td><code>1,2,2,6,2</code> had <code>0</code> hits.</td></tr>
+        <tr><th>Floor rows</th><td><code>1</code> floor row, with boundary pair <code>2,4</code>; <code>0</code> floor guard failures.</td></tr>
+        <tr><th>High boundary rows</th><td><code>16</code> rows with boundary left in <code>{0,2}</code> and boundary right outside <code>{0,2,4}</code>; <code>0</code> floor hits.</td></tr>
+        <tr><th>Minimum high-boundary reserve</th><td><code>ell = 22</code>, at depth <code>6</code>, boundary pair <code>2,6</code>.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Boundary Counts</h2>
+    <table>
+      <thead>
+        <tr><th>Boundary pair</th><th>Count</th><th>Minimum ell</th><th>Interpretation</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>2,4</code></td><td><code>29</code></td><td><code>2</code></td><td>Reset-admission boundary; the only measured floor boundary.</td></tr>
+        <tr><td><code>0,4</code></td><td><code>19</code></td><td><code>97</code></td><td>High-reserve low exit with ordinary depletion.</td></tr>
+        <tr><td><code>2,6</code></td><td><code>6</code></td><td><code>22</code></td><td>Actual occurrence falsifies absolute <code>2,6</code> exclusion.</td></tr>
+        <tr><td><code>0,8</code></td><td><code>4</code></td><td><code>24</code></td><td>Actual high boundary, reserve-separated from floor.</td></tr>
+        <tr><td><code>0,6</code></td><td><code>3</code></td><td><code>290</code></td><td>Actual high boundary, reserve-separated from floor.</td></tr>
+        <tr><td><code>2,8</code></td><td><code>2</code></td><td><code>23</code></td><td>Actual high boundary, reserve-separated from floor.</td></tr>
+        <tr><td><code>2,10</code></td><td><code>1</code></td><td><code>2770</code></td><td>Actual high boundary, reserve-separated from floor.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Proof-Tree Change</h2>
+    <p>The previous abstract obstruction suggested excluding the <code>2,6</code> boundary family. That route is false on actual PGS rows: <code>2,6</code> appears six times on the measured surface.</p>
+    <p>The usable PGS target is reserve separation. The theorem to prove is: high boundary pairs can occur only after the low-prefix corridor has enough reserve, while the floor boundary is forced to the reset-admission pair <code>2,4</code>. This is the exact form needed by the Reserve-Safety Lemma.</p>
+  </section>
+
+  <section>
+    <h2>Status Separation</h2>
+    <table>
+      <tbody>
+        <tr><th>Theorem proof</th><td>Unresolved. The Reserve-Safety Lemma is formal cascade arithmetic; the all-scale PGS reserve-separation theorem is not proved.</td></tr>
+        <tr><th>Measured evidence</th><td>The exact seeded endpoint surface recorded <code>0</code> forbidden-prefix hits and <code>0</code> high-boundary floor hits.</td></tr>
+        <tr><th>Implementation status</th><td>Probe code and outputs are local to this track folder.</td></tr>
+        <tr><th>Audit status</th><td>Probe rerun, JSON parsing, Python compilation, HTML parsing, diff check, and LF checks are the verification surface for this run.</td></tr>
+        <tr><th>Invalidated rule</th><td>Absolute exclusion of the <code>2,6</code> boundary is invalidated.</td></tr>
+        <tr><th>Unresolved state</th><td>Derive the floor reset pair <code>2,4</code> and high-boundary reserve separation from ordered endpoint-gap grammar, GWR-selected chamber state, or DNI chamber structure.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Reproduce</h2>
+    <p>Run:</p>
+    <p><code>python3 pgs-unsolved-problems/gilbreath/2026-05-23-boundary_reserve_exclusion_probe.py</code></p>
+    <ul>
+      <li><a href="2026-05-23-boundary_reserve_exclusion_probe.py">Probe code</a></li>
+      <li><a href="2026-05-23-boundary_reserve_exclusion_summary.json">Summary JSON</a></li>
+      <li><a href="2026-05-23-boundary_reserve_exclusion_rows.csv">Boundary rows CSV</a></li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>

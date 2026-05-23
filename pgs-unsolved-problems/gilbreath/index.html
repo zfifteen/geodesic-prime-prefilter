@@ -73,22 +73,29 @@
         <tbody>
           <tr><th>First goal</th><td>Prove the seeded ordered prime-gap absolute-difference cascade preserves leading value <code>1</code> at every depth.</td></tr>
           <tr><th>Current PGS assets</th><td>Ordered prime-gap state, gap-type research, GWR-selected chamber markers, and existing twin/gap research surfaces.</td></tr>
-          <tr><th>Missing bridge theorem</th><td>Derive prefix admission for every depth from PGS ordered endpoint-gap grammar, with the low-prefix reset corridor as the current concrete attack surface.</td></tr>
-          <tr><th>Deterministic probe design</th><td>Build finite gap-word cascades from exact PGS-generated prime endpoints and classify low-prefix depletion, reset admission, and reset stop-wall behavior.</td></tr>
-          <tr><th>Falsification condition</th><td>A proposed grammar law fails if an actual seeded endpoint-gap cascade row violates its reset admission, stop-wall, or leading-edge preservation claim.</td></tr>
-          <tr><th>Status</th><td><code>unresolved</code>. The measured reset corridor has no leading failure on the current exact endpoint surface, but no Gilbreath proof is claimed.</td></tr>
+          <tr><th>Missing bridge theorem</th><td>Derive prefix admission for every depth from actual PGS ordered endpoint-gap grammar. The current target is reserve separation: high low-prefix boundary pairs such as <code>2,6</code> may occur, but they must stay away from the floor where a reset is needed.</td></tr>
+          <tr><th>Deterministic probe design</th><td>Build finite gap-word cascades from exact PGS-generated prime endpoints, test boundary reserve at the low-prefix exit, test the right-edge fold-transfer guard and actual ceiling margin, and enumerate abstract admitted low-prefix words that the actual PGS grammar must exclude.</td></tr>
+          <tr><th>Falsification condition</th><td>A proposed grammar law fails if an actual seeded endpoint-gap prefix violates transfer-guard admission, actual ceiling admission, reset admission, stop-wall behavior, or leading-edge preservation.</td></tr>
+          <tr><th>Status</th><td><code>unresolved</code>. The measured actual endpoint surface has no transfer-guard or ceiling failure; absolute <code>2,6</code> exclusion is invalidated, and the live target is reserve separation.</td></tr>
         </tbody>
       </table>
     </section>
     <section>
       <h2>Latest Advance</h2>
-      <p>The reset admission pair remains <code>2,4</code> on the exact seeded endpoint surface, but the closed reset stop-wall is not a single diff-4 law. The 2026-05-20 probe found closed stop-wall differences <code>4:22</code>, <code>6:4</code>, <code>8:1</code>, and <code>10:1</code> across <code>28</code> closed positive resets.</p>
-      <p>The diff-4-only stop-wall shortcut is invalidated. The next theorem obligation is to derive the broader stop-wall alphabet from seeded ordered endpoint-gap grammar after the <code>2,4</code> reset admission pair.</p>
+      <p>Actual PGS contains the boundary pair <code>2,6</code>, so excluding every <code>2,6</code> boundary is false. The 2026-05-23 boundary-reserve probe found <code>6</code> measured <code>2,6</code> low-prefix exits, with minimum reserve <code>ell = 22</code>.</p>
+      <p>The dangerous floor case did not occur: across <code>19,996</code> cascade rows from <code>20,000</code> exact seeded endpoint gaps through final endpoint <code>224,743</code>, the probe found <code>0</code> hits of <code>1,2,2,6,2</code>, <code>1</code> floor row with boundary pair <code>2,4</code>, <code>0</code> high-boundary floor hits, and <code>0</code> depletion failures. The next theorem obligation is reserve separation: derive why high boundary pairs stay away from the floor from ordered endpoint-gap grammar, GWR-selected chamber state, or DNI chamber structure.</p>
     </section>
     <section>
       <h2>Artifacts</h2>
       <table>
         <tbody>
+          <tr><th>Reviewer report</th><td><a href="2026-05-23-outside-reviewer-report.html">Outside reviewer report</a>: detailed research summary, literature positioning, claim ledger, and reproducibility instructions.</td></tr>
+          <tr><th>2026-05-23</th><td><a href="2026-05-23-boundary-reserve-exclusion.html">Boundary reserve exclusion</a>: deterministic probe and note showing actual <code>2,6</code> boundaries occur only with reserve on the measured surface.</td></tr>
+          <tr><th>Probe</th><td><a href="2026-05-23-boundary_reserve_exclusion_probe.py">2026-05-23-boundary_reserve_exclusion_probe.py</a></td></tr>
+          <tr><th>Outputs</th><td><a href="2026-05-23-boundary_reserve_exclusion_summary.json">summary JSON</a> and <a href="2026-05-23-boundary_reserve_exclusion_rows.csv">boundary rows CSV</a></td></tr>
+          <tr><th>2026-05-23</th><td><a href="2026-05-23-low-prefix-transfer-guard-obstruction.html">Low-prefix transfer-guard obstruction</a>: deterministic probe and note invalidating the low-prefix-only route to fold-transfer admission.</td></tr>
+          <tr><th>Probe</th><td><a href="2026-05-23-low_prefix_transfer_guard_probe.py">2026-05-23-low_prefix_transfer_guard_probe.py</a></td></tr>
+          <tr><th>Outputs</th><td><a href="2026-05-23-low_prefix_transfer_guard_summary.json">summary JSON</a>, <a href="2026-05-23-low_prefix_transfer_guard_critical_rows.csv">critical rows CSV</a>, and <a href="2026-05-23-low_prefix_transfer_guard_abstract_failures.csv">abstract failures CSV</a></td></tr>
           <tr><th>2026-05-20</th><td><a href="2026-05-20-reset-stop-wall-classification.html">Reset stop-wall classification</a>: deterministic probe and note falsifying the diff-4-only stop-wall shortcut.</td></tr>
           <tr><th>Probe</th><td><a href="2026-05-20-reset_stop_wall_probe.py">2026-05-20-reset_stop_wall_probe.py</a></td></tr>
           <tr><th>Outputs</th><td><a href="2026-05-20-reset_stop_wall_summary.json">summary JSON</a> and <a href="2026-05-20-reset_stop_wall_rows.csv">reset rows CSV</a></td></tr>

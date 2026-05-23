@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gilbreath PGS Research Track | Outside Reviewer Report</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17212b;
+      --muted: #5d6872;
+      --line: #d8e0e8;
+      --panel: #f7f9fb;
+      --paper: #ffffff;
+      --accent: #0b6b8a;
+      --good: #1f6b45;
+      --warn: #8a5a00;
+      --bad: #8a3b00;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font: 13px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    main {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 28px 0 42px;
+    }
+
+    header {
+      padding: 0 0 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h1 {
+      max-width: 980px;
+      margin: 0 0 10px;
+      font-size: 2.15rem;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 1.32rem;
+      line-height: 1.2;
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+      line-height: 1.25;
+    }
+
+    p { margin: 0 0 11px; }
+    section { padding: 21px 0; border-bottom: 1px solid var(--line); }
+    a { color: var(--accent); text-underline-offset: 3px; }
+    ul, ol { margin: 0; padding-left: 20px; }
+    li + li { margin-top: 5px; }
+
+    code {
+      padding: 1px 4px;
+      border-radius: 4px;
+      background: #eef3f6;
+      color: #0f4f68;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: .94em;
+    }
+
+    pre {
+      margin: 0;
+      padding: 12px;
+      overflow: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8fafc;
+      font: 12px/1.45 ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 9px 11px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #eef5f8;
+      color: #24414f;
+      font-size: .82rem;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .lede {
+      max-width: 940px;
+      color: #263845;
+      font-size: 1.05rem;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--accent);
+      font-size: .82rem;
+      font-weight: 750;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .pillrow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .pill {
+      padding: 4px 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--muted);
+      font-weight: 650;
+    }
+
+    .good { color: var(--good); border-color: #b8dcc9; background: #f1faf5; }
+    .warn { color: var(--warn); border-color: #e5ca8f; background: #fff8ea; }
+    .bad { color: var(--bad); border-color: #e7c3a8; background: #fff7ef; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .panel {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .callout {
+      padding: 14px;
+      border: 1px solid #cfe0e8;
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      background: #f5fbfd;
+    }
+
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+    @media (max-width: 860px) {
+      .grid, .three { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <p><a href="./">Back to Gilbreath track</a></p>
+    <p class="eyebrow">Outside reviewer report</p>
+    <h1>PGS-directed Gilbreath research track</h1>
+    <p class="lede">This report summarizes the current Prime Gap Structure approach to Gilbreath's conjecture for outside reviewers. The track has not proved Gilbreath's conjecture. Its contribution is a proof-directed reduction from the prime-gap absolute-difference cascade to concrete PGS-native obligations: prefix admission, low-prefix reserve, fold-transfer admission, and reserve separation at actual endpoint-gap boundaries.</p>
+    <div class="pillrow">
+      <span class="pill warn">theorem status: unresolved</span>
+      <span class="pill good">PGS-native probes reproducible</span>
+      <span class="pill">no probabilistic inference</span>
+      <span class="pill">no primality fallback in inference</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>Executive Finding</h2>
+    <div class="callout">
+      <p>The strongest supported claim is that the PGS track has produced a nontrivial structural proof program for the actual prime sequence. It has eliminated several attractive but false shortcut bridges and isolated a sharper live theorem target: <strong>high low-prefix boundary pairs must be reserve-separated from the floor, while the floor boundary must reset through <code>2,4</code>.</strong></p>
+      <p>This is not a solution of Gilbreath's conjecture. It is a proof-state advance: a broad finite-difference problem has been converted into explicit PGS obligations that outside reviewers can inspect, falsify, or attempt to prove.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Problem Statement</h2>
+    <p>Start with the prime sequence. Replace each row by the absolute differences of adjacent entries, then repeat. Gilbreath's conjecture states that the first entry of every later row is <code>1</code>.</p>
+    <p>In PGS language, the first difference row is the ordered endpoint-gap sequence. At depth <code>k</code>, the first <code>k + 1</code> endpoint gaps determine the leading value of the <code>k</code>th absolute-difference row. The core target is therefore prefix admission:</p>
+    <pre>For every depth k, the actual seeded PGS gap prefix W_k satisfies Delta^k(W_k)_0 = 1.</pre>
+  </section>
+
+  <section>
+    <h2>External Baseline</h2>
+    <table>
+      <thead>
+        <tr><th>External work</th><th>What it establishes</th><th>Relevance to this report</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://t5k.org/glossary/page.php?sort=GilbreathsConjecture">PrimePages summary</a></td>
+          <td>Records Odlyzko's verification using primes up to <code>10^13</code> and explains the practical check based on rows beginning with <code>1</code> followed by enough <code>0</code>s and <code>2</code>s.</td>
+          <td>External computational verification is far larger than this track's measured endpoint surfaces.</td>
+        </tr>
+        <tr>
+          <td><a href="https://encyclopediaofmath.org/wiki/Gilbreath_conjecture">Encyclopedia of Mathematics</a></td>
+          <td>States the conjecture and records Odlyzko verification for primes <code>&lt;= 10^13</code>.</td>
+          <td>Useful neutral statement of the open problem and verification status.</td>
+        </tr>
+        <tr>
+          <td><a href="https://arxiv.org/abs/2510.06688">Plouffe arXiv verification claim</a></td>
+          <td>Claims verification up to <code>10^14</code> and repeats the sufficient row condition: a row beginning with <code>1</code> followed only by <code>0</code> and <code>2</code>.</td>
+          <td>Computational, not proof-grade; cite as an arXiv claim, not as established theorem status.</td>
+        </tr>
+        <tr>
+          <td><a href="https://link.springer.com/article/10.1007/s00208-023-02579-w">Chase random analogue</a></td>
+          <td>Proves a rigorous random analogue of Gilbreath's conjecture for a randomized gap process.</td>
+          <td>Strong conventional theorem, but it is not a proof for the prime sequence.</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.mdpi.com/2227-7390/11/18/4006">Gilbreath polynomials and bounds</a></td>
+          <td>Develops finite-sequence definitions, equations, and upper/lower bounds for Gilbreath-type sequences.</td>
+          <td>Related finite-sequence formalism; not a PGS endpoint-gap proof route.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>PGS Claim Ledger</h2>
+    <table>
+      <thead>
+        <tr><th>Category</th><th>Current status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Theorem proof</td><td>Gilbreath's conjecture remains unresolved. The report does not claim a proof.</td></tr>
+        <tr><td>PGS foundation</td><td>The repository's local PGS theorem status is governed by <a href="../../PROOF.md">PROOF.md</a>: exact divisor-count next-prime generation and the GWR selected-interior theorem. These do not by themselves prove Gilbreath.</td></tr>
+        <tr><td>Measured evidence</td><td>The current Gilbreath probes are exact finite endpoint-gap cascade probes. The largest current Gilbreath surface in this folder uses <code>20,000</code> seeded endpoint gaps through endpoint <code>224,743</code>.</td></tr>
+        <tr><td>Implementation status</td><td>Probe scripts are deterministic Python programs using only the standard library.</td></tr>
+        <tr><td>Audit status</td><td>JSON parsing, Python compilation, HTML parsing, diff hygiene, and CR/LF scans passed for the current artifacts.</td></tr>
+        <tr><td>Invalidated rules</td><td>Reduced width-only membership is insufficient; diff-4-only stop walls are false; low-prefix alone does not imply fold-transfer guard; absolute <code>2,6</code> boundary exclusion is false.</td></tr>
+        <tr><td>Live unresolved bridge</td><td>Derive reserve separation and the floor reset pair <code>2,4</code> from actual PGS endpoint-gap grammar, GWR-selected chamber state, or DNI chamber structure.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Proof-Tree Summary</h2>
+    <div class="grid">
+      <div class="panel">
+        <h3>1. Prefix Admission</h3>
+        <p>For depth <code>k</code>, only the first <code>k + 1</code> ordered endpoint gaps determine the leading value. The problem becomes membership of actual PGS prefixes in <code>L_k = {W : Delta^k(W)_0 = 1}</code>.</p>
+      </div>
+      <div class="panel">
+        <h3>2. Left-Edge Parity Gate</h3>
+        <p>Once the leading value is <code>1</code> and all non-leading lanes are even, the next row leads with <code>1</code> exactly when the next lane is <code>0</code> or <code>2</code>.</p>
+      </div>
+      <div class="panel">
+        <h3>3. Low-Prefix Corridor</h3>
+        <p>Let <code>ell</code> count consecutive non-leading left lanes in <code>{0,2}</code>. Ordinary depletion lowers this reserve by at most one per row. Resets replenish it.</p>
+      </div>
+      <div class="panel">
+        <h3>4. Reset Boundary</h3>
+        <p>Measured positive resets begin at boundary pair <code>2,4</code>. This is the current concrete floor-reset target.</p>
+      </div>
+      <div class="panel">
+        <h3>5. Fold-Transfer Guard</h3>
+        <p>The right-edge diagonal converts prefix extension into a backward ceiling condition. If the absorbing guard holds, admitted next gaps form an initial even interval.</p>
+      </div>
+      <div class="panel">
+        <h3>6. Reserve Separation</h3>
+        <p>Actual high boundary pairs such as <code>2,6</code> occur, but only with large low-prefix reserve on the measured surface. The floor case remains guarded by <code>2,4</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Current Core Evidence</h2>
+    <table>
+      <thead>
+        <tr><th>Artifact</th><th>Measured result</th><th>Proof consequence</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="2026-05-23-boundary-reserve-exclusion.html">Boundary reserve exclusion</a></td>
+          <td><code>20,000</code> endpoint gaps; <code>19,996</code> cascade rows; <code>0</code> hits of <code>1,2,2,6,2</code>; <code>1</code> floor row with boundary <code>2,4</code>; <code>0</code> high-boundary floor hits; minimum high-boundary reserve <code>ell = 22</code>.</td>
+          <td>Replaces absolute <code>2,6</code> exclusion with reserve separation.</td>
+        </tr>
+        <tr>
+          <td><a href="2026-05-23-low-prefix-transfer-guard-obstruction.html">Low-prefix transfer-guard obstruction</a></td>
+          <td><code>553</code> abstract admitted low-prefix words through length <code>8</code> violate the transfer guard; actual PGS had <code>0</code> transfer-guard failures on <code>19,999</code> prefix extensions.</td>
+          <td>Low-prefix alone is insufficient; actual PGS grammar must exclude guard-failure families.</td>
+        </tr>
+        <tr>
+          <td><a href="2026-05-20-reset-stop-wall-classification.html">Reset stop-wall classification</a></td>
+          <td><code>29</code> positive reset rows; all had boundary pair <code>2,4</code>; closed stop-wall differences were <code>4:22</code>, <code>6:4</code>, <code>8:1</code>, <code>10:1</code>.</td>
+          <td>Diff-4-only stop-wall shortcut is false; the stop-wall grammar is broader.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Why This Is PGS-Native</h2>
+    <ul>
+      <li>The endpoint chain is generated by exact divisor-count stopping, consistent with the PGS generator theorem in <a href="../../PROOF.md">PROOF.md</a>.</li>
+      <li>The proof target is stated in ordered endpoint gaps, prefix admission, low-prefix reserve, and boundary grammar.</li>
+      <li>The probes do not use Miller-Rabin, random search, density heuristics, <code>nextprime</code>, <code>gcd</code>, product closure, or divisibility selectors as inference mechanisms.</li>
+      <li>Classical literature appears only as external context for what is known about Gilbreath, not as a proof engine inside the track.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Reproducibility Quick Start</h2>
+    <p>From the repository root, run the current probes:</p>
+    <pre>python3 pgs-unsolved-problems/gilbreath/2026-05-23-boundary_reserve_exclusion_probe.py
+python3 pgs-unsolved-problems/gilbreath/2026-05-23-low_prefix_transfer_guard_probe.py
+python3 pgs-unsolved-problems/gilbreath/2026-05-20-reset_stop_wall_probe.py</pre>
+    <p>Then verify machine-readable outputs and scripts:</p>
+    <pre>python3 -m json.tool pgs-unsolved-problems/gilbreath/2026-05-23-boundary_reserve_exclusion_summary.json >/dev/null
+python3 -m json.tool pgs-unsolved-problems/gilbreath/2026-05-23-low_prefix_transfer_guard_summary.json >/dev/null
+python3 -m json.tool pgs-unsolved-problems/gilbreath/2026-05-20-reset_stop_wall_summary.json >/dev/null
+python3 -m py_compile \
+  pgs-unsolved-problems/gilbreath/2026-05-23-boundary_reserve_exclusion_probe.py \
+  pgs-unsolved-problems/gilbreath/2026-05-23-low_prefix_transfer_guard_probe.py \
+  pgs-unsolved-problems/gilbreath/2026-05-20-reset_stop_wall_probe.py</pre>
+    <p>Check the HTML report and notes parse as HTML:</p>
+    <pre>python3 - <<'PY'
+from html.parser import HTMLParser
+from pathlib import Path
+for path in [
+    Path("pgs-unsolved-problems/gilbreath/index.html"),
+    Path("pgs-unsolved-problems/gilbreath/2026-05-23-outside-reviewer-report.html"),
+    Path("pgs-unsolved-problems/gilbreath/2026-05-23-boundary-reserve-exclusion.html"),
+    Path("pgs-unsolved-problems/gilbreath/2026-05-23-low-prefix-transfer-guard-obstruction.html"),
+    Path("pgs-unsolved-problems/gilbreath/2026-05-20-reset-stop-wall-classification.html"),
+]:
+    parser = HTMLParser()
+    parser.feed(path.read_text())
+print("html parse ok")
+PY</pre>
+    <p>Check line endings and whitespace before review:</p>
+    <pre>git diff --check -- pgs-unsolved-problems/gilbreath
+if rg $'\r' pgs-unsolved-problems/gilbreath; then
+  exit 1
+else
+  echo "no CR characters"
+fi</pre>
+  </section>
+
+  <section>
+    <h2>Expected Reviewer Questions</h2>
+    <table>
+      <thead>
+        <tr><th>Question</th><th>Current answer</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Does this prove Gilbreath?</td>
+          <td>No. It identifies and measures a proof route. The missing theorem is all-scale reserve separation from PGS endpoint-gap grammar.</td>
+        </tr>
+        <tr>
+          <td>Is this only computational verification?</td>
+          <td>No. The finite probes support formal reductions and falsify candidate bridges. The measurements do not establish the theorem.</td>
+        </tr>
+        <tr>
+          <td>Why is the <code>2,6</code> result important?</td>
+          <td>Because it blocks an over-strong bridge. Actual PGS allows <code>2,6</code>, so a proof must explain reserve placement, not merely forbid a boundary pair.</td>
+        </tr>
+        <tr>
+          <td>What must be proved next?</td>
+          <td>For every actual seeded PGS cascade row: if <code>ell = 2</code>, the boundary pair is <code>2,4</code>; if the boundary pair is high, then <code>ell >= 3</code>, with enough reserve for ordinary depletion.</td>
+        </tr>
+        <tr>
+          <td>What would falsify the current route?</td>
+          <td>An actual seeded endpoint-gap row with a high boundary at floor reserve, or an actual transfer-guard/ceiling failure, would force a new bridge.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Reviewer Checklist</h2>
+    <ol>
+      <li>Run the reproducibility commands above and compare generated JSON counts to the values in this report.</li>
+      <li>Inspect <a href="2026-05-23-boundary_reserve_exclusion_rows.csv">boundary reserve rows</a>, especially the first <code>2,6</code> boundary at depth <code>6</code> with <code>ell = 22</code>.</li>
+      <li>Inspect <a href="2026-05-23-low_prefix_transfer_guard_abstract_failures.csv">abstract transfer-guard failures</a>, especially the minimal failure <code>1,2,2,6,2</code>.</li>
+      <li>Check that the probes use exact divisor counts and deterministic absolute-difference cascades only.</li>
+      <li>Attempt the live theorem: derive floor reset pair <code>2,4</code> and high-boundary reserve separation from PGS endpoint-gap grammar.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Conclusion</h2>
+    <p>The track is making serious PGS-native progress, but its strongest current form is a research program rather than a proof. It has compressed the Gilbreath target into an explicit all-scale bridge: actual PGS endpoint-gap grammar must keep dangerous high boundary pairs away from the low-prefix floor and must force the floor reset through <code>2,4</code>.</p>
+    <p>That target is crisp enough for outside review. A reviewer can reproduce the current finite surfaces, verify the falsified shortcuts, and focus proof pressure on the single remaining structural question.</p>
+  </section>
+</main>
+</body>
+</html>
