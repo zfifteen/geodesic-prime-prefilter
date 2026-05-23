@@ -11,7 +11,7 @@ prime-gap state, attractor subtype + phase in public grammar word, GWR/DNI
 compositional bias). No classical primality, factoring of N, or probabilistic
 methods are used.
 
-Rules: 89 validated public grammar rules (PG-001..PG-089) derived from the 601_5500 multiplication-map law surface and targeted mining on larger enriched surfaces (27k–35k). All rules are non-overlapping within motif families by construction.
+Rules: 97 validated public grammar rules (PG-001..PG-097) derived from the 601_5500 multiplication-map law surface and targeted mining on larger enriched surfaces (27k–35k) plus Workstream D expansions for a4_d4_a6 / o*_d4_a6 / high-a specific-phase families. All rules are non-overlapping within motif families by construction.
 
 - Automatically derives (via lookup table for the frozen toy corpus) or accepts
   the structural motif (containing exact_type@phase) from N.
@@ -199,6 +199,22 @@ PRUNING_RULES: list[dict[str, Any]] = [
     {"id": "PG-087", "motif": "o2_d4_a2_d4_odd@late + o4_d4_odd prev", "description": "exact weak live motif → prune 30 zero-observed residue/phase classes from enriched 27k–35k surfaces", "pruned_count": 30},
     {"id": "PG-088", "motif": "o2_d4_a6_d4_odd@mid + o4_higher_divisor_odd prev", "description": "exact weak live motif → prune 30 zero-observed residue/phase classes from enriched 27k–35k surfaces", "pruned_count": 30},
     {"id": "PG-089", "motif": "o4_d4_a6_d4_odd@mid + o6_d4_odd prev", "description": "exact weak live motif → prune 30 zero-observed residue/phase classes from enriched 27k–35k surfaces", "pruned_count": 30},
+    # Workstream D (Rule Mining & Coverage Improvement) — 8 new exact-motif pruning rules
+    # mined from enriched_multiplication_map_corpus_27001_30000 / 32001_34000 (train)
+    # + heldout 34001_35000. Targeted at under-covered exotic/high-a families
+    # (a4_d4_a6, o2/o4/o6_d4_a6, a4_d4 with specific prev, a8/a10 + prev/phase)
+    # observed in 64-80bit real-derivation probes. All carry 0 observed FN
+    # (zero target observations in source surfaces for the selected classes,
+    # global support >=35, held-out contradiction count = 0). Conservative
+    # additions following the same PGS-native public-grammar contract.
+    {"id": "PG-090", "motif": "o4_d4_a4_d4_odd@mid + o2_d4_odd prev", "description": "a4_d4 family @mid + o2_d4_odd prev (enriched 27k-35k) → prune 18 zero-observed residue/phase classes", "pruned_count": 18},
+    {"id": "PG-091", "motif": "o4_d4_a4_d4_odd@mid + o4_d4_odd prev", "description": "a4_d4 family @mid + o4_d4_odd prev (enriched 27k-35k) → prune 19 zero-observed residue/phase classes", "pruned_count": 19},
+    {"id": "PG-092", "motif": "o4_d4_a6_d4_odd@mid + o2_d4_odd prev", "description": "o4_d4_a6_d4_odd (a4_d4_a6 family) @mid + o2_d4_odd prev (enriched 27k-35k) → prune 25 zero-observed residue/phase classes", "pruned_count": 25},
+    {"id": "PG-093", "motif": "o2_d4_a6_d4_odd@mid + o2_d4_odd prev", "description": "o2_d4_a6_d4_odd (o2_d4_a6 family) @mid + o2_d4_odd prev (enriched 27k-35k) → prune 25 zero-observed residue/phase classes", "pruned_count": 25},
+    {"id": "PG-094", "motif": "o6_d4_a6_d4_odd@mid + o4_d4_odd prev", "description": "o6_d4_a6_d4_odd (o6_d4_a6 family) @mid + o4_d4_odd prev (enriched 27k-35k) → prune 25 zero-observed residue/phase classes", "pruned_count": 25},
+    {"id": "PG-095", "motif": "o2_d4_a8_d4_odd@mid + o2_d4_odd prev", "description": "o2_d4_a8_d4_odd (high-a a8 family) @mid + o2_d4_odd prev (enriched 27k-35k) → prune 25 zero-observed residue/phase classes", "pruned_count": 25},
+    {"id": "PG-096", "motif": "o4_d4_a4_d4_odd@mid + o6_d4_odd prev", "description": "a4_d4 family @mid + o6_d4_odd prev (enriched 27k-35k) → prune 25 zero-observed residue/phase classes", "pruned_count": 25},
+    {"id": "PG-097", "motif": "o4_d4_a10_d4_odd@mid + o4_d4_odd prev", "description": "o4_d4_a10_d4_odd (high-a a10 family) @mid + o4_d4_odd prev (enriched 27k-35k) → prune 25 zero-observed residue/phase classes", "pruned_count": 25},
 ]
 
 def get_matching_rules(public_motif: str) -> list[dict[str, Any]]:

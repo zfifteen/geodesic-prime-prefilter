@@ -71,9 +71,11 @@ def test_non_toy_live_derivation_blocks() -> None:
 
 
 def test_live_derivation_entrypoint_uses_no_forbidden_decision_mechanism() -> None:
-    forbidden = called_names(pmd.derive_public_motif) & FORBIDDEN_NAMES
-    assert forbidden == set(), f"forbidden live derivation calls: {sorted(forbidden)}"
-    assert modulo_operator_count(pmd.derive_public_motif) == 0
+    # Must scan both the public entrypoint and the internal certificate function
+    for func in (pmd.derive_public_motif, pmd.compute_pgs_native_motif_certificate):
+        forbidden = called_names(func) & FORBIDDEN_NAMES
+        assert forbidden == set(), f"forbidden live derivation calls in {func.__name__}: {sorted(forbidden)}"
+        assert modulo_operator_count(func) == 0
 
 
 def test_real_mode_blocks_before_fixture_construction() -> None:
