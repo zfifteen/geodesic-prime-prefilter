@@ -11,7 +11,7 @@ prime-gap state, attractor subtype + phase in public grammar word, GWR/DNI
 compositional bias). No classical primality, factoring of N, or probabilistic
 methods are used.
 
-Rules: 84 validated public grammar rules (PG-001..PG-084) derived from the 601_5500 multiplication-map law surface and targeted mining on larger enriched surfaces (27k–34k). All rules are non-overlapping within motif families by construction.
+Rules: 89 validated public grammar rules (PG-001..PG-089) derived from the 601_5500 multiplication-map law surface and targeted mining on larger enriched surfaces (27k–35k). All rules are non-overlapping within motif families by construction.
 
 - Automatically derives (via lookup table for the frozen toy corpus) or accepts
   the structural motif (containing exact_type@phase) from N.
@@ -190,6 +190,15 @@ PRUNING_RULES: list[dict[str, Any]] = [
     {"id": "PG-082", "motif": "high_a", "description": "a4_d4_a6 / a6_d4_a6 @mid → higher_divisor o2/o4/o6 symmetric (800+ obs each)", "pruned_count": 6},
     {"id": "PG-083", "motif": "high_a", "description": "o2_d4_a6 / o4_d4_a6 @mid/early → additional high-divisor reversals", "pruned_count": 5},
     {"id": "PG-084", "motif": "high_a", "description": "a6_d4_a4 / a6_d4_a6 @late → late-phase high-divisor exclusions", "pruned_count": 4},
+    # Focused weak-motif coverage batch from repaired real probe v1.
+    # Exact motif rules only; no broad high-a promotion. Each rule is backed by
+    # zero-observed residue/phase factor-neighborhood classes on 27k-34k
+    # extraction rows and zero held-out contradictions on 34k-35k rows.
+    {"id": "PG-085", "motif": "o6_d4_a6_d4_odd@mid + o2_d4_odd prev", "description": "exact weak live motif → prune 30 zero-observed residue/phase classes from enriched 27k–35k surfaces", "pruned_count": 30},
+    {"id": "PG-086", "motif": "o4_d4_a4_d4_odd@early + o4_higher_divisor_even prev", "description": "exact weak live motif → prune 30 zero-observed residue/phase classes from enriched 27k–35k surfaces", "pruned_count": 30},
+    {"id": "PG-087", "motif": "o2_d4_a2_d4_odd@late + o4_d4_odd prev", "description": "exact weak live motif → prune 30 zero-observed residue/phase classes from enriched 27k–35k surfaces", "pruned_count": 30},
+    {"id": "PG-088", "motif": "o2_d4_a6_d4_odd@mid + o4_higher_divisor_odd prev", "description": "exact weak live motif → prune 30 zero-observed residue/phase classes from enriched 27k–35k surfaces", "pruned_count": 30},
+    {"id": "PG-089", "motif": "o4_d4_a6_d4_odd@mid + o6_d4_odd prev", "description": "exact weak live motif → prune 30 zero-observed residue/phase classes from enriched 27k–35k surfaces", "pruned_count": 30},
 ]
 
 def get_matching_rules(public_motif: str) -> list[dict[str, Any]]:
