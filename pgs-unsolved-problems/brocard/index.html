@@ -74,8 +74,8 @@
         <tbody>
           <tr><th>First goal</th><td>Force four exact divisor-count endpoint arrivals inside each prime-square chamber.</td></tr>
           <tr><th>Current PGS assets</th><td>Square-branch characterization, prime-square envelope notes, GWR selected-integer theorem, gap-type material, and square-ruler evidence surfaces.</td></tr>
-          <tr><th>Current bridge target</th><td>For every prime root <code>a >= 11</code>, prove the fourth exact divisor-count endpoint after <code>a^2</code> satisfies <code>e4(a) - a^2 < 2a</code>.</td></tr>
-          <tr><th>Deterministic probe design</th><td>For each prime root, compute endpoint offsets from exact divisor counts after <code>a^2</code>, then classify square-wall slack and failed candidate walls.</td></tr>
+          <tr><th>Current bridge target</th><td>For every prime root <code>a &gt;= 11</code>, prove the fourth exact divisor-count endpoint after <code>a^2</code> satisfies <code>e4(a) - a^2 &lt; 2a</code>. The high-root proof surface now separates into square-tail control for <code>u1</code>, dominant-tail third control, and residual-pair sixth control.</td></tr>
+          <tr><th>Deterministic probe design</th><td>For each prime root, compute endpoint offsets from exact divisor counts after <code>a^2</code>, then classify square-wall slack, endpoint-chain components, and invalidated component-budget bridges.</td></tr>
           <tr><th>Falsification condition</th><td>A proposed bridge fails if the PGS chamber conditions do not force four endpoint arrivals or if measured chamber classes split into unresolved families not covered by the bridge.</td></tr>
           <tr><th>Status</th><td><code>unresolved</code>. The track has measured bridge evidence and a sharper theorem obligation, but no proof-grade Brocard bridge is claimed.</td></tr>
         </tbody>
@@ -85,10 +85,11 @@
       <h2>Latest Artifact</h2>
       <table>
         <tbody>
-          <tr><th>2026-05-20 advance</th><td><a href="2026-05-20-half-wall-endpoint-probe.html">Half-wall endpoint probe</a></td></tr>
-          <tr><th>Measured result</th><td><code>9591</code> prime roots checked through <code>99991</code>; <code>0</code> failures of <code>e4(a) - a^2 < 4a</code>; <code>0</code> failures of <code>e4(a) - a^2 < 2a</code> for <code>a >= 11</code>.</td></tr>
-          <tr><th>Invalidated route</th><td>The fixed <code>256</code> endpoint wall failed first at <code>a = 41047</code>, so the proof target must use root-scale square-wall structure.</td></tr>
-          <tr><th>Artifacts</th><td><a href="2026-05-20_half_wall_endpoint_probe.py">probe code</a>, <a href="2026-05-20_half_wall_endpoint_probe.csv">CSV output</a>, <a href="2026-05-20_half_wall_endpoint_summary.json">JSON summary</a>.</td></tr>
+          <tr><th>Reviewer packet</th><td><a href="2026-05-23-outside-reviewer-report.html">Outside reviewer report with reproducibility instructions</a></td></tr>
+          <tr><th>2026-05-23 advance</th><td><a href="2026-05-23-aggregate-compensation-bridge.html">Aggregate compensation bridge</a></td></tr>
+          <tr><th>Measured result</th><td><code>9567</code> high-root rows with <code>101 &lt;= a &lt;= 99991</code>; <code>0</code> failures of dominant-tail third control <code>M &lt; a/3</code>; <code>0</code> failures of residual-pair sixth control <code>R &lt; a/6</code>; <code>0</code> aggregate chain-tail half failures.</td></tr>
+          <tr><th>Proof-state change</th><td>The live aggregate chain-tail half bridge is reduced to two named PGS endpoint-chain targets: prove the largest post-first component is below <code>a/3</code> and the other two together are below <code>a/6</code>.</td></tr>
+          <tr><th>Artifacts</th><td><a href="2026-05-23_aggregate_compensation_probe.py">aggregate probe code</a>, <a href="2026-05-23_aggregate_compensation_probe.csv">CSV output</a>, <a href="2026-05-23_aggregate_compensation_summary.json">JSON summary</a>. Prior branch elimination: <a href="2026-05-23-tail-component-budget-obstruction.html">tail component budget obstruction</a>.</td></tr>
         </tbody>
       </table>
     </section>

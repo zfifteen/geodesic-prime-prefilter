@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brocard Aggregate Compensation Bridge</title>
+  <style>
+    :root {
+      --ink:#17212b;
+      --muted:#5e6a75;
+      --line:#d8e0e8;
+      --panel:#f7f9fb;
+      --accent:#0b6b8a;
+      --good:#1f7a4d;
+      --warn:#8a5a00;
+    }
+    * { box-sizing:border-box; }
+    body {
+      margin:0;
+      color:var(--ink);
+      background:#fff;
+      font:13px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+    .wrap, main { width:min(1080px,calc(100% - 40px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:linear-gradient(180deg,#fff,#f2f7fa); }
+    .hero { padding:30px 0 24px; }
+    a { color:var(--accent); text-underline-offset:3px; }
+    .back { display:inline-block; margin-bottom:14px; font-weight:650; }
+    .eyebrow { margin:0 0 8px; color:var(--accent); font-size:12px; font-weight:750; letter-spacing:.06em; text-transform:uppercase; }
+    h1 { margin:0; max-width:850px; font-size:2rem; line-height:1.08; letter-spacing:0; }
+    .lede { max-width:900px; margin:14px 0 0; color:var(--muted); font-size:14px; }
+    .pillrow { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+    .pill { padding:4px 8px; border:1px solid var(--line); border-radius:999px; background:#fff; color:var(--muted); font-size:12px; font-weight:650; }
+    .good { border-color:#b8d8c7; color:var(--good); background:#f0fbf5; }
+    .warn { border-color:#e5ca8f; color:var(--warn); background:#fff8ea; }
+    section { padding:22px 0; border-bottom:1px solid var(--line); }
+    h2 { margin:0 0 12px; font-size:1.25rem; line-height:1.2; }
+    h3 { margin:0 0 8px; font-size:1rem; }
+    p { margin:0 0 10px; }
+    code {
+      padding:1px 4px;
+      border-radius:4px;
+      background:#eef3f6;
+      color:#0f4f68;
+      font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+      font-size:.94em;
+    }
+    pre {
+      margin:10px 0 0;
+      padding:12px;
+      overflow:auto;
+      border:1px solid var(--line);
+      border-radius:8px;
+      background:#f8fafc;
+      font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+      font-size:12px;
+      line-height:1.45;
+    }
+    table { width:100%; border-collapse:collapse; border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+    th,td { padding:8px 9px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { background:#eef5f8; color:#24414f; font-size:12px; letter-spacing:.04em; text-transform:uppercase; }
+    tr:last-child td { border-bottom:0; }
+    .grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .panel { padding:16px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
+    .status td:first-child { width:190px; font-weight:700; color:#243746; }
+    footer { padding:28px 0 40px; color:var(--muted); font-size:14px; }
+    @media (max-width:820px) { .grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hero">
+      <a class="back" href="./">Back to Brocard track</a>
+      <p class="eyebrow">Brocard PGS endpoint-chain bridge</p>
+      <h1>The aggregate chain-tail bridge splits into dominant-third and residual-sixth control.</h1>
+      <p class="lede">The equal component split failed, but the endpoint-chain tail still has a sharper structure: the largest post-first component stays below one third of the root, and the other two post-first components together stay below one sixth. That pair of inequalities directly forces the high-root chain-tail half bridge.</p>
+      <div class="pillrow">
+        <span class="pill good">aggregate bridge: 0 failures measured</span>
+        <span class="pill good">dominant third: 0 failures measured</span>
+        <span class="pill good">residual sixth: 0 failures measured</span>
+        <span class="pill warn">Brocard status: unresolved</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>PGS Objects</h2>
+      <div class="grid">
+        <div class="panel">
+          <h3>Post-First Tail</h3>
+          <p>For a prime root <code>a</code>, let <code>u1,u2,u3,u4</code> be the first four endpoint offsets after <code>a^2</code>. The post-first endpoint-chain tail is:</p>
+          <pre>c2 = u2 - u1
+c3 = u3 - u2
+c4 = u4 - u3</pre>
+        </div>
+        <div class="panel">
+          <h3>Dominant And Residual Parts</h3>
+          <p>Let <code>M</code> be the largest of the three tail components. Let <code>R</code> be the sum of the other two tail components.</p>
+          <pre>M = max(c2,c3,c4)
+R = c2 + c3 + c4 - M</pre>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Conditional Bridge Lemma</h2>
+      <p>The live high-root chain-tail target is <code>c2 + c3 + c4 &lt; a/2</code>. The aggregate compensation split gives a direct arithmetic bridge:</p>
+      <pre>If M &lt; a/3 and R &lt; a/6,
+then c2 + c3 + c4 = M + R &lt; a/3 + a/6 = a/2.</pre>
+      <p>This is now the proof-facing shape. The next mathematical task is not to restore the false equal split. It is to derive dominant-tail third control and residual-pair sixth control from PGS endpoint-chain structure.</p>
+    </section>
+
+    <section>
+      <h2>Measured Surface</h2>
+      <table>
+        <tbody class="status">
+          <tr><td>Source surface</td><td><a href="2026-05-23_tail_component_budget_probe.csv">2026-05-23 tail component CSV</a></td></tr>
+          <tr><td>Analyzer</td><td><a href="2026-05-23_aggregate_compensation_probe.py">2026-05-23_aggregate_compensation_probe.py</a></td></tr>
+          <tr><td>Rows checked</td><td><code>9567</code> prime roots with <code>101 &lt;= a &lt;= 99991</code>.</td></tr>
+          <tr><td>Dominant third</td><td><code>0</code> failures of <code>M &lt; a/3</code>. The tightest row is <code>a = 127</code>, where <code>M = 42</code> and the slack is <code>1</code>.</td></tr>
+          <tr><td>Residual sixth</td><td><code>0</code> failures of <code>R &lt; a/6</code>. The tightest rows include <code>a = 101</code>, <code>a = 113</code>, and <code>a = 149</code>, each with slack <code>5</code>.</td></tr>
+          <tr><td>Aggregate bridge</td><td><code>0</code> failures of the combined bridge, and <code>0</code> failures of <code>c2 + c3 + c4 &lt; a/2</code>.</td></tr>
+          <tr><td>Generated outputs</td><td><a href="2026-05-23_aggregate_compensation_probe.csv">CSV classification</a> and <a href="2026-05-23_aggregate_compensation_summary.json">JSON summary</a>.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Tight Rows</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Constraint</th>
+            <th>Tight row</th>
+            <th>Components</th>
+            <th>Measured slack</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><code>M &lt; a/3</code></td><td><code>a = 127</code></td><td><code>c2,c3,c4 = 2,42,4</code></td><td><code>a - 3M = 1</code></td></tr>
+          <tr><td><code>R &lt; a/6</code></td><td><code>a = 101</code></td><td><code>M = 20, R = 16</code></td><td><code>a - 6R = 5</code></td></tr>
+          <tr><td><code>R &lt; a/6</code></td><td><code>a = 113</code></td><td><code>M = 10, R = 18</code></td><td><code>a - 6R = 5</code></td></tr>
+          <tr><td><code>R &lt; a/6</code></td><td><code>a = 149</code></td><td><code>M = 18, R = 24</code></td><td><code>a - 6R = 5</code></td></tr>
+          <tr><td><code>tail &lt; a/2</code></td><td><code>a = 101</code></td><td><code>c2,c3,c4 = 12,20,4</code></td><td><code>a - 2(c2+c3+c4) = 29</code></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Proof-State Change</h2>
+      <p>The Brocard high-root tail proof is no longer a vague aggregate-budget target. It now has two named PGS endpoint-chain obligations:</p>
+      <pre>Dominant-tail third lemma:
+  M = max(c2,c3,c4) &lt; a/3.
+
+Residual-pair sixth lemma:
+  R = c2 + c3 + c4 - M &lt; a/6.</pre>
+      <p>Together, these imply the chain-tail half lemma. Combined with the square-tail quarter bridge <code>u1 &lt; a/4</code>, they imply <code>u4 &lt; 3a/4</code>, and therefore the prior half-wall bridge <code>u4 &lt; 2a</code> for high roots.</p>
+    </section>
+
+    <section>
+      <h2>Status Separation</h2>
+      <table>
+        <tbody class="status">
+          <tr><td>Theorem proof</td><td>The conditional arithmetic bridge is proved. The two universal PGS lemmas <code>M &lt; a/3</code> and <code>R &lt; a/6</code> remain unproved.</td></tr>
+          <tr><td>Measured result</td><td>On the exact high-root endpoint surface through <code>99991</code>, both new inequalities have zero failures.</td></tr>
+          <tr><td>Implementation status</td><td>The analyzer is a deterministic single-path classifier over prior endpoint-chain output. It does not recompute endpoints and does not use classical fallback logic.</td></tr>
+          <tr><td>Audit status</td><td>CSV and JSON consistency, HTML parsing, script compilation, and LF line-ending checks were run after generation.</td></tr>
+          <tr><td>Invalidated rule</td><td>The equal component split <code>c2,c3,c4 &lt; a/6</code> remains invalidated. This note does not revive it.</td></tr>
+          <tr><td>Unresolved state</td><td>Brocard remains unresolved. The next proof target is to derive dominant-third and residual-sixth endpoint-chain control from chamber invariants.</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer><div class="wrap">PGS Brocard research track. Status: proof-state advance, conjecture unresolved.</div></footer>
+</body>
+</html>
