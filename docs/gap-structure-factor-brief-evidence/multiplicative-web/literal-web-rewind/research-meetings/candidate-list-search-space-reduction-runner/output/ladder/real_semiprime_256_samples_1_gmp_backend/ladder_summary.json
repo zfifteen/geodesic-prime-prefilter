@@ -1,0 +1,80 @@
+{
+  "aggregate": {
+    "average_reduction_over_all_cases": 0.0,
+    "average_reduction_over_resolved_cases_only": 0.0,
+    "coverage_gap_motifs": [],
+    "max_reduction": 0.0,
+    "min_reduction": 0.0,
+    "motif_breakdown": {
+      "UNRESOLVED:28948022309329048859031297119865317363610638691744651245472758103663360084211": {
+        "average_reduction": 0.0,
+        "frequency": 1
+      }
+    },
+    "resolved_count": 0,
+    "top_rules": [],
+    "total_cases": 1,
+    "unresolved_count": 1
+  },
+  "levels": {
+    "256": {
+      "average_reduction_percent": 0.0,
+      "bit_length": 256,
+      "max_reduction": 0.0,
+      "min_reduction": 0.0,
+      "per_case": [
+        {
+          "N": 28948022309329048859031297119865317363610638691744651245472758103663360084211,
+          "bit_length": 256,
+          "case_id": "semiprime_256_0",
+          "construction_method": "deterministic_public_semiprime",
+          "coverage_gap": false,
+          "derivation_error": "PublicMotifUnresolved: GMP gap grammar exact divisor horizon exceeds configured public motif limit (30704801884924481768605764 > 70000000)",
+          "derived_motif": "UNRESOLVED:28948022309329048859031297119865317363610638691744651245472758103663360084211",
+          "diagnostic_tag": "motif_derivation_unresolved",
+          "factors_discarded": true,
+          "motif": "UNRESOLVED:28948022309329048859031297119865317363610638691744651245472758103663360084211",
+          "motif_source": "derive_public_motif(N_only)",
+          "original_search_space_size": 198,
+          "pruned": 0,
+          "pruned_count": 0,
+          "reduction_percent": 0.0,
+          "remaining": 198,
+          "rules_fired": [],
+          "status": "unresolved",
+          "target_bits": 256,
+          "unresolved_flag": true
+        }
+      ],
+      "reduction_distribution": {
+        "0-20%": 1,
+        "20-40%": 0,
+        "40-60%": 0,
+        "60-80%": 0,
+        "80%+": 0
+      },
+      "samples": 1,
+      "std_dev": 0.0,
+      "top_motifs": [
+        [
+          "UNRESOLVED:28948022309329048859031297119865317363610638691744651245472758103663360084211",
+          1
+        ]
+      ],
+      "top_rules": [],
+      "unresolved_count": 1,
+      "unresolved_examples": [
+        {
+          "N": 28948022309329048859031297119865317363610638691744651245472758103663360084211,
+          "error": "PublicMotifUnresolved: GMP gap grammar exact divisor horizon exceeds configured public motif limit (30704801884924481768605764 > 70000000)",
+          "motif": "UNRESOLVED:28948022309329048859031297119865317363610638691744651245472758103663360084211",
+          "sample_index": 0
+        }
+      ]
+    }
+  },
+  "mode": "real",
+  "reference_space": 198,
+  "samples_per_level": 1,
+  "timestamp": "2026-05-23T03:03:15.204358+00:00"
+}
