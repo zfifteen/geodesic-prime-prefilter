@@ -63,23 +63,28 @@ def deterministic_public_semiprime_n(bits: int, sample_index: int) -> int:
     """
     Return a deterministic public semiprime N = p * q at the requested bit length.
 
-    p and q are constructed deterministically from (bits, sample_index) and
-    are guaranteed primes (via gmpy2.next_prime). They are used only to
-    build the public corpus fixture. The runner discards them immediately
-    after computing N. The measured path is strictly:
+    p and q are constructed deterministically from (bits, sample_index) using
+    gmpy2.next_prime. This function is used **only** for fixture construction
+    of the test corpus. The p and q values are never returned to the caller,
+    never recorded in the output artifacts, and never used by
+    derive_public_motif or prune_factor_space.
+
+    The measured path remains strictly:
         N -> derive_public_motif(N) -> prune_factor_space(motif)
     """
     if bits < 4:
         raise ValueError("bit length must be at least 4")
     half = max(2, (bits + 1) // 2)
-    # Deterministic, well-separated starting points for p and q
-    base_p = (1 << (half - 1)) + (sample_index * 2) + 1
-    base_q = base_p + (1 << (half // 2)) + 2
+
+    # Use a large, deterministic stride per sample to guarantee distinct primes
+    stride = 1 << (half // 2)
+    base_p = (1 << (half - 1)) + (sample_index * stride) + 1
+    base_q = base_p + stride + 2
 
     p = gmpy2.next_prime(base_p)
     q = gmpy2.next_prime(base_q)
 
-    # Ensure they land in the target bit-length range
+    # Ensure target bit length
     while p.bit_length() < half:
         p = gmpy2.next_prime(p + 2)
     while q.bit_length() < half:
@@ -132,27 +137,61 @@ def run_ladder(bit_lengths: list[int], samples_per_level: int, mode: str) -> dic
         motif_usage: Counter[str] = Counter()
 
         per_case: list[dict[str, Any]] = []
+        seen_n: set[int] = set()
 
         for sample_index in range(samples_per_level):
+            if mode == "real":
+                print(f"Deriving real motif: bits={bits} sample={sample_index}", flush=True)
             motif, n_value, error = motif_for_sample(mode, bits, sample_index)
+
+            if mode == "real":
+                if n_value in seen_n:
+                    raise RuntimeError(
+                        f"Duplicate N generated for bit length {bits}, sample_index {sample_index}. "
+                        "Fixture construction must produce distinct public semiprimes."
+                )
+                seen_n.add(n_value)
+                print(
+                    f"  N={n_value} motif={motif} error={error or '-'}",
+                    flush=True,
+                )
+
             res = prune_factor_space(motif)
             motif_usage[motif] += 1
+            reduction_percent = round(float(res.get("reduction_percent", 0.0)), 2)
+            unresolved = res.get("status") == "unresolved"
+            coverage_gap = (not unresolved) and reduction_percent < 20
+            diagnostic_tag = None
+            if unresolved:
+                diagnostic_tag = "motif_derivation_unresolved" if error else "grammar_pruning_unresolved"
+            elif coverage_gap:
+                diagnostic_tag = "low_reduction_coverage_gap"
 
             case_record = {
                 "case_id": f"semiprime_{bits}_{sample_index}",
+                "bit_length": bits,
                 "target_bits": bits,
                 "N": n_value,
                 "motif": motif,
+                "derived_motif": motif,
+                "motif_source": "derive_public_motif(N_only)" if mode == "real" else "synthetic_motif_sequence",
+                "construction_method": "deterministic_public_semiprime" if mode == "real" else "synthetic_motif_mix",
+                "factors_discarded": mode == "real",
+                "original_search_space_size": REFERENCE_FACTOR_SPACE,
                 "rules_fired": res.get("rules_fired", []),
                 "pruned": res.get("pruned", 0),
                 "remaining": res.get("remaining", REFERENCE_FACTOR_SPACE),
-                "reduction_percent": round(float(res.get("reduction_percent", 0.0)), 2),
-                "status": "unresolved" if res.get("status") == "unresolved" else "resolved",
+                "pruned_count": res.get("pruned", 0),
+                "reduction_percent": reduction_percent,
+                "status": "unresolved" if unresolved else "resolved",
+                "unresolved_flag": unresolved,
                 "derivation_error": error,
+                "diagnostic_tag": diagnostic_tag,
+                "coverage_gap": coverage_gap,
             }
             per_case.append(case_record)
 
-            if res.get("status") == "unresolved":
+            if unresolved:
                 unresolved_count += 1
                 reductions.append(0.0)
                 if len(unresolved_examples) < 5:
@@ -202,6 +241,61 @@ def run_ladder(bit_lengths: list[int], samples_per_level: int, mode: str) -> dic
 
         results["levels"][str(bits)] = level_data
 
+    if mode == "real":
+        all_cases = [
+            case
+            for level in results["levels"].values()
+            for case in level.get("per_case", [])
+        ]
+        resolved_cases = [case for case in all_cases if not case["unresolved_flag"]]
+        unresolved_cases = [case for case in all_cases if case["unresolved_flag"]]
+        resolved_reductions = [case["reduction_percent"] for case in resolved_cases]
+        all_reductions = [case["reduction_percent"] for case in all_cases]
+        top_rules: Counter[str] = Counter()
+        motif_breakdown: dict[str, dict[str, Any]] = {}
+        coverage_gap_motifs: Counter[str] = Counter()
+
+        for case in all_cases:
+            for rule_id in case["rules_fired"]:
+                top_rules[str(rule_id)] += 1
+            motif_data = motif_breakdown.setdefault(
+                case["derived_motif"],
+                {"frequency": 0, "reductions": []},
+            )
+            motif_data["frequency"] += 1
+            motif_data["reductions"].append(case["reduction_percent"])
+            if case["coverage_gap"]:
+                coverage_gap_motifs[case["derived_motif"]] += 1
+
+        results["aggregate"] = {
+            "total_cases": len(all_cases),
+            "resolved_count": len(resolved_cases),
+            "unresolved_count": len(unresolved_cases),
+            "average_reduction_over_all_cases": round(
+                sum(all_reductions) / len(all_reductions), 2
+            )
+            if all_reductions
+            else 0.0,
+            "average_reduction_over_resolved_cases_only": round(
+                sum(resolved_reductions) / len(resolved_reductions), 2
+            )
+            if resolved_reductions
+            else 0.0,
+            "min_reduction": round(min(all_reductions), 2) if all_reductions else 0.0,
+            "max_reduction": round(max(all_reductions), 2) if all_reductions else 0.0,
+            "top_rules": top_rules.most_common(5),
+            "coverage_gap_motifs": coverage_gap_motifs.most_common(),
+            "motif_breakdown": {
+                motif: {
+                    "frequency": data["frequency"],
+                    "average_reduction": round(
+                        sum(data["reductions"]) / len(data["reductions"]), 2
+                    ),
+                }
+                for motif, data in sorted(motif_breakdown.items())
+            },
+        }
+
     return results
 
 
@@ -242,6 +336,8 @@ def write_reports(results: dict[str, Any], out_dir: Path) -> None:
     else:
         md_lines += [
             "Real mode derives motifs from deterministic public semiprimes.",
+            "The corpus is constructed using gmpy2.next_prime **only for fixture generation**.",
+            "p and q are discarded before any call to derive_public_motif or prune_factor_space.",
             "Derivation failures are recorded as unresolved rows. No synthetic motif is substituted.",
         ]
 
@@ -257,8 +353,41 @@ def write_reports(results: dict[str, Any], out_dir: Path) -> None:
             md_lines.append("- (no motif data)")
         md_lines.append("")
 
-    # Per-case detail for real mode (small probes)
+    # Per-case detail + summary for real mode (small probes)
     if mode == "real":
+        aggregate = results["aggregate"]
+
+        md_lines += ["", "## Summary (Real Derivation)", ""]
+        md_lines.append(f"- Total cases: {aggregate['total_cases']}")
+        md_lines.append(f"- Resolved cases: {aggregate['resolved_count']}")
+        md_lines.append(f"- Unresolved cases: {aggregate['unresolved_count']}")
+        md_lines.append(
+            f"- Average reduction (all cases): {aggregate['average_reduction_over_all_cases']:.2f}%"
+        )
+        md_lines.append(
+            f"- Average reduction (resolved cases): {aggregate['average_reduction_over_resolved_cases_only']:.2f}%"
+        )
+        md_lines.append(
+            f"- Min / Max reduction: {aggregate['min_reduction']:.2f}% / {aggregate['max_reduction']:.2f}%"
+        )
+        md_lines.append(
+            f"- Motifs with coverage gaps: {len(aggregate['coverage_gap_motifs'])}"
+        )
+
+        md_lines += ["", "## Motif Breakdown", ""]
+        md_lines.append("| motif | frequency | avg reduction | coverage gap cases |")
+        md_lines.append("|-------|-----------|---------------|--------------------|")
+        gap_counts = dict(aggregate["coverage_gap_motifs"])
+        for motif, data in aggregate["motif_breakdown"].items():
+            md_lines.append(
+                f"| `{motif}` | {data['frequency']} | {data['average_reduction']:.2f}% | "
+                f"{gap_counts.get(motif, 0)} |"
+            )
+
+        md_lines += ["", "## Top Rules", ""]
+        for rule_id, count in aggregate["top_rules"]:
+            md_lines.append(f"- {rule_id}: {count}")
+
         md_lines += ["", "## Per-Case Results (Real Derivation)", ""]
         for bits, data in sorted(results["levels"].items(), key=lambda x: int(x[0])):
             per_case = data.get("per_case", [])
@@ -266,15 +395,17 @@ def write_reports(results: dict[str, Any], out_dir: Path) -> None:
                 continue
             md_lines.append(f"### {bits} bits")
             md_lines.append("")
-            md_lines.append("| case_id | N | motif | rules | pruned | remaining | % | status | error |")
-            md_lines.append("|---------|---|-------|-------|--------|-----------|---|--------|-------|")
+            md_lines.append("| case_id | N | motif | source | factors_discarded | rules | pruned | remaining | % | status | gap | error |")
+            md_lines.append("|---------|---|-------|--------|-------------------|-------|--------|-----------|---|--------|-----|-------|")
             for case in per_case:
                 rules_str = ",".join(case.get("rules_fired", [])) or "-"
                 error = case.get("derivation_error") or "-"
+                gap = "yes" if case.get("coverage_gap") else "no"
+                fd = "yes" if case.get("factors_discarded") else "no"
                 md_lines.append(
-                    f"| {case['case_id']} | {case['N']} | `{case['motif']}` | {rules_str} | "
-                    f"{case['pruned']} | {case['remaining']} | {case['reduction_percent']:.2f}% | "
-                    f"{case['status']} | {error} |"
+                    f"| {case['case_id']} | {case['N']} | `{case['motif']}` | {case.get('motif_source','')} | "
+                    f"{fd} | {rules_str} | {case['pruned']} | {case['remaining']} | "
+                    f"{case['reduction_percent']:.2f}% | {case['status']} | {gap} | {error} |"
                 )
             md_lines.append("")
 
