@@ -64,6 +64,15 @@ GMP_EXACT_DIVISOR_TRIAL_LIMIT = 70_000_000
 FIRST_OPEN_OFFSETS = (2, 4, 6, 8, 10, 12)
 WHEEL_CLOSED_RESIDUES_MOD30 = frozenset({0, 3, 5, 6, 9, 10, 12, 15, 18, 20, 21, 24, 25, 27})
 
+DERIVATION_BACKEND = {
+    "name": "gmp_exact_regression_backend",
+    "kind": "pgs_regression",
+    "classification": "classical_assisted_backend",
+    "scale_capable": False,
+    "pgs_native": False,
+    "classical_assisted": True,
+}
+
 
 class PublicMotifBackendLimitExceeded(RuntimeError):
     """Raised when live motif derivation is blocked by the current backend limit."""
