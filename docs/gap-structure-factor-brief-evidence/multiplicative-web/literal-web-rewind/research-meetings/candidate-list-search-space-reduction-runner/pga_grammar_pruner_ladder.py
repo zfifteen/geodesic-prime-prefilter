@@ -32,6 +32,7 @@ try:
     from public_motif_derivation import (
         DERIVATION_BACKEND,
         PublicMotifBackendLimitExceeded,
+        PublicMotifDerivationBlocked,
         PublicMotifUnresolved,
         derive_public_motif,
     )
@@ -45,6 +46,7 @@ except Exception as exc:
         "classical_assisted": True,
     }
     PublicMotifBackendLimitExceeded = None  # type: ignore[assignment]
+    PublicMotifDerivationBlocked = None  # type: ignore[assignment]
     PublicMotifUnresolved = None  # type: ignore[assignment]
     derive_public_motif = None  # type: ignore[assignment]
     DERIVATION_IMPORT_ERROR = exc
@@ -159,8 +161,40 @@ def scale_backend_block_reason() -> str | None:
     )
 
 
+def live_derivation_block_reason() -> str | None:
+    """Return why live non-toy derivation is blocked before fixture construction."""
+    if DERIVATION_BACKEND.get("motif_certificate_available") is False:
+        return (
+            "pgs_native_motif_certificate_unavailable: live raw-N motif derivation "
+            "is blocked until a PGS-native motif certificate exists"
+        )
+    if DERIVATION_BACKEND.get("pgs_native") is not True:
+        return (
+            "pgs_native_motif_certificate_unavailable: live derivation backend is "
+            "not PGS-native"
+        )
+    if DERIVATION_BACKEND.get("classical_assisted") is True:
+        return (
+            "pgs_native_motif_certificate_unavailable: live derivation backend is "
+            "classical-assisted"
+        )
+    return None
+
+
 def real_motif(bits: int, sample_index: int, require_scale_backend: bool = False) -> dict[str, Any]:
     """Derive a motif from a deterministic public semiprime, with exact status."""
+    live_block_reason = live_derivation_block_reason()
+    if live_block_reason is not None:
+        return {
+            "motif": None,
+            "n_value": None,
+            "status": "derivation_blocked",
+            "error": live_block_reason,
+            "diagnostic_tag": "pgs_native_motif_certificate_unavailable",
+            "construction_method": "not_constructed_pgs_native_certificate_unavailable",
+            "fixture_constructed": False,
+        }
+
     n_value = deterministic_public_semiprime_n(bits, sample_index)
     if require_scale_backend:
         block_reason = scale_backend_block_reason()
@@ -171,6 +205,8 @@ def real_motif(bits: int, sample_index: int, require_scale_backend: bool = False
                 "status": "derivation_blocked",
                 "error": block_reason,
                 "diagnostic_tag": "scale_backend_unavailable",
+                "construction_method": "deterministic_public_semiprime",
+                "fixture_constructed": True,
             }
     if derive_public_motif is None:
         return {
@@ -179,10 +215,25 @@ def real_motif(bits: int, sample_index: int, require_scale_backend: bool = False
             "status": "derivation_blocked",
             "error": f"public_motif_derivation import failed: {DERIVATION_IMPORT_ERROR}",
             "diagnostic_tag": "motif_derivation_import_failed",
+            "construction_method": "deterministic_public_semiprime",
+            "fixture_constructed": True,
         }
     try:
         motif = derive_public_motif(n_value)
     except Exception as exc:
+        if (
+            PublicMotifDerivationBlocked is not None
+            and isinstance(exc, PublicMotifDerivationBlocked)
+        ):
+            return {
+                "motif": None,
+                "n_value": n_value,
+                "status": "derivation_blocked",
+                "error": f"{type(exc).__name__}: {exc}",
+                "diagnostic_tag": "pgs_native_motif_certificate_unavailable",
+                "construction_method": "deterministic_public_semiprime",
+                "fixture_constructed": True,
+            }
         if (
             PublicMotifBackendLimitExceeded is not None
             and isinstance(exc, PublicMotifBackendLimitExceeded)
@@ -193,6 +244,8 @@ def real_motif(bits: int, sample_index: int, require_scale_backend: bool = False
                 "status": "derivation_blocked",
                 "error": f"{type(exc).__name__}: {exc}",
                 "diagnostic_tag": "exact_divisor_horizon_exceeds_backend_limit",
+                "construction_method": "deterministic_public_semiprime",
+                "fixture_constructed": True,
             }
         if PublicMotifUnresolved is not None and isinstance(exc, PublicMotifUnresolved):
             return {
@@ -201,6 +254,8 @@ def real_motif(bits: int, sample_index: int, require_scale_backend: bool = False
                 "status": "unresolved",
                 "error": f"{type(exc).__name__}: {exc}",
                 "diagnostic_tag": "motif_derivation_unresolved",
+                "construction_method": "deterministic_public_semiprime",
+                "fixture_constructed": True,
             }
         return {
             "motif": None,
@@ -208,6 +263,8 @@ def real_motif(bits: int, sample_index: int, require_scale_backend: bool = False
             "status": "backend_error",
             "error": f"{type(exc).__name__}: {exc}",
             "diagnostic_tag": "motif_derivation_backend_error",
+            "construction_method": "deterministic_public_semiprime",
+            "fixture_constructed": True,
         }
     if motif.startswith("UNRESOLVED:"):
         return {
@@ -216,6 +273,8 @@ def real_motif(bits: int, sample_index: int, require_scale_backend: bool = False
             "status": "unresolved",
             "error": "public motif derivation returned unresolved",
             "diagnostic_tag": "motif_derivation_unresolved",
+            "construction_method": "deterministic_public_semiprime",
+            "fixture_constructed": True,
         }
     return {
         "motif": motif,
@@ -223,6 +282,8 @@ def real_motif(bits: int, sample_index: int, require_scale_backend: bool = False
         "status": "resolved",
         "error": None,
         "diagnostic_tag": None,
+        "construction_method": "deterministic_public_semiprime",
+        "fixture_constructed": True,
     }
 
 
@@ -239,6 +300,8 @@ def motif_for_sample(
             "status": "resolved",
             "error": None,
             "diagnostic_tag": None,
+            "construction_method": "synthetic_motif_mix",
+            "fixture_constructed": False,
         }
     if mode == "real":
         return real_motif(bits, sample_index, require_scale_backend=require_scale_backend)
@@ -294,12 +357,13 @@ def run_ladder(
             error = motif_result["error"]
 
             if mode == "real":
-                if n_value in seen_n:
+                if n_value is not None and n_value in seen_n:
                     raise RuntimeError(
                         f"Duplicate N generated for bit length {bits}, sample_index {sample_index}. "
                         "Fixture construction must produce distinct public semiprimes."
                 )
-                seen_n.add(n_value)
+                if n_value is not None:
+                    seen_n.add(n_value)
                 print(
                     f"  N={n_value} status={derivation_status} motif={motif or '-'} error={error or '-'}",
                     flush=True,
@@ -370,7 +434,14 @@ def run_ladder(
                 "motif": motif,
                 "derived_motif": motif,
                 "motif_source": "derive_public_motif(N_only)" if mode == "real" else "synthetic_motif_sequence",
-                "construction_method": "deterministic_public_semiprime" if mode == "real" else "synthetic_motif_mix",
+                "construction_method": motif_result.get(
+                    "construction_method",
+                    "deterministic_public_semiprime" if mode == "real" else "synthetic_motif_mix",
+                ),
+                "fixture_constructed": motif_result.get(
+                    "fixture_constructed",
+                    mode == "real" and n_value is not None,
+                ),
                 "factors_discarded": mode == "real",
                 "original_search_space_size": REFERENCE_FACTOR_SPACE,
                 "rules_fired": res.get("rules_fired", []),
@@ -604,6 +675,27 @@ def strict_scale_failure_reasons(results: dict[str, Any]) -> list[str]:
             reasons.append(
                 f"{bits}: actual_bit_length_mismatch_count={data['actual_bit_length_mismatch_count']}"
             )
+    return reasons
+
+
+def real_surface_failure_reasons(results: dict[str, Any]) -> list[str]:
+    """Return reasons a real run is not a measured reduction surface."""
+    if results.get("mode") != "real":
+        return []
+
+    reasons: list[str] = []
+    for bits, data in sorted(results["levels"].items(), key=lambda x: int(x[0])):
+        if data.get("measured_case_count") != data.get("samples"):
+            reasons.append(
+                f"{bits}: measured_case_count={data.get('measured_case_count')} "
+                f"of {data.get('samples')}"
+            )
+        if data.get("unresolved_count", 0):
+            reasons.append(f"{bits}: unresolved_count={data['unresolved_count']}")
+        if data.get("derivation_blocked_count", 0):
+            reasons.append(f"{bits}: derivation_blocked_count={data['derivation_blocked_count']}")
+        if data.get("backend_error_count", 0):
+            reasons.append(f"{bits}: backend_error_count={data['backend_error_count']}")
     return reasons
 
 
@@ -875,6 +967,7 @@ def main() -> None:
         diagnostic_only=args.diagnostic_only,
     )
     strict_failures = strict_scale_failure_reasons(results)
+    real_surface_failures = real_surface_failure_reasons(results)
     backend_error = has_backend_error(results)
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 
@@ -894,6 +987,13 @@ def main() -> None:
             / "ladder"
             / f"failed_real_scale_run_{timestamp}"
         )
+    elif real_surface_failures:
+        out_dir = (
+            Path(__file__).resolve().parent
+            / "output"
+            / "ladder"
+            / f"diagnostic_real_run_{timestamp}"
+        )
     else:
         min_b = min(bit_lengths)
         max_b = max(bit_lengths)
@@ -911,6 +1011,10 @@ def main() -> None:
         artifact_name = "diagnostic"
     elif strict_failures:
         reason = "strict_scale_failed: " + "; ".join(strict_failures)
+        report_results = as_diagnostic_results(results, reason)
+        artifact_name = "diagnostic"
+    elif real_surface_failures:
+        reason = "real_surface_not_measured: " + "; ".join(real_surface_failures)
         report_results = as_diagnostic_results(results, reason)
         artifact_name = "diagnostic"
     else:
@@ -938,6 +1042,11 @@ def main() -> None:
     if strict_failures and not args.diagnostic_only:
         print("Strict scale run failed:")
         for failure in strict_failures:
+            print(f"  - {failure}")
+        raise SystemExit(1)
+    if real_surface_failures and not args.diagnostic_only:
+        print("Real run did not produce a measured reduction surface:")
+        for failure in real_surface_failures:
             print(f"  - {failure}")
         raise SystemExit(1)
     if backend_error:
