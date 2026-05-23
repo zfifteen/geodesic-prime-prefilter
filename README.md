@@ -14,6 +14,12 @@ The truth is the exact opposite.
 
 Start with one prime. Look at the integers that come right after it. Those integers are not random obstacles. They carry precise factor structure, and that structure is exactly what determines where the next prime must appear. The next prime can be found directly by reading the numbers that follow the one you already have. Nothing is left to chance or probability once you know how to look.
 
+***
+
+At first glance, what follows can read like a mere tautology: the next prime is the first later integer whose divisor count is exactly two. That definition is only the endpoint. Prime Gap Structure studies the arithmetic before the endpoint: the ordered divisor-count field inside the gap, the selected interior minimum, the zero-excess coordinate that places primes and composites on one scale, and the measured chamber patterns that survive far beyond the toy examples.
+
+***
+
 ## Look Between 23 and 29
 
 It helps to see this idea with a small, concrete example so you can watch the pattern unfold step by step.
