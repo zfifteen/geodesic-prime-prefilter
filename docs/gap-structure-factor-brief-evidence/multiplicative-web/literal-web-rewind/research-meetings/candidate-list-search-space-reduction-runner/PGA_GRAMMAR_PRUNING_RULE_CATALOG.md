@@ -2,7 +2,7 @@
 
 **Status**: Active / In-Sprint Maintenance  
 **Maintainer**: Documentation & Audit Agent  
-**Last Updated**: 2026-05-23 (tier-3 public-coordinate live backend)
+**Last Updated**: 2026-05-22 (unified GMP live-derivation backend)  
 **Reference Surfaces**: multiplication-map law surface 601_5500 + enriched public grammar surfaces 27001_30000, 32001_34000, 34001_35000  
 **Toy Corpus for Validation**: 10 public N values in `cases/toy_corpus.jsonl` (989 … 4951764003343009)  
 **Reference Factor Hypothesis Space**: 198 words (from 601_5500 surface)  
@@ -28,8 +28,7 @@ Rules are strictly public, deterministic, and carry zero-tolerance for false neg
 - **Current repaired real-probe replay surface**: **35.02%** average reduction across 9 distinct public semiprimes, all resolved, 0 unresolved.
 - **Low-mid live validation surface**: **47.53%** average reduction across 10 distinct public semiprimes at 64/72 bits, all resolved, 0 unresolved.
 - **Weak-motif coverage result**: PG-085..PG-089 promote five exact motif rules mined from enriched 27k-35k public grammar surfaces with zero held-out contradictions.
-- **Live derivation backend status**: non-toy motif derivation now uses one GMP tier-3 public-coordinate backend for every live bit size. It computes the calibrated minimum divisor information needed by the current motif contract, not full divisor counts. The backend is `scale_capable=True` for measured completion and remains explicitly `classical_assisted_public_coordinate`, `pgs_native=False`. Strict 256+ runs now succeed only when every requested case completes `N -> motif -> prune_factor_space`.
-- **First measured strict 256-bit tier-3 surface**: `real_semiprime_256_samples_1_tier3_backend` records `1/1` measured, `0` unresolved, `0` `derivation_blocked`, `0` backend errors, and **59.60%** reduction. This is a measured Stage-One implementation surface, not a PGS-native RSA-scale theorem claim.
+- **Live derivation backend status**: non-toy motif derivation now uses one GMP arithmetic backend for every live bit size. This is a regression-preserving stopgap, not an RSA-scale derivation engine; blocked backend cases must be reported as `derivation_blocked`, not unresolved. The runner now requires exact fixture bit lengths and auto-enables strict scale mode at 256+ bits; with the current backend, 256+ real runs produce failed diagnostic artifacts rather than successful ladder summaries.
 
 **PGS-native mechanism**: The public structural motif of the N-containing chamber (ordered gap state → exact_type + attractor subtype from GWR/DNI + phase label) selects a union of symbolic exclusion rules. These rules encode observed multiplicative incompatibilities between the N-chamber grammar word and factor-neighborhood public words (seg1/seg2 L/R asymmetry, attractor subtype o2/a2/a4/a6 bias, very_late/early-heavy phase fringes). The result is safe, deterministic shrinkage of the 198-word hypothesis space for the unknown p/q pair without ever touching private factors.
 
@@ -100,11 +99,7 @@ Mining gate: extraction bands `27001_30000` and `32001_34000`; held-out band `34
 - 2026-05-22 extended live attempt (`64,72,80,88,96`, 3 samples each): stopped during the first 80-bit live motif derivation after 64/72 completed; current bottleneck is live derivation cost, not grammar-rule application.
 - 2026-05-22 unified GMP backend rewrite: `public_motif_derivation.py` now uses one GMP arithmetic backend for all non-toy live derivation. Regression ladders preserved: `real_semiprime_64_72_samples_5_gmp_backend` remains **47.53%** with 10/10 resolved; `real_semiprime_64_80_samples_3_gmp_backend` remains **35.02%** with 9/9 resolved.
 - 2026-05-22 256-target public-N run: the earlier `real_semiprime_256_samples_1_gmp_backend` artifact is invalid for research claims because it reported an implementation gate as unresolved. It has been replaced by `real_semiprime_256_samples_1_honest_status`, which records `0/1` measured, `0` unresolved, `1` `derivation_blocked`, and `pruning_status=not_attempted`.
-- 2026-05-22 strict-scale runner cleanup: `pga_grammar_pruner_ladder.py` declares backend capability, writes `diagnostic.json/md` for blocked 256+ runs, exits nonzero for failed strict-scale claims, and suppresses reduction averages in diagnostic artifacts. Exact-bit fixture construction showed that true 80-bit live cases exceeded the then-current regression backend's configured divisor horizon; those rows were reported as `derivation_blocked`, not as measured reduction rows.
-- 2026-05-23 divisor-information calibration: `tier_3` reproduces the exact baseline surface on **28/28** rows. Full divisor counts are unnecessary for the current live motif contract.
-- 2026-05-23 tier-3 live backend promotion: `public_motif_derivation.py` replaces the live exact-count path with `gmp_tier3_public_coordinate_backend`, removes the live 256+ horizon gate, and records derivation diagnostics (`coordinates_scanned`, `tier3_classifications`, `max_public_gap_width`, elapsed time, and indeterminate count).
-- 2026-05-23 exact-bit tier-3 live runs: `64,72 --samples 5` completes `10/10` measured with **40.00%** average; `80 --samples 3` completes `3/3` measured with **57.58%** average; `128 --samples 1` completes `1/1` measured with **59.60%** average; strict `256 --samples 1` completes `1/1` measured with **59.60%** average.
-- 2026-05-23 exact-bit validation: the 80-bit tier-3 fixture matches exact divisor behavior. The 128-bit exact comparison timed out after 30 seconds; tier-3 live derivation completed, but exact equivalence at 128 bits is not claimed by that diagnostic.
+- 2026-05-22 strict-scale runner cleanup: `pga_grammar_pruner_ladder.py` now declares backend capability, writes `diagnostic.json/md` for blocked 256+ runs, exits nonzero for failed strict-scale claims, and suppresses reduction averages in diagnostic artifacts. Exact-bit fixture construction also shows that true 80-bit live cases exceed the current regression backend's configured divisor horizon; they are reported as `derivation_blocked`, not as measured reduction rows.
 - Reporting bug (stale aggregate bullets) identified and surgically fixed in the same session; re-run produced clean summary.md/json.
 - All claims remain inside the public-only contract; no classical methods ever guided rule selection or pruning decisions.
 
@@ -112,7 +107,7 @@ Mining gate: extraction bands `27001_30000` and `32001_34000`; held-out band `34
 
 **65.45% average reduction on the exact frozen toy corpus, 35.02% repaired real-probe replay reduction on distinct public semiprimes, 89 public grammar rules, fully deterministic public grammar pruning.**
 
-The pruning rules are PGS-native grammar exclusions (GWR attractor + DNI phase + multiplicative grammar compatibility). The current live motif derivation backend is explicitly classified as `classical_assisted_public_coordinate`: valid for measured Stage-One implementation surfaces, not valid for PGS-native RSA-scale theorem claims.
+The pruning rules are PGS-native grammar exclusions (GWR attractor + DNI phase + multiplicative grammar compatibility). The current live motif derivation backend is explicitly classified as a classical-assisted regression backend and is not valid for PGS-native 256+ scale claims.
 
 The prototype is now production-grade for the 25% target. It can be dropped into any downstream literal-web or thread-triangulation runner as a fast, safe pre-filter on the 198-word (or larger) hypothesis space.
 
