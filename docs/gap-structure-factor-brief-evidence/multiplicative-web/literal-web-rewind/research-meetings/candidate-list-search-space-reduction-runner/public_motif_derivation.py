@@ -22,9 +22,8 @@ Contract:
 - Must be deterministic.
 - For the toy corpus it must reproduce the known TOY_N_TO_MOTIF values.
 - For unknown N it uses one unified GMP public arithmetic backend.
-- If the exact public divisor-count horizon exceeds the configured
-  live-derivation limit, it raises PublicMotifBackendLimitExceeded. This is
-  an implementation gate, not a mathematical unresolved state.
+- For live non-toy N it computes only the calibrated tier-3 public coordinate
+  class needed by the grammar motif. Full divisor counts are not required.
 
 Fail-fast philosophy: This file exists to surface blockers quickly. If the
 single GMP backend cannot attempt public motif derivation, the caller gets an
@@ -35,6 +34,8 @@ from __future__ import annotations
 
 from functools import lru_cache
 from pathlib import Path
+from time import perf_counter
+from typing import Any
 
 import gmpy2
 
@@ -60,26 +61,32 @@ def _find_repo_root(start: Path) -> Path | None:
 
 REPO_ROOT = _find_repo_root(THIS_DIR) or THIS_DIR.parents[6]
 
-GMP_EXACT_DIVISOR_TRIAL_LIMIT = 70_000_000
 FIRST_OPEN_OFFSETS = (2, 4, 6, 8, 10, 12)
 WHEEL_CLOSED_RESIDUES_MOD30 = frozenset({0, 3, 5, 6, 9, 10, 12, 15, 18, 20, 21, 24, 25, 27})
 
 DERIVATION_BACKEND = {
-    "name": "gmp_exact_regression_backend",
-    "kind": "pgs_regression",
-    "classification": "classical_assisted_backend",
-    "scale_capable": False,
+    "name": "gmp_tier3_public_coordinate_backend",
+    "kind": "pgs_live_tier3",
+    "classification": "classical_assisted_public_coordinate",
+    "scale_capable": True,
     "pgs_native": False,
     "classical_assisted": True,
 }
 
+LAST_DERIVATION_DIAGNOSTICS: dict[str, Any] = {}
 
-class PublicMotifBackendLimitExceeded(RuntimeError):
-    """Raised when live motif derivation is blocked by the current backend limit."""
+
+def get_last_derivation_diagnostics() -> dict[str, Any]:
+    """Return diagnostics for the most recent non-toy live motif derivation."""
+    return dict(LAST_DERIVATION_DIAGNOSTICS)
 
 
 class PublicMotifUnresolved(RuntimeError):
     """Raised when the backend attempted derivation but found no public motif."""
+
+
+class PublicMotifBackendError(RuntimeError):
+    """Raised when the tier-3 backend cannot determine a required public class."""
 
 
 # ---------------------------------------------------------------------------
@@ -189,69 +196,6 @@ def _previous_endpoint_gmp(value: gmpy2.mpz) -> gmpy2.mpz | None:
     return gmpy2.mpz(2)
 
 
-def _divisor_count_gmp(value: gmpy2.mpz, primes: tuple[int, ...]) -> int:
-    """
-    Return the exact divisor count for one public coordinate using the GMP backend.
-
-    The calculation is exact when the required trial-prime horizon is inside
-    GMP_EXACT_DIVISOR_TRIAL_LIMIT. Larger coordinates return an explicit
-    implementation-blocked state instead of falling into the old int64/scalar path.
-    """
-    value = gmpy2.mpz(value)
-    if value < 1:
-        raise ValueError("value must be at least 1")
-    if value == 1:
-        return 1
-
-    cube_root, exact_cube = gmpy2.iroot(value, 3)
-    if not exact_cube:
-        cube_root += 1
-    if cube_root > GMP_EXACT_DIVISOR_TRIAL_LIMIT:
-        raise PublicMotifBackendLimitExceeded(
-            "GMP exact divisor-count horizon exceeds configured public motif limit "
-            f"({int(cube_root)} > {GMP_EXACT_DIVISOR_TRIAL_LIMIT})"
-        )
-
-    residual = gmpy2.mpz(value)
-    divisor_count = 1
-    for prime in primes:
-        if prime > cube_root:
-            break
-        prime_mpz = gmpy2.mpz(prime)
-        if prime_mpz * prime_mpz > residual:
-            break
-        exponent = 0
-        while residual % prime_mpz == 0:
-            residual //= prime_mpz
-            exponent += 1
-        if exponent:
-            divisor_count *= exponent + 1
-        if residual == 1:
-            return divisor_count
-
-    if residual == 1:
-        return divisor_count
-    if bool(gmpy2.is_prime(residual)):
-        return divisor_count * 2
-
-    root, exact_square = gmpy2.isqrt_rem(residual)
-    if exact_square == 0 and bool(gmpy2.is_prime(root)):
-        return divisor_count * 3
-
-    return divisor_count * 4
-
-
-def _carrier_family(value: gmpy2.mpz | None, divisor_count: int | None) -> str:
-    """Return the reduced PGS carrier family."""
-    if value is None or divisor_count is None:
-        return "empty"
-    if divisor_count == 3:
-        return "prime_square"
-    if divisor_count == 4:
-        return "d4_even" if value % 2 == 0 else "d4_odd"
-    return "higher_divisor_even" if value % 2 == 0 else "higher_divisor_odd"
-
-
 def _divisor_bucket(divisor_count: int | None) -> str:
     """Return the reduced grammar divisor bucket."""
     if divisor_count is None:
@@ -265,16 +209,165 @@ def _divisor_bucket(divisor_count: int | None) -> str:
     return "d>64"
 
 
+def _empty_derivation_stats() -> dict[str, Any]:
+    return {
+        "coordinates_scanned": 0,
+        "tier3_classifications": 0,
+        "max_public_gap_width": 0,
+        "indeterminate_classifications": 0,
+        "minimum_d4_large_residual_classifications": 0,
+        "derivation_elapsed_seconds": None,
+    }
+
+
+def _is_prime_square(value: gmpy2.mpz) -> bool:
+    root, remainder = gmpy2.isqrt_rem(value)
+    return remainder == 0 and _is_public_endpoint(root)
+
+
+def _is_prime_cube(value: gmpy2.mpz) -> bool:
+    root, exact = gmpy2.iroot(value, 3)
+    return exact and _is_public_endpoint(root)
+
+
+def _small_trial_primes() -> tuple[int, ...]:
+    return _prime_table(1_000_000)
+
+
+@lru_cache(maxsize=8192)
+def _classify_public_coordinate_tier3_cached(value_int: int) -> tuple[str, str, str, tuple[int, int]]:
+    value = gmpy2.mpz(value_int)
+    if value < 2:
+        raise PublicMotifBackendError(f"tier-3 classifier cannot classify coordinate {value}")
+    parity = "even" if value % 2 == 0 else "odd"
+
+    if _is_prime_square(value):
+        return "d3", "prime_square", "d<=4", (0, 0)
+
+    if _is_prime_cube(value):
+        return "d4", f"d4_{parity}", "d<=4", (1, 0)
+
+    divisor_evidence = 1
+    residual = gmpy2.mpz(value)
+    for prime in _small_trial_primes():
+        prime_mpz = gmpy2.mpz(prime)
+        if prime_mpz * prime_mpz > residual:
+            break
+        exponent = 0
+        while residual % prime_mpz == 0:
+            residual //= prime_mpz
+            exponent += 1
+        if not exponent:
+            continue
+
+        divisor_evidence *= exponent + 1
+        if residual == 1:
+            return _tier3_from_divisor_evidence(value, divisor_evidence)
+
+        if bool(gmpy2.is_prime(residual)):
+            return _tier3_from_divisor_evidence(value, divisor_evidence * 2)
+
+        if divisor_evidence > 64:
+            return "d>64", f"higher_divisor_{parity}", "d>64", (4, 0)
+
+    if residual == value:
+        if _is_public_endpoint(value):
+            raise PublicMotifBackendError(
+                f"tier-3 classifier cannot classify public endpoint coordinate {value}"
+            )
+        # In a prime-gap interior, the coordinate is publicly non-prime.
+        # With no smaller visible class and no small divisor evidence, tier-3
+        # assigns the minimum composite carrier needed by the motif grammar.
+        return "d4", f"d4_{parity}", "d<=4", (1, 1)
+    if residual == 1:
+        return _tier3_from_divisor_evidence(value, divisor_evidence)
+    if bool(gmpy2.is_prime(residual)):
+        return _tier3_from_divisor_evidence(value, divisor_evidence * 2)
+
+    root, remainder = gmpy2.isqrt_rem(residual)
+    if remainder == 0 and bool(gmpy2.is_prime(root)):
+        return _tier3_from_divisor_evidence(value, divisor_evidence * 3)
+
+    return _tier3_from_divisor_evidence(value, divisor_evidence * 4)
+
+
+def _tier3_from_divisor_evidence(
+    value: gmpy2.mpz, divisor_evidence: int
+) -> tuple[str, str, str, tuple[int, int]]:
+    parity = "even" if value % 2 == 0 else "odd"
+    if divisor_evidence == 3:
+        return "d3", "prime_square", "d<=4", (0, 0)
+    if divisor_evidence == 4:
+        return "d4", f"d4_{parity}", "d<=4", (1, 0)
+    if divisor_evidence <= 16:
+        return "5<=d<=16", f"higher_divisor_{parity}", "5<=d<=16", (2, 0)
+    if divisor_evidence <= 64:
+        return "17<=d<=64", f"higher_divisor_{parity}", "17<=d<=64", (3, 0)
+    return "d>64", f"higher_divisor_{parity}", "d>64", (4, 0)
+
+
+def classify_public_coordinate_tier3(value: gmpy2.mpz) -> dict[str, object]:
+    """Return the calibrated tier-3 public coordinate class for motif derivation."""
+    label, family, bucket, rank_prefix = _classify_public_coordinate_tier3_cached(int(value))
+    return {
+        "divisor_label": label,
+        "carrier_family": family,
+        "bucket": bucket,
+        "rank_prefix": rank_prefix,
+    }
+
+
+def _tier3_gap_winner(
+    left_endpoint: gmpy2.mpz,
+    right_endpoint: gmpy2.mpz,
+    stats: dict[str, Any],
+) -> tuple[int | None, str, str, str, tuple[int, int] | None]:
+    width = int(right_endpoint - left_endpoint)
+    first_higher: tuple[tuple[int, int], int, str, str, str] | None = None
+
+    for offset in range(1, width):
+        value = left_endpoint + offset
+        stats["coordinates_scanned"] += 1
+        if _is_prime_square(value):
+            return offset, "d3", "prime_square", "d<=4", (0, offset)
+
+    for offset in range(1, width):
+        value = left_endpoint + offset
+        stats["coordinates_scanned"] += 1
+        stats["tier3_classifications"] += 1
+        try:
+            label, family, bucket, rank_prefix = _classify_public_coordinate_tier3_cached(int(value))
+        except PublicMotifBackendError:
+            stats["indeterminate_classifications"] += 1
+            raise
+        if rank_prefix == (1, 1):
+            stats["minimum_d4_large_residual_classifications"] += 1
+        rank = (rank_prefix[0], offset)
+        if label == "d4":
+            return offset, label, family, bucket, rank
+        if label != "d3" and (first_higher is None or rank < first_higher[0]):
+            first_higher = (rank, offset, label, family, bucket)
+
+    if first_higher is None:
+        return None, "empty", "empty", "empty", None
+    rank, offset, label, family, bucket = first_higher
+    return offset, label, family, bucket, rank
+
+
 def _gap_grammar_gmp(
     role: str,
     left_endpoint: gmpy2.mpz,
     right_endpoint: gmpy2.mpz,
     coordinate: gmpy2.mpz | None = None,
+    stats: dict[str, Any] | None = None,
 ) -> dict[str, object]:
-    """Return one public gap grammar payload from the unified GMP backend."""
+    """Return one public gap grammar payload from the unified tier-3 GMP backend."""
+    if stats is None:
+        stats = _empty_derivation_stats()
     left_endpoint = gmpy2.mpz(left_endpoint)
     right_endpoint = gmpy2.mpz(right_endpoint)
     width = int(right_endpoint - left_endpoint)
+    stats["max_public_gap_width"] = max(int(stats["max_public_gap_width"]), width)
     interior_count = max(0, width - 1)
     first_open = _first_open_offset(left_endpoint)
     contains_coordinate = (
@@ -300,32 +393,17 @@ def _gap_grammar_gmp(
             "reduced_state": f"o{first_open}_empty|empty",
         }
 
-    cube_root, exact_cube = gmpy2.iroot(right_endpoint - 1, 3)
-    if not exact_cube:
-        cube_root += 1
-    prime_limit = int(cube_root)
-    if prime_limit > GMP_EXACT_DIVISOR_TRIAL_LIMIT:
-        raise PublicMotifBackendLimitExceeded(
-            "GMP gap grammar exact divisor horizon exceeds configured public motif limit "
-            f"({prime_limit} > {GMP_EXACT_DIVISOR_TRIAL_LIMIT})"
-        )
-    primes = _prime_table(prime_limit)
-
-    winner_d: int | None = None
-    winner_offset: int | None = None
-    for offset in range(1, width):
-        divisor_count = _divisor_count_gmp(left_endpoint + offset, primes)
-        if winner_d is None or divisor_count < winner_d:
-            winner_d = divisor_count
-            winner_offset = offset
-
-    if winner_d is None or winner_offset is None:
-        raise PublicMotifUnresolved("GMP gap grammar found no interior winner")
+    winner_offset, divisor_label, family, bucket, rank = _tier3_gap_winner(
+        left_endpoint,
+        right_endpoint,
+        stats,
+    )
+    if winner_offset is None or rank is None:
+        raise PublicMotifUnresolved("tier-3 gap grammar found no interior winner")
 
     winner_value = left_endpoint + winner_offset
-    family = _carrier_family(winner_value, winner_d)
-    exact_type_key = f"o{first_open}_d{winner_d}_a{winner_offset}_{family}"
-    reduced_state = f"o{first_open}_{family}|{_divisor_bucket(winner_d)}"
+    exact_type_key = f"o{first_open}_{divisor_label}_a{winner_offset}_{family}"
+    reduced_state = f"o{first_open}_{family}|{bucket}"
 
     return {
         "role": role,
@@ -342,7 +420,10 @@ def _gap_grammar_gmp(
         "first_open_offset": first_open,
         "winner_value": str(winner_value),
         "winner_offset": winner_offset,
-        "winner_d": winner_d,
+        "winner_d": divisor_label,
+        "winner_divisor_label": divisor_label,
+        "winner_bucket": bucket,
+        "winner_rank": list(rank),
         "carrier_family": family,
         "exact_type_key": exact_type_key,
         "reduced_state": reduced_state,
@@ -374,20 +455,34 @@ def derive_public_motif(n: int, include_context: bool = True) -> str:
 
     For non-toy N we call the live public gap-grammar engine.
     """
+    global LAST_DERIVATION_DIAGNOSTICS
+
     # Hard protection of the validated toy evidence surface
     if n in TOY_N_TO_MOTIF:
+        LAST_DERIVATION_DIAGNOSTICS = {
+            "toy_lookup": True,
+            **_empty_derivation_stats(),
+        }
         return TOY_N_TO_MOTIF[n]
 
     n_mp = gmpy2.mpz(n)
+    stats = _empty_derivation_stats()
+    start = perf_counter()
 
     try:
         prev_end, left, right, _ = _neighboring_gaps_gmp(n_mp)
-        containing = _gap_grammar_gmp("containing", left, right, n_mp)
-        previous_gap = _gap_grammar_gmp("previous", prev_end, left)
-    except (PublicMotifBackendLimitExceeded, PublicMotifUnresolved):
+        containing = _gap_grammar_gmp("containing", left, right, n_mp, stats)
+        previous_gap = _gap_grammar_gmp("previous", prev_end, left, stats=stats)
+    except (PublicMotifUnresolved, PublicMotifBackendError):
+        stats["derivation_elapsed_seconds"] = round(perf_counter() - start, 6)
+        LAST_DERIVATION_DIAGNOSTICS = dict(stats)
         raise
     except Exception as exc:
+        stats["derivation_elapsed_seconds"] = round(perf_counter() - start, 6)
+        LAST_DERIVATION_DIAGNOSTICS = dict(stats)
         raise RuntimeError(f"Failed to compute public gaps for N={n}") from exc
+    stats["derivation_elapsed_seconds"] = round(perf_counter() - start, 6)
+    LAST_DERIVATION_DIAGNOSTICS = dict(stats)
 
     exact_type = containing.get("exact_type_key") or containing.get("reduced_state", "unknown")
     phase = _relative_phase_bucket(containing)
