@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tau-4 Overlap-Floor Exclusion | Divisor-Field Extremals</title>
+  <style>
+    :root { --ink:#17212b; --muted:#5e6a75; --line:#d8e0e8; --panel:#f7f9fb; --accent:#0b6b8a; --warn:#8a5a00; --good:#1f7a4d; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:#fff; font:13px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    header { border-bottom:1px solid var(--line); background:#f6f9fb; }
+    .wrap, main { width:min(1040px,calc(100% - 36px)); margin:0 auto; }
+    .hero { padding:28px 0 22px; }
+    a { color:var(--accent); text-underline-offset:3px; }
+    .back { display:inline-block; margin-bottom:12px; font-weight:650; }
+    .eyebrow { margin:0 0 6px; color:var(--accent); font-size:11px; font-weight:750; letter-spacing:.07em; text-transform:uppercase; }
+    h1 { margin:0; max-width:880px; font-size:2rem; line-height:1.08; letter-spacing:0; }
+    .lede { max-width:900px; margin:12px 0 0; color:var(--muted); font-size:1rem; }
+    .status { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .pill { border:1px solid var(--line); border-radius:999px; padding:4px 8px; background:#fff; color:var(--muted); font-weight:650; }
+    .pill.good { color:var(--good); border-color:#a8d7bd; background:#f0faf4; }
+    .pill.warn { color:var(--warn); border-color:#e5ca8f; background:#fff8ea; }
+    section { padding:22px 0; border-bottom:1px solid var(--line); }
+    h2 { margin:0 0 12px; font-size:1.25rem; line-height:1.2; }
+    h3 { margin:0 0 8px; font-size:1rem; }
+    p { margin:0 0 10px; }
+    code { padding:1px 4px; border-radius:4px; background:#eef3f6; color:#0f4f68; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.94em; }
+    .grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; }
+    .panel { padding:12px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
+    .metric { font-size:1.35rem; font-weight:750; }
+    table { width:100%; border-collapse:collapse; border:1px solid var(--line); }
+    th, td { padding:8px 10px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { background:#eef5f8; color:#24414f; font-size:11px; letter-spacing:.05em; text-transform:uppercase; }
+    tr:last-child td { border-bottom:0; }
+    ul { margin:0; padding-left:20px; }
+    li + li { margin-top:6px; }
+    @media (max-width:860px) { .grid { grid-template-columns:1fr 1fr; } }
+    @media (max-width:560px) { .grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hero">
+      <a class="back" href="./">Back to track</a>
+      <p class="eyebrow">2026-05-23 proof-state update</p>
+      <h1>The tau-4 sigma-only branch reduces to an overlap-floor inequality.</h1>
+      <p class="lede">A later higher-tau competitor can lower <code>sigma(n)/n</code> without lowering the phi deficit only if its reciprocal overlap load is smaller than the carrier headroom. The new probe found no such live overlap-floor case through <code>q &lt;= 10,000,000</code>, and the pure prime-power competitor branch is eliminated by proof.</p>
+      <div class="status">
+        <span class="pill good">status: ADVANCE</span>
+        <span class="pill">surface: q &lt;= 10,000,000</span>
+        <span class="pill">branch reduced: headroom exclusion</span>
+        <span class="pill warn">full bridge: unresolved</span>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section>
+      <h2>Headline Finding</h2>
+      <p>The earlier deficit-headroom probe showed that <code>24,210</code> later higher-tau competitors enter the deficit band, so the old explanation that the band was empty is false. This run proves the exact overlap gate that a sigma-only counterexample must pass and measures that every one of those <code>24,210</code> deficit-band entrants is eliminated by the gate on the <code>10,000,000</code> surface.</p>
+      <div class="grid">
+        <div class="panel">
+          <h3>Later higher-tau pairs</h3>
+          <p class="metric">5,321,446</p>
+          <p>Pairs after a tau-4 carrier.</p>
+        </div>
+        <div class="panel">
+          <h3>Deficit-band entrants</h3>
+          <p class="metric">24,210</p>
+          <p><code>D(w) &lt;= D(t) &lt; E(w)</code>.</p>
+        </div>
+        <div class="panel">
+          <h3>Overlap-floor eliminated</h3>
+          <p class="metric">24,210</p>
+          <p>No live floor cases remain.</p>
+        </div>
+        <div class="panel">
+          <h3>Headroom violations</h3>
+          <p class="metric">0</p>
+          <p>No sigma-only counterexample.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>PGS Frame</h2>
+      <table>
+        <tbody>
+          <tr><th>PGS object</th><td>Ordered prime-gap interior, exact divisor-count field, and the GWR-selected tau-minimum carrier <code>w</code>.</td></tr>
+          <tr><th>PGS invariant</th><td>The carrier is fixed by <code>tau</code>. The secondary fields do not choose the carrier.</td></tr>
+          <tr><th>Secondary loads</th><td><code>E(n)=(sigma(n)-n)/n</code>, <code>D(n)=(n-phi(n))/n</code>, and <code>H(n)=E(n)-D(n)</code>.</td></tr>
+          <tr><th>Rule state</th><td>GWR remains proved by <code>PROOF.md</code>. This note reduces one secondary bridge branch and does not claim the full divisor-field extremal problem is solved.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Overlap-Floor Lemma</h2>
+      <p>Let <code>t</code> be a later higher-tau competitor in the same gap as a tau-4 carrier <code>w</code>. A sigma-only counterexample must satisfy <code>D(t) &gt;= D(w)</code> and <code>E(t) &lt; E(w)</code>. Since <code>E(t)=D(t)+H(t)</code>, it must also satisfy</p>
+      <p><code>H(t) &lt; E(w)-D(t)</code>.</p>
+      <p>The overlap expansion gives a direct lower bound for <code>H(t)</code>. If <code>t</code> contains a repeated smallest prime channel <code>r^2</code>, then <code>H(t) &gt;= 1/r^2</code>. If the two smallest prime channels are distinct <code>r &lt; s</code>, then <code>H(t) &gt;= 2/(rs)</code>. Call this lower bound <code>L(t)</code>.</p>
+      <p><strong>Overlap-floor exclusion.</strong> If <code>L(t) &gt;= E(w)-D(t)</code>, then <code>E(t) &gt;= E(w)</code>. Therefore <code>t</code> cannot be a sigma-only counterexample.</p>
+    </section>
+
+    <section>
+      <h2>Prime-Power Branch</h2>
+      <p>The pure prime-power competitor branch is eliminated at theorem level. If <code>t=s^e</code> with <code>e &gt;= 4</code>, then <code>D(t)=1/s</code> and <code>H(t)=1/s^2+...+1/s^e</code>.</p>
+      <p>For a semiprime carrier <code>w=uv</code>, <code>D(w)=(u+v-1)/(uv)</code> and the maximum possible headroom is <code>E(w)-D(w)=2/(uv)</code>. The condition <code>D(t)&gt;=D(w)</code> gives <code>s &lt;= uv/(u+v-1)</code>. Since <code>2uv &lt; (u+v-1)^2</code>, this forces <code>1/s^2 &gt; 2/(uv)</code>, so <code>H(t)</code> exceeds the headroom.</p>
+      <p>For a prime-cube carrier <code>w=r^3</code>, <code>D(w)=1/r</code> and the maximum possible headroom is <code>1/r^2+1/r^3</code>. If <code>s=r</code>, then <code>H(t)</code> contains both terms. If <code>s&lt;r</code>, then <code>s&lt;=r-2</code> for odd primes and <code>1/s^2 &gt; 1/r^2+1/r^3</code>; the case <code>r=3,s=2</code> satisfies the same inequality directly. Thus a pure prime-power <code>t</code> cannot pass the sigma-only headroom gate.</p>
+    </section>
+
+    <section>
+      <h2>Measured Classification</h2>
+      <table>
+        <thead>
+          <tr><th>Measured class</th><th>Count</th><th>Interpretation</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Tau-4 carrier gaps</td><td><code>499,896</code></td><td><code>499,885</code> semiprime carriers and <code>11</code> prime-cube carriers.</td></tr>
+          <tr><td>Deficit-band carriers</td><td><code>24,210</code></td><td>Every measured deficit-band entrant occurred after a semiprime carrier.</td></tr>
+          <tr><td><code>square_times_prime</code> entrants</td><td><code>24,206</code></td><td>All closed by the repeated-smallest-prime floor <code>1/r^2</code>.</td></tr>
+          <tr><td>Distinct-prime entrants</td><td><code>4</code></td><td>Two <code>three_distinct_primes</code> and two <code>exponents_1_1_1_1</code>, all closed by <code>2/(rs)</code>.</td></tr>
+          <tr><td>Closest floor case</td><td><code>193 | 194 195 196 | 197</code></td><td>Carrier <code>194=2*97</code>, competitor <code>195=3*5*13</code>. The floor/headroom ratio is <code>75660/4410</code>, still greater than <code>17</code>.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Proof Tree Change</h2>
+      <ul>
+        <li>The old empty-deficit-band route remains invalidated.</li>
+        <li>The pure prime-power competitor branch is now removed by proof.</li>
+        <li>The measured tau-4 higher-tau sigma-only branch reduces to a single remaining theorem target: prove <code>L(t) &gt;= E(w)-D(t)</code> for every non-prime-power deficit-band entrant, or find one live overlap-floor case.</li>
+        <li>The next attack should target the square-times-prime channel, because it accounts for <code>24,206 / 24,210</code> measured deficit-band entrants.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Status Separation</h2>
+      <table>
+        <tbody>
+          <tr><th>Theorem proof</th><td>GWR is proved by <code>PROOF.md</code>. This run proves the overlap-floor exclusion lemma and eliminates pure prime-power competitors for the sigma-only branch.</td></tr>
+          <tr><th>Measured result</th><td>Through <code>q &lt;= 10,000,000</code>, <code>24,210 / 24,210</code> deficit-band entrants are eliminated by the overlap floor; <code>0</code> live floor cases and <code>0</code> headroom violations remain.</td></tr>
+          <tr><th>Implementation status</th><td>The deterministic probe and outputs are local to this track folder.</td></tr>
+          <tr><th>Audit status</th><td>Probe regeneration, JSON parsing, bytecode compile, LF checks, and write-scope checks passed for this run.</td></tr>
+          <tr><th>Hypothesis</th><td>The full tau-4 higher-tau one-way bridge follows from the overlap-floor inequality on all non-prime-power deficit-band entrants.</td></tr>
+          <tr><th>Unresolved</th><td>The square-times-prime overlap-floor inequality is measured but not proved at all scale.</td></tr>
+          <tr><th>Invalidated</th><td>The broad all-secondary-field extremal bridge is false. The empty-deficit-band explanation is false.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Artifacts</h2>
+      <ul>
+        <li><a href="tau4_overlap_floor_probe.py"><code>tau4_overlap_floor_probe.py</code></a></li>
+        <li><a href="output/2026-05-23-tau4-overlap-floor-summary.json"><code>output/2026-05-23-tau4-overlap-floor-summary.json</code></a></li>
+        <li><a href="output/2026-05-23-tau4-overlap-floor-witnesses.csv"><code>output/2026-05-23-tau4-overlap-floor-witnesses.csv</code></a></li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

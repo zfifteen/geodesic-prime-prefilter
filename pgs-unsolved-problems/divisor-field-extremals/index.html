@@ -54,8 +54,8 @@
   <main>
     <section>
       <h2>Current Finding</h2>
-      <p>The newest probe classifies higher-tau reciprocal blockers for tau-4 GWR carriers. Same-tau-4 competitors still showed <code>0</code> sigma/phi split pairs through <code>q &lt;= 2,000,000</code>, but higher-tau competitors produced <code>19,983</code> phi-only improvements, <code>95,400</code> both-role improvements, and <code>0</code> sigma-only improvements.</p>
-      <p>The proof target is now the one-way bridge supported by this measured surface: for a tau-4 carrier, higher-tau sigma improvement forces phi improvement, while phi improvement does not force sigma improvement.</p>
+      <p>The newest run reduces the tau-4 higher-tau sigma-only branch to an overlap-floor inequality. A later competitor can lower <code>sigma(n)/n</code> without lowering the phi deficit only if its reciprocal overlap load is smaller than the remaining carrier headroom.</p>
+      <p>Through <code>q &lt;= 10,000,000</code>, all <code>24,210</code> deficit-band entrants were eliminated by that overlap floor: <code>0</code> live floor cases and <code>0</code> headroom violations. The pure prime-power competitor branch is now eliminated by proof; the next live target is the square-times-prime overlap-floor inequality.</p>
     </section>
 
     <section>
@@ -76,12 +76,12 @@
       <h2>Research State</h2>
       <table>
         <tbody>
-          <tr><th>Theorem proof</th><td><code>PROOF.md</code> controls GWR theorem status. No secondary divisor-field bridge is proved yet.</td></tr>
-          <tr><th>Measured result</th><td>Tau-4 higher-tau reciprocal blocker scan through <code>q &lt;= 2,000,000</code>: <code>148,931</code> nonempty gaps and <code>110,947</code> tau-4 carrier gaps.</td></tr>
+          <tr><th>Theorem proof</th><td><code>PROOF.md</code> controls GWR theorem status. This track now has a proved overlap-floor exclusion lemma and a proved pure-prime-power competitor exclusion for the tau-4 sigma-only branch.</td></tr>
+          <tr><th>Measured result</th><td>Tau-4 overlap-floor scan through <code>q &lt;= 10,000,000</code>: <code>499,896</code> tau-4 carrier gaps, <code>5,321,446</code> later higher-tau pairs, and <code>24,210 / 24,210</code> deficit-band entrants eliminated by the overlap floor.</td></tr>
           <tr><th>Implementation status</th><td>Current deterministic probe and outputs live in this folder only.</td></tr>
           <tr><th>Audit status</th><td>Current run passed compile, output parse, LF, and write-scope checks.</td></tr>
-          <tr><th>Invalidated</th><td>The broad claim that the tau carrier optimizes every secondary field is false. The all-tau sigma/phi equivalence bridge is also false because higher-tau phi-only obstructions exist.</td></tr>
-          <tr><th>Unresolved</th><td>Prove or falsify the one-way higher-tau bridge <code>E(t) &lt; E(w) =&gt; D(t) &lt; D(w)</code> for tau-4 carrier gaps.</td></tr>
+          <tr><th>Invalidated</th><td>The broad claim that the tau carrier optimizes every secondary field is false. The all-tau sigma/phi equivalence bridge is false, and the empty-deficit-band explanation is false.</td></tr>
+          <tr><th>Unresolved</th><td>Prove or falsify <code>L(t) &gt;= E(w)-D(t)</code> for every non-prime-power deficit-band entrant, with square-times-prime entrants first.</td></tr>
         </tbody>
       </table>
     </section>
@@ -89,6 +89,11 @@
     <section>
       <h2>Current Artifacts</h2>
       <ul>
+        <li><a href="2026-05-23-outside-review-report.html">2026-05-23 outside review report</a></li>
+        <li><a href="2026-05-23-tau4-overlap-floor-exclusion.html">2026-05-23 tau-4 overlap-floor exclusion note</a></li>
+        <li><a href="tau4_overlap_floor_probe.py"><code>tau4_overlap_floor_probe.py</code></a></li>
+        <li><a href="output/2026-05-23-tau4-overlap-floor-summary.json"><code>output/2026-05-23-tau4-overlap-floor-summary.json</code></a></li>
+        <li><a href="output/2026-05-23-tau4-overlap-floor-witnesses.csv"><code>output/2026-05-23-tau4-overlap-floor-witnesses.csv</code></a></li>
         <li><a href="2026-05-20-higher-tau-reciprocal-blockers.html">2026-05-20 higher-tau reciprocal blocker note</a></li>
         <li><a href="higher_tau_reciprocal_blocker_probe.py"><code>higher_tau_reciprocal_blocker_probe.py</code></a></li>
         <li><a href="output/2026-05-20-higher-tau-reciprocal-blockers-summary.json"><code>output/2026-05-20-higher-tau-reciprocal-blockers-summary.json</code></a></li>

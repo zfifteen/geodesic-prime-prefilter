@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Outside Review Report | Divisor-Field Extremals</title>
+  <style>
+    :root { --ink:#17212b; --muted:#5e6a75; --line:#d8e0e8; --panel:#f7f9fb; --accent:#0b6b8a; --warn:#8a5a00; --good:#1f7a4d; --paper:#fff; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--paper); font:13px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    header { border-bottom:1px solid var(--line); background:#f6f9fb; }
+    .wrap, main { width:min(1080px,calc(100% - 36px)); margin:0 auto; }
+    .hero { padding:28px 0 22px; }
+    a { color:var(--accent); text-underline-offset:3px; }
+    .back { display:inline-block; margin-bottom:12px; font-weight:650; }
+    .eyebrow { margin:0 0 6px; color:var(--accent); font-size:11px; font-weight:750; letter-spacing:.07em; text-transform:uppercase; }
+    h1 { margin:0; max-width:900px; font-size:2.1rem; line-height:1.08; letter-spacing:0; }
+    .lede { max-width:920px; margin:12px 0 0; color:var(--muted); font-size:1rem; }
+    .status { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .pill { border:1px solid var(--line); border-radius:999px; padding:4px 8px; background:#fff; color:var(--muted); font-weight:650; }
+    .pill.good { color:var(--good); border-color:#a8d7bd; background:#f0faf4; }
+    .pill.warn { color:var(--warn); border-color:#e5ca8f; background:#fff8ea; }
+    section { padding:22px 0; border-bottom:1px solid var(--line); }
+    h2 { margin:0 0 12px; font-size:1.25rem; line-height:1.2; }
+    h3 { margin:0 0 8px; font-size:1rem; }
+    p { margin:0 0 10px; }
+    code, pre { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.94em; }
+    code { padding:1px 4px; border-radius:4px; background:#eef3f6; color:#0f4f68; }
+    pre { margin:10px 0 0; padding:12px; overflow:auto; border:1px solid var(--line); border-radius:8px; background:#f8fbfd; color:#102b3a; }
+    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+    .panel { padding:12px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
+    .metric { font-size:1.35rem; font-weight:750; }
+    table { width:100%; border-collapse:collapse; border:1px solid var(--line); }
+    th, td { padding:8px 10px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { background:#eef5f8; color:#24414f; font-size:11px; letter-spacing:.05em; text-transform:uppercase; }
+    tr:last-child td { border-bottom:0; }
+    ul, ol { margin:0; padding-left:20px; }
+    li + li { margin-top:6px; }
+    .note { padding:12px; border:1px solid #e5ca8f; border-radius:8px; background:#fff8ea; color:#573b00; }
+    footer { padding:22px 0 32px; color:var(--muted); }
+    @media (max-width:860px) { .grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hero">
+      <a class="back" href="./">Back to track</a>
+      <p class="eyebrow">Outside review package</p>
+      <h1>Carrier-conditioned divisor-field extremals inside prime-gap interiors.</h1>
+      <p class="lede">This report gives outside reviewers a precise account of the current Divisor-Field Extremals track: what is proved, what is measured, what has been invalidated, and how to reproduce the latest deterministic evidence.</p>
+      <div class="status">
+        <span class="pill good">latest status: ADVANCE</span>
+        <span class="pill">review target: tau-4 overlap floor</span>
+        <span class="pill">branch: sigma-only higher-tau obstruction</span>
+        <span class="pill warn">full secondary-field classification unresolved</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>Executive Summary</h2>
+      <p>The primary proved object is the GWR carrier: in a nonempty prime-gap interior, exact divisor counts select the leftmost integer with minimum <code>tau</code>. The Divisor-Field Extremals track asks which secondary fields are forced, forbidden, or conditionally aligned after that carrier has already been selected.</p>
+      <p>The central current result is a branch reduction. For tau-4 carriers, the proposed one-way secondary bridge says that a later higher-tau competitor which lowers <code>sigma(n)/n</code> also lowers the phi deficit. A sigma-only counterexample must pass a deficit-headroom gate and then an overlap-floor gate. The latest run proves the overlap-floor exclusion lemma, proves that pure prime-power competitors cannot pass the gate, and measures that all <code>24,210</code> deficit-band entrants through <code>q &lt;= 10,000,000</code> are eliminated by the overlap floor.</p>
+      <div class="grid">
+        <div class="panel">
+          <h3>Tau-4 carrier gaps</h3>
+          <p class="metric">499,896</p>
+          <p>Exact divisor-field scan through <code>q &lt;= 10,000,000</code>.</p>
+        </div>
+        <div class="panel">
+          <h3>Later higher-tau pairs</h3>
+          <p class="metric">5,321,446</p>
+          <p>Pairs after the GWR carrier inside the same gap.</p>
+        </div>
+        <div class="panel">
+          <h3>Deficit-band entrants closed</h3>
+          <p class="metric">24,210 / 24,210</p>
+          <p>No live overlap-floor case on the measured surface.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Problem Statement</h2>
+      <p>For consecutive primes <code>p &lt; q</code>, define the gap interior</p>
+      <pre>I = {p + 1, ..., q - 1}.</pre>
+      <p>For <code>n in I</code>, let <code>tau(n)</code> be the divisor count, <code>sigma(n)</code> the divisor sum, <code>omega(n)</code> the number of distinct prime factors, and <code>phi(n)</code> Euler's totient. The GWR carrier is</p>
+      <pre>w = min { n in I : tau(n) = min(tau(m) : m in I) }.</pre>
+      <p>The research question is not whether <code>sigma</code>, <code>omega</code>, or <code>phi</code> can choose <code>w</code>. They do not choose it. The question is which secondary extremal roles remain forced or forbidden once <code>w</code> has been fixed by the proved tau rule.</p>
+    </section>
+
+    <section>
+      <h2>Claims And Nonclaims</h2>
+      <table>
+        <tbody>
+          <tr><th>Proved foundation</th><td><a href="../../PROOF.md">PROOF.md</a> proves the direct divisor-count next-prime rule and the interior selected-integer theorem. That proof controls theorem status for the GWR carrier.</td></tr>
+          <tr><th>Current proved branch</th><td>The latest note proves an overlap-floor exclusion lemma for the tau-4 sigma-only branch and eliminates pure prime-power competitors for that branch.</td></tr>
+          <tr><th>Measured evidence</th><td>The latest deterministic probe measures the overlap-floor gate through <code>q &lt;= 10,000,000</code>. Measurement supports the branch reduction but does not by itself prove the full all-scale secondary bridge.</td></tr>
+          <tr><th>Invalidated rule</th><td>The broad claim that the tau carrier optimizes every secondary field is false. The empty-deficit-band explanation is also false.</td></tr>
+          <tr><th>Unresolved target</th><td>The remaining live target is the non-prime-power overlap-floor inequality, especially square-times-prime entrants.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Research Progression</h2>
+      <table>
+        <thead>
+          <tr><th>Step</th><th>Proof-state change</th><th>Consequence</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Broad secondary-field bridge</td><td>Falsified.</td><td>The tau carrier does not optimize all secondary fields.</td></tr>
+          <tr><td>Square branch for <code>omega</code></td><td>Classified by proof and measurement.</td><td>If <code>tau(w)=3</code>, then <code>w</code> is a prime square and has minimum possible <code>omega</code> value in the gap.</td></tr>
+          <tr><td>Tau-4 <code>omega</code> bridge</td><td>Split by carrier type.</td><td>Prime-cube carriers force <code>omega</code>-minimum membership; semiprime carriers are blocked by interior prime powers.</td></tr>
+          <tr><td>Tau-4 <code>sigma/phi</code> bridge</td><td>Forced bridge falsified.</td><td>Semiprime and prime-cube carriers do not force <code>sigma(n)/n</code> minimum or <code>phi(n)/n</code> maximum.</td></tr>
+          <tr><td>Reciprocal-load formulation</td><td>Derived exact downstream loads.</td><td><code>sigma/phi</code> reversals reduce to comparisons of reciprocal excess, deficit, and overlap loads.</td></tr>
+          <tr><td>Higher-tau one-way bridge</td><td>Reduced to gates.</td><td>Sigma-only counterexamples must pass deficit and headroom gates.</td></tr>
+          <tr><td>Overlap-floor gate</td><td>Latest branch reduction.</td><td>Pure prime powers are eliminated by proof, and every measured deficit-band entrant is closed by an overlap floor.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Current Lemma Target</h2>
+      <p>Define the downstream loads</p>
+      <pre>E(n) = (sigma(n) - n) / n
+D(n) = (n - phi(n)) / n
+H(n) = E(n) - D(n).</pre>
+      <p>A later higher-tau competitor <code>t</code> can be a sigma-only counterexample against a tau-4 carrier <code>w</code> only if</p>
+      <pre>D(w) &lt;= D(t) &lt; E(w)
+H(t) &lt; E(w) - D(t).</pre>
+      <p>The latest overlap-floor lemma says that if <code>L(t) &gt;= E(w)-D(t)</code>, then <code>t</code> cannot be a sigma-only counterexample. Here <code>L(t)=1/r^2</code> for repeated-smallest-prime channels and <code>L(t)=2/(rs)</code> for distinct smallest prime channels.</p>
+      <p>The remaining proof target is exact and falsifiable: prove <code>L(t) &gt;= E(w)-D(t)</code> for every non-prime-power deficit-band entrant, or exhibit one row where it fails.</p>
+    </section>
+
+    <section>
+      <h2>Reproducibility Instructions</h2>
+      <p>The latest proof-supporting run is deterministic and self-contained inside this folder. It uses exact integer arithmetic and writes a JSON summary plus a compact witness CSV.</p>
+      <ol>
+        <li>Clone the repository and check out the review branch.</li>
+      </ol>
+      <pre>git clone https://github.com/zfifteen/prime-gap-structure.git
+cd prime-gap-structure
+git checkout codex/divisor-field-review-report-20260523</pre>
+      <ol start="2">
+        <li>Run the latest overlap-floor probe.</li>
+      </ol>
+      <pre>python3 pgs-unsolved-problems/divisor-field-extremals/tau4_overlap_floor_probe.py</pre>
+      <ol start="3">
+        <li>Parse the generated summary.</li>
+      </ol>
+      <pre>python3 -m json.tool \
+  pgs-unsolved-problems/divisor-field-extremals/output/2026-05-23-tau4-overlap-floor-summary.json</pre>
+      <ol start="4">
+        <li>Verify the expected headline fields.</li>
+      </ol>
+      <pre>python3 - &lt;&apos;PY&apos;
+import json
+from pathlib import Path
+
+path = Path("pgs-unsolved-problems/divisor-field-extremals/output/2026-05-23-tau4-overlap-floor-summary.json")
+data = json.loads(path.read_text())
+expected = {
+    "limit": 10_000_000,
+    "tau4_carrier_gaps": 499_896,
+    "later_higher_tau_pairs": 5_321_446,
+    "deficit_band_pairs": 24_210,
+    "overlap_floor_eliminated_pairs": 24_210,
+    "overlap_floor_live_pairs": 0,
+    "headroom_violations": 0,
+}
+for key, value in expected.items():
+    actual = data[key]
+    if actual != value:
+        raise SystemExit(f"{key}: expected {value}, got {actual}")
+print("overlap-floor summary verified")
+PY</pre>
+      <ol start="5">
+        <li>Compile-check the probe without leaving bytecode inside the repository.</li>
+      </ol>
+      <pre>PYTHONPYCACHEPREFIX=/tmp/pgs-divisor-field-extremals-pycache \
+  python3 -m py_compile \
+  pgs-unsolved-problems/divisor-field-extremals/tau4_overlap_floor_probe.py</pre>
+    </section>
+
+    <section>
+      <h2>Artifact Links</h2>
+      <ul>
+        <li><a href="./">Track index</a></li>
+        <li><a href="2026-05-23-tau4-overlap-floor-exclusion.html">Latest overlap-floor proof note</a></li>
+        <li><a href="tau4_overlap_floor_probe.py">Latest deterministic probe</a></li>
+        <li><a href="output/2026-05-23-tau4-overlap-floor-summary.json">Latest JSON summary</a></li>
+        <li><a href="output/2026-05-23-tau4-overlap-floor-witnesses.csv">Latest witness CSV</a></li>
+        <li><a href="2026-05-20-higher-tau-reciprocal-blockers.html">Prior higher-tau blocker note</a></li>
+        <li><a href="../../PROOF.md">Root proof authority</a></li>
+        <li><a href="../../RESULTS.md">Repository results map</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Relation To Outside Literature</h2>
+      <p>Nearby public literature studies divisor functions on short intervals, arithmetic functions at shifted primes, rough numbers in prime gaps, and prime-gap size. Those are adjacent but do not appear to classify secondary divisor-field extremal roles conditioned on the GWR tau carrier inside each prime-gap interior.</p>
+      <ul>
+        <li><a href="https://www.renyi.hu/~p_erdos/1980-46.pdf">Erdos and Hall, Values of the Divisor Function on Short Intervals</a></li>
+        <li><a href="https://arxiv.org/abs/1405.4444">Pollack and Thompson, Arithmetic functions at consecutive shifted primes</a></li>
+        <li><a href="https://arxiv.org/abs/2508.06463">Gafni and Tao, Rough numbers between consecutive primes</a></li>
+        <li><a href="https://annals.math.princeton.edu/2014/179-3/p07">Zhang, Bounded gaps between primes</a></li>
+      </ul>
+      <p>The reviewer-facing claim is therefore scoped: this track is not a solved classical theorem. It is a developed, falsifiable PGS-native program for a carrier-conditioned secondary divisor-field problem that appears underrepresented in the public literature.</p>
+    </section>
+
+    <section>
+      <h2>Reviewer Checklist</h2>
+      <ul>
+        <li>Check that <a href="../../PROOF.md">PROOF.md</a> establishes the GWR carrier independently of secondary fields.</li>
+        <li>Run the overlap-floor probe and verify the expected JSON values above.</li>
+        <li>Inspect the witness CSV for the first square-times-prime, distinct-prime, and closest-floor rows.</li>
+        <li>Audit the overlap-floor proof step: <code>H(t)</code> contains a repeated-prime floor <code>1/r^2</code> or a distinct-prime floor <code>2/(rs)</code>.</li>
+        <li>Attack the remaining square-times-prime inequality <code>1/r^2 &gt;= E(w)-D(t)</code> under <code>w=uv</code>, <code>D(w)&lt;=D(t)&lt;E(w)</code>.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Status Ledger</h2>
+      <table>
+        <tbody>
+          <tr><th>Theorem proof</th><td>GWR foundation proved in <a href="../../PROOF.md">PROOF.md</a>. Overlap-floor exclusion and pure prime-power competitor exclusion proved in the latest track note.</td></tr>
+          <tr><th>Measured result</th><td>Latest probe closes all measured deficit-band entrants through <code>q &lt;= 10,000,000</code>.</td></tr>
+          <tr><th>Implementation status</th><td>Probe code, JSON summary, and witness CSV are included in this folder.</td></tr>
+          <tr><th>Audit status</th><td>Run was regenerated, JSON-parsed, bytecode-compiled, line-ending checked, and scope checked before publication.</td></tr>
+          <tr><th>Hypothesis</th><td>The tau-4 higher-tau one-way bridge follows from the non-prime-power overlap-floor inequality.</td></tr>
+          <tr><th>Unresolved</th><td>The square-times-prime overlap-floor inequality is measured but not yet proved at all scale.</td></tr>
+          <tr><th>Invalidated</th><td>All-secondary-field optimization and empty-deficit-band explanations are both removed from the proof tree.</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer><div class="wrap">PGS Divisor-Field Extremals outside review report. Prepared for exact reproduction and adversarial review.</div></footer>
+</body>
+</html>
