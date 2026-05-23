@@ -7,8 +7,8 @@ current public grammar rules remove at increasing bit lengths.
 
 Modes:
 - synthetic: deterministic motif sequence from the frozen observed motif mix.
-- real: deterministic public semiprime sequence, live public motif derivation, explicit
-  unresolved rows on derivation failure.
+- real: deterministic public semiprime sequence, live public motif derivation,
+  explicit derivation statuses.
 
 No hidden randomness, no synthetic substitution in real mode, and no private
 factor information.
@@ -28,8 +28,14 @@ import gmpy2
 from pga_grammar_pruner import REFERENCE_FACTOR_SPACE, prune_factor_space
 
 try:
-    from public_motif_derivation import derive_public_motif
+    from public_motif_derivation import (
+        PublicMotifBackendLimitExceeded,
+        PublicMotifUnresolved,
+        derive_public_motif,
+    )
 except Exception as exc:
+    PublicMotifBackendLimitExceeded = None  # type: ignore[assignment]
+    PublicMotifUnresolved = None  # type: ignore[assignment]
     derive_public_motif = None  # type: ignore[assignment]
     DERIVATION_IMPORT_ERROR = exc
 else:
@@ -94,27 +100,66 @@ def deterministic_public_semiprime_n(bits: int, sample_index: int) -> int:
 
 
 
-def real_motif(bits: int, sample_index: int) -> tuple[str, int, str | None]:
-    """Derive a motif from a deterministic public semiprime, or return explicit unresolved."""
+def real_motif(bits: int, sample_index: int) -> dict[str, Any]:
+    """Derive a motif from a deterministic public semiprime, with exact status."""
     n_value = deterministic_public_semiprime_n(bits, sample_index)
     if derive_public_motif is None:
-        return (
-            f"UNRESOLVED:{n_value}",
-            n_value,
-            f"public_motif_derivation import failed: {DERIVATION_IMPORT_ERROR}",
-        )
+        return {
+            "motif": None,
+            "n_value": n_value,
+            "status": "derivation_blocked",
+            "error": f"public_motif_derivation import failed: {DERIVATION_IMPORT_ERROR}",
+            "diagnostic_tag": "motif_derivation_import_failed",
+        }
     try:
         motif = derive_public_motif(n_value)
     except Exception as exc:
-        return f"UNRESOLVED:{n_value}", n_value, f"{type(exc).__name__}: {exc}"
+        if (
+            PublicMotifBackendLimitExceeded is not None
+            and isinstance(exc, PublicMotifBackendLimitExceeded)
+        ):
+            return {
+                "motif": None,
+                "n_value": n_value,
+                "status": "derivation_blocked",
+                "error": f"{type(exc).__name__}: {exc}",
+                "diagnostic_tag": "exact_divisor_horizon_exceeds_backend_limit",
+            }
+        if PublicMotifUnresolved is not None and isinstance(exc, PublicMotifUnresolved):
+            return {
+                "motif": None,
+                "n_value": n_value,
+                "status": "unresolved",
+                "error": f"{type(exc).__name__}: {exc}",
+                "diagnostic_tag": "motif_derivation_unresolved",
+            }
+        raise
     if motif.startswith("UNRESOLVED:"):
-        return motif, n_value, "public motif derivation returned unresolved"
-    return motif, n_value, None
+        return {
+            "motif": motif,
+            "n_value": n_value,
+            "status": "unresolved",
+            "error": "public motif derivation returned unresolved",
+            "diagnostic_tag": "motif_derivation_unresolved",
+        }
+    return {
+        "motif": motif,
+        "n_value": n_value,
+        "status": "resolved",
+        "error": None,
+        "diagnostic_tag": None,
+    }
 
 
-def motif_for_sample(mode: str, bits: int, sample_index: int) -> tuple[str, int | None, str | None]:
+def motif_for_sample(mode: str, bits: int, sample_index: int) -> dict[str, Any]:
     if mode == "synthetic":
-        return synthetic_motif(bits, sample_index), None, None
+        return {
+            "motif": synthetic_motif(bits, sample_index),
+            "n_value": None,
+            "status": "resolved",
+            "error": None,
+            "diagnostic_tag": None,
+        }
     if mode == "real":
         return real_motif(bits, sample_index)
     raise ValueError(f"unknown mode: {mode}")
@@ -133,7 +178,9 @@ def run_ladder(bit_lengths: list[int], samples_per_level: int, mode: str) -> dic
         reductions: list[float] = []
         rule_usage: Counter[str] = Counter()
         unresolved_count = 0
+        blocked_count = 0
         unresolved_examples: list[dict[str, Any]] = []
+        blocked_examples: list[dict[str, Any]] = []
         motif_usage: Counter[str] = Counter()
 
         per_case: list[dict[str, Any]] = []
@@ -142,7 +189,11 @@ def run_ladder(bit_lengths: list[int], samples_per_level: int, mode: str) -> dic
         for sample_index in range(samples_per_level):
             if mode == "real":
                 print(f"Deriving real motif: bits={bits} sample={sample_index}", flush=True)
-            motif, n_value, error = motif_for_sample(mode, bits, sample_index)
+            motif_result = motif_for_sample(mode, bits, sample_index)
+            motif = motif_result["motif"]
+            n_value = motif_result["n_value"]
+            derivation_status = str(motif_result["status"])
+            error = motif_result["error"]
 
             if mode == "real":
                 if n_value in seen_n:
@@ -152,25 +203,57 @@ def run_ladder(bit_lengths: list[int], samples_per_level: int, mode: str) -> dic
                 )
                 seen_n.add(n_value)
                 print(
-                    f"  N={n_value} motif={motif} error={error or '-'}",
+                    f"  N={n_value} status={derivation_status} motif={motif or '-'} error={error or '-'}",
                     flush=True,
                 )
 
-            res = prune_factor_space(motif)
-            motif_usage[motif] += 1
-            reduction_percent = round(float(res.get("reduction_percent", 0.0)), 2)
-            unresolved = res.get("status") == "unresolved"
-            coverage_gap = (not unresolved) and reduction_percent < 20
-            diagnostic_tag = None
-            if unresolved:
-                diagnostic_tag = "motif_derivation_unresolved" if error else "grammar_pruning_unresolved"
-            elif coverage_gap:
-                diagnostic_tag = "low_reduction_coverage_gap"
+            blocked = derivation_status == "derivation_blocked"
+            derivation_unresolved = derivation_status == "unresolved"
+            if blocked:
+                res = {
+                    "rules_fired": [],
+                    "pruned": None,
+                    "remaining": None,
+                    "reduction_percent": None,
+                    "status": "derivation_blocked",
+                }
+                reduction_percent = None
+                unresolved = False
+                coverage_gap = False
+                diagnostic_tag = motif_result["diagnostic_tag"]
+                motif_key = f"DERIVATION_BLOCKED:{n_value}"
+            elif derivation_unresolved:
+                res = {
+                    "rules_fired": [],
+                    "pruned": None,
+                    "remaining": None,
+                    "reduction_percent": None,
+                    "status": "unresolved",
+                }
+                reduction_percent = None
+                unresolved = True
+                coverage_gap = False
+                diagnostic_tag = motif_result["diagnostic_tag"]
+                motif_key = motif or f"UNRESOLVED:{n_value}"
+            else:
+                res = prune_factor_space(str(motif))
+                reduction_percent = round(float(res.get("reduction_percent", 0.0)), 2)
+                unresolved = res.get("status") == "unresolved"
+                coverage_gap = (not unresolved) and reduction_percent < 20
+                diagnostic_tag = None
+                if unresolved:
+                    diagnostic_tag = "grammar_pruning_unresolved"
+                elif coverage_gap:
+                    diagnostic_tag = "low_reduction_coverage_gap"
+                motif_key = str(motif)
+
+            motif_usage[motif_key] += 1
 
             case_record = {
                 "case_id": f"semiprime_{bits}_{sample_index}",
                 "bit_length": bits,
                 "target_bits": bits,
+                "actual_bit_length": None if n_value is None else int(n_value).bit_length(),
                 "N": n_value,
                 "motif": motif,
                 "derived_motif": motif,
@@ -183,17 +266,31 @@ def run_ladder(bit_lengths: list[int], samples_per_level: int, mode: str) -> dic
                 "remaining": res.get("remaining", REFERENCE_FACTOR_SPACE),
                 "pruned_count": res.get("pruned", 0),
                 "reduction_percent": reduction_percent,
-                "status": "unresolved" if unresolved else "resolved",
+                "status": "derivation_blocked" if blocked else ("unresolved" if unresolved else "resolved"),
                 "unresolved_flag": unresolved,
+                "derivation_blocked_flag": blocked,
+                "pruning_status": "not_attempted" if blocked or derivation_unresolved else "attempted",
                 "derivation_error": error,
                 "diagnostic_tag": diagnostic_tag,
                 "coverage_gap": coverage_gap,
             }
             per_case.append(case_record)
 
+            if blocked:
+                blocked_count += 1
+                if len(blocked_examples) < 5:
+                    blocked_examples.append(
+                        {
+                            "sample_index": sample_index,
+                            "N": n_value,
+                            "error": error,
+                            "diagnostic_tag": diagnostic_tag,
+                        }
+                    )
+                continue
+
             if unresolved:
                 unresolved_count += 1
-                reductions.append(0.0)
                 if len(unresolved_examples) < 5:
                     unresolved_examples.append(
                         {
@@ -219,12 +316,15 @@ def run_ladder(bit_lengths: list[int], samples_per_level: int, mode: str) -> dic
         level_data = {
             "bit_length": bits,
             "samples": samples_per_level,
-            "average_reduction_percent": round(avg, 2),
-            "std_dev": round(std, 2),
-            "min_reduction": round(min(reductions), 2) if reductions else 0.0,
-            "max_reduction": round(max(reductions), 2) if reductions else 0.0,
+            "measured_case_count": len(reductions),
+            "average_reduction_percent": round(avg, 2) if reductions else None,
+            "std_dev": round(std, 2) if reductions else None,
+            "min_reduction": round(min(reductions), 2) if reductions else None,
+            "max_reduction": round(max(reductions), 2) if reductions else None,
             "unresolved_count": unresolved_count,
+            "derivation_blocked_count": blocked_count,
             "unresolved_examples": unresolved_examples,
+            "derivation_blocked_examples": blocked_examples,
             "top_motifs": motif_usage.most_common(8),
             "top_rules": rule_usage.most_common(8),
             "reduction_distribution": {
@@ -248,9 +348,24 @@ def run_ladder(bit_lengths: list[int], samples_per_level: int, mode: str) -> dic
             for case in level.get("per_case", [])
         ]
         resolved_cases = [case for case in all_cases if not case["unresolved_flag"]]
+        resolved_cases = [
+            case
+            for case in resolved_cases
+            if not case.get("derivation_blocked_flag", False)
+        ]
         unresolved_cases = [case for case in all_cases if case["unresolved_flag"]]
+        blocked_cases = [
+            case
+            for case in all_cases
+            if case.get("derivation_blocked_flag", False)
+        ]
         resolved_reductions = [case["reduction_percent"] for case in resolved_cases]
-        all_reductions = [case["reduction_percent"] for case in all_cases]
+        measured_cases = [
+            case
+            for case in all_cases
+            if case["reduction_percent"] is not None
+        ]
+        all_reductions = [case["reduction_percent"] for case in measured_cases]
         top_rules: Counter[str] = Counter()
         motif_breakdown: dict[str, dict[str, Any]] = {}
         coverage_gap_motifs: Counter[str] = Counter()
@@ -259,30 +374,38 @@ def run_ladder(bit_lengths: list[int], samples_per_level: int, mode: str) -> dic
             for rule_id in case["rules_fired"]:
                 top_rules[str(rule_id)] += 1
             motif_data = motif_breakdown.setdefault(
-                case["derived_motif"],
+                case["derived_motif"] or case["status"],
                 {"frequency": 0, "reductions": []},
             )
             motif_data["frequency"] += 1
-            motif_data["reductions"].append(case["reduction_percent"])
+            if case["reduction_percent"] is not None:
+                motif_data["reductions"].append(case["reduction_percent"])
             if case["coverage_gap"]:
-                coverage_gap_motifs[case["derived_motif"]] += 1
+                coverage_gap_motifs[case["derived_motif"] or case["status"]] += 1
 
         results["aggregate"] = {
             "total_cases": len(all_cases),
             "resolved_count": len(resolved_cases),
             "unresolved_count": len(unresolved_cases),
-            "average_reduction_over_all_cases": round(
+            "derivation_blocked_count": len(blocked_cases),
+            "measured_case_count": len(measured_cases),
+            "average_reduction_over_measured_cases": round(
                 sum(all_reductions) / len(all_reductions), 2
             )
             if all_reductions
-            else 0.0,
+            else None,
+            "average_reduction_over_all_cases": round(
+                sum(all_reductions) / len(all_reductions), 2
+            )
+            if all_reductions and not blocked_cases
+            else None,
             "average_reduction_over_resolved_cases_only": round(
                 sum(resolved_reductions) / len(resolved_reductions), 2
             )
             if resolved_reductions
-            else 0.0,
-            "min_reduction": round(min(all_reductions), 2) if all_reductions else 0.0,
-            "max_reduction": round(max(all_reductions), 2) if all_reductions else 0.0,
+            else None,
+            "min_reduction": round(min(all_reductions), 2) if all_reductions else None,
+            "max_reduction": round(max(all_reductions), 2) if all_reductions else None,
             "top_rules": top_rules.most_common(5),
             "coverage_gap_motifs": coverage_gap_motifs.most_common(),
             "motif_breakdown": {
@@ -290,7 +413,9 @@ def run_ladder(bit_lengths: list[int], samples_per_level: int, mode: str) -> dic
                     "frequency": data["frequency"],
                     "average_reduction": round(
                         sum(data["reductions"]) / len(data["reductions"]), 2
-                    ),
+                    )
+                    if data["reductions"]
+                    else None,
                 }
                 for motif, data in sorted(motif_breakdown.items())
             },
@@ -306,6 +431,12 @@ def write_reports(results: dict[str, Any], out_dir: Path) -> None:
     )
 
     mode = results["mode"]
+    def pct(value: object) -> str:
+        return "-" if value is None else f"{float(value):.2f}%"
+
+    def pct1(value: object) -> str:
+        return "-" if value is None else f"{float(value):.1f}%"
+
     md_lines = [
         "# PGA Grammar Pruner Scaling Ladder",
         "",
@@ -316,15 +447,16 @@ def write_reports(results: dict[str, Any], out_dir: Path) -> None:
         "",
         "## Results by Bit Length",
         "",
-        "| Bits | Avg Reduction | Std Dev | Min | Max | Unresolved |",
-        "|------|---------------|---------|-----|-----|------------|",
+        "| Bits | Measured | Avg Reduction | Std Dev | Min | Max | Unresolved | Derivation Blocked |",
+        "|------|----------|---------------|---------|-----|-----|------------|--------------------|",
     ]
 
     for bits, data in sorted(results["levels"].items(), key=lambda x: int(x[0])):
         md_lines.append(
-            f"| {bits} | {data['average_reduction_percent']:.2f}% | "
-            f"{data['std_dev']:.2f}% | {data['min_reduction']:.1f}% | "
-            f"{data['max_reduction']:.1f}% | {data['unresolved_count']} |"
+            f"| {bits} | {data.get('measured_case_count', data['samples'])}/{data['samples']} | "
+            f"{pct(data['average_reduction_percent'])} | {pct(data['std_dev'])} | "
+            f"{pct1(data['min_reduction'])} | {pct1(data['max_reduction'])} | "
+            f"{data['unresolved_count']} | {data.get('derivation_blocked_count', 0)} |"
         )
 
     md_lines += ["", "## Mode Contract", ""]
@@ -338,7 +470,8 @@ def write_reports(results: dict[str, Any], out_dir: Path) -> None:
             "Real mode derives motifs from deterministic public semiprimes.",
             "The corpus is constructed using gmpy2.next_prime **only for fixture generation**.",
             "p and q are discarded before any call to derive_public_motif or prune_factor_space.",
-            "Derivation failures are recorded as unresolved rows. No synthetic motif is substituted.",
+            "Implementation-blocked derivations are reported as derivation_blocked, not unresolved.",
+            "No synthetic motif is substituted.",
         ]
 
     # Add per-level top motifs table (makes motif-mix sensitivity explicit)
@@ -359,16 +492,21 @@ def write_reports(results: dict[str, Any], out_dir: Path) -> None:
 
         md_lines += ["", "## Summary (Real Derivation)", ""]
         md_lines.append(f"- Total cases: {aggregate['total_cases']}")
+        md_lines.append(f"- Measured cases: {aggregate['measured_case_count']}")
         md_lines.append(f"- Resolved cases: {aggregate['resolved_count']}")
         md_lines.append(f"- Unresolved cases: {aggregate['unresolved_count']}")
+        md_lines.append(f"- Derivation-blocked cases: {aggregate['derivation_blocked_count']}")
         md_lines.append(
-            f"- Average reduction (all cases): {aggregate['average_reduction_over_all_cases']:.2f}%"
+            f"- Average reduction (measured cases): {pct(aggregate['average_reduction_over_measured_cases'])}"
         )
         md_lines.append(
-            f"- Average reduction (resolved cases): {aggregate['average_reduction_over_resolved_cases_only']:.2f}%"
+            f"- Average reduction (all cases): {pct(aggregate['average_reduction_over_all_cases'])}"
         )
         md_lines.append(
-            f"- Min / Max reduction: {aggregate['min_reduction']:.2f}% / {aggregate['max_reduction']:.2f}%"
+            f"- Average reduction (resolved cases): {pct(aggregate['average_reduction_over_resolved_cases_only'])}"
+        )
+        md_lines.append(
+            f"- Min / Max reduction: {pct(aggregate['min_reduction'])} / {pct(aggregate['max_reduction'])}"
         )
         md_lines.append(
             f"- Motifs with coverage gaps: {len(aggregate['coverage_gap_motifs'])}"
@@ -380,7 +518,7 @@ def write_reports(results: dict[str, Any], out_dir: Path) -> None:
         gap_counts = dict(aggregate["coverage_gap_motifs"])
         for motif, data in aggregate["motif_breakdown"].items():
             md_lines.append(
-                f"| `{motif}` | {data['frequency']} | {data['average_reduction']:.2f}% | "
+                f"| `{motif}` | {data['frequency']} | {pct(data['average_reduction'])} | "
                 f"{gap_counts.get(motif, 0)} |"
             )
 
@@ -395,17 +533,20 @@ def write_reports(results: dict[str, Any], out_dir: Path) -> None:
                 continue
             md_lines.append(f"### {bits} bits")
             md_lines.append("")
-            md_lines.append("| case_id | N | motif | source | factors_discarded | rules | pruned | remaining | % | status | gap | error |")
-            md_lines.append("|---------|---|-------|--------|-------------------|-------|--------|-----------|---|--------|-----|-------|")
+            md_lines.append("| case_id | target_bits | actual_bits | N | motif | source | factors_discarded | pruning | rules | pruned | remaining | % | status | gap | error |")
+            md_lines.append("|---------|-------------|-------------|---|-------|--------|-------------------|---------|-------|--------|-----------|---|--------|-----|-------|")
             for case in per_case:
                 rules_str = ",".join(case.get("rules_fired", [])) or "-"
                 error = case.get("derivation_error") or "-"
                 gap = "yes" if case.get("coverage_gap") else "no"
                 fd = "yes" if case.get("factors_discarded") else "no"
+                pruned = "-" if case.get("pruned") is None else str(case["pruned"])
+                remaining = "-" if case.get("remaining") is None else str(case["remaining"])
                 md_lines.append(
-                    f"| {case['case_id']} | {case['N']} | `{case['motif']}` | {case.get('motif_source','')} | "
-                    f"{fd} | {rules_str} | {case['pruned']} | {case['remaining']} | "
-                    f"{case['reduction_percent']:.2f}% | {case['status']} | {gap} | {error} |"
+                    f"| {case['case_id']} | {case['target_bits']} | {case.get('actual_bit_length', '-')} | "
+                    f"{case['N']} | `{case['motif'] or '-'}` | {case.get('motif_source','')} | "
+                    f"{fd} | {case.get('pruning_status', 'attempted')} | {rules_str} | {pruned} | {remaining} | "
+                    f"{pct(case['reduction_percent'])} | {case['status']} | {gap} | {error} |"
                 )
             md_lines.append("")
 
@@ -483,11 +624,17 @@ def main() -> None:
 
     print("\n=== Ladder Summary ===")
     for bits, data in sorted(results["levels"].items(), key=lambda x: int(x[0])):
+        avg = "-" if data["average_reduction_percent"] is None else f"{data['average_reduction_percent']:6.2f}%"
+        std = "-" if data["std_dev"] is None else f"+/-{data['std_dev']:.1f}%"
+        min_r = "-" if data["min_reduction"] is None else f"{data['min_reduction']:.0f}%"
+        max_r = "-" if data["max_reduction"] is None else f"{data['max_reduction']:.0f}%"
         print(
-            f"{bits:>3} bits : {data['average_reduction_percent']:6.2f}% avg "
-            f"(+/-{data['std_dev']:.1f}%) "
-            f"[{data['min_reduction']:.0f}% to {data['max_reduction']:.0f}%] "
-            f"unresolved={data['unresolved_count']}"
+            f"{bits:>3} bits : {avg} avg "
+            f"({std}) "
+            f"[{min_r} to {max_r}] "
+            f"measured={data.get('measured_case_count', data['samples'])}/{data['samples']} "
+            f"unresolved={data['unresolved_count']} "
+            f"blocked={data.get('derivation_blocked_count', 0)}"
         )
 
     print(f"\nDetailed reports: {out_dir / 'ladder_summary.md'}")
