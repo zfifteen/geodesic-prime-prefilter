@@ -17,6 +17,7 @@ factor information.
 from __future__ import annotations
 
 import argparse
+import copy
 import json
 from collections import Counter
 from datetime import datetime, timezone
@@ -29,11 +30,20 @@ from pga_grammar_pruner import REFERENCE_FACTOR_SPACE, prune_factor_space
 
 try:
     from public_motif_derivation import (
+        DERIVATION_BACKEND,
         PublicMotifBackendLimitExceeded,
         PublicMotifUnresolved,
         derive_public_motif,
     )
 except Exception as exc:
+    DERIVATION_BACKEND = {
+        "name": "public_motif_derivation_import_failed",
+        "kind": "import_error",
+        "classification": "classical_assisted_backend",
+        "scale_capable": False,
+        "pgs_native": False,
+        "classical_assisted": True,
+    }
     PublicMotifBackendLimitExceeded = None  # type: ignore[assignment]
     PublicMotifUnresolved = None  # type: ignore[assignment]
     derive_public_motif = None  # type: ignore[assignment]
@@ -44,6 +54,7 @@ else:
 
 DEFAULT_BIT_LENGTHS = [24, 28, 32, 36, 40, 44, 48]
 DEFAULT_SAMPLES_PER_LEVEL = 30
+STRICT_SCALE_BIT_THRESHOLD = 256
 
 SYNTHETIC_MOTIF_COUNTS: tuple[tuple[str, int], ...] = (
     ("o2_d4_a2_d4_odd@mid", 55),
@@ -80,29 +91,87 @@ def deterministic_public_semiprime_n(bits: int, sample_index: int) -> int:
     """
     if bits < 4:
         raise ValueError("bit length must be at least 4")
-    half = max(2, (bits + 1) // 2)
 
-    # Use a large, deterministic stride per sample to guarantee distinct primes
-    stride = 1 << (half // 2)
-    base_p = (1 << (half - 1)) + (sample_index * stride) + 1
-    base_q = base_p + stride + 2
+    p_bits = bits // 2
+    q_bits = bits - p_bits
 
-    p = gmpy2.next_prime(base_p)
-    q = gmpy2.next_prime(base_q)
+    p = _deterministic_prime_in_upper_quarter(p_bits, sample_index, salt=17)
+    q = _deterministic_prime_in_upper_quarter(q_bits, sample_index, salt=31)
+    if p == q:
+        q = _deterministic_prime_in_upper_quarter(q_bits, sample_index, salt=47)
 
-    # Ensure target bit length
-    while p.bit_length() < half:
-        p = gmpy2.next_prime(p + 2)
-    while q.bit_length() < half:
-        q = gmpy2.next_prime(q + 2)
+    n_value = int(p * q)
+    if n_value.bit_length() != bits:
+        raise RuntimeError(
+            "deterministic fixture construction failed exact bit-length contract: "
+            f"target_bits={bits}, actual_bit_length={n_value.bit_length()}"
+        )
 
-    return int(p * q)
+    return n_value
 
 
+def _deterministic_prime_in_upper_quarter(bit_count: int, sample_index: int, salt: int) -> gmpy2.mpz:
+    """Return a deterministic prime with exactly bit_count bits."""
+    if bit_count < 2:
+        raise ValueError("prime bit length must be at least 2")
+    if bit_count == 2:
+        return gmpy2.mpz(3)
 
-def real_motif(bits: int, sample_index: int) -> dict[str, Any]:
+    upper = gmpy2.mpz(1) << bit_count
+    floor = (gmpy2.mpz(3) * upper) >> 2
+    window = upper - floor
+    offset = ((sample_index + 1) * (salt * 104729)) % int(window)
+    base = floor + offset
+    if base % 2 == 0:
+        base += 1
+
+    candidate = gmpy2.next_prime(base)
+    if candidate < upper:
+        return candidate
+
+    candidate = gmpy2.next_prime(floor | 1)
+    if candidate < upper:
+        return candidate
+
+    raise RuntimeError(f"no deterministic {bit_count}-bit fixture prime found")
+
+
+def backend_is_scale_capable() -> bool:
+    return (
+        DERIVATION_BACKEND.get("scale_capable") is True
+        and DERIVATION_BACKEND.get("pgs_native") is True
+        and DERIVATION_BACKEND.get("classical_assisted") is False
+    )
+
+
+def scale_backend_block_reason() -> str | None:
+    if backend_is_scale_capable():
+        return None
+    name = DERIVATION_BACKEND.get("name", "unknown")
+    kind = DERIVATION_BACKEND.get("kind", "unknown")
+    return (
+        "scale_backend_unavailable: backend is not selectable for PGS-native "
+        f"256+ claims (name={name}, kind={kind}, "
+        f"classification={DERIVATION_BACKEND.get('classification')}, "
+        f"scale_capable={DERIVATION_BACKEND.get('scale_capable')}, "
+        f"pgs_native={DERIVATION_BACKEND.get('pgs_native')}, "
+        f"classical_assisted={DERIVATION_BACKEND.get('classical_assisted')})"
+    )
+
+
+def real_motif(bits: int, sample_index: int, require_scale_backend: bool = False) -> dict[str, Any]:
     """Derive a motif from a deterministic public semiprime, with exact status."""
     n_value = deterministic_public_semiprime_n(bits, sample_index)
+    if require_scale_backend:
+        block_reason = scale_backend_block_reason()
+        if block_reason is not None:
+            return {
+                "motif": None,
+                "n_value": n_value,
+                "status": "derivation_blocked",
+                "error": block_reason,
+                "diagnostic_tag": "scale_backend_unavailable",
+            }
     if derive_public_motif is None:
         return {
             "motif": None,
@@ -133,7 +202,13 @@ def real_motif(bits: int, sample_index: int) -> dict[str, Any]:
                 "error": f"{type(exc).__name__}: {exc}",
                 "diagnostic_tag": "motif_derivation_unresolved",
             }
-        raise
+        return {
+            "motif": None,
+            "n_value": n_value,
+            "status": "backend_error",
+            "error": f"{type(exc).__name__}: {exc}",
+            "diagnostic_tag": "motif_derivation_backend_error",
+        }
     if motif.startswith("UNRESOLVED:"):
         return {
             "motif": motif,
@@ -151,7 +226,12 @@ def real_motif(bits: int, sample_index: int) -> dict[str, Any]:
     }
 
 
-def motif_for_sample(mode: str, bits: int, sample_index: int) -> dict[str, Any]:
+def motif_for_sample(
+    mode: str,
+    bits: int,
+    sample_index: int,
+    require_scale_backend: bool = False,
+) -> dict[str, Any]:
     if mode == "synthetic":
         return {
             "motif": synthetic_motif(bits, sample_index),
@@ -161,14 +241,24 @@ def motif_for_sample(mode: str, bits: int, sample_index: int) -> dict[str, Any]:
             "diagnostic_tag": None,
         }
     if mode == "real":
-        return real_motif(bits, sample_index)
+        return real_motif(bits, sample_index, require_scale_backend=require_scale_backend)
     raise ValueError(f"unknown mode: {mode}")
 
 
-def run_ladder(bit_lengths: list[int], samples_per_level: int, mode: str) -> dict[str, Any]:
+def run_ladder(
+    bit_lengths: list[int],
+    samples_per_level: int,
+    mode: str,
+    strict_scale: bool = False,
+    diagnostic_only: bool = False,
+) -> dict[str, Any]:
     results: dict[str, Any] = {
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "mode": mode,
+        "strict_scale": strict_scale,
+        "diagnostic_only": diagnostic_only,
+        "scale_claim": bool(strict_scale and not diagnostic_only),
+        "derivation_backend": DERIVATION_BACKEND,
         "reference_space": REFERENCE_FACTOR_SPACE,
         "samples_per_level": samples_per_level,
         "levels": {},
@@ -179,8 +269,11 @@ def run_ladder(bit_lengths: list[int], samples_per_level: int, mode: str) -> dic
         rule_usage: Counter[str] = Counter()
         unresolved_count = 0
         blocked_count = 0
+        backend_error_count = 0
+        bit_mismatch_count = 0
         unresolved_examples: list[dict[str, Any]] = []
         blocked_examples: list[dict[str, Any]] = []
+        backend_error_examples: list[dict[str, Any]] = []
         motif_usage: Counter[str] = Counter()
 
         per_case: list[dict[str, Any]] = []
@@ -189,7 +282,12 @@ def run_ladder(bit_lengths: list[int], samples_per_level: int, mode: str) -> dic
         for sample_index in range(samples_per_level):
             if mode == "real":
                 print(f"Deriving real motif: bits={bits} sample={sample_index}", flush=True)
-            motif_result = motif_for_sample(mode, bits, sample_index)
+            motif_result = motif_for_sample(
+                mode,
+                bits,
+                sample_index,
+                require_scale_backend=strict_scale and bits >= STRICT_SCALE_BIT_THRESHOLD,
+            )
             motif = motif_result["motif"]
             n_value = motif_result["n_value"]
             derivation_status = str(motif_result["status"])
@@ -207,9 +305,23 @@ def run_ladder(bit_lengths: list[int], samples_per_level: int, mode: str) -> dic
                     flush=True,
                 )
 
+            backend_error = derivation_status == "backend_error"
             blocked = derivation_status == "derivation_blocked"
             derivation_unresolved = derivation_status == "unresolved"
-            if blocked:
+            if backend_error:
+                res = {
+                    "rules_fired": [],
+                    "pruned": None,
+                    "remaining": None,
+                    "reduction_percent": None,
+                    "status": "backend_error",
+                }
+                reduction_percent = None
+                unresolved = False
+                coverage_gap = False
+                diagnostic_tag = motif_result["diagnostic_tag"]
+                motif_key = f"BACKEND_ERROR:{n_value}"
+            elif blocked:
                 res = {
                     "rules_fired": [],
                     "pruned": None,
@@ -266,15 +378,39 @@ def run_ladder(bit_lengths: list[int], samples_per_level: int, mode: str) -> dic
                 "remaining": res.get("remaining", REFERENCE_FACTOR_SPACE),
                 "pruned_count": res.get("pruned", 0),
                 "reduction_percent": reduction_percent,
-                "status": "derivation_blocked" if blocked else ("unresolved" if unresolved else "resolved"),
+                "status": (
+                    "backend_error"
+                    if backend_error
+                    else ("derivation_blocked" if blocked else ("unresolved" if unresolved else "resolved"))
+                ),
                 "unresolved_flag": unresolved,
                 "derivation_blocked_flag": blocked,
-                "pruning_status": "not_attempted" if blocked or derivation_unresolved else "attempted",
+                "backend_error_flag": backend_error,
+                "actual_bit_length_mismatch": (
+                    False if n_value is None else int(n_value).bit_length() != bits
+                ),
+                "pruning_status": "not_attempted" if backend_error or blocked or derivation_unresolved else "attempted",
                 "derivation_error": error,
                 "diagnostic_tag": diagnostic_tag,
                 "coverage_gap": coverage_gap,
             }
             per_case.append(case_record)
+
+            if case_record["actual_bit_length_mismatch"]:
+                bit_mismatch_count += 1
+
+            if backend_error:
+                backend_error_count += 1
+                if len(backend_error_examples) < 5:
+                    backend_error_examples.append(
+                        {
+                            "sample_index": sample_index,
+                            "N": n_value,
+                            "error": error,
+                            "diagnostic_tag": diagnostic_tag,
+                        }
+                    )
+                continue
 
             if blocked:
                 blocked_count += 1
@@ -323,8 +459,11 @@ def run_ladder(bit_lengths: list[int], samples_per_level: int, mode: str) -> dic
             "max_reduction": round(max(reductions), 2) if reductions else None,
             "unresolved_count": unresolved_count,
             "derivation_blocked_count": blocked_count,
+            "backend_error_count": backend_error_count,
+            "actual_bit_length_mismatch_count": bit_mismatch_count,
             "unresolved_examples": unresolved_examples,
             "derivation_blocked_examples": blocked_examples,
+            "backend_error_examples": backend_error_examples,
             "top_motifs": motif_usage.most_common(8),
             "top_rules": rule_usage.most_common(8),
             "reduction_distribution": {
@@ -353,11 +492,26 @@ def run_ladder(bit_lengths: list[int], samples_per_level: int, mode: str) -> dic
             for case in resolved_cases
             if not case.get("derivation_blocked_flag", False)
         ]
+        resolved_cases = [
+            case
+            for case in resolved_cases
+            if not case.get("backend_error_flag", False)
+        ]
         unresolved_cases = [case for case in all_cases if case["unresolved_flag"]]
         blocked_cases = [
             case
             for case in all_cases
             if case.get("derivation_blocked_flag", False)
+        ]
+        backend_error_cases = [
+            case
+            for case in all_cases
+            if case.get("backend_error_flag", False)
+        ]
+        bit_mismatch_cases = [
+            case
+            for case in all_cases
+            if case.get("actual_bit_length_mismatch", False)
         ]
         resolved_reductions = [case["reduction_percent"] for case in resolved_cases]
         measured_cases = [
@@ -388,6 +542,8 @@ def run_ladder(bit_lengths: list[int], samples_per_level: int, mode: str) -> dic
             "resolved_count": len(resolved_cases),
             "unresolved_count": len(unresolved_cases),
             "derivation_blocked_count": len(blocked_cases),
+            "backend_error_count": len(backend_error_cases),
+            "actual_bit_length_mismatch_count": len(bit_mismatch_cases),
             "measured_case_count": len(measured_cases),
             "average_reduction_over_measured_cases": round(
                 sum(all_reductions) / len(all_reductions), 2
@@ -397,7 +553,7 @@ def run_ladder(bit_lengths: list[int], samples_per_level: int, mode: str) -> dic
             "average_reduction_over_all_cases": round(
                 sum(all_reductions) / len(all_reductions), 2
             )
-            if all_reductions and not blocked_cases
+            if all_reductions and len(measured_cases) == len(all_cases)
             else None,
             "average_reduction_over_resolved_cases_only": round(
                 sum(resolved_reductions) / len(resolved_reductions), 2
@@ -424,13 +580,76 @@ def run_ladder(bit_lengths: list[int], samples_per_level: int, mode: str) -> dic
     return results
 
 
-def write_reports(results: dict[str, Any], out_dir: Path) -> None:
+def strict_scale_failure_reasons(results: dict[str, Any]) -> list[str]:
+    """Return strict-scale failure reasons without averaging blocked work."""
+    if not results.get("strict_scale"):
+        return []
+
+    reasons: list[str] = []
+    for bits, data in sorted(results["levels"].items(), key=lambda x: int(x[0])):
+        if int(bits) < STRICT_SCALE_BIT_THRESHOLD:
+            continue
+        if data.get("measured_case_count") != data.get("samples"):
+            reasons.append(
+                f"{bits}: measured_case_count={data.get('measured_case_count')} "
+                f"of {data.get('samples')}"
+            )
+        if data.get("unresolved_count", 0):
+            reasons.append(f"{bits}: unresolved_count={data['unresolved_count']}")
+        if data.get("derivation_blocked_count", 0):
+            reasons.append(f"{bits}: derivation_blocked_count={data['derivation_blocked_count']}")
+        if data.get("backend_error_count", 0):
+            reasons.append(f"{bits}: backend_error_count={data['backend_error_count']}")
+        if data.get("actual_bit_length_mismatch_count", 0):
+            reasons.append(
+                f"{bits}: actual_bit_length_mismatch_count={data['actual_bit_length_mismatch_count']}"
+            )
+    return reasons
+
+
+def has_backend_error(results: dict[str, Any]) -> bool:
+    return any(data.get("backend_error_count", 0) > 0 for data in results["levels"].values())
+
+
+def as_diagnostic_results(results: dict[str, Any], diagnostic_reason: str) -> dict[str, Any]:
+    """Return a report copy that cannot be mistaken for a reduction surface."""
+    diagnostic = copy.deepcopy(results)
+    diagnostic["artifact_type"] = "diagnostic"
+    diagnostic["not_reduction_surface"] = True
+    diagnostic["scale_claim"] = False
+    diagnostic["diagnostic_reason"] = diagnostic_reason
+
+    for level in diagnostic["levels"].values():
+        level["average_reduction_percent"] = None
+        level["std_dev"] = None
+        level["min_reduction"] = None
+        level["max_reduction"] = None
+
+    aggregate = diagnostic.get("aggregate")
+    if aggregate:
+        for key in (
+            "average_reduction_over_measured_cases",
+            "average_reduction_over_all_cases",
+            "average_reduction_over_resolved_cases_only",
+            "min_reduction",
+            "max_reduction",
+        ):
+            aggregate[key] = None
+        for data in aggregate.get("motif_breakdown", {}).values():
+            data["average_reduction"] = None
+
+    return diagnostic
+
+
+def write_reports(results: dict[str, Any], out_dir: Path, artifact_name: str = "ladder_summary") -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
-    (out_dir / "ladder_summary.json").write_text(
+    (out_dir / f"{artifact_name}.json").write_text(
         json.dumps(results, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
 
     mode = results["mode"]
+    diagnostic = bool(results.get("not_reduction_surface"))
+
     def pct(value: object) -> str:
         return "-" if value is None else f"{float(value):.2f}%"
 
@@ -438,17 +657,39 @@ def write_reports(results: dict[str, Any], out_dir: Path) -> None:
         return "-" if value is None else f"{float(value):.1f}%"
 
     md_lines = [
-        "# PGA Grammar Pruner Scaling Ladder",
+        "# PGA Grammar Pruner Diagnostic" if diagnostic else "# PGA Grammar Pruner Scaling Ladder",
         "",
         f"**Date**: {results['timestamp']}",
         f"**Mode**: `{mode}`",
+        f"**Artifact type**: `{results.get('artifact_type', 'ladder_summary')}`",
+        f"**Scale claim**: `{results.get('scale_claim', False)}`",
         f"**Reference factor space**: {results['reference_space']} words",
         f"**Samples per level**: {results['samples_per_level']}",
+    ]
+    if diagnostic:
+        md_lines += [
+            "",
+            "**This artifact is not a reduction surface.**",
+            f"**Diagnostic reason**: {results.get('diagnostic_reason', 'unspecified')}",
+        ]
+    if mode == "real":
+        md_lines += [
+            "",
+            "## Backend",
+            "",
+            f"- name: `{results['derivation_backend'].get('name')}`",
+            f"- kind: `{results['derivation_backend'].get('kind')}`",
+            f"- classification: `{results['derivation_backend'].get('classification')}`",
+            f"- scale_capable: `{results['derivation_backend'].get('scale_capable')}`",
+            f"- pgs_native: `{results['derivation_backend'].get('pgs_native')}`",
+            f"- classical_assisted: `{results['derivation_backend'].get('classical_assisted')}`",
+        ]
+    md_lines += [
         "",
         "## Results by Bit Length",
         "",
-        "| Bits | Measured | Avg Reduction | Std Dev | Min | Max | Unresolved | Derivation Blocked |",
-        "|------|----------|---------------|---------|-----|-----|------------|--------------------|",
+        "| Bits | Measured | Avg Reduction | Std Dev | Min | Max | Unresolved | Derivation Blocked | Backend Error | Bit Mismatch |",
+        "|------|----------|---------------|---------|-----|-----|------------|--------------------|---------------|--------------|",
     ]
 
     for bits, data in sorted(results["levels"].items(), key=lambda x: int(x[0])):
@@ -456,7 +697,8 @@ def write_reports(results: dict[str, Any], out_dir: Path) -> None:
             f"| {bits} | {data.get('measured_case_count', data['samples'])}/{data['samples']} | "
             f"{pct(data['average_reduction_percent'])} | {pct(data['std_dev'])} | "
             f"{pct1(data['min_reduction'])} | {pct1(data['max_reduction'])} | "
-            f"{data['unresolved_count']} | {data.get('derivation_blocked_count', 0)} |"
+            f"{data['unresolved_count']} | {data.get('derivation_blocked_count', 0)} | "
+            f"{data.get('backend_error_count', 0)} | {data.get('actual_bit_length_mismatch_count', 0)} |"
         )
 
     md_lines += ["", "## Mode Contract", ""]
@@ -471,6 +713,7 @@ def write_reports(results: dict[str, Any], out_dir: Path) -> None:
             "The corpus is constructed using gmpy2.next_prime **only for fixture generation**.",
             "p and q are discarded before any call to derive_public_motif or prune_factor_space.",
             "Implementation-blocked derivations are reported as derivation_blocked, not unresolved.",
+            "Backend errors are reported as backend_error and do not contribute to averages.",
             "No synthetic motif is substituted.",
         ]
 
@@ -496,18 +739,21 @@ def write_reports(results: dict[str, Any], out_dir: Path) -> None:
         md_lines.append(f"- Resolved cases: {aggregate['resolved_count']}")
         md_lines.append(f"- Unresolved cases: {aggregate['unresolved_count']}")
         md_lines.append(f"- Derivation-blocked cases: {aggregate['derivation_blocked_count']}")
-        md_lines.append(
-            f"- Average reduction (measured cases): {pct(aggregate['average_reduction_over_measured_cases'])}"
-        )
-        md_lines.append(
-            f"- Average reduction (all cases): {pct(aggregate['average_reduction_over_all_cases'])}"
-        )
-        md_lines.append(
-            f"- Average reduction (resolved cases): {pct(aggregate['average_reduction_over_resolved_cases_only'])}"
-        )
-        md_lines.append(
-            f"- Min / Max reduction: {pct(aggregate['min_reduction'])} / {pct(aggregate['max_reduction'])}"
-        )
+        md_lines.append(f"- Backend-error cases: {aggregate['backend_error_count']}")
+        md_lines.append(f"- Actual bit-length mismatches: {aggregate['actual_bit_length_mismatch_count']}")
+        if not diagnostic:
+            md_lines.append(
+                f"- Average reduction (measured cases): {pct(aggregate['average_reduction_over_measured_cases'])}"
+            )
+            md_lines.append(
+                f"- Average reduction (all cases): {pct(aggregate['average_reduction_over_all_cases'])}"
+            )
+            md_lines.append(
+                f"- Average reduction (resolved cases): {pct(aggregate['average_reduction_over_resolved_cases_only'])}"
+            )
+            md_lines.append(
+                f"- Min / Max reduction: {pct(aggregate['min_reduction'])} / {pct(aggregate['max_reduction'])}"
+            )
         md_lines.append(
             f"- Motifs with coverage gaps: {len(aggregate['coverage_gap_motifs'])}"
         )
@@ -558,7 +804,7 @@ def write_reports(results: dict[str, Any], out_dir: Path) -> None:
         "the live raw-N public derivation path plus rule coverage.",
     ]
 
-    (out_dir / "ladder_summary.md").write_text("\n".join(md_lines) + "\n", encoding="utf-8")
+    (out_dir / f"{artifact_name}.md").write_text("\n".join(md_lines) + "\n", encoding="utf-8")
     print(f"Ladder results written to: {out_dir}")
 
 
@@ -595,20 +841,59 @@ def main() -> None:
         default=None,
         help="Explicit output directory. If omitted, a mode-derived path is used (e.g. output/ladder/synthetic_48_80_samples_30/).",
     )
+    parser.add_argument(
+        "--diagnostic-only",
+        action="store_true",
+        help=(
+            "Write diagnostic artifacts only. For real runs at 256+ bits this permits "
+            "blocked rows while making no reduction-surface claim."
+        ),
+    )
     args = parser.parse_args()
 
     bit_lengths = parse_levels(args.levels)
+    strict_scale = (
+        args.mode == "real"
+        and any(bits >= STRICT_SCALE_BIT_THRESHOLD for bits in bit_lengths)
+    )
 
     print("=== PGA Grammar Pruner Scaling Ladder ===")
     print(f"Mode: {args.mode}")
     print(f"Bit lengths: {bit_lengths}")
     print(f"Samples per level: {args.samples}")
+    print(f"Strict scale mode: {strict_scale}")
+    print(f"Diagnostic only: {args.diagnostic_only}")
+    if args.mode == "real":
+        print(f"Derivation backend: {DERIVATION_BACKEND}")
     print()
 
-    results = run_ladder(bit_lengths, args.samples, mode=args.mode)
+    results = run_ladder(
+        bit_lengths,
+        args.samples,
+        mode=args.mode,
+        strict_scale=strict_scale,
+        diagnostic_only=args.diagnostic_only,
+    )
+    strict_failures = strict_scale_failure_reasons(results)
+    backend_error = has_backend_error(results)
+    timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 
     if args.out_dir:
         out_dir = Path(args.out_dir)
+    elif args.diagnostic_only:
+        out_dir = (
+            Path(__file__).resolve().parent
+            / "output"
+            / "ladder"
+            / f"diagnostic_real_run_{timestamp}"
+        )
+    elif strict_failures:
+        out_dir = (
+            Path(__file__).resolve().parent
+            / "output"
+            / "ladder"
+            / f"failed_real_scale_run_{timestamp}"
+        )
     else:
         min_b = min(bit_lengths)
         max_b = max(bit_lengths)
@@ -620,10 +905,22 @@ def main() -> None:
             / f"{prefix}_{min_b}_{max_b}_samples_{args.samples}"
         )
 
-    write_reports(results, out_dir)
+    if args.diagnostic_only:
+        reason = "diagnostic_only_requested"
+        report_results = as_diagnostic_results(results, reason)
+        artifact_name = "diagnostic"
+    elif strict_failures:
+        reason = "strict_scale_failed: " + "; ".join(strict_failures)
+        report_results = as_diagnostic_results(results, reason)
+        artifact_name = "diagnostic"
+    else:
+        report_results = results
+        artifact_name = "ladder_summary"
+
+    write_reports(report_results, out_dir, artifact_name=artifact_name)
 
     print("\n=== Ladder Summary ===")
-    for bits, data in sorted(results["levels"].items(), key=lambda x: int(x[0])):
+    for bits, data in sorted(report_results["levels"].items(), key=lambda x: int(x[0])):
         avg = "-" if data["average_reduction_percent"] is None else f"{data['average_reduction_percent']:6.2f}%"
         std = "-" if data["std_dev"] is None else f"+/-{data['std_dev']:.1f}%"
         min_r = "-" if data["min_reduction"] is None else f"{data['min_reduction']:.0f}%"
@@ -637,7 +934,15 @@ def main() -> None:
             f"blocked={data.get('derivation_blocked_count', 0)}"
         )
 
-    print(f"\nDetailed reports: {out_dir / 'ladder_summary.md'}")
+    print(f"\nDetailed reports: {out_dir / (artifact_name + '.md')}")
+    if strict_failures and not args.diagnostic_only:
+        print("Strict scale run failed:")
+        for failure in strict_failures:
+            print(f"  - {failure}")
+        raise SystemExit(1)
+    if backend_error:
+        print("Backend error occurred; run is not valid.")
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":

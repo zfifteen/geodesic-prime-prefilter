@@ -28,7 +28,7 @@ Rules are strictly public, deterministic, and carry zero-tolerance for false neg
 - **Current repaired real-probe replay surface**: **35.02%** average reduction across 9 distinct public semiprimes, all resolved, 0 unresolved.
 - **Low-mid live validation surface**: **47.53%** average reduction across 10 distinct public semiprimes at 64/72 bits, all resolved, 0 unresolved.
 - **Weak-motif coverage result**: PG-085..PG-089 promote five exact motif rules mined from enriched 27k-35k public grammar surfaces with zero held-out contradictions.
-- **Live derivation backend status**: non-toy motif derivation now uses one GMP arithmetic backend for every live bit size. This is a regression-preserving stopgap, not an RSA-scale derivation engine; blocked backend cases must be reported as `derivation_blocked`, not unresolved.
+- **Live derivation backend status**: non-toy motif derivation now uses one GMP arithmetic backend for every live bit size. This is a regression-preserving stopgap, not an RSA-scale derivation engine; blocked backend cases must be reported as `derivation_blocked`, not unresolved. The runner now requires exact fixture bit lengths and auto-enables strict scale mode at 256+ bits; with the current backend, 256+ real runs produce failed diagnostic artifacts rather than successful ladder summaries.
 
 **PGS-native mechanism**: The public structural motif of the N-containing chamber (ordered gap state → exact_type + attractor subtype from GWR/DNI + phase label) selects a union of symbolic exclusion rules. These rules encode observed multiplicative incompatibilities between the N-chamber grammar word and factor-neighborhood public words (seg1/seg2 L/R asymmetry, attractor subtype o2/a2/a4/a6 bias, very_late/early-heavy phase fringes). The result is safe, deterministic shrinkage of the 198-word hypothesis space for the unknown p/q pair without ever touching private factors.
 
@@ -99,12 +99,15 @@ Mining gate: extraction bands `27001_30000` and `32001_34000`; held-out band `34
 - 2026-05-22 extended live attempt (`64,72,80,88,96`, 3 samples each): stopped during the first 80-bit live motif derivation after 64/72 completed; current bottleneck is live derivation cost, not grammar-rule application.
 - 2026-05-22 unified GMP backend rewrite: `public_motif_derivation.py` now uses one GMP arithmetic backend for all non-toy live derivation. Regression ladders preserved: `real_semiprime_64_72_samples_5_gmp_backend` remains **47.53%** with 10/10 resolved; `real_semiprime_64_80_samples_3_gmp_backend` remains **35.02%** with 9/9 resolved.
 - 2026-05-22 256-target public-N run: the earlier `real_semiprime_256_samples_1_gmp_backend` artifact is invalid for research claims because it reported an implementation gate as unresolved. It has been replaced by `real_semiprime_256_samples_1_honest_status`, which records `0/1` measured, `0` unresolved, `1` `derivation_blocked`, and `pruning_status=not_attempted`.
+- 2026-05-22 strict-scale runner cleanup: `pga_grammar_pruner_ladder.py` now declares backend capability, writes `diagnostic.json/md` for blocked 256+ runs, exits nonzero for failed strict-scale claims, and suppresses reduction averages in diagnostic artifacts. Exact-bit fixture construction also shows that true 80-bit live cases exceed the current regression backend's configured divisor horizon; they are reported as `derivation_blocked`, not as measured reduction rows.
 - Reporting bug (stale aggregate bullets) identified and surgically fixed in the same session; re-run produced clean summary.md/json.
 - All claims remain inside the public-only contract; no classical methods ever guided rule selection or pruning decisions.
 
 ## Milestone Delivered — Stage-One Coverage Build
 
-**65.45% average reduction on the exact frozen toy corpus, 35.02% repaired real-probe replay reduction on distinct public semiprimes, 89 public grammar rules, fully deterministic, 100% PGS-native (GWR attractor + DNI phase + multiplicative grammar compatibility).**
+**65.45% average reduction on the exact frozen toy corpus, 35.02% repaired real-probe replay reduction on distinct public semiprimes, 89 public grammar rules, fully deterministic public grammar pruning.**
+
+The pruning rules are PGS-native grammar exclusions (GWR attractor + DNI phase + multiplicative grammar compatibility). The current live motif derivation backend is explicitly classified as a classical-assisted regression backend and is not valid for PGS-native 256+ scale claims.
 
 The prototype is now production-grade for the 25% target. It can be dropped into any downstream literal-web or thread-triangulation runner as a fast, safe pre-filter on the 198-word (or larger) hypothesis space.
 
