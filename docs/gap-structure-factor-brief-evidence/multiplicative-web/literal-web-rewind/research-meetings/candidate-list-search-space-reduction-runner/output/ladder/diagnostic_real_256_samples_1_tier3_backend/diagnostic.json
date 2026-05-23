@@ -1,0 +1,187 @@
+{
+  "aggregate": {
+    "actual_bit_length_mismatch_count": 0,
+    "average_reduction_over_all_cases": null,
+    "average_reduction_over_measured_cases": null,
+    "average_reduction_over_resolved_cases_only": null,
+    "backend_error_count": 0,
+    "coverage_gap_motifs": [],
+    "derivation_blocked_count": 0,
+    "max_reduction": null,
+    "measured_case_count": 1,
+    "min_reduction": null,
+    "motif_breakdown": {
+      "o2_d4_a44_d4_odd@late + o4_d4_odd prev": {
+        "average_reduction": null,
+        "frequency": 1
+      }
+    },
+    "resolved_count": 1,
+    "top_rules": [
+      [
+        "PG-061",
+        1
+      ],
+      [
+        "PG-062",
+        1
+      ],
+      [
+        "PG-063",
+        1
+      ],
+      [
+        "PG-064",
+        1
+      ],
+      [
+        "PG-065",
+        1
+      ]
+    ],
+    "total_cases": 1,
+    "unresolved_count": 0
+  },
+  "artifact_type": "diagnostic",
+  "derivation_backend": {
+    "classical_assisted": true,
+    "classification": "classical_assisted_public_coordinate",
+    "kind": "pgs_live_tier3",
+    "name": "gmp_tier3_public_coordinate_backend",
+    "pgs_native": false,
+    "scale_capable": true
+  },
+  "diagnostic_only": true,
+  "diagnostic_reason": "diagnostic_only_requested",
+  "levels": {
+    "256": {
+      "actual_bit_length_mismatch_count": 0,
+      "average_reduction_percent": null,
+      "backend_error_count": 0,
+      "backend_error_examples": [],
+      "bit_length": 256,
+      "derivation_blocked_count": 0,
+      "derivation_blocked_examples": [],
+      "max_reduction": null,
+      "measured_case_count": 1,
+      "min_reduction": null,
+      "per_case": [
+        {
+          "N": 65133050195990359925758679067388231134923074306013959392135727524498631094129,
+          "actual_bit_length": 256,
+          "actual_bit_length_mismatch": false,
+          "backend_error_flag": false,
+          "bit_length": 256,
+          "case_id": "semiprime_256_0",
+          "construction_method": "deterministic_public_semiprime",
+          "coverage_gap": false,
+          "derivation_blocked_flag": false,
+          "derivation_diagnostics": {
+            "coordinates_scanned": 1002,
+            "derivation_elapsed_seconds": 0.490916,
+            "indeterminate_classifications": 0,
+            "max_public_gap_width": 908,
+            "minimum_d4_large_residual_classifications": 1,
+            "tier3_classifications": 50
+          },
+          "derivation_error": null,
+          "derived_motif": "o2_d4_a44_d4_odd@late + o4_d4_odd prev",
+          "diagnostic_tag": null,
+          "factors_discarded": true,
+          "motif": "o2_d4_a44_d4_odd@late + o4_d4_odd prev",
+          "motif_source": "derive_public_motif(N_only)",
+          "original_search_space_size": 198,
+          "pruned": 118,
+          "pruned_count": 118,
+          "pruning_status": "attempted",
+          "reduction_percent": 59.6,
+          "remaining": 80,
+          "rules_fired": [
+            "PG-061",
+            "PG-062",
+            "PG-063",
+            "PG-064",
+            "PG-065",
+            "PG-066",
+            "PG-067",
+            "PG-068",
+            "PG-069",
+            "PG-070",
+            "PG-071",
+            "PG-072",
+            "PG-073",
+            "PG-074",
+            "PG-075",
+            "PG-076",
+            "PG-077",
+            "PG-078",
+            "PG-082",
+            "PG-083",
+            "PG-084"
+          ],
+          "status": "resolved",
+          "target_bits": 256,
+          "unresolved_flag": false
+        }
+      ],
+      "reduction_distribution": {
+        "0-20%": 0,
+        "20-40%": 0,
+        "40-60%": 1,
+        "60-80%": 0,
+        "80%+": 0
+      },
+      "samples": 1,
+      "std_dev": null,
+      "top_motifs": [
+        [
+          "o2_d4_a44_d4_odd@late + o4_d4_odd prev",
+          1
+        ]
+      ],
+      "top_rules": [
+        [
+          "PG-061",
+          1
+        ],
+        [
+          "PG-062",
+          1
+        ],
+        [
+          "PG-063",
+          1
+        ],
+        [
+          "PG-064",
+          1
+        ],
+        [
+          "PG-065",
+          1
+        ],
+        [
+          "PG-066",
+          1
+        ],
+        [
+          "PG-067",
+          1
+        ],
+        [
+          "PG-068",
+          1
+        ]
+      ],
+      "unresolved_count": 0,
+      "unresolved_examples": []
+    }
+  },
+  "mode": "real",
+  "not_reduction_surface": true,
+  "reference_space": 198,
+  "samples_per_level": 1,
+  "scale_claim": false,
+  "strict_scale": true,
+  "timestamp": "2026-05-23T04:53:18.555228+00:00"
+}
