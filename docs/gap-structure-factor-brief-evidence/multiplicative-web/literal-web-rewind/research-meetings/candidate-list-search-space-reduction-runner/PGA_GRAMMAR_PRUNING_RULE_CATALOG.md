@@ -2,7 +2,7 @@
 
 **Status**: Active / In-Sprint Maintenance  
 **Maintainer**: Documentation & Audit Agent  
-**Last Updated**: 2026-05-22 (unified GMP live-derivation backend)  
+**Last Updated**: 2026-05-23 (PGS-native live-derivation boundary enforced)
 **Reference Surfaces**: multiplication-map law surface 601_5500 + enriched public grammar surfaces 27001_30000, 32001_34000, 34001_35000  
 **Toy Corpus for Validation**: 10 public N values in `cases/toy_corpus.jsonl` (989 … 4951764003343009)  
 **Reference Factor Hypothesis Space**: 198 words (from 601_5500 surface)  
@@ -18,7 +18,7 @@ Each entry records:
 This catalog supports the sprint goal of **25% average reduction** in the factor-neighborhood hypothesis space using only public gap-structure grammar (attractor subtype, phase, compositional bias).  
 Rules are strictly public, deterministic, and carry zero-tolerance for false negatives on true configurations (conservative high-confidence filter).
 
-## Current Status (89-Rule Live-Coverage Build)
+## Current Status (89-Rule Coverage Build)
 
 **Current frozen toy evidence surface**: **65.45%** average reduction on the frozen 10-N toy corpus (reference 198-word factor hypothesis space from multiplication_map_law_surface_601_5500).
 
@@ -26,15 +26,16 @@ Rules are strictly public, deterministic, and carry zero-tolerance for false neg
 - 2 × N with public motif `o4_d4_a4_d4_odd@mid`: **8 rules fire** → **84/198 pruned** (42.42% per case, remaining 114)
 - Aggregate: **1296 total pruned count instances** across corpus → **65.45%** mean reduction
 - **Current repaired real-probe replay surface**: **35.02%** average reduction across 9 distinct public semiprimes, all resolved, 0 unresolved.
-- **Low-mid live validation surface**: **47.53%** average reduction across 10 distinct public semiprimes at 64/72 bits, all resolved, 0 unresolved.
+- **Historical low-mid live validation surface**: **47.53%** average reduction across 10 distinct public semiprimes at 64/72 bits, all resolved, 0 unresolved. This remains implementation evidence only; it is not an active live PGS-native surface.
 - **Weak-motif coverage result**: PG-085..PG-089 promote five exact motif rules mined from enriched 27k-35k public grammar surfaces with zero held-out contradictions.
-- **Live derivation backend status**: non-toy motif derivation now uses one GMP arithmetic backend for every live bit size. This is a regression-preserving stopgap, not an RSA-scale derivation engine; blocked backend cases must be reported as `derivation_blocked`, not unresolved. The runner now requires exact fixture bit lengths and auto-enables strict scale mode at 256+ bits; with the current backend, 256+ real runs produce failed diagnostic artifacts rather than successful ladder summaries.
+- **Live derivation backend status**: non-toy raw-`N` motif derivation is explicitly blocked until a PGS-native motif certificate exists. The current backend is `pgs_native_motif_derivation_unavailable`, `pgs_native=True`, `classical_assisted=False`, `scale_capable=False`. Blocked backend cases must be reported as `derivation_blocked`, not unresolved, and must not emit reduction averages.
+- **Tier-3 calibration status**: the divisor-classifier calibration remains valid diagnostic evidence of the minimum information target. It is not a live derivation mechanism and must not be cited as PGS-native raw-`N` derivation.
 
 **PGS-native mechanism**: The public structural motif of the N-containing chamber (ordered gap state → exact_type + attractor subtype from GWR/DNI + phase label) selects a union of symbolic exclusion rules. These rules encode observed multiplicative incompatibilities between the N-chamber grammar word and factor-neighborhood public words (seg1/seg2 L/R asymmetry, attractor subtype o2/a2/a4/a6 bias, very_late/early-heavy phase fringes). The result is safe, deterministic shrinkage of the 198-word hypothesis space for the unknown p/q pair without ever touching private factors.
 
 **Rule inventory in effect**: 89 validated public grammar rules (PG-001 … PG-089). The executable source of truth is `PRUNING_RULES` in [pga_grammar_pruner.py](pga_grammar_pruner.py). This catalog provides the human-readable provenance, coverage rationale, and 0-FN / zero-heldout-contradiction guarantees for the promoted implementation rules.
 
-**Stage-One coverage build status**: The toy evidence surface remains protected, and live replay now crosses the 35% target while remaining 100% inside the public-only, grammar-only contract. No classical candidate testing, no fallback search, no private leakage at any stage of rule mining or application.
+**Stage-One coverage build status**: The toy evidence surface remains protected, and replay now crosses the 35% target while remaining inside the public-only grammar-pruning contract. Live raw-`N` motif derivation is not available as an active research surface until the PGS-native certificate path exists.
 
 **Measurement note**: All numbers are exact integer unions of the documented `pruned_count` values per rule (non-overlapping segments within each motif family per the original pivot analyses). Future work will pipe the same filter into live literal-web transported candidate lists.
 
@@ -100,16 +101,18 @@ Mining gate: extraction bands `27001_30000` and `32001_34000`; held-out band `34
 - 2026-05-22 unified GMP backend rewrite: `public_motif_derivation.py` now uses one GMP arithmetic backend for all non-toy live derivation. Regression ladders preserved: `real_semiprime_64_72_samples_5_gmp_backend` remains **47.53%** with 10/10 resolved; `real_semiprime_64_80_samples_3_gmp_backend` remains **35.02%** with 9/9 resolved.
 - 2026-05-22 256-target public-N run: the earlier `real_semiprime_256_samples_1_gmp_backend` artifact is invalid for research claims because it reported an implementation gate as unresolved. It has been replaced by `real_semiprime_256_samples_1_honest_status`, which records `0/1` measured, `0` unresolved, `1` `derivation_blocked`, and `pruning_status=not_attempted`.
 - 2026-05-22 strict-scale runner cleanup: `pga_grammar_pruner_ladder.py` now declares backend capability, writes `diagnostic.json/md` for blocked 256+ runs, exits nonzero for failed strict-scale claims, and suppresses reduction averages in diagnostic artifacts. Exact-bit fixture construction also shows that true 80-bit live cases exceed the current regression backend's configured divisor horizon; they are reported as `derivation_blocked`, not as measured reduction rows.
+- 2026-05-23 PGS-native boundary enforcement: live raw-`N` motif derivation now blocks before fixture construction unless a PGS-native motif certificate is available. The guardrail test prevents forbidden classical decision mechanisms from entering the live derivation entrypoint or the reachable blocked real-mode path.
+- 2026-05-23 tier-3 calibration boundary: tier-3 remains diagnostic evidence that the current motif contract needs only coarse divisor information. It is not a promoted live backend and does not establish PGS-native raw-`N` derivation.
 - Reporting bug (stale aggregate bullets) identified and surgically fixed in the same session; re-run produced clean summary.md/json.
-- All claims remain inside the public-only contract; no classical methods ever guided rule selection or pruning decisions.
+- All active live claims now require a PGS-native motif certificate. Classical-assisted live measurements are not accepted as active research surfaces.
 
 ## Milestone Delivered — Stage-One Coverage Build
 
 **65.45% average reduction on the exact frozen toy corpus, 35.02% repaired real-probe replay reduction on distinct public semiprimes, 89 public grammar rules, fully deterministic public grammar pruning.**
 
-The pruning rules are PGS-native grammar exclusions (GWR attractor + DNI phase + multiplicative grammar compatibility). The current live motif derivation backend is explicitly classified as a classical-assisted regression backend and is not valid for PGS-native 256+ scale claims.
+The pruning rules are PGS-native grammar exclusions (GWR attractor + DNI phase + multiplicative grammar compatibility). Live raw-`N` motif derivation is explicitly unavailable until a PGS-native motif certificate exists.
 
-The prototype is now production-grade for the 25% target. It can be dropped into any downstream literal-web or thread-triangulation runner as a fast, safe pre-filter on the 198-word (or larger) hypothesis space.
+The grammar pruner is production-grade for protected toy and replay surfaces. It must not be dropped into live raw-`N` workflows until a PGS-native motif certificate supplies the motif.
 
 ---
 
@@ -121,7 +124,7 @@ The prototype is now production-grade for the 25% target. It can be dropped into
 
 1. **Integration** (highest leverage): Wire `prune_factor_space(motif)` or the full rule list into the existing `literal_web_rich_reducer.py` / thread-triangulation runners so that every candidate list is symbolically thinned before expensive second-pass factoring or scoring. Expected wall-clock win at 48-bit and beyond.
 
-2. **Automatic motif derivation**: Replace the static TOY_N_TO_MOTIF lookup with a call to the public gap-type / chamber engine (gwr_dni_*, public_grammar_pivot, etc.) so the pruner accepts raw N and emits the motif on the fly (still public-only).
+2. **PGS-native motif certificate**: Replace blocked non-toy derivation with a PGS-native certificate that derives ordered gap/chamber state, selected attractor/invariant, phase, and previous reduced state without classical primality, factorization, or divisibility primitives as decision mechanisms.
 
 3. **Headroom mining (40%+ live replay)**: Extend the focused miner to the next weak exact motifs in the repaired real-probe replay. Keep broad-family rules out unless a separate held-out audit supports them.
 

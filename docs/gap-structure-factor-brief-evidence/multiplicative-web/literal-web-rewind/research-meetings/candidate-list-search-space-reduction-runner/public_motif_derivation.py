@@ -21,14 +21,12 @@ Contract:
 - Must be 100% public-only. Never uses p or q.
 - Must be deterministic.
 - For the toy corpus it must reproduce the known TOY_N_TO_MOTIF values.
-- For unknown N it uses one unified GMP public arithmetic backend.
-- If the exact public divisor-count horizon exceeds the configured
-  live-derivation limit, it raises PublicMotifBackendLimitExceeded. This is
-  an implementation gate, not a mathematical unresolved state.
+- For unknown N it must use a PGS-native motif certificate.
+- Until that certificate exists, non-toy live derivation is explicitly blocked.
 
 Fail-fast philosophy: This file exists to surface blockers quickly. If the
-single GMP backend cannot attempt public motif derivation, the caller gets an
-explicit implementation-blocked state.
+PGS-native certificate is unavailable, the caller gets an explicit
+derivation-blocked state. Blocked derivation is not unresolved mathematics.
 """
 
 from __future__ import annotations
@@ -65,13 +63,19 @@ FIRST_OPEN_OFFSETS = (2, 4, 6, 8, 10, 12)
 WHEEL_CLOSED_RESIDUES_MOD30 = frozenset({0, 3, 5, 6, 9, 10, 12, 15, 18, 20, 21, 24, 25, 27})
 
 DERIVATION_BACKEND = {
-    "name": "gmp_exact_regression_backend",
-    "kind": "pgs_regression",
-    "classification": "classical_assisted_backend",
+    "name": "pgs_native_motif_derivation_unavailable",
+    "kind": "pgs_native_unavailable",
+    "classification": "pgs_native_blocked",
     "scale_capable": False,
-    "pgs_native": False,
-    "classical_assisted": True,
+    "pgs_native": True,
+    "classical_assisted": False,
+    "motif_certificate_available": False,
+    "blocked_reason": "pgs_native_motif_certificate_unavailable",
 }
+
+
+class PublicMotifDerivationBlocked(RuntimeError):
+    """Raised when no PGS-native motif certificate exists for live non-toy derivation."""
 
 
 class PublicMotifBackendLimitExceeded(RuntimeError):
@@ -372,40 +376,18 @@ def derive_public_motif(n: int, include_context: bool = True) -> str:
     validated motif. This protects the evidence surface that produced the
     strong reduction numbers.
 
-    For non-toy N we call the live public gap-grammar engine.
+    For non-toy N this function requires a PGS-native motif certificate. The
+    certificate path is not implemented here yet, so live non-toy derivation is
+    blocked before any classical public-coordinate arithmetic can choose a motif.
     """
     # Hard protection of the validated toy evidence surface
     if n in TOY_N_TO_MOTIF:
         return TOY_N_TO_MOTIF[n]
 
-    n_mp = gmpy2.mpz(n)
-
-    try:
-        prev_end, left, right, _ = _neighboring_gaps_gmp(n_mp)
-        containing = _gap_grammar_gmp("containing", left, right, n_mp)
-        previous_gap = _gap_grammar_gmp("previous", prev_end, left)
-    except (PublicMotifBackendLimitExceeded, PublicMotifUnresolved):
-        raise
-    except Exception as exc:
-        raise RuntimeError(f"Failed to compute public gaps for N={n}") from exc
-
-    exact_type = containing.get("exact_type_key") or containing.get("reduced_state", "unknown")
-    phase = _relative_phase_bucket(containing)
-    base_motif = f"{exact_type}@{phase}"
-
-    if not include_context:
-        return base_motif
-
-    # Compute simple prev context for the highest-signal rules
-    prev_reduced = previous_gap.get("reduced_state") or previous_gap.get("exact_type_key", "")
-    if prev_reduced:
-        # Normalize to the short form the pruner recognizes (e.g. "o4_d4_odd")
-        # Many rules look for things like "o4_d4_odd prev"
-        short_prev = prev_reduced.split("|")[0] if "|" in prev_reduced else prev_reduced
-        # Common pattern used in the rule set
-        return f"{base_motif} + {short_prev} prev"
-
-    return base_motif
+    raise PublicMotifDerivationBlocked(
+        "pgs_native_motif_certificate_unavailable: non-toy live raw-N motif "
+        "derivation is blocked until a PGS-native motif certificate exists"
+    )
 
 
 def validate_on_toy_corpus() -> bool:
