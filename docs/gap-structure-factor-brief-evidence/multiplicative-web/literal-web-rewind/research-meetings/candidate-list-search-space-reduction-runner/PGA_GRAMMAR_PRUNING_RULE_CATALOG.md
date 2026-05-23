@@ -26,6 +26,7 @@ Rules are strictly public, deterministic, and carry zero-tolerance for false neg
 - 2 × N with public motif `o4_d4_a4_d4_odd@mid`: **8 rules fire** → **84/198 pruned** (42.42% per case, remaining 114)
 - Aggregate: **1296 total pruned count instances** across corpus → **65.45%** mean reduction
 - **Current repaired real-probe replay surface**: **35.02%** average reduction across 9 distinct public semiprimes, all resolved, 0 unresolved.
+- **Low-mid live validation surface**: **47.53%** average reduction across 10 distinct public semiprimes at 64/72 bits, all resolved, 0 unresolved.
 - **Weak-motif coverage result**: PG-085..PG-089 promote five exact motif rules mined from enriched 27k-35k public grammar surfaces with zero held-out contradictions.
 
 **PGS-native mechanism**: The public structural motif of the N-containing chamber (ordered gap state → exact_type + attractor subtype from GWR/DNI + phase label) selects a union of symbolic exclusion rules. These rules encode observed multiplicative incompatibilities between the N-chamber grammar word and factor-neighborhood public words (seg1/seg2 L/R asymmetry, attractor subtype o2/a2/a4/a6 bias, very_late/early-heavy phase fringes). The result is safe, deterministic shrinkage of the 198-word hypothesis space for the unknown p/q pair without ever touching private factors.
@@ -93,6 +94,8 @@ Mining gate: extraction bands `27001_30000` and `32001_34000`; held-out band `34
 - Multiple aggressive expansions (PG-006–084) from 601_5500, 27k–35k directional boundary, high-a, and enriched multiplication map surfaces.
 - 2026-05-22 protected toy evidence surface restored: **65.45%** average, **71.21%** on the eight dominant primary cases.
 - 2026-05-22 repaired real-probe replay after PG-085..PG-089: **35.02%** average across 9 distinct public semiprimes; `o6_d4_a6_d4_odd@mid + o2_d4_odd prev` rises to **30.81%**.
+- 2026-05-22 low-mid live validation (`real_semiprime_64_72_samples_5`): **47.53%** average across 10 distinct public semiprimes; 10/10 resolved, 0 unresolved, 2 low-reduction coverage-gap motifs.
+- 2026-05-22 extended live attempt (`64,72,80,88,96`, 3 samples each): stopped during the first 80-bit live motif derivation after 64/72 completed; current bottleneck is live derivation cost, not grammar-rule application.
 - Reporting bug (stale aggregate bullets) identified and surgically fixed in the same session; re-run produced clean summary.md/json.
 - All claims remain inside the public-only contract; no classical methods ever guided rule selection or pruning decisions.
 

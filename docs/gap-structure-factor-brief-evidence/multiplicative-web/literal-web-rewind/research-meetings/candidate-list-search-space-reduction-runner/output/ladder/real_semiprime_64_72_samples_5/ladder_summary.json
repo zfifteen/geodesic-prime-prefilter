@@ -1,0 +1,616 @@
+{
+  "aggregate": {
+    "average_reduction_over_all_cases": 47.53,
+    "average_reduction_over_resolved_cases_only": 47.53,
+    "coverage_gap_motifs": [
+      [
+        "o4_d4_a4_d4_odd@early + o4_higher_divisor_even prev",
+        1
+      ],
+      [
+        "o2_d4_a2_d4_odd@late + o4_d4_odd prev",
+        1
+      ]
+    ],
+    "max_reduction": 73.74,
+    "min_reduction": 15.15,
+    "motif_breakdown": {
+      "o2_d4_a10_d4_odd@mid + o2_d4_odd prev": {
+        "average_reduction": 59.6,
+        "frequency": 1
+      },
+      "o2_d4_a2_d4_odd@late + o4_d4_odd prev": {
+        "average_reduction": 15.15,
+        "frequency": 1
+      },
+      "o2_d4_a2_d4_odd@mid + o2_d4_odd prev": {
+        "average_reduction": 73.74,
+        "frequency": 1
+      },
+      "o2_d4_a2_d4_odd@mid + o6_higher_divisor_even prev": {
+        "average_reduction": 71.21,
+        "frequency": 1
+      },
+      "o2_d4_a8_d4_odd@mid + o2_d4_odd prev": {
+        "average_reduction": 59.6,
+        "frequency": 1
+      },
+      "o4_d4_a16_d4_odd@mid + o6_higher_divisor_odd prev": {
+        "average_reduction": 59.6,
+        "frequency": 1
+      },
+      "o4_d4_a19_d4_even@mid + o2_d4_odd prev": {
+        "average_reduction": 59.6,
+        "frequency": 1
+      },
+      "o4_d4_a4_d4_odd@early + o4_higher_divisor_even prev": {
+        "average_reduction": 15.15,
+        "frequency": 1
+      },
+      "o6_d4_a6_d4_odd@mid + o2_d4_odd prev": {
+        "average_reduction": 30.81,
+        "frequency": 2
+      }
+    },
+    "resolved_count": 10,
+    "top_rules": [
+      [
+        "PG-061",
+        4
+      ],
+      [
+        "PG-062",
+        4
+      ],
+      [
+        "PG-063",
+        4
+      ],
+      [
+        "PG-064",
+        4
+      ],
+      [
+        "PG-065",
+        4
+      ]
+    ],
+    "total_cases": 10,
+    "unresolved_count": 0
+  },
+  "levels": {
+    "64": {
+      "average_reduction_percent": 47.27,
+      "bit_length": 64,
+      "max_reduction": 71.21,
+      "min_reduction": 15.15,
+      "per_case": [
+        {
+          "N": 4611826790276202551,
+          "bit_length": 64,
+          "case_id": "semiprime_64_0",
+          "construction_method": "deterministic_public_semiprime",
+          "coverage_gap": false,
+          "derivation_error": null,
+          "derived_motif": "o2_d4_a8_d4_odd@mid + o2_d4_odd prev",
+          "diagnostic_tag": null,
+          "factors_discarded": true,
+          "motif": "o2_d4_a8_d4_odd@mid + o2_d4_odd prev",
+          "motif_source": "derive_public_motif(N_only)",
+          "original_search_space_size": 198,
+          "pruned": 118,
+          "pruned_count": 118,
+          "reduction_percent": 59.6,
+          "remaining": 80,
+          "rules_fired": [
+            "PG-061",
+            "PG-062",
+            "PG-063",
+            "PG-064",
+            "PG-065",
+            "PG-066",
+            "PG-067",
+            "PG-068",
+            "PG-069",
+            "PG-070",
+            "PG-071",
+            "PG-072",
+            "PG-073",
+            "PG-074",
+            "PG-075",
+            "PG-076",
+            "PG-077",
+            "PG-078",
+            "PG-082",
+            "PG-083",
+            "PG-084"
+          ],
+          "status": "resolved",
+          "target_bits": 64,
+          "unresolved_flag": false
+        },
+        {
+          "N": 4612108295318995049,
+          "bit_length": 64,
+          "case_id": "semiprime_64_1",
+          "construction_method": "deterministic_public_semiprime",
+          "coverage_gap": true,
+          "derivation_error": null,
+          "derived_motif": "o4_d4_a4_d4_odd@early + o4_higher_divisor_even prev",
+          "diagnostic_tag": "low_reduction_coverage_gap",
+          "factors_discarded": true,
+          "motif": "o4_d4_a4_d4_odd@early + o4_higher_divisor_even prev",
+          "motif_source": "derive_public_motif(N_only)",
+          "original_search_space_size": 198,
+          "pruned": 30,
+          "pruned_count": 30,
+          "reduction_percent": 15.15,
+          "remaining": 168,
+          "rules_fired": [
+            "PG-086"
+          ],
+          "status": "resolved",
+          "target_bits": 64,
+          "unresolved_flag": false
+        },
+        {
+          "N": 4612389821840163257,
+          "bit_length": 64,
+          "case_id": "semiprime_64_2",
+          "construction_method": "deterministic_public_semiprime",
+          "coverage_gap": false,
+          "derivation_error": null,
+          "derived_motif": "o6_d4_a6_d4_odd@mid + o2_d4_odd prev",
+          "diagnostic_tag": null,
+          "factors_discarded": true,
+          "motif": "o6_d4_a6_d4_odd@mid + o2_d4_odd prev",
+          "motif_source": "derive_public_motif(N_only)",
+          "original_search_space_size": 198,
+          "pruned": 61,
+          "pruned_count": 61,
+          "reduction_percent": 30.81,
+          "remaining": 137,
+          "rules_fired": [
+            "PG-009",
+            "PG-012",
+            "PG-021",
+            "PG-025",
+            "PG-029",
+            "PG-033",
+            "PG-037",
+            "PG-057",
+            "PG-085"
+          ],
+          "status": "resolved",
+          "target_bits": 64,
+          "unresolved_flag": false
+        },
+        {
+          "N": 4612671249567121423,
+          "bit_length": 64,
+          "case_id": "semiprime_64_3",
+          "construction_method": "deterministic_public_semiprime",
+          "coverage_gap": false,
+          "derivation_error": null,
+          "derived_motif": "o2_d4_a2_d4_odd@mid + o6_higher_divisor_even prev",
+          "diagnostic_tag": null,
+          "factors_discarded": true,
+          "motif": "o2_d4_a2_d4_odd@mid + o6_higher_divisor_even prev",
+          "motif_source": "derive_public_motif(N_only)",
+          "original_search_space_size": 198,
+          "pruned": 141,
+          "pruned_count": 141,
+          "reduction_percent": 71.21,
+          "remaining": 57,
+          "rules_fired": [
+            "PG-001",
+            "PG-002",
+            "PG-008",
+            "PG-010",
+            "PG-018",
+            "PG-022",
+            "PG-026",
+            "PG-030",
+            "PG-034",
+            "PG-038",
+            "PG-039",
+            "PG-040",
+            "PG-041",
+            "PG-042",
+            "PG-043",
+            "PG-044",
+            "PG-045",
+            "PG-056",
+            "PG-058",
+            "PG-059",
+            "PG-060",
+            "PG-081"
+          ],
+          "status": "resolved",
+          "target_bits": 64,
+          "unresolved_flag": false
+        },
+        {
+          "N": 4612952844814057687,
+          "bit_length": 64,
+          "case_id": "semiprime_64_4",
+          "construction_method": "deterministic_public_semiprime",
+          "coverage_gap": false,
+          "derivation_error": null,
+          "derived_motif": "o4_d4_a16_d4_odd@mid + o6_higher_divisor_odd prev",
+          "diagnostic_tag": null,
+          "factors_discarded": true,
+          "motif": "o4_d4_a16_d4_odd@mid + o6_higher_divisor_odd prev",
+          "motif_source": "derive_public_motif(N_only)",
+          "original_search_space_size": 198,
+          "pruned": 118,
+          "pruned_count": 118,
+          "reduction_percent": 59.6,
+          "remaining": 80,
+          "rules_fired": [
+            "PG-061",
+            "PG-062",
+            "PG-063",
+            "PG-064",
+            "PG-065",
+            "PG-066",
+            "PG-067",
+            "PG-068",
+            "PG-069",
+            "PG-070",
+            "PG-071",
+            "PG-072",
+            "PG-073",
+            "PG-074",
+            "PG-075",
+            "PG-076",
+            "PG-077",
+            "PG-078",
+            "PG-082",
+            "PG-083",
+            "PG-084"
+          ],
+          "status": "resolved",
+          "target_bits": 64,
+          "unresolved_flag": false
+        }
+      ],
+      "reduction_distribution": {
+        "0-20%": 1,
+        "20-40%": 1,
+        "40-60%": 2,
+        "60-80%": 1,
+        "80%+": 0
+      },
+      "samples": 5,
+      "std_dev": 20.88,
+      "top_motifs": [
+        [
+          "o2_d4_a8_d4_odd@mid + o2_d4_odd prev",
+          1
+        ],
+        [
+          "o4_d4_a4_d4_odd@early + o4_higher_divisor_even prev",
+          1
+        ],
+        [
+          "o6_d4_a6_d4_odd@mid + o2_d4_odd prev",
+          1
+        ],
+        [
+          "o2_d4_a2_d4_odd@mid + o6_higher_divisor_even prev",
+          1
+        ],
+        [
+          "o4_d4_a16_d4_odd@mid + o6_higher_divisor_odd prev",
+          1
+        ]
+      ],
+      "top_rules": [
+        [
+          "PG-061",
+          2
+        ],
+        [
+          "PG-062",
+          2
+        ],
+        [
+          "PG-063",
+          2
+        ],
+        [
+          "PG-064",
+          2
+        ],
+        [
+          "PG-065",
+          2
+        ],
+        [
+          "PG-066",
+          2
+        ],
+        [
+          "PG-067",
+          2
+        ],
+        [
+          "PG-068",
+          2
+        ]
+      ],
+      "unresolved_count": 0,
+      "unresolved_examples": []
+    },
+    "72": {
+      "average_reduction_percent": 47.78,
+      "bit_length": 72,
+      "max_reduction": 73.74,
+      "min_reduction": 15.15,
+      "per_case": [
+        {
+          "N": 1180600630115703194183,
+          "bit_length": 72,
+          "case_id": "semiprime_72_0",
+          "construction_method": "deterministic_public_semiprime",
+          "coverage_gap": false,
+          "derivation_error": null,
+          "derived_motif": "o4_d4_a19_d4_even@mid + o2_d4_odd prev",
+          "diagnostic_tag": null,
+          "factors_discarded": true,
+          "motif": "o4_d4_a19_d4_even@mid + o2_d4_odd prev",
+          "motif_source": "derive_public_motif(N_only)",
+          "original_search_space_size": 198,
+          "pruned": 118,
+          "pruned_count": 118,
+          "reduction_percent": 59.6,
+          "remaining": 80,
+          "rules_fired": [
+            "PG-061",
+            "PG-062",
+            "PG-063",
+            "PG-064",
+            "PG-065",
+            "PG-066",
+            "PG-067",
+            "PG-068",
+            "PG-069",
+            "PG-070",
+            "PG-071",
+            "PG-072",
+            "PG-073",
+            "PG-074",
+            "PG-075",
+            "PG-076",
+            "PG-077",
+            "PG-078",
+            "PG-082",
+            "PG-083",
+            "PG-084"
+          ],
+          "status": "resolved",
+          "target_bits": 72,
+          "unresolved_flag": false
+        },
+        {
+          "N": 1180618643689577382163,
+          "bit_length": 72,
+          "case_id": "semiprime_72_1",
+          "construction_method": "deterministic_public_semiprime",
+          "coverage_gap": false,
+          "derivation_error": null,
+          "derived_motif": "o2_d4_a2_d4_odd@mid + o2_d4_odd prev",
+          "diagnostic_tag": null,
+          "factors_discarded": true,
+          "motif": "o2_d4_a2_d4_odd@mid + o2_d4_odd prev",
+          "motif_source": "derive_public_motif(N_only)",
+          "original_search_space_size": 198,
+          "pruned": 146,
+          "pruned_count": 146,
+          "reduction_percent": 73.74,
+          "remaining": 52,
+          "rules_fired": [
+            "PG-001",
+            "PG-002",
+            "PG-008",
+            "PG-010",
+            "PG-014",
+            "PG-018",
+            "PG-022",
+            "PG-026",
+            "PG-030",
+            "PG-034",
+            "PG-038",
+            "PG-039",
+            "PG-040",
+            "PG-041",
+            "PG-042",
+            "PG-043",
+            "PG-044",
+            "PG-045",
+            "PG-056",
+            "PG-058",
+            "PG-059",
+            "PG-060",
+            "PG-081"
+          ],
+          "status": "resolved",
+          "target_bits": 72,
+          "unresolved_flag": false
+        },
+        {
+          "N": 1180636659050177364127,
+          "bit_length": 72,
+          "case_id": "semiprime_72_2",
+          "construction_method": "deterministic_public_semiprime",
+          "coverage_gap": true,
+          "derivation_error": null,
+          "derived_motif": "o2_d4_a2_d4_odd@late + o4_d4_odd prev",
+          "diagnostic_tag": "low_reduction_coverage_gap",
+          "factors_discarded": true,
+          "motif": "o2_d4_a2_d4_odd@late + o4_d4_odd prev",
+          "motif_source": "derive_public_motif(N_only)",
+          "original_search_space_size": 198,
+          "pruned": 30,
+          "pruned_count": 30,
+          "reduction_percent": 15.15,
+          "remaining": 168,
+          "rules_fired": [
+            "PG-087"
+          ],
+          "status": "resolved",
+          "target_bits": 72,
+          "unresolved_flag": false
+        },
+        {
+          "N": 1180654673998473593203,
+          "bit_length": 72,
+          "case_id": "semiprime_72_3",
+          "construction_method": "deterministic_public_semiprime",
+          "coverage_gap": false,
+          "derivation_error": null,
+          "derived_motif": "o2_d4_a10_d4_odd@mid + o2_d4_odd prev",
+          "diagnostic_tag": null,
+          "factors_discarded": true,
+          "motif": "o2_d4_a10_d4_odd@mid + o2_d4_odd prev",
+          "motif_source": "derive_public_motif(N_only)",
+          "original_search_space_size": 198,
+          "pruned": 118,
+          "pruned_count": 118,
+          "reduction_percent": 59.6,
+          "remaining": 80,
+          "rules_fired": [
+            "PG-061",
+            "PG-062",
+            "PG-063",
+            "PG-064",
+            "PG-065",
+            "PG-066",
+            "PG-067",
+            "PG-068",
+            "PG-069",
+            "PG-070",
+            "PG-071",
+            "PG-072",
+            "PG-073",
+            "PG-074",
+            "PG-075",
+            "PG-076",
+            "PG-077",
+            "PG-078",
+            "PG-082",
+            "PG-083",
+            "PG-084"
+          ],
+          "status": "resolved",
+          "target_bits": 72,
+          "unresolved_flag": false
+        },
+        {
+          "N": 1180672688809299411287,
+          "bit_length": 72,
+          "case_id": "semiprime_72_4",
+          "construction_method": "deterministic_public_semiprime",
+          "coverage_gap": false,
+          "derivation_error": null,
+          "derived_motif": "o6_d4_a6_d4_odd@mid + o2_d4_odd prev",
+          "diagnostic_tag": null,
+          "factors_discarded": true,
+          "motif": "o6_d4_a6_d4_odd@mid + o2_d4_odd prev",
+          "motif_source": "derive_public_motif(N_only)",
+          "original_search_space_size": 198,
+          "pruned": 61,
+          "pruned_count": 61,
+          "reduction_percent": 30.81,
+          "remaining": 137,
+          "rules_fired": [
+            "PG-009",
+            "PG-012",
+            "PG-021",
+            "PG-025",
+            "PG-029",
+            "PG-033",
+            "PG-037",
+            "PG-057",
+            "PG-085"
+          ],
+          "status": "resolved",
+          "target_bits": 72,
+          "unresolved_flag": false
+        }
+      ],
+      "reduction_distribution": {
+        "0-20%": 1,
+        "20-40%": 1,
+        "40-60%": 2,
+        "60-80%": 1,
+        "80%+": 0
+      },
+      "samples": 5,
+      "std_dev": 21.48,
+      "top_motifs": [
+        [
+          "o4_d4_a19_d4_even@mid + o2_d4_odd prev",
+          1
+        ],
+        [
+          "o2_d4_a2_d4_odd@mid + o2_d4_odd prev",
+          1
+        ],
+        [
+          "o2_d4_a2_d4_odd@late + o4_d4_odd prev",
+          1
+        ],
+        [
+          "o2_d4_a10_d4_odd@mid + o2_d4_odd prev",
+          1
+        ],
+        [
+          "o6_d4_a6_d4_odd@mid + o2_d4_odd prev",
+          1
+        ]
+      ],
+      "top_rules": [
+        [
+          "PG-061",
+          2
+        ],
+        [
+          "PG-062",
+          2
+        ],
+        [
+          "PG-063",
+          2
+        ],
+        [
+          "PG-064",
+          2
+        ],
+        [
+          "PG-065",
+          2
+        ],
+        [
+          "PG-066",
+          2
+        ],
+        [
+          "PG-067",
+          2
+        ],
+        [
+          "PG-068",
+          2
+        ]
+      ],
+      "unresolved_count": 0,
+      "unresolved_examples": []
+    }
+  },
+  "mode": "real",
+  "reference_space": 198,
+  "samples_per_level": 5,
+  "timestamp": "2026-05-23T02:31:26.617185+00:00"
+}
