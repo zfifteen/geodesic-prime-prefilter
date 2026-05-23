@@ -21,14 +21,14 @@ Contract:
 - Must be 100% public-only. Never uses p or q.
 - Must be deterministic.
 - For the toy corpus it must reproduce the known TOY_N_TO_MOTIF values.
-- For unknown N it uses one unified GMP public endpoint/chamber backend.
+- For unknown N it uses one unified GMP public arithmetic backend.
 - If the exact public divisor-count horizon exceeds the configured
-  live-derivation limit, it raises PublicMotifUnresolved instead of falling
-  back to a different small-N or large-N backend.
+  live-derivation limit, it raises PublicMotifBackendLimitExceeded. This is
+  an implementation gate, not a mathematical unresolved state.
 
 Fail-fast philosophy: This file exists to surface blockers quickly. If the
-single GMP backend cannot derive a public motif, the caller gets an explicit
-unresolved state.
+single GMP backend cannot attempt public motif derivation, the caller gets an
+explicit implementation-blocked state.
 """
 
 from __future__ import annotations
@@ -65,8 +65,12 @@ FIRST_OPEN_OFFSETS = (2, 4, 6, 8, 10, 12)
 WHEEL_CLOSED_RESIDUES_MOD30 = frozenset({0, 3, 5, 6, 9, 10, 12, 15, 18, 20, 21, 24, 25, 27})
 
 
+class PublicMotifBackendLimitExceeded(RuntimeError):
+    """Raised when live motif derivation is blocked by the current backend limit."""
+
+
 class PublicMotifUnresolved(RuntimeError):
-    """Raised when the unified GMP public backend cannot derive an exact motif."""
+    """Raised when the backend attempted derivation but found no public motif."""
 
 
 # ---------------------------------------------------------------------------
@@ -182,7 +186,7 @@ def _divisor_count_gmp(value: gmpy2.mpz, primes: tuple[int, ...]) -> int:
 
     The calculation is exact when the required trial-prime horizon is inside
     GMP_EXACT_DIVISOR_TRIAL_LIMIT. Larger coordinates return an explicit
-    unresolved state instead of falling into the old int64/scalar path.
+    implementation-blocked state instead of falling into the old int64/scalar path.
     """
     value = gmpy2.mpz(value)
     if value < 1:
@@ -194,7 +198,7 @@ def _divisor_count_gmp(value: gmpy2.mpz, primes: tuple[int, ...]) -> int:
     if not exact_cube:
         cube_root += 1
     if cube_root > GMP_EXACT_DIVISOR_TRIAL_LIMIT:
-        raise PublicMotifUnresolved(
+        raise PublicMotifBackendLimitExceeded(
             "GMP exact divisor-count horizon exceeds configured public motif limit "
             f"({int(cube_root)} > {GMP_EXACT_DIVISOR_TRIAL_LIMIT})"
         )
@@ -292,7 +296,7 @@ def _gap_grammar_gmp(
         cube_root += 1
     prime_limit = int(cube_root)
     if prime_limit > GMP_EXACT_DIVISOR_TRIAL_LIMIT:
-        raise PublicMotifUnresolved(
+        raise PublicMotifBackendLimitExceeded(
             "GMP gap grammar exact divisor horizon exceeds configured public motif limit "
             f"({prime_limit} > {GMP_EXACT_DIVISOR_TRIAL_LIMIT})"
         )
@@ -371,7 +375,7 @@ def derive_public_motif(n: int, include_context: bool = True) -> str:
         prev_end, left, right, _ = _neighboring_gaps_gmp(n_mp)
         containing = _gap_grammar_gmp("containing", left, right, n_mp)
         previous_gap = _gap_grammar_gmp("previous", prev_end, left)
-    except PublicMotifUnresolved:
+    except (PublicMotifBackendLimitExceeded, PublicMotifUnresolved):
         raise
     except Exception as exc:
         raise RuntimeError(f"Failed to compute public gaps for N={n}") from exc
@@ -411,9 +415,3 @@ def validate_on_toy_corpus() -> bool:
 if __name__ == "__main__":
     print("Testing public motif derivation stub on toy corpus...")
     validate_on_toy_corpus()
-    print("\nNow trying a non-toy N to trigger the fail-fast path:")
-    try:
-        derive_public_motif(12345678901234567890)
-    except NotImplementedError as e:
-        print("Correctly raised NotImplementedError (fail-fast working as designed).")
-        print(str(e)[:300] + "...")
