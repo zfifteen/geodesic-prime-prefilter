@@ -31,10 +31,9 @@ from pga_grammar_pruner import REFERENCE_FACTOR_SPACE, prune_factor_space
 try:
     from public_motif_derivation import (
         DERIVATION_BACKEND,
-        PublicMotifBackendError,
+        PublicMotifBackendLimitExceeded,
         PublicMotifUnresolved,
         derive_public_motif,
-        get_last_derivation_diagnostics,
     )
 except Exception as exc:
     DERIVATION_BACKEND = {
@@ -45,10 +44,9 @@ except Exception as exc:
         "pgs_native": False,
         "classical_assisted": True,
     }
-    PublicMotifBackendError = None  # type: ignore[assignment]
+    PublicMotifBackendLimitExceeded = None  # type: ignore[assignment]
     PublicMotifUnresolved = None  # type: ignore[assignment]
     derive_public_motif = None  # type: ignore[assignment]
-    get_last_derivation_diagnostics = lambda: {}  # type: ignore[assignment]
     DERIVATION_IMPORT_ERROR = exc
 else:
     DERIVATION_IMPORT_ERROR = None
@@ -139,7 +137,11 @@ def _deterministic_prime_in_upper_quarter(bit_count: int, sample_index: int, sal
 
 
 def backend_is_scale_capable() -> bool:
-    return DERIVATION_BACKEND.get("scale_capable") is True
+    return (
+        DERIVATION_BACKEND.get("scale_capable") is True
+        and DERIVATION_BACKEND.get("pgs_native") is True
+        and DERIVATION_BACKEND.get("classical_assisted") is False
+    )
 
 
 def scale_backend_block_reason() -> str | None:
@@ -148,8 +150,8 @@ def scale_backend_block_reason() -> str | None:
     name = DERIVATION_BACKEND.get("name", "unknown")
     kind = DERIVATION_BACKEND.get("kind", "unknown")
     return (
-        "scale_backend_unavailable: backend does not declare measured 256+ "
-        f"capability (name={name}, kind={kind}, "
+        "scale_backend_unavailable: backend is not selectable for PGS-native "
+        f"256+ claims (name={name}, kind={kind}, "
         f"classification={DERIVATION_BACKEND.get('classification')}, "
         f"scale_capable={DERIVATION_BACKEND.get('scale_capable')}, "
         f"pgs_native={DERIVATION_BACKEND.get('pgs_native')}, "
@@ -169,7 +171,6 @@ def real_motif(bits: int, sample_index: int, require_scale_backend: bool = False
                 "status": "derivation_blocked",
                 "error": block_reason,
                 "diagnostic_tag": "scale_backend_unavailable",
-                "derivation_diagnostics": None,
             }
     if derive_public_motif is None:
         return {
@@ -178,20 +179,20 @@ def real_motif(bits: int, sample_index: int, require_scale_backend: bool = False
             "status": "derivation_blocked",
             "error": f"public_motif_derivation import failed: {DERIVATION_IMPORT_ERROR}",
             "diagnostic_tag": "motif_derivation_import_failed",
-            "derivation_diagnostics": None,
         }
     try:
         motif = derive_public_motif(n_value)
     except Exception as exc:
-        diagnostics = get_last_derivation_diagnostics()
-        if PublicMotifBackendError is not None and isinstance(exc, PublicMotifBackendError):
+        if (
+            PublicMotifBackendLimitExceeded is not None
+            and isinstance(exc, PublicMotifBackendLimitExceeded)
+        ):
             return {
                 "motif": None,
                 "n_value": n_value,
-                "status": "backend_error",
+                "status": "derivation_blocked",
                 "error": f"{type(exc).__name__}: {exc}",
-                "diagnostic_tag": "tier3_classification_backend_error",
-                "derivation_diagnostics": diagnostics,
+                "diagnostic_tag": "exact_divisor_horizon_exceeds_backend_limit",
             }
         if PublicMotifUnresolved is not None and isinstance(exc, PublicMotifUnresolved):
             return {
@@ -200,7 +201,6 @@ def real_motif(bits: int, sample_index: int, require_scale_backend: bool = False
                 "status": "unresolved",
                 "error": f"{type(exc).__name__}: {exc}",
                 "diagnostic_tag": "motif_derivation_unresolved",
-                "derivation_diagnostics": diagnostics,
             }
         return {
             "motif": None,
@@ -208,7 +208,6 @@ def real_motif(bits: int, sample_index: int, require_scale_backend: bool = False
             "status": "backend_error",
             "error": f"{type(exc).__name__}: {exc}",
             "diagnostic_tag": "motif_derivation_backend_error",
-            "derivation_diagnostics": diagnostics,
         }
     if motif.startswith("UNRESOLVED:"):
         return {
@@ -217,7 +216,6 @@ def real_motif(bits: int, sample_index: int, require_scale_backend: bool = False
             "status": "unresolved",
             "error": "public motif derivation returned unresolved",
             "diagnostic_tag": "motif_derivation_unresolved",
-            "derivation_diagnostics": get_last_derivation_diagnostics(),
         }
     return {
         "motif": motif,
@@ -225,7 +223,6 @@ def real_motif(bits: int, sample_index: int, require_scale_backend: bool = False
         "status": "resolved",
         "error": None,
         "diagnostic_tag": None,
-        "derivation_diagnostics": get_last_derivation_diagnostics(),
     }
 
 
@@ -242,7 +239,6 @@ def motif_for_sample(
             "status": "resolved",
             "error": None,
             "diagnostic_tag": None,
-            "derivation_diagnostics": None,
         }
     if mode == "real":
         return real_motif(bits, sample_index, require_scale_backend=require_scale_backend)
@@ -395,7 +391,6 @@ def run_ladder(
                 ),
                 "pruning_status": "not_attempted" if backend_error or blocked or derivation_unresolved else "attempted",
                 "derivation_error": error,
-                "derivation_diagnostics": motif_result.get("derivation_diagnostics"),
                 "diagnostic_tag": diagnostic_tag,
                 "coverage_gap": coverage_gap,
             }
