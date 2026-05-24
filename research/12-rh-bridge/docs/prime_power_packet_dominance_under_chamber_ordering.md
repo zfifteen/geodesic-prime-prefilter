@@ -290,3 +290,6 @@ The current chamber theorems do not supply it directly. They provide the order
 that such a theorem must use. The deconvolution algebra provides the packet
 support. The bridge still needs the dominance step that connects those two
 objects before completion and folding.
+
+The follow-up diagnostic-and-bound note is
+[Local Control of Prime-Power Packets by GWR Ordering](local_control_of_prime_power_packets_by_gwr_ordering.md).
