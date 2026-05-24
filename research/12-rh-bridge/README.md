@@ -55,6 +55,7 @@ Start here:
 - `docs/deconvolution_sign_regularity_from_chamber_ordering.md`
 - `docs/prime_power_packet_dominance_under_chamber_ordering.md`
 - `docs/local_control_of_prime_power_packets_by_gwr_ordering.md`
+- `docs/folded_packet_drift_inequality.md`
 
 ## Object
 
@@ -105,3 +106,8 @@ The current diagnostic bound is recorded in
 does prove a selector-to-packet coefficient envelope and pointwise endpoint
 dominance for interior prime powers, while the completed folded packet
 inequality remains the smallest additional local theorem obligation.
+
+The folded target is stated in
+`docs/folded_packet_drift_inequality.md`: the completion correction must cancel
+the odd packet drift and its negative even folded cost must be no larger than
+the endpoint plus interior prime-power folded reserve.
