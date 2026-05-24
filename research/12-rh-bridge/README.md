@@ -54,6 +54,7 @@ Start here:
 - `docs/chamber_deconvolved_reciprocal_balance_lemma.md`
 - `docs/deconvolution_sign_regularity_from_chamber_ordering.md`
 - `docs/prime_power_packet_dominance_under_chamber_ordering.md`
+- `docs/local_control_of_prime_power_packets_by_gwr_ordering.md`
 
 ## Object
 
@@ -98,3 +99,9 @@ The next local arithmetic obligation is recorded in
 GWR-ordered chamber must control the endpoint and interior prime-power packet
 well enough to produce nonnegative reciprocal-balanced folded mass after
 completion.
+
+The current diagnostic bound is recorded in
+`docs/local_control_of_prime_power_packets_by_gwr_ordering.md`: GWR ordering
+does prove a selector-to-packet coefficient envelope and pointwise endpoint
+dominance for interior prime powers, while the completed folded packet
+inequality remains the smallest additional local theorem obligation.
