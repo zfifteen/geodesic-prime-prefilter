@@ -318,3 +318,6 @@ selected minimum is itself a prime power.
 The note does not prove reciprocal balance. It shows where the next arithmetic
 input must enter: prime-power packet dominance after deconvolution and before
 completion.
+
+The packet-dominance target is stated in
+[Prime-Power Packet Dominance Under Chamber Ordering](prime_power_packet_dominance_under_chamber_ordering.md).
