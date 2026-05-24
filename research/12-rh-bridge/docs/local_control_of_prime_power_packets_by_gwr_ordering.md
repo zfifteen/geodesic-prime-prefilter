@@ -364,3 +364,6 @@ The current chamber technology reaches the first line. The folded packet
 inequality is the independent local theorem obligation required to turn
 Prime-Power Packet Dominance into the Chamber-Deconvolved Reciprocal Balance
 Lemma.
+
+The standalone target statement is recorded in
+[Folded Packet Drift Inequality](folded_packet_drift_inequality.md).
