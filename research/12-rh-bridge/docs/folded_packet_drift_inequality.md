@@ -338,3 +338,6 @@ bound. Those controls shape `D_{p,q}(z)` and `R_{p,q}(z)`.
 They do not prove the aggregate completion-cost bound. That bound is the
 smallest additional local estimate needed to close the Folded Packet Drift
 Inequality and feed the Chamber-Deconvolved Reciprocal Balance Lemma.
+
+The aggregate-cost reduction is recorded in
+[Aggregate Completion-Cost Bound](aggregate_completion_cost_bound.md).
