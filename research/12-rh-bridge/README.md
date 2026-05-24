@@ -56,6 +56,7 @@ Start here:
 - `docs/prime_power_packet_dominance_under_chamber_ordering.md`
 - `docs/local_control_of_prime_power_packets_by_gwr_ordering.md`
 - `docs/folded_packet_drift_inequality.md`
+- `docs/aggregate_completion_cost_bound.md`
 
 ## Object
 
@@ -111,3 +112,8 @@ The folded target is stated in
 `docs/folded_packet_drift_inequality.md`: the completion correction must cancel
 the odd packet drift and its negative even folded cost must be no larger than
 the endpoint plus interior prime-power folded reserve.
+
+The aggregate-cost reduction is recorded in
+`docs/aggregate_completion_cost_bound.md`: existing GWR packet controls give
+an explicit upper bound on negative folded completion cost, but closing it
+requires a kernel-weighted prime-power packet estimate inside each chamber.
