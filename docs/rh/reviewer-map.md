@@ -4,7 +4,8 @@ Check the bundle in this order:
 
 ```text
 divisor counts -> zero-excess returns -> local theorems
--> DNI-to-zeta compression -> residual closure -> pole placement/RH sentence
+-> DNI-to-zeta compression -> source-to-spectral placement target
+-> pole placement/RH sentence
 ```
 
 The review question is not whether each page says something RH-adjacent. The
@@ -43,22 +44,22 @@ status to each layer.
 
 3. [Off-critical pole exclusion](off-critical-pole-exclusion.md)
 
-   Check the source-side residual test. A claimed off-critical pole must name
-   a surviving source residual: a failed identity in `D,K,R`, independent
-   endpoint or gap-length freedom, a chamber log-weight remainder, or an extra
-   divisor-count field. A conclusion-only residual does not supply a
-   mathematical carrier.
+   Check the source-side residual test and its obstruction. Failed identities
+   in `D,K,R`, independent endpoint or gap-length freedom, chamber log-weight
+   remainders, and extra divisor-count fields are closed as bookkeeping
+   failures. The live issue is different: an off-critical pole could be a
+   global analytic property of the same zeta-compressed source.
 
 4. [Pole placement](pole-placement.md)
 
-   Check that pole placement is downstream of the DNI ratio and source-side
-   residual closure. The nontrivial poles of `R(s)` are the nontrivial zeros of
-   `zeta(s)` read through the logarithmic derivative.
+   Check that pole placement is downstream of the DNI ratio and the unresolved
+   source-to-spectral placement target. The nontrivial poles of `R(s)` are the
+   nontrivial zeros of `zeta(s)` read through the logarithmic derivative.
 
 5. [Critical line and zero geometry](critical-line-and-zero-geometry.md)
 
    Check that the critical-line sentence is stated as the RH-side analytic
-   reading of the source-side residual closure:
+   target after exact DNI-to-zeta compression:
 
    $$
    \mathrm{Re}(\rho)=1/2
@@ -73,8 +74,8 @@ status to each layer.
 6. [Status ledger](status-ledger.md)
 
    Check that proved theorem, exact zeta compression, explanatory consequence,
-   measured evidence, invalidated routes, source-side residual closure, and
-   downstream translation bridges remain separate.
+   measured evidence, invalidated routes, unresolved source-to-spectral
+   placement, and downstream translation bridges remain separate.
 
 ## Status Discipline
 
@@ -82,16 +83,14 @@ status to each layer.
 - Zero-Excess DNI is an exact coordinate reformulation of the same source
   arithmetic. For `n > 1`, `E(n)=0` is prime-zero language.
 - Exact DNI-to-zeta compression is controlled by the bridge identity.
-- Source-side off-critical-pole residual closure is controlled by
-  `off-critical-pole-exclusion.md`.
-- Pole placement/RH language is downstream analytic language for that closed
-  source-side state.
+- Source-side off-critical-pole status is controlled by
+  `off-critical-pole-exclusion.md` and the obstruction note it links.
+- Pole placement/RH language is downstream analytic language for the exact
+  ratio and the unresolved source-to-spectral target.
 - `PROOF.md` does not itself prove RH.
 - Explicit-formula material is downstream analytic translation into
-  `Lambda`, `psi`, zero-term, and error-term language. It is not a
-  prerequisite for the PGS-to-RH proof path.
-- PGS is not an analytical method and does not require a classical
-  zero-estimate or error-term proof to close the source-side RH sentence.
+  `Lambda`, `psi`, zero-term, and error-term language. It names one equivalent
+  form of the missing RH-strength placement constraint.
 
 ## Fast Failure Checks
 
