@@ -4,15 +4,16 @@
 
 The bridge starts with divisor counts on integers, passes through the local
 zero-excess returns and local PGS theorems, compresses the same coefficient
-field into zeta language, and then applies source-side residual closure before
-reading the Riemann
-Hypothesis as a pole-placement sentence for the continued DNI ratio.
+field into zeta language, and then names the source-to-spectral placement
+target before reading the Riemann Hypothesis as a pole-placement sentence for
+the continued DNI ratio.
 
 Required source order:
 
 ```text
 divisor counts -> zero-excess returns -> local theorems
--> DNI-to-zeta compression -> residual closure -> pole placement/RH sentence
+-> DNI-to-zeta compression -> source-to-spectral target
+-> pole placement/RH sentence
 ```
 
 ## 1. Divisor Counts
@@ -207,7 +208,7 @@ derivative record of the pole and zeros of $\zeta(s)$:
 
 ## 5. RH Sentence
 
-Status: source-side residual closure read in pole-placement language.
+Status: unresolved source-to-spectral placement target.
 
 Since
 
@@ -231,9 +232,11 @@ $$
 $$
 
 The exact identities are the zeta-compression layer. The pole-placement
-sentence is the RH interpretation of that exact compressed ratio after the
+sentence is the RH interpretation of that exact compressed ratio. The
 source-side residual test closes failed identities, independent gap-length
-freedom, chamber log-weight remainders, and extra divisor-count fields.
+freedom, chamber log-weight remainders, and extra divisor-count fields, but it
+does not by itself rule out zeros carried by the same global zeta object after
+analytic continuation.
 
 The zero-excess floor is the integer-side coordinate for prime returns. The
 critical line is the zeta-side coordinate for nontrivial pole placement.

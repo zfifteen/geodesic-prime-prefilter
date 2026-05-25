@@ -6,18 +6,22 @@ Proof status: non-authoritative research note
 
 Prime gap structure is not an analytical method. It does not prove RH by
 estimating zeros, bounding error terms, or becoming a classical zeta-side
-zero-control argument.
+zero-control argument. The current remaining bridge is still a real
+source-to-spectral placement theorem: PGS chamber geometry must be shown to
+force the continued DNI ratio's nontrivial poles onto the critical line.
 
 ## Source Order
 
 ```text
-divisor counts -> zero-excess returns -> prime gap structure -> zeta compression -> RH language
+divisor counts -> zero-excess returns -> prime gap structure
+-> zeta compression -> source-to-spectral placement target -> RH language
 ```
 
 ## Common Mistake
 
-The mistake is to accept the exact DNI quotient and then demand an analytical
-proof that the quotient has no off-critical poles.
+The mistake is to demand a zeta-first proof before checking the source object.
+The valid objection is narrower: after accepting the exact DNI quotient, the
+source still needs a theorem that places the nontrivial poles of that quotient.
 
 ## Full Answer
 
@@ -38,12 +42,11 @@ The source order fixes the arithmetic carrier first:
 - the DNI quotient compresses the same source into
   $R(s)=(e^2/2)K(s)/D(s)=-\zeta'(s)/\zeta(s)$.
 
-After that compression, the admissible objection is not "where is the
-classical analytic exclusion theorem?" The admissible objection is source-side:
-what residual remains in $\tau(n)$, $\tau(n)\log n$, $D(s)$, $K(s)$, or
-$K(s)/D(s)$ that can carry a nontrivial off-critical pole?
+After that compression, the admissible objection is source-side and precise:
+what theorem carries local chamber structure into spectral placement of
+`R(s)`?
 
-The residual fork is finite:
+The residual checklist still rules out bookkeeping failures:
 
 | Candidate residual | Review question |
 | --- | --- |
@@ -51,24 +54,24 @@ The residual fork is finite:
 | Independent gap-length freedom | Can the gap sequence vary while the same $\tau(n)$ field and $\tau(n)=2$ return chain are preserved? |
 | Chamber log-weight residual | Is there a log-weight term outside $\tau(n)\log n$ that survives the DNI quotient? |
 | Extra divisor-count field | Is there another multiplicative or factor-pair coefficient supply beyond $\tau(n)$? |
-| Conclusion-only residual | Is the objection only that "the whole sequence might carry an off-critical pole" without naming one of the source objects above? |
+| Global analytic carrier in the same source | Could the same continued quotient carry off-critical poles without an extra coefficient field? |
 
-Only the first four are mathematical objections. The fifth restates the
-negation of the RH pole-placement sentence as a possibility. It does not name a
-source object that can carry that possibility.
+The first four are closed as bookkeeping failures. The fifth is the live
+obstruction to the no-extra-carrier route. It is a mathematical objection
+because zeros of a continued Dirichlet series can arise from global
+cancellation of the existing source.
 
-When a review returns to zero estimates, prime-counting error terms, or an
-unspecified "global analytic property," stop and correct the frame. The review
-has left the source order and is treating prime gap structure as an analytical
-method. Zero-excess does not change that: it is an integer-side coordinate, not
-a zero-control technique. The right question is:
+When a review returns to zero estimates or prime-counting error terms, keep the
+source order intact, but do not dismiss the placement demand. Zero-excess is an
+integer-side coordinate, not a zero-control technique. The right question is:
 
 ```text
-What source-side residual remains in the exact DNI quotient?
+What source-to-spectral placement theorem follows from PGS chamber geometry?
 ```
 
-If no residual is named, the analytical-proof expectation has not produced an
-objection to prime gap structure.
+If no such theorem is supplied, the RH-facing pole-placement sentence remains
+unresolved even though the local PGS source theorems and exact zeta
+compression stand.
 
 ## Status
 
@@ -78,7 +81,8 @@ objection to prime gap structure.
   coordinate without adding a new theorem.
 - exact zeta compression: the DNI quotient identifies the downstream analytic
   record of the source.
-- explanatory consequence: analytical-proof expectation is a category error.
+- source-to-spectral target: the off-critical-pole placement theorem remains
+  unresolved.
 
 ## Related Docs
 

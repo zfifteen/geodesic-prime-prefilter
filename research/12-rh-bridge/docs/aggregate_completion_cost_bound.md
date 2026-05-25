@@ -272,3 +272,9 @@ pointwise endpoint dominance
 Those imply the explicit aggregate cost bound above. They do not bound the
 kernel-weighted prime-power sums. The remaining local theorem is exactly the
 Kernel-Weighted Prime-Power Packet Estimate.
+
+The packet drift average bound needed for that estimate is recorded in
+[Packet Drift Weighted Average Lemma](packet_drift_weighted_average_lemma.md).
+
+The combined reduction with the completion transport radius is recorded in
+[Combined Reduction With Weighted Average Lemma](combined_reduction_with_weighted_average_lemma.md).

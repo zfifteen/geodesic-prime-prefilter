@@ -3,7 +3,7 @@
 ## Short Answer
 
 Every claim should be assigned to its exact status label: proved theorem, exact
-coordinate reformulation, exact zeta compression, source-side residual closure,
+coordinate reformulation, exact zeta compression, source-to-spectral target,
 measured implementation evidence, unresolved bounded-compression obligation,
 invalidated route, downstream translation bridge, or explanatory consequence.
 
@@ -11,7 +11,7 @@ invalidated route, downstream translation bridge, or explanatory consequence.
 
 ```text
 divisor counts -> PGS local theorems -> DNI-to-zeta compression
--> source-side residual closure -> pole placement/RH sentence
+-> source-to-spectral placement target -> pole placement/RH sentence
 ```
 
 ## Common Mistake
@@ -29,8 +29,8 @@ Use these labels:
 - exact zeta compression: an identity or bridge that carries integer structure
   into analytic language. In Zero-Excess DNI notation, the bridge load is
   $H(n)=\log n+E(n)$, not $E(n)$ alone.
-- source-side residual closure: the off-critical-pole residual test after local
-  PGS closure and exact DNI compression.
+- source-to-spectral target: the remaining off-critical-pole placement theorem
+  after local PGS closure and exact DNI compression.
 - measured implementation evidence: a finite implementation or benchmark
   surface.
 - unresolved bounded-compression obligation: a separate compression or
@@ -43,18 +43,18 @@ Use these labels:
   downstream language.
 
 `PROOF.md` controls local PGS theorem status. It does not itself prove RH. The
-RH bridge controls the exact zeta-compression identity. The source-side
-residual test controls off-critical-pole residual closure in the RH bundle.
+RH bridge controls the exact zeta-compression identity. The off-critical-pole
+pages record the remaining source-to-spectral placement obstruction in the RH
+bundle.
 Benchmarks and audits certify implementation surfaces. They do not define the
 source laws.
 
 The zero-excess floor is integer-side. The critical line is zeta-side. Treat
 that relation as an analogy after compression, not an identity of objects.
 
-PGS is not an analytical method. It does not require a classical zero-estimate
-or explicit-formula error-term proof to close the source-side RH sentence.
-Those explicit-formula objects remain downstream translation/proof-detail
-bridges.
+PGS is not a zeta-side method. The source-to-spectral placement theorem remains
+unresolved; explicit-formula objects remain downstream translation/proof-detail
+bridges unless they are used to state an equivalent RH-strength constraint.
 
 ## Status
 
@@ -62,8 +62,8 @@ bridges.
 - exact coordinate reformulation: controlled by the zero-excess notation
   contract and root-doc migration scope.
 - exact zeta compression: controlled by the DNI-to-zeta bridge.
-- source-side residual closure: controlled by the RH off-critical-pole
-  residual test.
+- source-to-spectral target: controlled by the RH off-critical-pole obstruction
+  notes.
 - measured implementation evidence: attached to implementation surfaces.
 - unresolved bounded-compression obligation: separate from the universal local
   theorems.

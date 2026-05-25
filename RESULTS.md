@@ -24,15 +24,17 @@ These are universal theorems under their stated hypotheses. Audit tables certify
 
 For the PGS-to-RH argument, read [docs/rh](docs/rh/README.md). That bundle
 reads the proved local theorem foundation through exact DNI-to-zeta compression,
-with bridge coordinate `H(n)=log n+E(n)`, and source-side residual closure:
+with bridge coordinate `H(n)=log n+E(n)`, and the remaining
+source-to-spectral placement target:
 
 ```text
 divisor counts -> PGS local theorems -> DNI-to-zeta compression
--> source-side residual closure -> pole placement/RH sentence
+-> source-to-spectral placement target -> pole placement/RH sentence
 ```
 
 `PROOF.md` controls the local PGS theorem status. It does not itself prove RH.
-`docs/rh` carries the RH reading path built on that source layer.
+`docs/rh` carries the RH reading path built on that source layer and records
+the current obstruction to the no-extra-carrier residual route.
 
 ## PGS Prime Generator
 
