@@ -33,11 +33,12 @@ the downstream order. In that downstream zeta compression, the load is
 
 ```text
 divisor counts -> local theorems -> zeta compression
--> source-side residual closure -> pole placement/RH sentence
+-> source-to-spectral placement target -> pole placement/RH sentence
 ```
 
 `PROOF.md` controls the local theorem status. It does not itself prove RH. The
-Riemann-hypothesis-facing reading path is built on that source layer.
+Riemann-hypothesis-facing reading path is built on that source layer, and the
+source-to-spectral placement step remains a separate proof target.
 
 ## What This Proof Establishes
 
@@ -702,5 +703,6 @@ RH-facing and PNT-facing language is downstream analytic description of this
 integer-level source. Those materials do not make RH, PNT, zero geometry, or
 pole placement the first-level object. They record how the exact arithmetic
 source appears after zeta compression, using `H(n)=log n+E(n)` in the
-zeta-compression load. This file does not itself prove RH. Read them
+zeta-compression load. This file does not itself prove RH or the remaining
+source-to-spectral placement step. Read them
 source-first, not shadow-first.
