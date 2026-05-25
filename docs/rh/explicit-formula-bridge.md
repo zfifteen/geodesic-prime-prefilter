@@ -4,12 +4,14 @@ The explicit formula belongs downstream of the source order:
 
 ```text
 divisor counts -> zero-excess returns -> local theorems
--> DNI-to-zeta compression -> residual closure -> pole placement/RH sentence
+-> DNI-to-zeta compression -> source-to-spectral placement target
+-> pole placement/RH sentence
 ```
 
 This page records the downstream analytic bridge surface. It translates the
 continued DNI ratio into `Lambda`, `psi`, zero-term, and error-term language.
-It is not a prerequisite for the source-side PGS-to-RH proof path.
+It also names one equivalent form of the remaining source-to-spectral
+placement target.
 
 ## Source To Analytic Chain
 
@@ -117,10 +119,9 @@ The bridge claim is:
   `Delta_Li(p,q)=1-int_p^q dt/log(t)` are downstream analytic shadows of fixed
   prime-gap endpoint structure.
 
-This is a downstream analytic bridge. The source-side closure belongs to the
-local PGS theorems, exact DNI compression with
-`H(n)=log n+E(n)=tau(n)log(n)/2`, and the off-critical residual test, not to a
-classical zero-estimate or prime-counting error-term argument.
+This is a downstream analytic bridge. The local PGS theorems and exact DNI
+compression with `H(n)=log n+E(n)=tau(n)log(n)/2` identify the source and the
+continued ratio. They do not yet supply the RH-strength placement constraint.
 
 ## Translation Status
 
@@ -136,11 +137,11 @@ The correct status split is:
 - exact zeta compression for the identity defining `R(s)`;
 - downstream analytic bridge for
   `R(s) -> Lambda(n) -> psi(x) -> zero terms`;
-- source-side residual closure for the off-critical-pole exclusion recorded in
-  `off-critical-pole-exclusion.md`;
+- unresolved source-to-spectral placement for the off-critical-pole exclusion
+  recorded in `off-critical-pole-exclusion.md`;
 - translation/proof-detail bridge for reviewers who want the RH sentence
   expressed through `psi`, `Lambda`, zero-term, or error-term estimates.
 
-PGS is not an analytical method. It does not require an explicit-formula
-error-term proof to close the source-side pole-placement sentence, and
-`PROOF.md` controls only the local PGS theorems.
+`PROOF.md` controls only the local PGS theorems. The pole-placement sentence
+still needs a source-to-spectral theorem, or an equivalent RH-strength
+explicit-formula bound derived from the PGS source.

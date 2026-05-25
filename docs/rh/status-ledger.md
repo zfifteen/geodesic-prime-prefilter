@@ -4,11 +4,12 @@ The status order is fixed:
 
 ```text
 divisor counts -> PGS local theorems -> DNI-to-zeta compression
--> source-side residual closure -> pole placement/RH sentence
+-> source-to-spectral placement target -> pole placement/RH sentence
 ```
 
 Read every RH-facing claim through that order. The integer object comes first.
-The analytic sentence comes after compression and source-side residual closure.
+The analytic sentence comes after exact compression and the unresolved
+source-to-spectral placement target.
 
 ## Sources
 
@@ -75,21 +76,23 @@ This is an exact zeta compression of the divisor-count source. It is not a
 replacement proof of the local PGS theorems, and `PROOF.md` itself does not
 prove RH.
 
-## Source-Side Residual Closure
+## Source-To-Spectral Placement Target
 
-Status: source-side residual closure, supplied by
-[Off-Critical Pole Exclusion](off-critical-pole-exclusion.md).
+Status: unresolved proof target, with obstruction recorded by
+[Off-Critical Pole Exclusion](off-critical-pole-exclusion.md) and
+[Off-Axis Pair Carrier Lemma Resolution](../../research/12-rh-bridge/docs/off_axis_pair_carrier_lemma_resolution.md).
 
-After local PGS source closure and exact DNI compression, an off-critical
-nontrivial pole of `R(s)` would need a surviving source-side residual: a failed
-identity in `D,K,R`, independent endpoint or gap-length freedom, a chamber
-log-weight remainder, an additional divisor-count field, or another named
-source object. The residual-test page closes those source-side carriers in the
-active RH bundle.
+After local PGS source closure and exact DNI compression, failed identities in
+`D,K,R`, independent endpoint or gap-length freedom, chamber log-weight
+remainders, and additional divisor-count fields are closed as bookkeeping
+failures. That does not yet exclude off-critical nontrivial poles of `R(s)`.
+Such poles could be global analytic properties of the same zeta-compressed
+source rather than signs of an extra source object.
 
-That closure is source-first. PGS is not an analytical method and does not
-require a classical zero-estimate, prime-counting error-term proof, or
-explicit-formula estimate to close the PGS-to-RH sentence.
+The remaining bridge is source-first but genuinely analytic: derive a
+source-to-spectral placement theorem from PGS chamber geometry and the
+$Z=1$ / $E=0$ return law, or derive an equivalent RH-strength constraint such
+as a sharp bound for `psi(x)-x`.
 
 ## Explanatory Consequence
 
@@ -99,19 +102,20 @@ The source order changes how RH-facing language is read:
 
 ```text
 divisor counts -> PGS local theorems -> DNI-to-zeta compression
--> source-side residual closure -> pole placement/RH sentence
+-> source-to-spectral placement target -> pole placement/RH sentence
 ```
 
 The pole-placement language is downstream of the source and compression
-layers. The RH sentence is the classical analytic wording of the closed
-source-side residual state:
+layers. The RH sentence is the classical analytic wording of the unresolved
+source-to-spectral target:
 
 $$
 \text{every nontrivial pole of } R(s) \text{ lies on } \mathrm{Re}(s)=1/2.
 $$
 
-That sentence belongs after the exact compression and source-side residual
-closure layers. It does not define the integer source.
+That sentence belongs after the exact compression layer. It does not define
+the integer source, and it is not yet proved by the no-extra-carrier residual
+test.
 
 ## Downstream Explicit-Formula Bridge
 
@@ -132,9 +136,10 @@ R(s) -> Lambda(n) -> psi(x) -> explicit-formula error-term language
 
 That bridge remains useful for reviewers who want the result restated in
 `psi`, `Lambda`, zero-term, or error-term language. It is downstream analytic
-translation, not a prerequisite for the source-side PGS-to-RH closure.
+translation, and it names one equivalent form of the missing placement
+constraint.
 
-Do not collapse source-side residual closure into the proved local theorems.
+Do not collapse source-to-spectral placement into the proved local theorems.
 Do not claim `PROOF.md` itself proves RH. Do not downgrade the proved local
 theorems because explicit-formula translation remains a separate downstream
 bridge.

@@ -21,7 +21,8 @@ into Dirichlet-series form.
 
 ```text
 divisor counts -> zero-excess returns -> local theorems
--> DNI-to-zeta compression -> residual closure -> pole placement/RH sentence
+-> DNI-to-zeta compression -> source-to-spectral target
+-> pole placement/RH sentence
 ```
 
 ## Source-To-Pole Ladder
@@ -30,7 +31,7 @@ The ladder is:
 
 $$
 \tau(n) \to D(s) \to K(s) \to R(s)=-\frac{\zeta'(s)}{\zeta(s)}
-\to \text{source-side residual closure} \to \text{pole placement}.
+\to \text{source-to-spectral placement target} \to \text{pole placement}.
 $$
 
 Start with the divisor-count Dirichlet series on $\mathrm{Re}(s)>1$:
@@ -86,8 +87,8 @@ $$
 
 So pole placement is not an extra zeta-side object added to PGS. It is the
 singularity geometry of the continued DNI ratio after the divisor-count source
-has been compressed and the source-side residual test has closed off-critical
-carriers.
+has been compressed. The source-side residual test closes bookkeeping
+failures in the bridge; it does not yet prove off-critical pole exclusion.
 
 ## Singularity Ledger
 
@@ -158,11 +159,11 @@ $$
 
 This sentence is downstream coordinate language. The source order remains:
 divisor counts, zero-excess returns, local PGS theorems, DNI-to-zeta
-compression, source-side residual closure, then pole-placement/RH language.
-The zero-excess floor is integer-side; the critical line is zeta-side. Analogy
-is permitted, identity is not. PGS is not an analytical
-method and does not require a classical zero-estimate or error-term proof to
-close this sentence.
+compression, the source-to-spectral placement target, then pole-placement/RH
+language. The zero-excess floor is integer-side; the critical line is
+zeta-side. Analogy is permitted, identity is not. A proof of the RH sentence
+still requires a theorem that transmits PGS chamber geometry into pole
+placement for the continued DNI ratio.
 
 ## Links
 
