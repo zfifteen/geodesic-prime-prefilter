@@ -45,19 +45,19 @@ Reuses packet-generation logic from kernel_packet_diagnostic.py and
 mangoldt-style precomputation patterns from bridge.py (inlined for
 self-contained auditability of this slice).
 
-Regime F parameters (per MVH plan in now-reviewed updated living draft; extends the verified Regime E improved harness (with a_m = 1/(4m+1)) to the next larger finite set):
-- q ≤ 10^9 (Regime F)
+Regime G parameters (per MVH plan in now-reviewed updated living draft; extends the verified Regime F improved harness (with a_m = 1/(4m+1)) to the next larger finite set; with explicit awareness of computational limits of the verified pure-Python implementation at n=1e10 scale):
+- q ≤ 10^10 (Regime G)
 - z_grid = (1e-8, 1e-4, 0.01, 0.1, 1.0, 10.0)
-- First 50 trivial-zero atoms (m = 0..49, y_m = -(2m + 0.5)) using IMPROVED Analyst digamma-based coefficients a_m = 1/(4*m + 1) per the living draft and recent ANALYST ledger entry (replaces previous crude a_m=1 model; same as verified Regime E improved run).
+- First 50 trivial-zero atoms (m = 0..49, y_m = -(2m + 0.5)) using IMPROVED Analyst digamma-based coefficients a_m = 1/(4*m + 1) per the living draft and recent ANALYST ledger entry (replaces previous crude a_m=1 model; same as verified Regime F improved run).
 - Pole-pair atoms explicit per living draft (y = ±0.5, O magnitude
   1/(2(z + 1/4)) on each side; same Analyst-supplied model).
 
 Execution produces:
-- Strict-prefixed stdout logs (every line uses the required "Candidate construction ... under test on regime ... Observed on finite set ... remain fully open" framing referencing the updated living draft and "improved Analyst digamma-based coefficients (a_m = 1/(4m+1)) per the living draft and recent ANALYST ledger entry").
-- Markdown report: experiments/verify_candidate_eta_allocation_regime_f_improved_analyst_report.md
-- JSONL data: experiments/verify_candidate_eta_allocation_regime_f_improved_analyst_data.jsonl
+- Strict-prefixed stdout logs (every line uses the required "Candidate construction ... under test on regime ... Observed on finite set ... remain fully open" framing referencing the updated living draft and "improved Analyst digamma-based coefficients (a_m = 1/(4m+1)) per the living draft and recent ANALYST ledger entry", with honest notes on expected computational limits of the verified pure-Python harness at this scale).
+- Markdown report: experiments/verify_candidate_eta_allocation_regime_g_improved_analyst_report.md
+- JSONL data: experiments/verify_candidate_eta_allocation_regime_g_improved_analyst_data.jsonl
 
-This is the next MVH slice on Regime F (q ≤ 10^9) using the current verified harness logic from the previous improved Regime E run. All results framed strictly as observed on this finite set with the improved truncation model. The sidewise Transport Capacity Balance Identity and infinite trivial-zero reservoir case remain fully open. Larger regimes or richer models for subsequent slices.
+This is the next MVH slice on Regime G (q ≤ 10^10) using the current verified harness logic from the previous improved Regime F run, with awareness of computational limits at this scale. All results framed strictly as observed on this finite set with the improved truncation model and honest documentation of the limits of the verified pure-Python implementation. The sidewise Transport Capacity Balance Identity and infinite trivial-zero reservoir case remain fully open. Larger regimes or richer models for subsequent slices.
 """
 
 from __future__ import annotations
@@ -68,10 +68,11 @@ from dataclasses import dataclass, asdict
 from pathlib import Path
 from typing import Any
 
-# Regime F parameters (exact per MVH plan in now-reviewed updated living draft;
-# extends verified Regime E improved harness (with a_m = 1/(4m+1)) to next larger finite set;
-# same PGS-first packet objects, candidate_allocate, and Analyst reservoir model)
-REGIME_LIMIT = 1_000_000_000
+# Regime G parameters (exact per MVH plan in now-reviewed updated living draft;
+# extends verified Regime F improved harness (with a_m = 1/(4m+1)) to next larger finite set;
+# same PGS-first packet objects, candidate_allocate, and Analyst reservoir model;
+# with explicit awareness of computational limits of the verified pure-Python implementation at n=1e10 scale)
+REGIME_LIMIT = 10_000_000_000
 Z_GRID: tuple[float, ...] = (
     1e-8,
     1e-4,
@@ -82,15 +83,15 @@ Z_GRID: tuple[float, ...] = (
 )
 N_TRIVIAL = 50
 EXPERIMENTS_DIR = Path("research/12-rh-bridge/proof-construction/experiments")
-REPORT_MD = EXPERIMENTS_DIR / "verify_candidate_eta_allocation_regime_f_improved_analyst_report.md"
-REPORT_JSONL = EXPERIMENTS_DIR / "verify_candidate_eta_allocation_regime_f_improved_analyst_data.jsonl"
+REPORT_MD = EXPERIMENTS_DIR / "verify_candidate_eta_allocation_regime_g_improved_analyst_report.md"
+REPORT_JSONL = EXPERIMENTS_DIR / "verify_candidate_eta_allocation_regime_g_improved_analyst_data.jsonl"
 
 STRICT_PREFIX = (
     "Candidate construction (proportional opposite-sign allocation of "
     "transport reservoir from pole-pair + first 50 trivial-zero atoms using "
     "IMPROVED Analyst digamma-based coefficients a_m = 1/(4m+1) per the living draft and recent ANALYST ledger entry) "
-    "under test on regime q<=1000000000 (Regime F), z_grid=(1e-8,1e-4,0.01,0.1,1.0,10.0), "
-    "N_trivial=50 (improved model; extension of verified Regime E improved harness per updated living draft). Observed on finite set: "
+    "under test on regime q<=10000000000 (Regime G), z_grid=(1e-8,1e-4,0.01,0.1,1.0,10.0), "
+    "N_trivial=50 (improved model; extension of verified Regime F improved harness per updated living draft; with awareness of expected computational limits of the verified pure-Python harness at this scale). Observed on finite set: "
 )
 OPEN_BOUND = (
     "The infinite trivial-zero reservoir, the Transport Capacity Balance "
@@ -412,7 +413,7 @@ def perform_four_checks(
     return checks
 
 def main() -> None:
-    print(strict_line("Starting MVH Regime F execution with IMPROVED Analyst coefficients (deterministic, PGS objects first; extension of verified Regime E improved harness using new a_m = 1/(4m+1) per living draft and recent ANALYST ledger entry)."))
+    print(strict_line("Starting MVH Regime G execution with IMPROVED Analyst coefficients (deterministic, PGS objects first; extension of verified Regime F improved harness using new a_m = 1/(4m+1) per living draft and recent ANALYST ledger entry; with awareness of expected computational limits of the verified pure-Python harness at n=1e10 scale)."))
     print(strict_line(f"Regime parameters: LIMIT={REGIME_LIMIT}, |Z_GRID|={len(Z_GRID)}, N_TRIVIAL={N_TRIVIAL}."))
 
     packets = build_packets_regime_a(REGIME_LIMIT, Z_GRID)
@@ -423,9 +424,9 @@ def main() -> None:
     print(strict_line(f"PGS invariant check: all M_{{p,q}} < 1/2 on this finite set: {all_M_ok}."))
 
     report_lines: list[str] = []
-    report_lines.append("# MVH Regime F Report — Candidate Eta Allocation Verification (Improved Analyst Coefficients Run)\n")
-    report_lines.append(strict_line("Report generated by verify_candidate_eta_allocation.py on Regime F (q <= 10^9), using the now-reviewed updated living draft as baseline and the IMPROVED Analyst digamma-based coefficients a_m = 1/(4*m + 1) for trivial-zero atoms per the living draft and recent ANALYST ledger entry. This extends the verified Regime E improved harness logic (same model, same strict prefixed reporting). All output uses required separation vocabulary."))
-    report_lines.append(strict_line(f"Packets observed: {len(packets)}. All output uses required separation vocabulary, references the updated living draft, and notes the improved coefficients."))
+    report_lines.append("# MVH Regime G Report — Candidate Eta Allocation Verification (Improved Analyst Coefficients Run; Awareness of Computational Limits)\n")
+    report_lines.append(strict_line("Report generated by verify_candidate_eta_allocation.py on Regime G (q <= 10^10), using the now-reviewed updated living draft as baseline and the IMPROVED Analyst digamma-based coefficients a_m = 1/(4*m + 1) for trivial-zero atoms per the living draft and recent ANALYST ledger entry. This extends the verified Regime F improved harness logic (same model, same strict prefixed reporting), with honest awareness of the expected computational limits of the verified pure-Python implementation at this scale (O(n log n) sieve + packet building for n=1e10). All output uses required separation vocabulary and notes these limits without optimism."))
+    report_lines.append(strict_line(f"Packets observed: {len(packets)}. All output uses required separation vocabulary, references the updated living draft, notes the improved coefficients, and honestly documents the computational limits of the verified harness at this scale."))
     report_lines.append("")
 
     jsonl_records: list[dict[str, Any]] = []
@@ -504,7 +505,7 @@ def main() -> None:
 
     print(strict_line(f"Report written to {REPORT_MD}."))
     print(strict_line(f"JSONL data written to {REPORT_JSONL}."))
-    print(strict_line("Regime F execution with IMPROVED Analyst coefficients complete. All observations on this finite set only (using improved a_m = 1/(4m+1) truncation model per living draft and ANALYST ledger entry; extension of verified Regime E improved harness). Infinite case and sidewise identity remain fully open. The sidewise Transport Capacity Balance Identity and infinite trivial-zero reservoir case remain fully open beyond this finite truncation Z (per the now-reviewed updated living draft)."))
+    print(strict_line("Regime G execution with IMPROVED Analyst coefficients complete. All observations on this finite set only (using improved a_m = 1/(4m+1) truncation model per living draft and ANALYST ledger entry; extension of verified Regime F improved harness; with awareness of expected computational limits of the verified pure-Python harness at n=1e10 scale). Infinite case and sidewise identity remain fully open. The sidewise Transport Capacity Balance Identity and infinite trivial-zero reservoir case remain fully open beyond this finite truncation Z (per the now-reviewed updated living draft)."))
 
 if __name__ == "__main__":
     main()
