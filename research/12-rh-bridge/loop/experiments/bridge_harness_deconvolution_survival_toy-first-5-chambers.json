@@ -1,0 +1,717 @@
+{
+  "timestamp": "2026-05-25T21:05:57.010621+00:00Z",
+  "target_lemma_id": "deconvolution_survival",
+  "regime": "toy-first-5-chambers",
+  "pgs_objects": [
+    "ordered prime-gap state",
+    "divisor-count field \u03c4(n)",
+    "GWR selector",
+    "deconvolved \u03bb=\u039b(n) on prime powers",
+    "centered x_n",
+    "folded kernels D(z) and R(z)",
+    "Chamber-Deconvolved Reciprocal Balance Lemma (live target)"
+  ],
+  "result": {
+    "diagnostic": "deconvolution_survival_with_balance_pressure",
+    "regime": "q<=100",
+    "z_grid": [
+      0.01,
+      0.1,
+      1.0
+    ],
+    "packet_observations": [
+      {
+        "chamber": "3-5",
+        "gwr": 4,
+        "z": 0.01,
+        "M": 0.25541281188299525,
+        "toy_D_z": 7.489564662157708,
+        "toy_R_z": 84.16959210818831,
+        "abs_D_over_R": 0.08898183387334126,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "3-5",
+        "gwr": 4,
+        "z": 0.1,
+        "M": 0.25541281188299525,
+        "toy_D_z": 2.7091542920900595,
+        "toy_R_z": 16.600292971343407,
+        "abs_D_over_R": 0.16319918550635173,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "3-5",
+        "gwr": 4,
+        "z": 1.0,
+        "M": 0.25541281188299525,
+        "toy_D_z": 0.40824089233332717,
+        "toy_R_z": 2.203301076114225,
+        "abs_D_over_R": 0.1852860223049076,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "5-7",
+        "gwr": 6,
+        "z": 0.01,
+        "M": 0.16823611831060648,
+        "toy_D_z": 8.546824633589136,
+        "toy_R_z": 50.80255488188056,
+        "abs_D_over_R": 0.16823611831060645,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "5-7",
+        "gwr": 6,
+        "z": 0.1,
+        "M": 0.16823611831060648,
+        "toy_D_z": 2.5515488423196597,
+        "toy_R_z": 15.16647476143532,
+        "abs_D_over_R": 0.1682361183106065,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "5-7",
+        "gwr": 6,
+        "z": 1.0,
+        "M": 0.16823611831060648,
+        "toy_D_z": 0.31836165548320666,
+        "toy_R_z": 1.89235021991788,
+        "abs_D_over_R": 0.16823611831060648,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "7-11",
+        "gwr": 9,
+        "z": 0.01,
+        "M": 0.2259925618715286,
+        "toy_D_z": 8.032295522625796,
+        "toy_R_z": 179.87272814022515,
+        "abs_D_over_R": 0.0446554383517438,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "7-11",
+        "gwr": 9,
+        "z": 0.1,
+        "M": 0.2259925618715286,
+        "toy_D_z": 3.2730591077057465,
+        "toy_R_z": 33.17416023613494,
+        "abs_D_over_R": 0.09866290764884438,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "7-11",
+        "gwr": 9,
+        "z": 1.0,
+        "M": 0.2259925618715286,
+        "toy_D_z": 0.47982988145039895,
+        "toy_R_z": 4.066559179684563,
+        "abs_D_over_R": 0.11799407318292578,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "11-13",
+        "gwr": 12,
+        "z": 0.01,
+        "M": 0.08352704233158326,
+        "toy_D_z": 12.619754755110465,
+        "toy_R_z": 151.08585678172255,
+        "abs_D_over_R": 0.08352704233158326,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "11-13",
+        "gwr": 12,
+        "z": 0.1,
+        "M": 0.08352704233158326,
+        "toy_D_z": 2.002702455555341,
+        "toy_R_z": 23.976695446788,
+        "abs_D_over_R": 0.08352704233158327,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "11-13",
+        "gwr": 12,
+        "z": 1.0,
+        "M": 0.08352704233158326,
+        "toy_D_z": 0.21275826873319298,
+        "toy_R_z": 2.5471782885426646,
+        "abs_D_over_R": 0.08352704233158327,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "13-17",
+        "gwr": 14,
+        "z": 0.01,
+        "M": 0.1341319932973395,
+        "toy_D_z": 16.88429764436722,
+        "toy_R_z": 146.2171253030518,
+        "abs_D_over_R": 0.11547414579087485,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "13-17",
+        "gwr": 14,
+        "z": 0.1,
+        "M": 0.1341319932973395,
+        "toy_D_z": 3.7041768621580164,
+        "toy_R_z": 30.588175277487533,
+        "abs_D_over_R": 0.12109832732926172,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "13-17",
+        "gwr": 14,
+        "z": 1.0,
+        "M": 0.1341319932973395,
+        "toy_D_z": 0.4239858182253515,
+        "toy_R_z": 3.472562771980772,
+        "abs_D_over_R": 0.12209594068288282,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "17-19",
+        "gwr": 18,
+        "z": 0.01,
+        "M": 0.05561281755511205,
+        "toy_D_z": 12.506776960905393,
+        "toy_R_z": 224.890187383713,
+        "abs_D_over_R": 0.05561281755511205,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "17-19",
+        "gwr": 18,
+        "z": 0.1,
+        "M": 0.05561281755511205,
+        "toy_D_z": 1.5883608828088174,
+        "toy_R_z": 28.561057551791162,
+        "abs_D_over_R": 0.055612817555112055,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "17-19",
+        "gwr": 18,
+        "z": 1.0,
+        "M": 0.05561281755511205,
+        "toy_D_z": 0.16324367009854562,
+        "toy_R_z": 2.9353605387242228,
+        "abs_D_over_R": 0.05561281755511205,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "19-23",
+        "gwr": 21,
+        "z": 0.01,
+        "M": 0.0955276183813547,
+        "toy_D_z": 15.661074988241866,
+        "toy_R_z": 163.94290210106013,
+        "abs_D_over_R": 0.0955276183813547,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "19-23",
+        "gwr": 21,
+        "z": 0.1,
+        "M": 0.0955276183813547,
+        "toy_D_z": 2.7447867260967715,
+        "toy_R_z": 28.732912770203693,
+        "abs_D_over_R": 0.0955276183813547,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "19-23",
+        "gwr": 21,
+        "z": 1.0,
+        "M": 0.0955276183813547,
+        "toy_D_z": 0.2968176775004485,
+        "toy_R_z": 3.1071399301040468,
+        "abs_D_over_R": 0.0955276183813547,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "23-29",
+        "gwr": 25,
+        "z": 0.01,
+        "M": 0.11590080702866201,
+        "toy_D_z": 15.998756865318937,
+        "toy_R_z": 380.9921795470203,
+        "abs_D_over_R": 0.04199234977563219,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "23-29",
+        "gwr": 25,
+        "z": 0.1,
+        "M": 0.11590080702866201,
+        "toy_D_z": 3.4014411883718436,
+        "toy_R_z": 56.38463234676586,
+        "abs_D_over_R": 0.06032567823539148,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "23-29",
+        "gwr": 25,
+        "z": 1.0,
+        "M": 0.11590080702866201,
+        "toy_D_z": 0.381545038179779,
+        "toy_R_z": 6.026846968287299,
+        "abs_D_over_R": 0.06330757030789616,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "29-31",
+        "gwr": 30,
+        "z": 0.01,
+        "M": 0.03334568724933629,
+        "toy_D_z": 10.30501571517033,
+        "toy_R_z": 309.03593733475805,
+        "abs_D_over_R": 0.03334568724933629,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "29-31",
+        "gwr": 30,
+        "z": 0.1,
+        "M": 0.03334568724933629,
+        "toy_D_z": 1.1324940374215033,
+        "toy_R_z": 33.962234125015506,
+        "abs_D_over_R": 0.03334568724933629,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "29-31",
+        "gwr": 30,
+        "z": 1.0,
+        "M": 0.03334568724933629,
+        "toy_D_z": 0.11438147858582022,
+        "toy_R_z": 3.4301730754731072,
+        "abs_D_over_R": 0.03334568724933629,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "31-37",
+        "gwr": 33,
+        "z": 0.01,
+        "M": 0.08846535407953882,
+        "toy_D_z": 14.945360432497822,
+        "toy_R_z": 255.00781089823477,
+        "abs_D_over_R": 0.058607461394435574,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "31-37",
+        "gwr": 33,
+        "z": 0.1,
+        "M": 0.08846535407953882,
+        "toy_D_z": 2.5816801058612904,
+        "toy_R_z": 40.20379229508142,
+        "abs_D_over_R": 0.06421484040392718,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "31-37",
+        "gwr": 33,
+        "z": 1.0,
+        "M": 0.08846535407953882,
+        "toy_D_z": 0.27777362634331454,
+        "toy_R_z": 4.273802513110767,
+        "abs_D_over_R": 0.06499449272426297,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "37-41",
+        "gwr": 38,
+        "z": 0.01,
+        "M": 0.05132707703004158,
+        "toy_D_z": 15.086253485740663,
+        "toy_R_z": 293.9238771946964,
+        "abs_D_over_R": 0.05132707703004158,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "37-41",
+        "gwr": 38,
+        "z": 0.1,
+        "M": 0.05132707703004158,
+        "toy_D_z": 1.8571421636924175,
+        "toy_R_z": 36.182503878127285,
+        "abs_D_over_R": 0.051327077030041586,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "37-41",
+        "gwr": 38,
+        "z": 1.0,
+        "M": 0.05132707703004158,
+        "toy_D_z": 0.19010597126741607,
+        "toy_R_z": 3.7038144828731943,
+        "abs_D_over_R": 0.051327077030041586,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "41-43",
+        "gwr": 42,
+        "z": 0.01,
+        "M": 0.023814024494626995,
+        "toy_D_z": 8.476237178262862,
+        "toy_R_z": 355.9346795908143,
+        "abs_D_over_R": 0.023814024494626992,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "41-43",
+        "gwr": 42,
+        "z": 0.1,
+        "M": 0.023814024494626995,
+        "toy_D_z": 0.8906422157006991,
+        "toy_R_z": 37.39990340152917,
+        "abs_D_over_R": 0.023814024494626992,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "41-43",
+        "gwr": 42,
+        "z": 1.0,
+        "M": 0.023814024494626995,
+        "toy_D_z": 0.08951854502253868,
+        "toy_R_z": 3.7590683188696716,
+        "abs_D_over_R": 0.023814024494626995,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "43-47",
+        "gwr": 46,
+        "z": 0.01,
+        "M": 0.0444737430082478,
+        "toy_D_z": 14.295517366046766,
+        "toy_R_z": 321.4372436202551,
+        "abs_D_over_R": 0.0444737430082478,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "43-47",
+        "gwr": 46,
+        "z": 0.1,
+        "M": 0.0444737430082478,
+        "toy_D_z": 1.6790937230709984,
+        "toy_R_z": 37.754720189834366,
+        "abs_D_over_R": 0.0444737430082478,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "43-47",
+        "gwr": 46,
+        "z": 1.0,
+        "M": 0.0444737430082478,
+        "toy_D_z": 0.1708924644156579,
+        "toy_R_z": 3.8425473741655907,
+        "abs_D_over_R": 0.0444737430082478,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "47-53",
+        "gwr": 49,
+        "z": 0.01,
+        "M": 0.06007215592103199,
+        "toy_D_z": 14.062764824792598,
+        "toy_R_z": 479.9664157461405,
+        "abs_D_over_R": 0.029299476720534855,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "47-53",
+        "gwr": 49,
+        "z": 0.1,
+        "M": 0.06007215592103199,
+        "toy_D_z": 1.9451406613187257,
+        "toy_R_z": 57.713523260689,
+        "abs_D_over_R": 0.03370337750015063,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "47-53",
+        "gwr": 49,
+        "z": 1.0,
+        "M": 0.06007215592103199,
+        "toy_D_z": 0.2018548307290685,
+        "toy_R_z": 5.901267584787154,
+        "abs_D_over_R": 0.03420533433349625,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "53-59",
+        "gwr": 55,
+        "z": 0.01,
+        "M": 0.05362276517679909,
+        "toy_D_z": 16.981904779871797,
+        "toy_R_z": 316.69207516398916,
+        "abs_D_over_R": 0.05362276517679909,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "53-59",
+        "gwr": 55,
+        "z": 0.1,
+        "M": 0.05362276517679909,
+        "toy_D_z": 2.125375267996472,
+        "toy_R_z": 39.63568944997368,
+        "abs_D_over_R": 0.0536227651767991,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "53-59",
+        "gwr": 55,
+        "z": 1.0,
+        "M": 0.05362276517679909,
+        "toy_D_z": 0.2180219323837102,
+        "toy_R_z": 4.065846505022116,
+        "abs_D_over_R": 0.053622765176799085,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "59-61",
+        "gwr": 60,
+        "z": 0.01,
+        "M": 0.016668210133795824,
+        "toy_D_z": 6.666865918320739,
+        "toy_R_z": 399.97491421128996,
+        "abs_D_over_R": 0.016668210133795824,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "59-61",
+        "gwr": 60,
+        "z": 0.1,
+        "M": 0.016668210133795824,
+        "toy_D_z": 0.6833106572844518,
+        "toy_R_z": 40.994842985510324,
+        "abs_D_over_R": 0.016668210133795824,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "59-61",
+        "gwr": 60,
+        "z": 1.0,
+        "M": 0.016668210133795824,
+        "toy_D_z": 0.0685018775777331,
+        "toy_R_z": 4.109732060483286,
+        "abs_D_over_R": 0.016668210133795824,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "61-67",
+        "gwr": 62,
+        "z": 0.01,
+        "M": 0.046909377608827185,
+        "toy_D_z": 16.24275032762853,
+        "toy_R_z": 413.93943685776435,
+        "abs_D_over_R": 0.03923943669375426,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "61-67",
+        "gwr": 62,
+        "z": 0.1,
+        "M": 0.046909377608827185,
+        "toy_D_z": 1.937550715477652,
+        "toy_R_z": 48.072997275325825,
+        "abs_D_over_R": 0.040304346000746005,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "61-67",
+        "gwr": 62,
+        "z": 1.0,
+        "M": 0.046909377608827185,
+        "toy_D_z": 0.1975687944256191,
+        "toy_R_z": 4.888606893722702,
+        "abs_D_over_R": 0.04041412998032438,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "67-71",
+        "gwr": 69,
+        "z": 0.01,
+        "M": 0.028993628825174866,
+        "toy_D_z": 11.40067987867648,
+        "toy_R_z": 393.213279628433,
+        "abs_D_over_R": 0.028993628825174866,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "67-71",
+        "gwr": 69,
+        "z": 0.1,
+        "M": 0.028993628825174866,
+        "toy_D_z": 1.2256027905360698,
+        "toy_R_z": 42.271452046454144,
+        "abs_D_over_R": 0.028993628825174863,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "67-71",
+        "gwr": 69,
+        "z": 1.0,
+        "M": 0.028993628825174866,
+        "toy_D_z": 0.12348675142434706,
+        "toy_R_z": 4.2590995480056915,
+        "abs_D_over_R": 0.028993628825174866,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "71-73",
+        "gwr": 72,
+        "z": 0.01,
+        "M": 0.013889782053537303,
+        "toy_D_z": 5.846559298194134,
+        "toy_R_z": 420.9252006733392,
+        "abs_D_over_R": 0.013889782053537303,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "71-73",
+        "gwr": 72,
+        "z": 0.1,
+        "M": 0.013889782053537303,
+        "toy_D_z": 0.5947879645717987,
+        "toy_R_z": 42.82197965952421,
+        "abs_D_over_R": 0.013889782053537301,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "71-73",
+        "gwr": 72,
+        "z": 1.0,
+        "M": 0.013889782053537303,
+        "toy_D_z": 0.059582051617491576,
+        "toy_R_z": 4.289631859437121,
+        "abs_D_over_R": 0.013889782053537301,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "73-79",
+        "gwr": 74,
+        "z": 0.01,
+        "M": 0.03949420565931572,
+        "toy_D_z": 14.928284861285624,
+        "toy_R_z": 377.9867100014557,
+        "abs_D_over_R": 0.039494205659315725,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "73-79",
+        "gwr": 74,
+        "z": 0.1,
+        "M": 0.03949420565931572,
+        "toy_D_z": 1.6991751186935957,
+        "toy_R_z": 43.02340280878144,
+        "abs_D_over_R": 0.03949420565931572,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "73-79",
+        "gwr": 74,
+        "z": 1.0,
+        "M": 0.03949420565931572,
+        "toy_D_z": 0.17229912126367633,
+        "toy_R_z": 4.362643035536914,
+        "abs_D_over_R": 0.039494205659315725,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "79-83",
+        "gwr": 82,
+        "z": 0.01,
+        "M": 0.024696377664788827,
+        "toy_D_z": 10.319104275156425,
+        "toy_R_z": 526.3425491198581,
+        "abs_D_over_R": 0.019605301324036737,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "79-83",
+        "gwr": 82,
+        "z": 0.1,
+        "M": 0.024696377664788827,
+        "toy_D_z": 1.0880279291111243,
+        "toy_R_z": 54.90664257608839,
+        "abs_D_over_R": 0.019815961750044356,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "79-83",
+        "gwr": 82,
+        "z": 1.0,
+        "M": 0.024696377664788827,
+        "toy_D_z": 0.1093978316748451,
+        "toy_R_z": 5.514759337283924,
+        "abs_D_over_R": 0.019837281191081794,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "83-89",
+        "gwr": 85,
+        "z": 0.01,
+        "M": 0.03489788096777069,
+        "toy_D_z": 13.963792422961369,
+        "toy_R_z": 400.13296038969753,
+        "abs_D_over_R": 0.03489788096777069,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "83-89",
+        "gwr": 85,
+        "z": 0.1,
+        "M": 0.03489788096777069,
+        "toy_D_z": 1.5475914477415735,
+        "toy_R_z": 44.34628707602114,
+        "abs_D_over_R": 0.03489788096777069,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "83-89",
+        "gwr": 85,
+        "z": 1.0,
+        "M": 0.03489788096777069,
+        "toy_D_z": 0.15645335912264483,
+        "toy_R_z": 4.48317647902847,
+        "abs_D_over_R": 0.03489788096777069,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "89-97",
+        "gwr": 91,
+        "z": 0.01,
+        "M": 0.04303730438562159,
+        "toy_D_z": 16.611521059895523,
+        "toy_R_z": 385.9795890340496,
+        "abs_D_over_R": 0.043037304385621596,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "89-97",
+        "gwr": 91,
+        "z": 0.1,
+        "M": 0.04303730438562159,
+        "toy_D_z": 1.9330285488322165,
+        "toy_R_z": 44.91518640461194,
+        "abs_D_over_R": 0.04303730438562159,
+        "gwr_signature_preserved_after_deconvolution": true
+      },
+      {
+        "chamber": "89-97",
+        "gwr": 91,
+        "z": 1.0,
+        "M": 0.04303730438562159,
+        "toy_D_z": 0.19651923405233368,
+        "toy_R_z": 4.566253320409843,
+        "abs_D_over_R": 0.04303730438562159,
+        "gwr_signature_preserved_after_deconvolution": true
+      }
+    ],
+    "summary": "Candidate construction under test on regime q<=100 on 69 (chamber,z) pairs. GWR structure survived into the deconvolved \u03bb view on all observed packets. abs(D/R) vs M behavior recorded as data. Larger regimes and real completion terms needed for serious reciprocal balance pressure. The live target (Chamber-Deconvolved Reciprocal Balance Lemma) remains fully open. No claims on the infinite case or the full three obligations."
+  },
+  "status": "Candidate construction under test on regime toy-first-5-chambers. Real GWR-ordered packet construction with \u03bb on prime powers executed. D(z) and R(z) computed on toy chambers. Observations on abs(D/R) vs M recorded as data toward reciprocal balance pressure. Larger regimes and real completion terms required for serious lemma progress. The live target (Chamber-Deconvolved Reciprocal Balance Lemma) remains fully open. No claims on the infinite case or the full three obligations."
+}
