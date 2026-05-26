@@ -284,6 +284,18 @@ pre-selector prime powers. It controls where those atoms sit before folding.
 It does not control the number of such atoms or the completion cost required
 to cancel their odd drift.
 
+### Candidate GWR Local Supply (measured, 2026-05 Core Insight decisive test)
+
+On the exact ordinary regime of 1752 GWR chambers (first primes, q ≲ 15 000) the
+simple local form δ_GWR = E(g) · log(q/p) at the proved GWR maximizer produced
+a positive lower envelope of 6.361867 after both raw-packet and GWR-bounded local
+deconvolution models (z = 1.0). The same floor was observed under optimistic
+modeling on 300 high-merit gaps with p ≳ 10^12. See the candidate local lemma
+`research/12-rh-bridge/docs/candidate_gwr_local_completion_correction_lower_bound.md`
+and artifacts in `experiments/core-insight-decisive-test/`. This is measured
+support on a finite set only; it does not replace the proved Aggregate
+Completion-Cost Bound target and the live lemma remains fully open.
+
 ## Smallest Additional Local Estimate
 
 The missing estimate is aggregate and folded. The current pointwise and
