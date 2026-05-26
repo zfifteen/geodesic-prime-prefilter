@@ -1,0 +1,39 @@
+{
+  "timestamp": "2026-05-25T20:44:25.043189Z",
+  "target_lemma_id": "deconvolution_survival_toy",
+  "regime": "toy-first-5-chambers",
+  "pgs_objects": [
+    "ordered prime-gap state",
+    "divisor-count field \u03c4(n)",
+    "GWR selector",
+    "zero-excess signature",
+    "deconvolved \u03bb=\u039b(n) (toy view)"
+  ],
+  "result": {
+    "diagnostic": "deconvolution_survival_toy",
+    "survivors": [
+      {
+        "chamber": "3-5",
+        "gwr": 4,
+        "toy_deconvolved_signature_preserved": true
+      },
+      {
+        "chamber": "5-7",
+        "gwr": 6,
+        "toy_deconvolved_signature_preserved": true
+      },
+      {
+        "chamber": "7-11",
+        "gwr": 9,
+        "toy_deconvolved_signature_preserved": true
+      },
+      {
+        "chamber": "11-13",
+        "gwr": 12,
+        "toy_deconvolved_signature_preserved": true
+      }
+    ],
+    "all_preserved": true
+  },
+  "status": "Candidate construction under test on regime toy-first-5-chambers. Observed on finite set: all toy GWR-selected points preserved their minimal signature after the placeholder deconvolution step. The live target (Chamber-Deconvolved Reciprocal Balance Lemma) remains fully open. No claims on the infinite case or the full three obligations."
+}
