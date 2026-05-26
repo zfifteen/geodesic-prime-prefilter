@@ -1,0 +1,19 @@
+Candidate construction under test on regime [Stage 2 adversarial - large/record gaps from external data, merit >=15].
+PGS objects surfaced: extreme ordered prime-gap states from record lists, GWR maximizer and E(n), the required completion correction identities from the Folded Packet Drift Inequality.
+
+Tested 300 high-merit large gaps (p from ~10^12 upward).
+
+Method: For each gap, computed scale = log(1 + gap/p). Used optimistic (best-case) estimate of lowest possible E(g) in the interval. Formed δ_optimistic = E_optimistic * scale. Compared resulting ratio against the k≈6.36 floor observed in Stages 0-1 under favorable assumptions for the raw packet reserve.
+
+Observed:
+- Number of gaps where even the optimistic GWR δ failed to maintain ratio >= 6.36: 0
+
+Even under optimistic assumptions, the simple GWR δ form maintained the previous positive lower bound on all tested high-merit gaps.
+No falsification found in this adversarial set under the modeled assumptions.
+
+This test uses bounded estimates because full interior divisor data is unavailable at these scales. It is therefore not a complete falsification test, but it is a strong stress test of the local correction idea.
+
+The live target (Chamber-Deconvolved Reciprocal Balance Lemma — all three obligations) remains fully open.
+No obligation discharged. Finite measured diagnostic on extreme chambers using available record data only.
+
+CSV: {csv_out}

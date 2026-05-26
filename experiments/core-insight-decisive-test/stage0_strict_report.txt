@@ -1,0 +1,22 @@
+Candidate construction under test on regime [Stage 0 baseline diagnostics, first primes up to ~15000, z=1.0 fixed].
+PGS objects surfaced: ordered prime-gap state, divisor-count field τ(n), zero-excess E(n), GWR leftmost minimizer,
+deconvolved packet support P(p,q), centered coordinates, J_z and K_z kernels from the reduction (folded_packet_drift_inequality.md etc.).
+
+Observed on this finite set (1752 chambers):
+  min ratio (effective_R / scale) = 6.361867
+  median ratio = 7503.076337
+  min ratio among the largest-scale 87 chambers in regime = 6.361867
+
+The GWR-derived local term δ = E(g) * log(q/p) was added directly to the raw packet folded reserve R
+computed from the exact packet measure ν using the K kernel at z=1.0. The ratio (R + δ) / scale
+was formed exactly as in the Core Insight falsifiable prediction.
+
+This is a grounding baseline only (raw packet + proposed local supply, no deconvolution model yet).
+It quantifies how the simple GWR form behaves relative to the packet's own drift and reserve
+before the more faithful local deconvolution model of Stage 1 is applied.
+
+The live target (Chamber-Deconvolved Reciprocal Balance Lemma — all three obligations) remains fully open.
+No obligation discharged. This is a finite measured diagnostic on a toy regime only.
+
+CSV: experiments/core-insight-decisive-test/stage0_gwr_vs_drift_baseline.csv
+Plot: experiments/core-insight-decisive-test/stage0_ratio_vs_scale.png

@@ -1,0 +1,19 @@
+Candidate construction under test on regime [Stage 1 local GWR-envelope deconvolution model, 1752 chambers, z=1.0].
+PGS objects surfaced: ordered prime-gap state, divisor-count field τ(n), zero-excess E(n), GWR point w with d=τ(w),
+deconvolved packet support P(p,q), centered x_n, J_z/K_z kernels, and the explicit GWR selector-to-packet coefficient
+envelope (n<w ⇒ λ(n) < log(w)/d ; w<n<q ⇒ λ(n) < log(q)/(d-1)) from the reduction documents.
+
+Observed on this finite set (1752 chambers):
+  min ratio (GWR-bounded effective reserve after δ / scale) = 6.361867
+  median ratio = 7456.473326
+
+The packet contributions D and R were recomputed using the GWR-bounded λ envelopes (a direct local model of the
+effect of deconvolution relative to the GWR minimum). The Core Insight δ was then added exactly as before.
+
+This is a refinement of the Stage 0 baseline using only already-proved local GWR control. No global objects used.
+
+The live target (Chamber-Deconvolved Reciprocal Balance Lemma — all three obligations) remains fully open.
+No obligation discharged. Finite measured diagnostic on toy regime only.
+
+CSV: experiments/core-insight-decisive-test/stage1_gwr_bounded_vs_drift.csv
+Plot: experiments/core-insight-decisive-test/stage1_gwr_bounded_ratio_vs_scale.png
