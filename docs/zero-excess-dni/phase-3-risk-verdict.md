@@ -54,7 +54,7 @@ Excluded:
 python3 -m pytest tests/python/test_zero_excess_invariant.py
 result: 5 passed
 
-python3 -m pytest research/12-rh-bridge/tests/test_bridge.py
+# RH bridge tests archived externally — see research/12-rh-bridge/README.md and external archive/test_bridge.py
 result: 6 passed
 
 python3 -m pytest tests/python/prefilter

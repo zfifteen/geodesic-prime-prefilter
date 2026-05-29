@@ -20,9 +20,9 @@ the exact DNI-to-zeta compression, the source-to-spectral placement target,
 and the pole-placement language that gives the RH-facing sentence.
 
 This folder is the bundle index and source-order guide. The FAQ remains the
-objection-handling surface. The `research/12-rh-bridge` tree remains the
-workbench where bridge details, downstream translation notes, and draft
-technical artifacts live.
+objection-handling surface. **Note (post-archival):** The detailed `research/12-rh-bridge` workbench material (classical completion strategy, loop infrastructure, etc.) has been moved outside the repository to `/Users/velocityworks/prime-gap-structure-archives/2026-05-classical-rh-bridge-completion-route/` due to classical drift and prompt injection concerns. See the pointer at `research/12-rh-bridge/README.md` and the ARCHIVAL_HANDOFF.md there.
+
+The public narrative spine in `docs/rh/` remains, but deep technical workbench content is no longer on the live surface.
 
 For Zero-Excess DNI Phase 1, zero-excess is an exact coordinate
 reformulation. The zero-excess floor is integer-side; the critical line is

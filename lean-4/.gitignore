@@ -1,0 +1,15 @@
+# Lean 4 + Lake build artifacts
+.lake/
+lake-packages/
+lean_packages/
+*.olean
+*.ilean
+*.hash
+
+# Editor / tooling
+.vscode/
+.idea/
+
+# Temporary
+*.tmp
+*~

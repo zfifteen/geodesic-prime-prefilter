@@ -18,3 +18,11 @@ research/06-cryptology-rsa/experiments/pedk/rsa-v2/gap-compatibility/core-eviden
 AGENTS.md
 docs/deprecated/AGENTS.bak
 **/output/*
+
+# Lean 4 formalization artifacts (lean-4/ subdirectory + any stray top-level builds)
+lean-4/.lake/
+lean-4/lake-packages/
+lean-4/lean_packages/
+**/*.olean
+**/*.ilean
+**/*.hash
