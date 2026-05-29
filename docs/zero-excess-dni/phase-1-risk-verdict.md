@@ -159,7 +159,7 @@ docs, FAQ reviewer guidance, or Phase 1 status language:
 
 ```bash
 python3 -m pytest tests/python/test_doc_proof_status_surface.py
-python3 -m pytest research/12-rh-bridge/tests
+# RH bridge tests archived externally (see research/12-rh-bridge/README.md)
 ```
 
 Required result: tests pass, or the verdict is `revise` with exact failing test

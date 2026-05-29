@@ -278,13 +278,10 @@ Primary research live docs:
 - `research/02-gwr-dni/docs/why_the_dominant_d4_reduction_matters.md`
 - `research/02-gwr-dni/docs/gap_anatomy_decomposition.md`
 
-RH bridge research:
+RH bridge research (classical completion material — archived externally May 2026 due to drift/steering concerns):
 
-- `research/12-rh-bridge/README.md`
-- `research/12-rh-bridge/docs/dni_rh_bridge.md`
-- `research/12-rh-bridge/docs/prime-structure-program/index.html`
-- `research/12-rh-bridge/assets/x-posts/rh-wrong-object/README.md`
-- `research/12-rh-bridge/assets/x-posts/rh-prime-gaps/README.md`
+- See external archive: `/Users/velocityworks/prime-gap-structure-archives/2026-05-classical-rh-bridge-completion-route/12-rh-bridge/`
+- Live pointer inside repo: `research/12-rh-bridge/README.md` + ARCHIVAL_HANDOFF.md in the external archive.
 
 Continuity and index surfaces:
 
@@ -662,7 +659,7 @@ git diff --check
 
 ```bash
 python3 -m pytest tests/python/test_doc_proof_status_surface.py
-python3 -m pytest research/12-rh-bridge/tests
+# RH bridge tests archived externally — see research/12-rh-bridge/README.md and external archive
 ```
 
 ### Tests If Invariant Package Changes

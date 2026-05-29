@@ -119,8 +119,8 @@ The hypothesis has not been falsified on any data we could access. It has produc
 All artifacts are in the repository under:
 
 - `experiments/core-insight-decisive-test/` — stage scripts, CSVs, plots, and strict reports for each stage.
-- `research/12-rh-bridge/docs/candidate_gwr_local_completion_correction_lower_bound.md` — the candidate lemma.
-- `research/12-rh-bridge/loop/LOOP_LEDGER.md` — full strict execution log.
+- External archive: `/Users/velocityworks/prime-gap-structure-archives/2026-05-classical-rh-bridge-completion-route/12-rh-bridge/docs/candidate_gwr_local_completion_correction_lower_bound.md` — the candidate GWR local lemma (preserved PGS result).
+- External archive: `/Users/velocityworks/prime-gap-structure-archives/2026-05-classical-rh-bridge-completion-route/12-rh-bridge/loop/LOOP_LEDGER.md` — relevant execution log sections (the Core Insight test record).
 - This report.
 
 Every document and code file uses the project’s mandatory strict separation language except for the final plain-English summary requested by the user.

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PGS Lean 4 Verification — Status</title>
+<style>
+body { font-family: system-ui, sans-serif; margin: 2rem; line-height: 1.6; background: #0d1117; color: #c9d1d9; }
+h1, h2 { color: #58a6ff; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+th, td { border: 1px solid #30363d; padding: 0.5rem; text-align: left; }
+th { background: #161b22; }
+.status-proved { background: #1a472a; color: #56d364; }
+.status-inprogress { background: #3d2a1a; color: #d29922; }
+.status-blocked { background: #3d1f1f; color: #f85149; }
+.contract { background: #161b22; padding: 1rem; border-left: 4px solid #58a6ff; }
+</style>
+</head>
+<body>
+
+<h1>PGS Lean 4 Formalization — Status Surface</h1>
+
+<p><strong>🔄 PHASE 1 — Characterization Lemmas (Active Iteration on Counting Arguments)</strong><br>
+2026-05-27 — Non-stop execution on user goal: close remaining counting arguments until lemmas are fully proved</p>
+
+<div class="contract">
+<strong>Active Contracts</strong>: 
+<a href="../../../lean-4/LEAN_PGS_VERIFICATION_CONTRACT.md">LEAN_PGS_VERIFICATION_CONTRACT.md</a> • 
+<a href="../../../lean-4/PGS_LEAN_FORMALIZATION_PLAN.md">PGS_LEAN_FORMALIZATION_PLAN.md</a> • 
+<a href="PGS_LEAN_TRANSLATION_PLAN.html">Detailed Translation Plan (18.7 KB)</a>
+</div>
+
+<h2>Current Status (Honest)</h2>
+
+<table>
+<tr><th>Item</th><th>Status</th><th>Notes</th></tr>
+<tr><td>Self-contained pure-Lean build</td><td class="status-inprogress">Compiles with partial proofs</td><td>Structure stable. Multiple iterations completed this session.</td></tr>
+<tr><td>tau implementation</td><td class="status-proved">Defined + parses</td><td>Pure List.range + filter (matches Python reference)</td></tr>
+<tr><td>Main lemma: tau_eq_two_iff_only_divisors_are_1_and_n</td><td class="status-inprogress">Statement + structured proof skeleton</td><td>Forward direction has full setup for three distinct divisors. Core counting argument (length ≥ 3) remains as explicit sorry.</td></tr>
+<tr><td>Reverse direction (only 1 and n → tau = 2)</td><td class="status-inprogress">Skeleton present</td><td>Requires proving the filter contains exactly those two elements.</td></tr>
+<tr><td>Contrapositive lemma (tau > 2 ↔ has proper divisor)</td><td class="status-inprogress">Planned / not yet added</td><td>Will be added once primary lemma is closed.</td></tr>
+<tr><td>Smoke test</td><td class="status-inprogress">Partial</td><td>Loads the current state</td></tr>
+</table>
+
+<h2>Exact Remaining Work (User Goal)</h2>
+<ul>
+<li><strong>Primary obligation</strong>: Close the divisor counting arguments in <code>PGS/Basic.lean</code>.
+  <ul>
+    <li>Prove: three distinct members in the filter (1, d, n) ⇒ <code>tau n ≥ 3</code></li>
+    <li>Prove: "only 1 and n divide n" ⇒ filter has exactly length 2</li>
+  </ul>
+</li>
+<li>These are the precise "remaining counting arguments" the session was directed to close non-stop.</li>
+</ul>
+
+<h2>Phase 1 Lemmas (Current Source State)</h2>
+<pre>
+theorem tau_eq_two_iff_only_divisors_are_1_and_n
+    (n : Nat) (h : n > 1) :
+    tau n = 2 ↔ (∀ d, d ∣ n → d = 1 ∨ d = n)
+
+-- The exact sorry that is the current focus:
+have h_ge3 : 3 ≤ tau n := by
+  apply three_distinct_divisors_imply_tau_ge_three ...
+  sorry   -- ← this is the counting argument under active iteration
+</pre>
+
+<p><strong>Traceability</strong>: Direct mapping to PROOF.md lines 80-81. These lemmas are the foundation for the direct deterministic next-prime theorem via tau-scan.</p>
+
+<h2>Honest Assessment — Session Progress</h2>
+<ul>
+<li><strong>Strong progress</strong>: Correct statements, excellent traceability, proof structure in place, many iterations on the exact goal, no drift from contracts.</li>
+<li><strong>Current difficulty</strong>: The pure-Lean (no Mathlib) version of the "list with three distinct members has length ≥ 3" argument is non-trivial with bare List tactics. Significant time spent on this exact point.</li>
+<li><strong>State separation preserved</strong>: All work remains strictly downstream verification/translation. No influence on Python generators or field.py.</li>
+</ul>
+
+<h2>Next Steps (Continuing Original Plan)</h2>
+<ol>
+<li>Continue focused iteration on the counting arguments until both directions are fully proved (zero sorry in the theorem bodies).</li>
+<li>Once stable, add the contrapositive lemma and achieve clean green build + updated smoke test.</li>
+<li>Update all status surfaces.</li>
+<li>Then move to Phase 2 (E/F definitions).</li>
+</ol>
+
+<p><strong>Verification Command</strong>: <code>bash lean4-cache-build.sh</code> (or the explicit cd + elan lake build)</p>
+
+<footer style="margin-top: 3rem; font-size: 0.85em; color: #8b949e;">
+Updated during active non-stop session on the counting arguments goal. 2026-05-27.
+</footer>
+
+</body>
+</html>

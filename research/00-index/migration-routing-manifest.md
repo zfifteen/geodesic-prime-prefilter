@@ -41,7 +41,7 @@ old scattered roots after references are repaired.
 | `research/11-gap-ridge/scripts/` | `research/11-gap-ridge/scripts/` |
 | `research/11-gap-ridge/output/` | `research/11-gap-ridge/output/` |
 | `research/11-gap-ridge/tests/` | `research/11-gap-ridge/tests/` |
-| RH bridge docs/tests | `research/12-rh-bridge/` |
+| RH bridge docs/tests | archived → `research/archive/2026-05-classical-rh-bridge-completion-route/12-rh-bridge/` |
 | `research/13-prime-spiral/scripts/` | `research/13-prime-spiral/scripts/` |
 | `research/13-prime-spiral/output/` | `research/13-prime-spiral/output/` |
 | `research/13-prime-spiral/tests/` | `research/13-prime-spiral/tests/` |

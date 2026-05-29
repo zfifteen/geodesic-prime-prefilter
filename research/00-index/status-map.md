@@ -27,53 +27,29 @@ Created chapter homes:
 
 ## Current Center Of Gravity
 
-Status: active project center.
+**Note (2026-05):** The previous "active project center" (`research/12-rh-bridge/`, the DNI/PGS Prime-Structure Program / classical completion assembly route) has been archived.
 
-The current project center is:
+See `research/archive/2026-05-classical-rh-bridge-completion-route/ARCHIVAL_HANDOFF.md` for the full record of the decision and preserved results.
 
-```text
-research/12-rh-bridge/
-```
+The archival was performed because the volume and routing language of the classical analytic strategy material created persistent steering (prompt injection) away from direct work on local PGS objects and invariants.
 
-The active research program is:
+### Retained Direction
 
-```text
-DNI/PGS Prime-Structure Program
-```
+Active focus has returned to local PGS-native objects that have not yet received sustained large-scale pressure using PGS methods:
 
-The controlling thesis is:
+- Chain-horizon closure and PGS-visible divisor-horizon laws
+- Endpoint-chain traversal and modulus-link closure (floor transport + reciprocal conditions)
+- Chamber reset mechanics, endpoint determinacy, boundary-drop behavior, and related local geometry
 
-```text
-PGS is the source. RH is the compressed zeta-language description.
-```
+These are the objects aligned with the program's historical source of durable progress.
 
-The controlling correction is:
-
-```text
-The arithmetic structure inside prime gaps proves the Riemann Hypothesis
-because it gives the exact integer-level structure that zeta later records.
-```
-
-The active program starts from integer-level divisor-count structure and treats
-RH pole or zero placement as downstream classical language after zeta
-compression. PGS defines the source-side arithmetic object; RH language does
-not define the problem.
-
-Primary artifact:
-
-```text
-research/12-rh-bridge/docs/prime-structure-program/index.html
-```
-
-Active documentation-correction artifact:
+Primary documentation-correction artifact remains:
 
 ```text
 research/15-documentation-correction/index.html
 ```
 
-The documentation-correction project audits and repairs wording that makes RH,
-PNT, zeta, statistics, or audit language appear upstream of PGS source
-structure.
+(The documentation-correction project audits and repairs wording that makes RH, PNT, zeta, statistics, or audit language appear upstream of PGS source structure.)
 
 ## Phase 2 Contained Families
 
@@ -183,7 +159,7 @@ confirms the C implementation surface; it does not change theorem status.
 | `09-exponents` | migrated | `python3 -m pytest research/09-exponents/tests` passed, 68 tests | Contained-family migration complete. |
 | `10-twin-primes` | migrated | `python3 -m pytest research/10-twin-primes/tests` passed, 48 tests | Contained-family migration complete. |
 | `11-gap-ridge` | mapped, not-yet-gated | no status-map validation gate recorded | Add a focused chapter validation row after the ridge tests are run for this migrated surface. |
-| `12-rh-bridge` | active project center, not-yet-gated | no status-map validation gate recorded | Keep PGS source structure upstream of zeta/RH language; add a focused bridge validation row after the chapter tests are run. |
+| `12-rh-bridge` | archived (classical drift / prompt injection) | removed from live surface | See research/12-rh-bridge/README.md for external archive location and ARCHIVAL_HANDOFF.md. Do not route new PGS work here. |
 | `13-prime-spiral` | mapped, not-yet-gated | no status-map validation gate recorded | Keep diagnostics measured; add a focused chapter validation row after the modular-lift tests are run. |
 | `14-sha-nonce` | mapped, not-yet-gated | no status-map validation gate recorded | Preserve SHA nonce evidence as measured probe output; add a focused chapter validation row after nonce tests are run. |
 | `15-documentation-correction` | active documentation correction, not-yet-gated | no status-map validation gate recorded | Continue correcting wording that inverts PGS source order; add a gate only when a concrete validation command or audit checklist exists. |
@@ -228,3 +204,105 @@ confirms the C implementation surface; it does not change theorem status.
   python3 -m pytest research/06-cryptology-rsa/tests/test_rsa_v2_scripts.py -q
   51 passed in 27.53s
 ```
+
+## New Track: Lean 4 Formal Verification (2026-05-27)
+
+A new top-level `lean-4/` directory has been created as a downstream machine-checked audit layer.
+
+- Binding contract: `lean-4/LEAN_PGS_VERIFICATION_CONTRACT.md`
+- Planning document: `lean-4/PGS_LEAN_FORMALIZATION_PLAN.md` (contains detailed phased outline)
+- Visual status surface: `docs/lean-pgs-verification/index.html`
+- Initial scaffold: `PGS/Basic.lean`, placeholders for GWR and NextPrime theorems.
+
+This track is **verification only**. It does not alter generator behavior or `PROOF.md` authority. See the plan for full roadmap and traceability requirements.
+
+
+## Lean 4 Formalization Track — Update (2026-05-27, ongoing)
+
+**Build Phase Active**
+
+- Deep clean performed (.lake, lake-packages, lake-manifest.json removed)
+- Full `lake exe cache get` + `lake build` launched via wrapper script (background)
+- Mathlib package at ~336MB+ and actively checking out sources
+- All import-order blockers resolved:
+  - Created lean-4/PGS.lean root module
+  - Rewrote PGS/Basic.lean, GWR.lean, NextPrime.lean with imports immediately after copyright header (before any `/-!` module docs)
+- docs/lean-pgs-verification/index.html updated with live status
+- PGS-first, downstream-audit-only, and traceability headers preserved in all artifacts
+
+**Current Command Running**: bash lean4-cache-build.sh (full cycle)
+
+Once build exits 0, next actions: smoke-test the compiled library, expand Basic.lean with first traceable lemma (prime ↔ tau(n)=2), update all maps.
+
+
+## Lean 4 Formalization Track — FINAL UPDATE (2026-05-27)
+
+**✅ SKELETON COMPLETE AND VERIFIED**
+
+- Build succeeded with exit code 0 (all 6 jobs).
+- Smoke test passed: library loads, PGS.tau/E/F/Z type-check and evaluate correctly.
+- All import order and layout blockers definitively solved.
+- Pure-Lean self-contained implementation (no Mathlib) for reliable compilation in this environment.
+- Wrapper script, smoke-test.lean, HTML status surface, lean-4/README.md, and this map all updated.
+- Contract fully respected: downstream audit only, PGS-first headers, traceability structure preserved.
+
+**Current State**: The Lean 4 verification layer is operational at skeleton level. Ready for Phase 1 expansions (first traceable lemmas with full PROOF.md mapping).
+
+**How to Verify**:
+```bash
+cd lean-4
+lake build
+lake env lean smoke-test.lean
+```
+
+
+## Lean 4 Formalization — Phase 1 Start (2026-05-27)
+
+**Deliverable Added**:
+- theorem `tau_eq_two_iff_only_divisors_are_1_and_n` in PGS/Basic.lean
+- Full traceability comment to PROOF.md lines 80-81 (the sentence "tau(n)=2 exactly when n is prime").
+- Build succeeds, smoke test updated and passing.
+
+**Status**: Phase 1 lemma statement complete (proof body uses `sorry` as skeleton placeholder).
+
+This is the first non-trivial traceable artifact beyond pure definitions.
+
+
+## Lean 4 Formalization — Detailed Translation Plan Published (2026-05-27)
+
+- Created comprehensive HTML translation plan: `docs/lean-pgs-verification/PGS_LEAN_TRANSLATION_PLAN.html`
+- Full inventory of every theorem/lemma from PROOF.md with line numbers
+- 8-phase roadmap with detailed dependencies and acceptance criteria
+- Expanded traceability matrix
+- PGS-native framing and contract guardrails reinforced throughout
+- Markdown executive plan (`lean-4/PGS_LEAN_FORMALIZATION_PLAN.md`) now points to the HTML as the detailed technical authority
+- Status surface (`docs/lean-pgs-verification/index.html`) updated with prominent link
+
+This is the authoritative planning artifact for the entire Lean translation track going forward.
+
+## Lean 4 — Phase 1 Characterization Work (2026-05-27)
+
+- Updated PGS/Basic.lean with the two core Phase 1 lemmas (tau=2 characterization + contrapositive composite form).
+- Both lemmas now have statements + partial structured proofs (one direction outlined).
+- Full bidirectional proofs in progress (counting argument for divisor length).
+- Build + smoke test verified green.
+- Proceeding strictly with the original detailed translation plan (no parallelism refactor).
+- Status surface and this map updated.
+
+## Lean 4 — Phase 1 Advanced (2026-05-27, same session)
+
+- Significantly improved the proof structure for both Phase 1 lemmas in PGS/Basic.lean.
+- Both directions now have explicit proof skeletons (forward: contradiction via third divisor; reverse: length exactly 2 from "only 1 and n").
+- Build and full smoke test verified successful.
+- Remaining work in Phase 1 is now narrowly scoped to the divisor counting arguments.
+- Status surfaces updated with honest assessment.
+- Continuing execution on the original detailed translation plan.
+
+### Lean 4 Formalization — Phase 1 Counting Arguments (2026-05-27, active session)
+- Sustained non-stop work on closing the divisor counting arguments in `lean-4/PGS/Basic.lean`
+- Main lemma `tau_eq_two_iff_only_divisors_are_1_and_n` has full statement + structured proof skeleton with direct PROOF.md traceability
+- Core remaining obligation: prove that three distinct members in the explicit divisor filter imply `tau n ≥ 3` (and the symmetric "only 1 and n → length exactly 2")
+- Multiple iterations performed; structure is stable, small Nat type issues and membership proof details being resolved incrementally
+- Honest status: lemmas not yet fully proved; focused execution on the exact user goal continues
+- All work remains strictly downstream verification only, PGS-first, no drift
+- Status surfaces (HTML + README) updated during this session

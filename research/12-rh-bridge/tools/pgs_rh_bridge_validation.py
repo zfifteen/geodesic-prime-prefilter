@@ -1,1 +1,0 @@
-Full validation script as written and executed.

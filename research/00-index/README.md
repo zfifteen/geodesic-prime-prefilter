@@ -29,7 +29,7 @@ for each chapter.
 | `09-exponents` | Mersenne/exponent-wall PGS experiments | migrated and validated |
 | `10-twin-primes` | Twin-prime PGS experiments | migrated and validated |
 | `11-gap-ridge` | Gap-ridge and chamber-ridge investigations | mapped |
-| `12-rh-bridge` | DNI-to-zeta translation and RH-facing explanation | active |
+| `12-rh-bridge` | DNI-to-zeta translation and RH-facing explanation | archived (see research/archive/2026-05-classical-rh-bridge-completion-route/ARCHIVAL_HANDOFF.md) |
 | `13-prime-spiral` | Prime-spiral visualization and structure work | mapped |
 | `14-sha-nonce` | SHA/nonce adjacency probes | mapped |
 | `15-documentation-correction` | Public documentation correction and framing audit | active |
