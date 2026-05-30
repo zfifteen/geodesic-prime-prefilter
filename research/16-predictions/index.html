@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PGS Predictions • Deterministic State Resolution</title>
+<style>
+:root {
+  --bg: #f8f9fa;
+  --fg: #1a1a1a;
+  --accent: #0a4d8c;
+  --card: #ffffff;
+  --border: #d1d5db;
+  --warn: #854d0e;
+  --good: #166534;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f172a;
+    --fg: #e2e8f0;
+    --accent: #60a5fa;
+    --card: #1e293b;
+    --border: #334155;
+    --warn: #f59e0b;
+    --good: #4ade80;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  background: var(--bg);
+  color: var(--fg);
+  padding: 2rem 1rem;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+h1, h2, h3 { font-weight: 600; line-height: 1.25; }
+h1 { font-size: 2rem; margin: 0 0 0.5rem; color: var(--accent); }
+h2 { font-size: 1.35rem; margin: 2rem 0 0.75rem; border-bottom: 2px solid var(--border); padding-bottom: 0.25rem; }
+h3 { font-size: 1.1rem; margin: 1.25rem 0 0.5rem; }
+p, li { max-width: 72ch; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1rem 0;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+th, td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+th { background: rgba(10, 77, 140, 0.08); font-weight: 600; }
+pre, code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background: rgba(0,0,0,0.06);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+}
+pre { padding: 0.75rem; overflow-x: auto; }
+ul, ol { padding-left: 1.4rem; }
+.warning {
+  border-left: 4px solid var(--warn);
+  background: rgba(245, 158, 11, 0.08);
+  padding: 0.75rem 1rem;
+}
+.success {
+  border-left: 4px solid var(--good);
+  background: rgba(16, 185, 129, 0.08);
+  padding: 0.75rem 1rem;
+}
+.flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 1rem 0;
+  font-family: ui-monospace, monospace;
+  font-size: 0.9rem;
+}
+.flow span {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 0.35rem 0.6rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.flow .arrow { color: var(--accent); font-weight: 700; padding: 0 0.25rem; }
+footer {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: #64748b;
+}
+.meta { font-size: 0.85rem; color: #64748b; margin-bottom: 1.5rem; }
+</style>
+</head>
+<body>
+<header>
+  <h1>PGS Predictions</h1>
+  <p class="meta"><strong>Deterministic Prime Gap Structure State Resolution</strong> • Initialized 2026-05 • Chapter 16</p>
+</header>
+
+<main>
+<section>
+  <h2>Opening Object</h2>
+  <p>Start with a known prime <code>p</code>. The integers from <code>p+1</code> onward carry an exact, ordered divisor-count field. The first integer that returns divisor count exactly 2 is the next prime <code>q</code>. Between <code>p</code> and <code>q</code> lies a finite chamber of composites whose divisor counts are completely known once the endpoints are fixed.</p>
+  <p>The Predictions track studies how the already-proved local objects and invariants inside one such chamber — the divisor-count field, the Divisor Normalization Identity (DNI), the Leftmost Minimum-Divisor Rule (GWR), endpoint chains, modulus links, reciprocal transport, and chamber-reset geometry — can be used to resolve <em>future</em> chamber states, subsequent endpoints, or structural certificates exactly, without classical search or probabilistic models.</p>
+</section>
+
+<section id="five-questions">
+  <h2>Current State — The Five Continuity Questions</h2>
+  <div class="card">
+    <p><strong>1. Strongest supported claim</strong></p>
+    <p>The track is newly initialized. It inherits the universal theorems in <a href="../../../PROOF.md">PROOF.md</a> (direct deterministic next-prime rule via exact divisor counts; GWR leftmost minimum-divisor maximizer) and the measured <code>d4_count</code> ordering-carrier result on the retained 8192-row-per-power 10^12..10^18 surface from <a href="../../05-state-budget/">research/05-state-budget</a>. No new theorems or carriers have been added by this chapter.</p>
+
+    <p><strong>2. Explicitly not proved or solved</strong></p>
+    <ul>
+      <li>Whether any existing carrier (including <code>d4_count</code>) lifts to a universal rule that resolves the exact next gap width or next endpoint location for arbitrary primes.</li>
+      <li>Closure of multi-step endpoint-chain traversal and modulus-link residual state beyond currently audited regimes.</li>
+      <li>Chamber-reset determinacy rules that locate the next reset point from current-chamber invariants alone.</li>
+    </ul>
+
+    <p><strong>3. Failed and must not be revived</strong></p>
+    <ul>
+      <li>Any reframing of PGS mechanisms as probabilistic, heuristic, confidence-based, or "empirically validated so far" predictors.</li>
+      <li>Classical candidate testing, Miller-Rabin, <code>gcd</code>, divisibility selectors, or product closure used as the inference engine for choosing the next state.</li>
+      <li>Legacy "predictor" language and the <code>z_band_prime_predictor</code> directory as active sources (these are historical; see documentation-correction chapter 15 and shape guardrails below).</li>
+      <li>The old fixed-cutoff map {2:44, 4:60, 6:60} and any square-room-side forbidden-transition rules already invalidated on expanded retained surfaces.</li>
+    </ul>
+
+    <p><strong>4. What the next session should do first</strong></p>
+    <p>Read this file, <a href="../../../PROOF.md">PROOF.md</a>, <a href="../../05-state-budget/docs/d4_count_observer_note/index.html">the d4_count observer note</a>, and the endpoint-determinacy probes under <code>pgs-unsolved-problems/endpoint-determinacy/</code>. Then run the narrow validation command for the parent chapters that supply the inherited surfaces. Propose one smallest falsification probe or certificate-closure test on a concrete PGS object (chain horizon, reciprocal transport, or chamber reset) before writing new code.</p>
+
+    <p><strong>5. Reproduction command for current state</strong></p>
+    <pre><code>cat research/00-index/continuity/START_HERE.md
+cat research/16-predictions/index.html | head -100
+python3 -m pytest research/04-bounded-compression/tests/test_bounded_compression_falsification_runner.py research/05-state-budget/tests/test_state_budget_divisor_carrier_sweep.py -q --tb=no
+git status --short --untracked-files=all</code></pre>
+  </div>
+</section>
+
+<section>
+  <h2>PGS Predictions Entry Frame (Mandatory for All Work)</h2>
+  <div class="flow">
+    <span>PGS objects</span>
+    <span class="arrow">→</span>
+    <span>PGS invariants (DNI, GWR, endpoint chain, modulus link)</span>
+    <span class="arrow">→</span>
+    <span>Named PGS rule or law</span>
+    <span class="arrow">→</span>
+    <span>resolved / unresolved / invalidated PGS state</span>
+  </div>
+  <p class="warning"><strong>Never begin from</strong> candidate primality testing, Miller-Rabin, <code>isprime</code>, <code>nextprime</code>, sieves, <code>gcd</code>, divisibility selectors, product closure, factor APIs, or probabilistic assumptions. Classical methods are allowed only in downstream audit or explicit legacy-comparison roles, physically and semantically separate from inference.</p>
+</section>
+
+<section>
+  <h2>Initial Charter (Best-Judgment Alignment)</h2>
+  <p>Given the routing rules in START_HERE.md, the Predictions track is chartered as a cross-cutting home for deterministic forward resolution of PGS chamber states using the objects that have not yet received sustained large-scale pressure:</p>
+  <ul>
+    <li>Endpoint-chain traversal and modulus-link closure (floor transport + reciprocal endpoint conditions).</li>
+    <li>Chamber-reset mechanics, endpoint determinacy, and boundary-drop behavior.</li>
+    <li>Extension of measured ordering carriers (e.g., <code>d4_count</code> under fixed match modes) toward explicit, falsifiable resolution rules.</li>
+    <li>Structural certificates that close one or more future gaps or reset points exactly.</li>
+  </ul>
+  <p>The track unifies relevant surfaces from research/02-gwr-dni, research/05-state-budget, research/06-cryptology-rsa, and pgs-unsolved-problems/endpoint-determinacy/ while preserving every existing status separation.</p>
+  <p class="success"><strong>Strongest wording rule</strong>: "Prediction" inside this chapter is always shorthand for exact structural resolution or certificate closure under a named PGS invariant. It is never statistical, ML, density-extrapolation, or search-based forecasting.</p>
+</section>
+
+<section>
+  <h2>Status Separation (Empty at Initialization)</h2>
+  <table>
+    <thead>
+      <tr><th>Category</th><th>Current Content</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Proved theorems</td><td>Inherited only from PROOF.md. None originated here.</td></tr>
+      <tr><td>Measured results</td><td>Inherited <code>d4_count</code> carrier (8192-row surface, mod30_prev_gap_exact match, edge 69 over tail control). All other carriers remain measured non-carriers unless a new artifact states otherwise.</td></tr>
+      <tr><td>Audit results</td><td>Parent chapter tests (04-bounded-compression + 05-state-budget) continue to serve as the validation gate.</td></tr>
+      <tr><td>Hypotheses</td><td>None yet elevated. Any candidate resolution rule must be stated with exact falsification conditions before implementation.</td></tr>
+      <tr><td>Unresolved states</td><td>Multi-step chain closure, chamber-reset location rules, lift of any carrier to universal next-gap determination.</td></tr>
+      <tr><td>Invalidated rules</td><td>All items listed in the Five Questions section above. The track must not revive them.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Shape Guardrails (Early-Warning Language)</h2>
+  <div class="warning">
+    <p>Any work in this chapter that exhibits the following must be stopped and corrected immediately:</p>
+    <ul>
+      <li>"This is just a heuristic."</li>
+      <li>Use of Miller-Rabin, <code>gcd</code>, divisibility, or product closure to choose the next PGS state.</li>
+      <li>Treating a measured carrier count or survivor rate as a solved prediction rule.</li>
+      <li>Reviving legacy "predictor" framing or the <code>z_band_prime_predictor</code> directory as active inference machinery.</li>
+      <li>Allowing prose to sound solved when the PGS invariant has returned unresolved.</li>
+    </ul>
+    <p><strong>Corrective action</strong>: Stop. Re-read PROOF.md, AGENTS.md (both), this file, and the active research contract. Restate the problem in PGS-native objects and invariants. Proceed only from that frame.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Legacy Naming Note</h2>
+  <p>The historical directory <code>src/python/z_band_prime_predictor/</code> and scattered "predictor" references in older docs predate the v1.1 PGS-only generator contract and the current deterministic framing. These surfaces are not part of the active Predictions track. Hygiene work belongs either in research/15-documentation-correction/ or as a later, narrowly scoped task inside this chapter after the core contract is stable. Do not let legacy names steer new reasoning.</p>
+</section>
+
+<section>
+  <h2>Initial Probe Checklist (After Reading Contracts)</h2>
+  <ol>
+    <li>Confirm parent test surfaces still pass (command in the Five Questions section).</li>
+    <li>Read the three most recent endpoint-determinacy HTML probes under <code>pgs-unsolved-problems/endpoint-determinacy/</code>.</li>
+    <li>Identify one concrete PGS object (e.g., a specific reciprocal-transport closure condition or chamber-reset signature) that has not received large-scale falsification pressure.</li>
+    <li>Propose the smallest deterministic probe (exact arithmetic, no search) that would either strengthen a carrier or produce a crisp unresolved/invalidated outcome.</li>
+    <li>Record the probe proposal in a new dated note under <code>research/16-predictions/docs/</code> before writing any runner code.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Related Surfaces (Read Before Proposing Work)</h2>
+  <ul>
+    <li><a href="../../../PROOF.md">PROOF.md</a> — single live theorem authority.</li>
+    <li><a href="../../05-state-budget/docs/d4_count_observer_note/index.html">d4_count observer note</a> and long-running catalog artifacts.</li>
+    <li><a href="../../05-state-budget/docs/state_budget_long_running_research_goal/index.html">State-budget long-running research goal</a>.</li>
+    <li><code>pgs-unsolved-problems/endpoint-determinacy/</code> — existing boundary-drop and reset probes.</li>
+    <li>research/06-cryptology-rsa experiments on modulus-link and structural certificates (for cross-application).</li>
+    <li>research/02-gwr-dni for the core GWR/DNI and recursive-walk surfaces.</li>
+    <li>research/15-documentation-correction/index.html — current public-framing audit (naming hygiene may route here).</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Reproduction &amp; Verification</h2>
+  <pre><code># Full context bootstrap (always run first in a new session)
+cat research/00-index/continuity/START_HERE.md
+cat AGENTS.md
+cat PROOF.md | head -80
+
+# View this contract
+# open research/16-predictions/index.html   (macOS)
+# xdg-open research/16-predictions/index.html   (Linux)
+
+# Check registration in authoritative map
+grep -n "16-predictions" research/00-index/status-map.md
+
+# Parent validation (inherited surfaces)
+python3 -m pytest \
+  research/04-bounded-compression/tests/test_bounded_compression_falsification_runner.py \
+  research/05-state-budget/tests/test_state_budget_divisor_carrier_sweep.py \
+  -q --tb=line
+</code></pre>
+</section>
+
+</main>
+
+<footer>
+  <p>Prime Gap Structure — Chapter 16 • Self-contained HTML (no external assets, no JavaScript) • LF line endings • Bootstrap 2026-05</p>
+  <p>All claims remain subordinate to PROOF.md for theorem status and to the full AGENTS.md contracts for reasoning discipline.</p>
+</footer>
+</body>
+</html>
