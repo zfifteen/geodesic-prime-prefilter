@@ -449,12 +449,20 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--min-power", type=int, default=12)
     parser.add_argument("--max-power", type=int, default=13)
+    parser.add_argument(
+        "--smoke-non-d4",
+        action="store_true",
+        help="Run the Phase 3 smoke test for run_reset_carrier_scoring on the 5237/66 non-d=4 variance surface (no emission).",
+    )
     return parser
 
 
 def main(argv: List[str] | None = None) -> int:
     """Entry point. Orchestrates load → augment → write for T-002 sidecars."""
     args = build_parser().parse_args(argv)
+    if getattr(args, "smoke_non_d4", False):
+        _smoke_test_non_d4_phase3_scaffold()
+        return 0
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
     print(f"[T-002] Loading detail rows from {args.detail_csv} ...")
