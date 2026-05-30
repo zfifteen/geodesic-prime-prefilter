@@ -540,10 +540,33 @@ def w_score_measure_folds(
     orientation from train, minimum support per fold) as the published
     d4_count precedent.
     """
-    # PHASE 1 SCAFFOLD: the per-power split, train sign, heldout eval, and
-    # orientation arithmetic are fully specified here in comments. Bodies
-    # contain only the structural return of an empty fold list.
-    return []
+    powers = sorted({int(row["power"]) for row in transitions if str(row.get("power","")).strip()})
+    fold_rows: list[dict[str, Any]] = []
+    for heldout_power in powers:
+        train_rows = [row for row in transitions if int(row["power"]) != heldout_power]
+        heldout_rows = [row for row in transitions if int(row["power"]) == heldout_power]
+        _, train_pairs, train_signed, _ = w_score_rows(
+            train_rows, match_mode=match_mode, measure=measure, target_field=target_field
+        )
+        train_direction = 1 if train_signed >= 0 else -1
+        eligible, dec, raw_signed, ties = w_score_rows(
+            heldout_rows, match_mode=match_mode, measure=measure, target_field=target_field
+        )
+        oriented = train_direction * raw_signed if train_pairs else 0
+        fold_rows.append({
+            "match_mode": match_mode,
+            "measure": measure,
+            "measure_role": measure_role,
+            "heldout_power": heldout_power,
+            "train_direction": train_direction if train_pairs else 0,
+            "eligible_cells": eligible,
+            "decisive_pairs": dec,
+            "raw_signed_advantage": raw_signed,
+            "oriented_signed_advantage": oriented,
+            "tie_pairs": ties,
+            "target": target_field,  # explicit for w-carrier reports
+        })
+    return fold_rows
 
 
 def w_summarize_measure(fold_rows: list[dict[str, Any]]) -> dict[str, Any]:
