@@ -221,15 +221,37 @@ def load_retained_detail_rows(detail_csv: Path, min_power: int, max_power: int) 
 def build_sorted_endpoint_pool(retained_rows: list[dict[str, Any]]) -> list[int]:
     """Return a sorted list of all unique public endpoints (p and q values) present in the window.
 
-    Intended logic (Phase 1 description only):
-    - Collect every current_right_prime and next_right_prime.
-    - Deduplicate and sort ascending.
-    - This closed sorted list is the complete "public endpoint pool" for previous-in-pool lookups.
-    - Used for O(log n) previous-endpoint via bisect (exact, deterministic, no divisor counting inside the pool).
-    - Invariant: every endpoint used as anchor or upper_anchor in the probe must come from this list.
+    This completes the retained-window half of the synthetic-moduli harness.
+    The closed pool guarantees that every previous-in-pool lookup (the exact
+    analogue of rsa-v2 "previous public endpoint before z") is performed against
+    only the public primes that actually appear in the chosen retained slice.
+
+    Construction is deliberately naive and exact:
+    - Walk every row once, collect both current_right_prime and next_right_prime
+      (the left and right endpoints of every chamber in the window).
+    - Cast to int, deduplicate via set, sort ascending.
+    - Return the list. No duplicates, strictly increasing, fully deterministic.
+
+    Later stages (previous_endpoint_in_pool) will use bisect on this list.
+    The invariant is simple and auditable: if a transported y falls outside
+    the min/max of the pool, the lookup returns None and the pair is marked
+    unresolved_by_endpoint_chain_boundary (preserving the rsa-v2 vocabulary).
+
+    No divisor arithmetic, no certificate derivation, no floor transport here.
+    Pure set construction over the public endpoint integers from the loaded rows.
     """
-    # PHASE 1 SCAFFOLDING
-    raise NotImplementedError("Phase 1 skeleton — implementation deferred until after Phase 2 review")
+    endpoints: set[int] = set()
+    for row in retained_rows:
+        for key in ("current_right_prime", "next_right_prime"):
+            val = row.get(key)
+            if val is not None:
+                try:
+                    endpoints.add(int(val))
+                except (ValueError, TypeError):
+                    continue
+    if not endpoints:
+        raise ValueError("build_sorted_endpoint_pool received zero usable endpoints from retained rows.")
+    return sorted(endpoints)
 
 
 def derive_pgspg_certificate(p: int, candidate_bound: int = PGS_CANDIDATE_BOUND_FOR_CERT) -> PGSPGCertificate:
@@ -476,4 +498,9 @@ def test_harness_load_retained_window_12_13() -> None:
         assert col in first, f"Missing column {col} after load"
     rows2 = load_retained_detail_rows(detail_csv, min_power=12, max_power=13)
     assert len(rows) == len(rows2)
-    print(f"Unit 1 harness test passed: loaded {len(rows)} rows for powers 12-13; columns present; deterministic.")
+    # Also exercise the pool builder (next harness function in same unit family)
+    pool = build_sorted_endpoint_pool(rows)
+    assert len(pool) > 100
+    assert pool == sorted(pool)
+    assert pool[0] < pool[-1]
+    print(f"Unit 1 harness test passed: loaded {len(rows)} rows for powers 12-13; columns present; deterministic. Pool built with {len(pool)} unique endpoints, strictly sorted.")
