@@ -422,11 +422,35 @@ def w_compare_members(
     Returns: (decisive_pairs, signed_advantage, tie_pairs)
     All three are exact integers; no floating point, no probability.
     """
-    # PHASE 1 SCAFFOLD: full pairwise logic described in the docstring above.
-    # Final implementation will iterate all ordered pairs (or optimized
-    # equivalent after sorting), accumulate the three counters, and return.
-    # Skeleton returns neutral zero result.
-    return 0, 0, 0
+    decisive_pairs = 0
+    signed_advantage = 0
+    tie_pairs = 0
+
+    n = len(members)
+    for i in range(n):
+        for j in range(i + 1, n):  # unique unordered pairs; double-count would cancel signs anyway
+            a = members[i]
+            b = members[j]
+            ma = float(a[measure])
+            mb = float(b[measure])
+            ta = float(a[target_field])
+            tb = float(b[target_field])
+
+            if ma == mb or ta == tb:
+                tie_pairs += 1
+                continue
+
+            agree = (ma < mb and ta < tb) or (ma > mb and ta > tb)
+            disagree = (ma < mb and ta > tb) or (ma > mb and ta < tb)
+
+            decisive_pairs += 1
+            if agree:
+                signed_advantage += 1
+            elif disagree:
+                signed_advantage -= 1
+            # equal on one side already handled as tie above
+
+    return decisive_pairs, signed_advantage, tie_pairs
 
 
 def w_score_rows(
