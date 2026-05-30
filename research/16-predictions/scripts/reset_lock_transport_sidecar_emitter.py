@@ -172,10 +172,32 @@ def build_reset_signature(certificate: Optional[Dict[str, Any]]) -> str:
 # ----------------------------------------------------------------------------
 def extract_p_from_detail_row(row: Dict[str, Any]) -> int:
     """Return the integer left prime p that opens the chamber described by row."""
-    # SCAFFOLDING ONLY
-    # Future: try the two common key names used by the 03/05 catalog family,
-    # coerce to int, validate > 1, else raise with exact key names and row sample.
-    raise NotImplementedError("Phase-1 scaffolding: implementation forbidden until Phase 3")
+    # Preferred key coming from the transition builder and the 03-gap-type rows.
+    for key in ("current_right_prime", "left_prime", "p"):
+        if key in row:
+            try:
+                value = int(row[key])
+                if value > 1:
+                    return value
+            except (TypeError, ValueError):
+                pass
+
+    # Fallback: some raw detail rows use different naming for the left edge.
+    for key in ("current_left_prime", "right_prime_of_previous"):
+        if key in row:
+            try:
+                value = int(row[key])
+                if value > 1:
+                    return value
+            except (TypeError, ValueError):
+                pass
+
+    # Explicit failure with context for catalog-drift detection (state separation).
+    sample = {k: row.get(k) for k in list(row.keys())[:6]}
+    raise ValueError(
+        f"extract_p_from_detail_row: could not locate integer left-prime p in row. "
+        f"Keys present (first 6): {list(row.keys())[:6]}. Sample: {sample}"
+    )
 
 
 # ----------------------------------------------------------------------------
