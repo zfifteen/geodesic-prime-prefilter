@@ -579,13 +579,27 @@ def w_summarize_measure(fold_rows: list[dict[str, Any]]) -> dict[str, Any]:
     plus "target", "edge_over_tail_control", "required_edge",
     "ordering_carrier_stop_condition_met", and the verdict string.
     """
-    # PHASE 1 SCAFFOLD: aggregation rules described; placeholder return.
     if not fold_rows:
         return {}
+    decisive = sum(int(r.get("decisive_pairs", 0)) for r in fold_rows)
+    oriented = sum(int(r.get("oriented_signed_advantage", 0)) for r in fold_rows)
+    folds_with_support = sum(1 for r in fold_rows if int(r.get("decisive_pairs", 0)) >= 100)  # MIN_FOLD approx
+    pos = sum(1 for r in fold_rows if int(r.get("oriented_signed_advantage", 0)) > 0)
+    neg = sum(1 for r in fold_rows if int(r.get("oriented_signed_advantage", 0)) < 0)
     return {
-        "match_mode": fold_rows[0].get("match_mode", ""),
-        "measure": fold_rows[0].get("measure", ""),
-        "target": fold_rows[0].get("target", "next_winner_offset"),
+        "match_mode": str(fold_rows[0].get("match_mode", "")),
+        "measure": str(fold_rows[0].get("measure", "")),
+        "measure_role": str(fold_rows[0].get("measure_role", "")),
+        "target": str(fold_rows[0].get("target", "next_winner_offset")),
+        "fold_count": len(fold_rows),
+        "folds_with_min_support": folds_with_support,
+        "positive_oriented_folds": pos,
+        "negative_oriented_folds": neg,
+        "eligible_cells": sum(int(r.get("eligible_cells", 0)) for r in fold_rows),
+        "decisive_pairs": decisive,
+        "oriented_signed_advantage": oriented,
+        "tie_pairs": sum(int(r.get("tie_pairs", 0)) for r in fold_rows),
+        "advantage_share": (oriented / decisive) if decisive else None,
     }
 
 
