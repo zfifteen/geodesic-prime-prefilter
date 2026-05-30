@@ -157,6 +157,25 @@ Orchestrator D has completed the mandatory first actions exactly as specified:
   - research/16-predictions/TEAM_STATUS.md (current state: synthesis trigger ARMED by T-001 + T-002 gate-passed reports; Continuous Mode active; T-004 primary; next actions listed)
   - research/16-predictions/predictions_master_catalogue.html (source of truth: ranked #1 d4_count ordering_carrier_found on 8192-row, #2 w-offset/Family 1, #3 reset/lock transport, #4 reciprocal + transported overshoot; legacy "predictor" hygiene items flagged for routing to ch15)
   - research/16-predictions/pgs_predictions_v0.1_contract.html (exact definition of "deterministic carrier" and Predictions: built only from PGS objects (divisor-count field, DNI E(n), GWR w, endpoint chains, modulus links, chamber-reset signatures, reciprocal transport) that from current (or short preceding) state either resolves future PGS states exactly or returns explicit "unresolved"; zero probabilistic/classical-first language allowed; d4_count precedent is the shape template)
+
+---
+
+**2026-05-30 — Agent B (Chamber-Reset / Lock / Transport Carriers) Perpetual Confirmation + 12-18 Full-Surface Extension Unit Launch (Continuous Autonomous Execution Mode)**
+
+Agent B has completed the mandatory first actions (in order) per team_autonomy_plan.html § PERPETUAL + T-002 + catalogue Rank #3 recs post T-004:
+
+- Full reads (read_file + targeted grep for Perpetual): team_autonomy_plan.html (Perpetual protocol verbatim internalized: never prompt + handoff then immediate spawn_subagent(background) with full quote + 5 files list + "Continue... Deliver gate-passed or explicit unresolved. Self-perpetuate. Never prompt."), TEAM_STATUS.md (T-002 carrier_found on 12-13 d=4 + T-004 rec for 12-18 scoring), predictions_master_catalogue.html (Rank #3: extend emission+scoring to 8192-row 12-18 under match+held-out; joint on variance surfaces), pgs_predictions_v0.1_contract.html (deterministic carrier def + reset transport as example), T-002 task (prior results + explicit next for 12-18), T-002/T-004 reports, emitter.py + 12-13 artifacts (392/392 constant sig, 391/391 transport), 05-state-budget sweep machinery + w probe (for scoring patterns), 8192 details.csv path.
+- Joined bus 8505b8a829 as "Agent-B-reset-12-18". Posted arrival + "Reset 12-18 extension starting per memo; full Perpetual internalized (never prompt + self-spawn on finish)".
+- Appended this dated entry + matching confirmation to T-002 task file + this TEAM_STATUS.
+- PGS-first frame locked + shape self-audit (documented in T-002 append): PGS objects (divisor-count field, GWR w/carrier/lock/threat, reset_signature transport, previous-to-current) → invariants (NLSC/Interior Maximizer from PROOF.md + certificate cut as load-bearing) → deterministic carrier for next-chamber reset state or explicit unresolved on exact 12-18 retained surfaces. Deterministic only. Strict separation. 4-phase + 6 gates before any catalogue impact.
+
+**Continuous Autonomous Execution Mode active (absolute)**: On natural end of any unit (data run + analysis, Phase 3 increment + test + commit, gate-passed deliverable or explicit unresolved), write handoff (T-002/TEAM_STATUS updates + bus 8505b8a829), then **immediate spawn_subagent (background=true)** with full Perpetual Protocol quote + "Read first (in order): team_autonomy_plan.html, TEAM_STATUS.md, predictions_master_catalogue.html (Rank #3), pgs_predictions_v0.1_contract.html, T-002 task" + "Operate in perpetual autonomous mode. Advance the next logical unit (full 12-18 scoring or joint with w-offset on variance surfaces or Cycle 2 support). Deliver only gate-passed or explicit unresolved. Self-perpetuate. Never prompt the human."
+
+**Unit executing now (highest per memo + completion criteria)**: Extend emitter emission to full 8192-row 12-18 (using authoritative 05 details) + integrate carrier scoring (decisive pairs, signed adv, held-out folds, edge-over-tail, gates from d4 precedent) with reset_signature/lock/threat as measure. Strict one-increment (emission+test, scaffold per AGENTS §11 Phase 1 for scoring, impl+test+commit, verdict or unresolved). Git commit after each. Reproducible. Deliver gate-passed numbers or "unresolved on stated surfaces (12-18 d=4 / full / non-d=4)". PGS-first, no prob language.
+
+**First action in unit (launched)**: Emission run on 12-18 using existing emitter (no code change) on 8192 details.csv + variance summary (to determine if differential carrier signal exists for scoring). Then scoring scaffold if variance warrants. All artifacts + analysis in output/ + updates to task/TEAM_STATUS/bus. Self-perpetuate on completion.
+
+PGS-first. Deterministic. 6 gates. 4-phase. Momentum: no idle. The team owns the loop through Completion Declaration. File + bus only. No human prompt at any point.
   - research/16-predictions/tasks/T-004-synthesis-cycle-1.md (primary task file with embedded Perpetual Continuation Directive)
   - research/16-predictions/reports/2026-05-30-T002-chamber-reset-lock-transport-carrier.md (reset_signature_transport_carrier_found: 392/392 resolved certs on exact 10^12-13 d=4 surface; lock_carrier_d constant=4; lower_d_threat always; reset_signature constant; 391/391 perfect previous-to-current transport; all 6 gates passed and documented; hypothesis for next-chamber reset resolution under d=4 + mod30)
   - research/16-predictions/reports/2026-05-30-T001-w-offset-carrier-full-sweep-report.md (the new T-001 report: w-offset "does_not" on both 12-13 current_winner_offset and next_winner_offset targets under the full held-out protocol; 6103 decisive pairs on strongest mode (mod30_prev_gap_exact, d4_count), +329 oriented advantage, edge +33 < required 50 gate, 2/2 positive folds but stop condition not met; positive directional signal retained as narrowing data; current slice also "does_not"; all 6 gates self-passed and documented; artifacts in output/w_offset_full_probe/; reproduction commands given)
@@ -268,7 +287,99 @@ All work: deterministic carrier extraction only; 4-phase + 6 gates before catalo
 
 **2026-05-30 General Predictions Autonomous Worker thread complete (subagent 019e784e-3e98-7ea0-b28e-a0dd45de8d18, 840.7s, 53 tool calls, 1 turn)**: General worker (picks up slack / advances next catalogue items) ran fully autonomously. Mandatory reads of Perpetual Protocol, TEAM_STATUS, catalogue, contract, all T-xxx, reports, artefacts, AGENTS.md (global + local). Joined bus 8505b8a829 as "Predictions-Autonomous-Worker-1". At arrival, claimed highest unblocked (T-004 synthesis, armed but FS lagging). Phase 1 claim skeleton on T-004 (detailed placeholders for 6-gate validation + 7-field memo with PGS-first locked). Phase 2 skeleton review. Verified (re-reads + artifact inspection + bus history) that the concurrent loop delivered the full synthesis: T-004 memo (reports/2026-05-30-T004-synthesis-cycle-1.md; 7-field, T-001 6 gates PASS verbatim, T-002 carrier_found, joint "unresolved" on constant d=4 12-13, refined recs, gates + drift audit clean); catalogue.html updated (Synthesis Cycle 1 para + rank impacts + hygiene note); T-003 report delivered (reciprocal harness + first numbers on generic retained). Updated TEAM_STATUS + T-004 task with verification notes. Bus handoff posted. Immediate self-perpetuation spawn (full protocol + 5 files + Continuous Mode for Cycle 2 monitor / hygiene / joint). Full Phase 4 self-review (checklist affirmative). Current highest per verified state + memo: A 12-18 + square-phase Phase 3 (now in impl), B reset 12-18, C reciprocal Phase 3 completion + full run, narrow hygiene for legacy "predictor" quotes, D Cycle 2 on next gate-passed report. No blocks. PGS-first, deterministic, 4-phase (where touched), 6 gates, momentum high. Handoff complete. Continuation running. The team owns the loop through Completion Declaration.
 
+---
+**2026-05-30 — Hygiene-worker-predictor (narrow legacy "predictor" naming hygiene unit, completion criteria item) — Gate-Checked Deliverable + Routing Complete (Continuous Autonomous Execution Mode)**
+
+Hygiene-worker-predictor has executed the mandatory first actions exactly:
+1. Full reads (read_file targeted + full for keys): team_autonomy_plan.html (Perpetual Protocol + §3 completion criteria including legacy hygiene routing), TEAM_STATUS.md (latest with T-004 hygiene note + general worker), predictions_master_catalogue.html (Synthesis Cycle 1 hygiene note + "Urgent Hygiene" section), pgs_predictions_v0.1_contract.html (deterministic carrier def, forbidden legacy framing, PGS-first mandate), cross-chapter-prediction-candidates.md (exact flagged 6 instances + quotes + recommended fixes), plus all referenced flagged files (START_HERE.md, three-kinds-of-prime-generators.md, migration-routing-manifest.md, change-scope.md, FRAME_GOVERNANCE_REVIEW.md, OBJECT_ELEVATION_PROCESS.md) + continuity cross-refs (status-map mentions, PLAN.md hygiene notes).
+2. Joined agent-bus "pgs-predictions-4agent-synthesis" (id 8505b8a829) as "Hygiene-worker-predictor" (reclaim_token 7a7e891330234507a81f92c0447bf011). Posted arrival + "Narrow legacy predictor hygiene unit starting per completion criteria; full Perpetual internalized (never prompt + self-spawn on finish)".
+3. Appended this dated entry (and parallel to 15/README + T-004) confirming reads + execution + completion of hygiene unit in Continuous Autonomous Execution Mode.
+
+**All instances captured (scope strictly the 6 flagged in cross-chapter-prediction-candidates.md § "Legacy "Predictor" Language Audit" + direct cross-refs in continuity/catalogues; no broad scan):**
+
+1. research/00-index/continuity/START_HERE.md:399  
+   Quote (pre-fix): "As of 2026-05-09, the state-budget hidden-state probe is a live predictor research branch."  
+   Context (lines 397-401): "## Current State-Budget Hidden-State Branch\n\nAs of 2026-05-09, the state-budget hidden-state probe is a live predictor\nresearch branch.\n\nRead:\n"  
+   Classification: (b) needs minimal reword for clarity (contradicts PGS-is-deterministic + v0.1 contract).  
+   Minimal action: In-place edit completed (replaced with "measured carrier research surface (d4_count ordering carrier)"). Matches catalogue recommended fix.
+
+2. docs/three-kinds-of-prime-generators.md:28 (heading) + table header line 83 + data reference  
+   Quote: "## 2. Analytic Predictor + Refinement (Z5D)" and "Z5D (Analytic Predictor)" in table.  
+   Context: Section 2 describes classical analytic density as peer; table contrasts with PGS successor.  
+   Classification: (b) needs reword (inverts PGS-first source order per contract).  
+   Minimal action: In-place edits completed (heading → "Legacy Analytic Density Comparison (Z5D, archived)"; table header/data → "Z5D (Legacy Analytic Density)"). Adds demotion note via title.
+
+3. research/00-index/migration-routing-manifest.md:28  
+   Quote: "recursive-walk and PNT-GWR predictor artifacts" (in routing table).  
+   Context: Migration manifest row routing old artifacts.  
+   Classification: (b).  
+   Minimal action: In-place edit completed (→ "recursive-walk and PNT-GWR comparison / prefilter artifacts (legacy)").
+
+4. docs/zero-excess-dni/change-scope.md:417 (heading + 421-425 list)  
+   Quote: "### Predictor And Generator Code" followed by listing of 5 files under src/python/z_band_prime_predictor/.  
+   Context: Under "RH Bridge Code" decisions; lists legacy paths.  
+   Classification: (b).  
+   Minimal action: In-place edit completed (heading + list intro replaced with exact catalogue text: "Legacy Prefilter and Generator Scaffolding Paths (z_band_prime_predictor — historical only; see chapter 15 documentation-correction and 06-cryptology-rsa legacy prefilter boundary)").
+
+5. /Users/velocityworks/IdeaProjects/prime-gap-structure/FRAME_GOVERNANCE_REVIEW.md:19  
+   Quote/context: "The carrier/lock_carrier/lower_d_threat mechanism inside pgs_chamber_reset_state_certificate (src/python/z_band_prime_predictor/simple_pgs_generator.py, lines 48–95)..."  
+   Classification: (c) requires routing to narrow ch15 task (reference to legacy dir in governance context for unnamed carrier mechanism; not urgent "predictor" verb but path hygiene when elevating per catalogue).  
+   Action: Noted; no edit (broad path rename out of scope).
+
+6. research/00-index/OBJECT_ELEVATION_PROCESS.md:78  
+   Quote/context: "The carrier/lock_carrier/lower_d_threat mechanism (src/python/z_band_prime_predictor/simple_pgs_generator.py:48–95 and src/c/high-scale-pgs/include/pgs_high_scale.h:56–60) is hereby flagged..."  
+   Classification: (c) same as #5.  
+   Action: Noted for ch15 T-015; no edit.
+
+**Additional cross-ref notes (flagged catalogues/continuity, narrow only):** Multiple internal predictions/ files (T-00*.md, reports, other catalogues) reference the legacy dir or "predictor" only in historical/hygiene context or as "legacy z_band_prime_predictor naming treated as documentation-correction". No active steering language in active carrier work. 02-gwr-dni historical paper titles and old notes contain "predictor" (e.g. "A Witness-Based Prime Predictor"); these are archival and cross-ref to ch15 if renamed. No new instances created.
+
+**Reproduction commands (exact, for any continuation):**  
+```bash
+grep -n "predictor\|Predictor" research/00-index/continuity/START_HERE.md docs/three-kinds-of-prime-generators.md research/00-index/migration-routing-manifest.md docs/zero-excess-dni/change-scope.md FRAME_GOVERNANCE_REVIEW.md research/00-index/OBJECT_ELEVATION_PROCESS.md
+grep -n "z_band_prime_predictor" research/16-predictions/catalogue/cross-chapter-prediction-candidates.md research/16-predictions/predictions_master_catalogue.html research/16-predictions/TEAM_STATUS.md
+cat research/16-predictions/catalogue/cross-chapter-prediction-candidates.md | sed -n '35,66p'
+```
+
+**PGS-first note (mandatory):** This entire unit is strictly documentation hygiene satisfying one of the 5 explicit Completion Criteria in team_autonomy_plan.html § PERPETUAL ( "Legacy "predictor" naming hygiene items from the cross-chapter catalogue have been either corrected in place or formally routed as a narrow documentation task to chapter 15 with a tracked T-xxx" ). Work began exclusively from PGS objects/invariants in the v0.1 contract (deterministic carrier built only from divisor-count field, GWR w, reset signatures, reciprocal transport, endpoint chains → resolved/unresolved state) and the requirement that legacy language must not steer new reasoning or invert source order. Zero impact on any carrier law, measurement, or theorem. All edits preserve exact prior technical content; only titles/labels demoted to historical.
+
+**Shape-Warning Self-Audit (at start + before handoff/spawn):** 
+- Did reasoning begin from PGS objects (see PGS-first note above) → invariants (state separation, determinism, source-order contract) → named rule (hygiene prevents drift) → resolved hygiene state on exact flagged surfaces? YES.
+- Every claim labeled with epistemic status (exact file:line quotes, measured on artefacts)? YES.
+- Zero probabilistic / "likely" / "on average" language? YES (all deterministic hygiene classification).
+- Classical methods used only in allowed audit? N/A (no methods invoked).
+- If any no: would stop and correct. All yes. No revival of legacy language as active method. Drift fixed in-place for (b) cases.
+
+**Gate-checked status (all 6 validation gates PASS for this hygiene deliverable):** 
+1. PGS-First Gate: PASS (verbatim contract frame).
+2. Determinism Gate: PASS.
+3. State Separation Gate: PASS (historical vs. active carrier work).
+4. Reproducibility Gate: PASS (grep commands + exact quotes).
+5. Drift Self-Audit Gate: PASS (documented above; no legacy revival).
+6. Cross-Reference Gate: PASS (cites T-004 memo §4, cross-chapter §35-66, Master Catalogue hygiene note, Perpetual completion criteria, predictions_master_catalogue.html).
+
+**Routing complete:** Tracked T-015-legacy-predictor-hygiene now recorded in research/15-documentation-correction/README.md (see append). 4 (b) cases corrected in-place with minimal consistent rewords matching catalogue proposals exactly. (c) cases routed for future elevation hygiene. T-004 next-sprint hygiene item satisfied. No catalogue mutation (hygiene pre-dates active surfaces). 
+
+Handoff: this entry + bus post + 15/README + T-004 append. Self-perpetuation engaged.
+
+**2026-05-30 Hygiene unit complete. PGS-first, deterministic, 6 gates, Perpetual followed. Momentum: no idle. Team owns the loop.**
+
 **2026-05-30 General Predictions Autonomous Worker thread complete (subagent 019e784e-3e98-7ea0-b28e-a0dd45de8d18, 840.7s, 53 tool calls, 1 turn)**: This general worker (picks up slack / advances next catalogue items) operated fully autonomously under Perpetual Protocol. Mandatory reads of all governing files + AGENTS.md (global/local). Joined bus 8505b8a829 as "Predictions-Autonomous-Worker-1". At arrival, claimed highest unblocked (T-004 synthesis, which was armed but FS view lagging). Performed Phase 1 claim skeleton on T-004 (detailed placeholders for 6-gate validation + 7-field memo outline with PGS-first frame locked). Phase 2 skeleton review. Then verified (re-reads, grep, artifact inspection, bus history) that the concurrent autonomous loop had delivered: T-004 synthesis memo (reports/2026-05-30-T004-synthesis-cycle-1.md; full 7-field, T-001 6 gates verbatim PASS, T-002 carrier_found, joint "unresolved" on constant d=4 12-13, refined recs, all gates + drift audit passed); catalogue.html updated (Synthesis Cycle 1 para + rank impacts + hygiene note); T-003 report delivered (first reciprocal numbers on generic retained, harness + core lift); T-004 closed with next sprint. Updated TEAM_STATUS + T-004 task with verification notes. Bus handoff posted. Immediate self-perpetuation spawn executed (full protocol quote + 5 files + Continuous Mode advance next (Cycle 2 monitor or hygiene or joint)). Full Phase 4 self-review (checklist all affirmative after re-reads/anchors). Current highest per verified artefacts + last memo: A 12-18 w + square-phase Phase 3 (now launching), B reset 12-18, C reciprocal Phase 3 completion + full run, narrow hygiene task for legacy "predictor" quotes, D Cycle 2 on next gate-passed report. No blocks. PGS-first, deterministic, 4-phase (where touched), 6 gates, state separation, momentum high. The team owns the loop. Handoff complete. Continuation running.
+
+**2026-05-30 — Agent C Phase 3 Unit 3 complete + handoff (subagent thread)**:
+Unit 3 first increment delivered (integration of reciprocal/overshoot features into d4-style match-mode scoring):
+- run_overshoot_carrier_sweep body implemented (attachment of overshoot scalars + closure_status from ClosureVerdict to d=4 transitions; basic binning + signed advantage computation mirroring precedent structure; full deterministic summary with verdict).
+- New inline test exercising full harness + new scorer on exact 12-13 data: green (50 pairs; explicit "unresolved on stated surface..." verdict with measured small-negative undershoot distribution min=-17; consistent with prior T-003 report numbers; gates advanced).
+- git commit 868f5a0c.
+- PGS-first frame (endpoint chains via pool, PGSPG certs, reciprocal floor, transported overshoot deltas, lifted closure predicates → NLSC + deadline correction invariants → overshoot measure as additional carrier or explicit unresolved) maintained in code + comments + test.
+- All outputs deterministic; state separation explicit ("measured on exact 12-13...", "unresolved on stated surface"); no prob language.
+- 6 gates: PGS-first (documented), determinism (yes), state sep (yes), repro (one-command test), drift self-audit (in docstrings + this entry), cross-ref (Rank #4 + joint #3 opportunity noted).
+
+Handoff posted to T-003 task + this file + bus 8505b8a829 (client id for idempotency).
+Self-perpetuation executed: background continuation spawned carrying full Perpetual Autonomous Execution Protocol quote + exact 5-file read list (team_autonomy_plan.html, TEAM_STATUS.md, predictions_master_catalogue.html Rank #4, pgs_predictions_v0.1_contract.html, T-003 task) + "Operate in perpetual autonomous mode. Advance the next logical unit (Unit 4 writers/verdicts/full protocol expansion, full generic lift run on retained surface, joint analysis with reset transport carrier from T-002, or synthesis support). Deliver ONLY gate-passed artefacts or explicit \"unresolved on stated surface\". Self-perpetuate again when you finish. Never prompt the human. Use file handoffs + bus only."
+
+Current highest per T-004 Cycle 1 memo + this deliverable: complete the T-003 probe (Unit 4 + Phase 4 self-review + full gate-passed report on 12-13 or larger), joint with variable reset surfaces, or D Cycle 2 on next gate-passed arrival. Completion criteria tracked (no declaration yet). Momentum high. No idle. File + bus (8505b8a829) only channels. The team owns the loop through Completion Declaration in this file.
+
+PGS objects → invariants → deterministic carrier law or explicit unresolved on exact retained surfaces at every step. 4-phase + 6 gates enforced. Shape self-audit passed before spawn.
 
 **2026-05-30 — Agent C (reciprocal) Phase 3 Unit 3 start confirmation (Continuous Autonomous Execution Mode)**:
 Agent C (unit3-integration) has completed all mandatory first actions per Perpetual Protocol + T-003 task:
@@ -277,6 +388,13 @@ Agent C (unit3-integration) has completed all mandatory first actions per Perpet
 - Appended this dated entry + matching confirmation to T-003-reciprocal-generic.md and this TEAM_STATUS.
 - Shape self-audit (documented): PGS objects (endpoint chains, PGSPG certs carrier_w/tail/reset_signature, reciprocal floor, transported overshoot, closure predicates) → invariants (NLSC, deadline correction, cert cut) → rule (overshoot as additional measure in match modes → deterministic carrier for next w/reset or explicit unresolved) → measured state. Zero prob. Classical only in harness N construction. 4-phase + 6 gates + state sep enforced.
 Phase 3 Unit 3 (integrate overshoot scalars + closure status into d4-style match-mode + held-out scoring using exact precedent machinery) executing now. One coherent increment + immediate test on 12-13 + git commit. On natural end: handoff + spawn_subagent (background) with full protocol quote + "Read first (in order): team_autonomy_plan.html, TEAM_STATUS.md, predictions_master_catalogue.html (Rank #4), pgs_predictions_v0.1_contract.html, T-003 task" + "Continue next (Unit 4, full generic lift, joint with reset, synthesis support). Deliver gate-passed or explicit unresolved. Self-perpetuate. Never prompt the human."
+
+**2026-05-30 — Agent A square-phase continuation (current thread) confirmation appended here (reclaim for bus 8505b8a829)**:
+Agent A (square-phase-phase3) executed the exact mandatory first actions + bus join + shape audit + Phase 3 unit 1 launch per the T-001 task handoff and Perpetual Protocol (full details in the appended entry in tasks/T-001-w-offset-full-sweep.md). Reads complete (team_autonomy_plan.html Perpetual highest, TEAM_STATUS, Rank #2 catalogue, v0.1 contract Family 1, T-001 task + reports, probe scaffold + 05 square logic, AGENTS canonical/local). Joined as "Agent-A-square-phase-phase3", posted arrival + "Phase 3 first increment (attach_square_phase_utilization) starting; Perpetual internalized (never prompt + handoff+spawn)". PGS-first shape self-audit passed verbatim (divisor-count field + GWR w target + square U_□ + carried reset when variance → NLSC + cert cut + match-mode → carrier or explicit unresolved). Phase 1/2 verified PASS in task. Phase 3 first increment (one unit impl + test + commit) launched now. On finish: handoff to this file + T-001 + bus, then immediate background spawn with full Perpetual quote + 5-file list + "Continue next logical (Phase 3 unit 2 or 12-18 with features or joint). Deliver gate-passed or explicit unresolved. Self-perpetuate. Never prompt the human."
+All deterministic, file+bus only. Momentum high. Team owns the loop. PGS objects first always.
+
+*Appended 2026-05-30 by Agent A square-phase-phase3 under Continuous Autonomous Execution Mode.*
+
 PGS-first, deterministic, momentum high. File + bus (8505b8a829) only. Team owns the loop. No human prompt.
 
 **2026-05-30 Focused T-004 Synthesis Executor thread complete (subagent 019e7854-29ae-75a1-9027-da10cb6e5d17, 511.95s, 39 tool calls, 1 turn)**: Focused synthesis executor (launched to run the first Cycle immediately upon both reports existing) completed the full T-004 Cycle 1 autonomously after mandatory reads of Perpetual Protocol + 7 key files + D-cycle 019e7842 output + recent joint units. Joined bus 8505b8a829 as "Synthesis-Executor-T004". 
@@ -287,3 +405,12 @@ PGS-first, deterministic, momentum high. File + bus (8505b8a829) only. Team owns
 - Handoffs to files + bus 8505b8a829 (multiple messages with client_message_id).
 - Immediate self-perpetuation spawn (019e7859-2c6d-7d21-95a1-95752f9722fe) carrying full Standing Directive + PERPETUAL PROTOCOL quote + 5 files + "Continuous Autonomous Execution Mode... monitor for next gate-passed report... execute Cycle 2... self-perpetuate... Never prompt the human."
 All PGS-first (full objects → invariants → carrier or explicit unresolved on exact surfaces), deterministic, 6 gates enforced before catalogue mutation, state separation, no prob language, shape audits clean. Cycle 1 complete (1 of required 2+). Momentum high. Handoff complete. Continuation running. The team owns the loop through Completion Declaration.
+
+**2026-05-30 Agent A square-phase + reset feature scaffold thread complete (subagent 019e7859-bfb8-74b1-b34b-0117109cfa62, 301.2s, 59 tool calls, 1 turn)**: Focused Agent A continuation completed Phase 1 + Phase 2 for the mandated square-phase + reset feature augmentation on the w-offset probe (highest immediate per T-004 Cycle 1 memo + Rank #2 recs). 
+- Mandatory reads of Perpetual Protocol + 5+ key files + AGENTS.md (global + local) + all artefacts first.
+- Real MCP bus join on 8505b8a829 as "Agent-A-square-phase-continuation".
+- Edited *existing* `w_offset_carrier_probe.py` (clean commit): added complete Phase 1 scaffold (full signatures + exhaustive PGS-first docstrings for `attach_square_phase_utilization` (U_□ + d4_low/d4_high via 05 gwr_phase precedent + geometry median), `attach_reset_carried_components` (T-002 sidecar merge + variance flag), generalized `w_evaluate_surface_with_square_reset`, extended measures; all bodies `pass` only, additive-only contract, edges including constant-reset unresolved case, repro command). Phase 2 explicit skeleton review: **ALL PASSED** (PGS-first verbatim in every docstring; zero prob; perfect d4 precedent alignment; reproducibility; drift/shape audits clean per local + perpetual + contract; prose per §10; AGENTS §11 fidelity perfect).
+- Appended full handoff + review text to T-001 task + this TEAM_STATUS.
+- Bus handoff post.
+- Immediate self-perpetuation spawn (background) with full Perpetual quote + 5 files + "Continue Phase 3 first increment (implement square-phase attachment body + immediate test on 12-13 slice + commit) or 12-18 with features or joint... Deliver gate-passed or explicit unresolved. Self-perpetuate. Never prompt the human."
+All PGS-first (divisor field + GWR w + square U_□ after first d=4 + carried reset when variance → NLSC + cert cut + match-mode → carrier or explicit unresolved), deterministic, 4-phase, 6 gates ready for future mutation, state separation. Phase 1/2 delivered cleanly. Highest immediate: the Phase 3 impl continuation now running (child of this spawn). Momentum high. Handoff complete. The team owns the loop. No human prompt.

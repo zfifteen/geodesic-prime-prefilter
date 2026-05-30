@@ -44,9 +44,12 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 from collections import defaultdict
 from pathlib import Path
 from typing import Any
+
+from sympy import nextprime
 
 # Reuse the existing high-quality transition builder and phase probe logic
 # from the audited d4_count carrier work. This is the correct engineering hygiene.
@@ -916,11 +919,157 @@ def attach_square_phase_utilization(
     additional ordering power on target_w_offset beyond the plain divisor
     scalars inside match-mode cells.
     """
-    # Phase 1 scaffold only — detailed description above. No implementation.
-    # The eventual body will iterate the d=4 subset, perform the median
-    # grouping exactly as gwr_phase_budget_hidden_state_probe.assign_phase_budget_bit,
-    # and attach the documented keys.
-    pass
+    # Implementation (Phase 3 first increment per AGENTS §11).
+    # The logic follows the audited 05 gwr_phase_budget_hidden_state_probe.py
+    # exactly so that results remain comparable across surfaces and protocols.
+    # Every step is described in ordinary English so the control flow reads
+    # like a clear technical narrative when scanned left to right.
+
+    if not transitions:
+        return []
+
+    # Work on shallow copies so the caller's list is never mutated in place.
+    # This keeps the attachment strictly additive and side-effect free.
+    result: list[dict[str, Any]] = []
+    for row in transitions:
+        result.append(dict(row))  # shallow copy preserves all original keys
+
+    # Step 1: ensure every row that can carry square-phase data has a raw
+    # utilization value. We prefer a pre-computed column if the caller
+    # (or an earlier 05 pipeline stage) already attached one. Otherwise we
+    # compute from detail_rows when they are supplied.
+    util_key_candidates = (
+        "square_phase_utilization",
+        "current_square_phase_utilization",
+    )
+    has_util = any(k in result[0] for k in util_key_candidates) if result else False
+
+    d4_filter_key = "current_next_dmin"
+    # Some transition builders use "next_dmin" directly; we probe both.
+    if not has_util and detail_rows is not None:
+        # Build a fast lookup from the authoritative detail rows.
+        # The stable join key is (surface_label, current_right_prime) or the
+        # equivalent right-edge prime that identifies the start of the chamber.
+        detail_by_right: dict[tuple[str, int], dict[str, Any]] = {}
+        for dr in detail_rows:
+            try:
+                label = str(dr.get("surface_label", dr.get("surface_display_label", "")))
+                right = int(dr.get("current_right_prime") or dr.get("next_right_prime") or 0)
+                if right:
+                    detail_by_right[(label, right)] = dr
+            except (ValueError, TypeError):
+                continue
+
+        for row in result:
+            # Only rows that represent a d=4 current chamber receive a real U_□.
+            # We accept either the transition's dmin marker or the presence of
+            # d4_count > 0 as the indicator (both appear in the retained surfaces).
+            is_d4 = False
+            try:
+                if d4_filter_key in row and int(row.get(d4_filter_key) or 0) == 4:
+                    is_d4 = True
+                elif int(row.get("d4_count") or 0) > 0:
+                    is_d4 = True
+            except (ValueError, TypeError):
+                pass
+
+            if not is_d4:
+                row["square_phase_utilization"] = None
+                continue
+
+            # Locate the matching detail row for exact arithmetic.
+            label = str(row.get("surface_label", ""))
+            right = int(row.get("current_right_prime") or row.get("next_right_prime") or 0)
+            dr = detail_by_right.get((label, right))
+            if dr is None:
+                # Fallback: try to read w and right directly from the transition
+                # (some augmented rows already carry the necessary scalars).
+                try:
+                    w = int(row.get("current_winner_offset") or row.get("current_winner_offset", 0))
+                    chamber_right = int(row.get("current_right_prime") or row.get("next_right_prime") or 0)
+                    if w > 0 and chamber_right > w:
+                        next_root = int(nextprime(math.isqrt(w)))
+                        next_square = next_root * next_root
+                        if next_square > w:
+                            row["square_phase_utilization"] = (chamber_right - w) / (next_square - w)
+                            continue
+                except Exception:
+                    pass
+                row["square_phase_utilization"] = None
+                continue
+
+            # Compute exactly as the audited phase-budget probe does.
+            try:
+                w = int(dr.get("next_peak_offset") or dr.get("current_winner_offset") or row.get("current_winner_offset") or 0)
+                chamber_right = int(dr.get("next_right_prime") or dr.get("current_right_prime") or row.get("current_right_prime") or 0)
+                if w > 0 and chamber_right > w:
+                    next_root = int(nextprime(math.isqrt(w)))
+                    next_square = next_root * next_root
+                    if next_square > w:
+                        row["square_phase_utilization"] = (chamber_right - w) / (next_square - w)
+                    else:
+                        row["square_phase_utilization"] = None
+                else:
+                    row["square_phase_utilization"] = None
+            except (ValueError, TypeError, ZeroDivisionError):
+                row["square_phase_utilization"] = None
+    else:
+        # No detail rows or util already present — just ensure the key exists
+        # for every row so downstream scoring never KeyErrors.
+        for row in result:
+            if "square_phase_utilization" not in row:
+                row["square_phase_utilization"] = row.get("current_square_phase_utilization")
+
+    # Step 2: compute the discrete d4_low / d4_high label inside each local
+    # geometry cell. The cell key is deliberately identical to the one used
+    # in the 05 phase-budget work so that any future joint analysis lines up
+    # without translation tables.
+    by_geometry: dict[tuple[str, int, int], list[float]] = defaultdict(list)
+    for row in result:
+        try:
+            if row.get("square_phase_utilization") is None:
+                continue
+            fam = str(row.get("current_carrier_family", row.get("carrier_family", "")))
+            w_off = int(row.get("current_winner_offset", row.get("next_peak_offset", 0)))
+            first_open = int(row.get("current_first_open_offset", row.get("first_open_offset", 0)))
+            key = (fam, w_off, first_open)
+            by_geometry[key].append(float(row["square_phase_utilization"]))
+        except (ValueError, TypeError):
+            continue
+
+    medians: dict[tuple[str, int, int], float] = {}
+    for key, values in by_geometry.items():
+        if values:
+            sorted_vals = sorted(values)
+            medians[key] = sorted_vals[len(sorted_vals) // 2]
+
+    # Attach the three new fields to every row (additive contract).
+    for row in result:
+        util = row.get("square_phase_utilization")
+        if util is None:
+            row["square_phase_bit"] = "non_d4"
+            row["is_d4_low"] = None
+            continue
+
+        try:
+            fam = str(row.get("current_carrier_family", row.get("carrier_family", "")))
+            w_off = int(row.get("current_winner_offset", row.get("next_peak_offset", 0)))
+            first_open = int(row.get("current_first_open_offset", row.get("first_open_offset", 0)))
+            key = (fam, w_off, first_open)
+            median = medians.get(key)
+            if median is None:
+                # Degenerate single-row cell — treat as high for conservative scoring.
+                row["square_phase_bit"] = "d4_high"
+                row["is_d4_low"] = 0
+            else:
+                is_low = float(util) < median
+                row["square_phase_bit"] = "d4_low" if is_low else "d4_high"
+                row["is_d4_low"] = 1 if is_low else 0
+        except (ValueError, TypeError):
+            row["square_phase_bit"] = "non_d4"
+            row["is_d4_low"] = None
+
+    return result
 
 
 def attach_reset_carried_components(
