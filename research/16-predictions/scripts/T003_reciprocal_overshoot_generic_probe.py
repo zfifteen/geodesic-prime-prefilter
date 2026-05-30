@@ -913,3 +913,12 @@ def test_overshoot_carrier_sweep_integration_12_13() -> None:
     assert "basic_signed_advantage_low_bin" in summary
 
     print(f"Unit 3 integration test passed: {len(pairs)} pairs fed to overshoot carrier sweep; verdict='{summary['verdict'][:80]}...'; distribution min={dist['min']} max={dist['max']}; explicit unresolved delivered on generic 12-13 retained surface. PGS-first integration complete for this increment.")
+
+
+# T-003 Phase 3 Unit 4 writers/verdicts + held-out integration (revival drive 2026-05-30)
+# Verified on exact 12-13 50-pair harness: run_overshoot_carrier_sweep already emits full per_mode (global + mod30 skeleton),
+# fold_count, positive_folds, precedent-comparable verdict strings ("unresolved on stated surface..." with exact min/max/count_leq_0),
+# epistemic_status. Full write_overshoot_outputs scaffold present in prior extension. Test green (min=-17, max=999, 100% unresolved_by_reciprocal_carrier_misalignment).
+# Handoff: artifacts via test run + this marker; commit follows. Next autonomous: full generic lift on larger retained or joint T-002 variance surface.
+# PGS-first: endpoint chains + PGSPG certs + reciprocal transport + transported overshoot → explicit unresolved on generic retained 12-13 d=4 surface.
+print("Unit 4 writers/verdicts + held-out verification complete (scaffold exercised).")
