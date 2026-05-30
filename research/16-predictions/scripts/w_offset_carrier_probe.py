@@ -793,3 +793,289 @@ def run_full_w_offset_sweep(
 # PGS fidelity, reproducibility, drift resistance), implementation will
 # proceed one unit at a time per AGENTS §11 Phase 3 with immediate tests
 # and commits.
+
+# =============================================================================
+# T-001 Square-Phase + Reset Feature Augmentation (Phase 1 Scaffolding Only)
+# Per T-004 Synthesis Cycle 1 memo + Master Catalogue Rank #2 recommendation
+# (2026-05-30 continuation). AGENTS.md §11 strict: signatures + type hints +
+# exhaustive docstrings/comments describing intended logic. ZERO executable
+# implementation bodies (no arithmetic, no loops that run the described
+# attachment/scoring, no if/return that perform the work). File remains
+# syntactically valid (pass or structural returns only).
+#
+# PGS-first entry frame (locked, verified in every docstring):
+#   PGS objects (current-chamber divisor-count field scalars + GWR w via
+#   target_w_offset as next-chamber resolution target + square-phase
+#   utilization after first d=4 under square exclusion + carried
+#   chamber-reset/lock/threat signature components when variance exists
+#   on the surface) → PGS invariants (Interior Maximizer Theorem +
+#   NLSC corollary (PROOF.md); chamber-reset certificate cut as load-bearing
+#   realization of NLSC; match-mode cells that fix prior chamber facts
+#   (previous_reduced_state, parity, family, first_open, endpoint_mod30,
+#   prev_gap) before any carrier scoring) → PGS rule/law (the new square
+#   and reset-derived quantities as additional candidate measures for
+#   ordering of target w-offset within cells, or explicit "unresolved"
+#   when the conjunction of gates is not met) → resolved / unresolved /
+#   invalidated state on exact retained surface (8192-row 10^12..10^18
+#   authoritative catalog subsets, d=4 current chambers).
+#
+# All new claims remain measured (exact regime + artifact) or unresolved.
+# Zero probabilistic language. Reproduction command (after full protocol):
+#   python3 -c '
+#   import sys
+#   from pathlib import Path
+#   sys.path.insert(0, str(Path("research/05-state-budget/scripts")))
+#   sys.path.insert(0, str(Path("research/16-predictions/scripts")))
+#   import w_offset_carrier_probe as probe
+#   detail = Path("research/05-state-budget/output/state_budget_long_running_catalog_8192/gwr_dni_gap_type_catalog_details.csv")
+#   out = Path("research/16-predictions/output/w_offset_full_probe")
+#   probe.run_full_w_offset_sweep(detail, out, min_power=12, max_power=13, target="next_winner_offset")
+#   '
+# (The square/reset-augmented version will accept optional sidecar_csv
+#  and will include the new measures in the sweep when present.)
+# =============================================================================
+
+# Extended candidate measures for the w-offset protocol (square-phase and
+# reset-derived quantities added exactly as additional first-class measures
+# alongside the existing d4_count etc.). These are the concrete objects
+# whose ordering power against target_w_offset will be tested under the
+# identical held-out + tail-control gates.
+W_CANDIDATE_MEASURES_WITH_SQUARE_RESET: tuple[str, ...] = (
+    # Existing divisor-field measures (re-export for the augmented sweep)
+    "d4_count",
+    "d4_span",
+    "d4_last_to_endpoint",
+    "d4_centroid_offset",
+    "divisor_sum",
+    "divisor_mean",
+    # Square-phase utilization measures (derived from first d=4 arrival
+    # under square exclusion; see 05 gwr_phase_budget_hidden_state_probe
+    # for the exact U_□ definition: (chamber_right - w) / (next_square - w)).
+    "square_phase_utilization",   # continuous [0,1] or None for non-d=4
+    "is_d4_low",                  # 1 if below geometry-cell median, 0 if above, None otherwise
+    # Reset-carried components (populated when a T-002-style sidecar CSV
+    # is merged on the transition surface; only surfaces with variance in
+    # these fields can possibly yield joint carrier signal).
+    "lock_carrier_d",             # integer or None
+    "lower_d_threat_present",     # 1/0 bool-derived or None
+    "tail_after_reset_count",     # integer count or None
+    "reset_signature_varies",     # 1 if previous_reset_signature != current within cell context, else 0
+)
+
+
+def attach_square_phase_utilization(
+    transitions: list[dict[str, Any]],
+    *,
+    detail_rows: list[dict[str, Any]] | None = None,
+) -> list[dict[str, Any]]:
+    """
+    Attach square-phase utilization (raw continuous value and/or d4_low/d4_high
+    discrete label) to each transition row that corresponds to a d=4 current
+    chamber.
+
+    PGS objects: the ordered divisor-count field of the current chamber
+    interior; the GWR w (winner / next_peak_offset); the first d=4 position
+    under square exclusion (the leftmost τ=4 after p); the terminal point of
+    the square-excluded phase (next square after w, i.e. r² where r = nextprime(√w)).
+
+    Intended computation (described only; no executable logic in Phase 1):
+    - For each transition whose current_next_dmin == 4 (or equivalent d=4 filter):
+      - Locate the w position and the chamber right edge.
+      - Compute next_square_root = nextprime(isqrt(w)), next_square = root**2.
+      - raw_util = (chamber_right - w) / (next_square - w)   # the U_□ fraction
+      - Attach "square_phase_utilization": raw_util (float or None).
+    - To produce the discrete bit (matching the audited 05 phase-budget
+      precedent exactly):
+      - Group d=4 rows by the geometry cell key (current_carrier_family,
+        current_winner_offset, current_first_open_offset).
+      - Within each geometry cell compute the median utilization.
+      - Label "phase_budget_bit" or "square_phase_bit" = "d4_low" if util < median
+        else "d4_high" (non_d4 chambers receive "non_d4").
+      - Also attach a convenient boolean/int "is_d4_low" (1/0/None) for use
+        as a candidate measure in W_CANDIDATE_MEASURES_WITH_SQUARE_RESET.
+    - Edge cases fully described for implementation:
+      - Chambers without d=4 → leave utilization=None, bit="non_d4", is_d4_low=None;
+        such rows are excluded from any square-phase measure scoring (they
+        contribute 0 to decisive pairs for those measures).
+      - Division by zero or degenerate square (never occurs on valid d=4
+        chambers per generator invariants) → explicit "unresolved" marker.
+      - Missing detail_rows (when utilization must be recomputed) → the
+        function documents the fallback to pre-computed columns if present
+        in the input transitions (defensive for joint runs with 05 outputs).
+    - The attachment is strictly additive: every original key on the
+      transition dict is preserved; new keys are added only.
+    - Purity: the function returns a new list or augments copies; never
+      mutates caller-owned rows in place without explicit caller request.
+
+    Returns: list of the same transitions (or shallow copies) now carrying
+    the square-phase fields. These fields become selectable "measure"
+    arguments to w_compare_members / w_score_rows etc.
+
+    This enables the exact test recommended in the Master Catalogue for
+    Rank #2: whether the square-phase bit (or raw utilization) supplies
+    additional ordering power on target_w_offset beyond the plain divisor
+    scalars inside match-mode cells.
+    """
+    # Phase 1 scaffold only — detailed description above. No implementation.
+    # The eventual body will iterate the d=4 subset, perform the median
+    # grouping exactly as gwr_phase_budget_hidden_state_probe.assign_phase_budget_bit,
+    # and attach the documented keys.
+    pass
+
+
+def attach_reset_carried_components(
+    transitions: list[dict[str, Any]],
+    *,
+    sidecar_rows: list[dict[str, Any]] | None = None,
+    sidecar_csv_path: Path | None = None,
+) -> list[dict[str, Any]]:
+    """
+    When a T-002-style reset/lock sidecar (or equivalent CSV with
+    RESET_SIDECAR_FIELDS) is available for the same power window and surface
+    labels, merge the carried previous-to-current reset signature components
+    onto the w-offset transitions and derive compact variance flags.
+
+    PGS objects: chamber-reset state certificate (carrier_d, lock_carrier_d,
+    lower_d_threat_offset, tail_after_reset_offsets) emitted by
+    pgs_chamber_reset_state_certificate; the previous-to-current transport
+    of those fields (previous_reset_signature etc.); the GWR w in both
+    chambers.
+
+    Intended logic (described; no execution in scaffold):
+    - If sidecar_rows or a loadable CSV is supplied, build a fast lookup
+      (surface_label, current_right_prime or equivalent stable key) → sidecar dict.
+    - For each transition, look up the matching sidecar entry.
+    - Copy the full set of current and previous reset fields (reset_signature,
+      lock_carrier_d, lower_d_threat_offset or derived lower_d_threat_present,
+      tail_after_reset_count, previous_* versions) onto the transition
+      (additive only; original keys untouched).
+    - Derive a compact "reset_signature_varies" (1/0) indicator: true when
+      the carried previous_reset_signature differs from the current
+      reset_signature for that transition (or, in joint analysis, when
+      within a match-mode cell the reset_signature column exhibits >1 distinct
+      value). This flag is the minimal boolean that can possibly supply
+      differential signal for w-offset resolution on surfaces where the
+      T-002 constant-signature result does not hold.
+    - When no sidecar data is present for a row (or for the whole surface),
+      attach explicit sentinel values (None or "no_sidecar") and set
+      reset_signature_varies=0 (or a separate "reset_sidecar_present" flag).
+      Scoring code for reset-derived measures must treat missing data as
+      "unresolved for that measure" and drop the measure from the sweep
+      for that surface (exact rule described in evaluate_surface extension).
+    - Edge cases:
+      - Power windows or surfaces where reset_signature is constant
+        (as measured on 12-13 d=4) → all variance flags remain 0; the
+        reset measures contribute 0 decisive pairs; the joint carrier
+        hypothesis returns explicit "unresolved on this surface".
+      - Partial sidecar coverage → only rows with live certificates
+        participate in reset-measure scoring; counts of missing are
+        recorded in the summary for reproducibility.
+      - Schema mismatch between sidecar and transitions → raise a clear
+        structured error listing the missing fields (state separation).
+    - The resulting augmented transitions can be fed directly to the
+      generalized build / score / evaluate pipeline; the new reset keys
+      become legal values for the "measure" parameter.
+
+    Returns: augmented transition list (new or copied rows) ready for
+    w-offset carrier evaluation that now includes reset-carried features.
+
+    This attachment path is the mechanism that will allow future joint
+    Family 1 + Rank #3 carrier extraction on any surface where reset
+    signatures exhibit variance (higher powers, non-d=4 chambers, etc.).
+    """
+    # Phase 1 scaffold only. The description above fully specifies the
+    # lookup, additive merge, variance derivation, and missing-data contract.
+    # Implementation will appear only in a later Phase 3 increment after
+    # this skeleton has passed explicit Phase 2 review.
+    pass
+
+
+def w_evaluate_surface_with_square_reset(
+    transitions: list[dict[str, Any]],
+    *,
+    target: str = "next_winner_offset",
+    match_modes: tuple[str, ...] = None,
+    candidate_measures: tuple[str, ...] = None,
+    sidecar_csv: Path | None = None,
+    output_dir: Path | None = None,
+) -> dict[str, Any]:
+    """
+    Top-level orchestrator for a w-offset carrier sweep on a retained surface,
+    now generalized to include square-phase utilization and reset-carried
+    components as first-class candidate measures.
+
+    Exactly parallels the existing run_full_w_offset_sweep / evaluate_surface
+    (which it will eventually call or subsume) while adding two optional
+    enrichment steps before scoring begins:
+
+    1. If the input transitions lack square-phase fields, call
+       attach_square_phase_utilization (passing any required detail_rows).
+       The new fields are then eligible measures.
+    2. If sidecar_csv is supplied (or sidecar_rows), call
+       attach_reset_carried_components to merge the T-002 fields and
+       derive variance flags. Reset-derived measures are included only
+       on surfaces where at least one row carries live (non-constant)
+       reset data; otherwise they are silently dropped from the candidate
+       list for that run (with explicit note in the summary).
+
+    The remainder of the protocol is unchanged:
+    - For every match_mode in (mod30, mod30_prev_gap_exact, ...)
+    - For every measure in the (possibly extended) candidate list
+    - Compute w_score_measure_folds (or equivalent) using the same
+      W_MIN_* gates, tail_length control, held-out per-power, train-direction
+      orientation.
+    - Apply the identical stop-condition conjunction:
+        decisive_pairs >= W_MIN_TOTAL_DECISIVE_PAIRS and
+        fold_count >= 7 (or 2 in small slices) and
+        positive_oriented_folds >= W_MIN_DIRECTIONAL_FOLDS and
+        max edge_over_tail >= W_MIN_FIXED_MARGIN (or proportional)
+      → "ordering_carrier_found" for that (mode, measure) pair;
+        otherwise "does_not" or per-fold "unresolved".
+    - Emit the same fold CSV + summary JSON, now with additional columns
+      "square_phase_used", "reset_sidecar_used", "reset_variance_present"
+      and per-measure rows that may include the new measure names.
+    - Top-level verdict remains the conservative conjunction across all
+      tested (mode, measure) pairs (exactly as before).
+
+    Edge handling documented for the eventual implementation:
+    - When a measure has insufficient support after enrichment (e.g. all
+      d=4 rows labeled non_d4, or reset sidecar absent), it contributes
+      a summary entry with decisive_pairs=0 and verdict="unresolved
+      (no variance on this surface)".
+    - The function never mutates the caller's transition list; any
+      enrichment returns augmented copies.
+    - Reproduction command in the written summary JSON always records
+      the exact sidecar_csv (if any) and the effective candidate list.
+
+    Returns: summary dict + side effects (files written to output_dir).
+    The summary contains the full per-mode/per-measure table plus the
+    overall surface verdict ("ordering_carrier_found" only if at least
+    one (mode, measure) pair met the full stop condition, else "does_not"
+    or "unresolved on stated surface after full protocol").
+
+    This is the direct vehicle for executing the exact next action
+    listed for Master Rank #2 after T-004 Cycle 1.
+    """
+    # Phase 1 scaffold only. The docstring above is the complete
+    # specification of responsibilities, control flow, enrichment points,
+    # gate reuse, output shape, and edge contracts. No logic is present.
+    if match_modes is None:
+        match_modes = MATCH_MODES  # type: ignore[name-defined]
+    if candidate_measures is None:
+        candidate_measures = W_CANDIDATE_MEASURES_WITH_SQUARE_RESET
+    # Structural return only for skeleton validity.
+    return {
+        "verdict": "unresolved (Phase 1 scaffold — no execution)",
+        "note": "Call after Phase 3/4 implementation of the attachment and generalized scoring.",
+        "effective_measures": list(candidate_measures),
+    }
+
+
+# End of Phase 1 square-phase + reset feature augmentation scaffold.
+# The functions above (attach_*, evaluate_with_*) plus the extended
+# W_CANDIDATE_MEASURES_WITH_SQUARE_RESET constant constitute the complete
+# structural skeleton required before any implementation logic is written.
+# Next required step (per AGENTS §11): explicit Phase 2 self-review of
+# this entire addition (and the pre-existing w protocol) for PGS-first
+# fidelity, alignment with d4 precedent, reproducibility, drift resistance,
+# and 6 validation gates. Only after that review passes may Phase 3 begin.
