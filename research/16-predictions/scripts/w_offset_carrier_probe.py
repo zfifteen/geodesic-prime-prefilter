@@ -642,11 +642,95 @@ def w_evaluate_surface(
 
     Returns: (fold_rows, summary_dict) ready for write_fold_csv + json dump.
     """
-    # PHASE 1 SCAFFOLD: complete specification in the docstring. The body
-    # performs only the structural return of empty containers so that the
-    # module remains importable and the overall shape of the call graph is
-    # visible for Phase 2 review.
-    return [], {}
+    # Load and filter (reuse the audited loader + power filter)
+    raw = phase_probe.load_detail_rows(detail_csv)
+    detail_rows = [r for r in raw if str(r.get("power", "")).strip() != ""]
+
+    transitions = build_w_target_transitions(
+        detail_rows, min_power=min_power, max_power=max_power, target=target
+    )
+
+    # Local constants mirroring the audited d4 sweep (for w-carrier)
+    MIN_TOTAL = W_MIN_TOTAL_DECISIVE_PAIRS
+    MIN_FOLD = W_MIN_FOLD_DECISIVE_PAIRS
+    MIN_DIR = W_MIN_DIRECTIONAL_FOLDS
+    MIN_FIXED = W_MIN_FIXED_MARGIN
+    MIN_PROP = W_MIN_PROPORTIONAL_MARGIN
+
+    # Same candidate/control lists as the precedent (focus on d4 family + tail for first w run)
+    CANDIDATES = ("d4_count", "d4_span", "d4_centroid_offset", "divisor_sum", "current_gap_width")
+    CONTROLS = ("tail_length",)
+
+    fold_rows: list[dict[str, Any]] = []
+    summaries: list[dict[str, Any]] = []
+
+    for match_mode in MATCH_MODES:
+        for m in CONTROLS + CANDIDATES:
+            role = "control" if m in CONTROLS else "candidate"
+            fr = w_score_measure_folds(
+                transitions, match_mode=match_mode, measure=m, measure_role=role, target_field="target_w_offset"
+            )
+            fold_rows.extend(fr)
+            summaries.append(w_summarize_measure(fr))
+
+    # Control lookup and candidate evaluation (exact analog of d4 evaluate_surface)
+    control_by_mode = {str(s["match_mode"]): s for s in summaries if str(s.get("measure")) in CONTROLS}
+    candidate_summaries = []
+    carrier_hits = []
+    for s in summaries:
+        if str(s.get("measure_role")) != "candidate":
+            continue
+        mode = str(s["match_mode"])
+        ctrl = control_by_mode.get(mode, {"oriented_signed_advantage": 0})
+        dec = int(s["decisive_pairs"])
+        thresh = max(MIN_FIXED, int(MIN_PROP * dec)) if dec else MIN_FIXED
+        edge = int(s["oriented_signed_advantage"]) - int(ctrl.get("oriented_signed_advantage", 0))
+        cs = dict(s)
+        cs["tail_control_signed_advantage"] = int(ctrl.get("oriented_signed_advantage", 0))
+        cs["edge_over_tail_control"] = edge
+        cs["required_edge"] = thresh
+        cs["ordering_carrier_stop_condition_met"] = bool(
+            dec >= MIN_TOTAL
+            and int(s.get("folds_with_min_support", 0)) == int(s.get("fold_count", 0))
+            and int(s.get("positive_oriented_folds", 0)) >= MIN_DIR
+            and edge >= thresh
+        )
+        candidate_summaries.append(cs)
+        if cs["ordering_carrier_stop_condition_met"]:
+            carrier_hits.append(cs)
+
+    strongest = sorted(
+        candidate_summaries,
+        key=lambda r: (int(r.get("edge_over_tail_control", 0)), int(r.get("oriented_signed_advantage", 0)), int(r.get("decisive_pairs", 0))),
+        reverse=True
+    )[:5]
+
+    row_count = len([r for r in raw if str(r.get("power","")).strip() != ""])
+    verdict = "ordering_carrier_found" if carrier_hits else "does_not"
+
+    summary = {
+        "question": "After current PGS chamber facts and endpoint residue are fixed, does any current-chamber divisor-field scalar order the (next) w position better than tail length?",
+        "detail_csv": str(detail_csv),
+        "target": target,
+        "input_catalog_power_window_row_count": row_count,
+        "min_power": min_power,
+        "max_power": max_power,
+        "transition_count": len(transitions),
+        "match_modes": list(MATCH_MODES),
+        "candidate_measures": list(CANDIDATES),
+        "control_measures": list(CONTROLS),
+        "ordering_carrier_thresholds": {
+            "min_total_decisive_pairs": MIN_TOTAL,
+            "min_fold_decisive_pairs": MIN_FOLD,
+            "min_directional_folds": MIN_DIR,
+            "min_edge_over_control": "max(50, 0.005 * decisive_pairs)",
+        },
+        "candidate_summaries": candidate_summaries,
+        "strongest_candidates_by_edge_over_tail": strongest,
+        "ordering_carrier_hits": carrier_hits,
+        "verdict": verdict,
+    }
+    return fold_rows, summary
 
 
 def run_full_w_offset_sweep(
@@ -668,9 +752,39 @@ def run_full_w_offset_sweep(
     This is the function that, after Phases 3+4, will be invoked by the
     reproduction commands listed in the T-001 final report.
     """
-    # PHASE 1 SCAFFOLD: orchestration described; placeholder.
     output_dir.mkdir(parents=True, exist_ok=True)
-    print(f"[PHASE 1 SCAFFOLD] run_full_w_offset_sweep would write to {output_dir}")
+
+    fold_rows, summary = w_evaluate_surface(
+        detail_csv, min_power=min_power, max_power=max_power, target=target
+    )
+
+    # Write artifacts in style of the d4 precedent + w-specific naming
+    tag = f"p{min_power}-{max_power}_{target}"
+    fold_path = output_dir / f"w_offset_carrier_sweep_folds_{tag}.csv"
+    summary_path = output_dir / f"w_offset_carrier_sweep_summary_{tag}.json"
+
+    # Minimal CSV writer for folds (reuse format_value if present, else simple)
+    import csv
+    def fmt(v):
+        if v is None: return ""
+        if isinstance(v, float): return f"{v:.12g}"
+        return str(v)
+
+    FOLD_FIELDS_W = ["match_mode", "measure", "measure_role", "heldout_power", "train_direction",
+                     "eligible_cells", "decisive_pairs", "raw_signed_advantage", "oriented_signed_advantage",
+                     "tie_pairs", "advantage_share", "target"]
+
+    fold_path.parent.mkdir(parents=True, exist_ok=True)
+    with fold_path.open("w", encoding="utf-8", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=FOLD_FIELDS_W, lineterminator="\n")
+        w.writeheader()
+        for r in fold_rows:
+            w.writerow({k: fmt(r.get(k)) for k in FOLD_FIELDS_W})
+
+    summary_path.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+
+    print(json.dumps(summary, indent=2))
+    print(f"\nWrote w-offset carrier sweep artifacts for target={target} to {output_dir}")
     return 0
 
 
