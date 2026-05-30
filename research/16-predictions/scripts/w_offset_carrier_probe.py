@@ -478,9 +478,41 @@ def w_score_rows(
     remain the sole mechanism for fixing the PGS chamber facts before any
     carrier claim is evaluated.
     """
-    # PHASE 1 SCAFFOLD: grouping + aggregation described above; no loops or
-    # arithmetic executed in this phase.
-    return 0, 0, 0, 0
+    from collections import defaultdict  # local in case top-level import order
+
+    by_cell: dict[tuple, list[dict[str, Any]]] = defaultdict(list)
+    for row in rows:
+        # Direct key construction (matches audited match_key logic exactly; independent of import name for early Phase 3 units)
+        base = (
+            str(row["previous_reduced_state"]),
+            str(row["current_winner_parity"]),
+            str(row["current_carrier_family"]),
+            int(row["current_winner_offset"]),
+            int(row["current_first_open_offset"]),
+        )
+        key = (*base, int(row["endpoint_mod30"]))
+        if match_mode == "mod30_prev_gap_bin":
+            key = (*key, str(row.get("previous_gap_bin", "")))
+        elif match_mode == "mod30_prev_gap_exact":
+            key = (*key, int(row.get("previous_gap_width", 0)))
+        by_cell[key].append(row)
+
+    eligible_cells = 0
+    decisive_pairs = 0
+    signed_advantage = 0
+    tie_pairs = 0
+    for members in by_cell.values():
+        if len(members) < 2:
+            continue
+        pairs, signed, ties = w_compare_members(members, measure, target_field=target_field)
+        if pairs == 0:
+            continue
+        eligible_cells += 1
+        decisive_pairs += pairs
+        signed_advantage += signed
+        tie_pairs += ties
+
+    return eligible_cells, decisive_pairs, signed_advantage, tie_pairs
 
 
 def w_score_measure_folds(
