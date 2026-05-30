@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Japanese Line Geometry → Literal Multiplicative Web: Formal Experiment Plan</title>
+<style>
+:root {
+  --ink: #0f172a;
+  --muted: #475569;
+  --paper: #f8fafc;
+  --accent: #0f766e;
+  --warm: #b45309;
+  --danger: #991b1b;
+  --blue: #1e40af;
+  --success: #166534;
+  --line: #cbd5e1;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 15px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+main { max-width: 1080px; margin: 0 auto; padding: 32px 24px 80px; }
+h1 { font-size: 2.1rem; line-height: 1.1; margin: 0 0 8px; letter-spacing: -0.02em; }
+h2 { font-size: 1.35rem; margin: 36px 0 10px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+h3 { font-size: 1.1rem; margin: 24px 0 8px; color: var(--accent); }
+.status {
+  display: inline-block;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+.lead {
+  font-size: 1.1rem;
+  color: var(--muted);
+  max-width: 72ch;
+}
+.card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px 20px;
+  margin: 18px 0;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  font-size: 14px;
+}
+th, td {
+  border: 1px solid var(--line);
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #f1f5f9; font-weight: 600; }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+.checklist li { margin: 4px 0; }
+.checklist input { margin-right: 8px; }
+.contract {
+  background: #f0fdf4;
+  border-left: 5px solid var(--success);
+  padding: 14px 18px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.warning {
+  background: #fef2f2;
+  border-left: 5px solid var(--danger);
+  padding: 14px 18px;
+  font-size: 14px;
+}
+.mapping {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.mapping .box {
+  border: 1px solid var(--line);
+  padding: 12px 14px;
+  background: white;
+  border-radius: 6px;
+}
+.mapping .box h4 { margin: 0 0 6px; font-size: 13px; color: var(--accent); }
+svg { display: block; max-width: 100%; height: auto; background: white; border: 1px solid var(--line); border-radius: 6px; }
+.meta { font-size: 12px; color: var(--muted); }
+.section { margin-top: 42px; }
+ul { padding-left: 20px; }
+li { margin: 3px 0; }
+strong { font-weight: 600; }
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div class="status">DRAFT EXPERIMENT PLAN — LITERAL WEB PATH ONLY</div>
+  <h1>Japanese Line Geometry to Literal Multiplicative Web</h1>
+  <p class="lead">Formal experiment planning document for importing structural invariants from visual line multiplication (diagonal filtering, cross-family crossings, propagation, witness completeness) into the public-thread triangulation method for semiprime neighborhood analysis.</p>
+  <p class="meta">Target path: <code>docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/</code><br>
+  Status: Planning. No implementation yet. Contract-first.</p>
+</header>
+
+<section>
+  <h2>1. Executive Summary</h2>
+  <p>The Japanese (line/stick) multiplication method encodes multiplication as the geometry of two bundles of parallel lines whose crossings are spatially sorted into place-value diagonals. The result is read from coherent structure across bands plus deterministic propagation (carry), not from a single global maximum count.</p>
+  <p>The current literal multiplicative-web / thread-triangulation work (see <code>literal_web_hole_trace.py</code> and <code>REWIND_TO_LITERAL_WEB.md</code>) already uses a 1D thread-crossing model but scores primarily via flat support cardinality. This document defines four narrow, deterministic, PGS-native experiments that test whether Japanese-style geometric invariants measurably improve nomination of held-out factor distances under the strict public-web contract.</p>
+  <div class="card">
+    <strong>Primary hypothesis (highest leverage):</strong><br>
+    Replacing or augmenting flat thread support cardinality with multi-scale banded (“diagonal”) filtering and explicit cross-family crossing rules will increase the rank and visibility of true factor-distance holes in the public output, even when raw max support remains low (as observed in the toy ladder where max support was frequently 3).
+  </div>
+</section>
+
+<section>
+  <h2>2. Current Literal Web State (Baseline)</h2>
+  <p>Active reference implementation and measured results (as of the literal rewind):</p>
+  <table>
+    <tr><th>Artifact</th><th>Key Property</th><th>Measured Result</th></tr>
+    <tr>
+      <td><code>literal_web_hole_trace.py</code></td>
+      <td>Public radius ≈ √N; all nearby composites factored with sympy; direct p/q rows held out; support = raw count of distinct small-prime threads through each offset</td>
+      <td class="num">4 toy cases (23×31 … 89×113). In every case the true offset appeared in the top emitted holes. Max support observed: 3. Emitted hole count often 1 at the exact true offset after holdout.</td>
+    </tr>
+    <tr>
+      <td><code>literal_web_hole_trace_ladder.py</code> (scale ladder)</td>
+      <td>Radius scaled to 6×p; same literal method</td>
+      <td>Signal held through all rungs up to 8009×10007 (radius 48054). Stop at 9001×11003 due to radius limit (feasibility, not pattern failure).</td>
+    </tr>
+    <tr>
+      <td>Parked ratio branch</td>
+      <td>Thread-count ratios, depth, retention caps, candidate pruning</td>
+      <td>Explicitly parked. 0/10 recovery in corrected runs on toy corpus. Not part of active contract.</td>
+    </tr>
+  </table>
+
+  <p class="meta">Exact baseline files: <code>literal-web-rewind/output/summary.md</code>, <code>literal_web_hole_trace.py:94–156</code> (support calculation), <code>REWIND_TO_LITERAL_WEB.md</code>.</p>
+</section>
+
+<section>
+  <h2>3. Japanese Structural Invariants (Mapped)</h2>
+
+  <div class="mapping">
+    <div class="box">
+      <h4>Japanese Mechanism</h4>
+      <ul>
+        <li>Bundles = digit values (cardinality)</li>
+        <li>Crossings = exact m×n witnesses (no arithmetic multiply)</li>
+        <li>Diagonals = spatial filter by total degree i+j (place-value grouping)</li>
+        <li>Two distinct directions = two multiplicand families</li>
+        <li>Carry = deterministic local propagation between bands</li>
+        <li>Completeness = every term has exactly one witness in the correct band</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h4>Literal Web Counterpart (Current)</h4>
+      <ul>
+        <li>Threads = small-prime arithmetic progressions (period r, phase −N mod r)</li>
+        <li>Support at t = cardinality of threads through t</li>
+        <li>Flat global max-support (or simple top-k)</li>
+        <li>Undifferentiated pool of small primes</li>
+        <li>No propagation step</li>
+        <li>Support count only; no coverage or completeness signature</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Visual Analogy — Diagonal Filtering</h3>
+  <svg viewBox="0 0 820 260" role="img" aria-label="Side-by-side comparison of Japanese diagonal bands and proposed offset vs thread-scale grid">
+    <!-- Left: Japanese style -->
+    <rect x="10" y="10" width="380" height="240" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="200" y="32" font-size="12" font-weight="600" fill="#0f766e" text-anchor="middle">Japanese — Place-Value Diagonals</text>
+    <!-- Simplified bundles and diagonals -->
+    <g stroke="#1e40af" stroke-width="2" opacity="0.85">
+      <!-- First number bundles (vertical-ish) -->
+      <line x1="60" y1="60" x2="60" y2="200"/>
+      <line x1="80" y1="60" x2="80" y2="200"/>
+      <line x1="110" y1="70" x2="110" y2="190"/>
+      <line x1="130" y1="70" x2="130" y2="190"/>
+    </g>
+    <g stroke="#b45309" stroke-width="2" opacity="0.85">
+      <!-- Second number bundles (angled) -->
+      <line x1="180" y1="55" x2="320" y2="205"/>
+      <line x1="200" y1="55" x2="340" y2="205"/>
+      <line x1="230" y1="65" x2="310" y2="145"/>
+    </g>
+    <!-- Diagonal bands -->
+    <path d="M50 210 Q140 160 230 110" fill="none" stroke="#166534" stroke-width="3" opacity="0.6"/>
+    <path d="M70 220 Q170 165 270 115" fill="none" stroke="#166534" stroke-width="3" opacity="0.6"/>
+    <text x="140" y="235" font-size="10" fill="#166534">units / tens / hundreds diagonals</text>
+
+    <!-- Right: Proposed web grid -->
+    <rect x="420" y="10" width="380" height="240" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="610" y="32" font-size="12" font-weight="600" fill="#0f766e" text-anchor="middle">Literal Web — Proposed Banded Grid</text>
+    <!-- Axes -->
+    <line x1="460" y1="200" x2="780" y2="200" stroke="#475569" stroke-width="1"/>
+    <line x1="460" y1="55" x2="460" y2="200" stroke="#475569" stroke-width="1"/>
+    <text x="620" y="218" font-size="10" fill="#475569" text-anchor="middle">Offset t from N (left ← → right)</text>
+    <text x="445" y="130" font-size="10" fill="#475569" text-anchor="middle" transform="rotate(-90 445 130)">Thread scale / frequency band</text>
+
+    <!-- Example threads (horizontal bands) -->
+    <line x1="470" y1="80" x2="770" y2="80" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 2"/>
+    <line x1="470" y1="115" x2="770" y2="115" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 2"/>
+    <line x1="470" y1="150" x2="770" y2="150" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 2"/>
+    <!-- True d position with coherent support across bands (diagonal coherence) -->
+    <circle cx="620" cy="80" r="5" fill="#166534"/>
+    <circle cx="620" cy="115" r="5" fill="#166534"/>
+    <circle cx="620" cy="150" r="5" fill="#166534"/>
+    <!-- Connecting line showing "diagonal" coherence -->
+    <line x1="620" y1="80" x2="620" y2="150" stroke="#166534" stroke-width="2.5" opacity="0.7"/>
+    <text x="620" y="175" font-size="10" fill="#166534" text-anchor="middle">True d shows cross-band coherence</text>
+    <text x="720" y="65" font-size="9" fill="#b45309">False high-count spike (single band only)</text>
+    <circle cx="720" cy="150" r="4" fill="#b45309"/>
+  </svg>
+  <p class="meta">The right panel illustrates the core proposed shift: a true factor distance is expected to exhibit <strong>coherent support across multiple thread-scale bands</strong> (the vertical line of green dots), while spurious high-count points may spike in only one band.</p>
+</section>
+
+<section class="section">
+  <h2>4. Four Proposed Refinements (Prioritized)</h2>
+
+  <table>
+    <tr><th>#</th><th>Japanese Invariant</th><th>Proposed Web Refinement</th><th>Priority</th><th>Contract Risk</th></tr>
+    <tr>
+      <td>1</td>
+      <td>Diagonal / degree filtering</td>
+      <td><strong>Banded support</strong>: partition threads by deterministic scale class (log r or local divisor-field property) and require cross-band coherence for nomination.</td>
+      <td><strong>Highest</strong></td>
+      <td>Low — pure post-processing of existing public threads</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Two distinct crossing families</td>
+      <td><strong>Cross-family scoring</strong>: maintain explicit left-origin vs. right-origin thread families (or PGS-typed families) and weight inter-family alignments.</td>
+      <td>High</td>
+      <td>Low</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Carry propagation</td>
+      <td><strong>Local deterministic propagation</strong>: after banded support, apply a rule that transfers or reinforces support between nearby offsets when the step is itself a public small-prime or PGS-consistent interval.</td>
+      <td>Medium</td>
+      <td>Medium — must remain non-leaking and fully public</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Witness completeness</td>
+      <td><strong>Coverage signatures</strong>: for each nominated d, emit not only support count but a vector of coverage properties using GWR/DNI state at the supporting composites.</td>
+      <td>Medium-High</td>
+      <td>Low if kept as audit-only metadata initially</td>
+    </tr>
+  </table>
+</section>
+
+<section class="section">
+  <h2>5. Primary Experiment Specification — Banded Diagonal Support</h2>
+
+  <div class="contract">
+    <strong>Experiment ID:</strong> LWM-BAND-01<br>
+    <strong>Branch constraint:</strong> Literal web only. No return to ratio/candidate pruning machinery.<br>
+    <strong>Public contract:</strong> public web evidence → banded support table → emitted nominated offsets → audit membership
+  </div>
+
+  <h3>5.1 Observable Object</h3>
+  <p>The public factor-thread web around N (identical input to <code>literal_web_hole_trace.py</code>).</p>
+
+  <h3>5.2 Mechanism (Ordinary Language)</h3>
+  <p>Instead of counting every small-prime thread equally, group the threads into 2–4 deterministic scale bands. For each offset, compute both per-band support and a cross-band coherence score. The public output now includes the set of offsets that are locally maximal under the coherence rule, not merely global raw count.</p>
+
+  <h3>5.3 Formal Definition (PGS-Native Frame)</h3>
+  <p>Let T be the multiset of public small-prime factors observed in the held-out window. Define a deterministic partition function B: T → {B1, B2, …, Bk} (k=3 recommended for first run) based on either:</p>
+  <ul>
+    <li>Bit-length of r (public, scale-invariant), or</li>
+    <li>Local PGS state at the composite where r was observed (GWR winner position relative to chamber, excess τ under DNI normalization).</li>
+  </ul>
+  <p>Support vector at offset t: S(t) = (count in B1, count in B2, …, count in Bk).</p>
+  <p>Coherence score C(t) = a deterministic function of S(t) (e.g., minimum non-zero band count, or count of bands above a public threshold, or simple product of normalized per-band ranks).</p>
+  <p>Emitted holes = offsets with maximal C(t) (or top-m under C, with tie-break by |t| then raw total support).</p>
+
+  <h3>5.4 Exact Success Criteria (Measurable)</h3>
+  <table>
+    <tr><th>Metric</th><th>Baseline (flat)</th><th>Target for LWM-BAND-01</th><th>Pass Condition</th></tr>
+    <tr>
+      <td>True factor distance appears in emitted top holes</td>
+      <td>4/4 toy cases</td>
+      <td>4/4 toy cases (no regression)</td>
+      <td>Must hold on identical toy corpus</td>
+    </tr>
+    <tr>
+      <td>Rank improvement (position of true d in sorted list by C vs. by raw support)</td>
+      <td>N/A (flat)</td>
+      <td>True d improves rank in ≥3/4 cases or maintains #1 when already #1</td>
+      <td>Documented per-case delta</td>
+    </tr>
+    <tr>
+      <td>Reduction in emitted hole cardinality at equivalent recall</td>
+      <td>Current emitted set size</td>
+      <td>≥20% reduction in size of emitted set while still containing the true offsets</td>
+      <td>Measured on ladder cases up to current radius limit</td>
+    </tr>
+    <tr>
+      <td>Cross-band coherence is higher for true d than for nearest false high-support points</td>
+      <td>N/A</td>
+      <td>Documented in output for all cases</td>
+      <td>Qualitative + quantitative table</td>
+    </tr>
+  </table>
+
+  <h3>5.5 Implementation Boundaries (Strict)</h3>
+  <ul class="checklist">
+    <li>Band assignment rule must be fully public and deterministic (no p/q or audit labels used to choose bands).</li>
+    <li>All existing holdout logic unchanged.</li>
+    <li>Output artifacts must include both the old flat view and the new banded view for direct comparison.</li>
+    <li>No candidate generation, no pruning, no residue certificates in the nomination path.</li>
+    <li>GWR/DNI used only as optional thread-typing features (secondary band definition); raw prime r remains a valid first-run band key.</li>
+  </ul>
+</section>
+
+<section class="section">
+  <h2>6. Secondary Experiments (Follow-on)</h2>
+  <ol>
+    <li><strong>LWM-CROSS-01</strong> — Cross-family scoring (left vs. right origin threads scored separately, inter-family alignments promoted).</li>
+    <li><strong>LWM-PROP-01</strong> — Deterministic local propagation rule between adjacent high-coherence offsets (carry analog). Must be fully reversible and public.</li>
+    <li><strong>LWM-WITNESS-01</strong> — Emit coverage signature vectors using GWR-selected attractor and DNI-normalized divisor count at each supporting composite. Used for post-nomination structural certificate, not for primary ranking.</li>
+  </ol>
+  <p>Each secondary experiment must be defined only after LWM-BAND-01 has produced its public freeze artifacts and a go/no-go decision.</p>
+</section>
+
+<section class="section">
+  <h2>7. PGS Object Integration (Required Frame)</h2>
+  <p>Per AGENTS.md and the literal-web contract, every refinement must be expressible starting from PGS objects:</p>
+  <ul>
+    <li>Ordered divisor-count field around N</li>
+    <li>Divisor Normalization Identity (DNI)</li>
+    <li>Leftmost Minimum-Divisor Rule (GWR) attractor selection</li>
+    <li>Chamber phase / endpoint relative positioning</li>
+    <li>Local gap structure between consecutive observed composites</li>
+  </ul>
+  <p>Thread typing via GWR/DNI is the natural and contract-compliant way to define richer bands (Experiment 4 above). The first run of LWM-BAND-01 may use the simplest public proxy (log r) and treat GWR/DNI typing as an explicit follow-on variable.</p>
+</section>
+
+<section>
+  <h2>8. Guardrails &amp; Invalidated Approaches</h2>
+  <div class="warning">
+    <strong>Shape warnings (must be re-read before any code change):</strong><br>
+    • Do not re-introduce ratio-tuned candidate lists, retention caps, or depth pruning as the primary mechanism.<br>
+    • Do not use known p or q to set band boundaries or window sizes.<br>
+    • Do not convert a coherence score into a classical search or ranking for trial division.<br>
+    • Propagation rules must not become hidden search ladders.<br>
+    • All emitted public artifacts must be frozen before any audit labels are read.
+  </div>
+
+  <p><strong>Invalidated on this branch:</strong> Any claim that the web “discovers” factors without the public-before-audit contract. Any conflation of this work with Miller-Rabin, gcd, or product-closure inference.</p>
+</section>
+
+<section class="section">
+  <h2>9. Phased Execution Plan &amp; Checklist</h2>
+
+  <h3>Phase 0 — Planning &amp; Freeze (Current)</h3>
+  <ul class="checklist">
+    <li>☐ This document reviewed and accepted as the active contract.</li>
+    <li>☐ Baseline artifacts from <code>literal_web_hole_trace.py</code> and ladder re-frozen with SHA256 manifest.</li>
+    <li>☐ Public toy corpus (the four cases + any additional public N-only cases) declared and versioned.</li>
+  </ul>
+
+  <h3>Phase 1 — LWM-BAND-01 Core Implementation</h3>
+  <ul class="checklist">
+    <li>☐ Define exact band partition function B (documented, deterministic, code-reviewed for leakage).</li>
+    <li>☐ Implement banded support calculator + coherence scorer as pure functions over the existing thread table.</li>
+    <li>☐ Modify or fork the hole-trace runner to emit both flat and banded views side-by-side.</li>
+    <li>☐ Produce full public output directory for the four toy cases + at least two ladder rungs.</li>
+    <li>☐ Generate comparison table (per-case rank deltas, emitted set size, coherence differential).</li>
+    <li>☐ Write <code>FINDINGS_LWM_BAND_01.md</code> that leads with the measured outcome (reproduced / improved / regressed / inconclusive) before any interpretation.</li>
+  </ul>
+
+  <h3>Phase 2 — Visual &amp; Audit Artifacts</h3>
+  <ul class="checklist">
+    <li>☐ Update or create new index.html with before/after diagrams (offset × band grid showing coherence).</li>
+    <li>☐ Add machine-readable manifest (JSONL) of every emitted hole with both flat and banded scores.</li>
+    <li>☐ Run cross-audit (two independent reviewers or self-checklist) against the public contract.</li>
+  </ul>
+
+  <h3>Phase 3 — Go/No-Go for Secondary Experiments</h3>
+  <ul class="checklist">
+    <li>☐ If LWM-BAND-01 shows measurable improvement in rank or reduction in emitted noise, open LWM-CROSS-01 design.</li>
+    <li>☐ If no improvement or regression, document the negative result and park or redesign the band definition before proceeding.</li>
+  </ul>
+
+  <h3>Phase 4 — Scale &amp; PGS Typing</h3>
+  <ul class="checklist">
+    <li>☐ Extend successful band definition to GWR/DNI-typed threads on the same public data.</li>
+    <li>☐ Re-run on the full current ladder limit (8009×10007) with public-only inputs.</li>
+    <li>☐ Produce structural-certificate surface (witness completeness vectors) as sidecar records only.</li>
+  </ul>
+</section>
+
+<section class="section">
+  <h2>10. Artifact Inventory (Required Outputs)</h2>
+  <table>
+    <tr><th>Artifact</th><th>Location (relative to this plan)</th><th>Contract Role</th></tr>
+    <tr>
+      <td><code>banded_support.py</code> (or equivalent pure module)</td>
+      <td><code>literal-web-rewind/</code></td>
+      <td>Core deterministic transformation</td>
+    </tr>
+    <tr>
+      <td><code>run_banded_hole_trace.py</code></td>
+      <td>Same</td>
+      <td>Runner that emits both views</td>
+    </tr>
+    <tr>
+      <td><code>output/LWM_BAND_01/</code></td>
+      <td>Under runner</td>
+      <td>Public freeze (JSONL + summary.md + manifest)</td>
+    </tr>
+    <tr>
+      <td><code>FINDINGS_LWM_BAND_01.md</code></td>
+      <td>This folder</td>
+      <td>Outcome-first report (no interpretation before data)</td>
+    </tr>
+    <tr>
+      <td>Updated <code>index.html</code> or new visual report</td>
+      <td>This folder</td>
+      <td>Human-auditable before/after</td>
+    </tr>
+    <tr>
+      <td>SHA256 manifest of all inputs and public outputs</td>
+      <td>Top of output dir</td>
+      <td>Reproducibility &amp; tamper evidence</td>
+    </tr>
+  </table>
+</section>
+
+<section class="section">
+  <h2>11. References &amp; Continuity</h2>
+  <ul>
+    <li><code>literal-web-rewind/REWIND_TO_LITERAL_WEB.md</code> — active contract and parked-path declaration</li>
+    <li><code>literal_web_hole_trace.py</code> — canonical current implementation</li>
+    <li><code>literal-web-rewind/graphical-novel-method/index.html</code> — existing visual language for the web object</li>
+    <li><code>docs/gap-structure-factor-brief-evidence/multiplicative-web/README.md</code> — overall probe boundary</li>
+    <li>AGENTS.md (root) — PGS-first reasoning, theorem trust, classical-method boundary</li>
+    <li>PROOF.md — for any future structural-certificate claims</li>
+  </ul>
+</section>
+
+<footer style="margin-top: 60px; font-size: 12px; color: #64748b; border-top: 1px solid var(--line); padding-top: 16px;">
+  This document is a planning artifact only. It does not constitute a theorem, a measured result, or an implementation. All claims about efficacy remain hypotheses until the Phase 1 public freeze and FINDINGS report exist.
+</footer>
+
+</main>
+</body>
+</html>

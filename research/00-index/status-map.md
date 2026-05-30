@@ -163,6 +163,7 @@ confirms the C implementation surface; it does not change theorem status.
 | `13-prime-spiral` | mapped, not-yet-gated | no status-map validation gate recorded | Keep diagnostics measured; add a focused chapter validation row after the modular-lift tests are run. |
 | `14-sha-nonce` | mapped, not-yet-gated | no status-map validation gate recorded | Preserve SHA nonce evidence as measured probe output; add a focused chapter validation row after nonce tests are run. |
 | `15-documentation-correction` | active documentation correction, not-yet-gated | no status-map validation gate recorded | Continue correcting wording that inverts PGS source order; add a gate only when a concrete validation command or audit checklist exists. |
+| `16-predictions` | initialized from explicit "Predictions" request (2026-05) | not-yet-gated | New cross-cutting track for deterministic PGS state resolution (endpoint-chain, modulus-link, chamber-reset determinacy). Primary contract surface: research/16-predictions/index.html. No validation gate yet. See PLAN.md at repo root for bootstrap details. |
 | `src/c/high-scale-pgs` | C high-scale implementation surface | entrypoint: `make -C src/c/high-scale-pgs test` | Use as the C high-scale make test route before claiming C implementation progress. |
 
 ## Validation Log
