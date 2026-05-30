@@ -346,15 +346,51 @@ def build_synthetic_modulus_pairs(
 ) -> list[tuple[int, int, int]]:
     """Generate the (lower_p, upper_p, synthetic_n) triples for the probe.
 
-    Intended logic (Phase 1 description only):
-    - For each eligible lower chamber (d=4 transitions per precedent), select a small number of upper partners (consecutive next few, or sampled).
-    - For each pair construct n = lower_p * upper_p (harness only).
-    - Yield list of (lower_p, upper_p, n) capped at max_pairs for first-cycle speed.
-    - The choice of pairing strategy is a parameter of the hypothesis; documented in report.
-    - All values come from the closed retained pool; no external generation.
+    This is the final piece of the retained-window synthetic-moduli harness.
+    For each d=4 transition row (the precedent filter used by T-001/T-002),
+    we take its current_right_prime as lower_p and pair it with a small
+    number of subsequent public endpoints drawn from the closed pool as upper_p.
+    N is constructed as the ordinary integer product (harness construction only;
+    the inference path inside the probe never inspects factors or uses N % or
+    divisibility to decide any PGS state).
+
+    Pairing policy for first-cycle runs (simple, auditable, no sampling magic):
+    - For each eligible lower (d=4 current chamber), take the next 1–2 endpoints
+      in the sorted pool that are strictly greater than lower_p.
+    - This produces a modest number of (lower, upper, N) triples while staying
+      inside the exact retained window.
+    - Cap total at max_pairs for speed on 12-13 (hundreds of pairs is already
+      a strong first measurement surface).
+
+    The resulting list feeds directly into certificate derivation + transport
+    + predicate evaluation. Every N is reproducible from the public CSV alone.
     """
-    # PHASE 1 SCAFFOLDING
-    raise NotImplementedError("Phase 1 skeleton — implementation deferred until after Phase 2 review")
+    if not sorted_pool:
+        return []
+
+    # Build a fast lookup from value to its index in the sorted pool
+    pool_index = {val: i for i, val in enumerate(sorted_pool)}
+
+    pairs: list[tuple[int, int, int]] = []
+    for trans in retained_transitions:
+        # Filter to d=4 current chambers exactly as the precedent carrier protocol
+        if int(trans.get("next_dmin", 0)) != 4:
+            continue
+        lower_p = int(trans["current_right_prime"])
+        if lower_p not in pool_index:
+            continue
+        idx = pool_index[lower_p]
+        # Take the next 1-2 endpoints after lower_p in the closed pool as uppers
+        for k in range(1, 3):
+            if idx + k >= len(sorted_pool):
+                break
+            upper_p = sorted_pool[idx + k]
+            # Harness-only product (public endpoints known; inference never uses factors)
+            n = lower_p * upper_p
+            pairs.append((lower_p, upper_p, n))
+            if len(pairs) >= max_pairs:
+                return pairs
+    return pairs
 
 
 def run_overshoot_carrier_sweep(
@@ -503,4 +539,10 @@ def test_harness_load_retained_window_12_13() -> None:
     assert len(pool) > 100
     assert pool == sorted(pool)
     assert pool[0] < pool[-1]
-    print(f"Unit 1 harness test passed: loaded {len(rows)} rows for powers 12-13; columns present; deterministic. Pool built with {len(pool)} unique endpoints, strictly sorted.")
+    # Exercise pair builder on the loaded rows (treated as transition-like for d=4 filter)
+    pairs = build_synthetic_modulus_pairs(pool, rows, max_pairs=50)
+    assert 1 <= len(pairs) <= 50
+    for lp, up, n in pairs[:3]:
+        assert lp < up
+        assert n == lp * up  # harness product only
+    print(f"Unit 1 harness test passed: loaded {len(rows)} rows for powers 12-13; columns present; deterministic. Pool built with {len(pool)} unique endpoints, strictly sorted. {len(pairs)} synthetic pairs generated (first 50 cap). Harness complete and ready for certificate + overshoot stage.")
