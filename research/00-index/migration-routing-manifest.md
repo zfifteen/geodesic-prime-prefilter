@@ -25,7 +25,7 @@ old scattered roots after references are repaired.
 | `research/01-generator/output/rule_x_logic_engine/` | `research/01-generator/output/rule_x_logic_engine/` |
 | generator-specific `output/simple_pgs_*` and `output/minimal_pgs_*` | `research/01-generator/output/` |
 | `gwr/` core proof/story material | `research/02-gwr-dni/` |
-| recursive-walk and PNT-GWR predictor artifacts | `research/02-gwr-dni/` |
+| recursive-walk and PNT-GWR comparison / prefilter artifacts (legacy) | `research/02-gwr-dni/` |
 | gap-type docs, scripts, tests, and outputs | `research/03-gap-types/` |
 | `research/03-gap-types/infographics/prime-gap-grammar-infographics/` | `research/03-gap-types/infographics/` |
 | `research/03-gap-types/experiments/chamber-relationship/` | `research/03-gap-types/chamber-relationship/` |

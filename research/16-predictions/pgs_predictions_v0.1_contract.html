@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PGS Predictions v0.1 Contract • Deterministic Carrier Laws</title>
+<style>
+:root {
+  --bg: #f8f9fa; --fg: #1a1a1a; --accent: #0a4d8c; --card: #fff;
+  --border: #d1d5db; --warn: #854d0e; --good: #166534; --muted: #64748b;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#0f172a; --fg:#e2e8f0; --accent:#60a5fa; --card:#1e293b; --border:#334155; --warn:#f59e0b; --good:#4ade80; --muted:#94a3b8; }
+}
+body { margin:0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height:1.6; background:var(--bg); color:var(--fg); padding:2rem 1rem; max-width:960px; margin-left:auto; margin-right:auto; }
+h1 { font-size:2rem; margin:0 0 .5rem; color:var(--accent); }
+h2 { font-size:1.35rem; margin:2rem 0 .75rem; border-bottom:2px solid var(--border); padding-bottom:.25rem; }
+h3 { font-size:1.1rem; margin:1.25rem 0 .5rem; }
+p, li { max-width:72ch; }
+a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:underline; }
+.card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:1.25rem; margin:1rem 0; }
+table { width:100%; border-collapse:collapse; margin:1rem 0; font-size:.95rem; }
+th, td { border:1px solid var(--border); padding:.5rem .75rem; text-align:left; vertical-align:top; }
+th { background:rgba(10,77,140,.08); font-weight:600; }
+pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background:rgba(0,0,0,.06); padding:.1rem .35rem; border-radius:4px; }
+pre { padding:.75rem; overflow-x:auto; }
+.warning { border-left:4px solid var(--warn); background:rgba(245,158,11,.08); padding:.75rem 1rem; }
+.success { border-left:4px solid var(--good); background:rgba(16,185,129,.08); padding:.75rem 1rem; }
+.meta { font-size:.85rem; color:var(--muted); margin-bottom:1.5rem; }
+.flow { display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin:1rem 0; font-family:ui-monospace, monospace; font-size:.9rem; }
+.flow span { background:var(--card); border:1px solid var(--border); padding:.35rem .6rem; border-radius:4px; white-space:nowrap; }
+.flow .arrow { color:var(--accent); font-weight:700; padding:0 .25rem; }
+footer { margin-top:3rem; padding-top:1rem; border-top:1px solid var(--border); font-size:.85rem; color:var(--muted); }
+</style>
+</head>
+<body>
+<header>
+  <h1>PGS Predictions v0.1</h1>
+  <p class="meta"><strong>Deterministic Carrier Laws and Structural Resolution Rules</strong> • research/16-predictions • 2026-05</p>
+</header>
+
+<main>
+<section>
+  <h2>The Meaning of "Predictions" in This Program</h2>
+  <p><strong>Observable object:</strong> After a known prime <code>p</code>, the finite ordered sequence of integers <code>p+1, p+2, …, q−1</code> (where <code>q</code> is the next prime) carries a complete divisor-count field <code>τ(n)</code>. The integer <code>w</code> is defined exactly as the leftmost position in this interval that achieves the global minimum <code>τ</code> value inside the interval.</p>
+
+  <p><strong>PGS-native definition of a Prediction:</strong> A deterministic rule or measurable carrier law, built only from already-proved or explicitly measured PGS objects (divisor-count field, DNI coordinate <code>E(n)</code>, GWR leftmost-minimizer <code>w</code>, endpoint chains, modulus links, chamber-reset signatures, reciprocal transport), that from the current chamber state (or a short, fully determined preceding window) either:</p>
+  <ul>
+    <li>resolves one or more future PGS states exactly (position of next <code>w</code>, next gap type after <code>w</code>, next chamber-reset signature, next modulus-link residual, etc.), or</li>
+    <li>returns an explicit unresolved state when the carrier does not decide.</li>
+  </ul>
+
+  <p class="warning"><strong>Strictly forbidden in this track:</strong> probabilistic language ("with high probability", "~ c log log x", "likely"), classical analytic first framing (li(x), Cramér model, explicit formula remainders as the target, RH-conditional bounds as the payoff), or any mechanism that uses candidate testing, primality APIs, or product closure to choose the predicted state.</p>
+</section>
+
+<section>
+  <h2>Proved Foundation (PROOF.md)</h2>
+  <div class="card">
+    <p><strong>Selected Integer / Gap Winner <code>w</code></strong></p>
+    <p>Given prime <code>p</code> and next prime <code>q</code> returned by the deterministic divisor-count traversal, let <code>I = {p+1, …, q−1}</code> (nonempty). Define</p>
+    <pre><code>w = min { n ∈ I : τ(n) = min_{m ∈ I} τ(m) }</code></pre>
+    <p>The Interior Maximizer Theorem (PROOF.md) proves <code>w</code> is the unique integer in <code>I</code> that maximizes <code>F(n) = −E(n)</code> (equivalently, minimizes excess <code>E(n)</code>).</p>
+
+    <p><strong>No-Later-Simpler-Composite (exact corollary)</strong></p>
+    <p>Once <code>w</code> has appeared, no later integer in the same interior has strictly smaller <code>τ</code>. This is proved; it has been stress-tested on the full surface through <code>10^18</code> with zero violations (RESULTS.md).</p>
+  </div>
+</section>
+
+<section>
+  <h2>Existing Measured Carrier (Strongest Precedent)</h2>
+  <p>The <code>d4_count</code> ordering carrier (research/05-state-budget, long-running 8192-row-per-power retained surface 10^12..10^18) is the cleanest existing example of PGS-native "prediction":</p>
+  <ul>
+    <li>From the current chamber's divisor-count field (specifically the count of <code>d(n)=4</code> positions), under the match mode <code>mod30_prev_gap_exact</code>, one obtains a measurable ordering advantage for the next triad state.</li>
+    <li>Verdict on that surface: <code>ordering_carrier_found</code> (decisive pairs 7881, edge +69 over endpoint-tail control, 6/7 positive held-out folds).</li>
+    <li>It remains measured, not promoted to theorem. It returns no probabilistic claim; it returns a carrier strength on an exact retained surface.</li>
+  </ul>
+  <p class="success">This is the correct shape for everything that will live in the Predictions track.</p>
+</section>
+
+<section>
+  <h2>The Four Families — Translated into PGS-Native Terms</h2>
+
+  <h3>Family 1 — Selected Composite (w) Positioning</h3>
+  <p><strong>Native statement:</strong> In the ordered divisor-count field of the gap after <code>p</code>, the offset <code>w − p</code> is a deterministic function of the local structure visible before or at the first <code>d(n)=4</code> arrival (under square exclusion) plus any active chamber-reset or modulus-link signature carried from the previous gap.</p>
+  <p><strong>Current status:</strong> The generator already computes <code>carrier_w</code> (or equivalent) as part of chamber-reset state. The task is to turn the existing computation into an explicit, falsifiable carrier law: "given current-chamber <code>d4_count</code> + square-phase flag + previous-gap tail length (under fixed match), the next <code>w</code> offset lies in a stated small integer set, or the carrier returns unresolved."</p>
+  <p><strong>Falsification surface:</strong> Retained high-window catalogs (already generated in ch05). Measure exact hit rate of the carrier rule; record unresolved rate; do not use "high probability".</p>
+
+  <h3>Family 2 — Excess-Bounded Gap Closure</h3>
+  <p><strong>Native statement:</strong> The cumulative excess <code>Σ E(n)</code> (or max local <code>E</code>) from the leftmost min-d arrival <code>w</code> onward, combined with the square-phase terminal behavior and any active chamber-reset lock, forces the next return to <code>E=0</code> (i.e., the next prime) before a deterministic threshold derived only from the divisor-field invariants already proved for that chamber type.</p>
+  <p><strong>Current status:</strong> The proved No-Later-Simpler-Composite already gives one exact closure. The open question is whether stronger, type-specific closure bounds (in terms of current <code>d4_count</code>, square-phase presence, or modulus-link residual) can be stated and falsified on large exact surfaces.</p>
+  <p><strong>Warning:</strong> Any claim of the form "G(x) = O(log x · …)" is a classical analytic statement. It may be a downstream consequence, but it is not the form of a PGS Prediction. PGS Predictions stay at the level of exact integer offsets or small finite sets of possible next states on concrete surfaces.</p>
+
+  <h3>Family 3 — E-fluctuation and Prime-Counting Error</h3>
+  <p><strong>Native statement (PGS side only):</strong> The cumulative excess integral (or discrete sum) across successive chambers, when tracked via the same carrier mechanisms used for next-triad ordering, produces a deterministic modulation of the local density of zero-excess returns. This modulation is measurable on retained windows as a structured deviation from uniform random placement of the next <code>w</code> and next prime.</p>
+  <p><strong>Downstream reading (strictly after PGS source):</strong> The <code>H(n) = log n + E(n)</code> coordinate (docs/rh/) then supplies the exact compression that turns this integer-level modulation into the source term for the explicit formula. The PGS track itself does not derive or test bounds on |π(x) − li(x)|; it supplies the precise arithmetic input that the compression layer then reads.</p>
+  <p class="warning">The pasted feedback inverts the source order. The integer-level carrier law comes first; any statement about zeta zeros or the error term is a consequence read through the DNI-to-zeta bridge, never the reasoning engine.</p>
+
+  <h3>Family 4 — Special-Form Primes (Mersenne, twins, exponent walls)</h3>
+  <p><strong>Native statement:</strong> For candidates of special form (e.g., 2^p − 1 after a safe prime or Sophie-Germain pair, or exponents near known walls), the gap structure immediately preceding the candidate is an instance of the ordinary ordered prime-gap chamber. The same GWR-selected <code>w</code> and any active chamber-reset or modulus-link signature therefore supply the same deterministic constraints on the next zero-excess return as in the generic case.</p>
+  <p><strong>Status:</strong> research/09-exponents/ already contains PGS experiments on exponent walls. The Predictions track can host the unification: treat the special-form case as just another chamber type whose carrier signature (previous <code>d4_count</code>, reset state, square phase) is measured on the same retained surfaces used for generic gaps.</p>
+</section>
+
+<section>
+  <h2>Recommended First Pick (Minimal Executable Path)</h2>
+  <p><strong>Family 1 (w-position carrier) + the existing d4_count precedent.</strong></p>
+  <p>Reason: The generator already emits the selected integer position. Chapter 05 already has the retained-surface machinery, the match-mode discipline, the held-out fold protocol, and the exact "ordering_carrier_found / does_not / unresolved" verdict language. Extending that exact protocol to the <code>w</code> offset (instead of next-triad gap type) is the smallest step that produces a new, publishable, fully auditable carrier surface this weekend.</p>
+  <p>Everything else (stronger gap-closure rules, E-fluctuation modulation, special-form unification) can be added later as additional carrier families using the same measurement contract.</p>
+</section>
+
+<section>
+  <h2>Current State — Five Continuity Questions</h2>
+  <div class="card">
+    <p><strong>1. Strongest supported claim</strong><br>
+    The meaning of "Predictions" for this program is deterministic carrier laws and structural resolution rules operating on PGS-native objects (divisor-count field, GWR <code>w</code>, chamber resets, modulus links). The strongest existing example is the <code>d4_count</code> ordering carrier on the 8192-row 10^12..10^18 surface (ordering_carrier_found).</p>
+
+    <p><strong>2. Explicitly not proved</strong><br>
+    Any universal rule that resolves the exact offset of the next <code>w</code> or the exact next gap width from current-chamber invariants alone. All such statements remain carrier hypotheses on finite retained surfaces until a proof artifact is added to PROOF.md.</p>
+
+    <p><strong>3. Failed and must not be revived</strong><br>
+    Probabilistic statements about <code>w</code> position; classical analytic bounds presented as the primary output of PGS work; any reasoning that begins with li(x), Cramér models, or explicit-formula remainders before the integer-level carrier is stated and measured.</p>
+
+    <p><strong>4. What the next session should do first</strong><br>
+    Choose Family 1. Instrument one of the existing retained-surface generators (or the simple_pgs_generator path) to also emit <code>w</code> offset alongside the current <code>d4_count</code> and other chamber metadata. Run the identical match-mode + held-out protocol on a modest retained window (e.g., 1024 rows per power 10^12..10^15). Record the carrier strength for "next <code>w</code> offset lies in set S" rules. Return the verdict in the same language used for d4_count (ordering_carrier_found / does_not / unresolved).</p>
+
+    <p><strong>5. Reproduction command</strong><br>
+    <pre><code>python3 -m pytest research/05-state-budget/tests/test_state_budget_divisor_carrier_sweep.py -q
+# then the new w-position carrier script once written</code></pre>
+  </div>
+</section>
+
+<section>
+  <h2>Shape Guardrails Specific to Predictions Work</h2>
+  <div class="warning">
+    <p>If any draft, note, or code in this track exhibits the following, stop and restate in PGS-native terms:</p>
+    <ul>
+      <li>"with high probability", "~ c log log x", "on average", or any statistical model as the inference rule.</li>
+      <li>Deriving the form of a PGS carrier law by first assuming a classical density or random model.</li>
+      <li>Presenting a bound on π(x) − li(x) or a statement about zeta zeros as the goal of the prediction, rather than a downstream reading of an integer-level carrier.</li>
+      <li>Using the legacy "z_band_prime_predictor" directory or its naming as the active inference engine.</li>
+    </ul>
+    <p>Corrective action: Return to the definition at the top of this document. Restate the proposed carrier using only divisor-count field objects, GWR <code>w</code>, chamber-reset signatures, and the exact match-mode + held-out protocol. Then measure.</p>
+  </div>
+</section>
+
+<footer>
+  <p>Prime Gap Structure — research/16-predictions • PGS Predictions v0.1 Contract • All claims subordinate to PROOF.md for theorem status and to AGENTS.md for reasoning discipline.</p>
+  <p>This document was written on the <code>predictions</code> branch immediately after the bootstrap commit that defined the chapter.</p>
+</footer>
+</body>
+</html>
