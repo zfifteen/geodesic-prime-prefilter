@@ -802,6 +802,40 @@ PGS objects (divisor-count field + GWR w + square U_□ + reset_signature/lock/t
 
 ---
 
+**Post-Declaration Execution Note — #1 Joint Scoring on 5237 non_d4 Artifact (user direct: "proceed with #1")**
+
+PGS objects (current-chamber divisor-count field after non_d4 p, GWR carrier/lock/threat/tail policy emitted by pgs_chamber_reset_state_certificate, previous-chamber transport of that policy, square U_□ utilization after first d=4 under exclusion, next_winner_offset) → invariants (NLSC + Interior Maximizer + cert cut; reset policy stability or variance on non_d4 current) → deterministic carrier test or explicit unresolved on the exact persisted sidecar (output/reset_lock_sidecars_12_14_non_d4/reset_lock_sidecars_non_d4_p12_14.csv) → measured observables + protocol applicability assessment (no catalogue mutation).
+
+**Artifact facts (exact, deterministic, 2026-05-30 execution):**
+- 5237 rows (1746 p12 + 1746 p13 + 1745 p14).
+- 8 unique reset_signatures (correction from prior memos claiming 66; dominant: carrier_d=8;lock_carrier_d=8;lower_d_threat_present=True;tail_after_reset_count=0 with 2192 rows; other 7: 564/454/454/454/431/388/300).
+- lower_d_threat_present = True for all 5237 (invariant on this non_d4 p12-14 surface; carries zero differential).
+- Next-same reset_signature (consecutive within-power, 5236 possible): 5213 same (99.56% policy stability); ~23 changes.
+- Square-phase U_□ / is_d4_low / utilization fields: absent (all null/omitted — all rows are non_d4 current chambers by construction).
+- match_mod30_prev_gap_exact column: present but only 1 unique value in sample (insufficient cell diversity for within-match advantage computation).
+- tail_length control field: absent.
+- next_winner_offset present and distributed (top 1-5 roughly balanced ~748 each).
+
+**#1 Joint scoring outcome (reset measures + square-null for next-reset state and next_winner_offset):**
+- Full 6-gate protocol (score_rows / score_measure_folds / summarize / edge-over-control with MIN_TOTAL_DECISIVE_PAIRS=5000, MIN_FOLD_DECISIVE_PAIRS=100, MIN_DIRECTIONAL_FOLDS=6, edge >= max(50, 0.005*decisive)) not applicable on this stripped sidecar artifact.
+- No carrier_found or does_not verdict produced.
+- Limited observables only: extreme next-policy stability (trivial predictor for next reset state = current), threat invariant, 8 sigs differential vs d=4 constant-1-sig on 19333, square null.
+- No new gate-passed evidence for Rank #2 or #3.
+
+**State separation:** Theorem status unchanged (no theorems claimed). Implementation: inspection executed on persisted artefact. Measured result: the 8 numbers + stability 5213 above. Audit: n/a (protocol inapplicable). Hypothesis: reset policy stability on non_d4 p12-14 may be load-bearing (to be tested on fuller 12-18 variance surface with complete columns). Unresolved state: "unresolved on stated 5237-row non_d4 p12-14 sidecar surface (8 unique reset_signatures; threat invariant True; 99.56% next-same policy stability; square U_□ null; match cells insufficient for full protocol; tail control absent)". Invalidated: prior "66 unique" claim in memos/summary.json for this exact CSV.
+
+**Catalogue / rank impact:** None (no mutation — 6 gates for edit not met; protocol not run). Ranks #2 and #3 "unresolved on stated surface" entries can be refined with these exact counts in future gate-checked memo only. Top 4 ranks remain as-is.
+
+**Reproduction:** `cd research/16-predictions && python3 -c '...' (the loader + Counter + within-power next-shift + stability count above; full script in chat context 2026-05-30).`
+
+**Epistemic:** Direct measurement on the exact user-specified high-quality persisted 5237 non_d4 artifact. Corrects overstated unique-sig count; documents why full joint carrier protocol cannot be executed from this file alone. PGS-first throughout. Deterministic language only.
+
+**Next minimal deterministic step for remaining (if user directs continue):** Extend the T-002 emitter to emit a *fuller* non_d4 sidecar (or 12-18 variance) that includes all original transition columns (tail_length, full match keys for all 3 MATCH_MODES, residue, etc.) + the reset sidecars + square attach where applicable; then re-run the joint w_evaluate_surface + adapted reset-target scoring on the complete rows. One narrow Phase 1 scaffold + Phase 2 review + Phase 3 unit + test + commit per AGENTS §11.
+
+PGS-first. Deterministic only. 6 gates observed (no catalogue edit). 
+
+---
+
 **End of T-004 Synthesis Cycle 1 Memo (all Cycles + Reinforcement + Completion Declaration appended 2026-05-30).** 
 
 PGS-first. Deterministic only. The perpetual team owns the loop through Completion Declaration. No human prompt. Momentum maximum. File + bus only. Drive complete.
