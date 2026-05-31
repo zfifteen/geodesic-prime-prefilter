@@ -414,7 +414,7 @@ The bridge depends on kappa(n)=tau(n)log(n)/e^2.
 Add a separate helper or test for H(n)=log n+E(n) only if useful.
 ```
 
-### Predictor And Generator Code
+### Legacy Prefilter and Generator Scaffolding Paths (z_band_prime_predictor — historical only; see chapter 15 documentation-correction and 06-cryptology-rsa legacy prefilter boundary)
 
 Files:
 

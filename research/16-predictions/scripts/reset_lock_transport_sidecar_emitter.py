@@ -454,6 +454,24 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Run the Phase 3 smoke test for run_reset_carrier_scoring on the 5237/66 non-d=4 variance surface (no emission).",
     )
+    # ----------------------------------------------------------------------------
+    # Phase 1 scaffolding (AGENTS §11) for non-d=4 persisted sidecar emission
+    # (T-002 Phase 3 follow-on per 5237/66 mandate).
+    # --non-d4-p12-14: filter to non-d=4 current chambers on p12-14 window
+    # (next_dmin != 4 or equivalent from raw detail / transition) using the
+    # same augment_transitions_with_reset_sidecars + certificate path.
+    # Writes to dedicated output/reset_lock_sidecars_12_14_non_d4/ for
+    # persisted rows (5237 trans) so full run_reset_carrier_scoring future-rows
+    # path + 05 scoring reuse can be exercised with exact counts.
+    # Detailed comments only here; minimal coherent impl in main for this unit.
+    # Reproducible. Deterministic. PGS-first (reset_signature transport on
+    # non-d=4 current as carrier for next reset state or joint w).
+    # ----------------------------------------------------------------------------
+    parser.add_argument(
+        "--non-d4-p12-14",
+        action="store_true",
+        help="Emit persisted non-d=4 sidecars for p12-14 retained window (5237 trans target) for scoring on variance surface.",
+    )
     return parser
 
 

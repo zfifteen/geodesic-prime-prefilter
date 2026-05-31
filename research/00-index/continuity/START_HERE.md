@@ -396,8 +396,7 @@ Preserve the state separation:
 
 ## Current State-Budget Hidden-State Branch
 
-As of 2026-05-09, the state-budget hidden-state probe is a live predictor
-research branch.
+As of 2026-05-09, the state-budget hidden-state probe is a measured carrier research surface (d4_count ordering carrier).
 
 Read:
 

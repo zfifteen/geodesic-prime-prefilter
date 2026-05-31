@@ -25,7 +25,7 @@ This document clarifies the fundamental differences between three distinct appro
 - k = 1,000,000,000 → ~129 ms
 - k = 10,000,000,000 → ~961 ms
 
-## 2. Analytic Predictor + Refinement (Z5D)
+## 2. Legacy Analytic Density Comparison (Z5D, archived)
 
 **Core primitive:** Given an index `k`, return a high-quality probable prime near the true `p_k`.
 
@@ -80,7 +80,7 @@ At ~1.12 × 10^20 it returned "PGS chamber unresolved" with default candidate bo
 
 ## Summary Table
 
-| Aspect                    | Rust (Counting-Oracle)      | Z5D (Analytic Predictor)          | PGS C (Structural Successor)      |
+| Aspect                    | Rust (Counting-Oracle)      | Z5D (Legacy Analytic Density)     | PGS C (Structural Successor)      |
 |---------------------------|-----------------------------|-----------------------------------|-----------------------------------|
 | Primary operation         | Exact p_k for any k        | Predict probable prime near p_k  | Exact next prime after p         |
 | Exactness for arbitrary k | Always exact               | Only on small grid; else "near"  | N/A (successor only)             |

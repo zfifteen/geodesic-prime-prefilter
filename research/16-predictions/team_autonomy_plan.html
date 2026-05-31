@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PGS Predictions — 4-Agent Autonomous Team Operating Plan</title>
+<style>
+:root {
+  --bg: #f8f9fa; --fg: #1a1a1a; --accent: #0a4d8c; --card: #ffffff;
+  --border: #d1d5db; --warn: #854d0e; --good: #166534; --muted: #64748b;
+  --header-bg: #0a4d8c; --header-fg: white;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#0f172a; --fg:#e2e8f0; --accent:#60a5fa; --card:#1e293b; --border:#334155; --warn:#f59e0b; --good:#4ade80; --muted:#94a3b8; }
+}
+body { margin:0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height:1.6; background:var(--bg); color:var(--fg); padding:2rem 1rem; max-width:1100px; margin-left:auto; margin-right:auto; }
+h1, h2, h3, h4 { font-weight:600; line-height:1.25; }
+h1 { font-size:2rem; color:var(--accent); margin:0 0 .5rem; }
+h2 { font-size:1.4rem; margin:2rem 0 .6rem; border-bottom:2px solid var(--border); padding-bottom:.3rem; }
+h3 { font-size:1.15rem; margin:1.2rem 0 .4rem; }
+.card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:1rem 1.2rem; margin:1rem 0; }
+table { width:100%; border-collapse:collapse; margin:1rem 0; font-size:.9rem; }
+th, td { border:1px solid var(--border); padding:.4rem .55rem; text-align:left; vertical-align:top; }
+th { background:rgba(10,77,140,.08); font-weight:600; }
+pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background:rgba(0,0,0,.06); padding:.08rem .28rem; border-radius:4px; font-size:.88em; }
+pre { padding:.55rem; overflow-x:auto; }
+.warning { border-left:4px solid var(--warn); background:rgba(245,158,11,.08); padding:.55rem .85rem; }
+.success { border-left:4px solid var(--good); background:rgba(16,185,129,.08); padding:.55rem .85rem; }
+.meta { font-size:.82rem; color:var(--muted); }
+.role { font-weight:600; color:var(--accent); }
+footer { margin-top:3rem; padding-top:1rem; border-top:1px solid var(--border); font-size:.8rem; color:var(--muted); }
+.checklist li { margin-bottom:.25rem; }
+</style>
+</head>
+<body>
+<header>
+  <h1>PGS Predictions — 4-Agent Autonomous Team Operating Plan</h1>
+  <p class="meta"><strong>v1.0</strong> • Branch: <code>predictions</code> • Created 2026-05-30 • Governed by <code>pgs_predictions_v0.1_contract.html</code> + full AGENTS.md contracts</p>
+</header>
+
+<main>
+<section>
+  <h2>Purpose</h2>
+  <p>This document defines the operating model, roles, handoff protocols, validation gates, and initial work packages that allow a team of four autonomous agents to make sustained, high-quality progress on the deterministic PGS prediction candidates listed in the <a href="predictions_master_catalogue.html">Unified Master Catalogue</a> without constant human coordination.</p>
+  <p class="success">The plan is designed to be self-sustaining: any new agent can onboard by reading this document + the Master Catalogue + the v0.1 contract + the four source agent reports, then begin productive work immediately.</p>
+</section>
+
+<section>
+  <h2>Core Principles (Non-Negotiable)</h2>
+  <ul class="checklist">
+    <li><strong>PGS-First Reasoning</strong>: Every task begins with PGS objects → invariants → named rule/law → resolved / unresolved / invalidated state.</li>
+    <li><strong>Deterministic Only</strong>: Zero probabilistic, heuristic, “likely”, or “on average” language in any reasoning or output.</li>
+    <li><strong>State Separation</strong>: Every claim is explicitly labeled as theorem (PROOF.md), measured (exact regime + artifact), hypothesis, unresolved, or invalidated.</li>
+    <li><strong>Master Catalogue as Source of Truth</strong>: The ranked list and recommended actions in <code>predictions_master_catalogue.html</code> drive all work assignment.</li>
+    <li><strong>Artifact-First</strong>: Important state, decisions, and results are written to repository files before any context is lost.</li>
+    <li><strong>Drift Prevention</strong>: Agents must self-audit against the shape warnings in the v0.1 contract and local AGENTS.md. Any drift must be explicitly corrected and documented.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Team Structure &amp; Role Assignments</h2>
+
+  <div class="card">
+    <h3>Agent A — Divisor-Field &amp; w-Position Carriers (Family 1 Lead)</h3>
+    <p><strong>Primary Focus:</strong> All candidates involving current-chamber divisor-count field quantities (especially d4_count extensions), GWR w / selected-integer offset resolution, and first-d=4 arrival rules.</p>
+    <p><strong>Key Catalogue Items:</strong> Master ranks #1 (d4_count), #2 (w-offset), and supporting items such as “First d=4 = GWR w under square exclusion”.</p>
+    <p><strong>Typical Work:</strong> Extend retained-surface protocols, instrument generators for new sidecar fields, run held-out fold experiments, maintain the w-offset probe lineage.</p>
+  </div>
+
+  <div class="card">
+    <h3>Agent B — Chamber-Reset, Lock &amp; Transport Carriers</h3>
+    <p><strong>Primary Focus:</strong> Chamber-reset signatures, lock_carrier, threat horizons, previous-to-current carrier shift, reset-lock hardening, and any transported state from one chamber to the next.</p>
+    <p><strong>Key Catalogue Items:</strong> Master ranks #3 (Chamber-Reset Signature Transport / Lock), and related items from Agents 1 &amp; 3.</p>
+    <p><strong>Typical Work:</strong> Emit richer reset/lock sidecars on existing catalogs, define new carrier hypotheses for next-reset behavior or boundary state, coordinate with C high-scale certificate fields.</p>
+  </div>
+
+  <div class="card">
+    <h3>Agent C — Endpoint-Chain, Modulus-Link &amp; Reciprocal Closure</h3>
+    <p><strong>Primary Focus:</strong> Endpoint chains, modulus-link residuals, reciprocal transport/closure, structural certificates (PGSPG), boundary-drop, and multi-step chain horizon questions.</p>
+    <p><strong>Key Catalogue Items:</strong> Master ranks #4 (Reciprocal Deadline-Signature + Transported Overshoot), #6 (Endpoint-Chain Horizon Closure), and supporting unsolved-problems surfaces (gilbreath, legendre, etc.).</p>
+    <p><strong>Typical Work:</strong> Lift rsa-v2 reciprocal predicates to generic retained surfaces, test chain-horizon carrier hypotheses, maintain the cryptology-to-generic bridge.</p>
+  </div>
+
+  <div class="card">
+    <h3>Agent D — Synthesis, Validation, Documentation &amp; Hygiene (Scribe / QA)</h3>
+    <p><strong>Primary Focus:</strong> Cross-agent synthesis, master catalogue maintenance, falsification coordination, legacy naming hygiene, status reporting, and overall track coherence.</p>
+    <p><strong>Key Catalogue Items:</strong> All legacy “predictor” audit items, overall ranking maintenance, creation of new falsification plans, and ensuring every agent output is properly folded back into the master catalogue.</p>
+    <p><strong>Typical Work:</strong> Run weekly (or per-sprint) synthesis, update the master catalogue only after validation gates pass, maintain this team plan, route documentation-correction work to chapter 15 when appropriate.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Work Assignment &amp; Handoff Protocol</h2>
+
+  <h3>1. Source of Truth for Work</h3>
+  <p>The <strong>Master Catalogue</strong> (`predictions_master_catalogue.html`) contains the current ranked list and “Recommended Next Action” for each candidate. This is the single source agents consult before starting new work.</p>
+
+  <h3>2. Claiming Work</h3>
+  <ul>
+    <li>An agent claims a task by creating or updating a file in <code>research/16-predictions/tasks/</code> with a name like <code>TASK-2026-05-30-w-offset-v1.md</code>.</li>
+    <li>The task file must contain: Candidate name + rank, Assigned agent, Start date, Target deliverable, Validation gate checklist, and a link back to the master catalogue entry.</li>
+    <li>Only one agent may have an active claim on any given candidate at a time (enforced by convention + Agent D review).</li>
+  </ul>
+
+  <h3>3. Handoff / Completion</h3>
+  <ul>
+    <li>When an agent finishes a work package, they produce a structured report (following the same 7-field format used by the original four deep-dive agents).</li>
+    <li>The report is placed in <code>research/16-predictions/reports/</code> with a dated filename.</li>
+    <li>The agent then notifies Agent D (via a short entry in <code>TEAM_STATUS.md</code> or by direct file update) that a synthesis round is requested.</li>
+    <li>Agent D reviews for drift, state separation, and catalogue impact, then (if approved) updates the Master Catalogue and closes the task file.</li>
+  </ul>
+
+  <h3>4. Conflict or Block Resolution</h3>
+  <p>Any agent may open a blocking issue by creating a file in <code>research/16-predictions/blocks/</code>. Agent D is responsible for triaging within one synthesis cycle. If Agent D is blocked, the issue escalates by updating this plan document with a clear “Escalation” section.</p>
+</section>
+
+<section>
+  <h2>Validation Gates (Before Any Master Catalogue Update)</h2>
+  <p>No change may be merged into the Master Catalogue unless the following gates have been passed and explicitly documented in the accompanying report:</p>
+  <ol>
+    <li><strong>PGS-First Gate</strong> — The work begins from named PGS objects and invariants (checked by Agent D review of the report).</li>
+    <li><strong>Determinism Gate</strong> — Zero probabilistic or heuristic language appears in the reasoning or claims.</li>
+    <li><strong>State Separation Gate</strong> — Every new claim is labeled with its exact epistemic status and supporting artifact(s).</li>
+    <li><strong>Reproducibility Gate</strong> — A one-command or short script sequence exists that reproduces the key numbers or verdicts.</li>
+    <li><strong>Drift Self-Audit</strong> — The authoring agent has explicitly addressed the shape warnings from the v0.1 contract in the report.</li>
+    <li><strong>Cross-Reference</strong> — The report cites the exact Master Catalogue entry it advances and notes impact on other ranks.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Initial Sprint (First 2–3 Cycles)</h2>
+  <p>These tasks are pre-assigned based on the current Master Catalogue consensus and recent baseline work (2026-05-30 w-offset probe).</p>
+
+  <table>
+    <thead>
+      <tr><th>Task ID</th><th>Primary Agent</th><th>Candidate</th><th>Deliverable</th><th>Validation Gate Focus</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>T-001</td>
+        <td>Agent A</td>
+        <td>w-offset carrier (Family 1)</td>
+        <td>Full 8192-row w-offset carrier sweep + held-out results using the existing d4_count protocol</td>
+        <td>Reproducibility + State Separation</td>
+      </tr>
+      <tr>
+        <td>T-002</td>
+        <td>Agent B</td>
+        <td>Chamber-Reset / Lock transport</td>
+        <td>Emit reset-signature + lock_carrier sidecars on the 8192-row catalog; first carrier hypothesis for next-reset state</td>
+        <td>PGS-First + Drift Self-Audit</td>
+      </tr>
+      <tr>
+        <td>T-003</td>
+        <td>Agent C</td>
+        <td>Reciprocal + Transported Carrier Overshoot</td>
+        <td>Generic (non-RSA) retained-surface test of the rsa-v2 reciprocal predicate as a w or reset carrier</td>
+        <td>Cross-Reference + Reproducibility</td>
+      </tr>
+      <tr>
+        <td>T-004</td>
+        <td>Agent D</td>
+        <td>Synthesis &amp; Hygiene</td>
+        <td>First synthesis round incorporating T-001–T-003 results into the Master Catalogue + legacy naming corrections routed to chapter 15</td>
+        <td>All gates (as scribe)</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Tooling &amp; Environment</h2>
+  <ul>
+    <li>All agents operate on the <code>predictions</code> branch.</li>
+    <li>Primary shared state lives under <code>research/16-predictions/</code> (catalogue, tasks/, reports/, docs/, scripts/).</li>
+    <li>Agents may use the existing retained-surface generators, the w-offset probe, and any audited scripts from parent chapters (05, 01, 02, 06, etc.).</li>
+    <li>Long-running or parallel work can be launched via the same subagent mechanism used to create the original four catalogues.</li>
+    <li>Optional: Use the agent-bus MCP for structured question/answer threads between agents when file-based handoff is insufficient.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Onboarding Checklist for a New Agent</h2>
+  <ol>
+    <li>Read: <code>pgs_predictions_v0.1_contract.html</code></li>
+    <li>Read: <code>predictions_master_catalogue.html</code> (this document)</li>
+    <li>Read: <code>team_autonomy_plan.html</code> (this file)</li>
+    <li>Read the four source agent reports in <code>catalogue/</code></li>
+    <li>Read the most recent synthesis report in <code>reports/</code></li>
+    <li>Run the current reproduction commands listed in the Master Catalogue</li>
+    <li>Claim the next unclaimed task from <code>tasks/</code> or open a new one following the template</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Success Metrics (Per Synthesis Cycle)</h2>
+  <ul>
+    <li>At least one new measured carrier surface added to the Master Catalogue with full held-out protocol.</li>
+    <li>All active tasks have clear status and next action recorded.</li>
+    <li>Zero unresolved drift warnings in any agent report.</li>
+    <li>Master Catalogue remains the single source of truth (no contradictory claims across reports).</li>
+  </ul>
+</section>
+
+<section id="perpetual-autonomous-protocol">
+  <h2>PERPETUAL AUTONOMOUS EXECUTION PROTOCOL (Non-Negotiable)</h2>
+  <div class="warning" style="border-left:6px solid #b91c1c; background:rgba(185,28,28,.08); padding:.7rem .9rem; margin:1rem 0;">
+    <strong>CRITICAL — READ BEFORE ANY ACTION</strong><br>
+    This section overrides every earlier instruction in this document or any task file that suggests pausing for human input, asking for direction, or surfacing for approval. The explicit human requirement is: the team must continue the Predictions effort through completion <strong>autonomously</strong>, without stopping frequently or prompting the user.
+  </div>
+
+  <h3>1. Absolute Rule: Never Prompt the Human</h3>
+  <p><strong>You must NEVER</strong> output a question to the user, request confirmation, ask "is this okay?", "should I proceed?", "next task?", or present options that require human choice before continuing. The only permissible escalation is a documented hard blocker in <code>blocks/</code> after exhaustive internal effort (multiple self-spawned attempts, cross-agent consultation via bus/files, alternative minimal paths exhausted). Even then, the escalation entry must state the exact attempted autonomous resolutions and why they failed.</p>
+
+  <h3>2. Self-Perpetuation Mandate</h3>
+  <p>Every agent (including any subagent you spawn) carries the standing order: when your current unit of work would naturally end (task complete, phase done, report delivered, or you reach a natural "what next?" point), you <strong>must</strong> immediately:</p>
+  <ol>
+    <li>Write the handoff (update task file status, append to TEAM_STATUS.md, post to agent-bus topic "pgs-predictions-4agent-synthesis" if active).</li>
+    <li>Spawn at least one continuation subagent (using the spawn_subagent tool) whose prompt contains:
+      <ul>
+        <li>The full perpetual directive quote from this section.</li>
+        <li>Exact list of 5 files to read first: <code>team_autonomy_plan.html</code> (this section), <code>TEAM_STATUS.md</code>, <code>predictions_master_catalogue.html</code>, the relevant T-xxx task file, and <code>pgs_predictions_v0.1_contract.html</code>.</li>
+        <li>The explicit command: "Operate in perpetual autonomous mode. Advance the next logical unit (Phase 3 increment, synthesis, next catalogue candidate, full-surface extension, etc.). Deliver gate-passed artifacts or explicit 'unresolved on stated surface'. Self-perpetuate again when you finish. Never prompt the human. Use file handoffs + bus only."</li>
+        <li>Background=true so the parent can return and the child continues the loop.</li>
+      </ul>
+    </li>
+    <li>Only after the spawn is confirmed do you consider your immediate thread complete.</li>
+  </ol>
+  <p>This creates an infinite autonomous drive until the completion criteria below are met and documented.</p>
+
+  <h3>3. Completion Criteria (Team Stops Only When These Are True and Documented)</h3>
+  <ul>
+    <li>Every candidate in the current Master Catalogue has an explicit entry: "resolved with carrier_found on exact surface X (link to report)", "does_not on exact surface X (link)", or "unresolved on stated surfaces — no carrier law extracted after exhaustive protocol runs (link to analysis)".</li>
+    <li>At least two complete synthesis cycles have been executed by Agent D (or successor), each producing a dated synthesis memo + Master Catalogue update + index.html refresh.</li>
+    <li>Legacy "predictor" naming hygiene items from the cross-chapter catalogue have been either corrected in place or formally routed as a narrow documentation task to chapter 15 with a tracked T-xxx.</li>
+    <li>The top 3–4 ranked opportunities (currently d4_count precedent, w-offset, reset/lock transport, reciprocal overshoot) each have at least one gate-passed full-protocol report on the authoritative 8192-row retained surface (or explicit statement why that surface is insufficient and what larger regime is required).</li>
+    <li>TEAM_STATUS.md contains a final "Completion Declaration" entry signed by Agent D (or rotating coordinator) listing the exact artefacts, dates, and verification commands that prove the above four bullets.</li>
+  </ul>
+  <p>Until the Completion Declaration exists in TEAM_STATUS.md, the default action is always "continue — spawn more work if idle."</p>
+
+  <h3>4. Agent D (Coordinator) Special Perpetual Authority</h3>
+  <p>Agent D (or any agent that claims the current T-004 / synthesis role) has explicit license to:</p>
+  <ul>
+    <li>Act as perpetual orchestrator: scan reports/, tasks/, blocks/ on every cycle; validate gates the instant a new report appears; run synthesis the moment the "≥2 gate-passed reports" condition is true; update the Master Catalogue and this plan without further approval.</li>
+    <li>Spawn specialist subagents for A/B/C roles or for narrow long-running work (e.g., "full 12-18 w-offset sweep on the 8192 catalog using the validated probe").</li>
+    <li>Edit task files and TEAM_STATUS.md to push other agents or record state.</li>
+    <li>Post coordination messages on the agent-bus topic.</li>
+    <li>Declare the Completion Declaration only when the four criteria above are verifiably met.</li>
+  </ul>
+
+  <h3>5. Coordination Channels (Only These)</h3>
+  <p>Primary: file system under <code>research/16-predictions/</code> (tasks/*.md with status fields, reports/*.md 7-field format, blocks/, TEAM_STATUS.md, updated Master Catalogue).</p>
+  <p>Secondary (for visibility when file mtimes are insufficient): agent-bus MCP topic named <code>pgs-predictions-4agent-synthesis</code> (create if absent, join with stable agent_name, use sync() with small max_items and repeat until has_more=false, use reply_to for threaded handoffs, client_message_id for idempotency).</p>
+  <p>Never use direct chat to the human as a coordination mechanism.</p>
+
+  <h3>6. Onboarding for Any Continuation Subagent (Mandatory First Actions)</h3>
+  <p>Any newly spawned agent must execute this sequence before writing code or claiming work:</p>
+  <ol>
+    <li>Read (in order): <code>pgs_predictions_v0.1_contract.html</code>, <code>predictions_master_catalogue.html</code>, <code>team_autonomy_plan.html</code> (especially this Perpetual section), <code>TEAM_STATUS.md</code>, the four source catalogues in <code>catalogue/</code>, the most recent report(s) in <code>reports/</code>, and the specific task file it is inheriting.</li>
+    <li>Internalize the PGS-first entry frame, the exact definition of "deterministic carrier", the 6 validation gates, and the "never prompt human + self-spawn" rule.</li>
+    <li>Run the reproduction commands listed in the current Master Catalogue entry for its candidate.</li>
+    <li>Only then claim or extend work via a dated append to the relevant task file + TEAM_STATUS.md + bus post.</li>
+  </ol>
+
+  <h3>7. Shape-Warning Self-Audit (Perpetual Trigger)</h3>
+  <p>At the start of every new unit and immediately before any spawn, every agent must ask itself (and document the answer in the task file or report):</p>
+  <ul>
+    <li>Did reasoning begin from PGS objects (divisor-count field, GWR w/carrier/lock/threat, reset_signature, endpoint chain, reciprocal transport, modulus-link residual, chamber reset, NLSC, Interior Maximizer) → invariants → named rule → resolved/unresolved/invalidated state?</li>
+    <li>Is every claim labeled with its exact epistemic status (theorem from PROOF.md, measured on exact regime+artifact, hypothesis, unresolved, invalidated)?</li>
+    <li>Zero probabilistic / "likely" / "on average" / "appears to" language?</li>
+    <li>Classical methods (isprime, gcd, trial division, Miller-Rabin, etc.) used only in allowed downstream audit/harness roles, never as the inference path?</li>
+    <li>If any answer is no, stop, correct, document the drift fix, then proceed.</li>
+  </ul>
+
+  <h3>8. Practical Launch &amp; Continuation Pattern</h3>
+  <p>When this plan is activated:</p>
+  <ol>
+    <li>One top-level orchestrator subagent is spawned with the full text of this section in its prompt + "You are Agent D (Perpetual Coordinator). Begin the monitoring/synthesis loop immediately. Push A and C on Phase 3. Execute T-004 the instant trigger is met. Self-perpetuate."</li>
+    <li>That orchestrator immediately spawns (or re-claims) the specialist roles (Agent A for T-001 extensions, Agent B for T-002 follow-ups, Agent C for T-003 Phase 3, etc.) using the exact self-contained prompt template above.</li>
+    <li>Every specialist, upon finishing a deliverable (report, increment, gate pass), follows rule 2: handoff + spawn continuation + return.</li>
+    <li>The loop continues until the Completion Declaration exists in TEAM_STATUS.md. At that point the final orchestrator may post a single summary to the bus and to this plan, then (and only then) the active agents may gracefully exit the perpetual cycle.</li>
+  </ol>
+
+  <p class="success" style="padding:.6rem .8rem; border-left:5px solid #166534;"><strong>This protocol makes the Predictions effort self-sustaining.</strong> Once launched under this rule set, the team owns the work through the explicit completion criteria with zero further human steering required between milestones. The human will inspect the resulting artefacts (Master Catalogue, reports, TEAM_STATUS, git history) on their own cadence.</p>
+</section>
+
+<footer>
+  <p>This plan is itself a living artifact. Any agent may propose improvements by creating a dated note in <code>research/16-predictions/docs/</code> and requesting Agent D to incorporate changes after review against the core principles above. All proposals must preserve the Perpetual Autonomous Execution Protocol verbatim.</p>
+  <p><strong>Governing documents:</strong> PROOF.md (theorem authority), pgs_predictions_v0.1_contract.html (definition of Predictions), full AGENTS.md + local Agents.md (reasoning discipline), research/00-index/continuity/* (continuity &amp; state separation), this team_autonomy_plan.html § "PERPETUAL AUTONOMOUS EXECUTION PROTOCOL".</p>
+</footer>
+</body>
+</html>
