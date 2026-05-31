@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PGS Predictions Program — Status Report</title>
+<style>
+:root {
+  --bg: #f8f9fa; --fg: #1a1a1a; --accent: #0a4d8c; --card: #ffffff;
+  --border: #d1d5db; --warn: #854d0e; --good: #166534; --muted: #64748b; --bad: #991b1b;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#0f172a; --fg:#e2e8f0; --accent:#60a5fa; --card:#1e293b; --border:#334155; --warn:#f59e0b; --good:#4ade80; --muted:#94a3b8; --bad:#f87171; }
+}
+body { margin:0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height:1.6; background:var(--bg); color:var(--fg); padding:2rem 1rem; max-width:1100px; margin-left:auto; margin-right:auto; }
+h1 { font-size:2.0rem; margin:0 0 .5rem; color:var(--accent); }
+h2 { font-size:1.35rem; margin:1.8rem 0 .5rem; border-bottom:2px solid var(--border); padding-bottom:.3rem; }
+h3 { font-size:1.1rem; margin:1.2rem 0 .4rem; }
+p, li { max-width:82ch; }
+a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:underline; }
+.card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:1.1rem; margin:1rem 0; }
+table { width:100%; border-collapse:collapse; margin:1rem 0; font-size:.92rem; }
+th, td { border:1px solid var(--border); padding:.45rem .6rem; text-align:left; vertical-align:top; }
+th { background:rgba(10,77,140,.08); font-weight:600; }
+code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background:rgba(0,0,0,.06); padding:.08rem .3rem; border-radius:4px; font-size:.9em; }
+pre { padding:.6rem; overflow-x:auto; }
+.warning { border-left:4px solid var(--warn); background:rgba(245,158,11,.08); padding:.6rem .9rem; }
+.success { border-left:4px solid var(--good); background:rgba(16,185,129,.08); padding:.6rem .9rem; }
+.danger { border-left:4px solid var(--bad); background:rgba(153,27,27,.08); padding:.6rem .9rem; }
+.meta { font-size:.85rem; color:var(--muted); margin-bottom:1rem; }
+.flow { display:flex; flex-wrap:wrap; gap:.4rem; align-items:center; margin:.8rem 0; font-family:ui-monospace, monospace; font-size:.85rem; }
+.flow span { background:var(--card); border:1px solid var(--border); padding:.25rem .5rem; border-radius:4px; white-space:nowrap; }
+.status-pill { display:inline-block; padding:.1rem .5rem; border-radius:999px; font-size:.8rem; font-weight:600; }
+.pill-confirmed { background:rgba(16,185,129,.15); color:var(--good); }
+.pill-falsified { background:rgba(153,27,27,.15); color:var(--bad); }
+.pill-unresolved { background:rgba(245,158,11,.15); color:var(--warn); }
+.pill-pursued { background:rgba(10,77,140,.12); color:var(--accent); }
+footer { margin-top:3rem; padding-top:1rem; border-top:1px solid var(--border); font-size:.82rem; color:var(--muted); }
+</style>
+</head>
+<body>
+<header>
+  <h1>PGS Predictions Program — Status Report</h1>
+  <p class="meta"><strong>Branch:</strong> <code>predictions</code> • <strong>Date:</strong> 2026-05-30 • <strong>Remote:</strong> <a href="https://github.com/zfifteen/prime-gap-structure">zfifteen/prime-gap-structure</a> • Self-contained HTML</p>
+</header>
+
+<main>
+<section>
+  <h2>Strongest Supported Claim</h2>
+  <div class="card success">
+    <p>The Predictions program has completed four synthesis cycles plus post-Declaration refinement under the Perpetual Autonomous Execution Protocol. It produced a ranked catalogue of seven opportunities, drove a four-agent autonomous team (A/B/C/D) through all five Completion Criteria §3 without human prompting after launch, delivered a formal Completion Declaration in TEAM_STATUS.md, and executed a targeted joint scoring refinement (#1) on the high-quality 5237-row non_d4 p12-14 sidecar artifact. All work remained strictly PGS-first, used only deterministic language, preserved state separation, and applied 6 validation gates before any catalogue mutation. No new theorems were claimed; all results are labelled measured / unresolved / invalidated with exact counts and artefacts.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Current Prediction Status (Plain Summary)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Family / Candidate</th>
+        <th>Pursued</th>
+        <th>Confirmed (gate-passed carrier_found)</th>
+        <th>Falsified</th>
+        <th>Remaining / Current Unresolved State</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1</strong></td>
+        <td>d4_count as ordering carrier for next-triad / gap-type state (after residue + prev-gap controls)</td>
+        <td>Full 8192-row retained surface (10^12–10^18), 6+ directional folds, 7881 decisive pairs, edge +69 over tail control, stop-condition met.</td>
+        <td class="pill-confirmed">Yes — published precedent on authoritative catalog (05-state-budget long-running 8192-row sweep + T-001/T-004).</td>
+        <td class="pill-falsified">None. The fixed-cutoff rule {2:44, 4:60, 6:60} was invalidated earlier and remains invalidated.</td>
+        <td class="pill-unresolved">Strongest measured carrier. Remains the reference standard against which all later families are compared. Exact regime: 8192 rows, MIN_FOLDS=6, MIN_MARGIN=50.</td>
+      </tr>
+      <tr>
+        <td><strong>2</strong></td>
+        <td>w-offset / square U_□ (is_d4_low, utilization, d4_low/d4_high after first d=4 under exclusion) + carried reset/lock/threat as carrier for next_w / next_winner_offset</td>
+        <td>Multiple slices: 12-13 (6103 decisive, edge +33 &lt;50), 12-14 square+reset (3888 trans, 8463–9020 decisive, negative edges), 12-18 square+reset (9197 trans, max edge 22), joint on 5237 non_d4 variance (square null on non_d4 rows).</td>
+        <td class="pill-confirmed">None on any tested regime.</td>
+        <td class="pill-falsified">None (directional signal retained as narrowing data on several slices; stop conditions unmet).</td>
+        <td class="pill-unresolved">"does_not on stated 12-18 square+reset 9197" (edge 22) and "unresolved on stated 5237-row non_d4 p12-14 sidecar surface (square U_□ null; 8 unique reset_signatures; 99.56% next-policy stability; threat invariant; match cells insufficient for full protocol)". Refined by #1 execution 2026-05-30.</td>
+      </tr>
+      <tr>
+        <td><strong>3</strong></td>
+        <td>Chamber-reset signature / lock_carrier / lower_d_threat / tail_after_reset + previous-chamber transport as carrier for next reset/lock state</td>
+        <td>392-row d=4 12-13 (constant sig, 100% transport → carrier_found on constant surface); 19333-row d=4 12-14 (1 unique sig, 99.99% transport — falsification of variance claim on d=4); 5237-row non_d4 p12-14 variance surface (joint with square in #1).</td>
+        <td class="pill-confirmed">carrier_found only on the small constant d=4 12-13 slice (perfect transport). No variance carrier found on any surface.</td>
+        <td class="pill-falsified">Any claim that reset_signature varies on d=4 regimes (19333 rows produced exactly 1 signature, constant carrier_d=4, threat=100%, tail mostly 0).</td>
+        <td class="pill-unresolved">"unresolved on stated 5237-row non_d4 p12-14 sidecar surface (8 unique reset_signatures after direct count; lower_d_threat_present invariant True on all 5237; 5213/5236 = 99.56% next-same reset policy stability within power; square U_□ null; protocol inapplicable on stripped sidecar — see #1 execution note)".</td>
+      </tr>
+      <tr>
+        <td><strong>4</strong></td>
+        <td>Reciprocal transport / floor transport / endpoint-chain / modulus-link residual as carrier for next endpoint or structural certificate state</td>
+        <td>19333-row d=4 12-14 (T-003 generic overshoot probe).</td>
+        <td class="pill-confirmed">None.</td>
+        <td class="pill-falsified">None.</td>
+        <td class="pill-unresolved">"unresolved on stated 12-14 d=4 (19333 transitions; 100% unresolved_by_reciprocal_carrier_misalignment; min=-17/max=999/count_leq_0=47)". Surface insufficient; requires variance windows (non_d4 or larger 12-18).</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="meta">Ranks 5–7 (NLSC + square-phase horizon rules, endpoint-chain structural certificates, modulus-link probes) remain lower priority per the master catalogue synthesis. All entries use exact surface counts and explicit "unresolved on stated surface" language. No probabilistic or classical-first framing.</p>
+</section>
+
+<section>
+  <h2>Major Measured Surfaces (Exact Counts)</h2>
+  <div class="card">
+    <ul>
+      <li><strong>19333 d=4 transitions, p12-14 (retained 8192-row catalog window):</strong> 1 unique reset_signature (constant), lock_carrier_d=4 constant, lower_d_threat_present=100%, 99.99% previous-to-current transport fidelity. Explicit falsification of any "reset variance carrier" hypothesis on d=4 regimes. 392/392 resolved certs on the smaller 12-13 slice with perfect transport (carrier_found for the constant-policy case only).</li>
+      <li><strong>5237 non_d4 transitions, p12-14 (persisted sidecar artifact from T-002 Phase 3):</strong> 8 unique reset_signatures (dominant 2192 rows with carrier/lock=8, threat=True, tail=0), lower_d_threat_present invariant True across all 5237, next-same reset_signature stability 5213/5236 (99.56%) within power, square U_□ fields absent (null for non_d4 current). #1 joint scoring (2026-05-30) confirmed protocol inapplicable on this stripped CSV (insufficient match-cell diversity, missing tail_length control). Strengthens "unresolved on stated surface" for Ranks 2 &amp; 3 with precise observables. (Note: earlier memos referenced 66 unique signatures from live variance drive; direct count on the persisted CSV yields 8.)</li>
+      <li><strong>9197-row 12-18 square+reset (A full sweep):</strong> max edge over tail = 22 (stop condition unmet), square U_□ + reset-carried fields exercised, explicit "does_not on stated 12-18 square+reset surface".</li>
+      <li><strong>3888-row 12-14 square+reset joint context:</strong> 8463–9020 decisive pairs per mode, edges negative, 3 positive folds, stop=false; square U_□ + reset variance exercised as additive measures.</li>
+      <li><strong>Reciprocal probe (T-003):</strong> 100% unresolved_by_reciprocal on the 19333 d=4 12-14 surface.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Artifact Inventory (Permanent GitHub Links — predictions branch)</h2>
+  <p class="meta">All links are stable tree/blob references on <code>predictions</code>. Click to view exact state after the commit that includes this report. Large CSVs/JSONs are viewable directly on GitHub.</p>
+
+  <table>
+    <thead>
+      <tr><th>Artifact</th><th>Type</th><th>GitHub Link (predictions)</th><th>Role / Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>predictions_master_catalogue.html</td><td>HTML</td><td><a href="https://github.com/zfifteen/prime-gap-structure/tree/predictions/research/16-predictions/predictions_master_catalogue.html">tree/.../predictions_master_catalogue.html</a></td><td>Ranked source of truth. Updated only after 6 gates in each synthesis cycle.</td></tr>
+      <tr><td>pgs_predictions_v0.1_contract.html</td><td>HTML</td><td><a href="https://github.com/zfifteen/prime-gap-structure/tree/predictions/research/16-predictions/pgs_predictions_v0.1_contract.html">tree/.../pgs_predictions_v0.1_contract.html</a></td><td>PGS-native translation of the four families and prediction definition.</td></tr>
+      <tr><td>team_autonomy_plan.html</td><td>HTML</td><td><a href="https://github.com/zfifteen/prime-gap-structure/tree/predictions/research/16-predictions/team_autonomy_plan.html">tree/.../team_autonomy_plan.html</a></td><td>Perpetual Autonomous Execution Protocol (verbatim CRITICAL block + 5-file handoff list + 5 Completion Criteria §3).</td></tr>
+      <tr><td>TEAM_STATUS.md</td><td>Markdown</td><td><a href="https://github.com/zfifteen/prime-gap-structure/blob/predictions/research/16-predictions/TEAM_STATUS.md">blob/.../TEAM_STATUS.md</a></td><td>Living status + formal Completion Declaration (signed by D coordinator 019e78f7-218d... with exact artefacts, dates, verification commands for all 5 §3 bullets).</td></tr>
+      <tr><td>reports/2026-05-30-T004-synthesis-cycle-1.md</td><td>Markdown</td><td><a href="https://github.com/zfifteen/prime-gap-structure/blob/predictions/research/16-predictions/reports/2026-05-30-T004-synthesis-cycle-1.md">blob/.../T004-....md</a></td><td>Primary synthesis document. Contains Cycle 1–4 + reinforcement memos + #1 post-Declaration execution note (8 signatures, 99.56% stability, threat invariant, protocol assessment) + 7-field PGS-first structure.</td></tr>
+      <tr><td>docs/predictions-program-status.html (this file)</td><td>HTML</td><td><a href="https://github.com/zfifteen/prime-gap-structure/tree/predictions/research/16-predictions/docs/predictions-program-status.html">tree/.../predictions-program-status.html</a></td><td>Comprehensive program status with pursued/confirmed/falsified/remaining table, full artifact inventory, completion criteria checklist, #1 results, GitHub links. Self-contained.</td></tr>
+      <tr><td>tasks/T-001-w-offset-full-sweep.md</td><td>Markdown</td><td><a href="https://github.com/zfifteen/prime-gap-structure/blob/predictions/research/16-predictions/tasks/T-001-w-offset-full-sweep.md">blob/.../T-001-....md</a></td><td>Family 1 (A) task contract + Phase 1–3 artefacts + "does_not" on 12-13/12-14.</td></tr>
+      <tr><td>tasks/T-002-reset-lock-transport.md</td><td>Markdown</td><td><a href="https://github.com/zfifteen/prime-gap-structure/blob/predictions/research/16-predictions/tasks/T-002-reset-lock-transport.md">blob/.../T-002-....md</a></td><td>Family 2/3 (B) task. Phase 2 review PASS + Phase 3 on 5237/66 (now corrected to 8) + run_reset_carrier_scoring contract.</td></tr>
+      <tr><td>tasks/T-003-reciprocal-generic.md</td><td>Markdown</td><td><a href="https://github.com/zfifteen/prime-gap-structure/blob/predictions/research/16-predictions/tasks/T-003-reciprocal-generic.md">blob/.../T-003-....md</a></td><td>Family 4 (C) — 100% unresolved_by_reciprocal on 19333.</td></tr>
+      <tr><td>tasks/T-004-synthesis-cycle-1.md</td><td>Markdown</td><td><a href="https://github.com/zfifteen/prime-gap-structure/blob/predictions/research/16-predictions/tasks/T-004-synthesis-cycle-1.md">blob/.../T-004-....md</a></td><td>D coordination task + 7-field memos for Cycles 1–4.</td></tr>
+      <tr><td>output/reset_lock_sidecars_12_14_non_d4/reset_lock_sidecars_non_d4_p12_14.csv + _summary.json</td><td>CSV + JSON</td><td><a href="https://github.com/zfifteen/prime-gap-structure/tree/predictions/research/16-predictions/output/reset_lock_sidecars_12_14_non_d4">tree/.../reset_lock_sidecars_12_14_non_d4/</a></td><td>High-quality 5237-row non_d4 p12-14 sidecar (8 sigs, threat invariant, 99.56% stability). The exact artefact for #1 joint scoring. Summary records task, surface, counts, variance_detected.</td></tr>
+      <tr><td>output/w_offset_full_probe/ (multiple JSON + CSV)</td><td>JSON/CSV</td><td><a href="https://github.com/zfifteen/prime-gap-structure/tree/predictions/research/16-predictions/output/w_offset_full_probe">tree/.../w_offset_full_probe/</a></td><td>A w-offset carrier sweep folds for 12-12/12-13/12-14/12-18 + square+reset 12-18 9197 "does_not".</td></tr>
+      <tr><td>output/reset_lock_sidecars_12_14/ and 12_13/ (d=4 constant surfaces)</td><td>CSV + JSON</td><td><a href="https://github.com/zfifteen/prime-gap-structure/tree/predictions/research/16-predictions/output">tree/.../output/</a> (see 12_13 and 12_14 subdirs)</td><td>19333-row and smaller d=4 constant-signature sidecars (1 unique sig, 99.99% transport). Primary falsification artefacts for reset-variance claims on d=4.</td></tr>
+      <tr><td>scripts/reset_lock_transport_sidecar_emitter.py</td><td>Python</td><td><a href="https://github.com/zfifteen/prime-gap-structure/blob/predictions/research/16-predictions/scripts/reset_lock_transport_sidecar_emitter.py">blob/.../reset_lock_transport_sidecar_emitter.py</a></td><td>B core emitter. Contains run_reset_carrier_scoring scaffold + Phase 3 smoke on 5237/66 (now 8) + full reset sidecar logic (imports 05 protocol).</td></tr>
+      <tr><td>scripts/w_offset_carrier_probe.py</td><td>Python</td><td><a href="https://github.com/zfifteen/prime-gap-structure/blob/predictions/research/16-predictions/scripts/w_offset_carrier_probe.py">blob/.../w_offset_carrier_probe.py</a></td><td>A core probe. attach_square_phase_utilization + w_score_measure_folds / w_evaluate_surface + W_CANDIDATE_MEASURES_WITH_SQUARE_RESET. Delivered 9197/3888 "does_not".</td></tr>
+      <tr><td>scripts/T003_reciprocal_overshoot_generic_probe.py</td><td>Python</td><td><a href="https://github.com/zfifteen/prime-gap-structure/blob/predictions/research/16-predictions/scripts/T003_reciprocal_overshoot_generic_probe.py">blob/.../T003_....py</a></td><td>C reciprocal generic probe — 100% unresolved on 19333.</td></tr>
+      <tr><td>research/05-state-budget/scripts/state_budget_divisor_carrier_sweep.py</td><td>Python</td><td><a href="https://github.com/zfifteen/prime-gap-structure/blob/predictions/research/05-state-budget/scripts/state_budget_divisor_carrier_sweep.py">blob/.../state_budget_divisor_carrier_sweep.py</a></td><td>Authoritative scoring protocol (build_transitions, score_rows, score_measure_folds, evaluate_surface, MATCH_MODES, gates, MIN_* constants). Reused by all 16-predictions probes.</td></tr>
+      <tr><td>PROOF.md (repo root)</td><td>Markdown</td><td><a href="https://github.com/zfifteen/prime-gap-structure/blob/predictions/PROOF.md">blob/.../PROOF.md</a></td><td>Single live proof reference. Controls theorem status for GWR/Interior Maximizer and direct next-prime results. Never downgraded.</td></tr>
+      <tr><td>research/16-predictions/index.html</td><td>HTML</td><td><a href="https://github.com/zfifteen/prime-gap-structure/tree/predictions/research/16-predictions/index.html">tree/.../index.html</a></td><td>Local navigation for chapter 16.</td></tr>
+      <tr><td>research/03-gap-types/output/gwr_dni_gap_type_catalog_details.csv (master retained surface)</td><td>CSV</td><td><a href="https://github.com/zfifteen/prime-gap-structure/tree/predictions/research/03-gap-types/output">tree/.../03-gap-types/output/</a></td><td>Authoritative 8192-row details CSV (10^12–10^18 even powers) used to build all transitions and sidecars.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Completion Criteria §3 Status (Perpetual Protocol)</h2>
+  <div class="card">
+    <p>The formal Completion Declaration (written by Agent D coordinator in TEAM_STATUS.md) asserts that all five bullets are verifiably true with explicit artefacts and one-command reproduction:</p>
+    <ol>
+      <li>At least two complete synthesis cycles executed by D (or successor), each producing dated memo + catalogue update + index refresh after 6 gates. <span class="status-pill pill-confirmed">Met — 4+ cycles + reinforcement + post-#1 note, all in T-004 report.</span></li>
+      <li>Legacy "predictor" hygiene items from cross-chapter catalogue corrected or routed as narrow T-015 in ch15 with tracked task. <span class="status-pill pill-confirmed">Met — T-015 satisfied, 6-gate PASS documented.</span></li>
+      <li>Top 3–4 ranked opportunities each have at least one gate-passed full-protocol report on the 8192-row surface (or explicit statement why insufficient + what larger regime required). <span class="status-pill pill-confirmed">Met — d4_count precedent, multiple "does_not"/"unresolved on stated 5237/19333/9197" surfaces with exact counts, T-00x + T-004 links, verification commands.</span></li>
+      <li>TEAM_STATUS.md contains final Completion Declaration listing exact artefacts/dates/verification commands proving the above. <span class="status-pill pill-confirmed">Met — Declaration entry present with full artefact list (including the 5237 non_d4 CSV, w probes, T-004, bus handoffs).</span></li>
+      <li>Perpetual 4-agent team (A=w-offset/square, B=reset/lock/transport, C=reciprocal, D=synthesis/validation) drove the entire ranked catalogue through to documented Declaration without further human prompting after launch. <span class="status-pill pill-confirmed">Met — file+bus handoffs only on 8505b8a829, self-perpetuation via spawn_subagent carrying verbatim protocol + 5-file list, Absolute Rule ("NEVER output a question"), all cycles autonomous.</span></li>
+    </ol>
+    <p class="meta">The #1 joint scoring execution on the 5237 artifact (user-directed after Declaration) is recorded as a post-Declaration refinement. It did not alter any rank status or require catalogue mutation.</p>
+  </div>
+</section>
+
+<section>
+  <h2>#1 Joint Scoring Execution on 5237 non_d4 Artifact (2026-05-30) — Detailed Results</h2>
+  <div class="card warning">
+    <p><strong>Observable object:</strong> The persisted sidecar CSV <code>reset_lock_sidecars_non_d4_p12_14.csv</code> (5237 rows, powers 12-14 balanced, produced by extended T-002 emitter on the non_d4 current chambers of the 8192-row retained surface).</p>
+    <p><strong>Ordinary-language mechanism:</strong> Load the CSV, group by power, sort by transition_index, shift to compute within-power "next" reset fields, count unique signatures, test threat presence, compute consecutive same-signature stability, inspect column presence for square U_□ and tail_length and match-key diversity.</p>
+    <p><strong>Project terms:</strong> reset_signature, carrier_d, lock_carrier_d, lower_d_threat_present, tail_after_reset_count, previous_* transport, square_phase_utilization / is_d4_low, match_mod30_prev_gap_exact cell key.</p>
+    <p><strong>Formal definition of test:</strong> Attempt to apply the exact d4-precedent 6-gate protocol (score_rows / score_measure_folds using reset numeric fields as candidate measures, tail_length or divisor_sum as control, held-out powers, oriented signed advantage, edge-over-control ≥ max(50, 0.005 × decisive), ≥6 positive oriented folds, total decisive ≥5000) for two targets: (a) binarized next reset state (e.g. next_is_dominant_sig), (b) next_winner_offset concordance (w_compare_members style).</p>
+    <p><strong>Measured / proved status:</strong> Protocol inapplicable. 8 unique signatures (dominant 2192), threat invariant True (5237/5237), next-same stability 5213/5236 (99.56%), square fields absent (null), match column low diversity (1 unique in sample), tail_length absent. No carrier_found or does_not verdict delivered. Limited observables only.</p>
+    <p><strong>Exact limits:</strong> This specific stripped 5237-row p12-14 non_d4 sidecar only. Fuller 12-18 variance surface with complete transition columns required for gate-checked carrier strength claims. No impact on catalogue ranks (6 gates for mutation observed).</p>
+  </div>
+</section>
+
+<section>
+  <h2>PGS-First Principles &amp; Governance Observed</h2>
+  <ul>
+    <li>All reasoning began from PGS objects (ordered prime-gap state, divisor-count field, GWR carrier_w / lock_carrier / lower_d_threat, reset_signature, square U_□ geometry-median, endpoint, search interval, previous-to-current transport) and invariants (Interior Maximizer Theorem, NLSC, DNI, cert cut) before any classical or probabilistic language.</li>
+    <li>Deterministic language only throughout ("unresolved on stated surface", exact counts, "protocol inapplicable", "invariant True"). No "likely", "suggests", "validated so far", "heuristic".</li>
+    <li>State separation strictly preserved in every memo, catalogue entry, and this report: theorem vs implementation vs measured vs audit vs hypothesis vs unresolved vs invalidated.</li>
+    <li>6 validation gates applied before every catalogue touch or rank-impacting claim (even post-Declaration refinements).</li>
+    <li>4-phase authoring followed for all probe/emitter increments (scaffolding → explicit review → one-unit impl + test + commit → checklist self-review).</li>
+    <li>Legacy prefilter / classical methods (Miller-Rabin, sympy.isprime, etc.) kept physically and semantically separate; used only in allowed downstream audit or hygiene roles (T-015).</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Verification &amp; Reproduction</h2>
+  <pre><code># Full program status (this report)
+open research/16-predictions/docs/predictions-program-status.html   # file:// OK, self-contained
+
+# T-004 synthesis + #1 execution note (primary memo)
+cat research/16-predictions/reports/2026-05-30-T004-synthesis-cycle-1.md | tail -100
+
+# 5237 non_d4 artefact facts (exact #1 numbers)
+python3 -c '
+import csv
+from collections import Counter
+from pathlib import Path
+p = Path("research/16-predictions/output/reset_lock_sidecars_12_14_non_d4/reset_lock_sidecars_non_d4_p12_14.csv")
+rows = list(csv.DictReader(p.open()))
+print("rows:", len(rows))
+print("unique sigs:", len(set(r["reset_signature"] for r in rows)))
+print("threat invariant:", all(r["lower_d_threat_present"]=="True" for r in rows))
+# ... (full loader from #1 execution context)
+'
+
+# Master catalogue (ranked opportunities)
+open research/16-predictions/predictions_master_catalogue.html
+
+# Completion Declaration + perpetual protocol
+grep -A 30 "Completion Declaration" research/16-predictions/TEAM_STATUS.md
+</code></pre>
+  <p class="meta">All reproduction commands are one-line or short blocks. No network, no secrets, fully deterministic.</p>
+</section>
+
+<footer>
+  <p>This report was created 2026-05-30 on the <code>predictions</code> branch as a direct deliverable of the user request "Commit all then create a report on the status of this prediction program and include github links to all relevant artifacts." It incorporates the immediate prior #1 joint scoring execution on the 5237 non_d4 artifact and the full history of the autonomous 4-agent team through Completion Declaration.</p>
+  <p><strong>Commit that includes this report and the T-004 #1 refinement:</strong> (hash will appear in <code>git log</code> immediately after the commit command that added both the md append and this HTML). All links above use the stable <code>/tree/predictions/</code> and <code>/blob/predictions/</code> forms and will resolve to the state containing this report once the branch is pushed.</p>
+  <p>PGS-first. Deterministic language only. State separation observed. 6 gates observed for every structural claim. The program is in explicit "unresolved on stated surfaces" mode for the three highest-leverage remaining families, with precise counts and reproduction paths documented.</p>
+</footer>
+</main>
+</body>
+</html>
