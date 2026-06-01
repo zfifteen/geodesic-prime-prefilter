@@ -1,6 +1,6 @@
 /-
 Copyright (c) 2026 Velocity Works. All rights reserved.
-Released under Apache 2.0 license as described in the file LICENSE.
+Released under the MIT License as described in the file LICENSE.
 Authors: PGS Project
 -/
 
