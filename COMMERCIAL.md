@@ -1,32 +1,15 @@
-# Commercial Licensing
+# License History
 
-This repository is source-available under the Business Source License 1.1 in
-[LICENSE](LICENSE).
+This repository is licensed under the [MIT License](LICENSE).
 
-You do not need a separate commercial license for:
+## Current Status (as of this change)
+- MIT License applies to all new distributions and contributions.
+- MIT is a permissive open-source license. No separate commercial license, production-use grant, or revenue threshold is required for any use, modification, distribution, or embedding.
+- Full terms are in the [LICENSE](LICENSE) file at the repository root.
 
-- personal use
-- academic or nonprofit use
-- evaluation and benchmarking
-- internal production use by an organization with less than USD 5,000,000 in
-  gross revenue during its most recently completed fiscal year, so long as the
-  work is not offered to third parties as a hosted service, SDK, developer
-  tool, or embedded feature of a commercial product
+## Historical License Record
+- **Earlier versions** (first publicly distributed before the BSL period): MIT License.
+- **BSL period**: Business Source License 1.1 (with Additional Use Grant for small entities/nonprofits/academia + 4-year Change License to Apache 2.0). See the LICENSE file from those commits for the exact terms that governed each version.
+- **This change**: Switches active license for future versions to MIT. Prior BSL-governed versions retain their original license terms (standard practice for license evolution).
 
-You do need a separate commercial license if you want to:
-
-- ship the implementation inside a commercial SDK, library, appliance, or
-  product
-- expose the implementation or a derivative of it as a hosted or managed
-  service
-- use the implementation in production at or above the revenue threshold in
-  the Additional Use Grant
-- obtain commercial terms, support, or a private license grant
-
-Commercial licensing contact:
-
-- `dionisio.lopez@icloud.com`
-
-Prior versions of this repository that were first publicly distributed under
-the MIT license remain available under those earlier terms. This file applies
-to versions first distributed under the Business Source License 1.1.
+The license applicable to any specific version or commit is the LICENSE file present in that commit.
