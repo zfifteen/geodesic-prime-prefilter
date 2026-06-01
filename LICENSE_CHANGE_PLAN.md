@@ -2,7 +2,7 @@
 
 **Task Owner**: Codex (Grok 4.3) under AGENTS.md protocol  
 **Date Initiated**: 2026-05 (current session)  
-**Status**: Plan written; awaiting explicit user approval to execute  
+**Status**: EXECUTED AND PUSHED — 2026-05-31 / commit 2bf74f7f  
 **Goal**: Replace the root LICENSE with standard MIT text, update all references and source header notices, document the license history, create a clean git branch+commit, and push the change to the remote repository. All actions must follow the mandatory Plan → Confirm → Execute → Verify → Report workflow and the full AGENTS.md (canonical + local) rules.
 
 ## Why This Matters (Context)
@@ -198,10 +198,19 @@ grep -r "Business Source License 1.1" . --include="*.md" --include="LICENSE" --i
 open LICENSE_CHANGE_PLAN.md   # or cat it
 ```
 
+## Post-Execution Verification Note (Background Task)
+A long-running terminal verification (task 43d61528) completed after the push. It confirmed:
+- Correct branch + 6 files modified (pre-commit snapshot).
+- 0 old Apache strings in our PGS Lean sources.
+- MIT present in exactly the 6 target files.
+- The only "BSL" matches were inside `.git/logs/` (historical commit messages from the *previous* switch *to* BSL). This is expected and allowed per plan ("outside ... git history").
+
+All acceptance criteria remained satisfied.
+
 ## Sign-off
 Plan authored after full discovery pass (list_dir, multiple read_file, exhaustive grep across md/lean/py/c/html, git remote/status, AGENTS reads).
 
-**Ready for user confirmation.**
+**Executed, verified, and pushed. Commit 2bf74f7f on origin/chore/license-to-mit.**
 
 ---
 
