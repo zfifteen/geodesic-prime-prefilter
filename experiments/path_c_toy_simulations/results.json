@@ -1,0 +1,92 @@
+{
+  "pgs_agg_sample": {
+    "2": {
+      "count": 303,
+      "avg_mix_score": 1.3164
+    },
+    "3": {
+      "count": 14,
+      "avg_mix_score": 1.167
+    },
+    "4": {
+      "count": 568,
+      "avg_mix_score": 1.3248
+    },
+    "6": {
+      "count": 194,
+      "avg_mix_score": 1.2527
+    },
+    "8": {
+      "count": 383,
+      "avg_mix_score": 1.2957
+    },
+    "9": {
+      "count": 13,
+      "avg_mix_score": 1.0717
+    },
+    "10": {
+      "count": 40,
+      "avg_mix_score": 1.0391
+    },
+    "12": {
+      "count": 206,
+      "avg_mix_score": 1.2504
+    },
+    "14": {
+      "count": 11,
+      "avg_mix_score": 0.8486
+    },
+    "16": {
+      "count": 113,
+      "avg_mix_score": 1.2218
+    }
+  },
+  "sha_toy_results": [
+    {
+      "word_size": 8,
+      "rounds": 1,
+      "trials": 500,
+      "avg_avalanche_frac": 0.0776,
+      "std_avalanche": 0.0359,
+      "est_mixed_channels_per_round": 3.0,
+      "ideal_random_avalanche": 0.5
+    },
+    {
+      "word_size": 8,
+      "rounds": 2,
+      "trials": 500,
+      "avg_avalanche_frac": 0.1502,
+      "std_avalanche": 0.0644,
+      "est_mixed_channels_per_round": 3.0,
+      "ideal_random_avalanche": 0.5
+    },
+    {
+      "word_size": 8,
+      "rounds": 4,
+      "trials": 500,
+      "avg_avalanche_frac": 0.3649,
+      "std_avalanche": 0.0866,
+      "est_mixed_channels_per_round": 3.0,
+      "ideal_random_avalanche": 0.5
+    },
+    {
+      "word_size": 8,
+      "rounds": 8,
+      "trials": 500,
+      "avg_avalanche_frac": 0.5007,
+      "std_avalanche": 0.0618,
+      "est_mixed_channels_per_round": 3.0,
+      "ideal_random_avalanche": 0.5
+    },
+    {
+      "word_size": 8,
+      "rounds": 16,
+      "trials": 500,
+      "avg_avalanche_frac": 0.5006,
+      "std_avalanche": 0.0621,
+      "est_mixed_channels_per_round": 3.0,
+      "ideal_random_avalanche": 0.5
+    }
+  ],
+  "insight": "BEST INSIGHT / SELF-CRITIQUE:\nNo novel relation found; mostly superficial analogy.\n\n- Both systems use \"independent channels\" that are multiplicatively combined (prime-power choices in tau vs bit-position samples in sigmas/Ch/Maj) then mixed via nonlinear ops (divisor selection vs XOR/AND/rot/add) to produce a \"canonical minimal\" or \"uniform\" output (leftmost min-tau vs full avalanche after rounds).\n- SHA constants deliberately derived from primes (sqrt/cbrt of first primes) for \"nothing up my sleeve\" - direct number-theoretic hook, but only for constant generation, not for the mixing logic itself.\n- PGS \"leftmost minimum divisor\" is a deterministic local selection rule inside arithmetic intervals; SHA avalanche/diffusion is a statistical property after iterative mixing. The \"minimal rounds for full diffusion\" (~8-20 for 256-bit security margin to 64) loosely parallels \"selecting the first min-tau\" but no falsifiable mapping (e.g. no equation linking tau(n) to round count or bias to E(n)).\n- Excess contraction Z(n) <1 for composites ~ \"bias\" in early hash rounds before full mixing; but PGS is exact for every n, SHA is probabilistic over inputs.\n- Falsifiable test would require e.g. predicting SHA round count from some PGS statistic on primes or vice-versa - no such prediction holds in toy data.\n- The bridge is poetic at best: both domains value \"mixing independent sources to hide structure\" (factorization hidden in primes vs input bits hidden in digest). Project's RSA crypto use of SHA-256 (only as PRNG for candidates) and PGS for endpoint structure remain separate; no internal SHA round analysis in codebase.\n- Strongest \"surprise\" is already known: SHA designers chose prime-derived constants; PGS studies the arithmetic of primes via their divisors. This does not yield a number-theoretic model explaining 64-round security.\n\nConclusion: Path C yields interesting surface parallels for exploration but no deep, falsifiable isomorphism. Recommend deprioritize vs more grounded PGS paths (e.g. bounded compression, RSA sidecars). If pursued, next would be formal mapping of \"choice channels\" to boolean functions (e.g. divisor lattice to ANF of Ch/Maj) but unlikely productive."
+}
