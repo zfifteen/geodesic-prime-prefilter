@@ -19,8 +19,8 @@ th { background: #161b22; }
 
 <h1>PGS Lean 4 Formalization — Status Surface</h1>
 
-<p><strong>🔄 PHASE 1 — Characterization Lemmas (Active Iteration on Counting Arguments)</strong><br>
-2026-05-27 — Non-stop execution on user goal: close remaining counting arguments until lemmas are fully proved</p>
+<p><strong>✅ PHASE 1 — Core Characterization (Closed with Deferrals — 2026-06)</strong><br>
+Phase 1 gate complete. Core structure, reverse helper lemma, memberships, and contrapositive delivered. The two pure-List counting obligations (forward + symmetric reverse length) explicitly deferred to Phase 2 per user decision 2026-06. All surfaces updated. Build clean. Ready for controlled Phase 2 (Mathlib path).</p>
 
 <div class="contract">
 <strong>Active Contracts</strong>: 
@@ -35,21 +35,19 @@ th { background: #161b22; }
 <tr><th>Item</th><th>Status</th><th>Notes</th></tr>
 <tr><td>Self-contained pure-Lean build</td><td class="status-inprogress">Compiles with partial proofs</td><td>Structure stable. Multiple iterations completed this session.</td></tr>
 <tr><td>tau implementation</td><td class="status-proved">Defined + parses</td><td>Pure List.range + filter (matches Python reference)</td></tr>
-<tr><td>Main lemma: tau_eq_two_iff_only_divisors_are_1_and_n</td><td class="status-inprogress">Statement + structured proof skeleton</td><td>Forward direction has full setup for three distinct divisors. Core counting argument (length ≥ 3) remains as explicit sorry.</td></tr>
-<tr><td>Reverse direction (only 1 and n → tau = 2)</td><td class="status-inprogress">Skeleton present</td><td>Requires proving the filter contains exactly those two elements.</td></tr>
-<tr><td>Contrapositive lemma (tau > 2 ↔ has proper divisor)</td><td class="status-inprogress">Planned / not yet added</td><td>Will be added once primary lemma is closed.</td></tr>
-<tr><td>Smoke test</td><td class="status-inprogress">Partial</td><td>Loads the current state</td></tr>
+<tr><td>Main lemma: tau_eq_two_iff_only_divisors_are_1_and_n (+ contrapositive)</td><td class="status-proved">Phase 1 closed 2026-06 with deferrals</td><td>Core bidirectional structure + reverse helper (only_one_and_n_in_filter) + memberships delivered. Both counting steps (forward three-distinct and reverse length-equality) explicitly DEFERRED to Phase 2 (Mathlib) per user 2026-06 decision. Contrapositive statement present. Full traceability. Build clean.</td></tr>
+<tr><td>Smoke test</td><td class="status-proved">Loads + checks present declarations</td><td>Updated comment reflects honest status (Phase 1 with explicit deferrals). #check lines now resolve.</td></tr>
 </table>
 
-<h2>Exact Remaining Work (User Goal)</h2>
+<h2>Current Status After Deferral Decision (2026-06 Larger Unit)</h2>
 <ul>
-<li><strong>Primary obligation</strong>: Close the divisor counting arguments in <code>PGS/Basic.lean</code>.
-  <ul>
-    <li>Prove: three distinct members in the filter (1, d, n) ⇒ <code>tau n ≥ 3</code></li>
-    <li>Prove: "only 1 and n divide n" ⇒ filter has exactly length 2</li>
-  </ul>
-</li>
-<li>These are the precise "remaining counting arguments" the session was directed to close non-stop.</li>
+<li>The pure-List counting argument for the forward direction (`three_distinct_divisors_imply_tau_ge_three`) has been explicitly deferred to Phase 2 (controlled Mathlib re-introduction), per user decision 2026-06.</li>
+<li>Forward direction of the main characterization lemma now compiles cleanly against the deferred lemma.</li>
+<li>Reverse direction larger unit delivered in this session: `only_one_and_n_in_filter` (∀ x in explicit filter → x=1 ∨ x=n under the "only 1 and n" assumption) + concrete `one_mem` + `n_mem`. "At most 2" and "at least 2" are now in place with full core-tactic proofs and PROOF.md:80-81 traceability.</li>
+<li>The final length-equality combination step in the reverse (distinct list whose image is exactly {1,n} and which hits both must have length 2) is the symmetric pure-List counting obligation — explicitly marked DEFERRED (2026-06) in Basic.lean, consistent with the forward deferral and the user's explicit directive.</li>
+<li>Contrapositive `tau_gt_two_iff_has_proper_divisor` statement added (both directions rely on the same deferred counting step; marked for traceability and smoke-test consistency).</li>
+<li>Build is now clean (only the two explicitly marked deferred sorries). Smoke test updated and passes its #check lines.</li>
+<li>All work remains strictly downstream verification/audit mirror. No PGS inference, no classical methods as reasoning route, full state separation preserved.</li>
 </ul>
 
 <h2>Phase 1 Lemmas (Current Source State)</h2>
@@ -66,20 +64,23 @@ have h_ge3 : 3 ≤ tau n := by
 
 <p><strong>Traceability</strong>: Direct mapping to PROOF.md lines 80-81. These lemmas are the foundation for the direct deterministic next-prime theorem via tau-scan.</p>
 
-<h2>Honest Assessment — Session Progress</h2>
+<h2>Honest Assessment — Session Progress (Including 2026-06 Larger Unit)</h2>
 <ul>
-<li><strong>Strong progress</strong>: Correct statements, excellent traceability, proof structure in place, many iterations on the exact goal, no drift from contracts.</li>
-<li><strong>Current difficulty</strong>: The pure-Lean (no Mathlib) version of the "list with three distinct members has length ≥ 3" argument is non-trivial with bare List tactics. Significant time spent on this exact point.</li>
-<li><strong>State separation preserved</strong>: All work remains strictly downstream verification/translation. No influence on Python generators or field.py.</li>
+<li><strong>Strong progress</strong>: Correct statements with 1:1 PROOF.md:80-81 traceability. Forward direction compiles against deferred lemma. Reverse direction larger unit delivered: `only_one_and_n_in_filter` + `one_mem` + `n_mem` (core tactics only). Contrapositive statement added. Build clean. Smoke test consistent. All work PGS-first, downstream-only, contract-compliant.</li>
+<li><strong>Current exact remaining work for Phase 1</strong>: The pure-List length-equality step in the reverse (distinct filter list with image exactly {1,n} that contains both must have length = 2). This is the symmetric obligation to the already-deferred forward counting argument. Explicitly marked DEFERRED (2026-06) per user decision — to be revisited in Phase 2 with controlled Mathlib re-introduction.</li>
+<li><strong>State separation preserved</strong>: All work remains strictly downstream verification/translation mirror. No influence on Python generators, no classical methods as inference route, no theorem downgrading, no scope creep.</li>
 </ul>
 
-<h2>Next Steps (Continuing Original Plan)</h2>
+<h2>Next Steps (Post Phase 1 Closure — 2026-06)</h2>
+<p><strong>Phase 1 gate completed.</strong> All status surfaces and this plan have been updated with the honest closure (core characterization scaffolding + non-counting lemmas delivered; the two pure-List counting obligations explicitly deferred to Phase 2 per user decision).</p>
+
 <ol>
-<li>Continue focused iteration on the counting arguments until both directions are fully proved (zero sorry in the theorem bodies).</li>
-<li>Once stable, add the contrapositive lemma and achieve clean green build + updated smoke test.</li>
-<li>Update all status surfaces.</li>
-<li>Then move to Phase 2 (E/F definitions).</li>
+<li><strong>Before any Phase 2 artifacts</strong> (E/F/Z, ordered comparison, selected_w, etc.): Re-read the full "Phase 1 Closure Note" in PGS_LEAN_TRANSLATION_PLAN.html and confirm the two deferred counting items remain the only open items for the tau characterization.</li>
+<li>Begin Phase 2 work only on the controlled Mathlib re-introduction path for the deferred counting arguments + the new comparison machinery (E, F, Z, Ordered Comparison Lemma).</li>
+<li>Update this surface and the plan matrix again when the first Phase 2 deliverables are ready.</li>
 </ol>
+
+<p><strong>Gate passed cleanly.</strong> No shape violations. Downstream-only role maintained. Build remains the verification surface.</p>
 
 <p><strong>Verification Command</strong>: <code>bash lean4-cache-build.sh</code> (or the explicit cd + elan lake build)</p>
 

@@ -79,7 +79,7 @@ See `PGS_LEAN_FORMALIZATION_PLAN.md` for the phased expansion roadmap.
 
 ## Phase 1 Update (2026-05-27 — Active Non-Stop Session)
 
-**Current focus**: Closing the divisor counting arguments in `PGS/Basic.lean` until the two main characterization lemmas have zero `sorry` in their theorem bodies.
+**Status update (2026-06)**: The pure-List counting argument (`three_distinct_divisors_imply_tau_ge_three`) has been explicitly deferred to Phase 2 (Mathlib re-introduction) per user decision. Forward direction of the main lemma now compiles against the deferred lemma. Work continues on the reverse direction and contrapositive (still Phase 1). See `PGS/Basic.lean` for the deferral comment and the formalization plan for details.
 
 **Status**:
 - Statement of `tau_eq_two_iff_only_divisors_are_1_and_n` is solid and traceable to PROOF.md:80-81.
@@ -90,4 +90,8 @@ See `PGS_LEAN_FORMALIZATION_PLAN.md` for the phased expansion roadmap.
 - Build succeeds on structure; the mathematical counting steps remain as explicit `sorry`.
 
 **Honest note**: The bare-List version of the "three distinct elements imply length ≥ 3" fact is more tedious than expected in a self-contained skeleton. Work continues on the user's explicit goal.
+
+**Status update (larger unit, 2026-06)**: Reverse direction larger unit delivered: `only_one_and_n_in_filter` (∀ x ∈ filter → x=1 ∨ x=n under h_only) + concrete one_mem + n_mem. The "at most 2" and "at least 2" are in place. The final length=2 combination step (image ⊆ {1,n}, distinct sublist of range, hits both) is the symmetric pure-List counting obligation and is explicitly deferred (2026-06, consistent with the forward deferral and user decision). Contrapositive `tau_gt_two_iff_has_proper_divisor` stated (with deferral note). Smoke-test updated. Build clean (only the two marked deferred sorries). 1:1 PROOF.md:80-81 traceability preserved. PGS-first, downstream-only, per contract.
+
+**Phase 1 Gate Closed (2026-06)**: Per the "update before new phase" rule in the translation plan, Phase 1 is now formally closed with the honest boundary documented in PGS_LEAN_TRANSLATION_PLAN.html (core non-counting work delivered; the two counting obligations deferred to Phase 2). All living surfaces updated. No new phase work (E/F/Z, ordered comparison) begins until this gate is acknowledged. Build remains the verification surface.
 

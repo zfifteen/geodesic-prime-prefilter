@@ -18,8 +18,8 @@ open PGS
 #eval tau 12
 #eval tau 13
 
--- Phase 1 lemmas (fully stated, partial proofs)
+-- Phase 1 lemmas (fully stated, partial proofs; length combination steps deferred per user 2026-06 decision, consistent with pure-List counting deferral)
 #check tau_eq_two_iff_only_divisors_are_1_and_n
 #check tau_gt_two_iff_has_proper_divisor
 
-#check "PGS library smoke test loaded successfully (Phase 1 - characterization lemmas with proof structure)"
+#check "PGS library smoke test loaded successfully (Phase 1 - characterization lemmas with proof structure; reverse length detail deferred consistently)"
