@@ -6,13 +6,15 @@ Run with:
 -/
 
 import PGS.Basic
+import PGS.Placement
 
 open PGS
+open PGS.Placement
 
 #check tau
 #check E
 #check F
-#check Z
+#check witnessThreshold_four_five
 
 #eval tau 1
 #eval tau 12

@@ -13,10 +13,6 @@ def tau (n : Nat) : Nat :=
   if n = 0 then 0
   else (List.range (n + 1)).filter (fun d => d > 0 && n % d == 0) |>.length
 
-def E (n : Nat) : Nat := 0
-def F (n : Nat) : Nat := 0
-def Z (n : Nat) : Nat := 0
-
 -- Membership in the explicit divisor filter (core tactics only, self-contained)
 theorem mem_div_filter_left {n d : Nat} (hn : 0 < n)
     (h : 0 < d ∧ d ≤ n ∧ d ∣ n) :
@@ -234,9 +230,7 @@ PGS-first entrypoint: objects → invariants → rule → resolved/unresolved st
 -- is active after `lake update`.
 --
 -- Traceability: PROOF.md lines 129–139 and surrounding divisor normalization text.
-noncomputable def E (n : Nat) : Real := 0
-noncomputable def F (n : Nat) : Real := 0
-noncomputable def Z (n : Nat) : Real := 0
+-- Real-valued `E`, `F`, and placement invariants live in `PGS.Placement`.
 
 /-
 Scaffolding for the Ordered Comparison Lemma (PROOF.md lines 158–182).

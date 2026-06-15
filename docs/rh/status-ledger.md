@@ -76,6 +76,33 @@ This is an exact zeta compression of the divisor-count source. It is not a
 replacement proof of the local PGS theorems, and `PROOF.md` itself does not
 prove RH.
 
+## d=4 Placement Invariants (Proved Corollaries)
+
+Status: proved corollaries of the Interior Maximizer Theorem and `PROOF.md`
+analytic inputs; measured finite-base audit on `p \le 10^6`.
+
+For the dominant d=4 GWR carrier class (`\tau(w)=4`), chamber geometry yields:
+
+- first interior `\tau=4` arrival at the GWR carrier;
+- closure `q \le S_+(w)` before the next prime-square threat;
+- gap-dependent fractional-position bound
+  `\mathrm{frac\_pos} \le \min(R_{SDA}(p)/g,\, 1 - (q-w)/g)`.
+
+A uniform pointwise bound `\mathrm{frac\_pos} \le 1/2` is **invalidated**
+(8,505 d=4 counterexamples at `10^6`; max `frac_pos = 0.9375`).
+
+Proof note:
+[`research/pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md`](../../research/pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md).
+Lean audit:
+[`lean-4/PGS/Placement.lean`](../../lean-4/PGS/Placement.lean).
+Structural falsification (0 violations): 58,304 d=4 chambers at `10^6`
+[`pgs_d4_frac_pos_falsification_1000000.json`](../../research/pgs-rh-placement-empirics-2026-06/pgs_d4_frac_pos_falsification_1000000.json);
+499,896 d=4 chambers at `10^7`
+[`pgs_d4_frac_pos_falsification_10000000.json`](../../research/pgs-rh-placement-empirics-2026-06/pgs_d4_frac_pos_falsification_10000000.json).
+
+These are local chamber-geometry theorems. They partially discharge the d=4
+row of the draft source-to-spectral transfer lemma. They do not prove RH.
+
 ## Source-To-Spectral Placement Target
 
 Status: unresolved proof target, with obstruction recorded by
