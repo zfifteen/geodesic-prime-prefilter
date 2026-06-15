@@ -235,7 +235,7 @@ Known collisions:
 
 - bounded-compression `E(q)` in `RESULTS.md`,
   `RECURSIVE_PRIME_WALK.md`, `research/04-bounded-compression/README.md`, and
-  `pgs-math-explainer/index.html`;
+  `visualizations/pgs-math-explainer/index.html`;
 - divisor-field-extremals `E(n)=(sigma(n)-n)/n` under
   `pgs-unsolved-problems/divisor-field-extremals/`;
 - RSA endpoint-cell `E` notation under
@@ -307,14 +307,14 @@ Out of scope for phase 1:
 - `research/00-index/archive/`
 - `research/06-cryptology-rsa/archive/`
 - `research/06-cryptology-rsa/experiments/archive/`
-- `pgs-math-explainer/audio/`
-- `pgs-math-explainer/scene-videos/`
+- `visualizations/pgs-math-explainer/audio/`
+- `visualizations/pgs-math-explainer/scene-videos/`
 - `pgs-unsolved-problems/*/*.csv`
 - `pgs-unsolved-problems/*/*.json`
 - `docs/gap-structure-factor-brief-evidence/**/output/`
 - `data/external/primegap_list_records_1e12_1e18.csv`
 - `gists/try-yourself/plots/`
-- `apps/prime-gap-structure-interactive-mockup/`
+- `visualizations/apps/prime-gap-structure-interactive-mockup/`
 - existing `.png`, `.svg`, `.pdf`, `.docx`, `.mp3`, `.mp4`, `.json`,
   `.jsonl`, and `.csv` outputs unless a later artifact pass names the source
   path and regeneration command.

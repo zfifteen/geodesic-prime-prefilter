@@ -2284,3 +2284,23 @@ PGS-first (divisor-count field + GWR w + square U_□ on 9197/3888 + 12-14 joint
 
 Appended 2026-05-30 by Grok-Main-Coordinator (final bookkeeping for the unit that wrote the Completion Declaration). Chapter 16 Predictions complete per user "Proceed to complete the goal completely".
 
+
+---
+**2026-05-30+ Dedicated Heavy Worker Node (spare MacBook) — New persistent resource**
+
+A dedicated always-on MacBook node has been chartered as `pgs-dedicated-heavy-mac` (bus peer).
+
+Charter + operational details: `research/16-predictions/dedicated-mac-heavy-worker-charter.md`
+
+Ready-to-use activation prompt: `research/16-predictions/dedicated-mac-heavy-worker-prompt.txt`
+
+Activation wrapper (pull-first + grok -p): `scripts/pgs-dedicated-heavy-mac.sh` (make executable; configure PGS_ROOT/BRANCH/RECLAIM_FILE/LOG_DIR for the spare machine; pair with launchd or persistent tmux + scheduler for recurring activations).
+
+Role (exact): Heavy long-running surface/variance/sidecar/scoring work (non-d4 5237-style variance emission & scoring, 12-18 w + square U_□ full protocols, reciprocal lifts on variance regimes, artifact processing) + Hermes digest relay to human messaging targets. Always `git pull --ff-only` before any work. Joins bus as stable peer, claims via task+bus, delivers with full 6 gates + explicit "unresolved on stated surface" when appropriate, posts to bus, sends concise Hermes digests, self-perpetuates per the Perpetual Protocol (quotes the 5 files + charter).
+
+This node is available for D (or any agent) to explicitly delegate long compute units to via bus post or task assignment. It will not do synthesis or catalogue mutation on its own.
+
+Human configures the node's Hermes targets and MCPs once. The swarm can treat it as a reliable "heavy compute peer" that is usually present and can run jobs that would otherwise block context-heavy agents.
+
+Reproduction for any agent: read the charter, then the 5 key files, then post a delegation on the bus if a heavy unit (e.g. "dedicated-heavy: please run full 12-18 non-d4 sidecar emission + scoring on latest persisted variance CSV") is ready.
+
