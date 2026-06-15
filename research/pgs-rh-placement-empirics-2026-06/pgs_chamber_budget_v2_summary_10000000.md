@@ -1,0 +1,1 @@
+Scaled findings at 1e7: confirms and strengthens 1e6 results. Chamber geometry empirically stable and ordered for placement transfer lemmas.

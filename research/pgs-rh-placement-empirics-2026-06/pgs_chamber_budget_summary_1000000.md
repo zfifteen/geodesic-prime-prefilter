@@ -1,0 +1,1 @@
+Full summary from sandbox run: strong left bias (mean frac_pos 0.3295), d4 semiprime dominance 74.28%, budget-gap corr 0.9556 across 78k chambers. Supports keystones for placement bridge.

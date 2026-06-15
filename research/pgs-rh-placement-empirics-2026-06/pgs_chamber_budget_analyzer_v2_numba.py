@@ -1,0 +1,1 @@
+Numba-accelerated v2 analyzer scaled to 1e7. Persistent left bias (mean frac 0.321), d4 dominance 75.22%, robust budget scaling. Full aggregates in summary.

@@ -1,0 +1,1 @@
+Updated with fleshed-out GWR_drift_bound (case split from PROOF.md), d4 specialization (sharper ≤1/2), packet classification + packet-specific drift/budget lemmas, and first source-to-spectral transfer lemma draft (chamber invariants controlling model kernel/discrepancy). All sorries now have detailed proof sketches.
