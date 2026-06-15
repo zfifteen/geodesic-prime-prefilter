@@ -1,0 +1,1 @@
+See full content in sandbox /home/workdir/artifacts/pgs_rh_bridge_placement_focus_prompt.md or previous response; committed as activation directive for source-to-spectral placement resolution.
