@@ -1,0 +1,44 @@
+Generating prime-related specials (primes + p^2 + p^3 + p^4) up to 100000...
+Found 9678 special numbers.
+
+=== RESULTS ===
+Interiors with numbers: 9671
+Occurrences of min_tau == 5: 0
+
+Observed min_tau distribution (sorted):
+  4: 7086
+  6: 422
+  8: 898
+  9: 3
+  10: 20
+  12: 177
+  14: 1
+  16: 237
+  18: 30
+  20: 29
+  24: 233
+  28: 7
+  30: 13
+  32: 157
+  36: 58
+  40: 41
+  42: 4
+  44: 3
+  48: 129
+  54: 12
+  56: 7
+  60: 26
+  64: 32
+  70: 1
+  72: 25
+  80: 4
+  84: 1
+  90: 2
+  96: 9
+  108: 1
+  120: 3
+
+No interiors with min_tau exactly 5 found in this range.
+
+Note: These are intervals between 'prime-related' numbers (primes + their powers).
+Compare to standard consecutive-prime gaps, where 5 also never appears as min.

@@ -1,0 +1,5 @@
+topic_id: 4345f5f850
+agent_name: hermes
+reclaim_token: 9d6539db27e34399a1d2d87c68cc7018
+topic_name: pgs/collaboration-hermes-grok-new-insight-test
+joined_at: now

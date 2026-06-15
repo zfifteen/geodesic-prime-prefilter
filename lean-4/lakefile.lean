@@ -10,10 +10,9 @@ Prime Gap Structure (PGS) theorems proved in PROOF.md.
 It is strictly an audit/translation surface. It does not generate
 PGS outputs and must never be used for inference or selection.
 
-For the initial skeleton, we use pure Lean definitions to avoid
-heavy external dependencies while the environment stabilizes.
-Mathlib will be re-introduced in later phases for full Real analysis
-and advanced tactics.
+Phase 2 entry point (2026-06): Controlled re-introduction of Mathlib begins here
+for Real analysis (E/F/Z) and supporting lemmas. Usage is kept minimal and
+judicious per the Mathlib Strategy table in PGS_LEAN_TRANSLATION_PLAN.html.
 -/
 
 package «pgs» where
@@ -28,3 +27,8 @@ lean_lib PGS where
   leanOptions := #[
     ⟨`linter.unusedVariables, false⟩  -- allow for structured proofs
   ]
+
+-- Phase 2: Controlled Mathlib dependency (Real for log + basic supporting theory).
+-- See PGS_LEAN_TRANSLATION_PLAN.html §7 "Mathlib Strategy" for rationale and limits.
+-- Pinned to a compatible revision for v4.30.0 toolchain.
+require mathlib from git "https://github.com/leanprover-community/mathlib4.git" @ "v4.30.0"

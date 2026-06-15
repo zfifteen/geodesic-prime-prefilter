@@ -275,7 +275,7 @@ At pause time, unrelated local artifacts existed outside the square-tail proof
 track:
 
 ```text
-apps/
+visualizations/apps/ (formerly apps/ at time of pause)
 research/03-gap-types/output/composite_gap_field_plot.png
 research/03-gap-types/output/gwr_winner_ulam_spiral*.png
 research/03-gap-types/scripts/composite_gap_field_plot.py

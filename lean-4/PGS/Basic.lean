@@ -206,4 +206,67 @@ theorem tau_gt_two_iff_has_proper_divisor (n : Nat) (h : n > 1) :
   -/
   sorry
 
+/-!
+=============================================================================
+PHASE 2 SCAFFOLDING — Comparison Machinery & Interval Infrastructure
+Started after Phase 1 gate closure (commit b542c890) and push.
+
+This section follows the mandatory AGENTS.md Phased Code Authoring Procedure:
+- Phase 1 of authoring (this edit): Scaffolding only — detailed comments describing
+  intended logic, responsibilities, edge cases, and traceability. No implementation.
+- Mathlib re-introduction is the explicit decision point for Phase 2 (see
+  PGS_LEAN_TRANSLATION_PLAN.html §7).
+
+All work remains strictly downstream verification per the binding contract.
+PGS-first entrypoint: objects → invariants → rule → resolved/unresolved state.
+=============================================================================
+-/
+
+-- Phase 2 placeholder: The three core arithmetic functions.
+-- In Phase 2 these become noncomputable using Mathlib.Real for the logarithm.
+-- They are the direct formal translation of the definitions in PROOF.md.
+--
+-- E(n) = (tau(n)/2 - 1) * log n
+-- F(n) = -E(n)
+-- Z(n) = exp(-E(n))
+--
+-- These will live in a noncomputable section once the Mathlib dependency
+-- is active after `lake update`.
+--
+-- Traceability: PROOF.md lines 129–139 and surrounding divisor normalization text.
+noncomputable def E (n : Nat) : Real := 0
+noncomputable def F (n : Nat) : Real := 0
+noncomputable def Z (n : Nat) : Real := 0
+
+/-
+Scaffolding for the Ordered Comparison Lemma (PROOF.md lines 158–182).
+
+Statement (to be formalized):
+  For any two composite integers a < b, if tau(a) ≤ tau(b), then F(a) > F(b).
+
+Ordinary-language mechanism (from the prose):
+  Because a < b we have log a < log b (log is strictly increasing).
+  tau(a) ≤ tau(b) implies (tau(a)/2 - 1) ≤ (tau(b)/2 - 1)  (both positive for composites).
+  Therefore the product (tau/2-1)*log is smaller for a.
+  Negating reverses the inequality → F(a) > F(b).
+
+Intended Lean structure (once Mathlib.Real and the Phase 1 counting work are available):
+  - Assume a and b are composite (or the lemma is stated only for composites as in prose).
+  - Use the definitions of F and E.
+  - Use properties of Real.log (strictly increasing on positives).
+  - Use the fact that for composites tau ≥ 3 so the coefficient is positive.
+  - The inequality direction on the coefficient comes from the ordering of tau.
+  - Multiply by log and negate.
+
+Edge cases & obligations to record during implementation:
+  - a and b must be > 1 (composites).
+  - log is only defined/strictly increasing for positive reals.
+  - The coefficient (tau/2 - 1) must be shown positive (uses tau ≥ 3 for composites).
+  - This lemma is used heavily in the proof that w is the unique maximizer of F in the interval.
+
+This scaffolding will be expanded with the actual theorem statement and proof
+structure in subsequent increments after the Mathlib dependency is fetched
+and the deferred Phase 1 counting arguments are revisited.
+-/
+
 end PGS

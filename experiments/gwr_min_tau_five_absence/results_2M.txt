@@ -1,0 +1,69 @@
+Scanning standard prime gaps up to p < 2000000 ...
+
+=== RESULTS ===
+Gaps with nonempty interior: 148931
+Occurrences of min_tau == 5: 0
+
+Observed min_tau distribution (sorted):
+  3: 223
+  4: 110947
+  6: 5432
+  8: 15380
+  9: 8
+  10: 219
+  12: 2489
+  14: 24
+  15: 4
+  16: 3367
+  18: 215
+  20: 221
+  24: 2245
+  28: 55
+  30: 85
+  32: 2136
+  36: 593
+  38: 1
+  40: 420
+  42: 26
+  44: 4
+  48: 1747
+  50: 5
+  52: 1
+  54: 66
+  56: 89
+  60: 215
+  64: 748
+  66: 1
+  70: 3
+  72: 521
+  78: 1
+  80: 236
+  84: 41
+  88: 5
+  90: 39
+  96: 578
+  100: 12
+  104: 1
+  108: 73
+  112: 41
+  120: 87
+  126: 9
+  128: 97
+  132: 4
+  140: 3
+  144: 110
+  150: 2
+  160: 30
+  162: 4
+  168: 8
+  180: 14
+  192: 33
+  200: 2
+  216: 5
+  240: 1
+  252: 1
+  256: 3
+  270: 1
+
+CONCLUSION (measured surface): In all standard consecutive-prime gaps
+on this range, the GWR minimum divisor count in the interior is never 5.

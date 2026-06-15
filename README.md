@@ -1,8 +1,10 @@
 # Prime Gap Structure
 
-![Prime Gap Structure hero](docs/assets/prime-gap-structure-hero.jpg)
+![Prime Gap Structure hero](visualizations/conceptual/prime-gap-structure-hero.jpg)
 
 The single live proof reference is [PROOF.md](PROOF.md), including the direct deterministic next-prime theorem.
+
+Visualizations of the core objects (the divisor-count row, GWR selection, ridges, U_□ diagrams, conceptual rulers, interactive explorers, and video narrations) live in [visualizations/](visualizations/index.html).
 
 ## The First Contradiction
 
