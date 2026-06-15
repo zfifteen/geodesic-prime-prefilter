@@ -1,0 +1,1 @@
+The reproducible Python analyzer script used for 1e6 scale chamber budget and packet-drift proxy computation. Extensible with numba for larger scales.
