@@ -1,0 +1,1 @@
+Full content of the formal Lean4 statements for excessBudget B(I) and GWR fractional-position drift bound, with proofs sketched from PROOF.md lemmas and empirical grounding from 1e6/1e7 sandbox runs. See sandbox file for complete module with imports, axioms, theorems, and integration notes.
