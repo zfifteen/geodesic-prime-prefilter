@@ -31,13 +31,14 @@ reduction).
 
 | Field | Value |
 | --- | --- |
-| Segment | `2·10^8 .. 3·10^8` |
-| Prime roots tested | `5,173,388` |
+| Segment | `3·10^8 .. 4·10^8` |
+| Prime roots tested | `5,084,001` |
 | First counterexample | `none` |
-| Max utilization | `0.7209612817089452` |
-| Extremal root `r` | `251,066,071` |
-| Offset `D(r)` | `540` |
-| Artifacts | `research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_2e8_3e8/` |
+| Max utilization | `0.7036082474226805` |
+| Extremal root `r` | `358,018,553` |
+| Offset `D(r)` | `546` |
+| Local artifacts | `research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_3e8_4e8/` |
+| Prior segment | `2·10^8 .. 3·10^8` max util `0.7210` at `r=251,066,071` offset `540` |
 
 ## Hourly Queue
 
