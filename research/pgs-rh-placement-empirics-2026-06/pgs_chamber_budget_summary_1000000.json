@@ -1,0 +1,21 @@
+{
+  "budget_gap_len_corr": 0.955563378360948,
+  "chamber_count": 78496,
+  "d4_carrier_count": 58304,
+  "d4_carrier_share": 0.7427639624949042,
+  "frac_pos_max": 0.9375,
+  "frac_pos_mean": 0.34158708947378547,
+  "frac_pos_median": 0.3333333333333333,
+  "frac_pos_p90": 0.6666666666666666,
+  "limit": 1000000,
+  "packet_counts": {
+    "d3_prime_square": 168,
+    "d4_prime_cube": 7,
+    "d4_semiprime": 58297,
+    "d6": 2985,
+    "d8_plus": 17039
+  },
+  "rows_total": 78496,
+  "rows_written": 10000,
+  "runtime_seconds": 1.4721830420021433
+}

@@ -18,7 +18,9 @@ This is a **downstream verification and audit layer only**.
 
 - `lean-toolchain` + `lakefile.lean` — Lean 4.30.0 (self-contained skeleton, no heavy Mathlib dep for now)
 - `PGS.lean` (root) + `PGS/Basic.lean` — tau (pure List.range impl), E/F/Z placeholders
-- `PGS/GWR.lean` and `PGS/NextPrime.lean` — Phase 3/4 placeholders
+- `PGS/ChamberReset.lean` — Rule X replay types; **L4 audit demotion proved**
+- `PGS/NextPrime.lean` — weak L_FCL exports; **L5 open** (`sorry`)
+- `PGS/GWR.lean` — Phase 3 placeholder
 - `smoke-test.lean` — Automated verification that the library loads and basic defs work
 - Full contract and plan documents
 

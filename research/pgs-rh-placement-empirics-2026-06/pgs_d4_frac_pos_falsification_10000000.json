@@ -1,0 +1,23 @@
+{
+  "d4_chambers": 499896,
+  "examples": {
+    "closure_q_gt_square": [],
+    "combined_bound_exceeded": [],
+    "left_bound_exceeded": [],
+    "not_first_tau4": [],
+    "theta_half_exceeded": []
+  },
+  "limit": 10000000,
+  "max_frac_pos": 0.9545454545454546,
+  "min_right_margin": 1,
+  "runtime_seconds": 926.6583917499956,
+  "structural_violation_total": 0,
+  "theta_half_invalidated": true,
+  "violations": {
+    "closure_q_gt_square": 0,
+    "combined_bound_exceeded": 0,
+    "left_bound_exceeded": 0,
+    "not_first_tau4": 0,
+    "theta_half_exceeded": 72464
+  }
+}
