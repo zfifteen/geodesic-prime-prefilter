@@ -6,7 +6,25 @@
 
 set -euo pipefail
 
-export PATH="${HOME}/.grok/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
+PYTHON_CANDIDATES=(
+  "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3"
+  "${PYTHON_BIN:-}"
+  "$(command -v python3 2>/dev/null || true)"
+)
+PYTHON_BIN=""
+for candidate in "${PYTHON_CANDIDATES[@]}"; do
+  [[ -n "$candidate" && -x "$candidate" ]] || continue
+  if "$candidate" -c "import gmpy2" >/dev/null 2>&1; then
+    PYTHON_BIN="$candidate"
+    break
+  fi
+done
+if [[ -z "$PYTHON_BIN" ]]; then
+  echo "Error: no Python with gmpy2 found for hourly relay." >&2
+  exit 1
+fi
+export PYTHON_BIN
+export PATH="${HOME}/.grok/bin:$(dirname "$PYTHON_BIN"):/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
 
 PGS_ROOT="${PGS_ROOT:-$HOME/IdeaProjects/prime-gap-structure}"
 BRANCH="${BRANCH:-main}"
@@ -49,7 +67,7 @@ SHA=$(git rev-parse --short HEAD)
 log "at commit $SHA"
 
 set +e
-DISPATCH_OUTPUT="$(python3 "$DISPATCH" 2>&1)"
+DISPATCH_OUTPUT="$("$PYTHON_BIN" "$DISPATCH" 2>&1)"
 DISPATCH_STATUS=$?
 set -e
 printf '%s\n' "$DISPATCH_OUTPUT" | tee -a "$LOG_DIR/hourly.log"
