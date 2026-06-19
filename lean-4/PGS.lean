@@ -5,8 +5,10 @@ Authors: PGS Project
 -/
 
 import PGS.Basic
+import PGS.ChamberReset
 import PGS.GWR
 import PGS.NextPrime
+import PGS.Placement
 
 /-!
 # Prime Gap Structure (PGS) Formalization Root

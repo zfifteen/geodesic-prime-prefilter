@@ -13,10 +13,6 @@ def tau (n : Nat) : Nat :=
   if n = 0 then 0
   else (List.range (n + 1)).filter (fun d => d > 0 && n % d == 0) |>.length
 
-def E (n : Nat) : Nat := 0
-def F (n : Nat) : Nat := 0
-def Z (n : Nat) : Nat := 0
-
 -- Membership in the explicit divisor filter (core tactics only, self-contained)
 theorem mem_div_filter_left {n d : Nat} (hn : 0 < n)
     (h : 0 < d ∧ d ≤ n ∧ d ∣ n) :
@@ -25,6 +21,52 @@ theorem mem_div_filter_left {n d : Nat} (hn : 0 < n)
   -- After simp the goal is (d < n+1) ∧ ((d > 0 && n % d == 0) = true)
   -- Order from mem_filter + mem_range: range condition first, then the Bool predicate = true.
   exact ⟨Nat.lt_succ_of_le h.2.1, by simp [h.1, Nat.mod_eq_zero_of_dvd h.2.2]⟩
+
+/-- Two distinct list members force length at least two. -/
+theorem length_ge_two_of_two_distinct {α} :
+    ∀ {l : List α} {a b : α}, a ∈ l → b ∈ l → a ≠ b → 2 ≤ l.length
+  | [], _, _, ha, _, _ => by simp at ha
+  | _ :: [], a, b, ha, hb, hab => by
+    simp only [List.mem_cons, List.mem_nil_iff] at ha hb
+    rcases ha with rfl | ha'
+    · rcases hb with rfl | hb'
+      · exact absurd rfl hab
+      · cases hb'
+    · cases ha'
+  | _ :: _ :: _, a, b, _, _, _ => by
+    simp only [List.length]
+    omega
+
+/-- For `n > 1`, divisors `1` and `n` are distinct members of the τ filter. -/
+theorem tau_ge_two_of_gt_one (n : Nat) (h : n > 1) : 2 ≤ tau n := by
+  simp only [tau]
+  have h1n : 1 < n := h
+  have h_pos : 0 < n := Nat.lt_trans Nat.zero_lt_one h1n
+  have hn0 : n ≠ 0 := Nat.ne_of_gt h_pos
+  rw [if_neg hn0]
+  let flt := (List.range (n + 1)).filter (fun x => x > 0 && n % x == 0)
+  have one_mem := mem_div_filter_left h_pos
+    ⟨Nat.zero_lt_one, Nat.succ_le_of_lt h_pos, Nat.one_dvd _⟩
+  have n_mem := mem_div_filter_left h_pos
+    ⟨h_pos, Nat.le_refl _, Nat.dvd_refl _⟩
+  have one_ne_n : 1 ≠ n := by
+    rintro rfl
+    exact Nat.not_lt.mpr (Nat.le_refl 1) h1n
+  simpa [flt] using length_ge_two_of_two_distinct one_mem n_mem one_ne_n
+
+/-- Audit demotion bridge: for `n > 1`, `τ(n) ≤ 2` forces `τ(n) = 2`. -/
+theorem tau_le_two_and_gt_one_imp_eq_two (n : Nat) (hn : n > 1) (hle : tau n ≤ 2) : tau n = 2 :=
+  Nat.le_antisymm hle (tau_ge_two_of_gt_one n hn)
+
+def compositeWitness (τ : Nat) : Prop := 2 < τ
+
+theorem not_compositeWitness_iff_tau_le_two (τ : Nat) :
+    ¬ compositeWitness τ ↔ τ ≤ 2 := by
+  constructor
+  · intro h
+    simpa [compositeWitness] using Nat.le_of_not_gt h
+  · intro h hgt
+    exact Nat.not_le_of_gt hgt h
 
 -- Pure-List counting argument (three distinct members in the explicit divisor filter ⇒ length ≥ 3).
 --
@@ -234,9 +276,7 @@ PGS-first entrypoint: objects → invariants → rule → resolved/unresolved st
 -- is active after `lake update`.
 --
 -- Traceability: PROOF.md lines 129–139 and surrounding divisor normalization text.
-noncomputable def E (n : Nat) : Real := 0
-noncomputable def F (n : Nat) : Real := 0
-noncomputable def Z (n : Nat) : Real := 0
+-- Real-valued `E`, `F`, and placement invariants live in `PGS.Placement`.
 
 /-
 Scaffolding for the Ordered Comparison Lemma (PROOF.md lines 158–182).

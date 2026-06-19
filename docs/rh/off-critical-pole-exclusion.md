@@ -195,6 +195,13 @@ The missing theorem is a source-to-spectral placement theorem: chamber
 geometry plus the $Z=1$ / $E=0$ return law must imply an RH-strength analytic
 constraint on the continued DNI ratio.
 
+**Partial progress (2026-06).** For the dominant d=4 GWR carrier class,
+proved corollaries now supply a gap-dependent fractional-position bound and
+closure before the prime-square threat. See
+[`d4_fractional_position_bound.md`](../../research/pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md)
+and the [status ledger](status-ledger.md) d=4 section. This discharges part of
+the draft transfer-lemma input; it does not close off-critical pole exclusion.
+
 The current obstruction is recorded in
 [Off-Axis Pair Carrier Lemma Resolution](../../research/12-rh-bridge/docs/off_axis_pair_carrier_lemma_resolution.md).
 
