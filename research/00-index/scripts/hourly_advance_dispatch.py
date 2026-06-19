@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -16,7 +17,7 @@ if str(SCRIPT_DIR) not in sys.path:
 
 from hourly_research_relay_common import (  # noqa: E402
     ROOT as RELAY_ROOT,
-    prepare_task_branch,
+    remote_branch_exists,
     run_git,
     utc_timestamp_iso,
     write_json,
@@ -32,11 +33,44 @@ FIRST_LAUNCH_BASE_BRANCH = "origin/main"
 NEEDS_GROK_EXIT = 2
 
 
+def python_bin() -> str:
+    """Return the project Python interpreter."""
+    return os.environ.get("PYTHON_BIN", "python3")
+
+
+def resolve_command(command: list[str]) -> list[str]:
+    """Map queued commands onto the configured Python interpreter."""
+    if command and command[0] == "python3":
+        return [python_bin(), *command[1:]]
+    return command
+
+
 def ensure_tracked_clean() -> None:
     """Abort when tracked files are dirty; allow untracked paths."""
     status = run_git("status", "--porcelain", "--untracked-files=no")
     if status:
         raise RuntimeError("hourly relay requires a clean tracked git worktree")
+
+
+def prepare_hourly_branch(branch_name: str, first_launch_base_branch: str) -> None:
+    """Fetch origin and move onto the relay branch, keeping in-progress edits."""
+    run_git("fetch", "origin")
+    remote_branch = f"origin/{branch_name}"
+    local_exists = subprocess.run(
+        ["git", "show-ref", "--verify", "--quiet", f"refs/heads/{branch_name}"],
+        cwd=ROOT,
+    ).returncode == 0
+    if remote_branch_exists(remote_branch):
+        if local_exists:
+            run_git("checkout", branch_name)
+        else:
+            run_git("checkout", "-b", branch_name, remote_branch)
+        run_git("merge", "--ff-only", remote_branch)
+        return
+    if local_exists:
+        run_git("checkout", branch_name)
+        return
+    run_git("checkout", "-b", branch_name, first_launch_base_branch)
 
 
 def load_queue() -> dict[str, Any]:
@@ -144,8 +178,7 @@ Next step:
 
 def commit_artifacts(paths: list[Path], message: str) -> str:
     """Commit relay artifacts on the task branch; push when possible."""
-    ensure_tracked_clean()
-    prepare_task_branch(TASK_BRANCH, FIRST_LAUNCH_BASE_BRANCH)
+    prepare_hourly_branch(TASK_BRANCH, FIRST_LAUNCH_BASE_BRANCH)
     run_git("add", *[str(path.relative_to(ROOT)) for path in paths])
     run_git("commit", "-m", message)
     sha = run_git("rev-parse", "HEAD")
@@ -166,9 +199,9 @@ def commit_artifacts(paths: list[Path], message: str) -> str:
 
 def dispatch_deterministic(item: dict[str, Any]) -> int:
     """Run a deterministic queue item end-to-end."""
-    command = [str(part) for part in item["command"]]
+    command = resolve_command([str(part) for part in item["command"]])
     completed = run_command(command)
-    pytest_cmd = [str(part) for part in item.get("pytest", [])]
+    pytest_cmd = resolve_command([str(part) for part in item.get("pytest", [])])
     pytest_completed = run_command(pytest_cmd) if pytest_cmd else None
 
     status = "ADVANCE"

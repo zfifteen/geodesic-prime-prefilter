@@ -4,8 +4,8 @@
     {
       "id": "falsification-3e8-4e8",
       "type": "deterministic",
-      "mechanism": "Square-branch dynamic-cutoff falsification sweep on prime roots 300M–400M",
-      "why": "Extend the measured no-counterexample surface beyond 3·10^8 and refresh the utilization frontier.",
+      "mechanism": "Square-branch dynamic-cutoff falsification sweep on prime roots 300M\u2013400M",
+      "why": "Extend the measured no-counterexample surface beyond 3\u00b710^8 and refresh the utilization frontier.",
       "command": [
         "python3",
         "research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py",
@@ -29,7 +29,7 @@
     {
       "id": "offset-540-structural-audit",
       "type": "grok",
-      "mechanism": "PGS-native structural audit of recurring offset 540 and early-τ=4 / late-τ=3 chamber separation",
+      "mechanism": "PGS-native structural audit of recurring offset 540 and early-\u03c4=4 / late-\u03c4=3 chamber separation",
       "why": "Offset 540 reappears at multiple scales; formalize as chamber geometry hypothesis or falsify a concrete prediction.",
       "instructions": "Read the latest falsification summary JSON and prefix_tau_floor_probe.json. Produce one falsifiable prediction table and, if warranted, a minimal new probe script under experiments/square-branch-hourly-*/. Do not port d=4 SDA.",
       "pytest": [
@@ -39,13 +39,13 @@
         "research/04-bounded-compression/tests/test_square_branch_dynamic_cutoff_search.py",
         "-q"
       ],
-      "next_step": "Run prefix τ probe variant on newest extremal rows or queue next falsification segment."
+      "next_step": "Run prefix \u03c4 probe variant on newest extremal rows or queue next falsification segment."
     },
     {
       "id": "prefix-tau-extremal-rerun",
       "type": "deterministic",
-      "mechanism": "Prefix τ-floor probe on the three latest segment extremal rows",
-      "why": "Verify whether τ≥4 / τ≥5 separation persists on new frontier rows after extended sweeps.",
+      "mechanism": "Prefix \u03c4-floor probe on the three latest segment extremal rows",
+      "why": "Verify whether \u03c4\u22654 / \u03c4\u22655 separation persists on new frontier rows after extended sweeps.",
       "command": [
         "python3",
         "experiments/square-branch-sda-invalidation-2026-06/square_branch_prefix_tau_floor_probe.py"
@@ -58,7 +58,7 @@
         "research/04-bounded-compression/tests/test_square_branch_dynamic_cutoff_search.py",
         "-q"
       ],
-      "next_step": "Queue falsification 400M–500M or draft Chamber-Reset Endpoint Resolution Lemma subsection."
+      "next_step": "Queue falsification 400M\u2013500M or draft Chamber-Reset Endpoint Resolution Lemma subsection."
     },
     {
       "id": "chamber-reset-lemma-draft",
