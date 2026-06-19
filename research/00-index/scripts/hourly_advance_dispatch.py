@@ -70,7 +70,10 @@ def prepare_hourly_branch(branch_name: str, first_launch_base_branch: str) -> No
     if local_exists:
         run_git("checkout", branch_name)
         return
-    run_git("checkout", "-b", branch_name, first_launch_base_branch)
+    try:
+        run_git("checkout", "-b", branch_name, first_launch_base_branch)
+    except subprocess.CalledProcessError:
+        run_git("checkout", "-b", branch_name)
 
 
 def load_queue() -> dict[str, Any]:
@@ -217,7 +220,7 @@ def dispatch_deterministic(item: dict[str, Any]) -> int:
             f"```\n{(pytest_completed.stdout + pytest_completed.stderr).strip()[-2000:]}\n```"
         )
 
-    artifacts = [str(part) for part in item["command"]]
+    artifacts = [" ".join(command)]
     if item.get("summary_json"):
         artifacts.append(item["summary_json"])
 
@@ -234,14 +237,8 @@ def dispatch_deterministic(item: dict[str, Any]) -> int:
         QUEUE_PATH,
         LEDGER_PATH,
         ROOT / "research" / "00-index" / "continuity" / "ACTIVE_TARGET.md",
+        ROOT / "research" / "00-index" / "scripts" / "hourly_advance_dispatch.py",
     ]
-    summary_rel = item.get("summary_json")
-    if summary_rel:
-        commit_paths.append(ROOT / summary_rel)
-        output_dir = (ROOT / summary_rel).parent
-        frontier = output_dir / "square_branch_dynamic_cutoff_search_frontier.csv"
-        if frontier.exists():
-            commit_paths.append(frontier)
 
     sha = commit_artifacts(
         commit_paths,
