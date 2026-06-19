@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chamber-Tension Closure Hypothesis — Formal Framing</title>
+<style>
+:root {
+  --bg: #f8f9fa; --fg: #1a1a1a; --accent: #0a4d8c; --card: #ffffff;
+  --border: #d1d5db; --warn: #854d0e; --good: #166534; --muted: #64748b;
+  --bad: #991b1b; --hyp: #5b21b6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:#0f172a; --fg:#e2e8f0; --accent:#60a5fa; --card:#1e293b;
+    --border:#334155; --warn:#f59e0b; --good:#4ade80; --muted:#94a3b8;
+    --bad:#f87171; --hyp:#c4b5fd;
+  }
+}
+body {
+  margin:0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height:1.6; background:var(--bg); color:var(--fg);
+  padding:2rem 1rem; max-width:1100px; margin-left:auto; margin-right:auto;
+}
+h1 { font-size:2rem; margin:0 0 .5rem; color:var(--accent); }
+h2 { font-size:1.35rem; margin:1.8rem 0 .5rem; border-bottom:2px solid var(--border); padding-bottom:.3rem; }
+h3 { font-size:1.1rem; margin:1.2rem 0 .4rem; }
+p, li { max-width:82ch; }
+a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:underline; }
+.card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:1.1rem; margin:1rem 0; }
+table { width:100%; border-collapse:collapse; margin:1rem 0; font-size:.92rem; }
+th, td { border:1px solid var(--border); padding:.45rem .6rem; text-align:left; vertical-align:top; }
+th { background:rgba(10,77,140,.08); font-weight:600; }
+code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background:rgba(0,0,0,.06); padding:.08rem .3rem; border-radius:4px; font-size:.9em; }
+pre { padding:.75rem; overflow-x:auto; line-height:1.45; }
+.hypothesis { border-left:4px solid var(--hyp); background:rgba(91,33,182,.08); padding:.75rem 1rem; }
+.theorem { border-left:4px solid var(--good); background:rgba(16,185,129,.08); padding:.75rem 1rem; }
+.warning { border-left:4px solid var(--warn); background:rgba(245,158,11,.08); padding:.75rem 1rem; }
+.danger { border-left:4px solid var(--bad); background:rgba(153,27,27,.08); padding:.75rem 1rem; }
+.meta { font-size:.85rem; color:var(--muted); margin-bottom:1rem; }
+.pill { display:inline-block; padding:.1rem .5rem; border-radius:999px; font-size:.78rem; font-weight:600; }
+.pill-proved { background:rgba(16,185,129,.15); color:var(--good); }
+.pill-measured { background:rgba(10,77,140,.12); color:var(--accent); }
+.pill-impl { background:rgba(100,116,139,.15); color:var(--muted); }
+.pill-hyp { background:rgba(91,33,182,.15); color:var(--hyp); }
+.pill-unresolved { background:rgba(245,158,11,.15); color:var(--warn); }
+.flow { display:flex; flex-wrap:wrap; gap:.4rem; align-items:center; margin:.8rem 0;
+  font-family:ui-monospace, monospace; font-size:.85rem; }
+.flow span { background:var(--card); border:1px solid var(--border); padding:.25rem .5rem;
+  border-radius:4px; white-space:nowrap; }
+svg text { font-family: system-ui, sans-serif; }
+footer { margin-top:3rem; padding-top:1rem; border-top:1px solid var(--border);
+  font-size:.82rem; color:var(--muted); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Chamber-Tension Closure Hypothesis</h1>
+  <p class="meta">
+    <strong>Status:</strong> <span class="pill pill-hyp">Hypothesis (split weak / strong)</span> &nbsp;
+    <strong>Date:</strong> 2026-06-19 &nbsp;
+    <strong>Plan:</strong> <a href="implementation_plan_2026-06.html">implementation_plan_2026-06.html</a> &nbsp;
+    <strong>Proof target:</strong> <a href="weak_lfcl_proof_target.html">weak_lfcl_proof_target.html</a> &nbsp;
+    <strong>Authority:</strong> <code>PROOF.md</code> controls proved theorem status
+  </p>
+</header>
+
+<main>
+
+<section>
+  <h2>Plain Opening</h2>
+  <p>
+    Start at a known prime <code>p</code>. Read the integers to its right one by one.
+    Each composite before the next prime sits above a floor where primes have zero
+    excess. That ordered lift inside the gap is not empty noise. It is a loaded
+    chamber whose interior accumulates excess and whose right edge must reset to
+    zero excess at the successor prime <code>q</code>.
+  </p>
+  <p>
+    The live research question is now split. <strong>Weak</strong> chamber-tension
+    closure asks whether full traversal to a sufficient bound forces a unique reset at
+    <code>q</code>, with <code>&tau;(q)=2</code> as an audit signature. <strong>Strong</strong>
+    closure asked whether prefix geometry alone names <code>q</code> before arrival without
+    divisor-count selection — that path is now measured and largely closed.
+  </p>
+</section>
+
+<section>
+  <h2>Weak vs Strong H<sub>CTC</sub></h2>
+  <table>
+    <thead>
+      <tr><th>Variant</th><th>Claim</th><th>Status (2026-06-19)</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>H<sub>CTC</sub>-strong</strong></td>
+        <td>Prefix chamber state forces <code>q</code> at some <code>B &lt; gap</code> without <code>&tau;&le;2</code> endpoint selection</td>
+        <td><span class="pill pill-measured">Measured</span> No early correct closure; L2 falsified (56 757 mismatches). L1/L3/L4 never fire early.</td>
+      </tr>
+      <tr>
+        <td><strong>H<sub>CTC</sub>-weak</strong></td>
+        <td>At sufficient bound <code>B &ge; gap</code>, Rule X chamber state yields unique resolved reset at <code>q</code>; <code>&tau;(q)=2</code> is audit-demotable</td>
+        <td><span class="pill pill-unresolved">Active target</span> Implementation matches on R2; equivalence proof and audit-demoted lemma in progress.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="meta">
+    Experiments:
+    <code>experiments/chamber-tension-closure-falsification-2026-06/</code>,
+    <code>experiments/prefix-state-lfcl-decisive-2026-06/</code>,
+    <code>experiments/weak-lfcl-sufficient-bound-2026-06/</code>
+  </p>
+</section>
+
+<section>
+  <h2>Formal Hypothesis</h2>
+  <div class="card hypothesis">
+    <p><strong>Hypothesis H<sub>CTC</sub>-weak (live form).</strong></p>
+    <p>
+      Let <code>p</code> be a known prime and let the successor chamber be the
+      ordered interval traversed from <code>p+1</code> forward until chamber reset.
+      The ordered excess field inside that chamber, together with the GWR landmark,
+      the NLSC ceiling, and the chamber-reset geometry of the production selection
+      rule, carries enough deterministic constraint that the successor endpoint
+      <code>q</code> is the unique chamber-reset point.
+    </p>
+    <p>
+      Under H<sub>CTC</sub>-weak, the identity <code>&tau;(q)=2</code> is the
+      zero-excess signature of reset. It is used for audit and verification after
+      chamber-reset geometry has emitted <code>q</code>. The live proof target is
+      equivalence at sufficient bound, not early prefix prediction.
+    </p>
+  </div>
+  <div class="card danger">
+    <p><strong>H<sub>CTC</sub>-strong (retired as default).</strong> Prefix geometry alone
+    names <code>q</code> before arrival without <code>&tau;&le;2</code> selection.
+    Measured falsification: unique NLSC-admissible composite law L2;
+    see <code>prefix-state-lfcl-decisive-2026-06/FINDINGS.md</code>.</p>
+  </div>
+</section>
+
+<section>
+  <h2>PGS Objects</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Plain object</th>
+        <th>Symbol / name</th>
+        <th>Definition</th>
+        <th>Role in H<sub>CTC</sub></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Known starting prime</td>
+        <td><code>p</code></td>
+        <td>Input prime, accepted without re-proof during generation</td>
+        <td>Left endpoint of the chamber traversal</td>
+      </tr>
+      <tr>
+        <td>Successor prime</td>
+        <td><code>q</code></td>
+        <td>The prime immediately after <code>p</code></td>
+        <td>Right endpoint where the chamber resets</td>
+      </tr>
+      <tr>
+        <td>Prime-gap interior</td>
+        <td><code>I = {p+1, &hellip;, q&minus;1}</code></td>
+        <td>All integers strictly between consecutive primes</td>
+        <td>The chamber body; every element is composite when <code>I</code> is nonempty</td>
+      </tr>
+      <tr>
+        <td>Divisor-count field</td>
+        <td><code>&tau;(n)</code></td>
+        <td>Number of positive divisors of <code>n</code></td>
+        <td>Source field; under H<sub>CTC</sub> used structurally during traversal and for audit at <code>q</code></td>
+      </tr>
+      <tr>
+        <td>Zero-excess coordinate</td>
+        <td><code>E(n) = (&tau;(n)/2 &minus; 1) ln n</code></td>
+        <td>DNI preferred coordinate</td>
+        <td>Local chamber load above the prime floor; <code>E(n)=0</code> iff <code>n</code> is prime and <code>n&gt;1</code></td>
+      </tr>
+      <tr>
+        <td>Dual normalized score</td>
+        <td><code>Z(n) = e<sup>&minus;E(n)</sup> = n<sup>1&minus;&tau;(n)/2</sup></code></td>
+        <td>Exact dual to excess</td>
+        <td>Equivalent comparison coordinate; primes at <code>Z=1</code></td>
+      </tr>
+      <tr>
+        <td>Comparison function</td>
+        <td><code>F(n) = &minus;E(n) = (1 &minus; &tau;(n)/2) ln n</code></td>
+        <td>Log score used in <code>PROOF.md</code></td>
+        <td>Ordered interior comparison; maximized at the GWR carrier when <code>I</code> is nonempty</td>
+      </tr>
+      <tr>
+        <td>Bridge load coordinate</td>
+        <td><code>H(n) = ln n + E(n)</code></td>
+        <td>Downstream RH-facing coordinate</td>
+        <td>Size-plus-excess load; not a theorem input in <code>PROOF.md</code></td>
+      </tr>
+      <tr>
+        <td>Excess budget</td>
+        <td><code>B(I) = &Sigma;<sub>n&isin;I</sub> E(n)</code></td>
+        <td>Sum of interior excess over the chamber</td>
+        <td>Chamber-wide accumulated load; measured linear scaling with gap length in tested regimes</td>
+      </tr>
+      <tr>
+        <td>GWR carrier</td>
+        <td><code>w</code></td>
+        <td><code>w = min{n &isin; I : &tau;(n) = min<sub>m&isin;I</sub> &tau;(m)}</code></td>
+        <td>Leftmost minimum-divisor / minimum-excess interior landmark</td>
+      </tr>
+      <tr>
+        <td>NLSC ceiling</td>
+        <td>no-later-simpler-composite</td>
+        <td>After <code>w</code> appears, no <code>t</code> with <code>w &lt; t &lt; q</code> has <code>&tau;(t) &lt; &tau;(w)</code></td>
+        <td>Right-side closure: interior load cannot drop below the GWR level before reset</td>
+      </tr>
+      <tr>
+        <td>Chamber reset</td>
+        <td>search-interval reset</td>
+        <td>Production rule locks endpoint and reclassifies later material as post-reset interval state</td>
+        <td>Operational resolution event at <code>q</code></td>
+      </tr>
+      <tr>
+        <td>Search interval</td>
+        <td><code>S</code></td>
+        <td>Finite interval to the right of <code>p</code> inspected by the PGS selection rule</td>
+        <td>Local arithmetic region where chamber state is evaluated</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Tension &rarr; PGS Translation</h2>
+  <table>
+    <thead>
+      <tr><th>Informal term</th><th>PGS-native reading</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Tension builds inside the gap</td>
+        <td>Interior composites carry <code>E(n) &gt; 0</code>; the chamber accumulates budget <code>B(I)</code> as traversal proceeds</td>
+        <td><span class="pill pill-measured">Measured geometry</span> in tested regimes; not yet a forward closure theorem</td>
+      </tr>
+      <tr>
+        <td>First point where interior load bottoms out</td>
+        <td>GWR carrier <code>w</code>: leftmost minimum <code>&tau;</code> / minimum <code>E</code> in <code>I</code></td>
+        <td><span class="pill pill-proved">Proved</span> as interior maximizer once <code>(p,q)</code> is fixed</td>
+      </tr>
+      <tr>
+        <td>Tension cannot fall further before resolution</td>
+        <td>NLSC: no later interior integer has strictly smaller divisor count than <code>w</code></td>
+        <td><span class="pill pill-proved">Proved</span> corollary of GWR theorem</td>
+      </tr>
+      <tr>
+        <td>Tension resolves at the next prime</td>
+        <td>Chamber reset at <code>q</code> where <code>E(q)=0</code> and <code>&tau;(q)=2</code></td>
+        <td><span class="pill pill-proved">Proved</span> that <code>q = min{n&gt;p : &tau;(n)=2}</code>; H<sub>CTC</sub> asks for a different inference path to the same <code>q</code></td>
+      </tr>
+      <tr>
+        <td>Predict <code>q</code> without <code>&tau;=2</code> identification</td>
+        <td>Forward closure from partial chamber state via Rule X / GWR / NLSC / threat / reset geometry</td>
+        <td><span class="pill pill-hyp">Hypothesis</span></td>
+      </tr>
+      <tr>
+        <td>Use divisor count to verify the prime</td>
+        <td>Audit layer: confirm <code>&tau;(q)=2</code> after generation; audit does not choose <code>q</code></td>
+        <td><span class="pill pill-impl">Implementation contract</span> in generator spec; not yet proved as sole post-hoc check under H<sub>CTC</sub></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>State Separation</h2>
+  <table>
+    <thead>
+      <tr><th>Claim</th><th>Category</th><th>Source</th><th>Relation to H<sub>CTC</sub></th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>q = min{n&gt;p : &tau;(n)=2}</code></td>
+        <td><span class="pill pill-proved">Theorem</span></td>
+        <td><code>PROOF.md</code></td>
+        <td>Current identification rule. H<sub>CTC</sub> does not invalidate it; it proposes an equivalent forward selector with <code>&tau;=2</code> demoted to audit.</td>
+      </tr>
+      <tr>
+        <td>GWR carrier <code>w</code> uniquely maximizes <code>F(n)</code> in nonempty <code>I</code></td>
+        <td><span class="pill pill-proved">Theorem</span></td>
+        <td><code>PROOF.md</code></td>
+        <td>Interior structure theorem. Assumes closed gap <code>(p,q)</code>; supplies landmarks and NLSC but not by itself a forward predictor of <code>q</code>.</td>
+      </tr>
+      <tr>
+        <td>NLSC: no later interior integer has <code>&tau; &lt; &tau;(w)</code></td>
+        <td><span class="pill pill-proved">Theorem</span></td>
+        <td><code>PROOF.md</code> corollary; <code>RESULTS.md</code></td>
+        <td>Right-side closure constraint inside a closed gap.</td>
+      </tr>
+      <tr>
+        <td><code>B(I)</code> scales approximately linearly with gap length</td>
+        <td><span class="pill pill-measured">Measured result</span></td>
+        <td><code>research/pgs-rh-placement-empirics-2026-06/</code></td>
+        <td>Tested through <code>10^7</code>; correlation &gt; 0.95 reported. Not a theorem boundary.</td>
+      </tr>
+      <tr>
+        <td>v1.1 generator selects <code>q</code> by GWR / NLSC / search-interval-reset state</td>
+        <td><span class="pill pill-impl">Implementation status</span></td>
+        <td><code>docs/specs/prime-gen/minimal_pgs_generator_logic.md</code></td>
+        <td>Validated on stated surfaces through <code>10^18</code>. Still uses exact divisor-count state during generation, including composite rejection.</td>
+      </tr>
+      <tr>
+        <td>Prefix geometry alone determines <code>q</code> before arrival (H<sub>CTC</sub>-strong)</td>
+        <td><span class="pill pill-measured">Invalidated path</span></td>
+        <td><code>prefix-state-lfcl-decisive-2026-06</code></td>
+        <td>L2 falsified; no early support for L1/L3/L4.</td>
+      </tr>
+      <tr>
+        <td>Weak equivalence: Rule X at <code>B &ge; gap</code> = <code>min{&tau;=2}</code> with audit-demoted <code>&tau;=2</code></td>
+        <td><span class="pill pill-unresolved">Active proof target</span></td>
+        <td><a href="weak_lfcl_proof_target.html">weak_lfcl_proof_target.html</a></td>
+        <td>Promotes H<sub>CTC</sub>-weak toward theorem layer.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Reasoning Entrypoint</h2>
+  <div class="flow">
+    <span>PGS objects</span>&rarr;
+    <span>PGS invariants</span>&rarr;
+    <span>PGS rule or law</span>&rarr;
+    <span>resolved / unresolved / invalidated</span>
+  </div>
+  <p>Required first frame for any work on H<sub>CTC</sub>:</p>
+  <pre>ordered prime-gap chamber I
+  -> divisor-count field τ(n)
+  -> zero-excess E(n) and budget B(I)
+  -> GWR landmark w and NLSC ceiling
+  -> chamber-reset geometry at q
+  -> resolved q, unresolved state, or invalidated rule</pre>
+  <div class="warning">
+    <p><strong>Forbidden as inference mechanisms for H<sub>CTC</sub>:</strong>
+    trial division, Miller-Rabin, <code>isprime</code>, <code>nextprime</code>,
+    sieve-backed prime generation, <code>gcd</code>, divisibility selectors,
+    product closure, factor APIs, primality APIs, random search, fallback search.</p>
+    <p>Classical tools may appear only in downstream audit or explicit classical comparison.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Chamber Traversal Diagram</h2>
+  <div class="card">
+    <svg viewBox="0 0 820 200" width="100%" aria-label="Chamber traversal from p to q">
+      <defs>
+        <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="currentColor"/>
+        </marker>
+      </defs>
+      <line x1="60" y1="100" x2="760" y2="100" stroke="currentColor" stroke-width="2" marker-end="url(#arrow)"/>
+      <circle cx="80" cy="100" r="14" fill="#166534"/>
+      <text x="80" y="105" text-anchor="middle" fill="white" font-size="12">p</text>
+      <text x="80" y="140" text-anchor="middle" font-size="11">E=0</text>
+      <rect x="150" y="70" width="480" height="60" fill="rgba(10,77,140,.08)" stroke="currentColor" stroke-width="1" rx="6"/>
+      <text x="390" y="58" text-anchor="middle" font-size="12" font-weight="600">Chamber I: interior composites, E(n) &gt; 0</text>
+      <text x="390" y="105" text-anchor="middle" font-size="11">accumulating B(I); GWR at w; NLSC ceiling to the right</text>
+      <circle cx="280" cy="100" r="10" fill="#854d0e"/>
+      <text x="280" y="135" text-anchor="middle" font-size="11">w</text>
+      <circle cx="740" cy="100" r="14" fill="#166534"/>
+      <text x="740" y="105" text-anchor="middle" fill="white" font-size="12">q</text>
+      <text x="740" y="140" text-anchor="middle" font-size="11">reset E=0</text>
+      <text x="390" y="175" text-anchor="middle" font-size="11" fill="#5b21b6">
+        H&lt;sub&gt;CTC&lt;/sub&gt;-weak: unique reset at q when traversal reaches sufficient bound
+      </text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Forward Closure Law (Active Proof Target — Weak Form)</h2>
+  <p>
+    H<sub>CTC</sub>-weak becomes a theorem layer when the following sufficient-bound law
+    is proved. Strong early-closure L<sub>FCL</sub> is no longer the default target.
+  </p>
+  <div class="card">
+    <p><strong>Target law L<sub>FCL</sub>-weak (Sufficient-Bound Chamber Closure).</strong></p>
+    <p>Fix a known prime <code>p</code> and a finite search bound sufficient for the
+    production surface. Define the PGS chamber state after traversing a prefix of the
+    search interval:</p>
+    <pre>State(p, prefix) = (
+  GWR lock or unresolved landmark status,
+  NLSC ceiling T_&lt;(w) when w is locked,
+  lower-divisor threat bound,
+  wheel-open candidate hypotheses,
+  search-interval reset classification
+)</pre>
+    <p>There exists a deterministic endpoint functional</p>
+    <pre>q = Closure(p, State)</pre>
+    <p>such that:</p>
+    <ol>
+      <li><code>Closure(p, State)</code> is computed without selecting the first integer with <code>&tau;(n)=2</code> as the inference rule.</li>
+      <li><code>Closure(p, State)</code> equals the proved next prime <code>min{n&gt;p : &tau;(n)=2}</code> on every input in the stated hypothesis class.</li>
+      <li><code>&tau;(q)=2</code> is an audit identity checked after <code>q</code> is emitted.</li>
+    </ol>
+  </div>
+  <p>
+    Compact production form already recorded in the generator spec:
+    <code>q = B(p, S, w, &tau;(w))</code>, where <code>S</code> is exact divisor-count
+    search-interval state. L<sub>FCL</sub> asks for a theorem that this state functional
+    is equivalent to the direct <code>&tau;</code>-scan rule with <code>&tau;=2</code>
+    removed from the selector role.
+  </p>
+</section>
+
+<section>
+  <h2>Falsification Criteria</h2>
+  <div class="card danger">
+    <p>H<sub>CTC</sub> is <strong>falsified</strong> if any of the following occur on a stated test surface:</p>
+    <ul>
+      <li>A gap where chamber invariants computed from a valid prefix determine a candidate <code>r &ne; q</code>, with <code>q</code> the proved next prime.</li>
+      <li>A regime where <code>B(I)</code>, GWR fractional position, NLSC ceiling, or reset geometry alone do not single out the endpoint before <code>&tau;=2</code> is consulted in the selector.</li>
+      <li>A claimed chamber-closure path that requires hidden <code>&tau;=2</code> scan, classical primality test, or fallback search to choose <code>q</code>, while presenting H<sub>CTC</sub> as resolved.</li>
+      <li>Any generator branch that treats audit confirmation as if it were the inference mechanism, or collapses hypothesis into theorem language.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Support Criteria</h2>
+  <div class="card theorem">
+    <p>H<sub>CTC</sub> moves toward <strong>theorem layer</strong> only if:</p>
+    <ul>
+      <li><strong>Equivalence theorem:</strong> Rule X / search-interval-reset closure is proved equivalent to <code>q = min{n&gt;p : &tau;(n)=2}</code>, with <code>&tau;=2</code> entering only in audit.</li>
+      <li><strong>Forward NLSC + GWR theorem:</strong> partial traversal from <code>p</code> until GWR lock and NLSC ceiling force a unique reset index <code>q</code> without <code>&tau;=2</code> selection.</li>
+      <li><strong>Implementation audit:</strong> production generator source is shown to compute <code>q</code> solely through the proved forward law, and measured surfaces match the proved rule on exact test regimes.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Minimal Decisive Experiment</h2>
+  <p>
+    The smallest falsification probe for H<sub>CTC</sub> is a pinned check-for-signal
+    run over consecutive gaps up to a declared bound <code>N</code>:
+  </p>
+  <ol>
+    <li>For each consecutive pair <code>(p, q)</code> with <code>q</code> known only from the proved <code>&tau;</code>-scan reference used as experiment ground truth, not as the tested selector.</li>
+    <li>Traverse the search interval left to right, maintaining chamber state: running excess, GWR lock time, NLSC ceiling, threat flags, reset classification.</li>
+    <li>At the earliest index where L<sub>FCL</sub> would declare forced closure, record candidate <code>r</code>.</li>
+    <li>Compare <code>r</code> to reference <code>q</code>.</li>
+  </ol>
+  <table>
+    <thead>
+      <tr><th>Outcome</th><th>Interpretation</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>r = q</code> for every gap in the regime</td>
+        <td>Support for H<sub>CTC</sub> on that regime; proceed to proof attempt of L<sub>FCL</sub></td>
+      </tr>
+      <tr>
+        <td>Any <code>r &ne; q</code></td>
+        <td>H<sub>CTC</sub> falsified on that regime, or the state functional is incomplete</td>
+      </tr>
+      <tr>
+        <td>Closure index undefined before reaching reference <code>q</code></td>
+        <td>Forward law unresolved; chamber state insufficient as predictor</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="meta">
+    Experiment code must live in an isolated folder under <code>experiments/</code>.
+    It must label the reference <code>q</code> lane as audit/ground truth, separate
+    from the tested forward selector.
+  </p>
+</section>
+
+<section>
+  <h2>What This Hypothesis Does Not Claim</h2>
+  <ul>
+    <li>It does not downgrade the proved direct next-prime theorem in <code>PROOF.md</code>.</li>
+    <li>It does not replace GWR or NLSC with statistical, heuristic, or probabilistic language.</li>
+    <li>It does not claim RH, PNT, or zeta consequences from chamber budget alone.</li>
+    <li>It does not assert that the current v1.1 generator already satisfies L<sub>FCL</sub>; implementation validation and forward closure proof are separate statuses.</li>
+    <li>It does not treat measured <code>B(I)</code> linear scaling as a proof of prediction without <code>&tau;=2</code>.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Canonical Wording</h2>
+  <div class="card">
+    <p>Use this sentence in research notes, experiment specs, and continuity handoffs:</p>
+    <blockquote>
+      <p>
+        <strong>Hypothesis H<sub>CTC</sub>:</strong> The ordered excess field inside a
+        prime-gap chamber carries enough deterministic constraint (GWR landmark,
+        NLSC ceiling, excess budget, reset geometry) that the successor prime
+        <code>q</code> is the unique chamber-reset point. Divisor count
+        <code>&tau;=2</code> is the zero-excess signature of that reset, usable for
+        verification; it need not be the inference mechanism that determines
+        <code>q</code> from <code>p</code>.
+      </p>
+    </blockquote>
+  </div>
+</section>
+
+<section>
+  <h2>References</h2>
+  <ul>
+    <li><code>PROOF.md</code> — direct next-prime theorem and GWR interior maximizer</li>
+    <li><code>DIVISOR_NORMALIZATION_IDENTITY.md</code> — excess, load, and dual coordinates</li>
+    <li><code>LEFTMOST_MINIMUM_DIVISOR_RULE.md</code> — GWR rule in plain arithmetic</li>
+    <li><code>PRIME_GAP_GENERATOR.md</code> — gap-closure framing and audit boundary</li>
+    <li><code>docs/specs/prime-gen/minimal_pgs_generator_logic.md</code> — Rule X production selector</li>
+    <li><code>research/pgs-rh-placement-empirics-2026-06/pgs_chamber_budget_analyzer.py</code> — <code>B(I)</code> measured surface</li>
+    <li><code>lean-4/PGS/Placement.lean</code> — formal <code>excessBudget</code> statements</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>
+    Chamber-Tension Closure Hypothesis — formal framing artifact.
+    Theorem authority remains in <code>PROOF.md</code>.
+    This document records hypothesis H<sub>CTC</sub> and unresolved target L<sub>FCL</sub> only.
+  </p>
+</footer>
+</body>
+</html>
