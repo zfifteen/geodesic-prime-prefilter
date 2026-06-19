@@ -1,0 +1,477 @@
+{
+  "inputs": {
+    "falsification_summary_json": "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_3e8_4e8/square_branch_dynamic_cutoff_search_summary.json",
+    "prior_extremal_count": 3,
+    "new_extremal": {
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "utilization": 0.7036082474226805
+    }
+  },
+  "predictions": [
+    {
+      "id": "P1",
+      "name": "selected_square_branch",
+      "statement": "s^2 < p < r^2 for prime s immediately before r",
+      "falsifier": "any extremal row fails selected-square characterization"
+    },
+    {
+      "id": "P2",
+      "name": "prefix_min_tau_is_4",
+      "statement": "min tau over {p+1, ..., r^2-1} equals 4 (no tau<=3 before square)",
+      "falsifier": "prefix_min_tau < 4 on a segment extremal row"
+    },
+    {
+      "id": "P3",
+      "name": "late_tau3_at_offset",
+      "statement": "first offset with tau<=3 equals observed D(r)",
+      "falsifier": "first_tau3_offset != offset"
+    },
+    {
+      "id": "P4",
+      "name": "early_tau4_chamber",
+      "statement": "first offset with tau<=4 is at most 0.05 * D(r)",
+      "falsifier": "first_tau4_offset > 0.05 * offset"
+    },
+    {
+      "id": "P5",
+      "name": "no_tau5_prefix",
+      "statement": "prefix before r^2 contains zero integers with tau=5",
+      "falsifier": "tau5_count > 0"
+    },
+    {
+      "id": "P6",
+      "name": "offset_near_540_band",
+      "statement": "D(r) lies in [528, 552] on segment utilization maxima",
+      "falsifier": "offset outside band on a new segment maximum"
+    }
+  ],
+  "prior_rows": [
+    {
+      "r": 82357433,
+      "p": 6782746770348949,
+      "s": 82357423,
+      "square": 6782746770349489,
+      "offset": 540,
+      "expected_offset": 540,
+      "selected_square_branch": true,
+      "prefix": {
+        "prefix_length": 539,
+        "prefix_min_tau": 4,
+        "prefix_max_tau": 1024,
+        "tau4_count": 63,
+        "tau5_count": 0
+      },
+      "first_tau4_offset": 10,
+      "first_tau3_offset": 540,
+      "segment": "3e7-1e8"
+    },
+    {
+      "r": 102017779,
+      "p": 10407627232092379,
+      "s": 102017771,
+      "square": 10407627232092841,
+      "offset": 462,
+      "expected_offset": 462,
+      "selected_square_branch": true,
+      "prefix": {
+        "prefix_length": 461,
+        "prefix_min_tau": 4,
+        "prefix_max_tau": 960,
+        "tau4_count": 52,
+        "tau5_count": 0
+      },
+      "first_tau4_offset": 2,
+      "first_tau3_offset": 462,
+      "segment": "1e8-2e8"
+    },
+    {
+      "r": 251066071,
+      "p": 63034172007376501,
+      "s": 251066069,
+      "square": 63034172007377041,
+      "offset": 540,
+      "expected_offset": 540,
+      "selected_square_branch": true,
+      "prefix": {
+        "prefix_length": 539,
+        "prefix_min_tau": 4,
+        "prefix_max_tau": 1280,
+        "tau4_count": 60,
+        "tau5_count": 0
+      },
+      "first_tau4_offset": 6,
+      "first_tau3_offset": 540,
+      "segment": "2e8-3e8"
+    }
+  ],
+  "new_row": {
+    "r": 358018553,
+    "p": 128177284292213263,
+    "s": 358018523,
+    "square": 128177284292213809,
+    "offset": 546,
+    "expected_offset": 546,
+    "selected_square_branch": true,
+    "prefix": {
+      "prefix_length": 545,
+      "prefix_min_tau": 4,
+      "prefix_max_tau": 1056,
+      "tau4_count": 64,
+      "tau5_count": 0
+    },
+    "first_tau4_offset": 4,
+    "first_tau3_offset": 546,
+    "segment": "3e8-4e8"
+  },
+  "prediction_results": [
+    {
+      "id": "P1",
+      "name": "selected_square_branch",
+      "statement": "s^2 < p < r^2 for prime s immediately before r",
+      "falsifier": "any extremal row fails selected-square characterization",
+      "segment": "3e7-1e8",
+      "r": 82357433,
+      "offset": 540,
+      "pass": true,
+      "status": "holds"
+    },
+    {
+      "id": "P1",
+      "name": "selected_square_branch",
+      "statement": "s^2 < p < r^2 for prime s immediately before r",
+      "falsifier": "any extremal row fails selected-square characterization",
+      "segment": "1e8-2e8",
+      "r": 102017779,
+      "offset": 462,
+      "pass": true,
+      "status": "holds"
+    },
+    {
+      "id": "P1",
+      "name": "selected_square_branch",
+      "statement": "s^2 < p < r^2 for prime s immediately before r",
+      "falsifier": "any extremal row fails selected-square characterization",
+      "segment": "2e8-3e8",
+      "r": 251066071,
+      "offset": 540,
+      "pass": true,
+      "status": "holds"
+    },
+    {
+      "id": "P1",
+      "name": "selected_square_branch",
+      "statement": "s^2 < p < r^2 for prime s immediately before r",
+      "falsifier": "any extremal row fails selected-square characterization",
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "pass": true,
+      "status": "holds"
+    },
+    {
+      "id": "P2",
+      "name": "prefix_min_tau_is_4",
+      "statement": "min tau over {p+1, ..., r^2-1} equals 4 (no tau<=3 before square)",
+      "falsifier": "prefix_min_tau < 4 on a segment extremal row",
+      "segment": "3e7-1e8",
+      "r": 82357433,
+      "offset": 540,
+      "pass": true,
+      "status": "holds"
+    },
+    {
+      "id": "P2",
+      "name": "prefix_min_tau_is_4",
+      "statement": "min tau over {p+1, ..., r^2-1} equals 4 (no tau<=3 before square)",
+      "falsifier": "prefix_min_tau < 4 on a segment extremal row",
+      "segment": "1e8-2e8",
+      "r": 102017779,
+      "offset": 462,
+      "pass": true,
+      "status": "holds"
+    },
+    {
+      "id": "P2",
+      "name": "prefix_min_tau_is_4",
+      "statement": "min tau over {p+1, ..., r^2-1} equals 4 (no tau<=3 before square)",
+      "falsifier": "prefix_min_tau < 4 on a segment extremal row",
+      "segment": "2e8-3e8",
+      "r": 251066071,
+      "offset": 540,
+      "pass": true,
+      "status": "holds"
+    },
+    {
+      "id": "P2",
+      "name": "prefix_min_tau_is_4",
+      "statement": "min tau over {p+1, ..., r^2-1} equals 4 (no tau<=3 before square)",
+      "falsifier": "prefix_min_tau < 4 on a segment extremal row",
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "pass": true,
+      "status": "holds"
+    },
+    {
+      "id": "P3",
+      "name": "late_tau3_at_offset",
+      "statement": "first offset with tau<=3 equals observed D(r)",
+      "falsifier": "first_tau3_offset != offset",
+      "segment": "3e7-1e8",
+      "r": 82357433,
+      "offset": 540,
+      "pass": true,
+      "status": "holds"
+    },
+    {
+      "id": "P3",
+      "name": "late_tau3_at_offset",
+      "statement": "first offset with tau<=3 equals observed D(r)",
+      "falsifier": "first_tau3_offset != offset",
+      "segment": "1e8-2e8",
+      "r": 102017779,
+      "offset": 462,
+      "pass": true,
+      "status": "holds"
+    },
+    {
+      "id": "P3",
+      "name": "late_tau3_at_offset",
+      "statement": "first offset with tau<=3 equals observed D(r)",
+      "falsifier": "first_tau3_offset != offset",
+      "segment": "2e8-3e8",
+      "r": 251066071,
+      "offset": 540,
+      "pass": true,
+      "status": "holds"
+    },
+    {
+      "id": "P3",
+      "name": "late_tau3_at_offset",
+      "statement": "first offset with tau<=3 equals observed D(r)",
+      "falsifier": "first_tau3_offset != offset",
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "pass": true,
+      "status": "holds"
+    },
+    {
+      "id": "P4",
+      "name": "early_tau4_chamber",
+      "statement": "first offset with tau<=4 is at most 0.05 * D(r)",
+      "falsifier": "first_tau4_offset > 0.05 * offset",
+      "segment": "3e7-1e8",
+      "r": 82357433,
+      "offset": 540,
+      "pass": true,
+      "status": "holds"
+    },
+    {
+      "id": "P4",
+      "name": "early_tau4_chamber",
+      "statement": "first offset with tau<=4 is at most 0.05 * D(r)",
+      "falsifier": "first_tau4_offset > 0.05 * offset",
+      "segment": "1e8-2e8",
+      "r": 102017779,
+      "offset": 462,
+      "pass": true,
+      "status": "holds"
+    },
+    {
+      "id": "P4",
+      "name": "early_tau4_chamber",
+      "statement": "first offset with tau<=4 is at most 0.05 * D(r)",
+      "falsifier": "first_tau4_offset > 0.05 * offset",
+      "segment": "2e8-3e8",
+      "r": 251066071,
+      "offset": 540,
+      "pass": true,
+      "status": "holds"
+    },
+    {
+      "id": "P4",
+      "name": "early_tau4_chamber",
+      "statement": "first offset with tau<=4 is at most 0.05 * D(r)",
+      "falsifier": "first_tau4_offset > 0.05 * offset",
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "pass": true,
+      "status": "holds"
+    },
+    {
+      "id": "P5",
+      "name": "no_tau5_prefix",
+      "statement": "prefix before r^2 contains zero integers with tau=5",
+      "falsifier": "tau5_count > 0",
+      "segment": "3e7-1e8",
+      "r": 82357433,
+      "offset": 540,
+      "pass": true,
+      "status": "holds"
+    },
+    {
+      "id": "P5",
+      "name": "no_tau5_prefix",
+      "statement": "prefix before r^2 contains zero integers with tau=5",
+      "falsifier": "tau5_count > 0",
+      "segment": "1e8-2e8",
+      "r": 102017779,
+      "offset": 462,
+      "pass": true,
+      "status": "holds"
+    },
+    {
+      "id": "P5",
+      "name": "no_tau5_prefix",
+      "statement": "prefix before r^2 contains zero integers with tau=5",
+      "falsifier": "tau5_count > 0",
+      "segment": "2e8-3e8",
+      "r": 251066071,
+      "offset": 540,
+      "pass": true,
+      "status": "holds"
+    },
+    {
+      "id": "P5",
+      "name": "no_tau5_prefix",
+      "statement": "prefix before r^2 contains zero integers with tau=5",
+      "falsifier": "tau5_count > 0",
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "pass": true,
+      "status": "holds"
+    },
+    {
+      "id": "P6",
+      "name": "offset_near_540_band",
+      "statement": "D(r) lies in [528, 552] on segment utilization maxima",
+      "falsifier": "offset outside band on a new segment maximum",
+      "segment": "3e7-1e8",
+      "r": 82357433,
+      "offset": 540,
+      "pass": true,
+      "status": "holds"
+    },
+    {
+      "id": "P6",
+      "name": "offset_near_540_band",
+      "statement": "D(r) lies in [528, 552] on segment utilization maxima",
+      "falsifier": "offset outside band on a new segment maximum",
+      "segment": "1e8-2e8",
+      "r": 102017779,
+      "offset": 462,
+      "pass": false,
+      "status": "falsified"
+    },
+    {
+      "id": "P6",
+      "name": "offset_near_540_band",
+      "statement": "D(r) lies in [528, 552] on segment utilization maxima",
+      "falsifier": "offset outside band on a new segment maximum",
+      "segment": "2e8-3e8",
+      "r": 251066071,
+      "offset": 540,
+      "pass": true,
+      "status": "holds"
+    },
+    {
+      "id": "P6",
+      "name": "offset_near_540_band",
+      "statement": "D(r) lies in [528, 552] on segment utilization maxima",
+      "falsifier": "offset outside band on a new segment maximum",
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "pass": true,
+      "status": "holds"
+    }
+  ],
+  "prior_pass_counts": {
+    "P1": 3,
+    "P2": 3,
+    "P3": 3,
+    "P4": 3,
+    "P5": 3,
+    "P6": 2
+  },
+  "new_segment_results": [
+    {
+      "id": "P1",
+      "name": "selected_square_branch",
+      "statement": "s^2 < p < r^2 for prime s immediately before r",
+      "falsifier": "any extremal row fails selected-square characterization",
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "pass": true,
+      "status": "holds"
+    },
+    {
+      "id": "P2",
+      "name": "prefix_min_tau_is_4",
+      "statement": "min tau over {p+1, ..., r^2-1} equals 4 (no tau<=3 before square)",
+      "falsifier": "prefix_min_tau < 4 on a segment extremal row",
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "pass": true,
+      "status": "holds"
+    },
+    {
+      "id": "P3",
+      "name": "late_tau3_at_offset",
+      "statement": "first offset with tau<=3 equals observed D(r)",
+      "falsifier": "first_tau3_offset != offset",
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "pass": true,
+      "status": "holds"
+    },
+    {
+      "id": "P4",
+      "name": "early_tau4_chamber",
+      "statement": "first offset with tau<=4 is at most 0.05 * D(r)",
+      "falsifier": "first_tau4_offset > 0.05 * offset",
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "pass": true,
+      "status": "holds"
+    },
+    {
+      "id": "P5",
+      "name": "no_tau5_prefix",
+      "statement": "prefix before r^2 contains zero integers with tau=5",
+      "falsifier": "tau5_count > 0",
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "pass": true,
+      "status": "holds"
+    },
+    {
+      "id": "P6",
+      "name": "offset_near_540_band",
+      "statement": "D(r) lies in [528, 552] on segment utilization maxima",
+      "falsifier": "offset outside band on a new segment maximum",
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "pass": true,
+      "status": "holds"
+    }
+  ],
+  "conclusion": {
+    "chamber_geometry_holds_on_new_extremal": true,
+    "falsified_predictions_on_new_extremal": [],
+    "offset_540_band_holds_on_new_extremal": true,
+    "theorem_status": "unresolved",
+    "invalidated_route": "d=4 SDA transfer (not tested here; remains invalidated)"
+  }
+}

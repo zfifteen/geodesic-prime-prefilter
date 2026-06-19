@@ -39,6 +39,8 @@ reduction).
 | Offset `D(r)` | `546` |
 | Local artifacts | `research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_3e8_4e8/` |
 | Prior segment | `2·10^8 .. 3·10^8` max util `0.7210` at `r=251,066,071` offset `540` |
+| Chamber geometry (P1–P6) | holds on 4/4 segment extremals; new row offset `546` in `[528,552]` band |
+| Chamber audit artifacts | `experiments/square-branch-hourly-2026-06-19/offset_540_prediction_table.json` |
 
 ## Hourly Queue
 

@@ -104,3 +104,43 @@ python3; research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_se
 
 Next step:
 Structural audit of recurring offset 540 on new extremal rows if no counterexample.
+
+## 2026-06-19T09:05:51Z run
+
+Mechanism:
+PGS-native structural audit of recurring offset 540 and early-τ=4 / late-τ=3
+chamber separation on the `3e8-4e8` utilization maximum.
+
+Method:
+Read `square_branch_dynamic_cutoff_search_3e8_4e8/square_branch_dynamic_cutoff_search_summary.json`
+and `experiments/square-branch-sda-invalidation-2026-06/prefix_tau_floor_probe.json`.
+Ran `experiments/square-branch-hourly-2026-06-19/offset_540_chamber_geometry_probe.py`
+to evaluate six falsifiable predictions (P1–P6) on prior and new extremal rows.
+No d=4 SDA port.
+
+Result:
+New extremal `r=358018553`, offset `546`, utilization `0.7036082474226805`.
+All six predictions hold on the new row: `prefix_min_tau=4`, `first_tau4_offset=4`,
+`first_tau3_offset=546`, `tau4_count=64`, `tau5_count=0`, offset in `[528,552]`.
+Prior rows: offsets `540`, `462`, `540` — chamber separation 3/3.
+
+Theorem: square-branch proximity obligation remains **unresolved** (`PROOF.md`).
+Invalidated: d=4 SDA transfer (not revived).
+Measured: P1–P6 hold 4/4 extremal rows tested.
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.75s
+```
+
+Status:
+ADVANCE
+
+Artifacts:
+`experiments/square-branch-hourly-2026-06-19/offset_540_chamber_geometry_probe.py`;
+`experiments/square-branch-hourly-2026-06-19/offset_540_prediction_table.json`;
+`experiments/square-branch-hourly-2026-06-19/FINDINGS.md`
+
+Next step:
+Run prefix τ probe variant on newest extremal rows or queue next falsification segment.
