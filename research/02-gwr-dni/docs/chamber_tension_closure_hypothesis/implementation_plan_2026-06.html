@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>H_CTC Weak Form — Implementation Plan (2026-06)</title>
+<style>
+:root { --bg:#f8f9fa; --fg:#1a1a1a; --accent:#0a4d8c; --card:#fff; --border:#d1d5db;
+  --good:#166534; --warn:#854d0e; --muted:#64748b; --done:#166534; }
+body { font-family: system-ui, sans-serif; line-height:1.55; background:var(--bg); color:var(--fg);
+  max-width:900px; margin:0 auto; padding:2rem 1rem; }
+h1 { color:var(--accent); } h2 { border-bottom:2px solid var(--border); padding-bottom:.3rem; }
+.card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:1rem; margin:1rem 0; }
+table { width:100%; border-collapse:collapse; } th,td { border:1px solid var(--border); padding:.45rem .6rem; text-align:left; }
+th { background:rgba(10,77,140,.08); }
+.checklist { list-style:none; padding:0; } .checklist li { padding:.35rem 0; }
+.checklist li::before { content:"☐ "; color:var(--muted); } .checklist li.done::before { content:"☑ "; color:var(--done); }
+.meta { color:var(--muted); font-size:.9rem; }
+</style>
+</head>
+<body>
+<h1>Chamber-Tension Closure — Executed Plan (2026-06)</h1>
+<p class="meta"><a href="index.html">Hypothesis artifact</a> · Date: 2026-06-19</p>
+
+<div class="card">
+  <p><strong>Decision after evidence:</strong> Keep H<sub>CTC</sub>-weak (sufficient-bound unique reset + audit-demoted τ=2).
+  Retire H<sub>CTC</sub>-strong as default (L2 falsified; no early closure).</p>
+</div>
+
+<h2>Phase checklist</h2>
+<ul class="checklist">
+  <li class="done">1. Split hypothesis artifact → weak / strong H<sub>CTC</sub></li>
+  <li class="done">2. Publish weak L<sub>FCL</sub> proof target outline</li>
+  <li class="done">3. Run sufficient-bound + audit-demoted τ=2 probe — <strong>78 493/78 493 pass</strong></li>
+  <li>4. Phase 2 exclusion at B = gap — <em>deferred</em>; proceed to Lean proof L5 first</li>
+</ul>
+
+<h2>Phase 3 probe (executed)</h2>
+<table>
+  <tr><th>Estimand</th><th>Pass condition</th></tr>
+  <tr><td>Unique resolved survivor at B = gap</td><td><code>cert.q == q_ref</code> on all R2 gaps</td></tr>
+  <tr><td>Semantic selection audit</td><td>Resolution uses composite_witness only; no post-hoc τ(q) in demoted predicate</td></tr>
+  <tr><td>Audit-demoted τ=2 lemma</td><td>Structural resolved + lemma bridge ⟹ τ(q)=2 matches lane V on all gaps</td></tr>
+</table>
+<p>Folder: <code>experiments/weak-lfcl-sufficient-bound-2026-06/</code></p>
+
+<h2>Retired lanes (do not retry)</h2>
+<ul>
+  <li>GWR-offset endpoint (L0)</li>
+  <li>Unique NLSC-admissible composite (L2)</li>
+  <li>Notational τ==2 removal as mechanism (F2-RX)</li>
+  <li>“One survivor” without resolved-unique accounting</li>
+</ul>
+
+<h2>Next proof work</h2>
+<p>See <a href="weak_lfcl_proof_target.html">weak_lfcl_proof_target.html</a> — Lean target in <code>lean-4/PGS/NextPrime.lean</code>.</p>
+</body>
+</html>

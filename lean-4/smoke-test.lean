@@ -6,9 +6,13 @@ Run with:
 -/
 
 import PGS.Basic
+import PGS.ChamberReset
+import PGS.NextPrime
 import PGS.Placement
 
 open PGS
+open PGS.ChamberReset
+open PGS.NextPrime
 open PGS.Placement
 
 #check tau
@@ -24,4 +28,12 @@ open PGS.Placement
 #check tau_eq_two_iff_only_divisors_are_1_and_n
 #check tau_gt_two_iff_has_proper_divisor
 
-#check "PGS library smoke test loaded successfully (Phase 1 - characterization lemmas with proof structure; reverse length detail deferred consistently)"
+-- Phase 4 weak L_FCL (audit demotion proved; Rule X forcing open)
+#check tau_ge_two_of_gt_one
+#check tau_le_two_and_gt_one_imp_eq_two
+#check audit_demoted_tau2
+#check weak_lfcl_audit_layer
+#check weak_lfcl_sufficient_bound
+#check weak_lfcl_ruleX_forces_next_prime
+
+#check "PGS library smoke test loaded successfully (Phase 4 weak L_FCL audit layer + open Rule X target)"
