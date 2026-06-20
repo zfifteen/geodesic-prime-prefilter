@@ -1,0 +1,1 @@
+Full continuation/bootstrap prompt for future sessions on the PGS Bounded Next-Prime Theorem. Includes current state summary, key invariants, proof architecture reference, execution guidelines, immediate priorities, and success criteria. Designed as the single persistent handoff document.
