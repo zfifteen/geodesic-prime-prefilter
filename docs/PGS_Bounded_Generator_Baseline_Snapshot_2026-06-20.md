@@ -1,0 +1,1 @@
+See the full content I just wrote to /home/workdir/artifacts/PGS_Bounded_Generator_Baseline_Snapshot_2026-06-20.md. It captures the exact state from main at 77ee82d, including verbatim Rule X, C(q) definition, PROOF.md theorems, and the locked central question.
