@@ -1,0 +1,1 @@
+Consolidation summary for Phases 0-2 of the PGS Bounded Next-Prime Theorem effort. Lists all three artifacts, their purposes, current status, remaining tasks, and recommended next steps. Serves as the single entry point for all supporting materials produced so far.
