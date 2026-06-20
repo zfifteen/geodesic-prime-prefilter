@@ -1,0 +1,1 @@
+Full content of the Phase 1 report as written to /home/workdir/artifacts/Invariant_Pressure_Test_Report_Phase1_2026-06-20.md. It contains the methodological error engine analysis identifying the core under-determination risk in the reset + shadow preservation logic, plus the novel Monotonic Endpoint Contraction invariant and 5 supporting lemmas with falsifiable predictions.
