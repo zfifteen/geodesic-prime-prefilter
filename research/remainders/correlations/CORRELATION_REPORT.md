@@ -125,7 +125,7 @@ Core Insight under test: remainder vectors repeat earlier states in the same gap
 
 Analysis on the 490-record tiny enriched set (108 gaps, max g=18, M_v1 vectors):
 
-- Using exact full-vector equality: 0 gaps exhibited any intra-gap repeat of a remainder vector at any position (near-end or middle).
+- Using repeat state (projection vec[:6] mod<=210 to avoid n-in-vector uniqueness): 0 gaps exhibited intra-gap repeats (consistent with small-g<210 consecutive integers having unique signatures mod lcm; no repeats possible in real data of this regime). Synthetic drives >0 in tests.
 - repeat_freq_near_end: 0.0
 - repeat_freq_middle: 0.0
 - All 108 gaps classified as "without late repeats".

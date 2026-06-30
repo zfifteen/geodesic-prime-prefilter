@@ -295,7 +295,7 @@ def test_transition_matrix_on_tiny_near_end_sequences():
 
 def test_compute_intra_gap_repeat_stats_on_tiny():
     """Exercise the shipped repeat analysis on the real tiny enriched set via load_records + function.
-    Asserts structure with numeric repeat rates and GWR alignment counts per AC1/AC2.
+    Asserts structure, and for AC: numeric values and vector-equality count using synthetic data to drive >0 branches.
     """
     import json
     from pathlib import Path
@@ -315,6 +315,28 @@ def test_compute_intra_gap_repeat_stats_on_tiny():
     assert len(feats) > 0
     assert "late_repeat_count" in feats[0]
     assert isinstance(feats[0]["late_repeat_count"], int)
+
+    # Synthetic data to drive repeat count >0 and late classification (addresses construction uniqueness and test gaps)
+    synth = [
+        {"p": 999, "k": 1, "g": 5, "remainder_vector": [0,1,2,3,4,5,6], "is_gwr_winner": False, "distance_to_next_prime": 4},
+        {"p": 999, "k": 2, "g": 5, "remainder_vector": [1,2,3,4,5,6,7], "is_gwr_winner": False, "distance_to_next_prime": 3},
+        {"p": 999, "k": 3, "g": 5, "remainder_vector": [0,1,2,3,4,5,6], "is_gwr_winner": True, "distance_to_next_prime": 2},  # repeat of first
+        {"p": 999, "k": 4, "g": 5, "remainder_vector": [1,2,3,4,5,6,7], "is_gwr_winner": False, "distance_to_next_prime": 1},  # repeat of second, late
+    ]
+    sstats = compute_intra_gap_repeat_stats(synth)
+    assert sstats["num_gaps"] == 1
+    assert sstats["gaps_with_late_repeats"] == 1
+    sfeats = compute_per_gap_late_repeat_feature(synth)
+    assert sfeats[0]["late_repeat_count"] > 0
+
+
+def test_count_prior_repeats_helper_independent():
+    """Independent unit test for the pure repeat counter helper (per plan: separate for independent testing)."""
+    from correlation_analysis import _count_prior_repeats
+    seq = [(0,1,2), (3,4,5), (0,1,2), (6,7,8), (0,1,2)]
+    counts = _count_prior_repeats(seq)
+    assert counts == [0, 0, 1, 0, 2]  # third has 1 prior, fifth has 2 priors (exact vector match)
+    assert all(isinstance(c, int) for c in counts)
 
 
 if __name__ == "__main__":
