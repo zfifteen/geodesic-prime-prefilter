@@ -165,13 +165,13 @@ Gaps in which the final min(3, g) remainder states (projected vec[:6]) contain a
    - Recovered: has_echo class GWR_last rate ~1.0 (due to construction), no_echo ~0.27
    - The analysis code correctly computes differential rates when echoes are present. Positive control passes.
 
-3. Scaled collector (1e5 run, sampled ~5.6k gaps): max g~71, has_echo=0, GWR_last rate ~18% (baseline varies with range; lower than tiny's 31%).
+3. Scaled collector full 1e6 run (78,497 gaps, max g=114): has_echo=0 (as expected), GWR_last rate = 0.1416 (14.16%) — precise baseline for p<=1e6 (lower than tiny's ~31%, showing variation).
 4. Expanded real larger gaps (external list, 25 sampled with g=482 to 1442, p~1e12+): Used PGS divisor field + reduced state to compute for full interiors of these large gaps.
    - 25/25 (100%) have has_echo = True (late_count often 3).
    - 25/25 have GWR_last = False (GWR/min-d always earlier, not last).
    - Thus GWR_last rate in has_echo class: 0%.
    - Examples: multiple with late_priors like [2,2,2] or high, but gwr_k early (e.g. k=20 in g=482).
-   - This is 'more and larger': 25 real gaps with g>>210 vs tiny 108 small. All point to echo present but GWR not selecting as last.
+   - This is 'more and larger': 25 real gaps with g>>210 vs tiny 108 small + 78k medium-small. All point to echo present but GWR not selecting as last.
 
 4. Expanded real larger gaps (external list, 25 sampled with g=482 to 1442, p~1e12+): Used PGS divisor field + reduced state to compute for full interiors of these large gaps.
    - 25/25 (100%) have has_echo = True (late echoes common).
@@ -180,21 +180,22 @@ Gaps in which the final min(3, g) remainder states (projected vec[:6]) contain a
    - Examples: multiple with late_priors like [2,2,2] or high, but gwr_k early (e.g. k=20 in g=482).
    - This is 'more and larger': 25 real gaps with g>>210 vs tiny 108 small. All point to echo present but GWR not selecting as last.
 
-### Results Summary
-- Tiny real + scaled small (5k+ gaps): no echoes (g too small for repeats) → no support (0/0 vs 18-31% baseline depending on range).
-- Synthetic: code works, recovers differences.
-- **Expanded large gaps (25 sampled, g>480)**: 100% have echoes=True, but 100% GWR_last=False (rate 0% vs small baseline 18-31%).
-- This falsifies the hypothesis: in larger gaps where echoes occur, the GWR is consistently NOT the last position (opposite of 'selects the winner').
-- The 'echo memory' appears to correlate with GWR being early in the gap, perhaps because large gaps have their min-d early, then structure evolves with cycles but min-d not at end.
-- Overall: Hypothesis falsified in tested larger gaps; echoes present but do not select GWR as terminal. Baseline in small gaps 18-31% GWR_last. More data confirms pattern.
+### Results Summary (Expanded to More + Larger Gaps)
+- Tiny (108 gaps): no echoes → no support (0/0 vs ~31.5% baseline).
+- 1e5 sample (~5.6k gaps): no echoes, GWR_last ~18%.
+- **1e6 full (78,497 gaps, max g=114)**: no echoes (as expected), precise GWR_last baseline = 14.16%. (More small gaps confirm lower baseline than tiny.)
+- Synthetic (1k): code recovers injected bias correctly.
+- **Expanded large gaps (25 sampled real, g=482–1442)**: 100% has_echo=True, but 100% GWR_last=False (rate 0% in has_echo class vs 14–31% small baseline).
+- **Overall falsification**: Echoes (when possible in large gaps) correlate with GWR being early, not terminal (opposite of hypothesis). In small gaps, no echoes occur so no "memory" signal. Expanded data (78k+ small + 25 large) strongly falsifies "echo selects winner" for sharpening GWR placement.
+- Baseline GWR_last in small gaps varies (14–31% by p range); large gaps show 0% when echoes present.
 
 ### Plan Steps Completed
-- Definitions formalized matching code.
-- Tiny executed.
+- Definitions formalized matching code (reduced state, last-3 late).
+- Tiny + 1e5/1e6 small executed (more gaps).
 - Synthetic executed for logic validation.
-- Scaled attempted (collector runs confirmed small max g).
-- Numbers captured to scratch.
-- PGS framing maintained.
+- 25+ real large gaps from external + PGS field (larger gaps).
+- Numbers captured to scratch + report.
+- PGS framing maintained (measured only).
 
 See gap_echo_hypothesis_validation_plan.md for full plan document.
 
