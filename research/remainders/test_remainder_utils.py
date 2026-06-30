@@ -177,6 +177,68 @@ def test_collect_gaps_produces_100_gap_validation_set():
         assert "p" in first and "remainder_vector" in first and "is_current_min_d" in first
 
 
+# --- Enrich + derived features tests (added for correlation Phase-1 data prep) ---
+
+def test_compute_derived_remainder_scalars_basic():
+    from enrich_remainder_records import compute_derived_remainder_scalars
+
+    # From actual record in tiny_val: p=3, n=4, vec for full M_v1
+    vec = (0, 1, 4, 4, 4, 4, 4)
+    d = compute_derived_remainder_scalars(vec)
+    assert d["num_zeros_in_vector"] == 1
+    assert d["residue_sum_parity"] == 1   # 21 odd
+    assert d["dist_nearest_zero_mod30"] == 4
+    assert d["dist_nearest_zero_mod210"] == 4
+    assert d["coprime_to_210"] is False   # first slot 0
+
+    # Coprime case: all first4 nonzero
+    vec2 = (1, 1, 1, 1, 0, 0, 0)
+    d2 = compute_derived_remainder_scalars(vec2)
+    assert d2["coprime_to_210"] is True
+    assert d2["num_zeros_in_vector"] == 3
+
+
+def test_enrich_record_adds_plan_fields():
+    from enrich_remainder_records import enrich_record
+
+    raw = {
+        "p": 113, "q": 127, "g": 14, "k": 8, "n": 121, "d": 3,
+        "is_current_min_d": True,
+        "distance_to_next_prime": 6,
+        "remainder_vector": (1, 1, 1, 2, 1, 121, 121),
+        "moduli_version": "M_v1",
+    }
+    en = enrich_record(raw)
+    assert en["termination_distance"] == 6
+    assert en["is_gwr_winner"] is True
+    assert "num_zeros_in_vector" in en
+    # 113 winner vector first4 = (1,1,1,2) → coprime_to_210 True
+    assert en["coprime_to_210"] is True
+
+
+def test_enrich_jsonl_on_real_tiny_val(tmp_path):
+    """Run enrich on the actual validated tiny_val set and check output schema + counts."""
+    import json
+    from pathlib import Path
+    from enrich_remainder_records import enrich_jsonl_stream
+
+    in_path = Path("research/remainders/output/tiny_val/raw_records.jsonl")
+    out_path = tmp_path / "enriched.jsonl"
+
+    counts = enrich_jsonl_stream(in_path, out_path)
+    assert counts["records_out"] == counts["records_in"] > 400
+
+    # spot check a few enriched records
+    with out_path.open() as f:
+        rec1 = json.loads(f.readline())
+    # Check first record
+    assert "termination_distance" in rec1
+    assert "is_gwr_winner" in rec1
+    assert "num_zeros_in_vector" in rec1
+    assert rec1["termination_distance"] == rec1.get("distance_to_next_prime")
+
+
+
 if __name__ == "__main__":
     # Allow direct execution for quick smoke in research flow.
     test_default_moduli_v1()

@@ -111,7 +111,61 @@ All output records will carry gap_id/p , relative k, d(n), is_current_min_d, dis
 
 Classical residue computation is feature extraction for post-analysis only.
 
-## Approval
-This plan adopts the user's detailed 5-phase collection plan as primary spec. Operator may approve via edit or "proceed", or request changes.
+## Continuation: Remainder-Gap-Prime Placement Correlation Analysis (2026-06-30 extension)
+
+This extends the collection work with the dedicated "Remainder-Gap-Prime Placement Correlation Analysis Plan".
+
+**Core Frame (never lost):** 
+PGS gap interior objects carry d(n) (already selects GWR winner) and now also R(n, M). Correlations are measured attributes of the same ordered state. They supply candidate refinements for prefilters or boundary conditions only after rigorous measured surfaces; they never redefine the proved GWR or next-prime theorems in PROOF.md. All language: "measured on regime X", "hypothesis under test", "effect size on this surface".
+
+### Updated Open Questions
+- (Previous collection Qs retained)
+- Preferred initial gap sample for first correlation run: the already-validated tiny_val set (~108 gaps) for rapid skeleton + engine iteration, followed by a first analysis surface on a modestly larger set (target ~1k-2k gaps via --max-p ~20000) to obtain gap-size diversity before 10^5 regime.
+- Additional derived remainder features: exactly the plan list (# zero residues, parity of residue sum, dist to nearest forbidden/0 class mod 30 and mod 210). Plus two minimal practical: "coprime_to_210" (no zero in first four slots), "res_sum_mod_2".
+- Prioritization: Descriptive + H1 (entropy~g), H4 (GWR signature distinctness), marginals, sequential transition patterns first. Predictive modeling and H3 (delta accuracy) second, once descriptive tables logged and reproducible. This keeps incremental and protects against modeling noise.
+
+### Extension Execution Steps (add to table)
+Continue strict phased authoring.
+
+| Step | Description | Files/Commands | Verification | Status |
+|------|-------------|----------------|--------------|--------|
+| 12 | Extend PLAN + create correlations/ skeleton | Update this PLAN.md; mkdir + write CORRELATION_PLAN.md or dated report scaffold + dir README under research/remainders/correlations/ | list_dir + re-read | IN PROGRESS |
+| 13 | Phase 1 scaffold data prep: enricher | New or extended script for adding termination_distance (alias), is_gwr_winner (alias), derived scalars to records. Signatures + detailed comments only. | py_compile + read | PENDING |
+| 14 | Phase 1 scaffold engine | research/remainders/correlation_analysis.py (or correlations/correlation_analysis.py) with listed funcs as stubs + exhaustive logic comments. | py_compile | PENDING |
+| 15 | Phase 2 review both skeletons | Internal review for prose, separation, minimalism, PGS frame. | Notes in chat + any polish commits | PENDING |
+| 16 | Phase 3 incremental: enrich + first histogram | Implement enrich post-processor; implement one func (histograms); test on tiny_val JSONL; produce first tables; commit. | Run on existing output/tiny_val; inspect MD/CSV output | PENDING |
+| 17 | Descriptive surfaces on validation set | Run marginals, basic MI, GWR vs average, entropy vs g on the 100+ gap set. Write initial CORRELATION_REPORT.md dated section. | Reproducible numbers from same raw file | PENDING |
+| 18 | Scale descriptive + H1/H4 first | Produce larger sample (max-p ~20000), repeat. | Two runs logged | PENDING |
+| 19 | Add sequential + predictive (H3) incrementally | After descriptive stable. | Held-out delta reported with seeds | PENDING |
+| 20 | Hypothesis tests + viz + report | Permutation tests, heatmaps (text or simple), full report. Hand audit top signals. | CORRELATION_REPORT.md + tables | PENDING |
+| 21 | Feedback proposals + update higher docs | Concrete testable refinements (if any survive). Update RESULTS.md pointer. | Separate "proposals" section | PENDING |
+
+### Deliverables for Correlation Phase
+- research/remainders/correlations/ (raw enriched if needed, tables/, figures text, CORRELATION_REPORT.md)
+- correlation_analysis.py with the listed pure/minimal functions
+- Enriched or post-processed record files (still JSONL)
+- Dated report with exact commands, bin choices, seeds, effect sizes, null results explicitly called out.
+- Any proposed refinements kept physically separate from proof or generator code.
+
+### Success Criteria Extension
+- At least one (or clear null) correlation between remainder patterns and placement (g, termination, GWR) documented with stats + effect size on the tested regime.
+- Predictive delta (if any) quantified on held-out gaps.
+- All numbers reproducible from the raw_records.jsonl of a logged run.
+- Report explicitly separates "measured on X" from any deterministic claim.
+
+**Repro for correlation start:**
+```bash
+# Use existing validated set
+python -c "
+# (or dedicated enrich + analyze entry)
+import json
+recs = [json.loads(l) for l in open('research/remainders/output/tiny_val/raw_records.jsonl') if l.strip()]
+print(len(recs), 'records ready for analysis')
+"
+python research/remainders/correlation_analysis.py --input research/remainders/output/tiny_val/raw_records.jsonl --output research/remainders/correlations/tiny/
+```
+
+## Approval (extension)
+This extension respects the full prior contract. Statistical work is measurement layer only.
 
 **End of plan.**
