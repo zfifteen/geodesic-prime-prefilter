@@ -54,16 +54,45 @@ def compute_residue_histograms(
     - Return nested dicts or a structure easily turned into Markdown/CSV.
     - Must be pure given the records (no global state).
     """
-    # Detailed plan:
-    #   1. Derive bins on the fly if not pre-computed in records.
-    #   2. Use nested defaultdict(int) per (group_key_tuple, slot_i, residue)
-    #   3. Also track total per group for normalization to frequencies.
-    #   4. Optionally emit text heatmaps (small ascii or just counts).
-    # Implementation will follow after Phase-2 review.
-    raise NotImplementedError(
-        "Phase-1 skeleton: compute_residue_histograms not implemented. "
-        "See docstring for full intended grouping + counting logic."
-    )
+    # Implementation (incremental after scaffold review)
+    B = 10  # resolution for normalized position 0.0-1.0 -> 0..9
+    counts: dict[tuple, dict[tuple, int]] = defaultdict(lambda: defaultdict(int))
+    group_totals: dict[tuple, int] = defaultdict(int)
+
+    for rec in records:
+        g = rec.get("g", 0)
+        k = rec.get("k", 0)
+        vec = rec.get("remainder_vector", ())
+        if g <= 0 or not vec:
+            continue
+
+        norm = k / g
+        pos_bin = min(int(norm * B), B - 1)
+        g_bin = min(g // 4, 6)  # coarse gap size bins
+
+        group_key = (pos_bin, g_bin)
+        group_totals[group_key] += 1
+
+        for slot, r in enumerate(vec):
+            key = (slot, int(r))
+            counts[group_key][key] += 1
+
+    # Build human-friendly result
+    result: dict[str, Any] = {
+        "bins": {"position_resolution": B, "gap_bin_max": 6},
+        "groups": {},
+    }
+    for gk, slot_counts in counts.items():
+        posb, gb = gk
+        total = group_totals[gk]
+        group_data: dict[str, Any] = {"total": total, "slots": {}}
+        for (slot, res), c in sorted(slot_counts.items()):
+            if slot not in group_data["slots"]:
+                group_data["slots"][slot] = {}
+            group_data["slots"][slot][res] = {"count": c, "freq": c / total if total else 0.0}
+        result["groups"][f"pos{posb}_g{gb}"] = group_data
+
+    return result
 
 
 def mutual_information(
@@ -182,9 +211,17 @@ def run_descriptive_analysis(
     histograms → basic MI for key features → per-gap entropy vs g → GWR vs avg
     comparison → write CSVs and append to CORRELATION_REPORT.md.
     """
-    raise NotImplementedError(
-        "Phase-1 skeleton: run_descriptive_analysis not implemented."
-    )
+    # Minimal working driver for validation (will be expanded)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    h = compute_residue_histograms(records)
+    # Write a tiny example table for mod-2 (slot 0)
+    lines = ["| pos_bin | gap_bin | res | count | freq |", "|---------|---------|-----|-------|------|"]
+    for gname, gdata in sorted(h["groups"].items())[:8]:
+        pb, gb = gname.split("_")
+        for res, info in sorted(gdata.get("slots", {}).get(0, {}).items()):
+            lines.append(f"| {pb} | {gb} | {res} | {info['count']} | {info['freq']:.3f} |")
+    (out_dir / "mod2_marginal_sample.md").write_text("\n".join(lines) + "\n")
+    return {"histograms_groups": len(h["groups"]), "sample_table_written": True}
 
 
 def main(argv: list[str] | None = None) -> int:
