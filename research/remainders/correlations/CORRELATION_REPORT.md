@@ -173,20 +173,19 @@ Gaps in which the final min(3, g) remainder states (projected vec[:6]) contain a
    - Examples: multiple with late_priors like [2,2,2] or high, but gwr_k early (e.g. k=20 in g=482).
    - This is 'more and larger': 25 real gaps with g>>210 vs tiny 108 small + 78k medium-small. All point to echo present but GWR not selecting as last.
 
-4. Expanded real larger gaps (external list, 25 sampled with g=482 to 1442, p~1e12+): Used PGS divisor field + reduced state to compute for full interiors of these large gaps.
-   - 25/25 (100%) have has_echo = True (late echoes common).
-   - 25/25 have GWR_last = False (GWR/min-d always earlier, not last).
-   - Thus GWR_last rate in has_echo class: 0%.
-   - Examples: multiple with late_priors like [2,2,2] or high, but gwr_k early (e.g. k=20 in g=482).
-   - This is 'more and larger': 25 real gaps with g>>210 vs tiny 108 small. All point to echo present but GWR not selecting as last.
+4. Expanded real larger gaps (external list, first 50 with g~480-1442+, p~1e12+): Used PGS divisor field + reduced state to compute for full interiors.
+   - 50/50 (100%) have has_echo = True.
+   - 50/50 have GWR_last = False.
+   - Rate GWR_last | echo: 0.0 (0/50).
+   - This is stronger falsification with 50 real large gaps. Echoes always present but GWR never last.
 
 ### Results Summary (Expanded to More + Larger Gaps)
 - Tiny (108 gaps): no echoes → no support (0/0 vs ~31.5% baseline).
 - 1e5 sample (~5.6k gaps): no echoes, GWR_last ~18%.
 - **1e6 full (78,497 gaps, max g=114)**: no echoes (as expected), precise GWR_last baseline = 14.16%. (More small gaps confirm lower baseline than tiny.)
 - Synthetic (1k): code recovers injected bias correctly.
-- **Expanded large gaps (25 sampled real, g=482–1442)**: 100% has_echo=True, but 100% GWR_last=False (rate 0% in has_echo class vs 14–31% small baseline).
-- **Overall falsification**: Echoes (when possible in large gaps) correlate with GWR being early, not terminal (opposite of hypothesis). In small gaps, no echoes occur so no "memory" signal. Expanded data (78k+ small + 25 large) strongly falsifies "echo selects winner" for sharpening GWR placement.
+- **Expanded large gaps (first 50 real, g~480-1442)**: 100% has_echo=True, 100% GWR_last=False (rate 0% in has_echo class vs 14–31% small baseline).
+- **Overall falsification**: Echoes (when possible in large gaps) correlate with GWR being early, not terminal (opposite of hypothesis). In small gaps, no echoes occur so no "memory" signal. Expanded data (78k+ small + 50 large) strongly falsifies "echo selects winner" for sharpening GWR placement.
 - Baseline GWR_last in small gaps varies (14–31% by p range); large gaps show 0% when echoes present.
 
 ### Plan Steps Completed
