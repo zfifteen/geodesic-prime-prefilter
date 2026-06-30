@@ -106,18 +106,16 @@ Next: sequential transitions to be added after transition_matrix impl.
 
 ## Sequential transitions on tiny set
 
-Implemented and exercised `transition_matrix` on near-termination sequences (last up to 5 interiors per gap) extracted from the 490 enriched records.
+Implemented and exercised `transition_matrix` on near-termination sequences (last up to 5 interiors per gap) extracted from the 490 enriched records. States are full remainder vectors (7-tuples).
 
-55 qualifying gaps produced sequences. For a representative seq: 30 transitions, with self-loops on higher residues (e.g. multiples that persist) and variety on low residues.
+55 qualifying gaps. For a 5-element near-end seq, exactly 4 vector-to-vector transitions (lag=1).
 
-Mod-2 projection of transitions in near-end (aggregated over many seqs):
-- (0,1): 110 , (1,0): 110
-- This alternation is deterministic for consecutive integers in gaps after odd primes (even/odd alternate), confirming remainder vectors capture the wheel structure. No "same parity" transitions observed in consecutive steps.
+Example state key: (0, 0, 4, 3, 24, 24, 24) — full R(n, M_v1).
 
-Full transition run captured in SCRATCH/seq_trans_sample.txt and SCRATCH/transition_verify.txt (for gating).
+Mod-2 projection of consecutive transitions (for illustration of wheel):
+- (0,1): 110 , (1,0): 110  (deterministic even/odd alternation after odd p)
 
-Example probabilities from one near-end seq (first few):
-{0: {0: 0.14, 1:0.14, 2:0.29, 4:0.29, 28:0.14}, ... higher residues tend to self-transition when g small (e.g. 24->24 freq 1.0)}
+Full results and gating output saved to SCRATCH.
 
-These patterns are measurement evidence of modular regularity inside small gaps; they do not override GWR/divisor selection.
+These are direct measurements on the ordered gap state using remainder coordinates.
 

@@ -286,6 +286,11 @@ def test_transition_matrix_on_tiny_near_end_sequences():
     first_to = next(iter(res["counts"][first_from]))
     assert res["counts"][first_from][first_to] >= 1
     assert 0.0 <= res["probabilities"][first_from][first_to] <= 1.0
+    # Critical: states must be full remainder vectors (7-tuples of ints), not residues
+    assert isinstance(first_from, tuple) and len(first_from) == 7
+    assert all(isinstance(x, int) for x in first_from)
+    # and the key must appear in the input sequence
+    assert first_from in seqs[0] or first_from == seqs[0][0]  # at least one state from input
 
 
 if __name__ == "__main__":
