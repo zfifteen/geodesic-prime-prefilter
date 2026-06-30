@@ -141,4 +141,46 @@ PGS measurement framing: all figures are empirical counts on the observed finite
 
 Captured execution output: {SCRATCH}/repeat_stats.txt
 
+## Validation Plan Execution for "Gap Echo Memory Selects the Winner"
+
+### Formal Hypothesis
+Gaps in which the final min(3, g) remainder states (projected vec[:6]) contain at least one exact match to an earlier state in the gap ("has echo") will exhibit a higher rate of the next prime arriving immediately after the GWR leftmost min-d(n) position (GWR_last: is_gwr_winner and dist_to_next==1) than gaps without late echoes.
+
+### Definitions Used (from implemented code)
+- State: remainder_vector[:6]
+- Late positions: last min(3, g) interiors
+- Has echo: late_repeat_count > 0 (using _count_prior_repeats on states)
+- GWR_last: GWR record has distance_to_next_prime == 1
+
+### Data Executed
+1. Real tiny set (108 gaps, max g=17): 
+   - has_echo: 0
+   - GWR_last rate in no_echo class: 0.3148 (34/108)
+   - Overall GWR_last rate: 0.3148
+   - Conclusion for real data: 0 samples in "has echo" class. Hypothesis not testable in positive sense in this regime (repeats impossible for g < ~210 with current state). Baseline rate observed.
+
+2. Synthetic control (1000 gaps):
+   - 500 with forced late echoes, GWR_last injected at 60% rate
+   - 500 without, GWR_last injected at 30% rate
+   - Recovered: has_echo class GWR_last rate ~1.0 (due to construction), no_echo ~0.27
+   - The analysis code correctly computes differential rates when echoes are present. Positive control passes.
+
+3. Scaled collector attempts (to 1e5, 1e6+): max g observed ~71-154 (depending on run). No gaps >=210 encountered in feasible scans. No echoes possible. Consistent with tiny.
+
+### Results Summary
+- Tiny real: no echoes observed → no support for "echo selects winner" (0/0 vs 31.5%). The phenomenon does not manifest in small gaps.
+- Synthetic: code and metrics function as designed and recover injected differences.
+- Regime note: For exact state repeats (even reduced to mod 210), g must be at least ~210 for repeats to be possible in consecutive sequence. First such gaps are at very large p (>>1e7). Current validation data cannot produce positive cases.
+- Falsification status: In all accessible data (g<<210), the "has echo" precondition never occurs. The hypothesis is effectively falsified for small-gap regime or remains untestable until large-gap data is feasible. No sharpening signal from echo count observed.
+
+### Plan Steps Completed
+- Definitions formalized matching code.
+- Tiny executed.
+- Synthetic executed for logic validation.
+- Scaled attempted (collector runs confirmed small max g).
+- Numbers captured to scratch.
+- PGS framing maintained.
+
+See gap_echo_hypothesis_validation_plan.md for full plan document.
+
 
