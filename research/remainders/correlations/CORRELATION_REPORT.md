@@ -167,11 +167,20 @@ Gaps in which the final min(3, g) remainder states (projected vec[:6]) contain a
 
 3. Scaled collector attempts (to 1e5, 1e6+): max g observed ~71-154 (depending on run). No gaps >=210 encountered in feasible scans. No echoes possible. Consistent with tiny.
 
+4. Expanded real larger gaps (external list, 25 sampled with g=482 to 1442, p~1e12+): Used PGS divisor field + reduced state to compute for full interiors of these large gaps.
+   - 25/25 (100%) have has_echo = True (late echoes common).
+   - 25/25 have GWR_last = False (GWR/min-d always earlier, not last).
+   - Thus GWR_last rate in has_echo class: 0%.
+   - Examples: multiple with late_priors like [2,2,2] or high, but gwr_k early (e.g. k=20 in g=482).
+   - This is 'more and larger': 25 real gaps with g>>210 vs tiny 108 small. All point to echo present but GWR not selecting as last.
+
 ### Results Summary
-- Tiny real: no echoes observed → no support for "echo selects winner" (0/0 vs 31.5%). The phenomenon does not manifest in small gaps.
-- Synthetic: code and metrics function as designed and recover injected differences.
-- Regime note: For exact state repeats (even reduced to mod 210), g must be at least ~210 for repeats to be possible in consecutive sequence. First such gaps are at very large p (>>1e7). Current validation data cannot produce positive cases.
-- Falsification status: In all accessible data (g<<210), the "has echo" precondition never occurs. The hypothesis is effectively falsified for small-gap regime or remains untestable until large-gap data is feasible. No sharpening signal from echo count observed.
+- Tiny real + scaled small: no echoes (g too small) → no support (0/0 vs ~31.5% baseline).
+- Synthetic: code works, recovers differences.
+- **Expanded large gaps (25 sampled, g>480)**: 100% have echoes=True, but 100% GWR_last=False (rate 0% vs small baseline 31.5%).
+- This falsifies the hypothesis: in larger gaps where echoes occur, the GWR is consistently NOT the last position (opposite of 'selects the winner').
+- The 'echo memory' appears to correlate with GWR being early in the gap, perhaps because large gaps have their min-d early, then structure evolves with cycles but min-d not at end.
+- Overall: Hypothesis falsified in tested larger gaps; echoes present but do not select GWR as terminal. Baseline in small gaps ~30% GWR_last by chance or other rules.
 
 ### Plan Steps Completed
 - Definitions formalized matching code.
