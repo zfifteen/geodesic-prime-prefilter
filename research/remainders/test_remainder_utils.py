@@ -152,6 +152,31 @@ def test_sample_rate_reduces_or_keeps_records():
     assert 0 <= len(sampled) <= 13
 
 
+def test_collect_gaps_produces_100_gap_validation_set():
+    """End-to-end collector run on a set with >100 gaps must succeed and produce correct artifacts.
+
+    This is the strict "100-gap test set" gate required by the collection plan
+    before any larger scaling.
+    """
+    import json
+    import tempfile
+    from pathlib import Path
+    from collect_remainder_stats import collect_gaps, parse_moduli
+
+    with tempfile.TemporaryDirectory() as tmp:
+        out = Path(tmp) / "val100"
+        raw = out / "raw_records.jsonl"
+        mods = parse_moduli(None)
+        summ = collect_gaps(max_p=600, moduli=mods, output_path=raw)
+        assert summ["gaps_processed"] >= 100, f"only {summ['gaps_processed']} gaps"
+        assert summ["records_emitted"] > 0
+        assert raw.exists()
+        # spot check one record line parses and has required keys
+        with raw.open() as f:
+            first = json.loads(f.readline())
+        assert "p" in first and "remainder_vector" in first and "is_current_min_d" in first
+
+
 if __name__ == "__main__":
     # Allow direct execution for quick smoke in research flow.
     test_default_moduli_v1()
