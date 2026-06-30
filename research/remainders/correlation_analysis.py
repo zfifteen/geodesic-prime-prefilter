@@ -182,6 +182,149 @@ def transition_matrix(
     }
 
 
+def compute_intra_gap_repeat_stats(
+    records: list[dict[str, Any]],
+) -> dict[str, Any]:
+    """Pure function: group records into per-gap remainder-vector sequences,
+    for each position count exact prior repeats of that vector in the same gap,
+    report aggregate frequencies and counts split by relative position (near-end
+    vs middle) and classify gaps by presence of repeats in final positions.
+
+    Uses 'p' for gap id, 'k'/'g' for relative position, 'remainder_vector' (as tuple),
+    'is_gwr_winner' and 'distance_to_next_prime' (or termination_distance) to determine
+    whether prime arrives right after GWR min-d position.
+
+    Returns counts, rates, and per-class GWR-immediate-after rates.
+    """
+    if not records:
+        return {"num_gaps": 0, "error": "no records"}
+
+    # Group by gap using 'p', keep order by 'k'
+    from collections import defaultdict
+    gaps: dict = defaultdict(list)
+    for r in records:
+        gaps[r["p"]].append(r)
+
+    pos_repeat_counts = {"near_end": [], "middle": [], "all": []}
+    gaps_with_late_repeats = 0
+    gaps_without = 0
+    late_gwr_right_after = 0
+    no_late_gwr_right_after = 0
+    total_gaps = 0
+
+    for p, grecs in gaps.items():
+        total_gaps += 1
+        grecs = sorted(grecs, key=lambda x: x.get("k", 0))
+        g = grecs[0].get("g", 0) if grecs else 0
+        seen: list = []
+        has_late_repeat = False
+        late_repeat_count = 0
+        for i, r in enumerate(grecs):
+            vec = tuple(r.get("remainder_vector", []))
+            prior = sum(1 for s in seen if s == vec)
+            seen.append(vec)
+            if g > 0:
+                rel = r.get("k", 0) / g
+            else:
+                rel = 0.0
+            pos_repeat_counts["all"].append(prior)
+            is_late = rel > 0.6  # near end, last ~40% for small gaps
+            if is_late:
+                pos_repeat_counts["near_end"].append(prior)
+                if prior > 0:
+                    has_late_repeat = True
+                    late_repeat_count += 1
+            else:
+                pos_repeat_counts["middle"].append(prior)
+
+        if has_late_repeat:
+            gaps_with_late_repeats += 1
+        else:
+            gaps_without += 1
+
+        # Does prime arrive right after GWR min-d position?
+        # i.e. the record(s) with is_gwr_winner (or is_current_min_d) has distance==1
+        gwr_right_after = False
+        for r in grecs:
+            is_gwr = r.get("is_gwr_winner") or r.get("is_current_min_d")
+            dist = r.get("distance_to_next_prime") or r.get("termination_distance") or 99
+            if is_gwr and dist == 1:
+                gwr_right_after = True
+                break
+        if has_late_repeat:
+            if gwr_right_after:
+                late_gwr_right_after += 1
+        else:
+            if gwr_right_after:
+                no_late_gwr_right_after += 1
+
+    def safe_avg(lst):
+        return sum(lst) / len(lst) if lst else 0.0
+
+    def safe_rate(num, den):
+        return num / den if den > 0 else 0.0
+
+    return {
+        "num_gaps": total_gaps,
+        "gaps_with_late_repeats": gaps_with_late_repeats,
+        "gaps_without_late_repeats": gaps_without,
+        "repeat_freq_near_end": safe_avg([1 if c > 0 else 0 for c in pos_repeat_counts["near_end"]]),
+        "repeat_freq_middle": safe_avg([1 if c > 0 else 0 for c in pos_repeat_counts["middle"]]),
+        "avg_prior_repeats_near_end": safe_avg(pos_repeat_counts["near_end"]),
+        "avg_prior_repeats_middle": safe_avg(pos_repeat_counts["middle"]),
+        "gwr_right_after_rate_with_late_repeats": safe_rate(late_gwr_right_after, gaps_with_late_repeats),
+        "gwr_right_after_rate_without": safe_rate(no_late_gwr_right_after, gaps_without),
+        "late_gwr_right_after_count": late_gwr_right_after,
+        "no_late_gwr_right_after_count": no_late_gwr_right_after,
+        "note": "near_end defined as rel pos >0.6; late repeat = any final pos vector equals some earlier vector in gap; GWR right after = GWR winner record has dist_to_next==1",
+    }
+
+
+def compute_per_gap_late_repeat_feature(
+    records: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """Attach a minimal 'late_repeat_count' feature (count of exact vector repeats in last 3 positions)
+    to each record or return per-gap summaries with the feature.
+    Returns list of per-gap dicts for table use.
+    """
+    from collections import defaultdict
+    gaps: dict = defaultdict(list)
+    for r in records:
+        gaps[r["p"]].append(r)
+
+    results = []
+    for p, grecs in gaps.items():
+        grecs = sorted(grecs, key=lambda x: x.get("k", 0))
+        g = grecs[0].get("g", 0) if grecs else 0
+        seen = []
+        late_count = 0
+        last_n = min(3, len(grecs))
+        for i, r in enumerate(grecs):
+            vec = tuple(r.get("remainder_vector", []))
+            if i >= len(grecs) - last_n:
+                prior = sum(1 for s in seen if s == vec)
+                if prior > 0:
+                    late_count += 1
+            seen.append(vec)
+        # attach to records or summary
+        is_gwr_right_after = False
+        for r in grecs:
+            is_gwr = r.get("is_gwr_winner") or r.get("is_current_min_d")
+            dist = r.get("distance_to_next_prime") or r.get("termination_distance") or 99
+            if is_gwr and dist == 1:
+                is_gwr_right_after = True
+                break
+        results.append({
+            "p": p,
+            "g": g,
+            "late_repeat_count": late_count,
+            "has_late_repeats": late_count > 0,
+            "gwr_right_after": is_gwr_right_after,
+            "num_records": len(grecs),
+        })
+    return results
+
+
 def feature_correlation_matrix(
     feature_list: list[dict[str, float]],
     method: str = "spearman",

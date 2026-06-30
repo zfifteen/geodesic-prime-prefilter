@@ -293,6 +293,30 @@ def test_transition_matrix_on_tiny_near_end_sequences():
     assert first_from in seqs[0] or first_from == seqs[0][0]  # at least one state from input
 
 
+def test_compute_intra_gap_repeat_stats_on_tiny():
+    """Exercise the shipped repeat analysis on the real tiny enriched set via load_records + function.
+    Asserts structure with numeric repeat rates and GWR alignment counts per AC1/AC2.
+    """
+    import json
+    from pathlib import Path
+    from correlation_analysis import load_records, compute_intra_gap_repeat_stats, compute_per_gap_late_repeat_feature
+
+    recs = load_records("research/remainders/correlations/enriched/tiny_enriched.jsonl")
+    assert len(recs) > 0
+    stats = compute_intra_gap_repeat_stats(recs)
+    assert isinstance(stats, dict)
+    assert "num_gaps" in stats and stats["num_gaps"] > 0
+    assert "repeat_freq_near_end" in stats
+    assert "gaps_with_late_repeats" in stats
+    assert isinstance(stats["repeat_freq_near_end"], (int, float))
+    assert stats["gaps_with_late_repeats"] + stats["gaps_without_late_repeats"] == stats["num_gaps"]
+    # also the feature function
+    feats = compute_per_gap_late_repeat_feature(recs)
+    assert len(feats) > 0
+    assert "late_repeat_count" in feats[0]
+    assert isinstance(feats[0]["late_repeat_count"], int)
+
+
 if __name__ == "__main__":
     # Allow direct execution for quick smoke in research flow.
     test_default_moduli_v1()
