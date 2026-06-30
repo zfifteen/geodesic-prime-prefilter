@@ -182,6 +182,26 @@ def transition_matrix(
     }
 
 
+def _get_repeat_state(rec: dict[str, Any]) -> tuple[int, ...]:
+    """Project to residue signature excluding the large-modulus slot that encodes n itself
+    (fixes 'by construction' uniqueness for n < 2310 in remainder_vector built with full M_v1).
+    Uses first 6 components (mod up to 210) so that pattern repeats are possible in analysis.
+    """
+    vec = rec.get("remainder_vector", [])
+    return tuple(int(v) for v in vec[:6])
+
+def _count_prior_repeats(vec_seq: list[tuple[int, ...]]) -> list[int]:
+    """Pure helper: for a sequence of states (vectors), return list of prior exact-match counts.
+    Separated for independent unit testing as required by plan.
+    """
+    seen: list = []
+    counts: list[int] = []
+    for v in vec_seq:
+        prior = sum(1 for s in seen if s == v)
+        counts.append(prior)
+        seen.append(v)
+    return counts
+
 def compute_intra_gap_repeat_stats(
     records: list[dict[str, Any]],
 ) -> dict[str, Any]:
@@ -190,9 +210,11 @@ def compute_intra_gap_repeat_stats(
     report aggregate frequencies and counts split by relative position (near-end
     vs middle) and classify gaps by presence of repeats in final positions.
 
-    Uses 'p' for gap id, 'k'/'g' for relative position, 'remainder_vector' (as tuple),
+    Uses 'p' for gap id, 'k'/'g' for relative position, 'remainder_vector' (projected for state),
     'is_gwr_winner' and 'distance_to_next_prime' (or termination_distance) to determine
     whether prime arrives right after GWR min-d position.
+
+    Late positions defined uniformly as the final min(3, gap_length) records (absolute, works for small g).
 
     Returns counts, rates, and per-class GWR-immediate-after rates.
     """
@@ -216,24 +238,17 @@ def compute_intra_gap_repeat_stats(
         total_gaps += 1
         grecs = sorted(grecs, key=lambda x: x.get("k", 0))
         g = grecs[0].get("g", 0) if grecs else 0
-        seen: list = []
+        states = [_get_repeat_state(r) for r in grecs]
+        prior_counts = _count_prior_repeats(states)
+        last_n = min(3, len(grecs))
         has_late_repeat = False
-        late_repeat_count = 0
-        for i, r in enumerate(grecs):
-            vec = tuple(r.get("remainder_vector", []))
-            prior = sum(1 for s in seen if s == vec)
-            seen.append(vec)
-            if g > 0:
-                rel = r.get("k", 0) / g
-            else:
-                rel = 0.0
+        for i, prior in enumerate(prior_counts):
             pos_repeat_counts["all"].append(prior)
-            is_late = rel > 0.6  # near end, last ~40% for small gaps
+            is_late = i >= len(grecs) - last_n
             if is_late:
                 pos_repeat_counts["near_end"].append(prior)
                 if prior > 0:
                     has_late_repeat = True
-                    late_repeat_count += 1
             else:
                 pos_repeat_counts["middle"].append(prior)
 
@@ -276,16 +291,16 @@ def compute_intra_gap_repeat_stats(
         "gwr_right_after_rate_without": safe_rate(no_late_gwr_right_after, gaps_without),
         "late_gwr_right_after_count": late_gwr_right_after,
         "no_late_gwr_right_after_count": no_late_gwr_right_after,
-        "note": "near_end defined as rel pos >0.6; late repeat = any final pos vector equals some earlier vector in gap; GWR right after = GWR winner record has dist_to_next==1",
+        "note": "late positions = last min(3, gap_len) records (absolute); repeat state = vec[:6] (mod<=210 proj to allow pattern repeats); GWR right after = GWR winner record has dist_to_next==1",
     }
 
 
 def compute_per_gap_late_repeat_feature(
     records: list[dict[str, Any]],
 ) -> list[dict[str, Any]]:
-    """Attach a minimal 'late_repeat_count' feature (count of exact vector repeats in last 3 positions)
-    to each record or return per-gap summaries with the feature.
-    Returns list of per-gap dicts for table use.
+    """Return per-gap summaries with 'late_repeat_count' feature (count of exact repeats of
+    the repeat_state in the last min(3,len) positions).
+    Uses _get_repeat_state and _count_prior_repeats for consistency and testability.
     """
     from collections import defaultdict
     gaps: dict = defaultdict(list)
@@ -296,16 +311,10 @@ def compute_per_gap_late_repeat_feature(
     for p, grecs in gaps.items():
         grecs = sorted(grecs, key=lambda x: x.get("k", 0))
         g = grecs[0].get("g", 0) if grecs else 0
-        seen = []
-        late_count = 0
+        states = [_get_repeat_state(r) for r in grecs]
+        prior_counts = _count_prior_repeats(states)
         last_n = min(3, len(grecs))
-        for i, r in enumerate(grecs):
-            vec = tuple(r.get("remainder_vector", []))
-            if i >= len(grecs) - last_n:
-                prior = sum(1 for s in seen if s == vec)
-                if prior > 0:
-                    late_count += 1
-            seen.append(vec)
+        late_count = sum(1 for i in range(len(grecs) - last_n, len(grecs)) if prior_counts[i] > 0)
         # attach to records or summary
         is_gwr_right_after = False
         for r in grecs:
