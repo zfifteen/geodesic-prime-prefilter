@@ -55,6 +55,10 @@ if str(Path(__file__).resolve().parent) not in sys.path:
     sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from remainder_utils import MODULI_PRIMORIAL_V1, compute_residues  # noqa: E402
+try:
+    from enrich_remainder_records import compute_derived_remainder_scalars
+except Exception:
+    compute_derived_remainder_scalars = None
 
 # Reuse of current gap / d(n) machinery (Phase 2 Step 2)
 from z_band_prime_composite_field import divisor_counts_segment  # noqa: E402
@@ -179,18 +183,29 @@ def build_records_for_gap(
             "remainder_vector": rem_vec,
             "moduli_version": "M_v1",
         }
-        # Emit enriched fields (aliases + derived scalars) so collector output
-        # includes plan schema for downstream analysis without separate step.
-        # Uses the same logic as enrich_remainder_records (duplicated minimal
-        # to avoid import cycles in research script layout).
+        # Use shared derivation (preferred) or safe lookup via the moduli list
+        # to avoid fragile hard-coded indices.
         vec = list(rem_vec)
         rec["termination_distance"] = dist
         rec["is_gwr_winner"] = bool(is_current_min_d)
-        rec["num_zeros_in_vector"] = sum(1 for r in vec if r == 0)
-        rec["residue_sum_parity"] = sum(vec) % 2
-        rec["dist_nearest_zero_mod30"] = vec[4] if len(vec) > 4 else None  # 30 at idx4
-        rec["dist_nearest_zero_mod210"] = vec[5] if len(vec) > 5 else None
-        rec["coprime_to_210"] = (len(vec) >= 4 and all(r != 0 for r in vec[:4]))
+        if compute_derived_remainder_scalars is not None:
+            derived = compute_derived_remainder_scalars(rem_vec, moduli)
+            for k in ("num_zeros_in_vector", "residue_sum_parity",
+                      "dist_nearest_zero_mod30", "dist_nearest_zero_mod210", "coprime_to_210"):
+                rec[k] = derived.get(k)
+        else:
+            rec["num_zeros_in_vector"] = sum(1 for r in vec if r == 0)
+            rec["residue_sum_parity"] = sum(vec) % 2
+            mlist = moduli if moduli else list(MODULI_PRIMORIAL_V1)
+            try:
+                rec["dist_nearest_zero_mod30"] = vec[mlist.index(30)]
+            except (ValueError, IndexError):
+                rec["dist_nearest_zero_mod30"] = None
+            try:
+                rec["dist_nearest_zero_mod210"] = vec[mlist.index(210)]
+            except (ValueError, IndexError):
+                rec["dist_nearest_zero_mod210"] = None
+            rec["coprime_to_210"] = (len(vec) >= 4 and all(r != 0 for r in vec[:4]))
         records.append(rec)
 
     return records

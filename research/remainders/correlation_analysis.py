@@ -139,31 +139,35 @@ def transition_matrix(
     if not remainder_state_sequence:
         return {"counts": {}, "probabilities": {}, "lag": lag, "n_transitions": 0}
 
-    # Normalize input: support list-of-seqs (multiple gaps) or single seq
-    sequences: list[Sequence] = []
+    def _is_vector_state(x):
+        return isinstance(x, (list, tuple)) and len(x) == 7 and all(isinstance(v, int) for v in x)
+
+    # Robust detection:
+    # - If top-level elements are vector-states (len-7 int tuples), treat input as one sequence-of-vectors.
+    # - Else if top-level[0] 's elements are vector-states, treat as list-of-sequences.
+    sequences: list = []
     first = remainder_state_sequence[0] if remainder_state_sequence else None
-    if first is not None and isinstance(first, (list, tuple)) and len(first) > 0 and isinstance(first[0], (list, tuple, int)):
-        # looks like list of sequences of states
-        sequences = list(remainder_state_sequence)  # type: ignore
+    if first is not None and _is_vector_state(first):
+        sequences = [remainder_state_sequence]
+    elif first is not None and isinstance(first, (list, tuple)) and len(first) > 0 and _is_vector_state(first[0]):
+        sequences = list(remainder_state_sequence)
     else:
-        sequences = [remainder_state_sequence]  # type: ignore
+        sequences = [remainder_state_sequence]
 
     counts: dict = defaultdict(lambda: defaultdict(int))
     n_trans = 0
     for seq in sequences:
-        seq = list(seq)
-        if len(seq) <= lag:
+        seq_list = [tuple(int(v) for v in s) if isinstance(s, (list, tuple)) else s for s in seq]
+        if len(seq_list) <= lag:
             continue
-        for i in range(len(seq) - lag):
-            prev = seq[i]
-            curr = seq[i + lag]
-            # make hashable key
-            pkey = tuple(prev) if isinstance(prev, (list, tuple)) else prev
-            ckey = tuple(curr) if isinstance(curr, (list, tuple)) else curr
+        for i in range(len(seq_list) - lag):
+            prev = seq_list[i]
+            curr = seq_list[i + lag]
+            pkey = prev if isinstance(prev, tuple) else prev
+            ckey = curr if isinstance(curr, tuple) else curr
             counts[pkey][ckey] += 1
             n_trans += 1
 
-    # row-normalized probs
     probs: dict = {}
     for pkey, tos in counts.items():
         tot = sum(tos.values())
@@ -171,8 +175,8 @@ def transition_matrix(
             probs[pkey] = {ckey: cnt / tot for ckey, cnt in tos.items()}
 
     return {
-        "counts": dict(counts),  # outer dict of dicts, inner may stay defaultdict but ok for print
-        "probabilities": probs,
+        "counts": {k: dict(v) for k, v in counts.items()},
+        "probabilities": {k: dict(v) for k, v in probs.items()},
         "lag": lag,
         "n_transitions": n_trans,
     }
