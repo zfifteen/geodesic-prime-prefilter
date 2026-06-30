@@ -252,6 +252,41 @@ def test_compute_residue_histograms_on_enriched_tiny():
     assert any_slot0, "no slot-0 (mod-2) data produced"
 
 
+def test_transition_matrix_on_tiny_near_end_sequences():
+    """Direct exercise of transition_matrix on real enriched tiny remainder vectors (near-termination per gap).
+
+    Verifies acceptance: returns dict with counts + probabilities, numeric values, works on seq of tuples, no NotImplemented.
+    """
+    import json
+    from pathlib import Path
+    from correlation_analysis import transition_matrix
+
+    recs = [json.loads(l) for l in Path("research/remainders/correlations/enriched/tiny_enriched.jsonl").read_text().splitlines() if l.strip()]
+    # build near-end seqs like verification
+    seqs = []
+    current_gap = []
+    last_p = None
+    for r in sorted(recs, key=lambda x: (x["p"], x["k"])):
+        if r["p"] != last_p:
+            if len(current_gap) > 3:
+                seqs.append([tuple(r["remainder_vector"]) for r in current_gap[-5:]])
+            current_gap = []
+            last_p = r["p"]
+        current_gap.append(r)
+    if current_gap and len(current_gap) > 3:
+        seqs.append([tuple(r["remainder_vector"]) for r in current_gap[-5:]])
+    assert len(seqs) > 0
+    res = transition_matrix(seqs[0], lag=1)
+    assert isinstance(res, dict)
+    assert "counts" in res and "probabilities" in res
+    assert res["lag"] == 1
+    assert res["n_transitions"] > 0
+    # at least one count and a prob between 0-1
+    first_from = next(iter(res["counts"]))
+    first_to = next(iter(res["counts"][first_from]))
+    assert res["counts"][first_from][first_to] >= 1
+    assert 0.0 <= res["probabilities"][first_from][first_to] <= 1.0
+
 
 if __name__ == "__main__":
     # Allow direct execution for quick smoke in research flow.

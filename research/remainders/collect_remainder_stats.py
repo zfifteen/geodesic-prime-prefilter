@@ -179,6 +179,18 @@ def build_records_for_gap(
             "remainder_vector": rem_vec,
             "moduli_version": "M_v1",
         }
+        # Emit enriched fields (aliases + derived scalars) so collector output
+        # includes plan schema for downstream analysis without separate step.
+        # Uses the same logic as enrich_remainder_records (duplicated minimal
+        # to avoid import cycles in research script layout).
+        vec = list(rem_vec)
+        rec["termination_distance"] = dist
+        rec["is_gwr_winner"] = bool(is_current_min_d)
+        rec["num_zeros_in_vector"] = sum(1 for r in vec if r == 0)
+        rec["residue_sum_parity"] = sum(vec) % 2
+        rec["dist_nearest_zero_mod30"] = vec[4] if len(vec) > 4 else None  # 30 at idx4
+        rec["dist_nearest_zero_mod210"] = vec[5] if len(vec) > 5 else None
+        rec["coprime_to_210"] = (len(vec) >= 4 and all(r != 0 for r in vec[:4]))
         records.append(rec)
 
     return records
