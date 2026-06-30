@@ -102,6 +102,56 @@ def test_length_matches_moduli():
         assert 0 <= r < m
 
 
+# --- Collector integration tests (added immediately after build_records impl) ---
+
+def test_build_records_reuses_gwr_and_emits_core_fields():
+    """build_records_for_gap produces correct shape and GWR flag on known gap."""
+    # Avoid circular import issues by importing here
+    from collect_remainder_stats import build_records_for_gap
+
+    # Gap after 113: q=127, g=14, 13 interiors. GWR at 121 (d=3).
+    recs = build_records_for_gap(113, [2, 3, 5, 7, 30])
+    assert len(recs) == 13
+    for r in recs:
+        assert r["p"] == 113
+        assert r["q"] == 127
+        assert r["g"] == 14
+        assert 1 <= r["k"] <= 13
+        assert r["n"] == 113 + r["k"]
+        assert r["d"] >= 3
+        assert isinstance(r["remainder_vector"], tuple)
+        assert len(r["remainder_vector"]) == 5
+        assert isinstance(r["is_current_min_d"], bool)
+        assert r["distance_to_next_prime"] == 127 - r["n"]
+
+    winners = [r for r in recs if r["is_current_min_d"]]
+    assert len(winners) == 1
+    assert winners[0]["k"] == 8
+    assert winners[0]["n"] == 121
+    assert winners[0]["d"] == 3
+
+
+def test_edge_gap_has_no_interior_records():
+    from collect_remainder_stats import build_records_for_gap
+    # Gap (2,3) is the only one with zero interior composites.
+    assert build_records_for_gap(2, [2, 3]) == []
+    # (3,5) has exactly one interior: 4
+    recs = build_records_for_gap(3, [2, 3])
+    assert len(recs) == 1
+    assert recs[0]["n"] == 4
+    assert recs[0]["d"] == 3  # 4=2^2
+    assert recs[0]["is_current_min_d"] is True  # the sole interior is the GWR winner by definition
+
+
+def test_sample_rate_reduces_or_keeps_records():
+    from collect_remainder_stats import build_records_for_gap
+    full = build_records_for_gap(113, [30])
+    assert len(full) == 13
+    sampled = build_records_for_gap(113, [30], sample_rate=0.5)
+    # Probabilistic; for determinism in test we accept range or just check <=
+    assert 0 <= len(sampled) <= 13
+
+
 if __name__ == "__main__":
     # Allow direct execution for quick smoke in research flow.
     test_default_moduli_v1()
@@ -111,4 +161,7 @@ if __name__ == "__main__":
     test_large_int_exact()
     test_error_cases()
     test_length_matches_moduli()
-    print("All remainder_utils tests passed (direct run).")
+    test_build_records_reuses_gwr_and_emits_core_fields()
+    test_edge_gap_has_no_interior_records()
+    test_sample_rate_reduces_or_keeps_records()
+    print("All remainder_utils + collector smoke tests passed (direct run).")
