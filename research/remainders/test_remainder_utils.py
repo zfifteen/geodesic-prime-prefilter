@@ -238,6 +238,20 @@ def test_enrich_jsonl_on_real_tiny_val(tmp_path):
     assert rec1["termination_distance"] == rec1.get("distance_to_next_prime")
 
 
+def test_compute_residue_histograms_on_enriched_tiny():
+    import json
+    from pathlib import Path
+    from correlation_analysis import compute_residue_histograms
+
+    recs = [json.loads(l) for l in Path("research/remainders/correlations/enriched/tiny_enriched.jsonl").read_text().splitlines() if l.strip()][:100]
+    h = compute_residue_histograms(recs)
+    assert "groups" in h
+    assert len(h["groups"]) > 0
+    # There should be some entries for slot 0 (mod 2)
+    any_slot0 = any(0 in g.get("slots", {}) for g in h["groups"].values())
+    assert any_slot0, "no slot-0 (mod-2) data produced"
+
+
 
 if __name__ == "__main__":
     # Allow direct execution for quick smoke in research flow.
