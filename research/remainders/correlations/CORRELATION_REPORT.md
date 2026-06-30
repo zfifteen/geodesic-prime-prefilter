@@ -83,3 +83,41 @@ Any signal above threshold → concrete suggestion (e.g. "add residue != X mod 2
 See PLAN.md continuation table.
 
 **End of current report section.** (Append new dated blocks for larger runs.)
+
+## Inspection of Enriched Records and Marginal Tables (Tiny Set, 490 records / 108 gaps, p<=600)
+
+Inspected via direct python analysis on `enriched/tiny_enriched.jsonl` and `tiny_demo/mod2_marginal_sample.md` (full outputs saved to scratch).
+
+### Key Patterns Observed (measurement only)
+- Strong even bias (remainder 0 mod 2): 299/490 records (61%) have slot-0 == 0. This holds across position bins; in early positions (k/g < 0.3) and late (k/g > 0.7) the bias is pronounced because even n > 2 inside gaps after odd p are always divisible by 2.
+  - Near-end (k/g>0.7): 90 zeros vs 28 ones mod 2.
+  - Concrete from mod-2 marginal table: multiple pos0/pos1/pos2 bins show freq=1.000 for res=0 when g small.
+- Low coprime-to-210 rate: only 31/490 (~6.3%) interiors are coprime to 210 (first 4 residues nonzero). Most records align with at least one small prime factor.
+  - Example high-zero small-gap: p=29, k=1, g=2, remainder_vector=[0,0,0,2,0,30,30], num_zeros_in_vector=4 (heavily factored early in tiny gap).
+- num_zeros_in_vector avg 1.48 (min 0, max 6). No dramatic shift between early positions (avg 1.56) and late (avg 1.55) in this regime of mostly small gaps (max g=18).
+- Derived dists: mod30 avg ~14.4, mod210 avg ~102; many low values indicate frequent small-prime hits.
+- Moduli vector always length 7 (M_v1).
+
+These are consistent with divisor-centric view (many multiples of small primes are composites) but quantify the modular "density" inside gaps. No schema breakage or unexpected zeros in derived fields on the 490 records.
+
+(Full inspection script output captured in SCRATCH/inspect_enriched.txt for reproducibility.)
+
+Next: sequential transitions to be added after transition_matrix impl.
+
+## Sequential transitions on tiny set
+
+Implemented and exercised `transition_matrix` on near-termination sequences (last up to 5 interiors per gap) extracted from the 490 enriched records.
+
+55 qualifying gaps produced sequences. For a representative seq: 30 transitions, with self-loops on higher residues (e.g. multiples that persist) and variety on low residues.
+
+Mod-2 projection of transitions in near-end (aggregated over many seqs):
+- (0,1): 110 , (1,0): 110
+- This alternation is deterministic for consecutive integers in gaps after odd primes (even/odd alternate), confirming remainder vectors capture the wheel structure. No "same parity" transitions observed in consecutive steps.
+
+Full transition run captured in SCRATCH/seq_trans_sample.txt and SCRATCH/transition_verify.txt (for gating).
+
+Example probabilities from one near-end seq (first few):
+{0: {0: 0.14, 1:0.14, 2:0.29, 4:0.29, 28:0.14}, ... higher residues tend to self-transition when g small (e.g. 24->24 freq 1.0)}
+
+These patterns are measurement evidence of modular regularity inside small gaps; they do not override GWR/divisor selection.
+

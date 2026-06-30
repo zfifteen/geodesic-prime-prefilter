@@ -117,7 +117,7 @@ def mutual_information(
 
 
 def transition_matrix(
-    remainder_state_sequence: Sequence[tuple[int, ...] | int],
+    remainder_state_sequence: Sequence[tuple[int, ...] | int | Sequence[int]],
     lag: int = 1,
     state_key: str = "discretized",
 ) -> dict[str, Any]:
@@ -126,15 +126,56 @@ def transition_matrix(
 
     Especially interesting for the final 5-10 positions before termination.
 
-    Phase-1:
-    - Accept either full vectors or already-discretized integers.
-    - Count (state_t -> state_{t+lag}).
-    - Return counts + row-normalized probabilities.
-    - Also support extraction of 'near_end' sequences from full per-gap records.
+    Supports:
+    - A single sequence of states (vectors as tuples or discretized ints).
+    - For convenience when passed a list of per-gap near-end sequences, the
+      function will aggregate transitions across all provided sequences.
+    Returns dict with 'counts' (from_state -> to_state -> int), 'probabilities'
+    (row-normalized), 'lag', 'n_transitions'.
+    Keys for vector states are tuples (hashable); ints for discretized.
     """
-    raise NotImplementedError(
-        "Phase-1 skeleton: transition_matrix not implemented."
-    )
+    if lag < 1:
+        raise ValueError("lag must be >=1")
+    if not remainder_state_sequence:
+        return {"counts": {}, "probabilities": {}, "lag": lag, "n_transitions": 0}
+
+    # Normalize input: support list-of-seqs (multiple gaps) or single seq
+    sequences: list[Sequence] = []
+    first = remainder_state_sequence[0] if remainder_state_sequence else None
+    if first is not None and isinstance(first, (list, tuple)) and len(first) > 0 and isinstance(first[0], (list, tuple, int)):
+        # looks like list of sequences of states
+        sequences = list(remainder_state_sequence)  # type: ignore
+    else:
+        sequences = [remainder_state_sequence]  # type: ignore
+
+    counts: dict = defaultdict(lambda: defaultdict(int))
+    n_trans = 0
+    for seq in sequences:
+        seq = list(seq)
+        if len(seq) <= lag:
+            continue
+        for i in range(len(seq) - lag):
+            prev = seq[i]
+            curr = seq[i + lag]
+            # make hashable key
+            pkey = tuple(prev) if isinstance(prev, (list, tuple)) else prev
+            ckey = tuple(curr) if isinstance(curr, (list, tuple)) else curr
+            counts[pkey][ckey] += 1
+            n_trans += 1
+
+    # row-normalized probs
+    probs: dict = {}
+    for pkey, tos in counts.items():
+        tot = sum(tos.values())
+        if tot > 0:
+            probs[pkey] = {ckey: cnt / tot for ckey, cnt in tos.items()}
+
+    return {
+        "counts": dict(counts),  # outer dict of dicts, inner may stay defaultdict but ok for print
+        "probabilities": probs,
+        "lag": lag,
+        "n_transitions": n_trans,
+    }
 
 
 def feature_correlation_matrix(
