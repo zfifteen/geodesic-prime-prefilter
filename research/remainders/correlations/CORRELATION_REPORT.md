@@ -119,3 +119,26 @@ Full results and gating output saved to SCRATCH.
 
 These are direct measurements on the ordered gap state using remainder coordinates.
 
+## Sequential repeats / intra-gap memory
+
+Core Insight under test: remainder vectors repeat earlier states in the same gap more frequently near termination, building path-dependent "modular memory" that makes GWR-aligned termination more likely.
+
+Analysis on the 490-record tiny enriched set (108 gaps, max g=18, M_v1 vectors):
+
+- Using exact full-vector equality: 0 gaps exhibited any intra-gap repeat of a remainder vector at any position (near-end or middle).
+- repeat_freq_near_end: 0.0
+- repeat_freq_middle: 0.0
+- All 108 gaps classified as "without late repeats".
+- Among them, rate at which next prime arrives immediately after GWR min-d position: 34/108 ≈ 0.315 (31.5%)
+
+No evidence of "accumulating modular memory" via exact vector repeats in this regime. The zero rate of repeats means we cannot compare "with vs without" classes for GWR alignment sharpening.
+
+This falsifies the claim that remainder sequences start repeating themselves near the end (at least for exact 7-tuple matches on primorial moduli in small gaps). Consecutive composites produce shifted residue tuples; within g<=18 the period (2310) prevents exact cycle matches.
+
+A per-gap 'late_repeat_count' feature was computed for the last 3 positions of each gap and written to correlations/repeat_feature_sample.md (all values 0 in this set).
+
+PGS measurement framing: all figures are empirical counts on the observed finite surface of 108 small gaps. They do not alter proved GWR or next-prime rules.
+
+Captured execution output: {SCRATCH}/repeat_stats.txt
+
+
