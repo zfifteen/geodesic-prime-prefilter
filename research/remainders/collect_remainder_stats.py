@@ -215,9 +215,34 @@ def collect_gaps(
     - flush, close
     - return {"gaps": gaps_processed, "records": records_emitted, ...}
     """
-    raise NotImplementedError(
-        "collector scaffold: collect_gaps not implemented yet"
-    )
+    if max_p < 2:
+        raise ValueError("max_p must be at least 2")
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    # Truncate for clean run (plan emphasizes reproducibility; caller can append if needed)
+    with output_path.open("w", encoding="utf-8") as f:
+        p = 2
+        gaps_processed = 0
+        records_emitted = 0
+        while p <= max_p:
+            gap_recs = build_records_for_gap(p, moduli, sample_rate)
+            for rec in gap_recs:
+                json.dump(rec, f, separators=(",", ":"))
+                f.write("\n")
+                records_emitted += 1
+            # Advance using the same GWR walk (deterministic, PGS reuse)
+            profile = gwr_next_gap_profile(p)
+            p = int(profile["next_prime"])
+            gaps_processed += 1
+
+    return {
+        "gaps_processed": gaps_processed,
+        "records_emitted": records_emitted,
+        "max_p": max_p,
+        "sample_rate": sample_rate,
+        "moduli": moduli,
+    }
 
 
 def compute_basic_aggregates(
@@ -235,10 +260,40 @@ def compute_basic_aggregates(
 
     Returns nested dict suitable for JSON summary.
     """
-    # Scaffold only.
-    raise NotImplementedError(
-        "collector scaffold: compute_basic_aggregates not implemented yet"
-    )
+    if records is None and jsonl_path is not None:
+        records = []
+        with jsonl_path.open("r", encoding="utf-8") as f:
+            for line in f:
+                if line.strip():
+                    records.append(json.loads(line))
+
+    if not records:
+        return {"total_records": 0}
+
+    total = len(records)
+    gwr_winners = [r for r in records if r.get("is_current_min_d")]
+
+    # Marginal per first few moduli (position 0=mod2, 1=mod3, ...)
+    # Use the length of first vector to know how many slots.
+    mlen = len(records[0]["remainder_vector"]) if records else 0
+    marginal: dict[int, dict[int, int]] = {i: defaultdict(int) for i in range(mlen)}
+    gwr_marginal: dict[int, dict[int, int]] = {i: defaultdict(int) for i in range(mlen)}
+
+    for r in records:
+        vec = r["remainder_vector"]
+        is_gwr = r.get("is_current_min_d", False)
+        for i, res in enumerate(vec):
+            marginal[i][res] += 1
+            if is_gwr:
+                gwr_marginal[i][res] += 1
+
+    return {
+        "total_records": total,
+        "gwr_winner_records": len(gwr_winners),
+        "gwr_fraction": len(gwr_winners) / total if total else 0.0,
+        "marginal_overall": {str(i): dict(counts) for i, counts in marginal.items()},
+        "marginal_at_gwr": {str(i): dict(counts) for i, counts in gwr_marginal.items()},
+    }
 
 
 def write_run_log(
@@ -252,8 +307,21 @@ def write_run_log(
     Records exact command, python version, date, moduli used,
     machine hint, summary counts.
     """
-    # Scaffold.
-    raise NotImplementedError("collector scaffold: write_run_log not yet")
+    log_path.parent.mkdir(parents=True, exist_ok=True)
+    import platform
+    import sys as _sys
+
+    entry = {
+        "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+        "command_line": command_line,
+        "python_version": _sys.version,
+        "platform": platform.platform(),
+        "params": params,
+        "summary": summary,
+        "note": "M1 Max reference (per plan Phase 4); exact reproduction requires same moduli version and collector version.",
+    }
+    with log_path.open("a", encoding="utf-8") as lf:
+        lf.write(json.dumps(entry, separators=(",", ":")) + "\n")
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -304,10 +372,55 @@ def main(argv: list[str] | None = None) -> int:
     )
     args = parser.parse_args(argv)
 
-    # Scaffold body: validation, setup, delegation described in comments.
-    # Implementation added one piece at a time with tests.
-    print("collector scaffold: main not fully implemented; see comments.")
-    print(f"Parsed: max_p={args.max_p}, moduli_spec={args.moduli}, out={args.output_dir}")
+    if args.sample_rate <= 0 or args.sample_rate > 1.0:
+        print("ERROR: --sample-rate must be in (0, 1.0]", file=sys.stderr)
+        return 2
+
+    moduli = parse_moduli(args.moduli)
+    out_dir: Path = args.output_dir
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    raw_path = out_dir / "raw_records.jsonl"
+    summary_path = out_dir / "summary.json"
+    log_path = out_dir / "RUN_LOG.md"  # note: .md but we append JSON lines for easy parse; or plain text
+
+    cmdline = " ".join(sys.argv) if argv is None else " ".join(["collect_remainder_stats.py"] + list(map(str, argv or [])))
+
+    summary = collect_gaps(
+        max_p=args.max_p,
+        moduli=moduli,
+        output_path=raw_path,
+        sample_rate=args.sample_rate,
+    )
+
+    # For the initial validation runs we keep aggregates in memory friendly size.
+    # For huge runs, stream in a follow-up pass.
+    aggregates = compute_basic_aggregates(jsonl_path=raw_path)
+
+    full_summary = {
+        "collector_version": "remainders-v0.1",
+        "params": {
+            "max_p": args.max_p,
+            "moduli": moduli,
+            "moduli_version": "M_v1",
+            "sample_rate": args.sample_rate,
+        },
+        "summary": summary,
+        "aggregates": aggregates,
+    }
+
+    with summary_path.open("w", encoding="utf-8") as sf:
+        json.dump(full_summary, sf, indent=2)
+        sf.write("\n")
+
+    write_run_log(log_path, cmdline, full_summary["params"], full_summary["summary"])
+
+    print("Collection complete.")
+    print(f"  gaps: {summary['gaps_processed']}")
+    print(f"  records: {summary['records_emitted']}")
+    print(f"  raw: {raw_path}")
+    print(f"  summary: {summary_path}")
+    print(f"  run_log: {log_path}")
     return 0
 
 
