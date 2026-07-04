@@ -240,11 +240,9 @@ def _c_chamber_reset_certificate(anchor: gmpy2.mpz, bound: int) -> dict | None:
     """
     if _lib is None:
         return None
-    abits = int(anchor).bit_length()
-    if abits > 90:
-        # C bridge exercised at call site; elide heavy foreign call for this size
-        # (current C impl returns nonzero st for these anchors under the bound).
-        return None
+    # 256-bit expansion: always attempt the C call (no bit-length elision of pgs_resolve_from_integer).
+    # The guard was removed so that _c path is exercised for 128/256 anchors (limitation note is still
+    # produced if st != 0, which is expected for these cases).
     try:
         in_p, _ = _alloc_mpz()
         _set_mpz_from_str(in_p, str(int(anchor)))
