@@ -2796,6 +2796,12 @@ def test_committed_output_matches_certificate_pair():
     n_expected_surv = sum(1 for v in expected_has_surv.values() if v)
     assert len(committed_surv) == n_expected_surv
 
+    # strict: diagnostic must have all 5 cases (no more "only 2 cases")
+    committed_diag = read_jsonl(out_dir / "diagnostic_rows.jsonl")
+    assert len(committed_diag) == 5, f"diagnostic must have 5 cases, got {len(committed_diag)}"
+    diag_ids = {d["case_id"] for d in committed_diag}
+    assert all(cid in diag_ids for cid in [c.case_id for c in cases]), "diagnostic missing some cases"
+
 
 def test_engine_emits_separate_structural_certs_sidecar_for_resolved():
     """Real path emits sidecar certs (GWR carriers) separate from minimal class output. AC2."""
