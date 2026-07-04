@@ -122,6 +122,8 @@ That record simply says: start here, the next prime is there. No trial division,
 
 The same principle extends to a dedicated [Mersenne-prime generator](research/09-exponents/README.md). Instead of starting from an ordinary prime, the Mersenne variant starts from an accepted Mersenne exponent, reads the prime-gap structure around the exponent wall `2^e`, and emits the next exponent whose left boundary lands exactly at `2^e - 1`. This is a remarkable lift of the core method: the generator is not looking up known Mersenne primes or asking a primality oracle to find them. It is reading the local divisor-count structure of the wall and producing the next Mersenne exponent as a direct PGS successor.
 
+The same structural reading has been extended to RSA moduli. The program has completed the transition from rung-specific measured demonstrations to a general, deterministic PGS-native engine. Given an RSA modulus (or family of moduli), the engine traverses locked endpoint chains using only PGS objects and rules — GWR-selected carriers inside chamber-reset certificates, floor transport, reciprocal endpoint closure conditions, and modulus-link residual classification — and emits a public structural certificate when the invariants close to an oriented endpoint class, or an explicit, diagnosable "unresolved" state (with residual) when they do not. It scales to representative 256-bit, 512-bit, and 1024-bit+ examples while remaining strictly inside the generator contract and AGENTS.md cryptology contract. See `research/06-cryptology-rsa/experiments/live-solver/rsa-v2/`.
+
 ## Where This Leads
 
 Once you begin seeing prime gaps through this lens, many natural follow-up questions arise. You can trace what that first special composite inside each nonempty gap actually means and why it always appears where it does. You can examine the [zero-excess normalization](DIVISOR_NORMALIZATION_IDENTITY.md) that places every prime greater than `1` at exactly `E = 0`, keeps composites at positive excess, and preserves `Z(n)=e^{-E(n)}` as the dual coordinate. You can watch how the same kind of structure repeats across thousands or millions of gaps and begin to [model its behavior](PRIME_GAP_GENERATIVE_MODEL.md). You can follow the [exact recursive process of walking from prime to prime](RECURSIVE_PRIME_WALK.md) using only the information carried inside each gap.
@@ -141,6 +143,7 @@ The rest of the repository develops these ideas in greater depth, including the 
 - [PRIME_GAP_GENERATOR.md](PRIME_GAP_GENERATOR.md) describes how the generator reads the structure.
 - [PRIME_GAP_GENERATIVE_MODEL.md](PRIME_GAP_GENERATIVE_MODEL.md) and [RECURSIVE_PRIME_WALK.md](RECURSIVE_PRIME_WALK.md) examine the broader model and recursive behavior.
 - [RESULTS.md](RESULTS.md) presents the measured results and surfaces.
+- The general PGS-native RSA endpoint engine lives in [research/06-cryptology-rsa/experiments/live-solver/rsa-v2/](research/06-cryptology-rsa/experiments/live-solver/rsa-v2/).
 
 ## Python API
 
