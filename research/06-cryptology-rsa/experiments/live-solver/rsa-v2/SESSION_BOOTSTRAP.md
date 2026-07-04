@@ -13,12 +13,19 @@ moduli. It resolves the 40-bit rung by reciprocal deadline signature correction
 and the 64-bit rung by mutual certificate closure. It leaves the 50-bit rung
 unresolved by reciprocal carrier misalignment.
 
-Current official state:
+256-bit expansion (2026-07): added 128-bit (127-bit balanced scaleup-curated) and
+256-bit rungs. New cases return explicit unresolved_by_missing_lower_certificate
+(high-scale C path exercised; certificates not resolved at those anchors under
+current bound/chamber). Old cases unchanged. See plan.md and output/.
+
+Current official state (real shipped run on extended ladder):
 
 ```text
 rsa_v2_40bit_static_001 -> endpoint_class_by_reciprocal_deadline_signature_correction
 rsa_v2_50bit_static_001 -> unresolved_by_reciprocal_carrier_misalignment
 rsa_v2_64bit_static_001 -> endpoint_class_by_mutual_certificate_closure
+rsa_v2_128bit_static_001 -> unresolved_by_missing_lower_certificate
+rsa_v2_256bit_static_001 -> unresolved_by_missing_lower_certificate
 ```
 
 The current transported-story result is proof-facing:

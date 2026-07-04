@@ -14,6 +14,16 @@
       "case_id": "rsa_v2_64bit_static_001",
       "description": "64-bit deterministic RSA-like ladder rung generated outside the solver.",
       "N": "10376454699372036973"
+    },
+    {
+      "case_id": "rsa_v2_128bit_static_001",
+      "description": "128-bit scaleup-curated ladder rung (s127_balanced_127 from scaleup_corpus; curated for 256-bit expansion; provenance in generated/ and scaleup_corpus.json)",
+      "N": "85070591730234615902737140005361155371"
+    },
+    {
+      "case_id": "rsa_v2_256bit_static_001",
+      "description": "256-bit scaleup-curated ladder rung (s256_balanced_1 from scaleup_corpus; curated for 256-bit expansion; provenance in generated/ and scaleup_corpus.json)",
+      "N": "57896044618658097711785492504343955952566120322525139588585136554122987719313"
     }
   ]
 }

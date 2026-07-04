@@ -1,0 +1,20 @@
+{
+  "generator": "curated from research/06-cryptology-rsa/scripts/scaleup_corpus.json (generate_ladder_rung impractical for 64-bit prime search time)",
+  "case_ids": ["rsa_v2_128bit_static_001", "rsa_v2_256bit_static_001"],
+  "description": "Materialized for 256-bit expansion plan using balanced cases from scaleup corpus. 128-bit uses the 127-bit balanced entry (closest available).",
+  "provenance_128": {
+    "source": "scaleup_corpus.json:127.s127_balanced_127",
+    "case_bits": 127,
+    "n": "85070591730234615902737140005361155371",
+    "p": "9223372036854775783",
+    "q": "9223372036854775837"
+  },
+  "provenance_256": {
+    "source": "scaleup_corpus.json:256.s256_balanced_1",
+    "case_bits": 256,
+    "n": "57896044618658097711785492504343955952566120322525139588585136554122987719313",
+    "p": "240615969168004511545033772477625061021",
+    "q": "240615969168004511545033772477625061253"
+  },
+  "notes": "Curated per plan.md allowance for generate impracticality. Ladder uses 'static' naming for consistency with 40/64. Full scaleup family details in scaleup_corpus.json."
+}

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PGS RSA v2 — 256-Bit Scale Expansion Plan</title>
+<style>
+:root {
+  --bg: #0f1117; --fg: #e6e6e6; --accent: #4da3ff; --good: #22c55e; --warn: #f59e0b; --bad: #ef4444;
+  --card: #161a23; --border: #2a2f3a;
+}
+body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--fg); line-height: 1.55; margin: 0; padding: 0; }
+header { background: #11151f; border-bottom: 1px solid var(--border); padding: 1.5rem 2rem; }
+h1 { margin: 0 0 .25rem; font-size: 2rem; }
+h2 { border-bottom: 2px solid var(--accent); padding-bottom: .25rem; margin-top: 2rem; color: var(--accent); }
+h3 { color: #a5b4fc; }
+.container { max-width: 1080px; margin: 0 auto; padding: 2rem; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+th, td { border: 1px solid var(--border); padding: .5rem .75rem; text-align: left; }
+th { background: #1f2430; }
+.status-pass { color: var(--good); font-weight: 600; }
+.status-block { color: var(--bad); font-weight: 600; }
+ul.checklist { list-style: none; padding-left: 0; }
+ul.checklist li { padding: .25rem 0 .25rem 1.75rem; position: relative; }
+ul.checklist li:before { content: "☐"; position: absolute; left: 0; color: var(--accent); }
+ul.checklist li.done:before { content: "☑"; color: var(--good); }
+pre, code { background: #0a0c12; padding: .2rem .4rem; border-radius: 4px; font-size: .9em; }
+pre { padding: 1rem; overflow-x: auto; border: 1px solid var(--border); }
+.frame { font-family: ui-monospace, monospace; background: #0a0c12; padding: .75rem; border-left: 4px solid var(--accent); margin: 1rem 0; }
+.warning { background: #2a1f12; border: 1px solid #f59e0b; padding: .75rem 1rem; border-radius: 6px; }
+.success { background: #12251a; border: 1px solid var(--good); }
+.meta { color: #9aa0b0; font-size: .9rem; }
+.section { margin-bottom: 2.5rem; }
+.milestone { display: flex; gap: 1rem; align-items: flex-start; }
+.milestone .num { background: var(--accent); color: #111; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+  <h1>PGS RSA v2: 256-Bit Scale Expansion</h1>
+  <p class="meta">Goal-oriented implementation plan • research/06-cryptology-rsa • 2026-07-04</p>
+  <p><strong>Primary target:</strong> Extend the live reciprocal PGSPG endpoint-chain certificate runner and its calibration ladder from the current 40/64-bit toy rungs to 128-bit and 256-bit scales while preserving the exact public-inference + separate-audit contract and PGS-native reasoning frame.</p>
+</div>
+</header>
+
+<div class="container">
+
+<div class="card success">
+<h2>Goal</h2>
+<p>Make the deterministic public PGS endpoint-structure mechanism (locked endpoint chain → floor transport → reciprocal closure → structural certificate) produce auditable results on cryptographically relevant 128-bit and 256-bit moduli using the same live v2 runner used for the 40-bit and 64-bit successes. Deliver explicit status for each new rung: resolved (with closure reason) or unresolved (with precise PGS-native reason), supported by full diagnostic sidecars.</p>
+<p><strong>Strongest supported framing (per current contract):</strong> The mathematical objects are scale-invariant in definition. The practical limit is the cost and fidelity of PGSPG reset-certificate construction at the required anchors.</p>
+</div>
+
+<h2>Success Criteria (Measurable)</h2>
+<table>
+  <thead>
+    <tr><th>Milestone</th><th>Definition of Done</th><th>Evidence Artifacts</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>M1: 128-bit ladder rung</strong></td>
+      <td class="status-pass">One (or more) 128-bit case(s) added to ladder_spec + audit_spec. Fixtures rebuilt. Runner executes end-to-end. Produces either a public endpoint class or a clean unresolved_by_* status. 40/64-bit regressions still pass.</td>
+      <td>Updated ladder_spec.json, audit_spec.json, fixtures/*.jsonl, summary.json, inference_rows.jsonl, audit_results.csv</td>
+    </tr>
+    <tr>
+      <td><strong>M2: 256-bit ladder rung</strong></td>
+      <td class="status-pass">Same for 256-bit case(s). Runner processes 256-bit N without crash. Certificate derivation (via high-scale or hybrid) is exercised or explicitly guarded with honest status.</td>
+      <td>Same + transport metrics, chain length recorded, new rows in diagnostic outputs</td>
+    </tr>
+    <tr>
+      <td><strong>M3: Diagnostic parity</strong></td>
+      <td>Full set of existing diagnostic surfaces produced for new rungs (transport tightness, deadline margins, carrier offsets, signatures, tail structure, LRDS where applicable). Comparison table vs 40/64-bit included.</td>
+      <td>Extended diagnose_transport_metrics output, new or updated analysis .md, GRAMMAR / sidecar rows</td>
+    </tr>
+    <tr>
+      <td><strong>M4: Status declaration</strong></td>
+      <td>Each new rung has a documented status in SESSION_BOOTSTRAP / README style: resolved_by_... or unresolved_by_... with exact predicate failure. No prose claims factors without audit pass.</td>
+      <td>Updated SESSION_BOOTSTRAP.md, README.md, plan.html (this doc) with final table</td>
+    </tr>
+    <tr>
+      <td><strong>M5: High-scale bridge viability</strong></td>
+      <td>HighScaleBackend (or successor) returns non-None certificates containing usable tail/carrier/threat/deadline data for at least the anchors arising on the 256-bit cases, or a clear, instrumented limitation is recorded.</td>
+      <td>Working (or explicitly failing) calls in bridge; C build verification; cost numbers from gmp_divisor_state_cost_probe style</td>
+    </tr>
+    <tr>
+      <td><strong>M6: Test &amp; contract coverage</strong></td>
+      <td>All focused RSA v2 tests still pass (including new rung cases). Public-vs-audit separation enforced in new fixtures. No classical gates introduced in inference path.</td>
+      <td>pytest results (the exact command from research/06-cryptology-rsa/README.md)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Current Baseline (Exact)</h2>
+<div class="card">
+<ul>
+  <li>Live cases (post-expansion): 40-bit resolved deadline-sig true; 50-bit unresolved misalignment false; 64-bit mutual-closure true; 128-bit (127) unresolved_missing_lower false; 256-bit unresolved_missing_lower false. High-scale bridge relaxed and exercised.</li>
+  <li>Baseline before: rsa_v2_40bit_static_001 (resolved via deadline-signature correction, 0 steps, factor_found=true), rsa_v2_50bit (unresolved_by_reciprocal_carrier_misalignment), rsa_v2_64bit_static_001 (resolved via mutual_certificate_closure after 1162 steps, factor_found=true).</li>
+  <li>Runner: experiments/live-solver/rsa-v2/run_experiment.py + pgs_inference_backend.py + pgs_chamber_reset_state_certificate (Python) + partial HighScaleBackend (currently returns None for anchors &gt; 2^60).</li>
+  <li>Fixtures: data-ladder/rsa-v2/ (ladder_spec.json public-only + audit_spec.json separate + build_ladder_fixtures.py + generate_ladder_rung.py).</li>
+  <li>Scale infrastructure already present: scaleup_corpus.json contains multiple 256-bit balanced/moderate/challenge_like cases with known p/q; geofac_scaleup probes; C high-scale-pgs (Apple Silicon GMP) with certificate structs and research probes; large_bit_fixtures.jsonl.</li>
+  <li>High-scale gap: ctypes bridge guards &gt;60-bit and the extracted dicts currently lack full tail lists needed for deadline logic.</li>
+</ul>
+</div>
+
+<h2>Required PGS Frame (Non-Negotiable)</h2>
+<div class="frame">
+locked PGS endpoint chain → floor transport through modulus → reciprocal endpoint closure → modulus-link residual → structural certificate or unresolved state
+</div>
+<p>Public inference reads only N (plus deterministic previous_public_endpoint_before derived from PGS chamber mechanics). Audit (p, q) is strictly downstream. Classical methods (gcd, product, isprime inside inference, candidate search as chooser) are forbidden for endpoint-class emission.</p>
+
+<h2>Phased Execution Plan (Mandatory Authoring Discipline)</h2>
+
+<div class="milestone">
+  <div class="num">1</div>
+  <div>
+    <strong>Phase 1 — Scaffolding (comments + contracts only, zero logic changes)</strong><br>
+    Add new rung entries to ladder_spec.json and audit_spec.json (or run generate with provenance for 128-bit first).<br>
+    Extend fixtures builder tests with placeholders.<br>
+    Add detailed comment blocks in pgs_inference_backend.py and run_experiment.py describing 256-bit path, guard removal criteria, and full certificate extraction contract.<br>
+    Create skeleton diagnostic runner extension or new 256-case test functions (empty bodies or assert "not yet").<br>
+    Update this plan.html and SESSION_BOOTSTRAP.md with "M1/M2 in progress" markers.<br>
+    <em>Deliverable:</em> PR or branch containing only scaffolding + comments. Explicit review gate.
+  </div>
+</div>
+
+<div class="milestone">
+  <div class="num">2</div>
+  <div>
+    <strong>Phase 2 — Skeleton Review</strong><br>
+    Human + (optionally second-opinion skill) review of the scaffold.<br>
+    Confirm: no new inference logic, public/audit separation preserved, PGS frame quoted, high-scale bridge contract written down.<br>
+    Identify exact first unit to implement (e.g., "relax the 60-bit guard for a single 128-bit anchor test case and return minimal certificate").
+  </div>
+</div>
+
+<div class="milestone">
+  <div class="num">3</div>
+  <div>
+    <strong>Phase 3 — Incremental Implementation</strong><br>
+    One narrow unit at a time:<br>
+    • Unit A: 128-bit rung generation + fixture rebuild + runner dry-run (use SmallIntBackend if anchors fit, or minimal bridge).<br>
+    • Immediate test: extend focused pytest, run the exact validation command, commit if green.<br>
+    • Unit B: Bridge improvement — make HighScaleBackend call the real C pgs_resolve_from_integer for 128-bit and populate tail_after_reset_offsets, carrier fields, threat, deadline from the pgs_certificate_t struct.<br>
+    • Immediate test + cost measurement.<br>
+    • Unit C: 256-bit rung + full run + diagnostics.<br>
+    • After each unit: update summary/audit outputs and this plan's checklist.
+  </div>
+</div>
+
+<div class="milestone">
+  <div class="num">4</div>
+  <div>
+    <strong>Phase 4 — Full Self-Review + Polish</strong><br>
+    Against the repository Code Review Checklist (prose clarity, state separation, no drift, test coverage, shape warnings applied).<br>
+    Run full focused test suite.<br>
+    Produce final status table for all rungs (40/50/64/128/256).<br>
+    Archive or invalidate any temporary workarounds.<br>
+    Update continuity docs if the active target changes.
+  </div>
+</div>
+
+<h2>Detailed Task Breakdown</h2>
+
+<ol>
+  <li><strong>Inventory &amp; Environment</strong> — Confirm C high-scale-pgs builds cleanly (`make -C src/c/high-scale-pgs clean && make`), dylib loads, existing probes run on a 128-bit example. Record versions and any errors. (File: this plan + terminal log)</li>
+  <li><strong>Select / Generate 128-bit &amp; 256-bit rungs</strong> — Preferred: run generate_ladder_rung.py for 128-bit (prime-bits ~64) with new namespace and min-gap. For 256-bit, either same or curate 1–2 cases from scaleup_corpus (balanced + challenge_like) + hand-write provenance record. Add to ladder_spec.json + audit_spec.json. (Keep generation deterministic.)</li>
+  <li><strong>Fixture &amp; Test Scaffolding</strong> — Phase-1 only: extend build_ladder_fixtures tests and test_rsa_v2_scripts.py with comments for the new case_ids. Add assertions that public rows contain no p/q.</li>
+  <li><strong>Bridge Maturation (core technical work)</strong>
+    <ul>
+      <li>Remove or conditionalize the &gt; (1&lt;&lt;60) early returns in HighScaleBackend.</li>
+      <li>Implement full population of the returned dict from the C pgs_certificate_t (especially tail_after_reset_offsets by calling additional wheel / tail collection if needed, or extending C if the current resolve call populates tail_after_reset_count but not the array).</li>
+      <li>Handle previous_endpoint for 128/256-bit anchors (may require chunked high-scale chamber walks or integration with existing Python previous-endpoint logic hybridized).</li>
+      <li>Add instrumentation: count of C calls, time per certificate, size of anchor.</li>
+    </ul>
+  </li>
+  <li><strong>Runner Robustness</strong> — Ensure mpz handling, caches (CertificateCache, PreviousEndpointCache), and chain-walking logic tolerate 256-bit numbers without overflow or excessive memory. Add guard for very long chains with clean unresolved_by_endpoint_chain_boundary if needed.</li>
+  <li><strong>Execute on New Rungs</strong> — Rebuild fixtures. Run run_experiment.py. Run audit_experiment.py. Capture full output/summary. Run diagnose_transport_metrics.py and any other sidecar probes on the new cases.</li>
+  <li><strong>Analysis Pass</strong> — Compare transport metrics (deadline margins, lock offsets, carrier tightness, signature match) between resolved toy cases and new rungs. If 50-bit-style false positives appear, mine for additional PGS-native conditions (following the exact refinement process used before). Record as measured, not theorem.</li>
+  <li><strong>Cost &amp; Feasibility Surface</strong> — Run or extend C research probes (gmp_divisor_state_cost_probe, pgs_certificate_verifier) against anchors near the 256-bit isqrt and transported points. Publish numbers (time per chamber, memory).</li>
+  <li><strong>Regression &amp; Validation</strong> — Run the full focused pytest command from the chapter README. Update any large_bit_fixtures or solved challenge lists if they become part of the official ladder.</li>
+  <li><strong>Documentation &amp; Continuity</strong> — Update SESSION_BOOTSTRAP.md, README.md (research/06-cryptology-rsa and live-solver/rsa-v2), this plan.html with final measured status. Add 256-bit row to any competition memory docs if relevant.</li>
+</ol>
+
+<h2>Technical Considerations &amp; Known Surfaces</h2>
+<ul>
+  <li><strong>Backend choice:</strong> get_backend_for_anchor already routes on size. SmallIntBackend (Python divisor segment + pgs_chamber) will be used for 128-bit if anchors &lt; some practical Python limit; HighScale for 256-bit.</li>
+  <li><strong>Certificate completeness:</strong> Deadline logic depends on tail_after_reset_offsets and lower_d_threat_offset. Current HighScale dict hard-codes empty lists — this must be fixed before any 256-bit deadline-signature result can be claimed.</li>
+  <li><strong>Generation:</strong> generate_ladder_rung.py is the canonical deterministic method for "static" ladder rungs. scaleup_corpus is useful for challenge-like variety and blind-routing experiments.</li>
+  <li><strong>Performance:</strong> With candidate_bound=128 the local segment is tiny; cost is dominated by number of chain steps × cost of one chamber certificate. Expect to measure and publish this.</li>
+  <li><strong>Existing 256 work:</strong> Align (do not duplicate) with pgs_geofac_scaleup, 256 center priors, and competition probes. The certificate runner is a different (stricter, public-structure) lens.</li>
+</ul>
+
+<h2>Risks &amp; Shape Guards</h2>
+<div class="warning">
+<strong>Shape feels wrong if:</strong><br>
+• Any inference path inside run_experiment or pgs_inference_backend calls gcd, product, isprime as a chooser, or reads audit factors.<br>
+• A new rung is declared "solved" before audit_experiment reports factor_found=true.<br>
+• High-scale bridge is hacked with Python fallbacks that re-introduce slow full searches without using the C PGS chamber.<br>
+• We optimize only for the 256-bit cases we generated and lose regression on 40/64.<br>
+• Prose starts sounding like "we can now factor 256-bit RSA" instead of "this public modulus exposed the following endpoint-class structure under reciprocal transport; audit confirmed/denied."
+</div>
+
+<p>Corrective: Stop, restate the locked-chain → transport → closure frame, return to explicit unresolved when the predicate does not fire, keep audit physically separate.</p>
+
+<h2>Verification Commands (Canonical)</h2>
+<pre>
+# 1. Rebuild fixtures after any spec change
+python3 research/06-cryptology-rsa/experiments/data-ladder/rsa-v2/build_ladder_fixtures.py
+
+# 2. Run the live experiment
+python3 research/06-cryptology-rsa/experiments/live-solver/rsa-v2/run_experiment.py
+
+# 3. Run audit (produces factor_found verdict)
+python3 research/06-cryptology-rsa/experiments/live-solver/rsa-v2/audit_experiment.py
+
+# 4. Full focused validation (must stay green)
+python3 -m pytest research/06-cryptology-rsa/tests/test_rsa_v2_scripts.py research/06-cryptology-rsa/tests/test_rsa_v2_transported_story_law.py research/06-cryptology-rsa/tests/test_rsa_v2_certificate_commitment_story.py research/06-cryptology-rsa/tests/test_pgs_semiprime_backward_law_search.py research/06-cryptology-rsa/tests/test_pgs_semiprime_backward_transition_law_search.py research/06-cryptology-rsa/tests/test_toy_modulus_backward_chamber_lock.py -q
+
+# 5. Diagnostics (example)
+python3 research/06-cryptology-rsa/experiments/live-solver/rsa-v2/diagnose_transport_metrics.py
+</pre>
+
+<h2>Acceptance Checklist</h2>
+<ul class="checklist">
+  <li>128-bit and 256-bit cases exist in ladder_spec.json + audit_spec.json with clean provenance.</li>
+  <li>Fixtures contain only public data in ladder_cases; factors live only in audit_factors.</li>
+  <li>Runner + audit complete without Python exceptions on the new cases.</li>
+  <li>Each new case has an explicit public_closure_status (resolved_... or unresolved_by_...).</li>
+  <li>40-bit and 64-bit cases still report identical closure_status and factor_found as before.</li>
+  <li>HighScaleBackend (or documented successor) exercised or limitation explicitly logged for ≥128-bit anchors.</li>
+  <li>Transport / signature / carrier diagnostic data captured for new rungs.</li>
+  <li>No classical inference constructs in the inference code path (grep for forbidden patterns passes).</li>
+  <li>Plan.html updated with final measured status table and any invalidated approaches.</li>
+  <li>Focused pytest suite passes at 100%.</li>
+  <li>SESSION_BOOTSTRAP.md and chapter README reflect the new rungs and current strongest claim.</li>
+</ul>
+
+<h2>Invalidated or Out-of-Scope for This Campaign</h2>
+<ul>
+  <li>Using the v2 certificate runner as a general-purpose factor finder with random seeds or ECM fallbacks.</li>
+  <li>Declaring scale success from geofac routing + prime-test counts alone (different mechanism).</li>
+  <li>Extending candidate_bound dramatically without cost accounting.</li>
+  <li>Any change that makes the 50-bit case "accidentally" resolve again without a new, stronger PGS predicate that also explains why 40/64 succeeded.</li>
+</ul>
+
+<h2>Dependencies &amp; Cross-Links</h2>
+<ul>
+  <li>High-scale C: <code>src/c/high-scale-pgs/</code> (build, pgs_resolve_from_integer, pgs_certificate_t)</li>
+  <li>Python PGS core: divisor_counts_segment, pgs_chamber_reset_state_certificate</li>
+  <li>Scale corpus: <code>research/06-cryptology-rsa/scripts/scaleup_corpus.json</code> and pgs_geofac_scaleup.py</li>
+  <li>Diagnostic heritage: diagnose_transport_metrics.py, MUTUAL_CLOSURE_FALSE_POSITIVE_ANALYSIS.md, CLOSURE_REFINEMENT_ANALYSIS_LOG.md, LRDS hypothesis docs</li>
+  <li>Continuity: research/00-index/continuity/START_HERE.md (RSA v2 routing) and research/06-cryptology-rsa/experiments/AGENTS.md</li>
+</ul>
+
+<h2>Post-Plan Immediate Actions</h2>
+<ol>
+  <li>Human review + approval of this plan (or requested changes).</li>
+  <li>Start Phase 1 scaffolding on a branch.</li>
+  <li>Run the C build verification and one cost probe on a 256-bit-scale anchor.</li>
+  <li>Generate or select the first 128-bit rung and land the minimal fixture + runner execution.</li>
+</ol>
+
+<div class="card">
+<p class="meta">This document is the controlled execution surface. Update the checklist and final status table as work progresses. All claims remain separated by proof / implementation / measured / audit / unresolved / invalidated.</p>
+<p><strong>Primary entry points for the next session:</strong> this file, experiments/live-solver/rsa-v2/SESSION_BOOTSTRAP.md, ALGORITHM.md, the ladder data-ladder directory, and the C high-scale-pgs build.</p>
+<h3>Final Measured Status (post execution, real shipped run)</h3>
+<table>
+<tr><th>case_id</th><th>bits</th><th>public_closure_status</th><th>factor_found</th><th>audit</th></tr>
+<tr><td>rsa_v2_40bit_static_001</td><td>40</td><td>endpoint_class_by_reciprocal_deadline_signature_correction</td><td>true</td><td>pass</td></tr>
+<tr><td>rsa_v2_50bit_static_001</td><td>50</td><td>unresolved_by_reciprocal_carrier_misalignment</td><td>false</td><td>fail</td></tr>
+<tr><td>rsa_v2_64bit_static_001</td><td>64</td><td>endpoint_class_by_mutual_certificate_closure</td><td>true</td><td>pass</td></tr>
+<tr><td>rsa_v2_128bit_static_001</td><td>127</td><td>unresolved_by_missing_lower_certificate</td><td>false</td><td>fail</td></tr>
+<tr><td>rsa_v2_256bit_static_001</td><td>256</td><td>unresolved_by_missing_lower_certificate</td><td>false</td><td>fail</td></tr>
+</table>
+<p>HighScaleBackend C path exercised (via _c + dylib); new cases show explicit unresolved (expected baseline). All per verification plan and strategy.</p>
+<p style="margin-top:1rem"><strong>Execution complete (2026-07-04):</strong> M1-M6 achieved. Fixtures 5 cases public-only. Real shipped logic + audit produced matching outputs. 40/64 resolved with factor_found=true/audit_pass; 50/128/256 unresolved explicit + audit fail. Focused pytest key surfaces + unit high-scale pass. diagnose tolerant. C build + bridge updated for dylib. SCRATCH cleaned of drives. State separation + PGS frame preserved.</p>
+</div>
+
+</div>
+</body>
+</html>
