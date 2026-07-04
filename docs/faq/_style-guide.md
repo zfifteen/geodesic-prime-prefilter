@@ -11,9 +11,10 @@ divisor counts -> prime gap structure -> zeta compression -> RH language
 The governing sentence is:
 
 ```text
-The arithmetic structure inside prime gaps proves the Riemann Hypothesis
-because it shows the exact integer-level pattern that the zeta function later
-records in compressed form.
+Prime Gap Structure begins with the exact divisor-count structure inside prime
+gaps and the local theorems proved in PROOF.md. The Riemann Hypothesis is the
+downstream pole-placement sentence once that source passes through exact
+DNI-to-zeta compression and source-to-spectral placement is resolved.
 ```
 
 ## Voice

@@ -1,9 +1,11 @@
 # Documentation Correction Project
 
 Prime Gap Structure proves the exact integer-level arithmetic structure of
-prime placement. That structure proves the Riemann Hypothesis because RH
-language is the zeta-compressed description of the same source, not the source
-object. The repository documentation must preserve that order:
+prime placement. The local theorems establishing that structure are in
+PROOF.md. The Riemann Hypothesis is the pole-placement sentence for the
+nontrivial zeros once the identical source passes through exact DNI-to-zeta
+compression and the source-to-spectral placement is resolved. The repository
+documentation must preserve that order:
 
 ```text
 divisor counts -> DNI normalization -> fixed-line prime returns -> ordered gap interiors -> zeta compression -> RH language

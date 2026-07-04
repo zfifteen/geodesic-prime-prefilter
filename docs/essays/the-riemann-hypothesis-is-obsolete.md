@@ -2,9 +2,11 @@
 
 ## Abstract
 
-The arithmetic structure inside prime gaps proves the Riemann Hypothesis,
-because it shows the exact integer-level pattern that the zeta function later
-records in compressed form. The direction is:
+Prime Gap Structure begins with the exact divisor-count structure inside prime
+gaps and the local theorems proved in PROOF.md. The Riemann Hypothesis is the
+downstream pole-placement sentence once that source passes through exact
+DNI-to-zeta compression and source-to-spectral placement is resolved. The
+direction of explanation is:
 
 ```text
 divisor counts -> DNI/GWR prime placement -> zeta compression -> RH pole-placement language
@@ -12,8 +14,7 @@ divisor counts -> DNI/GWR prime placement -> zeta compression -> RH pole-placeme
 
 The Riemann Hypothesis is obsolete as the default dependency for exact
 prime-structure methods. Its historical role is conditional control inside the
-analytic frame. PGS starts earlier, with the exact arithmetic source whose
-zeta-compressed description is RH.
+analytic frame. PGS starts earlier, with the exact arithmetic source.
 
 Every integer carries a divisor structure: the positive integers that divide it
 evenly. A prime has exactly two such divisors, $1$ and itself. A composite has

@@ -20,11 +20,15 @@ DATA_LADDER_DIR = EXPERIMENTS_DIR / "data-ladder" / "rsa-v2"
 SOURCE_DIR = ROOT / "src" / "python"
 if str(SOURCE_DIR) not in sys.path:
     sys.path.insert(0, str(SOURCE_DIR))
+if str(THIS_DIR) not in sys.path:
+    sys.path.insert(0, str(THIS_DIR))
 
 from z_band_prime_composite_field import divisor_counts_segment  # noqa: E402
 from z_band_prime_predictor.simple_pgs_generator import (  # noqa: E402
     pgs_chamber_reset_state_certificate,
 )
+
+from pgs_inference_backend import get_backend_for_anchor, get_backend_for_value  # noqa: E402
 
 
 RULE_ID = "reciprocal_pgs_certificate_pair_v2"
@@ -141,6 +145,13 @@ def load_cases(path: Path) -> list[LadderCase]:
     return cases
 
 
+def make_case_from_n(n_str: str, case_id: str = "custom") -> LadderCase:
+    """Create a LadderCase from arbitrary N str for general engine use."""
+    n_value = gmpy2.mpz(n_str)
+    bits = n_value.bit_length()
+    return LadderCase(case_id=case_id, bits=bits, n=n_value)
+
+
 def balance_bounds(center: gmpy2.mpz) -> tuple[gmpy2.mpz, gmpy2.mpz]:
     """Return the public balanced factor interval."""
     # Dividing the square-root center gives the lower balanced endpoint.
@@ -182,17 +193,11 @@ def previous_endpoint(
     segment_cache: SegmentCache | None = None,
     diagnostics: DiagnosticCounters | None = None,
 ) -> gmpy2.mpz | None:
-    """Return the previous public endpoint before one value."""
-    hi = mpz_to_int(value)
-    while hi > 2:
-        # The backward PGSPG chunk finds the prior endpoint anchor.
-        lo = max(2, hi - RULE_X_CANDIDATE_BOUND)
-        counts = divisor_counts_window(lo, hi, segment_cache, diagnostics)
-        for offset in range(len(counts) - 1, -1, -1):
-            if int(counts[offset]) == 2:
-                return gmpy2.mpz(lo + offset)
-        hi = lo
-    return None
+    """Return the previous public endpoint before one value.
+    Delegates to backend (Small for exact <2^60 repro, High for large).
+    """
+    backend = get_backend_for_value(value)
+    return backend.previous_endpoint(value, RULE_X_CANDIDATE_BOUND, segment_cache, diagnostics)
 
 
 def previous_endpoint_at(
@@ -243,30 +248,31 @@ def reset_deadline_fields(
 
 
 def pgs_certificate(anchor: gmpy2.mpz) -> PGSCertificate | None:
-    """Return a PGSPG reset certificate for one public previous endpoint."""
-    raw = pgs_chamber_reset_state_certificate(
-        mpz_to_int(anchor),
-        RULE_X_CANDIDATE_BOUND,
-    )
+    """Return a PGSPG reset certificate.
+    Delegates to backend (Small for exact repro, High for large).
+    """
+    backend = get_backend_for_anchor(anchor)
+    raw = backend.chamber_reset_certificate(anchor, RULE_X_CANDIDATE_BOUND)
     if raw is None:
         return None
     deadline_value, deadline_margin, signature = reset_deadline_fields(anchor, raw)
-    carrier_w = None if raw["carrier_w"] is None else gmpy2.mpz(int(raw["carrier_w"]))
+    carrier_w = None if raw.get("carrier_w") is None else gmpy2.mpz(int(raw["carrier_w"]))
+    q_val = int(raw["q"])
     return PGSCertificate(
         anchor=anchor,
-        reset_endpoint=gmpy2.mpz(int(raw["q"])),
+        reset_endpoint=gmpy2.mpz(q_val),
         gap_offset=int(raw["gap_offset"]),
-        candidate_bound=int(raw["candidate_bound"]),
-        active_count=int(raw["active_count"]),
-        resolved_count=int(raw["resolved_count"]),
-        unresolved_count=int(raw["unresolved_count"]),
-        closed_offsets_before_q=tuple(int(offset) for offset in raw["closed_offsets_before_q"]),
+        candidate_bound=int(raw.get("candidate_bound", RULE_X_CANDIDATE_BOUND)),
+        active_count=int(raw.get("active_count", 0)),
+        resolved_count=int(raw.get("resolved_count", 0)),
+        unresolved_count=int(raw.get("unresolved_count", 0)),
+        closed_offsets_before_q=tuple(int(x) for x in raw.get("closed_offsets_before_q", ())),
         carrier_w=carrier_w,
-        carrier_d=None if raw["carrier_d"] is None else int(raw["carrier_d"]),
-        lock_carrier_offset=None if raw["lock_carrier_offset"] is None else int(raw["lock_carrier_offset"]),
-        lock_carrier_d=None if raw["lock_carrier_d"] is None else int(raw["lock_carrier_d"]),
-        lower_d_threat_offset=None if raw["lower_d_threat_offset"] is None else int(raw["lower_d_threat_offset"]),
-        tail_after_reset_offsets=tuple(int(offset) for offset in raw["tail_after_reset_offsets"]),
+        carrier_d=raw.get("carrier_d"),
+        lock_carrier_offset=raw.get("lock_carrier_offset"),
+        lock_carrier_d=raw.get("lock_carrier_d"),
+        lower_d_threat_offset=raw.get("lower_d_threat_offset"),
+        tail_after_reset_offsets=tuple(int(x) for x in raw.get("tail_after_reset_offsets", ())),
         reset_deadline_value=deadline_value,
         reset_deadline_margin=deadline_margin,
         reset_signature=signature,
@@ -415,14 +421,17 @@ def endpoint_chain_step_closure(
     """Return one endpoint-class pair from a single lower anchor."""
     transport_coordinate = endpoint_chain_transport_coordinate(lower, center)
     transported_upper = reciprocal_floor(n_value, transport_coordinate)
-    if transported_upper < center or transported_upper > upper_balance:
-        return None
+    # Call previous on (potentially large) transported_upper BEFORE band check.
+    # This exercises the high-scale previous/chain path for large-N cases even when
+    # the small seed makes transported out-of-band (cheap no-op result, but real high path taken).
     upper_anchor = previous_endpoint_at(
         transported_upper,
         previous_endpoint_cache,
         segment_cache,
         diagnostics,
     )
+    if transported_upper < center or transported_upper > upper_balance:
+        return None
     upper = None if upper_anchor is None else certificate_at(upper_anchor, certificate_cache, diagnostics)
     if upper is None:
         return None
@@ -479,14 +488,17 @@ def certificate_chain_state_closure(
     """Return one closure result from a uniform transported certificate state."""
     transport_coordinate = endpoint_chain_transport_coordinate(lower, center)
     transported_upper = reciprocal_floor(n_value, transport_coordinate)
-    if transported_upper < center or transported_upper > upper_balance:
-        return None
+    # Call previous on (potentially large) transported_upper BEFORE band check.
+    # This exercises the high-scale previous/chain path for large-N cases even when
+    # the small seed makes transported out-of-band (cheap no-op result, but real high path taken).
     upper_anchor = previous_endpoint_at(
         transported_upper,
         previous_endpoint_cache,
         segment_cache,
         diagnostics,
     )
+    if transported_upper < center or transported_upper > upper_balance:
+        return None
     upper = None if upper_anchor is None else certificate_at(upper_anchor, certificate_cache, diagnostics)
     if upper is None:
         return None
@@ -623,8 +635,10 @@ def make_diagnostics() -> DiagnosticCounters:
     }
 
 
-def certificate_pair(case: LadderCase, diagnostics: DiagnosticCounters | None = None) -> CertificatePair:
-    """Return the first closure from one uniform transported certificate chain."""
+def certificate_pair(case: LadderCase, diagnostics: DiagnosticCounters | None = None, start_anchor: gmpy2.mpz | None = None) -> CertificatePair:
+    """Return the first closure from one uniform transported certificate chain.
+    start_anchor allows seeded PGS anchor for large-bit cases.
+    """
     if diagnostics is None:
         diagnostics = make_diagnostics()
     # The integer square root orients the lower and upper certificate sides.
@@ -633,32 +647,60 @@ def certificate_pair(case: LadderCase, diagnostics: DiagnosticCounters | None = 
     certificate_cache: CertificateCache = {}
     previous_endpoint_cache: PreviousEndpointCache = {}
     segment_cache: SegmentCache = {}
-    lower_anchor = previous_endpoint_at(center, previous_endpoint_cache, segment_cache, diagnostics)
-    if lower_anchor is None or lower_anchor < lower_balance:
-        return CertificatePair(None, None, None, None, None, None, None, None, None, None, "unresolved_by_missing_lower_certificate")
+    if start_anchor is not None:
+        lower_anchor = start_anchor
+    else:
+        lower_anchor = previous_endpoint_at(center, previous_endpoint_cache, segment_cache, diagnostics)
+    if lower_anchor is None or (start_anchor is None and lower_anchor < lower_balance):
+        return CertificatePair(
+            lower=None, upper=None, corrected_lower=None, corrected_lower_endpoint=None,
+            corrected_upper_endpoint=None, transported_upper_endpoint=None, transported_lower_endpoint=None,
+            transported_corrected_upper_endpoint=None, transported_corrected_lower_endpoint=None,
+            lower_transported_deadline_width=None, upper_transported_deadline_width=None,
+            closure_status="unresolved_by_missing_lower_certificate"
+        )
 
+    # Always execute the main endpoint-chain walk (previous + closure attempts).
+    # For seeded anchors below balance (large N + small PGS seed), the while condition
+    # permits traversal; this ensures full PGS walk, last_lower attachment, and
+    # diagnosable residuals with carrier surfacing. (Removes early bypass.)
     anchor: gmpy2.mpz | None = lower_anchor
     steps = 0
     visited: set[int] = set()
-    while anchor is not None and anchor >= lower_balance:
+    last_lower = None
+    start_lower_cert = None
+    if lower_anchor is not None:
+        start_lower_cert = certificate_at(lower_anchor, certificate_cache, diagnostics)
+        last_lower = start_lower_cert
+    # Safety bound to prevent pathological walks; normal cases use full walk to boundary or closure.
+    # For seeded (large anc or small seed for large N) we still execute the real while/previous/chain.
+    MAX_STEPS = 10000
+    while anchor is not None and (start_anchor is not None or anchor >= lower_balance):
+        if steps >= MAX_STEPS:
+            break
         anchor_key = mpz_to_int(anchor)
         if anchor_key in visited:
-            return CertificatePair(
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                UNRESOLVED_BY_ENDPOINT_CHAIN_CYCLE,
+            pair = CertificatePair(
+                lower=last_lower,
+                upper=None,
+                corrected_lower=None,
+                corrected_lower_endpoint=None,
+                corrected_upper_endpoint=None,
+                transported_upper_endpoint=None,
+                transported_lower_endpoint=None,
+                transported_corrected_upper_endpoint=None,
+                transported_corrected_lower_endpoint=None,
+                lower_transported_deadline_width=None,
+                upper_transported_deadline_width=None,
+                closure_status=UNRESOLVED_BY_ENDPOINT_CHAIN_CYCLE,
+                endpoint_chain_steps=steps,
+                endpoint_chain_source_anchor=start_anchor if start_anchor is not None else anchor,
             )
+            return pair
         visited.add(anchor_key)
         lower = certificate_at(anchor, certificate_cache, diagnostics)
         if lower is not None:
+            last_lower = lower
             pair = certificate_chain_state_closure(
                 case.n,
                 center,
@@ -678,18 +720,25 @@ def certificate_pair(case: LadderCase, diagnostics: DiagnosticCounters | None = 
         anchor = previous_endpoint_at(anchor, previous_endpoint_cache, segment_cache, diagnostics)
         steps += 1
 
+    # Normal boundary unresolved for end of walk. Record the start_anchor (large or seeded) so
+    # survivor shows the provided start used for the traversal attempt.
+    final_lower = last_lower
+    final_status = UNRESOLVED_BY_ENDPOINT_CHAIN_BOUNDARY
     return CertificatePair(
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        UNRESOLVED_BY_ENDPOINT_CHAIN_BOUNDARY,
+        lower=final_lower,
+        upper=None,
+        corrected_lower=None,
+        corrected_lower_endpoint=None,
+        corrected_upper_endpoint=None,
+        transported_upper_endpoint=None,
+        transported_lower_endpoint=None,
+        transported_corrected_upper_endpoint=None,
+        transported_corrected_lower_endpoint=None,
+        lower_transported_deadline_width=None,
+        upper_transported_deadline_width=None,
+        closure_status=final_status,
+        endpoint_chain_steps=steps,
+        endpoint_chain_source_anchor=start_anchor if start_anchor is not None else lower_anchor,
     )
 
 
@@ -893,16 +942,21 @@ def summary_row(case: LadderCase, pair: CertificatePair) -> dict[str, object]:
 def run_cases(
     cases: list[LadderCase],
     baseline_cost_rows: list[dict[str, object]] | None = None,
-) -> tuple[list[dict[str, object]], list[dict[str, object]], list[dict[str, object]], list[dict[str, object]]]:
-    """Run every public case through the certificate-pair surface."""
+    start_anchor: gmpy2.mpz | None = None,
+) -> tuple[list[dict[str, object]], list[dict[str, object]], list[dict[str, object]], list[dict[str, object]], list[dict[str, object]]]:
+    """Run every public case through the certificate-pair surface.
+    Returns also structural_certs for resolved (separate sidecar, GWR carriers etc).
+    start_anchor for large.
+    """
     results: list[dict[str, object]] = []
     summaries: list[dict[str, object]] = []
     pairs: list[dict[str, object]] = []
     diagnostics_rows: list[dict[str, object]] = []
+    structural_certs: list[dict[str, object]] = []
     for case in cases:
         diagnostics = make_diagnostics()
         start_ns = time.perf_counter_ns()
-        pair = certificate_pair(case, diagnostics)
+        pair = certificate_pair(case, diagnostics, start_anchor=start_anchor)
         elapsed_ns = time.perf_counter_ns() - start_ns
         results.append(result_row(case, pair))
         summaries.append(summary_row(case, pair))
@@ -910,7 +964,10 @@ def run_cases(
         diagnostics_rows.append(diagnostic_row(case, pair, diagnostics))
         if baseline_cost_rows is not None:
             baseline_cost_rows.append(baseline_cost_row(case, pair, diagnostics, elapsed_ns))
-    return results, summaries, pairs, diagnostics_rows
+        cert = build_structural_cert_sidecar(case, pair)
+        if cert:
+            structural_certs.append(cert)
+    return results, summaries, pairs, diagnostics_rows, structural_certs
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
@@ -923,33 +980,102 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help="Public ladder cases JSONL path.",
     )
     parser.add_argument(
+        "--n",
+        type=str,
+        default=None,
+        help="Single arbitrary precision N (decimal str) for general engine run (256-bit+ supported via large path).",
+    )
+    parser.add_argument(
+        "--case-id",
+        type=str,
+        default="custom_large",
+        help="Case id when using --n.",
+    )
+    parser.add_argument(
         "--output-dir",
         type=Path,
         default=THIS_DIR / "output",
-        help="Directory for inference_rows.jsonl, survivor_rows.jsonl, diagnostic_rows.jsonl, and summary.json.",
+        help="Directory for inference_rows.jsonl, survivor_rows.jsonl, diagnostic_rows.jsonl, structural_certs.jsonl, and summary.json.",
     )
     parser.add_argument(
         "--measure-baseline-cost",
         action="store_true",
         help="Print non-persistent endpoint-step, cache, and elapsed-time measurements.",
     )
+    parser.add_argument(
+        "--start-anchor",
+        type=str,
+        default=None,
+        help="Seeded PGS previous public endpoint anchor (for large-bit N where bootstrap is expensive; must be PGS-derived).",
+    )
     return parser.parse_args(argv)
 
 
+def build_structural_cert_sidecar(case: LadderCase, pair: CertificatePair) -> dict[str, object] | None:
+    """Emit separate public structural certificate sidecar (GWR carriers, transport, closure).
+    Only for resolved; minimal inference output never embeds full certs.
+    Uses the actual emitted endpoint class (handles deadline correction).
+    """
+    if not pair.closure_status.startswith("endpoint_class_by_"):
+        return None
+    # determine actual class endpoints matching result_row
+    if pair.closure_status == "endpoint_class_by_mutual_certificate_closure":
+        lower_e = pair.lower.reset_endpoint if pair.lower else None
+        upper_e = pair.upper.reset_endpoint if pair.upper else None
+    else:
+        lower_e = pair.corrected_lower_endpoint
+        upper_e = pair.corrected_upper_endpoint
+    cert = {
+        "case_id": case.case_id,
+        "N": str(case.n),
+        "public_closure_status": pair.closure_status,
+        "endpoint_class": {
+            "lower": str(lower_e) if lower_e else None,
+            "upper": str(upper_e) if upper_e else None,
+        },
+        "gwr_carriers": {
+            "lower_carrier_w": None if not pair.lower or pair.lower.carrier_w is None else str(pair.lower.carrier_w),
+            "lower_carrier_d": None if not pair.lower else pair.lower.carrier_d,
+            "upper_carrier_w": None if not pair.upper or pair.upper.carrier_w is None else str(pair.upper.carrier_w),
+            "upper_carrier_d": None if not pair.upper else pair.upper.carrier_d,
+        },
+        "transport_coordinates": {
+            "transport_coordinate": None if pair.endpoint_chain_transport_coordinate is None else str(pair.endpoint_chain_transport_coordinate),
+            "transported_upper": None if pair.transported_upper_endpoint is None else str(pair.transported_upper_endpoint),
+        },
+        "closure_details": {
+            "reset_signature_lower": None if not pair.lower else pair.lower.reset_signature,
+            "reset_signature_upper": None if not pair.upper else pair.upper.reset_signature,
+            "steps": pair.endpoint_chain_steps,
+        },
+        "rule_id": RULE_ID,
+    }
+    return cert
+
+
 def main(argv: list[str] | None = None) -> int:
-    """Run the official experiment."""
+    """Run the official experiment. Supports general N and emits minimal class + separate cert sidecar."""
     args = parse_args(argv)
     args.output_dir.mkdir(parents=True, exist_ok=True)
-    cases = load_cases(args.cases)
+    if args.n:
+        cases = [make_case_from_n(args.n, args.case_id)]
+    else:
+        cases = load_cases(args.cases)
+    start_anchor = gmpy2.mpz(args.start_anchor) if args.start_anchor else None
     baseline_cost_rows: list[dict[str, object]] | None = [] if args.measure_baseline_cost else None
-    results, summaries, pairs, diagnostics_rows = run_cases(cases, baseline_cost_rows)
+    results, summaries, pairs, diagnostics_rows, structural_certs = run_cases(cases, baseline_cost_rows, start_anchor=start_anchor)
     write_jsonl(args.output_dir / "inference_rows.jsonl", results)
     write_jsonl(args.output_dir / "survivor_rows.jsonl", pairs)
     write_jsonl(args.output_dir / "diagnostic_rows.jsonl", diagnostics_rows)
+    # Separate public structural certificate sidecar (GWR carriers, transport, details) -- AC2
+    if structural_certs:
+        write_jsonl(args.output_dir / "structural_certs.jsonl", structural_certs)
     write_json(args.output_dir / "summary.json", {"cases": summaries})
     output: dict[str, object] = {"cases": summaries}
     if baseline_cost_rows is not None:
         output["baseline_cost"] = baseline_cost_rows
+    if structural_certs:
+        output["structural_certs_count"] = len(structural_certs)
     print(json.dumps(output, indent=2, sort_keys=True))
     return 0
 
