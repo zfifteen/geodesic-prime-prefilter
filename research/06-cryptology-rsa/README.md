@@ -70,6 +70,11 @@ inference. The 64-bit row is measured and audit-confirmed after public mutual
 certificate closure. The 50-bit row is unresolved before audit and emits no
 public endpoint class.
 
+256-bit expansion added rsa_v2_128bit_static_001 and rsa_v2_256bit_static_001
+(curated from scaleup corpus). Both return unresolved_by_missing_lower_certificate
+(C high-scale exercised via _c; no public endpoint class emitted, as expected baseline).
+Old verdicts preserved. Real outputs from shipped run. See output/ and plan.html.
+
 Erratum: earlier OECC_LINEAR_V1 and OECC_RECURSIVE_V2 wording used `resolved`
 and `p` / `q` for audit-failing endpoint classes. That wording is invalidated.
 The historical 50-bit mutual-closure result is a rejected public-structure

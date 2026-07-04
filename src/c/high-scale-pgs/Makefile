@@ -81,6 +81,10 @@ RESEARCH_WITNESS_MINER_SOURCE := $(RESEARCH_DIR)/pgs_witness_miner_probe.c
 RESEARCH_WITNESS_MINER_OBJECT := $(BUILD_DIR)/pgs_witness_miner_probe.o
 
 STATIC_LIB := $(BUILD_DIR)/libpgs_high_scale.a
+# DYNLIB for ctypes bridge in research/06-cryptology-rsa HighScaleBackend (256-bit expansion)
+# Produces the .dylib loaded by pgs_inference_backend.py _c_chamber_reset_certificate.
+# Build with: make dylib   (or make all will include after update)
+DYNLIB := $(BUILD_DIR)/libpgs_high_scale.dylib
 CLI_EXECUTABLE := $(BIN_DIR)/pgs_cli
 TEST_PARSE_EXECUTABLE := $(BIN_DIR)/test_parse
 TEST_SCAFFOLD_EXECUTABLE := $(BIN_DIR)/test_scaffold
@@ -110,6 +114,13 @@ $(BUILD_DIR)/%.o: $(TEST_DIR)/%.c | $(BUILD_DIR)
 $(STATIC_LIB): $(LIB_OBJECTS) | $(BUILD_DIR)
 	@echo "Creating static library..."
 	@ar rcs $@ $^
+
+# DYNLIB rule (256-bit expansion support): shared lib for Python ctypes HighScaleBackend.
+# -fPIC not strictly required on arm64 for dylib but included for generality.
+# install_name for runtime rpath load from research tree.
+$(DYNLIB): $(LIB_OBJECTS) | $(BUILD_DIR)
+	@echo "Creating dynamic library (dylib for ctypes bridge)..."
+	@$(CC) -dynamiclib -install_name @rpath/libpgs_high_scale.dylib $(CFLAGS) $(LIB_OBJECTS) $(LDFLAGS) -o $@
 
 $(CLI_OBJECT): $(CLI_SOURCE) | $(BUILD_DIR)
 	@echo "Compiling CLI..."
@@ -199,12 +210,15 @@ $(RESEARCH_WITNESS_MINER_EXECUTABLE): $(RESEARCH_WITNESS_MINER_OBJECT) $(STATIC_
 	@echo "Linking pgs_witness_miner_probe executable..."
 	@$(CC) $(RESEARCH_WITNESS_MINER_OBJECT) $(STATIC_LIB) $(LDFLAGS) -o $@
 
-.PHONY: all lib cli test-executables research test clean info help
+.PHONY: all lib lib-shared dylib cli test-executables research test clean info help
 
-all: lib cli test-executables
+all: lib lib-shared cli test-executables
 	@echo "Build complete."
 
 lib: $(STATIC_LIB)
+
+# lib-shared / dylib: produce the .dylib for HighScaleBackend ctypes (plan M5 bridge)
+lib-shared dylib: $(DYNLIB)
 
 cli: $(CLI_EXECUTABLE)
 
@@ -255,8 +269,9 @@ help:
 	@echo "High-Scale PGS Prime Generator - Build System (Apple Silicon only)"
 	@echo ""
 	@echo "Available targets:"
-	@echo "  all              - Build library, CLI, and tests"
+	@echo "  all              - Build library (static + shared), CLI, and tests"
 	@echo "  lib              - Build static library only"
+	@echo "  lib-shared dylib - Build shared dylib (for python ctypes HighScaleBackend 128/256-bit)"
 	@echo "  cli              - Build CLI tool"
 	@echo "  research         - Build side research probes"
 	@echo "  test             - Build and run tests"

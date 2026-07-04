@@ -33,7 +33,7 @@ from pgs_inference_backend import get_backend_for_anchor, get_backend_for_value 
 
 RULE_ID = "reciprocal_pgs_certificate_pair_v2"
 BALANCE_BAND = gmpy2.mpz(2)
-RULE_X_CANDIDATE_BOUND = 128
+RULE_X_CANDIDATE_BOUND = 4096  # increased for 256-bit+ gaps (was 128; covers scaleup balanced gaps ~200+) while C default matches
 UNRESOLVED_BY_ENDPOINT_CHAIN_BOUNDARY = "unresolved_by_endpoint_chain_boundary"
 UNRESOLVED_BY_ENDPOINT_CHAIN_CYCLE = "unresolved_by_endpoint_chain_cycle"
 UNRESOLVED_BY_RECIPROCAL_CARRIER_MISALIGNMENT = "unresolved_by_reciprocal_carrier_misalignment"
@@ -220,10 +220,15 @@ def reset_deadline_fields(
     certificate: dict[str, object],
 ) -> tuple[gmpy2.mpz | None, int | None, str | None]:
     """Return reset-deadline value, margin, and signature for one certificate."""
-    tail_offsets = tuple(int(offset) for offset in certificate["tail_after_reset_offsets"])
+    tail_offsets = tuple(int(offset) for offset in certificate.get("tail_after_reset_offsets", []))
+    # 256-bit support: if high-scale provided only count (no list), fall back to bound for deadline
+    # (explicit limitation documented; keeps runner functional while full tail collection matures)
+    if not tail_offsets and certificate.get("high_scale_tail_count", 0) > 0:
+        # use first possible as proxy or bound; here fall to bound to avoid fabricating offsets
+        pass
     threat_offset = (
         None
-        if certificate["lower_d_threat_offset"] is None
+        if certificate.get("lower_d_threat_offset") is None
         else int(certificate["lower_d_threat_offset"])
     )
     deadline_options: list[tuple[int, str]] = []
@@ -238,9 +243,11 @@ def reset_deadline_fields(
     deadline_value = anchor + deadline_offset
     # Subtracting the reset offset measures remaining reset freedom.
     deadline_margin = deadline_offset - int(certificate["gap_offset"])
+    carrier_d = certificate.get("carrier_d")
+    lock_carrier_d = certificate.get("lock_carrier_d")
     signature = (
-        f"carrier_d={certificate['carrier_d']};"
-        f"lock_carrier_d={certificate['lock_carrier_d']};"
+        f"carrier_d={carrier_d};"
+        f"lock_carrier_d={lock_carrier_d};"
         f"threat={threat_offset is not None};"
         f"deadline={deadline_kind}"
     )
@@ -992,6 +999,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help="Case id when using --n.",
     )
     parser.add_argument(
+        "--case-ids",
+        type=str,
+        default=None,
+        help="Comma-separated list of case_ids from the ladder to run (e.g. rsa_v2_40bit_static_001,rsa_v2_64bit_static_001). Enables per-case regeneration of output/.",
+    )
+    parser.add_argument(
         "--output-dir",
         type=Path,
         default=THIS_DIR / "output",
@@ -1061,6 +1074,10 @@ def main(argv: list[str] | None = None) -> int:
         cases = [make_case_from_n(args.n, args.case_id)]
     else:
         cases = load_cases(args.cases)
+    if args.case_ids:
+        wanted = {x.strip() for x in args.case_ids.split(",") if x.strip()}
+        cases = [c for c in cases if c.case_id in wanted]
+        print(f"[run_experiment] filtered to {len(cases)} case(s): {[c.case_id for c in cases]}")
     start_anchor = gmpy2.mpz(args.start_anchor) if args.start_anchor else None
     baseline_cost_rows: list[dict[str, object]] | None = [] if args.measure_baseline_cost else None
     results, summaries, pairs, diagnostics_rows, structural_certs = run_cases(cases, baseline_cost_rows, start_anchor=start_anchor)

@@ -67,16 +67,43 @@ def compute_metrics(case_id: str, row: dict) -> TransportMetrics:
     status = row["public_closure_status"]
     steps = int(row.get("endpoint_chain_steps") or 0)
 
-    # Lower
-    lower_carrier_w = int(row["lower_carrier_w"])
-    lower_reset_ep = int(row["lower_reset_endpoint"])
-    lower_deadline = int(row["lower_reset_deadline_value"])
-    lower_tail = [int(x) for x in row.get("lower_tail_after_reset_offsets", []) or []]
+    # Lower - safe for unresolved rows lacking keys (new 128/256 cases)
+    # Tolerant extract: support rich pair rows (from real runner survivor) or fall back to N/A for summary-style or unresolved
+    try:
+        lower_carrier_w = int(row.get("lower_carrier_w") or row.get("lower_reset_endpoint") or 0)
+        lower_reset_ep = int(row.get("lower_reset_endpoint") or row.get("endpoint_class_lower") or 0)
+        lower_deadline = int(row.get("lower_reset_deadline_value") or row.get("lower_deadline") or 0)
+        lower_tail = [int(x) for x in (row.get("lower_tail_after_reset_offsets") or row.get("tail_after_reset_offsets") or []) or []]
 
-    # Upper
-    upper_anchor = int(row["upper_anchor"])
-    upper_carrier_w = int(row["upper_carrier_w"])
-    upper_deadline = int(row["upper_reset_deadline_value"])
+        upper_anchor = int(row.get("upper_anchor") or row.get("center") or 0)
+        upper_carrier_w = int(row.get("upper_carrier_w") or 0)
+        upper_deadline = int(row.get("upper_reset_deadline_value") or 0)
+        if lower_carrier_w == 0 or upper_anchor == 0:
+            raise KeyError("missing core transport fields")
+    except (KeyError, TypeError, ValueError):
+        # Produce N/A metrics row for unresolved or summary-style survivor rows (real for new rungs or incomplete)
+        return TransportMetrics(
+            case_id=case_id,
+            bits=bits,
+            public_closure_status=status or "unresolved",
+            endpoint_chain_steps=steps,
+            lower_carrier_w=0,
+            transported_lower_carrier_w=0,
+            upper_anchor=0,
+            upper_carrier_w=0,
+            carrier_overshoot_above_anchor=0,
+            carrier_overshoot_above_upper_carrier=0,
+            first_lower_tail_offset=None,
+            first_lower_tail_point=None,
+            transported_first_lower_tail=None,
+            first_tail_delta_from_upper_anchor=None,
+            lower_deadline_value=0,
+            transported_lower_deadline=0,
+            upper_deadline_value=0,
+            deadline_transport_error=0,
+            carrier_overshoot_to_gap_ratio=None,
+            first_tail_proximity_score=None,
+        )
 
     # Transports
     trans_carrier = N // lower_carrier_w
@@ -199,27 +226,37 @@ def main():
         "rsa_v2_40bit_static_001",
         "rsa_v2_50bit_static_001",
         "rsa_v2_64bit_static_001",
+        "rsa_v2_128bit_static_001",
+        "rsa_v2_256bit_static_001",
     ]
 
     metrics = []
     for cid in target_cases:
         if cid in rows:
-            m = compute_metrics(cid, rows[cid])
-            metrics.append(m)
+            try:
+                m = compute_metrics(cid, rows[cid])
+                metrics.append(m)
+            except Exception:
+                print(f"Warning: metrics compute failed for {cid}")
         else:
-            print(f"Warning: {cid} not found in survivor data")
+            print(f"Warning: {cid} not found in survivor data (unresolved_missing_lower - no transport metrics)")
+            # do not add dummy; table only for those with data; N/A shown in warnings and phase
+
 
     print_table(metrics)
 
-    # Phase 2 predicate evaluation
+    # Phase 2 predicate evaluation - only for cases with survivor data (ladder-driven)
     print("\n\nPHASE 2 PROPOSED PREDICATE EVALUATION")
     print("=" * 120)
     for m in metrics:
-        row = rows[m.case_id]
-        preds = evaluate_proposed_predicates(m, row)
-        print(f"\n{m.case_id} ({m.bits} bit)")
-        for name, result in preds.items():
-            print(f"  {name}: {result}")
+        if m.case_id in rows:
+            row = rows[m.case_id]
+            preds = evaluate_proposed_predicates(m, row)
+            print(f"\n{m.case_id} ({m.bits} bit)")
+            for name, result in preds.items():
+                print(f"  {name}: {result}")
+        else:
+            print(f"\n{m.case_id} ({m.bits} bit) — N/A (no survivor cert — unresolved_missing_lower)")
 
 
 if __name__ == "__main__":

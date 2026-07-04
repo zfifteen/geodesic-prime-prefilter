@@ -1,34 +1,33 @@
 {
   "cases": [
     {
-      "N": "1099507433251",
-      "balance_band": "2",
-      "bits": 40,
       "case_id": "rsa_v2_40bit_static_001",
+      "bits": 40,
+      "N": "1099507433251",
       "center": "1048573",
+      "balance_band": "2",
+      "public_closure_status": "endpoint_class_by_reciprocal_deadline_signature_correction",
+      "lower_certificate_present": true,
+      "upper_certificate_present": true,
       "corrected_lower_certificate_present": true,
       "endpoint_chain_steps": null,
-      "lower_certificate_present": true,
-      "public_closure_status": "endpoint_class_by_reciprocal_deadline_signature_correction",
-      "rule_id": "reciprocal_pgs_certificate_pair_v2",
-      "upper_certificate_present": true
+      "rule_id": "reciprocal_pgs_certificate_pair_v2"
     },
     {
-      "N": "1027435935526951",
-      "balance_band": "2",
-      "bits": 50,
       "case_id": "rsa_v2_50bit_static_001",
+      "bits": 50,
+      "N": "1027435935526951",
       "center": "32053641",
+      "balance_band": "2",
+      "public_closure_status": "unresolved_by_reciprocal_carrier_misalignment",
+      "lower_certificate_present": true,
+      "upper_certificate_present": true,
       "corrected_lower_certificate_present": true,
       "endpoint_chain_steps": 350,
-      "lower_certificate_present": true,
-      "public_closure_status": "unresolved_by_reciprocal_carrier_misalignment",
-      "rule_id": "reciprocal_pgs_certificate_pair_v2",
-      "upper_certificate_present": true
+      "rule_id": "reciprocal_pgs_certificate_pair_v2"
     },
     {
       "N": "10376454699372036973",
-      "balance_band": "2",
       "bits": 64,
       "case_id": "rsa_v2_64bit_static_001",
       "center": "3221250486",
@@ -37,7 +36,34 @@
       "lower_certificate_present": true,
       "public_closure_status": "endpoint_class_by_mutual_certificate_closure",
       "rule_id": "reciprocal_pgs_certificate_pair_v2",
-      "upper_certificate_present": true
+      "upper_certificate_present": true,
+      "balance_band": "2"
+    },
+    {
+      "N": "85070591730234615902737140005361155371",
+      "bits": 127,
+      "case_id": "rsa_v2_128bit_static_001",
+      "center": "9223372036854775809",
+      "balance_band": "2",
+      "corrected_lower_certificate_present": false,
+      "endpoint_chain_steps": null,
+      "lower_certificate_present": false,
+      "public_closure_status": "unresolved_by_missing_lower_certificate",
+      "rule_id": "reciprocal_pgs_certificate_pair_v2",
+      "upper_certificate_present": false
+    },
+    {
+      "N": "57896044618658097711785492504343955952566120322525139588585136554122987719313",
+      "bits": 256,
+      "case_id": "rsa_v2_256bit_static_001",
+      "center": "240615969168004511545033772477625061136",
+      "balance_band": "2",
+      "corrected_lower_certificate_present": false,
+      "endpoint_chain_steps": null,
+      "lower_certificate_present": false,
+      "public_closure_status": "unresolved_by_missing_lower_certificate",
+      "rule_id": "reciprocal_pgs_certificate_pair_v2",
+      "upper_certificate_present": false
     }
   ]
 }
