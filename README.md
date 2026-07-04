@@ -2,7 +2,11 @@
 
 ![Prime Gap Structure hero](visualizations/conceptual/prime-gap-structure-hero.jpg)
 
-The single live proof reference is [PROOF.md](PROOF.md), including the direct deterministic next-prime theorem.
+This is not a repository of conjectures or informal observations. It provides:
+
+- Formal proofs (see [PROOF.md](PROOF.md))
+- Working code and reference implementations
+- Reproducible artifacts, measured surfaces, and audit data that others can independently run and validate
 
 Visualizations of the core objects (the divisor-count row, GWR selection, ridges, U_□ diagrams, conceptual rulers, interactive explorers, and video narrations) live in [visualizations/](visualizations/index.html).
 
