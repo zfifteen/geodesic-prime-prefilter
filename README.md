@@ -4,7 +4,7 @@
 
 This is not a repository of conjectures or informal observations. It provides:
 
-- Formal proofs (see [PROOF.md](PROOF.md))
+- Formal proofs (see [PROOF.md](PROOF.md)): the direct next-prime rule, the interior maximizer (GWR), and universal bounded compression at Cramér scale — including the Prime-Square Proximity Theorem (proved 2026-07-05)
 - Working code and reference implementations
 - Reproducible artifacts, measured surfaces, and audit data that others can independently run and validate
 
@@ -87,6 +87,20 @@ For the gap from 23 to 29 the selected composite is 25 and the endpoint is 29. F
 
 This is the larger reversal the repository explores. A prime gap is no longer just a size or a distance. It has a clear internal shape, a selected composite that marks the lowest point inside that shape, and a right endpoint that is fixed by the divisor count returning to 2. The middle is not meaningless; it is full of information. The usual story treats the numbers between primes as an obstacle. Here they are the evidence.
 
+## Bounded Compression at the Cramér Scale
+
+Prime gaps are not only ordered — their interiors are **compressed**. For every consecutive prime gap, the first interior integer with minimum divisor count (the GWR-selected witness) appears within
+
+```text
+max(64, ceil(0.5 * log(q)^2))
+```
+
+of the left endpoint. This bound sits at the scale of Cramér's conjecture. It is proved deterministically from divisor-count structure, not assumed from random models.
+
+The final piece — the **Prime-Square Proximity Theorem** — closed on 2026-07-05: when the selected witness is a prime square `r^2`, the distance `r^2 - p` cannot exceed that cutoff without forcing a modulus-link collision in the composite rows beneath `r`.
+
+This is a proved bound on the selected-witness offset. It does not by itself prove the Riemann Hypothesis, the Prime Number Theorem, or every classical formulation of Cramér's conjecture for raw gap size `q - p`. See [PROOF.md](PROOF.md) for the full theorem stack and boundaries.
+
 The preferred coordinate for that same reading is now zero excess. For an integer `n > 1`, the Divisor Normalization Identity writes
 
 $$E(n)=\left(\frac{d(n)}{2}-1\right)\ln n$$
@@ -140,7 +154,7 @@ The rest of the repository develops these ideas in greater depth, including the 
 
 - [research/00-index/continuity/START_HERE.md](research/00-index/continuity/START_HERE.md) is the continuity and resume entrypoint for future Codex sessions.
 - [research/00-index/README.md](research/00-index/README.md) maps the research corpus by chapter and status.
-- [PROOF.md](PROOF.md) gives the formal statement and proof of the direct next-prime theorem and the prime-gap maximizer theorem.
+- [PROOF.md](PROOF.md) gives the formal proofs of the next-prime rule, the interior maximizer, and universal bounded compression — including the Prime-Square Proximity Theorem (2026-07-05).
 - [docs/rh](docs/rh/README.md) gives the PGS-to-RH reading path and status ledger.
 - [LEFTMOST_MINIMUM_DIVISOR_RULE.md](LEFTMOST_MINIMUM_DIVISOR_RULE.md) explores the rule that identifies the special composite inside each gap.
 - [DIVISOR_NORMALIZATION_IDENTITY.md](DIVISOR_NORMALIZATION_IDENTITY.md) explains the zero-excess normalization and its dual `Z(n)=e^{-E(n)}` coordinate.
