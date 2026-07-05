@@ -36,4 +36,16 @@ open PGS.Placement
 #check weak_lfcl_sufficient_bound
 #check weak_lfcl_ruleX_forces_next_prime
 
-#check "PGS library smoke test loaded successfully (Phase 4 weak L_FCL audit layer + open Rule X target)"
+-- Scaffolding checks (admissible + replay port) -- added per task checklist
+#check PGS.ChamberReset.admissibleOffsets
+#check PGS.ChamberReset.replaySelectionAtBound
+#check PGS.ChamberReset.getCount
+#check PGS.ChamberReset.WalkState
+
+-- L5 closed (theorem proved under hypotheses; demo via type check)
+#check weak_lfcl_ruleX_forces_next_prime
+
+-- Concrete #eval exercising replaySelectionAtBound (pure port) on small gap p=11/gap=2
+#eval replaySelectionAtBound 11 2
+
+#check "PGS library smoke test loaded successfully (L5 closed: weak L_FCL sufficient bound proved)"
