@@ -106,8 +106,9 @@ The remaining chapter homes are mapped routing surfaces:
 - `research/02-gwr-dni/`: GWR, DNI, recursive walk, and proof/audit surfaces.
 - `research/03-gap-types/`: reduced gap-type model and visual grammar
   surfaces.
-- `research/04-bounded-compression/`: dynamic cutoff, fixed-cutoff
-  invalidation, and square-branch unresolved state.
+- `research/04-bounded-compression/`: universal bounded compression (proved
+  2026-07-05), Prime-Square Proximity Theorem, fixed-cutoff invalidation, audit
+  corroboration surfaces.
 - `research/05-state-budget/`: `d4_count` and state-budget carrier evidence,
   measured only.
 - `research/06-cryptology-rsa/`: RSA v2/v3, modulus-link, semiprime, and
@@ -383,8 +384,11 @@ Preserve the state separation:
 - measured: no square dynamic-cutoff counterexample through odd prime-square
   roots `100,000,001 <= r <= 200,000,000`;
 - invalidated: fixed cutoff map `{2:44, 4:60, 6:60}`;
-- proved: the square-branch prime-square proximity theorem
-  `r^2 - p <= C(q)` (closes Cramer's Conjecture via determinism).
+- proved: the Prime-Square Proximity Theorem
+  `r^2 - p <= C(q)` (2026-07-05);
+- proved: universal bounded compression at Cramér scale across all branches
+  (`PROOF.md` Document Status); bounds selected-witness offset `w - p`, not RH/PNT
+  or every classical Cramér formulation for raw gap size `q - p`.
 
 ## Current State-Budget Hidden-State Branch
 
