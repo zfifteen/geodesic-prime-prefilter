@@ -4,7 +4,7 @@
 Deterministically prove that for every consecutive prime gap whose first interior prime square is $r^2$, the distance from the preceding prime $p$ to $r^2$ satisfies:
 $$ r^2 - p \le \max\left(64, \left\lceil 0.5 \log^2(r^2) \right\rceil\right) $$
 
-This establishes the universal dynamic cutoff theorem, effectively proving Cramer's Conjecture deterministically by bounding prime gaps via divisor-count invariants rather than probabilistic heuristics.
+This establishes the universal dynamic cutoff theorem, effectively bounding the selected-witness offset at Cramér scale via divisor-count invariants rather than probabilistic heuristics.
 
 ---
 

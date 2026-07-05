@@ -91,7 +91,7 @@ hypotheses.
 The GWR / leftmost minimum-divisor maximizer theorem is universal under its
 stated hypotheses.
 
-The Prime-Square Proximity Theorem (dynamic cutoff bound) is universal under its stated hypotheses, deterministically bounding Cramer's Conjecture.
+The Prime-Square Proximity Theorem (dynamic cutoff bound) is universal under its stated hypotheses, deterministically bounding the selected-witness offset at Cramér scale.
 
 Do not make the user re-establish these results in each new research task.
 

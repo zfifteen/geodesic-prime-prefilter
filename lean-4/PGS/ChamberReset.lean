@@ -278,6 +278,8 @@ axiom near_root_exclusion_bound (r m M ell h d : Nat)
     (hr : tau r = 2)
     (hm_bound : 2 * M < r)
     (hm : 1 ≤ m ∧ m ≤ M)
+    (h_sub : 2 * m ≤ r^2)
+    (hx_m : MRough M (r^2 - 2 * m))
     (x_m_eq : r^2 - 2 * m = ell * (r + h + d))
     (hell : ell = r - h)
     (h_nonsym : d ≥ 1) :
@@ -294,6 +296,7 @@ axiom prime_square_proximity_theorem (p q r C : Nat)
     (hp : tau p = 2)
     (hq : tau q = 2)
     (hnext : ∀ n, p < n → n < q → tau n ≠ 2)
+    (h_rsq_interior : p < r^2 ∧ r^2 < q)
     (h_rsq : tau (r^2) = 3)
     (h_leftmost : ∀ n, p < n → n < r^2 → tau n ≥ 4) :
     r^2 - p ≤ C

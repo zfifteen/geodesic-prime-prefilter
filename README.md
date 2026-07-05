@@ -89,7 +89,7 @@ This is the larger reversal the repository explores. A prime gap is no longer ju
 
 ## Bounded Compression at the Cramér Scale
 
-Prime gaps are not only ordered — their interiors are **compressed**. For every consecutive prime gap, the first interior integer with minimum divisor count (the GWR-selected witness) appears within
+Prime gaps are not only ordered — their interiors are **compressed**. For every consecutive prime gap with nonempty interior, the first interior integer with minimum divisor count (the GWR-selected witness) appears within
 
 ```text
 max(64, ceil(0.5 * log(q)^2))
