@@ -50,7 +50,7 @@ The exact walk does not need a cutoff theorem. The bounded walk does — and tha
 theorem is now proved.
 
 Universal bounded compression is proved in [PROOF.md](PROOF.md) (2026-07-05).
-For every consecutive prime gap, the GWR-selected witness satisfies
+For every consecutive prime gap with nonempty interior, the GWR-selected witness satisfies
 
 ```text
 C(q) = max(64, ceil(0.5 * log(q)^2))
