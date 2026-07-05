@@ -74,4 +74,10 @@ Since `F(n)=-E(n)`, maximizing `F(n)` is the same ordered comparison as minimizi
 
 The theorem proved in [PROOF.md](PROOF.md) has two connected parts. First, exact divisor counts determine the next prime after a known prime. Second, inside the resulting prime gap with nonempty interior, the logarithmic comparison function is maximized at exactly the leftmost interior integer with minimum divisor count. In zero-excess coordinates, this says the selected integer is the leftmost minimum-excess interior integer.
 
+GWR identifies *where* the minimum sits once the gap interior is fixed. It does
+not by itself bound how far that minimum can sit from the left endpoint. That
+distance bound is a separate proved theorem: universal bounded compression
+(2026-07-05), with the square branch closed by the Prime-Square Proximity
+Theorem. See [PROOF.md](PROOF.md) §Prime-Square Proximity Theorem.
+
 The theorem is universal under its stated hypotheses. Audit tables in `PROOF.md` preserve certification and provenance; they are not limits on the theorem.

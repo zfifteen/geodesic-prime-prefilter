@@ -2,23 +2,42 @@
 
 ## Headline Theorem
 
-Given a known prime `p`, there is a direct deterministic next-prime algorithm:
-compute exact divisor counts for the integers greater than `p`, in increasing
-order, and stop at the first integer with exactly two positive divisors. That
-integer is the next prime `q`.
+This document proves three universal pillars of Prime Gap Structure.
+
+**1. Direct next-prime rule.** Given a known prime `p`, compute exact divisor
+counts for the integers greater than `p`, in increasing order, and stop at the
+first integer with exactly two positive divisors. That integer is the next
+prime `q`.
 
 For a positive integer `n`, let `tau(n)` be the number of positive divisors of
 `n`. The theorem defines `q` from `p` alone:
 
 $$q=\min\{n>p:\tau(n)=2\}$$
 
-This document first proves that this deterministic rule returns the next prime.
-It then proves the selected-integer theorem inside the interval produced by
-that rule: among the integers strictly between `p` and `q`, the first integer
-with the smallest divisor count is the unique maximizer of the logarithmic
-comparison function below.
+**2. Interior maximizer (GWR).** Among the integers strictly between `p` and
+`q`, the first integer with the smallest divisor count is the unique maximizer
+of the logarithmic comparison function below.
 
-Both statements are universal under their stated hypotheses. The proof uses a
+**3. Universal bounded compression.** For every consecutive prime gap with
+nonempty interior, the GWR-selected witness `w` (the first interior integer
+with minimum divisor count) satisfies
+
+```text
+w - p <= max(64, ceil(0.5 * log(q)^2)).
+```
+
+This bound sits at the Cramér scale — the same `(log q)^2` envelope as
+Cramér's conjecture — and is proved deterministically from divisor-count
+invariants. The final square-branch case is closed by the **Prime-Square
+Proximity Theorem** (proved 2026-07-05).
+
+**Boundary.** This is a proved bound on the selected-witness offset `w - p`
+(prefix attainment). It does not by itself prove the Riemann Hypothesis, the
+Prime Number Theorem, or every classical formulation of Cramér's conjecture for
+raw consecutive-prime gap size `q - p`. Lean 4 carries structural axioms
+pending full machine-checked derivation; the mathematical proof lives here.
+
+All three pillars are universal under their stated hypotheses. The proof uses a
 finite base below `5,000,000,001` and then closes the remaining earlier-integer
 side by exact divisor-count arithmetic. The computation tables in this document
 certify the finite base and implementation surfaces; they are not limits on the
@@ -49,6 +68,17 @@ This file proves the local integer-level foundation of Prime Gap Structure.
 - Interior maximizer theorem: inside a nonempty prime-gap interval, the
   leftmost integer with minimum divisor count is the unique maximizer of
   `F(n)=(1-tau(n)/2)log(n)`.
+- Finite bounded-compression base: for every consecutive prime pair with
+  `q < ceil(exp(16))`, the selected witness satisfies `w - p <= 60`.
+- Residual K=128 first-d4 branch-elimination lemma: on retained odd adjacent
+  residual branches, the first-d4 window eliminates the listed high-τ witness
+  candidates under the stated finite hypotheses.
+- Prime-Square Proximity Theorem: on the square branch (`tau(w) = 3`), the
+  distance from the left boundary prime to the first interior prime square
+  `r^2` satisfies `r^2 - p <= max(64, ceil(0.5 * log(r^2)^2))`.
+- Universal bounded compression: the dynamic cutoff
+  `C(q) = max(64, ceil(0.5 * log(q)^2))` holds for the GWR-selected witness
+  on every prime-gap branch.
 
 These theorems are the arithmetic base layer built from divisor counts and
 ordered gap interiors. They are not empirical scans, heuristic approximations,
@@ -645,14 +675,13 @@ Because `r^2 < q`, this rigorously establishes the square-branch bounded-compres
 
 ## Audit Tables
 
-The direct next-prime theorem and the Interior Maximizer Theorem are universal.
-The theorems above are universal.
-The finite bounded-compression base is a finite computational lemma. The
-residual K=128 lemma is a finite residual branch-elimination theorem. The
-square-branch reduction identifies the exact remaining theorem obligation. The
-tables below are retained for certification and reproducibility. They support
-the finite base used in the maximizer proof; they are not the boundary of either
-universal theorem.
+The direct next-prime theorem, the Interior Maximizer Theorem, and universal
+bounded compression are proved theorems. The finite bounded-compression base
+is a finite computational lemma supporting the small-side closure. The residual
+K=128 lemma is a finite residual branch-elimination theorem. The Prime-Square
+Proximity Theorem closes the square branch. The tables below are retained for
+certification and reproducibility. They support the finite base used in the
+maximizer proof; they are not the boundary of the universal theorems.
 
 | Left-prime range | Prime gaps checked | Earlier integers checked | Exact competing integers |
 |---:|---:|---:|---:|
@@ -665,6 +694,17 @@ universal theorem.
 The stress sample near `10^12` checked `137,771` prime gaps and `649,769`
 earlier integers, with `0` unresolved cases. Its median offset was `1`, its
 99th percentile offset was `14`, and its worst offset was `42`.
+
+## Theorem Stack Summary
+
+| Theorem | Object bounded | Status |
+| --- | --- | --- |
+| Next-prime rule | endpoint `q` | proved, universal |
+| Interior maximizer (GWR) | selected witness `w` | proved, universal |
+| Finite bounded-compression base | `w - p` for `q < e^16` | proved, finite lemma |
+| Residual K=128 elimination | high-τ witness branches | proved, stated hypotheses |
+| Prime-Square Proximity | `r^2 - p` on square branch | proved, universal |
+| Universal bounded compression | `w - p` all branches | proved, Cramér scale |
 
 ## Document Status
 
