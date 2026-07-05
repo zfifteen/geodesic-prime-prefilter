@@ -37,11 +37,11 @@ Prime Number Theorem, or every classical formulation of Cramér's conjecture for
 raw consecutive-prime gap size `q - p`. Lean 4 carries structural axioms
 pending full machine-checked derivation; the mathematical proof lives here.
 
-All three pillars are universal under their stated hypotheses. The proof uses a
-finite base below `5,000,000,001` and then closes the remaining earlier-integer
-side by exact divisor-count arithmetic. The computation tables in this document
-certify the finite base and implementation surfaces; they are not limits on the
-theorem.
+All three pillars are universal under their stated hypotheses. The proofs rely on two distinct certified finite bases:
+1. The **direct next-prime rule** and **interior maximizer (GWR)** use a finite base below `5,000,000,001` to close the earlier-integer side by exact divisor-count arithmetic.
+2. The **universal bounded compression** theorem uses a finite base of `q < ceil(exp(16))` before eliminating the remaining odd-adjacent `d=4` and square branches.
+
+The computation tables in this document certify these finite bases and implementation surfaces; they are not limits on the theorems.
 
 ## Downstream Riemann-Hypothesis Reading
 
