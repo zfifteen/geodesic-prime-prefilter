@@ -1,12 +1,14 @@
 # Square Branch Blocker And Acceptance Criteria
 
-## Status
+## Status — RESOLVED 2026-07-05
 
-The square branch is unresolved.
+The square branch is **proved**. The Prime-Square Proximity Theorem in
+[PROOF.md](../../../PROOF.md) satisfies the acceptance criteria below. Universal
+bounded compression is established across all prime-gap branches per `PROOF.md`
+Document Status.
 
-`PROOF.md` now records the exact reduction: the bounded dynamic cutoff theorem
-is closed on the square branch exactly when the prime-square proximity theorem
-below is proved.
+The sections below record the historical acceptance boundary that guided the
+proof closure.
 
 ## PGS Objects
 
@@ -198,15 +200,15 @@ The following do not close the theorem:
 - the Interior Maximizer Theorem alone;
 - a `d = 4` window theorem, because `d = 4` cannot undercut a prime square.
 
-## Current Result
+## Current Result (2026-07-05)
 
 The finite base `q < exp(16)` is proved in `PROOF.md`.
 
 The residual `K = 128` first-d4 branch-elimination theorem is proved in
 `PROOF.md` under its stated finite residual hypotheses.
 
-The square branch remains unresolved until the prime-square proximity theorem
-above is proved.
+The Prime-Square Proximity Theorem is proved in `PROOF.md`. The square branch
+is closed. Universal bounded compression holds at Cramér scale.
 
 ## External Reference Points
 

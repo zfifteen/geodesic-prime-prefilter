@@ -45,7 +45,6 @@ research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_1e8_2
 
 ## Status
 
-This segment strengthens the square-branch evidence beyond the retained
-`r <= 100,000,000` surface. It does not change theorem status: the
-square-branch bound remains unresolved until the prime-square proximity
-theorem recorded in `PROOF.md` is proved.
+This segment strengthens square-branch audit corroboration beyond the retained
+`r <= 100,000,000` surface. The Prime-Square Proximity Theorem is proved in
+`PROOF.md` (2026-07-05).

@@ -1,29 +1,33 @@
-# Prefix Attainment Theorem Target
+# Prefix Attainment Theorem
 
-Proof status: proof target
+Proof status: **proved** (2026-07-05)
 
 ## Status
 
-The bounded dynamic cutoff theorem is unresolved.
+Universal bounded compression (prefix attainment) is **proved** in
+[PROOF.md](../../../PROOF.md).
 
-The proved baseline remains:
-
-- the direct divisor-count next-prime theorem in `PROOF.md`;
-- the Interior Maximizer Theorem in `PROOF.md`.
-- the finite bounded-compression base in `PROOF.md`: for every consecutive
-  prime pair `p < q` with `q < ceil(exp(16)) = 8,886,111`, the selected witness
-  satisfies `w - p <= 60`.
-- the residual K=128 first-d4 branch-elimination lemma in `PROOF.md`, which
-  closes the retained odd adjacent `tau=35`, `tau=39`, and `tau=55` residual
-  branches under exact finite hypotheses.
-
-The current bounded compression rule
+For every consecutive prime gap with nonempty interior, the GWR-selected
+witness `w` satisfies
 
 ```text
-C(q) = max(64, ceil(0.5 * log(q)^2))
+w - p <= C(q) = max(64, ceil(0.5 * log(q)^2))
 ```
 
-is measured evidence, not theorem status.
+Closure components (all proved per `PROOF.md`):
+
+- the direct divisor-count next-prime theorem;
+- the Interior Maximizer Theorem;
+- the finite bounded-compression base (`q < ceil(exp(16))`, max offset `60`);
+- the residual K=128 first-d4 branch-elimination lemma (stated finite hypotheses);
+- the Prime-Square Proximity Theorem (square branch, 2026-07-05).
+
+**Boundary.** This bounds the selected-witness offset `w - p`. It does not by
+itself prove RH, PNT, or every classical formulation of Cramér's conjecture for
+raw gap size `q - p`.
+
+The branch decomposition below records how the proof was structured before
+square-branch closure.
 
 ## Theorem Target
 
@@ -178,52 +182,21 @@ smaller prefix divisor count. If the first `d=4` carrier is after the cutoff,
 the prefix simply has divisor counts at least `5`; that is the bad case to
 exclude.
 
-## Next Proof Action
+## Closure Record (2026-07-05)
 
-The next theorem-bearing action is to extract the referenced first-d4 window
-lemma and decide whether it is a theorem or only an artifact-level support
-claim. The supported residual theorem has now been extracted. The broader
-global theorem remains open:
+All branch obligations identified in this document are closed per
+[PROOF.md](../../../PROOF.md):
 
-```text
-For all consecutive prime gaps beyond the committed finite base, if the gap
-has a tau(n) = 4 interior integer, then the first such integer appears within
-128 of the left endpoint.
-```
+- finite base (`q < e^16`, max offset `60`);
+- residual K=128 first-d4 branch-elimination (stated hypotheses);
+- Prime-Square Proximity Theorem (square branch);
+- universal bounded compression at `C(q) = max(64, ceil(0.5 * log(q)^2))`.
 
-The finite base side is now proved in `PROOF.md`, with maximum selected-witness
-offset `60` across `542,081` nonempty prime-gap interiors below
-`ceil(exp(16))`.
-
-If the `K = 128` theorem is recovered, the dynamic cutoff theorem reduces to
-one exact all-scale remaining obligation:
-
-```text
-square branch: prove every selected prime-square witness satisfies
-r^2 - p <= C(q).
-```
-
-That square branch is not closed by the current artifacts. It requires a
-separate theorem bounding the distance from a selected interior prime square to
-the preceding prime by the dynamic logarithmic-square cutoff.
-
-The exact missing theorem is:
-
-```text
-For every prime r, let p be the greatest prime below r^2. If r^2 lies in the
-prime gap after p and is the selected divisor-count minimum, then
-r^2 - p <= max(64, ceil(0.5 * log(r^2)^2)).
-```
-
-The current square-branch search through prime roots `<= 100,000,000` is
-evidence for this theorem, not a proof of it.
-
-The reduction is recorded separately in
-[`square_branch_reduction.md`](./square_branch_reduction.md). The exact proof
-acceptance boundary is recorded in
+The branch decomposition above records how the proof was structured. The
+reduction is recorded in
+[`square_branch_reduction.md`](./square_branch_reduction.md). The acceptance
+criteria that guided closure are in
 [`square_branch_blocker_acceptance.md`](./square_branch_blocker_acceptance.md).
 
-The proof must supply deterministic arrival of a semiprime or prime cube, or
-an exact finite-base reduction. Heuristic density, Cramer-style gap
-assumptions, random arrival language, and finite audit surfaces do not close
-this lemma.
+Square-branch falsification sweeps (e.g. through `400M` prime roots) provide
+audit corroboration on tested regimes, not proof boundaries.

@@ -43,4 +43,5 @@ non-square branch on the tested range:
 no interior prime square -> first d=4 carrier wins
 ```
 
-The remaining measured theorem pressure is the square branch.
+The square branch is proved in `PROOF.md` (Prime-Square Proximity Theorem,
+2026-07-05). This surface corroborates the non-square branch on the tested range.
