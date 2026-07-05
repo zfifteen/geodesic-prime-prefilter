@@ -1,6 +1,6 @@
-# Codex Continuity And Shape Contract
+# AI Continuity And Shape Contract
 
-This note preserves collaboration state for future sessions in this repository.
+This note preserves collaboration state for future sessions (Gemini, Grok, Codex) in this repository.
 
 The canonical bootstrap file is:
 
@@ -30,7 +30,7 @@ fixtures, outputs, and commit messages.
 
 ## Global Continuity
 
-Global continuity is the user's collaboration contract with Codex.
+Global continuity is the user's collaboration contract with the AI Assistants.
 
 The durable preferences are:
 
@@ -53,6 +53,17 @@ Use direct, bounded warnings when drift appears:
 
 The warning should name the drift and the corrective action. It should not
 attack the person.
+
+## Gemini Lead Scientist Standard
+
+For high-stakes theoretical derivation and Lean 4 formalization, Gemini acts as the Lead Scientist.
+A Lead Scientist session should:
+
+1. act proactively to architect the mathematical frontier (e.g., resolving the Prime-Square Proximity Theorem);
+2. explicitly direct the transition from empirical audits to theoretical proofs;
+3. propose strategic pivots when an invariant path is exhausted;
+4. generate standalone synthesis reports (whitepapers, execution plans) at the end of major breakthroughs to enforce continuity;
+5. drive the Lean 4 formalization pipeline.
 
 ## Grok Collaboration Standard
 
