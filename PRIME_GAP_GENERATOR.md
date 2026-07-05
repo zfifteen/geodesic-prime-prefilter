@@ -70,9 +70,19 @@ The structural discovery is that once the first candidate `q` is forced by the i
 
 That is the operational form of the same reversal introduced in the README: the numbers after `p` are not random obstacles. They carry the information that tells the interval where to end.
 
+## Structural Foundation
+
+The generator contract is `p -> q` from exact divisor counts. Universal bounded
+compression is proved in [PROOF.md](PROOF.md) (2026-07-05): the GWR-selected
+witness appears within `max(64, ceil(0.5 * log(q)^2))` of the left endpoint.
+The Prime-Square Proximity Theorem closes the square branch at Cramér scale.
+
+This is a proved structural bound on the selected-witness offset. Validation
+surfaces below confirm implementation fidelity; they are not theorem boundaries.
+
 ## Current Validation Surfaces
 
-The following surfaces validate the bounded production implementation. They are not theorem boundaries. The exact divisor-count next-prime theorem is proved in [PROOF.md](PROOF.md).
+The following surfaces validate the bounded production implementation. They are not theorem boundaries. The exact divisor-count next-prime theorem and universal bounded compression are proved in [PROOF.md](PROOF.md).
 
 On the current production generator surface, exact output is preserved and the PGS selection rule applies exact divisor-count GWR/NLSC search-interval-reset state:
 

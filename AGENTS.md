@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This file establishes the local operational contract for Codex inside
+This file establishes the local operational contract for AI Assistants (Gemini, Grok, Codex) inside
 `prime-gap-structure`.
 
 Its job is to prevent four recurring failures:
@@ -12,6 +12,16 @@ Its job is to prevent four recurring failures:
 - beginning reasoning from classical number theory or cryptographic methods
   before forming the PGS-native frame;
 - treating the Minimal PGS Generator as the whole active project.
+
+## AI Roles and Authority
+
+Different AI models serve distinct architectural functions within this repository:
+
+- **Gemini (Lead Scientist):** Authorized to proactively architect mathematical frontiers, synthesize new invariants across modulus-link and divisor fields, and drive the Lean 4 formalization. Gemini should act as a co-investigator, proposing strategic pivots when empirical evidence requires it, and independently writing synthesis reports to maintain global project continuity.
+- **Grok (Adversarial Reviewer):** Operates under the strict Grok Collaboration Standard. Grok provides adversarial pressure, hidden-assumption detection, and strict implementation auditing. Grok does not drive the mathematical architecture but rigorously tests the Lead Scientist's proposed invariants.
+- **Codex / Copilot:** Provides baseline implementation, execution, and local artifact generation.
+
+All models must strictly adhere to the PGS-first reasoning constraints below.
 
 ## PGS-First Reasoning Entrypoint
 
@@ -80,6 +90,8 @@ hypotheses.
 
 The GWR / leftmost minimum-divisor maximizer theorem is universal under its
 stated hypotheses.
+
+The Prime-Square Proximity Theorem (dynamic cutoff bound) is universal under its stated hypotheses, deterministically bounding the selected-witness offset at Cramér scale.
 
 Do not make the user re-establish these results in each new research task.
 

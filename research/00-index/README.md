@@ -20,7 +20,7 @@ for each chapter.
 | `01-generator` | Minimal PGS Generator and production evidence | mapped and validated |
 | `02-gwr-dni` | GWR, DNI, divisor-count structure, and chamber mechanics | mapped and validated |
 | `03-gap-types` | Gap-type grammar, public framing, and visual sequence surfaces | mapped and validated |
-| `04-bounded-compression` | Dynamic cutoff, bounded compression, square-branch pressure | mapped and validated |
+| `04-bounded-compression` | Universal bounded compression; Prime-Square Proximity Theorem (proved 2026-07-05) | proved + validated |
 | `05-state-budget` | State-budget carriers, `d4_count`, and hidden-state probes | mapped and validated |
 | `06-cryptology-rsa` | RSA v2/v3, modulus-link, semiprime, and certificate work | mapped and validated |
 | `06-cryptology-rsa/docs/shor_order_entropy` | PGS-Shor order entropy sidecar finding | topic added |

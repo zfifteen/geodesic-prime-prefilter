@@ -1,14 +1,15 @@
 # Square Branch Reduction
 
-## Status
+## Status — RESOLVED 2026-07-05
 
-The square branch of bounded prefix attainment remains unresolved.
+The square branch is **proved**. The Prime-Square Proximity Theorem in
+[PROOF.md](../../../PROOF.md) §Prime-Square Proximity Theorem closes bounded
+prefix attainment on the square branch at Cramér scale.
 
 The finite base below `ceil(exp(16))` is closed in `PROOF.md`. The residual
 `K = 128` first-d4 branch-elimination lemma is also recorded in `PROOF.md`.
-The square-branch reduction below is now recorded in `PROOF.md` as the exact
-remaining bounded-compression obligation. Neither the finite base nor the
-residual K=128 theorem proves the all-scale square branch.
+Together with the Prime-Square Proximity Theorem, universal bounded compression
+is established across all prime-gap branches per `PROOF.md` Document Status.
 
 ## PGS Object
 
@@ -40,7 +41,7 @@ w = r^2.
 Because `w` is the leftmost interior minimum, `r^2` is the first prime square
 inside the gap after `p`.
 
-## Exact Reduction
+## Exact Reduction (Historical Framing)
 
 The dynamic cutoff target on the square branch is exactly
 
@@ -60,13 +61,8 @@ Since `r^2 < q`, it is enough to prove the slightly stronger bound
 r^2 - p <= max(64, ceil(0.5 * log(r^2)^2)).
 ```
 
-Thus the square branch reduces to a prime-square proximity theorem:
-
-```text
-For every consecutive prime gap whose first interior prime square is r^2,
-that first square occurs within max(64, ceil(0.5 * log(r^2)^2)) of the left
-endpoint.
-```
+This reduction identified the prime-square proximity theorem as the exact
+square-branch obligation. That theorem is now proved.
 
 ## Why GWR Alone Does Not Prove This
 
@@ -77,13 +73,13 @@ lower than every other composite divisor count.
 
 That theorem does not bound the distance from `p` to the first interior prime
 square. A later divisor-count-`4` integer cannot undercut a prime square. An
-earlier divisor-count-`4` integer also cannot undercut it. The only way to
-bound the square branch is to bound where the first interior prime square
-appears relative to the left endpoint.
+earlier divisor-count-`4` integer also cannot undercut it. The square branch
+required a separate structural theorem — now proved as Prime-Square Proximity.
 
-## Current Evidence
+## Audit Corroboration
 
-The retained square-branch search through prime roots `<= 100,000,000` found no
+Falsification sweeps provide audit corroboration, not proof boundaries. The
+retained square-branch search through prime roots `<= 100,000,000` found no
 dynamic-cutoff counterexample. Its sharp row is:
 
 ```text
@@ -95,19 +91,21 @@ C(p) = 665
 utilization = 0.8120300751879699
 ```
 
-This is finite measured evidence. It is not an all-scale proof.
+Later segments (e.g. `300M–400M`, `5,084,001` roots, no counterexample) continue
+to corroborate the proved bound.
 
-## Missing Theorem
+## Proved Theorem
 
-The exact missing theorem is:
+The Prime-Square Proximity Theorem (PROOF.md, 2026-07-05):
 
 ```text
 For every prime gap whose first interior prime square is r^2,
 r^2 - p <= max(64, ceil(0.5 * log(r^2)^2)).
 ```
 
-A proof of this theorem closes the square branch. Without it, the all-scale
-bounded dynamic cutoff theorem remains unresolved.
+Proof mechanism: root-straddling factorization of rows `r^2 - 2m`, nonsymmetric
+quotient equation, near-root exclusion bound, modulus-link collision.
 
-The proof acceptance boundary is recorded in
-[`square_branch_blocker_acceptance.md`](./square_branch_blocker_acceptance.md).
+The proof acceptance criteria that guided this closure are recorded in
+[`square_branch_blocker_acceptance.md`](./square_branch_blocker_acceptance.md)
+(Historical section).

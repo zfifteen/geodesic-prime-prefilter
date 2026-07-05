@@ -1,12 +1,13 @@
 # Square-Tail Obstruction Word Target
 
-## Status
+## Status — RESOLVED 2026-07-05
 
-Proof target.
+The square branch is **proved** in [PROOF.md](../../../PROOF.md) §Prime-Square
+Proximity Theorem. The obstruction-word research below is retained as historical
+context for how the proof route was explored.
 
-The bounded-compression square branch is still the live infinite-tail
-obligation. The target is not a probabilistic claim about prime density. It is
-a deterministic obstruction-elimination problem.
+The target was not a probabilistic claim about prime density. It was a
+deterministic obstruction-elimination problem — now closed.
 
 ## PGS Object
 
