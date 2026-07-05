@@ -10,7 +10,7 @@
   In every prime gap with a nonempty interior, the log-score maximizer is the
   first interior integer with the smallest divisor count.
 - **Universal bounded compression is proved (2026-07-05).** For every consecutive
-  prime gap, the GWR-selected witness satisfies
+  prime gap with nonempty interior, the GWR-selected witness satisfies
   `w - p <= max(64, ceil(0.5 * log(q)^2))`. The Prime-Square Proximity
   Theorem closes the square branch at Cramér scale via near-root exclusion and
   modulus-link collision. See [../PROOF.md](../PROOF.md). This bounds the

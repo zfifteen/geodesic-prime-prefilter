@@ -656,8 +656,7 @@ All other rows are nonsymmetric (`d_m >= 1`), forcing the exact nonsymmetric quo
 ```text
 d_m ell_m = h_m^2 - 2m.
 ```
-
-By definition of M-roughness in the unbound tail, rows not covered by small primes `<= M` must be covered by prime factors `ell_m > M`. However, since `d_m >= 1`, we have `ell_m <= h_m^2 - 2m`. Substituting `ell_m = r - h_m` forces the explicit near-root exclusion bound:
+Define a row as **M-rough** if it is not divisible by any prime factor $\le M$. In the unbounded composite tail, any remaining uncrossed row must be $M$-rough, and thus its least prime factor must satisfy $\ell_m > M$. However, since $d_m \ge 1$, we have $\ell_m \le h_m^2 - 2m$. Substituting $\ell_m = r - h_m$ forces the explicit near-root exclusion bound:
 
 ```text
 h_m >= ceil((sqrt(1 + 4(r + 2m)) - 1) / 2) > sqrt(r).
@@ -717,7 +716,7 @@ proved 2026-07-05).
 It records the finite bounded-compression base, the residual K=128
 first-d4 branch-elimination lemma, and the formally proved Prime-Square Proximity Theorem.
 
-With the resolution of the Prime-Square Proximity Theorem, the universal bounded-compression limit (Cramer's Conjecture boundary) is deterministically established across all prime gap branches via local divisor invariants.
+With the resolution of the Prime-Square Proximity Theorem, the universal bounded-compression limit (Cramér scale selected-witness boundary) is deterministically established across all prime gap branches via local divisor invariants.
 
 RH-facing and PNT-facing language is downstream analytic description of this
 integer-level source. Those materials do not make RH, PNT, zero geometry, or
