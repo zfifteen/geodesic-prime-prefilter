@@ -45,8 +45,9 @@ theorem.
 
 ## Downstream Riemann-Hypothesis Reading
 
-This document proves the direct next-prime rule and the interior maximizer
-theorem. The Riemann-hypothesis-facing documentation uses this source layer in
+This document proves the direct next-prime rule, the interior maximizer
+theorem, and universal bounded compression (including the Prime-Square Proximity
+Theorem). The Riemann-hypothesis-facing documentation uses this source layer in
 the downstream order. In that downstream zeta compression, the load is
 `H(n)=log n+E(n)`:
 
@@ -708,9 +709,12 @@ earlier integers, with `0` unresolved cases. Its median offset was `1`, its
 
 ## Document Status
 
-`PROOF.md` is the single live proof reference for the direct deterministic next-prime theorem and the prime-gap maximizer theorem.
+`PROOF.md` is the single live proof reference for the direct deterministic
+next-prime theorem, the prime-gap maximizer theorem, and universal bounded
+compression at Cramér scale (including the Prime-Square Proximity Theorem,
+proved 2026-07-05).
 
-It also records the finite bounded-compression base, the residual K=128
+It records the finite bounded-compression base, the residual K=128
 first-d4 branch-elimination lemma, and the formally proved Prime-Square Proximity Theorem.
 
 With the resolution of the Prime-Square Proximity Theorem, the universal bounded-compression limit (Cramer's Conjecture boundary) is deterministically established across all prime gap branches via local divisor invariants.

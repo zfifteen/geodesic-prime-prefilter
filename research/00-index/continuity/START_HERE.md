@@ -328,13 +328,11 @@ As of 2026-07-05, the square-branch bounded compression obligation is formally c
 
 The theorem is PROVED via the near-root exclusion bound, mathematically establishing that nonsymmetric M-rough composite rows cannot perfectly tile the gap without occupying the forbidden continuous square-root-width band immediately below `r`. The modulus-link structure must intersect.
 
-As of 2026-05-09, the active bounded-compression handoff is:
+Historical handoff (pre-2026-07-05):
 
 ```text
 research/04-bounded-compression/docs/session_handoff_2026-05-09.md
 ```
-
-Read it before continuing this theorem route.
 
 The bounded GWR/DNI compression branch started from:
 
@@ -342,12 +340,13 @@ The bounded GWR/DNI compression branch started from:
 research/04-bounded-compression/docs/dynamic_cutoff_conjecture/index.html
 ```
 
-Strongest supported frame:
+Strongest supported frame (2026-07-05):
 
 ```text
-The unbounded DNI/GWR transition is exact by construction. The unresolved
-theorem target is whether every selected interior witness occurs before
-C(q) = max(64, ceil(0.5 * log(q)^2)).
+The unbounded DNI/GWR transition is exact by construction. Universal bounded
+compression is proved: every selected interior witness occurs before
+C(q) = max(64, ceil(0.5 * log(q)^2)). The Prime-Square Proximity Theorem
+closes the square branch. Authority: PROOF.md.
 ```
 
 The branch spine is:
