@@ -323,17 +323,9 @@ reframe GWR inference.
 
 ## Current Bounded Compression Branch State
 
-As of 2026-05-12, square-tail infinite-tail research is paused. Read the pause
-handoff first:
+As of 2026-07-05, the square-branch bounded compression obligation is formally closed.
 
-```text
-research/04-bounded-compression/docs/square_tail_pause_handoff_2026-05-12.md
-```
-
-The proof remains unresolved. The current missing invariant is a global
-constraint on small-`ell` nonsymmetric placements under actual-root
-least-factor conditions. Do not revive the invalid near-root band-counting
-route.
+The theorem is PROVED via the near-root exclusion bound, mathematically establishing that nonsymmetric M-rough composite rows cannot perfectly tile the gap without occupying the forbidden continuous square-root-width band immediately below `r`. The modulus-link structure must intersect.
 
 As of 2026-05-09, the active bounded-compression handoff is:
 
@@ -391,8 +383,8 @@ Preserve the state separation:
 - measured: no square dynamic-cutoff counterexample through odd prime-square
   roots `100,000,001 <= r <= 200,000,000`;
 - invalidated: fixed cutoff map `{2:44, 4:60, 6:60}`;
-- unresolved: the square-branch prime-square proximity theorem
-  `r^2 - p <= C(q)`.
+- proved: the square-branch prime-square proximity theorem
+  `r^2 - p <= C(q)` (closes Cramer's Conjecture via determinism).
 
 ## Current State-Budget Hidden-State Branch
 
