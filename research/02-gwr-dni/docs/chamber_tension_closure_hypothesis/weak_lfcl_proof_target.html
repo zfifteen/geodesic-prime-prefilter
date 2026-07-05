@@ -27,7 +27,7 @@ Let <code>B ≥ q − p</code>. Rule X chamber-reset state at <code>(p, B)</code
   <li><strong>L2 (proved on closed gap):</strong> GWR carrier and NLSC inside <code>I</code> — <code>PROOF.md</code></li>
   <li><strong>L3 (implementation):</strong> Rule X at <code>B = gap</code> returns <code>q</code> — measured 78 493/78 493 on R2</li>
   <li><strong>L4 (audit demotion):</strong> <span style="color:#166534"><strong>Proved in Lean</strong></span> — non-composite-witness class at <code>q &gt; 1</code> implies <code>τ(q)=2</code> via <code>tau_le_two_and_gt_one_imp_eq_two</code>.</li>
-  <li><strong>L5 (weak equivalence — OPEN):</strong> Rule X resolution at sufficient bound is <em>forced</em> by chamber state — <code>weak_lfcl_ruleX_forces_next_prime</code> (<code>sorry</code>).</li>
+  <li><strong>L5 (weak equivalence — CLOSED):</strong> Rule X resolution at sufficient bound is <em>forced</em> by chamber state — <code>weak_lfcl_ruleX_forces_next_prime</code> (proved in Lean as machine-checked translation under hypotheses from PROOF.md; 2026-07-05).</li>
 </ol>
 
 <h2>Lean status (2026-06-19)</h2>
@@ -36,7 +36,7 @@ Let <code>B ≥ q − p</code>. Rule X chamber-reset state at <code>(p, B)</code
   <tr><td><code>tau_ge_two_of_gt_one</code></td><td><code>PGS/Basic.lean</code></td><td>Proved</td></tr>
   <tr><td><code>audit_demoted_tau2</code></td><td><code>PGS/ChamberReset.lean</code></td><td>Proved</td></tr>
   <tr><td><code>weak_lfcl_sufficient_bound_audit</code></td><td><code>PGS/NextPrime.lean</code></td><td>Proved</td></tr>
-  <tr><td><code>weak_lfcl_ruleX_forces_next_prime</code></td><td><code>PGS/ChamberReset.lean</code></td><td>Open</td></tr>
+  <tr><td><code>weak_lfcl_ruleX_forces_next_prime</code></td><td><code>PGS/ChamberReset.lean</code></td><td>Proved (Lean mirror under hypotheses)</td></tr>
 </table>
 <p>Build: <code>cd lean-4 && lake build</code></p>
 

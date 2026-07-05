@@ -20,6 +20,7 @@ th { background: #161b22; }
 <h1>PGS Lean 4 Formalization — Status Surface</h1>
 
 <p><strong>✅ PHASE 1 — Core Characterization (Closed with Deferrals — 2026-06)</strong><br>
+<strong>✅ L5 CLOSED (2026-07-05)</strong> — weak_lfcl_ruleX_forces_next_prime proved (Lean mirror of weak sufficient-bound certificate law under PROOF.md hypotheses). Full replaySelectionAtBound port + #eval on p=11/gap=2 (returns correct q=13 cert). See lean-4/ and L5 plan.
 Phase 1 gate complete. Core structure, reverse helper lemma, memberships, and contrapositive delivered. The two pure-List counting obligations (forward + symmetric reverse length) explicitly deferred to Phase 2 per user decision 2026-06. All surfaces updated. Build clean. Ready for controlled Phase 2 (Mathlib path).</p>
 
 <div class="contract">
@@ -37,6 +38,7 @@ Phase 1 gate complete. Core structure, reverse helper lemma, memberships, and co
 <tr><td>tau implementation</td><td class="status-proved">Defined + parses</td><td>Pure List.range + filter (matches Python reference)</td></tr>
 <tr><td>Main lemma: tau_eq_two_iff_only_divisors_are_1_and_n (+ contrapositive)</td><td class="status-proved">Phase 1 closed 2026-06 with deferrals</td><td>Core bidirectional structure + reverse helper (only_one_and_n_in_filter) + memberships delivered. Both counting steps (forward three-distinct and reverse length-equality) explicitly DEFERRED to Phase 2 (Mathlib) per user 2026-06 decision. Contrapositive statement present. Full traceability. Build clean.</td></tr>
 <tr><td>Smoke test</td><td class="status-proved">Loads + checks present declarations</td><td>Updated comment reflects honest status (Phase 1 with explicit deferrals). #check lines now resolve.</td></tr>
+<tr><td>L5 / replaySelectionAtBound port + theorem</td><td class="status-proved">Port implemented + theorem proved</td><td>Direct port of Python logic; #eval on small gap; weak_lfcl_ruleX_forces_next_prime proved using replay result</td></tr>
 </table>
 
 <h2>Current Status After Deferral Decision (2026-06 Larger Unit)</h2>

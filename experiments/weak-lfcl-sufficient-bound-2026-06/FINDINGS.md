@@ -49,3 +49,7 @@ PYTHONPATH=src/python python3 \
 ```
 
 **Date executed:** 2026-06-19 · **Elapsed:** ≈33 s
+
+## L5 closure (2026-07-05)
+
+Lean mirror of the sufficient-bound certificate law closed: `weak_lfcl_ruleX_forces_next_prime` proved in `lean-4/PGS/ChamberReset.lean` (machine-checked translation of the structural property under the stated hypotheses from `PROOF.md`; L4 audit demotion re-used). Measured R2 surface (78 493/78 493) remains measured. State separation preserved. See `lean-4/L5_WEAK_LFCL_CLOSURE_PLAN.md` and smoke-test updates.

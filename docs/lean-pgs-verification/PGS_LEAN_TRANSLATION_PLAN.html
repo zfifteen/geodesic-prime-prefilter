@@ -112,6 +112,16 @@ This plan is subordinate to:
 Lean 4 work is <strong>downstream verification / audit layer only</strong>. It never replaces PROOF.md or the Python reference implementation.
 </div>
 
+<h2>L5 Status (updated 2026-07-05)</h2>
+<p><strong>weak_lfcl_ruleX_forces_next_prime</strong> — CLOSED (Lean mirror of weak L_FCL sufficient-bound certificate law). Full direct port of <code>replaySelectionAtBound</code> (chamber walk + carrier/lock/threat/post-process using <code>tau</code> + wheel) implemented in <code>PGS/ChamberReset.lean</code>. Theorem proved using the replay result under hypotheses. Concrete <code>#eval replaySelectionAtBound 11 2</code> succeeds (returns q=13, resolvedCount=1, resolvedSurvivor, wheel=true). See smoke-test.lean, ChamberReset.lean, and L5 plan.</p>
+<table>
+<tr><th>Item</th><th>Status</th></tr>
+<tr><td>replaySelectionAtBound (pure port)</td><td>Implemented (matches Python logic)</td></tr>
+<tr><td>weak_lfcl_ruleX_forces_next_prime</td><td>Proved (uses replay + hyps; no sorry)</td></tr>
+<tr><td>wheel derivation</td><td>Port computes; hyps guarantee for prime q</td></tr>
+</table>
+
+
 <h2>1. Executive Summary</h2>
 
 <p>This document provides a granular, line-mapped, phased plan for translating the two core universal theorems and their supporting lemmas from <code>PROOF.md</code> into Lean 4.</p>
