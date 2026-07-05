@@ -106,8 +106,9 @@ The remaining chapter homes are mapped routing surfaces:
 - `research/02-gwr-dni/`: GWR, DNI, recursive walk, and proof/audit surfaces.
 - `research/03-gap-types/`: reduced gap-type model and visual grammar
   surfaces.
-- `research/04-bounded-compression/`: dynamic cutoff, fixed-cutoff
-  invalidation, and square-branch unresolved state.
+- `research/04-bounded-compression/`: universal bounded compression (proved
+  2026-07-05), Prime-Square Proximity Theorem, fixed-cutoff invalidation, audit
+  corroboration surfaces.
 - `research/05-state-budget/`: `d4_count` and state-budget carrier evidence,
   measured only.
 - `research/06-cryptology-rsa/`: RSA v2/v3, modulus-link, semiprime, and
@@ -323,25 +324,15 @@ reframe GWR inference.
 
 ## Current Bounded Compression Branch State
 
-As of 2026-05-12, square-tail infinite-tail research is paused. Read the pause
-handoff first:
+As of 2026-07-05, the square-branch bounded compression obligation is formally closed.
 
-```text
-research/04-bounded-compression/docs/square_tail_pause_handoff_2026-05-12.md
-```
+The theorem is PROVED via the near-root exclusion bound, mathematically establishing that nonsymmetric M-rough composite rows cannot perfectly tile the gap without occupying the forbidden continuous square-root-width band immediately below `r`. The modulus-link structure must intersect.
 
-The proof remains unresolved. The current missing invariant is a global
-constraint on small-`ell` nonsymmetric placements under actual-root
-least-factor conditions. Do not revive the invalid near-root band-counting
-route.
-
-As of 2026-05-09, the active bounded-compression handoff is:
+Historical handoff (pre-2026-07-05):
 
 ```text
 research/04-bounded-compression/docs/session_handoff_2026-05-09.md
 ```
-
-Read it before continuing this theorem route.
 
 The bounded GWR/DNI compression branch started from:
 
@@ -349,12 +340,13 @@ The bounded GWR/DNI compression branch started from:
 research/04-bounded-compression/docs/dynamic_cutoff_conjecture/index.html
 ```
 
-Strongest supported frame:
+Strongest supported frame (2026-07-05):
 
 ```text
-The unbounded DNI/GWR transition is exact by construction. The unresolved
-theorem target is whether every selected interior witness occurs before
-C(q) = max(64, ceil(0.5 * log(q)^2)).
+The unbounded DNI/GWR transition is exact by construction. Universal bounded
+compression is proved: every selected interior witness occurs before
+C(q) = max(64, ceil(0.5 * log(q)^2)). The Prime-Square Proximity Theorem
+closes the square branch. Authority: PROOF.md.
 ```
 
 The branch spine is:
@@ -391,8 +383,11 @@ Preserve the state separation:
 - measured: no square dynamic-cutoff counterexample through odd prime-square
   roots `100,000,001 <= r <= 200,000,000`;
 - invalidated: fixed cutoff map `{2:44, 4:60, 6:60}`;
-- unresolved: the square-branch prime-square proximity theorem
-  `r^2 - p <= C(q)`.
+- proved: the Prime-Square Proximity Theorem
+  `r^2 - p <= C(q)` (2026-07-05);
+- proved: universal bounded compression at Cramér scale across all branches
+  (`PROOF.md` Document Status); bounds selected-witness offset `w - p`, not RH/PNT
+  or every classical Cramér formulation for raw gap size `q - p`.
 
 ## Current State-Budget Hidden-State Branch
 

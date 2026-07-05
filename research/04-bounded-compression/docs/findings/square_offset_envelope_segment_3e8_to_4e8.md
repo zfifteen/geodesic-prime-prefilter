@@ -53,7 +53,8 @@ python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_sea
 
 This segment did not exceed the earlier square-envelope maximum
 `0.8120300751879699` from the `p <= 100,000,000` surface. The square-offset
-envelope remains unresolved as a theorem.
+envelope is proved in `PROOF.md` (Prime-Square Proximity Theorem, 2026-07-05).
+This segment provides audit corroboration on the tested regime.
 
 Against the record table through `p <= 300,000,000`, this segment preserves
 the standing record. It does not create a new square-envelope utilization

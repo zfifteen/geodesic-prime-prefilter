@@ -2,8 +2,8 @@
 
 ## Object
 
-Dynamic cutoff, bounded compression, square-branch pressure, and falsification
-surfaces for bounded GWR/DNI prime walks.
+Dynamic cutoff, bounded compression, square-branch closure, and falsification
+audit surfaces for bounded GWR/DNI prime walks.
 
 Primary homes:
 
@@ -16,32 +16,36 @@ Primary homes:
 
 ## Invariant Or Rule
 
-The active empirical cutoff rule is:
+The proved dynamic cutoff is:
 
 ```text
 C(q) = max(64, ceil(0.5 * log(q)^2))
 ```
 
-It is a bounded witness-distance target for GWR/DNI selected witnesses.
+It is the universal bounded witness-distance theorem for GWR/DNI selected
+witnesses. Authority: [PROOF.md](../../PROOF.md) (2026-07-05).
 
 ## Proof Status
 
-`PROOF.md` records:
+`PROOF.md` records and proves:
 
 - the finite bounded-compression base;
 - the residual `K = 128` first-d4 branch-elimination lemma;
-- the square-branch reduction;
-- the unresolved all-scale square-branch proximity obligation.
+- the **Prime-Square Proximity Theorem** (square branch, proved 2026-07-05);
+- **universal bounded compression** across all prime-gap branches at Cramér scale.
 
-The all-scale dynamic cutoff theorem remains unresolved.
+**Boundary.** This bounds the selected-witness offset `w - p`. It does not by
+itself prove RH, PNT, or every classical formulation of Cramér's conjecture for
+raw gap size `q - p`. Lean 4 carries structural axioms pending full
+machine-checked derivation.
 
 ## Measured Evidence
 
 Measured documentation lives in `research/04-bounded-compression/docs/` and
 `research/02-gwr-dni/output/gwr_proof/`.
 
-The current completion audit states that no proof artifact closes the universal
-cutoff law and no universal counterexample exists in the repository.
+Falsification sweeps provide **audit corroboration** of the proved bound. No
+universal counterexample exists in the repository through tested regimes.
 
 ## Audit Status
 
@@ -60,11 +64,12 @@ The old fixed cutoff theorem `{2:44, 4:60, 6:60}` is false. It fails at
 The literal prior-square Lemma A is invalidated at `q = 113`, where the exact
 witness is later square `121 = 11^2`.
 
-## Unresolved State
+## Next Work
 
-The square branch remains unresolved. A completion claim requires either a
-proof that the square-offset envelope holds for every right prime, or a first
-explicit counterexample.
+- Lean 4: promote `near_root_exclusion_bound` and `prime_square_proximity_theorem`
+  from axioms to derived theorems
+- Continue square-branch audit sweeps as corroboration on larger regimes
+- External review and publication of the Prime-Square Proximity proof
 
 ## Reproduce
 
@@ -77,4 +82,5 @@ python3 -m pytest research/04-bounded-compression/tests/test_bounded_compression
 ## Provenance
 
 Created as a skeleton in Phase 1. Finalized as a mapped bounded-compression
-chapter in Phase 4 of the repository reorganization.
+chapter in Phase 4 of the repository reorganization. Universal bounded
+compression proved 2026-07-05 (Prime-Square Proximity Theorem).

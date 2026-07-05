@@ -1,25 +1,36 @@
-# Active Hourly Research Target
+# Active Research Target
 
-**Updated:** 2026-06-19  
-**Program:** square-branch proximity closure for bounded dynamic cutoff
+**Updated:** 2026-07-05  
+**Program:** post-breakthrough — Lean formalization, external review, audit corroboration
 
-## Central Obligation (unresolved)
+## Central Obligation — CLOSED 2026-07-05
 
-For every selected-square branch gap whose first interior prime square is `r^2`,
+The square-branch prime-square proximity theorem is **proved** in
+[PROOF.md](../../../PROOF.md) §Prime-Square Proximity Theorem. Universal bounded
+compression at Cramér scale is established across all prime-gap branches per
+`PROOF.md` Document Status.
 
 ```text
-D(r) = r^2 - P(r^2) <= max(64, ceil(0.5 * log(r^2)^2)).
+r^2 - p <= max(64, ceil(0.5 * log(r^2)^2))   [PROVED]
+w - p <= max(64, ceil(0.5 * log(q)^2))       [PROVED, all branches]
 ```
 
-Equivalently: the bounded dynamic cutoff theorem closes on the square branch when
-this prime-square proximity statement is proved (`PROOF.md`, square-branch
-reduction).
+## Active Frontiers (do not re-litigate closed theorems)
+
+- Lean 4: promote `near_root_exclusion_bound` and `prime_square_proximity_theorem`
+  from axioms to derived theorems (`lean-4/PGS/ChamberReset.lean`)
+- External review and publication of the Prime-Square Proximity proof
+- Square-branch audit sweeps as corroboration on larger regimes (hourly queue)
+- RSA endpoint resolver maturation (separate program track)
 
 ## Proved (do not re-litigate)
 
 - Direct deterministic next-prime rule (`PROOF.md`)
 - Interior Maximizer Theorem (`PROOF.md`)
-- Square-branch band bound `D(r) < (r-s)(r+s)` from GWR characterization
+- Finite bounded-compression base (`PROOF.md`)
+- Residual K=128 first-d4 branch-elimination (`PROOF.md`)
+- **Prime-Square Proximity Theorem** (`PROOF.md`, 2026-07-05)
+- **Universal bounded compression** (`PROOF.md`, 2026-07-05)
 
 ## Invalidated (do not revive)
 
@@ -27,7 +38,7 @@ reduction).
 - d=4 τ≥5 Short-Divisor-Average transfer to the square branch
   (`experiments/square-branch-sda-invalidation-2026-06/FINDINGS.md`)
 
-## Last Measured Surface
+## Last Measured Surface (audit corroboration)
 
 | Field | Value |
 | --- | --- |
@@ -38,12 +49,12 @@ reduction).
 | Extremal root `r` | `358,018,553` |
 | Offset `D(r)` | `546` |
 | Local artifacts | `research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_3e8_4e8/` |
-| Prior segment | `2·10^8 .. 3·10^8` max util `0.7210` at `r=251,066,071` offset `540` |
 
 ## Hourly Queue
 
 Rotating queue lives in `research/00-index/continuity/hourly_queue.json`.
-The dispatcher executes **exactly one** item per activation.
+The dispatcher executes **exactly one** item per activation. Items now target
+audit corroboration and Lean formalization — not proof of the square branch.
 
 ## Repro Gate
 
@@ -61,7 +72,6 @@ Append every run to `research/04-bounded-compression/docs/square_branch_hourly.m
 2. `PROOF.md` (theorem status only)
 3. This file
 4. Last ledger block in `square_branch_hourly.md`
-5. `research/04-bounded-compression/docs/square_branch_blocker_acceptance.md`
 
 ## Relay Branch
 

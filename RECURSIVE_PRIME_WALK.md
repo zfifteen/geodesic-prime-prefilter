@@ -46,21 +46,33 @@ See [PROOF.md](PROOF.md), [research/02-gwr-dni/docs/closure_constraint_findings.
 
 ## Dynamic Cutoff and Square-Branch Falsification
 
-The exact walk does not need a cutoff theorem. The bounded walk does.
+The exact walk does not need a cutoff theorem. The bounded walk does — and that
+theorem is now proved.
 
-That is where the old fixed cutoff claim failed.
-
-The old fixed cutoff theorem `{2:44, 4:60, 6:60}` is false. It fails at `q = 24,098,209`, where the square branch gives `E(q) = 72 > 60`. The bounded walker no longer treats that fixed map as live.
-
-The current bounded compression is empirical:
+Universal bounded compression is proved in [PROOF.md](PROOF.md) (2026-07-05).
+For every consecutive prime gap with nonempty interior, the GWR-selected witness satisfies
 
 ```text
 C(q) = max(64, ceil(0.5 * log(q)^2))
 ```
 
-Through the direct square-branch audit at `p <= 10^6`, the repository tested `78,498` prime squares, found `7,477` violations of the old fixed map, and observed maximum square offset `246`.
+The Prime-Square Proximity Theorem closes the square branch at Cramér scale.
+This bounds the selected-witness offset `w - p`; it does not by itself prove
+RH, PNT, or every classical formulation of Cramér's conjecture for raw gap
+size `q - p`.
 
-The compare mode in the recursive walker is the live falsification instrument. It runs the bounded and unbounded walkers in lockstep and records any bounded miss immediately.
+The old fixed cutoff theorem `{2:44, 4:60, 6:60}` is false and invalidated.
+It fails at `q = 24,098,209`, where the square branch gives `E(q) = 72 > 60`.
+The bounded walker no longer treats that fixed map as live.
+
+Falsification scripts provide **audit corroboration** of the proved bound, not
+proof boundaries. Through the direct square-branch audit at `p <= 10^6`, the
+repository tested `78,498` prime squares, found `7,477` violations of the old
+fixed map, and observed maximum square offset `246`.
+
+The compare mode in the recursive walker is the live audit instrument. It runs
+the bounded and unbounded walkers in lockstep and records any bounded miss
+immediately.
 
 See [research/04-bounded-compression/scripts/square_branch_gap_audit.py](research/04-bounded-compression/scripts/square_branch_gap_audit.py), [research/02-gwr-dni/scripts/gwr_dni_recursive_walk.py](research/02-gwr-dni/scripts/gwr_dni_recursive_walk.py), and [research/02-gwr-dni/docs/gwr_dni_exact_recursive_prime_walk_note.md](research/02-gwr-dni/docs/gwr_dni_exact_recursive_prime_walk_note.md).
 

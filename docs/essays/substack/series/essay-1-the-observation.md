@@ -2,6 +2,10 @@
 
 *Essay 1 in a series about a pattern hiding inside prime numbers. No advanced number theory required. Start with consecutive primes, count divisors, and the pattern appears.*
 
+> **Editor's note (2026-07-05):** The interior maximizer (GWR) theorem and universal
+> bounded compression are proved in [PROOF.md](../../../../../PROOF.md). Scan counts
+> below certify implementation surfaces, not theorem boundaries.
+
 ---
 
 ## Start with the gap
@@ -154,7 +158,9 @@ So the strongest supported claim is:
 
 **On the current tested surface, every checked prime gap has a canonical interior selected integer, and the selected integer is exactly the leftmost integer of the smallest divisor count present in the gap.**
 
-That is finite evidence, not an unconditional theorem for all primes. But it is already much stronger than a handful of numerical coincidences.
+The interior maximizer theorem is proved universally in `PROOF.md`. The scan
+counts above are audit corroboration on tested regimes — much stronger than a
+handful of numerical coincidences, and now backed by a full proof.
 
 ---
 

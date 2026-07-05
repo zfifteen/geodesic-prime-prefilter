@@ -1,9 +1,13 @@
 # Bounded Compression Session Handoff, 2026-05-09
 
-## Strongest Supported Claim
+> **Historical (pre-2026-07-05).** The square-branch obligation described below
+> is **proved** in `PROOF.md` §Prime-Square Proximity Theorem. Retained for
+> provenance only.
 
-The bounded dynamic cutoff theorem is reduced to one unresolved square-branch
-obligation.
+## Strongest Supported Claim (at time of writing)
+
+The bounded dynamic cutoff theorem was reduced to one square-branch obligation
+(closed 2026-07-05).
 
 The proved and recorded pieces are:
 

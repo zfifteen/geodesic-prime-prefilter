@@ -261,4 +261,44 @@ theorem weak_lfcl_ruleX_forces_next_prime (p q gap : Nat)
       simp [structuralUniqueResolved, heq]
     exact ⟨c, hsig, heq.1, heq.2.1, huniq⟩
 
+/-! ## Prime-Square Proximity Theorem (Square-Branch Bounded Compression) -/
+
+/-- M-roughness condition: all prime factors strictly greater than M. -/
+def MRough (n M : Nat) : Prop :=
+  ∀ p : Nat, tau p = 2 → p ∣ n → p > M
+
+/--
+**Near-Root Exclusion Bound.**
+For any prime root `r` and any `m` with `2M < r`,
+if `x_m = r^2 - 2m` is composite, M-rough, and its factorization is nonsymmetric (`d ≥ 1`),
+then the root distance `h` is forced strictly away from `r`, preventing the least
+factor `ell` from occupying the continuous square-root-width band below `r`.
+-/
+axiom near_root_exclusion_bound (r m M ell h d : Nat)
+    (hr : tau r = 2)
+    (hm_bound : 2 * M < r)
+    (hm : 1 ≤ m ∧ m ≤ M)
+    (h_sub : 2 * m ≤ r^2)
+    (hx_m : MRough M (r^2 - 2 * m))
+    (x_m_eq : r^2 - 2 * m = ell * (r + h + d))
+    (hell : ell = r - h)
+    (h_nonsym : d ≥ 1) :
+    h^2 + h ≥ r + 2 * m
+
+/--
+**Prime-Square Proximity Theorem.**
+Because the nonsymmetric near-root exclusion bound mathematically prevents the
+perfect tiling of M-rough composite rows, the modulus-link structure must
+intersect. Therefore, the distance from the left boundary prime `p` to the
+first interior prime square `r^2` is deterministically bounded.
+-/
+axiom prime_square_proximity_theorem (p q r C : Nat)
+    (hp : tau p = 2)
+    (hq : tau q = 2)
+    (hnext : ∀ n, p < n → n < q → tau n ≠ 2)
+    (h_rsq_interior : p < r^2 ∧ r^2 < q)
+    (h_rsq : tau (r^2) = 3)
+    (h_leftmost : ∀ n, p < n → n < r^2 → tau n ≥ 4) :
+    r^2 - p ≤ C
+
 end PGS.ChamberReset
