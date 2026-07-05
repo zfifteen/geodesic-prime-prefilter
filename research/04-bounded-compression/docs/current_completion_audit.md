@@ -5,7 +5,7 @@
 Prove or falsify the Dynamic Cutoff for bounded GWR/DNI prime walks:
 
 ```text
-For every consecutive prime gap, the GWR-selected witness w satisfies
+For every consecutive prime gap with nonempty interior, the GWR-selected witness w satisfies
 w - p <= C(q) = max(64, ceil(0.5 * log(q)^2)).
 ```
 

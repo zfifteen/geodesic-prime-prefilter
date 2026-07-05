@@ -18,7 +18,7 @@ It states and proves the direct deterministic next-prime theorem: given a known 
 
 It also proves the prime-gap maximizer theorem: inside any prime gap with a nonempty interior, the comparison function `F(n)` is maximized exactly at the leftmost interior integer with minimum divisor count. In zero-excess coordinates, `F(n)=-E(n)`, so the same theorem says that this integer is the leftmost minimum-excess interior integer.
 
-It proves universal bounded compression (2026-07-05): for every consecutive prime gap, the GWR-selected witness `w` satisfies `w - p <= max(64, ceil(0.5 * log(q)^2))`. The Prime-Square Proximity Theorem closes the square branch at Cramér scale via near-root exclusion and modulus-link collision. This is a proved bound on the selected-witness offset; it does not by itself prove RH, PNT, or every classical formulation of Cramér's conjecture for raw gap size `q - p`.
+It proves universal bounded compression (2026-07-05): for every consecutive prime gap with nonempty interior, the GWR-selected witness `w` satisfies `w - p <= max(64, ceil(0.5 * log(q)^2))`. The Prime-Square Proximity Theorem closes the square branch at Cramér scale via near-root exclusion and modulus-link collision. This is a proved bound on the selected-witness offset; it does not by itself prove RH, PNT, or every classical formulation of Cramér's conjecture for raw gap size `q - p`.
 
 These are universal theorems under their stated hypotheses. Audit tables certify finite cases used by the proof and preserve provenance; they are not theorem boundaries.
 
