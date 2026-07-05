@@ -1,12 +1,15 @@
 # Bounded Compression Findings
 
-The bounded-compression conjecture uses
+Universal bounded compression is **proved** in
+[PROOF.md](../../../../PROOF.md) (2026-07-05). The dynamic cutoff
 
 ```text
 C(q) = max(64, ceil(0.5 * log(q)^2))
 ```
 
-as the finite window for the exact GWR/DNI selected witness.
+is the proved witness-distance bound for GWR/DNI selected witnesses at Cramér
+scale. The tables below are **audit corroboration** on finite tested regimes,
+not proof boundaries.
 
 ## Falsification Surfaces
 
@@ -31,7 +34,7 @@ cutoff = 78
 utilization = 0.6153846153846154
 ```
 
-This is measured evidence, not a proof of the dynamic cutoff law.
+These surfaces corroborate the proved dynamic cutoff law on tested regimes.
 
 ## Square-Envelope Pressure Surface
 

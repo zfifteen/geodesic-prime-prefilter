@@ -53,4 +53,4 @@ python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_sea
 
 This segment did not exceed the earlier square-envelope maximum
 `0.8120300751879699` from the `p <= 100,000,000` surface. The square-offset
-envelope remains unresolved as a theorem.
+envelope is proved in `PROOF.md` (2026-07-05). This segment provides audit corroboration.
