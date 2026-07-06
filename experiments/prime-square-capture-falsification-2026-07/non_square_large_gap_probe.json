@@ -1,0 +1,48 @@
+{
+  "candidates_tested": 80,
+  "interpretation": "At 10^12+ scales, gaps wider than 200 exist without landing an interior prime square (square root of left endpoint exceeds gap width). These are natural falsification targets for decoupling once interior divisor data is available; on the external list alone we cannot read GWR offset.",
+  "note": "Large-gap list used for width/compositeness proxy only; interior tau unavailable at scale.",
+  "wide_gaps_without_interior_prime_square": 80,
+  "widest_without_square": [
+    {
+      "gap": 1442,
+      "p": 804212830686677669
+    },
+    {
+      "gap": 1370,
+      "p": 418032645936712127
+    },
+    {
+      "gap": 1358,
+      "p": 523255220614645319
+    },
+    {
+      "gap": 1356,
+      "p": 401429925999153707
+    },
+    {
+      "gap": 1344,
+      "p": 753917635380895597
+    },
+    {
+      "gap": 1328,
+      "p": 352521223451364323
+    },
+    {
+      "gap": 1320,
+      "p": 605046330029026447
+    },
+    {
+      "gap": 1308,
+      "p": 749565457554371299
+    },
+    {
+      "gap": 1292,
+      "p": 494653394305448051
+    },
+    {
+      "gap": 1284,
+      "p": 697543681633814903
+    }
+  ]
+}
