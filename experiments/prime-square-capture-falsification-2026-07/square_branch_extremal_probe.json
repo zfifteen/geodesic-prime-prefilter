@@ -1,0 +1,73 @@
+{
+  "f1_failures": [],
+  "f2_failures": [],
+  "regime": "square-branch extremal rows from bounded-compression search",
+  "rows": [
+    {
+      "bypass_holds": true,
+      "capture_holds": true,
+      "cutoff": 665,
+      "first_tau4_offset": 10,
+      "gap_size": 628,
+      "min_tau": 3,
+      "offset": 540,
+      "p": 6782746770348949,
+      "q": 6782746770349577,
+      "r": 82357433,
+      "square": 6782746770349489,
+      "tau3_offsets": [
+        540
+      ],
+      "tau4_count_before_w": 63,
+      "tau_w": 3,
+      "unique_tau3": true,
+      "utilization": 0.8120300751879699,
+      "w": 6782746770349489,
+      "w_is_square": true
+    },
+    {
+      "bypass_holds": true,
+      "capture_holds": true,
+      "cutoff": 681,
+      "first_tau4_offset": 2,
+      "gap_size": 468,
+      "min_tau": 3,
+      "offset": 462,
+      "p": 10407627232092379,
+      "q": 10407627232092847,
+      "r": 102017779,
+      "square": 10407627232092841,
+      "tau3_offsets": [
+        462
+      ],
+      "tau4_count_before_w": 52,
+      "tau_w": 3,
+      "unique_tau3": true,
+      "utilization": 0.6784140969162996,
+      "w": 10407627232092841,
+      "w_is_square": true
+    },
+    {
+      "bypass_holds": true,
+      "capture_holds": true,
+      "cutoff": 749,
+      "first_tau4_offset": 6,
+      "gap_size": 598,
+      "min_tau": 3,
+      "offset": 540,
+      "p": 63034172007376501,
+      "q": 63034172007377099,
+      "r": 251066071,
+      "square": 63034172007377041,
+      "tau3_offsets": [
+        540
+      ],
+      "tau4_count_before_w": 60,
+      "tau_w": 3,
+      "unique_tau3": true,
+      "utilization": 0.7209612817089452,
+      "w": 63034172007377041,
+      "w_is_square": true
+    }
+  ]
+}
