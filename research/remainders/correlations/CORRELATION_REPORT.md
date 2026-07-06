@@ -199,3 +199,17 @@ Gaps in which the final min(3, g) remainder states (projected vec[:6]) contain a
 See gap_echo_hypothesis_validation_plan.md for full plan document.
 
 
+
+## Phase 3 Results (Updated)
+
+### Mutual information remainder -> termination
+MI(num_zeros, dist_to_next_bin): 0.0960 (normalized: 0.0713)
+Conclusion: Almost no mutual information in this regime.
+
+### H1: Remainder entropy vs realized g
+Spearman correlation(entropy, g): 1.0000
+Conclusion: Strong correlation expected in small gaps because sequences are almost unique.
+
+### H4: GWR vector distinct from gap average
+Average difference in number of zeros (GWR - Gap Avg): -0.4538
+Conclusion: GWR vector has slightly fewer zeros on average, consistent with GWR being a minimum-d(n) carrier (having fewer prime factors).

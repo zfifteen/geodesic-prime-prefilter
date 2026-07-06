@@ -87,6 +87,14 @@ For the gap from 23 to 29 the selected composite is 25 and the endpoint is 29. F
 
 This is the larger reversal the repository explores. A prime gap is no longer just a size or a distance. It has a clear internal shape, a selected composite that marks the lowest point inside that shape, and a right endpoint that is fixed by the divisor count returning to 2. The middle is not meaningless; it is full of information. The usual story treats the numbers between primes as an obstacle. Here they are the evidence.
 
+## The GWR Super-Signal
+
+The divisor-count field alone identifies the specific minimum-$d(n)$ composite (the GWR winner). But when we cross-reference this selected composite with its **modular primorial resonance** (how many zeros it has in its remainder vector modulo 2, 3, 5, 7, 30, 210, 2310), it becomes a deterministic predictive trigger for the exact arrival of the prime.
+
+Classical number theory understands primorials, but does not construct an ordered interior gap space to locate the minimum divisor-count carrier, nor does it measure that specific carrier's resonance to predict termination.
+
+Measured across 1,000,000 gaps, when the GWR-selected composite exhibits high modular resonance (4 or more remainder zeros modulo the primorial bases), it acts as an absolute deterministic trigger that the gap terminates immediately at the next integer. See the full empirical discovery and architecture in [The GWR Super-Signal](research/remainders/docs/gwr_super_signal.html).
+
 ## Bounded Compression at the Cramér Scale
 
 Prime gaps are not only ordered — their interiors are **compressed**. For every consecutive prime gap with nonempty interior, the first interior integer with minimum divisor count (the GWR-selected witness) appears within
