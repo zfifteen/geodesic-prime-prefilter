@@ -21,6 +21,8 @@ Phase 1 = this skeleton (signatures + exhaustive descriptive comments).
 from __future__ import annotations
 
 import json
+import math
+import random
 from collections import defaultdict
 from pathlib import Path
 from typing import Any, Sequence
@@ -111,9 +113,42 @@ def mutual_information(
     - MI = sum p(x,y) log( p(x,y) / (p(x)p(y)) )
     - Return dict with 'mi', 'n', 'effective_bins', plus optional normalized version.
     """
-    raise NotImplementedError(
-        "Phase-1 skeleton: mutual_information not implemented."
-    )
+    if len(residue_feature) != len(placement_label):
+        raise ValueError("Inputs must have same length")
+    if not residue_feature:
+        return {"mi": 0.0, "n": 0, "effective_bins_x": 0, "effective_bins_y": 0, "normalized_mi": 0.0}
+    
+    counts = defaultdict(int)
+    count_x = defaultdict(int)
+    count_y = defaultdict(int)
+    n = len(residue_feature)
+    
+    for x, y in zip(residue_feature, placement_label):
+        counts[(x, y)] += 1
+        count_x[x] += 1
+        count_y[y] += 1
+        
+    mi = 0.0
+    for (x, y), c in counts.items():
+        pxy = c / n
+        px = count_x[x] / n
+        py = count_y[y] / n
+        mi += pxy * math.log(pxy / (px * py))
+        
+    hx = -sum((cx / n) * math.log(cx / n) for cx in count_x.values())
+    hy = -sum((cy / n) * math.log(cy / n) for cy in count_y.values())
+    
+    norm_mi = 0.0
+    if hx + hy > 0:
+        norm_mi = 2 * mi / (hx + hy)
+        
+    return {
+        "mi": mi,
+        "n": n,
+        "effective_bins_x": len(count_x),
+        "effective_bins_y": len(count_y),
+        "normalized_mi": norm_mi
+    }
 
 
 def transition_matrix(
@@ -348,9 +383,51 @@ def feature_correlation_matrix(
     - Return as square matrix + feature name order.
     - Also a human 'pairs ranked by |corr|' table.
     """
-    raise NotImplementedError(
-        "Phase-1 skeleton: feature_correlation_matrix not implemented."
-    )
+    if not feature_list:
+        return []
+    
+    features = sorted(list(feature_list[0].keys()))
+    
+    def rank(vals):
+        indexed = sorted(enumerate(vals), key=lambda x: x[1])
+        ranks = [0.0] * len(vals)
+        i = 0
+        while i < len(vals):
+            j = i
+            while j < len(vals) and indexed[j][1] == indexed[i][1]:
+                j += 1
+            avg_rank = sum(range(i + 1, j + 1)) / (j - i)
+            for k in range(i, j):
+                ranks[indexed[k][0]] = avg_rank
+            i = j
+        return ranks
+        
+    def pearson(x, y):
+        n = len(x)
+        if n < 2: return 0.0
+        mx, my = sum(x)/n, sum(y)/n
+        num = sum((xi - mx)*(yi - my) for xi, yi in zip(x, y))
+        den_x = sum((xi - mx)**2 for xi in x)
+        den_y = sum((yi - my)**2 for yi in y)
+        if den_x == 0 or den_y == 0: return 0.0
+        return num / math.sqrt(den_x * den_y)
+        
+    matrix = []
+    
+    data = {f: [row[f] for row in feature_list] for f in features}
+    
+    if method == "spearman":
+        data = {f: rank(data[f]) for f in features}
+        
+    for i, f1 in enumerate(features):
+        row = []
+        for j, f2 in enumerate(features):
+            corr = pearson(data[f1], data[f2])
+            row.append(corr)
+        matrix.append(row)
+        
+    # Optionally one could return dict with features and matrix, but signature expects list[list[float]]
+    return matrix
 
 
 def predictive_delta(
@@ -375,10 +452,86 @@ def predictive_delta(
     - Return {'baseline_score': , 'augmented_score': , 'delta': , 'metric': }
     - Never use the remainder features to choose which gaps are "test".
     """
-    raise NotImplementedError(
-        "Phase-1 skeleton: predictive_delta not implemented. "
-        "See plan H3 and comments for pure-Python logistic requirement."
-    )
+    n = len(target)
+    if n == 0:
+        return {}
+        
+    def train_predict(X_train, y_train, X_test):
+        X_train = [[1.0] + list(row) for row in X_train]
+        X_test = [[1.0] + list(row) for row in X_test]
+        weights = [0.0] * len(X_train[0])
+        lr = 0.01
+        epochs = 100
+        
+        def sigmoid(z):
+            if z < -250: return 0.0
+            if z > 250: return 1.0
+            return 1.0 / (1.0 + math.exp(-z))
+            
+        for _ in range(epochs):
+            for x, y in zip(X_train, y_train):
+                pred = sigmoid(sum(w*xi for w, xi in zip(weights, x)))
+                err = pred - y
+                for i in range(len(weights)):
+                    weights[i] -= lr * err * x[i]
+                    
+        preds = []
+        for x in X_test:
+            pred = sigmoid(sum(w*xi for w, xi in zip(weights, x)))
+            preds.append(pred)
+        return preds
+        
+    def evaluate(features_list):
+        if not features_list: return 0.0
+        keys = sorted(list(features_list[0].keys()))
+        X = [[row[k] for k in keys] for row in features_list]
+        
+        for j in range(len(keys)):
+            col = [X[i][j] for i in range(n)]
+            mean = sum(col)/n
+            std = math.sqrt(sum((c - mean)**2 for c in col)/n) if n > 0 else 1.0
+            if std == 0: std = 1.0
+            for i in range(n):
+                X[i][j] = (X[i][j] - mean) / std
+        
+        random.seed(seed)
+        indices = list(range(n))
+        random.shuffle(indices)
+        
+        fold_size = n // n_folds if n_folds > 0 else 1
+        log_loss_sum = 0.0
+        
+        for i in range(n_folds):
+            start = i * fold_size
+            end = (i + 1) * fold_size if i != n_folds - 1 else n
+            test_idx = set(indices[start:end])
+            train_idx = [idx for idx in indices if idx not in test_idx]
+            
+            X_train = [X[idx] for idx in train_idx]
+            y_train = [target[idx] for idx in train_idx]
+            X_test = [X[idx] for idx in test_idx]
+            y_test = [target[idx] for idx in test_idx]
+            
+            preds = train_predict(X_train, y_train, X_test)
+            
+            for p, y in zip(preds, y_test):
+                p = max(min(p, 1 - 1e-15), 1e-15)
+                if y == 1:
+                    log_loss_sum -= math.log(p)
+                else:
+                    log_loss_sum -= math.log(1 - p)
+                    
+        return log_loss_sum / n
+        
+    base_loss = evaluate(baseline_features)
+    aug_loss = evaluate(augmented_features)
+    
+    return {
+        "baseline_log_loss": base_loss,
+        "augmented_log_loss": aug_loss,
+        "delta": base_loss - aug_loss,
+        "metric": "log_loss"
+    }
 
 
 # ---------------------------------------------------------------------------
