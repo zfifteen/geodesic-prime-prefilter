@@ -1,0 +1,24 @@
+[
+  {
+    "name": "pgs-director-daily-advance",
+    "schedule": "0 6 * * *",
+    "type": "agent",
+    "job": "Read the file at agent-job/SYSTEM.md and complete the PGS daily research cycle tasks described (GWR/DNI analysis + self-review + report). Use gwr-resonance and log-analyzer skills. Target PGS repo at /Users/velocityworks/IdeaProjects/prime-gap-structure.",
+    "enabled": true,
+    "agent_backend": "claude-code"
+  },
+  {
+    "name": "pgs-test-one-shot",
+    "schedule": "*/5 * * * *",
+    "type": "agent",
+    "job": "Execute one minimal PGS Research Director test cycle: run gwr-resonance on 89 97, analyze logs, produce artifact summary. No human prompts.",
+    "enabled": false
+  },
+  {
+    "name": "heartbeat",
+    "schedule": "*/30 * * * *",
+    "type": "agent",
+    "job": "Read the file at agent-job/HEARTBEAT.md and complete the tasks described there.",
+    "enabled": false
+  }
+]
