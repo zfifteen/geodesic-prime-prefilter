@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep-Band Endpoint Transport Plan — Adversarial Review</title>
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --fg: #0f172a;
+            --card: #ffffff;
+            --border: #e2e8f0;
+            --accent: #2563eb;
+            --good: #15803d;
+            --warn: #b45309;
+            --bad: #b91c1c;
+            --info: #0369a1;
+        }
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.6;
+            color: var(--fg);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: var(--bg);
+        }
+        h1, h2, h3 { color: #0f172a; font-weight: 600; }
+        h1 { border-bottom: 4px solid var(--accent); padding-bottom: 0.5rem; }
+        h2 { border-bottom: 2px solid var(--border); padding-bottom: 0.25rem; margin-top: 2rem; }
+        .section {
+            background: var(--card);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+        }
+        .code-block {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 6px;
+            font-family: ui-monospace, monospace;
+            font-size: 0.85em;
+            overflow-x: auto;
+        }
+        .alert {
+            padding: 1rem 1.25rem;
+            border-left: 5px solid;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+        }
+        .alert-bad { background: #fef2f2; border-color: var(--bad); color: #7f1d1d; }
+        .alert-warn { background: #fffbeb; border-color: var(--warn); color: #78350f; }
+        .alert-info { background: #f0f9ff; border-color: var(--info); color: #164e63; }
+        .alert-good { background: #f0fdf4; border-color: var(--good); color: #14532d; }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        th, td { border: 1px solid var(--border); padding: 0.5rem 0.75rem; text-align: left; vertical-align: top; }
+        th { background: #f8fafc; font-weight: 600; }
+        .status { font-family: monospace; font-size: 0.85em; }
+        ul { padding-left: 1.25rem; }
+        .checklist { list-style: none; padding-left: 0; }
+        .checklist li { margin: 0.5rem 0; padding-left: 1.6rem; position: relative; }
+        .checklist li:before { content: "☐"; position: absolute; left: 0; color: var(--accent); }
+        .issue { border-left: 4px solid var(--bad); padding-left: 0.75rem; }
+        .meta { font-size: 0.9rem; color: #64748b; }
+        .verdict { font-size: 1.05rem; font-weight: 600; }
+        .ref { font-family: monospace; font-size: 0.85em; background: #f1f5f9; padding: 0.1rem 0.35rem; border-radius: 3px; }
+        .revision-note { background: #e0f2fe; border: 1px solid #0369a1; padding: 1rem; border-radius: 6px; margin-bottom: 1.5rem; }
+        .delta { background: #f8fafc; padding: 1rem; border-radius: 6px; }
+    </style>
+</head>
+<body>
+
+<h1>Deep-Band Endpoint Transport Plan — Adversarial Review</h1>
+
+<p class="meta"><strong>Reviewer:</strong> Grok (Adversarial Reviewer per AGENTS.md)<br>
+<strong>Reviewed artifact:</strong> <span class="ref">research/06-cryptology-rsa/docs/deep_band_endpoint_transport_plan.html</span><br>
+<strong>Review date:</strong> 2026-07-07<br>
+<strong>Scope:</strong> Re-review of latest Gemini revision. Contract adherence, technical accuracy, provenance rigor, execution feasibility, and remaining shape risks.</p>
+
+<div class="revision-note">
+    <strong>This is the third revision reviewed.</strong> Major additions since the prior version include a concrete "Exact Anchor Derivation" script using the PGS backend, a new "Asymmetric Filter Evaluation Matrix" table, explicit "Scientific Hypothesis" framing, improved visual structure, and repeated strong contract language. The execution protocol now has clear phases with zero proposed changes to the core runner.
+</div>
+
+<div class="section">
+    <h2>Executive Verdict</h2>
+    <p class="verdict">This revision is the most rigorous and executable version yet. The addition of a reproducible derivation script (intended to produce a real PGS anchor) and the specific filter evaluation matrix represent substantial progress toward a well-defined experiment. The repeated emphasis that "this is an experiment, not a redefinition of the general inference law" is correctly placed and contract-aligned.</p>
+    
+    <p><strong>However, the provided derivation script contains a critical API error</strong> that will prevent Phase 1 from succeeding. Additionally, the use of the 0.3994140625 ratio (derived from the challenge corpus) remains external side-information, even when applied only to public N values. The high-scale previous_endpoint path at ~102 bits will exercise known limitations in the current backend.</p>
+
+    <div class="alert alert-info">
+        <strong>Overall:</strong> Excellent direction and scientific framing. Blocking implementation issues remain in the exact script provided. Execution should begin with correcting and testing the derivation step in isolation.
+    </div>
+</div>
+
+<div class="section">
+    <h2>Summary of the Current Plan</h2>
+    <ul>
+        <li><strong>Goal:</strong> Inject the corpus-derived deep-band location (via --start-anchor) into the existing RSA v2 runner on s256_challenge_1 to test whether the strict reset closure predicates survive extreme geometric asymmetry.</li>
+        <li><strong>Key New Elements:</strong>
+            <ul>
+                <li>Explicit derivation script that loads public N, applies the median ratio, computes target, then calls PGS previous endpoint logic.</li>
+                <li>Filter Evaluation Matrix table focusing on Strict Reset Closure, reciprocal_carrier_alignment_holds, lower_lock_dominance_holds, and final status.</li>
+                <li>Three-phase protocol: Compute &amp; Log → Seeded Execution → Artifact Capture.</li>
+                <li>Strong, repeated language protecting the canonical sqrt(N) law.</li>
+            </ul>
+        </li>
+        <li><strong>Claimed invariants:</strong> Pure use of existing --start-anchor; no runner changes; full provenance of the seeded anchor; downstream audit only for factor confirmation.</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h2>Improvements Since Previous Revision</h2>
+    <div class="delta">
+        <ul>
+            <li><strong>Derivation script</strong> — Moves from vague "manually calculate" to a concrete, logged Python snippet that attempts to use the actual PGS previous_endpoint machinery. This is a major step toward reproducibility and adversarial auditability.</li>
+            <li><strong>Evaluation Matrix</strong> — Excellent addition. Turns the "open question" into specific, observable predicates with before/after columns. This makes the experiment falsifiable and documentable.</li>
+            <li><strong>Hypothesis section</strong> — Clearly states the scale-invariance test: will filters calibrated on balanced cases survive ~102-bit to ~154-bit transport?</li>
+            <li><strong>Contract language</strong> — More prominent and repeated ("CRITICAL PGS CONTRACT BOUNDARY", "experiment, not a redefinition").</li>
+            <li><strong>Phased protocol</strong> — Clearer separation of concerns and artifact requirements.</li>
+            <li><strong>Visual quality</strong> — Modern CSS with metric cards, better tables, and styled checklists.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="section">
+    <h2>Critical Issues</h2>
+
+    <div class="issue">
+        <h3>1. Derivation script uses non-existent API</h3>
+        <p>The script contains:</p>
+        <div class="code-block">anchor = pgs.previous_public_endpoint_before(target)</div>
+        <p><strong>This function does not exist.</strong></p>
+        <p>The actual surface (from pgs_inference_backend.py and run_experiment.py) is:</p>
+        <ul>
+            <li><code>previous_endpoint(value, bound=...)</code> in run_experiment.py (recommended entry point)</li>
+            <li><code>backend = get_backend_for_value(value); backend.previous_endpoint(value, bound)</code></li>
+        </ul>
+        <p>The script will fail at import/execution time. A corrected minimal version would look like:</p>
+        <div class="code-block">
+import sys
+from pathlib import Path
+import json
+import gmpy2
+
+ROOT = Path('/Users/velocityworks/IdeaProjects/prime-gap-structure')
+sys.path.insert(0, str(ROOT / 'research/06-cryptology-rsa/experiments/live-solver/rsa-v2'))
+from run_experiment import previous_endpoint
+
+# ... load N and compute target as in the plan ...
+target = gmpy2.mpz(1) &lt;&lt; int(ratio * N.bit_length())
+anchor = previous_endpoint(target)   # note: uses default RULE_X_CANDIDATE_BOUND internally
+print("Exact Deep Anchor:", anchor)
+        </pre>
+        </div>
+    </div>
+
+    <div class="issue">
+        <h3>2. The ratio remains side-information</h3>
+        <p>While the script correctly reads only the public 'n' field, the hardcoded <code>ratio = 0.3994140625</code> was computed by analyzing the secret small-factor bit lengths of the challenge_like family. Selecting the target band using this specific number is still the injection of corpus-derived external knowledge.</p>
+        <p>This is acceptable <em>only</em> because the plan now consistently labels the activity as a family-specific characterization experiment. It would be unacceptable if the same technique were proposed for blind public N.</p>
+    </div>
+
+    <div class="issue">
+        <h3>3. High-scale previous_endpoint at target depth is unproven</h3>
+        <p>The target is ~2**102. HighScaleBackend.previous_endpoint performs a chunked backward search using chamber_reset_certificate (C first, then Python fallback) followed by divisor segment scans.</p>
+        <p>Backend comments explicitly note limitations and guards for anchors in the 90–128+ bit range. The derivation may return None, take a very long time, or exercise the documented "limitation" paths. This must be treated as part of the experimental data, not assumed to succeed.</p>
+    </div>
+
+    <div class="issue">
+        <h3>4. "PGS Object" language vs. reality</h3>
+        <p>The section title "Retrieve PGS Object (The Anchor)" is good in intent. However, because the starting location was chosen using external ratio knowledge, the resulting anchor is a PGS object located at a non-canonical, externally seeded position. This is fine for the stated experiment but should not be described as the solver "finding" the right place through structure alone.</p>
+    </div>
+</div>
+
+<div class="section">
+    <h2>PGS Contract &amp; Shape Assessment</h2>
+    <table>
+        <thead><tr><th>Requirement</th><th>Assessment</th></tr></thead>
+        <tbody>
+            <tr><td>PGS-first reasoning</td><td class="status">Strong. Once the anchor is supplied, the probe correctly uses chamber reset certificates, previous_endpoint, transport, and the documented closure predicates.</td></tr>
+            <tr><td>Public-only inference</td><td class="status">Marginal but scoped. The ratio encodes family knowledge; the script itself is public-N only. Acceptable only because labeled "experiment."</td></tr>
+            <tr><td>No runner changes / use existing mechanisms</td><td class="status">Excellent. Leverages audited --start-anchor path.</td></tr>
+            <tr><td>Explicit unresolved + residuals</td><td class="status">Good. The evaluation matrix encourages recording exact statuses.</td></tr>
+            <tr><td>Audit separation</td><td class="status">Strong language in the plan. Must be enforced in practice.</td></tr>
+            <tr><td>State separation</td><td class="status">Clear distinction between the canonical law and this seeded probe.</td></tr>
+        </tbody>
+    </table>
+
+    <div class="alert alert-good">
+        <strong>Shape improvement:</strong> Previous "shape feels wrong" concerns about generalizing a prior into the law have been substantially addressed by the repeated contract boundaries and experiment framing.
+    </div>
+</div>
+
+<div class="section">
+    <h2>Recommended Immediate Actions (Before Execution)</h2>
+    <ol>
+        <li><strong>Fix and test the derivation script in isolation.</strong> Correct the function name, ensure it imports cleanly, and run it to capture the actual integer anchor produced (and any errors or limitation notes from the high-scale backend).</li>
+        <li><strong>Log the full derivation output</strong> (target, ratio source, final anchor, any high_scale_note fields) before the solver run.</li>
+        <li><strong>Run the seeded command</strong> only after the anchor is known and recorded.</li>
+        <li><strong>Populate the evaluation matrix</strong> with concrete observations from the diagnostic and structural cert outputs.</li>
+        <li><strong>Do not change run_experiment.py</strong> for this probe.</li>
+    </ol>
+</div>
+
+<div class="section">
+    <h2>Annotated Execution Checklist (Current Plan)</h2>
+    <div class="checklist">
+        <li><input type="checkbox" disabled> <strong>Phase 1: Compute &amp; Log</strong> — Run the derivation script. <strong>— Fix API first. Record the exact integer anchor and any backend notes. This is the most important provenance artifact.</strong></li>
+        <li><input type="checkbox" disabled> <strong>Phase 2: Seeded Execution</strong> — <code>python3 .../run_experiment.py --case_ids s256_challenge_1 --start-anchor [COMPUTED_ANCHOR]</code>. <strong>— Use the value from Phase 1 exactly. No other changes.</strong></li>
+        <li><input type="checkbox" disabled> <strong>Phase 3: Artifact Capture</strong> — All four .jsonl files. <strong>— Required to populate the filter matrix.</strong></li>
+        <li><input type="checkbox" disabled> <strong>Filter Evaluation</strong> — Fill the matrix table for each predicate. <strong>— This is the scientific output. Note any new unresolved_* statuses or violations of the proportional bounds.</strong></li>
+        <li><input type="checkbox" disabled> <strong>Audit Separation</strong> — Verify factors only after inference completes. <strong>— Enforce strictly in all logs and future documents.</strong></li>
+    </div>
+</div>
+
+<div class="section">
+    <h2>References &amp; Evidence</h2>
+    <ul>
+        <li>Plan: <span class="ref">research/06-cryptology-rsa/docs/deep_band_endpoint_transport_plan.html</span></li>
+        <li>Runner &amp; backend: <span class="ref">.../rsa-v2/run_experiment.py</span>, <span class="ref">pgs_inference_backend.py</span></li>
+        <li>Corpus (public N only in script): <span class="ref">.../scripts/scaleup_corpus.json</span></li>
+        <li>Ratio source: <span class="ref">.../output/geofac_scaleup/competition_256_challenge_ratio_probe_summary.json</span></li>
+        <li>Current statuses: <span class="ref">.../output/summary.json</span></li>
+        <li>Contracts: AGENTS.md (top + experiments), endpoint_structure_law.md</li>
+    </ul>
+</div>
+
+<p class="meta">This review document is the current critique. The plan itself is the execution surface. Execute only after the derivation script has been corrected and the resulting anchor value has been explicitly recorded with full provenance.</p>
+
+</body>
+</html>
