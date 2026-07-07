@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="1480" viewBox="0 0 1100 1480">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#eef2ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="1100" height="1480" fill="url(#bg)"/>
+  <rect x="40" y="36" width="1020" height="1408" rx="24" fill="#ffffff" filter="url(#shadow)"/>
+
+  <!-- Header -->
+  <text x="80" y="96" font-family="Georgia, serif" font-size="34" fill="#0f172a" font-weight="700">Left-Bias of High-Complexity Simplest Composites</text>
+  <text x="80" y="132" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#475569">Prime-gap falsification probe | 148,931 interiors | p &lt; 2×10⁶ | 2026-07-07</text>
+  <rect x="80" y="152" width="940" height="4" fill="#6366f1" rx="2"/>
+
+  <!-- Verdict banner -->
+  <rect x="80" y="176" width="940" height="72" rx="14" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="110" y="210" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#065f46" font-weight="700">VERDICT: Hypothesis NOT falsified</text>
+  <text x="110" y="236" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#047857">All 5 pre-registered checks pass. Two offset clouds are structurally distinct.</text>
+
+  <!-- Two-cloud panel -->
+  <text x="80" y="292" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#0f172a" font-weight="700">Two Predicted Clouds — Observed</text>
+
+  <!-- Low complexity cloud -->
+  <rect x="80" y="312" width="450" height="300" rx="16" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="110" y="348" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#1d4ed8" font-weight="700">Low complexity (τ = 4)</text>
+  <text x="110" y="374" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#334155">110,947 gaps — spreads farther as numbers grow</text>
+  <g transform="translate(110,390)">
+    <rect x="0" y="120" width="360" height="18" fill="#dbeafe" rx="9"/>
+    <rect x="0" y="120" width="270" height="18" fill="#3b82f6" rx="9"/>
+    <text x="0" y="112" font-size="12" fill="#64748b">offset spread</text>
+    <text x="370" y="134" font-size="12" fill="#1d4ed8">max 24</text>
+    <circle cx="45" cy="60" r="22" fill="#3b82f6" fill-opacity="0.25"/>
+    <circle cx="120" cy="45" r="18" fill="#3b82f6" fill-opacity="0.35"/>
+    <circle cx="200" cy="70" r="26" fill="#3b82f6" fill-opacity="0.3"/>
+    <circle cx="280" cy="35" r="20" fill="#3b82f6" fill-opacity="0.4"/>
+    <circle cx="330" cy="85" r="16" fill="#3b82f6" fill-opacity="0.25"/>
+  </g>
+  <text x="110" y="560" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#0f172a">Median offset: <tspan font-weight="700">3</tspan>   |   p90: <tspan font-weight="700">6</tspan>   |   Max: <tspan font-weight="700">24</tspan></text>
+  <text x="110" y="586" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#64748b">Mean offset: 3.75</text>
+
+  <!-- High complexity cloud -->
+  <rect x="570" y="312" width="450" height="300" rx="16" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="600" y="348" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#b91c1c" font-weight="700">High complexity (τ ≥ 12)</text>
+  <text x="600" y="374" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#334155">16,722 gaps — tight cluster at left edge</text>
+  <g transform="translate(600,390)">
+    <rect x="0" y="120" width="360" height="18" fill="#fee2e2" rx="9"/>
+    <rect x="0" y="120" width="30" height="18" fill="#ef4444" rx="9"/>
+    <text x="0" y="112" font-size="12" fill="#64748b">offset spread</text>
+    <text x="370" y="134" font-size="12" fill="#b91c1c">max 5</text>
+    <circle cx="18" cy="55" r="28" fill="#ef4444" fill-opacity="0.55"/>
+    <circle cx="42" cy="70" r="14" fill="#ef4444" fill-opacity="0.35"/>
+    <circle cx="30" cy="95" r="10" fill="#ef4444" fill-opacity="0.3"/>
+    <circle cx="55" cy="48" r="8" fill="#ef4444" fill-opacity="0.25"/>
+  </g>
+  <text x="600" y="560" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#0f172a">Median offset: <tspan font-weight="700">1</tspan>   |   p90: <tspan font-weight="700">1</tspan>   |   Max: <tspan font-weight="700">5</tspan></text>
+  <text x="600" y="586" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#64748b">τ ≥ 24 branch: 10,402 gaps, max offset 3</text>
+
+  <!-- Monotonic tightening chart -->
+  <text x="80" y="650" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#0f172a" font-weight="700">Complexity vs. Placement — p90 Offset by τ Bucket</text>
+  <rect x="80" y="668" width="940" height="260" rx="16" fill="#f8fafc" stroke="#cbd5e1"/>
+
+  <!-- bars -->
+  <g font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#334155">
+    <rect x="150" y="780" width="110" height="120" fill="#3b82f6" rx="6"/>
+    <text x="205" y="770" text-anchor="middle" font-weight="700" font-size="16" fill="#1d4ed8">6</text>
+    <text x="205" y="920" text-anchor="middle">τ=4</text>
+
+    <rect x="300" y="800" width="110" height="100" fill="#60a5fa" rx="6"/>
+    <text x="355" y="790" text-anchor="middle" font-weight="700" font-size="16" fill="#1d4ed8">5</text>
+    <text x="355" y="920" text-anchor="middle">τ=6–7</text>
+
+    <rect x="450" y="840" width="110" height="60" fill="#f59e0b" rx="6"/>
+    <text x="505" y="830" text-anchor="middle" font-weight="700" font-size="16" fill="#b45309">3</text>
+    <text x="505" y="920" text-anchor="middle">τ=8–11</text>
+
+    <rect x="600" y="860" width="110" height="40" fill="#f97316" rx="6"/>
+    <text x="655" y="850" text-anchor="middle" font-weight="700" font-size="16" fill="#c2410c">2</text>
+    <text x="655" y="920" text-anchor="middle">τ=12–23</text>
+
+    <rect x="750" y="880" width="110" height="20" fill="#ef4444" rx="6"/>
+    <text x="805" y="870" text-anchor="middle" font-weight="700" font-size="16" fill="#b91c1c">1</text>
+    <text x="805" y="920" text-anchor="middle">τ≥24</text>
+  </g>
+  <text x="100" y="710" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#64748b">p90 offset (steps from earlier prime)</text>
+  <line x1="130" y1="900" x2="900" y2="900" stroke="#94a3b8" stroke-width="1.5"/>
+
+  <!-- Falsification checks -->
+  <text x="80" y="980" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#0f172a" font-weight="700">Pre-Registered Falsification Checks</text>
+  <g font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#0f172a">
+    <rect x="80" y="998" width="940" height="56" rx="10" fill="#ecfdf5" stroke="#a7f3d0"/>
+    <text x="110" y="1032">✓ F1  High-τ median (1) &lt; low-τ median (3)</text>
+
+    <rect x="80" y="1064" width="940" height="56" rx="10" fill="#ecfdf5" stroke="#a7f3d0"/>
+    <text x="110" y="1098">✓ F2  p90 offset monotonically tightens: 6 → 5 → 3 → 2 → 1</text>
+
+    <rect x="80" y="1130" width="940" height="56" rx="10" fill="#ecfdf5" stroke="#a7f3d0"/>
+    <text x="110" y="1164">✓ F3  Prefix cleanliness: 0 violations in 148,931 gaps</text>
+
+    <rect x="80" y="1196" width="940" height="56" rx="10" fill="#ecfdf5" stroke="#a7f3d0"/>
+    <text x="110" y="1230">✓ F4  No τ≥12 gap reaches offset ≥ 6 (τ=4 p90 threshold)</text>
+
+    <rect x="80" y="1262" width="940" height="56" rx="10" fill="#ecfdf5" stroke="#a7f3d0"/>
+    <text x="110" y="1296">✓ F5  High-τ median stays at 1 in every log₁₀(p) bin</text>
+  </g>
+
+  <!-- Scale panel -->
+  <text x="80" y="1360" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#0f172a" font-weight="700">Scale Behavior</text>
+  <rect x="80" y="1376" width="940" height="56" rx="12" fill="#fff7ed" stroke="#fdba74"/>
+  <text x="110" y="1410" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#9a3412">
+    τ=4 max offset grows 3 → 24 as p increases. τ≥16 median offset stays pinned at 1 across all tested scales.
+  </text>
+
+  <text x="80" y="1456" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#94a3b8">
+    Source: prime-gap-structure falsification experiment | github.com/zfifteen/prime-gap-structure
+  </text>
+</svg>

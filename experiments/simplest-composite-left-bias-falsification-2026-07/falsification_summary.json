@@ -1,0 +1,195 @@
+{
+  "bucket_stats": {
+    "tau_12_23": {
+      "count": 6320,
+      "max": 5,
+      "mean": 1.3639240506329113,
+      "median": 1.0,
+      "min": 1,
+      "p90": 2.0
+    },
+    "tau_4": {
+      "count": 110947,
+      "max": 24,
+      "mean": 3.754414269876608,
+      "median": 3.0,
+      "min": 1,
+      "p90": 6.0
+    },
+    "tau_6_7": {
+      "count": 5432,
+      "max": 20,
+      "mean": 3.109536082474227,
+      "median": 3.0,
+      "min": 1,
+      "p90": 5.0
+    },
+    "tau_8_11": {
+      "count": 15607,
+      "max": 8,
+      "mean": 2.0317806112641765,
+      "median": 2.0,
+      "min": 1,
+      "p90": 3.0
+    },
+    "tau_ge_24": {
+      "count": 10402,
+      "max": 3,
+      "mean": 1.003364737550471,
+      "median": 1.0,
+      "min": 1,
+      "p90": 1.0
+    }
+  },
+  "cross_check": {
+    "checked": 201,
+    "mismatches": [],
+    "ok": true
+  },
+  "f1_cloud_separation": {
+    "criterion": "median(offset | tau>=12) < median(offset | tau=4)",
+    "falsified": false,
+    "tau4_median": 3.0,
+    "tau_ge12_median": 1.0
+  },
+  "f2_monotonic_p90": {
+    "criterion": "p90(offset) non-increasing across tau buckets tau_4..tau_ge_24",
+    "falsified": false,
+    "p90_series": [
+      6.0,
+      5.0,
+      3.0,
+      2.0,
+      1.0
+    ]
+  },
+  "f3_prefix_cleanliness": {
+    "counterexamples": [],
+    "criterion": "no interior n<w with tau(n) < tau(w)",
+    "falsified": false,
+    "violations": 0
+  },
+  "f4_deep_high_tau": {
+    "counterexample_count": 0,
+    "counterexamples": [],
+    "criterion": "no tau>=12 gap with offset >= tau=4 p90 (6)",
+    "falsified": false,
+    "tau4_p90_threshold": 6
+  },
+  "f5_scale_decoupling": {
+    "bins": {
+      "10^1..10^2": {
+        "gaps": 21,
+        "tau4_max": 3,
+        "tau4_p90": 3.0,
+        "tau_ge16_max": 0,
+        "tau_ge16_median": NaN
+      },
+      "10^2..10^3": {
+        "gaps": 143,
+        "tau4_max": 6,
+        "tau4_p90": 4.0,
+        "tau_ge16_max": 1,
+        "tau_ge16_median": 1.0
+      },
+      "10^3..10^4": {
+        "gaps": 1061,
+        "tau4_max": 10,
+        "tau4_p90": 5.0,
+        "tau_ge16_max": 1,
+        "tau_ge16_median": 1.0
+      },
+      "10^4..10^5": {
+        "gaps": 8363,
+        "tau4_max": 16,
+        "tau4_p90": 6.0,
+        "tau_ge16_max": 3,
+        "tau_ge16_median": 1.0
+      },
+      "10^5..10^6": {
+        "gaps": 68906,
+        "tau4_max": 22,
+        "tau4_p90": 6.0,
+        "tau_ge16_max": 5,
+        "tau_ge16_median": 1.0
+      },
+      "10^6..10^7": {
+        "gaps": 70434,
+        "tau4_max": 24,
+        "tau4_p90": 6.0,
+        "tau_ge16_max": 3,
+        "tau_ge16_median": 1.0
+      }
+    },
+    "criterion": "in each log(p) bin, tau>=16 median offset stays below tau=4 p90",
+    "falsified": false
+  },
+  "high_tau_reference": {
+    "tau_ge_12_count": 16722,
+    "tau_ge_12_max_offset": 5,
+    "tau_ge_12_median_offset": 1.0,
+    "tau_ge_12_p90_offset": 1.0,
+    "tau_ge_24_count": 10402,
+    "tau_ge_24_max_offset": 3
+  },
+  "log_p_bins": {
+    "10^1..10^2": {
+      "gaps": 21,
+      "tau4_max": 3,
+      "tau4_p90": 3.0,
+      "tau_ge16_max": 0,
+      "tau_ge16_median": NaN
+    },
+    "10^2..10^3": {
+      "gaps": 143,
+      "tau4_max": 6,
+      "tau4_p90": 4.0,
+      "tau_ge16_max": 1,
+      "tau_ge16_median": 1.0
+    },
+    "10^3..10^4": {
+      "gaps": 1061,
+      "tau4_max": 10,
+      "tau4_p90": 5.0,
+      "tau_ge16_max": 1,
+      "tau_ge16_median": 1.0
+    },
+    "10^4..10^5": {
+      "gaps": 8363,
+      "tau4_max": 16,
+      "tau4_p90": 6.0,
+      "tau_ge16_max": 3,
+      "tau_ge16_median": 1.0
+    },
+    "10^5..10^6": {
+      "gaps": 68906,
+      "tau4_max": 22,
+      "tau4_p90": 6.0,
+      "tau_ge16_max": 5,
+      "tau_ge16_median": 1.0
+    },
+    "10^6..10^7": {
+      "gaps": 70434,
+      "tau4_max": 24,
+      "tau4_p90": 6.0,
+      "tau_ge16_max": 3,
+      "tau_ge16_median": 1.0
+    }
+  },
+  "regime": {
+    "gaps_with_interior": 148931,
+    "prime_limit": 1999993
+  },
+  "tau4_reference": {
+    "count": 110947,
+    "max_offset": 24,
+    "mean_offset": 3.754414269876608,
+    "median_offset": 3.0,
+    "p90_offset": 6.0
+  },
+  "verdict": {
+    "hypothesis_falsified": false,
+    "sharpened_notes": "Square-branch tau=3 gaps excluded from high/low comparison; they are low-divisor but can offset far.",
+    "supporting_checks_passed": true
+  }
+}
