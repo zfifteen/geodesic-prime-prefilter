@@ -7,7 +7,7 @@
 
 ---
 
-## Part I — Plain-Language Summary (Grade 10 Reading Level)
+## Part I
 
 ### What We Were Testing
 
@@ -62,7 +62,7 @@ The hypothesis was **not falsified**. High-complexity simplest composites sit mu
 
 ---
 
-## Part III — Technical Analysis (Doctoral Level)
+## Part III — Technical Analysis
 
 ### 1. Formal Hypothesis and Test Objects
 
