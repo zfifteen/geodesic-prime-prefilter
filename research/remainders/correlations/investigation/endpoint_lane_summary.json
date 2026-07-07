@@ -1,16 +1,44 @@
 {
-  "lane": "endpoint_residue_mask",
-  "source": "research/00-index/docs/algorithmic_frontier_hourly.md",
-  "regime": "100000 consecutive gaps from q >= 10^13",
-  "mask_width": 96,
-  "carried_residues_primes_le": 37,
-  "gaps_tested": 100000,
-  "chain_mismatches": 0,
-  "resolved_in_mask_fraction": 1.0,
-  "small_prime_mod_checks_baseline": 5145085,
-  "small_prime_mod_checks_hybrid": 0,
-  "small_prime_mod_reduction_fraction": 0.999846,
-  "miller_rabin_calls_unchanged": 444678,
-  "wall_time_speedup": 1.0345,
-  "repro_note": "Prototype cited in hourly doc; repo script gwr_dni_boundary_state_mask_search.py referenced but not committed."
+  "reference_artifact": {
+    "lane": "endpoint_residue_mask",
+    "source": "research/00-index/docs/algorithmic_frontier_hourly.md",
+    "regime": "100000 consecutive gaps from q >= 10^13",
+    "mask_width": 96,
+    "gaps_tested": 100000,
+    "chain_mismatches": 0,
+    "resolved_in_mask_fraction": 1.0,
+    "small_prime_mod_reduction_fraction": 0.999846,
+    "wall_time_speedup": 1.0345
+  },
+  "fresh_probe": {
+    "lane": "endpoint_residue_probe",
+    "timestamp_utc": "2026-07-07T23:00:56.078227+00:00",
+    "start_p": 10000000000037,
+    "gaps_measured": 5000,
+    "q_mod_30_counts": {
+      "1": 591,
+      "7": 631,
+      "11": 641,
+      "13": 636,
+      "17": 620,
+      "19": 607,
+      "23": 632,
+      "29": 642
+    },
+    "mean_gap": 29.6308,
+    "max_gap": 234,
+    "small_primes_tracked": [
+      7,
+      11,
+      13,
+      17,
+      19,
+      23,
+      29,
+      31,
+      37
+    ],
+    "note": "Fresh measurement on GWR walk chain; complements hourly mask artifact."
+  },
+  "lane_runs": "see RUN_LOG.json"
 }

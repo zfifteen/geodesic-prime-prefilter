@@ -1,13 +1,9 @@
 {
   "lane": "state_budget_residue_matched_cells",
   "source": "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/05-state-budget/output/state_budget_residue_matched_pair_summary.json",
-  "power_range": [
-    12,
-    18
-  ],
   "mod30_decisive_pairs": 230,
   "mod30_signed_advantage": 40,
   "mod30_advantage_share": 0.17391304347826086,
   "mod30_verdict": "unresolved",
-  "repro_command": "python research/05-state-budget/scripts/state_budget_residue_matched_pair_test.py"
+  "collector": "state_budget_residue_matched_pair_test.py"
 }

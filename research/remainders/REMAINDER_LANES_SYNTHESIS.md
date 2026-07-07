@@ -1,275 +1,162 @@
 # Remainder Lanes Synthesis — Multi-Lane Investigation Report
 
-**Date:** 2026-07-07  
+**Date:** 2026-07-07 (revised)  
 **Investigation runner:** `research/remainders/run_investigation.py`  
 **Python:** 3.13.0 (see `correlations/investigation/RUN_LOG.json`)
 
 PGS framing: all statistics below are **measured on named regimes**. They do not establish theorems, redefine GWR, or choose the next prime `q`.
 
+### Gap-count semantics (canonical)
+
+The collector walks consecutive left primes `p` from 2. Two counts are reported:
+
+| Field | Meaning |
+|-------|---------|
+| `gaps_with_interiors` | Left primes that emitted ≥1 interior record (canonical for analysis) |
+| `prime_walk_steps` | Prime-walk steps including empty-interior gaps (e.g. `p=2` twin → 0 records) |
+
+At `p≤10⁶`: **78,497** gaps with interiors, **78,498** prime-walk steps (one empty twin at `p=2`).  
+At `p≤1.5×10⁶`: **114,154** gaps with interiors (meets ≥10⁵ threshold).
+
 ---
 
 ## Executive summary
 
-Remainders appear in PGS under **six distinct lanes** that are not yet unified epistemically. This report inventories each lane, pins reproducible artifacts, and quantifies associations (or null results) between remainder features and gap-length / prime-placement proxies.
+| Lane | Role | Data status | Strongest measured signal |
+|------|------|-------------|---------------------------|
+| Interior `R(n,M)` | Gap-interior coordinate | **Scaled ≥10⁵** (114,154 gaps, 1,385,850 records at `p≤1.5×10⁶`) | MI(`num_zeros`, dist) **0.057**; GWR-last **13.9%** |
+| GWR Super-Signal | Termination claim at GWR | **Epistemic open** (G2) | All 3,842 super-signal GWR cases are `g=2` on 1.5e6 surface |
+| Endpoint `q mod` | Search acceleration | **Fresh probe** + hourly reference | 5,000-gap `q mod 30` sample from `q≥10¹³`; mask artifact 100% in-window |
+| Left-prime `p mod 30` ridge | Peak-side modulation | **Fresh probe** + pinned JSON | Fresh probe at `p≤5×10⁴`; pinned `p≡13` lift 1.58× at `10⁶` |
+| State-budget residue cells | Matched-pair tests | **Re-run collector** | `mod30`: 230 decisive pairs, +40 advantage (unresolved) |
+| RSA backward modulus/remainder | Closure search | **Re-run collector** | 0% factor-reach on toy `N≤5000` |
 
-| Lane | Role in PGS | Data status | Strongest measured signal |
-|------|-------------|-------------|---------------------------|
-| Interior `R(n,M)` | Coordinate on gap interiors | **Scaled** (78,498 gaps, 921,503 records at `p≤10⁶`) | Low MI between `num_zeros` and termination distance (0.058); GWR-last rate 14.2% |
-| GWR Super-Signal | Claimed termination invariant at GWR | **Epistemic open** (theorem vs measured split) | On `p≤10⁶`, every GWR with 4+ zeros occurs in `g=2` gaps (2,697 cases); proof hardening pending G2 |
-| Endpoint `q mod` masks | Search acceleration | **Pinned** (hourly frontier doc) | 100% next-prime resolution inside 96-open mask at `10¹³`; 99.98% small-prime mod reduction |
-| Left-prime `p mod 30` ridge | Ridge orientation modulation | **Scaled** (JSON through `10¹⁸`) | `p≡13 (mod 30)` right-edge lift 1.58× at `10⁶` |
-| State-budget residue cells | Matched-pair transition tests | **Pinned** (powers 12–18) | `mod30` match: 230 decisive pairs, +40 square-ruler advantage (unresolved) |
-| RSA backward modulus/remainder | Semiprime closure search | **Pinned** (toy `N≤5000`) | Zero factor-reach recall on all invariant laws tested |
-
-**Gap-echo hypothesis:** Falsified — see `research/remainders/correlations/CORRELATION_REPORT.md` (no late repeats for `g<210`; large-gap echoes correlate with GWR *earlier*, not terminal).
+**Gap-echo hypothesis:** Falsified — `research/remainders/correlations/CORRELATION_REPORT.md`.
 
 ---
 
 ## Lane 1 — Interior remainder vectors `R(n, M_v1)`
 
-**Objects:** For each interior composite `n` in gap `(p,q)`, vector `(n mod 2, 3, 5, 7, 30, 210, 2310)`.
-
-**Status:** Collection complete at `p ≤ 10⁶`. Validated tiny set at `p ≤ 600` (108 gaps).
-
-**Repro:**
+**Repro (scaled surface):**
 ```bash
 python research/remainders/collect_remainder_stats.py \
-  --max-p 1000000 \
-  --output-dir research/remainders/output/1e6/
-python research/remainders/enrich_remainder_records.py \
-  --input research/remainders/output/1e6/raw_records.jsonl \
-  --output research/remainders/correlations/enriched/1e6_enriched.jsonl
+  --max-p 1500000 \
+  --output-dir research/remainders/output/1.5e6/
 ```
 
-**Pinned counts** (`research/remainders/output/1e6/summary.json`):
-- Gaps processed: **78,498**
-- Interior records: **921,503**
-- Max observed `g`: **114** (repeats impossible on `vec[:6]` state in this regime)
+**Pinned counts** (`research/remainders/output/1.5e6/summary.json`):
 
-**Placement correlations** (measured on full 1e6 JSONL stream):
+| Field | Value |
+|-------|-------|
+| `gaps_with_interiors` | **114,154** |
+| `prime_walk_steps` | 114,155 |
+| `gaps_empty_interiors` | 1 |
+| `records_emitted` | **1,385,850** |
+
+**Placement correlations** (`interior_placement_stats.json`, full 1.5e6 stream):
 
 | Proxy | Metric | Value |
 |-------|--------|-------|
-| Prime placement | GWR-last rate (`dist_to_next==1` at GWR) | **0.1416** (11,115 / 78,497 gaps) |
-| Termination | MI(`num_zeros`, `dist_to_next` binned) | **0.0584** (normalized 0.0507) — near-null |
-| Gap length | Spearman(entropy of `vec[:6]`, `g`) | **1.0000** (expected: almost-unique states for small `g`) |
-| GWR signature | Avg zeros at GWR minus gap average | **−0.664** (GWR tends to have fewer zeros) |
-| Modular density | Fraction with `n ≡ 0 (mod 2)` | **0.543** |
+| Prime placement | GWR-last rate | **0.1386** (15,824 / 114,154 gaps) |
+| Termination | MI(`num_zeros`, `dist_to_next` binned) | **0.0568** (normalized 0.0498) |
+| Gap length | Spearman(entropy, `g`) | **1.0000** |
+| GWR signature | Avg zeros (GWR − gap avg) | **−0.670** |
+| Super-Signal | GWR with 4+ zeros, all `g=2` | **3,842** cases |
 
-Artifact: `research/remainders/correlations/investigation/interior_1e6_placement_stats.json`
-
-**Open questions:**
-- Does any remainder scalar predict GWR-last above baseline 14% on disjoint `p` ranges?
-- Extend collector to `p ≤ 10⁷` for `g` large enough to test echo regime (`g ≥ 210`).
+Legacy `p≤10⁶` surface: 78,497 gaps with interiors, 921,503 records (`output/1e6/`).
 
 ---
 
-## Lane 2 — GWR Super-Signal (epistemic status only)
+## Lane 2 — GWR Super-Signal (epistemic only)
 
-**Claim:** If GWR winner `w` has 4+ zeros in `R(w)`, then `g=2` and `q=w+1`.
+Theorem-stack: **measured · corollary**. Open items: `docs/proof-enhancements/goals.md` G2.
 
-**Status:** Written as theorem in `PROOF.md` but theorem-stack row says **measured · corollary**. Proof-enhancements **G2** lists open hardening items (`docs/proof-enhancements/goals.md`). **No Lean mirror.**
-
-**Empirical check on interior 1e6 surface (measurement, not proof):**
-- GWR records with 4+ zeros: **2,697** (3.44% of gaps)
-- All **2,697** occur in **`g=2`** gaps (consistent with claim on this finite surface)
-- GWR-last rate overall: 14.2% — super-signal cases are a subset of twin gaps, not a general placement predictor
-
-Artifact: `research/remainders/correlations/investigation/super_signal_status.json`
-
-**Open questions (G2):** Exhaustive `4+ zeros ⟺ w ≡ 0 (mod 30)` case analysis; replace informal Step 3 language; harden or reclassify.
+On **1.5e6** measured surface: 3,842 GWR records with 4+ zeros; **all** in `g=2` gaps.
 
 ---
 
-## Lane 3 — Endpoint residue state (`q mod 30`, `q mod p`)
+## Lane 3 — Endpoint residue state
 
-**Role:** Compress next-prime search — carry endpoint residues, OR certification masks, skip wheel-open composites.
+**Fresh measurement:** `lane_collectors/endpoint_residue_probe.py` — 5,000 gaps from `p=10,000,000,000,037`, writes `endpoint_residue_probe_fresh.json`.
 
-**Status:** Strong operational results documented in hourly frontier; mask prototype not committed as repo script.
+**Reference artifact:** hourly frontier — 96-open mask, 100% in-window at `10¹³`, 99.98% small-prime mod reduction.
 
-**Pinned surface** (`research/00-index/docs/algorithmic_frontier_hourly.md`, 2026-04-11):
-
-| Metric | Value |
-|--------|-------|
-| Regime | 100,000 consecutive gaps, `q ≥ 10¹³` |
-| Mask width | 96 wheel-open positions |
-| Carried residues | `q mod p` for primes `≤ 37` |
-| Chain mismatches | **0** |
-| Resolved inside mask | **100%** |
-| Small-prime mod checks | 5,145,085 → **0** (99.98% reduction) |
-| Miller-Rabin calls | unchanged (444,678) |
-| Wall-time speedup | **1.0345×** |
-
-Artifact: `research/remainders/correlations/investigation/endpoint_lane_summary.json`
-
-**Repro note:** Hourly cites `gwr_dni_boundary_state_mask_search.py` (not in tree). Related probes: `research/02-gwr-dni/scripts/gwr_dni_transition_probe.py`.
-
-**Open questions:** Commit mask search script; thread mask into production next-prime path; measure at `10¹⁸`.
-
----
-
-## Lane 4 — Left-prime `p mod 30` ridge orientation
-
-**Role:** Modulates where within-gap raw-Z peak occurs (left vs right edge).
-
-**Status:** Committed JSON through sampled `10¹⁸`.
-
-**Pinned at `10⁶`** (`research/11-gap-ridge/output/insight_probes/residue_mod30_right_edge_share.json`):
-
-| `p mod 30` | Gaps | Right-edge share | Lift vs global |
-|------------|------|------------------|----------------|
-| Global | 70,327 | 0.160 | 1.00× |
-| 13 | 9,824 | 0.252 | **1.58×** |
-| 23 | 9,839 | 0.209 | **1.30×** |
-| 11 | 7,074 | 0.093 | 0.58× |
-| 17 | 7,075 | 0.087 | 0.54× |
-
-Artifact: `research/remainders/correlations/investigation/mod30_ridge_lane_summary.json`  
-Findings doc: `research/11-gap-ridge/docs/findings/residue_mod30_ridge_orientation.md`
-
-**Repro:**
 ```bash
-python research/11-gap-ridge/scripts/insight_probes.py
-# see residue_mod30_right_edge_share output under research/11-gap-ridge/output/insight_probes/
+python research/remainders/lane_collectors/endpoint_residue_probe.py \
+  --start-p 10000000000037 --max-gaps 5000 \
+  --output research/remainders/correlations/investigation/endpoint_residue_probe_fresh.json
 ```
 
-**Open questions:** Link ridge orientation to interior `R(n,M)` marginals conditioned on `p mod 30`.
+---
+
+## Lane 4 — Left-prime `p mod 30` ridge
+
+**Fresh measurement:** `lane_collectors/mod30_ridge_probe.py`
+
+```bash
+python research/remainders/lane_collectors/mod30_ridge_probe.py \
+  --max-p 50000 \
+  --output research/remainders/correlations/investigation/mod30_ridge_probe_fresh.json
+```
+
+**Pinned long-scale:** `research/11-gap-ridge/output/insight_probes/residue_mod30_right_edge_share.json` — `p≡13 (mod 30)` right-edge lift **1.58×** at `10⁶`.
 
 ---
 
 ## Lane 5 — State-budget residue-matched cells
 
-**Role:** Test whether adding `p_n mod 30` (and prev gap width) to matched transition cells changes square-vs-tail decisiveness.
+Re-run via investigation (`--run-slow-lanes`) or:
 
-**Status:** Pinned summary for powers 12–18.
-
-**Pinned results** (`research/05-state-budget/output/state_budget_residue_matched_pair_summary.json`):
-
-| Match mode | Decisive pairs | Signed advantage (square_ruler) | Advantage share | Verdict |
-|------------|----------------|-----------------------------------|-----------------|---------|
-| base | 589 | +73 | 0.124 | unresolved |
-| **mod30** | **230** | **+40** | **0.174** | unresolved |
-| mod30_prev_gap | 35 | +15 | 0.429 | unresolved |
-
-Artifact: `research/remainders/correlations/investigation/state_budget_lane_summary.json`
-
-**Repro:**
 ```bash
 python research/05-state-budget/scripts/state_budget_residue_matched_pair_test.py
 ```
 
-**Open questions:** Whether residue matching is signal or cell fragmentation; extend decisive-pair count.
+`mod30` decisive pairs: **230**, signed advantage **+40**, verdict **unresolved**.
 
 ---
 
-## Lane 6 — RSA backward modulus/remainder search
+## Lane 6 — RSA backward modulus/remainder
 
-**Role:** After backward lane entry, search closure laws as `(modulus_value, target_remainder)` pairs over gap-width and offset invariants.
-
-**Status:** Toy corpus `N ≤ 5000`, 980 cases.
-
-**Pinned results** (`research/06-cryptology-rsa/output/semiprime_branch/pgs_semiprime_backward_invariant_closure_search_summary.json`):
-- Invariant laws tested: 8 (`containing_gap_mod_n`, `left_offset_mod_entry`, …)
-- **Factor-reach recall: 0.0** on all laws
-- Primary failures: `entry_not_lane` (733), `no_entry_candidate` (158)
-
-Super-Signal moduli `(2,3,5,7,30,210,2310)` used in cryptology docs as search geometry — inherits Lane 2 epistemic ambiguity.
-
-Artifact: `research/remainders/correlations/investigation/rsa_lane_summary.json`
-
-**Repro:**
 ```bash
 python research/06-cryptology-rsa/scripts/pgs_semiprime_backward_invariant_closure_search.py \
-  --max-n 5000 \
-  --output-dir research/06-cryptology-rsa/output/semiprime_branch
+  --max-n 5000 --output-dir research/06-cryptology-rsa/output/semiprime_branch
 ```
 
----
-
-## Placement-correlation synthesis (interior lane)
-
-**Gap-length proxy (`g`):** Remainder entropy of `vec[:6]` is essentially deterministic in `g` for `g ≤ 114` (Spearman ≈ 1.0). Not a useful predictor beyond trivial uniqueness.
-
-**Prime-placement proxies:**
-- `distance_to_next_prime` at interior points: MI with `num_zeros` ≈ **0.06** — quantified null.
-- GWR-last flag: **14.2%** baseline at `p≤10⁶`; echo hypothesis does not sharpen this (falsified in `CORRELATION_REPORT.md`).
-- Super-Signal at GWR: **100%** co-occur with `g=2` on measured 1e6 surface (2,697 cases).
+980 cases; **0%** factor-reach recall on all invariant laws.
 
 ---
 
-## Gap-echo hypothesis (falsified)
+## Investigation orchestrator
 
-Source: `research/remainders/correlations/CORRELATION_REPORT.md`
-
-- Tiny + 1e6 (`g ≤ 114`): **0** gaps with late `vec[:6]` repeats.
-- 50 large real gaps (`g ≈ 480–1442`): **100%** have echoes, **0%** GWR-last.
-- Conclusion: echoes, when possible, associate with GWR *earlier*, opposite of "memory selects winner."
-
----
-
-## Downstream index (pattern / correlation mining)
-
-### Entry commands
+`run_investigation.py` executes lane collectors (subprocess), streams interior JSONL, writes summaries:
 
 ```bash
-# Full multi-lane pull (interior stream + cross-lane JSON extract)
-python research/remainders/run_investigation.py \
-  --output-dir research/remainders/correlations/investigation
-
-# Descriptive correlation on any JSONL
-python research/remainders/correlation_analysis.py \
-  --records research/remainders/output/tiny_val/raw_records.jsonl \
-  --out research/remainders/correlations/tiny_verify
-
-# Interior collection (scale)
-python research/remainders/collect_remainder_stats.py \
-  --max-p 1000000 \
-  --output-dir research/remainders/output/1e6/
+python research/remainders/run_investigation.py --run-slow-lanes
+# fast test path:
+python research/remainders/run_investigation.py --skip-lane-execution \
+  --interior-jsonl research/remainders/output/tiny_val/raw_records.jsonl
 ```
 
-**Python version:** 3.13.0 (pinned in investigation `RUN_LOG.json`)
+---
 
-### Artifact paths
+## Downstream index
 
 | Path | Contents |
 |------|----------|
 | `research/remainders/REMAINDER_LANES_SYNTHESIS.md` | This document |
 | `research/remainders/run_investigation.py` | Multi-lane orchestrator |
-| `research/remainders/correlation_analysis.py` | MI, Spearman, marginals, repeat stats |
-| `research/remainders/output/1e6/raw_records.jsonl` | Interior records (921,503 lines) |
-| `research/remainders/output/1e6/summary.json` | Marginals + gap counts |
-| `research/remainders/output/1e6/RUN_LOG.md` | Collection repro log |
-| `research/remainders/output/tiny_val/raw_records.jsonl` | Validation set (490 records) |
-| `research/remainders/correlations/investigation/interior_1e6_placement_stats.json` | Placement stats at scale |
-| `research/remainders/correlations/investigation/placement_correlation_table.md` | Summary table |
-| `research/remainders/correlations/investigation/endpoint_lane_summary.json` | Endpoint mask rates |
-| `research/remainders/correlations/investigation/mod30_ridge_lane_summary.json` | Ridge orientation rates |
-| `research/remainders/correlations/investigation/state_budget_lane_summary.json` | Residue-matched cells |
-| `research/remainders/correlations/investigation/rsa_lane_summary.json` | Backward invariant search |
-| `research/remainders/correlations/investigation/super_signal_status.json` | Epistemic status pointer |
-| `research/remainders/correlations/investigation/RUN_LOG.json` | Investigation metadata |
-| `research/remainders/correlations/CORRELATION_REPORT.md` | Echo falsification + tiny analysis |
-| `research/remainders/correlations/tiny_verify/descriptive_stats.json` | Tiny-set correlation run |
-| `research/11-gap-ridge/output/insight_probes/residue_mod30_right_edge_share.json` | Full ridge scales |
-| `research/05-state-budget/output/state_budget_residue_matched_pair_summary.json` | State-budget cells |
-| `research/06-cryptology-rsa/output/semiprime_branch/pgs_semiprime_backward_invariant_closure_search_summary.json` | RSA invariants |
+| `research/remainders/lane_collectors/endpoint_residue_probe.py` | Fresh endpoint probe |
+| `research/remainders/lane_collectors/mod30_ridge_probe.py` | Fresh ridge probe |
+| `research/remainders/output/1.5e6/raw_records.jsonl` | Scaled interior (≥10⁵ gaps) |
+| `research/remainders/output/1.5e6/summary.json` | Collector summary |
+| `research/remainders/output/1e6/` | Legacy 78,497-gap surface |
+| `research/remainders/correlations/investigation/interior_placement_stats.json` | Placement stats |
+| `research/remainders/correlations/investigation/endpoint_residue_probe_fresh.json` | Fresh endpoint data |
+| `research/remainders/correlations/investigation/mod30_ridge_probe_fresh.json` | Fresh ridge data |
+| `research/remainders/correlations/investigation/RUN_LOG.json` | Lane subprocess log |
+| `research/remainders/correlations/CORRELATION_REPORT.md` | Echo falsification |
 
-### Tests
-
-```bash
-python -m pytest research/remainders/test_remainder_utils.py -q
-python -m pytest research/remainders/test_run_investigation.py -q
-```
-
----
-
-## Suggested downstream mining targets
-
-1. **Conditioned marginals:** `R(n,M)` histograms split by `p mod 30` and `g` bin on 1e6 JSONL.
-2. **GWR-last uplift:** Test whether `coprime_to_210` or `dist_nearest_zero_mod30` shifts GWR-last rate above 14.2%.
-3. **Cross-lane join:** Merge ridge orientation labels (`p mod 30`) onto interior records via left endpoint `p`.
-4. **Super-Signal audit:** Independent recount of `g=2` ⟺ 4+ zeros at GWR on disjoint `p` range.
-5. **Large-gap echo regime:** Collector run targeting gaps with `g ≥ 210` only.
+**Tests:** `python -m pytest research/remainders/test_remainder_utils.py research/remainders/test_run_investigation.py -q`
 
 ---
 

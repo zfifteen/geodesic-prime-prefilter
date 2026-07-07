@@ -22,11 +22,14 @@ python research/remainders/collect_remainder_stats.py \
 
 See **`REMAINDER_LANES_SYNTHESIS.md`** for the six-lane inventory, scaled statistics, placement correlations, and downstream artifact index.
 
-Run the investigation orchestrator:
+Run the investigation orchestrator (executes lane collectors + streams interior JSONL):
 ```bash
-python research/remainders/run_investigation.py \
+python research/remainders/run_investigation.py --run-slow-lanes \
   --output-dir research/remainders/correlations/investigation
 ```
+
+Scaled interior surface (≥10⁵ gaps): `output/1.5e6/` — **114,154** gaps with interiors at `p≤1.5×10⁶`.
+Legacy `output/1e6/`: **78,497** gaps with interiors (`prime_walk_steps` 78,498 includes empty twin at `p=2`).
 
 ## Current Status (2026-06-30)
 - remainder_utils.py: pure stdlib compute_residues (M_v1 = [2,3,5,7,30,210,2310])

@@ -1,10 +1,60 @@
 {
-  "timestamp_utc": "2026-07-07T22:48:09.535621+00:00",
+  "timestamp_utc": "2026-07-07T23:01:39.264329+00:00",
   "python_version": "3.13.0 (v3.13.0:60403a5409f, Oct  7 2024, 00:37:40) [Clang 15.0.0 (clang-1500.3.9.4)]",
   "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
-  "interior_jsonl": "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/remainders/output/1e6/raw_records.jsonl",
-  "tiny_jsonl": "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/remainders/output/tiny_val/raw_records.jsonl",
-  "output_dir": "research/remainders/correlations/investigation",
-  "interior_gaps": 78497,
-  "interior_records": 921503
+  "interior_jsonl": "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/remainders/output/1.5e6/raw_records.jsonl",
+  "gaps_with_interiors": 114154,
+  "records_analyzed": 1385850,
+  "lane_collector_runs": {
+    "endpoint": {
+      "command": [
+        "/usr/local/bin/python",
+        "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/remainders/lane_collectors/endpoint_residue_probe.py",
+        "--start-p",
+        "10000000000037",
+        "--max-gaps",
+        "5000",
+        "--output",
+        "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/remainders/correlations/investigation/endpoint_residue_probe_fresh.json"
+      ],
+      "returncode": 0,
+      "stdout_tail": "{\n  \"lane\": \"endpoint_residue_probe\",\n  \"timestamp_utc\": \"2026-07-07T23:00:56.078227+00:00\",\n  \"start_p\": 10000000000037,\n  \"gaps_measured\": 5000,\n  \"q_mod_30_counts\": {\n    \"1\": 591,\n    \"7\": 631,\n    \"11\": 641,\n    \"13\": 636,\n    \"17\": 620,\n    \"19\": 607,\n    \"23\": 632,\n    \"29\": 642\n  },\n  \"mean_gap\": 29.6308,\n  \"max_gap\": 234,\n  \"small_primes_tracked\": [\n    7,\n    11,\n    13,\n    17,\n    19,\n    23,\n    29,\n    31,\n    37\n  ],\n  \"note\": \"Fresh measurement on GWR walk chain; complements hourly mask artifact.\"\n}\n",
+      "stderr_tail": ""
+    },
+    "mod30_ridge": {
+      "command": [
+        "/usr/local/bin/python",
+        "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/remainders/lane_collectors/mod30_ridge_probe.py",
+        "--max-p",
+        "200000",
+        "--output",
+        "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/remainders/correlations/investigation/mod30_ridge_probe_fresh.json"
+      ],
+      "returncode": 1,
+      "stdout_tail": "",
+      "stderr_tail": "Traceback (most recent call last):\n  File \"/Users/velocityworks/IdeaProjects/prime-gap-structure/research/remainders/lane_collectors/mod30_ridge_probe.py\", line 106, in <module>\n    raise SystemExit(main())\n                     ~~~~^^\n  File \"/Users/velocityworks/IdeaProjects/prime-gap-structure/research/remainders/lane_collectors/mod30_ridge_probe.py\", line 98, in main\n    summary = run_probe(args.max_p)\n  File \"/Users/velocityworks/IdeaProjects/prime-gap-structure/research/remainders/lane_collectors/mod30_ridge_probe.py\", line 62, in run_probe\n    side = raw_z_peak_side(p, q)\n  File \"/Users/velocityworks/IdeaProjects/prime-gap-structure/research/remainders/lane_collectors/mod30_ridge_probe.py\", line 41, in raw_z_peak_side\n    peak_idx = counts.index(peak)\n               ^^^^^^^^^^^^\nAttributeError: 'numpy.ndarray' object has no attribute 'index'\n"
+    },
+    "state_budget": {
+      "command": [
+        "/usr/local/bin/python",
+        "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/05-state-budget/scripts/state_budget_residue_matched_pair_test.py"
+      ],
+      "returncode": 0,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    "rsa": {
+      "command": [
+        "/usr/local/bin/python",
+        "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/06-cryptology-rsa/scripts/pgs_semiprime_backward_invariant_closure_search.py",
+        "--max-n",
+        "5000",
+        "--output-dir",
+        "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/06-cryptology-rsa/output/semiprime_branch"
+      ],
+      "returncode": 0,
+      "stdout_tail": "reach_recall\": 0.0,\n      \"first_factor_case\": null,\n      \"median_steps_on_factor_reach\": null,\n      \"failure_reason_counts\": {\n        \"no_entry_candidate\": 158,\n        \"entry_not_lane\": 733,\n        \"terminal_prime_miss\": 89\n      }\n    },\n    \"prev_plus_containing_mod_entry\": {\n      \"factor_reach_count\": 0,\n      \"factor_reach_recall\": 0.0,\n      \"first_factor_case\": null,\n      \"median_steps_on_factor_reach\": null,\n      \"failure_reason_counts\": {\n        \"no_entry_candidate\": 158,\n        \"entry_not_lane\": 733,\n        \"terminal_prime_miss\": 89\n      }\n    },\n    \"left_offset_mod_n\": {\n      \"factor_reach_count\": 0,\n      \"factor_reach_recall\": 0.0,\n      \"first_factor_case\": null,\n      \"median_steps_on_factor_reach\": null,\n      \"failure_reason_counts\": {\n        \"no_entry_candidate\": 158,\n        \"entry_not_lane\": 733,\n        \"terminal_prime_miss\": 89\n      }\n    },\n    \"left_offset_mod_entry\": {\n      \"factor_reach_count\": 0,\n      \"factor_reach_recall\": 0.0,\n      \"first_factor_case\": null,\n      \"median_steps_on_factor_reach\": null,\n      \"failure_reason_counts\": {\n        \"no_entry_candidate\": 158,\n        \"entry_not_lane\": 733,\n        \"terminal_prime_miss\": 89\n      }\n    },\n    \"right_offset_mod_n\": {\n      \"factor_reach_count\": 0,\n      \"factor_reach_recall\": 0.0,\n      \"first_factor_case\": null,\n      \"median_steps_on_factor_reach\": null,\n      \"failure_reason_counts\": {\n        \"no_entry_candidate\": 158,\n        \"entry_not_lane\": 733,\n        \"terminal_prime_miss\": 89\n      }\n    },\n    \"containing_winner_mod_n\": {\n      \"factor_reach_count\": 0,\n      \"factor_reach_recall\": 0.0,\n      \"first_factor_case\": null,\n      \"median_steps_on_factor_reach\": null,\n      \"failure_reason_counts\": {\n        \"no_entry_candidate\": 158,\n        \"entry_not_lane\": 733,\n        \"invariant_undefined\": 7,\n        \"terminal_prime_miss\": 82\n      }\n    }\n  },\n  \"best_law\": \"containing_gap_mod_n\",\n  \"best_factor_reach_count\": 0,\n  \"searched_family_falsified\": true\n}\n",
+      "stderr_tail": ""
+    }
+  }
 }

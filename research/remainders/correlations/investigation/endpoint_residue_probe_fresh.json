@@ -1,0 +1,30 @@
+{
+  "lane": "endpoint_residue_probe",
+  "timestamp_utc": "2026-07-07T23:00:56.078227+00:00",
+  "start_p": 10000000000037,
+  "gaps_measured": 5000,
+  "q_mod_30_counts": {
+    "1": 591,
+    "7": 631,
+    "11": 641,
+    "13": 636,
+    "17": 620,
+    "19": 607,
+    "23": 632,
+    "29": 642
+  },
+  "mean_gap": 29.6308,
+  "max_gap": 234,
+  "small_primes_tracked": [
+    7,
+    11,
+    13,
+    17,
+    19,
+    23,
+    29,
+    31,
+    37
+  ],
+  "note": "Fresh measurement on GWR walk chain; complements hourly mask artifact."
+}
