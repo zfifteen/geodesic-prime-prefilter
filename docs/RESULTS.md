@@ -160,9 +160,9 @@ Reference document:
 
 ## Links Into The Repository
 
-- [LEFTMOST_MINIMUM_DIVISOR_RULE.md](LEFTMOST_MINIMUM_DIVISOR_RULE.md) explains the selected composite.
-- [DIVISOR_NORMALIZATION_IDENTITY.md](DIVISOR_NORMALIZATION_IDENTITY.md) explains zero excess and the dual fixed prime-centered score.
+- [docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md](docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md) explains the selected composite.
+- [docs/core/DIVISOR_NORMALIZATION_IDENTITY.md](docs/core/DIVISOR_NORMALIZATION_IDENTITY.md) explains zero excess and the dual fixed prime-centered score.
 - [docs/rh](docs/rh/README.md) gives the PGS-to-RH reading path and status ledger.
-- [PRIME_GAP_GENERATOR.md](PRIME_GAP_GENERATOR.md) explains the minimal `{"p": ..., "q": ...}` generator.
-- [PRIME_GAP_GENERATIVE_MODEL.md](PRIME_GAP_GENERATIVE_MODEL.md) explains the reduced gap-type model.
-- [RECURSIVE_PRIME_WALK.md](RECURSIVE_PRIME_WALK.md) explains the recursive walk, closure condition, cutoff falsification, and dominant `d=4` regime.
+- [docs/PRIME_GAP_GENERATOR.md](docs/PRIME_GAP_GENERATOR.md) explains the minimal `{"p": ..., "q": ...}` generator.
+- [docs/core/PRIME_GAP_GENERATIVE_MODEL.md](docs/core/PRIME_GAP_GENERATIVE_MODEL.md) explains the reduced gap-type model.
+- [docs/core/RECURSIVE_PRIME_WALK.md](docs/core/RECURSIVE_PRIME_WALK.md) explains the recursive walk, closure condition, cutoff falsification, and dominant `d=4` regime.

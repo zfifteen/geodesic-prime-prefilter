@@ -29,7 +29,7 @@ A deterministic rule or measurable carrier law, built only from already-proved o
 - `lean-4/` (LEAN_PGS_VERIFICATION_CONTRACT.md, PGS_LEAN_FORMALIZATION_PLAN.md, PGS/*.lean, README).
 - High-scale C paths: `src/c/high-scale-pgs/` (include/pgs_high_scale.h, src/pgs_chamber.c and related).
 - Legacy Python paths: `src/python/z_band_prime_predictor/`.
-- Root artifacts: PLAN.md, PROOF.md, RESULTS.md, PRIME_GAP_GENERATOR.md, DIVISOR_NORMALIZATION_IDENTITY.md, LEFTMOST_MINIMUM_DIVISOR_RULE.md, RECURSIVE_PRIME_WALK.md.
+- Root artifacts: PLAN.md, PROOF.md, RESULTS.md, docs/PRIME_GAP_GENERATOR.md, docs/core/DIVISOR_NORMALIZATION_IDENTITY.md, docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md, docs/core/RECURSIVE_PRIME_WALK.md.
 - 00-index continuity and status surfaces.
 
 ## Legacy "Predictor" Language Audit (Urgent Corrections Required)

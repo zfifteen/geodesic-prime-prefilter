@@ -8,7 +8,7 @@ Grok reply anchor: "PHAP-v1 firing – week status: PR#16 baseline. (Reply with 
 **Catch-up summary (2026-07-05):**  
 The shared thread is a lightweight protocol activation for focused, durable hypothesis advancement (PHAP-v1). It designates a dedicated RA persona for the repo and orients work on "Lean L5". The actual shared content is the prompt + a terse status line — the substance lives in the repo state.  
 
-Current repo invariants (per AGENTS.md, continuity/START_HERE.md, ACTIVE_TARGET.md, LEAN_PGS_VERIFICATION_CONTRACT.md):  
+Current repo invariants (per docs/AGENTS.md, continuity/START_HERE.md, ACTIVE_TARGET.md, LEAN_PGS_VERIFICATION_CONTRACT.md):  
 - PGS-first reasoning entrypoint only.  
 - State separation mandatory: proved / measured / audit / hypothesis / unresolved / invalidated.  
 - Lean-4 is **strictly downstream verification/audit mirror** of PROOF.md. Never source of new inference or generator behavior.  
@@ -64,7 +64,7 @@ The master plan file itself lives here and is the single source of truth for the
 
 ### Subgoal 1 — Bootstrap & Current-State Audit (no code changes)
 **Entry reads (mandatory in order):**  
-- AGENTS.md (full)  
+- docs/AGENTS.md (full)  
 - research/00-index/continuity/START_HERE.md + continuity_and_shape_contract.md + ACTIVE_TARGET.md  
 - lean-4/LEAN_PGS_VERIFICATION_CONTRACT.md + PGS_LEAN_FORMALIZATION_PLAN.md + lean-4/README.md  
 - PROOF.md (next-prime + selected integer sections)  
@@ -75,7 +75,7 @@ The master plan file itself lives here and is the single source of truth for the
 - src/python/z_band_prime_predictor/simple_pgs_generator.py (admissible_offsets + chamber logic for faithful port)  
 
 **Actions:**  
-- Run `bash lean4-cache-build.sh` (or manual lake build + smoke-test). Capture output.  
+- Run `bash scripts/lean4-cache-build.sh` (or manual lake build + smoke-test). Capture output.  
 - Run the Python R2 repro commands from FINDINGS.md (or the small anchor tests) to confirm 100% surface locally.  
 - Run `git status --short`.  
 - Document exact current "open items" in a fresh section of this plan (or a temporary NOTES.md).  
@@ -196,7 +196,7 @@ Fix any nits found. Produce a one-paragraph "Remarkable Advancement Delivered" s
 (Will be filled by the session executing the subgoals.)
 
 - 2026-07-05 (plan creation): Thread caught up. Plan written. Master + 8 subgoals defined for /goal optimization. All contracts re-read. Current state: L5 sorry live, L4 proved, R2 100% measured.
-- 2026-07-05 (Subgoal 1/2 bootstrap): All mandated reads completed in order (AGENTS.md, continuity files, contracts, PROOF relevant, Lean sources, Python replay sources, status HTMLs). Ran `git status`, `bash lean4-cache-build.sh` (exit 0, build succeeded with expected sorry warnings including L5 in ChamberReset; smoke loaded and #check'ed the open weak_lfcl_ruleX_forces_next_prime), `PYTHONPATH=src/python python3 -m pytest .../test_weak_lfcl.py -q` (4/4 passed cleanly, including p73 replay, anchors, demoted audit without tau[q] read). Captured logs to private SCRATCH. Current open: only documented deferred count sorries in Basic + the L5 target sorry in ChamberReset. No contract violations. State at start of L5 closure: L5 theorem is the sole active open in weak L_FCL chain; L4 proved; Python 100% on R2 measured surface; all work strictly downstream mirror per contracts. Ready for scaffolding.
+- 2026-07-05 (Subgoal 1/2 bootstrap): All mandated reads completed in order (AGENTS.md, continuity files, contracts, PROOF relevant, Lean sources, Python replay sources, status HTMLs). Ran `git status`, `bash scripts/lean4-cache-build.sh` (exit 0, build succeeded with expected sorry warnings including L5 in ChamberReset; smoke loaded and #check'ed the open weak_lfcl_ruleX_forces_next_prime), `PYTHONPATH=src/python python3 -m pytest .../test_weak_lfcl.py -q` (4/4 passed cleanly, including p73 replay, anchors, demoted audit without tau[q] read). Captured logs to private SCRATCH. Current open: only documented deferred count sorries in Basic + the L5 target sorry in ChamberReset. No contract violations. State at start of L5 closure: L5 theorem is the sole active open in weak L_FCL chain; L4 proved; Python 100% on R2 measured surface; all work strictly downstream mirror per contracts. Ready for scaffolding.
 - 2026-07-05 (Subgoal 3/5 review): Explicit skeleton review: re-read Python certificate_replay.py (walk, carrier, lock, threat, post-process) vs Lean (admissibleOffsets, getCount, WalkState, statusFrom, replaySelectionAtBound stub + long header comments). Strategy recorded in ChamberReset.lean comment block: aux invariants on unresolved_count + resolved at gap + sig from hq/hnext, discharge exists. Core tactics only. Scaffolding + #checks + smoke green. Ready for incremental proof units.
 - 2026-07-05 (Subgoals 6-9): Full direct port of replaySelectionAtBound implemented (walk, carrier, lock, threat, post-process using tau + wheel; matches Python on p=11/gap=2 returning q=13 resolvedCount=1 etc.). Proof mentions/uses hrep := replaySelectionAtBound. #eval added to smoke. Build/smoke/pytest green. Docs (incl. full table updates in translation plan) updated. L5 no code sorry. Wheel lemma added for derivation.
 - 2026-07-05 (directed checklist step): Confirmed/added #check lines for scaffolding defs (admissibleOffsets, replaySelectionAtBound, getCount, WalkState) in smoke-test.lean; ran lake build + smoke (sorries unchanged, only Basic deferred); captured to scratch; flipped the item. Port fixed to full loop. Proof references hrep. All verif plan steps executed.

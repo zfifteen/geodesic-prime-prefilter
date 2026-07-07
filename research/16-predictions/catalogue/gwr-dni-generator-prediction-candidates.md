@@ -2,7 +2,7 @@
 
 **PGS Predictions Track • research/16-predictions/catalogue**  
 **Generated:** 2026-05-30 (predictions branch)  
-**Scope:** Exhaustive extraction of deterministic carrier laws and structural resolution rules from core GWR/DNI mathematics (PROOF.md, LEFTMOST_MINIMUM_DIVISOR_RULE.md, DIVISOR_NORMALIZATION_IDENTITY.md), the Minimal PGS Generator surfaces, and supporting measured/hypothesis artifacts in research/01-generator/, research/02-gwr-dni/, research/05-state-budget/, pgs-unsolved-problems/, and related code (src/python/z_band_prime_predictor/*, research scripts).  
+**Scope:** Exhaustive extraction of deterministic carrier laws and structural resolution rules from core GWR/DNI mathematics (PROOF.md, docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md, docs/core/DIVISOR_NORMALIZATION_IDENTITY.md), the Minimal PGS Generator surfaces, and supporting measured/hypothesis artifacts in research/01-generator/, research/02-gwr-dni/, research/05-state-budget/, pgs-unsolved-problems/, and related code (src/python/z_band_prime_predictor/*, research scripts).  
 
 **Entry frame (PGS-first, per AGENTS.md and pgs_predictions_v0.1_contract.html):**  
 PGS objects (ordered prime-gap state, divisor-count field τ(n), DNI E(n)/Z(n), GWR leftmost min-τ integer w / selected integer, chamber-reset signatures, lock_carrier, tail_after_reset, reset_signature, modulus-link residuals, endpoint chains, reciprocal transport) → PGS invariants (Interior Maximizer theorem, No-Later-Simpler-Composite corollary, dominant d=4 under square exclusion on measured surfaces, wheel-admissible carrier tracking) → PGS rule/law (carrier or resolution) → resolved / unresolved / invalidated PGS state (next w offset or small set, next gap-type/triad state after w, next reset signature, closure offset, transported lock state, etc.).  
@@ -21,7 +21,7 @@ PGS objects (ordered prime-gap state, divisor-count field τ(n), DNI E(n)/Z(n), 
 - src/python/z_band_prime_predictor/ (simple_pgs_generator.py:118-149 carrier_w/lock_carrier logic; gwr_boundary_walk.py:67-69 winner update; gpe_nlsc_selector.py, gpe_boundary_selector.py)  
 - src/c/high-scale-pgs/ (integer chamber certificate emission)  
 - tests/ (generator + gwr walk tests)  
-- PRIME_GAP_GENERATOR.md (chamber reset surfaces)  
+- docs/PRIME_GAP_GENERATOR.md (chamber reset surfaces)  
 - pgs-unsolved-problems/endpoint-determinacy/ + gilbreath/ (boundary drop, reset-stop-wall)  
 - research/05-state-budget/ (d4_count breakthrough, state_budget_divisor_carrier_sweep.py:42-54 measures, long-running 8192-row catalog)  
 - research/03-gap-types/ (gap-type catalog + triad probes feeding carrier tests)  
@@ -129,7 +129,7 @@ Why strong: Exhaustive enumeration of divisor-field scalar carriers; documents w
 
 **9. Gap-type grammar / reduced 14-state core transitions constrained by current d4_count or w d-class**  
 Primary PGS objects: current reduced gap-type (from 03-gap-types), d4_count or w d(w), next reduced state (Semiprime Wheel Attractor core).  
-File:line: research/03-gap-types/ probes + long-horizon controller; PRIME_GAP_GENERATIVE_MODEL.md (14-state core + transition rules); state-budget forbidden_transition tests (invalidated exact exclusion but retained weak ordering).  
+File:line: research/03-gap-types/ probes + long-horizon controller; docs/core/PRIME_GAP_GENERATIVE_MODEL.md (14-state core + transition rules); state-budget forbidden_transition tests (invalidated exact exclusion but retained weak ordering).  
 Epistemic: **measured** (local fidelity / concentration metrics on pooled windows; forbidden-transition exact exclusion invalidated on 2048+ row surfaces).  
 Falsification/measurement surface: research/03-gap-types/scripts + tests; state_budget_forbidden_transition_test.py on expanded catalogs.  
 Why strong: Connects GWR/DNI chamber objects directly to the reduced generative model state machine; d4_count already shown to order triad subset.  

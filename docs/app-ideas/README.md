@@ -85,7 +85,7 @@ Adding PGS-based cross-verification in distributed systems that generate or vali
 
 **Related documents**:
 - `PROOF.md` (local theorems)
-- `DIVISOR_NORMALIZATION_IDENTITY.md`
-- `LEFTMOST_MINIMUM_DIVISOR_RULE.md`
+- `docs/core/DIVISOR_NORMALIZATION_IDENTITY.md`
+- `docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md`
 - `research/06-cryptology-rsa/` (existing modulus-link and structural certificate work)
 - `docs/rh/` (for related source-order thinking)

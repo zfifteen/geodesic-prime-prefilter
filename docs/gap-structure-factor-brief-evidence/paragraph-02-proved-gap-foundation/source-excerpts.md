@@ -17,7 +17,7 @@ Line evidence:
 
 ## Source: Results Map
 
-Path: `RESULTS.md`
+Path: `docs/RESULTS.md`
 
 Line evidence:
 

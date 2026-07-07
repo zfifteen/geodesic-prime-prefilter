@@ -3,7 +3,7 @@
 **Note for the project (2026-06-02):** The user has not previously deeply contemplated geometric aspects of the work. This note inventories the latent and explicit geometric elements that already exist in the artifacts, in response to the direct question. It stays within PGS-native objects (divisor-count field, ordered gap interior, GWR w, DNI scores E/Z, square phase) while noting where geometric language, diagrams, constructions, and visualizations have emerged.
 
 ## 1. The Fundamental 1D Row/Profile (Observable Geometric Object)
-From LEFTMOST_MINIMUM_DIVISOR_RULE.md:
+From docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md:
 
 The gap is presented explicitly as a linear "row":
 
@@ -119,7 +119,7 @@ The computations in this experiment folder (standard + mixed power gaps) show th
 This inventory shows the work already has geometric "hooks" that someone with @materion's eye naturally reaches for. They are not the primary engine (arithmetic source is), but they are real, documented in specific folders, and could be amplified without leaving the PGS frame.
 
 **Recommended next reads for the user**:
-- LEFTMOST_MINIMUM_DIVISOR_RULE.md (the row)
+- docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md (the row)
 - research/11-gap-ridge/docs/dni_gap_ridge.md and output SVGs (the ridge)
 - research/05-state-budget/scripts/gwr_phase_budget_hidden_state_probe.py (the U_□ computation and geometry-median)
 - The visualizations/apps/ HTML files (interactive geometry)

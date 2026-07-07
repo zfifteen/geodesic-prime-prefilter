@@ -103,7 +103,7 @@ unresolved.
 For this repository, a future session should first read:
 
 - `research/00-index/continuity/START_HERE.md`;
-- `AGENTS.md`;
+- `docs/AGENTS.md`;
 - `PROOF.md`;
 - `research/08-collatz/PROOF.md`;
 - `research/06-cryptology-rsa/experiments/rsa/v2/README.md`;

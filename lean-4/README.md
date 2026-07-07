@@ -12,7 +12,7 @@ This is a **downstream verification and audit layer only**.
 
 - It translates proved statements from `PROOF.md` into dependent type theory for mechanical checking.
 - It **never** generates PGS outputs, selects primes, or participates in the active generator.
-- All work follows PGS-first reasoning and strict state separation per `AGENTS.md` and the continuity contract.
+- All work follows PGS-first reasoning and strict state separation per `docs/AGENTS.md` and the continuity contract.
 
 ## Current Structure (Verified Working)
 
@@ -30,7 +30,7 @@ This is a **downstream verification and audit layer only**.
 
 ```bash
 # Recommended
-bash ../lean4-cache-build.sh
+bash ../scripts/lean4-cache-build.sh
 
 # Or manual
 cd lean-4

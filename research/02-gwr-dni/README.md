@@ -8,9 +8,9 @@ surfaces.
 
 Primary homes remain:
 
-- `LEFTMOST_MINIMUM_DIVISOR_RULE.md`
-- `DIVISOR_NORMALIZATION_IDENTITY.md`
-- `RECURSIVE_PRIME_WALK.md`
+- `docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md`
+- `docs/core/DIVISOR_NORMALIZATION_IDENTITY.md`
+- `docs/core/RECURSIVE_PRIME_WALK.md`
 - `research/02-gwr-dni/output/gwr_proof/`
 - `research/02-gwr-dni/output/gwr_dni_recursive_gap_scaling_2_to_18/`
 - `research/02-gwr-dni/docs/`

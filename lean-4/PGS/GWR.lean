@@ -10,7 +10,7 @@ import PGS.Basic
 # GWR / Leftmost Minimum-Divisor Maximizer (Placeholder)
 
 This file will eventually contain the formal translation of the
-GWR maximizer theorem from PROOF.md and LEFTMOST_MINIMUM_DIVISOR_RULE.md.
+GWR maximizer theorem from PROOF.md and docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md.
 
 **Status**: Phase 3 target. Do not implement until Phase 1+2 foundations
 are stable and reviewed against the verification contract.

@@ -4,10 +4,10 @@ This directory is the permanent home for PGS research chapters.
 
 Root-level authority files remain at the repository root:
 
-- `AGENTS.md`: local Codex contract and PGS reasoning discipline.
+- `docs/AGENTS.md`: local Codex contract and PGS reasoning discipline.
 - `PROOF.md`: single live proof reference.
-- `RESULTS.md`: repo-wide measured and audit surfaces.
-- `PRIME_GAP_GENERATOR.md`: public generator contract.
+- `docs/RESULTS.md`: repo-wide measured and audit surfaces.
+- `docs/PRIME_GAP_GENERATOR.md`: public generator contract.
 - `research/00-index/continuity/START_HERE.md`: continuity router.
 
 ## Chapter Map

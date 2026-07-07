@@ -390,8 +390,8 @@ Future Codex sessions should read:
 - `research/00-index/continuity/continuity_and_shape_contract.md`;
 - `/Users/velocityworks/.codex/memories/continuity_and_shape_contract.md`;
 - `PROOF.md`;
-- `RESULTS.md`;
-- `PRIME_GAP_GENERATOR.md`;
+- `docs/RESULTS.md`;
+- `docs/PRIME_GAP_GENERATOR.md`;
 - `research/06-cryptology-rsa/docs/cryptology/pgs_cryptologic_implications_whitepaper.md`;
 - active task-specific contracts.
 

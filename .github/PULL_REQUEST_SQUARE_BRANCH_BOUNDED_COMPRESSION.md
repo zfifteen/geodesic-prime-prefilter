@@ -135,9 +135,9 @@ The coefficient `0.5` in `C(q)` places the cutoff at the natural critical envelo
 
 ### Public entry points
 - **`README.md`** — New section "Bounded Compression at the Cramér Scale"
-- **`RESULTS.md`** — "Bounded Compression (Proved)" replaces empirical language
+- **`docs/RESULTS.md`** — "Bounded Compression (Proved)" replaces empirical language
 - **`docs/current_headline_results.md`** — Breakthrough bullets with boundaries
-- **`RECURSIVE_PRIME_WALK.md`**, **`PRIME_GAP_GENERATOR.md`**, **`LEFTMOST_MINIMUM_DIVISOR_RULE.md`** — Theorem-backed framing; falsification as audit corroboration
+- **`docs/core/RECURSIVE_PRIME_WALK.md`**, **`docs/PRIME_GAP_GENERATOR.md`**, **`docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md`** — Theorem-backed framing; falsification as audit corroboration
 
 ### Research corpus sync
 - **`research/04-bounded-compression/`** — README, reduction, blocker acceptance, prefix attainment, completion audit: RESOLVED 2026-07-05
@@ -179,7 +179,7 @@ Stale-language sweep (scoped public docs):
 
 ```bash
 rg "bounded compression rule is empirical|all-scale dynamic cutoff theorem remains unresolved|square branch remains unresolved" \
-  README.md RESULTS.md RECURSIVE_PRIME_WALK.md docs/ research/04-bounded-compression/ research/00-index/continuity/ --glob '*.md'
+  README.md docs/RESULTS.md docs/core/RECURSIVE_PRIME_WALK.md docs/ research/04-bounded-compression/ research/00-index/continuity/ --glob '*.md'
 ```
 
 Expected: **no matches** in active status sections (historical handoffs are bannered pre-2026-07-05).

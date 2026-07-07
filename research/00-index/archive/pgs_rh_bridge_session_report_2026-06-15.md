@@ -99,7 +99,7 @@ All statements link directly to proved local theorems in PROOF.md and are ground
 
 5. **Integration & Documentation**  
    - Update `docs/rh/status-ledger.md` and `off-critical-pole-exclusion.md` with new invariants and empirics.  
-   - Add Lean4 module to repo build (lean4-cache-build.sh).  
+   - Add Lean4 module to repo build (scripts/lean4-cache-build.sh).  
    - Produce companion math note or README section on "Chamber Geometry as Placement Constraint".  
    - Success: Remote main branch merge-ready PR or updated public spine documents.
 
@@ -123,6 +123,6 @@ The bridge stands closer to closure. All artifacts are reproducible, committed, 
 - `pgs_chamber_budget_summary_*.md` (1e6 & 1e7)
 - `pgs_chamber_budget_gap_stats_1000000.csv` (sampled)
 - `lean-4/pgs-rh-placement-invariants.lean` (final version with all requested work)
-- This report: `pgs_rh_bridge_session_report_2026-06-15.md`
+- This report: `research/00-index/archive/pgs_rh_bridge_session_report_2026-06-15.md`
 
 Remote branch ready for review or further iteration.

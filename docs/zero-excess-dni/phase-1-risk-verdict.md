@@ -94,8 +94,8 @@ Required result: no whitespace errors.
 
 ```bash
 rg -n -C 2 "(heuristic|appears|suggests|validated so far|likely|empirical|promising)" \
-  PROOF.md RESULTS.md README.md DIVISOR_NORMALIZATION_IDENTITY.md \
-  LEFTMOST_MINIMUM_DIVISOR_RULE.md PRIME_GAP_GENERATOR.md \
+  PROOF.md RESULTS.md README.md docs/core/DIVISOR_NORMALIZATION_IDENTITY.md \
+  docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md PRIME_GAP_GENERATOR.md \
   docs/rh docs/faq docs/zero-excess-dni
 ```
 

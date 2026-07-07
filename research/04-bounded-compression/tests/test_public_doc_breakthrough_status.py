@@ -7,7 +7,7 @@ REPO_ROOT = Path(__file__).resolve().parents[3]
 TIER1 = [
     REPO_ROOT / "README.md",
     REPO_ROOT / "PROOF.md",
-    REPO_ROOT / "RESULTS.md",
+    REPO_ROOT / "docs" / "RESULTS.md",
     REPO_ROOT / "docs" / "current_headline_results.md",
 ]
 
@@ -21,10 +21,10 @@ STALE_PHRASES = [
 SCOPED_PUBLIC_DOCS = [
     REPO_ROOT / "README.md",
     REPO_ROOT / "PROOF.md",
-    REPO_ROOT / "RESULTS.md",
-    REPO_ROOT / "RECURSIVE_PRIME_WALK.md",
-    REPO_ROOT / "PRIME_GAP_GENERATOR.md",
-    REPO_ROOT / "LEFTMOST_MINIMUM_DIVISOR_RULE.md",
+    REPO_ROOT / "docs" / "RESULTS.md",
+    REPO_ROOT / "docs" / "core" / "RECURSIVE_PRIME_WALK.md",
+    REPO_ROOT / "docs" / "PRIME_GAP_GENERATOR.md",
+    REPO_ROOT / "docs" / "core" / "LEFTMOST_MINIMUM_DIVISOR_RULE.md",
     REPO_ROOT / "docs" / "current_headline_results.md",
     REPO_ROOT / "research" / "04-bounded-compression" / "README.md",
     REPO_ROOT / "research" / "04-bounded-compression" / "docs" / "square_branch_reduction.md",
@@ -94,7 +94,7 @@ def test_readme_announces_breakthrough():
 
 
 def test_results_states_proved_not_empirical():
-    text = (REPO_ROOT / "RESULTS.md").read_text(encoding="utf-8")
+    text = (REPO_ROOT / "docs" / "RESULTS.md").read_text(encoding="utf-8")
     assert "## Bounded Compression (Proved)" in text
     assert "2026-07-05" in text
     assert "bounded compression rule is empirical" not in text
