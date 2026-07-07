@@ -1,0 +1,34 @@
+1. gating: key configs
+/Users/velocityworks/IdeaProjects/prime-gap-structure/scripts/pgs-research-director/CRONS.json
+/Users/velocityworks/IdeaProjects/prime-gap-structure/scripts/pgs-research-director/SYSTEM.md
+
+/Users/velocityworks/IdeaProjects/prime-gap-structure/scripts/pgs-research-director/skills-library/gwr-resonance:
+gwr-resonance.cjs
+SKILL.md
+
+/Users/velocityworks/IdeaProjects/prime-gap-structure/scripts/pgs-research-director/skills-library/log-analyzer:
+log-analyzer.cjs
+SKILL.md
+  SYSTEM has PGS objects
+  CRONS daily entry
+PASS 1
+2. gating: trigger via exercise-scheduler (exit 0), PGS refs, fresh artifacts
+  exit 0 for exercise and trigger
+## Core Contract (from docs/AGENTS.md and PROOF.md — MUST READ EVERY CYCLE)
+- Divisor Normalization Identity (DNI): E(n) = (d(n)/2 - 1) * ln n ; Z(n) = e^{-E(n)}
+- Leftmost Minimum-Divisor Rule (GWR): the first interior integer with the minimum divisor count inside the gap
+  valid fresh JSON artifact
+PASS 2
+3. autonomy: CRONS + plist + no prompts
+  CRONS defined
+  plist defined
+  no extra prompts
+PASS 3
+4. integration + framing + correct math in fresh artifacts
+  AGENTS+PROOF
+  research/00-index
+  min_d= 3
+  exact min_d=3
+  correct math in fresh JSON
+PASS 4
+=== ALL VERIFICATION OBSERVATIONS HOLD ===

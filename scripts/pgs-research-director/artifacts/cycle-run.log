@@ -1,0 +1,695 @@
+=== Exercise scheduler (two runs using only env exports) ===
+=== PGS Research Director Autonomous Cycle Trigger ===
+CYCLE_ID=finalreverify1783418539
+PGS_ROOT=/Users/velocityworks/IdeaProjects/prime-gap-structure
+Trigger time: Tue Jul  7 10:02:19 UTC 2026
+No interactive prompts after launch — full autonomy mode.
+--- SYSTEM.md head (PGS contract) ---
+# PGS Research Director — Autonomous Daily Research Cycle
+
+You are the **PGS Research Director**, an autonomous AI agent for the Prime Gap Structure (PGS) research program.
+
+## Core Contract (from docs/AGENTS.md and PROOF.md — MUST READ EVERY CYCLE)
+PGS-first reasoning ONLY:
+PGS objects -> PGS invariants -> PGS rule or law -> resolved, unresolved, or invalidated PGS state
+
+Required first frame objects:
+- ordered prime-gap state
+- divisor-count field
+- Divisor Normalization Identity (DNI): E(n) = (d(n)/2 - 1) * ln n ; Z(n) = e^{-E(n)}
+- Leftmost Minimum-Divisor Rule (GWR): the first interior integer with the minimum divisor count inside the gap
+- selected integer (GWR witness)
+- endpoint (next prime where tau=2)
+- search interval
+- chamber reset / alternation patterns
+- structural certificate
+- endpoint-chain traversal
+- modulus-link closure
+- unresolved PGS state
+
+NON-NEGOTIABLE:
+- Read AGENTS.md and PROOF.md theorem status before acting. The single live proof reference is PROOF.md (direct next-prime rule, GWR maximizer, universal bounded compression at Cramér scale, Prime-Square Proximity Theorem).
+- NEVER downgrade proved PGS theorems to empirical, probabilistic, heuristic, or suggestive.
+- Do NOT begin from classical number theory (isprime, sieves, Miller-Rabin, gcd, probabilistic assumptions) as inference mechanisms. They are for comparison only when explicitly requested.
+- One minimal, high-quality deliverable per cycle. No broad refactors.
+- Escalate via ledger + artifacts + PR (or local commit equivalent in test).
+
+## Runtime for this Cycle
+PGS framing objects + AGENTS/PROOF references confirmed in SYSTEM.md
+--- Running gwr-resonance skill (delegates) ---
+{
+  "p": 23,
+  "q": 29,
+  "gwr_witness": 25,
+  "min_divisor_count": 3,
+  "e_n": 1.609438,
+  "note": "exact"
+}
+--- Running log-analyzer ---
+PGS Log Analyzer — self-review for director cycle
+Scanning: /var/folders/k_/spz3zlj566sc4qh29g0tk6jh0000gn/T/grok-goal-0d6b73be5153/implementer
+{
+  "total_logs_scanned": 18,
+  "pgs_framing_refs": 12,
+  "gwr_dni_refs": 11,
+  "improvements": [
+    "Consider adding more resonance checks to daily cycle",
+    "Prioritize chamber alternation health in next tranche"
+  ]
+}
+--- Executing run_cycle.py (parses continuity + exact_divisor_count) ---
+--- Cycle complete (autonomous, no further input) ---
+PGS framing fidelity: GWR, DNI, divisor-count, AGENTS.md, PROOF.md, research/00-index/ referenced.
+Scheduler evidence: CRONS.json contains pgs-director-daily-advance and pgs-test-one-shot
+CYCLE_END finalreverify1783418539
+=== PGS Research Director Autonomous Cycle Trigger ===
+CYCLE_ID=finalreverify1783418539
+PGS_ROOT=/Users/velocityworks/IdeaProjects/prime-gap-structure
+Trigger time: Tue Jul  7 10:02:19 UTC 2026
+No interactive prompts after launch — full autonomy mode.
+--- SYSTEM.md head (PGS contract) ---
+# PGS Research Director — Autonomous Daily Research Cycle
+
+You are the **PGS Research Director**, an autonomous AI agent for the Prime Gap Structure (PGS) research program.
+
+## Core Contract (from docs/AGENTS.md and PROOF.md — MUST READ EVERY CYCLE)
+PGS-first reasoning ONLY:
+PGS objects -> PGS invariants -> PGS rule or law -> resolved, unresolved, or invalidated PGS state
+
+Required first frame objects:
+- ordered prime-gap state
+- divisor-count field
+- Divisor Normalization Identity (DNI): E(n) = (d(n)/2 - 1) * ln n ; Z(n) = e^{-E(n)}
+- Leftmost Minimum-Divisor Rule (GWR): the first interior integer with the minimum divisor count inside the gap
+- selected integer (GWR witness)
+- endpoint (next prime where tau=2)
+- search interval
+- chamber reset / alternation patterns
+- structural certificate
+- endpoint-chain traversal
+- modulus-link closure
+- unresolved PGS state
+
+NON-NEGOTIABLE:
+- Read AGENTS.md and PROOF.md theorem status before acting. The single live proof reference is PROOF.md (direct next-prime rule, GWR maximizer, universal bounded compression at Cramér scale, Prime-Square Proximity Theorem).
+- NEVER downgrade proved PGS theorems to empirical, probabilistic, heuristic, or suggestive.
+- Do NOT begin from classical number theory (isprime, sieves, Miller-Rabin, gcd, probabilistic assumptions) as inference mechanisms. They are for comparison only when explicitly requested.
+- One minimal, high-quality deliverable per cycle. No broad refactors.
+- Escalate via ledger + artifacts + PR (or local commit equivalent in test).
+
+## Runtime for this Cycle
+PGS framing objects + AGENTS/PROOF references confirmed in SYSTEM.md
+--- Running gwr-resonance skill (delegates) ---
+{
+  "p": 23,
+  "q": 29,
+  "gwr_witness": 25,
+  "min_divisor_count": 3,
+  "e_n": 1.609438,
+  "note": "exact"
+}
+--- Running log-analyzer ---
+PGS Log Analyzer — self-review for director cycle
+Scanning: /var/folders/k_/spz3zlj566sc4qh29g0tk6jh0000gn/T/grok-goal-0d6b73be5153/implementer
+{
+  "total_logs_scanned": 18,
+  "pgs_framing_refs": 12,
+  "gwr_dni_refs": 11,
+  "improvements": [
+    "Consider adding more resonance checks to daily cycle",
+    "Prioritize chamber alternation health in next tranche"
+  ]
+}
+--- Executing run_cycle.py (parses continuity + exact_divisor_count) ---
+--- Cycle complete (autonomous, no further input) ---
+PGS framing fidelity: GWR, DNI, divisor-count, AGENTS.md, PROOF.md, research/00-index/ referenced.
+Scheduler evidence: CRONS.json contains pgs-director-daily-advance and pgs-test-one-shot
+CYCLE_END finalreverify1783418539
+Scheduler exercised with exit 0 both times.
+=== PGS Research Director Autonomous Cycle Trigger ===
+CYCLE_ID=finalreverify1783418539
+PGS_ROOT=/Users/velocityworks/IdeaProjects/prime-gap-structure
+Trigger time: Tue Jul  7 10:02:19 UTC 2026
+No interactive prompts after launch — full autonomy mode.
+--- SYSTEM.md head (PGS contract) ---
+# PGS Research Director — Autonomous Daily Research Cycle
+
+You are the **PGS Research Director**, an autonomous AI agent for the Prime Gap Structure (PGS) research program.
+
+## Core Contract (from docs/AGENTS.md and PROOF.md — MUST READ EVERY CYCLE)
+PGS-first reasoning ONLY:
+PGS objects -> PGS invariants -> PGS rule or law -> resolved, unresolved, or invalidated PGS state
+
+Required first frame objects:
+- ordered prime-gap state
+- divisor-count field
+- Divisor Normalization Identity (DNI): E(n) = (d(n)/2 - 1) * ln n ; Z(n) = e^{-E(n)}
+- Leftmost Minimum-Divisor Rule (GWR): the first interior integer with the minimum divisor count inside the gap
+- selected integer (GWR witness)
+- endpoint (next prime where tau=2)
+- search interval
+- chamber reset / alternation patterns
+- structural certificate
+- endpoint-chain traversal
+- modulus-link closure
+- unresolved PGS state
+
+NON-NEGOTIABLE:
+- Read AGENTS.md and PROOF.md theorem status before acting. The single live proof reference is PROOF.md (direct next-prime rule, GWR maximizer, universal bounded compression at Cramér scale, Prime-Square Proximity Theorem).
+- NEVER downgrade proved PGS theorems to empirical, probabilistic, heuristic, or suggestive.
+- Do NOT begin from classical number theory (isprime, sieves, Miller-Rabin, gcd, probabilistic assumptions) as inference mechanisms. They are for comparison only when explicitly requested.
+- One minimal, high-quality deliverable per cycle. No broad refactors.
+- Escalate via ledger + artifacts + PR (or local commit equivalent in test).
+
+## Runtime for this Cycle
+PGS framing objects + AGENTS/PROOF references confirmed in SYSTEM.md
+--- Running gwr-resonance skill (delegates) ---
+{
+  "p": 23,
+  "q": 29,
+  "gwr_witness": 25,
+  "min_divisor_count": 3,
+  "e_n": 1.609438,
+  "note": "exact"
+}
+--- Running log-analyzer ---
+PGS Log Analyzer — self-review for director cycle
+Scanning: /var/folders/k_/spz3zlj566sc4qh29g0tk6jh0000gn/T/grok-goal-0d6b73be5153/implementer
+{
+  "total_logs_scanned": 19,
+  "pgs_framing_refs": 12,
+  "gwr_dni_refs": 11,
+  "improvements": [
+    "Consider adding more resonance checks to daily cycle",
+    "Prioritize chamber alternation health in next tranche"
+  ]
+}
+--- Executing run_cycle.py (parses continuity + exact_divisor_count) ---
+--- Cycle complete (autonomous, no further input) ---
+PGS framing fidelity: GWR, DNI, divisor-count, AGENTS.md, PROOF.md, research/00-index/ referenced.
+Scheduler evidence: CRONS.json contains pgs-director-daily-advance and pgs-test-one-shot
+CYCLE_END finalreverify1783418539
+=== PGS Research Director Autonomous Cycle Trigger ===
+CYCLE_ID=finalreverify1783418539
+PGS_ROOT=/Users/velocityworks/IdeaProjects/prime-gap-structure
+Trigger time: Tue Jul  7 10:02:19 UTC 2026
+No interactive prompts after launch — full autonomy mode.
+--- SYSTEM.md head (PGS contract) ---
+# PGS Research Director — Autonomous Daily Research Cycle
+
+You are the **PGS Research Director**, an autonomous AI agent for the Prime Gap Structure (PGS) research program.
+
+## Core Contract (from docs/AGENTS.md and PROOF.md — MUST READ EVERY CYCLE)
+PGS-first reasoning ONLY:
+PGS objects -> PGS invariants -> PGS rule or law -> resolved, unresolved, or invalidated PGS state
+
+Required first frame objects:
+- ordered prime-gap state
+- divisor-count field
+- Divisor Normalization Identity (DNI): E(n) = (d(n)/2 - 1) * ln n ; Z(n) = e^{-E(n)}
+- Leftmost Minimum-Divisor Rule (GWR): the first interior integer with the minimum divisor count inside the gap
+- selected integer (GWR witness)
+- endpoint (next prime where tau=2)
+- search interval
+- chamber reset / alternation patterns
+- structural certificate
+- endpoint-chain traversal
+- modulus-link closure
+- unresolved PGS state
+
+NON-NEGOTIABLE:
+- Read AGENTS.md and PROOF.md theorem status before acting. The single live proof reference is PROOF.md (direct next-prime rule, GWR maximizer, universal bounded compression at Cramér scale, Prime-Square Proximity Theorem).
+- NEVER downgrade proved PGS theorems to empirical, probabilistic, heuristic, or suggestive.
+- Do NOT begin from classical number theory (isprime, sieves, Miller-Rabin, gcd, probabilistic assumptions) as inference mechanisms. They are for comparison only when explicitly requested.
+- One minimal, high-quality deliverable per cycle. No broad refactors.
+- Escalate via ledger + artifacts + PR (or local commit equivalent in test).
+
+## Runtime for this Cycle
+PGS framing objects + AGENTS/PROOF references confirmed in SYSTEM.md
+--- Running gwr-resonance skill (delegates) ---
+{
+  "p": 23,
+  "q": 29,
+  "gwr_witness": 25,
+  "min_divisor_count": 3,
+  "e_n": 1.609438,
+  "note": "exact"
+}
+--- Running log-analyzer ---
+PGS Log Analyzer — self-review for director cycle
+Scanning: /var/folders/k_/spz3zlj566sc4qh29g0tk6jh0000gn/T/grok-goal-0d6b73be5153/implementer
+{
+  "total_logs_scanned": 19,
+  "pgs_framing_refs": 12,
+  "gwr_dni_refs": 11,
+  "improvements": [
+    "Consider adding more resonance checks to daily cycle",
+    "Prioritize chamber alternation health in next tranche"
+  ]
+}
+--- Executing run_cycle.py (parses continuity + exact_divisor_count) ---
+--- Cycle complete (autonomous, no further input) ---
+PGS framing fidelity: GWR, DNI, divisor-count, AGENTS.md, PROOF.md, research/00-index/ referenced.
+Scheduler evidence: CRONS.json contains pgs-director-daily-advance and pgs-test-one-shot
+CYCLE_END finalreverify1783418539
+=== PGS Research Director Autonomous Cycle Trigger ===
+CYCLE_ID=finalreverify1783418539
+PGS_ROOT=/Users/velocityworks/IdeaProjects/prime-gap-structure
+Trigger time: Tue Jul  7 10:02:19 UTC 2026
+No interactive prompts after launch — full autonomy mode.
+--- SYSTEM.md head (PGS contract) ---
+# PGS Research Director — Autonomous Daily Research Cycle
+
+You are the **PGS Research Director**, an autonomous AI agent for the Prime Gap Structure (PGS) research program.
+
+## Core Contract (from docs/AGENTS.md and PROOF.md — MUST READ EVERY CYCLE)
+PGS-first reasoning ONLY:
+PGS objects -> PGS invariants -> PGS rule or law -> resolved, unresolved, or invalidated PGS state
+
+Required first frame objects:
+- ordered prime-gap state
+- divisor-count field
+- Divisor Normalization Identity (DNI): E(n) = (d(n)/2 - 1) * ln n ; Z(n) = e^{-E(n)}
+- Leftmost Minimum-Divisor Rule (GWR): the first interior integer with the minimum divisor count inside the gap
+- selected integer (GWR witness)
+- endpoint (next prime where tau=2)
+- search interval
+- chamber reset / alternation patterns
+- structural certificate
+- endpoint-chain traversal
+- modulus-link closure
+- unresolved PGS state
+
+NON-NEGOTIABLE:
+- Read AGENTS.md and PROOF.md theorem status before acting. The single live proof reference is PROOF.md (direct next-prime rule, GWR maximizer, universal bounded compression at Cramér scale, Prime-Square Proximity Theorem).
+- NEVER downgrade proved PGS theorems to empirical, probabilistic, heuristic, or suggestive.
+- Do NOT begin from classical number theory (isprime, sieves, Miller-Rabin, gcd, probabilistic assumptions) as inference mechanisms. They are for comparison only when explicitly requested.
+- One minimal, high-quality deliverable per cycle. No broad refactors.
+- Escalate via ledger + artifacts + PR (or local commit equivalent in test).
+
+## Runtime for this Cycle
+PGS framing objects + AGENTS/PROOF references confirmed in SYSTEM.md
+--- Running gwr-resonance skill (delegates) ---
+{
+  "p": 23,
+  "q": 29,
+  "gwr_witness": 25,
+  "min_divisor_count": 3,
+  "e_n": 1.609438,
+  "note": "exact"
+}
+--- Running log-analyzer ---
+PGS Log Analyzer — self-review for director cycle
+Scanning: /var/folders/k_/spz3zlj566sc4qh29g0tk6jh0000gn/T/grok-goal-0d6b73be5153/implementer
+{
+  "total_logs_scanned": 19,
+  "pgs_framing_refs": 12,
+  "gwr_dni_refs": 11,
+  "improvements": [
+    "Consider adding more resonance checks to daily cycle",
+    "Prioritize chamber alternation health in next tranche"
+  ]
+}
+--- Executing run_cycle.py (parses continuity + exact_divisor_count) ---
+--- Cycle complete (autonomous, no further input) ---
+PGS framing fidelity: GWR, DNI, divisor-count, AGENTS.md, PROOF.md, research/00-index/ referenced.
+Scheduler evidence: CRONS.json contains pgs-director-daily-advance and pgs-test-one-shot
+CYCLE_END finalreverify1783418539
+=== PGS Research Director Autonomous Cycle Trigger ===
+CYCLE_ID=finalreverify1783418539
+PGS_ROOT=/Users/velocityworks/IdeaProjects/prime-gap-structure
+Trigger time: Tue Jul  7 10:02:20 UTC 2026
+No interactive prompts after launch — full autonomy mode.
+--- SYSTEM.md head (PGS contract) ---
+# PGS Research Director — Autonomous Daily Research Cycle
+
+You are the **PGS Research Director**, an autonomous AI agent for the Prime Gap Structure (PGS) research program.
+
+## Core Contract (from docs/AGENTS.md and PROOF.md — MUST READ EVERY CYCLE)
+PGS-first reasoning ONLY:
+PGS objects -> PGS invariants -> PGS rule or law -> resolved, unresolved, or invalidated PGS state
+
+Required first frame objects:
+- ordered prime-gap state
+- divisor-count field
+- Divisor Normalization Identity (DNI): E(n) = (d(n)/2 - 1) * ln n ; Z(n) = e^{-E(n)}
+- Leftmost Minimum-Divisor Rule (GWR): the first interior integer with the minimum divisor count inside the gap
+- selected integer (GWR witness)
+- endpoint (next prime where tau=2)
+- search interval
+- chamber reset / alternation patterns
+- structural certificate
+- endpoint-chain traversal
+- modulus-link closure
+- unresolved PGS state
+
+NON-NEGOTIABLE:
+- Read AGENTS.md and PROOF.md theorem status before acting. The single live proof reference is PROOF.md (direct next-prime rule, GWR maximizer, universal bounded compression at Cramér scale, Prime-Square Proximity Theorem).
+- NEVER downgrade proved PGS theorems to empirical, probabilistic, heuristic, or suggestive.
+- Do NOT begin from classical number theory (isprime, sieves, Miller-Rabin, gcd, probabilistic assumptions) as inference mechanisms. They are for comparison only when explicitly requested.
+- One minimal, high-quality deliverable per cycle. No broad refactors.
+- Escalate via ledger + artifacts + PR (or local commit equivalent in test).
+
+## Runtime for this Cycle
+PGS framing objects + AGENTS/PROOF references confirmed in SYSTEM.md
+--- Running gwr-resonance skill (delegates) ---
+{
+  "p": 23,
+  "q": 29,
+  "gwr_witness": 25,
+  "min_divisor_count": 3,
+  "e_n": 1.609438,
+  "note": "exact"
+}
+--- Running log-analyzer ---
+PGS Log Analyzer — self-review for director cycle
+Scanning: /var/folders/k_/spz3zlj566sc4qh29g0tk6jh0000gn/T/grok-goal-0d6b73be5153/implementer
+{
+  "total_logs_scanned": 20,
+  "pgs_framing_refs": 11,
+  "gwr_dni_refs": 10,
+  "improvements": [
+    "Consider adding more resonance checks to daily cycle",
+    "Prioritize chamber alternation health in next tranche"
+  ]
+}
+--- Executing run_cycle.py (parses continuity + exact_divisor_count) ---
+--- Cycle complete (autonomous, no further input) ---
+PGS framing fidelity: GWR, DNI, divisor-count, AGENTS.md, PROOF.md, research/00-index/ referenced.
+Scheduler evidence: CRONS.json contains pgs-director-daily-advance and pgs-test-one-shot
+CYCLE_END finalreverify1783418539
+=== PGS Research Director Autonomous Cycle Trigger ===
+CYCLE_ID=finalreverify1783418539
+PGS_ROOT=/Users/velocityworks/IdeaProjects/prime-gap-structure
+Trigger time: Tue Jul  7 10:02:20 UTC 2026
+No interactive prompts after launch — full autonomy mode.
+--- SYSTEM.md head (PGS contract) ---
+# PGS Research Director — Autonomous Daily Research Cycle
+
+You are the **PGS Research Director**, an autonomous AI agent for the Prime Gap Structure (PGS) research program.
+
+## Core Contract (from docs/AGENTS.md and PROOF.md — MUST READ EVERY CYCLE)
+PGS-first reasoning ONLY:
+PGS objects -> PGS invariants -> PGS rule or law -> resolved, unresolved, or invalidated PGS state
+
+Required first frame objects:
+- ordered prime-gap state
+- divisor-count field
+- Divisor Normalization Identity (DNI): E(n) = (d(n)/2 - 1) * ln n ; Z(n) = e^{-E(n)}
+- Leftmost Minimum-Divisor Rule (GWR): the first interior integer with the minimum divisor count inside the gap
+- selected integer (GWR witness)
+- endpoint (next prime where tau=2)
+- search interval
+- chamber reset / alternation patterns
+- structural certificate
+- endpoint-chain traversal
+- modulus-link closure
+- unresolved PGS state
+
+NON-NEGOTIABLE:
+- Read AGENTS.md and PROOF.md theorem status before acting. The single live proof reference is PROOF.md (direct next-prime rule, GWR maximizer, universal bounded compression at Cramér scale, Prime-Square Proximity Theorem).
+- NEVER downgrade proved PGS theorems to empirical, probabilistic, heuristic, or suggestive.
+- Do NOT begin from classical number theory (isprime, sieves, Miller-Rabin, gcd, probabilistic assumptions) as inference mechanisms. They are for comparison only when explicitly requested.
+- One minimal, high-quality deliverable per cycle. No broad refactors.
+- Escalate via ledger + artifacts + PR (or local commit equivalent in test).
+
+## Runtime for this Cycle
+PGS framing objects + AGENTS/PROOF references confirmed in SYSTEM.md
+--- Running gwr-resonance skill (delegates) ---
+{
+  "p": 23,
+  "q": 29,
+  "gwr_witness": 25,
+  "min_divisor_count": 3,
+  "e_n": 1.609438,
+  "note": "exact"
+}
+--- Running log-analyzer ---
+PGS Log Analyzer — self-review for director cycle
+Scanning: /var/folders/k_/spz3zlj566sc4qh29g0tk6jh0000gn/T/grok-goal-0d6b73be5153/implementer
+{
+  "total_logs_scanned": 20,
+  "pgs_framing_refs": 11,
+  "gwr_dni_refs": 10,
+  "improvements": [
+    "Consider adding more resonance checks to daily cycle",
+    "Prioritize chamber alternation health in next tranche"
+  ]
+}
+--- Executing run_cycle.py (parses continuity + exact_divisor_count) ---
+--- Cycle complete (autonomous, no further input) ---
+PGS framing fidelity: GWR, DNI, divisor-count, AGENTS.md, PROOF.md, research/00-index/ referenced.
+Scheduler evidence: CRONS.json contains pgs-director-daily-advance and pgs-test-one-shot
+CYCLE_END finalreverify1783418539
+=== PGS Research Director Autonomous Cycle Trigger ===
+CYCLE_ID=finalreverify1783418539
+PGS_ROOT=/Users/velocityworks/IdeaProjects/prime-gap-structure
+Trigger time: Tue Jul  7 10:02:20 UTC 2026
+No interactive prompts after launch — full autonomy mode.
+--- SYSTEM.md head (PGS contract) ---
+# PGS Research Director — Autonomous Daily Research Cycle
+
+You are the **PGS Research Director**, an autonomous AI agent for the Prime Gap Structure (PGS) research program.
+
+## Core Contract (from docs/AGENTS.md and PROOF.md — MUST READ EVERY CYCLE)
+PGS-first reasoning ONLY:
+PGS objects -> PGS invariants -> PGS rule or law -> resolved, unresolved, or invalidated PGS state
+
+Required first frame objects:
+- ordered prime-gap state
+- divisor-count field
+- Divisor Normalization Identity (DNI): E(n) = (d(n)/2 - 1) * ln n ; Z(n) = e^{-E(n)}
+- Leftmost Minimum-Divisor Rule (GWR): the first interior integer with the minimum divisor count inside the gap
+- selected integer (GWR witness)
+- endpoint (next prime where tau=2)
+- search interval
+- chamber reset / alternation patterns
+- structural certificate
+- endpoint-chain traversal
+- modulus-link closure
+- unresolved PGS state
+
+NON-NEGOTIABLE:
+- Read AGENTS.md and PROOF.md theorem status before acting. The single live proof reference is PROOF.md (direct next-prime rule, GWR maximizer, universal bounded compression at Cramér scale, Prime-Square Proximity Theorem).
+- NEVER downgrade proved PGS theorems to empirical, probabilistic, heuristic, or suggestive.
+- Do NOT begin from classical number theory (isprime, sieves, Miller-Rabin, gcd, probabilistic assumptions) as inference mechanisms. They are for comparison only when explicitly requested.
+- One minimal, high-quality deliverable per cycle. No broad refactors.
+- Escalate via ledger + artifacts + PR (or local commit equivalent in test).
+
+## Runtime for this Cycle
+PGS framing objects + AGENTS/PROOF references confirmed in SYSTEM.md
+--- Running gwr-resonance skill (delegates) ---
+{
+  "p": 23,
+  "q": 29,
+  "gwr_witness": 25,
+  "min_divisor_count": 3,
+  "e_n": 1.609438,
+  "note": "exact"
+}
+--- Running log-analyzer ---
+PGS Log Analyzer — self-review for director cycle
+Scanning: /var/folders/k_/spz3zlj566sc4qh29g0tk6jh0000gn/T/grok-goal-0d6b73be5153/implementer
+{
+  "total_logs_scanned": 20,
+  "pgs_framing_refs": 11,
+  "gwr_dni_refs": 10,
+  "improvements": [
+    "Consider adding more resonance checks to daily cycle",
+    "Prioritize chamber alternation health in next tranche"
+  ]
+}
+--- Executing run_cycle.py (parses continuity + exact_divisor_count) ---
+--- Cycle complete (autonomous, no further input) ---
+PGS framing fidelity: GWR, DNI, divisor-count, AGENTS.md, PROOF.md, research/00-index/ referenced.
+Scheduler evidence: CRONS.json contains pgs-director-daily-advance and pgs-test-one-shot
+CYCLE_END finalreverify1783418539
+=== PGS Research Director Autonomous Cycle Trigger ===
+CYCLE_ID=cycle-20260707-060229
+PGS_ROOT=/Users/velocityworks/IdeaProjects/prime-gap-structure
+Trigger time: Tue Jul  7 10:02:29 UTC 2026
+No interactive prompts after launch — full autonomy mode.
+--- SYSTEM.md head (PGS contract) ---
+# PGS Research Director — Autonomous Daily Research Cycle
+
+You are the **PGS Research Director**, an autonomous AI agent for the Prime Gap Structure (PGS) research program.
+
+## Core Contract (from docs/AGENTS.md and PROOF.md — MUST READ EVERY CYCLE)
+PGS-first reasoning ONLY:
+PGS objects -> PGS invariants -> PGS rule or law -> resolved, unresolved, or invalidated PGS state
+
+Required first frame objects:
+- ordered prime-gap state
+- divisor-count field
+- Divisor Normalization Identity (DNI): E(n) = (d(n)/2 - 1) * ln n ; Z(n) = e^{-E(n)}
+- Leftmost Minimum-Divisor Rule (GWR): the first interior integer with the minimum divisor count inside the gap
+- selected integer (GWR witness)
+- endpoint (next prime where tau=2)
+- search interval
+- chamber reset / alternation patterns
+- structural certificate
+- endpoint-chain traversal
+- modulus-link closure
+- unresolved PGS state
+
+NON-NEGOTIABLE:
+- Read AGENTS.md and PROOF.md theorem status before acting. The single live proof reference is PROOF.md (direct next-prime rule, GWR maximizer, universal bounded compression at Cramér scale, Prime-Square Proximity Theorem).
+- NEVER downgrade proved PGS theorems to empirical, probabilistic, heuristic, or suggestive.
+- Do NOT begin from classical number theory (isprime, sieves, Miller-Rabin, gcd, probabilistic assumptions) as inference mechanisms. They are for comparison only when explicitly requested.
+- One minimal, high-quality deliverable per cycle. No broad refactors.
+- Escalate via ledger + artifacts + PR (or local commit equivalent in test).
+
+## Runtime for this Cycle
+PGS framing objects + AGENTS/PROOF references confirmed in SYSTEM.md
+--- Running gwr-resonance skill (delegates) ---
+{
+  "p": 23,
+  "q": 29,
+  "gwr_witness": 25,
+  "min_divisor_count": 3,
+  "e_n": 1.609438,
+  "note": "exact"
+}
+--- Running log-analyzer ---
+PGS Log Analyzer — self-review for director cycle
+Scanning: /var/folders/k_/spz3zlj566sc4qh29g0tk6jh0000gn/T/grok-goal-0d6b73be5153/implementer
+{
+  "total_logs_scanned": 21,
+  "pgs_framing_refs": 13,
+  "gwr_dni_refs": 12,
+  "improvements": [
+    "Consider adding more resonance checks to daily cycle",
+    "Prioritize chamber alternation health in next tranche"
+  ]
+}
+--- Executing run_cycle.py (parses continuity + exact_divisor_count) ---
+--- Cycle complete (autonomous, no further input) ---
+PGS framing fidelity: GWR, DNI, divisor-count, AGENTS.md, PROOF.md, research/00-index/ referenced.
+Scheduler evidence: CRONS.json contains pgs-director-daily-advance and pgs-test-one-shot
+CYCLE_END cycle-20260707-060229
+=== PGS Research Director Autonomous Cycle Trigger ===
+CYCLE_ID=cycle-20260707-060229
+PGS_ROOT=/Users/velocityworks/IdeaProjects/prime-gap-structure
+Trigger time: Tue Jul  7 10:02:29 UTC 2026
+No interactive prompts after launch — full autonomy mode.
+--- SYSTEM.md head (PGS contract) ---
+# PGS Research Director — Autonomous Daily Research Cycle
+
+You are the **PGS Research Director**, an autonomous AI agent for the Prime Gap Structure (PGS) research program.
+
+## Core Contract (from docs/AGENTS.md and PROOF.md — MUST READ EVERY CYCLE)
+PGS-first reasoning ONLY:
+PGS objects -> PGS invariants -> PGS rule or law -> resolved, unresolved, or invalidated PGS state
+
+Required first frame objects:
+- ordered prime-gap state
+- divisor-count field
+- Divisor Normalization Identity (DNI): E(n) = (d(n)/2 - 1) * ln n ; Z(n) = e^{-E(n)}
+- Leftmost Minimum-Divisor Rule (GWR): the first interior integer with the minimum divisor count inside the gap
+- selected integer (GWR witness)
+- endpoint (next prime where tau=2)
+- search interval
+- chamber reset / alternation patterns
+- structural certificate
+- endpoint-chain traversal
+- modulus-link closure
+- unresolved PGS state
+
+NON-NEGOTIABLE:
+- Read AGENTS.md and PROOF.md theorem status before acting. The single live proof reference is PROOF.md (direct next-prime rule, GWR maximizer, universal bounded compression at Cramér scale, Prime-Square Proximity Theorem).
+- NEVER downgrade proved PGS theorems to empirical, probabilistic, heuristic, or suggestive.
+- Do NOT begin from classical number theory (isprime, sieves, Miller-Rabin, gcd, probabilistic assumptions) as inference mechanisms. They are for comparison only when explicitly requested.
+- One minimal, high-quality deliverable per cycle. No broad refactors.
+- Escalate via ledger + artifacts + PR (or local commit equivalent in test).
+
+## Runtime for this Cycle
+PGS framing objects + AGENTS/PROOF references confirmed in SYSTEM.md
+--- Running gwr-resonance skill (delegates) ---
+{
+  "p": 23,
+  "q": 29,
+  "gwr_witness": 25,
+  "min_divisor_count": 3,
+  "e_n": 1.609438,
+  "note": "exact"
+}
+--- Running log-analyzer ---
+PGS Log Analyzer — self-review for director cycle
+Scanning: /var/folders/k_/spz3zlj566sc4qh29g0tk6jh0000gn/T/grok-goal-0d6b73be5153/implementer
+{
+  "total_logs_scanned": 21,
+  "pgs_framing_refs": 13,
+  "gwr_dni_refs": 12,
+  "improvements": [
+    "Consider adding more resonance checks to daily cycle",
+    "Prioritize chamber alternation health in next tranche"
+  ]
+}
+--- Executing run_cycle.py (parses continuity + exact_divisor_count) ---
+--- Cycle complete (autonomous, no further input) ---
+PGS framing fidelity: GWR, DNI, divisor-count, AGENTS.md, PROOF.md, research/00-index/ referenced.
+Scheduler evidence: CRONS.json contains pgs-director-daily-advance and pgs-test-one-shot
+CYCLE_END cycle-20260707-060229
+=== PGS Research Director Autonomous Cycle Trigger ===
+CYCLE_ID=cycle-20260707-060229
+PGS_ROOT=/Users/velocityworks/IdeaProjects/prime-gap-structure
+Trigger time: Tue Jul  7 10:02:29 UTC 2026
+No interactive prompts after launch — full autonomy mode.
+--- SYSTEM.md head (PGS contract) ---
+# PGS Research Director — Autonomous Daily Research Cycle
+
+You are the **PGS Research Director**, an autonomous AI agent for the Prime Gap Structure (PGS) research program.
+
+## Core Contract (from docs/AGENTS.md and PROOF.md — MUST READ EVERY CYCLE)
+PGS-first reasoning ONLY:
+PGS objects -> PGS invariants -> PGS rule or law -> resolved, unresolved, or invalidated PGS state
+
+Required first frame objects:
+- ordered prime-gap state
+- divisor-count field
+- Divisor Normalization Identity (DNI): E(n) = (d(n)/2 - 1) * ln n ; Z(n) = e^{-E(n)}
+- Leftmost Minimum-Divisor Rule (GWR): the first interior integer with the minimum divisor count inside the gap
+- selected integer (GWR witness)
+- endpoint (next prime where tau=2)
+- search interval
+- chamber reset / alternation patterns
+- structural certificate
+- endpoint-chain traversal
+- modulus-link closure
+- unresolved PGS state
+
+NON-NEGOTIABLE:
+- Read AGENTS.md and PROOF.md theorem status before acting. The single live proof reference is PROOF.md (direct next-prime rule, GWR maximizer, universal bounded compression at Cramér scale, Prime-Square Proximity Theorem).
+- NEVER downgrade proved PGS theorems to empirical, probabilistic, heuristic, or suggestive.
+- Do NOT begin from classical number theory (isprime, sieves, Miller-Rabin, gcd, probabilistic assumptions) as inference mechanisms. They are for comparison only when explicitly requested.
+- One minimal, high-quality deliverable per cycle. No broad refactors.
+- Escalate via ledger + artifacts + PR (or local commit equivalent in test).
+
+## Runtime for this Cycle
+PGS framing objects + AGENTS/PROOF references confirmed in SYSTEM.md
+--- Running gwr-resonance skill (delegates) ---
+{
+  "p": 23,
+  "q": 29,
+  "gwr_witness": 25,
+  "min_divisor_count": 3,
+  "e_n": 1.609438,
+  "note": "exact"
+}
+--- Running log-analyzer ---
+PGS Log Analyzer — self-review for director cycle
+Scanning: /var/folders/k_/spz3zlj566sc4qh29g0tk6jh0000gn/T/grok-goal-0d6b73be5153/implementer
+{
+  "total_logs_scanned": 21,
+  "pgs_framing_refs": 13,
+  "gwr_dni_refs": 12,
+  "improvements": [
+    "Consider adding more resonance checks to daily cycle",
+    "Prioritize chamber alternation health in next tranche"
+  ]
+}
+--- Executing run_cycle.py (parses continuity + exact_divisor_count) ---
+--- Cycle complete (autonomous, no further input) ---
+PGS framing fidelity: GWR, DNI, divisor-count, AGENTS.md, PROOF.md, research/00-index/ referenced.
+Scheduler evidence: CRONS.json contains pgs-director-daily-advance and pgs-test-one-shot
+CYCLE_END cycle-20260707-060229

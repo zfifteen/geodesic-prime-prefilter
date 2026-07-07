@@ -3,7 +3,7 @@
     "name": "pgs-director-daily-advance",
     "schedule": "0 6 * * *",
     "type": "agent",
-    "job": "Read the file at agent-job/SYSTEM.md and complete the PGS daily research cycle tasks described (GWR/DNI analysis + self-review + report). Use gwr-resonance and log-analyzer skills. Target PGS repo at /Users/velocityworks/IdeaProjects/prime-gap-structure.",
+    "job": "Read the file at agent-job/SYSTEM.md and complete the PGS daily research cycle tasks described (GWR/DNI analysis + self-review + report). Use gwr-resonance and log-analyzer skills. Target PGS repo at $PGS_ROOT.",
     "enabled": true,
     "agent_backend": "claude-code"
   },

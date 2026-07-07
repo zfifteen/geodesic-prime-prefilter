@@ -1,0 +1,8 @@
+TEST: driving in-repo shipped trigger (strict, fresh artifacts only)
+PASS: both runs exit 0
+PASS: PGS_ROOT correct
+PASS: SYSTEM framing refs present
+PASS: cycle completed autonomously
+PASS: advance-report.json valid JSON
+PASS: exact min_d=3 for 25
+TEST COMPLETE

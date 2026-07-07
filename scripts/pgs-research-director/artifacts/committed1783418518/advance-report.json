@@ -1,5 +1,5 @@
 {
-  "cycle_id": "final1783417911",
+  "cycle_id": "committed1783418518",
   "parsed_job_id": "chamber-reset-lemma-draft",
   "gwr_23_29": {
     "p": 23,
@@ -21,5 +21,5 @@
     "PROOF.md"
   ],
   "status": "ADVANCE",
-  "next_step": "Extend per parsed queue."
+  "next_step": "Extend per parsed queue or next tranche."
 }

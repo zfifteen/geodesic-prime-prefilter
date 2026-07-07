@@ -7,7 +7,7 @@
     <key>ProgramArguments</key>
     <array>
         <string>/bin/bash</string>
-        <string>SCRIPTS_DIR/scripts/pgs-research-director/pgs-director-cycle-trigger.sh</string>
+        <string>$PGS_ROOT/scripts/pgs-research-director/pgs-director-cycle-trigger.sh</string>
     </array>
     <key>StartCalendarInterval</key>
     <dict>
@@ -19,7 +19,7 @@
     <key>EnvironmentVariables</key>
     <dict>
         <key>PGS_ROOT</key>
-        <string>REPO_ROOT</string>
+        <string>$PGS_ROOT</string>
     </dict>
     <key>RunAtLoad</key>
     <false/>
