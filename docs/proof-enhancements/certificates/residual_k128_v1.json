@@ -8,10 +8,14 @@
   },
   "failure_examples": [],
   "generator": {
-    "script_path": "research/03-bounded-compression/scripts/verify_residual.py",
-    "commit_hash": "placeholder-hash",
-    "params": "--k-max 128"
+    "script_path": "docs/proof-enhancements/scripts/emit_certificates.py",
+    "commit_hash": "9e9dbc85e2c709d9369d2636f8b2427436571a28",
+    "params": "--lemma residual_k128_v1"
   },
-  "artifact_hash": "placeholder-sha256",
-  "verified_at": "2026-07-07T12:00:00Z"
+  "artifact_hash": "sha256:ed3afeadc81475850a64331d1f008c8ac8af8afe084659f4b37f5a56f77e1e29",
+  "verified_at": "2026-07-07T15:39:59+00:00",
+  "source": {
+    "proof_md_section": "Certified Finite Bases / Residual K=128",
+    "scope_note": "residual elimination, not a universal pillar premise"
+  }
 }

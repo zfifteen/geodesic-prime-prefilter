@@ -54,7 +54,7 @@ the finite prime-gap interior, and the selected integer inside that interior.
 
 [PROOF.md](../../PROOF.md) controls local theorem status.
 
-It proves two local PGS statements under their stated hypotheses:
+It proves two local PGS statements:
 
 | Statement | Status |
 | --- | --- |

@@ -11,10 +11,39 @@
   },
   "failure_examples": [],
   "generator": {
-    "script_path": "research/02-gwr-dni/scripts/proof/verify_gwr.py",
-    "commit_hash": "placeholder-hash",
-    "params": "--max-p 5000000000"
+    "script_path": "docs/proof-enhancements/scripts/emit_certificates.py",
+    "commit_hash": "9e9dbc85e2c709d9369d2636f8b2427436571a28",
+    "params": "--lemma gwr_finite_base_v1"
   },
-  "artifact_hash": "placeholder-sha256",
-  "verified_at": "2026-07-07T12:00:00Z"
+  "artifact_hash": "sha256:ea668aae2d39cd5113104a89cafc0bc80a4c73ad15b4fa6d6f8bcd186fc184ad",
+  "verified_at": "2026-07-07T15:39:59+00:00",
+  "source": {
+    "proof_md_section": "Certified Finite Bases / GWR Finite Base",
+    "audit_table_rows": [
+      {
+        "p_min": 2,
+        "p_max_exclusive": 20000001,
+        "gaps": 1163198,
+        "earlier_integers": 3349874
+      },
+      {
+        "p_min": 20000001,
+        "p_max_exclusive": 100000001,
+        "gaps": 4157943,
+        "earlier_integers": 13321098
+      },
+      {
+        "p_min": 100000001,
+        "p_max_exclusive": 1000000001,
+        "gaps": 42101885,
+        "earlier_integers": 149214917
+      },
+      {
+        "p_min": 1000000001,
+        "p_max_exclusive": 5000000001,
+        "gaps": 172913029,
+        "earlier_integers": 660287089
+      }
+    ]
+  }
 }
