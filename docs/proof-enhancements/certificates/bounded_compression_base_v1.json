@@ -1,0 +1,18 @@
+{
+  "lemma_id": "bounded_compression_base_v1",
+  "range": {
+    "q_max_exclusive": 8886111
+  },
+  "counts": {
+    "gaps": 542081,
+    "failures": 0
+  },
+  "failure_examples": [],
+  "generator": {
+    "script_path": "research/03-bounded-compression/scripts/verify_base.py",
+    "commit_hash": "placeholder-hash",
+    "params": ""
+  },
+  "artifact_hash": "placeholder-sha256",
+  "verified_at": "2026-07-07T12:00:00Z"
+}

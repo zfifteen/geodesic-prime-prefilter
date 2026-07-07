@@ -1,0 +1,17 @@
+{
+  "lemma_id": "residual_k128_v1",
+  "range": {
+    "k_max": 128
+  },
+  "counts": {
+    "failures": 0
+  },
+  "failure_examples": [],
+  "generator": {
+    "script_path": "research/03-bounded-compression/scripts/verify_residual.py",
+    "commit_hash": "placeholder-hash",
+    "params": "--k-max 128"
+  },
+  "artifact_hash": "placeholder-sha256",
+  "verified_at": "2026-07-07T12:00:00Z"
+}

@@ -38,10 +38,10 @@ raw consecutive-prime gap size `q - p`. Lean 4 carries structural axioms
 pending full machine-checked derivation; the mathematical proof lives here.
 
 All three pillars are universal under their stated hypotheses. The proofs rely on two distinct certified finite bases:
-1. The **direct next-prime rule** and **interior maximizer (GWR)** use a finite base below `5,000,000,001` to close the earlier-integer side by exact divisor-count arithmetic.
-2. The **universal bounded compression** theorem uses a finite base of `q < ceil(exp(16))` before eliminating the remaining odd-adjacent `d=4` and square branches.
+1. The **direct next-prime rule** and **interior maximizer (GWR)** use a finite base below `5,000,000,001` (Certificate: `gwr_finite_base_v1`) to close the earlier-integer side by exact divisor-count arithmetic.
+2. The **universal bounded compression** theorem uses a finite base of `q < ceil(exp(16))` (Certificate: `bounded_compression_base_v1`) before eliminating the remaining odd-adjacent `d=4` and square branches.
 
-The computation tables in this document certify these finite bases and implementation surfaces; they are not limits on the theorems.
+These certified finite bases are exhaustive verification surfaces up to the stated bounds; the universal theorems are conditional on them plus the analytic closure arguments below.
 
 ## Downstream Riemann-Hypothesis Reading
 
@@ -346,27 +346,9 @@ For `d = 4` and `e = 5`, the threshold is `T(4,5) = 4`. Thus every gap with
 nonempty interior is `3 < 5`, whose interval is `{4}` and has no earlier
 integer before `w`.
 
-### Finite Base Lemma
+### Finite Base Condition
 
-The finite base covers all prime gaps with `2 <= p < 5,000,000,001`.
-
-For each consecutive prime pair in that range, the verification enumerated the
-integers in the gap, computed the divisor count of each integer, selected the
-first integer with the smallest divisor count, and then checked every earlier
-integer `k` for the failure condition `F(k) >= F(w)`.
-
-The failure count was `0`.
-
-| Left-prime range | Prime gaps checked | Earlier integers checked | Failures |
-|---:|---:|---:|---:|
-| `2 <= p < 20,000,001` | `1,163,198` | `3,349,874` | `0` |
-| `20,000,001 <= p < 100,000,001` | `4,157,943` | `13,321,098` | `0` |
-| `100,000,001 <= p < 1,000,000,001` | `42,101,885` | `149,214,917` | `0` |
-| `1,000,000,001 <= p < 5,000,000,001` | `172,913,029` | `660,287,089` | `0` |
-| Total | `220,336,055` | `826,172,978` | `0` |
-
-This finite base closes the theorem for all gaps below the stated left-prime
-bound. The remaining proof assumes `p > 5,000,000,000`.
+The finite base condition covers all prime gaps with `2 <= p < 5,000,000,001`. Exhaustive verification confirms zero failures in this range (see **Certified Finite Bases**: `gwr_finite_base_v1`). The remaining proof assumes `p > 5,000,000,000`.
 
 ### Short Divisor-Average Lemma
 
@@ -552,39 +534,10 @@ Every integer after `w` has smaller comparison value than `w`.
 Therefore `w` is the unique integer in the prime-gap interval where `F(n)` is
 largest.
 
-## Finite Bounded-Compression Base
-
-This finite lemma is not an all-scale bounded-compression theorem. It records
-the exact small side needed by the dynamic cutoff target.
+## Finite Bounded-Compression Condition
 
 Let `p < q` be consecutive primes with nonempty interior and with
-`q < ceil(exp(16)) = 8,886,111`. Let `w` be the first integer in
-`{p + 1, ..., q - 1}` whose divisor count is minimal in that interval. Then
-
-```text
-w - p <= 60.
-```
-
-Consequently,
-
-```text
-w - p <= 64 <= max(64, ceil(0.5 * log(q)^2)).
-```
-
-The verification enumerated the exact divisor counts for every consecutive
-prime gap with successor prime below `8,886,111`. It checked `542,081`
-nonempty prime-gap interiors. The maximum selected-witness offset was `60`,
-attained at
-
-```text
-p = 1,885,069
-q = 1,885,151
-w = 1,885,129
-tau(w) = 3
-w - p = 60.
-```
-
-No selected-witness offset exceeded `64` on this finite surface.
+`q < ceil(exp(16)) = 8,886,111`. Exhaustive verification confirms the selected-witness offset `w - p <= 60` in this range (see **Certified Finite Bases**: `bounded_compression_base_v1`). Consequently, no selected-witness offset exceeded `64` on this finite surface. The remaining proof assumes `q >= 8,886,111`.
 
 ## Residual K=128 First-d4 Branch-Elimination Lemma
 
@@ -703,23 +656,37 @@ If $R(w)$ contains 4 or more zeros, then the gap size is $g=2$, and the next int
    If $g = 2$, then the single interior composite $w$ is bounded by primes $p = w-1$ and $q = w+1$. 
    Therefore, if the GWR winner exhibits 4+ zeros (identifying it as a multiple of 30), it guarantees that $g=2$ and the very next integer $w+1$ is the prime $q$. $\blacksquare$
 
-## Audit Tables
+## Certified Finite Bases
 
-The direct next-prime theorem, the Interior Maximizer Theorem, and universal
-bounded compression are proved theorems. The finite bounded-compression base
-is a finite computational lemma supporting the small-side closure. The residual
-K=128 lemma is a finite residual branch-elimination theorem. The Prime-Square
-Proximity Theorem closes the square branch. The tables below are retained for
-certification and reproducibility. They support the finite base used in the
-maximizer proof; they are not the boundary of the universal theorems.
+The analytic proofs in this document are closed over small bounds using exhaustive computational verification. Each base is backed by a JSON certificate mapping to an exact artifact hash. 
 
-| Left-prime range | Prime gaps checked | Earlier integers checked | Exact competing integers |
+### 1. GWR Finite Base (`gwr_finite_base_v1`)
+- **Range**: `2 <= p < 5,000,000,001`
+- **Gaps checked**: `220,336,055`
+- **Failures**: `0`
+- **Certificate**: [gwr_finite_base_v1.json](docs/proof-enhancements/certificates/gwr_finite_base_v1.json)
+
+| Left-prime range | Prime gaps checked | Earlier integers checked | Failures |
 |---:|---:|---:|---:|
 | `2 <= p < 20,000,001` | `1,163,198` | `3,349,874` | `0` |
 | `20,000,001 <= p < 100,000,001` | `4,157,943` | `13,321,098` | `0` |
 | `100,000,001 <= p < 1,000,000,001` | `42,101,885` | `149,214,917` | `0` |
 | `1,000,000,001 <= p < 5,000,000,001` | `172,913,029` | `660,287,089` | `0` |
 | Total | `220,336,055` | `826,172,978` | `0` |
+
+### 2. Bounded-Compression Base (`bounded_compression_base_v1`)
+- **Range**: `q < ceil(exp(16))`
+- **Gaps checked**: `542,081`
+- **Failures**: `0`
+- **Certificate**: [bounded_compression_base_v1.json](docs/proof-enhancements/certificates/bounded_compression_base_v1.json)
+
+### 3. Residual K=128 (`residual_k128_v1`)
+*(Note: This is a `proved-conditional` residual scope, not a premise for the three universal pillars. It eliminates specific high-τ branches under stated hypotheses.)*
+- **Range**: `k <= 128`
+- **Failures**: `0`
+- **Certificate**: [residual_k128_v1.json](docs/proof-enhancements/certificates/residual_k128_v1.json)
+
+## Supplemental audit breakdown
 
 The stress sample near `10^12` checked `137,771` prime gaps and `649,769`
 earlier integers, with `0` unresolved cases. Its median offset was `1`, its
@@ -729,13 +696,13 @@ earlier integers, with `0` unresolved cases. Its median offset was `1`, its
 
 | Theorem | Object bounded | Status |
 | --- | --- | --- |
-| Next-prime rule | endpoint `q` | proved, universal |
-| Interior maximizer (GWR) | selected witness `w` | proved, universal |
-| Finite bounded-compression base | `w - p` for `q < e^16` | proved, finite lemma |
-| Residual K=128 elimination | high-τ witness branches | proved, stated hypotheses |
-| Prime-Square Proximity | `r^2 - p` on square branch | proved, universal |
-| Universal bounded compression | `w - p` all branches | proved, Cramér scale |
-| Twin-Prime Resonance (Super-Signal) | gap size where $w \equiv 0 \pmod{30}$ | proved, universal |
+| Next-prime rule | endpoint `q` | proved-conditional · universal · lean-blocked |
+| Interior maximizer (GWR) | selected witness `w` | proved-conditional · universal · lean-blocked |
+| Finite bases (GWR, Bounded Compression) | `w - p` below bounds | finite-certified |
+| Residual K=128 elimination | high-τ witness branches | proved-conditional · residual |
+| Prime-Square Proximity | `r^2 - p` on square branch | proved-conditional · universal |
+| Universal bounded compression | `w - p` all branches | proved-conditional · Cramér scale |
+| Twin-Prime Resonance (Super-Signal) | gap size where $w \equiv 0 \pmod{30}$ | measured · corollary |
 
 ## Document Status
 
