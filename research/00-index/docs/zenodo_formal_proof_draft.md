@@ -33,7 +33,7 @@ $$
 F(n)=\left(1-\frac{\tau(n)}{2}\right)\log n.
 $$
 
-Both statements are universal under their stated hypotheses. The proof uses a
+Both statements are universal. The proof uses a
 finite base below $5,000,000,001$ and then closes the remaining earlier-integer
 side by exact divisor-count arithmetic. Implementation audits are included in
 appendices for provenance and reproducibility. They do not limit the universal

@@ -4577,7 +4577,7 @@ surfaces. The universal grammar projection theorem is unproved.
 The current theorem status is:
 
 ```text
-PGSPG local laws: proved in PROOF.md under their stated hypotheses
+PGSPG local laws: proved in PROOF.md
 local GWR/NLSC non-entailment: proved negative result for the current proof source
 transported_story_law_v1 collapse: measured public evidence
 reciprocal floor-cell membership: closed arithmetic sublemma
