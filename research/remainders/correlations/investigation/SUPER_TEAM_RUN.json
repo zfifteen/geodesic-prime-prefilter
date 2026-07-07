@@ -1,10 +1,99 @@
 {
-  "timestamp_utc": "2026-07-07T23:07:20.040736+00:00",
-  "python_version": "3.13.0 (v3.13.0:60403a5409f, Oct  7 2024, 00:37:40) [Clang 15.0.0 (clang-1500.3.9.4)]",
-  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
-  "interior_jsonl": "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/remainders/output/1.5e6/raw_records.jsonl",
-  "gaps_with_interiors": 114154,
-  "records_analyzed": 1385850,
+  "team_name": "Remainder Research Super Team",
+  "agent_count": 6,
+  "agents": [
+    {
+      "agent_id": "interior_rnm",
+      "lane_name": "interior_R_n_M",
+      "role": "Stream interior remainder vectors R(n,M_v1) and placement correlations",
+      "collector_script": "research/remainders/collect_remainder_stats.py",
+      "output_artifact": "research/remainders/output/1.5e6/raw_records.jsonl",
+      "repro_command": "python research/remainders/collect_remainder_stats.py --max-p 1500000 --output-dir research/remainders/output/1.5e6/"
+    },
+    {
+      "agent_id": "super_signal_status",
+      "lane_name": "gwr_super_signal",
+      "role": "Record epistemic status of Twin-Prime Resonance (G2); no PROOF edits",
+      "collector_script": "research/remainders/run_investigation.py (inline)",
+      "output_artifact": "research/remainders/correlations/investigation/super_signal_status.json",
+      "repro_command": "see docs/proof-enhancements/goals.md G2"
+    },
+    {
+      "agent_id": "endpoint_mask",
+      "lane_name": "endpoint_residue_mask",
+      "role": "Measure wheel-open mask resolution and q mod state on GWR chain",
+      "collector_script": "research/remainders/lane_collectors/endpoint_residue_probe.py",
+      "output_artifact": "research/remainders/correlations/investigation/endpoint_residue_probe_fresh.json",
+      "repro_command": "python research/remainders/lane_collectors/endpoint_residue_probe.py --start-p 10000000000037 --max-gaps 10000 --output research/remainders/correlations/investigation/endpoint_residue_probe_fresh.json"
+    },
+    {
+      "agent_id": "mod30_ridge",
+      "lane_name": "left_prime_mod30_ridge",
+      "role": "Fresh right-edge share by p mod 30; merge pinned insight_probes JSON",
+      "collector_script": "research/remainders/lane_collectors/mod30_ridge_probe.py",
+      "output_artifact": "research/remainders/correlations/investigation/mod30_ridge_probe_fresh.json",
+      "repro_command": "python research/remainders/lane_collectors/mod30_ridge_probe.py --max-p 200000 --output research/remainders/correlations/investigation/mod30_ridge_probe_fresh.json"
+    },
+    {
+      "agent_id": "state_budget",
+      "lane_name": "state_budget_residue_cells",
+      "role": "Residue-matched transition pair tests (powers 12\u201318)",
+      "collector_script": "research/05-state-budget/scripts/state_budget_residue_matched_pair_test.py",
+      "output_artifact": "research/05-state-budget/output/state_budget_residue_matched_pair_summary.json",
+      "repro_command": "python research/05-state-budget/scripts/state_budget_residue_matched_pair_test.py"
+    },
+    {
+      "agent_id": "rsa_backward",
+      "lane_name": "rsa_backward_modulus_remainder",
+      "role": "Modulus/remainder invariant closure search on toy semiprimes",
+      "collector_script": "research/06-cryptology-rsa/scripts/pgs_semiprime_backward_invariant_closure_search.py",
+      "output_artifact": "research/06-cryptology-rsa/output/semiprime_branch/pgs_semiprime_backward_invariant_closure_search_summary.json",
+      "repro_command": "python research/06-cryptology-rsa/scripts/pgs_semiprime_backward_invariant_closure_search.py --max-n 5000 --output-dir research/06-cryptology-rsa/output/semiprime_branch"
+    }
+  ],
+  "agent_status": [
+    {
+      "agent_id": "interior_rnm",
+      "lane": "interior_R_n_M",
+      "collector": "research/remainders/collect_remainder_stats.py",
+      "status": "streamed",
+      "gaps_with_interiors": 114154
+    },
+    {
+      "agent_id": "super_signal_status",
+      "lane": "gwr_super_signal",
+      "collector": "research/remainders/run_investigation.py (inline)",
+      "status": "inline"
+    },
+    {
+      "agent_id": "endpoint_mask",
+      "lane": "endpoint_residue_mask",
+      "collector": "research/remainders/lane_collectors/endpoint_residue_probe.py",
+      "status": "ok",
+      "returncode": 0
+    },
+    {
+      "agent_id": "mod30_ridge",
+      "lane": "left_prime_mod30_ridge",
+      "collector": "research/remainders/lane_collectors/mod30_ridge_probe.py",
+      "status": "ok",
+      "returncode": 0
+    },
+    {
+      "agent_id": "state_budget",
+      "lane": "state_budget_residue_cells",
+      "collector": "research/05-state-budget/scripts/state_budget_residue_matched_pair_test.py",
+      "status": "ok",
+      "returncode": 0
+    },
+    {
+      "agent_id": "rsa_backward",
+      "lane": "rsa_backward_modulus_remainder",
+      "collector": "research/06-cryptology-rsa/scripts/pgs_semiprime_backward_invariant_closure_search.py",
+      "status": "ok",
+      "returncode": 0
+    }
+  ],
   "lane_collector_runs": {
     "endpoint": {
       "command": [
@@ -56,6 +145,5 @@
       "stdout_tail": "reach_recall\": 0.0,\n      \"first_factor_case\": null,\n      \"median_steps_on_factor_reach\": null,\n      \"failure_reason_counts\": {\n        \"no_entry_candidate\": 158,\n        \"entry_not_lane\": 733,\n        \"terminal_prime_miss\": 89\n      }\n    },\n    \"prev_plus_containing_mod_entry\": {\n      \"factor_reach_count\": 0,\n      \"factor_reach_recall\": 0.0,\n      \"first_factor_case\": null,\n      \"median_steps_on_factor_reach\": null,\n      \"failure_reason_counts\": {\n        \"no_entry_candidate\": 158,\n        \"entry_not_lane\": 733,\n        \"terminal_prime_miss\": 89\n      }\n    },\n    \"left_offset_mod_n\": {\n      \"factor_reach_count\": 0,\n      \"factor_reach_recall\": 0.0,\n      \"first_factor_case\": null,\n      \"median_steps_on_factor_reach\": null,\n      \"failure_reason_counts\": {\n        \"no_entry_candidate\": 158,\n        \"entry_not_lane\": 733,\n        \"terminal_prime_miss\": 89\n      }\n    },\n    \"left_offset_mod_entry\": {\n      \"factor_reach_count\": 0,\n      \"factor_reach_recall\": 0.0,\n      \"first_factor_case\": null,\n      \"median_steps_on_factor_reach\": null,\n      \"failure_reason_counts\": {\n        \"no_entry_candidate\": 158,\n        \"entry_not_lane\": 733,\n        \"terminal_prime_miss\": 89\n      }\n    },\n    \"right_offset_mod_n\": {\n      \"factor_reach_count\": 0,\n      \"factor_reach_recall\": 0.0,\n      \"first_factor_case\": null,\n      \"median_steps_on_factor_reach\": null,\n      \"failure_reason_counts\": {\n        \"no_entry_candidate\": 158,\n        \"entry_not_lane\": 733,\n        \"terminal_prime_miss\": 89\n      }\n    },\n    \"containing_winner_mod_n\": {\n      \"factor_reach_count\": 0,\n      \"factor_reach_recall\": 0.0,\n      \"first_factor_case\": null,\n      \"median_steps_on_factor_reach\": null,\n      \"failure_reason_counts\": {\n        \"no_entry_candidate\": 158,\n        \"entry_not_lane\": 733,\n        \"invariant_undefined\": 7,\n        \"terminal_prime_miss\": 82\n      }\n    }\n  },\n  \"best_law\": \"containing_gap_mod_n\",\n  \"best_factor_reach_count\": 0,\n  \"searched_family_falsified\": true\n}\n",
       "stderr_tail": ""
     }
-  },
-  "super_team_manifest": "research/remainders/SUPER_TEAM_MANIFEST.md"
+  }
 }

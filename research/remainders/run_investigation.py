@@ -31,6 +31,7 @@ from correlation_analysis import (  # noqa: E402
     feature_correlation_matrix,
     mutual_information,
 )
+from super_team import all_lane_agents, manifest_dict  # noqa: E402
 
 DEFAULT_OUT = ROOT / "research/remainders/correlations/investigation"
 DEFAULT_INTERIOR = ROOT / "research/remainders/output/1.5e6/raw_records.jsonl"
@@ -164,7 +165,7 @@ def execute_lane_collectors(out_dir: Path, *, run_slow: bool) -> dict[str, Any]:
             "--start-p",
             "10000000000037",
             "--max-gaps",
-            "5000",
+            "10000",
             "--output",
             str(endpoint_out),
         ]
@@ -176,7 +177,7 @@ def execute_lane_collectors(out_dir: Path, *, run_slow: bool) -> dict[str, Any]:
             py,
             str(LANE_DIR / "mod30_ridge_probe.py"),
             "--max-p",
-            "100000" if not run_slow else "200000",
+            "200000",
             "--output",
             str(ridge_out),
         ]
@@ -212,8 +213,11 @@ def load_json_if_exists(path: Path) -> dict[str, Any] | None:
     return None
 
 
-def build_endpoint_summary(out_dir: Path) -> dict[str, Any]:
-    fresh = load_json_if_exists(out_dir / "endpoint_residue_probe_fresh.json")
+def build_endpoint_summary(out_dir: Path, *, require_fresh: bool) -> dict[str, Any]:
+    fresh_path = out_dir / "endpoint_residue_probe_fresh.json"
+    fresh = load_json_if_exists(fresh_path)
+    if require_fresh and fresh is None:
+        raise RuntimeError(f"endpoint fresh probe missing: {fresh_path}")
     reference = {
         "lane": "endpoint_residue_mask",
         "source": "research/00-index/docs/algorithmic_frontier_hourly.md",
@@ -225,14 +229,29 @@ def build_endpoint_summary(out_dir: Path) -> dict[str, Any]:
         "small_prime_mod_reduction_fraction": 0.999846,
         "wall_time_speedup": 1.0345,
     }
-    return {"reference_artifact": reference, "fresh_probe": fresh, "lane_runs": "see RUN_LOG.json"}
+    return {
+        "fresh_probe_path": str(fresh_path),
+        "fresh_probe": fresh,
+        "reference_artifact": reference,
+        "note": "fresh_probe includes resolved_in_mask_fraction from live wheel-open certification",
+    }
 
 
-def build_mod30_summary(out_dir: Path) -> dict[str, Any]:
-    fresh = load_json_if_exists(out_dir / "mod30_ridge_probe_fresh.json")
+def build_mod30_summary(out_dir: Path, *, require_fresh: bool) -> dict[str, Any]:
+    fresh_path = out_dir / "mod30_ridge_probe_fresh.json"
+    fresh = load_json_if_exists(fresh_path)
+    if require_fresh and fresh is None:
+        raise RuntimeError(f"mod30 ridge fresh probe missing: {fresh_path}")
     pinned_path = ROOT / "research/11-gap-ridge/output/insight_probes/residue_mod30_right_edge_share.json"
     pinned = json.loads(pinned_path.read_text(encoding="utf-8")) if pinned_path.exists() else None
-    return {"fresh_probe": fresh, "pinned_artifact_path": str(pinned_path), "pinned_scale_1e6": pinned}
+    return {
+        "fresh_probe_path": str(fresh_path),
+        "fresh_probe": fresh,
+        "pinned_artifact_path": str(pinned_path),
+        "pinned_scale_1e6_summary": [
+            row for row in (pinned or {}).get("summary", []) if row.get("scale") == 1_000_000
+        ],
+    }
 
 
 def build_state_budget_summary() -> dict[str, Any]:
@@ -335,8 +354,14 @@ def main(argv: list[str] | None = None) -> int:
     out_dir.mkdir(parents=True, exist_ok=True)
 
     lane_runs: dict[str, Any] = {}
-    if not args.skip_lane_execution:
+    executed_lanes = not args.skip_lane_execution
+    if executed_lanes:
         lane_runs = execute_lane_collectors(out_dir, run_slow=args.run_slow_lanes)
+        for name, result in lane_runs.items():
+            if result.get("returncode", 0) != 0:
+                raise RuntimeError(
+                    f"lane collector {name} failed: {result.get('stderr_tail', '')}"
+                )
 
     interior_stats = stream_analyze_interior_jsonl(
         args.interior_jsonl,
@@ -417,14 +442,47 @@ def main(argv: list[str] | None = None) -> int:
     )
 
     summaries = {
-        "endpoint_lane_summary.json": build_endpoint_summary(out_dir),
-        "mod30_ridge_lane_summary.json": build_mod30_summary(out_dir),
+        "endpoint_lane_summary.json": build_endpoint_summary(
+            out_dir, require_fresh=executed_lanes
+        ),
+        "mod30_ridge_lane_summary.json": build_mod30_summary(
+            out_dir, require_fresh=executed_lanes
+        ),
         "state_budget_lane_summary.json": build_state_budget_summary(),
         "rsa_lane_summary.json": build_rsa_summary(),
         "super_signal_status.json": build_super_signal_status(),
     }
     for name, payload in summaries.items():
         (out_dir / name).write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+
+    run_key_by_agent = {
+        "endpoint_mask": "endpoint",
+        "mod30_ridge": "mod30_ridge",
+        "state_budget": "state_budget",
+        "rsa_backward": "rsa",
+    }
+    agent_status = []
+    for agent in all_lane_agents():
+        status = {"agent_id": agent.agent_id, "lane": agent.lane_name, "collector": agent.collector_script}
+        if agent.agent_id == "interior_rnm":
+            status["status"] = "streamed"
+            status["gaps_with_interiors"] = interior_stats["gaps_with_interiors"]
+        elif agent.agent_id == "super_signal_status":
+            status["status"] = "inline"
+        elif agent.agent_id in run_key_by_agent:
+            run_key = run_key_by_agent[agent.agent_id]
+            if run_key in lane_runs:
+                rc = lane_runs[run_key]["returncode"]
+                status["status"] = "ok" if rc == 0 else "failed"
+                status["returncode"] = rc
+            else:
+                status["status"] = "skipped"
+        else:
+            status["status"] = "skipped"
+        agent_status.append(status)
+
+    team_run = {**manifest_dict(), "agent_status": agent_status, "lane_collector_runs": lane_runs}
+    (out_dir / "SUPER_TEAM_RUN.json").write_text(json.dumps(team_run, indent=2) + "\n", encoding="utf-8")
 
     run_meta = {
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
@@ -434,6 +492,7 @@ def main(argv: list[str] | None = None) -> int:
         "gaps_with_interiors": interior_stats["gaps_with_interiors"],
         "records_analyzed": interior_stats["records_analyzed"],
         "lane_collector_runs": lane_runs,
+        "super_team_manifest": "research/remainders/SUPER_TEAM_MANIFEST.md",
     }
     (out_dir / "RUN_LOG.json").write_text(json.dumps(run_meta, indent=2) + "\n", encoding="utf-8")
 

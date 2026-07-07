@@ -1,21 +1,27 @@
 {
-  "lane": "endpoint_residue_probe",
-  "timestamp_utc": "2026-07-07T23:00:56.078227+00:00",
+  "lane": "endpoint_residue_mask_probe",
+  "timestamp_utc": "2026-07-07T23:06:24.007892+00:00",
   "start_p": 10000000000037,
-  "gaps_measured": 5000,
+  "gaps_measured": 10000,
+  "mask_width": 96,
+  "wheel_open_offsets_scanned": 48,
   "q_mod_30_counts": {
-    "1": 591,
-    "7": 631,
-    "11": 641,
-    "13": 636,
-    "17": 620,
-    "19": 607,
-    "23": 632,
-    "29": 642
+    "1": 1247,
+    "7": 1244,
+    "11": 1233,
+    "13": 1286,
+    "17": 1250,
+    "19": 1196,
+    "23": 1251,
+    "29": 1293
   },
-  "mean_gap": 29.6308,
+  "mean_gap": 29.9022,
   "max_gap": 234,
-  "small_primes_tracked": [
+  "resolved_in_mask_count": 2373,
+  "resolved_in_mask_fraction": 0.2373,
+  "max_q_wheel_open_index": 8,
+  "mean_certified_opening_prefix_len": 0.9127,
+  "small_primes_for_certification": [
     7,
     11,
     13,
@@ -24,7 +30,51 @@
     23,
     29,
     31,
-    37
+    37,
+    41,
+    43,
+    47
   ],
-  "note": "Fresh measurement on GWR walk chain; complements hourly mask artifact."
+  "residue_state_sample": [
+    {
+      "p": 10000000000037,
+      "q": 10000000000051,
+      "q_mod_7": 5,
+      "q_mod_11": 6,
+      "q_mod_13": 9,
+      "q_mod_17": 11,
+      "q_mod_19": 7,
+      "q_mod_23": 20,
+      "q_mod_29": 19,
+      "q_mod_31": 29,
+      "q_mod_37": 24
+    },
+    {
+      "p": 10000000000051,
+      "q": 10000000000099,
+      "q_mod_7": 4,
+      "q_mod_11": 10,
+      "q_mod_13": 5,
+      "q_mod_17": 8,
+      "q_mod_19": 17,
+      "q_mod_23": 22,
+      "q_mod_29": 9,
+      "q_mod_31": 15,
+      "q_mod_37": 35
+    },
+    {
+      "p": 10000000000099,
+      "q": 10000000000129,
+      "q_mod_7": 6,
+      "q_mod_11": 7,
+      "q_mod_13": 9,
+      "q_mod_17": 4,
+      "q_mod_19": 9,
+      "q_mod_23": 6,
+      "q_mod_29": 10,
+      "q_mod_31": 14,
+      "q_mod_37": 28
+    }
+  ],
+  "note": "Fresh mask-resolution measurement: next prime q must appear at a wheel-open offset; prior wheel-open candidates certified composite by primes <= 47."
 }
