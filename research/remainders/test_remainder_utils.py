@@ -168,7 +168,8 @@ def test_collect_gaps_produces_100_gap_validation_set():
         raw = out / "raw_records.jsonl"
         mods = parse_moduli(None)
         summ = collect_gaps(max_p=600, moduli=mods, output_path=raw)
-        assert summ["gaps_processed"] >= 100, f"only {summ['gaps_processed']} gaps"
+        assert summ["gaps_with_interiors"] >= 100, f"only {summ['gaps_with_interiors']} gaps"
+        assert summ["prime_walk_steps"] >= summ["gaps_with_interiors"]
         assert summ["records_emitted"] > 0
         assert raw.exists()
         # spot check one record line parses and has required keys

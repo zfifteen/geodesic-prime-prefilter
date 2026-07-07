@@ -250,10 +250,16 @@ def collect_gaps(
     # Truncate for clean run (plan emphasizes reproducibility; caller can append if needed)
     with output_path.open("w", encoding="utf-8") as f:
         p = 2
-        gaps_processed = 0
+        prime_walk_steps = 0
+        gaps_with_interiors = 0
+        gaps_empty_interiors = 0
         records_emitted = 0
         while p <= max_p:
             gap_recs = build_records_for_gap(p, moduli, sample_rate)
+            if gap_recs:
+                gaps_with_interiors += 1
+            else:
+                gaps_empty_interiors += 1
             for rec in gap_recs:
                 json.dump(rec, f, separators=(",", ":"))
                 f.write("\n")
@@ -261,10 +267,16 @@ def collect_gaps(
             # Advance using the same GWR walk (deterministic, PGS reuse)
             profile = gwr_next_gap_profile(p)
             p = int(profile["next_prime"])
-            gaps_processed += 1
+            prime_walk_steps += 1
 
     return {
-        "gaps_processed": gaps_processed,
+        # Canonical gap count for analysis: left primes that emitted interiors.
+        "gaps_with_interiors": gaps_with_interiors,
+        "gaps_empty_interiors": gaps_empty_interiors,
+        "unique_left_primes_in_output": gaps_with_interiors,
+        # Legacy alias: prime-walk steps (includes p=2 twin with zero records).
+        "prime_walk_steps": prime_walk_steps,
+        "gaps_processed": prime_walk_steps,
         "records_emitted": records_emitted,
         "max_p": max_p,
         "sample_rate": sample_rate,
@@ -443,7 +455,8 @@ def main(argv: list[str] | None = None) -> int:
     write_run_log(log_path, cmdline, full_summary["params"], full_summary["summary"])
 
     print("Collection complete.")
-    print(f"  gaps: {summary['gaps_processed']}")
+    print(f"  gaps_with_interiors: {summary['gaps_with_interiors']}")
+    print(f"  prime_walk_steps: {summary['prime_walk_steps']}")
     print(f"  records: {summary['records_emitted']}")
     print(f"  raw: {raw_path}")
     print(f"  summary: {summary_path}")

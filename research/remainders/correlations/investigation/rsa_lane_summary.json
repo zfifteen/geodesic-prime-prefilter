@@ -3,16 +3,6 @@
   "source": "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/06-cryptology-rsa/output/semiprime_branch/pgs_semiprime_backward_invariant_closure_search_summary.json",
   "max_n": 5000,
   "case_count": 980,
-  "invariant_laws_tested": [
-    "containing_gap_mod_n",
-    "containing_gap_mod_entry",
-    "prev_plus_containing_mod_n",
-    "prev_plus_containing_mod_entry",
-    "left_offset_mod_n",
-    "left_offset_mod_entry",
-    "right_offset_mod_n",
-    "containing_winner_mod_n"
-  ],
   "best_factor_reach_recall": 0.0,
-  "repro_command": "python research/06-cryptology-rsa/scripts/pgs_semiprime_backward_invariant_closure_search.py --max-n 5000 --output-dir research/06-cryptology-rsa/output/semiprime_branch"
+  "collector": "pgs_semiprime_backward_invariant_closure_search.py"
 }

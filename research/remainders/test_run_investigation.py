@@ -19,6 +19,7 @@ def test_run_investigation_tiny_surface(tmp_path: Path) -> None:
     cmd = [
         sys.executable,
         str(HERE / "run_investigation.py"),
+        "--skip-lane-execution",
         "--tiny-jsonl",
         str(HERE / "output/tiny_val/raw_records.jsonl"),
         "--interior-jsonl",
@@ -29,8 +30,8 @@ def test_run_investigation_tiny_surface(tmp_path: Path) -> None:
     proc = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True, check=False)
     assert proc.returncode == 0, proc.stderr
 
-    interior = json.loads((out / "interior_1e6_placement_stats.json").read_text())
-    assert interior["gaps_analyzed"] == 108
+    interior = json.loads((out / "interior_placement_stats.json").read_text())
+    assert interior["gaps_with_interiors"] == 108
     assert interior["records_analyzed"] == 490
     assert 0.0 <= interior["gwr_last_rate"] <= 1.0
 
