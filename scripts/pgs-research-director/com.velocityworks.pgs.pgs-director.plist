@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.velocityworks.pgs.pgs-director</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>SCRIPTS_DIR/scripts/pgs-research-director/pgs-director-cycle-trigger.sh</string>
+    </array>
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>6</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PGS_ROOT</key>
+        <string>REPO_ROOT</string>
+    </dict>
+    <key>RunAtLoad</key>
+    <false/>
+    <key>KeepAlive</key>
+    <false/>
+</dict>
+</plist>

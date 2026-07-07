@@ -1,8 +1,9 @@
 #!/bin/bash
 set -euo pipefail
-export PGS_ROOT="${PGS_ROOT:-/Users/velocityworks/IdeaProjects/prime-gap-structure}"
-export BOT_DIR="${BOT_DIR:-/var/folders/k_/spz3zlj566sc4qh29g0tk6jh0000gn/T/grok-goal-0d6b73be5153/pgs-research-director}"
-export SCRATCH="${SCRATCH:-/var/folders/k_/spz3zlj566sc4qh29g0tk6jh0000gn/T/grok-goal-0d6b73be5153/implementer}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+export PGS_ROOT="${PGS_ROOT:-$(cd "$SCRIPT_DIR/../../.." && pwd)}"
+export BOT_DIR="${BOT_DIR:-$SCRIPT_DIR}"
+export SCRATCH="${SCRATCH:-$SCRIPT_DIR/artifacts}"
 export CYCLE_ID="cycle-$(date +%Y%m%d-%H%M%S)"
 LOGFILE="$SCRATCH/cycle-run.log"
 ARTIFACT_DIR="$SCRATCH/artifacts/$CYCLE_ID"
@@ -16,18 +17,30 @@ echo "No interactive prompts after launch — full autonomy mode." | tee -a "$LO
 
 # 1. Load and reference SYSTEM.md (proves PGS director config loads)
 echo "--- SYSTEM.md head (PGS contract) ---" | tee -a "$LOGFILE"
-head -30 "$BOT_DIR/agent-job/SYSTEM.md" | tee -a "$LOGFILE"
-if grep -q "GWR\|DNI\|AGENTS.md\|PROOF.md\|PGS-first" "$BOT_DIR/agent-job/SYSTEM.md"; then
-  echo "PGS framing objects + AGENTS/PROOF references confirmed in SYSTEM.md" | tee -a "$LOGFILE"
+SYS_CANDIDATE=""
+for cand in "$BOT_DIR/agent-job/SYSTEM.md" "$BOT_DIR/SYSTEM.md"; do
+  [ -f "$cand" ] && { SYS_CANDIDATE="$cand"; break; }
+done
+if [ -n "$SYS_CANDIDATE" ]; then
+  head -30 "$SYS_CANDIDATE" | tee -a "$LOGFILE"
+  if grep -q "GWR\|DNI\|AGENTS.md\|PROOF.md\|PGS-first" "$SYS_CANDIDATE"; then
+    echo "PGS framing objects + AGENTS/PROOF references confirmed in SYSTEM.md" | tee -a "$LOGFILE"
+  fi
+else
+  echo "WARNING: no SYSTEM.md found under $BOT_DIR" | tee -a "$LOGFILE"
 fi
 
 # 2. Run gwr-resonance skill (core PGS computation)
 echo "--- Running gwr-resonance skill on classic gap 23-29 ---" | tee -a "$LOGFILE"
-node "$BOT_DIR/skills-library/gwr-resonance/gwr-resonance.cjs" 23 29 2>&1 | tee "$ARTIFACT_DIR/gwr-output.json" | tee -a "$LOGFILE"
+GWR_CAND=""
+for cand in "$BOT_DIR/skills-library/gwr-resonance/gwr-resonance.cjs" "$BOT_DIR/skills/gwr-resonance/gwr-resonance.cjs"; do [ -f "$cand" ] && { GWR_CAND="$cand"; break; }; done
+[ -n "$GWR_CAND" ] && node "$GWR_CAND" 23 29 2>&1 | tee "$ARTIFACT_DIR/gwr-output.json" | tee -a "$LOGFILE" || echo "gwr skill not found" | tee -a "$LOGFILE"
 
 # 3. Run log-analyzer (self-review)
 echo "--- Running log-analyzer for self-review ---" | tee -a "$LOGFILE"
-node "$BOT_DIR/skills-library/log-analyzer/log-analyzer.cjs" "$SCRATCH" 2>&1 | tee "$ARTIFACT_DIR/log-analysis.json" | tee -a "$LOGFILE"
+LOG_CAND=""
+for cand in "$BOT_DIR/skills-library/log-analyzer/log-analyzer.cjs" "$BOT_DIR/skills/log-analyzer/log-analyzer.cjs"; do [ -f "$cand" ] && { LOG_CAND="$cand"; break; }; done
+[ -n "$LOG_CAND" ] && node "$LOG_CAND" "$SCRATCH" 2>&1 | tee "$ARTIFACT_DIR/log-analysis.json" | tee -a "$LOGFILE" || echo "log skill not found" | tee -a "$LOGFILE"
 
 # 4. Minimal autonomous "advance" using existing PGS elements (reuse simple computation + produce ledger style artifact)
 # Simulate one step of hourly without side effects on main repo. Use python for GWR on another example + reference research/00-index
