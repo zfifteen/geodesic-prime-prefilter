@@ -1,0 +1,20 @@
+{
+  "lemma_id": "gwr_finite_base_v1",
+  "range": {
+    "p_min": 2,
+    "p_max_exclusive": 5000000001
+  },
+  "counts": {
+    "gaps": 220336055,
+    "earlier_integers": 826172978,
+    "failures": 0
+  },
+  "failure_examples": [],
+  "generator": {
+    "script_path": "research/02-gwr-dni/scripts/proof/verify_gwr.py",
+    "commit_hash": "placeholder-hash",
+    "params": "--max-p 5000000000"
+  },
+  "artifact_hash": "placeholder-sha256",
+  "verified_at": "2026-07-07T12:00:00Z"
+}
