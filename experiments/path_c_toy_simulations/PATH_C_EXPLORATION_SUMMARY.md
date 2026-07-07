@@ -4,7 +4,7 @@
 - Fetched SHA-2 pseudocode and constants (k[i] from cube roots of first 64 primes, h0.. from sqrt first 8 primes) from Wikipedia via curl+python+bs4 equivalent (saved as docs/SHA256_PSEUDOCODE_FROM_WIKI.txt).
 - Searched project files: no mentions of SHA internal rounds (sigma0/1, Ch, Maj, avalanche, diffusion). SHA-256 used only as deterministic PRNG for candidate streams in RSA v2 legacy prefilter experiments (research/06-cryptology-rsa/legacy-prefilter/).
 - Arxiv searches (via API): minimal relevant literature. One paper on SHA-1 Strict Avalanche Criterion (SAC) after ~24 rounds; no papers bridging divisor function/tau(n)/multiplicative channels to hash mixing, boolean functions, or cryptographic rounds. Searches for "divisor function" + crypto terms returned unrelated or weak hits.
-- Read key PGS docs: LEFTMOST_MINIMUM_DIVISOR_RULE.md, DIVISOR_NORMALIZATION_IDENTITY.md, PROOF.md (section on "Divisor Counts And Coprime Factor Channels" explicitly defines tau(n)=prod(a_i+1) as "independent coprime factor-choice channels").
+- Read key PGS docs: docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md, docs/core/DIVISOR_NORMALIZATION_IDENTITY.md, PROOF.md (section on "Divisor Counts And Coprime Factor Channels" explicitly defines tau(n)=prod(a_i+1) as "independent coprime factor-choice channels").
 - Implemented and executed toy simulation (experiments/path_c_toy_simulations/toy_sha_pgs_mixing.py):
   - PGS: tau(n), omega(n), factorization channels for n<=2000; binary bit stats (hamming, runs, bias) as "mixing proxy" for n's binary rep.
   - Toy SHA: 8-bit word simplified SHA256-like (scaled rotr, toy_sigma0/1, Ch, Maj, S0/S1, mod 2^8 adds/carries). Simulated message schedule + 1-16 compression rounds.

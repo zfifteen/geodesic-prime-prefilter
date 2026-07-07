@@ -5,7 +5,7 @@
 **Owner**: PGS Project (with formalization sub-track)  
 **Related Contracts**:
 - `lean-4/LEAN_PGS_VERIFICATION_CONTRACT.md` (binding)
-- `AGENTS.md`
+- `docs/AGENTS.md`
 - `research/00-index/continuity/continuity_and_shape_contract.md`
 - `PROOF.md` (single source of truth for theorem status)
 
@@ -24,7 +24,7 @@ Produce a high-fidelity, machine-checked mirror of the two core universal theore
 1. **Direct deterministic next-prime theorem via tau-scan** — Given a prime `p`, there exists a unique next prime `q` that is selected by the ordered divisor-count chamber state and the PGS selection rule.
 2. **GWR / Leftmost Minimum-Divisor Rule maximizer theorem** — The selected composite `w` inside a prime gap is the unique leftmost interior integer that minimizes `tau(n)` (equivalently, uniquely maximizes `F(n) = −E(n)`).
 
-The Lean work is **verification and audit only**. It increases confidence in the existing prose proofs and provides a foundation for future large-scale mechanical checking of the empirical surfaces in `RESULTS.md`. It does **not** replace `PROOF.md`, the Python reference implementation, or the generator contract.
+The Lean work is **verification and audit only**. It increases confidence in the existing prose proofs and provides a foundation for future large-scale mechanical checking of the empirical surfaces in `docs/RESULTS.md`. It does **not** replace `PROOF.md`, the Python reference implementation, or the generator contract.
 
 ## 3. Guiding Principles (Repeated for Emphasis)
 
@@ -121,7 +121,7 @@ This is the "direct deterministic next-prime theorem via tau-scan."
 
 ### 4.6 Phase 5 — Cross-Verification Infrastructure
 
-- Mechanisms to import or mirror large-scale empirical results from `RESULTS.md` (e.g., the 78,494/78,494 and decade-window 100% exact surfaces).
+- Mechanisms to import or mirror large-scale empirical results from `docs/RESULTS.md` (e.g., the 78,494/78,494 and decade-window 100% exact surfaces).
 - Optional: decidable procedures for small intervals that can be run inside Lean (for sanity checking).
 - Explicit "audit only" modules that compare Lean-evaluated `tau` values against the Python `divisor_counts_segment` implementation on known test vectors.
 
@@ -147,7 +147,7 @@ A central table will be maintained (initially in this document, later promoted t
 | PROOF.md Location          | Supporting Docs                  | Lean Identifier(s)          | Status     | Notes |
 |---------------------------|----------------------------------|-----------------------------|------------|-------|
 | Direct next-prime theorem | ...                              | `PGS.NextPrime.direct_next_prime` | Planned   | ... |
-| GWR maximizer theorem     | LEFTMOST_MINIMUM_DIVISOR_RULE.md | `PGS.GWR.leftmost_min_tau_maximizer` | Planned | ... |
+| GWR maximizer theorem     | docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md | `PGS.GWR.leftmost_min_tau_maximizer` | Planned | ... |
 | tau(n) = 2 characterization | DIVISOR...                       | `PGS.Basic.prime_iff_tau_eq_two` | In Progress | ... |
 
 Every Lean file will open with a "References" block listing the exact prose locations it mirrors.
@@ -170,7 +170,7 @@ The formalization effort can be considered "mature for its phase" when:
 - Both core theorems from `PROOF.md` have machine-checked Lean statements with no `sorry` in the proof bodies.
 - A complete mapping table exists and is reflected in an HTML status document.
 - A future session can read the HTML + this plan + the contract and continue the work without reconstructing context from chat history.
-- The Python generators and `RESULTS.md` surfaces remain completely untouched by the existence of the Lean track (except for optional audit cross-checks).
+- The Python generators and `docs/RESULTS.md` surfaces remain completely untouched by the existence of the Lean track (except for optional audit cross-checks).
 
 ## 8. Tooling & Environment
 

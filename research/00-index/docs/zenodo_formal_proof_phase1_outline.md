@@ -27,7 +27,7 @@ reported plainly and no Grok review may be claimed.
 
 1. `PROOF.md` controls theorem status for the direct deterministic next-prime
    theorem and the prime-gap maximizer theorem.
-2. `RESULTS.md` and `docs/current_headline_results.md` summarize current
+2. `docs/RESULTS.md` and `docs/current_headline_results.md` summarize current
    public status, tested surfaces, generator status, and current limits.
 3. `research/00-index/continuity/START_HERE.md` preserves current research
    branch status and must be used to avoid stale theorem claims.
@@ -69,12 +69,12 @@ status distinction needed for review.
 | Exact bounded-compression compare scan through `q <= 10,000,000`: `664,575` gaps, first counterexample `None`, max exact peak offset `60`, max cutoff utilization `0.6153846153846154`. | measured finite surface | `research/04-bounded-compression/output/gwr_dni_cutoff_counterexample_scan_summary.json` | Bounded-compression evidence appendix |
 | Square dynamic-cutoff search over odd prime-square roots `3 <= r <= 100,000,000`: `5,761,454` roots, first counterexample `None`, max utilization `0.8120300751879699`. | measured finite surface | `research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_1e8/square_branch_dynamic_cutoff_search_summary.json` | Bounded-compression evidence appendix |
 | Square dynamic-cutoff search over roots `100,000,001 <= r <= 200,000,000`: `5,317,482` roots, first counterexample `None`, max utilization `0.6784140969162996`. | measured finite surface | `research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_1e8_2e8/square_branch_dynamic_cutoff_search_summary.json` | Bounded-compression evidence appendix |
-| Old fixed cutoff map `{2:44, 4:60, 6:60}`. | invalidated | `RESULTS.md`; `research/04-bounded-compression/README.md`; failure at `q = 24,098,209` | Invalidated-routes section |
+| Old fixed cutoff map `{2:44, 4:60, 6:60}`. | invalidated | `docs/RESULTS.md`; `research/04-bounded-compression/README.md`; failure at `q = 24,098,209` | Invalidated-routes section |
 | Literal prior-square Lemma A. | invalidated | `research/04-bounded-compression/README.md`; failure at `q = 113` | Invalidated-routes section |
-| Production generator surface `11..100000`: `9588 / 9588` exact outputs, `0` failures. | audit/implementation status | `RESULTS.md`; `research/01-generator/README.md` | Implementation evidence appendix |
+| Production generator surface `11..100000`: `9588 / 9588` exact outputs, `0` failures. | audit/implementation status | `docs/RESULTS.md`; `research/01-generator/README.md` | Implementation evidence appendix |
 | Production generator surface `11..1000000`: `78494 / 78494` outputted, `0` unresolved, `0` audit failures. | audit/implementation status | `docs/releases/pgs_inference_generator_v1_0.md`; `docs/releases/pgs_inference_generator_v1_1_pgs_only.md`; `docs/executive_summary_pgs_prime_generator.md` | Implementation evidence appendix |
-| High-scale generator decade-window surface `10^8` through `10^18`: `2816 / 2816` exact outputs, `0` incorrect candidates. | audit/implementation status | `RESULTS.md`; `PRIME_GAP_GENERATOR.md`; `research/01-generator/README.md` | Implementation evidence appendix |
-| Recursive walk: transition rule exact on `743,075 / 743,075` rows from combined `10^6 + 10^7`; recursive walk `664,578 / 664,578` exact consecutive next-prime recoveries from `11` through `10,000,121`, `0` skipped gaps; sampled decade ladder `10^2` through `10^18` hit rate `1.0` across `860` steps. | measured/audit surface; exact corollary for no-later-simpler-composite | `RESULTS.md`; `docs/current_headline_results.md`; `research/02-gwr-dni/docs/gwr_dni_exact_recursive_prime_walk_note.md` | Implementation and corollary evidence appendix |
+| High-scale generator decade-window surface `10^8` through `10^18`: `2816 / 2816` exact outputs, `0` incorrect candidates. | audit/implementation status | `docs/RESULTS.md`; `docs/PRIME_GAP_GENERATOR.md`; `research/01-generator/README.md` | Implementation evidence appendix |
+| Recursive walk: transition rule exact on `743,075 / 743,075` rows from combined `10^6 + 10^7`; recursive walk `664,578 / 664,578` exact consecutive next-prime recoveries from `11` through `10,000,121`, `0` skipped gaps; sampled decade ladder `10^2` through `10^18` hit rate `1.0` across `860` steps. | measured/audit surface; exact corollary for no-later-simpler-composite | `docs/RESULTS.md`; `docs/current_headline_results.md`; `research/02-gwr-dni/docs/gwr_dni_exact_recursive_prime_walk_note.md` | Implementation and corollary evidence appendix |
 | `d4_count` ordering carrier on deterministic retained `8192`-row-per-power `10^12..10^18` surface: `mod30_prev_gap_exact`, `7881` decisive pairs, `6 / 7` positive folds, signed advantage `299`, tail control `230`, edge `69`, required edge `50`, verdict `ordering_carrier_found`. | measured | `START_HERE.md`; `research/05-state-budget/README.md`; `research/05-state-budget/output/state_budget_long_running_catalog_8192/state_budget_divisor_carrier_sweep_summary.json` | Later research appendix, not theorem body |
 | Symbolic reason for `d4_count` carrier and disjoint high-window replication. | unresolved | `START_HERE.md`; `research/05-state-budget/README.md` | Open research appendix |
 | Semiprime branch `127`-bit official gate: `12` cases, rung `2`, top-1 and top-4 routed-window recall `1.0`, exact recovery recall `0.75`, archived case recovered. | audit result | `docs/current_headline_results.md`; `research/06-cryptology-rsa/docs/semiprime_branch/pgs_127_official_gate_breakthrough.md`; `research/06-cryptology-rsa/output/semiprime_branch/pgs_127_official_audit_summary.json` | Supporting research appendix, not proof body |
@@ -210,7 +210,7 @@ computation contracts and expected outputs. External paths can be listed only
 as provenance:
 
 - proof source: `PROOF.md`;
-- results map: `RESULTS.md`;
+- results map: `docs/RESULTS.md`;
 - bounded-compression scripts/tests;
 - state-budget scripts/tests;
 - generator validation artifacts;

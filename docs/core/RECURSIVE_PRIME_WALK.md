@@ -42,14 +42,14 @@ $$q\le T_{<}(w)$$
 
 This is an exact corollary of the proved GWR theorem. A separate question is whether it can stand on its own as a direct prime-gap theorem without using GWR as the parent result. The current documented surface includes a deterministic even-band ladder at every decade from $10^8$ through $10^{18}$ with zero observed violations.
 
-See [PROOF.md](PROOF.md), [research/02-gwr-dni/docs/closure_constraint_findings.md](research/02-gwr-dni/docs/closure_constraint_findings.md), and [docs/current_headline_results.md](docs/current_headline_results.md).
+See [PROOF.md](../../PROOF.md), [research/02-gwr-dni/docs/closure_constraint_findings.md](research/02-gwr-dni/docs/closure_constraint_findings.md), and [../current_headline_results.md](../current_headline_results.md).
 
 ## Dynamic Cutoff and Square-Branch Falsification
 
 The exact walk does not need a cutoff theorem. The bounded walk does — and that
 theorem is now proved.
 
-Universal bounded compression is proved in [PROOF.md](PROOF.md) (2026-07-05).
+Universal bounded compression is proved in [PROOF.md](../../PROOF.md) (2026-07-05).
 For every consecutive prime gap with nonempty interior, the GWR-selected witness satisfies
 
 ```text

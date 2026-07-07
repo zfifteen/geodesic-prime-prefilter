@@ -7,7 +7,7 @@ finite-state model evidence.
 
 Primary homes:
 
-- `PRIME_GAP_GENERATIVE_MODEL.md`
+- `docs/core/PRIME_GAP_GENERATIVE_MODEL.md`
 - `research/03-gap-types/infographics/prime-gap-grammar-infographics/`
 - `research/03-gap-types/output/gwr_dni_gap_type_catalog_summary.json`
 - `research/03-gap-types/output/gwr_dni_gap_type_engine_v1_summary.json`

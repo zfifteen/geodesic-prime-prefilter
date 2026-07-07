@@ -49,11 +49,11 @@ does not teach mixed semantics.
 
 Phase 1 should therefore include a small guardrail bundle:
 
-- `DIVISOR_NORMALIZATION_IDENTITY.md`
+- `docs/core/DIVISOR_NORMALIZATION_IDENTITY.md`
 - `README.md`
 - `RESULTS.md`
 - `PROOF.md`
-- `LEFTMOST_MINIMUM_DIVISOR_RULE.md`
+- `docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md`
 - `docs/faq/_style-guide.md`
 - `docs/faq/reviewer-guidance/status-ledger.md`
 - `docs/rh/status-ledger.md`
@@ -173,7 +173,7 @@ Affected surfaces:
 
 - `docs/zero-excess-dni/README.md`
 - `docs/zero-excess-dni/change-scope.md`
-- `DIVISOR_NORMALIZATION_IDENTITY.md`
+- `docs/core/DIVISOR_NORMALIZATION_IDENTITY.md`
 - `docs/rh/dni-to-zeta-compression.md`
 - any coefficient table that starts at `n=1`
 
@@ -210,7 +210,7 @@ as "maximize excess" is wrong.
 Affected surfaces:
 
 - `PROOF.md`
-- `LEFTMOST_MINIMUM_DIVISOR_RULE.md`
+- `docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md`
 - `RESULTS.md`
 - `research/02-gwr-dni/**`
 - `research/11-gap-ridge/**`
@@ -234,7 +234,7 @@ global zero-excess rollout can make future readers merge different quantities.
 Known collisions:
 
 - bounded-compression `E(q)` in `RESULTS.md`,
-  `RECURSIVE_PRIME_WALK.md`, `research/04-bounded-compression/README.md`, and
+  `docs/core/RECURSIVE_PRIME_WALK.md`, `research/04-bounded-compression/README.md`, and
   `visualizations/pgs-math-explainer/index.html`;
 - divisor-field-extremals `E(n)=(sigma(n)-n)/n` under
   `pgs-unsolved-problems/divisor-field-extremals/`;
@@ -347,7 +347,7 @@ Affected surfaces:
 
 - `docs/specs/prime-gen/tech_spec_pgs_prime_generator.md`
 - `docs/releases/pgs_inference_generator_v1_1_pgs_only.md`
-- `PRIME_GAP_GENERATOR.md`
+- `docs/PRIME_GAP_GENERATOR.md`
 - `src/c/high-scale-pgs/**`
 
 Required mitigation:

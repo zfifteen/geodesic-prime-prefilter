@@ -81,7 +81,7 @@ This is why the interior and the endpoint belong together. They are two parts of
 
 ## Interior And Endpoint Together
 
-Once you see the gap as a single ordered sequence rather than a meaningless jump, the whole picture snaps into focus. The [selected composite](LEFTMOST_MINIMUM_DIVISOR_RULE.md) inside the gap (the first interior number with the lowest divisor count) and the endpoint prime (the first later number with divisor count exactly 2) are both visible in the same list. They are not separate phenomena; they are the natural consequences of reading the factor structure that sits between two consecutive primes.
+Once you see the gap as a single ordered sequence rather than a meaningless jump, the whole picture snaps into focus. The [selected composite](docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md) inside the gap (the first interior number with the lowest divisor count) and the endpoint prime (the first later number with divisor count exactly 2) are both visible in the same list. They are not separate phenomena; they are the natural consequences of reading the factor structure that sits between two consecutive primes.
 
 For the gap from 23 to 29 the selected composite is 25 and the endpoint is 29. For the gap from 89 to 97 the selected composite is 91 and the endpoint is 97. In every case the arithmetic inside the gap carries the information that points directly to the next prime.
 
@@ -136,7 +136,7 @@ divisor counts -> PGS local theorems -> DNI-to-zeta compression
 
 ## A Different Way To Generate Primes
 
-Because the structure inside each gap is so direct, it becomes possible to [generate the next prime](PRIME_GAP_GENERATOR.md) in a completely different manner from the usual methods.
+Because the structure inside each gap is so direct, it becomes possible to [generate the next prime](docs/PRIME_GAP_GENERATOR.md) in a completely different manner from the usual methods.
 
 Traditional prime generators work by proposing candidate numbers and testing them for primality. They reject composites and keep trying until one survives. Even the most efficient sieves or probabilistic tests still follow that propose-test-reject cycle.
 
@@ -152,23 +152,23 @@ The same structural reading has been extended to RSA moduli. The program has com
 
 ## Where This Leads
 
-Once you begin seeing prime gaps through this lens, many natural follow-up questions arise. You can trace what that first special composite inside each nonempty gap actually means and why it always appears where it does. You can examine the [zero-excess normalization](DIVISOR_NORMALIZATION_IDENTITY.md) that places every prime greater than `1` at exactly `E = 0`, keeps composites at positive excess, and preserves `Z(n)=e^{-E(n)}` as the dual coordinate. You can watch how the same kind of structure repeats across thousands or millions of gaps and begin to [model its behavior](PRIME_GAP_GENERATIVE_MODEL.md). You can follow the [exact recursive process of walking from prime to prime](RECURSIVE_PRIME_WALK.md) using only the information carried inside each gap.
+Once you begin seeing prime gaps through this lens, many natural follow-up questions arise. You can trace what that first special composite inside each nonempty gap actually means and why it always appears where it does. You can examine the [zero-excess normalization](docs/core/DIVISOR_NORMALIZATION_IDENTITY.md) that places every prime greater than `1` at exactly `E = 0`, keeps composites at positive excess, and preserves `Z(n)=e^{-E(n)}` as the dual coordinate. You can watch how the same kind of structure repeats across thousands or millions of gaps and begin to [model its behavior](docs/core/PRIME_GAP_GENERATIVE_MODEL.md). You can follow the [exact recursive process of walking from prime to prime](docs/core/RECURSIVE_PRIME_WALK.md) using only the information carried inside each gap.
 
 Every one of these paths grows from the same simple shift in perspective: stop treating the interior as empty space and start counting what is really there. The numbers themselves do the rest of the work.
 
 ## Reading Further
 
-The rest of the repository develops these ideas in greater depth, including the [measured results and surfaces](RESULTS.md).
+The rest of the repository develops these ideas in greater depth, including the [measured results and surfaces](docs/RESULTS.md).
 
 - [research/00-index/continuity/START_HERE.md](research/00-index/continuity/START_HERE.md) is the continuity and resume entrypoint for future Codex sessions.
 - [research/00-index/README.md](research/00-index/README.md) maps the research corpus by chapter and status.
 - [PROOF.md](PROOF.md) gives the formal proofs of the next-prime rule, the interior maximizer, and universal bounded compression — including the Prime-Square Proximity Theorem (2026-07-05).
 - [docs/rh](docs/rh/README.md) gives the PGS-to-RH reading path and status ledger.
-- [LEFTMOST_MINIMUM_DIVISOR_RULE.md](LEFTMOST_MINIMUM_DIVISOR_RULE.md) explores the rule that identifies the special composite inside each gap.
-- [DIVISOR_NORMALIZATION_IDENTITY.md](DIVISOR_NORMALIZATION_IDENTITY.md) explains the zero-excess normalization and its dual `Z(n)=e^{-E(n)}` coordinate.
-- [PRIME_GAP_GENERATOR.md](PRIME_GAP_GENERATOR.md) describes how the generator reads the structure.
-- [PRIME_GAP_GENERATIVE_MODEL.md](PRIME_GAP_GENERATIVE_MODEL.md) and [RECURSIVE_PRIME_WALK.md](RECURSIVE_PRIME_WALK.md) examine the broader model and recursive behavior.
-- [RESULTS.md](RESULTS.md) presents the measured results and surfaces.
+- [docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md](docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md) explores the rule that identifies the special composite inside each gap.
+- [docs/core/DIVISOR_NORMALIZATION_IDENTITY.md](docs/core/DIVISOR_NORMALIZATION_IDENTITY.md) explains the zero-excess normalization and its dual `Z(n)=e^{-E(n)}` coordinate.
+- [docs/PRIME_GAP_GENERATOR.md](docs/PRIME_GAP_GENERATOR.md) describes how the generator reads the structure.
+- [docs/core/PRIME_GAP_GENERATIVE_MODEL.md](docs/core/PRIME_GAP_GENERATIVE_MODEL.md) and [docs/core/RECURSIVE_PRIME_WALK.md](docs/core/RECURSIVE_PRIME_WALK.md) examine the broader model and recursive behavior.
+- [docs/RESULTS.md](docs/RESULTS.md) presents the measured results and surfaces.
 - The general PGS-native RSA endpoint engine lives in [research/06-cryptology-rsa/experiments/live-solver/rsa-v2/](research/06-cryptology-rsa/experiments/live-solver/rsa-v2/).
 
 ## Python API

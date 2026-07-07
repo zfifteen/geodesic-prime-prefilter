@@ -56,7 +56,7 @@ def test_root_proof_document_is_the_live_reference():
     """The repository should expose exactly one live proof document."""
     proof = ROOT / "PROOF.md"
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+    agents = (ROOT / "docs" / "AGENTS.md").read_text(encoding="utf-8")
     headline = (ROOT / "docs" / "current_headline_results.md").read_text(encoding="utf-8")
 
     assert proof.exists()
@@ -270,7 +270,7 @@ def test_live_markdown_points_current_theorem_to_root_proof():
     """High-level docs should reinforce PROOF.md as definitive."""
     required_paths = [
         ROOT / "README.md",
-        ROOT / "AGENTS.md",
+        ROOT / "docs" / "AGENTS.md",
         ROOT / "docs" / "current_headline_results.md",
         ROOT / "research" / "02-gwr-dni" / "README.md",
     ]

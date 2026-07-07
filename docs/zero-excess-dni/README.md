@@ -239,15 +239,15 @@ the critical line. Documentation should use `zero-excess floor`.
   coordinate.
 - `PROOF.md`: do not change theorem claims. Add the equivalence
   `F(n)=-E(n)` where it helps readers see the minimizer translation.
-- `DIVISOR_NORMALIZATION_IDENTITY.md`: likely the primary rewrite target.
+- `docs/core/DIVISOR_NORMALIZATION_IDENTITY.md`: likely the primary rewrite target.
   It should become the source document for the dual coordinate:
   `Z(n)=n^{1-\tau(n)/2}` and `E(n)=-log Z(n)`.
-- `LEFTMOST_MINIMUM_DIVISOR_RULE.md`: translate "raw-Z/log-score maximizer"
+- `docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md`: translate "raw-Z/log-score maximizer"
   to "minimum-excess selected integer" while preserving the old formula as the
   dual coordinate.
-- `RECURSIVE_PRIME_WALK.md`: update "log-score maximizer" language to the
+- `docs/core/RECURSIVE_PRIME_WALK.md`: update "log-score maximizer" language to the
   zero-excess chamber reading.
-- `PRIME_GAP_GENERATOR.md` and generator-facing specs: introduce "next
+- `docs/PRIME_GAP_GENERATOR.md` and generator-facing specs: introduce "next
   zero-excess return" as the endpoint language only where it improves clarity.
 
 ### RH Bundle And FAQ
@@ -380,9 +380,9 @@ plot images. Prefer one of these statuses:
    - Decide canonical function and vocabulary names.
 
 2. Core docs
-   - Rewrite `DIVISOR_NORMALIZATION_IDENTITY.md`.
-   - Update `README.md`, `RESULTS.md`, `LEFTMOST_MINIMUM_DIVISOR_RULE.md`,
-     and `RECURSIVE_PRIME_WALK.md`.
+   - Rewrite `docs/core/DIVISOR_NORMALIZATION_IDENTITY.md`.
+   - Update `README.md`, `RESULTS.md`, `docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md`,
+     and `docs/core/RECURSIVE_PRIME_WALK.md`.
    - Keep `PROOF.md` theorem status unchanged and add only the
      `F(n)=-E(n)` reading.
 
@@ -411,8 +411,8 @@ Documentation checks:
 
 ```text
 rg -n "Z = 1.0|Z=1.0|raw-Z|fixed-point locus|log-score|prime-centered score" \
-  README.md RESULTS.md DIVISOR_NORMALIZATION_IDENTITY.md \
-  LEFTMOST_MINIMUM_DIVISOR_RULE.md RECURSIVE_PRIME_WALK.md docs/rh docs/faq
+  README.md RESULTS.md docs/core/DIVISOR_NORMALIZATION_IDENTITY.md \
+  docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md docs/core/RECURSIVE_PRIME_WALK.md docs/rh docs/faq
 ```
 
 Expected result after migration: hits are either removed, labeled legacy, or
@@ -456,7 +456,7 @@ python3 -m pytest research/02-gwr-dni/tests
 
 - Canonical function name in code: `exact_zero_excess`, `zero_excess`, or
   `exact_excess`.
-- Whether `DIVISOR_NORMALIZATION_IDENTITY.md` remains the primary document or
+- Whether `docs/core/DIVISOR_NORMALIZATION_IDENTITY.md` remains the primary document or
   becomes an index pointing to a new `ZERO_EXCESS_DNI.md`.
 - Whether live GWR/DNI output schemas keep names like `best_n_z` during the
   first migration.
@@ -467,8 +467,8 @@ python3 -m pytest research/02-gwr-dni/tests
 
 ## First Suggested Edit Sequence
 
-1. Rewrite `DIVISOR_NORMALIZATION_IDENTITY.md` around the dual coordinate.
-2. Update `LEFTMOST_MINIMUM_DIVISOR_RULE.md` to say the selected integer is the
+1. Rewrite `docs/core/DIVISOR_NORMALIZATION_IDENTITY.md` around the dual coordinate.
+2. Update `docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md` to say the selected integer is the
    leftmost minimum-excess interior point.
 3. Add one compact zero-excess section to `docs/rh/README.md`.
 4. Add the `H(n)=log n+E(n)` derivation to

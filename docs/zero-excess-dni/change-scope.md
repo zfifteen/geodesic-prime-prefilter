@@ -157,13 +157,13 @@ statuses:
 
 These are first-pass migration files:
 
-- `DIVISOR_NORMALIZATION_IDENTITY.md`
+- `docs/core/DIVISOR_NORMALIZATION_IDENTITY.md`
 - `README.md`
 - `RESULTS.md`
 - `PROOF.md`
-- `LEFTMOST_MINIMUM_DIVISOR_RULE.md`
-- `RECURSIVE_PRIME_WALK.md`
-- `PRIME_GAP_GENERATOR.md`
+- `docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md`
+- `docs/core/RECURSIVE_PRIME_WALK.md`
+- `docs/PRIME_GAP_GENERATOR.md`
 - `docs/specs/prime-gen/tech_spec_pgs_prime_generator.md`
 
 Required changes:
@@ -559,7 +559,7 @@ The symbol `E(q)` already appears as a bounded-compression offset/cutoff
 quantity, for example:
 
 - `RESULTS.md`
-- `RECURSIVE_PRIME_WALK.md`
+- `docs/core/RECURSIVE_PRIME_WALK.md`
 - `research/04-bounded-compression/README.md`
 - `research/00-index/docs/zenodo-peer-review-2026-05-12/proof.md`
 - `pgs-math-explainer/index.html`
@@ -584,9 +584,9 @@ Leave historical artifacts unchanged.
 
 ### Phase 1: Canonical Docs And Status
 
-1. Rewrite `DIVISOR_NORMALIZATION_IDENTITY.md`.
-2. Update `README.md`, `RESULTS.md`, `LEFTMOST_MINIMUM_DIVISOR_RULE.md`, and
-   `RECURSIVE_PRIME_WALK.md`.
+1. Rewrite `docs/core/DIVISOR_NORMALIZATION_IDENTITY.md`.
+2. Update `README.md`, `RESULTS.md`, `docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md`, and
+   `docs/core/RECURSIVE_PRIME_WALK.md`.
 3. Add the `F(n)=-E(n)` reading to `PROOF.md` without changing theorem claims.
 4. Resolve live `E(q)` notation collisions or reserve them for later with a
    visible note.
@@ -636,8 +636,8 @@ Old-coordinate scan:
 
 ```bash
 rg -n "Z\\(n\\)|Z\\(p\\)|Z = 1|Z=1|fixed-point|fixed point|fixed-point locus|prime baseline|below 1|raw-Z|log-score|log score|DNI ratio|E\\(q\\)" \
-  README.md RESULTS.md PROOF.md DIVISOR_NORMALIZATION_IDENTITY.md \
-  LEFTMOST_MINIMUM_DIVISOR_RULE.md RECURSIVE_PRIME_WALK.md \
+  README.md RESULTS.md PROOF.md docs/core/DIVISOR_NORMALIZATION_IDENTITY.md \
+  docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md docs/core/RECURSIVE_PRIME_WALK.md \
   docs research pgs-math-explainer spec
 ```
 
@@ -645,8 +645,8 @@ New-coordinate coverage scan:
 
 ```bash
 rg -n "zero-excess|minimum-excess|zero-excess floor|E\\(n\\)|H\\(n\\)" \
-  README.md RESULTS.md PROOF.md DIVISOR_NORMALIZATION_IDENTITY.md \
-  LEFTMOST_MINIMUM_DIVISOR_RULE.md RECURSIVE_PRIME_WALK.md docs research
+  README.md RESULTS.md PROOF.md docs/core/DIVISOR_NORMALIZATION_IDENTITY.md \
+  docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md docs/core/RECURSIVE_PRIME_WALK.md docs research
 ```
 
 Whitespace:

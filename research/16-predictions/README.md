@@ -13,7 +13,7 @@ Primary surface: [index.html](index.html) — self-contained contract and bootst
 
 See the HTML contract for the full five-question continuity handoff, PGS entry frame, guardrails, and initial probe checklist.
 
-All work in this chapter must obey the full contracts in root AGENTS.md, local Agents.md, PROOF.md, and the research-continuity discipline.
+All work in this chapter must obey the full contracts in docs/AGENTS.md, local Agents.md, PROOF.md, and the research-continuity discipline.
 
 **Reproduction command (full bootstrap context)**:
 ```bash

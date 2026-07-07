@@ -44,7 +44,7 @@ Primary measured surfaces:
 - `research/01-generator/docs/`
 - `research/01-generator/output/rule_x_logic_engine/chamber_reset_decade_ladder_1e8_1e18_a256_b1024/report.md`
 
-`RESULTS.md` records the production evidence surface as `9588 / 9588` exact PGS
+`docs/RESULTS.md` records the production evidence surface as `9588 / 9588` exact PGS
 outputs with `0` failures on `11..100000`, and `2816 / 2816` exact outputs
 with `0` incorrect candidates on the `10^8` through `10^18` decade-window
 validation surface.

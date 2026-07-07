@@ -2,7 +2,7 @@
 
 **Version**: 1.0 (Initial Skeleton)  
 **Date**: 2026-05-27  
-**Authority**: This document is binding for all work inside `lean-4/`. It is a direct extension of `AGENTS.md`, `research/00-index/continuity/continuity_and_shape_contract.md`, and `research/00-index/continuity/START_HERE.md`.
+**Authority**: This document is binding for all work inside `lean-4/`. It is a direct extension of `docs/AGENTS.md`, `research/00-index/continuity/continuity_and_shape_contract.md`, and `research/00-index/continuity/START_HERE.md`.
 
 ## Purpose
 
@@ -39,7 +39,7 @@ Mathlib's `Nat.Prime`, `Nat.divisors`, `Finset`, etc. are **tools for faithful t
 Every file, theorem, comment, and status document inside `lean-4/` **must** explicitly separate:
 
 - **Proved** (directly mirrors a theorem in `PROOF.md` under its stated hypotheses)
-- **Measured** (empirical surfaces from `RESULTS.md` that are being cross-checked)
+- **Measured** (empirical surfaces from `docs/RESULTS.md` that are being cross-checked)
 - **Audit** (implementation or translation verification only)
 - **Hypothesis** (open research targets)
 - **Unresolved**
@@ -54,7 +54,7 @@ Every definition, lemma, and theorem **must** carry a header comment of the foll
 ```lean
 /-
 PROOF.md Reference: Lines XXX-YYY (or specific theorem name + paragraph)
-Supporting prose: DIVISOR_NORMALIZATION_IDENTITY.md §Z, LEFTMOST... §W
+Supporting prose: docs/core/DIVISOR_NORMALIZATION_IDENTITY.md §Z, docs/core/LEFTMOST... §W
 Status: Proved / Audit-only / ...
 -/
 ```
@@ -69,7 +69,7 @@ No "drive-by" formalization of convenient Mathlib facts is allowed without an ex
   1. Direct deterministic next-prime via tau-scan.
   2. GWR / leftmost minimum-divisor maximizer theorem.
 - Support lemmas that are strictly necessary to express the above faithfully.
-- Serve as a high-fidelity audit surface for future large-scale verification of the 100% exact surfaces in `RESULTS.md`.
+- Serve as a high-fidelity audit surface for future large-scale verification of the 100% exact surfaces in `docs/RESULTS.md`.
 
 ## What Lean Is Strictly Forbidden From Doing (Inside This Project)
 
@@ -98,7 +98,7 @@ No "drive-by" formalization of convenient Mathlib facts is allowed without an ex
 Any contribution that violates this contract must be rejected at review time, even if the Lean code is mathematically elegant.
 
 When in doubt, reread:
-- `AGENTS.md` (especially "PGS-First Reasoning Entrypoint" and "Shape Warnings")
+- `docs/AGENTS.md` (especially "PGS-First Reasoning Entrypoint" and "Shape Warnings")
 - `research/00-index/continuity/continuity_and_shape_contract.md`
 - `PROOF.md` (the single live proof reference)
 - This contract

@@ -7,7 +7,7 @@ If a session starts with limited chat context, read this file first.
 
 ## First 60 Seconds
 
-1. Read `AGENTS.md`.
+1. Read `docs/AGENTS.md`.
 2. Read this directory's `continuity_and_shape_contract.md`.
 3. Run `git status --short --untracked-files=all`.
 4. Identify the user's active target from the newest request. The newest
@@ -21,7 +21,7 @@ If a session starts with limited chat context, read this file first.
    | root docs, public framing, theorem wording, RH/PNT demotion | `research/15-documentation-correction/README.md`, `research/15-documentation-correction/index.html` | Keep PGS source structure before zeta, RH, PNT, statistics, and audit language. |
    | RH bridge / classical completion work (archived) | `research/archive/2026-05-classical-rh-bridge-completion-route/ARCHIVAL_HANDOFF.md` | Archived due to classical drift and prompt injection risk. Do not route new work here by default. See handoff for preserved PGS results. |
    | RSA v2, endpoint structure, modulus-link, cryptology | `research/06-cryptology-rsa/experiments/live-solver/rsa-v2/README.md`, `research/06-cryptology-rsa/experiments/live-solver/rsa-v2/ALGORITHM.md`, `research/06-cryptology-rsa/experiments/live-solver/rsa-v2/PGS_CERTIFICATE.md`, `research/06-cryptology-rsa/experiments/live-solver/rsa-v2/METRICS.md` | Preserve resolved, unresolved, audit, and implementation status separately. |
-   | generator, C high-scale, `10^1233`, integer-start chamber | `PRIME_GAP_GENERATOR.md`, `docs/specs/prime-gen/high_scale_pgs_c99_generator_requirements.md`, `src/c/high-scale-pgs/Makefile` | Generation stays PGS-native; audit and tests confirm after generation. |
+   | generator, C high-scale, `10^1233`, integer-start chamber | `docs/PRIME_GAP_GENERATOR.md`, `docs/specs/prime-gen/high_scale_pgs_c99_generator_requirements.md`, `src/c/high-scale-pgs/Makefile` | Generation stays PGS-native; audit and tests confirm after generation. |
    | chapters 08-10 | `research/08-collatz/README.md`, `research/09-exponents/README.md`, or `research/10-twin-primes/README.md` | Use chapter-local tests listed below. |
    | chapters 11-15 | `research/00-index/status-map.md`, then the chapter README | These chapters have status rows below; not-yet-gated means no status-map validation gate has been recorded. |
    | anything else | the exact file or folder named by the user | Do not widen into the default project center. |
@@ -45,10 +45,10 @@ If a session starts with limited chat context, read this file first.
 | Surface | Object | Read First | Validation Entry |
 | --- | --- | --- | --- |
 | Root theorem status | proved PGS theorems | `PROOF.md` | Theorem status is not bounded by finite tests. |
-| Measured repository surfaces | implementation and audit summaries | `RESULTS.md` | Use exact listed commands or artifact paths before updating claims. |
+| Measured repository surfaces | implementation and audit summaries | `docs/RESULTS.md` | Use exact listed commands or artifact paths before updating claims. |
 | Research routing | corpus location and chapter status | `research/00-index/status-map.md` | Status-map validation rows control migration gate language. |
 | Continuity contract | session bootstrap and shape guardrails | this file, `continuity_and_shape_contract.md` | `git status --short --untracked-files=all` before edits. |
-| Production generator | `p -> q` PGS generator | `PRIME_GAP_GENERATOR.md`, `research/01-generator/README.md` | `python3 -m pytest research/01-generator/tests/test_simple_pgs_generator.py research/02-gwr-dni/tests/test_gwr_dni_recursive_walk.py` |
+| Production generator | `p -> q` PGS generator | `docs/PRIME_GAP_GENERATOR.md`, `research/01-generator/README.md` | `python3 -m pytest research/01-generator/tests/test_simple_pgs_generator.py research/02-gwr-dni/tests/test_gwr_dni_recursive_walk.py` |
 | C high-scale generator | Apple Silicon GMP/MPFR high-scale path | `src/c/high-scale-pgs/Makefile` | `make -C src/c/high-scale-pgs test` |
 | GWR/DNI | selected integer, DNI, recursive walk | `research/02-gwr-dni/README.md` | chapter tests named in `research/00-index/status-map.md` |
 | RSA endpoint structure | locked endpoint chain and public certificates | `research/06-cryptology-rsa/experiments/live-solver/rsa-v2/README.md` | focused RSA command in `research/00-index/status-map.md` |

@@ -231,7 +231,7 @@ This track is **verification only**. It does not alter generator behavior or `PR
 - docs/lean-pgs-verification/index.html updated with live status
 - PGS-first, downstream-audit-only, and traceability headers preserved in all artifacts
 
-**Current Command Running**: bash lean4-cache-build.sh (full cycle)
+**Current Command Running**: bash scripts/lean4-cache-build.sh (full cycle)
 
 Once build exits 0, next actions: smoke-test the compiled library, expand Basic.lean with first traceable lemma (prime ↔ tau(n)=2), update all maps.
 

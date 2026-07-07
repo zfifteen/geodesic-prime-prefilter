@@ -14,7 +14,7 @@ interior composite is the first point where divisor-count load is minimal.
 - `PROOF.md` proves the selected-integer theorem inside the resulting gap:
   the leftmost interior integer with minimum divisor count is the unique
   maximizer of the logarithmic comparison value.
-- `RESULTS.md` separates these theorem claims from generator and measured
+- `docs/RESULTS.md` separates these theorem claims from generator and measured
   surfaces. It states that the theorem proof lives in `PROOF.md`, and that
   audit tables are not theorem boundaries.
 - `RESULTS.md` records implementation evidence for the generator:

@@ -105,7 +105,7 @@ Version 2.0 (Post-Skeleton) — 2026-05-27</p>
 This plan is subordinate to:
 <ul>
 <li><a href="../../../lean-4/LEAN_PGS_VERIFICATION_CONTRACT.md">LEAN_PGS_VERIFICATION_CONTRACT.md</a> (strictly binding)</li>
-<li><a href="../../../AGENTS.md">AGENTS.md</a></li>
+<li><a href="../AGENTS.md">AGENTS.md</a></li>
 <li><a href="../../../research/00-index/continuity/continuity_and_shape_contract.md">continuity_and_shape_contract.md</a></li>
 <li><a href="../../../PROOF.md">PROOF.md</a> (single source of truth for theorem status)</li>
 </ul>
@@ -354,21 +354,21 @@ theorem direct_deterministic_next_prime
 <tr><th>PROOF.md Reference</th><th>Supporting Document</th><th>Target Lean Identifier</th><th>Phase</th><th>Current Status</th></tr>
 <tr>
 <td>Lines 80-81 (tau=2 ⇔ prime)</td>
-<td>DIVISOR_NORMALIZATION_IDENTITY.md</td>
+<td>docs/core/DIVISOR_NORMALIZATION_IDENTITY.md</td>
 <td><code>PGS.Basic.tau_eq_two_iff_only_divisors_are_1_and_n</code> (+ contrapositive `tau_gt_two_iff_has_proper_divisor`)</td>
 <td>1</td>
 <td class="status-proved">Phase 1 closed 2026-06 with deferrals. Core structure, reverse helper lemma (only_one_and_n_in_filter), memberships, and contrapositive statement delivered. Both directions' pure-List counting steps (forward + symmetric reverse length) explicitly DEFERRED to Phase 2 per user decision 2026-06 (consistent recording in Basic.lean and all surfaces). Build clean; full traceability. Ready for Phase 2 (Mathlib path for the deferred counting work).</td>
 </tr>
 <tr>
 <td>Lines 158-182 (Ordered Comparison)</td>
-<td>LEFTMOST_MINIMUM_DIVISOR_RULE.md</td>
+<td>docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md</td>
 <td><code>PGS.Comparison.ordered_comparison_lemma</code></td>
 <td>2</td>
 <td class="status-planned">Planned</td>
 </tr>
 <tr>
 <td>Lines 145-157 + 183-522 (GWR Maximizer)</td>
-<td>LEFTMOST_MINIMUM_DIVISOR_RULE.md</td>
+<td>docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md</td>
 <td><code>PGS.GWR.leftmost_min_tau_maximizer</code></td>
 <td>3</td>
 <td class="status-planned">Placeholder exists</td>
