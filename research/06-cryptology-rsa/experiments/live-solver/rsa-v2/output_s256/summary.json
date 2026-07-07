@@ -1,0 +1,17 @@
+{
+  "cases": [
+    {
+      "N": "57896044618658097711785492504343953926634992466850340478023247590991515852717",
+      "balance_band": "2",
+      "bits": 256,
+      "case_id": "s256_challenge_1",
+      "center": "240615969168004511545033772477625056927",
+      "corrected_lower_certificate_present": false,
+      "endpoint_chain_steps": 50,
+      "lower_certificate_present": true,
+      "public_closure_status": "unresolved_by_endpoint_chain_boundary",
+      "rule_id": "reciprocal_pgs_certificate_pair_v2",
+      "upper_certificate_present": false
+    }
+  ]
+}
