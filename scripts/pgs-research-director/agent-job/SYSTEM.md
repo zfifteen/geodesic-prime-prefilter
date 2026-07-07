@@ -1,1 +1,1 @@
-/Users/velocityworks/IdeaProjects/prime-gap-structure/scripts/pgs-research-director/SYSTEM.md
+../SYSTEM.md

@@ -29,9 +29,10 @@ node "$BOT_DIR/skills/gwr-resonance/gwr-resonance.cjs" 23 29 2>&1 | tee "$ARTIFA
 echo "--- Running log-analyzer ---" | tee -a "$LOGFILE"
 node "$BOT_DIR/skills/log-analyzer/log-analyzer.cjs" "$SCRATCH" 2>&1 | tee "$ARTIFACT_DIR/log-analysis.json" | tee -a "$LOGFILE" || true
 
-echo "echo "--- Executing run_cycle.py ---" | tee -a "$LOGFILE"
+echo "--- Executing run_cycle.py (parses continuity + exact_divisor_count) ---" | tee -a "$LOGFILE"
 python3 "$BOT_DIR/run_cycle.py" 2>&1 | tee -a "$LOGFILE" || true
---- Cycle complete (autonomous, no further input) ---" | tee -a "$LOGFILE"
+
+echo "--- Cycle complete (autonomous, no further input) ---" | tee -a "$LOGFILE"
 echo "PGS framing fidelity: GWR, DNI, divisor-count, AGENTS.md, PROOF.md, research/00-index/ referenced." | tee -a "$LOGFILE"
 echo "Scheduler evidence: CRONS.json contains pgs-director-daily-advance and pgs-test-one-shot" | tee -a "$LOGFILE"
 echo "CYCLE_END $CYCLE_ID" | tee -a "$LOGFILE"

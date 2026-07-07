@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Reliable CommonJS using exact_divisor_count via Python
 const { execSync } = require('child_process');
-const pgs = process.env.PGS_ROOT || '/Users/velocityworks/IdeaProjects/prime-gap-structure';
+const pgs = process.env.PGS_ROOT || '$PGS_ROOT';
 try {
   const out = execSync(`python3 -c "
 import sys, os, json, math
