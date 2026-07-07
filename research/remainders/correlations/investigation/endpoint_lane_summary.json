@@ -1,0 +1,16 @@
+{
+  "lane": "endpoint_residue_mask",
+  "source": "research/00-index/docs/algorithmic_frontier_hourly.md",
+  "regime": "100000 consecutive gaps from q >= 10^13",
+  "mask_width": 96,
+  "carried_residues_primes_le": 37,
+  "gaps_tested": 100000,
+  "chain_mismatches": 0,
+  "resolved_in_mask_fraction": 1.0,
+  "small_prime_mod_checks_baseline": 5145085,
+  "small_prime_mod_checks_hybrid": 0,
+  "small_prime_mod_reduction_fraction": 0.999846,
+  "miller_rabin_calls_unchanged": 444678,
+  "wall_time_speedup": 1.0345,
+  "repro_note": "Prototype cited in hourly doc; repo script gwr_dni_boundary_state_mask_search.py referenced but not committed."
+}

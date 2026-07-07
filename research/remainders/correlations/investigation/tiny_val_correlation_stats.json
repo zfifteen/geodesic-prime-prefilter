@@ -1,0 +1,11 @@
+{
+  "records": 490,
+  "mi_num_zeros_vs_dist": {
+    "mi": 0.09603790627744636,
+    "n": 490,
+    "effective_bins_x": 6,
+    "effective_bins_y": 5,
+    "normalized_mi": 0.07126884097411137
+  },
+  "histogram_groups": 37
+}

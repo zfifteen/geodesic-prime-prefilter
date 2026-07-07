@@ -1,0 +1,34 @@
+{
+  "source": "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/remainders/output/1e6/raw_records.jsonl",
+  "records_analyzed": 921503,
+  "gaps_analyzed": 78497,
+  "gwr_last_rate": 0.14159776806756946,
+  "gwr_last_count": 11115,
+  "super_signal_at_gwr_count": 2697,
+  "super_signal_at_gwr_rate": 0.03435800094271119,
+  "g2_with_super_signal_gwr": 2697,
+  "mi_num_zeros_vs_dist_bin": {
+    "mi": 0.05841229238975442,
+    "n": 921503,
+    "effective_bins_x": 7,
+    "effective_bins_y": 5,
+    "normalized_mi": 0.05074991192102752
+  },
+  "spearman_entropy_vs_g": 1.0,
+  "avg_gwr_zero_minus_gap_avg": -0.6644153371924026,
+  "repeat_stats": {
+    "num_gaps": 78497,
+    "gaps_with_late_repeats": 0,
+    "gaps_without_late_repeats": 78497,
+    "repeat_freq_near_end": 0.0,
+    "repeat_freq_middle": 0.0,
+    "avg_prior_repeats_near_end": 0.0,
+    "avg_prior_repeats_middle": 0.0,
+    "gwr_right_after_rate_with_late_repeats": 0.0,
+    "gwr_right_after_rate_without": 0.14159776806756946,
+    "late_gwr_right_after_count": 0,
+    "no_late_gwr_right_after_count": 11115,
+    "note": "late positions = last min(3, gap_len) records (absolute); repeat state = vec[:6] (mod<=210 proj to allow pattern repeats); GWR right after = GWR winner record has dist_to_next==1"
+  },
+  "mod2_even_fraction": 0.5425918309544299
+}
