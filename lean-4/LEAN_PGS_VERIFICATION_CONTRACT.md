@@ -38,14 +38,14 @@ Mathlib's `Nat.Prime`, `Nat.divisors`, `Finset`, etc. are **tools for faithful t
 
 Every file, theorem, comment, and status document inside `lean-4/` **must** explicitly separate:
 
-- **Proved** (directly mirrors a theorem in `PROOF.md` under its stated hypotheses)
-- **Measured** (empirical surfaces from `docs/RESULTS.md` that are being cross-checked)
+- **Proved** (directly mirrors a theorem in `PROOF.md`)
+- **Measured** (empirical surfaces from `docs/RESULTS.md`)
 - **Audit** (implementation or translation verification only)
-- **Hypothesis** (open research targets)
+- **Hypothesis** (separate research targets)
 - **Unresolved**
-- **Invalidated** (with clear reference to the invalidated rule, e.g. the old fixed cutoff theorem)
+- **Invalidated** (with clear reference to the invalidated rule)
 
-The Lean code must never collapse these categories. A formally checked lemma about `tau(n)=2` for primes is **proved** only to the extent `PROOF.md` already established it. The Lean check is additional mechanical evidence, not the original proof.
+The Lean code must never collapse these categories. The Lean formalization provides an independent machine-checked mirror of the proofs established in `PROOF.md`.
 
 ## Traceability Requirement
 
