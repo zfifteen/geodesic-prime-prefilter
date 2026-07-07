@@ -61,7 +61,7 @@ This is a separate exact score-function concern from the production filter.
 
 Up to $10^6$ on the natural number line, the strongest exact raw composite $Z$ value inside a prime gap lands at edge-distance $2$ in $43.6006\%$ of gaps versus an exact within-gap baseline of $22.1859\%$, and is carried by a $d(n)=4$ composite in $82.9027\%$ of gaps versus a baseline of $20.1401\%$.
 
-[PROOF.md](../../../../PROOF.md) proves the direct deterministic next-prime theorem and sharpens that ridge picture into the current selected integer theorem: the log-score maximizer is the arithmetic choice “minimize interior divisor count, then take the leftmost integer.” The theorems are universal under their stated hypotheses. The tested surfaces are certification and provenance, not theorem boundaries.
+[PROOF.md](../../../../PROOF.md) proves the direct deterministic next-prime theorem and sharpens that ridge picture into the current selected integer theorem: the log-score maximizer is the arithmetic choice “minimize interior divisor count, then take the leftmost integer.” The theorems are universal. The tested surfaces provide certification and provenance.
 
 The dedicated closure study then strengthens the right-edge reading further: on the current documented even-band ladder through $10^{18}$, once the selected integer appears, no later strictly simpler composite is observed before the next prime closes the gap.
 

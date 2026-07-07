@@ -28,7 +28,7 @@ Every prime has `Z = 1`, and composites fall below that value.
 
 ## Proof Status
 
-`PROOF.md` proves the direct deterministic next-prime theorem and the prime-gap maximizer theorem under their stated hypotheses.
+`PROOF.md` proves the direct deterministic next-prime theorem and the prime-gap maximizer theorem.
 The finite audit surfaces certify implementations and measured regimes; they
 do not bound the universal theorem.
 

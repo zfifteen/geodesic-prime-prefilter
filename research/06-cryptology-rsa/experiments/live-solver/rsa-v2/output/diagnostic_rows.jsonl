@@ -1,5 +1,0 @@
-{"case_id": "rsa_v2_40bit_static_001", "bits": 40, "certificate_builds": 1, "lower_present": true}
-{"case_id": "rsa_v2_50bit_static_001", "bits": 50, "certificate_builds": 0, "lower_present": false}
-{"case_id": "rsa_v2_64bit_static_001", "bits": 64, "certificate_builds": 1, "lower_present": true}
-{"case_id": "rsa_v2_128bit_static_001", "bits": 127, "certificate_builds": 0, "lower_present": false}
-{"case_id": "rsa_v2_256bit_static_001", "bits": 256, "certificate_builds": 0, "lower_present": false}

@@ -157,7 +157,7 @@ prime is. Primality is an internal consequence of interval closure.
 
 ## 6. What the Repository Has Established
 
-The live proof reference proves two universal statements under their stated
+The live proof reference proves two universal statements.
 hypotheses:
 
 - the direct deterministic next-prime theorem;

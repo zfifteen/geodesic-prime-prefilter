@@ -642,9 +642,10 @@ def make_diagnostics() -> DiagnosticCounters:
     }
 
 
-def certificate_pair(case: LadderCase, diagnostics: DiagnosticCounters | None = None, start_anchor: gmpy2.mpz | None = None) -> CertificatePair:
+def certificate_pair(case: LadderCase, diagnostics: DiagnosticCounters | None = None, start_anchor: gmpy2.mpz | None = None, max_steps: int = 10000) -> CertificatePair:
     """Return the first closure from one uniform transported certificate chain.
     start_anchor allows seeded PGS anchor for large-bit cases.
+    max_steps limits the search depth (to prevent infinite loops in out-of-band seeded runs).
     """
     if diagnostics is None:
         diagnostics = make_diagnostics()
@@ -681,9 +682,8 @@ def certificate_pair(case: LadderCase, diagnostics: DiagnosticCounters | None = 
         last_lower = start_lower_cert
     # Safety bound to prevent pathological walks; normal cases use full walk to boundary or closure.
     # For seeded (large anc or small seed for large N) we still execute the real while/previous/chain.
-    MAX_STEPS = 10000
     while anchor is not None and (start_anchor is not None or anchor >= lower_balance):
-        if steps >= MAX_STEPS:
+        if steps >= max_steps:
             break
         anchor_key = mpz_to_int(anchor)
         if anchor_key in visited:
@@ -950,6 +950,7 @@ def run_cases(
     cases: list[LadderCase],
     baseline_cost_rows: list[dict[str, object]] | None = None,
     start_anchor: gmpy2.mpz | None = None,
+    max_steps: int = 10000,
 ) -> tuple[list[dict[str, object]], list[dict[str, object]], list[dict[str, object]], list[dict[str, object]], list[dict[str, object]]]:
     """Run every public case through the certificate-pair surface.
     Returns also structural_certs for resolved (separate sidecar, GWR carriers etc).
@@ -963,7 +964,7 @@ def run_cases(
     for case in cases:
         diagnostics = make_diagnostics()
         start_ns = time.perf_counter_ns()
-        pair = certificate_pair(case, diagnostics, start_anchor=start_anchor)
+        pair = certificate_pair(case, diagnostics, start_anchor=start_anchor, max_steps=max_steps)
         elapsed_ns = time.perf_counter_ns() - start_ns
         results.append(result_row(case, pair))
         summaries.append(summary_row(case, pair))
@@ -1020,6 +1021,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         type=str,
         default=None,
         help="Seeded PGS previous public endpoint anchor (for large-bit N where bootstrap is expensive; must be PGS-derived).",
+    )
+    parser.add_argument(
+        "--max-steps",
+        type=int,
+        default=10000,
+        help="Maximum endpoint chain steps to evaluate (default: 10000).",
     )
     return parser.parse_args(argv)
 
@@ -1080,7 +1087,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"[run_experiment] filtered to {len(cases)} case(s): {[c.case_id for c in cases]}")
     start_anchor = gmpy2.mpz(args.start_anchor) if args.start_anchor else None
     baseline_cost_rows: list[dict[str, object]] | None = [] if args.measure_baseline_cost else None
-    results, summaries, pairs, diagnostics_rows, structural_certs = run_cases(cases, baseline_cost_rows, start_anchor=start_anchor)
+    results, summaries, pairs, diagnostics_rows, structural_certs = run_cases(cases, baseline_cost_rows, start_anchor=start_anchor, max_steps=args.max_steps)
     write_jsonl(args.output_dir / "inference_rows.jsonl", results)
     write_jsonl(args.output_dir / "survivor_rows.jsonl", pairs)
     write_jsonl(args.output_dir / "diagnostic_rows.jsonl", diagnostics_rows)

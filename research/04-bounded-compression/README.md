@@ -36,7 +36,7 @@ witnesses. Authority: [PROOF.md](../../PROOF.md) (2026-07-05).
 
 **Boundary.** This bounds the selected-witness offset `w - p`. It does not by
 itself prove RH, PNT, or every classical formulation of Cramér's conjecture for
-raw gap size `q - p`. Lean 4 carries structural axioms pending full
+raw gap size `q - p`. A Lean 4 formalization is in progress as a machine-checked mirror. The mathematical proofs are complete.
 machine-checked derivation.
 
 ## Measured Evidence
