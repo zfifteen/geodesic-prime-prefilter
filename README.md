@@ -2,7 +2,7 @@
 
 ![Prime Gap Structure hero](visualizations/conceptual/prime-gap-structure-hero.jpg)
 
-This is not a repository of conjectures or informal observations. It provides:
+This is not a repository of claims, conjectures or informal observations. It provides:
 
 - Formal proofs (see [PROOF.md](PROOF.md)): the direct next-prime rule, the interior maximizer (GWR), and universal bounded compression at Cramér scale — including the Prime-Square Proximity Theorem (proved 2026-07-05)
 - Working code and reference implementations
