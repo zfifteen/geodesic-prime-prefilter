@@ -1,0 +1,11 @@
+{
+  "lane": "gwr_super_signal",
+  "proof_location": "PROOF.md Twin-Prime Resonance section",
+  "theorem_stack_status": "measured \u00b7 corollary (per PROOF.md theorem stack table)",
+  "open_g2_items": [
+    "4+ zeros \u27fa w \u2261 0 (mod 30) needs exhaustive case analysis",
+    "Step 3 informal language needs explicit lemma",
+    "No Lean mirror"
+  ],
+  "reference": "docs/proof-enhancements/goals.md G2"
+}

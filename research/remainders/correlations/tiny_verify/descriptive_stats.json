@@ -1,0 +1,28 @@
+{
+  "records": 490,
+  "gaps": 108,
+  "mi_num_zeros_vs_dist_bin": {
+    "mi": 0.09603790627744636,
+    "n": 490,
+    "effective_bins_x": 6,
+    "effective_bins_y": 5,
+    "normalized_mi": 0.07126884097411137
+  },
+  "spearman_entropy_vs_g": 1.0,
+  "gwr_last_rate": 0.3148148148148148,
+  "repeat_stats": {
+    "num_gaps": 108,
+    "gaps_with_late_repeats": 0,
+    "gaps_without_late_repeats": 108,
+    "repeat_freq_near_end": 0.0,
+    "repeat_freq_middle": 0.0,
+    "avg_prior_repeats_near_end": 0.0,
+    "avg_prior_repeats_middle": 0.0,
+    "gwr_right_after_rate_with_late_repeats": 0.0,
+    "gwr_right_after_rate_without": 0.3148148148148148,
+    "late_gwr_right_after_count": 0,
+    "no_late_gwr_right_after_count": 34,
+    "note": "late positions = last min(3, gap_len) records (absolute); repeat state = vec[:6] (mod<=210 proj to allow pattern repeats); GWR right after = GWR winner record has dist_to_next==1"
+  },
+  "histogram_groups": 37
+}

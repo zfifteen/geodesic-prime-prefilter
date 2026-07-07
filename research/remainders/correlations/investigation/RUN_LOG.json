@@ -1,0 +1,10 @@
+{
+  "timestamp_utc": "2026-07-07T22:48:09.535621+00:00",
+  "python_version": "3.13.0 (v3.13.0:60403a5409f, Oct  7 2024, 00:37:40) [Clang 15.0.0 (clang-1500.3.9.4)]",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "interior_jsonl": "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/remainders/output/1e6/raw_records.jsonl",
+  "tiny_jsonl": "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/remainders/output/tiny_val/raw_records.jsonl",
+  "output_dir": "research/remainders/correlations/investigation",
+  "interior_gaps": 78497,
+  "interior_records": 921503
+}

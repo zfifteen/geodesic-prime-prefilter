@@ -18,6 +18,16 @@ python research/remainders/collect_remainder_stats.py \
   --output-dir research/remainders/output/1e6/
 ```
 
+## Multi-Lane Investigation (2026-07-07)
+
+See **`REMAINDER_LANES_SYNTHESIS.md`** for the six-lane inventory, scaled statistics, placement correlations, and downstream artifact index.
+
+Run the investigation orchestrator:
+```bash
+python research/remainders/run_investigation.py \
+  --output-dir research/remainders/correlations/investigation
+```
+
 ## Current Status (2026-06-30)
 - remainder_utils.py: pure stdlib compute_residues (M_v1 = [2,3,5,7,30,210,2310])
 - collect_remainder_stats.py: full emitter + CLI

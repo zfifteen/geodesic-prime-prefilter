@@ -20,6 +20,7 @@ Phase 1 = this skeleton (signatures + exhaustive descriptive comments).
 
 from __future__ import annotations
 
+import argparse
 import json
 import math
 import random
@@ -574,18 +575,114 @@ def run_descriptive_analysis(
     return {"histograms_groups": len(h["groups"]), "sample_table_written": True}
 
 
+def run_full_descriptive(
+    records: list[dict[str, Any]],
+    out_dir: Path,
+) -> dict[str, Any]:
+    """Run MI, Spearman, marginals, and repeat stats; write numeric tables."""
+    import math
+    from collections import defaultdict
+
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    gaps: dict[Any, list[dict[str, Any]]] = defaultdict(list)
+    for rec in records:
+        gaps[rec["p"]].append(rec)
+
+    gap_features: list[dict[str, float]] = []
+    for grecs in gaps.values():
+        grecs.sort(key=lambda r: int(r.get("k", 0)))
+        g = float(grecs[0]["g"])
+        counts: dict[tuple[int, ...], int] = defaultdict(int)
+        for r in grecs:
+            vec = tuple(int(v) for v in r["remainder_vector"][:6])
+            counts[vec] += 1
+        n = len(grecs)
+        entropy = 0.0
+        for c in counts.values():
+            p_val = c / n
+            entropy -= p_val * math.log(p_val)
+        gap_features.append({"g": g, "entropy": entropy})
+
+    feat_list = [{"g": f["g"], "entropy": f["entropy"]} for f in gap_features]
+    corr_matrix = feature_correlation_matrix(feat_list, method="spearman")
+    spearman_entropy_g = corr_matrix[0][1] if corr_matrix else 0.0
+
+    residues = []
+    dists = []
+    for r in records:
+        zeros = sum(1 for v in r["remainder_vector"] if v == 0)
+        dist = int(r.get("distance_to_next_prime", r.get("termination_distance", 99)))
+        residues.append(zeros)
+        dists.append(min(dist, 5))
+    mi_res = mutual_information(residues, dists)
+
+    repeat_stats = compute_intra_gap_repeat_stats(records)
+    histograms = compute_residue_histograms(records)
+
+    gwr_last = sum(
+        1
+        for grecs in gaps.values()
+        for r in grecs
+        if (r.get("is_gwr_winner") or r.get("is_current_min_d"))
+        and int(r.get("distance_to_next_prime", r.get("termination_distance", 99))) == 1
+    )
+
+    result = {
+        "records": len(records),
+        "gaps": len(gaps),
+        "mi_num_zeros_vs_dist_bin": mi_res,
+        "spearman_entropy_vs_g": spearman_entropy_g,
+        "gwr_last_rate": gwr_last / len(gaps) if gaps else 0.0,
+        "repeat_stats": repeat_stats,
+        "histogram_groups": len(histograms["groups"]),
+    }
+
+    (out_dir / "descriptive_stats.json").write_text(
+        json.dumps(result, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+    lines = [
+        "| metric | value |",
+        "| --- | --- |",
+        f"| records | {result['records']} |",
+        f"| gaps | {result['gaps']} |",
+        f"| MI(num_zeros, dist_bin) | {mi_res['mi']:.4f} |",
+        f"| normalized_MI | {mi_res['normalized_mi']:.4f} |",
+        f"| Spearman(entropy, g) | {spearman_entropy_g:.4f} |",
+        f"| GWR_last_rate | {result['gwr_last_rate']:.4f} |",
+        f"| histogram_groups | {result['histogram_groups']} |",
+    ]
+    (out_dir / "descriptive_stats.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+    run_descriptive_analysis(records, out_dir)
+    return result
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--records",
+        type=Path,
+        required=True,
+        help="Input JSONL from collect_remainder_stats.py",
+    )
+    parser.add_argument(
+        "--out",
+        type=Path,
+        required=True,
+        help="Output directory for tables and JSON stats",
+    )
+    return parser
+
+
 def main(argv: list[str] | None = None) -> int:
-    """CLI entry for correlation engine.
-
-    Typical:
-      python research/remainders/correlation_analysis.py \
-        --records research/remainders/output/tiny_val/raw_records.jsonl \
-        --out research/remainders/correlations/tiny/
-
-    Phase-1 scaffold. Full arg parsing + dispatch in implementation phase.
-    """
-    print("correlation_analysis.py: Phase-1 skeleton. "
-          "No analysis executed yet.")
+    """CLI entry for correlation engine."""
+    args = build_parser().parse_args(argv)
+    records = load_records(args.records)
+    result = run_full_descriptive(records, args.out)
+    print(json.dumps(result, indent=2))
     return 0
 
 

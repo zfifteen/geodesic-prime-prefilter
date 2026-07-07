@@ -1,0 +1,59 @@
+{
+  "lane": "left_prime_mod30_ridge",
+  "source": "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/11-gap-ridge/output/insight_probes/residue_mod30_right_edge_share.json",
+  "scale_1e6": {
+    "global_gaps": 70327,
+    "global_right_share": 0.16018030059578825,
+    "by_residue": [
+      {
+        "p_mod_30": 1,
+        "gaps": 9807,
+        "right_share": 0.1684511063526053,
+        "right_lift": 1.0516343503293095
+      },
+      {
+        "p_mod_30": 7,
+        "gaps": 9812,
+        "right_share": 0.16337138198124745,
+        "right_lift": 1.0199218091961997
+      },
+      {
+        "p_mod_30": 11,
+        "gaps": 7074,
+        "right_share": 0.09287531806615776,
+        "right_lift": 0.579817354073562
+      },
+      {
+        "p_mod_30": 13,
+        "gaps": 9824,
+        "right_share": 0.252442996742671,
+        "right_lift": 1.5759927769127229
+      },
+      {
+        "p_mod_30": 17,
+        "gaps": 7075,
+        "right_share": 0.08706713780918728,
+        "right_lift": 0.5435570883894109
+      },
+      {
+        "p_mod_30": 19,
+        "gaps": 9788,
+        "right_share": 0.16091131998365346,
+        "right_lift": 1.0045637284057165
+      },
+      {
+        "p_mod_30": 23,
+        "gaps": 9839,
+        "right_share": 0.20855778026222177,
+        "right_lift": 1.3020189092322476
+      },
+      {
+        "p_mod_30": 29,
+        "gaps": 7108,
+        "right_share": 0.08863252673044457,
+        "right_lift": 0.5533297565354616
+      }
+    ]
+  },
+  "repro_command": "python research/11-gap-ridge/scripts/insight_probes.py (residue_mod30 probe; see findings doc)"
+}
