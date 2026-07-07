@@ -270,17 +270,15 @@ def collect_gaps(
             prime_walk_steps += 1
 
     return {
-        # Canonical gap count for analysis: left primes that emitted interiors.
         "gaps_with_interiors": gaps_with_interiors,
-        "gaps_empty_interiors": gaps_empty_interiors,
-        "unique_left_primes_in_output": gaps_with_interiors,
-        # Legacy alias: prime-walk steps (includes p=2 twin with zero records).
-        "prime_walk_steps": prime_walk_steps,
-        "gaps_processed": prime_walk_steps,
         "records_emitted": records_emitted,
+        "gaps_empty_interiors": gaps_empty_interiors,
+        "prime_walk_steps": prime_walk_steps,
+        "unique_left_primes_in_output": gaps_with_interiors,
         "max_p": max_p,
         "sample_rate": sample_rate,
         "moduli": moduli,
+        "gaps_processed_legacy_alias": prime_walk_steps,
     }
 
 

@@ -20,7 +20,7 @@ python research/remainders/collect_remainder_stats.py \
 
 ## Multi-Lane Investigation (2026-07-07)
 
-See **`REMAINDER_LANES_SYNTHESIS.md`** for the six-lane inventory, scaled statistics, placement correlations, and downstream artifact index.
+See **`REMAINDER_LANES_SYNTHESIS.md`** for the six-lane inventory, scaled statistics, placement correlations, and downstream artifact index. Super Team roster: **`SUPER_TEAM_MANIFEST.md`**.
 
 Run the investigation orchestrator (executes lane collectors + streams interior JSONL):
 ```bash

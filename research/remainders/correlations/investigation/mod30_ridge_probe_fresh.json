@@ -1,57 +1,57 @@
 {
   "lane": "mod30_ridge_probe",
-  "timestamp_utc": "2026-07-07T23:01:53.857827+00:00",
-  "max_p": 50000,
-  "global_gaps": 5132,
-  "global_right_share": 0.19992205767731877,
+  "timestamp_utc": "2026-07-07T23:06:37.177367+00:00",
+  "max_p": 200000,
+  "global_gaps": 17983,
+  "global_right_share": 0.19262636934882946,
   "by_residue": [
     {
       "p_mod_30": 1,
-      "gaps": 631,
-      "right_share": 0.32805071315372425,
-      "right_lift": 1.6408930408429951
+      "gaps": 2224,
+      "right_share": 0.2931654676258993,
+      "right_lift": 1.5219383961652848
     },
     {
       "p_mod_30": 7,
-      "gaps": 647,
-      "right_share": 0.38176197836166925,
-      "right_lift": 1.9095540672047628
+      "gaps": 2256,
+      "right_share": 0.34397163120567376,
+      "right_lift": 1.7856933729710252
     },
     {
       "p_mod_30": 11,
-      "gaps": 643,
-      "right_share": 0.08242612752721618,
-      "right_lift": 0.4122913123486096
+      "gaps": 2254,
+      "right_share": 0.09050576752440107,
+      "right_lift": 0.4698513907018777
     },
     {
       "p_mod_30": 13,
-      "gaps": 649,
-      "right_share": 0.22342064714946072,
-      "right_lift": 1.1175387535780044
+      "gaps": 2268,
+      "right_share": 0.21340388007054673,
+      "right_lift": 1.1078643115787072
     },
     {
       "p_mod_30": 17,
-      "gaps": 641,
-      "right_share": 0.0748829953198128,
-      "right_lift": 0.37456094735017476
+      "gaps": 2247,
+      "right_share": 0.09657320872274143,
+      "right_lift": 0.5013498881238623
     },
     {
       "p_mod_30": 19,
-      "gaps": 629,
-      "right_share": 0.21144674085850557,
-      "right_lift": 1.0576458811752931
+      "gaps": 2240,
+      "right_share": 0.1875,
+      "right_lift": 0.973386980369515
     },
     {
       "p_mod_30": 23,
-      "gaps": 640,
-      "right_share": 0.2109375,
-      "right_lift": 1.0550986842105263
+      "gaps": 2248,
+      "right_share": 0.22597864768683273,
+      "right_lift": 1.1731449253326538
     },
     {
       "p_mod_30": 29,
-      "gaps": 650,
-      "right_share": 0.08923076923076922,
-      "right_lift": 0.4463277852751537
+      "gaps": 2244,
+      "right_share": 0.09046345811051694,
+      "right_lift": 0.46963174572789435
     }
   ]
 }

@@ -1,7 +1,8 @@
 # Remainder Lanes Synthesis — Multi-Lane Investigation Report
 
 **Date:** 2026-07-07 (revised)  
-**Investigation runner:** `research/remainders/run_investigation.py`  
+**Super Team:** `research/remainders/SUPER_TEAM_MANIFEST.md` (6 lane agents)  
+**Orchestrator:** `research/remainders/run_investigation.py` → `SUPER_TEAM_RUN.json`  
 **Python:** 3.13.0 (see `correlations/investigation/RUN_LOG.json`)
 
 PGS framing: all statistics below are **measured on named regimes**. They do not establish theorems, redefine GWR, or choose the next prime `q`.
@@ -26,8 +27,8 @@ At `p≤1.5×10⁶`: **114,154** gaps with interiors (meets ≥10⁵ threshold).
 |------|------|-------------|---------------------------|
 | Interior `R(n,M)` | Gap-interior coordinate | **Scaled ≥10⁵** (114,154 gaps, 1,385,850 records at `p≤1.5×10⁶`) | MI(`num_zeros`, dist) **0.057**; GWR-last **13.9%** |
 | GWR Super-Signal | Termination claim at GWR | **Epistemic open** (G2) | All 3,842 super-signal GWR cases are `g=2` on 1.5e6 surface |
-| Endpoint `q mod` | Search acceleration | **Fresh probe** + hourly reference | 5,000-gap `q mod 30` sample from `q≥10¹³`; mask artifact 100% in-window |
-| Left-prime `p mod 30` ridge | Peak-side modulation | **Fresh probe** + pinned JSON | Fresh probe at `p≤5×10⁴`; pinned `p≡13` lift 1.58× at `10⁶` |
+| Endpoint `q mod` | Search acceleration | **Fresh mask probe** + hourly reference | 10k gaps: `resolved_in_mask_fraction` **0.237** (simple cert); hourly ref **1.0** (96-open propagated mask) |
+| Left-prime `p mod 30` ridge | Peak-side modulation | **Fresh probe @200k** + pinned JSON | Fresh `p≤2×10⁵`: 17,983 gaps; pinned `p≡13` lift 1.58× at `10⁶` |
 | State-budget residue cells | Matched-pair tests | **Re-run collector** | `mod30`: 230 decisive pairs, +40 advantage (unresolved) |
 | RSA backward modulus/remainder | Closure search | **Re-run collector** | 0% factor-reach on toy `N≤5000` |
 
@@ -77,13 +78,24 @@ On **1.5e6** measured surface: 3,842 GWR records with 4+ zeros; **all** in `g=2`
 
 ## Lane 3 — Endpoint residue state
 
-**Fresh measurement:** `lane_collectors/endpoint_residue_probe.py` — 5,000 gaps from `p=10,000,000,000,037`, writes `endpoint_residue_probe_fresh.json`.
+**Agent:** `endpoint_mask` (see `SUPER_TEAM_MANIFEST.md`)
 
-**Reference artifact:** hourly frontier — 96-open mask, 100% in-window at `10¹³`, 99.98% small-prime mod reduction.
+**Fresh measurement** (`endpoint_residue_probe_fresh.json`, 10,000 gaps from `p=10,000,000,000,037`):
+
+| Metric | Value |
+|--------|-------|
+| `resolved_in_mask_fraction` | **0.2373** (2,373 / 10,000) |
+| `max_q_wheel_open_index` | 8 |
+| `mean_certified_opening_prefix_len` | 0.91 |
+| Mask width | 96 |
+
+This probe certifies wheel-open candidates by divisibility (primes ≤47). It measures how often `q` lands at a wheel-open index with a fully certified opening prefix — a **simpler** statistic than the hourly propagated-state mask.
+
+**Reference artifact** (hourly frontier): 96-open propagated mask achieves **100%** in-window resolution at `10¹³` with 99.98% small-prime mod reduction.
 
 ```bash
 python research/remainders/lane_collectors/endpoint_residue_probe.py \
-  --start-p 10000000000037 --max-gaps 5000 \
+  --start-p 10000000000037 --max-gaps 10000 \
   --output research/remainders/correlations/investigation/endpoint_residue_probe_fresh.json
 ```
 
@@ -91,11 +103,11 @@ python research/remainders/lane_collectors/endpoint_residue_probe.py \
 
 ## Lane 4 — Left-prime `p mod 30` ridge
 
-**Fresh measurement:** `lane_collectors/mod30_ridge_probe.py`
+**Agent:** `mod30_ridge` — fresh probe at **`max_p=200000`** (17,983 gaps, global right-share 0.193). Embedded in `mod30_ridge_lane_summary.json` → `fresh_probe` (non-null).
 
 ```bash
 python research/remainders/lane_collectors/mod30_ridge_probe.py \
-  --max-p 50000 \
+  --max-p 200000 \
   --output research/remainders/correlations/investigation/mod30_ridge_probe_fresh.json
 ```
 
@@ -126,9 +138,9 @@ python research/06-cryptology-rsa/scripts/pgs_semiprime_backward_invariant_closu
 
 ---
 
-## Investigation orchestrator
+## Super Team orchestration
 
-`run_investigation.py` executes lane collectors (subprocess), streams interior JSONL, writes summaries:
+Six named agents (`super_team.py`) dispatched by `run_investigation.py`. Per-run status: `correlations/investigation/SUPER_TEAM_RUN.json`. All lane collectors must exit 0 or orchestrator fails.
 
 ```bash
 python research/remainders/run_investigation.py --run-slow-lanes
@@ -144,7 +156,10 @@ python research/remainders/run_investigation.py --skip-lane-execution \
 | Path | Contents |
 |------|----------|
 | `research/remainders/REMAINDER_LANES_SYNTHESIS.md` | This document |
-| `research/remainders/run_investigation.py` | Multi-lane orchestrator |
+| `research/remainders/SUPER_TEAM_MANIFEST.md` | Six-agent roster |
+| `research/remainders/super_team.py` | Agent definitions |
+| `research/remainders/correlations/investigation/SUPER_TEAM_RUN.json` | Per-run agent status |
+| `research/remainders/run_investigation.py` | Super Team orchestrator |
 | `research/remainders/lane_collectors/endpoint_residue_probe.py` | Fresh endpoint probe |
 | `research/remainders/lane_collectors/mod30_ridge_probe.py` | Fresh ridge probe |
 | `research/remainders/output/1.5e6/raw_records.jsonl` | Scaled interior (≥10⁵ gaps) |
