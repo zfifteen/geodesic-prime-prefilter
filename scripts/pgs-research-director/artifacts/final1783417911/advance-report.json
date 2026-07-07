@@ -1,0 +1,25 @@
+{
+  "cycle_id": "final1783417911",
+  "parsed_job_id": "chamber-reset-lemma-draft",
+  "gwr_23_29": {
+    "p": 23,
+    "q": 29,
+    "gwr_witness": 25,
+    "min_divisor_count": 3,
+    "e_n": 1.609438
+  },
+  "gwr_89_97": {
+    "p": 89,
+    "q": 97,
+    "gwr_witness": 91,
+    "min_divisor_count": 4,
+    "e_n": 4.51086
+  },
+  "referenced": [
+    "research/00-index/continuity/hourly_current_job.json",
+    "AGENTS.md",
+    "PROOF.md"
+  ],
+  "status": "ADVANCE",
+  "next_step": "Extend per parsed queue."
+}
