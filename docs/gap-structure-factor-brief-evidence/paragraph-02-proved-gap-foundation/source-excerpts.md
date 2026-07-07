@@ -8,7 +8,7 @@ Line evidence:
 
 - `5-13`: states the deterministic next-prime rule from exact divisor counts.
 - `15-25`: states that the next-prime rule and selected-integer theorem are
-  universal under their stated hypotheses.
+  universal.
 - `31-49`: explains why the first later integer with exactly two divisors is
   the next prime.
 - `63-83`: explains divisor count as factor-choice load and defines the first

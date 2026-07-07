@@ -40,6 +40,16 @@ This folder tracks work to **harden and enhance** `PROOF.md` so that its claims 
 
 ## Current Phase
 
-**Phase 0 — Audit & inventory** (this folder)
+**Phase 1 — Epistemic hygiene** (in progress)
 
-Next: prioritize shortcomings by severity, draft concrete `PROOF.md` patch plans per goal, and define certificate schemas for finite-base claims.
+Completed in this folder:
+- Shortcomings audit (`shortcomings.md`)
+- Goals and phased roadmap (`goals.md`)
+- Certificate schema (`certificate-schema.md`)
+- Lean readiness gate stub (`lean-readiness.md`)
+- Certificate emitter (`scripts/emit_certificates.py`) with schema-conformant JSON artifacts
+- `PROOF.md` patch: Certified Finite Bases section + multi-axis theorem stack status
+
+Active collaboration: [Discussion #24 — PGS Enhancements](https://github.com/zfifteen/prime-gap-structure/discussions/24) (Transformer Contract Protocol v1.0)
+
+Next: classical lemma appendix (G6), reproduction commands in `PROOF.md` (G5), then Phase 3 mathematical closure (S1 PSP, S2 twin-prime).

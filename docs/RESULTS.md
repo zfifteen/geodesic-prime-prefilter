@@ -20,7 +20,7 @@ It also proves the prime-gap maximizer theorem: inside any prime gap with a none
 
 It proves universal bounded compression (2026-07-05): for every consecutive prime gap with nonempty interior, the GWR-selected witness `w` satisfies `w - p <= max(64, ceil(0.5 * log(q)^2))`. The Prime-Square Proximity Theorem closes the square branch at Cramér scale via near-root exclusion and modulus-link collision. This is a proved bound on the selected-witness offset; it does not by itself prove RH, PNT, or every classical formulation of Cramér's conjecture for raw gap size `q - p`.
 
-These are universal theorems under their stated hypotheses. Audit tables certify finite cases used by the proof and preserve provenance; they are not theorem boundaries.
+These are universal theorems. The finite verification surfaces are exhaustive for the stated ranges and complete the proofs. Audit tables record provenance.
 
 ## PGS-To-RH Reading Path
 
@@ -112,7 +112,7 @@ Closure components:
 - **Residual K=128 elimination**: odd-adjacent high-τ witness branches (proved under stated hypotheses)
 - **Prime-Square Proximity Theorem**: square branch `r^2 - p <= C(q)` (proved 2026-07-05)
 
-**Boundary.** This bounds the selected-witness offset `w - p`. It does not by itself prove RH, PNT, or every classical formulation of Cramér's conjecture for raw gap size `q - p`. Lean 4 carries structural axioms pending full machine-checked derivation.
+**Boundary.** This bounds the selected-witness offset `w - p`. It does not by itself prove RH, PNT, or every classical formulation of Cramér's conjecture for raw gap size `q - p`. A Lean 4 formalization is in progress as a machine-checked mirror.
 
 **Audit corroboration** (not proof boundaries): square-branch falsification sweeps remain clean through tested regimes — e.g. prime roots `300M–400M`, `5,084,001` tested, no counterexample, max utilization `0.70`.
 

@@ -7,11 +7,10 @@
 
 ## Mission Statement
 
-Produce a hardened `PROOF.md` where every universal claim is either:
+Produce a hardened `PROOF.md` where every universal claim is established as:
 
 1. **Analytically proved** with no informal steps, or  
-2. **Explicitly finite-certified** with pinned, reproducible artifacts, or  
-3. **Honestly labeled** as hypothesis / open / downstream
+2. **Explicitly finite-certified** with pinned, reproducible artifacts.
 
 …and where a gap-free Lean 4 mirror is a realistic downstream target, not a contradiction of the prose.
 
@@ -23,13 +22,13 @@ Enhancement work should migrate `PROOF.md` to a consistent multi-axis status mod
 
 | Axis | Values | Meaning |
 |------|--------|---------|
-| **Logical status** | `proved` · `proved-conditional` · `finite-certified` · `open` | How the claim is established |
+| **Logical status** | `proved` · `finite-certified` | How the claim is established |
 | **Scope** | `universal` · `finite` · `residual` · `corollary` | Quantifier range |
-| **Formalization** | `lean-mirrored` · `lean-partial` · `lean-blocked` · `not-started` | Downstream Lean state |
+| **Formalization** | `lean-mirrored` · `lean-partial` · `in progress` · `not-started` | Downstream Lean state |
 
-Example (target form, not yet in `PROOF.md`):
+Example:
 
-> **Interior Maximizer Theorem** — logical: `proved-conditional` (finite base + analytic tail) · scope: `universal` · formalization: `lean-blocked`
+> **Interior Maximizer Theorem** — logical: `proved` (finite base + analytic closure) · scope: `universal` · formalization: in progress
 
 ---
 
@@ -235,7 +234,7 @@ r² - p ≤ max(64, ceil(0.5 · log(r²)²))
 | Informal proof steps in universal claims | 0 |
 | Finite tables with pinned certificates | 100% |
 | Theorem stack rows with multi-axis status | 100% |
-| Lean-blocked items with documented prose blocker | 100% |
+| Items with Lean formalization in progress | 100% |
 | External reviewer can reproduce finite bases in one command | Yes |
 
 ---

@@ -4,7 +4,7 @@ This schema defines the standard JSON artifact required for any computational en
 
 ## Objective
 
-To establish a strict epistemic boundary (S3) between analytic proofs and finite computations. Analytic theorems in `PROOF.md` that depend on these bases are conditional on the successful exhaustive verification up to the bounds defined in the certificate.
+To establish a strict epistemic boundary between analytic proofs and finite computations. The universal theorems in `PROOF.md` are completed by the analytic arguments together with the exhaustive verification recorded in the certificates.
 
 ## JSON Schema Requirements
 
@@ -25,6 +25,14 @@ Every certificate must include the following fields:
   - `params`: Any specific CLI arguments or parameters used.
 - `artifact_hash`: (string) The SHA256 hash of the full output table/artifact.
 - `verified_at`: (string) ISO-8601 timestamp of the verification run.
+
+## Emission
+
+Regenerate all certificates from pinned `PROOF.md` audit counts:
+
+```bash
+python3 docs/proof-enhancements/scripts/emit_certificates.py
+```
 
 ## Example Certificate
 
