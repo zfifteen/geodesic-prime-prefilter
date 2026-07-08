@@ -3,7 +3,7 @@
 **Purpose:** One door to every RH-facing aspect of the PGS program.
 
 This chapter is a **card catalog**, not a second copy of the proofs. Canonical
-content stays in [PROOF.md](../../PROOF.md), [docs/rh/](../../docs/rh/), and the
+content stays in [PROOF.md](../../PROOF.md), [docs/rh/](../../docs/rh/README.md), and the
 linked research folders below. This hub indexes those sources with stable IDs,
 status labels, and boundaries.
 
@@ -41,18 +41,18 @@ status labels, and boundaries.
 ## Public narrative spine (not duplicated here)
 
 Reviewer-facing prose lives in [docs/rh/README.md](../../docs/rh/README.md).
-Use this hub for **program navigation**; use [docs/rh/](../../docs/rh/) for
+Use this hub for **program navigation**; use [docs/rh/](../../docs/rh/README.md) for
 **external review**.
 
 ## Related chapters (canonical homes)
 
 | Chapter / folder | RH role |
 |------------------|---------|
-| [04-bounded-compression](../04-bounded-compression/) | Cramér-scale witness bound (source) |
-| [18-derived-half-coefficient](../18-derived-half-coefficient/) | Derived ½ coefficient + F18-003 hypothesis |
-| [pgs-rh-placement-empirics-2026-06](../pgs-rh-placement-empirics-2026-06/) | d=4 placement geometry + audits |
-| [12-rh-bridge](../12-rh-bridge/) | Archived pointer only |
-| [experiments/integer-order-before-zeta-whitepaper-2026-07](../../experiments/integer-order-before-zeta-whitepaper-2026-07/) | Public explanatory whitepaper |
+| [04-bounded-compression](../04-bounded-compression/README.md) | Cramér-scale witness bound (source) |
+| [18-derived-half-coefficient](../18-derived-half-coefficient/README.md) | Derived ½ coefficient + F18-003 hypothesis |
+| [pgs-rh-placement-empirics-2026-06](../pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md) | d=4 placement geometry + audits |
+| [12-rh-bridge](../12-rh-bridge/README.md) | Archived pointer only |
+| [experiments/integer-order-before-zeta-whitepaper-2026-07](../../experiments/integer-order-before-zeta-whitepaper-2026-07/README.md) | Public explanatory whitepaper |
 
 ## Maintenance
 

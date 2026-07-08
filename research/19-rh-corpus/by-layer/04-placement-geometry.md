@@ -17,8 +17,8 @@ Chamber invariants, d=4 carrier geometry, empirics, draft transfer lemma.
 | [RH-071](../FINDINGS_INDEX.md) | measured | [d=4 falsification 10⁷](../../pgs-rh-placement-empirics-2026-06/pgs_d4_frac_pos_falsification_10000000.json) | [pgs_d4_frac_pos_falsification_10000000.json](../../pgs-rh-placement-empirics-2026-06/pgs_d4_frac_pos_falsification_10000000.json) |
 | [RH-080](../FINDINGS_INDEX.md) | measured | [Lean Placement.lean](../../../lean-4/PGS/Placement.lean) | [lean-4/PGS/Placement.lean](../../../lean-4/PGS/Placement.lean) |
 | [RH-081](../FINDINGS_INDEX.md) | measured | [Lean placement invariants](../../../lean-4/pgs-rh-placement-invariants.lean) | [lean-4/pgs-rh-placement-invariants.lean](../../../lean-4/pgs-rh-placement-invariants.lean) |
-| [RH-092](../FINDINGS_INDEX.md) | archived | [Off-axis pair carrier](../../12-rh-bridge/docs/off_axis_pair_carrier_lemma_resolution.md) | [12-rh-bridge/docs/off_axis_pair_carrier_lemma_resolution.md](../../12-rh-bridge/docs/off_axis_pair_carrier_lemma_resolution.md) |
+| [RH-092](../FINDINGS_INDEX.md) | archived | [Off-axis pair carrier](../../12-rh-bridge/README.md) | [12-rh-bridge/docs/off_axis_pair_carrier_lemma_resolution.md](../../12-rh-bridge/README.md) |
 
-**Folder home:** [pgs-rh-placement-empirics-2026-06](../../pgs-rh-placement-empirics-2026-06/)
+**Folder home:** [pgs-rh-placement-empirics-2026-06](../../pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md)
 
 [Stack overview](../SOURCE_STACK.md) · [Full index](../FINDINGS_INDEX.md)
