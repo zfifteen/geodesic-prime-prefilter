@@ -17,7 +17,7 @@ Chamber invariants, d=4 carrier geometry, empirics, draft transfer lemma.
 | RH-071 | measured | d=4 falsification 10⁷ | [`pgs_d4_frac_pos_falsification_10000000.json`](../../pgs-rh-placement-empirics-2026-06/pgs_d4_frac_pos_falsification_10000000.json) |
 | RH-080 | measured | Lean Placement.lean | [`lean-4/PGS/Placement.lean`](../../../lean-4/PGS/Placement.lean) |
 | RH-081 | measured | Lean placement invariants | [`lean-4/pgs-rh-placement-invariants.lean`](../../../lean-4/pgs-rh-placement-invariants.lean) |
-| RH-092 | archived | Off-axis pair carrier | [`12-rh-bridge/docs/off_axis_pair_carrier_lemma_resolution.md`/../../12-rh-bridge/docs/off_axis_pair_carrier_lemma_resolution.md) |
+| RH-092 | archived | Off-axis pair carrier | [`12-rh-bridge/docs/off_axis_pair_carrier_lemma_resolution.md`](../../12-rh-bridge/docs/off_axis_pair_carrier_lemma_resolution.md) |
 
 **Folder home:** [`pgs-rh-placement-empirics-2026-06`](../../pgs-rh-placement-empirics-2026-06/)
 
