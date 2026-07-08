@@ -33,6 +33,8 @@ for each chapter.
 | `13-prime-spiral` | Prime-spiral visualization and structure work | mapped |
 | `14-sha-nonce` | SHA/nonce adjacency probes | mapped |
 | `15-documentation-correction` | Public documentation correction and framing audit | active |
+| `18-derived-half-coefficient` | Derived ½ in bounded compression; F18 findings | active |
+| `19-rh-corpus` | RH-facing findings navigation hub (index + status layers) | active |
 
 ## Status Vocabulary
 
