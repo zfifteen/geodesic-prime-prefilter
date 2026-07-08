@@ -1,8 +1,8 @@
 {
-  "timestamp_utc": "2026-07-08T02:34:56.940767+00:00",
+  "timestamp_utc": "2026-07-08T03:07:29.873426+00:00",
   "source_jsonl": "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/remainders/output/pattern_hunt_surface/raw_records.jsonl",
   "surface_label": "pattern_hunt_surface_max_p_400000",
-  "repro_command": "python research/remainders/pattern_hunt.py --jsonl /Users/velocityworks/IdeaProjects/prime-gap-structure/research/remainders/output/pattern_hunt_surface/raw_records.jsonl --output /Users/velocityworks/IdeaProjects/prime-gap-structure/research/remainders/correlations/investigation/pattern_partition_summary.json",
+  "repro_command": "python research/remainders/pattern_hunt.py --jsonl /Users/velocityworks/IdeaProjects/prime-gap-structure/research/remainders/output/pattern_hunt_surface/raw_records.jsonl --output /Users/velocityworks/IdeaProjects/prime-gap-structure/research/remainders/correlations/investigation/pattern_partition_summary.json --extended-output /Users/velocityworks/IdeaProjects/prime-gap-structure/research/remainders/correlations/investigation/pattern_extended_analysis.json",
   "partition_keys": [
     "p_mod_30",
     "position_bin",
@@ -10,7 +10,9 @@
   ],
   "joint_features": [
     "zero_pattern_code",
-    "primorial_level"
+    "primorial_level",
+    "mod210_class",
+    "k_offset_bin"
   ],
   "summary": {
     "record_count": 366147,
@@ -424,7 +426,7 @@
         },
         "dist_eq_1_rate": 0.0,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 1,
@@ -530,7 +532,7 @@
         },
         "dist_eq_1_rate": 0.0,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 11,
@@ -586,7 +588,7 @@
         },
         "dist_eq_1_rate": 0.4060430463576159,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 19,
@@ -1208,7 +1210,7 @@
         },
         "dist_eq_1_rate": 0.0,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 19,
@@ -1275,7 +1277,7 @@
         },
         "dist_eq_1_rate": 0.8941489361702127,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 7,
@@ -1386,7 +1388,7 @@
         },
         "dist_eq_1_rate": 0.0,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 17,
@@ -1425,7 +1427,7 @@
         },
         "dist_eq_1_rate": 0.0,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 23,
@@ -1463,7 +1465,7 @@
         },
         "dist_eq_1_rate": 0.0,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 17,
@@ -1538,7 +1540,7 @@
         },
         "dist_eq_1_rate": 0.0,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 23,
@@ -1593,7 +1595,7 @@
         },
         "dist_eq_1_rate": 0.0,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 23,
@@ -1611,7 +1613,7 @@
         },
         "dist_eq_1_rate": 0.0,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 13,
@@ -1649,7 +1651,7 @@
         },
         "dist_eq_1_rate": 0.37727272727272726,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 1,
@@ -1718,7 +1720,7 @@
         },
         "dist_eq_1_rate": 0.8386167146974063,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 7,
@@ -1856,7 +1858,7 @@
         },
         "dist_eq_1_rate": 0.0,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 17,
@@ -2007,7 +2009,7 @@
         },
         "dist_eq_1_rate": 0.0,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 7,
@@ -2047,7 +2049,7 @@
         },
         "dist_eq_1_rate": 0.3772782503037667,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 13,
@@ -2103,7 +2105,7 @@
         },
         "dist_eq_1_rate": 0.3848069738480697,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 17,
@@ -2142,7 +2144,7 @@
         },
         "dist_eq_1_rate": 0.38602015113350124,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 7,
@@ -2197,7 +2199,7 @@
         },
         "dist_eq_1_rate": 0.3786279683377309,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 1,
@@ -2266,7 +2268,7 @@
         },
         "dist_eq_1_rate": 0.0,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 17,
@@ -2281,7 +2283,7 @@
         },
         "dist_eq_1_rate": 0.0,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 7,
@@ -2487,7 +2489,7 @@
         },
         "dist_eq_1_rate": 0.0,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 11,
@@ -2505,7 +2507,7 @@
         },
         "dist_eq_1_rate": 0.0,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 29,
@@ -3026,7 +3028,7 @@
         },
         "dist_eq_1_rate": 0.3556521739130435,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 29,
@@ -3064,7 +3066,7 @@
         },
         "dist_eq_1_rate": 0.34402852049910876,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 19,
@@ -3131,7 +3133,7 @@
         },
         "dist_eq_1_rate": 0.0,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 11,
@@ -3341,7 +3343,7 @@
         },
         "dist_eq_1_rate": 1.0,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 13,
@@ -3449,7 +3451,7 @@
         },
         "dist_eq_1_rate": 0.0,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 1,
@@ -3483,7 +3485,7 @@
         },
         "dist_eq_1_rate": 0.0,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 1,
@@ -3501,7 +3503,7 @@
         },
         "dist_eq_1_rate": 0.0,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 1,
@@ -3518,7 +3520,7 @@
         },
         "dist_eq_1_rate": 0.0,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 1,
@@ -3535,7 +3537,7 @@
         },
         "dist_eq_1_rate": 0.0,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 1,
@@ -3552,7 +3554,7 @@
         },
         "dist_eq_1_rate": 0.0,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 1,
@@ -3570,7 +3572,7 @@
         },
         "dist_eq_1_rate": 0.0,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 1,
@@ -3587,7 +3589,7 @@
         },
         "dist_eq_1_rate": 0.0,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 1,
@@ -3604,7 +3606,7 @@
         },
         "dist_eq_1_rate": 0.09090909090909091,
         "gwr_rate": 0.0,
-        "gwr_dist_eq_1_rate": 0
+        "gwr_dist_eq_1_rate": 0.0
       },
       {
         "p_mod_30": 3,
@@ -3994,6 +3996,7 @@
     {
       "id": "p29_doorstep_decoy",
       "records": 2713,
+      "cell_count": 2,
       "mean_gwr_rate": 0.1434108527131783
     },
     {
@@ -4174,7 +4177,7 @@
           },
           "dist_eq_1_rate": 1.0,
           "gwr_rate": 0.0,
-          "gwr_dist_eq_1_rate": 0,
+          "gwr_dist_eq_1_rate": 0.0,
           "lift": 10.813875188280813
         },
         {
@@ -4335,6 +4338,11 @@
           "gwr_dist_eq_1_rate": 0.0
         }
       ]
+    },
+    {
+      "id": "position_bin_9_tautology",
+      "note": "normalized position bin 9 leaks dist_eq_1",
+      "sample_count": 2307
     }
   ]
 }
