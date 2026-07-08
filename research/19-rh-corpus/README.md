@@ -3,8 +3,9 @@
 **Purpose:** One door to every RH-facing aspect of the PGS program.
 
 This chapter is a **card catalog**, not a second copy of the proofs. Canonical
-content stays in `PROOF.md`, `docs/rh/`, and the linked research folders below.
-This hub indexes those sources with stable IDs, status labels, and boundaries.
+content stays in [PROOF.md](../../PROOF.md), [docs/rh/](../../docs/rh/), and the
+linked research folders below. This hub indexes those sources with stable IDs,
+status labels, and boundaries.
 
 ## Start here
 
@@ -40,7 +41,8 @@ This hub indexes those sources with stable IDs, status labels, and boundaries.
 ## Public narrative spine (not duplicated here)
 
 Reviewer-facing prose lives in [docs/rh/README.md](../../docs/rh/README.md).
-Use this hub for **program navigation**; use `docs/rh/` for **external review**.
+Use this hub for **program navigation**; use [docs/rh/](../../docs/rh/) for
+**external review**.
 
 ## Related chapters (canonical homes)
 

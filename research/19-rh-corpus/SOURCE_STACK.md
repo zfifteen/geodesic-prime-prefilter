@@ -47,6 +47,19 @@ Fixed reading order for every RH-facing claim in PGS. Layer number matches
 
 ---
 
+## Layer authority links
+
+| Layer | Primary authority |
+|-------|-------------------|
+| L1 | [PROOF.md](../../PROOF.md) |
+| L2 | [docs/core/DIVISOR_NORMALIZATION_IDENTITY.md](../../docs/core/DIVISOR_NORMALIZATION_IDENTITY.md), [docs/rh/dni-to-zeta-compression.md](../../docs/rh/dni-to-zeta-compression.md) |
+| L3 | [docs/rh/dni-to-zeta-compression.md](../../docs/rh/dni-to-zeta-compression.md) |
+| L4 | [research/pgs-rh-placement-empirics-2026-06/](../pgs-rh-placement-empirics-2026-06/) |
+| L5 | [docs/rh/off-critical-pole-exclusion.md](../../docs/rh/off-critical-pole-exclusion.md) |
+| L6 | [docs/rh/explicit-formula-bridge.md](../../docs/rh/explicit-formula-bridge.md) |
+
+---
+
 ## Layer → typical status
 
 | Layer | What you get | Typical status | Proves RH? |

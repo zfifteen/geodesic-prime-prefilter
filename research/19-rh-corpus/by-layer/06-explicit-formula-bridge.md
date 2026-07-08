@@ -5,7 +5,7 @@
 
 | ID | Status | Title | Path |
 |----|--------|-------|------|
-| RH-060 | narrative | Explicit formula bridge | [`docs/rh/explicit-formula-bridge.md`](../../../docs/rh/explicit-formula-bridge.md) |
+| [RH-060](../FINDINGS_INDEX.md) | narrative | [Explicit formula bridge](../../../docs/rh/explicit-formula-bridge.md) | [docs/rh/explicit-formula-bridge.md](../../../docs/rh/explicit-formula-bridge.md) |
 
 **Chain:** $R(s) \to \Lambda(n) \to \psi(x) \to$ zero-term / error language.
 

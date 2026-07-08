@@ -23,14 +23,16 @@ actually lives — and it remains **open** in this program.
 
 1. **Proved:** Given prime `p`, divisor-count traversal finds the next prime;
    gap interiors have GWR structure; bounded compression holds at Cramér scale
-   (including derived factor ½). See `PROOF.md`.
+   (including derived factor ½). See [PROOF.md](../../PROOF.md).
 
 2. **Exact:** The same divisor field compresses to `ζ(s)²` and
-   `R(s) = -ζ'(s)/ζ(s)`. See `docs/rh/dni-to-zeta-compression.md`.
+   `R(s) = -ζ'(s)/ζ(s)`. See
+   [docs/rh/dni-to-zeta-compression.md](../../docs/rh/dni-to-zeta-compression.md).
 
 3. **Open:** Showing every nontrivial pole of `R(s)` lies on `Re(s)=½` —
    equivalently RH — requires a source-to-spectral placement theorem not yet
-   closed. See `docs/rh/off-critical-pole-exclusion.md`.
+   closed. See
+   [docs/rh/off-critical-pole-exclusion.md](../../docs/rh/off-critical-pole-exclusion.md).
 
 ---
 
@@ -43,7 +45,7 @@ actually lives — and it remains **open** in this program.
 | Prepare an X post / public thread | [READING_PATHS.md](./READING_PATHS.md) § Public |
 | Review as a skeptic | [READING_PATHS.md](./READING_PATHS.md) § Reviewer + [docs/rh/reviewer-map.md](../../docs/rh/reviewer-map.md) |
 | Work placement geometry | [by-layer/04-placement-geometry.md](./by-layer/04-placement-geometry.md) |
-| Avoid overclaiming | Every row in FINDINGS_INDEX has a **Boundary** column — read it |
+| Avoid overclaiming | Every row in [FINDINGS_INDEX.md](./FINDINGS_INDEX.md) has a **Boundary** column — read it |
 
 ---
 
@@ -65,6 +67,6 @@ actually lives — and it remains **open** in this program.
 ## What this folder is not
 
 - Not a proof of RH
-- Not a replacement for `PROOF.md`
-- Not a revival of archived `12-rh-bridge` completion machinery
-- Not a mirror of `docs/rh/` — that bundle stays the public spine
+- Not a replacement for [PROOF.md](../../PROOF.md)
+- Not a revival of archived [12-rh-bridge](../12-rh-bridge/) completion machinery
+- Not a mirror of [docs/rh/](../../docs/rh/) — that bundle stays the public spine
