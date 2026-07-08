@@ -136,11 +136,13 @@ Supporting scripts exist under `research/02-gwr-dni/scripts/proof/` but linkage 
 
 ## 4. Presentation & Maintenance
 
-### 🟡 P1 — Theorem stack status column over-unifies proof modalities
+### ✅ P1 — Theorem stack status column over-unifies proof modalities
 
-**Location:** Lines 728–738
+**Location:** `PROOF.md` §Theorem Stack Summary
 
 **Issue:** Single “proved, universal” label applied to analytically proved items, finite-certified items, and items with informal steps (twin-prime). Should use multi-axis status (see goals).
+
+**Resolution (2026-07-08):** Theorem stack split into separate universal-pillar and certified-finite-premise tables with distinct Logical status · Scope · Formalization columns. Headline section and Certified Finite Bases entries updated per G3. Resolved in #34.
 
 ---
 
