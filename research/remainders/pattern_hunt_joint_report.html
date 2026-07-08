@@ -1,19 +1,124 @@
-<!DOCTYPE html><html><head><meta charset=utf-8><title>Pattern Hunt</title>
-<style>body{font-family:system-ui;background:#111;color:#eee;padding:2rem}table,th,td{border:1px solid #444;padding:.4rem}</style></head><body>
-<h1>Remainder Pattern Hunt Joint Report</h1>
-<h2>Methods</h2><p>Surface pattern_hunt_surface_max_p_400000: 366147 records, 212 cells.</p>
-<p>Partition: p_mod_30 x position_bin x gap_regime. Joint: zero_pattern_code, primorial_level.</p>
-<p><code>python research/remainders/pattern_hunt.py --jsonl /Users/velocityworks/IdeaProjects/prime-gap-structure/research/remainders/output/pattern_hunt_surface/raw_records.jsonl --output /Users/velocityworks/IdeaProjects/prime-gap-structure/research/remainders/correlations/investigation/pattern_partition_summary.json</code></p>
-<h2>Collaboration Rounds</h2><p>10 Antigravity CLI rounds logged in scratch agy_round_1..10.log (conversation 5c511509-23f2-48a8-936c-78e433748e1b).</p>
-<h2>Discovered Patterns</h2><ul>
-<li>p29 Doorstep: pattern_extended_analysis.json p29_wide_k1_doorstep — {'total': 2999, 'four_plus': 2999}</li>
-<li>Mod-210 GWR class 7/11 rate 1.0 — pattern_extended_analysis.json gwr_mod210_classes</li>
-<li>Coprime GWR class 0 rate 0.0 — n=11943</li>
-<li>Forward k-offset: k_1_3 rate 0.214</li>
-</ul>
-<h2>Falsified / Null Cells</h2><ul>
-<li>position_bin=9 dist_eq_1_rate=1.0 tautology (Antigravity R2)</li>
-<li>Global num_zeros MI weak without partitioning</li>
-</ul>
-<h2>Open Probes</h2><ul><li>Scale to 1.5e6</li><li>is_gwr bisection</li><li>Semiprime containing-gap collector</li></ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Remainder Pattern Hunt — Joint Report</title>
+<style>
+:root {--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--hot:#3fb950;--cold:#f85149}
+body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--text);margin:0;line-height:1.55}
+header.hero{background:linear-gradient(135deg,#1a2332,#0d1117);border-bottom:1px solid var(--border);padding:2.5rem 2rem}
+.stats{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.25rem}
+.stat{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:.75rem 1.1rem}
+.stat strong{display:block;font-size:1.35rem;color:var(--accent)}
+main{max-width:1100px;margin:0 auto;padding:2rem} section{margin-bottom:2.5rem}
+h2{border-bottom:1px solid var(--border);padding-bottom:.4rem}
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:1.25rem}
+table{width:100%;border-collapse:collapse} th,td{border:1px solid var(--border);padding:.45rem}
+.round-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem}
+.round-card{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:1rem}
+.round-num{background:var(--accent);color:#0d1117;font-weight:700;font-size:.75rem;padding:.15rem .45rem;border-radius:4px}
+.finding-list{list-style:none;padding:0} .finding-list li{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:1rem;margin-bottom:.75rem}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+</style>
+</head>
+<body>
+<header class="hero">
+  <h1>Remainder Pattern Hunt — Joint Report</h1>
+  <p>Grok + Antigravity · pattern_hunt_surface_max_p_400000</p>
+  <p>Conversation <code>5c511509-23f2-48a8-936c-78e433748e1b</code></p>
+  <div class="stats">
+    <div class="stat"><strong>366,147</strong> records</div>
+    <div class="stat"><strong>212</strong> cells</div>
+    <div class="stat"><strong>9.25%</strong> global dist=1</div>
+    <div class="stat"><strong>15.21%</strong> GWR baseline</div>
+  </div>
+</header>
+<main>
+  <section id="methods"><h2>Methods</h2><div class="panel">
+    <p>Partition: <code>p_mod_30 × position_bin × gap_regime</code></p>
+    <p>Joint: <code>zero_pattern_code</code>, <code>primorial_level</code>, <code>mod210_class</code>, <code>k_offset_bin</code></p>
+    <pre>python research/remainders/pattern_hunt.py --jsonl /Users/velocityworks/IdeaProjects/prime-gap-structure/research/remainders/output/pattern_hunt_surface/raw_records.jsonl --output /Users/velocityworks/IdeaProjects/prime-gap-structure/research/remainders/correlations/investigation/pattern_partition_summary.json --extended-output research/remainders/correlations/investigation/pattern_extended_analysis.json
+python research/remainders/pattern_hunt_build_report.py</pre>
+  </div></section>
+
+  <section id="collaboration"><h2>Collaboration Rounds</h2>
+    <div class="round-grid"><article class="round-card"><header><span class="round-num">R1</span><h3>Primary partition key proposals</h3></header><p>Elevate is_gwr, primorial_level, zero_pattern_code as primary keys with falsifiable dist_eq_1 hypotheses.</p></article>
+<article class="round-card"><header><span class="round-num">R2</span><h3>position_bin=9 tautology falsified</h3></header><p>position_bin=9 leaks dist_eq_1 via k=g-1. Replace with forward k_offset_bin.</p></article>
+<article class="round-card"><header><span class="round-num">R3</span><h3>Mod-210 16-class codebook</h3></header><p>Mask to 0x0F for 16 divisors of 210. Super-Signal C15_P210 =&gt; 1.0; Coprime C00 =&gt; 0.0.</p></article>
+<article class="round-card"><header><span class="round-num">R4</span><h3>Doorstep hierarchy</h3></header><p>All 8 p_mod_30 classes force doorstep resonance. GWR rate must decrease Mod-2 &gt; Mod-10 &gt; Mod-6 &gt; Mod-29.</p></article>
+<article class="round-card"><header><span class="round-num">R5</span><h3>p29 primorial decoy</h3></header><p>Delta-mu primorial_level is_gwr True vs False over p=29 g&gt;=4; expected negative.</p></article>
+<article class="round-card"><header><span class="round-num">R6</span><h3>Along-gap transitions</h3></header><p>E_n running-min gradient, chamber_wall_distance, primorial_hamming_transition ranked by falsification power.</p></article>
+<article class="round-card"><header><span class="round-num">R7</span><h3>Semiprime collector</h3></header><p>Gap-geometry collector without factorization; JSONL compatible with pattern_hunt.py.</p></article>
+<article class="round-card"><header><span class="round-num">R8</span><h3>Adversarial controls</h3></header><p>Simpson skew, algebraic leakage, modulus bias, squeezed chamber — stratified baselines required.</p></article>
+<article class="round-card"><header><span class="round-num">R9</span><h3>Pattern vs null table</h3></header><p>GWR Super-Signal vs Coprime isolator vs Mod-30 decoy with strict falsifiers.</p></article>
+<article class="round-card"><header><span class="round-num">R10</span><h3>HTML report outline</h3></header><p>Eight sections mapped to JSON paths for baseline, decoy, codebook, super-signal, nulls, transitions.</p></article></div>
+  </section>
+
+  <section id="discovered"><h2>Discovered Patterns</h2>
+    <div class="two-col">
+      <div class="panel"><h3>Mod-210 GWR Classes</h3>
+        <p>JSON: <code>pattern_extended_analysis.json → analysis.gwr_mod210_classes</code></p>
+        <table><thead><tr><th>cls</th><th>name</th><th>n</th><th>rate</th><th>lift</th></tr></thead>
+        <tbody><tr><td>0</td><td><code>C00_COPRIME</code></td><td>11,943</td><td>0.00% <span class="badge cold">0%</span></td><td>0.00x</td></tr>
+<tr><td>1</td><td><code>C01_P2</code></td><td>7,888</td><td>15.35% </td><td>1.01x</td></tr>
+<tr><td>2</td><td><code>C02_P3</code></td><td>4,977</td><td>0.00% <span class="badge cold">0%</span></td><td>0.00x</td></tr>
+<tr><td>3</td><td><code>C03_P5</code></td><td>2,140</td><td>95.61% </td><td>6.29x</td></tr>
+<tr><td>4</td><td><code>C04_P7</code></td><td>2,586</td><td>0.00% <span class="badge cold">0%</span></td><td>0.00x</td></tr>
+<tr><td>5</td><td><code>C05_P6</code></td><td>267</td><td>26.97% </td><td>1.77x</td></tr>
+<tr><td>6</td><td><code>C06_P10</code></td><td>132</td><td>0.00% <span class="badge cold">0%</span></td><td>0.00x</td></tr>
+<tr><td>7</td><td><code>C07_P14</code></td><td>1,008</td><td>100.00% <span class="badge hot">100%</span></td><td>6.58x</td></tr>
+<tr><td>8</td><td><code>C08_P15</code></td><td>1,787</td><td>0.00% <span class="badge cold">0%</span></td><td>0.00x</td></tr>
+<tr><td>9</td><td><code>C09_P21</code></td><td>215</td><td>26.98% </td><td>1.77x</td></tr>
+<tr><td>10</td><td><code>C10_P35</code></td><td>120</td><td>0.00% <span class="badge cold">0%</span></td><td>0.00x</td></tr>
+<tr><td>11</td><td><code>C11_P30</code></td><td>511</td><td>100.00% <span class="badge hot">100%</span></td><td>6.58x</td></tr>
+<tr><td>12</td><td><code>C12_P42</code></td><td>40</td><td>0.00% </td><td>0.00x</td></tr>
+<tr><td>13</td><td><code>C13_P70</code></td><td>1</td><td>0.00% </td><td>0.00x</td></tr>
+<tr><td>14</td><td><code>C14_P105</code></td><td>1</td><td>0.00% </td><td>0.00x</td></tr>
+<tr><td>15</td><td><code>C15_P210</code></td><td>243</td><td>100.00% <span class="badge hot">100%</span></td><td>6.58x</td></tr></tbody></table>
+      </div>
+      <div class="panel"><h3>Forward k-Offset (GWR)</h3>
+        <p>JSON: <code>pattern_extended_analysis.json → analysis.gwr_k_offset_bins</code></p>
+        <table><thead><tr><th>bin</th><th>n</th><th>d1</th><th>rate</th></tr></thead>
+        <tbody><tr><td><code>k_1_3</code></td><td>22,378</td><td>4,784</td><td>21.38%</td></tr>
+<tr><td><code>k_4_6</code></td><td>9,992</td><td>317</td><td>3.17%</td></tr>
+<tr><td><code>k_7_10</code></td><td>1,291</td><td>38</td><td>2.94%</td></tr>
+<tr><td><code>k_11_20</code></td><td>194</td><td>10</td><td>5.15%</td></tr>
+<tr><td><code>k_21plus</code></td><td>4</td><td>0</td><td>0.00%</td></tr></tbody></table>
+      </div>
+    </div>
+    <ul class="finding-list">
+      <li><strong>p≡29 Doorstep</strong> — <code>analysis.p29_wide_k1_doorstep</code>: 2,999 cases; GWR=0</li>
+      <li><strong>Mod-210 class 0</strong> — 0% dist=1 across 11,943 GWR records</li>
+      <li><strong>k-offset</strong> — k_1_3: 21.38% vs k_7_10: 2.94%</li>
+    </ul>
+  </section>
+
+  <section id="structural-laws"><h2>Structural Laws</h2><div class="panel"><div class="law"><h4>p≡29 Doorstep Decoy</h4><p>2,713 records; mean GWR 14.34%.</p></div>
+<div class="law"><h4>Interior High Lift</h4><table><thead><tr><th>p%30</th><th>bin</th><th>regime</th><th>dist=1</th><th>lift</th></tr></thead><tbody><tr><td>7</td><td>7</td><td>small_g3_6</td><td>100.00%</td><td>10.8x</td></tr>
+<tr><td>1</td><td>8</td><td>small_g3_6</td><td>100.00%</td><td>10.8x</td></tr>
+<tr><td>11</td><td>5</td><td>twin_g2</td><td>100.00%</td><td>10.8x</td></tr>
+<tr><td>13</td><td>7</td><td>small_g3_6</td><td>100.00%</td><td>10.8x</td></tr>
+<tr><td>17</td><td>5</td><td>twin_g2</td><td>100.00%</td><td>10.8x</td></tr>
+<tr><td>23</td><td>8</td><td>small_g3_6</td><td>100.00%</td><td>10.8x</td></tr></tbody></table></div>
+<div class="law falsified"><h4>position_bin=9 Tautology</h4><p>normalized position bin 9 leaks dist_eq_1 n=2,307.</p></div></div></section>
+
+  <section id="falsified"><h2>Falsified / Null Cells</h2>
+    <ul class="finding-list">
+      <li><strong>position_bin=9</strong> — Algebraic tautology (Antigravity R2)</li>
+      <li><strong>Global num_zeros MI</strong> — ~0.057 without partitioning</li>
+    </ul>
+  </section>
+
+  <section id="open"><h2>Open Probes</h2>
+    <ul class="finding-list">
+      <li>Scale to 1.5×10⁶</li><li>is_gwr bisection</li><li>Along-gap E-min transitions</li>
+      <li>Semiprime collector</li><li>Adversarial controls</li>
+    </ul>
+  </section>
+
+  <section id="synthesis"><h2>Joint Synthesis</h2><div class="panel">
+    <p>Patterns live in conditional joint geometry: GWR × mod-210 class × forward k-offset.
+       Use k_offset_bin instead of normalized position_bin for discovery.</p>
+  </div></section>
+</main>
 </body></html>
