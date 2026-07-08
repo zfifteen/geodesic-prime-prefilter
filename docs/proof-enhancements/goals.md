@@ -46,10 +46,10 @@ r² - p ≤ max(64, ceil(0.5 · log(r²)²))
 
 **Acceptance criteria:**
 
-- [ ] Modulus-link / tiling collision step has formal definitions (M-rough rows, admissible ℓ, collision predicate)
-- [ ] Counting or density argument is explicit inequalities, not prose metaphor
-- [ ] Lean `prime_square_proximity_theorem` can state the real bound (not trivial `C = r² - p`)
-- [ ] `near_root_exclusion_bound` integrates as a named sub-lemma with cross-reference
+- [x] Modulus-link / tiling collision step has formal definitions (M-rough rows, admissible ℓ, collision predicate)
+- [x] Counting or density argument is explicit inequalities, not prose metaphor
+- [x] Lean `prime_square_proximity_theorem` can state the real bound (not trivial `C = r² - p`)
+- [x] `near_root_exclusion_bound` integrates as a named sub-lemma with cross-reference
 
 **Deliverables:** `PROOF.md` patch · optional `docs/proof-enhancements/psp-closure/` working notes
 
@@ -61,9 +61,9 @@ r² - p ≤ max(64, ceil(0.5 · log(r²)²))
 
 **Acceptance criteria (if kept as theorem):**
 
-- [ ] “4+ zeros ⟺ w ≡ 0 (mod 30)” proved by exhaustive case analysis on the defined remainder vector
-- [ ] Step 3 replaced: explicit lemma that if g > 2 and w ≡ 0 (mod 30), then ∃ n ∈ I with τ(n) < τ(w)
-- [ ] No “overwhelmingly” / “inevitably” language in proof body
+- [x] “4+ zeros ⟺ w ≡ 0 (mod 30)” proved by exhaustive case analysis on the defined remainder vector
+- [x] Step 3 replaced: explicit lemma that if g > 2 and w ≡ 0 (mod 30), then ∃ n ∈ I with τ(n) < τ(w)
+- [x] No “overwhelmingly” / “inevitably” language in proof body
 
 **Acceptance criteria (if reclassified):**
 
@@ -78,10 +78,10 @@ r² - p ≤ max(64, ceil(0.5 · log(r²)²))
 
 **Acceptance criteria:**
 
-- [ ] New section: **Certified Finite Bases** with uniform statement template
-- [ ] Each base lists: range, count checked, failure count, artifact path, reproduction command, date/hash
-- [ ] Theorem stack uses multi-axis status (see vocabulary above)
-- [ ] Headline section distinguishes three pillars from two certified finite inputs
+- [x] New section: **Certified Finite Bases** with uniform statement template
+- [x] Each base lists: range, count checked, failure count, artifact path, reproduction command, date/hash
+- [x] Theorem stack uses multi-axis status (see vocabulary above)
+- [x] Headline section distinguishes three pillars from two certified finite inputs
 
 ---
 

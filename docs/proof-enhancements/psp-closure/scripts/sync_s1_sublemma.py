@@ -8,7 +8,7 @@ import sys
 import re
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-REPO = os.path.abspath(os.path.join(HERE, '..', '..', '..'))
+REPO = os.path.abspath(os.path.join(HERE, '..', '..', '..', '..'))
 CANON = os.path.join(REPO, 'docs/proof-enhancements/psp-closure/s1-sublemma-4c2.md')
 PROOF = os.path.join(REPO, 'PROOF.md')
 README = os.path.join(REPO, 'docs/proof-enhancements/psp-closure/README.md')
@@ -17,8 +17,15 @@ BEGIN = '<!-- BEGIN S1-SUBLEMMA-4C2 -->'
 END = '<!-- END S1-SUBLEMMA-4C2 -->'
 
 def load_canon():
-    with open(CANON) as f:
-        return f.read().strip()
+    here = os.path.dirname(os.path.abspath(__file__))
+    candidates = [
+        os.path.join(here, "..", "s1-sublemma-4c2.md"),
+        os.path.join(os.path.abspath(os.path.join(here, "..", "..", "..", "..")), "docs/proof-enhancements/psp-closure/s1-sublemma-4c2.md"),
+    ]
+    for c in candidates:
+        if os.path.exists(c):
+            with open(c) as f: return f.read().strip()
+    raise FileNotFoundError("canonical not found at " + str(candidates))
 
 def sync_file(path, content):
     with open(path) as f:
