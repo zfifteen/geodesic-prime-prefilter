@@ -11,6 +11,19 @@ and can that geometry constrain spectral placement?
 
 ---
 
+## Deferred scan paths (boundary text)
+
+| Path | Why deferred | Does not prove |
+|------|--------------|----------------|
+| `pgs_rh_bridge_placement_focus_prompt.md` | Internal research prompt | Any placement theorem |
+| `docs/faq/**` | Reviewer vocabulary | RH or compression |
+| `research/12-rh-bridge/**` (beyond RH-090–092) | Archived workbench | Live placement route |
+| `research/18-derived-half-coefficient/FORMALIZATION_PROPOSAL.md` | Lean scaffolding memo | F18-001 (already RH-006) |
+
+Indexed placement findings: RH-030–035, RH-071, RH-080–081. See [GAP_ANALYSIS.md](../GAP_ANALYSIS.md).
+
+---
+
 ## Geometry primitives
 
 | Primitive | Definition | Status |

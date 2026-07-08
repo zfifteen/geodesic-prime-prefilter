@@ -67,21 +67,76 @@ After continuation, poles of $R(s)$ track zeros of $\zeta(s)$:
 
 ---
 
-## What L1 supplies to L3
+## Formal mapping: GWR chamber → zeta increments
 
-The proved local theorems ([PROOF.md](../../../PROOF.md)) fix **which integers**
-enter the coefficient field before compression:
+Fix consecutive primes $p<q$, interior $I(p,q)=\{p+1,\ldots,q-1\}$, and GWR
+witness $w(p,q)=\min\{n\in I:\tau(n)=\min_{m\in I}\tau(m)\}$ ([PROOF.md](../../../PROOF.md)).
 
-| L1 object | Role in compression |
-|-----------|---------------------|
-| Next prime $q=\min\{n>p:\tau(n)=2\}$ | Endpoint where $\Lambda$ "resets" to prime power |
-| GWR witness $w$ | Leftmost interior $\arg\min E(n)$; shapes local load |
-| Bounded offset $w-p\le C(q)$ | Cramér-scale chamber width before spectral read |
-| Derived $\tfrac12$ in $C(q)$ | Arithmetic closure ([RH-006](../FINDINGS_INDEX.md), F18-001) |
-| F18-004 rough-witness split | Non-square vs square branch discipline ([RH-103](../FINDINGS_INDEX.md)) |
+### Integer invariants (proved / measured)
 
-The compression identities are **global**; GWR selection is **local**. The open
-L4–L5 work is to show how local chamber geometry constrains global pole placement.
+$$
+E(n)=\left(\frac{\tau(n)}{2}-1\right)\log n,\qquad
+H(n)=\log n+E(n)=\frac{\tau(n)\log n}{2},
+$$
+
+$$
+B(p,q)=\sum_{n\in I} E(n),\qquad
+C(q)=\max\!\left(64,\left\lceil\tfrac12(\log q)^2\right\rceil\right),\qquad
+w-p\le C(q).
+$$
+
+Fractional placement: $\mathrm{frac\_pos}(p,q)=\dfrac{w-p}{q-p-1}$ when $|I|\ge1$.
+
+### Chamber Dirichlet increments (exact at $\operatorname{Re}(s)>1$)
+
+$$
+\Delta D(s;p,q)=\sum_{n\in I}\frac{\tau(n)}{n^s},\qquad
+\Delta B(s;p,q)=\sum_{n\in I}\frac{H(n)}{n^s}.
+$$
+
+Local chamber compression ratio (diagnostic, **not** additive across gaps):
+
+$$
+\rho_{\mathrm{ch}}(s;p,q)=\frac{\Delta B(s;p,q)}{\Delta D(s;p,q)}.
+$$
+
+Global continuation ([RH-021](../FINDINGS_INDEX.md)):
+
+$$
+R(s)=\frac{B(s)}{D(s)}=-\frac{\zeta'(s)}{\zeta(s)},
+\quad
+B(s)=\sum_{n\ge1}\frac{H(n)}{n^s}=-\tfrac12 D'(s).
+$$
+
+**Boundary:** $R(s)$ is a single meromorphic function; $\rho_{\mathrm{ch}}$ is a
+per-gap slice. Placement target [RH-035](../FINDINGS_INDEX.md) bounds smoothed
+kernel mass $\mathcal{K}(p,q;\Phi)$ from $B(p,q)$ and $\mathrm{frac\_pos}$, not
+from summing $\rho_{\mathrm{ch}}$.
+
+### F18 branch partition (compression relevance)
+
+Let $r=(w-p)/C(q)$.
+
+| Branch | Condition | Zeta-side role |
+|--------|-----------|----------------|
+| Prime square | $\tau(w)=3$, $w=r_0^2$ | Square tiling lane; **does not** derive $\tfrac12$ in $C(q)$ |
+| Non-square, $r\ge 0.65$ | F18-004 measured | $\tau(w)\gtrsim 0.75\log q$ (rough witness) |
+| Non-square, $r<0.65$ | Typical | Sub-threshold; divisor-average closure inactive |
+
+Implemented in [chamber_compression.py](../empirics/chamber_compression.py);
+validated by [zeta_compression_probe.py](../empirics/zeta_compression_probe.py) ([RH-105](../FINDINGS_INDEX.md)).
+
+### Worked chamber numbers (gap 23–29, $s=2.5$)
+
+| Quantity | Value |
+|----------|-------|
+| $w$ | 25 |
+| $B(p,q)$ | $\sum_{n=24}^{28} E(n)$ |
+| $\Delta D(2.5)$ | chamber divisor-series increment |
+| $\rho_{\mathrm{ch}}(2.5)$ | $\Delta B/\Delta D$ (local) |
+| $R(2.5)$ | global $-\zeta'/\zeta$ via `evaluate_partial_sum_bridge` |
+
+Reproduce: `PYTHONPATH=src/python:research/19-rh-corpus/empirics python3 research/19-rh-corpus/empirics/zeta_compression_probe.py`
 
 ---
 

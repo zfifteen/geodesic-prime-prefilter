@@ -4,13 +4,18 @@ from __future__ import annotations
 
 import importlib.util
 import json
-import math
 import sys
 from pathlib import Path
 
 import pytest
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
+SRC = REPO_ROOT / "src" / "python"
+EMP = REPO_ROOT / "research" / "19-rh-corpus" / "empirics"
+for path in (SRC, EMP):
+    if str(path) not in sys.path:
+        sys.path.insert(0, str(path))
+
 DEMO_PATH = (
     REPO_ROOT
     / "experiments"
@@ -35,22 +40,21 @@ def demo():
 
 
 def test_gap_23_29_gwr_witness(demo):
-    counts = demo.divisor_counts_up_to(29)
+    from z_band_prime_rh_bridge.bridge import divisor_counts_up_to
+
+    counts = divisor_counts_up_to(29)
     report = demo.analyze_gap(23, 29, counts)
     assert report.gwr_witness == 25
     assert report.interior_min_divisor_count == 3
 
 
 def test_gap_89_97_gwr_witness(demo):
-    counts = demo.divisor_counts_up_to(97)
+    from z_band_prime_rh_bridge.bridge import divisor_counts_up_to
+
+    counts = divisor_counts_up_to(97)
     report = demo.analyze_gap(89, 97, counts)
     assert report.gwr_witness == 91
     assert report.interior_min_divisor_count == 4
-
-
-def test_zero_excess_primes_at_zero(demo):
-    assert demo.zero_excess(23, 2) == pytest.approx(0.0)
-    assert demo.zero_excess(29, 2) == pytest.approx(0.0)
 
 
 def test_bridge_partial_sums_converge(demo):
@@ -69,3 +73,4 @@ def test_demo_results_json_matches_shipped_gaps():
     assert bridge["s"] == 2.5
     assert bridge["divisor_abs_error"] < 1e-4
     assert bridge["ratio_abs_error"] < 1e-4
+    assert "chamber_increments" in gaps[(23, 29)]

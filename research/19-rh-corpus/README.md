@@ -57,11 +57,13 @@ Use this hub for **program navigation**; use [docs/rh/](../../docs/rh/README.md)
 ## Tests
 
 ```bash
-python3 -m pytest research/19-rh-corpus/tests/ -q
+PYTHONPATH=src/python:research/19-rh-corpus/empirics \
+  python3 -m pytest research/19-rh-corpus/tests/ -q
 ```
 
-Imports and exercises shipped logic in `integer_order_demo.py` and
-`zeta_compression_probe.py` (no re-implementation).
+Imports and exercises shipped logic in `integer_order_demo.py`,
+`chamber_compression.py`, and `zeta_compression_probe.py` via `src/python`
+bridge API (no re-implementation).
 
 ## Empirics
 

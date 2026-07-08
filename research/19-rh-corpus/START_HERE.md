@@ -48,7 +48,7 @@ actually lives — and it remains **open** in this program.
 | Review as a skeptic | [READING_PATHS.md](./READING_PATHS.md) § Reviewer + [docs/rh/reviewer-map.md](../../docs/rh/reviewer-map.md) |
 | Work zeta compression (L3) | [by-layer/03-zeta-compression.md](./by-layer/03-zeta-compression.md) |
 | Work placement geometry (L4) | [by-layer/04-placement-geometry.md](./by-layer/04-placement-geometry.md) |
-| Reproduce compression empirics | `python3 research/19-rh-corpus/empirics/zeta_compression_probe.py` |
+| Reproduce compression empirics | `PYTHONPATH=src/python:research/19-rh-corpus/empirics python3 research/19-rh-corpus/empirics/zeta_compression_probe.py` |
 | Avoid overclaiming | Every row in [FINDINGS_INDEX.md](./FINDINGS_INDEX.md) has a **Boundary** column — read it |
 
 ---

@@ -3,8 +3,7 @@
 
 Companion to WHITEPAPER.md in this folder.
 
-The script is self-contained except for mpmath, which the repository already
-depends on for exact zeta evaluation.
+Uses src/python bridge API (z_band_prime_rh_bridge, z_band_prime_invariant).
 
 Outputs:
   - stdout tables for two hand-checkable gaps
@@ -16,21 +15,32 @@ from __future__ import annotations
 
 import json
 import math
+import sys
 from dataclasses import asdict, dataclass
 from pathlib import Path
+
+_SRC = Path(__file__).resolve().parents[2] / "src" / "python"
+_EMP = Path(__file__).resolve().parents[2] / "research" / "19-rh-corpus" / "empirics"
+for path in (_SRC, _EMP):
+    if str(path) not in sys.path:
+        sys.path.insert(0, str(path))
+
+from z_band_prime_invariant import FIXED_POINT_V, exact_zero_excess
+from z_band_prime_rh_bridge.bridge import (
+    divisor_counts_up_to,
+    evaluate_partial_sum_bridge,
+)
+
+from chamber_compression import analyze_chamber_gap, chamber_dirichlet_increments
 
 try:
     from mpmath import mp
 except ImportError as exc:  # pragma: no cover
-    raise SystemExit(
-        "mpmath is required. Install with: pip install mpmath"
-    ) from exc
+    raise SystemExit("mpmath is required. Install with: pip install mpmath") from exc
 
 
 OUTPUT_DIR = Path(__file__).resolve().parent / "output"
 INFOGRAPHIC_PATH = Path(__file__).resolve().parent / "infographic.svg"
-
-BRIDGE_SCALE = math.e**2 / 2.0
 
 EXAMPLE_GAPS = (
     (23, 29),
@@ -73,29 +83,11 @@ class BridgeReport:
     ratio_abs_error: float
 
 
-def divisor_counts_up_to(limit: int) -> list[int]:
-    """Return exact divisor counts tau(n) for 0 <= n <= limit."""
-    counts = [0] * (limit + 1)
-    for d in range(1, limit + 1):
-        for n in range(d, limit + 1, d):
-            counts[n] += 1
-    return counts
-
-
-def zero_excess(n: int, divisor_count: int) -> float:
-    """Return (tau(n)/2 - 1) * log(n); primes at n>1 land at 0."""
-    if n <= 1:
-        return 0.0
-    return (divisor_count / 2.0 - 1.0) * math.log(n)
-
-
-def analyze_gap(p: int, q: int, counts: list[int]) -> GapReport:
-    """Build the ordered interior table for consecutive primes (p, q)."""
-    interior = list(range(p + 1, q))
-    min_tau = min(counts[n] for n in interior) if interior else None
-    gwr = None
-    if interior:
-        gwr = min(n for n in interior if counts[n] == min_tau)
+def analyze_gap(p: int, q: int, counts: tuple[int, ...]) -> GapReport:
+    """Build ordered interior table using chamber GWR selection."""
+    chamber = analyze_chamber_gap(p, q)
+    gwr = chamber.w
+    min_tau = chamber.tau_w if chamber.w else None
 
     rows: list[GapRow] = []
     for n in range(p, q + 1):
@@ -104,7 +96,7 @@ def analyze_gap(p: int, q: int, counts: list[int]) -> GapReport:
             GapRow(
                 n=n,
                 divisor_count=tau_n,
-                excess=zero_excess(n, tau_n),
+                excess=exact_zero_excess(n),
                 is_prime=tau_n == 2,
                 is_gwr_witness=gwr is not None and n == gwr,
             )
@@ -118,46 +110,29 @@ def analyze_gap(p: int, q: int, counts: list[int]) -> GapReport:
     )
 
 
-def normalization_load(n: int, divisor_count: int) -> float:
-    """Scaled load coefficient H(n)/e^2 used in the bridge partial sums."""
-    if n <= 1:
-        return 0.0
-    return divisor_count * math.log(n) / (math.e**2)
-
-
 def evaluate_bridge(s: float, terms: int, dps: int) -> BridgeReport:
-    """Compare divisor-count partial sums to zeta at Re(s) > 1."""
-    counts = divisor_counts_up_to(terms)
-
+    """Compare bridge partial sums to zeta at Re(s) > 1 via src API."""
+    eval_result = evaluate_partial_sum_bridge(s, terms, dps)
     with mp.workdps(dps):
         s_mp = mp.mpc(s)
-        divisor_sum = mp.mpc(0)
-        load_sum = mp.mpc(0)
-        for n in range(1, terms + 1):
-            term = mp.power(n, -s_mp)
-            divisor_sum += counts[n] * term
-            load_sum += normalization_load(n, counts[n]) * term
-
         zeta_val = mp.zeta(s_mp)
         zeta_sq = zeta_val**2
         zeta_log_deriv = -mp.diff(mp.zeta, s_mp) / zeta_val
-        normalized_ratio = BRIDGE_SCALE * load_sum / divisor_sum
 
-        return BridgeReport(
-            s=s,
-            terms=terms,
-            divisor_partial_sum=complex(divisor_sum),
-            zeta_squared=complex(zeta_sq),
-            divisor_abs_error=float(abs(divisor_sum - zeta_sq)),
-            load_partial_sum=complex(load_sum),
-            normalized_ratio=complex(normalized_ratio),
-            zeta_log_derivative=complex(zeta_log_deriv),
-            ratio_abs_error=float(abs(normalized_ratio - zeta_log_deriv)),
-        )
+    return BridgeReport(
+        s=s,
+        terms=terms,
+        divisor_partial_sum=eval_result.divisor_series,
+        zeta_squared=complex(zeta_sq),
+        divisor_abs_error=float(abs(eval_result.divisor_series - zeta_sq)),
+        load_partial_sum=eval_result.normalization_load_series,
+        normalized_ratio=eval_result.normalized_ratio,
+        zeta_log_derivative=complex(zeta_log_deriv),
+        ratio_abs_error=eval_result.normalized_ratio_error,
+    )
 
 
 def print_gap_report(report: GapReport) -> None:
-    """Print one gap table for terminal inspection."""
     print(f"\nGap from {report.p} to {report.q}")
     print("-" * 64)
     print(f"{'n':>4}  {'divisors':>8}  {'excess':>10}  role")
@@ -173,9 +148,7 @@ def print_gap_report(report: GapReport) -> None:
             f"{row.n:4d}  {row.divisor_count:8d}  {row.excess:10.4f}  {role}"
         )
     if report.gwr_witness is not None:
-        print(
-            f"Interior minimum divisor count: {report.interior_min_divisor_count}"
-        )
+        print(f"Interior minimum divisor count: {report.interior_min_divisor_count}")
         print(f"Selected witness: {report.gwr_witness}")
 
 
@@ -184,7 +157,6 @@ def write_infographic(
     bridge: BridgeReport,
     path: Path,
 ) -> None:
-    """Write a single-page SVG summary of the integer-to-zeta chain."""
     first = gap_reports[0]
     witness = first.gwr_witness or 25
     divisor_err = f"{bridge.divisor_abs_error:.2e}"
@@ -266,15 +238,15 @@ def write_infographic(
     path.write_text(svg, encoding="utf-8")
 
 
-def complex_pair(value: complex) -> dict[str, float]:
-    return {"real": value.real, "imag": value.imag}
-
-
 def main() -> int:
     max_prime = max(q for _, q in EXAMPLE_GAPS)
     counts = divisor_counts_up_to(max_prime)
 
     gap_reports = [analyze_gap(p, q, counts) for p, q in EXAMPLE_GAPS]
+    chamber_increments = [
+        chamber_dirichlet_increments(BRIDGE_S, p, q, BRIDGE_TERMS)
+        for p, q in EXAMPLE_GAPS
+    ]
 
     print("=" * 64)
     print("Prime order at the integer layer (before zeta)")
@@ -297,6 +269,7 @@ def main() -> int:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     payload = {
         "whitepaper": "integer-order-before-zeta",
+        "bridge_scale": FIXED_POINT_V,
         "gap_examples": [
             {
                 "p": r.p,
@@ -304,21 +277,24 @@ def main() -> int:
                 "gwr_witness": r.gwr_witness,
                 "interior_min_divisor_count": r.interior_min_divisor_count,
                 "rows": [asdict(row) for row in r.rows],
+                "chamber_increments": {
+                    "delta_d": inc.delta_d,
+                    "delta_b": inc.delta_b,
+                    "rho_chamber": inc.rho_chamber,
+                },
             }
-            for r in gap_reports
+            for r, inc in zip(gap_reports, chamber_increments)
         ],
         "bridge": {
             "s": bridge.s,
             "terms": bridge.terms,
-            "divisor_partial_sum": complex_pair(bridge.divisor_partial_sum),
-            "zeta_squared": complex_pair(bridge.zeta_squared),
+            "divisor_partial_sum": {"real": bridge.divisor_partial_sum.real, "imag": bridge.divisor_partial_sum.imag},
+            "zeta_squared": {"real": bridge.zeta_squared.real, "imag": bridge.zeta_squared.imag},
             "divisor_abs_error": bridge.divisor_abs_error,
-            "load_partial_sum": complex_pair(bridge.load_partial_sum),
-            "normalized_ratio": complex_pair(bridge.normalized_ratio),
-            "zeta_log_derivative": complex_pair(bridge.zeta_log_derivative),
+            "normalized_ratio": {"real": bridge.normalized_ratio.real, "imag": bridge.normalized_ratio.imag},
+            "zeta_log_derivative": {"real": bridge.zeta_log_derivative.real, "imag": bridge.zeta_log_derivative.imag},
             "ratio_abs_error": bridge.ratio_abs_error,
         },
-        "bridge_scale": BRIDGE_SCALE,
         "interpretation": {
             "source_layer": "divisor counts inside consecutive prime gaps",
             "compression": "divisor series equals zeta(s)^2; load ratio equals -zeta'(s)/zeta(s)",
