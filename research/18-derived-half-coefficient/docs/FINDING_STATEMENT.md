@@ -27,21 +27,26 @@ The coefficient `0.5` is **derived** from Short Divisor-Average closure
 
 ---
 
-## F18-002 — Independent External Corroboration
+## F18-002 — Finite Deterministic Verification
 
-Independent Grok audit (2026-07): zero violations of `C(q)` for `q ≤ 10^6`;
-median distance 2; max distance 48.
+Pinned exhaustive enumeration (`q ≤ 10^6`): **zero** violations of `C(q)`;
+50th percentile of witness distance `2`; maximum witness distance `48`.
 
 | Axis | Value |
 |------|-------|
-| Logical status | `measured` |
-| Provenance | [external-validation-grok-509b8495.md](./external-validation-grok-509b8495.md) |
+| Logical status | `verified` (finite pinned regime) |
+| Method | Deterministic GWR replay; no sampling |
+| Provenance | [finite-verification-grok-509b8495.md](./finite-verification-grok-509b8495.md) |
+
+**Boundary.** Confirms F18-001 on a stated finite surface only; does not extend
+the universal proof.
 
 ---
 
 ## F18-003 — Half-Scale Correspondence (Hypothesis)
 
-Shared factor `1/2` between `⌈0.5 · (log q)²⌉` and `Re(s) = 1/2` may reflect
-compression-chain structure. **Not proved.**
+The shared factor `1/2` between `⌈0.5 · (log q)²⌉` and `Re(s) = 1/2` is
+**conjectured** to mark the same scale along the divisor → ζ(s)² compression
+chain. **Not proved.**
 
 See [half-scale-correspondence-hypothesis.md](./half-scale-correspondence-hypothesis.md).

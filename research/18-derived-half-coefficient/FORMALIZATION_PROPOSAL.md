@@ -20,8 +20,8 @@ Three layers must stay separated in every artifact:
 | Layer | ID | Status | Must not be conflated with |
 |-------|-----|--------|----------------------------|
 | Derived coefficient | F18-001 | **proved** | RH, Cramér conjecture |
-| Independent audit | F18-002 | **measured** | Universal proof |
-| Critical-line rhyme | F18-003 | **hypothesis** | F18-001 |
+| Finite verification | F18-002 | **verified** (pinned regime) | Universal proof |
+| Critical-line correspondence | F18-003 | **hypothesis** | F18-001 |
 
 ---
 
@@ -36,8 +36,8 @@ Add one paragraph to `research/04-bounded-compression/README.md` and link
 
 ### Option B — Layered research chapter (recommended)
 
-Dedicated chapter with finding statement, derivation digest, external validation,
-hypothesis lane, and 30/30/30 bundle.
+Dedicated chapter with finding statement, derivation digest, finite verification
+record, hypothesis lane, and 30/30/30 bundle.
 
 **Verdict:** **Recommended** (this folder).
 
@@ -62,17 +62,17 @@ PDF-ready note sourced from the 30/30/30 bundle.
 - [x] Chapter scaffold + docs + 30/30/30 bundle
 - [x] Git commit (persistence fix)
 
-### Phase 2 — Reproducible audit (next)
+### Phase 2 — Reproducible verification script (next)
 
-- [ ] `scripts/gwr_bound_audit.py`
-- [ ] `output/gwr_bound_audit_summary.json`
-- [ ] Pytest gate
+- [ ] `scripts/gwr_bound_verification.py`
+- [ ] `output/gwr_bound_verification_summary.json`
+- [ ] Pytest gate (deterministic replay of zero-violation table)
 
 ### Phase 3 — Formal mirror
 
 - [ ] Lean `half_scale_emergence` in `PGS.Analysis`
 
-### Phase 4 — External dissemination
+### Phase 4 — Publication note
 
 - [ ] Standalone publication note
 
@@ -83,6 +83,7 @@ PDF-ready note sourced from the 30/30/30 bundle.
 **F18-001:** Finding locatable in `FINDING_STATEMENT.md`; `0.5` traceable to
 `PROOF.md` in ≤2 hops; no RH claims without correct status label.
 
-**F18-002:** Pinned audit script reproduces zero-violation table.
+**F18-002:** Pinned deterministic script reproduces zero-violation table on
+`q ≤ 10^6`.
 
 **F18-003:** Hypothesis doc lists falsifiable predictions; boundaries explicit.
