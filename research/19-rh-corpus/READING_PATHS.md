@@ -11,7 +11,7 @@ lists **RH-###** IDs in order. Read boundaries on each row before citing publicl
 **Time:** 10–15 minutes
 
 1. [RH-041](../../experiments/integer-order-before-zeta-whitepaper-2026-07/WHITEPAPER.md) — Integer order before zeta whitepaper  
-2. [RH-006](../18-derived-half-coefficient/) — Derived ½ coefficient (or [RH-043](../18-derived-half-coefficient/30-30-30-technical-note/) tech note + infographic)  
+2. [RH-006](../18-derived-half-coefficient/README.md) — Derived ½ coefficient (or [RH-043](../18-derived-half-coefficient/30-30-30-technical-note/TECHNICAL_NOTE.md) tech note + infographic)  
 3. [RH-020](../../docs/rh/dni-to-zeta-compression.md) — Exact `ζ(s)²` compression (one sentence)  
 4. [RH-051](../../docs/rh/status-ledger.md) — **Stop:** RH sentence is open; state boundary explicitly  
 
@@ -21,7 +21,7 @@ lists **RH-###** IDs in order. Read boundaries on each row before citing publicl
 > language. Placing every nontrivial pole on the critical line — the RH
 > sentence — remains an open placement step in the program.
 
-**Avoid on X:** [RH-033](../pgs-rh-placement-empirics-2026-06/pgs_d4_frac_pos_falsification_1000000.json) (invalidated), [RH-090](../12-rh-bridge/README.md)–[RH-092](../12-rh-bridge/docs/off_axis_pair_carrier_lemma_resolution.md) (archived machinery), [RH-051](../../docs/rh/status-ledger.md) without boundary.
+**Avoid on X:** [RH-033](../pgs-rh-placement-empirics-2026-06/pgs_d4_frac_pos_falsification_1000000.json) (invalidated), [RH-090](../12-rh-bridge/README.md)–[RH-092](../12-rh-bridge/README.md) (archived machinery), [RH-051](../../docs/rh/status-ledger.md) without boundary.
 
 ---
 
@@ -53,7 +53,7 @@ lists **RH-###** IDs in order. Read boundaries on each row before citing publicl
 5. [RH-033](../pgs-rh-placement-empirics-2026-06/pgs_d4_frac_pos_falsification_1000000.json) — What **not** to pursue (uniform ½)  
 6. [RH-080](../../lean-4/PGS/Placement.lean), [RH-081](../../lean-4/pgs-rh-placement-invariants.lean) — Lean mirrors  
 
-**Canonical folder:** [pgs-rh-placement-empirics-2026-06](../pgs-rh-placement-empirics-2026-06/)
+**Canonical folder:** [pgs-rh-placement-empirics-2026-06](../pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md)
 
 ---
 
@@ -82,7 +82,7 @@ lists **RH-###** IDs in order. Read boundaries on each row before citing publicl
 ## Archived material (historical only)
 
 1. [RH-090](../12-rh-bridge/README.md) — Archive pointer + handoff  
-2. [RH-091](../12-rh-bridge/docs/dni_rh_bridge.md), [RH-092](../12-rh-bridge/docs/off_axis_pair_carrier_lemma_resolution.md) — Cited workbench docs (paths under archived tree)  
+2. [RH-091](../12-rh-bridge/README.md), [RH-092](../12-rh-bridge/README.md) — Cited workbench docs (paths under archived tree)  
 
 **Do not** route new work through classical completion language. See
 [by-status/archived.md](./by-status/archived.md).

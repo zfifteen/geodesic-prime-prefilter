@@ -68,5 +68,5 @@ actually lives — and it remains **open** in this program.
 
 - Not a proof of RH
 - Not a replacement for [PROOF.md](../../PROOF.md)
-- Not a revival of archived [12-rh-bridge](../12-rh-bridge/) completion machinery
-- Not a mirror of [docs/rh/](../../docs/rh/) — that bundle stays the public spine
+- Not a revival of archived [12-rh-bridge](../12-rh-bridge/README.md) completion machinery
+- Not a mirror of [docs/rh/](../../docs/rh/README.md) — that bundle stays the public spine
