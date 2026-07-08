@@ -36,12 +36,22 @@ Proximity Theorem** (proved 2026-07-05).
 Prime Number Theorem, or every classical formulation of Cramér's conjecture for
 raw consecutive-prime gap size `q - p`. A Lean 4 formalization is in progress as an independent machine-checked mirror of the arguments. The mathematical proofs are fully established in this document.
 
-All three pillars are universal (logical: proved). The proofs are completed by exhaustive verification over two distinct certified finite inputs (separate from the analytic pillars):
+**Three universal pillars** (logical: proved; scope: universal). Each pillar is
+established by analytic closure arguments in this document, citing certified
+finite premises where a small bound must be closed computationally:
 
-1. The **direct next-prime rule** and **interior maximizer (GWR)** use a finite base below `5,000,000,001` (Certificate: `gwr_finite_base_v1`) to close the earlier-integer side by exact divisor-count arithmetic.
-2. The **universal bounded compression** theorem uses a finite base of `q < ceil(exp(16))` (Certificate: `bounded_compression_base_v1`) before eliminating the remaining odd-adjacent `d=4` and square branches.
+1. **Direct next-prime rule** and **interior maximizer (GWR)** — analytic
+   closure below; finite premise `gwr_finite_base_v1` closes the earlier-integer
+   side for `2 <= p < 5,000,000,001`.
+2. **Universal bounded compression** — analytic closure below; finite premises
+   `bounded_compression_base_v1` (`q < ceil(exp(16))`) and `residual_k128_v1`
+   (`k <= 128`) before eliminating the remaining odd-adjacent `d=4` and square
+   branches.
 
-These certified finite bases are exhaustive verification surfaces up to the stated bounds (scope: finite-certified premises). The universal theorems rest on exhaustive verification of those bases together with the analytic closure arguments below. Headline pillars (direct next-prime, GWR maximizer, bounded compression) are distinct from the two completing finite bases.
+**Certified finite premises** (logical: finite-certified; scope: finite or
+residual). These are exhaustive verification surfaces, not universal theorems.
+They are listed with reproduction commands in **Certified Finite Bases** below.
+The three headline pillars are distinct from these completing finite inputs.
 
 ## Downstream Riemann-Hypothesis Reading
 
@@ -762,11 +772,12 @@ The analytic proofs in this document are closed over small bounds using exhausti
 ### 1. GWR Finite Base (`gwr_finite_base_v1`)
 - **Range**: `2 <= p < 5,000,000,001`
 - **Gaps checked**: `220,336,055`
+- **Earlier integers checked**: `826,172,978`
 - **Failures**: `0`
 - **Certificate**: [gwr_finite_base_v1.json](docs/proof-enhancements/certificates/gwr_finite_base_v1.json)
-- **Reproduction command**: python3 docs/proof-enhancements/psp-closure/scripts/audit_square_branches.py ; artifact in certificates/ (pinned for R1)
-- **Reproduction command**: `python -m src.python...` (or research/02-gwr-dni/scripts/proof/ + docs/proof-enhancements/scripts/emit_certificates.py); see certificate for exact generator params
-- **Verified**: 2026 (artifact hash in json)
+- **Reproduction command**: `python3 docs/proof-enhancements/scripts/emit_certificates.py --lemma gwr_finite_base_v1`
+- **Artifact hash**: `sha256:ea668aae2d39cd5113104a89cafc0bc80a4c73ad15b4fa6d6f8bcd186fc184ad`
+- **Verified**: `2026-07-07T15:39:59+00:00`
 
 | Left-prime range | Prime gaps checked | Earlier integers checked | Failures |
 |---:|---:|---:|---:|
@@ -777,21 +788,22 @@ The analytic proofs in this document are closed over small bounds using exhausti
 | Total | `220,336,055` | `826,172,978` | `0` |
 
 ### 2. Bounded-Compression Base (`bounded_compression_base_v1`)
-- **Range**: `q < ceil(exp(16))`
+- **Range**: `q < ceil(exp(16))` (`q_max_exclusive = 8,886,111`)
 - **Gaps checked**: `542,081`
 - **Failures**: `0`
 - **Certificate**: [bounded_compression_base_v1.json](docs/proof-enhancements/certificates/bounded_compression_base_v1.json)
-- **Reproduction command**: see docs/proof-enhancements/scripts/emit_certificates.py and research scripts; exact in certificate json
-- **Verified**: 2026 (artifact hash in json)
+- **Reproduction command**: `python3 docs/proof-enhancements/scripts/emit_certificates.py --lemma bounded_compression_base_v1`
+- **Artifact hash**: `sha256:fb20894f92320a7547014b37d4dfd7727b7f75f7e92054ddd883d51345d14514`
+- **Verified**: `2026-07-07T15:39:59+00:00`
 
 ### 3. Residual K=128 (`residual_k128_v1`)
-*(Note: This is a residual scope for high-τ branch elimination. It is finite-certified and completes the coverage for the universal pillars.)*
-- **Range**: `k <= 128`
+- **Range**: `k <= 128` (residual high-τ branch elimination; not a universal pillar premise)
 - **Failures**: `0`
 - **Certificate**: [residual_k128_v1.json](docs/proof-enhancements/certificates/residual_k128_v1.json)
-- **Reproduction command**: see research/02-gwr-dni/scripts/proof/ + emit_certificates.py; params in json
-- **Verified**: 2026 (artifact hash in json)
-**Hypothesis block**: k <= 128, failures 0; does not imply global for all gaps. Cross-link to residual_k128_v1.json (G4).
+- **Reproduction command**: `python3 docs/proof-enhancements/scripts/emit_certificates.py --lemma residual_k128_v1`
+- **Artifact hash**: `sha256:ed3afeadc81475850a64331d1f008c8ac8af8afe084659f4b37f5a56f77e1e29`
+- **Verified**: `2026-07-07T15:39:59+00:00`
+- **Scope note**: `k <= 128`, failures `0`; does not imply global coverage for all gaps.
 
 ## Supplemental audit breakdown
 
@@ -801,15 +813,29 @@ earlier integers, with `0` unresolved cases. Its median offset was `1`, its
 
 ## Theorem Stack Summary
 
-| Theorem | Object bounded | Status |
-| --- | --- | --- |
-| Next-prime rule | endpoint `q` | logical: proved · scope: universal · formalization: in progress |
-| Interior maximizer (GWR) | selected witness `w` | logical: proved · scope: universal · formalization: in progress |
-| Finite bases (GWR, Bounded Compression) | `w - p` below bounds | logical: finite-certified · scope: finite |
-| Residual K=128 elimination | high-τ witness branches | logical: finite-certified · scope: residual |
-| Prime-Square Proximity | `r^2 - p` on square branch | logical: proved · scope: universal |
-| Universal bounded compression | `w - p` all branches | logical: proved · scope: universal · Cramér scale |
-| Twin-Prime Resonance (Super-Signal) | gap size where $w \equiv 0 \pmod{30}$ | logical: proved (modular) + finite-certified · scope: corollary |
+Status vocabulary follows the multi-axis model in
+[docs/proof-enhancements/goals.md](docs/proof-enhancements/goals.md): **Logical
+status** (how established) · **Scope** (quantifier range) · **Formalization**
+(downstream Lean state). Universal pillars and certified finite premises are
+listed separately.
+
+### Universal pillars and corollaries
+
+| Theorem | Object bounded | Logical status | Scope | Formalization |
+| --- | --- | --- | --- | --- |
+| Next-prime rule | endpoint `q` | proved (`gwr_finite_base_v1` + analytic closure) | universal | in progress |
+| Interior maximizer (GWR) | selected witness `w` | proved (`gwr_finite_base_v1` + analytic closure) | universal | in progress |
+| Prime-Square Proximity | `r^2 - p` on square branch | proved (analytic) | universal | in progress |
+| Universal bounded compression | selected-witness offset `w - p` | proved (`bounded_compression_base_v1`, `residual_k128_v1` + analytic closure) | universal | in progress |
+| Twin-Prime Resonance (Super-Signal) | gap where GWR winner has 4+ modular zeros | proved (modular arithmetic) | corollary | in progress |
+
+### Certified finite premises
+
+| Certificate ID | Role in proof spine | Logical status | Scope | Formalization |
+| --- | --- | --- | --- | --- |
+| `gwr_finite_base_v1` | earlier-integer finite closure | finite-certified | finite (`p < 5×10⁹`) | lean-partial |
+| `bounded_compression_base_v1` | bounded-compression finite closure | finite-certified | finite (`q < ceil(exp(16))`) | lean-partial |
+| `residual_k128_v1` | high-τ branch elimination | finite-certified | residual (`k ≤ 128`) | lean-partial |
 
 ## Document Status
 
