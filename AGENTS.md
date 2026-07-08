@@ -15,14 +15,14 @@ Its job is to prevent four recurring failures:
 
 ## Task Planning and Execution
 
-As a default execution mode, Gemini (acting as the Orchestrator / Lead Scientist) will utilize Dynamic Subagent Generation to devise plans and execute tasks using a minimum of four subagents (the "Antigravity PGS Quartet"). This ensures that all tasks, regardless of size, abide by strict mathematical rigor and project continuity.
+As a default execution mode, the active AI model (acting as the Orchestrator) will utilize Dynamic Subagent Generation to devise plans and execute tasks using a minimum of four subagents (the "PGS Quartet"). This ensures that all tasks, regardless of size, abide by strict mathematical rigor and project continuity.
 
 The four required subagent roles are:
 
-1. **The Implementer (Codex Role):**
+1. **The Implementer:**
    - **Workspace:** Branched (isolated from the main branch).
-   - **Responsibility:** Writes the baseline execution code based on the Lead Scientist's mathematical architecture. Operates strictly within the PGS-native deterministic frame.
-2. **The Adversarial Auditor (Grok Role):**
+   - **Responsibility:** Writes the baseline execution code based on the orchestrator's mathematical architecture. Operates strictly within the PGS-native deterministic frame.
+2. **The Adversarial Auditor:**
    - **Workspace:** Inherited.
    - **Responsibility:** Strictly enforces `AGENTS.md`. Hunts for forbidden classical concepts (e.g., trial division, Miller-Rabin, probabilistic assumptions). Rejects the code and forces a rewrite if any rules are violated.
 3. **The Empirical Verifier:**
@@ -32,11 +32,59 @@ The four required subagent roles are:
    - **Workspace:** Inherited.
    - **Responsibility:** Enforces the project's exact writing standard and explanatory order (observable object -> mechanism -> project term -> formal definition). Updates documentation in HTML/Markdown.
 
-**Workflow:** For any requested task, the Orchestrator will spawn these four profiles. The Implementer drafts the code. The Auditor and Verifier run in parallel to review and test the draft. Once both approve, the Scribe documents the changes. Only after consensus is reached will the Orchestrator merge the changes.
+**Workflow:** For any requested task, the Orchestrator will spawn these four profiles. The Implementer drafts the code. The Auditor and Verifier run in parallel to review and test the draft. Once both approve, the Scribe documents the changes. Only after consensus is reached will the Orchestrator merge the changes. **Quality Assurance (below) is the mandatory final step of every workflow — including single-agent sessions.**
+
+At the start of each session display a message to the User acknowledging and confirming that this sub-agent mode is employed and operational. List the agent and roles for the user once at the beginning of each new session.
 
 ## Quality Assurance
 
-Always devise a plan to review your work and perform the review, including applying any necessary revisions and fixes before you consider your task complete. When writing code, automatically conduct a self-code review without being prompted. When creating GitHub issues, automatically use a browser to review and fix formatting. When creating and deploying Markdown documents, automatically use a browser to inspect the rendering on GitHub without being asked. For any other file types or artifacts not mentioned, employ an appropriate review and fix process proactively.
+Self-review is a **mandatory closing gate** for every task in this repository.
+No task is complete until review has been planned, executed, failures fixed, and
+the result reported. This applies to all work: code, prose, proofs, experiments,
+documentation, issue/PR text, research answers, and operational changes.
+
+Skipping, deferring, or implying review ("I should have…") is a contract violation.
+
+### Universal closing gate (required for every task)
+
+Before telling the user the task is done:
+
+1. **State a review plan** — name what you will check and how (3–7 bullets).
+2. **Execute the review** — run the checks; do not substitute intent for evidence.
+3. **Fix what fails** — apply revisions; re-run affected checks.
+4. **Report the outcome** — short pass/fail table: criterion · result · fix (if any).
+
+A task with no visible review plan and no visible review outcome is incomplete.
+
+### Minimum checks (apply unless the task contract explicitly narrows them)
+
+- **Claim alignment:** Deliverable matches the stated objective and acceptance
+  criteria; no scope creep; no overstated "resolved/proved/validated" language.
+- **PGS contract:** No classical inference drift; theorem / measured / audit /
+  unresolved states remain separated (`PROOF.md` and `AGENTS.md` control).
+- **Reproducibility:** Any command, path, count, or hash cited in the deliverable
+  was run or opened; mismatches are fixed or flagged as unresolved.
+- **Regression:** Proved surfaces and tests relevant to the change still pass.
+- **Diff discipline:** Re-read the full diff; remove accidental edits and stale
+  references.
+
+### Task-type supplements (in addition to the universal gate, not instead of it)
+
+| Work type | Additional required review |
+| --- | --- |
+| Code | Self-code review: correctness, edge cases, PGS-native frame, no forbidden classical gates, minimal diff. |
+| `PROOF.md` / theorem-status surfaces | Map acceptance criteria 1:1; verify certificate commands and pinned hashes; confirm no theorem downgrade. |
+| GitHub issues / PRs / comments | Browser-inspect rendered formatting and links before submit. |
+| Markdown / HTML docs | Browser-inspect rendering (GitHub or local `file://`) — tables, links, hierarchy. |
+| Experiments / benchmarks | Re-run the stated repro command; confirm artifacts match claims. |
+| Research answers | Adversarial pass: shape warnings, exact tested regimes, unresolved where unresolved. |
+
+### Completion rule
+
+Do not mark a task complete in chat, close an issue, or hand off to the user
+until the universal gate is satisfied and every applicable supplement has been
+run. If a check cannot be run, say so explicitly and leave the task **blocked**
+or **partial** — do not present it as done.
 
 ## AI Roles and Authority
 
@@ -438,6 +486,9 @@ If Codex is about to write or reason from any of these, stop:
 - "PGS is a prefilter."
 - "This is basically ordinary factorization."
 - "Audit confirms the inference rule."
+- "The diff looks fine, so we're done."
+- "I'll note the review gaps for next time."
+- "Browser/repro checks aren't needed for a small doc fix."
 
 Replacement frame:
 
@@ -445,3 +496,11 @@ Replacement frame:
 2. Identify the invariant.
 3. Apply the named PGS rule.
 4. Return resolved, unresolved, or invalidated within the PGS contract.
+
+Quality-assurance replacement frame:
+
+1. State the review plan.
+2. Run the checks.
+3. Fix failures.
+4. Report pass/fail.
+5. Then mark the task complete.
