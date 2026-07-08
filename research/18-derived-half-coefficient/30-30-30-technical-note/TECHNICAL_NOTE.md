@@ -47,9 +47,9 @@ holds with large margin.
 **Example (gap $89$–$97$).** Interior counts are $12,4,6,4,4,4,12$. The
 minimum is $4$ at $n=91$, distance $2$.
 
-**External audit (F18-002).** An independent computational check to $q \le 10^6$
-found **zero** violations of $C(q)$, median witness distance $2$, and maximum
-observed distance $48$.
+**Finite verification (F18-002).** Deterministic exhaustive enumeration to
+$q \le 10^6$ yields **zero** violations of $C(q)$, 50th percentile of witness
+distance $2$, and maximum witness distance $48$.
 
 **Boundary.** This theorem bounds the **selected witness offset** $w-p$. It does
 **not** prove the Riemann Hypothesis, the Prime Number Theorem, or that the full
@@ -70,7 +70,7 @@ The diagram shows the full chain:
 3. Apply the Short Divisor-Average Lemma on $J=\{w-H,\ldots,w-1\}$.
 4. Contradiction if $H$ is too large forces $H = O((\log w)^2)$ with leading constant $\tfrac{1}{8}$.
 5. Package as $C(q)=\max(64,\lceil \tfrac{1}{2}(\log q)^2\rceil)$ — **derived**, not tuned.
-6. Finite audit: zero violations to $10^6$; explicit boundary on what is not proved.
+6. Finite deterministic verification: zero violations to $10^6$; explicit boundary on what is not proved.
 
 ---
 
@@ -251,13 +251,13 @@ scale with $M = \lfloor C(q)/2 \rfloor$ geometric exclusion (`PROOF.md`
 
 ---
 
-### 4. Epistemic status and audit surfaces
+### 4. Epistemic status and verification surfaces
 
 | Surface | Regime | Result |
 |--------|--------|--------|
 | Finite base (`bounded_compression_base_v1`) | $q < \lceil e^{16}\rceil$ | $w-p \le 60$ exhaustively |
-| Grok independent audit (F18-002) | $q \le 10^6$ | $0$ violations; median dist $2$; max $48$ |
-| Zeta compression check (F18-002) | $s=2.5$, $N=5000$ | $\lvert\sum_{n \le N}\tau(n)n^{-s}-\zeta(s)^2\rvert \approx 1.95 \times 10^{-5}$ |
+| Pinned finite replay (F18-002) | $q \le 10^6$ | $0$ violations; 50th percentile dist $2$; max $48$ |
+| Zeta compression identity (F18-002) | $s=2.5$, $N=5000$ | $\lvert\sum_{n \le N}\tau(n)n^{-s}-\zeta(s)^2\rvert = 1.95 \times 10^{-5}$ (fixed truncation) |
 | Theorem stack (`PROOF.md`) | universal | bounded compression `proved` |
 
 F18-003 (half-scale correspondence with $\operatorname{Re}(s)=\tfrac{1}{2}$) is
@@ -296,7 +296,8 @@ $w-p$. It does **not**:
   Divisor-Average, Large-Divisor Adjacent Closure, Prime-Square Proximity
 - `research/04-bounded-compression/README.md` — theorem home and falsification
 - `research/18-derived-half-coefficient/docs/FINDING_STATEMENT.md` — F18-001/002/003
-- `experiments/grok-share-509b8495/safari_transcript.txt` — external audit transcript
+- `experiments/grok-share-509b8495/safari_transcript.txt` — deterministic replay transcript (provenance)
+- `docs/finite-verification-grok-509b8495.md` — F18-002 finite verification record
 - `research/twin-prime-resonance-technical-note-2026-07/TECHNICAL_NOTE.md` — bundle format reference
 
 ---

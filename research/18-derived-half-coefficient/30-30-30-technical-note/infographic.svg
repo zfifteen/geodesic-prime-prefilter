@@ -56,6 +56,6 @@
   <text class="ink h2" x="108" y="1336">5. Boundary</text>
   <text class="muted small" x="108" y="1372">Bounds w−p only. Not RH / not full gap q−p.</text>
   <rect class="box" x="800" y="1290" width="728" height="170"/>
-  <text class="ink h2" x="836" y="1336">Audit F18-002</text>
-  <text class="muted small" x="836" y="1372">0 violations for q ≤ 10⁶ · median dist = 2</text>
+  <text class="ink h2" x="836" y="1336">Finite verification F18-002</text>
+  <text class="muted small" x="836" y="1372">0 violations for q ≤ 10⁶ · 50th pct dist = 2</text>
 </svg>
