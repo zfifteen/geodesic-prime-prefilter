@@ -69,7 +69,7 @@ tiling lane — see [03-zeta-compression.md](./03-zeta-compression.md).
 | [RH-041](../FINDINGS_INDEX.md) | narrative | Integer order before zeta | [WHITEPAPER.md](../../../experiments/integer-order-before-zeta-whitepaper-2026-07/WHITEPAPER.md) |
 | [RH-042](../FINDINGS_INDEX.md) | narrative | RH is obsolete essay | [docs/essays/the-riemann-hypothesis-is-obsolete.md](../../../docs/essays/the-riemann-hypothesis-is-obsolete.md) |
 | [RH-043](../FINDINGS_INDEX.md) | narrative | Derived ½ tech note | [30-30-30-technical-note](../../18-derived-half-coefficient/30-30-30-technical-note/TECHNICAL_NOTE.md) |
-| [RH-070](../FINDINGS_INDEX.md) | measured | GWR bound audit (F18-002) | [finite-verification-grok-509b8495.md](../../18-derived-half-coefficient/docs/finite-verification-grok-509b8495.md) |
+| [RH-070](../FINDINGS_INDEX.md) | measured | GWR bound audit (F18-002) | [experiments/grok-share-509b8495/safari_transcript.txt](../../../experiments/grok-share-509b8495/safari_transcript.txt) |
 | [RH-102](../FINDINGS_INDEX.md) | narrative | Source order | [docs/rh/source-order.md](../../../docs/rh/source-order.md) |
 | [RH-103](../FINDINGS_INDEX.md) | measured | F18-004 rough-witness | [FINDING_STATEMENT.md](../../18-derived-half-coefficient/docs/FINDING_STATEMENT.md) |
 | [RH-104](../FINDINGS_INDEX.md) | proved | NLSC corollary | [docs/RESULTS.md](../../../docs/RESULTS.md) |
