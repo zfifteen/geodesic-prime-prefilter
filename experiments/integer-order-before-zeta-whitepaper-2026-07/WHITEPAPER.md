@@ -3,7 +3,8 @@
 **Prime Gap Structure — explanatory whitepaper**  
 **Date:** 2026-07-07  
 **Companion script:** `integer_order_demo.py`  
-**Visual summary:** `infographic.svg`
+**Visual summary:** `infographic.svg` / `infographic.png`  
+**PDF export:** `WHITEPAPER.pdf` (run `export_whitepaper_pdf.py`)
 
 ---
 
@@ -158,9 +159,57 @@ Prime order is not waiting to be invented by the zeta function. It is already wr
 
 ---
 
+## 10. Bounded compression (proved witness geometry)
+
+The GWR witness $w$ in gap $(p,q)$ satisfies a universal offset bound at Cramér scale:
+
+```text
+w - p  ≤  C(q)  =  max(64, ceil(0.5 * log(q)²))
+```
+
+This is proved in [PROOF.md](../../PROOF.md) — not a fitted curve. The factor `0.5`
+is arithmetically derived (F18-001, [RH-006](../../research/19-rh-corpus/FINDINGS_INDEX.md))
+from divisor-average closure, distinct from the Prime-Square Proximity lane.
+
+The bound constrains **where** the witness can sit inside a gap. It does not, by
+itself, place zeta zeros on the critical line.
+
+---
+
+## 11. Rough-witness signature (F18-004, measured)
+
+A 40-million-gap exhaustive audit ([FINDING_STATEMENT.md](../../research/18-derived-half-coefficient/docs/FINDING_STATEMENT.md),
+[RH-103](../../research/19-rh-corpus/FINDINGS_INDEX.md)) split near-maximal offsets into:
+
+| Branch | Observation |
+| --- | --- |
+| Non-square $w$ | Zero cases with ratio $\ge 0.65$ and $\tau(w) \le 5$ |
+| Prime square $w$ | One high-ratio case at $3{,}929^2$; closed by square tiling |
+
+This discipline matters for compression exposition: the half-coefficient in $C(q)$
+emerges from the non-square divisor-average lane, not from square witnesses.
+
+---
+
+## 12. Navigation hub (chapter 19)
+
+This whitepaper is indexed as [RH-041](../../research/19-rh-corpus/FINDINGS_INDEX.md) inside
+the RH corpus navigation hub:
+
+| Resource | Path |
+| --- | --- |
+| Master index (38 findings) | [research/19-rh-corpus/FINDINGS_INDEX.md](../../research/19-rh-corpus/FINDINGS_INDEX.md) |
+| Layer 3 compression spec | [by-layer/03-zeta-compression.md](../../research/19-rh-corpus/by-layer/03-zeta-compression.md) |
+| Multi-s compression empiric | `python3 research/19-rh-corpus/empirics/zeta_compression_probe.py` |
+| Gap analysis (scan audit) | [GAP_ANALYSIS.md](../../research/19-rh-corpus/GAP_ANALYSIS.md) |
+
+---
+
 ## References in this repository
 
 - [PROOF.md](../../PROOF.md) — local theorem authority
+- [research/19-rh-corpus/](../../research/19-rh-corpus/README.md) — RH corpus hub (this whitepaper's index home)
 - [docs/rh/README.md](../../docs/rh/README.md) — PGS-to-RH reading path
 - [docs/faq/core-frame/rh-downstream.md](../../docs/faq/core-frame/rh-downstream.md) — why RH is downstream
 - [docs/faq/core-frame/zeta-compression.md](../../docs/faq/core-frame/zeta-compression.md) — what zeta records
+- [research/18-derived-half-coefficient/](../../research/18-derived-half-coefficient/README.md) — F18 findings including derived ½ and rough-witness audit

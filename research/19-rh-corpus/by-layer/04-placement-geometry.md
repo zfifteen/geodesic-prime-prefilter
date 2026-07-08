@@ -3,7 +3,25 @@
 **Status mix:** `proved`, `measured`, `hypothesis`, `unresolved`, `invalidated`  
 **Proves RH?** No (partial progress toward source-to-spectral target)
 
-Chamber invariants, d=4 carrier geometry, empirics, draft transfer lemma.
+Chamber invariants, d=4 carrier geometry, empirics, and the draft source-to-spectral
+transfer lemma. This layer asks: **where** does the GWR witness sit inside its gap,
+and can that geometry constrain spectral placement?
+
+**Canonical folder:** [pgs-rh-placement-empirics-2026-06](../../pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md)
+
+---
+
+## Geometry primitives
+
+| Primitive | Definition | Status |
+|-----------|------------|--------|
+| $frac\_pos$ | $(w-p)/(q-p-1)$ in nonempty interior | proved bounds for d=4 branch |
+| Chamber budget | Log-weight spend inside gap | measured at $10^6$ |
+| Resonance | Primorial remainder zeros at $w$ | links to [RH-005](../FINDINGS_INDEX.md) twin termination |
+| Half-scale rhyme | $\tfrac12$ in $C(q)$ vs $\operatorname{Re}(s)=\tfrac12$ | [RH-040](../FINDINGS_INDEX.md) hypothesis only |
+
+Uniform $frac\_pos\le\tfrac12$ was **falsified** ([RH-033](../FINDINGS_INDEX.md)): 8,505
+counterexamples at $10^6$. Pursue gap-dependent bounds, not a global half-line rule.
 
 | ID | Status | Title | Path |
 |----|--------|-------|------|
