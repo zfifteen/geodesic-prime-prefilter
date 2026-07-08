@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1580" viewBox="0 0 1600 1580">
+  <defs>
+    <style>
+      .bg { fill: #f7f5ef; }
+      .ink { fill: #1f2528; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+      .muted { fill: #586069; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+      .h1 { font-size: 46px; font-weight: 800; }
+      .h2 { font-size: 28px; font-weight: 800; }
+      .small { font-size: 19px; }
+      .tiny { font-size: 16px; }
+      .math { font-size: 22px; font-weight: 700; }
+      .gap { fill: #f0f4fb; stroke: #3b6fb6; stroke-width: 4; rx: 12; }
+      .gwr { fill: #fff4ef; stroke: #bd5b43; stroke-width: 4; rx: 12; }
+      .avg { fill: #effaf5; stroke: #238866; stroke-width: 4; rx: 12; }
+      .half { fill: #fdf9e8; stroke: #b68a1f; stroke-width: 4; rx: 12; }
+      .bound { fill: #f5effa; stroke: #7b5ea7; stroke-width: 4; rx: 12; }
+      .box { fill: #ffffff; stroke: #d7d2c8; stroke-width: 3; rx: 12; }
+      .prime { fill: #e8f1ff; stroke: #3b6fb6; stroke-width: 3; rx: 8; }
+      .comp { fill: #fff0f0; stroke: #c45c5c; stroke-width: 3; rx: 8; }
+      .win { fill: #fff8e6; stroke: #b68a1f; stroke-width: 4; rx: 8; }
+      .arrow { stroke: #3b6fb6; stroke-width: 5; fill: none; marker-end: url(#a); }
+      .arrow-g { stroke: #b68a1f; stroke-width: 6; fill: none; marker-end: url(#b); }
+      .badge { fill: #238866; }
+      .badge-t { fill: #fff; font-size: 18px; font-weight: 700; font-family: Inter, sans-serif; }
+    </style>
+    <marker id="a" markerWidth="14" markerHeight="10" refX="13" refY="5" orient="auto"><path d="M0,0 L14,5 L0,10 Z" fill="#3b6fb6"/></marker>
+    <marker id="b" markerWidth="14" markerHeight="10" refX="13" refY="5" orient="auto"><path d="M0,0 L14,5 L0,10 Z" fill="#b68a1f"/></marker>
+  </defs>
+  <rect class="bg" width="1600" height="1580"/>
+  <text class="ink h1" x="72" y="68">Derived Half-Coefficient (F18-001)</text>
+  <text class="muted small" x="72" y="108">0.5 in the GWR bound is proved from divisor arithmetic — not chosen.</text>
+  <rect class="badge" x="1180" y="36" width="348" height="44" rx="8"/><text class="badge-t" x="1204" y="66">PROVED · F18-001</text>
+  <rect class="gap" x="72" y="140" width="1456" height="230"/>
+  <text class="ink h2" x="108" y="186">1. Prime gap interior</text>
+  <text class="muted small" x="108" y="222">GWR witness w = leftmost min τ(n) between primes p and q.</text>
+  <rect class="prime" x="140" y="290" width="72" height="52"/><rect class="comp" x="232" y="290" width="72" height="52"/>
+  <rect class="comp" x="324" y="290" width="72" height="52"/><rect class="win" x="416" y="290" width="72" height="52"/>
+  <rect class="comp" x="508" y="290" width="72" height="52"/><rect class="prime" x="600" y="290" width="72" height="52"/>
+  <text class="ink math" x="162" y="324">p</text><text class="ink math" x="434" y="324">w</text><text class="ink math" x="618" y="324">q</text>
+  <path class="arrow" d="M800 380 L800 420"/>
+  <rect class="gwr" x="72" y="430" width="1456" height="200"/>
+  <text class="ink h2" x="108" y="476">2. Witness Threshold</text>
+  <text class="ink math" x="108" y="552">T(d,e) = 2^((d−2)/(e−d)) closes earlier high-τ points</text>
+  <path class="arrow" d="M800 640 L800 680"/>
+  <rect class="avg" x="72" y="690" width="1456" height="260"/>
+  <text class="ink h2" x="108" y="736">3. Short Divisor-Average</text>
+  <text class="ink math" x="108" y="812">Σ τ(n) ≤ H(L+2)+2√w on J = {w−H,…,w−1}</text>
+  <text class="ink math" x="108" y="852">H too large → τ(n) &lt; τ(w) contradicts GWR</text>
+  <path class="arrow-g" d="M800 960 L800 1000"/>
+  <rect class="half" x="72" y="1010" width="1456" height="220"/>
+  <text class="ink h2" x="108" y="1056">4. Half-scale emergence</text>
+  <text class="ink math" x="108" y="1096">H = O(L²), constant 1/8 → w−p ≲ 0.5·(log q)²</text>
+  <text class="ink math" x="108" y="1176">C(q) = max(64, ⌈0.5·(log q)²⌉)</text>
+  <path class="arrow-g" d="M800 1240 L800 1280"/>
+  <rect class="bound" x="72" y="1290" width="700" height="170"/>
+  <text class="ink h2" x="108" y="1336">5. Boundary</text>
+  <text class="muted small" x="108" y="1372">Bounds w−p only. Not RH / not full gap q−p.</text>
+  <rect class="box" x="800" y="1290" width="728" height="170"/>
+  <text class="ink h2" x="836" y="1336">Audit F18-002</text>
+  <text class="muted small" x="836" y="1372">0 violations for q ≤ 10⁶ · median dist = 2</text>
+</svg>
