@@ -54,12 +54,32 @@ Use this hub for **program navigation**; use [docs/rh/](../../docs/rh/README.md)
 | [12-rh-bridge](../12-rh-bridge/README.md) | Archived pointer only |
 | [experiments/integer-order-before-zeta-whitepaper-2026-07](../../experiments/integer-order-before-zeta-whitepaper-2026-07/README.md) | Public explanatory whitepaper |
 
+## Tests
+
+```bash
+python3 -m pytest research/19-rh-corpus/tests/ -q
+```
+
+Imports and exercises shipped logic in `integer_order_demo.py` and
+`zeta_compression_probe.py` (no re-implementation).
+
+## Empirics
+
+| Script | Finding | Output |
+|--------|---------|--------|
+| [empirics/zeta_compression_probe.py](./empirics/zeta_compression_probe.py) | [RH-105](./FINDINGS_INDEX.md) | [empirics/output/compression_probe_results.json](./empirics/output/compression_probe_results.json) |
+
+Flagship public demo (whitepaper companion):
+`experiments/integer-order-before-zeta-whitepaper-2026-07/integer_order_demo.py`
+
 ## Maintenance
 
 - Add new RH-facing rows to [FINDINGS_INDEX.md](./FINDINGS_INDEX.md) with the next `RH-###` ID.
 - Run [scripts/scan_rh_references.py](./scripts/scan_rh_references.py) to surface candidate paths not yet indexed.
+- Record scan gaps in [GAP_ANALYSIS.md](./GAP_ANALYSIS.md).
 - Do **not** copy proof bodies into this folder — link only.
 
 ## Provenance
 
 - **2026-07-08:** Chapter created to consolidate scattered RH-facing findings.
+- **2026-07-08:** Population pass — layer docs expanded, RH-103–105 indexed, whitepaper §10–12, L3 empiric.

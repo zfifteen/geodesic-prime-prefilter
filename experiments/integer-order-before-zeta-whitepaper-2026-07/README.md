@@ -8,8 +8,9 @@ layer before the zeta function enters.
 | File | Description |
 | --- | --- |
 | `WHITEPAPER.md` | Main document (minimal jargon) |
+| `WHITEPAPER.pdf` | PDF export (`export_whitepaper_pdf.py`) |
 | `integer_order_demo.py` | Runnable demonstration script |
-| `infographic.svg` | One-page visual summary |
+| `infographic.svg` / `infographic.png` | One-page visual summary |
 | `output/demo_results.json` | Machine-readable output from the script |
 
 ## Run

@@ -12,8 +12,9 @@ lists **RH-###** IDs in order. Read boundaries on each row before citing publicl
 
 1. [RH-041](../../experiments/integer-order-before-zeta-whitepaper-2026-07/WHITEPAPER.md) — Integer order before zeta whitepaper  
 2. [RH-006](../18-derived-half-coefficient/README.md) — Derived ½ coefficient (or [RH-043](../18-derived-half-coefficient/30-30-30-technical-note/TECHNICAL_NOTE.md) tech note + infographic)  
-3. [RH-020](../../docs/rh/dni-to-zeta-compression.md) — Exact `ζ(s)²` compression (one sentence)  
-4. [RH-051](../../docs/rh/status-ledger.md) — **Stop:** RH sentence is open; state boundary explicitly  
+3. [RH-020](../../docs/rh/dni-to-zeta-compression.md), [RH-021](../../docs/rh/dni-to-zeta-compression.md) — Exact `ζ(s)²` and `−ζ'/ζ` compression  
+4. [RH-103](../18-derived-half-coefficient/docs/FINDING_STATEMENT.md) — Optional: branch discipline at near-max offsets (labeled measured)  
+5. [RH-051](../../docs/rh/status-ledger.md) — **Stop:** RH sentence is open; state boundary explicitly
 
 **Closing line template:**
 
@@ -70,8 +71,8 @@ lists **RH-###** IDs in order. Read boundaries on each row before citing publicl
 
 1. [RH-102](../../docs/rh/source-order.md) — Source order  
 2. [RH-010](../../docs/rh/dni-to-zeta-compression.md)–[RH-012](../../docs/rh/dni-to-zeta-compression.md) — Coordinates  
-3. [RH-020](../../docs/rh/dni-to-zeta-compression.md)–[RH-022](../../docs/rh/pole-placement.md) — Compression  
-4. [RH-041](../../experiments/integer-order-before-zeta-whitepaper-2026-07/WHITEPAPER.md), [RH-042](../../docs/essays/the-riemann-hypothesis-is-obsolete.md) — Public essays  
+3. [RH-020](../../docs/rh/dni-to-zeta-compression.md)–[RH-022](../../docs/rh/pole-placement.md), [RH-105](./empirics/zeta_compression_probe.py) — Compression + empiric  
+4. [RH-041](../../experiments/integer-order-before-zeta-whitepaper-2026-07/WHITEPAPER.md), [RH-042](../../docs/essays/the-riemann-hypothesis-is-obsolete.md) — Public essays
 5. [RH-040](../18-derived-half-coefficient/docs/half-scale-correspondence-hypothesis.md) — Hypothesis lane (labeled)  
 6. [RH-060](../../docs/rh/explicit-formula-bridge.md) — Explicit formula (downstream)  
 

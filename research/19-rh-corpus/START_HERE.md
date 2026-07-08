@@ -40,11 +40,15 @@ actually lives — and it remains **open** in this program.
 
 | I want to… | Go to |
 |------------|-------|
-| See every finding in one table | [FINDINGS_INDEX.md](./FINDINGS_INDEX.md) |
+| Read the flagship narrative | [WHITEPAPER.md](../../experiments/integer-order-before-zeta-whitepaper-2026-07/WHITEPAPER.md) ([RH-041](./FINDINGS_INDEX.md)) |
+| See every finding in one table | [FINDINGS_INDEX.md](./FINDINGS_INDEX.md) (38 rows) |
 | Understand the stack | [SOURCE_STACK.md](./SOURCE_STACK.md) |
+| See what the scan found | [GAP_ANALYSIS.md](./GAP_ANALYSIS.md) |
 | Prepare an X post / public thread | [READING_PATHS.md](./READING_PATHS.md) § Public |
 | Review as a skeptic | [READING_PATHS.md](./READING_PATHS.md) § Reviewer + [docs/rh/reviewer-map.md](../../docs/rh/reviewer-map.md) |
-| Work placement geometry | [by-layer/04-placement-geometry.md](./by-layer/04-placement-geometry.md) |
+| Work zeta compression (L3) | [by-layer/03-zeta-compression.md](./by-layer/03-zeta-compression.md) |
+| Work placement geometry (L4) | [by-layer/04-placement-geometry.md](./by-layer/04-placement-geometry.md) |
+| Reproduce compression empirics | `python3 research/19-rh-corpus/empirics/zeta_compression_probe.py` |
 | Avoid overclaiming | Every row in [FINDINGS_INDEX.md](./FINDINGS_INDEX.md) has a **Boundary** column — read it |
 
 ---

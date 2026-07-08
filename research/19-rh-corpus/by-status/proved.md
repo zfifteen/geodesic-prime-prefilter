@@ -13,5 +13,6 @@ Universal theorems and proved corollaries. **None of these prove RH.**
 | [RH-030](../FINDINGS_INDEX.md) | [d=4 fractional-position bound](../../pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md) | [research/pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md](../../pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md) |
 | [RH-031](../FINDINGS_INDEX.md) | [d=4 first τ=4 arrival](../../pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md) | [research/pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md](../../pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md) (first τ=4 corollary) |
 | [RH-032](../FINDINGS_INDEX.md) | [Prime-square threat closure](../../pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md) | [research/pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md](../../pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md) (prime-square threat closure) |
+| [RH-104](../FINDINGS_INDEX.md) | [NLSC corollary](../../../docs/RESULTS.md) | [docs/RESULTS.md](../../../docs/RESULTS.md) |
 
 [← Back to index](../FINDINGS_INDEX.md)
