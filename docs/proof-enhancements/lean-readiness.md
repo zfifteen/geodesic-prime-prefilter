@@ -16,7 +16,7 @@
 | Finite Bounded-Compression Base | S3, R1 | prose complete | complete | formalization in progress |
 | Residual K=128 | S4, R1 | prose complete | complete | formalization in progress |
 | Prime-Square Proximity | **S1** | prose complete | complete | formalization in progress |
-| Twin-Prime Resonance | **S2** | prose complete | measured | formalization in progress |
+| Twin-Prime Resonance | **S2** | prose complete | proved (exhaustive + finite base) | formalization in progress |
 | Universal bounded compression (composite) | S1, S3, P2 | prose complete | complete | formalization in progress |
 | Weak L_FCL / Rule X replay | — | prose complete | measured | formalization in progress |
 
