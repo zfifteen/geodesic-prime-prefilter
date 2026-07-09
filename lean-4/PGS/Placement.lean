@@ -8,6 +8,7 @@ Downstream verification only — not used for inference or prime selection.
 -/
 
 import Mathlib.Analysis.SpecialFunctions.Log.Basic
+import Mathlib.NumberTheory.Bertrand
 import Mathlib.Tactic
 import PGS.Basic
 
@@ -40,9 +41,20 @@ noncomputable def excessBudget (p q : ℕ) : ℝ :=
 
 /-! ## Phase 1: infrastructure -/
 
-/-- Bertrand postulate as used in PROOF.md. -/
-axiom bertrand_postulate (p q : ℕ) (hp : Nat.Prime p) (hq : Nat.Prime q) (hpq : p < q)
-    (hnext : ¬ ∃ r, p < r ∧ r < q ∧ Nat.Prime r) : q < 2 * p
+/-- Bertrand postulate for consecutive primes — mirrors PROOF.md CL-001. -/
+theorem bertrand_postulate (p q : ℕ) (hp : Nat.Prime p) (hq : Nat.Prime q) (hpq : p < q)
+    (hnext : ¬ ∃ r, p < r ∧ r < q ∧ Nat.Prime r) : q < 2 * p := by
+  rcases Nat.exists_prime_lt_and_le_two_mul p (Nat.Prime.ne_zero hp) with
+    ⟨p', hp', hpp', hp'le⟩
+  have hp'gt : p < p' := hpp'
+  by_cases hp'ltq : p' < q
+  · exact absurd ⟨p', hp'gt, hp'ltq, hp'⟩ hnext
+  · have hq_le_two : q ≤ 2 * p := le_trans (Nat.le_of_not_lt hp'ltq) hp'le
+    by_cases heq : q = 2 * p
+    · subst heq
+      exfalso
+      exact Nat.not_prime_mul (by decide : (2 : ℕ) ≠ 1) (Nat.Prime.ne_one hp) hq
+    · exact lt_of_le_of_ne hq_le_two heq
 
 theorem gwr_left_prefix_exclusion (p w : ℕ) (δ : ℕ) (r : ℕ)
     (hleft : ∀ i, 0 < i → i < r → δ < tau (p + i)) :
@@ -93,7 +105,9 @@ theorem gwr_d4_first_tau_four (p : ℕ) (r : ℕ)
 
 /-! ## Phase 3: closure before square threat -/
 
-/-- Prime squares have divisor count 3 (classical; audit input matching measured falsification). -/
+/-- Prime squares have divisor count 3 — mirrors PROOF.md CL-003 (`classical-import`).
+
+Proved from CL-003 prose; Lean discharge deferred to roadmap M1 counting closure. -/
 axiom tau_prime_square_eq_three (r : ℕ) (hr : 1 < r) (_hprime : Nat.Prime r) :
     tau (r * r) = 3
 

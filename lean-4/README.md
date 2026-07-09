@@ -23,6 +23,7 @@ This is a **downstream verification and audit layer only**.
 - `PGS/GWR.lean` — Phase 3 placeholder
 - `smoke-test.lean` — Automated verification that the library loads and basic defs work
 - Full contract and plan documents
+- [`PLACEMENT_FORMALIZATION_ROADMAP.md`](PLACEMENT_FORMALIZATION_ROADMAP.md) — closure-order DAG for RH-080/081 ([#49](https://github.com/zfifteen/prime-gap-structure/issues/49))
 
 **Important Note on Dependencies**: The initial attempt to use full Mathlib created repeated source/checkout blockers. The skeleton was made self-contained (pure Lean) to achieve a working, verifiable build. Mathlib will be re-introduced in a controlled manner during Phase 1 expansions.
 
