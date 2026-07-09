@@ -1,4 +1,4 @@
-# Round 02–04 — Debate, Convergence, and Decision
+# Round 02 to 04: Debate, Convergence, and Decision
 
 **Facilitator synthesis from the 12 agent proposals (see round-01-consolidated-proposals.md for raw inputs).**
 
@@ -37,7 +37,7 @@ Maturation and generalization of the deterministic PGS-native RSA modulus endpoi
 - Directly attacks the 50-bit unresolved and rung-specific limitation.
 - Forces chamber reset, endpoint determinacy, and chain-horizon to become named, transportable objects.
 - Generates large-gap (including square-branch) data inside real semiprimes.
-- Produces structural certificates — the exact artifacts Lean and external verification need.
+- Produces structural certificates, the exact artifacts Lean and external verification need.
 - Forces state-budget clarity on whether the low-dimensional carrier set remains sufficient at scale.
 - Highest external perception impact while staying inside the strict PGS contract (GWR carriers, not gcd or MR inside inference).
 - Synergistic with, rather than replacement for, square-branch and Lean work.

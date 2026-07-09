@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const PGS = process.env.PGS_ROOT || '/Users/velocityworks/IdeaProjects/prime-gap-structure';
 const logDir = process.argv[2] || process.env.LOG_DIR || (PGS + '/logs');
-console.log('PGS Log Analyzer — self-review for director cycle');
+console.log('PGS Log Analyzer: self-review for director cycle');
 console.log('Scanning:', logDir);
 let summary = {total_logs_scanned: 0, pgs_framing_refs: 0, gwr_dni_refs: 0, improvements: []};
 try {

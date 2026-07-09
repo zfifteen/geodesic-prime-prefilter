@@ -1,4 +1,4 @@
-# Round 01 — Consolidated Agent Proposals
+# Round 01: Consolidated Agent Proposals
 
 **Meeting:** PGS Research Program Strategic Upgrade Counsel  
 **Date:** 2026-07-03  
@@ -42,7 +42,7 @@ Each agent output is reproduced with only minor formatting normalization for rea
 
 **PRIMARY UPGRADE:** Transform the existing square-tail obstruction classification, carrier-economy models, and chamber-reset invariants into a complete deterministic PGS-native proof that every selected square-branch witness satisfies D(r) = r² - P(r²) ≤ max(64, ceil(0.5 * log(r²)²)).
 
-**RUNNER-UP 1:** Systematic extension of square-branch dynamic-cutoff falsification surfaces to 10^9–10^12 scales...
+**RUNNER-UP 1:** Systematic extension of square-branch dynamic-cutoff falsification surfaces to 10^9 to 10^12 scales...
 
 **RUNNER-UP 2:** Integration of square-branch proximity measurement and certification directly into modulus-link endpoint-chain traversals...
 
@@ -76,7 +76,7 @@ Each agent output is reproduced with only minor formatting normalization for rea
 
 **RATIONALE (excerpt):** "A completed machine-checked core changes the program’s epistemic status. ... Structural certificates then become first-class: a certificate emitted by the Python/C generator can be type-checked and invariant-checked in Lean; unresolved modulus-link residuals become mechanically inspectable objects rather than prose notes. This directly serves the cryptology track. ... The same core also pressures the square-branch obligation..."
 
-**ALIGNMENT CHECK:** Enters exclusively through PGS objects ... Lean as downstream verification/audit only—never as generator or inference engine.
+**ALIGNMENT CHECK:** Enters exclusively through PGS objects ... Lean as downstream verification/audit only:never as generator or inference engine.
 
 ---
 
@@ -126,7 +126,7 @@ Each agent output is reproduced with only minor formatting normalization for rea
 
 (The agent analyzed the counsel context and strongly supported the RSA endpoint resolver direction as the highest-leverage forcing function for state-budget clarity.)
 
-**Key analysis:** "The winning upgrade — establishing a complete, deterministic PGS-native RSA modulus endpoint resolver ... will force explicit, auditable accounting of the exact local chamber state required at cryptographic scales. It is the highest-leverage path available to convert current finite-surface observations (d4_count as ordering carrier, linear B(I), ~74% d=4 packet dominance) into concrete, scale-independent bounds on active carriers / hidden state."
+**Key analysis:** "The winning upgrade: establishing a complete, deterministic PGS-native RSA modulus endpoint resolver ... will force explicit, auditable accounting of the exact local chamber state required at cryptographic scales. It is the highest-leverage path available to convert current finite-surface observations (d4_count as ordering carrier, linear B(I), ~74% d=4 packet dominance) into concrete, scale-independent bounds on active carriers / hidden state."
 
 **RATIONALE highlights:** The modulus defines adversarial, naturally occurring large-gap populations ... every transport step must carry or recompute only the minimal state ... Structural certificates will make the exact carrier set public and verifiable. ... Current evidence is consistent with aggressive compression... The RSA upgrade creates the natural experiment that will either (a) confirm the compression surface stays small ... or (b) force the addition of the minimal new carriers required...
 

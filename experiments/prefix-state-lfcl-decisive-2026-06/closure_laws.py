@@ -1,4 +1,4 @@
-"""Pre-registered L_FCL closure laws L0–L4 (no q_ref / gap imports)."""
+"""Pre-registered L_FCL closure laws L0 to L4 (no q_ref / gap imports)."""
 
 from __future__ import annotations
 

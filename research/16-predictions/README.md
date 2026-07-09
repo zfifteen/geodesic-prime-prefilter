@@ -4,7 +4,7 @@
 
 This is the dedicated research chapter for PGS-native mechanisms that resolve future chamber states, endpoints, and gap structures exactly from known invariants.
 
-Primary surface: [index.html](index.html) — self-contained contract and bootstrap artifact.
+Primary surface: [index.html](index.html), self-contained contract and bootstrap artifact.
 
 ## Bootstrap
 - Initialized: 2026-05 session in response to explicit request "begin a new research effort for this program: Predictions".

@@ -18,19 +18,19 @@ This is why the joint zero alignment stabilizes absence and the off-zero cases d
 
 The statement is now a clean transport obstruction rather than a named correlation. Terminal-twin lift is no longer an extra empirical tag; it is the only remaining directed carrier once the right side has zero slack.
 
-### Refined Deliverable — Three-Rung Lemma Ladder (Current Consensus Form)
+### Refined Deliverable: Three-Rung Lemma Ladder (Current Consensus Form)
 
 Here is the ladder with your no-slack Rung 2, plus the exact falsification predicate for each rung drawn from the current enriched corpus and probe surfaces:
 
-**Rung 1 — Residue Bridge (already a direct mod-30 lemma)**  
+**Rung 1. Residue Bridge (already a direct mod-30 lemma)**  
 Public selected offset 6 (o6_d4 trigger) + balanced right boundary (o4|o4 residues) forces the unordered factor residues to exactly {13, 19}.  
 *Exact falsification predicate:* Any row with public containing type o6_d4_*, right residues o4|o4, and {p mod 30, q mod 30} ≠ {13, 19}.
 
-**Rung 2 — No-Slack Transport (the bridge)**  
+**Rung 2. No-Slack Transport (the bridge)**  
 At public selected load 4, the rightward endpoint transport budget exactly matches the middle open boundary (max(a, b) = 4). A prior-absent supported endpoint cell cannot re-enter by changing its right boundary while preserving endpoint transport defect 0, because shortfall and overshoot are the only available right-side deviations. Therefore any re-entry that keeps transport defect 0 must be carried by the opposite directed side: the lower-factor immediate-left slot, realized as terminal-twin lift (immediate-left distance exactly 2 inside a preceding gap of width ≥ 18).  
 *Exact falsification predicate:* Any row with public selected load = 4, right boundary max(a, b) = 4, prior-absent supported cell, that re-enters as an exact endpoint pair without the lower factor satisfying terminal-twin lift (distance ≠ 2 or preceding gap width < 18).
 
-**Rung 3 — Bookkeeping Obstruction**  
+**Rung 3. Bookkeeping Obstruction**  
 The terminal-twin lift required by Rung 2 necessarily produces a left phase (very_late family) that is absent from the prior support surface of the same public trigger cell; therefore the old exact endpoint pair cannot be the vehicle of re-entry.  
 *Exact falsification predicate:* Any row that satisfies Rung 2 conditions (load 4 + balanced right boundary + terminal-twin lift on lower factor) whose re-entry left phase still matches one of the prior-supported left-phase families for that public trigger cell.
 

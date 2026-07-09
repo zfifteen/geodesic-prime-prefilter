@@ -14,7 +14,7 @@ It is still not a complete prevention contract for the following reasons:
 
 - Narrative laundering after the fact is untouched. Even a perfect "missed" or "contained_only" from the canonical checker does not prevent a subsequent turn from writing interpretive text that treats private knowledge of good theoretical rank as evidence of scale progress.
 
-The core historical defect — producing an oracle-assisted rank measurement on known factors and allowing it to function as a success or scale claim — can still be executed by re-labeling the computation and keeping it outside the narrow "audit" bucket the current rule protects.
+The core historical defect, producing an oracle-assisted rank measurement on known factors and allowing it to function as a success or scale claim, can still be executed by re-labeling the computation and keeping it outside the narrow "audit" bucket the current rule protects.
 
 **One final question**
 

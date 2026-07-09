@@ -1,10 +1,10 @@
-# Layer 5 — Pole placement / RH sentence
+# Layer 5: Pole placement / RH sentence
 
 **Status mix:** `unresolved`, `narrative`  
-**Proves RH?** This layer **is** the RH target — still **open**
+**Proves RH?** This layer **is** the RH target: still **open**
 
 After exact compression (L3), the Riemann Hypothesis becomes a **pole-placement
-sentence** for the continued DNI ratio. Nothing in L1–L4 currently closes this.
+sentence** for the continued DNI ratio. Nothing in L1 to L4 currently closes this.
 
 ---
 
@@ -68,7 +68,7 @@ No such theorem is proved today.
 
 ## Explanatory geometry (not proof)
 
-[docs/rh/critical-line-and-zero-geometry.md](../../../docs/rh/critical-line-and-zero-geometry.md) —
+[docs/rh/critical-line-and-zero-geometry.md](../../../docs/rh/critical-line-and-zero-geometry.md) :
 strip symmetry, functional equation center at $\tfrac12$, zero heights as
 spectral coordinates. Status: `narrative` ([RH-052](../FINDINGS_INDEX.md)).
 

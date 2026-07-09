@@ -159,7 +159,7 @@ So the strongest supported claim is:
 **On the current tested surface, every checked prime gap has a canonical interior selected integer, and the selected integer is exactly the leftmost integer of the smallest divisor count present in the gap.**
 
 The interior maximizer theorem is proved universally in `PROOF.md`. The scan
-counts above are audit corroboration on tested regimes — much stronger than a
+counts above are audit corroboration on tested regimes, much stronger than a
 handful of numerical coincidences, and now backed by a full proof.
 
 ---

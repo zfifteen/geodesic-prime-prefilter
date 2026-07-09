@@ -144,7 +144,7 @@ def main():
         max_square_ratio = max(c['ratio'] for c in square_high_ratio)
         print(f"  Highest square ratio observed: {max_square_ratio:.4f}")
         if max_square_ratio > 0.80:
-            print("  NOTE: Square achieved >80% of bound — challenges 'bounded away from 1.0' observation.")
+            print("  NOTE: Square achieved >80% of bound, challenges 'bounded away from 1.0' observation.")
 
     # Save detailed results
     import json

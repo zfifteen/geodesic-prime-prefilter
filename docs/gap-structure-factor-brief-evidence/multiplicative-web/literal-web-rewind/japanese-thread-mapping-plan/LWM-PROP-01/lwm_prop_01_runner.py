@@ -384,7 +384,7 @@ def write_global_artifacts(results: list[dict[str, Any]]) -> None:
 
     # Aggregate summary (public + measured outcome)
     lines = [
-        "# LWM-PROP-01 Findings — Deterministic Local Propagation (Carry Analog)",
+        "# LWM-PROP-01 Findings: Deterministic Local Propagation (Carry Analog)",
         "",
         "EXPERIMENT: LWM-PROP-01",
         "Path: literal multiplicative-web / thread-triangulation (rewind contract)",

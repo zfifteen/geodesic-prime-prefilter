@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title>Remainder Pattern Hunt — Joint Report</title>
+<title>Remainder Pattern Hunt. Joint Report</title>
 <style>
 :root {--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--hot:#3fb950;--cold:#f85149}
 body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--text);margin:0;line-height:1.55}
@@ -23,7 +23,7 @@ table{width:100%;border-collapse:collapse} th,td{border:1px solid var(--border);
 </head>
 <body>
 <header class="hero">
-  <h1>Remainder Pattern Hunt — Joint Report</h1>
+  <h1>Remainder Pattern Hunt. Joint Report</h1>
   <p>Grok + Antigravity · pattern_hunt_surface_max_p_400000</p>
   <p>Conversation <code>5c511509-23f2-48a8-936c-78e433748e1b</code></p>
   <div class="stats">
@@ -49,7 +49,7 @@ python research/remainders/pattern_hunt_build_report.py</pre>
 <article class="round-card"><header><span class="round-num">R5</span><h3>p29 primorial decoy</h3></header><p>Delta-mu primorial_level is_gwr True vs False over p=29 g&gt;=4; expected negative.</p></article>
 <article class="round-card"><header><span class="round-num">R6</span><h3>Along-gap transitions</h3></header><p>E_n running-min gradient, chamber_wall_distance, primorial_hamming_transition ranked by falsification power.</p></article>
 <article class="round-card"><header><span class="round-num">R7</span><h3>Semiprime collector</h3></header><p>Gap-geometry collector without factorization; JSONL compatible with pattern_hunt.py.</p></article>
-<article class="round-card"><header><span class="round-num">R8</span><h3>Adversarial controls</h3></header><p>Simpson skew, algebraic leakage, modulus bias, squeezed chamber — stratified baselines required.</p></article>
+<article class="round-card"><header><span class="round-num">R8</span><h3>Adversarial controls</h3></header><p>Simpson skew, algebraic leakage, modulus bias, squeezed chamber, stratified baselines required.</p></article>
 <article class="round-card"><header><span class="round-num">R9</span><h3>Pattern vs null table</h3></header><p>GWR Super-Signal vs Coprime isolator vs Mod-30 decoy with strict falsifiers.</p></article>
 <article class="round-card"><header><span class="round-num">R10</span><h3>HTML report outline</h3></header><p>Eight sections mapped to JSON paths for baseline, decoy, codebook, super-signal, nulls, transitions.</p></article></div>
   </section>
@@ -87,9 +87,9 @@ python research/remainders/pattern_hunt_build_report.py</pre>
       </div>
     </div>
     <ul class="finding-list">
-      <li><strong>p≡29 Doorstep</strong> — <code>analysis.p29_wide_k1_doorstep</code>: 2,999 cases; GWR=0</li>
-      <li><strong>Mod-210 class 0</strong> — 0% dist=1 across 11,943 GWR records</li>
-      <li><strong>k-offset</strong> — k_1_3: 21.38% vs k_7_10: 2.94%</li>
+      <li><strong>p≡29 Doorstep</strong> : <code>analysis.p29_wide_k1_doorstep</code>: 2,999 cases; GWR=0</li>
+      <li><strong>Mod-210 class 0</strong> : 0% dist=1 across 11,943 GWR records</li>
+      <li><strong>k-offset</strong>, k_1_3: 21.38% vs k_7_10: 2.94%</li>
     </ul>
   </section>
 
@@ -104,8 +104,8 @@ python research/remainders/pattern_hunt_build_report.py</pre>
 
   <section id="falsified"><h2>Falsified / Null Cells</h2>
     <ul class="finding-list">
-      <li><strong>position_bin=9</strong> — Algebraic tautology (Antigravity R2)</li>
-      <li><strong>Global num_zeros MI</strong> — ~0.057 without partitioning</li>
+      <li><strong>position_bin=9</strong>. Algebraic tautology (Antigravity R2)</li>
+      <li><strong>Global num_zeros MI</strong> : ~0.057 without partitioning</li>
     </ul>
   </section>
 

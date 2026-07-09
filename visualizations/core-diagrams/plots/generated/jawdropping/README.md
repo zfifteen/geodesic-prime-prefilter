@@ -14,7 +14,7 @@ Generated 2026-06 as part of the visualizations suite.
 
 - Previous jaw-droppers (from buck_wild script):
   - square_branch_cosmos_3d.png (722KB): 3D galaxy of square branches with red violation supernovae and constellation lines.
-  - square_branch_fractal_tree.png (929KB): Recursive fractal tree of the square branch — looks alive.
+  - square_branch_fractal_tree.png (929KB): Recursive fractal tree of the square branch, looks alive.
   - pgs_mandala.png (735KB): Sacred geometry mandala layering ridges, GWR, square offsets.
   - cosmic_nebula_3d.html (4.6MB): Interactive 3D particle universe of gaps (size=avg Z, color=GWR pos).
 
@@ -37,7 +37,7 @@ Run the scripts again with bigger limits for more data, different colormaps, or 
 
 Enjoy the trip through the divisor field!
 
-## User's Favorites — Enhanced (2026-06 follow-up)
+## User's Favorites: Enhanced (2026-06 follow-up)
 
 The user specifically loved:
 - square_branch_fractal_tree.png
@@ -46,7 +46,7 @@ The user specifically loved:
 **New enhanced versions generated:**
 - square_branch_fractal_tree_enhanced.png (300 DPI + explanatory legend tying directly to PROOF.md square branch, GWR selection, bounded compression violations)
 - square_branch_cosmos_3d_enhanced.png (250 DPI + annotations explaining the 3D geometry of the square branch hypothesis)
-- square_branch_cosmos_interactive.html (full Plotly 3D interactive — drag to explore the violations as red points)
+- square_branch_cosmos_interactive.html (full Plotly 3D interactive, drag to explore the violations as red points)
 - square_branch_favorites_diptych.png (side-by-side print-ready composite)
 - square_branch_favorites.html (dedicated standalone gallery page with both images + PGS explanations)
 
@@ -64,7 +64,7 @@ New PGS fractals generated (in ../fractals/ and growth GIF here):
 
 - ridge_self_similarity_fractal.png: From 11-gap-ridge scale data. Recursive branching of Z-peak (ridge) positions across log scales. Visual self-similarity + left (near-edge) bias of the low-excess structure.
 
-- u_square_utilization_fractal.png: Recursion on the U_□ = (right-w)/(next_square-w) ratio in d=4 chambers (05-state-budget). Low util branches "eat" more of the square room — higher square-phase pressure.
+- u_square_utilization_fractal.png: Recursion on the U_□ = (right-w)/(next_square-w) ratio in d=4 chambers (05-state-budget). Low util branches "eat" more of the square room, higher square-phase pressure.
 
 - square_branch_fractal_growth.gif: Animation of the user's favorite tree growing (depth + data points). Violations emerge as red branches as more real square branch data is incorporated.
 

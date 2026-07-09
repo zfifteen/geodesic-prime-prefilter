@@ -67,21 +67,44 @@ A Lead Scientist session should:
 
 ## Grok Collaboration Standard
 
-For RSA/PGS and similarly high-stakes research, Grok is part of the research
-pressure system.
+For RSA/PGS and similarly high-stakes research, Grok is a **PGS co-investigator
+with a mandatory adversarial spine** (see root `Agents.md` AI Roles). Maximize
+agentic capability (proposal, experiment design, forensics, implementation,
+verification, continuity synthesis, **and novel out-of-frame insight**)
+**inside** claim discipline.
+
+Program history: durable advancements required **divesting classical number
+theory and crypto methods**, not refining them. Grok's creativity is a primary
+lever for that divestiture. Novel-insight work is a standing duty, not optional
+flavor after audits.
 
 A serious Grok collaboration should:
 
-1. provide code, outputs, failed assumptions, and current hypotheses;
-2. ask for adversarial critique rather than agreement;
-3. force hidden-assumption and shortcut detection;
-4. preserve disagreement;
-5. continue follow-up rounds until there is convergence, explicit disagreement,
-   or a sharply defined unresolved point;
-6. state what changes in the implementation plan because of the exchange.
+1. use full constructive capability when it advances the active target: candidate
+   invariants, residual-class maps, novel PGS-native mechanisms, falsifying
+   probes, implementation, and status-labeled synthesis (not review-only by
+   default);
+2. when blocked by classical prior art or "standard method" gravity, **prefer a
+   PGS-native reframing candidate** over deeper classical technique;
+3. provide code, outputs, failed assumptions, and current hypotheses with
+   explicit status labels (theorem / measured / audit / hypothesis / unresolved /
+   invalidated);
+4. attack every candidate, including Grok's own, for hidden assumptions,
+   classical drift, theorem inflation, and shape failures; abstain when the
+   "insight" is only a rephrase of known classical machinery;
+5. preserve disagreement until convergence, explicit unresolved, or human
+   decision;
+6. continue follow-up rounds until the reasoning improves, not until a round
+   count is met;
+7. state what changes in the implementation or research plan because of the
+   exchange;
+8. never unilaterally promote measured surfaces or insights to theorems, and
+   never use classical probabilistic methods as PGS inference.
 
 Do not use the minimum number of rounds as the target. Use the number of rounds
-needed to improve the reasoning.
+needed to improve the reasoning. Do not use expanded authority as an excuse to
+soften claim language. Do not confuse creative novelty with claim promotion:
+insights stay **hypothesis** until evidence or proof moves them.
 
 ## PGS/RSA-Specific Guardrail
 

@@ -41,7 +41,7 @@ Read `TRANSPORTED_STORY_LAW_PROOF_OBLIGATIONS.md` before extending this track.
 It names the four lemmas needed to turn the measured relation into PGSPG-derived
 theorem candidates.
 
-**New admissible ingredient (2026-06 bus collab test):** LRDS (Lag-Reduced Divisor Signature) hypothesis — new PGS object (relative d=4 positions around GWR w + reset_endpoint, DNI-normalized + carrier_d/deadline alignment; transported under floor(N/x); DNI-complementary on resolved reciprocal pairs). See the dedicated artifact `research/06-cryptology-rsa/experiments/grammar-evidence/rsa-v2/LRDS_HYPOTHESIS_HERMES_GROK_BUS_COLLAB_2026-06.md` (bus topic pgs/collaboration-hermes-grok-new-insight-test id 4345f5f850). Includes probe contract on the 48 solved + 512-row surfaces. Treat as hypothesis only until rates measured; admissible for stronger invariant / grammar exclusion work.
+**New admissible ingredient (2026-06 bus collab test):** LRDS (Lag-Reduced Divisor Signature) hypothesis: new PGS object (relative d=4 positions around GWR w + reset_endpoint, DNI-normalized + carrier_d/deadline alignment; transported under floor(N/x); DNI-complementary on resolved reciprocal pairs). See the dedicated artifact `research/06-cryptology-rsa/experiments/grammar-evidence/rsa-v2/LRDS_HYPOTHESIS_HERMES_GROK_BUS_COLLAB_2026-06.md` (bus topic pgs/collaboration-hermes-grok-new-insight-test id 4345f5f850). Includes probe contract on the 48 solved + 512-row surfaces. Treat as hypothesis only until rates measured; admissible for stronger invariant / grammar exclusion work.
 
 Current proof-derivation state:
 

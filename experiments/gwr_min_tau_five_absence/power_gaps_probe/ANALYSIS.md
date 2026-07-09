@@ -18,14 +18,14 @@ The user's follow-up post (the one linked) confirmed the computation (to 10^7, a
 - Gnomons (L-shaped figures) and sums of odd numbers building squares: ∑(2n-1) = n².
 - Dividing circles/diameters into fractions (2/3 + 1/3, 4/5 + 1/5) leading to cascades of reciprocal square roots, right triangles, area-preserving transformations.
 - "Geometry is the shortcut to algebra."
-- "Drawing little arrows on a piece of paper" (his bio) — diagrammatic, constructive thinking.
+- "Drawing little arrows on a piece of paper" (his bio), diagrammatic, constructive thinking.
 - Pattern recognition in these geometric constructions.
 
 Connection to primes and divisor counts:
 - "Uneven number of divisors" = odd τ(n) ⇔ n is a perfect square. This is a basic number-theoretic fact that aligns perfectly with his geometric interest in squares.
 - In the running example used (23 | 24 25 26 27 28 | 29), 25=5² has τ=3 (odd, the smallest possible odd >1), and it was the GWR minimum in that gap.
 - He generalized from the data/examples he examined: when the min τ in a prime gap interior is odd, it is always 3 (corresponding to the smallest squares p²).
-- Next logical candidate for an odd τ >3 is 5, which occurs precisely for fourth powers p⁴ (τ(p⁴)=5). Note p⁴ = (p²)² — a square of a square. This fits his geometric mindset of iterated squares/roots.
+- Next logical candidate for an odd τ >3 is 5, which occurs precisely for fourth powers p⁴ (τ(p⁴)=5). Note p⁴ = (p²)², a square of a square. This fits his geometric mindset of iterated squares/roots.
 - "Other prime related gaps": After the cubes/squares question, he is imagining redefined intervals whose endpoints or contents involve primes and their geometric powers (p, p², p³, p⁴). In those alternative "canvases" or ordered sets, perhaps a higher "square-like" object (p⁴ with τ=5) could become the leftmost minimum under GWR.
 
 In short: He is pattern-matching in the divisor-count field the same way he does in geometric diagrams. The restriction "odd mins only start at 3" feels like a structural "gnomon" or building block, and 5 is the natural next test case for whether the pattern holds or breaks when you include higher powers.
@@ -40,7 +40,7 @@ Up to 1e6:
 
 Even when you "make room" for powers by treating p², p³, p⁴ as endpoints (removing some low-τ specials from the interior), 5 still does not appear as the minimum in the remaining stretches.
 
-This suggests the absence of 5 as GWR min is quite robust — not just an artifact of standard prime gaps.
+This suggests the absence of 5 as GWR min is quite robust, not just an artifact of standard prime gaps.
 
 ## PGS Interpretation
 In PGS terms, the divisor-count field τ(n) inside any ordered interval has strong constraints on its possible minima when the interval is "prime gap-like" (dense with composites of low τ).

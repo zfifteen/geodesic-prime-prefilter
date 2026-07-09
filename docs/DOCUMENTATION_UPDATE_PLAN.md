@@ -3,7 +3,7 @@
 **Branch**: `documentation-updates-2026-07`
 **Created**: 2026-07-08
 **Base**: Current `main` (commit f01dc2ed9d04b243e72a97139e094929c8090619)
-**Status**: **COMPLETE** — All phases executed on branch. Ready for review and merge.
+**Status**: **COMPLETE**: All phases executed on branch. Ready for review and merge.
 
 ---
 
@@ -17,7 +17,7 @@
 ## Files Changed / Added on This Branch
 
 **Modified**:
-- `README.md` — Complete structural overhaul (abstract, ToC, tiers, glossary, proved status callout, Quick Start, repository map, improved hierarchy)
+- `README.md`. Complete structural overhaul (abstract, ToC, tiers, glossary, proved status callout, Quick Start, repository map, improved hierarchy)
 
 **Created**:
 - `docs/DOCUMENTATION_UPDATE_PLAN.md` (this file)
@@ -28,7 +28,7 @@
 
 ---
 
-## Phased Implementation — All Complete
+## Phased Implementation: All Complete
 
 ### Phase 0: Branch Setup & Baseline ✓
 - [x] Branch `documentation-updates-2026-07` created from main.
@@ -63,7 +63,7 @@
 - [x] No embedded visuals added in this pass (kept scope to structure; can be follow-up).
 
 ### Phase 5: Validation, Review & Merge Preparation ✓
-- [x] No code or proof changes — zero risk of breakage to `assert_results.tsv` or existing runs.
+- [x] No code or proof changes, zero risk of breakage to `assert_results.tsv` or existing runs.
 - [x] Self-review + agent consistency check completed (documentation-only, follows plan and AGENTS.md tone).
 - [x] This plan file updated with completion status.
 - [x] Branch ready. User can create PR via GitHub UI (`documentation-updates-2026-07` → `main`) or merge directly.
@@ -72,7 +72,7 @@
 
 ---
 
-## Risks & Mitigations — All Addressed
+## Risks & Mitigations: All Addressed
 
 All risks mitigated as planned. Documentation-only branch. Original voice and rigor fully preserved.
 

@@ -278,7 +278,7 @@ Primary research live docs:
 - `research/02-gwr-dni/docs/why_the_dominant_d4_reduction_matters.md`
 - `research/02-gwr-dni/docs/gap_anatomy_decomposition.md`
 
-RH bridge research (classical completion material — archived externally May 2026 due to drift/steering concerns):
+RH bridge research (classical completion material, archived externally May 2026 due to drift/steering concerns):
 
 - See external archive: `/Users/velocityworks/prime-gap-structure-archives/2026-05-classical-rh-bridge-completion-route/12-rh-bridge/`
 - Live pointer inside repo: `research/12-rh-bridge/README.md` + ARCHIVAL_HANDOFF.md in the external archive.
@@ -414,7 +414,7 @@ The bridge depends on kappa(n)=tau(n)log(n)/e^2.
 Add a separate helper or test for H(n)=log n+E(n) only if useful.
 ```
 
-### Legacy Prefilter and Generator Scaffolding Paths (z_band_prime_predictor — historical only; see chapter 15 documentation-correction and 06-cryptology-rsa legacy prefilter boundary)
+### Legacy Prefilter and Generator Scaffolding Paths (z_band_prime_predictor: historical only; see chapter 15 documentation-correction and 06-cryptology-rsa legacy prefilter boundary)
 
 Files:
 
@@ -659,7 +659,7 @@ git diff --check
 
 ```bash
 python3 -m pytest tests/python/test_doc_proof_status_surface.py
-# RH bridge tests archived externally — see research/12-rh-bridge/README.md and external archive
+# RH bridge tests archived externally: see research/12-rh-bridge/README.md and external archive
 ```
 
 ### Tests If Invariant Package Changes

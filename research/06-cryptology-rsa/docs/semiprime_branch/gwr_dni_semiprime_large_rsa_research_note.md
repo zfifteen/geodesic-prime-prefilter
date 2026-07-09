@@ -88,15 +88,15 @@ The branch hypothesis is that explicit modeling of the `d=4` / semiprime-dominan
 
 ## Main Research Questions
 
-### RQ1 — How much of the current rejection power is tied to the d=4 layer?
+### RQ1: How much of the current rejection power is tied to the d=4 layer?
 
 Measure the share of current candidate-loop savings that can be attributed to structure related to the dominant `d=4` shell rather than to generic shallow-factor filtering.
 
-### RQ2 — Can semiprime-layer-aware deterministic proxies improve the current front end?
+### RQ2: Can semiprime-layer-aware deterministic proxies improve the current front end?
 
 Test whether a front end that explicitly models the `d=4` / semiprime-dominant layer can reject more doomed candidates at equal or lower cost than the current proxy path.
 
-### RQ3 — Does the gain survive honest classical baselines?
+### RQ3: Does the gain survive honest classical baselines?
 
 Test whether any measured gain survives comparison against classical baselines matched for cost, especially bounded trial tables and ordinary shallow composite screens.
 
@@ -112,7 +112,7 @@ The branch succeeds only if at least one semiprime-layer-aware deterministic fro
 
 ## Immediate Deliverables
 
-### D1 — Exact d=4 structural note
+### D1: Exact d=4 structural note
 
 Build a note with:
 
@@ -121,7 +121,7 @@ Build a note with:
 - first-`d=4` arrival offsets
 - square-exclusion conditional counts
 
-### D2 — Candidate-loop economics note
+### D2: Candidate-loop economics note
 
 Break current savings into:
 
@@ -130,7 +130,7 @@ Break current savings into:
 - wall-clock contribution by stage
 - scaling with bit length and table depth
 
-### D3 — Semiprime-layer proxy ablation
+### D3: Semiprime-layer proxy ablation
 
 Compare:
 

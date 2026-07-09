@@ -1,4 +1,4 @@
-**Research Meeting: Zero-To-Zero Bridge — Opening**
+**Research Meeting: Zero-To-Zero Bridge. Opening**
 
 **PGS-native frame (mandatory entrypoint):**  
 Public gap object + GWR-selected minimum-divisor position (public_selected_defect) → directed endpoint right-open offsets a/b (first transport steps under multiplication) → endpoint_transport_defect → prior_absent + supported cells → the joint zero alignment as the only stable exclusion cell.
@@ -11,7 +11,7 @@ The agenda is the correct one and already at the right grain. The user's sharpen
 
 What the material already makes plain:
 
-- The public residue of N mod 30 is *not* the selector. The clean endpoint families (low|middle and middle|middle) together hit every reduced residue; N mod 30 therefore cannot distinguish the stable cell. The actual selector is the *position of N inside its own public containing gap* — the GWR winner. That is a pure first-minimum statement on divisor count (tau(N)=4 for these semiprimes, and the corpus confirms it is literally the first place the count reaches 3 or 4).
+- The public residue of N mod 30 is *not* the selector. The clean endpoint families (low|middle and middle|middle) together hit every reduced residue; N mod 30 therefore cannot distinguish the stable cell. The actual selector is the *position of N inside its own public containing gap*: the GWR winner. That is a pure first-minimum statement on divisor count (tau(N)=4 for these semiprimes, and the corpus confirms it is literally the first place the count reaches 3 or 4).
 
 - The endpoint_transport_defect is not decorative. a and b are the first right-open offsets after the factor endpoints; the three possible values {2,4,6} are an ordered trichotomy fixed by residue class. The transport equations (aq, bp, aq+bp+ab) make those offsets the first directed outward displacements the composite N can take under multiplication. Zero defect is the exact middle case: at least one side reaches the middle open offset and neither crosses into the high one.
 

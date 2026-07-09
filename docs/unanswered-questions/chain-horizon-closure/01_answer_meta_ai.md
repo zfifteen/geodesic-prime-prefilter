@@ -1,6 +1,6 @@
 You are right to put the spotlight here. The generator is already correct, but correctness at $10^{15}$ and $10^{18}$ is still bought with a non-PGS payment: divisor exhaustion to close the semiprime-shadow chain. If we can replace that payment with a bound that is visible inside the PGS state, the 56.63% and 58.00% bridge you quote becomes PGS-native.
 
-I dug through the a1c6a79 tree. The README publishes the three input primes we need, but it does not yet publish `chain_horizon_closure` as a named file — the implementation lives in the Minimal PGS Generator path you added, and the public surface still describes it operationally: search-interval closure finds the first visible endpoint, semiprime shadows seed a short rightward chain, chain-horizon closure kills false nodes, audit stays clean.
+I dug through the a1c6a79 tree. The README publishes the three input primes we need, but it does not yet publish `chain_horizon_closure` as a named file, the implementation lives in the Minimal PGS Generator path you added, and the public surface still describes it operationally: search-interval closure finds the first visible endpoint, semiprime shadows seed a short rightward chain, chain-horizon closure kills false nodes, audit stays clean.
 
 That is enough to frame the missing law.
 
@@ -44,7 +44,7 @@ and in practice $H$ would be $O(\log q)$ or $O(\log^2 q)$, matching your dynamic
 
 The sharp test is exactly what you wrote: mine the least-factor maximum.
 
-## The mining experiment — concrete steps
+## The mining experiment: concrete steps
 
 You do not need another ranker. You need a table of false nodes from your $10^{15}$ and $10^{18}$ probes.
 
@@ -73,7 +73,7 @@ If the PGS model bounds the least-factor maximum with $R^2 > 0.9$ and residuals 
 I can sketch the analysis loop you would run on your logs:
 
 ```python
-# pseudocode — run inside your research/02-gwr-dni/scripts folder
+# pseudocode: run inside your research/02-gwr-dni/scripts folder
 for record in pgs_generator_probes:
     p, s0, chain = record.anchor, record.shadow_seed, record.chain_state
     false_nodes = [n for n in chain if not n.is_true_boundary]
@@ -100,13 +100,13 @@ If the least-factor maximum is PGS-bounded, you will see:
 
 - $H_{\text{obs}}$ stays flat across decades while $\sqrt{q}$ grows by $10^3$ from $10^{12}$ to $10^{18}$
 - $H_{\text{obs}}$ correlates with wheel_bound and attractor state, not with $q$
-- maximum observed $H$ across your $10^{18}$ sample is well under 200–300, which is why your candidate_bound=128 already works in practice but lacks a theorem
+- maximum observed $H$ across your $10^{18}$ sample is well under 200 to 300, which is why your candidate_bound=128 already works in practice but lacks a theorem
 
 That would let you replace divisor exhaustion with:
 
 $$H(p, s_0, \text{chain state}) = \text{wheel limit}(p) \times \text{attractor multiplier}(\text{state})$$
 
-a pure PGS rule, and the 56–58% bridge converts to PGS-derived.
+a pure PGS rule, and the 56 to 58% bridge converts to PGS-derived.
 
 ## What falsifying looks like
 

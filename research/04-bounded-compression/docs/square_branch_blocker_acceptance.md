@@ -1,6 +1,6 @@
 # Square Branch Blocker And Acceptance Criteria
 
-## Status — RESOLVED 2026-07-05
+## Status: RESOLVED 2026-07-05
 
 The square branch is **proved**. The Prime-Square Proximity Theorem in
 [PROOF.md](../../../PROOF.md) satisfies the acceptance criteria below. Universal

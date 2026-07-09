@@ -88,7 +88,7 @@ Answer-by-answer evaluation
 
 Meta’s answer gets the main experiment right: mine H_obs = max least prime factor over false chain nodes, then compare it against sqrt(q), C(q), wheel/residue-state variables, and chain state. It also correctly frames semiprime-shadow nodes as structured, not random.  ￼
 
-Where it overreaches: it predicts the least-factor maximum might be well under 200–300. My bounded pilot does not support that. I saw known least factors up to 93,911, and many false nodes had no divisor under 100,000. That does not kill compressibility, but it kills the “tiny horizon” optimism.
+Where it overreaches: it predicts the least-factor maximum might be well under 200 to 300. My bounded pilot does not support that. I saw known least factors up to 93,911, and many false nodes had no divisor under 100,000. That does not kill compressibility, but it kills the “tiny horizon” optimism.
 
 Experiment verdict:
 

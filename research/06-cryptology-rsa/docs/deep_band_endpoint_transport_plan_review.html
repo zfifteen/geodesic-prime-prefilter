@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deep-Band Endpoint Transport Plan — Adversarial Review</title>
+    <title>Deep-Band Endpoint Transport Plan. Adversarial Review</title>
     <style>
         :root {
             --bg: #f8fafc;
@@ -73,7 +73,7 @@
 </head>
 <body>
 
-<h1>Deep-Band Endpoint Transport Plan — Adversarial Review</h1>
+<h1>Deep-Band Endpoint Transport Plan. Adversarial Review</h1>
 
 <p class="meta"><strong>Reviewer:</strong> Grok (Adversarial Reviewer per AGENTS.md)<br>
 <strong>Reviewed artifact:</strong> <span class="ref">research/06-cryptology-rsa/docs/deep_band_endpoint_transport_plan.html</span><br>
@@ -115,12 +115,12 @@
     <h2>Improvements Since Previous Revision</h2>
     <div class="delta">
         <ul>
-            <li><strong>Derivation script</strong> — Moves from vague "manually calculate" to a concrete, logged Python snippet that attempts to use the actual PGS previous_endpoint machinery. This is a major step toward reproducibility and adversarial auditability.</li>
-            <li><strong>Evaluation Matrix</strong> — Excellent addition. Turns the "open question" into specific, observable predicates with before/after columns. This makes the experiment falsifiable and documentable.</li>
-            <li><strong>Hypothesis section</strong> — Clearly states the scale-invariance test: will filters calibrated on balanced cases survive ~102-bit to ~154-bit transport?</li>
-            <li><strong>Contract language</strong> — More prominent and repeated ("CRITICAL PGS CONTRACT BOUNDARY", "experiment, not a redefinition").</li>
-            <li><strong>Phased protocol</strong> — Clearer separation of concerns and artifact requirements.</li>
-            <li><strong>Visual quality</strong> — Modern CSS with metric cards, better tables, and styled checklists.</li>
+            <li><strong>Derivation script</strong>. Moves from vague "manually calculate" to a concrete, logged Python snippet that attempts to use the actual PGS previous_endpoint machinery. This is a major step toward reproducibility and adversarial auditability.</li>
+            <li><strong>Evaluation Matrix</strong>. Excellent addition. Turns the "open question" into specific, observable predicates with before/after columns. This makes the experiment falsifiable and documentable.</li>
+            <li><strong>Hypothesis section</strong>. Clearly states the scale-invariance test: will filters calibrated on balanced cases survive ~102-bit to ~154-bit transport?</li>
+            <li><strong>Contract language</strong>. More prominent and repeated ("CRITICAL PGS CONTRACT BOUNDARY", "experiment, not a redefinition").</li>
+            <li><strong>Phased protocol</strong>. Clearer separation of concerns and artifact requirements.</li>
+            <li><strong>Visual quality</strong>. Modern CSS with metric cards, better tables, and styled checklists.</li>
         </ul>
     </div>
 </div>
@@ -166,7 +166,7 @@ print("Exact Deep Anchor:", anchor)
     <div class="issue">
         <h3>3. High-scale previous_endpoint at target depth is unproven</h3>
         <p>The target is ~2**102. HighScaleBackend.previous_endpoint performs a chunked backward search using chamber_reset_certificate (C first, then Python fallback) followed by divisor segment scans.</p>
-        <p>Backend comments explicitly note limitations and guards for anchors in the 90–128+ bit range. The derivation may return None, take a very long time, or exercise the documented "limitation" paths. This must be treated as part of the experimental data, not assumed to succeed.</p>
+        <p>Backend comments explicitly note limitations and guards for anchors in the 90 to 128+ bit range. The derivation may return None, take a very long time, or exercise the documented "limitation" paths. This must be treated as part of the experimental data, not assumed to succeed.</p>
     </div>
 
     <div class="issue">
@@ -208,11 +208,11 @@ print("Exact Deep Anchor:", anchor)
 <div class="section">
     <h2>Annotated Execution Checklist (Current Plan)</h2>
     <div class="checklist">
-        <li><input type="checkbox" disabled> <strong>Phase 1: Compute &amp; Log</strong> — Run the derivation script. <strong>— Fix API first. Record the exact integer anchor and any backend notes. This is the most important provenance artifact.</strong></li>
-        <li><input type="checkbox" disabled> <strong>Phase 2: Seeded Execution</strong> — <code>python3 .../run_experiment.py --case_ids s256_challenge_1 --start-anchor [COMPUTED_ANCHOR]</code>. <strong>— Use the value from Phase 1 exactly. No other changes.</strong></li>
-        <li><input type="checkbox" disabled> <strong>Phase 3: Artifact Capture</strong> — All four .jsonl files. <strong>— Required to populate the filter matrix.</strong></li>
-        <li><input type="checkbox" disabled> <strong>Filter Evaluation</strong> — Fill the matrix table for each predicate. <strong>— This is the scientific output. Note any new unresolved_* statuses or violations of the proportional bounds.</strong></li>
-        <li><input type="checkbox" disabled> <strong>Audit Separation</strong> — Verify factors only after inference completes. <strong>— Enforce strictly in all logs and future documents.</strong></li>
+        <li><input type="checkbox" disabled> <strong>Phase 1: Compute &amp; Log</strong>. Run the derivation script. <strong>: Fix API first. Record the exact integer anchor and any backend notes. This is the most important provenance artifact.</strong></li>
+        <li><input type="checkbox" disabled> <strong>Phase 2: Seeded Execution</strong> : <code>python3 .../run_experiment.py --case_ids s256_challenge_1 --start-anchor [COMPUTED_ANCHOR]</code>. <strong>: Use the value from Phase 1 exactly. No other changes.</strong></li>
+        <li><input type="checkbox" disabled> <strong>Phase 3: Artifact Capture</strong>. All four .jsonl files. <strong>: Required to populate the filter matrix.</strong></li>
+        <li><input type="checkbox" disabled> <strong>Filter Evaluation</strong>. Fill the matrix table for each predicate. <strong>: This is the scientific output. Note any new unresolved_* statuses or violations of the proportional bounds.</strong></li>
+        <li><input type="checkbox" disabled> <strong>Audit Separation</strong>. Verify factors only after inference completes. <strong>: Enforce strictly in all logs and future documents.</strong></li>
     </div>
 </div>
 

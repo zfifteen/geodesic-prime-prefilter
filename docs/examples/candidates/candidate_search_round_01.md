@@ -11,7 +11,7 @@
 - **License:** Apache-2.0  
 - **Primary language:** C  
 - **Why it is a fit:** Core to global TLS/SSL infrastructure and RSA key generation. Prime generation is on the hot path for every RSA keypair creation; the library already performs trial division before expensive Miller-Rabin rounds, making a structural prefilter a natural, low-risk enhancement.  
-- **Exact prime-related hotspot:** `crypto/bn/bn_prime.c` – `BN_generate_prime_ex2` / `BN_generate_prime_ex` (and internal `find_prime` / trial-division loop). Candidates are generated randomly, sieved with small primes, then tested with Miller-Rabin (5+ rounds for cryptographic sizes).  
+- **Exact prime-related hotspot:** `crypto/bn/bn_prime.c`  to  `BN_generate_prime_ex2` / `BN_generate_prime_ex` (and internal `find_prime` / trial-division loop). Candidates are generated randomly, sieved with small primes, then tested with Miller-Rabin (5+ rounds for cryptographic sizes).  
 - **Likely insertion point for a DCI/GWR prefilter:** Inside the candidate loop in `bn_prime.c` (after basic bit-setting and initial trial division but before full Miller-Rabin). Add as a fast reject-only call on the `BIGNUM` candidate.  
 - **Best A/B benchmark metric:** RSA key-generation latency (e.g., `openssl speed rsa` or custom `BN_generate_prime_ex` micro-benchmark) or Miller-Rabin invocation count per key.  
 - **Ease of smoke-testing inside this repo:** Medium (extractable C harness using the existing `apps/prime.c` or a minimal test calling `BN_generate_prime_ex`; no full vendoring needed for POC).  
@@ -24,7 +24,7 @@
 - **License:** LGPL-3.0-or-later (with GMP exceptions)  
 - **Primary language:** C (with assembly optimizations)  
 - **Why it is a fit:** Foundational bigint library used by OpenSSL, GnuPG, Python (gmpy2), SymPy, etc. Its primality routines are called billions of times across ecosystems; already does small-factor trial division before Miller-Rabin.  
-- **Exact prime-related hotspot:** `mpz/probab_prime_p.c` + `mpz/millerrabin.c` – `mpz_probab_prime_p` (trial division by small primes → Miller-Rabin).  
+- **Exact prime-related hotspot:** `mpz/probab_prime_p.c` + `mpz/millerrabin.c`  to  `mpz_probab_prime_p` (trial division by small primes → Miller-Rabin).  
 - **Likely insertion point for a DCI/GWR prefilter:** Early in `mpz_probab_prime_p` (after initial small-prime trial division but before Miller-Rabin base selection and modular exponentiations).  
 - **Best A/B benchmark metric:** `mpz_probab_prime_p` calls per second or full primality test latency on 1024/2048-bit candidates.  
 - **Ease of smoke-testing inside this repo:** Medium-high (GMP’s test suite and `mpz` examples allow isolated harness; Python bindings via gmpy2 enable quick POC).  
@@ -37,7 +37,7 @@
 - **License:** LGPL-2.1-or-later  
 - **Primary language:** C  
 - **Why it is a fit:** Used by GnuPG, SSH, and many crypto tools. Prime generation is central to RSA/DSA/EC key creation and follows X9.31-style algorithms with explicit trial division + probabilistic testing.  
-- **Exact prime-related hotspot:** `cipher/primegen.c` – `gcry_prime_generate` and internal candidate screening / Miller-Rabin path.  
+- **Exact prime-related hotspot:** `cipher/primegen.c`  to  `gcry_prime_generate` and internal candidate screening / Miller-Rabin path.  
 - **Likely insertion point for a DCI/GWR prefilter:** In the prime candidate loop inside `primegen.c` (post-random generation, pre-full probabilistic tests).  
 - **Best A/B benchmark metric:** `gcry_prime_generate` latency or key-generation throughput in RSA/DSA operations.  
 - **Ease of smoke-testing inside this repo:** Medium (existing test suite + `tests/` harness; small C wrapper suffices).  
@@ -74,6 +74,6 @@
 ### Shortlist
 - **Top 3 candidates to evaluate first:** (1) OpenSSL, (2) GMP, (3) SymPy.  
 - **Why these 3 are the best immediate next step:** OpenSSL + GMP deliver maximum real-world impact (crypto everywhere + foundational math); SymPy offers the fastest path to a working smoke-test proof-of-concept in Python that can be ported later. All have narrow, auditable insertion points and existing trial-division stages that align perfectly with DCI/GWR as a reject-only prefilter.  
-- **Single best first smoke-test target:** SymPy. Its pure-Python implementation, simple integer I/O, and built-in benchmarks make it trivial to add a prefilter, measure Miller-Rabin call reduction, and validate correctness in <100 lines—ideal for an early, reproducible win inside this repo before tackling C libraries.  
+- **Single best first smoke-test target:** SymPy. Its pure-Python implementation, simple integer I/O, and built-in benchmarks make it trivial to add a prefilter, measure Miller-Rabin call reduction, and validate correctness in <100 lines:ideal for an early, reproducible win inside this repo before tackling C libraries.  
 
 This document preserves full details for future agents. Next steps could include extracting minimal harnesses for the shortlist and running initial A/B tests.

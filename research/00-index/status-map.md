@@ -218,7 +218,7 @@ A new top-level `lean-4/` directory has been created as a downstream machine-che
 This track is **verification only**. It does not alter generator behavior or `PROOF.md` authority. See the plan for full roadmap and traceability requirements.
 
 
-## Lean 4 Formalization Track — Update (2026-05-27, ongoing)
+## Lean 4 Formalization Track: Update (2026-05-27, ongoing)
 
 **Build Phase Active**
 
@@ -236,7 +236,7 @@ This track is **verification only**. It does not alter generator behavior or `PR
 Once build exits 0, next actions: smoke-test the compiled library, expand Basic.lean with first traceable lemma (prime ↔ tau(n)=2), update all maps.
 
 
-## Lean 4 Formalization Track — FINAL UPDATE (2026-05-27)
+## Lean 4 Formalization Track: FINAL UPDATE (2026-05-27)
 
 **✅ SKELETON COMPLETE AND VERIFIED**
 
@@ -257,7 +257,7 @@ lake env lean smoke-test.lean
 ```
 
 
-## Lean 4 Formalization — Phase 1 Start (2026-05-27)
+## Lean 4 Formalization: Phase 1 Start (2026-05-27)
 
 **Deliverable Added**:
 - theorem `tau_eq_two_iff_only_divisors_are_1_and_n` in PGS/Basic.lean
@@ -269,7 +269,7 @@ lake env lean smoke-test.lean
 This is the first non-trivial traceable artifact beyond pure definitions.
 
 
-## Lean 4 Formalization — Detailed Translation Plan Published (2026-05-27)
+## Lean 4 Formalization: Detailed Translation Plan Published (2026-05-27)
 
 - Created comprehensive HTML translation plan: `docs/lean-pgs-verification/PGS_LEAN_TRANSLATION_PLAN.html`
 - Full inventory of every theorem/lemma from PROOF.md with line numbers
@@ -281,7 +281,7 @@ This is the first non-trivial traceable artifact beyond pure definitions.
 
 This is the authoritative planning artifact for the entire Lean translation track going forward.
 
-## Lean 4 — Phase 1 Characterization Work (2026-05-27)
+## Lean 4: Phase 1 Characterization Work (2026-05-27)
 
 - Updated PGS/Basic.lean with the two core Phase 1 lemmas (tau=2 characterization + contrapositive composite form).
 - Both lemmas now have statements + partial structured proofs (one direction outlined).
@@ -290,7 +290,7 @@ This is the authoritative planning artifact for the entire Lean translation trac
 - Proceeding strictly with the original detailed translation plan (no parallelism refactor).
 - Status surface and this map updated.
 
-## Lean 4 — Phase 1 Advanced (2026-05-27, same session)
+## Lean 4: Phase 1 Advanced (2026-05-27, same session)
 
 - Significantly improved the proof structure for both Phase 1 lemmas in PGS/Basic.lean.
 - Both directions now have explicit proof skeletons (forward: contradiction via third divisor; reverse: length exactly 2 from "only 1 and n").
@@ -299,17 +299,17 @@ This is the authoritative planning artifact for the entire Lean translation trac
 - Status surfaces updated with honest assessment.
 - Continuing execution on the original detailed translation plan.
 
-### Lean 4 Formalization — Phase 1 Counting Argument Deferred (2026-06)
+### Lean 4 Formalization: Phase 1 Counting Argument Deferred (2026-06)
 - Pure-List counting argument (`three_distinct_divisors_imply_tau_ge_three`) explicitly deferred to Phase 2 (controlled Mathlib re-introduction) per user decision.
 - Forward direction of `tau_eq_two_iff_only_divisors_are_1_and_n` now compiles cleanly against the deferred lemma (with full traceability preserved).
 - Reverse direction and contrapositive lemma remain active Phase 1 work.
 - Deferral recorded in `lean-4/PGS/Basic.lean`, `lean-4/README.md`, and `docs/lean-pgs-verification/` status surfaces.
 - All work remains strictly downstream verification only, PGS-first, contract-compliant.
 
-### Lean 4 — Phase 1 Reverse Larger Unit + Consistent Deferral (2026-06)
+### Lean 4: Phase 1 Reverse Larger Unit + Consistent Deferral (2026-06)
 - Reverse direction larger unit delivered in single pass: `only_one_and_n_in_filter` (∀ x ∈ explicit filter → x=1 ∨ x=n under h_only) + concrete `one_mem` + `n_mem` (core tactics only, self-contained skeleton).
 - "At most 2" (no third element) and "at least 2" (1 and n present and distinct) now in place with full PROOF.md:80-81 traceability.
-- The final length-equality combination step in the reverse (distinct list with image exactly {1,n} that hits both must have length exactly 2) is the symmetric pure-List counting obligation — explicitly marked DEFERRED (2026-06) in Basic.lean, consistent with the forward deferral and the user's explicit directive.
+- The final length-equality combination step in the reverse (distinct list with image exactly {1,n} that hits both must have length exactly 2) is the symmetric pure-List counting obligation: explicitly marked DEFERRED (2026-06) in Basic.lean, consistent with the forward deferral and the user's explicit directive.
 - Contrapositive `tau_gt_two_iff_has_proper_divisor` statement added (both directions rely on the deferred counting step; marked for traceability and smoke-test consistency).
 - Smoke-test.lean updated (comment reflects honest status; #check lines now resolve).
 - One status surface (lean-4/README.md) updated with dated entry. Remaining surfaces (index.html, translation plan matrix, status-map) updated in same larger-volume pass.

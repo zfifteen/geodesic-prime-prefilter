@@ -1,4 +1,4 @@
-# RH Corpus — Start Here
+# RH Corpus: Start Here
 
 **Time:** ~5 minutes  
 **Goal:** Know what PGS claims about RH, what is proved, and where to click next.
@@ -14,8 +14,8 @@ divisor counts → PGS local theorems → DNI-to-zeta compression
 → source-to-spectral placement → pole placement / RH sentence
 ```
 
-Nothing in layer 1–3 is a proof of the Riemann Hypothesis. Layer 5 is where RH
-actually lives — and it remains **open** in this program.
+Nothing in layer 1 to 3 is a proof of the Riemann Hypothesis. Layer 5 is where RH
+actually lives, and it remains **open** in this program.
 
 ---
 
@@ -29,8 +29,8 @@ actually lives — and it remains **open** in this program.
    `R(s) = -ζ'(s)/ζ(s)`. See
    [docs/rh/dni-to-zeta-compression.md](../../docs/rh/dni-to-zeta-compression.md).
 
-3. **Open:** Showing every nontrivial pole of `R(s)` lies on `Re(s)=½` —
-   equivalently RH — requires a source-to-spectral placement theorem not yet
+3. **Open:** Showing every nontrivial pole of `R(s)` lies on `Re(s)=½` :
+   equivalently RH, requires a source-to-spectral placement theorem not yet
    closed. See
    [docs/rh/off-critical-pole-exclusion.md](../../docs/rh/off-critical-pole-exclusion.md).
 
@@ -49,7 +49,7 @@ actually lives — and it remains **open** in this program.
 | Work zeta compression (L3) | [by-layer/03-zeta-compression.md](./by-layer/03-zeta-compression.md) |
 | Work placement geometry (L4) | [by-layer/04-placement-geometry.md](./by-layer/04-placement-geometry.md) |
 | Reproduce compression empirics | `PYTHONPATH=src/python:research/19-rh-corpus/empirics python3 research/19-rh-corpus/empirics/zeta_compression_probe.py` |
-| Avoid overclaiming | Every row in [FINDINGS_INDEX.md](./FINDINGS_INDEX.md) has a **Boundary** column — read it |
+| Avoid overclaiming | Every row in [FINDINGS_INDEX.md](./FINDINGS_INDEX.md) has a **Boundary** column: read it |
 
 ---
 
@@ -73,4 +73,4 @@ actually lives — and it remains **open** in this program.
 - Not a proof of RH
 - Not a replacement for [PROOF.md](../../PROOF.md)
 - Not a revival of archived [12-rh-bridge](../12-rh-bridge/README.md) completion machinery
-- Not a mirror of [docs/rh/](../../docs/rh/README.md) — that bundle stays the public spine
+- Not a mirror of [docs/rh/](../../docs/rh/README.md), that bundle stays the public spine

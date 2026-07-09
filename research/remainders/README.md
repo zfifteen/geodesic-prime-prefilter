@@ -28,7 +28,7 @@ python research/remainders/run_investigation.py --run-slow-lanes \
   --output-dir research/remainders/correlations/investigation
 ```
 
-Scaled interior surface (≥10⁵ gaps): `output/1.5e6/` — **114,154** gaps with interiors at `p≤1.5×10⁶`.
+Scaled interior surface (≥10⁵ gaps): `output/1.5e6/` : **114,154** gaps with interiors at `p≤1.5×10⁶`.
 Legacy `output/1e6/`: **78,497** gaps with interiors (`prime_walk_steps` 78,498 includes empty twin at `p=2`).
 
 ## Current Status (2026-06-30)

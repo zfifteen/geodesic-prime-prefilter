@@ -1,4 +1,4 @@
-# FINDINGS_LWM_WITNESS_01 — Witness Completeness / GWR-DNI Coverage Signatures
+# FINDINGS_LWM_WITNESS_01: Witness Completeness / GWR-DNI Coverage Signatures
 
 **Experiment ID:** LWM-WITNESS-01  
 **Branch:** literal-web-rewind (japanese-thread-mapping-plan isolated subdir)  
@@ -10,13 +10,13 @@
 
 ## RESULTS SUMMARY
 
-**Status:** COMPLETE — Contract compliant. All artifacts public, frozen before any audit interpretation.
+**Status:** COMPLETE: Contract compliant. All artifacts public, frozen before any audit interpretation.
 
 **Key Observations on Signatures:**
 - Flat support cardinality (unchanged primary mechanism) already isolates true factor-distance offsets with perfect or near-perfect precision across the entire corpus: in 23/23 runs (4 toys + 19 ladder), the set of offsets reaching near-max support (≥ max_support-1 or ≥2) contained **zero false positives** (num_false_high_support = 0 in every discrimination_stats record).
-- Consequently, GWR/DNI coverage signatures provided **no additional discriminating power for separating true vs. false high-support points** — because no false high-support points existed at the examined thresholds to discriminate.
+- Consequently, GWR/DNI coverage signatures provided **no additional discriminating power for separating true vs. false high-support points**: because no false high-support points existed at the examined thresholds to discriminate.
 - The signatures **did provide rich, deterministic, PGS-native structural certificate material** for every correctly nominated true high-support point:
-  - Consistent recording of witness-composite count (often hundreds for larger radius), fraction tied to observed GWR-min-d composites (0–~20%+ depending on case), whether the global leftmost min-d composite participates in the coverage, and the avg/min DNI excess E(c) of the originating public composites.
+  - Consistent recording of witness-composite count (often hundreds for larger radius), fraction tied to observed GWR-min-d composites (0 to ~20%+ depending on case), whether the global leftmost min-d composite participates in the coverage, and the avg/min DNI excess E(c) of the originating public composites.
   - Signature vectors for true recoveries are fully reproducible from public data alone.
   - Variation across true points (e.g., has_leftmost_gwr sometimes true for both p/q threads, sometimes false; num_gwr_min_witnesses varies) offers potential post-nomination "witness completeness" profile for structural certification, even if not needed for ranking here.
 - In the Japanese analogy: the "completeness" (every term having witnesses in the "GWR/DNI band" of minimal-divisor public composites) is measurable as sidecar metadata on the literal thread crossings, but the primary geometric signal (raw crossing count) already suffices for nomination in these windows.
@@ -63,7 +63,7 @@ All values derived from public rows only. Reproducible.
 
 ---
 
-## Toy Cases — Signature Table for True High-Support Points
+## Toy Cases: Signature Table for True High-Support Points
 
 (All emitted max-support holes were true; 0 false at ≥2 support.)
 
@@ -78,7 +78,7 @@ All values derived from public rows only. Reproducible.
 
 ---
 
-## Ladder Sample — True High-Support Signature Vectors (No False Counterparts)
+## Ladder Sample: True High-Support Signature Vectors (No False Counterparts)
 
 | rung            | N          | max_supp | emitted | example true offsets (sig excerpts) |
 |-----------------|------------|----------|---------|-------------------------------------|
@@ -86,7 +86,7 @@ All values derived from public rows only. Reproducible.
 | rung_04_101x137| 13837     | 3       | 5      | +101: [3,811,126,0,55.48,9.49] has=False; +137: [3,818,126,0,55.25,9.49] has=False; +303: [3,784,126,1,56.11,9.49] has=True |
 | rung_18_8009x10007 | 80146063 | 5     | 1      | +24027: [5,68444,0,0,204.65,18.20] has=False (large-N scaling: high witness count, zero GWR-min overlap in this instance) |
 
-Across 19 ladder rungs: emitted counts 1–8, always composed exclusively of p_thread / q_thread audit kinds. false_high column remained 0 even when min_support_for_table reached 4 (for max_supp=5 cases).
+Across 19 ladder rungs: emitted counts 1 to 8, always composed exclusively of p_thread / q_thread audit kinds. false_high column remained 0 even when min_support_for_table reached 4 (for max_supp=5 cases).
 
 ---
 

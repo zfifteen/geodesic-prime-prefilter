@@ -138,7 +138,7 @@ ADDITIONAL_TRIPLES = [
 
 
 def main():
-    print("Gap Compatibility Hypothesis — Corpus Expansion (Iteration 4)")
+    print("Gap Compatibility Hypothesis. Corpus Expansion (Iteration 4)")
     print("=" * 85)
     print("Using position-bucketed classification from Iteration 3\n")
 

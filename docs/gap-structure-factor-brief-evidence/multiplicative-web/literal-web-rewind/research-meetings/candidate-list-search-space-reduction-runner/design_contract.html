@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Candidate List Search-Space Reduction Runner — Frozen Design Contract</title>
+<title>Candidate List Search-Space Reduction Runner. Frozen Design Contract</title>
 <style>
 body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; margin: 24px; font-size: 14px; line-height: 1.5; color: #1f2937; background: #f8fafc; }
 main { max-width: 1080px; margin: 0 auto; }
@@ -34,8 +34,8 @@ footer { margin-top: 32px; font-size: 12px; color: #64748b; border-top: 1px soli
 </head>
 <body>
 <main>
-<h1>Candidate List Search-Space Reduction Runner<br>— Frozen Design Contract</h1>
-<p><strong>Status:</strong> <span class="status-frozen">FROZEN — DESIGN ONLY — NO IMPLEMENTATION CODE EXISTS</span></p>
+<h1>Candidate List Search-Space Reduction Runner<br>: Frozen Design Contract</h1>
+<p><strong>Status:</strong> <span class="status-frozen">FROZEN. DESIGN ONLY. NO IMPLEMENTATION CODE EXISTS</span></p>
 <p><strong>Meeting:</strong> <code>candidate-list-search-space-reduction-runner</code><br>
 <strong>Round:</strong> 01 (after Codex baseline formula answer)<br>
 <strong>Contract Version:</strong> v01</p>
@@ -66,8 +66,8 @@ original_space_size(N) = (public_radius(N) + 1) // 2</code></pre>
 <section class="panel">
 <h2>Public Inputs</h2>
 <ul>
-<li><code>--n &lt;N&gt;</code> — the semiprime (integer, bits only; no sidecar data)</li>
-<li><code>--out-dir &lt;path&gt;</code> — writable directory for the frozen artifacts</li>
+<li><code>--n &lt;N&gt;</code>, the semiprime (integer, bits only; no sidecar data)</li>
+<li><code>--out-dir &lt;path&gt;</code>, writable directory for the frozen artifacts</li>
 <li>Policy is supplied by the locked constants inside the runner for v01 (see table below). No runtime flags that would allow hidden tuning of depth, threads, or cap.</li>
 </ul>
 </section>
@@ -75,12 +75,12 @@ original_space_size(N) = (public_radius(N) + 1) // 2</code></pre>
 <section class="panel">
 <h2>Public Emitted Artifacts (Must Exist and Be Hashed Before Any Private Audit)</h2>
 <ol>
-<li><code>public_output.jsonl</code> — one JSON object per emitted distance, sorted by public rank:
+<li><code>public_output.jsonl</code>, one JSON object per emitted distance, sorted by public rank:
   <pre><code>{"rank": 1, "distance": 123456789, "triangulation_depth": 7,
  "left_thread_count": 5, "right_thread_count": 4, "shared_thread_count": 2,
  "score": [7, 2, 9, 123456789]}</code></pre>
 </li>
-<li><code>public_manifest.json</code> — complete public record containing at minimum:
+<li><code>public_manifest.json</code>, complete public record containing at minimum:
   <ul>
   <li><code>N</code>, <code>N_bits</code></li>
   <li><code>policy: "thread_triangulation_v01"</code></li>

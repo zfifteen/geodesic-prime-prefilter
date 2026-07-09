@@ -1,6 +1,6 @@
 # Mutual Certificate Closure False Positive Analysis
 
-**Step 1 Analysis** — Comparative study of the 50-bit false positive vs the 64-bit true positive under the uniform transported certificate-chain traversal.
+**Step 1 Analysis**: Comparative study of the 50-bit false positive vs the 64-bit true positive under the uniform transported certificate-chain traversal.
 
 **Date of analysis:** Current committed ladder state after the OECC uniform refactor.
 
@@ -52,11 +52,11 @@ Both lower certificates are d=4 carriers (semiprime squares or products of two c
 
 | Field                              | 50-bit False             | 64-bit True              | Observation |
 |------------------------------------|--------------------------|--------------------------|-----------|
-| lower_anchor                       | 32047627                 | 3221225461               | — |
+| lower_anchor                       | 32047627                 | 3221225461               | : |
 | lower_gap_offset                   | **24**                   | **12**                   | 50-bit lower gap is twice as wide |
 | lower_lock_carrier_offset          | **6**                    | **10**                   | Lock sits earlier in 50-bit gap |
 | lower_carrier_w                    | 32047633                 | 3221225471               | Both extremely close to anchor |
-| lower_reset_endpoint               | 32047651                 | 3221225473               | — |
+| lower_reset_endpoint               | 32047651                 | 3221225473               | : |
 | lower_reset_deadline_margin        | **12**                   | **6**                    | 50-bit margin = 2× 64-bit |
 | lower_transported_deadline_width   | **12**                   | **7**                    | After transport, 50-bit has larger effective width |
 | lower_tail_after_reset_offsets     | [36,40,54,94,100,112]    | [18,72,88,90,100,102]    | Different structure |
@@ -76,7 +76,7 @@ Both lower certificates are d=4 carriers (semiprime squares or products of two c
 
 | Field                              | 50-bit False             | 64-bit True              | Observation |
 |------------------------------------|--------------------------|--------------------------|-----------|
-| upper_anchor                       | 32059619                 | 3221275487               | — |
+| upper_anchor                       | 32059619                 | 3221275487               | : |
 | upper_gap_offset                   | 14                       | 14                       | Identical |
 | upper_lock_carrier_offset          | 2                        | 2                        | Identical (very early lock) |
 | upper_reset_deadline_margin        | **46**                   | **30**                   | 50-bit upper margin significantly larger |
@@ -126,7 +126,7 @@ The following differences stand out as potentially exploitable for a tighter pre
 
 3. **Lower transported deadline width vs upper**
    - In the false positive, the lower transported deadline width (12) is much smaller than the upper (46).
-   - In the true positive, the ratio is 7 vs 30 — still asymmetric, but the absolute values and the chain depth at which closure occurred may matter.
+   - In the true positive, the ratio is 7 vs 30, still asymmetric, but the absolute values and the chain depth at which closure occurred may matter.
 
 4. **Chain depth at closure (350 vs 1162 steps)**
    - The true positive required walking more than three times as many previous endpoints. This is consistent with the idea that deeper in the chain, the reciprocal structure becomes more constrained.

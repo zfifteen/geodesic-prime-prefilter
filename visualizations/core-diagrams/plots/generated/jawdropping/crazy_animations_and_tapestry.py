@@ -90,7 +90,7 @@ def generate_ridge_flight_gif(gaps, n_frames=36, out_name="ridge_flight_crazy.gi
         if next_sq < g['q'] + 50:
             ax.axvline(next_sq, color=COSMIC['u_square'], linestyle='--', alpha=0.6, lw=1.5)
         
-        ax.set_title(f'PGS RIDGE FLIGHT — Gap {g["p"]} → {g["q"]} (frame {f+1}/{n_frames})\nRed star = GWR w | Orange = Z(n) ridge terrain | Yellow/Teal = squares/d4', 
+        ax.set_title(f'PGS RIDGE FLIGHT. Gap {g["p"]} → {g["q"]} (frame {f+1}/{n_frames})\nRed star = GWR w | Orange = Z(n) ridge terrain | Yellow/Teal = squares/d4', 
                      color=COSMIC['white'], fontsize=10)
         ax.tick_params(colors=COSMIC['white'], labelsize=7)
         ax2.tick_params(colors=COSMIC['ridge'], labelsize=7)

@@ -3,7 +3,7 @@
 ATC forwarded the First Officer's opinion. Preserving it verbatim:
 
 ```text
-Yes — I agree with your assessment almost exactly.
+Yes. I agree with your assessment almost exactly.
 
 We landed something real, but it was not the shortest route to the original end goal. The artifact trail makes that pretty clear: Round 9 had already framed the problem as a finite component-cascade over the excluded lanes, with every excluded lane having a first component obstruction and the next object being to prove those public predicate exclusions over the finite same-phase lane table.  ￼ Round 10 then made the proof-composition object explicit: four component laws cover the excluded lanes, composition is ready, but the universal proof is still incomplete.  ￼
 

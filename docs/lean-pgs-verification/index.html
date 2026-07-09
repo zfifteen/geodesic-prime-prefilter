@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>PGS Lean 4 Verification — Status</title>
+<title>PGS Lean 4 Verification. Status</title>
 <style>
 body { font-family: system-ui, sans-serif; margin: 2rem; line-height: 1.6; background: #0d1117; color: #c9d1d9; }
 h1, h2 { color: #58a6ff; }
@@ -17,10 +17,10 @@ th { background: #161b22; }
 </head>
 <body>
 
-<h1>PGS Lean 4 Formalization — Status Surface</h1>
+<h1>PGS Lean 4 Formalization. Status Surface</h1>
 
-<p><strong>✅ PHASE 1 — Core Characterization (Closed with Deferrals — 2026-06)</strong><br>
-<strong>✅ L5 CLOSED (2026-07-05)</strong> — weak_lfcl_ruleX_forces_next_prime proved (Lean mirror of weak sufficient-bound certificate law under PROOF.md hypotheses). Full replaySelectionAtBound port + #eval on p=11/gap=2 (returns correct q=13 cert). See lean-4/ and L5 plan.
+<p><strong>✅ PHASE 1. Core Characterization (Closed with Deferrals : 2026-06)</strong><br>
+<strong>✅ L5 CLOSED (2026-07-05)</strong>, weak_lfcl_ruleX_forces_next_prime proved (Lean mirror of weak sufficient-bound certificate law under PROOF.md hypotheses). Full replaySelectionAtBound port + #eval on p=11/gap=2 (returns correct q=13 cert). See lean-4/ and L5 plan.
 Phase 1 gate complete. Core structure, reverse helper lemma, memberships, and contrapositive delivered. The two pure-List counting obligations (forward + symmetric reverse length) explicitly deferred to Phase 2 per user decision 2026-06. All surfaces updated. Build clean. Ready for controlled Phase 2 (Mathlib path).</p>
 
 <div class="contract">
@@ -46,7 +46,7 @@ Phase 1 gate complete. Core structure, reverse helper lemma, memberships, and co
 <li>The pure-List counting argument for the forward direction (`three_distinct_divisors_imply_tau_ge_three`) has been explicitly deferred to Phase 2 (controlled Mathlib re-introduction), per user decision 2026-06.</li>
 <li>Forward direction of the main characterization lemma now compiles cleanly against the deferred lemma.</li>
 <li>Reverse direction larger unit delivered in this session: `only_one_and_n_in_filter` (∀ x in explicit filter → x=1 ∨ x=n under the "only 1 and n" assumption) + concrete `one_mem` + `n_mem`. "At most 2" and "at least 2" are now in place with full core-tactic proofs and PROOF.md:80-81 traceability.</li>
-<li>The final length-equality combination step in the reverse (distinct list whose image is exactly {1,n} and which hits both must have length 2) is the symmetric pure-List counting obligation — explicitly marked DEFERRED (2026-06) in Basic.lean, consistent with the forward deferral and the user's explicit directive.</li>
+<li>The final length-equality combination step in the reverse (distinct list whose image is exactly {1,n} and which hits both must have length 2) is the symmetric pure-List counting obligation, explicitly marked DEFERRED (2026-06) in Basic.lean, consistent with the forward deferral and the user's explicit directive.</li>
 <li>Contrapositive `tau_gt_two_iff_has_proper_divisor` statement added (both directions rely on the same deferred counting step; marked for traceability and smoke-test consistency).</li>
 <li>Build is now clean (only the two explicitly marked deferred sorries). Smoke test updated and passes its #check lines.</li>
 <li>All work remains strictly downstream verification/audit mirror. No PGS inference, no classical methods as reasoning route, full state separation preserved.</li>
@@ -66,14 +66,14 @@ have h_ge3 : 3 ≤ tau n := by
 
 <p><strong>Traceability</strong>: Direct mapping to PROOF.md lines 80-81. These lemmas are the foundation for the direct deterministic next-prime theorem via tau-scan.</p>
 
-<h2>Honest Assessment — Session Progress (Including 2026-06 Larger Unit)</h2>
+<h2>Honest Assessment. Session Progress (Including 2026-06 Larger Unit)</h2>
 <ul>
 <li><strong>Strong progress</strong>: Correct statements with 1:1 PROOF.md:80-81 traceability. Forward direction compiles against deferred lemma. Reverse direction larger unit delivered: `only_one_and_n_in_filter` + `one_mem` + `n_mem` (core tactics only). Contrapositive statement added. Build clean. Smoke test consistent. All work PGS-first, downstream-only, contract-compliant.</li>
-<li><strong>Current exact remaining work for Phase 1</strong>: The pure-List length-equality step in the reverse (distinct filter list with image exactly {1,n} that contains both must have length = 2). This is the symmetric obligation to the already-deferred forward counting argument. Explicitly marked DEFERRED (2026-06) per user decision — to be revisited in Phase 2 with controlled Mathlib re-introduction.</li>
+<li><strong>Current exact remaining work for Phase 1</strong>: The pure-List length-equality step in the reverse (distinct filter list with image exactly {1,n} that contains both must have length = 2). This is the symmetric obligation to the already-deferred forward counting argument. Explicitly marked DEFERRED (2026-06) per user decision, to be revisited in Phase 2 with controlled Mathlib re-introduction.</li>
 <li><strong>State separation preserved</strong>: All work remains strictly downstream verification/translation mirror. No influence on Python generators, no classical methods as inference route, no theorem downgrading, no scope creep.</li>
 </ul>
 
-<h2>Next Steps (Post Phase 1 Closure — 2026-06)</h2>
+<h2>Next Steps (Post Phase 1 Closure : 2026-06)</h2>
 <p><strong>Phase 1 gate completed.</strong> All status surfaces and this plan have been updated with the honest closure (core characterization scaffolding + non-counting lemmas delivered; the two pure-List counting obligations explicitly deferred to Phase 2 per user decision).</p>
 
 <ol>

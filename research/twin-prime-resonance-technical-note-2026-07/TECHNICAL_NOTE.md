@@ -7,7 +7,7 @@
 
 ---
 
-## Part I — Plain-Language Summary
+## Part I: Plain-Language Summary
 
 Prime numbers are not random holes in a number line. In the Prime Gap Structure (PGS) view, each gap between two consecutive primes is filled with composite numbers that carry structure. You can read that structure through the divisor count of each interior number.
 
@@ -33,7 +33,7 @@ So the program now has a deterministic trigger: when the GWR witness shows four 
 
 ---
 
-## Part II — Visual Summary
+## Part II: Visual Summary
 
 ![Twin-Prime Resonance infographic](infographic.svg)
 
@@ -49,7 +49,7 @@ The diagram shows the full chain:
 
 ---
 
-## Part III — Technical Treatment
+## Part III: Technical Treatment
 
 ### 1. Setting and notation
 
@@ -90,7 +90,7 @@ Equivalently, a four-zero remainder signature at the GWR witness forces twin-gap
 
 The proof is a corollary chain over established GWR infrastructure.
 
-#### Lemma 1 — Zero-count equivalence
+#### Lemma 1: Zero-count equivalence
 
 For the fixed vector $M_{v1}$,
 
@@ -100,23 +100,23 @@ $$
 
 *Proof sketch.* If $w \equiv 0 \pmod{30}$, then divisibility by $2$, $3$, $5$, and $30$ yields at least four zeros immediately. Conversely, if $w \not\equiv 0 \pmod{30}$, the slot for modulus $30$ is nonzero. Three simultaneous zeros among the slots for $2$, $3$, and $5$ would force divisibility by $30$. A zero in the $210$ or $2310$ slot also forces a zero at $30$. Hence at most three zeros are possible without $w \equiv 0 \pmod{30}$. ∎
 
-#### Lemma 2A — Left-boundary exclusion
+#### Lemma 2A: Left-boundary exclusion
 
 If $|I| \ge 2$ and $w = p+1$ with $w \equiv 0 \pmod{30}$, then $w$ is not GWR.
 
 *Proof.* The point $w+1$ lies in $I$, is composite, and satisfies $\gcd(w+1, 30)=1$. Therefore $\tau(w+1) \le 4$ while $\tau(w) \ge 8$. So $w$ cannot minimize interior divisor count. ∎
 
-#### Lemma 2B — Gap-three obstruction
+#### Lemma 2B: Gap-three obstruction
 
 If $g = 3$, $w \equiv 0 \pmod{30}$, and $w > 30$, then $w$ cannot be GWR.
 
 *Proof.* By Lemma 2A, $w = p+2$, hence $p = w-2 \equiv 28 \pmod{30}$ is even and greater than $2$, so not prime. ∎
 
-#### Lemma 2C — Small-gap modular obstructions
+#### Lemma 2C: Small-gap modular obstructions
 
 Write $w = p+k$. If $2 \le k \le 6$ and $w \equiv 0 \pmod{30}$, then $p \equiv -k \pmod{30}$ forces a factor $2$, $3$, or $5$ in $p$, excluding primality for $p > 5$. Thus no non-twin gap with $g \le 7$ can host a multiple-of-$30$ GWR witness.
 
-#### Lemma 2D — Earlier low-$\tau$ competitor
+#### Lemma 2D: Earlier low-$\tau$ competitor
 
 The first offset compatible with primality is $k=7$ ($g=8$, $p \equiv 23 \pmod{30}$). Then $p+2 \equiv 25 \pmod{30}$, so $5 \mid (p+2)$ and $\tau(p+2) \le 4$ while $\tau(w) \ge 8$. Since $p+2 < w$, the multiple of $30$ cannot be the leftmost minimum-$\tau$ witness. The same earlier-semiprime mechanism excludes larger admissible offsets.
 
@@ -164,7 +164,7 @@ PYTHONPATH=src/python:research/remainders \
 
 ### 7. References
 
-- `PROOF.md` — Twin-Prime Resonance theorem and theorem-stack row
+- `PROOF.md`. Twin-Prime Resonance theorem and theorem-stack row
 - `research/remainders/correlations/investigation/interior_placement_stats.json`
 - `research/remainders/correlations/investigation/super_signal_status.json`
-- `docs/proof-enhancements/goals.md` — goal G2 closure criteria
+- `docs/proof-enhancements/goals.md`, goal G2 closure criteria

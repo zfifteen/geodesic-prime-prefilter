@@ -29,7 +29,7 @@ Each row represents one known triple `(N, p, q)` with rich neighborhood descript
 | `p`                         | string   | Known factor (audit-only) |
 | `q`                         | string   | Known factor (audit-only) |
 
-### Output Side – Neighborhood Around N
+### Output Side  to  Neighborhood Around N
 
 | Field                                      | Type     | Description |
 |--------------------------------------------|----------|-----------|
@@ -41,7 +41,7 @@ Each row represents one known triple `(N, p, q)` with rich neighborhood descript
 | `gap_N_first_open_offset`                  | integer  | First wheel-open offset after previous prime |
 | `gap_N_dcount`                             | integer  | Divisor count of N |
 
-### Input Side – p-Neighborhood (Lower)
+### Input Side  to  p-Neighborhood (Lower)
 
 | Field                                      | Type     | Description |
 |--------------------------------------------|----------|-----------|
@@ -57,7 +57,7 @@ Each row represents one known triple `(N, p, q)` with rich neighborhood descript
 | `p_first_tail_offset`                      | integer  | First entry in the tail (if any) |
 | `p_transported_deadline_width`             | integer  | Transported deadline width (if computed) |
 
-### Input Side – q-Neighborhood (Upper)
+### Input Side  to  q-Neighborhood (Upper)
 
 Same fields as above, prefixed with `q_` instead of `p_`.
 

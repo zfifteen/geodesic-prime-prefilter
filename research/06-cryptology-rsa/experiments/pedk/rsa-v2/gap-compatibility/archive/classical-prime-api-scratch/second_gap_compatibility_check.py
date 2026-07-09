@@ -142,7 +142,7 @@ TRIPLES = [
 
 
 def main():
-    print("Gap Compatibility Hypothesis — Iteration 2 (Higher Resolution)")
+    print("Gap Compatibility Hypothesis. Iteration 2 (Higher Resolution)")
     print("=" * 75)
 
     results = []

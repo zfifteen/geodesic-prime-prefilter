@@ -1,4 +1,4 @@
-# Chamber-Tension Closure Experiment — FINDINGS
+# Chamber-Tension Closure Experiment: FINDINGS
 
 **Plain-English version:** [FINDINGS_plain_english.html](FINDINGS_plain_english.html)
 
@@ -13,9 +13,9 @@
 | Tier | Regime | Result | Status |
 | --- | --- | --- | --- |
 | **Harness F0** | R2 | `f0_match_rate = 0 / 78 493` | Pass |
-| **A — Rule X ≡ min{τ=2}** | R2 | `f1_match_rate = 1.0`, `audit_tau2_f1_fail = 0` | Supported |
-| **B — F2-RX notational isomorph** | R2 | `f2rx_match_rate = 1.0`, ≡ F1 | Expected pass (notational only) |
-| **C — adjacent exclusion closure** | C1-EXCL | `unique_resolved_survivor_count = 0`, `no_unique_boundary_count = 1225`, `true_boundary_rejected_count = 0` | Unresolved (pre-registered) |
+| **A. Rule X ≡ min{τ=2}** | R2 | `f1_match_rate = 1.0`, `audit_tau2_f1_fail = 0` | Supported |
+| **B. F2-RX notational isomorph** | R2 | `f2rx_match_rate = 1.0`, ≡ F1 | Expected pass (notational only) |
+| **C, adjacent exclusion closure** | C1-EXCL | `unique_resolved_survivor_count = 0`, `no_unique_boundary_count = 1225`, `true_boundary_rejected_count = 0` | Unresolved (pre-registered) |
 | **Prefix forcing** | R2 sample | `prefix_none_at_gap_minus_1_rate = 1.0` on 78 493 gaps; `decision_offset_eq_gap_rate = 1.0` on 158 sampled gaps | No early closure |
 
 ## R1 production-bound surface (`B = 128`)
@@ -44,11 +44,11 @@ No gap with `p < 10^6` exceeded bound `128` on this surface.
 
 ## State separation
 
-- **Theorem (unchanged):** `q = min{n>p : τ(n)=2}` and GWR interior maximizer — `PROOF.md`.
+- **Theorem (unchanged):** `q = min{n>p : τ(n)=2}` and GWR interior maximizer: `PROOF.md`.
 - **Implementation status:** Rule X production selector matches reference on R1/R2 tested regimes.
 - **Measured result:** This experiment; artifacts under `output/`.
 - **Audit result:** `τ(q)=2` post-hoc on all F1/F2-RX outputs.
-- **Hypothesis H<sub>CTC</sub> substantive claim:** Unresolved — no forward law independent of Rule X equivalence demonstrated; exclusion path has zero resolved-unique survivors on default rules.
+- **Hypothesis H<sub>CTC</sub> substantive claim:** Unresolved: no forward law independent of Rule X equivalence demonstrated; exclusion path has zero resolved-unique survivors on default rules.
 - **Not falsified:** True boundary never rejected in tier C; no forward selector mismatch on R2.
 
 ## Artifacts

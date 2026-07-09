@@ -1,6 +1,6 @@
 # Prime Order Is Fixed Before Zeta
 
-**Prime Gap Structure — explanatory whitepaper**  
+**Prime Gap Structure, explanatory whitepaper**  
 **Date:** 2026-07-07  
 **Companion script:** `integer_order_demo.py`  
 **Visual summary:** `infographic.svg` / `infographic.png`  
@@ -35,15 +35,15 @@ divisor counts  →  gap interiors  →  exact local rules
                 →  zeta compression  →  RH language
 ```
 
-**Step 1 — Integers first.** Every whole number has a divisor count: how many positive integers divide it evenly. A prime has exactly two divisors. A composite has more than two.
+**Step 1: Integers first.** Every whole number has a divisor count: how many positive integers divide it evenly. A prime has exactly two divisors. A composite has more than two.
 
-**Step 2 — Gaps are not empty.** Between consecutive primes, list every composite and its divisor count. That ordered list is the gap interior. It has shape. The first composite with the smallest divisor count inside the gap is a selected witness (the GWR rule in the formal proofs).
+**Step 2: Gaps are not empty.** Between consecutive primes, list every composite and its divisor count. That ordered list is the gap interior. It has shape. The first composite with the smallest divisor count inside the gap is a selected witness (the GWR rule in the formal proofs).
 
-**Step 3 — The next prime is a read, not a guess.** Start at a known prime. Walk forward through integers. The next prime is the first number whose divisor count returns to two. No random model is required for that step.
+**Step 3: The next prime is a read, not a guess.** Start at a known prime. Walk forward through integers. The next prime is the first number whose divisor count returns to two. No random model is required for that step.
 
-**Step 4 — Zeta is compression.** Summing divisor-count data in a standard series gives `ζ(s)²`. A normalized load series built from the same counts recovers `-ζ'(s)/ζ(s)`, the classical prime-power detector. The analytic object is built from the integer record.
+**Step 4: Zeta is compression.** Summing divisor-count data in a standard series gives `ζ(s)²`. A normalized load series built from the same counts recovers `-ζ'(s)/ζ(s)`, the classical prime-power detector. The analytic object is built from the integer record.
 
-**Step 5 — RH is downstream language.** The critical line is the coordinate sentence after compression. The functional equation centers symmetry at real part one-half. Zeros describe how corrections to the average prime count are arranged in spectral form. They are not the starting mystery.
+**Step 5: RH is downstream language.** The critical line is the coordinate sentence after compression. The functional equation centers symmetry at real part one-half. Zeros describe how corrections to the average prime count are arranged in spectral form. They are not the starting mystery.
 
 **Conclusion:** The pattern holds because prime placement is governed by exact divisor structure before anyone opens zeta. Trillions of zero checks confirm the spectral readout. PGS names the integer mechanism underneath it.
 
@@ -138,7 +138,7 @@ python3 experiments/integer-order-before-zeta-whitepaper-2026-07/integer_order_d
 
 The script:
 
-1. Prints gap-interior tables for 23–29 and 89–97.
+1. Prints gap-interior tables for 23 to 29 and 89 to 97.
 2. Computes excess values and selected witnesses.
 3. Evaluates the divisor-count partial sum against `ζ(s)²` at `s = 2.5`.
 4. Evaluates the load-ratio partial sum against `-ζ'(s)/ζ(s)`.
@@ -167,7 +167,7 @@ The GWR witness $w$ in gap $(p,q)$ satisfies a universal offset bound at Cramér
 w - p  ≤  C(q)  =  max(64, ceil(0.5 * log(q)²))
 ```
 
-This is proved in [PROOF.md](../../PROOF.md) — not a fitted curve. The factor `0.5`
+This is proved in [PROOF.md](../../PROOF.md), not a fitted curve. The factor `0.5`
 is arithmetically derived (F18-001, [RH-006](../../research/19-rh-corpus/FINDINGS_INDEX.md))
 from divisor-average closure, distinct from the Prime-Square Proximity lane.
 
@@ -207,9 +207,9 @@ the RH corpus navigation hub:
 
 ## References in this repository
 
-- [PROOF.md](../../PROOF.md) — local theorem authority
-- [research/19-rh-corpus/](../../research/19-rh-corpus/README.md) — RH corpus hub (this whitepaper's index home)
-- [docs/rh/README.md](../../docs/rh/README.md) — PGS-to-RH reading path
-- [docs/faq/core-frame/rh-downstream.md](../../docs/faq/core-frame/rh-downstream.md) — why RH is downstream
-- [docs/faq/core-frame/zeta-compression.md](../../docs/faq/core-frame/zeta-compression.md) — what zeta records
-- [research/18-derived-half-coefficient/](../../research/18-derived-half-coefficient/README.md) — F18 findings including derived ½ and rough-witness audit
+- [PROOF.md](../../PROOF.md), local theorem authority
+- [research/19-rh-corpus/](../../research/19-rh-corpus/README.md). RH corpus hub (this whitepaper's index home)
+- [docs/rh/README.md](../../docs/rh/README.md). PGS-to-RH reading path
+- [docs/faq/core-frame/rh-downstream.md](../../docs/faq/core-frame/rh-downstream.md), why RH is downstream
+- [docs/faq/core-frame/zeta-compression.md](../../docs/faq/core-frame/zeta-compression.md), what zeta records
+- [research/18-derived-half-coefficient/](../../research/18-derived-half-coefficient/README.md). F18 findings including derived ½ and rough-witness audit

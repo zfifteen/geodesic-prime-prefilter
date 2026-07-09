@@ -63,12 +63,12 @@ Convene a counsel of 12 agents with distinct expertise domains inside the PGS pr
 - Chamber reset mechanics, endpoint determinacy, boundary behavior, chain-horizon closure.
 - High-scale practical generation: C/GMP implementation for 1000+ bit and beyond (src/c/high-scale-pgs).
 - Lean-4 formalization of core theorems (lean-4/ directory, PGS_LEAN_FORMALIZATION_PLAN.md).
-- Reduced gap-type model (14-state core, semiprime wheel attractor) — measured surfaces, not universal theorems.
+- Reduced gap-type model (14-state core, semiprime wheel attractor), measured surfaces, not universal theorems.
 - Bounded compression rule (empirical, not unconditional theorem).
 - Predictions track (research/16-predictions) and pgs-unsolved-problems catalogue.
 
 **Invalidated (preserve as false):**
-- Fixed cutoff theorem {2:44, 4:60, 6:60} — falsified at q=24,098,209.
+- Fixed cutoff theorem {2:44, 4:60, 6:60}: falsified at q=24,098,209.
 - Certain SDA transfers on square branch (see experiments/square-branch-sda-invalidation-2026-06/).
 
 **Boundaries:**
@@ -89,18 +89,18 @@ Convene a counsel of 12 agents with distinct expertise domains inside the PGS pr
 
 The following 12 agent personas will participate. Each receives a dedicated subagent instance with role-specific instructions enforcing PGS contracts.
 
-1. **PGS Theorem Guardian** — Guardian of PROOF.md. Prioritizes anything that strengthens, extends, or formalizes the core deterministic theorems without dilution.
-2. **Cryptologic Strategist** — RSA endpoint structure, modulus-link closure, reciprocal transport, structural certificates, PGS-native factorization pressure. Current live RSA v2 surfaces.
-3. **Bounded Compression Lead** — Owner of current active target. Square-branch dynamic cutoff, D(r) proximity, bounded walker honesty.
-4. **High-Scale Systems Engineer** — Practical scaling: C implementation, GMP/MPFR, chamber reset at 1000+ bits, generator throughput for real cryptologic sizes.
-5. **Formal Methods Specialist** — Lean-4 translation, machine-checked proofs of PGS theorems, verification contracts.
-6. **Experimental Design Auditor** — Falsification specialist. Designs decisive tests, stress surfaces, adversarial probes. Protects against overclaim.
-7. **Continuity & Shape Keeper** — Enforcer of AGENTS.md, PGS-first reasoning, continuity files. Detects drift, classical re-framing, progress theater.
-8. **Gap Structure Theorist** — Gap types, reduced generative model, semiprime wheel attractor, interior geometry, 14-state core.
-9. **State Budget & Efficiency Analyst** — Divisor-count distributions, chamber budgets, d(n) carriers, state compression economics, d=4 dominance surfaces.
-10. **Predictions & Open Problems Curator** — Maintains unsolved-problems catalogue, long-horizon deterministic predictions, cross-chapter implications (Collatz, exponents, twins).
-11. **Classical Number Theory Comparator** — External lens only. Brings classical context (PNT, RH, sieves, analytic) strictly for comparison/audit/benchmark framing. Never as inference engine.
-12. **Documentation & Public Framing Guardian** — Ensures all public artifacts, whitepapers, READMEs, substack, Zenodo drafts preserve source order (PGS objects before zeta/RH/PNT). Audits wording drift.
+1. **PGS Theorem Guardian**: Guardian of PROOF.md. Prioritizes anything that strengthens, extends, or formalizes the core deterministic theorems without dilution.
+2. **Cryptologic Strategist**: RSA endpoint structure, modulus-link closure, reciprocal transport, structural certificates, PGS-native factorization pressure. Current live RSA v2 surfaces.
+3. **Bounded Compression Lead**: Owner of current active target. Square-branch dynamic cutoff, D(r) proximity, bounded walker honesty.
+4. **High-Scale Systems Engineer**: Practical scaling: C implementation, GMP/MPFR, chamber reset at 1000+ bits, generator throughput for real cryptologic sizes.
+5. **Formal Methods Specialist**: Lean-4 translation, machine-checked proofs of PGS theorems, verification contracts.
+6. **Experimental Design Auditor**: Falsification specialist. Designs decisive tests, stress surfaces, adversarial probes. Protects against overclaim.
+7. **Continuity & Shape Keeper**: Enforcer of AGENTS.md, PGS-first reasoning, continuity files. Detects drift, classical re-framing, progress theater.
+8. **Gap Structure Theorist**: Gap types, reduced generative model, semiprime wheel attractor, interior geometry, 14-state core.
+9. **State Budget & Efficiency Analyst**: Divisor-count distributions, chamber budgets, d(n) carriers, state compression economics, d=4 dominance surfaces.
+10. **Predictions & Open Problems Curator**: Maintains unsolved-problems catalogue, long-horizon deterministic predictions, cross-chapter implications (Collatz, exponents, twins).
+11. **Classical Number Theory Comparator**: External lens only. Brings classical context (PNT, RH, sieves, analytic) strictly for comparison/audit/benchmark framing. Never as inference engine.
+12. **Documentation & Public Framing Guardian**: Ensures all public artifacts, whitepapers, READMEs, substack, Zenodo drafts preserve source order (PGS objects before zeta/RH/PNT). Audits wording drift.
 
 ## Negotiated Deliverable (to be confirmed in process)
 

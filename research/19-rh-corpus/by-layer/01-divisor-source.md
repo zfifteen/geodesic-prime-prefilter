@@ -1,13 +1,13 @@
-# Layer 1 — Divisor source
+# Layer 1: Divisor source
 
 **Status mix:** `proved`, `narrative`, `measured`  
-**Proves RH?** No — this is the upstream arithmetic authority
+**Proves RH?** No: this is the upstream arithmetic authority
 
 Layer 1 is the **proved local mechanism**: divisor counts on integers, ordered gap
 interiors, GWR selection, and Cramér-scale bounded compression. Every RH-facing
 claim downstream assumes this layer is correct.
 
-**Authority:** [PROOF.md](../../../PROOF.md) — do not duplicate proof bodies here.
+**Authority:** [PROOF.md](../../../PROOF.md): do not duplicate proof bodies here.
 
 ---
 
@@ -28,7 +28,7 @@ claim downstream assumes this layer is correct.
 ## Gap interior as ordered field
 
 Between primes $p<q$, the interior $I=\{p+1,\ldots,q-1\}$ carries an **ordered
-divisor-count row**. This is not empty distance — it is the data that selects
+divisor-count row**. This is not empty distance, it is the data that selects
 $w$ and fixes $q$.
 
 ```text
@@ -52,7 +52,7 @@ Chapter home: [04-bounded-compression](../../04-bounded-compression/README.md)
 
 F18-004 matters for compression exposition: it shows **non-square** near-maximal
 witnesses must be divisor-rough, while **square** witnesses follow a separate
-tiling lane — see [03-zeta-compression.md](./03-zeta-compression.md).
+tiling lane, see [03-zeta-compression.md](./03-zeta-compression.md).
 
 ---
 

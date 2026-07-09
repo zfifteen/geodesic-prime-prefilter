@@ -37,7 +37,7 @@ def main() -> int:
             print(f"  {src} -> {target}")
         return 1
 
-    print("OK — all links resolve to existing files.")
+    print("OK, all links resolve to existing files.")
     return 0
 
 

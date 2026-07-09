@@ -39,7 +39,7 @@ For each of the 12 theoretical same-phase lanes, collect and align:
 - terminal image status
 - factor_relevance_under_current_operational_definition (using the structural definition: public selector survivor → terminal image → lower-terminal four-slot lift → candidate factor-side endpoint class)
 - mechanism class (derived from the width/residue/offset/parity fields above)
-- falsifier contract for the derived exclusion (or “N/A — survives”)
+- falsifier contract for the derived exclusion (or “N/A, survives”)
 
 **Primary question the matrix must support**
 Are the four component laws from the Round 10/11 priority matrix genuinely distinct, or do they collapse into one or two reusable width/residue selector mechanisms when the raw gap, residue, and first-open values are examined uniformly across all twelve lanes?

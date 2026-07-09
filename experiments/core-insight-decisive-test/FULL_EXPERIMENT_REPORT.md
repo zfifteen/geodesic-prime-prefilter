@@ -4,7 +4,7 @@
 **Date:** 2026-05  
 **Experiment ID:** Core-Insight-Decisive-Test-2026-05  
 **Status:** Complete execution of all designed stages.  
-**Live Target:** Chamber-Deconvolved Reciprocal Balance Lemma (all three obligations) — remains fully open. No obligation discharged.
+**Live Target:** Chamber-Deconvolved Reciprocal Balance Lemma (all three obligations): remains fully open. No obligation discharged.
 
 ---
 
@@ -12,7 +12,7 @@
 
 We designed and fully executed a multi-stage experiment to test a specific mathematical idea called the "Core Insight."
 
-The idea claimed that a special point inside every prime gap (the GWR point) naturally provides a local "boost" or correction strong enough to guarantee positive contribution from that gap in a certain mathematical construction — and that this boost works locally, scaling reliably with the size of the gap.
+The idea claimed that a special point inside every prime gap (the GWR point) naturally provides a local "boost" or correction strong enough to guarantee positive contribution from that gap in a certain mathematical construction, and that this boost works locally, scaling reliably with the size of the gap.
 
 **What we found after running the full experiment:**
 
@@ -51,7 +51,7 @@ The Core Insight was offered as a possible direct, local route to helping with o
 
 **Core Insight Hypothesis (exact form under test):**
 
-A local algebraic correction δ = E(g) × log(q/p), where g is the GWR point inside the chamber [p, q], is large enough that the chamber’s corrected contribution to the folded kernel is at least k × log(q/p) for some fixed positive constant k, independent of the particular chamber — and that this holds before any global contributions from other chambers.
+A local algebraic correction δ = E(g) × log(q/p), where g is the GWR point inside the chamber [p, q], is large enough that the chamber’s corrected contribution to the folded kernel is at least k × log(q/p) for some fixed positive constant k, independent of the particular chamber, and that this holds before any global contributions from other chambers.
 
 This was proposed as a structurally direct way to obtain the required nonnegativity locally.
 
@@ -64,7 +64,7 @@ We followed a staged design explicitly created for this purpose:
 - **Stage 0**: Grounding baseline on ordinary chambers using raw packet + the proposed δ.
 - **Stage 1**: Refinement using the already-proved local GWR control rules to create a better local model of deconvolution.
 - **Stage 2**: Adversarial stress-testing on the largest and highest-merit known gaps (including gaps at scales of 10^12 and above).
-- **Stage 3**: Synthesis — analysis of all data and drafting of any candidate formal statement suggested by the results.
+- **Stage 3**: Synthesis, analysis of all data and drafting of any candidate formal statement suggested by the results.
 
 All work respected strict separation:
 - Everything began from PGS objects.
@@ -75,12 +75,12 @@ All work respected strict separation:
 
 ## 4. Execution and Concrete Results
 
-### Stages 0 & 1 (Ordinary regime — 1,752 chambers, primes to ~15,000)
+### Stages 0 & 1 (Ordinary regime: 1,752 chambers, primes to ~15,000)
 - Min ratio after applying the GWR correction: **6.361867**
 - All chambers positive.
 - Applying the tighter GWR-bounded local model did not create any failures; the minimum stayed exactly the same.
 
-### Stage 2 (Adversarial — 300 high-merit large/record gaps)
+### Stage 2 (Adversarial: 300 high-merit large/record gaps)
 - Gaps with starting primes from ~10^12 upward, including many with high "merit" (unusually large relative to their size).
 - Even when we gave the hypothesis the most favorable possible assumptions about the GWR point inside these huge gaps, the correction still maintained the same positive lower bound of ~6.36 on every single gap tested.
 - **Zero failures** under optimistic modeling.
@@ -90,7 +90,7 @@ The consistent survival of a positive lower bound across both normal and extreme
 
 **Candidate Local Lemma (GWR Local Completion Correction Lower Bound)**
 
-The GWR maximizer inside a chamber forces a local algebraic supply from the completion correction of size at least k · log(q/p) (for a fixed k > 0) that helps satisfy the nonnegativity requirement in the existing Folded Packet Drift Inequality — and this supply can be bounded using only the local chamber geometry and the already-proved GWR control.
+The GWR maximizer inside a chamber forces a local algebraic supply from the completion correction of size at least k · log(q/p) (for a fixed k > 0) that helps satisfy the nonnegativity requirement in the existing Folded Packet Drift Inequality, and this supply can be bounded using only the local chamber geometry and the already-proved GWR control.
 
 A document stating this candidate (with open questions for a full proof) was written and placed in the repository.
 
@@ -118,9 +118,9 @@ The hypothesis has not been falsified on any data we could access. It has produc
 
 All artifacts are in the repository under:
 
-- `experiments/core-insight-decisive-test/` — stage scripts, CSVs, plots, and strict reports for each stage.
-- External archive: `/Users/velocityworks/prime-gap-structure-archives/2026-05-classical-rh-bridge-completion-route/12-rh-bridge/docs/candidate_gwr_local_completion_correction_lower_bound.md` — the candidate GWR local lemma (preserved PGS result).
-- External archive: `/Users/velocityworks/prime-gap-structure-archives/2026-05-classical-rh-bridge-completion-route/12-rh-bridge/loop/LOOP_LEDGER.md` — relevant execution log sections (the Core Insight test record).
+- `experiments/core-insight-decisive-test/`, stage scripts, CSVs, plots, and strict reports for each stage.
+- External archive: `/Users/velocityworks/prime-gap-structure-archives/2026-05-classical-rh-bridge-completion-route/12-rh-bridge/docs/candidate_gwr_local_completion_correction_lower_bound.md`, the candidate GWR local lemma (preserved PGS result).
+- External archive: `/Users/velocityworks/prime-gap-structure-archives/2026-05-classical-rh-bridge-completion-route/12-rh-bridge/loop/LOOP_LEDGER.md`, relevant execution log sections (the Core Insight test record).
 - This report.
 
 Every document and code file uses the project’s mandatory strict separation language except for the final plain-English summary requested by the user.
@@ -129,7 +129,7 @@ Every document and code file uses the project’s mandatory strict separation la
 
 ## 7. Final Status
 
-**Live Target:** Chamber-Deconvolved Reciprocal Balance Lemma (deconvolution survival, reciprocal balance, nonnegative folded mass) — remains fully open.
+**Live Target:** Chamber-Deconvolved Reciprocal Balance Lemma (deconvolution survival, reciprocal balance, nonnegative folded mass): remains fully open.
 
 The experiment is complete.
 

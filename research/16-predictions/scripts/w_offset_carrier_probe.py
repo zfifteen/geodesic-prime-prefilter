@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-PGS Predictions — Family 1: w-offset carrier probe (initial version)
+PGS Predictions. Family 1: w-offset carrier probe (initial version)
 
 Goal (per unified master catalogue and pgs_predictions_v0.1_contract):
     From current-chamber PGS objects (primarily d4_count + square-phase indicators
@@ -1015,7 +1015,7 @@ def attach_square_phase_utilization(
             except (ValueError, TypeError, ZeroDivisionError):
                 row["square_phase_utilization"] = None
     else:
-        # No detail rows or util already present — just ensure the key exists
+        # No detail rows or util already present: just ensure the key exists
         # for every row so downstream scoring never KeyErrors.
         for row in result:
             if "square_phase_utilization" not in row:
@@ -1059,7 +1059,7 @@ def attach_square_phase_utilization(
             key = (fam, w_off, first_open)
             median = medians.get(key)
             if median is None:
-                # Degenerate single-row cell — treat as high for conservative scoring.
+                # Degenerate single-row cell: treat as high for conservative scoring.
                 row["square_phase_bit"] = "d4_high"
                 row["is_d4_low"] = 0
             else:
@@ -1342,7 +1342,7 @@ def w_evaluate_surface_with_square_reset(
         candidate_measures = W_CANDIDATE_MEASURES_WITH_SQUARE_RESET
     # Structural return only for skeleton validity.
     return {
-        "verdict": "unresolved (Phase 1 scaffold — no execution)",
+        "verdict": "unresolved (Phase 1 scaffold, no execution)",
         "note": "Call after Phase 3/4 implementation of the attachment and generalized scoring.",
         "effective_measures": list(candidate_measures),
     }
@@ -1416,7 +1416,7 @@ def test_attach_reset_carried_components_and_square_integration():
         },
     ]
 
-    # Square attach (live from unit 1) — non-d4 here so bits=None
+    # Square attach (live from unit 1): non-d4 here so bits=None
     augmented = attach_square_phase_utilization(trans)
     # Reset attach (new body)
     augmented = attach_reset_carried_components(

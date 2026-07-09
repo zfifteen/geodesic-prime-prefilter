@@ -16,11 +16,11 @@ This is not a failure of individual reasoning or effort. It is an expected outco
 
 The following are observable and checkable:
 
-- The carrier/lock_carrier/lower_d_threat mechanism inside pgs_chamber_reset_state_certificate (src/python/z_band_prime_predictor/simple_pgs_generator.py, lines 48–95) and its direct counterpart in pgs_certificate_t (src/c/high-scale-pgs/include/pgs_high_scale.h, lines 56–60) performs the actual recovery work when semiprime-shadow structures appear. This logic is load-bearing in production. It has no dedicated research card, no named rule, and no entry in pgs-unsolved-problems/.
+- The carrier/lock_carrier/lower_d_threat mechanism inside pgs_chamber_reset_state_certificate (src/python/z_band_prime_predictor/simple_pgs_generator.py, lines 48 to 95) and its direct counterpart in pgs_certificate_t (src/c/high-scale-pgs/include/pgs_high_scale.h, lines 56 to 60) performs the actual recovery work when semiprime-shadow structures appear. This logic is load-bearing in production. It has no dedicated research card, no named rule, and no entry in pgs-unsolved-problems/.
 
 - Dozens of narrow probe scripts have been written to mine variations of carrier, shadow seed recovery, transported threat, and boundary certificate behavior (examples: simple_pgs_carrier_boundary_certificate_probe.py, simple_pgs_shadow_seed_recovery_displacement_probe.py, simple_pgs_recursive_shadow_chain_state_mine.py, and multiple transported-sidecar probes in research/06-cryptology-rsa/). These probes generate data but have not produced corresponding named objects or invariants.
 
-- The 2026-05 external archival of the entire research/12-rh-bridge track removed a large body of material on the explicit grounds that it created "persistent steering" and "prompt injection" (see research/00-index/status-map.md lines 32–34 and ARCHIVAL_HANDOFF.md in the external archive). No mechanism was left in place to keep the pressure visible inside the repository.
+- The 2026-05 external archival of the entire research/12-rh-bridge track removed a large body of material on the explicit grounds that it created "persistent steering" and "prompt injection" (see research/00-index/status-map.md lines 32 to 34 and ARCHIVAL_HANDOFF.md in the external archive). No mechanism was left in place to keep the pressure visible inside the repository.
 
 - The highest-level open question document (docs/unanswered-questions/chain-horizon-closure/00_question.md) describes the need for a divisor-horizon law and states specific performance figures (56.63% at 10^15, 58.00% at 10^18). The actual working solution path that the generator took (carrier-mediated cut after lock) was never abstracted or added to the unsolved-problems scaffold as a distinct object.
 
@@ -46,18 +46,18 @@ The current system has protected the core contract ({"p": p, "q": q} output only
 
 5. Proposed Structural Interventions
 
-Intervention A — Two-Track Governance
+Intervention A: Two-Track Governance
 Create two explicitly separate rule sets.
 - Purity Track: Current AGENTS.md and continuity rules remain in force. Owns the generator, PROOF.md, and all production artifacts.
 - Pressure Track: Explicitly permitted to examine whether the current PGS object inventory is sufficient, using whatever methods surface the mismatch. All output must carry a "Pressure Track" label and cannot modify the generator or core theorems without a formal crossing review.
 
-Intervention B — Mandatory Object Elevation Process
+Intervention B: Mandatory Object Elevation Process
 Create a required process (new document: research/00-index/object-elevation-process.md). Any mechanism that demonstrably affects generator behavior at scale (such as the carrier/threat cut) must be given a provisional name, a set of invariants (even if unproved), and an entry in pgs-unsolved-problems/ within a fixed time after its empirical importance is established. Status categories must include "empirically load-bearing, no proof yet."
 
-Intervention C — Internal Quarantine Instead of External Archival
+Intervention C: Internal Quarantine Instead of External Archival
 Replace external archival with a strict internal quarantine directory. Quarantined material remains searchable and citable by Pressure Track work. It is blocked from Purity Track influence without explicit review. The 2026-05 rh-bridge material would be the first candidate for return under this rule.
 
-Intervention D — Periodic Frame Stress Tests
+Intervention D: Periodic Frame Stress Tests
 Add a recurring obligation (tied to major generator version freezes) to run deliberate exercises whose sole purpose is to find prime-gap phenomena that resist clean expression using the current listed PGS objects. Output format must include a mismatch table and a recommendation on whether the object inventory needs expansion.
 
 6. Risks of Each Intervention
@@ -79,7 +79,7 @@ After 12 months, the following would indicate the intervention is having effect:
 - The next major generator version freeze includes an explicit statement separating audit correctness from theoretical completeness.
 - Frame Stress Test output has produced at least one documented proposal to expand the core PGS object list.
 
-9. Implementation Path — Minimal First Step
+9. Implementation Path: Minimal First Step
 
 The smallest real test is to draft and adopt the two-track rule set as a standalone document (research/00-index/two-track-governance.md) and run one Object Elevation trial on the carrier/threat mechanism inside the existing chamber reset rule.
 

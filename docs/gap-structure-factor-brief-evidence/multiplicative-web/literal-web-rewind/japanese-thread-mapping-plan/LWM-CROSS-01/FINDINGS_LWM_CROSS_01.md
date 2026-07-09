@@ -1,6 +1,6 @@
-# FINDINGS_LWM_CROSS_01 — Cross-Family Scoring
+# FINDINGS_LWM_CROSS_01: Cross-Family Scoring
 
-**Measured outcome (first sentence):** Cross-family scoring (left-origin vs. right-origin thread families, with explicit inter-family alignment bonus) produced a strict noise reduction versus the flat undifferentiated support baseline: on 15 of 19 ladder rungs the nominated top tier collapsed from 2–8 holes (tied at raw max support) to a singleton, while that singleton was always a true factor-distance offset carrying both-family support; the four toy cases were unchanged (already singleton). Every examined true factor distance received cross_bonus=1.
+**Measured outcome (first sentence):** Cross-family scoring (left-origin vs. right-origin thread families, with explicit inter-family alignment bonus) produced a strict noise reduction versus the flat undifferentiated support baseline: on 15 of 19 ladder rungs the nominated top tier collapsed from 2 to 8 holes (tied at raw max support) to a singleton, while that singleton was always a true factor-distance offset carrying both-family support; the four toy cases were unchanged (already singleton). Every examined true factor distance received cross_bonus=1.
 
 ## Experiment Definition (from plan)
 LWM-CROSS-01 tests the Japanese "two distinct crossing families" invariant mapped to the literal web:
@@ -36,7 +36,7 @@ Selected rows (full 19 in summary.md / full_results.json):
 | ladder_rung_07_229x277| 1374   | 7            | 1             | −6                      | 7/20 / 1/20                            | (p_thread)                                   |
 | ladder_rung_08_307x367| 1842   | 8            | 1             | −7                      | 8/22 / 1/22                            | −307                                         |
 | ladder_rung_11_701x887| 4206   | 8            | 1             | −7                      | 8/20 / 1/20                            | +701                                         |
-| ... (see full table in summary.md for all 19) | ... | (1–8)     | 1             | 0 to −7                 | varies                                 | always a true p/q distance offset            |
+| ... (see full table in summary.md for all 19) | ... | (1 to 8)     | 1             | 0 to −7                 | varies                                 | always a true p/q distance offset            |
 
 **Aggregate across 23 runs (4 toy + 19 ladder):**  
 - 15 cases showed strict reduction in emitted top-tier cardinality under cross rule (noise reduction).  
@@ -49,19 +49,19 @@ Selected rows (full 19 in summary.md / full_results.json):
 ## Structural Observations (PGS-Native / Literal Web)
 
 - **Inter-family support is universal on true distances:** In every run, the offsets corresponding to the hidden p-threads and q-threads (the factor-distance holes) were supported by threads whose originating composites straddled N (some left of N, some right of N). This is the exact cross-family alignment predicted by the Japanese mapping.
-- **Cross rule resolves flat ties deterministically:** When multiple offsets tie at identical raw max support (common at 6×p scale, producing flat tiers of 3–8), the additional requirement of explicit left+right family presence selects a unique winner that is always one of the canonical true factor distances (never a spurious other-composite hole).
+- **Cross rule resolves flat ties deterministically:** When multiple offsets tie at identical raw max support (common at 6×p scale, producing flat tiers of 3 to 8), the additional requirement of explicit left+right family presence selects a unique winner that is always one of the canonical true factor distances (never a spurious other-composite hole).
 - **Within-family secondary signal preserved:** The top cross hole always had high within-family counts on both sides (typically L=3/R=3 at support=3), while many lower-support true distances also showed balanced L/R >0.
-- **Family balance is naturally asymmetric but duals exist:** Typical origin counts ~ left 50–280 / right similar / dual 11–130. Dual-origin threads (r observed on both sides) contribute to both families and help enable the bonus.
+- **Family balance is naturally asymmetric but duals exist:** Typical origin counts ~ left 50 to 280 / right similar / dual 11 to 130. Dual-origin threads (r observed on both sides) contribute to both families and help enable the bonus.
 - **No leakage:** All family assignment, bonus, and top selection used only public heldout composites and their offset signs + factor threads. p/q known only for post-freeze audit labeling and true-distance identification.
 
-## Comparison Table — Flat Baseline vs Cross-Family (Noise at Nomination Threshold)
+## Comparison Table: Flat Baseline vs Cross-Family (Noise at Nomination Threshold)
 
 For cases with flat tier >1 (the interesting regime):
 
-- flat emits the entire max-support level set (size 2–8, all of which happen to be direct hits in these data).
+- flat emits the entire max-support level set (size 2 to 8, all of which happen to be direct hits in these data).
 - cross emits exactly the subset that also carry inter-family support, which in practice is always size 1 and still a direct hit.
 
-Result: 50–87.5 % reduction in size of the "publicly nominated" set while preserving (and in the tie case, sharpening) the signal on true factor distances.
+Result: 50 to 87.5 % reduction in size of the "publicly nominated" set while preserving (and in the tie case, sharpening) the signal on true factor distances.
 
 ## Contract Compliance & Limitations
 
@@ -85,7 +85,7 @@ Result: 50–87.5 % reduction in size of the "publicly nominated" set while pres
 
 ## RESULTS SUMMARY
 
-**Status:** COMPLETED — success, no contract issues.
+**Status:** COMPLETED: success, no contract issues.
 
 **Quantitative deltas (true factor distances):**
 - Every true factor distance offset received explicit cross-family support (L>0 and R>0) in 100% of 23 runs.

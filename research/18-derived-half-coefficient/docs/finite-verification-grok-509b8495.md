@@ -1,4 +1,4 @@
-# Finite Deterministic Verification — Grok Share 509b8495
+# Finite Deterministic Verification: Grok Share 509b8495
 
 **Finding:** F18-002  
 **URL:** https://x.com/i/grok/share/509b8495da104d45ac51a30ba3e1d618  

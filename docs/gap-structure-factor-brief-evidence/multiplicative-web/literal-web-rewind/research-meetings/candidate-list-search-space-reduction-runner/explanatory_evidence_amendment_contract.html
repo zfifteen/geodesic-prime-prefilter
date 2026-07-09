@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Explanatory Evidence Amendment — v01 Candidate-List Runner</title>
+<title>Explanatory Evidence Amendment, v01 Candidate-List Runner</title>
 <style>
 body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; margin: 24px; font-size: 14px; line-height: 1.5; color: #1f2937; background: #f8fafc; }
 main { max-width: 980px; margin: 0 auto; }
@@ -32,9 +32,9 @@ footer { margin-top: 24px; font-size: 11px; color: #64748b; border-top: 1px soli
 <body>
 <main>
 <h1>Explanatory Evidence Amendment<br>to v01 Candidate-List Runner</h1>
-<p><strong>Status:</strong> <span class="status-frozen">FROZEN AMENDMENT CONTRACT — v01.1</span></p>
+<p><strong>Status:</strong> <span class="status-frozen">FROZEN AMENDMENT CONTRACT, v01.1</span></p>
 <p><strong>Parent Contract:</strong> <code>design_contract.html</code> (v01) in this folder<br>
-<strong>Meeting:</strong> <code>candidate-list-search-space-reduction-runner</code> — Explanatory Evidence Amendment<br>
+<strong>Meeting:</strong> <code>candidate-list-search-space-reduction-runner</code>. Explanatory Evidence Amendment<br>
 <strong>Scope:</strong> Public-only diagnostic fields for the existing toy v01 corpus. No change to recovery criteria, cap, depth threshold, thread set, or nomination logic.</p>
 
 <section class="panel frozen">
@@ -101,7 +101,7 @@ footer { margin-top: 24px; font-size: 11px; color: #64748b; border-top: 1px soli
 </section>
 
 <section class="panel amendment">
-<h2>Optional Public Sidecar — None Required</h2>
+<h2>Optional Public Sidecar. None Required</h2>
 <p>All explanatory aggregates fit inside the existing <code>public_manifest.json</code>. No new sidecar file is created by this amendment. The public_output.jsonl format and content are unchanged (identical row schema and ordering for any given N under the locked v01 nomination rules).</p>
 </section>
 
@@ -135,7 +135,7 @@ output/toy_v01_amended/&lt;case_id&gt;/audit/status.json</code></pre>
 <p>Before any execution of the v01.1 runner against the toy corpus, Grok must issue a written certification (separate artifact or appended section) confirming that the following hold for the proposed amended source:</p>
 <ol class="checklist">
 <li>Private-token scan still returns false for all 19 forbidden tokens; the scan list is unchanged or only extended with clearly public labels.</li>
-<li>The seven explanatory fields are computed exclusively from the <code>candidates</code> dict inside the public <code>nominate</code> / <code>write_outputs</code> path, using only N, the fixed THREAD_SET, MIN_DEPTH, and MAX_CANDIDATES — no hidden-factor values, no post-freeze re-processing.</li>
+<li>The seven explanatory fields are computed exclusively from the <code>candidates</code> dict inside the public <code>nominate</code> / <code>write_outputs</code> path, using only N, the fixed THREAD_SET, MIN_DEPTH, and MAX_CANDIDATES, no hidden-factor values, no post-freeze re-processing.</li>
 <li>The code path that builds distances, depths, and scores up to the point of truncation is textually identical (or provably equivalent) to the certified v01 runner, guaranteeing that public_output.jsonl content and recovery membership are byte-for-byte reproducible for every N in the corpus.</li>
 <li>The new fields appear in every manifest with the exact names and semantics defined in this amendment contract; the original v01 manifest keys are all still present and numerically unchanged.</li>
 <li>The PUBLIC_FREEZE_RECORD now also prints the new fields (or the entire manifest); the gate still requires clean token scan and hash publication of both output files before “PRIVATE_AUDIT_UNLOCKED: true”.</li>

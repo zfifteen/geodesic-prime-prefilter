@@ -17,7 +17,7 @@ echo "=== PGS Research Director Autonomous Cycle Trigger ===" | tee -a "$LOGFILE
 echo "CYCLE_ID=$CYCLE_ID" | tee -a "$LOGFILE"
 echo "PGS_ROOT=$PGS_ROOT" | tee -a "$LOGFILE"
 echo "Trigger time: $(date -u)" | tee -a "$LOGFILE"
-echo "No interactive prompts after launch — full autonomy mode." | tee -a "$LOGFILE"
+echo "No interactive prompts after launch, full autonomy mode." | tee -a "$LOGFILE"
 
 echo "--- SYSTEM.md head (PGS contract) ---" | tee -a "$LOGFILE"
 head -30 "$BOT_DIR/SYSTEM.md" | tee -a "$LOGFILE"

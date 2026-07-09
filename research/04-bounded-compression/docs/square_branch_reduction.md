@@ -1,6 +1,6 @@
 # Square Branch Reduction
 
-## Status — RESOLVED 2026-07-05
+## Status: RESOLVED 2026-07-05
 
 The square branch is **proved**. The Prime-Square Proximity Theorem in
 [PROOF.md](../../../PROOF.md) §Prime-Square Proximity Theorem closes bounded
@@ -74,7 +74,7 @@ lower than every other composite divisor count.
 That theorem does not bound the distance from `p` to the first interior prime
 square. A later divisor-count-`4` integer cannot undercut a prime square. An
 earlier divisor-count-`4` integer also cannot undercut it. The square branch
-required a separate structural theorem — now proved as Prime-Square Proximity.
+required a separate structural theorem, now proved as Prime-Square Proximity.
 
 ## Audit Corroboration
 
@@ -91,7 +91,7 @@ C(p) = 665
 utilization = 0.8120300751879699
 ```
 
-Later segments (e.g. `300M–400M`, `5,084,001` roots, no counterexample) continue
+Later segments (e.g. `300M to 400M`, `5,084,001` roots, no counterexample) continue
 to corroborate the proved bound.
 
 ## Proved Theorem

@@ -1,4 +1,4 @@
-# Round 02 Grok — Frozen Design Contract Delivered
+# Round 02 Grok: Frozen Design Contract Delivered
 
 ## Action Taken
 
