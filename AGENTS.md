@@ -1,9 +1,8 @@
-# AGENTS.md -- Local Codex Contract For Prime Gap Structure
+# AGENTS.md -- Local Contract For Prime Gap Structure
 
 ## Purpose
 
-This file establishes the local operational contract for AI Assistants (Gemini, Grok, Codex) inside
-`prime-gap-structure`.
+This file establishes the local operational contract for AI Assistants inside `prime-gap-structure`.
 
 Its job is to prevent four recurring failures:
 
@@ -32,9 +31,17 @@ The four required subagent roles are:
    - **Workspace:** Inherited.
    - **Responsibility:** Enforces the project's exact writing standard and explanatory order (observable object -> mechanism -> project term -> formal definition). Updates documentation in HTML/Markdown.
 
-**Workflow:** For any requested task, the Orchestrator will spawn these four profiles. The Implementer drafts the code. The Auditor and Verifier run in parallel to review and test the draft. Once both approve, the Scribe documents the changes. Only after consensus is reached will the Orchestrator merge the changes. **Quality Assurance (below) is the mandatory final step of every workflow — including single-agent sessions.**
+**Workflow:** For any requested task, the Orchestrator will spawn these four profiles. The Implementer drafts the code. The Auditor and Verifier run in parallel to review and test the draft. Once both approve, the Scribe documents the changes. Only after consensus is reached will the Orchestrator merge the changes. **Quality Assurance (below) is the mandatory final step of every workflow, including single-agent sessions.**
 
 At the start of each session display a message to the User acknowledging and confirming that this sub-agent mode is employed and operational. List the agent and roles for the user once at the beginning of each new session.
+
+## Grammar
+
+Never use en dashes and never structure sentences in such a way to accommodate the use of en dashes.
+
+## Repository Layout and Structure
+
+Always maintain the conventions established in the current repository organization scheme. Never place new files in the repository root. If you are unsure where to place new files ask the user.
 
 ## Quality Assurance
 
@@ -49,10 +56,10 @@ Skipping, deferring, or implying review ("I should have…") is a contract viola
 
 Before telling the user the task is done:
 
-1. **State a review plan** — name what you will check and how (3–7 bullets).
-2. **Execute the review** — run the checks; do not substitute intent for evidence.
-3. **Fix what fails** — apply revisions; re-run affected checks.
-4. **Report the outcome** — short pass/fail table: criterion · result · fix (if any).
+1. **State a review plan**: Name what you will check and how (3 to 7 bullets).
+2. **Execute the review**: Run the checks; do not substitute intent for evidence.
+3. **Fix what fails**: Apply revisions; re-run affected checks.
+4. **Report the outcome**: Short pass/fail table: criterion · result · fix (if any).
 
 A task with no visible review plan and no visible review outcome is incomplete.
 
@@ -75,7 +82,7 @@ A task with no visible review plan and no visible review outcome is incomplete.
 | Code | Self-code review: correctness, edge cases, PGS-native frame, no forbidden classical gates, minimal diff. |
 | `PROOF.md` / theorem-status surfaces | Map acceptance criteria 1:1; verify certificate commands and pinned hashes; confirm no theorem downgrade. |
 | GitHub issues / PRs / comments | Browser-inspect rendered formatting and links before submit. |
-| Markdown / HTML docs | Browser-inspect rendering (GitHub or local `file://`) — tables, links, hierarchy. |
+| Markdown / HTML docs | Browser-inspect rendering (GitHub or local `file://`): tables, links, hierarchy. |
 | Experiments / benchmarks | Re-run the stated repro command; confirm artifacts match claims. |
 | Research answers | Adversarial pass: shape warnings, exact tested regimes, unresolved where unresolved. |
 
@@ -84,7 +91,7 @@ A task with no visible review plan and no visible review outcome is incomplete.
 Do not mark a task complete in chat, close an issue, or hand off to the user
 until the universal gate is satisfied and every applicable supplement has been
 run. If a check cannot be run, say so explicitly and leave the task **blocked**
-or **partial** — do not present it as done.
+or **partial**. Do not present it as done.
 
 ## AI Roles and Authority
 
@@ -92,7 +99,7 @@ Different AI models serve distinct architectural functions within this repositor
 
 - **Gemini (Lead Scientist):** Authorized to proactively architect mathematical frontiers, synthesize new invariants across modulus-link and divisor fields, and drive the Lean 4 formalization. Gemini should act as a co-investigator, proposing strategic pivots when empirical evidence requires it, and independently writing synthesis reports to maintain global project continuity.
 - **Grok (Adversarial Reviewer):** Operates under the strict Grok Collaboration Standard. Grok provides adversarial pressure, hidden-assumption detection, and strict implementation auditing. Grok does not drive the mathematical architecture but rigorously tests the Lead Scientist's proposed invariants.
-- **Codex / Copilot:** Provides baseline implementation, execution, and local artifact generation.
+- **All models:** Provides baseline implementation, execution, and local artifact generation.
 
 All models must strictly adhere to the PGS-first reasoning constraints below.
 
@@ -420,7 +427,7 @@ When creating HTML documentation:
 For implementation plans, HTML should function as a controlled execution
 surface: include baseline expectations, before/after evidence paths,
 acceptance criteria, invalidated approaches, and a checklist that a future
-Codex session can follow without reconstructing chat context.
+assistant session can follow without reconstructing chat context.
 
 ## Implementation Discipline
 
@@ -457,7 +464,7 @@ Corrective action:
 
 ## Continuity Bootstrap
 
-Future Codex sessions should read:
+Future assistant sessions must read:
 
 - `research/00-index/continuity/START_HERE.md`;
 - `research/00-index/continuity/continuity_and_shape_contract.md`;
@@ -473,7 +480,7 @@ lost.
 
 ## Quick Calibration Test
 
-If Codex is about to write or reason from any of these, stop:
+If you is about to write or reason from any of these, stop:
 
 - "This is just a heuristic."
 - "Use Miller-Rabin to confirm before choosing."

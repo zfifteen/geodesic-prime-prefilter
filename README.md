@@ -9,7 +9,7 @@
 **Abstract**  
 Prime Gap Structure demonstrates that the integers between consecutive primes form an ordered divisor-count field whose internal minimum (the Gap Winner) and return to divisor count = 2 together locate the next prime deterministically.  
 
-Local theorems — including the Gap Winner Rule (GWR), bounded compression at Cramér scale, the Prime-Square Proximity Theorem (proved 2026-07-05), the No-Later-Simpler-Composite Theorem (zero violations through 10¹⁸), and the Twin-Prime Resonance / GWR Super-Signal theorem — are formally proved and computationally validated. A reading path connecting these local results to analytic number theory (including the Riemann Hypothesis) is developed in `docs/rh/` but kept explicitly separate from the proved core.
+Local theorems are formally proved and computationally validated. These theorems include the Gap Winner Rule (GWR), bounded compression at Cramér scale, the Prime-Square Proximity Theorem (proved 2026-07-05), the No-Later-Simpler-Composite Theorem (zero violations through 10¹⁸), and the Twin-Prime Resonance / GWR Super-Signal theorem. A reading path connecting these local results to analytic number theory (including the Riemann Hypothesis) is developed in `docs/rh/` but kept explicitly separate from the proved core.
 
 This repository supplies the proofs (`PROOF.md`), reference implementations, reproducible artifacts, and measured surfaces that make the structure independently verifiable.
 
@@ -19,7 +19,7 @@ This repository supplies the proofs (`PROOF.md`), reference implementations, rep
 
 - [1. Quick Intuitive Understanding](#1-quick-intuitive-understanding)
 - [Key Concepts (Mini-Glossary)](#key-concepts-mini-glossary)
-- [2. Core Results — What Is Proved](#2-core-results--what-is-proved)
+- [2. Core Results: What Is Proved](#2-core-results--what-is-proved)
 - [3. Getting Started](#3-getting-started)
 - [4. Deeper Theory & Formal Proofs](#4-deeper-theory--formal-proofs)
 - [5. PGS-to-RH Reading Path & Open Questions](#5-pgs-to-rh-reading-path--open-questions)
@@ -62,7 +62,7 @@ The numbers themselves have not changed. What has changed is that we are now see
 
 That single observation is surprising because it contradicts the idea that the interior is meaningless. Instead of empty space, the gap now has an internal shape that is completely determined by ordinary arithmetic. The lowest divisor count inside the gap is not hidden or random; it emerges clearly once you simply count.
 
-**Plain-English takeaway**: The first time the minimal divisor count appears inside the gap marks a special composite (the Gap Winner). This is not coincidence — it is the arithmetic structure of the gap itself.
+**Plain-English takeaway**: The first time the minimal divisor count appears inside the gap marks a special composite (the Gap Winner). This is not coincidence; it is the arithmetic structure of the gap itself.
 
 ### When The Lowest Count Appears Multiple Times
 
@@ -118,11 +118,11 @@ These one-line definitions capture the central objects used throughout the repos
 - **Bounded compression**: For every consecutive prime gap with nonempty interior, the GWR-selected witness appears within `max(64, ceil(0.5 * log(q)^2))` of the left endpoint. This bound is proved at Cramér scale from divisor-count structure.
 - **Prime-Square Proximity Theorem** (proved 2026-07-05): When the selected witness is a prime square `r²`, the distance `r² − p` cannot exceed the bounded-compression cutoff without forcing a modulus-link collision.
 - **GWR Super-Signal (Twin-Prime Resonance)**: When the GWR-selected composite exhibits high modular primorial resonance (4 or more remainder zeros), it functions as a deterministic trigger that the gap terminates immediately (g = 2).
-- **No-Later-Simpler-Composite Theorem**: Validated with zero violations through 10¹⁸ — no simpler composite appears later in the gap once the minimal divisor count has been observed.
+- **No-Later-Simpler-Composite Theorem**: Validated with zero violations through 10¹⁸. No simpler composite appears later in the gap once the minimal divisor count has been observed.
 
 ---
 
-## 2. Core Results — What Is Proved
+## 2. Core Results: What Is Proved
 
 > **Proved Status (as of July 2026)**  
 > The following local theorems are formally proved in `PROOF.md` and have been computationally validated with zero violations through 10¹⁸. These results stand independently of any conjectures about the Riemann Hypothesis or global prime distribution.
@@ -163,11 +163,11 @@ After installation you can import the core modules and begin exploring the order
 
 The repository develops the above results in greater depth.
 
-- `PROOF.md` — the formal proofs of the next-prime rule, GWR, bounded compression, Prime-Square Proximity Theorem, Twin-Prime Resonance (GWR Super-Signal), and supporting lemmas.
-- `docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md` — detailed exploration of the rule that identifies the special composite inside each gap.
-- `docs/core/DIVISOR_NORMALIZATION_IDENTITY.md` — full treatment of the zero-excess normalization `E(n)` and its dual `Z(n)`.
-- `docs/core/PRIME_GAP_GENERATIVE_MODEL.md` and `docs/core/RECURSIVE_PRIME_WALK.md` — the broader generative model and recursive behavior.
-- `docs/RESULTS.md` — measured results and surfaces.
+- `PROOF.md`: The formal proofs of the next-prime rule, GWR, bounded compression, Prime-Square Proximity Theorem, Twin-Prime Resonance (GWR Super-Signal), and supporting lemmas.
+- `docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md`: Detailed exploration of the rule that identifies the special composite inside each gap.
+- `docs/core/DIVISOR_NORMALIZATION_IDENTITY.md`: Full treatment of the zero-excess normalization `E(n)` and its dual `Z(n)`.
+- `docs/core/PRIME_GAP_GENERATIVE_MODEL.md` and `docs/core/RECURSIVE_PRIME_WALK.md`: The broader generative model and recursive behavior.
+- `docs/RESULTS.md`: Measured results and surfaces.
 
 Visualizations of the core objects (divisor-count rows, GWR selection, ridges, U_□ diagrams, conceptual rulers, and interactive explorers) live in `visualizations/`.
 
@@ -205,7 +205,7 @@ That record simply says: start here, the next prime is there. No trial division,
 
 The same principle extends to a dedicated Mersenne-prime generator. Instead of starting from an ordinary prime, the Mersenne variant starts from an accepted Mersenne exponent, reads the prime-gap structure around the exponent wall `2^e`, and emits the next exponent whose left boundary lands exactly at `2^e - 1`.
 
-The same structural reading has been extended to RSA moduli. The program has completed the transition from rung-specific measured demonstrations to a general, deterministic PGS-native engine. Given an RSA modulus (or family of moduli), the engine traverses locked endpoint chains using only PGS objects and rules — GWR-selected carriers inside chamber-reset certificates, floor transport, reciprocal endpoint closure conditions, and modulus-link residual classification — and emits a public structural certificate when the invariants close to an oriented endpoint class, or an explicit, diagnosable "unresolved" state (with residual) when they do not. It scales to representative 256-bit, 512-bit, and 1024-bit+ examples while remaining strictly inside the generator contract and AGENTS.md cryptology contract. See `research/06-cryptology-rsa/experiments/live-solver/rsa-v2/`.
+The same structural reading has been extended to RSA moduli. The program has completed the transition from rung-specific measured demonstrations to a general, deterministic PGS-native engine. Given an RSA modulus (or family of moduli), the engine traverses locked endpoint chains using only PGS objects and rules. These rules include GWR-selected carriers inside chamber-reset certificates, floor transport, reciprocal endpoint closure conditions, and modulus-link residual classification. It emits a public structural certificate when the invariants close to an oriented endpoint class, or an explicit, diagnosable "unresolved" state (with residual) when they do not. It scales to representative 256-bit, 512-bit, and 1024-bit+ examples while remaining strictly inside the generator contract and AGENTS.md cryptology contract. See `research/06-cryptology-rsa/experiments/live-solver/rsa-v2/`.
 
 ---
 
@@ -219,25 +219,25 @@ Every one of these paths grows from the same simple shift in perspective: stop t
 
 ## Repository Map
 
-- `src/` — Python package (install with `pip install -e ./src/python`)
-- `PROOF.md` — formal proofs and theorem stack (including the new GWR Super-Signal theorem)
-- `docs/core/` — foundational explanations (GWR, DNI, generative model, recursive walk, etc.)
-- `docs/rh/` — PGS-to-RH reading path and status
-- `research/` — deep experiments (RSA engine, Mersenne generator, GWR super-signal, continuity notes, 00-index/)
-- `visualizations/` — diagrams, interactive explorers, video narrations (entry via `index.html`)
-- `lean-4/` — formalization efforts
-- `experiments/`, `scripts/`, `tests/`, `data/` — supporting code, runs, and artifacts
-- `pgs-unsolved-problems/` — open questions
-- `AGENTS.md` — collaboration contract for agentic work
+- `src/`: Python package (install with `pip install -e ./src/python`)
+- `PROOF.md`: Formal proofs and theorem stack (including the new GWR Super-Signal theorem)
+- `docs/core/`: Foundational explanations (GWR, DNI, generative model, recursive walk, etc.)
+- `docs/rh/`: PGS-to-RH reading path and status
+- `research/`: Deep experiments (RSA engine, Mersenne generator, GWR super-signal, continuity notes, 00-index/)
+- `visualizations/`: Diagrams, interactive explorers, video narrations (entry via `index.html`)
+- `lean-4/`: Formalization efforts
+- `experiments/`, `scripts/`, `tests/`, `data/`: Supporting code, runs, and artifacts
+- `pgs-unsolved-problems/`: Open questions
+- `AGENTS.md`: Collaboration contract for agentic work
 
 ---
 
 ## Reading Further
 
-- `research/00-index/continuity/START_HERE.md` — continuity and resume entrypoint for future sessions
-- `research/00-index/README.md` — maps the research corpus by chapter and status
-- `docs/RESULTS.md` — measured results and surfaces
-- `visualizations/` — interactive gap diagrams and narrations
+- `research/00-index/continuity/START_HERE.md`: Continuity and resume entrypoint for future sessions
+- `research/00-index/README.md`: Maps the research corpus by chapter and status
+- `docs/RESULTS.md`: Measured results and surfaces
+- `visualizations/`: Interactive gap diagrams and narrations
 - Full list of core documents with one-line purposes appears in `docs/OVERVIEW.md`
 
 ---
