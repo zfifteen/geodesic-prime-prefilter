@@ -59,3 +59,7 @@ PYTHONPATH=src/python:research/19-rh-corpus/empirics python3 -m pytest research/
 1. Re-run scan after each FINDINGS_INDEX batch.
 2. Every deferred path needs a **boundary** column before closing a gap-analysis pass.
 3. Proof bodies stay in canonical homes — link only in this hub.
+
+**Last scan (2026-07-08, #47):** `python3 research/19-rh-corpus/scripts/scan_rh_references.py`
+— ~28 FAQ paths + chapter homes remain **deferred** per table above; 38 rows indexed
+in FINDINGS_INDEX. No new RH-### promotions required this pass.
