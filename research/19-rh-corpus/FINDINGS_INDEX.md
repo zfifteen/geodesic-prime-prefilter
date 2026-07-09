@@ -43,7 +43,7 @@
 | [RH-102](./by-status/narrative.md) | [Source order](../../docs/rh/source-order.md) | [narrative](./by-status/narrative.md) | [L1](./by-layer/01-divisor-source.md) | [docs/rh/source-order.md](../../docs/rh/source-order.md) | Integer-first reading direction | Explanatory |
 | [RH-103](./by-status/measured.md) | [Rough-witness signature (F18-004)](../18-derived-half-coefficient/docs/FINDING_STATEMENT.md) | [measured](./by-status/measured.md) | [L3](./by-layer/03-zeta-compression.md) | [research/18-derived-half-coefficient/docs/FINDING_STATEMENT.md](../18-derived-half-coefficient/docs/FINDING_STATEMENT.md) | Near-max ratio ⇒ rough non-square τ(w) | Tested prediction; not theorem |
 | [RH-104](./by-status/proved.md) | [NLSC corollary](../../docs/RESULTS.md) | [proved](./by-status/proved.md) | [L1](./by-layer/01-divisor-source.md) | [docs/RESULTS.md](../../docs/RESULTS.md) | No later interior min-τ after GWR w | Exact GWR corollary; 0 violations to 10¹⁸ |
-| [RH-105](./by-status/measured.md) | [Multi-s zeta compression probe](./empirics/zeta_compression_probe.py) | [measured](./by-status/measured.md) | [L3](./by-layer/03-zeta-compression.md) | [research/19-rh-corpus/empirics/output/compression_probe_results.json](./empirics/output/compression_probe_results.json) | Partial sums match ζ² and −ζ'/ζ at 5 s-values | Finite N; not continuation proof |
+| [RH-105](./by-status/measured.md) | [Multi-s zeta compression probe](./empirics/zeta_compression_probe.py) | [measured](./by-status/measured.md) | [L3](./by-layer/03-zeta-compression.md) | [research/19-rh-corpus/empirics/output/compression_probe_results.json](./empirics/output/compression_probe_results.json) | Partial sums match −ζ'/ζ at 5 s-values (N=10⁴) | Finite N; not continuation proof |
 
 ---
 
@@ -62,4 +62,4 @@
 
 ## Last updated
 
-2026-07-08, initial corpus (35 rows); population pass (+3 rows: RH-103 to 105); layer docs expanded.
+2026-07-09, curation pass: **39** stable rows; multi-s RH-105 artifact (`s in {2.0,2.5,3.0,3.5,4.0}`, N=10^4); L3 to L6 navigation tightened; whitepaper sections 10 to 12 hub-linked.

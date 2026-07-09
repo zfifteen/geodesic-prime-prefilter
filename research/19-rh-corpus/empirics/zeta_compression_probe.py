@@ -3,13 +3,14 @@
 
 Uses src/python bridge API plus chamber-level ΔD/ΔB mapping from proved
 gap invariants. Output: empirics/output/compression_probe_results.json
+
+Measured regime: partial sums at five s-values with fixed term count N.
 """
 
 from __future__ import annotations
 
 import json
 import sys
-from dataclasses import asdict
 from pathlib import Path
 
 # Repo src/python on path when run from root (see README).
@@ -30,18 +31,37 @@ from chamber_compression import (
 OUTPUT_DIR = Path(__file__).resolve().parent / "output"
 
 EXAMPLE_GAPS = ((23, 29), (89, 97))
-PROBE_S = 2.5
+# Five Re(s)>1 values; N=10^4 is tight near s=2 and excellent for s≥2.5.
+PROBE_S_VALUES = (2.0, 2.5, 3.0, 3.5, 4.0)
+PRIMARY_S = 2.5
 PROBE_TERMS = 10_000
 PROBE_DPS = 60
 
 
+def _global_bridge_row(s: float) -> dict:
+    evaluation = evaluate_partial_sum_bridge(s, PROBE_TERMS, PROBE_DPS)
+    return {
+        "s": s,
+        "normalized_ratio_error": evaluation.normalized_ratio_error,
+        "mangoldt_series_error": evaluation.mangoldt_series_error,
+    }
+
+
 def main() -> int:
     chambers = [analyze_chamber_gap(p, q) for p, q in EXAMPLE_GAPS]
-    increments = [
-        increments_to_dict(
-            chamber_dirichlet_increments(PROBE_S, p, q, PROBE_TERMS)
-        )
-        for p, q in EXAMPLE_GAPS
+
+    multi_s_increments = []
+    for s in PROBE_S_VALUES:
+        for p, q in EXAMPLE_GAPS:
+            multi_s_increments.append(
+                increments_to_dict(chamber_dirichlet_increments(s, p, q, PROBE_TERMS))
+            )
+
+    # Backward-compatible primary slice (s = PRIMARY_S).
+    primary_increments = [
+        row
+        for row in multi_s_increments
+        if abs(row["s"] - PRIMARY_S) < 1e-12
     ]
 
     f18 = load_f18_audit_summary()
@@ -50,17 +70,21 @@ def main() -> int:
     if max_case["q"] <= PROBE_TERMS:
         f18_inc = increments_to_dict(
             chamber_dirichlet_increments(
-                PROBE_S, max_case["p"], max_case["q"], PROBE_TERMS
+                PRIMARY_S, max_case["p"], max_case["q"], PROBE_TERMS
             )
         )
     else:
         f18_inc = {
             "skipped": True,
             "reason": f"q={max_case['q']} exceeds pinned terms={PROBE_TERMS}",
-            "boundary": "F18 integer branch invariants still measured; ΔD/ΔB deferred at this scale",
+            "boundary": (
+                "F18 integer branch invariants still measured; "
+                "ΔD/ΔB deferred at this scale"
+            ),
         }
 
-    global_eval = evaluate_partial_sum_bridge(PROBE_S, PROBE_TERMS, PROBE_DPS)
+    global_by_s = [_global_bridge_row(s) for s in PROBE_S_VALUES]
+    primary_global = next(row for row in global_by_s if abs(row["s"] - PRIMARY_S) < 1e-12)
 
     payload = {
         "probe": "gwr_chamber_zeta_compression",
@@ -72,10 +96,12 @@ def main() -> int:
             "rho_chamber": "delta_b / delta_d",
             "global_r": "evaluate_partial_sum_bridge -> -zeta'/zeta",
         },
-        "s": PROBE_S,
+        "s": PRIMARY_S,
+        "s_values": list(PROBE_S_VALUES),
         "terms": PROBE_TERMS,
         "example_chambers": [chamber_report_to_dict(c) for c in chambers],
-        "example_increments": increments,
+        "example_increments": primary_increments,
+        "example_increments_multi_s": multi_s_increments,
         "f18_max_case": {
             "audit_summary": {
                 "limit": f18["limit"],
@@ -86,12 +112,17 @@ def main() -> int:
             "increments": f18_inc,
         },
         "global_bridge": {
-            "normalized_ratio_error": global_eval.normalized_ratio_error,
-            "mangoldt_series_error": global_eval.mangoldt_series_error,
+            "normalized_ratio_error": primary_global["normalized_ratio_error"],
+            "mangoldt_series_error": primary_global["mangoldt_series_error"],
         },
+        "global_bridge_by_s": global_by_s,
         "interpretation": {
             "status": "measured",
-            "boundary": "Chamber rho is local; global R(s) is not sum of chamber ratios",
+            "boundary": (
+                "Chamber rho is local; global R(s) is not sum of chamber ratios. "
+                "Finite N partial sums; not analytic continuation."
+            ),
+            "regime": f"N={PROBE_TERMS}, s in {list(PROBE_S_VALUES)}",
         },
     }
 
@@ -99,9 +130,12 @@ def main() -> int:
     out_path = OUTPUT_DIR / "compression_probe_results.json"
     out_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
-    print(f"GWR chamber compression probe (s={PROBE_S}, N={PROBE_TERMS})")
+    print(
+        f"GWR chamber compression probe "
+        f"(s_values={list(PROBE_S_VALUES)}, N={PROBE_TERMS})"
+    )
     print("-" * 72)
-    for chamber, inc in zip(chambers, increments):
+    for chamber, inc in zip(chambers, primary_increments):
         print(
             f"gap {chamber.p}->{chamber.q}  w={chamber.w}  "
             f"branch={chamber.f18_branch}  rho_ch={inc['rho_chamber']:.6f}"
@@ -112,7 +146,12 @@ def main() -> int:
     )
     if f18_inc.get("skipped"):
         print(f"  (Dirichlet increments skipped: {f18_inc['reason']})")
-    print(f"global |R+ζ'/ζ| error = {global_eval.normalized_ratio_error:.3e}")
+    print("global |R+ζ'/ζ| errors by s:")
+    for row in global_by_s:
+        print(
+            f"  s={row['s']}: ratio_err={row['normalized_ratio_error']:.3e}  "
+            f"mangoldt_err={row['mangoldt_series_error']:.3e}"
+        )
     print(f"\nWrote {out_path}")
     return 0
 

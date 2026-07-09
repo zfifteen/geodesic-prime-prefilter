@@ -175,16 +175,25 @@ $\tau(n)n^{-s}$ over all $n$ still yields $\zeta(s)^2$; the gap example shows
 
 ## Measured validation (RH-105)
 
-Reproducible partial-sum probe at multiple $s$:
+Reproducible partial-sum probe at five $s$-values:
 
 ```bash
-python3 research/19-rh-corpus/empirics/zeta_compression_probe.py
+PYTHONPATH=src/python:research/19-rh-corpus/empirics \
+  python3 research/19-rh-corpus/empirics/zeta_compression_probe.py
 ```
 
-Output: [empirics/output/compression_probe_results.json](../empirics/output/compression_probe_results.json)
+| Pin | Value |
+|-----|-------|
+| $s$ grid | $\{2.0, 2.5, 3.0, 3.5, 4.0\}$ |
+| Term count $N$ | $10^4$ |
+| Example chambers | $23\to 29$, $89\to 97$ |
+| F18 max case | integer branch only at $q\approx 1.5\times 10^7$ ($\Delta D/\Delta B$ deferred) |
 
-Status: `measured`, confirms convergence of truncated sums; not a certificate of
-analytic continuation or critical-line placement.
+Output: [empirics/output/compression_probe_results.json](../empirics/output/compression_probe_results.json)
+fields `global_bridge_by_s` and `example_increments_multi_s`.
+
+Status: `measured`, confirms convergence of truncated sums toward $-\zeta'/\zeta$;
+not a certificate of analytic continuation or critical-line placement.
 
 ---
 

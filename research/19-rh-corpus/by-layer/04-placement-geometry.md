@@ -30,11 +30,33 @@ Indexed placement findings: RH-030 to 035, RH-071, RH-080 to 081. See [GAP_ANALY
 |-----------|------------|--------|
 | $frac\_pos$ | $(w-p)/(q-p-1)$ in nonempty interior | proved bounds for d=4 branch |
 | Chamber budget | Log-weight spend inside gap | measured at $10^6$ |
-| Resonance | Primorial remainder zeros at $w$ | links to [RH-005](../FINDINGS_INDEX.md) twin termination |
+| Resonance | Primorial remainder zeros at $w$ | modular pattern only; **not** universal twin termination ([RH-005](../FINDINGS_INDEX.md) **invalidated**) |
 | Half-scale rhyme | $\tfrac12$ in $C(q)$ vs $\operatorname{Re}(s)=\tfrac12$ | [RH-040](../FINDINGS_INDEX.md) hypothesis only |
 
 Uniform $frac\_pos\le\tfrac12$ was **falsified** ([RH-033](../FINDINGS_INDEX.md)): 8,505
 counterexamples at $10^6$.
+
+---
+
+## GWR witness placement (source geometry)
+
+Before d=4 fractional bounds, the chamber already has proved placement structure:
+
+| Object | Role | Authority |
+|--------|------|-----------|
+| GWR $w$ | Leftmost min-$\tau$ in $I=\{p+1,\ldots,q-1\}$ | [RH-002](../FINDINGS_INDEX.md) |
+| Offset $w-p$ | Bounded by $C(q)=\max(64,\lceil\tfrac12(\log q)^2\rceil)$ | [RH-003](../FINDINGS_INDEX.md), [RH-006](../FINDINGS_INDEX.md) |
+| Square branch | $\tau(w)=3$, $w=r^2$ closed by Prime-Square Proximity | [RH-004](../FINDINGS_INDEX.md) |
+| Non-square near-max | F18-004 rough-witness discipline (measured) | [RH-103](../FINDINGS_INDEX.md) |
+| Residual $d=4$ | Odd-adjacent first $\tau=4$ carrier geometry | [RH-030](../FINDINGS_INDEX.md) to [RH-032](../FINDINGS_INDEX.md) |
+
+$$
+\mathrm{frac\_pos}(p,q)=\frac{w-p}{q-p-1}\qquad(|I|\ge 1).
+$$
+
+L3 maps the same chamber into Dirichlet increments $\Delta D$, $\Delta B$
+([03-zeta-compression.md](./03-zeta-compression.md)); L4 owns the **position** of $w$,
+not the zeta series.
 
 ### RH-033 replacement principle (Q8 / #46)
 

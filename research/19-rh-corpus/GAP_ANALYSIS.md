@@ -1,8 +1,8 @@
 # RH Corpus: Gap Analysis
 
-**Date:** 2026-07-08 (updated)  
+**Date:** 2026-07-09 (updated)  
 **Method:** `python3 research/19-rh-corpus/scripts/scan_rh_references.py`  
-**Index:** 38 rows in [FINDINGS_INDEX.md](./FINDINGS_INDEX.md)
+**Index:** 39 rows in [FINDINGS_INDEX.md](./FINDINGS_INDEX.md)
 
 ---
 
@@ -36,7 +36,7 @@ Layer deferral mirrors: [04-placement-geometry.md](./by-layer/04-placement-geome
 |--------|-----------------|--------|
 | FAQ / reviewer control | 28 | Deferred (see table) |
 | Chapter homes partially indexed | 14 | Rows above |
-| **Indexed this program** | 38 | FINDINGS_INDEX |
+| **Indexed this program** | 39 | FINDINGS_INDEX |
 
 ---
 
@@ -60,6 +60,7 @@ PYTHONPATH=src/python:research/19-rh-corpus/empirics python3 -m pytest research/
 2. Every deferred path needs a **boundary** column before closing a gap-analysis pass.
 3. Proof bodies stay in canonical homes, link only in this hub.
 
-**Last scan (2026-07-08, #47):** `python3 research/19-rh-corpus/scripts/scan_rh_references.py`
-: ~28 FAQ paths + chapter homes remain **deferred** per table above; 38 rows indexed
-in FINDINGS_INDEX. No new RH-### promotions required this pass.
+**Last scan (2026-07-09, curation):** `python3 research/19-rh-corpus/scripts/scan_rh_references.py`
+: ~28 FAQ paths + chapter homes remain **deferred** per table above; 39 rows indexed
+in FINDINGS_INDEX. RH-105 multi-s surface regenerated (`s ∈ {2.0,2.5,3.0,3.5,4.0}`,
+N=10⁴). No theorem promotions this pass.

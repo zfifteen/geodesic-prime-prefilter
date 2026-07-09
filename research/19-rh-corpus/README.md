@@ -104,3 +104,4 @@ Flagship public demo (whitepaper companion):
 
 - **2026-07-08:** Chapter created to consolidate scattered RH-facing findings.
 - **2026-07-08:** Population pass: layer docs expanded, RH-103 to 105 indexed, whitepaper §10 to 12, L3 empiric.
+- **2026-07-09:** Curation pass: 39-row index consistency; multi-s RH-105 artifact; L4 GWR geometry + L6 formal chain; whitepaper status table hub-linked.

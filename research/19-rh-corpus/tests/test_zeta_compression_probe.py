@@ -61,3 +61,29 @@ def test_compression_results_artifact_exists():
     assert len(payload["example_chambers"]) == 2
     assert payload["f18_max_case"]["chamber"]["f18_branch"] == "prime_square"
     assert payload["global_bridge"]["normalized_ratio_error"] < 1e-4
+
+
+def test_multi_s_bridge_fields_in_artifact():
+    """RH-105 claims five s-values; artifact must carry that measured surface."""
+    payload = json.loads(OUTPUT_PATH.read_text(encoding="utf-8"))
+    s_values = payload["s_values"]
+    assert len(s_values) == 5
+    assert all(s > 1.0 for s in s_values)
+    by_s = payload["global_bridge_by_s"]
+    assert len(by_s) == 5
+    # Primary s=2.5 is tight at N=10^4; s=2.0 is coarser but still measured.
+    for row in by_s:
+        assert row["normalized_ratio_error"] < 5e-3
+        assert row["mangoldt_series_error"] < 5e-3
+    multi = payload["example_increments_multi_s"]
+    assert len(multi) == 5 * 2  # five s × two example gaps
+    assert all(row["delta_d"] > 0 and row["rho_chamber"] > 0 for row in multi)
+
+
+def test_multi_s_probe_module_constants():
+    """Ship constants match the RH-105 measured regime, not a reimplementation."""
+    import zeta_compression_probe as probe
+
+    assert len(probe.PROBE_S_VALUES) == 5
+    assert probe.PRIMARY_S in probe.PROBE_S_VALUES
+    assert probe.PROBE_TERMS == 10_000
