@@ -1,6 +1,6 @@
 # Hypothesis U — Unique Super-Signal
 
-**Status:** `hypothesis` (not proved; not a theorem)  
+**Status:** `invalidated` (2026-07-09 experiment CE `p=156942923`)  
 **Date formalized:** 2026-07-09  
 **Parent context:** Invalidated universal Super-Signal `z(GWR) ≥ 4 ⇒ g = 2` in `PROOF.md`
 
@@ -52,7 +52,7 @@ One such gap **falsifies** Hypothesis U.
 | --- | --- |
 | Bare Super-Signal `z(GWR) ≥ 4 ⇒ g = 2` | **Invalidated** (CE family; see `PROOF.md`) |
 | Modular lemma `z ≥ 4 ⇔ 30 \| w` on `M_v1` | **Proved** (case analysis) |
-| **Hypothesis U** (unique min + `z ≥ 4 ⇒ g = 2`) | **Hypothesis** |
+| **Hypothesis U** (unique min + `z ≥ 4 ⇒ g = 2`) | **Invalidated** (CE `p=156942923`, `g=8`, `ties=1`, `z=4`) |
 | Empty CE hunt on a finite range | **Measured support only** — never “proved” |
 
 GWR maximizer, next-prime rule, and bounded-compression pillars are **not** at issue here.
