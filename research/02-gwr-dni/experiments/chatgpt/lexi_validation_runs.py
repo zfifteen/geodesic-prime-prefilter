@@ -293,13 +293,13 @@ def write_csv(path: Path, rows: list[dict], fieldnames: list[str]) -> None:
 
 def format_int(value: int | None) -> str:
     if value is None:
-        return ":"
+        return "N/A"
     return f"{value:,}"
 
 
 def format_float(value: float | None, digits: int = 6) -> str:
     if value is None:
-        return ":"
+        return "N/A"
     return f"{value:.{digits}f}"
 
 

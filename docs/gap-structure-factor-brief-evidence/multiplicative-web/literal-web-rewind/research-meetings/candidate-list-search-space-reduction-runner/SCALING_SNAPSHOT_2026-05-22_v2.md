@@ -1,4 +1,4 @@
-# PGA Grammar Pruner  to  Scaling Snapshot v2 (2026-05-22)
+# PGA Grammar Pruner: Scaling Snapshot v2 (2026-05-22)
 
 **Purpose**: Current citable state of the public grammar-rule lever under two distinct measurement surfaces. Surfaces are deliberately kept separate.
 
@@ -34,10 +34,10 @@ This surface uses the live `derive_public_motif()` function on freshly generated
 
 Two clean options, kept separate by surface:
 
-**Option A  to  Deterministic Synthetic Ladder First**  
+**Option A: Deterministic Synthetic Ladder First**  
 Run a clean, reproducible synthetic-mode ladder across 48 to 80 bits (or higher) to establish trend lines quickly and cheaply. This gives visibility into scaling behavior without waiting on derivation performance.
 
-**Option B  to  Limited Real Derivation on Deterministic 64 to 80 Bit Public N**  
+**Option B: Limited Real Derivation on Deterministic 64 to 80 Bit Public N**  
 Select a small, fixed set of deterministic public semiprimes in the 64 to 80 bit range, derive their public motifs live, and measure reduction. This provides the first honest end-to-end scaling data beyond the toy corpus, at the cost of slower execution and potential unresolved cases.
 
 **Recommended sequence (as lead)**: Run Option A first for trend visibility, then Option B on a modest deterministic set to ground the trends in real derivation results.

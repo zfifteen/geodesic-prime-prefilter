@@ -19,10 +19,10 @@ PGS provides a deterministic, structure-first account of prime gaps using:
 
 ## Tier Definitions
 
-**Tier 1  to  Genuinely New Applications**  
+**Tier 1: Genuinely New Applications**  
 Concepts that would be conceptually incoherent or practically very difficult without the PGS framework. These treat the internal arithmetic structure of gaps (excess field, selected integers, chamber ordering) as first-class, usable material.
 
-**Tier 2  to  Application Modifications**  
+**Tier 2: Application Modifications**  
 Enhancements or partial replacements in existing applications or protocols that currently rely on probabilistic, heuristic, or exhaustive-search methods, where PGS determinism can be substituted for greater certainty, auditability, or efficiency.
 
 ---

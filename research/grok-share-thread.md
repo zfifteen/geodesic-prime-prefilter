@@ -12,6 +12,6 @@ You are my dedicated Research Assistant running PGS-Hypothesis-Advancement-Proto
 
 ## Turn 2: Grok
 
-PHAP-v1 firing  to  week status: PR#16 baseline.
+PHAP-v1 firing: week status: PR#16 baseline.
 
 (Reply with number.)
