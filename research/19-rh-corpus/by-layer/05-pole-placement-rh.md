@@ -64,6 +64,18 @@ If a future **source-to-spectral placement theorem** ([RH-035](../FINDINGS_INDEX
 
 No such theorem is proved today.
 
+### What deterministic gap structure does **not** imply (today)
+
+| Source fact | Does not force |
+|-------------|----------------|
+| $w-p\le C(q)$ | Zeros on $\operatorname{Re}(s)=\tfrac12$ |
+| $D(s)=\zeta(s)^2$ exact | Placement of nontrivial poles of $R$ |
+| F18-001 factor $\tfrac12$ | Critical-line theorem ([RH-040](../FINDINGS_INDEX.md) remains hypothesis) |
+| d=4 $\mathrm{frac\_pos}$ bounds | Uniform half-line placement (falsified: [RH-033](../FINDINGS_INDEX.md)) |
+| Multi-s partial sums ([RH-105](../FINDINGS_INDEX.md)) | Analytic continuation or RH |
+
+State these boundaries in any public claim that mentions RH.
+
 ---
 
 ## Explanatory geometry (not proof)

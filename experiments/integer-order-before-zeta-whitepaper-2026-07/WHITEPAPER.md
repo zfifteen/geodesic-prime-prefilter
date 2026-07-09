@@ -115,16 +115,19 @@ PGS explains why the zero pattern is orderly: the integer source is orderly, and
 
 ---
 
-## 7. What is proved today
+## 7. What is proved, exact, measured, or open
 
-| Claim | Status |
-| --- | --- |
-| Next prime = first later integer with divisor count 2 | Proved (`PROOF.md`) |
-| Leftmost minimum-divisor witness is unique | Proved (`PROOF.md`) |
-| Bounded compression of witness offset at Cramér scale | Proved (`PROOF.md`) |
-| Divisor series compresses to `ζ(s)²` | Exact identity |
-| Load ratio compresses to `-ζ'(s)/ζ(s)` | Exact identity |
-| Full RH theorem in classical form | Open completion step |
+| Claim | Status | Hub ID |
+| --- | --- | --- |
+| Next prime = first later integer with divisor count 2 | Proved (`PROOF.md`) | [RH-001](../../research/19-rh-corpus/FINDINGS_INDEX.md) |
+| Leftmost minimum-divisor witness is unique maximizer | Proved (`PROOF.md`) | [RH-002](../../research/19-rh-corpus/FINDINGS_INDEX.md) |
+| Bounded compression of witness offset at Cramér scale | Proved (`PROOF.md`) | [RH-003](../../research/19-rh-corpus/FINDINGS_INDEX.md), [RH-004](../../research/19-rh-corpus/FINDINGS_INDEX.md) |
+| Factor `0.5` in `C(q)` from divisor-average closure | Proved (F18-001) | [RH-006](../../research/19-rh-corpus/FINDINGS_INDEX.md) |
+| Divisor series compresses to `ζ(s)²` | Exact identity | [RH-020](../../research/19-rh-corpus/FINDINGS_INDEX.md) |
+| Load ratio compresses to `-ζ'(s)/ζ(s)` | Exact identity | [RH-021](../../research/19-rh-corpus/FINDINGS_INDEX.md) |
+| Rough-witness branch at near-max offsets | Measured (F18-004, 40M) | [RH-103](../../research/19-rh-corpus/FINDINGS_INDEX.md) |
+| Multi-s partial-sum bridge check | Measured (`N=10^4`, five `s`) | [RH-105](../../research/19-rh-corpus/FINDINGS_INDEX.md) |
+| Full RH theorem (all nontrivial poles on Re(s)=½) | Open | [RH-051](../../research/19-rh-corpus/FINDINGS_INDEX.md) |
 
 ---
 
@@ -198,7 +201,7 @@ the RH corpus navigation hub:
 
 | Resource | Path |
 | --- | --- |
-| Master index (38 findings) | [research/19-rh-corpus/FINDINGS_INDEX.md](../../research/19-rh-corpus/FINDINGS_INDEX.md) |
+| Master index (39 findings) | [research/19-rh-corpus/FINDINGS_INDEX.md](../../research/19-rh-corpus/FINDINGS_INDEX.md) |
 | Layer 3 compression spec | [by-layer/03-zeta-compression.md](../../research/19-rh-corpus/by-layer/03-zeta-compression.md) |
 | Multi-s compression empiric | `python3 research/19-rh-corpus/empirics/zeta_compression_probe.py` |
 | Gap analysis (scan audit) | [GAP_ANALYSIS.md](../../research/19-rh-corpus/GAP_ANALYSIS.md) |

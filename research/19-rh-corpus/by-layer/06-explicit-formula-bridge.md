@@ -20,13 +20,30 @@ R(s) = -ζ'(s)/ζ(s)
   →  zero-term / error language
 ```
 
-The schematic explicit formula:
+### Formal identities (classical; status narrative in this hub)
+
+On $\operatorname{Re}(s)>1$:
 
 $$
+R(s)=-\frac{\zeta'(s)}{\zeta(s)}=\sum_{n\ge 1}\frac{\Lambda(n)}{n^s}.
+$$
+
+Chebyshev function and schematic explicit formula:
+
+$$
+\psi(x)=\sum_{n\le x}\Lambda(n),
+\qquad
 \psi(x)=x-\sum_{\rho}\frac{x^{\rho}}{\rho}+\text{elementary terms},
 $$
 
-with $\rho$ over nontrivial zeros of $\zeta(s)$.
+with $\rho$ ranging over nontrivial zeros of $\zeta(s)$ (equivalently, nontrivial
+poles of $R(s)$ after continuation; [RH-022](../FINDINGS_INDEX.md)).
+
+**PGS reading:** $\Lambda(n)$ is the packaged prime-power detector recovered from
+the same divisor field that selects GWR $w$. The oscillatory sum over $\rho$ is
+how classical analysis writes the residual after the main term $x$. Closing L5
+([RH-051](../FINDINGS_INDEX.md)) would force every such $\rho$ onto
+$\operatorname{Re}(s)=\tfrac12$; that step is **not** proved here.
 
 ---
 
@@ -71,7 +88,9 @@ align with critical-line poles only. That is equivalent to [RH-051](../FINDINGS_
 
 | ID | Status | Title | Path |
 |----|--------|-------|------|
+| [RH-022](../FINDINGS_INDEX.md) | exact | Pole to zero dictionary (upstream of L6) | [pole-placement.md](../../../docs/rh/pole-placement.md) |
 | [RH-060](../FINDINGS_INDEX.md) | narrative | Explicit formula bridge | [explicit-formula-bridge.md](../../../docs/rh/explicit-formula-bridge.md) |
+| [RH-051](../FINDINGS_INDEX.md) | unresolved | RH sentence restated via zero sum | [status-ledger.md](../../../docs/rh/status-ledger.md) |
 
 **Do not cite L6 as the PGS proof path.** Use it to translate unresolved L5
 targets into familiar notation.

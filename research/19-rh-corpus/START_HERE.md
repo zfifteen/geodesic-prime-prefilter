@@ -41,7 +41,7 @@ actually lives, and it remains **open** in this program.
 | I want to… | Go to |
 |------------|-------|
 | Read the flagship narrative | [WHITEPAPER.md](../../experiments/integer-order-before-zeta-whitepaper-2026-07/WHITEPAPER.md) ([RH-041](./FINDINGS_INDEX.md)) |
-| See every finding in one table | [FINDINGS_INDEX.md](./FINDINGS_INDEX.md) (38 rows) |
+| See every finding in one table | [FINDINGS_INDEX.md](./FINDINGS_INDEX.md) (39 rows) |
 | Understand the stack | [SOURCE_STACK.md](./SOURCE_STACK.md) |
 | See what the scan found | [GAP_ANALYSIS.md](./GAP_ANALYSIS.md) |
 | Prepare an X post / public thread | [READING_PATHS.md](./READING_PATHS.md) § Public |

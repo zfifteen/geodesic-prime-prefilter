@@ -93,4 +93,5 @@ Fixed reading order for every RH-facing claim in PGS. Layer number matches
 - Gap analysis (scan audit): [GAP_ANALYSIS.md](./GAP_ANALYSIS.md)
 - Flagship whitepaper: [integer-order-before-zeta WHITEPAPER.md](../../experiments/integer-order-before-zeta-whitepaper-2026-07/WHITEPAPER.md)
 - F18 branch discipline: [RH-103](./FINDINGS_INDEX.md) (rough-witness signature)
-- L3 empiric: [zeta_compression_probe.py](./empirics/zeta_compression_probe.py) ([RH-105](./FINDINGS_INDEX.md))
+- L3 empiric: [zeta_compression_probe.py](./empirics/zeta_compression_probe.py) ([RH-105](./FINDINGS_INDEX.md), five $s$-values, $N=10^4$)
+- Whitepaper status table: [WHITEPAPER.md §7](../../experiments/integer-order-before-zeta-whitepaper-2026-07/WHITEPAPER.md) (hub-linked IDs)
