@@ -1,4 +1,4 @@
-**Meeting Deliverable — Zero-to-Zero Bridge Lemma Ladder**
+**Meeting Deliverable. Zero-to-Zero Bridge Lemma Ladder**
 
 **Title:** Zero-to-Zero Bridge: Public Load Equals Endpoint Right Load Forces Left-Side Reentry Carrier
 
@@ -6,7 +6,7 @@
 
 **Wheel specificity note (applies to all rungs):** The number 4 is the concrete value taken by both the first-minimum divisor count at the public GWR winner (for semiprime `N = pq`) and the middle right-open offset in the current 30-wheel open-state grammar; it is not asserted as a universal numerical constant independent of this wheel.
 
-**Rung 1 — Residue Bridge**
+**Rung 1. Residue Bridge**
 
 Clean statement:  
 When the public zero places `N` at a position whose residue is 7 (public o6 trigger) and the endpoint right load equals 4 (o4|o4 boundary), the unordered factor residues are forced to exactly {13, 19} by direct mod-30 arithmetic on the open residues.
@@ -16,7 +16,7 @@ Any semiprime row in which the public containing type is an o6_d4 trigger, the r
 
 Status line: arithmetic lemma candidate (wheel-specific residue arithmetic; holds independently of measured corpus).
 
-**Rung 2 — Load-Equality Transport Obstruction (core bridge)**
+**Rung 2. Load-Equality Transport Obstruction (core bridge)**
 
 Clean statement:  
 Public zero places `N` at the GWR winner position where the public selected load (divisor count) is 4; endpoint transport zero makes the endpoint right load also 4. The resulting load equality removes every right-side residual movement that could preserve the equality. Therefore any reentry of a prior-absent supported cell that keeps the two loads matched must be carried by the opposite directed side: the lower-factor immediate-left slot, realized as terminal-twin lift (immediate-left distance exactly 2 inside a preceding gap containing at least four interior wheel-open slots).
@@ -26,7 +26,7 @@ Any row in which public selected load = 4, right boundary value = 4, the endpoin
 
 Status line: measured bridge (unresolved proof target).
 
-**Rung 3 — Phase-Bookkeeping Obstruction**
+**Rung 3. Phase-Bookkeeping Obstruction**
 
 Clean statement:  
 The terminal-twin lift required by Rung 2 necessarily shifts the left phase of the reentering pair into a very_late family that is absent from the prior support surface of the same public trigger cell; therefore the original exact endpoint pair cannot be the vehicle of reentry.

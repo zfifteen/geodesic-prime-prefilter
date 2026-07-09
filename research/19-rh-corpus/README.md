@@ -1,4 +1,4 @@
-# 19 — RH Corpus (Navigation Hub)
+# 19: RH Corpus (Navigation Hub)
 
 **Purpose:** One door to every RH-facing aspect of the PGS program.
 
@@ -9,10 +9,10 @@ status labels, and boundaries.
 
 ## Start here
 
-1. [START_HERE.md](./START_HERE.md) — five-minute orientation
-2. [FINDINGS_INDEX.md](./FINDINGS_INDEX.md) — master table (primary navigation)
-3. [SOURCE_STACK.md](./SOURCE_STACK.md) — layer diagram and claim types
-4. [READING_PATHS.md](./READING_PATHS.md) — curated routes by audience
+1. [START_HERE.md](./START_HERE.md), five-minute orientation
+2. [FINDINGS_INDEX.md](./FINDINGS_INDEX.md), master table (primary navigation)
+3. [SOURCE_STACK.md](./SOURCE_STACK.md), layer diagram and claim types
+4. [READING_PATHS.md](./READING_PATHS.md), curated routes by audience
 
 ## Browse by status
 
@@ -31,12 +31,12 @@ status labels, and boundaries.
 
 | Layer | File |
 |-------|------|
-| 1 — Divisor source | [by-layer/01-divisor-source.md](./by-layer/01-divisor-source.md) |
-| 2 — DNI coordinate | [by-layer/02-dni-coordinate.md](./by-layer/02-dni-coordinate.md) |
-| 3 — Zeta compression | [by-layer/03-zeta-compression.md](./by-layer/03-zeta-compression.md) |
-| 4 — Placement geometry | [by-layer/04-placement-geometry.md](./by-layer/04-placement-geometry.md) |
-| 5 — Pole placement / RH | [by-layer/05-pole-placement-rh.md](./by-layer/05-pole-placement-rh.md) |
-| 6 — Explicit formula | [by-layer/06-explicit-formula-bridge.md](./by-layer/06-explicit-formula-bridge.md) |
+| 1. Divisor source | [by-layer/01-divisor-source.md](./by-layer/01-divisor-source.md) |
+| 2. DNI coordinate | [by-layer/02-dni-coordinate.md](./by-layer/02-dni-coordinate.md) |
+| 3. Zeta compression | [by-layer/03-zeta-compression.md](./by-layer/03-zeta-compression.md) |
+| 4. Placement geometry | [by-layer/04-placement-geometry.md](./by-layer/04-placement-geometry.md) |
+| 5. Pole placement / RH | [by-layer/05-pole-placement-rh.md](./by-layer/05-pole-placement-rh.md) |
+| 6. Explicit formula | [by-layer/06-explicit-formula-bridge.md](./by-layer/06-explicit-formula-bridge.md) |
 
 ## Public narrative spine (not duplicated here)
 
@@ -78,7 +78,7 @@ pinned partial sum `N = 10^4`.
 
 **Pinned empiric design (next run):**
 
-1. **Segmented partial sums** — increase `N` to `10^5` or `10^6` with segmented
+1. **Segmented partial sums**: increase `N` to `10^5` or `10^6` with segmented
    prime sieve for primes up to `q`; record `ΔD/ΔB` at five pinned `s` values.
 2. **Repro command:**
    ```bash
@@ -98,9 +98,9 @@ Flagship public demo (whitepaper companion):
 - Add new RH-facing rows to [FINDINGS_INDEX.md](./FINDINGS_INDEX.md) with the next `RH-###` ID.
 - Run [scripts/scan_rh_references.py](./scripts/scan_rh_references.py) to surface candidate paths not yet indexed.
 - Record scan gaps in [GAP_ANALYSIS.md](./GAP_ANALYSIS.md).
-- Do **not** copy proof bodies into this folder — link only.
+- Do **not** copy proof bodies into this folder: link only.
 
 ## Provenance
 
 - **2026-07-08:** Chapter created to consolidate scattered RH-facing findings.
-- **2026-07-08:** Population pass — layer docs expanded, RH-103–105 indexed, whitepaper §10–12, L3 empiric.
+- **2026-07-08:** Population pass: layer docs expanded, RH-103 to 105 indexed, whitepaper §10 to 12, L3 empiric.

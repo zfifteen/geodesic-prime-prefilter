@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PGS Lean 4 Translation Plan — Detailed Roadmap</title>
+<title>PGS Lean 4 Translation Plan. Detailed Roadmap</title>
 <style>
 :root {
   --bg: #0d1117;
@@ -98,7 +98,7 @@ footer {
 
 <h1>PGS Lean 4 Formal Translation Plan</h1>
 <p><strong>Detailed Roadmap for Machine-Checked Mirror of PROOF.md</strong><br>
-Version 2.0 (Post-Skeleton) — 2026-05-27</p>
+Version 2.0 (Post-Skeleton) : 2026-05-27</p>
 
 <div class="contract-box">
 <strong>Binding Authority</strong><br>
@@ -113,7 +113,7 @@ Lean 4 work is <strong>downstream verification / audit layer only</strong>. It n
 </div>
 
 <h2>L5 Status (updated 2026-07-05)</h2>
-<p><strong>weak_lfcl_ruleX_forces_next_prime</strong> — CLOSED (Lean mirror of weak L_FCL sufficient-bound certificate law). Full direct port of <code>replaySelectionAtBound</code> (chamber walk + carrier/lock/threat/post-process using <code>tau</code> + wheel) implemented in <code>PGS/ChamberReset.lean</code>. Theorem proved using the replay result under hypotheses. Concrete <code>#eval replaySelectionAtBound 11 2</code> succeeds (returns q=13, resolvedCount=1, resolvedSurvivor, wheel=true). See smoke-test.lean, ChamberReset.lean, and L5 plan.</p>
+<p><strong>weak_lfcl_ruleX_forces_next_prime</strong>. CLOSED (Lean mirror of weak L_FCL sufficient-bound certificate law). Full direct port of <code>replaySelectionAtBound</code> (chamber walk + carrier/lock/threat/post-process using <code>tau</code> + wheel) implemented in <code>PGS/ChamberReset.lean</code>. Theorem proved using the replay result under hypotheses. Concrete <code>#eval replaySelectionAtBound 11 2</code> succeeds (returns q=13, resolvedCount=1, resolvedSurvivor, wheel=true). See smoke-test.lean, ChamberReset.lean, and L5 plan.</p>
 <table>
 <tr><th>Item</th><th>Status</th></tr>
 <tr><td>replaySelectionAtBound (pure port)</td><td>Implemented (matches Python logic)</td></tr>
@@ -141,14 +141,14 @@ Lean 4 work is <strong>downstream verification / audit layer only</strong>. It n
 <tr><th>Theorem / Lemma</th><th>PROOF.md Location</th><th>Key Statement</th><th>Lean Target Module</th><th>Priority</th></tr>
 <tr>
 <td>Direct Next-Prime Rule</td>
-<td>Lines 5–91 (Headline + "Why The Algorithm Returns The Next Prime")</td>
+<td>Lines 5 to 91 (Headline + "Why The Algorithm Returns The Next Prime")</td>
 <td>q = min {n &gt; p : tau(n)=2}. tau(n)=2 ⇔ n prime (n&gt;1)</td>
 <td>PGS.NextPrime</td>
 <td>Phase 4 (Core #1)</td>
 </tr>
 <tr>
 <td>Interior Maximizer Theorem (GWR)</td>
-<td>Lines 145–157 + supporting lemmas through 522</td>
+<td>Lines 145 to 157 + supporting lemmas through 522</td>
 <td>w = min {n ∈ I : tau(n) = min tau(m)}. w uniquely maximizes F(n)</td>
 <td>PGS.GWR</td>
 <td>Phase 3 (Core #2)</td>
@@ -158,22 +158,22 @@ Lean 4 work is <strong>downstream verification / audit layer only</strong>. It n
 <h3>2.2 Critical Supporting Lemmas (Required for the Two Core Theorems)</h3>
 <table>
 <tr><th>Name</th><th>PROOF.md Lines</th><th>Role</th><th>Lean Module</th></tr>
-<tr><td>tau(n)=2 Characterization</td><td>80–81</td><td>Foundation of next-prime rule</td><td>PGS.Basic</td></tr>
-<tr><td>Ordered Comparison Lemma</td><td>158–182</td><td>F(a) &gt; F(b) when a &lt; b and tau(a) ≤ tau(b) (composites)</td><td>PGS.Comparison</td></tr>
-<tr><td>Divisor-Count Tail (Right Side)</td><td>195–224</td><td>No later integer can exceed F(w)</td><td>PGS.GWR</td></tr>
-<tr><td>Prime-Square Case</td><td>246–272</td><td>Closure when tau(w)=3</td><td>PGS.GWR</td></tr>
-<tr><td>Witness Threshold Lemma + T(d,e)</td><td>274–311</td><td>Threshold function for earlier integers</td><td>PGS.Comparison</td></tr>
-<tr><td>Odd Adjacent Branch Lemma / Classification</td><td>308–316</td><td>Reduces earlier-side work to adjacent row</td><td>PGS.Comparison</td></tr>
-<tr><td>Finite Base Lemma</td><td>318–338</td><td>220M+ gaps, 826M earlier integers, 0 failures (p &lt; 5e9+1)</td><td>PGS.Audit (data only)</td></tr>
-<tr><td>Short Divisor-Average Lemma</td><td>340–379</td><td>Sum tau bound on short intervals</td><td>PGS.Analysis</td></tr>
-<tr><td>Large-Divisor Adjacent Closure</td><td>381–508</td><td>Closes adjacent row for large p using average lemma</td><td>PGS.GWR</td></tr>
+<tr><td>tau(n)=2 Characterization</td><td>80 to 81</td><td>Foundation of next-prime rule</td><td>PGS.Basic</td></tr>
+<tr><td>Ordered Comparison Lemma</td><td>158 to 182</td><td>F(a) &gt; F(b) when a &lt; b and tau(a) ≤ tau(b) (composites)</td><td>PGS.Comparison</td></tr>
+<tr><td>Divisor-Count Tail (Right Side)</td><td>195 to 224</td><td>No later integer can exceed F(w)</td><td>PGS.GWR</td></tr>
+<tr><td>Prime-Square Case</td><td>246 to 272</td><td>Closure when tau(w)=3</td><td>PGS.GWR</td></tr>
+<tr><td>Witness Threshold Lemma + T(d,e)</td><td>274 to 311</td><td>Threshold function for earlier integers</td><td>PGS.Comparison</td></tr>
+<tr><td>Odd Adjacent Branch Lemma / Classification</td><td>308 to 316</td><td>Reduces earlier-side work to adjacent row</td><td>PGS.Comparison</td></tr>
+<tr><td>Finite Base Lemma</td><td>318 to 338</td><td>220M+ gaps, 826M earlier integers, 0 failures (p &lt; 5e9+1)</td><td>PGS.Audit (data only)</td></tr>
+<tr><td>Short Divisor-Average Lemma</td><td>340 to 379</td><td>Sum tau bound on short intervals</td><td>PGS.Analysis</td></tr>
+<tr><td>Large-Divisor Adjacent Closure</td><td>381 to 508</td><td>Closes adjacent row for large p using average lemma</td><td>PGS.GWR</td></tr>
 </table>
 
 <h3>2.3 Additional Recorded Artifacts (Not Universal Theorems)</h3>
 <ul>
-<li>Finite Bounded-Compression Base (lines 524–556)</li>
-<li>Residual K=128 First-d4 Branch-Elimination Lemma (lines 558–589)</li>
-<li>Square-Branch Reduction (identifies remaining obligation) (lines 591–665)</li>
+<li>Finite Bounded-Compression Base (lines 524 to 556)</li>
+<li>Residual K=128 First-d4 Branch-Elimination Lemma (lines 558 to 589)</li>
+<li>Square-Branch Reduction (identifies remaining obligation) (lines 591 to 665)</li>
 </ul>
 
 <p>These are <strong>finite computational lemmas / reductions</strong>. They receive Audit status in Lean, not Proved status.</p>
@@ -219,7 +219,7 @@ lean-4/
 
 <h2>5. Detailed Phased Translation Plan</h2>
 
-<h3>Phase 0 — Scaffolding (COMPLETE — 2026-05-27)</h3>
+<h3>Phase 0. Scaffolding (COMPLETE : 2026-05-27)</h3>
 <div class="phase-box">
 <strong>Deliverables delivered:</strong>
 <ul>
@@ -233,7 +233,7 @@ lean-4/
 </ul>
 </div>
 
-<h3>Phase 1 — Core Characterization (Closure with Deferrals — 2026-06)</h3>
+<h3>Phase 1. Core Characterization (Closure with Deferrals : 2026-06)</h3>
 <div class="phase-box">
 <strong>Goals (Delivered)</strong>
 <ul>
@@ -246,7 +246,7 @@ lean-4/
 
 <strong>Acceptance Criteria Status at Closure</strong>
 <ul>
-<li>Both directions of the main characterization have explicit, marked <code>sorry</code>s only for the pure-List counting arguments — these were deliberately deferred to Phase 2 (controlled Mathlib re-introduction) per user decision 2026-06. The deferrals are symmetrically recorded for forward (three distinct ⇒ length ≥ 3) and reverse (image ⊆ {1,n} + distinct + hits both ⇒ length = 2).</li>
+<li>Both directions of the main characterization have explicit, marked <code>sorry</code>s only for the pure-List counting arguments, these were deliberately deferred to Phase 2 (controlled Mathlib re-introduction) per user decision 2026-06. The deferrals are symmetrically recorded for forward (three distinct ⇒ length ≥ 3) and reverse (image ⊆ {1,n} + distinct + hits both ⇒ length = 2).</li>
 <li>Smoke test exercises the declarations.</li>
 <li>Full traceability comments present throughout.</li>
 </ul>
@@ -257,16 +257,16 @@ lean-4/
 <li><strong>Delivered:</strong> All non-counting structure, the key helper lemma for the reverse ("at most 2"), the two membership facts ("at least 2"), the contrapositive statement, build hygiene, smoke-test consistency, and complete living documentation.</li>
 <li><strong>Deferred to Phase 2 (user-directed):</strong> The two pure-List counting obligations (forward and the symmetric reverse length step). These are the only open items in the tau characterization. They are not "blockers" but explicit, documented scope reductions for the self-contained skeleton phase.</li>
 <li>Per the "update before new phase" rule, this section and the matrix below were updated before any Phase 2 work (E/F/Z, ordered comparison, etc.) begins.</li>
-<li>State separation: These deferred items are recorded as "Unresolved (deferred by design to Phase 2)" — not as invalidated, not as proved, and not as measured.</li>
+<li>State separation: These deferred items are recorded as "Unresolved (deferred by design to Phase 2)", not as invalidated, not as proved, and not as measured.</li>
 </ul>
 </div>
 
-<h3>Phase 2 — Comparison Machinery & Interval Infrastructure</h3>
+<h3>Phase 2. Comparison Machinery & Interval Infrastructure</h3>
 <div class="phase-box">
 <strong>Core Work</strong>
 <ul>
 <li>Implement E(n), F(n), Z(n) using Mathlib.Real (noncomputable sections clearly marked)</li>
-<li>Formalize the Ordered Comparison Lemma (lines 158–182)</li>
+<li>Formalize the Ordered Comparison Lemma (lines 158 to 182)</li>
 <li>Define prime-gap interval type (e.g., <code>PrimeGapInterval p q</code> with proofs that p &lt; q are consecutive)</li>
 <li>Define <code>selected_w</code> as the leftmost minimum-tau integer in the interior</li>
 <li>Prove basic closure properties of the min-tau operator on finite sets</li>
@@ -275,7 +275,7 @@ lean-4/
 <strong>Key Challenge</strong>: Representing finite intervals cleanly while keeping everything constructive where possible.
 </div>
 
-<h3>Phase 3 — GWR Maximizer Theorem (Core Theorem #2)</h3>
+<h3>Phase 3. GWR Maximizer Theorem (Core Theorem #2)</h3>
 <div class="phase-box">
 <strong>Target Statement (direct mirror)</strong>
 <pre>
@@ -288,7 +288,7 @@ theorem gwr_maximizer
 
 <strong>Sub-Proofs Required</strong>
 <ol>
-<li>Right-side tail (Divisor-Count Tail, lines 195–224)</li>
+<li>Right-side tail (Divisor-Count Tail, lines 195 to 224)</li>
 <li>Left-side earlier integers: Prime-Square Case + Threshold machinery</li>
 <li>Odd Adjacent Branch Lemma</li>
 <li>Integration of Finite Base + Large-Divisor Adjacent Closure</li>
@@ -297,7 +297,7 @@ theorem gwr_maximizer
 <p><strong>Status after completion</strong>: Moves from "Proved in prose" to "Machine-checked translation of the prose proof."</p>
 </div>
 
-<h3>Phase 4 — Direct Deterministic Next-Prime Theorem (Core Theorem #1)</h3>
+<h3>Phase 4. Direct Deterministic Next-Prime Theorem (Core Theorem #1)</h3>
 <div class="phase-box">
 <strong>Target Statement</strong>
 <pre>
@@ -313,15 +313,15 @@ theorem direct_deterministic_next_prime
 <strong>Dependencies</strong>: Phase 3 + the characterization from Phase 1.
 </div>
 
-<h3>Phase 5 — Supporting Analytic Lemmas</h3>
+<h3>Phase 5. Supporting Analytic Lemmas</h3>
 <div class="phase-box">
 <ul>
-<li>Short Divisor-Average Lemma (lines 340–379) — useful for the large-gap closure argument</li>
+<li>Short Divisor-Average Lemma (lines 340 to 379), useful for the large-gap closure argument</li>
 <li>Any additional number-theoretic facts that appear in the prose proof (clearly labeled as "supporting classical fact used in the PGS argument")</li>
 </ul>
 </div>
 
-<h3>Phase 6 — Audit &amp; Cross-Verification Infrastructure</h3>
+<h3>Phase 6. Audit &amp; Cross-Verification Infrastructure</h3>
 <div class="phase-box">
 <ul>
 <li>Import / mirror of the massive finite base tables from PROOF.md and RESULTS.md (as data, not as proofs of the universal theorems)</li>
@@ -331,7 +331,7 @@ theorem direct_deterministic_next_prime
 <p><strong>Strict Rule</strong>: This phase verifies already-measured surfaces. It does not discover new behavior or feed back into generators.</p>
 </div>
 
-<h3>Phase 7 — Documentation, Status Surfaces, and Maintenance</h3>
+<h3>Phase 7. Documentation, Status Surfaces, and Maintenance</h3>
 <div class="phase-box">
 <ul>
 <li>Continuous updates to this HTML plan and the Markdown living plan</li>
@@ -341,7 +341,7 @@ theorem direct_deterministic_next_prime
 </ul>
 </div>
 
-<h3>Phase 8 — Future / Stretch (Only After Core Theorems)</h3>
+<h3>Phase 8. Future / Stretch (Only After Core Theorems)</h3>
 <ul>
 <li>Modulus-link / endpoint-chain work from the cryptology track (only after the two universal theorems are stable)</li>
 <li>Controlled re-introduction of Mathlib for more advanced analysis</li>
@@ -375,14 +375,14 @@ theorem direct_deterministic_next_prime
 </tr>
 <tr>
 <td>Lines 5-91 (Direct Next-Prime)</td>
-<td>—</td>
+<td>:</td>
 <td><code>PGS.NextPrime.direct_deterministic_next_prime</code></td>
 <td>4</td>
 <td class="status-planned">Placeholder exists</td>
 </tr>
 <tr>
 <td>Lines 340-379 (Short Divisor Average)</td>
-<td>—</td>
+<td>:</td>
 <td><code>PGS.Analysis.short_divisor_average</code></td>
 <td>5</td>
 <td class="status-planned">Planned</td>
@@ -403,7 +403,7 @@ theorem direct_deterministic_next_prime
 <table>
 <tr><th>Phase</th><th>Mathlib Usage</th><th>Rationale</th></tr>
 <tr>
-<td>0–1 (Current)</td>
+<td>0 to 1 (Current)</td>
 <td>None (pure Lean)</td>
 <td>Reliability during environment setup</td>
 </tr>

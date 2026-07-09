@@ -19,10 +19,10 @@ PGS provides a deterministic, structure-first account of prime gaps using:
 
 ## Tier Definitions
 
-**Tier 1 – Genuinely New Applications**  
+**Tier 1: Genuinely New Applications**  
 Concepts that would be conceptually incoherent or practically very difficult without the PGS framework. These treat the internal arithmetic structure of gaps (excess field, selected integers, chamber ordering) as first-class, usable material.
 
-**Tier 2 – Application Modifications**  
+**Tier 2: Application Modifications**  
 Enhancements or partial replacements in existing applications or protocols that currently rely on probabilistic, heuristic, or exhaustive-search methods, where PGS determinism can be substituted for greater certainty, auditability, or efficiency.
 
 ---
@@ -30,7 +30,7 @@ Enhancements or partial replacements in existing applications or protocols that 
 ## Tier 1: Genuinely New Applications
 
 ### 1. Structural Certificate Cryptographic Primitives
-New families of cryptographic objects (commitments, signatures, or verifiable statements) whose security or binding properties are derived from **structural certificates** — compact, publicly verifiable records of GWR-selected integers, excess profiles, and endpoint-chain consistency across one or more gaps.
+New families of cryptographic objects (commitments, signatures, or verifiable statements) whose security or binding properties are derived from **structural certificates**: compact, publicly verifiable records of GWR-selected integers, excess profiles, and endpoint-chain consistency across one or more gaps.
 
 These would enable constructions where the “witness” is the deterministic ordering of the excess field rather than a discrete logarithm or hash preimage.
 
@@ -65,7 +65,7 @@ Adding PGS-derived structural audit trails to systems that consume large numbers
 Modifying existing protocols to derive selected nonces, domain parameters, or challenges from resolved PGS states or endpoint chains when strong determinism and mathematical traceability are prioritized over unpredictability. This replaces or augments hash-based or random derivation in contexts where auditability matters more than entropy.
 
 ### 4. Structural Guidance for Factorization and Smoothness Heuristics
-Augmenting existing factorization frameworks (ECM, lattice methods, etc.) with PGS-derived structural signals — such as regions that appear anomalous under the excess model or modulus-link residuals — to prioritize or deprioritize search areas. The guidance itself is deterministic and rule-based rather than purely heuristic.
+Augmenting existing factorization frameworks (ECM, lattice methods, etc.) with PGS-derived structural signals, such as regions that appear anomalous under the excess model or modulus-link residuals, to prioritize or deprioritize search areas. The guidance itself is deterministic and rule-based rather than purely heuristic.
 
 ### 5. Constant-Time and Side-Channel Hardening via Chamber Traversal
 Replacing variable-time probabilistic search loops in hardware or embedded cryptographic implementations with deterministic PGS chamber traversal. Execution paths become more predictable because the algorithm follows fixed divisor-count and GWR rules rather than random candidate testing.

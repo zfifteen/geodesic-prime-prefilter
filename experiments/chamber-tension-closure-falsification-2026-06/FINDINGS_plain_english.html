@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chamber-Tension Closure Experiment — Plain-English Findings</title>
+<title>Chamber-Tension Closure Experiment. Plain-English Findings</title>
 <style>
 :root {
   --bg: #f8f9fa; --fg: #1a1a1a; --accent: #0a4d8c; --card: #ffffff;
@@ -69,7 +69,7 @@ footer {
   known prime <em>p</em>. Walk right along the integers until you reach the next prime
   <em>q</em>. Along that gap, composites sit above a floor where primes have no excess.
   The hypothesis imagines that this interior “load” or tension might be enough, by itself,
-  to tell you where <em>q</em> must land — before you identify <em>q</em> by checking
+  to tell you where <em>q</em> must land, before you identify <em>q</em> by checking
   which number has exactly two divisors.
 </p>
 
@@ -98,12 +98,12 @@ footer {
 <p>
   <strong>The sanity control (F0).</strong> We tried a naive guess: take the GWR offset
   inside the gap and add it directly to <em>p</em>. That shortcut matched the true next
-  prime zero times out of 78,493 consecutive gaps between 11 and one million. Good —
+  prime zero times out of 78,493 consecutive gaps between 11 and one million. Good :
   a broken rule should fail, and it did.
 </p>
 
 <p>
-  <strong>Tier A — does production Rule X match the proved selector?</strong>
+  <strong>Tier A, does production Rule X match the proved selector?</strong>
   On the same 78,493 gaps, with the search bound set to the actual gap width, production
   Rule X returned the correct next prime every single time. A post-hoc audit confirmed
   every output had divisor count two. That supports implementation correctness on this
@@ -112,7 +112,7 @@ footer {
 </p>
 
 <p>
-  <strong>Tier B — is a rewritten version of Rule X any different?</strong>
+  <strong>Tier B, is a rewritten version of Rule X any different?</strong>
   We rewrote the selector so it never literally branches on “divisor count equals two,”
   using equivalent “not greater than two” logic instead. It matched Tier A on all
   78,493 gaps. That was expected. It is a notational refactor, not a new physical
@@ -120,7 +120,7 @@ footer {
 </p>
 
 <p>
-  <strong>Tier C — can we close the chamber by ruling out composites next door?</strong>
+  <strong>Tier C, can we close the chamber by ruling out composites next door?</strong>
   On anchors from 11 through 10,000, with a fixed bound of 64, we asked whether
   eliminating adjacent composites leaves exactly one survivor at the chamber boundary.
   The answer was no: zero out of 1,225 rows produced a single uniquely resolved
@@ -165,7 +165,7 @@ footer {
   <strong>Read this carefully:</strong> Perfect scores on Tier A and Tier B are not
   evidence for chamber-tension closure. They are evidence that the existing proved rule
   and its implementation still agree. Tier C’s zero unique survivors is not a failure of
-  the experiment — it is an honest measured result that leaves the substantive forward
+  the experiment, it is an honest measured result that leaves the substantive forward
   prediction question open.
 </div>
 

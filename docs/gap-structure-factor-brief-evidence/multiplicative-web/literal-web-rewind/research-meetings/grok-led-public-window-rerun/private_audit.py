@@ -114,7 +114,7 @@ def audit_case(case: dict[str, Any]) -> dict[str, Any]:
     n = p * q
     name = case["name"]
 
-    # 1. Public phase — only N is passed. Result is frozen and written.
+    # 1. Public phase: only N is passed. Result is frozen and written.
     pub = public_nominate(n, radius=PUBLIC_R, threads=PUBLIC_THREADS, top_k=PUBLIC_TOP_K)
 
     # Write the pure-public record (the runner already offers write helper, but we do it here
@@ -125,7 +125,7 @@ def audit_case(case: dict[str, Any]) -> dict[str, Any]:
         json.dumps(pub, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
 
-    # 2. Private audit phase — now allowed to consult p/q against the frozen public view.
+    # 2. Private audit phase: now allowed to consult p/q against the frozen public view.
     factor_offs = factor_offsets_inside(p, q, PUBLIC_R)
     covered = len(factor_offs) > 0
 
@@ -192,7 +192,7 @@ def write_audit_summary(records: list[dict[str, Any]]) -> Path:
 
 def write_human_summary(records: list[dict[str, Any]]) -> Path:
     lines = [
-        "# Grok-Led Public Window Rerun — Private Audit Summary",
+        "# Grok-Led Public Window Rerun: Private Audit Summary",
         "",
         "Policy: first_thread_proximity_v1",
         f"Public threads: {PUBLIC_THREADS}",

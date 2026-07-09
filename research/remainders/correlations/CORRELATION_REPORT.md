@@ -1,11 +1,11 @@
-# CORRELATION_REPORT — Remainder-Gap-Prime Placement Analysis
+# Remainder-Gap-Prime Placement Analysis
 
 **Date of first run:** 2026-06-30 (initial skeleton + tiny validation)
 **Regime:** First validated collection surface (p <= 600, 108 gaps, 490 records, max observed g=18). Moduli M_v1.
 **Collector raw source:** research/remainders/output/tiny_val/raw_records.jsonl
 **Exact commands logged below and in collector RUN_LOG.**
 
-## Review of Plan — Choices Made (per Next Action)
+## Review of Plan: Choices Made (per Next Action)
 - Preferred initial gap sample size/range for first correlation run: the already-validated tiny_val set (108 gaps / 490 records, p<=600) for rapid skeleton validation and engine bring-up. Followed immediately by production of a modestly larger surface (example target --max-p 20000) once descriptive primitives are solid. Later Phase-5 will use disjoint ranges (<1e6 full + sample 1e9+).
 - Additional derived remainder features: plan-specified (num_zeros_in_vector, residue_sum_parity, dist_nearest_zero_mod30, dist_nearest_zero_mod210, coprime_to_210) plus the two minimal "coprime_to_210" (already) and residue_sum_parity already covered.
 - Prioritization order: Descriptive surfaces + H1 (entropy vs g), H4 (GWR signature), marginals and sequential patterns first. Predictive modeling (H3 logistic delta) and formal tests second, after descriptive reproducibility is proven on the set. This matches incremental discipline and protects against small-sample modeling artifacts.
@@ -54,10 +54,10 @@ Example (mod-2 / slot 0 frequencies, truncated):
 Full table written to `tiny_demo/mod2_marginal_sample.md` (reproducible from the enriched file + code at the git commit of this report).
 
 ### Mutual information remainder → termination
-(placeholder — next increment)
+(placeholder, next increment)
 
 ### H1: Remainder entropy vs realized g
-(placeholder — measured correlation or null)
+(placeholder, measured correlation or null)
 
 ### H4: GWR vector distinct from gap average
 (placeholder)
@@ -110,7 +110,7 @@ Implemented and exercised `transition_matrix` on near-termination sequences (las
 
 55 qualifying gaps. For a 5-element near-end seq, exactly 4 vector-to-vector transitions (lag=1).
 
-Example state key: (0, 0, 4, 3, 24, 24, 24) — full R(n, M_v1).
+Example state key: (0, 0, 4, 3, 24, 24, 24), full R(n, M_v1).
 
 Mod-2 projection of consecutive transitions (for illustration of wheel):
 - (0,1): 110 , (1,0): 110  (deterministic even/odd alternation after odd p)
@@ -165,7 +165,7 @@ Gaps in which the final min(3, g) remainder states (projected vec[:6]) contain a
    - Recovered: has_echo class GWR_last rate ~1.0 (due to construction), no_echo ~0.27
    - The analysis code correctly computes differential rates when echoes are present. Positive control passes.
 
-3. Scaled collector full 1e6 run (78,497 gaps, max g=114): has_echo=0 (as expected), GWR_last rate = 0.1416 (14.16%) — precise baseline for p<=1e6 (lower than tiny's ~31%, showing variation).
+3. Scaled collector full 1e6 run (78,497 gaps, max g=114): has_echo=0 (as expected), GWR_last rate = 0.1416 (14.16%), precise baseline for p<=1e6 (lower than tiny's ~31%, showing variation).
 4. Expanded real larger gaps (external list, 25 sampled with g=482 to 1442, p~1e12+): Used PGS divisor field + reduced state to compute for full interiors of these large gaps.
    - 25/25 (100%) have has_echo = True (late_count often 3).
    - 25/25 have GWR_last = False (GWR/min-d always earlier, not last).
@@ -184,9 +184,9 @@ Gaps in which the final min(3, g) remainder states (projected vec[:6]) contain a
 - 1e5 sample (~5.6k gaps): no echoes, GWR_last ~18%.
 - **1e6 full (78,497 gaps, max g=114)**: no echoes (as expected), precise GWR_last baseline = 14.16%. (More small gaps confirm lower baseline than tiny.)
 - Synthetic (1k): code recovers injected bias correctly.
-- **Expanded large gaps (first 50 real, g~480-1442)**: 100% has_echo=True, 100% GWR_last=False (rate 0% in has_echo class vs 14–31% small baseline).
+- **Expanded large gaps (first 50 real, g~480-1442)**: 100% has_echo=True, 100% GWR_last=False (rate 0% in has_echo class vs 14 to 31% small baseline).
 - **Overall falsification**: Echoes (when possible in large gaps) correlate with GWR being early, not terminal (opposite of hypothesis). In small gaps, no echoes occur so no "memory" signal. Expanded data (78k+ small + 50 large) strongly falsifies "echo selects winner" for sharpening GWR placement.
-- Baseline GWR_last in small gaps varies (14–31% by p range); large gaps show 0% when echoes present.
+- Baseline GWR_last in small gaps varies (14 to 31% by p range); large gaps show 0% when echoes present.
 
 ### Plan Steps Completed
 - Definitions formalized matching code (reduced state, last-3 late).

@@ -1,9 +1,9 @@
-# SRGP-v1 Subgoal 1 — Failure Forensics
+# SRGP-v1 Subgoal 1: Failure Forensics
 
 **Verdict: `prime`.** On all three official 127-bit audit failures
 (`s127_moderate_112`, `s127_moderate_127`, `s127_archived_shape_112`), center-out
 prime-walk on the rung-2 `best_window_rank` 0.25-bit window recovers the small
-factor at budget 16384; seed recovery (budgets 64–1024) and residue-ranked
+factor at budget 16384; seed recovery (budgets 64 to 1024) and residue-ranked
 recovery (top 10 at budget 1024) never place the true factor in the tested
 candidate lists. **Subgoal 2 (hybrid seed-first spec) is blocked** because
 `seed_recovery_1024_hit` is false on every case.
@@ -52,7 +52,7 @@ the factor window.
    the current prime-walk-only `_local_pgs_search` (which deletes
    `local_seed_budget`). Forensics on today's harness shows these three cases are
    recoverable without any seed path; the documented 25% gap is not reproduced
-   by seed-first hybridization—it is a prime-budget / search-order phenomenon on
+   by seed-first hybridization:it is a prime-budget / search-order phenomenon on
    the shipped path.
 
 ## Recommendation (blocks Subgoal 2)

@@ -98,14 +98,14 @@ def generate_enhanced_fractal_tree(df, max_depth=7, out_base="square_branch_frac
         "• Length ~ offset (w - previous_prime): how far the square 'strays' from the prior prime\n"
         "• Red = violations of the bounded compression theorem (offset exceeds dynamic cutoff)\n"
         "• Depth encodes scale: deeper = larger p, testing the square branch hypothesis\n"
-        "• This visual proves the 'robust structure' — most branches stay short (low offset), violations rare but visible as 'outliers'"
+        "• This visual proves the 'robust structure', most branches stay short (low offset), violations rare but visible as 'outliers'"
     )
     ax.text(0.02, 0.98, legend_text, transform=ax.transAxes, fontsize=20, 
             verticalalignment='top', color=COSMIC['text'], 
             bbox=dict(boxstyle='round', facecolor=COSMIC['nebula'], alpha=0.85, edgecolor=COSMIC['grid']),
             family='monospace')
     
-    ax.set_title('PGS Square Branch Fractal Tree — "Unfolding" the Geometry of Prime Squares in Gaps', 
+    ax.set_title('PGS Square Branch Fractal Tree : "Unfolding" the Geometry of Prime Squares in Gaps', 
                  color=COSMIC['white'], fontsize=28, pad=15, fontweight='bold')
     
     png_path = OUT_DIR / f"{out_base}_enhanced.png"
@@ -153,11 +153,11 @@ def generate_enhanced_cosmos_3d(df, out_base="square_branch_cosmos_3d"):
         i,j = edge
         ax.plot([x[i],x[j]], [y[i],y[j]], [z[i],z[j]], color=COSMIC['accent1'], alpha=0.12, lw=0.4)
     
-    ax.set_xlabel('log10(p) — "cosmic scale"', color=COSMIC['white'], fontsize=20)
+    ax.set_xlabel('log10(p) : "cosmic scale"', color=COSMIC['white'], fontsize=20)
     ax.set_ylabel('w − previous_prime (offset from prior prime)', color=COSMIC['white'], fontsize=20)
     ax.set_zlabel('Dynamic cutoff (PROOF.md bound)', color=COSMIC['white'], fontsize=20)
     ax.set_title(
-        'PGS Square Branch Cosmos — 3D Geometry of the Square Branch Hypothesis\n'
+        'PGS Square Branch Cosmos : 3D Geometry of the Square Branch Hypothesis\n'
         'Each point = a gap where GWR w is a prime square (τ(w)=3). Red = violations of the "w is not too far" theorem.\n'
         'This visual makes the finite-base + residual lemmas in PROOF.md tangible: most points cluster low-offset; violations are the rare "outliers" at large scale.',
         color=COSMIC['white'], fontsize=11, pad=12
@@ -199,7 +199,7 @@ def generate_interactive_cosmos(df, out_name="square_branch_cosmos_interactive.h
         mode='markers',
         marker=dict(size=7, color='#ff2d55', symbol='diamond', opacity=0.95),
         name='Violations (offset > dynamic cutoff)',
-        text=[f"p={p} offset={o} cutoff={c} — VIOLATION" for p,o,c in zip(v['p'], v['offset'], v['dynamic_cutoff'])],
+        text=[f"p={p} offset={o} cutoff={c}. VIOLATION" for p,o,c in zip(v['p'], v['offset'], v['dynamic_cutoff'])],
         hoverinfo='text'
     ))
     
@@ -239,8 +239,8 @@ def create_diptych(out_name="square_branch_favorites_diptych.png"):
     
     draw = ImageDraw.Draw(combined)
     # Simple labels
-    draw.text((10, 5), "Fractal Tree View — Recursive Unfolding of Square Branch", fill=COSMIC['white'])
-    draw.text((img1.width + 30, 5), "3D Cosmos View — Offsets vs Scale (Red = Violations)", fill=COSMIC['white'])
+    draw.text((10, 5), "Fractal Tree View. Recursive Unfolding of Square Branch", fill=COSMIC['white'])
+    draw.text((img1.width + 30, 5), "3D Cosmos View. Offsets vs Scale (Red = Violations)", fill=COSMIC['white'])
     
     combined.save(OUT_DIR / out_name)
     print(f"Saved diptych: {out_name}")
@@ -261,17 +261,17 @@ figcaption {{ margin-top:8px; font-size:0.95rem; color:#aaa; }}
 .explain {{ background:#0a0520; padding:16px; border-radius:8px; border:1px solid #2a2a4a; }}
 </style></head><body>
 <div class="container">
-<h1>PGS Square Branch — Two Favorite Visualizations</h1>
+<h1>PGS Square Branch. Two Favorite Visualizations</h1>
 <p style="text-align:center;max-width:800px;margin:0 auto 30px;">These two images capture the geometric beauty of the <strong>square branch</strong> in the PGS proofs (see PROOF.md). Each point or branch represents a gap where the GWR-selected integer w is a perfect square of a prime (τ(w)=3). The visuals make the "bounded compression" and violation analysis tangible.</p>
 
 <div class="grid">
 <figure>
 <img src="square_branch_fractal_tree.png" alt="Fractal Tree">
-<figcaption><strong>Fractal Tree</strong> — Recursive "unfolding" of prime squares. Red branches mark violations of the offset bound. Depth = scale. Pure recursive geometry of the divisor-count minimizer.</figcaption>
+<figcaption><strong>Fractal Tree</strong>. Recursive "unfolding" of prime squares. Red branches mark violations of the offset bound. Depth = scale. Pure recursive geometry of the divisor-count minimizer.</figcaption>
 </figure>
 <figure>
 <img src="square_branch_cosmos_3d.png" alt="3D Cosmos">
-<figcaption><strong>3D Cosmos</strong> — Every star is a prime square in its gap's GWR selection. Red "supernovae" are the rare cases where the square is "too far" from the previous prime (offset > dynamic cutoff). Blue lines connect similar structures.</figcaption>
+<figcaption><strong>3D Cosmos</strong>. Every star is a prime square in its gap's GWR selection. Red "supernovae" are the rare cases where the square is "too far" from the previous prime (offset > dynamic cutoff). Blue lines connect similar structures.</figcaption>
 </figure>
 </div>
 
@@ -280,7 +280,7 @@ figcaption {{ margin-top:8px; font-size:0.95rem; color:#aaa; }}
 <ul>
 <li>When the leftmost minimum-divisor integer w inside a prime gap is a square of a prime (τ(w)=3), we are in the "square branch".</li>
 <li>The theorem requires that such w cannot be arbitrarily far from p: w - p is bounded (ultimately by something like 0.5 log(q)^2 or the dynamic cutoff in the data).</li>
-<li>Violations (red) are the empirical cases that test the bound. The visuals show they are sparse — the structure holds robustly.</li>
+<li>Violations (red) are the empirical cases that test the bound. The visuals show they are sparse, the structure holds robustly.</li>
 <li>The fractal shows the self-similar, recursive nature of how these squares appear across scales.</li>
 <li>The 3D cosmos makes the "finite base + residual closure" lemmas visible as a clustered cloud with rare outliers.</li>
 </ul>

@@ -15,7 +15,7 @@ This is a grounding baseline only (raw packet + proposed local supply, no deconv
 It quantifies how the simple GWR form behaves relative to the packet's own drift and reserve
 before the more faithful local deconvolution model of Stage 1 is applied.
 
-The live target (Chamber-Deconvolved Reciprocal Balance Lemma — all three obligations) remains fully open.
+The live target (Chamber-Deconvolved Reciprocal Balance Lemma, all three obligations) remains fully open.
 No obligation discharged. This is a finite measured diagnostic on a toy regime only.
 
 CSV: experiments/core-insight-decisive-test/stage0_gwr_vs_drift_baseline.csv

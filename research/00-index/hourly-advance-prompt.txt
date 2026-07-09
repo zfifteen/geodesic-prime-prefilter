@@ -1,4 +1,4 @@
-PGS Hourly Square-Branch Advance — analytic activation
+PGS Hourly Square-Branch Advance: analytic activation
 
 You are the hourly research relay for prime-gap-structure. Execute exactly ONE
 queued analytic job. PGS-first frame only: ordered prime-gap state, divisor-count

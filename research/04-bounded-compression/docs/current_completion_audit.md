@@ -9,7 +9,7 @@ For every consecutive prime gap with nonempty interior, the GWR-selected witness
 w - p <= C(q) = max(64, ceil(0.5 * log(q)^2)).
 ```
 
-## Status — COMPLETE 2026-07-05
+## Status: COMPLETE 2026-07-05
 
 Universal bounded compression is **proved** in
 [PROOF.md](../../../PROOF.md). The Prime-Square Proximity Theorem closes the

@@ -1,4 +1,4 @@
-# INSIGHT REPORT — Candidate 4
+# INSIGHT REPORT: Candidate 4
 
 **Experiment:** chamber-reset-endpoint-horizon-modulus-link-insight-candidate-4  
 **Date:** 2026-07-08  
@@ -9,13 +9,13 @@
 
 ## 1. Headline Insight
 
-**Chamber-reset carrier lock, admissible-ℓ injectivity, and endpoint-chain floor transport share one algebraic spine: an injective partition–transport law on a finite active horizon.**
+**Chamber-reset carrier lock, admissible-ℓ injectivity, and endpoint-chain floor transport share one algebraic spine: an injective partition to transport law on a finite active horizon.**
 
 On the square branch, the active row horizon is `M = ⌊C(q)/2⌋` and rows split into small-ℓ absorption `L` versus M-rough excess `R`, with Lemma 4a guaranteeing `m ↦ ℓ_m` is injective on `R`.
 
 On the endpoint-chain modulus link, the active horizon is the PGS chain step budget and endpoints split into **pre-lock accumulation** versus **floor-transport closure**, with closure requiring that the transported class `⌊N/e⌋` already lies in the locked endpoint set and reciprocates.
 
-**Candidate 4's mapping claim:** these are not metaphorically similar—they are the same discrete pattern:
+**Candidate 4's mapping claim:** these are not metaphorically similar:they are the same discrete pattern:
 
 ```text
 finite horizon H
@@ -32,8 +32,8 @@ Carrier lock is the **selection-time commit** that makes the injective assignmen
 
 | Layer | Primary objects | Canonical source |
 | --- | --- | --- |
-| Chamber reset | `carrier_d`, `lock_carrier_d`, `lower_d_threat_offset`, `carrier_w`, `tail_after_reset_offsets` | `simple_pgs_generator.py` (`pgs_chamber_reset_state_certificate`, lines 32–149) |
-| Square-branch injectivity | rows `m ∈ {1,…,M}`, admissible `ℓ_m = r − h_m`, partition `L/R`, collision predicate | `PROOF.md` Prime-Square Proximity (lines 593–706), `docs/proof-enhancements/psp-closure/README.md` Lemma 4a |
+| Chamber reset | `carrier_d`, `lock_carrier_d`, `lower_d_threat_offset`, `carrier_w`, `tail_after_reset_offsets` | `simple_pgs_generator.py` (`pgs_chamber_reset_state_certificate`, lines 32 to 149) |
+| Square-branch injectivity | rows `m ∈ {1,…,M}`, admissible `ℓ_m = r − h_m`, partition `L/R`, collision predicate | `PROOF.md` Prime-Square Proximity (lines 593 to 706), `docs/proof-enhancements/psp-closure/README.md` Lemma 4a |
 | Endpoint-chain floor transport | locked endpoint set, `pgs_next_endpoint`, `transported = N // e`, reciprocal closure, modulus-link residual | `scale_pgs_chain_modulus_link.py` (`recursive_chain_modulus_lock`) |
 | Semiprime one-step walk | odd-semiprime interior carriers, `gcd` factor probe | `semiprime_factor_walk.py` (`gwr_semiprime_factor_step`) |
 
@@ -77,7 +77,7 @@ modulus_link_residual(N, lower, upper) = N − lower · upper = 0
 reciprocal_floor_closes(N, e, ⌊N/e⌋) ⟺ ⌊N/⌊N/e⌋⌋ = e
 ```
 
-**Mapping insight:** `⌊N/e⌋` plays the role of a **reciprocal admissible prime placement**—the transported endpoint is admissible only if it was already registered in the locked state, exactly as `ℓ_m` is admissible only if it respects the M-rough / near-root exclusion geometry.
+**Mapping insight:** `⌊N/e⌋` plays the role of a **reciprocal admissible prime placement**:the transported endpoint is admissible only if it was already registered in the locked state, exactly as `ℓ_m` is admissible only if it respects the M-rough / near-root exclusion geometry.
 
 ### 3.3 Carrier lock ↔ injective commit
 
@@ -125,7 +125,7 @@ Floor division is the **modulus-level** shadow of least-factor placement:
 
 - **Forward:** endpoint `e` maps to transported class `⌊N/e⌋`.
 - **Reciprocal:** closure requires the transported class to point back to `e`.
-- **Residual:** zero iff the pair is an exact factorization—modulus-link analog of a fully assigned row with no unplaced excess.
+- **Residual:** zero iff the pair is an exact factorization:modulus-link analog of a fully assigned row with no unplaced excess.
 
 The `skipped_floor_closures` counter in the probe is the operational **collision counter**: floor images that land in the locked set but fail reciprocal or residual checks correspond to near-miss ℓ collisions filtered before acceptance.
 
@@ -139,7 +139,7 @@ The `skipped_floor_closures` counter in the probe is the operational **collision
 
 On the scale-probe semiprimes (`35, 77, 143, …`), the walk returns `no_factor_progress` (selected carriers share no factor with `N`). The modulus-link chain probe **does** resolve all eight cases to the correct endpoint pair.
 
-**Insight:** semiprime_factor_walk tests **local chamber carrier overlap** (GWR interior geometry), while scale_pgs_chain_modulus_link tests **global endpoint-chain reciprocal closure**. Candidate 4 treats the former as a **necessary local filter** and the latter as the **sufficient horizon closure**—the mapping is sequential, not interchangeable.
+**Insight:** semiprime_factor_walk tests **local chamber carrier overlap** (GWR interior geometry), while scale_pgs_chain_modulus_link tests **global endpoint-chain reciprocal closure**. Candidate 4 treats the former as a **necessary local filter** and the latter as the **sufficient horizon closure**:the mapping is sequential, not interchangeable.
 
 ---
 
@@ -165,7 +165,7 @@ python3 research/06-cryptology-rsa/scripts/scale_pgs_chain_modulus_link.py
 
 **Observations supporting the mapping:**
 
-1. **Horizon depth scales with factor separation:** most cases close in 2 chain steps (3 locked endpoints); the wide control needs 11 steps and records 1 skipped floor closure—an explicit near-collision absorbed before lock.
+1. **Horizon depth scales with factor separation:** most cases close in 2 chain steps (3 locked endpoints); the wide control needs 11 steps and records 1 skipped floor closure:an explicit near-collision absorbed before lock.
 2. **Zero residual is exact:** every case achieves `modulus_link_zero_locked`.
 3. **Seed sensitivity is explicit:** `wide_control_15251` uses the same seed as `large_10403` but a different modulus geometry, demonstrating that closure is a property of the **locked transport partition**, not a single-step gcd artifact.
 
@@ -191,9 +191,9 @@ python3 research/06-cryptology-rsa/scripts/scale_pgs_chain_modulus_link.py
 
 **Verdict tokens:**
 
-- `mapping_survives` — no falsifier triggered on tested surface.
-- `mapping_refuted` — any of F1–F5 triggered with reproducible artifact.
-- `mapping_unresolved` — probe budget exceeded without closure (explicit, not failure of mapping).
+- `mapping_survives`, no falsifier triggered on tested surface.
+- `mapping_refuted`, any of F1 to F5 triggered with reproducible artifact.
+- `mapping_unresolved`, probe budget exceeded without closure (explicit, not failure of mapping).
 
 ### 5.3 Current falsification status
 
@@ -209,15 +209,15 @@ python3 research/06-cryptology-rsa/scripts/scale_pgs_chain_modulus_link.py
 
 ---
 
-## 6. Comparison Table — Four Candidate Insight Framings
+## 6. Comparison Table: Four Candidate Insight Framings
 
-Independent implementations were tasked with mapping the same three pillars. Candidate 4's partition–transport isomorphism is one of four defensible framings:
+Independent implementations were tasked with mapping the same three pillars. Candidate 4's partition to transport isomorphism is one of four defensible framings:
 
 | Dimension | Candidate 1 (expected) | Candidate 2 (expected) | Candidate 3 (expected) | **Candidate 4 (this report)** |
 | --- | --- | --- | --- | --- |
-| **Core metaphor** | Field-for-field identification | Certificate transport / signature carry | Local carrier → global factor | **Partition–transport isomorphism on horizon** |
+| **Core metaphor** | Field-for-field identification | Certificate transport / signature carry | Local carrier → global factor | **Partition to transport isomorphism on horizon** |
 | **Chamber lock role** | `lock_carrier_d` ≡ row threshold `M` | Lock fields transported across `⌊N/x⌋` | Lock selects odd-semiprime pool | **Injective commit before reciprocal test** |
-| **ℓ injectivity role** | Direct row–offset dictionary | Signature collision forbids duplicate ℓ | gcd injectivity on carriers | **`R`-class injectivity ↔ locked-endpoint injectivity** |
+| **ℓ injectivity role** | Direct row to offset dictionary | Signature collision forbids duplicate ℓ | gcd injectivity on carriers | **`R`-class injectivity ↔ locked-endpoint injectivity** |
 | **Floor transport role** | Secondary / audit-only | Primary: deadline-signature correction | Absent or downstream | **Reciprocal placement operator dual to ℓ·(r+h+d)** |
 | **Semiprime walk** | Out of scope | Sidecar diagnostic | Central bridge | **Necessary local filter, not sufficient closure** |
 | **Primary proof anchor** | PROOF.md row geometry | RSA-v2 PGS_CERTIFICATE.md | `semiprime_factor_walk.py` | **PROOF.md Lemma 4a + scale probe measured closure** |
@@ -231,7 +231,7 @@ Independent implementations were tasked with mapping the same three pillars. Can
 
 ## 7. Proposed Named Object (Hypothesis Only)
 
-**Horizon-Partition Transport Law (HPTL) — provisional**
+**Horizon-Partition Transport Law (HPTL), provisional**
 
 For a finite active horizon `H` and a commutative placement operator `T` (floor transport or least-factor assignment):
 
@@ -241,7 +241,7 @@ For a finite active horizon `H` and a commutative placement operator `T` (floor 
 4. Require reciprocal closure `T⁻¹(T(x)) = x` on the committed pair.
 5. Accept only when the link residual is zero; otherwise emit `unresolved`.
 
-**Status:** hypothesis. Not in PROOF.md. Elevatable only after F1–F5 gates on expanded surfaces.
+**Status:** hypothesis. Not in PROOF.md. Elevatable only after F1 to F5 gates on expanded surfaces.
 
 ---
 
@@ -273,7 +273,7 @@ python3 docs/proof-enhancements/psp-closure/scripts/audit_square_branches.py
 | Chamber-reset carrier/lock/threat cut | Load-bearing implementation; measured on generator surfaces |
 | Endpoint-chain modulus-link zero lock on 8 cases | Measured result (this session) |
 | Semiprime factor walk on scale cases | Measured: no factor progress |
-| HPTL / partition–transport isomorphism | **Hypothesis** (Candidate 4 mapping) |
+| HPTL / partition to transport isomorphism | **Hypothesis** (Candidate 4 mapping) |
 | Full RSA-scale elevation of mapping | **Unresolved** |
 
 ---

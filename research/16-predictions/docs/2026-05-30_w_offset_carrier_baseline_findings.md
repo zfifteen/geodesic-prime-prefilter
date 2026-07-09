@@ -3,7 +3,7 @@
 **Date**: 2026-05-30  
 **Branch**: `predictions`  
 **Probe**: `research/16-predictions/scripts/w_offset_carrier_probe.py` (v0.1)  
-**Surface**: 10^12 – 10^13 (modest window for first signal)  
+**Surface**: 10^12 to 10^13 (modest window for first signal)  
 **Transitions analyzed**: 392 d=4 current chambers
 
 ## Experiment
@@ -28,7 +28,7 @@ This is a within-chamber baseline sanity check before investing in the cross-cha
 
 ## Next Actions (Recommended)
 
-1. Expand the surface to the full 8192-row 10^12–10^18 retained catalog used for the d4_count breakthrough (higher statistical power).
+1. Expand the surface to the full 8192-row 10^12 to 10^18 retained catalog used for the d4_count breakthrough (higher statistical power).
 2. Add square-phase utilization (`U_□(w, q)`) and any available reset-signature / lock fields as additional candidate measures.
 3. Implement the true cross-chamber target (`previous chamber invariants → next chamber's w-offset`) using a more robust row-linking strategy.
 4. Record results in the unified master catalogue and the 16-predictions index only after the full held-out protocol is applied.

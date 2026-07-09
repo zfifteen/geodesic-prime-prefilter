@@ -73,7 +73,7 @@ All candidates below use only:
 
 No classical methods, no additional sieving, no primality checks, and no scale-dependent branching.
 
-### Candidate Predicate A — Carrier Transport Tightness
+### Candidate Predicate A: Carrier Transport Tightness
 
 **Statement:**
 After choosing the oriented transport coordinate and deriving the upper certificate, require that the transported position of the lower `carrier_w` lands close to the upper `carrier_w`:
@@ -95,7 +95,7 @@ Where `K` is a small constant or a simple function of the lower gap geometry (e.
 
 ---
 
-### Candidate Predicate B — First Tail Proximity
+### Candidate Predicate B: First Tail Proximity
 
 **Statement:**
 Require that the transported position of the *first* entry in `lower.tail_after_reset_offsets` lands close to the upper_anchor (on the lower side of it):
@@ -116,7 +116,7 @@ This was one of the cleanest single discriminators found in Step 2.
 
 ---
 
-### Candidate Predicate C — Combined Carrier + First-Tail Pinching (Compound)
+### Candidate Predicate C: Combined Carrier + First-Tail Pinching (Compound)
 
 **Statement:**
 Require that the sum of the absolute deviations is small:
@@ -134,13 +134,13 @@ This captures the "pinch" observed in the true positive.
 - 50-bit: 32 + 22 = **54**
 - 64-bit: 16 + 5  = **21**
 
-A threshold around 25–30 would separate the current cases.
+A threshold around 25 to 30 would separate the current cases.
 
 **Advantage:** More robust than a single measurement. Captures the mutual approach from both sides of the upper_anchor.
 
 ---
 
-### Candidate Predicate D — Deadline Value Transport Error (Weaker)
+### Candidate Predicate D: Deadline Value Transport Error (Weaker)
 
 **Statement:**
 Bound the absolute error when transporting the lower `reset_deadline_value`:
@@ -174,7 +174,7 @@ The 40-bit case (which resolved via deadline-signature correction at step 0) mus
 
 1. **Primary candidate:** Predicate B (First Tail Proximity) or the compound Predicate C. These showed the cleanest separation on the current data.
 2. **Secondary candidate:** Predicate A (Carrier Transport Tightness), possibly with a bound that scales mildly with local gap size.
-3. Do **not** rely on signature string enhancements alone — both the false and true cases had identical signatures.
+3. Do **not** rely on signature string enhancements alone: both the false and true cases had identical signatures.
 
 All candidates are compatible with the uniform single-traversal design. They would be evaluated inside `certificate_chain_state_closure` after the upper certificate is derived, before deciding to emit a structural endpoint class.
 
@@ -189,7 +189,7 @@ All candidates are compatible with the uniform single-traversal design. They wou
 
 ---
 
-## Next Step (Step 4 — Proposed)
+## Next Step (Step 4: Proposed)
 
 1. Instrument the current runner to compute and log the values for Predicates A/B/C/D on all three committed rungs (including the 40-bit case).
 2. Measure the 40-bit case against the candidates.
@@ -209,7 +209,7 @@ All candidates are compatible with the uniform single-traversal design. They wou
 **Action taken:**
 Created and ran `diagnose_transport_metrics.py` (with manual fallback for the 40-bit case, which has an empty `lower_tail_after_reset_offsets` list and resolved via threat-based deadline at step 0).
 
-**Critical new data — 40-bit case (correct resolution via deadline-signature correction at step 0):**
+**Critical new data : 40-bit case (correct resolution via deadline-signature correction at step 0):**
 
 - lower_carrier_w = 1048572
 - Transported lower_carrier_w = 1048575
@@ -224,7 +224,7 @@ The lower certificate had `carrier_d=96`, `lock_carrier_d=96`, `threat=True`, `d
 
 ---
 
-### Phase 1 Results Table — Carrier Transport Tightness
+### Phase 1 Results Table: Carrier Transport Tightness
 
 | Case                  | Bits | Resolution Type                  | Chain Steps | Carrier Overshoot above upper_anchor | First Tail Delta from upper_anchor | Deadline Transport Error | Notes |
 |-----------------------|------|----------------------------------|-------------|--------------------------------------|------------------------------------|---------------------------|-------|
@@ -238,7 +238,7 @@ The lower certificate had `carrier_d=96`, `lock_carrier_d=96`, `threat=True`, `d
    - True cases: +2 and +16
    - False case: +32 (exactly 2× the 64-bit true case)
 
-2. The 40-bit case (different structural regime — high divisor count, threat-based deadline, no tail) still exhibits very precise reciprocal alignment on the carrier (+2 overshoot). This is encouraging for the generality of the "tight transport" signal.
+2. The 40-bit case (different structural regime, high divisor count, threat-based deadline, no tail) still exhibits very precise reciprocal alignment on the carrier (+2 overshoot). This is encouraging for the generality of the "tight transport" signal.
 
 3. The first-tail proximity signal cannot be applied to threat-based deadline cases (like 40-bit), because there is no tail. Any predicate using first tail must be conditional on the deadline source being "tail".
 

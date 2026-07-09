@@ -67,7 +67,7 @@ For each tested prime `q`, the probe classifies:
 
 | Exponent | Mersenne prime | Preceding type | Following type |
 |---|---:|---|---|
-| `2` | `3` | — | `o4_d3_a1_prime_square` |
+| `2` | `3` | : | `o4_d3_a1_prime_square` |
 | `3` | `7` | `o2_d4_a1_even_semiprime` | `o4_d3_a2_prime_square` |
 | `5` | `31` | `o2_d8_a1_higher_divisor_even` | `o6_d4_a2_odd_semiprime` |
 | `7` | `127` | `o6_d3_a8_prime_square` | `o4_d4_a2_odd_semiprime` |

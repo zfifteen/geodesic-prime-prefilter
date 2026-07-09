@@ -1,6 +1,6 @@
 # State-Budget Carriers Prediction Candidates Catalogue
 
-**PGS Predictions v0.1 track — deterministic carrier laws only**
+**PGS Predictions v0.1 track, deterministic carrier laws only**
 
 **Observable object:** After a known prime `p`, the finite ordered sequence of integers from `p+1` to `q-1` (where `q` is the next prime returned by the divisor-count traversal) carries a complete divisor-count field `τ(n)`. The integer `w` is the leftmost position in that interval that attains the global minimum `τ` value inside the interval. The current chamber is the gap interval whose divisor-count field, selected-integer properties, square-phase utilization `U_□(w, q) = (q - w) / (S₊(w) - w)`, and any carried reset signature or previous reduced state are the PGS objects under study.
 

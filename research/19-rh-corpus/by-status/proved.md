@@ -8,7 +8,6 @@ Universal theorems and proved corollaries. **None of these prove RH.**
 | [RH-002](../FINDINGS_INDEX.md) | [Interior maximizer (GWR)](../../../PROOF.md) | [PROOF.md](../../../PROOF.md) |
 | [RH-003](../FINDINGS_INDEX.md) | [Universal bounded compression](../../../PROOF.md) | [PROOF.md](../../../PROOF.md), [research/04-bounded-compression/](../../04-bounded-compression/README.md) |
 | [RH-004](../FINDINGS_INDEX.md) | [Prime-Square Proximity](../../../PROOF.md) | [PROOF.md](../../../PROOF.md) |
-| [RH-005](../FINDINGS_INDEX.md) | [Twin-Prime Resonance](../../../PROOF.md) | [PROOF.md](../../../PROOF.md), [research/twin-prime-resonance-technical-note-2026-07/](../../twin-prime-resonance-technical-note-2026-07/TECHNICAL_NOTE.md) |
 | [RH-006](../FINDINGS_INDEX.md) | [Derived ½ coefficient (F18-001)](../../18-derived-half-coefficient/README.md) | [research/18-derived-half-coefficient/](../../18-derived-half-coefficient/README.md) |
 | [RH-030](../FINDINGS_INDEX.md) | [d=4 fractional-position bound](../../pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md) | [research/pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md](../../pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md) |
 | [RH-031](../FINDINGS_INDEX.md) | [d=4 first τ=4 arrival](../../pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md) | [research/pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md](../../pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md) (first τ=4 corollary) |

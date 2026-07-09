@@ -1,8 +1,8 @@
-# LICENSE_CHANGE_PLAN.md — Switch Project License from BSL 1.1 to MIT
+# Switch Project License from BSL 1.1 to MIT
 
 **Task Owner**: Codex (Grok 4.3) under AGENTS.md protocol  
 **Date Initiated**: 2026-05 (current session)  
-**Status**: EXECUTED AND PUSHED — 2026-05-31 / commit 2bf74f7f  
+**Status**: EXECUTED AND PUSHED: 2026-05-31 / commit 2bf74f7f  
 **Goal**: Replace the root LICENSE with standard MIT text, update all references and source header notices, document the license history, create a clean git branch+commit, and push the change to the remote repository. All actions must follow the mandatory Plan → Confirm → Execute → Verify → Report workflow and the full AGENTS.md (canonical + local) rules.
 
 ## Why This Matters (Context)
@@ -39,7 +39,7 @@
 
 **Step 0: Pre-execution (this document)**
 - Files: `LICENSE_CHANGE_PLAN.md` (this file, created via write tool after full discovery)
-- Commands: (none — planning only)
+- Commands: (none, planning only)
 - Verification: Re-read this file via read_file after write; confirm todos reflect current state.
 - User gate: Present this full plan + open questions in chat. **Do not proceed to Step 1 until explicit approval** ("approved", "proceed with the plan", "yes do the branch and edits", or equivalent + any requested edits to this plan).
 

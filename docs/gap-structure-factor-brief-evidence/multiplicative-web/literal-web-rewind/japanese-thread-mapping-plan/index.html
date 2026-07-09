@@ -103,7 +103,7 @@ strong { font-weight: 600; }
 <body>
 <main>
 <header>
-  <div class="status">DRAFT EXPERIMENT PLAN — LITERAL WEB PATH ONLY</div>
+  <div class="status">DRAFT EXPERIMENT PLAN. LITERAL WEB PATH ONLY</div>
   <h1>Japanese Line Geometry to Literal Multiplicative Web</h1>
   <p class="lead">Formal experiment planning document for importing structural invariants from visual line multiplication (diagonal filtering, cross-family crossings, propagation, witness completeness) into the public-thread triangulation method for semiprime neighborhood analysis.</p>
   <p class="meta">Target path: <code>docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/</code><br>
@@ -142,7 +142,7 @@ strong { font-weight: 600; }
     </tr>
   </table>
 
-  <p class="meta">Exact baseline files: <code>literal-web-rewind/output/summary.md</code>, <code>literal_web_hole_trace.py:94–156</code> (support calculation), <code>REWIND_TO_LITERAL_WEB.md</code>.</p>
+  <p class="meta">Exact baseline files: <code>literal-web-rewind/output/summary.md</code>, <code>literal_web_hole_trace.py:94 to 156</code> (support calculation), <code>REWIND_TO_LITERAL_WEB.md</code>.</p>
 </section>
 
 <section>
@@ -173,11 +173,11 @@ strong { font-weight: 600; }
     </div>
   </div>
 
-  <h3>Visual Analogy — Diagonal Filtering</h3>
+  <h3>Visual Analogy. Diagonal Filtering</h3>
   <svg viewBox="0 0 820 260" role="img" aria-label="Side-by-side comparison of Japanese diagonal bands and proposed offset vs thread-scale grid">
     <!-- Left: Japanese style -->
     <rect x="10" y="10" width="380" height="240" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
-    <text x="200" y="32" font-size="12" font-weight="600" fill="#0f766e" text-anchor="middle">Japanese — Place-Value Diagonals</text>
+    <text x="200" y="32" font-size="12" font-weight="600" fill="#0f766e" text-anchor="middle">Japanese: Place-Value Diagonals</text>
     <!-- Simplified bundles and diagonals -->
     <g stroke="#1e40af" stroke-width="2" opacity="0.85">
       <!-- First number bundles (vertical-ish) -->
@@ -199,7 +199,7 @@ strong { font-weight: 600; }
 
     <!-- Right: Proposed web grid -->
     <rect x="420" y="10" width="380" height="240" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
-    <text x="610" y="32" font-size="12" font-weight="600" fill="#0f766e" text-anchor="middle">Literal Web — Proposed Banded Grid</text>
+    <text x="610" y="32" font-size="12" font-weight="600" fill="#0f766e" text-anchor="middle">Literal Web: Proposed Banded Grid</text>
     <!-- Axes -->
     <line x1="460" y1="200" x2="780" y2="200" stroke="#475569" stroke-width="1"/>
     <line x1="460" y1="55" x2="460" y2="200" stroke="#475569" stroke-width="1"/>
@@ -233,7 +233,7 @@ strong { font-weight: 600; }
       <td>Diagonal / degree filtering</td>
       <td><strong>Banded support</strong>: partition threads by deterministic scale class (log r or local divisor-field property) and require cross-band coherence for nomination.</td>
       <td><strong>Highest</strong></td>
-      <td>Low — pure post-processing of existing public threads</td>
+      <td>Low, pure post-processing of existing public threads</td>
     </tr>
     <tr>
       <td>2</td>
@@ -247,7 +247,7 @@ strong { font-weight: 600; }
       <td>Carry propagation</td>
       <td><strong>Local deterministic propagation</strong>: after banded support, apply a rule that transfers or reinforces support between nearby offsets when the step is itself a public small-prime or PGS-consistent interval.</td>
       <td>Medium</td>
-      <td>Medium — must remain non-leaking and fully public</td>
+      <td>Medium, must remain non-leaking and fully public</td>
     </tr>
     <tr>
       <td>4</td>
@@ -260,7 +260,7 @@ strong { font-weight: 600; }
 </section>
 
 <section class="section">
-  <h2>5. Primary Experiment Specification — Banded Diagonal Support</h2>
+  <h2>5. Primary Experiment Specification. Banded Diagonal Support</h2>
 
   <div class="contract">
     <strong>Experiment ID:</strong> LWM-BAND-01<br>
@@ -272,7 +272,7 @@ strong { font-weight: 600; }
   <p>The public factor-thread web around N (identical input to <code>literal_web_hole_trace.py</code>).</p>
 
   <h3>5.2 Mechanism (Ordinary Language)</h3>
-  <p>Instead of counting every small-prime thread equally, group the threads into 2–4 deterministic scale bands. For each offset, compute both per-band support and a cross-band coherence score. The public output now includes the set of offsets that are locally maximal under the coherence rule, not merely global raw count.</p>
+  <p>Instead of counting every small-prime thread equally, group the threads into 2 to 4 deterministic scale bands. For each offset, compute both per-band support and a cross-band coherence score. The public output now includes the set of offsets that are locally maximal under the coherence rule, not merely global raw count.</p>
 
   <h3>5.3 Formal Definition (PGS-Native Frame)</h3>
   <p>Let T be the multiset of public small-prime factors observed in the held-out window. Define a deterministic partition function B: T → {B1, B2, …, Bk} (k=3 recommended for first run) based on either:</p>
@@ -326,9 +326,9 @@ strong { font-weight: 600; }
 <section class="section">
   <h2>6. Secondary Experiments (Follow-on)</h2>
   <ol>
-    <li><strong>LWM-CROSS-01</strong> — Cross-family scoring (left vs. right origin threads scored separately, inter-family alignments promoted).</li>
-    <li><strong>LWM-PROP-01</strong> — Deterministic local propagation rule between adjacent high-coherence offsets (carry analog). Must be fully reversible and public.</li>
-    <li><strong>LWM-WITNESS-01</strong> — Emit coverage signature vectors using GWR-selected attractor and DNI-normalized divisor count at each supporting composite. Used for post-nomination structural certificate, not for primary ranking.</li>
+    <li><strong>LWM-CROSS-01</strong>. Cross-family scoring (left vs. right origin threads scored separately, inter-family alignments promoted).</li>
+    <li><strong>LWM-PROP-01</strong>. Deterministic local propagation rule between adjacent high-coherence offsets (carry analog). Must be fully reversible and public.</li>
+    <li><strong>LWM-WITNESS-01</strong>. Emit coverage signature vectors using GWR-selected attractor and DNI-normalized divisor count at each supporting composite. Used for post-nomination structural certificate, not for primary ranking.</li>
   </ol>
   <p>Each secondary experiment must be defined only after LWM-BAND-01 has produced its public freeze artifacts and a go/no-go decision.</p>
 </section>
@@ -363,14 +363,14 @@ strong { font-weight: 600; }
 <section class="section">
   <h2>9. Phased Execution Plan &amp; Checklist</h2>
 
-  <h3>Phase 0 — Planning &amp; Freeze (Current)</h3>
+  <h3>Phase 0. Planning &amp; Freeze (Current)</h3>
   <ul class="checklist">
     <li>☐ This document reviewed and accepted as the active contract.</li>
     <li>☐ Baseline artifacts from <code>literal_web_hole_trace.py</code> and ladder re-frozen with SHA256 manifest.</li>
     <li>☐ Public toy corpus (the four cases + any additional public N-only cases) declared and versioned.</li>
   </ul>
 
-  <h3>Phase 1 — LWM-BAND-01 Core Implementation</h3>
+  <h3>Phase 1. LWM-BAND-01 Core Implementation</h3>
   <ul class="checklist">
     <li>☐ Define exact band partition function B (documented, deterministic, code-reviewed for leakage).</li>
     <li>☐ Implement banded support calculator + coherence scorer as pure functions over the existing thread table.</li>
@@ -380,20 +380,20 @@ strong { font-weight: 600; }
     <li>☐ Write <code>FINDINGS_LWM_BAND_01.md</code> that leads with the measured outcome (reproduced / improved / regressed / inconclusive) before any interpretation.</li>
   </ul>
 
-  <h3>Phase 2 — Visual &amp; Audit Artifacts</h3>
+  <h3>Phase 2. Visual &amp; Audit Artifacts</h3>
   <ul class="checklist">
     <li>☐ Update or create new index.html with before/after diagrams (offset × band grid showing coherence).</li>
     <li>☐ Add machine-readable manifest (JSONL) of every emitted hole with both flat and banded scores.</li>
     <li>☐ Run cross-audit (two independent reviewers or self-checklist) against the public contract.</li>
   </ul>
 
-  <h3>Phase 3 — Go/No-Go for Secondary Experiments</h3>
+  <h3>Phase 3. Go/No-Go for Secondary Experiments</h3>
   <ul class="checklist">
     <li>☐ If LWM-BAND-01 shows measurable improvement in rank or reduction in emitted noise, open LWM-CROSS-01 design.</li>
     <li>☐ If no improvement or regression, document the negative result and park or redesign the band definition before proceeding.</li>
   </ul>
 
-  <h3>Phase 4 — Scale &amp; PGS Typing</h3>
+  <h3>Phase 4. Scale &amp; PGS Typing</h3>
   <ul class="checklist">
     <li>☐ Extend successful band definition to GWR/DNI-typed threads on the same public data.</li>
     <li>☐ Re-run on the full current ladder limit (8009×10007) with public-only inputs.</li>
@@ -441,12 +441,12 @@ strong { font-weight: 600; }
 <section class="section">
   <h2>11. References &amp; Continuity</h2>
   <ul>
-    <li><code>literal-web-rewind/REWIND_TO_LITERAL_WEB.md</code> — active contract and parked-path declaration</li>
-    <li><code>literal_web_hole_trace.py</code> — canonical current implementation</li>
-    <li><code>literal-web-rewind/graphical-novel-method/index.html</code> — existing visual language for the web object</li>
-    <li><code>docs/gap-structure-factor-brief-evidence/multiplicative-web/README.md</code> — overall probe boundary</li>
-    <li>AGENTS.md (root) — PGS-first reasoning, theorem trust, classical-method boundary</li>
-    <li>PROOF.md — for any future structural-certificate claims</li>
+    <li><code>literal-web-rewind/REWIND_TO_LITERAL_WEB.md</code>, active contract and parked-path declaration</li>
+    <li><code>literal_web_hole_trace.py</code>, canonical current implementation</li>
+    <li><code>literal-web-rewind/graphical-novel-method/index.html</code>, existing visual language for the web object</li>
+    <li><code>docs/gap-structure-factor-brief-evidence/multiplicative-web/README.md</code>, overall probe boundary</li>
+    <li>AGENTS.md (root). PGS-first reasoning, theorem trust, classical-method boundary</li>
+    <li>PROOF.md, for any future structural-certificate claims</li>
   </ul>
 </section>
 

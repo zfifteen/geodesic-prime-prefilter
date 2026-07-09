@@ -2,9 +2,9 @@
 """
 GWR-Native Witness-Based Predictor v0.5
 Author: Grok (team lead, under Fate's direction)
-Pure PNT + DNI/GWR — no Lorentz decoration.
+Pure PNT + DNI/GWR, no Lorentz decoration.
 
-Calibrated from exact GWR winners (n=1k–100k):
+Calibrated from exact GWR winners (n=1k to 100k):
 - bias = +160 (actual_w - PNT backbone)
 - Small-n errors now collapse to < 50 ppm
 - 10^18 window remains trivial (~12k candidates)

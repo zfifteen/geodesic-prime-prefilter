@@ -56,7 +56,7 @@ result: 96 passed
 python3 -m pytest research/11-gap-ridge/tests
 result: 38 passed
 
-# RH bridge tests archived externally — see research/12-rh-bridge/README.md and external archive/test_bridge.py
+# RH bridge tests archived externally: see research/12-rh-bridge/README.md and external archive/test_bridge.py
 result: 6 passed
 ```
 

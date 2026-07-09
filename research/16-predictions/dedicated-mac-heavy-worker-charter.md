@@ -58,7 +58,7 @@ The node is activated by a recurring headless invocation (see "Deployment" below
    - Produce (or append to) a 7-field PGS-first report or update in `reports/` if the unit warrants it, or simply the raw artifacts + summary JSON/CSV if that's the convention for the emitter.
    - Include exact reproduction commands, surface sizes, counts, verdicts ("does_not on stated ...", "unresolved on stated non-d4 p12-14 5237-row variance surface...", etc.), 6-gate checklist (self-audit), and cross-refs to catalogue ranks.
    - Append short status to `TEAM_STATUS.md` (or the task file) and post a concise summary + artifact paths + repro one-liner to the bus.
-   - Commit the new artifacts locally (the node may have its own clone; main human will pull). If the node has push rights to a dedicated branch, push a `dedicated-heavy/<unit>` branch for easy review — otherwise just leave clean diffs.
+   - Commit the new artifacts locally (the node may have its own clone; main human will pull). If the node has push rights to a dedicated branch, push a `dedicated-heavy/<unit>` branch for easy review, otherwise just leave clean diffs.
 8. **Hermes digest (the human-visible value)**: After significant delivery (or on every activation/heartbeat if nothing major), use `hermes__messages_send` (target configured by user, e.g. `telegram:6308981865` or named channel) with a short, scannable message:
    ```
    PGS Dedicated Heavy: Completed [unit, e.g. 12-14 non-d4 sidecar emission + 5237/66 scoring].

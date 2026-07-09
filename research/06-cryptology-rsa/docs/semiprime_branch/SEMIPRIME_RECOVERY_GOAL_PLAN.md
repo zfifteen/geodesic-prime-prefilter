@@ -28,7 +28,7 @@ PYTHONPATH=src/python python3 -m pytest \
   research/06-cryptology-rsa/tests/test_pgs_geofac_scaleup.py -q
 ```
 
-- Full official audit (slow, ~90–120s):
+- Full official audit (slow, ~90 to 120s):
 
 ```bash
 PYTHONPATH=src/python python3 research/06-cryptology-rsa/scripts/pgs_geofac_scaleup.py \
@@ -41,10 +41,10 @@ Or from tests: `test_official_127_audit_passes_on_first_passing_rung`.
 **Activation pattern:**
 
 ```
-/goal SRGP-v1 Subgoal 1 — Failure Forensics
+/goal SRGP-v1 Subgoal 1. Failure Forensics
 ... work ...
 /goal status
-/goal SRGP-v1 Subgoal 2 — Seed Recovery Probe
+/goal SRGP-v1 Subgoal 2. Seed Recovery Probe
 ```
 
 ## Contracts (binding)
@@ -63,7 +63,7 @@ _(Sub-goal completions appended here with timestamp.)_
 
 ---
 
-## Subgoal 1 — Failure Forensics (read-only)
+## Subgoal 1: Failure Forensics (read-only)
 
 **Hypothesis under test:** The three failures (`s127_moderate_112`,
 `s127_moderate_127`, `s127_archived_shape_112`) have `factor_in_final_window=true`
@@ -74,22 +74,22 @@ but prime-walk exhausts budget; seed recovery may succeed in the same window.
 1. `docs/AGENTS.md` (cryptology framing)
 2. `research/06-cryptology-rsa/README.md`
 3. `research/06-cryptology-rsa/output/semiprime_branch/pgs_127_official_audit_rows.jsonl`
-4. `research/06-cryptology-rsa/scripts/pgs_geofac_scaleup.py` — `_local_pgs_search`,
+4. `research/06-cryptology-rsa/scripts/pgs_geofac_scaleup.py` : `_local_pgs_search`,
    `_pgs_seed_recovery_in_interval`, `_local_router_only_prime_walk`
-5. `research/06-cryptology-rsa/tests/test_pgs_geofac_scaleup.py` — seed recovery tests
+5. `research/06-cryptology-rsa/tests/test_pgs_geofac_scaleup.py`, seed recovery tests
 
 **Actions:**
 
 1. Create `experiments/semiprime-recovery-hybrid-2026-07/` with:
    - `FINDINGS.md` (conclusion-first)
-   - `failure_forensics_probe.py` — for each failing `case_id`:
+   - `failure_forensics_probe.py`, for each failing `case_id`:
      - Re-run `_route_case(..., rung=2, router_mode="audited_family_prior")`
      - Take `best_window_rank` window; emit `low, high, midpoint`
      - Run `_local_router_only_prime_walk` with budgets `[256, 1024, 4096, 16384]`
      - Run `_pgs_seed_recovery_in_interval` with `local_seed_budget` `[64, 256, 1024]`
      - Run `_recovery_ranked_recovered_primes_in_interval` (top 10 primes)
      - Record whether `case.small_factor` appears in each ranked list
-   - `failure_forensics.json` — machine output
+   - `failure_forensics.json`, machine output
 
 2. Run probe; no production code changes.
 
@@ -99,13 +99,13 @@ but prime-walk exhausts budget; seed recovery may succeed in the same window.
   `prime_walk_16384_hit`, `seed_recovery_1024_hit`, `residue_rank_contains_factor`
 - `FINDINGS.md` states which mechanism would fix the 25% gap (one sentence lead).
 - If seed recovery does **not** hit on any failure, STOP plan and mark Subgoal 2
-  blocked — escalate to prime-budget / window-width study instead.
+  blocked, escalate to prime-budget / window-width study instead.
 
-**Handoff:** `Subgoal 1 complete — <timestamp> — forensic verdict: <seed|prime|both|neither>`
+**Handoff:** `Subgoal 1 complete: <timestamp>, forensic verdict: <seed|prime|both|neither>`
 
 ---
 
-## Subgoal 2 — Hybrid Recovery Spec (design-only)
+## Subgoal 2: Hybrid Recovery Spec (design-only)
 
 **Prerequisite:** Subgoal 1 verdict is `seed` or `both`.
 
@@ -124,7 +124,7 @@ but prime-walk exhausts budget; seed recovery may succeed in the same window.
    **Invariants:**
 
    - `local_seed_budget` from `RUNG_CONFIGS[rung]` must be used (currently deleted
-     via `del local_seed_budget` — that line removed).
+     via `del local_seed_budget`, that line removed).
    - Count `local_prime_tests` as sum across strategies.
    - Deterministic: same inputs → same row outputs (existing test helpers).
 
@@ -136,11 +136,11 @@ but prime-walk exhausts budget; seed recovery may succeed in the same window.
 - Spec reviewed against Subgoal 1 JSON (each failure has a covered code path).
 - No implementation yet.
 
-**Handoff:** `Subgoal 2 complete — <timestamp> — spec locked`
+**Handoff:** `Subgoal 2 complete: <timestamp>, spec locked`
 
 ---
 
-## Subgoal 3 — Implement Hybrid `_local_pgs_search`
+## Subgoal 3: Implement Hybrid `_local_pgs_search`
 
 **Scope:** Only `pgs_geofac_scaleup.py` + tests.
 
@@ -156,16 +156,16 @@ but prime-walk exhausts budget; seed recovery may succeed in the same window.
 
 **Success criteria:**
 
-- `pytest research/06-cryptology-rsa/tests/test_pgs_geofac_scaleup.py -q` — all pass.
+- `pytest research/06-cryptology-rsa/tests/test_pgs_geofac_scaleup.py -q`, all pass.
 - `run_127_official_audit(0)` → `exact_recovery_recall == 1.0` (12/12).
 - `router_top4_recall` unchanged at 1.0.
 - `stage_passed` true at `official_rung == 2` (no rung 3 required).
 
-**Handoff:** `Subgoal 3 complete — <timestamp> — 12/12 at rung 2`
+**Handoff:** `Subgoal 3 complete: <timestamp> : 12/12 at rung 2`
 
 ---
 
-## Subgoal 4 — Tighten Acceptance + Artifact Refresh
+## Subgoal 4: Tighten Acceptance + Artifact Refresh
 
 **Scope:** `_stage_acceptance`, breakthrough doc, committed JSONL/JSON outputs.
 
@@ -184,11 +184,11 @@ but prime-walk exhausts budget; seed recovery may succeed in the same window.
 - Acceptance threshold aligns with measured 12/12.
 - `test_official_127_audit_passes_on_first_passing_rung` updated if threshold changes.
 
-**Handoff:** `Subgoal 4 complete — <timestamp> — artifacts refreshed`
+**Handoff:** `Subgoal 4 complete: <timestamp>, artifacts refreshed`
 
 ---
 
-## Subgoal 5 — 160-Bit Smoke (bounded scale)
+## Subgoal 5: 160-Bit Smoke (bounded scale)
 
 **Prerequisite:** Subgoal 3 at 12/12.
 
@@ -206,7 +206,7 @@ PYTHONPATH=src/python python3 research/06-cryptology-rsa/scripts/pgs_geofac_scal
    router_top4 + exact_recovery counts; no code changes unless recall < 0.50.
 
 3. If 160-bit recall < 0.50: open Subgoal 5b (integer window from family center
-   using `C(q)` offset bound on **estimated** right endpoint — probe only, no
+   using `C(q)` offset bound on **estimated** right endpoint: probe only, no
    theorem claim). Mapping:
 
    ```text
@@ -221,11 +221,11 @@ PYTHONPATH=src/python python3 research/06-cryptology-rsa/scripts/pgs_geofac_scal
 - 160-bit `exact_recovery_recall >= 0.50` with hybrid path at rung 2.
 - FINDINGS_160 lead sentence: pass / partial / fail.
 
-**Handoff:** `Subgoal 5 complete — <timestamp> — 160-bit: <recall>`
+**Handoff:** `Subgoal 5 complete: <timestamp> : 160-bit: <recall>`
 
 ---
 
-## Subgoal 6 — Closeout & Continuity
+## Subgoal 6: Closeout & Continuity
 
 **Actions:**
 
@@ -242,7 +242,7 @@ PYTHONPATH=src/python python3 research/06-cryptology-rsa/scripts/pgs_geofac_scal
 - Single reproducible command block in FINDINGS.md.
 - No scope creep into RSA v2 endpoint law.
 
-**Handoff:** `SRGP-v1 complete — <timestamp>`
+**Handoff:** `SRGP-v1 complete: <timestamp>`
 
 ---
 
@@ -254,7 +254,7 @@ PYTHONPATH=src/python python3 research/06-cryptology-rsa/scripts/pgs_geofac_scal
 | Wire `C(q)` into windows | **Deferred** to Subgoal 5b only if 160-bit fails; integer offset ≠ bit width |
 | Scale corpus | **160-bit only** after 12/12; 256+ still prime-walk-only in harness |
 | Super-Signal | **Removed** from plan (irrelevant to semiprime track) |
-| Parallel work | **Forbidden** on Subgoals 1–4 |
+| Parallel work | **Forbidden** on Subgoals 1 to 4 |
 | Acceptance at 75% | **Raise to 100%** once demonstrated; don't lower bar preemptively |
 | `_local_pgs_search` ignores `local_seed_budget` | Root bug; fixing is core of Subgoal 3 |
 | Residue-first tests already exist | Fold into hybrid tier 2 instead of new ranking logic |
@@ -278,4 +278,4 @@ PYTHONPATH=src/python python3 research/06-cryptology-rsa/scripts/pgs_geofac_scal
 
 ---
 
-**End of plan.** Ready for `/goal SRGP-v1 Subgoal 1 — Failure Forensics`.
+**End of plan.** Ready for `/goal SRGP-v1 Subgoal 1: Failure Forensics`.

@@ -2,16 +2,16 @@
 
 **Created:** 2026-07-07  
 **Authority:** Subordinate to `PROOF.md` (single live proof reference) and `docs/AGENTS.md`  
-**Status:** Active — audit and planning phase
+**Status:** Active: audit and planning phase
 
 ## Purpose
 
 This folder tracks work to **harden and enhance** `PROOF.md` so that its claims are:
 
-1. **Mathematically complete** — no informal or density-heuristic steps presented as finished proofs
-2. **Epistemically honest** — clear separation of proved / finite-certified / measured / hypothesis
-3. **Formally portable** — structured so a gap-free Lean 4 mirror becomes feasible, not aspirational
-4. **Reproducible** — finite bases and audit tables tied to pinned artifacts and verification commands
+1. **Mathematically complete**: no informal or density-heuristic steps presented as finished proofs
+2. **Epistemically honest**: clear separation of proved / finite-certified / measured / hypothesis
+3. **Formally portable**: structured so a gap-free Lean 4 mirror becomes feasible, not aspirational
+4. **Reproducible**: finite bases and audit tables tied to pinned artifacts and verification commands
 
 `PROOF.md` remains the single live proof document. This sub-project does not fork authority; it produces audits, enhancement proposals, and (eventually) targeted patches to `PROOF.md` itself.
 
@@ -21,8 +21,8 @@ This folder tracks work to **harden and enhance** `PROOF.md` so that its claims 
 |-------|------------------------------|
 | `PROOF.md` | Source of truth; receives hardened content |
 | `lean-4/` | Downstream mirror; benefits from prose gaps being closed first |
-| `research/02-gwr-dni/scripts/proof/` | Finite-base and certificate generators — should align with enhancement specs |
-| `docs/lean-pgs-verification/` | Formalization status — should reflect honest prose status |
+| `research/02-gwr-dni/scripts/proof/` | Finite-base and certificate generators, should align with enhancement specs |
+| `docs/lean-pgs-verification/` | Formalization status, should reflect honest prose status |
 
 ## Documents in This Folder
 
@@ -40,7 +40,7 @@ This folder tracks work to **harden and enhance** `PROOF.md` so that its claims 
 
 ## Current Phase
 
-**Phase 1 — Epistemic hygiene** (in progress)
+**Phase 1. Epistemic hygiene** (in progress)
 
 Completed in this folder:
 - Shortcomings audit (`shortcomings.md`)
@@ -50,6 +50,6 @@ Completed in this folder:
 - Certificate emitter (`scripts/emit_certificates.py`) with schema-conformant JSON artifacts
 - `PROOF.md` patch: Certified Finite Bases section + multi-axis theorem stack status
 
-Active collaboration: [Discussion #24 — PGS Enhancements](https://github.com/zfifteen/prime-gap-structure/discussions/24) (Transformer Contract Protocol v1.0)
+Active collaboration: [Discussion #24: PGS Enhancements](https://github.com/zfifteen/prime-gap-structure/discussions/24) (Transformer Contract Protocol v1.0)
 
 Next: classical lemma appendix (G6), reproduction commands in `PROOF.md` (G5), then Phase 3 mathematical closure (S1 PSP, S2 twin-prime).

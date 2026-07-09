@@ -30,7 +30,7 @@ PGS objects (ordered prime-gap state, divisor-count field τ(n), DNI E(n)/Z(n), 
 
 ---
 
-## Proved Foundations (Source Layer — Subordinate Only to PROOF.md)
+## Proved Foundations (Source Layer: Subordinate Only to PROOF.md)
 
 **GWR / Interior Maximizer Theorem (PROOF.md:145-156):**  
 Given prime p, q = min{n > p : τ(n)=2}, I = {p+1 … q-1} (nonempty).  
@@ -58,7 +58,7 @@ Epistemic: **proved**.
 **1. d4_count ordering carrier for next-triad (reduced gap-type) state**  
 Primary PGS objects: current-chamber divisor-count field (specifically count of d(n)=4 positions), previous-gap tail length, endpoint residue mod 30, GWR context, next reduced gap-type triad state.  
 File:line: research/05-state-budget/scripts/state_budget_divisor_carrier_sweep.py:42-54 (CANDIDATE_MEASURES), 106-115 (d4_count computation from catalog); research/05-state-budget/output/state_budget_long_running_catalog_8192/state_budget_long_running_research_report.md:44-80 (breakthrough row); catalog generator research/03-gap-types/scripts/gwr_dni_gap_type_catalog.py.  
-Epistemic: **measured** — ordering_carrier_found on deterministic retained 8192-row-per-power 10^12..10^18 surface (57344 rows total, 45603 d=4 transitions scored).  
+Epistemic: **measured**: ordering_carrier_found on deterministic retained 8192-row-per-power 10^12..10^18 surface (57344 rows total, 45603 d=4 transitions scored).  
 Concrete verdict (mod30_prev_gap_exact match mode): 7881 decisive matched pairs, 7/7 held-out powers >100 decisive, 6/7 positive oriented folds, +299 oriented signed advantage, +69 edge over endpoint-tail control (required +50).  
 Falsification/measurement surface: Re-run `python3 research/05-state-budget/scripts/state_budget_divisor_carrier_sweep.py --detail-csv ...` on fresh retained catalog; held-out ruler tests (state_budget_pairwise_ruler_test.py etc.); pytest research/05-state-budget/tests/test_state_budget_divisor_carrier_sweep.py.  
 Why strong deterministic prediction candidate: Exactly matches contract definition and precedent. Uses only current-chamber PGS objects under explicit match discipline; returns decisive carrier strength or unresolved; no probabilistic claim. Directly resolves/constrains future PGS state (next triad/gap-type after current w-bearing chamber).  
@@ -67,7 +67,7 @@ Drift risks: None in current artifacts (strictly measured + held-out); risk only
 **2. First d=4 arrival equals GWR w under square exclusion (no interior prime square)**  
 Primary PGS objects: divisor-count field of gap after p, GWR w, square-phase flag (presence/absence of interior prime square before or at w), d(w).  
 File:line: research/02-gwr-dni/docs/dominant_d4_arrival_reduction_findings.md:10-15 (statement), 60-99 (results table + counterexamples); runner research/11-gap-ridge/scripts/gwr_d4_arrival_validation.py; outputs research/02-gwr-dni/output/gwr_d4_arrival_validation_exact.csv + summary.json; even-band ladder 10^8..10^18.  
-Epistemic: **measured** — exact full scans to 2×10^7 + deterministic even-band windows (2 per decade 10^8..10^18, 2×10^6 width). 0 interior-square violations in all d(w)=4 gaps. first-d=4 match rate = 1.0 on every regime. 8 prime-cube (d=4 but not semiprime) exceptions per high decade (first explicit: 6859=19^3 in gap (6857,6863)).  
+Epistemic: **measured**: exact full scans to 2×10^7 + deterministic even-band windows (2 per decade 10^8..10^18, 2×10^6 width). 0 interior-square violations in all d(w)=4 gaps. first-d=4 match rate = 1.0 on every regime. 8 prime-cube (d=4 but not semiprime) exceptions per high decade (first explicit: 6859=19^3 in gap (6857,6863)).  
 Falsification/measurement surface: Re-execute the gwr_d4_arrival_validation runner on extended ladder or full high-scale C generator output; compare against square-branch probes in research/04-bounded-compression/.  
 Why strong: Supplies deterministic rule for w position itself ("the offset w−p is the offset of the first d=4 when square flag = false"). Dominant regime (d(w)=4 in ~80-85% of gaps on surface). Directly usable as carrier from visible pre-w structure.  
 Drift risks: Must always qualify "under square exclusion on this surface"; semiprime-only strengthening already invalidated by prime-cube family.  
@@ -168,15 +168,15 @@ Why strong: Extends chamber-reset signatures into endpoint-determinacy resolutio
 
 ## Ranked Top 5 Strongest Candidates
 
-1. **d4_count ordering carrier for next-triad state (mod30_prev_gap_exact)** — Strongest existing measured precedent. Exact surface, held-out protocol, decisive edge, fully PGS-native, ready for immediate extension to w-offset. Highest immediate publishable value.
+1. **d4_count ordering carrier for next-triad state (mod30_prev_gap_exact)**: Strongest existing measured precedent. Exact surface, held-out protocol, decisive edge, fully PGS-native, ready for immediate extension to w-offset. Highest immediate publishable value.
 
-2. **First-d=4 = GWR w under square exclusion** — Dominant regime, zero violations on massive ladder, direct w-position rule from visible pre-w structure. Extremely clean falsification surface.
+2. **First-d=4 = GWR w under square exclusion**: Dominant regime, zero violations on massive ladder, direct w-position rule from visible pre-w structure. Extremely clean falsification surface.
 
-3. **NLSC + lock_carrier / threat horizon post-w closure (type-specific)** — Proved foundation + generator runtime emission + d4-specific ceilings. Constrains the most important future state (next q after w).
+3. **NLSC + lock_carrier / threat horizon post-w closure (type-specific)**: Proved foundation + generator runtime emission + d4-specific ceilings. Constrains the most important future state (next q after w).
 
-4. **w-offset carrier from d4_count + square-phase + previous tail** — Explicitly recommended in the predictions contract as the minimal executable next step. Leverages existing generator emission (carrier_w) and 05 machinery.
+4. **w-offset carrier from d4_count + square-phase + previous tail**: Explicitly recommended in the predictions contract as the minimal executable next step. Leverages existing generator emission (carrier_w) and 05 machinery.
 
-5. **Previous-chamber reset-lock / carrier-shift / higher-divisor pressure transport** — Rich family of probe-supported hypotheses directly using transported PGS chamber invariants (lock, signature, shift) to constrain current w/boundary. Highest density of existing artifacts among open hypotheses.
+5. **Previous-chamber reset-lock / carrier-shift / higher-divisor pressure transport**: Rich family of probe-supported hypotheses directly using transported PGS chamber invariants (lock, signature, shift) to constrain current w/boundary. Highest density of existing artifacts among open hypotheses.
 
 All others (reset_signature modulation, excess-accumulation closure, gap-type grammar extensions, endpoint-chain transport, special-chamber unification, boundary-drop) are strong supporting surfaces that can be measured on the same retained catalogs or probe outputs.
 

@@ -4,7 +4,7 @@ Released under the MIT License as described in the file LICENSE.
 Authors: PGS Project
 
 Direct next-prime theorem + weak L_FCL (Phase 4).
-Traceability: PROOF.md §§1–2, weak_lfcl_proof_target.html
+Traceability: PROOF.md §§1 to 2, weak_lfcl_proof_target.html
 -/
 
 import PGS.Basic
@@ -16,7 +16,7 @@ open PGS.ChamberReset
 
 /-! ## Direct τ-scan next prime (PROOF.md) -/
 
-/-- Proved selection rule from PROOF.md — formal definition deferred to Phase 4b. -/
+/-- Proved selection rule from PROOF.md: formal definition deferred to Phase 4b. -/
 def IsNextPrime (p q : Nat) : Prop :=
   (∀ n, p < n → n < q → tau n ≠ 2) ∧ tau q = 2
 

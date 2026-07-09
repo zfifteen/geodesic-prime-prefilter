@@ -66,15 +66,15 @@ p.run_full_w_offset_sweep(
 ```
 
 ## 3. Current Status (measured with exact regime / hypothesis / etc.)
-**Measured result on exact retained surface** (10^12–10^13 window of the audited 8192-row 10^12–10^18 catalog, d=4 current chambers only, full held-out per-power protocol, tail_length control, exact match modes).
+**Measured result on exact retained surface** (10^12 to 10^13 window of the audited 8192-row 10^12 to 10^18 catalog, d=4 current chambers only, full held-out per-power protocol, tail_length control, exact match modes).
 
 On this regime:
 - d4_count (and other divisor-field scalars) under mod30_prev_gap_exact produces positive directional signed advantage for earlier next-chamber w ( +329 oriented vs tail +296, edge +33 on 6103 decisive pairs; 2/2 positive folds; all folds above min support).
 - However, edge (33) falls short of the required gate (50 = max(50, 0.005*6103)) and the full conjunction (including total decisive_pairs threshold calibrated on the larger d4 precedent) is not met.
-- Verdict: **does_not** (ordering carrier not found on this surface under the strict protocol). Explicit "unresolved" state returned for the w-position carrier hypothesis on 10^12–10^13 cross-chamber.
+- Verdict: **does_not** (ordering carrier not found on this surface under the strict protocol). Explicit "unresolved" state returned for the w-position carrier hypothesis on 10^12 to 10^13 cross-chamber.
 - Current_winner_offset (within-chamber baseline) run on power 12: also "does_not" (null signal, consistent with 2026-05-30 baseline probe).
 
-**Epistemic label**: Measured on exact regime (finite retained surface, full held-out, controls, gates). No promotion to hypothesis or theorem. The positive signal (edge +33, all folds positive) is retained as useful data narrowing the search space for stronger w-position carriers (square-phase utilization, reset/lock signatures, prior-chamber transport — see related T-002/T-003).
+**Epistemic label**: Measured on exact regime (finite retained surface, full held-out, controls, gates). No promotion to hypothesis or theorem. The positive signal (edge +33, all folds positive) is retained as useful data narrowing the search space for stronger w-position carriers (square-phase utilization, reset/lock signatures, prior-chamber transport, see related T-002/T-003).
 
 State separation maintained: the carrier returns explicit unresolved when gates fail; no probabilistic claims.
 
@@ -103,10 +103,10 @@ Extend with square-phase bit (U_□ split) and reset_signature sidecars (from T-
 High latent value on the exact 8192-row surface and generator emission points (carrier_w already present in every chamber-reset certificate). The protocol is now fully reusable for Family 1 unification with d4_count (joint rules). On the measured 12-13 slice the carrier returns explicit unresolved (correct behavior per v0.1 contract definition). Positive directional edge on the strongest mode provides a concrete falsifiable signal for future surfaces or richer invariants. Directly advances Master Rank #2 without classical or probabilistic machinery.
 
 ## 6. Drift Risks (self-audit)
-- Re-interpreting the measured positive edge (+33) as "likely" or "suggestive" — forbidden; recorded only as exact counts on finite surface.
-- Scope creep beyond d=4 current chambers or outside match modes — prevented by the code (filter + MATCH_MODES only).
-- Treating the generator's internal carrier_w as the inference engine — avoided; post-hoc measurement on retained catalog only.
-- Legacy "predictor" language — none present in any new code or this report.
+- Re-interpreting the measured positive edge (+33) as "likely" or "suggestive", forbidden; recorded only as exact counts on finite surface.
+- Scope creep beyond d=4 current chambers or outside match modes, prevented by the code (filter + MATCH_MODES only).
+- Treating the generator's internal carrier_w as the inference engine, avoided; post-hoc measurement on retained catalog only.
+- Legacy "predictor" language, none present in any new code or this report.
 - All shape guardrails from pgs_predictions_v0.1_contract.html observed.
 
 ## 7. Validation Gates Checklist (self-passed before any catalogue impact)

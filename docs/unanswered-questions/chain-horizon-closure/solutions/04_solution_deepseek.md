@@ -4,7 +4,7 @@
 
 ## 1. Introduction
 
-The `chain_horizon_closure` function is the only component of the Minimal PGS Generator that still relies on deterministic divisor checking.  At the highest probed scales (10¹⁵ and 10¹⁸), about **56–58 %** of the outputted primes pass through this non‑PGS bridge.  The missing mathematical object is a **divisor‑horizon predictor**
+The `chain_horizon_closure` function is the only component of the Minimal PGS Generator that still relies on deterministic divisor checking.  At the highest probed scales (10¹⁵ and 10¹⁸), about **56 to 58 %** of the outputted primes pass through this non‑PGS bridge.  The missing mathematical object is a **divisor‑horizon predictor**
 
 $$H(p, s_0, \text{chain state})$$
 
@@ -68,7 +68,7 @@ However, the terminal decision inside `chain_horizon_closure_result` still calls
 
 **Weaknesses:**
 
-- Overly optimistic about the current state of the mining scripts—none of them yet output the exact `max_spf` statistic.
+- Overly optimistic about the current state of the mining scripts:none of them yet output the exact `max_spf` statistic.
 - Does not propose a specific functional form for $H$; the suggested `H = 2 × max_chain_gap + residue_dependent_constant` is vague.
 
 **Simulated experiment:**  Running the proposed extension on the existing probe logs would produce a histogram of `max_spf` values.  Based on the generator’s operational behaviour, we would expect:
@@ -256,7 +256,7 @@ If these numbers hold, **any** of the candidate horizon functions (H₁ through 
     - Ingest the chain‑fallback probe rows already generated for 10¹², 10¹⁵, 10¹⁸.
     - For each false node, record `lpf` and the PGS‑visible features.
     - Compute `max_lpf` per chain.
-    - Test each of the six candidate horizon laws (H₀–H₆) for:
+    - Test each of the six candidate horizon laws (H₀ to H₆) for:
         - 100 % closure of pre‑terminal false nodes.
         - Correct selection of the first surviving terminal node.
         - Horizon magnitude relative to $\sqrt{n}$.
@@ -275,7 +275,7 @@ If the simulated experiment is confirmed, the winning horizon law will take the 
 
 $$H(p, s_0, \text{chain state}) = \max\Bigl(\text{visible divisor bound},\; \text{visible divisor bound} + k \cdot \text{max chain gap}\Bigr)$$
 
-with $k \in \{1, 2\}$.  This expression is **entirely PGS‑visible**: the `visible_divisor_bound` is a fixed constant (10,000), and the `max_chain_gap` is computed from the wheel‑open offsets already in the search interval.  Substituting this $H$ for `horizon_bound=None` in `chain_horizon_closure_result` would convert the current 56–58 % non‑PGS bridge into **100 % PGS‑derived output** at all scales.
+with $k \in \{1, 2\}$.  This expression is **entirely PGS‑visible**: the `visible_divisor_bound` is a fixed constant (10,000), and the `max_chain_gap` is computed from the wheel‑open offsets already in the search interval.  Substituting this $H$ for `horizon_bound=None` in `chain_horizon_closure_result` would convert the current 56 to 58 % non‑PGS bridge into **100 % PGS‑derived output** at all scales.
 
 ---
 

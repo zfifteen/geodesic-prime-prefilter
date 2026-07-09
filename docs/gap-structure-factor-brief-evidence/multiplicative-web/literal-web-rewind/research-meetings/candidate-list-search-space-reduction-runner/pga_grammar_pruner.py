@@ -11,7 +11,7 @@ prime-gap state, attractor subtype + phase in public grammar word, GWR/DNI
 compositional bias). No classical primality, factoring of N, or probabilistic
 methods are used.
 
-Rules: 97 validated public grammar rules (PG-001..PG-097) derived from the 601_5500 multiplication-map law surface and targeted mining on larger enriched surfaces (27k–35k) plus Workstream D expansions for a4_d4_a6 / o*_d4_a6 / high-a specific-phase families. All rules are non-overlapping within motif families by construction.
+Rules: 97 validated public grammar rules (PG-001..PG-097) derived from the 601_5500 multiplication-map law surface and targeted mining on larger enriched surfaces (27k to 35k) plus Workstream D expansions for a4_d4_a6 / o*_d4_a6 / high-a specific-phase families. All rules are non-overlapping within motif families by construction.
 
 - Automatically derives (via lookup table for the frozen toy corpus) or accepts
   the structural motif (containing exact_type@phase) from N.
@@ -132,7 +132,7 @@ PRUNING_RULES: list[dict[str, Any]] = [
     {"id": "PG-035", "motif": "o4_d4_a4_d4_odd@mid + o2_d4_odd prev", "description": "a4-mid + o2 prev → prune early:1|mid:3|late:1 o2-heavy reversal", "pruned_count": 3},
     {"id": "PG-036", "motif": "o2_d4_a2_d4_odd@early", "description": "a2-early → prune L/R o2 on right of seg2 when seg1 left is o4+ (reversal)", "pruned_count": 3},
     {"id": "PG-037", "motif": "o6_d4_a6_d4_odd@mid", "description": "a6-mid → prune mid:3|very_late:1 on o4:2|o6:2 (boundary late)", "pruned_count": 3},
-    # Sprint push rules — deeper mining of 601_5500 factor_class_pivot (301 zero-observed exclusions under o2_a2)
+    # Sprint push rules: deeper mining of 601_5500 factor_class_pivot (301 zero-observed exclusions under o2_a2)
     # Conservative pruned_count (50-70% of grouped excluded_word totals to guarantee non-overlap with prior 37)
     {"id": "PG-038", "motif": "o2_d4_a2_d4_odd@mid", "description": "a2-mid + o4_higher_divisor_even prev → additional mid-heavy o2:1|o4:2|o6:1 and o2:2|o4:2 classes (92-word pivot group)", "pruned_count": 14},
     {"id": "PG-039", "motif": "o2_d4_a2_d4_odd@mid", "description": "a2-mid + o6_d4_odd prev + o2 next → mid:3|late:1 o2:2|o4:2 (62-word group)", "pruned_count": 9},
@@ -194,12 +194,12 @@ PRUNING_RULES: list[dict[str, Any]] = [
     # Exact motif rules only; no broad high-a promotion. Each rule is backed by
     # zero-observed residue/phase factor-neighborhood classes on 27k-34k
     # extraction rows and zero held-out contradictions on 34k-35k rows.
-    {"id": "PG-085", "motif": "o6_d4_a6_d4_odd@mid + o2_d4_odd prev", "description": "exact weak live motif → prune 30 zero-observed residue/phase classes from enriched 27k–35k surfaces", "pruned_count": 30},
-    {"id": "PG-086", "motif": "o4_d4_a4_d4_odd@early + o4_higher_divisor_even prev", "description": "exact weak live motif → prune 30 zero-observed residue/phase classes from enriched 27k–35k surfaces", "pruned_count": 30},
-    {"id": "PG-087", "motif": "o2_d4_a2_d4_odd@late + o4_d4_odd prev", "description": "exact weak live motif → prune 30 zero-observed residue/phase classes from enriched 27k–35k surfaces", "pruned_count": 30},
-    {"id": "PG-088", "motif": "o2_d4_a6_d4_odd@mid + o4_higher_divisor_odd prev", "description": "exact weak live motif → prune 30 zero-observed residue/phase classes from enriched 27k–35k surfaces", "pruned_count": 30},
-    {"id": "PG-089", "motif": "o4_d4_a6_d4_odd@mid + o6_d4_odd prev", "description": "exact weak live motif → prune 30 zero-observed residue/phase classes from enriched 27k–35k surfaces", "pruned_count": 30},
-    # Workstream D (Rule Mining & Coverage Improvement) — 8 new exact-motif pruning rules
+    {"id": "PG-085", "motif": "o6_d4_a6_d4_odd@mid + o2_d4_odd prev", "description": "exact weak live motif → prune 30 zero-observed residue/phase classes from enriched 27k to 35k surfaces", "pruned_count": 30},
+    {"id": "PG-086", "motif": "o4_d4_a4_d4_odd@early + o4_higher_divisor_even prev", "description": "exact weak live motif → prune 30 zero-observed residue/phase classes from enriched 27k to 35k surfaces", "pruned_count": 30},
+    {"id": "PG-087", "motif": "o2_d4_a2_d4_odd@late + o4_d4_odd prev", "description": "exact weak live motif → prune 30 zero-observed residue/phase classes from enriched 27k to 35k surfaces", "pruned_count": 30},
+    {"id": "PG-088", "motif": "o2_d4_a6_d4_odd@mid + o4_higher_divisor_odd prev", "description": "exact weak live motif → prune 30 zero-observed residue/phase classes from enriched 27k to 35k surfaces", "pruned_count": 30},
+    {"id": "PG-089", "motif": "o4_d4_a6_d4_odd@mid + o6_d4_odd prev", "description": "exact weak live motif → prune 30 zero-observed residue/phase classes from enriched 27k to 35k surfaces", "pruned_count": 30},
+    # Workstream D (Rule Mining & Coverage Improvement): 8 new exact-motif pruning rules
     # mined from enriched_multiplication_map_corpus_27001_30000 / 32001_34000 (train)
     # + heldout 34001_35000. Targeted at under-covered exotic/high-a families
     # (a4_d4_a6, o2/o4/o6_d4_a6, a4_d4 with specific prev, a8/a10 + prev/phase)
@@ -376,7 +376,7 @@ def main() -> None:
     print(f"Public motif: {result['public_motif']}")
     print(f"Original factor hypothesis space: {result['original_space']}")
     if result.get("status") == "unresolved":
-        print(f"Status: UNRESOLVED — {result.get('reason', '')}")
+        print(f"Status: UNRESOLVED : {result.get('reason', '')}")
         print("No pruning applied. Supply --public-motif (public GWR/DNI derivation from the N-chamber).")
     else:
         print(f"Rules fired: {result['rules_fired']} ({result['rules_count']} rules)")
@@ -518,7 +518,7 @@ def run_batch_on_toy_corpus() -> None:
     print(f"Summary written to: {out_dir / 'summary.json'}")
     print(f"            and to: {out_dir / 'summary.md'}")
     print()
-    print(f"Rules in effect: {len(PRUNING_RULES)} public grammar rules (601_5500 seed + 27k–35k expansions):")
+    print(f"Rules in effect: {len(PRUNING_RULES)} public grammar rules (601_5500 seed + 27k to 35k expansions):")
     for rule in PRUNING_RULES:
         print(f"  {rule['id']}: {rule['motif']} → {rule['pruned_count']}")
     print()

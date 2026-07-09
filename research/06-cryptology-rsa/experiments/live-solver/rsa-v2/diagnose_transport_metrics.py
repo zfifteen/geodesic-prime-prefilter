@@ -147,7 +147,7 @@ def compute_metrics(case_id: str, row: dict) -> TransportMetrics:
 def print_table(metrics_list: list[TransportMetrics]) -> None:
     """Print one compact transport-metric table."""
     print("\n" + "=" * 120)
-    print("RSA v2 PGSPG Certificate Transport Metrics — Phase 1 Diagnostic")
+    print("RSA v2 PGSPG Certificate Transport Metrics. Phase 1 Diagnostic")
     print("=" * 120)
 
     header = (
@@ -256,7 +256,7 @@ def main():
             for name, result in preds.items():
                 print(f"  {name}: {result}")
         else:
-            print(f"\n{m.case_id} ({m.bits} bit) — N/A (no survivor cert — unresolved_missing_lower)")
+            print(f"\n{m.case_id} ({m.bits} bit). N/A (no survivor cert, unresolved_missing_lower)")
 
 
 if __name__ == "__main__":

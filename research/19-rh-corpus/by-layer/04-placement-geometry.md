@@ -1,4 +1,4 @@
-# Layer 4 — Placement geometry
+# Layer 4: Placement geometry
 
 **Status mix:** `proved`, `measured`, `hypothesis`, `unresolved`, `invalidated`  
 **Proves RH?** No (partial progress toward source-to-spectral target)
@@ -17,10 +17,10 @@ and can that geometry constrain spectral placement?
 |------|--------------|----------------|
 | `pgs_rh_bridge_placement_focus_prompt.md` | Internal research prompt | Any placement theorem |
 | `docs/faq/**` | Reviewer vocabulary | RH or compression |
-| `research/12-rh-bridge/**` (beyond RH-090–092) | Archived workbench | Live placement route |
+| `research/12-rh-bridge/**` (beyond RH-090 to 092) | Archived workbench | Live placement route |
 | `research/18-derived-half-coefficient/FORMALIZATION_PROPOSAL.md` | Lean scaffolding memo | F18-001 (already RH-006) |
 
-Indexed placement findings: RH-030–035, RH-071, RH-080–081. See [GAP_ANALYSIS.md](../GAP_ANALYSIS.md).
+Indexed placement findings: RH-030 to 035, RH-071, RH-080 to 081. See [GAP_ANALYSIS.md](../GAP_ANALYSIS.md).
 
 ---
 
@@ -41,7 +41,7 @@ counterexamples at $10^6$.
 | Item | Status | Artifact |
 |------|--------|----------|
 | Invalidated rule | RH-033 uniform `frac_pos ≤ ½` | [pgs_d4_frac_pos_falsification_1000000.json](../../pgs-rh-placement-empirics-2026-06/pgs_d4_frac_pos_falsification_1000000.json) |
-| **Replacement (proved)** | RH-030 gap-dependent bound | [d4_fractional_position_bound.md](../../pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md) §Phase 5–6 |
+| **Replacement (proved)** | RH-030 gap-dependent bound | [d4_fractional_position_bound.md](../../pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md) §Phase 5 to 6 |
 | Scale corroboration | RH-071 measured at $10^7$ | [pgs_d4_frac_pos_falsification_10000000.json](../../pgs-rh-placement-empirics-2026-06/pgs_d4_frac_pos_falsification_10000000.json) |
 
 **Principle:** Do not use a global half-line placement rule. Use the gap-dependent
@@ -60,8 +60,8 @@ at $10^7+$).
 | [RH-035](../FINDINGS_INDEX.md) | unresolved | [Source-to-spectral transfer lemma](../../pgs-rh-placement-empirics-2026-06/source_to_spectral_transfer_lemma.md) | [source_to_spectral_transfer_lemma.md](../../pgs-rh-placement-empirics-2026-06/source_to_spectral_transfer_lemma.md) |
 | [RH-040](../FINDINGS_INDEX.md) | hypothesis | [Half-scale correspondence](../../18-derived-half-coefficient/docs/half-scale-correspondence-hypothesis.md) | [18-derived-half-coefficient/docs/half-scale-correspondence-hypothesis.md](../../18-derived-half-coefficient/docs/half-scale-correspondence-hypothesis.md) |
 | [RH-071](../FINDINGS_INDEX.md) | measured | [d=4 falsification 10⁷](../../pgs-rh-placement-empirics-2026-06/pgs_d4_frac_pos_falsification_10000000.json) | [pgs_d4_frac_pos_falsification_10000000.json](../../pgs-rh-placement-empirics-2026-06/pgs_d4_frac_pos_falsification_10000000.json) |
-| [RH-080](../FINDINGS_INDEX.md) | measured | [Lean Placement.lean](../../../lean-4/PGS/Placement.lean) | [lean-4/PGS/Placement.lean](../../../lean-4/PGS/Placement.lean) — [closure roadmap](../../../lean-4/PLACEMENT_FORMALIZATION_ROADMAP.md) M0–M3 |
-| [RH-081](../FINDINGS_INDEX.md) | measured | [Lean placement invariants](../../../lean-4/pgs-rh-placement-invariants.lean) | [lean-4/pgs-rh-placement-invariants.lean](../../../lean-4/pgs-rh-placement-invariants.lean) — smoke re-export; roadmap M0/M3.2 |
+| [RH-080](../FINDINGS_INDEX.md) | measured | [Lean Placement.lean](../../../lean-4/PGS/Placement.lean) | [lean-4/PGS/Placement.lean](../../../lean-4/PGS/Placement.lean) : [closure roadmap](../../../lean-4/PLACEMENT_FORMALIZATION_ROADMAP.md) M0 to M3 |
+| [RH-081](../FINDINGS_INDEX.md) | measured | [Lean placement invariants](../../../lean-4/pgs-rh-placement-invariants.lean) | [lean-4/pgs-rh-placement-invariants.lean](../../../lean-4/pgs-rh-placement-invariants.lean), smoke re-export; roadmap M0/M3.2 |
 | [RH-092](../FINDINGS_INDEX.md) | archived | [Off-axis pair carrier](../../12-rh-bridge/README.md) | [12-rh-bridge/docs/off_axis_pair_carrier_lemma_resolution.md](../../12-rh-bridge/README.md) |
 
 **Folder home:** [pgs-rh-placement-empirics-2026-06](../../pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md)

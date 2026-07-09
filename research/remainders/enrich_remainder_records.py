@@ -59,9 +59,9 @@ def compute_derived_remainder_scalars(
        for the corresponding residues compute min(r, m-r) or simply the
        residue value itself if "distance to nearest forbidden" means dist to 0
        (i.e. the residue when aligned to 0 class). Plan uses "distance to nearest
-       forbidden class" — here we take the actual r for the 30 and 210 slots
+       forbidden class", here we take the actual r for the 30 and 210 slots
        (r is already the distance to 0 mod that m).
-    5. coprime_to_210: look at first 4 entries (corresponding to 2,3,5,7) —
+    5. coprime_to_210: look at first 4 entries (corresponding to 2,3,5,7) :
        all(r != 0 for those).
     6. Return dict with stable key names.
 

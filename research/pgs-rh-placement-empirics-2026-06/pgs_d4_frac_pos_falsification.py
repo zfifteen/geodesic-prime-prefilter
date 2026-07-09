@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Falsification harness for d=4 fractional-position bound (Phases 5–7).
+"""Falsification harness for d=4 fractional-position bound (Phases 5 to 7).
 
 Checks proved/measured obligations from d4_fractional_position_bound.md on finite
-regimes. Audit only — does not perform PGS inference.
+regimes. Audit only, does not perform PGS inference.
 """
 
 from __future__ import annotations

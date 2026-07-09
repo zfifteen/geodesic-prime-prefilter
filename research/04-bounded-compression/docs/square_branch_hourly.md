@@ -12,7 +12,7 @@ Bootstrap: system installed 2026-06-19. Queue starts at falsification
 ## 2026-06-19T00:00:00Z bootstrap
 
 Mechanism:
-Hourly relay bootstrap — dispatcher, wrapper, launchd, ACTIVE_TARGET contract.
+Hourly relay bootstrap, dispatcher, wrapper, launchd, ACTIVE_TARGET contract.
 
 Method:
 Installed `scripts/pgs-hourly-advance.sh`, `research/00-index/scripts/hourly_advance_dispatch.py`,
@@ -37,7 +37,7 @@ Run falsification `3·10^8 .. 4·10^8` via deterministic queue item
 ## 2026-06-19T08:43:54Z run
 
 Mechanism:
-Square-branch dynamic-cutoff falsification sweep on prime roots 300M–400M
+Square-branch dynamic-cutoff falsification sweep on prime roots 300M to 400M
 
 Method:
 deterministic dispatch: python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py --min-prime 300000001 --max-prime 400000000 --output-dir research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_3e8_4e8
@@ -73,7 +73,7 @@ Structural audit of recurring offset 540 on new extremal rows if no counterexamp
 ## 2026-06-19T08:46:09Z run
 
 Mechanism:
-Square-branch dynamic-cutoff falsification sweep on prime roots 300M–400M
+Square-branch dynamic-cutoff falsification sweep on prime roots 300M to 400M
 
 Method:
 deterministic dispatch: /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py --min-prime 300000001 --max-prime 400000000 --output-dir research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_3e8_4e8
@@ -143,12 +143,12 @@ Artifacts:
 /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 experiments/square-branch-sda-invalidation-2026-06/square_branch_prefix_tau_floor_probe.py; experiments/square-branch-sda-invalidation-2026-06/prefix_tau_floor_probe.json
 
 Next step:
-Queue falsification 400M–500M or draft Chamber-Reset Endpoint Resolution Lemma subsection.
+Queue falsification 400M to 500M or draft Chamber-Reset Endpoint Resolution Lemma subsection.
 
 ## 2026-07-05T13:06:30Z run
 
 Mechanism:
-Square-branch dynamic-cutoff falsification sweep on prime roots 300M–400M
+Square-branch dynamic-cutoff falsification sweep on prime roots 300M to 400M
 
 Method:
 deterministic dispatch: /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py --min-prime 300000001 --max-prime 400000000 --output-dir research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_3e8_4e8
@@ -218,12 +218,12 @@ Artifacts:
 /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 experiments/square-branch-sda-invalidation-2026-06/square_branch_prefix_tau_floor_probe.py; experiments/square-branch-sda-invalidation-2026-06/prefix_tau_floor_probe.json
 
 Next step:
-Queue falsification 400M–500M or draft Chamber-Reset Endpoint Resolution Lemma subsection.
+Queue falsification 400M to 500M or draft Chamber-Reset Endpoint Resolution Lemma subsection.
 
 ## 2026-07-06T15:06:40Z run
 
 Mechanism:
-Square-branch dynamic-cutoff falsification sweep on prime roots 300M–400M
+Square-branch dynamic-cutoff falsification sweep on prime roots 300M to 400M
 
 Method:
 deterministic dispatch: /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py --min-prime 300000001 --max-prime 400000000 --output-dir research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_3e8_4e8
@@ -293,12 +293,12 @@ Artifacts:
 /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 experiments/square-branch-sda-invalidation-2026-06/square_branch_prefix_tau_floor_probe.py; experiments/square-branch-sda-invalidation-2026-06/prefix_tau_floor_probe.json
 
 Next step:
-Queue falsification 400M–500M or draft Chamber-Reset Endpoint Resolution Lemma subsection.
+Queue falsification 400M to 500M or draft Chamber-Reset Endpoint Resolution Lemma subsection.
 
 ## 2026-07-08T14:06:33Z run
 
 Mechanism:
-Square-branch dynamic-cutoff falsification sweep on prime roots 300M–400M
+Square-branch dynamic-cutoff falsification sweep on prime roots 300M to 400M
 
 Method:
 deterministic dispatch: /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py --min-prime 300000001 --max-prime 400000000 --output-dir research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_3e8_4e8

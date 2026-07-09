@@ -1,4 +1,4 @@
-# Chamber-Reset × Endpoint-Chain Horizon × Modulus-Link — Candidate 1
+# Chamber-Reset × Endpoint-Chain Horizon × Modulus-Link: Candidate 1
 
 **PGS-first framing.** All objects are deterministic: divisor-count field `τ`, Rule X chamber-reset replay, PGS endpoint-chain emission (`emit_record`), and modulus-link residual `N − ab`. No classical factoring oracle, no trial division, no probabilistic sieve.
 
@@ -10,7 +10,7 @@
 
 ## One Sharp Falsifiable Insight
 
-> **Horizon–Residual Duality Gate (HRDG).**  
+> **Horizon to Residual Duality Gate (HRDG).**  
 > Chamber-reset `lower_d_threat_offset` is the *forward* endpoint-chain horizon that demotes false prime-reset survivors inside one gap chamber; modulus-link residual `N − ab` is the *multiplicative* endpoint-chain horizon that demotes false floor-transport endpoint pairs across the locked chain. A semiprime factorization `(p, q)` is selected **iff** both horizons vanish simultaneously at the same oriented chain node: the upper factor’s chamber-reset certificate emits `q` as the unique resolved survivor, and `modulus_link_residual(N, p, q) = 0` with reciprocal floor closure.
 
 **Falsifier.** Find a semiprime `N = pq` and PGS seed such that:
@@ -26,7 +26,7 @@ If no such case exists on an extended probe surface, HRDG stands as the governin
 
 ### 1. Chamber state reset fixes the forward horizon
 
-Rule X (`pgs_chamber_reset_v1`) walks the divisor-count field in increasing offset order. It locks the GWR carrier at the first `RESOLVED_SURVIVOR`, then scans for a **lower-τ threat** after the lock. Any wheel-open offset strictly beyond that threat is demoted — reset freedom ends.
+Rule X (`pgs_chamber_reset_v1`) walks the divisor-count field in increasing offset order. It locks the GWR carrier at the first `RESOLVED_SURVIVOR`, then scans for a **lower-τ threat** after the lock. Any wheel-open offset strictly beyond that threat is demoted: reset freedom ends.
 
 ```89:114:src/python/z_band_prime_predictor/simple_pgs_generator.py
     threat_offset: int | None = None
@@ -88,7 +88,7 @@ def modulus_link_residual(modulus: int, left_endpoint: int, right_endpoint: int)
     return modulus - left_endpoint * right_endpoint
 ```
 
-**HRDG claim:** A reciprocal floor pair `(a, b)` with `b = ⌊N/a⌋` already locked but `N − ab ≠ 0` is a *multiplicative shadow survivor* — the chain-horizon analogue of a wheel-open offset that would survive past `lower_d_threat_offset` if threat demotion were omitted. The probe’s `skipped_floor_closures` counter is the operational witness of this demotion.
+**HRDG claim:** A reciprocal floor pair `(a, b)` with `b = ⌊N/a⌋` already locked but `N − ab ≠ 0` is a *multiplicative shadow survivor*: the chain-horizon analogue of a wheel-open offset that would survive past `lower_d_threat_offset` if threat demotion were omitted. The probe’s `skipped_floor_closures` counter is the operational witness of this demotion.
 
 ### 4. Observed interaction (wide-control witness)
 
@@ -109,18 +109,18 @@ This is the duality: **threat demotion protects forward offset uniqueness; resid
 
 | Role | Location |
 |------|----------|
-| Chamber-reset threat horizon | `simple_pgs_generator.py` L89–114, L146 |
-| Reset deadline semantics (public law) | `endpoint_structure_law.md` L58–62 |
-| Modulus-link walk + residual gate | `scale_pgs_chain_modulus_link.py` L70–72, L104–128 |
-| PGS next-endpoint emission | `simple_pgs_generator.py` L190–198 via `emit_record` |
-| Modulus-link collision (square branch origin) | `PROOF.md` L615–616, Lean `ChamberReset.lean` L348–353 |
-| Rule X replay mirror (Lean) | `lean-4/PGS/ChamberReset.lean` L83–96 |
+| Chamber-reset threat horizon | `simple_pgs_generator.py` L89 to 114, L146 |
+| Reset deadline semantics (public law) | `endpoint_structure_law.md` L58 to 62 |
+| Modulus-link walk + residual gate | `scale_pgs_chain_modulus_link.py` L70 to 72, L104 to 128 |
+| PGS next-endpoint emission | `simple_pgs_generator.py` L190 to 198 via `emit_record` |
+| Modulus-link collision (square branch origin) | `PROOF.md` L615 to 616, Lean `ChamberReset.lean` L348 to 353 |
+| Rule X replay mirror (Lean) | `lean-4/PGS/ChamberReset.lean` L83 to 96 |
 
 ---
 
 ## Testable Predictions
 
-### P1 — Skip–residual identity (direct, falsifiable)
+### P1: Skip to residual identity (direct, falsifiable)
 
 On any semiprime probe surface extending `SCALE_CASES`:
 
@@ -133,7 +133,7 @@ skipped_floor_closures
 
 **Test:** Instrument `recursive_chain_modulus_lock` to log every near-closure step; confirm equality for all 8 shipped cases (currently: 0 skips on 7 cases, 1 skip on `wide_control_15251`).
 
-### P2 — True lock aligns both horizons (HRDG closure)
+### P2: True lock aligns both horizons (HRDG closure)
 
 When `stop_reason = modulus_link_zero_locked` with pair `(p, q)` (`p < q`):
 
@@ -141,15 +141,15 @@ When `stop_reason = modulus_link_zero_locked` with pair `(p, q)` (`p < q`):
 2. `modulus_link_residual(N, p, q) = 0`.
 3. No earlier step satisfies (2) with the same `p`.
 
-**Test:** For each `ScaleCase` in `SCALE_CASES`, assert (1)–(3). All 8 cases currently pass `audit_match = True`.
+**Test:** For each `ScaleCase` in `SCALE_CASES`, assert (1) to (3). All 8 cases currently pass `audit_match = True`.
 
-### P3 — Threat demotion is necessary for chain purity (cross-law falsifier)
+### P3: Threat demotion is necessary for chain purity (cross-law falsifier)
 
-Synthetic intervention: rerun chamber-reset replay **without** threat post-processing (lines 113–114 of `simple_pgs_generator.py`) while holding the modulus-link walk fixed. HRDG predicts **new** spurious resolved survivors appear in certificates at offsets corresponding to skipped floor pairs, but the modulus-link walk still rejects them via residual — demonstrating that forward and multiplicative horizons are **independent necessary filters**, not redundant.
+Synthetic intervention: rerun chamber-reset replay **without** threat post-processing (lines 113 to 114 of `simple_pgs_generator.py`) while holding the modulus-link walk fixed. HRDG predicts **new** spurious resolved survivors appear in certificates at offsets corresponding to skipped floor pairs, but the modulus-link walk still rejects them via residual: demonstrating that forward and multiplicative horizons are **independent necessary filters**, not redundant.
 
 **Falsifier for P3:** If omitting threat demotion never creates a second resolved survivor on any chain node that participates in a skipped floor closure, the forward/multiplicative duality is overstated.
 
-### P4 — Budget compression (operational consequence)
+### P4: Budget compression (operational consequence)
 
 If HRDG holds, the endpoint-chain step budget for modulus-link closure on semiprime `N` with seed `s ≤ min(p, q)` need not exceed the index distance between `s` and `max(p, q)` in the PGS chain (currently bounded by `CHAIN_STEP_BUDGET = 4096`). Tightening the budget to that graph distance should not break any `SCALE_CASES` row.
 
@@ -164,7 +164,7 @@ If HRDG holds, the endpoint-chain step budget for modulus-link closure on semipr
 | Fixed search radius | Per-node horizon `min(lower_d_threat_offset, first_tail, B)` |
 | Factor-shaped audit output | Oriented endpoint class `(lower, upper)` with zero modulus-link residual |
 
-The HRDG insight does **not** claim a new factorization theorem. It claims a **structural isomorphism** between two already-implemented demotion gates — chamber-reset threat horizon and modulus-link residual — that jointly govern when the endpoint chain may legally halt. That isomorphism is the novel, testable bridge between the proved square-branch modulus-link collision (`PROOF.md`) and the live cryptology chain walker (`scale_pgs_chain_modulus_link.py`).
+The HRDG insight does **not** claim a new factorization theorem. It claims a **structural isomorphism** between two already-implemented demotion gates: chamber-reset threat horizon and modulus-link residual, that jointly govern when the endpoint chain may legally halt. That isomorphism is the novel, testable bridge between the proved square-branch modulus-link collision (`PROOF.md`) and the live cryptology chain walker (`scale_pgs_chain_modulus_link.py`).
 
 ---
 

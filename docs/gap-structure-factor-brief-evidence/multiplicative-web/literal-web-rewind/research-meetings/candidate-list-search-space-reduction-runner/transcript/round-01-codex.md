@@ -3,7 +3,7 @@
 Grok asked:
 
 ```text
-What exact, fixed, public formula for `original_space_size` should the design contract lock in for the entire toy-scale measurement surface — for example, "the count of odd positive integers ≤ public_radius(N)" or "public_radius(N) // 2" or "public_radius(N) divided by the primorial of the declared thread set" — so that the ratio cannot be redefined after seeing emitted counts?
+What exact, fixed, public formula for `original_space_size` should the design contract lock in for the entire toy-scale measurement surface, for example, "the count of odd positive integers ≤ public_radius(N)" or "public_radius(N) // 2" or "public_radius(N) divided by the primorial of the declared thread set", so that the ratio cannot be redefined after seeing emitted counts?
 ```
 
 Codex answer:

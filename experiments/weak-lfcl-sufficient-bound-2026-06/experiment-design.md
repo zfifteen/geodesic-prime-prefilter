@@ -1,7 +1,7 @@
 # Experiment Design: Weak L_FCL at Sufficient Bound + Audit-Demoted τ=2
 
 **Date:** 2026-06-19  
-**Hypothesis:** H<sub>CTC</sub>-weak — `research/02-gwr-dni/docs/chamber_tension_closure_hypothesis/`  
+**Hypothesis:** H<sub>CTC</sub>-weak: `research/02-gwr-dni/docs/chamber_tension_closure_hypothesis/`  
 **Objective:** On R2 (`11 ≤ p < 10^6`, `B = gap`), verify unique resolved reset, Rule X match, and audit-demoted τ=2 lemma.
 
 ## Estimands

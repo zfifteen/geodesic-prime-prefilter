@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>PGA Grammar Pruner — 25% Reduction Milestone • Prime Gap Structure</title>
+<title>PGA Grammar Pruner : 25% Reduction Milestone • Prime Gap Structure</title>
 <style>
 :root { --bg:#0b0f14; --fg:#e8eef5; --accent:#6ee7b7; --accent2:#a5b4fc; --card:#12181f; --warn:#f59e0b; }
 body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background:var(--bg); color:var(--fg); line-height:1.55; }
@@ -121,11 +121,11 @@ svg { max-width:100%; height:auto; }
 <div class="kv">
 <div class="card">
 <h3>601_5500 (seed surface)</h3>
-<p>PG-001–005 — core a2/a4 attractor mid/early exclusions from the original factor-class pivot. Highest individual power.</p>
+<p>PG-001 to 005, core a2/a4 attractor mid/early exclusions from the original factor-class pivot. Highest individual power.</p>
 </div>
 <div class="card">
-<h3>27k–35k Enriched Bands</h3>
-<p>PG-013–037 — very_late fringe, L/R reversal, and prev-bias refinements mined from directional_boundary_gate_surface_27k/32k/34k and corresponding enriched_multiplication_map_corpus outputs. These supplied the extra 4–6 rules per o2@mid motif that crossed the 25% line.</p>
+<h3>27k to 35k Enriched Bands</h3>
+<p>PG-013 to 037, very_late fringe, L/R reversal, and prev-bias refinements mined from directional_boundary_gate_surface_27k/32k/34k and corresponding enriched_multiplication_map_corpus outputs. These supplied the extra 4 to 6 rules per o2@mid motif that crossed the 25% line.</p>
 </div>
 </div>
 <p class="note">Full per-rule <code>pruned_count</code> and motif strings live in <span class="code">pga_grammar_pruner.py:58</span>. Catalog file contains the human-readable grouping and 0-FN guarantees.</p>
@@ -156,17 +156,17 @@ python pga_grammar_pruner.py --batch</code></pre>
 <section>
 <h2>Next Concrete Steps (Lead Decision Surface)</h2>
 <ol>
-<li><strong>Integration (recommended immediate)</strong> — Drop the pruner (or its rule list) into <code>literal_web_rich_reducer.py</code> and the thread-triangulation runners as a first-pass symbolic filter. Expected large wall-time win at 40–48 bits.</li>
-<li><strong>Automatic public-motif derivation</strong> — Wire a call to the existing public gap-type engine so raw N → motif with zero lookup table. Keeps the contract pure.</li>
-<li><strong>30–35% headroom mining</strong> — Task Rule Miner on one additional large band (e.g. 21001–23000 or 15001–17000 full corpus) looking for 4–8 more rules that survive the combined 0-FN audit.</li>
-<li><strong>Harder-surface validation</strong> — Freeze a 40–48-bit toy corpus (or 100-N slice) and re-measure realized reduction + FN rate on live transported candidate lists.</li>
-<li><strong>HTML living dashboard</strong> — This file is the first; keep it updated or promote to docs/ as the canonical visual surface.</li>
+<li><strong>Integration (recommended immediate)</strong>. Drop the pruner (or its rule list) into <code>literal_web_rich_reducer.py</code> and the thread-triangulation runners as a first-pass symbolic filter. Expected large wall-time win at 40 to 48 bits.</li>
+<li><strong>Automatic public-motif derivation</strong>. Wire a call to the existing public gap-type engine so raw N → motif with zero lookup table. Keeps the contract pure.</li>
+<li><strong>30 to 35% headroom mining</strong>. Task Rule Miner on one additional large band (e.g. 21001 to 23000 or 15001 to 17000 full corpus) looking for 4 to 8 more rules that survive the combined 0-FN audit.</li>
+<li><strong>Harder-surface validation</strong>. Freeze a 40 to 48-bit toy corpus (or 100-N slice) and re-measure realized reduction + FN rate on live transported candidate lists.</li>
+<li><strong>HTML living dashboard</strong>. This file is the first; keep it updated or promote to docs/ as the canonical visual surface.</li>
 </ol>
 <p style="margin-top:1rem;"><strong>Current team context</strong>: Rule Miner, Validator &amp; Safety Auditor, Prototype Integrator, Baseline Comparator, Documentation &amp; Audit Agent. All have clear next tickets once leadership picks the priority.</p>
 </section>
 
 <footer>
-PGS-first, deterministic, public-only. 25% line crossed — the grammar lever works. Ready for the next order of magnitude.
+PGS-first, deterministic, public-only. 25% line crossed, the grammar lever works. Ready for the next order of magnitude.
 <br>Generated in-session • 2026-05-22 • on branch codex/zero-excess-dni
 </footer>
 
