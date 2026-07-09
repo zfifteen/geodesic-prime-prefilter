@@ -18,23 +18,26 @@ $$q=\min\{n>p:\tau(n)=2\}$$
 `q`, the first integer with the smallest divisor count is the unique maximizer
 of the logarithmic comparison function below.
 
-**3. Universal bounded compression.** For every consecutive prime gap with
-nonempty interior, the GWR-selected witness `w` (the first interior integer
-with minimum divisor count) satisfies
+**3. Universal bounded compression (selected-witness offset `w − p`).** For
+every consecutive prime gap with nonempty interior, the GWR-selected witness
+`w` satisfies
 
 ```text
 w - p <= max(64, ceil(0.5 * log(q)^2)).
 ```
 
-This bound sits at the Cramér scale — the same `(log q)^2` envelope as
-Cramér's conjecture — and is proved deterministically from divisor-count
-invariants. The final square-branch case is closed by the **Prime-Square
-Proximity Theorem** (proved 2026-07-05).
+**Boundary (read at point of use).** This is a proved bound on the
+**selected-witness offset** `w − p` (prefix attainment), **not** on the raw
+consecutive-prime gap `q − p`. It does not by itself prove the Riemann
+Hypothesis, the Prime Number Theorem, or every classical formulation of
+Cramér's conjecture for gap size. The `(log q)²` scale matches Cramér's
+envelope but applies to witness placement, not gap width.
 
-**Boundary.** This is a proved bound on the selected-witness offset `w - p`
-(prefix attainment). It does not by itself prove the Riemann Hypothesis, the
-Prime Number Theorem, or every classical formulation of Cramér's conjecture for
-raw consecutive-prime gap size `q - p`. A Lean 4 formalization is in progress as an independent machine-checked mirror of the arguments. The mathematical proofs are fully established in this document.
+The bound is proved deterministically from divisor-count invariants. The final
+square-branch case is closed by the **Prime-Square Proximity Theorem** (proved
+2026-07-05). A Lean 4 formalization is in progress as an independent
+machine-checked mirror. The mathematical proofs are fully established in this
+document.
 
 **Three universal pillars** (logical: proved; scope: universal). Each pillar is
 established by analytic closure arguments in this document, citing certified
@@ -316,10 +319,10 @@ So the prime-square case is closed.
 
 Assume now that `w` is not a prime square, so `d >= 4`.
 
-Bertrand's theorem says that for every prime `p > 1`, there is a prime less
-than `2p`. Since `q` is the next prime after `p`, this gives `q < 2p`.
-Therefore every integer in the gap is less than `2p`, and every earlier
-integer `k` is greater than `p`.
+By [CL-001 (Bertrand postulate)](#cl-001--bertrand-postulate-classical-import),
+since `q` is the next prime after `p`, we have `q < 2p`. Therefore every
+integer in the gap is less than `2p`, and every earlier integer `k` is greater
+than `p`.
 
 For an earlier integer with divisor count `e` and chosen integer divisor count
 `d`, the comparison `F(k) < F(w)` is guaranteed by the stronger inequality
@@ -370,8 +373,9 @@ we have
 
 $$\sum_{n\in J}\tau(n)\le H(L+2)+2\sqrt N$$
 
-For each divisor pair of an integer `n < N`, at least one member of the pair is
-at most `sqrt(n) < sqrt(N)`. Therefore
+By [CL-002 (divisor-pair bound)](#cl-002--divisor-pair-bound-classical-import),
+each divisor pair of an integer `n < N` has at least one member at most
+`sqrt(n) < sqrt(N)`. Therefore
 
 $$\tau(n)\le 2\#\{a\le\sqrt N:a\mid n\}$$
 
@@ -407,7 +411,8 @@ For `p > 5,000,000,000`, the finite base has already closed all smaller cases. L
 
 $$d=\tau(w)\ge 4,\qquad L=\log w$$
 
-By Bertrand's theorem, `w < q < 2p`, so `p > w / 2`.
+By [CL-001 (Bertrand postulate)](#cl-001--bertrand-postulate-classical-import),
+`w < q < 2p`, so `p > w / 2`.
 
 It is enough to close the adjacent earlier divisor count `e = d + 1`, because
 the threshold `T(d,e)` decreases as `e` increases.
@@ -462,7 +467,8 @@ Set
 
 $$H=\left\lfloor\frac{wL}{4(d-1)}\right\rfloor$$
 
-For every integer `n`, `tau(n) <= 2sqrt(n)`, so `d = tau(w) <= 2sqrt(w)`.
+By [CL-002 (divisor-pair bound)](#cl-002--divisor-pair-bound-classical-import),
+`d = tau(w) <= 2sqrt(w)`.
 Thus
 
 $$
@@ -725,6 +731,13 @@ Because `r^2 < q`, this rigorously establishes the square-branch bounded-compres
 
 ## The Twin-Prime Resonance Theorem (GWR Super-Signal)
 
+**Logical position (proof spine).** Corollary of the [Interior Maximizer
+(GWR)](#interior-maximizer-theorem) winner definition — not a fourth universal
+pillar. Depends on GWR selected witness `w` and modular remainder-vector
+analysis only; does not use finite-base certificates or bounded-compression
+closure. Listed in [Theorem Stack Summary](#theorem-stack-summary) and
+[proof-spine.md](docs/proof-enhancements/proof-spine.md).
+
 **Theorem (GWR Super-Signal / Twin-Prime Resonance):**
 Let $G$ be a prime gap with interior $I = (p, q)$. Let $w \in I$ be the leftmost minimum divisor-count carrier (the GWR winner). Let $R(w)$ be the remainder vector of $w$ modulo the primorial bases $(2, 3, 5, 7, 30, 210, 2310)$. 
 If $R(w)$ contains 4 or more zeros, then the gap size is $g=2$, and the next integer $w+1$ is identically the prime $q$.
@@ -807,9 +820,21 @@ The analytic proofs in this document are closed over small bounds using exhausti
 
 ## Supplemental audit breakdown
 
-The stress sample near `10^12` checked `137,771` prime gaps and `649,769`
-earlier integers, with `0` unresolved cases. Its median offset was `1`, its
-99th percentile offset was `14`, and its worst offset was `42`.
+### 4. GWR stress sample (`gwr_stress_10e12_v1`)
+
+Measured certification near `10^12` (not a universal theorem premise):
+
+- **Gaps checked**: `137,771`
+- **Earlier integers checked**: `649,769`
+- **Failures**: `0`
+- **Median offset**: `1` · **99th percentile**: `14` · **Worst offset**: `42`
+- **Certificate**: [gwr_stress_10e12_v1.json](docs/proof-enhancements/certificates/gwr_stress_10e12_v1.json)
+  (`pinned_counts`: mirrors historical zenodo draft; emit refreshes hash only)
+- **Reproduction command**: `python3 docs/proof-enhancements/scripts/emit_certificates.py --lemma gwr_stress_10e12_v1`
+- **Artifact hash**: `sha256:d18e5119972bb1ec5e89d346c10eaae0c374df4126f215ebfd20ff3f83e24bf9`
+- **Historical record**: [zenodo_formal_proof_draft.md](research/00-index/docs/zenodo_formal_proof_draft.md) (Appendix A.1)
+- **Corroboration** (related measured surface, distinct window geometry):
+  `PYTHONPATH=src/python python3 research/02-gwr-dni/experiments/chatgpt/lexi_validation_runs.py --scale 1000000000000`
 
 ## Theorem Stack Summary
 
@@ -837,6 +862,78 @@ listed separately.
 | `bounded_compression_base_v1` | bounded-compression finite closure | finite-certified | finite (`q < ceil(exp(16))`) | lean-partial |
 | `residual_k128_v1` | high-τ branch elimination | finite-certified | residual (`k ≤ 128`) | lean-partial |
 
+## Imported Classical Lemmas
+
+These facts are **classical imports** (`classical-import` audit label). They
+are not PGS inference rules and do not enter the τ-scan selection mechanism.
+Each usage in the proof spine links back here.
+
+| ID | Statement | Usage in this document | Audit status |
+| --- | --- | --- | --- |
+| [CL-001](#cl-001--bertrand-postulate-classical-import) | Bertrand postulate (consecutive primes) | Witness Threshold Lemma; Large-Divisor Adjacent Closure | `classical-import` |
+| [CL-002](#cl-002--divisor-pair-bound-classical-import) | Divisor-pair bound `τ(n) ≤ 2√n` | Short Divisor-Average Lemma; Large-Divisor Adjacent Closure | `classical-import` |
+| [CL-003](#cl-003--prime-square-divisor-count-classical-import) | `τ(r²) = 3` for prime `r > 1` | Prime-Square Case; square-threat closure | `classical-import` |
+
+### CL-001 — Bertrand postulate (`classical-import`)
+
+**Statement.** If `p` and `q` are primes with `p < q` and no prime strictly
+between `p` and `q`, then `q < 2p`.
+
+**Equivalent form used below.** For every prime `p > 1`, there exists a prime
+in the open interval `(p, 2p)`. Since `q` is the next prime after `p`, this
+yields `q < 2p`.
+
+**Usage locations.**
+
+- [Witness Threshold Lemma](#witness-threshold-lemma) — bounds every gap
+  integer by `2p` and every earlier integer `k` by `p < k < 2p`.
+- [Large-Divisor Adjacent Closure](#large-divisor-adjacent-closure) — derives
+  `w < q < 2p`, hence `p > w/2`.
+
+**Audit status.** `classical-import` — standard classical number theory
+(Chebyshev/Bertrand). Imported for gap-geometry bounds only; not a PGS
+selection rule. Lean mirror: `PGS.Placement.bertrand_postulate` (roadmap M2).
+
+**PGS boundary.** The direct next-prime rule and GWR selection are defined
+from τ-scan over ordered integers. Bertrand enters only after `p` and `q` are
+fixed as consecutive primes in the analytic closure arguments above.
+
+### CL-002 — Divisor-pair bound (`classical-import`)
+
+**Statement.** For every integer `n ≥ 1`, `τ(n) ≤ 2⌊√n⌋ ≤ 2√n`.
+
+**Proof sketch (divisor pairs).** Positive divisors of `n` pair as `(d, n/d)`
+with `d ≤ n/d`, hence `d ≤ √n`. Each pair contributes at most two divisors,
+so `τ(n) ≤ 2⌊√n⌋`.
+
+**Usage locations.**
+
+- [Short Divisor-Average Lemma](#short-divisor-average-lemma) — the bound
+  `τ(n) ≤ 2#{a ≤ √N : a ∣ n}` is the finite-`N` form of this lemma applied
+  inside interval `J`.
+- [Large-Divisor Adjacent Closure](#large-divisor-adjacent-closure) — bounds
+  `d = τ(w)` by `2√w` when estimating `H`.
+
+**Audit status.** `classical-import` — elementary divisor-count bound. Not a
+PGS selection rule; used only in analytic divisor-average estimates.
+
+### CL-003 — Prime-square divisor count (`classical-import`)
+
+**Statement.** If `r` is prime and `r > 1`, then `τ(r²) = 3`.
+
+**Proof sketch.** The positive divisors of `r²` are exactly `1`, `r`, and `r²`.
+
+**Usage locations.**
+
+- [Prime-Square Case](#prime-square-case) — identifies the first interior
+  prime square `s = r²` with `τ(s) = 3`.
+- d=4 square-threat closure (see
+  [d4_fractional_position_bound.md](research/pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md))
+  — contradicts `τ(s) = 3` with suffix `τ ≥ 4`.
+
+**Audit status.** `classical-import` — elementary prime-power divisor count.
+Lean mirror: `PGS.Placement.tau_prime_square_eq_three` (roadmap M2).
+
 ## Document Status
 
 `PROOF.md` is the single live proof reference for the direct deterministic
@@ -844,10 +941,18 @@ next-prime theorem, the prime-gap maximizer theorem, and universal bounded
 compression at Cramér scale (including the Prime-Square Proximity Theorem,
 proved 2026-07-05).
 
-It records the finite bounded-compression base, the residual K=128
-first-d4 branch-elimination lemma, and the formally proved Prime-Square Proximity Theorem.
+**Enhancement phase (2026-07-08).** Prose theorems above are established in
+this document. Active hardening tracks classical-import packaging (G6),
+certificate pinning (G5), and Lean mirror fidelity — see
+[shortcomings.md](docs/proof-enhancements/shortcomings.md) and
+[proof-spine.md](docs/proof-enhancements/proof-spine.md). Known downstream
+gaps: Lean `prime_square_proximity_theorem` remains reflexivity-only until
+modulus-link density is formalized (shortcoming S1); τ characterization has
+deferred counting steps in `lean-4/PGS/Basic.lean`.
 
-With the resolution of the Prime-Square Proximity Theorem, the universal bounded-compression limit (Cramér scale selected-witness boundary) is deterministically established across all prime gap branches via local divisor invariants.
+With the Prime-Square Proximity Theorem proved in prose, the universal
+bounded-compression bound on **selected-witness offset** `w − p` is
+established across all prime-gap branches via local divisor invariants.
 
 RH-facing and PNT-facing language is downstream analytic description of this
 integer-level source. Those materials do not make RH, PNT, zero geometry, or
