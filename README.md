@@ -9,7 +9,7 @@
 **Abstract**  
 Prime Gap Structure demonstrates that the integers between consecutive primes form an ordered divisor-count field whose internal minimum (the Gap Winner) and return to divisor count = 2 together locate the next prime deterministically.  
 
-Local theorems — including the Gap Winner Rule (GWR), bounded compression at Cramér scale, the Prime-Square Proximity Theorem (proved 2026-07-05), and the No-Later-Simpler-Composite Theorem (zero violations through 10¹⁸) — are formally proved and computationally validated. A reading path connecting these local results to analytic number theory (including the Riemann Hypothesis) is developed in `docs/rh/` but kept explicitly separate from the proved core.
+Local theorems — including the Gap Winner Rule (GWR), bounded compression at Cramér scale, the Prime-Square Proximity Theorem (proved 2026-07-05), the No-Later-Simpler-Composite Theorem (zero violations through 10¹⁸), and the Twin-Prime Resonance / GWR Super-Signal theorem — are formally proved and computationally validated. A reading path connecting these local results to analytic number theory (including the Riemann Hypothesis) is developed in `docs/rh/` but kept explicitly separate from the proved core.
 
 This repository supplies the proofs (`PROOF.md`), reference implementations, reproducible artifacts, and measured surfaces that make the structure independently verifiable.
 
@@ -117,7 +117,7 @@ These one-line definitions capture the central objects used throughout the repos
 - **Selected interior witness / leftmost min-d(n) carrier**: The first number inside the gap that achieves the lowest divisor count. This is the GWR-selected composite.
 - **Bounded compression**: For every consecutive prime gap with nonempty interior, the GWR-selected witness appears within `max(64, ceil(0.5 * log(q)^2))` of the left endpoint. This bound is proved at Cramér scale from divisor-count structure.
 - **Prime-Square Proximity Theorem** (proved 2026-07-05): When the selected witness is a prime square `r²`, the distance `r² − p` cannot exceed the bounded-compression cutoff without forcing a modulus-link collision.
-- **GWR super-signal**: When the GWR-selected composite exhibits high modular primorial resonance (multiple remainder zeros modulo primorial bases), it functions as a deterministic trigger that the gap terminates at the next integer.
+- **GWR Super-Signal (Twin-Prime Resonance)**: When the GWR-selected composite exhibits high modular primorial resonance (4 or more remainder zeros), it functions as a deterministic trigger that the gap terminates immediately (g = 2).
 - **No-Later-Simpler-Composite Theorem**: Validated with zero violations through 10¹⁸ — no simpler composite appears later in the gap once the minimal divisor count has been observed.
 
 ---
@@ -127,11 +127,12 @@ These one-line definitions capture the central objects used throughout the repos
 > **Proved Status (as of July 2026)**  
 > The following local theorems are formally proved in `PROOF.md` and have been computationally validated with zero violations through 10¹⁸. These results stand independently of any conjectures about the Riemann Hypothesis or global prime distribution.
 
-- **Next-prime rule** (deterministic): Given a prime *p*, the next prime *q* is the first integer after *p* whose divisor count returns to exactly 2. This is read directly from the ordered divisor-count field inside the gap.
+- **Next-prime rule** (deterministic): Given a prime *p*, the next prime *q* is the first integer after *p* whose divisor count returns to exactly 2.
 - **Gap Winner Rule (GWR)**: The leftmost min-*d(n)* composite inside the gap is the raw-Z maximizer and the structurally selected interior witness.
 - **Universal bounded compression** at Cramér scale: The GWR-selected witness always appears within `max(64, ceil(0.5 * log(q)^2))` of *p*.
-- **Prime-Square Proximity Theorem** (proved 2026-07-05): When the witness is a prime square, its offset from *p* is bounded by the same compression limit (or forces a detectable modulus-link collision).
-- **No-Later-Simpler-Composite Theorem**: Once the minimal divisor count has appeared, no simpler composite occurs later in the gap (zero violations to 10¹⁸).
+- **Prime-Square Proximity Theorem** (proved 2026-07-05): When the witness is a prime square, its offset from *p* is bounded by the same compression limit.
+- **Twin-Prime Resonance / GWR Super-Signal**: When the GWR winner has 4+ zeros in its primorial remainder vector, the gap size is exactly 2 and the next integer is the prime.
+- **No-Later-Simpler-Composite Theorem**: Once the minimal divisor count has appeared, no simpler composite occurs later in the gap.
 
 These statements are proved from the arithmetic of divisor counts and the ordering inside gaps. They do not rely on probabilistic models or unproved global assumptions.
 
@@ -162,7 +163,7 @@ After installation you can import the core modules and begin exploring the order
 
 The repository develops the above results in greater depth.
 
-- `PROOF.md` — the formal proofs of the next-prime rule, GWR, bounded compression, Prime-Square Proximity Theorem, and supporting lemmas.
+- `PROOF.md` — the formal proofs of the next-prime rule, GWR, bounded compression, Prime-Square Proximity Theorem, Twin-Prime Resonance (GWR Super-Signal), and supporting lemmas.
 - `docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md` — detailed exploration of the rule that identifies the special composite inside each gap.
 - `docs/core/DIVISOR_NORMALIZATION_IDENTITY.md` — full treatment of the zero-excess normalization `E(n)` and its dual `Z(n)`.
 - `docs/core/PRIME_GAP_GENERATIVE_MODEL.md` and `docs/core/RECURSIVE_PRIME_WALK.md` — the broader generative model and recursive behavior.
@@ -219,7 +220,7 @@ Every one of these paths grows from the same simple shift in perspective: stop t
 ## Repository Map
 
 - `src/` — Python package (install with `pip install -e ./src/python`)
-- `PROOF.md` — formal proofs and theorem stack
+- `PROOF.md` — formal proofs and theorem stack (including the new GWR Super-Signal theorem)
 - `docs/core/` — foundational explanations (GWR, DNI, generative model, recursive walk, etc.)
 - `docs/rh/` — PGS-to-RH reading path and status
 - `research/` — deep experiments (RSA engine, Mersenne generator, GWR super-signal, continuity notes, 00-index/)
@@ -237,7 +238,7 @@ Every one of these paths grows from the same simple shift in perspective: stop t
 - `research/00-index/README.md` — maps the research corpus by chapter and status
 - `docs/RESULTS.md` — measured results and surfaces
 - `visualizations/` — interactive gap diagrams and narrations
-- Full list of core documents with one-line purposes appears in `docs/OVERVIEW.md` (added in documentation update)
+- Full list of core documents with one-line purposes appears in `docs/OVERVIEW.md`
 
 ---
 
