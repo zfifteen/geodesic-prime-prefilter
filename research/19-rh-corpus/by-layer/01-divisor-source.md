@@ -19,7 +19,7 @@ claim downstream assumes this layer is correct.
 | GWR witness | $w=\min\{n\in I:\tau(n)=\min_{m\in I}\tau(m)\}$ maximizes $F(n)=-E(n)$ | [RH-002](../FINDINGS_INDEX.md) |
 | Bounded compression | $w-p\le C(q)=\max(64,\lceil\tfrac12(\log q)^2\rceil)$ | [RH-003](../FINDINGS_INDEX.md) |
 | Square branch | Prime-Square Proximity closes $\tau(w)=3$ case | [RH-004](../FINDINGS_INDEX.md) |
-| Twin termination | $w\equiv 0\pmod{30}$ with 4+ remainder zeros $\Rightarrow$ gap $=2$ | [RH-005](../FINDINGS_INDEX.md) |
+| Twin termination (invalidated) | Former claim $4+$ zeros $\Rightarrow$ gap $=2$ is **false** (CEs $p=17666309$, $p=22284029$); modular half $z\ge 4\Leftrightarrow 30\mid w$ still holds | [RH-005](../FINDINGS_INDEX.md) |
 | Half-coefficient | $0.5$ in $C(q)$ from divisor-average closure, not calibration | [RH-006](../FINDINGS_INDEX.md) |
 | NLSC corollary | No later interior point has strictly smaller $\tau$ after $w$ | [RH-104](../FINDINGS_INDEX.md) |
 

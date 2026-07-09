@@ -33,7 +33,7 @@
 
   <!-- Header -->
   <text class="ink h1" x="72" y="70">Twin-Prime Resonance (GWR Super-Signal)</text>
-  <text class="muted body" x="72" y="112">Four remainder zeros at the GWR carrier force a twin gap.</text>
+  <text class="muted body" x="72" y="112">Status: INVALIDATED — four zeros do NOT force a twin gap (CEs 2026-07-09).</text>
 
   <!-- Step 1 -->
   <rect class="box" x="72" y="140" width="1456" height="220"/>
@@ -67,33 +67,33 @@
 
   <!-- Step 3 -->
   <rect class="signal" x="72" y="700" width="1456" height="250"/>
-  <text class="ink h2" x="108" y="746">3. Super-Signal fires</text>
-  <text class="muted small" x="108" y="782">A multiple of 30 has τ(w) ≥ 8.</text>
-  <text class="muted small" x="108" y="812">Larger gaps always contain an earlier lower-τ competitor.</text>
-  <text class="ink math" x="108" y="856">So w ≡ 0 (mod 30) can win GWR only when |I| = 1</text>
-  <text class="muted tiny" x="108" y="892">Interior competitor lemmas exclude g ≥ 3</text>
+  <text class="ink h2" x="108" y="746">3. Competitor step (broken)</text>
+  <text class="muted small" x="108" y="782">Historical claim: larger gaps always beat a 30-multiple on τ.</text>
+  <text class="muted small" x="108" y="812">False: later interiors can TIE τ(w); GWR is leftmost min.</text>
+  <text class="ink math" x="108" y="856">30 | w can still be GWR when g &gt; 2</text>
+  <text class="muted tiny" x="108" y="892">CE: p=17666309, g=8, w=17666310, z(w)=4</text>
 
   <path class="arrow-hot" d="M800 960 L800 1000"/>
 
   <!-- Step 4 + 5 -->
   <rect class="lock" x="72" y="1010" width="860" height="210"/>
-  <text class="ink h2" x="108" y="1056">4. Twin lock</text>
-  <text class="ink math" x="108" y="1100">g = q − p = 2</text>
-  <text class="ink math" x="108" y="1140">p = w − 1 ,   q = w + 1</text>
-  <text class="muted small" x="108" y="1180">The next integer after the carrier is the terminating prime.</text>
+  <text class="ink h2" x="108" y="1056">4. Twin lock (withdrawn)</text>
+  <text class="ink math" x="108" y="1100">g = 2 is NOT forced</text>
+  <text class="ink math" x="108" y="1140">Counterexamples exist with g = 8</text>
+  <text class="muted small" x="108" y="1180">Finite empty scans below 2e6 do not restore universality.</text>
 
   <path class="arrow-gold" d="M932 1115 H992"/>
   <rect class="audit" x="1000" y="1010" width="528" height="210"/>
-  <text class="ink h2" x="1036" y="1056">5. Audit</text>
-  <text class="muted small" x="1036" y="1096">1.5×10⁶ lane: 3,842 / 3,842 twin</text>
-  <text class="muted small" x="1036" y="1132">2×10⁶ scan: 0 counterexamples</text>
-  <text class="muted small" x="1036" y="1168">Status: proved · corollary of GWR</text>
+  <text class="ink h2" x="1036" y="1056">5. Status</text>
+  <text class="muted small" x="1036" y="1096">1.5e6 lane: measured twins only</text>
+  <text class="muted small" x="1036" y="1132">CEs: 17666309, 22284029</text>
+  <text class="muted small" x="1036" y="1168">Status: INVALIDATED · not a theorem</text>
 
   <!-- Theorem strip -->
   <rect class="box" x="72" y="1250" width="1456" height="230"/>
-  <text class="ink h2" x="108" y="1296">Theorem (Twin-Prime Resonance)</text>
-  <text class="ink body" x="108" y="1340">If the GWR witness has ≥ 4 remainder zeros on M_v1,</text>
-  <text class="ink body" x="108" y="1374">then the gap is twin and q = w + 1.</text>
-  <text class="muted tiny" x="108" y="1412">PGS-native rule: divisor field → GWR → remainder vector → exact gap termination</text>
-  <text class="muted tiny" x="108" y="1444">Four zeros force w ≡ 0 (mod 30); only twin gaps can host that witness.</text>
+  <text class="ink h2" x="108" y="1296">Withdrawn claim (Twin-Prime Resonance)</text>
+  <text class="ink body" x="108" y="1340">If GWR has ≥ 4 zeros on M_v1, then twin gap — FALSE.</text>
+  <text class="ink body" x="108" y="1374">Survives: z ≥ 4  ⟺  w ≡ 0 (mod 30) on M_v1 only.</text>
+  <text class="muted tiny" x="108" y="1412">PROOF.md · certificates · verify_super_signal_counterexamples.py</text>
+  <text class="muted tiny" x="108" y="1444">Do not cite four zeros as a proved twin-gap lock.</text>
 </svg>
