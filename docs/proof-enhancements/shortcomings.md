@@ -70,23 +70,25 @@ The document states these are “not limits on the theorems” (line 44) while s
 
 ---
 
-### 🟡 S5 — Bertrand used without explicit hypothesis packaging
+### ✅ S5 — Bertrand used without explicit hypothesis packaging
 
 **Location:** Witness Threshold Lemma (307–311), Large-Divisor Adjacent Closure (417–419)
 
 **Issue:** Bertrand’s postulate is invoked for consecutive-prime gaps (`q < 2p`). This is standard but should be stated as an explicit imported classical lemma with clear audit status, per PGS state-separation discipline.
 
-**Impact:** Minor for mathematics; significant for Lean contract compliance and external review.
+**Resolution (2026-07-08):** `PROOF.md` §Imported Classical Lemmas adds CL-001 with `classical-import` audit label. Inline invocations link to CL-001. Resolved in #31.
 
 ---
 
-### 🟡 S6 — τ(n) ≤ 2√n used without citation or proof pointer
+### ✅ S6 — τ(n) ≤ 2√n used without citation or proof pointer
 
 **Location:** Large-Divisor Adjacent Closure, line 474
 
 **Issue:** “For every integer n, tau(n) <= 2sqrt(n)” is stated as elementary fact. True, but proof is non-trivial (divisor pairs). No lemma reference in document.
 
 **Impact:** Small gap in self-containedness.
+
+**Resolution (2026-07-08):** `PROOF.md` §Imported Classical Lemmas adds CL-002 with divisor-pair proof sketch and `classical-import` audit label. Inline invocations link to CL-002. Resolved in #32.
 
 ---
 
@@ -126,11 +128,12 @@ Supporting scripts exist under `research/02-gwr-dni/scripts/proof/` but linkage 
 
 ---
 
-### 🟡 R3 — Stress sample at ~10¹² cited without artifact path
+### ✅ R3 — Stress sample at ~10¹² cited without artifact path
 
 **Location:** Lines 724–726
 
 **Issue:** “137,771 prime gaps … 0 unresolved cases” — no reproducibility anchor in `PROOF.md`.
+**Resolution (2026-07-08):** `gwr_stress_10e12_v1` certificate emitted; `PROOF.md` supplemental audit block pins repro command and SHA-256. Resolved in #33.
 
 ---
 
@@ -146,27 +149,32 @@ Supporting scripts exist under `research/02-gwr-dni/scripts/proof/` but linkage 
 
 ---
 
-### 🟡 P2 — Boundary disclaimer buried
+### ✅ P2 — Boundary disclaimer buried
 
-**Location:** Lines 34–38
+**Location:** Headline §3
 
-**Issue:** Important boundary (prefix attainment `w - p`, not raw gap `q - p`; not PNT/RH/Cramér for gaps) appears early but pillar 3 headline (lines 29–32) emphasizes Cramér scale prominently. Risk of misreading by external audience.
+**Issue:** Boundary on selected-witness offset `w - p` was buried below Cramér-scale wording.
 
----
-
-### 🟡 P3 — Twin-Prime Resonance not integrated into main proof spine
-
-**Location:** Section after PSP, before Audit Tables
-
-**Issue:** Appears as addendum with different proof style. Unclear dependency on GWR theorem, finite bases, or standalone. Enhancement should clarify logical position (corollary? separate theorem? empirical conjecture hardened to proof?).
+**Resolution (2026-07-08):** Headline §3 rewritten with boundary at point of use. Resolved in #35.
 
 ---
 
-### 🟡 P4 — Document status footer claims full closure
+### ✅ P3 — Twin-Prime Resonance not integrated into main proof spine
+
+**Location:** §Twin-Prime Resonance
+
+**Issue:** Logical position relative to GWR unclear.
+
+**Resolution (2026-07-08):** `proof-spine.md` + PROOF.md logical-position paragraph (corollary of GWR). Resolved in #36.
+
+---
+
+### ✅ P4 — Document status footer claims full closure
 
 **Location:** Lines 740–750
 
 **Issue:** “universal bounded-compression limit … deterministically established across all prime gap branches” — true under project interpretation, but S1 shows square-branch analytic closure is not fully rigorous in prose. Footer should track enhancement status.
+**Resolution (2026-07-08):** Document Status footer adds enhancement-phase note with pointers to `shortcomings.md`, `proof-spine.md`, and known Lean gaps (S1, τ sorrys). Resolved in #37.
 
 ---
 
@@ -179,10 +187,11 @@ Supporting scripts exist under `research/02-gwr-dni/scripts/proof/` but linkage 
 | S3 | Finite vs universal epistemic blur | 🟠 | Yes (architecture) |
 | R1 | Reproducibility anchors missing | 🟠 | Yes (certificates) |
 | R2 | No certificate schema | 🟠 | Yes |
+| R3 | Stress sample artifact path | ✅ | Resolved (#33) |
 | S4 | K=128 scope vs narrative | 🟠 | Partial |
-| S5 | Bertrand packaging | 🟡 | Partial |
-| S6 | τ ≤ 2√n pointer | 🟡 | No |
-| P1–P4 | Presentation / maintenance | 🟡 | No |
+| S5 | Bertrand packaging | ✅ | Resolved (#31) |
+| S6 | τ ≤ 2√n pointer | ✅ | Resolved (#32) |
+| P1–P4 | Presentation / maintenance | ✅ (P1–P4 resolved) | No |
 
 ---
 
