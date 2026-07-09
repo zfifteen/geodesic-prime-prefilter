@@ -4,7 +4,7 @@ Released under the MIT License as described in the file LICENSE.
 Authors: PGS Project
 
 PGS-RH placement invariants: chamber geometry certificates linked to PROOF.md.
-Downstream verification only — not used for inference or prime selection.
+Downstream verification only, not used for inference or prime selection.
 -/
 
 import Mathlib.Analysis.SpecialFunctions.Log.Basic
@@ -41,7 +41,7 @@ noncomputable def excessBudget (p q : ℕ) : ℝ :=
 
 /-! ## Phase 1: infrastructure -/
 
-/-- Bertrand postulate for consecutive primes — mirrors PROOF.md CL-001. -/
+/-- Bertrand postulate for consecutive primes: mirrors PROOF.md CL-001. -/
 theorem bertrand_postulate (p q : ℕ) (hp : Nat.Prime p) (hq : Nat.Prime q) (hpq : p < q)
     (hnext : ¬ ∃ r, p < r ∧ r < q ∧ Nat.Prime r) : q < 2 * p := by
   rcases Nat.exists_prime_lt_and_le_two_mul p (Nat.Prime.ne_zero hp) with
@@ -105,7 +105,7 @@ theorem gwr_d4_first_tau_four (p : ℕ) (r : ℕ)
 
 /-! ## Phase 3: closure before square threat -/
 
-/-- Prime squares have divisor count 3 — mirrors PROOF.md CL-003 (`classical-import`).
+/-- Prime squares have divisor count 3: mirrors PROOF.md CL-003 (`classical-import`).
 
 Proved from CL-003 prose; Lean discharge deferred to roadmap M1 counting closure. -/
 axiom tau_prime_square_eq_three (r : ℕ) (hr : 1 < r) (_hprime : Nat.Prime r) :

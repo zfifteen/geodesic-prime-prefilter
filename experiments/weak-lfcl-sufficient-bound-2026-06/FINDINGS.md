@@ -1,4 +1,4 @@
-# Weak L_FCL Sufficient-Bound Probe — FINDINGS
+# Weak L_FCL Sufficient-Bound Probe: FINDINGS
 
 **Strongest supported claim (this surface):** On consecutive gaps with `11 ≤ p < 10^6` at sufficient bound `B = gap`, Rule X emits a **unique resolved reset** at `q_ref` on **78 493 / 78 493** gaps. Audit-demoted zero-excess signature (structural resolved + lemma bridge, no `τ(q)` lookup) matches lane V on **78 493 / 78 493** gaps.
 
@@ -21,7 +21,7 @@
 
 ## State separation
 
-- **Theorem (unchanged):** `q = min{n>p : τ(n)=2}` — `PROOF.md`.
+- **Theorem (unchanged):** `q = min{n>p : τ(n)=2}`: `PROOF.md`.
 - **Measured result:** Unique resolved survivor at `B = gap` on full R2 surface.
 - **Audit-demoted lemma (measured):** Structural selection record + `n > 1` bridge aligns with `τ(q)=2` on all tested gaps.
 - **Hypothesis H<sub>CTC</sub>-weak:** Supported on this surface; not yet promoted to theorem (proof of forced equivalence open).

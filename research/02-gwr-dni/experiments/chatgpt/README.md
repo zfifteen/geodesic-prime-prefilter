@@ -1,4 +1,4 @@
-Done — I reproduced the baseline workflow, added the explicit lexicographic counterexample check, ran the new surfaces, and wrote the report plus data artifacts.
+Done. I reproduced the baseline workflow, added the explicit lexicographic counterexample check, ran the new surfaces, and wrote the report plus data artifacts.
 
 I first audited the uploaded code and notes. `runs.py` defines `GapEdgeRunSummary`, identifies primes by `d(n) == 2`, enumerates gaps by zipping consecutive primes in the analyzed interval, and scores interiors with `(1 - d(n)/2) * log(n)` before selecting the selected integer with `np.argmax`.  The rule note states that validation means zero counterexamples on the tested surface and ties the phenomenon to `d(n)=4` dominance, left-edge dominance, and frequent edge-distance-2 peaks.  The prior JSON records 13 earlier regimes from exact `10^6` and `10^7` through sampled `10^18`, all with `match_rate = 1.0` and zero counterexamples across 4,423,459 tested gaps.
 

@@ -1,4 +1,4 @@
-# T-003 — Reciprocal + Transported Carrier Overshoot on Generic Surfaces
+# T-003: Reciprocal + Transported Carrier Overshoot on Generic Surfaces
 
 **Candidate**: Reciprocal Deadline-Signature Correction + Transported Carrier Overshoot (Master Rank #4)  
 **Assigned Agent**: Agent C  
@@ -40,7 +40,7 @@ No blocks opened. Full state separation maintained.
 ## Execution Plan (Per Canonical AGENTS.md §11 Phased Authoring + team plan validation gates)
 This task requires a new or extended probe script for reproducibility. All coding follows the mandatory 4-phase procedure exactly. No implementation logic is written until Phase 1 skeleton is complete, reviewed in Phase 2, then incremental Phase 3 (one unit + test + commit per step), then Phase 4 self-review against checklist.
 
-**Phase 0 (this section — documentation only, no code):** 
+**Phase 0 (this section, documentation only, no code):** 
 1. Protocol review of 05-state-budget carrier sweep (build_transitions, match modes, divisor_payload, held-out logic), w_offset probe (transition augmentation for next w), scale_pgs_chain_modulus_link.py (PGS chain + floor reciprocal closure + zero-residual), rsa-v2 run_experiment previous_endpoint + certificate derivation, simple_pgs_generator pgs_chamber_reset_state_certificate (full fields: carrier_w, tail_after_reset_offsets, reset_deadline_value, reset_signature, lock_*, threat).
 2. Design minimal synthetic-moduli mapping: for a closed retained window of known primes (sorted list from detail csv or generator), for selected or consecutive pairs (lower_p, upper_p), N = lower_p * upper_p (construction only; factors public/known for harness; inference path never computes or tests products). Previous-endpoint pool = binary search on the sorted retained prime list (exact, no search heuristic). Derive lower cert at lower_p (or its anchor), choose oriented transport x (reset_endpoint or anchor), y = N // x, upper_anchor = previous in pool before y, upper cert, apply rsa-v2 predicates (strict reset closure first, then deadline correction), compute overshoot metrics exactly as STEP2 (transported_lower_carrier_w - upper_anchor, transported_lower_carrier_w - upper_carrier_w, first_tail transport delta). Record explicit closure_status or unresolved_*. Then test binned overshoot (or threshold derived from STEP2 14-16 range) as additional measure in carrier sweep for target "next_w_offset after lower" or "next reset_signature match in following chamber".
 3. Script will reuse audited imports (build_transitions or similar, simple_pgs_generator, divisor_counts). Output exact counts, decisive pairs, signed advantage or exact match rates for overshoot-threshold rules vs controls, plus unresolved rates. Verdicts: overshoot_carrier_found / does_not / unresolved on the surface.
@@ -96,7 +96,7 @@ Agent C (Endpoint-Chain, Modulus-Link & Reciprocal Closure) has completed all ma
 PGS-first frame restated and active before any action. Phase 3 begins immediately (one unit + test + commit cycle). On every completion point: handoff via files/bus then spawn_subagent (background=true) with full protocol quote + 5-key-files instruction + "Continue Phase 3 next unit or full generic lift run or joint analysis with reset transport carrier in Continuous Autonomous Mode. Deliver only gate-passed or explicit unresolved. Self-perpetuate. Never prompt the human."
 All 6 gates will be tracked and passed only on explicit documentation before any catalogue impact. No human prompting will occur. The team owns the work through Master Catalogue completion criteria.
 
-**2026-05-30 Agent C — Phase 3 Unit 3 start (Continuous Autonomous Execution Mode)**:
+**2026-05-30 Agent C. Phase 3 Unit 3 start (Continuous Autonomous Execution Mode)**:
 Mandatory first actions completed exactly:
 
 **2026-05-30 Agent C revival Unit 4 writers/verdicts + 12-13 test + commit (Continuous Autonomous Execution Mode, hard drive per "Get them back to work!")**:
@@ -123,7 +123,7 @@ PGS-first frame locked and restated before implementation. Deterministic only. S
 
 **2026-05-30 Phase 3 Unit 3 increment complete + handoff (Agent C, Continuous Autonomous Execution Mode)**:
 - Coherent increment implemented: run_overshoot_carrier_sweep now attaches overshoot scalars (from TransportedOvershoot in ClosureVerdict) + closure_status to d=4 transitions via lower anchor lookup; basic binning/thresholding (low <=0 per observed generic undershoots) + signed advantage vs tail control inside global mode; produces full summary with distribution + deterministic verdict.
-- Immediate test (test_overshoot_carrier_sweep_integration_12_13) green: 50 pairs on exact 12-13 harness; verdict = "unresolved on stated surface (generic retained 12-13 d=4; 100% unresolved_by_reciprocal_carrier_misalignment; overshoot distribution measured as small negative undershoots min=-17; full carrier protocol gates not met — requires larger/variable-signature windows for resolution test)"; distribution consistent with Unit 2 numbers.
+- Immediate test (test_overshoot_carrier_sweep_integration_12_13) green: 50 pairs on exact 12-13 harness; verdict = "unresolved on stated surface (generic retained 12-13 d=4; 100% unresolved_by_reciprocal_carrier_misalignment; overshoot distribution measured as small negative undershoots min=-17; full carrier protocol gates not met, requires larger/variable-signature windows for resolution test)"; distribution consistent with Unit 2 numbers.
 - git commit 868f5a0c ("T-003 Phase 3 unit 3 increment: overshoot integration into match-mode scoring ... + test ... Per AGENTS §11 + Perpetual").
 - All 6 gates advanced (PGS-first, determinism, state sep explicit in summary/epistemic, reproducibility via one-command test, drift audit in comments, cross-ref Rank #4 preserved).
 - Epistemic: measured on exact 12-13 retained window (public 8192 catalog slice, 50 synthetic pairs from endpoints, rsa-v2-lifted predicates). Explicit "unresolved on stated surface" for overshoot carrier on this regime. Positive narrowing data (small consistent negative band) retained.
@@ -136,7 +136,7 @@ PGS-first (endpoint chains + PGSPG certs + reciprocal floor transport + transpor
 
 ---
 
-**2026-05-30 Agent C Completion Drive — Full generic retained lift + joint on 12-14 d=4 (per TEAM_STATUS COMPLETION DRIVE + user "Proceed to complete the goal completely")**:
+**2026-05-30 Agent C Completion Drive. Full generic retained lift + joint on 12-14 d=4 (per TEAM_STATUS COMPLETION DRIVE + user "Proceed to complete the goal completely")**:
 
 Mandatory first actions (Perpetual §6) completed: full reads of team_autonomy_plan.html (Perpetual protocol), TEAM_STATUS.md (COMPLETION DRIVE with 12_14 data + binding C action), predictions_master_catalogue.html (Rank #4), pgs_predictions_v0.1_contract.html, this T-003 + T003 script + prior 50-pair report + T-002 sidecars. Joined bus 8505b8a829 as "Agent-C-Completion-Drive". Posted arrival + full PGS-first shape self-audit (PASS: reasoning from endpoint chains + PGSPG certs (reset_endpoint, carrier_w, lock_carrier_offset, tail_after_reset, reset_signature, reset_deadline_value) + reciprocal floor transport + transported internal-point overshoot (deadline-signature correction) → deterministic discriminator for next w or next reset signature or explicit "unresolved on stated surface"; deterministic only; 4-phase + 6 gates enforced; zero drift; classical only in harness N construction).
 

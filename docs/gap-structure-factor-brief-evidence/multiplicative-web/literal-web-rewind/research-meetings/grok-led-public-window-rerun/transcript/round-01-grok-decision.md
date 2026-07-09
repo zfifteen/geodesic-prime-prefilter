@@ -1,4 +1,4 @@
-# Grok-Led Public Window Rerun — Round 01 Decision
+# Grok-Led Public Window Rerun: Round 01 Decision
 
 **Date:** 19 May 2026  
 **Lead:** Grok (this session)  

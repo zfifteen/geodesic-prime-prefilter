@@ -50,7 +50,7 @@ d=4 layer = distinct semiprimes + thin prime-cube residue
 
 ## Baseline Questions
 
-### B1 — Selected integer composition
+### B1: Selected integer composition
 
 What share of tested GWR-selected integers are:
 
@@ -59,7 +59,7 @@ What share of tested GWR-selected integers are:
 - other `d=4` forms, if any
 - non-`d=4` selected integers
 
-### B2 — Arrival structure
+### B2: Arrival structure
 
 For `d=4` selected integer gaps, measure:
 
@@ -68,7 +68,7 @@ For `d=4` selected integer gaps, measure:
 - whether first-`d=4` and selected-integer offset always coincide on the committed surfaces
 - conditional counts under square exclusion
 
-### B3 — Dominance by scale
+### B3: Dominance by scale
 
 Measure the share of `d=4` selected integers across:
 
@@ -76,7 +76,7 @@ Measure the share of `d=4` selected integers across:
 - sampled larger surfaces already in the repo
 - any new surfaces added for this branch
 
-### B4 — Large-RSA relevance
+### B4: Large-RSA relevance
 
 Map the arithmetic baseline to the algorithmering baseline by asking:
 

@@ -10,8 +10,8 @@ finite certificates, and classical imports.
 
 | Claim | PROOF.md anchor | Depends on | Classical imports |
 | --- | --- | --- | --- |
-| Next-prime rule | Headline §1 | τ characterization; chamber scan | — |
-| Interior maximizer (GWR) | Headline §2; §Interior Maximizer | Ordered comparison; earlier integers | — |
+| Next-prime rule | Headline §1 | τ characterization; chamber scan | : |
+| Interior maximizer (GWR) | Headline §2; §Interior Maximizer | Ordered comparison; earlier integers | : |
 | Universal bounded compression | Headline §3 | GWR; finite bases; square branch | CL-001 (gap bounds) |
 | Prime-Square Proximity | §Prime-Square Proximity | Near-root exclusion; modulus-link | CL-001 |
 
@@ -19,17 +19,18 @@ finite certificates, and classical imports.
 
 | Claim | PROOF.md anchor | Depends on | Status |
 | --- | --- | --- | --- |
-| Twin-Prime Resonance (GWR Super-Signal) | §Twin-Prime Resonance | **Interior maximizer (GWR)** only; modular arithmetic on remainder vector | proved corollary; does not use finite bases directly |
+| Twin-Prime Resonance (GWR Super-Signal) universal implication | §Twin-Prime Resonance | GWR winner + remainder zeros | **invalidated** (CE certificates 2026-07-09) |
+| Modular zero lemma on $M_{v1}$ | §Twin-Prime Resonance (surviving) | remainder-vector case analysis | proved; not a twin-gap lock |
 
-Twin-Prime Resonance is a **corollary of the GWR winner definition** plus
-exhaustive modular case analysis. It does not extend universal bounded
-compression and is not a premise for the three headline pillars.
+The universal Super-Signal twin-gap implication is **invalidated**. The modular
+lemma $z(w)\ge 4 \Leftrightarrow 30\mid w$ on $M_{v1}$ survives. Super-Signal
+is not a premise for the three headline pillars.
 
 ## Finite-certified premises
 
 | Certificate | Closes | Used by |
 | --- | --- | --- |
-| `gwr_finite_base_v1` | earlier-integer side for `p < 5×10⁹` | Pillars 1–2; earlier-integer closure |
+| `gwr_finite_base_v1` | earlier-integer side for `p < 5×10⁹` | Pillars 1 to 2; earlier-integer closure |
 | `bounded_compression_base_v1` | small-`q` bounded compression | Pillar 3 |
 | `residual_k128_v1` | high-τ branch elimination | Pillar 3 (odd-adjacent `d=4`) |
 | `gwr_stress_10e12_v1` | measured corroboration only | Supplemental audit (not a premise) |

@@ -46,19 +46,19 @@ The following statuses are permitted:
 
 5. Process Steps
 
-Step 1 — Identification
+Step 1: Identification
 Any session or probe author may flag a mechanism. The flag must include concrete evidence (file paths, line numbers, performance impact).
 
-Step 2 — Assignment
+Step 2: Assignment
 The mechanism is assigned to a 90-day elevation window. One primary owner is named.
 
-Step 3 — Documentation
+Step 3: Documentation
 The owner produces the required elements listed in section 3.
 
-Step 4 — Review
+Step 4: Review
 A crossing-style review (see TWO_TRACK_GOVERNANCE.md) checks that the elevation does not weaken the generator contract or introduce classical framing into the object definition.
 
-Step 5 — Publication
+Step 5: Publication
 The elevation card and pgs-unsolved-problems/ entry are published. The mechanism is now a first-class (even if provisional) PGS object.
 
 6. Timeline and Enforcement
@@ -75,7 +75,7 @@ The elevation card and pgs-unsolved-problems/ entry are published. The mechanism
 
 8. First Application
 
-The carrier/lock_carrier/lower_d_threat mechanism (src/python/z_band_prime_predictor/simple_pgs_generator.py:48–95 and src/c/high-scale-pgs/include/pgs_high_scale.h:56–60) is hereby flagged as the first mechanism subject to this process.
+The carrier/lock_carrier/lower_d_threat mechanism (src/python/z_band_prime_predictor/simple_pgs_generator.py:48 to 95 and src/c/high-scale-pgs/include/pgs_high_scale.h:56 to 60) is hereby flagged as the first mechanism subject to this process.
 
 Its 90-day elevation window begins on the adoption date of this document.
 

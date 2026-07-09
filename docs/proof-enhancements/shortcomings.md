@@ -1,4 +1,4 @@
-# PROOF.md — Formalization and Presentation Notes
+# PROOF.md: Formalization and Presentation Notes
 
 **Audit date:** 2026-07-07  
 **Scope:** Items for Lean mirroring and presentation polish. The mathematical proofs of the universal theorems are complete and exhaustive.  
@@ -8,9 +8,9 @@
 
 ## 1. Proof-Structure Gaps (Mathematical)
 
-### 🔴 S1 — Prime-Square Proximity: modulus-link density step is not rigorous
+### 🔴 S1: Prime-Square Proximity: modulus-link density step is not rigorous
 
-**Location:** `PROOF.md` lines 651–666 (Prime-Square Proximity Theorem)
+**Location:** `PROOF.md` lines 651 to 666 (Prime-Square Proximity Theorem)
 
 **Issue:** The proof asserts that “available prime density > M satisfying h_m > sqrt(r) is strictly less than the density required to perfectly tile the remaining M-rough composite rows without collision,” and concludes “the modulus-link structure must intersect.”
 
@@ -26,25 +26,25 @@ This step lacks:
 
 ---
 
-### 🔴 S2 — Twin-Prime Resonance: informal competitive-minimum argument
+### 🔴 S2: Twin-Prime Resonance: competitor lemma invalidated (resolved as demotion)
 
-**Location:** `PROOF.md` lines 676–704
+**Location:** `PROOF.md` §Twin-Prime Resonance
 
-**Issue:** Step 3 uses non-rigorous language:
+**Issue (historical):** Step 3 claimed that if $g>2$ and $30\mid w$, then some
+interior $n$ has $\tau(n)<\tau(w)$. That competitor lemma is **false**.
 
-- “overwhelmingly semiprimes”
-- “the gap will inevitably contain other semiprimes with lower divisor counts”
-- Parenthetical dismissal of “rare contrived integers” without exclusion proof
+**Resolution (2026-07-09):** Universal Super-Signal implication demoted to
+**invalidated**. Pinned CEs: `ce_17666309`, `ce_22284029`. Modular lemma
+$z\ge 4 \Leftrightarrow 30\mid w$ retained. GWR pillar unchanged.
 
-The sub-claim “4+ zeros in R(w) ⟺ w ≡ 0 (mod 30)” is argued by example (“e.g., {2,3,7}”) rather than exhaustive case analysis over the remainder-vector definition.
-
-**Impact:** The mathematical argument is complete; the Lean mirror for this section is in progress.
+**Impact:** Do not formalize the twin-gap lock in Lean. Optional Lean target:
+modular lemma only.
 
 ---
 
-### 🟠 S3 — Finite bases presented adjacent to universal theorems without epistemic separation
+### 🟠 S3: Finite bases presented adjacent to universal theorems without epistemic separation
 
-**Location:** Headline (lines 40–44), Finite Base Lemma (349–369), Finite Bounded-Compression Base (555–587), Audit Tables (706–726)
+**Location:** Headline (lines 40 to 44), Finite Base Lemma (349 to 369), Finite Bounded-Compression Base (555 to 587), Audit Tables (706 to 726)
 
 **Issue:** The presentation interleaves the analytic arguments with the certified finite verification. The theorems are proved by combining analytic closure with exhaustive enumeration over the finite ranges.
 
@@ -60,19 +60,19 @@ The document states these are “not limits on the theorems” (line 44) while s
 
 ---
 
-### 🟠 S4 — Residual K=128 lemma scope vs. headline wording
+### 🟠 S4: Residual K=128 lemma scope vs. headline wording
 
-**Location:** Lines 589–620
+**Location:** Lines 589 to 620
 
-**Issue:** The document correctly notes this is “not a global occupancy theorem” and “does not prove that every prime gap containing a divisor-count-4 integer has its first such integer within 128.” The theorem stack (line 735) labels it “proved, stated hypotheses” — accurate — but the headline pillar 3 narrative can read as if all branches are analytically closed.
+**Issue:** The document correctly notes this is “not a global occupancy theorem” and “does not prove that every prime gap containing a divisor-count-4 integer has its first such integer within 128.” The theorem stack (line 735) labels it “proved, stated hypotheses”: accurate, but the headline pillar 3 narrative can read as if all branches are analytically closed.
 
 **Impact:** Scope is correctly limited in the text; presentation for downstream use can be tightened.
 
 ---
 
-### ✅ S5 — Bertrand used without explicit hypothesis packaging
+### ✅ S5: Bertrand used without explicit hypothesis packaging
 
-**Location:** Witness Threshold Lemma (307–311), Large-Divisor Adjacent Closure (417–419)
+**Location:** Witness Threshold Lemma (307 to 311), Large-Divisor Adjacent Closure (417 to 419)
 
 **Issue:** Bertrand’s postulate is invoked for consecutive-prime gaps (`q < 2p`). This is standard but should be stated as an explicit imported classical lemma with clear audit status, per PGS state-separation discipline.
 
@@ -80,7 +80,7 @@ The document states these are “not limits on the theorems” (line 44) while s
 
 ---
 
-### ✅ S6 — τ(n) ≤ 2√n used without citation or proof pointer
+### ✅ S6: τ(n) ≤ 2√n used without citation or proof pointer
 
 **Location:** Large-Divisor Adjacent Closure, line 474
 
@@ -107,9 +107,9 @@ These are not flaws in `PROOF.md` prose per se, but they reveal where the docume
 
 ## 3. Reproducibility & Artifact Gaps
 
-### 🟠 R1 — Audit tables lack pinned reproduction commands
+### 🟠 R1: Audit tables lack pinned reproduction commands
 
-**Location:** Lines 360–366, 574–585, 716–726
+**Location:** Lines 360 to 366, 574 to 585, 716 to 726
 
 **Issue:** Tables report exact counts and zero failures but `PROOF.md` does not specify:
 
@@ -122,24 +122,24 @@ Supporting scripts exist under `research/02-gwr-dni/scripts/proof/` but linkage 
 
 ---
 
-### 🟠 R2 — No single certificate schema for finite-base claims
+### 🟠 R2: No single certificate schema for finite-base claims
 
 **Issue:** Multiple independent verification surfaces (GWR base, bounded-compression base, K=128 residual, weak-LFCL R2) use different artifact formats. No unified “finite lemma certificate” contract for external audit or Lean import.
 
 ---
 
-### ✅ R3 — Stress sample at ~10¹² cited without artifact path
+### ✅ R3: Stress sample at ~10¹² cited without artifact path
 
-**Location:** Lines 724–726
+**Location:** Lines 724 to 726
 
-**Issue:** “137,771 prime gaps … 0 unresolved cases” — no reproducibility anchor in `PROOF.md`.
+**Issue:** “137,771 prime gaps … 0 unresolved cases”: no reproducibility anchor in `PROOF.md`.
 **Resolution (2026-07-08):** `gwr_stress_10e12_v1` certificate emitted; `PROOF.md` supplemental audit block pins repro command and SHA-256. Resolved in #33.
 
 ---
 
 ## 4. Presentation & Maintenance
 
-### ✅ P1 — Theorem stack status column over-unifies proof modalities
+### ✅ P1: Theorem stack status column over-unifies proof modalities
 
 **Location:** `PROOF.md` §Theorem Stack Summary
 
@@ -149,7 +149,7 @@ Supporting scripts exist under `research/02-gwr-dni/scripts/proof/` but linkage 
 
 ---
 
-### ✅ P2 — Boundary disclaimer buried
+### ✅ P2: Boundary disclaimer buried
 
 **Location:** Headline §3
 
@@ -159,7 +159,7 @@ Supporting scripts exist under `research/02-gwr-dni/scripts/proof/` but linkage 
 
 ---
 
-### ✅ P3 — Twin-Prime Resonance not integrated into main proof spine
+### ✅ P3: Twin-Prime Resonance not integrated into main proof spine
 
 **Location:** §Twin-Prime Resonance
 
@@ -169,11 +169,11 @@ Supporting scripts exist under `research/02-gwr-dni/scripts/proof/` but linkage 
 
 ---
 
-### ✅ P4 — Document status footer claims full closure
+### ✅ P4: Document status footer claims full closure
 
-**Location:** Lines 740–750
+**Location:** Lines 740 to 750
 
-**Issue:** “universal bounded-compression limit … deterministically established across all prime gap branches” — true under project interpretation, but S1 shows square-branch analytic closure is not fully rigorous in prose. Footer should track enhancement status.
+**Issue:** “universal bounded-compression limit … deterministically established across all prime gap branches”: true under project interpretation, but S1 shows square-branch analytic closure is not fully rigorous in prose. Footer should track enhancement status.
 **Resolution (2026-07-08):** Document Status footer adds enhancement-phase note with pointers to `shortcomings.md`, `proof-spine.md`, and known Lean gaps (S1, τ sorrys). Resolved in #37.
 
 ---
@@ -191,7 +191,7 @@ Supporting scripts exist under `research/02-gwr-dni/scripts/proof/` but linkage 
 | S4 | K=128 scope vs narrative | 🟠 | Partial |
 | S5 | Bertrand packaging | ✅ | Resolved (#31) |
 | S6 | τ ≤ 2√n pointer | ✅ | Resolved (#32) |
-| P1–P4 | Presentation / maintenance | ✅ (P1–P4 resolved) | No |
+| P1 to P4 | Presentation / maintenance | ✅ (P1 to P4 resolved) | No |
 
 ---
 
@@ -199,12 +199,12 @@ Supporting scripts exist under `research/02-gwr-dni/scripts/proof/` but linkage 
 
 To avoid false “enhancement” scope creep, the following are **sound** in current `PROOF.md`:
 
-- Direct next-prime algorithm correctness (lines 109–122), modulo τ↔prime lemma
-- Ordered Comparison Lemma (189–213) — complete analytic proof
-- Divisor-count tail (226–255) — complete
-- Prime-square case for GWR earlier side (277–303) — complete given hypotheses
-- Witness threshold machinery (305–347) — complete given Bertrand
-- Short Divisor-Average Lemma (371–410) — complete
-- Large-Divisor Adjacent Closure (412–539) — complete given prior lemmas and finite base
+- Direct next-prime algorithm correctness (lines 109 to 122), modulo τ↔prime lemma
+- Ordered Comparison Lemma (189 to 213), complete analytic proof
+- Divisor-count tail (226 to 255), complete
+- Prime-square case for GWR earlier side (277 to 303), complete given hypotheses
+- Witness threshold machinery (305 to 347), complete given Bertrand
+- Short Divisor-Average Lemma (371 to 410), complete
+- Large-Divisor Adjacent Closure (412 to 539), complete given prior lemmas and finite base
 
 These should be **preserved and isolated** during enhancement, not rewritten.

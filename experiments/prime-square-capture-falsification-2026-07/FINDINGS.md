@@ -1,13 +1,13 @@
-# Prime-Square Hierarchical Capture — Falsification Report
+# Prime-Square Hierarchical Capture: Falsification Report
 
 **Date:** 2026-07-06  
-**Regime:** `p < 2·10^6` full gap scan (148,931 interiors) + three square-branch extremal rows at `~10^16–10^17`
+**Regime:** `p < 2·10^6` full gap scan (148,931 interiors) + three square-branch extremal rows at `~10^16 to 10^17`
 
 ## Executive Summary
 
 **The Core Insight is not falsified on mechanism, bypass, or boundary-utilization frontier. It is partially falsified on one loose reading of “worst-case class,” and it remains untested at record-gap scale for the decoupling claim.**
 
-On every gap where an interior prime square is the unique `τ=3` integer, GWR selects that square and ignores earlier `τ=4` composites. At the measured utilization frontier through `2·10^6`, the top 20 rows are all square-branch captures. At extremal square-branch rows (offsets 462–540), prefixes contain 52–63 semiprimes (`τ=4`) before the square, confirming that long offsets are not explained by local absence of small-factor composites.
+On every gap where an interior prime square is the unique `τ=3` integer, GWR selects that square and ignores earlier `τ=4` composites. At the measured utilization frontier through `2·10^6`, the top 20 rows are all square-branch captures. At extremal square-branch rows (offsets 462 to 540), prefixes contain 52 to 63 semiprimes (`τ=4`) before the square, confirming that long offsets are not explained by local absence of small-factor composites.
 
 The insight survives as a **proved local selection consequence** of the Interior Maximizer Theorem whenever `τ=3` is gap-minimal. What remains open is whether **global** worst-case cutoff pressure is *exclusively* square-branch at scales where wide non-square gaps exist.
 
@@ -31,11 +31,11 @@ The insight survives as a **proved local selection consequence** of the Interior
 | Claim | Test | Result | Status |
 | --- | --- | --- | --- |
 | **C1** Unique interior `τ=3` forces GWR = prime square | 223 gaps with interior square at `p < 2·10^6`; 3 extremal rows | 0 failures | **Not falsified** |
-| **C2** Long square offsets bypass early `τ=4` tiling | Extremal rows + square gaps with offset ≥ 24 | First `τ=4` at offsets 2–10; GWR at 462–540; 52–63 `τ=4` before `w` | **Not falsified** |
+| **C2** Long square offsets bypass early `τ=4` tiling | Extremal rows + square gaps with offset ≥ 24 | First `τ=4` at offsets 2 to 10; GWR at 462 to 540; 52 to 63 `τ=4` before `w` | **Not falsified** |
 | **C3** Worst-case *utilization* belongs to square class | Top 20 by `offset/C(q)` at `2·10^6` | 20/20 square-branch | **Not falsified** (utilization sense) |
 | **C3′** Worst-case *raw offset ranks* are square-dominated | Top 100 by raw offset at `2·10^6` | 37 square, 62 `τ=4`, 1 other | **Partially falsified** (ranking sense) |
 | **C4** Non-square gaps cannot match square extremes | Max offset 60 (square) vs 24 (`τ=4`); max utilization 0.615 vs 0.261 | No `τ=4` gap exceeds square frontier | **Not falsified** (`p < 2·10^6`) |
-| **C5** Decoupled from “compositeness-only” wide gaps | 80 widest record gaps (`10^12+`, width 1284–1442) | All lack interior prime square; GWR offset unreadable here | **Unresolved** |
+| **C5** Decoupled from “compositeness-only” wide gaps | 80 widest record gaps (`10^12+`, width 1284 to 1442) | All lack interior prime square; GWR offset unreadable here | **Unresolved** |
 | **C6** Adjacent-square trivial break | `p=3`, square at `p+1` | Single row; offset 1 | **Consistent** with stated exception |
 
 ---
@@ -73,7 +73,7 @@ Capture and bypass both hold on all three rows.
 
 **Supported.** When a prime square sits in the interior and is the unique `τ=3` integer, GWR must select it. This is not a statistical effect; it follows from the proved leftmost minimum-divisor rule.
 
-The extremal rows show dense `τ=4` prefixes (52–63 semiprimes) while GWR remains at the late square. Long offset is therefore **not** caused by local absence of small-factor composites in those cases.
+The extremal rows show dense `τ=4` prefixes (52 to 63 semiprimes) while GWR remains at the late square. Long offset is therefore **not** caused by local absence of small-factor composites in those cases.
 
 ### Prefix distance reframing
 
@@ -84,7 +84,7 @@ The extremal rows show dense `τ=4` prefixes (52–63 semiprimes) while GWR rema
 **Supported in utilization sense; weak in raw-rank sense.**
 
 - Utilization frontier (pressure against `C(q)`): top 20 at `2·10^6` are 100% square-branch; global maxima are square-branch.
-- Raw offset leaderboard: many `τ=4` gaps appear because offset ≈ first-`τ=4` offset in short gaps — a different quantity than cutoff utilization.
+- Raw offset leaderboard: many `τ=4` gaps appear because offset ≈ first-`τ=4` offset in short gaps, a different quantity than cutoff utilization.
 
 The Core Insight’s phrase “push hardest against theoretical boundary limits” aligns with **utilization**, not raw offset rank. Under that reading, the claim stands on the tested regime.
 
@@ -96,7 +96,7 @@ No `τ=4` gap in the scan matches square-branch offset or utilization extremes. 
 
 ### Universal / adjacency exception
 
-**Supported.** Unique-`τ=3` capture holds in all 226 tested cases (223 + 3 extremal). The only adjacent-square case in the `2·10^6` scan is `p=3`, `4=p+1`, offset 1 — consistent with the stated trivial break.
+**Supported.** Unique-`τ=3` capture holds in all 226 tested cases (223 + 3 extremal). The only adjacent-square case in the `2·10^6` scan is `p=3`, `4=p+1`, offset 1: consistent with the stated trivial break.
 
 ---
 

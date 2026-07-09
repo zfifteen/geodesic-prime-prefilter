@@ -17,7 +17,7 @@ Computer checks up to one million show this rocking pattern stays strong and reg
 - Average jump size in smaller gaps: 67.8
 - Average jump size in larger gaps: 31.6
 
-These numbers show the rocking is reliable across scales and behaves differently in small versus large spaces — exactly what we expect if local rules are doing the deciding work.
+These numbers show the rocking is reliable across scales and behaves differently in small versus large spaces, exactly what we expect if local rules are doing the deciding work.
 
 ## The Principle
 **Interior Alternation Governs Prime Placement**
@@ -38,7 +38,7 @@ This principle is falsifiable: if the rocking pattern disappears or becomes erra
 - The principle is now ready to be added to formal statements and larger-scale runs.
 
 ## Why This Matters
-This moves the work from observing interesting patterns to showing that the patterns actively control where primes appear. It gives a practical way to select the cleanest intervals for connecting everyday prime spacing to deeper mathematical structures. The local rules carry their own verification signal — the rocking — and that signal stays trustworthy at scale.
+This moves the work from observing interesting patterns to showing that the patterns actively control where primes appear. It gives a practical way to select the cleanest intervals for connecting everyday prime spacing to deeper mathematical structures. The local rules carry their own verification signal, the rocking, and that signal stays trustworthy at scale.
 
 All code, data, and this document are in the artifacts folder and ready for commit. 
 

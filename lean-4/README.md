@@ -16,14 +16,14 @@ This is a **downstream verification and audit layer only**.
 
 ## Current Structure (Verified Working)
 
-- `lean-toolchain` + `lakefile.lean` — Lean 4.30.0 (self-contained skeleton, no heavy Mathlib dep for now)
-- `PGS.lean` (root) + `PGS/Basic.lean` — tau (pure List.range impl), E/F/Z placeholders
-- `PGS/ChamberReset.lean` — Rule X replay types; **L4 audit demotion proved**
-- `PGS/NextPrime.lean` — weak L_FCL exports; **L5 closed** (weak_lfcl_ruleX_forces_next_prime proved as Lean mirror under hypotheses)
-- `PGS/GWR.lean` — Phase 3 placeholder
-- `smoke-test.lean` — Automated verification that the library loads and basic defs work
+- `lean-toolchain` + `lakefile.lean`. Lean 4.30.0 (self-contained skeleton, no heavy Mathlib dep for now)
+- `PGS.lean` (root) + `PGS/Basic.lean`, tau (pure List.range impl), E/F/Z placeholders
+- `PGS/ChamberReset.lean`. Rule X replay types; **L4 audit demotion proved**
+- `PGS/NextPrime.lean`: weak L_FCL exports; **L5 closed** (weak_lfcl_ruleX_forces_next_prime proved as Lean mirror under hypotheses)
+- `PGS/GWR.lean`. Phase 3 placeholder
+- `smoke-test.lean`. Automated verification that the library loads and basic defs work
 - Full contract and plan documents
-- [`PLACEMENT_FORMALIZATION_ROADMAP.md`](PLACEMENT_FORMALIZATION_ROADMAP.md) — closure-order DAG for RH-080/081 ([#49](https://github.com/zfifteen/prime-gap-structure/issues/49))
+- [`PLACEMENT_FORMALIZATION_ROADMAP.md`](PLACEMENT_FORMALIZATION_ROADMAP.md), closure-order DAG for RH-080/081 ([#49](https://github.com/zfifteen/prime-gap-structure/issues/49))
 
 **Important Note on Dependencies**: The initial attempt to use full Mathlib created repeated source/checkout blockers. The skeleton was made self-contained (pure Lean) to achieve a working, verifiable build. Mathlib will be re-introduced in a controlled manner during Phase 1 expansions.
 
@@ -80,7 +80,7 @@ See `PGS_LEAN_FORMALIZATION_PLAN.md` for the phased expansion roadmap.
 - Build + smoke test remain green.
 - Proceeding with original plan.
 
-## Phase 1 Update (2026-05-27 — Active Non-Stop Session)
+## Phase 1 Update (2026-05-27: Active Non-Stop Session)
 
 **Status update (2026-06)**: The pure-List counting argument (`three_distinct_divisors_imply_tau_ge_three`) has been explicitly deferred to Phase 2 (Mathlib re-introduction) per user decision. Forward direction of the main lemma now compiles against the deferred lemma. Work continues on the reverse direction and contrapositive (still Phase 1). See `PGS/Basic.lean` for the deferral comment and the formalization plan for details.
 

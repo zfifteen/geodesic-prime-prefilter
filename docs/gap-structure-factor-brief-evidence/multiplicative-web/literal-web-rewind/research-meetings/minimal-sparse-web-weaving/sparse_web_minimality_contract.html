@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Minimal Sparse Web-Weaving Contract v1.0 Final — Toy-Scale Experiment</title>
+<title>Minimal Sparse Web-Weaving Contract v1.0 Final. Toy-Scale Experiment</title>
 <style>
 body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.5; max-width: 980px; margin: 40px auto; padding: 0 20px; color: #111; }
 h1, h2, h3 { font-weight: 600; border-bottom: 2px solid #ddd; padding-bottom: 6px; }
@@ -18,14 +18,14 @@ footer { margin-top: 40px; font-size: 12px; color: #555; border-top: 1px solid #
 </style>
 </head>
 <body>
-<h1>Minimal Sparse Web-Weaving Toy Experiment Contract v1.0 Final — Closed for Implementation</h1>
+<h1>Minimal Sparse Web-Weaving Toy Experiment Contract v1.0 Final. Closed for Implementation</h1>
 
 <p><strong>Meeting:</strong> literal-web / minimal-sparse-web-weaving<br>
 <strong>Current round:</strong> Grok 04 after Codex 03<br>
 <strong>Frame:</strong> Literal multiplicative web only. Offsets t around semiprime N = p·q, cheap public factor-thread evidence from N + t composites, support counts for missing slots, audit-only p/q labels after computation. No modular ranking, no residue certificates, no gcd(N, candidate), no candidate search, no classical inference.</p>
 
 <div class="success">
-<strong>Contract Status: CLOSED — v1.0 Final</strong><br>
+<strong>Contract Status: CLOSED, v1.0 Final</strong><br>
 All methodological decisions resolved. The toy-scale sparse-web experiment contract is now complete and ready for narrow implementation. No further design questions remain inside the literal-web frame.
 </div>
 
@@ -57,16 +57,16 @@ On the 4 toy cases and the 19-rung ladder (23×31 through 8009×10007), the lite
 </table>
 <p>Stop condition was feasibility (radius &gt; 50 000), not signal loss. The support signal for held-out p/q threads survived every rung that could be run.</p>
 
-<h2>4. Experiment Contract — Falsifiable Definition</h2>
+<h2>4. Experiment Contract. Falsifiable Definition</h2>
 
 <h3>4.1 Test Surface</h3>
 <ul>
 <li>4 toy cases (exact radii from literal_web_hole_trace.py)</li>
-<li>First 8 ladder rungs (up to 307×367, radius 1374) — keeps runtime under a few minutes on a laptop even for dense policies.</li>
+<li>First 8 ladder rungs (up to 307×367, radius 1374), keeps runtime under a few minutes on a laptop even for dense policies.</li>
 <li>Radius rule remains 6 × p for ladder rungs (to guarantee the hidden-thread offsets are inside the window).</li>
 </ul>
 
-<h3>4.2 Success / Failure Criteria — One-Factor Primary Gate (Round 01 revision)</h3>
+<h3>4.2 Success / Failure Criteria. One-Factor Primary Gate (Round 01 revision)</h3>
 <div class="success">
 <strong>one_factor_success</strong> (primary pass gate for this contract): a policy preserves usable factor-thread evidence on a rung when <strong>at least one</strong> of the two held-out hidden threads (p or q) ranks inside the agreed top window with support count ≥ 1.
 </div>
@@ -80,7 +80,7 @@ On the 4 toy cases and the 19-rung ladder (23×31 through 8009×10007), the lite
 A policy passes the toy rung for first-slice experiments if at least one hidden thread (p or q) appears in the top-5 supported holes with support ≥ 1.
 </div>
 
-<p><strong>Justification from full-web baseline (measured, not proved):</strong> In every one of the 4 toys and all 19 ladder rungs the full literal web places the held-out p and q holes at the extreme top of the support ranking — routinely positions 1–4 with the highest support values (3 or 2). Because the signal is this dominant even before sparsification, requiring only one hidden thread to land inside the top 5 is a tight but realistic gate that the dense baseline passes decisively. top 18 would be too loose for an early falsification filter; top 5 keeps the experiment sensitive to genuine loss of the thread-support structure.</p>
+<p><strong>Justification from full-web baseline (measured, not proved):</strong> In every one of the 4 toys and all 19 ladder rungs the full literal web places the held-out p and q holes at the extreme top of the support ranking, routinely positions 1 to 4 with the highest support values (3 or 2). Because the signal is this dominant even before sparsification, requiring only one hidden thread to land inside the top 5 is a tight but realistic gate that the dense baseline passes decisively. top 18 would be too loose for an early falsification filter; top 5 keeps the experiment sensitive to genuine loss of the thread-support structure.</p>
 
 <p><strong>Secondary quality metric (always reported):</strong> top18_direct_hits (number of the 18 highest-support holes that are audit p/q threads). This number is expected to degrade gracefully; it does not gate advancement.</p>
 
@@ -92,7 +92,7 @@ A policy passes the toy rung for first-slice experiments if at least one hidden 
 </ul>
 <p>The contract prefers the policy with the lowest trials count among those that still meet the success criteria above.</p>
 
-<h3>4.4 Staged Test Matrix — First Slice = B (Round 01 decision)</h3>
+<h3>4.4 Staged Test Matrix. First Slice = B (Round 01 decision)</h3>
 <p><strong>First implementation slice (per Codex choice B):</strong> Extraction-depth restriction while keeping <strong>dense</strong> offset inspection (step = 1). Offset thinning is deliberately parked until the cheap-extraction axis has produced its first measured numbers on the 4 toys.</p>
 
 <table>
@@ -102,7 +102,7 @@ A policy passes the toy rung for first-slice experiments if at least one hidden 
 <tr><td>3</td><td>Joint (optional)</td><td>Best cheap extractor + best thinning step from prior stages</td><td>Only if both axes individually survive the one_factor top-5 gate.</td></tr>
 </table>
 
-<h3>4.5 Concrete Cheap Extractor (Pseudocode — the only code Codex is asked to write for row generation)</h3>
+<h3>4.5 Concrete Cheap Extractor (Pseudocode, the only code Codex is asked to write for row generation)</h3>
 <pre><code>def sparse_rows_around(n, radius, step=1, prime_limit=31, max_factors=2):
     primes = [2,3,5,7,11,13,17,19,23,29,31][:primes_up_to(prime_limit)]
     rows = []
@@ -122,11 +122,11 @@ A policy passes the toy rung for first-slice experiments if at least one hidden 
         rows.append({"offset": original_value - n, "factors": factors, ...})
     return rows
 </code></pre>
-<p>Important: the original thread_slots / support / hole-ranking logic is <strong>unchanged</strong>. Only the source of the "heldout" rows changes. p and q are never consulted during extraction or support computation — only during the final audit scoring pass.</p>
+<p>Important: the original thread_slots / support / hole-ranking logic is <strong>unchanged</strong>. Only the source of the "heldout" rows changes. p and q are never consulted during extraction or support computation, only during the final audit scoring pass.</p>
 
 <h3>4.6 Output Artifacts Required</h3>
 <ul>
-<li><code>sparse_web_minimality_ladder/&lt;policy_name&gt;/summary.md</code> — one row per rung with the three success numbers + cost numbers + wall time.</li>
+<li><code>sparse_web_minimality_ladder/&lt;policy_name&gt;/summary.md</code>, one row per rung with the three success numbers + cost numbers + wall time.</li>
 <li><code>sparse_web_minimality_ladder/&lt;policy_name&gt;/top_holes.jsonl</code> for the worst-case toy (so the support numbers can be spot-audited).</li>
 <li>A single <code>comparison.csv</code> that lines up every policy against the full-web baseline hit rates and cost.</li>
 </ul>
@@ -136,7 +136,7 @@ A policy passes the toy rung for first-slice experiments if at least one hidden 
 <li>Copy literal_web_hole_trace.py to a new file sparse_web_first_slice.py in the same directory.</li>
 <li>Implement exactly the locked first policy <code>trial_2_stop_1</code> (dense step=1, trial only by 2, immediate stop) plus the diversity gate (≥ 3 distinct public r values required before scoring).</li>
 <li>Add a driver that runs <code>trial_2_stop_1</code> on the 4 toys, applies the <code>insufficient_thread_diversity</code> classification when &lt; 3 r values are found, and when eligible applies the one_factor top-5 gate. Emit all secondary diagnostics plus the new classification field.</li>
-<li>Never consult p or q during row generation or support counting — only in the post-hoc audit scoring pass.</li>
+<li>Never consult p or q during row generation or support counting, only in the post-hoc audit scoring pass.</li>
 <li>Record exact "trials" (every %2 attempt counts) and "zero_yield_inspections" separately.</li>
 <li>Produce the minimal comparison table against the full-web baseline for the 4 toys, clearly marking any <code>insufficient_thread_diversity</code> outcomes.</li>
 <li>Update this HTML with a "v1.0 First-slice measured results" section (actual numbers, classifications, cost) and a short measured-result note (hypothesis status only) before the next round. Do not escalate to richer policies until this first run is complete and reviewed.</li>
@@ -154,12 +154,12 @@ A policy passes the toy rung for first-slice experiments if at least one hidden 
 <ul>
 <li><strong>Policy name:</strong> <code>trial_2_stop_1</code></li>
 <li><strong>Extractor rule:</strong> For every offset in the dense window, test only divisibility by 2. If even, record the factor 2 (with its multiplicity); immediately stop. Odd composites contribute zero threads. Only the single public thread r = 2 is ever discovered.</li>
-<li><strong>Primary gate:</strong> one_factor_success — at least one held-out hidden thread (p or q) appears among the top-5 supported holes with support count ≥ 1.</li>
+<li><strong>Primary gate:</strong> one_factor_success, at least one held-out hidden thread (p or q) appears among the top-5 supported holes with support count ≥ 1.</li>
 <li><strong>Secondary diagnostics (always emitted):</strong> two_factor_success, top18_direct_hits, rank of best hidden thread, touched composites, total trial attempts, zero-yield inspections.</li>
 <li><strong>Escalation:</strong> Only if <code>trial_2_stop_1</code> fails the one_factor top-5 gate on the toys, run <code>trial_2_3_5_stop_1</code>, then <code>prime_leq_7_stop_2</code>.</li>
 </ul>
 
-<h2>8. Resolved Decisions — Contract v1.0 Final</h2>
+<h2>8. Resolved Decisions. Contract v1.0 Final</h2>
 
 <div class="success">
 <strong>All design questions closed.</strong> The following parameters are now immutable for the first implementation slice:

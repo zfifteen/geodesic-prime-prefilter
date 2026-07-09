@@ -104,7 +104,7 @@ Universal bounded compression is proved in [PROOF.md](PROOF.md) (2026-07-05). Fo
 w - p <= C(q) = max(64, ceil(0.5 * log(q)^2))
 ```
 
-This bound sits at the Cramér scale — the same `(log q)^2` envelope as Cramér's conjecture — and is established deterministically from divisor-count invariants, not probabilistic models.
+This bound sits at the Cramér scale, the same `(log q)^2` envelope as Cramér's conjecture. It is established deterministically from divisor-count invariants, not probabilistic models.
 
 Closure components:
 
@@ -114,7 +114,7 @@ Closure components:
 
 **Boundary.** This bounds the selected-witness offset `w - p`. It does not by itself prove RH, PNT, or every classical formulation of Cramér's conjecture for raw gap size `q - p`. A Lean 4 formalization is in progress as a machine-checked mirror.
 
-**Audit corroboration** (not proof boundaries): square-branch falsification sweeps remain clean through tested regimes — e.g. prime roots `300M–400M`, `5,084,001` tested, no counterexample, max utilization `0.70`.
+**Audit corroboration** (not proof boundaries): square-branch falsification sweeps remain clean through tested regimes. For example, prime roots `300M` to `400M` with `5,084,001` tested yielded no counterexample and a max utilization of `0.70`.
 
 The old fixed cutoff theorem `{2:44, 4:60, 6:60}` is false and invalidated. It fails at `q = 24,098,209`, where the square branch gives `E(q) = 72 > 60`.
 

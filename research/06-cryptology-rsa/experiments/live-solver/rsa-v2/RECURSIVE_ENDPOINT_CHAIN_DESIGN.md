@@ -81,12 +81,12 @@ This skeleton makes the three closure modes into alternative outcomes of the sam
 
 All rules already present in the endpoint-structure law and in `PGS_CERTIFICATE.md` become cases evaluated at each step of the uniform iteration:
 
-- **Strict reset closure** — evaluated first on every (Lₖ, Uₖ) pair.
-- **Deadline value selection** — the rule that chooses the minimum among tail[0], lower_d_threat_offset, or candidate_bound is executed once when the certificate is built; the resulting `reset_deadline_value` and `reset_signature` travel with the certificate into the closure test.
-- **Deadline-signature correction** — the outward-correction test plus mutual floor images on (c, d) plus signature match is simply another predicate evaluated on the current pair after the direct reset closure has failed.
-- **Oriented transport coordinate choice** — a pure function of the current lower certificate and the orientation point; identical at every step of the chain.
-- **Signature matching** — part of every closure predicate; the signature is carried unchanged from the PGSPG certificate construction.
-- **Previous-endpoint stepping** — the generator of the next state in the iteration; exactly the same operation whether we are still in the initial square-root chamber or deep in the chain.
+- **Strict reset closure**: evaluated first on every (Lₖ, Uₖ) pair.
+- **Deadline value selection**: the rule that chooses the minimum among tail[0], lower_d_threat_offset, or candidate_bound is executed once when the certificate is built; the resulting `reset_deadline_value` and `reset_signature` travel with the certificate into the closure test.
+- **Deadline-signature correction**: the outward-correction test plus mutual floor images on (c, d) plus signature match is simply another predicate evaluated on the current pair after the direct reset closure has failed.
+- **Oriented transport coordinate choice**: a pure function of the current lower certificate and the orientation point; identical at every step of the chain.
+- **Signature matching**: part of every closure predicate; the signature is carried unchanged from the PGSPG certificate construction.
+- **Previous-endpoint stepping**: the generator of the next state in the iteration; exactly the same operation whether we are still in the initial square-root chamber or deep in the chain.
 
 No additional rule is required when the iteration moves from the first lower anchor to the second, or from bit length 40 to bit length 2048. The only change is the number of previous-endpoint steps that must be taken before one of the predicates succeeds or becomes uncomputable.
 
@@ -117,10 +117,10 @@ This is the precise sense in which the structure "already existed" and the only 
 
 This analysis draws directly from:
 
-- `endpoint_structure_law.md` — the public law statements for reciprocal deadline-signature correction and oriented endpoint-chain closure.
-- `PGS_CERTIFICATE.md` — the contract that the certificate, not the raw endpoint, is the unit of inference.
-- `ALGORITHM.md` — the stage description that already lists the three closure modes as successive but still separate stages.
-- `ORIENTED_ENDPOINT_CHAIN_BASELINE.md` — the explicit labeling of the current linear implementation.
+- `endpoint_structure_law.md`, the public law statements for reciprocal deadline-signature correction and oriented endpoint-chain closure.
+- `PGS_CERTIFICATE.md`, the contract that the certificate, not the raw endpoint, is the unit of inference.
+- `ALGORITHM.md`, the stage description that already lists the three closure modes as successive but still separate stages.
+- `ORIENTED_ENDPOINT_CHAIN_BASELINE.md`, the explicit labeling of the current linear implementation.
 
 The recursive formulation does not add new rules. It re-expresses the rules already written in those documents as the step logic and termination conditions of a single chain traversal.
 

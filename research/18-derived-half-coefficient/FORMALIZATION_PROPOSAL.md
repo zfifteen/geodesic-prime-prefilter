@@ -1,4 +1,4 @@
-# Formalization Proposal — Derived Half-Coefficient Finding
+# Formalization Proposal: Derived Half-Coefficient Finding
 
 **Date:** 2026-07-08  
 **Chapter:** `research/18-derived-half-coefficient/`  
@@ -27,27 +27,27 @@ Three layers must stay separated in every artifact:
 
 ## 2. Formalization Options
 
-### Option A — Minimal pointer (low effort, weak stewardship)
+### Option A: Minimal pointer (low effort, weak stewardship)
 
 Add one paragraph to `research/04-bounded-compression/README.md` and link
 `PROOF.md`. No new chapter.
 
 **Verdict:** Insufficient for a breakthrough finding.
 
-### Option B — Layered research chapter (recommended)
+### Option B: Layered research chapter (recommended)
 
 Dedicated chapter with finding statement, derivation digest, finite verification
 record, hypothesis lane, and 30/30/30 bundle.
 
 **Verdict:** **Recommended** (this folder).
 
-### Option C — Lean-first extraction
+### Option C: Lean-first extraction
 
 New Lean module `PGS.BoundedCompression.HalfScale`.
 
 **Verdict:** Phase 3 follow-on.
 
-### Option D — Standalone publication note
+### Option D: Standalone publication note
 
 PDF-ready note sourced from the 30/30/30 bundle.
 
@@ -57,22 +57,22 @@ PDF-ready note sourced from the 30/30/30 bundle.
 
 ## 3. Phased Execution Plan
 
-### Phase 1 — Canon (complete)
+### Phase 1: Canon (complete)
 
 - [x] Chapter scaffold + docs + 30/30/30 bundle
 - [x] Git commit (persistence fix)
 
-### Phase 2 — Reproducible verification script (next)
+### Phase 2: Reproducible verification script (next)
 
 - [ ] `scripts/gwr_bound_verification.py`
 - [ ] `output/gwr_bound_verification_summary.json`
 - [ ] Pytest gate (deterministic replay of zero-violation table)
 
-### Phase 3 — Formal mirror
+### Phase 3: Formal mirror
 
 - [ ] Lean `half_scale_emergence` in `PGS.Analysis`
 
-### Phase 4 — Publication note
+### Phase 4: Publication note
 
 - [ ] Standalone publication note
 

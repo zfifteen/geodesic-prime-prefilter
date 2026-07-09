@@ -32,7 +32,7 @@
   `664,578 / 664,578` exact consecutive next-prime recoveries from prime `11`
   through prime `10,000,121` with `0` skipped gaps.
 - **Square-branch falsification surfaces remain clean through tested regimes**
-  (audit corroboration, not proof boundary): e.g. prime roots `300M–400M`,
+  (audit corroboration, not proof boundary): e.g. prime roots `300M to 400M`,
   `5,084,001` tested, no counterexample, max utilization `0.70`.
 - **The semiprime branch clears its first full `127`-bit official gate.** The
   centered `PGS` audit on the committed `12`-case surface passes at rung `2`,

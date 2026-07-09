@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Weak L_FCL — Proof Target</title>
+<title>Weak L_FCL. Proof Target</title>
 <style>
 :root { --bg:#f8f9fa; --fg:#1a1a1a; --accent:#0a4d8c; --card:#fff; --border:#d1d5db; --good:#166534; }
 body { font-family: system-ui, sans-serif; line-height:1.55; background:var(--bg); color:var(--fg);
@@ -13,7 +13,7 @@ h1 { color:var(--accent); } pre { background:rgba(0,0,0,.06); padding:.75rem; ov
 </style>
 </head>
 <body>
-<h1>L<sub>FCL</sub>-weak — Proof Target</h1>
+<h1>L<sub>FCL</sub>-weak. Proof Target</h1>
 <p><a href="index.html">← Hypothesis artifact</a></p>
 
 <div class="card">
@@ -23,11 +23,11 @@ Let <code>B ≥ q − p</code>. Rule X chamber-reset state at <code>(p, B)</code
 
 <h2>Lemma chain</h2>
 <ol>
-  <li><strong>L1 (proved):</strong> <code>q = min{n&gt;p : τ(n)=2}</code> — <code>PROOF.md</code></li>
-  <li><strong>L2 (proved on closed gap):</strong> GWR carrier and NLSC inside <code>I</code> — <code>PROOF.md</code></li>
-  <li><strong>L3 (implementation):</strong> Rule X at <code>B = gap</code> returns <code>q</code> — measured 78 493/78 493 on R2</li>
-  <li><strong>L4 (audit demotion):</strong> <span style="color:#166534"><strong>Proved in Lean</strong></span> — non-composite-witness class at <code>q &gt; 1</code> implies <code>τ(q)=2</code> via <code>tau_le_two_and_gt_one_imp_eq_two</code>.</li>
-  <li><strong>L5 (weak equivalence — CLOSED):</strong> Rule X resolution at sufficient bound is <em>forced</em> by chamber state — <code>weak_lfcl_ruleX_forces_next_prime</code> (proved in Lean as machine-checked translation under hypotheses from PROOF.md; 2026-07-05).</li>
+  <li><strong>L1 (proved):</strong> <code>q = min{n&gt;p : τ(n)=2}</code> : <code>PROOF.md</code></li>
+  <li><strong>L2 (proved on closed gap):</strong> GWR carrier and NLSC inside <code>I</code> : <code>PROOF.md</code></li>
+  <li><strong>L3 (implementation):</strong> Rule X at <code>B = gap</code> returns <code>q</code>, measured 78 493/78 493 on R2</li>
+  <li><strong>L4 (audit demotion):</strong> <span style="color:#166534"><strong>Proved in Lean</strong></span>: non-composite-witness class at <code>q &gt; 1</code> implies <code>τ(q)=2</code> via <code>tau_le_two_and_gt_one_imp_eq_two</code>.</li>
+  <li><strong>L5 (weak equivalence. CLOSED):</strong> Rule X resolution at sufficient bound is <em>forced</em> by chamber state : <code>weak_lfcl_ruleX_forces_next_prime</code> (proved in Lean as machine-checked translation under hypotheses from PROOF.md; 2026-07-05).</li>
 </ol>
 
 <h2>Lean status (2026-06-19)</h2>

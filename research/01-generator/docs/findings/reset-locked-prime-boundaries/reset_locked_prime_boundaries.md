@@ -19,17 +19,17 @@ I implemented a full sieve-based analysis (SPF + exact d(n) for all n ≤ 2 M, 1
 | **≥ 20**      | **33 350**    | **33 160**      | **99.43%** | **5.8**        |
 | ≥ 30          | 12 847        | 12 839          | 99.94%     | 6.2            |
 
-- **For gaps large enough to exhibit the signal (width ≥20)**: **>99.4%** show the reset pattern — exactly as predicted ("more than ninety eight percent").
+- **For gaps large enough to exhibit the signal (width ≥20)**: **>99.4%** show the reset pattern: exactly as predicted ("more than ninety eight percent").
 - Small gaps (<20) show lower rates (~50%) simply because there is often insufficient interior length for a second low-d composite (twins, prime triplets, etc.). These are already handled perfectly by the existing recursive walker.
 - The handful of rare large-gap exceptions (<0.6%) are now high-value research targets.
 
 This matches the claim that the rule keeps "almost all true next primes" while catching the false ones.
 
 ### Implications for Completing the PGS next-prime generator
-This is **not** a replacement for GWR/NLSC — it is their natural evolution and explains *why* NLSC works so reliably.
+This is **not** a replacement for GWR/NLSC: it is their natural evolution and explains *why* NLSC works so reliably.
 
 **Immediate engineering wins**:
-1. **Reset Confirmation Check** becomes a mandatory early-exit / guard in the Exact Recursive Walker, Bounded Walker, and Threat-Margin Variant (add ~2–3 lines; negligible cost).
+1. **Reset Confirmation Check** becomes a mandatory early-exit / guard in the Exact Recursive Walker, Bounded Walker, and Threat-Margin Variant (add ~2 to 3 lines; negligible cost).
 2. In the Finite-State Surface Model, encode the reset as a required transition after any minimal-divisor state in the 14-state grammar.
 3. **Metadata extension** (Section 10 of the spec): add `reset_dist`, `reset_d`, `reset_found` to every outputted record. This gives full auditability of the "double tap" that locked the endpoint.
 4. **False-positive elimination**: any candidate whose selected integer lacks a reset within, say, 2×log(q) steps is rejected before classical validation. This would have caught all 282 false remaining candidates.

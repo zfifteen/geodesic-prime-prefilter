@@ -7,7 +7,7 @@ This is a sharp and unusually concrete bridge between prime-gap arithmetic and C
 
 - **First‑descent block**:
   “Follow the odd orbit until the first odd value below the seed \(s\).”
-  The block ends at the *terminal source* — the last odd value that is still \(\ge s\). This is clear, but it would help to name the length of the block (number of odd steps) and the **reset** explicitly. Later you mention “first-descent reset” and “median reset”; a precise definition (e.g. \(s / C(\text{terminal})\) or its logarithm) would be useful.
+  The block ends at the *terminal source*, the last odd value that is still \(\ge s\). This is clear, but it would help to name the length of the block (number of odd steps) and the **reset** explicitly. Later you mention “first-descent reset” and “median reset”; a precise definition (e.g. \(s / C(\text{terminal})\) or its logarithm) would be useful.
 
 - **Prime‑gap divisor minimizer**:
   For consecutive primes \(p<q\), \(w\) is the leftmost integer in \((p,q)\) with minimal \(\tau(n)\) (divisor count).
@@ -19,7 +19,7 @@ The essay states two main observations for seeds below \(10^6\):
 
 1. **Enrichment near the minimizer**:
    Collatz source states land on the odd cells closest to \(w\) at about \(1.76\times\) the background rate (same prime gap).
-   “Odd cells nearest” could mean: if \(w\) is even, the two odd neighbours \(w\pm1\); if \(w\) is odd, the cell \(w\) itself. The statement would gain from a formal definition—e.g. “the distance‑minimising odd integer(s) to \(w\)” — and a precise description of the background model (uniform over odd numbers in the gap? bootstrapped?).
+   “Odd cells nearest” could mean: if \(w\) is even, the two odd neighbours \(w\pm1\); if \(w\) is odd, the cell \(w\) itself. The statement would gain from a formal definition:e.g. “the distance‑minimising odd integer(s) to \(w\)”, and a precise description of the background model (uniform over odd numbers in the gap? bootstrapped?).
 
 2. **Stratification by \(k = \nu_2(3n+1)\)**:
    The enrichment survives stratification. This is important because the valuation governs the size of the drop; it suggests the signal is not just an artefact of one \(k\)-regime.
@@ -53,7 +53,7 @@ A few points:
 
 - The congruence is automatically satisfied by any terminal source \(w-1\) with that \(k\); restating it makes explicit that the minimizer’s residue class is exactly the one dictated by the Collatz step. So the hypothesis is simply: the terminal source is the odd number immediately below the divisor minimizer.
 - A proof would have to connect the *divisor‑count* minimisation inside a prime gap to the *size* of the Collatz drop \(C(w-1)\) relative to the block’s seed \(s\). On the face of it, \(\tau(w)\) being minimal says nothing directly about \(3w-2\) or about earlier Collatz iterates. The most plausible route would be to show that when \(w\) is the leftmost \(\tau\)-minimizer, \(w-1\) is forced into a highly constrained residue class that also controls the trajectory length and the drop ratio. The short‑block restriction (exactly three odd steps) already suggests the seed is not far above \(w-1\); perhaps one could relate the seed to \(w\) itself via the inverse Collatz tree.
-- The inequality to be proved is not stated quantitatively. A precise formulation — e.g. “\(s / C(w-1) > c\) for some absolute \(c > 1\), while control blocks have smaller median drop” — would be needed before a proof can be attempted.
+- The inequality to be proved is not stated quantitatively. A precise formulation, e.g. “\(s / C(w-1) > c\) for some absolute \(c > 1\), while control blocks have smaller median drop”, would be needed before a proof can be attempted.
 
 ### 4. Suggestions for tightening the exposition
 

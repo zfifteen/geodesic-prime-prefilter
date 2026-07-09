@@ -1,7 +1,7 @@
 # d=4 GWR Fractional-Position Bound
 
 **Date**: 2026-06-15  
-**Status**: Proved lemmas (Phases 1–5) + measured finite-base anchor + falsification harness
+**Status**: Proved lemmas (Phases 1 to 5) + measured finite-base anchor + falsification harness
 
 This note proves the d=4 carrier geometry feeding the source-to-spectral transfer
 lemma. `PROOF.md` controls the Interior Maximizer Theorem; this document proves
@@ -31,7 +31,7 @@ frac_pos = 1 − m/g.
 
 ---
 
-## 2. Phase 1 — Infrastructure (proved)
+## 2. Phase 1: Infrastructure (proved)
 
 ### Lemma 1.1 (Fractional-position identity)
 
@@ -52,7 +52,7 @@ If `w` is the leftmost minimum-`τ` point with `δ = τ(w)`, then for every
 τ(p+i) > δ.
 ```
 
-*Proof.* `prime_gap_exclusion_consequences.md` — equal or smaller `τ` before `w`
+*Proof.* `prime_gap_exclusion_consequences.md`: equal or smaller `τ` before `w`
 contradicts leftmost minimality.
 
 ### Lemma 1.3 (Right-suffix exclusion)
@@ -63,7 +63,7 @@ For every `i` with `r < i < g`:
 τ(p+i) ≥ δ.
 ```
 
-*Proof.* Same source — strict smaller `τ` after `w` contradicts minimality of `δ`.
+*Proof.* Same source: strict smaller `τ` after `w` contradicts minimality of `δ`.
 
 ### Lemma 1.4 (Bertrand gap bound)
 
@@ -79,7 +79,7 @@ For primes `p < q` with `p > 1`: `q < 2p`, hence `g < p`.
 
 ---
 
-## 3. Phase 2 — d=4 first-`τ=4` arrival (proved)
+## 3. Phase 2: d=4 first-`τ=4` arrival (proved)
 
 **Theorem 2.1 (First interior `τ=4`).** If `τ(w)=4`, then `w` is the first
 interior integer with divisor count `4`.
@@ -98,7 +98,7 @@ violate Lemma 1.2 if `n < w`, or Lemma 1.3 if `n > w`.
 
 ---
 
-## 4. Phase 3 — Closure before square threat (proved)
+## 4. Phase 3: Closure before square threat (proved)
 
 Let `S₊(w)` denote the least prime square strictly greater than `w`.
 
@@ -126,7 +126,7 @@ The tight **right-side** bound is the identity `frac_pos = 1 − m/g` with `m=q�
 
 ---
 
-## 5. Phase 4 — Left-arrival bound from Short Divisor-Average
+## 5. Phase 4: Left-arrival bound from Short Divisor-Average
 
 Let `r` be the first interior offset with `τ(p+r)=4` (Theorem 2.1: `r = w−p`).
 Prefix `J = {p+1,…,p+r−1}` has length `H = r−1` and, by Theorem 2.1,
@@ -165,7 +165,7 @@ analyzer function `max_tau4_free_prefix(p)` (audit only).
 
 ---
 
-## 6. Phase 5 — Combined bound (proved synthesis)
+## 6. Phase 5: Combined bound (proved synthesis)
 
 **Theorem 5.1 (Two-sided d=4 fractional-position bound).** For GWR carrier with
 `τ(w)=4` in chamber `(p,q)`:
@@ -197,7 +197,7 @@ frac_pos ≤ 1 − m₀/g.
 
 On the measured `10⁶` d=4 surface, `m₀ = 1` (gap `3,5` has `w=4`, `q−w=1`);
 the documented closure ladder reports min margin `2` on the `11-gap-ridge`
-surface — regimes differ by left-prime cutoff.
+surface, regimes differ by left-prime cutoff.
 
 **Theorem 5.3 (No constant `θ₄ < 1` independent of `g`).** If `m = m₀` is
 fixed and `g` can be arbitrarily large while `r = g − m₀`, then
@@ -241,7 +241,7 @@ Smoke: `lake env lean pgs-rh-placement-invariants.lean`.
 
 | Claim | Status |
 |-------|--------|
-| Theorems 2.1–2.2, 3.1, 5.1 | **Proved corollaries of GWR + PROOF.md** |
+| Theorems 2.1 to 2.2, 3.1, 5.1 | **Proved corollaries of GWR + PROOF.md** |
 | `R_SDA(p)` bound | **Proved** given Short Divisor-Average |
 | `θ₄ = 1/2` pointwise uniform | **Invalidated** by `frac_pos` max `0.9375` |
 | Min margin `m₀` | **Measured** (regime-dependent) |

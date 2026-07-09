@@ -225,7 +225,7 @@ def main():
         "It quantifies how the simple GWR form behaves relative to the packet's own drift and reserve",
         "before the more faithful local deconvolution model of Stage 1 is applied.",
         "",
-        "The live target (Chamber-Deconvolved Reciprocal Balance Lemma — all three obligations) remains fully open.",
+        "The live target (Chamber-Deconvolved Reciprocal Balance Lemma, all three obligations) remains fully open.",
         "No obligation discharged. This is a finite measured diagnostic on a toy regime only.",
         "",
         f"CSV: {csv_path}",

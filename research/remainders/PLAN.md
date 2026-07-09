@@ -1,4 +1,4 @@
-# PLAN.md — Remainder Statistics Collection for Prime Gap Structure
+# Remainder Statistics Collection for Prime Gap Structure
 
 **Task:** Quantify remainder (residue) distributions and correlations inside prime gaps relative to GWR positions, minimum-d(n) carriers, and gap termination points. Produce auditable Python artifacts, datasets, and measured surfaces while strictly preserving PGS deterministic framing and state separation.
 

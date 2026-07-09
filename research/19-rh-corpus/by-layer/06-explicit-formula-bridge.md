@@ -1,7 +1,7 @@
-# Layer 6 — Explicit formula bridge
+# Layer 6: Explicit formula bridge
 
 **Status mix:** `narrative`  
-**Proves RH?** No — downstream translation for reviewers
+**Proves RH?** No: downstream translation for reviewers
 
 Layer 6 restates the compressed ratio $R(s)$ in classical prime-counting language:
 von Mangoldt coefficients, Chebyshev $\psi(x)$, and zero/error terms.
@@ -34,13 +34,13 @@ with $\rho$ over nontrivial zeros of $\zeta(s)$.
 
 | Object | Layer | Role |
 |--------|-------|------|
-| $E(n)$, GWR $w$ | L1–L2 | Integer gap mechanism |
+| $E(n)$, GWR $w$ | L1 to L2 | Integer gap mechanism |
 | $D(s)$, $R(s)$ | L3 | Exact compression |
 | Chamber $frac\_pos$ | L4 | Local placement geometry |
 | Zero sum over $\rho$ | L6 | Classical oscillatory correction |
 
 Layer 6 is how reviewers **already** talk about primes. PGS adds the upstream
-integer read — it does not replace the explicit formula proof machinery.
+integer read, it does not replace the explicit formula proof machinery.
 
 ---
 
@@ -49,7 +49,7 @@ integer read — it does not replace the explicit formula proof machinery.
 When GWR witness $w$ has high primorial resonance ($w\equiv 0\pmod{30}$, 4+
 remainder zeros), [RH-005](../FINDINGS_INDEX.md) proves **immediate gap termination**
 ($q=w+1$, twin gap). In explicit-formula language, this is an **exact local
-termination** of the oscillatory correction inside that chamber — not a global
+termination** of the oscillatory correction inside that chamber: not a global
 zero-placement theorem.
 
 Status: proved corollary at L1; interpretive link to L6 is `narrative` only.

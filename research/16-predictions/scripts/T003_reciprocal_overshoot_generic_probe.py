@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-PGS Predictions T-003 — Reciprocal + Transported Carrier Overshoot Lift to Generic Retained Surfaces.
+PGS Predictions T-003. Reciprocal + Transported Carrier Overshoot Lift to Generic Retained Surfaces.
 
 **Candidate**: Reciprocal Deadline-Signature Correction + Transported Carrier Overshoot (Master Catalogue Rank #4)
 **Agent**: Agent C (Endpoint-Chain, Modulus-Link & Reciprocal Closure)
@@ -139,7 +139,7 @@ class TransportedOvershoot:
 @dataclass(frozen=True)
 class ClosureVerdict:
     """Result of applying the rsa-v2 predicates on a synthetic-modulus pair.
-    Explicit resolved or unresolved state — never probabilistic.
+    Explicit resolved or unresolved state, never probabilistic.
     """
     status: str   # one of the CLOSURE_STATUS_* strings or equivalent
     overshoot: TransportedOvershoot
@@ -149,7 +149,7 @@ class ClosureVerdict:
 
 
 # ============================================================================
-# PURE HELPER SIGNATURES (scaffolding — logic described in comments only)
+# PURE HELPER SIGNATURES (scaffolding: logic described in comments only)
 # ============================================================================
 
 def load_retained_detail_rows(detail_csv: Path, min_power: int, max_power: int) -> list[dict[str, Any]]:
@@ -476,7 +476,7 @@ def build_synthetic_modulus_pairs(
     divisibility to decide any PGS state).
 
     Pairing policy for first-cycle runs (simple, auditable, no sampling magic):
-    - For each eligible lower (d=4 current chamber), take the next 1–2 endpoints
+    - For each eligible lower (d=4 current chamber), take the next 1 to 2 endpoints
       in the sorted pool that are strictly greater than lower_p.
     - This produces a modest number of (lower, upper, N) triples while staying
       inside the exact retained window.
@@ -523,7 +523,7 @@ def run_overshoot_carrier_sweep(
 
     PGS objects: closure_results carry the exact transported overshoot deltas (overshoot_above_upper_anchor etc.) + explicit closure status from the rsa-v2-lifted predicates on synthetic moduli built from retained public endpoints. retained_transitions supply the d=4 current-chamber divisor-field context and GWR w position (current_winner_offset) plus tail for controls.
 
-    Integration: for each lower_p in d=4 transitions that has a matching closure_result, attach the primary overshoot scalar (clipped or raw overshoot_above_upper_anchor or carrier variant; default large positive when absent to mark unresolved). Bin or threshold the overshoot measure (seeded from rsa-v2 true band 14-16, here observed small negative undershoots on generic surface). Score inside each match_mode exactly as the audited precedent (decisive pairs where the overshoot bin favors the observed target_w_offset or reset_signature property vs tail_length control). Compute signed advantage, fold counts if split, unresolved rate (here 100% because all generic pairs return unresolved_by_reciprocal_carrier_misalignment — the overshoot distribution itself is still measured as candidate carrier).
+    Integration: for each lower_p in d=4 transitions that has a matching closure_result, attach the primary overshoot scalar (clipped or raw overshoot_above_upper_anchor or carrier variant; default large positive when absent to mark unresolved). Bin or threshold the overshoot measure (seeded from rsa-v2 true band 14-16, here observed small negative undershoots on generic surface). Score inside each match_mode exactly as the audited precedent (decisive pairs where the overshoot bin favors the observed target_w_offset or reset_signature property vs tail_length control). Compute signed advantage, fold counts if split, unresolved rate (here 100% because all generic pairs return unresolved_by_reciprocal_carrier_misalignment, the overshoot distribution itself is still measured as candidate carrier).
 
     Targets for first integration: current_winner_offset (within-chamber sanity) and a simple encoding of reset_signature match (constant on this surface per T-002). Next-chamber extension is immediate follow-on unit.
 
@@ -599,7 +599,7 @@ def run_overshoot_carrier_sweep(
 
     # Since all pairs unresolved_by_* and sample small (<< MIN_TOTAL_DECISIVE), verdict is explicit unresolved.
     # The measured distribution (small consistent negative overshoots) is recorded as narrowing data.
-    verdict = "unresolved on stated surface (generic retained 12-13 d=4; 100% unresolved_by_reciprocal_carrier_misalignment; overshoot distribution measured as small negative undershoots; full carrier protocol gates including decisive-pair minimum and fold conjunction not met on this surface — requires larger/variable-signature retained windows for resolution test)"
+    verdict = "unresolved on stated surface (generic retained 12-13 d=4; 100% unresolved_by_reciprocal_carrier_misalignment; overshoot distribution measured as small negative undershoots; full carrier protocol gates including decisive-pair minimum and fold conjunction not met on this surface, requires larger/variable-signature retained windows for resolution test)"
 
     summary = {
         "verdict": verdict,
@@ -644,11 +644,11 @@ def write_outputs(
     - Never write probabilistic fields.
     """
     # PHASE 1 SCAFFOLDING
-    raise NotImplementedError("Phase 1 skeleton — implementation deferred until after Phase 2 review")
+    raise NotImplementedError("Phase 1 skeleton, implementation deferred until after Phase 2 review")
 
 
 # ============================================================================
-# MAIN + ARGUMENT PARSING (skeleton — full CLI contract visible)
+# MAIN + ARGUMENT PARSING (skeleton: full CLI contract visible)
 # ============================================================================
 
 def build_parser() -> argparse.ArgumentParser:
@@ -686,11 +686,11 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     - Return 0 on success, nonzero on any explicit error path.
     - Every step is auditable; intermediate artifacts written.
     """
-    # PHASE 1 SCAFFOLDING — full orchestration flow described in comments.
+    # PHASE 1 SCAFFOLDING: full orchestration flow described in comments.
     parser = build_parser()
     args = parser.parse_args(argv)
 
-    print("T-003 reciprocal overshoot generic probe — PHASE 1 SKELETON (no implementation)")
+    print("T-003 reciprocal overshoot generic probe. PHASE 1 SKELETON (no implementation)")
     print(f"detail_csv={args.detail_csv}")
     print(f"power_range=[{args.min_power}, {args.max_power}]")
     print("This skeleton parses and prints usage. Real work begins after Phase 2 review + Phase 3 increments.")

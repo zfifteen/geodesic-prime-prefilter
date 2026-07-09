@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-LWM-BAND-01 (Banded Diagonal Support) — Primary experiment runner.
+LWM-BAND-01 (Banded Diagonal Support). Primary experiment runner.
 
 Isolated implementation under the literal multiplicative web / thread triangulation contract.
 PGS-first: operates exclusively on the public ordered thread web (small-prime factors r
@@ -419,7 +419,7 @@ def write_public_jsonl(results: list[dict]) -> None:
 
 def write_summary_md(results: list[dict]) -> None:
     lines = [
-        "# LWM-BAND-01 Banded Diagonal Support — Public Summary",
+        "# LWM-BAND-01 Banded Diagonal Support: Public Summary",
         "",
         "Experiment: Banded support via public log2(bit-length) partition B(r) + coherence C(t) = # active bands.",
         "Contract: literal web only. Public threads → holdout direct p/q rows → public B/C scoring → emit max-C set.",

@@ -62,7 +62,7 @@ def estimate_e_gwr_bounds(gap: int, p: int) -> tuple:
     For this baseline we use a simple model: ~ log(log(p)) * some factor, but here we use
     a documented loose upper bound on the minimal E.
     
-    For Stage 2 we test the *optimistic* case heavily — if it fails, the hypothesis is in trouble.
+    For Stage 2 we test the *optimistic* case heavily: if it fails, the hypothesis is in trouble.
     """
     log_p = math.log(p)
     
@@ -161,7 +161,7 @@ Observed:
     report += """
 This test uses bounded estimates because full interior divisor data is unavailable at these scales. It is therefore not a complete falsification test, but it is a strong stress test of the local correction idea.
 
-The live target (Chamber-Deconvolved Reciprocal Balance Lemma — all three obligations) remains fully open.
+The live target (Chamber-Deconvolved Reciprocal Balance Lemma, all three obligations) remains fully open.
 No obligation discharged. Finite measured diagnostic on extreme chambers using available record data only.
 
 CSV: {csv_out}

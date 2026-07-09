@@ -1,4 +1,4 @@
-# Simplest-Composite Left-Bias — Falsification Report
+# Simplest-Composite Left-Bias: Falsification Report
 
 **Date:** 2026-07-07  
 **Regime:** Full gap scan through `p < 2·10^6` (148,931 interiors)
@@ -52,9 +52,9 @@
 | Bucket | Count | Median | p90 | Max | Mean |
 | ---: | ---: | ---: | ---: | ---: | ---: |
 | `τ = 4` | 110,947 | 3 | 6 | 24 | 3.75 |
-| `τ = 6–7` | 5,432 | 3 | 5 | 20 | 3.11 |
-| `τ = 8–11` | 15,607 | 2 | 3 | 8 | 2.03 |
-| `τ = 12–23` | 6,320 | 1 | 2 | 5 | 1.36 |
+| `τ = 6 to 7` | 5,432 | 3 | 5 | 20 | 3.11 |
+| `τ = 8 to 11` | 15,607 | 2 | 3 | 8 | 2.03 |
+| `τ = 12 to 23` | 6,320 | 1 | 2 | 5 | 1.36 |
 | `τ ≥ 24` | 10,402 | 1 | 1 | 3 | 1.00 |
 
 The two predicted clouds are structurally visible: low-τ spreads to offset 24; high-τ (`≥12`) almost never exceeds offset 5 and is overwhelmingly at offset 1.
@@ -63,11 +63,11 @@ The two predicted clouds are structurally visible: low-τ spreads to offset 24; 
 
 | Bin | `τ=4` p90 | `τ=4` max | `τ≥16` median | `τ≥16` max |
 | --- | ---: | ---: | ---: | ---: |
-| `10²–10³` | 4 | 6 | 1 | 1 |
-| `10³–10⁴` | 5 | 10 | 1 | 1 |
-| `10⁴–10⁵` | 6 | 16 | 1 | 3 |
-| `10⁵–10⁶` | 6 | 22 | 1 | 5 |
-| `10⁶–10⁷` | 6 | 24 | 1 | 3 |
+| `10² to 10³` | 4 | 6 | 1 | 1 |
+| `10³ to 10⁴` | 5 | 10 | 1 | 1 |
+| `10⁴ to 10⁵` | 6 | 16 | 1 | 3 |
+| `10⁵ to 10⁶` | 6 | 22 | 1 | 5 |
+| `10⁶ to 10⁷` | 6 | 24 | 1 | 3 |
 
 Low-complexity max offset grows with scale (3 → 24). High-complexity median stays pinned at 1 across every bin with sufficient data.
 
@@ -83,7 +83,7 @@ Every gap satisfies: if `w` is the leftmost `τ`-minimizer, no integer in `(p, w
 
 1. **Left-side bias grows with complexity.** Offset distributions tighten monotonically as `τ(w)` rises; the high-τ cloud is visibly distinct from the `τ=4` cloud.
 2. **Envelope decoupling.** The same growing cutoff `C(q)` bounds all branches, yet high-τ witnesses almost never use even the modest offsets that `τ=4` routinely reaches.
-3. **Prefix-forcing mechanism.** Zero prefix violations confirm that deep placement of a high-τ minimum is impossible without an easier composite in the prefix — matching the insight's "declare early or be displaced" logic.
+3. **Prefix-forcing mechanism.** Zero prefix violations confirm that deep placement of a high-τ minimum is impossible without an easier composite in the prefix: matching the insight's "declare early or be displaced" logic.
 
 ### Sharpening note (square branch)
 
@@ -105,13 +105,13 @@ python3 experiments/simplest-composite-left-bias-falsification-2026-07/simplest_
 **Pins:** Python 3.13, deterministic divisor sieve, `prime_limit = 2_000_000`, 201-sample cross-check against `gwr_next_gap_profile` (0 mismatches).
 
 **Artifacts:**
-- `simplest_composite_left_bias_probe.py` — probe script
-- `gap_simplest_composite_rows.csv` — per-gap rows
-- `falsification_summary.json` — machine-readable verdict
-- `offset_clouds.svg` — scatter visualization (`log₁₀(p)` vs offset, colored by τ bucket)
+- `simplest_composite_left_bias_probe.py`: probe script
+- `gap_simplest_composite_rows.csv`, per-gap rows
+- `falsification_summary.json`, machine-readable verdict
+- `offset_clouds.svg`, scatter visualization (`log₁₀(p)` vs offset, colored by τ bucket)
 
 ---
 
 ## Next Minimal Step
 
-Extend the same probe to a sparse high-`p` sample (e.g. primes near `10^12` from record-gap tables) to test whether any `τ≥12` simplest composite reaches offset ≥ 6 at scales where `τ=4` gaps are wider — the first regime where the insight's extreme-scale caveat could bite.
+Extend the same probe to a sparse high-`p` sample (e.g. primes near `10^12` from record-gap tables) to test whether any `τ≥12` simplest composite reaches offset ≥ 6 at scales where `τ=4` gaps are wider, the first regime where the insight's extreme-scale caveat could bite.

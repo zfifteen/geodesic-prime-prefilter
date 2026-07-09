@@ -1,4 +1,4 @@
-"""Remainder Research Super Team — named lane agents for multi-lane investigation.
+"""Remainder Research Super Team, named lane agents for multi-lane investigation.
 
 Each agent owns one remainder lane, its collector script, and output contract.
 The orchestrator (`run_investigation.py`) dispatches agents as subprocesses and
@@ -81,7 +81,7 @@ def all_lane_agents() -> list[LaneAgent]:
         LaneAgent(
             agent_id="state_budget",
             lane_name="state_budget_residue_cells",
-            role="Residue-matched transition pair tests (powers 12–18)",
+            role="Residue-matched transition pair tests (powers 12 to 18)",
             collector_script="research/05-state-budget/scripts/state_budget_residue_matched_pair_test.py",
             output_artifact="research/05-state-budget/output/state_budget_residue_matched_pair_summary.json",
             repro_command="python research/05-state-budget/scripts/state_budget_residue_matched_pair_test.py",

@@ -18,7 +18,7 @@ public_selected_load = 4          (divisor count at GWR winner)
 right_endpoint_load = max(a, b)   (first right-open offset value)
 ```
 
-When the two numerical values are equal, the right side has zero residual *within the grammar* for any reentry move that would preserve the equality. The only right-side changes the wheel permits are the two deviations that take the right-endpoint number to 2 or to 6; both break the equality. Hence any reentry that is forced to keep the right load matched to the public load of 4 cannot be carried by a right-boundary adjustment. The directed movement must come from the opposite side — the immediate-left slot of the lower factor.
+When the two numerical values are equal, the right side has zero residual *within the grammar* for any reentry move that would preserve the equality. The only right-side changes the wheel permits are the two deviations that take the right-endpoint number to 2 or to 6; both break the equality. Hence any reentry that is forced to keep the right load matched to the public load of 4 cannot be carried by a right-boundary adjustment. The directed movement must come from the opposite side: the immediate-left slot of the lower factor.
 
 The off-zero cases fall out cleanly as ordinary inequalities, exactly as you wrote:
 
@@ -36,7 +36,7 @@ This also makes the "transport budget" concrete without extra grammar: it is sim
 
 ### Updated Rung 2 for the Deliverable (Load-Equality Form)
 
-**Rung 2 — Load-Equality Transport Obstruction**  
+**Rung 2. Load-Equality Transport Obstruction**  
 When `public_selected_load = 4` (divisor count at the GWR winner) equals `right_endpoint_load = max(first right-open after p, first right-open after q)`, the right side has no residual load available for reentry while preserving the equality. Any reentry of a prior-absent supported cell that keeps the two loads matched must therefore be carried by the opposite directed side: the lower-factor immediate-left slot, realized as terminal-twin lift (immediate-left distance exactly 2 inside a preceding gap wide enough to contain four interior wheel-open slots).  
 *Exact falsification predicate:* Any row in which public selected divisor count = 4, right boundary value = 4, the cell is prior-absent and supported, and the cell re-enters as an exact endpoint pair without the lower factor satisfying terminal-twin lift.
 

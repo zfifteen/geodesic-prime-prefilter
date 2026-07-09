@@ -71,7 +71,7 @@ RH places primes close)" \
 ```
 
 ```bash
-# RH bridge tests archived externally — see research/12-rh-bridge/README.md and external archive
+# RH bridge tests archived externally: see research/12-rh-bridge/README.md and external archive
 ```
 
 If theorem-status prose changes, also run the targeted root-proof status tests:
@@ -110,7 +110,7 @@ Integrator evidence recorded for this verdict:
   local PGS theorems.
 - Excess-only bridge scan: reviewed hits are warnings or correct statements
   preserving $H(n)=\log n+E(n)$.
-- `# RH bridge tests archived externally — see research/12-rh-bridge/README.md and external archive`: pass, 5 passed.
+- `# RH bridge tests archived externally: see research/12-rh-bridge/README.md and external archive`: pass, 5 passed.
 - Targeted doc-status/root-proof tests:
   `test_non_root_proof_marked_markdown_declares_status`,
   `test_root_proof_uses_conventional_language`, and

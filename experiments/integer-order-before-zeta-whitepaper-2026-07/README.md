@@ -1,4 +1,4 @@
-# Integer Order Before Zeta — Whitepaper Package
+# Integer Order Before Zeta: Whitepaper Package
 
 Plain-language whitepaper explaining why prime order is fixed at the integer
 layer before the zeta function enters.

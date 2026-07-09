@@ -1,4 +1,4 @@
-# Grok-Led Public Window Rerun — Minutes
+# Grok-Led Public Window Rerun: Minutes
 
 ## Context And Agenda
 

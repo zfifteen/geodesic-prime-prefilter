@@ -115,7 +115,7 @@ def generate_enhanced_square_fractal(df, max_depth=8, n_points=120, out_name="sq
             color=COSMIC['text'], family='monospace',
             bbox=dict(boxstyle='round,pad=0.6', facecolor=COSMIC['nebula'], alpha=0.92, edgecolor=COSMIC['grid'], linewidth=1.5))
     
-    ax.set_title('PGS Square Branch Fractal Tree — Recursive Geometry of GWR-Selected Prime Squares Across Scales', 
+    ax.set_title('PGS Square Branch Fractal Tree. Recursive Geometry of GWR-Selected Prime Squares Across Scales', 
                  color=COSMIC['white'], fontsize=13, pad=8, fontweight='bold')
     
     png_path = OUT_DIR / f"{out_name}.png"
@@ -199,13 +199,13 @@ def generate_gwr_subdivision_fractal(max_p=2000, max_depth=7, out_name="gwr_subd
         "Recurse independently on [p, w] and [w, q].\n"
         "Nodes colored by τ(w): yellow=3 (square branch), teal=4, etc.\n"
         "This tree visualizes the hierarchical structure of the divisor-count field and the unique maximizer property (PROOF.md).\n"
-        "The 'attractor' is the set of all such selected w's across scales — a deterministic fractal dust in the integers."
+        "The 'attractor' is the set of all such selected w's across scales, a deterministic fractal dust in the integers."
     )
     ax.text(0.98, 0.02, legend, transform=ax.transAxes, fontsize=18, va='bottom', ha='right',
             color=COSMIC['text'], family='monospace',
             bbox=dict(boxstyle='round', facecolor=COSMIC['nebula'], alpha=0.9, edgecolor=COSMIC['grid']))
     
-    ax.set_title('GWR Subdivision Fractal — Recursive Leftmost Minimum-Divisor Selection Across Nested Intervals', 
+    ax.set_title('GWR Subdivision Fractal. Recursive Leftmost Minimum-Divisor Selection Across Nested Intervals', 
                  color=COSMIC['white'], fontsize=12, pad=8)
     
     png_path = OUT_DIR / f"{out_name}.png"
@@ -266,7 +266,7 @@ def generate_ridge_scale_fractal(out_name="ridge_self_similarity_fractal"):
             transform=ax.transAxes, ha='center', va='top', fontsize=20, color=COSMIC['text'],
             bbox=dict(boxstyle='round', facecolor=COSMIC['nebula'], alpha=0.85))
     
-    ax.set_title('PGS Ridge Position Fractal — Self-Similarity of Near-Edge Z-Maxima Across Log Scales', 
+    ax.set_title('PGS Ridge Position Fractal. Self-Similarity of Near-Edge Z-Maxima Across Log Scales', 
                  color=COSMIC['white'], fontsize=24, pad=6)
     
     png_path = OUT_DIR / f"{out_name}.png"
@@ -318,7 +318,7 @@ def generate_u_square_fractal(out_name="u_square_utilization_fractal"):
             transform=ax.transAxes, ha='right', va='bottom', fontsize=18, color=COSMIC['text'],
             bbox=dict(boxstyle='round', facecolor=COSMIC['nebula'], alpha=0.9))
     
-    ax.set_title('U_□ Utilization Fractal — Recursive Geometry-Median of Square-Phase Pressure in d=4 Chambers', 
+    ax.set_title('U_□ Utilization Fractal. Recursive Geometry-Median of Square-Phase Pressure in d=4 Chambers', 
                  color=COSMIC['white'], fontsize=22, pad=6)
     
     png_path = OUT_DIR / f"{out_name}.png"
@@ -361,7 +361,7 @@ def generate_fractal_growth_gif(df, max_frames=28, out_name="square_branch_fract
         ax.set_ylim(-115, 45)
         ax.set_aspect('equal')
         ax.axis('off')
-        ax.set_title(f'Square Branch Fractal — Growth Step {frame+1}/{max_frames}\n(Progressive depth + more squares from data)', color=COSMIC['white'], fontsize=22)
+        ax.set_title(f'Square Branch Fractal. Growth Step {frame+1}/{max_frames}\n(Progressive depth + more squares from data)', color=COSMIC['white'], fontsize=22)
         
         fig.canvas.draw()
         frame_img = np.array(fig.canvas.renderer.buffer_rgba())[:,:,:3]

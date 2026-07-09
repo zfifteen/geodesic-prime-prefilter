@@ -187,7 +187,7 @@ def write_infographic(
   <text x="96" y="204" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#312e81" font-weight="700">Core claim</text>
   <text x="96" y="234" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#3730a3">Prime placement is decided by exact divisor structure inside each gap. Zeta is the compressed record of that same arithmetic.</text>
 
-  <text x="72" y="300" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#0f172a" font-weight="700">Layer 1 — Integers (the source)</text>
+  <text x="72" y="300" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#0f172a" font-weight="700">Layer 1: Integers (the source)</text>
   <rect x="72" y="316" width="1056" height="300" rx="16" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5"/>
   <text x="96" y="352" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#166534" font-weight="700">Example gap: 23 → 29</text>
   <text x="96" y="380" font-family="monospace" font-size="15" fill="#14532d">23 | 24  25  26  27  28 | 29</text>
@@ -202,7 +202,7 @@ def write_infographic(
 
   <line x1="600" y1="628" x2="600" y2="668" stroke="#4338ca" stroke-width="3" marker-end="url(#arrow)"/>
 
-  <text x="72" y="708" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#0f172a" font-weight="700">Layer 2 — Exact compression</text>
+  <text x="72" y="708" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#0f172a" font-weight="700">Layer 2: Exact compression</text>
   <rect x="72" y="724" width="1056" height="280" rx="16" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
   <text x="96" y="760" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#1d4ed8" font-weight="700">Same divisor counts, packaged as series</text>
   <text x="96" y="792" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1e3a8a">Σ τ(n) / n^s  =  ζ(s)²</text>
@@ -214,7 +214,7 @@ def write_infographic(
 
   <line x1="600" y1="1016" x2="600" y2="1056" stroke="#4338ca" stroke-width="3" marker-end="url(#arrow)"/>
 
-  <text x="72" y="1096" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#0f172a" font-weight="700">Layer 3 — RH language (downstream)</text>
+  <text x="72" y="1096" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#0f172a" font-weight="700">Layer 3: RH language (downstream)</text>
   <rect x="72" y="1112" width="1056" height="220" rx="16" fill="#faf5ff" stroke="#a855f7" stroke-width="1.5"/>
   <text x="96" y="1148" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#6b21a8" font-weight="700">Critical line = spectral coordinate sentence</text>
   <text x="96" y="1180" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#581c87">Zeros of ζ(s) describe correction terms in prime counting.</text>

@@ -3,16 +3,16 @@
 **Context from thread:** https://grok.com/share/bGVnYWN5_e8b087bd-23f9-449b-86a6-5440e8606b6b  
 Title: PHAP-v1 Lean L5 progress  
 Activation: "You are my dedicated Research Assistant running PGS-Hypothesis-Advancement-Protocol (PHAP-v1) for the prime-gap-structure project."  
-Grok reply anchor: "PHAP-v1 firing – week status: PR#16 baseline. (Reply with number.)"
+Grok reply anchor: "PHAP-v1 firing: week status: PR#16 baseline. (Reply with number.)"
 
 **Catch-up summary (2026-07-05):**  
-The shared thread is a lightweight protocol activation for focused, durable hypothesis advancement (PHAP-v1). It designates a dedicated RA persona for the repo and orients work on "Lean L5". The actual shared content is the prompt + a terse status line — the substance lives in the repo state.  
+The shared thread is a lightweight protocol activation for focused, durable hypothesis advancement (PHAP-v1). It designates a dedicated RA persona for the repo and orients work on "Lean L5". The actual shared content is the prompt + a terse status line, the substance lives in the repo state.  
 
 Current repo invariants (per docs/AGENTS.md, continuity/START_HERE.md, ACTIVE_TARGET.md, LEAN_PGS_VERIFICATION_CONTRACT.md):  
 - PGS-first reasoning entrypoint only.  
 - State separation mandatory: proved / measured / audit / hypothesis / unresolved / invalidated.  
 - Lean-4 is **strictly downstream verification/audit mirror** of PROOF.md. Never source of new inference or generator behavior.  
-- L5 target (OPEN): `weak_lfcl_ruleX_forces_next_prime` (ChamberReset.lean) — Rule X replay at sufficient bound `B = gap` constructs a `DemotedZeroExcessSignature` certificate forcing the next-prime selection.  
+- L5 target (OPEN): `weak_lfcl_ruleX_forces_next_prime` (ChamberReset.lean). Rule X replay at sufficient bound `B = gap` constructs a `DemotedZeroExcessSignature` certificate forcing the next-prime selection.  
 - Supporting: L4 (audit_demoted_tau2 + of signature) **proved** in Lean.  
 - Python side: 100% (78493/78493) on R2 surface (p < 1e6, B=gap) for unique resolved survivor + demoted audit (no τ(q) lookup). See experiments/weak-lfcl-sufficient-bound-2026-06/.  
 - Other active surfaces (square-branch bounded cutoff, RSA endpoint structure, predictions carriers, etc.) remain separate; do not widen scope unless explicitly asked.  
@@ -22,7 +22,7 @@ Close L5. Deliver the first machine-checked structural law linking the PGS chamb
 
 This is high-leverage because:  
 - Converts the strong measured R2 surface into a formally verified property in the Lean library.  
-- Completes the L1–L5 lemma chain for weak L_FCL (see weak_lfcl_proof_target.html).  
+- Completes the L1 to L5 lemma chain for weak L_FCL (see weak_lfcl_proof_target.html).  
 - Creates reusable formal replay infrastructure for future Lean audits, small verified examples, and Phase 5 cross-verification.  
 - Directly serves PHAP-v1 by producing a concrete, auditable, high-signal milestone with full traceability.  
 - Strengthens the entire formalization track without touching generator contract, without classical shortcuts, without downgrading any theorem.  
@@ -33,7 +33,7 @@ Success is binary and narrow: the `sorry` is gone, the theorem is proved, build 
 
 This plan is deliberately engineered for the `/goal` autonomous-goal workflow (see ~/.grok/docs/user-guide/04-slash-commands.md and the `update_goal` tool).  
 
-- One primary objective + 7–9 narrow, sequential sub-goals.  
+- One primary objective + 7 to 9 narrow, sequential sub-goals.  
 - Each sub-goal is self-contained: clear entry contract (files to read), success criteria (exact artifacts + commands), and exit handoff.  
 - 4-phase authoring (AGENTS.md §11) is embedded where Lean code or proofs change:  
   1. Scaffolding (detailed comments + structure, zero implementation logic).  
@@ -62,7 +62,7 @@ The master plan file itself lives here and is the single source of truth for the
 **Master Goal (set first for context):**  
 "PHAP-v1 Lean L5: Close weak_lfcl_ruleX_forces_next_prime (remove the sorry), prove Rule X replay at B=gap produces a unique DemotedZeroExcessSignature certificate under next-prime hypotheses, update all surfaces, deliver remarkable formalization milestone while strictly obeying contracts."
 
-### Subgoal 1 — Bootstrap & Current-State Audit (no code changes)
+### Subgoal 1: Bootstrap & Current-State Audit (no code changes)
 **Entry reads (mandatory in order):**  
 - docs/AGENTS.md (full)  
 - research/00-index/continuity/START_HERE.md + continuity_and_shape_contract.md + ACTIVE_TARGET.md  
@@ -87,18 +87,18 @@ The master plan file itself lives here and is the single source of truth for the
 - One-paragraph "State at start of L5 closure" written into this file under "Execution Log".  
 - No contract violations noted.  
 
-**Handoff:** Write "Subgoal 1 complete — [timestamp] — ready for scaffolding." Then `/goal status` and set Subgoal 2.
+**Handoff:** Write "Subgoal 1 complete: [timestamp], ready for scaffolding." Then `/goal status` and set Subgoal 2.
 
-### Subgoal 2 — Replay Logic Scaffolding (4-Phase Part 1)
+### Subgoal 2: Replay Logic Scaffolding (4-Phase Part 1)
 **Scope:** Only add structure + comments in lean-4/PGS/ChamberReset.lean (and minimal helpers if needed in Basic if purely structural). No proof bodies that close goals yet.  
 
 **Scaffold required (mirror Python exactly, pure functional):**  
-- `wheelOpenResidues` already present — keep.  
-- `admissibleOffsets (p : Nat) (bound : Nat) : List Nat` — list comprehension style using filter + % .  
+- `wheelOpenResidues` already present, keep.  
+- `admissibleOffsets (p : Nat) (bound : Nat) : List Nat`, list comprehension style using filter + % .  
 - Supporting structures if missing (already good).  
-- `replaySelectionAtBound (p bound : Nat) : Option ReplayCertificate` — direct port of `replay_selection_at_bound`. Use the existing `tau`, `compositeWitness`, List ops. Compute counts via List.map (p+1 .. p+bound) tau. Implement lock_carrier, threat, post-processing exactly.  
+- `replaySelectionAtBound (p bound : Nat) : Option ReplayCertificate`, direct port of `replay_selection_at_bound`. Use the existing `tau`, `compositeWitness`, List ops. Compute counts via List.map (p+1 .. p+bound) tau. Implement lock_carrier, threat, post-processing exactly.  
 - Add `ruleXReplay` or expose the replay as the implementation of the selection step inside the target theorem.  
-- Full header comments with PROOF.md / experiment traceability and "SCAFFOLDING — implementation logic deferred to next phase" markers on every new def.  
+- Full header comments with PROOF.md / experiment traceability and "SCAFFOLDING, implementation logic deferred to next phase" markers on every new def.  
 
 **4-Phase discipline:** Only scaffolding. Detailed comments describing the ordinary-language mechanism (the chamber walk, unresolved_count as "first non-composite seen", resolved only when admissible + no prior non-comp + no threat override, etc.).  
 
@@ -108,13 +108,13 @@ The master plan file itself lives here and is the single source of truth for the
 
 **Checkpoint:** Explicit review sentence written: "Skeleton reviewed: logic port faithful to certificate_replay.py lines X-Y, no proof work yet, PGS objects (tau field, admissible wheel offsets, resolved survivor count) front-and-center."
 
-### Subgoal 3 — Skeleton Review & Strategy Lock (Explicit Review)
+### Subgoal 3: Skeleton Review & Strategy Lock (Explicit Review)
 **Actions:**  
 - Re-read the scaffolded file + the Python source side-by-side.  
 - Optionally invoke second-opinion skill (provide excerpts of scaffold + Python + target theorem + contract).  
 - Decide minimal proof strategy:  
   - Prove auxiliary structural lemmas (e.g., "if ∀ n in (p,q), tau n ≠ 2 then unresolved_count remains 0 until offset = gap").  
-  - Prove that q (under hq + hgap + hnext) is admissible (wheel open — follows from tau=2 + q>5).  
+  - Prove that q (under hq + hgap + hnext) is admissible (wheel open, follows from tau=2 + q>5).  
   - Prove the selection at q receives RESOLVED_SURVIVOR, threat does not override it (no lower-d composite after lock that can affect the first survivor), resolved_count = 1.  
   - Prove the DemotedZeroExcessSignature fields hold directly from the above + hq (nonCompositeWitness from tau q =2).  
   - Then discharge the existential in the target theorem.  
@@ -124,7 +124,7 @@ The master plan file itself lives here and is the single source of truth for the
 
 **Handoff:** Ready for incremental proof units.
 
-### Subgoal 4 — Incremental Proof Units + Immediate Verify (4-Phase Part 3)
+### Subgoal 4: Incremental Proof Units + Immediate Verify (4-Phase Part 3)
 **Rule:** One small lemma or one case at a time. After each, run `lake build` (or targeted check). Record the unit + verification output.  
 
 **Typical micro-units (adjust live):**  
@@ -147,7 +147,7 @@ If a unit feels large, split it.
 
 **Also in this subgoal (or immediately after):** Add a small concrete computable check, e.g. for p=11 (gap=2), q=13 or p=73 q=79, using `#eval` or a decidable instance that the replay returns the expected cert (to give executable sanity inside Lean).
 
-### Subgoal 5 — Full Local Verification & Contract Hygiene
+### Subgoal 5: Full Local Verification & Contract Hygiene
 **Commands (exact):**  
 - Full lake build + smoke-test.lean.  
 - Python test suite for the experiment: `PYTHONPATH=src/python python3 -m pytest experiments/weak-lfcl-sufficient-bound-2026-06/test_weak_lfcl.py -q`  
@@ -157,19 +157,19 @@ If a unit feels large, split it.
 
 **Success:** All green. Zero new sorries. Contract language present in the new proof and defs.
 
-### Subgoal 6 — Surface & Documentation Updates (Mandatory)
+### Subgoal 6: Surface & Documentation Updates (Mandatory)
 **Mandatory updates (exact locations):**  
-- lean-4/README.md — mark L5 closed, add one-line claim + repro.  
-- docs/lean-pgs-verification/index.html + PGS_LEAN_TRANSLATION_PLAN.html — update tables, add L5 row "Proved (Lean mirror of weak sufficient-bound under hypotheses)", update status.  
-- research/02-gwr-dni/docs/chamber_tension_closure_hypothesis/weak_lfcl_proof_target.html — mark L5 closed with link to Lean file + date.  
-- experiments/weak-lfcl-sufficient-bound-2026-06/FINDINGS.md — append "Lean L5 closure" note (measured surface now has formal mirror; theorem status remains per PROOF.md).  
-- lean-4/L5_WEAK_LFCL_CLOSURE_PLAN.md — add "Execution Log" final block + date.  
+- lean-4/README.md, mark L5 closed, add one-line claim + repro.  
+- docs/lean-pgs-verification/index.html + PGS_LEAN_TRANSLATION_PLAN.html, update tables, add L5 row "Proved (Lean mirror of weak sufficient-bound under hypotheses)", update status.  
+- research/02-gwr-dni/docs/chamber_tension_closure_hypothesis/weak_lfcl_proof_target.html, mark L5 closed with link to Lean file + date.  
+- experiments/weak-lfcl-sufficient-bound-2026-06/FINDINGS.md, append "Lean L5 closure" note (measured surface now has formal mirror; theorem status remains per PROOF.md).  
+- lean-4/L5_WEAK_LFCL_CLOSURE_PLAN.md, add "Execution Log" final block + date.  
 - Optional but recommended for remarkable: short `lean-4/L5_CLOSURE_MEMO.md` or update the lean-pgs-verification HTML with before/after + one diagram (text or inline) of the lemma chain.  
 - If status-map needs a row, touch research/00-index/status-map.md (Lean L5).  
 
 Preserve exact wording discipline: "machine-checked translation / Lean mirror of the structural property", "under the stated hypotheses from PROOF.md", "measured 100% on R2 remains measured", etc.
 
-### Subgoal 7 — Self-Review + Polish (4-Phase Part 4)
+### Subgoal 7: Self-Review + Polish (4-Phase Part 4)
 Run the full Code Review Checklist (AGENTS) mentally / in notes:  
 - Prose clear, conversational.  
 - No hedge on proved items.  
@@ -183,7 +183,7 @@ Fix any nits found. Produce a one-paragraph "Remarkable Advancement Delivered" s
 
 **Success:** Self-review notes appended here. All surfaces consistent.
 
-### Subgoal 8 (Stretch — for truly remarkable close) — Durable PHAP-v1 Artifact + Small Demo
+### Subgoal 8 (Stretch: for truly remarkable close): Durable PHAP-v1 Artifact + Small Demo
 - Add a one-page `docs/lean-pgs-verification/L5_CLOSURE_HIGHLIGHT.html` (self-contained) or extend the index with a visual "L1→L5 chain closed" table + "What this enables next".  
 - Include one tiny verified Lean snippet example (e.g. a `#eval` that shows replay on a known small gap returns the cert and the audit lemma applies).  
 - Write a 1-paragraph note for future PHAP-v1 sessions: "L5 closed on [date]. Next natural pressure targets: full next-prime theorem formalization (Phase 4b), or joint carrier proofs, or verified replay on 10^6+ slice via reduction."  

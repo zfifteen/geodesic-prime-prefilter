@@ -1,4 +1,4 @@
-# Remainder Research — Super Sleuth Forensic Report
+# Remainder Research: Super Sleuth Forensic Report
 
 **Date:** 2026-07-07  
 **Team:** Super Sleuth Scientific Detective Agent Team (`DETECTIVE_TEAM_MANIFEST.md`)  
@@ -21,7 +21,7 @@ This report cross-examines pinned artifacts only. It does not re-collect data, e
 | State-budget cells | `state_budget` | **Inconclusive** | mod30: 230 decisive pairs, +40 advantage, verdict unresolved |
 | RSA backward | `rsa_backward` | **Falsified** (toy closure) | 980 cases, 0% factor-reach; searched family falsified |
 
-**Cross-lane finding:** Gap-echo hypothesis is **falsified** (`correlations/CORRELATION_REPORT.md`). Large gaps show universal echoes but **0%** GWR-last when echoes present — opposite of the hypothesized sharpening mechanism.
+**Cross-lane finding:** Gap-echo hypothesis is **falsified** (`correlations/CORRELATION_REPORT.md`). Large gaps show universal echoes but **0%** GWR-last when echoes present: opposite of the hypothesized sharpening mechanism.
 
 ---
 
@@ -32,7 +32,7 @@ This report cross-examines pinned artifacts only. It does not re-collect data, e
 3. **Numeric spot-checks:** Seven claims verified by `forensic_verify.py` against primary JSON (see Verification section).
 4. **Epistemic audit:** Reconciled `PROOF.md` theorem wording vs theorem-stack table vs `README.md` marketing vs `goals.md` G2 open items.
 
-### Gap-count semantics (canonical — not a contradiction)
+### Gap-count semantics (canonical: not a contradiction)
 
 | Field | Meaning | 1.5e6 value | Source |
 |-------|---------|-------------|--------|
@@ -44,7 +44,7 @@ The +1 delta is **expected** (one empty twin gap), not a data integrity failure.
 
 ---
 
-## Lane 1 — Interior `R(n,M)` (`interior_rnm`)
+## Lane 1: Interior `R(n,M)` (`interior_rnm`)
 
 **Detective:** `detective_interior`  
 **Super Team status:** `streamed`, `gaps_with_interiors: 114154`  
@@ -66,11 +66,11 @@ python research/remainders/collect_remainder_stats.py \
 | Scaled gap count | 114,154 | `gaps_with_interiors` | **Confirmed** |
 | Records emitted | 1,385,850 | `records_analyzed` / `records_emitted` | **Confirmed** |
 | GWR-last rate | 0.1386 (15,824 / 114,154) | `gwr_last_rate`, `gwr_last_count` | **Confirmed** |
-| MI(num_zeros, dist_bin) | 0.0568 (norm 0.0498) | `mi_num_zeros_vs_dist_bin` | **Confirmed** — weak signal |
-| Spearman(entropy, g) | 1.0000 | `spearman_entropy_vs_g` | **Confirmed** — definitional (entropy bins track g) |
+| MI(num_zeros, dist_bin) | 0.0568 (norm 0.0498) | `mi_num_zeros_vs_dist_bin` | **Confirmed**: weak signal |
+| Spearman(entropy, g) | 1.0000 | `spearman_entropy_vs_g` | **Confirmed**: definitional (entropy bins track g) |
 | GWR zero − gap avg | −0.670 | `avg_gwr_zero_minus_gap_avg` | **Confirmed** |
 | Super-signal @ GWR (4+ zeros) | 3,842 cases | `super_signal_at_gwr_count` | **Confirmed** |
-| All super-signal GWR in g=2 | 3,842 / 3,842 | `g2_with_super_signal_gwr` | **Confirmed** — conditional, not converse |
+| All super-signal GWR in g=2 | 3,842 / 3,842 | `g2_with_super_signal_gwr` | **Confirmed**: conditional, not converse |
 | Late echo repeats (vec[:6]) | 0 gaps | `repeat_stats.gaps_with_late_repeats` | **Confirmed** |
 | mod-2 even fraction | 0.541 | `mod2_even_fraction` | **Confirmed** |
 
@@ -84,7 +84,7 @@ python research/remainders/collect_remainder_stats.py \
 
 ---
 
-## Lane 2 — GWR Super-Signal (`super_signal_status`)
+## Lane 2: GWR Super-Signal (`super_signal_status`)
 
 **Detective:** `detective_super_signal`  
 **Super Team status:** `inline` (no subprocess)  
@@ -101,9 +101,9 @@ python research/remainders/collect_remainder_stats.py \
 | Theorem-stack classification | `measured · corollary` | `super_signal_status.json`, `PROOF.md` table | **Confirmed** |
 | G2 open: 4+ zeros ⟺ mod 30 | Unproved exhaustive case | `super_signal_status.json` `open_g2_items` | **Epistemically open** |
 | G2 open: Step 3 informal | Needs explicit lemma | `goals.md` G2 | **Epistemically open** |
-| G2 open: No Lean mirror | — | `super_signal_status.json` | **Epistemically open** |
+| G2 open: No Lean mirror | : | `super_signal_status.json` | **Epistemically open** |
 | Measured: 4+ zeros @ GWR ⇒ all g=2 | 3,842 cases | `interior_placement_stats.json` | **Confirmed** (empirical) |
-| README: "absolute deterministic trigger" | Marketing language | `README.md` L96 | **Contradiction flagged** — overstates stack status |
+| README: "absolute deterministic trigger" | Marketing language | `README.md` L96 | **Contradiction flagged**: overstates stack status |
 
 ### Internal contradiction (explicit)
 
@@ -112,13 +112,13 @@ python research/remainders/collect_remainder_stats.py \
 **Reconciled classification (detective ruling):**
 - **Empirical observation (confirmed):** On the 1.5e6 surface, every GWR record with 4+ remainder zeros occurs in `g=2` gaps (3,842/3,842).
 - **Logical converse (not established):** High resonance does not predict termination in general; only documents the conditional in twin gaps.
-- **Proof status:** **Epistemically open** pending G2 — either harden sub-claims or reclassify prose in `PROOF.md` / `README.md`.
+- **Proof status:** **Epistemically open** pending G2: either harden sub-claims or reclassify prose in `PROOF.md` / `README.md`.
 
-### Lane verdict: **Epistemically open** — strong measured conditional; proof/marketing misaligned with stack.
+### Lane verdict: **Epistemically open**: strong measured conditional; proof/marketing misaligned with stack.
 
 ---
 
-## Lane 3 — Endpoint `q mod` mask (`endpoint_mask`)
+## Lane 3: Endpoint `q mod` mask (`endpoint_mask`)
 
 **Detective:** `detective_endpoint`  
 **Super Team status:** `ok`, `returncode: 0`  
@@ -134,7 +134,7 @@ python research/remainders/lane_collectors/endpoint_residue_probe.py \
   --output research/remainders/correlations/investigation/endpoint_residue_probe_fresh.json
 ```
 
-### Forensic evidence table — Regime A (fresh simple certification)
+### Forensic evidence table: Regime A (fresh simple certification)
 
 | Claim | Value | Source | Verdict |
 |-------|-------|--------|---------|
@@ -146,7 +146,7 @@ python research/remainders/lane_collectors/endpoint_residue_probe.py \
 | Mean certified opening prefix | 0.9127 | `mean_certified_opening_prefix_len` | **Confirmed** |
 | Certification primes | ≤ 47 | `small_primes_for_certification` | **Confirmed** |
 
-### Forensic evidence table — Regime B (hourly propagated reference)
+### Forensic evidence table: Regime B (hourly propagated reference)
 
 | Claim | Value | Source | Verdict |
 |-------|-------|--------|---------|
@@ -163,7 +163,7 @@ python research/remainders/lane_collectors/endpoint_residue_probe.py \
 
 ---
 
-## Lane 4 — Left-prime `p mod 30` ridge (`mod30_ridge`)
+## Lane 4: Left-prime `p mod 30` ridge (`mod30_ridge`)
 
 **Detective:** `detective_mod30`  
 **Super Team status:** `ok`, `returncode: 0`  
@@ -179,7 +179,7 @@ python research/remainders/lane_collectors/mod30_ridge_probe.py \
   --output research/remainders/correlations/investigation/mod30_ridge_probe_fresh.json
 ```
 
-### Forensic evidence table — Fresh probe (`max_p = 200,000`)
+### Forensic evidence table: Fresh probe (`max_p = 200,000`)
 
 | Residue | Gaps | Right share | Right lift | Verdict |
 |---------|------|-------------|------------|---------|
@@ -193,7 +193,7 @@ python research/remainders/lane_collectors/mod30_ridge_probe.py \
 | p≡23 | 2,248 | 0.2260 | 1.173× | **Confirmed** |
 | p≡29 | 2,244 | 0.0905 | 0.470× | **Confirmed** |
 
-### Forensic evidence table — Pinned 1e6 scale
+### Forensic evidence table: Pinned 1e6 scale
 
 | Residue | Gaps @ 1e6 | Right lift | Verdict |
 |---------|------------|------------|---------|
@@ -203,14 +203,14 @@ python research/remainders/lane_collectors/mod30_ridge_probe.py \
 
 ### Integrity notes
 
-- Fresh 200k probe shows **stronger** lifts at p≡1 and p≡7 than pinned 1e6 p≡13 — scale and `max_p` matter. Do not extrapolate 200k ranking to 1e6+ without re-measurement.
+- Fresh 200k probe shows **stronger** lifts at p≡1 and p≡7 than pinned 1e6 p≡13: scale and `max_p` matter. Do not extrapolate 200k ranking to 1e6+ without re-measurement.
 - Ridge signal is **measured peak-side modulation** of GWR placement; it does not select `q`.
 
 ### Lane verdict: **Confirmed** residue-conditioned asymmetry; regime labels mandatory.
 
 ---
 
-## Lane 5 — State-budget residue cells (`state_budget`)
+## Lane 5: State-budget residue cells (`state_budget`)
 
 **Detective:** `detective_state_budget`  
 **Super Team status:** `ok`, `returncode: 0`  
@@ -234,13 +234,13 @@ python research/05-state-budget/scripts/state_budget_residue_matched_pair_test.p
 
 ### Integrity notes
 
-+40 wins on 230 decisive pairs is a **modest** directional signal. Without pre-registered significance thresholds, multiplicity across residue cells, or held-out validation, the detective classifies this as **inconclusive** — not falsified, not confirmed as a budget law.
++40 wins on 230 decisive pairs is a **modest** directional signal. Without pre-registered significance thresholds, multiplicity across residue cells, or held-out validation, the detective classifies this as **inconclusive**: not falsified, not confirmed as a budget law.
 
-### Lane verdict: **Inconclusive** — probe completed cleanly; evidentiary standard not met for promotion.
+### Lane verdict: **Inconclusive**: probe completed cleanly; evidentiary standard not met for promotion.
 
 ---
 
-## Lane 6 — RSA backward modulus/remainder (`rsa_backward`)
+## Lane 6: RSA backward modulus/remainder (`rsa_backward`)
 
 **Detective:** `detective_rsa`  
 **Super Team status:** `ok`, `returncode: 0`  
@@ -266,7 +266,7 @@ python research/06-cryptology-rsa/scripts/pgs_semiprime_backward_invariant_closu
 
 ### Integrity notes
 
-This lane tests **backward** remainder/modulus invariants on semiprimes `N ≤ 5000`. Zero recall falsifies the searched invariant **family** on this toy surface — not RSA security, not live-solver v2 certificates. Scope is intentionally narrow.
+This lane tests **backward** remainder/modulus invariants on semiprimes `N ≤ 5000`. Zero recall falsifies the searched invariant **family** on this toy surface: not RSA security, not live-solver v2 certificates. Scope is intentionally narrow.
 
 ### Lane verdict: **Falsified** for toy backward closure family; live RSA engine track is separate.
 
@@ -281,7 +281,7 @@ This lane tests **backward** remainder/modulus invariants on semiprimes `N ≤ 5
 | tiny_val | 108 | 0 | untestable | No support |
 | 1e6 full | 78,497 | 0 | baseline 14.16% | Echo impossible (g≤114) |
 | 1.5e6 | 114,154 | 0 | baseline 13.86% | **Confirmed** repeat_stats |
-| Large gaps (50, g≈480–1442) | 50 | 100% | **0%** | **Falsified** |
+| Large gaps (50, g≈480 to 1442) | 50 | 100% | **0%** | **Falsified** |
 | Synthetic positive control | 500 | forced | ~100% vs ~27% | Analysis code valid |
 
 **Ruling:** Hypothesis that late remainder echoes **sharpen** GWR terminal placement is **falsified**. When echoes exist (large g), GWR is **never** last (0/50). Echo mechanism is a **dead end** for placement prediction.
@@ -294,10 +294,10 @@ Sources: `research/remainders/correlations/CORRELATION_REPORT.md`, `interior_pla
 
 | Source | What it claims | Stack truth | Detective ruling |
 |--------|----------------|-------------|------------------|
-| `PROOF.md` §627–655 | Full theorem + □ for Super-Signal | Table: `measured · corollary` | **Contradiction** — body overclaims vs stack |
-| `docs/proof-enhancements/goals.md` G2 | Harden or reclassify | Open checklist | **Epistemically open** — authoritative remediation path |
+| `PROOF.md` §627 to 655 | Full theorem + □ for Super-Signal | Table: `measured · corollary` | **Contradiction**: body overclaims vs stack |
+| `docs/proof-enhancements/goals.md` G2 | Harden or reclassify | Open checklist | **Epistemically open**: authoritative remediation path |
 | `REMAINDER_LANES_SYNTHESIS.md` | Six-lane measured inventory | Aligned | **Confirmed** honest framing |
-| `README.md` L92–96 | "Absolute deterministic trigger" | Not in theorem stack | **Contradiction** — downgrade language recommended |
+| `README.md` L92 to 96 | "Absolute deterministic trigger" | Not in theorem stack | **Contradiction**: downgrade language recommended |
 | `super_signal_status.json` | `measured · corollary` + G2 items | Canonical for lane | **Confirmed** |
 
 **Reconciled rule:** Measured conditionals (3,842/3,842 g=2) may be cited as **empirical**. Wording implying universal deterministic trigger must be tagged **`measured · corollary`** until G2 closes.
@@ -321,11 +321,11 @@ Fresh probes executed 2026-07-07T23:06Z (endpoint, mod30). Interior streamed fro
 
 ---
 
-## Synthesis — What Role Do Remainders Play in PGS?
+## Synthesis: What Role Do Remainders Play in PGS?
 
 ### Proved (independent of this investigation)
 
-- **GWR interior maximizer** and **next-prime rule** — formal spine (`PROOF.md`); remainder vectors are **coordinates** on gap interiors, not replacements for GWR.
+- **GWR interior maximizer** and **next-prime rule**: formal spine (`PROOF.md`); remainder vectors are **coordinates** on gap interiors, not replacements for GWR.
 - **Finite bases** certify GWR/compression up to stated bounds.
 
 ### Measured correlations (confirmed on named regimes)
@@ -339,12 +339,12 @@ Fresh probes executed 2026-07-07T23:06Z (endpoint, mod30). Interior streamed fro
 ### Operational (engineering, not proved closure)
 
 - Endpoint propagated mask + small-prime mod reduction for search acceleration.
-- Ridge orientation as a **prior** on witness placement side — not a selector for `q`.
+- Ridge orientation as a **prior** on witness placement side: not a selector for `q`.
 
 ### Dead ends / falsified
 
-- **Gap-echo sharpening** of GWR terminal placement — falsified on large-gap sample.
-- **Toy RSA backward invariant family** (`N≤5000`) — 0% factor-reach; family falsified.
+- **Gap-echo sharpening** of GWR terminal placement: falsified on large-gap sample.
+- **Toy RSA backward invariant family** (`N≤5000`): 0% factor-reach; family falsified.
 
 ### Honest limits
 

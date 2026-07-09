@@ -78,24 +78,24 @@ footer { margin-top:3rem; padding-top:1rem; border-top:1px solid var(--border); 
 </section>
 
 <section>
-  <h2>The Four Families — Translated into PGS-Native Terms</h2>
+  <h2>The Four Families. Translated into PGS-Native Terms</h2>
 
-  <h3>Family 1 — Selected Composite (w) Positioning</h3>
+  <h3>Family 1. Selected Composite (w) Positioning</h3>
   <p><strong>Native statement:</strong> In the ordered divisor-count field of the gap after <code>p</code>, the offset <code>w − p</code> is a deterministic function of the local structure visible before or at the first <code>d(n)=4</code> arrival (under square exclusion) plus any active chamber-reset or modulus-link signature carried from the previous gap.</p>
   <p><strong>Current status:</strong> The generator already computes <code>carrier_w</code> (or equivalent) as part of chamber-reset state. The task is to turn the existing computation into an explicit, falsifiable carrier law: "given current-chamber <code>d4_count</code> + square-phase flag + previous-gap tail length (under fixed match), the next <code>w</code> offset lies in a stated small integer set, or the carrier returns unresolved."</p>
   <p><strong>Falsification surface:</strong> Retained high-window catalogs (already generated in ch05). Measure exact hit rate of the carrier rule; record unresolved rate; do not use "high probability".</p>
 
-  <h3>Family 2 — Excess-Bounded Gap Closure</h3>
+  <h3>Family 2. Excess-Bounded Gap Closure</h3>
   <p><strong>Native statement:</strong> The cumulative excess <code>Σ E(n)</code> (or max local <code>E</code>) from the leftmost min-d arrival <code>w</code> onward, combined with the square-phase terminal behavior and any active chamber-reset lock, forces the next return to <code>E=0</code> (i.e., the next prime) before a deterministic threshold derived only from the divisor-field invariants already proved for that chamber type.</p>
   <p><strong>Current status:</strong> The proved No-Later-Simpler-Composite already gives one exact closure. The open question is whether stronger, type-specific closure bounds (in terms of current <code>d4_count</code>, square-phase presence, or modulus-link residual) can be stated and falsified on large exact surfaces.</p>
   <p><strong>Warning:</strong> Any claim of the form "G(x) = O(log x · …)" is a classical analytic statement. It may be a downstream consequence, but it is not the form of a PGS Prediction. PGS Predictions stay at the level of exact integer offsets or small finite sets of possible next states on concrete surfaces.</p>
 
-  <h3>Family 3 — E-fluctuation and Prime-Counting Error</h3>
+  <h3>Family 3. E-fluctuation and Prime-Counting Error</h3>
   <p><strong>Native statement (PGS side only):</strong> The cumulative excess integral (or discrete sum) across successive chambers, when tracked via the same carrier mechanisms used for next-triad ordering, produces a deterministic modulation of the local density of zero-excess returns. This modulation is measurable on retained windows as a structured deviation from uniform random placement of the next <code>w</code> and next prime.</p>
   <p><strong>Downstream reading (strictly after PGS source):</strong> The <code>H(n) = log n + E(n)</code> coordinate (docs/rh/) then supplies the exact compression that turns this integer-level modulation into the source term for the explicit formula. The PGS track itself does not derive or test bounds on |π(x) − li(x)|; it supplies the precise arithmetic input that the compression layer then reads.</p>
   <p class="warning">The pasted feedback inverts the source order. The integer-level carrier law comes first; any statement about zeta zeros or the error term is a consequence read through the DNI-to-zeta bridge, never the reasoning engine.</p>
 
-  <h3>Family 4 — Special-Form Primes (Mersenne, twins, exponent walls)</h3>
+  <h3>Family 4. Special-Form Primes (Mersenne, twins, exponent walls)</h3>
   <p><strong>Native statement:</strong> For candidates of special form (e.g., 2^p − 1 after a safe prime or Sophie-Germain pair, or exponents near known walls), the gap structure immediately preceding the candidate is an instance of the ordinary ordered prime-gap chamber. The same GWR-selected <code>w</code> and any active chamber-reset or modulus-link signature therefore supply the same deterministic constraints on the next zero-excess return as in the generic case.</p>
   <p><strong>Status:</strong> research/09-exponents/ already contains PGS experiments on exponent walls. The Predictions track can host the unification: treat the special-form case as just another chamber type whose carrier signature (previous <code>d4_count</code>, reset state, square phase) is measured on the same retained surfaces used for generic gaps.</p>
 </section>
@@ -108,7 +108,7 @@ footer { margin-top:3rem; padding-top:1rem; border-top:1px solid var(--border); 
 </section>
 
 <section>
-  <h2>Current State — Five Continuity Questions</h2>
+  <h2>Current State. Five Continuity Questions</h2>
   <div class="card">
     <p><strong>1. Strongest supported claim</strong><br>
     The meaning of "Predictions" for this program is deterministic carrier laws and structural resolution rules operating on PGS-native objects (divisor-count field, GWR <code>w</code>, chamber resets, modulus links). The strongest existing example is the <code>d4_count</code> ordering carrier on the 8192-row 10^12..10^18 surface (ordering_carrier_found).</p>
@@ -143,7 +143,7 @@ footer { margin-top:3rem; padding-top:1rem; border-top:1px solid var(--border); 
 </section>
 
 <footer>
-  <p>Prime Gap Structure — research/16-predictions • PGS Predictions v0.1 Contract • All claims subordinate to PROOF.md for theorem status and to AGENTS.md for reasoning discipline.</p>
+  <p>Prime Gap Structure, research/16-predictions • PGS Predictions v0.1 Contract • All claims subordinate to PROOF.md for theorem status and to AGENTS.md for reasoning discipline.</p>
   <p>This document was written on the <code>predictions</code> branch immediately after the bootstrap commit that defined the chapter.</p>
 </footer>
 </body>

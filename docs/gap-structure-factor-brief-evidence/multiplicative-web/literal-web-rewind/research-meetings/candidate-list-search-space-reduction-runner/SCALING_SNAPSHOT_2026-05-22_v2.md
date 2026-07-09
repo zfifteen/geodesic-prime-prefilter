@@ -1,4 +1,4 @@
-# PGA Grammar Pruner – Scaling Snapshot v2 (2026-05-22)
+# PGA Grammar Pruner: Scaling Snapshot v2 (2026-05-22)
 
 **Purpose**: Current citable state of the public grammar-rule lever under two distinct measurement surfaces. Surfaces are deliberately kept separate.
 
@@ -19,7 +19,7 @@ This surface produced the breakthrough result (originally 69.19% on the dominant
 
 This surface uses the live `derive_public_motif()` function on freshly generated semiprimes.
 
-- Current best measured result on real derived public motifs at ~58–66 bits: **~45%** average reduction.
+- Current best measured result on real derived public motifs at ~58 to 66 bits: **~45%** average reduction.
 - Performance is still materially limited by coverage gaps on exotic/high-a attractor families that become common at these scales but were underrepresented in the original mining surfaces.
 - The gap between this surface and the frozen toy evidence surface is the primary remaining engineering signal.
 
@@ -34,11 +34,11 @@ This surface uses the live `derive_public_motif()` function on freshly generated
 
 Two clean options, kept separate by surface:
 
-**Option A – Deterministic Synthetic Ladder First**  
-Run a clean, reproducible synthetic-mode ladder across 48–80 bits (or higher) to establish trend lines quickly and cheaply. This gives visibility into scaling behavior without waiting on derivation performance.
+**Option A: Deterministic Synthetic Ladder First**  
+Run a clean, reproducible synthetic-mode ladder across 48 to 80 bits (or higher) to establish trend lines quickly and cheaply. This gives visibility into scaling behavior without waiting on derivation performance.
 
-**Option B – Limited Real Derivation on Deterministic 64–80 Bit Public N**  
-Select a small, fixed set of deterministic public semiprimes in the 64–80 bit range, derive their public motifs live, and measure reduction. This provides the first honest end-to-end scaling data beyond the toy corpus, at the cost of slower execution and potential unresolved cases.
+**Option B: Limited Real Derivation on Deterministic 64 to 80 Bit Public N**  
+Select a small, fixed set of deterministic public semiprimes in the 64 to 80 bit range, derive their public motifs live, and measure reduction. This provides the first honest end-to-end scaling data beyond the toy corpus, at the cost of slower execution and potential unresolved cases.
 
 **Recommended sequence (as lead)**: Run Option A first for trend visibility, then Option B on a modest deterministic set to ground the trends in real derivation results.
 

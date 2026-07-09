@@ -79,19 +79,19 @@ The direct `runs.py` baseline run up to `10^6` completed successfully and produc
 
 | scale | window_mode | seed | window_size | window_count | gap_count | counterexample_count | match_rate | max_gap | min_score_margin |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 100,000,000 | even-window | — | 2,000,000 | 4 | 444,133 | 0 | 1.000000 | 176 | 0.000000010000 |
+| 100,000,000 | even-window | : | 2,000,000 | 4 | 444,133 | 0 | 1.000000 | 176 | 0.000000010000 |
 | 100,000,000 | seeded-window | 20,260,331 | 2,000,000 | 4 | 415,991 | 0 | 1.000000 | 182 | 0.000000010722 |
 | 100,000,000 | seeded-window | 20,260,401 | 2,000,000 | 4 | 412,274 | 0 | 1.000000 | 180 | 0.000000010780 |
-| 1,000,000,000 | even-window | — | 2,000,000 | 4 | 411,157 | 0 | 1.000000 | 192 | 0.000000001000 |
+| 1,000,000,000 | even-window | : | 2,000,000 | 4 | 411,157 | 0 | 1.000000 | 192 | 0.000000001000 |
 | 1,000,000,000 | seeded-window | 20,260,331 | 2,000,000 | 4 | 376,941 | 0 | 1.000000 | 236 | 0.000000001074 |
 | 1,000,000,000 | seeded-window | 20,260,401 | 2,000,000 | 4 | 368,768 | 0 | 1.000000 | 212 | 0.000000001080 |
-| 10,000,000,000 | even-window | — | 2,000,000 | 4 | 384,721 | 0 | 1.000000 | 288 | 0.000000000100 |
+| 10,000,000,000 | even-window | : | 2,000,000 | 4 | 384,721 | 0 | 1.000000 | 288 | 0.000000000100 |
 | 10,000,000,000 | seeded-window | 20,260,331 | 2,000,000 | 4 | 331,375 | 0 | 1.000000 | 236 | 0.000000000107 |
 | 10,000,000,000 | seeded-window | 20,260,401 | 2,000,000 | 4 | 341,830 | 0 | 1.000000 | 236 | 0.000000000129 |
-| 100,000,000,000 | even-window | — | 2,000,000 | 4 | 362,773 | 0 | 1.000000 | 268 | 0.000000000010 |
+| 100,000,000,000 | even-window | : | 2,000,000 | 4 | 362,773 | 0 | 1.000000 | 268 | 0.000000000010 |
 | 100,000,000,000 | seeded-window | 20,260,331 | 2,000,000 | 4 | 303,102 | 0 | 1.000000 | 272 | 0.000000000011 |
 | 100,000,000,000 | seeded-window | 20,260,401 | 2,000,000 | 4 | 311,023 | 0 | 1.000000 | 254 | 0.000000000013 |
-| 1,000,000,000,000 | even-window | — | 2,000,000 | 4 | 344,454 | 0 | 1.000000 | 306 | 0.000000000001 |
+| 1,000,000,000,000 | even-window | : | 2,000,000 | 4 | 344,454 | 0 | 1.000000 | 306 | 0.000000000001 |
 | 1,000,000,000,000 | seeded-window | 20,260,331 | 2,000,000 | 4 | 278,200 | 0 | 1.000000 | 288 | 0.000000000001 |
 | 1,000,000,000,000 | seeded-window | 20,260,401 | 2,000,000 | 4 | 285,778 | 0 | 1.000000 | 356 | 0.000000000001 |
 
@@ -134,8 +134,8 @@ The main limitations are finite coverage and sampling density. The new exact ext
 
 ### Files created or added
 
-- `z_band_prime_composite_field.py` — compatible replacement for the missing divisor-count segment helper
-- `lexi_validation_runs.py` — orchestration and experiment runner
+- `z_band_prime_composite_field.py`, compatible replacement for the missing divisor-count segment helper
+- `lexi_validation_runs.py`, orchestration and experiment runner
 - `research/11-gap-ridge/output/lexicographic_rule_revalidation/edge_run_1e6.json`
 - `research/11-gap-ridge/output/lexicographic_rule_revalidation/experiment_a_exact_5e6.json`
 - `research/11-gap-ridge/output/lexicographic_rule_revalidation/experiment_b_windowed_validation.json`

@@ -40,10 +40,10 @@ def pgs_chamber_reset_state_certificate(
     if candidate_bound < 1:
         raise ValueError("candidate_bound must be positive")
 
-    # Twin-Prime Resonance (GWR Super-Signal) Optimization
-    # If p+1 is a multiple of 30 (4+ zeros), the theorem guarantees it can only be 
-    # the GWR minimum if g=2. We can peek at p+2 and dynamically truncate the 
-    # search space to massive computational savings.
+    # Guarded twin-gap truncation (NOT a Super-Signal theorem citation).
+    # The universal claim "z(GWR)>=4 => g=2" is invalidated (see PROOF.md).
+    # If p+1 is a multiple of 30, peek at p+2: only when tau(p+2)==2 (prime)
+    # is the gap twin and the chamber may safely truncate to bound 2.
     if (p + 1) % 30 == 0:
         if _divisor_count_exact_scalar(p + 2) == 2:
             candidate_bound = 2

@@ -208,7 +208,7 @@ The draft lemma is false if any of the following hold on a measured surface:
 4. d=4 carrier share collapses at scale (contradicting packet dominance).
 
 The analyzer in `pgs_chamber_budget_analyzer.py` is the primary certificate
-generator for items 1–2 and packet share.
+generator for items 1 to 2 and packet share.
 
 ---
 

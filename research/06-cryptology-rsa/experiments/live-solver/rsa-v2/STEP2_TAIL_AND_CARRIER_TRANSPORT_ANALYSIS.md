@@ -47,7 +47,7 @@ Both cases undershoot the actual upper deadline when the lower deadline is trans
 
 When every point in the lower `tail_after_reset_offsets` is transported, none of them land inside the upper gap or on the upper reset endpoint in either case. However, the *pattern* of their landing positions relative to the upper structure differs.
 
-### 50-bit False Positive — Transported Lower Tails
+### 50-bit False Positive: Transported Lower Tails
 
 Upper gap on this modulus: `[32059619 ... 32059633]`
 
@@ -60,7 +60,7 @@ Upper gap on this modulus: `[32059619 ... 32059633]`
 | +100              | 32047751         | 32059533    | -86 from upper_anchor               | Deep before gap                |
 | +112              | 32047763         | 32059521    | -98 from upper_anchor               | Deep before gap                |
 
-### 64-bit True Positive — Transported Lower Tails
+### 64-bit True Positive: Transported Lower Tails
 
 Upper gap on this modulus: `[3221275487 ... 3221275501]`
 
@@ -84,7 +84,7 @@ These transport results suggest that the true positive exhibits a tighter **reci
 In the 64-bit true positive:
 
 - The lower locked carrier (`carrier_w`), when transported, lands only 16 past the upper_anchor (and 14 past the actual upper locked carrier).
-- The first point in the lower tail, when transported, lands only 5 before the upper_anchor — extremely close to the start of the upper gap.
+- The first point in the lower tail, when transported, lands only 5 before the upper_anchor, extremely close to the start of the upper gap.
 
 In the 50-bit false positive, these alignments are roughly twice as loose (32/30 overshoot on the carrier, 22 undershoot on the first tail point).
 
@@ -98,7 +98,7 @@ Based on this transport analysis, the following PGS-native conditions appear wor
 
 **A. Carrier transport tightness**
 - Require that the transported lower `carrier_w` lands within a bounded distance of the upper `carrier_w` (or upper_anchor), e.g. `|transported_lower_carrier_w - upper_carrier_w| <= 20` (or some function of local gap size).
-- The 64-bit case satisfies a bound of ~14–16. The 50-bit case violates it at 30.
+- The 64-bit case satisfies a bound of ~14 to 16. The 50-bit case violates it at 30.
 
 **B. First tail point proximity to upper_anchor**
 - Require that the transported position of the *first* lower tail offset lands within a small distance of the upper_anchor (e.g. within 10 on the lower side).
@@ -112,7 +112,7 @@ Based on this transport analysis, the following PGS-native conditions appear wor
 - Bound the absolute error when transporting the lower `reset_deadline_value` against the actual upper `reset_deadline_value`.
 - Both cases undershoot, but the true positive undershoots by less (-37 vs -58).
 
-Any of these can be evaluated using only values already present in the two certificates plus `floor(N / ·)` — they require no additional divisor counting inside the closure check.
+Any of these can be evaluated using only values already present in the two certificates plus `floor(N / ·)`, they require no additional divisor counting inside the closure check.
 
 ---
 

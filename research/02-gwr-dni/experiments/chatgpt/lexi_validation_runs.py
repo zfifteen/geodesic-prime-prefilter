@@ -293,13 +293,13 @@ def write_csv(path: Path, rows: list[dict], fieldnames: list[str]) -> None:
 
 def format_int(value: int | None) -> str:
     if value is None:
-        return "—"
+        return "N/A"
     return f"{value:,}"
 
 
 def format_float(value: float | None, digits: int = 6) -> str:
     if value is None:
-        return "—"
+        return "N/A"
     return f"{value:.{digits}f}"
 
 
@@ -895,8 +895,8 @@ The main limitations are finite coverage and sampling density. The new exact ext
 
 ### Files created or added
 
-- `z_band_prime_composite_field.py` — compatible replacement for the missing divisor-count segment helper
-- `lexi_validation_runs.py` — orchestration and experiment runner
+- `z_band_prime_composite_field.py`, compatible replacement for the missing divisor-count segment helper
+- `lexi_validation_runs.py`, orchestration and experiment runner
 - `research/11-gap-ridge/output/lexicographic_rule_revalidation/edge_run_1e6.json`
 - `research/11-gap-ridge/output/lexicographic_rule_revalidation/experiment_a_exact_5e6.json`
 - `research/11-gap-ridge/output/lexicographic_rule_revalidation/experiment_b_windowed_validation.json`

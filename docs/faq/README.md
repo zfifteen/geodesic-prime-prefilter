@@ -82,7 +82,7 @@ of prime placement.
 
 - [Root proof authority](../../PROOF.md)
 - [DNI-to-zeta bridge] (see external archive at /Users/velocityworks/prime-gap-structure-archives/2026-05-classical-rh-bridge-completion-route/12-rh-bridge/docs/dni_rh_bridge.md)
-- [RH bridge research home] (archived — see live pointer at research/12-rh-bridge/README.md)
+- [RH bridge research home] (archived, see live pointer at research/12-rh-bridge/README.md)
 - [The Riemann Hypothesis Is Obsolete](../essays/the-riemann-hypothesis-is-obsolete.md)
 - [Documentation correction project](../../research/15-documentation-correction/README.md)
 

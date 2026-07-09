@@ -1,4 +1,4 @@
-# Square-Branch Advancement — June 19, 2026
+# Square-Branch Advancement: June 19, 2026
 
 ## Executive Summary
 
@@ -41,7 +41,7 @@ session advanced the exact obligation named in repository handoff artifacts.
 
 ---
 
-## 2. Measured Result — Extended Falsification Segment
+## 2. Measured Result: Extended Falsification Segment
 
 **Command:**
 
@@ -83,7 +83,7 @@ All observed utilizations remain **strictly below 1**.
 
 ---
 
-## 3. Invalidated Route — d=4 SDA Transfer to Square Branch
+## 3. Invalidated Route: d=4 SDA Transfer to Square Branch
 
 **Command:**
 
@@ -101,7 +101,7 @@ field `τ(n)`; backward distance `D(r)`.
 | Selected-square branch (`s^2 < p < r^2`) | `true` on all rows |
 | Prefix minimum `τ` | `4` (never `5`) |
 | First `τ=4` offset | `2`, `6`, `10` |
-| First `τ=3` offset (= observed offset) | `462`–`540` |
+| First `τ=3` offset (= observed offset) | `462` to `540` |
 | τ≥5 SDA route transfers | **false** |
 | τ≥4 SDA binds at observed offset | **false** |
 
@@ -139,7 +139,7 @@ bounds at extremal rows exceed `10^9` while cutoffs are `O(log(r)^2)`).
 
 1. **Falsification:** continue deterministic segments (`3·10^8 .. 4·10^8`, …) until
    first counterexample or a new utilization envelope stabilizes.
-2. **Theorem pressure:** target `D(r)` directly on the selected-square branch —
+2. **Theorem pressure:** target `D(r)` directly on the selected-square branch :
    not via d=4 SDA porting or residue-only finite covers.
 3. **Structural audit:** explain recurring offset `540` and early-`τ=4` / late-`τ=3`
    separation as a PGS chamber geometry object (hypothesis until formalized).

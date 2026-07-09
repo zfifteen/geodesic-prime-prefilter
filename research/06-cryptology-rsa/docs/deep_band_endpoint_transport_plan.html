@@ -165,18 +165,18 @@ else:
         
         <div class="checklist-item">
             <input type="checkbox" disabled>
-            <label><strong>Phase 1: Compute & Log</strong> — Run the Derivation Script above in isolation. Copy the exact output integer. Record this integer (and any backend warnings) in the active session transcript to guarantee provenance. <em>If anchor is None, treat as a valid experimental failure and halt.</em></label>
+            <label><strong>Phase 1: Compute & Log</strong>. Run the Derivation Script above in isolation. Copy the exact output integer. Record this integer (and any backend warnings) in the active session transcript to guarantee provenance. <em>If anchor is None, treat as a valid experimental failure and halt.</em></label>
         </div>
         
         <div class="checklist-item">
             <input type="checkbox" disabled>
-            <label><strong>Phase 2: Seeded Execution</strong> — Run the live solver with the computed anchor:<br>
+            <label><strong>Phase 2: Seeded Execution</strong>. Run the live solver with the computed anchor:<br>
             <code style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">python3 research/06-cryptology-rsa/experiments/live-solver/rsa-v2/run_experiment.py --case_ids s256_challenge_1 --start-anchor [COMPUTED_ANCHOR]</code></label>
         </div>
 
         <div class="checklist-item">
             <input type="checkbox" disabled>
-            <label><strong>Phase 3: Artifact Capture</strong> — Extract and preserve all generated rows: <code>inference_rows.jsonl</code>, <code>survivor_rows.jsonl</code>, <code>diagnostic_rows.jsonl</code>, and <code>structural_certs.jsonl</code>.</label>
+            <label><strong>Phase 3: Artifact Capture</strong>. Extract and preserve all generated rows: <code>inference_rows.jsonl</code>, <code>survivor_rows.jsonl</code>, <code>diagnostic_rows.jsonl</code>, and <code>structural_certs.jsonl</code>.</label>
         </div>
     </div>
 
@@ -220,7 +220,7 @@ else:
     <div class="section">
         <h2>5. Strict Separation of Concerns</h2>
         <div class="alert alert-good">
-            <strong>Audit vs. Inference Integrity:</strong> At no point during this execution or in any subsequent commit logs may the system claim to have "discovered" the location of the factors using pure PGS inference. The injection of the 0.3994 prior is explicitly an external seeding event. If the solver emits a valid public endpoint class, it must be verified against the secret <code>p</code> and <code>q</code> exclusively in a downstream, isolated audit phase. Any outcome—resolved or unresolved—is treated strictly as measured data on predicate behavior under asymmetry.
+            <strong>Audit vs. Inference Integrity:</strong> At no point during this execution or in any subsequent commit logs may the system claim to have "discovered" the location of the factors using pure PGS inference. The injection of the 0.3994 prior is explicitly an external seeding event. If the solver emits a valid public endpoint class, it must be verified against the secret <code>p</code> and <code>q</code> exclusively in a downstream, isolated audit phase. Any outcome:resolved or unresolved:is treated strictly as measured data on predicate behavior under asymmetry.
         </div>
     </div>
 

@@ -47,7 +47,7 @@ def _load_sections() -> list[tuple[str, list[str]]]:
             continue
         if line.startswith("|"):
             cells = [c.strip() for c in line.strip("|").split("|")]
-            current_lines.append(" — ".join(cells))
+            current_lines.append(" : ".join(cells))
         else:
             current_lines.append(line)
     if current_lines:
@@ -65,7 +65,7 @@ def _demo_table() -> Table | None:
         inc = gap.get("chamber_increments", {})
         rows.append(
             [
-                f"{gap['p']}–{gap['q']}",
+                f"{gap['p']} to {gap['q']}",
                 str(gap["gwr_witness"]),
                 str(gap["interior_min_divisor_count"]),
                 f"{inc.get('rho_chamber', 0):.4f}",
@@ -96,7 +96,7 @@ def main() -> int:
     story: list = [Paragraph("Prime Order Is Fixed Before Zeta", title_style)]
     story.append(
         Paragraph(
-            _esc("Prime Gap Structure — explanatory whitepaper. Integer source → exact compression → RH language."),
+            _esc("Prime Gap Structure, explanatory whitepaper. Integer source → exact compression → RH language."),
             body,
         )
     )
