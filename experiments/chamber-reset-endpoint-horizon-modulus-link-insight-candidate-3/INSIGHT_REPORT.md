@@ -21,14 +21,14 @@ On eight deterministic semiprime cases from `scale_pgs_chain_modulus_link.py`, a
 
 ---
 
-## 1. Local Horizon Truncation — Chamber Reset
+## 1. Local Horizon Truncation: Chamber Reset
 
 ### Source: `simple_pgs_generator.pgs_chamber_reset_state_certificate`
 
 Given anchor prime `p` and chamber window `candidate_bound`, chamber reset:
 
 1. Scans exact divisor counts for offsets `1 … candidate_bound`.
-2. Tracks the GWR carrier (`lock_carrier_offset`, `lock_carrier_d`) — the running minimum-τ composite witness.
+2. Tracks the GWR carrier (`lock_carrier_offset`, `lock_carrier_d`), the running minimum-τ composite witness.
 3. Detects a **lower-τ threat** at `lower_d_threat_offset`: the first offset after the lock where `τ(n) < lock_carrier_d`.
 4. **Truncates** the local horizon: every wheel-open candidate with offset `> lower_d_threat_offset` is marked `REJECTED`.
 5. Emits the first `RESOLVED_SURVIVOR` (first `τ=2` wheel-open offset not blocked by prior unresolved primes or threat truncation).
@@ -39,10 +39,10 @@ LOCAL_HORIZON(p, B) = { wheel-open offsets o ≤ B : o ≤ lower_d_threat_offset
 
 Key certificate fields:
 
-- `gap_offset` — consumed local horizon to reach `q`
-- `lower_d_threat_offset` — truncation ceiling (may be `None`)
-- `carrier_w`, `lock_carrier_d` — GWR lock state
-- `tail_after_reset_offsets` — deferred material (`post_reset_tail_policy = later_chamber_material`)
+- `gap_offset`, consumed local horizon to reach `q`
+- `lower_d_threat_offset`, truncation ceiling (may be `None`)
+- `carrier_w`, `lock_carrier_d`. GWR lock state
+- `tail_after_reset_offsets`, deferred material (`post_reset_tail_policy = later_chamber_material`)
 
 ### PROOF.md connection
 
@@ -54,7 +54,7 @@ Chamber reset is therefore a **prefix-truncating selector**: it decides `q` usin
 
 ---
 
-## 2. Global Horizon Extension — Endpoint Chain
+## 2. Global Horizon Extension: Endpoint Chain
 
 ### Source: `scale_pgs_chain_modulus_link.recursive_chain_modulus_lock`
 
@@ -83,7 +83,7 @@ Production parameters:
 
 ---
 
-## 3. NLSC Bridge — Type-Specific Horizon Ceiling
+## 3. NLSC Bridge: Type-Specific Horizon Ceiling
 
 ### Source: `gpe_nlsc_selector.py`
 
@@ -113,7 +113,7 @@ emitted_q ≤ S_+(w)           (NLSC horizon contains emission)
 gap_offset ≤ lower_d_threat    (truncation did not delete true q)
 ```
 
-When `square_ceiling_margin` is state-derived (not oracle-fed), the NLSC selector recovers exact `q` from `S_+(w)` alone — see `select_d4_nlsc_boundary_prime`.
+When `square_ceiling_margin` is state-derived (not oracle-fed), the NLSC selector recovers exact `q` from `S_+(w)` alone, see `select_d4_nlsc_boundary_prime`.
 
 ---
 
@@ -169,18 +169,18 @@ On all tested semiprime cases, **local default bound 128 and production chain bo
 
 ---
 
-## 6. Worked Example — `wide_control_15251`
+## 6. Worked Example: `wide_control_15251`
 
 `N = 15251 = 101 × 151`, seed `97`.
 
 | Step | Anchor `p` | Emitted `q` | Gap | Threat offset | `S_+(w)` contains `q`? | Transport | Closure |
 |------|------------|-------------|-----|---------------|------------------------|-----------|---------|
-| 1 | 97 | 101 | 4 | 9 | n/a (`d≠4`) | 157 ∉ locked | — |
-| … | … | … | … | … | … | … | — |
+| 1 | 97 | 101 | 4 | 9 | n/a (`d≠4`) | 157 ∉ locked | : |
+| … | … | … | … | … | … | … | : |
 | 10 | 139 | 149 | 10 | 30 | yes | 109 ∈ locked, residual 100 | **skip** |
 | 12 | 151 | 157 | 6 | 38 | yes (`S_+=169`) | 101 ∈ locked, residual 0 | **lock** |
 
-Local truncations at steps 1–12 never exceed threat offsets. Global extension accumulates `{97, 101, …, 151}` until floor transport from `151` hits prior endpoint `101`.
+Local truncations at steps 1 to 12 never exceed threat offsets. Global extension accumulates `{97, 101, …, 151}` until floor transport from `151` hits prior endpoint `101`.
 
 ---
 
@@ -189,9 +189,9 @@ Local truncations at steps 1–12 never exceed threat offsets. Global extension 
 ### For modulus-link / RSA endpoint structure
 
 1. **Do not merge horizons.** Chamber-reset truncation answers “what is the next prime from `p`?” Endpoint-chain extension answers “which prior endpoint does floor transport recall?”
-2. **Alignment is the certificate.** A modulus-link success certificate should record per-step `A_local` fields plus the closing reciprocal pair — not merely `N mod p`.
+2. **Alignment is the certificate.** A modulus-link success certificate should record per-step `A_local` fields plus the closing reciprocal pair: not merely `N mod p`.
 3. **NLSC is the `d=4` alignment bridge** between local threat scans and global square ceilings; unresolved Milestone-2 work (`square_ceiling_margin` state law) is the remaining gap between oracle rows and pure selector state.
-4. **False floor shadows are expected** — one skipped closure on the wide control case shows global extension must tolerate misaligned reciprocal hits.
+4. **False floor shadows are expected**: one skipped closure on the wide control case shows global extension must tolerate misaligned reciprocal hits.
 
 ### Relation to PROOF.md pillars
 
@@ -247,4 +247,4 @@ This candidate frames the insight as a **compositional alignment law**:
 - **Bridge** = NLSC `S_+(w)` ceiling on `d=4` carriers.  
 - **Closure** = modulus-link zero on a reciprocal floor pair in the accumulated set.
 
-The probe turns the insight into auditable per-step predicates rather than a single horizon constant `H(p, s0, chain_state)` — aligning with the open `chain_horizon_closure` question while grounding it in existing production objects (`lower_d_threat_offset`, `emit_record`, `modulus_link_residual`).
+The probe turns the insight into auditable per-step predicates rather than a single horizon constant `H(p, s0, chain_state)`, aligning with the open `chain_horizon_closure` question while grounding it in existing production objects (`lower_d_threat_offset`, `emit_record`, `modulus_link_residual`).

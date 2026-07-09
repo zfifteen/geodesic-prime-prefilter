@@ -1,4 +1,4 @@
-# Grok-Led Public Window Rerun — Private Audit Summary
+# Grok-Led Public Window Rerun: Private Audit Summary
 
 Policy: first_thread_proximity_v1
 Public threads: (2, 3, 5)

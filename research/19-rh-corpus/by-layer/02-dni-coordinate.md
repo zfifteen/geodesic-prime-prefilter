@@ -1,13 +1,13 @@
-# Layer 2 — DNI coordinate
+# Layer 2: DNI coordinate
 
 **Status mix:** `exact`  
-**Proves RH?** No — integer-side reformulation only
+**Proves RH?** No: integer-side reformulation only
 
 Layer 2 rewrites the divisor field on a **single continuous scale** so that prime
 returns, gap interiors, and bridge loads share one coordinate system before zeta
 compression.
 
-**Authority:** [docs/rh/dni-to-zeta-compression.md](../../../docs/rh/dni-to-zeta-compression.md) §2–3
+**Authority:** [docs/rh/dni-to-zeta-compression.md](../../../docs/rh/dni-to-zeta-compression.md) §2 to 3
 
 ---
 
@@ -26,7 +26,7 @@ Core doc: [DIVISOR_NORMALIZATION_IDENTITY.md](../../../docs/core/DIVISOR_NORMALI
 
 ---
 
-## Worked example (gap 23–29)
+## Worked example (gap 23 to 29)
 
 | $n$ | $\tau(n)$ | $E(n)$ | $Z(n)$ |
 |-----|-----------|--------|--------|

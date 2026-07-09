@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Grok-Led Public Window Rerun — Contract, Rerun &amp; Classification</title>
+<title>Grok-Led Public Window Rerun. Contract, Rerun &amp; Classification</title>
 <style>
 body { margin:0; background:#f8fafc; color:#1f2933; font:14px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
 main { max-width:1080px; margin:0 auto; padding:32px 24px 64px; }
@@ -32,7 +32,7 @@ footer { margin-top:40px; font-size:12px; color:#64748b; border-top:1px solid #e
 <body>
 <main>
 <h1>Grok-Led Public Window Rerun</h1>
-<p><strong>Decision record and corrected experiment contract</strong> — 19 May 2026</p>
+<p><strong>Decision record and corrected experiment contract</strong> : 19 May 2026</p>
 
 <div class="lead">
 <p><strong>Grok is the lead decision-maker.</strong> This document ratifies the repaired public-window experiment, records the first policy tested under the strict separation contract, presents the measured rerun results on toy and continuation semiprimes, and issues the final classification.</p>
@@ -42,7 +42,7 @@ footer { margin-top:40px; font-size:12px; color:#64748b; border-top:1px solid #e
 <h2>1. Corrected Public Experiment Contract (Non-Negotiable)</h2>
 
 <div class="contract">
-<h3>Public Runner — Inputs and Guarantees</h3>
+<h3>Public Runner. Inputs and Guarantees</h3>
 <ul>
 <li>Receives <strong>only</strong> the integer N (the semiprime) and a fixed set of public policy parameters (R, threads, top_k) that are either compile-time constants or computed solely from the public bit-length of N.</li>
 <li>Never receives, stores, or uses p, q, min(p, q), gcd(N, ·), factorint, isprime, nextprime, sqrt(N) walks, or any secret-derived radius/offset.</li>
@@ -51,7 +51,7 @@ footer { margin-top:40px; font-size:12px; color:#64748b; border-top:1px solid #e
 <li>Emits a frozen JSON record containing only N, N_bits, policy name, parameters, the top_k nominated items (offset, first_thread, value), and cost counters. The record carries the marker <code>"public_only": true</code>.</li>
 </ul>
 
-<h3>Audit Runner — Post-Freeze Only</h3>
+<h3>Audit Runner. Post-Freeze Only</h3>
 <ul>
 <li>May construct N = p × q for benchmark cases and may read the frozen public JSON.</li>
 <li>May re-execute the identical public nomination function on the same N to obtain reproducible full ordered lists for rank lookup.</li>
@@ -62,12 +62,12 @@ footer { margin-top:40px; font-size:12px; color:#64748b; border-top:1px solid #e
 <p><strong>Any script that sets radius from min(p, q), builds hole sets via direct p/q offsets before nomination, or defines “success” by counting secret hits inside an answer-aware candidate pool violates this contract and is disqualified as evidence.</strong></p>
 </div>
 
-<h2>2. Policy Tested First — first_thread_proximity_v1</h2>
+<h2>2. Policy Tested First, first_thread_proximity_v1</h2>
 
 <p>This is the exact rule described in the opening brief as the “last intended simple method” and the first policy Grok elects to run under the repaired contract.</p>
 
 <pre><code>threads = (2, 3, 5)
-R       = 1 &lt;&lt; 18          # 262144 — fixed public compute budget
+R       = 1 &lt;&lt; 18          # 262144: fixed public compute budget
 top_k   = 20
 
 for each r in threads:
@@ -84,7 +84,7 @@ emit the first top_k items</code></pre>
 
 <p>Six deterministic benchmark cases were executed under the meeting folder:</p>
 <ul>
-<li>4 original toys (10–14 bits)</li>
+<li>4 original toys (10 to 14 bits)</li>
 <li>2 continuation rungs (35 bits and 41 bits) chosen because their smaller factors straddle the public R boundary</li>
 </ul>
 
@@ -160,7 +160,7 @@ emit the first top_k items</code></pre>
 <td class="num">1153441</td>
 <td><strong>no</strong></td>
 <td>public_window_insufficient_coverage</td>
-<td class="num">—</td>
+<td class="num">:</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -173,13 +173,13 @@ emit the first top_k items</code></pre>
 <li>public_window_insufficient_coverage: 1 / 6</li>
 </ul>
 
-<p>Public cost per case (R = 262144): ≈ 0.09–0.14 s, ≈ 542 k generator steps, 193 k–384 k unique nominated offsets depending on N.</p>
+<p>Public cost per case (R = 262144): ≈ 0.09 to 0.14 s, ≈ 542 k generator steps, 193 k to 384 k unique nominated offsets depending on N.</p>
 </div>
 
 <h2>4. Plain Classification</h2>
 
 <div class="warning">
-<p><strong>ACCEPTED BOUNDARY MEASUREMENT — prior scale-up claims INVALIDATED.</strong></p>
+<p><strong>ACCEPTED BOUNDARY MEASUREMENT, prior scale-up claims INVALIDATED.</strong></p>
 <p>The first public-window policy (2-3-5 first-thread proximity inside a fixed feasible R) does not place the hidden-factor offsets (p or q) inside the reported top-20 for any tested case. When the window is large enough to contain the factor offset, the actual p/q locations are ranked hundreds to hundreds-of-thousands deep because the proximity sort is dominated by the dense population of small-offset multiples of 2, 3, and 5.</p>
 <p>When the smaller factor exceeds the public R, the window cannot reach the offset at all.</p>
 <p>Therefore the 255-bit (and all larger) “scaling through a semiprime” results produced by the earlier sparse_web_first_coverage_scale.py / sparse_web_scaling_ladder.py / ratio-window scripts are <span class="badge invalid">methodologically invalid</span>. They measured answer-aware scaffolding, not blind public recovery.</p>
@@ -189,7 +189,7 @@ emit the first top_k items</code></pre>
 
 <h2>5. Implications for PGS-Native Cryptologic Work</h2>
 
-<p>Any enumeration window whose radius is a feasible public function of N (poly-log or 2^24–2^30 at most) is orders of magnitude smaller than a 127-bit factor. Consequently, no “scan around N and rank holes” rule can ever directly nominate the true factor offset once the semiprime leaves the toy regime.</p>
+<p>Any enumeration window whose radius is a feasible public function of N (poly-log or 2^24 to 2^30 at most) is orders of magnitude smaller than a 127-bit factor. Consequently, no “scan around N and rank holes” rule can ever directly nominate the true factor offset once the semiprime leaves the toy regime.</p>
 
 <p>Recovering a large secret factor from N alone under a strict public contract therefore requires a <strong>non-enumerative, constructive</strong> rule:</p>
 <ul>
@@ -205,12 +205,12 @@ locked PGS endpoint chain → floor transport through modulus → reciprocal end
 
 <p>The literal-web / sparse-window experiments remain valuable for calibrating what the raw multiplicative web looks like under public constraints, but they cannot be promoted to large-scale factor recovery evidence. Future claims in this subfolder must either (a) exhibit a genuine constructive public generator meeting the bullet list above, or (b) be labeled explicitly as boundary measurements of window-based heuristics.</p>
 
-<h2>6. Deliverable Checklist — Complete</h2>
+<h2>6. Deliverable Checklist. Complete</h2>
 
 <ol>
-<li>✅ Corrected public experiment contract — stated above and embodied in the two runners.</li>
-<li>✅ Public runner (public_window_runner.py) — receives only N + public params, emits only public JSON, never imports or references p/q.</li>
-<li>✅ Private audit runner (private_audit.py) — constructs benchmark N, calls public with N only, scores post-freeze, writes separated artifacts.</li>
+<li>✅ Corrected public experiment contract, stated above and embodied in the two runners.</li>
+<li>✅ Public runner (public_window_runner.py), receives only N + public params, emits only public JSON, never imports or references p/q.</li>
+<li>✅ Private audit runner (private_audit.py), constructs benchmark N, calls public with N only, scores post-freeze, writes separated artifacts.</li>
 <li>✅ Rerun executed on toy + incremental continuation cases; all six public_result.json files frozen and clean.</li>
 <li>✅ Plain classification issued: boundary measurement; 255-bit scale-up invalidated.</li>
 </ol>

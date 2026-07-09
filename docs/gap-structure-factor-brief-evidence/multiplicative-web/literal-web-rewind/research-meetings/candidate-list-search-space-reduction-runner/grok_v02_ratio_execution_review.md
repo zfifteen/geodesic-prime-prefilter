@@ -5,7 +5,7 @@
 **Public runner:** `thread_triangulation_v02_ratio_runner.py`  
 **Certified source SHA-256:** `15be58e3d1fb9e026a76fc67b69ca6c5999ecc01351f65e90e84cc2c6211c465`  
 **Harness:** `run_v02_ratio_toy_corpus.py` (SHA-256 `cd2c1eda23261f164f4360a88ad941bc8c5d3d14753a23ed3a2527a20d181d94`)  
-**Corpus:** `cases/toy_corpus.jsonl` (10 toy semiprimes, 10–53 bits)  
+**Corpus:** `cases/toy_corpus.jsonl` (10 toy semiprimes, 10 to 53 bits)  
 **Output surface:** `output/toy_v02_ratio/`  
 **Execution classification:** `certified_for_execution` (pre-execution)  
 **Report scope:** Public manifests, public output files, public freeze logs, canonical status files (`audit/status.json`), aggregate summary files, and the v02 source certification only.
@@ -117,8 +117,8 @@ The implementation remains a valid, auditable vehicle for future ratio experimen
 
 From the public manifests, outputs, freeze logs, and canonical status files alone (no private data):
 
-- **Small-N regime (active threads 3–5, min_depth 2–3):** The 1/1024 cap produced `max_candidates = 1`. The single emitted distance (highest public score) was never the true distance. Pre-cap qualified counts were already small (7–79), yet the true distance was absent from even the pre-cap set or ranked below the cutoff.
-- **Mid-N regime (active threads 6–10, min_depth 3–5, cap active):** Emitted exactly the top `max_candidates` (8, 64, 128, 1024, 8192). The true distance’s public score tuple placed it outside the retained prefix. Depth histograms show that depths 6–10 are populated and preferentially retained, but the true distances did not achieve competitive (depth, shared, total) combinations.
+- **Small-N regime (active threads 3 to 5, min_depth 2 to 3):** The 1/1024 cap produced `max_candidates = 1`. The single emitted distance (highest public score) was never the true distance. Pre-cap qualified counts were already small (7 to 79), yet the true distance was absent from even the pre-cap set or ranked below the cutoff.
+- **Mid-N regime (active threads 6 to 10, min_depth 3 to 5, cap active):** Emitted exactly the top `max_candidates` (8, 64, 128, 1024, 8192). The true distance’s public score tuple placed it outside the retained prefix. Depth histograms show that depths 6 to 10 are populated and preferentially retained, but the true distances did not achieve competitive (depth, shared, total) combinations.
 - **Largest case (active threads 11, min_depth 5, cap inactive):** 29 348 distances reached depth ≥ 5 and were all emitted. The true distance is not among them. Therefore its maximum construction depth under the concrete 11-thread set (3,5,…,31) was strictly less than 5, or it required a thread outside the first 11 odd primes to appear at all.
 - **Thread sets:** Always the leading odd primes (3,5,7,…). No private selection.
 - **Score key:** Identical across all cases and identical to prior v01/v01.1 (depth primary). High-depth, high-total, low-shared candidates dominate the emitted heads when the cap permits.
@@ -135,7 +135,7 @@ A single clean, minimal adjustment that remains entirely inside the ratio framew
 **Change `THREAD_COUNT_RATIO` from `3/8` to `1/2` (equivalently `4/8`), keeping `DEPTH_RATIO = 5/12` and `RETENTION_DIVISOR = 1024`.**
 
 **Rationale (public observables only):**  
-The 3/8 ratio produced `active_thread_count` values of 3–11 on the corpus. Even the largest case, which emitted every distance that reached depth ≥ 5 under 11 threads, still missed. This indicates that the true distances required either a materially larger thread alphabet or a lower relative `min_depth` to enter the qualified set. Raising the thread ratio to 1/2 directly enlarges `active_thread_count` for every N (approximately 13–14 threads for the 53-bit case, ~14–15 for the next natural 60-bit surface, etc.) while leaving the rest of the public derivation, CRT engine, scoring, and cap logic untouched. The new `active_thread_count`, `min_depth`, and concrete `thread_set` values remain purely ratio-derived from public `N` and will appear in every future manifest for independent audit.
+The 3/8 ratio produced `active_thread_count` values of 3 to 11 on the corpus. Even the largest case, which emitted every distance that reached depth ≥ 5 under 11 threads, still missed. This indicates that the true distances required either a materially larger thread alphabet or a lower relative `min_depth` to enter the qualified set. Raising the thread ratio to 1/2 directly enlarges `active_thread_count` for every N (approximately 13 to 14 threads for the 53-bit case, ~14 to 15 for the next natural 60-bit surface, etc.) while leaving the rest of the public derivation, CRT engine, scoring, and cap logic untouched. The new `active_thread_count`, `min_depth`, and concrete `thread_set` values remain purely ratio-derived from public `N` and will appear in every future manifest for independent audit.
 
 This change yields a fresh, frozen v02.1 (or v03) contract with exactly one declared constant updated, a new runner SHA, a new pre-execution certification round, and (if desired) a new public corpus never previously audited. All other machinery and the source-separation boundary stay identical.
 

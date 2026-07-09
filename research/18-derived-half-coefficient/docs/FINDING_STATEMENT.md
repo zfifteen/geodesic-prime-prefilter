@@ -1,11 +1,11 @@
-# Finding Statement — Rough-Witness Signature for Near-Maximal Offsets (F18-004)
+# Finding Statement: Rough-Witness Signature for Near-Maximal Offsets (F18-004)
 
 **Effective:** 2026-07-08  
 **Chapter:** `research/18-derived-half-coefficient/`  
 **Authority:** `PROOF.md` (Universal Bounded Compression, Witness Threshold Lemma, Short Divisor-Average Lemma, Prime-Square Proximity Theorem)  
 **Data provenance:** exhaustive deterministic GWR replay to 40 000 000 (`near_maximal_audit_results.json`)
 
-## F18-004 — Rough-Witness Signature (Tested Prediction)
+## F18-004: Rough-Witness Signature (Tested Prediction)
 
 For every consecutive prime gap with nonempty interior and \( q \gtrsim 10^7 \) (logarithmic term dominant in \( C(q) \)) satisfying
 
@@ -72,11 +72,11 @@ where \( c(r) \) grows as \( r \) approaches the envelope allowed by the average
 
 ### Boundary
 
-F18-004 is a **tested prediction on the witness-offset surface**, not a universal theorem. It does not claim that all large gaps have rough witnesses—only that those whose GWR witness is pushed near the bound (non-square case) must be rough. The square case is handled separately and does not use the averaging mechanism that yields the half-coefficient.
+F18-004 is a **tested prediction on the witness-offset surface**, not a universal theorem. It does not claim that all large gaps have rough witnesses:only that those whose GWR witness is pushed near the bound (non-square case) must be rough. The square case is handled separately and does not use the averaging mechanism that yields the half-coefficient.
 
 ### References
 
-- `PROOF.md` — Witness Threshold, Short Divisor-Average, Prime-Square Proximity.
-- `docs/finite-verification-grok-509b8495.md` — F18-002 (earlier pinned verification).
-- `near_maximal_audit_results.json` — exact replay data.
-- `30-30-30-technical-note/TECHNICAL_NOTE.md` — mechanism background.
+- `PROOF.md`. Witness Threshold, Short Divisor-Average, Prime-Square Proximity.
+- `docs/finite-verification-grok-509b8495.md`. F18-002 (earlier pinned verification).
+- `near_maximal_audit_results.json`, exact replay data.
+- `30-30-30-technical-note/TECHNICAL_NOTE.md`, mechanism background.

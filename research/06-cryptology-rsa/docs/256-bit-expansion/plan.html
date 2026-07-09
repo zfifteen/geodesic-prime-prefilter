@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>PGS RSA v2 — 256-Bit Scale Expansion Plan</title>
+<title>PGS RSA v2 : 256-Bit Scale Expansion Plan</title>
 <style>
 :root {
   --bg: #0f1117; --fg: #e6e6e6; --accent: #4da3ff; --good: #22c55e; --warn: #f59e0b; --bad: #ef4444;
@@ -114,7 +114,7 @@ locked PGS endpoint chain → floor transport through modulus → reciprocal end
 <div class="milestone">
   <div class="num">1</div>
   <div>
-    <strong>Phase 1 — Scaffolding (comments + contracts only, zero logic changes)</strong><br>
+    <strong>Phase 1. Scaffolding (comments + contracts only, zero logic changes)</strong><br>
     Add new rung entries to ladder_spec.json and audit_spec.json (or run generate with provenance for 128-bit first).<br>
     Extend fixtures builder tests with placeholders.<br>
     Add detailed comment blocks in pgs_inference_backend.py and run_experiment.py describing 256-bit path, guard removal criteria, and full certificate extraction contract.<br>
@@ -127,7 +127,7 @@ locked PGS endpoint chain → floor transport through modulus → reciprocal end
 <div class="milestone">
   <div class="num">2</div>
   <div>
-    <strong>Phase 2 — Skeleton Review</strong><br>
+    <strong>Phase 2. Skeleton Review</strong><br>
     Human + (optionally second-opinion skill) review of the scaffold.<br>
     Confirm: no new inference logic, public/audit separation preserved, PGS frame quoted, high-scale bridge contract written down.<br>
     Identify exact first unit to implement (e.g., "relax the 60-bit guard for a single 128-bit anchor test case and return minimal certificate").
@@ -137,11 +137,11 @@ locked PGS endpoint chain → floor transport through modulus → reciprocal end
 <div class="milestone">
   <div class="num">3</div>
   <div>
-    <strong>Phase 3 — Incremental Implementation</strong><br>
+    <strong>Phase 3. Incremental Implementation</strong><br>
     One narrow unit at a time:<br>
     • Unit A: 128-bit rung generation + fixture rebuild + runner dry-run (use SmallIntBackend if anchors fit, or minimal bridge).<br>
     • Immediate test: extend focused pytest, run the exact validation command, commit if green.<br>
-    • Unit B: Bridge improvement — make HighScaleBackend call the real C pgs_resolve_from_integer for 128-bit and populate tail_after_reset_offsets, carrier fields, threat, deadline from the pgs_certificate_t struct.<br>
+    • Unit B: Bridge improvement, make HighScaleBackend call the real C pgs_resolve_from_integer for 128-bit and populate tail_after_reset_offsets, carrier fields, threat, deadline from the pgs_certificate_t struct.<br>
     • Immediate test + cost measurement.<br>
     • Unit C: 256-bit rung + full run + diagnostics.<br>
     • After each unit: update summary/audit outputs and this plan's checklist.
@@ -151,7 +151,7 @@ locked PGS endpoint chain → floor transport through modulus → reciprocal end
 <div class="milestone">
   <div class="num">4</div>
   <div>
-    <strong>Phase 4 — Full Self-Review + Polish</strong><br>
+    <strong>Phase 4. Full Self-Review + Polish</strong><br>
     Against the repository Code Review Checklist (prose clarity, state separation, no drift, test coverage, shape warnings applied).<br>
     Run full focused test suite.<br>
     Produce final status table for all rungs (40/50/64/128/256).<br>
@@ -163,9 +163,9 @@ locked PGS endpoint chain → floor transport through modulus → reciprocal end
 <h2>Detailed Task Breakdown</h2>
 
 <ol>
-  <li><strong>Inventory &amp; Environment</strong> — Confirm C high-scale-pgs builds cleanly (`make -C src/c/high-scale-pgs clean && make`), dylib loads, existing probes run on a 128-bit example. Record versions and any errors. (File: this plan + terminal log)</li>
-  <li><strong>Select / Generate 128-bit &amp; 256-bit rungs</strong> — Preferred: run generate_ladder_rung.py for 128-bit (prime-bits ~64) with new namespace and min-gap. For 256-bit, either same or curate 1–2 cases from scaleup_corpus (balanced + challenge_like) + hand-write provenance record. Add to ladder_spec.json + audit_spec.json. (Keep generation deterministic.)</li>
-  <li><strong>Fixture &amp; Test Scaffolding</strong> — Phase-1 only: extend build_ladder_fixtures tests and test_rsa_v2_scripts.py with comments for the new case_ids. Add assertions that public rows contain no p/q.</li>
+  <li><strong>Inventory &amp; Environment</strong>. Confirm C high-scale-pgs builds cleanly (`make -C src/c/high-scale-pgs clean && make`), dylib loads, existing probes run on a 128-bit example. Record versions and any errors. (File: this plan + terminal log)</li>
+  <li><strong>Select / Generate 128-bit &amp; 256-bit rungs</strong>. Preferred: run generate_ladder_rung.py for 128-bit (prime-bits ~64) with new namespace and min-gap. For 256-bit, either same or curate 1 to 2 cases from scaleup_corpus (balanced + challenge_like) + hand-write provenance record. Add to ladder_spec.json + audit_spec.json. (Keep generation deterministic.)</li>
+  <li><strong>Fixture &amp; Test Scaffolding</strong>. Phase-1 only: extend build_ladder_fixtures tests and test_rsa_v2_scripts.py with comments for the new case_ids. Add assertions that public rows contain no p/q.</li>
   <li><strong>Bridge Maturation (core technical work)</strong>
     <ul>
       <li>Remove or conditionalize the &gt; (1&lt;&lt;60) early returns in HighScaleBackend.</li>
@@ -174,18 +174,18 @@ locked PGS endpoint chain → floor transport through modulus → reciprocal end
       <li>Add instrumentation: count of C calls, time per certificate, size of anchor.</li>
     </ul>
   </li>
-  <li><strong>Runner Robustness</strong> — Ensure mpz handling, caches (CertificateCache, PreviousEndpointCache), and chain-walking logic tolerate 256-bit numbers without overflow or excessive memory. Add guard for very long chains with clean unresolved_by_endpoint_chain_boundary if needed.</li>
-  <li><strong>Execute on New Rungs</strong> — Rebuild fixtures. Run run_experiment.py. Run audit_experiment.py. Capture full output/summary. Run diagnose_transport_metrics.py and any other sidecar probes on the new cases.</li>
-  <li><strong>Analysis Pass</strong> — Compare transport metrics (deadline margins, lock offsets, carrier tightness, signature match) between resolved toy cases and new rungs. If 50-bit-style false positives appear, mine for additional PGS-native conditions (following the exact refinement process used before). Record as measured, not theorem.</li>
-  <li><strong>Cost &amp; Feasibility Surface</strong> — Run or extend C research probes (gmp_divisor_state_cost_probe, pgs_certificate_verifier) against anchors near the 256-bit isqrt and transported points. Publish numbers (time per chamber, memory).</li>
-  <li><strong>Regression &amp; Validation</strong> — Run the full focused pytest command from the chapter README. Update any large_bit_fixtures or solved challenge lists if they become part of the official ladder.</li>
-  <li><strong>Documentation &amp; Continuity</strong> — Update SESSION_BOOTSTRAP.md, README.md (research/06-cryptology-rsa and live-solver/rsa-v2), this plan.html with final measured status. Add 256-bit row to any competition memory docs if relevant.</li>
+  <li><strong>Runner Robustness</strong>. Ensure mpz handling, caches (CertificateCache, PreviousEndpointCache), and chain-walking logic tolerate 256-bit numbers without overflow or excessive memory. Add guard for very long chains with clean unresolved_by_endpoint_chain_boundary if needed.</li>
+  <li><strong>Execute on New Rungs</strong>. Rebuild fixtures. Run run_experiment.py. Run audit_experiment.py. Capture full output/summary. Run diagnose_transport_metrics.py and any other sidecar probes on the new cases.</li>
+  <li><strong>Analysis Pass</strong>. Compare transport metrics (deadline margins, lock offsets, carrier tightness, signature match) between resolved toy cases and new rungs. If 50-bit-style false positives appear, mine for additional PGS-native conditions (following the exact refinement process used before). Record as measured, not theorem.</li>
+  <li><strong>Cost &amp; Feasibility Surface</strong>. Run or extend C research probes (gmp_divisor_state_cost_probe, pgs_certificate_verifier) against anchors near the 256-bit isqrt and transported points. Publish numbers (time per chamber, memory).</li>
+  <li><strong>Regression &amp; Validation</strong>. Run the full focused pytest command from the chapter README. Update any large_bit_fixtures or solved challenge lists if they become part of the official ladder.</li>
+  <li><strong>Documentation &amp; Continuity</strong>. Update SESSION_BOOTSTRAP.md, README.md (research/06-cryptology-rsa and live-solver/rsa-v2), this plan.html with final measured status. Add 256-bit row to any competition memory docs if relevant.</li>
 </ol>
 
 <h2>Technical Considerations &amp; Known Surfaces</h2>
 <ul>
   <li><strong>Backend choice:</strong> get_backend_for_anchor already routes on size. SmallIntBackend (Python divisor segment + pgs_chamber) will be used for 128-bit if anchors &lt; some practical Python limit; HighScale for 256-bit.</li>
-  <li><strong>Certificate completeness:</strong> Deadline logic depends on tail_after_reset_offsets and lower_d_threat_offset. Current HighScale dict hard-codes empty lists — this must be fixed before any 256-bit deadline-signature result can be claimed.</li>
+  <li><strong>Certificate completeness:</strong> Deadline logic depends on tail_after_reset_offsets and lower_d_threat_offset. Current HighScale dict hard-codes empty lists, this must be fixed before any 256-bit deadline-signature result can be claimed.</li>
   <li><strong>Generation:</strong> generate_ladder_rung.py is the canonical deterministic method for "static" ladder rungs. scaleup_corpus is useful for challenge-like variety and blind-routing experiments.</li>
   <li><strong>Performance:</strong> With candidate_bound=128 the local segment is tiny; cost is dominated by number of chain steps × cost of one chamber certificate. Expect to measure and publish this.</li>
   <li><strong>Existing 256 work:</strong> Align (do not duplicate) with pgs_geofac_scaleup, 256 center priors, and competition probes. The certificate runner is a different (stricter, public-structure) lens.</li>

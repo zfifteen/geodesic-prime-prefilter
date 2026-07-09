@@ -44,7 +44,7 @@ def main():
         print("FAIL: contains false Step E string"); sys.exit(1)
 
     # Structural enforcement per strategist (canonical headers)
-    for hdr in ["4c.2a — Algebra", "4c.2b — Algebraic block", "4c.2b′ — Boundary discharge", "4c.2c — Analytic discharge", "4c.2d — Finite discharge", "Corollary 4c.3 — Counting contra"]:
+    for hdr in ["4c.2a. Algebra", "4c.2b. Algebraic block", "4c.2b′. Boundary discharge", "4c.2c. Analytic discharge", "4c.2d. Finite discharge", "Corollary 4c.3. Counting contra"]:
         if hdr not in proof:
             print("FAIL: missing header", hdr); sys.exit(1)
 

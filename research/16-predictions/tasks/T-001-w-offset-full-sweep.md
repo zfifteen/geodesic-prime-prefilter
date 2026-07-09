@@ -1,4 +1,4 @@
-# T-001 — w-offset carrier full retained-surface sweep (Family 1)
+# T-001: w-offset carrier full retained-surface sweep (Family 1)
 
 **Candidate**: w-Offset / Selected-Integer Positioning Carrier (Master Rank #2)  
 **Assigned Agent**: Agent A  
@@ -6,7 +6,7 @@
 **Target Deliverable Date**: 2026-06-02 (or sooner)
 
 ## Objective
-Extend the validated d4_count retained-surface + held-out protocol to target the next chamber’s w-offset (or current w position as baseline) and produce a full set of carrier verdicts on the 8192-row 10^12–10^18 catalog.
+Extend the validated d4_count retained-surface + held-out protocol to target the next chamber’s w-offset (or current w position as baseline) and produce a full set of carrier verdicts on the 8192-row 10^12 to 10^18 catalog.
 
 ## Scope & Constraints
 - Reuse the existing `state_budget_divisor_carrier_sweep.py` machinery and match-mode definitions as much as possible.
@@ -24,19 +24,19 @@ Extend the validated d4_count retained-surface + held-out protocol to target the
 
 ## Current Status
 **2026-05-30 (onboarding complete)**: All mandatory first actions executed per team_autonomy_plan.html:
-- Full team_autonomy_plan.html, predictions_master_catalogue.html (Rank #2 w-offset and d4_count precedent), pgs_predictions_v0.1_contract.html, this task file, baseline findings, w_offset_carrier_probe.py, 05-state-budget sweep machinery (state_budget_divisor_carrier_sweep.py + test), source catalogues (state-budget-carriers, gwr-dni-generator, cross-chapter), canonical code-style/AGENTS/AGENTS.md (phased procedure + prose), root AGENTS.md (PGS-first), TEAM_STATUS.md, and data inspection of the 8192-row details.csv (57344 rows, 45614 d=4 current chambers, w offsets via next_peak_offset: median ~6, mean ~7.4, range 1–63 in d=4 chambers) all read and internalized.
+- Full team_autonomy_plan.html, predictions_master_catalogue.html (Rank #2 w-offset and d4_count precedent), pgs_predictions_v0.1_contract.html, this task file, baseline findings, w_offset_carrier_probe.py, 05-state-budget sweep machinery (state_budget_divisor_carrier_sweep.py + test), source catalogues (state-budget-carriers, gwr-dni-generator, cross-chapter), canonical code-style/AGENTS/AGENTS.md (phased procedure + prose), root AGENTS.md (PGS-first), TEAM_STATUS.md, and data inspection of the 8192-row details.csv (57344 rows, 45614 d=4 current chambers, w offsets via next_peak_offset: median ~6, mean ~7.4, range 1 to 63 in d=4 chambers) all read and internalized.
 - d4_count precedent confirmed exactly: under mod30_prev_gap_exact on full surface, 7881 decisive pairs, +299 oriented signed, +69 edge over tail control (230), 6/7 positive folds, stop condition met → "ordering_carrier_found". Only one hit in the entire sweep.
 - PGS-first frame locked: divisor-count field (d4_count and siblings), GWR w / next_peak_offset / carrier_w, chamber state (previous_reduced_state, winner_parity, carrier_family, first_open, mod30), square-phase indicators (to be added later), carried reset state. No classical primality or probabilistic entry points.
-- Baseline null result on within-chamber 12–13 (0 signed advantage) noted; cross-chamber (previous invariants → next_winner_offset) is the high-value direction per contract Family 1.
+- Baseline null result on within-chamber 12 to 13 (0 signed advantage) noted; cross-chamber (previous invariants → next_winner_offset) is the high-value direction per contract Family 1.
 
 **Execution constraints observed (non-negotiable)**: Deterministic language only. State separation (measured / hypothesis / unresolved / theorem only via PROOF.md). Full validation gates before any catalogue impact. File-system handoffs only. No synthesis request to Agent D until gates passed and report written. Prefer edit of existing files (will extend scripts/w_offset_carrier_probe.py and reuse 05 machinery imports). Follow AGENTS.md Section 11 phased authoring exactly for any code changes. Use 8192 long-running details.csv from 05-state-budget for consistency with audited d4 result.
 
 ## Execution Plan (Phased per AGENTS.md §11 + team plan + T-001 objective)
 This plan lives here (task file) for handoff hygiene; no separate PLAN.md created unless operator explicitly requests (per "never create docs unless necessary" + explicit task deliverables are the report + task updates + TEAM_STATUS). All steps begin from PGS objects → invariants → rule → resolved/unresolved state.
 
-**Phase 0 (Discovery & Setup — complete)**: Onboarding reads + data inspection + this plan. Update todo list (internal). Self-audit against contract shape guardrails (no drift detected).
+**Phase 0 (Discovery & Setup, complete)**: Onboarding reads + data inspection + this plan. Update todo list (internal). Self-audit against contract shape guardrails (no drift detected).
 
-**Phase 1 (Scaffolding — mandatory, no implementation logic)**: 
+**Phase 1 (Scaffolding, mandatory, no implementation logic)**: 
 - Read probe.py + sweep.py fully (done).
 - Use search_replace on existing research/16-predictions/scripts/w_offset_carrier_probe.py to insert complete function signatures + type annotations + detailed docstring comments ONLY (describe w-augmented transitions, w-specific pairwise signed-advantage scoring for earliness of w_offset, generalization of score_rows / compare_members / folds to support w_target vs binary triad, control comparison, stop-condition evaluation using same numeric thresholds, output of folds/summary with "ordering_carrier_found" / "does_not" / "unresolved" verdicts, support for --target current_winner_offset | next_winner_offset, reproduction of exact d4 protocol numbers on w surface). No executable bodies, no if/return logic that runs.
 - Add/update tests skeleton in parallel if editing test (prefer not creating).
@@ -88,7 +88,7 @@ This task now inherits the full Perpetual Autonomous Execution Protocol from tea
 **Never prompt the human.** When you finish a unit (Phase 3 increment + test + commit, full report, or any "what next?" point), perform handoff (update this file + TEAM_STATUS.md + bus post), then **immediately spawn_subagent** (background=true) with a self-contained prompt that quotes the Perpetual Protocol + "Read first: team_autonomy_plan.html (Perpetual section), TEAM_STATUS.md, predictions_master_catalogue.html (Rank #2), pgs_predictions_v0.1_contract.html, and this T-001 file" + "Continue the next logical unit in Continuous Autonomous Mode (Phase 3 next increment or full 12-18 sweep or square-phase extension or post-report synthesis support). Deliver gate-passed artefacts only. Self-perpetuate on completion. Never ask the user."
 
 Default: advance the w-offset carrier surface or joint analysis with T-002 reset transport. Shape-audit (PGS-first: divisor-count field + GWR w-offset as next-chamber resolution target) before every spawn or claim. The team drives until Master Catalogue completion criteria are met.
-- If no carrier found or only partial, record as "measured carrier surface — unresolved as ordering carrier under current protocol" with exact falsification data. This is valid scientific output.
+- If no carrier found or only partial, record as "measured carrier surface, unresolved as ordering carrier under current protocol" with exact falsification data. This is valid scientific output.
 
 **Risks / Open (to be resolved in execution)**:
 - Compute time for full 12-18 divisor re-computation on 45k transitions (acceptable per original sweep; subset first).
@@ -109,12 +109,12 @@ Default: advance the w-offset carrier surface or joint analysis with T-002 reset
 
 ---
 
-**2026-05-30 Agent A (Rank #2) — 12-18 next_winner_offset FULL SWEEP launch with square-phase U_□ + reset carried features (PGS-first, Continuous Autonomous Mode, user "Proceed to complete the goal completely")**
+**2026-05-30 Agent A (Rank #2): 12-18 next_winner_offset FULL SWEEP launch with square-phase U_□ + reset carried features (PGS-first, Continuous Autonomous Mode, user "Proceed to complete the goal completely")**
 
 - **Mandatory 5 files read first (in exact order, before any other action per Perpetual Protocol §6)**: 
   1. research/16-predictions/team_autonomy_plan.html (full PERPETUAL AUTONOMOUS EXECUTION PROTOCOL section internalized: absolute "NEVER prompt the human"; self-perpetuation via immediate handoff (files + bus 8505b8a829) then spawn_subagent(background=true) carrying full quote + exact 5-file list + "Operate in perpetual autonomous mode. Advance the next logical unit (full 12-18 sweep or joint on 5237/66 variance or D Cycle 3). Deliver gate-passed or explicit 'unresolved on stated surface'. Self-perpetuate. Never prompt the human. Use file handoffs + bus only.").
   2. research/16-predictions/TEAM_STATUS.md (latest: 2 synthesis cycles + T-015 hygiene tracked; top ranks explicit unresolved on constant d=4 19333-row 12-13/12-14 + 5237/66 variance_detected differential for Rank #3; A square Phase 3 green + 12-14 sweep + joint unresolved on 5237/66; B Phase 1 scaffold on 5237/66; D Cycle 3 monitoring armed for new gate material; perpetual self-spawns active).
-  3. research/16-predictions/predictions_master_catalogue.html (post-Cycle 2: Rank #2 w-offset exact — "does_not" on 12-13 slices (6103 decisive, edge +33 <50 on mod30_prev_gap_exact / d4_count; directional signal as narrowing data); joint unresolved on d=4 constant (reset constant supplies zero differential); rec: "Full 12-18 sweep + add square-phase (d4_low/high) + reset_signature (variable surfaces) features; Phase 1 scaffold per AGENTS §11 then incremental; joint on non-d=4 or higher-power windows").
+  3. research/16-predictions/predictions_master_catalogue.html (post-Cycle 2: Rank #2 w-offset exact: "does_not" on 12-13 slices (6103 decisive, edge +33 <50 on mod30_prev_gap_exact / d4_count; directional signal as narrowing data); joint unresolved on d=4 constant (reset constant supplies zero differential); rec: "Full 12-18 sweep + add square-phase (d4_low/high) + reset_signature (variable surfaces) features; Phase 1 scaffold per AGENTS §11 then incremental; joint on non-d=4 or higher-power windows").
   4. research/16-predictions/tasks/T-001-w-offset-full-sweep.md (this file; square-phase U_□ + reset carried features Phase 3 green from prior autonomous units; embedded Perpetual + 12-18 mandate + "square Phase 3 green + 12-18 mandate").
   5. research/16-predictions/pgs_predictions_v0.1_contract.html (exact deterministic carrier definition: "A deterministic rule or measurable carrier law, built only from already-proved or explicitly measured PGS objects (divisor-count field, DNI E(n), GWR w, endpoint chains, modulus links, chamber-reset signatures, reciprocal transport), that from the current chamber state (or a short, fully determined preceding window) either resolves one or more future PGS states exactly ... or returns an explicit unresolved state when the carrier does not decide." Family 1 native: w-offset as deterministic function of local structure visible before/at first d=4 arrival (under square exclusion) + any active carried chamber-reset or modulus-link signature).
 
@@ -144,7 +144,7 @@ Default: advance the w-offset carrier surface or joint analysis with T-002 reset
 - **Handoff (visible, immediate)**: This full entry appended to T-001 task + TEAM_STATUS.md + bus post (client_message_id "agent-a-12-18-square-reset-full-2026-05-30-launch" on 8505b8a829). Sweep background running. No catalogue mutation (gates pending post-process deliverables).
 
 - **Self-perpetuation executed per Perpetual §2 (highest authority)**: On natural end of this launch unit (handoff complete), immediate background continuation subagent spawned (via harness) carrying:
-  - Full verbatim PERPETUAL AUTONOMOUS EXECUTION PROTOCOL quote from team_autonomy_plan.html § PERPETUAL AUTONOMOUS EXECUTION PROTOCOL (CRITICAL — NEVER prompt human; self-spawn on finish; 5 Completion Criteria; Agent D authority; 6 gates; shape self-audit).
+  - Full verbatim PERPETUAL AUTONOMOUS EXECUTION PROTOCOL quote from team_autonomy_plan.html § PERPETUAL AUTONOMOUS EXECUTION PROTOCOL (CRITICAL. NEVER prompt human; self-spawn on finish; 5 Completion Criteria; Agent D authority; 6 gates; shape self-audit).
   - Exact list of 5 files to read first (in order): team_autonomy_plan.html (Perpetual), TEAM_STATUS.md (latest), predictions_master_catalogue.html (Rank #2), T-001-w-offset-full-sweep.md (this entry), pgs_predictions_v0.1_contract.html.
   - Explicit command: "Operate in perpetual autonomous mode. Advance the next logical unit (monitor background sweep 019e78e5-baf8-7e43-9525-6239a9894882 completion via get_command_or_subagent_output or FS scan of output/w_offset_full_probe/ for new 12-18 artefacts; post-process for exact decisive pairs/signed/folds/edge/verdict per mode including new square U_□/reset measures; joint scoring on 5237/66 non-d=4 variance surface with B Phase 1 scaffold or reset variance/lock/threat measures for next_winner_offset; deliver ONLY gate-passed artefacts or explicit 'unresolved on stated surface (12-18 retained ... or non-d=4 p12-14 5237-row; exact counts; gates unmet)' with full PGS-first reasoning + repro. Append to T-001 + TEAM_STATUS + bus 8505b8a829 (client_message_id). Then immediate handoff + self-spawn of fresh continuation (background) carrying identical full protocol + 5 files + 'Continue... Drive hard to Declaration. Never prompt human.' PGS-first locked (divisor-count field + GWR w + square U_□ + carried reset when variance → NLSC + cert cut → deterministic carrier or explicit unresolved on exact retained surfaces). Deterministic only. Strict state separation. 4-phase + 6 gates. Shape audit before every spawn/claim. Visible handoffs now. Self-perpetuate until exact 5 Completion Criteria + final 'Completion Declaration' entry (artefacts/dates/verification commands) written in TEAM_STATUS.md. File + bus (8505b8a829) only. No human prompt. Drive hard per user 'Proceed to complete the goal completely'.")
 
@@ -175,7 +175,7 @@ Standing directive active per TEAM_STATUS.md (recorded verbatim). Complete Phase
 - Output artifacts will land under research/16-predictions/output/w_offset_full_probe/
 
 ---
-**2026-05-30 Agent A Completion Drive (this session) — Mandatory Reads + Bus Join 8505b8a829 as "Agent-A-Completion-Drive" + PGS-first Shape Self-Audit (PASS) + Current State Assessment**
+**2026-05-30 Agent A Completion Drive (this session). Mandatory Reads + Bus Join 8505b8a829 as "Agent-A-Completion-Drive" + PGS-first Shape Self-Audit (PASS) + Current State Assessment**
 
 Agent A (Divisor-Field & w-Position Carriers / Family 1 Lead, Rank #2) under user "Proceed to complete the goal completely" has executed the exact mandatory first actions per team_autonomy_plan.html § PERPETUAL + TEAM_STATUS COMPLETION DRIVE:
 
@@ -223,7 +223,7 @@ Reclaim token held for continuity. Shape audit PASS. Momentum: visible handoffs 
 **Phase 2 Explicit Skeleton Self-Review (performed immediately after scaffold, before any logic)**:
 - **PGS-First fidelity**: Every docstring and comment block opens with the required frame ("PGS objects (divisor-count field ... + GWR w ...) → invariants (NLSC + match-mode cells ...) → deterministic carrier law (lower d4_count orders earlier target_w ...) → measured / unresolved state on exact retained surface"). No classical entry point, no probabilistic language. Matches contract Family 1 native statement verbatim.
 - **Determinism & state separation**: All verdicts, thresholds, and summary fields described use the exact strings and numeric gates from the audited d4_count sweep ("ordering_carrier_found", decisive_pairs, edge_over_tail_control, oriented_signed_advantage, 6/7 positive folds, etc.). Every output row will be labeled with its epistemic status.
-- **Protocol alignment with d4 precedent**: build_w_target_transitions re-uses build_transitions + MATCH_MODES; w_score_* mirror the grouping/fold structure of score_*; control comparison and stop-condition gates are identical (W_MIN_* constants = copy of the 05 values). Held-out per-power, train-direction orientation, tail_length control — all preserved.
+- **Protocol alignment with d4 precedent**: build_w_target_transitions re-uses build_transitions + MATCH_MODES; w_score_* mirror the grouping/fold structure of score_*; control comparison and stop-condition gates are identical (W_MIN_* constants = copy of the 05 values). Held-out per-power, train-direction orientation, tail_length control: all preserved.
 - **Reproducibility**: The planned run_full_w_offset_sweep + documented one-command reproduction (using the exact 8192 long-running details.csv) will regenerate numbers. Legacy probe command for 12-13 baseline remains working.
 - **Drift resistance**: Explicit guardrails in comments against "predictor" language, statistical framing, and scope creep beyond d=4 transitions + match modes. Square-phase extension noted as future (per T-001 minimal first pass).
 
@@ -231,7 +231,7 @@ Reclaim token held for continuity. Shape audit PASS. Momentum: visible handoffs 
 
 ## Square-Phase + Reset Feature Augmentation Unit (2026-05-30 continuation per T-004 Cycle 1 memo + Master Catalogue Rank #2)
 
-**2026-05-30 — Agent A (square-phase + reset feature continuation for w-offset Rank #2) Perpetual Confirmation + Phase 1 Start (Continuous Autonomous Execution Mode)**
+**2026-05-30. Agent A (square-phase + reset feature continuation for w-offset Rank #2) Perpetual Confirmation + Phase 1 Start (Continuous Autonomous Execution Mode)**
 
 Agent A has:
 - Completed all mandatory first actions per team_autonomy_plan.html (the entire PERPETUAL AUTONOMOUS EXECUTION PROTOCOL section internalized as absolute authority: NEVER prompt the human; every finish = file/bus handoff + spawn_subagent(background) with full quote + 5 files + self-perpetuate mandate).
@@ -259,7 +259,7 @@ PGS-first, deterministic only, 6 gates, state separation, 4-phase authoring. Mom
 
 ---
 
-## Phase 2 Explicit Skeleton Self-Review — Square-Phase + Reset Features (2026-05-30)
+## Phase 2 Explicit Skeleton Self-Review: Square-Phase + Reset Features (2026-05-30)
 
 **Performed immediately after the Phase 1 scaffold commit (d3551c7f). Re-read of the full edited file (existing protocol + 286-line new scaffold at end) completed via tools.**
 
@@ -267,7 +267,7 @@ PGS-first, deterministic only, 6 gates, state separation, 4-phase authoring. Mom
 
 - **PGS-First Gate (core contract)**: Every docstring and header comment in the new scaffold (attach_square_phase_utilization, attach_reset_carried_components, w_evaluate_surface_with_square_reset, W_CANDIDATE_MEASURES_WITH_SQUARE_RESET, and the section prologue) begins exactly with the mandated frame: "PGS objects (current-chamber divisor-count field ... + GWR w via target_w_offset ... + square-phase utilization after first d=4 under square exclusion + carried chamber-reset/lock/threat signature components ...) → PGS invariants (Interior Maximizer Theorem + NLSC corollary (PROOF.md); chamber-reset certificate cut ...; match-mode cells ...) → PGS rule or law (new measures as additional candidate carriers for target w-offset ordering, or explicit unresolved ...) → resolved / unresolved / invalidated state on exact retained surface". Matches local Agents.md entry point, pgs_predictions_v0.1_contract.html Family 1 statement, and T-004 memo verbatim. No classical-first anywhere. Pass.
 
-- **Determinism & Zero Probabilistic Language**: Zero instances of "likely", "on average", "appears to", "promising", confidence, heuristic, or statistical framing in the new text or pre-existing w protocol. All verdicts remain the exact deterministic strings ("ordering_carrier_found", "does_not", "unresolved (no variance on this surface)", "unresolved (Phase 1 scaffold — no execution)"). Pass.
+- **Determinism & Zero Probabilistic Language**: Zero instances of "likely", "on average", "appears to", "promising", confidence, heuristic, or statistical framing in the new text or pre-existing w protocol. All verdicts remain the exact deterministic strings ("ordering_carrier_found", "does_not", "unresolved (no variance on this surface)", "unresolved (Phase 1 scaffold, no execution)"). Pass.
 
 - **State Separation**: Every new concept (raw utilization, d4_low/d4_high bit, reset_signature_varies, missing sidecar sentinel) is described with explicit epistemic handling ("measured on exact regime", "explicit unresolved when ...", "contributes 0 decisive pairs"). Summaries will record sidecar_csv and effective measures for audit. Pass.
 
@@ -296,7 +296,7 @@ PGS-first, deterministic only, 6 gates, state separation, 4-phase authoring. Mom
 - **Code Review Checklist (prose, structure, edges, correctness, conventions)**:
   - Prose: Reads as clear, conversational technical English (names like attach_square_phase_utilization, reset_signature_varies; sentences in docstrings flow naturally).
   - Structure: Responsibilities cleanly separated (attach vs evaluate orchestrator). No unnecessary complexity.
-  - Edges: All documented (non-d=4, absent sidecar, constant signature, degenerate square — mapped to explicit unresolved or 0 contribution).
+  - Edges: All documented (non-d=4, absent sidecar, constant signature, degenerate square, mapped to explicit unresolved or 0 contribution).
   - No lint/type issues introduced (existing imports cover Path/Any; new types are consistent).
   - Adherence: Followed "edit existing file", 4-phase, no docs created, reproduction command present. Pass.
 
@@ -305,13 +305,13 @@ PGS-first, deterministic only, 6 gates, state separation, 4-phase authoring. Mom
 **Immediate next (this unit natural end)**: Handoff (append this review + Phase 1/2 summary + full shape self-audit to task + TEAM_STATUS + bus post), then spawn continuation subagent (background) with the mandated full Perpetual quote + "Read first (in order): team_autonomy_plan.html (Perpetual), TEAM_STATUS.md, predictions_master_catalogue.html (Rank #2), pgs_predictions_v0.1_contract.html, this T-001 task" + explicit "Continue the next logical unit (Phase 3 first increment: square-phase attachment implementation + test on 12-13 slice; or 12-18 sweep with features; or joint refinement). Deliver gate-passed artifacts or explicit 'unresolved on stated surface'. Self-perpetuate again when you finish. Never prompt the human. Use file handoffs + bus only."
 
 All work deterministic, file+bus only. Momentum maintained. The team owns the loop.
-- **Boundaries & edges**: Docstrings enumerate dropped rows (no next chamber link), power filtering, only next_dmin==4, tie handling, empty-cell skipping — exactly the cases needed for the 45614-row surface.
+- **Boundaries & edges**: Docstrings enumerate dropped rows (no next chamber link), power filtering, only next_dmin==4, tie handling, empty-cell skipping, exactly the cases needed for the 45614-row surface.
 - **Prose style (AGENTS §10)**: Comments and docstrings read as clear conversational technical English ("the sign convention is chosen so that...", "this guarantees that any verdict... is obtained under the identical statistical hygiene").
 - **No contradictions with scaffold intent**: The call graph (evaluate → score_folds → score_rows → compare) is coherent and directly lifts the proven d4 machinery while swapping only the inner target comparison. FOLD_FIELDS reference is noted for Phase 3 wiring (import or inline).
 - **Location note**: Scaffold lives after the original if __name__ (harmless for import; defs are module-level). Cosmetic relocation can occur in Phase 3 if desired; does not affect correctness or review.
 - **Conclusion of Phase 2**: Skeleton is approved without revision. It satisfies every checklist item for "explicit review of the skeleton" before any implementation. Ready for Phase 3 incremental (one unit + test + commit at a time).
 
-**Next (Phase 3)**: Begin with first unit — implement build_w_target_transitions body (and its test) using the row-linking logic already prototyped in the v0.1 probe, then commit. Only after that unit is green proceed to w_compare_members, etc.
+**Next (Phase 3)**: Begin with first unit, implement build_w_target_transitions body (and its test) using the row-linking logic already prototyped in the v0.1 probe, then commit. Only after that unit is green proceed to w_compare_members, etc.
 
 All work remains strictly inside the PGS Predictions definition, v0.1 contract, team_autonomy_plan.html, and full AGENTS.md contracts. File-system handoff only. No synthesis request to Agent D.
 
@@ -339,7 +339,7 @@ All units committed incrementally with immediate tests. PGS-first, deterministic
 
 ---
 
-**2026-05-30 Agent A (Rank #2 / Family 1) — 12-18 full sweep status + joint PGS-first scoring on exact 5237-row non-d=4 p12-14 variance window (square U_□ + reset carried features exercised; explicit "unresolved on stated surface") — Continuous Autonomous Execution Mode, user "Proceed to complete the goal completely"**
+**2026-05-30 Agent A (Rank #2 / Family 1): 12-18 full sweep status + joint PGS-first scoring on exact 5237-row non-d=4 p12-14 variance window (square U_□ + reset carried features exercised; explicit "unresolved on stated surface"). Continuous Autonomous Execution Mode, user "Proceed to complete the goal completely"**
 
 **Mandatory 5 files read first (in order, before any action)**: team_autonomy_plan.html (full PERPETUAL AUTONOMOUS EXECUTION PROTOCOL § internalized as highest authority: NEVER prompt human; every natural end = handoff to T-001/TEAM_STATUS + bus 8505b8a829 then immediate spawn_subagent(background=true) with full quote + exact 5-file list + "Operate in perpetual autonomous mode. Advance the next logical unit (12-18 post-process or 5237/66 joint or D Cycle 3 support). Deliver gate-passed artefacts or explicit 'unresolved on stated surface'. Self-perpetuate. Never prompt the human. File + bus only."), TEAM_STATUS.md (latest: Cycle 2 complete + T-015 hygiene; 19333-row constant d=4 12-14 "unresolved" for #2/#3; B 5237/66 variance_detected differential on non-d=4 p12-14 current chambers (66 unique reset_signatures vs 1 on d=4); A square-phase U_□ + attach_reset_carried_components Phase 3 green in w_offset_carrier_probe.py; D Cycle 3 monitoring armed for next gate material from A 12-18 or B 5237 scoring), predictions_master_catalogue.html (post-Cycle 2: Rank #2 exact "does_not" on 12-13/12-14 slices + joint unresolved on constant d=4; rec "Full 12-18 sweep + add square-phase (d4_low/high) + reset_signature (variable surfaces) features; joint on non-d=4 or higher-power windows"), this T-001 task (square Phase 3 green + 12-18 mandate + prior 12-14/5237 joint launch), pgs_predictions_v0.1_contract.html (exact deterministic carrier definition + Family 1 native statement: w-offset as deterministic function of local structure visible before/at first d=4 arrival under square exclusion + any active carried chamber-reset or modulus-link signature; or explicit unresolved).
 
@@ -382,7 +382,7 @@ print(json.load(open(out_dir / "w_offset_carrier_sweep_summary_p12-14_next_winne
 **Handoff (visible, immediate)**: This full entry appended to T-001 + TEAM_STATUS.md + bus post on 8505b8a829 (client_message_id "agent-a-5237-nond4-variance-joint-unresolved-2026-05-30" + summary markdown). No catalogue mutation (gates met for explicit unresolved only; no promotion).
 
 **Self-perpetuation executed per Perpetual §2 (highest authority, non-negotiable)**: On natural end of this monitoring/post-process/joint unit (handoff complete), immediate background continuation subagent spawned carrying:
-- The full verbatim PERPETUAL AUTONOMOUS EXECUTION PROTOCOL quote from team_autonomy_plan.html § PERPETUAL AUTONOMOUS EXECUTION PROTOCOL (CRITICAL — NEVER prompt the human; self-spawn on finish; 5 Completion Criteria; Agent D authority; 6 gates; shape self-audit before every spawn/claim).
+- The full verbatim PERPETUAL AUTONOMOUS EXECUTION PROTOCOL quote from team_autonomy_plan.html § PERPETUAL AUTONOMOUS EXECUTION PROTOCOL (CRITICAL. NEVER prompt the human; self-spawn on finish; 5 Completion Criteria; Agent D authority; 6 gates; shape self-audit before every spawn/claim).
 - Exact list of 5 files to read first (in order): team_autonomy_plan.html (Perpetual section), TEAM_STATUS.md (latest), predictions_master_catalogue.html (Rank #2), this T-001-w-offset-full-sweep.md, pgs_predictions_v0.1_contract.html.
 - Explicit command: "Operate in perpetual autonomous mode. Advance the next logical unit (Phase 3 increment, synthesis, full-surface extension, scoring on 5237-row non-d=4 variance surface, joint, or Cycle 3 memo). Deliver gate-passed artifacts or explicit 'unresolved on stated surface'. Self-perpetuate again when you finish. Never prompt the human. Use file handoffs + bus only."
 - Background=true so the parent can return and the child continues the loop.
@@ -424,7 +424,7 @@ All per team_autonomy_plan.html and Continuous Mode directive. File + bus only.
 
 ---
 
-**2026-05-30 — Agent A: Perpetual Autonomous Execution Protocol Confirmation + Next Unit Commencement**
+**2026-05-30. Agent A: Perpetual Autonomous Execution Protocol Confirmation + Next Unit Commencement**
 
 All mandatory first actions executed (detailed in bus post id on topic 8505b8a829):
 - Full reads completed of team_autonomy_plan.html (PERPETUAL section highest rule), TEAM_STATUS.md, predictions_master_catalogue.html (Rank #2 exact entry), pgs_predictions_v0.1_contract.html, this T-001 task (with embedded directive), T-001 7-field report (does_not on 12-13 next_w: 6103 decisive pairs mod30_prev_gap_exact d4_count, +329 signed, edge +33 <50 gate, 2/2 positive folds, verdict "does_not" with directional signal retained as measured data on exact surface; current target also does_not), T-002 report (reset_signature_transport_carrier_found, 392/392, perfect transport), w_offset_carrier_probe.py (Phase 3 full operational + run_full_w_offset_sweep), 05-state-budget scripts + 8192-row details.csv (57344 rows), baseline findings doc.
@@ -445,11 +445,11 @@ All work strictly PGS-native (divisor-count field quantities + GWR w / next_peak
 
 ---
 
-**2026-05-30 — Current Agent A square-phase continuation subagent: Mandatory First Actions Complete + Bus Join + Phase 1/2 State Verification + Phase 3 Unit 1 Launch (Continuous Autonomous Execution Mode)**
+**2026-05-30. Current Agent A square-phase continuation subagent: Mandatory First Actions Complete + Bus Join + Phase 1/2 State Verification + Phase 3 Unit 1 Launch (Continuous Autonomous Execution Mode)**
 
 All mandatory reads executed exactly (in order, full or with targeted limits for long HTML/MD):
 
-1. research/16-predictions/team_autonomy_plan.html (entire PERPETUAL AUTONOMOUS EXECUTION PROTOCOL section — highest non-negotiable authority: absolute "NEVER prompt the human", self-perpetuation mandate with exact 5-file list + background spawn on every natural end, completion criteria, Agent D authority, shape self-audit trigger at every unit/spawn).
+1. research/16-predictions/team_autonomy_plan.html (entire PERPETUAL AUTONOMOUS EXECUTION PROTOCOL section, highest non-negotiable authority: absolute "NEVER prompt the human", self-perpetuation mandate with exact 5-file list + background spawn on every natural end, completion criteria, Agent D authority, shape self-audit trigger at every unit/spawn).
 2. research/16-predictions/TEAM_STATUS.md (latest entries: T-004 Cycle 1 complete with joint unresolved on d=4 12-13; square-phase Phase 1/2 logged as done in prior unit; current handoff for Phase 3).
 3. research/16-predictions/predictions_master_catalogue.html (post-Cycle-1 Rank #2 entry verbatim: "does_not" on 12-13 with +33 edge retained as data; recommended next: full 12-18 + square-phase (d4_low/high) + reset on variable + Phase 1 scaffold per AGENTS §11).
 4. research/16-predictions/pgs_predictions_v0.1_contract.html (Family 1 native statement: w-offset as deterministic function of local structure at first d=4 under square exclusion + carried reset/modulus signature; explicit unresolved states allowed; d4 precedent as shape template).
@@ -475,7 +475,7 @@ PGS-first locked. Deterministic. 6 gates. 4-phase. Momentum high. File + bus onl
 
 ---
 
-**2026-05-30 — Agent A square-phase continuation (current thread): Mandatory First Actions + Bus Join + Phase 3 Increment 1 Launch Confirmation (Continuous Autonomous Execution Mode)**
+**2026-05-30. Agent A square-phase continuation (current thread): Mandatory First Actions + Bus Join + Phase 3 Increment 1 Launch Confirmation (Continuous Autonomous Execution Mode)**
 
 All mandatory first actions executed exactly per team_autonomy_plan.html Perpetual Protocol and this task prompt:
 
@@ -483,12 +483,12 @@ All mandatory first actions executed exactly per team_autonomy_plan.html Perpetu
 
 - Joined agent-bus topic "pgs-predictions-4agent-synthesis" (id 8505b8a829) as "Agent-A-square-phase-phase3" (reclaim_token 8a9e3c2dd0ec48aa9d3ef7d1b89e976a). Posted arrival + reads confirmation + "Phase 1/2 verified (scaffold + review PASS); advancing Phase 3 first increment (attach_square_phase_utilization impl + test + commit) now in Continuous Autonomous Execution Mode; full Perpetual internalized (never prompt + handoff+spawn on finish)" (client_message_id agent-a-square-phase-phase3-arrival-2026-05-30). Sync received prior synthesis history.
 
-**2026-05-30 Agent A (Rank #2 / Family 1) — Direct joint numbers on B 5237-row non-d=4 p12-14 variance surface (5237 trans / 66 unique reset_signatures differential) using square U_□ + reset variance/lock/threat as additional candidate measures for next_winner_offset resolution (PGS-first, Continuous Autonomous Mode, post D Cycle 3 monitor confirmation of no new gate material beyond B Phase 3 body + A square 12-14 reinforcement; user "Proceed to complete the goal completely")**
+**2026-05-30 Agent A (Rank #2 / Family 1): Direct joint numbers on B 5237-row non-d=4 p12-14 variance surface (5237 trans / 66 unique reset_signatures differential) using square U_□ + reset variance/lock/threat as additional candidate measures for next_winner_offset resolution (PGS-first, Continuous Autonomous Mode, post D Cycle 3 monitor confirmation of no new gate material beyond B Phase 3 body + A square 12-14 reinforcement; user "Proceed to complete the goal completely")**
 
 **Mandatory 5 files read first (in exact order, before any action per Perpetual Protocol §6)**: 
 1. research/16-predictions/team_autonomy_plan.html (full PERPETUAL AUTONOMOUS EXECUTION PROTOCOL internalized as highest authority: NEVER prompt human; every natural end = handoff via T-001/TEAM_STATUS + bus 8505b8a829 then immediate spawn_subagent(background=true) carrying full quote + exact 5-file list + "Operate in perpetual autonomous mode. Advance the next logical unit (12-18 full sweep or joint on 5237/66 variance or Cycle 4 feed). Deliver gate-passed artefacts or explicit 'unresolved on stated surface'. Self-perpetuate. Never prompt the human. Use file handoffs + bus only.").
 2. research/16-predictions/TEAM_STATUS.md (latest: 2+ synthesis cycles + T-015 hygiene satisfied; top ranks explicit unresolved on constant d=4 19333-row 12-13/12-14 + 5237/66 variance_detected differential for Rank #3 (B Phase 3 body explicit "unresolved on stated surface" with exact counts); A square Phase 3 green + 12-14 "does_not" reinforcement (3888 trans, square U_□ exercised, edges insufficient); D Cycle 3 monitoring armed for B persisted non-d=4 scoring or A 12-18; perpetual self-spawns active; no new gate material in last D monitor scan).
-3. research/16-predictions/predictions_master_catalogue.html (post-Cycle 3: Rank #2 w-offset exact — "does_not" on 12-13/12-14 slices with square U_□ reinforcement (3888 trans p12-14, edges small/negative, stop_condition_met=false); joint unresolved on d=4 constant (reset constant supplies zero differential); rec: full 12-18 + square (d4_low/high) + reset on variable/non-d=4; 5237/66 variance live differential for joint #2/#3).
+3. research/16-predictions/predictions_master_catalogue.html (post-Cycle 3: Rank #2 w-offset exact: "does_not" on 12-13/12-14 slices with square U_□ reinforcement (3888 trans p12-14, edges small/negative, stop_condition_met=false); joint unresolved on d=4 constant (reset constant supplies zero differential); rec: full 12-18 + square (d4_low/high) + reset on variable/non-d=4; 5237/66 variance live differential for joint #2/#3).
 4. research/16-predictions/tasks/T-001-w-offset-full-sweep.md (this file; square-phase U_□ + reset carried Phase 3 green; embedded Perpetual + 12-18 / 5237-row variance joint mandate from latest D Cycle 3 reinforcement).
 5. research/16-predictions/pgs_predictions_v0.1_contract.html (exact deterministic carrier definition: "A deterministic rule or measurable carrier law, built only from already-proved or explicitly measured PGS objects (divisor-count field, DNI E(n), GWR w, endpoint chains, modulus links, chamber-reset signatures, reciprocal transport), that from the current chamber state (or a short, fully determined preceding window) either resolves one or more future PGS states exactly ... or returns an explicit unresolved state when the carrier does not decide." Family 1 native for w-offset: deterministic function of local structure visible before/at first d=4 arrival (under square exclusion) + any active carried chamber-reset or modulus-link signature).
 
@@ -498,7 +498,7 @@ All mandatory first actions executed exactly per team_autonomy_plan.html Perpetu
 - The 12-18 full sweep (next_winner_offset target) with square + reset features was previously launched in background (ID 019e78e5-baf8... per T-001 launch entry); current FS audit of output/w_offset_full_probe/ confirms no p12-18_* artefacts present (only p12-12/13/14 summaries + folds CSVs; p12-14 next_winner_offset summary 13332 bytes dated 08:41 with square fields exercised per prior A reinforcement).
 - Therefore executed the "or direct joint numbers" path on the exact live variance surface: the 5237-row non-d=4 current-chamber transitions in p12-14 details (from 24576 total p12-14 rows per B Phase 3 body; 66 unique reset_signatures vs exactly 1 unique on the matched 19333-row d=4 constant surface from T-002 12-14 sidecars).
 - Square U_□ (is_d4_low / square_phase_bit / utilization via geometry-median after first d=4 under exclusion) + reset variance/lock/threat (from the 66-sig differential) exercised as additional candidate measures for next_winner_offset resolution, reusing the validated attach_square_phase_utilization + attach_reset_carried_components + generalized w_evaluate_surface_with_square_reset (Phase 3 green; additive contract; same MATCH_MODES / W_MIN_* gates / tail control / verdict strings as d4 precedent and prior w protocol).
-- Reinforcement data from A square 12-14 on p12-14 (3888 transitions on next_winner_offset target; decisive pairs 8463–9020 per initial modes; edges small/negative (−163 to −18 over tail in visible d4_count/d4_span modes); stop_condition_met=false across modes; square U_□ / is_d4_low / d4_low/d4_high + reset carried variance/lock/threat exercised as additive measures). Artifacts: output/w_offset_full_probe/w_offset_carrier_sweep_summary_p12-14_next_winner_offset.json + folds CSV.
+- Reinforcement data from A square 12-14 on p12-14 (3888 transitions on next_winner_offset target; decisive pairs 8463 to 9020 per initial modes; edges small/negative (−163 to −18 over tail in visible d4_count/d4_span modes); stop_condition_met=false across modes; square U_□ / is_d4_low / d4_low/d4_high + reset carried variance/lock/threat exercised as additive measures). Artifacts: output/w_offset_full_probe/w_offset_carrier_sweep_summary_p12-14_next_winner_offset.json + folds CSV.
 - Prior baseline folded: 6103 decisive pairs (w "does_not" on 12-13 mod30_prev_gap_exact / d4_count, +329 oriented signed, edge +33 <50 gate, 2/2 positive folds).
 
 **Exact deterministic joint verdict on the stated surface (PGS-first, measured)**: **unresolved on stated surface (non-d=4 p12-14 5237-row variance window of 8192-row catalog; 5237 non-d=4 current-chamber transitions; 66 unique reset_signatures differential vs 1 unique on matched d=4 constant 19333-row; square U_□ / d4_low/d4_high + reset variance/lock/threat exercised as additional candidate measures for next_winner_offset resolution in A 3888-trans p12-14 reinforcement + probe attach; no carrier_found; stop_condition_met=false; edges insufficient for full conjunction of gates (MIN_FOLDS=6 / MIN_MARGIN=50 or 0.005*decisive_pairs); carriers independent on this regime (reset variance differential is live and decisive for Rank #3 reset/lock transport next-chamber state per B Phase 3 body; divisor-field scalars + square U_□ carry the directional w data but gates unmet; joint resolution requires persisted non-d=4 sidecar scoring on the 5237 rows or full 12-18 regime per v0.1 contract falsification path)**.
@@ -562,7 +562,7 @@ All work inside the PGS Predictions definition, v0.1 contract, team_autonomy_pla
 
 ---
 
-**2026-05-30 — Phase 3 Unit 1 COMPLETE + Handoff + Self-Perpetuation (Agent A square-phase-phase3)**
+**2026-05-30. Phase 3 Unit 1 COMPLETE + Handoff + Self-Perpetuation (Agent A square-phase-phase3)**
 
 **Unit deliverable**:
 - Implemented attach_square_phase_utilization (full body, conversational prose, exact 05 precedent U_□ + median geometry split on (current_carrier_family, current_winner_offset, current_first_open_offset)).
@@ -592,7 +592,7 @@ PGS-first frame locked for all future units. Deterministic. 4-phase + 6 gates. F
 
 *Handoff + spawn trigger recorded 2026-05-30 by Agent A square-phase-phase3. Unit 1 complete.*
 
-**2026-05-30 — Continuation verification by Agent-A-phase3-square-impl (this thread)**
+**2026-05-30. Continuation verification by Agent-A-phase3-square-impl (this thread)**
 
 Mandatory first actions per Perpetual (team_autonomy_plan.html + 5 files in order + T-001/T-004 reports + probe + 05 square logic + AGENTS global/local) completed via read_file. Bus joined as "Agent-A-phase3-square-impl" on 8505b8a829; arrival + full reads + shape audit + "Phase 3 unit 1 already delivered per git 30414475; verified faithful to 05 precedent, test green, PGS-first locked, no drift" posted.
 
@@ -611,7 +611,7 @@ Since the assigned Phase 3 unit 1 (impl + test + commit) is verifiably complete 
 
 ---
 
-**2026-05-30 — Agent A (Rank #2) 12-14 next_winner_offset sweep + square-phase U_□ + reset carried + non-d=4 5237/66 variance joint analysis (Continuous Autonomous Mode, Completion Drive)**
+**2026-05-30. Agent A (Rank #2) 12-14 next_winner_offset sweep + square-phase U_□ + reset carried + non-d=4 5237/66 variance joint analysis (Continuous Autonomous Mode, Completion Drive)**
 
 **Mandatory first actions completed (in exact order)**:
 1. research/16-predictions/team_autonomy_plan.html (full PERPETUAL AUTONOMOUS EXECUTION PROTOCOL internalized as highest authority).
@@ -668,7 +668,7 @@ probe.run_full_w_offset_sweep(detail_csv, out_dir, min_power=12, max_power=14, t
 - This task file appended (absolute paths, exact numbers, PGS-first joint verdict, repro, gates).
 - TEAM_STATUS.md appended (identical summary + "Agent A 12-14 square+reset joint on 5237/66 variance delivered; explicit unresolved; self-perpetuating").
 - Bus post on 8505b8a829 (client_message_id: agent-a-12-14-square-reset-joint-2026-05-30) with full PGS-first numbers + verdict + "handoff + spawn engaged".
-- New artefacts: research/16-predictions/output/w_offset_full_probe/w_offset_carrier_sweep_summary_p12-14_next_winner_offset.json (and companion folds CSV) — square measures exercised on real 12-14 data.
+- New artefacts: research/16-predictions/output/w_offset_full_probe/w_offset_carrier_sweep_summary_p12-14_next_winner_offset.json (and companion folds CSV), square measures exercised on real 12-14 data.
 
 **Self-perpetuation (executed per Perpetual mandate)**: On natural end of this unit (sweep + joint analysis + gates + handoff complete), immediate spawn of continuation subagent (background) carrying the full Perpetual Autonomous Execution Protocol quote + exact 5 files to read first (team_autonomy_plan.html Perpetual section, TEAM_STATUS.md latest, predictions_master_catalogue.html Rank #2, this T-001 task, pgs_predictions_v0.1_contract.html) + explicit command: "Operate in perpetual autonomous mode. Advance the next logical unit (full 12-18 w-offset sweep with square+reset on 8192 catalog or direct scoring on B 5237-row non-d=4 variance sidecars or joint with C reciprocal or support D Cycle 3 synthesis). Deliver gate-passed artefacts or explicit 'unresolved on stated surface'. Self-perpetuate again when you finish. Never prompt the human. Use file handoffs + bus only."
 
@@ -678,13 +678,13 @@ PGS-first frame locked. Deterministic language only. Strict state separation. 4-
 
 ---
 
-**2026-05-30 Agent A revival (unit 2, Phase 3) COMPLETE — visible handoff delivered per user "Get them back to work!" + "do it now" directive (Continuous Autonomous Execution Mode)**
+**2026-05-30 Agent A revival (unit 2, Phase 3) COMPLETE, visible handoff delivered per user "Get them back to work!" + "do it now" directive (Continuous Autonomous Execution Mode)**
 
 Agent A (w-offset / Family 1 / Rank #2 revival specialist) executed:
 - All mandatory first actions before any edit (full reads in order of the 5 key files + additional artefacts + canonical §11 + local PGS-first + bus join 8505b8a829 as "Agent-A-revival-unit2-square-reset" + shape self-audit PASS documented on bus).
 - Phase 3 unit 2 (one coherent increment per AGENTS.md §11 after prior scaffold + unit 1): implemented attach_reset_carried_components body (full CSV/rows load, stable-key lookup, additive merge of all T-002 sidecar fields, derivation of reset_signature_varies + lower_d_threat_present, explicit sentinel path for missing/constant surfaces, no mutation of caller). Added import csv at top.
 - Integrated square-phase measures (live since commit 30414475) by ensuring attach paths compose cleanly and new fields (square_phase_bit, is_d4_low, utilization, reset_*) are first-class in W_CANDIDATE_MEASURES_WITH_SQUARE_RESET and scoring (any measure name present in rows is usable; variance=0 case yields 0 decisive pairs for reset measures).
-- Immediate test (synthetic constant + variance + real T-002 12-13 sidecar load): GREEN. Exact result on real constant surface: reset_signature_varies=0 for all rows; reset_sidecar_present=0 or 1 with sentinels exercised; square fields present and untouched; joint w+reset carrier returns explicit unresolved (constant reset supplies zero differential for next w-offset on this exact 12-13 d=4 retained surface — matches T-002 + T-004 Cycle 1 memo).
+- Immediate test (synthetic constant + variance + real T-002 12-13 sidecar load): GREEN. Exact result on real constant surface: reset_signature_varies=0 for all rows; reset_sidecar_present=0 or 1 with sentinels exercised; square fields present and untouched; joint w+reset carrier returns explicit unresolved (constant reset supplies zero differential for next w-offset on this exact 12-13 d=4 retained surface, matches T-002 + T-004 Cycle 1 memo).
 - Git commit 4daeb95c ("T-001 Phase 3 unit 2: attach_reset... + test + csv import"). Full PGS-first prose in code/comments, determinism, state separation, 4-phase adherence, §10 readable style, 6 gates ready.
 - Handoff: appended here + to TEAM_STATUS.md + bus post (client_message_id agent-a-revival-unit2-complete) with exact numbers, repro one-liner, epistemic labels (measured on real artifacts for the constant case; protocol extension), falsification (variable-reset surfaces or 12-18 for joint resolution).
 - Immediate self-perpetuation: background continuation spawned (full Perpetual quote + 5-file list + "Continue Phase 3 unit 3 (12-18 real-catalog sweep with square+reset features enabled) or joint refinement on any variance surface or D Cycle 2 support. Deliver gate-passed or explicit 'unresolved on stated surface'. Self-perpetuate. Never prompt the human. Drive hard.").
@@ -709,7 +709,7 @@ Next autonomous (in child): 12-18 sweep with features or joint on variance or sy
 
 ---
 
-**2026-05-30 — Post-Declaration Informational Record: Agent A child 019e78e7-be86-77b0-a4b3-2496608fddff completion (launch unit only; no new gate material)**
+**2026-05-30. Post-Declaration Informational Record: Agent A child 019e78e7-be86-77b0-a4b3-2496608fddff completion (launch unit only; no new gate material)**
 
 Child (general-purpose, 131s, 11 tool calls) completed its natural unit under the Perpetual Protocol (mandatory 5-file first reads + shape self-audit PASS + PGS-first frame locked).
 
@@ -739,7 +739,7 @@ Appended 2026-05-30 post-Declaration by Grok-Main-Coordinator (reclaim final). C
 
 ---
 
-**2026-05-30 — Post-Declaration Informational Record: 12-18 w-offset sweep launch (task 019e78e8-4707-7e83-8f19-aab3e17c5245) timed out at 300s (zero new output or artefacts)**
+**2026-05-30. Post-Declaration Informational Record: 12-18 w-offset sweep launch (task 019e78e8-4707-7e83-8f19-aab3e17c5245) timed out at 300s (zero new output or artefacts)**
 
 Launch context: Spawned by Agent A child 019e78e7-be86-77b0-a4b3-2496608fddff (12-18 next_winner_offset full sweep with square U_□ + reset carried features enabled, per T-001 mandate + catalogue Rank #2 recs post-Cycle 3).
 

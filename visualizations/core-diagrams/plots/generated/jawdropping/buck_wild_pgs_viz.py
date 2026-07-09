@@ -174,7 +174,7 @@ def generate_ridge_flight_gif(gaps, n_frames=40):
         ax2.plot(ns, zs, color=COSMIC['ridge'], lw=2.5)
         ax2.scatter([w], [zs[list(ns).index(w)]], color=COSMIC['selected'], s=120, marker='*', zorder=10)
         
-        ax.set_title(f'Flight Through PGS Ridges — Gap {gap["p"]}→{gap["q"]} (frame {f+1}/{n_frames})\nRed = GWR w; Orange curve = Z(n) ridge "terrain"', color='white', fontsize=11)
+        ax.set_title(f'Flight Through PGS Ridges. Gap {gap["p"]}→{gap["q"]} (frame {f+1}/{n_frames})\nRed = GWR w; Orange curve = Z(n) ridge "terrain"', color='white', fontsize=11)
         ax.tick_params(colors='white')
         ax2.tick_params(colors=COSMIC['ridge'])
         for sp in ax.spines.values(): sp.set_color(COSMIC['grid'])

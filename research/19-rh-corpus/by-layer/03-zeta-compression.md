@@ -1,7 +1,7 @@
-# Layer 3 — Zeta compression
+# Layer 3: Zeta compression
 
 **Status mix:** `exact`, `measured`  
-**Proves RH?** No — exact identities only; pole placement remains L5
+**Proves RH?** No: exact identities only; pole placement remains L5
 
 This layer is the **arithmetic-to-analytic lift**: the same divisor-count field
 that governs gap interiors compresses into classical zeta language without
@@ -16,7 +16,7 @@ approximation on `Re(s) > 1`.
 ```
 
 Authority: [docs/rh/dni-to-zeta-compression.md](../../../docs/rh/dni-to-zeta-compression.md)  
-Do not duplicate proof bodies here — link only.
+Do not duplicate proof bodies here, link only.
 
 ---
 
@@ -31,7 +31,7 @@ D(s)=\sum_{n\ge 1}\frac{\tau(n)}{n^s}=\zeta(s)^2,
 \qquad \operatorname{Re}(s)>1.
 $$
 
-**RH-020** — exact identity, not asymptotic.
+**RH-020**: exact identity, not asymptotic.
 
 ### Bridge load → logarithmic derivative
 
@@ -51,9 +51,9 @@ R(s)=\frac{e^2}{2}\frac{K(s)}{D(s)}
 =\sum_{n\ge 1}\frac{\Lambda(n)}{n^s}.
 $$
 
-**RH-021** — quotient is taken after summation, not coefficientwise.
+**RH-021**: quotient is taken after summation, not coefficientwise.
 
-### Pole–zero dictionary
+### Pole to zero dictionary
 
 After continuation, poles of $R(s)$ track zeros of $\zeta(s)$:
 
@@ -63,7 +63,7 @@ After continuation, poles of $R(s)$ track zeros of $\zeta(s)$:
 | Trivial zeros | Trivial poles |
 | Nontrivial zeros | Nontrivial poles |
 
-**RH-022** — dictionary only; does not place zeros on $\operatorname{Re}(s)=\tfrac12$.
+**RH-022**: dictionary only; does not place zeros on $\operatorname{Re}(s)=\tfrac12$.
 
 ---
 
@@ -126,7 +126,7 @@ Let $r=(w-p)/C(q)$.
 Implemented in [chamber_compression.py](../empirics/chamber_compression.py);
 validated by [zeta_compression_probe.py](../empirics/zeta_compression_probe.py) ([RH-105](../FINDINGS_INDEX.md)).
 
-### Worked chamber numbers (gap 23–29, $s=2.5$)
+### Worked chamber numbers (gap 23 to 29, $s=2.5$)
 
 | Quantity | Value |
 |----------|-------|
@@ -153,11 +153,11 @@ Near-maximal witness offsets $(w-p)/C(q)\ge 0.65$ split into two lanes:
 Artifact: [research/18-derived-half-coefficient/output/near_maximal_audit_results_40M.json](../../18-derived-half-coefficient/output/near_maximal_audit_results_40M.json)
 
 This separates **arithmetic forcing** of the half-coefficient from **square tiling**
-geometry — critical for honest RH-facing exposition (compare [RH-040](../FINDINGS_INDEX.md) hypothesis only).
+geometry: critical for honest RH-facing exposition (compare [RH-040](../FINDINGS_INDEX.md) hypothesis only).
 
 ---
 
-## Worked micro-example (gap 23–29)
+## Worked micro-example (gap 23 to 29)
 
 From [integer-order demo](../../../experiments/integer-order-before-zeta-whitepaper-2026-07/integer_order_demo.py):
 
@@ -183,7 +183,7 @@ python3 research/19-rh-corpus/empirics/zeta_compression_probe.py
 
 Output: [empirics/output/compression_probe_results.json](../empirics/output/compression_probe_results.json)
 
-Status: `measured` — confirms convergence of truncated sums; not a certificate of
+Status: `measured`, confirms convergence of truncated sums; not a certificate of
 analytic continuation or critical-line placement.
 
 ---
@@ -194,8 +194,8 @@ analytic continuation or critical-line placement.
 |----|--------|-------|------|
 | [RH-020](../FINDINGS_INDEX.md) | exact | $D(s)=\zeta(s)^2$ | [dni-to-zeta-compression.md](../../../docs/rh/dni-to-zeta-compression.md) |
 | [RH-021](../FINDINGS_INDEX.md) | exact | $R(s)=-\zeta'/\zeta$ | [dni-to-zeta-compression.md](../../../docs/rh/dni-to-zeta-compression.md) |
-| [RH-022](../FINDINGS_INDEX.md) | exact | Pole–zero dictionary | [pole-placement.md](../../../docs/rh/pole-placement.md) |
-| [RH-091](../FINDINGS_INDEX.md) | exact | DNI–RH bridge workbench | [12-rh-bridge](../../12-rh-bridge/README.md) |
+| [RH-022](../FINDINGS_INDEX.md) | exact | Pole to zero dictionary | [pole-placement.md](../../../docs/rh/pole-placement.md) |
+| [RH-091](../FINDINGS_INDEX.md) | exact | DNI to RH bridge workbench | [12-rh-bridge](../../12-rh-bridge/README.md) |
 | [RH-103](../FINDINGS_INDEX.md) | measured | F18-004 rough-witness | [FINDING_STATEMENT.md](../../18-derived-half-coefficient/docs/FINDING_STATEMENT.md) |
 | [RH-105](../FINDINGS_INDEX.md) | measured | Multi-s compression probe | [zeta_compression_probe.py](../empirics/zeta_compression_probe.py) |
 
@@ -214,8 +214,8 @@ analytic continuation or critical-line placement.
 
 ## Downstream
 
-- **L4:** [04-placement-geometry.md](./04-placement-geometry.md) — chamber invariants from GWR geometry  
-- **L5:** [05-pole-placement-rh.md](./05-pole-placement-rh.md) — RH sentence on pole locus  
-- **L6:** [06-explicit-formula-bridge.md](./06-explicit-formula-bridge.md) — $R\to\Lambda\to\psi$ translation  
+- **L4:** [04-placement-geometry.md](./04-placement-geometry.md): chamber invariants from GWR geometry  
+- **L5:** [05-pole-placement-rh.md](./05-pole-placement-rh.md): RH sentence on pole locus  
+- **L6:** [06-explicit-formula-bridge.md](./06-explicit-formula-bridge.md): $R\to\Lambda\to\psi$ translation  
 
 [Stack overview](../SOURCE_STACK.md) · [Full index](../FINDINGS_INDEX.md) · [Gap analysis](../GAP_ANALYSIS.md)

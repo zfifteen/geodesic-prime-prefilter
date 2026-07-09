@@ -1,4 +1,4 @@
-# Remainder Lanes Synthesis — Multi-Lane Investigation Report
+# Remainder Lanes Synthesis: Multi-Lane Investigation Report
 
 **Date:** 2026-07-07 (revised)  
 **Super Team:** `research/remainders/SUPER_TEAM_MANIFEST.md` (6 lane agents)  
@@ -32,11 +32,11 @@ At `p≤1.5×10⁶`: **114,154** gaps with interiors (meets ≥10⁵ threshold).
 | State-budget residue cells | Matched-pair tests | **Re-run collector** | `mod30`: 230 decisive pairs, +40 advantage (unresolved) |
 | RSA backward modulus/remainder | Closure search | **Re-run collector** | 0% factor-reach on toy `N≤5000` |
 
-**Gap-echo hypothesis:** Falsified — `research/remainders/correlations/CORRELATION_REPORT.md`.
+**Gap-echo hypothesis:** Falsified: `research/remainders/correlations/CORRELATION_REPORT.md`.
 
 ---
 
-## Lane 1 — Interior remainder vectors `R(n, M_v1)`
+## Lane 1: Interior remainder vectors `R(n, M_v1)`
 
 **Repro (scaled surface):**
 ```bash
@@ -68,7 +68,7 @@ Legacy `p≤10⁶` surface: 78,497 gaps with interiors, 921,503 records (`output
 
 ---
 
-## Lane 2 — GWR Super-Signal (epistemic only)
+## Lane 2: GWR Super-Signal (epistemic only)
 
 Theorem-stack: **measured · corollary**. Open items: `docs/proof-enhancements/goals.md` G2.
 
@@ -76,7 +76,7 @@ On **1.5e6** measured surface: 3,842 GWR records with 4+ zeros; **all** in `g=2`
 
 ---
 
-## Lane 3 — Endpoint residue state
+## Lane 3: Endpoint residue state
 
 **Agent:** `endpoint_mask` (see `SUPER_TEAM_MANIFEST.md`)
 
@@ -89,7 +89,7 @@ On **1.5e6** measured surface: 3,842 GWR records with 4+ zeros; **all** in `g=2`
 | `mean_certified_opening_prefix_len` | 0.91 |
 | Mask width | 96 |
 
-This probe certifies wheel-open candidates by divisibility (primes ≤47). It measures how often `q` lands at a wheel-open index with a fully certified opening prefix — a **simpler** statistic than the hourly propagated-state mask.
+This probe certifies wheel-open candidates by divisibility (primes ≤47). It measures how often `q` lands at a wheel-open index with a fully certified opening prefix, a **simpler** statistic than the hourly propagated-state mask.
 
 **Reference artifact** (hourly frontier): 96-open propagated mask achieves **100%** in-window resolution at `10¹³` with 99.98% small-prime mod reduction.
 
@@ -101,9 +101,9 @@ python research/remainders/lane_collectors/endpoint_residue_probe.py \
 
 ---
 
-## Lane 4 — Left-prime `p mod 30` ridge
+## Lane 4: Left-prime `p mod 30` ridge
 
-**Agent:** `mod30_ridge` — fresh probe at **`max_p=200000`** (17,983 gaps, global right-share 0.193). Embedded in `mod30_ridge_lane_summary.json` → `fresh_probe` (non-null).
+**Agent:** `mod30_ridge`: fresh probe at **`max_p=200000`** (17,983 gaps, global right-share 0.193). Embedded in `mod30_ridge_lane_summary.json` → `fresh_probe` (non-null).
 
 ```bash
 python research/remainders/lane_collectors/mod30_ridge_probe.py \
@@ -111,11 +111,11 @@ python research/remainders/lane_collectors/mod30_ridge_probe.py \
   --output research/remainders/correlations/investigation/mod30_ridge_probe_fresh.json
 ```
 
-**Pinned long-scale:** `research/11-gap-ridge/output/insight_probes/residue_mod30_right_edge_share.json` — `p≡13 (mod 30)` right-edge lift **1.58×** at `10⁶`.
+**Pinned long-scale:** `research/11-gap-ridge/output/insight_probes/residue_mod30_right_edge_share.json`: `p≡13 (mod 30)` right-edge lift **1.58×** at `10⁶`.
 
 ---
 
-## Lane 5 — State-budget residue-matched cells
+## Lane 5: State-budget residue-matched cells
 
 Re-run via investigation (`--run-slow-lanes`) or:
 
@@ -127,7 +127,7 @@ python research/05-state-budget/scripts/state_budget_residue_matched_pair_test.p
 
 ---
 
-## Lane 6 — RSA backward modulus/remainder
+## Lane 6: RSA backward modulus/remainder
 
 ```bash
 python research/06-cryptology-rsa/scripts/pgs_semiprime_backward_invariant_closure_search.py \

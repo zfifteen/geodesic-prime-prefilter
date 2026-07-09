@@ -1,4 +1,4 @@
-# LRDS Hypothesis — New PGS Object from Hermes + Grok Build Bus Collaboration Test (2026-06-02)
+# LRDS Hypothesis: New PGS Object from Hermes + Grok Build Bus Collaboration Test (2026-06-02)
 
 **Topic on agent-bus:** `pgs/collaboration-hermes-grok-new-insight-test` (topic_id=4345f5f850)
 
@@ -30,7 +30,7 @@ Measured:
 
 Transported story law v1 (512 public rows): 512 → 202 effective survivors → 713 recursive → 0 final (stories alone reproduce public recursive elimination).
 
-Grammar evidence (measured, separate track): solved rows (48) reuse lag-2 or lag-3 recursive pieces from deterministic expanded surface but avoid the surface's *ordered* lag-2 + lag-3 reduced words (0 combined ordered hits on solved; 22–40 component-sharing exclusions). Next documented: use combined lag-2+lag-3 reduced words as exclusion-family labels and test fresh solved rows for component sharing without ordered-word collision.
+Grammar evidence (measured, separate track): solved rows (48) reuse lag-2 or lag-3 recursive pieces from deterministic expanded surface but avoid the surface's *ordered* lag-2 + lag-3 reduced words (0 combined ordered hits on solved; 22 to 40 component-sharing exclusions). Next documented: use combined lag-2+lag-3 reduced words as exclusion-family labels and test fresh solved rows for component sharing without ordered-word collision.
 
 Open (from SESSION_BOOTSTRAP / TRANSPORTED_STORY_LAW_PROOF_OBLIGATIONS / START_HERE): stronger transported certificate invariant from public PGSPG fields; 4 lemmas needed to turn measured transported relation into theorem candidates (local GWR/NLSC in PROOF.md does not cover transported after floor(N/x) + induced opposite cert); grammar exclusion labels test.
 

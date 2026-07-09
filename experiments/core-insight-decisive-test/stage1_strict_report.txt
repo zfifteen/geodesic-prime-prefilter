@@ -12,7 +12,7 @@ effect of deconvolution relative to the GWR minimum). The Core Insight δ was th
 
 This is a refinement of the Stage 0 baseline using only already-proved local GWR control. No global objects used.
 
-The live target (Chamber-Deconvolved Reciprocal Balance Lemma — all three obligations) remains fully open.
+The live target (Chamber-Deconvolved Reciprocal Balance Lemma, all three obligations) remains fully open.
 No obligation discharged. Finite measured diagnostic on toy regime only.
 
 CSV: experiments/core-insight-decisive-test/stage1_gwr_bounded_vs_drift.csv

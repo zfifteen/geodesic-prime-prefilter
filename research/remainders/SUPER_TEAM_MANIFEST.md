@@ -1,4 +1,4 @@
-# Remainder Research Super Team — Manifest
+# Remainder Research Super Team: Manifest
 
 **Team name:** Remainder Research Super Team  
 **Orchestrator:** `research/remainders/run_investigation.py`  

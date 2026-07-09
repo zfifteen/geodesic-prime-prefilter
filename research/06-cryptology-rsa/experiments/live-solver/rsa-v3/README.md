@@ -88,12 +88,12 @@ if __name__ == "__main__":
     build_40bit_ladder()
 ```
 
-### 2. `research/06-cryptology-rsa/experiments/rsa/v2/cases.jsonl` (Public N-only case – visible to inference)
+### 2. `research/06-cryptology-rsa/experiments/rsa/v2/cases.jsonl` (Public N-only case  to  visible to inference)
 ```json
 {"case_id": "40bit_ladder_1", "bits": 39, "N": "274953406999"}
 ```
 
-### 3. `research/06-cryptology-rsa/experiments/rsa/v2/audit_factors.jsonl` (Audit-only – physically separate)
+### 3. `research/06-cryptology-rsa/experiments/rsa/v2/audit_factors.jsonl` (Audit-only  to  physically separate)
 ```json
 {"case_id": "40bit_ladder_1", "p": "524309", "q": "524411"}
 ```
@@ -364,7 +364,7 @@ if __name__ == "__main__":
     raise SystemExit(main())
 ```
 
-### 7. `run_experiment.py` (PGS inference runner – currently unresolved scaffold)
+### 7. `run_experiment.py` (PGS inference runner  to  currently unresolved scaffold)
 ```python
 #!/usr/bin/env python3
 """Experiment-runner scaffold for the RSA-260 PGS v2 experiment.

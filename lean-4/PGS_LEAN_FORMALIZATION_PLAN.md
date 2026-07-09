@@ -21,8 +21,8 @@ Its existence is required by project documentation standards: any significant ne
 
 Produce a high-fidelity, machine-checked mirror of the two core universal theorems proved in `PROOF.md`:
 
-1. **Direct deterministic next-prime theorem via tau-scan** — Given a prime `p`, there exists a unique next prime `q` that is selected by the ordered divisor-count chamber state and the PGS selection rule.
-2. **GWR / Leftmost Minimum-Divisor Rule maximizer theorem** — The selected composite `w` inside a prime gap is the unique leftmost interior integer that minimizes `tau(n)` (equivalently, uniquely maximizes `F(n) = −E(n)`).
+1. **Direct deterministic next-prime theorem via tau-scan**: Given a prime `p`, there exists a unique next prime `q` that is selected by the ordered divisor-count chamber state and the PGS selection rule.
+2. **GWR / Leftmost Minimum-Divisor Rule maximizer theorem**: The selected composite `w` inside a prime gap is the unique leftmost interior integer that minimizes `tau(n)` (equivalently, uniquely maximizes `F(n) = −E(n)`).
 
 The Lean work is **verification and audit only**. It increases confidence in the existing prose proofs and provides a foundation for future large-scale mechanical checking of the empirical surfaces in `docs/RESULTS.md`. It does **not** replace `PROOF.md`, the Python reference implementation, or the generator contract.
 
@@ -39,7 +39,7 @@ The Lean work is **verification and audit only**. It increases confidence in the
 
 This section is the master outline. It will be expanded into actual Lean modules and mirrored in the required HTML status document.
 
-### 4.1 Phase 0 — Scaffolding & Contracts (Current — Skeleton Complete)
+### 4.1 Phase 0: Scaffolding & Contracts (Current: Skeleton Complete)
 
 **Deliverables**:
 - Top-level `lean-4/` folder
@@ -57,11 +57,11 @@ This section is the master outline. It will be expanded into actual Lean modules
 - All new files contain explicit PGS-first and state-separation language.
 - No `sorry` in any "proved" section.
 
-### 4.2 Phase 1 — Foundational Definitions & Basic Lemmas
+### 4.2 Phase 1: Foundational Definitions & Basic Lemmas
 
 **Core Objects to Formalize** (with PROOF.md mapping):
 
-- `tau(n)` (divisor count) — exact translation of the function used throughout the project.
+- `tau(n)` (divisor count), exact translation of the function used throughout the project.
 - Zero-excess `E(n)` and dual forms `Z(n)`, `F(n)`.
 - Prime characterization: `Nat.Prime n ↔ tau n = 2` (for n > 1), with explicit link to the prose statement.
 - Finite intervals and ordered divisor-count fields over `[a, b]`.
@@ -76,7 +76,7 @@ This section is the master outline. It will be expanded into actual Lean modules
 
 **Deliverable**: `PGS/Basic.lean` significantly expanded + first test file `PGS/BasicTest.lean` or `#check` examples.
 
-### 4.3 Phase 2 — Interval Machinery & Chamber State
+### 4.3 Phase 2: Interval Machinery & Chamber State
 
 **Objects**:
 - Prime-gap intervals (start after known prime `p`, end at next prime-square boundary or explicit horizon).
@@ -90,7 +90,7 @@ This section is the master outline. It will be expanded into actual Lean modules
 
 **PROOF.md Mapping**: Sections describing the tau-scan process and the definition of the selected composite inside the gap.
 
-### 4.4 Phase 3 — GWR Maximizer Theorem (Core Theorem #2)
+### 4.4 Phase 3: GWR Maximizer Theorem (Core Theorem #2)
 
 **Target Theorem** (direct mirror):
 
@@ -105,7 +105,7 @@ This is the "Leftmost Minimum-Divisor Rule / GWR maximizer theorem" declared uni
 
 **Status**: Once completed, this theorem moves from "Proved in prose" + "Python measurement" to "Machine-checked translation."
 
-### 4.5 Phase 4 — Direct Deterministic Next-Prime Theorem (Core Theorem #1)
+### 4.5 Phase 4: Direct Deterministic Next-Prime Theorem (Core Theorem #1)
 
 **Target Theorem** (direct mirror):
 
@@ -119,7 +119,7 @@ This is the "direct deterministic next-prime theorem via tau-scan."
 - The formal statement must preserve the generator contract: input `p`, output exactly the pair `{"p": p, "q": q}` with no extra metadata in the core theorem.
 - Any diagnostics, certificates, or audit fields must live in separate sidecar structures.
 
-### 4.6 Phase 5 — Cross-Verification Infrastructure
+### 4.6 Phase 5: Cross-Verification Infrastructure
 
 - Mechanisms to import or mirror large-scale empirical results from `docs/RESULTS.md` (e.g., the 78,494/78,494 and decade-window 100% exact surfaces).
 - Optional: decidable procedures for small intervals that can be run inside Lean (for sanity checking).
@@ -127,7 +127,7 @@ This is the "direct deterministic next-prime theorem via tau-scan."
 
 **Warning**: This phase must not be used to "discover" new behavior. It only verifies already-measured surfaces.
 
-### 4.7 Phase 6 — Documentation, Status Surfaces, and Maintenance
+### 4.7 Phase 6: Documentation, Status Surfaces, and Maintenance
 
 **Mandatory Deliverables**:
 - Self-contained `docs/lean-pgs-verification/index.html` (or equivalent under `docs/`) containing:
@@ -161,7 +161,7 @@ Every Lean file will open with a "References" block listing the exact prose loca
 - **Risk**: Performance / decidability issues on large intervals.
   **Mitigation**: Keep large-scale work in the Python reference implementation. Lean is for theorem structure, not for 10^18-scale computation.
 - **Risk**: "sorry" pollution.
-  **Mitigation**: Strict policy — `sorry` only in clearly marked hypothesis/work-in-progress sections with TODOs.
+  **Mitigation**: Strict policy : `sorry` only in clearly marked hypothesis/work-in-progress sections with TODOs.
 
 ## 7. Success Criteria
 

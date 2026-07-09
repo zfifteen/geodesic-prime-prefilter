@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Iteration 3: Gap Compatibility Hypothesis — Position-Aware Analysis (Option A)
+Iteration 3: Gap Compatibility Hypothesis. Position-Aware Analysis (Option A)
 
 This iteration adds explicit relative position bucketing on top of the reduced state.
 
@@ -139,7 +139,7 @@ TRIPLES = [
 
 
 def main():
-    print("Gap Compatibility Hypothesis — Iteration 3 (Position Bucketing)")
+    print("Gap Compatibility Hypothesis. Iteration 3 (Position Bucketing)")
     print("=" * 80)
 
     results = []

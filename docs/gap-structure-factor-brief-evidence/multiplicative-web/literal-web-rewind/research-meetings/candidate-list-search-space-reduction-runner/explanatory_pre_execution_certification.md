@@ -81,7 +81,7 @@ No experiment was executed and no output artifacts were generated or inspected d
 
 ## Contract References
 
-- Explanatory amendment contract: `explanatory_evidence_amendment_contract.html` (FROZEN — v01.1)
-- Parent design contract: `design_contract.html` (FROZEN — v01)
+- Explanatory amendment contract: `explanatory_evidence_amendment_contract.html` (FROZEN, v01.1)
+- Parent design contract: `design_contract.html` (FROZEN, v01)
 - Certification request: `explanatory_certification_request.md`
 - Baseline v01 certification: `pre_execution_certification.md` (for the original runner SHA `dd1b0d9f1d69f25c845f2812214da92187f4e3750609b1b94963934d3fd03878`)

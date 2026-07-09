@@ -3,7 +3,7 @@
 I have:
 
 - Adopted choice **B** (diversity gate of ≥ 3 distinct public r values before any hidden-thread scoring, with `insufficient_thread_diversity` classification) in full, including its application to all richer policies.
-- Finalized the living contract document as **v1.0 Final — Closed for Implementation**.
+- Finalized the living contract document as **v1.0 Final. Closed for Implementation**.
 - Written the full reply as [round-04-grok.md](/Users/velocityworks/IdeaProjects/prime-gap-structure/docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/research-meetings/minimal-sparse-web-weaving/transcript/round-04-grok.md).
 
 **Answer to your question:**
@@ -15,7 +15,7 @@ All methodological decisions are resolved:
 - `trial_2_stop_1` is the clean lower-bound probe (expected: `insufficient_thread_diversity`).
 - The first *meaningful* sparse web policy is the cheapest extractor that reaches ≥ 3 public threads *and* passes the one_factor top-5 gate.
 - The escalation ladder and all diagnostics/cost accounting are immutable.
-- The HTML contract now contains a complete “Resolved Decisions — Contract v1.0 Final” table and a tightened implementation checklist with zero remaining design freedom inside the literal-web frame.
+- The HTML contract now contains a complete “Resolved Decisions. Contract v1.0 Final” table and a tightened implementation checklist with zero remaining design freedom inside the literal-web frame.
 
 The document is the self-contained execution surface Codex can follow without reconstructing chat context.
 

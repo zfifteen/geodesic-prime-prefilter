@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-PGS Predictions — T-002: Chamber-Reset Signature + Lock Transport Sidecar Emitter (Agent B)
+PGS Predictions. T-002: Chamber-Reset Signature + Lock Transport Sidecar Emitter (Agent B)
 
 This script emits richer reset-signature, lock_carrier, lower_d_threat, and related
 sidecars onto the existing 8192-row retained catalog surface (10^12..10^18) without
@@ -52,7 +52,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 # ----------------------------------------------------------------------------
-# Path hygiene — identical pattern to audited w_offset and divisor-carrier probes.
+# Path hygiene: identical pattern to audited w_offset and divisor-carrier probes.
 # We import only the generator certificate (PGS-native) and the transition
 # builder helpers (already validated on the exact surface we are enriching).
 # ----------------------------------------------------------------------------
@@ -202,7 +202,7 @@ def extract_p_from_detail_row(row: Dict[str, Any]) -> int:
 
 # ----------------------------------------------------------------------------
 # Function: augment_transitions_with_reset_sidecars
-# Responsibility (scaffolding — the core of T-002):
+# Responsibility (scaffolding: the core of T-002):
 #   Take the list of transition dicts already produced by the audited
 #   build_transitions(...) (which gives us previous/current/next linking under
 #   the exact match-mode discipline), and for each transition:
@@ -215,7 +215,7 @@ def extract_p_from_detail_row(row: Dict[str, Any]) -> int:
 #       previous_reset_signature / previous_lock_carrier_d / previous threat bit.
 #       This is the explicit previous-to-current transport carrier surface.
 #     - Attach all RESET_SIDECAR_FIELDS as new keys on the transition dict.
-#     - Preserve every original key (full state separation — the enrichment is
+#     - Preserve every original key (full state separation: the enrichment is
 #       strictly additive).
 #
 #   The resulting augmented list is the exact artifact on which the first
@@ -537,7 +537,7 @@ if __name__ == "__main__":
 
 # ----------------------------------------------------------------------------
 # Phase 1 Scaffolding (per AGENTS.md §11 + T-002 NonD4 continuation mandate):
-# run_reset_carrier_scoring — detailed docstrings + signatures ONLY.
+# run_reset_carrier_scoring: detailed docstrings + signatures ONLY.
 # No implementation logic, no bodies beyond pass / NotImplemented, no control flow.
 # This is the explicit skeleton review target for Phase 2 before any Phase 3 unit.
 # Reuses audited 05-state-budget machinery exactly (MATCH_MODES, score_rows,
@@ -640,7 +640,7 @@ def run_reset_carrier_scoring(
     # Joint mode stub present for A square-phase on same window when artefacts arrive.
     # Reproduction + epistemic labels included. 6 gates satisfied for this deliverable.
 
-    # For the exact measured surface (no full rows passed yet — variance already
+    # For the exact measured surface (no full rows passed yet: variance already
     # computed live on details + certs per prior handoff), return the explicit
     # unresolved with the verified 5237/66 numbers. When real sidecar_rows are
     # supplied (future persisted non-d=4 CSV), the path below will be extended
@@ -680,7 +680,7 @@ def run_reset_carrier_scoring(
     # (Implementation deferred to next coherent Phase 3 increment after persisted
     # non-d=4 sidecars exist.)
     return {
-        "surface": "non-d=4 p12-14 (rows supplied — full protocol path not yet exercised in this unit)",
+        "surface": "non-d=4 p12-14 (rows supplied, full protocol path not yet exercised in this unit)",
         "transition_count": len(sidecar_rows),
         "unique_reset_signatures": "computed from rows (see future unit)",
         "variance_detected": True,

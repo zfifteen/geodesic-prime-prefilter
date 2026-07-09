@@ -116,7 +116,7 @@ theorem tau_eq_two_iff_only_divisors_are_1_and_n
   · intro h_only
     simp [tau]
     /-
-    Scaffolding for the reverse direction (Phase 1 — comments only, no tactics yet).
+    Scaffolding for the reverse direction (Phase 1, comments only, no tactics yet).
 
     PROOF.md Reference: Lines 80-81
     "An integer n > 1 is prime exactly when its only positive divisors are 1 and n.
@@ -152,7 +152,7 @@ theorem tau_eq_two_iff_only_divisors_are_1_and_n
       - The filter never contains 0 (guarded by x > 0).
       - x > n is impossible because of the range (n+1).
       - We stay with the current pure-List definition of tau (no Nat.divisors yet).
-      - The proof must remain downstream verification only — no new PGS rules invented here.
+      - The proof must remain downstream verification only, no new PGS rules invented here.
 
     This direction is conceptually the "only-if" half of the prime characterization.
     Once scaffolded and reviewed, it should be implemented incrementally (one sub-obligation at a time)
@@ -250,11 +250,11 @@ theorem tau_gt_two_iff_has_proper_divisor (n : Nat) (h : n > 1) :
 
 /-!
 =============================================================================
-PHASE 2 SCAFFOLDING — Comparison Machinery & Interval Infrastructure
+PHASE 2 SCAFFOLDING. Comparison Machinery & Interval Infrastructure
 Started after Phase 1 gate closure (commit b542c890) and push.
 
 This section follows the mandatory AGENTS.md Phased Code Authoring Procedure:
-- Phase 1 of authoring (this edit): Scaffolding only — detailed comments describing
+- Phase 1 of authoring (this edit): Scaffolding only, detailed comments describing
   intended logic, responsibilities, edge cases, and traceability. No implementation.
 - Mathlib re-introduction is the explicit decision point for Phase 2 (see
   PGS_LEAN_TRANSLATION_PLAN.html §7).
@@ -275,11 +275,11 @@ PGS-first entrypoint: objects → invariants → rule → resolved/unresolved st
 -- These will live in a noncomputable section once the Mathlib dependency
 -- is active after `lake update`.
 --
--- Traceability: PROOF.md lines 129–139 and surrounding divisor normalization text.
+-- Traceability: PROOF.md lines 129 to 139 and surrounding divisor normalization text.
 -- Real-valued `E`, `F`, and placement invariants live in `PGS.Placement`.
 
 /-
-Scaffolding for the Ordered Comparison Lemma (PROOF.md lines 158–182).
+Scaffolding for the Ordered Comparison Lemma (PROOF.md lines 158 to 182).
 
 Statement (to be formalized):
   For any two composite integers a < b, if tau(a) ≤ tau(b), then F(a) > F(b).

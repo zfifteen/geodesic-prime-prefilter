@@ -1,9 +1,9 @@
-# T-002 Report — Chamber-Reset Signature + Lock Transport Carrier Hypothesis (Agent B)
+# T-002 Report: Chamber-Reset Signature + Lock Transport Carrier Hypothesis (Agent B)
 
 **Date**: 2026-05-30  
 **Agent**: B (Chamber-Reset, Lock & Transport Carriers)  
 **Candidate**: Chamber-Reset Signature / Lock / Threat Transport & Carrier Cut (Master Rank #3)  
-**Surface**: 10^12–10^13 d=4 transitions (392 rows) from the authoritative 8192-row retained catalog  
+**Surface**: 10^12 to 10^13 d=4 transitions (392 rows) from the authoritative 8192-row retained catalog  
 **Branch**: predictions  
 **Governing documents**: pgs_predictions_v0.1_contract.html, team_autonomy_plan.html, local Agents.md, canonical code-style AGENTS.md (4-phase followed)
 
@@ -13,7 +13,7 @@
 
 **Observable objects**:
 - The ordered divisor-count field of the finite interior after a known prime p (the current chamber).
-- The GWR-selected integer w (carrier_w) — the leftmost position attaining the global minimum τ inside the chamber.
+- The GWR-selected integer w (carrier_w), the leftmost position attaining the global minimum τ inside the chamber.
 - The chamber-reset state certificate (pgs_chamber_reset_state_certificate): carrier_d (first offset with τ>2 after p), lock_carrier_d (d of the first resolved-survivor that captured a carrier), lower_d_threat_offset (first post-lock offset with 2 < τ < lock_carrier_d), tail_after_reset_offsets (unresolved positions after the reset point), and the derived compact reset_signature.
 - Previous-to-current transport of the above signature and lock/threat bits across consecutive chambers.
 
@@ -44,7 +44,7 @@
 
 ## 3. Status (Measured Result on Exact Regime)
 
-**Measured result** on the deterministic 392-row d=4 transition window 10^12–10^13 (exact subset of the 8192-row 10^12..10^18 retained surface used for the d4_count ordering_carrier_found precedent).
+**Measured result** on the deterministic 392-row d=4 transition window 10^12 to 10^13 (exact subset of the 8192-row 10^12..10^18 retained surface used for the d4_count ordering_carrier_found precedent).
 
 - 392 / 392 chambers produced live certificates (0 explicit unresolved).
 - lock_carrier_d distribution: exclusively 4 (392 occurrences).
@@ -53,7 +53,7 @@
 - Previous-to-current transport: for every linked pair (i>0), the previous_reset_signature exactly equals the current chamber's reset_signature; previous_lock_carrier_d = 4 and previous threat present = True.
 - Tail policy: exactly 2 unresolved positions after the reset point in the observed cases.
 
-This is a **strong, surface-specific measured carrier of reset-signature invariance + mandatory threat activation + fixed tail=2 + perfect previous-to-current transport** under the d=4 current-chamber regime on 10^12–10^13.
+This is a **strong, surface-specific measured carrier of reset-signature invariance + mandatory threat activation + fixed tail=2 + perfect previous-to-current transport** under the d=4 current-chamber regime on 10^12 to 10^13.
 
 Epistemic status: measured result on exact regime (392 transitions, reproducible one-command emission). Not promoted to theorem. No generalization beyond the stated window and d=4 filter.
 
@@ -63,7 +63,7 @@ Epistemic status: measured result on exact regime (392 transitions, reproducible
 
 **First explicit carrier hypothesis for next-chamber reset / boundary behavior (T-002)**:
 
-From the current-chamber divisor-count field (restricted to d=4 transitions) together with the carried previous reset signature under the mod30_prev_gap_exact match discipline on the 10^12–10^13 retained window:
+From the current-chamber divisor-count field (restricted to d=4 transitions) together with the carried previous reset signature under the mod30_prev_gap_exact match discipline on the 10^12 to 10^13 retained window:
 
 - The next chamber's chamber-reset signature is resolved exactly to `carrier_d=4;lock_carrier_d=4;lower_d_threat_present=True;tail_after_reset_count=2`.
 - The previous-to-current transport of the full signature (including lock_carrier_d and threat presence) is resolved exactly (100% of the 391 linked pairs).

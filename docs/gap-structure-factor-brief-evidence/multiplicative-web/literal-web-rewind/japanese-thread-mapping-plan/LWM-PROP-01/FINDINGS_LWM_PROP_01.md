@@ -1,10 +1,10 @@
-# FINDINGS_LWM_PROP_01 — Deterministic Local Propagation (Carry Analog)
+# FINDINGS_LWM_PROP_01: Deterministic Local Propagation (Carry Analog)
 
 **Experiment ID:** LWM-PROP-01  
 **Path:** literal multiplicative-web / thread-triangulation (under rewind contract)  
 **Location:** `docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/japanese-thread-mapping-plan/LWM-PROP-01/`  
 **Baseline:** literal hole-trace flat primary support (from `literal_web_hole_trace.py`)  
-**Status:** COMPLETE — all artifacts frozen
+**Status:** COMPLETE: all artifacts frozen
 
 ---
 
@@ -19,8 +19,8 @@
 - The rule is fully reversible and produced no new candidate offsets.
 
 **Comparison vs baseline (flat primary support only):**
-- Baseline already nominates true offsets at the max tier (4/4 toys; 1–5 trues per ladder rung in the max tier).
-- After deterministic propagation the max tier captured 3–9 trues per ladder rung (increases of +2 to +6 in five cases; 0 change in one).
+- Baseline already nominates true offsets at the max tier (4/4 toys; 1 to 5 trues per ladder rung in the max tier).
+- After deterministic propagation the max tier captured 3 to 9 trues per ladder rung (increases of +2 to +6 in five cases; 0 change in one).
 - Best rank of any true remained 1 (already optimal in baseline). Multiple individual true offsets improved their position in the full descending-support ordering.
 - Emitted max-set size increased only by addition of additional true offsets (purity stayed 100% true).
 - No degradation on any case.
@@ -100,15 +100,15 @@ Mutual reinforcement occurs precisely when two true direct offsets are separated
 All outputs under:
 `/Users/velocityworks/IdeaProjects/prime-gap-structure/docs/gap-structure-factor-brief-evidence/multiplicative-web/literal-web-rewind/japanese-thread-mapping-plan/LWM-PROP-01/`
 
-- `lwm_prop_01_runner.py` — self-contained implementation (exact rule + baseline replica)
-- `output/manifest.json` — run metadata + rule constants
-- `output/LWM_PROP_01_summary.md` — machine-generated aggregate table
-- `output/results.json` — complete per-case data including provenance for every hole
-- `output/augmented_top_holes.jsonl` — every offset that reached max augmented tier across cases
+- `lwm_prop_01_runner.py`, self-contained implementation (exact rule + baseline replica)
+- `output/manifest.json`, run metadata + rule constants
+- `output/LWM_PROP_01_summary.md`, machine-generated aggregate table
+- `output/results.json`, complete per-case data including provenance for every hole
+- `output/augmented_top_holes.jsonl`, every offset that reached max augmented tier across cases
 - Per-case directories (e.g. `output/ladder_01_43x59/`):
-  - `public_nomination.json` — public freeze (kernels, rule description, emitted offsets chosen by augmented, no audit labels in decision fields)
-  - `audit_comparison.json` — true ranks + emitted trues (audit sidecar)
-  - `holes_augmented.jsonl` — sample of holes with full propagation_sources
+  - `public_nomination.json`, public freeze (kernels, rule description, emitted offsets chosen by augmented, no audit labels in decision fields)
+  - `audit_comparison.json`, true ranks + emitted trues (audit sidecar)
+  - `holes_augmented.jsonl`, sample of holes with full propagation_sources
 
 SHA256 / reproducibility: re-run the runner.py with identical CASES list and constants reproduces the outputs exactly (sympy factorint is deterministic for these inputs).
 

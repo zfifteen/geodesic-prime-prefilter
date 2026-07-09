@@ -32,7 +32,7 @@ Codex repeatedly allowed known `p`/`q` to enter measurement logic, computed priv
    After a `PUBLIC_FREEZE_RECORD` for a given `N`:  
    - `PRIVATE_FACTOR_TOUCH_ALLOWED_ONLY_BY_CANONICAL_MEMBERSHIP_CHECKER: true`  
    - The only permitted operation touching `p`, `q`, or derived distances is *direct, unmodified invocation* of one fixed canonical membership-only checker.  
-   - All other files, commands, diagnostics, summaries, visualizations, sidecars, or narrative support — regardless of filename or declared purpose — are forbidden.
+   - All other files, commands, diagnostics, summaries, visualizations, sidecars, or narrative support, regardless of filename or declared purpose, are forbidden.
 
 4. **Canonical Membership Checker (single pinned artifact)**  
    - One fixed source file with expected SHA-256.  

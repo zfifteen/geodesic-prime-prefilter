@@ -74,10 +74,10 @@ This is the most developed *native geometric tool* in the active research surfac
 ## 4. Visual and Interactive Geometry (Rendering Layer)
 - **Row and profile diagrams**: Explicit in explanatory docs; extended in ridge plots (edge-distance histograms, score slices).
 - **Apps**:
-  - `visualizations/apps/prime-pattern-plot-generator/index.html`: Interactive plotter coloring primes, squares (yellow), cubes, even/odd semiprimes, higher tau — a geometric number-line visualization directly relevant to divisor classes and GWR (low-tau points).
+  - `visualizations/apps/prime-pattern-plot-generator/index.html`: Interactive plotter coloring primes, squares (yellow), cubes, even/odd semiprimes, higher tau, a geometric number-line visualization directly relevant to divisor classes and GWR (low-tau points).
   - `visualizations/apps/prime-gap-structure-interactive-mockup/index.html`: Mockup for gap structure (likely rows/profiles/scores).
-- **Output artifacts**: Dozens of .png, .svg in research/*/output/ (decoupling sweeps, ratio vs scale on log axes — geometric scaling; ridge profiles, residue wheels, 2D/3D ridge plots).
-- **visualizations/pgs-math-explainer/**: Multi-scene narrated video with synced visuals — geometric storytelling of the arithmetic.
+- **Output artifacts**: Dozens of .png, .svg in research/*/output/ (decoupling sweeps, ratio vs scale on log axes, geometric scaling; ridge profiles, residue wheels, 2D/3D ridge plots).
+- **visualizations/pgs-math-explainer/**: Multi-scene narrated video with synced visuals, geometric storytelling of the arithmetic.
 - **Assets**: hero images, candidate plots in visualizations/conceptual/.
 
 These are not decorative; they render the 1D row, score landscapes, and class-colored points on the line.
@@ -87,7 +87,7 @@ These are not decorative; they render the 1D row, score landscapes, and class-co
   - This language is not heavily substantiated in core docs yet but aligns with the row + ridge + U_□ above.
 - Status-map and research notes: "local geometry", "chamber reset mechanics, endpoint determinacy, boundary-drop behavior, and related local geometry", "chamber geometry" (in RH-bridge context, now archived).
 - "Gap ridges" as structural features.
-- Square branch in PROOF.md: explicit handling of w = r², distances to P(r²), bounds involving squares — geometric objects (positions of squares on the line).
+- Square branch in PROOF.md: explicit handling of w = r², distances to P(r²), bounds involving squares, geometric objects (positions of squares on the line).
 - Multiplicative aspects of DNI (powers, logs) have natural geometric readings (similarity, scaling, hyperbolic if embedded).
 
 "Zero geometry" appears in downstream RH language but is distinguished from the integer source.

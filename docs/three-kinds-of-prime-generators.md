@@ -13,7 +13,7 @@ This document clarifies the fundamental differences between three distinct appro
 
 **Strengths:**
 - Always returns the mathematically exact p_k for any k (within practical range).
-- No "near miss" — correctness is by construction via the definition of π(x).
+- No "near miss", correctness is by construction via the definition of π(x).
 - General-purpose for any index.
 
 **Weaknesses:**
@@ -40,7 +40,7 @@ This document clarifies the fundamental differences between three distinct appro
 - Excellent when you want a very good candidate quickly and can tolerate "near" rather than exact for arbitrary k.
 
 **Weaknesses:**
-- Off the published grid it does **not** guarantee the exact p_k — only a probable prime near it.
+- Off the published grid it does **not** guarantee the exact p_k: only a probable prime near it.
 - The distance to the true p_k grows as you move away from the calibration points (though the error remains small in relative terms for the scales tested).
 
 **Example performance (this machine):**
@@ -48,7 +48,7 @@ This document clarifies the fundamental differences between three distinct appro
 - k = 1,000,000,000 → ~3 ms (exact via table)
 - Works in low milliseconds even for k with 100+ digits.
 
-## 3. Structural Gap-Chamber Successor (PGS C — this project)
+## 3. Structural Gap-Chamber Successor (PGS C: this project)
 
 **Core primitive:** Given a starting integer `n` (typically a known prime), find the immediate next prime after it using the internal arithmetic structure of the gap.
 
@@ -84,7 +84,7 @@ At ~1.12 × 10^20 it returned "PGS chamber unresolved" with default candidate bo
 |---------------------------|-----------------------------|-----------------------------------|-----------------------------------|
 | Primary operation         | Exact p_k for any k        | Predict probable prime near p_k  | Exact next prime after p         |
 | Exactness for arbitrary k | Always exact               | Only on small grid; else "near"  | N/A (successor only)             |
-| Speed at 1e9–1e10 scale   | 40–150 ms                  | ~3 ms                            | 19–40 ms (successor)             |
+| Speed at 1e9 to 1e10 scale   | 40 to 150 ms                  | ~3 ms                            | 19 to 40 ms (successor)             |
 | Behavior at 10^20+        | Slow / expensive π(x)      | Still fast (analytic)            | Can unresolved with current bounds |
 | Core technique            | Prime counting + search    | Calibrated closed form + refinement | Gap structure + bounded chamber rules |
 | Dependencies in hot path  | None (pure counting)       | MPFR/GMP or gmpy2                | GMP + structural rules           |
@@ -97,7 +97,7 @@ These are not three implementations of the same thing. They are three different 
 - One predicts analytically.
 - One reads local gap structure.
 
-Your PGS generator belongs firmly in the third category. It is not "failing" at being a fast exact indexed finder — it is solving a different, structural problem. This distinction is important both for technical evaluation and for public positioning.
+Your PGS generator belongs firmly in the third category. It is not "failing" at being a fast exact indexed finder, it is solving a different, structural problem. This distinction is important both for technical evaluation and for public positioning.
 
 ---
 

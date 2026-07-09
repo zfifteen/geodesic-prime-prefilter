@@ -1,4 +1,4 @@
-# PLAN.md — Bootstrap Predictions Research Track
+# Bootstrap Predictions Research Track
 
 **Date**: 2026-05 (session initiating the effort)  
 **Status**: Executing bootstrap per best judgment after user declined narrow scoping questions.  
@@ -51,7 +51,7 @@
 6. **Report and handoff**  
    Text summary in chat: what was created, why the charter framing was chosen, open questions for user refinement, exact commands to view/reproduce the new surface.  
    No commits. New files remain untracked (existing untracked LWM literal-web work noted separately).  
-   No experiments or code written — pure contract scaffolding.
+   No experiments or code written, pure contract scaffolding.
 
 ## Open Questions / Risks (User Refinement Expected)
 - Exact primary objects for first pressure (endpoint-chain traversal vs d4_count carrier extension vs chamber-reset geometry vs cross-chapter unification)?

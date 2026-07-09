@@ -1,5 +1,5 @@
 /-
-PGS-RH placement invariants — entry re-export.
+PGS-RH placement invariants, entry re-export.
 
 Proof document: research/pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md
 Falsification: research/pgs-rh-placement-empirics-2026-06/pgs_d4_frac_pos_falsification.py

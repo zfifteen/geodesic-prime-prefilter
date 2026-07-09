@@ -53,7 +53,7 @@ No GRAMMAR*.md at rsa-v2 root; grammar evidence lives in separate artifacts (PGS
 
 **Drift risks:** Reframing the carrier as a statistical model or "on average" predictor; beginning the rule derivation from classical density assumptions instead of the divisor-count field + carried reset signature; promoting finite-surface hit rates to universal theorem without PROOF.md entry; conflating with legacy z_band predictor directory.
 
-### 2. Chamber Reset Carrier Cut / GWR Threat Closure (lock_carrier + lower_d_threat) — Object Elevation Candidate
+### 2. Chamber Reset Carrier Cut / GWR Threat Closure (lock_carrier + lower_d_threat): Object Elevation Candidate
 
 **Exact PGS objects + invariant:** Inside pgs_chamber_reset_state_certificate: carrier_offset / carrier_d (first min-d>2 after p, i.e. GWR w); lock_carrier_offset / lock_carrier_d (first resolved-survivor that captured a carrier); lower_d_threat_offset (first post-lock offset with divisor_count >2 and strictly < lock_carrier_d). The threat forces tail rejection after lock (final_status = REJECTED for offsets > threat); this cut, combined with tail_after_reset_offsets and reset_deadline, closes the chamber or resolves the next reset point deterministically. "No later simpler composite" after w is already proved; the threat supplies the operational cut that realizes it under semiprime-shadow pressure.
 
@@ -62,7 +62,7 @@ No GRAMMAR*.md at rsa-v2 root; grammar evidence lives in separate artifacts (PGS
 - /Users/velocityworks/IdeaProjects/prime-gap-structure/src/c/high-scale-pgs/include/pgs_high_scale.h:55-62 (pgs_certificate_t: tail_after_reset_count, carrier_offset, carrier_d, lock_carrier_offset, lock_carrier_d, lower_d_threat_offset).  
 - /Users/velocityworks/IdeaProjects/prime-gap-structure/src/c/high-scale-pgs/src/pgs_chamber.c:17-23 (candidate_state_t mirroring carriers), 26+ (certificate construction).  
 - /Users/velocityworks/IdeaProjects/prime-gap-structure/research/00-index/OBJECT_ELEVATION_PROCESS.md:22 ("The carrier/lock_carrier/lower_d_threat logic inside pgs_chamber_reset_state_certificate meets all four triggers and is the first required candidate"), 17-22 (triggers: >10% chambers, multiple probes, difference in unresolved rate, Pressure Track mismatch).  
-- /Users/velocityworks/IdeaProjects/prime-gap-structure/FRAME_GOVERNANCE_REVIEW.md:19 (exact cites to python 48–95 and C header 56–60; "performs the actual recovery work when semiprime-shadow structures appear. This logic is load-bearing in production. It has no dedicated research card, no named rule, and no entry in pgs-unsolved-problems/"), 25 (links to chain-horizon question figures 56.63% at 10^15 / 58.00% at 10^18; carrier-mediated cut was the working solution never elevated).  
+- /Users/velocityworks/IdeaProjects/prime-gap-structure/FRAME_GOVERNANCE_REVIEW.md:19 (exact cites to python 48 to 95 and C header 56 to 60; "performs the actual recovery work when semiprime-shadow structures appear. This logic is load-bearing in production. It has no dedicated research card, no named rule, and no entry in pgs-unsolved-problems/"), 25 (links to chain-horizon question figures 56.63% at 10^15 / 58.00% at 10^18; carrier-mediated cut was the working solution never elevated).  
 - /Users/velocityworks/IdeaProjects/prime-gap-structure/research/00-index/TWO_TRACK_GOVERNANCE.md:80 (first Pressure Track exercise on this mechanism).  
 - /Users/velocityworks/IdeaProjects/prime-gap-structure/research/06-cryptology-rsa/experiments/live-solver/rsa-v2/output/ (survivor/inference rows contain the fields; e.g. coordinate_start... jsonl examples with "carrier_w", "reset_signature", "tail_after_reset_offsets", "lower_d_threat_offset": null in calibration rows).  
 
@@ -169,7 +169,7 @@ No GRAMMAR*.md at rsa-v2 root; grammar evidence lives in separate artifacts (PGS
 
 **Drift risks:** Classical analytic framing of the bound; treating the carried signature as a statistical feature rather than deterministic carrier.
 
-### 8–11. Additional Boundary / Reset / Reciprocal Surfaces in pgs-unsolved-problems/ (Falsification Regimes)
+### 8 to 11. Additional Boundary / Reset / Reciprocal Surfaces in pgs-unsolved-problems/ (Falsification Regimes)
 
 **Gilbreath Reset-Stop-Wall Classification (reset stop walls as chamber-reset boundary phenomena):**  
 Objects: reset stop walls, classification via PGS chamber resets / carrier state.  
@@ -211,10 +211,10 @@ Test: Extend the existing test_state_budget_divisor_carrier_sweep.py to the new 
 ## Top 5 Ranked Opportunities
 
 **Rank 1: Chamber Reset Carrier Cut / GWR Threat Closure (Candidate 2)**  
-Highest leverage because it is already load-bearing production logic (python lines 48–95 + C struct 56–60), responsible for the generator's near-zero unresolved rate under shadow pressure, and is explicitly called out by FRAME_GOVERNANCE_REVIEW.md and OBJECT_ELEVATION_PROCESS.md as the first required elevation target. Elevating it converts an unnamed detail into a named PGS object with invariants, directly addressing the operational solution to the chain-horizon-closure question (docs/unanswered-questions/chain-horizon-closure/00_question.md) while supplying a concrete carrier for next-reset location and tail behavior. All other carriers can be stated in terms of it. Citations across generator, governance, and rsa-v2 data are exact and recent (2026-05).
+Highest leverage because it is already load-bearing production logic (python lines 48 to 95 + C struct 56 to 60), responsible for the generator's near-zero unresolved rate under shadow pressure, and is explicitly called out by FRAME_GOVERNANCE_REVIEW.md and OBJECT_ELEVATION_PROCESS.md as the first required elevation target. Elevating it converts an unnamed detail into a named PGS object with invariants, directly addressing the operational solution to the chain-horizon-closure question (docs/unanswered-questions/chain-horizon-closure/00_question.md) while supplying a concrete carrier for next-reset location and tail behavior. All other carriers can be stated in terms of it. Citations across generator, governance, and rsa-v2 data are exact and recent (2026-05).
 
 **Rank 2: w-Position Carrier from d4_count + Carried Reset Signature (Candidate 1)**  
-The contract's own "Recommended First Pick (Minimal Executable Path)". Smallest delta from existing proved GWR + measured d4 precedent + generator emission (simple_pgs_generator.py:142). Uses the exact retained-surface + match-mode + held-out protocol already validated on 10^12..10^18. Delivers immediate forward resolution of the next selected integer (core PGS object) and is the natural unification point for Families 1–4. Lowest implementation risk, highest publishable output velocity.
+The contract's own "Recommended First Pick (Minimal Executable Path)". Smallest delta from existing proved GWR + measured d4 precedent + generator emission (simple_pgs_generator.py:142). Uses the exact retained-surface + match-mode + held-out protocol already validated on 10^12..10^18. Delivers immediate forward resolution of the next selected integer (core PGS object) and is the natural unification point for Families 1 to 4. Lowest implementation risk, highest publishable output velocity.
 
 **Rank 3: Reciprocal Deadline-Signature Correction + Transported Carrier_w Overshoot (Candidates 3 + 5)**  
 The strongest existing concrete deterministic resolver across modulus links (rsa-v2/ALGORITHM.md, PGS_CERTIFICATE.md, STEP2_TAIL_AND_CARRIER_TRANSPORT_ANALYSIS.md with exact differential overshoot data). Embodies the full cryptology contract frame (research/06-cryptology-rsa/README.md:27). The STEP2 transported-carrier observation shows that certificate-internal PGS fields (carrier_w, tail) already carry predictive power when reciprocally transported. High value for both RSA-scale structural certificates and ordinary gap cross-chamber modulus-link residuals. Falsifiable on public ladder + retained surfaces with zero classical search.
@@ -222,7 +222,7 @@ The strongest existing concrete deterministic resolver across modulus links (rsa
 **Rank 4: Oriented Multi-Step Endpoint-Chain Traversal + Unified Recursive Skeleton (Candidate 4)**  
 The natural generalization that turns single reciprocal corrections into full chain resolution. RECURSIVE_ENDPOINT_CHAIN_DESIGN.md gives the exact latent PGS object inventory and scale-independent skeleton required. Current runner (OECC_LINEAR_V1) is correct but non-uniform; completing the recursive form yields a carrier law for arbitrary-length future endpoint sequences. Directly supports Predictions-track open items on multi-step closure (16-predictions/index.html:134).
 
-**Rank 5: Boundary-Drop Promotion Rule + Supporting Unsolved-Problems Falsification Surfaces (Candidates 6 + 8–11)**  
+**Rank 5: Boundary-Drop Promotion Rule + Supporting Unsolved-Problems Falsification Surfaces (Candidates 6 + 8 to 11)**  
 The endpoint-determinacy probe supplies a clean, narrow hypothesis (N vs N-1 floor behavior on already-resolved reciprocal cells) that is immediately testable against live rsa-v2 survivors. The full set of pgs-unsolved-problems/ reset/boundary probes (gilbreath reset-stop-wall, legendre residual-endpoint + NLSC-deadline, higher-tau reciprocal blockers, brocard half-wall, polignac lag2 boundaries) constitute independent, high-quality falsification regimes for any carrier law proposed on chamber-reset signatures, transported endpoints, or reciprocal residuals. Elevating or refuting on these surfaces protects the Predictions track from over-generalization while expanding the measured evidence base.
 
 ---

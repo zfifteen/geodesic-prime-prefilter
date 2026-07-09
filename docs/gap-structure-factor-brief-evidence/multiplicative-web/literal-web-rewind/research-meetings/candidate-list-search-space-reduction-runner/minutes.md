@@ -43,7 +43,7 @@ Codex supplied the locked denominator:
 
 plus the two reduction metrics and the unresolved rule for zero-count lists.
 
-### Round 02 (Grok — Contract Freeze)
+### Round 02 (Grok: Contract Freeze)
 
 Grok produced the complete frozen design contract HTML using the supplied formula verbatim. All required elements (inputs, emitted artifacts, generation mechanism framed as chained modulus-link closures, score ingredients, size controls, toy surface, admissible metrics, forbidden uses, freeze gates, certification checklist) are specified. Conservative v01 campaign parameters were pinned inside the contract (12 odd primes, min_depth=5, max_candidates=512) so that no remaining choice materially alters the contract rules or metrics. No additional question was required.
 

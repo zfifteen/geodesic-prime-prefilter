@@ -1,4 +1,4 @@
-# Super Sleuth Scientific Detective Agent Team — Manifest
+# Super Sleuth Scientific Detective Agent Team: Manifest
 
 **Team name:** Super Sleuth Scientific Detective Agent Team  
 **Mission:** Independent forensic review of Remainder Research Super Team evidence  

@@ -1,6 +1,6 @@
-**Recommendation — Run the least-factor maximum mining experiment now and use its empirical maxima to accept or reject each LLM proposal; do not change `chain_horizon_closure` until that data is in hand.**
+**Recommendation. Run the least-factor maximum mining experiment now and use its empirical maxima to accept or reject each LLM proposal; do not change `chain_horizon_closure` until that data is in hand.**
 
-### Quick verdict (1–2 sentences)
+### Quick verdict (1 to 2 sentences)
 **The single decisive step is an empirical least-factor maximum sweep** (stratified by input prime/gap type, scales $10^{12}\!-\!10^{18}$) that records the *maximum* least factor among false chain nodes per input prime. If that maximum admits a PGS‑visible bound $\ll\sqrt{q}$, implement the corresponding `H(p,s0,chain_state)`; otherwise accept that deterministic divisor exhaustion is necessary.
 
 ---

@@ -28,7 +28,7 @@
   </defs>
   <rect class="bg" width="1600" height="1580"/>
   <text class="ink h1" x="72" y="68">Derived Half-Coefficient (F18-001)</text>
-  <text class="muted small" x="72" y="108">0.5 in the GWR bound is proved from divisor arithmetic — not chosen.</text>
+  <text class="muted small" x="72" y="108">0.5 in the GWR bound is proved from divisor arithmetic, not chosen.</text>
   <rect class="badge" x="1180" y="36" width="348" height="44" rx="8"/><text class="badge-t" x="1204" y="66">PROVED · F18-001</text>
   <rect class="gap" x="72" y="140" width="1456" height="230"/>
   <text class="ink h2" x="108" y="186">1. Prime gap interior</text>

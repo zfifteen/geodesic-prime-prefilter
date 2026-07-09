@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Workstream D – Focused Weak-Motif Coverage Miner (Reproducer for PG-090..PG-097)
+Workstream D  to  Focused Weak-Motif Coverage Miner (Reproducer for PG-090..PG-097)
 
 This script reproduces the exact 8 rules (PG-090 through PG-097) that were added
 during the 2026-05-22 Workstream D rule expansion.
@@ -35,7 +35,7 @@ from pathlib import Path
 from typing import Any
 
 # ---------------------------------------------------------------------------
-# Configuration – exact surfaces and families used for PG-090..PG-097
+# Configuration  to  exact surfaces and families used for PG-090..PG-097
 # ---------------------------------------------------------------------------
 
 # Robust path resolution (same style as public_motif_derivation.py)
@@ -264,7 +264,7 @@ def run_miner() -> list[dict[str, Any]]:
 
 if __name__ == "__main__":
     rules = run_miner()
-    print("\n=== Workstream D – Reproducible Rules (PG-090..PG-097) ===")
+    print("\n=== Workstream D  to  Reproducible Rules (PG-090..PG-097) ===")
     for r in rules:
         print(r)
     print(f"\nTotal new rules: {len(rules)}")

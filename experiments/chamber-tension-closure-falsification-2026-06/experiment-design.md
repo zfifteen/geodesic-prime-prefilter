@@ -1,9 +1,9 @@
 # Experiment Design: Falsifying H<sub>CTC</sub> via Forward Chamber-Closure Probe
 
 **Date:** 2026-06-19  
-**Revision:** 4 (critical-defect loop — closed)
+**Revision:** 4 (critical-defect loop: closed)
 **Hypothesis artifact:** `research/02-gwr-dni/docs/chamber_tension_closure_hypothesis/index.html`  
-**Status:** Pre-specified design — implementation not yet in this folder  
+**Status:** Pre-specified design: implementation not yet in this folder  
 **PGS frame:** objects → invariants → rule → resolved / falsified / unresolved
 
 ---
@@ -22,7 +22,7 @@
 
 | Issue | Severity | Finding | Revision |
 | --- | --- | --- | --- |
-| **F0 negative control broken** | Critical | Retired F2a as F0 matches `q_ref` on **≈48.5%** of gaps (`8 729 / 17 979`, `p < 200 000`) — often when the first wheel-open offset after lock **is** `q`. Cannot expect `match_f0 = 0%`. | Replace F0 with **`q_f0 = p + lock_carrier_offset`** (GWR-offset confound; **0%** match on same surface). |
+| **F0 negative control broken** | Critical | Retired F2a as F0 matches `q_ref` on **≈48.5%** of gaps (`8 729 / 17 979`, `p < 200 000`): often when the first wheel-open offset after lock **is** `q`. Cannot expect `match_f0 = 0%`. | Replace F0 with **`q_f0 = p + lock_carrier_offset`** (GWR-offset confound; **0%** match on same surface). |
 | **Tier B is syntactic** | Major | F2-RX is logically equivalent to F1 (`not (τ>2)` ⟺ `τ≤2` for integer τ). Pilot: **0 mismatches** vs F1 on `p < 20 000`. Tier B pass is **pre-registered expected**; it does not substantively test chamber-tension forcing. | Reframe tier B as **notational independence check**, not L<sub>FCL</sub> evidence. |
 | **Tier C estimand wrong** | Critical | Existing composite-exclusion probe on `11..10 000`, `B=64`: `unique_survivor_count=1225` but **`unique_resolved_survivor_count=0`** and **`no_unique_boundary_count=1225`** (`composite_exclusion_boundary_probe.md`). Survivor collapse ≠ resolved closure. | Tier C primary estimand → **`unique_resolved_survivor_count`**; pre-register **unresolved** on default rule set. |
 | **Decision-offset cost** | Minor | Full scan `B=1..gap` per gap is **O(Σ gap) ~ O(n log n)**; costly at `10^6`. | Sample **decision_offset** on fixed gap buckets + all gaps with `gap > 64`. |
@@ -32,10 +32,10 @@
 
 | Issue | Severity | Finding | Revision |
 | --- | --- | --- | --- |
-| **Forbidden-dependency field hallucinated** | Critical | `forbidden_dependency_status` is **not** in probe summary JSON. AST gate on the whole probe file reports **3 violations** (`sympy` / `primerange` in `label_offsets` — audit-only). Expecting `violations = 0` on the wrapper would false-fail. | Tier C gate runs on **`eliminate_candidates` + `classify_candidate` AST slice only**; label/audit functions excluded. Wrapper sympy documented as audit-only. |
+| **Forbidden-dependency field hallucinated** | Critical | `forbidden_dependency_status` is **not** in probe summary JSON. AST gate on the whole probe file reports **3 violations** (`sympy` / `primerange` in `label_offsets`: audit-only). Expecting `violations = 0` on the wrapper would false-fail. | Tier C gate runs on **`eliminate_candidates` + `classify_candidate` AST slice only**; label/audit functions excluded. Wrapper sympy documented as audit-only. |
 | **F0 coupled to resolution semantics** | Critical | `lock_carrier_offset` is defined only after first `RESOLVED_SURVIVOR` (Rule X resolution path). F0 was not a clean negative control independent of selection machinery. | F0 now uses **`gwr_offset`** = first offset achieving running minimum `τ>2` in prefix (pilot **0%** match, `p < 200k`). |
 | **Tier C ≠ L<sub>FCL</sub> State(p)** | Critical | Tier C uses **bounded composite witnesses**, not full divisor-count chamber state (`B(I)`, Rule X reset). It tests an **adjacent** exclusion path, not the hypothesis artifact's `State(p, prefix)`. | Tier C relabeled **adjacent closure path**; primary Rule X substantive target stays tiers A/B + prefix-forcing metrics. |
-| **Per-gap / summary integration** | Critical | Per-gap table listed `f2excl_*` fields, but C1-EXCL is **anchor-level** output from a separate script — not mergeable per gap without a join key. | Split artifacts: `output/R2/summary.json` (gap probe) and `output/C1-EXCL/composite_exclusion_boundary_probe_summary.json`. `summarize_probe.py` ingests both. |
+| **Per-gap / summary integration** | Critical | Per-gap table listed `f2excl_*` fields, but C1-EXCL is **anchor-level** output from a separate script: not mergeable per gap without a join key. | Split artifacts: `output/R2/summary.json` (gap probe) and `output/C1-EXCL/composite_exclusion_boundary_probe_summary.json`. `summarize_probe.py` ingests both. |
 | **Objective wording stale** | Major | Objective still said “unique survivor” not “resolved-unique”. | Fixed in objective list. |
 
 **Validity verdict (rev 4):** No remaining **critical** defects under the stated scope. Substantive H<sub>CTC</sub> closure remains **pre-registered unresolved** (tier C baseline `unique_resolved_survivor_count = 0`; prefix forcing at `B < gap` always `None` on pilot).
@@ -56,7 +56,7 @@ selector.
 | --- | --- | --- | --- |
 | **H<sub>CTC</sub>-A** (audit separation) | Production chamber-reset Rule X returns the proved next prime; `τ(q)=2` is always true post-hoc. | F1 + V | `q_f1 ≠ q_ref` on R2, or `τ(q_f1) ≠ 2` |
 | **H<sub>CTC</sub>-B** (notational independence) | Rule X can be source-coded with **no literal** `τ==2` / `τ≤2` selection branches; equivalent surrogate uses only `τ>2` composite witnesses. **Expected to pass** (syntactic refactor). | F2-RX + V | `q_f2rx ≠ q_ref`, forbidden-branch guard trips, or F2-RX ≠ F1 |
-| **H<sub>CTC</sub>-C** (adjacent exclusion closure) | Bounded-witness composite-exclusion yields **`unique_resolved_survivor`** matching the post-hoc label — **not** the Rule X `State(p, prefix)` from L<sub>FCL</sub>. | F2-EXCL + V | `true_boundary_rejected > 0`; default rule set **0 / 1225** resolved-unique (reproduced 2026-06-19) |
+| **H<sub>CTC</sub>-C** (adjacent exclusion closure) | Bounded-witness composite-exclusion yields **`unique_resolved_survivor`** matching the post-hoc label: **not** the Rule X `State(p, prefix)` from L<sub>FCL</sub>. | F2-EXCL + V | `true_boundary_rejected > 0`; default rule set **0 / 1225** resolved-unique (reproduced 2026-06-19) |
 
 **L<sub>FCL</sub> (forward closure law)** remains the unresolved proof target. This
 experiment supplies finite-surface evidence for which tier survives, not a theorem.
@@ -69,7 +69,7 @@ On pinned regimes, decide:
 
 1. Does production Rule X match the proved next-prime rule (tier A)?
 2. Does an equivalent Rule X isomorph select `q` without `τ==2` / `τ≤2` branches (tier B)?
-3. Does composite-exclusion produce any **resolved-unique** survivor at the audited label (tier C — adjacent path)?
+3. Does composite-exclusion produce any **resolved-unique** survivor at the audited label (tier C: adjacent path)?
 4. Does the negative control F0 fail on every gap (harness sanity)?
 5. Does tier C show any **resolved-unique** exclusion closure on the stated rule set (likely unresolved)?
 
@@ -124,7 +124,7 @@ Only R computes `q_ref`. V runs after selection.
 | `τ(n) == 2` or `τ(n) ≤ 2` as **endpoint selection** branch | **Forbidden** |
 | `d(n) = 2` / prime-marker identity in F2-EXCL elimination | **Forbidden** (per composite-exclusion contract) |
 
-### F0 — Negative control (GWR-offset confound)
+### F0: Negative control (GWR-offset confound)
 
 Deliberately wrong law: predict the endpoint equals the **running GWR carrier offset**
 (leftmost minimum-`τ` position in the prefix), not the chamber-reset survivor.
@@ -144,13 +144,13 @@ Pilot `p < 200 000`, `B = gap`: **`match_f0 = 0%`** (17 979 mismatches).
 **Retired controls (do not use):**
 
 - **F2a** (first wheel-open after lock): ≈48.5% accidental match.
-- **`p + lock_carrier_offset`**: also 0% on pilot, but couples to resolution semantics — replaced by `gwr_offset`.
+- **`p + lock_carrier_offset`**: also 0% on pilot, but couples to resolution semantics, replaced by `gwr_offset`.
 
-### F1 — Production Rule X (tier A)
+### F1: Production Rule X (tier A)
 
 Call `resolve_q(p, B)` from `simple_pgs_generator.py`. No modification.
 
-### F2-RX — Rule X isomorph without `τ==2` selection (tier B)
+### F2-RX: Rule X isomorph without `τ==2` selection (tier B)
 
 Reimplement `pgs_chamber_reset_state_certificate` in the experiment script with
 identical state machine, but replace resolved-survivor classification:
@@ -175,7 +175,7 @@ def composite_witness(tau: int) -> bool:
 Forbidden-branch audit uses **AST comparison** (not substring scan): reject
 `ast.Compare` nodes testing `τ == 2`, `τ <= 2`, `τ < 3`, etc., in selection code;
 allow `τ > 2` composite-witness checks only. The `unresolved_count` increment uses
-`else:` on the `composite_witness` branch — semantically `τ≤2`, syntactically allowed.
+`else:` on the `composite_witness` branch, semantically `τ≤2`, syntactically allowed.
 
 **Pre-registered expectation:** `match_f2rx = match_f1 = 100%` on R2. Tier B passing
 confirms notational refactor only; it is **not** evidence that chamber tension forces
@@ -184,7 +184,7 @@ confirms notational refactor only; it is **not** evidence that chamber tension f
 All other production fields preserved: wheel-open mask, GWR carrier update, lock
 carrier, threat ceiling, post-threat rejection, first resolved survivor output.
 
-### F2-EXCL — Composite exclusion (tier C)
+### F2-EXCL: Composite exclusion (tier C)
 
 Invoke the existing offline probe:
 
@@ -203,7 +203,7 @@ Record per anchor from probe summary:
 - `unique_survivor_count` / `unique_resolved_survivor_count` (**primary tier C estimand**)
 - `no_unique_boundary_count`
 - `true_boundary_rejected_count`
-- `unique_survivor_match_rate` (secondary — label match when one survivor remains)
+- `unique_survivor_match_rate` (secondary, label match when one survivor remains)
 
 **Forbidden-dependency audit (tier C):** run `forbidden_dependency_gate.py` AST scan on
 the bodies of `classify_candidate` and `eliminate_candidates` only. The probe wrapper
@@ -214,7 +214,7 @@ Classical label attachment happens **after** elimination (probe contract: `elimi
 
 **Phase C1:** invoke existing probe unchanged (reproduce documented surface).
 
-**Phase C2 (optional):** per-gap `candidate_bound = gap` wrapper — requires new
+**Phase C2 (optional):** per-gap `candidate_bound = gap` wrapper: requires new
 script; not required for first falsification signal.
 
 **Pre-registered baseline** (reproduced 2026-06-19, `11..10 000`, `B=64`):
@@ -339,8 +339,8 @@ python3 experiments/chamber-tension-closure-falsification-2026-06/summarize_prob
 | --- | --- |
 | **Supported (staged)** | `unique_resolved_survivor_count > 0` on C1-EXCL with `true_boundary_rejected_count = 0` and label match on those rows |
 | **Falsified** | `true_boundary_rejected_count > 0` |
-| **Unresolved (pre-registered default)** | `unique_resolved_survivor_count = 0` with `no_unique_boundary_count` dominating — current exclusion rule set does not close chamber (documented: **0 / 1225** on `11..10 000`) |
-| **Secondary** | `unique_survivor_match_rate ≈ 0.81` with survivors but unresolved alternatives — informative, not closure |
+| **Unresolved (pre-registered default)** | `unique_resolved_survivor_count = 0` with `no_unique_boundary_count` dominating: current exclusion rule set does not close chamber (documented: **0 / 1225** on `11..10 000`) |
+| **Secondary** | `unique_survivor_match_rate ≈ 0.81` with survivors but unresolved alternatives: informative, not closure |
 
 ### Parent H<sub>CTC</sub> aggregation (FINDINGS.md)
 
@@ -348,7 +348,7 @@ python3 experiments/chamber-tension-closure-falsification-2026-06/summarize_prob
 | --- | --- |
 | **Tier A supported** | Chamber-reset implementation matches proved next prime; audit signature holds. |
 | **Tier B expected** | Notational independence only (pre-registered pass). |
-| **Tier C supported** | `unique_resolved_survivor_count > 0` on C1-EXCL — first evidence for **adjacent** exclusion closure (not Rule X `State`). |
+| **Tier C supported** | `unique_resolved_survivor_count > 0` on C1-EXCL: first evidence for **adjacent** exclusion closure (not Rule X `State`). |
 | **H<sub>CTC</sub> substantively falsified** | Tier C rejects true boundary (`true_boundary_rejected_count > 0`). Tier B failure = implementation bug. |
 | **Unresolved (default expectation)** | Tier C baseline `0 / 1225` resolved-unique; prefix forcing at `B < gap` absent on pilot. **Parent H<sub>CTC</sub> substantive claim remains open.** |
 
@@ -402,7 +402,7 @@ experiments/chamber-tension-closure-falsification-2026-06/
 
 | Failure mode | Mitigation |
 | --- | --- |
-| F0 accidentally matches | Halt — harness bug (pilot: 0 matches on `p < 200k`) |
+| F0 accidentally matches | Halt, harness bug (pilot: 0 matches on `p < 200k`) |
 | Tier B pass misread as H<sub>CTC</sub> proof | FINDINGS labels tier B as notational only |
 | Tier C survivor=1 misread as closure | Report `unique_resolved_survivor_count` prominently |
 | F2-RX drifts from production | Diff test on small gap table; must match F1 on R2 |
@@ -416,18 +416,18 @@ experiments/chamber-tension-closure-falsification-2026-06/
 
 ## Implementation Roadmap
 
-1. **`forward_chamber_closure_probe.py`** — sieve, R, F0, F1 import, F2-RX, decision offsets.
-2. **`test_forward_closure.py`** — F0 (`gwr_offset`) fails on `p=73`; F2-RX ≡ F1; AST forbidden-branch scan; tier C elimination-slice gate clean.
-3. **Run R2** — primary tier A/B decision.
-4. **Run R1** — bound-miss profile.
-5. **`summarize_probe.py` + `FINDINGS.md`** — tier-separated conclusions.
-6. **Run C1-EXCL** — reproduce composite-exclusion baseline; expect `unique_resolved_survivor_count=0`.
-7. **Optional R3** — F1 only, decade parity.
-8. **Optional C2** — per-gap bound wrapper if tier C needs extension.
+1. **`forward_chamber_closure_probe.py`**: sieve, R, F0, F1 import, F2-RX, decision offsets.
+2. **`test_forward_closure.py`**: F0 (`gwr_offset`) fails on `p=73`; F2-RX ≡ F1; AST forbidden-branch scan; tier C elimination-slice gate clean.
+3. **Run R2**: primary tier A/B decision.
+4. **Run R1**: bound-miss profile.
+5. **`summarize_probe.py` + `FINDINGS.md`**: tier-separated conclusions.
+6. **Run C1-EXCL**: reproduce composite-exclusion baseline; expect `unique_resolved_survivor_count=0`.
+7. **Optional R3**: F1 only, decade parity.
+8. **Optional C2**: per-gap bound wrapper if tier C needs extension.
 
 **Successor experiment (L<sub>FCL</sub> decisive probe):**
-`experiments/prefix-state-lfcl-decisive-2026-06/experiment-design.md` — prefix-state
-forced-closure laws L0–L4 with semantic-independence audit.
+`experiments/prefix-state-lfcl-decisive-2026-06/experiment-design.md`: prefix-state
+forced-closure laws L0 to L4 with semantic-independence audit.
 
 ---
 

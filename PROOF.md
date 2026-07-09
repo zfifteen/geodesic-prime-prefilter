@@ -742,8 +742,7 @@ closure. Listed in [Theorem Stack Summary](#theorem-stack-summary) and
 Let $G$ be a prime gap with interior $I = (p, q)$. Let $w \in I$ be the leftmost minimum divisor-count carrier (the GWR winner). Let $R(w)$ be the remainder vector of $w$ modulo the primorial bases $(2, 3, 5, 7, 30, 210, 2310)$. 
 If $R(w)$ contains 4 or more zeros, then the gap size is $g=2$, and the next integer $w+1$ is identically the prime $q$.
 
-### Proof:
-1. **Modular Implication of 4+ Zeros:**
+### 1. **Modular Implication of 4+ Zeros:**
    The base primorial moduli are $2, 3, 5, 7$. The composite moduli are $30, 210, 2310$.
    To accumulate 4 or more zeros in this specific vector, $w$ must be congruent to $0 \pmod{30}$.
 

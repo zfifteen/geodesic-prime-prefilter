@@ -1,13 +1,13 @@
 # Square-Tail Obstruction Word Target
 
-## Status — RESOLVED 2026-07-05
+## Status: RESOLVED 2026-07-05
 
 The square branch is **proved** in [PROOF.md](../../../PROOF.md) §Prime-Square
 Proximity Theorem. The obstruction-word research below is retained as historical
 context for how the proof route was explored.
 
 The target was not a probabilistic claim about prime density. It was a
-deterministic obstruction-elimination problem — now closed.
+deterministic obstruction-elimination problem, now closed.
 
 ## PGS Object
 

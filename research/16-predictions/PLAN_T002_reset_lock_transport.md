@@ -1,9 +1,9 @@
-# PLAN — T-002: Chamber-Reset Signature + Lock Transport Carrier Hypothesis (Agent B)
+# PLAN: T-002: Chamber-Reset Signature + Lock Transport Carrier Hypothesis (Agent B)
 
 **Date created**: 2026-05-30  
 **Branch**: predictions  
 **Governing contracts**: pgs_predictions_v0.1_contract.html, team_autonomy_plan.html, full AGENTS.md (canonical + local), PROOF.md (for any theorem claims)  
-**Master Catalogue target**: Rank #3 — Chamber-Reset Signature / Lock / Threat Transport & Carrier Cut  
+**Master Catalogue target**: Rank #3: Chamber-Reset Signature / Lock / Threat Transport & Carrier Cut  
 **Task file**: research/16-predictions/tasks/T-002-reset-lock-transport.md  
 
 ## Purpose (PGS-First Frame)
@@ -34,23 +34,23 @@ All language: deterministic only. Every claim labeled with exact epistemic statu
    Document full dependency tree, risks, validation gates, 4-phase code authoring for any new script, reproduction commands, exact artifacts to produce.  
    This PLAN is the contract; execution follows it exactly with FS artifacts for every handoff.
 
-3. **Phase 1 — Scaffolding Only (Mandatory per canonical AGENTS.md §11)**  
+3. **Phase 1. Scaffolding Only (Mandatory per canonical AGENTS.md §11)**  
    - Create new file research/16-predictions/scripts/reset_lock_transport_sidecar_emitter.py (modeled on audited w_offset_carrier_probe.py + state_budget_divisor_carrier_sweep.py transition logic for hygiene).  
    - Full signatures + type annotations for every function.  
-   - Detailed docstrings and inline comments (conversational technical English prose per §10) describing exact responsibilities, control flow, edge cases, PGS object mappings, state-separation invariants, and why each piece exists — **zero executable implementation logic** (pass, NotImplemented, or comment placeholders only in bodies).  
+   - Detailed docstrings and inline comments (conversational technical English prose per §10) describing exact responsibilities, control flow, edge cases, PGS object mappings, state-separation invariants, and why each piece exists : **zero executable implementation logic** (pass, NotImplemented, or comment placeholders only in bodies).  
    - CLI entrypoint, CSV/JSONL writers, certificate wrapper (thin), signature builder, transition augmenter, held-out friendly structure.  
    - No changes to any existing catalog builder or core generator. Sidecar-only.  
    - Include reproduction comment block at top.  
    - Commit the skeleton as a distinct git commit labeled "T-002 Phase 1 scaffolding: reset/lock sidecar emitter skeleton (comments only)".
 
-4. **Phase 2 — Explicit Skeleton Review (Mandatory)**  
+4. **Phase 2. Explicit Skeleton Review (Mandatory)**  
    - Read the full skeleton file.  
    - Walk every function comment for logical consistency, missing PGS invariants, boundary errors, drift risk, alignment with T-002 objective and Rank #3 recommended action.  
    - Verify: emission path calls only pgs_chamber_reset_state_certificate (pure PGS-native, no classical); output is strictly sidecar (no mutation of retained details.csv); match-mode reuse from audited code; explicit "unresolved" paths documented.  
    - Revise comments/structure if gaps found; record review findings as comment block or separate audit note in docs/.  
    - Only after documented self-review pass: proceed.
 
-5. **Phase 3 — Incremental Implementation + Immediate Test + Commit (Mandatory)**  
+5. **Phase 3. Incremental Implementation + Immediate Test + Commit (Mandatory)**  
    Implement **one small unit at a time**:
    - Unit A: thin deterministic wrapper around pgs_chamber_reset_state_certificate + reset_signature compact encoder (string of form "carrier_d=4;lock_carrier_d=4;lower_d_threat_present=True;tail_after_reset_count=3"). Immediate pytest or inline smoke test calling on known small p values (e.g., 3,11,101). Commit.
    - Unit B: detail-row loader + per-chamber p extraction (reusing phase_probe logic for hygiene). Test. Commit.
@@ -80,7 +80,7 @@ All language: deterministic only. Every claim labeled with exact epistemic statu
    - Update TEAM_STATUS.md : set T-002 status to "Report delivered; awaiting Agent D synthesis after gates"; list new artifacts (report path, sidecar CSV path, PLAN, script). Note "synthesis request via FS update".  
    - No direct messages; file system is the handoff.
 
-9. **Phase 4 — Full Structured Self-Review Against Code Review Checklist**  
+9. **Phase 4. Full Structured Self-Review Against Code Review Checklist**  
    - After all code + report, run the canonical checklist (prose style, structure, testing, edges, correctness, lint/types, docs, conventions, AGENTS adherence including 4-phase execution).  
    - Fix every non-affirmative item.  
    - Append signed self-review summary (with date) to the report or a docs/ note.  

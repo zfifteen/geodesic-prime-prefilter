@@ -13,7 +13,7 @@ No falsification found in this adversarial set under the modeled assumptions.
 
 This test uses bounded estimates because full interior divisor data is unavailable at these scales. It is therefore not a complete falsification test, but it is a strong stress test of the local correction idea.
 
-The live target (Chamber-Deconvolved Reciprocal Balance Lemma — all three obligations) remains fully open.
+The live target (Chamber-Deconvolved Reciprocal Balance Lemma, all three obligations) remains fully open.
 No obligation discharged. Finite measured diagnostic on extreme chambers using available record data only.
 
 CSV: {csv_out}

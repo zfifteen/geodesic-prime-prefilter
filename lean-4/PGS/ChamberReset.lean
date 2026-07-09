@@ -63,7 +63,7 @@ theorem audit_demoted_tau2_of_demoted_signature {c : ReplayCertificate}
     (h : DemotedZeroExcessSignature c) : tau c.q = 2 :=
   audit_demoted_tau2 c.q h.qGtOne h.nonCompositeWitness
 
-/-! ## Rule X state machine (Phase 4 — open obligations) -/
+/-! ## Rule X state machine (Phase 4: open obligations) -/
 
 def wheelOpenResidues : List Nat :=
   [1, 7, 11, 13, 17, 19, 23, 29]

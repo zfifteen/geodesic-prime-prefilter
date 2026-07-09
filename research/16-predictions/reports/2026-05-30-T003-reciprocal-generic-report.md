@@ -1,9 +1,9 @@
-# T-003 Report — Reciprocal Deadline-Signature Correction + Transported Carrier Overshoot Lift (Agent C)
+# T-003 Report: Reciprocal Deadline-Signature Correction + Transported Carrier Overshoot Lift (Agent C)
 
 **Date**: 2026-05-30  
 **Agent**: C (Endpoint-Chain, Modulus-Link & Reciprocal Closure)  
 **Candidate**: Reciprocal Deadline-Signature Correction + Transported Carrier Overshoot (Master Rank #4)  
-**Surface**: 10^12–10^13 retained window (16384 rows, 50-pair synthetic-moduli sample from the authoritative 8192-row long-running catalog)  
+**Surface**: 10^12 to 10^13 retained window (16384 rows, 50-pair synthetic-moduli sample from the authoritative 8192-row long-running catalog)  
 **Branch**: predictions  
 **Governing documents**: pgs_predictions_v0.1_contract.html, team_autonomy_plan.html (Perpetual Protocol), local AGENTS.md + canonical code-style AGENTS.md (4-phase + PGS-first followed)
 
@@ -13,7 +13,7 @@
 
 **Observable objects**:
 - Ordered prime-gap chambers on the public retained detail catalog (current_right_prime, next_right_prime, winner, power, next_dmin, ...).
-- PGSPG structural reset certificates (anchor, reset_endpoint, carrier_w, tail_after_reset_offsets, reset_deadline_value, reset_signature) — stubbed from row data for first-cycle harness validation; full generator wiring is the immediate next autonomous unit.
+- PGSPG structural reset certificates (anchor, reset_endpoint, carrier_w, tail_after_reset_offsets, reset_deadline_value, reset_signature), stubbed from row data for first-cycle harness validation; full generator wiring is the immediate next autonomous unit.
 - Endpoint chains via the closed public-endpoint pool (sorted list of all p/q in the window).
 - Reciprocal floor transport (pure n // x on oriented coordinate).
 - Transported internal points (carrier_w and first tail) and their differential overshoot relative to upper anchor/carrier_w.
@@ -81,7 +81,7 @@ On the 12-13 generic retained surface the first 3 pairs yielded small consistent
 
 ---
 
-## 2026-05-30 Completion Drive Extension — Full Generic Retained Lift + Joint on Exact 12-14 d=4 Surface (19333 Transitions)
+## 2026-05-30 Completion Drive Extension: Full Generic Retained Lift + Joint on Exact 12-14 d=4 Surface (19333 Transitions)
 
 **1. Candidate / Rank**: Reciprocal Deadline-Signature Correction + Transported Carrier Overshoot (Master Rank #4). Agent C Completion Drive unit.
 
@@ -125,7 +125,7 @@ python3 research/16-predictions/scripts/T003_reciprocal_overshoot_generic_probe.
 
 ---
 
-## 6. Validation Gates Checklist (Partial — Harness + Core Complete)
+## 6. Validation Gates Checklist (Partial: Harness + Core Complete)
 
 - [x] **PGS-First Gate**: Work begins from named PGS objects (endpoint chains, PGSPG certificates, reciprocal floor transport, transported carrier_w / tail overshoot, reset_signature) → invariants (NLSC, exact closure predicates) → deterministic carrier hypothesis (overshoot as discriminator) → measured state (first numbers + unresolved on generic 12-13). Documented in task file, script docstrings, this report.
 - [x] **Determinism Gate**: Zero probabilistic, heuristic, "likely", or "on average" language anywhere (reasoning, code, test output, report).
@@ -164,4 +164,4 @@ All 6 gates will be re-checked and documented as fully passed only after units 3
 
 All work performed autonomously on the file system under Continuous Autonomous Execution Mode. PGS-first frame, determinism, state separation, and the 6 gates govern every step.
 
-*Report authored under strict PGS-first, deterministic, state-separation discipline. Subordinate to PROOF.md for theorems and to the v0.1 contract for Predictions definition. Perpetual Autonomous Execution Protocol active — no human prompting occurred or will occur.*
+*Report authored under strict PGS-first, deterministic, state-separation discipline. Subordinate to PROOF.md for theorems and to the v0.1 contract for Predictions definition. Perpetual Autonomous Execution Protocol active, no human prompting occurred or will occur.*

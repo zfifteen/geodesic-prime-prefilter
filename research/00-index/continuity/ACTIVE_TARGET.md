@@ -1,9 +1,9 @@
 # Active Research Target
 
 **Updated:** 2026-07-05  
-**Program:** post-breakthrough — Lean formalization, external review, audit corroboration
+**Program:** post-breakthrough: Lean formalization, external review, audit corroboration
 
-## Central Obligation — CLOSED 2026-07-05
+## Central Obligation: CLOSED 2026-07-05
 
 The square-branch prime-square proximity theorem is **proved** in
 [PROOF.md](../../../PROOF.md) §Prime-Square Proximity Theorem. Universal bounded
@@ -54,7 +54,7 @@ w - p <= max(64, ceil(0.5 * log(q)^2))       [PROVED, all branches]
 
 Rotating queue lives in `research/00-index/continuity/hourly_queue.json`.
 The dispatcher executes **exactly one** item per activation. Items now target
-audit corroboration and Lean formalization — not proof of the square branch.
+audit corroboration and Lean formalization, not proof of the square branch.
 
 ## Repro Gate
 

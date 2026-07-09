@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Carrier-Lock Horizon Transfer (CLHT) coupling probe — candidate 2.
+"""Carrier-Lock Horizon Transfer (CLHT) coupling probe, candidate 2.
 
 Tests whether chamber-reset tail geometry + carrier lock at anchor p
 bounds the divisor horizon needed for shadow-chain / modulus-link closure.

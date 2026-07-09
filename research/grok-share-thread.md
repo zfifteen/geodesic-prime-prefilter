@@ -6,12 +6,12 @@
 
 ---
 
-## Turn 1 — User
+## Turn 1: User
 
 You are my dedicated Research Assistant running PGS-Hypothesis-Advancement-Protocol (PHAP-v1) for the prime-gap-structure project<a href="https://github.com/zfifteen/prime-gap-structure" target="_blank" rel="noopener noreferrer nofollow"></a>.
 
-## Turn 2 — Grok
+## Turn 2: Grok
 
-PHAP-v1 firing – week status: PR#16 baseline.
+PHAP-v1 firing  to  week status: PR#16 baseline.
 
 (Reply with number.)

@@ -1,4 +1,4 @@
-# 12-rh-bridge — Archived
+# 12-rh-bridge: Archived
 
 This directory has been archived.
 
@@ -15,7 +15,7 @@ See the archival handoff document for full details (external):
 
 **Preserved high-value PGS results** (still citable):
 - Candidate GWR Local Completion Correction Lower Bound
-- Core Insight Decisive Test (Stages 0–3) and supporting artifacts
+- Core Insight Decisive Test (Stages 0 to 3) and supporting artifacts
 
 All classical strategy documents, the autonomous loop infrastructure, and the heavy analytic reduction chain are archived for historical reference only.
 

@@ -5,7 +5,7 @@
 **Amendment Contract:** v01.1 (frozen explanatory_evidence_amendment_contract.html)  
 **Runner:** thread_triangulation_v01_1_runner.py (amended only for public explanatory fields)  
 **Certified source SHA-256:** e2617cc725de2a9aa0e5dc3859baad9339c042cebd2b6f3a7e47fb83a898a0fa  
-**Corpus:** cases/toy_corpus.jsonl (same 10 toy semiprimes, 10–53 bits, SHA unchanged)  
+**Corpus:** cases/toy_corpus.jsonl (same 10 toy semiprimes, 10 to 53 bits, SHA unchanged)  
 **Execution date:** post explanatory pre-execution certification (amended checklist)  
 **Report scope:** Public manifests (now containing the seven new explanatory fields), public outputs (byte-identical to v01), canonical status.json files, and aggregate summary only.
 
@@ -65,9 +65,9 @@ All values are taken directly from the public manifests written under the PUBLIC
 
 The reduction numbers themselves are unchanged from v01. The new fields illuminate the internal shape of the qualified set that produced those numbers:
 
-- The three smallest recovered cases operated in a low-density regime (pre_cap 2–144). The depth-5 filter produced short lists that were emitted in full (cap never active). Reduction was modest (2.5–3 bits) because the starting public odd-distance interval was already small.
+- The three smallest recovered cases operated in a low-density regime (pre_cap 2 to 144). The depth-5 filter produced short lists that were emitted in full (cap never active). Reduction was modest (2.5 to 3 bits) because the starting public odd-distance interval was already small.
 - The 14-bit missed case (toy_9379) produced an almost identical surface (pre_cap=10, max_d=6, cap inactive, full list emitted) yet the true distance was absent.
-- All six larger missed cases (28–53 bits) show heavy cap saturation: pre_cap grows from hundreds to tens of thousands, the cap of 512 is always active, and the emitted list consists solely of the highest-depth tail of the qualified distribution. Nominal reduction reaches 17 bits on the largest case, but the target distance is not present in the retained 512.
+- All six larger missed cases (28 to 53 bits) show heavy cap saturation: pre_cap grows from hundreds to tens of thousands, the cap of 512 is always active, and the emitted list consists solely of the highest-depth tail of the qualified distribution. Nominal reduction reaches 17 bits on the largest case, but the target distance is not present in the retained 512.
 
 These are deterministic public observables computed before any membership check.
 
@@ -77,18 +77,18 @@ These are deterministic public observables computed before any membership check.
 
 The amendment contract defines five admissible evidence modes and the exact public observables that may be cited for each. All five receive support on this corpus:
 
-1. **Filter too sparse** — Directly supported by `toy_9379` (14 bits, missed): `pre_cap_qualified_count = 10`, `cap_active = false`. Only ten distances in the entire toy semiprime satisfied simultaneous closure of at least five public threads. The true factor distance was not among them. The three recovered cases of comparable scale occupy the same low-density regime but happened to contain their target inside the tiny qualified set.
+1. **Filter too sparse**: Directly supported by `toy_9379` (14 bits, missed): `pre_cap_qualified_count = 10`, `cap_active = false`. Only ten distances in the entire toy semiprime satisfied simultaneous closure of at least five public threads. The true factor distance was not among them. The three recovered cases of comparable scale occupy the same low-density regime but happened to contain their target inside the tiny qualified set.
 
-2. **Cap saturation** — Supported by six of the seven missed cases. `cap_active = true` and `pre_cap_qualified_count` ranges from 824 to 48 456, all emitting exactly the hard maximum of 512. The fixed public cap is the binding constraint once N exceeds ~28 bits on this thread set and depth threshold.
+2. **Cap saturation**: Supported by six of the seven missed cases. `cap_active = true` and `pre_cap_qualified_count` ranges from 824 to 48 456, all emitting exactly the hard maximum of 512. The fixed public cap is the binding constraint once N exceeds ~28 bits on this thread set and depth threshold.
 
-3. **Score concentration** — Supported by the depth histograms of the cap-saturated missed cases. The public scoring key (triangulation_depth descending, then shared count, total count, distance) plus the cap produces strong concentration at the upper tail:
-   - 53-bit case: `max_observed_triangulation_depth = 11`, `cutoff_triangulation_depth = 9`; emitted counts are 268 at depth 9 + 235 at 10 + 9 at 11, while the pre-cap set contained >15 000 distances at depths 7–8 that were discarded.
+3. **Score concentration**: Supported by the depth histograms of the cap-saturated missed cases. The public scoring key (triangulation_depth descending, then shared count, total count, distance) plus the cap produces strong concentration at the upper tail:
+   - 53-bit case: `max_observed_triangulation_depth = 11`, `cutoff_triangulation_depth = 9`; emitted counts are 268 at depth 9 + 235 at 10 + 9 at 11, while the pre-cap set contained >15 000 distances at depths 7 to 8 that were discarded.
    - 41-bit case: cutoff at 8; only depths 8 and 9 appear in the emitted list.
    The cap is still cutting inside the high-depth region rather than having already reached the min_depth floor.
 
-4. **Weak differential signal** — Supported by direct comparison of the recovered and missed buckets. The three recovered cases exhibit `pre_cap_qualified_count` 2–144 and `max_observed_triangulation_depth` 6–7, all with `cap_active = false`. The single small missed case (`toy_9379`) has `pre_cap = 10`, `max_d = 6`, `cap = false` — statistically indistinguishable from the recovered surface on the available public fields. The larger missed cases occupy a distinct high-density, cap-saturated region, but that separation is driven by N_bits rather than by any per-N property that would have predicted membership of the hidden distance. The public explanatory fields therefore do not yield a clean, size-independent classifier for recovery on this corpus.
+4. **Weak differential signal**: Supported by direct comparison of the recovered and missed buckets. The three recovered cases exhibit `pre_cap_qualified_count` 2 to 144 and `max_observed_triangulation_depth` 6 to 7, all with `cap_active = false`. The single small missed case (`toy_9379`) has `pre_cap = 10`, `max_d = 6`, `cap = false`: statistically indistinguishable from the recovered surface on the available public fields. The larger missed cases occupy a distinct high-density, cap-saturated region, but that separation is driven by N_bits rather than by any per-N property that would have predicted membership of the hidden distance. The public explanatory fields therefore do not yield a clean, size-independent classifier for recovery on this corpus.
 
-5. **Scale pressure** — Strongly supported by the monotonic trend across the six cap-saturated missed cases: `pre_cap_qualified_count` and `pre_cap_to_emitted_ratio` rise steadily with bit length (824 → 48 k and 1.6× → 94×). At 53 bits the qualified set is nearly 95 times larger than the cap; the public 12-thread, depth-5 construction is under rapidly increasing pressure from the sheer number of distances that close enough public modulus links.
+5. **Scale pressure**: Strongly supported by the monotonic trend across the six cap-saturated missed cases: `pre_cap_qualified_count` and `pre_cap_to_emitted_ratio` rise steadily with bit length (824 → 48 k and 1.6× → 94×). At 53 bits the qualified set is nearly 95 times larger than the cap; the public 12-thread, depth-5 construction is under rapidly increasing pressure from the sheer number of distances that close enough public modulus links.
 
 ---
 
@@ -98,7 +98,7 @@ The amendment contract defines five admissible evidence modes and the exact publ
 - Six of seven missed cases are characterized by `cap_active = true`, `pre_cap_qualified_count` in the thousands to tens of thousands, and emitted lists drawn exclusively from the highest observed depths. The public filter is discarding the great majority of qualified distances; the true distance is among the discarded.
 - The 14-bit missed case is the clearest counter-example to any simple “more qualified candidates = better chance” reading: its entire depth-5 set (10 distances) was emitted, yet the target was not present. This is the pure “filter too sparse” signature on a case whose public surface otherwise resembles the recovered cases.
 - Median maximum observed depth is higher for missed (9) than recovered (6), but the difference tracks N_bits. Larger semiprimes simply permit higher simultaneous closure counts against the fixed thread set.
-- The depth-count histograms (public in every manifest) show that for the largest cases the bulk of the qualified mass lies at depths 6–9, with thin tails reaching 11; the cap retains only a narrow slice at the top of that distribution.
+- The depth-count histograms (public in every manifest) show that for the largest cases the bulk of the qualified mass lies at depths 6 to 9, with thin tails reaching 11; the cap retains only a narrow slice at the top of that distribution.
 
 All of the above is visible in the public manifests before the canonical checker is ever invoked.
 
@@ -129,7 +129,7 @@ The 3/10 recovery figure remains an exact, reproducible measurement of public li
 
 The v01.1 amendment has delivered the minimal public instrumentation required to distinguish the five failure modes on the existing corpus using only data visible before the membership audit. The observed surface now shows:
 
-- clear scale pressure and cap saturation once N exceeds ~25–28 bits,
+- clear scale pressure and cap saturation once N exceeds ~25 to 28 bits,
 - a “filter too sparse” signature on at least one small missed case,
 - strong score concentration at the high-depth tail for large N,
 - and only weak differential signal between recovered and missed cases once size is controlled for.

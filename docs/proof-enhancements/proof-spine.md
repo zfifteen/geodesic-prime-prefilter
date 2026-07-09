@@ -10,8 +10,8 @@ finite certificates, and classical imports.
 
 | Claim | PROOF.md anchor | Depends on | Classical imports |
 | --- | --- | --- | --- |
-| Next-prime rule | Headline §1 | τ characterization; chamber scan | — |
-| Interior maximizer (GWR) | Headline §2; §Interior Maximizer | Ordered comparison; earlier integers | — |
+| Next-prime rule | Headline §1 | τ characterization; chamber scan | : |
+| Interior maximizer (GWR) | Headline §2; §Interior Maximizer | Ordered comparison; earlier integers | : |
 | Universal bounded compression | Headline §3 | GWR; finite bases; square branch | CL-001 (gap bounds) |
 | Prime-Square Proximity | §Prime-Square Proximity | Near-root exclusion; modulus-link | CL-001 |
 
@@ -29,7 +29,7 @@ compression and is not a premise for the three headline pillars.
 
 | Certificate | Closes | Used by |
 | --- | --- | --- |
-| `gwr_finite_base_v1` | earlier-integer side for `p < 5×10⁹` | Pillars 1–2; earlier-integer closure |
+| `gwr_finite_base_v1` | earlier-integer side for `p < 5×10⁹` | Pillars 1 to 2; earlier-integer closure |
 | `bounded_compression_base_v1` | small-`q` bounded compression | Pillar 3 |
 | `residual_k128_v1` | high-τ branch elimination | Pillar 3 (odd-adjacent `d=4`) |
 | `gwr_stress_10e12_v1` | measured corroboration only | Supplemental audit (not a premise) |

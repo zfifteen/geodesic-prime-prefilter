@@ -1,4 +1,4 @@
-# 18 — Derived Half-Coefficient
+# 18: Derived Half-Coefficient
 
 Formalizes finding **F18-001**: the `0.5` in `C(q) = max(64, ceil(0.5 * log(q)^2))` is
 arithmetically derived from divisor closure, not chosen to match Cramér or `Re(s)=1/2`.

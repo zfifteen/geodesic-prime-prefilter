@@ -1,17 +1,17 @@
 # Derived Half-Coefficient Technical Note
 
 **Date:** 2026-07-08  
-**Finding:** F18-001 — Derived Half-Coefficient  
+**Finding:** F18-001: Derived Half-Coefficient  
 **Status:** proved · universal  
 **Authority:** `PROOF.md` · `research/04-bounded-compression/` · `research/18-derived-half-coefficient/docs/`
 
 ---
 
-## Part I — Plain-Language Summary
+## Part I: Plain-Language Summary
 
 Prime numbers are not separated by empty space. In the Prime Gap Structure (PGS)
 view, each gap between consecutive primes contains composite numbers, and each
-composite carries a **divisor count** — the number of positive integers that
+composite carries a **divisor count**: the number of positive integers that
 divide it evenly. Every prime has divisor count $2$. Every composite has count
 $3$ or higher.
 
@@ -40,11 +40,11 @@ GWR rule. So the window length $H$ must stay small. The inequalities produce
 scale $(\log w)^2/8$, which packages as $\tfrac{1}{2}(\log q)^2$ in the
 dynamic cutoff.
 
-**Example (gap $23$–$29$).** Interior divisor counts are $8,3,4,4,6$. The
+**Example (gap $23$ to $29$).** Interior divisor counts are $8,3,4,4,6$. The
 minimum is $3$ at $n=25$, distance $25-23=2$. Here $C(29)=64$, so the bound
 holds with large margin.
 
-**Example (gap $89$–$97$).** Interior counts are $12,4,6,4,4,4,12$. The
+**Example (gap $89$ to $97$).** Interior counts are $12,4,6,4,4,4,12$. The
 minimum is $4$ at $n=91$, distance $2$.
 
 **Finite verification (F18-002).** Deterministic exhaustive enumeration to
@@ -57,7 +57,7 @@ gap $q-p$ is always small.
 
 ---
 
-## Part II — Visual Summary
+## Part II: Visual Summary
 
 ![Derived Half-Coefficient infographic](infographic.svg)
 
@@ -69,12 +69,12 @@ The diagram shows the full chain:
 2. Close earlier high-$\tau$ competitors via the Witness Threshold Lemma.
 3. Apply the Short Divisor-Average Lemma on $J=\{w-H,\ldots,w-1\}$.
 4. Contradiction if $H$ is too large forces $H = O((\log w)^2)$ with leading constant $\tfrac{1}{8}$.
-5. Package as $C(q)=\max(64,\lceil \tfrac{1}{2}(\log q)^2\rceil)$ — **derived**, not tuned.
+5. Package as $C(q)=\max(64,\lceil \tfrac{1}{2}(\log q)^2\rceil)$ : **derived**, not tuned.
 6. Finite deterministic verification: zero violations to $10^6$; explicit boundary on what is not proved.
 
 ---
 
-## Part III — Technical Treatment
+## Part III: Technical Treatment
 
 ### 1. Setting and notation
 
@@ -114,7 +114,7 @@ $\operatorname{Re}(s)=\tfrac{1}{2}$.
 
 ### 2. Theorem
 
-**Theorem (Universal Bounded Compression — witness form).**  
+**Theorem (Universal Bounded Compression, witness form).**  
 For every consecutive prime gap with nonempty interior, the GWR witness satisfies
 
 $$
@@ -150,7 +150,7 @@ Certificate pins: `bounded_compression_base_v1`, `gwr_finite_base_v1`
 
 The **derivation of $\tfrac{1}{2}$** lives in the analytic tier.
 
-#### Lemma A — Witness Threshold
+#### Lemma A: Witness Threshold
 
 For earlier $k \in I$ with $\tau(k)=e$ and witness $\tau(w)=d$, define
 
@@ -161,9 +161,9 @@ $$
 If $p > T(d,e)$, then $F(k) < F(w)$. For fixed $d$, the adjacent case $e=d+1$
 has the largest threshold; closing that row closes all larger $e$ at the same $d$.
 
-*Source:* `PROOF.md` lines 305–347.
+*Source:* `PROOF.md` lines 305 to 347.
 
-#### Lemma B — Short Divisor-Average
+#### Lemma B: Short Divisor-Average
 
 For $N > 1$, $L = \log N$, $1 \le H < N$, and $J=\{N-H,\ldots,N-1\}$,
 
@@ -176,9 +176,9 @@ multiples of each $a \le \sqrt{N}$ in $H$ consecutive integers by
 $\lfloor H/a \rfloor + 1$, sum, and bound $\sum_{a \le \sqrt{N}} 1/a \le 1 +
 \log\sqrt{N}$. ∎
 
-*Source:* `PROOF.md` lines 353–392.
+*Source:* `PROOF.md` lines 353 to 392.
 
-#### Lemma C — Interval choice and average contradiction
+#### Lemma C: Interval choice and average contradiction
 
 Assume $p > 5 \times 10^9$, $d = \tau(w) \ge 4$, $L = \log w$, and the adjacent
 threshold row is not closed by Lemma A. Then
@@ -187,7 +187,7 @@ $$
 d > L + 2 + \frac{32}{L}
 $$
 
-(lines 420–449). Set
+(lines 420 to 449). Set
 
 $$
 H = \left\lfloor \frac{wL}{4(d-1)} \right\rfloor.
@@ -216,7 +216,7 @@ $$
 Hence there exists $n \in J$ with $\tau(n) < d$. If $p < n < w$, this contradicts
 GWR minimality; therefore $n \le p$ and $w - p \le H$.
 
-#### Lemma D — Logarithmic closure of earlier competitors
+#### Lemma D: Logarithmic closure of earlier competitors
 
 With $x = H/w \le L/(4(d-1)) < \tfrac{1}{4}$ and $d - 1 > L$:
 
@@ -229,9 +229,9 @@ $$
 For earlier $k$ with $\tau(k)=e \ge d+1$, $(e-2)\log k > (d-2)\log w$, hence
 $F(k) < F(w)$. Combined with Lemma A, all earlier integers are closed.
 
-*Source:* `PROOF.md` lines 487–520.
+*Source:* `PROOF.md` lines 487 to 520.
 
-#### Proposition — Half-scale constant
+#### Proposition: Half-scale constant
 
 From $H \ge wL/(8(d-1))$ and $d-1 = \Omega(L)$ in the active large-$d$ regime,
 $H = O(L^2)$ with leading constant $\tfrac{1}{8}$. Relating $w \approx q$
@@ -247,7 +247,7 @@ $\operatorname{Re}(s)=\tfrac{1}{2}$.
 
 When $\tau(w)=3$, the **Prime-Square Proximity Theorem** closes the same $C(q)$
 scale with $M = \lfloor C(q)/2 \rfloor$ geometric exclusion (`PROOF.md`
-§574–679).
+§574 to 679).
 
 ---
 
@@ -261,7 +261,7 @@ scale with $M = \lfloor C(q)/2 \rfloor$ geometric exclusion (`PROOF.md`
 | Theorem stack (`PROOF.md`) | universal | bounded compression `proved` |
 
 F18-003 (half-scale correspondence with $\operatorname{Re}(s)=\tfrac{1}{2}$) is
-**hypothesis only** — see `docs/half-scale-correspondence-hypothesis.md`.
+**hypothesis only**: see `docs/half-scale-correspondence-hypothesis.md`.
 
 ---
 
@@ -270,7 +270,7 @@ F18-003 (half-scale correspondence with $\operatorname{Re}(s)=\tfrac{1}{2}$) is
 - **Source layer:** gaps are structured objects with a proved witness-placement
   rule before any zeta compression step.
 - **Coefficient claim:** $\tfrac{1}{2}$ in $C(q)$ is an arithmetic output, not
-  a fitted constant — central to the PGS "integer-first" narrative.
+  a fitted constant, central to the PGS "integer-first" narrative.
 - **Bounded compression chapter:** `research/04-bounded-compression/` holds the
   theorem and falsification sweeps; this chapter holds derivation exposition.
 - **Formalization debt:** Lean mirror in progress; analytic closure is complete
@@ -292,13 +292,13 @@ $w-p$. It does **not**:
 
 ### 7. References
 
-- `PROOF.md` — Universal bounded compression, Witness Threshold, Short
+- `PROOF.md`. Universal bounded compression, Witness Threshold, Short
   Divisor-Average, Large-Divisor Adjacent Closure, Prime-Square Proximity
-- `research/04-bounded-compression/README.md` — theorem home and falsification
-- `research/18-derived-half-coefficient/docs/FINDING_STATEMENT.md` — F18-001/002/003
-- `experiments/grok-share-509b8495/safari_transcript.txt` — deterministic replay transcript (provenance)
-- `docs/finite-verification-grok-509b8495.md` — F18-002 finite verification record
-- `research/twin-prime-resonance-technical-note-2026-07/TECHNICAL_NOTE.md` — bundle format reference
+- `research/04-bounded-compression/README.md`, theorem home and falsification
+- `research/18-derived-half-coefficient/docs/FINDING_STATEMENT.md`. F18-001/002/003
+- `experiments/grok-share-509b8495/safari_transcript.txt`, deterministic replay transcript (provenance)
+- `docs/finite-verification-grok-509b8495.md`. F18-002 finite verification record
+- `research/twin-prime-resonance-technical-note-2026-07/TECHNICAL_NOTE.md`, bundle format reference
 
 ---
 

@@ -4,7 +4,7 @@
 **Contract:** v01 (frozen design_contract.html)  
 **Runner:** thread_triangulation_v01_runner.py  
 **Certified source SHA-256:** dd1b0d9f1d69f25c845f2812214da92187f4e3750609b1b94963934d3fd03878  
-**Corpus:** cases/toy_corpus.jsonl (10 toy semiprimes, 10–53 bits)  
+**Corpus:** cases/toy_corpus.jsonl (10 toy semiprimes, 10 to 53 bits)  
 **Execution date:** post pre-execution certification  
 **Report scope:** Public manifests, public outputs, canonical status files, and aggregate summary only.
 
@@ -44,15 +44,15 @@ No contract violations were detected in the delivered artifacts.
 | case                  | N_bits | original_space | emitted | reduction_bits | reduction_ratio     | status    | recovered_factor |
 |-----------------------|--------|----------------|---------|----------------|---------------------|-----------|------------------|
 | toy_989               | 10     | 16             | 2       | 3.000          | 16/2                | recovered | p                |
-| toy_9379              | 14     | 64             | 10      | 2.678          | 64/10               | missed    | —                |
+| toy_9379              | 14     | 64             | 10      | 2.678          | 64/10               | missed    | :                |
 | toy_25807             | 15     | 128            | 22      | 2.541          | 128/22              | recovered | q                |
 | toy_1242079           | 21     | 1024           | 144     | 2.830          | 1024/144            | recovered | p                |
-| toy_200250077         | 28     | 8192           | 512     | 4.000          | 8192/512            | missed    | —                |
-| toy_4295229443        | 33     | 65536          | 512     | 7.000          | 65536/512           | missed    | —                |
-| toy_18902665303       | 35     | 131072         | 512     | 8.000          | 131072/512          | missed    | —                |
-| toy_1209476905903     | 41     | 1048576        | 512     | 11.000         | 1048576/512         | missed    | —                |
-| toy_77468500194643    | 47     | 8388608        | 512     | 14.000         | 8388608/512         | missed    | —                |
-| toy_4951764003343009  | 53     | 67108864       | 512     | 17.000         | 67108864/512        | missed    | —                |
+| toy_200250077         | 28     | 8192           | 512     | 4.000          | 8192/512            | missed    | :                |
+| toy_4295229443        | 33     | 65536          | 512     | 7.000          | 65536/512           | missed    | :                |
+| toy_18902665303       | 35     | 131072         | 512     | 8.000          | 131072/512          | missed    | :                |
+| toy_1209476905903     | 41     | 1048576        | 512     | 11.000         | 1048576/512         | missed    | :                |
+| toy_77468500194643    | 47     | 8388608        | 512     | 14.000         | 8388608/512         | missed    | :                |
+| toy_4951764003343009  | 53     | 67108864       | 512     | 17.000         | 67108864/512        | missed    | :                |
 
 All manifests and outputs were produced under identical locked v01 parameters and carry the certified runner SHA.
 
@@ -62,8 +62,8 @@ All manifests and outputs were produced under identical locked v01 parameters an
 
 The measured reduction is the publicly observable shrinkage from the conservative baseline (count of odd positive distances d with 1 ≤ d ≤ public_radius(N)) to the size of the emitted list after depth-5 filtering and public scoring / capping.
 
-- For the three smallest recovered cases the depth-5 modulus-link filter already produced very short lists (2–144 candidates), yielding modest 2.5–3 bit reductions.
-- For N ≥ 28 bits the hard cap of 512 dominated; the filter emitted the maximum allowed list and delivered 4–17 bits of nominal reduction.
+- For the three smallest recovered cases the depth-5 modulus-link filter already produced very short lists (2 to 144 candidates), yielding modest 2.5 to 3 bit reductions.
+- For N ≥ 28 bits the hard cap of 512 dominated; the filter emitted the maximum allowed list and delivered 4 to 17 bits of nominal reduction.
 - The largest case (53 bits) achieved a 17-bit nominal reduction (67 M → 512) while still missing the target distance.
 
 These are deterministic, reproducible public figures. They quantify how many odd distances up to the public radius survive the simultaneous residue-closure test against the fixed 12-thread set.
@@ -82,7 +82,7 @@ These are deterministic, reproducible public figures. They quantify how many odd
 ## What Failed
 
 1. For seven of the ten cases the true factor distance(s) never entered the depth-5 set or were culled by the public scoring / 512 cap. This includes the 14-bit case toy_9379 (only 10 candidates emitted) and all seven larger instances.
-2. Even when substantial nominal reduction occurred (11–17 bits on the four largest missed cases), the target distance was absent from the final public list.
+2. Even when substantial nominal reduction occurred (11 to 17 bits on the four largest missed cases), the target distance was absent from the final public list.
 3. The v01 parameter set (depth 5, 12 threads, cap 512) proved insufficient to guarantee recovery on this corpus once N exceeded 21 bits.
 
 ---
