@@ -12,11 +12,11 @@
   "failure_examples": [],
   "generator": {
     "script_path": "docs/proof-enhancements/scripts/emit_certificates.py",
-    "commit_hash": "9e9dbc85e2c709d9369d2636f8b2427436571a28",
+    "commit_hash": "f01dc2ed9d04b243e72a97139e094929c8090619",
     "params": "--lemma gwr_finite_base_v1"
   },
-  "artifact_hash": "sha256:ea668aae2d39cd5113104a89cafc0bc80a4c73ad15b4fa6d6f8bcd186fc184ad",
-  "verified_at": "2026-07-07T15:39:59+00:00",
+  "artifact_hash": "sha256:222398f59d1ab1e6f6a7b17c691ebc44a96038a713f5218ea407f1bb5a5cff57",
+  "verified_at": "2026-07-08T15:28:38+00:00",
   "source": {
     "proof_md_section": "Certified Finite Bases / GWR Finite Base",
     "audit_table_rows": [

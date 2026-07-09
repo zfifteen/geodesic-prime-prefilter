@@ -98,11 +98,65 @@ def build_certificates(commit_hash: str) -> dict[str, dict[str, object]]:
                 "scope_note": "residual elimination, not a universal pillar premise",
             },
         },
+        "gwr_stress_10e12_v1": {
+            "lemma_id": "gwr_stress_10e12_v1",
+            "pinned_counts": True,
+            "range": {
+                "anchor_scale": 10**12,
+                "note": "stress sample near 10^12 (pinned historical measured certification)",
+            },
+            "counts": {
+                "gaps": 137_771,
+                "earlier_integers": 649_769,
+                "failures": 0,
+                "median_offset": 1,
+                "p99_offset": 14,
+                "worst_offset": 42,
+            },
+            "failure_examples": [],
+            "generator": {
+                "script_path": "docs/proof-enhancements/scripts/emit_certificates.py",
+                "commit_hash": commit_hash,
+                "params": "--lemma gwr_stress_10e12_v1",
+            },
+            "artifact_hash": "sha256:PIN_ON_EMIT",
+            "verified_at": "2026-07-07T15:39:59+00:00",
+            "source": {
+                "proof_md_section": "Supplemental audit breakdown",
+                "pinned_counts_note": (
+                    "Counts mirror PROOF.md / zenodo draft; emit script does not "
+                    "re-execute the historical stress scan."
+                ),
+                "historical_record": "research/00-index/docs/zenodo_formal_proof_draft.md (Appendix A.1)",
+                "corroboration_command": (
+                    "PYTHONPATH=src/python python3 "
+                    "research/02-gwr-dni/experiments/chatgpt/lexi_validation_runs.py "
+                    "--scale 1000000000000"
+                ),
+                "corroboration_note": (
+                    "Lexicographic revalidation at 10^12 is a related measured "
+                    "surface (distinct window geometry; not a byte-for-byte replay "
+                    "of the historical stress sample)."
+                ),
+            },
+        },
     }
 
 
 def finalize_certificate(cert: dict[str, object]) -> dict[str, object]:
     """Attach artifact_hash after the payload body is complete."""
+    if cert.get("pinned_counts"):
+        # Historical measured certification: stable counts from PROOF.md / zenodo draft.
+        # Hash excludes generator commit so re-emit does not churn the artifact identity.
+        stable = {
+            "lemma_id": cert["lemma_id"],
+            "pinned_counts": cert["pinned_counts"],
+            "range": cert["range"],
+            "counts": cert["counts"],
+            "verified_at": cert["verified_at"],
+        }
+        cert["artifact_hash"] = artifact_hash(stable)
+        return cert
     body = {key: value for key, value in cert.items() if key != "artifact_hash"}
     cert["artifact_hash"] = artifact_hash(body)
     return cert

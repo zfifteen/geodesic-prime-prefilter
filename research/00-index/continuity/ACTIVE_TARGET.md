@@ -68,7 +68,7 @@ Append every run to `research/04-bounded-compression/docs/square_branch_hourly.m
 
 ## Read-First Contract (every activation)
 
-1. `docs/AGENTS.md`
+1. `Agents.md` (repo root)
 2. `PROOF.md` (theorem status only)
 3. This file
 4. Last ledger block in `square_branch_hourly.md`
