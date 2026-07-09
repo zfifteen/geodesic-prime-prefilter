@@ -141,8 +141,10 @@ r² - p ≤ max(64, ceil(0.5 · log(r²)²))
 
 **Acceptance criteria:**
 
-- [ ] Appendix section with statement, usage locations, audit status (`classical-import`)
-- [ ] No classical lemma buried inline without pointer
+- [x] Appendix section with statement, usage locations, audit status (`classical-import`) — Bertrand CL-001 in `PROOF.md` §Imported Classical Lemmas (#31)
+- [x] No classical lemma buried inline without pointer — Bertrand usages link to CL-001 (#31)
+- [x] CL-002 divisor-pair bound in `PROOF.md` §Imported Classical Lemmas (#32)
+- [x] CL-003 `τ(r²)=3` for prime `r` in `PROOF.md` §Imported Classical Lemmas (prose); Lean discharge pending M1
 
 ---
 

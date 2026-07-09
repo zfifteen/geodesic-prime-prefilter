@@ -7,7 +7,7 @@ If a session starts with limited chat context, read this file first.
 
 ## First 60 Seconds
 
-1. Read `docs/AGENTS.md`.
+1. Read `Agents.md` (repo root).
 2. Read this directory's `continuity_and_shape_contract.md`.
 3. Run `git status --short --untracked-files=all`.
 4. Identify the user's active target from the newest request. The newest

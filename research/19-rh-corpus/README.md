@@ -71,6 +71,25 @@ bridge API (no re-implementation).
 |--------|---------|--------|
 | [empirics/zeta_compression_probe.py](./empirics/zeta_compression_probe.py) | [RH-105](./FINDINGS_INDEX.md) | [empirics/output/compression_probe_results.json](./empirics/output/compression_probe_results.json) |
 
+### RH-105 F18 max-case scale extension (Q10 / #48)
+
+**Deferred regime:** chamber Dirichlet increments at `q ≈ 1.5×10^7` (F18 max gap) with
+pinned partial sum `N = 10^4`.
+
+**Pinned empiric design (next run):**
+
+1. **Segmented partial sums** — increase `N` to `10^5` or `10^6` with segmented
+   prime sieve for primes up to `q`; record `ΔD/ΔB` at five pinned `s` values.
+2. **Repro command:**
+   ```bash
+   PYTHONPATH=src/python:research/19-rh-corpus/empirics \
+     python3 research/19-rh-corpus/empirics/zeta_compression_probe.py \
+     --q-max 16000000 --partial-sum-n 100000 --emit-json
+   ```
+3. **Acceptance:** RH-105 row in FINDINGS_INDEX gains explicit `q ~ 10^7` regime
+   with artifact path under `empirics/output/`.
+4. **Boundary:** partial sums ≠ analytic continuation proof.
+
 Flagship public demo (whitepaper companion):
 `experiments/integer-order-before-zeta-whitepaper-2026-07/integer_order_demo.py`
 
