@@ -729,53 +729,83 @@ r^2 - p <= max(64, ceil(0.5 * log(r^2)^2)).
 
 Because `r^2 < q`, this rigorously establishes the square-branch bounded-compression theorem.
 
-## The Twin-Prime Resonance Theorem (GWR Super-Signal)
+## Twin-Prime Resonance (GWR Super-Signal) — **invalidated**
 
-**Logical position (proof spine).** Corollary of the [Interior Maximizer
-(GWR)](#interior-maximizer-theorem) winner definition, not a fourth universal
-pillar. Depends on GWR selected witness `w` and modular remainder-vector
-analysis only; does not use finite-base certificates or bounded-compression
-closure. Listed in [Theorem Stack Summary](#theorem-stack-summary) and
-[proof-spine.md](docs/proof-enhancements/proof-spine.md).
+**Status (2026-07-09):** The **universal** implication
 
-**Theorem (GWR Super-Signal / Twin-Prime Resonance):**
-Let $G$ be a prime gap with interior $I = (p, q)$. Let $w \in I$ be the leftmost minimum divisor-count carrier (the GWR winner). Let $R(w)$ be the remainder vector of $w$ modulo the primorial bases $(2, 3, 5, 7, 30, 210, 2310)$. 
-If $R(w)$ contains 4 or more zeros, then the gap size is $g=2$, and the next integer $w+1$ is identically the prime $q$.
+$$
+z(w) \ge 4 \;\Longrightarrow\; g = 2
+$$
 
-### 1. **Modular Implication of 4+ Zeros:**
-   The base primorial moduli are $2, 3, 5, 7$. The composite moduli are $30, 210, 2310$.
-   To accumulate 4 or more zeros in this specific vector, $w$ must be congruent to $0 \pmod{30}$.
+is **invalidated**. It is **not** a proved corollary and must not be cited as one.
 
-   **Proof of sub-claim (exhaustive case analysis on the remainder vector):**
-   Let the moduli be $M = \{2, 3, 5, 7, 30, 210, 2310\}$. A zero occurs at position $m \in M$ iff $m \mid w$.
-   The lattice satisfies: $30 \mid 210 \mid 2310$, and $30 = 2\cdot3\cdot5$, $210=2\cdot3\cdot5\cdot7$.
-   Thus:
-   - If $30 \mid w$, then automatically $2,3,5,30 \mid w$ (at least 4 zeros); if additionally $7 \mid w$ then at least the 6 positions for 210, etc.
-   - If $210 \mid w$ or $2310 \mid w$, then $30 \mid w$ and $\ge 6$ zeros.
-   Conversely, suppose $\ge 4$ zeros but $30 \nmid w$. Then none of the composite positions (30,210,2310) can be zero (as any would force $30 \mid w$). The only possible zeros are from the prime positions $\{2,3,5,7\}$. To reach count $\ge 4$ requires all four: $2,3,5,7 \mid w$, i.e., $210 \mid w$. But $210 \mid w$ implies $30 \mid w$, contradiction.
-   Hence, $\ge 4$ zeros if and only if $30 \mid w$ (i.e., $w \equiv 0 \pmod{30}$).
+**Logical position.** Historical packaging treated Super-Signal as a corollary of
+the [Interior Maximizer (GWR)](#interior-maximizer-theorem) winner definition
+plus remainder-vector analysis. That packaging is withdrawn for the twin-gap
+lock. The modular sub-lemma below survives. GWR itself is not demoted.
 
-2. **Divisor Count of Multiples of 30:**
-   Because $w = 30k = 2 \cdot 3 \cdot 5 \cdot k$, its divisor count $d(w)$ is heavily inflated. The minimum possible divisor count for a multiple of 30 is $d(30) = 8$, but for $w > 30$, $d(w)$ grows much larger.
+**Certificates:**
 
-3. **The GWR Minimum Condition for $g > 2$ (explicit competitor lemma):**
-   Lemma: If $g > 2$ and $w \in I$ with $w \equiv 0 \pmod{30}$, then $\exists n \in I$ ($n \ne w$) such that $\tau(n) < \tau(w)$.
+- [twin_prime_resonance_invalidated_v1.json](docs/proof-enhancements/certificates/twin_prime_resonance_invalidated_v1.json)
+- [ce_17666309.json](docs/proof-enhancements/certificates/counterexamples/ce_17666309.json)
+- [ce_22284029.json](docs/proof-enhancements/certificates/counterexamples/ce_22284029.json)
+- Repro: `python3 docs/proof-enhancements/scripts/verify_super_signal_counterexamples.py`
 
-   *Proof of lemma:* If $w = 30$, the bounding primes 29 and 31 force $|I| = 1$; no prime gap with $g > 2$ can contain 30 in its interior. If $w > 30$, then $w$ is divisible by at least the distinct primes 2, 3, 5 and one more, so $\tau(w) \ge 12$ (the divisor count 8 occurs only for exactly 2·3·5 = 30).
+### Historical claim (withdrawn)
 
-   Any other $n \in I$ (with $|I| \ge 2$) is composite. The adjacent positions $w \pm 1$ (when present in the interior) are coprime to 30; their prime factors are all $\ge 7$. The low-$\tau$ composites in this class are of the form $r^2$ ($\tau=3$) or distinct-prime semiprime $r \cdot s$ ($\tau=4$). Any composite coprime to 30 with $\tau(n) \ge 12$ requires at least four distinct prime factors $\ge 7$ (minimal example $7 \cdot 11 \cdot 13 \cdot 17 = 17017$) or equivalent high powers (much larger). 
+Let $G$ be a prime gap with interior $I = (p, q)$. Let $w \in I$ be the
+leftmost minimum divisor-count carrier (the GWR winner). Let $R(w)$ be the
+remainder vector of $w$ modulo the primorial bases $(2, 3, 5, 7, 30, 210, 2310)$.
+The withdrawn claim asserted: if $R(w)$ contains 4 or more zeros, then the gap
+size is $g=2$, and the next integer $w+1$ is identically the prime $q$.
 
-   Thus for any $w > 30$ in a $g > 2$ interior, the presence of at least one other composite forces a competitor $n$ with $\tau(n) \le 4 < 12 \le \tau(w)$ (or the configuration with all other $\tau(n) \ge \tau(w)$ is excluded by the GWR finite base certificate with 0 failures). This contradicts the assumption that $w$ is the GWR winner (strict minimum $\tau$ over $I$).
+### Surviving modular lemma (proved)
 
-   Therefore a 30-multiple can be GWR only when no competitors exist, i.e., $|I| = 1$ or $g = 2$.
+**Lemma (4+ zeros on $M_{v1}$ iff $30 \mid w$).**
+Let the moduli be $M = \{2, 3, 5, 7, 30, 210, 2310\}$. A zero occurs at position
+$m \in M$ iff $m \mid w$. The lattice satisfies $30 \mid 210 \mid 2310$, and
+$30 = 2\cdot 3\cdot 5$, $210 = 2\cdot 3\cdot 5\cdot 7$.
 
-4. **The Trivial Minimum at $g = 2$:**
-   The only condition under which a multiple of 30 can be the GWR minimum is if there are **no other integers in the gap to compete against**. 
-   This occurs if and only if the interior $I$ contains exactly one integer, meaning $g = 2$.
-   
-5. **Conclusion:**
-   If $g = 2$, then the single interior composite $w$ is bounded by primes $p = w-1$ and $q = w+1$. 
-   Therefore, if the GWR winner exhibits 4+ zeros (identifying it as a multiple of 30), it guarantees that $g=2$ and the very next integer $w+1$ is the prime $q$. $\blacksquare$
+- If $30 \mid w$, then automatically $2,3,5,30 \mid w$ (at least 4 zeros).
+- If $210 \mid w$ or $2310 \mid w$, then $30 \mid w$ and at least 6 zeros.
+- Conversely, suppose $\ge 4$ zeros but $30 \nmid w$. Then none of the composite
+  positions $(30,210,2310)$ can be zero. The only possible zeros are from
+  $\{2,3,5,7\}$. Count $\ge 4$ requires $2,3,5,7 \mid w$, i.e. $210 \mid w$,
+  which forces $30 \mid w$, contradiction.
+
+Hence $\ge 4$ zeros if and only if $30 \mid w$ on this fixed vector.
+
+### Broken competitor step (invalidated)
+
+The former competitor lemma claimed: if $g > 2$ and $w \equiv 0 \pmod{30}$,
+then there exists $n \in I$, $n \ne w$, with $\tau(n) < \tau(w)$.
+
+That lemma is **false**. GWR selects the **leftmost minimum**, not a unique
+strict minimum. Later interiors may **tie** $\tau(w)$ without beating it; the
+30-multiple can remain the GWR winner inside a non-twin gap.
+
+### Pinned counterexamples
+
+| $p$ | $q$ | $g$ | GWR $w$ | $\tau(w)$ | $z(w)$ |
+| ---: | ---: | ---: | ---: | ---: | ---: |
+| $17\,666\,309$ | $17\,666\,317$ | $8$ | $17\,666\,310$ | $16$ | $4$ |
+| $22\,284\,029$ | $22\,284\,037$ | $8$ | $22\,284\,030$ | $16$ | $4$ |
+
+On both gaps: $z(w) \ge 4$ is true, $g = 2$ is false. One valid counterexample
+suffices to kill the universal implication; two are pinned.
+
+### Measured residue (not a theorem)
+
+Finite scans can still show that resonant GWR witnesses are **often** twins
+below a stated bound (for example empty class-A false positives on
+$[11, 2\times 10^6)$). Empty finite scans do **not** restore universality and
+must not be written as proved twin-gap locks.
+
+### Implementation note
+
+Generator code may use a **guarded** truncation when $(p+1) \equiv 0 \pmod{30}$
+and $\tau(p+2)=2$. That is an implementation optimization with an explicit
+audit gate, not a citation of a proved Super-Signal theorem.
 
 ## Certified Finite Bases
 
@@ -851,7 +881,8 @@ listed separately.
 | Interior maximizer (GWR) | selected witness `w` | proved (`gwr_finite_base_v1` + analytic closure) | universal | in progress |
 | Prime-Square Proximity | `r^2 - p` on square branch | proved (analytic) | universal | in progress |
 | Universal bounded compression | selected-witness offset `w - p` | proved (`bounded_compression_base_v1`, `residual_k128_v1` + analytic closure) | universal | in progress |
-| Twin-Prime Resonance (Super-Signal) | gap where GWR winner has 4+ modular zeros | proved (modular arithmetic) | corollary | in progress |
+| Twin-Prime Resonance (Super-Signal) universal implication | $z(\mathrm{GWR})\ge 4 \Rightarrow g=2$ | **invalidated** (CE certificates) | withdrawn | n/a |
+| Modular zero lemma on $M_{v1}$ | $z(w)\ge 4 \Leftrightarrow 30\mid w$ | proved (case analysis) | vector $M_{v1}$ only | in progress |
 
 ### Certified finite premises
 
