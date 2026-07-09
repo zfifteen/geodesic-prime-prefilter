@@ -46,7 +46,7 @@ See [PROOF.md](../../PROOF.md), [research/02-gwr-dni/docs/closure_constraint_fin
 
 ## Dynamic Cutoff and Square-Branch Falsification
 
-The exact walk does not need a cutoff theorem. The bounded walk does — and that
+The exact walk does not need a cutoff theorem. The bounded walk does require one, and that
 theorem is now proved.
 
 Universal bounded compression is proved in [PROOF.md](../../PROOF.md) (2026-07-05).
