@@ -85,9 +85,18 @@
 
     <h1>The GWR Super-Signal</h1>
 
+    <div class="highlight-box" style="background-color:#fff4f0; border-left-color:#c62828;">
+        <strong>Status (2026-07-09): INVALIDATED as a universal twin-gap lock.</strong>
+        Four remainder zeros at the GWR witness do <em>not</em> force gap size 2.
+        Pinned counterexamples: <code>p=17666309</code> and <code>p=22284029</code> (both g=8, z(w)=4).
+        See <code>PROOF.md</code> and
+        <code>docs/proof-enhancements/scripts/verify_super_signal_counterexamples.py</code>.
+        Modular fact <code>z≥4 ⇔ 30|w</code> on M_v1 still holds. Content below is historical / measured only.
+    </div>
+
     <div class="highlight-box">
         <strong>Observable Object:</strong> The remainder vector of the interior composite number selected by the GWR (Leftmost Minimum-Divisor) rule. <br><br>
-        <strong>Core Mechanism:</strong> When the GWR-selected composite exhibits high modular resonance (4 or more remainder zeros modulo primorial bases), it acts as an absolute deterministic trigger that the gap will terminate immediately at the next integer.
+        <strong>Historical claim (withdrawn):</strong> When the GWR-selected composite exhibits high modular resonance (4 or more remainder zeros), the gap terminates immediately. That universal implication is <strong>false</strong>. Finite-regime 100% rates below 10<sup>6</sup> are measured surfaces only.
     </div>
 
     <h2>1. The Blind Spot in Classical Number Theory</h2>

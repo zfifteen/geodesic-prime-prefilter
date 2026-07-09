@@ -44,15 +44,18 @@ integer read, it does not replace the explicit formula proof machinery.
 
 ---
 
-## Super-signal hook (labeled)
+## Super-signal hook (labeled, invalidated)
 
-When GWR witness $w$ has high primorial resonance ($w\equiv 0\pmod{30}$, 4+
-remainder zeros), [RH-005](../FINDINGS_INDEX.md) proves **immediate gap termination**
-($q=w+1$, twin gap). In explicit-formula language, this is an **exact local
-termination** of the oscillatory correction inside that chamber: not a global
-zero-placement theorem.
+The former Super-Signal claim was: when GWR witness $w$ has high primorial
+resonance ($w\equiv 0\pmod{30}$, 4+ remainder zeros), the gap terminates
+immediately ($q=w+1$). That universal twin-gap lock is **invalidated**
+([RH-005](../FINDINGS_INDEX.md); CEs $p=17666309$, $p=22284029$). Resonance
+remains a **measured pattern** in small regimes only, not a proved local
+termination of the oscillatory correction.
 
-Status: proved corollary at L1; interpretive link to L6 is `narrative` only.
+Status: **invalidated** at L1 for the twin-gap implication; modular
+$z\ge 4\Leftrightarrow 30\mid w$ still proved; any L6 interpretive link is
+`narrative` only.
 
 ---
 
