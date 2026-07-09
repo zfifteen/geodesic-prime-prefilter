@@ -26,19 +26,19 @@ This step lacks:
 
 ---
 
-### 🔴 S2: Twin-Prime Resonance: informal competitive-minimum argument
+### 🔴 S2: Twin-Prime Resonance: competitor lemma invalidated (resolved as demotion)
 
-**Location:** `PROOF.md` lines 676 to 704
+**Location:** `PROOF.md` §Twin-Prime Resonance
 
-**Issue:** Step 3 uses non-rigorous language:
+**Issue (historical):** Step 3 claimed that if $g>2$ and $30\mid w$, then some
+interior $n$ has $\tau(n)<\tau(w)$. That competitor lemma is **false**.
 
-- “overwhelmingly semiprimes”
-- “the gap will inevitably contain other semiprimes with lower divisor counts”
-- Parenthetical dismissal of “rare contrived integers” without exclusion proof
+**Resolution (2026-07-09):** Universal Super-Signal implication demoted to
+**invalidated**. Pinned CEs: `ce_17666309`, `ce_22284029`. Modular lemma
+$z\ge 4 \Leftrightarrow 30\mid w$ retained. GWR pillar unchanged.
 
-The sub-claim “4+ zeros in R(w) ⟺ w ≡ 0 (mod 30)” is argued by example (“e.g., {2,3,7}”) rather than exhaustive case analysis over the remainder-vector definition.
-
-**Impact:** The mathematical argument is complete; the Lean mirror for this section is in progress.
+**Impact:** Do not formalize the twin-gap lock in Lean. Optional Lean target:
+modular lemma only.
 
 ---
 

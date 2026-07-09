@@ -19,11 +19,12 @@ finite certificates, and classical imports.
 
 | Claim | PROOF.md anchor | Depends on | Status |
 | --- | --- | --- | --- |
-| Twin-Prime Resonance (GWR Super-Signal) | §Twin-Prime Resonance | **Interior maximizer (GWR)** only; modular arithmetic on remainder vector | proved corollary; does not use finite bases directly |
+| Twin-Prime Resonance (GWR Super-Signal) universal implication | §Twin-Prime Resonance | GWR winner + remainder zeros | **invalidated** (CE certificates 2026-07-09) |
+| Modular zero lemma on $M_{v1}$ | §Twin-Prime Resonance (surviving) | remainder-vector case analysis | proved; not a twin-gap lock |
 
-Twin-Prime Resonance is a **corollary of the GWR winner definition** plus
-exhaustive modular case analysis. It does not extend universal bounded
-compression and is not a premise for the three headline pillars.
+The universal Super-Signal twin-gap implication is **invalidated**. The modular
+lemma $z(w)\ge 4 \Leftrightarrow 30\mid w$ on $M_{v1}$ survives. Super-Signal
+is not a premise for the three headline pillars.
 
 ## Finite-certified premises
 

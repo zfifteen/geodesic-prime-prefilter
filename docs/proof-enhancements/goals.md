@@ -59,16 +59,21 @@ r² - p ≤ max(64, ceil(0.5 · log(r²)²))
 
 **Objective:** Either prove rigorously or downgrade status.
 
+**Resolution (2026-07-09):** Universal implication **invalidated** by counterexamples
+`p=17666309` and `p=22284029`. Competitor lemma (step 3) is false under leftmost-min
+GWR (τ ties). Modular half retained as a proved lemma only.
+
 **Acceptance criteria (if kept as theorem):**
 
 - [x] “4+ zeros ⟺ w ≡ 0 (mod 30)” proved by exhaustive case analysis on the defined remainder vector
-- [x] Step 3 replaced: explicit lemma that if g > 2 and w ≡ 0 (mod 30), then ∃ n ∈ I with τ(n) < τ(w)
+- [ ] ~~Step 3 competitor lemma~~ **INVALIDATED** (CE certificates)
 - [x] No “overwhelmingly” / “inevitably” language in proof body
 
 **Acceptance criteria (if reclassified):**
 
-- [ ] Moved to separate “Derived Signals” section with `measured` or `hypothesis` status
-- [ ] Theorem stack table updated
+- [x] Universal Super-Signal implication marked **invalidated** in `PROOF.md` with pinned CEs
+- [x] Theorem stack table updated
+- [x] Modular lemma kept separately as proved
 
 ---
 

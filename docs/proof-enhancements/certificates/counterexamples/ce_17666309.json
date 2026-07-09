@@ -1,0 +1,30 @@
+{
+  "id": "ce_17666309",
+  "lemma_id": "twin_prime_resonance_universal_implication",
+  "status": "invalidates_universal_claim",
+  "p": 17666309,
+  "q": 17666317,
+  "gap": 8,
+  "w": 17666310,
+  "tau_w": 16,
+  "zeros": 4,
+  "moduli": [2, 3, 5, 7, 30, 210, 2310],
+  "remainder_vector": [0, 0, 0, 4, 0, 60, 1740],
+  "w_divisible_by_30": true,
+  "interior_tau": [
+    {"n": 17666310, "tau": 16},
+    {"n": 17666311, "tau": 16},
+    {"n": 17666312, "tau": 16},
+    {"n": 17666313, "tau": 24},
+    {"n": 17666314, "tau": 16},
+    {"n": 17666315, "tau": 16},
+    {"n": 17666316, "tau": 48}
+  ],
+  "gwr_definition": "leftmost interior minimum divisor count",
+  "broken_lemma": "competitor_lemma_step3_strict_tau_competitor",
+  "surviving_modular_lemma": "z>=4 iff 30 divides w on M_v1",
+  "implication_z_ge_4_implies_gap_2": false,
+  "source": "external counterexample @0x2719 status/2074994936450371679; dual-audited 2026-07-09",
+  "repro_command": "python3 docs/proof-enhancements/scripts/verify_super_signal_counterexamples.py",
+  "verified_at": "2026-07-09"
+}
