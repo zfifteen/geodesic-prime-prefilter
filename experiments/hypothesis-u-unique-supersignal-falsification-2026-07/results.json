@@ -1,0 +1,268 @@
+{
+  "hypothesis_id": "hypothesis_u_unique_supersignal",
+  "status": "invalidated",
+  "statement": "If GWR w has z(w)>=4 on M_v1 and unique tau-minimum (ties==1), then g=2",
+  "verdict": "falsified",
+  "regime": {
+    "phase_a_p_max_exclusive": 50000000,
+    "phase_b_p_max_exclusive": 120000000,
+    "phase_c_w_max_exclusive": 200000000,
+    "phase_c_w_min": 120000000,
+    "left_prime_min": 11,
+    "gaps_scanned": 6841644,
+    "phase_c_multiples_checked": 2666667,
+    "phase_c_non_twin_containers": 2568064,
+    "seconds": 3700.41
+  },
+  "counts": {
+    "z4_hits": 172153,
+    "z4_twins": 172130,
+    "u_hits": 172130,
+    "u_twins": 172130,
+    "tau16_hits": 161457,
+    "h210_hits": 34372,
+    "h210_twins": 34372,
+    "bare_z4_fp": 23,
+    "hypothesis_u_ce": 1
+  },
+  "hypothesis_u_counterexamples": [
+    {
+      "p": 156942923,
+      "q": 156942931,
+      "g": 8,
+      "w": 156942930,
+      "tau_w": 16,
+      "ties": 1,
+      "z": 4,
+      "div30": true,
+      "div210": false
+    }
+  ],
+  "control_bare_z4_false_positives_sample": [
+    {
+      "p": 17666309,
+      "q": 17666317,
+      "g": 8,
+      "w": 17666310,
+      "tau_w": 16,
+      "ties": 5,
+      "z": 4,
+      "div30": true,
+      "div210": false
+    },
+    {
+      "p": 22284029,
+      "q": 22284037,
+      "g": 8,
+      "w": 22284030,
+      "tau_w": 16,
+      "ties": 5,
+      "z": 4,
+      "div30": true,
+      "div210": false
+    },
+    {
+      "p": 39110069,
+      "q": 39110077,
+      "g": 8,
+      "w": 39110070,
+      "tau_w": 16,
+      "ties": 4,
+      "z": 4,
+      "div30": true,
+      "div210": false
+    },
+    {
+      "p": 45515369,
+      "q": 45515377,
+      "g": 8,
+      "w": 45515370,
+      "tau_w": 16,
+      "ties": 5,
+      "z": 4,
+      "div30": true,
+      "div210": false
+    },
+    {
+      "p": 49117829,
+      "q": 49117837,
+      "g": 8,
+      "w": 49117830,
+      "tau_w": 16,
+      "ties": 5,
+      "z": 4,
+      "div30": true,
+      "div210": false
+    },
+    {
+      "p": 53276009,
+      "q": 53276017,
+      "g": 8,
+      "w": 53276010,
+      "tau_w": 16,
+      "ties": 4,
+      "z": 4,
+      "div30": true,
+      "div210": false
+    },
+    {
+      "p": 53668469,
+      "q": 53668477,
+      "g": 8,
+      "w": 53668470,
+      "tau_w": 16,
+      "ties": 3,
+      "z": 4,
+      "div30": true,
+      "div210": false
+    },
+    {
+      "p": 60123929,
+      "q": 60123937,
+      "g": 8,
+      "w": 60123930,
+      "tau_w": 16,
+      "ties": 3,
+      "z": 4,
+      "div30": true,
+      "div210": false
+    },
+    {
+      "p": 61134869,
+      "q": 61134877,
+      "g": 8,
+      "w": 61134870,
+      "tau_w": 16,
+      "ties": 6,
+      "z": 4,
+      "div30": true,
+      "div210": false
+    },
+    {
+      "p": 64986629,
+      "q": 64986637,
+      "g": 8,
+      "w": 64986630,
+      "tau_w": 16,
+      "ties": 5,
+      "z": 4,
+      "div30": true,
+      "div210": false
+    },
+    {
+      "p": 66765029,
+      "q": 66765037,
+      "g": 8,
+      "w": 66765030,
+      "tau_w": 16,
+      "ties": 5,
+      "z": 4,
+      "div30": true,
+      "div210": false
+    },
+    {
+      "p": 66880469,
+      "q": 66880477,
+      "g": 8,
+      "w": 66880470,
+      "tau_w": 16,
+      "ties": 5,
+      "z": 4,
+      "div30": true,
+      "div210": false
+    },
+    {
+      "p": 67527029,
+      "q": 67527037,
+      "g": 8,
+      "w": 67527030,
+      "tau_w": 16,
+      "ties": 4,
+      "z": 4,
+      "div30": true,
+      "div210": false
+    },
+    {
+      "p": 67821869,
+      "q": 67821877,
+      "g": 8,
+      "w": 67821870,
+      "tau_w": 16,
+      "ties": 2,
+      "z": 4,
+      "div30": true,
+      "div210": false
+    },
+    {
+      "p": 76542989,
+      "q": 76542997,
+      "g": 8,
+      "w": 76542990,
+      "tau_w": 16,
+      "ties": 4,
+      "z": 4,
+      "div30": true,
+      "div210": false
+    },
+    {
+      "p": 77643869,
+      "q": 77643877,
+      "g": 8,
+      "w": 77643870,
+      "tau_w": 16,
+      "ties": 5,
+      "z": 4,
+      "div30": true,
+      "div210": false
+    },
+    {
+      "p": 83807069,
+      "q": 83807077,
+      "g": 8,
+      "w": 83807070,
+      "tau_w": 16,
+      "ties": 3,
+      "z": 4,
+      "div30": true,
+      "div210": false
+    },
+    {
+      "p": 89172869,
+      "q": 89172877,
+      "g": 8,
+      "w": 89172870,
+      "tau_w": 16,
+      "ties": 6,
+      "z": 4,
+      "div30": true,
+      "div210": false
+    },
+    {
+      "p": 92196869,
+      "q": 92196877,
+      "g": 8,
+      "w": 92196870,
+      "tau_w": 16,
+      "ties": 3,
+      "z": 4,
+      "div30": true,
+      "div210": false
+    },
+    {
+      "p": 99688829,
+      "q": 99688837,
+      "g": 8,
+      "w": 99688830,
+      "tau_w": 16,
+      "ties": 3,
+      "z": 4,
+      "div30": true,
+      "div210": false
+    }
+  ],
+  "secondary_h210_false_positives": [],
+  "secondary_htau16_false_positives": [],
+  "interpretation": "Hypothesis U is false; unique min + z>=4 does not force twin gaps.",
+  "not_a_theorem": true,
+  "definitive_note": "Finite exhaustive/targeted search can DEFINITIVELY FALSIFY (CE found) but cannot DEFINITIVELY VALIDATE a universal arithmetic claim. Validation requires proof. Empty CE hunt = measured support."
+}

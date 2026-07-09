@@ -27,6 +27,24 @@ One CE falsifies. Zero CEs in a stated regime is measured support only.
 - Same predicates on each gap interior via `divisor_count` (audit only).
 - Ensures pressure **beyond** the prior `10^8` partial clean band for unique-min.
 
+### Phase C — targeted unique-min missile (decisive CE geometry)
+
+- Walk every multiple of 30 in `[P_MAX_B, P_MAX_C)` (default `P_MAX_C = 2×10^8`).
+- For each `w`, take consecutive primes containing `w`.
+- If `g > 2` and `w` is the **unique** interior `τ`-minimizer, record a Hypothesis U CE
+  (because `30 | w` ⇒ `z(w) ≥ 4`).
+- This is the sharpest CE shape: unique resonant GWR in a non-twin gap.
+
+### Decision rule (definitive falsification only)
+
+| Observation | Verdict |
+| --- | --- |
+| ≥1 Hypothesis U CE | **`falsified`** (definitive for the universal claim) |
+| 0 CEs in Phases A–C | **`not_falsified_in_tested_regime`** (measured support; **not** a proof) |
+
+Finite search **cannot** definitively validate a universal arithmetic hypothesis.
+Only a CE is definitive. Empty regime = still hypothesis.
+
 ### Success / fail for the experiment runner
 
 - Exit code `0` always if the scan completes (science run).
@@ -46,5 +64,8 @@ One CE falsifies. Zero CEs in a stated regime is measured support only.
 ```bash
 python3 experiments/hypothesis-u-unique-supersignal-falsification-2026-07/run_hypothesis_u.py
 # optional:
-python3 experiments/hypothesis-u-unique-supersignal-falsification-2026-07/run_hypothesis_u.py --p-max-a 50000000 --p-max-b 120000000
+python3 experiments/hypothesis-u-unique-supersignal-falsification-2026-07/run_hypothesis_u.py \
+  --p-max-a 50000000 --p-max-b 120000000 --p-max-c 200000000
+python3 -m pytest experiments/hypothesis-u-unique-supersignal-falsification-2026-07/test_hypothesis_u_core.py -q
 ```
+

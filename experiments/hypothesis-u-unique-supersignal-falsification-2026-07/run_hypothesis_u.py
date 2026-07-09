@@ -9,15 +9,16 @@ One counterexample (g > 2, z >= 4, ties == 1) falsifies U.
 Zero CEs in a stated regime is measured support only — not a proof.
 
 Classical tools used as audit only.
+
+Default regime: full consecutive-prime gaps with left prime p in [11, 1.2e8).
 """
 
 from __future__ import annotations
 
 import argparse
+import bisect
 import json
-import sys
 import time
-from array import array
 from collections import defaultdict
 from pathlib import Path
 
@@ -27,6 +28,38 @@ HERE = Path(__file__).resolve().parent
 
 def zcount(n: int) -> int:
     return sum(1 for m in MODULI if n % m == 0)
+
+
+def gwr_from_tau_segment(p: int, q: int, tau_fn) -> tuple[int, int, int]:
+    """Return (w, tau(w), tie_count) for gap (p,q) using callable tau_fn(n)."""
+    best_t = 10**18
+    best_w = 0
+    for n in range(p + 1, q):
+        tn = int(tau_fn(n))
+        if tn < best_t:
+            best_t = tn
+            best_w = n
+    ties = sum(1 for n in range(p + 1, q) if int(tau_fn(n)) == best_t)
+    return best_w, best_t, ties
+
+
+def classify_gap(p: int, q: int, w: int, tw: int, ties: int) -> dict:
+    """Classify a gap against Hypothesis U and the bare Super-Signal control."""
+    g = q - p
+    z = zcount(w)
+    unique = ties == 1
+    z4 = z >= 4
+    return {
+        "g": g,
+        "z": z,
+        "ties": ties,
+        "tau_w": tw,
+        "hypothesis_u_hit": bool(z4 and unique),
+        "hypothesis_u_ce": bool(z4 and unique and g > 2),
+        "bare_z4_fp": bool(z4 and g > 2),
+        "h210_fp": bool(w % 210 == 0 and g > 2),
+        "htau16_fp": bool(z4 and tw > 16 and g > 2),
+    }
 
 
 def sieve_primes(n: int) -> list[int]:
@@ -40,13 +73,27 @@ def sieve_primes(n: int) -> list[int]:
     return [i for i in range(2, n + 1) if s[i]]
 
 
-def sieve_tau(n: int) -> array:
-    """Compact tau table: unsigned short is enough (tau(n) << 65535 for n<=1e8+)."""
-    t = array("H", [0]) * (n + 1)
-    for i in range(1, n + 1):
-        for j in range(i, n + 1, i):
-            t[j] += 1
-    return t
+def tau_segment(left: int, right: int, small_primes: list[int]) -> list[int]:
+    """tau values for absolute integers in [left, right)."""
+    n = right - left
+    vals = list(range(left, right))
+    tau = [1] * n
+    for p in small_primes:
+        if p * p >= right:
+            break
+        start = ((left + p - 1) // p) * p
+        for x in range(start, right, p):
+            i = x - left
+            exp = 0
+            while vals[i] % p == 0:
+                vals[i] //= p
+                exp += 1
+            if exp:
+                tau[i] *= exp + 1
+    for i in range(n):
+        if vals[i] > 1:
+            tau[i] *= 2
+    return tau
 
 
 def record(p: int, q: int, w: int, tw: int, ties: int, z: int) -> dict:
@@ -63,222 +110,118 @@ def record(p: int, q: int, w: int, tw: int, ties: int, z: int) -> dict:
     }
 
 
-def phase_a(p_max: int, max_ce: int = 50) -> dict:
-    print(f"PHASE A: sieve + full gaps, left prime p in [11, {p_max})", flush=True)
+def run_scan(p_max: int, seg: int = 10_000_000, max_store: int = 40) -> dict:
+    print(f"Sieving primes to {p_max}+pad ...", flush=True)
     t0 = time.time()
     primes = sieve_primes(p_max + 400)
-    tau = sieve_tau(p_max + 400)
-    print(f"  sieve done in {time.time() - t0:.1f}s  primes={len(primes)}", flush=True)
+    small = sieve_primes(int((p_max + 400) ** 0.5) + 2)
+    print(f"  primes={len(primes)} in {time.time() - t0:.1f}s", flush=True)
 
-    out = {
-        "gaps": 0,
-        "hypothesis_u_ce": [],
-        "bare_z4_fp": [],
-        "h210_fp": [],
-        "htau16_fp": [],
-        "counts": defaultdict(int),
-    }
-
+    counts: dict[str, int] = defaultdict(int)
+    u_ce: list[dict] = []
+    bare: list[dict] = []
+    h210: list[dict] = []
+    htau: list[dict] = []
+    gaps = 0
     t1 = time.time()
-    for i in range(len(primes) - 1):
-        p, q = primes[i], primes[i + 1]
-        if p < 11:
+
+    for w0 in range(0, p_max, seg):
+        w1 = min(w0 + seg, p_max)
+        left = max(2, w0)
+        right = min(p_max + 400, w1 + 400)
+        if right <= left:
             continue
-        if p >= p_max:
-            break
-        if q - p < 2:
-            continue
-        out["gaps"] += 1
-        best_t = 10**9
-        best_w = 0
-        for n in range(p + 1, q):
-            tn = tau[n]
-            if tn < best_t:
-                best_t = tn
-                best_w = n
-        ties = 0
-        for n in range(p + 1, q):
-            if tau[n] == best_t:
-                ties += 1
-        z = zcount(best_w)
-        g = q - p
-        rec = record(p, q, best_w, best_t, ties, z)
-
-        if z >= 4:
-            out["counts"]["z4_hits"] += 1
-            if g == 2:
-                out["counts"]["z4_twins"] += 1
-            else:
-                out["counts"]["bare_z4_fp"] += 1
-                if len(out["bare_z4_fp"]) < max_ce:
-                    out["bare_z4_fp"].append(rec)
-            if ties == 1:
-                out["counts"]["u_hits"] += 1
-                if g == 2:
-                    out["counts"]["u_twins"] += 1
-                else:
-                    out["counts"]["hypothesis_u_ce"] += 1
-                    if len(out["hypothesis_u_ce"]) < max_ce:
-                        out["hypothesis_u_ce"].append(rec)
-            if best_t > 16:
-                out["counts"]["tau16_hits"] += 1
-                if g != 2:
-                    out["counts"]["htau16_fp"] += 1
-                    if len(out["htau16_fp"]) < max_ce:
-                        out["htau16_fp"].append(rec)
-        if best_w % 210 == 0:
-            out["counts"]["h210_hits"] += 1
-            if g == 2:
-                out["counts"]["h210_twins"] += 1
-            else:
-                out["counts"]["h210_fp"] += 1
-                if len(out["h210_fp"]) < max_ce:
-                    out["h210_fp"].append(rec)
-
-    out["counts"] = dict(out["counts"])
-    out["seconds"] = round(time.time() - t1, 2)
-    print(
-        f"  gaps={out['gaps']}  U_CE={len(out['hypothesis_u_ce'])}  "
-        f"bare_z4_fp={out['counts'].get('bare_z4_fp', 0)}  "
-        f"time={out['seconds']}s",
-        flush=True,
-    )
-    return out
-
-
-def phase_b(p_lo: int, p_hi: int, max_ce: int = 50) -> dict:
-    """Extension: sympy primerange + divisor_count on interiors only."""
-    import sympy as sp
-
-    print(f"PHASE B: extension gaps, left prime p in [{p_lo}, {p_hi})", flush=True)
-    t0 = time.time()
-    out = {
-        "gaps": 0,
-        "hypothesis_u_ce": [],
-        "bare_z4_fp": [],
-        "h210_fp": [],
-        "htau16_fp": [],
-        "counts": defaultdict(int),
-    }
-
-    # process in chunks for progress
-    chunk = 5_000_000
-    lo = p_lo
-    while lo < p_hi:
-        hi = min(lo + chunk, p_hi)
-        ps = list(sp.primerange(lo, hi + 400))
-        for i in range(len(ps) - 1):
-            p, q = int(ps[i]), int(ps[i + 1])
-            if p < lo or p >= hi:
+        tau = tau_segment(left, right, small)
+        i0 = bisect.bisect_left(primes, max(11, w0))
+        for i in range(i0, len(primes) - 1):
+            p = primes[i]
+            if p >= w1:
+                break
+            if p < 11:
                 continue
-            if q - p < 2:
+            q = primes[i + 1]
+            if q - p < 2 or q > right:
                 continue
-            out["gaps"] += 1
+            gaps += 1
             best_t = 10**9
             best_w = 0
-            rows = []
             for n in range(p + 1, q):
-                tn = int(sp.divisor_count(n))
-                rows.append(tn)
+                tn = tau[n - left]
                 if tn < best_t:
                     best_t = tn
                     best_w = n
-            ties = sum(1 for tn in rows if tn == best_t)
+            ties = sum(1 for n in range(p + 1, q) if tau[n - left] == best_t)
             z = zcount(best_w)
             g = q - p
             rec = record(p, q, best_w, best_t, ties, z)
 
             if z >= 4:
-                out["counts"]["z4_hits"] += 1
+                counts["z4_hits"] += 1
                 if g == 2:
-                    out["counts"]["z4_twins"] += 1
+                    counts["z4_twins"] += 1
                 else:
-                    out["counts"]["bare_z4_fp"] += 1
-                    if len(out["bare_z4_fp"]) < max_ce:
-                        out["bare_z4_fp"].append(rec)
+                    counts["bare_z4_fp"] += 1
+                    if len(bare) < max_store:
+                        bare.append(rec)
                 if ties == 1:
-                    out["counts"]["u_hits"] += 1
+                    counts["u_hits"] += 1
                     if g == 2:
-                        out["counts"]["u_twins"] += 1
+                        counts["u_twins"] += 1
                     else:
-                        out["counts"]["hypothesis_u_ce"] += 1
-                        if len(out["hypothesis_u_ce"]) < max_ce:
-                            out["hypothesis_u_ce"].append(rec)
-                            print(f"  HYPOTHESIS U CE FOUND: {rec}", flush=True)
-                if best_t > 16 and g != 2:
-                    out["counts"]["htau16_fp"] += 1
-                    if len(out["htau16_fp"]) < max_ce:
-                        out["htau16_fp"].append(rec)
+                        counts["u_ce"] += 1
+                        u_ce.append(rec)
+                        print(f"  HYPOTHESIS U CE: {rec}", flush=True)
+                if best_t > 16:
+                    counts["tau16_hits"] += 1
+                    if g != 2:
+                        counts["htau16_fp"] += 1
+                        if len(htau) < max_store:
+                            htau.append(rec)
             if best_w % 210 == 0:
-                out["counts"]["h210_hits"] += 1
+                counts["h210_hits"] += 1
                 if g == 2:
-                    out["counts"]["h210_twins"] += 1
+                    counts["h210_twins"] += 1
                 else:
-                    out["counts"]["h210_fp"] += 1
-                    if len(out["h210_fp"]) < max_ce:
-                        out["h210_fp"].append(rec)
-                        print(f"  H-210 CE FOUND: {rec}", flush=True)
+                    counts["h210_fp"] += 1
+                    if len(h210) < max_store:
+                        h210.append(rec)
+
         print(
-            f"  chunk [{lo},{hi}) gaps_so_far={out['gaps']} "
-            f"U_CE={len(out['hypothesis_u_ce'])} bare_fp={out['counts'].get('bare_z4_fp', 0)} "
-            f"elapsed={time.time() - t0:.1f}s",
+            f"  window [{w0},{w1}) gaps={gaps} U_CE={counts['u_ce']} "
+            f"bare_fp={counts['bare_z4_fp']} 210_fp={counts['h210_fp']} "
+            f"t={time.time() - t1:.1f}s",
             flush=True,
         )
-        lo = hi
 
-    out["counts"] = dict(out["counts"])
-    out["seconds"] = round(time.time() - t0, 2)
-    return out
-
-
-def merge_phase(a: dict, b: dict) -> dict:
-    keys_list = ("hypothesis_u_ce", "bare_z4_fp", "h210_fp", "htau16_fp")
-    merged = {
-        "gaps": a["gaps"] + b["gaps"],
-        "seconds": round(a.get("seconds", 0) + b.get("seconds", 0), 2),
-        "counts": defaultdict(int),
+    return {
+        "gaps": gaps,
+        "counts": dict(counts),
+        "u_ce": u_ce,
+        "bare": bare,
+        "h210": h210,
+        "htau": htau,
+        "seconds": round(time.time() - t0, 2),
     }
-    for k, v in a.get("counts", {}).items():
-        merged["counts"][k] += v
-    for k, v in b.get("counts", {}).items():
-        merged["counts"][k] += v
-    merged["counts"] = dict(merged["counts"])
-    for k in keys_list:
-        merged[k] = list(a.get(k, [])) + list(b.get(k, []))
-    return merged
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--p-max-a", type=int, default=50_000_000, help="Phase A exclusive left-prime max")
-    ap.add_argument("--p-max-b", type=int, default=120_000_000, help="Phase B exclusive left-prime max")
-    ap.add_argument("--skip-b", action="store_true", help="Run Phase A only")
+    ap.add_argument(
+        "--p-max",
+        type=int,
+        default=120_000_000,
+        help="Exclusive max left prime (default 1.2e8)",
+    )
     args = ap.parse_args()
 
     print("=== Hypothesis U falsification experiment ===", flush=True)
     print("Primary: z>=4 AND unique min (ties==1) => g==2", flush=True)
-    print(f"Regime: Phase A p<[11,{args.p_max_a}); Phase B p in [{args.p_max_a},{args.p_max_b})", flush=True)
+    print(f"Regime: full gaps, left prime p in [11, {args.p_max})", flush=True)
 
-    a = phase_a(args.p_max_a)
-    if args.skip_b or args.p_max_b <= args.p_max_a:
-        b = {
-            "gaps": 0,
-            "hypothesis_u_ce": [],
-            "bare_z4_fp": [],
-            "h210_fp": [],
-            "htau16_fp": [],
-            "counts": {},
-            "seconds": 0.0,
-        }
-    else:
-        b = phase_b(args.p_max_a, args.p_max_b)
-
-    m = merge_phase(a, b)
-    u_ce = m["hypothesis_u_ce"]
-    if u_ce:
-        verdict = "falsified"
-    else:
-        verdict = "not_falsified_in_tested_regime"
+    out = run_scan(args.p_max)
+    u_ce = out["u_ce"]
+    counts = out["counts"]
+    verdict = "falsified" if u_ce else "not_falsified_in_tested_regime"
 
     result = {
         "hypothesis_id": "hypothesis_u_unique_supersignal",
@@ -286,43 +229,45 @@ def main() -> int:
         "statement": "If GWR w has z(w)>=4 on M_v1 and unique tau-minimum (ties==1), then g=2",
         "verdict": verdict,
         "regime": {
-            "phase_a_p_max_exclusive": args.p_max_a,
-            "phase_b_p_max_exclusive": args.p_max_b if not args.skip_b else args.p_max_a,
+            "method": "full consecutive-prime gaps; primes sieve + segmented tau",
             "left_prime_min": 11,
-            "gaps_scanned": m["gaps"],
-            "seconds": m["seconds"],
+            "left_prime_max_exclusive": args.p_max,
+            "gaps_scanned": out["gaps"],
+            "seconds": out["seconds"],
         },
-        "counts": m["counts"],
+        "counts": counts,
         "hypothesis_u_counterexamples": u_ce,
-        "control_bare_z4_false_positives_sample": m["bare_z4_fp"][:20],
-        "secondary_h210_false_positives": m["h210_fp"][:20],
-        "secondary_htau16_false_positives": m["htau16_fp"][:20],
-        "interpretation": {
-            "falsified": "Hypothesis U is false; unique min + z>=4 does not force twin gaps.",
-            "not_falsified_in_tested_regime": (
-                "No CE found in the stated regime. Measured support only. "
-                "Not a proof. Hypothesis remains open."
-            ),
-        }[verdict],
+        "control_bare_z4_false_positives_sample": out["bare"],
+        "control_bare_z4_false_positive_count": counts.get("bare_z4_fp", 0),
+        "secondary_h210_false_positives": out["h210"],
+        "secondary_htau16_false_positives": out["htau"],
+        "interpretation": (
+            "Hypothesis U FALSIFIED by listed CE(s)."
+            if u_ce
+            else (
+                f"No counterexample to Hypothesis U among {out['gaps']} gaps "
+                f"with left prime p in [11, {args.p_max}). "
+                f"Bare z>=4 non-twin count = {counts.get('bare_z4_fp', 0)}. "
+                f"H-210 non-twin = {counts.get('h210_fp', 0)}; "
+                f"H-tau>16 non-twin = {counts.get('htau16_fp', 0)}. "
+                "Measured support only. Not a proof. Hypothesis remains open."
+            )
+        ),
         "not_a_theorem": True,
     }
 
-    out_path = HERE / "results.json"
-    out_path.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+    path = HERE / "results.json"
+    path.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
 
     print("\n=== RESULT ===", flush=True)
     print(f"verdict: {verdict}", flush=True)
-    print(f"gaps_scanned: {m['gaps']}", flush=True)
+    print(f"gaps_scanned: {out['gaps']}", flush=True)
     print(f"Hypothesis U counterexamples: {len(u_ce)}", flush=True)
-    for ce in u_ce[:10]:
-        print(f"  CE {ce}", flush=True)
-    print(
-        f"control bare z>=4 FPs (count): {m['counts'].get('bare_z4_fp', 0)}",
-        flush=True,
-    )
-    print(f"H-210 FPs: {m['counts'].get('h210_fp', 0)}", flush=True)
-    print(f"H-tau>16 FPs: {m['counts'].get('htau16_fp', 0)}", flush=True)
-    print(f"wrote {out_path}", flush=True)
+    print(f"U hits/twins: {counts.get('u_hits', 0)}/{counts.get('u_twins', 0)}", flush=True)
+    print(f"bare z>=4 FPs: {counts.get('bare_z4_fp', 0)}", flush=True)
+    print(f"H-210 FPs: {counts.get('h210_fp', 0)}", flush=True)
+    print(f"H-tau>16 FPs: {counts.get('htau16_fp', 0)}", flush=True)
+    print(f"wrote {path}", flush=True)
     return 0
 
 
