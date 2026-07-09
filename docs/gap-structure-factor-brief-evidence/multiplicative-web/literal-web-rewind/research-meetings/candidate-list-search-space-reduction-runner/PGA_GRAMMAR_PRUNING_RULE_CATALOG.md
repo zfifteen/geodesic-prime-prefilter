@@ -147,7 +147,7 @@ The grammar pruner is production-grade for protected toy and replay surfaces. It
 
 ---
 
-**End of Catalog** (living document  to  append only after fresh surface mining + zero-FN re-audit + batch re-validation).
+**End of Catalog** (living document: append only after fresh surface mining + zero-FN re-audit + batch re-validation).
 
 *This file + pga_grammar_pruner.py:58 (PRUNING_RULES) together constitute the single source of truth for the current PGA grammar pruning capability.*
 

@@ -61,7 +61,7 @@ Current datetime: {{datetime}}
 PGS objects active in this director cycle.
 
 ## Output Format for Every Cycle
-Start with: "PGS Research Director Cycle Start : [target description]"
+Start with: "PGS Research Director Cycle Start: [target description]"
 
 End with:
 - Status: ADVANCE | FAILED | UNRESOLVED

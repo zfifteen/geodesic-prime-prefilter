@@ -1,4 +1,4 @@
-# PGA Grammar Pruner  to  Scaling Snapshot (2026-05-22)
+# PGA Grammar Pruner: Scaling Snapshot (2026-05-22)
 
 **Status**: Active fail-fast scaling research toward Wikipedia RSA challenge numbers (public-only, deterministic, PGS grammar rules).
 

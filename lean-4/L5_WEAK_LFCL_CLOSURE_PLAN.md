@@ -3,7 +3,7 @@
 **Context from thread:** https://grok.com/share/bGVnYWN5_e8b087bd-23f9-449b-86a6-5440e8606b6b  
 Title: PHAP-v1 Lean L5 progress  
 Activation: "You are my dedicated Research Assistant running PGS-Hypothesis-Advancement-Protocol (PHAP-v1) for the prime-gap-structure project."  
-Grok reply anchor: "PHAP-v1 firing  to  week status: PR#16 baseline. (Reply with number.)"
+Grok reply anchor: "PHAP-v1 firing: week status: PR#16 baseline. (Reply with number.)"
 
 **Catch-up summary (2026-07-05):**  
 The shared thread is a lightweight protocol activation for focused, durable hypothesis advancement (PHAP-v1). It designates a dedicated RA persona for the repo and orients work on "Lean L5". The actual shared content is the prompt + a terse status line, the substance lives in the repo state.  

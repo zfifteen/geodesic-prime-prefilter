@@ -180,14 +180,14 @@ def _assert_pgs_native_contract():
 
 
 # ---------------------------------------------------------------------------
-# PGS-Native Certificate Entry Point (initial prototype  to  Workstream B)
+# PGS-Native Certificate Entry Point (initial prototype: Workstream B)
 # ---------------------------------------------------------------------------
 
 def compute_pgs_native_motif_certificate(n: int) -> PGSNativeMotifCertificate | MotifUnresolved:
     """Compute the PGS-native motif certificate for raw N using only PGS objects and invariants.
 
     This is the single allowed entrypoint for live raw-N motif derivation
-    under the project contract (Workstream B  to  PGS-Native Derivation Prototype).
+    under the project contract (Workstream B: PGS-Native Derivation Prototype).
 
     PGS reasoning frame (per AGENTS.md):
         PGS objects -> PGS invariants -> PGS rule/law -> resolved certificate
@@ -237,7 +237,7 @@ def compute_pgs_native_motif_certificate(n: int) -> PGSNativeMotifCertificate | 
             f"1. PGS object: ordered prime-gap chamber state containing the selected integer N.\n"
             f"   (The unique gap between consecutive endpoints that holds N in its interior.)\n"
             f"2. PGS invariant: divisor-count field of the gap interior (DNI coordinate).\n"
-            f"3. PGS rule: Leftmost Minimum-Divisor Rule (GWR)  to  identify the leftmost\n"
+            f"3. PGS rule: Leftmost Minimum-Divisor Rule (GWR) to identify the leftmost\n"
             f"   interior position achieving the global minimum divisor count in the chamber.\n"
             f"   This position is the selected attractor / invariant winner.\n"
             f"4. PGS mapping: DNI applied to the winner's divisor count yields the carrier\n"
@@ -636,7 +636,7 @@ def derive_public_motif(n: int, include_context: bool = True) -> str:
             return f"{base} + {cert.previous_reduced_state} prev"
         return base
 
-    # Non-toy (or future unresolved toy case)  to  explicit block, no fallback.
+    # Non-toy (or future unresolved toy case): explicit block, no fallback.
     raise PublicMotifDerivationBlocked(
         f"pgs_native_motif_certificate_unavailable: {cert.reason} | {cert.details}"
     )

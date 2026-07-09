@@ -3,7 +3,7 @@
 **Date**: 2026-05-30  
 **Branch**: `predictions`  
 **Probe**: `research/16-predictions/scripts/w_offset_carrier_probe.py` (v0.1)  
-**Surface**: 10^12  to  10^13 (modest window for first signal)  
+**Surface**: 10^12 to 10^13 (modest window for first signal)  
 **Transitions analyzed**: 392 d=4 current chambers
 
 ## Experiment
