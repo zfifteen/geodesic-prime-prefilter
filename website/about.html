@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Program status · Prime Gap Structure</title>
+  <meta name="description" content="Public status map for the Prime Gap Structure program: proved, implemented, measured, and open.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">Prime Gap Structure</span>
+        <span class="brand-sub">Educational course</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gaps.html">Gaps</a></li>
+        <li><a href="mechanism.html">Mechanism</a></li>
+        <li><a href="laws.html">Laws</a></li>
+        <li><a href="generator.html">Generator</a></li>
+        <li><a href="cryptology.html">Cryptology</a></li>
+        <li><a href="evidence.html">Evidence</a></li>
+        <li><a href="glossary.html">Glossary</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-hero wrap">
+      <p class="kicker">08 · About</p>
+      <h1>Program status map</h1>
+      <p class="lead">
+        What is proved, what is implemented, what is measured, and what remains open.
+        This page is a public continuity surface, not a biography.
+      </p>
+    </div>
+
+    <section class="section wrap">
+      <div class="prose" style="max-width:none">
+        <div class="status-map">
+          <div class="status-map-row">
+            <div><span class="status status-proved">Proved</span></div>
+            <div>
+              <h3 style="margin-top:0">Universal local pillars</h3>
+              <p>
+                Direct next-prime rule from exact divisor counts.
+                Interior maximizer (leftmost minimum-divisor selection).
+                Universal bounded compression of the selected-witness offset, including the Prime-Square Proximity Theorem.
+              </p>
+              <p class="mb-0">Authority: <a href="https://github.com/zfifteen/prime-gap-structure/blob/main/PROOF.md" rel="noopener noreferrer" target="_blank">PROOF.md</a></p>
+            </div>
+          </div>
+
+          <div class="status-map-row">
+            <div><span class="status status-measured">Implemented</span></div>
+            <div>
+              <h3 style="margin-top:0">Minimal PGS Generator v1.1</h3>
+              <p>
+                Production milestone: known prime in, next prime out as a minimal record.
+                Completed major release, not the whole active project.
+              </p>
+              <p class="mb-0">Map: <a href="generator.html">Generator chapter</a> ·
+                <a href="https://github.com/zfifteen/prime-gap-structure/blob/main/docs/PRIME_GAP_GENERATOR.md" rel="noopener noreferrer" target="_blank">generator doc</a></p>
+            </div>
+          </div>
+
+          <div class="status-map-row">
+            <div><span class="status status-measured">Measured</span></div>
+            <div>
+              <h3 style="margin-top:0">Generator and walk surfaces</h3>
+              <p>
+                Including <code>11 .. 1,000,000</code> with full exact output and zero unresolved rows,
+                decade-window surfaces through <code>10^18</code>, and recursive walk recoveries inside stated regimes.
+              </p>
+              <p class="mb-0">Map: <a href="evidence.html">Evidence chapter</a> ·
+                <a href="https://github.com/zfifteen/prime-gap-structure/blob/main/docs/RESULTS.md" rel="noopener noreferrer" target="_blank">RESULTS.md</a></p>
+            </div>
+          </div>
+
+          <div class="status-map-row">
+            <div><span class="status status-measured">Active research</span></div>
+            <div>
+              <h3 style="margin-top:0">Cryptology and modulus-link work</h3>
+              <p>
+                Endpoint-chain traversal, floor transport, reciprocal closure, modulus-link residual state,
+                and structural certificates on public ladders. Includes resolved and unresolved RSA v2 rows.
+              </p>
+              <p class="mb-0">Map: <a href="cryptology.html">Cryptology chapter</a> ·
+                <a href="https://github.com/zfifteen/prime-gap-structure/tree/main/research/06-cryptology-rsa" rel="noopener noreferrer" target="_blank">research tree</a></p>
+            </div>
+          </div>
+
+          <div class="status-map-row">
+            <div><span class="status status-unresolved">Open / careful</span></div>
+            <div>
+              <h3 style="margin-top:0">What this program does not claim here</h3>
+              <p>
+                PROOF.md does not itself prove the Riemann Hypothesis.
+                Bounded compression bounds the selected-witness offset; it does not automatically prove every classical gap-size conjecture.
+                Cryptology ladders are not a universal RSA-scale theorem.
+              </p>
+              <p class="mb-0">Lean 4 formalization of the local pillars is in progress as a machine-checked mirror.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="prose" style="margin-top:3rem">
+          <h2>What this website is</h2>
+          <hr class="gold-rule">
+          <p>
+            A public educational course for curious non-specialists: dark-luxury editorial design,
+            dual reading depth, interactive visual labs, and strict status labels.
+          </p>
+          <p>
+            It is not the formal proof. It is not a substitute for repository artifacts.
+            When teaching language and formal status conflict, formal status wins.
+          </p>
+
+          <h2>Research source links</h2>
+          <hr class="gold-rule">
+          <ul>
+            <li><a href="https://github.com/zfifteen/prime-gap-structure" rel="noopener noreferrer" target="_blank">GitHub repository</a></li>
+            <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/PROOF.md" rel="noopener noreferrer" target="_blank">PROOF.md</a></li>
+            <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/docs/RESULTS.md" rel="noopener noreferrer" target="_blank">docs/RESULTS.md</a></li>
+            <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/docs/PRIME_GAP_GENERATOR.md" rel="noopener noreferrer" target="_blank">docs/PRIME_GAP_GENERATOR.md</a></li>
+            <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/research/00-index/continuity/START_HERE.md" rel="noopener noreferrer" target="_blank">Continuity bootstrap</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="hero-actions" style="justify-content:flex-start;margin-top:2.5rem">
+        <a class="btn btn-primary" href="index.html">Return to course home</a>
+        <a class="btn btn-ghost" href="gaps.html">Start chapter 01</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <h4>Prime Gap Structure</h4>
+        <p style="color:var(--text-muted);font-size:0.95rem;margin:0">Educational course · Chapter 08</p>
+      </div>
+      <div>
+        <h4>Course</h4>
+        <ul>
+          <li><a href="gaps.html">Gaps</a></li>
+          <li><a href="laws.html">Laws</a></li>
+          <li><a href="cryptology.html">Cryptology</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research source</h4>
+        <ul>
+          <li><a href="https://github.com/zfifteen/prime-gap-structure" rel="noopener noreferrer" target="_blank">Repository</a></li>
+          <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/PROOF.md" rel="noopener noreferrer" target="_blank">PROOF.md</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap footer-note">
+      Public continuity surface for the educational website. Formal status remains repository-owned.
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

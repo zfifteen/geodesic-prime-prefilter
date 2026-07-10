@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The generator · Prime Gap Structure</title>
+  <meta name="description" content="The Minimal PGS Generator: known prime in, next prime out, as a clean structural record.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">Prime Gap Structure</span>
+        <span class="brand-sub">Educational course</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gaps.html">Gaps</a></li>
+        <li><a href="mechanism.html">Mechanism</a></li>
+        <li><a href="laws.html">Laws</a></li>
+        <li><a href="generator.html">Generator</a></li>
+        <li><a href="cryptology.html">Cryptology</a></li>
+        <li><a href="evidence.html">Evidence</a></li>
+        <li><a href="glossary.html">Glossary</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-hero wrap">
+      <p class="kicker">04 · Generator</p>
+      <h1>Known prime in.<br>Next prime out.</h1>
+      <p class="lead">
+        The Minimal PGS Generator turns the gap story into a production contract:
+        given a known prime, emit the successor prime as a minimal record.
+        Diagnostics stay outside the stream.
+      </p>
+    </div>
+
+    <section class="section wrap">
+      <div class="prose">
+        <h2>The output is deliberately small</h2>
+        <hr class="gold-rule">
+        <p>
+          For each resolved input prime, the generator emits exactly a pair:
+        </p>
+        <pre>{"p": 89, "q": 97}</pre>
+        <p>
+          That record says only what matters: start at 89; the next prime is 97.
+          No confidence fields. No source labels. No audit metadata inside the stream.
+        </p>
+        <p>
+          Certificates and diagnostics can exist as sidecars. The generated answer itself stays clean.
+        </p>
+
+        <h2>A different question than “is this prime?”</h2>
+        <hr class="gold-rule">
+        <p>
+          Conventional generators often propose a candidate and test it.
+          If the candidate fails, they try another. Faster tests improve the loop, but the shape remains propose and test.
+        </p>
+        <p>
+          The PGS generator asks where the interval after a known prime closes.
+          It reads structural state in the chamber after <code>p</code> and returns <code>q</code>
+          under the program’s deterministic selection contract.
+        </p>
+
+        <div class="callout">
+          <div class="callout-title">Contract</div>
+          <p><code>input known prime p → output next prime q</code></p>
+          <p style="margin-top:0.75rem;margin-bottom:0">
+            If the selection rule does not resolve, the honest result is an explicit unresolved state.
+            The contract does not authorize a silent classical fallback search to invent an answer.
+          </p>
+        </div>
+
+        <h2>Audit after generation</h2>
+        <hr class="gold-rule">
+        <p>
+          <span class="status status-audit">Audit role</span>
+        </p>
+        <p>
+          Classical checks may verify an emitted pair after the fact.
+          Audit confirms. Audit does not choose <code>q</code>.
+          That separation is part of the public engineering posture of the project.
+        </p>
+
+        <h2>Implementation evidence (not theorem bounds)</h2>
+        <hr class="gold-rule">
+        <p>
+          <span class="status status-measured">Measured</span>
+        </p>
+        <p>
+          Production surfaces record exact outputs with zero unresolved rows and zero audit failures
+          inside stated regimes. Those tables certify the implementation.
+          They do not replace the universal next-prime theorem in PROOF.md.
+        </p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Surface</th>
+              <th>Result</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>11 .. 1,000,000</code></td>
+              <td><code>78494 / 78494</code> outputted · 0 unresolved · 0 audit failures</td>
+              <td><span class="status status-measured">Measured</span></td>
+            </tr>
+            <tr>
+              <td><code>10^8</code> through <code>10^18</code> decade windows</td>
+              <td><code>2816 / 2816</code> outputted · 0 unresolved · 0 audit failures</td>
+              <td><span class="status status-measured">Measured</span></td>
+            </tr>
+            <tr>
+              <td>Production path <code>11 .. 100,000</code></td>
+              <td><code>9588 / 9588</code> exact PGS outputs · 0 failures</td>
+              <td><span class="status status-measured">Measured</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose">
+        <div class="deeper">
+          <button type="button" class="deeper-toggle" aria-expanded="false">
+            <span>Deeper · structural foundation</span>
+            <span class="chevron">▾</span>
+          </button>
+          <div class="deeper-body">
+            <p>
+              The generator contract is <code>p → q</code> from exact divisor-count structure.
+              Universal bounded compression (proved) places the GWR-selected witness within
+              <code>max(64, ceil(0.5 · (log q)²))</code> of the left endpoint.
+              Validation surfaces confirm implementation fidelity inside their regimes;
+              they are not the theorem boundary.
+            </p>
+            <p>
+              The live production iteration is the PGS-only v1.1 generator path documented in the repository release notes.
+              It is a completed major production milestone. It is not the whole active research program.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-actions" style="justify-content:flex-start;margin-top:2.5rem">
+        <a class="btn btn-primary" href="cryptology.html">Next: Cryptology</a>
+        <a class="btn btn-ghost" href="https://github.com/zfifteen/prime-gap-structure/blob/main/docs/PRIME_GAP_GENERATOR.md" rel="noopener noreferrer" target="_blank">Research source · generator doc</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <h4>Prime Gap Structure</h4>
+        <p style="color:var(--text-muted);font-size:0.95rem;margin:0">Educational course · Chapter 04</p>
+      </div>
+      <div>
+        <h4>Continue</h4>
+        <ul>
+          <li><a href="cryptology.html">Cryptology</a></li>
+          <li><a href="evidence.html">Evidence</a></li>
+          <li><a href="laws.html">Laws</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research source</h4>
+        <ul>
+          <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/docs/PRIME_GAP_GENERATOR.md" rel="noopener noreferrer" target="_blank">PRIME_GAP_GENERATOR.md</a></li>
+          <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/docs/RESULTS.md" rel="noopener noreferrer" target="_blank">RESULTS.md</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap footer-note">
+      Measured surfaces certify implementations. PROOF.md controls universal theorems.
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

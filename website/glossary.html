@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Glossary · Prime Gap Structure</title>
+  <meta name="description" content="Plain-language glossary of Prime Gap Structure terms, introduced after the objects they name.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">Prime Gap Structure</span>
+        <span class="brand-sub">Educational course</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gaps.html">Gaps</a></li>
+        <li><a href="mechanism.html">Mechanism</a></li>
+        <li><a href="laws.html">Laws</a></li>
+        <li><a href="generator.html">Generator</a></li>
+        <li><a href="cryptology.html">Cryptology</a></li>
+        <li><a href="evidence.html">Evidence</a></li>
+        <li><a href="glossary.html">Glossary</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-hero wrap">
+      <p class="kicker">07 · Glossary</p>
+      <h1>Names after objects</h1>
+      <p class="lead">
+        Project vocabulary is useful once you can picture the thing being named.
+        Each entry starts with the ordinary object, then the term.
+      </p>
+    </div>
+
+    <section class="section wrap">
+      <div class="prose">
+        <dl class="glossary-list">
+          <dt>Prime gap</dt>
+          <dd>
+            The open stretch between two consecutive primes: all composites strictly between them,
+            together with the two prime walls.
+          </dd>
+
+          <dt>Chamber</dt>
+          <dd>
+            A teaching word for the interior region after a known prime and before the next prime.
+            Emphasizes that the composites form a readable room, not random debris.
+          </dd>
+
+          <dt>Divisor count · τ(n)</dt>
+          <dd>
+            How many positive divisors an integer has. Primes greater than 1 have divisor count 2.
+          </dd>
+
+          <dt>Next-prime rule (direct)</dt>
+          <dd>
+            After a known prime, the first later integer with divisor count 2 is the next prime.
+            <span class="status status-proved">Proved</span>
+          </dd>
+
+          <dt>Selected witness · w</dt>
+          <dd>
+            Inside a nonempty gap, the first interior integer that achieves the minimum divisor count.
+          </dd>
+
+          <dt>Leftmost Minimum-Divisor Rule · GWR</dt>
+          <dd>
+            The project name for the selection that produces the selected witness.
+            Proved to be the unique maximizer of the comparison score F.
+            <span class="status status-proved">Proved</span>
+          </dd>
+
+          <dt>Comparison score · F(n)</dt>
+          <dd>
+            A fixed function of divisor count and size. On a gap interior, F is maximized uniquely at the selected witness.
+          </dd>
+
+          <dt>Zero excess · E(n)</dt>
+          <dd>
+            A coordinate that vanishes exactly on primes (for n &gt; 1). Related to F by F = −E in the proof’s dual reading.
+          </dd>
+
+          <dt>Divisor Normalization Identity · DNI</dt>
+          <dd>
+            The preferred exact coordinate reformulation around zero excess and its dual multiplicative form.
+            An identity/coordinate system, not a new theorem by itself.
+          </dd>
+
+          <dt>Bounded compression</dt>
+          <dd>
+            The proved statement that the selected-witness offset w − p cannot exceed a dynamic cutoff at logarithmic-square scale.
+            <span class="status status-proved">Proved</span>
+          </dd>
+
+          <dt>Prime-Square Proximity Theorem</dt>
+          <dd>
+            The proved square-branch closure used inside universal bounded compression.
+            <span class="status status-proved">Proved</span>
+          </dd>
+
+          <dt>Minimal PGS Generator</dt>
+          <dd>
+            Production contract: known prime in, next prime out, as a minimal JSON pair. Diagnostics stay outside the stream.
+          </dd>
+
+          <dt>Unresolved state</dt>
+          <dd>
+            An explicit non-answer when the active PGS rule does not close. Not a cue to invent a classical fallback as if it were PGS inference.
+          </dd>
+
+          <dt>Endpoint chain</dt>
+          <dd>
+            An ordered sequence of structural endpoints the program traverses. In cryptology work, the chain is the public working object for transport and closure.
+          </dd>
+
+          <dt>Floor transport</dt>
+          <dd>
+            Moving structural information through a modulus using floor-scale maps, rather than candidate-factor guessing.
+          </dd>
+
+          <dt>Reciprocal closure</dt>
+          <dd>
+            Consistency of transported endpoint structure under reciprocal reading. Success can yield a public endpoint class; failure yields unresolved.
+          </dd>
+
+          <dt>Modulus-link residual</dt>
+          <dd>
+            What remains after transport and attempted closure when the story is not finished: informative structure without a completed certificate.
+          </dd>
+
+          <dt>Structural certificate</dt>
+          <dd>
+            A finished public structural emission under the active rule (for example a resolved endpoint class on a measured case).
+          </dd>
+
+          <dt>Audit</dt>
+          <dd>
+            Downstream verification of an already produced answer. May use classical tools. Does not choose the PGS output.
+          </dd>
+
+          <dt>Measured surface</dt>
+          <dd>
+            An implementation or experiment result with an exact tested regime. Certifies code and probes; does not bound universal theorems by itself.
+          </dd>
+        </dl>
+      </div>
+
+      <div class="hero-actions" style="justify-content:flex-start;margin-top:2.5rem">
+        <a class="btn btn-primary" href="about.html">Next: Program status</a>
+        <a class="btn btn-ghost" href="index.html">Course home</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <h4>Prime Gap Structure</h4>
+        <p style="color:var(--text-muted);font-size:0.95rem;margin:0">Educational course · Chapter 07</p>
+      </div>
+      <div>
+        <h4>Continue</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="laws.html">Laws</a></li>
+          <li><a href="mechanism.html">Mechanism</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research source</h4>
+        <ul>
+          <li><a href="https://github.com/zfifteen/prime-gap-structure" rel="noopener noreferrer" target="_blank">Repository</a></li>
+          <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/PROOF.md" rel="noopener noreferrer" target="_blank">PROOF.md</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap footer-note">
+      Terms follow repository vocabulary. Status labels follow PROOF.md and RESULTS.md.
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
