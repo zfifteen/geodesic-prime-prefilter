@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Track A · Highest-Leverage Research Enhancements</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4f7f9; --ink: #15202b; --muted: #5a6774; --line: #d4dee6;
+      --panel: #fff; --accent: #0b5f8a; --accent-soft: #e6f3f9;
+      --good: #1f6b45; --warn: #8a5a00; --bad: #8a2436; --hyp: #4a3f8a;
+      --impl: #2f5f7a; --code: #eef3f6; --nav-w: 230px;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--bg);
+      font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .layout { display: grid; grid-template-columns: var(--nav-w) minmax(0,1fr); min-height: 100vh; }
+    nav.side { position: sticky; top: 0; align-self: start; height: 100vh; overflow: auto;
+      background: #0f2433; color: #dce8f0; padding: 18px 14px 28px; }
+    nav.side h1 { margin: 0 0 4px; font-size: 0.95rem; letter-spacing: .04em; text-transform: uppercase; color: #8fc6e8; }
+    nav.side .sub { margin: 0 0 14px; font-size: 12px; color: #8aa0b0; }
+    nav.side a { color: #dce8f0; display: block; padding: 5px 8px; border-radius: 5px; font-size: 13px; margin-bottom: 2px; }
+    nav.side a:hover { background: #1a3a4f; text-decoration: none; }
+    nav.side a.active { background: #1f4d68; color: #fff; font-weight: 600; }
+    nav.side .group { margin-top: 14px; margin-bottom: 4px; font-size: 11px; letter-spacing: .08em;
+      text-transform: uppercase; color: #6f8ea3; padding-left: 8px; }
+    main { padding: 28px 32px 64px; max-width: 920px; }
+    header.hero { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; margin-bottom: 18px; }
+    header.hero h1 { margin: 0 0 8px; font-size: 1.7rem; line-height: 1.15; letter-spacing: 0; }
+    .lede { margin: 0; color: var(--muted); }
+    .tag { display: inline-block; border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px;
+      font-size: 12px; background: var(--accent-soft); color: var(--accent); margin: 2px 4px 2px 0; }
+    .tag.warn { background: #fff6e5; color: var(--warn); border-color: #efd7a8; }
+    .tag.good { background: #e8f6ee; color: var(--good); border-color: #b7dfc6; }
+    .tag.hyp { background: #efecfb; color: var(--hyp); border-color: #cfc8ef; }
+    .tag.impl { background: #e8f1f6; color: var(--impl); border-color: #b8d0de; }
+    h2 { margin: 28px 0 10px; font-size: 1.28rem; border-bottom: 2px solid var(--line); padding-bottom: 6px; scroll-margin-top: 10px; }
+    h3 { margin: 0 0 8px; font-size: 1.05rem; }
+    .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px; margin: 12px 0; }
+    .card.featured { border-color: var(--accent); background: linear-gradient(180deg,#f7fbfd 0%,#fff 45%); }
+    .id { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 700; color: var(--accent); }
+    table { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--line);
+      border-radius: 10px; overflow: hidden; margin: 10px 0; font-size: 0.92rem; }
+    th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+    th { background: #e8eef3; }
+    tr:last-child td { border-bottom: 0; }
+    code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12.5px; background: var(--code); padding: 1px 5px; border-radius: 4px; }
+    footer { margin-top: 32px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+    @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } nav.side { position: relative; height: auto; } main { padding: 16px 14px 48px; } }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <nav class="side">
+      <h1>Track A</h1>
+      <p class="sub">Highest-leverage research</p>
+      <div class="group">Roadmap</div>
+      <a href="../index.html">Catalog hub</a>
+      <a class="active" href="A-high-leverage.html">Track A</a>
+      <a href="B-proof-formalization.html">Track B</a>
+      <a href="C-cryptology.html">Track C</a>
+      <a href="D-generator-systems.html">Track D</a>
+      <a href="E-theory-open-problems.html">Track E</a>
+      <a href="F-process-continuity.html">Track F</a>
+      <a href="G-applications.html">Track G</a>
+      <a href="H-novel-insights.html">Track H</a>
+      <div class="group">Candidates</div>
+      <a href="#a1">A1 Resolver</a>
+      <a href="#a2">A2 Named objects</a>
+      <a href="#a3">A3 Horizon law</a>
+      <a href="#a4">A4 Falsification engine</a>
+      <a href="#a5">A5 Zero-hidden-carrier</a>
+      <div class="group">Detail</div>
+      <a href="../a1-rsa-endpoint-resolver/index.html"><strong>A1 requirements</strong></a>
+      <a href="../a1-rsa-endpoint-resolver/test-plan.html"><strong>A1 test plan</strong></a>
+    </nav>
+    <main>
+      <header class="hero">
+        <h1>Track A · Highest-leverage research</h1>
+        <p class="lede">Counsel shortlist and current center of gravity: endpoint chains, modulus-link, chamber geometry. Not generator-only polish.</p>
+        <div style="margin-top:12px">
+          <span class="tag">Track A</span>
+          <span class="tag good">A1 requirements fleshed</span>
+          <span class="tag hyp">A2-A5 formalized</span>
+        </div>
+      </header>
+
+      <article class="card featured" id="a1">
+        <div class="id">A1</div>
+        <h3>Mature the PGS-native RSA modulus endpoint resolver</h3>
+        <p><strong>Object:</strong> public modulus <code>N</code> and its oriented endpoint chain under floor transport.</p>
+        <p><strong>Mechanism:</strong> chamber-reset certificates, GWR-selected carriers, reciprocal closure, structural certificates or honest unresolved.</p>
+        <p><strong>Status:</strong>
+          <span class="tag">measured (small rungs)</span>
+          <span class="tag warn">unresolved residuals</span>
+          <span class="tag hyp">crypto-scale engine target</span>
+        </p>
+        <table>
+          <tr><th>Field</th><th>Content</th></tr>
+          <tr><td>Exit criteria</td><td>See full acceptance criteria AC-01-AC-10.</td></tr>
+          <tr><td>Blockers</td><td>Carrier-misalignment residuals; scale wall; classical-pressure risk.</td></tr>
+          <tr><td>Primary artifacts</td><td>v3 ALGORITHM, certificate schema, verifier, 128/256/512 corpora.</td></tr>
+          <tr><td>Requirements</td><td><a href="../a1-rsa-endpoint-resolver/index.html">a1-rsa-endpoint-resolver/index.html</a></td></tr>
+          <tr><td>Test plan</td><td><a href="../a1-rsa-endpoint-resolver/test-plan.html">a1-rsa-endpoint-resolver/test-plan.html</a> (A1-TP)</td></tr>
+        </table>
+      </article>
+
+      <article class="card" id="a2">
+        <div class="id">A2</div>
+        <h3>Name and card first-class chamber / chain objects</h3>
+        <p><strong>Object:</strong> chain-horizon closure, endpoint determinacy, chamber reset, boundary-drop geometry.</p>
+        <p><strong>Mechanism:</strong> dedicated research cards with invariants, falsification surfaces, and vocabulary placement after plain-language description.</p>
+        <p><strong>Status:</strong> <span class="tag warn">unresolved as formal objects</span> <span class="tag">partially measured</span></p>
+        <table>
+          <tr><th>Field</th><th>Content</th></tr>
+          <tr><td>Exit criteria</td><td>Each object has a card: definition, observable, invariant, regime, residual when broken.</td></tr>
+          <tr><td>Blockers</td><td>Implementation detail language still lives only in runner fields.</td></tr>
+          <tr><td>Coupling</td><td>Forced by A1 execution; Continuity counsel runner-up.</td></tr>
+        </table>
+      </article>
+
+      <article class="card" id="a3">
+        <div class="id">A3</div>
+        <h3>Derive pure PGS divisor-horizon law <code>H(p, s0, chain_state)</code></h3>
+        <p><strong>Object:</strong> least-factor maxima of false chain nodes on the high-scale bridge.</p>
+        <p><strong>Mechanism:</strong> bound the horizon from PGS-visible state so terminal selection is not divisor-exhaustion dependent.</p>
+        <p><strong>Status:</strong> <span class="tag hyp">hypothesis</span> <span class="tag">bridge operational (measured)</span></p>
+        <table>
+          <tr><th>Field</th><th>Content</th></tr>
+          <tr><td>Exit criteria</td><td>Deterministic expression much smaller than √q from PGS-visible state, or documented falsification that horizon tracks √q with no compression.</td></tr>
+          <tr><td>Primary source</td><td><code>docs/unanswered-questions/chain-horizon-closure/</code></td></tr>
+          <tr><td>Note</td><td>High-scale non-PGS terminal share ~56-58% at 10^15-10^18 on prior bridge notes; re-measure before citing rates.</td></tr>
+        </table>
+      </article>
+
+      <article class="card" id="a4">
+        <div class="id">A4</div>
+        <h3>Institutional Frontier Falsification Engine</h3>
+        <p><strong>Object:</strong> every new claim at square-branch, chamber-reset, modulus-link frontiers.</p>
+        <p><strong>Mechanism:</strong> pre-registered probes, diagnostic ledgers, attempted-falsification artifacts.</p>
+        <p><strong>Status:</strong> <span class="tag impl">process implementation</span> · template success: twin Super-Signal <span class="tag bad">invalidated</span></p>
+        <table>
+          <tr><th>Field</th><th>Content</th></tr>
+          <tr><td>Exit criteria</td><td>No frontier claim merges without a falsification folder or linked pre-register.</td></tr>
+          <tr><td>Coupling</td><td>Required wrapper for A1 phases P2-P5.</td></tr>
+        </table>
+      </article>
+
+      <article class="card" id="a5">
+        <div class="id">A5</div>
+        <h3>Minimal-state / zero-hidden-carrier demonstration at crypto scale</h3>
+        <p><strong>Object:</strong> carrier set dimension for chamber state on cryptographic moduli.</p>
+        <p><strong>Mechanism:</strong> force A1 (or a dedicated demo) to run with an explicit minimal carrier inventory; measure whether hidden classical carriers appear.</p>
+        <p><strong>Status:</strong> <span class="tag hyp">hypothesis</span> <span class="tag">state-budget measured on smaller surfaces</span></p>
+        <table>
+          <tr><th>Field</th><th>Content</th></tr>
+          <tr><td>Exit criteria</td><td>Published carrier inventory + failure if undeclared state is required for resolution.</td></tr>
+          <tr><td>Coupling</td><td>State-budget chapter; A1 as preferred forcing experiment.</td></tr>
+        </table>
+      </article>
+
+      <footer>
+        <a href="../index.html">← Catalog hub</a> ·
+        <a href="../a1-rsa-endpoint-resolver/index.html">A1 requirements →</a> ·
+        <a href="B-proof-formalization.html">Track B →</a>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

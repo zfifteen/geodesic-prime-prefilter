@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Track H · Novel-Insight Candidates</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4f7f9; --ink: #15202b; --muted: #5a6774; --line: #d4dee6;
+      --panel: #fff; --accent: #0b5f8a; --accent-soft: #e6f3f9;
+      --hyp: #4a3f8a; --warn: #8a5a00; --code: #eef3f6; --nav-w: 230px;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--bg);
+      font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .layout { display: grid; grid-template-columns: var(--nav-w) minmax(0,1fr); min-height: 100vh; }
+    nav.side { position: sticky; top: 0; align-self: start; height: 100vh; overflow: auto;
+      background: #0f2433; color: #dce8f0; padding: 18px 14px 28px; }
+    nav.side h1 { margin: 0 0 4px; font-size: 0.95rem; letter-spacing: .04em; text-transform: uppercase; color: #8fc6e8; }
+    nav.side .sub { margin: 0 0 14px; font-size: 12px; color: #8aa0b0; }
+    nav.side a { color: #dce8f0; display: block; padding: 5px 8px; border-radius: 5px; font-size: 13px; margin-bottom: 2px; }
+    nav.side a:hover { background: #1a3a4f; text-decoration: none; }
+    nav.side a.active { background: #1f4d68; color: #fff; font-weight: 600; }
+    nav.side .group { margin-top: 14px; margin-bottom: 4px; font-size: 11px; letter-spacing: .08em;
+      text-transform: uppercase; color: #6f8ea3; padding-left: 8px; }
+    main { padding: 28px 32px 64px; max-width: 920px; }
+    header.hero { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; margin-bottom: 18px; }
+    header.hero h1 { margin: 0 0 8px; font-size: 1.7rem; line-height: 1.15; letter-spacing: 0; }
+    .lede { margin: 0; color: var(--muted); }
+    .tag { display: inline-block; border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px;
+      font-size: 12px; background: #efecfb; color: var(--hyp); margin: 2px 4px 2px 0; }
+    .tag.warn { background: #fff6e5; color: var(--warn); border-color: #efd7a8; }
+    h3 { margin: 0 0 8px; font-size: 1.05rem; }
+    .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px; margin: 12px 0; }
+    .id { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 700; color: var(--accent); }
+    table { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--line);
+      border-radius: 10px; overflow: hidden; margin: 10px 0; font-size: 0.92rem; }
+    th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+    th { background: #e8eef3; }
+    tr:last-child td { border-bottom: 0; }
+    code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12.5px; background: var(--code); padding: 1px 5px; border-radius: 4px; }
+    .callout { border-left: 4px solid var(--warn); background: #fff8eb; padding: 12px 14px; border-radius: 0 8px 8px 0; margin: 12px 0; }
+    footer { margin-top: 32px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+    @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } nav.side { position: relative; height: auto; } main { padding: 16px 14px 48px; } }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <nav class="side">
+      <h1>Track H</h1>
+      <p class="sub">Novel-insight candidates</p>
+      <div class="group">Roadmap</div>
+      <a href="../index.html">Catalog hub</a>
+      <a href="A-high-leverage.html">Track A</a>
+      <a href="B-proof-formalization.html">Track B</a>
+      <a href="C-cryptology.html">Track C</a>
+      <a href="D-generator-systems.html">Track D</a>
+      <a href="E-theory-open-problems.html">Track E</a>
+      <a href="F-process-continuity.html">Track F</a>
+      <a href="G-applications.html">Track G</a>
+      <a class="active" href="H-novel-insights.html">Track H</a>
+      <div class="group">Candidates</div>
+      <a href="#h1">H1 Chain-node horizon</a>
+      <a href="#h2">H2 Reset signature algebra</a>
+      <a href="#h3">H3 Collision residual taxonomy</a>
+      <a href="#h4">H4 Gap-type compatibility filter</a>
+      <a href="#h5">H5 Left-bias residual classes</a>
+    </nav>
+    <main>
+      <header class="hero">
+        <h1>Track H · Novel-insight candidates</h1>
+        <p class="lede">Standing novel-insight duty: invent PGS-native residual maps and operators that classical specialists would not default to. All items are hypothesis until measured, audited, or invalidated.</p>
+        <div style="margin-top:12px">
+          <span class="tag">hypothesis only</span>
+          <span class="tag warn">abstain if classical rephrase</span>
+        </div>
+      </header>
+
+      <div class="callout">
+        Rules: start from PGS objects; prefer structural novelty; label hypothesis; adversarial self-critique;
+        classical methods comparison/audit only; convert survivors into concrete next pressure.
+      </div>
+
+      <article class="card" id="h1">
+        <div class="id">H1</div>
+        <h3>Residual map on false chain-node least-factor maxima</h3>
+        <table>
+          <tr><th>Prediction</th><td>Maxima are governed by a PGS-visible invariant of input prime, shadow seed, chain gaps, residues, or search-interval state, yielding horizon law H without √q.</td></tr>
+          <tr><th>Falsifier</th><td>Required horizon tracks √q with no smaller PGS-visible bound under declared candidate_bound.</td></tr>
+          <tr><th>Feeds</th><td>A3</td></tr>
+        </table>
+      </article>
+
+      <article class="card" id="h2">
+        <div class="id">H2</div>
+        <h3>Chamber-reset signature algebra as transport alphabet</h3>
+        <table>
+          <tr><th>Prediction</th><td>Public reset signatures form a closed algebra under reciprocal floor maps that classifies admissible transports.</td></tr>
+          <tr><th>Falsifier</th><td>Signatures behave as opaque hashes with no transport structure beyond equality checks already in v2.</td></tr>
+          <tr><th>Feeds</th><td>A1 FR-INF-05, C2</td></tr>
+        </table>
+      </article>
+
+      <article class="card" id="h3">
+        <div class="id">H3</div>
+        <h3>Reciprocal-floor collision classes as sole unresolved taxonomy</h3>
+        <table>
+          <tr><th>Prediction</th><td>All RSA-rung unresolved emissions reduce to a finite collision residual taxonomy under floor transport.</td></tr>
+          <tr><th>Falsifier</th><td>Open-ended residual growth with bit length and no stable classes.</td></tr>
+          <tr><th>Feeds</th><td>C1, A1 residual ledger</td></tr>
+        </table>
+      </article>
+
+      <article class="card" id="h4">
+        <div class="id">H4</div>
+        <h3>Gap-type transition grammar as endpoint-chain compatibility filter</h3>
+        <table>
+          <tr><th>Prediction</th><td>Ordered type words exclude impossible endpoint-chain steps without probabilistic modeling.</td></tr>
+          <tr><th>Falsifier</th><td>Filter rejects known closed certificates or accepts random incompatible chains at high rate.</td></tr>
+          <tr><th>Feeds</th><td>E1, C3</td></tr>
+        </table>
+      </article>
+
+      <article class="card" id="h5">
+        <div class="id">H5</div>
+        <h3>Left-bias / minimal-excitation residual classes after Super-Signal collapse</h3>
+        <table>
+          <tr><th>Prediction</th><td>After twin Super-Signal invalidation, leftmost-min GWR with τ ties induces stable residual classes for simplest composites distinct from modular-30 alone.</td></tr>
+          <tr><th>Falsifier</th><td>No stable residual beyond already-proved modular lemma under exhaustive small surfaces.</td></tr>
+          <tr><th>Feeds</th><td>E5</td></tr>
+        </table>
+      </article>
+
+      <footer>
+        <a href="G-applications.html">← Track G</a> ·
+        <a href="../index.html">Catalog hub</a> ·
+        <a href="../a1-rsa-endpoint-resolver/index.html">A1 requirements</a>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

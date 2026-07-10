@@ -1,0 +1,15 @@
+{
+  "counts": {
+    "128": 32,
+    "256": 16,
+    "512": 4
+  },
+  "generator": "build_corpora.py",
+  "note": "Factors are never written. Miller-Rabin used only in fixture construction, not inference.",
+  "public_fields_only": [
+    "case_id",
+    "bits",
+    "N"
+  ],
+  "seed": 20260709
+}
