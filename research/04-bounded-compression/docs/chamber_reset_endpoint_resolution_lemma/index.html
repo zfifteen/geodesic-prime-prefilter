@@ -139,7 +139,7 @@
   <header>
     <p class="meta">research/04-bounded-compression/docs · 2026-07-10 · hourly analytic job <code>chamber-reset-lemma-draft</code></p>
     <h1>Chamber-Reset Endpoint Resolution Lemma</h1>
-    <p class="meta">One subsection only: selected-square branch endpoint distance</p>
+    <p class="meta">Subsections: S1 endpoint identification · S2 band residual and chamber-prefix phase order</p>
     <p>
       <span class="status status-open">Lemma target: UNRESOLVED</span>
       &nbsp;
@@ -175,7 +175,7 @@
   <section>
     <h2>Subsection S1 — Selected-square endpoint identification</h2>
     <p class="callout">
-      This is the only subsection drafted in this hour. It states hypotheses,
+      First constructive subsection (prior hour). It states hypotheses,
       the constructive claim under those hypotheses, and an explicit
       falsification command. It does not claim a proof of prime-square
       proximity. <code>PROOF.md</code> controls theorem status.
@@ -348,12 +348,22 @@ and p = P(r<sup>2</sup>).</code></pre>
         <tr>
           <td>RC1</td>
           <td>H4 chamber floor <code>prefix_min_τ = 4</code> with early τ=4 / late τ=3 separation on measured segment maxima through <code>4e8–5e8</code></td>
-          <td>Measured holds (audit)</td>
+          <td>Measured holds (audit); refined by S2-A</td>
         </tr>
         <tr>
           <td>RC2</td>
           <td>Fixed band <code>D(r) ∈ [528, 552]</code> is a law on utilization maxima</td>
           <td><strong>Falsified</strong></td>
+        </tr>
+        <tr>
+          <td>RC3–RC5</td>
+          <td>τ4 density band; absolute early τ4; o_q=2 local near-540 attractor</td>
+          <td>Measured holds as residual only (see S2)</td>
+        </tr>
+        <tr>
+          <td>S2-A / S2-B</td>
+          <td>Phase order <code>first_τ4 &lt; D(r)</code>; residual annulus <code>Annulus(r)</code></td>
+          <td>Constructive (this document); does not close S1*</td>
         </tr>
       </tbody>
     </table>
@@ -383,6 +393,170 @@ and p = P(r<sup>2</sup>).</code></pre>
   </section>
 
   <section>
+    <h2>Subsection S2 — Band residual object and chamber-prefix phase order</h2>
+    <p class="callout">
+      Second constructive subsection (this hour). Builds on Claim S1 only.
+      It names the residual open set where Target S1* can still fail, and the
+      ordered early-τ=4 / late-τ=3 phase structure forced by H4. It does not
+      prove Target S1*. <code>PROOF.md</code> §Square-Branch Reduction controls:
+      the prime-square proximity target remains <strong>unresolved</strong>.
+    </p>
+
+    <h3>Plain object</h3>
+    <p>
+      After left prime <code>p</code>, the chamber prefix is the ordered ruler
+      <code>{p+1, …, r<sup>2</sup>−1}</code>. Under H4 that ruler never dips to
+      divisor count <code>3</code>; its floor is <code>4</code>. The first
+      divisor-count <code>3</code> lands exactly at the selected square, at
+      distance <code>D(r)</code> (Claim S1). Separately, the selected-square
+      characterization (H3) places <code>p</code> strictly above the previous
+      prime square <code>s<sup>2</sup></code>, so <code>D(r)</code> sits in a
+      huge open band below <code>r<sup>2</sup> − s<sup>2</sup></code>. Target S1*
+      asks for the much smaller dynamic cutoff on that same distance.
+    </p>
+
+    <h3>Hypotheses</h3>
+    <p>
+      Reuse <strong>H1–H4</strong> from Subsection S1 without change. No new
+      classical gates. No d=4 SDA hypothesis. No fixed-offset residue cover.
+    </p>
+
+    <h3>Constructive claim S2-A (chamber-prefix phase order)</h3>
+    <div class="panel">
+      <p><strong>Claim S2-A.</strong> Assume H1–H4 and <code>D(r) ≥ 2</code>.</p>
+      <p>
+        Then the ordered chamber prefix admits a well-defined first offset with
+        divisor count exactly <code>4</code>, and that offset is strictly before
+        the selected square endpoint:
+      </p>
+      <pre><code>1 ≤ first_τ4_offset &lt; first_τ3_offset = D(r).</code></pre>
+      <p>
+        Equivalently: every integer in
+        <code>{p+1, …, p + first_τ4_offset − 1}</code> has <code>τ ≥ 5</code>
+        (empty if <code>first_τ4_offset = 1</code>), the integer at offset
+        <code>first_τ4_offset</code> has <code>τ = 4</code>, and the first
+        <code>τ = 3</code> occurs only at offset <code>D(r)</code>. This is the
+        early-τ=4 / late-τ=3 phase order on the selected-square chamber.
+      </p>
+      <p>
+        Status: constructive from H4 + Claim S1 (ordered min-τ floor and first
+        τ=3 endpoint identification). Not a bound on <code>D(r)</code>.
+      </p>
+    </div>
+
+    <h3>Constructive claim S2-B (band residual object)</h3>
+    <div class="panel">
+      <p><strong>Claim S2-B.</strong> Assume H1–H3. Write</p>
+      <pre><code>Band(r)  = (r − s)(r + s) = r<sup>2</sup> − s<sup>2</sup>
+C_dyn(r) = max(64, ceil(0.5 · log(r<sup>2</sup>)<sup>2</sup>)).</code></pre>
+      <p>
+        Then the selected-square characterization forces the strict band
+        inequality
+      </p>
+      <pre><code>D(r) &lt; Band(r).</code></pre>
+      <p>
+        Define the <strong>open residual annulus</strong> (as a set of integer
+        distances, not a geometric region in the plane):
+      </p>
+      <pre><code>Annulus(r) = { k ∈ ℤ : C_dyn(r) &lt; k &lt; Band(r) }.</code></pre>
+      <p>
+        Under H1–H3, Target S1* fails at root <code>r</code> if and only if
+      </p>
+      <pre><code>D(r) ∈ Annulus(r).</code></pre>
+      <p>
+        Equivalently, closing Target S1* is exactly the statement that the
+        selected endpoint distance never enters <code>Annulus(r)</code>. The band
+        bound alone does not empty that annulus: on measured extremal rows
+        <code>Band(r)</code> is many orders of magnitude larger than
+        <code>C_dyn(r)</code>.
+      </p>
+      <p>
+        Status: constructive identification of the residual open set. Target S1*
+        remains <strong>UNRESOLVED</strong>.
+      </p>
+    </div>
+
+    <h3>Measured residual structure attached to S2 (audit only)</h3>
+    <p>
+      The following residual claims refine chamber geometry on segment
+      utilization maxima through <code>4e8–5e8</code>. They are not theorems and
+      do not close S1*. Fixed-band RC2 remains falsified. Invalidated d=4 SDA
+      is not revived.
+    </p>
+    <table>
+      <thead>
+        <tr><th>ID</th><th>Claim</th><th>Status on util maxima through 4e8–5e8</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>RC3</td>
+          <td>τ4 density <code>rho4 = tau4_count / D(r) ∈ [0.10, 0.14]</code></td>
+          <td>Holds (audit); max observed <code>rho4 = 0.1301</code> at <code>r = 424,171,123</code></td>
+        </tr>
+        <tr>
+          <td>RC4</td>
+          <td>Absolute early chamber <code>first_τ4_offset ≤ 20</code></td>
+          <td>Holds (audit); supports S2-A on measured maxima (max first_τ4 = 10 on primary table, 3 on 4e8–5e8 util max)</td>
+        </tr>
+        <tr>
+          <td>RC5</td>
+          <td>Local o_q=2 near-540 attractor <code>|D − 540| ≤ 20</code> on that branch maximum only</td>
+          <td>Holds as local residual; not a law (global util max escapes at <code>D = 738</code>)</td>
+        </tr>
+        <tr>
+          <td>RC2</td>
+          <td>Fixed band <code>D(r) ∈ [528, 552]</code> on util maxima is a law</td>
+          <td><strong>Falsified</strong> at <code>D = 738</code></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      On the 4e8–5e8 utilization maximum, Claim S2-B objects evaluate as:
+    </p>
+    <table>
+      <thead>
+        <tr><th>Object</th><th>Value</th><th>Role</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>r</code></td><td><code>424,171,123</code></td><td>selected square root</td></tr>
+        <tr><td><code>D(r)</code></td><td><code>738</code></td><td>endpoint distance (= first_τ3_offset)</td></tr>
+        <tr><td><code>C_dyn(r)</code></td><td><code>790</code></td><td>Target S1* local cutoff</td></tr>
+        <tr><td><code>first_τ4_offset</code></td><td><code>3</code></td><td>S2-A early marker</td></tr>
+        <tr><td>utilization</td><td><code>0.9341772151898734</code></td><td>audit pressure; <code>D(r) ≤ C_dyn(r)</code> holds on row</td></tr>
+        <tr><td><code>D(r) ∈ Annulus(r)</code>?</td><td>no</td><td>row does not falsify S1*</td></tr>
+      </tbody>
+    </table>
+
+    <h3>What S2 does not claim</h3>
+    <ul>
+      <li>No proof of Target S1* / prime-square proximity (still unresolved in <code>PROOF.md</code>).</li>
+      <li>No revival of fixed cutoff map <code>{2:44, 4:60, 6:60}</code>.</li>
+      <li>No revival of d=4 τ≥5 SDA transfer to the square branch.</li>
+      <li>No promotion of RC3–RC5 to theorem status.</li>
+      <li>No residue-only finite cover of <code>Annulus(r)</code> (window grows with <code>r</code>).</li>
+      <li>No classical primality, sieve, or gcd gate as PGS inference.</li>
+    </ul>
+
+    <h3>Minimal falsification command</h3>
+    <p>
+      Target S1* (equivalently: emptiness of <code>Annulus(r)</code> for every
+      selected-square root) is falsified by any selected-square root with
+      <code>D(r) &gt; C_dyn(r)</code>. Minimal command on the next open regime
+      beyond the certified <code>4e8–5e8</code> surface:
+    </p>
+    <pre><code>python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py \
+  --min-prime 500000001 \
+  --max-prime 600000000 \
+  --output-dir research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_5e8_6e8</code></pre>
+    <p>
+      Decision rule: nonempty <code>first_counterexample</code> in the summary
+      means some measured <code>D(r) ∈ Annulus(r)</code> and Target S1* is
+      falsified at that root. A null counterexample is audit corroboration only
+      — not a proof of S1* and not a proof that every future annulus is empty.
+    </p>
+  </section>
+
+  <section>
     <h2>Status separation</h2>
     <table>
       <thead>
@@ -392,9 +566,12 @@ and p = P(r<sup>2</sup>).</code></pre>
         <tr><td>Direct deterministic next-prime theorem</td><td>Proved (<code>PROOF.md</code>)</td></tr>
         <tr><td>Interior Maximizer Theorem / GWR</td><td>Proved (<code>PROOF.md</code>)</td></tr>
         <tr><td>Claim S1 endpoint identification under H1–H4</td><td>Constructive subsection claim (this document)</td></tr>
+        <tr><td>Claim S2-A chamber-prefix phase order</td><td>Constructive subsection claim (this document)</td></tr>
+        <tr><td>Claim S2-B band residual annulus object</td><td>Constructive subsection claim (this document)</td></tr>
         <tr><td>Target S1* prime-square proximity</td><td><strong>Unresolved</strong> (<code>PROOF.md</code> §Square-Branch Reduction)</td></tr>
         <tr><td>All-scale bounded dynamic cutoff on square branch</td><td>Unresolved until S1* closes</td></tr>
         <tr><td>Measured surface <code>4e8–5e8</code></td><td>No counterexample; max util <code>0.934…</code> (audit)</td></tr>
+        <tr><td>RC3–RC5 residual chamber structure</td><td>Measured holds; residual only</td></tr>
         <tr><td>d=4 SDA square transfer / fixed-540 band</td><td>Invalidated / falsified</td></tr>
       </tbody>
     </table>
@@ -403,9 +580,9 @@ and p = P(r<sup>2</sup>).</code></pre>
   <section>
     <h2>Next pressure</h2>
     <ol>
-      <li>Run the minimal falsification command on <code>5e8–6e8</code> (queue return).</li>
-      <li>Keep theorem pressure on <code>D(r)</code> under Claim S1; do not rebuild residue covers or SDA ports.</li>
-      <li>Optional later subsection: constructive compression from the band bound under additional PGS chamber invariants — only if those invariants are stated without classical gates.</li>
+      <li>Run the minimal falsification command on <code>5e8–6e8</code> (queue return): empty <code>Annulus(r)</code> on that surface or record a counterexample.</li>
+      <li>Keep theorem pressure on <code>D(r)</code> under Claims S1 and S2-B; do not rebuild residue covers or SDA ports.</li>
+      <li>Optional later subsection: a PGS-native mechanism that forces <code>D(r) ∉ Annulus(r)</code> from chamber invariants alone — only if those invariants are stated without classical gates and without promoting RC3–RC5.</li>
     </ol>
   </section>
 

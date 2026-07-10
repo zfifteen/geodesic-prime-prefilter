@@ -465,3 +465,52 @@ Artifacts:
 
 Next step:
 Queue falsification 500M-600M or draft Chamber-Reset Endpoint Resolution Lemma subsection.
+
+## 2026-07-10T17:06:43Z run
+
+Mechanism:
+Draft one subsection of the Chamber-Reset Endpoint Resolution Lemma on the
+selected-square branch (S2 band residual object and chamber-prefix phase order).
+
+Method:
+PGS-first constructive subsection under
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`.
+Builds on prior-hour Claim S1 only. Claim S2-A: under H1–H4 and D(r)≥2,
+`1 ≤ first_τ4_offset < first_τ3_offset = D(r)` (early-τ=4 / late-τ=3 phase order).
+Claim S2-B: under H1–H3, `D(r) < Band(r) = (r−s)(r+s)`; Target S1* fails at r
+iff `D(r) ∈ Annulus(r) = {k : C_dyn(r) < k < Band(r)}`. Residual RC3–RC5
+attached as audit only; RC2 retained falsified; d=4 SDA not revived.
+`PROOF.md` §Square-Branch Reduction: proximity target remains UNRESOLVED.
+One minimal falsification command: dynamic-cutoff search on `5e8–6e8`.
+
+Result:
+Constructive lemma subsection S2 written with hypotheses (H1–H4 reused),
+unresolved Target S1*, residual claim table RC3–RC5, and explicit falsification
+command. No new measured regime this hour. Direct next-prime and Interior
+Maximizer remain proved; proximity not claimed.
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.94s
+```
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New constructive lemma subsection S2 (chamber-prefix phase order + band residual
+annulus object) with residual RC3–RC5 table and minimal falsification command
+for Target S1* (`5e8–6e8` dynamic-cutoff search). Not a replay of S1.
+
+Artifacts:
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`;
+`research/04-bounded-compression/docs/square_branch_hourly.md`
+
+Next step:
+Return to falsification queue on `5e8–6e8` (or H_CTC square-branch probe). Keep
+pressure on `D(r) ∉ Annulus(r)`; do not revive residue covers, fixed-540, or
+d=4 SDA; do not promote RC3–RC5 to theorem status.
