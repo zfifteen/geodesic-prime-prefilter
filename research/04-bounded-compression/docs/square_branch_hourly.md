@@ -743,7 +743,7 @@ Research status:
 ADVANCE
 
 Ops status:
-OK
+FAILED
 
 Delta:
 new falsification regime through max_prime=500000000
@@ -753,3 +753,65 @@ Artifacts:
 
 Next step:
 Structural audit of recurring offset 540 on new extremal rows if no counterexample.
+
+## 2026-07-10T23:07:11Z run
+
+Mechanism:
+PGS-native structural audit of recurring offset 540 and early-τ=4 / late-τ=3
+chamber separation — residual claims RC9–RC11 on the interior τ4 offset set.
+
+Method:
+Read falsification summary
+`research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_4e8_5e8/square_branch_dynamic_cutoff_search_summary.json`
+and `prefix_tau_floor_probe.json` (SDA-invalidation note; d=4 SDA not revived).
+Built minimal probe
+`experiments/square-branch-hourly-2026-07-10-rc9/offset_540_residual_rc9_probe.py`
+recomputing the full τ4 offset set on 5 segment util maxima + 3 o_q branch-max
+rows from the prior chamber table. Predictions P13–P15:
+
+- P13/RC9: early-half τ4 mass ≥ 0.40
+- P14/RC10: last_τ4 / D ≥ 0.95
+- P15/RC11: max consecutive τ4 gap (lead+interior+trail) / D ≤ 0.10
+
+Does not replay P1–P12 / RC3–RC8 as primary deliverable. Fixed-band RC2 retained
+falsified. Prime-Square Proximity remains proved (`PROOF.md`); residual audit only.
+
+Result:
+All three new residuals hold on the surface through 4e8–5e8:
+
+| claim | bound | extremum observed |
+| --- | --- | --- |
+| RC9 early-half mass | ≥ 0.40 | min 0.4151 (o_q=4, D=486) |
+| RC10 late-span | ≥ 0.95 | min 0.9631 (o_q=2, D=542) |
+| RC11 max gap frac | ≤ 0.10 | max 0.0812 (o_q=2, gap=44) |
+
+Util-max row r=424171123 (D=738): early mass 0.469, late span 0.989, max gap
+frac 0.041. RC2 remains falsified at D=738. No d=4 SDA revival.
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 3.16s
+```
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New residual claim table RC9–RC11 (early-half τ4 mass, late-span τ4 presence,
+max inter-τ4 gap bound) with explicit falsification command on recomputed τ4
+offset geometry; not a replay of RC6–RC8 or fixed-band 540.
+
+Artifacts:
+`experiments/square-branch-hourly-2026-07-10-rc9/offset_540_residual_rc9_probe.py`;
+`experiments/square-branch-hourly-2026-07-10-rc9/offset_540_rc9_prediction_table.json`;
+`experiments/square-branch-hourly-2026-07-10-rc9/FINDINGS.md`;
+`research/04-bounded-compression/docs/square_branch_hourly.md`
+
+Next step:
+Queue falsification `5e8–6e8` or prefix-tau extremal rerun on newest rows.
+Re-check RC9–RC11 on any new util maximum; do not revive fixed-band 540 or
+d=4 SDA; do not promote RC9–RC11 to theorem status.
