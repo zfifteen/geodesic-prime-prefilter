@@ -3,11 +3,13 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import sys
 import urllib.error
 import urllib.request
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -17,6 +19,12 @@ DEFAULT_SECRETS = Path.home() / ".grok" / "agency" / "secrets" / "rocketchat.env
 DEFAULT_CHANNEL = os.environ.get("PGS_HOURLY_RC_CHANNEL", "Prime-Gap-Structure")
 DEFAULT_LAST_RUN = Path(
     os.environ.get("PGS_HOURLY_LAST_RUN", str(Path.home() / "logs" / "pgs-hourly" / "last_run.json"))
+)
+DEFAULT_POST_STATE = Path(
+    os.environ.get(
+        "PGS_HOURLY_RC_STATE",
+        str(Path.home() / "logs" / "pgs-hourly" / "last_rc_post.json"),
+    )
 )
 
 
@@ -95,40 +103,232 @@ def resolve_room_id(base: str, token: str, uid: str, channel_name: str) -> str:
     raise RuntimeError(f"room not found: {channel_name}")
 
 
+def _fmt_int(value: Any) -> str | None:
+    """Format integers with thousands separators when possible."""
+    if value is None:
+        return None
+    try:
+        return f"{int(value):,}"
+    except (TypeError, ValueError):
+        return str(value)
+
+
+def _fmt_float(value: Any, digits: int = 6) -> str | None:
+    """Format a float for memo prose."""
+    if value is None:
+        return None
+    try:
+        return f"{float(value):.{digits}g}"
+    except (TypeError, ValueError):
+        return str(value)
+
+
+def _research_headline(status: str) -> str:
+    """One plain-English research outcome line."""
+    mapping = {
+        "ADVANCE": "Research moved forward this hour.",
+        "NO_DELTA": "No new research delta (replay or unchanged signature).",
+        "FAILED": "The research job failed.",
+        "UNRESOLVED": "The hour ended without a decisive research result.",
+    }
+    return mapping.get(status, f"Research status: {status or 'UNKNOWN'}.")
+
+
+def _ops_headline(status: str) -> str:
+    """One plain-English ops outcome line."""
+    mapping = {
+        "OK": "Relay machinery completed cleanly.",
+        "PARTIAL": "Research artifacts were produced, but a secondary ops step was incomplete.",
+        "BLOCKED": "The hour could not start (lock or bootstrap block).",
+        "FAILED": "Ops machinery failed.",
+    }
+    return mapping.get(status, f"Ops status: {status or 'UNKNOWN'}.")
+
+
+def _job_type_phrase(job_type: Any) -> str:
+    """Human label for job type."""
+    if job_type == "deterministic":
+        return "deterministic probe"
+    if job_type == "grok":
+        return "analytic (Grok) job"
+    if job_type:
+        return str(job_type)
+    return "unspecified job"
+
+
+def _short_artifact(path: Any) -> str | None:
+    """Prefer short repo-relative artifact paths over full command lines."""
+    text = str(path or "").strip()
+    if not text:
+        return None
+    # Skip long command lines; keep file-like artifacts.
+    if " " in text and not text.endswith((".json", ".md", ".csv", ".html", ".py")):
+        return None
+    markers = (
+        "research/",
+        "experiments/",
+        "docs/",
+        "scripts/",
+        "lean-4/",
+    )
+    for marker in markers:
+        idx = text.find(marker)
+        if idx != -1:
+            return text[idx:]
+    if text.endswith((".json", ".md", ".csv", ".html")):
+        return text
+    return None
+
+
+def _regime_sentence(numbers: dict[str, Any]) -> str | None:
+    """Describe the measured prime-root regime in plain English."""
+    min_p = _fmt_int(numbers.get("min_prime"))
+    max_p = _fmt_int(numbers.get("max_prime"))
+    tested = _fmt_int(numbers.get("tested_prime_count"))
+    if min_p and max_p and tested:
+        return (
+            f"We swept square-branch prime roots from {min_p} through {max_p} "
+            f"({tested} roots tested)."
+        )
+    if tested:
+        return f"We tested {tested} prime roots on the active surface."
+    return None
+
+
+def _result_sentences(numbers: dict[str, Any], research_status: str) -> list[str]:
+    """Build the measured-result paragraph sentences."""
+    sentences: list[str] = []
+    regime = _regime_sentence(numbers)
+    if regime:
+        sentences.append(regime)
+
+    counter = numbers.get("first_counterexample")
+    if "tested_prime_count" in numbers or "max_prime" in numbers:
+        if counter in (None, "none", ""):
+            sentences.append("No counterexample to the dynamic-cutoff bound appeared in this band.")
+        else:
+            sentences.append(f"First counterexample observed at {counter}.")
+
+    util = _fmt_float(numbers.get("max_utilization"))
+    extremal = _fmt_int(numbers.get("max_p"))
+    offset = _fmt_int(numbers.get("max_offset"))
+    if util and extremal and offset:
+        sentences.append(
+            f"The hardest row sat at root r = {extremal} with offset D(r) = {offset} "
+            f"and dynamic-cutoff utilization {util}."
+        )
+    elif extremal and offset:
+        sentences.append(
+            f"The hardest row sat at root r = {extremal} with offset D(r) = {offset}."
+        )
+
+    if research_status == "NO_DELTA" and not sentences:
+        sentences.append("The scientific signature matched a prior certified surface.")
+    return sentences
+
+
+def _humanize_delta(delta: str, numbers: dict[str, Any]) -> str:
+    """Turn common machine delta phrases into memo prose."""
+    text = (delta or "").strip()
+    if not text:
+        return text
+    lower = text.lower()
+    max_prime = _fmt_int(numbers.get("max_prime"))
+    if "new falsification regime through max_prime=" in lower and max_prime:
+        return f"Extended the square-branch falsification surface through {max_prime}."
+    if "matches frozen certified baseline" in lower:
+        return "This run reproduced the frozen certified baseline surface (no new band)."
+    if "matches prior hourly run" in lower:
+        return "This run reproduced the previous hourly scientific signature (no new delta)."
+    if "first counterexample observed" in lower:
+        return text[0].upper() + text[1:] if text else text
+    if text and text[0].islower():
+        return text[0].upper() + text[1:]
+    return text
+
+
 def format_message(run: dict[str, Any]) -> str:
-    """Render the fixed hourly scoreboard message."""
+    """
+    Render a short research memo for Rocket.Chat.
+
+    Lead with the finding in plain English, then mechanism, status labels,
+    measured numbers, next step, and a compact ops footnote.
+    """
+    research_status = str(run.get("research_status") or "UNKNOWN")
+    ops_status = str(run.get("ops_status") or "UNKNOWN")
     numbers = run.get("key_numbers") or {}
-    number_bits = []
-    for key in (
-        "min_prime",
-        "max_prime",
-        "tested_prime_count",
-        "first_counterexample",
-        "max_utilization",
-        "max_p",
-        "max_offset",
-    ):
-        if key in numbers and numbers[key] is not None:
-            number_bits.append(f"{key}={numbers[key]}")
-    numbers_line = ", ".join(number_bits) if number_bits else "none"
-    artifacts = run.get("artifacts") or []
-    artifacts_line = "; ".join(str(item) for item in artifacts[:4]) if artifacts else "none"
-    commit = run.get("commit") or "none"
+    if not isinstance(numbers, dict):
+        numbers = {}
+
+    when = run.get("activated_at") or "unknown time"
+    job_id = run.get("job_id") or "unspecified"
+    mechanism = (run.get("mechanism") or "").strip()
+    delta = _humanize_delta(str(run.get("delta") or ""), numbers)
+    next_step = (run.get("next_step") or "").strip()
     branch = run.get("task_branch") or "codex/hourly-square-branch"
+    commit = run.get("commit")
+    commit_short = str(commit)[:12] if commit else "uncommitted"
     error = run.get("error")
-    lines = [
-        f"PGS hourly · {run.get('activated_at') or 'unknown-time'}",
-        f"Job: {run.get('job_id') or 'none'} · type: {run.get('job_type') or 'none'}",
-        f"Research: {run.get('research_status') or 'UNKNOWN'}",
-        f"Ops: {run.get('ops_status') or 'UNKNOWN'}",
-        f"Delta: {run.get('delta') or 'none'}",
-        f"Key numbers: {numbers_line}",
-        f"Artifacts: {artifacts_line}",
-        f"Next: {run.get('next_step') or 'none'}",
-        f"Branch: {branch} @ {commit}",
+
+    artifact_paths: list[str] = []
+    for item in run.get("artifacts") or []:
+        short = _short_artifact(item)
+        if short and short not in artifact_paths:
+            artifact_paths.append(short)
+        if len(artifact_paths) >= 3:
+            break
+
+    lines: list[str] = [
+        f"**PGS hourly research memo** ({when} UTC)",
+        "",
+        _research_headline(research_status),
     ]
+
+    if delta:
+        lines.extend(["", f"**What changed:** {delta}"])
+
+    if mechanism:
+        lines.extend(
+            [
+                "",
+                f"**What we ran:** {mechanism}",
+                f"Job id `{job_id}` ({_job_type_phrase(run.get('job_type'))}).",
+            ]
+        )
+    else:
+        lines.extend(["", f"**What we ran:** job id `{job_id}` ({_job_type_phrase(run.get('job_type'))})."])
+
+    result_bits = _result_sentences(numbers, research_status)
+    if result_bits:
+        lines.extend(["", "**Measured result:**", " ".join(result_bits)])
+
+    lines.extend(
+        [
+            "",
+            f"**Research status:** {research_status}",
+            f"**Ops status:** {ops_status} — {_ops_headline(ops_status).rstrip('.')}.",
+        ]
+    )
+
+    if next_step:
+        lines.extend(["", f"**Next pressure:** {next_step}"])
+
+    if artifact_paths:
+        lines.extend(["", "**Artifacts:**"])
+        for path in artifact_paths:
+            lines.append(f"- `{path}`")
+
+    lines.extend(
+        [
+            "",
+            f"_Branch `{branch}` @ `{commit_short}`. Full ledger: "
+            f"`research/04-bounded-compression/docs/square_branch_hourly.md`._",
+        ]
+    )
+
     if error:
-        lines.append(f"Error: {error}")
+        lines.extend(["", f"**Error detail:** {error}"])
+
     return "\n".join(lines)
 
 
@@ -148,13 +348,41 @@ def post_message(base: str, token: str, uid: str, room_id: str, text: str) -> st
     return str(mid) if mid else ""
 
 
+def message_fingerprint(text: str) -> str:
+    """Stable hash of the memo body used for duplicate suppression."""
+    normalized = "\n".join(line.rstrip() for line in text.strip().splitlines())
+    return hashlib.sha256(normalized.encode("utf-8")).hexdigest()
+
+
+def load_post_state(path: Path) -> dict[str, Any]:
+    """Load prior RC post state when present."""
+    if not path.is_file():
+        return {}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}
+    return payload if isinstance(payload, dict) else {}
+
+
+def save_post_state(path: Path, payload: dict[str, Any]) -> None:
+    """Persist the last successful RC post fingerprint."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+
+
 def main(argv: list[str] | None = None) -> int:
     """Load last_run.json and post to Rocket.Chat. Never raises to shell by default."""
-    argv = argv if argv is not None else sys.argv[1:]
+    argv = list(sys.argv[1:] if argv is None else argv)
+    force = False
+    if "--force" in argv:
+        force = True
+        argv = [arg for arg in argv if arg != "--force"]
     last_run_path = Path(argv[0]) if argv else DEFAULT_LAST_RUN
     base = os.environ.get("RC_BASE", DEFAULT_BASE)
     secrets_path = Path(os.environ.get("ROCKETCHAT_SECRETS", str(DEFAULT_SECRETS)))
     channel = os.environ.get("PGS_HOURLY_RC_CHANNEL", DEFAULT_CHANNEL)
+    state_path = Path(os.environ.get("PGS_HOURLY_RC_STATE", str(DEFAULT_POST_STATE)))
 
     try:
         if not last_run_path.is_file():
@@ -175,6 +403,15 @@ def main(argv: list[str] | None = None) -> int:
             run = json.loads(last_run_path.read_text(encoding="utf-8"))
 
         text = format_message(run)
+        fingerprint = message_fingerprint(text)
+        prior = load_post_state(state_path)
+        if not force and prior.get("fingerprint") == fingerprint:
+            print(
+                "pgs-hourly-rc: skip duplicate memo "
+                f"(fingerprint={fingerprint[:12]} prior_msg={prior.get('msg_id')})"
+            )
+            return 0
+
         secrets = load_env(secrets_path)
         token, uid = rest_login(
             base,
@@ -183,6 +420,19 @@ def main(argv: list[str] | None = None) -> int:
         )
         room_id = resolve_room_id(base, token, uid, channel)
         mid = post_message(base, token, uid, room_id, text)
+        save_post_state(
+            state_path,
+            {
+                "posted_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "fingerprint": fingerprint,
+                "msg_id": mid,
+                "channel": channel,
+                "job_id": run.get("job_id"),
+                "research_status": run.get("research_status"),
+                "ops_status": run.get("ops_status"),
+                "last_run_path": str(last_run_path),
+            },
+        )
         print(f"pgs-hourly-rc: posted to #{channel} msg_id={mid}")
         return 0
     except Exception as exc:  # noqa: BLE001 - notify must not kill research hours

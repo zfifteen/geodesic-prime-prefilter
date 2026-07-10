@@ -1,11 +1,11 @@
 {
-  "activated_at": "2026-06-19T09:05:06Z",
+  "activated_at": "2026-07-10T11:05:06Z",
   "executed_queue_index": 1,
   "next_queue_index": 2,
   "job": {
     "id": "offset-540-structural-audit",
     "type": "grok",
-    "mechanism": "PGS-native structural audit of recurring offset 540 and early-\u03c4=4 / late-\u03c4=3 chamber separation",
+    "mechanism": "PGS-native structural audit of recurring offset 540 and early-tau=4 / late-tau=3 chamber separation",
     "why": "Offset 540 reappears at multiple scales; formalize as chamber geometry hypothesis or falsify a concrete prediction.",
     "instructions": "Read the latest falsification summary JSON and prefix_tau_floor_probe.json. Produce one falsifiable prediction table and, if warranted, a minimal new probe script under experiments/square-branch-hourly-*/. Do not port d=4 SDA.",
     "pytest": [
@@ -15,7 +15,7 @@
       "research/04-bounded-compression/tests/test_square_branch_dynamic_cutoff_search.py",
       "-q"
     ],
-    "next_step": "Run prefix \u03c4 probe variant on newest extremal rows or queue next falsification segment."
+    "next_step": "Run prefix tau probe variant on newest extremal rows or queue next falsification segment."
   },
   "ledger_path": "research/04-bounded-compression/docs/square_branch_hourly.md",
   "task_branch": "codex/hourly-square-branch"

@@ -56,7 +56,10 @@ Append one block to `research/04-bounded-compression/docs/square_branch_hourly.m
 ## Rocket.Chat
 
 - After every activation ends, post once to `#Prime-Gap-Structure` as `grok`.
-- Message leads with Research status and a one-line Delta.
+- Format is a short **research memo**, not a log line: plain-English headline,
+  what changed, what ran, measured result, research/ops status, next pressure,
+  then compact artifact/branch footnotes.
+- Do not post `key=value` soup as the primary body.
 - Rocket.Chat failure is ops-only. It must not erase research results.
 - Canonical truth remains the ledger and `~/logs/pgs-hourly/last_run.json`.
 
