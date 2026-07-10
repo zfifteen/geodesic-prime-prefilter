@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>What is proved · Prime Gap Structure</title>
-  <meta name="description" content="Three universal pillars of Prime Gap Structure, stated for a public audience with formal status labels.">
+  <meta name="description" content="Three universal pillars of Prime Gap Structure with visual plates.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -20,6 +20,7 @@
       </a>
       <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">☰</button>
       <ul class="nav-links">
+
         <li><a href="index.html">Home</a></li>
         <li><a href="gaps.html">Gaps</a></li>
         <li><a href="mechanism.html">Mechanism</a></li>
@@ -29,172 +30,205 @@
         <li><a href="evidence.html">Evidence</a></li>
         <li><a href="glossary.html">Glossary</a></li>
         <li><a href="about.html">About</a></li>
+
       </ul>
     </div>
   </header>
-
   <main>
+
     <div class="page-hero wrap">
       <p class="kicker">03 · Laws</p>
       <h1>What is proved</h1>
-      <p class="lead">
-        Three universal pillars stand in the formal proof reference.
-        This page states them in public language, then offers denser mathematics in Deeper panels.
-        None of these pillars is a heuristic, a benchmark slogan, or a probability claim.
-      </p>
+      <p class="lead">Three universal pillars stand in the formal proof reference. This page states them in public language. None is a heuristic, a benchmark slogan, or a probability claim.</p>
     </div>
-
     <section class="section wrap">
-      <div class="grid-3" style="margin-bottom:3rem">
-        <article class="card pillar">
-          <span class="status status-proved">Proved · universal</span>
-          <div class="card-num">I</div>
-          <h3>Direct next-prime rule</h3>
-          <p>Exact divisor-count traversal after a known prime returns the next prime.</p>
-        </article>
-        <article class="card pillar">
-          <span class="status status-proved">Proved · universal</span>
-          <div class="card-num">II</div>
-          <h3>Interior maximizer</h3>
-          <p>The leftmost minimum-divisor interior integer uniquely maximizes the comparison score.</p>
-        </article>
-        <article class="card pillar">
-          <span class="status status-proved">Proved · universal</span>
-          <div class="card-num">III</div>
-          <h3>Bounded compression</h3>
-          <p>The selected-witness offset is bounded by a dynamic cutoff at Cramér scale.</p>
-        </article>
-      </div>
+      
+      
+<figure class="figure figure-wide">
+  <div class="figure-frame" data-overlay="chain">
+    <img src="assets/plates/laws/01-hero-pillars.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 03.01</span>
+    Three-law constellation: the exhibition’s formal core rendered as linked structural nodes.
+  </figcaption>
+</figure>
 
+      <div class="figure-process steps-3">
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="scan">
+    <img src="assets/plates/laws/02-pillar-I.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 03.02</span>
+    Pillar I plate: ordered walk to the next prime.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="witness">
+    <img src="assets/plates/laws/03-pillar-II.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 03.03</span>
+    Pillar II plate: interior maximizer landmark.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="scan">
+    <img src="assets/plates/laws/04-pillar-III.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 03.04</span>
+    Pillar III plate: bounded compression interval.
+  </figcaption>
+</figure>
+
+</div>
       <div class="prose">
+        <p><span class="status status-proved">Proved · universal</span></p>
         <h2>Pillar I · Next prime from divisor counts</h2>
         <hr class="gold-rule">
-        <p>
-          <span class="status status-proved">Proved</span>
-        </p>
-        <p>
-          Start with a known prime. Walk the integers above it in order.
-          Compute the exact number of positive divisors of each integer.
-          Stop at the first integer that has exactly two positive divisors.
-          That integer is the next prime.
-        </p>
-        <p>
-          The reason is elementary and exact: an integer greater than 1 is prime
-          precisely when it has two positive divisors, and there is always a least prime larger than the start.
-        </p>
+        <p>Start with a known prime. Walk integers above it in order. Stop at the first integer with exactly two positive divisors. That integer is the next prime.</p>
+      </div>
+      
+<figure class="figure figure-wide">
+  <div class="figure-frame" data-overlay="scan">
+    <img src="assets/plates/laws/05-next-prime-law.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 03.05</span>
+    Law I as a full-width walk: the first pure endpoint after the chamber is forced by structure.
+  </figcaption>
+</figure>
 
-        <div class="deeper">
-          <button type="button" class="deeper-toggle" aria-expanded="false">
-            <span>Deeper · formal statement</span>
-            <span class="chevron">▾</span>
-          </button>
-          <div class="deeper-body">
-            <div class="math-block">
-              \[ q = \min\{ n &gt; p : \tau(n) = 2 \} \]
-            </div>
-            <p>
-              The algorithm cannot stop before the true next prime, because every strict interior integer is composite
-              and therefore has divisor count different from 2. It does stop at the next prime, because that prime has divisor count 2.
-            </p>
-          </div>
-        </div>
-
+      <div class="prose">
         <h2>Pillar II · The interior maximizer</h2>
         <hr class="gold-rule">
-        <p>
-          <span class="status status-proved">Proved</span>
-        </p>
-        <p>
-          Inside a gap with at least one composite, look at divisor counts on the interior.
-          Take the smallest divisor count that appears, then the first integer that achieves it.
-          That integer is the unique place where a fixed comparison score is largest.
-        </p>
-        <p>
-          So the “first lightest load” composite is not a convenient label.
-          It is a proved maximizer of the program’s comparison function.
-        </p>
+        <p>Inside a nonempty gap, the leftmost minimum-divisor interior integer uniquely maximizes the comparison score.</p>
+      </div>
+      
+<figure class="figure figure-wide">
+  <div class="figure-frame" data-overlay="witness">
+    <img src="assets/plates/laws/06-maximizer-law.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 03.06</span>
+    Law II as chamber geometry with a unique interior crown.
+  </figcaption>
+</figure>
 
-        <div class="deeper">
-          <button type="button" class="deeper-toggle" aria-expanded="false">
-            <span>Deeper · maximizer formula</span>
-            <span class="chevron">▾</span>
-          </button>
-          <div class="deeper-body">
-            <p>On nonempty <code>I = {p+1, …, q−1}</code>,</p>
-            <div class="math-block">
-              \[ w = \min\{ n \in I : \tau(n) = \min_{m \in I} \tau(m) \} \]
-            </div>
-            <p>is the unique maximizer of</p>
-            <div class="math-block">
-              \[ F(n) = \left(1 - \frac{\tau(n)}{2}\right)\log n \]
-            </div>
-            <p>
-              In zero-excess form, \( F(n) = -E(n) \) with
-              \( E(n) = \bigl(\frac{\tau(n)}{2} - 1\bigr)\log n \).
-            </p>
-          </div>
-        </div>
-
+      <div class="prose">
         <h2>Pillar III · Universal bounded compression</h2>
         <hr class="gold-rule">
-        <p>
-          <span class="status status-proved">Proved</span>
-        </p>
-        <p>
-          The selected witness cannot drift arbitrarily far from the left prime.
-          Its distance from <code>p</code> is bounded by a dynamic cutoff that grows like the square of a logarithm.
-          That is the same scale people associate with Cramér’s envelope, applied here to witness placement.
-        </p>
-
+        <p>The selected witness offset from the left prime is bounded by a dynamic cutoff at logarithmic-square scale.</p>
         <div class="callout callout-boundary">
           <div class="callout-title">Boundary · read carefully</div>
-          <p>
-            This is a proved bound on the <strong style="color:var(--text)">selected-witness offset</strong>
-            <code>w − p</code>. It is not, by itself, a proof of the Riemann Hypothesis,
-            the Prime Number Theorem, or every classical formulation of Cramér’s conjecture for raw gap size
-            <code>q − p</code>.
-          </p>
+          <p>This bounds the selected-witness offset <code>w − p</code>. It does not by itself prove RH, PNT, or every classical formulation of Cramér’s conjecture for raw gap size <code>q − p</code>.</p>
         </div>
-
-        <div class="deeper">
-          <button type="button" class="deeper-toggle" aria-expanded="false">
-            <span>Deeper · dynamic cutoff and square branch</span>
-            <span class="chevron">▾</span>
-          </button>
-          <div class="deeper-body">
-            <p>For every consecutive prime gap with nonempty interior,</p>
-            <div class="math-block">
-              \[ w - p \le C(q) = \max\bigl(64,\ \lceil 0.5 \cdot (\log q)^2 \rceil\bigr) \]
-            </div>
-            <p>
-              The square-branch case is closed by the Prime-Square Proximity Theorem:
-              when the witness is a square, the distance from the left prime to the first interior prime square
-              still respects the same cutoff scale.
-            </p>
-            <p>
-              Finite certified bases complete portions of the analytic argument.
-              They are exhaustive verification surfaces for stated ranges, not substitutes for the universal claim.
-              A Lean 4 formalization is in progress as a machine-checked mirror.
-            </p>
-          </div>
-        </div>
-
-        <h2>How to speak about these laws</h2>
-        <hr class="gold-rule">
-        <p>
-          State proved theorems directly. Bound them by their hypotheses.
-          Keep measured generator surfaces and cryptology ladders in separate sentences.
-          Do not convert an audit pass into a new theorem, and do not convert a theorem into “validated so far” language.
-        </p>
       </div>
+      <div class="figure-tile-grid cols-2">
 
+<figure class="figure">
+  <div class="figure-frame" data-overlay="scan">
+    <img src="assets/plates/laws/07-compression-law.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 03.07</span>
+    Compression law as a short gold measure from the left wall.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="seal">
+    <img src="assets/plates/laws/08-square-branch.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 03.08</span>
+    Square-branch closure as nested seals at the same scale language.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="scan">
+    <img src="assets/plates/laws/09-boundary-rh.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 03.09</span>
+    Boundary plate: quiet restraint where claims stop.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="scan">
+    <img src="assets/plates/laws/10-dynamic-cutoff.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 03.10</span>
+    Dynamic cutoff as a finite gold interval, not an infinite leash.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="seal">
+    <img src="assets/plates/laws/11-three-seals.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 03.11</span>
+    Three seals: formal completeness of the local pillar set.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="seal">
+    <img src="assets/plates/laws/12-speak-carefully.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 03.12</span>
+    Speak carefully: status materials stay distinct.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="residual">
+    <img src="assets/plates/laws/13-universal-field.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 03.13</span>
+    Universal field atmosphere for theorems that hold under stated hypotheses.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="chain">
+    <img src="assets/plates/laws/14-laws-recap.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 03.14</span>
+    Recap chain of the three pillars.
+  </figcaption>
+</figure>
+
+</div>
       <div class="hero-actions" style="justify-content:flex-start;margin-top:2.5rem">
         <a class="btn btn-primary" href="generator.html">Next: Generator</a>
         <a class="btn btn-ghost" href="https://github.com/zfifteen/prime-gap-structure/blob/main/PROOF.md" rel="noopener noreferrer" target="_blank">Research source · PROOF.md</a>
       </div>
+        
     </section>
-  </main>
 
+  </main>
   <footer class="site-footer">
     <div class="wrap footer-grid">
       <div>
@@ -202,40 +236,35 @@
         <p style="color:var(--text-muted);font-size:0.95rem;margin:0">Educational course · Chapter 03</p>
       </div>
       <div>
-        <h4>Continue</h4>
+        <h4>Course</h4>
         <ul>
-          <li><a href="generator.html">Generator</a></li>
+          <li><a href="gaps.html">Gaps</a></li>
+          <li><a href="laws.html">Laws</a></li>
+          <li><a href="cryptology.html">Cryptology</a></li>
           <li><a href="evidence.html">Evidence</a></li>
-          <li><a href="about.html">Status map</a></li>
         </ul>
       </div>
       <div>
         <h4>Research source</h4>
         <ul>
+          <li><a href="https://github.com/zfifteen/prime-gap-structure" rel="noopener noreferrer" target="_blank">Repository</a></li>
           <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/PROOF.md" rel="noopener noreferrer" target="_blank">PROOF.md</a></li>
           <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/docs/RESULTS.md" rel="noopener noreferrer" target="_blank">RESULTS.md</a></li>
         </ul>
       </div>
     </div>
     <div class="wrap footer-note">
-      Theorem status is controlled by PROOF.md. This page is a public teaching surface.
+      Educational surface with saturated visual plates. Theorem status is controlled by PROOF.md.
+      Measured tables certify implementations inside stated regimes.
     </div>
   </footer>
-
+  <script src="js/main.js"></script>
+  <script src="js/labs.js"></script>
+  <script src="js/figures.js"></script>
+  
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      if (window.renderMathInElement) {
-        renderMathInElement(document.body, {
-          delimiters: [
-            { left: "\\[", right: "\\]", display: true },
-            { left: "\\(", right: "\\)", display: false }
-          ]
-        });
-      }
-    });
-  </script>
-  <script src="js/main.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){if(window.renderMathInElement){renderMathInElement(document.body,{delimiters:[{left:"\\[",right:"\\]",display:true},{left:"\\(",right:"\\)",display:false}]});}});</script>
+
 </body>
 </html>

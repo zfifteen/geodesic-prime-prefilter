@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>How PGS works · Prime Gap Structure</title>
-  <meta name="description" content="How divisor counts and the leftmost minimum-divisor rule structure a prime gap.">
+  <meta name="description" content="Mechanism chapter: divisor counts, ordered walk, selected witness.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -20,6 +20,7 @@
       </a>
       <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">☰</button>
       <ul class="nav-links">
+
         <li><a href="index.html">Home</a></li>
         <li><a href="gaps.html">Gaps</a></li>
         <li><a href="mechanism.html">Mechanism</a></li>
@@ -29,47 +30,83 @@
         <li><a href="evidence.html">Evidence</a></li>
         <li><a href="glossary.html">Glossary</a></li>
         <li><a href="about.html">About</a></li>
+
       </ul>
     </div>
   </header>
-
   <main>
+
     <div class="page-hero wrap">
       <p class="kicker">02 · Mechanism</p>
       <h1>How PGS works</h1>
-      <p class="lead">
-        Count the positive divisors of each integer after a known prime.
-        The first time that count is exactly two, you have the next prime.
-        Inside the gap, the first integer with the smallest divisor count is a distinguished landmark.
-      </p>
+      <p class="lead">Count the positive divisors of each integer after a known prime. The first time that count is exactly two, you have the next prime. Inside the gap, the first integer with the smallest divisor count is a distinguished landmark.</p>
     </div>
-
     <section class="section wrap">
+      
+      
+<figure class="figure figure-wide">
+  <div class="figure-frame" data-overlay="scan">
+    <img src="assets/plates/mechanism/01-hero-walk.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 02.01</span>
+    The ordered walk after a known prime: left endpoint bright, interior bars, right endpoint waiting to be forced by structure.
+  </figcaption>
+</figure>
+
+      <div class="figure-tile-grid cols-3">
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="bars">
+    <img src="assets/plates/mechanism/02-divisor-count.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 02.02</span>
+    Divisor count as bar height: load visible before any name is attached.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="bars">
+    <img src="assets/plates/mechanism/03-tau-two.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 02.03</span>
+    The special height of two-divisor purity: the visual cue for a prime in this exhibition language.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="scan">
+    <img src="assets/plates/mechanism/04-ordered-scan.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 02.04</span>
+    Ordered scan energy along the baseline: increasing integers, no random jumps.
+  </figcaption>
+</figure>
+
+</div>
       <div class="prose">
         <h2>The walk after a known prime</h2>
         <hr class="gold-rule">
-        <p>
-          You are given a prime <code>p</code>. Look at <code>p+1</code>, then <code>p+2</code>, then
-          <code>p+3</code>, and so on. For each integer, compute how many positive divisors it has.
-        </p>
-        <p>
-          An integer greater than 1 is prime exactly when it has two positive divisors: 1 and itself.
-          So the first later integer whose divisor count is 2 is the next prime. Call it <code>q</code>.
-        </p>
-        <div class="callout">
-          <div class="callout-title">Mechanism in one sentence</div>
-          <p>
-            Exact divisor counts, read in increasing order after <code>p</code>, locate <code>q</code>
-            without treating the process as a random candidate lottery.
-          </p>
-        </div>
+        <p>You are given a prime <code>p</code>. Look at <code>p+1</code>, then <code>p+2</code>, and so on. For each integer, compute how many positive divisors it has. The first later integer with divisor count 2 is the next prime <code>q</code>.</p>
       </div>
+      
+<figure class="figure figure-wide">
+  <div class="figure-frame" data-overlay="witness">
+    <img src="assets/plates/mechanism/05-chamber-landmark.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 02.05</span>
+    Chamber with a selected landmark glowing inside the interior. The mechanism is not only endpoints; it is the ordered inside.
+  </figcaption>
+</figure>
 
       <div class="lab" id="lab-chamber">
-        <div class="lab-header">
-          <h3 class="lab-title">Chamber diagram lab</h3>
-          <span class="lab-hint">Endpoints and selected witness</span>
-        </div>
+        <div class="lab-header"><h3 class="lab-title">Chamber diagram lab</h3><span class="lab-hint">Endpoints and selected witness</span></div>
         <div class="lab-controls">
           <button type="button" data-chamber="89">89 → 97</button>
           <button type="button" data-chamber="113">113 → 127</button>
@@ -77,66 +114,122 @@
         <div class="lab-stage" id="lab-chamber-stage"></div>
         <p class="lab-caption" id="lab-chamber-caption"></p>
       </div>
+      
+<div class="figure-split is-flip">
+  <div class="figure-split-visual">
+    
+<figure class="figure">
+  <div class="figure-frame" data-overlay="witness">
+    <img src="assets/plates/mechanism/06-leftmost-min.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 02.06</span>
+    Leftmost minimum-divisor selection: first lightest load wins.
+  </figcaption>
+</figure>
 
-      <div class="prose">
-        <h2>The landmark inside the gap</h2>
-        <hr class="gold-rule">
-        <p>
-          When the gap has a nonempty interior, scan the composites from left to right.
-          Find the smallest divisor count that appears. Then take the first integer that achieves it.
-        </p>
-        <p>
-          That integer is the selected witness. In project language it is the left-hand side of the
-          Leftmost Minimum-Divisor Rule (also called GWR in the research documents).
-          The course will keep using the plain phrase first: leftmost minimum-divisor integer.
-        </p>
-        <p>
-          Why care? Because the program proves that this simple selection is not arbitrary:
-          it is the unique maximizer of a fixed comparison score built from the divisor count and the size of the integer.
-        </p>
+  </div>
+  <div class="prose"><h2>The landmark inside the gap</h2><p>When the gap has a nonempty interior, find the smallest divisor count that appears, then take the first integer that achieves it. That selected witness is a proved maximizer of a fixed comparison score.</p></div>
+</div>
 
-        <div class="deeper">
-          <button type="button" class="deeper-toggle" aria-expanded="false">
-            <span>Deeper · tau, selection, and the score</span>
-            <span class="chevron">▾</span>
-          </button>
-          <div class="deeper-body">
-            <p>Write <code>τ(n)</code> for the number of positive divisors of <code>n</code>. Then</p>
-            <div class="math-block">
-              \[ q = \min\{ n &gt; p : \tau(n) = 2 \} \]
-            </div>
-            <p>On a nonempty interior <code>I</code>, the selected witness is</p>
-            <div class="math-block">
-              \[ w = \min\{ n \in I : \tau(n) = \min_{m \in I} \tau(m) \} \]
-            </div>
-            <p>The comparison function used in the proof is</p>
-            <div class="math-block">
-              \[ F(n) = \left(1 - \frac{\tau(n)}{2}\right)\log n \]
-            </div>
-            <p>
-              Equivalently, in zero-excess coordinates,
-              \( E(n) = \bigl(\frac{\tau(n)}{2} - 1\bigr)\log n \) and \( F(n) = -E(n) \).
-              Primes are exactly the zero-excess integers for <code>n &gt; 1</code>.
-            </p>
-          </div>
-        </div>
+      <div class="figure-tile-grid cols-2">
 
-        <h2>What this is not</h2>
-        <hr class="gold-rule">
-        <p>
-          The mechanism is deterministic. It is not a probability story about “likely primes,”
-          and it is not a confidence score. Classical primality tests can still appear later as
-          audit tools. They do not choose the structural answer.
-        </p>
-      </div>
+<figure class="figure">
+  <div class="figure-frame" data-overlay="bars">
+    <img src="assets/plates/mechanism/07-comparison-score.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 02.07</span>
+    Comparison score as a peaking field among bars.
+  </figcaption>
+</figure>
 
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="seal">
+    <img src="assets/plates/mechanism/08-zero-excess.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 02.08</span>
+    Zero-excess coordinate as a calm central seal: primes sit at zero excess.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="scan">
+    <img src="assets/plates/mechanism/09-not-lottery.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 02.09</span>
+    Not a lottery: quiet geometry instead of random candidate noise.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="chain">
+    <img src="assets/plates/mechanism/10-deterministic-path.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 02.10</span>
+    Deterministic path of stations from start to closure.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="witness">
+    <img src="assets/plates/mechanism/11-interior-scan.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 02.11</span>
+    Interior scan across a longer chamber.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="bars">
+    <img src="assets/plates/mechanism/12-score-peak.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 02.12</span>
+    Score peak localized on the selected mark.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="chain">
+    <img src="assets/plates/mechanism/13-objects-strip.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 02.13</span>
+    Object strip: the mechanism’s inventory as linked nodes.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="endpoints">
+    <img src="assets/plates/mechanism/14-mechanism-recap.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 02.14</span>
+    Recap: twin marks after the walk has closed.
+  </figcaption>
+</figure>
+
+</div>
       <div class="hero-actions" style="justify-content:flex-start;margin-top:2.5rem">
         <a class="btn btn-primary" href="laws.html">Next: What is proved</a>
         <a class="btn btn-ghost" href="gaps.html">Back: Gaps</a>
       </div>
+        
     </section>
-  </main>
 
+  </main>
   <footer class="site-footer">
     <div class="wrap footer-grid">
       <div>
@@ -144,41 +237,35 @@
         <p style="color:var(--text-muted);font-size:0.95rem;margin:0">Educational course · Chapter 02</p>
       </div>
       <div>
-        <h4>Continue</h4>
+        <h4>Course</h4>
         <ul>
+          <li><a href="gaps.html">Gaps</a></li>
           <li><a href="laws.html">Laws</a></li>
-          <li><a href="generator.html">Generator</a></li>
-          <li><a href="glossary.html">Glossary</a></li>
+          <li><a href="cryptology.html">Cryptology</a></li>
+          <li><a href="evidence.html">Evidence</a></li>
         </ul>
       </div>
       <div>
         <h4>Research source</h4>
         <ul>
+          <li><a href="https://github.com/zfifteen/prime-gap-structure" rel="noopener noreferrer" target="_blank">Repository</a></li>
           <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/PROOF.md" rel="noopener noreferrer" target="_blank">PROOF.md</a></li>
-          <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md" rel="noopener noreferrer" target="_blank">Leftmost minimum-divisor rule</a></li>
+          <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/docs/RESULTS.md" rel="noopener noreferrer" target="_blank">RESULTS.md</a></li>
         </ul>
       </div>
     </div>
     <div class="wrap footer-note">
-      Educational surface. Formal theorem status lives in PROOF.md.
+      Educational surface with saturated visual plates. Theorem status is controlled by PROOF.md.
+      Measured tables certify implementations inside stated regimes.
     </div>
   </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      if (window.renderMathInElement) {
-        renderMathInElement(document.body, {
-          delimiters: [
-            { left: "\\[", right: "\\]", display: true },
-            { left: "\\(", right: "\\)", display: false }
-          ]
-        });
-      }
-    });
-  </script>
   <script src="js/main.js"></script>
   <script src="js/labs.js"></script>
+  <script src="js/figures.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){if(window.renderMathInElement){renderMathInElement(document.body,{delimiters:[{left:"\\[",right:"\\]",display:true},{left:"\\(",right:"\\)",display:false}]});}});</script>
+
 </body>
 </html>
