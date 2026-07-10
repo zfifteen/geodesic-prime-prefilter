@@ -1,0 +1,906 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A1 Requirements · PGS RSA Endpoint Resolver</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4f7f9;
+      --ink: #15202b;
+      --muted: #5a6774;
+      --line: #d4dee6;
+      --panel: #ffffff;
+      --accent: #0b5f8a;
+      --accent-soft: #e6f3f9;
+      --good: #1f6b45;
+      --warn: #8a5a00;
+      --bad: #8a2436;
+      --hyp: #4a3f8a;
+      --impl: #2f5f7a;
+      --code: #eef3f6;
+      --nav-w: 250px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .layout {
+      display: grid;
+      grid-template-columns: var(--nav-w) minmax(0, 1fr);
+      min-height: 100vh;
+    }
+    nav.side {
+      position: sticky;
+      top: 0;
+      align-self: start;
+      height: 100vh;
+      overflow: auto;
+      background: #0f2433;
+      color: #dce8f0;
+      padding: 18px 14px 28px;
+      border-right: 1px solid #1b3a4d;
+    }
+    nav.side h1 {
+      margin: 0 0 4px;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #8fc6e8;
+    }
+    nav.side .sub {
+      margin: 0 0 14px;
+      font-size: 12px;
+      color: #8aa0b0;
+      line-height: 1.35;
+    }
+    nav.side a {
+      color: #dce8f0;
+      display: block;
+      padding: 5px 8px;
+      border-radius: 5px;
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+    nav.side a:hover { background: #1a3a4f; text-decoration: none; }
+    nav.side a.active { background: #1f4d68; color: #fff; font-weight: 600; }
+    nav.side .group {
+      margin-top: 14px;
+      margin-bottom: 4px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #6f8ea3;
+      padding-left: 8px;
+    }
+    main { padding: 28px 32px 64px; max-width: 980px; }
+    header.hero {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 20px;
+    }
+    header.hero h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.5rem, 2.8vw, 2rem);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .lede { margin: 0; color: var(--muted); max-width: 72ch; }
+    .meta-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .tag {
+      display: inline-block;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 3px 10px;
+      font-size: 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .tag.warn { background: #fff6e5; color: var(--warn); border-color: #efd7a8; }
+    .tag.good { background: #e8f6ee; color: var(--good); border-color: #b7dfc6; }
+    .tag.hyp { background: #efecfb; color: var(--hyp); border-color: #cfc8ef; }
+    .tag.impl { background: #e8f1f6; color: var(--impl); border-color: #b8d0de; }
+    .tag.bad { background: #fcecef; color: var(--bad); border-color: #e7b7c0; }
+    h2 {
+      margin: 30px 0 10px;
+      font-size: 1.32rem;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 6px;
+      scroll-margin-top: 12px;
+    }
+    h3 { margin: 18px 0 8px; font-size: 1.05rem; scroll-margin-top: 12px; }
+    h4 { margin: 14px 0 6px; font-size: 0.98rem; }
+    p, li { max-width: 78ch; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 10px 0 16px;
+      font-size: 0.92rem;
+    }
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      padding: 9px 10px;
+      border-bottom: 1px solid var(--line);
+    }
+    th { background: #e8eef3; font-weight: 700; }
+    tr:last-child td { border-bottom: 0; }
+    pre, code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12.5px;
+    }
+    code { background: var(--code); padding: 1px 5px; border-radius: 4px; }
+    pre {
+      background: var(--code);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      overflow-x: auto;
+    }
+    .callout {
+      border-left: 4px solid var(--accent);
+      background: var(--accent-soft);
+      padding: 12px 14px;
+      border-radius: 0 8px 8px 0;
+      margin: 12px 0;
+    }
+    .callout.warn { border-left-color: var(--warn); background: #fff8eb; }
+    .callout.bad { border-left-color: var(--bad); background: #fdf0f3; }
+    .callout.good { border-left-color: var(--good); background: #eef8f2; }
+    .flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+      margin: 10px 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12.5px;
+    }
+    .flow span {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 5px 8px;
+      border-radius: 6px;
+    }
+    .flow .arrow { border: 0; background: transparent; color: var(--muted); padding: 0 2px; }
+    .checklist { list-style: none; padding-left: 0; }
+    .checklist li {
+      max-width: none;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin: 0 0 8px;
+    }
+    .checklist li::before {
+      content: "☐ ";
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .req-id {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 6px;
+    }
+    footer {
+      margin-top: 36px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; }
+      nav.side { position: relative; height: auto; }
+      main { padding: 18px 14px 48px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <nav class="side" aria-label="A1 requirements navigation">
+      <h1>A1 Requirements</h1>
+      <p class="sub">RSA modulus endpoint resolver<br>Counsel winner · fleshed</p>
+
+      <div class="group">Roadmap</div>
+      <a href="../index.html">Catalog hub</a>
+      <a href="../tracks/A-high-leverage.html">Track A</a>
+      <a href="../tracks/C-cryptology.html">Track C</a>
+      <a href="test-plan.html"><strong>A1 test plan</strong></a>
+      <a href="code-review-report.html"><strong>Code review report</strong></a>
+
+      <div class="group">This document</div>
+      <a class="active" href="#top">Overview</a>
+      <a href="#object">1. Observable object</a>
+      <a href="#frame">2. PGS-native frame</a>
+      <a href="#goals">3. Goals and non-goals</a>
+      <a href="#status-separation">4. Status separation</a>
+      <a href="#baseline">5. Current baseline</a>
+      <a href="#functional">6. Functional requirements</a>
+      <a href="#certificate">7. Certificate contract</a>
+      <a href="#residual">8. Residual taxonomy</a>
+      <a href="#forbidden">9. Forbidden mechanisms</a>
+      <a href="#scale">10. Scale and performance</a>
+      <a href="#artifacts">11. Artifacts</a>
+      <a href="#acceptance">12. Acceptance criteria</a>
+      <a href="#phases">13. Execution phases</a>
+      <a href="#falsification">14. Falsification plan</a>
+      <a href="#metrics">15. Metrics</a>
+      <a href="#dependencies">16. Dependencies</a>
+      <a href="#risks">17. Risks and shape guards</a>
+      <a href="#done">18. Definition of done</a>
+
+      <div class="group">Workbench</div>
+      <a href="../../06-cryptology-rsa/experiments/live-solver/rsa-v2/ALGORITHM.md">v2 ALGORITHM.md</a>
+      <a href="../../06-cryptology-rsa/experiments/live-solver/rsa-v2/PGS_CERTIFICATE.md">v2 certificate</a>
+      <a href="../../06-cryptology-rsa/experiments/live-solver/rsa-v2/METRICS.md">v2 metrics</a>
+    </nav>
+
+    <main id="top">
+      <header class="hero">
+        <p class="eyebrow">Enhancement A1 · Requirements specification</p>
+        <h1>Mature the deterministic PGS-native RSA modulus endpoint resolver</h1>
+        <p class="lede">
+          Build a general engine that, given a public RSA modulus (or family of moduli),
+          traverses locked endpoint chains using only PGS objects and rules, emits a
+          public structural certificate when invariants close to an oriented endpoint
+          class, and emits an explicit diagnosable unresolved state when they do not.
+          Scale the engine so 256-bit, 512-bit, and 1024-bit+ cases are routine
+          instrumentation targets, not one-off demos.
+        </p>
+        <div class="meta-row">
+          <span class="tag">ID: A1</span>
+          <span class="tag good">counsel winner 2026-07</span>
+          <span class="tag">measured: small rungs</span>
+          <span class="tag warn">unresolved residuals exist</span>
+          <span class="tag hyp">crypto-scale engine: target</span>
+          <span class="tag impl">implementation track</span>
+        </div>
+      </header>
+
+      <div class="callout good">
+        <strong>Claim boundary (read first).</strong>
+        A1 does <em>not</em> claim to factor RSA, break cryptography, or prove a new
+        universal factorization theorem. It claims to read and certify deterministic
+        endpoint structure that moduli expose under DNI zero-excess primes and the
+        proved GWR maximizer. Classical factor confirmation is audit only, after
+        inference, and never chooses the endpoint class.
+      </div>
+
+      <h2 id="object">1. Observable object (plain language)</h2>
+      <p>
+        Start from a public modulus <code>N</code>. Orient around <code>isqrt(N)</code>
+        only as a side separator, not as a candidate chamber. Walk previous public
+        endpoints on the lower side. At each step, build a chamber-reset certificate
+        (selected carrier, lock, threat, deadline, signature). Transport the oriented
+        coordinate by <code>floor(N / x)</code>. Build the opposite-side certificate.
+        Test reciprocal closure and GWR-carrier alignment. When the structure closes,
+        emit a public endpoint class plus certificate. When it does not, emit
+        unresolved with a residual class and full diagnostic trace.
+      </p>
+      <div class="flow">
+        <span>public N</span>
+        <span class="arrow">→</span>
+        <span>endpoint chain</span>
+        <span class="arrow">→</span>
+        <span>reset certificate</span>
+        <span class="arrow">→</span>
+        <span>floor(N/x)</span>
+        <span class="arrow">→</span>
+        <span>reciprocal pair</span>
+        <span class="arrow">→</span>
+        <span>class or unresolved</span>
+      </div>
+
+      <h2 id="frame">2. PGS-native frame (required first frame)</h2>
+      <pre>locked PGS endpoint chain
+  -&gt; floor transport through modulus
+  -&gt; reciprocal endpoint closure
+  -&gt; GWR-selected carrier transport closure
+  -&gt; modulus-link residual
+  -&gt; structural certificate OR unresolved state</pre>
+      <p>
+        Upstream theorems used as foundation (not re-proved here): direct next-prime
+        rule, GWR interior maximizer, universal bounded compression / Prime-Square
+        Proximity as stated in <code>PROOF.md</code>. A1 implementation status is
+        separate from those theorem statuses.
+      </p>
+
+      <h2 id="goals">3. Goals and non-goals</h2>
+      <h3>Goals</h3>
+      <ul>
+        <li>Generalize RSA v2 reciprocal PGSPG instrumentation into a versioned
+          resolver track (working name: endpoint-resolver-v3) with one algorithm
+          contract across bit lengths.</li>
+        <li>Make GWR-selected carrier transport closure explicit predicates, not
+          ad-hoc numeric alignment bounds alone.</li>
+        <li>Emit portable structural certificates with a standalone verifier.</li>
+        <li>Emit honest unresolved states with a stable residual taxonomy.</li>
+        <li>Produce public resolved/unresolved corpora at 128, 256, 512, and 1024-bit
+          targets (as implementation evidence, not theorem claims).</li>
+        <li>Feed internal gap populations into square-branch, state-budget, gap-type,
+          and falsification pipelines.</li>
+      </ul>
+      <h3>Non-goals</h3>
+      <ul>
+        <li>Claiming factorization of production RSA moduli.</li>
+        <li>Using Miller-Rabin, trial division, sieves, <code>gcd</code>, product
+          closure, or factor APIs inside inference.</li>
+        <li>Changing generator stream contract <code>{"p","q"}</code> or downgrading
+          proved theorems.</li>
+        <li>Replacing audit with inference or inference with audit.</li>
+        <li>Solving RH, PNT, or classical Cramér gap-width formulations as side effects.</li>
+      </ul>
+
+      <h2 id="status-separation">4. Status separation (mandatory in every artifact)</h2>
+      <table>
+        <thead>
+          <tr><th>Axis</th><th>A1 treatment</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Theorem / proved</td><td>Only cite <code>PROOF.md</code> pillars. Do not invent new universal laws in runner output.</td></tr>
+          <tr><td>Implementation</td><td>Algorithm version, scripts, certificate schema, verifier, scale support.</td></tr>
+          <tr><td>Measured</td><td>Exact bit lengths, case counts, resolution rates, residual histograms, regimes.</td></tr>
+          <tr><td>Audit</td><td>Downstream classical check: whether an emitted endpoint is a factor. Never selects endpoints.</td></tr>
+          <tr><td>Hypothesis</td><td>New carrier-closure predicates before they pass measured surfaces.</td></tr>
+          <tr><td>Unresolved</td><td>First-class output when invariants do not close.</td></tr>
+          <tr><td>Invalidated</td><td>Withdrawn scaffolds (fixed additive chamber, budgeted multi-endpoint walk as solver shape).</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="baseline">5. Current baseline (RSA v2)</h2>
+      <p>
+        Live workbench:
+        <code>research/06-cryptology-rsa/experiments/live-solver/rsa-v2/</code>.
+        Inference shape: unified transported certificate chain. Inputs are public
+        ladder fixtures only (no audit factors in inference).
+      </p>
+      <h3>Stages (preserve semantics unless A1 explicitly supersedes)</h3>
+      <ol>
+        <li><strong>Public orientation:</strong> compute <code>isqrt(N)</code> as side separator only.</li>
+        <li><strong>Initial lower anchor:</strong> previous public endpoint before <code>isqrt(N)</code> (step zero of one chain).</li>
+        <li><strong>Uniform chain state:</strong> derive PGSPG chamber-reset certificate; choose oriented transport coordinate
+          <code>x</code> (reset endpoint if still on lower side, else anchor).</li>
+        <li><strong>Floor transport:</strong> <code>y = floor(N / x)</code>.</li>
+        <li><strong>Upper certificate:</strong> previous public endpoint before <code>y</code>; derive certificate.</li>
+        <li><strong>Closure predicates:</strong> strict reset closure first; deadline-signature correction second.</li>
+        <li><strong>Emit:</strong> endpoint class states or unresolved residual states per metrics contract.</li>
+      </ol>
+      <h3>Known measured / unresolved anchors (do not upgrade)</h3>
+      <ul>
+        <li>Smaller bit rungs have public resolved endpoint-class examples on measured surfaces.</li>
+        <li>Carrier-misalignment style residuals (e.g. 50-bit-class cases) remain honest unresolved.</li>
+        <li>Grammar / transported-story tracks are measured evidence only, not resolvers.</li>
+      </ul>
+      <div class="callout warn">
+        Exact case IDs, bit counts, and rates must be re-read from current v2 metrics
+        and fixture outputs before any public claim. This requirements page is not a
+        metrics certificate.
+      </div>
+
+      <h2 id="functional">6. Functional requirements</h2>
+
+      <h3 id="fr-input">6.1 Inputs</h3>
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Requirement</th><th>Priority</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="req-id">FR-IN-01</span></td>
+            <td>Accept public case rows: <code>case_id</code>, <code>bits</code>, <code>N</code>, optional description. Inference must not read private factors.</td>
+            <td>Must</td>
+          </tr>
+          <tr>
+            <td><span class="req-id">FR-IN-02</span></td>
+            <td>Support fixture corpora for toy, challenge, and generated random semiprime ladders at target bit lengths.</td>
+            <td>Must</td>
+          </tr>
+          <tr>
+            <td><span class="req-id">FR-IN-03</span></td>
+            <td>Record algorithm version and git commit on every run summary.</td>
+            <td>Must</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="fr-inference">6.2 Inference path</h3>
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Requirement</th><th>Priority</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="req-id">FR-INF-01</span></td>
+            <td>Single chain model: first previous endpoint before <code>isqrt(N)</code> is step zero of the same lower chain, not a separate square-root chamber mode.</td>
+            <td>Must</td>
+          </tr>
+          <tr>
+            <td><span class="req-id">FR-INF-02</span></td>
+            <td>Every chain step derives a full chamber-reset certificate (fields at least as rich as v2: anchor, reset_endpoint, carriers, lock, threat, deadline, signature, closed offsets, tail).</td>
+            <td>Must</td>
+          </tr>
+          <tr>
+            <td><span class="req-id">FR-INF-03</span></td>
+            <td>Transport uses only allowed public floor maps and previous-endpoint derivation (see §9 allowed list).</td>
+            <td>Must</td>
+          </tr>
+          <tr>
+            <td><span class="req-id">FR-INF-04</span></td>
+            <td>Strict reset closure evaluated before deadline-signature correction.</td>
+            <td>Must</td>
+          </tr>
+          <tr>
+            <td><span class="req-id">FR-INF-05</span></td>
+            <td>Define and implement explicit <strong>GWR-carrier transport closure</strong> predicates that distinguish known resolved cases from known false-positive or misaligned candidates. Document each predicate as measured until promoted by human-approved process.</td>
+            <td>Must</td>
+          </tr>
+          <tr>
+            <td><span class="req-id">FR-INF-06</span></td>
+            <td>On closure, emit a public endpoint class with rule_id and certificate pair references. Do not emit factor labels inside inference records.</td>
+            <td>Must</td>
+          </tr>
+          <tr>
+            <td><span class="req-id">FR-INF-07</span></td>
+            <td>On non-closure, emit unresolved with residual code, residual payload, and step trace. Never invent a fallback classical search.</td>
+            <td>Must</td>
+          </tr>
+          <tr>
+            <td><span class="req-id">FR-INF-08</span></td>
+            <td>Deterministic: identical public inputs and algorithm version produce identical outputs (bit-identical for fixed-precision paths, or documented exact-arithmetic equivalence).</td>
+            <td>Must</td>
+          </tr>
+          <tr>
+            <td><span class="req-id">FR-INF-09</span></td>
+            <td>Optional grammar / story-law probes remain separate evidence tracks and must not gate resolver output.</td>
+            <td>Should</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="fr-audit">6.3 Audit path (downstream only)</h3>
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Requirement</th><th>Priority</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="req-id">FR-AUD-01</span></td>
+            <td>Audit may report whether an emitted endpoint divides <code>N</code>. Audit status fields live only in audit sidecars.</td>
+            <td>Must</td>
+          </tr>
+          <tr>
+            <td><span class="req-id">FR-AUD-02</span></td>
+            <td>Audit failure does not rewrite inference residual taxonomy; it is a separate verification axis.</td>
+            <td>Must</td>
+          </tr>
+          <tr>
+            <td><span class="req-id">FR-AUD-03</span></td>
+            <td>Physical separation: inference modules must not import factor-finding helpers used only for audit.</td>
+            <td>Must</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="certificate">7. Certificate contract</h2>
+      <h3>7.1 Chamber-reset certificate fields (minimum)</h3>
+      <p>Preserve and version the v2 field set as the baseline schema:</p>
+      <pre>{
+  "schema": "pgs_reset_certificate_v3",
+  "anchor": "...",
+  "reset_endpoint": "...",
+  "gap_offset": "...",
+  "candidate_bound": "...",
+  "active_count": "...",
+  "resolved_count": "...",
+  "unresolved_count": "...",
+  "closed_offsets_before_q": [...],
+  "carrier_w": "...",
+  "carrier_d": "...",
+  "lock_carrier_offset": "...",
+  "lock_carrier_d": "...",
+  "lower_d_threat_offset": "...",
+  "tail_after_reset_offsets": [...],
+  "reset_deadline_value": "...",
+  "reset_deadline_margin": "...",
+  "reset_signature": "..."
+}</pre>
+      <h3>7.2 Structural certificate package (A1 deliverable)</h3>
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Requirement</th><th>Priority</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="req-id">FR-CERT-01</span></td>
+            <td>Define a versioned JSON structural certificate that packages: case public data, algorithm version, chain step index, lower/upper certificates, transport coordinates, closure rule_id, endpoint class or residual code, and content hash.</td>
+            <td>Must</td>
+          </tr>
+          <tr>
+            <td><span class="req-id">FR-CERT-02</span></td>
+            <td>Standalone verifier (Python minimum) validates internal consistency of floor transport equalities, signature matches claimed by the rule, and schema completeness without re-running full chain discovery when not required by the rule.</td>
+            <td>Must</td>
+          </tr>
+          <tr>
+            <td><span class="req-id">FR-CERT-03</span></td>
+            <td>Verifier never uses classical factor APIs to “repair” a certificate. Invalid certificates fail closed.</td>
+            <td>Must</td>
+          </tr>
+          <tr>
+            <td><span class="req-id">FR-CERT-04</span></td>
+            <td>Document Lean-facing certificate type as a future mirror target (Track B), not a blocker for v3 Python verifier.</td>
+            <td>Should</td>
+          </tr>
+          <tr>
+            <td><span class="req-id">FR-CERT-05</span></td>
+            <td>Public endpoint class records exclude audit labels, confidence fields, and factor flags.</td>
+            <td>Must</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="residual">8. Residual taxonomy</h2>
+      <p>
+        Unresolved is a successful contract outcome when invariants do not close.
+        Residual codes must be stable, documented, and countable.
+      </p>
+      <h3>8.1 Baseline unresolved codes (v2 carry-forward)</h3>
+      <ul>
+        <li><code>unresolved_by_certificate_pair_not_closed</code></li>
+        <li><code>unresolved_by_endpoint_chain_boundary</code></li>
+        <li><code>unresolved_by_endpoint_chain_cycle</code></li>
+        <li><code>unresolved_by_first_tail_misalignment</code></li>
+        <li>carrier-misalignment family (preserve exact current spelling from live metrics; do not rename without a versioned migration note)</li>
+      </ul>
+      <h3>8.2 A1 residual requirements</h3>
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Requirement</th><th>Priority</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="req-id">FR-RES-01</span></td>
+            <td>Publish a residual taxonomy table: code, plain-language meaning, diagnostic fields required, recovery hypothesis (if any).</td>
+            <td>Must</td>
+          </tr>
+          <tr>
+            <td><span class="req-id">FR-RES-02</span></td>
+            <td>Every unresolved emission includes step index, last successful stage, residual code, and certificate fields present/absent.</td>
+            <td>Must</td>
+          </tr>
+          <tr>
+            <td><span class="req-id">FR-RES-03</span></td>
+            <td>No residual code may encode classical factor information.</td>
+            <td>Must</td>
+          </tr>
+          <tr>
+            <td><span class="req-id">FR-RES-04</span></td>
+            <td>Reciprocal-carrier misalignment residuals become inputs to residual-class research (Track C1), not silent failures.</td>
+            <td>Must</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="forbidden">9. Forbidden and allowed mechanisms</h2>
+      <div class="callout bad">
+        <strong>Forbidden as PGS inference (Must not):</strong>
+        trial division; Miller-Rabin; ECPP; PARI primality; <code>isprime</code>;
+        <code>nextprime</code>; sieve-backed prime generation; <code>gcd</code>;
+        <code>N % x</code> as a factor selector; divisibility selectors; product
+        closure checks; hidden factors; audit labels inside inference; factor APIs;
+        random search; fallback search when unresolved.
+      </div>
+      <h3>Allowed transport facts (inference)</h3>
+      <ul>
+        <li><code>floor(N / anchor)</code>, <code>floor(N / reset_endpoint)</code>, <code>floor(N / reset_deadline_value)</code></li>
+        <li>previous public endpoint before a transported coordinate</li>
+        <li>differences between transported reset and deadline images</li>
+        <li>equality of public transported coordinates and reset signatures</li>
+        <li>GWR-selected carrier fields derived from chamber-reset state</li>
+      </ul>
+      <h3>Allowed classical roles</h3>
+      <ul>
+        <li>Downstream audit (factor confirmation after emit)</li>
+        <li>Benchmark comparison surfaces (clearly labeled)</li>
+        <li>Legacy prefilter paths elsewhere in the repo (not this resolver)</li>
+      </ul>
+
+      <h2 id="scale">10. Scale and performance requirements</h2>
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Requirement</th><th>Priority</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="req-id">NFR-SC-01</span></td>
+            <td>Instrument at least one public corpus at each target: 128-bit, 256-bit, 512-bit. 1024-bit+ is a stretch target once 512-bit is routine.</td>
+            <td>Must (through 512); Should (1024+)</td>
+          </tr>
+          <tr>
+            <td><span class="req-id">NFR-SC-02</span></td>
+            <td>Exact arithmetic for moduli beyond native int convenience; no floating transport.</td>
+            <td>Must</td>
+          </tr>
+          <tr>
+            <td><span class="req-id">NFR-SC-03</span></td>
+            <td>Document resource bounds (time/memory per bit length) as measured; do not invent performance theorems.</td>
+            <td>Must</td>
+          </tr>
+          <tr>
+            <td><span class="req-id">NFR-SC-04</span></td>
+            <td>Coordinate with high-scale C chamber (D1) for shared carrier/lock/transport objects; Python may lead algorithm, C may lead scale.</td>
+            <td>Should</td>
+          </tr>
+          <tr>
+            <td><span class="req-id">NFR-SC-05</span></td>
+            <td>Runs must be batchable and resumable for large corpora without losing residual traces.</td>
+            <td>Should</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="artifacts">11. Required artifacts</h2>
+      <table>
+        <thead>
+          <tr><th>Artifact</th><th>Location (proposed)</th><th>Status type</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Track charter + ALGORITHM.md (v3)</td>
+            <td><code>research/06-cryptology-rsa/experiments/live-solver/rsa-v3/</code> (or designated successor path)</td>
+            <td>implementation</td>
+          </tr>
+          <tr>
+            <td>PGS_CERTIFICATE.md + JSON schema</td>
+            <td>alongside algorithm</td>
+            <td>implementation</td>
+          </tr>
+          <tr>
+            <td>METRICS.md + residual taxonomy</td>
+            <td>alongside algorithm</td>
+            <td>measured contract</td>
+          </tr>
+          <tr>
+            <td>Standalone verifier</td>
+            <td>scripts + tests</td>
+            <td>implementation</td>
+          </tr>
+          <tr>
+            <td>Public walk-through of known resolved and unresolved cases</td>
+            <td>HTML preferred under cryptology docs</td>
+            <td>measured narrative</td>
+          </tr>
+          <tr>
+            <td>Corpora of resolved/unresolved at target bit lengths</td>
+            <td>fixtures + output/</td>
+            <td>measured</td>
+          </tr>
+          <tr>
+            <td>Falsification plan + pre-registered probes</td>
+            <td><code>experiments/</code> or track <code>falsification/</code></td>
+            <td>hypothesis until run</td>
+          </tr>
+          <tr>
+            <td>Gap export pipeline to square-branch / state-budget</td>
+            <td>documented handoff</td>
+            <td>implementation</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="acceptance">12. Acceptance criteria</h2>
+      <p>A1 is accepted only when all Must criteria below pass. Measured rates are reported exactly; they do not become theorems.</p>
+      <p>
+        Formal verification procedures, suite IDs, phase gates, and pass/fail rules:
+        <a href="test-plan.html"><strong>A1 formal test plan</strong></a>
+        (document id <code>A1-TP</code>).
+      </p>
+      <ul class="checklist">
+        <li><span class="req-id">AC-01</span> Versioned algorithm document expresses every inference step in PGS objects; no classical selector in the rule text.</li>
+        <li><span class="req-id">AC-02</span> GWR-carrier transport closure predicates are named, tested, and separate from audit.</li>
+        <li><span class="req-id">AC-03</span> Structural certificate schema + standalone verifier exist; green tests on fixed fixtures.</li>
+        <li><span class="req-id">AC-04</span> Known v2 resolved cases remain resolvable (or are reclassified with an explicit residual migration note).</li>
+        <li><span class="req-id">AC-05</span> Known honest unresolved cases still emit unresolved (no silent “resolution” via classical gates).</li>
+        <li><span class="req-id">AC-06</span> At least one corpus at 128-bit and one at 256-bit published with resolution rate, residual histogram, and full traces for every unresolved case.</li>
+        <li><span class="req-id">AC-07</span> 512-bit instrumentation path exists (even if resolution rate is low or zero); unresolved emissions remain well-formed.</li>
+        <li><span class="req-id">AC-08</span> Inference vs audit separation verified by code review and automated import/guard tests where feasible.</li>
+        <li><span class="req-id">AC-09</span> Continuity surfaces updated: track entry in status map or cryptology README; residual ledger path recorded.</li>
+        <li><span class="req-id">AC-10</span> No claim language in docs upgrades measured endpoint classes to factorization theorems or RSA break claims.</li>
+      </ul>
+
+      <h2 id="phases">13. Execution phases</h2>
+      <table>
+        <thead>
+          <tr><th>Phase</th><th>Objective</th><th>Exit gate</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>P0 · Charter</strong></td>
+            <td>Designate track home, ALGORITHM skeleton, residual taxonomy draft, falsification pre-register.</td>
+            <td>Docs openable; no code required</td>
+          </tr>
+          <tr>
+            <td><strong>P1 · Walk-through</strong></td>
+            <td>Public step-by-step of existing resolved and unresolved cases in pure PGS vocabulary.</td>
+            <td>HTML/MD walk-through reviewed for status separation</td>
+          </tr>
+          <tr>
+            <td><strong>P2 · Carrier closure</strong></td>
+            <td>Implement explicit GWR-carrier transport closure predicates; regression on v2 fixtures.</td>
+            <td>Tests green; false-positive separation demonstrated on fixed cases</td>
+          </tr>
+          <tr>
+            <td><strong>P3 · Certificate + verifier</strong></td>
+            <td>Schema, emitter, standalone verifier, golden certificates.</td>
+            <td>AC-03</td>
+          </tr>
+          <tr>
+            <td><strong>P4 · 128/256 corpora</strong></td>
+            <td>Generate/run public corpora; publish rates and residual histograms.</td>
+            <td>AC-06</td>
+          </tr>
+          <tr>
+            <td><strong>P5 · 512 path</strong></td>
+            <td>Scale instrumentation; coordinate C high-scale if needed.</td>
+            <td>AC-07</td>
+          </tr>
+          <tr>
+            <td><strong>P6 · Cross-front feed</strong></td>
+            <td>Export internal gaps to square-branch / state-budget / gap-type; optional 1024 stretch.</td>
+            <td>Documented handoff + measured notes</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="falsification">14. Falsification plan (pre-register before claiming gains)</h2>
+      <div class="callout warn">
+        Every new carrier-closure predicate or scale claim must ship with a
+        pre-registered adversarial probe. Attempted falsification is a first-class
+        artifact (Track A4).
+      </div>
+      <table>
+        <thead>
+          <tr><th>Probe</th><th>What would falsify the intended gain</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Carrier-misalignment constructions</td>
+            <td>Predicate “resolves” cases only by smuggling classical selection, or collapses known resolved cases to unresolved without residual progress.</td>
+          </tr>
+          <tr>
+            <td>False-positive endpoint classes</td>
+            <td>Closure emits endpoint classes that fail independent certificate consistency (verifier red) or require audit factors to select.</td>
+          </tr>
+          <tr>
+            <td>Square-branch stress inside moduli</td>
+            <td>Resolver path silently ignores high-utilization square branches and cannot export them.</td>
+          </tr>
+          <tr>
+            <td>Determinism replay</td>
+            <td>Two runs of the same public input disagree on class or residual.</td>
+          </tr>
+          <tr>
+            <td>Import boundary test</td>
+            <td>Inference graph reaches factor/MR/gcd helpers.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="metrics">15. Metrics contract</h2>
+      <p>Extend v2 summary/survivor fields. Each run must report:</p>
+      <ul>
+        <li><code>case_id</code>, <code>bits</code>, <code>N</code>, <code>center=isqrt(N)</code></li>
+        <li><code>algorithm_version</code>, <code>git_commit</code></li>
+        <li><code>closure_status</code> or residual code</li>
+        <li>certificate presence flags (lower, upper, corrected)</li>
+        <li><code>rule_id</code></li>
+        <li>step counts, active carrier stats (d4_count / carrier pairs as available)</li>
+        <li>resource notes: wall time, peak memory (measured)</li>
+      </ul>
+      <p>
+        Aggregate reports: resolution rate by bit length, residual histogram,
+        certificate verify pass rate, audit match rate (audit sidecar only).
+      </p>
+
+      <h2 id="dependencies">16. Dependencies and amplification</h2>
+      <table>
+        <thead>
+          <tr><th>Related ID</th><th>Relationship</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><a href="../tracks/C-cryptology.html#c1">C1</a></td><td>Residual-class closure research for carrier misalignment.</td></tr>
+          <tr><td><a href="../tracks/C-cryptology.html#c2">C2</a></td><td>Structural certificate promotion; shares schema with A1.</td></tr>
+          <tr><td><a href="../tracks/A-high-leverage.html#a2">A2</a></td><td>Names chamber/chain objects that A1 forces into first-class cards.</td></tr>
+          <tr><td><a href="../tracks/A-high-leverage.html#a4">A4</a></td><td>Falsification engine wraps A1 probes.</td></tr>
+          <tr><td><a href="../tracks/D-generator-systems.html#d1">D1</a></td><td>High-scale C enables 512/1024 instrumentation.</td></tr>
+          <tr><td><a href="../tracks/B-proof-formalization.html#b1">B1</a></td><td>Lean may later mirror certificate/transport lemmas; not a P0 blocker.</td></tr>
+          <tr><td>Square-branch / bounded compression</td><td>A1 generates large-gap pressure data; does not replace PROOF.md obligations.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="risks">17. Risks and shape guards</h2>
+      <table>
+        <thead>
+          <tr><th>Risk</th><th>Guard</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Classical drift under crypto pressure</td>
+            <td>Import boundary tests; forbidden list in §9; Continuity review on docs.</td>
+          </tr>
+          <tr>
+            <td>Unresolved prose that sounds solved</td>
+            <td>Residual codes required; ban “essentially factors” language.</td>
+          </tr>
+          <tr>
+            <td>Progress theater via survivor counts</td>
+            <td>Metrics report unresolved with equal prominence; certificates verify structure, not success theater.</td>
+          </tr>
+          <tr>
+            <td>Theorem inflation</td>
+            <td>No edits to PROOF.md theorem status without human-approved promotion process.</td>
+          </tr>
+          <tr>
+            <td>Scale wall in pure Python</td>
+            <td>Phase coupling to D1; exact measured resource tables.</td>
+          </tr>
+          <tr>
+            <td>Hiding failures by renaming residuals</td>
+            <td>Versioned residual taxonomy; migration notes required.</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="callout bad">
+        Shape warnings to fire early: classical gate before PGS state; unresolved
+        written as solved; progress theater; treating PGS as a prefilter for gcd search.
+      </div>
+
+      <h2 id="done">18. Definition of done (A1 program upgrade)</h2>
+      <p>A1 is <strong>done as a program upgrade</strong> when:</p>
+      <ol>
+        <li>P0-P5 acceptance criteria AC-01 through AC-10 are satisfied.</li>
+        <li>At least one 256-bit public instrumented corpus exists with certificates or honest residuals for every case.</li>
+        <li>512-bit path runs without classical fallback and emits well-formed outputs.</li>
+        <li>Verifier is independently usable on published certificates.</li>
+        <li>Cross-front export to square-branch or state-budget is documented with at least one measured handoff note.</li>
+        <li>Public framing states clearly: structure reading and certification, not RSA break.</li>
+      </ol>
+      <div class="callout">
+        <strong>Recommended immediate next move (from counsel, preserved):</strong>
+        Stand up or formally designate the endpoint-resolver-v3 track, produce the
+        public walk-through of existing cases, then implement minimal GWR-carrier
+        transport closure predicates against fixed resolved vs unresolved fixtures.
+      </div>
+
+      <footer>
+        <a href="../index.html">← Catalog hub</a>
+        · <a href="test-plan.html">A1 test plan →</a>
+        · <a href="../tracks/A-high-leverage.html#a1">Track A card</a>
+        · <a href="../tracks/C-cryptology.html">Track C</a>
+        · Requirements formalized 2026-07-09 · theorem control remains in PROOF.md
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

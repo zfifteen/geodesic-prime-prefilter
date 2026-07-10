@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A1 Code Review Report · rsa-v3</title>
+  <style>
+    :root { --bg:#f4f7f9; --ink:#15202b; --muted:#5a6774; --line:#d4dee6; --panel:#fff;
+      --accent:#0b5f8a; --good:#1f6b45; --warn:#8a5a00; --bad:#8a2436; }
+    body { margin:0; font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:var(--bg); color:var(--ink); }
+    main { max-width:920px; margin:0 auto; padding:28px 20px 64px; }
+    h1 { font-size:1.7rem; margin:0 0 8px; letter-spacing:0; }
+    h2 { font-size:1.25rem; border-bottom:2px solid var(--line); padding-bottom:6px; margin:28px 0 10px; }
+    h3 { font-size:1.05rem; margin:16px 0 6px; }
+    .muted { color:var(--muted); }
+    .tag { display:inline-block; border:1px solid var(--line); border-radius:999px;
+      padding:2px 10px; font-size:12px; margin:0 6px 6px 0; background:#e8f1f6; color:var(--accent); }
+    .tag.good { background:#e8f6ee; color:var(--good); }
+    .tag.bad { background:#fcecef; color:var(--bad); }
+    .tag.warn { background:#fff6e5; color:var(--warn); }
+    .card { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px; margin:12px 0; }
+    table { width:100%; border-collapse:collapse; background:var(--panel); border:1px solid var(--line);
+      border-radius:10px; overflow:hidden; margin:10px 0; font-size:0.92rem; }
+    th, td { text-align:left; vertical-align:top; padding:8px 10px; border-bottom:1px solid var(--line); }
+    th { background:#e8eef3; }
+    code, pre { font-family:ui-monospace,Menlo,Consolas,monospace; font-size:12.5px; }
+    code { background:#eef3f6; padding:1px 5px; border-radius:4px; }
+    pre { background:#eef3f6; border:1px solid var(--line); border-radius:8px; padding:12px; overflow:auto; }
+    a { color:var(--accent); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="muted">research/20-enhancement-roadmap/a1-rsa-endpoint-resolver · 2026-07-10</p>
+  <h1>A1 Code Review Report (rsa-v3)</h1>
+  <p class="muted">
+    Scope: shipped A1 endpoint resolver under
+    <code>research/06-cryptology-rsa/experiments/live-solver/rsa-v3/</code>
+    and <code>tests/test_a1_*.py</code>. PGS claim boundary preserved: no factorization theorems.
+  </p>
+  <div>
+    <span class="tag good">4 must-fix fixed</span>
+    <span class="tag warn">deferred nits</span>
+    <span class="tag">suite: test_a1_*.py</span>
+  </div>
+
+  <h2>1. Review method</h2>
+  <ul>
+    <li>Read inference path: <code>resolver.py</code>, <code>gwr_carrier_closure.py</code>, <code>residual.py</code>, <code>structural_certificate.py</code>, <code>verifier.py</code>, <code>boundary.py</code>, <code>run_resolver.py</code>.</li>
+    <li>Probed failure modes (None anchors, factor keys in fixtures, residual taxonomy mapping).</li>
+    <li>Baseline suite before fixes: 30 passed; after fixes: full A1 suite re-run (see captures).</li>
+  </ul>
+
+  <h2>2. Issues found</h2>
+
+  <div class="card">
+    <h3>ISSUE-1 · High · GWR first-tail crashes on missing upper anchor</h3>
+    <p><strong>Location:</strong> <code>gwr_carrier_closure.py</code> · <code>gwr_first_tail_reciprocal_proximity</code></p>
+    <p><strong>Failure mode:</strong> <code>int(upper["anchor"])</code> raises <code>TypeError</code> when <code>anchor</code> is <code>None</code>, aborting inference mid-stack.</p>
+    <p><strong>Test plan:</strong> Call shipped predicate with <code>deadline=tail</code> and <code>upper.anchor=None</code>; expect non-crash <code>holds=False</code>.</p>
+    <p><strong>Status:</strong> <span class="tag good">fixed</span> · test <code>test_issue1_gwr_tail_none_anchor_does_not_crash</code></p>
+  </div>
+
+  <div class="card">
+    <h3>ISSUE-2 · High · Public case load accepted audit/factor keys</h3>
+    <p><strong>Location:</strong> <code>resolver.load_public_cases</code> (previously delegated only to v2 <code>p</code>/<code>q</code> check)</p>
+    <p><strong>Failure mode:</strong> Rows with <code>factors</code>, <code>factor</code>, etc. loaded into inference path, violating public-only input contract.</p>
+    <p><strong>Test plan:</strong> Write JSONL with <code>factors</code> / <code>factor</code>; call <code>load_public_cases</code>; expect <code>ValueError</code>.</p>
+    <p><strong>Status:</strong> <span class="tag good">fixed</span> · tests <code>test_issue2_*</code></p>
+  </div>
+
+  <div class="card">
+    <h3>ISSUE-3 · Medium-High · Structural package transport incomplete; emit without fail-closed verify</h3>
+    <p><strong>Location:</strong> <code>structural_certificate.build_structural_certificate</code>; <code>resolver.resolve_case</code></p>
+    <p><strong>Failure mode:</strong> Builder omitted <code>transported_corrected_*</code> transport fields used by verifier deadline checks. Resolver did not refuse emission if verifier would reject a built package.</p>
+    <p><strong>Test plan:</strong> Build package with corrected transport inputs and assert keys present + verify ok; resolve 40-bit and assert emitted cert verifies.</p>
+    <p><strong>Status:</strong> <span class="tag good">fixed</span> · tests <code>test_issue3_*</code>; resolver now calls <code>verify_certificate</code> before emit and demotes on fail.</p>
+    <p><strong>Ship-path gate test:</strong> <code>test_issue3_verify_on_emit_demotes_bad_package</code> monkeypatches
+      <code>build_structural_certificate</code> to return a rehashed floor-broken package, then calls
+      <code>resolve_case</code> on the 40-bit fixture and asserts demotion (no emit). Removing the
+      verify gate would leave the broken package in <code>structural_certificate</code> and fail the test.</p>
+  </div>
+
+  <div class="card">
+    <h3>ISSUE-4 · Medium · Unknown residual codes could crash residual emit</h3>
+    <p><strong>Location:</strong> <code>residual.build_residual_row</code>; resolve residual path</p>
+    <p><strong>Failure mode:</strong> Novel v2 residual labels raise <code>ValueError</code> instead of honest taxonomy mapping.</p>
+    <p><strong>Test plan:</strong> Inject unknown <code>closure_status</code> through <code>resolve_case</code> (not helper-only); assert taxonomy-safe residual, no raise.</p>
+    <p><strong>Status:</strong> <span class="tag good">fixed</span> · <code>coerce_residual_code</code> +
+      <code>test_issue4_resolve_case_maps_unknown_v2_closure_status</code> (drives <code>resolve_case</code>
+      with injected <code>CertificatePair(closure_status=unresolved_by_future_v2_status_xyz)</code>).</p>
+  </div>
+
+  <h2>3. Deferred / non-must-fix</h2>
+  <table>
+    <thead><tr><th>Item</th><th>Severity</th><th>Rationale</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>ThreadPool timeout leaves background chain work running</td>
+        <td>Low</td>
+        <td>Large-bit default path avoids the timed chain; not exercised on regression goldens.</td>
+      </tr>
+      <tr>
+        <td>Structural cert is self-consistent, not cryptographically unforgeable</td>
+        <td>Design</td>
+        <td>Floor-reciprocal pairs include factor pairs by arithmetic identity; cert is structural integrity, not RSA break proof.</td>
+      </tr>
+      <tr>
+        <td>bits field not cross-checked vs <code>N.bit_length()</code></td>
+        <td>Low</td>
+        <td>Metadata only; does not change inference rule. Deferred.</td>
+      </tr>
+      <tr>
+        <td>Default &gt;70-bit instrumentation residual</td>
+        <td>Known limit</td>
+        <td>Documented A1 deviation; scale suite requires well-formed residual only.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>4. Tests and captures</h2>
+  <pre>pytest research/06-cryptology-rsa/tests/test_a1_*.py -q
+# defect suite: tests/test_a1_review_defects.py
+# captures under implementer scratch:
+#   a1_review_baseline.log
+#   a1_review_fix_pre.log / a1_review_fix_post.log
+#   a1_review_full_suite.log
+#   a1_review_launch/</pre>
+
+  <h2>5. Residual risks</h2>
+  <ul>
+    <li>v2 high-scale C abort remains outside A1 suite (pre-existing).</li>
+    <li>Large-bit full chain still requires <code>force_full_chain=True</code> and may be slow.</li>
+    <li>Verifier proves package internal consistency, not that endpoints are factors (audit is separate).</li>
+  </ul>
+
+  <h2>6. Claim boundary</h2>
+  <p>No RSA factorization theorem; no theorem promotion in <code>PROOF.md</code>. Review and fixes stay within implementation/audit discipline.</p>
+
+  <p class="muted"><a href="index.html">A1 requirements</a> · <a href="test-plan.html">A1 test plan</a></p>
+</main>
+</body>
+</html>

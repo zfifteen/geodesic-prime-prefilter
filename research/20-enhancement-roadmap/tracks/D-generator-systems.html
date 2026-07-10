@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Track D · Generator and Systems Enhancements</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4f7f9; --ink: #15202b; --muted: #5a6774; --line: #d4dee6;
+      --panel: #fff; --accent: #0b5f8a; --accent-soft: #e6f3f9;
+      --good: #1f6b45; --warn: #8a5a00; --hyp: #4a3f8a; --impl: #2f5f7a; --code: #eef3f6; --nav-w: 230px;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--bg);
+      font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .layout { display: grid; grid-template-columns: var(--nav-w) minmax(0,1fr); min-height: 100vh; }
+    nav.side { position: sticky; top: 0; align-self: start; height: 100vh; overflow: auto;
+      background: #0f2433; color: #dce8f0; padding: 18px 14px 28px; }
+    nav.side h1 { margin: 0 0 4px; font-size: 0.95rem; letter-spacing: .04em; text-transform: uppercase; color: #8fc6e8; }
+    nav.side .sub { margin: 0 0 14px; font-size: 12px; color: #8aa0b0; }
+    nav.side a { color: #dce8f0; display: block; padding: 5px 8px; border-radius: 5px; font-size: 13px; margin-bottom: 2px; }
+    nav.side a:hover { background: #1a3a4f; text-decoration: none; }
+    nav.side a.active { background: #1f4d68; color: #fff; font-weight: 600; }
+    nav.side .group { margin-top: 14px; margin-bottom: 4px; font-size: 11px; letter-spacing: .08em;
+      text-transform: uppercase; color: #6f8ea3; padding-left: 8px; }
+    main { padding: 28px 32px 64px; max-width: 920px; }
+    header.hero { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; margin-bottom: 18px; }
+    header.hero h1 { margin: 0 0 8px; font-size: 1.7rem; line-height: 1.15; letter-spacing: 0; }
+    .lede { margin: 0; color: var(--muted); }
+    .tag { display: inline-block; border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px;
+      font-size: 12px; background: var(--accent-soft); color: var(--accent); margin: 2px 4px 2px 0; }
+    .tag.good { background: #e8f6ee; color: var(--good); border-color: #b7dfc6; }
+    .tag.hyp { background: #efecfb; color: var(--hyp); border-color: #cfc8ef; }
+    .tag.impl { background: #e8f1f6; color: var(--impl); border-color: #b8d0de; }
+    h3 { margin: 0 0 8px; font-size: 1.05rem; }
+    .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px; margin: 12px 0; }
+    .id { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 700; color: var(--accent); }
+    table { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--line);
+      border-radius: 10px; overflow: hidden; margin: 10px 0; font-size: 0.92rem; }
+    th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+    th { background: #e8eef3; }
+    tr:last-child td { border-bottom: 0; }
+    code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12.5px; background: var(--code); padding: 1px 5px; border-radius: 4px; }
+    .callout { border-left: 4px solid var(--accent); background: var(--accent-soft); padding: 12px 14px; border-radius: 0 8px 8px 0; margin: 12px 0; }
+    footer { margin-top: 32px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+    @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } nav.side { position: relative; height: auto; } main { padding: 16px 14px 48px; } }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <nav class="side">
+      <h1>Track D</h1>
+      <p class="sub">Generator and systems</p>
+      <div class="group">Roadmap</div>
+      <a href="../index.html">Catalog hub</a>
+      <a href="A-high-leverage.html">Track A</a>
+      <a href="B-proof-formalization.html">Track B</a>
+      <a href="C-cryptology.html">Track C</a>
+      <a class="active" href="D-generator-systems.html">Track D</a>
+      <a href="E-theory-open-problems.html">Track E</a>
+      <a href="F-process-continuity.html">Track F</a>
+      <a href="G-applications.html">Track G</a>
+      <a href="H-novel-insights.html">Track H</a>
+      <div class="group">Candidates</div>
+      <a href="#d1">D1 High-scale C</a>
+      <a href="#d2">D2 Pure PGS terminal</a>
+      <a href="#d3">D3 Ultra-large ladders</a>
+      <a href="#d4">D4 Sidecar package</a>
+      <a href="#d5">D5 Prefilter isolation</a>
+    </nav>
+    <main>
+      <header class="hero">
+        <h1>Track D · Generator and systems</h1>
+        <p class="lede">Minimal PGS Generator v1.1 is a completed major milestone. These enhancements are enablers and purity upgrades, not a return to generator-only program center.</p>
+        <div style="margin-top:12px">
+          <span class="tag good">v1.1 production milestone complete</span>
+          <span class="tag impl">C high-scale path exists</span>
+        </div>
+      </header>
+
+      <div class="callout">
+        Generator stream contract remains exactly <code>{"p", "q"}</code> for resolved inputs.
+        Diagnostics and certificates belong in sidecars. Unresolved is explicit; no fallback search.
+      </div>
+
+      <article class="card" id="d1">
+        <div class="id">D1</div>
+        <h3>Complete GMP/MPFR high-scale C chamber</h3>
+        <p><strong>Object:</strong> arbitrary-precision chamber with carrier/lock/threat state machine and certificate surfaces.</p>
+        <p><strong>Status:</strong> <span class="tag impl">implementation surface</span></p>
+        <table>
+          <tr><th>Field</th><th>Content</th></tr>
+          <tr><td>Exit criteria</td><td><code>make -C src/c/high-scale-pgs test</code> green; transport objects aligned with A1 needs.</td></tr>
+          <tr><td>Role</td><td>Counsel runner-up enabler, not flagship alone.</td></tr>
+        </table>
+      </article>
+
+      <article class="card" id="d2">
+        <div class="id">D2</div>
+        <h3>Pure PGS selection at high scale after horizon law</h3>
+        <p><strong>Depends on:</strong> A3</p>
+        <p><strong>Status:</strong> <span class="tag hyp">blocked on A3</span></p>
+        <table>
+          <tr><th>Field</th><th>Content</th></tr>
+          <tr><td>Exit criteria</td><td>Terminal decision predominantly PGS-derived; bridge divisor exhaustion reduced or eliminated under documented regime.</td></tr>
+        </table>
+      </article>
+
+      <article class="card" id="d3">
+        <div class="id">D3</div>
+        <h3>Integer-start chamber / ultra-large ladder surfaces</h3>
+        <p><strong>Status:</strong> <span class="tag">measured evidence only</span></p>
+        <table>
+          <tr><th>Field</th><th>Content</th></tr>
+          <tr><td>Exit criteria</td><td>Zero unresolved / zero audit failures on declared surfaces; exact counts published.</td></tr>
+        </table>
+      </article>
+
+      <article class="card" id="d4">
+        <div class="id">D4</div>
+        <h3>Sidecar diagnostics package</h3>
+        <p><strong>Status:</strong> <span class="tag impl">implementation hygiene</span></p>
+        <table>
+          <tr><th>Field</th><th>Content</th></tr>
+          <tr><td>Exit criteria</td><td>Primary stream never polluted with labels, confidence, or audit metadata.</td></tr>
+        </table>
+      </article>
+
+      <article class="card" id="d5">
+        <div class="id">D5</div>
+        <h3>Legacy prefilter isolation hardening</h3>
+        <p><strong>Object:</strong> Z-band / MR / sympy paths remain historical machinery only.</p>
+        <p><strong>Status:</strong> <span class="tag impl">engineering</span></p>
+        <table>
+          <tr><th>Field</th><th>Content</th></tr>
+          <tr><td>Exit criteria</td><td>Import/API boundary tests prevent leakage into generation and A1 inference.</td></tr>
+        </table>
+      </article>
+
+      <footer>
+        <a href="C-cryptology.html">← Track C</a> ·
+        <a href="../index.html">Catalog hub</a> ·
+        <a href="E-theory-open-problems.html">Track E →</a>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

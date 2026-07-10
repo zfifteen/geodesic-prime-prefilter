@@ -8,7 +8,7 @@ certificates, and unresolved survivor states.
 Primary homes:
 
 - `research/06-cryptology-rsa/experiments/live-solver/rsa-v2/`
-- `research/06-cryptology-rsa/experiments/live-solver/rsa-v3/`
+- `research/06-cryptology-rsa/experiments/live-solver/rsa-v3/` — **A1 endpoint resolver v3** (public-input chain, named GWR-carrier transport closure, structural certificates, residual taxonomy). Entry: `run_resolver.py`. Residual ledger path: each run's `residuals.jsonl`. Spec: `research/20-enhancement-roadmap/a1-rsa-endpoint-resolver/`.
 - `research/06-cryptology-rsa/docs/cryptology/`
 - `research/06-cryptology-rsa/docs/endpoint_structure_law.md`
 - `research/06-cryptology-rsa/docs/semiprime_branch/`

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pgs_structural_certificate_v3",
+  "title": "PGS Structural Certificate v3",
+  "type": "object",
+  "required": [
+    "schema",
+    "algorithm_version",
+    "rule_id",
+    "case_id",
+    "bits",
+    "N",
+    "center",
+    "closure_status",
+    "endpoint_class",
+    "transport",
+    "gwr_carrier_closure",
+    "content_hash"
+  ],
+  "properties": {
+    "schema": { "const": "pgs_structural_certificate_v3" },
+    "algorithm_version": { "type": "string" },
+    "rule_id": { "type": "string" },
+    "git_commit": { "type": ["string", "null"] },
+    "case_id": { "type": "string" },
+    "bits": { "type": "integer" },
+    "N": { "type": "string" },
+    "center": { "type": "string" },
+    "step_index": { "type": ["integer", "null"] },
+    "closure_status": { "type": "string" },
+    "endpoint_class": {
+      "type": "object",
+      "required": ["lower", "upper"],
+      "properties": {
+        "lower": { "type": "string" },
+        "upper": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "lower_certificate": { "type": ["object", "null"] },
+    "upper_certificate": { "type": ["object", "null"] },
+    "corrected_lower_certificate": { "type": ["object", "null"] },
+    "transport": { "type": "object" },
+    "gwr_carrier_closure": { "type": "object" },
+    "content_hash": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" }
+  },
+  "additionalProperties": true
+}

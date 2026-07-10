@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PGS Program Enhancement Roadmap</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4f7f9;
+      --ink: #15202b;
+      --muted: #5a6774;
+      --line: #d4dee6;
+      --panel: #ffffff;
+      --accent: #0b5f8a;
+      --accent-soft: #e6f3f9;
+      --good: #1f6b45;
+      --warn: #8a5a00;
+      --bad: #8a2436;
+      --hyp: #4a3f8a;
+      --impl: #2f5f7a;
+      --code: #eef3f6;
+      --nav-w: 240px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .layout {
+      display: grid;
+      grid-template-columns: var(--nav-w) minmax(0, 1fr);
+      min-height: 100vh;
+    }
+    nav.side {
+      position: sticky;
+      top: 0;
+      align-self: start;
+      height: 100vh;
+      overflow: auto;
+      background: #0f2433;
+      color: #dce8f0;
+      padding: 18px 14px 28px;
+      border-right: 1px solid #1b3a4d;
+    }
+    nav.side h1 {
+      margin: 0 0 4px;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #8fc6e8;
+    }
+    nav.side .sub {
+      margin: 0 0 14px;
+      font-size: 12px;
+      color: #8aa0b0;
+      line-height: 1.35;
+    }
+    nav.side a {
+      color: #dce8f0;
+      display: block;
+      padding: 5px 8px;
+      border-radius: 5px;
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+    nav.side a:hover {
+      background: #1a3a4f;
+      text-decoration: none;
+    }
+    nav.side a.active {
+      background: #1f4d68;
+      color: #fff;
+      font-weight: 600;
+    }
+    nav.side .group {
+      margin-top: 14px;
+      margin-bottom: 4px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #6f8ea3;
+      padding-left: 8px;
+    }
+    main {
+      padding: 28px 32px 64px;
+      max-width: 1100px;
+    }
+    header.hero {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 22px;
+    }
+    header.hero h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+    .lede {
+      margin: 0;
+      color: var(--muted);
+      max-width: 72ch;
+      font-size: 1.02rem;
+    }
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .tag {
+      display: inline-block;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 3px 10px;
+      font-size: 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .tag.warn { background: #fff6e5; color: var(--warn); border-color: #efd7a8; }
+    .tag.good { background: #e8f6ee; color: var(--good); border-color: #b7dfc6; }
+    .tag.hyp { background: #efecfb; color: var(--hyp); border-color: #cfc8ef; }
+    .tag.impl { background: #e8f1f6; color: var(--impl); border-color: #b8d0de; }
+    .tag.bad { background: #fcecef; color: var(--bad); border-color: #e7b7c0; }
+    h2 {
+      margin: 28px 0 10px;
+      font-size: 1.35rem;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 6px;
+    }
+    h3 {
+      margin: 18px 0 8px;
+      font-size: 1.08rem;
+    }
+    p, li { max-width: 78ch; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+      margin: 12px 0 8px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 14px 14px 12px;
+    }
+    .card h3 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+    }
+    .card p {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+    .card .id {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .card.featured {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent-soft);
+      background: linear-gradient(180deg, #f7fbfd 0%, #fff 40%);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 10px 0 16px;
+      font-size: 0.93rem;
+    }
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      padding: 9px 10px;
+      border-bottom: 1px solid var(--line);
+    }
+    th { background: #e8eef3; font-weight: 700; }
+    tr:last-child td { border-bottom: 0; }
+    pre, code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12.5px;
+    }
+    code {
+      background: var(--code);
+      padding: 1px 5px;
+      border-radius: 4px;
+    }
+    pre {
+      background: var(--code);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      overflow-x: auto;
+    }
+    .callout {
+      border-left: 4px solid var(--accent);
+      background: var(--accent-soft);
+      padding: 12px 14px;
+      border-radius: 0 8px 8px 0;
+      margin: 12px 0;
+    }
+    .callout.warn {
+      border-left-color: var(--warn);
+      background: #fff8eb;
+    }
+    .callout.bad {
+      border-left-color: var(--bad);
+      background: #fdf0f3;
+    }
+    .flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+      margin: 10px 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12.5px;
+    }
+    .flow span {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 5px 8px;
+      border-radius: 6px;
+    }
+    .flow .arrow { border: 0; background: transparent; color: var(--muted); padding: 0 2px; }
+    footer {
+      margin-top: 36px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; }
+      nav.side {
+        position: relative;
+        height: auto;
+        max-height: none;
+      }
+      main { padding: 18px 14px 48px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <nav class="side" aria-label="Roadmap navigation">
+      <h1>Enhancement Roadmap</h1>
+      <p class="sub">research/20-enhancement-roadmap<br>Navigable catalog · 2026-07-09</p>
+
+      <div class="group">This page</div>
+      <a class="active" href="index.html">Catalog hub</a>
+      <a href="#purpose">Purpose</a>
+      <a href="#status-legend">Status legend</a>
+      <a href="#priority">Priority stack</a>
+      <a href="#tracks">Tracks A-H</a>
+      <a href="#non-enhancements">Non-enhancements</a>
+      <a href="#related">Related surfaces</a>
+
+      <div class="group">Detail pages</div>
+      <a href="a1-rsa-endpoint-resolver/index.html"><strong>A1 requirements</strong></a>
+      <a href="a1-rsa-endpoint-resolver/test-plan.html"><strong>A1 test plan</strong></a>
+      <a href="tracks/A-high-leverage.html">Track A</a>
+      <a href="tracks/B-proof-formalization.html">Track B</a>
+      <a href="tracks/C-cryptology.html">Track C</a>
+      <a href="tracks/D-generator-systems.html">Track D</a>
+      <a href="tracks/E-theory-open-problems.html">Track E</a>
+      <a href="tracks/F-process-continuity.html">Track F</a>
+      <a href="tracks/G-applications.html">Track G</a>
+      <a href="tracks/H-novel-insights.html">Track H</a>
+
+      <div class="group">Repo anchors</div>
+      <a href="../../PROOF.md">PROOF.md</a>
+      <a href="../../docs/RESULTS.md">docs/RESULTS.md</a>
+      <a href="../00-index/continuity/START_HERE.md">Continuity START_HERE</a>
+      <a href="../06-cryptology-rsa/experiments/live-solver/rsa-v2/README.md">RSA v2 README</a>
+    </nav>
+
+    <main>
+      <header class="hero" id="purpose">
+        <h1>PGS Program Enhancement Roadmap</h1>
+        <p class="lede">
+          Formal catalog of possible enhancements to the Prime Gap Structure program.
+          Lead with the concrete object under pressure, then the mechanism, then the
+          project label, then status. This surface does not promote measured results
+          to theorems and does not claim RSA-scale factorization.
+        </p>
+        <div class="meta-row">
+          <span class="tag">Chapter 20</span>
+          <span class="tag impl">implementation: catalog</span>
+          <span class="tag hyp">candidates: hypothesis until executed</span>
+          <span class="tag good">A1: requirements fleshed</span>
+          <span class="tag warn">not-yet-gated</span>
+        </div>
+      </header>
+
+      <div class="callout">
+        <strong>Default research frame.</strong>
+        Start from PGS objects: ordered prime-gap state, divisor-count field, DNI,
+        GWR, selected integer, endpoint, chamber reset, structural certificate,
+        endpoint-chain traversal, reciprocal transport, modulus-link residual,
+        unresolved state. Classical methods stay in audit, benchmark, or legacy
+        prefilter roles only.
+      </div>
+
+      <h2 id="status-legend">Status legend</h2>
+      <table>
+        <thead>
+          <tr><th>Label</th><th>Meaning</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="tag good">proved</span></td><td>Controlled by <code>PROOF.md</code>. Universal under stated hypotheses.</td></tr>
+          <tr><td><span class="tag">measured</span></td><td>Exact tested regime only. Not a theorem bound.</td></tr>
+          <tr><td><span class="tag">audit</span></td><td>Downstream confirmation after PGS inference.</td></tr>
+          <tr><td><span class="tag hyp">hypothesis</span></td><td>Candidate rule or residual map. Not yet measured or proved.</td></tr>
+          <tr><td><span class="tag warn">unresolved</span></td><td>PGS invariant has not closed the case.</td></tr>
+          <tr><td><span class="tag bad">invalidated</span></td><td>Falsified. Must stay invalidated.</td></tr>
+          <tr><td><span class="tag impl">implementation</span></td><td>Engineering or process surface, not a mathematical claim.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="priority">Priority stack</h2>
+      <p>
+        If capacity is limited, execute in this order. A1 is the counsel winner
+        (2026-07 upgrade counsel) and the only candidate with a full requirements
+        surface in this chapter.
+      </p>
+      <ol>
+        <li><a href="a1-rsa-endpoint-resolver/index.html"><strong>A1 + C1/C2</strong></a> - crypto-scale endpoint resolver, residual taxonomy, structural certificates.</li>
+        <li><a href="tracks/A-high-leverage.html#a3"><strong>A3</strong></a> - pure PGS divisor-horizon law (kills high-scale bridge dependence).</li>
+        <li><a href="tracks/B-proof-formalization.html"><strong>B1 + B2/B3</strong></a> - Lean mirror + finite-base certificates.</li>
+        <li><a href="tracks/A-high-leverage.html#a2"><strong>A2 + A4</strong></a> - named chamber/chain objects + institutionalized falsification.</li>
+        <li><a href="tracks/D-generator-systems.html#d1"><strong>D1</strong></a> - high-scale C chamber as enabler once invariants exist.</li>
+      </ol>
+
+      <div class="card featured" style="margin: 16px 0;">
+        <div class="id">A1 · FEATURED</div>
+        <h3>Mature the PGS-native RSA modulus endpoint resolver</h3>
+        <p>
+          Locked endpoint chain → floor transport → reciprocal closure → GWR-carrier
+          transport → structural certificate or honest unresolved. Target routine
+          operation on 256-bit to 1024-bit+ moduli without classical selection inside inference.
+        </p>
+        <p style="margin:0;">
+          <a href="a1-rsa-endpoint-resolver/index.html"><strong>Open full requirements →</strong></a>
+          · <a href="a1-rsa-endpoint-resolver/test-plan.html"><strong>Formal test plan →</strong></a>
+          · <a href="tracks/A-high-leverage.html#a1">Track A card</a>
+          · Status: <span class="tag">measured (small rungs)</span>
+          <span class="tag warn">unresolved (e.g. carrier misalignment)</span>
+          <span class="tag hyp">scale-up: hypothesis / implementation target</span>
+        </p>
+      </div>
+
+      <h2 id="tracks">Tracks A-H</h2>
+      <p>Each track page formalizes candidates with ID, object, mechanism, status, blockers, and exit criteria.</p>
+
+      <div class="grid">
+        <div class="card">
+          <div class="id">TRACK A</div>
+          <h3><a href="tracks/A-high-leverage.html">Highest-leverage research</a></h3>
+          <p>A1 resolver, named objects, horizon law, falsification engine, zero-hidden-carrier demo.</p>
+        </div>
+        <div class="card">
+          <div class="id">TRACK B</div>
+          <h3><a href="tracks/B-proof-formalization.html">Proof and formalization</a></h3>
+          <p>Lean pillars, certificate schema, repro pins, proof spine, twin modular half only.</p>
+        </div>
+        <div class="card">
+          <div class="id">TRACK C</div>
+          <h3><a href="tracks/C-cryptology.html">Cryptology and modulus-link</a></h3>
+          <p>Residual classes, structural certificates, grammar evidence, Shor entropy ladder.</p>
+        </div>
+        <div class="card">
+          <div class="id">TRACK D</div>
+          <h3><a href="tracks/D-generator-systems.html">Generator and systems</a></h3>
+          <p>High-scale C, pure PGS terminal selection, ladders, sidecars, prefilter isolation.</p>
+        </div>
+        <div class="card">
+          <div class="id">TRACK E</div>
+          <h3><a href="tracks/E-theory-open-problems.html">Theory and open problems</a></h3>
+          <p>Gap types, state budget, classical unsolved via PGS maps, RH reading path discipline.</p>
+        </div>
+        <div class="card">
+          <div class="id">TRACK F</div>
+          <h3><a href="tracks/F-process-continuity.html">Process and continuity</a></h3>
+          <p>Status-map automation, research cards, PR tags, falsification pre-register, wording audit.</p>
+        </div>
+        <div class="card">
+          <div class="id">TRACK G</div>
+          <h3><a href="tracks/G-applications.html">Applications</a></h3>
+          <p>Structural certificates as primitives, commitments, beacons, diagnostics, OEIS packet.</p>
+        </div>
+        <div class="card">
+          <div class="id">TRACK H</div>
+          <h3><a href="tracks/H-novel-insights.html">Novel-insight candidates</a></h3>
+          <p>Hypothesis-only residual maps that divest classical factor/search frames.</p>
+        </div>
+      </div>
+
+      <h2 id="required-frame">Cryptology required frame (A1/C)</h2>
+      <div class="flow">
+        <span>locked endpoint chain</span>
+        <span class="arrow">→</span>
+        <span>floor transport</span>
+        <span class="arrow">→</span>
+        <span>reciprocal closure</span>
+        <span class="arrow">→</span>
+        <span>modulus-link residual</span>
+        <span class="arrow">→</span>
+        <span>certificate or unresolved</span>
+      </div>
+      <p>
+        Do not reinterpret this work as ordinary search over candidate factors.
+        Do not use <code>gcd</code>, divisibility selectors, product closure, hidden factors,
+        or primality APIs as the reasoning route. Audit confirms after generation.
+      </p>
+
+      <h2 id="non-enhancements">Non-enhancements (shape guards)</h2>
+      <div class="callout bad">
+        <ul style="margin:0; padding-left:1.2rem;">
+          <li>Probabilistic primality inside generation or PGS inference.</li>
+          <li><code>gcd</code> / factor APIs as selection or residual resolution.</li>
+          <li>Promoting measured RSA survivors to factorization theorems.</li>
+          <li>Reopening the archived classical RH-bridge as the default center.</li>
+          <li>Treating Minimal PGS Generator v1.1 polish as the whole program.</li>
+          <li>Describing proved PGS laws as heuristic, empirical, or “validated so far.”</li>
+        </ul>
+      </div>
+
+      <h2 id="related">Related surfaces</h2>
+      <table>
+        <thead>
+          <tr><th>Surface</th><th>Path</th><th>Role</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Upgrade counsel minutes</td>
+            <td><code>research-meetings/pgs-upgrade-counsel-2026-07/minutes.md</code></td>
+            <td>A1 selected as program winner</td>
+          </tr>
+          <tr>
+            <td>RSA v2 algorithm</td>
+            <td><code>research/06-cryptology-rsa/experiments/live-solver/rsa-v2/</code></td>
+            <td>Live reciprocal endpoint instrument</td>
+          </tr>
+          <tr>
+            <td>Proof enhancements</td>
+            <td><code>docs/proof-enhancements/</code></td>
+            <td>Lean readiness, certificates, shortcomings</td>
+          </tr>
+          <tr>
+            <td>Chain-horizon question</td>
+            <td><code>docs/unanswered-questions/chain-horizon-closure/</code></td>
+            <td>A3 primary open question</td>
+          </tr>
+          <tr>
+            <td>App ideas</td>
+            <td><code>docs/app-ideas/README.md</code></td>
+            <td>Track G seed list</td>
+          </tr>
+          <tr>
+            <td>Unsolved problems</td>
+            <td><code>pgs-unsolved-problems/</code></td>
+            <td>Track E classical residual pressure</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <footer>
+        research/20-enhancement-roadmap · formalization date 2026-07-09 ·
+        theorem status controlled by PROOF.md · open
+        <a href="a1-rsa-endpoint-resolver/index.html">A1 requirements</a>
+        to execute the counsel winner.
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
