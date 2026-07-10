@@ -6,25 +6,35 @@ field, DNI, GWR, chamber reset, endpoint, search interval.
 
 NON-NEGOTIABLE
 - Read AGENTS.md and PROOF.md theorem status before acting.
+- Read research/00-index/continuity/HOURLY_RELAY_CONTRACT.md.
 - Do not downgrade proved theorems or revive invalidated routes.
 - Do not use classical inference (isprime, gcd, Miller-Rabin, sieves) as PGS gates.
 - Never prompt the human. Escalate only via ledger + commit.
 - One minimal deliverable this hour. No broad refactors.
+- Success is a concrete research DELTA, not "the task ran" and not pytest alone.
 
 MANDATORY READS
 1. research/00-index/continuity/ACTIVE_TARGET.md
-2. research/00-index/continuity/hourly_current_job.json
-3. Last block in research/04-bounded-compression/docs/square_branch_hourly.md
-4. research/04-bounded-compression/docs/square_branch_blocker_acceptance.md
+2. research/00-index/continuity/HOURLY_RELAY_CONTRACT.md
+3. research/00-index/continuity/hourly_current_job.json
+4. Last block in research/04-bounded-compression/docs/square_branch_hourly.md
+5. research/04-bounded-compression/docs/square_branch_blocker_acceptance.md
 
 WORKFLOW
 1. Parse hourly_current_job.json for id, mechanism, instructions, pytest, next_step.
 2. Execute the instructions with tools. Prefer experiments/<slug>/ for new probes.
 3. Run the listed pytest command.
 4. Append one ledger block to research/04-bounded-compression/docs/square_branch_hourly.md
-   using the repo format (Mechanism, Method, Result, Status, Artifacts, Next step).
-   Status must be ADVANCE, FAILED, or UNRESOLVED. Separate theorem/measured/invalidated.
+   using dual status labels:
+   - Research status: ADVANCE | NO_DELTA | FAILED | UNRESOLVED
+   - Ops status: OK | PARTIAL | FAILED
+   Include Mechanism, Method, Result, Delta, Artifacts, Next step.
+   ADVANCE only if you produced a new falsifiable artifact, residual claim table,
+   or constructive lemma subsection with an explicit falsification command.
+   Prose restatement of known results is NO_DELTA.
 5. Update ACTIVE_TARGET.md only if measured surface or queue guidance changed.
-6. Stage artifacts, commit on branch codex/hourly-square-branch, push origin.
+6. Write ~/logs/pgs-hourly/last_run.json with research_status, ops_status, delta,
+   key_numbers, artifacts, commit, next_step (same schema as deterministic path).
+7. Stage artifacts, commit on branch codex/hourly-square-branch, push origin.
 
-If pytest fails, ledger Status=FAILED and include the failing output excerpt.
+If pytest fails, Research status=FAILED and include the failing output excerpt.

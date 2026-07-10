@@ -1,6 +1,6 @@
 # Active Research Target
 
-**Updated:** 2026-07-05  
+**Updated:** 2026-07-10  
 **Program:** post-breakthrough: Lean formalization, external review, audit corroboration
 
 ## Central Obligation: CLOSED 2026-07-05
@@ -42,19 +42,32 @@ w - p <= max(64, ceil(0.5 * log(q)^2))       [PROVED, all branches]
 
 | Field | Value |
 | --- | --- |
-| Segment | `3·10^8 .. 4·10^8` |
-| Prime roots tested | `5,084,001` |
+| Segment | `4·10^8 .. 5·10^8` |
+| Prime roots tested | `5,019,541` |
 | First counterexample | `none` |
-| Max utilization | `0.7036082474226805` |
-| Extremal root `r` | `358,018,553` |
-| Offset `D(r)` | `546` |
-| Local artifacts | `research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_3e8_4e8/` |
+| Max utilization | `0.9341772151898734` |
+| Extremal root `r` | `424,171,123` |
+| Offset `D(r)` | `738` |
+| Local artifacts | `research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_4e8_5e8/` |
+
+Prior certified baseline (replay = NO_DELTA): `3·10^8 .. 4·10^8` in `hourly_baseline_signature.json`.
 
 ## Hourly Queue
 
 Rotating queue lives in `research/00-index/continuity/hourly_queue.json`.
-The dispatcher executes **exactly one** item per activation. Items now target
-audit corroboration and Lean formalization, not proof of the square branch.
+The dispatcher executes **exactly one** item per activation. Items target
+audit corroboration on **new** regimes and residual structure, not proof of the
+square branch and not replay of certified bands.
+
+Contract: `research/00-index/continuity/HOURLY_RELAY_CONTRACT.md`
+
+Default frontier job: falsification `4·10^8 .. 5·10^8`. Replaying the frozen
+`3·10^8 .. 4·10^8` baseline is `NO_DELTA`, not `ADVANCE`.
+
+Execution root: isolated worktree `~/pgs-hourly/prime-gap-structure`  
+Human IdeaProjects dirt does not skip the hour.
+
+Every activation posts to Rocket.Chat `#Prime-Gap-Structure` as `grok`.
 
 ## Repro Gate
 
@@ -64,14 +77,16 @@ python3 -m pytest research/04-bounded-compression/tests/test_square_branch_dynam
 
 ## Ledger
 
-Append every run to `research/04-bounded-compression/docs/square_branch_hourly.md`.
+Append every run to `research/04-bounded-compression/docs/square_branch_hourly.md`
+with Research status and Ops status.
 
 ## Read-First Contract (every activation)
 
 1. `Agents.md` (repo root)
 2. `PROOF.md` (theorem status only)
 3. This file
-4. Last ledger block in `square_branch_hourly.md`
+4. `HOURLY_RELAY_CONTRACT.md`
+5. Last ledger block in `square_branch_hourly.md`
 
 ## Relay Branch
 

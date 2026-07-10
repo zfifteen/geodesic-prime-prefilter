@@ -369,3 +369,39 @@ Artifacts:
 
 Next step:
 Queue falsification 400M–500M or draft Chamber-Reset Endpoint Resolution Lemma subsection.
+
+## 2026-07-10T09:06:38Z run
+
+Mechanism:
+Square-branch dynamic-cutoff falsification sweep on prime roots 300M–400M
+
+Method:
+deterministic dispatch: /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py --min-prime 300000001 --max-prime 400000000 --output-dir research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_3e8_4e8
+
+Result:
+Command exit code: 0
+stdout tail:
+```
+square-branch-dynamic-cutoff-search: primes=5084001 first_counterexample=none max_utilization=0.7036082474226805 max_p=358018553
+```
+tested_prime_count: 5084001
+first_counterexample: None
+max_utilization: 0.7036082474226805
+max_p: 358018553
+max_offset: 546
+elapsed_seconds: 86.58303904533386
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.80s
+```
+
+Status:
+ADVANCE
+
+Artifacts:
+/Library/Frameworks/Python.framework/Versions/3.13/bin/python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py --min-prime 300000001 --max-prime 400000000 --output-dir research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_3e8_4e8; research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_3e8_4e8/square_branch_dynamic_cutoff_search_summary.json
+
+Next step:
+Structural audit of recurring offset 540 on new extremal rows if no counterexample.
