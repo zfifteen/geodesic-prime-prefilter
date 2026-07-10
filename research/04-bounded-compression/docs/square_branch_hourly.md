@@ -357,7 +357,7 @@ Research status:
 NO_DELTA
 
 Ops status:
-OK
+FAILED
 
 Delta:
 summary signature matches prior hourly run (replay)
@@ -367,3 +367,54 @@ Artifacts:
 
 Next step:
 Structural audit of recurring offset 540 on new extremal rows if no counterexample.
+
+## 2026-07-10T15:07:17Z run
+
+Mechanism:
+PGS-native structural audit of recurring offset 540 and early-τ=4 / late-τ=3
+chamber separation — residual claims RC3–RC5 after fixed-band (RC2) death.
+
+Method:
+Read `square_branch_dynamic_cutoff_search_4e8_5e8` summary JSON,
+`prefix_tau_floor_probe.json` (SDA-invalidation note; d=4 SDA not revived),
+and prior chamber table from `experiments/square-branch-hourly-2026-07-10/`.
+Ran new probe
+`experiments/square-branch-hourly-2026-07-10-rc3/offset_540_residual_rc3_probe.py`
+evaluating P7–P9 (τ4 density band, absolute early τ4, o_q=2 near-540 local
+attractor). Did not replay P1–P6 as the sole deliverable.
+
+Result:
+RC3 holds: rho4 ∈ [0.10, 0.14] on 5/5 segment util maxima (new max rho4=0.1301).
+RC4 holds: first_tau4_offset ≤ 20 on 5/5 (new max first_tau4=3).
+RC5 holds: o_q=2 branch max on 4e8-5e8 has D=542 (|D−540|=2 ≤ 20) while global
+util max o_q=6 has D=738 (escapes fixed band). Exact D=540 also appears at
+o_q ∈ {4,6}, so near-540 is not exclusive to o_q=2.
+RC2 retained falsified. Theorem: Prime-Square Proximity proved (`PROOF.md`);
+residual audit only. Invalidated d=4 SDA not revived.
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.63s
+```
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New residual claim table RC3–RC5 (τ4 density band, absolute early τ4, o_q=2
+local near-540 attractor) with explicit falsification command after fixed-band
+RC2 death; not a replay of P1–P6.
+
+Artifacts:
+`experiments/square-branch-hourly-2026-07-10-rc3/offset_540_residual_rc3_probe.py`;
+`experiments/square-branch-hourly-2026-07-10-rc3/offset_540_rc3_prediction_table.json`;
+`experiments/square-branch-hourly-2026-07-10-rc3/FINDINGS.md`
+
+Next step:
+Run prefix τ probe variant on newest extremal rows, or queue falsification
+`5e8–6e8`. Keep RC3–RC5 as residual only; do not promote to theorem; do not
+revive fixed-band 540 or d=4 SDA.

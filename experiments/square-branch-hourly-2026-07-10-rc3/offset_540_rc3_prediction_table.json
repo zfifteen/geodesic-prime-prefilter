@@ -1,0 +1,436 @@
+{
+  "inputs": {
+    "prior_prediction_table": "/Users/velocityworks/pgs-hourly/prime-gap-structure/experiments/square-branch-hourly-2026-07-10/offset_540_prediction_table.json",
+    "falsification_summary_json": "/Users/velocityworks/pgs-hourly/prime-gap-structure/research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_4e8_5e8/square_branch_dynamic_cutoff_search_summary.json",
+    "prefix_tau_floor_probe": {
+      "path": "/Users/velocityworks/pgs-hourly/prime-gap-structure/experiments/square-branch-sda-invalidation-2026-06/prefix_tau_floor_probe.json",
+      "extremal_count": 3,
+      "d4_sda_transfers": false
+    },
+    "rho4_band": [
+      0.1,
+      0.14
+    ],
+    "first_tau4_absolute_bound": 20,
+    "near_540_radius": 20,
+    "invalidated_route": "d=4 SDA transfer (not revived)",
+    "theorem_status": "Prime-Square Proximity proved in PROOF.md; residual audit only"
+  },
+  "predictions": [
+    {
+      "id": "P7",
+      "name": "tau4_density_band",
+      "statement": "On segment utilization maxima, rho4 = tau4_count / D(r) lies in [0.1, 0.14].",
+      "falsifier": "any primary row with rho4 outside [0.1, 0.14]"
+    },
+    {
+      "id": "P8",
+      "name": "absolute_early_tau4",
+      "statement": "On segment utilization maxima, first_tau4_offset <= 20.",
+      "falsifier": "any primary row with first_tau4_offset > 20"
+    },
+    {
+      "id": "P9",
+      "name": "oq2_near_540_attractor",
+      "statement": "On per-o_q=2 segment maxima, |D(r) - 540| <= 20 (local residual, not a universal law).",
+      "falsifier": "any o_q=2 branch maximum with |D-540| > 20"
+    }
+  ],
+  "primary_rows": [
+    {
+      "segment": "3e7-1e8",
+      "r": 82357433,
+      "offset": 540,
+      "o_q": 4,
+      "rho4": 0.11666666666666667,
+      "first_tau4_offset": 10,
+      "tau4_count": 63,
+      "abs_d_minus_540": 0
+    },
+    {
+      "segment": "1e8-2e8",
+      "r": 102017779,
+      "offset": 462,
+      "o_q": 4,
+      "rho4": 0.11255411255411256,
+      "first_tau4_offset": 2,
+      "tau4_count": 52,
+      "abs_d_minus_540": 78
+    },
+    {
+      "segment": "2e8-3e8",
+      "r": 251066071,
+      "offset": 540,
+      "o_q": 6,
+      "rho4": 0.1111111111111111,
+      "first_tau4_offset": 6,
+      "tau4_count": 60,
+      "abs_d_minus_540": 0
+    },
+    {
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "o_q": 4,
+      "rho4": 0.11721611721611722,
+      "first_tau4_offset": 4,
+      "tau4_count": 64,
+      "abs_d_minus_540": 6
+    },
+    {
+      "segment": "4e8-5e8",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "rho4": 0.13008130081300814,
+      "first_tau4_offset": 3,
+      "tau4_count": 96,
+      "abs_d_minus_540": 198
+    }
+  ],
+  "oq2_rows": [
+    {
+      "segment": "4e8-5e8/o_q=2",
+      "r": 468917503,
+      "offset": 542,
+      "o_q": 2,
+      "rho4": 0.11070110701107011,
+      "first_tau4_offset": 4,
+      "abs_d_minus_540": 2
+    }
+  ],
+  "prediction_results": [
+    {
+      "id": "P7",
+      "name": "tau4_density_band",
+      "statement": "On segment utilization maxima, rho4 = tau4_count / D(r) lies in [0.1, 0.14].",
+      "falsifier": "any primary row with rho4 outside [0.1, 0.14]",
+      "segment": "3e7-1e8",
+      "r": 82357433,
+      "offset": 540,
+      "o_q": 4,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "rho4": 0.11666666666666667,
+        "band": [
+          0.1,
+          0.14
+        ]
+      }
+    },
+    {
+      "id": "P7",
+      "name": "tau4_density_band",
+      "statement": "On segment utilization maxima, rho4 = tau4_count / D(r) lies in [0.1, 0.14].",
+      "falsifier": "any primary row with rho4 outside [0.1, 0.14]",
+      "segment": "1e8-2e8",
+      "r": 102017779,
+      "offset": 462,
+      "o_q": 4,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "rho4": 0.11255411255411256,
+        "band": [
+          0.1,
+          0.14
+        ]
+      }
+    },
+    {
+      "id": "P7",
+      "name": "tau4_density_band",
+      "statement": "On segment utilization maxima, rho4 = tau4_count / D(r) lies in [0.1, 0.14].",
+      "falsifier": "any primary row with rho4 outside [0.1, 0.14]",
+      "segment": "2e8-3e8",
+      "r": 251066071,
+      "offset": 540,
+      "o_q": 6,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "rho4": 0.1111111111111111,
+        "band": [
+          0.1,
+          0.14
+        ]
+      }
+    },
+    {
+      "id": "P7",
+      "name": "tau4_density_band",
+      "statement": "On segment utilization maxima, rho4 = tau4_count / D(r) lies in [0.1, 0.14].",
+      "falsifier": "any primary row with rho4 outside [0.1, 0.14]",
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "o_q": 4,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "rho4": 0.11721611721611722,
+        "band": [
+          0.1,
+          0.14
+        ]
+      }
+    },
+    {
+      "id": "P7",
+      "name": "tau4_density_band",
+      "statement": "On segment utilization maxima, rho4 = tau4_count / D(r) lies in [0.1, 0.14].",
+      "falsifier": "any primary row with rho4 outside [0.1, 0.14]",
+      "segment": "4e8-5e8",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "rho4": 0.13008130081300814,
+        "band": [
+          0.1,
+          0.14
+        ]
+      }
+    },
+    {
+      "id": "P8",
+      "name": "absolute_early_tau4",
+      "statement": "On segment utilization maxima, first_tau4_offset <= 20.",
+      "falsifier": "any primary row with first_tau4_offset > 20",
+      "segment": "3e7-1e8",
+      "r": 82357433,
+      "offset": 540,
+      "o_q": 4,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "first_tau4_offset": 10,
+        "bound": 20
+      }
+    },
+    {
+      "id": "P8",
+      "name": "absolute_early_tau4",
+      "statement": "On segment utilization maxima, first_tau4_offset <= 20.",
+      "falsifier": "any primary row with first_tau4_offset > 20",
+      "segment": "1e8-2e8",
+      "r": 102017779,
+      "offset": 462,
+      "o_q": 4,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "first_tau4_offset": 2,
+        "bound": 20
+      }
+    },
+    {
+      "id": "P8",
+      "name": "absolute_early_tau4",
+      "statement": "On segment utilization maxima, first_tau4_offset <= 20.",
+      "falsifier": "any primary row with first_tau4_offset > 20",
+      "segment": "2e8-3e8",
+      "r": 251066071,
+      "offset": 540,
+      "o_q": 6,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "first_tau4_offset": 6,
+        "bound": 20
+      }
+    },
+    {
+      "id": "P8",
+      "name": "absolute_early_tau4",
+      "statement": "On segment utilization maxima, first_tau4_offset <= 20.",
+      "falsifier": "any primary row with first_tau4_offset > 20",
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "o_q": 4,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "first_tau4_offset": 4,
+        "bound": 20
+      }
+    },
+    {
+      "id": "P8",
+      "name": "absolute_early_tau4",
+      "statement": "On segment utilization maxima, first_tau4_offset <= 20.",
+      "falsifier": "any primary row with first_tau4_offset > 20",
+      "segment": "4e8-5e8",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "first_tau4_offset": 3,
+        "bound": 20
+      }
+    },
+    {
+      "id": "P9",
+      "name": "oq2_near_540_attractor",
+      "statement": "On per-o_q=2 segment maxima, |D(r) - 540| <= 20 (local residual, not a universal law).",
+      "falsifier": "any o_q=2 branch maximum with |D-540| > 20",
+      "segment": "4e8-5e8/o_q=2",
+      "r": 468917503,
+      "offset": 542,
+      "o_q": 2,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "abs_d_minus_540": 2,
+        "radius": 20,
+        "center": 540
+      }
+    }
+  ],
+  "residual_claims": [
+    {
+      "id": "RC3",
+      "claim": "On segment utilization maxima through 4e8-5e8, tau4 density rho4 = tau4_count/D(r) lies in [0.1, 0.14].",
+      "status": "holds",
+      "linked_prediction": "P7",
+      "evidence": [
+        {
+          "segment": "3e7-1e8",
+          "r": 82357433,
+          "offset": 540,
+          "o_q": 4,
+          "rho4": 0.11666666666666667,
+          "first_tau4_offset": 10,
+          "tau4_count": 63,
+          "abs_d_minus_540": 0
+        },
+        {
+          "segment": "1e8-2e8",
+          "r": 102017779,
+          "offset": 462,
+          "o_q": 4,
+          "rho4": 0.11255411255411256,
+          "first_tau4_offset": 2,
+          "tau4_count": 52,
+          "abs_d_minus_540": 78
+        },
+        {
+          "segment": "2e8-3e8",
+          "r": 251066071,
+          "offset": 540,
+          "o_q": 6,
+          "rho4": 0.1111111111111111,
+          "first_tau4_offset": 6,
+          "tau4_count": 60,
+          "abs_d_minus_540": 0
+        },
+        {
+          "segment": "3e8-4e8",
+          "r": 358018553,
+          "offset": 546,
+          "o_q": 4,
+          "rho4": 0.11721611721611722,
+          "first_tau4_offset": 4,
+          "tau4_count": 64,
+          "abs_d_minus_540": 6
+        },
+        {
+          "segment": "4e8-5e8",
+          "r": 424171123,
+          "offset": 738,
+          "o_q": 6,
+          "rho4": 0.13008130081300814,
+          "first_tau4_offset": 3,
+          "tau4_count": 96,
+          "abs_d_minus_540": 198
+        }
+      ]
+    },
+    {
+      "id": "RC4",
+      "claim": "On segment utilization maxima through 4e8-5e8, absolute early chamber bound first_tau4_offset <= 20 holds.",
+      "status": "holds",
+      "linked_prediction": "P8",
+      "evidence": [
+        {
+          "segment": "3e7-1e8",
+          "first_tau4_offset": 10,
+          "bound": 20
+        },
+        {
+          "segment": "1e8-2e8",
+          "first_tau4_offset": 2,
+          "bound": 20
+        },
+        {
+          "segment": "2e8-3e8",
+          "first_tau4_offset": 6,
+          "bound": 20
+        },
+        {
+          "segment": "3e8-4e8",
+          "first_tau4_offset": 4,
+          "bound": 20
+        },
+        {
+          "segment": "4e8-5e8",
+          "first_tau4_offset": 3,
+          "bound": 20
+        }
+      ]
+    },
+    {
+      "id": "RC5",
+      "claim": "Local residual after RC2 death: the o_q=2 branch maximum on 4e8-5e8 stays near 540 (|D-540|<=20), while the global utilization maximum (o_q=6, D=738) escapes the fixed band. Near-540 is an o_q=2 local attractor residual, not a law.",
+      "status": "holds",
+      "linked_prediction": "P9",
+      "evidence": {
+        "oq2_rows": [
+          {
+            "segment": "4e8-5e8/o_q=2",
+            "r": 468917503,
+            "offset": 542,
+            "o_q": 2,
+            "rho4": 0.11070110701107011,
+            "first_tau4_offset": 4,
+            "abs_d_minus_540": 2
+          }
+        ],
+        "global_max": {
+          "segment": "4e8-5e8",
+          "r": 424171123,
+          "offset": 738,
+          "o_q": 6,
+          "abs_d_minus_540": 198
+        },
+        "note": "Exact D=540 also appears on non-o_q=2 segment maxima (o_q=4 and o_q=6); RC5 is only the o_q=2 local attractor, not a claim that 540 is exclusive to o_q=2."
+      }
+    },
+    {
+      "id": "RC2_retained",
+      "claim": "Fixed near-540 band D(r) in [528, 552] on segment utilization maxima is not a law (retained from prior hour).",
+      "status": "falsified",
+      "linked_prediction": "P6 (prior)",
+      "evidence": {
+        "segment": "4e8-5e8",
+        "r": 424171123,
+        "offset": 738
+      }
+    }
+  ],
+  "conclusion": {
+    "RC3_tau4_density_band": "holds",
+    "RC4_absolute_early_tau4": "holds",
+    "RC5_oq2_near_540_local_attractor": "holds",
+    "RC2_fixed_band": "falsified (retained)",
+    "falsified_new_predictions": [],
+    "advance_over_prior_hour": "New residual claim table RC3-RC5 after fixed-band death; does not restate P1-P6 as the sole deliverable."
+  },
+  "falsification_command": "python3 experiments/square-branch-hourly-2026-07-10-rc3/offset_540_residual_rc3_probe.py"
+}
