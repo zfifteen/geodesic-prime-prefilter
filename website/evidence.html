@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Evidence surfaces · Prime Gap Structure</title>
+  <meta name="description" content="Measured implementation surfaces and audit regimes for Prime Gap Structure, kept separate from universal theorems.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">Prime Gap Structure</span>
+        <span class="brand-sub">Educational course</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gaps.html">Gaps</a></li>
+        <li><a href="mechanism.html">Mechanism</a></li>
+        <li><a href="laws.html">Laws</a></li>
+        <li><a href="generator.html">Generator</a></li>
+        <li><a href="cryptology.html">Cryptology</a></li>
+        <li><a href="evidence.html">Evidence</a></li>
+        <li><a href="glossary.html">Glossary</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-hero wrap">
+      <p class="kicker">06 · Evidence</p>
+      <h1>Measured surfaces, exact regimes</h1>
+      <p class="lead">
+        This page is a public map of implementation and experiment evidence.
+        Every row is a tested regime. None of these tables is a substitute for the universal theorems in PROOF.md.
+      </p>
+    </div>
+
+    <section class="section wrap">
+      <div class="prose">
+        <div class="callout callout-boundary">
+          <div class="callout-title">How to read this page</div>
+          <p>
+            <span class="status status-proved">Proved</span> statements live on the Laws page and in PROOF.md.
+            <span class="status status-measured">Measured</span> rows below certify code and probes inside the stated range.
+            Mixing those columns is how educational sites accidentally downgrade theorems or inflate benchmarks.
+          </p>
+        </div>
+
+        <h2>Generator implementation surfaces</h2>
+        <hr class="gold-rule">
+        <p>
+          <span class="status status-measured">Measured</span>
+        </p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Regime</th>
+              <th>Record</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>11 .. 1,000,000</code></td>
+              <td><code>78494 / 78494</code> outputted · 0 unresolved · 0 audit failures</td>
+              <td>Full public generator surface cited in the project contract</td>
+            </tr>
+            <tr>
+              <td><code>11 .. 100,000</code></td>
+              <td><code>9588 / 9588</code> exact PGS outputs · 0 failures</td>
+              <td>Production path surface in RESULTS / generator docs</td>
+            </tr>
+            <tr>
+              <td><code>10^8</code> … <code>10^18</code> decade windows</td>
+              <td><code>2816 / 2816</code> outputted · 0 unresolved · 0 audit failures</td>
+              <td>High-scale decade-window validation</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose">
+        <h2>Recursive walk surfaces</h2>
+        <hr class="gold-rule">
+        <p>
+          <span class="status status-measured">Measured</span>
+        </p>
+        <p>
+          The exact recursive walk repeats the direct next-prime step from prime to prime.
+          On the verified surfaces recorded in RESULTS.md, consecutive recovery stays exact
+          inside the stated ranges, including a long walk from prime 11 through prime 10,000,121
+          with zero skipped gaps on that surface.
+        </p>
+        <p>
+          A sampled decade ladder from <code>10^2</code> through <code>10^18</code> also stayed at
+          exact hit rate 1.0 with zero skipped gaps across 860 measured recursive steps.
+        </p>
+
+        <h2>Bounded compression corroboration</h2>
+        <hr class="gold-rule">
+        <p>
+          <span class="status status-proved">Proved</span>
+          Universal bounded compression is a theorem.
+        </p>
+        <p>
+          <span class="status status-measured">Measured</span>
+          Separate audit corroboration surfaces (for example square-branch falsification sweeps
+          in large root ranges) remain clean in tested regimes. Those audits support implementation
+          confidence. They are not the proof.
+        </p>
+
+        <h2>Cryptology ladder (public endpoint classes)</h2>
+        <hr class="gold-rule">
+        <p>
+          <span class="status status-measured">Measured</span>
+          RSA v2 cases include both resolved endpoint classes and explicit unresolved rows.
+          See the Cryptology chapter for the public technical brief and the exact case IDs.
+        </p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Case</th>
+              <th>Bits</th>
+              <th>Public status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>rsa_v2_40bit_static_001</code></td>
+              <td>40</td>
+              <td>Resolved endpoint class <code>(1048559, 1048589)</code></td>
+            </tr>
+            <tr>
+              <td><code>rsa_v2_50bit_static_001</code></td>
+              <td>50</td>
+              <td>Unresolved by reciprocal carrier misalignment</td>
+            </tr>
+            <tr>
+              <td><code>rsa_v2_64bit_static_001</code></td>
+              <td>64</td>
+              <td>Resolved endpoint class <code>(3221225473, 3221275501)</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose">
+        <h2>What evidence is not</h2>
+        <hr class="gold-rule">
+        <ul>
+          <li>Evidence is not a license to call a theorem “empirical.”</li>
+          <li>Evidence is not a factorization of cryptographic RSA moduli at scale.</li>
+          <li>Evidence is not permission to drop unresolved rows from the public story.</li>
+        </ul>
+
+        <div class="deeper">
+          <button type="button" class="deeper-toggle" aria-expanded="false">
+            <span>Deeper · where to verify</span>
+            <span class="chevron">▾</span>
+          </button>
+          <div class="deeper-body">
+            <p>
+              Primary maps: <code>docs/RESULTS.md</code>, generator documentation under <code>docs/</code>,
+              and cryptology artifacts under <code>research/06-cryptology-rsa/</code>.
+              Theorem statements and proof text: <code>PROOF.md</code>.
+            </p>
+            <p>
+              If a number on this educational site ever disagrees with the repository artifacts,
+              the repository artifacts win until the site is corrected.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-actions" style="justify-content:flex-start;margin-top:2.5rem">
+        <a class="btn btn-primary" href="glossary.html">Next: Glossary</a>
+        <a class="btn btn-ghost" href="https://github.com/zfifteen/prime-gap-structure/blob/main/docs/RESULTS.md" rel="noopener noreferrer" target="_blank">Research source · RESULTS.md</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <h4>Prime Gap Structure</h4>
+        <p style="color:var(--text-muted);font-size:0.95rem;margin:0">Educational course · Chapter 06</p>
+      </div>
+      <div>
+        <h4>Continue</h4>
+        <ul>
+          <li><a href="glossary.html">Glossary</a></li>
+          <li><a href="about.html">Status map</a></li>
+          <li><a href="laws.html">Laws</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research source</h4>
+        <ul>
+          <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/docs/RESULTS.md" rel="noopener noreferrer" target="_blank">RESULTS.md</a></li>
+          <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/PROOF.md" rel="noopener noreferrer" target="_blank">PROOF.md</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap footer-note">
+      Measured regimes only. Universal theorems remain under PROOF.md.
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

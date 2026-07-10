@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prime Gap Structure · Educational Course</title>
+  <meta name="description" content="A public educational course on Prime Gap Structure: how the integers after a known prime carry the structure of the next prime.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">Prime Gap Structure</span>
+        <span class="brand-sub">Educational course</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gaps.html">Gaps</a></li>
+        <li><a href="mechanism.html">Mechanism</a></li>
+        <li><a href="laws.html">Laws</a></li>
+        <li><a href="generator.html">Generator</a></li>
+        <li><a href="cryptology.html">Cryptology</a></li>
+        <li><a href="evidence.html">Evidence</a></li>
+        <li><a href="glossary.html">Glossary</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <p class="kicker rise">A public course in structure, not chance</p>
+      <h1 class="rise rise-delay-1">The integers after a prime<br>are not noise.</h1>
+      <hr class="gold-rule" style="margin-inline:auto">
+      <p class="lead rise rise-delay-2">
+        Prime Gap Structure is a research program about what sits between consecutive primes:
+        the ordered chamber of composites, the way divisor counts mark that chamber,
+        and the deterministic laws that name the next prime.
+      </p>
+      <div class="hero-actions rise rise-delay-3">
+        <a class="btn btn-primary" href="gaps.html">Begin the course</a>
+        <a class="btn btn-ghost" href="laws.html">What is proved</a>
+      </div>
+
+      <div class="hero-visual rise rise-delay-3" aria-hidden="true">
+        <svg class="ornament" viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#c9a962" stop-opacity="0.2"/>
+              <stop offset="50%" stop-color="#e8d5a3" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#c9a962" stop-opacity="0.2"/>
+            </linearGradient>
+          </defs>
+          <line x1="40" y1="100" x2="680" y2="100" stroke="url(#gGold)" stroke-width="1"/>
+          <!-- primes as tall gold marks -->
+          <rect x="80" y="40" width="6" height="60" fill="#c9a962"/>
+          <rect x="200" y="48" width="6" height="52" fill="#c9a962"/>
+          <rect x="280" y="36" width="6" height="64" fill="#e0c47a"/>
+          <rect x="420" y="50" width="6" height="50" fill="#c9a962"/>
+          <rect x="560" y="42" width="6" height="58" fill="#c9a962"/>
+          <rect x="640" y="30" width="6" height="70" fill="#e8d5a3"/>
+          <!-- composites as short bars -->
+          <rect x="100" y="78" width="4" height="22" fill="#2a2a30"/>
+          <rect x="120" y="82" width="4" height="18" fill="#2a2a30"/>
+          <rect x="140" y="74" width="4" height="26" fill="#33333a"/>
+          <rect x="160" y="86" width="4" height="14" fill="#2a2a30"/>
+          <rect x="180" y="80" width="4" height="20" fill="#2a2a30"/>
+          <rect x="220" y="76" width="4" height="24" fill="#33333a"/>
+          <rect x="240" y="84" width="4" height="16" fill="#2a2a30"/>
+          <rect x="260" y="70" width="4" height="30" fill="#3a3a42"/>
+          <rect x="300" y="78" width="4" height="22" fill="#2a2a30"/>
+          <rect x="320" y="82" width="4" height="18" fill="#2a2a30"/>
+          <rect x="340" y="74" width="4" height="26" fill="#33333a"/>
+          <rect x="360" y="88" width="4" height="12" fill="#2a2a30"/>
+          <rect x="380" y="76" width="4" height="24" fill="#2a2a30"/>
+          <rect x="400" y="80" width="4" height="20" fill="#33333a"/>
+          <rect x="440" y="78" width="4" height="22" fill="#2a2a30"/>
+          <rect x="460" y="70" width="4" height="30" fill="#3a3a42"/>
+          <rect x="480" y="84" width="4" height="16" fill="#2a2a30"/>
+          <rect x="500" y="76" width="4" height="24" fill="#2a2a30"/>
+          <rect x="520" y="82" width="4" height="18" fill="#33333a"/>
+          <rect x="540" y="74" width="4" height="26" fill="#2a2a30"/>
+          <rect x="580" y="80" width="4" height="20" fill="#2a2a30"/>
+          <rect x="600" y="86" width="4" height="14" fill="#2a2a30"/>
+          <rect x="620" y="72" width="4" height="28" fill="#33333a"/>
+          <text x="80" y="130" fill="#8a7340" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">p</text>
+          <text x="640" y="130" fill="#e8d5a3" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">q</text>
+          <text x="360" y="165" fill="#5c5852" font-family="DM Sans, sans-serif" font-size="12" text-anchor="middle" letter-spacing="0.2em">THE CHAMBER BETWEEN CONSECUTIVE PRIMES</text>
+        </svg>
+      </div>
+    </section>
+
+    <section class="section-tight wrap">
+      <div class="grid-3">
+        <article class="card pillar">
+          <span class="status status-proved">Proved</span>
+          <h3>Next prime from structure</h3>
+          <p>Given a known prime, exact divisor counts on the integers after it determine the next prime. This is a universal theorem under its stated hypotheses.</p>
+        </article>
+        <article class="card pillar">
+          <span class="status status-proved">Proved</span>
+          <h3>A distinguished composite</h3>
+          <p>Inside a nonempty gap, one interior integer is selected by a simple left-to-right minimum-divisor rule. It is the unique maximizer of a fixed comparison score.</p>
+        </article>
+        <article class="card pillar">
+          <span class="status status-proved">Proved</span>
+          <h3>Bounded compression</h3>
+          <p>That selected witness cannot sit arbitrarily far from the left prime. Its offset is bounded at a precise logarithmic scale. This bounds the witness, not every classical gap-size conjecture.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <p class="kicker">How to read this course</p>
+      <h2>Two voices on every hard page</h2>
+      <hr class="gold-rule">
+      <div class="grid-2">
+        <div class="prose">
+          <p class="lead" style="max-width:none">The main text is a museum guide: plain objects first, then the mechanism, then the name.</p>
+          <p>When a section can go deeper without changing what is proved, you will see a <strong style="color:var(--champagne)">Deeper</strong> panel. Open it for denser language and typeset mathematics. Close it to stay on the public path.</p>
+        </div>
+        <div class="lab" id="lab-status" style="margin:0">
+          <div class="lab-header">
+            <h3 class="lab-title">Status label lab</h3>
+            <span class="lab-hint">Tap a label</span>
+          </div>
+          <div class="status-grid">
+            <div class="status-list lab-controls" style="flex-direction:column;margin:0">
+              <button type="button" data-status="proved">Proved</button>
+              <button type="button" data-status="measured">Measured</button>
+              <button type="button" data-status="unresolved">Unresolved</button>
+              <button type="button" data-status="hypothesis">Hypothesis</button>
+              <button type="button" data-status="audit">Audit</button>
+            </div>
+            <div class="status-panel" id="lab-status-panel"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" style="padding-top:0">
+      <p class="kicker">Interactive map</p>
+      <h2>The story in five stations</h2>
+      <hr class="gold-rule">
+      <div class="lab" id="lab-home-flow">
+        <div class="flow">
+          <button type="button" class="flow-node is-active" data-flow="p">Known prime p</button>
+          <span class="flow-arrow">→</span>
+          <button type="button" class="flow-node" data-flow="chamber">Chamber after p</button>
+          <span class="flow-arrow">→</span>
+          <button type="button" class="flow-node" data-flow="structure">Divisor structure</button>
+          <span class="flow-arrow">→</span>
+          <button type="button" class="flow-node" data-flow="q">Next prime q</button>
+          <span class="flow-arrow">→</span>
+          <button type="button" class="flow-node" data-flow="status">Status labels</button>
+        </div>
+        <p class="lab-caption" id="lab-home-flow-caption">A known prime is the only required start. Nothing is sampled at random.</p>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <p class="kicker">Full public atlas</p>
+      <h2>Course map</h2>
+      <hr class="gold-rule">
+      <div class="grid-3">
+        <a class="card course-card" href="gaps.html">
+          <div class="card-index">01</div>
+          <h3>What is a prime gap?</h3>
+          <p>Picture the open stretch between two consecutive primes and the composites that fill it.</p>
+        </a>
+        <a class="card course-card" href="mechanism.html">
+          <div class="card-index">02</div>
+          <h3>How PGS works</h3>
+          <p>Divisor counts, the walk after a prime, and the leftmost minimum-divisor selection.</p>
+        </a>
+        <a class="card course-card" href="laws.html">
+          <div class="card-index">03</div>
+          <h3>What is proved</h3>
+          <p>Three universal pillars, stated carefully, with clear boundaries.</p>
+        </a>
+        <a class="card course-card" href="generator.html">
+          <div class="card-index">04</div>
+          <h3>The generator</h3>
+          <p>Input a known prime. Output the next prime as a minimal record.</p>
+        </a>
+        <a class="card course-card" href="cryptology.html">
+          <div class="card-index">05</div>
+          <h3>Cryptology front</h3>
+          <p>Endpoint chains, reciprocal transport, residual state, certificate or unresolved.</p>
+        </a>
+        <a class="card course-card" href="evidence.html">
+          <div class="card-index">06</div>
+          <h3>Evidence surfaces</h3>
+          <p>Measured regimes and implementation audits, never confused with theorem bounds.</p>
+        </a>
+        <a class="card course-card" href="glossary.html">
+          <div class="card-index">07</div>
+          <h3>Glossary</h3>
+          <p>Project language after the plain object has already been introduced.</p>
+        </a>
+        <a class="card course-card" href="about.html">
+          <div class="card-index">08</div>
+          <h3>Program status</h3>
+          <p>What is live, what is measured, what remains open research.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="section wrap text-center">
+      <p class="kicker">Research source</p>
+      <h2>This course is educational</h2>
+      <hr class="gold-rule" style="margin-inline:auto">
+      <p class="lead" style="margin-inline:auto">
+        The formal proof reference and repository artifacts remain the authority for theorem status.
+        This site teaches the objects and the posture; it does not replace the proof document.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-ghost" href="https://github.com/zfifteen/prime-gap-structure" rel="noopener noreferrer" target="_blank">GitHub repository</a>
+        <a class="btn btn-ghost" href="https://github.com/zfifteen/prime-gap-structure/blob/main/PROOF.md" rel="noopener noreferrer" target="_blank">PROOF.md</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <h4>Prime Gap Structure</h4>
+        <p style="color:var(--text-muted);font-size:0.95rem;margin:0">
+          A deterministic research program on ordered prime-gap structure,
+          divisor-count invariants, and factorization-adjacent PGS work.
+        </p>
+      </div>
+      <div>
+        <h4>Course</h4>
+        <ul>
+          <li><a href="gaps.html">Gaps</a></li>
+          <li><a href="mechanism.html">Mechanism</a></li>
+          <li><a href="laws.html">Laws</a></li>
+          <li><a href="generator.html">Generator</a></li>
+          <li><a href="cryptology.html">Cryptology</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research source</h4>
+        <ul>
+          <li><a href="https://github.com/zfifteen/prime-gap-structure" rel="noopener noreferrer" target="_blank">Repository</a></li>
+          <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/PROOF.md" rel="noopener noreferrer" target="_blank">PROOF.md</a></li>
+          <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/docs/RESULTS.md" rel="noopener noreferrer" target="_blank">RESULTS.md</a></li>
+          <li><a href="about.html">Program status</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap footer-note">
+      Educational surface for the public. Theorem status is controlled by PROOF.md.
+      Measured tables certify implementations inside stated regimes.
+      Unresolved research remains unresolved.
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/labs.js"></script>
+</body>
+</html>
