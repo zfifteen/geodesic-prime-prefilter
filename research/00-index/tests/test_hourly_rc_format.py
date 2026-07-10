@@ -131,3 +131,27 @@ def test_message_fingerprint_is_stable() -> None:
     text_c = "hello\nworlds\n"
     assert notify.message_fingerprint(text_a) == notify.message_fingerprint(text_b)
     assert notify.message_fingerprint(text_a) != notify.message_fingerprint(text_c)
+
+
+def test_activation_key_ignores_memo_wording() -> None:
+    notify = _load_notify()
+    run_a = {
+        "job_id": "offset-540-structural-audit",
+        "activated_at": "2026-07-10T19:05:08Z",
+        "completed_at": "2026-07-10T19:06:30Z",
+        "delta": "wording A",
+    }
+    run_b = {
+        "job_id": "offset-540-structural-audit",
+        "activated_at": "2026-07-10T19:05:08Z",
+        "completed_at": "2026-07-10T19:06:30Z",
+        "delta": "wording B different memo",
+    }
+    run_c = {
+        "job_id": "offset-540-structural-audit",
+        "activated_at": "2026-07-10T20:05:08Z",
+        "completed_at": "2026-07-10T20:06:30Z",
+        "delta": "wording A",
+    }
+    assert notify.activation_key(run_a) == notify.activation_key(run_b)
+    assert notify.activation_key(run_a) != notify.activation_key(run_c)

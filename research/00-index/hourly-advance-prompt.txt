@@ -36,5 +36,8 @@ WORKFLOW
 6. Write ~/logs/pgs-hourly/last_run.json with research_status, ops_status, delta,
    key_numbers, artifacts, commit, next_step (same schema as deterministic path).
 7. Stage artifacts, commit on branch codex/hourly-square-branch, push origin.
+8. Do **not** call Rocket.Chat / pgs_hourly_rocketchat_notify.py yourself.
+   The shell wrapper posts exactly once on EXIT. Double posts are a contract
+   violation.
 
 If pytest fails, Research status=FAILED and include the failing output excerpt.

@@ -492,9 +492,24 @@ def post_message(base: str, token: str, uid: str, room_id: str, text: str) -> st
 
 
 def message_fingerprint(text: str) -> str:
-    """Stable hash of the memo body used for duplicate suppression."""
+    """Stable hash of the memo body (secondary dedupe only)."""
     normalized = "\n".join(line.rstrip() for line in text.strip().splitlines())
     return hashlib.sha256(normalized.encode("utf-8")).hexdigest()
+
+
+def activation_key(run: dict[str, Any]) -> str:
+    """
+    Identity of one hourly activation, independent of memo wording.
+
+    Same job_id + activated_at = same hour. Reformatting or --force alone
+    must not create a second channel post for that hour.
+    """
+    job_id = str(run.get("job_id") or "").strip() or "unknown-job"
+    activated = str(run.get("activated_at") or "").strip() or "unknown-time"
+    # completed_at distinguishes a true re-run that rewrote last_run in place.
+    completed = str(run.get("completed_at") or "").strip()
+    raw = f"{job_id}|{activated}|{completed}"
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()
 
 
 def load_post_state(path: Path) -> dict[str, Any]:
@@ -509,7 +524,7 @@ def load_post_state(path: Path) -> dict[str, Any]:
 
 
 def save_post_state(path: Path, payload: dict[str, Any]) -> None:
-    """Persist the last successful RC post fingerprint."""
+    """Persist the last successful RC post identity."""
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 
@@ -517,9 +532,16 @@ def save_post_state(path: Path, payload: dict[str, Any]) -> None:
 def main(argv: list[str] | None = None) -> int:
     """Load last_run.json and post to Rocket.Chat. Never raises to shell by default."""
     argv = list(sys.argv[1:] if argv is None else argv)
-    force = False
+    # --force only re-allows a reworded body for a *new* activation key.
+    # --force-same-activation is the only escape hatch to repost the same hour
+    # (emergency only; default path must never double-post).
+    force_body = False
+    force_same_activation = False
+    if "--force-same-activation" in argv:
+        force_same_activation = True
+        argv = [arg for arg in argv if arg != "--force-same-activation"]
     if "--force" in argv:
-        force = True
+        force_body = True
         argv = [arg for arg in argv if arg != "--force"]
     last_run_path = Path(argv[0]) if argv else DEFAULT_LAST_RUN
     base = os.environ.get("RC_BASE", DEFAULT_BASE)
@@ -546,12 +568,25 @@ def main(argv: list[str] | None = None) -> int:
             run = json.loads(last_run_path.read_text(encoding="utf-8"))
 
         text = format_message(run)
-        fingerprint = message_fingerprint(text)
+        body_fp = message_fingerprint(text)
+        act_key = activation_key(run)
         prior = load_post_state(state_path)
-        if not force and prior.get("fingerprint") == fingerprint:
+
+        # Primary: never post twice for the same activation (same hour/job).
+        prior_act = prior.get("activation_key") or ""
+        if prior_act and prior_act == act_key and not force_same_activation:
             print(
-                "pgs-hourly-rc: skip duplicate memo "
-                f"(fingerprint={fingerprint[:12]} prior_msg={prior.get('msg_id')})"
+                "pgs-hourly-rc: skip already-posted activation "
+                f"(job={run.get('job_id')} activated={run.get('activated_at')} "
+                f"prior_msg={prior.get('msg_id')})"
+            )
+            return 0
+
+        # Secondary: skip identical body text even across activations if forced reword.
+        if not force_body and not force_same_activation and prior.get("fingerprint") == body_fp:
+            print(
+                "pgs-hourly-rc: skip duplicate memo body "
+                f"(fingerprint={body_fp[:12]} prior_msg={prior.get('msg_id')})"
             )
             return 0
 
@@ -567,10 +602,13 @@ def main(argv: list[str] | None = None) -> int:
             state_path,
             {
                 "posted_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-                "fingerprint": fingerprint,
+                "fingerprint": body_fp,
+                "activation_key": act_key,
                 "msg_id": mid,
                 "channel": channel,
                 "job_id": run.get("job_id"),
+                "activated_at": run.get("activated_at"),
+                "completed_at": run.get("completed_at"),
                 "research_status": run.get("research_status"),
                 "ops_status": run.get("ops_status"),
                 "last_run_path": str(last_run_path),
