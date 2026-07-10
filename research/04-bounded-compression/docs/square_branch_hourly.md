@@ -188,3 +188,52 @@ Artifacts:
 
 Next step:
 Structural audit of recurring offset 540 on new extremal rows if no counterexample.
+
+## 2026-07-10T11:06:28Z run
+
+Mechanism:
+PGS-native structural audit of recurring offset 540 and early-τ=4 / late-τ=3
+chamber separation on the `4e8-5e8` utilization maximum.
+
+Method:
+Read `square_branch_dynamic_cutoff_search_4e8_5e8/square_branch_dynamic_cutoff_search_summary.json`
+and prior `prefix_tau_floor_probe.json` / 2026-06-19 chamber baselines.
+Ran `experiments/square-branch-hourly-2026-07-10/offset_540_chamber_geometry_probe.py`
+to evaluate six falsifiable predictions (P1–P6) on four prior segment maxima
+plus the new extremal, and chamber checks on per-`o_q` maxima. No d=4 SDA port.
+
+Result:
+New extremal `r=424171123`, offset `738`, utilization `0.9341772151898734`,
+dynamic cutoff `790`, `o_q=6`.
+Chamber predictions P1–P5 hold on the new row: `prefix_min_tau=4`,
+`first_tau4_offset=3`, `first_tau3_offset=738`, `tau4_count=96`, `tau5_count=0`.
+P6 fixed band `[528, 552]` is **falsified** (`738` outside).
+Per-`o_q` chamber checks hold for offsets `542`, `486`, `738`.
+Theorem: Prime-Square Proximity remains **proved** (`PROOF.md`); this is residual
+audit only. Invalidated: d=4 SDA transfer (not revived).
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.80s
+```
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+Falsified fixed near-540 band residual claim on `4e8-5e8` utilization maximum
+(`D(r)=738`); early τ=4 / late τ=3 chamber separation (P1–P5) holds; residual
+claim table RC1/RC2 + prediction table written.
+
+Artifacts:
+`experiments/square-branch-hourly-2026-07-10/offset_540_chamber_geometry_probe.py`;
+`experiments/square-branch-hourly-2026-07-10/offset_540_prediction_table.json`;
+`experiments/square-branch-hourly-2026-07-10/FINDINGS.md`
+
+Next step:
+Run prefix τ probe variant on newest extremal rows (`prefix-tau-extremal-rerun`)
+or queue falsification `5e8-6e8`. Do not revive fixed-band 540 as a law.

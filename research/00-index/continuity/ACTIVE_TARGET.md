@@ -52,6 +52,15 @@ w - p <= max(64, ceil(0.5 * log(q)^2))       [PROVED, all branches]
 
 Prior certified baseline (replay = NO_DELTA): `3·10^8 .. 4·10^8` in `hourly_baseline_signature.json`.
 
+### Residual chamber audit (2026-07-10)
+
+On the `4e8-5e8` utilization maximum (`r=424171123`, `D(r)=738`):
+
+- early τ=4 / late τ=3 chamber separation (P1–P5) **holds**;
+- fixed near-540 band residual claim `D(r) ∈ [528, 552]` is **falsified**
+  (do not revive as a law);
+- artifacts: `experiments/square-branch-hourly-2026-07-10/`.
+
 ## Hourly Queue
 
 Rotating queue lives in `research/00-index/continuity/hourly_queue.json`.
@@ -61,8 +70,10 @@ square branch and not replay of certified bands.
 
 Contract: `research/00-index/continuity/HOURLY_RELAY_CONTRACT.md`
 
-Default frontier job: falsification `4·10^8 .. 5·10^8`. Replaying the frozen
-`3·10^8 .. 4·10^8` baseline is `NO_DELTA`, not `ADVANCE`.
+Default frontier jobs after the completed `4e8-5e8` sweep and offset-540 audit:
+prefix-τ extremal rerun, then chamber-reset lemma draft / falsification
+`5e8-6e8`. Replaying the frozen `3·10^8 .. 4·10^8` baseline is `NO_DELTA`,
+not `ADVANCE`.
 
 Execution root: isolated worktree `~/pgs-hourly/prime-gap-structure`  
 Human IdeaProjects dirt does not skip the hour.
