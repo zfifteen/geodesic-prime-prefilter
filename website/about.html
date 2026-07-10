@@ -4,11 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Program status · Prime Gap Structure</title>
-  <meta name="description" content="Public status map for the Prime Gap Structure program: proved, implemented, measured, and open.">
+  <meta name="description" content="Public status map with saturated visual plates.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
+  
 </head>
 <body>
   <header class="site-header">
@@ -19,6 +20,7 @@
       </a>
       <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">☰</button>
       <ul class="nav-links">
+
         <li><a href="index.html">Home</a></li>
         <li><a href="gaps.html">Gaps</a></li>
         <li><a href="mechanism.html">Mechanism</a></li>
@@ -28,120 +30,192 @@
         <li><a href="evidence.html">Evidence</a></li>
         <li><a href="glossary.html">Glossary</a></li>
         <li><a href="about.html">About</a></li>
+
       </ul>
     </div>
   </header>
-
   <main>
+
     <div class="page-hero wrap">
       <p class="kicker">08 · About</p>
       <h1>Program status map</h1>
-      <p class="lead">
-        What is proved, what is implemented, what is measured, and what remains open.
-        This page is a public continuity surface, not a biography.
-      </p>
+      <p class="lead">What is proved, what is implemented, what is measured, and what remains open. A public continuity surface, not a biography.</p>
     </div>
-
     <section class="section wrap">
-      <div class="prose" style="max-width:none">
-        <div class="status-map">
-          <div class="status-map-row">
-            <div><span class="status status-proved">Proved</span></div>
-            <div>
-              <h3 style="margin-top:0">Universal local pillars</h3>
-              <p>
-                Direct next-prime rule from exact divisor counts.
-                Interior maximizer (leftmost minimum-divisor selection).
-                Universal bounded compression of the selected-witness offset, including the Prime-Square Proximity Theorem.
-              </p>
-              <p class="mb-0">Authority: <a href="https://github.com/zfifteen/prime-gap-structure/blob/main/PROOF.md" rel="noopener noreferrer" target="_blank">PROOF.md</a></p>
-            </div>
-          </div>
+      
+      
+<figure class="figure figure-wide">
+  <div class="figure-frame" data-overlay="seal">
+    <img src="assets/plates/about/01-hero-status.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 08.01</span>
+    Status materials for the whole program, hung as an opening wall.
+  </figcaption>
+</figure>
 
-          <div class="status-map-row">
-            <div><span class="status status-measured">Implemented</span></div>
-            <div>
-              <h3 style="margin-top:0">Minimal PGS Generator v1.1</h3>
-              <p>
-                Production milestone: known prime in, next prime out as a minimal record.
-                Completed major release, not the whole active project.
-              </p>
-              <p class="mb-0">Map: <a href="generator.html">Generator chapter</a> ·
-                <a href="https://github.com/zfifteen/prime-gap-structure/blob/main/docs/PRIME_GAP_GENERATOR.md" rel="noopener noreferrer" target="_blank">generator doc</a></p>
-            </div>
-          </div>
+      <div class="figure-process steps-5">
 
-          <div class="status-map-row">
-            <div><span class="status status-measured">Measured</span></div>
-            <div>
-              <h3 style="margin-top:0">Generator and walk surfaces</h3>
-              <p>
-                Including <code>11 .. 1,000,000</code> with full exact output and zero unresolved rows,
-                decade-window surfaces through <code>10^18</code>, and recursive walk recoveries inside stated regimes.
-              </p>
-              <p class="mb-0">Map: <a href="evidence.html">Evidence chapter</a> ·
-                <a href="https://github.com/zfifteen/prime-gap-structure/blob/main/docs/RESULTS.md" rel="noopener noreferrer" target="_blank">RESULTS.md</a></p>
-            </div>
-          </div>
+<figure class="figure">
+  <div class="figure-frame" data-overlay="seal">
+    <img src="assets/plates/about/02-proved-band.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 08.02</span>
+    Proved band: local universal pillars under PROOF.md.
+  </figcaption>
+</figure>
 
-          <div class="status-map-row">
-            <div><span class="status status-measured">Active research</span></div>
-            <div>
-              <h3 style="margin-top:0">Cryptology and modulus-link work</h3>
-              <p>
-                Endpoint-chain traversal, floor transport, reciprocal closure, modulus-link residual state,
-                and structural certificates on public ladders. Includes resolved and unresolved RSA v2 rows.
-              </p>
-              <p class="mb-0">Map: <a href="cryptology.html">Cryptology chapter</a> ·
-                <a href="https://github.com/zfifteen/prime-gap-structure/tree/main/research/06-cryptology-rsa" rel="noopener noreferrer" target="_blank">research tree</a></p>
-            </div>
-          </div>
 
-          <div class="status-map-row">
-            <div><span class="status status-unresolved">Open / careful</span></div>
-            <div>
-              <h3 style="margin-top:0">What this program does not claim here</h3>
-              <p>
-                PROOF.md does not itself prove the Riemann Hypothesis.
-                Bounded compression bounds the selected-witness offset; it does not automatically prove every classical gap-size conjecture.
-                Cryptology ladders are not a universal RSA-scale theorem.
-              </p>
-              <p class="mb-0">Lean 4 formalization of the local pillars is in progress as a machine-checked mirror.</p>
-            </div>
-          </div>
-        </div>
+<figure class="figure">
+  <div class="figure-frame" data-overlay="endpoints">
+    <img src="assets/plates/about/03-implemented-band.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 08.03</span>
+    Implemented band: Minimal Generator v1.1 as production milestone.
+  </figcaption>
+</figure>
 
-        <div class="prose" style="margin-top:3rem">
-          <h2>What this website is</h2>
-          <hr class="gold-rule">
-          <p>
-            A public educational course for curious non-specialists: dark-luxury editorial design,
-            dual reading depth, interactive visual labs, and strict status labels.
-          </p>
-          <p>
-            It is not the formal proof. It is not a substitute for repository artifacts.
-            When teaching language and formal status conflict, formal status wins.
-          </p>
 
-          <h2>Research source links</h2>
-          <hr class="gold-rule">
-          <ul>
-            <li><a href="https://github.com/zfifteen/prime-gap-structure" rel="noopener noreferrer" target="_blank">GitHub repository</a></li>
-            <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/PROOF.md" rel="noopener noreferrer" target="_blank">PROOF.md</a></li>
-            <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/docs/RESULTS.md" rel="noopener noreferrer" target="_blank">docs/RESULTS.md</a></li>
-            <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/docs/PRIME_GAP_GENERATOR.md" rel="noopener noreferrer" target="_blank">docs/PRIME_GAP_GENERATOR.md</a></li>
-            <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/research/00-index/continuity/START_HERE.md" rel="noopener noreferrer" target="_blank">Continuity bootstrap</a></li>
-          </ul>
-        </div>
+<figure class="figure">
+  <div class="figure-frame" data-overlay="scan">
+    <img src="assets/plates/about/04-measured-band.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 08.04</span>
+    Measured band: exact regimes and clean surfaces.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="chain">
+    <img src="assets/plates/about/05-research-band.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 08.05</span>
+    Active research band: modulus-link cryptology front.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="residual">
+    <img src="assets/plates/about/06-open-band.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 08.06</span>
+    Open band: residual honesty where claims stop.
+  </figcaption>
+</figure>
+
+</div>
+      <div class="status-map">
+        <div class="status-map-row"><div><span class="status status-proved">Proved</span></div><div><h3 style="margin-top:0">Universal local pillars</h3><p>Direct next-prime rule, interior maximizer, universal bounded compression including Prime-Square Proximity.</p></div></div>
+        <div class="status-map-row"><div><span class="status status-measured">Implemented</span></div><div><h3 style="margin-top:0">Minimal PGS Generator v1.1</h3><p>Production milestone, not the whole active project.</p></div></div>
+        <div class="status-map-row"><div><span class="status status-measured">Measured</span></div><div><h3 style="margin-top:0">Generator and walk surfaces</h3><p>Including 11..1,000,000 full exact output and decade windows through 10^18.</p></div></div>
+        <div class="status-map-row"><div><span class="status status-measured">Active research</span></div><div><h3 style="margin-top:0">Cryptology and modulus-link work</h3><p>Endpoint chains, transport, residual state, certificates on public ladders.</p></div></div>
+        <div class="status-map-row"><div><span class="status status-unresolved">Open / careful</span></div><div><h3 style="margin-top:0">What this program does not claim here</h3><p>PROOF.md does not itself prove RH. Cryptology ladders are not a universal RSA-scale theorem.</p></div></div>
       </div>
+      <div class="figure-tile-grid cols-2">
 
+<figure class="figure">
+  <div class="figure-frame" data-overlay="scan">
+    <img src="assets/plates/about/07-not-claims.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 08.07</span>
+    Quiet plate for claims we refuse to inflate.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="seal">
+    <img src="assets/plates/about/08-lean-mirror.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 08.08</span>
+    Lean formalization as a mirror seal in progress.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="chain">
+    <img src="assets/plates/about/09-site-role.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 08.09</span>
+    This website’s role: education and exhibition, not proof authority.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="chain">
+    <img src="assets/plates/about/10-source-links.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 08.10</span>
+    Research source path as linked stations.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="scan">
+    <img src="assets/plates/about/11-continuity.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 08.11</span>
+    Continuity walk for future sessions and readers.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="chain">
+    <img src="assets/plates/about/12-program-map.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 08.12</span>
+    Program map constellation.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="endpoints">
+    <img src="assets/plates/about/13-about-recap.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 08.13</span>
+    Recap chamber for the status map.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="seal">
+    <img src="assets/plates/about/14-final-seal.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 08.14</span>
+    Final seal of the public course.
+  </figcaption>
+</figure>
+
+</div>
       <div class="hero-actions" style="justify-content:flex-start;margin-top:2.5rem">
         <a class="btn btn-primary" href="index.html">Return to course home</a>
         <a class="btn btn-ghost" href="gaps.html">Start chapter 01</a>
       </div>
+        
     </section>
-  </main>
 
+  </main>
   <footer class="site-footer">
     <div class="wrap footer-grid">
       <div>
@@ -154,6 +228,7 @@
           <li><a href="gaps.html">Gaps</a></li>
           <li><a href="laws.html">Laws</a></li>
           <li><a href="cryptology.html">Cryptology</a></li>
+          <li><a href="evidence.html">Evidence</a></li>
         </ul>
       </div>
       <div>
@@ -161,14 +236,18 @@
         <ul>
           <li><a href="https://github.com/zfifteen/prime-gap-structure" rel="noopener noreferrer" target="_blank">Repository</a></li>
           <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/PROOF.md" rel="noopener noreferrer" target="_blank">PROOF.md</a></li>
+          <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/docs/RESULTS.md" rel="noopener noreferrer" target="_blank">RESULTS.md</a></li>
         </ul>
       </div>
     </div>
     <div class="wrap footer-note">
-      Public continuity surface for the educational website. Formal status remains repository-owned.
+      Educational surface with saturated visual plates. Theorem status is controlled by PROOF.md.
+      Measured tables certify implementations inside stated regimes.
     </div>
   </footer>
-
   <script src="js/main.js"></script>
+  <script src="js/labs.js"></script>
+  <script src="js/figures.js"></script>
+  
 </body>
 </html>

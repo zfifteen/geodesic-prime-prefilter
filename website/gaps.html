@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>What is a prime gap? · Prime Gap Structure</title>
-  <meta name="description" content="Learn what a prime gap is: the open chamber of composites between two consecutive primes.">
+  <meta name="description" content="Visual course chapter on prime gaps as chambers of composite structure.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -20,6 +20,7 @@
       </a>
       <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">☰</button>
       <ul class="nav-links">
+
         <li><a href="index.html">Home</a></li>
         <li><a href="gaps.html">Gaps</a></li>
         <li><a href="mechanism.html">Mechanism</a></li>
@@ -29,46 +30,129 @@
         <li><a href="evidence.html">Evidence</a></li>
         <li><a href="glossary.html">Glossary</a></li>
         <li><a href="about.html">About</a></li>
+
       </ul>
     </div>
   </header>
-
   <main>
+
     <div class="page-hero wrap">
       <p class="kicker">01 · Gaps</p>
       <h1>What is a prime gap?</h1>
-      <p class="lead">
-        Take two primes that sit next to each other in the list of primes.
-        Everything strictly between them is composite. That open stretch is the gap.
-      </p>
+      <p class="lead">Take two primes that sit next to each other in the list of primes. Everything strictly between them is composite. That open stretch is the gap.</p>
     </div>
-
     <section class="section wrap">
+      
+      
+<figure class="figure figure-wide">
+  <div class="figure-frame" data-overlay="endpoints">
+    <img src="assets/plates/gaps/01-hero-gap.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 01.01</span>
+    Hero plate for the gap: endpoint walls and a dense interior of composite structure. This is the first object of the course.
+  </figcaption>
+</figure>
+
       <div class="prose">
         <h2>A picture you can hold</h2>
         <hr class="gold-rule">
-        <p>
-          Start at the prime 89. The next prime is 97. Between them live the composites
-          90, 91, 92, 93, 94, 95, and 96. That list is the interior of the gap.
-        </p>
-        <p>
-          The gap is not a void. It is a short hallway of ordinary integers, each with its own
-          divisor pattern. Prime Gap Structure begins by treating that hallway as the main object.
-        </p>
-        <div class="callout">
-          <div class="callout-title">Plain object</div>
-          <p>
-            Left wall: a known prime <code>p</code>. Right wall: the next prime <code>q</code>.
-            Inside: every integer <code>n</code> with <code>p &lt; n &lt; q</code>.
-          </p>
-        </div>
+        <p>Start at the prime 89. The next prime is 97. Between them live the composites 90 through 96. That list is the interior of the gap.</p>
+        <p>The gap is not a void. It is a short hallway of ordinary integers, each with its own divisor pattern.</p>
       </div>
+      <div class="figure-tile-grid cols-3">
 
+<figure class="figure">
+  <div class="figure-frame" data-overlay="endpoints">
+    <img src="assets/plates/gaps/02-two-walls.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 01.02</span>
+    Two walls only: the minimal image of consecutive primes as endpoint marks.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="bars">
+    <img src="assets/plates/gaps/03-interior-composites.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 01.03</span>
+    Interior composites as a bar field. Heights later track divisor load; here they establish presence.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="scan">
+    <img src="assets/plates/gaps/04-hallway.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 01.04</span>
+    Hallway reading of the chamber: walkable structure between walls.
+  </figcaption>
+</figure>
+
+</div>
+      
+<div class="figure-split">
+  <div class="figure-split-visual">
+    
+<figure class="figure">
+  <div class="figure-frame" data-overlay="scan">
+    <img src="assets/plates/gaps/09-gap-question.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 01.05</span>
+    The gap question is geometric: where does the interval after a known prime close?
+  </figcaption>
+</figure>
+
+  </div>
+  <div class="prose"><h2>Why this matters</h2><p>Many stories jump to “is this number prime?” That is a candidate question. This course asks a gap question: what structure does the interval carry, and where does it end?</p></div>
+</div>
+
+      <div class="gallery-band">
+        <p class="gallery-band-title">Gap scale gallery</p>
+        <div class="figure-process steps-3">
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="endpoints">
+    <img src="assets/plates/gaps/05-tiny-gap.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 01.06</span>
+    Tiny gap: almost no interior. Still a chamber, even when thin.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="witness">
+    <img src="assets/plates/gaps/06-medium-gap.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 01.07</span>
+    Medium gap: enough interior for a selected landmark to appear.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="scan">
+    <img src="assets/plates/gaps/07-long-gap.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 01.08</span>
+    Longer gap: more composite structure, same endpoint grammar.
+  </figcaption>
+</figure>
+
+</div>
+      </div>
       <div class="lab" id="lab-gap-ruler">
-        <div class="lab-header">
-          <h3 class="lab-title">Gap ruler lab</h3>
-          <span class="lab-hint">Bar height tracks divisor count τ</span>
-        </div>
+        <div class="lab-header"><h3 class="lab-title">Gap ruler lab</h3><span class="lab-hint">Bar height tracks divisor count τ</span></div>
         <div class="lab-controls">
           <button type="button" data-gap="11-13">11 → 13</button>
           <button type="button" data-gap="89-97">89 → 97</button>
@@ -77,49 +161,82 @@
         <div class="lab-stage" id="lab-ruler-stage"></div>
         <p class="lab-caption" id="lab-ruler-caption"></p>
       </div>
+      <div class="figure-tile-grid cols-3">
 
-      <div class="prose">
-        <h2>Why this matters for the course</h2>
-        <hr class="gold-rule">
-        <p>
-          Many stories about primes jump straight to “is this number prime?”
-          That is a candidate question. This course asks a gap question instead:
-          what structure does the interval after a known prime carry, and where does that interval close?
-        </p>
-        <p>
-          Once you can see the chamber, the rest of the atlas has a place to stand:
-          divisor counts mark the chamber, proved laws order it, and a generator can output the next prime
-          as a clean record.
-        </p>
+<figure class="figure">
+  <div class="figure-frame" data-overlay="scan">
+    <img src="assets/plates/gaps/08-ruler-ticks.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 01.09</span>
+    Ruler ticks along an ordered walk: the gap is measured from left to right.
+  </figcaption>
+</figure>
 
-        <div class="deeper">
-          <button type="button" class="deeper-toggle" aria-expanded="false">
-            <span>Deeper · interval notation</span>
-            <span class="chevron">▾</span>
-          </button>
-          <div class="deeper-body">
-            <p>
-              For consecutive primes <code>p</code> and <code>q</code>, the interior interval is
-            </p>
-            <div class="math-block">
-              \[ I = \{p+1,\ldots,q-1\} \]
-            </div>
-            <p>
-              Every element of <code>I</code> is composite. The program studies ordered structure on
-              <code>I</code> (and on the closed reading that includes the endpoints) rather than treating
-              the composites as disposable rejects in a search loop.
-            </p>
-          </div>
-        </div>
-      </div>
 
+<figure class="figure">
+  <div class="figure-frame" data-overlay="bars">
+    <img src="assets/plates/gaps/10-composite-field.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 01.10</span>
+    Composite field without yet naming the witness. Presence before selection.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="endpoints">
+    <img src="assets/plates/gaps/11-open-interval.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 01.11</span>
+    Open interval emphasis: the interior is the working room.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="endpoints">
+    <img src="assets/plates/gaps/12-closing-wall.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 01.12</span>
+    Closing wall: the next prime as the right endpoint of the story.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="chain">
+    <img src="assets/plates/gaps/13-structure-not-void.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 01.13</span>
+    Structure, not void: nodes of relation inside the chamber idea.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="chain">
+    <img src="assets/plates/gaps/14-gap-recap.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 01.14</span>
+    Recap strip: walls, path, and closure as one exhibition sentence.
+  </figcaption>
+</figure>
+
+</div>
       <div class="hero-actions" style="justify-content:flex-start;margin-top:2.5rem">
         <a class="btn btn-primary" href="mechanism.html">Next: How PGS works</a>
         <a class="btn btn-ghost" href="index.html">Course home</a>
       </div>
+        
     </section>
-  </main>
 
+  </main>
   <footer class="site-footer">
     <div class="wrap footer-grid">
       <div>
@@ -127,11 +244,12 @@
         <p style="color:var(--text-muted);font-size:0.95rem;margin:0">Educational course · Chapter 01</p>
       </div>
       <div>
-        <h4>Continue</h4>
+        <h4>Course</h4>
         <ul>
-          <li><a href="mechanism.html">Mechanism</a></li>
+          <li><a href="gaps.html">Gaps</a></li>
           <li><a href="laws.html">Laws</a></li>
-          <li><a href="glossary.html">Glossary</a></li>
+          <li><a href="cryptology.html">Cryptology</a></li>
+          <li><a href="evidence.html">Evidence</a></li>
         </ul>
       </div>
       <div>
@@ -139,29 +257,22 @@
         <ul>
           <li><a href="https://github.com/zfifteen/prime-gap-structure" rel="noopener noreferrer" target="_blank">Repository</a></li>
           <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/PROOF.md" rel="noopener noreferrer" target="_blank">PROOF.md</a></li>
+          <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/docs/RESULTS.md" rel="noopener noreferrer" target="_blank">RESULTS.md</a></li>
         </ul>
       </div>
     </div>
     <div class="wrap footer-note">
-      Educational surface. Formal theorem status lives in PROOF.md.
+      Educational surface with saturated visual plates. Theorem status is controlled by PROOF.md.
+      Measured tables certify implementations inside stated regimes.
     </div>
   </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      if (window.renderMathInElement) {
-        renderMathInElement(document.body, {
-          delimiters: [
-            { left: "\\[", right: "\\]", display: true },
-            { left: "\\(", right: "\\)", display: false }
-          ]
-        });
-      }
-    });
-  </script>
   <script src="js/main.js"></script>
   <script src="js/labs.js"></script>
+  <script src="js/figures.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){if(window.renderMathInElement){renderMathInElement(document.body,{delimiters:[{left:"\\[",right:"\\]",display:true},{left:"\\(",right:"\\)",display:false}]});}});</script>
+
 </body>
 </html>

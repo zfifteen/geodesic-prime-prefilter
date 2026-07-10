@@ -4,11 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The generator · Prime Gap Structure</title>
-  <meta name="description" content="The Minimal PGS Generator: known prime in, next prime out, as a clean structural record.">
+  <meta name="description" content="Minimal PGS Generator chapter with visual plate gallery.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
+  
 </head>
 <body>
   <header class="site-header">
@@ -19,6 +20,7 @@
       </a>
       <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">☰</button>
       <ul class="nav-links">
+
         <li><a href="index.html">Home</a></li>
         <li><a href="gaps.html">Gaps</a></li>
         <li><a href="mechanism.html">Mechanism</a></li>
@@ -28,139 +30,202 @@
         <li><a href="evidence.html">Evidence</a></li>
         <li><a href="glossary.html">Glossary</a></li>
         <li><a href="about.html">About</a></li>
+
       </ul>
     </div>
   </header>
-
   <main>
+
     <div class="page-hero wrap">
       <p class="kicker">04 · Generator</p>
       <h1>Known prime in.<br>Next prime out.</h1>
-      <p class="lead">
-        The Minimal PGS Generator turns the gap story into a production contract:
-        given a known prime, emit the successor prime as a minimal record.
-        Diagnostics stay outside the stream.
-      </p>
+      <p class="lead">The Minimal PGS Generator turns the gap story into a production contract: given a known prime, emit the successor prime as a minimal record.</p>
     </div>
-
     <section class="section wrap">
-      <div class="prose">
-        <h2>The output is deliberately small</h2>
-        <hr class="gold-rule">
-        <p>
-          For each resolved input prime, the generator emits exactly a pair:
-        </p>
-        <pre>{"p": 89, "q": 97}</pre>
-        <p>
-          That record says only what matters: start at 89; the next prime is 97.
-          No confidence fields. No source labels. No audit metadata inside the stream.
-        </p>
-        <p>
-          Certificates and diagnostics can exist as sidecars. The generated answer itself stays clean.
-        </p>
+      
+      
+<figure class="figure figure-wide">
+  <div class="figure-frame" data-overlay="endpoints">
+    <img src="assets/plates/generator/01-hero-pair.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 04.01</span>
+    Hero pair: two monoliths for the minimal record of start and successor.
+  </figcaption>
+</figure>
 
+      <div class="figure-tile-grid cols-3">
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="endpoints">
+    <img src="assets/plates/generator/02-minimal-record.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 04.02</span>
+    Minimal record as twin marks only. Diagnostics live elsewhere.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="scan">
+    <img src="assets/plates/generator/03-clean-stream.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 04.03</span>
+    Clean stream: quiet field without clutter icons.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="endpoints">
+    <img src="assets/plates/generator/13-json-pair-abstract.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 04.04</span>
+    Abstract of the pair contract without readable code noise.
+  </figcaption>
+</figure>
+
+</div>
+      <div class="prose">
+        <pre>{"p": 89, "q": 97}</pre>
+        <p>That record says only what matters. No confidence fields. No source labels inside the stream.</p>
         <h2>A different question than “is this prime?”</h2>
         <hr class="gold-rule">
-        <p>
-          Conventional generators often propose a candidate and test it.
-          If the candidate fails, they try another. Faster tests improve the loop, but the shape remains propose and test.
-        </p>
-        <p>
-          The PGS generator asks where the interval after a known prime closes.
-          It reads structural state in the chamber after <code>p</code> and returns <code>q</code>
-          under the program’s deterministic selection contract.
-        </p>
-
-        <div class="callout">
-          <div class="callout-title">Contract</div>
-          <p><code>input known prime p → output next prime q</code></p>
-          <p style="margin-top:0.75rem;margin-bottom:0">
-            If the selection rule does not resolve, the honest result is an explicit unresolved state.
-            The contract does not authorize a silent classical fallback search to invent an answer.
-          </p>
-        </div>
-
-        <h2>Audit after generation</h2>
-        <hr class="gold-rule">
-        <p>
-          <span class="status status-audit">Audit role</span>
-        </p>
-        <p>
-          Classical checks may verify an emitted pair after the fact.
-          Audit confirms. Audit does not choose <code>q</code>.
-          That separation is part of the public engineering posture of the project.
-        </p>
-
-        <h2>Implementation evidence (not theorem bounds)</h2>
-        <hr class="gold-rule">
-        <p>
-          <span class="status status-measured">Measured</span>
-        </p>
-        <p>
-          Production surfaces record exact outputs with zero unresolved rows and zero audit failures
-          inside stated regimes. Those tables certify the implementation.
-          They do not replace the universal next-prime theorem in PROOF.md.
-        </p>
+        <p>The generator asks where the interval after a known prime closes.</p>
       </div>
+      
+<figure class="figure figure-wide">
+  <div class="figure-frame" data-overlay="endpoints">
+    <img src="assets/plates/generator/04-gap-question.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 04.05</span>
+    Gap-question plate: chamber first, output second.
+  </figcaption>
+</figure>
 
+      <div class="figure-tile-grid cols-3">
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="bars">
+    <img src="assets/plates/generator/05-not-candidate-loop.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 04.06</span>
+    Not a candidate lottery loop: bars without random rejection theater.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="seal">
+    <img src="assets/plates/generator/06-contract.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 04.07</span>
+    Contract seal for p to q under deterministic selection.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="residual">
+    <img src="assets/plates/generator/07-unresolved-gate.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 04.08</span>
+    Unresolved gate: incomplete ring when the rule does not close.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="seal">
+    <img src="assets/plates/generator/08-audit-after.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 04.09</span>
+    Audit after generation: separate material, downstream only.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="scan">
+    <img src="assets/plates/generator/09-evidence-surface.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 04.10</span>
+    Evidence surface grid for implementation regimes.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="chain">
+    <img src="assets/plates/generator/10-high-scale.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 04.11</span>
+    High-scale decade windows as a constellation of tested stations.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="scan">
+    <img src="assets/plates/generator/11-sidecar.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 04.12</span>
+    Sidecar diagnostics as a quieter ornament, not the main stream.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="chain">
+    <img src="assets/plates/generator/12-production-path.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 04.13</span>
+    Production path stations from input prime to emitted pair.
+  </figcaption>
+</figure>
+
+
+<figure class="figure">
+  <div class="figure-frame" data-overlay="scan">
+    <img src="assets/plates/generator/14-generator-recap.png" alt="" loading="lazy" width="1600" height="900">
+  </div>
+  <figcaption class="figure-caption">
+    <span class="figure-id">Fig. 04.14</span>
+    Recap walk of the generator story.
+  </figcaption>
+</figure>
+
+</div>
       <div class="table-wrap">
         <table>
-          <thead>
-            <tr>
-              <th>Surface</th>
-              <th>Result</th>
-              <th>Status</th>
-            </tr>
-          </thead>
+          <thead><tr><th>Surface</th><th>Result</th><th>Status</th></tr></thead>
           <tbody>
-            <tr>
-              <td><code>11 .. 1,000,000</code></td>
-              <td><code>78494 / 78494</code> outputted · 0 unresolved · 0 audit failures</td>
-              <td><span class="status status-measured">Measured</span></td>
-            </tr>
-            <tr>
-              <td><code>10^8</code> through <code>10^18</code> decade windows</td>
-              <td><code>2816 / 2816</code> outputted · 0 unresolved · 0 audit failures</td>
-              <td><span class="status status-measured">Measured</span></td>
-            </tr>
-            <tr>
-              <td>Production path <code>11 .. 100,000</code></td>
-              <td><code>9588 / 9588</code> exact PGS outputs · 0 failures</td>
-              <td><span class="status status-measured">Measured</span></td>
-            </tr>
+            <tr><td><code>11 .. 1,000,000</code></td><td><code>78494 / 78494</code> · 0 unresolved · 0 audit failures</td><td><span class="status status-measured">Measured</span></td></tr>
+            <tr><td><code>10^8</code> through <code>10^18</code></td><td><code>2816 / 2816</code> · 0 unresolved · 0 audit failures</td><td><span class="status status-measured">Measured</span></td></tr>
+            <tr><td><code>11 .. 100,000</code></td><td><code>9588 / 9588</code> exact outputs · 0 failures</td><td><span class="status status-measured">Measured</span></td></tr>
           </tbody>
         </table>
       </div>
-
-      <div class="prose">
-        <div class="deeper">
-          <button type="button" class="deeper-toggle" aria-expanded="false">
-            <span>Deeper · structural foundation</span>
-            <span class="chevron">▾</span>
-          </button>
-          <div class="deeper-body">
-            <p>
-              The generator contract is <code>p → q</code> from exact divisor-count structure.
-              Universal bounded compression (proved) places the GWR-selected witness within
-              <code>max(64, ceil(0.5 · (log q)²))</code> of the left endpoint.
-              Validation surfaces confirm implementation fidelity inside their regimes;
-              they are not the theorem boundary.
-            </p>
-            <p>
-              The live production iteration is the PGS-only v1.1 generator path documented in the repository release notes.
-              It is a completed major production milestone. It is not the whole active research program.
-            </p>
-          </div>
-        </div>
-      </div>
-
       <div class="hero-actions" style="justify-content:flex-start;margin-top:2.5rem">
         <a class="btn btn-primary" href="cryptology.html">Next: Cryptology</a>
         <a class="btn btn-ghost" href="https://github.com/zfifteen/prime-gap-structure/blob/main/docs/PRIME_GAP_GENERATOR.md" rel="noopener noreferrer" target="_blank">Research source · generator doc</a>
       </div>
+        
     </section>
-  </main>
 
+  </main>
   <footer class="site-footer">
     <div class="wrap footer-grid">
       <div>
@@ -168,26 +233,31 @@
         <p style="color:var(--text-muted);font-size:0.95rem;margin:0">Educational course · Chapter 04</p>
       </div>
       <div>
-        <h4>Continue</h4>
+        <h4>Course</h4>
         <ul>
+          <li><a href="gaps.html">Gaps</a></li>
+          <li><a href="laws.html">Laws</a></li>
           <li><a href="cryptology.html">Cryptology</a></li>
           <li><a href="evidence.html">Evidence</a></li>
-          <li><a href="laws.html">Laws</a></li>
         </ul>
       </div>
       <div>
         <h4>Research source</h4>
         <ul>
-          <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/docs/PRIME_GAP_GENERATOR.md" rel="noopener noreferrer" target="_blank">PRIME_GAP_GENERATOR.md</a></li>
+          <li><a href="https://github.com/zfifteen/prime-gap-structure" rel="noopener noreferrer" target="_blank">Repository</a></li>
+          <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/PROOF.md" rel="noopener noreferrer" target="_blank">PROOF.md</a></li>
           <li><a href="https://github.com/zfifteen/prime-gap-structure/blob/main/docs/RESULTS.md" rel="noopener noreferrer" target="_blank">RESULTS.md</a></li>
         </ul>
       </div>
     </div>
     <div class="wrap footer-note">
-      Measured surfaces certify implementations. PROOF.md controls universal theorems.
+      Educational surface with saturated visual plates. Theorem status is controlled by PROOF.md.
+      Measured tables certify implementations inside stated regimes.
     </div>
   </footer>
-
   <script src="js/main.js"></script>
+  <script src="js/labs.js"></script>
+  <script src="js/figures.js"></script>
+  
 </body>
 </html>
