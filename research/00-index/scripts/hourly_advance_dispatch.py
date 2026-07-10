@@ -391,6 +391,16 @@ def dispatch_deterministic(item: dict[str, Any], queue: dict[str, Any]) -> int:
     # Rotate after attempt so NO_DELTA escalates to the next frontier job.
     advance_queue_index(queue)
 
+    if research_status == RESEARCH_ADVANCE and current_sig is not None:
+        save_prior_signature(current_sig, item["id"])
+    elif research_status == RESEARCH_FAILED:
+        pass
+    elif current_sig is not None and prior_sig is None:
+        # Record first observation even when NO_DELTA vs baseline so later runs compare.
+        save_prior_signature(current_sig, item["id"])
+
+    # Append ledger before commit so the block is included in the commit set.
+    # Temporary ops label; rewritten below if the commit path changes it.
     append_ledger_block(
         mechanism=item["mechanism"],
         method="deterministic dispatch: " + " ".join(command),
@@ -401,14 +411,6 @@ def dispatch_deterministic(item: dict[str, Any], queue: dict[str, Any]) -> int:
         artifacts=artifacts,
         next_step=item.get("next_step", "Advance queue."),
     )
-
-    if research_status == RESEARCH_ADVANCE and current_sig is not None:
-        save_prior_signature(current_sig, item["id"])
-    elif research_status == RESEARCH_FAILED:
-        pass
-    elif current_sig is not None and prior_sig is None:
-        # Record first observation even when NO_DELTA vs baseline so later runs compare.
-        save_prior_signature(current_sig, item["id"])
 
     commit_paths = relay_code_paths() + [
         QUEUE_PATH,
@@ -433,6 +435,17 @@ def dispatch_deterministic(item: dict[str, Any], queue: dict[str, Any]) -> int:
         commit_paths,
         f"hourly square-branch: {item['id']} ({research_status.lower()})",
     )
+
+    if ops_status != OPS_OK and LEDGER_PATH.exists():
+        # Patch the trailing Ops status line when commit/push was only partial/failed.
+        text = LEDGER_PATH.read_text(encoding="utf-8")
+        marker = "\nOps status:\nOK\n"
+        if text.rstrip().endswith("Advance queue.") or "Ops status:\nOK\n" in text[-800:]:
+            # Replace only the last occurrence.
+            idx = text.rfind(marker)
+            if idx != -1:
+                text = text[:idx] + f"\nOps status:\n{ops_status}\n" + text[idx + len(marker) :]
+                LEDGER_PATH.write_text(text, encoding="utf-8")
 
     write_last_run(
         {
