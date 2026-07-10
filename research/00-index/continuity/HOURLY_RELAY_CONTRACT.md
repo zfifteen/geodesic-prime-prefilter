@@ -74,9 +74,17 @@ Append one block to `research/04-bounded-compression/docs/square_branch_hourly.m
 ## Rocket.Chat
 
 - After every activation ends, post once to `#Prime-Gap-Structure` as `grok`.
-- Format is a short **research memo**, not a log line: plain-English headline,
-  what changed, what ran, measured result, research/ops status, next pressure,
-  then compact artifact/branch footnotes.
+- Format is a **thorough structured research memo** (same clarity bar as
+  operator Q&A in-channel), rendered by
+  `scripts/pgs_hourly_rocketchat_notify.py`:
+  - **Headline** in plain English
+  - status labels (research · ops)
+  - **What this hour actually did** (job id, mechanism, delta)
+  - **Measured / residual result** (prose + tables for quantities and RC/P claims)
+  - **Why this matters for the schedule** (ADVANCE vs replay vs failed)
+  - **Next pressure**
+  - **Not claiming** (no theorem inflation, no RH/RSA overclaim)
+  - artifacts + branch/commit footnote
 - Do not post `key=value` soup as the primary body.
 - Rocket.Chat failure is ops-only. It must not erase research results.
 - Canonical truth remains the ledger and `~/logs/pgs-hourly/last_run.json`.
