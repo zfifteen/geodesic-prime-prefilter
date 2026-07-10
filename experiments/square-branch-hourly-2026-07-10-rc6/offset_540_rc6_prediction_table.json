@@ -1,0 +1,584 @@
+{
+  "inputs": {
+    "prior_prediction_table": "/Users/velocityworks/pgs-hourly/prime-gap-structure/experiments/square-branch-hourly-2026-07-10/offset_540_prediction_table.json",
+    "rc3_prediction_table": "/Users/velocityworks/pgs-hourly/prime-gap-structure/experiments/square-branch-hourly-2026-07-10-rc3/offset_540_rc3_prediction_table.json",
+    "falsification_summary_json": "/Users/velocityworks/pgs-hourly/prime-gap-structure/research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_4e8_5e8/square_branch_dynamic_cutoff_search_summary.json",
+    "prefix_tau_floor_probe": {
+      "path": "/Users/velocityworks/pgs-hourly/prime-gap-structure/experiments/square-branch-sda-invalidation-2026-06/prefix_tau_floor_probe.json",
+      "extremal_count": 3,
+      "d4_sda_transfers": false
+    },
+    "phase_gap_min": 0.95,
+    "near_540_radius": 20,
+    "required_o_q": [
+      2,
+      4,
+      6
+    ],
+    "invalidated_route": "d=4 SDA transfer (not revived)",
+    "theorem_status": "Prime-Square Proximity proved in PROOF.md; residual audit only"
+  },
+  "predictions": [
+    {
+      "id": "P10",
+      "name": "oq_panel_phase_order",
+      "statement": "On 4e8-5e8 per-o_q branch maxima (o_q in {2,4,6}): 1 <= first_tau4_offset < first_tau3_offset = D(r), prefix_min_tau = 4, and tau5_count = 0.",
+      "falsifier": "any o_q branch-max row fails early-tau4 / late-tau3 phase order or has prefix_min_tau != 4 or tau5_count > 0"
+    },
+    {
+      "id": "P11",
+      "name": "late_dominant_phase_gap",
+      "statement": "On segment utilization maxima and 4e8-5e8 o_q panel, phase_gap = (D(r) - first_tau4_offset) / D(r) >= 0.95.",
+      "falsifier": "any evaluated row with phase_gap < 0.95"
+    },
+    {
+      "id": "P12",
+      "name": "oq_near_540_exclusivity",
+      "statement": "On 4e8-5e8 per-o_q branch maxima, only o_q=2 satisfies |D(r) - 540| <= 20; o_q=4 and o_q=6 escape the near-540 band.",
+      "falsifier": "o_q=2 branch max escapes |D-540|<=20, or o_q in {4,6} branch max enters |D-540|<=20"
+    }
+  ],
+  "primary_rows": [
+    {
+      "segment": "3e7-1e8",
+      "r": 82357433,
+      "offset": 540,
+      "o_q": null,
+      "first_tau4_offset": 10,
+      "first_tau3_offset": 540,
+      "prefix_min_tau": 4,
+      "tau4_count": 63,
+      "tau5_count": 0,
+      "rho4": 0.11666666666666667,
+      "phase_gap": 0.9814814814814815,
+      "abs_d_minus_540": 0,
+      "phase_order_ok": true
+    },
+    {
+      "segment": "1e8-2e8",
+      "r": 102017779,
+      "offset": 462,
+      "o_q": null,
+      "first_tau4_offset": 2,
+      "first_tau3_offset": 462,
+      "prefix_min_tau": 4,
+      "tau4_count": 52,
+      "tau5_count": 0,
+      "rho4": 0.11255411255411256,
+      "phase_gap": 0.9956709956709957,
+      "abs_d_minus_540": 78,
+      "phase_order_ok": true
+    },
+    {
+      "segment": "2e8-3e8",
+      "r": 251066071,
+      "offset": 540,
+      "o_q": null,
+      "first_tau4_offset": 6,
+      "first_tau3_offset": 540,
+      "prefix_min_tau": 4,
+      "tau4_count": 60,
+      "tau5_count": 0,
+      "rho4": 0.1111111111111111,
+      "phase_gap": 0.9888888888888889,
+      "abs_d_minus_540": 0,
+      "phase_order_ok": true
+    },
+    {
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "o_q": null,
+      "first_tau4_offset": 4,
+      "first_tau3_offset": 546,
+      "prefix_min_tau": 4,
+      "tau4_count": 64,
+      "tau5_count": 0,
+      "rho4": 0.11721611721611722,
+      "phase_gap": 0.9926739926739927,
+      "abs_d_minus_540": 6,
+      "phase_order_ok": true
+    },
+    {
+      "segment": "4e8-5e8",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "first_tau4_offset": 3,
+      "first_tau3_offset": 738,
+      "prefix_min_tau": 4,
+      "tau4_count": 96,
+      "tau5_count": 0,
+      "rho4": 0.13008130081300814,
+      "phase_gap": 0.9959349593495935,
+      "abs_d_minus_540": 198,
+      "phase_order_ok": true
+    }
+  ],
+  "oq_panel_rows": [
+    {
+      "segment": "4e8-5e8/o_q=2",
+      "r": 468917503,
+      "offset": 542,
+      "o_q": 2,
+      "first_tau4_offset": 4,
+      "first_tau3_offset": 542,
+      "prefix_min_tau": 4,
+      "tau4_count": 60,
+      "tau5_count": 0,
+      "rho4": 0.11070110701107011,
+      "phase_gap": 0.992619926199262,
+      "abs_d_minus_540": 2,
+      "phase_order_ok": true
+    },
+    {
+      "segment": "4e8-5e8/o_q=4",
+      "r": 482342527,
+      "offset": 486,
+      "o_q": 4,
+      "first_tau4_offset": 16,
+      "first_tau3_offset": 486,
+      "prefix_min_tau": 4,
+      "tau4_count": 53,
+      "tau5_count": 0,
+      "rho4": 0.10905349794238683,
+      "phase_gap": 0.9670781893004116,
+      "abs_d_minus_540": 54,
+      "phase_order_ok": true
+    },
+    {
+      "segment": "4e8-5e8/o_q=6",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "first_tau4_offset": 3,
+      "first_tau3_offset": 738,
+      "prefix_min_tau": 4,
+      "tau4_count": 96,
+      "tau5_count": 0,
+      "rho4": 0.13008130081300814,
+      "phase_gap": 0.9959349593495935,
+      "abs_d_minus_540": 198,
+      "phase_order_ok": true
+    }
+  ],
+  "prediction_results": [
+    {
+      "id": "P10",
+      "name": "oq_panel_phase_order",
+      "statement": "On 4e8-5e8 per-o_q branch maxima (o_q in {2,4,6}): 1 <= first_tau4_offset < first_tau3_offset = D(r), prefix_min_tau = 4, and tau5_count = 0.",
+      "falsifier": "any o_q branch-max row fails early-tau4 / late-tau3 phase order or has prefix_min_tau != 4 or tau5_count > 0",
+      "segment": "4e8-5e8/o_q=2",
+      "r": 468917503,
+      "offset": 542,
+      "o_q": 2,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "first_tau4_offset": 4,
+        "first_tau3_offset": 542,
+        "prefix_min_tau": 4,
+        "tau5_count": 0
+      }
+    },
+    {
+      "id": "P10",
+      "name": "oq_panel_phase_order",
+      "statement": "On 4e8-5e8 per-o_q branch maxima (o_q in {2,4,6}): 1 <= first_tau4_offset < first_tau3_offset = D(r), prefix_min_tau = 4, and tau5_count = 0.",
+      "falsifier": "any o_q branch-max row fails early-tau4 / late-tau3 phase order or has prefix_min_tau != 4 or tau5_count > 0",
+      "segment": "4e8-5e8/o_q=4",
+      "r": 482342527,
+      "offset": 486,
+      "o_q": 4,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "first_tau4_offset": 16,
+        "first_tau3_offset": 486,
+        "prefix_min_tau": 4,
+        "tau5_count": 0
+      }
+    },
+    {
+      "id": "P10",
+      "name": "oq_panel_phase_order",
+      "statement": "On 4e8-5e8 per-o_q branch maxima (o_q in {2,4,6}): 1 <= first_tau4_offset < first_tau3_offset = D(r), prefix_min_tau = 4, and tau5_count = 0.",
+      "falsifier": "any o_q branch-max row fails early-tau4 / late-tau3 phase order or has prefix_min_tau != 4 or tau5_count > 0",
+      "segment": "4e8-5e8/o_q=6",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "first_tau4_offset": 3,
+        "first_tau3_offset": 738,
+        "prefix_min_tau": 4,
+        "tau5_count": 0
+      }
+    },
+    {
+      "id": "P11",
+      "name": "late_dominant_phase_gap",
+      "statement": "On segment utilization maxima and 4e8-5e8 o_q panel, phase_gap = (D(r) - first_tau4_offset) / D(r) >= 0.95.",
+      "falsifier": "any evaluated row with phase_gap < 0.95",
+      "segment": "3e7-1e8",
+      "r": 82357433,
+      "offset": 540,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "phase_gap": 0.9814814814814815,
+        "bound": 0.95,
+        "first_tau4_offset": 10
+      }
+    },
+    {
+      "id": "P11",
+      "name": "late_dominant_phase_gap",
+      "statement": "On segment utilization maxima and 4e8-5e8 o_q panel, phase_gap = (D(r) - first_tau4_offset) / D(r) >= 0.95.",
+      "falsifier": "any evaluated row with phase_gap < 0.95",
+      "segment": "1e8-2e8",
+      "r": 102017779,
+      "offset": 462,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "phase_gap": 0.9956709956709957,
+        "bound": 0.95,
+        "first_tau4_offset": 2
+      }
+    },
+    {
+      "id": "P11",
+      "name": "late_dominant_phase_gap",
+      "statement": "On segment utilization maxima and 4e8-5e8 o_q panel, phase_gap = (D(r) - first_tau4_offset) / D(r) >= 0.95.",
+      "falsifier": "any evaluated row with phase_gap < 0.95",
+      "segment": "2e8-3e8",
+      "r": 251066071,
+      "offset": 540,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "phase_gap": 0.9888888888888889,
+        "bound": 0.95,
+        "first_tau4_offset": 6
+      }
+    },
+    {
+      "id": "P11",
+      "name": "late_dominant_phase_gap",
+      "statement": "On segment utilization maxima and 4e8-5e8 o_q panel, phase_gap = (D(r) - first_tau4_offset) / D(r) >= 0.95.",
+      "falsifier": "any evaluated row with phase_gap < 0.95",
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "phase_gap": 0.9926739926739927,
+        "bound": 0.95,
+        "first_tau4_offset": 4
+      }
+    },
+    {
+      "id": "P11",
+      "name": "late_dominant_phase_gap",
+      "statement": "On segment utilization maxima and 4e8-5e8 o_q panel, phase_gap = (D(r) - first_tau4_offset) / D(r) >= 0.95.",
+      "falsifier": "any evaluated row with phase_gap < 0.95",
+      "segment": "4e8-5e8",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "phase_gap": 0.9959349593495935,
+        "bound": 0.95,
+        "first_tau4_offset": 3
+      }
+    },
+    {
+      "id": "P11",
+      "name": "late_dominant_phase_gap",
+      "statement": "On segment utilization maxima and 4e8-5e8 o_q panel, phase_gap = (D(r) - first_tau4_offset) / D(r) >= 0.95.",
+      "falsifier": "any evaluated row with phase_gap < 0.95",
+      "segment": "4e8-5e8/o_q=2",
+      "r": 468917503,
+      "offset": 542,
+      "o_q": 2,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "phase_gap": 0.992619926199262,
+        "bound": 0.95,
+        "first_tau4_offset": 4
+      }
+    },
+    {
+      "id": "P11",
+      "name": "late_dominant_phase_gap",
+      "statement": "On segment utilization maxima and 4e8-5e8 o_q panel, phase_gap = (D(r) - first_tau4_offset) / D(r) >= 0.95.",
+      "falsifier": "any evaluated row with phase_gap < 0.95",
+      "segment": "4e8-5e8/o_q=4",
+      "r": 482342527,
+      "offset": 486,
+      "o_q": 4,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "phase_gap": 0.9670781893004116,
+        "bound": 0.95,
+        "first_tau4_offset": 16
+      }
+    },
+    {
+      "id": "P11",
+      "name": "late_dominant_phase_gap",
+      "statement": "On segment utilization maxima and 4e8-5e8 o_q panel, phase_gap = (D(r) - first_tau4_offset) / D(r) >= 0.95.",
+      "falsifier": "any evaluated row with phase_gap < 0.95",
+      "segment": "4e8-5e8/o_q=6",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "phase_gap": 0.9959349593495935,
+        "bound": 0.95,
+        "first_tau4_offset": 3
+      }
+    },
+    {
+      "id": "P12",
+      "name": "oq_near_540_exclusivity",
+      "statement": "On 4e8-5e8 per-o_q branch maxima, only o_q=2 satisfies |D(r) - 540| <= 20; o_q=4 and o_q=6 escape the near-540 band.",
+      "falsifier": "o_q=2 branch max escapes |D-540|<=20, or o_q in {4,6} branch max enters |D-540|<=20",
+      "segment": "4e8-5e8/o_q_panel",
+      "r": null,
+      "offset": null,
+      "o_q": "panel",
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "o_q=2": {
+          "r": 468917503,
+          "offset": 542,
+          "abs_d_minus_540": 2,
+          "near_540": true
+        },
+        "o_q=4": {
+          "r": 482342527,
+          "offset": 486,
+          "abs_d_minus_540": 54,
+          "escapes": true
+        },
+        "o_q=6": {
+          "r": 424171123,
+          "offset": 738,
+          "abs_d_minus_540": 198,
+          "escapes": true
+        },
+        "radius": 20,
+        "center": 540
+      }
+    }
+  ],
+  "residual_claims": [
+    {
+      "id": "RC6",
+      "claim": "On 4e8-5e8 per-o_q branch maxima (o_q in {2,4,6}), S2-A chamber phase order holds: 1 <= first_tau4 < first_tau3 = D(r), prefix_min_tau = 4, tau5_count = 0.",
+      "status": "holds",
+      "linked_prediction": "P10",
+      "evidence": [
+        {
+          "segment": "4e8-5e8/o_q=2",
+          "r": 468917503,
+          "offset": 542,
+          "o_q": 2,
+          "first_tau4_offset": 4,
+          "first_tau3_offset": 542,
+          "prefix_min_tau": 4,
+          "tau4_count": 60,
+          "tau5_count": 0,
+          "rho4": 0.11070110701107011,
+          "phase_gap": 0.992619926199262,
+          "abs_d_minus_540": 2,
+          "phase_order_ok": true
+        },
+        {
+          "segment": "4e8-5e8/o_q=4",
+          "r": 482342527,
+          "offset": 486,
+          "o_q": 4,
+          "first_tau4_offset": 16,
+          "first_tau3_offset": 486,
+          "prefix_min_tau": 4,
+          "tau4_count": 53,
+          "tau5_count": 0,
+          "rho4": 0.10905349794238683,
+          "phase_gap": 0.9670781893004116,
+          "abs_d_minus_540": 54,
+          "phase_order_ok": true
+        },
+        {
+          "segment": "4e8-5e8/o_q=6",
+          "r": 424171123,
+          "offset": 738,
+          "o_q": 6,
+          "first_tau4_offset": 3,
+          "first_tau3_offset": 738,
+          "prefix_min_tau": 4,
+          "tau4_count": 96,
+          "tau5_count": 0,
+          "rho4": 0.13008130081300814,
+          "phase_gap": 0.9959349593495935,
+          "abs_d_minus_540": 198,
+          "phase_order_ok": true
+        }
+      ]
+    },
+    {
+      "id": "RC7",
+      "claim": "Late-dominant phase gap: (D(r) - first_tau4) / D(r) >= 0.95 on segment utilization maxima through 4e8-5e8 and on the full o_q branch-max panel.",
+      "status": "holds",
+      "linked_prediction": "P11",
+      "evidence": {
+        "primary_rows": [
+          {
+            "segment": "3e7-1e8",
+            "r": 82357433,
+            "offset": 540,
+            "first_tau4_offset": 10,
+            "phase_gap": 0.9814814814814815
+          },
+          {
+            "segment": "1e8-2e8",
+            "r": 102017779,
+            "offset": 462,
+            "first_tau4_offset": 2,
+            "phase_gap": 0.9956709956709957
+          },
+          {
+            "segment": "2e8-3e8",
+            "r": 251066071,
+            "offset": 540,
+            "first_tau4_offset": 6,
+            "phase_gap": 0.9888888888888889
+          },
+          {
+            "segment": "3e8-4e8",
+            "r": 358018553,
+            "offset": 546,
+            "first_tau4_offset": 4,
+            "phase_gap": 0.9926739926739927
+          },
+          {
+            "segment": "4e8-5e8",
+            "r": 424171123,
+            "offset": 738,
+            "first_tau4_offset": 3,
+            "phase_gap": 0.9959349593495935
+          }
+        ],
+        "oq_panel": [
+          {
+            "segment": "4e8-5e8/o_q=2",
+            "o_q": 2,
+            "r": 468917503,
+            "offset": 542,
+            "first_tau4_offset": 4,
+            "phase_gap": 0.992619926199262
+          },
+          {
+            "segment": "4e8-5e8/o_q=4",
+            "o_q": 4,
+            "r": 482342527,
+            "offset": 486,
+            "first_tau4_offset": 16,
+            "phase_gap": 0.9670781893004116
+          },
+          {
+            "segment": "4e8-5e8/o_q=6",
+            "o_q": 6,
+            "r": 424171123,
+            "offset": 738,
+            "first_tau4_offset": 3,
+            "phase_gap": 0.9959349593495935
+          }
+        ],
+        "bound": 0.95
+      }
+    },
+    {
+      "id": "RC8",
+      "claim": "On 4e8-5e8 per-o_q branch maxima, near-540 is exclusive to the o_q=2 branch max (|D-540|<=20); o_q=4 and o_q=6 branch maxima escape. Strengthens RC5 from local attractor to panel exclusivity residual (not a universal law).",
+      "status": "holds",
+      "linked_prediction": "P12",
+      "evidence": {
+        "o_q=2": {
+          "r": 468917503,
+          "offset": 542,
+          "abs_d_minus_540": 2,
+          "near_540": true
+        },
+        "o_q=4": {
+          "r": 482342527,
+          "offset": 486,
+          "abs_d_minus_540": 54,
+          "escapes": true
+        },
+        "o_q=6": {
+          "r": 424171123,
+          "offset": 738,
+          "abs_d_minus_540": 198,
+          "escapes": true
+        },
+        "radius": 20,
+        "center": 540
+      }
+    },
+    {
+      "id": "RC2_retained",
+      "claim": "Fixed near-540 band D(r) in [528, 552] on segment utilization maxima is not a law.",
+      "status": "falsified",
+      "linked_prediction": "P6 (prior)",
+      "evidence": {
+        "segment": "4e8-5e8",
+        "r": 424171123,
+        "offset": 738
+      }
+    },
+    {
+      "id": "RC3_RC5_retained",
+      "claim": "Prior residual RC3-RC5 (tau4 density, absolute early tau4, o_q=2 local attractor) retained as measured holds; not re-proved.",
+      "status": "holds (retained; not re-evaluated as primary surface)",
+      "linked_prediction": "P7-P9 (prior)",
+      "evidence": {
+        "path": "/Users/velocityworks/pgs-hourly/prime-gap-structure/experiments/square-branch-hourly-2026-07-10-rc3/offset_540_rc3_prediction_table.json",
+        "conclusion": {
+          "RC3_tau4_density_band": "holds",
+          "RC4_absolute_early_tau4": "holds",
+          "RC5_oq2_near_540_local_attractor": "holds",
+          "RC2_fixed_band": "falsified (retained)",
+          "falsified_new_predictions": [],
+          "advance_over_prior_hour": "New residual claim table RC3-RC5 after fixed-band death; does not restate P1-P6 as the sole deliverable."
+        }
+      }
+    }
+  ],
+  "conclusion": {
+    "RC6_oq_panel_phase_order": "holds",
+    "RC7_late_dominant_phase_gap": "holds",
+    "RC8_oq_near_540_exclusivity": "holds",
+    "RC2_fixed_band": "falsified (retained)",
+    "RC3_RC5": "retained holds (not primary surface)",
+    "falsified_new_predictions": [],
+    "advance_over_prior_hour": "New residual claim table RC6-RC8: full o_q-panel S2-A phase order, late-dominant phase-gap bound, and o_q-stratified near-540 exclusivity; does not restate RC3-RC5 as sole deliverable."
+  },
+  "falsification_command": "python3 experiments/square-branch-hourly-2026-07-10-rc6/offset_540_residual_rc6_probe.py"
+}

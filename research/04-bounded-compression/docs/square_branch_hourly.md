@@ -548,7 +548,7 @@ Research status:
 ADVANCE
 
 Ops status:
-OK
+FAILED
 
 Delta:
 new falsification regime through max_prime=500000000
@@ -558,3 +558,55 @@ Artifacts:
 
 Next step:
 Structural audit of recurring offset 540 on new extremal rows if no counterexample.
+
+## 2026-07-10T19:05:57Z run
+
+Mechanism:
+PGS-native structural audit of recurring offset 540 and early-τ=4 / late-τ=3
+chamber separation — residual claims RC6–RC8 after RC3–RC5 surface.
+
+Method:
+Read `square_branch_dynamic_cutoff_search_4e8_5e8` summary JSON,
+`prefix_tau_floor_probe.json` (SDA-invalidation note; d=4 SDA not revived),
+prior chamber table from `experiments/square-branch-hourly-2026-07-10/`, and
+RC3 table. Ran new probe
+`experiments/square-branch-hourly-2026-07-10-rc6/offset_540_residual_rc6_probe.py`
+evaluating P10–P12 (full o_q-panel S2-A phase order, late-dominant phase gap
+≥0.95, o_q-stratified near-540 exclusivity). Did not replay RC3–RC5 as the
+sole deliverable.
+
+Result:
+RC6 holds: S2-A phase order on 3/3 o_q branch maxima (o_q∈{2,4,6}).
+RC7 holds: min phase_gap on util maxima + o_q panel = 0.967078 (o_q=4, D=486,
+first_τ4=16) ≥ 0.95.
+RC8 holds: only o_q=2 near 540 (|D−540|=2); o_q=4 escapes (|D−540|=54);
+o_q=6 escapes (|D−540|=198). Strengthens RC5 to panel exclusivity residual.
+RC2 retained falsified. Theorem: Prime-Square Proximity proved (`PROOF.md`);
+residual audit only. Invalidated d=4 SDA not revived.
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.73s
+```
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New residual claim table RC6–RC8 (full o_q-panel S2-A phase order, late-dominant
+phase-gap bound ≥0.95, o_q-stratified near-540 exclusivity) with explicit
+falsification command; not a replay of RC3–RC5.
+
+Artifacts:
+`experiments/square-branch-hourly-2026-07-10-rc6/offset_540_residual_rc6_probe.py`;
+`experiments/square-branch-hourly-2026-07-10-rc6/offset_540_rc6_prediction_table.json`;
+`experiments/square-branch-hourly-2026-07-10-rc6/FINDINGS.md`
+
+Next step:
+Run prefix τ probe variant on newest extremal rows, or queue falsification
+`5e8–6e8`. Keep RC6–RC8 residual only; do not promote to theorem; do not
+revive fixed-band 540 or d=4 SDA.
