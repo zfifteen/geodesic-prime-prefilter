@@ -310,9 +310,9 @@ def _extra_number_rows(numbers: dict[str, Any]) -> list[tuple[str, str]]:
         ("oq2_offset", "o_q=2 offset"),
         ("oq4_offset", "o_q=4 offset"),
         ("oq6_offset", "o_q=6 offset"),
-        ("oq2_abs_d_minus_540", "|D−540| at o_q=2"),
-        ("oq4_abs_d_minus_540", "|D−540| at o_q=4"),
-        ("oq6_abs_d_minus_540", "|D−540| at o_q=6"),
+        ("oq2_abs_d_minus_540", "abs(D-540) at o_q=2"),
+        ("oq4_abs_d_minus_540", "abs(D-540) at o_q=4"),
+        ("oq6_abs_d_minus_540", "abs(D-540) at o_q=6"),
         ("pytest_passed", "Pytest passed"),
     )
     for key, label in preferred:
