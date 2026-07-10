@@ -203,6 +203,44 @@ def relay_code_paths() -> list[Path]:
     ]
 
 
+def job_artifact_paths(item: dict[str, Any]) -> list[Path]:
+    """Collect every on-disk path a queue item produced or depends on.
+
+    Always include command scripts, summary JSON, sibling frontier CSV, and
+    small result companions next to the summary so FAILED/NO_DELTA runs still
+    leave a durable commit when anything was written.
+    """
+    paths: list[Path] = []
+    for part in item.get("command") or []:
+        token = str(part)
+        if token.startswith("-") or token in {"python3", "python"}:
+            continue
+        candidate = ROOT / token
+        if candidate.is_file():
+            paths.append(candidate)
+    summary_rel = item.get("summary_json")
+    if summary_rel:
+        summary_path = ROOT / str(summary_rel)
+        if summary_path.exists():
+            paths.append(summary_path)
+            frontier = summary_path.with_name(
+                summary_path.name.replace("_summary.json", "_frontier.csv")
+            )
+            if frontier.exists():
+                paths.append(frontier)
+            # Companion JSON next to the summary (probe tables, findings sidecars).
+            parent = summary_path.parent
+            if parent.is_dir():
+                for sibling in sorted(parent.glob("*.json")):
+                    if sibling.name.startswith("."):
+                        continue
+                    paths.append(sibling)
+                findings = parent / "FINDINGS.md"
+                if findings.exists():
+                    paths.append(findings)
+    return paths
+
+
 def format_deterministic_result(
     item: dict[str, Any],
     completed: subprocess.CompletedProcess[str],
@@ -412,6 +450,7 @@ def dispatch_deterministic(item: dict[str, Any], queue: dict[str, Any]) -> int:
         next_step=item.get("next_step", "Advance queue."),
     )
 
+    # Mandatory: commit after every attempt (ADVANCE / NO_DELTA / FAILED / UNRESOLVED).
     commit_paths = relay_code_paths() + [
         QUEUE_PATH,
         LEDGER_PATH,
@@ -419,17 +458,7 @@ def dispatch_deterministic(item: dict[str, Any], queue: dict[str, Any]) -> int:
         BASELINE_PATH,
         ROOT / "research" / "00-index" / "continuity" / "ACTIVE_TARGET.md",
         ROOT / "research" / "00-index" / "continuity" / "HOURLY_RELAY_CONTRACT.md",
-    ]
-    if item.get("summary_json"):
-        summary_path = ROOT / str(item["summary_json"])
-        if summary_path.exists():
-            commit_paths.append(summary_path)
-            # Include sibling frontier CSV when present.
-            frontier = summary_path.with_name(
-                summary_path.name.replace("_summary.json", "_frontier.csv")
-            )
-            if frontier.exists():
-                commit_paths.append(frontier)
+    ] + job_artifact_paths(item)
 
     sha, ops_status = commit_artifacts(
         commit_paths,

@@ -44,6 +44,24 @@ non-progress outcome. Process completion alone is not success.
 - After each completed attempt (`ADVANCE`, `NO_DELTA`, `FAILED`, `UNRESOLVED`), rotate the queue so `NO_DELTA` escalates to the next frontier job.
 - Default falsification bands must extend beyond already certified regimes.
 
+## Commit policy (mandatory)
+
+After **every** activation ends, regardless of research status
+(`ADVANCE`, `NO_DELTA`, `FAILED`, `UNRESOLVED`):
+
+1. Append the ledger block.
+2. Stage and **commit** on `codex/hourly-square-branch`:
+   - relay code + queue + ledger + signatures + contract/ACTIVE_TARGET
+   - queue command scripts that exist on disk
+   - `summary_json`, sibling frontier CSV, companion `*.json`, and local `FINDINGS.md`
+   - gitignored measured summaries under `**/output/*` via `git add -f`
+3. Push to `origin/codex/hourly-square-branch` when network allows
+   (`ops=PARTIAL` if push fails; local commit must still exist).
+
+Never end an hour with uncommitted research or ops artifacts in the isolated
+worktree. A research `FAILED` (missing script, nonzero exit, pytest red) is
+still a commit: ledger + queue rotation + any partial outputs.
+
 ## Ledger
 
 Append one block to `research/04-bounded-compression/docs/square_branch_hourly.md` with:
