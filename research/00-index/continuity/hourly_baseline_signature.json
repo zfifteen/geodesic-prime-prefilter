@@ -1,0 +1,13 @@
+{
+  "source": "research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_3e8_4e8/square_branch_dynamic_cutoff_search_summary.json",
+  "certified_note": "Frozen baseline for 3e8-4e8; replaying this signature is NO_DELTA.",
+  "signature": {
+    "min_prime": 300000001,
+    "max_prime": 400000000,
+    "tested_prime_count": 5084001,
+    "first_counterexample": null,
+    "max_dynamic_cutoff_utilization": 0.7036082474226805,
+    "max_p": 358018553,
+    "max_offset": 546
+  }
+}

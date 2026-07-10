@@ -29,10 +29,20 @@
         <string>/Users/velocityworks/.grok/bin:/Library/Frameworks/Python.framework/Versions/3.13/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
         <key>PYTHON_BIN</key>
         <string>/Library/Frameworks/Python.framework/Versions/3.13/bin/python3</string>
-        <key>PGS_ROOT</key>
+        <key>PGS_SOURCE</key>
         <string>/Users/velocityworks/IdeaProjects/prime-gap-structure</string>
+        <key>PGS_ROOT</key>
+        <string>/Users/velocityworks/pgs-hourly/prime-gap-structure</string>
+        <key>TASK_BRANCH</key>
+        <string>codex/hourly-square-branch</string>
         <key>HOME</key>
         <string>/Users/velocityworks</string>
+        <key>LOG_DIR</key>
+        <string>/Users/velocityworks/logs/pgs-hourly</string>
+        <key>RC_BASE</key>
+        <string>http://127.0.0.1:3000</string>
+        <key>PGS_HOURLY_RC_CHANNEL</key>
+        <string>Prime-Gap-Structure</string>
     </dict>
 </dict>
 </plist>
