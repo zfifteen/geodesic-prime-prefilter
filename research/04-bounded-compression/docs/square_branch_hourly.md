@@ -279,3 +279,47 @@ Artifacts:
 
 Next step:
 Queue falsification 500M-600M or draft Chamber-Reset Endpoint Resolution Lemma subsection.
+
+## 2026-07-10T13:06:24Z run
+
+Mechanism:
+Draft one subsection of the Chamber-Reset Endpoint Resolution Lemma on the
+selected-square branch (Claim S1 endpoint identification; Target S1* distance).
+
+Method:
+PGS-first draft under `research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`.
+Objects: ordered gap, divisor-count field, GWR selected integer, chamber prefix,
+square endpoint, `D(r)`. Hypotheses H1–H4; Claim S1 identifies
+`D(r) = first_τ3_offset`; Target S1* left UNRESOLVED per `PROOF.md`. Residual
+claim table RC1/RC2 retained; invalidated SDA and fixed-540 band not revived.
+One minimal falsification command: dynamic-cutoff search on `5e8–6e8`.
+
+Result:
+Constructive lemma subsection S1 written with hypotheses, unresolved Target S1*,
+residual claim table, and explicit falsification command. No new measured
+regime this hour. Theorem: proximity remains unresolved in `PROOF.md`
+§Square-Branch Reduction; direct next-prime and Interior Maximizer remain proved.
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.94s
+```
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New constructive lemma subsection S1 (selected-square endpoint identification)
+with residual claim table and minimal falsification command for Target S1*
+(`5e8–6e8` dynamic-cutoff search).
+
+Artifacts:
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`
+
+Next step:
+Run falsification queue on `5e8–6e8` (or H_CTC square-branch probe). Keep
+pressure on `D(r)` under Claim S1; do not revive residue covers or d=4 SDA.

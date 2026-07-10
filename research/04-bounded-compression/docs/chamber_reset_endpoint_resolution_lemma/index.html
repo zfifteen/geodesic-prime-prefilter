@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chamber-Reset Endpoint Resolution Lemma — Selected-Square Subsection</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #171717;
+      --muted: #5a646d;
+      --line: #d8dde3;
+      --panel: #f6f8fa;
+      --paper: #ffffff;
+      --accent: #1d6f5f;
+      --warn: #9a3412;
+      --ok: #1f6b3a;
+      --open: #7a4b18;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+      color: var(--ink);
+      background: var(--paper);
+    }
+    main {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 36px 24px 64px;
+    }
+    header {
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 20px;
+      margin-bottom: 28px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(1.6rem, 3.2vw, 2.35rem);
+      line-height: 1.15;
+    }
+    h2 {
+      margin: 32px 0 12px;
+      font-size: 1.22rem;
+    }
+    h3 {
+      margin: 22px 0 8px;
+      font-size: 1.02rem;
+    }
+    p { margin: 0 0 14px; max-width: 820px; }
+    .meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: 0 0 8px;
+    }
+    .status {
+      display: inline-block;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .status-open {
+      background: #fff4e5;
+      color: var(--open);
+      border: 1px solid #e8c48a;
+    }
+    .status-proved {
+      background: #e8f6ec;
+      color: var(--ok);
+      border: 1px solid #9fd0ae;
+    }
+    .status-invalid {
+      background: #fdece7;
+      color: var(--warn);
+      border: 1px solid #f0b4a0;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+      background: #edf1f5;
+      padding: 0.08rem 0.28rem;
+      border-radius: 4px;
+    }
+    pre {
+      overflow-x: auto;
+      background: #111827;
+      color: #e5e7eb;
+      padding: 14px 16px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+    pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 20px;
+      font-size: 0.95rem;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: var(--panel); }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 14px 0 20px;
+    }
+    ul, ol { margin: 0 0 14px; padding-left: 1.3rem; max-width: 820px; }
+    li { margin: 0 0 6px; }
+    .callout {
+      border-left: 4px solid var(--accent);
+      padding: 4px 0 4px 14px;
+      margin: 16px 0;
+    }
+    footer {
+      margin-top: 40px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="meta">research/04-bounded-compression/docs · 2026-07-10 · hourly analytic job <code>chamber-reset-lemma-draft</code></p>
+    <h1>Chamber-Reset Endpoint Resolution Lemma</h1>
+    <p class="meta">One subsection only: selected-square branch endpoint distance</p>
+    <p>
+      <span class="status status-open">Lemma target: UNRESOLVED</span>
+      &nbsp;
+      <span class="status status-proved">Direct next-prime + Interior Maximizer: PROVED</span>
+      &nbsp;
+      <span class="status status-invalid">d=4 SDA transfer: INVALIDATED</span>
+    </p>
+  </header>
+
+  <section>
+    <h2>Plain object</h2>
+    <p>
+      Start at a known left prime <code>p</code>. Walk the ordered integers above
+      <code>p</code> with the exact divisor-count field. The first integer with
+      divisor count <code>2</code> is the right prime <code>q</code>. Inside the
+      open gap, the leftmost integer with the smallest divisor count is the
+      selected integer <code>w</code>.
+    </p>
+    <p>
+      On the selected-square branch, that selected integer is a prime square
+      <code>w = r<sup>2</sup></code>. The quantity that must be controlled is the
+      backward distance from that square to the left endpoint:
+    </p>
+    <pre><code>D(r) = r<sup>2</sup> - p</code></pre>
+    <p>
+      Chamber reset names the restart of the search at the accepted right
+      endpoint <code>q</code>. This subsection does not redefine chamber reset.
+      It isolates the endpoint-distance obligation that appears when the selected
+      witness inside the chamber is a prime square.
+    </p>
+  </section>
+
+  <section>
+    <h2>Subsection S1 — Selected-square endpoint identification</h2>
+    <p class="callout">
+      This is the only subsection drafted in this hour. It states hypotheses,
+      the constructive claim under those hypotheses, and an explicit
+      falsification command. It does not claim a proof of prime-square
+      proximity. <code>PROOF.md</code> controls theorem status.
+    </p>
+
+    <h3>PGS objects</h3>
+    <table>
+      <thead>
+        <tr><th>Object</th><th>Definition on this branch</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ordered prime-gap state</td>
+          <td><code>p &lt; q</code> consecutive primes; interior <code>I = {p+1, …, q−1}</code></td>
+        </tr>
+        <tr>
+          <td>Divisor-count field</td>
+          <td><code>τ(n)</code> exact positive-divisor count</td>
+        </tr>
+        <tr>
+          <td>GWR selected integer</td>
+          <td><code>w = min{ n ∈ I : τ(n) = min<sub>m∈I</sub> τ(m) }</code></td>
+        </tr>
+        <tr>
+          <td>Selected-square branch</td>
+          <td><code>τ(w) = 3</code>, so <code>w = r<sup>2</sup></code> for a prime root <code>r</code></td>
+        </tr>
+        <tr>
+          <td>Search interval / chamber prefix</td>
+          <td>Ordered integers <code>{p+1, …, r<sup>2</sup>−1}</code> before the square endpoint</td>
+        </tr>
+        <tr>
+          <td>Endpoint</td>
+          <td>Square witness <code>r<sup>2</sup></code> as selected endpoint inside the gap; right prime <code>q</code> after chamber completion</td>
+        </tr>
+        <tr>
+          <td>Chamber reset</td>
+          <td>Search restarts at accepted <code>q</code> for the next gap (not used as an inference gate for <code>D(r)</code>)</td>
+        </tr>
+        <tr>
+          <td>Distance obligation</td>
+          <td><code>D(r) = r<sup>2</sup> − p</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Hypotheses (H1–H4)</h3>
+    <ol>
+      <li>
+        <strong>H1 (consecutive primes).</strong>
+        <code>p &lt; q</code> are consecutive primes with nonempty interior
+        <code>I</code>.
+      </li>
+      <li>
+        <strong>H2 (selected-square branch).</strong>
+        The GWR selected integer satisfies <code>τ(w) = 3</code>, so
+        <code>w = r<sup>2</sup></code> for a unique prime root <code>r</code>, and
+        <code>r<sup>2</sup></code> is the first prime square in <code>I</code>.
+      </li>
+      <li>
+        <strong>H3 (selected-square characterization).</strong>
+        If <code>s</code> is the prime immediately before <code>r</code>, then
+        <pre><code>s<sup>2</sup> &lt; p &lt; r<sup>2</sup>.</code></pre>
+        Equivalently, with <code>P(r<sup>2</sup>)</code> the greatest prime below
+        <code>r<sup>2</sup></code>,
+        <pre><code>s<sup>2</sup> &lt; P(r<sup>2</sup>) &lt; r<sup>2</sup>
+and p = P(r<sup>2</sup>).</code></pre>
+      </li>
+      <li>
+        <strong>H4 (chamber prefix divisor floor).</strong>
+        On the ordered chamber prefix
+        <code>{p+1, …, r<sup>2</sup>−1}</code>,
+        <pre><code>min τ(n) = 4.</code></pre>
+        In particular the first interior divisor count equal to <code>3</code>
+        occurs exactly at offset <code>D(r)</code>:
+        <pre><code>first_τ3_offset = D(r) = r<sup>2</sup> − p.</code></pre>
+      </li>
+    </ol>
+
+    <h3>Constructive claim under H1–H4</h3>
+    <div class="panel">
+      <p><strong>Claim S1 (endpoint identification; proved from H1–H4 and GWR).</strong></p>
+      <p>
+        Under H1–H4, the selected endpoint inside the gap is uniquely
+        <code>r<sup>2</sup></code>, the chamber prefix carries no earlier
+        prime-square endpoint, and the backward distance from the selected
+        square endpoint to the left prime is exactly
+      </p>
+      <pre><code>D(r) = r<sup>2</sup> − p = first_τ3_offset.</code></pre>
+      <p>
+        Therefore any bound on the selected-square branch reduces exactly to a
+        bound on this single integer distance. No residue cover of a fixed
+        finite offset list, and no d=4 Short-Divisor-Average transfer, is
+        required for this identification step.
+      </p>
+    </div>
+
+    <h3>Unresolved distance target (not claimed proved here)</h3>
+    <div class="panel">
+      <p><strong>Target S1* (prime-square proximity on selected-square branch).</strong></p>
+      <pre><code>D(r) ≤ max(64, ceil(0.5 · log(r<sup>2</sup>)<sup>2</sup>)).</code></pre>
+      <p>
+        Status: <strong>UNRESOLVED</strong> as a universal theorem under the
+        hypotheses of <code>PROOF.md</code> §Square-Branch Reduction. Claim S1
+        identifies the object; Target S1* is the remaining compression of that
+        object to the dynamic logarithmic-square cutoff.
+      </p>
+      <p>
+        The deterministic band bound from H3,
+      </p>
+      <pre><code>D(r) &lt; r<sup>2</sup> − s<sup>2</sup> = (r − s)(r + s),</code></pre>
+      <p>
+        is available from the selected-square characterization, but does not
+        imply Target S1*. That band is larger than the dynamic cutoff on the
+        measured extremal rows and is not a substitute for proximity.
+      </p>
+    </div>
+
+    <h3>What this subsection does not revive</h3>
+    <ul>
+      <li>Fixed cutoff map <code>{2:44, 4:60, 6:60}</code> — invalidated.</li>
+      <li>d=4 τ≥5 Short-Divisor-Average transfer to the square branch — invalidated
+        (<code>experiments/square-branch-sda-invalidation-2026-06/FINDINGS.md</code>.</li>
+      <li>Fixed near-540 residual band <code>D(r) ∈ [528, 552]</code> on utilization
+        maxima — falsified at <code>r = 424,171,123</code>, <code>D(r) = 738</code>
+        (<code>experiments/square-branch-hourly-2026-07-10/FINDINGS.md</code>.</li>
+      <li>Residue-only finite covers as a proof of Target S1* —
+        insufficient at moving logarithmic-square scale
+        (<code>square_branch_blocker_acceptance.md</code>).</li>
+      <li>Classical primality/search gates as PGS inference.</li>
+    </ul>
+
+    <h3>Measured residual structure (audit only; not a theorem bound)</h3>
+    <p>
+      On the utilization maximum of the measured segment
+      <code>4·10<sup>8</sup> .. 5·10<sup>8</sup></code>:
+    </p>
+    <table>
+      <thead>
+        <tr><th>Field</th><th>Value</th><th>Role for S1</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>r</code></td><td><code>424,171,123</code></td><td>selected square root</td></tr>
+        <tr><td><code>D(r)</code></td><td><code>738</code></td><td>endpoint distance</td></tr>
+        <tr><td>dynamic cutoff</td><td><code>790</code></td><td>Target S1* local value</td></tr>
+        <tr><td>utilization</td><td><code>0.9341772151898734</code></td><td>measured pressure only</td></tr>
+        <tr><td><code>prefix_min_τ</code></td><td><code>4</code></td><td>supports H4 on this row</td></tr>
+        <tr><td><code>first_τ3_offset</code></td><td><code>738</code></td><td>equals <code>D(r)</code> (Claim S1)</td></tr>
+        <tr><td><code>first_τ4_offset</code></td><td><code>3</code></td><td>early τ=4 chamber geometry</td></tr>
+        <tr><td>first counterexample on segment</td><td>none</td><td>audit surface, not proof</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Residual claim table</h3>
+    <table>
+      <thead>
+        <tr><th>ID</th><th>Claim</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>S1</td>
+          <td>Under H1–H4, selected endpoint is <code>r<sup>2</sup></code> and <code>D(r) = first_τ3_offset</code></td>
+          <td>Constructive identification claim (this subsection)</td>
+        </tr>
+        <tr>
+          <td>S1*</td>
+          <td><code>D(r) ≤ max(64, ceil(0.5 · log(r<sup>2</sup>)<sup>2</sup>))</code> for every selected-square gap</td>
+          <td><strong>UNRESOLVED</strong> universal target</td>
+        </tr>
+        <tr>
+          <td>RC1</td>
+          <td>H4 chamber floor <code>prefix_min_τ = 4</code> with early τ=4 / late τ=3 separation on measured segment maxima through <code>4e8–5e8</code></td>
+          <td>Measured holds (audit)</td>
+        </tr>
+        <tr>
+          <td>RC2</td>
+          <td>Fixed band <code>D(r) ∈ [528, 552]</code> is a law on utilization maxima</td>
+          <td><strong>Falsified</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Minimal falsification command</h3>
+    <p>
+      Target S1* is falsified by any selected-square prime root whose measured
+      offset exceeds the dynamic cutoff. One minimal command on the next open
+      regime beyond the certified <code>4e8–5e8</code> surface:
+    </p>
+    <pre><code>python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py \
+  --min-prime 500000001 \
+  --max-prime 600000000 \
+  --output-dir research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_5e8_6e8</code></pre>
+    <p>
+      Decision rule: if the summary records a nonempty
+      <code>first_counterexample</code>, Target S1* is falsified at that root.
+      If <code>first_counterexample</code> is null and every tested selected-square
+      row satisfies the cutoff, the run is audit corroboration only — not a proof
+      of S1*.
+    </p>
+    <p>
+      Optional chamber-hypothesis check for H4 on known extremal rows (does not
+      prove S1*):
+    </p>
+    <pre><code>python3 experiments/square-branch-hourly-2026-07-10/offset_540_chamber_geometry_probe.py</code></pre>
+  </section>
+
+  <section>
+    <h2>Status separation</h2>
+    <table>
+      <thead>
+        <tr><th>Layer</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Direct deterministic next-prime theorem</td><td>Proved (<code>PROOF.md</code>)</td></tr>
+        <tr><td>Interior Maximizer Theorem / GWR</td><td>Proved (<code>PROOF.md</code>)</td></tr>
+        <tr><td>Claim S1 endpoint identification under H1–H4</td><td>Constructive subsection claim (this document)</td></tr>
+        <tr><td>Target S1* prime-square proximity</td><td><strong>Unresolved</strong> (<code>PROOF.md</code> §Square-Branch Reduction)</td></tr>
+        <tr><td>All-scale bounded dynamic cutoff on square branch</td><td>Unresolved until S1* closes</td></tr>
+        <tr><td>Measured surface <code>4e8–5e8</code></td><td>No counterexample; max util <code>0.934…</code> (audit)</td></tr>
+        <tr><td>d=4 SDA square transfer / fixed-540 band</td><td>Invalidated / falsified</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Next pressure</h2>
+    <ol>
+      <li>Run the minimal falsification command on <code>5e8–6e8</code> (queue return).</li>
+      <li>Keep theorem pressure on <code>D(r)</code> under Claim S1; do not rebuild residue covers or SDA ports.</li>
+      <li>Optional later subsection: constructive compression from the band bound under additional PGS chamber invariants — only if those invariants are stated without classical gates.</li>
+    </ol>
+  </section>
+
+  <footer>
+    Controlling references:
+    <code>PROOF.md</code> §Square-Branch Reduction;
+    <code>research/04-bounded-compression/docs/square_branch_blocker_acceptance.md</code>;
+    <code>experiments/square-branch-hourly-2026-07-10/FINDINGS.md</code>;
+    <code>Agents.md</code> theorem-trust contract.
+    Live proof status is never overridden by this draft.
+  </footer>
+</main>
+</body>
+</html>

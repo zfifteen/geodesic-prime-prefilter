@@ -61,8 +61,14 @@ square branch and not replay of certified bands.
 
 Contract: `research/00-index/continuity/HOURLY_RELAY_CONTRACT.md`
 
-Default frontier job: falsification `4·10^8 .. 5·10^8`. Replaying the frozen
-`3·10^8 .. 4·10^8` baseline is `NO_DELTA`, not `ADVANCE`.
+Latest analytic delta (2026-07-10): Chamber-Reset Endpoint Resolution Lemma
+subsection S1 drafted at
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`
+(Claim S1 identification; Target S1* proximity remains per `PROOF.md`).
+
+Default next frontier pressure: falsification `5·10^8 .. 6·10^8` (or H_CTC
+square-branch probe). Replaying certified bands (`3e8–4e8`, `4e8–5e8`) is
+`NO_DELTA`, not `ADVANCE`.
 
 Execution root: isolated worktree `~/pgs-hourly/prime-gap-structure`  
 Human IdeaProjects dirt does not skip the hour.
