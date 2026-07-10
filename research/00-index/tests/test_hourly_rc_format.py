@@ -18,7 +18,7 @@ def _load_notify():
     return module
 
 
-def test_format_message_reads_like_research_memo() -> None:
+def test_format_message_is_thorough_structured_memo() -> None:
     notify = _load_notify()
     text = notify.format_message(
         {
@@ -48,21 +48,59 @@ def test_format_message_reads_like_research_memo() -> None:
         }
     )
     assert text.startswith("**PGS hourly research memo**")
-    assert "Research moved forward this hour." in text
-    assert "**What changed:**" in text
+    assert "**Headline:**" in text
     assert "Extended the square-branch falsification surface through 500,000,000." in text
-    assert "**Measured result:**" in text
+    assert "### What this hour actually did" in text
+    assert "### Measured / residual result" in text
+    assert "| Quantity | Value |" in text
     assert "5,019,541" in text
     assert "No counterexample" in text
-    assert "r = 424,171,123" in text
-    assert "**Research status:** ADVANCE" in text
-    assert "**Ops status:** OK" in text
-    assert "**Next pressure:**" in text
+    assert "424,171,123" in text
+    assert "### Why this matters for the schedule" in text
+    assert "### Next pressure" in text
+    assert "### Not claiming" in text
+    assert "research **ADVANCE**" in text
+    assert "ops **OK**" in text
     assert "square_branch_dynamic_cutoff_search_summary.json" in text
     # Must not look like key=value log soup.
     assert "min_prime=" not in text
     assert "max_prime=" not in text
     assert "Key numbers:" not in text
+
+
+def test_format_message_residual_claim_table() -> None:
+    notify = _load_notify()
+    text = notify.format_message(
+        {
+            "activated_at": "2026-07-10T19:05:08Z",
+            "job_id": "offset-540-structural-audit",
+            "job_type": "grok",
+            "mechanism": "PGS-native structural audit of recurring offset 540",
+            "research_status": "ADVANCE",
+            "ops_status": "OK",
+            "delta": "New residual claim table RC6-RC8 on 4e8-5e8 branch maxima",
+            "key_numbers": {
+                "RC6": "holds",
+                "RC7": "holds",
+                "RC8": "holds",
+                "min_phase_gap": 0.9670781893004116,
+                "oq2_offset": 542,
+                "oq6_offset": 738,
+                "pytest_passed": 4,
+            },
+            "artifacts": [
+                "experiments/square-branch-hourly-2026-07-10-rc6/FINDINGS.md",
+            ],
+            "commit": "caa063ee080f60f798c0510e5cee41e852f3d2c6",
+            "task_branch": "codex/hourly-square-branch",
+            "next_step": "Queue falsification 5e8-6e8.",
+        }
+    )
+    assert "| Residual claim | Outcome |" in text
+    assert "`RC6`" in text
+    assert "holds" in text
+    assert "Min phase gap" in text
+    assert "### Not claiming" in text
 
 
 def test_format_message_handles_blocked_ops() -> None:
@@ -81,8 +119,9 @@ def test_format_message_handles_blocked_ops() -> None:
             "error": "prior hourly run still active (single-flight lock)",
         }
     )
-    assert "could not start" in text.lower() or "BLOCKED" in text
+    assert "BLOCKED" in text or "could not start" in text.lower()
     assert "**Error detail:**" in text
+    assert "### Not claiming" in text
 
 
 def test_message_fingerprint_is_stable() -> None:

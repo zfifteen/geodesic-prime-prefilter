@@ -240,6 +240,8 @@ def _humanize_delta(delta: str, numbers: dict[str, Any]) -> str:
         return "This run reproduced the frozen certified baseline surface (no new band)."
     if "matches prior hourly run" in lower:
         return "This run reproduced the previous hourly scientific signature (no new delta)."
+    if "command exited nonzero" in lower:
+        return "The research command exited nonzero (no new measured advance)."
     if "first counterexample observed" in lower:
         return text[0].upper() + text[1:] if text else text
     if text and text[0].islower():
@@ -247,12 +249,93 @@ def _humanize_delta(delta: str, numbers: dict[str, Any]) -> str:
     return text
 
 
+def _headline_from_run(
+    research_status: str,
+    delta: str,
+    numbers: dict[str, Any],
+    mechanism: str,
+) -> str:
+    """Lead with the strongest plain finding for this hour."""
+    if research_status == "ADVANCE" and delta:
+        return delta
+    if research_status == "FAILED":
+        return delta or "This hour's research job failed before a new delta landed."
+    if research_status == "NO_DELTA":
+        return delta or "No new research delta this hour (signature replay)."
+    if research_status == "UNRESOLVED":
+        return delta or "The hour ended without a decisive research result."
+    if mechanism:
+        return mechanism
+    return _research_headline(research_status)
+
+
+def _residual_claim_rows(numbers: dict[str, Any]) -> list[tuple[str, str]]:
+    """Extract RC* / P* style residual claim outcomes for a markdown table."""
+    rows: list[tuple[str, str]] = []
+    reserved = {
+        "min_prime",
+        "max_prime",
+        "tested_prime_count",
+        "first_counterexample",
+        "max_utilization",
+        "max_p",
+        "max_offset",
+        "elapsed_seconds",
+        "pytest_passed",
+    }
+    for key in sorted(numbers.keys(), key=lambda k: str(k)):
+        if key in reserved:
+            continue
+        value = numbers[key]
+        key_s = str(key)
+        # Prefer explicit residual claim labels (RC6, P1, H-210, ...).
+        if key_s.startswith(("RC", "P", "H")) or key_s.endswith(("_holds", "_status")):
+            rows.append((key_s, str(value)))
+        elif isinstance(value, str) and value.lower() in {"holds", "falsified", "open", "failed"}:
+            rows.append((key_s, value))
+    return rows
+
+
+def _extra_number_rows(numbers: dict[str, Any]) -> list[tuple[str, str]]:
+    """Numeric companion rows that are not residual claim labels."""
+    rows: list[tuple[str, str]] = []
+    preferred = (
+        ("tested_prime_count", "Roots tested"),
+        ("min_prime", "Min prime root"),
+        ("max_prime", "Max prime root"),
+        ("max_utilization", "Max utilization"),
+        ("max_p", "Extremal root r"),
+        ("max_offset", "Extremal offset D(r)"),
+        ("min_phase_gap", "Min phase gap"),
+        ("oq2_offset", "o_q=2 offset"),
+        ("oq4_offset", "o_q=4 offset"),
+        ("oq6_offset", "o_q=6 offset"),
+        ("oq2_abs_d_minus_540", "|D−540| at o_q=2"),
+        ("oq4_abs_d_minus_540", "|D−540| at o_q=4"),
+        ("oq6_abs_d_minus_540", "|D−540| at o_q=6"),
+        ("pytest_passed", "Pytest passed"),
+    )
+    for key, label in preferred:
+        if key not in numbers:
+            continue
+        raw = numbers[key]
+        if key in {"tested_prime_count", "min_prime", "max_prime", "max_p", "max_offset"}:
+            shown = _fmt_int(raw) or str(raw)
+        elif key in {"max_utilization", "min_phase_gap"}:
+            shown = _fmt_float(raw) or str(raw)
+        else:
+            shown = _fmt_int(raw) or _fmt_float(raw) or str(raw)
+        rows.append((label, shown))
+    return rows
+
+
 def format_message(run: dict[str, Any]) -> str:
     """
-    Render a short research memo for Rocket.Chat.
+    Render a thorough, structured research memo for Rocket.Chat.
 
-    Lead with the finding in plain English, then mechanism, status labels,
-    measured numbers, next step, and a compact ops footnote.
+    Match the operator style used in channel Q&A: plain headline, what ran,
+    measured table, status separation, next pressure, not-claiming line,
+    then compact artifact/branch footnotes.
     """
     research_status = str(run.get("research_status") or "UNKNOWN")
     ops_status = str(run.get("ops_status") or "UNKNOWN")
@@ -269,60 +352,120 @@ def format_message(run: dict[str, Any]) -> str:
     commit = run.get("commit")
     commit_short = str(commit)[:12] if commit else "uncommitted"
     error = run.get("error")
+    job_type = _job_type_phrase(run.get("job_type"))
 
     artifact_paths: list[str] = []
     for item in run.get("artifacts") or []:
         short = _short_artifact(item)
         if short and short not in artifact_paths:
             artifact_paths.append(short)
-        if len(artifact_paths) >= 3:
+        if len(artifact_paths) >= 6:
             break
+
+    headline = _headline_from_run(research_status, delta, numbers, mechanism)
 
     lines: list[str] = [
         f"**PGS hourly research memo** ({when} UTC)",
         "",
-        _research_headline(research_status),
+        f"**Headline:** {headline}",
+        "",
+        f"_Status labels: research **{research_status}** · ops **{ops_status}** "
+        f"({_ops_headline(ops_status).rstrip('.')})._",
+        "",
+        "### What this hour actually did",
+        "",
+        f"**Job:** `{job_id}` ({job_type})",
     ]
-
-    if delta:
-        lines.extend(["", f"**What changed:** {delta}"])
-
     if mechanism:
-        lines.extend(
-            [
-                "",
-                f"**What we ran:** {mechanism}",
-                f"Job id `{job_id}` ({_job_type_phrase(run.get('job_type'))}).",
-            ]
-        )
-    else:
-        lines.extend(["", f"**What we ran:** job id `{job_id}` ({_job_type_phrase(run.get('job_type'))})."])
+        lines.append(f"**Mechanism:** {mechanism}")
+    if delta and delta != headline:
+        lines.append(f"**Delta:** {delta}")
 
     result_bits = _result_sentences(numbers, research_status)
-    if result_bits:
-        lines.extend(["", "**Measured result:**", " ".join(result_bits)])
+    residual_rows = _residual_claim_rows(numbers)
+    number_rows = _extra_number_rows(numbers)
+
+    if result_bits or residual_rows or number_rows:
+        lines.extend(["", "### Measured / residual result", ""])
+        if result_bits:
+            lines.append(" ".join(result_bits))
+            lines.append("")
+        if residual_rows:
+            lines.extend(
+                [
+                    "| Residual claim | Outcome |",
+                    "| --- | --- |",
+                ]
+            )
+            for claim, outcome in residual_rows:
+                lines.append(f"| `{claim}` | {outcome} |")
+            lines.append("")
+        if number_rows:
+            lines.extend(
+                [
+                    "| Quantity | Value |",
+                    "| --- | ---: |",
+                ]
+            )
+            for label, value in number_rows:
+                lines.append(f"| {label} | {value} |")
+            lines.append("")
+
+    lines.extend(
+        [
+            "### Why this matters for the schedule",
+            "",
+        ]
+    )
+    if research_status == "ADVANCE":
+        lines.append(
+            "This is an **hourly ADVANCE**: a new measured regime, residual claim table, "
+            "or constructive proof-pressure artifact with a falsification command. "
+            "It is **not** a theorem promotion. `PROOF.md` still owns proved status."
+        )
+    elif research_status == "NO_DELTA":
+        lines.append(
+            "This hour did not move the scientific signature. Replays are honest "
+            "non-progress; the queue should escalate to the next frontier job."
+        )
+    elif research_status == "FAILED":
+        lines.append(
+            "The research path failed (command, missing artifact path, or pytest). "
+            "Ops may still commit the ledger. Fix the path or probe before treating "
+            "this as science."
+        )
+    else:
+        lines.append(
+            "The hour ended without a decisive advance or failure. Keep status "
+            "labels separated; do not upgrade unresolved work to proved claims."
+        )
+
+    if next_step:
+        lines.extend(["", "### Next pressure", "", next_step])
 
     lines.extend(
         [
             "",
-            f"**Research status:** {research_status}",
-            f"**Ops status:** {ops_status} — {_ops_headline(ops_status).rstrip('.')}.",
+            "### Not claiming",
+            "",
+            "- No new theorem status beyond `PROOF.md`",
+            "- No RH / PNT / RSA-scale resolution from this hour alone",
+            "- Audit and residual tables stay **measured** unless a separate "
+            "human-approved proof promotion says otherwise",
         ]
     )
 
-    if next_step:
-        lines.extend(["", f"**Next pressure:** {next_step}"])
-
     if artifact_paths:
-        lines.extend(["", "**Artifacts:**"])
+        lines.extend(["", "### Artifacts", ""])
         for path in artifact_paths:
             lines.append(f"- `{path}`")
 
     lines.extend(
         [
             "",
-            f"_Branch `{branch}` @ `{commit_short}`. Full ledger: "
-            f"`research/04-bounded-compression/docs/square_branch_hourly.md`._",
+            "---",
+            f"_Branch `{branch}` @ `{commit_short}` · ledger "
+            f"`research/04-bounded-compression/docs/square_branch_hourly.md`_",
         ]
     )
 
