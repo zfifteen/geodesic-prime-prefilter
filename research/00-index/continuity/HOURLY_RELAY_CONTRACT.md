@@ -88,6 +88,13 @@ Append one block to `research/04-bounded-compression/docs/square_branch_hourly.m
 - Do not post `key=value` soup as the primary body.
 - Rocket.Chat failure is ops-only. It must not erase research results.
 - Canonical truth remains the ledger and `~/logs/pgs-hourly/last_run.json`.
+- **One post per activation.** Only `scripts/pgs-hourly-advance.sh` may call
+  `pgs_hourly_rocketchat_notify.py` (EXIT trap). Analytic/Grok jobs must **not**
+  post to Rocket.Chat themselves.
+- Dedupe is by **activation key** (`job_id` + `activated_at` [+ `completed_at`]),
+  not by memo wording. Reformatting or `--force` alone must not repost the same
+  hour. Emergency override only: `--force-same-activation` (do not use in the
+  LaunchAgent path).
 
 ## Read-first (every activation)
 
