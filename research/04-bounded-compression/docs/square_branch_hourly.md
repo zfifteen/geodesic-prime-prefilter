@@ -657,3 +657,55 @@ Artifacts:
 
 Next step:
 Queue falsification 500M-600M or draft Chamber-Reset Endpoint Resolution Lemma subsection.
+
+## 2026-07-10T21:05:27Z run
+
+Mechanism:
+Draft one subsection of the Chamber-Reset Endpoint Resolution Lemma on the
+selected-square branch (S3 right-endpoint completion and chamber-reset residual).
+
+Method:
+PGS-first constructive subsection under
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`.
+Builds on Claims S1 and S2 only. H5: right completion after selected square by
+proved direct next-prime rule. Claim S3-A: `F(r) = q − r²` and `q − p = D(r) + F(r)`.
+Claim S3-B: chamber-reset residual triple
+`ResetResidual(r) = (D(r), F(r), first_τ4_offset)`; Target S1* fails iff
+`D(r) ∈ Annulus(r)`. Claim S3-C: late-dominant phase residual
+`phase_gap(r) = (D − first_τ4)/D` with `0 < phase_gap < 1`. Residual RC6–RC8
+attached as audit only; RC2 retained falsified; d=4 SDA not revived.
+`PROOF.md` §Square-Branch Reduction: proximity target remains UNRESOLVED.
+One minimal falsification command: dynamic-cutoff search on `5e8–6e8`.
+
+Result:
+Constructive lemma subsection S3 written with hypotheses (H1–H4 reused + H5),
+unresolved Target S1*, residual claim table RC6–RC8 attached, and explicit
+falsification command. No new measured regime this hour. Direct next-prime and
+Interior Maximizer remain proved; proximity not claimed.
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 3.00s
+```
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New constructive lemma subsection S3 (right-endpoint completion F(r),
+chamber-reset residual triple, late-dominant phase residual) with residual
+RC6–RC8 table attachment and minimal falsification command for Target S1*
+(`5e8–6e8` dynamic-cutoff search). Not a replay of S1 or S2.
+
+Artifacts:
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`;
+`research/04-bounded-compression/docs/square_branch_hourly.md`
+
+Next step:
+Return to falsification queue on `5e8–6e8` (or H_CTC square-branch probe). Keep
+pressure on `D(r) ∉ Annulus(r)` via `ResetResidual(r)`; do not revive residue
+covers, fixed-540, or d=4 SDA; do not promote RC6–RC8 to theorem status.
