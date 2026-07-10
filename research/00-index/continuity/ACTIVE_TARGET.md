@@ -42,13 +42,15 @@ w - p <= max(64, ceil(0.5 * log(q)^2))       [PROVED, all branches]
 
 | Field | Value |
 | --- | --- |
-| Segment | `3·10^8 .. 4·10^8` |
-| Prime roots tested | `5,084,001` |
+| Segment | `4·10^8 .. 5·10^8` |
+| Prime roots tested | `5,019,541` |
 | First counterexample | `none` |
-| Max utilization | `0.7036082474226805` |
-| Extremal root `r` | `358,018,553` |
-| Offset `D(r)` | `546` |
-| Local artifacts | `research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_3e8_4e8/` |
+| Max utilization | `0.9341772151898734` |
+| Extremal root `r` | `424,171,123` |
+| Offset `D(r)` | `738` |
+| Local artifacts | `research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_4e8_5e8/` |
+
+Prior certified baseline (replay = NO_DELTA): `3·10^8 .. 4·10^8` in `hourly_baseline_signature.json`.
 
 ## Hourly Queue
 
