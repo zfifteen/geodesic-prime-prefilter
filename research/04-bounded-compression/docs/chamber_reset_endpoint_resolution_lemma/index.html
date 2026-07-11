@@ -137,9 +137,9 @@
 <body>
 <main>
   <header>
-    <p class="meta">research/04-bounded-compression/docs · 2026-07-10 · hourly analytic job <code>chamber-reset-lemma-draft</code></p>
+    <p class="meta">research/04-bounded-compression/docs · 2026-07-11 · hourly analytic job <code>chamber-reset-lemma-draft</code></p>
     <h1>Chamber-Reset Endpoint Resolution Lemma</h1>
-    <p class="meta">Subsections: S1 endpoint identification · S2 band residual and chamber-prefix phase order · S3 right completion and chamber-reset residual</p>
+    <p class="meta">Subsections: S1 endpoint identification · S2 band residual and chamber-prefix phase order · S3 right completion and chamber-reset residual · S4 interior τ4 field and chamber-cover residual</p>
     <p>
       <span class="status status-open">Lemma target: UNRESOLVED</span>
       &nbsp;
@@ -374,6 +374,16 @@ and p = P(r<sup>2</sup>).</code></pre>
           <td>RC6–RC8</td>
           <td>Full o_q-panel S2-A; phase_gap ≥ 0.95; o_q-stratified near-540 exclusivity</td>
           <td>Measured holds as residual only (see S3)</td>
+        </tr>
+        <tr>
+          <td>S4-A / S4-B / S4-C</td>
+          <td>Interior τ4 field; cover residual functionals; extended reset residual</td>
+          <td>Constructive (this document); does not close S1*</td>
+        </tr>
+        <tr>
+          <td>RC9–RC11</td>
+          <td>Early-half τ4 mass; late-span τ4; max inter-τ4 gap fraction</td>
+          <td>Measured holds as residual only (see S4)</td>
         </tr>
       </tbody>
     </table>
@@ -808,6 +818,274 @@ first_τ4_offset = D(r) · (1 − phase_gap(r)),
   </section>
 
   <section>
+    <h2>Subsection S4 — Interior τ4 field and chamber-cover residual</h2>
+    <p class="callout">
+      Fourth constructive subsection (this hour). Builds on Claims S1–S3 only.
+      It names the full ordered τ4 offset set on the chamber prefix, three cover
+      residual functionals on that set, and the extended chamber-reset residual
+      that carries those functionals across the accepted right endpoint. It does
+      not prove Target S1*. <code>PROOF.md</code> §Square-Branch Reduction
+      controls: the prime-square proximity target remains
+      <strong>UNRESOLVED</strong>. Residual claims RC9–RC11 are attached as audit
+      only and are not promoted to theorem status.
+    </p>
+
+    <h3>Plain object</h3>
+    <p>
+      Claims S1–S3 identify the selected-square distance <code>D(r)</code>, the
+      residual open set <code>Annulus(r)</code>, the forward residual
+      <code>F(r)</code>, and the early marker <code>first_τ4_offset</code>. The
+      chamber prefix is not exhausted by that first τ4 marker. On the ordered
+      ruler <code>{p+1, …, r<sup>2</sup>−1}</code> the divisor-count field places
+      many integers with <code>τ = 4</code> before the late selected endpoint
+      with <code>τ = 3</code>. This subsection names that full ordered set and
+      the cover residuals it forces — without using them as classical gates on
+      <code>D(r)</code> and without claiming that they empty
+      <code>Annulus(r)</code>.
+    </p>
+
+    <h3>Hypotheses</h3>
+    <p>
+      Reuse <strong>H1–H5</strong> from Subsections S1 and S3 without change.
+      Add one field hypothesis only:
+    </p>
+    <ol>
+      <li>
+        <strong>H6 (interior τ4 field nonempty under H4).</strong>
+        Under H1–H4 and <code>D(r) ≥ 2</code>, the chamber prefix contains at
+        least one integer with divisor count <code>4</code>. Equivalently, the
+        ordered offset set defined in Claim S4-A is nonempty. This is the
+        field-level reading of H4 (chamber floor <code>4</code> with late first
+        <code>τ = 3</code> at offset <code>D(r)</code>); it does not assert any
+        density law.
+      </li>
+    </ol>
+
+    <h3>Constructive claim S4-A (interior τ4 field)</h3>
+    <div class="panel">
+      <p><strong>Claim S4-A.</strong> Assume H1–H4, H6, and <code>D(r) ≥ 2</code>.</p>
+      <p>
+        Define the ordered <strong>interior τ4 field</strong>
+      </p>
+      <pre><code>Tau4(r) = { k ∈ {1, …, D(r)−1} : τ(p + k) = 4 },
+ordered by increasing k.</code></pre>
+      <p>
+        Write
+      </p>
+      <pre><code>first_τ4_offset = min Tau4(r),
+last_τ4_offset  = max Tau4(r),
+|Tau4(r)|       = cardinality of Tau4(r).</code></pre>
+      <p>
+        Then <code>Tau4(r)</code> is a nonempty finite increasing sequence in the
+        open chamber prefix, <code>1 ≤ first_τ4_offset ≤ last_τ4_offset ≤ D(r)−1</code>,
+        and Claim S2-A is exactly the statement
+        <code>first_τ4_offset &lt; D(r)</code> with late selected endpoint
+        <code>τ(p + D(r)) = 3</code>. The field is a pure divisor-count object on
+        the ordered gap state. It is not a residue cover, not a product check,
+        and not a sieve.
+      </p>
+      <p>
+        Status: constructive from H4 / H6 and Claim S1. Not a bound on
+        <code>D(r)</code>.
+      </p>
+    </div>
+
+    <h3>Constructive claim S4-B (chamber-cover residual functionals)</h3>
+    <div class="panel">
+      <p><strong>Claim S4-B.</strong> Assume H1–H6 and Claim S4-A.</p>
+      <p>
+        From the ordered field <code>Tau4(r)</code> define three cover residual
+        functionals:
+      </p>
+      <pre><code>early_half_mass(r) = |{ k ∈ Tau4(r) : k ≤ ⌊D(r)/2⌋ }| / |Tau4(r)|,
+
+late_span(r)       = last_τ4_offset / D(r),
+
+max_gap_frac(r)    = max_gap(r) / D(r),</code></pre>
+      <p>
+        where <code>max_gap(r)</code> is the largest consecutive gap among the
+        ordered markers
+      </p>
+      <pre><code>0 &lt; first_τ4_offset &lt; ⋯ &lt; last_τ4_offset &lt; D(r)</code></pre>
+      <p>
+        including the lead gap before the first τ4 and the trail gap after the
+        last τ4 up to the selected-square endpoint. Then
+      </p>
+      <pre><code>0 &lt; early_half_mass(r) ≤ 1,
+0 &lt; late_span(r) &lt; 1,
+0 &lt; max_gap_frac(r) &lt; 1.</code></pre>
+      <p>
+        These three numbers are exact chamber-cover residuals of the divisor-count
+        field under H1–H6. Together they say whether τ4 mass is early-concentrated,
+        whether τ4 reaches the late prefix, and whether the chamber admits a large
+        τ4 desert before the late τ=3 endpoint.
+      </p>
+      <p>
+        Status: constructive definitions on <code>Tau4(r)</code>. They do not imply
+        <code>D(r) ≤ C_dyn(r)</code> and do not empty <code>Annulus(r)</code>.
+      </p>
+    </div>
+
+    <h3>Constructive claim S4-C (extended chamber-reset residual)</h3>
+    <div class="panel">
+      <p><strong>Claim S4-C.</strong> Assume H1–H6 and Claims S3-B, S4-A, S4-B.</p>
+      <p>
+        Extend the chamber-reset residual of Claim S3-B by the cover package:
+      </p>
+      <pre><code>Cover(r) = ( early_half_mass(r), late_span(r), max_gap_frac(r) ),
+
+ResetResidual⁺(r) = ( D(r), F(r), first_τ4_offset, Cover(r) ).</code></pre>
+      <p>
+        Chamber reset still accepts the right endpoint <code>q = r<sup>2</sup> + F(r)</code>
+        and restarts the next ordered search at <code>q</code>. The extended
+        residual is the exact selected-square chamber state under the stated
+        hypotheses once the full τ4 field is admitted:
+      </p>
+      <ul>
+        <li><code>D(r)</code> is the selected-square endpoint distance (Claim S1);</li>
+        <li><code>F(r)</code> is the forward residual (Claim S3-A);</li>
+        <li><code>first_τ4_offset</code> is the early marker (Claim S2-A / S3-B);</li>
+        <li><code>Cover(r)</code> is the ordered-field cover residual (Claim S4-B).</li>
+      </ul>
+      <p>
+        Under Claim S2-B, Target S1* fails at root <code>r</code> if and only if
+        <code>D(r) ∈ Annulus(r)</code>. The cover package stratifies residual audit
+        surfaces on completed chambers; it is not a classical inference gate and
+        does not by itself force <code>D(r) ∉ Annulus(r)</code>.
+      </p>
+      <p>
+        Status: constructive residual-state identification. Target S1* remains
+        <strong>UNRESOLVED</strong>.
+      </p>
+    </div>
+
+    <h3>Measured residual structure attached to S4 (audit only)</h3>
+    <p>
+      Residual claims RC9–RC11 refine the cover package on segment utilization
+      maxima through <code>4e8–5e8</code> and the full per-<code>o_q</code>
+      branch-max panel of that segment (here <code>o_q</code> is the measured
+      name for <code>F(r)</code>). They are not theorems. Fixed-band RC2 remains
+      falsified. Invalidated d=4 SDA is not revived. Target S1* is not closed by
+      these rows.
+    </p>
+    <table>
+      <thead>
+        <tr><th>ID</th><th>Claim</th><th>Status on util maxima / o_q panel through 4e8–5e8</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>RC9</td>
+          <td>Early-half τ4 mass <code>early_half_mass(r) ≥ 0.40</code></td>
+          <td>Holds (audit); min observed <code>0.4151</code> at o_q=4, <code>D=486</code></td>
+        </tr>
+        <tr>
+          <td>RC10</td>
+          <td>Late-span τ4 <code>late_span(r) ≥ 0.95</code></td>
+          <td>Holds (audit); min observed <code>0.9631</code> at o_q=2, <code>D=542</code></td>
+        </tr>
+        <tr>
+          <td>RC11</td>
+          <td>No large τ4 desert <code>max_gap_frac(r) ≤ 0.10</code></td>
+          <td>Holds (audit); max observed <code>0.0812</code> at o_q=2, gap <code>44</code></td>
+        </tr>
+        <tr>
+          <td>RC2</td>
+          <td>Fixed band <code>D(r) ∈ [528, 552]</code> on util maxima is a law</td>
+          <td><strong>Falsified</strong> at <code>D=738</code></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Cover evaluation of Claim S4-B on the same three branch maxima used in S3:
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th><code>F(r)</code> (= o_q)</th>
+          <th><code>r</code></th>
+          <th><code>D(r)</code></th>
+          <th>early_half_mass</th>
+          <th>late_span</th>
+          <th>max_gap_frac</th>
+          <th><code>D ∈ Annulus</code>?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2</td>
+          <td><code>468,917,503</code></td>
+          <td>542</td>
+          <td>0.5167</td>
+          <td>0.9631</td>
+          <td>0.0812</td>
+          <td>no (audit row)</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><code>482,342,527</code></td>
+          <td>486</td>
+          <td>0.4151</td>
+          <td>0.9877</td>
+          <td>0.0535</td>
+          <td>no (audit row)</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><code>424,171,123</code></td>
+          <td>738</td>
+          <td>0.4688</td>
+          <td>0.9892</td>
+          <td>0.0407</td>
+          <td>no (audit row; util max)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Reading: on the measured panel the selected-square chamber is a scattered
+      τ4 field under a hard late τ=3 endpoint, not a single early τ4 burst followed
+      by a long desert. That geometry is residual audit structure under Claims
+      S4-A–S4-C. It is not a proof that every future root has empty
+      <code>Annulus(r)</code>.
+    </p>
+
+    <h3>What S4 does not claim</h3>
+    <ul>
+      <li>No proof of Target S1* / prime-square proximity (still <strong>UNRESOLVED</strong> in <code>PROOF.md</code> §Square-Branch Reduction).</li>
+      <li>No claim that <code>Cover(r)</code> or <code>ResetResidual⁺(r)</code> forces <code>D(r) ∉ Annulus(r)</code>.</li>
+      <li>No promotion of RC9–RC11 (or RC3–RC8) to theorem status.</li>
+      <li>No revival of fixed cutoff map <code>{2:44, 4:60, 6:60}</code>.</li>
+      <li>No revival of d=4 τ≥5 SDA transfer to the square branch.</li>
+      <li>No revival of fixed-band near-540 as a law (RC2 remains falsified).</li>
+      <li>No residue-only finite cover of <code>Annulus(r)</code>.</li>
+      <li>No classical primality, sieve, gcd, or Miller-Rabin gate as PGS inference.</li>
+    </ul>
+
+    <h3>Minimal falsification command</h3>
+    <p>
+      Target S1* (equivalently: emptiness of <code>Annulus(r)</code> for every
+      selected-square root) is falsified by any selected-square root with
+      <code>D(r) &gt; C_dyn(r)</code>. Minimal command on the next open regime
+      beyond the certified <code>4e8–5e8</code> surface:
+    </p>
+    <pre><code>python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py \
+  --min-prime 500000001 \
+  --max-prime 600000000 \
+  --output-dir research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_5e8_6e8</code></pre>
+    <p>
+      Decision rule: nonempty <code>first_counterexample</code> means some
+      measured <code>D(r) ∈ Annulus(r)</code> and Target S1* is falsified at that
+      root. A null counterexample is audit corroboration only — not a proof of
+      S1*, not a proof that every future annulus is empty, and not a promotion of
+      RC9–RC11.
+    </p>
+    <p>
+      Optional residual-panel check for RC9–RC11 / Claims S4-B–S4-C on the known
+      <code>4e8–5e8</code> util-maxima and o_q branch-max panel (does not prove S1*):
+    </p>
+    <pre><code>python3 experiments/square-branch-hourly-2026-07-10-rc9/offset_540_residual_rc9_probe.py</code></pre>
+  </section>
+
+  <section>
     <h2>Status separation</h2>
     <table>
       <thead>
@@ -822,11 +1100,15 @@ first_τ4_offset = D(r) · (1 − phase_gap(r)),
         <tr><td>Claim S3-A right-endpoint completion</td><td>Constructive subsection claim (this document)</td></tr>
         <tr><td>Claim S3-B chamber-reset residual triple</td><td>Constructive subsection claim (this document)</td></tr>
         <tr><td>Claim S3-C late-dominant phase residual</td><td>Constructive subsection claim (this document)</td></tr>
+        <tr><td>Claim S4-A interior τ4 field</td><td>Constructive subsection claim (this document)</td></tr>
+        <tr><td>Claim S4-B chamber-cover residual functionals</td><td>Constructive subsection claim (this document)</td></tr>
+        <tr><td>Claim S4-C extended chamber-reset residual</td><td>Constructive subsection claim (this document)</td></tr>
         <tr><td>Target S1* prime-square proximity</td><td><strong>Unresolved</strong> (<code>PROOF.md</code> §Square-Branch Reduction)</td></tr>
         <tr><td>All-scale bounded dynamic cutoff on square branch</td><td>Unresolved until S1* closes</td></tr>
         <tr><td>Measured surface <code>4e8–5e8</code></td><td>No counterexample; max util <code>0.934…</code> (audit)</td></tr>
         <tr><td>RC3–RC5 residual chamber structure</td><td>Measured holds; residual only</td></tr>
         <tr><td>RC6–RC8 residual panel / phase-gap / near-540 exclusivity</td><td>Measured holds; residual only</td></tr>
+        <tr><td>RC9–RC11 early-half mass / late-span / max gap frac</td><td>Measured holds; residual only</td></tr>
         <tr><td>d=4 SDA square transfer / fixed-540 band</td><td>Invalidated / falsified</td></tr>
       </tbody>
     </table>
@@ -836,8 +1118,9 @@ first_τ4_offset = D(r) · (1 − phase_gap(r)),
     <h2>Next pressure</h2>
     <ol>
       <li>Run the minimal falsification command on <code>5e8–6e8</code> (queue return): empty <code>Annulus(r)</code> on that surface or record a counterexample.</li>
-      <li>Keep theorem pressure on <code>D(r)</code> under Claims S1, S2-B, and S3-B; do not rebuild residue covers or SDA ports.</li>
-      <li>Optional later subsection: a PGS-native mechanism that forces <code>D(r) ∉ Annulus(r)</code> from chamber invariants in <code>ResetResidual(r)</code> alone — only if those invariants are stated without classical gates and without promoting RC3–RC8.</li>
+      <li>Keep theorem pressure on <code>D(r)</code> under Claims S1, S2-B, S3-B, and S4-C; do not rebuild residue covers or SDA ports.</li>
+      <li>Re-check RC9–RC11 / <code>Cover(r)</code> on any new utilization maximum; do not promote cover residuals to theorem status.</li>
+      <li>Optional later subsection: a PGS-native mechanism that forces <code>D(r) ∉ Annulus(r)</code> from chamber invariants in <code>ResetResidual⁺(r)</code> alone — only if those invariants are stated without classical gates and without promoting RC3–RC11.</li>
     </ol>
   </section>
 
@@ -846,6 +1129,7 @@ first_τ4_offset = D(r) · (1 − phase_gap(r)),
     <code>PROOF.md</code> §Square-Branch Reduction;
     <code>research/04-bounded-compression/docs/square_branch_blocker_acceptance.md</code>;
     <code>experiments/square-branch-hourly-2026-07-10/FINDINGS.md</code>;
+    <code>experiments/square-branch-hourly-2026-07-10-rc9/FINDINGS.md</code>;
     <code>Agents.md</code> theorem-trust contract.
     Live proof status is never overridden by this draft.
   </footer>
