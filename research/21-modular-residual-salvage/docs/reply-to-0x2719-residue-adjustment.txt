@@ -1,0 +1,136 @@
+Thanks for writing this up carefully. The constructive intent is clear, and the modular bookkeeping is clean classical work. I want to answer it in your order. For each point I will say how PGS already treats the same object, how I already applied a relative of it, or why it does not enter the PGS spine.
+
+Opening claim: hard to aim at primes, so use coefficients and residues.
+
+Appreciated as classical method. PGS does not aim at primes.
+
+The program starts from ordered prime-gap state: known endpoints when given, interior structure, selected witness, named invariants, then resolved, unresolved, or invalidated. Next prime is an output of a rule on gap state, not a target constructed by residue channels.
+
+So the opening premise is the first fork. Your machinery is built for prime aiming. Mine is built for gap reading.
+
+Affine carrier C(k) = A k + B, and values f_d(k) = A k + B + d.
+
+Already considered as classical packaging of arithmetic progressions and offsets. Does not apply as a PGS generation object.
+
+I do have local positions relative to structure: endpoints, interior integers, GWR witness, chamber boundaries. Those are read from an existing gap. They are not free design parameters used to manufacture candidate primes.
+
+Local divisor condition and rho(q, d).
+
+Already considered under ordinary modular arithmetic. Applied only as audit and comparison language, not as the inference path that chooses q.
+
+The statement that q divides f_d(k) if and only if k hits a fixed residue is true elementary algebra. PGS does not pull divisibility roots into a free parameter k in order to hunt primes. When modular conditions appear on the spine, they appear as properties of a selected gap object, for example remainder zeros of the GWR witness on a fixed modulus vector, not as a candidate-search coordinate change.
+
+Why the adjustment works: bijection when q does not divide A.
+
+Correct classical fact. Already known. Does not give a new PGS law.
+
+Affine maps modulo q relocate roots. They do not create or destroy them. That justifies sieve coordinate changes. It does not justify promoting residue avoidance into a deterministic next-prime rule for arbitrary gaps.
+
+Centered twin case L = A k - 1, R = A k + 1.
+
+Already considered in twin-gap and Polignac surfaces. Applied in PGS as gap type and width study, not as twin-ray construction.
+
+I study width-2 gaps when they occur in the ordered sequence. I do not construct infinite families of twin candidates and then certify them. Your twin carrier is a classical twin sieve. My twin work asks: when the ordered gap has width 2, what structure is forced or residual?
+
+Base carrier A = 210.
+
+Already present in PGS, but for a different job.
+
+In PGS, 210 sits inside the fixed modulus vector M = (2, 3, 5, 7, 30, 210, 2310) used for the proved modular lemma: z(w) is at least 4 if and only if 30 divides w, on that vector. Related wheels also appear in residual-certificate bookkeeping, which tracks which primes are already forced by zeros of a carrier.
+
+In your post, 210 is a construction wheel that permanently locks endpoints away from 2, 3, 5, and 7. In PGS, 210 is a reading modulus on a selected witness inside a real gap.
+
+Same integer family, different role. Shared coefficient is not shared inference.
+
+Residue layers mod 11 and mod 13.
+
+Already considered as ordinary forbidden-class computation. Does not apply as spine generation.
+
+Extending a wheel past 2, 3, 5, 7 by excluding bad residues mod 11 and 13 is classical sieve deepening. PGS residual work asks a different question: after the modular structure forced by the selected carrier, what residual set remains, and does the state resolve or stay unresolved? I do not use the Chinese remainder theorem to select a safe k that aims twin endpoints.
+
+Note also: in residual salvage notes, empty residual modular certificates only close in tiny regimes. Larger wheels still leave residual primes. That matches your later honesty about t = 1.
+
+Choosing one adjusted ray via the Chinese remainder theorem.
+
+Already considered. Applied only as classical comparison and historical sieve language. Does not apply to the generator contract.
+
+Compressing local residue conditions into k congruent to k0 mod Q is standard. The PGS generator contract is: input known prime p, output next prime q, or explicit unresolved. It is not: choose a residue lattice, emit a candidate ray, certify survivors.
+
+A CRT ray is a family of candidates. PGS refuses candidate-search as the decision path.
+
+Adjusting phase B instead of k.
+
+Same assessment as the CRT ray. Equivalent classical control, phase versus parameter. Already known. Not a PGS residual map on ordered gap state.
+
+Base-prime adjustment when p divides A.
+
+Already considered, and this is one of the closer classical relatives of something I do use carefully.
+
+Your split is: primes dividing A collapse to a condition on B + d, while external primes give movable root classes via the inverse of A.
+
+PGS has an analogous reading split on a selected carrier w. Modular zeros on M force a wheel of base primes already accounted for. Residual primes outside that wheel remain residual-open unless a separate certificate closes them.
+
+So the taxonomy of locked by the coefficient or carrier versus still residual outside is familiar. The operational use is not. You use it to build protected endpoints. I use related modular bookkeeping to classify a state as modular-closed or residual-open after structure is already fixed by the gap object.
+
+Operational ten-step residue adjustment.
+
+Steps 1 through 9 are classical sieve construction. Already considered. Do not apply as PGS inference.
+
+Step 10 and your closing honesty are important and already aligned in spirit. You write that residue adjustment does not itself make an output prime, that it organizes divisor channels, and that certification needs every prime through the square root excluded.
+
+PGS agrees that modular arrangement is not automatic primality. I go further. No likely-prime language on the spine. If the named rule does not resolve, return unresolved. Audit may verify after the fact. Audit does not choose q. Trial of residual primes is classical audit only, not the selection rule.
+
+So your operational close is good classical hygiene. It still is not the PGS decision procedure.
+
+Full numerical example, ray substitution, and fixed residues of both branches.
+
+Helpful as a worked classical example. Already covered by known wheel and CRT practice. Not a new PGS surface.
+
+Showing that 3359 and 3361 avoid 2, 3, 5, 7, 11, and 13 on a fixed ray is correct modular bookkeeping. PGS already tracks fixed modular zeros and nonzeros on selected witnesses. I do not promote one hand-built twin ray into program evidence for a generator law.
+
+First state t = 0 gives the pair 3359 and 3361 as a certified twin.
+
+Accepted as a true classical numerical fact under trial-to-square-root certification. Does not advance PGS theorems.
+
+I already have large measured generator surfaces with zero unresolved and zero audit failures on specified ranges, under the deterministic next-prime theorem hypotheses. A single constructed twin pair is not how those surfaces work, and it is not how claims are promoted.
+
+Also: certified by excluding primes through the square root is exactly the classical gate PGS refuses as inference, even when the arithmetic is correct.
+
+What the ray guarantees, and the composite at t = 1.
+
+This section is one of the most useful parts of the post, and it has already been absorbed as program discipline.
+
+You correctly show that permanent avoidance of a finite prime set is not infinite twin generation. At t = 1, 33389 equals 173 times 193. The lattice must be extended through the square root before certification.
+
+That is exactly why PGS rejects wheel-implies-primes thinking, and why residual-open states remain unresolved under modular certificates that do not exhaust residual primes. I already invalidated over-strong universal twin locks, for example the claim that z of GWR at least 4 forces gap size 2. Your t = 1 failure mode is the same kind of honesty: finite modular control does not force the global arithmetic event you want.
+
+Final operational result.
+
+Summary accepted as classical construction result. Status for PGS:
+
+Outside the spine: affine residue adjustment as a prime-aiming method.
+
+Already standing without needing this post: GWR definition, modular lemma on M, deterministic next-prime or unresolved contract.
+
+Already invalidated separately: universal modular twin locks that over-claim.
+
+Already applied in a different direction: modular zeros, wheels, and residual-open versus modular-closed as state classification, not candidate ray design.
+
+Bottom line.
+
+You are being helpful, and the writeup is serious. The reason it does not move into the PGS spine is that every major piece is either already present in PGS under a gap-first reading role, or already known classical sieve machinery that does not choose PGS outputs, or aimed at constructing primes, which is the frame PGS was built to leave.
+
+What would transfer is not more residue layers. What transfers is only structure that forces a gap state to resolve, stay unresolved, or be invalidated without candidate search.
+
+Thanks again for the careful engagement. I am keeping the classical clarity of your note as comparison literature. I am not promoting residue-adjusted rays into the deterministic spine.
+
+---
+Posted as: https://x.com/alltheputs/status/2076070453479882932
+Canonical posted text above (local file synced to what went out).
+Prose preferences for future @alltheputs drafts:
+1. First person singular for agency: I / mine / my. Not we / ours / our for the investigator.
+2. PGS can remain the subject for the program frame, contracts, and laws (PGS does not aim, PGS refuses, PGS residual work).
+3. Cut softener hedges that sound corporate or defensive (e.g. drop "not dismiss the spirit"; do not pad the bottom line with "not that X is useless").
+4. Keep direct short status sentences.
+5. Plain text for X: no tables, no markdown structure.
+6. Closing can be firm and brief; emoji allowed if the live voice uses it.

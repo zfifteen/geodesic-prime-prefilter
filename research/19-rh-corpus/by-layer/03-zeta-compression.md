@@ -1,7 +1,8 @@
 # Layer 3: Zeta compression
 
 **Status mix:** `exact`, `measured`  
-**Proves RH?** No: exact identities only; pole placement remains L5
+**Proves RH?** No: exact identities only. L5 is a downstream catalog, not a driver.
+See [FRAME_CONTRACT.md](../FRAME_CONTRACT.md).
 
 This layer is the **arithmetic-to-analytic lift**: the same divisor-count field
 that governs gap interiors compresses into classical zeta language without

@@ -14,26 +14,70 @@ Its job is to prevent four recurring failures:
 
 ## Task Planning and Execution
 
-As a default execution mode, the active AI model (acting as the Orchestrator) will utilize Dynamic Subagent Generation to devise plans and execute tasks using a minimum of four subagents (the "PGS Quartet"). This ensures that all tasks, regardless of size, abide by strict mathematical rigor and project continuity.
+### PGS Quartet (HARD RULE, machine-enforced)
 
-The four required subagent roles are:
+The parent session is the Orchestrator only. It does **not** perform task work
+solo. Every user turn inside this repository must spawn **exactly these four
+real subagents** via the `spawn_subagent` tool before any other non-orchestration
+tool is used:
 
-1. **The Implementer:**
-   - **Workspace:** Branched (isolated from the main branch).
-   - **Responsibility:** Writes the baseline execution code based on the orchestrator's mathematical architecture. Operates strictly within the PGS-native deterministic frame.
-2. **The Adversarial Auditor:**
-   - **Workspace:** Inherited.
-   - **Responsibility:** Strictly enforces `AGENTS.md`. Hunts for forbidden classical concepts (e.g., trial division, Miller-Rabin, probabilistic assumptions). Rejects the code and forces a rewrite if any rules are violated.
-3. **The Empirical Verifier:**
-   - **Workspace:** Inherited.
-   - **Responsibility:** Runs the new logic against established evidence surfaces (e.g., `11..1000000`). Verifies the zero unresolved states and zero audit failures contract. Ensures proved theorems are not broken.
-4. **The Continuity Scribe:**
-   - **Workspace:** Inherited.
-   - **Responsibility:** Enforces the project's exact writing standard and explanatory order (observable object -> mechanism -> project term -> formal definition). Updates documentation in HTML/Markdown.
+| Role | `subagent_type` (required) | Workspace / capability |
+| --- | --- | --- |
+| 1. The Implementer | `pgs-implementer` | Branched: `isolation=worktree` |
+| 2. The Adversarial Auditor | `pgs-auditor` | Inherited workspace |
+| 3. The Empirical Verifier | `pgs-verifier` | Inherited workspace |
+| 4. The Continuity Scribe | `pgs-scribe` | Inherited workspace |
 
-**Workflow:** For any requested task, the Orchestrator will spawn these four profiles. The Implementer drafts the code. The Auditor and Verifier run in parallel to review and test the draft. Once both approve, the Scribe documents the changes. Only after consensus is reached will the Orchestrator merge the changes. **Quality Assurance (below) is the mandatory final step of every workflow, including single-agent sessions.**
+Agent definitions live at `.grok/agents/pgs-*.md`.
 
-At the start of each session display a message to the User acknowledging and confirming that this sub-agent mode is employed and operational. List the agent and roles for the user once at the beginning of each new session.
+**Role responsibilities:**
+
+1. **The Implementer (`pgs-implementer`):**
+   - Writes the baseline execution code from the orchestrator's mathematical architecture.
+   - Operates strictly within the PGS-native deterministic frame.
+2. **The Adversarial Auditor (`pgs-auditor`):**
+   - Strictly enforces `AGENTS.md` and `PROOF.md`.
+   - Hunts forbidden classical concepts (trial division, Miller-Rabin, probabilistic framing).
+   - Rejects the draft and forces rewrite on any violation.
+3. **The Empirical Verifier (`pgs-verifier`):**
+   - Runs new logic against established evidence surfaces (e.g. `11..1000000` when applicable).
+   - Verifies zero unresolved / zero audit-failure contracts where those surfaces apply.
+   - Ensures proved theorems are not broken.
+4. **The Continuity Scribe (`pgs-scribe`):**
+   - Enforces the writing standard and explanatory order
+     (observable object -> mechanism -> project term -> formal definition).
+   - Updates documentation in HTML/Markdown under the correct tree.
+
+**Hard enforcement (not prompt theater):**
+
+- A PreToolUse hook (`.grok/hooks/` + always-on install under `~/.grok/hooks/`)
+  **denies** parent tools until all four `subagent_type` values above have been
+  successfully spawned **this user turn**.
+- Allowed on the parent before the quartet is filled:
+  `spawn_subagent`, `get_command_or_subagent_output`, `wait_commands_or_subagents`,
+  `kill_command_or_subagent`, `todo_write`, `update_goal`, `ask_user_question`.
+- Substitutes (`explore`, `plan`, `general-purpose`, or prose-only "team ack")
+  **do not** satisfy the gate.
+- Child subagent sessions are not gated so the team can work.
+- **Spawn first in the turn.** A denied tool cancels the whole harness turn
+  (`HookDenied`); there is no mid-turn recovery after a blocked `read_file` or
+  write. Always call the four `spawn_subagent` tools before any other work tool.
+- Emergency recovery only: `PGS_QUARTET_BYPASS=1` (never for normal work).
+- See `.grok/rules/pgs-quartet-hard-gate.md`.
+
+
+**Workflow (mandatory order):**
+
+1. Spawn all four roles (prefer `background=true` in parallel).
+2. Implementer drafts.
+3. Auditor and Verifier run in parallel against the draft.
+4. Scribe documents only after approval pressure is visible.
+5. Orchestrator merges only after consensus.
+6. **Quality Assurance (below) is the mandatory final step of every workflow.**
+
+At the start of each session display a short message that the PGS Quartet hard
+gate is active, and list the four `subagent_type` values once. That message is
+**not** a substitute for spawning.
 
 ## Grammar
 
@@ -49,6 +93,11 @@ Self-review is a **mandatory closing gate** for every task in this repository.
 No task is complete until review has been planned, executed, failures fixed, and
 the result reported. This applies to all work: code, prose, proofs, experiments,
 documentation, issue/PR text, research answers, and operational changes.
+
+The Quartet hard gate does not replace this QA gate. After the four subagents
+return, the Orchestrator still runs the universal closing gate below. Normal
+work is multi-agent; "single-agent session" is only valid under explicit
+emergency bypass (`PGS_QUARTET_BYPASS=1`), and even then QA remains mandatory.
 
 Skipping, deferring, or implying review ("I should have…") is a contract violation.
 

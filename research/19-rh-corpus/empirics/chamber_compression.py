@@ -147,7 +147,12 @@ def chamber_dirichlet_increments(
     q: int,
     terms: int,
 ) -> ChamberDirichletIncrements:
-    """Compute ΔD, ΔB and local ρ_ch for chamber (p,q) at Re(s)>1."""
+    """Compute ΔD, ΔB and local ρ_ch for chamber (p,q) at Re(s)>1.
+
+    Note: rho_chamber is a chamber load ratio (tracks ~0.5 log m). It is not a
+    sample of global R(s). Do not treat |rho_chamber - global_r| as spectral
+    alignment. See research/19-rh-corpus/FRAME_CONTRACT.md.
+    """
     if s <= 1.0:
         raise ValueError("require Re(s) > 1")
     if q > terms:

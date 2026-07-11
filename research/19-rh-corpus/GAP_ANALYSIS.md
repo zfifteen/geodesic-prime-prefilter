@@ -19,7 +19,8 @@
 | `research/pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md` | Indexed | RH-030 to 032 | d=4 geometry; not RH |
 | `research/pgs-rh-placement-empirics-2026-06/source_to_spectral_transfer_lemma.md` | Indexed | RH-035 | Draft lemma; explicitly not RH |
 | `research/pgs-rh-placement-empirics-2026-06/pgs_chamber_budget_summary_1000000.md` | Indexed | RH-034 | Finite regime measured |
-| `research/pgs-rh-placement-empirics-2026-06/pgs_rh_bridge_placement_focus_prompt.md` | **Deferred** |: | Internal prompt; not a finding |
+| `research/pgs-rh-placement-empirics-2026-06/pgs_rh_bridge_placement_focus_prompt.md` | **Superseded** | FRAME_CONTRACT | Was RH-resolution activation; do not use as driver |
+| `research/19-rh-corpus/FRAME_CONTRACT.md` | **Indexed control** | frame law | Hard rule: PGS upstream; RH downstream only |
 | `experiments/integer-order-before-zeta-whitepaper-2026-07/WHITEPAPER.md` | Indexed | RH-041 | Narrative; not theorem |
 | `docs/rh/dni-to-zeta-compression.md` | Indexed | RH-020 to 021 | Exact compression; not placement |
 | `docs/faq/**` | **Deferred** |: | Reviewer vocabulary; link via [reviewer-map](../../docs/rh/reviewer-map.md) |
@@ -60,7 +61,6 @@ PYTHONPATH=src/python:research/19-rh-corpus/empirics python3 -m pytest research/
 2. Every deferred path needs a **boundary** column before closing a gap-analysis pass.
 3. Proof bodies stay in canonical homes, link only in this hub.
 
-**Last scan (2026-07-09, curation):** `python3 research/19-rh-corpus/scripts/scan_rh_references.py`
-: ~28 FAQ paths + chapter homes remain **deferred** per table above; 39 rows indexed
-in FINDINGS_INDEX. RH-105 multi-s surface regenerated (`s ∈ {2.0,2.5,3.0,3.5,4.0}`,
-N=10⁴). No theorem promotions this pass.
+**Last scan (2026-07-11, frame audit):** Frame contract added; RH-035 dormant;
+RH-040 quarantined; placement focus prompt superseded. 39 rows indexed. No
+theorem promotions this pass.

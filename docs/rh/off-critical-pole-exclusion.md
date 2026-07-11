@@ -191,9 +191,10 @@ It does not yet prove:
 paired off-axis zero -> impossible source-side carrier
 ```
 
-The missing theorem is a source-to-spectral placement theorem: chamber
-geometry plus the $Z=1$ / $E=0$ return law must imply an RH-strength analytic
-constraint on the continued DNI ratio.
+The missing step is a **source-first** summatory law (if any) that, after exact
+compression, forces a reading of continued $R$. That reading may coincide with
+pole placement. Designing backward from pole placement into chamber geometry
+is frame-wrong (see `research/19-rh-corpus/FRAME_CONTRACT.md`).
 
 **Partial progress (2026-06).** For the dominant d=4 GWR carrier class,
 proved corollaries now supply a gap-dependent fractional-position bound and

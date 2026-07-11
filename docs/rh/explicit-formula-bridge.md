@@ -121,7 +121,8 @@ The bridge claim is:
 
 This is a downstream analytic bridge. The local PGS theorems and exact DNI
 compression with `H(n)=log n+E(n)=tau(n)log(n)/2` identify the source and the
-continued ratio. They do not yet supply the RH-strength placement constraint.
+continued ratio. They do not supply pole placement. This page must not drive
+source experiments; see `research/19-rh-corpus/FRAME_CONTRACT.md`.
 
 ## Translation Status
 
@@ -142,6 +143,6 @@ The correct status split is:
 - translation/proof-detail bridge for reviewers who want the RH sentence
   expressed through `psi`, `Lambda`, zero-term, or error-term estimates.
 
-`PROOF.md` controls only the local PGS theorems. The pole-placement sentence
-still needs a source-to-spectral theorem, or an equivalent RH-strength
-explicit-formula bound derived from the PGS source.
+`PROOF.md` controls only the local PGS theorems. Pole placement remains open
+as a downstream reading. Any future transfer must be forced by a source law,
+not designed from zero-term language backward.

@@ -1,11 +1,18 @@
 # Source-to-Spectral Transfer Lemma (Draft)
 
 **Date**: 2026-06-15  
-**Status**: Draft lemma statement with proof strategy. Not proved. Not RH.
+**Status**: Draft / **dormant** as a live RH path. Not proved. Not RH.  
+**Frame**: [research/19-rh-corpus/FRAME_CONTRACT.md](../19-rh-corpus/FRAME_CONTRACT.md)
 
-This note names the first PGS-native bridge from chamber geometry to an
-RH-strength summatory constraint on the continued DNI ratio. It is downstream
-of `PROOF.md` local theorems and exact DNI compression.
+This note *attempted* a bridge from chamber geometry toward a summatory
+constraint on continued $R(s)$. Hard rule: **source laws first**. Do not treat
+this file as an activation order to “resolve RH.” Redesign only if a new
+**source** summatory law exists and forces a reading of continued $R$.
+
+**Design warning (2026-07-11):** the model kernel that multiplies bulk $H(n)$ by
+$\Lambda(n)$ on open gap interiors has **support mismatch** (interiors almost
+never carry $\Lambda$; per-chamber $\psi$ jumps are essentially $\log q$). That
+form is not a valid carrier of GWR / budget / `frac_pos` control.
 
 ---
 
@@ -172,15 +179,12 @@ d=4 chambers at $10^7$).
   $\mathrm{frac\_pos}\le\frac12$ is **invalidated** (8,505 d=4 counterexamples
   at $10^6$).
 
-**Placement consequence (target corollary, RH-strength).**
+**Downstream reading only (not a design driver).**
 
-If the summed bound holds for a family of test weights $\Phi$ rich enough to
-detect off-axis zero terms, then every nontrivial log-scale carrier in the
-completed quotient has real exponent $0$. Equivalently, every nontrivial pole
-of $R(s)$ lies on $\mathrm{Re}(s)=\tfrac12$.
-
-This corollary is the **source-to-spectral placement theorem**. The lemma
-above is the first finite-chamber bridge step toward it.
+If a *correctly supported* summatory source bound held for a rich enough test
+family, a possible *reading* would constrain poles of continued $R$. That
+reading is **downstream**. It is not permission to reverse-engineer kernels
+from zero terms. No such theorem is proved. The draft kernel above is dormant.
 
 ---
 
@@ -193,7 +197,7 @@ above is the first finite-chamber bridge step toward it.
 | 3 | Derive gap-dependent $\mathrm{frac\_pos}\le\min(R_{SDA}(p)/g,\,1-m/g)$ | **Proved**; uniform $\theta_4=\frac12$ **invalidated** |
 | 4 | Prove $B(p,q)\asymp |I(p,q)|$ with explicit constants from $E(n)\ge0$ | Measured + lemma |
 | 5 | Show deconvolution survival: chamber blocks map to $\Lambda(n)$ coefficients | Archive hinge |
-| 6 | Sum over chambers and forbid $x^{a+i\gamma}$ with $a\neq0$ | Open (RH-strength) |
+| 6 | Summatory source bound that *might* read as pole control (downstream only) | Open; not a design driver |
 
 ---
 

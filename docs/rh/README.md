@@ -3,11 +3,17 @@
 Exact divisor-count structure is the source; RH is the downstream
 pole-placement sentence after that structure is compressed into zeta language.
 
+**Hard rule (not optional):** RH must never drive research design. PGS laws are
+upstream. Binding contract for the indexed corpus:
+[research/19-rh-corpus/FRAME_CONTRACT.md](../../research/19-rh-corpus/FRAME_CONTRACT.md).
+
 The required reading order is:
 
 ```text
 divisor counts -> PGS local theorems -> DNI-to-zeta compression
--> source-to-spectral placement target -> pole placement/RH sentence
+-> (optional) further source laws still free of zeros
+-> only then source-to-spectral transfer, if forced by source
+-> only then pole placement/RH sentence, if transfer closes
 ```
 
 ## What This Folder Does
@@ -15,9 +21,9 @@ divisor counts -> PGS local theorems -> DNI-to-zeta compression
 `docs/rh` is the affirmative narrative spine for the PGS-to-RH documentation
 bundle. It starts from arithmetic objects the reader can inspect directly:
 divisor counts, consecutive prime-gap interiors, and the selected integer
-inside each nonempty gap. It then moves through the local theorem authority,
-the exact DNI-to-zeta compression, the source-to-spectral placement target,
-and the pole-placement language that gives the RH-facing sentence.
+inside each nonempty gap. It then moves through the local theorem authority
+and the exact DNI-to-zeta compression. Pole-placement and explicit-formula
+pages are **downstream catalog and translation**, not experiment drivers.
 
 This folder is the bundle index and source-order guide. The FAQ remains the
 objection-handling surface. **Note (post-archival):** The detailed `research/12-rh-bridge` workbench material (classical completion strategy, loop infrastructure, etc.) has been moved outside the repository to `/Users/velocityworks/prime-gap-structure-archives/2026-05-classical-rh-bridge-completion-route/` due to classical drift and prompt injection concerns. See the pointer at `research/12-rh-bridge/README.md` and the ARCHIVAL_HANDOFF.md there.
