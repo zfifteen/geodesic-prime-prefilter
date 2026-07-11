@@ -77,6 +77,36 @@ def rest_login(base: str, username: str, password: str) -> tuple[str, str]:
     return data["authToken"], data["userId"]
 
 
+def resolve_operator_auth(base: str, secrets: dict[str, str]) -> tuple[str, str]:
+    """
+    IMP-20: prefer personal access token + user id; fall back to password login.
+
+    Keys (same as RC operator):
+      ROCKETCHAT_OPERATOR_TOKEN + ROCKETCHAT_OPERATOR_USER_ID
+      (aliases: ROCKETCHAT_BOT_TOKEN / ROCKETCHAT_BOT_USER_ID)
+      else ROCKETCHAT_OPERATOR_USERNAME + ROCKETCHAT_OPERATOR_PASSWORD
+    """
+    token = (
+        secrets.get("ROCKETCHAT_OPERATOR_TOKEN")
+        or secrets.get("ROCKETCHAT_BOT_TOKEN")
+        or ""
+    ).strip()
+    uid = (
+        secrets.get("ROCKETCHAT_OPERATOR_USER_ID")
+        or secrets.get("ROCKETCHAT_BOT_USER_ID")
+        or ""
+    ).strip()
+    if token and uid:
+        return token, uid
+    user = (secrets.get("ROCKETCHAT_OPERATOR_USERNAME") or "grok").strip()
+    password = secrets.get("ROCKETCHAT_OPERATOR_PASSWORD") or ""
+    if not password:
+        raise RuntimeError(
+            "need ROCKETCHAT_OPERATOR_TOKEN+USER_ID or ROCKETCHAT_OPERATOR_PASSWORD"
+        )
+    return rest_login(base, user, password)
+
+
 def resolve_room_id(base: str, token: str, uid: str, channel_name: str) -> str:
     """Resolve a public channel or private group by name."""
     name = channel_name.lstrip("#")
@@ -653,11 +683,7 @@ def main(argv: list[str] | None = None) -> int:
                 )
 
             secrets = load_env(secrets_path)
-            token, uid = rest_login(
-                base,
-                secrets["ROCKETCHAT_OPERATOR_USERNAME"],
-                secrets["ROCKETCHAT_OPERATOR_PASSWORD"],
-            )
+            token, uid = resolve_operator_auth(base, secrets)
             room_id = resolve_room_id(base, token, uid, channel)
             mid = post_message(base, token, uid, room_id, text)
             save_post_state(
