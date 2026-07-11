@@ -1149,7 +1149,7 @@ Research status:
 ADVANCE
 
 Ops status:
-OK
+FAILED
 
 Delta:
 new falsification regime through max_prime=500000000
@@ -1159,3 +1159,56 @@ Artifacts:
 
 Next step:
 Structural audit of recurring offset 540 on new extremal rows if no counterexample.
+
+## 2026-07-11T07:06:57Z run
+
+Mechanism:
+PGS-native structural audit of recurring offset 540 and early-tau=4 /
+late-tau=3 chamber separation (queue job offset-540-structural-audit).
+
+Method:
+Read 4e8-5e8 falsification summary and prefix_tau_floor_probe.json.
+Built minimal residual probe
+`experiments/square-branch-hourly-2026-07-11-rc15/offset_540_residual_rc15_probe.py`
+stating falsifiable predictions P19-P21 / residual claims RC15-RC17 on
+segment utilization maxima through 4e8-5e8 plus full o_q branch-max panel.
+Recomputed Tau4 dual markers via divisor_counts_segment only (audit).
+Did not port d=4 SDA. RC2 fixed-band remains falsified.
+
+Result:
+RC15 late-tau3 trail tightness holds: trail_gap = D - last_tau4 in [2, 20]
+(bound [1, 24]).
+RC16 absolute early tau4 on full panel holds: first_tau4 in [2, 16]
+(bound <= 16; tightens RC4 util-only <= 20 and extends to o_q panel).
+RC17 near-540 dual marker holds on 4 rows with |D-540|<=20:
+first_tau4 in [4, 10], trail in [8, 20].
+No new falsified prediction. Util-max escape D=738 (o_q=6) retained as RC2
+falsifier. Prime-Square Proximity remains proved in PROOF.md; residual audit
+only.
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.78s
+```
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New residual claim table RC15-RC17 (late-tau3 trail tightness, absolute early
+tau4 on full util+o_q panel, conditional near-540 dual early/late markers)
+with explicit falsification command; not a prose restatement of RC12-RC14.
+
+Artifacts:
+`experiments/square-branch-hourly-2026-07-11-rc15/offset_540_residual_rc15_probe.py`;
+`experiments/square-branch-hourly-2026-07-11-rc15/offset_540_rc15_prediction_table.json`;
+`experiments/square-branch-hourly-2026-07-11-rc15/FINDINGS.md`
+
+Next step:
+Queue falsification on 5e8-6e8, or re-check RC15-RC17 on any new util maximum
+/ o_q branch max. Do not promote RC15-RC17 to theorem status; do not revive
+fixed-540 or d=4 SDA.

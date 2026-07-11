@@ -1,0 +1,1033 @@
+{
+  "inputs": {
+    "prior_prediction_table": "/Users/velocityworks/pgs-hourly/prime-gap-structure/experiments/square-branch-hourly-2026-07-10/offset_540_prediction_table.json",
+    "rc12_prediction_table": "/Users/velocityworks/pgs-hourly/prime-gap-structure/experiments/square-branch-hourly-2026-07-11-rc12/offset_540_rc12_prediction_table.json",
+    "falsification_summary_json": "/Users/velocityworks/pgs-hourly/prime-gap-structure/research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_4e8_5e8/square_branch_dynamic_cutoff_search_summary.json",
+    "prefix_tau_floor_probe": {
+      "path": "/Users/velocityworks/pgs-hourly/prime-gap-structure/experiments/square-branch-sda-invalidation-2026-06/prefix_tau_floor_probe.json",
+      "extremal_count": 3,
+      "d4_sda_transfers": false
+    },
+    "trail_gap_max": 24,
+    "first_tau4_panel_max": 16,
+    "near_540_center": 540,
+    "near_540_radius": 20,
+    "near_540_first_tau4_max": 10,
+    "near_540_trail_max": 20,
+    "invalidated_route": "d=4 SDA transfer (not revived)",
+    "theorem_status": "Prime-Square Proximity proved in PROOF.md; residual audit only"
+  },
+  "predictions": [
+    {
+      "id": "P19",
+      "name": "late_tau3_trail_tightness",
+      "statement": "On segment utilization maxima through 4e8-5e8 and the 4e8-5e8 o_q branch-max panel, trail_gap = D(r) - last_tau4_offset satisfies 1 <= trail_gap <= 24 (tau4 support ends tightly before late tau3 at D).",
+      "falsifier": "any evaluated row with trail_gap < 1 or trail_gap > 24"
+    },
+    {
+      "id": "P20",
+      "name": "absolute_early_tau4_full_panel",
+      "statement": "On the same surface (util maxima + full o_q panel), first_tau4_offset <= 16.",
+      "falsifier": "any evaluated row with first_tau4_offset > 16"
+    },
+    {
+      "id": "P21",
+      "name": "near_540_dual_marker",
+      "statement": "On the same surface, if |D(r) - 540| <= 20, then first_tau4_offset <= 10 and trail_gap <= 20 (conditional residual on the recurring-540 band; not a universal offset law).",
+      "falsifier": "any near-540 row (|D-540|<=20) with first_tau4_offset > 10 or trail_gap > 20"
+    }
+  ],
+  "primary_rows": [
+    {
+      "segment": "3e7-1e8",
+      "r": 82357433,
+      "offset": 540,
+      "o_q": null,
+      "tau4_count": 63,
+      "first_tau4_offset": 10,
+      "last_tau4_offset": 532,
+      "first_tau3_offset": 540,
+      "trail_gap": 8,
+      "prefix_min_tau": 4,
+      "tau3_in_prefix": 0,
+      "abs_d_minus_540": 0,
+      "near_540": true
+    },
+    {
+      "segment": "1e8-2e8",
+      "r": 102017779,
+      "offset": 462,
+      "o_q": null,
+      "tau4_count": 52,
+      "first_tau4_offset": 2,
+      "last_tau4_offset": 460,
+      "first_tau3_offset": 462,
+      "trail_gap": 2,
+      "prefix_min_tau": 4,
+      "tau3_in_prefix": 0,
+      "abs_d_minus_540": 78,
+      "near_540": false
+    },
+    {
+      "segment": "2e8-3e8",
+      "r": 251066071,
+      "offset": 540,
+      "o_q": null,
+      "tau4_count": 60,
+      "first_tau4_offset": 6,
+      "last_tau4_offset": 522,
+      "first_tau3_offset": 540,
+      "trail_gap": 18,
+      "prefix_min_tau": 4,
+      "tau3_in_prefix": 0,
+      "abs_d_minus_540": 0,
+      "near_540": true
+    },
+    {
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "o_q": null,
+      "tau4_count": 64,
+      "first_tau4_offset": 4,
+      "last_tau4_offset": 536,
+      "first_tau3_offset": 546,
+      "trail_gap": 10,
+      "prefix_min_tau": 4,
+      "tau3_in_prefix": 0,
+      "abs_d_minus_540": 6,
+      "near_540": true
+    },
+    {
+      "segment": "4e8-5e8",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "tau4_count": 96,
+      "first_tau4_offset": 3,
+      "last_tau4_offset": 730,
+      "first_tau3_offset": 738,
+      "trail_gap": 8,
+      "prefix_min_tau": 4,
+      "tau3_in_prefix": 0,
+      "abs_d_minus_540": 198,
+      "near_540": false
+    }
+  ],
+  "oq_panel_rows": [
+    {
+      "segment": "4e8-5e8/o_q=2",
+      "r": 468917503,
+      "offset": 542,
+      "o_q": 2,
+      "tau4_count": 60,
+      "first_tau4_offset": 4,
+      "last_tau4_offset": 522,
+      "first_tau3_offset": 542,
+      "trail_gap": 20,
+      "prefix_min_tau": 4,
+      "tau3_in_prefix": 0,
+      "abs_d_minus_540": 2,
+      "near_540": true
+    },
+    {
+      "segment": "4e8-5e8/o_q=4",
+      "r": 482342527,
+      "offset": 486,
+      "o_q": 4,
+      "tau4_count": 53,
+      "first_tau4_offset": 16,
+      "last_tau4_offset": 480,
+      "first_tau3_offset": 486,
+      "trail_gap": 6,
+      "prefix_min_tau": 4,
+      "tau3_in_prefix": 0,
+      "abs_d_minus_540": 54,
+      "near_540": false
+    },
+    {
+      "segment": "4e8-5e8/o_q=6",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "tau4_count": 96,
+      "first_tau4_offset": 3,
+      "last_tau4_offset": 730,
+      "first_tau3_offset": 738,
+      "trail_gap": 8,
+      "prefix_min_tau": 4,
+      "tau3_in_prefix": 0,
+      "abs_d_minus_540": 198,
+      "near_540": false
+    }
+  ],
+  "prediction_results": [
+    {
+      "id": "P19",
+      "name": "late_tau3_trail_tightness",
+      "statement": "On segment utilization maxima through 4e8-5e8 and the 4e8-5e8 o_q branch-max panel, trail_gap = D(r) - last_tau4_offset satisfies 1 <= trail_gap <= 24 (tau4 support ends tightly before late tau3 at D).",
+      "falsifier": "any evaluated row with trail_gap < 1 or trail_gap > 24",
+      "segment": "3e7-1e8",
+      "r": 82357433,
+      "offset": 540,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "trail_gap": 8,
+        "bound": [
+          1,
+          24
+        ],
+        "last_tau4_offset": 532,
+        "first_tau3_offset": 540,
+        "D": 540
+      }
+    },
+    {
+      "id": "P19",
+      "name": "late_tau3_trail_tightness",
+      "statement": "On segment utilization maxima through 4e8-5e8 and the 4e8-5e8 o_q branch-max panel, trail_gap = D(r) - last_tau4_offset satisfies 1 <= trail_gap <= 24 (tau4 support ends tightly before late tau3 at D).",
+      "falsifier": "any evaluated row with trail_gap < 1 or trail_gap > 24",
+      "segment": "1e8-2e8",
+      "r": 102017779,
+      "offset": 462,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "trail_gap": 2,
+        "bound": [
+          1,
+          24
+        ],
+        "last_tau4_offset": 460,
+        "first_tau3_offset": 462,
+        "D": 462
+      }
+    },
+    {
+      "id": "P19",
+      "name": "late_tau3_trail_tightness",
+      "statement": "On segment utilization maxima through 4e8-5e8 and the 4e8-5e8 o_q branch-max panel, trail_gap = D(r) - last_tau4_offset satisfies 1 <= trail_gap <= 24 (tau4 support ends tightly before late tau3 at D).",
+      "falsifier": "any evaluated row with trail_gap < 1 or trail_gap > 24",
+      "segment": "2e8-3e8",
+      "r": 251066071,
+      "offset": 540,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "trail_gap": 18,
+        "bound": [
+          1,
+          24
+        ],
+        "last_tau4_offset": 522,
+        "first_tau3_offset": 540,
+        "D": 540
+      }
+    },
+    {
+      "id": "P19",
+      "name": "late_tau3_trail_tightness",
+      "statement": "On segment utilization maxima through 4e8-5e8 and the 4e8-5e8 o_q branch-max panel, trail_gap = D(r) - last_tau4_offset satisfies 1 <= trail_gap <= 24 (tau4 support ends tightly before late tau3 at D).",
+      "falsifier": "any evaluated row with trail_gap < 1 or trail_gap > 24",
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "trail_gap": 10,
+        "bound": [
+          1,
+          24
+        ],
+        "last_tau4_offset": 536,
+        "first_tau3_offset": 546,
+        "D": 546
+      }
+    },
+    {
+      "id": "P19",
+      "name": "late_tau3_trail_tightness",
+      "statement": "On segment utilization maxima through 4e8-5e8 and the 4e8-5e8 o_q branch-max panel, trail_gap = D(r) - last_tau4_offset satisfies 1 <= trail_gap <= 24 (tau4 support ends tightly before late tau3 at D).",
+      "falsifier": "any evaluated row with trail_gap < 1 or trail_gap > 24",
+      "segment": "4e8-5e8",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "trail_gap": 8,
+        "bound": [
+          1,
+          24
+        ],
+        "last_tau4_offset": 730,
+        "first_tau3_offset": 738,
+        "D": 738
+      }
+    },
+    {
+      "id": "P19",
+      "name": "late_tau3_trail_tightness",
+      "statement": "On segment utilization maxima through 4e8-5e8 and the 4e8-5e8 o_q branch-max panel, trail_gap = D(r) - last_tau4_offset satisfies 1 <= trail_gap <= 24 (tau4 support ends tightly before late tau3 at D).",
+      "falsifier": "any evaluated row with trail_gap < 1 or trail_gap > 24",
+      "segment": "4e8-5e8/o_q=2",
+      "r": 468917503,
+      "offset": 542,
+      "o_q": 2,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "trail_gap": 20,
+        "bound": [
+          1,
+          24
+        ],
+        "last_tau4_offset": 522,
+        "first_tau3_offset": 542,
+        "D": 542
+      }
+    },
+    {
+      "id": "P19",
+      "name": "late_tau3_trail_tightness",
+      "statement": "On segment utilization maxima through 4e8-5e8 and the 4e8-5e8 o_q branch-max panel, trail_gap = D(r) - last_tau4_offset satisfies 1 <= trail_gap <= 24 (tau4 support ends tightly before late tau3 at D).",
+      "falsifier": "any evaluated row with trail_gap < 1 or trail_gap > 24",
+      "segment": "4e8-5e8/o_q=4",
+      "r": 482342527,
+      "offset": 486,
+      "o_q": 4,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "trail_gap": 6,
+        "bound": [
+          1,
+          24
+        ],
+        "last_tau4_offset": 480,
+        "first_tau3_offset": 486,
+        "D": 486
+      }
+    },
+    {
+      "id": "P19",
+      "name": "late_tau3_trail_tightness",
+      "statement": "On segment utilization maxima through 4e8-5e8 and the 4e8-5e8 o_q branch-max panel, trail_gap = D(r) - last_tau4_offset satisfies 1 <= trail_gap <= 24 (tau4 support ends tightly before late tau3 at D).",
+      "falsifier": "any evaluated row with trail_gap < 1 or trail_gap > 24",
+      "segment": "4e8-5e8/o_q=6",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "trail_gap": 8,
+        "bound": [
+          1,
+          24
+        ],
+        "last_tau4_offset": 730,
+        "first_tau3_offset": 738,
+        "D": 738
+      }
+    },
+    {
+      "id": "P20",
+      "name": "absolute_early_tau4_full_panel",
+      "statement": "On the same surface (util maxima + full o_q panel), first_tau4_offset <= 16.",
+      "falsifier": "any evaluated row with first_tau4_offset > 16",
+      "segment": "3e7-1e8",
+      "r": 82357433,
+      "offset": 540,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "first_tau4_offset": 10,
+        "bound": 16
+      }
+    },
+    {
+      "id": "P20",
+      "name": "absolute_early_tau4_full_panel",
+      "statement": "On the same surface (util maxima + full o_q panel), first_tau4_offset <= 16.",
+      "falsifier": "any evaluated row with first_tau4_offset > 16",
+      "segment": "1e8-2e8",
+      "r": 102017779,
+      "offset": 462,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "first_tau4_offset": 2,
+        "bound": 16
+      }
+    },
+    {
+      "id": "P20",
+      "name": "absolute_early_tau4_full_panel",
+      "statement": "On the same surface (util maxima + full o_q panel), first_tau4_offset <= 16.",
+      "falsifier": "any evaluated row with first_tau4_offset > 16",
+      "segment": "2e8-3e8",
+      "r": 251066071,
+      "offset": 540,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "first_tau4_offset": 6,
+        "bound": 16
+      }
+    },
+    {
+      "id": "P20",
+      "name": "absolute_early_tau4_full_panel",
+      "statement": "On the same surface (util maxima + full o_q panel), first_tau4_offset <= 16.",
+      "falsifier": "any evaluated row with first_tau4_offset > 16",
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "first_tau4_offset": 4,
+        "bound": 16
+      }
+    },
+    {
+      "id": "P20",
+      "name": "absolute_early_tau4_full_panel",
+      "statement": "On the same surface (util maxima + full o_q panel), first_tau4_offset <= 16.",
+      "falsifier": "any evaluated row with first_tau4_offset > 16",
+      "segment": "4e8-5e8",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "first_tau4_offset": 3,
+        "bound": 16
+      }
+    },
+    {
+      "id": "P20",
+      "name": "absolute_early_tau4_full_panel",
+      "statement": "On the same surface (util maxima + full o_q panel), first_tau4_offset <= 16.",
+      "falsifier": "any evaluated row with first_tau4_offset > 16",
+      "segment": "4e8-5e8/o_q=2",
+      "r": 468917503,
+      "offset": 542,
+      "o_q": 2,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "first_tau4_offset": 4,
+        "bound": 16
+      }
+    },
+    {
+      "id": "P20",
+      "name": "absolute_early_tau4_full_panel",
+      "statement": "On the same surface (util maxima + full o_q panel), first_tau4_offset <= 16.",
+      "falsifier": "any evaluated row with first_tau4_offset > 16",
+      "segment": "4e8-5e8/o_q=4",
+      "r": 482342527,
+      "offset": 486,
+      "o_q": 4,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "first_tau4_offset": 16,
+        "bound": 16
+      }
+    },
+    {
+      "id": "P20",
+      "name": "absolute_early_tau4_full_panel",
+      "statement": "On the same surface (util maxima + full o_q panel), first_tau4_offset <= 16.",
+      "falsifier": "any evaluated row with first_tau4_offset > 16",
+      "segment": "4e8-5e8/o_q=6",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "first_tau4_offset": 3,
+        "bound": 16
+      }
+    },
+    {
+      "id": "P21",
+      "name": "near_540_dual_marker",
+      "statement": "On the same surface, if |D(r) - 540| <= 20, then first_tau4_offset <= 10 and trail_gap <= 20 (conditional residual on the recurring-540 band; not a universal offset law).",
+      "falsifier": "any near-540 row (|D-540|<=20) with first_tau4_offset > 10 or trail_gap > 20",
+      "segment": "3e7-1e8",
+      "r": 82357433,
+      "offset": 540,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "near_540": true,
+        "abs_d_minus_540": 0,
+        "first_tau4_offset": 10,
+        "first_tau4_bound": 10,
+        "trail_gap": 8,
+        "trail_bound": 20
+      }
+    },
+    {
+      "id": "P21",
+      "name": "near_540_dual_marker",
+      "statement": "On the same surface, if |D(r) - 540| <= 20, then first_tau4_offset <= 10 and trail_gap <= 20 (conditional residual on the recurring-540 band; not a universal offset law).",
+      "falsifier": "any near-540 row (|D-540|<=20) with first_tau4_offset > 10 or trail_gap > 20",
+      "segment": "1e8-2e8",
+      "r": 102017779,
+      "offset": 462,
+      "o_q": null,
+      "pass": null,
+      "status": "not_applicable",
+      "detail": {
+        "near_540": false,
+        "abs_d_minus_540": 78,
+        "first_tau4_offset": 2,
+        "trail_gap": 2
+      }
+    },
+    {
+      "id": "P21",
+      "name": "near_540_dual_marker",
+      "statement": "On the same surface, if |D(r) - 540| <= 20, then first_tau4_offset <= 10 and trail_gap <= 20 (conditional residual on the recurring-540 band; not a universal offset law).",
+      "falsifier": "any near-540 row (|D-540|<=20) with first_tau4_offset > 10 or trail_gap > 20",
+      "segment": "2e8-3e8",
+      "r": 251066071,
+      "offset": 540,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "near_540": true,
+        "abs_d_minus_540": 0,
+        "first_tau4_offset": 6,
+        "first_tau4_bound": 10,
+        "trail_gap": 18,
+        "trail_bound": 20
+      }
+    },
+    {
+      "id": "P21",
+      "name": "near_540_dual_marker",
+      "statement": "On the same surface, if |D(r) - 540| <= 20, then first_tau4_offset <= 10 and trail_gap <= 20 (conditional residual on the recurring-540 band; not a universal offset law).",
+      "falsifier": "any near-540 row (|D-540|<=20) with first_tau4_offset > 10 or trail_gap > 20",
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "near_540": true,
+        "abs_d_minus_540": 6,
+        "first_tau4_offset": 4,
+        "first_tau4_bound": 10,
+        "trail_gap": 10,
+        "trail_bound": 20
+      }
+    },
+    {
+      "id": "P21",
+      "name": "near_540_dual_marker",
+      "statement": "On the same surface, if |D(r) - 540| <= 20, then first_tau4_offset <= 10 and trail_gap <= 20 (conditional residual on the recurring-540 band; not a universal offset law).",
+      "falsifier": "any near-540 row (|D-540|<=20) with first_tau4_offset > 10 or trail_gap > 20",
+      "segment": "4e8-5e8",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "pass": null,
+      "status": "not_applicable",
+      "detail": {
+        "near_540": false,
+        "abs_d_minus_540": 198,
+        "first_tau4_offset": 3,
+        "trail_gap": 8
+      }
+    },
+    {
+      "id": "P21",
+      "name": "near_540_dual_marker",
+      "statement": "On the same surface, if |D(r) - 540| <= 20, then first_tau4_offset <= 10 and trail_gap <= 20 (conditional residual on the recurring-540 band; not a universal offset law).",
+      "falsifier": "any near-540 row (|D-540|<=20) with first_tau4_offset > 10 or trail_gap > 20",
+      "segment": "4e8-5e8/o_q=2",
+      "r": 468917503,
+      "offset": 542,
+      "o_q": 2,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "near_540": true,
+        "abs_d_minus_540": 2,
+        "first_tau4_offset": 4,
+        "first_tau4_bound": 10,
+        "trail_gap": 20,
+        "trail_bound": 20
+      }
+    },
+    {
+      "id": "P21",
+      "name": "near_540_dual_marker",
+      "statement": "On the same surface, if |D(r) - 540| <= 20, then first_tau4_offset <= 10 and trail_gap <= 20 (conditional residual on the recurring-540 band; not a universal offset law).",
+      "falsifier": "any near-540 row (|D-540|<=20) with first_tau4_offset > 10 or trail_gap > 20",
+      "segment": "4e8-5e8/o_q=4",
+      "r": 482342527,
+      "offset": 486,
+      "o_q": 4,
+      "pass": null,
+      "status": "not_applicable",
+      "detail": {
+        "near_540": false,
+        "abs_d_minus_540": 54,
+        "first_tau4_offset": 16,
+        "trail_gap": 6
+      }
+    },
+    {
+      "id": "P21",
+      "name": "near_540_dual_marker",
+      "statement": "On the same surface, if |D(r) - 540| <= 20, then first_tau4_offset <= 10 and trail_gap <= 20 (conditional residual on the recurring-540 band; not a universal offset law).",
+      "falsifier": "any near-540 row (|D-540|<=20) with first_tau4_offset > 10 or trail_gap > 20",
+      "segment": "4e8-5e8/o_q=6",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "pass": null,
+      "status": "not_applicable",
+      "detail": {
+        "near_540": false,
+        "abs_d_minus_540": 198,
+        "first_tau4_offset": 3,
+        "trail_gap": 8
+      }
+    }
+  ],
+  "residual_claims": [
+    {
+      "id": "RC15",
+      "claim": "Late-tau3 trail tightness: on segment utilization maxima through 4e8-5e8 and the full o_q branch-max panel, trail_gap = D - last_tau4_offset satisfies 1 <= trail_gap <= 24.",
+      "status": "holds",
+      "linked_prediction": "P19",
+      "evidence": {
+        "primary_rows": [
+          {
+            "segment": "3e7-1e8",
+            "r": 82357433,
+            "offset": 540,
+            "o_q": null,
+            "tau4_count": 63,
+            "first_tau4_offset": 10,
+            "last_tau4_offset": 532,
+            "first_tau3_offset": 540,
+            "trail_gap": 8,
+            "prefix_min_tau": 4,
+            "tau3_in_prefix": 0,
+            "abs_d_minus_540": 0,
+            "near_540": true
+          },
+          {
+            "segment": "1e8-2e8",
+            "r": 102017779,
+            "offset": 462,
+            "o_q": null,
+            "tau4_count": 52,
+            "first_tau4_offset": 2,
+            "last_tau4_offset": 460,
+            "first_tau3_offset": 462,
+            "trail_gap": 2,
+            "prefix_min_tau": 4,
+            "tau3_in_prefix": 0,
+            "abs_d_minus_540": 78,
+            "near_540": false
+          },
+          {
+            "segment": "2e8-3e8",
+            "r": 251066071,
+            "offset": 540,
+            "o_q": null,
+            "tau4_count": 60,
+            "first_tau4_offset": 6,
+            "last_tau4_offset": 522,
+            "first_tau3_offset": 540,
+            "trail_gap": 18,
+            "prefix_min_tau": 4,
+            "tau3_in_prefix": 0,
+            "abs_d_minus_540": 0,
+            "near_540": true
+          },
+          {
+            "segment": "3e8-4e8",
+            "r": 358018553,
+            "offset": 546,
+            "o_q": null,
+            "tau4_count": 64,
+            "first_tau4_offset": 4,
+            "last_tau4_offset": 536,
+            "first_tau3_offset": 546,
+            "trail_gap": 10,
+            "prefix_min_tau": 4,
+            "tau3_in_prefix": 0,
+            "abs_d_minus_540": 6,
+            "near_540": true
+          },
+          {
+            "segment": "4e8-5e8",
+            "r": 424171123,
+            "offset": 738,
+            "o_q": 6,
+            "tau4_count": 96,
+            "first_tau4_offset": 3,
+            "last_tau4_offset": 730,
+            "first_tau3_offset": 738,
+            "trail_gap": 8,
+            "prefix_min_tau": 4,
+            "tau3_in_prefix": 0,
+            "abs_d_minus_540": 198,
+            "near_540": false
+          }
+        ],
+        "oq_panel": [
+          {
+            "segment": "4e8-5e8/o_q=2",
+            "r": 468917503,
+            "offset": 542,
+            "o_q": 2,
+            "tau4_count": 60,
+            "first_tau4_offset": 4,
+            "last_tau4_offset": 522,
+            "first_tau3_offset": 542,
+            "trail_gap": 20,
+            "prefix_min_tau": 4,
+            "tau3_in_prefix": 0,
+            "abs_d_minus_540": 2,
+            "near_540": true
+          },
+          {
+            "segment": "4e8-5e8/o_q=4",
+            "r": 482342527,
+            "offset": 486,
+            "o_q": 4,
+            "tau4_count": 53,
+            "first_tau4_offset": 16,
+            "last_tau4_offset": 480,
+            "first_tau3_offset": 486,
+            "trail_gap": 6,
+            "prefix_min_tau": 4,
+            "tau3_in_prefix": 0,
+            "abs_d_minus_540": 54,
+            "near_540": false
+          },
+          {
+            "segment": "4e8-5e8/o_q=6",
+            "r": 424171123,
+            "offset": 738,
+            "o_q": 6,
+            "tau4_count": 96,
+            "first_tau4_offset": 3,
+            "last_tau4_offset": 730,
+            "first_tau3_offset": 738,
+            "trail_gap": 8,
+            "prefix_min_tau": 4,
+            "tau3_in_prefix": 0,
+            "abs_d_minus_540": 198,
+            "near_540": false
+          }
+        ],
+        "bound": [
+          1,
+          24
+        ],
+        "min_observed": 2,
+        "max_observed": 20
+      }
+    },
+    {
+      "id": "RC16",
+      "claim": "Absolute early tau4 on full panel: first_tau4_offset <= 16 on util maxima + o_q panel (tightens RC4's util-only bound of 20 and extends coverage).",
+      "status": "holds",
+      "linked_prediction": "P20",
+      "evidence": {
+        "primary_rows": [
+          {
+            "segment": "3e7-1e8",
+            "r": 82357433,
+            "offset": 540,
+            "o_q": null,
+            "tau4_count": 63,
+            "first_tau4_offset": 10,
+            "last_tau4_offset": 532,
+            "first_tau3_offset": 540,
+            "trail_gap": 8,
+            "prefix_min_tau": 4,
+            "tau3_in_prefix": 0,
+            "abs_d_minus_540": 0,
+            "near_540": true
+          },
+          {
+            "segment": "1e8-2e8",
+            "r": 102017779,
+            "offset": 462,
+            "o_q": null,
+            "tau4_count": 52,
+            "first_tau4_offset": 2,
+            "last_tau4_offset": 460,
+            "first_tau3_offset": 462,
+            "trail_gap": 2,
+            "prefix_min_tau": 4,
+            "tau3_in_prefix": 0,
+            "abs_d_minus_540": 78,
+            "near_540": false
+          },
+          {
+            "segment": "2e8-3e8",
+            "r": 251066071,
+            "offset": 540,
+            "o_q": null,
+            "tau4_count": 60,
+            "first_tau4_offset": 6,
+            "last_tau4_offset": 522,
+            "first_tau3_offset": 540,
+            "trail_gap": 18,
+            "prefix_min_tau": 4,
+            "tau3_in_prefix": 0,
+            "abs_d_minus_540": 0,
+            "near_540": true
+          },
+          {
+            "segment": "3e8-4e8",
+            "r": 358018553,
+            "offset": 546,
+            "o_q": null,
+            "tau4_count": 64,
+            "first_tau4_offset": 4,
+            "last_tau4_offset": 536,
+            "first_tau3_offset": 546,
+            "trail_gap": 10,
+            "prefix_min_tau": 4,
+            "tau3_in_prefix": 0,
+            "abs_d_minus_540": 6,
+            "near_540": true
+          },
+          {
+            "segment": "4e8-5e8",
+            "r": 424171123,
+            "offset": 738,
+            "o_q": 6,
+            "tau4_count": 96,
+            "first_tau4_offset": 3,
+            "last_tau4_offset": 730,
+            "first_tau3_offset": 738,
+            "trail_gap": 8,
+            "prefix_min_tau": 4,
+            "tau3_in_prefix": 0,
+            "abs_d_minus_540": 198,
+            "near_540": false
+          }
+        ],
+        "oq_panel": [
+          {
+            "segment": "4e8-5e8/o_q=2",
+            "r": 468917503,
+            "offset": 542,
+            "o_q": 2,
+            "tau4_count": 60,
+            "first_tau4_offset": 4,
+            "last_tau4_offset": 522,
+            "first_tau3_offset": 542,
+            "trail_gap": 20,
+            "prefix_min_tau": 4,
+            "tau3_in_prefix": 0,
+            "abs_d_minus_540": 2,
+            "near_540": true
+          },
+          {
+            "segment": "4e8-5e8/o_q=4",
+            "r": 482342527,
+            "offset": 486,
+            "o_q": 4,
+            "tau4_count": 53,
+            "first_tau4_offset": 16,
+            "last_tau4_offset": 480,
+            "first_tau3_offset": 486,
+            "trail_gap": 6,
+            "prefix_min_tau": 4,
+            "tau3_in_prefix": 0,
+            "abs_d_minus_540": 54,
+            "near_540": false
+          },
+          {
+            "segment": "4e8-5e8/o_q=6",
+            "r": 424171123,
+            "offset": 738,
+            "o_q": 6,
+            "tau4_count": 96,
+            "first_tau4_offset": 3,
+            "last_tau4_offset": 730,
+            "first_tau3_offset": 738,
+            "trail_gap": 8,
+            "prefix_min_tau": 4,
+            "tau3_in_prefix": 0,
+            "abs_d_minus_540": 198,
+            "near_540": false
+          }
+        ],
+        "bound": 16,
+        "max_observed": 16
+      }
+    },
+    {
+      "id": "RC17",
+      "claim": "Near-540 dual marker: if |D - 540| <= 20, then first_tau4_offset <= 10 and trail_gap <= 20. Conditional residual on the recurring-540 band; not a universal offset law. RC2 remains falsified on utilization maxima.",
+      "status": "holds",
+      "linked_prediction": "P21",
+      "evidence": {
+        "near_540_rows": [
+          {
+            "segment": "3e7-1e8",
+            "r": 82357433,
+            "offset": 540,
+            "o_q": null,
+            "tau4_count": 63,
+            "first_tau4_offset": 10,
+            "last_tau4_offset": 532,
+            "first_tau3_offset": 540,
+            "trail_gap": 8,
+            "prefix_min_tau": 4,
+            "tau3_in_prefix": 0,
+            "abs_d_minus_540": 0,
+            "near_540": true
+          },
+          {
+            "segment": "2e8-3e8",
+            "r": 251066071,
+            "offset": 540,
+            "o_q": null,
+            "tau4_count": 60,
+            "first_tau4_offset": 6,
+            "last_tau4_offset": 522,
+            "first_tau3_offset": 540,
+            "trail_gap": 18,
+            "prefix_min_tau": 4,
+            "tau3_in_prefix": 0,
+            "abs_d_minus_540": 0,
+            "near_540": true
+          },
+          {
+            "segment": "3e8-4e8",
+            "r": 358018553,
+            "offset": 546,
+            "o_q": null,
+            "tau4_count": 64,
+            "first_tau4_offset": 4,
+            "last_tau4_offset": 536,
+            "first_tau3_offset": 546,
+            "trail_gap": 10,
+            "prefix_min_tau": 4,
+            "tau3_in_prefix": 0,
+            "abs_d_minus_540": 6,
+            "near_540": true
+          },
+          {
+            "segment": "4e8-5e8/o_q=2",
+            "r": 468917503,
+            "offset": 542,
+            "o_q": 2,
+            "tau4_count": 60,
+            "first_tau4_offset": 4,
+            "last_tau4_offset": 522,
+            "first_tau3_offset": 542,
+            "trail_gap": 20,
+            "prefix_min_tau": 4,
+            "tau3_in_prefix": 0,
+            "abs_d_minus_540": 2,
+            "near_540": true
+          }
+        ],
+        "near_540_count": 4,
+        "first_tau4_bound": 10,
+        "trail_bound": 20,
+        "max_first_tau4_on_near_540": 10,
+        "max_trail_on_near_540": 20
+      }
+    },
+    {
+      "id": "RC2_retained",
+      "claim": "Fixed near-540 band D(r) in [528, 552] on segment utilization maxima is not a law.",
+      "status": "falsified",
+      "linked_prediction": "P6 (prior)",
+      "evidence": {
+        "segment": "4e8-5e8",
+        "r": 424171123,
+        "offset": 738
+      }
+    },
+    {
+      "id": "RC12_RC14_retained",
+      "claim": "Prior residual RC12-RC14 (first/last-quarter mass, median mid-band) retained as measured holds; not re-proved.",
+      "status": "holds (retained; not re-evaluated as primary surface)",
+      "linked_prediction": "P16-P18 (prior)",
+      "evidence": {
+        "path": "/Users/velocityworks/pgs-hourly/prime-gap-structure/experiments/square-branch-hourly-2026-07-11-rc12/offset_540_rc12_prediction_table.json",
+        "conclusion": {
+          "RC12_first_quarter_tau4_mass": "holds",
+          "RC13_last_quarter_tau4_mass": "holds",
+          "RC14_median_tau4_mid_band": "holds",
+          "RC2_fixed_band": "falsified (retained)",
+          "RC9_RC11": "retained holds (not primary surface)",
+          "min_first_quarter_mass": 0.18333333333333332,
+          "min_last_quarter_mass": 0.2,
+          "median_frac_range": [
+            0.44805194805194803,
+            0.5722222222222222
+          ],
+          "falsified_new_predictions": [],
+          "advance_over_prior_hour": "New residual claim table RC12-RC14: first-quarter tau4 mass, last-quarter tau4 mass, and median mid-band on util maxima + o_q panel; does not restate RC9-RC11 as sole deliverable."
+        }
+      }
+    }
+  ],
+  "conclusion": {
+    "RC15_late_tau3_trail_tightness": "holds",
+    "RC16_absolute_early_tau4_full_panel": "holds",
+    "RC17_near_540_dual_marker": "holds",
+    "RC2_fixed_band": "falsified (retained)",
+    "RC12_RC14": "retained holds (not primary surface)",
+    "trail_gap_range": [
+      2,
+      20
+    ],
+    "first_tau4_range": [
+      2,
+      16
+    ],
+    "near_540_count": 4,
+    "near_540_trail_range": [
+      8,
+      20
+    ],
+    "near_540_first_tau4_range": [
+      4,
+      10
+    ],
+    "falsified_new_predictions": [],
+    "advance_over_prior_hour": "New residual claim table RC15-RC17: late-tau3 trail tightness, absolute early tau4 on full util+o_q panel, and conditional near-540 dual early/late markers; does not restate RC12-RC14 as sole deliverable."
+  },
+  "falsification_command": "python3 experiments/square-branch-hourly-2026-07-11-rc15/offset_540_residual_rc15_probe.py"
+}
