@@ -1059,3 +1059,59 @@ Artifacts:
 
 Next step:
 Queue falsification 500M-600M or draft Chamber-Reset Endpoint Resolution Lemma subsection.
+
+## 2026-07-11T05:06:27Z run
+
+Mechanism:
+Draft one subsection of the Chamber-Reset Endpoint Resolution Lemma on the
+selected-square branch (S5 quartile-balance residual on Tau4).
+
+Method:
+PGS-first constructive draft under
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`.
+Builds on Claims S1–S4 only. Objects: ordered interior τ4 field `Tau4(r)`,
+chamber quarter cuts `Q1=⌊D/4⌋`, `Q3=⌊3D/4⌋`, outer-early / mid / outer-late
+zones, quartile-balance functionals
+`(first_quarter_mass, last_quarter_mass, median_frac)`, balanced extended
+reset residual
+`ResetResidual^Q(r) = (D(r), F(r), first_τ4_offset, Cover(r), QuartileBalance(r))`.
+Hypotheses H1–H6 reused; no new hypothesis. Target S1* left UNRESOLVED per
+`PROOF.md` §Square-Branch Reduction. Residual table RC12–RC14 attached as
+audit only (from prior hour probe; not re-proved as theorem). RC2 remains
+falsified; d=4 SDA and fixed-540 not revived. Minimal falsification command:
+dynamic-cutoff search on `5e8–6e8`; optional RC12 quartile probe.
+
+Result:
+Constructive lemma subsection S5 written with Claims S5-A/B/C, status
+separation update, residual quartile table on the 4e8–5e8 o_q branch-max
+panel, and explicit falsification commands. No new measured regime this hour.
+Theorem: prime-square proximity remains UNRESOLVED in `PROOF.md`; direct
+next-prime and Interior Maximizer remain proved.
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.89s
+```
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New constructive lemma subsection S5 (quartile partition of Tau4, quartile-balance
+residuals, balanced `ResetResidual^Q`) with residual claim table RC12–RC14
+attached and minimal falsification command for Target S1* (`5e8–6e8`
+dynamic-cutoff search).
+
+Artifacts:
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`;
+`research/04-bounded-compression/docs/square_branch_hourly.md`
+
+Next step:
+Return to falsification queue on `5e8–6e8` (or H_CTC square-branch probe). Keep
+pressure on `D(r)` under Claims S1, S2-B, S3-B, S4-C, S5-C; re-check RC9–RC14
+on any new util maximum; do not promote QuartileBalance or RC12–RC14 to theorem
+status.

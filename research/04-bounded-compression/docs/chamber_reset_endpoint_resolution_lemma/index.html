@@ -139,7 +139,7 @@
   <header>
     <p class="meta">research/04-bounded-compression/docs · 2026-07-11 · hourly analytic job <code>chamber-reset-lemma-draft</code></p>
     <h1>Chamber-Reset Endpoint Resolution Lemma</h1>
-    <p class="meta">Subsections: S1 endpoint identification · S2 band residual and chamber-prefix phase order · S3 right completion and chamber-reset residual · S4 interior τ4 field and chamber-cover residual</p>
+    <p class="meta">Subsections: S1 endpoint identification · S2 band residual and chamber-prefix phase order · S3 right completion and chamber-reset residual · S4 interior τ4 field and chamber-cover residual · S5 quartile-balance residual on Tau4</p>
     <p>
       <span class="status status-open">Lemma target: UNRESOLVED</span>
       &nbsp;
@@ -384,6 +384,16 @@ and p = P(r<sup>2</sup>).</code></pre>
           <td>RC9–RC11</td>
           <td>Early-half τ4 mass; late-span τ4; max inter-τ4 gap fraction</td>
           <td>Measured holds as residual only (see S4)</td>
+        </tr>
+        <tr>
+          <td>S5-A / S5-B / S5-C</td>
+          <td>Quartile partition of Tau4; quartile-balance residuals; balanced extended reset residual</td>
+          <td>Constructive (this document); does not close S1*</td>
+        </tr>
+        <tr>
+          <td>RC12–RC14</td>
+          <td>First-quarter τ4 mass; last-quarter τ4 mass; median τ4 mid-band</td>
+          <td>Measured holds as residual only (see S5)</td>
         </tr>
       </tbody>
     </table>
@@ -1086,6 +1096,279 @@ ResetResidual⁺(r) = ( D(r), F(r), first_τ4_offset, Cover(r) ).</code></pre>
   </section>
 
   <section>
+    <h2>Subsection S5 — Quartile-balance residual on the interior τ4 field</h2>
+    <p class="callout">
+      Fifth constructive subsection (this hour). Builds on Claims S1–S4 only.
+      It partitions the ordered field <code>Tau4(r)</code> into chamber quarters,
+      names three quartile-balance residual functionals finer than the half-mass
+      cover of Claim S4-B, and extends the chamber-reset residual by that balance
+      package. It does not prove Target S1*. <code>PROOF.md</code> §Square-Branch
+      Reduction controls: the prime-square proximity target remains
+      <strong>UNRESOLVED</strong>. Residual claims RC12–RC14 are attached as audit
+      only and are not promoted to theorem status.
+    </p>
+
+    <h3>Plain object</h3>
+    <p>
+      Claim S4-A names the full ordered τ4 offset set on the chamber prefix.
+      Claim S4-B records whether that mass is early-concentrated (half-scale),
+      whether it reaches the late prefix, and whether a large τ4 desert appears.
+      Those three numbers do not resolve whether both outer quarters of the
+      chamber carry τ4 mass, or where the median τ4 offset sits relative to
+      <code>D(r)</code>. This subsection names that finer ordered geometry —
+      still a pure divisor-count residual on the selected-square chamber, still
+      not a classical gate on <code>D(r)</code>, and still not a proof that
+      <code>Annulus(r)</code> is empty.
+    </p>
+
+    <h3>Hypotheses</h3>
+    <p>
+      Reuse <strong>H1–H6</strong> from Subsections S1, S3, and S4 without change.
+      No new hypothesis is introduced. The quartile partition is defined on the
+      same nonempty field <code>Tau4(r)</code> forced by H6.
+    </p>
+
+    <h3>Constructive claim S5-A (quartile partition of Tau4)</h3>
+    <div class="panel">
+      <p><strong>Claim S5-A.</strong> Assume H1–H6 and Claim S4-A, with
+      <code>D(r) ≥ 4</code>.</p>
+      <p>
+        Write the ordered field <code>Tau4(r) = {k<sub>1</sub> &lt; ⋯ &lt; k<sub>m</sub>}</code>
+        with <code>m = |Tau4(r)| ≥ 1</code>. Define the chamber quarter cuts
+      </p>
+      <pre><code>Q1(r) = ⌊D(r)/4⌋,
+Q3(r) = ⌊3·D(r)/4⌋.</code></pre>
+      <p>
+        Partition the field into three ordered residual zones (outer early,
+        mid-band, outer late):
+      </p>
+      <pre><code>Tau4_Q1(r)  = { k ∈ Tau4(r) : k ≤ Q1(r) },
+Tau4_mid(r) = { k ∈ Tau4(r) : Q1(r) &lt; k ≤ Q3(r) },
+Tau4_Q4(r)  = { k ∈ Tau4(r) : k &gt; Q3(r) }.</code></pre>
+      <p>
+        These three sets are pairwise disjoint and their union is
+        <code>Tau4(r)</code>. The partition is exact on the ordered chamber prefix
+        under H1–H6. It does not assert that every zone is nonempty, and it does
+        not assert a density law.
+      </p>
+      <p>
+        Status: constructive partition of Claim S4-A. Not a bound on
+        <code>D(r)</code>.
+      </p>
+    </div>
+
+    <h3>Constructive claim S5-B (quartile-balance residual functionals)</h3>
+    <div class="panel">
+      <p><strong>Claim S5-B.</strong> Assume H1–H6 and Claims S4-A, S5-A.</p>
+      <p>
+        From the ordered partition define three quartile-balance residual
+        functionals:
+      </p>
+      <pre><code>first_quarter_mass(r) = |Tau4_Q1(r)|  / |Tau4(r)|,
+
+last_quarter_mass(r)  = |Tau4_Q4(r)|  / |Tau4(r)|,
+
+median_frac(r)        = median(Tau4(r)) / D(r),</code></pre>
+      <p>
+        where <code>median(Tau4(r))</code> is the ordinary median of the ordered
+        offset list (for even cardinality, the mean of the two central offsets).
+        Then
+      </p>
+      <pre><code>0 ≤ first_quarter_mass(r) ≤ 1,
+0 ≤ last_quarter_mass(r)  ≤ 1,
+0 &lt; median_frac(r) &lt; 1,
+first_quarter_mass(r) + last_quarter_mass(r) ≤ 1.</code></pre>
+      <p>
+        Relation to Claim S4-B: early-half mass is a coarser half-scale residual;
+        first-quarter mass is the outer-early refinement. Late-span records only
+        whether the last τ4 reaches near <code>D(r)</code>; last-quarter mass
+        records how much of the field occupies the outer-late quarter. The median
+        fraction places the center of the ordered field on the chamber ruler.
+        Together they say whether the selected-square chamber is a balanced
+        scattered τ4 field under the hard late τ=3 endpoint, without using
+        classical product, gcd, or primality gates.
+      </p>
+      <p>
+        Status: constructive definitions on <code>Tau4(r)</code>. They do not imply
+        <code>D(r) ≤ C_dyn(r)</code> and do not empty <code>Annulus(r)</code>.
+      </p>
+    </div>
+
+    <h3>Constructive claim S5-C (balanced extended chamber-reset residual)</h3>
+    <div class="panel">
+      <p><strong>Claim S5-C.</strong> Assume H1–H6 and Claims S4-C, S5-A, S5-B.</p>
+      <p>
+        Extend the cover package of Claim S4-C by the quartile-balance package:
+      </p>
+      <pre><code>QuartileBalance(r) = (
+  first_quarter_mass(r),
+  last_quarter_mass(r),
+  median_frac(r)
+),
+
+ResetResidual^Q(r) = (
+  D(r),
+  F(r),
+  first_τ4_offset,
+  Cover(r),
+  QuartileBalance(r)
+).</code></pre>
+      <p>
+        Chamber reset still accepts the right endpoint
+        <code>q = r<sup>2</sup> + F(r)</code> and restarts the next ordered search
+        at <code>q</code>. The balanced residual is the exact selected-square
+        chamber state under the stated hypotheses once both the half-scale cover
+        and the quartile-balance geometry are admitted:
+      </p>
+      <ul>
+        <li><code>D(r)</code> is the selected-square endpoint distance (Claim S1);</li>
+        <li><code>F(r)</code> is the forward residual (Claim S3-A);</li>
+        <li><code>first_τ4_offset</code> is the early marker (Claim S2-A);</li>
+        <li><code>Cover(r)</code> is the half-scale cover residual (Claim S4-B);</li>
+        <li><code>QuartileBalance(r)</code> is the quartile-balance residual (Claim S5-B).</li>
+      </ul>
+      <p>
+        Under Claim S2-B, Target S1* fails at root <code>r</code> if and only if
+        <code>D(r) ∈ Annulus(r)</code>. Quartile balance stratifies residual audit
+        surfaces on completed chambers; it is not a classical inference gate and
+        does not by itself force <code>D(r) ∉ Annulus(r)</code>.
+      </p>
+      <p>
+        Status: constructive residual-state identification. Target S1* remains
+        <strong>UNRESOLVED</strong>.
+      </p>
+    </div>
+
+    <h3>Measured residual structure attached to S5 (audit only)</h3>
+    <p>
+      Residual claims RC12–RC14 refine the quartile-balance package on segment
+      utilization maxima through <code>4e8–5e8</code> and the full per-
+      <code>o_q</code> branch-max panel of that segment (here <code>o_q</code> is
+      the measured name for <code>F(r)</code>). They are not theorems. Fixed-band
+      RC2 remains falsified. Invalidated d=4 SDA is not revived. Target S1* is not
+      closed by these rows. Source probe:
+      <code>experiments/square-branch-hourly-2026-07-11-rc12/</code>.
+    </p>
+    <table>
+      <thead>
+        <tr><th>ID</th><th>Claim</th><th>Status on util maxima / o_q panel through 4e8–5e8</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>RC12</td>
+          <td>First-quarter τ4 mass <code>first_quarter_mass(r) ≥ 0.15</code></td>
+          <td>Holds (audit); min observed <code>0.1833</code> at util max <code>r=251,066,071</code>, <code>D=540</code> (<code>2e8–3e8</code>)</td>
+        </tr>
+        <tr>
+          <td>RC13</td>
+          <td>Last-quarter τ4 mass <code>last_quarter_mass(r) ≥ 0.15</code></td>
+          <td>Holds (audit); min observed <code>0.2000</code> at o_q=2, <code>D=542</code></td>
+        </tr>
+        <tr>
+          <td>RC14</td>
+          <td>Median τ4 mid-band <code>median_frac(r) ∈ [0.40, 0.65]</code></td>
+          <td>Holds (audit); observed range <code>[0.448, 0.572]</code></td>
+        </tr>
+        <tr>
+          <td>RC2</td>
+          <td>Fixed band <code>D(r) ∈ [528, 552]</code> on util maxima is a law</td>
+          <td><strong>Falsified</strong> at <code>D=738</code></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Quartile-balance evaluation of Claim S5-B on the same three branch maxima
+      used in S3–S4:
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th><code>F(r)</code> (= o_q)</th>
+          <th><code>r</code></th>
+          <th><code>D(r)</code></th>
+          <th>first_quarter_mass</th>
+          <th>last_quarter_mass</th>
+          <th>median_frac</th>
+          <th><code>D ∈ Annulus</code>?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2</td>
+          <td><code>468,917,503</code></td>
+          <td>542</td>
+          <td>0.3333</td>
+          <td>0.2000</td>
+          <td>0.4834</td>
+          <td>no (audit row)</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><code>482,342,527</code></td>
+          <td>486</td>
+          <td>0.2264</td>
+          <td>0.2830</td>
+          <td>0.5576</td>
+          <td>no (audit row)</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><code>424,171,123</code></td>
+          <td>738</td>
+          <td>0.2917</td>
+          <td>0.2396</td>
+          <td>0.5271</td>
+          <td>no (audit row; util max)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Reading: on the measured panel both outer quarters carry τ4 mass and the
+      median sits in the chamber mid-band. Combined with RC9–RC11 (early-half mass,
+      late span, no large desert), the residual geometry is a balanced scattered
+      τ4 field under a hard late τ=3 endpoint. That is residual audit structure
+      under Claims S5-A–S5-C. It is not a proof that every future root has empty
+      <code>Annulus(r)</code>.
+    </p>
+
+    <h3>What S5 does not claim</h3>
+    <ul>
+      <li>No proof of Target S1* / prime-square proximity (still <strong>UNRESOLVED</strong> in <code>PROOF.md</code> §Square-Branch Reduction).</li>
+      <li>No claim that <code>QuartileBalance(r)</code> or <code>ResetResidual^Q(r)</code> forces <code>D(r) ∉ Annulus(r)</code>.</li>
+      <li>No promotion of RC12–RC14 (or RC3–RC11) to theorem status.</li>
+      <li>No revival of fixed cutoff map <code>{2:44, 4:60, 6:60}</code>.</li>
+      <li>No revival of d=4 τ≥5 SDA transfer to the square branch.</li>
+      <li>No revival of fixed-band near-540 as a law (RC2 remains falsified).</li>
+      <li>No residue-only finite cover of <code>Annulus(r)</code>.</li>
+      <li>No classical primality, sieve, gcd, or Miller-Rabin gate as PGS inference.</li>
+    </ul>
+
+    <h3>Minimal falsification command</h3>
+    <p>
+      Target S1* (equivalently: emptiness of <code>Annulus(r)</code> for every
+      selected-square root) is falsified by any selected-square root with
+      <code>D(r) &gt; C_dyn(r)</code>. Minimal command on the next open regime
+      beyond the certified <code>4e8–5e8</code> surface:
+    </p>
+    <pre><code>python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py \
+  --min-prime 500000001 \
+  --max-prime 600000000 \
+  --output-dir research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_5e8_6e8</code></pre>
+    <p>
+      Decision rule: nonempty <code>first_counterexample</code> means some
+      measured <code>D(r) ∈ Annulus(r)</code> and Target S1* is falsified at that
+      root. A null counterexample is audit corroboration only — not a proof of
+      S1*, not a proof that every future annulus is empty, and not a promotion of
+      RC12–RC14.
+    </p>
+    <p>
+      Optional residual-panel check for RC12–RC14 / Claims S5-B–S5-C on the known
+      util-maxima and o_q branch-max panel (does not prove S1*):
+    </p>
+    <pre><code>python3 experiments/square-branch-hourly-2026-07-11-rc12/offset_540_residual_rc12_probe.py</code></pre>
+  </section>
+
+  <section>
     <h2>Status separation</h2>
     <table>
       <thead>
@@ -1103,12 +1386,16 @@ ResetResidual⁺(r) = ( D(r), F(r), first_τ4_offset, Cover(r) ).</code></pre>
         <tr><td>Claim S4-A interior τ4 field</td><td>Constructive subsection claim (this document)</td></tr>
         <tr><td>Claim S4-B chamber-cover residual functionals</td><td>Constructive subsection claim (this document)</td></tr>
         <tr><td>Claim S4-C extended chamber-reset residual</td><td>Constructive subsection claim (this document)</td></tr>
+        <tr><td>Claim S5-A quartile partition of Tau4</td><td>Constructive subsection claim (this document)</td></tr>
+        <tr><td>Claim S5-B quartile-balance residual functionals</td><td>Constructive subsection claim (this document)</td></tr>
+        <tr><td>Claim S5-C balanced extended chamber-reset residual</td><td>Constructive subsection claim (this document)</td></tr>
         <tr><td>Target S1* prime-square proximity</td><td><strong>Unresolved</strong> (<code>PROOF.md</code> §Square-Branch Reduction)</td></tr>
         <tr><td>All-scale bounded dynamic cutoff on square branch</td><td>Unresolved until S1* closes</td></tr>
         <tr><td>Measured surface <code>4e8–5e8</code></td><td>No counterexample; max util <code>0.934…</code> (audit)</td></tr>
         <tr><td>RC3–RC5 residual chamber structure</td><td>Measured holds; residual only</td></tr>
         <tr><td>RC6–RC8 residual panel / phase-gap / near-540 exclusivity</td><td>Measured holds; residual only</td></tr>
         <tr><td>RC9–RC11 early-half mass / late-span / max gap frac</td><td>Measured holds; residual only</td></tr>
+        <tr><td>RC12–RC14 first/last-quarter mass / median mid-band</td><td>Measured holds; residual only</td></tr>
         <tr><td>d=4 SDA square transfer / fixed-540 band</td><td>Invalidated / falsified</td></tr>
       </tbody>
     </table>
@@ -1118,9 +1405,9 @@ ResetResidual⁺(r) = ( D(r), F(r), first_τ4_offset, Cover(r) ).</code></pre>
     <h2>Next pressure</h2>
     <ol>
       <li>Run the minimal falsification command on <code>5e8–6e8</code> (queue return): empty <code>Annulus(r)</code> on that surface or record a counterexample.</li>
-      <li>Keep theorem pressure on <code>D(r)</code> under Claims S1, S2-B, S3-B, and S4-C; do not rebuild residue covers or SDA ports.</li>
-      <li>Re-check RC9–RC11 / <code>Cover(r)</code> on any new utilization maximum; do not promote cover residuals to theorem status.</li>
-      <li>Optional later subsection: a PGS-native mechanism that forces <code>D(r) ∉ Annulus(r)</code> from chamber invariants in <code>ResetResidual⁺(r)</code> alone — only if those invariants are stated without classical gates and without promoting RC3–RC11.</li>
+      <li>Keep theorem pressure on <code>D(r)</code> under Claims S1, S2-B, S3-B, S4-C, and S5-C; do not rebuild residue covers or SDA ports.</li>
+      <li>Re-check RC9–RC14 / <code>Cover(r)</code> / <code>QuartileBalance(r)</code> on any new utilization maximum; do not promote cover or quartile residuals to theorem status.</li>
+      <li>Optional later subsection: a PGS-native mechanism that forces <code>D(r) ∉ Annulus(r)</code> from chamber invariants in <code>ResetResidual^Q(r)</code> alone — only if those invariants are stated without classical gates and without promoting RC3–RC14.</li>
     </ol>
   </section>
 
@@ -1130,6 +1417,7 @@ ResetResidual⁺(r) = ( D(r), F(r), first_τ4_offset, Cover(r) ).</code></pre>
     <code>research/04-bounded-compression/docs/square_branch_blocker_acceptance.md</code>;
     <code>experiments/square-branch-hourly-2026-07-10/FINDINGS.md</code>;
     <code>experiments/square-branch-hourly-2026-07-10-rc9/FINDINGS.md</code>;
+    <code>experiments/square-branch-hourly-2026-07-11-rc12/FINDINGS.md</code>;
     <code>Agents.md</code> theorem-trust contract.
     Live proof status is never overridden by this draft.
   </footer>
