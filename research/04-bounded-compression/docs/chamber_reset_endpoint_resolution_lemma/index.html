@@ -139,7 +139,7 @@
   <header>
     <p class="meta">research/04-bounded-compression/docs · 2026-07-11 · hourly analytic job <code>chamber-reset-lemma-draft</code></p>
     <h1>Chamber-Reset Endpoint Resolution Lemma</h1>
-    <p class="meta">Subsections: S1 endpoint identification · S2 band residual and chamber-prefix phase order · S3 right completion and chamber-reset residual · S4 interior τ4 field and chamber-cover residual · S5 quartile-balance residual on Tau4</p>
+    <p class="meta">Subsections: S1 endpoint identification · S2 band residual and chamber-prefix phase order · S3 right completion and chamber-reset residual · S4 interior τ4 field and chamber-cover residual · S5 quartile-balance residual on Tau4 · S6 late-trail dual markers</p>
     <p>
       <span class="status status-open">Lemma target: UNRESOLVED</span>
       &nbsp;
@@ -394,6 +394,16 @@ and p = P(r<sup>2</sup>).</code></pre>
           <td>RC12–RC14</td>
           <td>First-quarter τ4 mass; last-quarter τ4 mass; median τ4 mid-band</td>
           <td>Measured holds as residual only (see S5)</td>
+        </tr>
+        <tr>
+          <td>S6-A / S6-B / S6-C</td>
+          <td>Last-τ4 / trail_gap dual markers; Dual(r); trail-extended reset residual</td>
+          <td>Constructive (this document); does not close S1*</td>
+        </tr>
+        <tr>
+          <td>RC15–RC17</td>
+          <td>Late-τ3 trail tightness; absolute early τ4 on full panel; near-540 dual marker</td>
+          <td>Measured holds as residual only (see S6)</td>
         </tr>
       </tbody>
     </table>
@@ -1369,6 +1379,279 @@ ResetResidual^Q(r) = (
   </section>
 
   <section>
+    <h2>Subsection S6 — Late-trail dual markers and trail-extended chamber-reset residual</h2>
+    <p class="callout">
+      Sixth constructive subsection (this hour). Builds on Claims S1–S5 only.
+      It names the last τ4 offset on the chamber prefix, the late trail from that
+      last τ4 support to the selected-square τ=3 endpoint, the dual early/late
+      marker pair on the ordered chamber, and the trail-extended chamber-reset
+      residual. It does not prove Target S1*. <code>PROOF.md</code> §Square-Branch
+      Reduction controls: the prime-square proximity target remains
+      <strong>UNRESOLVED</strong>. Residual claims RC15–RC17 are attached as audit
+      only and are not promoted to theorem status.
+    </p>
+
+    <h3>Plain object</h3>
+    <p>
+      Claims S1–S5 identify the selected-square distance <code>D(r)</code>, the
+      residual open set <code>Annulus(r)</code>, the forward residual
+      <code>F(r)</code>, the early marker <code>first_τ4_offset</code>, the full
+      ordered field <code>Tau4(r)</code>, and the half-scale / quartile cover of
+      that field. The late geometry of the same field is not yet named as a
+      constructive residual: after the last integer with divisor count
+      <code>4</code> on the chamber prefix, a short ordered trail of non-τ4
+      integers can remain before the hard late endpoint with divisor count
+      <code>3</code> at offset <code>D(r)</code>. This subsection names that
+      late trail and pairs it with the early marker — still a pure divisor-count
+      residual on the selected-square chamber, still not a classical gate on
+      <code>D(r)</code>, and still not a proof that <code>Annulus(r)</code> is
+      empty.
+    </p>
+
+    <h3>Hypotheses</h3>
+    <p>
+      Reuse <strong>H1–H6</strong> from Subsections S1, S3, and S4 without change.
+      No new hypothesis is introduced. The last-τ4 marker and trail residual are
+      defined on the same nonempty field <code>Tau4(r)</code> forced by H6.
+    </p>
+
+    <h3>Constructive claim S6-A (last-τ4 marker and late trail)</h3>
+    <div class="panel">
+      <p><strong>Claim S6-A.</strong> Assume H1–H6 and Claim S4-A, with
+      <code>D(r) ≥ 2</code>.</p>
+      <p>
+        From the ordered field <code>Tau4(r)</code> define
+      </p>
+      <pre><code>last_τ4_offset = max Tau4(r),
+
+trail_gap(r)   = D(r) − last_τ4_offset.</code></pre>
+      <p>
+        Then
+      </p>
+      <pre><code>1 ≤ first_τ4_offset ≤ last_τ4_offset ≤ D(r) − 1,
+1 ≤ trail_gap(r) ≤ D(r) − first_τ4_offset.</code></pre>
+      <p>
+        Equivalently: every integer on the open trail
+        <code>{p + last_τ4_offset + 1, …, p + D(r) − 1}</code> has
+        <code>τ ≠ 4</code> and, by H4, <code>τ ≥ 4</code>, so in fact
+        <code>τ ≥ 5</code> on that open trail (empty only if
+        <code>trail_gap(r) = 1</code>, in which case the last τ4 sits immediately
+        before the selected square). The selected-square endpoint remains the
+        first interior integer with <code>τ = 3</code> at offset
+        <code>D(r)</code> (Claim S1). The late trail is therefore the exact
+        ordered residual between last τ4 support and the late τ=3 endpoint.
+      </p>
+      <p>
+        Status: constructive from Claim S4-A and H4. Not a bound on
+        <code>D(r)</code>.
+      </p>
+    </div>
+
+    <h3>Constructive claim S6-B (dual early/late markers)</h3>
+    <div class="panel">
+      <p><strong>Claim S6-B.</strong> Assume H1–H6 and Claims S2-A, S4-A, S6-A.</p>
+      <p>
+        Define the <strong>dual marker pair</strong>
+      </p>
+      <pre><code>Dual(r) = ( first_τ4_offset, trail_gap(r) ).</code></pre>
+      <p>
+        Then the ordered selected-square chamber opens at the early τ4 marker and
+        closes through a late trail of length <code>trail_gap(r)</code> into the
+        hard τ=3 endpoint:
+      </p>
+      <pre><code>1 ≤ first_τ4_offset &lt; D(r),
+1 ≤ trail_gap(r) ≤ D(r) − first_τ4_offset,
+last_τ4_offset = D(r) − trail_gap(r).</code></pre>
+      <p>
+        Relation to earlier claims: Claim S2-A / S3-C record only the early side
+        of the phase order through <code>first_τ4_offset</code> and
+        <code>phase_gap(r)</code>. Claim S4-B records late span through
+        <code>last_τ4_offset / D(r)</code>. Claim S6-B isolates the complementary
+        dual pair: early opening distance and late trail length as a single
+        residual object on the same ordered field. The dual pair is exact under
+        H1–H6. It does not assert a fixed numerical band on either component, and
+        it does not assert a fixed band on <code>D(r)</code>.
+      </p>
+      <p>
+        Status: constructive dual-marker identification. Target S1* remains
+        <strong>UNRESOLVED</strong>. The dual pair does not empty
+        <code>Annulus(r)</code>.
+      </p>
+    </div>
+
+    <h3>Constructive claim S6-C (trail-extended chamber-reset residual)</h3>
+    <div class="panel">
+      <p><strong>Claim S6-C.</strong> Assume H1–H6 and Claims S5-C, S6-A, S6-B.</p>
+      <p>
+        Extend the balanced residual of Claim S5-C by the late-trail package:
+      </p>
+      <pre><code>Trail(r) = ( last_τ4_offset, trail_gap(r), Dual(r) ),
+
+ResetResidual^T(r) = (
+  D(r),
+  F(r),
+  first_τ4_offset,
+  Cover(r),
+  QuartileBalance(r),
+  Trail(r)
+).</code></pre>
+      <p>
+        Chamber reset still accepts the right endpoint
+        <code>q = r<sup>2</sup> + F(r)</code> and restarts the next ordered search
+        at <code>q</code>. The trail-extended residual is the exact selected-square
+        chamber state under the stated hypotheses once early opening, field cover,
+        quartile balance, and late trail are all admitted:
+      </p>
+      <ul>
+        <li><code>D(r)</code> is the selected-square endpoint distance (Claim S1);</li>
+        <li><code>F(r)</code> is the forward residual (Claim S3-A);</li>
+        <li><code>first_τ4_offset</code> is the early marker (Claim S2-A);</li>
+        <li><code>Cover(r)</code> is the half-scale cover residual (Claim S4-B);</li>
+        <li><code>QuartileBalance(r)</code> is the quartile-balance residual (Claim S5-B);</li>
+        <li><code>Trail(r)</code> is the late-trail dual-marker residual (Claims S6-A, S6-B).</li>
+      </ul>
+      <p>
+        Under Claim S2-B, Target S1* fails at root <code>r</code> if and only if
+        <code>D(r) ∈ Annulus(r)</code>. The trail package stratifies residual audit
+        surfaces on completed chambers; it is not a classical inference gate and
+        does not by itself force <code>D(r) ∉ Annulus(r)</code>.
+      </p>
+      <p>
+        Status: constructive residual-state identification. Target S1* remains
+        <strong>UNRESOLVED</strong>.
+      </p>
+    </div>
+
+    <h3>Measured residual structure attached to S6 (audit only)</h3>
+    <p>
+      Residual claims RC15–RC17 refine the dual-marker / late-trail package on
+      segment utilization maxima through <code>4e8–5e8</code> and the full per-
+      <code>o_q</code> branch-max panel of that segment (here <code>o_q</code> is
+      the measured name for <code>F(r)</code>). They are not theorems. Fixed-band
+      RC2 remains falsified. Invalidated d=4 SDA is not revived. Target S1* is not
+      closed by these rows. Source probe:
+      <code>experiments/square-branch-hourly-2026-07-11-rc15/</code>.
+    </p>
+    <table>
+      <thead>
+        <tr><th>ID</th><th>Claim</th><th>Status on util maxima / o_q panel through 4e8–5e8</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>RC15</td>
+          <td>Late-τ3 trail tightness <code>1 ≤ trail_gap(r) ≤ 24</code></td>
+          <td>Holds (audit); observed range <code>[2, 20]</code></td>
+        </tr>
+        <tr>
+          <td>RC16</td>
+          <td>Absolute early τ4 on full panel <code>first_τ4_offset ≤ 16</code></td>
+          <td>Holds (audit); observed range <code>[2, 16]</code>; tightens util-only RC4</td>
+        </tr>
+        <tr>
+          <td>RC17</td>
+          <td>Conditional near-540 dual marker: if <code>|D(r)−540| ≤ 20</code> then <code>first_τ4 ≤ 10</code> and <code>trail_gap ≤ 20</code></td>
+          <td>Holds as conditional residual on 4 near-540 rows; not a law on <code>D(r)</code></td>
+        </tr>
+        <tr>
+          <td>RC2</td>
+          <td>Fixed band <code>D(r) ∈ [528, 552]</code> on util maxima is a law</td>
+          <td><strong>Falsified</strong> at <code>D=738</code></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Dual-marker evaluation of Claims S6-A–S6-B on the same three branch maxima
+      used in S3–S5:
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th><code>F(r)</code> (= o_q)</th>
+          <th><code>r</code></th>
+          <th><code>D(r)</code></th>
+          <th>first_τ4</th>
+          <th>last_τ4</th>
+          <th>trail_gap</th>
+          <th><code>D ∈ Annulus</code>?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2</td>
+          <td><code>468,917,503</code></td>
+          <td>542</td>
+          <td>4</td>
+          <td>522</td>
+          <td>20</td>
+          <td>no (audit row)</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><code>482,342,527</code></td>
+          <td>486</td>
+          <td>16</td>
+          <td>480</td>
+          <td>6</td>
+          <td>no (audit row)</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><code>424,171,123</code></td>
+          <td>738</td>
+          <td>3</td>
+          <td>730</td>
+          <td>8</td>
+          <td>no (audit row; util max)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Reading: on the measured panel the chamber opens early in τ4 and the last
+      τ4 support ends tightly before the hard late τ=3 endpoint. Escape from the
+      recurring-540 band at the utilization maximum (<code>D=738</code>) does not
+      break that dual geometry. That is residual audit structure under Claims
+      S6-A–S6-C. It is not a proof that every future root has empty
+      <code>Annulus(r)</code>.
+    </p>
+
+    <h3>What S6 does not claim</h3>
+    <ul>
+      <li>No proof of Target S1* / prime-square proximity (still <strong>UNRESOLVED</strong> in <code>PROOF.md</code> §Square-Branch Reduction).</li>
+      <li>No claim that <code>Trail(r)</code>, <code>Dual(r)</code>, or <code>ResetResidual^T(r)</code> forces <code>D(r) ∉ Annulus(r)</code>.</li>
+      <li>No promotion of RC15–RC17 (or RC3–RC14) to theorem status.</li>
+      <li>No revival of fixed cutoff map <code>{2:44, 4:60, 6:60}</code>.</li>
+      <li>No revival of d=4 τ≥5 SDA transfer to the square branch.</li>
+      <li>No revival of fixed-band near-540 as a law (RC2 remains falsified).</li>
+      <li>No residue-only finite cover of <code>Annulus(r)</code>.</li>
+      <li>No classical primality, sieve, gcd, or Miller-Rabin gate as PGS inference.</li>
+    </ul>
+
+    <h3>Minimal falsification command</h3>
+    <p>
+      Target S1* (equivalently: emptiness of <code>Annulus(r)</code> for every
+      selected-square root) is falsified by any selected-square root with
+      <code>D(r) &gt; C_dyn(r)</code>. Minimal command on the next open regime
+      beyond the certified <code>4e8–5e8</code> surface:
+    </p>
+    <pre><code>python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py \
+  --min-prime 500000001 \
+  --max-prime 600000000 \
+  --output-dir research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_5e8_6e8</code></pre>
+    <p>
+      Decision rule: nonempty <code>first_counterexample</code> means some
+      measured <code>D(r) ∈ Annulus(r)</code> and Target S1* is falsified at that
+      root. A null counterexample is audit corroboration only — not a proof of
+      S1*, not a proof that every future annulus is empty, and not a promotion of
+      RC15–RC17.
+    </p>
+    <p>
+      Optional residual-panel check for RC15–RC17 / Claims S6-A–S6-C on the known
+      util-maxima and o_q branch-max panel (does not prove S1*):
+    </p>
+    <pre><code>python3 experiments/square-branch-hourly-2026-07-11-rc15/offset_540_residual_rc15_probe.py</code></pre>
+  </section>
+
+  <section>
     <h2>Status separation</h2>
     <table>
       <thead>
@@ -1389,6 +1672,9 @@ ResetResidual^Q(r) = (
         <tr><td>Claim S5-A quartile partition of Tau4</td><td>Constructive subsection claim (this document)</td></tr>
         <tr><td>Claim S5-B quartile-balance residual functionals</td><td>Constructive subsection claim (this document)</td></tr>
         <tr><td>Claim S5-C balanced extended chamber-reset residual</td><td>Constructive subsection claim (this document)</td></tr>
+        <tr><td>Claim S6-A last-τ4 marker and late trail</td><td>Constructive subsection claim (this document)</td></tr>
+        <tr><td>Claim S6-B dual early/late markers</td><td>Constructive subsection claim (this document)</td></tr>
+        <tr><td>Claim S6-C trail-extended chamber-reset residual</td><td>Constructive subsection claim (this document)</td></tr>
         <tr><td>Target S1* prime-square proximity</td><td><strong>Unresolved</strong> (<code>PROOF.md</code> §Square-Branch Reduction)</td></tr>
         <tr><td>All-scale bounded dynamic cutoff on square branch</td><td>Unresolved until S1* closes</td></tr>
         <tr><td>Measured surface <code>4e8–5e8</code></td><td>No counterexample; max util <code>0.934…</code> (audit)</td></tr>
@@ -1396,6 +1682,7 @@ ResetResidual^Q(r) = (
         <tr><td>RC6–RC8 residual panel / phase-gap / near-540 exclusivity</td><td>Measured holds; residual only</td></tr>
         <tr><td>RC9–RC11 early-half mass / late-span / max gap frac</td><td>Measured holds; residual only</td></tr>
         <tr><td>RC12–RC14 first/last-quarter mass / median mid-band</td><td>Measured holds; residual only</td></tr>
+        <tr><td>RC15–RC17 trail tightness / absolute early τ4 / near-540 dual marker</td><td>Measured holds; residual only</td></tr>
         <tr><td>d=4 SDA square transfer / fixed-540 band</td><td>Invalidated / falsified</td></tr>
       </tbody>
     </table>
@@ -1405,9 +1692,9 @@ ResetResidual^Q(r) = (
     <h2>Next pressure</h2>
     <ol>
       <li>Run the minimal falsification command on <code>5e8–6e8</code> (queue return): empty <code>Annulus(r)</code> on that surface or record a counterexample.</li>
-      <li>Keep theorem pressure on <code>D(r)</code> under Claims S1, S2-B, S3-B, S4-C, and S5-C; do not rebuild residue covers or SDA ports.</li>
-      <li>Re-check RC9–RC14 / <code>Cover(r)</code> / <code>QuartileBalance(r)</code> on any new utilization maximum; do not promote cover or quartile residuals to theorem status.</li>
-      <li>Optional later subsection: a PGS-native mechanism that forces <code>D(r) ∉ Annulus(r)</code> from chamber invariants in <code>ResetResidual^Q(r)</code> alone — only if those invariants are stated without classical gates and without promoting RC3–RC14.</li>
+      <li>Keep theorem pressure on <code>D(r)</code> under Claims S1, S2-B, S3-B, S4-C, S5-C, and S6-C; do not rebuild residue covers or SDA ports.</li>
+      <li>Re-check RC9–RC17 / <code>Cover(r)</code> / <code>QuartileBalance(r)</code> / <code>Trail(r)</code> on any new utilization maximum; do not promote cover, quartile, or trail residuals to theorem status.</li>
+      <li>Optional later subsection: a PGS-native mechanism that forces <code>D(r) ∉ Annulus(r)</code> from chamber invariants in <code>ResetResidual^T(r)</code> alone — only if those invariants are stated without classical gates and without promoting RC3–RC17.</li>
     </ol>
   </section>
 
@@ -1418,6 +1705,7 @@ ResetResidual^Q(r) = (
     <code>experiments/square-branch-hourly-2026-07-10/FINDINGS.md</code>;
     <code>experiments/square-branch-hourly-2026-07-10-rc9/FINDINGS.md</code>;
     <code>experiments/square-branch-hourly-2026-07-11-rc12/FINDINGS.md</code>;
+    <code>experiments/square-branch-hourly-2026-07-11-rc15/FINDINGS.md</code>;
     <code>Agents.md</code> theorem-trust contract.
     Live proof status is never overridden by this draft.
   </footer>

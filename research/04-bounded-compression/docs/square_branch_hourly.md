@@ -1259,3 +1259,61 @@ Artifacts:
 
 Next step:
 Queue falsification 500M-600M or draft Chamber-Reset Endpoint Resolution Lemma subsection.
+
+## 2026-07-11T09:06:32Z run
+
+Mechanism:
+Draft one subsection of the Chamber-Reset Endpoint Resolution Lemma on the
+selected-square branch (S6 late-trail dual markers and trail-extended residual).
+
+Method:
+PGS-first constructive draft under
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`.
+Builds on Claims S1–S5 only. Objects: ordered field `Tau4(r)`, last-τ4 marker
+`last_τ4_offset = max Tau4(r)`, late trail `trail_gap(r) = D(r) − last_τ4_offset`,
+dual early/late marker pair `Dual(r) = (first_τ4_offset, trail_gap(r))`, and
+trail-extended chamber-reset residual
+`ResetResidual^T(r) = (D(r), F(r), first_τ4_offset, Cover(r), QuartileBalance(r), Trail(r))`
+with `Trail(r) = (last_τ4_offset, trail_gap(r), Dual(r))`. Hypotheses H1–H6
+reused; no new hypothesis. Target S1* left UNRESOLVED per `PROOF.md`
+§Square-Branch Reduction. Residual table RC15–RC17 attached as audit only
+(from prior hour probe; not promoted to theorem). RC2 remains falsified;
+d=4 SDA and fixed-540 not revived. Minimal falsification command:
+dynamic-cutoff search on `5e8–6e8`; optional RC15 dual-marker probe.
+
+Result:
+Constructive lemma subsection S6 written with Claims S6-A/B/C, residual claim
+table update (S6-A/B/C + RC15–RC17), status separation update, dual-marker
+panel on the 4e8–5e8 o_q branch-max rows, and explicit falsification commands.
+No new measured regime this hour. Theorem: prime-square proximity remains
+UNRESOLVED in `PROOF.md`; direct next-prime and Interior Maximizer remain
+proved.
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.78s
+```
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New constructive lemma subsection S6 (last-τ4 / trail_gap dual markers,
+`Dual(r)`, trail-extended `ResetResidual^T`) with residual claim table
+RC15–RC17 attached and minimal falsification command for Target S1*
+(`5e8–6e8` dynamic-cutoff search). Not a prose restatement of S5 or of the
+RC15 probe alone.
+
+Artifacts:
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`;
+`research/04-bounded-compression/docs/square_branch_hourly.md`
+
+Next step:
+Return to falsification queue on `5e8–6e8` (or H_CTC square-branch probe). Keep
+pressure on `D(r)` under Claims S1, S2-B, S3-B, S4-C, S5-C, S6-C; re-check
+RC9–RC17 on any new util maximum; do not promote Trail/Dual or RC15–RC17 to
+theorem status.
