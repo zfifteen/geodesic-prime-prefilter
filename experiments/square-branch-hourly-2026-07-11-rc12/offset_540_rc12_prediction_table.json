@@ -1,0 +1,1158 @@
+{
+  "inputs": {
+    "prior_prediction_table": "/Users/velocityworks/pgs-hourly/prime-gap-structure/experiments/square-branch-hourly-2026-07-10/offset_540_prediction_table.json",
+    "rc9_prediction_table": "/Users/velocityworks/pgs-hourly/prime-gap-structure/experiments/square-branch-hourly-2026-07-10-rc9/offset_540_rc9_prediction_table.json",
+    "falsification_summary_json": "/Users/velocityworks/pgs-hourly/prime-gap-structure/research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_4e8_5e8/square_branch_dynamic_cutoff_search_summary.json",
+    "prefix_tau_floor_probe": {
+      "path": "/Users/velocityworks/pgs-hourly/prime-gap-structure/experiments/square-branch-sda-invalidation-2026-06/prefix_tau_floor_probe.json",
+      "extremal_count": 3,
+      "d4_sda_transfers": false
+    },
+    "first_quarter_mass_min": 0.15,
+    "last_quarter_mass_min": 0.15,
+    "median_band": [
+      0.4,
+      0.65
+    ],
+    "invalidated_route": "d=4 SDA transfer (not revived)",
+    "theorem_status": "Prime-Square Proximity proved in PROOF.md; residual audit only"
+  },
+  "predictions": [
+    {
+      "id": "P16",
+      "name": "first_quarter_tau4_mass",
+      "statement": "On segment utilization maxima through 4e8-5e8 and the 4e8-5e8 o_q branch-max panel, first-quarter tau4 mass |{k in Tau4 : k <= floor(D/4)}| / |Tau4| >= 0.15.",
+      "falsifier": "any evaluated row with first_quarter_mass < 0.15"
+    },
+    {
+      "id": "P17",
+      "name": "last_quarter_tau4_mass",
+      "statement": "On the same surface, last-quarter tau4 mass |{k in Tau4 : k > floor(3D/4)}| / |Tau4| >= 0.15.",
+      "falsifier": "any evaluated row with last_quarter_mass < 0.15"
+    },
+    {
+      "id": "P18",
+      "name": "median_tau4_mid_band",
+      "statement": "On the same surface, median(Tau4) / D(r) lies in [0.4, 0.65] (median sits in chamber mid-band).",
+      "falsifier": "any evaluated row with median_frac outside [0.4, 0.65]"
+    }
+  ],
+  "primary_rows": [
+    {
+      "segment": "3e7-1e8",
+      "r": 82357433,
+      "offset": 540,
+      "o_q": null,
+      "tau4_count": 63,
+      "first_tau4_offset": 10,
+      "last_tau4_offset": 532,
+      "first_quarter_count": 16,
+      "first_quarter_mass": 0.25396825396825395,
+      "last_quarter_count": 15,
+      "last_quarter_mass": 0.23809523809523808,
+      "median_tau4_offset": 288.0,
+      "median_frac": 0.5333333333333333,
+      "q1_cut": 135,
+      "q3_cut": 405
+    },
+    {
+      "segment": "1e8-2e8",
+      "r": 102017779,
+      "offset": 462,
+      "o_q": null,
+      "tau4_count": 52,
+      "first_tau4_offset": 2,
+      "last_tau4_offset": 460,
+      "first_quarter_count": 15,
+      "first_quarter_mass": 0.28846153846153844,
+      "last_quarter_count": 14,
+      "last_quarter_mass": 0.2692307692307692,
+      "median_tau4_offset": 207.0,
+      "median_frac": 0.44805194805194803,
+      "q1_cut": 115,
+      "q3_cut": 346
+    },
+    {
+      "segment": "2e8-3e8",
+      "r": 251066071,
+      "offset": 540,
+      "o_q": null,
+      "tau4_count": 60,
+      "first_tau4_offset": 6,
+      "last_tau4_offset": 522,
+      "first_quarter_count": 11,
+      "first_quarter_mass": 0.18333333333333332,
+      "last_quarter_count": 15,
+      "last_quarter_mass": 0.25,
+      "median_tau4_offset": 309.0,
+      "median_frac": 0.5722222222222222,
+      "q1_cut": 135,
+      "q3_cut": 405
+    },
+    {
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "o_q": null,
+      "tau4_count": 64,
+      "first_tau4_offset": 4,
+      "last_tau4_offset": 536,
+      "first_quarter_count": 13,
+      "first_quarter_mass": 0.203125,
+      "last_quarter_count": 18,
+      "last_quarter_mass": 0.28125,
+      "median_tau4_offset": 305.0,
+      "median_frac": 0.5586080586080586,
+      "q1_cut": 136,
+      "q3_cut": 409
+    },
+    {
+      "segment": "4e8-5e8",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "tau4_count": 96,
+      "first_tau4_offset": 3,
+      "last_tau4_offset": 730,
+      "first_quarter_count": 28,
+      "first_quarter_mass": 0.2916666666666667,
+      "last_quarter_count": 23,
+      "last_quarter_mass": 0.23958333333333334,
+      "median_tau4_offset": 389.0,
+      "median_frac": 0.5271002710027101,
+      "q1_cut": 184,
+      "q3_cut": 553
+    }
+  ],
+  "oq_panel_rows": [
+    {
+      "segment": "4e8-5e8/o_q=2",
+      "r": 468917503,
+      "offset": 542,
+      "o_q": 2,
+      "tau4_count": 60,
+      "first_tau4_offset": 4,
+      "last_tau4_offset": 522,
+      "first_quarter_count": 20,
+      "first_quarter_mass": 0.3333333333333333,
+      "last_quarter_count": 12,
+      "last_quarter_mass": 0.2,
+      "median_tau4_offset": 262.0,
+      "median_frac": 0.4833948339483395,
+      "q1_cut": 135,
+      "q3_cut": 406
+    },
+    {
+      "segment": "4e8-5e8/o_q=4",
+      "r": 482342527,
+      "offset": 486,
+      "o_q": 4,
+      "tau4_count": 53,
+      "first_tau4_offset": 16,
+      "last_tau4_offset": 480,
+      "first_quarter_count": 12,
+      "first_quarter_mass": 0.22641509433962265,
+      "last_quarter_count": 15,
+      "last_quarter_mass": 0.2830188679245283,
+      "median_tau4_offset": 271.0,
+      "median_frac": 0.5576131687242798,
+      "q1_cut": 121,
+      "q3_cut": 364
+    },
+    {
+      "segment": "4e8-5e8/o_q=6",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "tau4_count": 96,
+      "first_tau4_offset": 3,
+      "last_tau4_offset": 730,
+      "first_quarter_count": 28,
+      "first_quarter_mass": 0.2916666666666667,
+      "last_quarter_count": 23,
+      "last_quarter_mass": 0.23958333333333334,
+      "median_tau4_offset": 389.0,
+      "median_frac": 0.5271002710027101,
+      "q1_cut": 184,
+      "q3_cut": 553
+    }
+  ],
+  "prediction_results": [
+    {
+      "id": "P16",
+      "name": "first_quarter_tau4_mass",
+      "statement": "On segment utilization maxima through 4e8-5e8 and the 4e8-5e8 o_q branch-max panel, first-quarter tau4 mass |{k in Tau4 : k <= floor(D/4)}| / |Tau4| >= 0.15.",
+      "falsifier": "any evaluated row with first_quarter_mass < 0.15",
+      "segment": "3e7-1e8",
+      "r": 82357433,
+      "offset": 540,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "first_quarter_mass": 0.25396825396825395,
+        "bound": 0.15,
+        "first_quarter_count": 16,
+        "tau4_count": 63,
+        "q1_cut": 135
+      }
+    },
+    {
+      "id": "P16",
+      "name": "first_quarter_tau4_mass",
+      "statement": "On segment utilization maxima through 4e8-5e8 and the 4e8-5e8 o_q branch-max panel, first-quarter tau4 mass |{k in Tau4 : k <= floor(D/4)}| / |Tau4| >= 0.15.",
+      "falsifier": "any evaluated row with first_quarter_mass < 0.15",
+      "segment": "1e8-2e8",
+      "r": 102017779,
+      "offset": 462,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "first_quarter_mass": 0.28846153846153844,
+        "bound": 0.15,
+        "first_quarter_count": 15,
+        "tau4_count": 52,
+        "q1_cut": 115
+      }
+    },
+    {
+      "id": "P16",
+      "name": "first_quarter_tau4_mass",
+      "statement": "On segment utilization maxima through 4e8-5e8 and the 4e8-5e8 o_q branch-max panel, first-quarter tau4 mass |{k in Tau4 : k <= floor(D/4)}| / |Tau4| >= 0.15.",
+      "falsifier": "any evaluated row with first_quarter_mass < 0.15",
+      "segment": "2e8-3e8",
+      "r": 251066071,
+      "offset": 540,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "first_quarter_mass": 0.18333333333333332,
+        "bound": 0.15,
+        "first_quarter_count": 11,
+        "tau4_count": 60,
+        "q1_cut": 135
+      }
+    },
+    {
+      "id": "P16",
+      "name": "first_quarter_tau4_mass",
+      "statement": "On segment utilization maxima through 4e8-5e8 and the 4e8-5e8 o_q branch-max panel, first-quarter tau4 mass |{k in Tau4 : k <= floor(D/4)}| / |Tau4| >= 0.15.",
+      "falsifier": "any evaluated row with first_quarter_mass < 0.15",
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "first_quarter_mass": 0.203125,
+        "bound": 0.15,
+        "first_quarter_count": 13,
+        "tau4_count": 64,
+        "q1_cut": 136
+      }
+    },
+    {
+      "id": "P16",
+      "name": "first_quarter_tau4_mass",
+      "statement": "On segment utilization maxima through 4e8-5e8 and the 4e8-5e8 o_q branch-max panel, first-quarter tau4 mass |{k in Tau4 : k <= floor(D/4)}| / |Tau4| >= 0.15.",
+      "falsifier": "any evaluated row with first_quarter_mass < 0.15",
+      "segment": "4e8-5e8",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "first_quarter_mass": 0.2916666666666667,
+        "bound": 0.15,
+        "first_quarter_count": 28,
+        "tau4_count": 96,
+        "q1_cut": 184
+      }
+    },
+    {
+      "id": "P16",
+      "name": "first_quarter_tau4_mass",
+      "statement": "On segment utilization maxima through 4e8-5e8 and the 4e8-5e8 o_q branch-max panel, first-quarter tau4 mass |{k in Tau4 : k <= floor(D/4)}| / |Tau4| >= 0.15.",
+      "falsifier": "any evaluated row with first_quarter_mass < 0.15",
+      "segment": "4e8-5e8/o_q=2",
+      "r": 468917503,
+      "offset": 542,
+      "o_q": 2,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "first_quarter_mass": 0.3333333333333333,
+        "bound": 0.15,
+        "first_quarter_count": 20,
+        "tau4_count": 60,
+        "q1_cut": 135
+      }
+    },
+    {
+      "id": "P16",
+      "name": "first_quarter_tau4_mass",
+      "statement": "On segment utilization maxima through 4e8-5e8 and the 4e8-5e8 o_q branch-max panel, first-quarter tau4 mass |{k in Tau4 : k <= floor(D/4)}| / |Tau4| >= 0.15.",
+      "falsifier": "any evaluated row with first_quarter_mass < 0.15",
+      "segment": "4e8-5e8/o_q=4",
+      "r": 482342527,
+      "offset": 486,
+      "o_q": 4,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "first_quarter_mass": 0.22641509433962265,
+        "bound": 0.15,
+        "first_quarter_count": 12,
+        "tau4_count": 53,
+        "q1_cut": 121
+      }
+    },
+    {
+      "id": "P16",
+      "name": "first_quarter_tau4_mass",
+      "statement": "On segment utilization maxima through 4e8-5e8 and the 4e8-5e8 o_q branch-max panel, first-quarter tau4 mass |{k in Tau4 : k <= floor(D/4)}| / |Tau4| >= 0.15.",
+      "falsifier": "any evaluated row with first_quarter_mass < 0.15",
+      "segment": "4e8-5e8/o_q=6",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "first_quarter_mass": 0.2916666666666667,
+        "bound": 0.15,
+        "first_quarter_count": 28,
+        "tau4_count": 96,
+        "q1_cut": 184
+      }
+    },
+    {
+      "id": "P17",
+      "name": "last_quarter_tau4_mass",
+      "statement": "On the same surface, last-quarter tau4 mass |{k in Tau4 : k > floor(3D/4)}| / |Tau4| >= 0.15.",
+      "falsifier": "any evaluated row with last_quarter_mass < 0.15",
+      "segment": "3e7-1e8",
+      "r": 82357433,
+      "offset": 540,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "last_quarter_mass": 0.23809523809523808,
+        "bound": 0.15,
+        "last_quarter_count": 15,
+        "tau4_count": 63,
+        "q3_cut": 405
+      }
+    },
+    {
+      "id": "P17",
+      "name": "last_quarter_tau4_mass",
+      "statement": "On the same surface, last-quarter tau4 mass |{k in Tau4 : k > floor(3D/4)}| / |Tau4| >= 0.15.",
+      "falsifier": "any evaluated row with last_quarter_mass < 0.15",
+      "segment": "1e8-2e8",
+      "r": 102017779,
+      "offset": 462,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "last_quarter_mass": 0.2692307692307692,
+        "bound": 0.15,
+        "last_quarter_count": 14,
+        "tau4_count": 52,
+        "q3_cut": 346
+      }
+    },
+    {
+      "id": "P17",
+      "name": "last_quarter_tau4_mass",
+      "statement": "On the same surface, last-quarter tau4 mass |{k in Tau4 : k > floor(3D/4)}| / |Tau4| >= 0.15.",
+      "falsifier": "any evaluated row with last_quarter_mass < 0.15",
+      "segment": "2e8-3e8",
+      "r": 251066071,
+      "offset": 540,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "last_quarter_mass": 0.25,
+        "bound": 0.15,
+        "last_quarter_count": 15,
+        "tau4_count": 60,
+        "q3_cut": 405
+      }
+    },
+    {
+      "id": "P17",
+      "name": "last_quarter_tau4_mass",
+      "statement": "On the same surface, last-quarter tau4 mass |{k in Tau4 : k > floor(3D/4)}| / |Tau4| >= 0.15.",
+      "falsifier": "any evaluated row with last_quarter_mass < 0.15",
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "last_quarter_mass": 0.28125,
+        "bound": 0.15,
+        "last_quarter_count": 18,
+        "tau4_count": 64,
+        "q3_cut": 409
+      }
+    },
+    {
+      "id": "P17",
+      "name": "last_quarter_tau4_mass",
+      "statement": "On the same surface, last-quarter tau4 mass |{k in Tau4 : k > floor(3D/4)}| / |Tau4| >= 0.15.",
+      "falsifier": "any evaluated row with last_quarter_mass < 0.15",
+      "segment": "4e8-5e8",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "last_quarter_mass": 0.23958333333333334,
+        "bound": 0.15,
+        "last_quarter_count": 23,
+        "tau4_count": 96,
+        "q3_cut": 553
+      }
+    },
+    {
+      "id": "P17",
+      "name": "last_quarter_tau4_mass",
+      "statement": "On the same surface, last-quarter tau4 mass |{k in Tau4 : k > floor(3D/4)}| / |Tau4| >= 0.15.",
+      "falsifier": "any evaluated row with last_quarter_mass < 0.15",
+      "segment": "4e8-5e8/o_q=2",
+      "r": 468917503,
+      "offset": 542,
+      "o_q": 2,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "last_quarter_mass": 0.2,
+        "bound": 0.15,
+        "last_quarter_count": 12,
+        "tau4_count": 60,
+        "q3_cut": 406
+      }
+    },
+    {
+      "id": "P17",
+      "name": "last_quarter_tau4_mass",
+      "statement": "On the same surface, last-quarter tau4 mass |{k in Tau4 : k > floor(3D/4)}| / |Tau4| >= 0.15.",
+      "falsifier": "any evaluated row with last_quarter_mass < 0.15",
+      "segment": "4e8-5e8/o_q=4",
+      "r": 482342527,
+      "offset": 486,
+      "o_q": 4,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "last_quarter_mass": 0.2830188679245283,
+        "bound": 0.15,
+        "last_quarter_count": 15,
+        "tau4_count": 53,
+        "q3_cut": 364
+      }
+    },
+    {
+      "id": "P17",
+      "name": "last_quarter_tau4_mass",
+      "statement": "On the same surface, last-quarter tau4 mass |{k in Tau4 : k > floor(3D/4)}| / |Tau4| >= 0.15.",
+      "falsifier": "any evaluated row with last_quarter_mass < 0.15",
+      "segment": "4e8-5e8/o_q=6",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "last_quarter_mass": 0.23958333333333334,
+        "bound": 0.15,
+        "last_quarter_count": 23,
+        "tau4_count": 96,
+        "q3_cut": 553
+      }
+    },
+    {
+      "id": "P18",
+      "name": "median_tau4_mid_band",
+      "statement": "On the same surface, median(Tau4) / D(r) lies in [0.4, 0.65] (median sits in chamber mid-band).",
+      "falsifier": "any evaluated row with median_frac outside [0.4, 0.65]",
+      "segment": "3e7-1e8",
+      "r": 82357433,
+      "offset": 540,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "median_frac": 0.5333333333333333,
+        "band": [
+          0.4,
+          0.65
+        ],
+        "median_tau4_offset": 288.0,
+        "D": 540
+      }
+    },
+    {
+      "id": "P18",
+      "name": "median_tau4_mid_band",
+      "statement": "On the same surface, median(Tau4) / D(r) lies in [0.4, 0.65] (median sits in chamber mid-band).",
+      "falsifier": "any evaluated row with median_frac outside [0.4, 0.65]",
+      "segment": "1e8-2e8",
+      "r": 102017779,
+      "offset": 462,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "median_frac": 0.44805194805194803,
+        "band": [
+          0.4,
+          0.65
+        ],
+        "median_tau4_offset": 207.0,
+        "D": 462
+      }
+    },
+    {
+      "id": "P18",
+      "name": "median_tau4_mid_band",
+      "statement": "On the same surface, median(Tau4) / D(r) lies in [0.4, 0.65] (median sits in chamber mid-band).",
+      "falsifier": "any evaluated row with median_frac outside [0.4, 0.65]",
+      "segment": "2e8-3e8",
+      "r": 251066071,
+      "offset": 540,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "median_frac": 0.5722222222222222,
+        "band": [
+          0.4,
+          0.65
+        ],
+        "median_tau4_offset": 309.0,
+        "D": 540
+      }
+    },
+    {
+      "id": "P18",
+      "name": "median_tau4_mid_band",
+      "statement": "On the same surface, median(Tau4) / D(r) lies in [0.4, 0.65] (median sits in chamber mid-band).",
+      "falsifier": "any evaluated row with median_frac outside [0.4, 0.65]",
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "median_frac": 0.5586080586080586,
+        "band": [
+          0.4,
+          0.65
+        ],
+        "median_tau4_offset": 305.0,
+        "D": 546
+      }
+    },
+    {
+      "id": "P18",
+      "name": "median_tau4_mid_band",
+      "statement": "On the same surface, median(Tau4) / D(r) lies in [0.4, 0.65] (median sits in chamber mid-band).",
+      "falsifier": "any evaluated row with median_frac outside [0.4, 0.65]",
+      "segment": "4e8-5e8",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "median_frac": 0.5271002710027101,
+        "band": [
+          0.4,
+          0.65
+        ],
+        "median_tau4_offset": 389.0,
+        "D": 738
+      }
+    },
+    {
+      "id": "P18",
+      "name": "median_tau4_mid_band",
+      "statement": "On the same surface, median(Tau4) / D(r) lies in [0.4, 0.65] (median sits in chamber mid-band).",
+      "falsifier": "any evaluated row with median_frac outside [0.4, 0.65]",
+      "segment": "4e8-5e8/o_q=2",
+      "r": 468917503,
+      "offset": 542,
+      "o_q": 2,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "median_frac": 0.4833948339483395,
+        "band": [
+          0.4,
+          0.65
+        ],
+        "median_tau4_offset": 262.0,
+        "D": 542
+      }
+    },
+    {
+      "id": "P18",
+      "name": "median_tau4_mid_band",
+      "statement": "On the same surface, median(Tau4) / D(r) lies in [0.4, 0.65] (median sits in chamber mid-band).",
+      "falsifier": "any evaluated row with median_frac outside [0.4, 0.65]",
+      "segment": "4e8-5e8/o_q=4",
+      "r": 482342527,
+      "offset": 486,
+      "o_q": 4,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "median_frac": 0.5576131687242798,
+        "band": [
+          0.4,
+          0.65
+        ],
+        "median_tau4_offset": 271.0,
+        "D": 486
+      }
+    },
+    {
+      "id": "P18",
+      "name": "median_tau4_mid_band",
+      "statement": "On the same surface, median(Tau4) / D(r) lies in [0.4, 0.65] (median sits in chamber mid-band).",
+      "falsifier": "any evaluated row with median_frac outside [0.4, 0.65]",
+      "segment": "4e8-5e8/o_q=6",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "median_frac": 0.5271002710027101,
+        "band": [
+          0.4,
+          0.65
+        ],
+        "median_tau4_offset": 389.0,
+        "D": 738
+      }
+    }
+  ],
+  "residual_claims": [
+    {
+      "id": "RC12",
+      "claim": "First-quarter tau4 mass: on segment utilization maxima through 4e8-5e8 and the full o_q branch-max panel, |{k in Tau4 : k <= floor(D/4)}| / |Tau4| >= 0.15.",
+      "status": "holds",
+      "linked_prediction": "P16",
+      "evidence": {
+        "primary_rows": [
+          {
+            "segment": "3e7-1e8",
+            "r": 82357433,
+            "offset": 540,
+            "o_q": null,
+            "tau4_count": 63,
+            "first_tau4_offset": 10,
+            "last_tau4_offset": 532,
+            "first_quarter_count": 16,
+            "first_quarter_mass": 0.25396825396825395,
+            "last_quarter_count": 15,
+            "last_quarter_mass": 0.23809523809523808,
+            "median_tau4_offset": 288.0,
+            "median_frac": 0.5333333333333333,
+            "q1_cut": 135,
+            "q3_cut": 405
+          },
+          {
+            "segment": "1e8-2e8",
+            "r": 102017779,
+            "offset": 462,
+            "o_q": null,
+            "tau4_count": 52,
+            "first_tau4_offset": 2,
+            "last_tau4_offset": 460,
+            "first_quarter_count": 15,
+            "first_quarter_mass": 0.28846153846153844,
+            "last_quarter_count": 14,
+            "last_quarter_mass": 0.2692307692307692,
+            "median_tau4_offset": 207.0,
+            "median_frac": 0.44805194805194803,
+            "q1_cut": 115,
+            "q3_cut": 346
+          },
+          {
+            "segment": "2e8-3e8",
+            "r": 251066071,
+            "offset": 540,
+            "o_q": null,
+            "tau4_count": 60,
+            "first_tau4_offset": 6,
+            "last_tau4_offset": 522,
+            "first_quarter_count": 11,
+            "first_quarter_mass": 0.18333333333333332,
+            "last_quarter_count": 15,
+            "last_quarter_mass": 0.25,
+            "median_tau4_offset": 309.0,
+            "median_frac": 0.5722222222222222,
+            "q1_cut": 135,
+            "q3_cut": 405
+          },
+          {
+            "segment": "3e8-4e8",
+            "r": 358018553,
+            "offset": 546,
+            "o_q": null,
+            "tau4_count": 64,
+            "first_tau4_offset": 4,
+            "last_tau4_offset": 536,
+            "first_quarter_count": 13,
+            "first_quarter_mass": 0.203125,
+            "last_quarter_count": 18,
+            "last_quarter_mass": 0.28125,
+            "median_tau4_offset": 305.0,
+            "median_frac": 0.5586080586080586,
+            "q1_cut": 136,
+            "q3_cut": 409
+          },
+          {
+            "segment": "4e8-5e8",
+            "r": 424171123,
+            "offset": 738,
+            "o_q": 6,
+            "tau4_count": 96,
+            "first_tau4_offset": 3,
+            "last_tau4_offset": 730,
+            "first_quarter_count": 28,
+            "first_quarter_mass": 0.2916666666666667,
+            "last_quarter_count": 23,
+            "last_quarter_mass": 0.23958333333333334,
+            "median_tau4_offset": 389.0,
+            "median_frac": 0.5271002710027101,
+            "q1_cut": 184,
+            "q3_cut": 553
+          }
+        ],
+        "oq_panel": [
+          {
+            "segment": "4e8-5e8/o_q=2",
+            "r": 468917503,
+            "offset": 542,
+            "o_q": 2,
+            "tau4_count": 60,
+            "first_tau4_offset": 4,
+            "last_tau4_offset": 522,
+            "first_quarter_count": 20,
+            "first_quarter_mass": 0.3333333333333333,
+            "last_quarter_count": 12,
+            "last_quarter_mass": 0.2,
+            "median_tau4_offset": 262.0,
+            "median_frac": 0.4833948339483395,
+            "q1_cut": 135,
+            "q3_cut": 406
+          },
+          {
+            "segment": "4e8-5e8/o_q=4",
+            "r": 482342527,
+            "offset": 486,
+            "o_q": 4,
+            "tau4_count": 53,
+            "first_tau4_offset": 16,
+            "last_tau4_offset": 480,
+            "first_quarter_count": 12,
+            "first_quarter_mass": 0.22641509433962265,
+            "last_quarter_count": 15,
+            "last_quarter_mass": 0.2830188679245283,
+            "median_tau4_offset": 271.0,
+            "median_frac": 0.5576131687242798,
+            "q1_cut": 121,
+            "q3_cut": 364
+          },
+          {
+            "segment": "4e8-5e8/o_q=6",
+            "r": 424171123,
+            "offset": 738,
+            "o_q": 6,
+            "tau4_count": 96,
+            "first_tau4_offset": 3,
+            "last_tau4_offset": 730,
+            "first_quarter_count": 28,
+            "first_quarter_mass": 0.2916666666666667,
+            "last_quarter_count": 23,
+            "last_quarter_mass": 0.23958333333333334,
+            "median_tau4_offset": 389.0,
+            "median_frac": 0.5271002710027101,
+            "q1_cut": 184,
+            "q3_cut": 553
+          }
+        ],
+        "bound": 0.15,
+        "min_observed": 0.18333333333333332
+      }
+    },
+    {
+      "id": "RC13",
+      "claim": "Last-quarter tau4 mass: |{k in Tau4 : k > floor(3D/4)}| / |Tau4| >= 0.15 on the same surface (tau4 is not confined to the early chamber alone as mass).",
+      "status": "holds",
+      "linked_prediction": "P17",
+      "evidence": {
+        "primary_rows": [
+          {
+            "segment": "3e7-1e8",
+            "r": 82357433,
+            "offset": 540,
+            "o_q": null,
+            "tau4_count": 63,
+            "first_tau4_offset": 10,
+            "last_tau4_offset": 532,
+            "first_quarter_count": 16,
+            "first_quarter_mass": 0.25396825396825395,
+            "last_quarter_count": 15,
+            "last_quarter_mass": 0.23809523809523808,
+            "median_tau4_offset": 288.0,
+            "median_frac": 0.5333333333333333,
+            "q1_cut": 135,
+            "q3_cut": 405
+          },
+          {
+            "segment": "1e8-2e8",
+            "r": 102017779,
+            "offset": 462,
+            "o_q": null,
+            "tau4_count": 52,
+            "first_tau4_offset": 2,
+            "last_tau4_offset": 460,
+            "first_quarter_count": 15,
+            "first_quarter_mass": 0.28846153846153844,
+            "last_quarter_count": 14,
+            "last_quarter_mass": 0.2692307692307692,
+            "median_tau4_offset": 207.0,
+            "median_frac": 0.44805194805194803,
+            "q1_cut": 115,
+            "q3_cut": 346
+          },
+          {
+            "segment": "2e8-3e8",
+            "r": 251066071,
+            "offset": 540,
+            "o_q": null,
+            "tau4_count": 60,
+            "first_tau4_offset": 6,
+            "last_tau4_offset": 522,
+            "first_quarter_count": 11,
+            "first_quarter_mass": 0.18333333333333332,
+            "last_quarter_count": 15,
+            "last_quarter_mass": 0.25,
+            "median_tau4_offset": 309.0,
+            "median_frac": 0.5722222222222222,
+            "q1_cut": 135,
+            "q3_cut": 405
+          },
+          {
+            "segment": "3e8-4e8",
+            "r": 358018553,
+            "offset": 546,
+            "o_q": null,
+            "tau4_count": 64,
+            "first_tau4_offset": 4,
+            "last_tau4_offset": 536,
+            "first_quarter_count": 13,
+            "first_quarter_mass": 0.203125,
+            "last_quarter_count": 18,
+            "last_quarter_mass": 0.28125,
+            "median_tau4_offset": 305.0,
+            "median_frac": 0.5586080586080586,
+            "q1_cut": 136,
+            "q3_cut": 409
+          },
+          {
+            "segment": "4e8-5e8",
+            "r": 424171123,
+            "offset": 738,
+            "o_q": 6,
+            "tau4_count": 96,
+            "first_tau4_offset": 3,
+            "last_tau4_offset": 730,
+            "first_quarter_count": 28,
+            "first_quarter_mass": 0.2916666666666667,
+            "last_quarter_count": 23,
+            "last_quarter_mass": 0.23958333333333334,
+            "median_tau4_offset": 389.0,
+            "median_frac": 0.5271002710027101,
+            "q1_cut": 184,
+            "q3_cut": 553
+          }
+        ],
+        "oq_panel": [
+          {
+            "segment": "4e8-5e8/o_q=2",
+            "r": 468917503,
+            "offset": 542,
+            "o_q": 2,
+            "tau4_count": 60,
+            "first_tau4_offset": 4,
+            "last_tau4_offset": 522,
+            "first_quarter_count": 20,
+            "first_quarter_mass": 0.3333333333333333,
+            "last_quarter_count": 12,
+            "last_quarter_mass": 0.2,
+            "median_tau4_offset": 262.0,
+            "median_frac": 0.4833948339483395,
+            "q1_cut": 135,
+            "q3_cut": 406
+          },
+          {
+            "segment": "4e8-5e8/o_q=4",
+            "r": 482342527,
+            "offset": 486,
+            "o_q": 4,
+            "tau4_count": 53,
+            "first_tau4_offset": 16,
+            "last_tau4_offset": 480,
+            "first_quarter_count": 12,
+            "first_quarter_mass": 0.22641509433962265,
+            "last_quarter_count": 15,
+            "last_quarter_mass": 0.2830188679245283,
+            "median_tau4_offset": 271.0,
+            "median_frac": 0.5576131687242798,
+            "q1_cut": 121,
+            "q3_cut": 364
+          },
+          {
+            "segment": "4e8-5e8/o_q=6",
+            "r": 424171123,
+            "offset": 738,
+            "o_q": 6,
+            "tau4_count": 96,
+            "first_tau4_offset": 3,
+            "last_tau4_offset": 730,
+            "first_quarter_count": 28,
+            "first_quarter_mass": 0.2916666666666667,
+            "last_quarter_count": 23,
+            "last_quarter_mass": 0.23958333333333334,
+            "median_tau4_offset": 389.0,
+            "median_frac": 0.5271002710027101,
+            "q1_cut": 184,
+            "q3_cut": 553
+          }
+        ],
+        "bound": 0.15,
+        "min_observed": 0.2
+      }
+    },
+    {
+      "id": "RC14",
+      "claim": "Median tau4 mid-band: median(Tau4) / D(r) lies in [0.4, 0.65] on the same surface.",
+      "status": "holds",
+      "linked_prediction": "P18",
+      "evidence": {
+        "primary_rows": [
+          {
+            "segment": "3e7-1e8",
+            "r": 82357433,
+            "offset": 540,
+            "o_q": null,
+            "tau4_count": 63,
+            "first_tau4_offset": 10,
+            "last_tau4_offset": 532,
+            "first_quarter_count": 16,
+            "first_quarter_mass": 0.25396825396825395,
+            "last_quarter_count": 15,
+            "last_quarter_mass": 0.23809523809523808,
+            "median_tau4_offset": 288.0,
+            "median_frac": 0.5333333333333333,
+            "q1_cut": 135,
+            "q3_cut": 405
+          },
+          {
+            "segment": "1e8-2e8",
+            "r": 102017779,
+            "offset": 462,
+            "o_q": null,
+            "tau4_count": 52,
+            "first_tau4_offset": 2,
+            "last_tau4_offset": 460,
+            "first_quarter_count": 15,
+            "first_quarter_mass": 0.28846153846153844,
+            "last_quarter_count": 14,
+            "last_quarter_mass": 0.2692307692307692,
+            "median_tau4_offset": 207.0,
+            "median_frac": 0.44805194805194803,
+            "q1_cut": 115,
+            "q3_cut": 346
+          },
+          {
+            "segment": "2e8-3e8",
+            "r": 251066071,
+            "offset": 540,
+            "o_q": null,
+            "tau4_count": 60,
+            "first_tau4_offset": 6,
+            "last_tau4_offset": 522,
+            "first_quarter_count": 11,
+            "first_quarter_mass": 0.18333333333333332,
+            "last_quarter_count": 15,
+            "last_quarter_mass": 0.25,
+            "median_tau4_offset": 309.0,
+            "median_frac": 0.5722222222222222,
+            "q1_cut": 135,
+            "q3_cut": 405
+          },
+          {
+            "segment": "3e8-4e8",
+            "r": 358018553,
+            "offset": 546,
+            "o_q": null,
+            "tau4_count": 64,
+            "first_tau4_offset": 4,
+            "last_tau4_offset": 536,
+            "first_quarter_count": 13,
+            "first_quarter_mass": 0.203125,
+            "last_quarter_count": 18,
+            "last_quarter_mass": 0.28125,
+            "median_tau4_offset": 305.0,
+            "median_frac": 0.5586080586080586,
+            "q1_cut": 136,
+            "q3_cut": 409
+          },
+          {
+            "segment": "4e8-5e8",
+            "r": 424171123,
+            "offset": 738,
+            "o_q": 6,
+            "tau4_count": 96,
+            "first_tau4_offset": 3,
+            "last_tau4_offset": 730,
+            "first_quarter_count": 28,
+            "first_quarter_mass": 0.2916666666666667,
+            "last_quarter_count": 23,
+            "last_quarter_mass": 0.23958333333333334,
+            "median_tau4_offset": 389.0,
+            "median_frac": 0.5271002710027101,
+            "q1_cut": 184,
+            "q3_cut": 553
+          }
+        ],
+        "oq_panel": [
+          {
+            "segment": "4e8-5e8/o_q=2",
+            "r": 468917503,
+            "offset": 542,
+            "o_q": 2,
+            "tau4_count": 60,
+            "first_tau4_offset": 4,
+            "last_tau4_offset": 522,
+            "first_quarter_count": 20,
+            "first_quarter_mass": 0.3333333333333333,
+            "last_quarter_count": 12,
+            "last_quarter_mass": 0.2,
+            "median_tau4_offset": 262.0,
+            "median_frac": 0.4833948339483395,
+            "q1_cut": 135,
+            "q3_cut": 406
+          },
+          {
+            "segment": "4e8-5e8/o_q=4",
+            "r": 482342527,
+            "offset": 486,
+            "o_q": 4,
+            "tau4_count": 53,
+            "first_tau4_offset": 16,
+            "last_tau4_offset": 480,
+            "first_quarter_count": 12,
+            "first_quarter_mass": 0.22641509433962265,
+            "last_quarter_count": 15,
+            "last_quarter_mass": 0.2830188679245283,
+            "median_tau4_offset": 271.0,
+            "median_frac": 0.5576131687242798,
+            "q1_cut": 121,
+            "q3_cut": 364
+          },
+          {
+            "segment": "4e8-5e8/o_q=6",
+            "r": 424171123,
+            "offset": 738,
+            "o_q": 6,
+            "tau4_count": 96,
+            "first_tau4_offset": 3,
+            "last_tau4_offset": 730,
+            "first_quarter_count": 28,
+            "first_quarter_mass": 0.2916666666666667,
+            "last_quarter_count": 23,
+            "last_quarter_mass": 0.23958333333333334,
+            "median_tau4_offset": 389.0,
+            "median_frac": 0.5271002710027101,
+            "q1_cut": 184,
+            "q3_cut": 553
+          }
+        ],
+        "band": [
+          0.4,
+          0.65
+        ],
+        "min_observed": 0.44805194805194803,
+        "max_observed": 0.5722222222222222
+      }
+    },
+    {
+      "id": "RC2_retained",
+      "claim": "Fixed near-540 band D(r) in [528, 552] on segment utilization maxima is not a law.",
+      "status": "falsified",
+      "linked_prediction": "P6 (prior)",
+      "evidence": {
+        "segment": "4e8-5e8",
+        "r": 424171123,
+        "offset": 738
+      }
+    },
+    {
+      "id": "RC9_RC11_retained",
+      "claim": "Prior residual RC9-RC11 (early-half mass, late-span, max desert) retained as measured holds; not re-proved.",
+      "status": "holds (retained; not re-evaluated as primary surface)",
+      "linked_prediction": "P13-P15 (prior)",
+      "evidence": {
+        "path": "/Users/velocityworks/pgs-hourly/prime-gap-structure/experiments/square-branch-hourly-2026-07-10-rc9/offset_540_rc9_prediction_table.json",
+        "conclusion": {
+          "RC9_early_half_tau4_mass": "holds",
+          "RC10_late_span_tau4": "holds",
+          "RC11_no_large_tau4_desert": "holds",
+          "RC2_fixed_band": "falsified (retained)",
+          "RC6_RC8": "retained holds (not primary surface)",
+          "min_early_half_mass": 0.41509433962264153,
+          "min_late_span": 0.9630996309963099,
+          "max_gap_frac": 0.08118081180811808,
+          "falsified_new_predictions": [],
+          "advance_over_prior_hour": "New residual claim table RC9-RC11: early-half tau4 mass, late-span tau4 presence, and max inter-tau4 gap bound on util maxima + o_q panel; does not restate RC6-RC8 as sole deliverable."
+        }
+      }
+    }
+  ],
+  "conclusion": {
+    "RC12_first_quarter_tau4_mass": "holds",
+    "RC13_last_quarter_tau4_mass": "holds",
+    "RC14_median_tau4_mid_band": "holds",
+    "RC2_fixed_band": "falsified (retained)",
+    "RC9_RC11": "retained holds (not primary surface)",
+    "min_first_quarter_mass": 0.18333333333333332,
+    "min_last_quarter_mass": 0.2,
+    "median_frac_range": [
+      0.44805194805194803,
+      0.5722222222222222
+    ],
+    "falsified_new_predictions": [],
+    "advance_over_prior_hour": "New residual claim table RC12-RC14: first-quarter tau4 mass, last-quarter tau4 mass, and median mid-band on util maxima + o_q panel; does not restate RC9-RC11 as sole deliverable."
+  },
+  "falsification_command": "python3 experiments/square-branch-hourly-2026-07-11-rc12/offset_540_residual_rc12_probe.py"
+}

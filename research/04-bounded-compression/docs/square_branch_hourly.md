@@ -948,7 +948,7 @@ Research status:
 ADVANCE
 
 Ops status:
-OK
+FAILED
 
 Delta:
 new falsification regime through max_prime=500000000
@@ -958,3 +958,57 @@ Artifacts:
 
 Next step:
 Structural audit of recurring offset 540 on new extremal rows if no counterexample.
+
+## 2026-07-11T03:06:57Z run
+
+Mechanism:
+PGS-native structural audit of recurring offset 540 and early-tau=4 /
+late-tau=3 chamber separation — next residual after RC9–RC11.
+
+Method:
+Read latest falsification summary
+`square_branch_dynamic_cutoff_search_4e8_5e8/..._summary.json` and
+`prefix_tau_floor_probe.json` (SDA-invalidation note only). Produced residual
+claim table RC12–RC14 with minimal probe under
+`experiments/square-branch-hourly-2026-07-11-rc12/`. Did not port d=4 SDA.
+Did not restate RC9–RC11 as the sole deliverable.
+
+Objects: ordered chamber prefix before selected square `w=r^2`; divisor-count
+field `tau`; offset `D(r)`; Tau4 offset set; first-quarter / last-quarter mass
+and median location of Tau4.
+
+Result:
+RC12 first-quarter τ4 mass ≥ 0.15: **holds** (min 0.1833 on 2e8–3e8 util max).
+RC13 last-quarter τ4 mass ≥ 0.15: **holds** (min 0.2000 on o_q=2 branch max).
+RC14 median τ4 / D ∈ [0.40, 0.65]: **holds** (observed [0.448, 0.572]).
+RC2 fixed near-540 band: retained **falsified**.
+RC9–RC11: retained holds (not primary surface).
+d=4 SDA remains invalidated. Theorem: Prime-Square Proximity remains proved in
+`PROOF.md`; residual audit only.
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.95s
+```
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New residual claim table RC12–RC14 (first-quarter τ4 mass, last-quarter τ4 mass,
+median mid-band) with explicit falsification command on util maxima + o_q panel
+through 4e8–5e8.
+
+Artifacts:
+`experiments/square-branch-hourly-2026-07-11-rc12/offset_540_residual_rc12_probe.py`;
+`experiments/square-branch-hourly-2026-07-11-rc12/offset_540_rc12_prediction_table.json`;
+`experiments/square-branch-hourly-2026-07-11-rc12/FINDINGS.md`;
+`research/04-bounded-compression/docs/square_branch_hourly.md`
+
+Next step:
+Queue falsification `5e8–6e8`, or re-check RC12–RC14 on any new util / o_q
+branch maximum. Do not promote RC12–RC14 to theorem status.
