@@ -1351,7 +1351,7 @@ Research status:
 ADVANCE
 
 Ops status:
-OK
+FAILED
 
 Delta:
 new falsification regime through max_prime=500000000
@@ -1361,3 +1361,62 @@ Artifacts:
 
 Next step:
 Structural audit of recurring offset 540 on new extremal rows if no counterexample.
+
+## 2026-07-11T22:05:56Z run
+
+Mechanism:
+PGS-native structural audit of recurring offset 540 and early-tau=4 /
+late-tau=3 chamber separation (Dual L1 and tau4 span residuals RC18–RC20).
+
+Method:
+Read falsification summary
+`research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_4e8_5e8/square_branch_dynamic_cutoff_search_summary.json`
+and `experiments/square-branch-sda-invalidation-2026-06/prefix_tau_floor_probe.json`.
+Built minimal probe under `experiments/square-branch-hourly-2026-07-11-rc18/`
+recomputing Dual(r)=(first_τ4, trail_gap) on segment utilization maxima through
+4e8–5e8 and the full o_q∈{2,4,6} branch-max panel. New residual claims (not a
+restatement of RC15–RC17 componentwise bounds):
+- P22/RC18: Dual L1 = first_τ4 + trail_gap ≤ 24
+- P23/RC19: (last_τ4 − first_τ4)/(D−1) ≥ 0.95
+- P24/RC20: (first_τ4 + trail_gap)/D ≤ 0.05
+RC2 fixed near-540 band retained falsified; d=4 SDA not revived. Prime-square
+proximity remains unresolved in PROOF.md (audit only).
+
+Result:
+All three new residual claims hold on the evaluated surface (8 rows: 5 util
+maxima + 3 o_q panel).
+- dual_l1 range: [4, 24] (tight at near-540 util max r=251066071 and o_q=2
+  r=468917503)
+- span_frac range: [0.9567, 0.9935]
+- dual_l1_rel range: [0.0087, 0.0453]
+- near_540 count: 4; near_540 dual_l1 range: [14, 24]
+- util max 4e8–5e8 still D=738 (RC2 falsified)
+Falsification command:
+`python3 experiments/square-branch-hourly-2026-07-11-rc18/offset_540_residual_rc18_probe.py`
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 3.23s
+```
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New residual claim table RC18–RC20 (Dual L1 envelope, tau4 support span
+fraction, relative Dual L1) with explicit falsification command; not a prose
+restatement of RC15–RC17.
+
+Artifacts:
+`experiments/square-branch-hourly-2026-07-11-rc18/offset_540_residual_rc18_probe.py`;
+`experiments/square-branch-hourly-2026-07-11-rc18/offset_540_rc18_prediction_table.json`;
+`experiments/square-branch-hourly-2026-07-11-rc18/FINDINGS.md`;
+`research/04-bounded-compression/docs/square_branch_hourly.md`
+
+Next step:
+Queue falsification `5e8–6e8` (or re-check RC15–RC20 on any new util maximum).
+Do not promote Dual L1 / span fraction to theorem; keep RC2 falsified.
