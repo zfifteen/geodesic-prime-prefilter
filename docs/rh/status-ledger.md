@@ -4,12 +4,15 @@ The status order is fixed:
 
 ```text
 divisor counts -> PGS local theorems -> DNI-to-zeta compression
--> source-to-spectral placement target -> pole placement/RH sentence
+-> (optional) further source laws still free of zeros
+-> only then source-to-spectral transfer, if forced by source
+-> only then pole placement/RH sentence, if transfer closes
 ```
 
 Read every RH-facing claim through that order. The integer object comes first.
-The analytic sentence comes after exact compression and the unresolved
-source-to-spectral placement target.
+The analytic sentence is **downstream only**. It must not drive experiment
+design. Binding contract:
+[research/19-rh-corpus/FRAME_CONTRACT.md](../../research/19-rh-corpus/FRAME_CONTRACT.md).
 
 ## Sources
 
@@ -117,8 +120,8 @@ Such poles could be global analytic properties of the same zeta-compressed
 source rather than signs of an extra source object.
 
 The remaining bridge is source-first but genuinely analytic: derive a
-source-to-spectral placement theorem from PGS chamber geometry and the
-$Z=1$ / $E=0$ return law, or derive an equivalent RH-strength constraint such
+source-first summatory law that forces a reading of continued $R$, or leave
+placement unresolved. Do not invent an RH-strength constraint such
 as a sharp bound for `psi(x)-x`.
 
 ## Explanatory Consequence
@@ -129,7 +132,9 @@ The source order changes how RH-facing language is read:
 
 ```text
 divisor counts -> PGS local theorems -> DNI-to-zeta compression
--> source-to-spectral placement target -> pole placement/RH sentence
+-> (optional) further source laws free of zeros
+-> only then source-to-spectral transfer, if forced
+-> only then pole placement/RH sentence, if transfer closes
 ```
 
 The pole-placement language is downstream of the source and compression

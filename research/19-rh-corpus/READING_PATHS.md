@@ -3,6 +3,9 @@
 Curated routes through [FINDINGS_INDEX.md](./FINDINGS_INDEX.md). Each path
 lists **RH-###** IDs in order. Read boundaries on each row before citing publicly.
 
+**Hard frame:** [FRAME_CONTRACT.md](./FRAME_CONTRACT.md). Paths that touch L5/L6
+are for status literacy only. They are not task drivers for new research.
+
 ---
 
 ## Public / X thread (integer-first, no overclaim)
@@ -42,17 +45,18 @@ lists **RH-###** IDs in order. Read boundaries on each row before citing publicl
 
 ---
 
-## Placement geometry researcher
+## Chamber / source geometry researcher
 
-**Audience:** Extending source-to-spectral work  
-**Time:** 1 to 2 hours
+**Audience:** Extending **integer** chamber laws (GWR, budgets, d=4 geometry)  
+**Time:** 1 to 2 hours  
+**Driver:** source geometry. Not “resolve RH.” Not “design spectral kernels.”
 
 1. [RH-002](../../PROOF.md), [RH-003](../../PROOF.md). GWR + bounded compression  
-2. [RH-030](../pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md), [RH-031](../pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md), [RH-032](../pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md). Proved d=4 corollaries  
+2. [RH-030](../pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md), [RH-031](../pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md), [RH-032](../pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md). Proved d=4 *chamber* corollaries  
 3. [RH-034](../pgs-rh-placement-empirics-2026-06/pgs_chamber_budget_summary_1000000.md), [RH-071](../pgs-rh-placement-empirics-2026-06/pgs_d4_frac_pos_falsification_10000000.json). Measured sweeps  
-4. [RH-035](../pgs-rh-placement-empirics-2026-06/source_to_spectral_transfer_lemma.md). Transfer lemma draft  
-5. [RH-033](../pgs-rh-placement-empirics-2026-06/pgs_d4_frac_pos_falsification_1000000.json). What **not** to pursue (uniform ½)  
-6. [RH-080](../../lean-4/PGS/Placement.lean), [RH-081](../../lean-4/pgs-rh-placement-invariants.lean). Lean mirrors  
+4. [RH-033](../pgs-rh-placement-empirics-2026-06/pgs_d4_frac_pos_falsification_1000000.json). What **not** to pursue (uniform ½ as critical-line rhyme)  
+5. [RH-080](../../lean-4/PGS/Placement.lean), [RH-081](../../lean-4/pgs-rh-placement-invariants.lean). Lean mirrors  
+6. [RH-035](../pgs-rh-placement-empirics-2026-06/source_to_spectral_transfer_lemma.md). Draft transfer notes: **read last, dormant**; source-first redesign only if a new source law exists  
 
 **Canonical folder:** [pgs-rh-placement-empirics-2026-06](../pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md)
 
@@ -73,8 +77,8 @@ lists **RH-###** IDs in order. Read boundaries on each row before citing publicl
 2. [RH-010](../../docs/rh/dni-to-zeta-compression.md) to [RH-012](../../docs/rh/dni-to-zeta-compression.md). Coordinates  
 3. [RH-020](../../docs/rh/dni-to-zeta-compression.md) to [RH-022](../../docs/rh/pole-placement.md), [RH-105](./empirics/zeta_compression_probe.py). Compression + empiric  
 4. [RH-041](../../experiments/integer-order-before-zeta-whitepaper-2026-07/WHITEPAPER.md), [RH-042](../../docs/essays/the-riemann-hypothesis-is-obsolete.md). Public essays
-5. [RH-040](../18-derived-half-coefficient/docs/half-scale-correspondence-hypothesis.md). Hypothesis lane (labeled)  
-6. [RH-060](../../docs/rh/explicit-formula-bridge.md). Explicit formula (downstream)  
+5. [RH-040](../18-derived-half-coefficient/docs/half-scale-correspondence-hypothesis.md). **Quarantined** half-scale rhyme (not a work target)  
+6. [RH-060](../../docs/rh/explicit-formula-bridge.md). Explicit formula (**translation only**)  
 
 **Spine:** [docs/rh/README.md](../../docs/rh/README.md)
 

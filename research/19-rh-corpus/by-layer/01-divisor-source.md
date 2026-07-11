@@ -47,7 +47,7 @@ Chapter home: [04-bounded-compression](../../04-bounded-compression/README.md)
 |---------|--------|---------|
 | F18-001 derived $\tfrac12$ | proved | [RH-006](../FINDINGS_INDEX.md) |
 | F18-002 finite $C(q)$ audit | measured | [RH-070](../FINDINGS_INDEX.md) |
-| F18-003 half-scale correspondence | hypothesis | [RH-040](../FINDINGS_INDEX.md) |
+| F18-003 half-scale correspondence | hypothesis / **quarantined** | [RH-040](../FINDINGS_INDEX.md) |
 | F18-004 rough-witness signature | measured | [RH-103](../FINDINGS_INDEX.md) |
 
 F18-004 matters for compression exposition: it shows **non-square** near-maximal

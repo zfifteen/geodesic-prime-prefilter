@@ -1,11 +1,17 @@
 # Reviewer Map
 
+**Hard rule:** PGS is upstream; RH is downstream only. Binding contract:
+[research/19-rh-corpus/FRAME_CONTRACT.md](../../research/19-rh-corpus/FRAME_CONTRACT.md).
+Fail the review if the page designs from zeros, poles, or RH back into PGS.
+
 Check the bundle in this order:
 
 ```text
 divisor counts -> zero-excess returns -> local theorems
--> DNI-to-zeta compression -> source-to-spectral placement target
--> pole placement/RH sentence
+-> DNI-to-zeta compression
+-> (optional) further source laws free of zeros
+-> only then source-to-spectral transfer, if forced
+-> only then pole placement/RH sentence, if transfer closes
 ```
 
 The review question is not whether each page says something RH-adjacent. The

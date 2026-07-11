@@ -3,9 +3,11 @@
 **Date**: 2026-06-15  
 **Status**: Proved lemmas (Phases 1 to 5) + measured finite-base anchor + falsification harness
 
-This note proves the d=4 carrier geometry feeding the source-to-spectral transfer
-lemma. `PROOF.md` controls the Interior Maximizer Theorem; this document proves
-corollaries on the d=4 packet class.
+This note proves the d=4 **chamber** geometry (integer gap placement). It does
+not prove RH and must not be read as a spectral-transfer driver. A related
+transfer draft exists but is **dormant** as a live RH path
+(`source_to_spectral_transfer_lemma.md`). `PROOF.md` controls the Interior
+Maximizer Theorem; this document proves corollaries on the d=4 packet class.
 
 ---
 

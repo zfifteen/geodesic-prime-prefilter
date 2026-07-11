@@ -1,10 +1,14 @@
-# Layer 5: Pole placement / RH sentence
+# Layer 5: Pole placement / RH sentence (downstream catalog only)
 
 **Status mix:** `unresolved`, `narrative`  
-**Proves RH?** This layer **is** the RH target: still **open**
+**Proves RH?** No; the RH sentence is **open**  
+**May drive new work?** **No.** This layer catalogs a downstream reading. It
+must not set experiment design. Hard rule: [FRAME_CONTRACT.md](../FRAME_CONTRACT.md).
 
-After exact compression (L3), the Riemann Hypothesis becomes a **pole-placement
-sentence** for the continued DNI ratio. Nothing in L1 to L4 currently closes this.
+After exact compression (L3), the Riemann Hypothesis *would be* a
+**pole-placement sentence** for the continued DNI ratio *if* a source law forced
+that placement. Nothing in L1 to L4 currently forces it. Do not reverse the
+arrow and design from this sentence backward into PGS.
 
 ---
 
@@ -56,13 +60,13 @@ placement routes failed and what a valid source-to-spectral theorem must exclude
 
 ## Conditional map (honest framing)
 
-If a future **source-to-spectral placement theorem** ([RH-035](../FINDINGS_INDEX.md)) closes, then:
+Only if a future **source-first** summatory law exists, and only if a transfer
+from that law to continued $R$ is proved, would the RH sentence follow. The
+draft [RH-035](../FINDINGS_INDEX.md) kernel is **dormant** (not a live path) until
+redesigned from bulk source operators without RH as the design driver.
 
-1. Local GWR chamber invariants constrain summatory error terms.
-2. Pole locus of $R(s)$ inherits those constraints after continuation.
-3. RH sentence ([RH-051](../FINDINGS_INDEX.md)) would follow **only along that proof route**.
-
-No such theorem is proved today.
+No such theorem is proved today. Closing RH is not the acceptance test for
+L1 to L4 work.
 
 ### What deterministic gap structure does **not** imply (today)
 
@@ -70,7 +74,7 @@ No such theorem is proved today.
 |-------------|----------------|
 | $w-p\le C(q)$ | Zeros on $\operatorname{Re}(s)=\tfrac12$ |
 | $D(s)=\zeta(s)^2$ exact | Placement of nontrivial poles of $R$ |
-| F18-001 factor $\tfrac12$ | Critical-line theorem ([RH-040](../FINDINGS_INDEX.md) remains hypothesis) |
+| F18-001 factor $\tfrac12$ | Critical-line theorem ([RH-040](../FINDINGS_INDEX.md) quarantined hypothesis) |
 | d=4 $\mathrm{frac\_pos}$ bounds | Uniform half-line placement (falsified: [RH-033](../FINDINGS_INDEX.md)) |
 | Multi-s partial sums ([RH-105](../FINDINGS_INDEX.md)) | Analytic continuation or RH |
 

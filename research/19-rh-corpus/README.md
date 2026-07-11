@@ -7,12 +7,17 @@ content stays in [PROOF.md](../../PROOF.md), [docs/rh/](../../docs/rh/README.md)
 linked research folders below. This hub indexes those sources with stable IDs,
 status labels, and boundaries.
 
+**Hard frame rule:** PGS is upstream; RH is downstream only.
+See [FRAME_CONTRACT.md](./FRAME_CONTRACT.md). This is a requirement, not a
+preference. RH must not drive experiment design.
+
 ## Start here
 
-1. [START_HERE.md](./START_HERE.md), five-minute orientation
-2. [FINDINGS_INDEX.md](./FINDINGS_INDEX.md), master table (primary navigation)
-3. [SOURCE_STACK.md](./SOURCE_STACK.md), layer diagram and claim types
-4. [READING_PATHS.md](./READING_PATHS.md), curated routes by audience
+1. [FRAME_CONTRACT.md](./FRAME_CONTRACT.md), **hard frame rule**
+2. [START_HERE.md](./START_HERE.md), five-minute orientation
+3. [FINDINGS_INDEX.md](./FINDINGS_INDEX.md), master table (primary navigation)
+4. [SOURCE_STACK.md](./SOURCE_STACK.md), layer diagram and claim types
+5. [READING_PATHS.md](./READING_PATHS.md), curated routes by audience
 
 ## Browse by status
 
@@ -34,9 +39,9 @@ status labels, and boundaries.
 | 1. Divisor source | [by-layer/01-divisor-source.md](./by-layer/01-divisor-source.md) |
 | 2. DNI coordinate | [by-layer/02-dni-coordinate.md](./by-layer/02-dni-coordinate.md) |
 | 3. Zeta compression | [by-layer/03-zeta-compression.md](./by-layer/03-zeta-compression.md) |
-| 4. Placement geometry | [by-layer/04-placement-geometry.md](./by-layer/04-placement-geometry.md) |
-| 5. Pole placement / RH | [by-layer/05-pole-placement-rh.md](./by-layer/05-pole-placement-rh.md) |
-| 6. Explicit formula | [by-layer/06-explicit-formula-bridge.md](./by-layer/06-explicit-formula-bridge.md) |
+| 4. Chamber / source geometry | [by-layer/04-placement-geometry.md](./by-layer/04-placement-geometry.md) |
+| 5. Pole placement / RH (downstream catalog only) | [by-layer/05-pole-placement-rh.md](./by-layer/05-pole-placement-rh.md) |
+| 6. Explicit formula (translation only) | [by-layer/06-explicit-formula-bridge.md](./by-layer/06-explicit-formula-bridge.md) |
 
 ## Public narrative spine (not duplicated here)
 
@@ -49,8 +54,8 @@ Use this hub for **program navigation**; use [docs/rh/](../../docs/rh/README.md)
 | Chapter / folder | RH role |
 |------------------|---------|
 | [04-bounded-compression](../04-bounded-compression/README.md) | Cramér-scale witness bound (source) |
-| [18-derived-half-coefficient](../18-derived-half-coefficient/README.md) | Derived ½ coefficient + F18-003 hypothesis |
-| [pgs-rh-placement-empirics-2026-06](../pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md) | d=4 placement geometry + audits |
+| [18-derived-half-coefficient](../18-derived-half-coefficient/README.md) | Derived ½ coefficient (F18-001); F18-003 quarantined hypothesis |
+| [pgs-rh-placement-empirics-2026-06](../pgs-rh-placement-empirics-2026-06/d4_fractional_position_bound.md) | d=4 *chamber* geometry + audits (not RH driver) |
 | [12-rh-bridge](../12-rh-bridge/README.md) | Archived pointer only |
 | [experiments/integer-order-before-zeta-whitepaper-2026-07](../../experiments/integer-order-before-zeta-whitepaper-2026-07/README.md) | Public explanatory whitepaper |
 
@@ -105,3 +110,4 @@ Flagship public demo (whitepaper companion):
 - **2026-07-08:** Chapter created to consolidate scattered RH-facing findings.
 - **2026-07-08:** Population pass: layer docs expanded, RH-103 to 105 indexed, whitepaper §10 to 12, L3 empiric.
 - **2026-07-09:** Curation pass: 39-row index consistency; multi-s RH-105 artifact; L4 GWR geometry + L6 formal chain; whitepaper status table hub-linked.
+- **2026-07-11:** Frame audit: [FRAME_CONTRACT.md](./FRAME_CONTRACT.md); RH-upstream designs quarantined; L5/L6 marked catalog/translation only.

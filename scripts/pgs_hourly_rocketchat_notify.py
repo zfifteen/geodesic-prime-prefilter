@@ -77,6 +77,36 @@ def rest_login(base: str, username: str, password: str) -> tuple[str, str]:
     return data["authToken"], data["userId"]
 
 
+def resolve_operator_auth(base: str, secrets: dict[str, str]) -> tuple[str, str]:
+    """
+    IMP-20: prefer personal access token + user id; fall back to password login.
+
+    Keys (same as RC operator):
+      ROCKETCHAT_OPERATOR_TOKEN + ROCKETCHAT_OPERATOR_USER_ID
+      (aliases: ROCKETCHAT_BOT_TOKEN / ROCKETCHAT_BOT_USER_ID)
+      else ROCKETCHAT_OPERATOR_USERNAME + ROCKETCHAT_OPERATOR_PASSWORD
+    """
+    token = (
+        secrets.get("ROCKETCHAT_OPERATOR_TOKEN")
+        or secrets.get("ROCKETCHAT_BOT_TOKEN")
+        or ""
+    ).strip()
+    uid = (
+        secrets.get("ROCKETCHAT_OPERATOR_USER_ID")
+        or secrets.get("ROCKETCHAT_BOT_USER_ID")
+        or ""
+    ).strip()
+    if token and uid:
+        return token, uid
+    user = (secrets.get("ROCKETCHAT_OPERATOR_USERNAME") or "grok").strip()
+    password = secrets.get("ROCKETCHAT_OPERATOR_PASSWORD") or ""
+    if not password:
+        raise RuntimeError(
+            "need ROCKETCHAT_OPERATOR_TOKEN+USER_ID or ROCKETCHAT_OPERATOR_PASSWORD"
+        )
+    return rest_login(base, user, password)
+
+
 def resolve_room_id(base: str, token: str, uid: str, channel_name: str) -> str:
     """Resolve a public channel or private group by name."""
     name = channel_name.lstrip("#")
@@ -491,6 +521,37 @@ def post_message(base: str, token: str, uid: str, room_id: str, text: str) -> st
     return str(mid) if mid else ""
 
 
+def acquire_post_lock(lock_path: Path, timeout_s: float = 30.0) -> bool:
+    """Single-flight lock so concurrent notify processes cannot double-post."""
+    import time
+
+    lock_path.parent.mkdir(parents=True, exist_ok=True)
+    deadline = time.time() + timeout_s
+    while time.time() < deadline:
+        try:
+            fd = os.open(str(lock_path), os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o644)
+            os.write(fd, str(os.getpid()).encode())
+            os.close(fd)
+            return True
+        except FileExistsError:
+            try:
+                age = time.time() - lock_path.stat().st_mtime
+                if age > 120:
+                    lock_path.unlink(missing_ok=True)
+                    continue
+            except OSError:
+                pass
+            time.sleep(0.2)
+    return False
+
+
+def release_post_lock(lock_path: Path) -> None:
+    try:
+        lock_path.unlink(missing_ok=True)
+    except OSError:
+        pass
+
+
 def message_fingerprint(text: str) -> str:
     """Stable hash of the memo body (secondary dedupe only)."""
     normalized = "\n".join(line.rstrip() for line in text.strip().splitlines())
@@ -501,14 +562,13 @@ def activation_key(run: dict[str, Any]) -> str:
     """
     Identity of one hourly activation, independent of memo wording.
 
-    Same job_id + activated_at = same hour. Reformatting or --force alone
-    must not create a second channel post for that hour.
+    Same job_id + activated_at = same hour. Reformatting, filling completed_at
+    later, or --force alone must not create a second channel post for that hour.
+    (Including completed_at caused double posts when last_run was rewritten mid-hour.)
     """
     job_id = str(run.get("job_id") or "").strip() or "unknown-job"
     activated = str(run.get("activated_at") or "").strip() or "unknown-time"
-    # completed_at distinguishes a true re-run that rewrote last_run in place.
-    completed = str(run.get("completed_at") or "").strip()
-    raw = f"{job_id}|{activated}|{completed}"
+    raw = f"{job_id}|{activated}"
     return hashlib.sha256(raw.encode("utf-8")).hexdigest()
 
 
@@ -571,51 +631,82 @@ def main(argv: list[str] | None = None) -> int:
         body_fp = message_fingerprint(text)
         act_key = activation_key(run)
         prior = load_post_state(state_path)
+        lock_path = state_path.with_suffix(state_path.suffix + ".lock")
 
-        # Primary: never post twice for the same activation (same hour/job).
-        prior_act = prior.get("activation_key") or ""
-        if prior_act and prior_act == act_key and not force_same_activation:
-            print(
-                "pgs-hourly-rc: skip already-posted activation "
-                f"(job={run.get('job_id')} activated={run.get('activated_at')} "
-                f"prior_msg={prior.get('msg_id')})"
-            )
+        if not acquire_post_lock(lock_path):
+            print("pgs-hourly-rc: skip — could not acquire post lock (another notify running)")
             return 0
+        try:
+            # Re-read state under lock (another process may have just posted).
+            prior = load_post_state(state_path)
 
-        # Secondary: skip identical body text even across activations if forced reword.
-        if not force_body and not force_same_activation and prior.get("fingerprint") == body_fp:
-            print(
-                "pgs-hourly-rc: skip duplicate memo body "
-                f"(fingerprint={body_fp[:12]} prior_msg={prior.get('msg_id')})"
+            # Primary: never post twice for the same activation (same hour/job).
+            prior_act = prior.get("activation_key") or ""
+            if prior_act and prior_act == act_key and not force_same_activation:
+                print(
+                    "pgs-hourly-rc: skip already-posted activation "
+                    f"(job={run.get('job_id')} activated={run.get('activated_at')} "
+                    f"prior_msg={prior.get('msg_id')})"
+                )
+                return 0
+
+            # Secondary: skip identical body text even across activations.
+            if (
+                not force_body
+                and not force_same_activation
+                and prior.get("fingerprint") == body_fp
+            ):
+                print(
+                    "pgs-hourly-rc: skip duplicate memo body "
+                    f"(fingerprint={body_fp[:12]} prior_msg={prior.get('msg_id')})"
+                )
+                return 0
+
+            # Claim the activation *before* the network post so a crash mid-post
+            # still blocks a second attempt (prefer one missed over a double).
+            if not force_same_activation:
+                save_post_state(
+                    state_path,
+                    {
+                        **prior,
+                        "activation_key": act_key,
+                        "fingerprint": body_fp,
+                        "claim_at": datetime.now(timezone.utc).strftime(
+                            "%Y-%m-%dT%H:%M:%SZ"
+                        ),
+                        "msg_id": prior.get("msg_id"),
+                        "job_id": run.get("job_id"),
+                        "activated_at": run.get("activated_at"),
+                        "last_run_path": str(last_run_path),
+                        "status": "claiming",
+                    },
+                )
+
+            secrets = load_env(secrets_path)
+            token, uid = resolve_operator_auth(base, secrets)
+            room_id = resolve_room_id(base, token, uid, channel)
+            mid = post_message(base, token, uid, room_id, text)
+            save_post_state(
+                state_path,
+                {
+                    "posted_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                    "fingerprint": body_fp,
+                    "activation_key": act_key,
+                    "msg_id": mid,
+                    "channel": channel,
+                    "job_id": run.get("job_id"),
+                    "activated_at": run.get("activated_at"),
+                    "completed_at": run.get("completed_at"),
+                    "research_status": run.get("research_status"),
+                    "ops_status": run.get("ops_status"),
+                    "last_run_path": str(last_run_path),
+                    "status": "posted",
+                },
             )
+            print(f"pgs-hourly-rc: posted to #{channel} msg_id={mid}")
             return 0
-
-        secrets = load_env(secrets_path)
-        token, uid = rest_login(
-            base,
-            secrets["ROCKETCHAT_OPERATOR_USERNAME"],
-            secrets["ROCKETCHAT_OPERATOR_PASSWORD"],
-        )
-        room_id = resolve_room_id(base, token, uid, channel)
-        mid = post_message(base, token, uid, room_id, text)
-        save_post_state(
-            state_path,
-            {
-                "posted_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-                "fingerprint": body_fp,
-                "activation_key": act_key,
-                "msg_id": mid,
-                "channel": channel,
-                "job_id": run.get("job_id"),
-                "activated_at": run.get("activated_at"),
-                "completed_at": run.get("completed_at"),
-                "research_status": run.get("research_status"),
-                "ops_status": run.get("ops_status"),
-                "last_run_path": str(last_run_path),
-            },
-        )
-        print(f"pgs-hourly-rc: posted to #{channel} msg_id={mid}")
-        return 0
+        finally:
+            release_post_lock(lock_path)
     except Exception as exc:  # noqa: BLE001 - notify must not kill research hours
         print(f"pgs-hourly-rc: notify failed: {exc}", file=sys.stderr)
         return 1

@@ -1,10 +1,13 @@
-# Layer 6: Explicit formula bridge
+# Layer 6: Explicit formula bridge (translation only)
 
 **Status mix:** `narrative`  
-**Proves RH?** No: downstream translation for reviewers
+**Proves RH?** No  
+**May drive new work?** **No.** Downstream translation for reviewers only.
+Hard rule: [FRAME_CONTRACT.md](../FRAME_CONTRACT.md).
 
 Layer 6 restates the compressed ratio $R(s)$ in classical prime-counting language:
-von Mangoldt coefficients, Chebyshev $\psi(x)$, and zero/error terms.
+von Mangoldt coefficients, Chebyshev $\psi(x)$, and zero/error terms. It does
+not authorize designing PGS experiments from $\Lambda$, $\psi$, or zero sums.
 
 **Authority:** [docs/rh/explicit-formula-bridge.md](../../../docs/rh/explicit-formula-bridge.md)
 

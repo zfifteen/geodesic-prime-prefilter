@@ -3,12 +3,17 @@
 The object starts with divisor counts and prime-gap interiors because those are
 the integer records that exist before any zeta or RH vocabulary is introduced.
 
+**Hard rule:** this order is mandatory. RH is never upstream of PGS. Contract:
+[research/19-rh-corpus/FRAME_CONTRACT.md](../../research/19-rh-corpus/FRAME_CONTRACT.md).
+
 The required order is:
 
 ```text
 divisor counts -> zero-excess returns -> local theorems
--> DNI-to-zeta compression -> source-to-spectral placement target
--> pole placement/RH sentence
+-> DNI-to-zeta compression
+-> (optional) further source laws free of zeros
+-> only then source-to-spectral transfer, if forced by source
+-> only then pole placement/RH sentence, if transfer closes
 ```
 
 ## Arithmetic Objects First
