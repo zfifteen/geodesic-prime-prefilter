@@ -25,6 +25,10 @@ Default posture is refusal until the work is clean.
 - Unresolved states written as if solved
 - Progress theater and over-claiming
 - Shape failures listed in AGENTS.md
+- **Verified / validated / program-level measured-pass language without an
+  executed `10^18` evidence surface** (`AGENTS.md` **Mandatory 10^18 Evidence
+  Surface**). Also reject rewriting proved theorems as "only verified at
+  `10^18`."
 
 ## Output contract
 

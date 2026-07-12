@@ -31,6 +31,9 @@ observable object -> ordinary-language mechanism -> project term -> formal defin
 - Preserve state separation: theorem / implementation / measured / audit /
   hypothesis / unresolved / invalidated.
 - Do not hedge proved PGS laws with "likely", "suggests", "empirical", etc.
+- Never upgrade unit/smoke or mid-scale runs to verified / validated /
+  program-level measured-pass language without an executed `10^18` surface
+  (`AGENTS.md` **Mandatory 10^18 Evidence Surface**).
 - Never use en dashes.
 
 ## Output contract
