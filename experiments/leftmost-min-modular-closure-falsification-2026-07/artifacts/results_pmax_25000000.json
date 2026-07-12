@@ -1,0 +1,234 @@
+{
+  "status": "measured",
+  "not_a_theorem": true,
+  "source_share": "https://x.com/i/grok/share/1f4cf4bbb79542c3af9957e0dd043553",
+  "moduli_M_v1": [
+    2,
+    3,
+    5,
+    7,
+    30,
+    210,
+    2310
+  ],
+  "zero_threshold": 4,
+  "selectors": {
+    "gwr": "leftmost interior n with minimal tau",
+    "alt_a_rightmost_min": "rightmost interior n with minimal tau (global min-tau, leftmost bias removed)",
+    "alt_a_unique_only": "single global min-tau n only when ties==1; else unresolved",
+    "alt_b_first": "first interior p+1 (no tau minimization)"
+  },
+  "mismatch_definition": "z(w) >= 4 and g > 2",
+  "regime": {
+    "left_prime_min": 11,
+    "left_prime_max_inclusive": 25000000,
+    "gaps_scanned": 1565923,
+    "unique_only_unresolved_gaps": 987444,
+    "seconds": 51.047
+  },
+  "counts_by_selector": {
+    "gwr": {
+      "gaps": 1565923,
+      "z4": 43170,
+      "hit_twin": 43168,
+      "mismatch": 2,
+      "ties_differ_from_gwr": 0,
+      "twin_rate_among_z4": 0.999954
+    },
+    "alt_a_rightmost_min": {
+      "gaps": 1565923,
+      "z4": 43168,
+      "hit_twin": 43168,
+      "mismatch": 0,
+      "ties_differ_from_gwr": 987444,
+      "twin_rate_among_z4": 1.0
+    },
+    "alt_a_unique_only": {
+      "gaps": 1565923,
+      "z4": 43168,
+      "hit_twin": 43168,
+      "mismatch": 0,
+      "ties_differ_from_gwr": 0,
+      "twin_rate_among_z4": 1.0
+    },
+    "alt_b_first": {
+      "gaps": 1565923,
+      "z4": 195788,
+      "hit_twin": 43168,
+      "mismatch": 152620,
+      "ties_differ_from_gwr": 0,
+      "twin_rate_among_z4": 0.220483
+    }
+  },
+  "sample_mismatches": {
+    "gwr": [
+      {
+        "p": 17666309,
+        "q": 17666317,
+        "g": 8,
+        "w": 17666310,
+        "tau_w": 16,
+        "z": 4
+      },
+      {
+        "p": 22284029,
+        "q": 22284037,
+        "g": 8,
+        "w": 22284030,
+        "tau_w": 16,
+        "z": 4
+      }
+    ],
+    "alt_a_rightmost_min": [],
+    "alt_a_unique_only": [],
+    "alt_b_first": [
+      {
+        "p": 89,
+        "q": 97,
+        "g": 8,
+        "w": 90,
+        "tau_w": 12,
+        "z": 4
+      },
+      {
+        "p": 359,
+        "q": 367,
+        "g": 8,
+        "w": 360,
+        "tau_w": 24,
+        "z": 4
+      },
+      {
+        "p": 389,
+        "q": 397,
+        "g": 8,
+        "w": 390,
+        "tau_w": 16,
+        "z": 4
+      },
+      {
+        "p": 449,
+        "q": 457,
+        "g": 8,
+        "w": 450,
+        "tau_w": 18,
+        "z": 4
+      },
+      {
+        "p": 479,
+        "q": 487,
+        "g": 8,
+        "w": 480,
+        "tau_w": 24,
+        "z": 4
+      },
+      {
+        "p": 509,
+        "q": 521,
+        "g": 12,
+        "w": 510,
+        "tau_w": 16,
+        "z": 4
+      },
+      {
+        "p": 719,
+        "q": 727,
+        "g": 8,
+        "w": 720,
+        "tau_w": 30,
+        "z": 4
+      },
+      {
+        "p": 839,
+        "q": 853,
+        "g": 14,
+        "w": 840,
+        "tau_w": 32,
+        "z": 6
+      },
+      {
+        "p": 929,
+        "q": 937,
+        "g": 8,
+        "w": 930,
+        "tau_w": 16,
+        "z": 4
+      },
+      {
+        "p": 1109,
+        "q": 1117,
+        "g": 8,
+        "w": 1110,
+        "tau_w": 16,
+        "z": 4
+      },
+      {
+        "p": 1259,
+        "q": 1277,
+        "g": 18,
+        "w": 1260,
+        "tau_w": 36,
+        "z": 6
+      },
+      {
+        "p": 1409,
+        "q": 1423,
+        "g": 14,
+        "w": 1410,
+        "tau_w": 16,
+        "z": 4
+      },
+      {
+        "p": 1439,
+        "q": 1447,
+        "g": 8,
+        "w": 1440,
+        "tau_w": 36,
+        "z": 4
+      },
+      {
+        "p": 1499,
+        "q": 1511,
+        "g": 12,
+        "w": 1500,
+        "tau_w": 24,
+        "z": 4
+      },
+      {
+        "p": 1559,
+        "q": 1567,
+        "g": 8,
+        "w": 1560,
+        "tau_w": 32,
+        "z": 4
+      }
+    ]
+  },
+  "decisions": {
+    "H_absolute_universal_z4_implies_g2": {
+      "status": "invalidated",
+      "gwr_mismatch_count": 2,
+      "note": "Universal Super-Signal already invalidated in PROOF.md; status here is reconfirm-only on this regime."
+    },
+    "H_comparative_selector_necessity": {
+      "status": "falsified",
+      "gwr_mismatch": 2,
+      "alt_a_rightmost_min_mismatch": 0,
+      "alt_a_unique_only_mismatch": 0,
+      "alt_b_first_mismatch": 152620,
+      "any_alt_strictly_fewer_than_gwr": true,
+      "alt_a_rightmost_strictly_fewer": true,
+      "alt_a_unique_strictly_fewer": true,
+      "alt_b_strictly_fewer": false,
+      "alt_a_rightmost_at_least_one": false,
+      "alt_b_at_least_one": true
+    }
+  },
+  "pinned_ce_visibility": {
+    "expected_when_p_max_ge": 22284029,
+    "seen": {
+      "17666309": true,
+      "22284029": true
+    }
+  }
+}
