@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leftmost Min Modular Closure Falsification</title>
+<style>
+:root {
+  --bg: #f7f6f3;
+  --fg: #1a1a1a;
+  --card: #ffffff;
+  --border: #d6d3cd;
+  --accent: #0b3d5c;
+  --muted: #5c6570;
+  --inv: #8b1e1e;
+  --hyp: #5b21b6;
+  --meas: #0f5c4c;
+  --ok: #166534;
+  --warn: #854d0e;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1419;
+    --fg: #e8eaed;
+    --card: #1a222c;
+    --border: #334155;
+    --accent: #7db7d9;
+    --muted: #94a3b8;
+    --inv: #f87171;
+    --hyp: #c4b5fd;
+    --meas: #5eead4;
+    --ok: #4ade80;
+    --warn: #fbbf24;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.55;
+  background: var(--bg);
+  color: var(--fg);
+  padding: 2rem 1.25rem 3rem;
+}
+.wrap { max-width: 920px; margin: 0 auto; }
+h1 {
+  font-size: 1.65rem;
+  line-height: 1.25;
+  color: var(--accent);
+  margin: 0 0 0.5rem;
+}
+h2 {
+  font-size: 1.15rem;
+  color: var(--accent);
+  margin: 2rem 0 0.65rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.3rem;
+}
+h3 { font-size: 1rem; margin: 1.25rem 0 0.4rem; }
+p { margin: 0 0 0.85rem; }
+.meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 1.25rem;
+}
+.lead {
+  font-size: 1.08rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--inv);
+  border-radius: 6px;
+  padding: 1.1rem 1.25rem;
+  margin: 0 0 1.5rem;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem 1.15rem;
+  margin: 0 0 1rem;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  margin: 0.5rem 0 1rem;
+  background: var(--card);
+}
+th, td {
+  border: 1px solid var(--border);
+  padding: 0.45rem 0.55rem;
+  text-align: left;
+  vertical-align: top;
+}
+th { background: rgba(11, 61, 92, 0.08); }
+code, .mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.88em;
+}
+.tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.12rem 0.45rem;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  margin-right: 0.25rem;
+}
+.tag.inv { color: var(--inv); border-color: var(--inv); }
+.tag.hyp { color: var(--hyp); border-color: var(--hyp); }
+.tag.meas { color: var(--meas); border-color: var(--meas); }
+.tag.thm { color: var(--ok); border-color: var(--ok); }
+.tag.audit { color: var(--warn); border-color: var(--warn); }
+.tag.pass { color: var(--ok); border-color: var(--ok); }
+ul, ol { margin: 0.3rem 0 1rem 1.2rem; padding: 0; }
+li { margin: 0.25rem 0; }
+.note {
+  font-size: 0.92rem;
+  color: var(--muted);
+  border-left: 3px solid var(--border);
+  padding: 0.55rem 0.85rem;
+  margin: 0.75rem 0 1rem;
+}
+pre {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  overflow-x: auto;
+  font-size: 0.85rem;
+}
+footer {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Leftmost Min Modular Closure Falsification</h1>
+<p class="meta">
+  Share Core Insight package &nbsp;&middot;&nbsp;
+  Source: <a href="https://x.com/i/grok/share/1f4cf4bbb79542c3af9957e0dd043553">x.com/i/grok/share/1f4cf4bbb79542c3af9957e0dd043553</a>
+  &nbsp;&middot;&nbsp; Local transcript: <code>scratch/core_insight_share_transcript.txt</code>
+  &nbsp;&middot;&nbsp; Folder: <code>experiments/leftmost-min-modular-closure-falsification-2026-07/</code>
+  &nbsp;&middot;&nbsp; 2026-07-11
+</p>
+
+<div class="lead">
+  <p style="margin:0">
+    <strong>Bottom line.</strong>
+    The share claimed that picking the leftmost minimum divisor-count interior point
+    (GWR) turns a high remainder-zero count into a gap-closure rule, and that other
+    witness rules lose that power.
+  </p>
+  <p style="margin:0.75rem 0 0">
+    <span class="tag inv">invalidated</span>
+    Absolute forcing <code>z(GWR) &gt;= 4 =&gt; g = 2</code> remains dead
+    (<code>PROOF.md</code> Super-Signal; reconfirmed here).
+  </p>
+  <p style="margin:0.75rem 0 0">
+    <span class="tag inv">falsified</span>
+    Comparative leftness necessity is dead on <code>p &lt;= 2.5e7</code>:
+    GWR mismatches = <strong>2</strong>, rightmost min-tau = <strong>0</strong>,
+    first-interior = <strong>152620</strong>.
+  </p>
+  <p style="margin:0.75rem 0 0">
+    <span class="tag meas">mechanism</span>
+    Both Super-Signal counterexamples are multi-way min-tau ties: leftmost hits
+    <code>z = 4</code>, rightmost hits <code>z = 1</code>. Leftmost bias creates
+    those mismatches on this surface.
+  </p>
+</div>
+
+<h2>1. Observable object</h2>
+<div class="card">
+  <p>
+    Fix consecutive primes <code>p &lt; q</code> with gap size <code>g = q - p</code>.
+    The interior is the integers strictly between them.
+    Each interior integer <code>n</code> has a divisor count <code>tau(n)</code>
+    and a remainder-zero count <code>z(n)</code> on the fixed modulus vector
+    <code>M_v1 = (2, 3, 5, 7, 30, 210, 2310)</code>.
+  </p>
+  <p style="margin:0">
+    A <strong>mismatch</strong> is any gap where the chosen witness satisfies
+    <code>z(w) &gt;= 4</code> while <code>g &gt; 2</code>
+    (decision failure of "four or more zeros forces a twin gap").
+  </p>
+</div>
+
+<h2>2. Ordinary-language mechanism</h2>
+<p>
+  Inside a gap, some composites have fewer divisors than others.
+  GWR picks the <em>leftmost</em> interior integer with the smallest divisor count.
+  The share said that particular pick is what makes a high modular zero-count into
+  a reliable "the gap must already be closed" signal, and that alternative picks
+  should produce more (or at least some) mismatches.
+</p>
+<p>
+  What the decisive surface shows instead: when several interiors share the same
+  minimum tau, the leftmost of them can sit on a highly divisible primorial-aligned
+  point while a later min-tau point does not. On the two known Super-Signal false
+  positives, leftmost is the bad modular witness and rightmost is not.
+</p>
+
+<h2>3. Project terms</h2>
+<ul>
+  <li><strong>GWR / Leftmost Minimum-Divisor Rule:</strong> leftmost interior <code>n</code> achieving min <code>tau</code>.</li>
+  <li><strong>Remainder-zero count <code>z(w)</code>:</strong> how many moduli in <code>M_v1</code> divide <code>w</code>.</li>
+  <li><strong>Super-Signal (historical):</strong> universal claim <code>z(GWR) &gt;= 4 =&gt; g = 2</code>.</li>
+  <li><strong>Selectors:</strong>
+    GWR (leftmost min-tau);
+    alt-A (rightmost min-tau);
+    alt-A unique-only (fires only when ties = 1);
+    alt-B (first interior <code>p + 1</code>).
+  </li>
+</ul>
+
+<h2>4. Formal claims under test</h2>
+<p>See <a href="HYPOTHESIS.md">HYPOTHESIS.md</a> and <a href="FINDINGS.md">FINDINGS.md</a>.</p>
+<table>
+  <thead>
+    <tr><th>ID</th><th>Claim</th><th>Status after experiment</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>H-absolute</code></td>
+      <td>If GWR <code>w</code> has <code>z(w) &gt;= 4</code>, then <code>g = 2</code>.</td>
+      <td><span class="tag inv">invalidated</span> Already in <code>PROOF.md</code>; reconfirmed (2 GWR mismatches on <code>p &lt;= 2.5e7</code>).</td>
+    </tr>
+    <tr>
+      <td><code>H-comparative</code></td>
+      <td>Leftmost is necessary: alts produce at least one mismatch in multi-thousand-gap regimes, and neither alt has strictly fewer mismatches than GWR.</td>
+      <td><span class="tag inv">falsified</span> Alt-A has 0 mismatches while GWR has 2; alt-A also has 0 mismatches on multi-thousand-gap bands below the CE window.</td>
+    </tr>
+    <tr>
+      <td>Modular zero lemma</td>
+      <td><code>z(w) &gt;= 4 &lt;=&gt; 30 | w</code> on <code>M_v1</code>.</td>
+      <td><span class="tag thm">theorem</span> Untouched.</td>
+    </tr>
+    <tr>
+      <td>GWR maximizer / next-prime</td>
+      <td>Proved pillars in <code>PROOF.md</code>.</td>
+      <td><span class="tag thm">theorem</span> Untouched; not demoted.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>5. Protocol</h2>
+<div class="card">
+  <ol>
+    <li>Build primes and the <code>tau</code> field on a finite interval (field prep only; not inference).</li>
+    <li>For every consecutive gap with left prime in <code>[11, p_max]</code>, compute GWR, alt-A, alt-B (and unique-only arm).</li>
+    <li>Count z4, twin hits, and mismatches per selector.</li>
+    <li>Decision rules are pre-registered in <code>HYPOTHESIS.md</code> and <code>probe_selectors.py</code>.</li>
+  </ol>
+  <p style="margin:0"><strong>Repro (main workspace):</strong></p>
+  <pre class="mono" style="white-space:pre-wrap; margin:0.5rem 0 0">python3 -m pytest experiments/leftmost-min-modular-closure-falsification-2026-07/test_probe_selectors.py -q
+python3 experiments/leftmost-min-modular-closure-falsification-2026-07/probe_selectors.py --p-max 100000
+python3 experiments/leftmost-min-modular-closure-falsification-2026-07/probe_selectors.py --p-max 2000000
+python3 experiments/leftmost-min-modular-closure-falsification-2026-07/probe_selectors.py --p-max 25000000</pre>
+</div>
+
+<h2>6. Measured results</h2>
+<p>
+  <span class="tag meas">measured</span>
+  Exact regimes only. Not a <code>10^18</code> surface.
+  Do not use verified / validated language for these runs.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Regime (left prime max)</th>
+      <th>Gaps</th>
+      <th>GWR mismatch</th>
+      <th>Alt-A mismatch</th>
+      <th>Alt-B mismatch</th>
+      <th>Decision labels</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>5e4</code></td>
+      <td>5,129</td>
+      <td>0</td>
+      <td>0</td>
+      <td>421</td>
+      <td>H-absolute: not_falsified_in_tested_regime; H-comparative: falsified_zero_mismatch_arm</td>
+    </tr>
+    <tr>
+      <td><code>1e5</code></td>
+      <td>9,588</td>
+      <td>0</td>
+      <td>0</td>
+      <td>791</td>
+      <td>same</td>
+    </tr>
+    <tr>
+      <td><code>2e6</code></td>
+      <td>148,929</td>
+      <td>0</td>
+      <td>0</td>
+      <td>13,708</td>
+      <td>same (GWR bare FPs still empty on this band)</td>
+    </tr>
+    <tr>
+      <td><code>2e7</code></td>
+      <td>1,270,603</td>
+      <td>1</td>
+      <td>0</td>
+      <td>123,393</td>
+      <td>H-absolute: invalidated; H-comparative: falsified (alt-A fewer)</td>
+    </tr>
+    <tr>
+      <td><code>2.5e7</code></td>
+      <td>1,565,923</td>
+      <td><strong>2</strong></td>
+      <td><strong>0</strong></td>
+      <td><strong>152,620</strong></td>
+      <td>H-absolute: <strong>invalidated</strong>; H-comparative: <strong>falsified</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="card">
+  <h3 style="margin-top:0">Pinned GWR mismatches and tie mechanism</h3>
+  <p style="margin:0">
+    <code>p=17666309</code>, <code>q=17666317</code>, <code>g=8</code>, GWR <code>w=17666310</code>, <code>tau=16</code>, <code>z=4</code><br>
+    <code>p=22284029</code>, <code>q=22284037</code>, <code>g=8</code>, GWR <code>w=22284030</code>, <code>tau=16</code>, <code>z=4</code>
+  </p>
+  <p style="margin:0.65rem 0 0">
+    Both are Super-Signal certificates in <code>PROOF.md</code>.
+    Min-tau is tied across several interiors.
+    Leftmost min hits the high-z witness; rightmost min picks a different min-tau
+    point with <code>z = 1</code> (no mismatch). Unique-only declines to fire (ties &gt; 1).
+    Gaps where rightmost min differs from GWR on the 25e6 surface: 987,444 of 1,565,923.
+  </p>
+</div>
+
+<p class="note">
+  Artifacts: <code>artifacts/results_pmax_*.json</code> in this folder.
+  Verifier: unit tests 5 passed; mid-regime counts match implementer (PASS).
+</p>
+
+<h2>7. Status-separated interpretation</h2>
+<table>
+  <thead>
+    <tr><th>Layer</th><th>Label</th><th>Statement</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Theorem</td>
+      <td><span class="tag thm">theorem</span></td>
+      <td>GWR maximizer, direct next-prime rule, modular zero lemma on <code>M_v1</code> remain as in <code>PROOF.md</code>.</td>
+    </tr>
+    <tr>
+      <td>Absolute forcing</td>
+      <td><span class="tag inv">invalidated</span></td>
+      <td><code>z(GWR) &gt;= 4 =&gt; g = 2</code> is false as a universal rule. Share "certify remaining interior empty" prose is not live.</td>
+    </tr>
+    <tr>
+      <td>Hypothesis U (prior)</td>
+      <td><span class="tag inv">invalidated</span></td>
+      <td>Unique min-tau + <code>z &gt;= 4 =&gt; g = 2</code> killed at <code>p = 156942923</code>. Not re-opened here.</td>
+    </tr>
+    <tr>
+      <td>Comparative leftness</td>
+      <td><span class="tag inv">falsified</span></td>
+      <td>Leftmost is not necessary for low mismatch count. Rightmost min-tau is strictly cleaner on the decisive regime.</td>
+    </tr>
+    <tr>
+      <td>Tau minimization</td>
+      <td><span class="tag meas">measured</span></td>
+      <td>First-interior produces a huge mismatch load. Non-minimal probes lose sufficiency; leftmost among minima is the part that fails the share claim.</td>
+    </tr>
+    <tr>
+      <td>Mechanism note</td>
+      <td><span class="tag hyp">hypothesis</span> / <span class="tag meas">measured</span></td>
+      <td>Super-Signal FPs sit on min-tau ties where leftmost is highly divisible and a later min is not. Causal "leftmost creates incompatibility" story from the share does not hold as stated.</td>
+    </tr>
+    <tr>
+      <td>Implementation</td>
+      <td><span class="tag meas">implementation</span></td>
+      <td>Probe, tests, FINDINGS, and artifacts are on main in this folder.</td>
+    </tr>
+    <tr>
+      <td>Verifier</td>
+      <td><span class="tag pass">PASS</span></td>
+      <td>Repro checks green on unit tests and mid regimes; claim language weaker-label only.</td>
+    </tr>
+    <tr>
+      <td>Auditor</td>
+      <td><span class="tag audit">audit</span> then <span class="tag pass">APPROVE with nits</span></td>
+      <td>Preemptive REJECT on share strong framing; re-audit of executed package: APPROVE with nits (claim split + decisive comparative kill). Do not route through May <code>core-insight-decisive-test</code> Stage 2.</td>
+    </tr>
+    <tr>
+      <td>Unresolved</td>
+      <td><span class="tag hyp">unresolved</span></td>
+      <td>Replacement residual rules; H-210 / H-tau&gt;16 at higher scale; other non-leftmost tie resolutions; rightmost zero-mismatch beyond 2.5e7.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>8. Exact limits</h2>
+<ul>
+  <li>Highest consecutive-gap regime: left prime up to <code>2.5e7</code>. Not <code>10^18</code>.</li>
+  <li>No verified / validated / program-level measured-pass language applies.</li>
+  <li>Alt-A is rightmost min-tau. When the min is unique, alt-A equals GWR; differences appear on ties.</li>
+  <li>Zero alt-A mismatches on regime D is measured absence, not a theorem that rightmost is perfect.</li>
+  <li>Classical sieves prepare primes and <code>tau</code> only. They do not choose the selector decision.</li>
+</ul>
+
+<h2>9. Package index</h2>
+<table>
+  <thead>
+    <tr><th>Path</th><th>Role</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><a href="README.md">README.md</a></td><td>Executive summary first</td></tr>
+    <tr><td><a href="FINDINGS.md">FINDINGS.md</a></td><td>Full implementer findings</td></tr>
+    <tr><td><a href="HYPOTHESIS.md">HYPOTHESIS.md</a></td><td>Formal claims and falsifiers</td></tr>
+    <tr><td><a href="experiment_design.md">experiment_design.md</a></td><td>Protocol design</td></tr>
+    <tr><td><code>probe_selectors.py</code> / <code>test_probe_selectors.py</code></td><td>Code + local tests</td></tr>
+    <tr><td><code>artifacts/results_pmax_*.json</code></td><td>Raw measured outputs</td></tr>
+    <tr><td><a href="STATUS_MAP.md">STATUS_MAP.md</a></td><td>Orchestrator merge map</td></tr>
+  </tbody>
+</table>
+
+<footer>
+  Continuity Scribe package for share <code>1f4cf4bbb79542c3af9957e0dd043553</code>.
+  State separation: theorem / implementation / measured / audit / hypothesis / unresolved / invalidated.
+  No en dashes. No verified/validated without executed 10^18 surface.
+</footer>
+
+</div>
+</body>
+</html>
