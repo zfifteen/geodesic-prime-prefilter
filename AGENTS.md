@@ -40,9 +40,14 @@ Agent definitions live at `.grok/agents/pgs-*.md`.
    - Hunts forbidden classical concepts (trial division, Miller-Rabin, probabilistic framing).
    - Rejects the draft and forces rewrite on any violation.
 3. **The Empirical Verifier (`pgs-verifier`):**
-   - Runs new logic against established evidence surfaces (e.g. `11..1000000` when applicable).
+   - Runs new logic against established evidence surfaces (e.g. `11..1000000`
+     when applicable, plus the mandatory `10^18` surface when the claim is
+     program-level verified / validated / measured-pass; see
+     **Mandatory 10^18 Evidence Surface** below).
    - Verifies zero unresolved / zero audit-failure contracts where those surfaces apply.
    - Ensures proved theorems are not broken.
+   - Refuses program-level verified / validated language without an executed
+     `10^18` evidence surface in the same package.
 4. **The Continuity Scribe (`pgs-scribe`):**
    - Enforces the writing standard and explanatory order
      (observable object -> mechanism -> project term -> formal definition).
@@ -118,6 +123,10 @@ A task with no visible review plan and no visible review outcome is incomplete.
   criteria; no scope creep; no overstated "resolved/proved/validated" language.
 - **PGS contract:** No classical inference drift; theorem / measured / audit /
   unresolved states remain separated (`PROOF.md` and `AGENTS.md` control).
+- **10^18 evidence surface:** Any program use of verified, validated, or
+  program-level measured/audit pass language requires an **executed**
+  `10^18` regime per **Mandatory 10^18 Evidence Surface**. Local-only and
+  intermediate probes must use weaker labels if they stop below `10^18`.
 - **Reproducibility:** Any command, path, count, or hash cited in the deliverable
   was run or opened; mismatches are fixed or flagged as unresolved.
 - **Regression:** Proved surfaces and tests relevant to the change still pass.
@@ -452,6 +461,120 @@ Do not convert:
 - a local toy result into an RSA-scale claim;
 - a classical shortcut into PGS language.
 
+## Mandatory 10^18 Evidence Surface
+
+**HARD RULE (non-negotiable program policy).**
+
+Everything tested in the PGS program that is presented as verified, validated,
+or as a program-level measured/audit pass must include testing at `10^18`.
+
+This section governs claim language and evidence packages. It does not change
+theorem status.
+
+### Theorem status is separate (do not conflate)
+
+`PROOF.md` universal theorems remain **theorem** under their stated hypotheses
+and finite premises.
+
+- Finite premises that complete a proof (for example exhaustive base ranges named
+  inside `PROOF.md`) stay proof machinery. They are not re-opened by this rule.
+- Audit tables and finite benchmark surfaces do **not** bound universal theorems
+  unless `PROOF.md` itself states such a bound.
+- Do not rewrite proved laws as "only verified up to `10^18`."
+- Do not use a missing `10^18` implementation surface to downgrade a proved
+  theorem.
+
+### What this rule does bind
+
+Any of the following claims require an executed `10^18` evidence surface in the
+same evidence package:
+
+- "verified"
+- "validated"
+- "validation pass"
+- "implementation validated"
+- "implementation verified"
+- "measured pass" used as program-level verification language
+- "audit pass" used as program-level verification of an implementation or regime
+- any prose that an implementation "validates" a proved theorem
+- any summary that promotes a local or mid-scale run to program-level verified
+  status
+
+Without an executed `10^18` surface, those words are forbidden for that claim.
+
+### Allowed without `10^18` (must keep weaker language)
+
+The following remain allowed when the exact tested regime is stated and the
+forbidden words above are not used:
+
+- local unit tests, smoke tests, and developer checks labeled local-only;
+- intermediate probes labeled with exact regimes (for example `11..10^6`,
+  `10^12`, `4*10^8..5*10^8`);
+- audit corroboration on a named band that does not yet reach `10^18`, labeled
+  as audit corroboration on that band only;
+- finite proof premises named inside `PROOF.md`;
+- explicit partial, blocked, or regime-bounded status.
+
+Correct weaker labels include: measured on regime R, local check, smoke,
+partial surface, audit corroboration on band B, unresolved at high scale.
+
+### Minimum `10^18` surface definition
+
+An evidence package that wants verified / validated / program-level
+measured-pass language must include at least one **executed** surface whose
+magnitude reaches `10^18`. Configured-but-not-run ladders do not count.
+
+Acceptable minimum forms (choose the one that matches the claim class):
+
+1. **Decade ladder (canonical for generator, recursive walk, and successor-style
+   claims).** Sampled consecutive primes at decade anchors that include the
+   `10^18` decade. Production reference form:
+
+   ```text
+   256 consecutive input primes per decade, decades 10^8 through 10^18
+   (11 decade anchors; 2816 primes on the committed generator surface)
+   ```
+
+   Lower full-exact surfaces (for example `11..1000000`) may accompany the
+   ladder. They do not replace the `10^18` decade requirement for verified /
+   validated language.
+
+2. **`10^18` anchor band (canonical for non-generator probes).** An executed
+   probe, audit, or catalog band whose upper magnitude is at least `10^18`
+   (window near `10^18`, retained rows at power `10^18`, or equivalent
+   high-scale band with committed artifacts).
+
+3. **Domain-specific `10^18` equivalent.** Only when the experiment contract
+   defines a concrete executed `10^18`-scale artifact and path. The contract
+   must still name magnitude `10^18` and produce auditable outputs. "We will
+   run `10^18` later" is not a surface.
+
+For multi-regime campaigns, small and mid-scale rungs may be reported as
+measured on those rungs. Program-level verified / validated language is
+available only after the `10^18` rung is executed and included.
+
+### Forbidden shortcuts
+
+- Calling a result verified or validated from `10^6`, `10^7`, or any surface
+  that stops below `10^18`.
+- Treating a planned, configured, or documented-only ladder as executed.
+- Using audit green on a small band to claim implementation validation of a
+  theorem or of a production path.
+- Inflating RH, PNT, RSA-scale, or other external classical completion claims
+  from a `10^18` measured pass. A `10^18` pass is implementation / measured /
+  audit evidence only, unless `PROOF.md` states a theorem.
+
+### Shape warning
+
+"Shape feels wrong: this is called verified or validated without an executed
+`10^18` surface."
+
+Corrective action: drop verified / validated language, state the exact weaker
+regime, or run and commit the minimum `10^18` surface before reclaiming those
+words.
+
+Machine-readable restatement: `.grok/rules/pgs-10e18-evidence-surface.md`.
+
 ## Current Evidence Surfaces
 
 Preserve major measured surfaces as implementation evidence, not theorem
@@ -460,11 +583,14 @@ boundaries.
 The current PGS generator surfaces include:
 
 - `11..1000000`: `78494 / 78494` outputted, `0` unresolved, `0` audit failures;
-- `10^8` through `10^18`: `2816 / 2816` outputted, `0` unresolved,
-  `0` audit failures.
+- `10^8` through `10^18` decade ladder: `2816 / 2816` outputted, `0` unresolved,
+  `0` audit failures (this is the committed production form of the mandatory
+  `10^18` surface for generator claims).
 
 Recursive walk, reduced-model, modulus-link, and legacy prefilter results must
-be stated with their exact tested regimes.
+be stated with their exact tested regimes. Program-level verified / validated
+language on those families still requires their own executed `10^18` surface
+under **Mandatory 10^18 Evidence Surface**.
 
 Invalidated rules must stay invalidated. The old fixed cutoff theorem
 `{2:44, 4:60, 6:60}` is false.
@@ -617,6 +743,7 @@ If you is about to write or reason from any of these, stop:
 - "Add a random fallback."
 - "Try a classical search first."
 - "The theorem is validated by the tested range."
+- "Verified / validated without an executed 10^18 surface."
 - "PGS is a prefilter."
 - "This is basically ordinary factorization."
 - "Audit confirms the inference rule."
