@@ -234,6 +234,24 @@
       font-size: 0.94rem;
     }
 
+    .supersession {
+      border: 1px solid var(--ok);
+      border-left: 5px solid var(--ok);
+      background: #f0faf3;
+      padding: 14px 16px;
+      margin: 0 0 22px;
+      max-width: 900px;
+    }
+
+    .supersession strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--ok);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 0.88rem;
+    }
+
     @media (max-width: 860px) {
       .status-grid,
       .spine,
@@ -257,51 +275,66 @@
     <header>
       <h1>The Dynamic Cutoff Conjecture for GWR/DNI Prime Walks</h1>
       <p class="dek">
-        The main bounded-compression branch asks whether the exact unbounded
-        GWR/DNI gap scan always compresses to the finite local window
-        <code>C(q) = max(64, ceil(0.5 * log(q)^2))</code>.
+        Historical branch landing page for the bounded-compression target
+        <code>C(q) = max(64, ceil(0.5 * log(q)^2))</code>. Live theorem status
+        is controlled by <code>PROOF.md</code>, not by this page title.
       </p>
     </header>
+
+    <div class="supersession" role="note">
+      <strong>Status supersession (2026-07-05)</strong>
+      <p>
+        Universal bounded compression is <strong>proved</strong> in
+        <code>PROOF.md</code>: for every consecutive prime gap with nonempty
+        interior, the GWR-selected witness satisfies
+        <code>w - p &lt;= max(64, ceil(0.5 * log(q)^2))</code>. The square
+        branch is closed by the Prime-Square Proximity Theorem. This bounds the
+        selected-witness offset <code>w - p</code>, not raw gap size
+        <code>q - p</code>, and does not by itself prove RH, PNT, or every
+        classical Cramér gap-size formulation. Filename and title retain
+        &ldquo;conjecture&rdquo; for path continuity only.
+      </p>
+    </div>
 
     <section>
       <h2>Headline State</h2>
       <p>
-        The unbounded DNI/GWR transition is exact by construction. The open
-        theorem target is the bounded compression layer: whether every
-        prime gap's selected interior witness is reached before the dynamic
-        cutoff when scanning from the known right prime <code>q</code> into
-        the next gap.
+        The unbounded DNI/GWR transition is exact by construction. The former
+        open theorem target is the bounded compression layer: every prime gap's
+        selected interior witness is reached before the dynamic cutoff. That
+        target is closed as a proved law under the hypotheses in
+        <code>PROOF.md</code>.
       </p>
       <div class="law">
-        <strong>Research question.</strong>
-        Does every prime gap's GWR/DNI-selected interior witness occur before
-        <code>C(q) = max(64, ceil(0.5 * log(q)^2))</code> when scanning from
-        the known right prime <code>q</code> into the next gap?
+        <strong>Proved law (authority: PROOF.md).</strong>
+        Every prime gap's GWR/DNI-selected interior witness occurs before
+        <code>C(q) = max(64, ceil(0.5 * log(q)^2))</code>. Object bounded:
+        selected-witness offset <code>w - p</code> only.
       </div>
 
       <div class="status-grid" aria-label="Research status separation">
         <div class="status">
           <strong>Theorem</strong>
           <p>
-            <code>PROOF.md</code> controls theorem status. The direct
-            next-prime divisor-count rule and the selected-integer GWR theorem
-            are universal.
+            <code>PROOF.md</code> controls theorem status. Direct next-prime,
+            GWR maximizer, universal bounded compression, and Prime-Square
+            Proximity are universal under stated hypotheses.
           </p>
         </div>
         <div class="status measured">
           <strong>Measured</strong>
           <p>
-            The dynamic bounded rule has no counterexample through
+            Audit corroboration: no counterexample through
             <code>q &lt;= 10^7</code> on <code>664,575</code> tested gaps, with
-            maximum exact peak offset <code>60</code>.
+            maximum exact peak offset <code>60</code>. Larger square-branch
+            sweeps remain clean through tested regimes.
           </p>
         </div>
-        <div class="status unresolved">
-          <strong>Unresolved</strong>
+        <div class="status measured">
+          <strong>Formalization</strong>
           <p>
-            Universality of the cutoff coefficient <code>0.5</code> is open.
-            The coefficient either becomes a theorem or yields a first
-            counterexample.
+            Lean 4 mirror of the prose proof is in progress. Prose mathematical
+            status is proved; machine-checked status is not yet complete.
           </p>
         </div>
         <div class="status invalidated">
