@@ -36,8 +36,8 @@ witnesses. Authority: [PROOF.md](../../PROOF.md) (2026-07-05).
 
 **Boundary.** This bounds the selected-witness offset `w - p`. It does not by
 itself prove RH, PNT, or every classical formulation of Cramér's conjecture for
-raw gap size `q - p`. A Lean 4 formalization is in progress as a machine-checked mirror. The mathematical proofs are complete.
-machine-checked derivation.
+raw gap size `q - p`. A Lean 4 formalization is in progress as a machine-checked
+mirror. The mathematical proofs are complete in `PROOF.md`.
 
 ## Measured Evidence
 
@@ -63,6 +63,15 @@ The old fixed cutoff theorem `{2:44, 4:60, 6:60}` is false. It fails at
 
 The literal prior-square Lemma A is invalidated at `q = 113`, where the exact
 witness is later square `121 = 11^2`.
+
+## 30/30/30 Technical Note
+
+Three-layer finding bundle for the Prime-Square Proximity Theorem (proved;
+square branch only; Lean formalization separate):
+
+- [30-30-30-technical-note/TECHNICAL_NOTE.md](30-30-30-technical-note/TECHNICAL_NOTE.md)
+- [30-30-30-technical-note/infographic.svg](30-30-30-technical-note/infographic.svg)
+- [30-30-30-technical-note/infographic.png](30-30-30-technical-note/infographic.png)
 
 ## Next Work
 
