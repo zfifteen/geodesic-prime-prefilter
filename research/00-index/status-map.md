@@ -73,9 +73,12 @@ generator evidence and GWR/DNI evidence without moving `src/`, `tests/`, or
 
 Status: complete.
 
-The chapter homes now preserve the dynamic-cutoff unresolved state, the fixed
-cutoff invalidation, the square-branch blocker, and the measured `d4_count`
-state-budget carrier without upgrading measured evidence to proof.
+The chapter homes now preserve **universal bounded compression as proved**
+(`PROOF.md`, 2026-07-05: selected-witness offset `w - p`, not raw gap size
+`q - p`, not RH/PNT), the fixed-cutoff invalidation, square-branch audit
+corroboration surfaces, and the measured `d4_count` state-budget carrier.
+Audit tables and falsification sweeps remain implementation evidence; they do
+not bound the universal theorem.
 
 ## Phase 5 Cryptology And RSA
 

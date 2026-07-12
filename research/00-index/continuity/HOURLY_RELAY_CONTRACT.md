@@ -38,11 +38,19 @@ non-progress outcome. Process completion alone is not success.
 
 `ADVANCE` requires a concrete artifact delta. Pytest green alone is not enough.
 
+Hourly bands below `10^18` are **audit corroboration** or **measured on band B**
+only. They do not authorize program-level verified / validated language for an
+implementation. That language still requires the mandatory executed `10^18`
+surface in root `AGENTS.md` (**Mandatory 10^18 Evidence Surface**). Hourly work
+must not promote mid-band green into theorem or program-level validation prose.
+
 ## Queue policy
 
 - Execute exactly one queue item per activation.
 - After each completed attempt (`ADVANCE`, `NO_DELTA`, `FAILED`, `UNRESOLVED`), rotate the queue so `NO_DELTA` escalates to the next frontier job.
 - Default falsification bands must extend beyond already certified regimes.
+- When a job claims high-scale behavior, prefer bands that include magnitude
+  `10^18` (or state honestly that the hour is audit-on-band only).
 
 ## Commit policy (mandatory)
 

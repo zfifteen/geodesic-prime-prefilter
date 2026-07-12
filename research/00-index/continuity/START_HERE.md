@@ -108,7 +108,8 @@ The remaining chapter homes are mapped routing surfaces:
   surfaces.
 - `research/04-bounded-compression/`: universal bounded compression (proved
   2026-07-05), Prime-Square Proximity Theorem, fixed-cutoff invalidation, audit
-  corroboration surfaces.
+  corroboration surfaces. PSP 30/30/30 note:
+  `research/04-bounded-compression/30-30-30-technical-note/TECHNICAL_NOTE.md`.
 - `research/05-state-budget/`: `d4_count` and state-budget carrier evidence,
   measured only.
 - `research/06-cryptology-rsa/`: RSA v2/v3, modulus-link, semiprime, and
@@ -140,6 +141,21 @@ When a result is unresolved, say unresolved.
 Do not let a metric, survivor count, audit pass, or plausible explanation sound
 like a proof or a solved factorization.
 
+### Mandatory 10^18 evidence surface
+
+Hard program policy (full text: root `AGENTS.md` **Mandatory 10^18 Evidence
+Surface**; short rule: `.grok/rules/pgs-10e18-evidence-surface.md`):
+
+- Program-strength **verified**, **validated**, or program-level measured/audit
+  pass language requires an **executed** `10^18` regime in the same evidence
+  package.
+- This does **not** bound or downgrade theorems in `PROOF.md`.
+- Without `10^18`, keep weaker labels: measured on regime R, local check,
+  smoke, audit corroboration on band B, unresolved at high scale.
+- Minimum forms: decade ladder including `10^18` (generator/walk class), or an
+  executed `10^18` anchor band / domain-specific `10^18` artifact.
+- A `10^18` pass does not imply RH, PNT, or RSA-scale resolution.
+
 ## Shape Warnings
 
 Warn early when drift appears:
@@ -147,6 +163,7 @@ Warn early when drift appears:
 - "Shape feels wrong: the result is unresolved but the prose sounds solved."
 - "Shape feels wrong: the code applies a classical gate before the named rule."
 - "Shape feels wrong: this is becoming progress theater."
+- "Shape feels wrong: this is called verified or validated without an executed `10^18` surface."
 - "Asshole mode detected, let's slow the frame down."
 
 The warning must name the concrete drift and the next corrective action.
@@ -388,6 +405,12 @@ Preserve the state separation:
 - proved: universal bounded compression at Cramér scale across all branches
   (`PROOF.md` Document Status); bounds selected-witness offset `w - p`, not RH/PNT
   or every classical Cramér formulation for raw gap size `q - p`.
+
+PSP three-layer technical note (plain prose, SVG, formal treatment):
+
+```text
+research/04-bounded-compression/30-30-30-technical-note/TECHNICAL_NOTE.md
+```
 
 ## Current State-Budget Hidden-State Branch
 
