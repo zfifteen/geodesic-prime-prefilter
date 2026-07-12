@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1680" viewBox="0 0 1600 1680">
+  <defs>
+    <style>
+      .bg { fill: #f7f5ef; }
+      .ink { fill: #1f2528; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+      .muted { fill: #586069; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+      .h1 { font-size: 40px; font-weight: 800; }
+      .h2 { font-size: 26px; font-weight: 800; }
+      .small { font-size: 18px; }
+      .tiny { font-size: 15px; }
+      .math { font-size: 21px; font-weight: 700; }
+      .gap { fill: #f0f4fb; stroke: #3b6fb6; stroke-width: 4; rx: 12; }
+      .sq { fill: #fff4ef; stroke: #bd5b43; stroke-width: 4; rx: 12; }
+      .row { fill: #effaf5; stroke: #238866; stroke-width: 4; rx: 12; }
+      .near { fill: #fdf9e8; stroke: #b68a1f; stroke-width: 4; rx: 12; }
+      .cap { fill: #f5effa; stroke: #7b5ea7; stroke-width: 4; rx: 12; }
+      .conc { fill: #eef8f1; stroke: #238866; stroke-width: 4; rx: 12; }
+      .box { fill: #ffffff; stroke: #d7d2c8; stroke-width: 3; rx: 12; }
+      .prime { fill: #e8f1ff; stroke: #3b6fb6; stroke-width: 3; rx: 8; }
+      .comp { fill: #fff0f0; stroke: #c45c5c; stroke-width: 3; rx: 8; }
+      .win { fill: #fff8e6; stroke: #b68a1f; stroke-width: 4; rx: 8; }
+      .arrow { stroke: #3b6fb6; stroke-width: 5; fill: none; marker-end: url(#a); }
+      .arrow-g { stroke: #b68a1f; stroke-width: 6; fill: none; marker-end: url(#b); }
+      .badge { fill: #238866; }
+      .badge-t { fill: #fff; font-size: 18px; font-weight: 700; font-family: Inter, sans-serif; }
+      .warn { fill: #faf0f0; stroke: #c45c5c; stroke-width: 3; rx: 10; }
+    </style>
+    <marker id="a" markerWidth="14" markerHeight="10" refX="13" refY="5" orient="auto"><path d="M0,0 L14,5 L0,10 Z" fill="#3b6fb6"/></marker>
+    <marker id="b" markerWidth="14" markerHeight="10" refX="13" refY="5" orient="auto"><path d="M0,0 L14,5 L0,10 Z" fill="#b68a1f"/></marker>
+  </defs>
+
+  <rect class="bg" width="1600" height="1680"/>
+
+  <text class="ink h1" x="72" y="62">Prime-Square Proximity Theorem</text>
+  <text class="muted small" x="72" y="100">Square branch: bound r² − p at Cramér scale. Witness offset, not full gap.</text>
+  <rect class="badge" x="1180" y="32" width="348" height="44" rx="8"/>
+  <text class="badge-t" x="1248" y="62">PROVED · PSP</text>
+
+  <!-- Step 1 -->
+  <rect class="gap" x="72" y="130" width="1456" height="210"/>
+  <text class="ink h2" x="108" y="174">1. Gap interior and GWR</text>
+  <text class="muted small" x="108" y="208">Consecutive primes p &lt; q. GWR: leftmost min τ(n) in the interior = witness w.</text>
+  <rect class="prime" x="140" y="240" width="80" height="56"/>
+  <rect class="comp" x="240" y="240" width="72" height="56"/>
+  <rect class="win" x="332" y="240" width="88" height="56"/>
+  <rect class="comp" x="440" y="240" width="72" height="56"/>
+  <rect class="comp" x="532" y="240" width="72" height="56"/>
+  <rect class="prime" x="624" y="240" width="80" height="56"/>
+  <text class="ink math" x="162" y="276">p</text>
+  <text class="ink math" x="354" y="276">w</text>
+  <text class="ink math" x="648" y="276">q</text>
+  <text class="muted tiny" x="780" y="260">Example: 23 | 24 25 26 27 28 | 29</text>
+  <text class="muted tiny" x="780" y="286">τ: 8, 3, 4, 4, 6 → w = 25 = 5²</text>
+
+  <path class="arrow" d="M800 350 L800 385"/>
+
+  <!-- Step 2 -->
+  <rect class="sq" x="72" y="395" width="1456" height="150"/>
+  <text class="ink h2" x="108" y="440">2. Square branch only</text>
+  <text class="ink math" x="108" y="482">τ(w) = 3  ⇒  w = r²  (prime square)</text>
+  <text class="muted small" x="108" y="518">Target: r² − p.  Not the gap length q − p.</text>
+
+  <path class="arrow" d="M800 555 L800 590"/>
+
+  <!-- Step 3 -->
+  <rect class="row" x="72" y="600" width="1456" height="170"/>
+  <text class="ink h2" x="108" y="646">3. Active rows below the square</text>
+  <text class="ink math" x="108" y="690">x_m = r² − 2m ,   m ≤ M = ⌊C(q)/2⌋</text>
+  <text class="muted small" x="108" y="730">Each row needs least prime factor ℓ_m = r − h_m  (root-straddling factorization).</text>
+
+  <path class="arrow" d="M800 780 L800 815"/>
+
+  <!-- Step 4 -->
+  <rect class="near" x="72" y="825" width="1456" height="170"/>
+  <text class="ink h2" x="108" y="872">4. Near-root exclusion</text>
+  <text class="ink math" x="108" y="916">h_m &gt; √r  on nonsymmetric M-rough rows</text>
+  <text class="muted small" x="108" y="956">Bars least factors in the continuous band just below r. (Lean: near_root_exclusion_bound)</text>
+
+  <path class="arrow-g" d="M800 1005 L800 1040"/>
+
+  <!-- Step 5 -->
+  <rect class="cap" x="72" y="1050" width="1456" height="190"/>
+  <text class="ink h2" x="108" y="1096">5. Capacity contradiction</text>
+  <text class="ink math" x="108" y="1140">If r² − p &gt; C(q):  M active rows, small-ℓ absorption insufficient</text>
+  <text class="muted small" x="108" y="1180">L_lower = M − π(M) − 2⌊√(M/2)⌋ &gt; 0 rough demand; rough slots = 0 on small m.</text>
+  <text class="muted small" x="108" y="1210">Modulus-link injectivity + partition (psp-closure Lemmas 4a to 4c).</text>
+
+  <path class="arrow-g" d="M800 1250 L800 1285"/>
+
+  <!-- Step 6 -->
+  <rect class="conc" x="72" y="1295" width="900" height="200"/>
+  <text class="ink h2" x="108" y="1342">6. Bound (key formula)</text>
+  <text class="ink math" x="108" y="1390">r² − p ≤ max(64, ⌈0.5 · (log r²)²⌉)</text>
+  <text class="ink math" x="108" y="1435">⇒  on square branch: w − p ≤ C(q)</text>
+  <text class="muted tiny" x="108" y="1470">PSP only (τ(w)=3). Full UBC needs finite base + K=128 + τ≥4 too.</text>
+
+  <rect class="warn" x="996" y="1295" width="532" height="200"/>
+  <text class="ink h2" x="1032" y="1342">Boundary</text>
+  <text class="muted small" x="1032" y="1384">Not a bound on gap q − p.</text>
+  <text class="muted small" x="1032" y="1418">Does not prove RH or PNT.</text>
+  <text class="muted small" x="1032" y="1452">Lean formalization in progress</text>
+  <text class="muted small" x="1032" y="1478">(not a theorem demotion).</text>
+
+  <rect class="box" x="72" y="1525" width="1456" height="120"/>
+  <text class="ink h2" x="108" y="1570">Authority</text>
+  <text class="muted small" x="108" y="1608">PROOF.md §PSP · docs/proof-enhancements/psp-closure · docs/RESULTS.md · research/04-bounded-compression</text>
+  <text class="muted tiny" x="108" y="1638">Proved 2026-07-05 · Headline pillar 3 component · Status badge: PROVED (prose analytic)</text>
+</svg>
