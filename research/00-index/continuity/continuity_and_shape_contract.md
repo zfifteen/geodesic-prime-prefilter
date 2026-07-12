@@ -40,7 +40,29 @@ The durable preferences are:
 - separate hypothesis, measurement, audit, and proof;
 - write important state into artifacts before chat context is lost;
 - use second-opinion model pressure deeply on high-stakes reasoning;
-- warn early when the work's shape is wrong.
+- warn early when the work's shape is wrong;
+- never call a result verified or validated without an executed `10^18`
+  evidence surface (root `AGENTS.md`, **Mandatory 10^18 Evidence Surface**).
+
+## Mandatory 10^18 Evidence Surface (continuity restatement)
+
+**HARD RULE.** Program-strength verified / validated / measured-pass language
+requires an executed surface at magnitude `10^18` in the same package.
+
+1. **Does not change theorem status.** `PROOF.md` universal theorems remain
+   theorem under stated hypotheses and finite premises.
+2. **Binds claim words.** verified, validated, validation pass, implementation
+   verified/validated, and program-level measured/audit pass language need an
+   **executed** surface at magnitude `10^18` in the same evidence package.
+3. **Minimum surface.** Decade ladder including the `10^18` decade (generator /
+   walk class), or an executed `10^18` anchor band / domain-specific
+   `10^18`-scale artifact (other probes). Configured-but-not-run ladders do not
+   count.
+4. **Weaker language without `10^18`.** Local checks, partial surfaces, and
+   audit corroboration on named bands below `10^18` remain allowed if the exact
+   regime is stated and the bound words are not used.
+5. **No classical inflation.** A `10^18` measured pass is not RH, PNT, or
+   RSA-scale resolution.
 
 ## Early Warning Language
 
@@ -49,6 +71,7 @@ Use direct, bounded warnings when drift appears:
 - "Shape feels wrong: the result is unresolved but the prose sounds solved."
 - "Shape feels wrong: this code applies a classical gate before PGS state."
 - "Shape feels wrong: we are optimizing for appearance instead of evidence."
+- "Shape feels wrong: this is called verified or validated without an executed 10^18 surface."
 - "Asshole mode detected, let's slow the frame down."
 
 The warning should name the drift and the corrective action. It should not
