@@ -2,7 +2,10 @@
 
 ## Objective
 
-The project proof bar for structural near-endpoint raw-Z peak claims is `10^18` minimum.
+The project **high-scale measured bar** for structural near-endpoint raw-Z peak
+claims is `10^18` minimum. This is an implementation / measured validation
+horizon under the program **Mandatory 10^18 Evidence Surface** in root
+`AGENTS.md`. It is not a theorem bound and does not rewrite `PROOF.md`.
 
 This document separates two different surfaces:
 
@@ -30,7 +33,7 @@ Exact full runs remain:
 - `10^6`
 - `10^7`
 
-Sampled regime bands extend by decade through the project proof bar:
+Sampled regime bands extend by decade through the project high-scale measured bar:
 
 - `10^8`
 - `10^9`

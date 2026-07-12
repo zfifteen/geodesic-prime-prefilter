@@ -10,6 +10,24 @@ It keeps three states separate:
 - generator and model surfaces validated by audit or measurement
 - empirical or legacy engineering results whose scope is exactly the tested regime
 
+## Claim language and the mandatory `10^18` surface
+
+Program policy (canonical: root `AGENTS.md` **Mandatory 10^18 Evidence Surface**;
+short rule: `.grok/rules/pgs-10e18-evidence-surface.md`):
+
+- **Theorem rows** in this map remain theorem under `PROOF.md` hypotheses and
+  finite premises. They are not bounded by finite implementation ladders.
+- **Validated / verified** language for generator, walk, probe, or audit
+  implementation claims requires an **executed** surface at magnitude `10^18`
+  in the same evidence package. The production generator reference form is the
+  decade ladder `10^8` through `10^18` (256 primes per decade; 2816 primes on
+  the committed surface).
+- Surfaces that stop below `10^18` may still be reported as measured on their
+  exact regime. They must not be summarized as program-level verified or
+  validated.
+- A `10^18` measured or audit pass is implementation evidence. It does not by
+  itself prove RH, PNT, or RSA-scale claims.
+
 ## Proved Theorem Foundation
 
 The formal proof reference is [PROOF.md](PROOF.md).
