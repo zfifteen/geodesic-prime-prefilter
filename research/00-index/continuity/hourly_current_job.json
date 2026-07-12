@@ -1,13 +1,13 @@
 {
-  "activated_at": "2026-07-12T06:05:06Z",
-  "executed_queue_index": 1,
-  "next_queue_index": 2,
+  "activated_at": "2026-07-12T09:05:06Z",
+  "executed_queue_index": 3,
+  "next_queue_index": 0,
   "job": {
-    "id": "offset-540-structural-audit",
+    "id": "chamber-reset-lemma-draft",
     "type": "grok",
-    "mechanism": "PGS-native structural audit of recurring offset 540 and early-tau=4 / late-tau=3 chamber separation",
-    "why": "Offset 540 reappears at multiple scales; formalize as chamber geometry hypothesis or falsify a concrete prediction.",
-    "instructions": "Read the latest falsification summary JSON and prefix_tau_floor_probe.json. Produce one falsifiable prediction table and, if warranted, a minimal new probe script under experiments/square-branch-hourly-*/. Do not port d=4 SDA.",
+    "mechanism": "Draft one subsection of the Chamber-Reset Endpoint Resolution Lemma on the selected-square branch",
+    "why": "Theorem pressure must target D(r) directly, not residue-only finite covers or invalidated SDA ports.",
+    "instructions": "Write at most one lemma subsection under research/04-bounded-compression/docs/ as HTML or markdown. State hypotheses, unresolved status, and one minimal falsification command. No probabilistic language.",
     "pytest": [
       "python3",
       "-m",
@@ -15,7 +15,7 @@
       "research/04-bounded-compression/tests/test_square_branch_dynamic_cutoff_search.py",
       "-q"
     ],
-    "next_step": "Run prefix tau probe variant on newest extremal rows or queue next falsification segment."
+    "next_step": "Return to falsification queue or H_CTC square-branch probe."
   },
   "ledger_path": "research/04-bounded-compression/docs/square_branch_hourly.md",
   "task_branch": "codex/hourly-square-branch"
