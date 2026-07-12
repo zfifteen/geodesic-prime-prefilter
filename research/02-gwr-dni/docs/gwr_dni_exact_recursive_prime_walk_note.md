@@ -1,12 +1,16 @@
 # Exact DNI/GWR Recursive Prime Walk
 
-This note records the current predictor state honestly.
+This note records the recursive-walk implementation and measured surfaces.
+Theorem status for the dynamic cutoff is controlled by `PROOF.md`, not by
+this walk note alone.
 
-The predictor line now has two distinct layers:
+The predictor line has two distinct layers:
 
 - an unbounded DNI/GWR next-gap oracle that is exact by construction;
 - a bounded dynamic cutoff walker that compresses the oracle to a finite scan
-  and is empirical rather than proved.
+  using the proved cutoff `C(q) = max(64, ceil(0.5 * log(q)^2))` on the
+  GWR-selected witness offset `w - p` (see `PROOF.md`; not a raw gap bound
+  `q - p`, not an RH claim).
 
 The result is implemented in:
 
@@ -364,33 +368,41 @@ The remaining extremal case is narrower:
 The new counterexample scan is therefore the canonical theorem test:
 
 - the unbounded transition is the exact reference,
-- the bounded rule is the conjectured compression,
-- the scan decides whether the compression survives each tested surface.
+- the bounded rule uses the proved dynamic cutoff from `PROOF.md`,
+- the scan is audit corroboration on finite surfaces, not the theorem boundary.
 
 ## 8. What This Does and Does Not Claim
 
 This note supports the following claims:
 
 - there is an exact deterministic DNI/GWR next-prime oracle in the repository;
-- there is an empirical bounded compression layer in the repository;
-- that bounded layer is certified on the committed exact surface through
-  `q <= 10^7`;
-- there is a built-in compare mode that can falsify that compression directly.
+- universal bounded compression of the GWR-selected witness offset is proved in
+  `PROOF.md` (2026-07-05), with square branch closed by the Prime-Square
+  Proximity Theorem;
+- the bounded walker is certified on the committed exact surface through
+  `q <= 10^7` as measured implementation evidence;
+- there is a built-in compare mode that can falsify a candidate compression
+  surface in audit mode.
 
 This note does not support the following stronger claims:
 
-- a proof that the current dynamic cutoff is sufficient at all larger primes;
+- a bound on raw consecutive-prime gap size `q - p`;
+- a proof of the Riemann Hypothesis, the Prime Number Theorem, or every
+  classical Cramér gap-size formulation;
 - a standalone $n \mapsto p_n$ formula that does not use local PGS state.
 
 So the correct present description is:
 
 - exact deterministic sequential generator on the tested surface;
 - unconditional exact transition mechanism in unbounded form;
+- proved all-scale bound on selected-witness offset `w - p` under
+  `C(q) = max(64, ceil(0.5 * log(q)^2))` in `PROOF.md`;
 - dynamic bounded walker certified through the committed exact surface
-  `q <= 10^7`;
+  `q <= 10^7` (measured);
 - dynamic square-branch audit through `p <= 10^6` with `7,477` archived fixed-
-  cutoff violations and full dynamic-cutoff coverage on that audit surface;
-- not yet an unconditional all-scale theorem for the compression layer;
+  cutoff violations and full dynamic-cutoff coverage on that audit surface
+  (measured audit, not theorem scope);
+- not a raw gap bound and not an RH claim;
 - not yet a standalone $n \mapsto p_n$ formula independent of local PGS state.
 
 ## 9. Reproduction
