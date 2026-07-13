@@ -2340,3 +2340,84 @@ Artifacts:
 
 Next step:
 Queue falsification 500M-600M or draft Chamber-Reset Endpoint Resolution Lemma subsection.
+
+## 2026-07-13T11:05:06Z run
+
+Mechanism:
+On each selected-square chamber, form the ordered list of successive gaps between
+consecutive interior `tau = 4` hits. From that plain gap list, name three residual
+quantities beyond mean spacing: the peak successive gap over the mean gap, the
+coefficient of variation of the successive-gap list, and Dual L1 isolation
+measured in mean-gap units. Project terms: Claims S9-A/B/C, `GapRegularity(r)`,
+`ResetResidual^G(r)`, residual audit RC27-RC29.
+
+Method:
+PGS-native constructive lemma draft only (job `chamber-reset-lemma-draft`).
+Appended Subsection S9 to
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`
+with hypotheses H1-H6 reused, Claims S9-A / S9-B / S9-C, residual claim table
+RC27-RC29 attached as audit from
+`experiments/square-branch-hourly-2026-07-13-rc27/`, and explicit falsification
+commands for Target S1* (`5e8-6e8` dynamic-cutoff search) and RC27-RC29 panel
+recheck. Corrected `ACTIVE_TARGET.md` theorem-status continuity so prime-square
+proximity is OPEN/UNRESOLVED under `PROOF.md` §Square-Branch Reduction (removed
+false CLOSED/PROVED bootstrap). No classical inference gate. No SDA or fixed-cutoff
+revival. Not a prose restatement of S8 alone: successive-gap list, max/mean, CV,
+and Dual-over-mean are new constructive objects relative to `SpacingBalance`.
+
+Result:
+Constructive lemma subsection S9 written. Residual audit table RC27-RC29 held
+on prior measured surface (util maxima through `4e8-5e8` + o_q panel, 8/8):
+
+| Claim | Bound | Observed | Rows |
+| --- | --- | --- | --- |
+| RC27 / P31 max/mean | `<= 5.5` | `[2.605, 5.012]` | 8/8 hold |
+| RC28 / P32 gap CV | `[0.55, 1.0]` | `[0.663, 0.891]` | 8/8 hold |
+| RC29 / P33 Dual/mean | `[0.30, 3.0]` | `[0.445, 2.744]` | 8/8 hold |
+
+Branch-max panel (`F(r)` = o_q):
+
+| o_q | r | D | max_over_mean | gap_cv | dual_over_mean |
+| --- | --- | --- | --- | --- | --- |
+| 2 | 468917503 | 542 | 5.012 | 0.891 | 2.734 |
+| 4 | 482342527 | 486 | 2.914 | 0.785 | 2.466 |
+| 6 | 424171123 | 738 | 3.920 | 0.811 | 1.437 |
+
+RC2 retained falsified (`r=424171123`, `D=738`). Theorem: prime-square
+proximity remains UNRESOLVED in `PROOF.md` §Square-Branch Reduction; direct
+next-prime and Interior Maximizer remain proved. S9 does not close Target S1*.
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.52s
+```
+RC27 residual probe exit code: 0 (RC27-RC29 hold; RC2 retained falsified).
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New constructive lemma subsection S9 (successive Tau4 gaps, max/mean ratio, gap
+CV, Dual isolation in mean-gap units; `GapRegularity` / `ResetResidual^G`) with
+residual claim table RC27-RC29 attached and explicit falsification commands.
+Continuity fix: ACTIVE_TARGET rewritten to match PROOF.md (proximity
+OPEN/UNRESOLVED; false CLOSED/PROVED bootstrap removed). Not a replay of S8
+mean-gap / signed Dual / open fraction and not a new measured regime.
+
+Artifacts:
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`;
+`research/00-index/continuity/ACTIVE_TARGET.md`;
+`experiments/square-branch-hourly-2026-07-13-s9/FINDINGS.md`;
+`experiments/square-branch-hourly-2026-07-13-rc27/offset_540_residual_rc27_probe.py` (falsification command for RC27-RC29);
+`experiments/square-branch-hourly-2026-07-13-rc27/offset_540_rc27_prediction_table.json`;
+`experiments/square-branch-hourly-2026-07-13-rc27/FINDINGS.md`
+
+Next step:
+Return to falsification queue on `5e8-6e8`, or H_CTC square-branch probe. Re-check
+RC27-RC29 / GapRegularity on any new util maximum. Keep S9 residual only; do not
+promote max/mean, CV, or Dual/mean to theorem; do not revive fixed band 540 or
+d=4 SDA.
