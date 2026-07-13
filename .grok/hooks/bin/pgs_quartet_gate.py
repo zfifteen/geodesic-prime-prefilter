@@ -18,7 +18,15 @@ Harness notes (verified live on grok 0.2.93):
   - A PreToolUse deny cancels the whole turn (cancellationCategory=HookDenied),
     so parents must spawn-first within a turn (cannot recover mid-turn after deny)
 
-Emergency bypass (operator only): set PGS_QUARTET_BYPASS=1
+Durable off/on (checked by this hook process, not by blocked shell commands):
+  1. Sticky file: ~/.grok/state/pgs-quartet-enabled  (0/off or 1/on)
+     Helper: pgs-quartet on|off|status  (~/.grok/bin/pgs-quartet)
+  2. Process env (must be set for the Grok CLI process, not inside a denied cmd):
+       PGS_QUARTET=0 or PGS_QUARTET_ENABLED=0  -> gate off
+       PGS_QUARTET=1 or PGS_QUARTET_ENABLED=1  -> gate on (overrides file)
+       PGS_QUARTET_BYPASS=1                    -> emergency off
+  Default when file missing and env unset: gate OFF (usability; opt in with
+  `pgs-quartet on` or env=1).
 """
 
 from __future__ import annotations
@@ -59,7 +67,12 @@ PROJECT_MARKERS: tuple[str, ...] = (
 )
 
 STATE_ROOT = Path.home() / ".grok" / "pgs-quartet-state"
+# Sticky enable flag (cross-session). Content: 0/off or 1/on.
+ENABLE_FLAG_PATH = Path.home() / ".grok" / "state" / "pgs-quartet-enabled"
 SUBAGENT_KINDS = frozenset({"subagent", "subagent_resume", "subagent_fork"})
+
+_OFF_TOKENS = frozenset({"0", "off", "false", "no", "disabled", "disable"})
+_ON_TOKENS = frozenset({"1", "on", "true", "yes", "enabled", "enable"})
 
 
 def _emit(obj: dict[str, Any]) -> None:
@@ -76,6 +89,61 @@ def _allow(reason: str = "") -> None:
 
 def _deny(reason: str) -> None:
     _emit({"decision": "deny", "reason": reason})
+
+
+def _parse_on_off(raw: str) -> bool | None:
+    """Return True/False if token is recognized, else None."""
+    token = raw.strip().lower()
+    if not token:
+        return None
+    # Accept first line / first word only (file may have comments later).
+    token = token.splitlines()[0].strip().split()[0] if token.split() else token
+    if token in _OFF_TOKENS:
+        return False
+    if token in _ON_TOKENS:
+        return True
+    return None
+
+
+def _gate_enabled() -> tuple[bool, str]:
+    """Whether the hard gate should enforce spawn requirements.
+
+    Priority (highest first):
+      1. PGS_QUARTET_BYPASS=1 -> off
+      2. PGS_QUARTET_ENABLED or PGS_QUARTET process env (0/off or 1/on)
+      3. Sticky file ~/.grok/state/pgs-quartet-enabled
+      4. Default OFF (usability; opt in with pgs-quartet on or env=1)
+
+    Env must be set on the Grok CLI process. Setting it only inside a blocked
+    shell command does nothing (PreToolUse never runs that command).
+    """
+    if os.environ.get("PGS_QUARTET_BYPASS") == "1":
+        return False, "PGS_QUARTET_BYPASS=1"
+
+    for key in ("PGS_QUARTET_ENABLED", "PGS_QUARTET"):
+        raw = os.environ.get(key)
+        if raw is None:
+            continue
+        parsed = _parse_on_off(raw)
+        if parsed is False:
+            return False, f"{key}={raw.strip()}"
+        if parsed is True:
+            return True, f"{key}={raw.strip()}"
+
+    try:
+        if ENABLE_FLAG_PATH.is_file():
+            content = ENABLE_FLAG_PATH.read_text(encoding="utf-8")
+            parsed = _parse_on_off(content)
+            if parsed is False:
+                return False, f"sticky file {ENABLE_FLAG_PATH} off"
+            if parsed is True:
+                return True, f"sticky file {ENABLE_FLAG_PATH} on"
+            # Unrecognized sticky content: treat as OFF (do not re-trap).
+            return False, f"sticky file {ENABLE_FLAG_PATH} unrecognized (default off)"
+    except OSError:
+        pass
+
+    return False, "default off"
 
 
 def _read_stdin() -> dict[str, Any]:
@@ -354,11 +422,12 @@ def handle_post_tool_use(session_id: str, path: Path, payload: dict[str, Any]) -
 
 
 def handle_pre_tool_use(session_id: str, path: Path, payload: dict[str, Any], cwd: str, workspace: str) -> None:
-    state = _load_state(path)
-
-    if os.environ.get("PGS_QUARTET_BYPASS") == "1":
-        _allow("PGS_QUARTET_BYPASS=1")
+    enabled, enable_reason = _gate_enabled()
+    if not enabled:
+        _allow(f"quartet gate off ({enable_reason})")
         return
+
+    state = _load_state(path)
 
     if _is_subagent_session(session_id, cwd, workspace, state, payload):
         # Persist child discovery on the *current* session id (the child).
@@ -420,7 +489,10 @@ def handle_pre_tool_use(session_id: str, path: Path, payload: dict[str, Any], cw
         "SPAWN FIRST in this turn (background=true recommended). "
         "A mid-turn deny cancels the whole harness turn (HookDenied). "
         "Child subagent sessions are not gated. "
-        "Emergency only: PGS_QUARTET_BYPASS=1."
+        "To disable the gate (sticky): run `pgs-quartet off` in a terminal "
+        f"(writes {ENABLE_FLAG_PATH}), or set Grok process env "
+        "PGS_QUARTET=0 / PGS_QUARTET_ENABLED=0 / PGS_QUARTET_BYPASS=1 "
+        "(must be on the CLI process, not inside a blocked shell command)."
     )
 
 
@@ -462,7 +534,7 @@ def main() -> int:
 if __name__ == "__main__":
     try:
         raise SystemExit(main())
-    except Exception as exc:  # noqa: BLE001 — fail closed on PreToolUse if possible
+    except Exception as exc:  # noqa: BLE001 - fail closed on PreToolUse if possible
         # Hooks fail-open on crash; emit explicit deny when we still can.
         try:
             event = (os.environ.get("GROK_HOOK_EVENT") or "").lower()
