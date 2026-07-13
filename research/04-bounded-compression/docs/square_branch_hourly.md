@@ -2229,23 +2229,26 @@ Structural audit of recurring offset 540 on new extremal rows if no counterexamp
 ## 2026-07-13T09:08:06Z run
 
 Mechanism:
-PGS-native structural audit of recurring offset 540 and early-tau=4 /
-late-tau=3 chamber separation. On each extremal chamber before selected
-square `w = r^2`, form the ordered Tau4 successive inter-hit gaps and the
-Dual markers `(first_tau4, trail_gap)`. Measure peak spacing regularity
-(max successive gap over mean), full-body spacing CV, and Dual isolation
-in mean-gap units. Project terms: RC27 max/mean, RC28 gap CV, RC29 Dual/mean.
+On each extremal chamber before a selected prime square `w = r^2`, mark the
+ordered offsets with `tau = 4`, the late `tau = 3` square endpoint at offset
+`D(r)`, and the successive gaps between consecutive `tau = 4` hits. From those
+plain marks, form three residual quantities: peak successive gap over mean gap,
+coefficient of variation of successive gaps, and Dual isolation measured in
+mean-gap units. Project terms: RC27 max/mean ratio, RC28 gap CV envelope,
+RC29 Dual L1 / mean_gap.
 
 Method:
-Read falsification summary
+PGS-native residual probe (no d=4 SDA port). Read
 `square_branch_dynamic_cutoff_search_4e8_5e8` summary JSON,
 `prefix_tau_floor_probe.json`, prior chamber table
-`experiments/square-branch-hourly-2026-07-10/`, and RC24 table. Ran new probe
+`experiments/square-branch-hourly-2026-07-10/`, and RC24 table.
+Ran new probe
 `experiments/square-branch-hourly-2026-07-13-rc27/offset_540_residual_rc27_probe.py`
 evaluating P31-P33 on segment util maxima through `4e8-5e8` plus full
-`o_q in {2,4,6}` branch-max panel (8 rows). Did not restate RC24-RC26 as the
-sole deliverable. Did not port d=4 SDA. Continuity: `ACTIVE_TARGET.md`
-aligned to `PROOF.md` §Square-Branch Reduction (proximity OPEN/UNRESOLVED).
+`o_q in {2,4,6}` branch-max panel (8 rows; 7 unique chambers). Did not
+restate RC24-RC26 as the sole deliverable. Continuity: `ACTIVE_TARGET.md`
+restored to `PROOF.md` §Square-Branch Reduction (proximity OPEN/UNRESOLVED;
+residual package through RC29).
 
 Result:
 | Claim | Bound | Observed | Rows |
@@ -2284,9 +2287,9 @@ Artifacts:
 `experiments/square-branch-hourly-2026-07-13-rc27/offset_540_residual_rc27_probe.py`;
 `experiments/square-branch-hourly-2026-07-13-rc27/offset_540_rc27_prediction_table.json`;
 `experiments/square-branch-hourly-2026-07-13-rc27/FINDINGS.md`;
-`research/00-index/continuity/ACTIVE_TARGET.md`
+`research/00-index/continuity/ACTIVE_TARGET.md` (theorem-status continuity restored: proximity OPEN/UNRESOLVED; residual package through RC29)
 
 Next step:
 Queue falsification `5e8-6e8` and re-check RC27-RC29 (and RC18-RC26) on any
 new util maximum. Keep RC27-RC29 residual only; do not promote max/mean, CV,
-or Dual/mean to theorem; do not revive fixed band 540 or d=4 SDA.
+or Dual/mean to theorem; do not revive fixed-band 540 or d=4 SDA.
