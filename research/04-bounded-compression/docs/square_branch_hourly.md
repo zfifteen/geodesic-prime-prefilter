@@ -2591,3 +2591,80 @@ Artifacts:
 
 Next step:
 Queue falsification 500M-600M or draft Chamber-Reset Endpoint Resolution Lemma subsection.
+
+## 2026-07-13T15:07:59Z run
+
+Mechanism:
+Draft one constructive subsection of the Chamber-Reset Endpoint Resolution
+Lemma on the selected-square branch: successive median/mean central shape,
+sub-mean successive-gap majority, and Tau4 body early-mass balance, then
+extend the chamber-reset residual by that shape package. Project terms:
+Claims S10-A / S10-B / S10-C, `GapShape(r)`, `ResetResidual^S(r)`, residual
+RC30-RC32 (audit only).
+
+Method:
+Job `chamber-reset-lemma-draft`. PGS-native constructive draft only (no d=4
+SDA port, no classical inference gate). Extended
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`
+with Subsection S10. Attached residual table RC30-RC32 from prior measured
+surface (util maxima through 4e8-5e8 + o_q panel). Continuity:
+`ACTIVE_TARGET.md` rewritten to OPEN/UNRESOLVED matching `PROOF.md`
+§Square-Branch Reduction (false CLOSED/PROVED bootstrap removed again after
+prefix-tau clobber). Companion FINDINGS under
+`experiments/square-branch-hourly-2026-07-13-s10/`.
+
+Result:
+| Claim | Role | Status |
+| --- | --- | --- |
+| S10-A | successive median_gap and median_over_mean | constructive |
+| S10-B | frac_le_mean and early_body_frac on Dual body | constructive |
+| S10-C | GapShape package; ResetResidual^S | constructive residual-state |
+| RC30 | 0.65 <= med/mean <= 0.95 | holds audit; range [0.683, 0.891] |
+| RC31 | frac_le_mean >= 0.50 | holds audit; range [0.549, 0.677] |
+| RC32 | 0.40 <= early_body_frac <= 0.55 | holds audit; range [0.415, 0.538] |
+| RC2 | fixed band [528, 552] as law | retained falsified (D=738) |
+
+Branch-max panel (F(r) = o_q):
+
+| o_q | r | D | med/mean | frac_le_mean | early_body_frac |
+| --- | --- | --- | --- | --- | --- |
+| 2 | 468917503 | 542 | 0.683 | 0.644 | 0.500 |
+| 4 | 482342527 | 486 | 0.784 | 0.577 | 0.415 |
+| 6 | 424171123 | 738 | 0.784 | 0.632 | 0.469 |
+
+Theorem: prime-square proximity / Target S1* remains UNRESOLVED in `PROOF.md`
+§Square-Branch Reduction; direct next-prime and Interior Maximizer remain
+proved. Residual and constructive draft only. Invalidated d=4 SDA not revived.
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.30s
+```
+RC30 residual probe exit code: 0 (RC30-RC32 hold; RC2 retained falsified).
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New constructive lemma subsection S10 (median/mean central shape, sub-mean
+successive-gap majority, Tau4 body early-mass; `GapShape` / `ResetResidual^S`)
+with residual claim table RC30-RC32 attached and explicit falsification
+commands. Continuity fix: ACTIVE_TARGET rewritten to match PROOF.md
+(proximity OPEN/UNRESOLVED; false CLOSED/PROVED bootstrap removed). Not a
+replay of S9 max/mean / CV / Dual-over-mean and not a new measured regime.
+
+Artifacts:
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`;
+`research/00-index/continuity/ACTIVE_TARGET.md`;
+`experiments/square-branch-hourly-2026-07-13-s10/FINDINGS.md`;
+`experiments/square-branch-hourly-2026-07-13-rc30/offset_540_residual_rc30_probe.py` (falsification command for RC30-RC32)
+
+Next step:
+Return to falsification queue on `5e8-6e8`, or H_CTC square-branch probe.
+Re-check RC30-RC32 / GapShape on any new util maximum. Keep S10 residual only;
+do not promote median/mean, sub-mean majority, or body early-mass to theorem;
+do not revive fixed band 540 or d=4 SDA.

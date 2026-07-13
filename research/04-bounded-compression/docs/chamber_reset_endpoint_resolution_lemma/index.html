@@ -139,7 +139,7 @@
   <header>
     <p class="meta">research/04-bounded-compression/docs · 2026-07-13 · hourly analytic job <code>chamber-reset-lemma-draft</code></p>
     <h1>Chamber-Reset Endpoint Resolution Lemma</h1>
-    <p class="meta">Subsections: S1 endpoint identification · S2 band residual and chamber-prefix phase order · S3 right completion and chamber-reset residual · S4 interior τ4 field and chamber-cover residual · S5 quartile-balance residual on Tau4 · S6 late-trail dual markers · S7 Dual L1 / τ4 density dual-balance residual · S8 mean inter-hit gap / signed Dual / chamber open fraction · S9 successive-gap regularity / CV / Dual isolation in mean-gap units</p>
+    <p class="meta">Subsections: S1 endpoint identification · S2 band residual and chamber-prefix phase order · S3 right completion and chamber-reset residual · S4 interior τ4 field and chamber-cover residual · S5 quartile-balance residual on Tau4 · S6 late-trail dual markers · S7 Dual L1 / τ4 density dual-balance residual · S8 mean inter-hit gap / signed Dual / chamber open fraction · S9 successive-gap regularity / CV / Dual isolation in mean-gap units · S10 median-shape / sub-mean majority / Tau4 body early-mass residual</p>
     <p>
       <span class="status status-open">Lemma target: UNRESOLVED</span>
       &nbsp;
@@ -439,6 +439,16 @@ and p = P(r<sup>2</sup>).</code></pre>
           <td>RC27–RC29</td>
           <td>Successive max/mean envelope; gap CV envelope; Dual isolation in mean-gap units</td>
           <td>Measured holds as residual only (see S9)</td>
+        </tr>
+        <tr>
+          <td>S10-A / S10-B / S10-C</td>
+          <td>Successive median/mean; sub-mean gap majority; Tau4 body early-mass; shape-extended reset residual</td>
+          <td>Constructive (this document); does not close S1*</td>
+        </tr>
+        <tr>
+          <td>RC30–RC32</td>
+          <td>Median/mean envelope; sub-mean successive-gap majority; Tau4 body early-mass balance</td>
+          <td>Measured holds as residual only (see S10)</td>
         </tr>
       </tbody>
     </table>
@@ -2591,6 +2601,318 @@ ResetResidual^G(r) = (
   </section>
 
   <section>
+    <h2>Subsection S10 — Median-shape, sub-mean majority, and Tau4 body early-mass residual</h2>
+    <p class="callout">
+      Tenth constructive subsection (this hour). Builds on Claims S1-S9 only. It
+      names the central successive-gap shape (median over mean), the count share of
+      sub-mean successive steps, and the early-mass balance on the Tau4 body
+      interval <code>[first_τ4, last_τ4]</code>, then extends the chamber-reset
+      residual by that shape package. It does not prove Target S1*.
+      <code>PROOF.md</code> §Square-Branch Reduction controls: prime-square
+      proximity remains <strong>UNRESOLVED</strong>. Attached residual claims
+      RC30-RC32 are audit only and are not promoted to theorem status.
+    </p>
+
+    <h3>Plain object</h3>
+    <p>
+      Claims S1-S9 identify the selected-square distance <code>D(r)</code>, the
+      residual open set <code>Annulus(r)</code>, the ordered field
+      <code>Tau4(r)</code>, Dual markers, Dual L1, density, share, mean inter-hit
+      gap, signed Dual imbalance, open fraction, the full successive-gap list,
+      peak-to-mean ratio, gap CV, and Dual isolation in mean-gap units. Those
+      objects name peak regularity and full-body dispersion. They do not yet name
+      the <em>central</em> successive-gap shape (where the median sits relative to
+      the mean), the <em>count majority</em> of sub-mean successive steps, or the
+      mass balance of Tau4 hits across the first half of the Dual body
+      <code>[first_τ4, last_τ4]</code> rather than across half of
+      <code>D(r)</code>. This subsection names those ordered residuals - still pure
+      divisor-count geometry on the selected-square chamber, still not a classical
+      gate on <code>D(r)</code>, and still not a proof that
+      <code>Annulus(r)</code> is empty.
+    </p>
+
+    <h3>Hypotheses</h3>
+    <p>
+      Reuse <strong>H1-H6</strong> from Subsections S1, S3, and S4 without change.
+      No new hypothesis is introduced. Median, sub-mean majority, and body
+      early-mass are defined on the same nonempty field <code>Tau4(r)</code> and
+      successive-gap list forced by H6 and Claims S4-A / S6-A / S8-A / S9-A. When
+      <code>|Tau4(r)| = 1</code>, successive gaps are empty and the shape
+      functionals are undefined; Claims S10-A and S10-B state the constructive
+      formulas only under <code>|Tau4(r)| ≥ 2</code>, which holds on every measured
+      residual row attached to this subsection.
+    </p>
+
+    <h3>Constructive claim S10-A (successive median gap and median-to-mean ratio)</h3>
+    <div class="panel">
+      <p><strong>Claim S10-A.</strong> Assume H1-H6 and Claims S4-A, S8-A, S9-A,
+      with <code>D(r) ≥ 2</code> and <code>|Tau4(r)| ≥ 2</code>.</p>
+      <p>
+        Reuse the ordered successive-gap list <code>gaps(r)</code> and mean
+        inter-hit gap <code>mean_gap(r)</code> from Claims S8-A and S9-A. Define
+        the median successive gap and the median-to-mean ratio
+      </p>
+      <pre><code>median_gap(r)       = median(gaps(r)),
+
+median_over_mean(r) = median_gap(r) / mean_gap(r).</code></pre>
+      <p>
+        Then
+      </p>
+      <pre><code>min_gap(r) ≤ median_gap(r) ≤ max_gap(r),
+mean_gap(r) &gt; 0,
+median_over_mean(r) &gt; 0.</code></pre>
+      <p>
+        Equivalently: after Claim S9-A records the peak multiple of the mean
+        successive gap, Claim S10-A records the central multiple. Median/mean is
+        a central-shape residual, not a peak residual (Claim S9-A), not a CV
+        residual (Claim S9-B), and not a chamber-cover residual (Claim S4-B). On
+        measured residual rows the median sits strictly below the mean
+        (positive central skew); that measured envelope is residual audit only
+        (RC30) and is not part of this constructive definition.
+      </p>
+      <p>
+        Status: constructive from Claims S8-A and S9-A. Not a bound on
+        <code>D(r)</code>. Target S1* remains <strong>UNRESOLVED</strong>.
+      </p>
+    </div>
+
+    <h3>Constructive claim S10-B (sub-mean majority and Tau4 body early-mass)</h3>
+    <div class="panel">
+      <p><strong>Claim S10-B.</strong> Assume H1-H6 and Claims S4-A, S6-A, S8-A,
+      S9-A, with <code>D(r) ≥ 2</code>, <code>|Tau4(r)| ≥ 2</code>, and
+      <code>mean_gap(r) &gt; 0</code>.</p>
+      <p>
+        Write the ordered τ4 offsets as
+        <code>0 &lt; a<sub>1</sub> &lt; ⋯ &lt; a<sub>m</sub> &lt; D(r)</code>
+        with <code>m = |Tau4(r)|</code>, body endpoints
+        <code>first_τ4_offset = a<sub>1</sub></code>,
+        <code>last_τ4_offset = a<sub>m</sub></code>, and body midpoint
+      </p>
+      <pre><code>body_mid(r) = (a<sub>1</sub> + a<sub>m</sub>) / 2.</code></pre>
+      <p>
+        Define the sub-mean successive-gap majority fraction and the Tau4 body
+        early-mass fraction
+      </p>
+      <pre><code>frac_le_mean(r)   = |{ g in gaps(r) : g ≤ mean_gap(r) }| / |gaps(r)|,
+
+early_body_frac(r) = |{ a in Tau4(r) : a &lt; body_mid(r) }| / m.</code></pre>
+      <p>
+        Then
+      </p>
+      <pre><code>0 ≤ frac_le_mean(r) ≤ 1,
+0 ≤ early_body_frac(r) ≤ 1,
+body(r) = a<sub>m</sub> − a<sub>1</sub>,
+body_mid(r) is the midpoint of the Dual body support, not of [0, D(r)].</code></pre>
+      <p>
+        Relation to earlier claims: Claim S4-B early-half mass is a half-scale
+        residual on chamber length <code>D(r)</code>. Claim S5-B quartile mass is
+        a D-partition residual. Claim S10-B body early-mass is a half-scale
+        residual on the Dual body support <code>[a<sub>1</sub>, a<sub>m</sub>]</code>
+        alone. Sub-mean majority is a count-share residual on successive gaps,
+        distinct from mean envelope (Claim S8-A), peak ratio (Claim S9-A), and
+        CV (Claim S9-B). Neither functional empties <code>Annulus(r)</code>.
+      </p>
+      <p>
+        Status: constructive definitions on <code>gaps(r)</code>,
+        <code>mean_gap(r)</code>, and <code>Tau4(r)</code>. They do not imply
+        <code>D(r) ≤ C_dyn(r)</code>.
+      </p>
+    </div>
+
+    <h3>Constructive claim S10-C (gap-shape extended chamber-reset residual)</h3>
+    <div class="panel">
+      <p><strong>Claim S10-C.</strong> Assume H1-H6 and Claims S9-C, S10-A, S10-B
+      (with <code>|Tau4(r)| ≥ 2</code> for the gap-list components).</p>
+      <p>
+        Extend the gap-regularity residual of Claim S9-C by the gap-shape
+        package:
+      </p>
+      <pre><code>GapShape(r) = (
+  median_gap(r),
+  median_over_mean(r),
+  frac_le_mean(r),
+  body_mid(r),
+  early_body_frac(r)
+),
+
+ResetResidual^S(r) = (
+  D(r),
+  F(r),
+  first_τ4_offset,
+  Cover(r),
+  QuartileBalance(r),
+  Trail(r),
+  DualBalance(r),
+  SpacingBalance(r),
+  GapRegularity(r),
+  GapShape(r)
+).</code></pre>
+      <p>
+        Chamber reset still accepts the right endpoint
+        <code>q = r<sup>2</sup> + F(r)</code> and restarts the next ordered search
+        at <code>q</code>. The gap-shape residual is the exact selected-square
+        chamber state under the stated hypotheses once median/mean central shape,
+        sub-mean successive-gap majority, and Tau4 body early-mass are admitted
+        together with the earlier cover, quartile, trail, dual-balance,
+        spacing-balance, and gap-regularity packages:
+      </p>
+      <ul>
+        <li><code>D(r)</code> is the selected-square endpoint distance (Claim S1);</li>
+        <li><code>F(r)</code> is the forward residual (Claim S3-A);</li>
+        <li><code>first_τ4_offset</code> is the early marker (Claim S2-A);</li>
+        <li><code>Cover(r)</code> is the half-scale cover residual (Claim S4-B);</li>
+        <li><code>QuartileBalance(r)</code> is the quartile-balance residual (Claim S5-B);</li>
+        <li><code>Trail(r)</code> is the late-trail dual-marker residual (Claims S6-A, S6-B);</li>
+        <li><code>DualBalance(r)</code> is the Dual L1 / density / share residual (Claims S7-A, S7-B);</li>
+        <li><code>SpacingBalance(r)</code> is the mean-gap / signed Dual / open-fraction residual (Claims S8-A, S8-B);</li>
+        <li><code>GapRegularity(r)</code> is the successive-gap / max-mean / CV / Dual-over-mean residual (Claims S9-A, S9-B);</li>
+        <li><code>GapShape(r)</code> is the median/mean / sub-mean majority / body early-mass residual (Claims S10-A, S10-B).</li>
+      </ul>
+      <p>
+        Under Claim S2-B, Target S1* fails at root <code>r</code> if and only if
+        <code>D(r) ∈ Annulus(r)</code>. Gap shape stratifies residual audit
+        surfaces on completed chambers; it is not a classical inference gate and
+        does not by itself force <code>D(r) ∉ Annulus(r)</code>.
+      </p>
+      <p>
+        Status: constructive residual-state identification. Target S1* remains
+        <strong>UNRESOLVED</strong>.
+      </p>
+    </div>
+
+    <h3>Measured residual structure attached to S10 (audit only)</h3>
+    <p>
+      Residual claims RC30-RC32 refine successive median/mean ratio, sub-mean
+      successive-gap majority, and Tau4 body early-mass balance on segment
+      utilization maxima through <code>4e8-5e8</code> and the full per-
+      <code>o_q</code> branch-max panel of that segment (here <code>o_q</code> is
+      the measured name for <code>F(r)</code>). They are not theorems. Fixed-band
+      RC2 remains falsified. Invalidated d=4 SDA is not revived. Target S1* is
+      not closed by these rows. Source probe:
+      <code>experiments/square-branch-hourly-2026-07-13-rc30/</code>.
+    </p>
+    <table>
+      <thead>
+        <tr><th>ID</th><th>Claim</th><th>Status on util maxima / o_q panel through 4e8-5e8</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>RC30</td>
+          <td>Tau4 successive median/mean <code>0.65 ≤ median_over_mean(r) ≤ 0.95</code></td>
+          <td>Holds (audit); observed range <code>[0.683, 0.891]</code> on 8/8 rows</td>
+        </tr>
+        <tr>
+          <td>RC31</td>
+          <td>Sub-mean successive gap majority <code>frac_le_mean(r) ≥ 0.50</code></td>
+          <td>Holds (audit); observed range <code>[0.549, 0.677]</code> on 8/8 rows</td>
+        </tr>
+        <tr>
+          <td>RC32</td>
+          <td>Tau4 body early-mass balance <code>0.40 ≤ early_body_frac(r) ≤ 0.55</code></td>
+          <td>Holds (audit); observed range <code>[0.415, 0.538]</code> on 8/8 rows</td>
+        </tr>
+        <tr>
+          <td>RC2</td>
+          <td>Fixed band <code>D(r) ∈ [528, 552]</code> on util maxima is a law</td>
+          <td><strong>Falsified</strong> at <code>D=738</code></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Gap-shape evaluation of Claims S10-A-S10-B on the same three branch maxima
+      used in S3-S9:
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th><code>F(r)</code> (= o_q)</th>
+          <th><code>r</code></th>
+          <th><code>D(r)</code></th>
+          <th>median_over_mean</th>
+          <th>frac_le_mean</th>
+          <th>early_body_frac</th>
+          <th><code>D ∈ Annulus</code>?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2</td>
+          <td><code>468,917,503</code></td>
+          <td>542</td>
+          <td>0.683</td>
+          <td>0.644</td>
+          <td>0.500</td>
+          <td>no (audit row)</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><code>482,342,527</code></td>
+          <td>486</td>
+          <td>0.784</td>
+          <td>0.577</td>
+          <td>0.415</td>
+          <td>no (audit row)</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><code>424,171,123</code></td>
+          <td>738</td>
+          <td>0.784</td>
+          <td>0.632</td>
+          <td>0.469</td>
+          <td>no (audit row; util max)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Reading: on the measured panel the median successive τ4 gap sits below the
+      mean (central positive skew; median/mean in about 0.68-0.89), a strict
+      majority of successive gaps are at most the mean, and Tau4 hits stay near
+      half-mass on the Dual body rather than collapsing into one body half.
+      Escape from the recurring-540 band at the utilization maximum
+      (<code>D=738</code>) keeps all three residuals inside envelope. That is
+      residual audit structure under Claims S10-A-S10-C. It is not a proof that
+      every future root has empty <code>Annulus(r)</code>.
+    </p>
+
+    <h3>What S10 does not claim</h3>
+    <ul>
+      <li>No proof of Target S1* / prime-square proximity (still <strong>UNRESOLVED</strong> in <code>PROOF.md</code> §Square-Branch Reduction).</li>
+      <li>No claim that <code>GapShape(r)</code> or <code>ResetResidual^S(r)</code> forces <code>D(r) ∉ Annulus(r)</code>.</li>
+      <li>No promotion of RC30-RC32 (or RC3-RC29) to theorem status.</li>
+      <li>No revival of fixed cutoff map <code>{2:44, 4:60, 6:60}</code>.</li>
+      <li>No revival of d=4 τ≥5 SDA transfer to the square branch (gap shape is not SDA).</li>
+      <li>No revival of fixed-band near-540 as a law (RC2 remains falsified).</li>
+      <li>No residue-only finite cover of <code>Annulus(r)</code>.</li>
+      <li>No classical primality, sieve, gcd, or Miller-Rabin gate as PGS inference.</li>
+    </ul>
+
+    <h3>Minimal falsification command</h3>
+    <p>
+      Target S1* (equivalently: emptiness of <code>Annulus(r)</code> for every
+      selected-square root) is falsified by any selected-square root with
+      <code>D(r) &gt; C_dyn(r)</code>. Minimal command on the next open regime
+      beyond the certified <code>4e8-5e8</code> surface:
+    </p>
+    <pre><code>python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py \
+  --min-prime 500000001 \
+  --max-prime 600000000 \
+  --output-dir research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_5e8_6e8</code></pre>
+    <p>
+      Decision rule: nonempty <code>first_counterexample</code> means some
+      measured <code>D(r) ∈ Annulus(r)</code> and Target S1* is falsified at that
+      root. A null counterexample is audit corroboration only - not a proof of
+      S1*, not a proof that every future annulus is empty, and not a promotion of
+      RC30-RC32.
+    </p>
+    <p>
+      Optional residual-panel check for RC30-RC32 / Claims S10-A-S10-C on the known
+      util-maxima and o_q branch-max panel (does not prove S1*):
+    </p>
+    <pre><code>python3 experiments/square-branch-hourly-2026-07-13-rc30/offset_540_residual_rc30_probe.py</code></pre>
+  </section>
+
+  <section>
     <h2>Status separation</h2>
     <table>
       <thead>
@@ -2623,6 +2945,9 @@ ResetResidual^G(r) = (
         <tr><td>Claim S9-A successive Tau4 gaps and peak-to-mean ratio</td><td>Constructive subsection claim (this document)</td></tr>
         <tr><td>Claim S9-B gap CV and Dual isolation in mean-gap units</td><td>Constructive subsection claim (this document)</td></tr>
         <tr><td>Claim S9-C gap-regularity extended chamber-reset residual</td><td>Constructive subsection claim (this document)</td></tr>
+        <tr><td>Claim S10-A successive median gap and median-to-mean ratio</td><td>Constructive subsection claim (this document)</td></tr>
+        <tr><td>Claim S10-B sub-mean majority and Tau4 body early-mass</td><td>Constructive subsection claim (this document)</td></tr>
+        <tr><td>Claim S10-C gap-shape extended chamber-reset residual</td><td>Constructive subsection claim (this document)</td></tr>
         <tr><td>Target S1* prime-square proximity</td><td><strong>Unresolved</strong> (<code>PROOF.md</code> §Square-Branch Reduction)</td></tr>
         <tr><td>All-scale bounded dynamic cutoff on square branch</td><td>Unresolved until S1* closes</td></tr>
         <tr><td>Measured surface <code>4e8-5e8</code></td><td>No counterexample; max util <code>0.934…</code> (audit)</td></tr>
@@ -2635,6 +2960,7 @@ ResetResidual^G(r) = (
         <tr><td>RC21-RC23 τ4 density envelope / Dual max share / near-540 Dual L1 floor</td><td>Measured holds; residual only</td></tr>
         <tr><td>RC24-RC26 mean inter-hit gap / signed Dual / open fraction</td><td>Measured holds; residual only</td></tr>
         <tr><td>RC27-RC29 successive max/mean / gap CV / Dual-over-mean</td><td>Measured holds; residual only</td></tr>
+        <tr><td>RC30-RC32 successive median/mean / sub-mean majority / body early-mass</td><td>Measured holds; residual only</td></tr>
         <tr><td>d=4 SDA square transfer / fixed-540 band</td><td>Invalidated / falsified</td></tr>
       </tbody>
     </table>
@@ -2644,9 +2970,9 @@ ResetResidual^G(r) = (
     <h2>Next pressure</h2>
     <ol>
       <li>Run the minimal falsification command on <code>5e8-6e8</code> (queue return): empty <code>Annulus(r)</code> on that surface or record a counterexample.</li>
-      <li>Keep theorem pressure on <code>D(r)</code> under Claims S1, S2-B, S3-B, S4-C, S5-C, S6-C, S7-C, S8-C, and S9-C; do not rebuild residue covers or SDA ports.</li>
-      <li>Re-check RC9-RC29 / <code>Cover(r)</code> / <code>QuartileBalance(r)</code> / <code>Trail(r)</code> / <code>DualBalance(r)</code> / <code>SpacingBalance(r)</code> / <code>GapRegularity(r)</code> on any new utilization maximum; do not promote cover, quartile, trail, Dual L1, density, share, mean-gap, signed Dual, open-fraction, max/mean, CV, or Dual-over-mean residuals to theorem status.</li>
-      <li>Optional later subsection: a PGS-native mechanism that forces <code>D(r) ∉ Annulus(r)</code> from chamber invariants in <code>ResetResidual^G(r)</code> alone - only if those invariants are stated without classical gates and without promoting RC3-RC29.</li>
+      <li>Keep theorem pressure on <code>D(r)</code> under Claims S1, S2-B, S3-B, S4-C, S5-C, S6-C, S7-C, S8-C, S9-C, and S10-C; do not rebuild residue covers or SDA ports.</li>
+      <li>Re-check RC9-RC32 / <code>Cover(r)</code> / <code>QuartileBalance(r)</code> / <code>Trail(r)</code> / <code>DualBalance(r)</code> / <code>SpacingBalance(r)</code> / <code>GapRegularity(r)</code> / <code>GapShape(r)</code> on any new utilization maximum; do not promote cover, quartile, trail, Dual L1, density, share, mean-gap, signed Dual, open-fraction, max/mean, CV, Dual-over-mean, median/mean, sub-mean majority, or body early-mass residuals to theorem status.</li>
+      <li>Optional later subsection: a PGS-native mechanism that forces <code>D(r) ∉ Annulus(r)</code> from chamber invariants in <code>ResetResidual^S(r)</code> alone - only if those invariants are stated without classical gates and without promoting RC3-RC32.</li>
     </ol>
   </section>
 
@@ -2662,6 +2988,7 @@ ResetResidual^G(r) = (
     <code>experiments/square-branch-hourly-2026-07-13-rc21/FINDINGS.md</code>;
     <code>experiments/square-branch-hourly-2026-07-13-rc24/FINDINGS.md</code>;
     <code>experiments/square-branch-hourly-2026-07-13-rc27/FINDINGS.md</code>;
+    <code>experiments/square-branch-hourly-2026-07-13-rc30/FINDINGS.md</code>;
     <code>Agents.md</code> theorem-trust contract.
     Live proof status is never overridden by this draft.
   </footer>
