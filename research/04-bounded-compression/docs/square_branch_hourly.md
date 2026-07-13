@@ -11,7 +11,7 @@ Bootstrap: system installed 2026-06-19. Queue starts at falsification
 ## 2026-06-19T00:00:00Z bootstrap
 
 Mechanism:
-Hourly relay bootstrap — dispatcher, wrapper, launchd, ACTIVE_TARGET contract.
+Hourly relay bootstrap - dispatcher, wrapper, launchd, ACTIVE_TARGET contract.
 
 Method:
 Installed `scripts/pgs-hourly-advance.sh`, `research/00-index/scripts/hourly_advance_dispatch.py`,
@@ -36,7 +36,7 @@ Run falsification `3·10^8 .. 4·10^8` via deterministic queue item
 ## 2026-06-19T08:43:54Z run
 
 Mechanism:
-Square-branch dynamic-cutoff falsification sweep on prime roots 300M–400M
+Square-branch dynamic-cutoff falsification sweep on prime roots 300M-400M
 
 Method:
 deterministic dispatch: python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py --min-prime 300000001 --max-prime 400000000 --output-dir research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_3e8_4e8
@@ -72,7 +72,7 @@ Structural audit of recurring offset 540 on new extremal rows if no counterexamp
 ## 2026-06-19T08:46:09Z run
 
 Mechanism:
-Square-branch dynamic-cutoff falsification sweep on prime roots 300M–400M
+Square-branch dynamic-cutoff falsification sweep on prime roots 300M-400M
 
 Method:
 deterministic dispatch: /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py --min-prime 300000001 --max-prime 400000000 --output-dir research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_3e8_4e8
@@ -115,18 +115,18 @@ Method:
 Read `square_branch_dynamic_cutoff_search_3e8_4e8/square_branch_dynamic_cutoff_search_summary.json`
 and `experiments/square-branch-sda-invalidation-2026-06/prefix_tau_floor_probe.json`.
 Ran `experiments/square-branch-hourly-2026-06-19/offset_540_chamber_geometry_probe.py`
-to evaluate six falsifiable predictions (P1–P6) on prior and new extremal rows.
+to evaluate six falsifiable predictions (P1-P6) on prior and new extremal rows.
 No d=4 SDA port.
 
 Result:
 New extremal `r=358018553`, offset `546`, utilization `0.7036082474226805`.
 All six predictions hold on the new row: `prefix_min_tau=4`, `first_tau4_offset=4`,
 `first_tau3_offset=546`, `tau4_count=64`, `tau5_count=0`, offset in `[528,552]`.
-Prior rows: offsets `540`, `462`, `540` — chamber separation 3/3.
+Prior rows: offsets `540`, `462`, `540` - chamber separation 3/3.
 
 Theorem: square-branch proximity obligation remains **unresolved** (`PROOF.md`).
 Invalidated: d=4 SDA transfer (not revived).
-Measured: P1–P6 hold 4/4 extremal rows tested.
+Measured: P1-P6 hold 4/4 extremal rows tested.
 
 pytest exit code: 0
 ```
@@ -199,13 +199,13 @@ Method:
 Read `square_branch_dynamic_cutoff_search_4e8_5e8/square_branch_dynamic_cutoff_search_summary.json`
 and prior `prefix_tau_floor_probe.json` / 2026-06-19 chamber baselines.
 Ran `experiments/square-branch-hourly-2026-07-10/offset_540_chamber_geometry_probe.py`
-to evaluate six falsifiable predictions (P1–P6) on four prior segment maxima
+to evaluate six falsifiable predictions (P1-P6) on four prior segment maxima
 plus the new extremal, and chamber checks on per-`o_q` maxima. No d=4 SDA port.
 
 Result:
 New extremal `r=424171123`, offset `738`, utilization `0.9341772151898734`,
 dynamic cutoff `790`, `o_q=6`.
-Chamber predictions P1–P5 hold on the new row: `prefix_min_tau=4`,
+Chamber predictions P1-P5 hold on the new row: `prefix_min_tau=4`,
 `first_tau4_offset=3`, `first_tau3_offset=738`, `tau4_count=96`, `tau5_count=0`.
 P6 fixed band `[528, 552]` is **falsified** (`738` outside).
 Per-`o_q` chamber checks hold for offsets `542`, `486`, `738`.
@@ -226,7 +226,7 @@ OK
 
 Delta:
 Falsified fixed near-540 band residual claim on `4e8-5e8` utilization maximum
-(`D(r)=738`); early τ=4 / late τ=3 chamber separation (P1–P5) holds; residual
+(`D(r)=738`); early τ=4 / late τ=3 chamber separation (P1-P5) holds; residual
 claim table RC1/RC2 + prediction table written.
 
 Artifacts:
@@ -289,10 +289,10 @@ selected-square branch (Claim S1 endpoint identification; Target S1* distance).
 Method:
 PGS-first draft under `research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`.
 Objects: ordered gap, divisor-count field, GWR selected integer, chamber prefix,
-square endpoint, `D(r)`. Hypotheses H1–H4; Claim S1 identifies
+square endpoint, `D(r)`. Hypotheses H1-H4; Claim S1 identifies
 `D(r) = first_τ3_offset`; Target S1* left UNRESOLVED per `PROOF.md`. Residual
 claim table RC1/RC2 retained; invalidated SDA and fixed-540 band not revived.
-One minimal falsification command: dynamic-cutoff search on `5e8–6e8`.
+One minimal falsification command: dynamic-cutoff search on `5e8-6e8`.
 
 Result:
 Constructive lemma subsection S1 written with hypotheses, unresolved Target S1*,
@@ -315,13 +315,13 @@ OK
 Delta:
 New constructive lemma subsection S1 (selected-square endpoint identification)
 with residual claim table and minimal falsification command for Target S1*
-(`5e8–6e8` dynamic-cutoff search).
+(`5e8-6e8` dynamic-cutoff search).
 
 Artifacts:
 `research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`
 
 Next step:
-Run falsification queue on `5e8–6e8` (or H_CTC square-branch probe). Keep
+Run falsification queue on `5e8-6e8` (or H_CTC square-branch probe). Keep
 pressure on `D(r)` under Claim S1; do not revive residue covers or d=4 SDA.
 
 ## 2026-07-10T14:06:37Z run
@@ -372,7 +372,7 @@ Structural audit of recurring offset 540 on new extremal rows if no counterexamp
 
 Mechanism:
 PGS-native structural audit of recurring offset 540 and early-τ=4 / late-τ=3
-chamber separation — residual claims RC3–RC5 after fixed-band (RC2) death.
+chamber separation - residual claims RC3-RC5 after fixed-band (RC2) death.
 
 Method:
 Read `square_branch_dynamic_cutoff_search_4e8_5e8` summary JSON,
@@ -380,13 +380,13 @@ Read `square_branch_dynamic_cutoff_search_4e8_5e8` summary JSON,
 and prior chamber table from `experiments/square-branch-hourly-2026-07-10/`.
 Ran new probe
 `experiments/square-branch-hourly-2026-07-10-rc3/offset_540_residual_rc3_probe.py`
-evaluating P7–P9 (τ4 density band, absolute early τ4, o_q=2 near-540 local
-attractor). Did not replay P1–P6 as the sole deliverable.
+evaluating P7-P9 (τ4 density band, absolute early τ4, o_q=2 near-540 local
+attractor). Did not replay P1-P6 as the sole deliverable.
 
 Result:
 RC3 holds: rho4 ∈ [0.10, 0.14] on 5/5 segment util maxima (new max rho4=0.1301).
 RC4 holds: first_tau4_offset ≤ 20 on 5/5 (new max first_tau4=3).
-RC5 holds: o_q=2 branch max on 4e8-5e8 has D=542 (|D−540|=2 ≤ 20) while global
+RC5 holds: o_q=2 branch max on 4e8-5e8 has D=542 (|D-540|=2 ≤ 20) while global
 util max o_q=6 has D=738 (escapes fixed band). Exact D=540 also appears at
 o_q ∈ {4,6}, so near-540 is not exclusive to o_q=2.
 RC2 retained falsified. Theorem: Prime-Square Proximity proved (`PROOF.md`);
@@ -405,9 +405,9 @@ Ops status:
 OK
 
 Delta:
-New residual claim table RC3–RC5 (τ4 density band, absolute early τ4, o_q=2
+New residual claim table RC3-RC5 (τ4 density band, absolute early τ4, o_q=2
 local near-540 attractor) with explicit falsification command after fixed-band
-RC2 death; not a replay of P1–P6.
+RC2 death; not a replay of P1-P6.
 
 Artifacts:
 `experiments/square-branch-hourly-2026-07-10-rc3/offset_540_residual_rc3_probe.py`;
@@ -416,7 +416,7 @@ Artifacts:
 
 Next step:
 Run prefix τ probe variant on newest extremal rows, or queue falsification
-`5e8–6e8`. Keep RC3–RC5 as residual only; do not promote to theorem; do not
+`5e8-6e8`. Keep RC3-RC5 as residual only; do not promote to theorem; do not
 revive fixed-band 540 or d=4 SDA.
 
 ## 2026-07-10T16:05:11Z run
@@ -475,17 +475,17 @@ selected-square branch (S2 band residual object and chamber-prefix phase order).
 Method:
 PGS-first constructive subsection under
 `research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`.
-Builds on prior-hour Claim S1 only. Claim S2-A: under H1–H4 and D(r)≥2,
+Builds on prior-hour Claim S1 only. Claim S2-A: under H1-H4 and D(r)≥2,
 `1 ≤ first_τ4_offset < first_τ3_offset = D(r)` (early-τ=4 / late-τ=3 phase order).
-Claim S2-B: under H1–H3, `D(r) < Band(r) = (r−s)(r+s)`; Target S1* fails at r
-iff `D(r) ∈ Annulus(r) = {k : C_dyn(r) < k < Band(r)}`. Residual RC3–RC5
+Claim S2-B: under H1-H3, `D(r) < Band(r) = (r-s)(r+s)`; Target S1* fails at r
+iff `D(r) ∈ Annulus(r) = {k : C_dyn(r) < k < Band(r)}`. Residual RC3-RC5
 attached as audit only; RC2 retained falsified; d=4 SDA not revived.
 `PROOF.md` §Square-Branch Reduction: proximity target remains UNRESOLVED.
-One minimal falsification command: dynamic-cutoff search on `5e8–6e8`.
+One minimal falsification command: dynamic-cutoff search on `5e8-6e8`.
 
 Result:
-Constructive lemma subsection S2 written with hypotheses (H1–H4 reused),
-unresolved Target S1*, residual claim table RC3–RC5, and explicit falsification
+Constructive lemma subsection S2 written with hypotheses (H1-H4 reused),
+unresolved Target S1*, residual claim table RC3-RC5, and explicit falsification
 command. No new measured regime this hour. Direct next-prime and Interior
 Maximizer remain proved; proximity not claimed.
 
@@ -503,17 +503,17 @@ OK
 
 Delta:
 New constructive lemma subsection S2 (chamber-prefix phase order + band residual
-annulus object) with residual RC3–RC5 table and minimal falsification command
-for Target S1* (`5e8–6e8` dynamic-cutoff search). Not a replay of S1.
+annulus object) with residual RC3-RC5 table and minimal falsification command
+for Target S1* (`5e8-6e8` dynamic-cutoff search). Not a replay of S1.
 
 Artifacts:
 `research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`;
 `research/04-bounded-compression/docs/square_branch_hourly.md`
 
 Next step:
-Return to falsification queue on `5e8–6e8` (or H_CTC square-branch probe). Keep
+Return to falsification queue on `5e8-6e8` (or H_CTC square-branch probe). Keep
 pressure on `D(r) ∉ Annulus(r)`; do not revive residue covers, fixed-540, or
-d=4 SDA; do not promote RC3–RC5 to theorem status.
+d=4 SDA; do not promote RC3-RC5 to theorem status.
 
 ## 2026-07-10T18:06:36Z run
 
@@ -563,7 +563,7 @@ Structural audit of recurring offset 540 on new extremal rows if no counterexamp
 
 Mechanism:
 PGS-native structural audit of recurring offset 540 and early-τ=4 / late-τ=3
-chamber separation — residual claims RC6–RC8 after RC3–RC5 surface.
+chamber separation - residual claims RC6-RC8 after RC3-RC5 surface.
 
 Method:
 Read `square_branch_dynamic_cutoff_search_4e8_5e8` summary JSON,
@@ -571,16 +571,16 @@ Read `square_branch_dynamic_cutoff_search_4e8_5e8` summary JSON,
 prior chamber table from `experiments/square-branch-hourly-2026-07-10/`, and
 RC3 table. Ran new probe
 `experiments/square-branch-hourly-2026-07-10-rc6/offset_540_residual_rc6_probe.py`
-evaluating P10–P12 (full o_q-panel S2-A phase order, late-dominant phase gap
-≥0.95, o_q-stratified near-540 exclusivity). Did not replay RC3–RC5 as the
+evaluating P10-P12 (full o_q-panel S2-A phase order, late-dominant phase gap
+≥0.95, o_q-stratified near-540 exclusivity). Did not replay RC3-RC5 as the
 sole deliverable.
 
 Result:
 RC6 holds: S2-A phase order on 3/3 o_q branch maxima (o_q∈{2,4,6}).
 RC7 holds: min phase_gap on util maxima + o_q panel = 0.967078 (o_q=4, D=486,
 first_τ4=16) ≥ 0.95.
-RC8 holds: only o_q=2 near 540 (|D−540|=2); o_q=4 escapes (|D−540|=54);
-o_q=6 escapes (|D−540|=198). Strengthens RC5 to panel exclusivity residual.
+RC8 holds: only o_q=2 near 540 (|D-540|=2); o_q=4 escapes (|D-540|=54);
+o_q=6 escapes (|D-540|=198). Strengthens RC5 to panel exclusivity residual.
 RC2 retained falsified. Theorem: Prime-Square Proximity proved (`PROOF.md`);
 residual audit only. Invalidated d=4 SDA not revived.
 
@@ -597,9 +597,9 @@ Ops status:
 OK
 
 Delta:
-New residual claim table RC6–RC8 (full o_q-panel S2-A phase order, late-dominant
+New residual claim table RC6-RC8 (full o_q-panel S2-A phase order, late-dominant
 phase-gap bound ≥0.95, o_q-stratified near-540 exclusivity) with explicit
-falsification command; not a replay of RC3–RC5.
+falsification command; not a replay of RC3-RC5.
 
 Artifacts:
 `experiments/square-branch-hourly-2026-07-10-rc6/offset_540_residual_rc6_probe.py`;
@@ -608,7 +608,7 @@ Artifacts:
 
 Next step:
 Run prefix τ probe variant on newest extremal rows, or queue falsification
-`5e8–6e8`. Keep RC6–RC8 residual only; do not promote to theorem; do not
+`5e8-6e8`. Keep RC6-RC8 residual only; do not promote to theorem; do not
 revive fixed-band 540 or d=4 SDA.
 
 ## 2026-07-10T20:05:10Z run
@@ -668,18 +668,18 @@ Method:
 PGS-first constructive subsection under
 `research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`.
 Builds on Claims S1 and S2 only. H5: right completion after selected square by
-proved direct next-prime rule. Claim S3-A: `F(r) = q − r²` and `q − p = D(r) + F(r)`.
+proved direct next-prime rule. Claim S3-A: `F(r) = q - r²` and `q - p = D(r) + F(r)`.
 Claim S3-B: chamber-reset residual triple
 `ResetResidual(r) = (D(r), F(r), first_τ4_offset)`; Target S1* fails iff
 `D(r) ∈ Annulus(r)`. Claim S3-C: late-dominant phase residual
-`phase_gap(r) = (D − first_τ4)/D` with `0 < phase_gap < 1`. Residual RC6–RC8
+`phase_gap(r) = (D - first_τ4)/D` with `0 < phase_gap < 1`. Residual RC6-RC8
 attached as audit only; RC2 retained falsified; d=4 SDA not revived.
 `PROOF.md` §Square-Branch Reduction: proximity target remains UNRESOLVED.
-One minimal falsification command: dynamic-cutoff search on `5e8–6e8`.
+One minimal falsification command: dynamic-cutoff search on `5e8-6e8`.
 
 Result:
-Constructive lemma subsection S3 written with hypotheses (H1–H4 reused + H5),
-unresolved Target S1*, residual claim table RC6–RC8 attached, and explicit
+Constructive lemma subsection S3 written with hypotheses (H1-H4 reused + H5),
+unresolved Target S1*, residual claim table RC6-RC8 attached, and explicit
 falsification command. No new measured regime this hour. Direct next-prime and
 Interior Maximizer remain proved; proximity not claimed.
 
@@ -698,17 +698,17 @@ OK
 Delta:
 New constructive lemma subsection S3 (right-endpoint completion F(r),
 chamber-reset residual triple, late-dominant phase residual) with residual
-RC6–RC8 table attachment and minimal falsification command for Target S1*
-(`5e8–6e8` dynamic-cutoff search). Not a replay of S1 or S2.
+RC6-RC8 table attachment and minimal falsification command for Target S1*
+(`5e8-6e8` dynamic-cutoff search). Not a replay of S1 or S2.
 
 Artifacts:
 `research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`;
 `research/04-bounded-compression/docs/square_branch_hourly.md`
 
 Next step:
-Return to falsification queue on `5e8–6e8` (or H_CTC square-branch probe). Keep
+Return to falsification queue on `5e8-6e8` (or H_CTC square-branch probe). Keep
 pressure on `D(r) ∉ Annulus(r)` via `ResetResidual(r)`; do not revive residue
-covers, fixed-540, or d=4 SDA; do not promote RC6–RC8 to theorem status.
+covers, fixed-540, or d=4 SDA; do not promote RC6-RC8 to theorem status.
 
 ## 2026-07-10T22:06:38Z run
 
@@ -758,7 +758,7 @@ Structural audit of recurring offset 540 on new extremal rows if no counterexamp
 
 Mechanism:
 PGS-native structural audit of recurring offset 540 and early-τ=4 / late-τ=3
-chamber separation — residual claims RC9–RC11 on the interior τ4 offset set.
+chamber separation - residual claims RC9-RC11 on the interior τ4 offset set.
 
 Method:
 Read falsification summary
@@ -767,17 +767,17 @@ and `prefix_tau_floor_probe.json` (SDA-invalidation note; d=4 SDA not revived).
 Built minimal probe
 `experiments/square-branch-hourly-2026-07-10-rc9/offset_540_residual_rc9_probe.py`
 recomputing the full τ4 offset set on 5 segment util maxima + 3 o_q branch-max
-rows from the prior chamber table. Predictions P13–P15:
+rows from the prior chamber table. Predictions P13-P15:
 
 - P13/RC9: early-half τ4 mass ≥ 0.40
 - P14/RC10: last_τ4 / D ≥ 0.95
 - P15/RC11: max consecutive τ4 gap (lead+interior+trail) / D ≤ 0.10
 
-Does not replay P1–P12 / RC3–RC8 as primary deliverable. Fixed-band RC2 retained
+Does not replay P1-P12 / RC3-RC8 as primary deliverable. Fixed-band RC2 retained
 falsified. Prime-Square Proximity remains proved (`PROOF.md`); residual audit only.
 
 Result:
-All three new residuals hold on the surface through 4e8–5e8:
+All three new residuals hold on the surface through 4e8-5e8:
 
 | claim | bound | extremum observed |
 | --- | --- | --- |
@@ -801,9 +801,9 @@ Ops status:
 OK
 
 Delta:
-New residual claim table RC9–RC11 (early-half τ4 mass, late-span τ4 presence,
+New residual claim table RC9-RC11 (early-half τ4 mass, late-span τ4 presence,
 max inter-τ4 gap bound) with explicit falsification command on recomputed τ4
-offset geometry; not a replay of RC6–RC8 or fixed-band 540.
+offset geometry; not a replay of RC6-RC8 or fixed-band 540.
 
 Artifacts:
 `experiments/square-branch-hourly-2026-07-10-rc9/offset_540_residual_rc9_probe.py`;
@@ -812,9 +812,9 @@ Artifacts:
 `research/04-bounded-compression/docs/square_branch_hourly.md`
 
 Next step:
-Queue falsification `5e8–6e8` or prefix-tau extremal rerun on newest rows.
-Re-check RC9–RC11 on any new util maximum; do not revive fixed-band 540 or
-d=4 SDA; do not promote RC9–RC11 to theorem status.
+Queue falsification `5e8-6e8` or prefix-tau extremal rerun on newest rows.
+Re-check RC9-RC11 on any new util maximum; do not revive fixed-band 540 or
+d=4 SDA; do not promote RC9-RC11 to theorem status.
 
 ## 2026-07-11T00:05:10Z run
 
@@ -872,19 +872,19 @@ selected-square branch (S4 interior τ4 field and chamber-cover residual).
 Method:
 PGS-first constructive draft under
 `research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`.
-Builds on Claims S1–S3 only. Objects: ordered chamber prefix, full τ4 offset
+Builds on Claims S1-S3 only. Objects: ordered chamber prefix, full τ4 offset
 set `Tau4(r)`, cover residual functionals
 `(early_half_mass, late_span, max_gap_frac)`, extended reset residual
 `ResetResidual⁺(r) = (D(r), F(r), first_τ4_offset, Cover(r))`. Hypotheses
-H1–H5 reused; H6 adds nonempty interior τ4 field under H4. Target S1* left
-UNRESOLVED per `PROOF.md` §Square-Branch Reduction. Residual table RC9–RC11
+H1-H5 reused; H6 adds nonempty interior τ4 field under H4. Target S1* left
+UNRESOLVED per `PROOF.md` §Square-Branch Reduction. Residual table RC9-RC11
 attached as audit only; RC2 remains falsified; d=4 SDA and fixed-540 not
-revived. Minimal falsification command: dynamic-cutoff search on `5e8–6e8`;
+revived. Minimal falsification command: dynamic-cutoff search on `5e8-6e8`;
 optional RC9 cover-panel probe.
 
 Result:
 Constructive lemma subsection S4 written with hypotheses H6, Claims S4-A/B/C,
-status separation update, residual cover table on the 4e8–5e8 o_q branch-max
+status separation update, residual cover table on the 4e8-5e8 o_q branch-max
 panel, and explicit falsification commands. No new measured regime this hour.
 Theorem: proximity remains unresolved in `PROOF.md`; direct next-prime and
 Interior Maximizer remain proved.
@@ -903,17 +903,17 @@ OK
 
 Delta:
 New constructive lemma subsection S4 (interior τ4 field, chamber-cover residual
-functionals, extended `ResetResidual⁺`) with residual claim table RC9–RC11 and
-minimal falsification command for Target S1* (`5e8–6e8` dynamic-cutoff search).
+functionals, extended `ResetResidual⁺`) with residual claim table RC9-RC11 and
+minimal falsification command for Target S1* (`5e8-6e8` dynamic-cutoff search).
 
 Artifacts:
 `research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`;
 `research/04-bounded-compression/docs/square_branch_hourly.md`
 
 Next step:
-Return to falsification queue on `5e8–6e8` (or H_CTC square-branch probe). Keep
-pressure on `D(r)` under Claims S1, S2-B, S3-B, S4-C; re-check RC9–RC11 on any
-new util maximum; do not promote Cover residuals or RC9–RC11 to theorem status.
+Return to falsification queue on `5e8-6e8` (or H_CTC square-branch probe). Keep
+pressure on `D(r)` under Claims S1, S2-B, S3-B, S4-C; re-check RC9-RC11 on any
+new util maximum; do not promote Cover residuals or RC9-RC11 to theorem status.
 
 ## 2026-07-11T02:06:36Z run
 
@@ -963,26 +963,26 @@ Structural audit of recurring offset 540 on new extremal rows if no counterexamp
 
 Mechanism:
 PGS-native structural audit of recurring offset 540 and early-tau=4 /
-late-tau=3 chamber separation — next residual after RC9–RC11.
+late-tau=3 chamber separation - next residual after RC9-RC11.
 
 Method:
 Read latest falsification summary
 `square_branch_dynamic_cutoff_search_4e8_5e8/..._summary.json` and
 `prefix_tau_floor_probe.json` (SDA-invalidation note only). Produced residual
-claim table RC12–RC14 with minimal probe under
+claim table RC12-RC14 with minimal probe under
 `experiments/square-branch-hourly-2026-07-11-rc12/`. Did not port d=4 SDA.
-Did not restate RC9–RC11 as the sole deliverable.
+Did not restate RC9-RC11 as the sole deliverable.
 
 Objects: ordered chamber prefix before selected square `w=r^2`; divisor-count
 field `tau`; offset `D(r)`; Tau4 offset set; first-quarter / last-quarter mass
 and median location of Tau4.
 
 Result:
-RC12 first-quarter τ4 mass ≥ 0.15: **holds** (min 0.1833 on 2e8–3e8 util max).
+RC12 first-quarter τ4 mass ≥ 0.15: **holds** (min 0.1833 on 2e8-3e8 util max).
 RC13 last-quarter τ4 mass ≥ 0.15: **holds** (min 0.2000 on o_q=2 branch max).
 RC14 median τ4 / D ∈ [0.40, 0.65]: **holds** (observed [0.448, 0.572]).
 RC2 fixed near-540 band: retained **falsified**.
-RC9–RC11: retained holds (not primary surface).
+RC9-RC11: retained holds (not primary surface).
 d=4 SDA remains invalidated. Theorem: Prime-Square Proximity remains proved in
 `PROOF.md`; residual audit only.
 
@@ -999,9 +999,9 @@ Ops status:
 OK
 
 Delta:
-New residual claim table RC12–RC14 (first-quarter τ4 mass, last-quarter τ4 mass,
+New residual claim table RC12-RC14 (first-quarter τ4 mass, last-quarter τ4 mass,
 median mid-band) with explicit falsification command on util maxima + o_q panel
-through 4e8–5e8.
+through 4e8-5e8.
 
 Artifacts:
 `experiments/square-branch-hourly-2026-07-11-rc12/offset_540_residual_rc12_probe.py`;
@@ -1010,8 +1010,8 @@ Artifacts:
 `research/04-bounded-compression/docs/square_branch_hourly.md`
 
 Next step:
-Queue falsification `5e8–6e8`, or re-check RC12–RC14 on any new util / o_q
-branch maximum. Do not promote RC12–RC14 to theorem status.
+Queue falsification `5e8-6e8`, or re-check RC12-RC14 on any new util / o_q
+branch maximum. Do not promote RC12-RC14 to theorem status.
 
 ## 2026-07-11T04:05:11Z run
 
@@ -1069,21 +1069,21 @@ selected-square branch (S5 quartile-balance residual on Tau4).
 Method:
 PGS-first constructive draft under
 `research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`.
-Builds on Claims S1–S4 only. Objects: ordered interior τ4 field `Tau4(r)`,
+Builds on Claims S1-S4 only. Objects: ordered interior τ4 field `Tau4(r)`,
 chamber quarter cuts `Q1=⌊D/4⌋`, `Q3=⌊3D/4⌋`, outer-early / mid / outer-late
 zones, quartile-balance functionals
 `(first_quarter_mass, last_quarter_mass, median_frac)`, balanced extended
 reset residual
 `ResetResidual^Q(r) = (D(r), F(r), first_τ4_offset, Cover(r), QuartileBalance(r))`.
-Hypotheses H1–H6 reused; no new hypothesis. Target S1* left UNRESOLVED per
-`PROOF.md` §Square-Branch Reduction. Residual table RC12–RC14 attached as
+Hypotheses H1-H6 reused; no new hypothesis. Target S1* left UNRESOLVED per
+`PROOF.md` §Square-Branch Reduction. Residual table RC12-RC14 attached as
 audit only (from prior hour probe; not re-proved as theorem). RC2 remains
 falsified; d=4 SDA and fixed-540 not revived. Minimal falsification command:
-dynamic-cutoff search on `5e8–6e8`; optional RC12 quartile probe.
+dynamic-cutoff search on `5e8-6e8`; optional RC12 quartile probe.
 
 Result:
 Constructive lemma subsection S5 written with Claims S5-A/B/C, status
-separation update, residual quartile table on the 4e8–5e8 o_q branch-max
+separation update, residual quartile table on the 4e8-5e8 o_q branch-max
 panel, and explicit falsification commands. No new measured regime this hour.
 Theorem: prime-square proximity remains UNRESOLVED in `PROOF.md`; direct
 next-prime and Interior Maximizer remain proved.
@@ -1102,8 +1102,8 @@ OK
 
 Delta:
 New constructive lemma subsection S5 (quartile partition of Tau4, quartile-balance
-residuals, balanced `ResetResidual^Q`) with residual claim table RC12–RC14
-attached and minimal falsification command for Target S1* (`5e8–6e8`
+residuals, balanced `ResetResidual^Q`) with residual claim table RC12-RC14
+attached and minimal falsification command for Target S1* (`5e8-6e8`
 dynamic-cutoff search).
 
 Artifacts:
@@ -1111,9 +1111,9 @@ Artifacts:
 `research/04-bounded-compression/docs/square_branch_hourly.md`
 
 Next step:
-Return to falsification queue on `5e8–6e8` (or H_CTC square-branch probe). Keep
-pressure on `D(r)` under Claims S1, S2-B, S3-B, S4-C, S5-C; re-check RC9–RC14
-on any new util maximum; do not promote QuartileBalance or RC12–RC14 to theorem
+Return to falsification queue on `5e8-6e8` (or H_CTC square-branch probe). Keep
+pressure on `D(r)` under Claims S1, S2-B, S3-B, S4-C, S5-C; re-check RC9-RC14
+on any new util maximum; do not promote QuartileBalance or RC12-RC14 to theorem
 status.
 
 ## 2026-07-11T06:06:36Z run
@@ -1269,22 +1269,22 @@ selected-square branch (S6 late-trail dual markers and trail-extended residual).
 Method:
 PGS-first constructive draft under
 `research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`.
-Builds on Claims S1–S5 only. Objects: ordered field `Tau4(r)`, last-τ4 marker
-`last_τ4_offset = max Tau4(r)`, late trail `trail_gap(r) = D(r) − last_τ4_offset`,
+Builds on Claims S1-S5 only. Objects: ordered field `Tau4(r)`, last-τ4 marker
+`last_τ4_offset = max Tau4(r)`, late trail `trail_gap(r) = D(r) - last_τ4_offset`,
 dual early/late marker pair `Dual(r) = (first_τ4_offset, trail_gap(r))`, and
 trail-extended chamber-reset residual
 `ResetResidual^T(r) = (D(r), F(r), first_τ4_offset, Cover(r), QuartileBalance(r), Trail(r))`
-with `Trail(r) = (last_τ4_offset, trail_gap(r), Dual(r))`. Hypotheses H1–H6
+with `Trail(r) = (last_τ4_offset, trail_gap(r), Dual(r))`. Hypotheses H1-H6
 reused; no new hypothesis. Target S1* left UNRESOLVED per `PROOF.md`
-§Square-Branch Reduction. Residual table RC15–RC17 attached as audit only
+§Square-Branch Reduction. Residual table RC15-RC17 attached as audit only
 (from prior hour probe; not promoted to theorem). RC2 remains falsified;
 d=4 SDA and fixed-540 not revived. Minimal falsification command:
-dynamic-cutoff search on `5e8–6e8`; optional RC15 dual-marker probe.
+dynamic-cutoff search on `5e8-6e8`; optional RC15 dual-marker probe.
 
 Result:
 Constructive lemma subsection S6 written with Claims S6-A/B/C, residual claim
-table update (S6-A/B/C + RC15–RC17), status separation update, dual-marker
-panel on the 4e8–5e8 o_q branch-max rows, and explicit falsification commands.
+table update (S6-A/B/C + RC15-RC17), status separation update, dual-marker
+panel on the 4e8-5e8 o_q branch-max rows, and explicit falsification commands.
 No new measured regime this hour. Theorem: prime-square proximity remains
 UNRESOLVED in `PROOF.md`; direct next-prime and Interior Maximizer remain
 proved.
@@ -1304,8 +1304,8 @@ OK
 Delta:
 New constructive lemma subsection S6 (last-τ4 / trail_gap dual markers,
 `Dual(r)`, trail-extended `ResetResidual^T`) with residual claim table
-RC15–RC17 attached and minimal falsification command for Target S1*
-(`5e8–6e8` dynamic-cutoff search). Not a prose restatement of S5 or of the
+RC15-RC17 attached and minimal falsification command for Target S1*
+(`5e8-6e8` dynamic-cutoff search). Not a prose restatement of S5 or of the
 RC15 probe alone.
 
 Artifacts:
@@ -1313,9 +1313,9 @@ Artifacts:
 `research/04-bounded-compression/docs/square_branch_hourly.md`
 
 Next step:
-Return to falsification queue on `5e8–6e8` (or H_CTC square-branch probe). Keep
+Return to falsification queue on `5e8-6e8` (or H_CTC square-branch probe). Keep
 pressure on `D(r)` under Claims S1, S2-B, S3-B, S4-C, S5-C, S6-C; re-check
-RC9–RC17 on any new util maximum; do not promote Trail/Dual or RC15–RC17 to
+RC9-RC17 on any new util maximum; do not promote Trail/Dual or RC15-RC17 to
 theorem status.
 
 ## 2026-07-11T21:06:34Z run
@@ -1366,7 +1366,7 @@ Structural audit of recurring offset 540 on new extremal rows if no counterexamp
 
 Mechanism:
 PGS-native structural audit of recurring offset 540 and early-tau=4 /
-late-tau=3 chamber separation (Dual L1 and tau4 span residuals RC18–RC20).
+late-tau=3 chamber separation (Dual L1 and tau4 span residuals RC18-RC20).
 
 Method:
 Read falsification summary
@@ -1374,10 +1374,10 @@ Read falsification summary
 and `experiments/square-branch-sda-invalidation-2026-06/prefix_tau_floor_probe.json`.
 Built minimal probe under `experiments/square-branch-hourly-2026-07-11-rc18/`
 recomputing Dual(r)=(first_τ4, trail_gap) on segment utilization maxima through
-4e8–5e8 and the full o_q∈{2,4,6} branch-max panel. New residual claims (not a
-restatement of RC15–RC17 componentwise bounds):
+4e8-5e8 and the full o_q∈{2,4,6} branch-max panel. New residual claims (not a
+restatement of RC15-RC17 componentwise bounds):
 - P22/RC18: Dual L1 = first_τ4 + trail_gap ≤ 24
-- P23/RC19: (last_τ4 − first_τ4)/(D−1) ≥ 0.95
+- P23/RC19: (last_τ4 - first_τ4)/(D-1) ≥ 0.95
 - P24/RC20: (first_τ4 + trail_gap)/D ≤ 0.05
 RC2 fixed near-540 band retained falsified; d=4 SDA not revived. Prime-square
 proximity remains unresolved in PROOF.md (audit only).
@@ -1390,7 +1390,7 @@ maxima + 3 o_q panel).
 - span_frac range: [0.9567, 0.9935]
 - dual_l1_rel range: [0.0087, 0.0453]
 - near_540 count: 4; near_540 dual_l1 range: [14, 24]
-- util max 4e8–5e8 still D=738 (RC2 falsified)
+- util max 4e8-5e8 still D=738 (RC2 falsified)
 Falsification command:
 `python3 experiments/square-branch-hourly-2026-07-11-rc18/offset_540_residual_rc18_probe.py`
 
@@ -1407,9 +1407,9 @@ Ops status:
 OK
 
 Delta:
-New residual claim table RC18–RC20 (Dual L1 envelope, tau4 support span
+New residual claim table RC18-RC20 (Dual L1 envelope, tau4 support span
 fraction, relative Dual L1) with explicit falsification command; not a prose
-restatement of RC15–RC17.
+restatement of RC15-RC17.
 
 Artifacts:
 `experiments/square-branch-hourly-2026-07-11-rc18/offset_540_residual_rc18_probe.py`;
@@ -1418,7 +1418,7 @@ Artifacts:
 `research/04-bounded-compression/docs/square_branch_hourly.md`
 
 Next step:
-Queue falsification `5e8–6e8` (or re-check RC15–RC20 on any new util maximum).
+Queue falsification `5e8-6e8` (or re-check RC15-RC20 on any new util maximum).
 Do not promote Dual L1 / span fraction to theorem; keep RC2 falsified.
 
 ## 2026-07-11T23:05:10Z run
@@ -1789,7 +1789,7 @@ Structural audit of recurring offset 540 on new extremal rows if no counterexamp
 
 Mechanism:
 PGS-native structural audit of recurring offset 540 and early-τ=4 / late-τ=3
-chamber separation — residual claims RC21–RC23 after Dual L1 surface (RC18–RC20).
+chamber separation - residual claims RC21-RC23 after Dual L1 surface (RC18-RC20).
 
 Method:
 Read `square_branch_dynamic_cutoff_search_4e8_5e8` summary JSON,
@@ -1797,17 +1797,17 @@ Read `square_branch_dynamic_cutoff_search_4e8_5e8` summary JSON,
 prior chamber table from `experiments/square-branch-hourly-2026-07-10/`, and
 RC18 Dual L1 table. Ran new probe
 `experiments/square-branch-hourly-2026-07-13-rc21/offset_540_residual_rc21_probe.py`
-evaluating P25–P27 (τ4 density envelope, Dual max-component share, near-540
-Dual L1 floor). Did not restate P22–P24 as the sole deliverable.
+evaluating P25-P27 (τ4 density envelope, Dual max-component share, near-540
+Dual L1 floor). Did not restate P22-P24 as the sole deliverable.
 
 Result:
-RC21 holds: τ4 density dens = tau4_count/(D−1) ∈ [0.10, 0.135] on 8/8 rows
+RC21 holds: τ4 density dens = tau4_count/(D-1) ∈ [0.10, 0.135] on 8/8 rows
 (range `[0.1093, 0.1303]`).
 RC22 holds: Dual max-component share max(first, trail)/L1 ≤ 0.85 on 8/8
 (range `[0.50, 0.833]`).
-RC23 holds (conditional): if |D−540|≤20 then Dual L1 ≥ 14 on 4/4 near-540 rows
+RC23 holds (conditional): if |D-540|≤20 then Dual L1 ≥ 14 on 4/4 near-540 rows
 (near L1 range `[14, 24]`); escape util-max D=738 remains outside near-540.
-RC2 retained falsified (D=738). RC18–RC20 retained holds (not primary surface).
+RC2 retained falsified (D=738). RC18-RC20 retained holds (not primary surface).
 Theorem: prime-square proximity remains UNRESOLVED in `PROOF.md` §Square-Branch
 Reduction; direct next-prime and Interior Maximizer remain proved. Residual
 audit only. Invalidated d=4 SDA not revived.
@@ -1826,9 +1826,9 @@ Ops status:
 OK
 
 Delta:
-New residual claim table RC21–RC23 (τ4 density envelope, Dual max-component
+New residual claim table RC21-RC23 (τ4 density envelope, Dual max-component
 share, near-540 Dual L1 floor) with explicit falsification command; all three
-hold on util maxima through 4e8–5e8 + o_q panel. Not a replay of RC18–RC20.
+hold on util maxima through 4e8-5e8 + o_q panel. Not a replay of RC18-RC20.
 Theorem-status continuity corrected to PROOF.md (proximity unresolved).
 
 Artifacts:
@@ -1838,8 +1838,8 @@ Artifacts:
 `research/00-index/continuity/ACTIVE_TARGET.md`
 
 Next step:
-Queue falsification `5e8–6e8` and re-check RC21–RC23 on any new util maximum.
-Keep RC21–RC23 residual only; do not promote to theorem; do not revive
+Queue falsification `5e8-6e8` and re-check RC21-RC23 on any new util maximum.
+Keep RC21-RC23 residual only; do not promote to theorem; do not revive
 fixed-band 540 or d=4 SDA.
 
 ## 2026-07-13T02:05:11Z run
@@ -1953,74 +1953,95 @@ RC18-RC23 to theorem status.
 ## 2026-07-13T04:06:34Z run
 
 Mechanism:
-Square-branch dynamic-cutoff falsification sweep on prime roots 400M-500M
+Walk every prime root `r` in the already-measured band 400M-500M. For each
+selected prime square `w = r^2`, measure the backward distance `D(r) = r^2 - p`
+to the previous prime `p`, and compare `D(r)` to the dynamic cutoff
+`C = max(64, ceil(0.5 * log(r^2)^2))`. Report utilization `D/C` and any first
+counterexample (`D > C`).
 
 Method:
-deterministic dispatch: /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py --min-prime 400000001 --max-prime 500000000 --output-dir research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_4e8_5e8
+deterministic dispatch (replay of certified band):
+`/Library/Frameworks/Python.framework/Versions/3.13/bin/python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py --min-prime 400000001 --max-prime 500000000 --output-dir research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_4e8_5e8`
 
 Result:
-Command exit code: 0
-stdout tail:
+Command exit code: 0. Same scientific signature as the already-recorded
+`4e8-5e8` surface (no new regime).
+
 ```
 square-branch-dynamic-cutoff-search: primes=5019541 first_counterexample=none max_utilization=0.9341772151898734 max_p=424171123
 ```
-tested_prime_count: 5019541
-first_counterexample: None
-max_utilization: 0.9341772151898734
-max_p: 424171123
-max_offset: 738
-elapsed_seconds: 82.90599799156189
 
-pytest exit code: 0
-```
-....                                                                     [100%]
-4 passed in 2.36s
-```
+| Field | Value |
+| --- | --- |
+| Prime roots tested | 5,019,541 |
+| First counterexample | none |
+| Max utilization | 0.9341772151898734 |
+| Extremal root `r` | 424,171,123 |
+| Offset `D(r)` | 738 |
+| `o_q` at max row | 6 |
+| Dynamic cutoff at max row | 790 |
+| Elapsed seconds | 82.91 |
 
-Delta classification: new falsification regime through max_prime=500000000
+pytest exit code: 0 (4 passed in 2.36s).
+
+Theorem boundary: prime-square proximity remains UNRESOLVED in `PROOF.md`
+section Square-Branch Reduction. This band is audit corroboration only. Direct
+next-prime and Interior Maximizer remain proved. RC2 (fixed near-540 as a law
+on util maxima) stays falsified by `D=738`.
 
 Research status:
-ADVANCE
+NO_DELTA
 
 Ops status:
 OK
 
 Delta:
-new falsification regime through max_prime=500000000
+Replay of certified `4e8-5e8` dynamic-cutoff surface. Signature matches prior
+measured band (max util 0.934..., `r=424171123`, `D=738`, first_counterexample=none).
+Per contract, replay is NO_DELTA, not ADVANCE.
 
 Artifacts:
-/Library/Frameworks/Python.framework/Versions/3.13/bin/python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py --min-prime 400000001 --max-prime 500000000 --output-dir research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_4e8_5e8; research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_4e8_5e8/square_branch_dynamic_cutoff_search_summary.json
+`research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_4e8_5e8/square_branch_dynamic_cutoff_search_summary.json`;
+`research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_4e8_5e8/square_branch_dynamic_cutoff_search_frontier.csv`
 
 Next step:
-Structural audit of recurring offset 540 on new extremal rows if no counterexample.
+Offset-540 structural audit on the recurring chamber geometry (queue item
+`offset-540-structural-audit`). Honest next falsification band is `5e8-6e8`,
+not another `4e8-5e8` replay.
 
 ## 2026-07-13T05:07:20Z run
 
 Mechanism:
-PGS-native structural audit of recurring offset 540 and early-τ=4 / late-τ=3
-chamber separation — residual claims RC24–RC26 after density/share surface
-(RC21–RC23).
+On each extremal chamber before a selected prime square `w = r^2`, mark the
+first and last early composite-semiprime offsets with `tau = 4`, the late
+`tau = 3` square endpoint at offset `D(r)`, and the Dual trail gap after the
+last `tau = 4`. From those plain marks, form three residual quantities: mean
+spacing of `tau = 4` hits, signed early/late Dual imbalance, and the fraction
+of chamber length that is open after the first `tau = 4`. Project terms:
+RC24 mean inter-hit gap, RC25 Dual signed imbalance, RC26 chamber open fraction.
 
 Method:
-Read `square_branch_dynamic_cutoff_search_4e8_5e8` summary JSON,
-`prefix_tau_floor_probe.json` (SDA-invalidation note; d=4 SDA not revived),
-prior chamber table from `experiments/square-branch-hourly-2026-07-10/`, and
-RC21 density/share table. Ran new probe
+PGS-native residual probe (no d=4 SDA port). Read
+`square_branch_dynamic_cutoff_search_4e8_5e8` summary JSON,
+`prefix_tau_floor_probe.json`, prior chamber table
+`experiments/square-branch-hourly-2026-07-10/`, and RC21 density/share table.
+Ran new probe
 `experiments/square-branch-hourly-2026-07-13-rc24/offset_540_residual_rc24_probe.py`
-evaluating P28–P30 (Tau4 mean inter-hit gap, Dual signed imbalance, chamber
-open fraction). Did not restate P25–P27 as the sole deliverable.
+evaluating P28-P30 on segment util maxima through `4e8-5e8` plus the full
+`o_q in {2,4,6}` branch-max panel (8 rows). Did not restate P25-P27 as the sole
+deliverable.
 
 Result:
-RC24 holds: Tau4 mean inter-hit gap mean_gap ∈ [7.0, 10.0] on 8/8 rows
-(range `[7.653, 8.980]`).
-RC25 holds: Dual signed imbalance (trail − first)/L1 ∈ [−0.55, 0.70] on 8/8
-(range `[−0.455, 0.667]`).
-RC26 holds: chamber open fraction (D − first_τ4)/D ≥ 0.96 on 8/8
-(range `[0.9671, 0.9959]`).
-RC2 retained falsified (D=738). RC21–RC23 retained holds (not primary surface).
-Theorem: prime-square proximity remains UNRESOLVED in `PROOF.md` §Square-Branch
-Reduction; direct next-prime and Interior Maximizer remain proved. Residual
-audit only. Invalidated d=4 SDA not revived.
+| Claim | Bound | Observed | Rows |
+| --- | --- | --- | --- |
+| RC24 / P28 mean gap | `[7.0, 10.0]` | `[7.653, 8.980]` | 8/8 hold |
+| RC25 / P29 signed Dual | `[-0.55, 0.70]` | `[-0.455, 0.667]` | 8/8 hold |
+| RC26 / P30 open fraction | `>= 0.96` | `[0.9671, 0.9959]` | 8/8 hold |
+
+RC2 retained falsified (`r=424171123`, `D=738`). RC21-RC23 retained holds (not
+primary surface this hour). Theorem: prime-square proximity remains UNRESOLVED
+in `PROOF.md` section Square-Branch Reduction; direct next-prime and Interior
+Maximizer remain proved. Residual audit only. Invalidated d=4 SDA not revived.
 
 pytest exit code: 0
 ```
@@ -2035,19 +2056,19 @@ Ops status:
 OK
 
 Delta:
-New residual claim table RC24–RC26 (Tau4 mean inter-hit gap envelope, Dual
-signed imbalance, chamber open fraction) with explicit falsification command;
-all three hold on util maxima through 4e8–5e8 + o_q panel. Not a replay of
-RC21–RC23.
+New falsifiable residual claim table RC24-RC26 (Tau4 mean inter-hit gap
+envelope, Dual signed imbalance, chamber open fraction) with explicit
+falsification command; all three hold on util maxima through `4e8-5e8` + `o_q`
+panel. Not a replay of RC21-RC23 density/share/near-540 floor.
 
 Artifacts:
 `experiments/square-branch-hourly-2026-07-13-rc24/offset_540_residual_rc24_probe.py`;
 `experiments/square-branch-hourly-2026-07-13-rc24/offset_540_rc24_prediction_table.json`;
 `experiments/square-branch-hourly-2026-07-13-rc24/FINDINGS.md`;
-`research/00-index/continuity/ACTIVE_TARGET.md` (theorem-status continuity)
+`research/00-index/continuity/ACTIVE_TARGET.md` (theorem-status continuity: proximity OPEN/UNRESOLVED)
 
 Next step:
-Queue falsification `5e8–6e8` and re-check RC24–RC26 (and RC18–RC23) on any
-new util maximum. Keep RC24–RC26 residual only; do not promote to theorem; do
+Queue falsification `5e8-6e8` and re-check RC24-RC26 (and RC18-RC23) on any
+new util maximum. Keep RC24-RC26 residual only; do not promote to theorem; do
 not revive fixed-band 540 or d=4 SDA.
 

@@ -10,7 +10,7 @@ The square-branch prime-square proximity theorem is **unresolved** in
 dynamic cutoff theorem remains open on the square branch until proximity closes.
 
 ```text
-r^2 - p <= max(64, ceil(0.5 * log(r^2)^2))   [UNRESOLVED — Target S1*]
+r^2 - p <= max(64, ceil(0.5 * log(r^2)^2))   [UNRESOLVED - Target S1*]
 w - p <= max(64, ceil(0.5 * log(q)^2))       [UNRESOLVED on square branch]
 ```
 
@@ -27,7 +27,7 @@ are corroboration only; they do not close proximity.
   from axioms to derived theorems only after the arithmetic obligation is closed
   (`lean-4/PGS/ChamberReset.lean`)
 - Square-branch audit sweeps on **new** regimes (hourly queue; next honest band
-  `5e8–6e8`)
+  `5e8-6e8`)
 - RSA endpoint resolver maturation (separate program track)
 
 ## Proved (do not re-litigate)
@@ -64,15 +64,15 @@ are corroboration only; they do not close proximity.
 
 Prior certified baseline (replay = NO_DELTA): `3·10^8 .. 4·10^8` in `hourly_baseline_signature.json`.
 
-Replay of certified `4e8–5e8` is `NO_DELTA`. Next honest falsification band:
-`5e8–6e8`.
+Replay of certified `4e8-5e8` is `NO_DELTA`. Next honest falsification band:
+`5e8-6e8`.
 
 ## Hourly Queue
 
 Rotating queue lives in `research/00-index/continuity/hourly_queue.json`.
 The dispatcher executes **exactly one** item per activation. Items target
 audit corroboration on **new** regimes, residual structure, and constructive
-lemma pressure — not proof-by-band and not replay of certified regimes.
+lemma pressure - not proof-by-band and not replay of certified regimes.
 
 Contract: `research/00-index/continuity/HOURLY_RELAY_CONTRACT.md`
 
