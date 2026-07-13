@@ -25,7 +25,14 @@ if [[ ! -d "$PGS_SOURCE/.git" && ! -f "$PGS_SOURCE/.git" ]]; then
 fi
 
 cd "$PGS_SOURCE"
-git fetch origin --quiet || git fetch origin
+# Network fetch is best-effort. Offline DNS/github outages must not fail the hour
+# when an isolated worktree already exists (historical FAILED spam on Cujo/outages).
+fetch_ok=0
+if git fetch origin --quiet 2>/dev/null || git fetch origin 2>/dev/null; then
+  fetch_ok=1
+else
+  log "fetch origin failed (will continue if worktree already present)"
+fi
 
 if [[ -d "$PGS_ROOT/.git" || -f "$PGS_ROOT/.git" ]]; then
   log "worktree present at $PGS_ROOT"
@@ -34,13 +41,22 @@ else
     log "refusing to reuse non-git path: $PGS_ROOT"
     exit 1
   fi
+  if [[ "$fetch_ok" -ne 1 ]] && ! git show-ref --verify --quiet "refs/heads/$TASK_BRANCH" \
+      && ! git show-ref --verify --quiet "refs/remotes/origin/$TASK_BRANCH" \
+      && ! git show-ref --verify --quiet "refs/remotes/origin/main" \
+      && ! git rev-parse --verify main >/dev/null 2>&1; then
+    log "cannot create worktree offline without local branch refs"
+    exit 1
+  fi
   log "creating worktree $PGS_ROOT on $TASK_BRANCH"
   if git show-ref --verify --quiet "refs/heads/$TASK_BRANCH"; then
     git worktree add "$PGS_ROOT" "$TASK_BRANCH"
   elif git show-ref --verify --quiet "refs/remotes/origin/$TASK_BRANCH"; then
     git worktree add -b "$TASK_BRANCH" "$PGS_ROOT" "origin/$TASK_BRANCH"
-  else
+  elif git show-ref --verify --quiet "refs/remotes/origin/main"; then
     git worktree add -b "$TASK_BRANCH" "$PGS_ROOT" origin/main
+  else
+    git worktree add -b "$TASK_BRANCH" "$PGS_ROOT" main
   fi
 fi
 
@@ -56,9 +72,12 @@ if [[ "$current" != "$TASK_BRANCH" ]]; then
   fi
 fi
 
-git fetch origin --quiet || git fetch origin
-if git show-ref --verify --quiet "refs/remotes/origin/$TASK_BRANCH"; then
-  git merge --ff-only "origin/$TASK_BRANCH" 2>/dev/null || true
+if git fetch origin --quiet 2>/dev/null || git fetch origin 2>/dev/null; then
+  if git show-ref --verify --quiet "refs/remotes/origin/$TASK_BRANCH"; then
+    git merge --ff-only "origin/$TASK_BRANCH" 2>/dev/null || true
+  fi
+else
+  log "worktree fetch skipped (offline or DNS); using local HEAD"
 fi
 
 # Sync relay code/contracts from the human source tree so launchd can pick up
