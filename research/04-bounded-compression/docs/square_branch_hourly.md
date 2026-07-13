@@ -1994,7 +1994,7 @@ Artifacts:
 Next step:
 Structural audit of recurring offset 540 on new extremal rows if no counterexample.
 
-## 2026-07-13T05:07:00Z run
+## 2026-07-13T05:07:20Z run
 
 Mechanism:
 PGS-native structural audit of recurring offset 540 and early-τ=4 / late-τ=3
@@ -2007,17 +2007,16 @@ Read `square_branch_dynamic_cutoff_search_4e8_5e8` summary JSON,
 prior chamber table from `experiments/square-branch-hourly-2026-07-10/`, and
 RC21 density/share table. Ran new probe
 `experiments/square-branch-hourly-2026-07-13-rc24/offset_540_residual_rc24_probe.py`
-evaluating P28–P30 (Dual product envelope, near-540 tau4 density ceiling,
-late-support fraction). Did not restate P25–P27 as the sole deliverable.
+evaluating P28–P30 (Tau4 mean inter-hit gap, Dual signed imbalance, chamber
+open fraction). Did not restate P25–P27 as the sole deliverable.
 
 Result:
-RC24 holds: Dual product first_τ4 × trail_gap ≤ 120 on 8/8 rows
-(range `[4, 108]`).
-RC25 holds (conditional): if |D−540|≤20 then dens ≤ 0.120 on 4/4 near-540 rows
-(near dens range `[0.1109, 0.1174]`); escape util-max D=738 dens=0.130 remains
-outside near-540 and above the conditional ceiling.
-RC26 holds: late-support fraction last_τ4/D ≥ 0.95 on 8/8
-(range `[0.9631, 0.9957]`); distinct from RC19 span (last−first)/(D−1).
+RC24 holds: Tau4 mean inter-hit gap mean_gap ∈ [7.0, 10.0] on 8/8 rows
+(range `[7.653, 8.980]`).
+RC25 holds: Dual signed imbalance (trail − first)/L1 ∈ [−0.55, 0.70] on 8/8
+(range `[−0.455, 0.667]`).
+RC26 holds: chamber open fraction (D − first_τ4)/D ≥ 0.96 on 8/8
+(range `[0.9671, 0.9959]`).
 RC2 retained falsified (D=738). RC21–RC23 retained holds (not primary surface).
 Theorem: prime-square proximity remains UNRESOLVED in `PROOF.md` §Square-Branch
 Reduction; direct next-prime and Interior Maximizer remain proved. Residual
@@ -2026,7 +2025,7 @@ audit only. Invalidated d=4 SDA not revived.
 pytest exit code: 0
 ```
 ....                                                                     [100%]
-4 passed in 2.36s
+4 passed in 2.43s
 ```
 
 Research status:
@@ -2036,18 +2035,19 @@ Ops status:
 OK
 
 Delta:
-New residual claim table RC24–RC26 (Dual product envelope, near-540 tau4
-density ceiling, late-support fraction last_τ4/D) with explicit falsification
-command; all three hold on util maxima through 4e8–5e8 + o_q panel. Not a
-replay of RC21–RC23.
+New residual claim table RC24–RC26 (Tau4 mean inter-hit gap envelope, Dual
+signed imbalance, chamber open fraction) with explicit falsification command;
+all three hold on util maxima through 4e8–5e8 + o_q panel. Not a replay of
+RC21–RC23.
 
 Artifacts:
 `experiments/square-branch-hourly-2026-07-13-rc24/offset_540_residual_rc24_probe.py`;
 `experiments/square-branch-hourly-2026-07-13-rc24/offset_540_rc24_prediction_table.json`;
 `experiments/square-branch-hourly-2026-07-13-rc24/FINDINGS.md`;
-`research/04-bounded-compression/docs/square_branch_hourly.md`
+`research/00-index/continuity/ACTIVE_TARGET.md` (theorem-status continuity)
 
 Next step:
 Queue falsification `5e8–6e8` and re-check RC24–RC26 (and RC18–RC23) on any
 new util maximum. Keep RC24–RC26 residual only; do not promote to theorem; do
 not revive fixed-band 540 or d=4 SDA.
+
