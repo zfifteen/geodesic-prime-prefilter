@@ -1888,3 +1888,64 @@ Artifacts:
 
 Next step:
 Queue falsification 500M-600M or draft Chamber-Reset Endpoint Resolution Lemma subsection.
+
+## 2026-07-13T03:08:22Z run
+
+Mechanism:
+Draft one subsection of the Chamber-Reset Endpoint Resolution Lemma on the
+selected-square branch (S7 Dual L1 residual, τ4 density, dual-balance residual).
+
+Method:
+PGS-first constructive draft under
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`.
+Builds on Claims S1-S6 only. Objects: Dual L1
+`L1(r) = first_τ4_offset + trail_gap(r)`, relative Dual L1 `L1_rel(r) = L1/D`,
+support span fraction `span_frac(r)`, τ4 density
+`dens(r) = |Tau4(r)|/(D-1)`, Dual max-component share
+`max_share(r) = max(first_τ4, trail_gap)/L1`, dual-balance package
+`DualBalance(r)`, dual-balance extended residual
+`ResetResidual^D(r)`. Hypotheses H1-H6 reused; no new hypothesis. Target S1*
+left UNRESOLVED per `PROOF.md` §Square-Branch Reduction. Residual table
+RC18-RC23 attached as audit only (from prior RC18 Dual L1 and RC21 density/share
+probes; not re-proved as theorem). RC2 remains falsified; d=4 SDA and fixed-540
+not revived. Minimal falsification command: dynamic-cutoff search on `5e8-6e8`;
+optional RC18/RC21 residual probes.
+
+Result:
+Constructive lemma subsection S7 written with Claims S7-A/B/C, status
+separation update, residual Dual-balance table on the 4e8-5e8 o_q branch-max
+panel, and explicit falsification commands. No new measured regime this hour.
+Theorem: prime-square proximity remains UNRESOLVED in `PROOF.md`; direct
+next-prime and Interior Maximizer remain proved.
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.33s
+```
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New constructive lemma subsection S7 (Dual L1 residual, τ4 density, Dual
+max-component share, dual-balance `ResetResidual^D`) with residual claim table
+RC18-RC23 attached and minimal falsification command for Target S1* (`5e8-6e8`
+dynamic-cutoff search). Not a prose restatement of S6; DualBalance is a new
+named residual package.
+
+Artifacts:
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`;
+`research/04-bounded-compression/docs/square_branch_hourly.md`;
+`research/00-index/continuity/ACTIVE_TARGET.md` (re-aligned to PROOF.md: proximity OPEN/UNRESOLVED);
+`experiments/square-branch-hourly-2026-07-11-rc18/` (attached residual surface);
+`experiments/square-branch-hourly-2026-07-13-rc21/` (attached residual surface)
+
+Next step:
+Return to falsification queue on `5e8-6e8` (or H_CTC square-branch probe). Keep
+pressure on `D(r)` under Claims S1, S2-B, S3-B, S4-C, S5-C, S6-C, S7-C; re-check
+RC9-RC23 / DualBalance on any new util maximum; do not promote DualBalance or
+RC18-RC23 to theorem status.
