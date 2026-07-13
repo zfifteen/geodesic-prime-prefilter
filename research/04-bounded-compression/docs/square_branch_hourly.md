@@ -2702,7 +2702,7 @@ Research status:
 ADVANCE
 
 Ops status:
-OK
+FAILED
 
 Delta:
 new falsification regime through max_prime=500000000
@@ -2712,3 +2712,72 @@ Artifacts:
 
 Next step:
 Structural audit of recurring offset 540 on new extremal rows if no counterexample.
+
+## 2026-07-13T17:08:01Z run
+
+Mechanism:
+PGS-native structural audit of recurring offset 540 and early-tau=4 /
+late-tau=3 chamber separation: successive gap IQR/median robust scale,
+trail closing isolation in mean-gap units, and Tau4 body last-quartile mass.
+Project terms: residual claims RC33-RC35 / predictions P37-P39.
+
+Method:
+Job `offset-540-structural-audit`. Read latest falsification summary
+`square_branch_dynamic_cutoff_search_4e8_5e8` and `prefix_tau_floor_probe.json`.
+New probe under `experiments/square-branch-hourly-2026-07-13-rc33/`.
+PGS-native Dual markers and Tau4 successive gaps only (no d=4 SDA port,
+no classical inference gate). Continuity: ACTIVE_TARGET residual package
+through RC35; proximity remains OPEN/UNRESOLVED per PROOF.md.
+
+Result:
+| Claim | Bound | Observed | Status |
+| --- | --- | --- | --- |
+| RC33 / P37 IQR/median | 0.70 <= IQR/med <= 1.55 | [0.833, 1.417] | holds |
+| RC34 / P38 trail/mean | 0.15 <= trail/mean <= 2.50 | [0.223, 2.278] | holds |
+| RC35 / P39 body last-Q | 0.18 <= last_Q <= 0.35 | [0.233, 0.297] | holds |
+| RC2 fixed band [528, 552] | law on util maxima | D=738 | retained falsified |
+
+Branch-max panel (F(r) = o_q):
+
+| o_q | r | D | trail | IQR/med | trail/mean | last_Q |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2 | 468917503 | 542 | 20 | 1.333 | 2.278 | 0.233 |
+| 4 | 482342527 | 486 | 6 | 1.357 | 0.672 | 0.283 |
+| 6 | 424171123 | 738 | 8 | 1.167 | 1.045 | 0.240 |
+
+Theorem: prime-square proximity / Target S1* remains UNRESOLVED in `PROOF.md`
+§Square-Branch Reduction; direct next-prime and Interior Maximizer remain
+proved. Residual audit only. Invalidated d=4 SDA not revived.
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.47s
+```
+RC33 residual probe exit code: 0 (RC33-RC35 hold; RC2 retained falsified).
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New falsifiable residual claim table RC33-RC35 (Tau4 successive IQR/median
+robust scale, trail/mean closing isolation, Tau4 body last-quartile mass)
+with explicit falsification command; all three hold on util maxima through
+`4e8-5e8` + `o_q` panel. Continuity: ACTIVE_TARGET residual package through
+RC35; proximity remains OPEN/UNRESOLVED. Not a replay of RC30-RC32 median/mean,
+sub-mean majority, or body early-mass.
+
+Artifacts:
+`experiments/square-branch-hourly-2026-07-13-rc33/offset_540_residual_rc33_probe.py`;
+`experiments/square-branch-hourly-2026-07-13-rc33/offset_540_rc33_prediction_table.json`;
+`experiments/square-branch-hourly-2026-07-13-rc33/FINDINGS.md`;
+`research/00-index/continuity/ACTIVE_TARGET.md` (residual package through RC35; proximity OPEN/UNRESOLVED)
+
+Next step:
+Queue falsification `5e8-6e8` and re-check RC33-RC35 (and RC18-RC32) on any
+new util maximum. Keep RC33-RC35 residual only; do not promote IQR/median,
+trail/mean, or body last-quartile mass to theorem; do not revive fixed-band
+540 or d=4 SDA.
