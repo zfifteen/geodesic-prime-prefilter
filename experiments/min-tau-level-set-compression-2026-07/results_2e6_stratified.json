@@ -1,0 +1,657 @@
+{
+  "status": "hypothesis measured residual (not theorem)",
+  "regime": "11..2000000",
+  "gaps": 148928,
+  "total_spill": 17,
+  "spill_rate_global": 0.00011414911903738719,
+  "rates_by_tau_w": {
+    "3": {
+      "gaps": 221,
+      "spill": 0,
+      "hold": 221,
+      "spill_rate": 0.0
+    },
+    "4": {
+      "gaps": 110946,
+      "spill": 17,
+      "hold": 110929,
+      "spill_rate": 0.00015322769635678617
+    },
+    "6": {
+      "gaps": 5432,
+      "spill": 0,
+      "hold": 5432,
+      "spill_rate": 0.0
+    },
+    "8": {
+      "gaps": 15380,
+      "spill": 0,
+      "hold": 15380,
+      "spill_rate": 0.0
+    },
+    "9": {
+      "gaps": 8,
+      "spill": 0,
+      "hold": 8,
+      "spill_rate": 0.0
+    },
+    "10": {
+      "gaps": 219,
+      "spill": 0,
+      "hold": 219,
+      "spill_rate": 0.0
+    },
+    "12": {
+      "gaps": 2489,
+      "spill": 0,
+      "hold": 2489,
+      "spill_rate": 0.0
+    },
+    "14": {
+      "gaps": 24,
+      "spill": 0,
+      "hold": 24,
+      "spill_rate": 0.0
+    },
+    "15": {
+      "gaps": 4,
+      "spill": 0,
+      "hold": 4,
+      "spill_rate": 0.0
+    },
+    "16": {
+      "gaps": 3367,
+      "spill": 0,
+      "hold": 3367,
+      "spill_rate": 0.0
+    },
+    "18": {
+      "gaps": 215,
+      "spill": 0,
+      "hold": 215,
+      "spill_rate": 0.0
+    },
+    "20": {
+      "gaps": 221,
+      "spill": 0,
+      "hold": 221,
+      "spill_rate": 0.0
+    },
+    "24": {
+      "gaps": 2245,
+      "spill": 0,
+      "hold": 2245,
+      "spill_rate": 0.0
+    },
+    "28": {
+      "gaps": 55,
+      "spill": 0,
+      "hold": 55,
+      "spill_rate": 0.0
+    },
+    "30": {
+      "gaps": 85,
+      "spill": 0,
+      "hold": 85,
+      "spill_rate": 0.0
+    },
+    "32": {
+      "gaps": 2136,
+      "spill": 0,
+      "hold": 2136,
+      "spill_rate": 0.0
+    },
+    "36": {
+      "gaps": 593,
+      "spill": 0,
+      "hold": 593,
+      "spill_rate": 0.0
+    },
+    "38": {
+      "gaps": 1,
+      "spill": 0,
+      "hold": 1,
+      "spill_rate": 0.0
+    },
+    "40": {
+      "gaps": 420,
+      "spill": 0,
+      "hold": 420,
+      "spill_rate": 0.0
+    },
+    "42": {
+      "gaps": 26,
+      "spill": 0,
+      "hold": 26,
+      "spill_rate": 0.0
+    },
+    "44": {
+      "gaps": 4,
+      "spill": 0,
+      "hold": 4,
+      "spill_rate": 0.0
+    },
+    "48": {
+      "gaps": 1747,
+      "spill": 0,
+      "hold": 1747,
+      "spill_rate": 0.0
+    },
+    "50": {
+      "gaps": 5,
+      "spill": 0,
+      "hold": 5,
+      "spill_rate": 0.0
+    },
+    "52": {
+      "gaps": 1,
+      "spill": 0,
+      "hold": 1,
+      "spill_rate": 0.0
+    },
+    "54": {
+      "gaps": 66,
+      "spill": 0,
+      "hold": 66,
+      "spill_rate": 0.0
+    },
+    "56": {
+      "gaps": 89,
+      "spill": 0,
+      "hold": 89,
+      "spill_rate": 0.0
+    },
+    "60": {
+      "gaps": 215,
+      "spill": 0,
+      "hold": 215,
+      "spill_rate": 0.0
+    },
+    "64": {
+      "gaps": 748,
+      "spill": 0,
+      "hold": 748,
+      "spill_rate": 0.0
+    },
+    "66": {
+      "gaps": 1,
+      "spill": 0,
+      "hold": 1,
+      "spill_rate": 0.0
+    },
+    "70": {
+      "gaps": 3,
+      "spill": 0,
+      "hold": 3,
+      "spill_rate": 0.0
+    },
+    "72": {
+      "gaps": 521,
+      "spill": 0,
+      "hold": 521,
+      "spill_rate": 0.0
+    },
+    "78": {
+      "gaps": 1,
+      "spill": 0,
+      "hold": 1,
+      "spill_rate": 0.0
+    },
+    "80": {
+      "gaps": 236,
+      "spill": 0,
+      "hold": 236,
+      "spill_rate": 0.0
+    },
+    "84": {
+      "gaps": 41,
+      "spill": 0,
+      "hold": 41,
+      "spill_rate": 0.0
+    },
+    "88": {
+      "gaps": 5,
+      "spill": 0,
+      "hold": 5,
+      "spill_rate": 0.0
+    },
+    "90": {
+      "gaps": 39,
+      "spill": 0,
+      "hold": 39,
+      "spill_rate": 0.0
+    },
+    "96": {
+      "gaps": 578,
+      "spill": 0,
+      "hold": 578,
+      "spill_rate": 0.0
+    },
+    "100": {
+      "gaps": 12,
+      "spill": 0,
+      "hold": 12,
+      "spill_rate": 0.0
+    },
+    "104": {
+      "gaps": 1,
+      "spill": 0,
+      "hold": 1,
+      "spill_rate": 0.0
+    },
+    "108": {
+      "gaps": 73,
+      "spill": 0,
+      "hold": 73,
+      "spill_rate": 0.0
+    },
+    "112": {
+      "gaps": 41,
+      "spill": 0,
+      "hold": 41,
+      "spill_rate": 0.0
+    },
+    "120": {
+      "gaps": 87,
+      "spill": 0,
+      "hold": 87,
+      "spill_rate": 0.0
+    },
+    "126": {
+      "gaps": 9,
+      "spill": 0,
+      "hold": 9,
+      "spill_rate": 0.0
+    },
+    "128": {
+      "gaps": 97,
+      "spill": 0,
+      "hold": 97,
+      "spill_rate": 0.0
+    },
+    "132": {
+      "gaps": 4,
+      "spill": 0,
+      "hold": 4,
+      "spill_rate": 0.0
+    },
+    "140": {
+      "gaps": 3,
+      "spill": 0,
+      "hold": 3,
+      "spill_rate": 0.0
+    },
+    "144": {
+      "gaps": 110,
+      "spill": 0,
+      "hold": 110,
+      "spill_rate": 0.0
+    },
+    "150": {
+      "gaps": 2,
+      "spill": 0,
+      "hold": 2,
+      "spill_rate": 0.0
+    },
+    "160": {
+      "gaps": 30,
+      "spill": 0,
+      "hold": 30,
+      "spill_rate": 0.0
+    },
+    "162": {
+      "gaps": 4,
+      "spill": 0,
+      "hold": 4,
+      "spill_rate": 0.0
+    },
+    "168": {
+      "gaps": 8,
+      "spill": 0,
+      "hold": 8,
+      "spill_rate": 0.0
+    },
+    "180": {
+      "gaps": 14,
+      "spill": 0,
+      "hold": 14,
+      "spill_rate": 0.0
+    },
+    "192": {
+      "gaps": 33,
+      "spill": 0,
+      "hold": 33,
+      "spill_rate": 0.0
+    },
+    "200": {
+      "gaps": 2,
+      "spill": 0,
+      "hold": 2,
+      "spill_rate": 0.0
+    },
+    "216": {
+      "gaps": 5,
+      "spill": 0,
+      "hold": 5,
+      "spill_rate": 0.0
+    },
+    "240": {
+      "gaps": 1,
+      "spill": 0,
+      "hold": 1,
+      "spill_rate": 0.0
+    },
+    "252": {
+      "gaps": 1,
+      "spill": 0,
+      "hold": 1,
+      "spill_rate": 0.0
+    },
+    "256": {
+      "gaps": 3,
+      "spill": 0,
+      "hold": 3,
+      "spill_rate": 0.0
+    },
+    "270": {
+      "gaps": 1,
+      "spill": 0,
+      "hold": 1,
+      "spill_rate": 0.0
+    }
+  },
+  "spill_by_alpha_bin": {
+    "1": 2,
+    "2": 8,
+    "4": 4,
+    "6": 3
+  },
+  "spill_rows_sample": [
+    {
+      "p": 31397,
+      "q": 31469,
+      "g": 72,
+      "w": 31399,
+      "wR": 31466,
+      "tau_w": 4,
+      "n_ties": 20,
+      "alpha": 2,
+      "right_off": 69,
+      "C": 64,
+      "clearance": 3,
+      "util_L": 0.03125,
+      "util_R": 1.078125,
+      "span": 67
+    },
+    {
+      "p": 155921,
+      "q": 156007,
+      "g": 86,
+      "w": 155923,
+      "wR": 156001,
+      "tau_w": 4,
+      "n_ties": 27,
+      "alpha": 2,
+      "right_off": 80,
+      "C": 72,
+      "clearance": 6,
+      "util_L": 0.027777777777777776,
+      "util_R": 1.1111111111111112,
+      "span": 78
+    },
+    {
+      "p": 265621,
+      "q": 265703,
+      "g": 82,
+      "w": 265627,
+      "wR": 265702,
+      "tau_w": 4,
+      "n_ties": 22,
+      "alpha": 6,
+      "right_off": 81,
+      "C": 79,
+      "clearance": 1,
+      "util_L": 0.0759493670886076,
+      "util_R": 1.0253164556962024,
+      "span": 75
+    },
+    {
+      "p": 360653,
+      "q": 360749,
+      "g": 96,
+      "w": 360659,
+      "wR": 360743,
+      "tau_w": 4,
+      "n_ties": 27,
+      "alpha": 6,
+      "right_off": 90,
+      "C": 82,
+      "clearance": 6,
+      "util_L": 0.07317073170731707,
+      "util_R": 1.0975609756097562,
+      "span": 84
+    },
+    {
+      "p": 370261,
+      "q": 370373,
+      "g": 112,
+      "w": 370262,
+      "wR": 370371,
+      "tau_w": 4,
+      "n_ties": 32,
+      "alpha": 1,
+      "right_off": 110,
+      "C": 83,
+      "clearance": 2,
+      "util_L": 0.012048192771084338,
+      "util_R": 1.3253012048192772,
+      "span": 109
+    },
+    {
+      "p": 396733,
+      "q": 396833,
+      "g": 100,
+      "w": 396737,
+      "wR": 396829,
+      "tau_w": 4,
+      "n_ties": 30,
+      "alpha": 4,
+      "right_off": 96,
+      "C": 84,
+      "clearance": 4,
+      "util_L": 0.047619047619047616,
+      "util_R": 1.1428571428571428,
+      "span": 92
+    },
+    {
+      "p": 404851,
+      "q": 404941,
+      "g": 90,
+      "w": 404853,
+      "wR": 404939,
+      "tau_w": 4,
+      "n_ties": 20,
+      "alpha": 2,
+      "right_off": 88,
+      "C": 84,
+      "clearance": 2,
+      "util_L": 0.023809523809523808,
+      "util_R": 1.0476190476190477,
+      "span": 86
+    },
+    {
+      "p": 492113,
+      "q": 492227,
+      "g": 114,
+      "w": 492117,
+      "wR": 492223,
+      "tau_w": 4,
+      "n_ties": 29,
+      "alpha": 4,
+      "right_off": 110,
+      "C": 86,
+      "clearance": 4,
+      "util_L": 0.046511627906976744,
+      "util_R": 1.2790697674418605,
+      "span": 106
+    },
+    {
+      "p": 604073,
+      "q": 604171,
+      "g": 98,
+      "w": 604077,
+      "wR": 604169,
+      "tau_w": 4,
+      "n_ties": 24,
+      "alpha": 4,
+      "right_off": 96,
+      "C": 89,
+      "clearance": 2,
+      "util_L": 0.0449438202247191,
+      "util_R": 1.0786516853932584,
+      "span": 92
+    },
+    {
+      "p": 1098847,
+      "q": 1098953,
+      "g": 106,
+      "w": 1098853,
+      "wR": 1098949,
+      "tau_w": 4,
+      "n_ties": 27,
+      "alpha": 6,
+      "right_off": 102,
+      "C": 97,
+      "clearance": 4,
+      "util_L": 0.061855670103092786,
+      "util_R": 1.0515463917525774,
+      "span": 96
+    },
+    {
+      "p": 1349533,
+      "q": 1349651,
+      "g": 118,
+      "w": 1349534,
+      "wR": 1349641,
+      "tau_w": 4,
+      "n_ties": 30,
+      "alpha": 1,
+      "right_off": 108,
+      "C": 100,
+      "clearance": 10,
+      "util_L": 0.01,
+      "util_R": 1.08,
+      "span": 107
+    },
+    {
+      "p": 1357201,
+      "q": 1357333,
+      "g": 132,
+      "w": 1357203,
+      "wR": 1357331,
+      "tau_w": 4,
+      "n_ties": 38,
+      "alpha": 2,
+      "right_off": 130,
+      "C": 100,
+      "clearance": 2,
+      "util_L": 0.02,
+      "util_R": 1.3,
+      "span": 128
+    },
+    {
+      "p": 1468277,
+      "q": 1468387,
+      "g": 110,
+      "w": 1468279,
+      "wR": 1468385,
+      "tau_w": 4,
+      "n_ties": 33,
+      "alpha": 2,
+      "right_off": 108,
+      "C": 101,
+      "clearance": 2,
+      "util_L": 0.019801980198019802,
+      "util_R": 1.0693069306930694,
+      "span": 106
+    },
+    {
+      "p": 1561919,
+      "q": 1562051,
+      "g": 132,
+      "w": 1561921,
+      "wR": 1562042,
+      "tau_w": 4,
+      "n_ties": 32,
+      "alpha": 2,
+      "right_off": 123,
+      "C": 102,
+      "clearance": 9,
+      "util_L": 0.0196078431372549,
+      "util_R": 1.2058823529411764,
+      "span": 121
+    },
+    {
+      "p": 1671781,
+      "q": 1671907,
+      "g": 126,
+      "w": 1671783,
+      "wR": 1671902,
+      "tau_w": 4,
+      "n_ties": 36,
+      "alpha": 2,
+      "right_off": 121,
+      "C": 103,
+      "clearance": 5,
+      "util_L": 0.019417475728155338,
+      "util_R": 1.174757281553398,
+      "span": 119
+    },
+    {
+      "p": 1889831,
+      "q": 1889957,
+      "g": 126,
+      "w": 1889833,
+      "wR": 1889953,
+      "tau_w": 4,
+      "n_ties": 27,
+      "alpha": 2,
+      "right_off": 122,
+      "C": 105,
+      "clearance": 4,
+      "util_L": 0.01904761904761905,
+      "util_R": 1.161904761904762,
+      "span": 120
+    },
+    {
+      "p": 1895359,
+      "q": 1895479,
+      "g": 120,
+      "w": 1895363,
+      "wR": 1895477,
+      "tau_w": 4,
+      "n_ties": 32,
+      "alpha": 4,
+      "right_off": 118,
+      "C": 105,
+      "clearance": 2,
+      "util_L": 0.0380952380952381,
+      "util_R": 1.1238095238095238,
+      "span": 114
+    }
+  ],
+  "hypothesis_LSC_full": "INVALIDATED (spill exists)",
+  "hypothesis_no_spill_tau3": true,
+  "hypothesis_no_spill_tau_ge6": true,
+  "hypothesis_spill_requires_alpha_le_4": false,
+  "max_spill_alpha_in_sample": 6,
+  "max_alpha_among_all_spills": 6,
+  "min_alpha_among_all_spills": 1,
+  "spill_alpha_hist": {
+    "1": 2,
+    "2": 8,
+    "4": 4,
+    "6": 3
+  },
+  "hypothesis_spill_only_when_alpha_eq_1_or_2": false
+}
