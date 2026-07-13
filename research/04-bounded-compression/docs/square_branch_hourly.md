@@ -2781,3 +2781,46 @@ Queue falsification `5e8-6e8` and re-check RC33-RC35 (and RC18-RC32) on any
 new util maximum. Keep RC33-RC35 residual only; do not promote IQR/median,
 trail/mean, or body last-quartile mass to theorem; do not revive fixed-band
 540 or d=4 SDA.
+
+## Auditor errata 2026-07-13 (ledger reclassification)
+
+Mechanism:
+Two prior hourly blocks carried dispatcher label ADVANCE on replay
+surfaces. This errata records the honest research label without rewriting
+the original blocks (dual labels retained).
+
+Method:
+Auditor pressure on `square_branch_hourly.md` entries
+`2026-07-13T14:05:10Z` (prefix-tau re-run) and `2026-07-13T16:06:31Z`
+(4e8-5e8 dynamic-cutoff sweep). Contract: same scientific signature or
+certified-regime replay is NO_DELTA, not ADVANCE. Main hour deliverable
+RC33-RC35 remains at `e38cfd70` and is not reclassified here.
+
+Result:
+
+| Timestamp | Surface | Ledger label (kept) | Honest label | Reason |
+| --- | --- | --- | --- | --- |
+| 2026-07-13T14:05:10Z | prefix-tau re-run on latest extremal rows | ADVANCE | NO_DELTA | Re-run; same boolean payload (`d4_tau5` / `tau4_sda` false); no new residual claim or regime |
+| 2026-07-13T16:06:31Z | dynamic-cutoff `4e8-5e8` | ADVANCE | NO_DELTA | Replay of certified band (max util 0.934..., `r=424171123`, `D=738`, first_counterexample=none) |
+
+No theorem claim. Prime-square proximity / Target S1* remains UNRESOLVED in
+`PROOF.md` section Square-Branch Reduction. Direct next-prime and Interior
+Maximizer remain proved. Invalidated d=4 SDA not revived.
+
+Research status:
+NO_DELTA
+
+Ops status:
+OK
+
+Delta:
+Errata only: reclassify the two timestamps above ADVANCE -> honest NO_DELTA.
+Original blocks keep their written ADVANCE labels (dual labels). Does not
+touch RC33-RC35 ADVANCE at `e38cfd70`.
+
+Artifacts:
+`research/04-bounded-compression/docs/square_branch_hourly.md` (this block)
+
+Next step:
+Honest next falsification band remains `5e8-6e8`. Re-check residual package
+through RC35 on any new util maximum. Do not re-sweep `4e8-5e8` as ADVANCE.
