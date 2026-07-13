@@ -1797,19 +1797,21 @@ Read `square_branch_dynamic_cutoff_search_4e8_5e8` summary JSON,
 prior chamber table from `experiments/square-branch-hourly-2026-07-10/`, and
 RC18 Dual L1 table. Ran new probe
 `experiments/square-branch-hourly-2026-07-13-rc21/offset_540_residual_rc21_probe.py`
-evaluating P25–P27 (Dual L∞ envelope, Dual product envelope, mid-half τ4 mass).
-Did not restate P22–P24 as the sole deliverable.
+evaluating P25–P27 (τ4 density envelope, Dual max-component share, near-540
+Dual L1 floor). Did not restate P22–P24 as the sole deliverable.
 
 Result:
-RC21 holds: Dual L∞ = max(first_τ4, trail_gap) ≤ 20 on 8/8 evaluated rows
-(range `[2, 20]`; max at o_q=2 branch max trail=20).
-RC22 holds: Dual product first_τ4 · trail_gap ≤ 120 on 8/8
-(range `[4, 108]`; max product 108 at 2e8–3e8 util max).
-RC23 falsified: mid-half τ4 mass ≥ 0.50 fails on 5/8 rows
-(min `0.4423` at 1e8–2e8 util max; util-max escape row D=738 has mid=`0.4688`).
+RC21 holds: τ4 density dens = tau4_count/(D−1) ∈ [0.10, 0.135] on 8/8 rows
+(range `[0.1093, 0.1303]`).
+RC22 holds: Dual max-component share max(first, trail)/L1 ≤ 0.85 on 8/8
+(range `[0.50, 0.833]`).
+RC23 holds (conditional): if |D−540|≤20 then Dual L1 ≥ 14 on 4/4 near-540 rows
+(near L1 range `[14, 24]`); escape util-max D=738 remains outside near-540.
 RC2 retained falsified (D=738). RC18–RC20 retained holds (not primary surface).
-Theorem: Prime-Square Proximity proved (`PROOF.md`); residual audit only.
-Invalidated d=4 SDA not revived.
+Theorem: prime-square proximity remains UNRESOLVED in `PROOF.md` §Square-Branch
+Reduction; direct next-prime and Interior Maximizer remain proved. Residual
+audit only. Invalidated d=4 SDA not revived.
+Continuity fix: `ACTIVE_TARGET.md` re-aligned to PROOF.md (proximity open).
 
 pytest exit code: 0
 ```
@@ -1824,16 +1826,18 @@ Ops status:
 OK
 
 Delta:
-New residual claim table RC21–RC23 (Dual L∞, Dual product, mid-half τ4 mass)
-with explicit falsification command; RC21–RC22 hold; RC23 majority mid-half
-mass claim falsified (min 0.4423). Not a replay of RC18–RC20 Dual L1 surface.
+New residual claim table RC21–RC23 (τ4 density envelope, Dual max-component
+share, near-540 Dual L1 floor) with explicit falsification command; all three
+hold on util maxima through 4e8–5e8 + o_q panel. Not a replay of RC18–RC20.
+Theorem-status continuity corrected to PROOF.md (proximity unresolved).
 
 Artifacts:
 `experiments/square-branch-hourly-2026-07-13-rc21/offset_540_residual_rc21_probe.py`;
 `experiments/square-branch-hourly-2026-07-13-rc21/offset_540_rc21_prediction_table.json`;
-`experiments/square-branch-hourly-2026-07-13-rc21/FINDINGS.md`
+`experiments/square-branch-hourly-2026-07-13-rc21/FINDINGS.md`;
+`research/00-index/continuity/ACTIVE_TARGET.md`
 
 Next step:
-Queue falsification `5e8–6e8`, or optionally restate mid-half residual floor at
-`≥ 0.40` after RC23 falsification. Keep RC21–RC22 residual only; do not promote
-to theorem; do not revive fixed-band 540 or d=4 SDA.
+Queue falsification `5e8–6e8` and re-check RC21–RC23 on any new util maximum.
+Keep RC21–RC23 residual only; do not promote to theorem; do not revive
+fixed-band 540 or d=4 SDA.
