@@ -2215,7 +2215,7 @@ Research status:
 ADVANCE
 
 Ops status:
-OK
+FAILED
 
 Delta:
 new falsification regime through max_prime=500000000
@@ -2225,3 +2225,68 @@ Artifacts:
 
 Next step:
 Structural audit of recurring offset 540 on new extremal rows if no counterexample.
+
+## 2026-07-13T09:08:06Z run
+
+Mechanism:
+PGS-native structural audit of recurring offset 540 and early-tau=4 /
+late-tau=3 chamber separation. On each extremal chamber before selected
+square `w = r^2`, form the ordered Tau4 successive inter-hit gaps and the
+Dual markers `(first_tau4, trail_gap)`. Measure peak spacing regularity
+(max successive gap over mean), full-body spacing CV, and Dual isolation
+in mean-gap units. Project terms: RC27 max/mean, RC28 gap CV, RC29 Dual/mean.
+
+Method:
+Read falsification summary
+`square_branch_dynamic_cutoff_search_4e8_5e8` summary JSON,
+`prefix_tau_floor_probe.json`, prior chamber table
+`experiments/square-branch-hourly-2026-07-10/`, and RC24 table. Ran new probe
+`experiments/square-branch-hourly-2026-07-13-rc27/offset_540_residual_rc27_probe.py`
+evaluating P31-P33 on segment util maxima through `4e8-5e8` plus full
+`o_q in {2,4,6}` branch-max panel (8 rows). Did not restate RC24-RC26 as the
+sole deliverable. Did not port d=4 SDA. Continuity: `ACTIVE_TARGET.md`
+aligned to `PROOF.md` §Square-Branch Reduction (proximity OPEN/UNRESOLVED).
+
+Result:
+| Claim | Bound | Observed | Rows |
+| --- | --- | --- | --- |
+| RC27 / P31 max/mean | `<= 5.5` | `[2.605, 5.012]` | 8/8 hold |
+| RC28 / P32 gap CV | `[0.55, 1.0]` | `[0.663, 0.891]` | 8/8 hold |
+| RC29 / P33 Dual/mean | `[0.30, 3.0]` | `[0.445, 2.744]` | 8/8 hold |
+
+RC2 retained falsified (`r=424171123`, `D=738`). RC24-RC26 retained holds
+(not primary surface this hour). Theorem: prime-square proximity remains
+UNRESOLVED in `PROOF.md` §Square-Branch Reduction; direct next-prime and
+Interior Maximizer remain proved. Residual audit only. Invalidated d=4 SDA
+not revived.
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.40s
+```
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New falsifiable residual claim table RC27-RC29 (Tau4 successive max/mean
+ratio, successive gap CV envelope, Dual isolation in mean-gap units) with
+explicit falsification command; all three hold on util maxima through
+`4e8-5e8` + `o_q` panel. Continuity fix: ACTIVE_TARGET matches PROOF.md
+(proximity OPEN/UNRESOLVED). Not a replay of RC24-RC26 mean-gap / signed
+imbalance / open fraction.
+
+Artifacts:
+`experiments/square-branch-hourly-2026-07-13-rc27/offset_540_residual_rc27_probe.py`;
+`experiments/square-branch-hourly-2026-07-13-rc27/offset_540_rc27_prediction_table.json`;
+`experiments/square-branch-hourly-2026-07-13-rc27/FINDINGS.md`;
+`research/00-index/continuity/ACTIVE_TARGET.md`
+
+Next step:
+Queue falsification `5e8-6e8` and re-check RC27-RC29 (and RC18-RC26) on any
+new util maximum. Keep RC27-RC29 residual only; do not promote max/mean, CV,
+or Dual/mean to theorem; do not revive fixed band 540 or d=4 SDA.
