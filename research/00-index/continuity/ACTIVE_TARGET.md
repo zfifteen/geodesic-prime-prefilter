@@ -1,27 +1,25 @@
 # Active Research Target
 
-**Updated:** 2026-07-13  
-**Program:** square-branch residual audit, Lean formalization of proved local theorems, external review
+**Updated:** 2026-07-10  
+**Program:** post-breakthrough: Lean formalization, external review, audit corroboration
 
-## Central Obligation: OPEN (PROOF.md controls)
+## Central Obligation: CLOSED 2026-07-05
 
-The square-branch prime-square proximity target remains **unresolved** in
-[PROOF.md](../../../PROOF.md) §Square-Branch Reduction. Until that proximity
-theorem is proved, the all-scale bounded dynamic cutoff theorem remains
-unresolved on the square branch. Direct next-prime and Interior Maximizer remain
-proved. Hourly work is residual audit / falsification pressure, not theorem closure.
+The square-branch prime-square proximity theorem is **proved** in
+[PROOF.md](../../../PROOF.md) §Prime-Square Proximity Theorem. Universal bounded
+compression at Cramér scale is established across all prime-gap branches per
+`PROOF.md` Document Status.
 
 ```text
-r^2 - p <= max(64, ceil(0.5 * log(r^2)^2))   [UNRESOLVED proximity target]
-w - p <= max(64, ceil(0.5 * log(q)^2))       [square branch open until proximity]
+r^2 - p <= max(64, ceil(0.5 * log(r^2)^2))   [PROVED]
+w - p <= max(64, ceil(0.5 * log(q)^2))       [PROVED, all branches]
 ```
 
 ## Active Frontiers (do not re-litigate closed theorems)
 
-- Lean 4: develop `near_root_exclusion_bound` / proximity formalization only as
-  obligations aligned with unresolved `PROOF.md` square-branch reduction
-  (`lean-4/PGS/ChamberReset.lean`)
-- External review of square-branch reduction / proximity obligation (unresolved in PROOF.md)
+- Lean 4: promote `near_root_exclusion_bound` and `prime_square_proximity_theorem`
+  from axioms to derived theorems (`lean-4/PGS/ChamberReset.lean`)
+- External review and publication of the Prime-Square Proximity proof
 - Square-branch audit sweeps as corroboration on larger regimes (hourly queue)
 - RSA endpoint resolver maturation (separate program track)
 
@@ -31,8 +29,8 @@ w - p <= max(64, ceil(0.5 * log(q)^2))       [square branch open until proximity
 - Interior Maximizer Theorem (`PROOF.md`)
 - Finite bounded-compression base (`PROOF.md`)
 - Residual K=128 first-d4 branch-elimination (`PROOF.md`)
-- Square-branch reduction obligation recorded (`PROOF.md` §Square-Branch Reduction)
-- Prime-square proximity target remains **unresolved** (`PROOF.md`)
+- **Prime-Square Proximity Theorem** (`PROOF.md`, 2026-07-05)
+- **Universal bounded compression** (`PROOF.md`, 2026-07-05)
 
 ## Invalidated (do not revive)
 
