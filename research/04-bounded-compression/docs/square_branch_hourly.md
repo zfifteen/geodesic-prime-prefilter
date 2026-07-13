@@ -1784,3 +1784,56 @@ Artifacts:
 
 Next step:
 Structural audit of recurring offset 540 on new extremal rows if no counterexample.
+
+## 2026-07-13T01:07:00Z run
+
+Mechanism:
+PGS-native structural audit of recurring offset 540 and early-τ=4 / late-τ=3
+chamber separation — residual claims RC21–RC23 after Dual L1 surface (RC18–RC20).
+
+Method:
+Read `square_branch_dynamic_cutoff_search_4e8_5e8` summary JSON,
+`prefix_tau_floor_probe.json` (SDA-invalidation note; d=4 SDA not revived),
+prior chamber table from `experiments/square-branch-hourly-2026-07-10/`, and
+RC18 Dual L1 table. Ran new probe
+`experiments/square-branch-hourly-2026-07-13-rc21/offset_540_residual_rc21_probe.py`
+evaluating P25–P27 (Dual L∞ envelope, Dual product envelope, mid-half τ4 mass).
+Did not restate P22–P24 as the sole deliverable.
+
+Result:
+RC21 holds: Dual L∞ = max(first_τ4, trail_gap) ≤ 20 on 8/8 evaluated rows
+(range `[2, 20]`; max at o_q=2 branch max trail=20).
+RC22 holds: Dual product first_τ4 · trail_gap ≤ 120 on 8/8
+(range `[4, 108]`; max product 108 at 2e8–3e8 util max).
+RC23 falsified: mid-half τ4 mass ≥ 0.50 fails on 5/8 rows
+(min `0.4423` at 1e8–2e8 util max; util-max escape row D=738 has mid=`0.4688`).
+RC2 retained falsified (D=738). RC18–RC20 retained holds (not primary surface).
+Theorem: Prime-Square Proximity proved (`PROOF.md`); residual audit only.
+Invalidated d=4 SDA not revived.
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.31s
+```
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New residual claim table RC21–RC23 (Dual L∞, Dual product, mid-half τ4 mass)
+with explicit falsification command; RC21–RC22 hold; RC23 majority mid-half
+mass claim falsified (min 0.4423). Not a replay of RC18–RC20 Dual L1 surface.
+
+Artifacts:
+`experiments/square-branch-hourly-2026-07-13-rc21/offset_540_residual_rc21_probe.py`;
+`experiments/square-branch-hourly-2026-07-13-rc21/offset_540_rc21_prediction_table.json`;
+`experiments/square-branch-hourly-2026-07-13-rc21/FINDINGS.md`
+
+Next step:
+Queue falsification `5e8–6e8`, or optionally restate mid-half residual floor at
+`≥ 0.40` after RC23 falsification. Keep RC21–RC22 residual only; do not promote
+to theorem; do not revive fixed-band 540 or d=4 SDA.
