@@ -24,8 +24,8 @@ implementation.
 ## Active Frontiers (do not re-litigate closed theorems)
 
 - Theorem pressure on `D(r)` via Chamber-Reset Endpoint Resolution Lemma
-  constructive residuals (S1–S8) without residue-only covers or SDA ports
-- Falsification band `5e8–6e8` (next open regime beyond certified `4e8–5e8`)
+  constructive residuals (S1-S8) without residue-only covers or SDA ports
+- Falsification band `5e8-6e8` (next open regime beyond certified `4e8-5e8`)
 - Lean 4: formalize proved surfaces only (direct next-prime, Interior Maximizer,
   finite base, residual K=128); do not treat proximity as closed
 - External review of proved PGS surfaces; square-branch audit sweeps as
@@ -67,9 +67,9 @@ implementation.
 
 Prior certified baseline (replay = NO_DELTA): `3·10^8 .. 4·10^8` in `hourly_baseline_signature.json`.
 
-Constructive residual package (lemma, not theorem): Claims S1–S8 in
+Constructive residual package (lemma, not theorem): Claims S1-S8 in
 `research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/`.
-Measured residual holds RC3–RC26 on util maxima through `4e8–5e8` + o_q panel
+Measured residual holds RC3-RC26 on util maxima through `4e8-5e8` + o_q panel
 are audit only.
 
 ## Hourly Queue
