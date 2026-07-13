@@ -3102,3 +3102,73 @@ Artifacts:
 
 Next step:
 Queue falsification 500M-600M or draft Chamber-Reset Endpoint Resolution Lemma subsection.
+
+## 2026-07-13T21:55:11Z run
+
+Mechanism:
+Draft one subsection of the Chamber-Reset Endpoint Resolution Lemma on the
+selected-square branch (queue job `chamber-reset-lemma-draft`).
+
+Method:
+Read `PROOF.md` §Square-Branch Reduction, blocker acceptance, prior S1–S11
+constructive chain, and residual package RC36–RC38. Appended constructive
+subsection **S12** under
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`
+naming OpeningScale / ResetResidual^O with explicit falsification commands.
+Did not port d=4 SDA. RC2 fixed-band remains falsified. Target S1* remains
+UNRESOLVED.
+
+Result:
+
+| Claim | Role | Status |
+| --- | --- | --- |
+| S12-A open_over_mean | constructive | drafted |
+| S12-B max_over_median + iqr_over_mean | constructive | drafted |
+| S12-C OpeningScale / ResetResidual^O | constructive residual state | drafted |
+| RC36 open/mean [0.15, 2.00] | residual audit | holds [0.223, 1.793] |
+| RC37 max/med [2.50, 8.00] | residual audit | holds [3.143, 7.333] |
+| RC38 IQR/mean [0.50, 1.20] | residual audit | holds [0.594, 1.065] |
+| RC2 fixed band [528, 552] | law on util maxima | retained falsified |
+| S1* proximity | D(r) bound | UNRESOLVED (PROOF.md) |
+
+Branch-max panel (F(r) = o_q):
+
+| o_q | r | D | open/mean | max/med | IQR/mean |
+| --- | --- | --- | --- | --- | --- |
+| 2 | 468917503 | 542 | 0.456 | 7.333 | 0.911 |
+| 4 | 482342527 | 486 | 1.793 | 3.714 | 1.065 |
+| 6 | 424171123 | 738 | 0.392 | 5.000 | 0.915 |
+
+Theorem: prime-square proximity / Target S1* remains UNRESOLVED in `PROOF.md`
+§Square-Branch Reduction; direct next-prime and Interior Maximizer remain
+proved. Constructive lemma pressure only. Invalidated d=4 SDA not revived.
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.37s
+```
+RC36 residual probe exit code: 0 (RC36-RC38 hold; RC2 retained falsified).
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New constructive lemma subsection S12 (OpeningScale: open/mean, max/median,
+IQR/mean; ResetResidual^O) with hypotheses H1–H6 reuse, unresolved S1* status,
+and explicit falsification commands for Target S1* and residual RC36–RC38.
+Companion package under experiments/square-branch-hourly-2026-07-13-s12/.
+Not a replay of S11 robust-scale prose; not a promotion of RC36–RC38 to theorem.
+
+Artifacts:
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html` (S12);
+`experiments/square-branch-hourly-2026-07-13-s12/FINDINGS.md`;
+`experiments/square-branch-hourly-2026-07-13-rc36/` (falsification probe retained)
+
+Next step:
+Queue falsification `5e8-6e8` and re-check RC36–RC38 / OpeningScale on any new
+util maximum. Keep S12 residual only; do not promote open/mean, max/median, or
+IQR/mean to theorem; do not revive fixed-band 540 or d=4 SDA.
