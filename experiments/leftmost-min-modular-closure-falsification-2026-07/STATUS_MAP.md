@@ -4,7 +4,9 @@
 **Title:** The Leftmost Minimal-Divisor Probe Converts Partial Modular Data into Gap-Closure Rules  
 **Package:** `experiments/leftmost-min-modular-closure-falsification-2026-07/`  
 **Primary HTML:** `index.html`  
-**Findings:** `FINDINGS.md`
+**Findings:** `FINDINGS.md`  
+**Handoff:** `CONTINUITY_HANDOFF.md`  
+**Scribe date:** 2026-07-11
 
 ## Orchestrator verdict
 
@@ -13,11 +15,24 @@
 | Package on main workspace | **present** (code + artifacts + docs) |
 | H-absolute `z(GWR) >= 4 => g = 2` | **invalidated** |
 | H-comparative leftmost necessity | **falsified** (`p <= 2.5e7`) |
+| Tau-min mattering (non-min probe fails) | **kept** as **measured** only (not a share rescue) |
 | GWR / next-prime / modular zero lemma | **theorem** unchanged |
 | Program verified / validated | **forbidden** (no `10^18` surface) |
 | Continuity `START_HERE` update | **not required** (experiment-local) |
 | Verifier | **PASS** |
 | Auditor | Preemptive **REJECT** on share framing; re-audit of executed package: **APPROVE with nits** |
+| Scribe | Docs aligned; handoff written |
+
+## Axis map (kept / narrowed / weakened / falsified / invalidated)
+
+| Axis | After pressure |
+| --- | --- |
+| Absolute modular forcing (`z(GWR) >= 4 => g = 2`) | **invalidated** (universal) |
+| Leftmost position as necessary for modular closure | **falsified** on `p <= 2.5e7` |
+| Share certification / "force twin" framing | **invalidated** (framing; auditor) |
+| Min-`tau` selection vs bare first-interior | **kept** as **measured** support that tau-min matters |
+| Rightmost min as universal cleaner selector | **not promoted** (measured zero mm on regime D only) |
+| Proved GWR maximizer + modular zero lemma | **kept** as **theorem** |
 
 ## Claim stack (must stay split)
 
@@ -60,11 +75,15 @@
 
 | p_max | gaps | GWR mm | alt-A mm | alt-B mm | notes |
 | ---: | ---: | ---: | ---: | ---: | --- |
-| 5e4 | 5129 | 0 | 0 | 421 | verifier smoke |
-| 1e5 | 9588 | 0 | 0 | 791 | implementer |
-| 2e6 | 148929 | 0 | 0 | 13708 | implementer + verifier match |
+| 5e4 | 5129 | 0 | 0 | 421 | smoke; counts from `results_pmax_50000.json` |
+| 1e5 | 9588 | 0 | 0 | 791 | multi-thousand-gap zero-mismatch arm for alt-A |
+| 2e6 | 148929 | 0 | 0 | 13708 | implementer + verifier mid-regime match |
 | 2e7 | 1270603 | 1 | 0 | 123393 | first Super-Signal CE; alt-A still 0 |
-| 2.5e7 | 1565923 | 2 | 0 | 152620 | both pinned CEs; comparative falsified |
+| 2.5e7 | 1565923 | 2 | 0 | 152620 | both pinned CEs; comparative **falsified** |
+
+Decisive z4 detail at `2.5e7`: GWR z4=43170 hit_twin=43168 mm=2; rightmost z4=43168 mm=0; first z4=195788 mm=152620.
+
+**Artifact enum note:** `probe_selectors.py` always emits `invalidated_*` for H-absolute. Older JSON (`results_pmax_50000.json`, `results_pmax_2000000.json`) may still show a stale `not_falsified_in_tested_regime` string for H-absolute; mismatch counts remain authoritative.
 
 ## Quartet pressure
 
@@ -73,13 +92,13 @@
 | Implementer | Probe, tests, FINDINGS, multi-regime JSON on main package |
 | Auditor | Preemptive REJECT on share "certify / force twin" framing; ban May `core-insight-decisive-test` Stage 2; re-audit **APPROVE with nits** (claim split + decisive comparative kill present) |
 | Verifier | PASS: unit tests; mid-regime counts match; weaker labels only; no 10^18 |
-| Scribe | README exec summary, index.html, this STATUS_MAP |
+| Scribe | README, index.html, STATUS_MAP, CONTINUITY_HANDOFF (this pass) |
 
 ## Auditor nits (resolved on main)
 
 1. HYPOTHESIS twin-interior wording: **fixed** (length-1 interior `{p+1}`, not empty).
 2. Absolute status enum on small regimes: **fixed** in `probe_selectors.py` (always `invalidated_*`, never `not_falsified_in_tested_regime` for H-absolute).
-3. CE unit test for rightmost escape: **added** in `test_probe_selectors.py`.
+3. CE unit test for rightmost escape: **added** in `test_probe_selectors.py` (package has **6** unit tests).
 4. Primary comparative kill hierarchy remains rightmost vs GWR (unique-only secondary).
 
 ## Merge checklist
@@ -88,6 +107,7 @@
 - [x] Artifacts present (`results_pmax_*.json`)
 - [x] HTML + STATUS_MAP + README with executive summary first
 - [x] FINDINGS uses invalidated / falsified / measured only (no verified/validated)
+- [x] CONTINUITY_HANDOFF with next pressure and unresolved list
 - [x] Auditor re-audit: APPROVE with nits (nits fixed)
 - [x] Orchestrator final ack: do not amend `PROOF.md` beyond existing Super-Signal invalidated status
 - [x] Orchestrator final ack: no program continuity center change unless user asks
@@ -98,3 +118,8 @@
 - H-210 / H-tau>16 survivors at higher scale: **hypothesis / measured-on-regime only** until a named surface; **verified** requires executed `10^18`.
 - Whether a different non-leftmost min-`tau` operationalization (for example random among ties) changes comparative counts.
 - Whether rightmost min-`tau` remains zero-mismatch beyond `2.5e7` (measured absence only, not a theorem).
+- Position-index histogram of min-`tau` false positives: **new hypothesis** only if pursued; not a rescue of the share.
+
+## Next decisive pressure (insight does not survive)
+
+Share insight as stated is **falsified / invalidated**. Optional residual work is a **new** package: histogram which min-`tau` tie index carries `z >= 4` and `g > 2`. See `CONTINUITY_HANDOFF.md` section 6.

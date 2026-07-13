@@ -292,7 +292,7 @@ python3 experiments/leftmost-min-modular-closure-falsification-2026-07/probe_sel
       <td>0</td>
       <td>0</td>
       <td>421</td>
-      <td>H-absolute: not_falsified_in_tested_regime; H-comparative: falsified_zero_mismatch_arm</td>
+      <td>H-absolute: invalidated_* (PROOF); H-comparative: falsified_zero_mismatch_arm</td>
     </tr>
     <tr>
       <td><code>1e5</code></td>
@@ -300,7 +300,7 @@ python3 experiments/leftmost-min-modular-closure-falsification-2026-07/probe_sel
       <td>0</td>
       <td>0</td>
       <td>791</td>
-      <td>same</td>
+      <td>same comparative kill; multi-thousand gaps with alt-A mm = 0</td>
     </tr>
     <tr>
       <td><code>2e6</code></td>
@@ -308,7 +308,7 @@ python3 experiments/leftmost-min-modular-closure-falsification-2026-07/probe_sel
       <td>0</td>
       <td>0</td>
       <td>13,708</td>
-      <td>same (GWR bare FPs still empty on this band)</td>
+      <td>GWR bare FPs still empty on this band; alt-A mm = 0</td>
     </tr>
     <tr>
       <td><code>2e7</code></td>
@@ -316,7 +316,7 @@ python3 experiments/leftmost-min-modular-closure-falsification-2026-07/probe_sel
       <td>1</td>
       <td>0</td>
       <td>123,393</td>
-      <td>H-absolute: invalidated; H-comparative: falsified (alt-A fewer)</td>
+      <td>H-absolute: invalidated (first CE); H-comparative: falsified (alt-A fewer)</td>
     </tr>
     <tr>
       <td><code>2.5e7</code></td>
@@ -346,7 +346,9 @@ python3 experiments/leftmost-min-modular-closure-falsification-2026-07/probe_sel
 
 <p class="note">
   Artifacts: <code>artifacts/results_pmax_*.json</code> in this folder.
-  Verifier: unit tests 5 passed; mid-regime counts match implementer (PASS).
+  Verifier: unit tests 6 local; mid-regime counts match implementer (PASS).
+  H-absolute is always invalidated at the universal layer in <code>PROOF.md</code>
+  even when a finite band has zero GWR mismatches on that band.
 </p>
 
 <h2>7. Status-separated interpretation</h2>
@@ -408,6 +410,25 @@ python3 experiments/leftmost-min-modular-closure-falsification-2026-07/probe_sel
   </tbody>
 </table>
 
+<h2>7b. Axis map after pressure</h2>
+<table>
+  <thead>
+    <tr><th>Axis</th><th>Status</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Absolute forcing</td><td><span class="tag inv">invalidated</span></td></tr>
+    <tr><td>Leftmost necessity / superiority</td><td><span class="tag inv">falsified</span> on <code>p &lt;= 2.5e7</code></td></tr>
+    <tr><td>Tau minimization matters (vs first-interior)</td><td><span class="tag meas">kept (measured only)</span></td></tr>
+    <tr><td>Proved GWR / modular zero / next-prime</td><td><span class="tag thm">kept (theorem)</span></td></tr>
+    <tr><td>Rightmost as universal rule</td><td><span class="tag hyp">not claimed</span> measured zeros only</td></tr>
+  </tbody>
+</table>
+<p class="note">
+  Share insight as stated does <strong>not</strong> survive. Optional residual
+  work is a new hypothesis (tie-index histogram), not a rescue. Full handoff:
+  <a href="CONTINUITY_HANDOFF.md">CONTINUITY_HANDOFF.md</a>.
+</p>
+
 <h2>8. Exact limits</h2>
 <ul>
   <li>Highest consecutive-gap regime: left prime up to <code>2.5e7</code>. Not <code>10^18</code>.</li>
@@ -430,6 +451,7 @@ python3 experiments/leftmost-min-modular-closure-falsification-2026-07/probe_sel
     <tr><td><code>probe_selectors.py</code> / <code>test_probe_selectors.py</code></td><td>Code + local tests</td></tr>
     <tr><td><code>artifacts/results_pmax_*.json</code></td><td>Raw measured outputs</td></tr>
     <tr><td><a href="STATUS_MAP.md">STATUS_MAP.md</a></td><td>Orchestrator merge map</td></tr>
+    <tr><td><a href="CONTINUITY_HANDOFF.md">CONTINUITY_HANDOFF.md</a></td><td>Next session handoff + unresolved + optional residual pressure</td></tr>
   </tbody>
 </table>
 

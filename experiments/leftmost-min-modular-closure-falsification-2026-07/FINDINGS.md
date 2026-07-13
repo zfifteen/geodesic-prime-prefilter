@@ -105,7 +105,7 @@ python3 experiments/leftmost-min-modular-closure-falsification-2026-07/probe_sel
 
 Environment: Python 3.13, local worktree, deterministic (no RNG).
 
-Unit tests: **5 passed**.
+Unit tests: **6 local** (package unit surface only; not a scale surface).
 
 ---
 
@@ -178,6 +178,9 @@ Gaps where rightmost min differs from GWR: **987,444** of 1,565,923.
 | `test_probe_selectors.py` | Local unit checks |
 | `artifacts/results_pmax_*.json` | Raw measured outputs |
 | `FINDINGS.md` | This report |
+| `STATUS_MAP.md` | Orchestrator claim stack |
+| `CONTINUITY_HANDOFF.md` | Next session handoff |
+| `index.html` | Self-contained status HTML |
 
 Reproduce with the commands under Execution.
 
@@ -194,4 +197,6 @@ Reproduce with the commands under Execution.
 
 ## Next minimal step (optional)
 
-If the residual question is "which min-`tau` position among ties minimizes modular false positives," run a position-index histogram of min-`tau` set members that carry `z>=4` and `g>2`. That is a new hypothesis, not a rescue of the share insight.
+The share insight as stated does **not** survive. Do not schedule rescue work for leftness necessity.
+
+If residual research continues, treat it as a **new** hypothesis package: run a position-index histogram of min-`tau` set members that carry `z>=4` and `g>2`, to test whether false-positive mass concentrates only at the leftmost min. That is not a rescue of the share. Full handoff: `CONTINUITY_HANDOFF.md`.
