@@ -11,11 +11,8 @@
         <string>/Users/velocityworks/IdeaProjects/prime-gap-structure/scripts/pgs-hourly-advance.sh</string>
     </array>
 
-    <key>StartCalendarInterval</key>
-    <dict>
-        <key>Minute</key>
-        <integer>5</integer>
-    </dict>
+    <key>StartInterval</key>
+    <integer>14400</integer>
 
     <key>StandardOutPath</key>
     <string>/Users/velocityworks/logs/pgs-hourly/launchd.stdout.log</string>
@@ -43,6 +40,10 @@
         <string>http://127.0.0.1:3000</string>
         <key>PGS_HOURLY_RC_CHANNEL</key>
         <string>Prime-Gap-Structure</string>
+        <key>PGS_QUARTET</key>
+        <string>0</string>
+        <key>PGS_QUARTET_ENABLED</key>
+        <string>0</string>
     </dict>
 </dict>
 </plist>
