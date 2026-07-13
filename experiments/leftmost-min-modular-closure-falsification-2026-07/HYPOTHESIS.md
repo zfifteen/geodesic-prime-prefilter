@@ -7,7 +7,8 @@
 Not a theorem. Does not amend `PROOF.md`.
 
 **Post-experiment (2026-07-11):** H-absolute remains **invalidated**.  
-H-comparative is **falsified** on regime `p in [11, 2.5e7]`. See `FINDINGS.md`.
+H-comparative is **falsified** on regime `p in [11, 2.5e7]`.  
+See `FINDINGS.md`, `STATUS_MAP.md`, and `CONTINUITY_HANDOFF.md`.
 
 ---
 

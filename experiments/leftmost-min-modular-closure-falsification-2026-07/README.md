@@ -24,7 +24,17 @@ On the decisive regime (left prime `p` in `[11, 2.5e7]`, 1,565,923 consecutive g
 | Modular zero lemma; GWR maximizer; next-prime | **theorem** (untouched) |
 | Program verified / validated | **not claimed** (max regime `2.5e7`, no `10^18`) |
 
-Full narrative: [FINDINGS.md](FINDINGS.md) · structured HTML: [index.html](index.html) · orchestrator map: [STATUS_MAP.md](STATUS_MAP.md)
+Full narrative: [FINDINGS.md](FINDINGS.md) · structured HTML: [index.html](index.html) · orchestrator map: [STATUS_MAP.md](STATUS_MAP.md) · handoff: [CONTINUITY_HANDOFF.md](CONTINUITY_HANDOFF.md)
+
+### Axis status (after pressure)
+
+| Axis | Status |
+| --- | --- |
+| Absolute forcing `z(GWR) >= 4 => g = 2` | **invalidated** |
+| Leftmost necessity / superiority | **falsified** (`p <= 2.5e7`) |
+| Tau-min matters (vs first-interior) | **kept** as **measured** only |
+| GWR maximizer / modular zero lemma | **theorem** (kept) |
+| Rightmost universal cleanliness | **not claimed** (measured zeros on regime D) |
 
 ---
 
@@ -40,6 +50,7 @@ Full narrative: [FINDINGS.md](FINDINGS.md) · structured HTML: [index.html](inde
 | `FINDINGS.md` | Implementer findings |
 | `index.html` | Self-contained status HTML |
 | `STATUS_MAP.md` | Merge / claim stack map |
+| `CONTINUITY_HANDOFF.md` | Next session handoff |
 | `README.md` | This file |
 
 ## Repro
@@ -67,7 +78,7 @@ python3 experiments/leftmost-min-modular-closure-falsification-2026-07/probe_sel
 | Implementer | Probe, tests, multi-regime artifacts, FINDINGS |
 | Verifier | **PASS** (unit tests + mid-regime count match; weaker claim language OK; nits fixed on main) |
 | Auditor | Preemptive **REJECT** on share strong "certify" framing; re-audit of executed package: **APPROVE with nits** |
-| Scribe | This package documentation on main |
+| Scribe | Package docs + CONTINUITY_HANDOFF on main |
 
 ## Exact limits
 
