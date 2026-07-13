@@ -2119,3 +2119,65 @@ Artifacts:
 
 Next step:
 Queue falsification 500M-600M or draft Chamber-Reset Endpoint Resolution Lemma subsection.
+
+## 2026-07-13T07:07:06Z run
+
+Mechanism:
+Draft one subsection of the Chamber-Reset Endpoint Resolution Lemma on the
+selected-square branch (S8: Tau4 mean inter-hit gap, Dual signed imbalance,
+chamber open fraction; SpacingBalance extended reset residual).
+
+Method:
+PGS-native constructive lemma draft only. Appended Subsection S8 to
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`
+with hypotheses H1–H6 reused, Claims S8-A / S8-B / S8-C, residual claim table
+RC24–RC26 attached as audit, and explicit falsification commands for Target S1*
+(`5e8–6e8` dynamic-cutoff search) and RC24–RC26 panel recheck. Corrected
+`ACTIVE_TARGET.md` theorem-status continuity so prime-square proximity is
+OPEN/UNRESOLVED under `PROOF.md` §Square-Branch Reduction (removed false
+CLOSED/PROVED bootstrap). No classical inference gate. No SDA or fixed-cutoff
+revival.
+
+Result:
+Constructive lemma subsection S8 written. Residual audit table RC24–RC26 held
+on prior measured surface (util maxima through `4e8–5e8` + o_q panel, 8/8):
+
+| Claim | Bound | Observed | Rows |
+| --- | --- | --- | --- |
+| RC24 mean_gap | `[7.0, 10.0]` | `[7.653, 8.980]` | 8/8 hold |
+| RC25 signed Dual | `[-0.55, 0.70]` | `[-0.455, 0.667]` | 8/8 hold |
+| RC26 open_frac | `>= 0.96` | `[0.9671, 0.9959]` | 8/8 hold |
+
+RC2 retained falsified (`r=424171123`, `D=738`). Theorem: prime-square
+proximity remains UNRESOLVED in `PROOF.md` §Square-Branch Reduction; direct
+next-prime and Interior Maximizer remain proved. S8 does not close Target S1*.
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.44s
+```
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New constructive lemma subsection S8 (mean inter-hit gap, Dual signed imbalance,
+chamber open fraction; `SpacingBalance` / `ResetResidual^S`) with residual claim
+table RC24–RC26 and explicit falsification commands. Continuity fix: ACTIVE_TARGET
+now matches PROOF.md (proximity OPEN/UNRESOLVED). Not a replay of S1–S7 and not
+a measured new regime.
+
+Artifacts:
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`;
+`research/00-index/continuity/ACTIVE_TARGET.md`;
+`experiments/square-branch-hourly-2026-07-13-rc24/offset_540_residual_rc24_probe.py` (falsification command for RC24–RC26)
+
+Next step:
+Return to falsification queue on `5e8–6e8`, or H_CTC square-branch probe. Re-check
+RC24–RC26 / SpacingBalance on any new util maximum. Keep S8 residual only; do not
+promote mean gap, signed Dual, or open fraction to theorem; do not revive fixed
+band 540 or d=4 SDA.
