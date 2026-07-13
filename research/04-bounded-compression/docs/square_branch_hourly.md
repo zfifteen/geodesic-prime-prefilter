@@ -2455,7 +2455,7 @@ Research status:
 ADVANCE
 
 Ops status:
-OK
+FAILED
 
 Delta:
 new falsification regime through max_prime=500000000
@@ -2465,3 +2465,82 @@ Artifacts:
 
 Next step:
 Structural audit of recurring offset 540 on new extremal rows if no counterexample.
+
+## 2026-07-13T13:31:24Z run
+
+Mechanism:
+On each extremal chamber before a selected prime square `w = r^2`, mark the
+ordered offsets with `tau = 4`, the late `tau = 3` square endpoint at offset
+`D(r)`, and the successive gaps between consecutive `tau = 4` hits. From those
+plain marks, form three residual quantities beyond peak ratio and CV: the median
+successive gap over the mean gap, the fraction of successive gaps at most the
+mean, and the share of Tau4 hits in the first half of the Tau4 body
+`[first_tau4, last_tau4]`. Project terms: RC30 median/mean, RC31 sub-mean
+majority, RC32 body early-mass balance.
+
+Method:
+PGS-native residual probe (no d=4 SDA port). Job `offset-540-structural-audit`.
+Read `square_branch_dynamic_cutoff_search_4e8_5e8` summary JSON,
+`prefix_tau_floor_probe.json`, prior chamber table
+`experiments/square-branch-hourly-2026-07-10/`, and RC27 table.
+Ran new probe
+`experiments/square-branch-hourly-2026-07-13-rc30/offset_540_residual_rc30_probe.py`
+evaluating P34-P36 on segment util maxima through `4e8-5e8` plus full
+`o_q in {2,4,6}` branch-max panel (8 evaluation rows; 7 unique chambers). Did
+not restate RC27-RC29 as the sole deliverable. Continuity: `ACTIVE_TARGET.md`
+aligned with `PROOF.md` §Square-Branch Reduction (proximity OPEN/UNRESOLVED;
+residual package through RC32).
+
+Result:
+| Claim | Bound | Observed | Rows |
+| --- | --- | --- | --- |
+| RC30 / P34 med/mean | `[0.65, 0.95]` | `[0.683, 0.891]` | 8/8 hold |
+| RC31 / P35 frac <= mean | `>= 0.50` | `[0.549, 0.677]` | 8/8 hold |
+| RC32 / P36 early body mass | `[0.40, 0.55]` | `[0.415, 0.538]` | 8/8 hold |
+
+Branch-max panel (`F(r)` = o_q):
+
+| o_q | r | D | med/mean | frac_le_mean | early_body_frac |
+| --- | --- | --- | --- | --- | --- |
+| 2 | 468917503 | 542 | 0.683 | 0.644 | 0.500 |
+| 4 | 482342527 | 486 | 0.784 | 0.577 | 0.415 |
+| 6 | 424171123 | 738 | 0.784 | 0.632 | 0.469 |
+
+RC2 retained falsified (`r=424171123`, `D=738`). RC27-RC29 retained holds
+(not primary surface this hour). Theorem: prime-square proximity remains
+UNRESOLVED in `PROOF.md` §Square-Branch Reduction; direct next-prime and
+Interior Maximizer remain proved. Residual audit only. Invalidated d=4 SDA
+not revived.
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.35s
+```
+RC30 residual probe exit code: 0 (RC30-RC32 hold; RC2 retained falsified).
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New falsifiable residual claim table RC30-RC32 (Tau4 successive median/mean
+ratio, sub-mean successive gap majority, Tau4 body early-mass balance) with
+explicit falsification command; all three hold on util maxima through
+`4e8-5e8` + `o_q` panel. Continuity: ACTIVE_TARGET residual package through
+RC32; proximity remains OPEN/UNRESOLVED. Not a replay of RC27-RC29 max/mean,
+gap CV, or Dual/mean.
+
+Artifacts:
+`experiments/square-branch-hourly-2026-07-13-rc30/offset_540_residual_rc30_probe.py`;
+`experiments/square-branch-hourly-2026-07-13-rc30/offset_540_rc30_prediction_table.json`;
+`experiments/square-branch-hourly-2026-07-13-rc30/FINDINGS.md`;
+`research/00-index/continuity/ACTIVE_TARGET.md` (residual package through RC32; proximity OPEN/UNRESOLVED)
+
+Next step:
+Queue falsification `5e8-6e8` and re-check RC30-RC32 (and RC18-RC29) on any
+new util maximum. Keep RC30-RC32 residual only; do not promote median/mean,
+sub-mean majority, or body early-mass to theorem; do not revive fixed-band 540
+or d=4 SDA.
