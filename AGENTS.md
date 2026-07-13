@@ -14,12 +14,16 @@ Its job is to prevent four recurring failures:
 
 ## Task Planning and Execution
 
-### PGS Quartet (HARD RULE, machine-enforced)
+### PGS Quartet (HARD RULE when gate ON, machine-enforced)
 
-The parent session is the Orchestrator only. It does **not** perform task work
-solo. Every user turn inside this repository must spawn **exactly these four
-real subagents** via the `spawn_subagent` tool before any other non-orchestration
-tool is used:
+The parent session is the Orchestrator only. When the Quartet hard gate is
+**ON**, it does **not** perform task work solo: every user turn inside this
+repository must spawn **exactly these four real subagents** via the
+`spawn_subagent` tool before any other non-orchestration tool is used. When the
+gate is **OFF**, parent tools are unrestricted (operational usability only; see
+toggle below). QA remains mandatory either way.
+
+Required roles (gate ON):
 
 | Role | `subagent_type` (required) | Workspace / capability |
 | --- | --- | --- |
@@ -53,7 +57,7 @@ Agent definitions live at `.grok/agents/pgs-*.md`.
      (observable object -> mechanism -> project term -> formal definition).
    - Updates documentation in HTML/Markdown under the correct tree.
 
-**Hard enforcement (not prompt theater):**
+**Hard enforcement (when the gate is ON; not prompt theater):**
 
 - A PreToolUse hook (`.grok/hooks/` + always-on install under `~/.grok/hooks/`)
   **denies** parent tools until all four `subagent_type` values above have been
@@ -67,22 +71,30 @@ Agent definitions live at `.grok/agents/pgs-*.md`.
 - **Spawn first in the turn.** A denied tool cancels the whole harness turn
   (`HookDenied`); there is no mid-turn recovery after a blocked `read_file` or
   write. Always call the four `spawn_subagent` tools before any other work tool.
-- Emergency recovery only: `PGS_QUARTET_BYPASS=1` (never for normal work).
+- **Toggle (sticky, preferred):** `pgs-quartet off` / `pgs-quartet on` /
+  `pgs-quartet status`. Sticky file: `~/.grok/state/pgs-quartet-enabled`
+  (`0`=off, `1`=on; missing defaults to OFF). Process env on the **Grok CLI**
+  (not inside a blocked shell command): `PGS_QUARTET=0` /
+  `PGS_QUARTET_ENABLED=0` disables; `PGS_QUARTET=1` enables; `PGS_QUARTET_BYPASS=1`
+  is emergency off. Setting env only inside a denied tool does nothing.
+  **OFF is operational usability only** (machine spawn lock off). It does not
+  relax PGS research rules, proof status, or the QA closing gate.
 - See `.grok/rules/pgs-quartet-hard-gate.md`.
 
 
-**Workflow (mandatory order):**
+**Workflow (mandatory order when the gate is ON):**
 
 1. Spawn all four roles (prefer `background=true` in parallel).
 2. Implementer drafts.
 3. Auditor and Verifier run in parallel against the draft.
 4. Scribe documents only after approval pressure is visible.
 5. Orchestrator merges only after consensus.
-6. **Quality Assurance (below) is the mandatory final step of every workflow.**
+6. **Quality Assurance (below) is the mandatory final step of every workflow**
+   (required whether the gate is ON or OFF).
 
-At the start of each session display a short message that the PGS Quartet hard
-gate is active, and list the four `subagent_type` values once. That message is
-**not** a substitute for spawning.
+At the start of each session, report the effective Quartet gate state
+(`pgs-quartet status` / sticky file) and list the four `subagent_type` values
+once. That message is **not** a substitute for spawning when the gate is ON.
 
 ## Grammar
 
@@ -101,8 +113,10 @@ documentation, issue/PR text, research answers, and operational changes.
 
 The Quartet hard gate does not replace this QA gate. After the four subagents
 return, the Orchestrator still runs the universal closing gate below. Normal
-work is multi-agent; "single-agent session" is only valid under explicit
-emergency bypass (`PGS_QUARTET_BYPASS=1`), and even then QA remains mandatory.
+research work is multi-agent when the gate is ON. Solo parent work is allowed
+when the gate is OFF (`pgs-quartet off` or process env `PGS_QUARTET=0` /
+`PGS_QUARTET_BYPASS=1`). OFF is operational usability only, not a math or
+proof-contract change. QA remains mandatory either way.
 
 Skipping, deferring, or implying review ("I should have…") is a contract violation.
 
