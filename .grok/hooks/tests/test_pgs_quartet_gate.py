@@ -48,6 +48,10 @@ class QuartetGateTests(unittest.TestCase):
         self.tmp = tempfile.TemporaryDirectory()
         self.home = self.tmp.name
         self.env = {"HOME": self.home}
+        # Enforcement tests opt in: sticky ON under isolated HOME.
+        flag = Path(self.home) / ".grok" / "state" / "pgs-quartet-enabled"
+        flag.parent.mkdir(parents=True, exist_ok=True)
+        flag.write_text("1\n", encoding="utf-8")
 
     def tearDown(self) -> None:
         self.tmp.cleanup()
@@ -66,6 +70,26 @@ class QuartetGateTests(unittest.TestCase):
         )
         self.assertEqual(code, 0, err)
         self.assertEqual(decision(out).get("decision"), "allow")
+
+    def test_missing_sticky_defaults_off(self) -> None:
+        flag = Path(self.home) / ".grok" / "state" / "pgs-quartet-enabled"
+        if flag.is_file():
+            flag.unlink()
+        code, out, err = run_gate(
+            "pre_tool_use",
+            {
+                "sessionId": "s-default-off",
+                "cwd": PGS_CWD,
+                "workspaceRoot": PGS_CWD,
+                "toolName": "read_file",
+                "toolInput": {"target_file": "AGENTS.md"},
+            },
+            self.env,
+        )
+        self.assertEqual(code, 0, err)
+        d = decision(out)
+        self.assertEqual(d.get("decision"), "allow")
+        self.assertIn("default off", d.get("reason", "").lower())
 
     def test_blocks_read_before_quartet(self) -> None:
         code, out, err = run_gate(
@@ -276,6 +300,99 @@ class QuartetGateTests(unittest.TestCase):
         )
         self.assertEqual(code, 0, err)
         self.assertEqual(decision(out).get("decision"), "allow")
+        self.assertIn("off", decision(out).get("reason", "").lower())
+
+    def test_sticky_file_off_allows(self) -> None:
+        flag = Path(self.home) / ".grok" / "state" / "pgs-quartet-enabled"
+        flag.parent.mkdir(parents=True, exist_ok=True)
+        flag.write_text("0\n", encoding="utf-8")
+        code, out, err = run_gate(
+            "pre_tool_use",
+            {
+                "sessionId": "s-sticky-off",
+                "cwd": PGS_CWD,
+                "workspaceRoot": PGS_CWD,
+                "toolName": "read_file",
+                "toolInput": {},
+            },
+            self.env,
+        )
+        self.assertEqual(code, 0, err)
+        d = decision(out)
+        self.assertEqual(d.get("decision"), "allow")
+        self.assertIn("sticky file", d.get("reason", ""))
+
+    def test_sticky_file_on_still_blocks(self) -> None:
+        flag = Path(self.home) / ".grok" / "state" / "pgs-quartet-enabled"
+        flag.parent.mkdir(parents=True, exist_ok=True)
+        flag.write_text("1\n", encoding="utf-8")
+        code, out, err = run_gate(
+            "pre_tool_use",
+            {
+                "sessionId": "s-sticky-on",
+                "cwd": PGS_CWD,
+                "workspaceRoot": PGS_CWD,
+                "toolName": "read_file",
+                "toolInput": {},
+            },
+            self.env,
+        )
+        self.assertEqual(code, 0, err)
+        self.assertEqual(decision(out).get("decision"), "deny")
+
+    def test_pgs_quartet_env_zero_allows(self) -> None:
+        env = dict(self.env)
+        env["PGS_QUARTET"] = "0"
+        code, out, err = run_gate(
+            "pre_tool_use",
+            {
+                "sessionId": "s-env0",
+                "cwd": PGS_CWD,
+                "workspaceRoot": PGS_CWD,
+                "toolName": "run_terminal_command",
+                "toolInput": {"command": "true"},
+            },
+            env,
+        )
+        self.assertEqual(code, 0, err)
+        self.assertEqual(decision(out).get("decision"), "allow")
+
+    def test_pgs_quartet_enabled_env_zero_allows(self) -> None:
+        env = dict(self.env)
+        env["PGS_QUARTET_ENABLED"] = "0"
+        code, out, err = run_gate(
+            "pre_tool_use",
+            {
+                "sessionId": "s-enven0",
+                "cwd": PGS_CWD,
+                "workspaceRoot": PGS_CWD,
+                "toolName": "write",
+                "toolInput": {"file_path": "/tmp/x", "content": "y"},
+            },
+            env,
+        )
+        self.assertEqual(code, 0, err)
+        self.assertEqual(decision(out).get("decision"), "allow")
+
+    def test_env_on_overrides_sticky_off(self) -> None:
+        flag = Path(self.home) / ".grok" / "state" / "pgs-quartet-enabled"
+        flag.parent.mkdir(parents=True, exist_ok=True)
+        flag.write_text("0\n", encoding="utf-8")
+        env = dict(self.env)
+        env["PGS_QUARTET"] = "1"
+        code, out, err = run_gate(
+            "pre_tool_use",
+            {
+                "sessionId": "s-env-override",
+                "cwd": PGS_CWD,
+                "workspaceRoot": PGS_CWD,
+                "toolName": "read_file",
+                "toolInput": {},
+            },
+            env,
+        )
+        self.assertEqual(code, 0, err)
+        self.assertEqual(decision(out).get("decision"), "deny")
 
 
 if __name__ == "__main__":
