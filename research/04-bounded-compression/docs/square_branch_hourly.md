@@ -2871,3 +2871,74 @@ Artifacts:
 
 Next step:
 Queue falsification 500M-600M or draft Chamber-Reset Endpoint Resolution Lemma subsection.
+
+## 2026-07-13T19:07:20Z run
+
+Mechanism:
+Draft one subsection of the Chamber-Reset Endpoint Resolution Lemma on the
+selected-square branch (job `chamber-reset-lemma-draft`).
+
+Method:
+Constructive subsection S11 under
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`.
+PGS-native objects only: ordered chamber prefix, divisor-count field, Tau4
+successive gaps, Dual trail marker, Dual body support. No classical inference
+gate. No d=4 SDA port. No theorem inflation. Continuity: residual package
+through RC35 attached as audit only; Target S1* remains UNRESOLVED per PROOF.md
+§Square-Branch Reduction.
+
+Result:
+| Claim | Content | Status |
+| --- | --- | --- |
+| S11-A | IQR / median successive-gap robust scale | constructive |
+| S11-B | trail/mean closing isolation; body last-quartile mass | constructive |
+| S11-C | RobustScale + ResetResidual^R chamber-reset residual | constructive |
+| RC33 | 0.70 <= IQR/med <= 1.55; observed [0.833, 1.417] | holds (audit) |
+| RC34 | 0.15 <= trail/mean <= 2.50; observed [0.223, 2.278] | holds (audit) |
+| RC35 | 0.18 <= last_Q <= 0.35; observed [0.233, 0.297] | holds (audit) |
+| RC2 | fixed band [528, 552] law on util maxima | retained falsified |
+| S1* | D(r) <= max(64, ceil(0.5*log(r^2)^2)) | UNRESOLVED |
+
+Branch-max panel (F(r)=o_q):
+
+| o_q | r | D | IQR/med | trail/mean | last_Q |
+| --- | --- | --- | --- | --- | --- |
+| 2 | 468917503 | 542 | 1.333 | 2.278 | 0.233 |
+| 4 | 482342527 | 486 | 1.357 | 0.672 | 0.283 |
+| 6 | 424171123 | 738 | 1.167 | 1.045 | 0.240 |
+
+Theorem: prime-square proximity / Target S1* remains UNRESOLVED in `PROOF.md`
+§Square-Branch Reduction; direct next-prime and Interior Maximizer remain
+proved. Residual audit only. Invalidated d=4 SDA not revived.
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.36s
+```
+RC33 residual probe exit code: 0 (RC33-RC35 hold; RC2 retained falsified).
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New constructive lemma subsection S11 (Claims S11-A/S11-B/S11-C) with
+explicit falsification commands: RobustScale residual package formalizing
+IQR/median, trail/mean closing isolation, and Tau4 body last-quartile mass
+into ResetResidual^R; attaches measured RC33-RC35 as audit only. Not a replay
+of S10 median/mean / sub-mean majority / body early-mass, and not a proof of
+S1*.
+
+Artifacts:
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html` (S11);
+`experiments/square-branch-hourly-2026-07-13-s11/FINDINGS.md`;
+`experiments/square-branch-hourly-2026-07-13-rc33/` (falsification residual panel)
+
+Next step:
+Return to falsification queue on `5e8-6e8` or H_CTC square-branch probe.
+Re-check RC33-RC35 / RobustScale on any new util maximum. Keep S11 residual
+only; do not promote IQR/median, trail/mean, or body last-quartile mass to
+theorem; do not revive fixed-band 540 or d=4 SDA.
