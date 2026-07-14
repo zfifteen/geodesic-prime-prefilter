@@ -1,0 +1,16 @@
+{
+  "id": "gwr-figure-06-counterexample-pair",
+  "title": "GWR story: unrestricted counterexample pair",
+  "tier": 0,
+  "status": "legacy",
+  "status_detail": "Legacy story figure for the 49 vs 6 obstruction: unrestricted global fewest-divisors maximizer fails, while GWR still holds inside prime gaps.",
+  "regime": "explicit unordered pair 49 versus 6 (story figure)",
+  "claim_language": "weak",
+  "has_10e18_surface": false,
+  "tags": ["GWR", "legacy", "counterexample", "story", "tier-0"],
+  "chapter_refs": ["research/02-gwr-dni/story/story/", "PROOF.md"],
+  "script": "demo.py",
+  "outputs": ["plot.png"],
+  "kind": "legacy-wrap",
+  "legacy_source": "research/02-gwr-dni/story/story/plots/figure_06_counterexample_pair.png"
+}

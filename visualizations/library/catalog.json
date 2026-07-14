@@ -1,0 +1,18 @@
+{
+  "name": "PGS Plot Library",
+  "version": "0.1.0",
+  "description": "Catalog-first scientific and legacy plot demos with a self-contained HTML gallery. Editorial course plates remain under website/.",
+  "library_root": "visualizations/library",
+  "gallery_root": "visualizations/gallery",
+  "default_python": "visualizations/library/.venv/bin/python",
+  "entries": [
+    "chamber-ruler-strip",
+    "dual-e-z-field",
+    "witness-offset-envelope",
+    "decade-ladder-scoreboard",
+    "endpoint-chain-ladder",
+    "gwr-figure-01-exemplar-gap-profiles",
+    "gwr-figure-06-counterexample-pair",
+    "gwr-figure-07-winner-heatmap"
+  ]
+}

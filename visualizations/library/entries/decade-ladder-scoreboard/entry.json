@@ -1,0 +1,15 @@
+{
+  "id": "decade-ladder-scoreboard",
+  "title": "Generator decade ladder scoreboard",
+  "tier": 0,
+  "status": "measured",
+  "status_detail": "Poster of published generator surface aggregates from docs/RESULTS.md (via fixtures/surfaces/generator_surfaces.json), including the decade ladder through 10^18. Fixture mirror of implementation evidence, not a live re-audit and not theorem bounds.",
+  "regime": "published aggregates: 11..1000000 and 10^8..10^18 decade ladder (256/decade, 2816 total)",
+  "claim_language": "weak",
+  "has_10e18_surface": true,
+  "tags": ["generator", "decade-ladder", "10e18", "evidence", "tier-0"],
+  "chapter_refs": ["docs/RESULTS.md", "research/01-generator/", "AGENTS.md"],
+  "script": "demo.py",
+  "outputs": ["plot.png"],
+  "kind": "scientific-demo"
+}

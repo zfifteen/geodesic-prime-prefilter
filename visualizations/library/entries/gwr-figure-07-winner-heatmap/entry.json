@@ -1,0 +1,16 @@
+{
+  "id": "gwr-figure-07-winner-heatmap",
+  "title": "GWR story: winner heatmap",
+  "tier": 0,
+  "status": "legacy",
+  "status_detail": "Legacy story heatmap of selected integers in normalized gap position versus divisor-count space (even-window 1e9 story surface).",
+  "regime": "even-window 1e9 story surface (see plot_generation_plan.md)",
+  "claim_language": "weak",
+  "has_10e18_surface": false,
+  "tags": ["GWR", "legacy", "heatmap", "ridge", "tier-0"],
+  "chapter_refs": ["research/02-gwr-dni/story/story/", "research/11-gap-ridge/"],
+  "script": "demo.py",
+  "outputs": ["plot.png"],
+  "kind": "legacy-wrap",
+  "legacy_source": "research/02-gwr-dni/story/story/plots/figure_07_winner_heatmap.png"
+}

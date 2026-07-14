@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chamber ruler strip · PGS Plot Library</title>
+  <link rel="stylesheet" href="../css/gallery.css">
+</head>
+<body>
+  <header class="site">
+    <div class="wrap">
+      <div class="brand">PGS Plot Library <small>entry</small></div>
+      <nav>
+        <a href="../index.html">Gallery</a>
+        <a href="../../library/README.md">Library README</a>
+        <a href="../../index.html">Visualizations hub</a>
+        <a href="../../../website/index.html">Educational course</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+
+    <p class="meta"><a href="../index.html">← Gallery</a></p>
+    <p><span class="status status-mixed">mixed</span>
+       <span class="meta"> · tier 0 · scientific-demo</span></p>
+    <h1>Chamber ruler strip</h1>
+    <p class="lead">Pedagogical illustration of the ordered gap chamber and GWR leftmost min-d selection on toy exemplars. Universal theorems remain in PROOF.md; this figure is not a finite proof surface.</p>
+    <div class="figure-frame"><img src="../assets/chamber-ruler-strip/plot.png" alt="Chamber ruler strip"></div>
+    <div class="panel">
+      <dl>
+        <dt>Regime</dt><dd>toy exemplar gaps from fixtures/exemplars/gaps.json (local teaching only)</dd>
+        <dt>Claim language</dt><dd>weak</dd>
+        <dt>Reproduce</dt><dd><code>visualizations/library/.venv/bin/python visualizations/library/entries/chamber-ruler-strip/demo.py</code></dd>
+        <dt>Chapter refs</dt><dd><ul><li><code>PROOF.md</code></li><li><code>research/02-gwr-dni/</code></li><li><code>docs/RESULTS.md</code></li></ul></dd>
+        <dt>Tags</dt><dd class="tags"><span>chamber</span><span>d-field</span><span>GWR</span><span>pedagogy</span><span>tier-0</span></dd>
+      </dl>
+    </div>
+    <div class="prose">
+      <h2>Observable object</h2>
+<p>Between two consecutive primes <code>p</code> and <code>q</code> sits an ordered hallway of composite integers. Each integer carries a divisor count <code>d(n)</code>. The plot draws that hallway as a bar strip.</p>
+<h2>Mechanism</h2>
+<p>Scan the open interval <code>(p, q)</code> from the left. Keep the leftmost integer whose divisor count is minimal among interior points. That integer is the GWR-selected witness <code>w</code>. The next prime is the first later integer with <code>d(n)=2</code> after the chamber structure is read under the proved selection laws.</p>
+<h2>Project terms</h2>
+<ul>
+<li><strong>Chamber</strong>: the gap interval with endpoint primes as walls.</li>
+<li><strong>GWR</strong>: Leftmost Minimum-Divisor Rule (prime-gap maximizer theorem).</li>
+<li><strong>Witness offset</strong>: <code>w - p</code>, bounded under universal bounded compression in <code>PROOF.md</code>.</li>
+</ul>
+<h2>Formal link</h2>
+<p><code>PROOF.md</code>: direct deterministic next-prime theorem; GWR / leftmost minimum-divisor maximizer theorem.</p>
+<h2>Status and limits</h2>
+<ul>
+<li>Status chip: <strong>mixed</strong> (toy illustration of proved chamber/GWR objects; theorems live in <code>PROOF.md</code>).</li>
+<li>Regime: toy exemplar gaps only. Not a measurement campaign. Not a <code>10^18</code> surface.</li>
+<li>Do not read bar heights as probabilities.</li>
+</ul>
+    </div>
+
+  </main>
+  <footer class="wrap">
+    Entry id <code>chamber-ruler-strip</code>. Status separation is mandatory.
+  </footer>
+</body>
+</html>

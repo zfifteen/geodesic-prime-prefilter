@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PGS Plot Gallery</title>
+  <meta name="description" content="PGS plot library gallery">
+  <link rel="stylesheet" href="css/gallery.css">
+  
+</head>
+<body>
+  <header class="site">
+    <div class="wrap">
+      <div class="brand">PGS Plot Library <small>scientific demos + legacy wraps</small></div>
+      <nav>
+        <a href="index.html">Gallery</a>
+        <a href="../library/README.md">Library README</a>
+        <a href="../index.html">Visualizations hub</a>
+        <a href="../../website/index.html">Educational course</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+
+    <h1>Plot gallery</h1>
+    <p class="lead">
+      Catalog-first demonstrations of Prime Gap Structure objects: chambers, DNI coordinates,
+      bounded-compression envelopes, generator surface posters, and modulus-link schematics.
+      Each entry carries an explicit status chip, one-line status detail, and regime.
+      Version 0.1.0.
+    </p>
+    <div class="panel">
+      <dl>
+        <dt>Library</dt><dd><code>visualizations/library/</code></dd>
+        <dt>Regenerate</dt><dd><code>visualizations/library/.venv/bin/python visualizations/scripts/lint_catalog.py &amp;&amp; visualizations/library/.venv/bin/python visualizations/scripts/run_all_demos.py &amp;&amp; visualizations/library/.venv/bin/python visualizations/scripts/build_gallery.py</code></dd>
+        <dt>Asset truth</dt><dd><code>library/out/</code> is demo output; <code>gallery/assets/</code> is a build copy. Do not hand-edit gallery PNGs.</dd>
+        <dt>Not this gallery</dt><dd>Public educational plates → <code>website/</code>. Historical plot dumps → <code>visualizations/core-diagrams/</code> (non-catalog).</dd>
+      </dl>
+    </div>
+    <div class="filters" role="group" aria-label="Gallery filters">
+      <button class="chip active" type="button" data-filter="status" data-value="all" aria-pressed="true">status: all</button><button class="chip" type="button" data-filter="status" data-value="editorial" aria-pressed="false">status: editorial</button><button class="chip" type="button" data-filter="status" data-value="legacy" aria-pressed="false">status: legacy</button><button class="chip" type="button" data-filter="status" data-value="measured" aria-pressed="false">status: measured</button><button class="chip" type="button" data-filter="status" data-value="mixed" aria-pressed="false">status: mixed</button><button class="chip active" type="button" data-filter="tier" data-value="all" aria-pressed="true">tier: all</button><button class="chip" type="button" data-filter="tier" data-value="0" aria-pressed="false">tier: 0</button>
+    </div>
+    <p id="filter-empty" class="hidden" role="status"></p>
+    <div class="grid">
+      
+<article class="card" data-entry data-status="mixed" data-tier="0">
+  <a href="entry/chamber-ruler-strip.html"><img src="assets/chamber-ruler-strip/plot.png" alt="Chamber ruler strip" loading="lazy"></a>
+  <div class="body">
+    <div><span class="status status-mixed">mixed</span></div>
+    <h3><a href="entry/chamber-ruler-strip.html">Chamber ruler strip</a></h3>
+    <div class="detail">Pedagogical illustration of the ordered gap chamber and GWR leftmost min-d selection on toy exemplars. Universal theorems remain in PROOF.md; this figure is not a finite proof surf</div>
+    <div class="meta">tier 0 · scientific-demo</div>
+    <div class="meta">toy exemplar gaps from fixtures/exemplars/gaps.json (local teaching only)</div>
+    <div class="tags"><span>chamber</span><span>d-field</span><span>GWR</span><span>pedagogy</span><span>tier-0</span></div>
+  </div>
+</article>
+<article class="card" data-entry data-status="mixed" data-tier="0">
+  <a href="entry/dual-e-z-field.html"><img src="assets/dual-e-z-field/plot.png" alt="Dual d(n) and zero-excess E(n) field" loading="lazy"></a>
+  <div class="body">
+    <div><span class="status status-mixed">mixed</span></div>
+    <h3><a href="entry/dual-e-z-field.html">Dual d(n) and zero-excess E(n) field</a></h3>
+    <div class="detail">Pedagogical illustration of the Divisor Normalization Identity coordinate E(n)=(d(n)/2-1)ln n on one toy chamber. Primes are the zero-excess integers for n&gt;1 under that coordinate.</div>
+    <div class="meta">tier 0 · scientific-demo</div>
+    <div class="meta">single toy chamber default p=89, q=97</div>
+    <div class="tags"><span>DNI</span><span>E</span><span>Z</span><span>chamber</span><span>pedagogy</span><span>tier-0</span></div>
+  </div>
+</article>
+<article class="card" data-entry data-status="mixed" data-tier="0">
+  <a href="entry/witness-offset-envelope.html"><img src="assets/witness-offset-envelope/plot.png" alt="Witness offset under proved C(q) envelope" loading="lazy"></a>
+  <div class="body">
+    <div><span class="status status-mixed">mixed</span></div>
+    <h3><a href="entry/witness-offset-envelope.html">Witness offset under proved C(q) envelope</a></h3>
+    <div class="detail">Curve: universal bounded compression theorem for w-p (PROOF.md). Points: toy exemplar offsets only. Not a high-scale measured cloud and not a claim about raw gap size q-p.</div>
+    <div class="meta">tier 0 · scientific-demo</div>
+    <div class="meta">theorem curve for all q; toy points from fixtures/exemplars/gaps.json</div>
+    <div class="tags"><span>bounded-compression</span><span>C(q)</span><span>GWR</span><span>tier-0</span></div>
+  </div>
+</article>
+<article class="card" data-entry data-status="measured" data-tier="0">
+  <a href="entry/decade-ladder-scoreboard.html"><img src="assets/decade-ladder-scoreboard/plot.png" alt="Generator decade ladder scoreboard" loading="lazy"></a>
+  <div class="body">
+    <div><span class="status status-measured">measured</span></div>
+    <h3><a href="entry/decade-ladder-scoreboard.html">Generator decade ladder scoreboard</a></h3>
+    <div class="detail">Poster of published generator surface aggregates from docs/RESULTS.md (via fixtures/surfaces/generator_surfaces.json), including the decade ladder through 10^18. Fixture mirror of </div>
+    <div class="meta">tier 0 · scientific-demo</div>
+    <div class="meta">published aggregates: 11..1000000 and 10^8..10^18 decade ladder (256/decade, 2816 total)</div>
+    <div class="tags"><span>generator</span><span>decade-ladder</span><span>10e18</span><span>evidence</span><span>tier-0</span></div>
+  </div>
+</article>
+<article class="card" data-entry data-status="editorial" data-tier="0">
+  <a href="entry/endpoint-chain-ladder.html"><img src="assets/endpoint-chain-ladder/plot.png" alt="Modulus-link endpoint-chain ladder" loading="lazy"></a>
+  <div class="body">
+    <div><span class="status status-editorial">editorial</span></div>
+    <h3><a href="entry/endpoint-chain-ladder.html">Modulus-link endpoint-chain ladder</a></h3>
+    <div class="detail">Editorial schematic of the cryptology contract frame: locked endpoint chain, floor transport, reciprocal closure, residual or certificate. Not a solved factorization claim and not </div>
+    <div class="meta">tier 0 · schematic</div>
+    <div class="meta">schematic pedagogy only</div>
+    <div class="tags"><span>cryptology</span><span>modulus-link</span><span>endpoint-chain</span><span>schematic</span><span>tier-0</span></div>
+  </div>
+</article>
+<article class="card" data-entry data-status="legacy" data-tier="0">
+  <a href="entry/gwr-figure-01-exemplar-gap-profiles.html"><img src="assets/gwr-figure-01-exemplar-gap-profiles/plot.png" alt="GWR story: exemplar gap profiles" loading="lazy"></a>
+  <div class="body">
+    <div><span class="status status-legacy">legacy</span></div>
+    <h3><a href="entry/gwr-figure-01-exemplar-gap-profiles.html">GWR story: exemplar gap profiles</a></h3>
+    <div class="detail">Legacy committed figure from research/02-gwr-dni/story. Shows raw landscape / selected integer placement on exemplar gaps used in the GWR story pack.</div>
+    <div class="meta">tier 0 · legacy-wrap</div>
+    <div class="meta">story surface documented in research/02-gwr-dni/story/story/plot_generation_plan.md (exact 1e6 + even-window 1e9 story surfaces)</div>
+    <div class="tags"><span>GWR</span><span>legacy</span><span>story</span><span>tier-0</span></div>
+  </div>
+</article>
+<article class="card" data-entry data-status="legacy" data-tier="0">
+  <a href="entry/gwr-figure-06-counterexample-pair.html"><img src="assets/gwr-figure-06-counterexample-pair/plot.png" alt="GWR story: unrestricted counterexample pair" loading="lazy"></a>
+  <div class="body">
+    <div><span class="status status-legacy">legacy</span></div>
+    <h3><a href="entry/gwr-figure-06-counterexample-pair.html">GWR story: unrestricted counterexample pair</a></h3>
+    <div class="detail">Legacy story figure for the 49 vs 6 obstruction: unrestricted global fewest-divisors maximizer fails, while GWR still holds inside prime gaps.</div>
+    <div class="meta">tier 0 · legacy-wrap</div>
+    <div class="meta">explicit unordered pair 49 versus 6 (story figure)</div>
+    <div class="tags"><span>GWR</span><span>legacy</span><span>counterexample</span><span>story</span><span>tier-0</span></div>
+  </div>
+</article>
+<article class="card" data-entry data-status="legacy" data-tier="0">
+  <a href="entry/gwr-figure-07-winner-heatmap.html"><img src="assets/gwr-figure-07-winner-heatmap/plot.png" alt="GWR story: winner heatmap" loading="lazy"></a>
+  <div class="body">
+    <div><span class="status status-legacy">legacy</span></div>
+    <h3><a href="entry/gwr-figure-07-winner-heatmap.html">GWR story: winner heatmap</a></h3>
+    <div class="detail">Legacy story heatmap of selected integers in normalized gap position versus divisor-count space (even-window 1e9 story surface).</div>
+    <div class="meta">tier 0 · legacy-wrap</div>
+    <div class="meta">even-window 1e9 story surface (see plot_generation_plan.md)</div>
+    <div class="tags"><span>GWR</span><span>legacy</span><span>heatmap</span><span>ridge</span><span>tier-0</span></div>
+  </div>
+</article>
+    </div>
+    <script src="js/gallery.js"></script>
+
+  </main>
+  <footer class="wrap">
+    Generated 2026-07-14 00:26 UTC.
+    Status chips are mandatory. Editorial plates live under <code>website/</code>.
+  </footer>
+</body>
+</html>

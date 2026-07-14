@@ -1,0 +1,12 @@
+{
+  "description": "Toy prime-gap exemplars for teaching demos. Precomputed endpoints only; interior fields are rebuilt by pure divisor_count helpers.",
+  "note": "These are pedagogical fixtures, not a program-level evidence surface.",
+  "gaps": [
+    {"p": 11, "q": 13, "label": "twin-ish small", "note": "gap 2 empty interior skipped in multi-gap rulers if empty"},
+    {"p": 29, "q": 31, "label": "gap 2"},
+    {"p": 89, "q": 97, "label": "medium chamber"},
+    {"p": 113, "q": 127, "label": "wider chamber"},
+    {"p": 139, "q": 149, "label": "gap 10"},
+    {"p": 199, "q": 211, "label": "gap 12"}
+  ]
+}

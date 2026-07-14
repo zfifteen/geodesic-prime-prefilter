@@ -1,44 +1,99 @@
 <!doctype html>
-<html><head><meta charset="utf-8"><title>PGS Square Branch Favorites | Visualizations Suite</title>
-<style>
-:root { --bg:#05070a; --text:#e0d8c8; --accent:#ffd700; }
-body { margin:0; background:var(--bg); color:var(--text); font-family: system-ui, sans-serif; line-height:1.5; }
-.container { max-width:1400px; margin:0 auto; padding:20px; }
-h1 { color:#ffd700; text-align:center; }
-figure { margin:20px 0; text-align:center; }
-img { max-width:100%; height:auto; border:1px solid #2a2a4a; box-shadow:0 0 20px rgba(0,0,0,0.5); }
-figcaption { margin-top:8px; font-size:0.95rem; color:#aaa; }
-.grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-.explain { background:#0a0520; padding:16px; border-radius:8px; border:1px solid #2a2a4a; }
-</style></head><body>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Square-branch historical plots | PGS visualizations</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0e0e10;
+      --surface: #16161a;
+      --line: #2a2a30;
+      --text: #e8e4d9;
+      --muted: #9a9588;
+      --accent: #c9a962;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, sans-serif;
+      line-height: 1.55;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 28px 18px 64px; }
+    h1 { color: var(--accent); font-size: 1.6rem; margin: 0 0 10px; }
+    .banner {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px 14px;
+      color: var(--muted);
+      margin-bottom: 22px;
+      font-size: 0.95rem;
+    }
+    figure { margin: 0 0 20px; text-align: center; }
+    img { max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 6px; }
+    figcaption { margin-top: 8px; font-size: 0.92rem; color: var(--muted); }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    @media (max-width: 800px) { .grid { grid-template-columns: 1fr; } }
+    .explain {
+      background: var(--surface);
+      padding: 14px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-top: 8px;
+    }
+    a { color: var(--accent); }
+    ul { padding-left: 1.2em; }
+    .nav { margin-top: 28px; color: var(--muted); font-size: 0.92rem; }
+  </style>
+</head>
+<body>
 <div class="container">
-<h1>PGS Square Branch. Two Favorite Visualizations</h1>
-<p style="text-align:center;max-width:800px;margin:0 auto 30px;">These two images capture the geometric beauty of the <strong>square branch</strong> in the PGS proofs (see PROOF.md). Each point or branch represents a gap where the GWR-selected integer w is a perfect square of a prime (τ(w)=3). The visuals make the "bounded compression" and violation analysis tangible.</p>
+  <h1>Square-branch historical plots</h1>
+  <div class="banner">
+    <strong>Editorial / historical only.</strong>
+    These images are exploratory art from mid-2026. They are not catalog entries,
+    not a measured evidence surface, and not a substitute for
+    <code>PROOF.md</code> or the plot library gallery.
+  </div>
 
-<div class="grid">
-<figure>
-<img src="square_branch_fractal_tree.png" alt="Fractal Tree">
-<figcaption><strong>Fractal Tree</strong>. Recursive "unfolding" of prime squares. Red branches mark violations of the offset bound. Depth = scale. Pure recursive geometry of the divisor-count minimizer.</figcaption>
-</figure>
-<figure>
-<img src="square_branch_cosmos_3d.png" alt="3D Cosmos">
-<figcaption><strong>3D Cosmos</strong>. Every star is a prime square in its gap's GWR selection. Red "supernovae" are the rare cases where the square is "too far" from the previous prime (offset > dynamic cutoff). Blue lines connect similar structures.</figcaption>
-</figure>
-</div>
+  <div class="grid">
+    <figure>
+      <img src="square_branch_fractal_tree.png" alt="Historical fractal-style square-branch drawing">
+      <figcaption>
+        Recursive drawing experiment over square-branch points.
+        Red marks offset-bound pressure cases in the source audit table.
+      </figcaption>
+    </figure>
+    <figure>
+      <img src="square_branch_cosmos_3d.png" alt="Historical 3D scatter of square-branch points">
+      <figcaption>
+        3D scatter of square-branch audit points.
+        Red points mark cases outside the plotted cutoff comparison.
+      </figcaption>
+    </figure>
+  </div>
 
-<div class="explain">
-<h3>What this means in PGS terms (from PROOF.md)</h3>
-<ul>
-<li>When the leftmost minimum-divisor integer w inside a prime gap is a square of a prime (τ(w)=3), we are in the "square branch".</li>
-<li>The theorem requires that such w cannot be arbitrarily far from p: w - p is bounded (ultimately by something like 0.5 log(q)^2 or the dynamic cutoff in the data).</li>
-<li>Violations (red) are the empirical cases that test the bound. The visuals show they are sparse, the structure holds robustly.</li>
-<li>The fractal shows the self-similar, recursive nature of how these squares appear across scales.</li>
-<li>The 3D cosmos makes the "finite base + residual closure" lemmas visible as a clustered cloud with rare outliers.</li>
-</ul>
-<p>These images were generated directly from the project's square branch audit data (research/04-bounded-compression/output/square_branch_gap_audit_violations.csv) using the GWR selection rule and the exact offset/cutoff calculations that support the Interior Maximizer Theorem.</p>
-</div>
+  <div class="explain">
+    <h3>PGS terms (read carefully)</h3>
+    <ul>
+      <li>When the GWR-selected interior point <code>w</code> is a prime square (<code>d(w)=3</code>), the case is on the square branch.</li>
+      <li>Bounded compression for selected-witness offset is stated in <code>PROOF.md</code>. Finite plots do not restate the theorem as empirical success rate.</li>
+      <li>Red marks in these historical renders are audit-table markers for the plotted comparison, not a program-level validated claim surface.</li>
+      <li>For disciplined demos with status chips, open the plot library gallery.</li>
+    </ul>
+  </div>
 
-<p style="text-align:center;margin-top:40px;"><a href="../../index.html" style="color:#ffd700;">← Back to Visualizations Suite Index</a> | 
-<a href="../plots/generated/jawdropping/" style="color:#ffd700;">All Jaw-Dropping Assets</a></p>
+  <p class="nav">
+    <a href="../../../../index.html">Visualizations hub</a>
+    ·
+    <a href="../../../../gallery/index.html">Plot library gallery</a>
+    ·
+    <a href="README.md">Historical notes</a>
+  </p>
 </div>
-</body></html>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "id": "witness-offset-envelope",
+  "title": "Witness offset under proved C(q) envelope",
+  "tier": 0,
+  "status": "mixed",
+  "status_detail": "Curve: universal bounded compression theorem for w-p (PROOF.md). Points: toy exemplar offsets only. Not a high-scale measured cloud and not a claim about raw gap size q-p.",
+  "regime": "theorem curve for all q; toy points from fixtures/exemplars/gaps.json",
+  "claim_language": "weak",
+  "has_10e18_surface": false,
+  "tags": ["bounded-compression", "C(q)", "GWR", "tier-0"],
+  "chapter_refs": ["PROOF.md", "research/04-bounded-compression/", "docs/RESULTS.md"],
+  "script": "demo.py",
+  "outputs": ["plot.png"],
+  "kind": "scientific-demo"
+}
