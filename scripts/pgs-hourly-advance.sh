@@ -5,15 +5,10 @@
 # Scheduler: launchd com.velocityworks.pgs-hourly-advance (StartInterval 14400 = every 4 hours)
 #
 # Unattended policy:
-# - PGS_QUARTET=0 disables the repo Quartet hard gate for this process tree
-#   (env overrides sticky file; does not change global pgs-quartet sticky).
 # - Analytic path invokes grok with the /heavy skill (slash skill; no --skill CLI flag).
+# - PGS Quartet machinery is permanently deleted; no PGS_QUARTET* env gate.
 
 set -euo pipefail
-
-# Quartet hard gate OFF for this activation (env wins over sticky file).
-export PGS_QUARTET="${PGS_QUARTET:-0}"
-export PGS_QUARTET_ENABLED="${PGS_QUARTET_ENABLED:-0}"
 
 PYTHON_CANDIDATES=(
   "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3"
@@ -204,18 +199,17 @@ TMP_PROMPT="$(mktemp "${TMPDIR:-/tmp}/pgs-hourly-prompt.XXXXXX")"
   printf -- '- Task branch: %s\n' "$TASK_BRANCH"
   printf -- '- Pulled commit: %s\n' "$SHA"
   printf -- '- Log: %s\n' "$LOG_DIR/hourly.log"
-  printf -- '- PGS_QUARTET=%s (hourly advance forces OFF)\n' "$PGS_QUARTET"
-  printf -- '- Effort mode: HEAVY via /heavy skill (local subagents; Quartet gate OFF)\n'
+  printf -- '- Effort mode: HEAVY via /heavy skill (local subagents)\n'
   printf -- '- Read job file: research/00-index/continuity/hourly_current_job.json\n'
   printf -- '- Contract: research/00-index/continuity/HOURLY_RELAY_CONTRACT.md\n'
   printf -- '- Research success requires a concrete delta, not pytest alone.\n'
 } >"$TMP_PROMPT"
 
-log "invoking grok /heavy for analytic hourly job (PGS_QUARTET=$PGS_QUARTET)"
+log "invoking grok /heavy for analytic hourly job"
 set +e
 # Unattended launchd needs --always-approve; Heavy skill interactive policy prefers
 # otherwise, but this path cannot prompt a human.
-caffeinate -i env PGS_QUARTET="$PGS_QUARTET" PGS_QUARTET_ENABLED="$PGS_QUARTET_ENABLED" \
+caffeinate -i \
   "$GROK_BIN" \
   --prompt-file "$TMP_PROMPT" \
   --always-approve \

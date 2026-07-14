@@ -40,10 +40,6 @@
         <string>http://127.0.0.1:3000</string>
         <key>PGS_HOURLY_RC_CHANNEL</key>
         <string>Prime-Gap-Structure</string>
-        <key>PGS_QUARTET</key>
-        <string>0</string>
-        <key>PGS_QUARTET_ENABLED</key>
-        <string>0</string>
     </dict>
 </dict>
 </plist>
