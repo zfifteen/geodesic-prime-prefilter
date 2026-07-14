@@ -6,6 +6,10 @@
 **Session:** `019f4897-2510-79b1-b3bb-cd793687568a`  
 **Authority:** ops / delivery forensics only. No theorem status change. No `PROOF.md` edit.
 
+**Postscript 2026-07-14:** The PGS Quartet hard gate, agent types, sticky file,
+CLI, and hook described below are **permanently deleted**. This note remains as
+historical forensics of a past failure mode. Do not reinstall that machinery.
+
 Writing order for this note:
 
 ```text

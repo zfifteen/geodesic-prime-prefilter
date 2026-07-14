@@ -70,11 +70,11 @@ square branch and not replay of certified bands.
 | Ops field | Live value |
 | --- | --- |
 | Cadence | **Every 4 hours** (`StartInterval` = `14400`) |
-| Analytic effort | **`/heavy`** (solo; not Quartet) |
-| PGS Quartet | **Off** for this path (solo activation; do not spawn four roles) |
+| Analytic effort | **`/heavy`** (solo allowed; skill policy) |
+| Multi-agent path | Expert/Heavy skills only; Quartet **deleted** |
 | Status class | Operator preference / ops config (not theorem) |
 | Contract | `research/00-index/continuity/HOURLY_RELAY_CONTRACT.md` |
-| Continuity note | `research/00-index/continuity/notes/hourly-relay-4h-no-quartet-2026-07-13.md` |
+| Continuity notes | `notes/hourly-relay-4h-no-quartet-2026-07-13.md`; `notes/pgs-quartet-retired-expert-heavy-2026-07-13.md` |
 
 Default frontier job: falsification `4·10^8 .. 5·10^8`. Replaying the frozen
 `3·10^8 .. 4·10^8` baseline is `NO_DELTA`, not `ADVANCE`.
@@ -100,7 +100,7 @@ with Research status and Ops status.
 1. `Agents.md` (repo root)
 2. `PROOF.md` (theorem status only)
 3. This file
-4. `HOURLY_RELAY_CONTRACT.md` (4h schedule; `/heavy`; no Quartet on relay)
+4. `HOURLY_RELAY_CONTRACT.md` (4h schedule; `/heavy`)
 5. Last ledger block in `square_branch_hourly.md`
 
 ## Relay Branch

@@ -10,7 +10,7 @@ promote hypotheses to theorems.
 | Field | Value |
 | --- | --- |
 | Parent mode | `/insight-ooda-loop` on `PROOF.md` |
-| Team | PGS Quartet (`pgs-implementer`, `pgs-auditor`, `pgs-verifier`, `pgs-scribe`) |
+| Team | Expert/Heavy skills when multi-agent depth is wanted (PGS Quartet deleted) |
 | NIE prompt | `research/00-index/novel_insight_engine_prompt.md` (prompt artifact, not a claim) |
 | Theorem authority | `PROOF.md` |
 | Continuity home | this file |

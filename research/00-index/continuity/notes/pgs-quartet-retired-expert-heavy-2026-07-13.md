@@ -1,9 +1,9 @@
-# PGS Quartet retired; Expert / Heavy replace multi-agent depth
+# PGS Quartet permanently deleted; Expert / Heavy only
 
-**Date:** 2026-07-13  
+**Dates:** retired 2026-07-13; **deleted 2026-07-14**  
 **Authority:** ops / continuity note only. No theorem status change. No `PROOF.md` edit.  
-**Principal:** After implementing **Expert** and **Heavy** effort skills, the PGS
-Quartet is no longer needed.
+**Principal:** After Expert and Heavy effort skills, the PGS Quartet is gone
+forever. Do not recreate it.
 
 Writing order:
 
@@ -18,26 +18,24 @@ This is **not** a theorem and **not** program-level verified math evidence.
 
 ## 1. Observable object
 
-| Surface | Change |
+| Surface | Change (2026-07-14) |
 | --- | --- |
-| Sticky | `~/.grok/state/pgs-quartet-enabled` = `0` (OFF) |
-| Global hook | `~/.grok/hooks/pgs-quartet-gate.json` → `*.retired-2026-07-13` (not loaded) |
-| Global agents | `~/.grok/agents/pgs-*.md` → `~/.grok/agents/_retired/pgs-quartet-2026-07-13/` |
-| Repo agents | `.grok/agents/pgs-*.md` → `.grok/agents/_retired/pgs-quartet-2026-07-13/` |
-| `AGENTS.md` | Quartet hard-rule section replaced by Expert/Heavy slash skills |
-| `AGENTS-WEB.md` | Same |
-| Rules / hooks README | Marked **RETIRED** |
-| Hourly relay | Still **4h** + **`/heavy`**; Quartet language updated to global retirement |
+| Repo agents / hooks / gate | **Deleted** (`.grok/agents`, `.grok/hooks`, quartet rule file removed) |
+| Global agents / retired hook | **Deleted** |
+| Sticky `~/.grok/state/pgs-quartet-enabled` | **Deleted** |
+| Turn state `~/.grok/pgs-quartet-state/` | **Deleted** |
+| CLI `~/.grok/bin/pgs-quartet` | **Deleted** |
+| LaunchAgent / wrapper `PGS_QUARTET*` | **Removed** from repo scripts |
+| Live multi-agent path | `/expert`, `/heavy`, `/normal` only |
 
 ---
 
 ## 2. Ordinary-language mechanism
 
 The Quartet was a machine PreToolUse lock: parent tools denied until four named
-roles spawned each turn. Expert and Heavy are **skill policies** (slash-invoked
-fixed teams of 4 or 12 analytic local subagents, then leader synthesis). They
-cover multi-agent depth without a four-role hard gate or dedicated `pgs-*`
-agent types.
+roles spawned each turn. That machinery is gone. Multi-agent depth is skill
+policy only: slash-invoked fixed teams under Expert or Heavy, then leader
+synthesis.
 
 ---
 
@@ -45,22 +43,22 @@ agent types.
 
 | Term | Meaning here |
 | --- | --- |
-| **Quartet retired** | No spawn lock; agents archived; do not re-enable without principal request |
+| **Quartet deleted** | No agents, hooks, sticky, CLI, or env gate; never revive |
 | **`/expert`** | Fixed 4 local specialists |
-| **`/heavy`** | Fixed 12 local specialists (≥1 contrarian) |
+| **`/heavy`** | Fixed local specialists per live Heavy skill (see skill + AGENTS.md) |
 | **`/normal`** | Clear Expert/Heavy overlays |
 
 ---
 
 ## 4. Formal contract slice
 
-### Status: **implementation** (ops, 2026-07-13)
+### Status: **implementation** (ops)
 
 | Claim | Status |
 | --- | --- |
-| Quartet hard gate not required | **implementation** in AGENTS.md |
+| Quartet hard gate absent | **implementation** — files removed |
 | Expert/Heavy are multi-agent path | **implementation** in `~/.grok/skills/{expert,heavy,normal}/` |
-| Sticky OFF + hook not loaded | **implementation** under `~/.grok/` |
+| Do not recreate Quartet | **implementation** in root `AGENTS.md` |
 | PGS research rules / QA / proof contract unchanged | **unchanged** |
 | Theorem / measured math claims | **unchanged** by this note |
 
@@ -69,13 +67,12 @@ agent types.
 ## 5. Exact limits
 
 - Does not change `PROOF.md` or any measured regime.
-- Historical experiment notes may still mention "Quartet pressure"; that is
-  ledger archaeology, not a live spawn requirement.
-- Hook Python tests may still pass offline; they are not a live gate.
+- Older notes may still name “Quartet” as historical forensics. That is ledger
+  archaeology only. Live policy forbids revival.
 
 ---
 
 ## 6. One-line handoff
 
-**PGS Quartet retired; multi-agent depth = `/expert` or `/heavy`; QA and
-PGS-first contracts stay. Ops only, not theorem.**
+**PGS Quartet permanently deleted; multi-agent depth = `/expert` or `/heavy`
+only; QA and PGS-first contracts stay. Ops only, not theorem.**

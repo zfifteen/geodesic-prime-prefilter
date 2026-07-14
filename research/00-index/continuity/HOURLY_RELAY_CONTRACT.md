@@ -34,47 +34,40 @@ If the installed LaunchAgent and the repo plist disagree on `StartInterval`,
 treat the **loaded** agent as ops reality and open a hygiene fix so both match
 `14400`.
 
-## Effort mode: `/heavy`; PGS Quartet retired (ops policy)
+## Effort mode: `/heavy` (ops policy)
 
 **Status class:** operator preference / ops config. Not a theorem, not measured
 math, and not program-level verified language.
 
-**Principal standing preference (2026-07-13):** keep the **4h** schedule and
-execute scheduled analytic activations with **`/heavy`**. The **PGS Quartet is
-retired globally** (sticky OFF, global hook uninstalled, agent defs archived);
-interactive and relay paths both use Expert/Heavy skills when multi-agent depth
-is wanted, not the four-role PreToolUse gate.
+**Principal standing preference:** keep the **4h** schedule and execute
+scheduled analytic activations with **`/heavy`**. Multi-agent depth, when used,
+comes from Expert/Heavy slash skills only. The former PGS Quartet gate, agent
+types, sticky file, and CLI helpers are **permanently deleted** and must not be
+recreated.
 
 **Hourly / 4h relay activations:**
 
 | Rule | Requirement |
 | --- | --- |
 | Analytic effort | Leading **`/heavy`** slash skill in the wrapper-built prompt |
-| Fixed Quartet roles | **Do not spawn** (roles retired; archive only) |
-| Parent tools | Unrestricted by Quartet (gate retired) |
-| Legacy env (harmless belt-and-suspenders) | `PGS_QUARTET=0` / `PGS_QUARTET_ENABLED=0` may remain on LaunchAgent + wrapper |
+| Multi-agent path | `/expert` or `/heavy` only when depth is wanted |
+| Parent tools | No quartet spawn lock (machinery deleted) |
 
 ### Why (observable mechanism)
 
 The square-branch relay is a **headless activation**: one queue item, one ledger
 block, one Rocket.Chat memo. Multi-agent depth, when used, comes from the
-**Heavy** skill policy (`/heavy`), not from a machine spawn lock on four
-named roles. Global Quartet retirement removes HookDenied risk from the former
-hard gate.
+**Heavy** skill policy (`/heavy`).
 
 ### Enforcement wiring (implementation)
 
 | Layer | Behavior |
 | --- | --- |
-| Global Quartet | Retired: sticky `0`, hook file renamed `*.retired-*`, agents under `_retired/` |
-| LaunchAgent env | Optional `PGS_QUARTET=0`, `PGS_QUARTET_ENABLED=0` (legacy) |
-| Wrapper defaults | Same optional exports |
-| Analytic prompt file | `/heavy` + no retired Quartet roles |
-| Analytic effort | Leading `/heavy` in the wrapper-built prompt |
+| Analytic prompt file | Leading `/heavy` in the wrapper-built prompt |
+| Analytic effort | Heavy skill policy; solo waiver allowed when the prompt path keeps the job solo |
+| Quartet machinery | **Deleted** — no agents, hooks, sticky, or env gate |
 
 ### What still applies
-
-Retirement of the Quartet does **not** relax:
 
 - PGS-first framing;
 - theorem / measured / audit / hypothesis / unresolved / invalidated separation;
@@ -83,12 +76,11 @@ Retirement of the Quartet does **not** relax:
 - Quality Assurance closing discipline for the activation's own deliverable
   (ledger honesty, status labels, commit policy).
 
-### What this is not
+### Solo and fan-out
 
-- Not permission to use classical inference as PGS gates.
-- Not a theorem claim and not program-level verification language.
-- Not a requirement to fan out 12 agents on every relay job if the Heavy skill
-  solo waiver or prompt path keeps the job solo (see analytic prompt + wrapper).
+The Heavy skill may keep a relay job solo via its solo waiver or prompt path.
+Full-team fan-out follows the live Heavy skill fixed-N contract when that path
+is active.
 
 ## Isolation
 
@@ -189,5 +181,5 @@ Append one block to `research/04-bounded-compression/docs/square_branch_hourly.m
 1. `Agents.md`
 2. `PROOF.md` theorem status only
 3. `ACTIVE_TARGET.md`
-4. This contract (schedule = 4h; `/heavy`; Quartet off for this path)
+4. This contract (schedule = 4h; `/heavy`)
 5. Last ledger block in `square_branch_hourly.md`
