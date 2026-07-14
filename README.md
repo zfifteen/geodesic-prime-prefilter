@@ -169,7 +169,7 @@ The repository develops the above results in greater depth.
 - `docs/core/PRIME_GAP_GENERATIVE_MODEL.md` and `docs/core/RECURSIVE_PRIME_WALK.md`: The broader generative model and recursive behavior.
 - `docs/RESULTS.md`: Measured results and surfaces.
 
-Visualizations of the core objects (divisor-count rows, GWR selection, ridges, U_□ diagrams, conceptual rulers, and interactive explorers) live in `visualizations/`.
+Visualizations of the core objects live in `visualizations/`. Prefer the catalog plot library at `visualizations/gallery/index.html` (status chips + regimes). The hub router is `visualizations/index.html`.
 
 ---
 
@@ -224,7 +224,7 @@ Every one of these paths grows from the same simple shift in perspective: stop t
 - `docs/core/`: Foundational explanations (GWR, DNI, generative model, recursive walk, etc.)
 - `docs/rh/`: PGS-to-RH reading path and status
 - `research/`: Deep experiments (RSA engine, Mersenne generator, GWR super-signal, continuity notes, 00-index/)
-- `visualizations/`: Diagrams, interactive explorers, video narrations (entry via `index.html`)
+- `visualizations/`: Plot library + gallery (primary), explorers, historical dumps (router: `index.html`)
 - `lean-4/`: Formalization efforts
 - `experiments/`, `scripts/`, `tests/`, `data/`: Supporting code, runs, and artifacts
 - `pgs-unsolved-problems/`: Open questions
@@ -237,7 +237,7 @@ Every one of these paths grows from the same simple shift in perspective: stop t
 - `research/00-index/continuity/START_HERE.md`: Continuity and resume entrypoint for future sessions
 - `research/00-index/README.md`: Maps the research corpus by chapter and status
 - `docs/RESULTS.md`: Measured results and surfaces
-- `visualizations/`: Interactive gap diagrams and narrations
+- `visualizations/gallery/index.html`: Catalog plot gallery with status chips
 - Full list of core documents with one-line purposes appears in `docs/OVERVIEW.md`
 
 ---
