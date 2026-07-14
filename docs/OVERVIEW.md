@@ -28,7 +28,7 @@ This page is the master navigation hub for the `docs/` folder.
 | Generators & applications   | [docs/PRIME_GAP_GENERATOR.md](PRIME_GAP_GENERATOR.md) | Deterministic prime and Mersenne generators  |
 | Proof enhancements          | [docs/proof-enhancements/](proof-enhancements/) | Certificates, Lean work, and hardening notes |
 | Open questions              | [pgs-unsolved-problems/](../pgs-unsolved-problems/) | Active research questions                    |
-| Visualizations & demos      | [visualizations/](../visualizations/)         | Diagrams, interactive explorers, videos      |
+| Visualizations & demos      | [visualizations/](../visualizations/)         | Plot library gallery (primary), explorers, historical dumps |
 | Research continuity         | [research/00-index/continuity/START_HERE.md](../research/00-index/continuity/START_HERE.md) | Session resume and corpus map                |
 
 ## Recent Documentation Improvements
