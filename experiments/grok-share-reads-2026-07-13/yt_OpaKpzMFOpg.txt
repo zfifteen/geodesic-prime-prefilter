@@ -1,0 +1,550 @@
+00:00 This is a recurrence that generates primes.
+00:02 It defines a sequence where the nth term R(n)
+is the previous term R(n - 1)
+00:08 plus the greatest common divisor of
+n and the previous term.
+00:12 You can think of it as a warped version
+of the Fibonacci recurrence,
+00:15 where the nth term is the previous term
+plus the term before that.
+00:19 One big difference though, is that,
+for the Fibonacci sequence,
+00:22 we need two initial terms to get things going,
+00:24 since each later term depends 
+on two previous terms.
+00:28 But for the sequence R(n),
+we only need one initial term.
+00:32 Let's start off by choosing it to be 7.
+00:34 This is mostly arbitrary, so we'll come back
+to this later and explore other options.
+00:38 But with the initial term 7, the second
+term is 7 plus the gcd of 2 and 7.
+00:45 The gcd is 1, so we get 8.
+00:49 The third term is
+8 plus the gcd of 3 and 8.
+00:53 This gcd is also 1, so we get 9.
+00:57 The next gcd is the gcd of 4 and 9,
+which is also 1.
+01:01 So at the fourth term, we also
+step up by 1, to 10.
+01:05 The terms so far are 7, 8, 9, and 10.
+01:08 So far this is a pretty boring sequence!
+01:10 But now something interesting happens,
+because the gcd of 5 and 10 is 5,
+01:15 so here the sequence
+jumps up by 5 rather than 1.
+01:19 The next gcd is the gcd of 6 and 15,
+which is 3,
+01:24 so the sequence jumps up again,
+this time by 3.
+01:27 Then we go back to stepping up
+by 1 for a few terms.
+01:31 And we reach the bottom of the frame,
+so let's make room for more terms.
+01:35 This sequence was discovered in 2003
+when Stephen Wolfram initiated several
+01:40 experiments exploring the space
+of possible recurrences.
+01:43 Initially, what seemed to be
+remarkable about this sequence
+01:46 is that it exhibits long stretches of boring
+behavior, interrupted by sudden jumps,
+01:51 and it's not obvious that we can
+predict the jumps in advance.
+01:54 But even more surprising
+is what the jumps are doing.
+01:57 Let's look at the gcds on their own,
+01:59 because they determine whether
+the terms of the sequence
+02:01 are increasing by 1 or making a jump.
+02:04 Collecting the gcds into their own sequence
+makes the behavior a little easier to see.
+02:10 Let's gray-out the boring 1s
+and include some more data.
+02:16 Notice anything?
+02:18 Let's be really drastic and
+remove the 1s entirely.
+02:24 Here's even more data.
+02:30 Surprisingly, all these numbers are prime.
+02:34 Remember that they are gcds, so it's not crazy
+that they have something to do with divisibility,
+02:39 but why on earth are they necessarily prime?
+02:43 Pause the video if you'd like to
+stare at these primes for a bit,
+02:45 because there are some patterns that may jump
+out if you look at them long enough.
+02:49 If you see something, let me know in the comments
+which numbers first gave it away.
+02:52 This way, we can do a little psychology experiment
+02:55 and see whether the same numbers
+jump out to most people.
+02:58 For me, here's what jumps out first.
+03:01 60647 is very close to 2 times 30323.
+03:07 In fact they're just off by 1.
+03:10 There are other pairs like this too.
+2 * 5 + 1 is 11.
+03:15 2 * 11 + 1 is 23.
+03:18 And 2 * 23 + 1 is 47.
+03:21 Unfortunately, this pattern doesn't continue,
+since 2 * 47 + 1 is 95,
+03:26 which doesn't appear and also isn't prime.
+03:30 But there are several other pairs
+sprinkled across the data
+03:33 that do satisfy this doubling relation.
+03:36 Why does it work in certain places
+and not others?
+03:39 Also, why is there a 3
+sandwiched between each pair?
+03:43 And again, why are all these numbers prime?
+03:45 This was the state of things in 2003;
+no one knew.
+03:50 I had just graduated from college.
+03:51 I was eager to prove an interesting
+new result about primes,
+03:54 so I worked on this sequence for a bit
+but didn't get anywhere.
+03:58 But several years later, I had an idea to
+try something I hadn't thought of before.
+04:02 To see what's going on with this sequence,
+04:04 it turns out that we need some
+information that we threw away.
+04:07 So let's put the primes back in their positions
+and bring back all the 1s.
+04:13 The information we shouldn't have thrown away
+04:15 is the index n corresponding
+to each of these gcds.
+04:19 After all, each gcd is the
+gcd of n and R(n - 1).
+04:25 Now we can safely throw away the 1s again.
+04:29 My idea was to make a plot of this data,
+but ignore the primes themselves
+04:34 and only plot the index n 
+where each prime appears,
+04:38 so that's 5, 6, 11, 12, and so on.
+04:44 Since there are many 1s in
+the sequence of gcds,
+04:47 this sequence -- the indices of gcds that
+aren't 1 -- grows quite quickly.
+04:51 To fit more data onto this plot, we need to
+rescale the vertical axis.
+04:57 Now the next few values of n fit.
+05:00 We can even include a bit more data.
+05:04 But by rescaling to include more data,
+05:06 we lost some visual information
+about the first few values,
+05:09 because now they're all bunched together
+at the bottom of the plot.
+05:13 The solution is to rescale the vertical axis
+again -- not in a linear way like we just did,
+05:18 but in a logarithmic way.
+05:20 Ordinarily, the distance between 1000 and
+2000 on the vertical axis
+05:25 is the same as
+the distance between 2000 and 3000.
+05:28 What we'll do is rescale
+05:31 so that the distance between 10 and 100
+is the same as the distance between 100 and 1000.
+05:36 This is called a logarithmic scale, so the
+plot becomes a logarithmic plot.
+05:41 It's called "logarithmic" because now it's
+the logarithms of 1, 10, 100, and so on
+05:46 that form a linear sequence.
+05:48 This is true for any choice
+of the base of the logarithm,
+05:51 but for example the base-10
+logarithms are 0, 1, 2, and so on.
+05:57 Logarithmic scales are used in some settings
+you're already familiar with.
+06:00 For example, the Richter scale describes
+earthquake intensities on a logarithmic scale.
+06:05 The possible amount of energy released by
+an earthquake covers such a large range
+06:09 that the logarithm of the energy is a
+more intuitive number to work with.
+06:13 So, instead of having earthquakes with magnitude
+10,000 and magnitude 1,000,000,000,
+06:18 we call them magnitude 4 and magnitude 9.
+06:22 Getting back to our primes, this log plot
+of the indices where primes appear
+06:26 reveals that the primes appear in clusters.
+06:29 This really surprised me.
+06:31 And not only that, but the spacing
+between clusters is extremely even.
+06:35 If we average the indices in each cluster,
+06:38 the vertical distances between the averages
+appear to be the same.
+06:42 If this were an ordinary plot, then adding
+that vertical distance to one cluster
+06:47 would give the location of the next cluster.
+06:49 But since this is a log plot,
+a fixed vertical distance
+06:52 corresponds to multiplication by
+some constant, not addition.
+06:56 So the location of each cluster is given by
+06:59 some constant times the location 
+of the previous cluster.
+07:03 To guess the constant, we should
+divide neighboring cluster averages by each other.
+07:06 So let's rearrange the primes
+according to their clusters
+07:11 and compute the cluster averages numerically.
+07:14 Now divide them.
+07:16 The first ratio is roughly 2.09,
+07:19 the second is 2.04,
+and here are the others.
+07:24 They're not quite equal to each other,
+but they're all close to 2.
+07:27 This means that the long runs of 1s
+separating clusters
+07:30 roughly double in length from one to the next.
+07:34 In hindsight, we saw evidence of this already.
+07:36 If we look at the beginning of each cluster,
+we see the doubling relations we found earlier.
+07:40 Apparently 5 produces 11,
+11 produces 23,
+07:44 23 produces 47, and so on.
+07:48 But the doubling relations only reliably predict
+where some of the clusters begin, not all.
+07:53 For example, where does 101 come from?
+07:55 Since the runs of 1s separating clusters
+roughly double in length,
+07:59 we know it should be roughly twice 47,
+but how do we get it exactly?
+08:04 Well, this plot suggests something else.
+08:06 Maybe we shouldn't be using the beginning
+of a cluster to get the next cluster,
+08:10 like the doubling relations suggested.
+08:11 Since the primes within a cluster are close
+together, why not try using the end of a cluster
+08:17 to get the beginning of the next cluster?
+08:18 So instead of trying to get 101 from 47,
+can we get it from the previous prime, 3?
+08:25 Not in an obvious way, but
+101 is suspiciously close to 2 * 51.
+08:30 In fact 2 * 51 - 1 is 101.
+08:35 Perfect!
+08:36 But wait; to predict the beginnings
+of other clusters,
+08:39 we were using the primes,
+not their indices,
+08:41 so it's unfortunate that this cluster
+seems to be different
+08:44 in that 101 comes from 51 and not 3.
+08:48 But at the beginning of each cluster,
+08:49 each prime gcd seems to be equal
+to the index where that prime appears.
+08:54 If that's true in general, then the doubling
+relations describe not just the primes
+08:58 but also their indices, and maybe it's a relation
+among their indices that generalizes.
+09:03 For the earlier clusters, we can get 11 from
+the index 6 at the end of the previous cluster.
+09:09 23 comes from 12.
+09:12 And 47 comes from 24.
+09:15 For the later clusters, 233 comes from 117,
+467 comes from 234,
+09:23 941 comes from 471,
+and so on.
+09:27 This seems to be a reliable way to predict
+when each cluster begins.
+09:31 So the doubling relations involving primes
+were misleading.
+09:34 It's not that the first prime in a cluster
+comes from an earlier prime;
+09:38 it comes from the index of the previous prime.
+09:41 Specifically, the first prime
+in each cluster is 2 n - 1,
+09:45 where n is the index of the previous prime.
+09:49 What about within a cluster?
+09:50 Let's take a look at this big cluster,
+beginning with 101.
+09:54 At index 101, if we try the same formula,
+we get 201, and the prime we want is 3.
+10:00 That's not promising!
+10:02 But let's not give up quite yet.
+10:04 At index 102, we get 203,
+and the prime we want is 7.
+10:10 Here are the rest.
+10:14 Since we're expecting primes, are the numbers
+we're getting in fact primes?
+10:18 No, 201 is not prime; it's 3 times 67.
+10:22 Here are the prime factorizations of the others.
+10:26 Now we see what appears to be going on.
+10:28 The prime we're looking for
+in each case isn't 2 n - 1;
+10:32 it's the smallest prime divisor of 2 n - 1.
+10:35 This even works at the beginning of the cluster,
+where we got 101.
+10:38 101 is prime, so its smallest prime divisor
+is itself.
+10:43 Apparently this is how we can predict
+not just the beginning of each cluster
+10:47 of prime jumps but every prime jump
+the sequence undergoes.
+10:51 Isn't that beautiful?
+10:53 So here's our conjecture.
+10:54 If the gcd of n and R(n - 1) is not 1,
+then the next nontrivial gcd that appears,
+11:02 that is, the next gcd that is not 1,
+is the smallest prime divisor of 2 n - 1.
+11:09 Let's call it p.
+11:11 When does this next nontrivial gcd appear?
+11:13 In other words, if we're currently at index n,
+11:16 then running the recurrence will take us
+to n + 1, n + 2, and so on,
+11:21 and we want to know the smallest value of
+i for which the gcd at n + i is the prime p.
+11:28 Going from 51 to 101 is an increase of 50.
+11:32 101 to 102 is an increase of 1.
+11:36 Then we have an increase of 3,
+then 5, then 1, then 6.
+11:43 Can we tell what i is in advance,
+11:44 without computing all the intermediate
+steps using the recurrence?
+11:48 The hint is to look at the value of p.
+11:55 It looks like i is (p - 1)/2.
+11:58 Great! So we think we know what the next
+nontrivial gcd is and also where it appears.
+12:04 That means we have a shortcut
+for computing the sequence of gcds.
+12:08 This shortcut lets us jump directly from one
+prime gcd to the next, skipping over all the 1s.
+12:14 Let's check that it correctly generates
+the cluster beginning with 467.
+12:18 Suppose we're at n = 467, and pretend that
+12:22 we don't know what the next nontrivial gcd is
+or where it appears.
+12:27 According to the conjecture, we should
+determine the smallest prime divisor of 2 n - 1.
+12:33 2 n - 1 is 933, which factors as 3 times 311.
+12:38 The smallest prime divisor is 3,
+so the next nontrivial gcd that appears is 3.
+12:44 To find out when we'll reach this 3,
+we compute i, which is (3 - 1)/2.
+12:50 So we'll see the gcd 3 one step later,
+during the computation of R(468).
+12:57 Checks out so far.
+12:59 Now let n be 468.
+13:01 2 n - 1 is 935,
+whose smallest prime divisor is 5.
+13:07 So now i is 2, and the next nontrivial gcd
+appears 2 steps later,
+13:12 during the computation of R(470).
+13:15 If we keep going, when n is 470,
+2 n - 1 is 939.
+13:20 Its smallest prime divisor is 3,
+and the next nontrivial gcd appears 1 step later.
+13:26 When n is 471, 2 n - 1 is 941.
+13:31 941 is prime, so the next nontrivial gcd
+appears 470 steps later.
+13:36 This is a long run of 1s, so 941
+marks the beginning of a new cluster.
+13:42 The conjecture is able to
+reproduce this cluster exactly!
+13:44 But is it true in general?
+13:47 To determine that, we need one final observation.
+13:49 We've been able to compute the sequence of gcds
+13:52 without actually knowing any terms
+of the original sequence R(n).
+13:56 But let's look at the values of R(n)
+for this cluster.
+13:59 If you compute them using the recurrence,
+you'll find that R(467) is 1401.
+14:04 By continuing to iterate the recurrence,
+we can compute these other values.
+14:10 Do you see the pattern?
+14:12 Here's a hint.
+14:15 In all cases, R(n) is exactly 3 times n.
+14:19 This is the last key piece of information that
+explains why this recurrence generates primes.
+14:25 It turns out that, whenever
+we're in a situation where R(n) is 3 n,
+14:30 that is, the value of the sequence
+is 3 times its own index,
+14:34 then, when we advance the 
+recurrence by (p - 1)/2 steps,
+14:38 we end up in another situation where
+the value of the sequence is 3 times its index.
+14:43 So this puts us right back in
+the situation we started in,
+14:46 which means we can advance the recurrence
+again by a known amount
+14:49 and end up again in a situation where
+the value of the sequence is 3 times its index.
+14:53 And over and over and over, returning to
+the same nice situation at every step.
+14:58 So if we can also establish that the first
+two parts of the conjecture are true
+15:02 whenever we're in that nice situation,
+15:04 then we'll be able to conclude
+that this sequence generates primes.
+15:08 The details will take a little more time to
+explain than I want to spend in this video,
+15:12 but it's quite fun to see 
+exactly how this all works,
+15:15 so we'll go through them in my next video.
+15:17 For now, suffice it to say that
+this conjecture is a theorem.
+15:22 This theorem lets us answer several questions.
+15:24 First, it shows that, yes,
+this recurrence does generate primes.
+15:28 But if you're trying to discover large primes,
+is this a good way to do it?
+15:32 No, running the recurrence is actually a
+pretty bad way to discover large primes.
+15:37 When the gcd is a prime p,
+that gcd shows up only after
+15:42 (p - 1)/2 steps where the gcds are all 1,
+which is quite a lot of steps.
+15:47 For example, suppose we wanted
+to find a 10-digit prime.
+15:50 Every 10-digit prime is between 1 billion
+and 10 billion, so we'd have to run the recurrence
+15:56 for at least 500 million steps
+before seeing a 10-digit prime.
+16:01 But there's no need for that, you might say.
+16:03 The theorem gives us a shortcut
+for running the recurrence, right?
+16:06 If we just use that shortcut,
+we can skip those 500 million 1s
+16:10 and go directly to the next prime.
+16:12 Well yes, but to run the shortcut, we have to
+compute the smallest prime divisor of 2 n - 1.
+16:19 If 2 n - 1 turns out to be the large prime
+we're trying to find,
+16:22 then the shortcut requires us to
+first determine that it is prime
+16:25 before we know that it's the next
+nontrivial gcd and therefore prime.
+16:30 So the shortcut is no help here,
+because to use it
+16:33 we need an independent way to test primality
+16:35 before we can conclude that the recurrence
+produces a given number as a gcd.
+16:41 The theorem also explains
+why the primes appear in clusters.
+16:44 The reason is that when 2 n - 1 isn't prime,
+16:48 then its smallest prime divisor p
+is quite small relative to n,
+16:52 so the run of 1s we pass through before
+reaching the next nontrivial gcd is quite short.
+16:57 But when 2 n - 1 happens to be prime,
+17:00 the number of 1s we pass through
+is (2 n - 1 - 1)/2, which is n - 1.
+17:07 This run of 1s is much longer than its neighbors,
+so the next nontrivial gcd starts a new cluster.
+17:14 Since we're generating primes, a natural question
+is: Which primes appear?
+17:18 Does the recurrence eventually generate
+all primes?
+17:21 Well, the prime 2 is conspicuously absent.
+17:24 This is because 2 n - 1 is odd,
+so its smallest prime divisor will never be 2.
+17:29 Other than that, I don't know
+how to rule out any primes.
+17:32 After 10,000 applications of the shortcut,
+17:34 the smallest prime other than 2
+that has not yet appeared is 587.
+17:39 Granted this is not a ton of evidence,
+since 587 is only the 107th prime,
+17:44 so there may be a lot more to say on the matter.
+17:46 In 2011, Chamizo, Raboso, and Ruiz-Cabello
+made some progress
+17:51 by proving that infinitely many
+distinct primes do appear.
+17:55 The one pattern we haven't explained yet
+17:57 is why each pair of primes involved in a doubling
+relation sandwiches a 3 between them.
+18:03 If we look back at the clusters, we can see
+that we can actually strengthen this
+18:07 to say that in every cluster
+the second prime is 3.
+18:10 Since the theorem tells us how to go
+directly from one prime to the next,
+18:14 it is possible to explain this,
+but I'll leave it to you to find the reason.
+18:19 Let's finish with some variations.
+18:22 Define a sequence s(n) using the same recurrence,
+18:25 but instead of starting 
+with 7 for the initial term,
+18:27 what if we start with 1?
+18:31 The first gcd is 1, so we get 2.
+18:34 The second gcd is 1, so we get 3.
+18:38 The third gcd is 1, so we get 4.
+18:41 In fact every gcd is 1,
+since the gcd of n and n - 1 is 1.
+18:47 So this sequence is really boring.
+18:49 If we change the initial term to 2 or 3 instead,
+the sequences we get are also not interesting.
+18:55 When we use the initial term 4,
+the first gcd is 2, so s(2) is 6.
+19:02 The next gcd is 3, so s(3) = 9.
+19:05 But guess what.
+19:07 R(3) this is also 9, so from this point on
+19:10 the sequence is exactly the same
+as the sequence with initial term 7.
+19:16 If you look hard enough though,
+you do find some genuinely new behavior.
+19:20 With the initial term 532,
+we get a gcd of 2,
+19:23 then a gcd of 3,
+then some 1s,
+19:30 then 13, 1, 5, 1, 1,
+19:33 and -- surprise surprise -- a non-prime!
+19:39 So far, this sequence hasn't ever been
+19:41 in the nice situation where
+the nth term is 3 times n,
+19:44 so the theorem doesn't apply
+and we're not guaranteed to get primes.
+19:48 Eventually we do get there, however:
+s(279) is 3 times 279.
+19:55 From that point on,
+all the gcds will be primes or 1s.
+19:59 It seems likely that, if you start with
+any initial condition that's at least 4,
+20:03 then this will eventually happen.
+20:04 But this is still an open question.
+20:08 Shortly after my paper appeared,
+20:10 Benoit Cloitre looked at an interesting
+variant that we'll call C(n).
+20:14 He replaced the greatest common divisor
+with the least common multiple.
+20:19 Starting with the initial term 1,
+we don't get a boring sequence.
+20:22 The first lcm is 2.
+20:25 The next lcm is 3.
+20:28 The lcm is never 1 here,
+20:29 since the lcm of n and C(n - 1)
+is divisible by both n and C(n - 1).
+20:36 Here's some more data.
+20:43 Obviously the lcms aren't primes,
+20:45 so this sequence doesn't generate
+primes in the same way.
+20:48 But, because the lcm is divisible by the previous
+term and then we're adding the previous term,
+20:54 this means that the nth term C(n)
+is divisible by the previous term.
+20:59 For example, C(5) is the previous term, 18,
+plus the lcm of 5 and 18.
+21:05 So C(5) is divisible by 18.
+21:09 So it makes sense to look at the ratio
+C(n) divided by C(n - 1).
+21:14 This is equal to 1 plus
+the lcm divided by C(n - 1).
+21:19 Let's subtract 1 from this ratio,
+21:21 so that we're looking at the value obtained
+by dividing the lcm by the previous term.
+21:26 Let's compute some of these values.
+21:32 Astonishingly, this number is
+apparently always prime or 1!
+21:37 And no one has proved this
+or found a counterexample yet.
+21:40 There's good reason to think 
+that this is much harder
+21:43 than proving that the sequence 
+R(n) generates primes.
+21:46 In 2015, Ruiz-Cabello showed that it's
+related to a difficult open question
+21:50 about primes in arithmetic progressions.
+21:53 I'll leave a link to the paper in the description,
+so you can check it out if you're interested.
