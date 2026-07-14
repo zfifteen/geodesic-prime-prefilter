@@ -1,0 +1,1486 @@
+{
+  "metadata": {
+    "id": "0_CSs2UYDAI",
+    "title": "The Three Odd Primes That Defy Every Rule of Logic",
+    "uploader": "Euclidea",
+    "channel": "Euclidea",
+    "upload_date": "20260713",
+    "duration": 696,
+    "description": "Three, five, seven. Three prime numbers in a row, each one exactly two steps past the last -- the tightest a run of three primes can possibly be. Twin pairs like 11 and 13 keep showing up forever, so you would expect a run of three to turn up again somewhere too. It never does. Three, five, seven is the only one there will ever be, anywhere, and the reason fits in a single line: among any three numbers spaced two apart, one is always a multiple of three. This is the story of the one prime cluster that logic forbids outright -- and why the twin primes, the prime triplets, and the quadruplets right beside it are believed to run on without end.\n\nChapters:\n0:00 Three in a row\n1:07 The search that comes up empty\n2:13 The reason in one line\n3:41 But the twins never stop\n4:55 Which patterns are allowed\n6:16 Cousins and a quadruplet\n7:34 The rule behind the rule\n8:52 How close we have come\n10:10 Coda\n\nMusic by Vincent Rubinetti\nDownload the music on Bandcamp:\nhttps://vincerubinetti.bandcamp.com/album/the-music-of-3blue1brown",
+    "view_count": 1526,
+    "webpage_url": "https://www.youtube.com/watch?v=0_CSs2UYDAI"
+  },
+  "transcript_type": "auto-generated",
+  "transcript": [
+    {
+      "text": "Here are the first few prime numbers on",
+      "start": 0.0,
+      "duration": 4.44
+    },
+    {
+      "text": "a line, and something jumps out right at",
+      "start": 1.92,
+      "duration": 3.32
+    },
+    {
+      "text": "the start.",
+      "start": 4.44,
+      "duration": 1.12
+    },
+    {
+      "text": ">> [music]",
+      "start": 5.24,
+      "duration": 4.8
+    },
+    {
+      "text": ">> 3 5 7. Three primes in a row, and each",
+      "start": 5.56,
+      "duration": 7.16
+    },
+    {
+      "text": "one sits exactly two steps past the one",
+      "start": 10.04,
+      "duration": 5.48
+    },
+    {
+      "text": "before. A tidy little cluster of three,",
+      "start": 12.72,
+      "duration": 5.08
+    },
+    {
+      "text": "packed as tightly as primes can possibly",
+      "start": 15.52,
+      "duration": 5.48
+    },
+    {
+      "text": "be. Now, tight pairs of primes two apart",
+      "start": 17.8,
+      "duration": 7.72
+    },
+    {
+      "text": "are not rare at all. 11 and 13. 17 and",
+      "start": 21.0,
+      "duration": 5.2
+    },
+    {
+      "text": "19.",
+      "start": 25.52,
+      "duration": 0.96
+    },
+    {
+      "text": ">> [music]",
+      "start": 26.2,
+      "duration": 3.56
+    },
+    {
+      "text": ">> 29 and 31. These twin pairs keep showing",
+      "start": 26.48,
+      "duration": 5.8
+    },
+    {
+      "text": "up no matter how far out you count.",
+      "start": 29.76,
+      "duration": 4.76
+    },
+    {
+      "text": "Thousands of them. And as far as anyone",
+      "start": 32.28,
+      "duration": 4.48
+    },
+    {
+      "text": "has ever looked, they never stop coming.",
+      "start": 34.52,
+      "duration": 4.92
+    },
+    {
+      "text": "So, a pair two apart is an old familiar",
+      "start": 36.76,
+      "duration": 5.28
+    },
+    {
+      "text": "sight. But a run of three, each two",
+      "start": 39.44,
+      "duration": 6.04
+    },
+    {
+      "text": "apart, like 3 5 7, that is a different",
+      "start": 42.04,
+      "duration": 5.72
+    },
+    {
+      "text": "animal. And here is the strange part.",
+      "start": 45.48,
+      "duration": 4.68
+    },
+    {
+      "text": "You can scan the entire number line as",
+      "start": 47.76,
+      "duration": 3.96
+    },
+    {
+      "text": "far as any computer [music] has ever",
+      "start": 50.16,
+      "duration": 3.72
+    },
+    {
+      "text": "pushed, and you will never find another",
+      "start": 51.72,
+      "duration": 6.28
+    },
+    {
+      "text": "one. Not one. 3 5 and 7 is the only time",
+      "start": 53.88,
+      "duration": 5.96
+    },
+    {
+      "text": "it ever happens [music] anywhere,",
+      "start": 58.0,
+      "duration": 3.12
+    },
+    {
+      "text": "forever.",
+      "start": 59.84,
+      "duration": 2.72
+    },
+    {
+      "text": "By the end of this, you will know",
+      "start": 61.12,
+      "duration": 3.88
+    },
+    {
+      "text": "exactly why, and be able to prove it",
+      "start": 62.56,
+      "duration": 4.76
+    },
+    {
+      "text": "yourself in a single line. Before the",
+      "start": 65.0,
+      "duration": 4.32
+    },
+    {
+      "text": "reason, it is worth feeling how",
+      "start": 67.32,
+      "duration": 4.36
+    },
+    {
+      "text": "completely the search fails. Because",
+      "start": 69.32,
+      "duration": 4.28
+    },
+    {
+      "text": "your instinct says a pattern this simple",
+      "start": 71.68,
+      "duration": 3.8
+    },
+    {
+      "text": "should turn up again somewhere. [music]",
+      "start": 73.6,
+      "duration": 6.0
+    },
+    {
+      "text": "So, go looking. Start just past 7. 5 7",
+      "start": 75.48,
+      "duration": 6.84
+    },
+    {
+      "text": "9. That would do it, except 9 [music] is",
+      "start": 79.6,
+      "duration": 7.24
+    },
+    {
+      "text": "3 * 3, not prime. Try 11 13 15. The",
+      "start": 82.32,
+      "duration": 7.84
+    },
+    {
+      "text": "first two are prime, but 15 is 3 * 5.",
+      "start": 86.84,
+      "duration": 7.68
+    },
+    {
+      "text": "Push on. 17 [music] 19 21, and 21 is 3 *",
+      "start": 90.16,
+      "duration": 9.08
+    },
+    {
+      "text": "7. Jump way ahead to 101 103 105. The",
+      "start": 94.52,
+      "duration": 7.24
+    },
+    {
+      "text": "first two are both prime, and then 105",
+      "start": 99.24,
+      "duration": 5.64
+    },
+    {
+      "text": "falls apart into 3 * 35. Notice what",
+      "start": 101.76,
+      "duration": 5.8
+    },
+    {
+      "text": "keeps happening. Every single time, one",
+      "start": 104.88,
+      "duration": 4.24
+    },
+    {
+      "text": "of the three numbers is a multiple of",
+      "start": 107.56,
+      "duration": 4.0
+    },
+    {
+      "text": "three, and so the whole run collapses.",
+      "start": 109.12,
+      "duration": 4.4
+    },
+    {
+      "text": "It is never the same position, and it is",
+      "start": 111.56,
+      "duration": 4.48
+    },
+    {
+      "text": "never bad luck. A computer search runs",
+      "start": 113.52,
+      "duration": 4.96
+    },
+    {
+      "text": "this all the way out past 2 million and",
+      "start": 116.04,
+      "duration": 4.48
+    },
+    {
+      "text": "finds exactly one triple of this shape",
+      "start": 118.48,
+      "duration": 4.12
+    },
+    {
+      "text": "[music] in the entire range, the one we",
+      "start": 120.52,
+      "duration": 5.16
+    },
+    {
+      "text": "started with, 3 5 7.",
+      "start": 122.6,
+      "duration": 4.92
+    },
+    {
+      "text": "Something is actively blocking every",
+      "start": 125.68,
+      "duration": 3.68
+    },
+    {
+      "text": "other candidate. That something is not",
+      "start": 127.52,
+      "duration": 4.28
+    },
+    {
+      "text": "chance. It is a rule, and once you see",
+      "start": 129.36,
+      "duration": 4.36
+    },
+    {
+      "text": "it, you cannot unsee it. Here is the",
+      "start": 131.8,
+      "duration": 4.0
+    },
+    {
+      "text": "whole reason, and it fits in a single",
+      "start": 133.72,
+      "duration": 3.28
+    },
+    {
+      "text": "idea.",
+      "start": 135.8,
+      "duration": 3.6
+    },
+    {
+      "text": "Forget primes for a second and just take",
+      "start": 137.0,
+      "duration": 5.48
+    },
+    {
+      "text": "any three numbers spaced two apart.",
+      "start": 139.4,
+      "duration": 5.32
+    },
+    {
+      "text": "Some number, then two more, then two",
+      "start": 142.48,
+      "duration": 4.44
+    },
+    {
+      "text": "more. Look only at their remainders when",
+      "start": 144.72,
+      "duration": 4.04
+    },
+    {
+      "text": "you divide [music] by three.",
+      "start": 146.92,
+      "duration": 4.16
+    },
+    {
+      "text": "The first number leaves some remainder,",
+      "start": 148.76,
+      "duration": 5.17
+    },
+    {
+      "text": "either zero, one, or two. Add two",
+      "start": 151.08,
+      "duration": 5.04
+    },
+    {
+      "text": "[music] and the remainder shifts. Add",
+      "start": 153.93,
+      "duration": 5.03
+    },
+    {
+      "text": "two again and it shifts once more.",
+      "start": 156.12,
+      "duration": 5.2
+    },
+    {
+      "text": "By the time you have all three numbers,",
+      "start": 158.96,
+      "duration": 4.12
+    },
+    {
+      "text": "their three remainders have marched",
+      "start": 161.32,
+      "duration": 4.08
+    },
+    {
+      "text": "through [music] every possibility, zero",
+      "start": 163.08,
+      "duration": 4.6
+    },
+    {
+      "text": "and one and two in some order",
+      "start": 165.4,
+      "duration": 2.48
+    },
+    {
+      "text": ">> [music]",
+      "start": 167.68,
+      "duration": 1.88
+    },
+    {
+      "text": ">> with no repeats.",
+      "start": 167.88,
+      "duration": 4.8
+    },
+    {
+      "text": "That is forced. Three numbers two apart",
+      "start": 169.56,
+      "duration": 5.36
+    },
+    {
+      "text": "always land on all three remainders at",
+      "start": 172.68,
+      "duration": 2.86
+    },
+    {
+      "text": "once.",
+      "start": 174.92,
+      "duration": 0.88
+    },
+    {
+      "text": ">> [music]",
+      "start": 175.54,
+      "duration": 2.54
+    },
+    {
+      "text": ">> And a remainder of zero means divisible",
+      "start": 175.8,
+      "duration": 4.4
+    },
+    {
+      "text": "by three. So, one of your three numbers",
+      "start": 178.08,
+      "duration": 4.08
+    },
+    {
+      "text": "is always a multiple of three,",
+      "start": 180.2,
+      "duration": 5.64
+    },
+    {
+      "text": "guaranteed every time, no exceptions.",
+      "start": 182.16,
+      "duration": 6.16
+    },
+    {
+      "text": "Now, bring the primes back. If all three",
+      "start": 185.84,
+      "duration": 4.04
+    },
+    {
+      "text": "are supposed to be prime, [music] then",
+      "start": 188.32,
+      "duration": 3.52
+    },
+    {
+      "text": "the one that is a multiple of three has",
+      "start": 189.88,
+      "duration": 4.28
+    },
+    {
+      "text": "to be three itself because three is the",
+      "start": 191.84,
+      "duration": 4.76
+    },
+    {
+      "text": "only prime [music] that three divides.",
+      "start": 194.16,
+      "duration": 4.88
+    },
+    {
+      "text": "That pins the whole trio down. The",
+      "start": 196.6,
+      "duration": 4.56
+    },
+    {
+      "text": "smallest is three, and the run [music]",
+      "start": 199.04,
+      "duration": 5.68
+    },
+    {
+      "text": "can only be 3 5 7. Every other starting",
+      "start": 201.16,
+      "duration": 6.04
+    },
+    {
+      "text": "point puts a genuine multiple of three,",
+      "start": 204.72,
+      "duration": 4.4
+    },
+    {
+      "text": "something bigger than three, right in",
+      "start": 207.2,
+      "duration": 3.28
+    },
+    {
+      "text": "the middle of your trio [music] and",
+      "start": 209.12,
+      "duration": 2.72
+    },
+    {
+      "text": "kills it.",
+      "start": 210.48,
+      "duration": 3.44
+    },
+    {
+      "text": "That is the entire proof.",
+      "start": 211.84,
+      "duration": 4.8
+    },
+    {
+      "text": "The title says these primes defy logic,",
+      "start": 213.92,
+      "duration": 4.48
+    },
+    {
+      "text": "but it is the exact opposite. [music]",
+      "start": 216.64,
+      "duration": 4.44
+    },
+    {
+      "text": "Logic is what forbids any second copy.",
+      "start": 218.4,
+      "duration": 4.3
+    },
+    {
+      "text": "So, the natural worry is that this",
+      "start": 221.08,
+      "duration": 3.96
+    },
+    {
+      "text": "[music] dooms every tight little prime",
+      "start": 222.7,
+      "duration": 5.26
+    },
+    {
+      "text": "pattern. It does not, and seeing why is",
+      "start": 225.04,
+      "duration": 4.2
+    },
+    {
+      "text": "the fun part.",
+      "start": 227.96,
+      "duration": 3.48
+    },
+    {
+      "text": "Go back to the twins, plain pairs two",
+      "start": 229.24,
+      "duration": 5.84
+    },
+    {
+      "text": "apart. 11 and 13, take their remainders",
+      "start": 231.44,
+      "duration": 5.56
+    },
+    {
+      "text": "when [music] you divide by three. A pair",
+      "start": 235.08,
+      "duration": 4.04
+    },
+    {
+      "text": "is only two numbers, so it can only",
+      "start": 237.0,
+      "duration": 4.52
+    },
+    {
+      "text": "cover two of the three remainders, never",
+      "start": 239.12,
+      "duration": 4.76
+    },
+    {
+      "text": "all of them. There is always a remainder",
+      "start": 241.52,
+      "duration": 4.76
+    },
+    {
+      "text": "left over that neither one lands on.",
+      "start": 243.88,
+      "duration": 2.6
+    },
+    {
+      "text": ">> [music]",
+      "start": 246.28,
+      "duration": 2.04
+    },
+    {
+      "text": ">> So, a pair can dodge the multiple of",
+      "start": 246.48,
+      "duration": 3.96
+    },
+    {
+      "text": "three trap completely, and it usually",
+      "start": 248.32,
+      "duration": 4.48
+    },
+    {
+      "text": "does. Nothing forces a twin pair to",
+      "start": 250.44,
+      "duration": 4.36
+    },
+    {
+      "text": "contain a multiple of three, which is",
+      "start": 252.8,
+      "duration": 3.44
+    },
+    {
+      "text": "[music] exactly why they are free to",
+      "start": 254.8,
+      "duration": 3.48
+    },
+    {
+      "text": "keep appearing. And keep appearing they",
+      "start": 256.24,
+      "duration": 3.04
+    },
+    {
+      "text": "do.",
+      "start": 258.28,
+      "duration": 3.24
+    },
+    {
+      "text": "Below 100, there are eight twin pairs.",
+      "start": 259.28,
+      "duration": 3.4
+    },
+    {
+      "text": "Below 1,000, [music]",
+      "start": 261.52,
+      "duration": 5.04
+    },
+    {
+      "text": "35. Below a million, over 8,000 of them,",
+      "start": 262.68,
+      "duration": 5.24
+    },
+    {
+      "text": "and the count just keeps [music]",
+      "start": 266.56,
+      "duration": 3.52
+    },
+    {
+      "text": "climbing the further you go. Whether it",
+      "start": 267.92,
+      "duration": 4.72
+    },
+    {
+      "text": "climbs forever is one of the oldest open",
+      "start": 270.08,
+      "duration": 4.56
+    },
+    {
+      "text": "questions [music] in all of mathematics,",
+      "start": 272.64,
+      "duration": 3.68
+    },
+    {
+      "text": "the twin prime conjecture, and",
+      "start": 274.64,
+      "duration": 3.48
+    },
+    {
+      "text": "essentially everyone believes the answer",
+      "start": 276.32,
+      "duration": 4.04
+    },
+    {
+      "text": "is yes, even though no one has managed",
+      "start": 278.12,
+      "duration": 3.48
+    },
+    {
+      "text": "to prove it.",
+      "start": 280.36,
+      "duration": 3.26
+    },
+    {
+      "text": "The point for us is the contrast. A",
+      "start": 281.6,
+      "duration": 4.16
+    },
+    {
+      "text": "[music] trio two apart is forbidden",
+      "start": 283.62,
+      "duration": 4.26
+    },
+    {
+      "text": "after the very first one. A pair two",
+      "start": 285.76,
+      "duration": 4.96
+    },
+    {
+      "text": "apart runs on and on. And the only",
+      "start": 287.88,
+      "duration": 4.25
+    },
+    {
+      "text": "difference between them is whether the",
+      "start": 290.72,
+      "duration": 3.0
+    },
+    {
+      "text": "[music] pattern is forced to swallow a",
+      "start": 292.13,
+      "duration": 3.63
+    },
+    {
+      "text": "multiple of three. That single",
+      "start": 293.72,
+      "duration": 4.24
+    },
+    {
+      "text": "difference turns into a clean rule for",
+      "start": 295.76,
+      "duration": 4.72
+    },
+    {
+      "text": "which prime clusters are even possible,",
+      "start": 297.96,
+      "duration": 4.84
+    },
+    {
+      "text": "and it is worth stating carefully. A",
+      "start": 300.48,
+      "duration": 4.32
+    },
+    {
+      "text": "pattern of gaps is allowed to repeat",
+      "start": 302.8,
+      "duration": 3.8
+    },
+    {
+      "text": "only if it passes a test at [music]",
+      "start": 304.8,
+      "duration": 4.32
+    },
+    {
+      "text": "every prime. Take the pattern, look at",
+      "start": 306.6,
+      "duration": 4.96
+    },
+    {
+      "text": "its remainders when you divide by three,",
+      "start": 309.12,
+      "duration": 4.6
+    },
+    {
+      "text": "and it must leave at least one remainder",
+      "start": 311.56,
+      "duration": 4.52
+    },
+    {
+      "text": "unused. Then check the same thing for",
+      "start": 313.72,
+      "duration": 5.24
+    },
+    {
+      "text": "division by five, and by seven, and so",
+      "start": 316.08,
+      "duration": 4.84
+    },
+    {
+      "text": "on [music] for every prime. As long as",
+      "start": 318.96,
+      "duration": 3.88
+    },
+    {
+      "text": "the pattern always misses at least one",
+      "start": 320.92,
+      "duration": 3.84
+    },
+    {
+      "text": "remainder, nothing is forced to be",
+      "start": 322.84,
+      "duration": 3.68
+    },
+    {
+      "text": "composite, and the cluster [music] is",
+      "start": 324.76,
+      "duration": 4.16
+    },
+    {
+      "text": "free to occur again and again.",
+      "start": 326.52,
+      "duration": 4.8
+    },
+    {
+      "text": "Fail the test at even one prime, and the",
+      "start": 328.92,
+      "duration": 4.44
+    },
+    {
+      "text": "pattern [music] is dead after at most a",
+      "start": 331.32,
+      "duration": 4.36
+    },
+    {
+      "text": "single appearance. Three primes two",
+      "start": 333.36,
+      "duration": 6.04
+    },
+    {
+      "text": "apart is the pattern 0, 2, 4, and we",
+      "start": 335.68,
+      "duration": 5.58
+    },
+    {
+      "text": "just saw it uses up all three remainders",
+      "start": 339.4,
+      "duration": 2.4
+    },
+    {
+      "text": "[music]",
+      "start": 341.26,
+      "duration": 3.46
+    },
+    {
+      "text": "mod three. It fails the test at the very",
+      "start": 341.8,
+      "duration": 4.48
+    },
+    {
+      "text": "first prime.",
+      "start": 344.72,
+      "duration": 3.36
+    },
+    {
+      "text": "But watch what happens if you nudge the",
+      "start": 346.28,
+      "duration": 5.52
+    },
+    {
+      "text": "third number out. Take 0 2 6 instead, a",
+      "start": 348.08,
+      "duration": 6.08
+    },
+    {
+      "text": "pair two apart, and then a third one",
+      "start": 351.8,
+      "duration": 4.48
+    },
+    {
+      "text": "four beyond. [music] Its remainders mod",
+      "start": 354.16,
+      "duration": 4.84
+    },
+    {
+      "text": "three are zero and two. It skips the",
+      "start": 356.28,
+      "duration": 4.72
+    },
+    {
+      "text": "remainder one entirely, [music] so it",
+      "start": 359.0,
+      "duration": 4.68
+    },
+    {
+      "text": "passes, and it should be able to repeat,",
+      "start": 361.0,
+      "duration": 10.84
+    },
+    {
+      "text": "and it does. 5 7 11 11 13 17 17 19 23.",
+      "start": 363.68,
+      "duration": 9.92
+    },
+    {
+      "text": "These triples keep [music] coming",
+      "start": 371.84,
+      "duration": 3.36
+    },
+    {
+      "text": "because they were never forbidden in the",
+      "start": 373.6,
+      "duration": 3.92
+    },
+    {
+      "text": "first place. Once you have the test, you",
+      "start": 375.2,
+      "duration": 4.52
+    },
+    {
+      "text": "can hunt for the tightest legal clusters",
+      "start": 377.52,
+      "duration": 5.2
+    },
+    {
+      "text": "on purpose, and they are lovely.",
+      "start": 379.72,
+      "duration": 4.84
+    },
+    {
+      "text": "There is a mirror image of that last",
+      "start": 382.72,
+      "duration": 5.88
+    },
+    {
+      "text": "triple, the pattern 0 4 6, a prime, then",
+      "start": 384.56,
+      "duration": 8.28
+    },
+    {
+      "text": "one four steps up, then one six up. 7 11",
+      "start": 388.6,
+      "duration": 10.48
+    },
+    {
+      "text": "13 13 17 19 37 41 43.",
+      "start": 392.84,
+      "duration": 9.04
+    },
+    {
+      "text": "It passes the same test at three, so it",
+      "start": 399.08,
+      "duration": 4.76
+    },
+    {
+      "text": "too shows up forever.",
+      "start": 401.88,
+      "duration": 4.32
+    },
+    {
+      "text": "And you can go one better. Stack the two",
+      "start": 403.84,
+      "duration": 4.32
+    },
+    {
+      "text": "allowed triples together, and you get",
+      "start": 406.2,
+      "duration": 5.76
+    },
+    {
+      "text": "four primes in the tight block 0 2 6 8,",
+      "start": 408.16,
+      "duration": 5.6
+    },
+    {
+      "text": "which is the closest four primes are",
+      "start": 411.96,
+      "duration": 4.16
+    },
+    {
+      "text": "ever allowed to sit once you are past",
+      "start": 413.76,
+      "duration": 4.52
+    },
+    {
+      "text": "the very small numbers.",
+      "start": 416.12,
+      "duration": 6.92
+    },
+    {
+      "text": "5 7 11 13 is the first, then 11 13 17",
+      "start": 418.28,
+      "duration": 10.56
+    },
+    {
+      "text": "19, then a big gap and 101 103 107 109.",
+      "start": 423.04,
+      "duration": 8.8
+    },
+    {
+      "text": "Four primes packed into a span of eight.",
+      "start": 428.84,
+      "duration": 4.72
+    },
+    {
+      "text": "These quadruplets are rare, but they",
+      "start": 431.84,
+      "duration": 5.24
+    },
+    {
+      "text": "refuse to quit. There are 259 of those",
+      "start": 433.56,
+      "duration": 7.16
+    },
+    {
+      "text": "first triples alone below 100,000. Every",
+      "start": 437.08,
+      "duration": 5.64
+    },
+    {
+      "text": "one of these patterns threads the needle",
+      "start": 440.72,
+      "duration": 4.92
+    },
+    {
+      "text": "at three and at five and at every prime",
+      "start": 442.72,
+      "duration": 5.08
+    },
+    {
+      "text": "after, so nothing ever forces a",
+      "start": 445.64,
+      "duration": 4.36
+    },
+    {
+      "text": "composite into the group. They are the",
+      "start": 447.8,
+      "duration": 4.56
+    },
+    {
+      "text": "tightest clusters the rules permit, and",
+      "start": 450.0,
+      "duration": 4.08
+    },
+    {
+      "text": "the rules permit them endlessly. [music]",
+      "start": 452.36,
+      "duration": 3.72
+    },
+    {
+      "text": "All of this points at one sweeping",
+      "start": 454.08,
+      "duration": 4.04
+    },
+    {
+      "text": "statement that mathematicians believe",
+      "start": 456.08,
+      "duration": 4.72
+    },
+    {
+      "text": "ties [music] the whole subject together.",
+      "start": 458.12,
+      "duration": 4.68
+    },
+    {
+      "text": "It says that the divisibility test is",
+      "start": 460.8,
+      "duration": 4.8
+    },
+    {
+      "text": "not just necessary. It is the only thing",
+      "start": 462.8,
+      "duration": 5.12
+    },
+    {
+      "text": "that ever matters. Any pattern of gaps",
+      "start": 465.6,
+      "duration": 4.8
+    },
+    {
+      "text": "that survives the test at every prime,",
+      "start": 467.92,
+      "duration": 4.08
+    },
+    {
+      "text": "that always leaves some remainder",
+      "start": 470.4,
+      "duration": 4.72
+    },
+    {
+      "text": "unused, will occur infinitely often. In",
+      "start": 472.0,
+      "duration": 6.28
+    },
+    {
+      "text": "other words, the single reason 3 5 7",
+      "start": 475.12,
+      "duration": 5.44
+    },
+    {
+      "text": "never repeats is the multiple of three",
+      "start": 478.28,
+      "duration": 4.8
+    },
+    {
+      "text": "obstruction. And once a pattern has no",
+      "start": 480.56,
+      "duration": 4.8
+    },
+    {
+      "text": "obstruction like that anywhere, nothing",
+      "start": 483.08,
+      "duration": 3.96
+    },
+    {
+      "text": "can stop it from happening again and",
+      "start": 485.36,
+      "duration": 3.96
+    },
+    {
+      "text": "again forever. This is called the prime",
+      "start": 487.04,
+      "duration": 4.8
+    },
+    {
+      "text": "k-tuple conjecture. Written down by",
+      "start": 489.32,
+      "duration": 6.04
+    },
+    {
+      "text": "Hardy and Littlewood back in 1923.",
+      "start": 491.84,
+      "duration": 4.96
+    },
+    {
+      "text": "Now, the honest word there is",
+      "start": 495.36,
+      "duration": 2.76
+    },
+    {
+      "text": "conjecture.",
+      "start": 496.8,
+      "duration": 3.4
+    },
+    {
+      "text": "This has not been proven. It is one of",
+      "start": 498.12,
+      "duration": 4.0
+    },
+    {
+      "text": "the deepest open problems in number",
+      "start": 500.2,
+      "duration": 4.24
+    },
+    {
+      "text": "theory, and proving it would settle the",
+      "start": 502.12,
+      "duration": 4.64
+    },
+    {
+      "text": "twin prime question and a hundred others",
+      "start": 504.44,
+      "duration": 4.12
+    },
+    {
+      "text": "in a single stroke.",
+      "start": 506.76,
+      "duration": 4.12
+    },
+    {
+      "text": "But the evidence for it is enormous. The",
+      "start": 508.56,
+      "duration": 4.16
+    },
+    {
+      "text": "counts line up beautifully with what it",
+      "start": 510.88,
+      "duration": 3.96
+    },
+    {
+      "text": "predicts, and almost no one doubts",
+      "start": 512.72,
+      "duration": 4.24
+    },
+    {
+      "text": "[music] it is true. So, we are left with",
+      "start": 514.84,
+      "duration": 5.17
+    },
+    {
+      "text": "a sharp and slightly funny situation.",
+      "start": 516.96,
+      "duration": 4.64
+    },
+    {
+      "text": "The one pattern we can say something",
+      "start": 520.0,
+      "duration": 5.2
+    },
+    {
+      "text": "certain about is 3 5 7, and what we can",
+      "start": 521.6,
+      "duration": 5.68
+    },
+    {
+      "text": "say is that it is banned forever. The",
+      "start": 525.2,
+      "duration": 4.28
+    },
+    {
+      "text": "patterns we cannot quite pin down are",
+      "start": 527.28,
+      "duration": 4.24
+    },
+    {
+      "text": "all the ones that seem to go on without",
+      "start": 529.48,
+      "duration": 4.68
+    },
+    {
+      "text": "end. Even without the full conjecture,",
+      "start": 531.52,
+      "duration": 4.8
+    },
+    {
+      "text": "the last decade cracked open a piece of",
+      "start": 534.16,
+      "duration": 3.96
+    },
+    {
+      "text": "it that had been stuck for over a",
+      "start": 536.32,
+      "duration": 5.04
+    },
+    {
+      "text": "century, and it is worth telling. Nobody",
+      "start": 538.12,
+      "duration": 5.0
+    },
+    {
+      "text": "can yet prove there are infinitely many",
+      "start": 541.36,
+      "duration": 5.68
+    },
+    {
+      "text": "primes exactly two apart. But in 2013, a",
+      "start": 543.12,
+      "duration": 6.24
+    },
+    {
+      "text": "mathematician named Yitang Zhang proved",
+      "start": 547.04,
+      "duration": 4.64
+    },
+    {
+      "text": "something almost as good, and it stunned",
+      "start": 549.36,
+      "duration": 4.24
+    },
+    {
+      "text": "the field. He showed that there are",
+      "start": 551.68,
+      "duration": 4.2
+    },
+    {
+      "text": "infinitely many pairs of primes that sit",
+      "start": 553.6,
+      "duration": 4.84
+    },
+    {
+      "text": "within 70 million of each other. 70",
+      "start": 555.88,
+      "duration": 5.4
+    },
+    {
+      "text": "million sounds enormous next to two, but",
+      "start": 558.44,
+      "duration": 4.8
+    },
+    {
+      "text": "the miracle was getting any fixed number",
+      "start": 561.28,
+      "duration": 4.36
+    },
+    {
+      "text": "at all. The first finite bound in",
+      "start": 563.24,
+      "duration": 4.8
+    },
+    {
+      "text": "history on how close primes are forced",
+      "start": 565.64,
+      "duration": 4.44
+    },
+    {
+      "text": "to keep coming. And once the door was",
+      "start": 568.04,
+      "duration": 4.72
+    },
+    {
+      "text": "open, it moved fast. Within months,",
+      "start": 570.08,
+      "duration": 4.88
+    },
+    {
+      "text": "James Maynard found a sharper method and",
+      "start": 572.76,
+      "duration": 4.84
+    },
+    {
+      "text": "pulled the bound down from 70 million to",
+      "start": 574.96,
+      "duration": 5.96
+    },
+    {
+      "text": "600. A large online collaboration then",
+      "start": 577.6,
+      "duration": 5.0
+    },
+    {
+      "text": "ground it further [music] all the way",
+      "start": 580.92,
+      "duration": 3.8
+    },
+    {
+      "text": "down to 246.",
+      "start": 582.6,
+      "duration": 4.08
+    },
+    {
+      "text": "So today it is a proven fact that",
+      "start": 584.72,
+      "duration": 5.08
+    },
+    {
+      "text": "infinitely many primes come within 246",
+      "start": 586.68,
+      "duration": 5.32
+    },
+    {
+      "text": "of each other, even if we still cannot",
+      "start": 589.8,
+      "duration": 4.72
+    },
+    {
+      "text": "reach the twins at a gap of two.",
+      "start": 592.0,
+      "duration": 6.08
+    },
+    {
+      "text": "That narrow space between 246 and two is",
+      "start": 594.52,
+      "duration": 5.6
+    },
+    {
+      "text": "where one of the great unsolved problems",
+      "start": 598.08,
+      "duration": 4.2
+    },
+    {
+      "text": "now lives. And through all of it,",
+      "start": 600.12,
+      "duration": 6.64
+    },
+    {
+      "text": "sitting quietly off to the side, 3 5 7",
+      "start": 602.28,
+      "duration": 7.32
+    },
+    {
+      "text": "stays exactly as certain as it ever was.",
+      "start": 606.76,
+      "duration": 6.04
+    },
+    {
+      "text": "So that is the whole shape of it. 3 5 7",
+      "start": 609.6,
+      "duration": 6.04
+    },
+    {
+      "text": "is a run of three primes each two apart,",
+      "start": 612.8,
+      "duration": 4.48
+    },
+    {
+      "text": "and it is the only one there will ever",
+      "start": 615.64,
+      "duration": 3.6
+    },
+    {
+      "text": "be. Line up any [music] three numbers",
+      "start": 617.28,
+      "duration": 3.96
+    },
+    {
+      "text": "spaced two apart, look at their",
+      "start": 619.24,
+      "duration": 4.48
+    },
+    {
+      "text": "remainders on division by three, and one",
+      "start": 621.24,
+      "duration": 4.76
+    },
+    {
+      "text": "of them is always a multiple of three.",
+      "start": 623.72,
+      "duration": 4.68
+    },
+    {
+      "text": "For all three to be prime, that multiple",
+      "start": 626.0,
+      "duration": 4.4
+    },
+    {
+      "text": "has to be three [music] itself, which",
+      "start": 628.4,
+      "duration": 5.08
+    },
+    {
+      "text": "locks the trio down to 3 5 7 and nothing",
+      "start": 630.4,
+      "duration": 4.2
+    },
+    {
+      "text": "else.",
+      "start": 633.48,
+      "duration": 3.04
+    },
+    {
+      "text": "Every tighter question turns on that",
+      "start": 634.6,
+      "duration": 4.44
+    },
+    {
+      "text": "same test. A pair two apart skips a",
+      "start": 636.52,
+      "duration": 5.2
+    },
+    {
+      "text": "remainder and is free to repeat, which",
+      "start": 639.04,
+      "duration": 4.83
+    },
+    {
+      "text": "is why the twin primes keep coming.",
+      "start": 641.72,
+      "duration": 2.2
+    },
+    {
+      "text": ">> [music]",
+      "start": 643.87,
+      "duration": 2.85
+    },
+    {
+      "text": ">> The triples spaced to 0 2 6 and the",
+      "start": 643.92,
+      "duration": 5.68
+    },
+    {
+      "text": "quadruplets packed into a span of eight",
+      "start": 646.72,
+      "duration": 5.36
+    },
+    {
+      "text": "all thread the needle at every prime and",
+      "start": 649.6,
+      "duration": 5.08
+    },
+    {
+      "text": "are believed to run on forever. Only the",
+      "start": 652.08,
+      "duration": 4.4
+    },
+    {
+      "text": "patterns that are forced to contain a",
+      "start": 654.68,
+      "duration": 4.4
+    },
+    {
+      "text": "multiple of some prime are shut down,",
+      "start": 656.48,
+      "duration": 5.2
+    },
+    {
+      "text": "and 3 5 7 is the smallest and most",
+      "start": 659.08,
+      "duration": 4.96
+    },
+    {
+      "text": "perfect example of that. If there is one",
+      "start": 661.68,
+      "duration": 4.4
+    },
+    {
+      "text": "thing to carry away, it is that a",
+      "start": 664.04,
+      "duration": 4.32
+    },
+    {
+      "text": "pattern in the primes is impossible for",
+      "start": 666.08,
+      "duration": 4.92
+    },
+    {
+      "text": "exactly one reason, being forced to",
+      "start": 668.36,
+      "duration": 5.0
+    },
+    {
+      "text": "swallow a divisor, and possible the",
+      "start": 671.0,
+      "duration": 5.76
+    },
+    {
+      "text": "moment it escapes that trap. 3 5 7 is",
+      "start": 673.36,
+      "duration": 5.16
+    },
+    {
+      "text": "the one cluster the rules forbid",
+      "start": 676.76,
+      "duration": 4.32
+    },
+    {
+      "text": "outright, and we can be as sure it never",
+      "start": 678.52,
+      "duration": 4.48
+    },
+    {
+      "text": "returns as we are sure of anything in",
+      "start": 681.08,
+      "duration": 4.28
+    },
+    {
+      "text": "mathematics, while the twin primes right",
+      "start": 683.0,
+      "duration": 5.12
+    },
+    {
+      "text": "beside it stay open to this day. This",
+      "start": 685.36,
+      "duration": 4.28
+    },
+    {
+      "text": "was one more in a series on the",
+      "start": 688.12,
+      "duration": 3.6
+    },
+    {
+      "text": "questions the primes refuse to settle",
+      "start": 689.64,
+      "duration": 6.16
+    },
+    {
+      "text": "quietly. Stay for the rest.",
+      "start": 691.72,
+      "duration": 4.08
+    }
+  ]
+}

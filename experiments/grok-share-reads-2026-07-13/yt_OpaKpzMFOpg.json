@@ -1,0 +1,1701 @@
+{
+  "metadata": {
+    "id": "OpaKpzMFOpg",
+    "title": "In 2003 We Discovered a New Way to Generate Primes",
+    "uploader": "Eric Rowland",
+    "channel": "Eric Rowland",
+    "upload_date": "20230120",
+    "duration": 1336,
+    "description": "Thanks to my supporters on Patreon! Get early access to videos and more: https://www.patreon.com/EricRowland\n\nThere is a Fibonacci-like recurrence that seems to generate primes! It was discovered in 2003, but at the time no one understood why it worked. A few years later, I plotted the primes in a way that reveals some hidden structure. This is a tale of logarithmic scale.\n\nFollowup video on this sequence: https://youtu.be/2y_6IIXAI_s\n\n----------------\n\nReferences:\n\nEric Rowland, A natural prime-generating recurrence, Journal of Integer Sequences 11 (2008) 08.2.8 (13 pages).\nhttps://cs.uwaterloo.ca/journals/JIS/VOL11/Rowland/rowland21.html\n\nFernando Chamizo, Dulcinea Raboso, and Seraf\u00edn Ruiz-Cabello, On Rowland's Sequence, The Electronic Journal of Combinatorics 18(2) (2011) P10 (10 pages).\nhttps://doi.org/10.37236/2006\n\nBenoit Cloitre, 10 conjectures in additive number theory (2011) (46 pages).\nhttps://arxiv.org/abs/1101.4274\n\nSeraf\u00edn Ruiz-Cabello, On the use of the least common multiple to build a prime-generating recurrence, International Journal of Number Theory 13 (2017) 819\u2013833.\nhttps://doi.org/10.1142/S1793042117500439\nOpen access: https://arxiv.org/abs/1504.05041\n\n----------------\n\n0:00 Recurrence\n2:59 Doubling relations\n4:03 Plotting locations of primes\n6:24 Clusters of primes\n9:49 Predicting primes in each cluster\n15:22 Answers to burning questions\n18:19 Changing the initial term\n20:08 Cloitre's lcm recurrence\n\n----------------\n\nAnimated with Manim. https://www.manim.community\nThanks to Ken Emmer for supplying the microphone.\n\nWeb site: https://ericrowland.github.io",
+    "view_count": 495862,
+    "webpage_url": "https://www.youtube.com/watch?v=OpaKpzMFOpg"
+  },
+  "transcript_type": "manual",
+  "transcript": [
+    {
+      "text": "This is a recurrence that generates primes.",
+      "start": 0.0,
+      "duration": 2.58
+    },
+    {
+      "text": "It defines a sequence where the nth term R(n)\nis the previous term R(n - 1)",
+      "start": 2.58,
+      "duration": 5.7
+    },
+    {
+      "text": "plus the greatest common divisor of\nn and the previous term.",
+      "start": 8.28,
+      "duration": 3.78
+    },
+    {
+      "text": "You can think of it as a warped version\nof the Fibonacci recurrence,",
+      "start": 12.78,
+      "duration": 3.12
+    },
+    {
+      "text": "where the nth term is the previous term\nplus the term before that.",
+      "start": 15.9,
+      "duration": 3.36
+    },
+    {
+      "text": "One big difference though, is that,\nfor the Fibonacci sequence,",
+      "start": 19.26,
+      "duration": 3.36
+    },
+    {
+      "text": "we need two initial terms to get things going,",
+      "start": 22.62,
+      "duration": 2.1
+    },
+    {
+      "text": "since each later term depends\u00a0\non two previous terms.",
+      "start": 24.72,
+      "duration": 3.3
+    },
+    {
+      "text": "But for the sequence R(n),\nwe only need one initial term.",
+      "start": 28.86,
+      "duration": 3.18
+    },
+    {
+      "text": "Let's start off by choosing it to be 7.",
+      "start": 32.04,
+      "duration": 2.46
+    },
+    {
+      "text": "This is mostly arbitrary, so we'll come back\nto this later and explore other options.",
+      "start": 34.5,
+      "duration": 4.26
+    },
+    {
+      "text": "But with the initial term 7, the second\nterm is 7 plus the gcd of 2 and 7.",
+      "start": 38.76,
+      "duration": 5.88
+    },
+    {
+      "text": "The gcd is 1, so we get 8.",
+      "start": 45.78,
+      "duration": 2.64
+    },
+    {
+      "text": "The third term is\n8 plus the gcd of 3 and 8.",
+      "start": 49.38,
+      "duration": 3.48
+    },
+    {
+      "text": "This gcd is also 1, so we get 9.",
+      "start": 53.52,
+      "duration": 2.64
+    },
+    {
+      "text": "The next gcd is the gcd of 4 and 9,\nwhich is also 1.",
+      "start": 57.18,
+      "duration": 3.96
+    },
+    {
+      "text": "So at the fourth term, we also\nstep up by 1, to 10.",
+      "start": 61.14,
+      "duration": 3.6
+    },
+    {
+      "text": "The terms so far are 7, 8, 9, and 10.",
+      "start": 65.52,
+      "duration": 3.0
+    },
+    {
+      "text": "So far this is a pretty boring sequence!",
+      "start": 68.52,
+      "duration": 2.16
+    },
+    {
+      "text": "But now something interesting happens,\nbecause the gcd of 5 and 10 is 5,",
+      "start": 70.68,
+      "duration": 4.98
+    },
+    {
+      "text": "so here the sequence\njumps up by 5 rather than 1.",
+      "start": 75.66,
+      "duration": 3.36
+    },
+    {
+      "text": "The next gcd is the gcd of 6 and 15,\nwhich is 3,",
+      "start": 79.86,
+      "duration": 4.2
+    },
+    {
+      "text": "so the sequence jumps up again,\nthis time by 3.",
+      "start": 84.06,
+      "duration": 3.24
+    },
+    {
+      "text": "Then we go back to stepping up\nby 1 for a few terms.",
+      "start": 87.9,
+      "duration": 2.7
+    },
+    {
+      "text": "And we reach the bottom of the frame,\nso let's make room for more terms.",
+      "start": 91.32,
+      "duration": 3.48
+    },
+    {
+      "text": "This sequence was discovered in 2003\nwhen Stephen Wolfram initiated several",
+      "start": 95.52,
+      "duration": 4.8
+    },
+    {
+      "text": "experiments exploring the space\nof possible recurrences.",
+      "start": 100.32,
+      "duration": 2.82
+    },
+    {
+      "text": "Initially, what seemed to be\nremarkable about this sequence",
+      "start": 103.14,
+      "duration": 3.48
+    },
+    {
+      "text": "is that it exhibits long stretches of boring\nbehavior, interrupted by sudden jumps,",
+      "start": 106.62,
+      "duration": 4.38
+    },
+    {
+      "text": "and it's not obvious that we can\npredict the jumps in advance.",
+      "start": 111.0,
+      "duration": 2.64
+    },
+    {
+      "text": "But even more surprising\nis what the jumps are doing.",
+      "start": 114.48,
+      "duration": 2.82
+    },
+    {
+      "text": "Let's look at the gcds on their own,",
+      "start": 117.3,
+      "duration": 2.22
+    },
+    {
+      "text": "because they determine whether\nthe terms of the sequence",
+      "start": 119.52,
+      "duration": 2.46
+    },
+    {
+      "text": "are increasing by 1 or making a jump.",
+      "start": 121.98,
+      "duration": 1.92
+    },
+    {
+      "text": "Collecting the gcds into their own sequence\nmakes the behavior a little easier to see.",
+      "start": 124.86,
+      "duration": 4.08
+    },
+    {
+      "text": "Let's gray-out the boring 1s\nand include some more data.",
+      "start": 130.5,
+      "duration": 2.82
+    },
+    {
+      "text": "Notice anything?",
+      "start": 136.68,
+      "duration": 0.72
+    },
+    {
+      "text": "Let's be really drastic and\nremove the 1s entirely.",
+      "start": 138.78,
+      "duration": 2.76
+    },
+    {
+      "text": "Here's even more data.",
+      "start": 144.72,
+      "duration": 1.32
+    },
+    {
+      "text": "Surprisingly, all these numbers are prime.",
+      "start": 150.42,
+      "duration": 3.12
+    },
+    {
+      "text": "Remember that they are gcds, so it's not crazy\nthat they have something to do with divisibility,",
+      "start": 154.98,
+      "duration": 4.86
+    },
+    {
+      "text": "but why on earth are they necessarily prime?",
+      "start": 159.84,
+      "duration": 2.34
+    },
+    {
+      "text": "Pause the video if you'd like to\nstare at these primes for a bit,",
+      "start": 163.02,
+      "duration": 2.64
+    },
+    {
+      "text": "because there are some patterns that may jump\nout if you look at them long enough.",
+      "start": 165.66,
+      "duration": 3.06
+    },
+    {
+      "text": "If you see something, let me know in the comments\nwhich numbers first gave it away.",
+      "start": 169.38,
+      "duration": 3.42
+    },
+    {
+      "text": "This way, we can do a little psychology experiment",
+      "start": 172.8,
+      "duration": 2.7
+    },
+    {
+      "text": "and see whether the same numbers\njump out to most people.",
+      "start": 175.5,
+      "duration": 2.34
+    },
+    {
+      "text": "For me, here's what jumps out first.",
+      "start": 178.74,
+      "duration": 2.04
+    },
+    {
+      "text": "60647 is very close to 2 times 30323.",
+      "start": 181.44,
+      "duration": 3.96
+    },
+    {
+      "text": "In fact they're just off by 1.",
+      "start": 187.56,
+      "duration": 1.68
+    },
+    {
+      "text": "There are other pairs like this too.\n2 * 5 + 1 is 11.",
+      "start": 190.98,
+      "duration": 4.08
+    },
+    {
+      "text": "2 * 11 + 1 is 23.",
+      "start": 195.06,
+      "duration": 2.27
+    },
+    {
+      "text": "And 2 * 23 + 1 is 47.",
+      "start": 198.36,
+      "duration": 2.82
+    },
+    {
+      "text": "Unfortunately, this pattern doesn't continue,\nsince 2 * 47 + 1 is 95,",
+      "start": 201.9,
+      "duration": 4.98
+    },
+    {
+      "text": "which doesn't appear and also isn't prime.",
+      "start": 206.88,
+      "duration": 2.34
+    },
+    {
+      "text": "But there are several other pairs\nsprinkled across the data",
+      "start": 210.06,
+      "duration": 3.06
+    },
+    {
+      "text": "that do satisfy this doubling relation.",
+      "start": 213.12,
+      "duration": 2.1
+    },
+    {
+      "text": "Why does it work in certain places\nand not others?",
+      "start": 216.12,
+      "duration": 2.46
+    },
+    {
+      "text": "Also, why is there a 3\nsandwiched between each pair?",
+      "start": 219.24,
+      "duration": 3.12
+    },
+    {
+      "text": "And again, why are all these numbers prime?",
+      "start": 223.08,
+      "duration": 2.04
+    },
+    {
+      "text": "This was the state of things in 2003;\nno one knew.",
+      "start": 225.9,
+      "duration": 3.78
+    },
+    {
+      "text": "I had just graduated from college.",
+      "start": 230.28,
+      "duration": 1.62
+    },
+    {
+      "text": "I was eager to prove an interesting\nnew result about primes,",
+      "start": 231.9,
+      "duration": 2.94
+    },
+    {
+      "text": "so I worked on this sequence for a bit\nbut didn't get anywhere.",
+      "start": 234.84,
+      "duration": 2.58
+    },
+    {
+      "text": "But several years later, I had an idea to\ntry something I hadn't thought of before.",
+      "start": 238.08,
+      "duration": 4.26
+    },
+    {
+      "text": "To see what's going on with this sequence,",
+      "start": 242.88,
+      "duration": 1.92
+    },
+    {
+      "text": "it turns out that we need some\ninformation that we threw away.",
+      "start": 244.8,
+      "duration": 2.64
+    },
+    {
+      "text": "So let's put the primes back in their positions\nand bring back all the 1s.",
+      "start": 247.44,
+      "duration": 4.44
+    },
+    {
+      "text": "The information we shouldn't have thrown away",
+      "start": 253.5,
+      "duration": 1.98
+    },
+    {
+      "text": "is the index n corresponding\nto each of these gcds.",
+      "start": 255.48,
+      "duration": 4.14
+    },
+    {
+      "text": "After all, each gcd is the\ngcd of n and R(n - 1).",
+      "start": 259.62,
+      "duration": 4.92
+    },
+    {
+      "text": "Now we can safely throw away the 1s again.",
+      "start": 265.26,
+      "duration": 1.98
+    },
+    {
+      "text": "My idea was to make a plot of this data,\nbut ignore the primes themselves",
+      "start": 269.94,
+      "duration": 4.32
+    },
+    {
+      "text": "and only plot the index n\u00a0\nwhere each prime appears,",
+      "start": 274.26,
+      "duration": 3.24
+    },
+    {
+      "text": "so that's 5, 6, 11, 12, and so on.",
+      "start": 278.04,
+      "duration": 4.98
+    },
+    {
+      "text": "Since there are many 1s in\nthe sequence of gcds,",
+      "start": 284.4,
+      "duration": 2.82
+    },
+    {
+      "text": "this sequence -- the indices of gcds that\naren't 1 -- grows quite quickly.",
+      "start": 287.22,
+      "duration": 4.38
+    },
+    {
+      "text": "To fit more data onto this plot, we need to\nrescale the vertical axis.",
+      "start": 291.6,
+      "duration": 4.08
+    },
+    {
+      "text": "Now the next few values of n fit.",
+      "start": 297.24,
+      "duration": 2.34
+    },
+    {
+      "text": "We can even include a bit more data.",
+      "start": 300.48,
+      "duration": 1.86
+    },
+    {
+      "text": "But by rescaling to include more data,",
+      "start": 304.08,
+      "duration": 2.4
+    },
+    {
+      "text": "we lost some visual information\nabout the first few values,",
+      "start": 306.48,
+      "duration": 2.94
+    },
+    {
+      "text": "because now they're all bunched together\nat the bottom of the plot.",
+      "start": 309.42,
+      "duration": 2.94
+    },
+    {
+      "text": "The solution is to rescale the vertical axis\nagain -- not in a linear way like we just did,",
+      "start": 313.02,
+      "duration": 5.34
+    },
+    {
+      "text": "but in a logarithmic way.",
+      "start": 318.36,
+      "duration": 1.74
+    },
+    {
+      "text": "Ordinarily, the distance between 1000 and\n2000 on the vertical axis",
+      "start": 320.94,
+      "duration": 4.56
+    },
+    {
+      "text": "is the same as\nthe distance between 2000 and 3000.",
+      "start": 325.5,
+      "duration": 3.42
+    },
+    {
+      "text": "What we'll do is rescale",
+      "start": 328.92,
+      "duration": 2.34
+    },
+    {
+      "text": "so that the distance between 10 and 100\nis the same as the distance between 100 and 1000.",
+      "start": 331.26,
+      "duration": 5.4
+    },
+    {
+      "text": "This is called a logarithmic scale, so the\nplot becomes a logarithmic plot.",
+      "start": 336.66,
+      "duration": 4.38
+    },
+    {
+      "text": "It's called \"logarithmic\" because now it's\nthe logarithms of 1, 10, 100, and so on",
+      "start": 341.64,
+      "duration": 5.34
+    },
+    {
+      "text": "that form a linear sequence.",
+      "start": 346.98,
+      "duration": 1.5
+    },
+    {
+      "text": "This is true for any choice\nof the base of the logarithm,",
+      "start": 348.48,
+      "duration": 3.18
+    },
+    {
+      "text": "but for example the base-10\nlogarithms are 0, 1, 2, and so on.",
+      "start": 351.66,
+      "duration": 5.7
+    },
+    {
+      "text": "Logarithmic scales are used in some settings\nyou're already familiar with.",
+      "start": 357.36,
+      "duration": 3.36
+    },
+    {
+      "text": "For example, the Richter scale describes\nearthquake intensities on a logarithmic scale.",
+      "start": 360.72,
+      "duration": 4.8
+    },
+    {
+      "text": "The possible amount of energy released by\nan earthquake covers such a large range",
+      "start": 365.52,
+      "duration": 4.44
+    },
+    {
+      "text": "that the logarithm of the energy is a\nmore intuitive number to work with.",
+      "start": 369.96,
+      "duration": 3.66
+    },
+    {
+      "text": "So, instead of having earthquakes with magnitude\n10,000 and magnitude 1,000,000,000,",
+      "start": 373.62,
+      "duration": 5.1
+    },
+    {
+      "text": "we call them magnitude 4 and magnitude 9.",
+      "start": 378.72,
+      "duration": 3.24
+    },
+    {
+      "text": "Getting back to our primes, this log plot\nof the indices where primes appear",
+      "start": 382.68,
+      "duration": 4.2
+    },
+    {
+      "text": "reveals that the primes appear in clusters.",
+      "start": 386.88,
+      "duration": 2.64
+    },
+    {
+      "text": "This really surprised me.",
+      "start": 389.52,
+      "duration": 1.86
+    },
+    {
+      "text": "And not only that, but the spacing\nbetween clusters is extremely even.",
+      "start": 391.38,
+      "duration": 4.26
+    },
+    {
+      "text": "If we average the indices in each cluster,",
+      "start": 395.64,
+      "duration": 3.3
+    },
+    {
+      "text": "the vertical distances between the averages\nappear to be the same.",
+      "start": 398.94,
+      "duration": 3.3
+    },
+    {
+      "text": "If this were an ordinary plot, then adding\nthat vertical distance to one cluster",
+      "start": 402.84,
+      "duration": 4.44
+    },
+    {
+      "text": "would give the location of the next cluster.",
+      "start": 407.28,
+      "duration": 2.16
+    },
+    {
+      "text": "But since this is a log plot,\na fixed vertical distance",
+      "start": 409.44,
+      "duration": 3.24
+    },
+    {
+      "text": "corresponds to multiplication by\nsome constant, not addition.",
+      "start": 412.68,
+      "duration": 3.6
+    },
+    {
+      "text": "So the location of each cluster is given by",
+      "start": 416.28,
+      "duration": 3.0
+    },
+    {
+      "text": "some constant times the location\u00a0\nof the previous cluster.",
+      "start": 419.28,
+      "duration": 3.18
+    },
+    {
+      "text": "To guess the constant, we should\ndivide neighboring cluster averages by each other.",
+      "start": 423.06,
+      "duration": 3.84
+    },
+    {
+      "text": "So let's rearrange the primes\naccording to their clusters",
+      "start": 426.9,
+      "duration": 3.24
+    },
+    {
+      "text": "and compute the cluster averages numerically.",
+      "start": 431.22,
+      "duration": 2.4
+    },
+    {
+      "text": "Now divide them.",
+      "start": 434.94,
+      "duration": 1.14
+    },
+    {
+      "text": "The first ratio is roughly 2.09,",
+      "start": 436.08,
+      "duration": 3.18
+    },
+    {
+      "text": "the second is 2.04,\nand here are the others.",
+      "start": 439.26,
+      "duration": 4.08
+    },
+    {
+      "text": "They're not quite equal to each other,\nbut they're all close to 2.",
+      "start": 444.18,
+      "duration": 3.0
+    },
+    {
+      "text": "This means that the long runs of 1s\nseparating clusters",
+      "start": 447.9,
+      "duration": 3.0
+    },
+    {
+      "text": "roughly double in length from one to the next.",
+      "start": 450.9,
+      "duration": 2.52
+    },
+    {
+      "text": "In hindsight, we saw evidence of this already.",
+      "start": 454.02,
+      "duration": 1.98
+    },
+    {
+      "text": "If we look at the beginning of each cluster,\nwe see the doubling relations we found earlier.",
+      "start": 456.0,
+      "duration": 4.38
+    },
+    {
+      "text": "Apparently 5 produces 11,\n11 produces 23,",
+      "start": 460.38,
+      "duration": 3.96
+    },
+    {
+      "text": "23 produces 47, and so on.",
+      "start": 464.34,
+      "duration": 3.3
+    },
+    {
+      "text": "But the doubling relations only reliably predict\nwhere some of the clusters begin, not all.",
+      "start": 468.18,
+      "duration": 5.04
+    },
+    {
+      "text": "For example, where does 101 come from?",
+      "start": 473.76,
+      "duration": 2.1
+    },
+    {
+      "text": "Since the runs of 1s separating clusters\nroughly double in length,",
+      "start": 475.86,
+      "duration": 4.02
+    },
+    {
+      "text": "we know it should be roughly twice 47,\nbut how do we get it exactly?",
+      "start": 479.88,
+      "duration": 3.78
+    },
+    {
+      "text": "Well, this plot suggests something else.",
+      "start": 484.32,
+      "duration": 2.1
+    },
+    {
+      "text": "Maybe we shouldn't be using the beginning\nof a cluster to get the next cluster,",
+      "start": 486.42,
+      "duration": 3.72
+    },
+    {
+      "text": "like the doubling relations suggested.",
+      "start": 490.14,
+      "duration": 1.74
+    },
+    {
+      "text": "Since the primes within a cluster are close\ntogether, why not try using the end of a cluster",
+      "start": 491.88,
+      "duration": 5.16
+    },
+    {
+      "text": "to get the beginning of the next cluster?",
+      "start": 497.04,
+      "duration": 1.74
+    },
+    {
+      "text": "So instead of trying to get 101 from 47,\ncan we get it from the previous prime, 3?",
+      "start": 498.78,
+      "duration": 5.58
+    },
+    {
+      "text": "Not in an obvious way, but\n101 is suspiciously close to 2 * 51.",
+      "start": 505.14,
+      "duration": 5.04
+    },
+    {
+      "text": "In fact 2 * 51 - 1 is 101.",
+      "start": 510.18,
+      "duration": 4.86
+    },
+    {
+      "text": "Perfect!",
+      "start": 515.04,
+      "duration": 0.54
+    },
+    {
+      "text": "But wait; to predict the beginnings\nof other clusters,",
+      "start": 516.54,
+      "duration": 2.7
+    },
+    {
+      "text": "we were using the primes,\nnot their indices,",
+      "start": 519.24,
+      "duration": 2.1
+    },
+    {
+      "text": "so it's unfortunate that this cluster\nseems to be different",
+      "start": 521.34,
+      "duration": 3.06
+    },
+    {
+      "text": "in that 101 comes from 51 and not 3.",
+      "start": 524.4,
+      "duration": 3.48
+    },
+    {
+      "text": "But at the beginning of each cluster,",
+      "start": 528.42,
+      "duration": 1.56
+    },
+    {
+      "text": "each prime gcd seems to be equal\nto the index where that prime appears.",
+      "start": 529.98,
+      "duration": 3.96
+    },
+    {
+      "text": "If that's true in general, then the doubling\nrelations describe not just the primes",
+      "start": 534.6,
+      "duration": 4.2
+    },
+    {
+      "text": "but also their indices, and maybe it's a relation\namong their indices that generalizes.",
+      "start": 538.8,
+      "duration": 4.56
+    },
+    {
+      "text": "For the earlier clusters, we can get 11 from\nthe index 6 at the end of the previous cluster.",
+      "start": 543.36,
+      "duration": 5.82
+    },
+    {
+      "text": "23 comes from 12.",
+      "start": 549.84,
+      "duration": 2.46
+    },
+    {
+      "text": "And 47 comes from 24.",
+      "start": 552.3,
+      "duration": 2.28
+    },
+    {
+      "text": "For the later clusters, 233 comes from 117,\n467 comes from 234,",
+      "start": 555.3,
+      "duration": 7.38
+    },
+    {
+      "text": "941 comes from 471,\nand so on.",
+      "start": 563.34,
+      "duration": 3.84
+    },
+    {
+      "text": "This seems to be a reliable way to predict\nwhen each cluster begins.",
+      "start": 567.18,
+      "duration": 4.26
+    },
+    {
+      "text": "So the doubling relations involving primes\nwere misleading.",
+      "start": 571.44,
+      "duration": 3.36
+    },
+    {
+      "text": "It's not that the first prime in a cluster\ncomes from an earlier prime;",
+      "start": 574.8,
+      "duration": 3.24
+    },
+    {
+      "text": "it comes from the index of the previous prime.",
+      "start": 578.04,
+      "duration": 2.88
+    },
+    {
+      "text": "Specifically, the first prime\nin each cluster is 2 n - 1,",
+      "start": 581.64,
+      "duration": 4.14
+    },
+    {
+      "text": "where n is the index of the previous prime.",
+      "start": 585.78,
+      "duration": 2.7
+    },
+    {
+      "text": "What about within a cluster?",
+      "start": 589.38,
+      "duration": 1.38
+    },
+    {
+      "text": "Let's take a look at this big cluster,\nbeginning with 101.",
+      "start": 590.76,
+      "duration": 3.6
+    },
+    {
+      "text": "At index 101, if we try the same formula,\nwe get 201, and the prime we want is 3.",
+      "start": 594.36,
+      "duration": 5.94
+    },
+    {
+      "text": "That's not promising!",
+      "start": 600.3,
+      "duration": 1.74
+    },
+    {
+      "text": "But let's not give up quite yet.",
+      "start": 602.04,
+      "duration": 1.92
+    },
+    {
+      "text": "At index 102, we get 203,\nand the prime we want is 7.",
+      "start": 604.68,
+      "duration": 4.8
+    },
+    {
+      "text": "Here are the rest.",
+      "start": 610.2,
+      "duration": 0.9
+    },
+    {
+      "text": "Since we're expecting primes, are the numbers\nwe're getting in fact primes?",
+      "start": 614.34,
+      "duration": 3.9
+    },
+    {
+      "text": "No, 201 is not prime; it's 3 times 67.",
+      "start": 618.24,
+      "duration": 4.14
+    },
+    {
+      "text": "Here are the prime factorizations of the others.",
+      "start": 622.92,
+      "duration": 2.1
+    },
+    {
+      "text": "Now we see what appears to be going on.",
+      "start": 626.34,
+      "duration": 2.1
+    },
+    {
+      "text": "The prime we're looking for\nin each case isn't 2 n - 1;",
+      "start": 628.44,
+      "duration": 3.96
+    },
+    {
+      "text": "it's the smallest prime divisor of 2 n - 1.",
+      "start": 632.4,
+      "duration": 3.3
+    },
+    {
+      "text": "This even works at the beginning of the cluster,\nwhere we got 101.",
+      "start": 635.7,
+      "duration": 3.12
+    },
+    {
+      "text": "101 is prime, so its smallest prime divisor\nis itself.",
+      "start": 638.82,
+      "duration": 4.02
+    },
+    {
+      "text": "Apparently this is how we can predict\nnot just the beginning of each cluster",
+      "start": 643.68,
+      "duration": 4.02
+    },
+    {
+      "text": "of prime jumps but every prime jump\nthe sequence undergoes.",
+      "start": 647.7,
+      "duration": 3.36
+    },
+    {
+      "text": "Isn't that beautiful?",
+      "start": 651.84,
+      "duration": 0.9
+    },
+    {
+      "text": "So here's our conjecture.",
+      "start": 653.4,
+      "duration": 1.5
+    },
+    {
+      "text": "If the gcd of n and R(n - 1) is not 1,\nthen the next nontrivial gcd that appears,",
+      "start": 654.9,
+      "duration": 7.2
+    },
+    {
+      "text": "that is, the next gcd that is not 1,\nis the smallest prime divisor of 2 n - 1.",
+      "start": 662.1,
+      "duration": 6.6
+    },
+    {
+      "text": "Let's call it p.",
+      "start": 669.24,
+      "duration": 0.96
+    },
+    {
+      "text": "When does this next nontrivial gcd appear?",
+      "start": 671.22,
+      "duration": 2.34
+    },
+    {
+      "text": "In other words, if we're currently at index n,",
+      "start": 673.56,
+      "duration": 2.7
+    },
+    {
+      "text": "then running the recurrence will take us\nto n + 1, n + 2, and so on,",
+      "start": 676.26,
+      "duration": 4.44
+    },
+    {
+      "text": "and we want to know the smallest value of\ni for which the gcd at n + i is the prime p.",
+      "start": 681.24,
+      "duration": 6.12
+    },
+    {
+      "text": "Going from 51 to 101 is an increase of 50.",
+      "start": 688.44,
+      "duration": 4.44
+    },
+    {
+      "text": "101 to 102 is an increase of 1.",
+      "start": 692.88,
+      "duration": 2.94
+    },
+    {
+      "text": "Then we have an increase of 3,\nthen 5, then 1, then 6.",
+      "start": 696.36,
+      "duration": 6.0
+    },
+    {
+      "text": "Can we tell what i is in advance,",
+      "start": 703.14,
+      "duration": 1.62
+    },
+    {
+      "text": "without computing all the intermediate\nsteps using the recurrence?",
+      "start": 704.76,
+      "duration": 2.88
+    },
+    {
+      "text": "The hint is to look at the value of p.",
+      "start": 708.3,
+      "duration": 1.92
+    },
+    {
+      "text": "It looks like i is (p - 1)/2.",
+      "start": 715.08,
+      "duration": 2.16
+    },
+    {
+      "text": "Great! So we think we know what the next\nnontrivial gcd is and also where it appears.",
+      "start": 718.74,
+      "duration": 5.52
+    },
+    {
+      "text": "That means we have a shortcut\nfor computing the sequence of gcds.",
+      "start": 724.26,
+      "duration": 3.78
+    },
+    {
+      "text": "This shortcut lets us jump directly from one\nprime gcd to the next, skipping over all the 1s.",
+      "start": 728.04,
+      "duration": 5.88
+    },
+    {
+      "text": "Let's check that it correctly generates\nthe cluster beginning with 467.",
+      "start": 734.58,
+      "duration": 4.32
+    },
+    {
+      "text": "Suppose we're at n = 467, and pretend that",
+      "start": 738.9,
+      "duration": 3.84
+    },
+    {
+      "text": "we don't know what the next nontrivial gcd is\nor where it appears.",
+      "start": 742.74,
+      "duration": 3.72
+    },
+    {
+      "text": "According to the conjecture, we should\ndetermine the smallest prime divisor of 2 n - 1.",
+      "start": 747.3,
+      "duration": 4.98
+    },
+    {
+      "text": "2 n - 1 is 933, which factors as 3 times 311.",
+      "start": 753.0,
+      "duration": 5.58
+    },
+    {
+      "text": "The smallest prime divisor is 3,\nso the next nontrivial gcd that appears is 3.",
+      "start": 758.58,
+      "duration": 5.46
+    },
+    {
+      "text": "To find out when we'll reach this 3,\nwe compute i, which is (3 - 1)/2.",
+      "start": 764.88,
+      "duration": 4.2
+    },
+    {
+      "text": "So we'll see the gcd 3 one step later,\nduring the computation of R(468).",
+      "start": 770.94,
+      "duration": 6.0
+    },
+    {
+      "text": "Checks out so far.",
+      "start": 777.6,
+      "duration": 1.08
+    },
+    {
+      "text": "Now let n be 468.",
+      "start": 779.64,
+      "duration": 2.28
+    },
+    {
+      "text": "2 n - 1 is 935,\nwhose smallest prime divisor is 5.",
+      "start": 781.92,
+      "duration": 5.04
+    },
+    {
+      "text": "So now i is 2, and the next nontrivial gcd\nappears 2 steps later,",
+      "start": 787.68,
+      "duration": 4.62
+    },
+    {
+      "text": "during the computation of R(470).",
+      "start": 792.3,
+      "duration": 3.42
+    },
+    {
+      "text": "If we keep going, when n is 470,\n2 n - 1 is 939.",
+      "start": 795.72,
+      "duration": 4.8
+    },
+    {
+      "text": "Its smallest prime divisor is 3,\nand the next nontrivial gcd appears 1 step later.",
+      "start": 800.52,
+      "duration": 5.28
+    },
+    {
+      "text": "When n is 471, 2 n - 1 is 941.",
+      "start": 806.94,
+      "duration": 4.08
+    },
+    {
+      "text": "941 is prime, so the next nontrivial gcd\nappears 470 steps later.",
+      "start": 811.02,
+      "duration": 5.22
+    },
+    {
+      "text": "This is a long run of 1s, so 941\nmarks the beginning of a new cluster.",
+      "start": 816.24,
+      "duration": 5.04
+    },
+    {
+      "text": "The conjecture is able to\nreproduce this cluster exactly!",
+      "start": 822.06,
+      "duration": 2.88
+    },
+    {
+      "text": "But is it true in general?",
+      "start": 824.94,
+      "duration": 1.44
+    },
+    {
+      "text": "To determine that, we need one final observation.",
+      "start": 827.22,
+      "duration": 2.52
+    },
+    {
+      "text": "We've been able to compute the sequence of gcds",
+      "start": 829.74,
+      "duration": 2.94
+    },
+    {
+      "text": "without actually knowing any terms\nof the original sequence R(n).",
+      "start": 832.68,
+      "duration": 2.7
+    },
+    {
+      "text": "But let's look at the values of R(n)\nfor this cluster.",
+      "start": 836.22,
+      "duration": 3.18
+    },
+    {
+      "text": "If you compute them using the recurrence,\nyou'll find that R(467) is 1401.",
+      "start": 839.4,
+      "duration": 5.4
+    },
+    {
+      "text": "By continuing to iterate the recurrence,\nwe can compute these other values.",
+      "start": 844.8,
+      "duration": 4.32
+    },
+    {
+      "text": "Do you see the pattern?",
+      "start": 850.5,
+      "duration": 1.08
+    },
+    {
+      "text": "Here's a hint.",
+      "start": 852.36,
+      "duration": 0.9
+    },
+    {
+      "text": "In all cases, R(n) is exactly 3 times n.",
+      "start": 855.0,
+      "duration": 4.14
+    },
+    {
+      "text": "This is the last key piece of information that\nexplains why this recurrence generates primes.",
+      "start": 859.8,
+      "duration": 5.7
+    },
+    {
+      "text": "It turns out that, whenever\nwe're in a situation where R(n) is 3 n,",
+      "start": 865.5,
+      "duration": 4.8
+    },
+    {
+      "text": "that is, the value of the sequence\nis 3 times its own index,",
+      "start": 870.3,
+      "duration": 3.84
+    },
+    {
+      "text": "then, when we advance the\u00a0\nrecurrence by (p - 1)/2 steps,",
+      "start": 874.14,
+      "duration": 3.9
+    },
+    {
+      "text": "we end up in another situation where\nthe value of the sequence is 3 times its index.",
+      "start": 878.04,
+      "duration": 5.28
+    },
+    {
+      "text": "So this puts us right back in\nthe situation we started in,",
+      "start": 883.32,
+      "duration": 2.94
+    },
+    {
+      "text": "which means we can advance the recurrence\nagain by a known amount",
+      "start": 886.26,
+      "duration": 3.06
+    },
+    {
+      "text": "and end up again in a situation where\nthe value of the sequence is 3 times its index.",
+      "start": 889.32,
+      "duration": 3.96
+    },
+    {
+      "text": "And over and over and over, returning to\nthe same nice situation at every step.",
+      "start": 893.28,
+      "duration": 4.56
+    },
+    {
+      "text": "So if we can also establish that the first\ntwo parts of the conjecture are true",
+      "start": 898.98,
+      "duration": 3.36
+    },
+    {
+      "text": "whenever we're in that nice situation,",
+      "start": 902.34,
+      "duration": 1.8
+    },
+    {
+      "text": "then we'll be able to conclude\nthat this sequence generates primes.",
+      "start": 904.14,
+      "duration": 3.9
+    },
+    {
+      "text": "The details will take a little more time to\nexplain than I want to spend in this video,",
+      "start": 908.64,
+      "duration": 3.96
+    },
+    {
+      "text": "but it's quite fun to see\u00a0\nexactly how this all works,",
+      "start": 912.6,
+      "duration": 2.82
+    },
+    {
+      "text": "so we'll go through them in my next video.",
+      "start": 915.42,
+      "duration": 1.74
+    },
+    {
+      "text": "For now, suffice it to say that\nthis conjecture is a theorem.",
+      "start": 917.16,
+      "duration": 4.2
+    },
+    {
+      "text": "This theorem lets us answer several questions.",
+      "start": 922.14,
+      "duration": 2.22
+    },
+    {
+      "text": "First, it shows that, yes,\nthis recurrence does generate primes.",
+      "start": 924.36,
+      "duration": 4.08
+    },
+    {
+      "text": "But if you're trying to discover large primes,\nis this a good way to do it?",
+      "start": 928.44,
+      "duration": 3.84
+    },
+    {
+      "text": "No, running the recurrence is actually a\npretty bad way to discover large primes.",
+      "start": 932.94,
+      "duration": 4.38
+    },
+    {
+      "text": "When the gcd is a prime p,\nthat gcd shows up only after",
+      "start": 937.32,
+      "duration": 4.86
+    },
+    {
+      "text": "(p - 1)/2 steps where the gcds are all 1,\nwhich is quite a lot of steps.",
+      "start": 942.18,
+      "duration": 4.86
+    },
+    {
+      "text": "For example, suppose we wanted\nto find a 10-digit prime.",
+      "start": 947.04,
+      "duration": 3.48
+    },
+    {
+      "text": "Every 10-digit prime is between 1 billion\nand 10 billion, so we'd have to run the recurrence",
+      "start": 950.52,
+      "duration": 6.06
+    },
+    {
+      "text": "for at least 500 million steps\nbefore seeing a 10-digit prime.",
+      "start": 956.58,
+      "duration": 3.96
+    },
+    {
+      "text": "But there's no need for that, you might say.",
+      "start": 961.62,
+      "duration": 1.8
+    },
+    {
+      "text": "The theorem gives us a shortcut\nfor running the recurrence, right?",
+      "start": 963.42,
+      "duration": 3.3
+    },
+    {
+      "text": "If we just use that shortcut,\nwe can skip those 500 million 1s",
+      "start": 966.72,
+      "duration": 3.78
+    },
+    {
+      "text": "and go directly to the next prime.",
+      "start": 970.5,
+      "duration": 1.56
+    },
+    {
+      "text": "Well yes, but to run the shortcut, we have to\ncompute the smallest prime divisor of 2 n - 1.",
+      "start": 972.78,
+      "duration": 6.42
+    },
+    {
+      "text": "If 2 n - 1 turns out to be the large prime\nwe're trying to find,",
+      "start": 979.2,
+      "duration": 3.42
+    },
+    {
+      "text": "then the shortcut requires us to\nfirst determine that it is prime",
+      "start": 982.62,
+      "duration": 3.36
+    },
+    {
+      "text": "before we know that it's the next\nnontrivial gcd and therefore prime.",
+      "start": 985.98,
+      "duration": 3.9
+    },
+    {
+      "text": "So the shortcut is no help here,\nbecause to use it",
+      "start": 990.66,
+      "duration": 2.7
+    },
+    {
+      "text": "we need an independent way to test primality",
+      "start": 993.36,
+      "duration": 2.46
+    },
+    {
+      "text": "before we can conclude that the recurrence\nproduces a given number as a gcd.",
+      "start": 995.82,
+      "duration": 4.2
+    },
+    {
+      "text": "The theorem also explains\nwhy the primes appear in clusters.",
+      "start": 1001.22,
+      "duration": 3.36
+    },
+    {
+      "text": "The reason is that when 2 n - 1 isn't prime,",
+      "start": 1004.58,
+      "duration": 3.48
+    },
+    {
+      "text": "then its smallest prime divisor p\nis quite small relative to n,",
+      "start": 1008.06,
+      "duration": 4.02
+    },
+    {
+      "text": "so the run of 1s we pass through before\nreaching the next nontrivial gcd is quite short.",
+      "start": 1012.08,
+      "duration": 5.04
+    },
+    {
+      "text": "But when 2 n - 1 happens to be prime,",
+      "start": 1017.12,
+      "duration": 3.0
+    },
+    {
+      "text": "the number of 1s we pass through\nis (2 n - 1 - 1)/2, which is n - 1.",
+      "start": 1020.12,
+      "duration": 7.26
+    },
+    {
+      "text": "This run of 1s is much longer than its neighbors,\nso the next nontrivial gcd starts a new cluster.",
+      "start": 1027.38,
+      "duration": 6.18
+    },
+    {
+      "text": "Since we're generating primes, a natural question\nis: Which primes appear?",
+      "start": 1034.58,
+      "duration": 3.72
+    },
+    {
+      "text": "Does the recurrence eventually generate\nall primes?",
+      "start": 1038.3,
+      "duration": 2.88
+    },
+    {
+      "text": "Well, the prime 2 is conspicuously absent.",
+      "start": 1041.72,
+      "duration": 2.58
+    },
+    {
+      "text": "This is because 2 n - 1 is odd,\nso its smallest prime divisor will never be 2.",
+      "start": 1044.3,
+      "duration": 4.86
+    },
+    {
+      "text": "Other than that, I don't know\nhow to rule out any primes.",
+      "start": 1049.82,
+      "duration": 2.58
+    },
+    {
+      "text": "After 10,000 applications of the shortcut,",
+      "start": 1052.4,
+      "duration": 2.34
+    },
+    {
+      "text": "the smallest prime other than 2\nthat has not yet appeared is 587.",
+      "start": 1054.74,
+      "duration": 4.62
+    },
+    {
+      "text": "Granted this is not a ton of evidence,\nsince 587 is only the 107th prime,",
+      "start": 1059.36,
+      "duration": 4.98
+    },
+    {
+      "text": "so there may be a lot more to say on the matter.",
+      "start": 1064.34,
+      "duration": 2.04
+    },
+    {
+      "text": "In 2011, Chamizo, Raboso, and Ruiz-Cabello\nmade some progress",
+      "start": 1066.92,
+      "duration": 4.26
+    },
+    {
+      "text": "by proving that infinitely many\ndistinct primes do appear.",
+      "start": 1071.18,
+      "duration": 3.24
+    },
+    {
+      "text": "The one pattern we haven't explained yet",
+      "start": 1075.98,
+      "duration": 1.98
+    },
+    {
+      "text": "is why each pair of primes involved in a doubling\nrelation sandwiches a 3 between them.",
+      "start": 1077.96,
+      "duration": 5.04
+    },
+    {
+      "text": "If we look back at the clusters, we can see\nthat we can actually strengthen this",
+      "start": 1083.78,
+      "duration": 3.48
+    },
+    {
+      "text": "to say that in every cluster\nthe second prime is 3.",
+      "start": 1087.26,
+      "duration": 3.42
+    },
+    {
+      "text": "Since the theorem tells us how to go\ndirectly from one prime to the next,",
+      "start": 1090.68,
+      "duration": 4.02
+    },
+    {
+      "text": "it is possible to explain this,\nbut I'll leave it to you to find the reason.",
+      "start": 1094.7,
+      "duration": 3.66
+    },
+    {
+      "text": "Let's finish with some variations.",
+      "start": 1099.38,
+      "duration": 1.56
+    },
+    {
+      "text": "Define a sequence s(n) using the same recurrence,",
+      "start": 1102.32,
+      "duration": 3.0
+    },
+    {
+      "text": "but instead of starting\u00a0\nwith 7 for the initial term,",
+      "start": 1105.32,
+      "duration": 2.58
+    },
+    {
+      "text": "what if we start with 1?",
+      "start": 1107.9,
+      "duration": 1.62
+    },
+    {
+      "text": "The first gcd is 1, so we get 2.",
+      "start": 1111.08,
+      "duration": 2.52
+    },
+    {
+      "text": "The second gcd is 1, so we get 3.",
+      "start": 1114.86,
+      "duration": 2.4
+    },
+    {
+      "text": "The third gcd is 1, so we get 4.",
+      "start": 1118.7,
+      "duration": 2.52
+    },
+    {
+      "text": "In fact every gcd is 1,\nsince the gcd of n and n - 1 is 1.",
+      "start": 1121.22,
+      "duration": 6.12
+    },
+    {
+      "text": "So this sequence is really boring.",
+      "start": 1127.34,
+      "duration": 1.8
+    },
+    {
+      "text": "If we change the initial term to 2 or 3 instead,\nthe sequences we get are also not interesting.",
+      "start": 1129.14,
+      "duration": 5.88
+    },
+    {
+      "text": "When we use the initial term 4,\nthe first gcd is 2, so s(2) is 6.",
+      "start": 1135.62,
+      "duration": 6.54
+    },
+    {
+      "text": "The next gcd is 3, so s(3) = 9.",
+      "start": 1142.16,
+      "duration": 2.64
+    },
+    {
+      "text": "But guess what.",
+      "start": 1145.7,
+      "duration": 1.44
+    },
+    {
+      "text": "R(3) this is also 9, so from this point on",
+      "start": 1147.14,
+      "duration": 3.78
+    },
+    {
+      "text": "the sequence is exactly the same\nas the sequence with initial term 7.",
+      "start": 1150.92,
+      "duration": 4.14
+    },
+    {
+      "text": "If you look hard enough though,\nyou do find some genuinely new behavior.",
+      "start": 1156.44,
+      "duration": 3.6
+    },
+    {
+      "text": "With the initial term 532,\nwe get a gcd of 2,",
+      "start": 1160.04,
+      "duration": 3.84
+    },
+    {
+      "text": "then a gcd of 3,\nthen some 1s,",
+      "start": 1163.88,
+      "duration": 3.84
+    },
+    {
+      "text": "then 13, 1, 5, 1, 1,",
+      "start": 1170.42,
+      "duration": 3.48
+    },
+    {
+      "text": "and -- surprise surprise -- a non-prime!",
+      "start": 1173.9,
+      "duration": 4.08
+    },
+    {
+      "text": "So far, this sequence hasn't ever been",
+      "start": 1179.18,
+      "duration": 2.22
+    },
+    {
+      "text": "in the nice situation where\nthe nth term is 3 times n,",
+      "start": 1181.4,
+      "duration": 3.24
+    },
+    {
+      "text": "so the theorem doesn't apply\nand we're not guaranteed to get primes.",
+      "start": 1184.64,
+      "duration": 4.26
+    },
+    {
+      "text": "Eventually we do get there, however:\ns(279) is 3 times 279.",
+      "start": 1188.9,
+      "duration": 6.24
+    },
+    {
+      "text": "From that point on,\nall the gcds will be primes or 1s.",
+      "start": 1195.14,
+      "duration": 3.6
+    },
+    {
+      "text": "It seems likely that, if you start with\nany initial condition that's at least 4,",
+      "start": 1199.64,
+      "duration": 3.72
+    },
+    {
+      "text": "then this will eventually happen.",
+      "start": 1203.36,
+      "duration": 1.56
+    },
+    {
+      "text": "But this is still an open question.",
+      "start": 1204.92,
+      "duration": 1.8
+    },
+    {
+      "text": "Shortly after my paper appeared,",
+      "start": 1208.58,
+      "duration": 1.74
+    },
+    {
+      "text": "Benoit Cloitre looked at an interesting\nvariant that we'll call C(n).",
+      "start": 1210.32,
+      "duration": 3.72
+    },
+    {
+      "text": "He replaced the greatest common divisor\nwith the least common multiple.",
+      "start": 1214.04,
+      "duration": 4.08
+    },
+    {
+      "text": "Starting with the initial term 1,\nwe don't get a boring sequence.",
+      "start": 1219.02,
+      "duration": 2.94
+    },
+    {
+      "text": "The first lcm is 2.",
+      "start": 1222.68,
+      "duration": 1.5
+    },
+    {
+      "text": "The next lcm is 3.",
+      "start": 1225.86,
+      "duration": 1.32
+    },
+    {
+      "text": "The lcm is never 1 here,",
+      "start": 1228.14,
+      "duration": 1.74
+    },
+    {
+      "text": "since the lcm of n and C(n - 1)\nis divisible by both n and C(n - 1).",
+      "start": 1229.88,
+      "duration": 6.06
+    },
+    {
+      "text": "Here's some more data.",
+      "start": 1236.72,
+      "duration": 1.2
+    },
+    {
+      "text": "Obviously the lcms aren't primes,",
+      "start": 1243.62,
+      "duration": 2.1
+    },
+    {
+      "text": "so this sequence doesn't generate\nprimes in the same way.",
+      "start": 1245.72,
+      "duration": 2.34
+    },
+    {
+      "text": "But, because the lcm is divisible by the previous\nterm and then we're adding the previous term,",
+      "start": 1248.78,
+      "duration": 5.22
+    },
+    {
+      "text": "this means that the nth term C(n)\nis divisible by the previous term.",
+      "start": 1254.0,
+      "duration": 4.62
+    },
+    {
+      "text": "For example, C(5) is the previous term, 18,\nplus the lcm of 5 and 18.",
+      "start": 1259.46,
+      "duration": 6.18
+    },
+    {
+      "text": "So C(5) is divisible by 18.",
+      "start": 1265.64,
+      "duration": 2.82
+    },
+    {
+      "text": "So it makes sense to look at the ratio\nC(n) divided by C(n - 1).",
+      "start": 1269.06,
+      "duration": 5.4
+    },
+    {
+      "text": "This is equal to 1 plus\nthe lcm divided by C(n - 1).",
+      "start": 1274.46,
+      "duration": 4.86
+    },
+    {
+      "text": "Let's subtract 1 from this ratio,",
+      "start": 1279.32,
+      "duration": 2.28
+    },
+    {
+      "text": "so that we're looking at the value obtained\nby dividing the lcm by the previous term.",
+      "start": 1281.6,
+      "duration": 4.5
+    },
+    {
+      "text": "Let's compute some of these values.",
+      "start": 1286.1,
+      "duration": 2.1
+    },
+    {
+      "text": "Astonishingly, this number is\napparently always prime or 1!",
+      "start": 1292.88,
+      "duration": 4.62
+    },
+    {
+      "text": "And no one has proved this\nor found a counterexample yet.",
+      "start": 1297.5,
+      "duration": 2.64
+    },
+    {
+      "text": "There's good reason to think\u00a0\nthat this is much harder",
+      "start": 1300.92,
+      "duration": 2.52
+    },
+    {
+      "text": "than proving that the sequence\u00a0\nR(n) generates primes.",
+      "start": 1303.44,
+      "duration": 3.12
+    },
+    {
+      "text": "In 2015, Ruiz-Cabello showed that it's\nrelated to a difficult open question",
+      "start": 1306.56,
+      "duration": 4.2
+    },
+    {
+      "text": "about primes in arithmetic progressions.",
+      "start": 1310.76,
+      "duration": 2.22
+    },
+    {
+      "text": "I'll leave a link to the paper in the description,\nso you can check it out if you're interested.",
+      "start": 1313.64,
+      "duration": 3.48
+    }
+  ]
+}

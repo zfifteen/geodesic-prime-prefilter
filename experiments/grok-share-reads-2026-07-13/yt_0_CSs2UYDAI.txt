@@ -1,0 +1,294 @@
+00:00 Here are the first few prime numbers on
+00:01 a line, and something jumps out right at
+00:04 the start.
+00:05 >> [music]
+00:05 >> 3 5 7. Three primes in a row, and each
+00:10 one sits exactly two steps past the one
+00:12 before. A tidy little cluster of three,
+00:15 packed as tightly as primes can possibly
+00:17 be. Now, tight pairs of primes two apart
+00:21 are not rare at all. 11 and 13. 17 and
+00:25 19.
+00:26 >> [music]
+00:26 >> 29 and 31. These twin pairs keep showing
+00:29 up no matter how far out you count.
+00:32 Thousands of them. And as far as anyone
+00:34 has ever looked, they never stop coming.
+00:36 So, a pair two apart is an old familiar
+00:39 sight. But a run of three, each two
+00:42 apart, like 3 5 7, that is a different
+00:45 animal. And here is the strange part.
+00:47 You can scan the entire number line as
+00:50 far as any computer [music] has ever
+00:51 pushed, and you will never find another
+00:53 one. Not one. 3 5 and 7 is the only time
+00:58 it ever happens [music] anywhere,
+00:59 forever.
+01:01 By the end of this, you will know
+01:02 exactly why, and be able to prove it
+01:05 yourself in a single line. Before the
+01:07 reason, it is worth feeling how
+01:09 completely the search fails. Because
+01:11 your instinct says a pattern this simple
+01:13 should turn up again somewhere. [music]
+01:15 So, go looking. Start just past 7. 5 7
+01:19 9. That would do it, except 9 [music] is
+01:22 3 * 3, not prime. Try 11 13 15. The
+01:26 first two are prime, but 15 is 3 * 5.
+01:30 Push on. 17 [music] 19 21, and 21 is 3 *
+01:34 7. Jump way ahead to 101 103 105. The
+01:39 first two are both prime, and then 105
+01:41 falls apart into 3 * 35. Notice what
+01:44 keeps happening. Every single time, one
+01:47 of the three numbers is a multiple of
+01:49 three, and so the whole run collapses.
+01:51 It is never the same position, and it is
+01:53 never bad luck. A computer search runs
+01:56 this all the way out past 2 million and
+01:58 finds exactly one triple of this shape
+02:00 [music] in the entire range, the one we
+02:02 started with, 3 5 7.
+02:05 Something is actively blocking every
+02:07 other candidate. That something is not
+02:09 chance. It is a rule, and once you see
+02:11 it, you cannot unsee it. Here is the
+02:13 whole reason, and it fits in a single
+02:15 idea.
+02:17 Forget primes for a second and just take
+02:19 any three numbers spaced two apart.
+02:22 Some number, then two more, then two
+02:24 more. Look only at their remainders when
+02:26 you divide [music] by three.
+02:28 The first number leaves some remainder,
+02:31 either zero, one, or two. Add two
+02:33 [music] and the remainder shifts. Add
+02:36 two again and it shifts once more.
+02:38 By the time you have all three numbers,
+02:41 their three remainders have marched
+02:43 through [music] every possibility, zero
+02:45 and one and two in some order
+02:47 >> [music]
+02:47 >> with no repeats.
+02:49 That is forced. Three numbers two apart
+02:52 always land on all three remainders at
+02:54 once.
+02:55 >> [music]
+02:55 >> And a remainder of zero means divisible
+02:58 by three. So, one of your three numbers
+03:00 is always a multiple of three,
+03:02 guaranteed every time, no exceptions.
+03:05 Now, bring the primes back. If all three
+03:08 are supposed to be prime, [music] then
+03:09 the one that is a multiple of three has
+03:11 to be three itself because three is the
+03:14 only prime [music] that three divides.
+03:16 That pins the whole trio down. The
+03:19 smallest is three, and the run [music]
+03:21 can only be 3 5 7. Every other starting
+03:24 point puts a genuine multiple of three,
+03:27 something bigger than three, right in
+03:29 the middle of your trio [music] and
+03:30 kills it.
+03:31 That is the entire proof.
+03:33 The title says these primes defy logic,
+03:36 but it is the exact opposite. [music]
+03:38 Logic is what forbids any second copy.
+03:41 So, the natural worry is that this
+03:42 [music] dooms every tight little prime
+03:45 pattern. It does not, and seeing why is
+03:47 the fun part.
+03:49 Go back to the twins, plain pairs two
+03:51 apart. 11 and 13, take their remainders
+03:55 when [music] you divide by three. A pair
+03:57 is only two numbers, so it can only
+03:59 cover two of the three remainders, never
+04:01 all of them. There is always a remainder
+04:03 left over that neither one lands on.
+04:06 >> [music]
+04:06 >> So, a pair can dodge the multiple of
+04:08 three trap completely, and it usually
+04:10 does. Nothing forces a twin pair to
+04:12 contain a multiple of three, which is
+04:14 [music] exactly why they are free to
+04:16 keep appearing. And keep appearing they
+04:18 do.
+04:19 Below 100, there are eight twin pairs.
+04:21 Below 1,000, [music]
+04:22 35. Below a million, over 8,000 of them,
+04:26 and the count just keeps [music]
+04:27 climbing the further you go. Whether it
+04:30 climbs forever is one of the oldest open
+04:32 questions [music] in all of mathematics,
+04:34 the twin prime conjecture, and
+04:36 essentially everyone believes the answer
+04:38 is yes, even though no one has managed
+04:40 to prove it.
+04:41 The point for us is the contrast. A
+04:43 [music] trio two apart is forbidden
+04:45 after the very first one. A pair two
+04:47 apart runs on and on. And the only
+04:50 difference between them is whether the
+04:52 [music] pattern is forced to swallow a
+04:53 multiple of three. That single
+04:55 difference turns into a clean rule for
+04:57 which prime clusters are even possible,
+05:00 and it is worth stating carefully. A
+05:02 pattern of gaps is allowed to repeat
+05:04 only if it passes a test at [music]
+05:06 every prime. Take the pattern, look at
+05:09 its remainders when you divide by three,
+05:11 and it must leave at least one remainder
+05:13 unused. Then check the same thing for
+05:16 division by five, and by seven, and so
+05:18 on [music] for every prime. As long as
+05:20 the pattern always misses at least one
+05:22 remainder, nothing is forced to be
+05:24 composite, and the cluster [music] is
+05:26 free to occur again and again.
+05:28 Fail the test at even one prime, and the
+05:31 pattern [music] is dead after at most a
+05:33 single appearance. Three primes two
+05:35 apart is the pattern 0, 2, 4, and we
+05:39 just saw it uses up all three remainders
+05:41 [music]
+05:41 mod three. It fails the test at the very
+05:44 first prime.
+05:46 But watch what happens if you nudge the
+05:48 third number out. Take 0 2 6 instead, a
+05:51 pair two apart, and then a third one
+05:54 four beyond. [music] Its remainders mod
+05:56 three are zero and two. It skips the
+05:59 remainder one entirely, [music] so it
+06:01 passes, and it should be able to repeat,
+06:03 and it does. 5 7 11 11 13 17 17 19 23.
+06:11 These triples keep [music] coming
+06:13 because they were never forbidden in the
+06:15 first place. Once you have the test, you
+06:17 can hunt for the tightest legal clusters
+06:19 on purpose, and they are lovely.
+06:22 There is a mirror image of that last
+06:24 triple, the pattern 0 4 6, a prime, then
+06:28 one four steps up, then one six up. 7 11
+06:32 13 13 17 19 37 41 43.
+06:39 It passes the same test at three, so it
+06:41 too shows up forever.
+06:43 And you can go one better. Stack the two
+06:46 allowed triples together, and you get
+06:48 four primes in the tight block 0 2 6 8,
+06:51 which is the closest four primes are
+06:53 ever allowed to sit once you are past
+06:56 the very small numbers.
+06:58 5 7 11 13 is the first, then 11 13 17
+07:03 19, then a big gap and 101 103 107 109.
+07:08 Four primes packed into a span of eight.
+07:11 These quadruplets are rare, but they
+07:13 refuse to quit. There are 259 of those
+07:17 first triples alone below 100,000. Every
+07:20 one of these patterns threads the needle
+07:22 at three and at five and at every prime
+07:25 after, so nothing ever forces a
+07:27 composite into the group. They are the
+07:30 tightest clusters the rules permit, and
+07:32 the rules permit them endlessly. [music]
+07:34 All of this points at one sweeping
+07:36 statement that mathematicians believe
+07:38 ties [music] the whole subject together.
+07:40 It says that the divisibility test is
+07:42 not just necessary. It is the only thing
+07:45 that ever matters. Any pattern of gaps
+07:47 that survives the test at every prime,
+07:50 that always leaves some remainder
+07:52 unused, will occur infinitely often. In
+07:55 other words, the single reason 3 5 7
+07:58 never repeats is the multiple of three
+08:00 obstruction. And once a pattern has no
+08:03 obstruction like that anywhere, nothing
+08:05 can stop it from happening again and
+08:07 again forever. This is called the prime
+08:09 k-tuple conjecture. Written down by
+08:11 Hardy and Littlewood back in 1923.
+08:15 Now, the honest word there is
+08:16 conjecture.
+08:18 This has not been proven. It is one of
+08:20 the deepest open problems in number
+08:22 theory, and proving it would settle the
+08:24 twin prime question and a hundred others
+08:26 in a single stroke.
+08:28 But the evidence for it is enormous. The
+08:30 counts line up beautifully with what it
+08:32 predicts, and almost no one doubts
+08:34 [music] it is true. So, we are left with
+08:36 a sharp and slightly funny situation.
+08:40 The one pattern we can say something
+08:41 certain about is 3 5 7, and what we can
+08:45 say is that it is banned forever. The
+08:47 patterns we cannot quite pin down are
+08:49 all the ones that seem to go on without
+08:51 end. Even without the full conjecture,
+08:54 the last decade cracked open a piece of
+08:56 it that had been stuck for over a
+08:58 century, and it is worth telling. Nobody
+09:01 can yet prove there are infinitely many
+09:03 primes exactly two apart. But in 2013, a
+09:07 mathematician named Yitang Zhang proved
+09:09 something almost as good, and it stunned
+09:11 the field. He showed that there are
+09:13 infinitely many pairs of primes that sit
+09:15 within 70 million of each other. 70
+09:18 million sounds enormous next to two, but
+09:21 the miracle was getting any fixed number
+09:23 at all. The first finite bound in
+09:25 history on how close primes are forced
+09:28 to keep coming. And once the door was
+09:30 open, it moved fast. Within months,
+09:32 James Maynard found a sharper method and
+09:34 pulled the bound down from 70 million to
+09:37 600. A large online collaboration then
+09:40 ground it further [music] all the way
+09:42 down to 246.
+09:44 So today it is a proven fact that
+09:46 infinitely many primes come within 246
+09:49 of each other, even if we still cannot
+09:52 reach the twins at a gap of two.
+09:54 That narrow space between 246 and two is
+09:58 where one of the great unsolved problems
+10:00 now lives. And through all of it,
+10:02 sitting quietly off to the side, 3 5 7
+10:06 stays exactly as certain as it ever was.
+10:09 So that is the whole shape of it. 3 5 7
+10:12 is a run of three primes each two apart,
+10:15 and it is the only one there will ever
+10:17 be. Line up any [music] three numbers
+10:19 spaced two apart, look at their
+10:21 remainders on division by three, and one
+10:23 of them is always a multiple of three.
+10:26 For all three to be prime, that multiple
+10:28 has to be three [music] itself, which
+10:30 locks the trio down to 3 5 7 and nothing
+10:33 else.
+10:34 Every tighter question turns on that
+10:36 same test. A pair two apart skips a
+10:39 remainder and is free to repeat, which
+10:41 is why the twin primes keep coming.
+10:43 >> [music]
+10:43 >> The triples spaced to 0 2 6 and the
+10:46 quadruplets packed into a span of eight
+10:49 all thread the needle at every prime and
+10:52 are believed to run on forever. Only the
+10:54 patterns that are forced to contain a
+10:56 multiple of some prime are shut down,
+10:59 and 3 5 7 is the smallest and most
+11:01 perfect example of that. If there is one
+11:04 thing to carry away, it is that a
+11:06 pattern in the primes is impossible for
+11:08 exactly one reason, being forced to
+11:11 swallow a divisor, and possible the
+11:13 moment it escapes that trap. 3 5 7 is
+11:16 the one cluster the rules forbid
+11:18 outright, and we can be as sure it never
+11:21 returns as we are sure of anything in
+11:23 mathematics, while the twin primes right
+11:25 beside it stay open to this day. This
+11:28 was one more in a series on the
+11:29 questions the primes refuse to settle
+11:31 quietly. Stay for the rest.
