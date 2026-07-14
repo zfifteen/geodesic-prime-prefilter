@@ -1,6 +1,6 @@
 # Active Research Target
 
-**Updated:** 2026-07-13  
+**Updated:** 2026-07-14  
 **Program:** post-breakthrough: Lean formalization, external review, audit corroboration
 
 > **Separate live research goal (2026-07-13):** 50-bit public residual
@@ -78,6 +78,12 @@ square branch and not replay of certified bands.
 
 Default frontier job: falsification `4·10^8 .. 5·10^8`. Replaying the frozen
 `3·10^8 .. 4·10^8` baseline is `NO_DELTA`, not `ADVANCE`.
+
+Residual offset-540 package is measured through **RC41** (median-scaled Dual
+isolation: open/median, trail/median, dual/median) on util maxima through
+`4e8-5e8` plus the `o_q` branch-max panel. Prior RC36–RC38 retained. Prime-square
+proximity / Target S1* remains OPEN/UNRESOLVED in `PROOF.md`. Do not promote
+RC39–RC41 to theorem; do not revive fixed-band 540 or d=4 SDA.
 
 Execution root: isolated worktree `~/pgs-hourly/prime-gap-structure`  
 Human IdeaProjects dirt does not skip the activation.
