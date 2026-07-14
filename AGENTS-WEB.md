@@ -214,7 +214,7 @@ or human decision; neither overrides theorem status. Optional modes: `audit`,
 
 ## Multi-agent effort (full detail in AGENTS.md)
 
-Use slash skills only: `/expert` (4 local specialists), `/heavy` (12, ≥1
+Use slash skills only: `/expert` (4 local specialists), `/heavy` (16, ≥1
 contrarian), `/normal` (clear overlays). Analytic fan-out then leader synthesis;
 **QA last always**. Does not relax PGS research rules, proof status, or the
 universal QA gate.
