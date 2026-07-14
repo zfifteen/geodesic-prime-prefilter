@@ -1,7 +1,15 @@
 # Active Research Target
 
-**Updated:** 2026-07-10  
+**Updated:** 2026-07-13  
 **Program:** post-breakthrough: Lean formalization, external review, audit corroboration
+
+> **Separate live research goal (2026-07-13):** 50-bit public residual
+> discriminator `D` on modulus-link residual
+> `unresolved_by_reciprocal_carrier_misalignment`. Continuity pin:
+> [notes/ACTIVE_GOAL_50bit_residual_discriminator.md](notes/ACTIVE_GOAL_50bit_residual_discriminator.md).
+> Full report:
+> [reports/next-impact-task/index.html](reports/next-impact-task/index.html).
+> That goal does **not** replace this file's Lean / square-branch hourly center.
 
 ## Central Obligation: CLOSED 2026-07-05
 
@@ -20,7 +28,7 @@ w - p <= max(64, ceil(0.5 * log(q)^2))       [PROVED, all branches]
 - Lean 4: promote `near_root_exclusion_bound` and `prime_square_proximity_theorem`
   from axioms to derived theorems (`lean-4/PGS/ChamberReset.lean`)
 - External review and publication of the Prime-Square Proximity proof
-- Square-branch audit sweeps as corroboration on larger regimes (hourly queue)
+- Square-branch audit sweeps as corroboration on larger regimes (4h relay queue)
 - RSA endpoint resolver maturation (separate program track)
 
 ## Proved (do not re-litigate)
@@ -52,20 +60,27 @@ w - p <= max(64, ceil(0.5 * log(q)^2))       [PROVED, all branches]
 
 Prior certified baseline (replay = NO_DELTA): `3·10^8 .. 4·10^8` in `hourly_baseline_signature.json`.
 
-## Hourly Queue
+## Square-branch relay (historical name: hourly)
 
 Rotating queue lives in `research/00-index/continuity/hourly_queue.json`.
 The dispatcher executes **exactly one** item per activation. Items target
 audit corroboration on **new** regimes and residual structure, not proof of the
 square branch and not replay of certified bands.
 
-Contract: `research/00-index/continuity/HOURLY_RELAY_CONTRACT.md`
+| Ops field | Live value |
+| --- | --- |
+| Cadence | **Every 4 hours** (`StartInterval` = `14400`) |
+| Analytic effort | **`/heavy`** (solo; not Quartet) |
+| PGS Quartet | **Off** for this path (solo activation; do not spawn four roles) |
+| Status class | Operator preference / ops config (not theorem) |
+| Contract | `research/00-index/continuity/HOURLY_RELAY_CONTRACT.md` |
+| Continuity note | `research/00-index/continuity/notes/hourly-relay-4h-no-quartet-2026-07-13.md` |
 
 Default frontier job: falsification `4·10^8 .. 5·10^8`. Replaying the frozen
 `3·10^8 .. 4·10^8` baseline is `NO_DELTA`, not `ADVANCE`.
 
 Execution root: isolated worktree `~/pgs-hourly/prime-gap-structure`  
-Human IdeaProjects dirt does not skip the hour.
+Human IdeaProjects dirt does not skip the activation.
 
 Every activation posts to Rocket.Chat `#Prime-Gap-Structure` as `grok`.
 
@@ -85,9 +100,9 @@ with Research status and Ops status.
 1. `Agents.md` (repo root)
 2. `PROOF.md` (theorem status only)
 3. This file
-4. `HOURLY_RELAY_CONTRACT.md`
+4. `HOURLY_RELAY_CONTRACT.md` (4h schedule; `/heavy`; no Quartet on relay)
 5. Last ledger block in `square_branch_hourly.md`
 
 ## Relay Branch
 
-Hourly artifacts commit to `codex/hourly-square-branch`.
+Relay artifacts commit to `codex/hourly-square-branch`.

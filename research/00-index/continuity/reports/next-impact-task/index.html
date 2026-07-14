@@ -1,0 +1,1126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Next Impact Task · 50-bit Modulus-Link Residual Discriminator</title>
+<!-- Active goal pin: ../../notes/ACTIVE_GOAL_50bit_residual_discriminator.md -->
+<style>
+:root {
+  --ink: #15202b;
+  --muted: #5a6774;
+  --line: #d4dee6;
+  --paper: #f4f7f9;
+  --panel: #ffffff;
+  --accent: #0b5f8a;
+  --accent-soft: #e6f3f9;
+  --good: #1f6b45;
+  --warn: #8a5a00;
+  --bad: #8a2436;
+  --hyp: #4a3f8a;
+  --unres: #2f4f8a;
+  --code: #eef3f6;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+main { max-width: 980px; margin: 0 auto; padding: 28px 22px 72px; }
+header.hero {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 22px 24px;
+  margin-bottom: 18px;
+}
+header.hero h1 {
+  margin: 0 0 8px;
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  line-height: 1.2;
+}
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.lead { margin: 0; color: var(--muted); font-size: 1.02rem; }
+.meta { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+.badge.theorem { color: var(--good); background: #e8f7ee; border-color: #b9e2c8; }
+.badge.measured { color: var(--good); background: #e8f7ee; border-color: #b9e2c8; }
+.badge.audit { color: #0b5f8a; background: var(--accent-soft); border-color: #b7d7e8; }
+.badge.hypothesis { color: var(--hyp); background: #f1ecff; border-color: #d6caf8; }
+.badge.unresolved { color: var(--unres); background: #e8eefc; border-color: #c5d2f5; }
+.badge.invalidated { color: var(--bad); background: #fdecee; border-color: #f0c4cb; }
+.badge.impl { color: #2f5f7a; background: #eaf3f8; border-color: #c5dbe8; }
+nav.toc {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 18px;
+}
+nav.toc h2 { margin: 0 0 8px; font-size: 0.95rem; }
+nav.toc ol { margin: 0; padding-left: 1.25em; color: var(--muted); }
+nav.toc a { color: var(--accent); text-decoration: none; }
+nav.toc a:hover { text-decoration: underline; }
+section {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 18px 20px 20px;
+  margin-bottom: 14px;
+}
+section h2 {
+  margin: 0 0 10px;
+  font-size: 1.18rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 6px;
+}
+section h3 { margin: 16px 0 6px; font-size: 1.02rem; color: var(--accent); }
+p, li { color: var(--muted); }
+strong { color: var(--ink); }
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.92em;
+  background: var(--code);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+pre {
+  background: #f8fafc;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px 14px;
+  overflow: auto;
+  font: 12.5px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: #1f2937;
+}
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
+th, td {
+  border: 1px solid var(--line);
+  padding: 8px 9px;
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #f4f6f8; color: #334155; }
+tr:nth-child(even) { background: #fafbfc; }
+.callout {
+  border-left: 4px solid var(--accent);
+  background: var(--accent-soft);
+  padding: 12px 14px;
+  border-radius: 0 8px 8px 0;
+  margin: 12px 0;
+}
+.callout.warn { border-left-color: var(--warn); background: #fff7e8; }
+.callout.bad { border-left-color: var(--bad); background: #fdecee; }
+.callout.good { border-left-color: var(--good); background: #e8f7ee; }
+.checklist label { display: block; padding: 6px 0; color: var(--muted); }
+.checklist input { margin-right: 8px; }
+footer { margin-top: 20px; color: #64748b; font-size: 12px; }
+ul { padding-left: 1.2em; }
+li { margin: 4px 0; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 760px) { .grid2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<main>
+<header class="hero">
+  <p class="eyebrow">Continuity Scribe report · 2026-07-13 · team pressure applied</p>
+  <h1>Single most impactful next research task</h1>
+  <p class="lead">
+    Derive and pressure-test one public PGS residual discriminator from public PGSPG
+    certificate fields that either closes, structurally partitions, or honestly leaves
+    unresolved the 50-bit modulus-link residual
+    <code>unresolved_by_reciprocal_carrier_misalignment</code>.
+  </p>
+  <div class="meta">
+    <span class="badge unresolved">unresolved residual (50-bit)</span>
+    <span class="badge hypothesis">hypothesis (new public discriminator)</span>
+    <span class="badge measured">measured ladder (40/50/64)</span>
+    <span class="badge audit">audit after inference only</span>
+    <span class="badge theorem">proved pillars unchanged</span>
+    <span class="badge invalidated">invalidated paths named</span>
+  </div>
+  <p class="lead" style="margin-top:14px;font-size:14px">
+    <strong>Active goal pin for future sessions:</strong>
+    <a href="../../notes/ACTIVE_GOAL_50bit_residual_discriminator.md">notes/ACTIVE_GOAL_50bit_residual_discriminator.md</a>
+    (goal statement, residual pin, first actions, ADV-001, non-goals, file map).
+    Compact pointer:
+    <a href="../../notes/next-impact-task-2026-07-13.md">notes/next-impact-task-2026-07-13.md</a>.
+  </p>
+</header>
+
+<nav class="toc" aria-label="Report contents">
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#exec">Executive finding</a></li>
+    <li><a href="#why">Why this is the single most impactful next task</a></li>
+    <li><a href="#frame">PGS-native frame</a></li>
+    <li><a href="#state">Current state by status label</a></li>
+    <li><a href="#objectives">Exact objectives and non-goals</a></li>
+    <li><a href="#method">Method / protocol</a></li>
+    <li><a href="#accept">Acceptance criteria</a></li>
+    <li><a href="#evidence">Evidence surfaces and 10^18 policy</a></li>
+    <li><a href="#files">Files to create or modify</a></li>
+    <li><a href="#risks">Risks and shape warnings</a></li>
+    <li><a href="#invalidated">Invalidated approaches to avoid</a></li>
+    <li><a href="#checklist">Future-session checklist</a></li>
+    <li><a href="#labels">Status label index</a></li>
+    <li><a href="#pressure">Team pressure map (Auditor / Implementer / Scribe)</a></li>
+  </ol>
+</nav>
+
+<section id="exec">
+  <h2>1. Executive finding</h2>
+  <div class="callout good">
+    <p>
+      <strong>Plain English first.</strong>
+      On the live RSA endpoint-structure ladder, the 40-bit and 64-bit rungs close to public endpoint classes
+      that later factor-audit confirms. The 50-bit rung does not. The resolver reaches a named residual:
+      GWR-carrier floor transport does not line up under reciprocal closure. That residual is honest only if
+      no classical factor gate is smuggled in to make it disappear.
+    </p>
+  </div>
+  <p>
+    The single highest-force next task is therefore not another ladder, not Lean cosmetics, not generator polish,
+    and not Super-Signal salvage. It is:
+  </p>
+  <pre>public N
+  -&gt; locked PGS endpoint chain
+  -&gt; floor transport through modulus
+  -&gt; reciprocal endpoint / deadline-signature closure
+  -&gt; GWR-carrier transport fields (public only)
+  -&gt; ONE new public residual discriminator D
+  -&gt; either:
+       (A) structural certificate under D, or
+       (B) stable residual subclass under D, or
+       (C) explicit unresolved under D
+  -&gt; optional downstream factor audit only after inference</pre>
+  <p>
+    <strong>Target residual code (current taxonomy):</strong>
+    <code>unresolved_by_reciprocal_carrier_misalignment</code>
+    (see <code>research/06-cryptology-rsa/experiments/live-solver/rsa-v3/RESIDUAL_TAXONOMY.md</code>).
+  </p>
+  <p>
+    <strong>Pinned adversarial honesty check:</strong>
+    ADV-001
+    (<code>research/06-cryptology-rsa/experiments/live-solver/rsa-v3/falsification/ADV-001_carrier_misalignment.md</code>).
+    The 50-bit golden residual must remain unresolved under the current rule unless a new public discriminator
+    honestly changes residual partition, not classical smuggling.
+  </p>
+  <h3>Live residual pin (reproduced 2026-07-13, HEAD <code>3825ff5c</code>)</h3>
+  <p>
+    Orchestrator + Verifier re-ran rsa-v3 on the regression fixtures. Results are
+    <span class="badge measured">measured smoke on this commit</span>, not program-level verified language.
+  </p>
+  <table>
+    <thead>
+      <tr><th>Case</th><th>Public outcome</th><th>Key diagnostics</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>rsa_v2_40bit_static_001</code></td>
+        <td><code>endpoint_class_by_reciprocal_deadline_signature_correction</code></td>
+        <td>endpoint class emitted; residual_code null; ~164 ms</td>
+      </tr>
+      <tr>
+        <td><code>rsa_v2_50bit_static_001</code></td>
+        <td><code>unresolved_by_reciprocal_carrier_misalignment</code></td>
+        <td>
+          <code>endpoint_chain_steps = 350</code>; stage
+          <code>gwr_carrier_transport_closure</code>;
+          GWR fields present; floor-transport predicate fails with
+          <code>delta=30;bound=28;transported=32059651;upper_w=32059621</code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <pre>Predicate that fails on the 50-bit golden residual:
+  gwr_carrier_floor_transport_within_gap_bound
+  (gwr_carrier_closure.py)
+
+  transported = floor(N / lower.carrier_w)
+  delta       = |transported - upper.carrier_w|
+  bound       = max(20, floor(1.2 * lower.gap_offset))   # code: max(20, (6*gap)//5)
+
+  50-bit measured fail:
+    delta = 30
+    bound = 28
+    transported = 32059651
+    upper_w     = 32059621
+
+  Meaning: certificates and GWR fields exist; reciprocal floor image of the lower
+  carrier misses the upper carrier by 2 units beyond the current public bound.</pre>
+  <p>
+    Status of this finding:
+    <span class="badge hypothesis">hypothesis task selection under team pressure</span>,
+    grounded in
+    <span class="badge measured">measured RSA v2/v3 residual surface</span>
+    and
+    <span class="badge unresolved">unresolved 50-bit residual</span>.
+    Not a theorem. Not RSA-scale solved.
+  </p>
+</section>
+
+<section id="why">
+  <h2>2. Why this is the single most impactful next task</h2>
+  <h3>Impact definition used</h3>
+  <p>
+    Maximum force on a live, named, unresolved PGS residual class, where the outcome either produces a new public
+    structural discriminator, falsifies a live residual hypothesis cleanly, or partitions the residual honestly,
+    without classical inference and without theorem inflation.
+  </p>
+  <h3>Why this residual wins</h3>
+  <ul>
+    <li>
+      It is the honest failure mode that separates endpoint-structure law from factor theater
+      (<span class="badge measured">measured</span> 40/64 true, 50 false on committed audit).
+    </li>
+    <li>
+      It matches <code>AGENTS.md</code> Current Project Center: endpoint-chain, modulus-link residual, structural certificate.
+    </li>
+    <li>
+      START_HERE already names the next live RSA v2 task as a stronger transported certificate invariant from public PGSPG fields.
+    </li>
+    <li>
+      The residual taxonomy and ADV-001 falsifier already exist, so the package can be falsified this week.
+    </li>
+    <li>
+      Closing or partitioning this residual changes the cryptology residual map whether the discriminator succeeds or fails.
+    </li>
+  </ul>
+  <h3>Alternatives considered and rejected as #1</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Candidate</th>
+        <th>Who pushed it</th>
+        <th>Why not #1 now</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>LSCD multi-regime residual pressure (co-minimal level-set spill dichotomy)</td>
+        <td>Implementer preferred #1</td>
+        <td>
+          High value residual geometry after UBC, but lower force than the live modulus-link residual under
+          program center. Keep as secondary package after or beside Rank-1, not a substitute.
+        </td>
+        <td><span class="badge hypothesis">hypothesis / secondary</span></td>
+      </tr>
+      <tr>
+        <td>Public co-landing gates forcing square-fiber survivor lanes (gap-compatibility bridge)</td>
+        <td>Scribe first draft</td>
+        <td>
+          Real measured bridge residual, but it is a PEDK lane-matrix object. It is not the named 50-bit
+          carrier-misalignment residual on the live resolver. Valid follow-on, not the single center.
+        </td>
+        <td><span class="badge measured">measured secondary</span></td>
+      </tr>
+      <tr>
+        <td>Residue-certificate V3 new modulus selector after V2 invalidation</td>
+        <td>Multiplicative-web track</td>
+        <td>
+          V2 ranking is invalidated (0/20 unique wins). A new certificate object is valid research, but it is
+          not the live resolver residual that currently blocks honest endpoint closure claims.
+        </td>
+        <td><span class="badge invalidated">V2 dead</span> / <span class="badge unresolved">V3 open secondary</span></td>
+      </tr>
+      <tr>
+        <td>Lean promotion of PSP axioms / S1 formalization gap</td>
+        <td>ACTIVE_TARGET</td>
+        <td>
+          Formalization hygiene. Do not demote <code>PROOF.md</code> theorems. Not residual breakthrough force.
+        </td>
+        <td><span class="badge impl">formalization</span></td>
+      </tr>
+      <tr>
+        <td>Square-branch audit on new regimes</td>
+        <td>Hourly queue</td>
+        <td>Corroboration only. PSP/UBC are already theorem. Avoid NO_DELTA theater.</td>
+        <td><span class="badge audit">audit corroboration</span></td>
+      </tr>
+      <tr>
+        <td>H-210 / H-tau16 CE pressure or Super-Signal salvage</td>
+        <td>Modular residual salvage optional track</td>
+        <td>Super-Signal invalidated. Optional science. Wrong shape as program center.</td>
+        <td><span class="badge invalidated">SS dead</span> / <span class="badge hypothesis">optional seats</span></td>
+      </tr>
+      <tr>
+        <td>256-bit competition / hybrid prime-walk recovery</td>
+        <td>Historical geofac plans</td>
+        <td>Classical search gravity. Veto as "most impactful" under auditor hard list.</td>
+        <td><span class="badge invalidated">forbidden shape as center</span></td>
+      </tr>
+      <tr>
+        <td>Generator rework / decade ladder re-run</td>
+        <td>Production history</td>
+        <td>Completed milestone. Not active science center unless user asks.</td>
+        <td><span class="badge measured">production measured</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <p>
+      <strong>Team consensus under Auditor + Verifier pressure.</strong>
+      Auditor Rank-1 and Verifier Rank-1 agree: force the 50-bit modulus-link residual.
+      Implementer Rank-1 (LSCD multi-regime pressure) remains the best narrow geometry package if the user wants
+      lower blast radius first; it is secondary to program center. Scribe initially elevated co-landing; that is
+      retained as secondary cryptology structure, not the single next task.
+    </p>
+  </div>
+</section>
+
+<section id="frame">
+  <h2>3. PGS-native frame for the task</h2>
+  <h3>Observable objects</h3>
+  <ul>
+    <li>Public modulus <code>N</code>.</li>
+    <li><code>floor(sqrt(N))</code> used only as orientation, not as a candidate chamber.</li>
+    <li>Previous public endpoint before that orientation point (chain start).</li>
+    <li>PGSPG reset certificates at successive public endpoints (anchor, reset endpoint, carrier, lock, tails, deadline, signature).</li>
+    <li>Floor-transported images of certificate coordinates through <code>N</code>.</li>
+    <li>Named residual when reciprocal GWR-carrier transport fails to close.</li>
+  </ul>
+  <h3>Ordinary-language mechanism</h3>
+  <p>
+    Walk the public endpoint chain. At each step, read the certificate of the current endpoint, transport
+    selected certificate coordinates through the reciprocal floor map of <code>N</code>, and ask whether the
+    opposite-side certificate and GWR-carrier fields close. When they do not, emit a residual code. The new
+    work is to invent one public discriminator <code>D</code> built only from those certificate fields so that
+    the 50-bit residual either closes under <code>D</code>, splits into a named subclass, or stays unresolved
+    for a structural reason that 40-bit and 64-bit cases still pass.
+  </p>
+  <h3>Project terms</h3>
+  <table>
+    <thead><tr><th>Plain object</th><th>Project term</th></tr></thead>
+    <tbody>
+      <tr><td>Local endpoint certificate from public chain</td><td>PGSPG reset certificate</td></tr>
+      <tr><td><code>floor(N / x)</code> image of certificate coordinates</td><td>Floor transport / modulus-link</td></tr>
+      <tr><td>Matching opposite certificates under transport</td><td>Reciprocal endpoint closure</td></tr>
+      <tr><td>Selected min-divisor carrier fields under transport</td><td>GWR-carrier transport closure</td></tr>
+      <tr><td>Named non-closure under the rule</td><td>Modulus-link residual</td></tr>
+      <tr><td>New public predicate on certificate fields only</td><td>Residual discriminator <code>D</code></td></tr>
+      <tr><td>Honest residual that must not vanish classically</td><td>ADV-001 carrier-misalignment residual</td></tr>
+    </tbody>
+  </table>
+  <h3>Formal target shape (hypothesis, not theorem)</h3>
+  <pre>Let C_l, C_u be public PGSPG certificates related by T_N(x) = floor(N / x).
+Let F_public be the currently implemented closure family
+  (reset / deadline-signature / GWR-carrier transport predicates).
+
+Hypothesis family (choose one concrete D before coding):
+  D is a deterministic predicate on public certificate fields of C_l, C_u and their T_N images.
+
+Outcomes for the pinned 50-bit case and control ladder cases:
+  (A) resolve under F_public union {D} with structural certificate only
+  (B) remain unresolved, but residual migrates to a new stable residual code R_D
+  (C) remain unresolved under the same residual family with stronger diagnostics
+
+Forbidden:
+  D uses audit factors, gcd, product closure, N % candidate, isprime, or hidden fixtures.</pre>
+  <h3>Required first frame</h3>
+  <pre>PGS objects (endpoint chain, certificates, carriers)
+  -&gt; PGS invariants (floor transport, reciprocal closure, GWR-carrier fields)
+  -&gt; named public discriminator D
+  -&gt; structural certificate | residual subclass | unresolved</pre>
+</section>
+
+<section id="state">
+  <h2>4. Current state (theorem / measured / unresolved)</h2>
+  <table>
+    <thead>
+      <tr><th>Object</th><th>Status</th><th>Limit</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Direct next-prime; GWR maximizer; universal bounded compression; Prime-Square Proximity</td>
+        <td><span class="badge theorem">theorem</span></td>
+        <td><code>PROOF.md</code>. Bounds selected-witness offset, not RSA factorization. Do not call square branch "theorem-unresolved".</td>
+      </tr>
+      <tr>
+        <td>Modular zero lemma on fixed vector <code>M_v1</code></td>
+        <td><span class="badge theorem">theorem</span></td>
+        <td>Fixed vector only. Not a twin lock.</td>
+      </tr>
+      <tr>
+        <td>Super-Signal twin lock</td>
+        <td><span class="badge invalidated">invalidated</span></td>
+        <td>Pinned CEs. Do not use as termination.</td>
+      </tr>
+      <tr>
+        <td>RSA endpoint structure law on live ladder</td>
+        <td><span class="badge measured">measured</span></td>
+        <td>Not a universal RSA theorem (START_HERE scope limit).</td>
+      </tr>
+      <tr>
+        <td>40-bit and 64-bit rungs</td>
+        <td><span class="badge measured">measured</span> + <span class="badge audit">audit factor true</span></td>
+        <td>Endpoint class + later audit. Not proof of universality.</td>
+      </tr>
+      <tr>
+        <td>50-bit rung residual</td>
+        <td><span class="badge unresolved">unresolved</span></td>
+        <td>
+          Live pin: residual_code
+          <code>unresolved_by_reciprocal_carrier_misalignment</code>,
+          350 chain steps, floor-transport
+          <code>delta=30 &gt; bound=28</code>.
+          Must stay honest under ADV-001.
+        </td>
+      </tr>
+      <tr>
+        <td>Default live <code>rsa-v2/output/summary.json</code></td>
+        <td><span class="badge impl">stale / empty on HEAD</span></td>
+        <td>
+          File is <code>{"cases": []}</code> with empty inference/survivor rows.
+          Do not treat that directory as the evidence package. Use PEDK
+          (<code>research/06-cryptology-rsa/experiments/pedk/rsa-v2/output/pedk_rows.jsonl</code>),
+          fixtures, and a fresh dated <code>rsa-v3/output/</code> run under the current commit.
+        </td>
+      </tr>
+      <tr>
+        <td>Generator decade ladder <code>10^8..10^18</code> (256/decade)</td>
+        <td><span class="badge measured">measured</span> with executed <code>10^18</code></td>
+        <td>
+          Artifact check: 2816/2816 exact, 0 false emit. Generator family only.
+          Does not transfer verified language to cryptology residuals.
+        </td>
+      </tr>
+      <tr>
+        <td>A1 / rsa-v3 residual taxonomy + residual ledger</td>
+        <td><span class="badge impl">implementation + contract</span></td>
+        <td>Unresolved is a successful contract outcome when invariants do not close.</td>
+      </tr>
+      <tr>
+        <td>New public discriminator <code>D</code> that partitions 50-bit residual</td>
+        <td><span class="badge hypothesis">hypothesis</span> / <span class="badge unresolved">unresolved</span></td>
+        <td>This report's task. Not yet derived.</td>
+      </tr>
+      <tr>
+        <td>Transported certificate frontier invariant as reviewed law</td>
+        <td><span class="badge hypothesis">hypothesis target</span></td>
+        <td><code>TRANSPORTED_CERTIFICATE_INVARIANT.md</code> defines the research target; not a proved law.</td>
+      </tr>
+      <tr>
+        <td>LSCD co-minimal spill dichotomy</td>
+        <td><span class="badge hypothesis">hypothesis</span> measured on <code>11..2e6</code></td>
+        <td>Secondary package. Full LSC invalidated. Leftmost UBC remains theorem.</td>
+      </tr>
+      <tr>
+        <td>Square-fiber co-landing survivor match</td>
+        <td><span class="badge measured">measured</span></td>
+        <td>PEDK matrix signal. Not live 50-bit residual closure.</td>
+      </tr>
+      <tr>
+        <td>V2 residue-certificate GWR ranking</td>
+        <td><span class="badge invalidated">invalidated</span></td>
+        <td>0/20 unique structural wins; do not retune.</td>
+      </tr>
+      <tr>
+        <td>RSA-scale factorization / RH / PNT completion</td>
+        <td><span class="badge unresolved">unresolved</span> / out of claim</td>
+        <td>Not claimed by this package.</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="callout warn">
+    <p>
+      <strong>Continuity map hygiene.</strong>
+      <code>research/00-index/status-map.md</code> still contains a Phase 4 line that can be read as "square branch
+      remains unresolved." <code>PROOF.md</code> controls: Prime-Square Proximity and universal bounded compression
+      are theorem. Future sessions must not inherit the stale map line as theorem debt.
+    </p>
+  </div>
+</section>
+
+<section id="objectives">
+  <h2>5. Exact objectives and non-goals</h2>
+  <h3>Objectives</h3>
+  <ol>
+    <li>
+      Freeze residual partition for the pinned golden / ladder cases under current taxonomy
+      (40-bit, 50-bit, 64-bit, plus A1 regression fixtures). Status:
+      <span class="badge measured">measured baseline freeze</span>.
+    </li>
+    <li>
+      Propose exactly one public discriminator <code>D</code> built from allowed PGSPG certificate fields
+      (carrier, lock, tail, deadline frontier class, transported coordinate equalities, profile counts).
+      Status: <span class="badge hypothesis">hypothesis</span>.
+    </li>
+    <li>
+      Pre-register three outcomes for the 50-bit case: resolve under public rule, residual subclass migration,
+      or honest unresolved. Status: <span class="badge unresolved">contract</span>.
+    </li>
+    <li>
+      Implement <code>D</code> in rsa-v3 inference path only as public predicate evaluation; keep residual ledger.
+      Status: <span class="badge impl">implementation</span>.
+    </li>
+    <li>
+      Keep ADV-001 green: residual does not vanish by classical smuggling. Status:
+      <span class="badge audit">adversarial audit</span>.
+    </li>
+    <li>
+      Re-run 40-bit and 64-bit controls: they must not lose structural closure under <code>D</code> unless residual
+      migration is intentional and documented. Status: <span class="badge measured">control surface</span>.
+    </li>
+    <li>
+      Report with strict status separation. No theorem edit to <code>PROOF.md</code>. No RSA-scale claim.
+    </li>
+  </ol>
+  <h3>Non-goals</h3>
+  <ul>
+    <li>Do not factor RSA challenges or claim RSA-scale solution.</li>
+    <li>Do not use verified / validated language without executed <code>10^18</code> package for this claim family.</li>
+    <li>Do not use gcd, product closure, divisibility selectors, Miller-Rabin, or factor APIs inside inference.</li>
+    <li>Do not revive Super-Signal, fixed chambers around isqrt, or hidden-factor fixtures.</li>
+    <li>Do not expand into 256-bit competition theater as the success metric.</li>
+    <li>Do not demote UBC / PSP / GWR / next-prime.</li>
+    <li>Do not replace this task with LSCD, co-landing, or Lean work unless the user overrides.</li>
+  </ul>
+</section>
+
+<section id="method">
+  <h2>6. Method / protocol (step by step)</h2>
+  <h3>Phase 0. Baseline freeze (no new rule yet)</h3>
+  <ol>
+    <li>
+      Run current A1 / rsa-v3 resolver on golden and regression fixtures:
+      <pre>python3 research/06-cryptology-rsa/experiments/live-solver/rsa-v3/run_resolver.py \
+  --cases research/06-cryptology-rsa/experiments/live-solver/rsa-v3/fixtures/regression_cases.jsonl \
+  --output-dir research/06-cryptology-rsa/experiments/live-solver/rsa-v3/output/baseline_freeze</pre>
+    </li>
+    <li>Record residual codes, certificate presence, and step indices for 40/50/64 and related fixtures.</li>
+    <li>Confirm ADV-001 test still requires 50-bit residual honesty:
+      <code>test_a1_endpoint_resolver_adversarial.py::test_adv_001_known_carrier_misalignment_stays_unresolved</code>.
+    </li>
+  </ol>
+  <h3>Phase 1. Public field inventory</h3>
+  <ol>
+    <li>
+      Enumerate allowed fields from <code>TRANSPORTED_CERTIFICATE_INVARIANT.md</code> and
+      <code>PGS_CERTIFICATE.md</code> (anchor, reset endpoint, carrier_w/d, lock offsets, tails, deadlines,
+      signatures as public diagnostics, transported equalities).
+    </li>
+    <li>
+      Diff 50-bit false-positive certificate rows against 64-bit true rows using existing analyses:
+      <code>MUTUAL_CLOSURE_FALSE_POSITIVE_ANALYSIS.md</code>,
+      <code>STEP2_TAIL_AND_CARRIER_TRANSPORT_ANALYSIS.md</code>.
+    </li>
+    <li>
+      Select one concrete public candidate for <code>D</code>. Start from the live miss, not from classical
+      factor geometry. The sharpest measured miss is:
+      <code>gwr_carrier_floor_transport_within_gap_bound</code> with
+      <code>delta=30</code> and <code>bound=28</code> after 350 chain steps, while GWR fields are present and
+      first-tail / lower-lock / profile-count predicates are not the rejecting stage on this residual row.
+    </li>
+    <li>
+      Examples of allowed shapes (still hypothesis until tested): revised public transported-carrier proximity
+      bound derived from certificate geometry (not from factors); first-tail reciprocal proximity retune only if
+      diagnostics show it is the rejecting stage; lower-lock dominance; frontier-class tuple match in both
+      directions; deadline-margin asymmetry gate expressed without hidden factors; dual-direction carrier
+      transport (require both <code>floor(N/lower_w)~upper_w</code> and <code>floor(N/upper_w)~lower_w</code>
+      with public bounds).
+    </li>
+    <li>
+      Write the candidate as a one-page HTML contract before coding. The contract must name: allowed fields,
+      exact predicate, expected residual migration code (if any), and what would falsify <code>D</code> this week.
+    </li>
+  </ol>
+  <h3>Phase 2. Pre-register falsifiers and acceptance</h3>
+  <ol>
+    <li>50-bit resolves only if public <code>D</code> closes without audit factors in inputs.</li>
+    <li>If 50-bit still fails, residual code must remain present or migrate with a taxonomy note.</li>
+    <li>40-bit and 64-bit must keep structural closure or document intentional residual migration with reasons.</li>
+    <li>ADV-001 fails the package if residual disappears only when classical selectors are present.</li>
+  </ol>
+  <h3>Phase 3. Implement one narrow path</h3>
+  <ol>
+    <li>Add <code>D</code> evaluation at the GWR-carrier / reciprocal transport stage in rsa-v3.</li>
+    <li>Emit residual diagnostics required by taxonomy for every unresolved path.</li>
+    <li>Do not add fallback search, random search, or product checks in inference.</li>
+  </ol>
+  <h3>Phase 4. Measure and classify</h3>
+  <ol>
+    <li>Re-run regression + adversarial suite.</li>
+    <li>Classify package:
+      <code>residual_closed_public</code>,
+      <code>residual_subclassed</code>,
+      <code>residual_honest_unresolved</code>,
+      or
+      <code>invalidated_by_classical_smuggling</code>.
+    </li>
+    <li>Optional downstream factor audit only after public outputs exist.</li>
+  </ol>
+  <h3>Phase 5. Continuity writeback</h3>
+  <ol>
+    <li>Update residual taxonomy only if a new residual code is introduced.</li>
+    <li>Write measured summary under rsa-v3 output and a short continuity note.</li>
+    <li>Do not edit <code>PROOF.md</code>.</li>
+  </ol>
+</section>
+
+<section id="accept">
+  <h2>7. Acceptance criteria (measurable)</h2>
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Criterion</th><th>Pass condition</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>A1</td>
+        <td>Baseline freeze committed</td>
+        <td>JSONL residual ledger for regression fixtures exists before <code>D</code> lands</td>
+      </tr>
+      <tr>
+        <td>A2</td>
+        <td>Exactly one public <code>D</code></td>
+        <td>Contract names one predicate; no multi-rule portfolio as the deliverable</td>
+      </tr>
+      <tr>
+        <td>A3</td>
+        <td>Public-only inference</td>
+        <td>No audit factors, gcd, product, isprime, N%candidate in inference path (static review + tests)</td>
+      </tr>
+      <tr>
+        <td>A4</td>
+        <td>ADV-001 honesty</td>
+        <td>Adversarial test green: 50-bit residual does not vanish by smuggling</td>
+      </tr>
+      <tr>
+        <td>A5</td>
+        <td>Control ladder</td>
+        <td>40-bit and 64-bit outcomes documented; no silent regressions</td>
+      </tr>
+      <tr>
+        <td>A6</td>
+        <td>50-bit outcome pre-registered</td>
+        <td>One of: public resolve, residual subclass, honest unresolved (with residual code)</td>
+      </tr>
+      <tr>
+        <td>A7</td>
+        <td>Claim language</td>
+        <td>
+          No verified/validated/program-level measured-pass without executed 10^18 package.
+          Use measured / unresolved / hypothesis only as appropriate.
+        </td>
+      </tr>
+      <tr>
+        <td>A8</td>
+        <td>Theorem fidelity</td>
+        <td>No PROOF.md demotion or Super-Signal revival</td>
+      </tr>
+      <tr>
+        <td>A9</td>
+        <td>Unit/adversarial suite</td>
+        <td>
+          Focused A1 tests pass:
+          <code>python3 -m pytest research/06-cryptology-rsa/tests/test_a1_endpoint_resolver_*.py research/06-cryptology-rsa/tests/test_a1_certificate_verifier.py -q</code>
+        </td>
+      </tr>
+      <tr>
+        <td>A10</td>
+        <td>Scope bound</td>
+        <td>Prose states: measured RSA endpoint-structure residual work, not universal RSA theorem</td>
+      </tr>
+      <tr>
+        <td>A11</td>
+        <td>40-bit pin (Verifier must)</td>
+        <td>
+          Live resolve to deadline-signature class with endpoints matching
+          <code>(1048559, 1048589)</code> (or documented residual migration with reason)
+        </td>
+      </tr>
+      <tr>
+        <td>A12</td>
+        <td>50-bit residual diagnostics (Verifier must)</td>
+        <td>
+          Residual ledger row includes residual_code plus carrier diagnostics:
+          bound, delta, transported, upper_w, step_index, stage.
+          If residual disappears, structural certificate fields + content hash required;
+          no classical gate on inference path.
+        </td>
+      </tr>
+      <tr>
+        <td>A13</td>
+        <td>64-bit pin (Verifier must)</td>
+        <td>
+          Live run or committed machine-readable row: mutual-closure endpoints matching audit pair
+          <code>(3221225473, 3221275501)</code>, or explicit residual. Prose-only is insufficient.
+          Note: full 64-bit live re-run can exceed several minutes; PEDK may pin until live re-run completes.
+        </td>
+      </tr>
+      <tr>
+        <td>A14</td>
+        <td>Taxonomy stability (Verifier must)</td>
+        <td>
+          Every unresolved emission uses a code from RESIDUAL_TAXONOMY.md, or a PR that adds a named new code
+          with meaning + required diagnostics. No free-text failure.
+        </td>
+      </tr>
+      <tr>
+        <td>A15</td>
+        <td>Non-empty committed output package (Verifier must)</td>
+        <td>
+          Commit non-empty <code>inference_rows.jsonl</code>, <code>residuals.jsonl</code>,
+          <code>summary.json</code> under a dated output dir. Do not leave live
+          <code>rsa-v2/output</code> empty cases as the only public surface.
+        </td>
+      </tr>
+      <tr>
+        <td>A16</td>
+        <td>Rate claims require corpus size</td>
+        <td>
+          Any residual-rate claim needs N≥20 predeclared public cases (or smaller toy with
+          <strong>no</strong> rate claims). Histogram + bit regimes + git commit in summary.json.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>Success is not only "50-bit factors"</h3>
+  <p>
+    An accepted package may leave 50-bit unresolved if it produces a cleaner residual subclass or stronger public
+    obstruction language. That is scientific force. Converting residual into factor_found via classical gates is failure.
+  </p>
+  <div class="callout good">
+    <p>
+      <strong>Highest-leverage microscopic target.</strong>
+      On HEAD, the residual is already sharp: fields present, transport miss of two units past the public bound
+      (<code>30 &gt; 28</code>). Prefer a public geometric repair or a named subclass that predicts exactly this
+      miss class over a broad new search architecture.
+    </p>
+  </div>
+</section>
+
+<section id="evidence">
+  <h2>8. Evidence surfaces required (including 10^18 policy)</h2>
+  <h3>Immediate package (allowed without 10^18)</h3>
+  <ul>
+    <li>
+      RSA v2/v3 live ladder fixtures: 40-bit, 50-bit, 64-bit
+      (<span class="badge measured">measured on those rungs only</span>).
+    </li>
+    <li>A1 regression fixtures and golden structural certificate for 40-bit.</li>
+    <li>ADV-001 adversarial residual honesty check.</li>
+    <li>Optional small held-out public moduli of similar bit width, predeclared.</li>
+  </ul>
+  <div class="callout warn">
+    <p>
+      <strong>Mandatory 10^18 evidence surface (program policy).</strong>
+      Without an executed surface at magnitude <code>10^18</code> in the same evidence package, do not use:
+      verified, validated, validation pass, implementation verified/validated, or program-level measured-pass /
+      audit-pass language as verification of this residual discriminator.
+    </p>
+    <p>
+      Allowed weaker labels: measured on regime R, local check, smoke, partial surface, residual honest on band B,
+      unresolved at high scale.
+    </p>
+    <p>
+      This policy does not downgrade theorems in <code>PROOF.md</code>. A later high-scale package, if sought, must
+      define a domain-specific executed <code>10^18</code>-scale artifact path for this residual family. Configured
+      ladders do not count. A <code>10^18</code> measured pass still does not prove RH, PNT, or RSA-scale factorization.
+    </p>
+  </div>
+  <h3>Surfaces to keep separate</h3>
+  <ul>
+    <li>Generator decade ladder through 10^18: production generator evidence only.</li>
+    <li>Square-branch audit bands: corroboration of proved proximity, not residual discriminator proof.</li>
+    <li>LSCD <code>11..2e6</code>: secondary residual geometry package.</li>
+  </ul>
+</section>
+
+<section id="files">
+  <h2>9. Files to create or modify</h2>
+  <h3>Primary implementation tree (existing)</h3>
+  <pre>research/06-cryptology-rsa/experiments/live-solver/rsa-v3/
+  ALGORITHM.md                         # document D stage
+  RESIDUAL_TAXONOMY.md                 # only if new residual code
+  gwr_carrier_closure.py               # primary candidate site for D
+  residual.py / resolver.py            # residual emission
+  falsification/ADV-001_...md          # keep honesty contract
+  fixtures/regression_cases.jsonl
+  output/baseline_freeze/              # create
+  output/discriminator_D/              # create
+  docs-or-local:
+    PUBLIC_RESIDUAL_DISCRIMINATOR_D.html  # freeze contract (create)</pre>
+  <h3>Supporting reads (do not rewrite as theorems)</h3>
+  <ul>
+    <li><code>research/06-cryptology-rsa/docs/endpoint_structure_law.md</code></li>
+    <li><code>research/06-cryptology-rsa/experiments/proof-workbenches/rsa-v2/TRANSPORTED_CERTIFICATE_INVARIANT.md</code></li>
+    <li><code>research/06-cryptology-rsa/experiments/live-solver/rsa-v2/MUTUAL_CLOSURE_FALSE_POSITIVE_ANALYSIS.md</code></li>
+    <li><code>research/06-cryptology-rsa/experiments/live-solver/rsa-v2/STEP2_TAIL_AND_CARRIER_TRANSPORT_ANALYSIS.md</code></li>
+    <li><code>research/20-enhancement-roadmap/a1-rsa-endpoint-resolver/index.html</code></li>
+  </ul>
+  <h3>Continuity surfaces for this report</h3>
+  <ul>
+    <li>Written: <code>research/00-index/continuity/reports/next-impact-task/index.html</code></li>
+    <li>Pointer: <code>research/00-index/continuity/notes/next-impact-task-2026-07-13.md</code></li>
+  </ul>
+  <h3>Do not modify for this task</h3>
+  <ul>
+    <li><code>PROOF.md</code> theorem statements</li>
+    <li>Production generator emission contract</li>
+    <li>Invalidated Super-Signal or V2 residue-certificate ranking probes (historical)</li>
+  </ul>
+</section>
+
+<section id="risks">
+  <h2>10. Risks and shape warnings</h2>
+  <div class="callout bad">
+    <p><strong>Shape feels wrong:</strong> the residual is unresolved but the prose sounds solved.</p>
+    <p>Corrective action: keep residual codes; never write factor recovery as inference success.</p>
+  </div>
+  <div class="callout bad">
+    <p><strong>Shape feels wrong:</strong> this is translating a PGS law back into classical candidate testing.</p>
+    <p>Corrective action: if D uses gcd, product, isprime, or candidate walks, reject the draft.</p>
+  </div>
+  <div class="callout bad">
+    <p><strong>Shape feels wrong:</strong> this is called verified or validated without an executed 10^18 surface.</p>
+    <p>Corrective action: drop those words; state exact weaker regime.</p>
+  </div>
+  <div class="callout warn">
+    <p><strong>Shape feels wrong:</strong> progress theater via 256-bit ladders without a new public invariant.</p>
+    <p>Corrective action: force residual partition first on the named 50-bit class.</p>
+  </div>
+  <div class="callout warn">
+    <p><strong>Shape feels wrong:</strong> deep-band injection of factor-shaped priors marketed as pure PGS discovery.</p>
+    <p>Corrective action: keep seeding external and audited, never as silent inference.</p>
+  </div>
+  <div class="callout warn">
+    <p><strong>Shape feels wrong:</strong> Super-Signal or twin lock used to terminate residual states.</p>
+    <p>Corrective action: Super-Signal is invalidated. Residual-open stays unresolved under modular certificates.</p>
+  </div>
+  <h3>Technical risks</h3>
+  <ul>
+    <li>Discriminator overfits 40 vs 50 vs 64 bit idiosyncrasies (scale-specific gate).</li>
+    <li>False "closure" that still fails factor audit while claiming structural resolve without residual honesty.</li>
+    <li>Silent residual migration without taxonomy update.</li>
+    <li>Breaking 40/64 structural certificates when tightening 50-bit rejection.</li>
+  </ul>
+</section>
+
+<section id="invalidated">
+  <h2>11. Invalidated approaches to avoid</h2>
+  <table>
+    <thead>
+      <tr><th>Approach</th><th>Why dead</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Fixed additive chamber around isqrt(N)</td>
+        <td>Invalid solver shape replaced by endpoint-chain traversal</td>
+        <td><span class="badge invalidated">invalidated</span></td>
+      </tr>
+      <tr>
+        <td>Budgeted multi-endpoint walk as coverage</td>
+        <td>Coverage is not certificate closure</td>
+        <td><span class="badge invalidated">invalidated</span></td>
+      </tr>
+      <tr>
+        <td>Product closure / gcd / divisibility as inference</td>
+        <td>Forbidden classical gates under AGENTS</td>
+        <td><span class="badge invalidated">forbidden as inference</span></td>
+      </tr>
+      <tr>
+        <td>Super-Signal twin lock termination</td>
+        <td>Pinned counterexamples in PROOF.md</td>
+        <td><span class="badge invalidated">invalidated</span></td>
+      </tr>
+      <tr>
+        <td>Broad shadow selector (PEDK Round 19)</td>
+        <td>Survivors contaminated</td>
+        <td><span class="badge invalidated">invalidated</span></td>
+      </tr>
+      <tr>
+        <td>V2 residue GWR deviation ranking</td>
+        <td>0/20 unique structural wins</td>
+        <td><span class="badge invalidated">invalidated</span></td>
+      </tr>
+      <tr>
+        <td>Hidden-factor-bounded candidate streams</td>
+        <td>Audit-bounded hit counting, not public selection</td>
+        <td><span class="badge invalidated">invalidated pattern</span></td>
+      </tr>
+      <tr>
+        <td>Fixed cutoff map {2:44, 4:60, 6:60}</td>
+        <td>False; square-branch counterexamples</td>
+        <td><span class="badge invalidated">invalidated</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="checklist">
+  <h2>12. Checklist for a future session (no chat context required)</h2>
+  <div class="checklist">
+    <label><input type="checkbox"> Read root <code>Agents.md</code> and <code>PROOF.md</code> (theorem authority only).</label>
+    <label><input type="checkbox"> Read this report: <code>research/00-index/continuity/reports/next-impact-task/index.html</code>.</label>
+    <label><input type="checkbox"> Read rsa-v3 README, ALGORITHM, RESIDUAL_TAXONOMY, ADV-001.</label>
+    <label><input type="checkbox"> Read TRANSPORTED_CERTIFICATE_INVARIANT and 50-bit false-positive analyses.</label>
+    <label><input type="checkbox"> Freeze baseline residual ledger before coding D.</label>
+    <label><input type="checkbox"> Write one-page public contract for exactly one D.</label>
+    <label><input type="checkbox"> Pre-register 50-bit outcomes: close / subclass / honest unresolved.</label>
+    <label><input type="checkbox"> Implement D on public certificate fields only.</label>
+    <label><input type="checkbox"> Run A1 unit + adversarial tests; keep ADV-001 green.</label>
+    <label><input type="checkbox"> Re-measure 40/50/64 outcomes; document residual codes.</label>
+    <label><input type="checkbox"> Optional factor audit only after public inference outputs exist.</label>
+    <label><input type="checkbox"> Classify package; update taxonomy only if residual codes change.</label>
+    <label><input type="checkbox"> Write continuity note with status labels; no PROOF.md edits.</label>
+    <label><input type="checkbox"> QA gate: claim alignment, PGS contract, 10^18 word ban, repro paths, no classical smuggling.</label>
+  </div>
+  <h3>Minimum repro skeleton</h3>
+  <pre>python3 -m pytest \
+  research/06-cryptology-rsa/tests/test_a1_endpoint_resolver_unit.py \
+  research/06-cryptology-rsa/tests/test_a1_certificate_verifier.py \
+  research/06-cryptology-rsa/tests/test_a1_endpoint_resolver_boundary.py \
+  research/06-cryptology-rsa/tests/test_a1_endpoint_resolver_regression.py \
+  research/06-cryptology-rsa/tests/test_a1_endpoint_resolver_adversarial.py \
+  research/06-cryptology-rsa/tests/test_a1_endpoint_resolver_scale.py -q
+
+python3 research/06-cryptology-rsa/experiments/live-solver/rsa-v3/run_resolver.py \
+  --cases research/06-cryptology-rsa/experiments/live-solver/rsa-v3/fixtures/regression_cases.jsonl \
+  --output-dir research/06-cryptology-rsa/experiments/live-solver/rsa-v3/output/discriminator_D</pre>
+</section>
+
+<section id="labels">
+  <h2>13. Status labels on every claim (index)</h2>
+  <div class="grid2">
+    <div>
+      <h3>Theorem (unchanged)</h3>
+      <ul>
+        <li>Direct next-prime rule</li>
+        <li>GWR / Interior Maximizer</li>
+        <li>Universal bounded compression</li>
+        <li>Prime-Square Proximity</li>
+        <li>Modular zero lemma on M_v1</li>
+      </ul>
+      <h3>Measured</h3>
+      <ul>
+        <li>RSA endpoint structure on live ladder</li>
+        <li>40-bit and 64-bit factor-audit true rungs</li>
+        <li>50-bit unresolved residual presence</li>
+        <li>Generator surfaces including decade ladder through 10^18 (generator family only)</li>
+        <li>Square-fiber co-landing (secondary PEDK surface)</li>
+      </ul>
+      <h3>Audit</h3>
+      <ul>
+        <li>Downstream factor checks after inference</li>
+        <li>ADV-001 residual honesty</li>
+        <li>Square-branch falsification as corroboration only</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Hypothesis</h3>
+      <ul>
+        <li>One public discriminator D partitions or closes 50-bit residual</li>
+        <li>Transported certificate frontier invariant as reviewed law</li>
+        <li>LSCD (secondary)</li>
+      </ul>
+      <h3>Unresolved</h3>
+      <ul>
+        <li>50-bit reciprocal carrier misalignment residual</li>
+        <li>Public D itself (until derived and classified)</li>
+        <li>Universal RSA / factor proof</li>
+        <li>High-scale residual package if program-level verified language is ever sought</li>
+      </ul>
+      <h3>Invalidated</h3>
+      <ul>
+        <li>Super-Signal twin lock</li>
+        <li>Fixed isqrt chambers / budgeted walk coverage</li>
+        <li>Broad shadow selector</li>
+        <li>V2 residue deviation ranking</li>
+        <li>Fixed cutoff map</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout good">
+    <p>
+      <strong>Bottom line for the next implementer session.</strong>
+      Freeze the residual ledger. Invent one public PGSPG-field discriminator. Pressure the 50-bit residual under
+      ADV-001 honesty. Accept closure, subclass, or honest unresolved. Do not claim factorization. Do not claim
+      verified without a 10^18 package for that claim family.
+    </p>
+  </div>
+</section>
+
+<section id="pressure">
+  <h2>14. Team pressure map (Auditor / Implementer / Verifier / Scribe)</h2>
+  <table>
+    <thead>
+      <tr><th>Role</th><th>Preference</th><th>Verdict on Rank-1 residual task</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Auditor</td>
+        <td>50-bit public residual discriminator / Psi(RB) family</td>
+        <td>Conditional APPROVE as only high-force center; hard veto classical smuggling and claim inflation</td>
+      </tr>
+      <tr>
+        <td>Verifier</td>
+        <td>A1 residual pressure + multi-rung residual ledger</td>
+        <td>
+          PASS on falsifiability and regime honesty if claim discipline holds.
+          Live smoke: 40 resolve / 50 residual with <code>delta=30;bound=28</code>.
+          Refuse verified language (no cryptology 10^18 package).
+        </td>
+      </tr>
+      <tr>
+        <td>Implementer</td>
+        <td>LSCD multi-regime residual pressure as implementer #1</td>
+        <td>
+          RSA residual was Candidate 2 (higher blast radius). Retained as secondary package;
+          not a veto of Auditor/Verifier Rank-1 under program center.
+        </td>
+      </tr>
+      <tr>
+        <td>Scribe</td>
+        <td>This durable report after pressure</td>
+        <td>Selected Auditor+Verifier Rank-1; documented LSCD/co-landing as secondary</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>Orchestrator merge decision</h3>
+  <p>
+    <strong>Single next task:</strong> public residual discriminator pressure on
+    <code>unresolved_by_reciprocal_carrier_misalignment</code> for
+    <code>rsa_v2_50bit_static_001</code>, with ADV-001 honesty and 40/64 control pins.
+    LSCD is the preferred secondary geometry package after or beside this residual work, not a substitute.
+  </p>
+  <h3>Sync and environment</h3>
+  <ul>
+    <li>Remote: <code>https://github.com/zfifteen/prime-gap-structure</code></li>
+    <li>HEAD after pull: <code>3825ff5cba242e26ba30da14b0fd9a219c54f616</code> (up to date with origin/main)</li>
+    <li>Quartet hard gate: ON for this session (four subagents spawned before research tools)</li>
+    <li>Local dirt not used as evidence: visualizations/ tree modifications only</li>
+  </ul>
+</section>
+
+<footer>
+  Continuity report for prime-gap-structure (Scribe + Orchestrator merge after Quartet pressure).
+  Path: research/00-index/continuity/reports/next-impact-task/index.html.
+  Active goal pin: research/00-index/continuity/notes/ACTIVE_GOAL_50bit_residual_discriminator.md.
+  Date: 2026-07-13. HEAD: 3825ff5c.
+  En dashes not used.
+  Program-level verified / validated language not used (no new 10^18 surface for this residual family).
+  Live residual pin: 50-bit delta=30 bound=28 at step 350 (measured smoke only).
+</footer>
+</main>
+</body>
+</html>
