@@ -31,7 +31,9 @@ import run_experiment as v2  # noqa: E402
 
 from gwr_carrier_closure import (  # noqa: E402
     evaluate_gwr_carrier_transport_closure,
+    is_historical_false_endpoint_class,
     predicate_results_to_json,
+    residual_component_ledger,
 )
 from residual import (  # noqa: E402
     build_residual_row,
@@ -300,6 +302,7 @@ def resolve_case(
     status = pair.closure_status
     step_index = pair.endpoint_chain_steps
     gwr_map: dict[str, object] = {}
+    gwr_results: list[Any] = []
     residual_code: str | None = None
     structural_cert: dict[str, Any] | None = None
     endpoint_class: dict[str, str] | None = None
@@ -320,6 +323,7 @@ def resolve_case(
             upper_map,
             require_lock_and_profile=require_lock,
         )
+        gwr_results = results
         gwr_map = predicate_results_to_json(results)
         stage = "gwr_carrier_transport_closure"
         if not holds:
@@ -332,6 +336,20 @@ def resolve_case(
             if ends is None:
                 status = "unresolved_by_certificate_pair_not_closed"
                 residual_code = status
+            elif is_historical_false_endpoint_class(ends[0], ends[1]):
+                # Phase-1 anti-admission: never re-emit the known 50-bit false class.
+                endpoint_class = None
+                status = "unresolved_by_certificate_pair_not_closed"
+                residual_code = status
+                gwr_map = {
+                    **gwr_map,
+                    "anti_admission": {
+                        "holds": False,
+                        "detail": "historical_false_endpoint_class_50bit",
+                        "rejected_lower": str(ends[0]),
+                        "rejected_upper": str(ends[1]),
+                    },
+                }
             else:
                 endpoint_class = {"lower": ends[0], "upper": ends[1]}
                 candidate_cert = build_structural_certificate(
@@ -365,18 +383,30 @@ def resolve_case(
     else:
         residual_code = coerce_residual_code(status)
         status = residual_code
-        # Optional: surface GWR diagnostics when both certificates exist on unresolved
+        # Refine residual with named GWR stack when both certificates exist.
+        # Live discriminator D lives in that stack; residual codes migrate to the
+        # first failing public GWR predicate (honest subclass), not v2-only labels.
+        # Full component ledger still collects later gates for residual honesty.
         lower_map = cert_mapping_from_pair_json(pair_json, _aligned_lower_prefix(pair))
         upper_map = cert_mapping_from_pair_json(pair_json, "upper")
         if lower_map is not None and upper_map is not None:
             require_lock = (pair.endpoint_chain_steps or 0) > 0
-            _, results, _ = evaluate_gwr_carrier_transport_closure(
+            holds, results, gwr_residual = evaluate_gwr_carrier_transport_closure(
                 n_int,
                 lower_map,
                 upper_map,
                 require_lock_and_profile=require_lock,
             )
+            gwr_results = results
             gwr_map = predicate_results_to_json(results)
+            stage = "gwr_carrier_transport_closure"
+            if not holds and gwr_residual is not None:
+                residual_code = coerce_residual_code(gwr_residual)
+                status = residual_code
+            elif holds:
+                # GWR public predicates accept, but v2 did not emit a class.
+                residual_code = "unresolved_by_certificate_pair_not_closed"
+                status = residual_code
             stage = "gwr_carrier_transport_closure"
 
         # If large-bit exhausted budget without class, prefer instrumentation residual
@@ -425,6 +455,11 @@ def resolve_case(
         status = residual_code if not is_resolved_status(str(status)) else status
         if endpoint_class is None:
             status = residual_code
+        ledger: dict[str, object] | None = None
+        if gwr_results:
+            ledger = residual_component_ledger(
+                gwr_results, decision_residual=residual_code
+            )
         residual_row = build_residual_row(
             case_id=case.case_id,
             bits=case.bits,
@@ -437,6 +472,7 @@ def resolve_case(
             diagnostics={
                 "v2_pair_status": pair.closure_status,
                 "gwr_carrier_closure": gwr_map,
+                "residual_component_ledger": ledger,
                 "max_steps": max_steps,
                 "endpoint_chain_steps": step_index,
                 "v2_diagnostics": dict(diagnostics),
