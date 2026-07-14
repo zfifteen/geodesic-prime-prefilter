@@ -3444,7 +3444,7 @@ Research status:
 ADVANCE
 
 Ops status:
-OK
+FAILED
 
 Delta:
 new falsification regime through max_prime=500000000
@@ -3454,3 +3454,75 @@ Artifacts:
 
 Next step:
 Structural audit of recurring offset 540 on new extremal rows if no counterexample.
+
+## 2026-07-14T23:11:46Z run
+
+Mechanism:
+PGS-native structural audit of recurring offset 540 and early-tau=4 /
+late-tau=3 chamber separation (queue job `offset-540-structural-audit`).
+Project terms: RC42-RC44, min/median floor packing, max/min dynamic range,
+dual_l1/max_gap Dual-vs-peak-desert.
+
+Method:
+Heavy (16 analytic specialists, then leader execute). Read 4e8-5e8
+falsification summary, prefix_tau_floor_probe.json, and prior residual
+surface through RC39-RC41 / S13. Rejected Dual-median rescales and
+body/median (algebraically D/med − dual/med) as NO_DELTA theater.
+Shipped independent residual package under
+`experiments/square-branch-hourly-2026-07-14-rc42/`:
+probe + prediction table + FINDINGS. Domain gate |Tau4|>=2; unique
+chambers = 7 (dedupe r=424171123). Did not revive fixed-band 540 or
+d=4 SDA. Did not promote residual to theorem.
+
+Result:
+
+| Claim | Object | Bound | Observed | Status |
+| --- | --- | --- | --- | --- |
+| RC42 / P46 | min_gap / median_gap | 0.10..0.35 | [0.143, 0.250] | holds |
+| RC43 / P47 | max_gap / min_gap | 8..55 | [14, 44] | holds |
+| RC44 / P48 | dual_l1 / max_gap | 0.10..1.10 | [0.143, 0.923] | holds |
+| RC2 fixed band [528, 552] | law on util maxima | — | D=738 | falsified (retained) |
+| RC39-RC41 | open/trail/dual median | prior | — | retained holds |
+| Target S1* | D(r) ≤ C_dyn(r) | universal | unresolved | UNRESOLVED |
+
+Branch-max panel (interior packing):
+
+| o_q | r | D | min | max | med | dual | min/med | max/min | dual/max |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2 | 468917503 | 542 | 1 | 44 | 6 | 24 | 0.167 | 44 | 0.545 |
+| 4 | 482342527 | 486 | 1 | 26 | 7 | 22 | 0.143 | 26 | 0.846 |
+| 6 | 424171123 | 738 | 1 | 30 | 6 | 11 | 0.167 | 30 | 0.367 |
+
+Theorem: prime-square proximity / Target S1* remains UNRESOLVED in `PROOF.md`
+§Square-Branch Reduction; direct next-prime and Interior Maximizer remain
+proved. Residual audit only.
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.67s
+```
+RC42 residual probe exit code: 0 (RC42-RC44 hold; RC2 retained falsified).
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New residual claim table RC42-RC44 (interior Tau4 packing floor min/median,
+successive-gap dynamic range max/min, Dual L1 vs peak interior desert
+dual/max_gap) with explicit falsification command. Distinct from RC39-RC41
+Dual median isolation and from body/median identity residual. Continuity:
+residual package through RC44; proximity remains OPEN/UNRESOLVED.
+
+Artifacts:
+`experiments/square-branch-hourly-2026-07-14-rc42/offset_540_residual_rc42_probe.py`;
+`experiments/square-branch-hourly-2026-07-14-rc42/offset_540_rc42_prediction_table.json`;
+`experiments/square-branch-hourly-2026-07-14-rc42/FINDINGS.md`
+
+Next step:
+Queue falsification `5e8-6e8` and re-check RC42-RC44 (and RC18-RC41) on any
+new util maximum. Residual audit only; do not promote min/median, max/min, or
+dual/max_gap to theorem; do not revive fixed-band 540 or d=4 SDA.
