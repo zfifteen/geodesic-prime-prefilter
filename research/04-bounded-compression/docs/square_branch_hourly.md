@@ -3286,3 +3286,50 @@ Next step:
 Queue falsification `5e8-6e8` and re-check RC39-RC41 (and RC18-RC38) on any
 new util maximum. Keep RC39-RC41 residual only; do not promote open/median,
 trail/median, or dual/median to theorem; do not revive fixed-band 540 or d=4 SDA.
+
+## 2026-07-14T11:03:01Z run
+
+Mechanism:
+Prefix tau-floor probe on the three latest segment extremal rows
+
+Method:
+deterministic dispatch: /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 experiments/square-branch-sda-invalidation-2026-06/square_branch_prefix_tau_floor_probe.py
+
+Result:
+Command exit code: 0
+stdout tail:
+```
+{
+  "d4_tau5_sda_route_transfers_to_square_branch": false,
+  "tau4_sda_binds_observed_offsets": false
+}
+```
+tested_prime_count: None
+first_counterexample: None
+max_utilization: None
+max_p: None
+max_offset: None
+elapsed_seconds: None
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.31s
+```
+
+Delta classification: summary signature changed versus prior/baseline
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+summary signature changed versus prior/baseline
+
+Artifacts:
+/Library/Frameworks/Python.framework/Versions/3.13/bin/python3 experiments/square-branch-sda-invalidation-2026-06/square_branch_prefix_tau_floor_probe.py; experiments/square-branch-sda-invalidation-2026-06/prefix_tau_floor_probe.json
+
+Next step:
+Queue falsification 500M-600M or draft Chamber-Reset Endpoint Resolution Lemma subsection.
