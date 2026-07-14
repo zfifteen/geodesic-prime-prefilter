@@ -1,93 +1,33 @@
-# PGS Quartet Hard Gate (Machine Enforced)
+# PGS Quartet Hard Gate — RETIRED (2026-07-13)
 
-When the gate is **ON**, a PreToolUse hook blocks parent tools until the four
-real Quartet subagents are spawned this user turn.
+**Status:** retired. Do not re-enable without an explicit principal request.
 
-**OFF is operational usability only.** It does not change PGS research rules,
-proof status, or the QA closing gate. It only stops the machine spawn lock.
+The four-role PreToolUse spawn lock (`pgs-implementer`, `pgs-auditor`,
+`pgs-verifier`, `pgs-scribe`) is no longer part of the live contract.
 
-## Toggle (sticky, cross-session)
+## Replacement
 
-```bash
-pgs-quartet off      # gate OFF (parent tools unrestricted)
-pgs-quartet on       # gate ON  (spawn-four required every user turn)
-pgs-quartet status   # sticky file + effective setting
-```
-
-Sticky file the hook reads on every PreToolUse:
-
-```text
-~/.grok/state/pgs-quartet-enabled
-```
-
-| Sticky content | Meaning |
+| Slash skill | Role |
 | --- | --- |
-| `0` / `off` | OFF |
-| `1` / `on` | ON |
-| missing | default **OFF** |
+| `/expert` | Fixed team of 4 local analytic specialists + leader synthesis |
+| `/heavy` | Fixed team of 12 local analytic specialists (≥1 contrarian) + leader synthesis |
+| `/normal` | Clear Expert/Heavy overlays |
 
-Helper: `~/.grok/bin/pgs-quartet` (repo copy: `.grok/hooks/bin/pgs-quartet`).
-Takes effect on the next PreToolUse; no CLI restart.
+Canonical skill bodies: `~/.grok/skills/{expert,heavy,normal}/SKILL.md`.
 
-### Process env (Grok CLI process only)
+Parent `AGENTS.md` section: **Multi-agent effort (Expert / Heavy) — PGS Quartet
+retired**.
 
-Must be set on the **Grok CLI process**. Setting these only inside a blocked
-`run_terminal_command` does nothing (PreToolUse never runs that command).
+## What remains in force
 
-| Env | Effect |
-| --- | --- |
-| `PGS_QUARTET=0` or `PGS_QUARTET_ENABLED=0` | Gate OFF |
-| `PGS_QUARTET=1` or `PGS_QUARTET_ENABLED=1` | Gate ON (overrides sticky file) |
-| `PGS_QUARTET_BYPASS=1` | Emergency OFF |
-
-Priority: bypass env > `PGS_QUARTET_ENABLED` / `PGS_QUARTET` > sticky file > default OFF.
-
-Preferred disable path when the parent is already locked: run `pgs-quartet off`
-in an external terminal (or any shell that is not blocked by this hook).
-
-## When ON: every user turn (parent session)
-
-Before any non-orchestration tool, call `spawn_subagent` **four times** with:
-
-| Role | `subagent_type` | Typical settings |
-| --- | --- | --- |
-| Implementer | `pgs-implementer` | `background=true`, `isolation=worktree` |
-| Adversarial Auditor | `pgs-auditor` | `background=true`, `capability_mode=read-only` or `all` |
-| Empirical Verifier | `pgs-verifier` | `background=true`, `capability_mode=execute` or `all` |
-| Continuity Scribe | `pgs-scribe` | `background=true`, `capability_mode=read-write` or `all` |
-
-## Allowed before the quartet is filled (gate ON only)
-
-Only: `spawn_subagent`, `get_command_or_subagent_output`,
-`wait_commands_or_subagents`, `kill_command_or_subagent`, `todo_write`,
-`update_goal`, `ask_user_question`.
-
-Everything else is **denied** until all four types are recorded this turn.
-
-## Workflow (when gate ON)
-
-1. Spawn all four (prefer parallel background).
-2. Implementer drafts.
-3. Auditor and Verifier pressure in parallel.
-4. Scribe documents after approval pressure.
-5. Orchestrator merges only after consensus.
-6. Run the universal QA closing gate.
-
-## Do not (when gate ON)
-
-- Print a team acknowledgment instead of spawning
-- Use `explore` / `plan` / `general-purpose` as substitutes for the four types
-- Work solo on the parent and claim the Quartet ran
-- Expect `export PGS_QUARTET=0` or `PGS_QUARTET_BYPASS=1` inside a blocked shell
-  tool to unlock the parent
-
-## When OFF
-
-PreToolUse allows all tools immediately. No spawn requirement.
-
-Still in force under OFF:
-
-- QA closing gate in `AGENTS.md`
+- Universal QA closing gate in `AGENTS.md`
 - PGS-first framing, state separation, and proof contract
+- Mandatory `10^18` evidence surface for program-level verified / validated language
 
-OFF only disables machine spawn enforcement.
+## Historical artifacts (do not load as live agents)
+
+- Agent defs: `.grok/agents/_retired/pgs-quartet-2026-07-13/`
+- Hook script / tests: `.grok/hooks/` (gate logic retained for archaeology only)
+- Sticky file (if present): `~/.grok/state/pgs-quartet-enabled` should stay `0`
+- Global hook install was renamed to
+  `~/.grok/hooks/pgs-quartet-gate.json.retired-2026-07-13` so it does not load

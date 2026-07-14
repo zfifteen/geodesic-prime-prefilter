@@ -212,14 +212,12 @@ Disagreement: status labels; preserve conflict until convergence, unresolved,
 or human decision; neither overrides theorem status. Optional modes: `audit`,
 `forensics`, `implement`, `insight`, `continuity`, `proof-support`.
 
-## Quartet (full detail in AGENTS.md)
+## Multi-agent effort (full detail in AGENTS.md)
 
-Grok CLI gate ON: spawn `pgs-implementer`, `pgs-auditor`, `pgs-verifier`,
-`pgs-scribe` before other work tools. Toggle `pgs-quartet on|off|status`; sticky
-`~/.grok/state/pgs-quartet-enabled` (missing=OFF). OFF is usability only: does
-not relax research rules, proof status, or QA. On Grok web: informational;
-still apply role discipline and QA. Order: implement -> audit+verify -> scribe
--> merge -> **QA last always**.
+PGS Quartet hard gate is **retired** (2026-07-13). Use slash skills instead:
+`/expert` (4 local specialists), `/heavy` (12, ≥1 contrarian), `/normal` (clear
+overlays). Analytic fan-out then leader synthesis; **QA last always**. Does not
+relax PGS research rules, proof status, or the universal QA gate.
 
 ## Implementation Discipline
 
@@ -255,4 +253,4 @@ Replacement: PGS objects -> invariant -> named rule ->
 resolved/unresolved/invalidated. QA: plan -> check -> fix -> report -> done.
 
 ---
-Prefer `AGENTS.md` for full CLI/Quartet/HTML detail.
+Prefer `AGENTS.md` for full CLI / Expert-Heavy / HTML detail.
