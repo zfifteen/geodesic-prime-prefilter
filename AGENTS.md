@@ -14,87 +14,37 @@ Its job is to prevent four recurring failures:
 
 ## Task Planning and Execution
 
-### PGS Quartet (HARD RULE when gate ON, machine-enforced)
+### Multi-agent effort (Expert / Heavy) — PGS Quartet retired
 
-The parent session is the Orchestrator only. When the Quartet hard gate is
-**ON**, it does **not** perform task work solo: every user turn inside this
-repository must spawn **exactly these four real subagents** via the
-`spawn_subagent` tool before any other non-orchestration tool is used. When the
-gate is **OFF**, parent tools are unrestricted (operational usability only; see
-toggle below). QA remains mandatory either way.
+The **PGS Quartet hard gate is retired** (principal decision 2026-07-13).
+There is no machine-enforced four-role spawn lock on parent tools. Historical
+`pgs-implementer` / `pgs-auditor` / `pgs-verifier` / `pgs-scribe` agent defs and
+the PreToolUse gate are archived; do **not** re-enable without an explicit
+principal request.
 
-Required roles (gate ON):
+**Replacement:** use Grok Build effort skills (skills-first; slash-invoked):
 
-| Role | `subagent_type` (required) | Workspace / capability |
-| --- | --- | --- |
-| 1. The Implementer | `pgs-implementer` | Branched: `isolation=worktree` |
-| 2. The Adversarial Auditor | `pgs-auditor` | Inherited workspace |
-| 3. The Empirical Verifier | `pgs-verifier` | Inherited workspace |
-| 4. The Continuity Scribe | `pgs-scribe` | Inherited workspace |
+| Slash | Meaning |
+| --- | --- |
+| `/expert` | Fixed team of **4** local analytic specialists, then leader synthesis |
+| `/heavy` | Fixed team of **12** local analytic specialists (≥1 contrarian), then leader synthesis |
+| `/normal` | Clear Expert/Heavy policy overlays; default single-agent (or ad-hoc) judgment |
 
-Agent definitions live at `.grok/agents/pgs-*.md`.
+Specs live under `~/.grok/skills/{expert,heavy,normal}/SKILL.md`. Fixed teams are
+analytic-only; repo writes stay on the leader (or one post-N implementer outside
+the fixed count). Use `--solo` or an explicit user solo waiver when a team is
+not wanted.
 
-**Role responsibilities:**
+**Still mandatory regardless of effort mode:**
 
-1. **The Implementer (`pgs-implementer`):**
-   - Writes the baseline execution code from the orchestrator's mathematical architecture.
-   - Operates strictly within the PGS-native deterministic frame.
-2. **The Adversarial Auditor (`pgs-auditor`):**
-   - Strictly enforces `AGENTS.md` and `PROOF.md`.
-   - Hunts forbidden classical concepts (trial division, Miller-Rabin, probabilistic framing).
-   - Rejects the draft and forces rewrite on any violation.
-3. **The Empirical Verifier (`pgs-verifier`):**
-   - Runs new logic against established evidence surfaces (e.g. `11..1000000`
-     when applicable, plus the mandatory `10^18` surface when the claim is
-     program-level verified / validated / measured-pass; see
-     **Mandatory 10^18 Evidence Surface** below).
-   - Verifies zero unresolved / zero audit-failure contracts where those surfaces apply.
-   - Ensures proved theorems are not broken.
-   - Refuses program-level verified / validated language without an executed
-     `10^18` evidence surface in the same package.
-4. **The Continuity Scribe (`pgs-scribe`):**
-   - Enforces the writing standard and explanatory order
-     (observable object -> mechanism -> project term -> formal definition).
-   - Updates documentation in HTML/Markdown under the correct tree.
+- PGS-first frame, theorem / measured / audit / unresolved separation
+- Universal QA closing gate (below)
+- Mandatory `10^18` evidence surface for program-level verified / validated language
+- No classical primality / factor gates as PGS inference
 
-**Hard enforcement (when the gate is ON; not prompt theater):**
-
-- A PreToolUse hook (`.grok/hooks/` + always-on install under `~/.grok/hooks/`)
-  **denies** parent tools until all four `subagent_type` values above have been
-  successfully spawned **this user turn**.
-- Allowed on the parent before the quartet is filled:
-  `spawn_subagent`, `get_command_or_subagent_output`, `wait_commands_or_subagents`,
-  `kill_command_or_subagent`, `todo_write`, `update_goal`, `ask_user_question`.
-- Substitutes (`explore`, `plan`, `general-purpose`, or prose-only "team ack")
-  **do not** satisfy the gate.
-- Child subagent sessions are not gated so the team can work.
-- **Spawn first in the turn.** A denied tool cancels the whole harness turn
-  (`HookDenied`); there is no mid-turn recovery after a blocked `read_file` or
-  write. Always call the four `spawn_subagent` tools before any other work tool.
-- **Toggle (sticky, preferred):** `pgs-quartet off` / `pgs-quartet on` /
-  `pgs-quartet status`. Sticky file: `~/.grok/state/pgs-quartet-enabled`
-  (`0`=off, `1`=on; missing defaults to OFF). Process env on the **Grok CLI**
-  (not inside a blocked shell command): `PGS_QUARTET=0` /
-  `PGS_QUARTET_ENABLED=0` disables; `PGS_QUARTET=1` enables; `PGS_QUARTET_BYPASS=1`
-  is emergency off. Setting env only inside a denied tool does nothing.
-  **OFF is operational usability only** (machine spawn lock off). It does not
-  relax PGS research rules, proof status, or the QA closing gate.
-- See `.grok/rules/pgs-quartet-hard-gate.md`.
-
-
-**Workflow (mandatory order when the gate is ON):**
-
-1. Spawn all four roles (prefer `background=true` in parallel).
-2. Implementer drafts.
-3. Auditor and Verifier run in parallel against the draft.
-4. Scribe documents only after approval pressure is visible.
-5. Orchestrator merges only after consensus.
-6. **Quality Assurance (below) is the mandatory final step of every workflow**
-   (required whether the gate is ON or OFF).
-
-At the start of each session, report the effective Quartet gate state
-(`pgs-quartet status` / sticky file) and list the four `subagent_type` values
-once. That message is **not** a substitute for spawning when the gate is ON.
+Scheduled square-branch relay activations use **`/heavy`** (and may stay solo
+via the relay contract). See
+`research/00-index/continuity/HOURLY_RELAY_CONTRACT.md`.
 
 ## Grammar
 
@@ -111,12 +61,12 @@ No task is complete until review has been planned, executed, failures fixed, and
 the result reported. This applies to all work: code, prose, proofs, experiments,
 documentation, issue/PR text, research answers, and operational changes.
 
-The Quartet hard gate does not replace this QA gate. After the four subagents
-return, the Orchestrator still runs the universal closing gate below. Normal
-research work is multi-agent when the gate is ON. Solo parent work is allowed
-when the gate is OFF (`pgs-quartet off` or process env `PGS_QUARTET=0` /
-`PGS_QUARTET_BYPASS=1`). OFF is operational usability only, not a math or
-proof-contract change. QA remains mandatory either way.
+Expert/Heavy multi-agent runs do not replace this QA gate. After specialists
+return (or after solo work), the session agent still runs the universal closing
+gate below. Solo parent work is always allowed unless the user invoked
+`/expert` or `/heavy` without a solo waiver. Effort-mode choice is operational
+depth only; it does not change math or proof contracts. QA remains mandatory
+either way.
 
 Skipping, deferring, or implying review ("I should have…") is a contract violation.
 
@@ -183,8 +133,8 @@ authority never relaxes theorem status, PGS-first framing, or status separation.
   to use full agentic capability on this program: propose candidate invariants
   and residual-class maps; design and run falsifying experiments; own
   forensics, implementation, verification, and continuity synthesis; write
-  status-labeled synthesis reports; and orchestrate the PGS Quartet when Grok is
-  the active session agent. Adversarial pressure is **required**, not a ceiling:
+  status-labeled synthesis reports; and use `/expert` or `/heavy` when multi-agent
+  depth is warranted. Adversarial pressure is **required**, not a ceiling:
   Grok must attack its own candidates with the same force used on others
   (hidden assumptions, classical drift, theorem inflation, shape failures).
   Grok may drive session-level mathematical task architecture under the
@@ -230,8 +180,8 @@ When Gemini and Grok both contribute architecture or invariants:
 3. Neither model silently overrides the other on theorem status. `PROOF.md`
    controls proved claims.
 4. The active session Orchestrator (the model currently running the user task)
-   may set session task architecture and spawn the Quartet, but must not widen
-   claim language beyond evidence.
+   may set session task architecture and fan out under `/expert` or `/heavy`,
+   but must not widen claim language beyond evidence.
 
 ### Optional session mode tags (Grok)
 
