@@ -3333,3 +3333,80 @@ Artifacts:
 
 Next step:
 Queue falsification 500M-600M or draft Chamber-Reset Endpoint Resolution Lemma subsection.
+
+## 2026-07-14T15:05:26Z run
+
+Mechanism:
+Draft one subsection of the Chamber-Reset Endpoint Resolution Lemma on the
+selected-square branch (queue job `chamber-reset-lemma-draft`). Project terms:
+Claims S13-A / S13-B / S13-C, residual package RC39-RC41, MedianDual(r),
+ResetResidual^M(r).
+
+Method:
+Read PROOF.md §Square-Branch Reduction, square_branch_blocker_acceptance.md,
+prior lemma HTML S1–S12, and residual package
+`experiments/square-branch-hourly-2026-07-14-rc39/`. Appended constructive
+subsection S13 (median Dual isolation: open/median, trail/median, dual/median)
+under
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`.
+Wrote companion FINDINGS under
+`experiments/square-branch-hourly-2026-07-14-s13/`. Re-ran RC39 residual probe
+(holds). Did not promote RC39-RC41 to theorem. Did not revive d=4 SDA or
+fixed-band 540. Target S1* remains UNRESOLVED.
+
+Result:
+
+| Claim | Object | Status |
+| --- | --- | --- |
+| S13-A | open_over_median = first_τ4 / median_gap | constructive (lemma) |
+| S13-B | trail_over_median, dual_over_median | constructive (lemma) |
+| S13-C | MedianDual + ResetResidual^M | constructive residual-state id |
+| RC39 / open/med | 0.20..2.50; obs [0.250, 2.286] | holds (audit) |
+| RC40 / trail/med | 0.20..3.50; obs [0.250, 3.333] | holds (audit) |
+| RC41 / dual/med | 0.40..4.50; obs [0.500, 4.000] | holds (audit) |
+| RC2 fixed band [528, 552] | law on util maxima | falsified (retained) |
+| Target S1* | D(r) ≤ C_dyn(r) universal | UNRESOLVED |
+
+Branch-max panel (median Dual):
+
+| o_q | r | D | open/med | trail/med | dual/med |
+| --- | --- | --- | --- | --- | --- |
+| 2 | 468917503 | 542 | 0.667 | 3.333 | 4.000 |
+| 4 | 482342527 | 486 | 2.286 | 0.857 | 3.143 |
+| 6 | 424171123 | 738 | 0.500 | 1.333 | 1.833 |
+
+Theorem: prime-square proximity / Target S1* remains UNRESOLVED in `PROOF.md`
+§Square-Branch Reduction; direct next-prime and Interior Maximizer remain
+proved. Constructive lemma subsection only. Invalidated d=4 SDA not revived.
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.68s
+```
+RC39 residual probe exit code: 0 (RC39-RC41 hold; RC2 retained falsified).
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New constructive lemma subsection S13 (median Dual isolation: open/median,
+trail/median, dual/median) with Claims S13-A/B/C, MedianDual(r),
+ResetResidual^M(r), explicit falsification command for Target S1*, and residual
+panel RC39-RC41 formalized under the lemma. Continuity: lemma through S13;
+residual package through RC41; proximity remains OPEN/UNRESOLVED. Not a replay
+of S12 open/mean package; not a promotion of median Dual isolation to theorem.
+
+Artifacts:
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html` (S13);
+`experiments/square-branch-hourly-2026-07-14-s13/FINDINGS.md`;
+`experiments/square-branch-hourly-2026-07-14-rc39/` (residual panel source, re-run holds)
+
+Next step:
+Queue falsification `5e8-6e8` or H_CTC square-branch probe. Re-check RC39-RC41 /
+MedianDual on any new util maximum. Keep S13 residual only; do not promote
+open/median, trail/median, or dual/median to theorem; do not revive fixed-band
+540 or d=4 SDA.
