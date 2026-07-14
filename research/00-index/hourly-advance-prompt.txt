@@ -9,11 +9,11 @@ NON-NEGOTIABLE
 - Read AGENTS.md and PROOF.md theorem status before acting.
 - Read research/00-index/continuity/HOURLY_RELAY_CONTRACT.md.
 - Schedule: 4h activation cycle (StartInterval 14400). "Hourly" is a path/name only.
-- Effort: /heavy on this path (Heavy effort for the solo analytic job).
-- NO PGS QUARTET on this path. Do not spawn pgs-implementer, pgs-auditor,
-  pgs-verifier, or pgs-scribe. Work solo as the activation agent. Quartet OFF is
-  ops usability only: still obey PGS-first frame, status separation, and QA.
-  Principal preference: 4h schedule + /heavy, not Quartet.
+- Effort: /heavy on this path (Heavy effort skill; principal preference).
+- PGS Quartet is RETIRED globally. Do not spawn pgs-implementer, pgs-auditor,
+  pgs-verifier, or pgs-scribe (archived only). Prefer solo activation work unless
+  /heavy policy and the job require specialists. Still obey PGS-first frame,
+  status separation, and QA.
 - Do not downgrade proved theorems or revive invalidated routes.
 - Do not use classical inference (isprime, gcd, Miller-Rabin, sieves) as PGS gates.
 - Never prompt the human. Escalate only via ledger + commit.

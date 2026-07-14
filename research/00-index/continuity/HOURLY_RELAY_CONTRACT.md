@@ -34,51 +34,47 @@ If the installed LaunchAgent and the repo plist disagree on `StartInterval`,
 treat the **loaded** agent as ops reality and open a hygiene fix so both match
 `14400`.
 
-## No Quartet for this relay; use `/heavy` (ops policy)
+## Effort mode: `/heavy`; PGS Quartet retired (ops policy)
 
 **Status class:** operator preference / ops config. Not a theorem, not measured
 math, and not program-level verified language.
 
-**Principal standing preference (reaffirmed 2026-07-13):** keep the **4h**
-schedule **and** execute scheduled analytic activations with **`/heavy`**, not
-the PGS Quartet.
+**Principal standing preference (2026-07-13):** keep the **4h** schedule and
+execute scheduled analytic activations with **`/heavy`**. The **PGS Quartet is
+retired globally** (sticky OFF, global hook uninstalled, agent defs archived);
+interactive and relay paths both use Expert/Heavy skills when multi-agent depth
+is wanted, not the four-role PreToolUse gate.
 
-**Hourly / 4h relay activations do not run the PGS Quartet hard gate.**
+**Hourly / 4h relay activations:**
 
 | Rule | Requirement |
 | --- | --- |
-| Spawn four roles | **Forbidden** on this path |
-| Parent tools before spawn | Allowed (gate off for this activation) |
-| `pgs-implementer` / `pgs-auditor` / `pgs-verifier` / `pgs-scribe` | Do **not** spawn for relay work |
-| Sticky file `~/.grok/state/pgs-quartet-enabled` | May be `1` for interactive IdeaProjects sessions; **must not** force Quartet on the isolated relay |
-| Process env for the relay | `PGS_QUARTET=0` and `PGS_QUARTET_ENABLED=0` (wrapper export + LaunchAgent env + re-inject on `grok`) |
-| Emergency | `PGS_QUARTET_BYPASS=1` also disables the gate; prefer the explicit `0` exports |
+| Analytic effort | Leading **`/heavy`** slash skill in the wrapper-built prompt |
+| Fixed Quartet roles | **Do not spawn** (roles retired; archive only) |
+| Parent tools | Unrestricted by Quartet (gate retired) |
+| Legacy env (harmless belt-and-suspenders) | `PGS_QUARTET=0` / `PGS_QUARTET_ENABLED=0` may remain on LaunchAgent + wrapper |
 
 ### Why (observable mechanism)
 
-Interactive PGS sessions may keep the Quartet hard gate **ON** so the parent
-must spawn four real subagents before work tools. That gate is for human-paced
-research turns. The square-branch relay is a **solo headless activation**: one
-queue item, one ledger block, one Rocket.Chat memo. Spawning four subagents
-adds HookDenied risk, empty-reply delivery risk, and multi-agent overhead that
-does not serve a single queued falsification or analytic job.
+The square-branch relay is a **headless activation**: one queue item, one ledger
+block, one Rocket.Chat memo. Multi-agent depth, when used, comes from the
+**Heavy** skill policy (`/heavy`), not from a machine spawn lock on four
+named roles. Global Quartet retirement removes HookDenied risk from the former
+hard gate.
 
 ### Enforcement wiring (implementation)
 
 | Layer | Behavior |
 | --- | --- |
-| LaunchAgent env | `PGS_QUARTET=0`, `PGS_QUARTET_ENABLED=0` |
-| Wrapper defaults | `export PGS_QUARTET="${PGS_QUARTET:-0}"` (and same for `PGS_QUARTET_ENABLED`) |
-| Analytic Grok invoke | `env PGS_QUARTET=... PGS_QUARTET_ENABLED=... grok ...` |
-| Analytic prompt file | Explicit ban on spawning the four Quartet roles |
-| Analytic effort | Leading `/heavy` slash skill in the wrapper-built prompt (Heavy effort; not Quartet) |
+| Global Quartet | Retired: sticky `0`, hook file renamed `*.retired-*`, agents under `_retired/` |
+| LaunchAgent env | Optional `PGS_QUARTET=0`, `PGS_QUARTET_ENABLED=0` (legacy) |
+| Wrapper defaults | Same optional exports |
+| Analytic prompt file | `/heavy` + no retired Quartet roles |
+| Analytic effort | Leading `/heavy` in the wrapper-built prompt |
 
-Env on this process tree overrides the sticky file. It does **not** rewrite
-`~/.grok/state/pgs-quartet-enabled` for interactive sessions.
+### What still applies
 
-### What still applies when Quartet is off
-
-Quartet **OFF** is operational usability only. It does **not** relax:
+Retirement of the Quartet does **not** relax:
 
 - PGS-first framing;
 - theorem / measured / audit / hypothesis / unresolved / invalidated separation;
@@ -89,10 +85,10 @@ Quartet **OFF** is operational usability only. It does **not** relax:
 
 ### What this is not
 
-- Not a global ban on the Quartet in IdeaProjects interactive work.
 - Not permission to use classical inference as PGS gates.
 - Not a theorem claim and not program-level verification language.
-- Not a substitute for Heavy effort (`/heavy` is separate from Quartet policy).
+- Not a requirement to fan out 12 agents on every relay job if the Heavy skill
+  solo waiver or prompt path keeps the job solo (see analytic prompt + wrapper).
 
 ## Isolation
 
