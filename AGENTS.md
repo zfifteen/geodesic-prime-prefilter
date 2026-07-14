@@ -21,7 +21,7 @@ Multi-agent depth uses Grok Build effort skills only (skills-first; slash-invoke
 | Slash | Meaning |
 | --- | --- |
 | `/expert` | Fixed team of **4** local analytic specialists, then leader synthesis |
-| `/heavy` | Fixed team of **12** local analytic specialists (≥1 contrarian), then leader synthesis |
+| `/heavy` | Fixed team of **16** local analytic specialists (≥1 contrarian), then leader synthesis |
 | `/normal` | Clear Expert/Heavy policy overlays; default single-agent (or ad-hoc) judgment |
 
 Specs live under `~/.grok/skills/{expert,heavy,normal}/SKILL.md`. Fixed teams are

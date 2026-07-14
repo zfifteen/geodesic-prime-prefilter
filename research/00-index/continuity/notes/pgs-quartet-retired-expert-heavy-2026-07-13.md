@@ -45,7 +45,7 @@ synthesis.
 | --- | --- |
 | **Quartet deleted** | No agents, hooks, sticky, CLI, or env gate; never revive |
 | **`/expert`** | Fixed 4 local specialists |
-| **`/heavy`** | Fixed local specialists per live Heavy skill (see skill + AGENTS.md) |
+| **`/heavy`** | Fixed **16** local specialists (≥1 contrarian); see skill + AGENTS.md |
 | **`/normal`** | Clear Expert/Heavy overlays |
 
 ---
