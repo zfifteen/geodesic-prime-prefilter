@@ -214,10 +214,14 @@ or human decision; neither overrides theorem status. Optional modes: `audit`,
 
 ## Multi-agent effort (full detail in AGENTS.md)
 
-PGS Quartet hard gate is **retired** (2026-07-13). Use slash skills instead:
-`/expert` (4 local specialists), `/heavy` (12, ≥1 contrarian), `/normal` (clear
-overlays). Analytic fan-out then leader synthesis; **QA last always**. Does not
-relax PGS research rules, proof status, or the universal QA gate.
+Use slash skills only: `/expert` (4 local specialists), `/heavy` (12, ≥1
+contrarian), `/normal` (clear overlays). Analytic fan-out then leader synthesis;
+**QA last always**. Does not relax PGS research rules, proof status, or the
+universal QA gate.
+
+**PGS Quartet is permanently deleted.** Do not recreate agent types, PreToolUse
+spawn locks, sticky files, or `PGS_QUARTET*` env gates. Multi-agent depth is
+`/expert` or `/heavy` only.
 
 ## Implementation Discipline
 

@@ -14,15 +14,9 @@ Its job is to prevent four recurring failures:
 
 ## Task Planning and Execution
 
-### Multi-agent effort (Expert / Heavy) — PGS Quartet retired
+### Multi-agent effort (Expert / Heavy)
 
-The **PGS Quartet hard gate is retired** (principal decision 2026-07-13).
-There is no machine-enforced four-role spawn lock on parent tools. Historical
-`pgs-implementer` / `pgs-auditor` / `pgs-verifier` / `pgs-scribe` agent defs and
-the PreToolUse gate are archived; do **not** re-enable without an explicit
-principal request.
-
-**Replacement:** use Grok Build effort skills (skills-first; slash-invoked):
+Multi-agent depth uses Grok Build effort skills only (skills-first; slash-invoked).
 
 | Slash | Meaning |
 | --- | --- |
@@ -34,6 +28,13 @@ Specs live under `~/.grok/skills/{expert,heavy,normal}/SKILL.md`. Fixed teams ar
 analytic-only; repo writes stay on the leader (or one post-N implementer outside
 the fixed count). Use `--solo` or an explicit user solo waiver when a team is
 not wanted.
+
+**PGS Quartet is permanently deleted** (principal decision 2026-07-14; retired
+2026-07-13, then removed). Do **not** recreate, reinstall, re-enable, or
+reference as live policy any of: `pgs-implementer` / `pgs-auditor` /
+`pgs-verifier` / `pgs-scribe` agent types; PreToolUse quartet spawn lock; sticky
+`pgs-quartet-enabled`; `PGS_QUARTET*` env gates; or `pgs-quartet` CLI helpers.
+Multi-agent work uses `/expert` or `/heavy` only.
 
 **Still mandatory regardless of effort mode:**
 

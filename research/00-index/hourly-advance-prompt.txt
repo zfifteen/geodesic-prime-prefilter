@@ -10,10 +10,10 @@ NON-NEGOTIABLE
 - Read research/00-index/continuity/HOURLY_RELAY_CONTRACT.md.
 - Schedule: 4h activation cycle (StartInterval 14400). "Hourly" is a path/name only.
 - Effort: /heavy on this path (Heavy effort skill; principal preference).
-- PGS Quartet is RETIRED globally. Do not spawn pgs-implementer, pgs-auditor,
-  pgs-verifier, or pgs-scribe (archived only). Prefer solo activation work unless
-  /heavy policy and the job require specialists. Still obey PGS-first frame,
-  status separation, and QA.
+- PGS Quartet is permanently deleted. Do not recreate or spawn pgs-implementer,
+  pgs-auditor, pgs-verifier, or pgs-scribe. Multi-agent depth is /expert or
+  /heavy only. Prefer solo activation work unless /heavy policy and the job
+  require specialists. Still obey PGS-first frame, status separation, and QA.
 - Do not downgrade proved theorems or revive invalidated routes.
 - Do not use classical inference (isprime, gcd, Miller-Rabin, sieves) as PGS gates.
 - Never prompt the human. Escalate only via ledger + commit.
