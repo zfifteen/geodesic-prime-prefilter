@@ -3172,3 +3172,47 @@ Next step:
 Queue falsification `5e8-6e8` and re-check RC36–RC38 / OpeningScale on any new
 util maximum. Keep S12 residual only; do not promote open/mean, max/median, or
 IQR/mean to theorem; do not revive fixed-band 540 or d=4 SDA.
+
+## 2026-07-14T01:56:53Z run
+
+Mechanism:
+Square-branch dynamic-cutoff falsification sweep on prime roots 400M-500M
+
+Method:
+deterministic dispatch: /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py --min-prime 400000001 --max-prime 500000000 --output-dir research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_4e8_5e8
+
+Result:
+Command exit code: 0
+stdout tail:
+```
+square-branch-dynamic-cutoff-search: primes=5019541 first_counterexample=none max_utilization=0.9341772151898734 max_p=424171123
+```
+tested_prime_count: 5019541
+first_counterexample: None
+max_utilization: 0.9341772151898734
+max_p: 424171123
+max_offset: 738
+elapsed_seconds: 82.85577869415283
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.45s
+```
+
+Delta classification: new falsification regime through max_prime=500000000
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+new falsification regime through max_prime=500000000
+
+Artifacts:
+/Library/Frameworks/Python.framework/Versions/3.13/bin/python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py --min-prime 400000001 --max-prime 500000000 --output-dir research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_4e8_5e8; research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_4e8_5e8/square_branch_dynamic_cutoff_search_summary.json
+
+Next step:
+Structural audit of recurring offset 540 on new extremal rows if no counterexample.
