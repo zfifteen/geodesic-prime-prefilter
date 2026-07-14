@@ -1,0 +1,15 @@
+{
+  "id": "endpoint-chain-ladder",
+  "title": "Modulus-link endpoint-chain ladder",
+  "tier": 0,
+  "status": "editorial",
+  "status_detail": "Editorial schematic of the cryptology contract frame: locked endpoint chain, floor transport, reciprocal closure, residual or certificate. Not a solved factorization claim and not a measured residual dashboard.",
+  "regime": "schematic pedagogy only",
+  "claim_language": "weak",
+  "has_10e18_surface": false,
+  "tags": ["cryptology", "modulus-link", "endpoint-chain", "schematic", "tier-0"],
+  "chapter_refs": ["research/06-cryptology-rsa/", "AGENTS.md"],
+  "script": "demo.py",
+  "outputs": ["plot.png"],
+  "kind": "schematic"
+}

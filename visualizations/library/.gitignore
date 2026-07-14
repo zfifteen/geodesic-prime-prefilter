@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+# Regenerable plot outputs (thumbs may be committed selectively later)
+out/**
+!out/.gitkeep

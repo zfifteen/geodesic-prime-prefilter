@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dual d(n) and zero-excess E(n) field · PGS Plot Library</title>
+  <link rel="stylesheet" href="../css/gallery.css">
+</head>
+<body>
+  <header class="site">
+    <div class="wrap">
+      <div class="brand">PGS Plot Library <small>entry</small></div>
+      <nav>
+        <a href="../index.html">Gallery</a>
+        <a href="../../library/README.md">Library README</a>
+        <a href="../../index.html">Visualizations hub</a>
+        <a href="../../../website/index.html">Educational course</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+
+    <p class="meta"><a href="../index.html">← Gallery</a></p>
+    <p><span class="status status-mixed">mixed</span>
+       <span class="meta"> · tier 0 · scientific-demo</span></p>
+    <h1>Dual d(n) and zero-excess E(n) field</h1>
+    <p class="lead">Pedagogical illustration of the Divisor Normalization Identity coordinate E(n)=(d(n)/2-1)ln n on one toy chamber. Primes are the zero-excess integers for n&gt;1 under that coordinate. Not a new theorem claim and not a high-scale surface.</p>
+    <div class="figure-frame"><img src="../assets/dual-e-z-field/plot.png" alt="Dual d(n) and zero-excess E(n) field"></div>
+    <div class="panel">
+      <dl>
+        <dt>Regime</dt><dd>single toy chamber default p=89, q=97</dd>
+        <dt>Claim language</dt><dd>weak</dd>
+        <dt>Reproduce</dt><dd><code>visualizations/library/.venv/bin/python visualizations/library/entries/dual-e-z-field/demo.py</code></dd>
+        <dt>Chapter refs</dt><dd><ul><li><code>PROOF.md</code></li><li><code>docs/RESULTS.md</code></li><li><code>research/02-gwr-dni/</code></li></ul></dd>
+        <dt>Tags</dt><dd class="tags"><span>DNI</span><span>E</span><span>Z</span><span>chamber</span><span>pedagogy</span><span>tier-0</span></dd>
+      </dl>
+    </div>
+    <div class="prose">
+      <h2>Observable object</h2>
+<p>Take one concrete gap, for example from <code>89</code> to <code>97</code>. Draw divisor counts as bars. Underneath, draw the zero-excess score</p>
+<p><code>E(n) = (d(n)/2 - 1) ln n</code>.</p>
+<h2>Mechanism</h2>
+<p>Primes are exactly the integers with <code>d(n)=2</code>, which forces <code>E(n)=0</code>. Composites lift above zero excess. Minimizing <code>E</code> on the interior is the same selection problem as maximizing <code>Z=e^{-E}</code> or maximizing <code>F=-E</code>.</p>
+<h2>Project terms</h2>
+<ul>
+<li><strong>DNI</strong>: Divisor Normalization Identity.</li>
+<li><strong>Zero excess</strong>: prime-centered coordinate used throughout PGS.</li>
+<li><strong>GWR witness</strong>: marked on both panels as the leftmost minimum-divisor interior point.</li>
+</ul>
+<h2>Status and limits</h2>
+<ul>
+<li>Status: <strong>mixed</strong> (toy illustration of the DNI coordinate identity and GWR selection; theorems live in <code>PROOF.md</code>).</li>
+<li>Regime: one small gap. Not an evidence ladder.</li>
+<li>Dual coordinate <code>Z</code> is an exact reformulation, not a separate law.</li>
+</ul>
+    </div>
+
+  </main>
+  <footer class="wrap">
+    Entry id <code>dual-e-z-field</code>. Status separation is mandatory.
+  </footer>
+</body>
+</html>

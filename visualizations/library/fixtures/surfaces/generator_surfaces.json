@@ -1,0 +1,39 @@
+{
+  "description": "Published generator evidence surface counts for scoreboard demos. Numbers are taken from docs/RESULTS.md prose; this fixture is not a substitute for raw ladder artifacts.",
+  "surfaces": [
+    {
+      "id": "full_11_1e6",
+      "label": "11..1000000",
+      "kind": "full-exact",
+      "outputted": 78494,
+      "unresolved": 0,
+      "audit_failures": 0,
+      "status": "measured"
+    },
+    {
+      "id": "decade_1e8_1e18",
+      "label": "10^8..10^18 decade ladder",
+      "kind": "decade-ladder",
+      "primes_per_decade": 256,
+      "decades": 11,
+      "outputted": 2816,
+      "unresolved": 0,
+      "audit_failures": 0,
+      "status": "measured",
+      "is_10e18_surface": true
+    }
+  ],
+  "decade_anchors": [
+    {"power": 8, "label": "10^8"},
+    {"power": 9, "label": "10^9"},
+    {"power": 10, "label": "10^10"},
+    {"power": 11, "label": "10^11"},
+    {"power": 12, "label": "10^12"},
+    {"power": 13, "label": "10^13"},
+    {"power": 14, "label": "10^14"},
+    {"power": 15, "label": "10^15"},
+    {"power": 16, "label": "10^16"},
+    {"power": 17, "label": "10^17"},
+    {"power": 18, "label": "10^18"}
+  ]
+}

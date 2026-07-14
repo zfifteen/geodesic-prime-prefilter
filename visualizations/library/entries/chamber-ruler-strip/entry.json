@@ -1,0 +1,15 @@
+{
+  "id": "chamber-ruler-strip",
+  "title": "Chamber ruler strip",
+  "tier": 0,
+  "status": "mixed",
+  "status_detail": "Pedagogical illustration of the ordered gap chamber and GWR leftmost min-d selection on toy exemplars. Universal theorems remain in PROOF.md; this figure is not a finite proof surface.",
+  "regime": "toy exemplar gaps from fixtures/exemplars/gaps.json (local teaching only)",
+  "claim_language": "weak",
+  "has_10e18_surface": false,
+  "tags": ["chamber", "d-field", "GWR", "pedagogy", "tier-0"],
+  "chapter_refs": ["PROOF.md", "research/02-gwr-dni/", "docs/RESULTS.md"],
+  "script": "demo.py",
+  "outputs": ["plot.png"],
+  "kind": "scientific-demo"
+}

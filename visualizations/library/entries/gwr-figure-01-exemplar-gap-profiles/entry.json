@@ -1,0 +1,16 @@
+{
+  "id": "gwr-figure-01-exemplar-gap-profiles",
+  "title": "GWR story: exemplar gap profiles",
+  "tier": 0,
+  "status": "legacy",
+  "status_detail": "Legacy committed figure from research/02-gwr-dni/story. Shows raw landscape / selected integer placement on exemplar gaps used in the GWR story pack.",
+  "regime": "story surface documented in research/02-gwr-dni/story/story/plot_generation_plan.md (exact 1e6 + even-window 1e9 story surfaces)",
+  "claim_language": "weak",
+  "has_10e18_surface": false,
+  "tags": ["GWR", "legacy", "story", "tier-0"],
+  "chapter_refs": ["research/02-gwr-dni/story/story/", "PROOF.md"],
+  "script": "demo.py",
+  "outputs": ["plot.png"],
+  "kind": "legacy-wrap",
+  "legacy_source": "research/02-gwr-dni/story/story/plots/figure_01_exemplar_gap_profiles.png"
+}

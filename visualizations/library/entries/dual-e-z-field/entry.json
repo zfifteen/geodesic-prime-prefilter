@@ -1,0 +1,15 @@
+{
+  "id": "dual-e-z-field",
+  "title": "Dual d(n) and zero-excess E(n) field",
+  "tier": 0,
+  "status": "mixed",
+  "status_detail": "Pedagogical illustration of the Divisor Normalization Identity coordinate E(n)=(d(n)/2-1)ln n on one toy chamber. Primes are the zero-excess integers for n>1 under that coordinate. Not a new theorem claim and not a high-scale surface.",
+  "regime": "single toy chamber default p=89, q=97",
+  "claim_language": "weak",
+  "has_10e18_surface": false,
+  "tags": ["DNI", "E", "Z", "chamber", "pedagogy", "tier-0"],
+  "chapter_refs": ["PROOF.md", "docs/RESULTS.md", "research/02-gwr-dni/"],
+  "script": "demo.py",
+  "outputs": ["plot.png"],
+  "kind": "scientific-demo"
+}
