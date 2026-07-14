@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Public Residual Discriminator D · rsa-v3 · 50-bit pin</title>
+<style>
+  :root {
+    --bg: #f7f4ef;
+    --ink: #1a1a1a;
+    --muted: #5a564e;
+    --card: #fffdf9;
+    --line: #d9d2c4;
+    --accent: #1f4b6e;
+    --hyp: #6b4c1a;
+    --meas: #1b5e3a;
+    --unres: #7a1f2b;
+    --forbid: #5c1a1a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font: 16px/1.55 "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+  }
+  main {
+    max-width: 52rem;
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem 3rem;
+  }
+  h1 { font-size: 1.55rem; line-height: 1.25; margin: 0 0 0.35rem; }
+  h2 {
+    font-size: 1.1rem;
+    margin: 1.75rem 0 0.6rem;
+    color: var(--accent);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.25rem;
+  }
+  h3 { font-size: 1rem; margin: 1.1rem 0 0.4rem; }
+  p, li { color: var(--ink); }
+  .muted { color: var(--muted); font-size: 0.92rem; }
+  .badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 0.15rem 0.45rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: #fff;
+    margin: 0 0.25rem 0.25rem 0;
+  }
+  .badge.hypothesis { color: var(--hyp); border-color: #e0c48a; background: #fff8ea; }
+  .badge.measured { color: var(--meas); border-color: #9dceb0; background: #eef8f1; }
+  .badge.unresolved { color: var(--unres); border-color: #e0a0a8; background: #fdf0f2; }
+  .badge.theorem { color: #2a3a7a; border-color: #b8c2e8; background: #eef1fb; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+    margin: 0.75rem 0;
+  }
+  pre, code {
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  pre {
+    background: #1e2430;
+    color: #e8edf5;
+    padding: 0.9rem 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 0.84rem;
+    line-height: 1.45;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    margin: 0.6rem 0 1rem;
+  }
+  th, td {
+    border: 1px solid var(--line);
+    padding: 0.45rem 0.55rem;
+    text-align: left;
+    vertical-align: top;
+  }
+  th { background: #efe9dc; }
+  .forbid { color: var(--forbid); }
+  ul.check { padding-left: 1.15rem; }
+  ul.check li { margin: 0.3rem 0; }
+  footer {
+    margin-top: 2rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Public residual discriminator D</h1>
+  <p class="muted">
+    One-page contract for rsa-v3 · case family
+    <code>unresolved_by_reciprocal_carrier_misalignment</code> ·
+    pinned case <code>rsa_v2_50bit_static_001</code>
+  </p>
+  <p>
+    <span class="badge hypothesis">hypothesis (D itself)</span>
+    <span class="badge measured">measured baseline pin</span>
+    <span class="badge unresolved">50-bit residual open</span>
+    <span class="badge theorem">PROOF.md theorems unchanged</span>
+  </p>
+
+  <div class="card">
+    <strong>Plain finding first.</strong>
+    On the frozen regression surface the 40-bit case emits a public endpoint class.
+    The 50-bit case walks 350 endpoint-chain steps, builds GWR carrier fields on both sides,
+    then fails the public floor-transport bound by two units:
+    <code>delta=30</code> against <code>bound=28</code>.
+    Discriminator D is one public predicate on certificate fields that either closes that residual,
+    partitions it into a stable subclass, or leaves it unresolved with stronger diagnostics.
+    D is not a factor claim and not a theorem.
+  </div>
+
+  <h2>1. PGS frame</h2>
+  <pre>PGS objects
+  public N
+  locked endpoint chain
+  lower / upper PGSPG chamber-reset certificates
+  GWR carrier fields (carrier_w, carrier_d, gap_offset, tails, lock, deadline)
+
+PGS invariants
+  floor transport T_N(x) = floor(N / x)
+  reciprocal endpoint / deadline-signature closure family F_public
+  named GWR-carrier transport closure
+
+PGS rule under test (hypothesis)
+  F_public union {D}
+
+Resolved state
+  structural certificate / endpoint class under public rules only
+
+Unresolved state
+  residual code (existing family or migrated subclass)
+
+Invalidated state
+  not claimed by this contract; Super-Signal and fixed isqrt chambers stay invalidated</pre>
+
+  <p>
+    Required first frame (no classical entry):
+  </p>
+  <pre>endpoint chain + certificates
+  -&gt; floor transport + GWR-carrier fields
+  -&gt; D on public fields only
+  -&gt; certificate | residual subclass | unresolved</pre>
+
+  <h2>2. Live baseline pin (measured smoke)</h2>
+  <table>
+    <thead>
+      <tr><th>Field</th><th>Value</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>HEAD</td><td><code>3825ff5cba242e26ba30da14b0fd9a219c54f616</code></td></tr>
+      <tr><td>Freeze dir</td><td><code>rsa-v3/output/baseline_freeze_goal/</code></td></tr>
+      <tr><td>Algorithm</td><td><code>pgs_rsa_endpoint_resolver_v3.1</code></td></tr>
+      <tr><td>Rule id</td><td><code>reciprocal_pgs_gwr_carrier_transport_v3</code></td></tr>
+      <tr>
+        <td>40-bit <code>rsa_v2_40bit_static_001</code></td>
+        <td><code>endpoint_class_by_reciprocal_deadline_signature_correction</code></td>
+      </tr>
+      <tr>
+        <td>50-bit <code>rsa_v2_50bit_static_001</code></td>
+        <td><code>unresolved_by_reciprocal_carrier_misalignment</code></td>
+      </tr>
+      <tr><td>endpoint_chain_steps</td><td>350</td></tr>
+      <tr><td>stage</td><td><code>gwr_carrier_transport_closure</code></td></tr>
+      <tr><td>Failing predicate</td><td><code>gwr_carrier_floor_transport_within_gap_bound</code></td></tr>
+      <tr><td>Detail</td><td><code>delta=30;bound=28;transported=32059651;upper_w=32059621</code></td></tr>
+    </tbody>
+  </table>
+  <p class="muted">
+    Label: measured on the regression fixtures under this HEAD only.
+    Not program-level verified or validated (no residual-family 10^18 package).
+  </p>
+
+  <h2>3. Allowed public fields only</h2>
+  <p>D may read only public inference inputs and public PGSPG certificate / transport fields:</p>
+  <ul class="check">
+    <li><code>case_id</code>, <code>bits</code>, <code>N</code></li>
+    <li><code>center = isqrt(N)</code> as orientation only (not a candidate chamber)</li>
+    <li>Lower and upper certificates:
+      <code>anchor</code>, <code>reset_endpoint</code>, <code>gap_offset</code>,
+      <code>carrier_w</code>, <code>carrier_d</code>,
+      <code>lock_carrier_offset</code>, <code>lock_carrier_d</code>,
+      <code>tail_after_reset_offsets</code>,
+      <code>reset_deadline_value</code>, <code>reset_deadline_margin</code>,
+      <code>reset_signature</code>,
+      <code>active_count</code>, <code>resolved_count</code>, <code>unresolved_count</code>
+    </li>
+    <li>Floor images <code>floor(N / x)</code> of those public coordinates</li>
+    <li>Existing F_public predicate results as diagnostics (not classical gates)</li>
+  </ul>
+  <p class="forbid">
+    Forbidden in D inference:
+    audit factors, private <code>p</code>/<code>q</code>, confidence scores,
+    gcd, product closure, <code>N % candidate</code> as factor selector,
+    isprime / nextprime / Miller-Rabin / ECPP, sieve generation,
+    random or fallback search, hidden fixtures.
+  </p>
+
+  <h2>4. Exact predicate hypothesis for D</h2>
+  <p>
+    <strong>Name:</strong>
+    <code>D_dual_gap_carrier_floor_transport_bound</code>
+    (status: <span class="badge hypothesis">hypothesis</span>)
+  </p>
+  <p>
+    <strong>Why this D (from the live miss).</strong>
+    The current public bound uses only the lower gap:
+  </p>
+  <pre>T      = floor(N / lower.carrier_w)
+delta  = |T - upper.carrier_w|
+boundF = max(20, floor(1.2 * lower.gap_offset))
+       = max(20, (6 * lower.gap_offset) // 5)
+
+# 50-bit pin (measured):
+# lower.gap_offset = 24  =&gt;  boundF = 28
+# T = 32059651, upper.carrier_w = 32059621
+# delta = 30  &gt;  boundF = 28
+# excess = delta - boundF = 2
+# signed_overshoot = T - upper.carrier_w = +30</pre>
+  <p>
+    Historical same-pair transport notes (rsa-v2 STEP2 analysis) also record
+    upper gap_offset = 14 on this residual pair. The current code ignores the
+    upper gap when sizing the transport bound. D uses both public gaps.
+  </p>
+
+  <h3>Predicate (deterministic, public only)</h3>
+  <pre>def D_dual_gap_carrier_floor_transport_bound(N, lower, upper) -&gt; bool:
+    """Hypothesis D. Not implemented in inference yet."""
+    lw = int(lower["carrier_w"])
+    uw = int(upper["carrier_w"])
+    if lw &lt;= 0:
+        return False  # same non-positive guard as F_public
+    T = N // lw
+    delta = abs(T - uw)
+    g_lo = int(lower.get("gap_offset") or 0)
+    g_up = int(upper.get("gap_offset") or 0)
+    if g_lo &lt;= 0:
+        g_lo = 20
+    if g_up &lt;= 0:
+        g_up = 20
+    G = g_lo + g_up
+    boundD = max(20, (6 * G) // 5)   # 1.2 * dual-gap sum, integer form
+    return delta &lt;= boundD
+
+# Pin arithmetic under this hypothesis (using public gap pair 24 + 14):
+# G = 38
+# boundD = max(20, (6*38)//5) = 45
+# delta = 30 &lt;= 45  =&gt; D holds on the failing F_public pair
+#
+# Meaning: D would re-admit the pair that F_public rejects by excess=2,
+# using a dual-gap public bound instead of lower-only gap scaling.</pre>
+
+  <h3>Relation to F_public</h3>
+  <table>
+    <thead>
+      <tr><th>Layer</th><th>Predicate</th><th>50-bit pin</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>F_public (live)</td>
+        <td><code>gwr_carrier_floor_transport_within_gap_bound</code></td>
+        <td>fails (30 &gt; 28)</td>
+      </tr>
+      <tr>
+        <td>D (hypothesis)</td>
+        <td><code>D_dual_gap_carrier_floor_transport_bound</code></td>
+        <td>holds on pin arithmetic (30 &lt;= 45)</td>
+      </tr>
+      <tr>
+        <td>Stack under test</td>
+        <td>F_public with lower-only bound replaced or gated by D at carrier stage</td>
+        <td>pressure-test only; not promoted</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="muted">
+    Implementation note (future unit, not this scaffold): prefer one narrow path
+    at <code>gwr_carrier_closure.py::gwr_carrier_floor_transport_within_gap_bound</code>
+    or an immediately adjacent named predicate called only from the GWR stack.
+    Do not add fallback ladders.
+  </p>
+
+  <h2>5. Expected outcomes A / B / C</h2>
+  <table>
+    <thead>
+      <tr><th>Outcome</th><th>Meaning for 50-bit pin</th><th>Controls (40-bit; later 64-bit if in package)</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>A. Close</strong></td>
+        <td>
+          50-bit emits a public endpoint class under F_public union {D}
+          with structural certificate only. Residual code becomes null.
+          Downstream factor audit may corroborate but must not choose the class.
+        </td>
+        <td>40-bit remains resolved (no regression). No classical fields appear in inference.</td>
+      </tr>
+      <tr>
+        <td><strong>B. Partition</strong></td>
+        <td>
+          50-bit stays unresolved, but residual migrates to a new stable taxonomy code, e.g.
+          <code>unresolved_by_dual_gap_carrier_misalignment</code>
+          or
+          <code>unresolved_by_reciprocal_carrier_overshoot_excess</code>,
+          with diagnostics
+          <code>delta</code>, <code>boundF</code>, <code>boundD</code>, <code>excess</code>,
+          <code>signed_overshoot</code>, both gap offsets.
+        </td>
+        <td>40-bit still resolved. Taxonomy updated only if the new code is emitted.</td>
+      </tr>
+      <tr>
+        <td><strong>C. Honest unresolved</strong></td>
+        <td>
+          50-bit remains
+          <code>unresolved_by_reciprocal_carrier_misalignment</code>
+          with stronger public diagnostics (excess=2, dual-gap bound comparison)
+          and no claim of closure.
+        </td>
+        <td>ADV-001 stays green. D is recorded as non-separating or rejected.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    Pre-registered pressure expectation (hypothesis, not prediction theater):
+    pin arithmetic makes outcome A possible on this single residual pair.
+    Outcome A is accepted only if controls stay clean and ADV-001 honesty holds.
+    If dual-gap re-admission creates false endpoint classes on other public cases,
+    abandon A and fall to B or C without classical rescue.
+  </p>
+
+  <h2>6. Falsifiers (including ADV-001)</h2>
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Falsifier</th><th>Pass condition</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>ADV-001</strong></td>
+        <td>
+          Known carrier-misalignment residual vanishes only because audit factors
+          or classical selectors entered inference, or residual disappears without
+          residual migration note.
+        </td>
+        <td>
+          Under current F_public, 50-bit stays in the carrier-misalignment family.
+          Under F_public union {D}, residual may close only by public D; if it closes,
+          document migration from residual to endpoint class with public diagnostics.
+          Test:
+          <code>test_adv_001_known_carrier_misalignment_stays_unresolved</code>
+          remains the honesty gate for the pre-D path and is updated only with an
+          explicit residual-migration note when D changes the outcome.
+        </td>
+      </tr>
+      <tr>
+        <td>F-40</td>
+        <td>40-bit golden regresses to unresolved or changes endpoint class for non-D reasons</td>
+        <td>40-bit still emits deadline-signature correction class on freeze fixtures</td>
+      </tr>
+      <tr>
+        <td>F-CLASSICAL</td>
+        <td>D path calls gcd, product, isprime, factor APIs, or private fields</td>
+        <td>Static review + unit path: public certificate fields and floor only</td>
+      </tr>
+      <tr>
+        <td>F-BOUND-THEATER</td>
+        <td>D is an ad hoc constant that only fits 30 vs 28 (e.g. hardcode bound=30)</td>
+        <td>D must be stated as a named function of public certificate fields</td>
+      </tr>
+      <tr>
+        <td>F-CLAIM</td>
+        <td>Prose says verified / validated / RSA broken / theorem without authority</td>
+        <td>Measured / hypothesis / unresolved labels only; no PROOF.md edits</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>7. Non-goals</h2>
+  <ul class="check">
+    <li>No classical gates as inference (gcd, divisibility selectors, product closure, primality APIs).</li>
+    <li>No theorem inflation: D does not alter <code>PROOF.md</code> or next-prime / GWR / PSP status.</li>
+    <li>No program-level verified / validated language without an executed residual-family 10^18 surface.</li>
+    <li>No factor recovery as success criterion; optional factor audit is downstream only.</li>
+    <li>No multi-discriminator portfolio in the first unit; exactly one D.</li>
+    <li>No random fallback, retry ladder, or second algorithm path.</li>
+    <li>No Super-Signal / fixed isqrt chamber / V2 residue-ranking salvage.</li>
+    <li>No widening bound by magic constants that are not public certificate functions.</li>
+  </ul>
+
+  <h2>8. Implementation discipline (next unit only)</h2>
+  <ol>
+    <li>Keep this contract frozen while coding the unit.</li>
+    <li>Implement D as one predicate; wire once into the GWR carrier stack.</li>
+    <li>Re-run baseline fixtures into
+      <code>output/discriminator_D/</code> (separate from freeze).</li>
+    <li>Run A1 unit + adversarial suites; report A / B / C with residual codes.</li>
+    <li>If A fails honesty or controls, stop and record B or C. Do not smuggle classical repair.</li>
+  </ol>
+
+  <h2>9. Recommended concrete D hypothesis text (copy block)</h2>
+  <pre>D = D_dual_gap_carrier_floor_transport_bound
+
+On public certificates (lower, upper) and modulus N:
+  T     = floor(N / lower.carrier_w)
+  delta = |T - upper.carrier_w|
+  G     = max(lower.gap_offset, 20_default_if_nonpositive)
+          + max(upper.gap_offset, 20_default_if_nonpositive)
+  boundD = max(20, (6 * G) // 5)
+  D holds iff delta &lt;= boundD
+
+Live 50-bit residual under F_public:
+  gwr_carrier_floor_transport_within_gap_bound fails with
+  delta=30 &gt; boundF=28 (lower-only gap scaling; lower.gap_offset=24)
+  transported=32059651 upper_w=32059621 excess=2 signed_overshoot=+30
+
+Under D with public gaps (24, 14):
+  G=38 boundD=45 and 30 &lt;= 45 so D holds on the pin pair (hypothesis arithmetic)
+
+Outcomes:
+  (A) close 50-bit under public stack with D
+  (B) else migrate residual subclass with dual-gap diagnostics
+  (C) else keep unresolved_by_reciprocal_carrier_misalignment with excess diagnostics
+
+Honesty:
+  ADV-001; no classical inference; no theorem claim; no verified language without 10^18.</pre>
+
+  <h2>10. Status separation</h2>
+  <table>
+    <thead>
+      <tr><th>Layer</th><th>Label</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>UBC / PSP / GWR / next-prime</td><td>theorem (PROOF.md; untouched)</td></tr>
+      <tr><td>Baseline freeze 40 resolve / 50 residual</td><td>measured on regression fixtures @ HEAD</td></tr>
+      <tr><td>D predicate and dual-gap re-admission</td><td>hypothesis</td></tr>
+      <tr><td>50-bit residual under live F_public</td><td>unresolved</td></tr>
+      <tr><td>ADV-001 honesty</td><td>audit / falsifier contract</td></tr>
+      <tr><td>Program verified / validated for this residual family</td><td>forbidden until executed 10^18 residual surface</td></tr>
+    </tbody>
+  </table>
+
+  <footer>
+    Path:
+    research/06-cryptology-rsa/experiments/live-solver/rsa-v3/docs/PUBLIC_RESIDUAL_DISCRIMINATOR_D.html
+    · Date: 2026-07-13 · HEAD: 3825ff5c · En dashes not used ·
+    Scaffold contract only; D inference not implemented in this turn.
+  </footer>
+</main>
+</body>
+</html>

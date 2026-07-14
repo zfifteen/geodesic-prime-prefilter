@@ -61,10 +61,19 @@ certificate.
 2. **Deadline-signature correction** second (one induced correction)
 3. **Named GWR-carrier transport closure** predicates (inference, not audit):
    - `gwr_carrier_fields_present`
-   - `gwr_carrier_floor_transport_within_gap_bound`
+   - `gwr_dual_gap_carrier_floor_transport_bound` (**live residual discriminator D**)
+     - `T = floor(N / lower.carrier_w)`
+     - `delta = |T - upper.carrier_w|`
+     - `boundD = max(20, floor(1.2 * (g_lo + g_up)))` with public gap defaults 20
+     - D holds iff `delta <= boundD`
+   - `gwr_carrier_floor_transport_within_gap_bound` (legacy lower-only; diagnostic only)
    - `gwr_first_tail_reciprocal_proximity` (when deadline=tail)
    - `gwr_lower_lock_dominance` (when required by chain step)
    - `gwr_matched_profile_counts` (when required by chain step)
+
+Live residual code for dual-gap failure remains
+`unresolved_by_reciprocal_carrier_misalignment`. If D holds and a later named
+predicate fails, residual migrates to that predicate's code (honest subclass).
 
 ### Stage 8: Emit
 

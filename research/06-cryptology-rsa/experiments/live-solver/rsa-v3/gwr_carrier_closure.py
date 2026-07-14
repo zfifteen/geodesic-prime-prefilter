@@ -35,14 +35,23 @@ def gwr_carrier_fields_present(
     return PredicateResult(name, True, "ok")
 
 
+def _public_gap_offset(side: Mapping[str, Any]) -> int:
+    """Positive public gap_offset, or default 20 when missing or non-positive."""
+    gap = int(side.get("gap_offset") or 0)
+    if gap <= 0:
+        return 20
+    return gap
+
+
 def gwr_carrier_floor_transport_within_gap_bound(
     n_value: int,
     lower: Mapping[str, Any],
     upper: Mapping[str, Any],
 ) -> PredicateResult:
-    """Transported lower carrier_w must land within a gap-scaled bound of upper carrier_w.
+    """Legacy lower-only gap bound (diagnostic / comparison only).
 
     Bound = max(20, floor(1.2 * lower.gap_offset)).
+    Not the live residual discriminator D; see dual-gap predicate.
     """
     name = "gwr_carrier_floor_transport_within_gap_bound"
     lower_w = lower.get("carrier_w")
@@ -55,15 +64,59 @@ def gwr_carrier_floor_transport_within_gap_bound(
         return PredicateResult(name, False, "non_positive_lower_carrier")
     transported = n_value // lw
     delta = abs(transported - uw)
-    lower_gap = int(lower.get("gap_offset") or 0)
-    if lower_gap <= 0:
-        lower_gap = 20
+    lower_gap = _public_gap_offset(lower)
     bound = max(20, (6 * lower_gap) // 5)
     holds = delta <= bound
     return PredicateResult(
         name,
         holds,
         f"delta={delta};bound={bound};transported={transported};upper_w={uw}",
+    )
+
+
+def gwr_dual_gap_carrier_floor_transport_bound(
+    n_value: int,
+    lower: Mapping[str, Any],
+    upper: Mapping[str, Any],
+) -> PredicateResult:
+    """Public residual discriminator D: dual-gap carrier floor transport bound.
+
+    Objects: lower/upper carrier_w and gap_offset from PGSPG certificates.
+    Mechanism: floor-transport lower.carrier_w through N and require proximity
+    to upper.carrier_w within a bound scaled by both public gap widths.
+
+    T = floor(N / lower.carrier_w)
+    delta = |T - upper.carrier_w|
+    G = g_lo + g_up
+    boundD = max(20, floor(1.2 * G))
+    D holds iff delta <= boundD
+
+    Status: hypothesis residual discriminator. Used as the transport decision
+    predicate inside rsa-v3 GWR evaluation; not a theorem.
+    """
+    name = "gwr_dual_gap_carrier_floor_transport_bound"
+    lower_w = lower.get("carrier_w")
+    upper_w = upper.get("carrier_w")
+    if lower_w is None or upper_w is None:
+        return PredicateResult(name, False, "missing_carrier_w")
+    lw = int(lower_w)
+    uw = int(upper_w)
+    if lw <= 0:
+        return PredicateResult(name, False, "non_positive_lower_carrier")
+    transported = n_value // lw
+    delta = abs(transported - uw)
+    g_lo = _public_gap_offset(lower)
+    g_up = _public_gap_offset(upper)
+    bound_d = max(20, (6 * (g_lo + g_up)) // 5)
+    holds = delta <= bound_d
+    excess = delta - bound_d
+    return PredicateResult(
+        name,
+        holds,
+        (
+            f"delta={delta};boundD={bound_d};g_lo={g_lo};g_up={g_up};"
+            f"transported={transported};upper_w={uw};excess={excess}"
+        ),
     )
 
 
@@ -130,6 +183,21 @@ def gwr_matched_profile_counts(
     )
 
 
+# Historical mutual-closure false public endpoint class on the 50-bit pin.
+# Must never be re-admitted as a public structural emit (Heavy Phase-1 anti-admission).
+HISTORICAL_FALSE_ENDPOINT_CLASS_50BIT: tuple[str, str] = ("32047651", "32059633")
+
+
+def is_historical_false_endpoint_class(
+    endpoint_lower: str | int | None,
+    endpoint_upper: str | int | None,
+) -> bool:
+    """True when the pair matches the known 50-bit mutual-closure false class."""
+    if endpoint_lower is None or endpoint_upper is None:
+        return False
+    return (str(endpoint_lower), str(endpoint_upper)) == HISTORICAL_FALSE_ENDPOINT_CLASS_50BIT
+
+
 def evaluate_gwr_carrier_transport_closure(
     n_value: int,
     lower: Mapping[str, Any] | None,
@@ -139,9 +207,16 @@ def evaluate_gwr_carrier_transport_closure(
 ) -> tuple[bool, list[PredicateResult], str | None]:
     """Run the named GWR-carrier transport closure stack.
 
+    Residual *decision* is the first failing required public predicate (order
+    preserved). Residual *diagnostics* still collect later named components when
+    certificates are present so joint residual honesty is visible (Phase-1):
+    dual-gap D, first-tail (when applicable), and lock/profile when
+    ``require_lock_and_profile`` is true, even if an earlier gate already failed.
+
     Returns (all_required_hold, results, residual_code_if_failed).
     """
     results: list[PredicateResult] = []
+    residual: str | None = None
 
     present = gwr_carrier_fields_present(lower, upper)
     results.append(present)
@@ -149,27 +224,37 @@ def evaluate_gwr_carrier_transport_closure(
         return False, results, "unresolved_by_gwr_carrier_fields_absent"
 
     assert lower is not None and upper is not None
-    transport = gwr_carrier_floor_transport_within_gap_bound(n_value, lower, upper)
+    # Live residual discriminator D (dual-gap). Lower-only bound kept as diagnostic.
+    legacy_lower_only = gwr_carrier_floor_transport_within_gap_bound(
+        n_value, lower, upper
+    )
+    results.append(legacy_lower_only)
+    transport = gwr_dual_gap_carrier_floor_transport_bound(n_value, lower, upper)
     results.append(transport)
-    if not transport.holds:
-        return False, results, "unresolved_by_reciprocal_carrier_misalignment"
+    if not transport.holds and residual is None:
+        residual = "unresolved_by_reciprocal_carrier_misalignment"
 
+    # Always evaluate first-tail when certificates exist (not_applicable is a hold).
     tail = gwr_first_tail_reciprocal_proximity(n_value, lower, upper)
     results.append(tail)
-    if not tail.holds:
-        return False, results, "unresolved_by_first_tail_misalignment"
+    if not tail.holds and residual is None:
+        residual = "unresolved_by_first_tail_misalignment"
 
     if require_lock_and_profile:
+        # Co-primary structural components for chain-step residual honesty:
+        # always evaluate lock and profile for diagnostics even if residual
+        # already decided (e.g. first-tail fail on the 50-bit pin).
         lock = gwr_lower_lock_dominance(lower)
         results.append(lock)
-        if not lock.holds:
-            return False, results, "unresolved_by_lower_lock_misalignment"
+        if not lock.holds and residual is None:
+            residual = "unresolved_by_lower_lock_misalignment"
         profile = gwr_matched_profile_counts(lower, upper)
         results.append(profile)
-        if not profile.holds:
-            return False, results, "unresolved_by_profile_count_mismatch"
+        if not profile.holds and residual is None:
+            residual = "unresolved_by_profile_count_mismatch"
 
-    return True, results, None
+    holds = residual is None
+    return holds, results, residual
 
 
 def predicate_results_to_json(results: list[PredicateResult]) -> dict[str, object]:
@@ -177,4 +262,20 @@ def predicate_results_to_json(results: list[PredicateResult]) -> dict[str, objec
     return {
         item.name: {"holds": item.holds, "detail": item.detail}
         for item in results
+    }
+
+
+def residual_component_ledger(
+    results: list[PredicateResult],
+    *,
+    decision_residual: str | None,
+) -> dict[str, object]:
+    """Full named GWR component map for residual honesty packages.
+
+    Includes every evaluated predicate plus the decision residual code. Pure
+    public diagnostics; no classical fields.
+    """
+    return {
+        "decision_residual": decision_residual,
+        "components": predicate_results_to_json(results),
     }
