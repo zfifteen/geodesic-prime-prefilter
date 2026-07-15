@@ -67,13 +67,25 @@ certificate.
      - `boundD = max(20, floor(1.2 * (g_lo + g_up)))` with public gap defaults 20
      - D holds iff `delta <= boundD`
    - `gwr_carrier_floor_transport_within_gap_bound` (legacy lower-only; diagnostic only)
-   - `gwr_first_tail_reciprocal_proximity` (when deadline=tail)
+   - `gwr_first_tail_reciprocal_proximity` (when deadline=tail; fixed window
+     `[-12, 6]`; not widened to force close)
    - `gwr_lower_lock_dominance` (when required by chain step)
    - `gwr_matched_profile_counts` (when required by chain step)
+   - `gwr_residual_cell_R` / residual vector
+     `R = (r_carrier, r_tail, r_lock)` (public ranks + pinch_S diagnostic)
 
-Live residual code for dual-gap failure remains
-`unresolved_by_reciprocal_carrier_misalignment`. If D holds and a later named
-predicate fails, residual migrates to that predicate's code (honest subclass).
+Live residual codes (honest subclass migration; all **hypothesis** residual maps):
+
+| Situation | Residual code |
+| --- | --- |
+| Dual-gap D fails (`r_carrier = 2`) | `unresolved_by_reciprocal_carrier_misalignment` |
+| D holds, first-tail fails, R is not C1T2L1 | `unresolved_by_first_tail_misalignment` |
+| D holds, first-tail fails, R = (1, 2, 1) → cell **C1T2L1** | `unresolved_by_joint_cell_C1T2L1` |
+| Later lock / profile fail when residual still open | corresponding lock/profile residual |
+
+Measured 50-bit pin (regression fixtures): residual migrates to
+`unresolved_by_joint_cell_C1T2L1` with `pinch_S = 54`; no endpoint class.
+Package: `output/residual_cell_C1T2L1/`.
 
 ### Stage 8: Emit
 

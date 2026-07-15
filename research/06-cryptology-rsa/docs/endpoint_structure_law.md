@@ -172,15 +172,23 @@ The generated inference row emits:
 ## Current Boundary
 
 The official 50-bit RSA v2 rung reaches a mutual certificate closure candidate
-inside the endpoint chain, but the candidate fails reciprocal carrier
-alignment. The live runner therefore returns an unresolved structural state:
+inside the endpoint chain, but refined public geometry rejects that candidate.
+The runner returns an **unresolved** structural state (no public endpoint class):
 
 ```text
 case_id = rsa_v2_50bit_static_001
-closure_status = unresolved_by_reciprocal_carrier_misalignment
 endpoint_chain_steps = 350
 rejected_candidate = (32047651, 32059633)
+rsa-v2 residual pin = unresolved_by_reciprocal_carrier_misalignment
 ```
+
+**rsa-v3 residual refinement (same fixture, still unresolved):** dual-gap D holds
+on the public carrier transport; residual migrates first to
+`unresolved_by_first_tail_misalignment`, then to joint residual cell
+`unresolved_by_joint_cell_C1T2L1` with residual vector R = (1, 2, 1) and
+pinch_S = 54. Residual maps remain hypothesis. See
+`experiments/live-solver/rsa-v3/output/residual_cell_C1T2L1/` and
+`experiments/live-solver/rsa-v3/RESIDUAL_TAXONOMY.md`.
 
 The official 64-bit RSA v2 rung resolves by the same mutual closure predicate
 plus the refined public certificate-geometry filters, and audit confirms the

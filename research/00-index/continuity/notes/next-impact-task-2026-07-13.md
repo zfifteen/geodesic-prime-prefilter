@@ -4,6 +4,13 @@
 **Full report:** [research/00-index/continuity/reports/next-impact-task/index.html](../reports/next-impact-task/index.html)  
 **Active goal pin (pursue this):** [ACTIVE_GOAL_50bit_residual_discriminator.md](ACTIVE_GOAL_50bit_residual_discriminator.md)
 
+> **Residual pin update (2026-07-14):** This note freezes the 2026-07-13 state
+> (50-bit residual then
+> `unresolved_by_reciprocal_carrier_misalignment`). Live residual after dual-gap
+> D and residual cell R is `unresolved_by_joint_cell_C1T2L1` on the same fixture;
+> 50-bit remains **unresolved**. See ACTIVE_GOAL pin and
+> `rsa-v3/output/residual_cell_C1T2L1/`.
+
 ## Sync
 
 | Field | Value |

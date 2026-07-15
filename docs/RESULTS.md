@@ -163,12 +163,26 @@ On the current committed RSA v2 ladder:
 - `rsa_v2_40bit_static_001`: public reciprocal deadline-signature correction
   resolves the endpoint class as `(1048559, 1048589)`.
 - `rsa_v2_50bit_static_001`: refined public closure rejects the historical
-  mutual-closure candidate and returns
-  `unresolved_by_reciprocal_carrier_misalignment`.
+  mutual-closure candidate and emits **no public endpoint class**. The row
+  remains **unresolved** before audit.
 - `rsa_v2_64bit_static_001`: public mutual certificate closure resolves the
   endpoint class as `(3221225473, 3221275501)`.
 
-This is a measured RSA v2 endpoint-structure result, not a universal RSA-scale
+**Residual code history (measured, not theorem):**
+
+| Layer | 50-bit residual code (same fixture, still unresolved) |
+| --- | --- |
+| RSA v2 refined runner pin | `unresolved_by_reciprocal_carrier_misalignment` |
+| rsa-v3 after dual-gap D | `unresolved_by_first_tail_misalignment` |
+| rsa-v3 live residual cell R | `unresolved_by_joint_cell_C1T2L1` (R = (1,2,1), pinch_S = 54) |
+
+The public story is unchanged: 40/64-bit resolve under public rules; 50-bit stays
+unresolved and never emits the historical false class `(32047651, 32059633)`.
+Residual-map status for dual-gap D and cell R remains **hypothesis**. Packages:
+`research/06-cryptology-rsa/experiments/live-solver/rsa-v3/output/discriminator_D/`,
+`.../output/residual_cell_C1T2L1/`.
+
+This is a measured RSA endpoint-structure result, not a universal RSA-scale
 theorem. Audit confirms the exact 40-bit and 64-bit factor pairs after public
 inference. The 50-bit row is unresolved before audit and emits no public
 endpoint class. Audit does not define the inference rule.

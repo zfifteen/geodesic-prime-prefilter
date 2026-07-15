@@ -60,3 +60,21 @@ rule_id = reciprocal_pgs_gwr_carrier_transport_v3
 
 Unresolved cases emit residual codes listed in `RESIDUAL_TAXONOMY.md` and
 appear in run `residuals.jsonl` under the output directory.
+
+### Residual packages (measured evolution; 50-bit still unresolved)
+
+| Package | Residual story | Class |
+| --- | --- | --- |
+| `output/baseline_freeze_goal/` | Pre-D residual pin | honesty freeze |
+| `output/discriminator_D/` | Dual-gap D holds; residual → `unresolved_by_first_tail_misalignment` | **(B)** subclass |
+| `output/phase1_residual_honesty/` | Joint component ledger + anti-admission | **(C)** diagnostics |
+| `output/residual_cell_C1T2L1/` | Residual vector R; decision residual → `unresolved_by_joint_cell_C1T2L1` | **(B)** subclass |
+
+Live decision residual on `rsa_v2_50bit_static_001` under the residual-cell
+stack: **`unresolved_by_joint_cell_C1T2L1`** with
+`R = (r_carrier=1, r_tail=2, r_lock=1)`, `pinch_S=54`. Residual maps (D, R, joint
+cell) stay **hypothesis**. 40-bit control still resolves. No residual-family
+`10^18` surface; no verified/validated residual language.
+
+Continuity pin:
+`research/00-index/continuity/notes/ACTIVE_GOAL_50bit_residual_discriminator.md`.

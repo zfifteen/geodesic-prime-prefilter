@@ -211,14 +211,24 @@ Strongest supported claim:
 RSA moduli do expose deterministic endpoint structure. The 40-bit RSA v2 ladder
 rung is audit-confirmed after reciprocal deadline-signature correction. The
 64-bit rung is audit-confirmed after public mutual certificate closure. The
-50-bit rung returns unresolved_by_reciprocal_carrier_misalignment before audit.
+50-bit rung stays unresolved before audit and emits no public endpoint class.
+```
+
+Residual codes (measured history; 50-bit always unresolved):
+
+```text
+rsa-v2 runner pin:     unresolved_by_reciprocal_carrier_misalignment
+rsa-v3 after dual-gap D: unresolved_by_first_tail_misalignment
+rsa-v3 live residual R:  unresolved_by_joint_cell_C1T2L1
+  package: research/06-cryptology-rsa/experiments/live-solver/rsa-v3/output/residual_cell_C1T2L1/
+  continuity: research/00-index/continuity/notes/ACTIVE_GOAL_50bit_residual_discriminator.md
 ```
 
 Scope limit:
 
 ```text
-The live ladder is a measured RSA v2 endpoint-structure result. It is not a
-universal RSA-scale theorem.
+The live ladder is a measured RSA endpoint-structure result. It is not a
+universal RSA-scale theorem. Residual maps (D, residual cell R) are hypothesis.
 ```
 
 Live resolver predicate:

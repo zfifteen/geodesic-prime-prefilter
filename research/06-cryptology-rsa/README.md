@@ -68,7 +68,10 @@ rsa_v2_64bit_static_001: factor_found = true
 The 40-bit row is measured and audit-confirmed after public PGS endpoint-class
 inference. The 64-bit row is measured and audit-confirmed after public mutual
 certificate closure. The 50-bit row is unresolved before audit and emits no
-public endpoint class.
+public endpoint class. On the rsa-v3 residual stack the same fixture’s residual
+code migrates under public geometry (carrier misalignment → first-tail → joint
+cell `C1T2L1`) while remaining **unresolved**; see
+`experiments/live-solver/rsa-v3/output/residual_cell_C1T2L1/`.
 
 256-bit expansion added rsa_v2_128bit_static_001 and rsa_v2_256bit_static_001
 (curated from scaleup corpus). Both return unresolved_by_missing_lower_certificate
@@ -106,8 +109,20 @@ factorization result unless downstream audit reports `factor_found = true`.
 
 The RSA v2 factor-pair state remains unresolved where the audit says
 `factor_found = false`. The 50-bit row is unresolved before audit and is not a
-factor solve. The active task is to find the PGS-native discriminator that
-separates the factor endpoint class from rejected public closure candidates.
+factor solve.
+
+**Measured residual progress (rsa-v3, still unresolved):** dual-gap residual
+discriminator D cleared the old carrier residual on the 50-bit pin; residual
+then named first-tail, then joint residual cell
+`unresolved_by_joint_cell_C1T2L1` with residual vector R = (1, 2, 1) and
+pinch_S = 54 (public certificate fields only). Residual maps remain
+**hypothesis**. Continuity pin:
+`research/00-index/continuity/notes/ACTIVE_GOAL_50bit_residual_discriminator.md`.
+
+**Active residual pressure:** keep 50-bit honesty (no window widen, no classical
+smuggle, anti-admit false class `(32047651, 32059633)`); pressure joint residual
+geometry only with public fields. Separation of true public endpoint class from
+rejected closure candidates remains the open residual target.
 
 ## Reproduce
 
