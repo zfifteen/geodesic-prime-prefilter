@@ -183,6 +183,171 @@ def gwr_matched_profile_counts(
     )
 
 
+# STEP2 tight carrier band (measured): true mutual 64-bit has delta_c=14; false 50-bit has 30.
+# Dual-gap D still holds both (30 <= 45). Rank 1 names the D-hold / tight-band gap.
+TIGHT_CARRIER_BAND = 20
+
+# Joint residual cell for the measured 50-bit pin geometry after dual-gap D.
+# R = (r_carrier=1, r_tail=2, r_lock=1) -> cell C1T2L1
+JOINT_CELL_PIN_CODE = "unresolved_by_joint_cell_C1T2L1"
+
+
+def _carrier_delta_vs_upper_carrier(
+    n_value: int,
+    lower: Mapping[str, Any],
+    upper: Mapping[str, Any],
+) -> int | None:
+    """Public |floor(N / lower.carrier_w) - upper.carrier_w|, or None if missing."""
+    lower_w = lower.get("carrier_w")
+    upper_w = upper.get("carrier_w")
+    if lower_w is None or upper_w is None:
+        return None
+    lw = int(lower_w)
+    if lw <= 0:
+        return None
+    return abs((n_value // lw) - int(upper_w))
+
+
+def _first_tail_raw_delta(
+    n_value: int,
+    lower: Mapping[str, Any],
+    upper: Mapping[str, Any],
+) -> int | None:
+    """Public floor-transport first-tail delta vs upper.anchor, or None if N/A/missing."""
+    signature = str(lower.get("reset_signature") or "")
+    if "deadline=tail" not in signature:
+        return None
+    tails = lower.get("tail_after_reset_offsets") or []
+    if not tails:
+        return None
+    try:
+        reset_endpoint = int(lower["reset_endpoint"])
+    except (TypeError, ValueError, KeyError):
+        return None
+    first_tail_point = reset_endpoint + int(tails[0])
+    if first_tail_point <= 0:
+        return None
+    raw_anchor = upper.get("anchor")
+    if raw_anchor is None:
+        return None
+    try:
+        upper_anchor = int(raw_anchor)
+    except (TypeError, ValueError):
+        return None
+    return (n_value // first_tail_point) - upper_anchor
+
+
+def _pinch_sum(
+    n_value: int,
+    lower: Mapping[str, Any],
+    upper: Mapping[str, Any],
+) -> int | None:
+    """STEP2 pinch S = |T_c - upper.anchor| + |upper.anchor - T_tail|.
+
+    Public certificate fields + floor transport only. None when tail path N/A.
+    Measured pins: 50-bit false S=54; 64-bit true S=21.
+    """
+    lower_w = lower.get("carrier_w")
+    raw_anchor = upper.get("anchor")
+    if lower_w is None or raw_anchor is None:
+        return None
+    lw = int(lower_w)
+    if lw <= 0:
+        return None
+    try:
+        upper_anchor = int(raw_anchor)
+    except (TypeError, ValueError):
+        return None
+    t_c = n_value // lw
+    delta_t = _first_tail_raw_delta(n_value, lower, upper)
+    if delta_t is None:
+        return None
+    # undershoot is signed delta_t = T_tail - anchor; |anchor - T_tail| = |delta_t|
+    return abs(t_c - upper_anchor) + abs(delta_t)
+
+
+def residual_vector_R(
+    n_value: int,
+    lower: Mapping[str, Any],
+    upper: Mapping[str, Any],
+) -> dict[str, object]:
+    """Integer residual ranks R = (r_carrier, r_tail, r_lock) from public fields.
+
+    Rank convention (hypothesis residual cell map, measured anchors from STEP2+D):
+      r_carrier: 0 if delta_c <= 20; 1 if 20 < delta_c <= boundD; 2 if delta_c > boundD
+      r_tail:    -1 N/A; 0 if [-12,6]; 1 if [-21,-13]; 2 if <=-22 or >=7
+      r_lock:    -1 N/A; 0 if 2*lock > gap; 1 if weak (2*lock <= gap and lock >= gap//4);
+                 2 if very early lock
+
+    Status: hypothesis residual map. Not a theorem. Not a close rule.
+    """
+    g_lo = _public_gap_offset(lower)
+    g_up = _public_gap_offset(upper)
+    bound_d = max(20, (6 * (g_lo + g_up)) // 5)
+    delta_c = _carrier_delta_vs_upper_carrier(n_value, lower, upper)
+    if delta_c is None:
+        r_carrier = -1
+    elif delta_c <= TIGHT_CARRIER_BAND:
+        r_carrier = 0
+    elif delta_c <= bound_d:
+        r_carrier = 1
+    else:
+        r_carrier = 2
+
+    delta_t = _first_tail_raw_delta(n_value, lower, upper)
+    if delta_t is None:
+        r_tail = -1
+    elif -12 <= delta_t <= 6:
+        r_tail = 0
+    elif -21 <= delta_t <= -13:
+        r_tail = 1
+    else:
+        r_tail = 2
+
+    lock_off = lower.get("lock_carrier_offset")
+    gap = int(lower.get("gap_offset") or 0)
+    if lock_off is None or gap <= 0:
+        r_lock = -1
+    else:
+        lock_i = int(lock_off)
+        if 2 * lock_i > gap:
+            r_lock = 0
+        elif lock_i >= gap // 4:
+            r_lock = 1
+        else:
+            r_lock = 2
+
+    t_label = "X" if r_tail < 0 else str(r_tail)
+    l_label = "X" if r_lock < 0 else str(r_lock)
+    c_label = "X" if r_carrier < 0 else str(r_carrier)
+    cell = f"C{c_label}T{t_label}L{l_label}"
+    pinch = _pinch_sum(n_value, lower, upper)
+    return {
+        "r_carrier": r_carrier,
+        "r_tail": r_tail,
+        "r_lock": r_lock,
+        "decision_cell": cell,
+        "delta_c": delta_c,
+        "delta_t": delta_t,
+        "boundD": bound_d,
+        "g_lo": g_lo,
+        "g_up": g_up,
+        "tight_carrier_band": TIGHT_CARRIER_BAND,
+        "pinch_S": pinch,
+        "lock": None if lock_off is None else int(lock_off),
+        "gap": gap if gap > 0 else None,
+    }
+
+
+def is_joint_cell_C1T2L1(vector: Mapping[str, object]) -> bool:
+    """True for the measured 50-bit pin cell: loose D-hold carrier + hard tail + weak lock."""
+    return (
+        int(vector.get("r_carrier", -9)) == 1
+        and int(vector.get("r_tail", -9)) == 2
+        and int(vector.get("r_lock", -9)) == 1
+    )
+
+
 # Historical mutual-closure false public endpoint class on the 50-bit pin.
 # Must never be re-admitted as a public structural emit (Heavy Phase-1 anti-admission).
 HISTORICAL_FALSE_ENDPOINT_CLASS_50BIT: tuple[str, str] = ("32047651", "32059633")
@@ -253,6 +418,62 @@ def evaluate_gwr_carrier_transport_closure(
         if not profile.holds and residual is None:
             residual = "unresolved_by_profile_count_mismatch"
 
+    # Residual cell R (hypothesis residual map): when the sequential stack lands
+    # on first-tail fail while lock was evaluated, promote joint cell C1T2L1 if
+    # the full rank vector matches the measured 50-bit FP geometry. This is a
+    # residual subclass migration (class B), not a public close.
+    residual_vector: dict[str, object] | None = None
+    if residual is not None and residual == "unresolved_by_first_tail_misalignment":
+        residual_vector = residual_vector_R(n_value, lower, upper)
+        if is_joint_cell_C1T2L1(residual_vector):
+            residual = JOINT_CELL_PIN_CODE
+            results.append(
+                PredicateResult(
+                    "gwr_residual_cell_R",
+                    False,
+                    (
+                        f"cell={residual_vector['decision_cell']};"
+                        f"r=({residual_vector['r_carrier']},"
+                        f"{residual_vector['r_tail']},"
+                        f"{residual_vector['r_lock']});"
+                        f"pinch_S={residual_vector['pinch_S']};"
+                        f"delta_c={residual_vector['delta_c']};"
+                        f"delta_t={residual_vector['delta_t']}"
+                    ),
+                )
+            )
+        else:
+            results.append(
+                PredicateResult(
+                    "gwr_residual_cell_R",
+                    False,
+                    (
+                        f"cell={residual_vector['decision_cell']};"
+                        f"r=({residual_vector['r_carrier']},"
+                        f"{residual_vector['r_tail']},"
+                        f"{residual_vector['r_lock']});"
+                        f"pinch_S={residual_vector['pinch_S']};"
+                        "joint_C1T2L1=false"
+                    ),
+                )
+            )
+    elif residual is None:
+        # Resolve path: still record R for diagnostics when certificates exist.
+        residual_vector = residual_vector_R(n_value, lower, upper)
+        results.append(
+            PredicateResult(
+                "gwr_residual_cell_R",
+                True,
+                (
+                    f"cell={residual_vector['decision_cell']};"
+                    f"r=({residual_vector['r_carrier']},"
+                    f"{residual_vector['r_tail']},"
+                    f"{residual_vector['r_lock']});"
+                    f"pinch_S={residual_vector['pinch_S']}"
+                ),
+            )
+        )
+
     holds = residual is None
     return holds, results, residual
 
@@ -269,13 +490,17 @@ def residual_component_ledger(
     results: list[PredicateResult],
     *,
     decision_residual: str | None,
+    residual_vector: Mapping[str, object] | None = None,
 ) -> dict[str, object]:
     """Full named GWR component map for residual honesty packages.
 
-    Includes every evaluated predicate plus the decision residual code. Pure
-    public diagnostics; no classical fields.
+    Includes every evaluated predicate plus the decision residual code and
+    optional residual cell R. Pure public diagnostics; no classical fields.
     """
-    return {
+    out: dict[str, object] = {
         "decision_residual": decision_residual,
         "components": predicate_results_to_json(results),
     }
+    if residual_vector is not None:
+        out["residual_vector_R"] = dict(residual_vector)
+    return out

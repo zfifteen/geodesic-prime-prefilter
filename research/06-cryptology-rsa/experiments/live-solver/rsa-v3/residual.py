@@ -11,6 +11,10 @@ TAXONOMY: dict[str, str] = {
     "unresolved_by_certificate_pair_not_closed": "Transport present but no reset or deadline closure",
     "unresolved_by_reciprocal_carrier_misalignment": "GWR-carrier floor transport bound failed",
     "unresolved_by_first_tail_misalignment": "First-tail reciprocal proximity failed",
+    "unresolved_by_joint_cell_C1T2L1": (
+        "Joint residual cell C1T2L1: dual-gap D holds with loose carrier rank "
+        "(delta_c > tight band 20), hard first-tail miss (rank 2), and weak lower lock"
+    ),
     "unresolved_by_lower_lock_misalignment": "Lower lock dominance failed",
     "unresolved_by_profile_count_mismatch": "Active/unresolved profile counts mismatched",
     "unresolved_by_gwr_carrier_fields_absent": "Carrier fields required for GWR closure were missing",

@@ -34,6 +34,7 @@ from gwr_carrier_closure import (  # noqa: E402
     is_historical_false_endpoint_class,
     predicate_results_to_json,
     residual_component_ledger,
+    residual_vector_R,
 )
 from residual import (  # noqa: E402
     build_residual_row,
@@ -307,12 +308,16 @@ def resolve_case(
     structural_cert: dict[str, Any] | None = None
     endpoint_class: dict[str, str] | None = None
     stage = "chain_walk"
+    last_lower_map: dict[str, Any] | None = None
+    last_upper_map: dict[str, Any] | None = None
 
     # If v2 already closed to a class, re-validate with named GWR predicates.
     if is_resolved_status(status):
         lower_prefix = _aligned_lower_prefix(pair)
         lower_map = cert_mapping_from_pair_json(pair_json, lower_prefix)
         upper_map = cert_mapping_from_pair_json(pair_json, "upper")
+        last_lower_map = lower_map
+        last_upper_map = upper_map
         require_lock = bool(
             (pair.endpoint_chain_steps or 0) > 0
             or status == "endpoint_class_by_mutual_certificate_closure"
@@ -389,6 +394,8 @@ def resolve_case(
         # Full component ledger still collects later gates for residual honesty.
         lower_map = cert_mapping_from_pair_json(pair_json, _aligned_lower_prefix(pair))
         upper_map = cert_mapping_from_pair_json(pair_json, "upper")
+        last_lower_map = lower_map
+        last_upper_map = upper_map
         if lower_map is not None and upper_map is not None:
             require_lock = (pair.endpoint_chain_steps or 0) > 0
             holds, results, gwr_residual = evaluate_gwr_carrier_transport_closure(
@@ -457,8 +464,16 @@ def resolve_case(
             status = residual_code
         ledger: dict[str, object] | None = None
         if gwr_results:
+            rvec = None
+            if last_lower_map is not None and last_upper_map is not None:
+                try:
+                    rvec = residual_vector_R(n_int, last_lower_map, last_upper_map)
+                except (TypeError, ValueError):
+                    rvec = None
             ledger = residual_component_ledger(
-                gwr_results, decision_residual=residual_code
+                gwr_results,
+                decision_residual=residual_code,
+                residual_vector=rvec,
             )
         residual_row = build_residual_row(
             case_id=case.case_id,
