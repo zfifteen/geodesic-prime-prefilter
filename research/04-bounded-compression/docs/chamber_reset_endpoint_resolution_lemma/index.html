@@ -137,9 +137,9 @@
 <body>
 <main>
   <header>
-    <p class="meta">research/04-bounded-compression/docs · 2026-07-14 · hourly analytic job <code>chamber-reset-lemma-draft</code></p>
+    <p class="meta">research/04-bounded-compression/docs · 2026-07-15 · hourly analytic job <code>chamber-reset-lemma-draft</code></p>
     <h1>Chamber-Reset Endpoint Resolution Lemma</h1>
-    <p class="meta">Subsections: S1 endpoint identification · S2 band residual and chamber-prefix phase order · S3 right completion and chamber-reset residual · S4 interior τ4 field and chamber-cover residual · S5 quartile-balance residual on Tau4 · S6 late-trail dual markers · S7 Dual L1 / τ4 density dual-balance residual · S8 mean inter-hit gap / signed Dual / chamber open fraction · S9 successive-gap regularity / CV / Dual isolation in mean-gap units · S10 median-shape / sub-mean majority / Tau4 body early-mass residual · S11 robust IQR scale / trail-mean closing / Tau4 body last-quartile residual · S12 opening isolation in mean-gap units / peak-over-median / IQR-over-mean residual · S13 median Dual isolation (open/median, trail/median, dual/median) residual</p>
+    <p class="meta">Subsections: S1 endpoint identification · S2 band residual and chamber-prefix phase order · S3 right completion and chamber-reset residual · S4 interior τ4 field and chamber-cover residual · S5 quartile-balance residual on Tau4 · S6 late-trail dual markers · S7 Dual L1 / τ4 density dual-balance residual · S8 mean inter-hit gap / signed Dual / chamber open fraction · S9 successive-gap regularity / CV / Dual isolation in mean-gap units · S10 median-shape / sub-mean majority / Tau4 body early-mass residual · S11 robust IQR scale / trail-mean closing / Tau4 body last-quartile residual · S12 opening isolation in mean-gap units / peak-over-median / IQR-over-mean residual · S13 median Dual isolation (open/median, trail/median, dual/median) residual · S14 interior Tau4 packing floor / dynamic range / Dual-vs-peak-desert residual</p>
     <p>
       <span class="status status-open">Lemma target: UNRESOLVED</span>
       &nbsp;
@@ -479,6 +479,16 @@ and p = P(r<sup>2</sup>).</code></pre>
           <td>RC39–RC41</td>
           <td>Open/median envelope; trail/median envelope; dual/median envelope</td>
           <td>Measured holds as residual only (see S13)</td>
+        </tr>
+        <tr>
+          <td>S14-A / S14-B / S14-C</td>
+          <td>Interior packing floor min/median; dynamic range max/min; Dual L1 over peak desert; InteriorPacking + ResetResidual^P</td>
+          <td>Constructive (this document); does not close S1*</td>
+        </tr>
+        <tr>
+          <td>RC42–RC44</td>
+          <td>min/median packing floor; max/min dynamic range; dual/max_gap Dual-vs-peak-desert</td>
+          <td>Measured holds as residual only (see S14)</td>
         </tr>
       </tbody>
     </table>
@@ -3881,6 +3891,304 @@ ResetResidual^M(r) = (
     <pre><code>python3 experiments/square-branch-hourly-2026-07-14-rc39/offset_540_residual_rc39_probe.py</code></pre>
   </section>
 
+
+  <section>
+    <h2>Subsection S14 — Interior Tau4 packing floor, dynamic range, and Dual-vs-peak-desert residual</h2>
+    <p class="callout">
+      Fourteenth constructive subsection (this hour). Builds on Claims S1–S13 only.
+      It names the interior packing residual triple on successive Tau4 gaps: the
+      packing floor (min successive gap over median), the body spacing dynamic
+      range (max over min), and Dual L1 scaled by the peak interior Tau4 desert
+      (dual over max gap). It then extends the chamber-reset residual by that
+      interior-packing package. It does not prove Target S1*.
+      <code>PROOF.md</code> §Square-Branch Reduction controls: prime-square
+      proximity remains <strong>UNRESOLVED</strong>. Attached residual claims
+      RC42–RC44 are audit only and are not promoted to theorem status.
+    </p>
+
+    <h3>Plain object</h3>
+    <p>
+      Claims S1–S13 identify the selected-square distance <code>D(r)</code>, the
+      residual open set <code>Annulus(r)</code>, the ordered field
+      <code>Tau4(r)</code>, Dual markers and Dual L1, successive-gap lists, mean
+      and median gap, peak-over-median, and Dual isolation in mean and median
+      units. Those objects name central and Dual scales. They do not yet name the
+      <em>floor</em> of successive packing relative to the median, the
+      <em>dynamic range</em> of interior deserts relative to the tightest step, or
+      Dual L1 relative to the <em>largest interior desert</em> (rather than the
+      typical gap). This subsection names those ordered residuals — still pure
+      divisor-count geometry on the selected-square chamber, still not a classical
+      gate on <code>D(r)</code>, and still not a proof that
+      <code>Annulus(r)</code> is empty.
+    </p>
+
+    <h3>Hypotheses</h3>
+    <p>
+      Reuse <strong>H1–H6</strong> from Subsections S1, S3, and S4 without change.
+      No new hypothesis is introduced. Interior packing residuals are defined on
+      the nonempty successive-gap list forced by H6 and Claims S4-A / S9-A /
+      S10-A together with Dual L1 from Claims S6-B / S7-A. When
+      <code>|Tau4(r)| = 1</code>, successive gaps are empty and the packing
+      ratios are undefined; Claims S14-A–S14-C state the constructive formulas
+      only under <code>|Tau4(r)| ≥ 2</code> with <code>median_gap(r) &gt; 0</code>
+      and <code>min_gap(r) &gt; 0</code>, which holds on every measured residual
+      row attached to this subsection.
+    </p>
+
+    <h3>Constructive claim S14-A (interior packing floor min over median)</h3>
+    <div class="panel">
+      <p><strong>Claim S14-A.</strong> Assume H1–H6 and Claims S9-A, S10-A, with
+      <code>D(r) ≥ 2</code>, <code>|Tau4(r)| ≥ 2</code>, and
+      <code>median_gap(r) &gt; 0</code>.</p>
+      <p>
+        Reuse the ordered successive-gap list <code>gaps(r)</code> and peak
+        <code>max_gap(r)</code> from Claim S9-A, and the median successive gap
+        <code>median_gap(r)</code> from Claim S10-A. Define the packing-floor
+        residual
+      </p>
+      <pre><code>min_gap(r)         = min gaps(r),
+
+min_over_median(r) = min_gap(r) / median_gap(r).</code></pre>
+      <p>
+        Then
+      </p>
+      <pre><code>0 &lt; min_gap(r) ≤ median_gap(r) ≤ max_gap(r),
+0 &lt; min_over_median(r) ≤ 1,
+min_gap(r) = min_over_median(r) · median_gap(r).</code></pre>
+      <p>
+        Relation to earlier claims: Claim S10-A names the central successive
+        spacing <code>median_gap</code>. Claim S12-B names the peak multiple of
+        that center (<code>max_over_median ≥ 1</code>). Claim S14-A names the
+        <em>tightest</em> successive Tau4 spacing as a multiple of the same center
+        (interior packing floor, <code>min_over_median ∈ (0,1]</code>). This is a
+        floor residual on <code>gaps(r)</code>, not Dual isolation, not
+        median/mean (S10), not max/median (S12), and not a bound on
+        <code>D(r)</code>. On measured residual rows the ratio sits in a finite
+        envelope (RC42); that measured envelope is residual audit only and is not
+        part of this constructive definition.
+      </p>
+      <p>
+        Status: constructive from Claims S9-A and S10-A. Not a bound on
+        <code>D(r)</code>. Target S1* remains <strong>UNRESOLVED</strong>.
+      </p>
+    </div>
+
+    <h3>Constructive claim S14-B (interior successive-gap dynamic range)</h3>
+    <div class="panel">
+      <p><strong>Claim S14-B.</strong> Assume H1–H6 and Claims S9-A, S14-A, with
+      <code>D(r) ≥ 2</code>, <code>|Tau4(r)| ≥ 2</code>, and
+      <code>min_gap(r) &gt; 0</code>.</p>
+      <p>
+        Reuse <code>min_gap(r)</code> from Claim S14-A and
+        <code>max_gap(r)</code> from Claim S9-A. Define the body spacing dynamic
+        range
+      </p>
+      <pre><code>max_over_min(r) = max_gap(r) / min_gap(r).</code></pre>
+      <p>
+        Then
+      </p>
+      <pre><code>|gaps(r)| = |Tau4(r)| − 1 ≥ 1,
+max_over_min(r) ≥ 1,
+max_gap(r) = max_over_min(r) · min_gap(r).</code></pre>
+      <p>
+        Relation to earlier claims: Claim S9-A / S9-B name peak-to-mean and gap
+        CV. Claim S12-B names peak-to-median. Claim S14-B names how many times the
+        tightest successive Tau4 step fits into the largest successive desert —
+        interior dynamic range, independent of Dual endpoint ratios. When
+        <code>min_gap = 1</code> (common on measured panels),
+        <code>max_over_min(r) = max_gap(r)</code> as an integer identity; that is
+        packing geometry, not a pathology. The ratio does not empty
+        <code>Annulus(r)</code>. On measured residual rows the ratio sits in a
+        finite envelope (RC43); that envelope is residual audit only.
+      </p>
+      <p>
+        Status: constructive from Claims S9-A and S14-A. Not a bound on
+        <code>D(r)</code>. Target S1* remains <strong>UNRESOLVED</strong>.
+      </p>
+    </div>
+
+    <h3>Constructive claim S14-C (Dual L1 over peak desert; InteriorPacking residual)</h3>
+    <div class="panel">
+      <p><strong>Claim S14-C.</strong> Assume H1–H6 and Claims S6-B, S7-A, S9-A,
+      S14-A, S14-B, with <code>D(r) ≥ 2</code>, <code>|Tau4(r)| ≥ 2</code>, and
+      <code>max_gap(r) &gt; 0</code>.</p>
+      <p>
+        Reuse Dual L1 <code>dual_l1(r) = first_τ4_offset + trail_gap(r)</code>
+        from Claims S6-B / S7-A and <code>max_gap(r)</code> from Claim S9-A.
+        Define
+      </p>
+      <pre><code>dual_over_max_gap(r) = dual_l1(r) / max_gap(r).</code></pre>
+      <p>
+        Define the <strong>interior packing residual package</strong>
+      </p>
+      <pre><code>InteriorPacking(r) = (
+  min_over_median(r),
+  max_over_min(r),
+  dual_over_max_gap(r)
+).</code></pre>
+      <p>
+        Extend the chamber-reset residual of Claim S13-C by that package:
+      </p>
+      <pre><code>ResetResidual^P(r) = (
+  ResetResidual^M(r),
+  InteriorPacking(r)
+).</code></pre>
+      <p>
+        Chamber reset still accepts the right endpoint
+        <code>q = r<sup>2</sup> + F(r)</code> and restarts the next ordered search
+        at <code>q</code>. The packing package is residual state of the completed
+        selected-square chamber under the stated domain; it is not a classical
+        inference gate and does not by itself empty <code>Annulus(r)</code>.
+      </p>
+      <p>
+        Relation to earlier claims: Claim S13-B scales Dual L1 by the
+        <em>median</em> gap (RC41). Claim S9-B scales Dual L1 by the
+        <em>mean</em> gap (RC29). Claim S14-C scales Dual L1 by the
+        <em>peak interior desert</em> — Dual versus largest body hole, not Dual
+        isolation in typical-gap units. On measured residual rows
+        <code>dual_over_max_gap</code> sits in a finite envelope (RC44); that
+        envelope is residual audit only.
+      </p>
+      <p>
+        Status: constructive residual-state identification. Target S1* remains
+        <strong>UNRESOLVED</strong>.
+      </p>
+    </div>
+
+    <h3>Measured residual structure attached to S14 (audit only)</h3>
+    <p>
+      Residual claims RC42–RC44 refine interior Tau4 packing on segment
+      utilization maxima through <code>4e8–5e8</code> plus the full
+      <code>o_q ∈ {2,4,6}</code> branch-max panel (8 evaluation rows; 7 unique
+      chambers). They are not theorems. Fixed-band RC2 remains falsified.
+      Invalidated d=4 SDA is not revived. Target S1* is not closed by these rows.
+      Prior residual package source:
+      <code>experiments/square-branch-hourly-2026-07-14-rc42/</code>.
+    </p>
+    <table>
+      <thead>
+        <tr><th>ID</th><th>Claim</th><th>Status on util maxima / o_q panel through 4e8–5e8</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>RC42</td>
+          <td>Floor packing <code>0.10 ≤ min_over_median ≤ 0.35</code></td>
+          <td>Holds (audit); observed range <code>[0.143, 0.250]</code> on 8/8</td>
+        </tr>
+        <tr>
+          <td>RC43</td>
+          <td>Dynamic range <code>8 ≤ max_over_min ≤ 55</code></td>
+          <td>Holds (audit); observed range <code>[14, 44]</code> on 8/8</td>
+        </tr>
+        <tr>
+          <td>RC44</td>
+          <td>Dual vs peak desert <code>0.10 ≤ dual_over_max_gap ≤ 1.10</code></td>
+          <td>Holds (audit); observed range <code>[0.143, 0.923]</code> on 8/8</td>
+        </tr>
+        <tr>
+          <td>RC2</td>
+          <td>Fixed band <code>D(r) ∈ [528, 552]</code> on util maxima is a law</td>
+          <td><strong>Falsified</strong> at <code>D=738</code></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Interior-packing evaluation of Claims S14-A–S14-C on the same three branch
+      maxima used in S3–S13:
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th><code>F(r)</code> (= o_q)</th>
+          <th><code>r</code></th>
+          <th><code>D(r)</code></th>
+          <th>min_over_median</th>
+          <th>max_over_min</th>
+          <th>dual_over_max_gap</th>
+          <th><code>D ∈ Annulus</code>?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2</td>
+          <td><code>468,917,503</code></td>
+          <td>542</td>
+          <td>0.167</td>
+          <td>44</td>
+          <td>0.545</td>
+          <td>no (audit row)</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><code>482,342,527</code></td>
+          <td>486</td>
+          <td>0.143</td>
+          <td>26</td>
+          <td>0.846</td>
+          <td>no (audit row)</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><code>424,171,123</code></td>
+          <td>738</td>
+          <td>0.167</td>
+          <td>30</td>
+          <td>0.367</td>
+          <td>no (audit row; util max)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Reading: on the measured panel the tightest successive Tau4 step is about
+      0.14–0.25 of the median gap (packing floor), the largest desert is about
+      14–44 times the tightest step (dynamic range), and Dual L1 is about
+      0.14–0.92 of the peak interior desert. Escape from the recurring-540 band
+      at the utilization maximum (<code>D=738</code>) keeps all three residuals
+      inside envelope. That is residual audit structure under Claims
+      S14-A–S14-C. It is not a proof that every future root has empty
+      <code>Annulus(r)</code>. Bounded packing ratios do not force
+      <code>D(r) ≤ C_dyn(r)</code>.
+    </p>
+
+    <h3>What S14 does not claim</h3>
+    <ul>
+      <li>No proof of Target S1* / prime-square proximity (still <strong>UNRESOLVED</strong> in <code>PROOF.md</code> §Square-Branch Reduction).</li>
+      <li>No packing theorem: min/median, max/min, and dual/max_gap are residual audit envelopes, not universal packing laws.</li>
+      <li>No claim that <code>InteriorPacking(r)</code> or <code>ResetResidual^P(r)</code> forces <code>D(r) ∉ Annulus(r)</code>.</li>
+      <li>No density law <code>rho4 = tau4_count / D(r)</code> (RC3 remains audit only; packing ratios are not count density).</li>
+      <li>No promotion of RC42–RC44 (or RC3–RC41) to theorem status.</li>
+      <li>No revival of fixed cutoff map <code>{2:44, 4:60, 6:60}</code>.</li>
+      <li>No revival of d=4 τ≥5 SDA transfer to the square branch (packing floor is not SDA).</li>
+      <li>No revival of fixed-band near-540 as a law (RC2 remains falsified at <code>D=738</code>).</li>
+      <li>No residue-only or classical factor cover of <code>Annulus(r)</code>.</li>
+      <li>No classical primality, sieve, gcd, or Miller-Rabin gate as PGS inference.</li>
+    </ul>
+
+    <h3>Minimal falsification command</h3>
+    <p>
+      Target S1* (equivalently: emptiness of <code>Annulus(r)</code> for every
+      selected-square root) is falsified by any selected-square root with
+      <code>D(r) &gt; C_dyn(r)</code>. Minimal command on the next open regime
+      beyond the certified <code>4e8–5e8</code> surface:
+    </p>
+    <pre><code>python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py \
+  --min-prime 500000001 \
+  --max-prime 600000000 \
+  --output-dir research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_5e8_6e8</code></pre>
+    <p>
+      Decision rule: nonempty <code>first_counterexample</code> means some
+      measured <code>D(r) ∈ Annulus(r)</code> and Target S1* is falsified at that
+      root. A null counterexample is audit corroboration only — not a proof of
+      S1*, not a proof that every future annulus is empty, and not a promotion of
+      RC42–RC44.
+    </p>
+    <p>
+      Optional residual-panel check for RC42–RC44 / Claims S14-A–S14-C on the known
+      util-maxima and o_q branch-max panel (does not prove S1*):
+    </p>
+    <pre><code>python3 experiments/square-branch-hourly-2026-07-14-rc42/offset_540_residual_rc42_probe.py</code></pre>
+  </section>
+
   <section>
     <h2>Status separation</h2>
     <table>
@@ -3926,6 +4234,9 @@ ResetResidual^M(r) = (
         <tr><td>Claim S13-A opening isolation in median-gap units</td><td>Constructive subsection claim (this document)</td></tr>
         <tr><td>Claim S13-B trail and Dual L1 isolation in median-gap units</td><td>Constructive subsection claim (this document)</td></tr>
         <tr><td>Claim S13-C median-Dual extended chamber-reset residual</td><td>Constructive subsection claim (this document)</td></tr>
+        <tr><td>Claim S14-A interior packing floor min over median</td><td>Constructive subsection claim (this document)</td></tr>
+        <tr><td>Claim S14-B interior successive-gap dynamic range</td><td>Constructive subsection claim (this document)</td></tr>
+        <tr><td>Claim S14-C InteriorPacking and packing-extended chamber-reset residual</td><td>Constructive subsection claim (this document)</td></tr>
         <tr><td>Target S1* prime-square proximity</td><td><strong>Unresolved</strong> (<code>PROOF.md</code> §Square-Branch Reduction)</td></tr>
         <tr><td>All-scale bounded dynamic cutoff on square branch</td><td>Unresolved until S1* closes</td></tr>
         <tr><td>Measured surface <code>4e8-5e8</code></td><td>No counterexample; max util <code>0.934…</code> (audit)</td></tr>
@@ -3942,6 +4253,7 @@ ResetResidual^M(r) = (
         <tr><td>RC33-RC35 successive IQR/median / trail-mean closing / body last-quartile mass</td><td>Measured holds; residual only</td></tr>
         <tr><td>RC36-RC38 open/mean / max/median / IQR/mean</td><td>Measured holds; residual only</td></tr>
         <tr><td>RC39-RC41 open/median / trail/median / dual/median</td><td>Measured holds; residual only</td></tr>
+        <tr><td>RC42-RC44 min/median packing floor / max/min range / dual/max_gap</td><td>Measured holds; residual only</td></tr>
         <tr><td>d=4 SDA square transfer / fixed-540 band</td><td>Invalidated / falsified</td></tr>
       </tbody>
     </table>
@@ -3951,9 +4263,9 @@ ResetResidual^M(r) = (
     <h2>Next pressure</h2>
     <ol>
       <li>Run the minimal falsification command on <code>5e8-6e8</code> (queue return): empty <code>Annulus(r)</code> on that surface or record a counterexample.</li>
-      <li>Keep theorem pressure on <code>D(r)</code> under Claims S1, S2-B, S3-B, S4-C, S5-C, S6-C, S7-C, S8-C, S9-C, S10-C, S11-C, S12-C, and S13-C; do not rebuild residue covers or SDA ports.</li>
-      <li>Re-check RC9-RC41 / <code>Cover(r)</code> / <code>QuartileBalance(r)</code> / <code>Trail(r)</code> / <code>DualBalance(r)</code> / <code>SpacingBalance(r)</code> / <code>GapRegularity(r)</code> / <code>GapShape(r)</code> / <code>RobustScale(r)</code> / <code>OpeningScale(r)</code> / <code>MedianDual(r)</code> on any new utilization maximum; do not promote cover, quartile, trail, Dual L1, density, share, mean-gap, signed Dual, open-fraction, max/mean, CV, Dual-over-mean, median/mean, sub-mean majority, body early-mass, IQR/median, trail/mean, body last-quartile, open/mean, max/median, IQR/mean, open/median, trail/median, or dual/median residuals to theorem status.</li>
-      <li>Optional later subsection: a PGS-native mechanism that forces <code>D(r) ∉ Annulus(r)</code> from chamber invariants in <code>ResetResidual^M(r)</code> alone — only if those invariants are stated without classical gates and without promoting RC3-RC41.</li>
+      <li>Keep theorem pressure on <code>D(r)</code> under Claims S1, S2-B, S3-B, S4-C, S5-C, S6-C, S7-C, S8-C, S9-C, S10-C, S11-C, S12-C, S13-C, and S14-C; do not rebuild residue covers or SDA ports.</li>
+      <li>Re-check RC9-RC44 / <code>Cover(r)</code> / <code>QuartileBalance(r)</code> / <code>Trail(r)</code> / <code>DualBalance(r)</code> / <code>SpacingBalance(r)</code> / <code>GapRegularity(r)</code> / <code>GapShape(r)</code> / <code>RobustScale(r)</code> / <code>OpeningScale(r)</code> / <code>MedianDual(r)</code> / <code>InteriorPacking(r)</code> on any new utilization maximum; do not promote cover, quartile, trail, Dual L1, density, share, mean-gap, signed Dual, open-fraction, max/mean, CV, Dual-over-mean, median/mean, sub-mean majority, body early-mass, IQR/median, trail/mean, body last-quartile, open/mean, max/median, IQR/mean, open/median, trail/median, dual/median, min/median, max/min, or dual/max_gap residuals to theorem status.</li>
+      <li>Optional later subsection: a PGS-native mechanism that forces <code>D(r) ∉ Annulus(r)</code> from chamber invariants in <code>ResetResidual^P(r)</code> alone — only if those invariants are stated without classical gates and without promoting RC3-RC44.</li>
     </ol>
   </section>
 
@@ -3975,6 +4287,8 @@ ResetResidual^M(r) = (
     <code>experiments/square-branch-hourly-2026-07-13-s12/FINDINGS.md</code>;
     <code>experiments/square-branch-hourly-2026-07-14-rc39/FINDINGS.md</code>;
     <code>experiments/square-branch-hourly-2026-07-14-s13/FINDINGS.md</code>;
+    <code>experiments/square-branch-hourly-2026-07-14-rc42/FINDINGS.md</code>;
+    <code>experiments/square-branch-hourly-2026-07-15-s14/FINDINGS.md</code>;
     <code>Agents.md</code> theorem-trust contract.
     Live proof status is never overridden by this draft.
   </footer>

@@ -3573,3 +3573,67 @@ Artifacts:
 
 Next step:
 Queue falsification 500M-600M or draft Chamber-Reset Endpoint Resolution Lemma subsection.
+
+## 2026-07-15T07:56:22Z run
+
+Mechanism:
+Draft one subsection of the Chamber-Reset Endpoint Resolution Lemma on the
+selected-square branch (queue job `chamber-reset-lemma-draft`). Project terms:
+Claims S14-A / S14-B / S14-C, residual package RC42-RC44, InteriorPacking(r),
+ResetResidual^P(r).
+
+Method:
+Heavy analytic fan-out (16/16 specialists, ≥1 contrarian) then leader execute.
+PGS-first constructive draft under
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`.
+Reuse H1-H6; formalize prior measured RC42-RC44 as lemma subsection S14
+(distinct from S13 MedianDual). Companion FINDINGS under
+`experiments/square-branch-hourly-2026-07-15-s14/`. No classical gates; no
+theorem inflation; S1* remains UNRESOLVED.
+
+Result:
+Constructive subsection S14 drafted with Claims S14-A/B/C and InteriorPacking
+extended chamber-reset residual. Residual panel RC42-RC44 re-checked:
+
+| Claim | Status | Notes |
+| --- | --- | --- |
+| S14-A min_over_median | constructive | drafted |
+| S14-B max_over_min | constructive | drafted |
+| S14-C InteriorPacking / ResetResidual^P | constructive residual state | drafted |
+| RC42 min/med floor | holds (audit) | [0.143, 0.250] on 8/8 |
+| RC43 max/min range | holds (audit) | [14, 44] on 8/8 |
+| RC44 dual/max_gap | holds (audit) | [0.143, 0.923] on 8/8 |
+| Target S1* | UNRESOLVED | PROOF.md §Square-Branch Reduction |
+| RC2 fixed-540 | falsified (retained) | D=738 |
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.61s
+```
+RC42 residual probe exit code: 0 (RC42-RC44 hold; RC2 retained falsified).
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New constructive lemma subsection S14 (interior Tau4 packing floor min/median,
+successive-gap dynamic range max/min, Dual L1 vs peak interior desert) with
+Claims S14-A/B/C, InteriorPacking(r), ResetResidual^P(r), explicit falsification
+commands, and RC42-RC44 formalized under the lemma. Continuity: lemma through
+S14; residual package through RC44; proximity remains OPEN/UNRESOLVED. Distinct
+from S13 median Dual isolation; not a promotion of packing ratios to theorem.
+
+Artifacts:
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html` (S14);
+`experiments/square-branch-hourly-2026-07-15-s14/FINDINGS.md`;
+`experiments/square-branch-hourly-2026-07-14-rc42/` (prior measured residual source)
+
+Next step:
+Queue falsification `5e8-6e8` or H_CTC square-branch probe. Re-check RC42-RC44 /
+InteriorPacking on any new util maximum. Keep S14 residual only; do not promote
+min/median, max/min, or dual/max_gap to theorem; do not revive fixed-band 540 or
+d=4 SDA.
