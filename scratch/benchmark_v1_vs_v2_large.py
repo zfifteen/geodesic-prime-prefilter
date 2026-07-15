@@ -31,7 +31,7 @@ def run_decade_benchmark():
     time_v1 = end_time_v1 - start_time_v1
     
     # Run V2
-    print("Running v1.2.0 generator (Super-Signal)...")
+    print("Running v1.2.0 generator (mod30 guard)...")
     start_time_v2 = time.perf_counter()
     for p in primes_to_test:
         emit_v2(p, candidate_bound=1024)

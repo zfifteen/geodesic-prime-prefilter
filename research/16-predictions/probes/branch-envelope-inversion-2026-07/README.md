@@ -1,7 +1,7 @@
 # Branch-envelope inversion probe
 
 **Status:** hypothesis / measured on named regimes only  
-**Not:** theorem, verified, validated, or Super-Signal revival
+**Not:** theorem, verified, validated, or historical z≥4⇒g=2 claim revival
 
 ## Observable object
 

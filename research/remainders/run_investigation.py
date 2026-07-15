@@ -47,8 +47,8 @@ def stream_analyze_interior_jsonl(
     record_count = 0
     residues: list[int] = []
     dist_bins: list[int] = []
-    super_signal_gwr = 0
-    super_signal_g2 = 0
+    z4_gwr_count = 0
+    z4_g2_count = 0
     gwr_total = 0
     gwr_last = 0
 
@@ -73,7 +73,7 @@ def stream_analyze_interior_jsonl(
             if rec.get("is_current_min_d") or rec.get("is_gwr_winner"):
                 gwr_total += 1
                 if zeros >= 4:
-                    super_signal_gwr += 1
+                    z4_gwr_count += 1
                 if dist == 1:
                     gwr_last += 1
 
@@ -94,7 +94,7 @@ def stream_analyze_interior_jsonl(
         if g == 2.0:
             for r in grecs:
                 if r.get("is_current_min_d") and sum(1 for v in r["remainder_vector"] if v == 0) >= 4:
-                    super_signal_g2 += 1
+                    z4_g2_count += 1
 
     gaps_with_interiors = len(gaps)
     mi = mutual_information(residues, dist_bins)
@@ -127,9 +127,9 @@ def stream_analyze_interior_jsonl(
         "gaps_with_interiors": gaps_with_interiors,
         "gwr_last_rate": gwr_last / gaps_with_interiors if gaps_with_interiors else 0.0,
         "gwr_last_count": gwr_last,
-        "super_signal_at_gwr_count": super_signal_gwr,
-        "super_signal_at_gwr_rate": super_signal_gwr / gwr_total if gwr_total else 0.0,
-        "g2_with_super_signal_gwr": super_signal_g2,
+        "z4_at_gwr_count": z4_gwr_count,
+        "z4_at_gwr_rate": z4_gwr_count / gwr_total if gwr_total else 0.0,
+        "g2_with_z4_gwr": z4_g2_count,
         "mi_num_zeros_vs_dist_bin": mi,
         "spearman_entropy_vs_g": spearman_entropy_g,
         "avg_gwr_zero_minus_gap_avg": avg_gwr_zero_diff,
@@ -289,15 +289,15 @@ def build_rsa_summary() -> dict[str, Any]:
     }
 
 
-def build_super_signal_status() -> dict[str, Any]:
+def build_modular_remainder_status() -> dict[str, Any]:
     return {
-        "lane": "gwr_super_signal",
-        "theorem_stack_status": "measured · corollary",
-        "reference": "docs/proof-enhancements/goals.md G2",
-        "open_g2_items": [
-            "4+ zeros ⟺ w ≡ 0 (mod 30) needs exhaustive case analysis",
-            "Step 3 informal language needs explicit lemma",
-            "No Lean mirror",
+        "lane": "modular_remainder",
+        "theorem_stack_status": "proved · modular lemma only",
+        "reference": "PROOF.md §Modular zero lemma on remainder vector M_v1",
+        "notes": [
+            "z >= 4 iff 30 | w on fixed M_v1 vector (proved case analysis)",
+            "No gap-size lock or twin-gap implication is part of the theorem stack",
+            "Optional Lean target: modular lemma only",
         ],
     }
 
@@ -423,15 +423,15 @@ def main(argv: list[str] | None = None) -> int:
             "n_gaps": interior_stats["gaps_with_interiors"],
         },
         {
-            "metric": "super_signal_at_gwr_rate",
+            "metric": "z4_at_gwr_rate",
             "regime": regime_label,
-            "value": f"{interior_stats['super_signal_at_gwr_rate']:.6f}",
+            "value": f"{interior_stats['z4_at_gwr_rate']:.6f}",
             "n_gaps": interior_stats["gaps_with_interiors"],
         },
         {
-            "metric": "g2_with_super_signal_gwr",
+            "metric": "g2_with_z4_gwr",
             "regime": regime_label,
-            "value": str(interior_stats["g2_with_super_signal_gwr"]),
+            "value": str(interior_stats["g2_with_z4_gwr"]),
             "n_gaps": interior_stats["gaps_with_interiors"],
         },
     ]
@@ -450,7 +450,7 @@ def main(argv: list[str] | None = None) -> int:
         ),
         "state_budget_lane_summary.json": build_state_budget_summary(),
         "rsa_lane_summary.json": build_rsa_summary(),
-        "super_signal_status.json": build_super_signal_status(),
+        "modular_remainder_status.json": build_modular_remainder_status(),
     }
     for name, payload in summaries.items():
         (out_dir / name).write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
@@ -467,7 +467,7 @@ def main(argv: list[str] | None = None) -> int:
         if agent.agent_id == "interior_rnm":
             status["status"] = "streamed"
             status["gaps_with_interiors"] = interior_stats["gaps_with_interiors"]
-        elif agent.agent_id == "super_signal_status":
+        elif agent.agent_id == "modular_remainder_status":
             status["status"] = "inline"
         elif agent.agent_id in run_key_by_agent:
             run_key = run_key_by_agent[agent.agent_id]

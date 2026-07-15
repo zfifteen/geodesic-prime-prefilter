@@ -14,7 +14,7 @@ VERIFY = REMAINDERS / "forensic_verify.py"
 
 LANE_AGENTS = [
     "interior_rnm",
-    "super_signal_status",
+    "modular_remainder_status",
     "endpoint_mask",
     "mod30_ridge",
     "state_budget",

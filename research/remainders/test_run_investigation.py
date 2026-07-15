@@ -40,7 +40,7 @@ def test_run_investigation_tiny_surface(tmp_path: Path) -> None:
         "mod30_ridge_lane_summary.json",
         "state_budget_lane_summary.json",
         "rsa_lane_summary.json",
-        "super_signal_status.json",
+        "modular_remainder_status.json",
         "placement_correlation_table.md",
     ):
         assert (out / name).exists()

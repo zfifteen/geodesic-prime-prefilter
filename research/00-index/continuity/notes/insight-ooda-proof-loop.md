@@ -93,8 +93,8 @@ and square-branch structure already in `PROOF.md` / chapter 04.
 measured only; no contract-blocking rewrites). Verifier **PASS** (re-run at
 `q_max=2000000` matches committed counts; unit tests green).
 
-This residual is **separate** from Super-Signal FP residual class R0. It does
-**not** demote the leftmost UBC theorem. Super-Signal stays **invalidated**.
+This residual is **separate** from z4 FP residual class R0. It does
+**not** demote the leftmost UBC theorem. historical z≥4⇒g=2 claim stays **invalidated**.
 
 ### Observable object
 
@@ -178,15 +178,15 @@ alpha=2  right_off=69  C=64  util_L=0.031  util_R=1.078
 | LSCD: spill only on `tau(w)=4` | **hypothesis**, measured hold on `11..2e6` |
 | LSCD: no spill on square / high-tau | **hypothesis**, measured hold on `11..2e6` |
 | Spill only when early lock (`alpha` small) | **hypothesis**, measured hold on `11..2e6` |
-| Super-Signal twin lock | **invalidated** (unchanged; LSCD is not a revival) |
-| Super-Signal FP residual R0 | **separate track** (remainder zeros / catalog, not co-minimal geometry) |
+| historical z≥4⇒g=2 claim twin lock | **invalidated** (unchanged; LSCD is not a revival) |
+| z4 FP residual R0 | **separate track** (remainder zeros / catalog, not co-minimal geometry) |
 | Verified / validated language | **forbidden here** (no executed `10^18` surface) |
 
 ### Anti-demotion / anti-revival (auditor pressure)
 
 - Spill language never rewrites the leftmost bound as empirical. UBC remains
   universal under its stated hypotheses.
-- LSCD does **not** repair Super-Signal and is **not** residual class R0.
+- LSCD does **not** repair historical z≥4⇒g=2 claim and is **not** residual class R0.
 - Do not promote LSCD to theorem from the mid-scale hold.
 
 ### Probe package paths
@@ -235,11 +235,11 @@ a new statement.
 
 ---
 
-## Rounds 2 to 3: Super-Signal FP residual class R0
+## Rounds 2 to 3: z4 FP residual class R0
 
 ### Observable object
 
-A Super-Signal **false positive** (FP) is a non-twin consecutive prime gap
+A historical z≥4⇒g=2 claim **false positive** (FP) is a non-twin consecutive prime gap
 (`g = q - p > 2`) whose GWR selected witness `w` is divisible by 30.
 
 Concrete pinned examples already in `PROOF.md`:
@@ -251,7 +251,7 @@ Concrete pinned examples already in `PROOF.md`:
 
 ### Ordinary-language mechanism
 
-The old Super-Signal claim said: if the remainder vector of `w` has at least
+The old historical z≥4⇒g=2 claim claim said: if the remainder vector of `w` has at least
 four zeros, then the gap must be a twin (`g = 2`). That universal implication
 is **invalidated**. Failures still happen. The residual question is whether
 those failures share one tight shape (class, gap size, divisor count, and
@@ -259,7 +259,7 @@ seven-openness) rather than scattering across many forms.
 
 ### Project terms
 
-- Super-Signal (historical packaging of twin-gap lock from remainder zeros)
+- historical z≥4⇒g=2 claim (historical packaging of twin-gap lock from remainder zeros)
 - Zero-count `z(w)` on moduli `M_v1 = {2, 3, 5, 7, 30, 210, 2310}`
 - Modular lemma: `z(w) >= 4` iff `30 | w` on `M_v1` (**proved**, `PROOF.md`)
 - Residual class **R0** (descriptive catalog class for observed FPs)
@@ -292,7 +292,7 @@ mainly class-A, `g = 8`, and seven-open, plus absence of other forms.
 | --- | --- | --- |
 | Regime | `11 <= p < 5e7` | **measured** |
 | Non-twin gaps scanned | 2,762,031 | **measured** |
-| Super-Signal FP count | 5 | **measured** |
+| z4 FP count | 5 | **measured** |
 | FPs in R0 | 5 / 5 | **measured** |
 | FPs outside R0 | 0 | **measured** |
 | All five match `p = 30r-1`, `q = 30r+7`, `w = 2*3*5*r` | true | **measured** |
@@ -313,41 +313,41 @@ after extending the scan past `25e6` and still match R0 and the algebraic form.
 
 | Layer | Status |
 | --- | --- |
-| Super-Signal `z(w) >= 4 => g = 2` | **invalidated** (unchanged; do not revive) |
+| historical z≥4⇒g=2 claim `z(w) >= 4 => g = 2` | **invalidated** (unchanged; do not revive) |
 | Modular lemma `z >= 4 <=> 30 \| w` on `M_v1` | **proved** (`PROOF.md`) |
-| GWR / Interior Maximizer | **theorem** (not demoted by Super-Signal kill) |
+| GWR / Interior Maximizer | **theorem** (not demoted by historical z≥4⇒g=2 claim kill) |
 | FP catalog through `p < 5e7` | **measured** |
 | Algebraic form on those five FPs | **measured** |
-| "Every Super-Signal FP at any scale lies in R0" | **hypothesis** only |
+| "Every z4 FP at any scale lies in R0" | **hypothesis** only |
 | Theorem `z >= 4 => (g = 2 or R0)` | **not claimed** (anti-revival) |
 | Verified / validated language | **forbidden here** (no executed `10^18` surface) |
 
 ### Hypothesis (universal R0)
 
 ```text
-Every Super-Signal FP at any scale lies in R0.
+Every z4 FP at any scale lies in R0.
 ```
 
 **Status:** **hypothesis**. Supported on the measured regime only.
 
-**Disconfirmation:** any Super-Signal FP with `off != 1`, or `tau(w) != 16`,
+**Disconfirmation:** any z4 FP with `off != 1`, or `tau(w) != 16`,
 or `g != 8`, or `7 | w`.
 
 ### Anti-revival (auditor pressure)
 
-Class R0 describes **observed failures**. It does **not** repair Super-Signal.
+Class R0 describes **observed failures**. It does **not** repair historical z≥4⇒g=2 claim.
 It is **not** a proved residual lock of the form
-`z(w) >= 4 => (g = 2 or R0)`. Super-Signal stays **invalidated**.
+`z(w) >= 4 => (g = 2 or R0)`. historical z≥4⇒g=2 claim stays **invalidated**.
 
 ### Probe package paths
 
 | Path | Role |
 | --- | --- |
-| `research/16-predictions/probes/super-signal-fp-signature-2026-07/README.md` | Human status contract |
-| `research/16-predictions/probes/super-signal-fp-signature-2026-07/measure.json` | Regenerable catalog artifact |
-| `research/16-predictions/probes/super-signal-fp-signature-2026-07/probe_fp_signature.py` | Runner (regenerates measure.json) |
-| `research/16-predictions/probes/super-signal-fp-signature-2026-07/targeted_extension.json` | Class-A targeted extension to 1e8 |
-| `research/16-predictions/probes/super-signal-fp-signature-2026-07/band_5e7_6e7_full.json` | Full-sieve completeness band |
+| `README.md` | Human status contract |
+| `measure.json` | Regenerable catalog artifact |
+| `probe_fp_signature.py` | Runner (regenerates measure.json) |
+| `targeted_extension.json` | Class-A targeted extension to 1e8 |
+| `band_5e7_6e7_full.json` | Full-sieve completeness band |
 
 ### Auditor (package)
 
@@ -372,32 +372,32 @@ It is **not** a proved residual lock of the form
 | --- | --- | --- |
 | Band | `p in [5e7, 6e7)` | **measured** |
 | Nontwin gaps | 519524 | **measured** |
-| Super-Signal FPs | 2 | **measured** |
+| z4 FPs | 2 | **measured** |
 | Outside R0 | 0 | **measured** |
 | Non-class-A FPs | 0 | **measured** |
 | Match to targeted hits in band | exact (53276009, 53668469) | **measured** |
 
-**Finding:** on this band, class-A targeting is complete (no missed non-class-A Super-Signal FPs).
+**Finding:** on this band, class-A targeting is complete (no missed non-class-A z4 FPs).
 
 ---
 
 ## Strongest supported finding
 
-**Measured residual catalog:** Super-Signal false positives, on every surface
+**Measured residual catalog:** z4 false positives, on every surface
 executed in this loop (full sieve through `5e7`, full band `[5e7,6e7)`, and
 class-A targeting through `1e8`), lie in residual class R0 with algebraic form
 `p = 30r - 1`, `q = 30r + 7`, `w = 2*3*5*r` (`r` prime).
 
 | Layer | Status |
 | --- | --- |
-| Super-Signal universal twin lock | **invalidated** |
+| historical z≥4⇒g=2 claim universal twin lock | **invalidated** |
 | R0 catalog on named surfaces | **measured** |
 | Universal R0 at all scales | **hypothesis** |
 | Mechanism why `g` is forced to 8 | **unresolved** |
 
 ## Unresolved (next loop pressure)
 
-1. Super-Signal FP outside R0 at any larger scale
+1. z4 FP outside R0 at any larger scale
 2. Full-sieve completeness above `6e7` (not only class-A targeting)
 3. Generative reason for `g = 8` (mechanism hypothesis, not measured fact)
 4. Any `10^18` catalog surface if program-level verified language is ever wanted
@@ -410,19 +410,19 @@ round_number = 6
 round_limit = 20
 solution_found = false
 stop_reason = session_checkpoint_not_stop (skill allows resume; not a skill stop condition)
-strongest_supported_finding = R0 residual catalog of Super-Signal FPs
+strongest_supported_finding = R0 residual catalog of z4 FPs
 next_best_action = full-sieve band above 6e7 or mechanism probe for g=8
 ```
-| `research/16-predictions/probes/super-signal-fp-signature-2026-07/probe_fp_signature.py` | Scanner that writes `measure.json` |
-| `PROOF.md` section Twin-Prime Resonance (GWR Super-Signal) | **invalidated** claim + proved modular lemma + pinned CEs |
-| `docs/proof-enhancements/certificates/twin_prime_resonance_invalidated_v1.json` | Invalidation certificate |
-| `docs/proof-enhancements/certificates/counterexamples/ce_17666309.json` | Pinned CE |
-| `docs/proof-enhancements/certificates/counterexamples/ce_22284029.json` | Pinned CE |
+| `probe_fp_signature.py` | Scanner that writes `measure.json` |
+| `PROOF.md` section modular remainder facts | **invalidated** claim + proved modular lemma + pinned CEs |
+| `docs/proof-enhancements/certificates/modular_remainder_invalidated_v1.json` | Invalidation certificate |
+| `research/01-generator/tests/test_mod30_adjacent_carrier_generator.py (p=17666309)` | Pinned CE |
+| `research/01-generator/tests/test_mod30_adjacent_carrier_generator.py (p=22284029)` | Pinned CE |
 
 Reproduce:
 
 ```text
-python3 research/16-predictions/probes/super-signal-fp-signature-2026-07/probe_fp_signature.py --p-max 50000000
+python3 probe_fp_signature.py --p-max 50000000
 ```
 
 ### Related residual tracks (not upgraded)
@@ -448,17 +448,17 @@ python3 research/16-predictions/probes/super-signal-fp-signature-2026-07/probe_f
 | --- | --- | --- | --- |
 | 1 | Branch-envelope inversion (tau-stratified max offsets) | REJECT novelty | **measured** on named regimes; not promoted as NIE insight |
 | 1 parallel residual | Level-Set Compression Dichotomy (LSCD) | Keep as residual map | Full LSC **invalidated** on `11..2e6`; LSCD spill-only-on-`tau=4` = **hypothesis** + measured hold; UBC **theorem** untouched |
-| 2 to 3 | Super-Signal FP residual class R0 + algebraic form | Keep as residual catalog | **measured** on `p < 5e7`; universal R0 = **hypothesis**; Super-Signal = **invalidated** |
+| 2 to 3 | z4 FP residual class R0 + algebraic form | Keep as residual catalog | **measured** on `p < 5e7`; universal R0 = **hypothesis**; historical z≥4⇒g=2 claim = **invalidated** |
 
 ## Unresolved (must stay labeled unresolved)
 
-1. Whether any Super-Signal FP outside R0 appears for `p >= 5e7`.
+1. Whether any z4 FP outside R0 appears for `p >= 5e7`.
 2. Whether the algebraic form `p = 30r-1`, `q = 30r+7`, `w = 30r` with `r`
    prime is forced for all future FPs, or only for the five known rows.
 3. Whether R0 can be turned into a proved residual classification without
-   smuggling a Super-Signal revival (auditor gate: description of failures
+   smuggling a historical z≥4⇒g=2 claim revival (auditor gate: description of failures
    only, unless a separate proof package is approved).
-4. Any high-scale (`10^18`) catalog surface for Super-Signal FP shape
+4. Any high-scale (`10^18`) catalog surface for z4 FP shape
    (**unresolved**; not present).
 5. Whether LSCD (spill only on early `tau(w)=4`) holds past `11..2e6`, or
    whether square / high-tau / large-alpha spills appear (**unresolved**).
@@ -469,15 +469,15 @@ python3 research/16-predictions/probes/super-signal-fp-signature-2026-07/probe_f
 ## Explicit non-actions
 
 - No edit to `PROOF.md`.
-- No revival of Super-Signal as theorem or corollary.
+- No revival of historical z≥4⇒g=2 claim as theorem or corollary.
 - No demotion of GWR, direct next-prime, UBC, or Prime-Square Proximity.
 - No verified / validated claim language for this loop.
 - No promotion of LSCD from hypothesis / measured residual to theorem.
-- No conflation of LSCD co-minimal geometry with Super-Signal FP class R0.
+- No conflation of LSCD co-minimal geometry with z4 FP class R0.
 
 ## Next pressure (handoff, not commitment)
 
-- Extend Super-Signal FP scan past `5e7` with the same R0 predicates and
+- Extend z4 FP scan past `5e7` with the same R0 predicates and
   form check; record first out-of-R0 hit if any.
 - Keep branch-envelope package as a **measured residual probe**, not as a
   novelty target, unless a new mechanism appears that is not just UBC

@@ -26,7 +26,7 @@ At `p≤1.5×10⁶`: **114,154** gaps with interiors (meets ≥10⁵ threshold).
 | Lane | Role | Data status | Strongest measured signal |
 |------|------|-------------|---------------------------|
 | Interior `R(n,M)` | Gap-interior coordinate | **Scaled ≥10⁵** (114,154 gaps, 1,385,850 records at `p≤1.5×10⁶`) | MI(`num_zeros`, dist) **0.057**; GWR-last **13.9%** |
-| GWR Super-Signal | Termination claim at GWR | **Epistemic open** (G2) | All 3,842 super-signal GWR cases are `g=2` on 1.5e6 surface |
+| Modular remainder zeros at GWR | Measured placement signal | **Measured on 1.5e6** | 3,842 GWR cases with 4+ zeros on that surface |
 | Endpoint `q mod` | Search acceleration | **Fresh mask probe** + hourly reference | 10k gaps: `resolved_in_mask_fraction` **0.237** (simple cert); hourly ref **1.0** (96-open propagated mask) |
 | Left-prime `p mod 30` ridge | Peak-side modulation | **Fresh probe @200k** + pinned JSON | Fresh `p≤2×10⁵`: 17,983 gaps; pinned `p≡13` lift 1.58× at `10⁶` |
 | State-budget residue cells | Matched-pair tests | **Re-run collector** | `mod30`: 230 decisive pairs, +40 advantage (unresolved) |
@@ -62,17 +62,20 @@ python research/remainders/collect_remainder_stats.py \
 | Termination | MI(`num_zeros`, `dist_to_next` binned) | **0.0568** (normalized 0.0498) |
 | Gap length | Spearman(entropy, `g`) | **1.0000** |
 | GWR signature | Avg zeros (GWR − gap avg) | **−0.670** |
-| Super-Signal | GWR with 4+ zeros, all `g=2` | **3,842** cases |
+| GWR with 4+ zeros | Count on 1.5e6 surface | **3,842** cases |
 
 Legacy `p≤10⁶` surface: 78,497 gaps with interiors, 921,503 records (`output/1e6/`).
 
 ---
 
-## Lane 2: GWR Super-Signal (epistemic only)
+## Lane 2: Modular remainder zeros at GWR (measured placement)
 
-Theorem-stack: **measured · corollary**. Open items: `docs/proof-enhancements/goals.md` G2.
+Theorem-stack: modular zero lemma on $M_{v1}$ is **proved** (modular fact only;
+no gap-size lock). See `PROOF.md`.
 
-On **1.5e6** measured surface: 3,842 GWR records with 4+ zeros; **all** in `g=2` gaps.
+On **1.5e6** measured surface: 3,842 GWR records with 4+ zeros; all were in
+`g=2` gaps on that finite surface. Finite empty false-positive counts do not
+create a twin-gap theorem.
 
 ---
 

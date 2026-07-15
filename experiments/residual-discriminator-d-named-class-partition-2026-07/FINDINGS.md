@@ -6,7 +6,7 @@
 ## Objects (do not confuse)
 
 1. **RSA residual discriminator D** (this track): dual-gap carrier floor transport bound in `rsa-v3/gwr_carrier_closure.py`.
-2. **Super-Signal residual classes A/B/C/D** (`experiments/gwr-remainder-zero-residual-classes-2026-07`): different domain (prime-gap `z` / ties). Same letter D is **not** the same object.
+2. **historical z≥4⇒g=2 claim residual classes A/B/C/D** (`experiments/gwr-remainder-zero-residual-classes-2026-07`): different domain (prime-gap `z` / ties). Same letter D is **not** the same object.
 
 ## Hypothesis under test
 
@@ -55,7 +55,7 @@ python3 research/06-cryptology-rsa/experiments/live-solver/rsa-v3/run_resolver.p
 
 - D is not a theorem or a residual law.
 - Constants `1.2` and `20` remain free parameters (hypothesis / possible overfit).
-- Super-Signal class A/B/C/D map is untouched.
+- historical z≥4⇒g=2 claim class A/B/C/D map is untouched.
 - No RSA-scale solve; no verified/validated language.
 
 ## Next pressure (from Heavy synthesis)

@@ -13,7 +13,7 @@ List only objects that keep PGS shape:
 object -> invariant -> named rule -> resolved | unresolved | invalidated
 ```
 
-No "likely", no trial ladder as decision path, no Super-Signal revival.
+No "likely", no trial ladder as decision path, no historical z≥4⇒g=2 claim revival.
 
 ## Candidate A: Empty Residual Modular Certificate (ERMC)
 
@@ -79,7 +79,7 @@ deterministic as a claim shape (implication, not rate).
 
 **Risk:** one counterexample kills it. Empty scans do not prove it.
 
-**Source:** `experiments/hypothesis-u-unique-supersignal-falsification-2026-07/FINDINGS.md`
+**Source:** `experiments/removed unique-min z4 residual probe
 
 ## Candidate D: H-tau16 (tau-strengthened seat)
 
@@ -92,7 +92,7 @@ If z(w) >= 4 and tau(w) > 16, then g = 2.
 **Status:** **hypothesis / measured** (zero false positives in the same
 tested regimes). **Not a theorem.**
 
-**Link to salvage / CE family:** bare Super-Signal CEs sit at `tau(w) = 16`
+**Link to salvage / CE family:** bare z4 CEs sit at `tau(w) = 16`
 with a large prime cofactor (`30 * large_prime`). Strengthening `tau`
 attacks that geometry without probability language.
 
@@ -106,7 +106,7 @@ attacks that geometry without probability language.
 | --- | --- |
 | Soft density near smooth composites as inference | probabilistic shape |
 | Trial primes up to sqrt as generator decision | classical candidate testing |
-| Restore Super-Signal via "often twins near 30k" | universal claim invalidated |
+| Restore historical z≥4⇒g=2 claim via "often twins near 30k" | universal claim invalidated |
 | Hypothesis U (unique tau-min + z >= 4 => g = 2) | **falsified** (`p = 156942923`) |
 | Promote H-210 or H-tau16 without CE pressure | theorem inflation |
 
@@ -138,7 +138,7 @@ X salvage (classical packaging)
 3. **Measure** modular-closed frequency on a pinned regime (measured only).
    **Done** on `[11, 50000)` and broader `[11, 250000)` (see `MEASURED_RESULTS.md`).
 4. **Pressure** H-210 and H-tau16 with dedicated CE hunts (same standard as
-   Super-Signal: one CE kills universality). **Done** for regime
+   historical z≥4⇒g=2 claim: one CE kills universality). **Done** for regime
    `[11, 200000)`: both `not_falsified_in_tested_regime` (hypothesis only).
 5. **Optional dynamic wheel** beyond `M_v1`. **Done** as hypothesis API
    (`M_DYNAMIC_HYPOTHESIS`, `moduli_family_from_primes`) + unit tests.
@@ -151,7 +151,7 @@ A future change is in-shape if and only if:
 
 - claims use theorem / measured / audit / hypothesis / unresolved /
   invalidated labels correctly;
-- Super-Signal remains invalidated;
+- z4 twin lock remains invalidated;
 - no probabilistic words appear as inference ("likely", "often", "usually"
   as decision language);
 - classical primality/factor tools stay in audit or comparison roles;
@@ -159,7 +159,7 @@ A future change is in-shape if and only if:
 
 ## Immediate non-goals
 
-- Lean formalization of Super-Signal twin lock (withdrawn).
+- Lean formalization of historical z≥4⇒g=2 claim twin lock (withdrawn).
 - Public packaging of H-210 as proved.
 - Re-opening classical density as "what PGS still has."
 
@@ -167,7 +167,7 @@ A future change is in-shape if and only if:
 
 | Item | Path |
 | --- | --- |
-| Invalidated Super-Signal | `PROOF.md` |
-| CE verify | `docs/proof-enhancements/scripts/verify_super_signal_counterexamples.py` |
-| Hypothesis U findings | `experiments/hypothesis-u-unique-supersignal-falsification-2026-07/FINDINGS.md` |
+| Invalidated historical z≥4⇒g=2 claim | `PROOF.md` |
+| CE verify | `research/01-generator/tests/test_mod30_adjacent_carrier_generator.py` |
+| Hypothesis U findings | `experiments/removed unique-min z4 residual probe |
 | Live status for this track | [STATUS.md](./STATUS.md) |

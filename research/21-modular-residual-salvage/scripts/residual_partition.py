@@ -11,7 +11,7 @@ Decision path is set emptiness only. This module does not trial-divide n by
 residual primes and does not call primality to choose the residual state.
 
 Status:
-  Super-Signal twin lock remains invalidated (see PROOF.md).
+  historical z≥4⇒g=2 claim twin lock remains invalidated (see PROOF.md).
   Residual language is a design object / hypothesis frame, not a theorem.
   Dynamic modulus families beyond M_v1 are optional / hypothesis only.
 """
@@ -21,7 +21,7 @@ from __future__ import annotations
 from math import isqrt
 from typing import FrozenSet, Iterable, List, Sequence, Tuple
 
-# Fixed Super-Signal remainder moduli (PROOF.md M_v1).
+# Fixed historical z≥4⇒g=2 claim remainder moduli (PROOF.md M_v1).
 M_V1: Tuple[int, ...] = (2, 3, 5, 7, 30, 210, 2310)
 
 # Optional extended family for hypothesis exploration only (not theorem-promoted).

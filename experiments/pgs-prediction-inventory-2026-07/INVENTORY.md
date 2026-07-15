@@ -63,13 +63,13 @@ How to read columns:
 ### T6. Modular zero lemma on `M_v1` (vector-fixed)
 - **Statement:** On fixed modulus vector `M_v1 = {2,3,5,7,30,210,2310}`, `z(w) ≥ 4 ⇔ 30 | w`.
 - **Status:** theorem (`PROOF.md` modular zero lemma; scope **vector only**)
-- **Check:** Unit tests covering the modular lemma / Super-Signal counterexample package that assert the biconditional on `M_v1` without reviving Super-Signal
+- **Check:** Unit tests covering the modular lemma / mod30-adjacent counterexample package that assert the biconditional on `M_v1` without reviving historical z≥4⇒g=2 claim
 - **Kill:** `w` with `z(w)≥4` but `30 ∤ w`, or `30|w` but `z(w)<4`, on that exact vector
 
-### T7. Super-Signal universal twin lock stays dead
+### T7. historical z≥4⇒g=2 claim universal twin lock stays dead
 - **Statement:** The universal implication `z(w) ≥ 4 ⇒ g = 2` is **false**.
-- **Status:** invalidated (`PROOF.md` Twin-Prime Resonance / Super-Signal section; 2026-07-09)
-- **Check:** `python3 -m pytest research/01-generator/tests/test_super_signal_counterexample_generator.py -q` (and residual FP catalog under `research/16-predictions/probes/super-signal-fp-signature-2026-07/`)
+- **Status:** invalidated (`PROOF.md` modular remainder facts / historical z≥4⇒g=2 claim section; 2026-07-09)
+- **Check:** `python3 -m pytest research/01-generator/tests/test_mod30_adjacent_carrier_generator.py -q` (and residual FP catalog under ``)
 - **Kill:** A proof that restores the universal implication (would require overturning known counterexamples). Scans claiming zero FPs past known counterexample surfaces without those FPs are **truncated or wrong** (process kill)
 
 ### T8. Fixed cutoff map stays dead
@@ -163,10 +163,10 @@ Merged from Claude rewrites (H1′-H4′). Prior soft H1-H4 rows are **replaced*
 - **Check:** Fixed-window scale/fixture sweeps; derivation PR or named break with residual codes
 - **Kill:** Systematic honest breaks at higher bit length (constants die); or derivation retires the hypothesis upward
 
-### H4′. Super-Signal stays dead under reparameterization
-- **Statement:** No reparameterization restores universal zero-FP Super-Signal on surfaces that still include known class-B counterexamples. Narrowing scope to hide CEs is not restoration. Catalog “FPs in R0” remains **measured/hypothesis**, not `z≥4 ⇒ (g=2 or R0)` as theorem.
-- **Status:** Super-Signal universal lock **invalidated**; R0 universality **unresolved** / hypothesis (`research/16-predictions/probes/super-signal-fp-signature-2026-07/`)
-- **Check:** `python3 -m pytest research/01-generator/tests/test_super_signal_counterexample_generator.py -q`; probe anti-revival README + measure scripts
+### H4′. z4 twin lock stays out of the theorem stack under reparameterization
+- **Statement:** No reparameterization restores universal zero-FP historical z≥4⇒g=2 claim on surfaces that still include known class-B counterexamples. Narrowing scope to hide CEs is not restoration. Catalog “FPs in R0” remains **measured/hypothesis**, not `z≥4 ⇒ (g=2 or R0)` as theorem.
+- **Status:** historical z≥4⇒g=2 claim universal lock **invalidated**; R0 universality **unresolved** / hypothesis (``)
+- **Check:** `python3 -m pytest research/01-generator/tests/test_mod30_adjacent_carrier_generator.py -q`; probe anti-revival README + measure scripts
 - **Kill:** Restored universal zero-FP claim that still covers known CE regimes (false); or FP outside R0 on a complete claimed scan; or theorem promotion without proof process
 
 ### H5. Constellation non-merge
@@ -194,7 +194,7 @@ Merged from Claude rewrites (H1′-H4′). Prior soft H1-H4 rows are **replaced*
 | Rowland/gcd or LCM recurrences as next-prime engines | Classical encounter maps; forbidden as inference |
 | Zhang-Maynard “gap ≤ 246 i.o.” as PGS theorem | Different object from UBC witness offset |
 | Finite scan “validates” a universal residual law | Needs analytic closure; verified/validated implementation words need `10^18` when used |
-| Fixed cutoff or Super-Signal revival | Invalidated |
+| Fixed cutoff or historical z≥4⇒g=2 claim revival | Invalidated |
 
 ---
 
@@ -244,7 +244,7 @@ Execution order this cycle. After a green run, use the **status after green** la
 - `docs/proof-enhancements/certificates/gwr_finite_base_v1.json`
 - `docs/proof-enhancements/certificates/bounded_compression_base_v1.json`
 - `research/00-index/continuity/notes/ACTIVE_GOAL_50bit_residual_discriminator.md`
-- `research/16-predictions/probes/super-signal-fp-signature-2026-07/`
+- ``
 - `experiments/constellation-vs-pgs-next-prime-2026-07/COMPARISON.md`
 - `experiments/rowland-pgs-category-split-2026-07/COMPARISON.md`
 - `experiments/pgs-prediction-inventory-2026-07/ADVANCE_2026-07-14.md`

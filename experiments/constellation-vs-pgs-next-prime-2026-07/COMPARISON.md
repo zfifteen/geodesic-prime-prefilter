@@ -34,11 +34,11 @@ Constellation theory asks whether several primes can sit at **fixed offsets at o
 
 Status: **classical theorem**. It is **not** a PGS theorem, not required for the proved next-prime rule, and not evidence for or against twin-prime infinitude.
 
-## Residual class A / Super-Signal non-claims
+## Residual class A / historical z≥4⇒g=2 claim non-claims
 
 Program history (status already fixed elsewhere):
 
-- Super-Signal claim `z(w) ≥ 4 ⇒ g = 2` is **invalidated**.
+- historical z≥4⇒g=2 claim claim `z(w) ≥ 4 ⇒ g = 2` is **invalidated**.
 - Modular lemma `z(w) ≥ 4 ⇔ 30 | w` on fixed `M_v1` is **theorem** (`PROOF.md`) on that vector only.
 - Residual catalogs (including twin-like gap events and R0-style false-positive classes) are **measured** maps, not twin-prime laws.
 

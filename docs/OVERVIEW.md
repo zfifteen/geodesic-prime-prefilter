@@ -3,7 +3,7 @@
 This page is the master navigation hub for the `docs/` folder.
 
 ## Start Here for Core Theorems
-- [PROOF.md](../PROOF.md): The formal proofs of the direct next-prime rule, Gap Winner Rule (GWR), universal bounded compression, Prime-Square Proximity Theorem, and the new Twin-Prime Resonance / GWR Super-Signal theorem.
+- [PROOF.md](../PROOF.md): The formal proofs of the direct next-prime rule, Gap Winner Rule (GWR), universal bounded compression, Prime-Square Proximity Theorem, and supporting modular lemmas.
 - [docs/core/](core/): Foundational explanations:
   - `LEFTMOST_MINIMUM_DIVISOR_RULE.md`
   - `DIVISOR_NORMALIZATION_IDENTITY.md`

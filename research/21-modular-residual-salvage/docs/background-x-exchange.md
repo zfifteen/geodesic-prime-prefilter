@@ -1,6 +1,6 @@
-# Background: Super-Signal X exchange (2026-07-08 to 2026-07-10)
+# Background: historical z≥4⇒g=2 claim X exchange (2026-07-08 to 2026-07-10)
 
-This note freezes the public conversation that produced (1) the Super-Signal
+This note freezes the public conversation that produced (1) the historical z≥4⇒g=2 claim
 counterexample, (2) a classical salvage attempt, and (3) the program's
 deterministic refusal of that salvage as PGS inference.
 
@@ -13,7 +13,7 @@ probabilistic packaging.
 
 | Handle | Display | Role in thread |
 | --- | --- | --- |
-| `@alltheputs` (Fate) | Program owner | Posted Super-Signal claim; accepted CE; refused classical salvage shape |
+| `@alltheputs` (Fate) | Program owner | Posted historical z≥4⇒g=2 claim claim; accepted CE; refused classical salvage shape |
 | `@0x2719` (SomeDude) | External auditor | Built CE package; full factor audit; offered residual salvage |
 
 Conversation id: `2074694442661859336`
@@ -28,14 +28,14 @@ Conversation id: `2074694442661859336`
   - Gaps are structured interiors; structure is read via divisor count `tau`.
   - **GWR witness** = leftmost interior with minimum `tau`.
   - Remainder vector on moduli `M = (2, 3, 5, 7, 30, 210, 2310)`.
-  - **Twin-Prime Resonance / GWR Super-Signal (claimed):** if the GWR witness
+  - **modular remainder facts (claimed):** if the GWR witness
     has four or more remainder zeros, then the gap is a twin gap (`g = 2`) and
     the next prime is `w + 1`.
   - Intuition offered: a multiple of 30 has high `tau`, so in a larger gap some
     earlier interior should beat it; only a single-interior twin gap lets that
     density remain GWR.
   - Evidence cited in post: scan to `2e6` (no counterexample); earlier interior
-    lane to `1.5e6` (all super-signal cases twins).
+    lane to `1.5e6` (all z4-twin-lock cases twins).
   - Language in the post treated the rule as a **proved twin-gap lock**.
 
 **Status of that language today:** the universal implication is **invalidated**
@@ -70,7 +70,7 @@ z(w) >= 4 at GWR  =>  g = 2
 - **Failed assumption named:** larger gap implies some interior with strictly
   fewer divisors than the multiple of 30.
 
-Repo certificate: `docs/proof-enhancements/certificates/counterexamples/ce_17666309.json`
+Repo certificate: `research/01-generator/tests/test_mod30_adjacent_carrier_generator.py (p=17666309)`
 (source line credits this post; dual-audited 2026-07-09).
 
 ### 3. Full prime-factor audit (`@0x2719`)
@@ -118,7 +118,7 @@ PGS inference rule.
 - **When:** 2026-07-10 ~09:36 UTC
 - **Content (summary):**
   - Thank you for trying to leave something standing after the kill.
-  - CE accepted fully; universal Super-Signal cannot stand.
+  - CE accepted fully; universal z4 twin lock cannot stand.
   - Salvage set aside without dismissing the spirit.
   - PGS is deterministic: resolves, returns unresolved, or is invalidated;
     does not emit likelihood.
@@ -145,7 +145,7 @@ PGS inference rule.
     (C) residual partition as build surface.
   - Concrete rewrite of 30 / 210 / CE carrier `w = 17,666,310` without
     "likely."
-  - Super-Signal universal lock stays dead.
+  - historical z≥4⇒g=2 claim universal lock stays dead.
   - Measured note: on a small regime, modular-closed among z>=4 GWR carriers
     is rare (toy twin around 30 dominates the closed class).
   - Pipeline: carrier -> wheel -> residual set -> closed | open ->
@@ -157,9 +157,9 @@ This post is the public statement of the approach formalized in this chapter.
 
 | Artifact | Status |
 | --- | --- |
-| `ce_17666309` | pinned invalidating CE (from `@0x2719`) |
-| `ce_22284029` | second pinned CE (independent class-A scan) |
-| `PROOF.md` Twin-Prime Resonance section | universal implication **invalidated** |
+| `p=17666309` | pinned invalidating CE (from `@0x2719`) |
+| `p=22284029` | second pinned CE (independent class-A scan) |
+| `PROOF.md` modular remainder facts section | universal implication **invalidated** |
 | Modular lemma on `M_v1` | **proved** (survives) |
 | Competitor lemma (strict tau beater in larger gaps) | **false** |
 | Hypothesis U (unique tau-min repair) | later **falsified** in experiment suite |
@@ -175,7 +175,7 @@ Build:    residual-open / modular-closed state language;
           deeper modular seats under explicit hypothesis discipline
 ```
 
-Do not read this chapter as a rehabilitation of Super-Signal.
+Do not read this chapter as a rehabilitation of historical z≥4⇒g=2 claim.
 Do not read the salvage post as program doctrine.
 Do read both as the origin of a residual-accounting object that can be stated
 without probability.

@@ -1,7 +1,7 @@
 # Measured results: modular-closed and hypothesis pressure
 
 **Status labels only:** measured / hypothesis / invalidated.  
-No Super-Signal restoration. No theorem promotion of H-210 or H-tau16.
+No z4 twin-lock restoration. No theorem promotion of H-210 or H-tau16.
 
 ## A. Modular-closed among z≥4 GWR carriers
 
@@ -51,7 +51,7 @@ Artifact: [../output/modular_closed_measure_broader.json](../output/modular_clos
 1. Residual-open dominates at both scales.
 2. The single modular-closed example remains the toy twin around `w = 30`.
 3. Broader scan **decreases** the closed rate among z≥4 carriers (more open
-   cases; still one closed hit). Empty residual is not a Super-Signal substitute.
+   cases; still one closed hit). Empty residual is not a historical z≥4⇒g=2 claim substitute.
 4. Soft density language is not supported as a PGS law by these surfaces.
 
 ## B. H-210 and H-tau16 CE pressure (hypothesis / measured)
@@ -67,8 +67,8 @@ python3 research/21-modular-residual-salvage/scripts/pressure_h210_htau16.py \
 | H-210 | GWR `210\|w` => `g = 2` | 136 | 0 | **not_falsified_in_tested_regime** |
 | H-tau16 | `z>=4` and `tau(w)>16` => `g = 2` | 627 | 0 | **not_falsified_in_tested_regime** |
 
-Control: gaps scanned 17980; bare Super-Signal FPs (`z>=4` and `g>2`) in this
-regime: 0 (first pinned Super-Signal CE is near `1.77e7`).
+Control: gaps scanned 17980; bare z4 false positives (`z>=4` and `g>2`) in this
+regime: 0 (first pinned mod30-adjacent CE is near `1.77e7`).
 
 Artifact: [../output/h210_htau16_pressure.json](../output/h210_htau16_pressure.json)
 
@@ -78,7 +78,7 @@ Artifact: [../output/h210_htau16_pressure.json](../output/h210_htau16_pressure.j
 | --- | --- |
 | H-210 / H-tau16 | **hypothesis / measured** only |
 | Empty CE list in regime | **not a proof** |
-| Super-Signal universal lock | **invalidated** (independent CE certificates) |
+| historical z≥4⇒g=2 claim universal lock | **invalidated** (independent CE certificates) |
 
 ## Related invalidated claims
 

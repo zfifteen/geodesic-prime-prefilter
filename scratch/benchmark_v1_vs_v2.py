@@ -23,7 +23,7 @@ def run_benchmark():
     time_v1 = end_time_v1 - start_time_v1
     
     # Run V2
-    print("Running v1.2.0 generator (Super-Signal)...")
+    print("Running v1.2.0 generator (mod30 guard)...")
     start_time_v2 = time.perf_counter()
     for p in primes:
         emit_v2(p)

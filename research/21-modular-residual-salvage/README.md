@@ -1,6 +1,6 @@
 # 21: Modular Residual Salvage
 
-Deterministic residual accounting extracted from the July 2026 Super-Signal
+Deterministic residual accounting extracted from the July 2026 historical z≥4⇒g=2 claim
 exchange on X, after a classical density salvage was refused as PGS inference.
 
 ## One-sentence finding
@@ -14,7 +14,7 @@ likelihood.
 
 | Layer | Status |
 | --- | --- |
-| Super-Signal universal lock `z(GWR) >= 4 => g = 2` | **invalidated** |
+| historical z≥4⇒g=2 claim universal lock `z(GWR) >= 4 => g = 2` | **invalidated** |
 | Classical density salvage | **outside PGS spine** |
 | ERMC (empty residual => prime) | **elementary certificate** (tiny regime) |
 | Residual closed/open language | **design object** (implemented) |
@@ -56,7 +56,7 @@ python3 research/21-modular-residual-salvage/scripts/measure_modular_closed.py -
 
 python3 research/21-modular-residual-salvage/scripts/pressure_h210_htau16.py --p-max 200000
 
-python3 docs/proof-enhancements/scripts/verify_super_signal_counterexamples.py
+python3 -m pytest research/01-generator/tests/test_mod30_adjacent_carrier_generator.py -q
 ```
 
 ## PGS shape contract (local)
@@ -82,6 +82,6 @@ wiring of residual trial.
 ## Provenance
 
 - X conversation id `2074694442661859336`
-- CE from `@0x2719` dual-audited as `ce_17666309`
+- CE from `@0x2719` dual-audited as `p=17666309`
 - Chapter + residual implementation: 2026-07-10
 - Optional targets (broader measure, H-pressure, dynamic wheel, polish): 2026-07-10

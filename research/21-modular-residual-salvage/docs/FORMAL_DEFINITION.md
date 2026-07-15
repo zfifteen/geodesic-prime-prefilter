@@ -4,7 +4,7 @@ Status labels in this document follow the repository contract:
 **theorem / measured / audit / hypothesis / unresolved / invalidated**.
 
 This note freezes the mathematical objects implemented in
-`scripts/residual_partition.py`. It does not restore Super-Signal.
+`scripts/residual_partition.py`. It does not restore historical z≥4⇒g=2 claim.
 
 ## Fixed modulus vector
 
@@ -12,8 +12,8 @@ This note freezes the mathematical objects implemented in
 M_v1 = (2, 3, 5, 7, 30, 210, 2310)
 ```
 
-This is the Super-Signal remainder vector from `PROOF.md`. It is a fixed
-implementation constant for this chapter, not a claim that Super-Signal is
+This is the historical z≥4⇒g=2 claim remainder vector from `PROOF.md`. It is a fixed
+implementation constant for this chapter, not a claim that historical z≥4⇒g=2 claim is
 proved.
 
 **Proved (elsewhere):** on `M_v1`,
@@ -23,7 +23,7 @@ z(w) >= 4  <=>  30 | w
 ```
 
 where `z(w)` counts zeros in the remainder vector of `w` modulo each entry of
-`M_v1`. See `PROOF.md` section Twin-Prime Resonance (modular lemma survives;
+`M_v1`. See `PROOF.md` section modular remainder facts (modular lemma survives;
 universal twin lock is **invalidated**).
 
 ## Remainder vector and zero count
@@ -96,7 +96,7 @@ If the carrier `w` is divisible by every prime in `W(w)`, and the candidate is
 `n = w +/- 1` (so no prime of `W(w)` divides `n` when `n > max(W(w))`), and
 `R(n, W(w))` is empty, then `n` is prime.
 
-**Status:** elementary certificate. **Not** a Super-Signal replacement. Empty
+**Status:** elementary certificate. **Not** a historical z≥4⇒g=2 claim replacement. Empty
 residual occurs only in a tiny regime for primorial-scale wheels (notably
 `S = 30` for both neighbors).
 
@@ -131,7 +131,7 @@ Default moduli is always `M_v1`. Callers may pass another family (for example
 ```text
 Status: hypothesis / optional tooling
 Not a proved modulus vector
-Not a Super-Signal replacement
+Not a historical z≥4⇒g=2 claim replacement
 Does not change residual decision shape (still R empty vs nonempty)
 ```
 
@@ -142,5 +142,5 @@ Does not change residual decision shape (still R empty vs nonempty)
 | Definitions of `W`, `R`, closed/open | design object (formalized here; implemented) |
 | ERMC implication empty residual => prime | elementary theorem (classical) |
 | Dynamic moduli beyond `M_v1` | **hypothesis / optional** |
-| Super-Signal universal twin lock | **invalidated** |
+| historical z≥4⇒g=2 claim universal twin lock | **invalidated** |
 | Soft density salvage as inference | **rejected** |

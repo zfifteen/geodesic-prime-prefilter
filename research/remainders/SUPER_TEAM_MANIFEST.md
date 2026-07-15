@@ -9,7 +9,7 @@ The objective's "Super Team" is implemented as **six named lane agents** dispatc
 | Agent ID | Lane | Collector |
 |----------|------|-----------|
 | `interior_rnm` | Interior `R(n,M)` | `collect_remainder_stats.py` |
-| `super_signal_status` | GWR Super-Signal (epistemic) | inline in orchestrator |
+| `modular_remainder_status` | modular remainder zeros (measured + modular lemma) | inline in orchestrator |
 | `endpoint_mask` | Endpoint wheel-open mask | `lane_collectors/endpoint_residue_probe.py` |
 | `mod30_ridge` | Left-prime mod-30 ridge | `lane_collectors/mod30_ridge_probe.py` |
 | `state_budget` | State-budget residue cells | `state_budget_residue_matched_pair_test.py` |

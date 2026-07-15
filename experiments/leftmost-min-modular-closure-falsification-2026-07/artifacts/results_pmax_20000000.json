@@ -189,7 +189,7 @@
     "H_absolute_universal_z4_implies_g2": {
       "status": "invalidated",
       "gwr_mismatch_count": 1,
-      "note": "Universal Super-Signal already invalidated in PROOF.md; status here is reconfirm-only on this regime."
+      "note": "Universal z4 twin lock already invalidated in PROOF.md; status here is reconfirm-only on this regime."
     },
     "H_comparative_selector_necessity": {
       "status": "falsified",

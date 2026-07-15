@@ -75,7 +75,7 @@ carrier misses the upper carrier by two units past the current public bound.
 | 40-bit / 64-bit rungs | **measured** + **audit** factor true |
 | 50-bit residual | **unresolved** |
 | New public discriminator D | **hypothesis** / **unresolved** (not derived yet) |
-| Super-Signal; V2 residue ranking; fixed isqrt chambers | **invalidated** |
+| historical z≥4⇒g=2 claim; V2 residue ranking; fixed isqrt chambers | **invalidated** |
 | UBC / PSP / GWR / next-prime | **theorem** (unchanged; PROOF.md controls) |
 | LSCD ladder; co-landing bridge | **secondary** (not the single center) |
 | Live `rsa-v2/output/summary.json` | **stale empty** on HEAD; do not use as evidence pin |
@@ -95,7 +95,7 @@ carrier misses the upper carrier by two units past the current public bound.
 - LSCD: high-value residual geometry after UBC; lower force than live cryptology residual center.
 - Co-landing / gap-compatibility: real measured bridge; not the named 50-bit resolver residual.
 - Lean / hourly square-branch audit: important, not residual breakthrough. Note: `ACTIVE_TARGET` path for `4e8..5e8` summary JSON is missing on disk while findings prose exists (hygiene debt, not theorem debt).
-- Super-Signal salvage / 256-bit competition theater: invalidated or classical-drift shapes.
+- z4 twin-lock salvage / 256-bit competition theater: invalidated or classical-drift shapes.
 - Generator rework: completed production milestone.
 
 ## 10^18 claim language

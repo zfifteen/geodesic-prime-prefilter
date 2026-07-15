@@ -30,7 +30,7 @@ def test_odd_can_reach_z3() -> None:
 
 
 def test_pinned_ce_is_left_endpoint_even() -> None:
-    """Both Super-Signal CEs: GWR witness is p+1 (even) on multi-way ties."""
+    """Both mod30-adjacent CEs: GWR witness is p+1 (even) on multi-way ties."""
     for ce in PINNED_GWR_CE:
         hard = ce["q"] + 10
         tau = divisor_counts(hard)

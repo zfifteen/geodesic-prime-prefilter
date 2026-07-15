@@ -89,7 +89,7 @@ Supporting finite premises named inside `PROOF.md` (proof machinery, not free-st
 
 ### Observable object
 
-A Super-Signal style reading looks at the GWR witness remainder vector on
+A historical z≥4⇒g=2 claim style reading looks at the GWR witness remainder vector on
 `M_v1` and treats a high zero-count as a twin-gap certificate.
 
 ### Ordinary-language mechanism (historical, false)
@@ -100,7 +100,7 @@ be the next prime."
 
 ### Project term and withdrawn claim
 
-**Twin-Prime Resonance (GWR Super-Signal)** historical packaging:
+**modular remainder facts** historical packaging:
 
 ```text
 z(w) >= 4  =>  g = 2
@@ -125,21 +125,21 @@ and the stronger packaging that `w + 1` is identically `q`.
 
 Paths:
 
-- `docs/proof-enhancements/certificates/twin_prime_resonance_invalidated_v1.json`
-- `docs/proof-enhancements/certificates/counterexamples/ce_17666309.json`
-- `docs/proof-enhancements/certificates/counterexamples/ce_22284029.json`
-- Repro: `python3 docs/proof-enhancements/scripts/verify_super_signal_counterexamples.py`
+- `docs/proof-enhancements/certificates/modular_remainder_invalidated_v1.json`
+- `research/01-generator/tests/test_mod30_adjacent_carrier_generator.py (p=17666309)`
+- `research/01-generator/tests/test_mod30_adjacent_carrier_generator.py (p=22284029)`
+- Repro: `python3 -m pytest research/01-generator/tests/test_mod30_adjacent_carrier_generator.py -q`
 
 ### Comparative leftness packaging (experiment-local, not a theorem revival)
 
 Share-driven claim that **leftmost** min-`tau` is necessary for modular gap
 closure is **falsified** on measured regime `p <= 2.5e7`
 (`experiments/leftmost-min-modular-closure-falsification-2026-07/`). That does
-not restore Super-Signal. It does not demote GWR as maximizer of `F`.
+not restore historical z≥4⇒g=2 claim. It does not demote GWR as maximizer of `F`.
 
 ### Explicit non-revival
 
-- Do not cite Super-Signal as a proved corollary.
+- Do not cite historical z≥4⇒g=2 claim as a proved corollary.
 - Do not write "often twin below bound" as a universal twin-gap law.
 - Residual class R0 and related catalogs describe **observed failures** only.
   They are **not** a proved repair of the form `z >= 4 => (g = 2 or R0)`.
@@ -165,16 +165,16 @@ separate proof package is approved. Keep each item status-labeled.
 
 | Pressure | Status | Exact limit |
 | --- | --- | --- |
-| Super-Signal FP outside residual class R0 at larger scale | **unresolved** / **hypothesis** that all FPs stay in R0 | full sieve through `5e7` and band `[5e7, 6e7)` are **measured**; universality **unresolved** |
-| Mechanism why Super-Signal FPs force `g = 8` on the R0 form | **unresolved** | catalog is not a generative proof |
+| z4 FP outside residual class R0 at larger scale | **unresolved** / **hypothesis** that all FPs stay in R0 | full sieve through `5e7` and band `[5e7, 6e7)` are **measured**; universality **unresolved** |
+| Mechanism why z4 FPs force `g = 8` on the R0 form | **unresolved** | catalog is not a generative proof |
 | Level-Set Compression Dichotomy (LSCD): spill only on early `tau(w) = 4` | **hypothesis**, measured hold on `11..2e6` | full LSC **invalidated**; UBC **theorem** untouched |
 | Rightmost min-`tau` zero-mismatch beyond `2.5e7` | **unresolved** (measured absence only so far) | not a selector law |
-| Min-`tau` tie index histogram for `z >= 4` and `g > 2` | optional **new hypothesis** package | not a rescue of Super-Signal or leftness necessity |
+| Min-`tau` tie index histogram for `z >= 4` and `g > 2` | optional **new hypothesis** package | not a rescue of historical z≥4⇒g=2 claim or leftness necessity |
 | Any residual wanting program-level verified / validated wording | blocked until executed `10^18` surface | `AGENTS.md` Mandatory 10^18 Evidence Surface |
 
 ### What not to run as "next experiment"
 
-- Do not re-open Super-Signal as theorem or corollary.
+- Do not re-open historical z≥4⇒g=2 claim as theorem or corollary.
 - Do not re-open Hypothesis U (unique min + `z >= 4 => g = 2`): already
   **invalidated**.
 - Do not demote GWR, next-prime, UBC, Prime-Square Proximity, or the modular
@@ -190,15 +190,15 @@ separate proof package is approved. Keep each item status-labeled.
 | `research/00-index/continuity/notes/insight-ooda-proof-loop.md` | Loop ledger (R0, LSCD, branch-envelope) |
 | `experiments/leftmost-min-modular-closure-falsification-2026-07/CONTINUITY_HANDOFF.md` | Leftness falsification handoff |
 | `experiments/min-tau-level-set-compression-2026-07/FINDINGS.md` | LSC / LSCD residual |
-| `research/16-predictions/probes/super-signal-fp-signature-2026-07/README.md` | Super-Signal FP catalog |
+| `README.md` | z4 FP catalog |
 | `research/00-index/continuity/ACTIVE_TARGET.md` | Program center and hourly audit |
 
 ---
 
 ## Unresolved (must stay labeled unresolved)
 
-1. Universal residual law after Super-Signal kill (no closed replacement).
-2. Super-Signal FP outside R0 for larger `p`.
+1. Universal residual law after residual-class kill (no closed replacement).
+2. z4 FP outside R0 for larger `p`.
 3. Generative mechanism for R0 form and `g = 8`.
 4. LSCD hold past `11..2e6` (square spill, high-tau spill, large-alpha spill).
 5. Rightmost and other non-leftmost tie operationalizations beyond named regimes.

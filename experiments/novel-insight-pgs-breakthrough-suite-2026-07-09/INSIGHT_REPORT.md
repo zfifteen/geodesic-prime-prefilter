@@ -12,7 +12,7 @@
 **Domain:** Prime Gap Structure (PGS) research program after the 2026-07 breakthrough stack.
 
 **In scope:**
-- Proved pillars in `PROOF.md`: direct next-prime, GWR maximizer, universal bounded compression, Prime-Square Proximity, Twin-Prime Resonance (Super-Signal corollary), derived half-coefficient packaging of `C(q)`.
+- Proved pillars in `PROOF.md`: direct next-prime, GWR maximizer, universal bounded compression, Prime-Square Proximity, modular remainder facts (modular remainder packaging), derived half-coefficient packaging of `C(q)`.
 - Measured breakthrough surfaces: 127-bit semiprime official gate, RSA v2 endpoint law (40-bit resolved / 50-bit unresolved), chamber-reset vs endpoint-chain composition, generator and recursive-walk exact surfaces, square-branch audit corroboration.
 - Invalidated: fixed cutoff map `{2:44, 4:60, 6:60}`; shadow-selector shortcuts.
 
@@ -29,7 +29,7 @@
 ### Path A: Compositional horizon algebra (near-miss of chamber-reset insight)
 1. Chamber reset = local truncation; endpoint chain = global extension.
 2. Modulus-link = alignment predicate of the two.
-3. Super-Signal = truncation collapse when witness is resonant.
+3. historical z≥4⇒g=2 claim = truncation collapse when witness is resonant.
 4. Suite = instantiations of one operator grammar.
 **Kill risk:** Already written as tournament winner insight (2026-07-08). Novelty vs local state weak.
 
@@ -64,7 +64,7 @@ Leverage: Closing more local pillars does not by itself raise exact recovery; it
 Signature distinguishing this mechanism: after pillar stack completion, containment metrics can saturate while identity metrics lag, and identity failures remain in-window.
 
 ### Survivor C: Boundary / phase analysis
-Control parameter: local residual-class openness (pre vs post square-branch / Super-Signal closure).  
+Control parameter: local residual-class openness (pre vs post square-branch / historical z≥4⇒g=2 claim closure).  
 Pre-transition: failures can be bound violations, wrong cutoff, square-branch leaks, or routing misses.  
 Post-transition: failures concentrate as in-window identity misses and residual-zero unresolved states (non-monotonic bit rungs allowed).  
 Sensitive region: first official surfaces after 2026-07-05 where router containment hits 1.0 while exact recovery does not.
@@ -96,8 +96,8 @@ Sensitive region: first official surfaces after 2026-07-05 where router containm
    Response: Partial-info is external analogy. Local plan is case-level. Insight claims *program-suite residual reclassification* after pillar closure.
 2. **Methodological:** n=12 is tiny; labels may be harness artifacts.  
    Response: Scope claims to this committed surface as *signature*, not proof of universality. Prediction is about ordinal structure on future rungs/corpora, not a universal rate.
-3. **Edge:** Balanced family exact=1.0 may just mean small factor separation; Super-Signal 0/12 on corpus.  
-   Response: Bound insight to post-pillar surfaces; expect identity failures to concentrate off balanced close pairs; Super-Signal out of scope for this surface (as goal plan states).
+3. **Edge:** Balanced family exact=1.0 may just mean small factor separation; historical z≥4⇒g=2 claim 0/12 on corpus.  
+   Response: Bound insight to post-pillar surfaces; expect identity failures to concentrate off balanced close pairs; historical z≥4⇒g=2 claim out of scope for this surface (as goal plan states).
 4. **So-what:** Everyone will chase recovery next anyway.  
    Response: Changes the *forbidden* move: further primary investment in tighter `C(q)` / larger windows as the crypto path while containment is already saturated. Forces residual-class accounting in status language.
 
@@ -205,17 +205,17 @@ Minimal check outcome (2026-07-09):
 
 ## Part 4: Adversarial Audit Summary
 
-Four attacks were mounted: literature/proverb collapse, small-n methodology, family/edge confounding, and so-what. The proverb and so-what attacks forced a revision: the insight is residual-class reclassification after closed consecutive-gap pillars, not generic bottleneck advice, and it forbids primary investment in tighter local bounds when containment is already saturated. Methodology forced explicit non-theorem status and a prediction about ordinal structure on future surfaces rather than a universal rate. Edge attack forced concentration language (off balanced close pairs) and Super-Signal out-of-scope on the 127 corpus. After revision the insight still stands as a testable program-level claim with a first-surface check pass.
+Four attacks were mounted: literature/proverb collapse, small-n methodology, family/edge confounding, and so-what. The proverb and so-what attacks forced a revision: the insight is residual-class reclassification after closed consecutive-gap pillars, not generic bottleneck advice, and it forbids primary investment in tighter local bounds when containment is already saturated. Methodology forced explicit non-theorem status and a prediction about ordinal structure on future surfaces rather than a universal rate. Edge attack forced concentration language (off balanced close pairs) and historical z≥4⇒g=2 claim out-of-scope on the 127 corpus. After revision the insight still stands as a testable program-level claim with a first-surface check pass.
 
 Scope remaining: post-2026-07 pillar stack; measured crypto/endpoint surfaces; no RSA-scale theorem and no RH claim.
 
 ## Sources
 
 **Repo artifacts**
-- `PROOF.md` (theorem status; Super-Signal corollary; bounded compression)
+- `PROOF.md` (theorem status; modular remainder packaging; bounded compression)
 - `research/00-index/continuity/ACTIVE_TARGET.md` (post-breakthrough center)
 - `docs/current_headline_results.md`, `docs/RESULTS.md` (headline surfaces)
-- `docs/earth-shattering-advancement-proposal.md` (scale-up framing near-miss)
+- scale-up framing near-miss (removed proposal doc)
 - `research/06-cryptology-rsa/docs/semiprime_branch/pgs_127_official_gate_breakthrough.md`
 - `research/06-cryptology-rsa/output/semiprime_branch/pgs_127_official_audit_rows.jsonl` (minimal check)
 - `research/06-cryptology-rsa/docs/semiprime_branch/SEMIPRIME_RECOVERY_GOAL_PLAN.md` (local near-miss)

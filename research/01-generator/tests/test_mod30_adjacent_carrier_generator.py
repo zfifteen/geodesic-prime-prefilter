@@ -1,9 +1,8 @@
-"""Regression: Super-Signal CE must not break the shipped generator path.
+"""Regression: mod-30-adjacent high-tau GWR carriers must still resolve.
 
-The universal Super-Signal implication is invalidated. The generator may still
-use a guarded truncation when (p+1)%30==0 and d(p+2)==2; that is an
-implementation optimization, not a theorem. This test drives the real
-resolve_q entry on a pinned counterexample.
+When p+1 is a multiple of 30 and the GWR carrier sits at p+1 with tau>2,
+the gap need not be twin. The generator must emit the correct q via the
+full chamber path (guarded truncation applies only when tau(p+2)==2).
 """
 
 from __future__ import annotations
@@ -21,8 +20,8 @@ from z_band_prime_predictor.simple_pgs_generator_v2 import (  # noqa: E402
 )
 
 
-def test_resolve_q_on_super_signal_counterexample_17666309():
-    """Pinned CE: z(GWR)>=4 but gap=8; generator must still emit correct q."""
+def test_resolve_q_on_mod30_adjacent_carrier_17666309():
+    """p+1 divisible by 30, gap=8; generator must still emit correct q."""
     p = 17_666_309
     q, source, certificate = resolve_q(p)
     assert q == 17_666_317
@@ -34,8 +33,8 @@ def test_resolve_q_on_super_signal_counterexample_17666309():
     assert int(certificate["carrier_d"]) == 16
 
 
-def test_resolve_q_on_second_counterexample_22284029():
-    """Second independent class-A CE; same generator contract."""
+def test_resolve_q_on_mod30_adjacent_carrier_22284029():
+    """Second independent mod-30-adjacent non-twin gap; same generator contract."""
     p = 22_284_029
     q, _source, certificate = resolve_q(p)
     assert q == 22_284_037
