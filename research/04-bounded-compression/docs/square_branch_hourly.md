@@ -3671,7 +3671,7 @@ Research status:
 ADVANCE
 
 Ops status:
-OK
+FAILED
 
 Delta:
 new falsification regime through max_prime=500000000
@@ -3681,3 +3681,60 @@ Artifacts:
 
 Next step:
 Structural audit of recurring offset 540 on new extremal rows if no counterexample.
+
+## 2026-07-15T16:04:04Z run
+
+Mechanism:
+PGS-native structural audit of recurring offset 540 and early-tau=4 / late-tau=3
+chamber separation (queue job `offset-540-structural-audit`). New residual
+package RC45-RC47 on util maxima + o_q branch-max panel through 4e8-5e8.
+
+Method:
+Heavy analytic fan-out (16/16 specialists, ≥1 contrarian) then leader execute.
+Read falsification summary JSON and prefix_tau_floor_probe.json. Ship residual
+probe under experiments/square-branch-hourly-2026-07-15-rc45/. Primary ratios:
+min/mean, dual/count, max/body. Rejected as primary: density restatement (RC21),
+open/max and trail/max (RC44 Dual split), dual/min (collapses when min_gap=1).
+No classical gates; no d=4 SDA; no theorem inflation.
+
+Result:
+Residual claims hold on 8/8 evaluation rows (7 unique chambers):
+
+| Claim | Status | Notes |
+| --- | --- | --- |
+| RC45 / P49 min/mean | holds | observed [0.112, 0.223] vs bound [0.08, 0.30] |
+| RC46 / P50 dual/count | holds | observed [0.077, 0.415] vs bound [0.05, 0.50] |
+| RC47 / P51 max/body | holds | observed [0.041, 0.085] vs bound [0.03, 0.12] |
+| RC42-RC44 | retained holds | not primary surface |
+| RC2 fixed-540 | falsified (retained) | D=738 at r=424171123 |
+| Target S1* / proximity | UNRESOLVED | PROOF.md §Square-Branch Reduction |
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.67s
+```
+RC45 residual probe exit code: 0 (RC45-RC47 hold; RC2 retained falsified).
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New residual claim table RC45-RC47 (mean-unit packing floor min/mean, Dual L1
+per Tau4 hit dual/count, peak desert as Tau4 body-share max/body) with
+predictions P49-P51, explicit falsification command, and RC42-RC44 retained as
+non-primary. Distinct from RC42-RC44 InteriorPacking; not a theorem; not fixed-band 540.
+
+Artifacts:
+`experiments/square-branch-hourly-2026-07-15-rc45/offset_540_residual_rc45_probe.py`;
+`experiments/square-branch-hourly-2026-07-15-rc45/offset_540_rc45_prediction_table.json`;
+`experiments/square-branch-hourly-2026-07-15-rc45/FINDINGS.md`
+
+Next step:
+Queue falsification `5e8-6e8` and re-check RC45-RC47 / RC18-RC44 on any new util
+maximum. Prefer holdout on a new band over further ratio minting on the same
+7 chambers. Do not promote min/mean, dual/count, or max/body to theorem; do not
+revive fixed-band 540 or d=4 SDA.
