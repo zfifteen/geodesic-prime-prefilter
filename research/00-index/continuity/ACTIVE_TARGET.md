@@ -1,15 +1,17 @@
 # Active Research Target
 
-**Updated:** 2026-07-13  
+**Updated:** 2026-07-14  
 **Program:** post-breakthrough: Lean formalization, external review, audit corroboration
 
-> **Separate live research goal (2026-07-13):** 50-bit public residual
-> discriminator `D` on modulus-link residual
-> `unresolved_by_reciprocal_carrier_misalignment`. Continuity pin:
+> **Separate live residual track (updated 2026-07-14):** 50-bit fixture remains
+> **unresolved**. Measured residual migration on rsa-v3:
+> carrier misalignment → first-tail (dual-gap D) → joint cell
+> `unresolved_by_joint_cell_C1T2L1` (residual vector R, pinch_S = 54). Residual
+> maps stay **hypothesis**. Continuity pin:
 > [notes/ACTIVE_GOAL_50bit_residual_discriminator.md](notes/ACTIVE_GOAL_50bit_residual_discriminator.md).
-> Full report:
-> [reports/next-impact-task/index.html](reports/next-impact-task/index.html).
-> That goal does **not** replace this file's Lean / square-branch hourly center.
+> Package:
+> `research/06-cryptology-rsa/experiments/live-solver/rsa-v3/output/residual_cell_C1T2L1/`.
+> That track does **not** replace this file's Lean / square-branch hourly center.
 
 ## Central Obligation: CLOSED 2026-07-05
 

@@ -145,9 +145,9 @@ How to read columns:
 Merged from Claude rewrites (H1′-H4′). Prior soft H1-H4 rows are **replaced** by these.
 
 ### H1′. Constant-neighborhood residual honesty (50-bit pin)
-- **Statement:** On the golden 50-bit pin, for dual-gap form `boundD = max(C1, floor(α(g_lo+g_up)))` with `(C1, α)` in a named neighborhood of the fitted gate (default grid C1 ∈ [10,40], α ∈ [0.8, 2.0]), under an **unchanged** first-tail window and no classical smuggle, the **decision residual** stays `unresolved_by_first_tail_misalignment` (not a silent false endpoint). Dual-gap D may still pass as a gate on the fixture; that pass is **measured**, not a universal law.
-- **Status:** measured on fixtures for the fitted gate; neighborhood stability and D-as-law = **hypothesis** (`ACTIVE_GOAL_50bit_residual_discriminator.md`)
-- **Check:** `python3 -m pytest research/06-cryptology-rsa/tests/test_a1_endpoint_resolver_unit.py -q` plus residual honesty package under `research/06-cryptology-rsa/experiments/live-solver/rsa-v3/`; constant-neighborhood sweep when harness lands (Schedule driver 3)
+- **Statement:** On the golden 50-bit pin, for dual-gap form `boundD = max(C1, floor(α(g_lo+g_up)))` with `(C1, α)` in a named neighborhood of the fitted gate (default grid C1 ∈ [10,40], α ∈ [0.8, 2.0]), under an **unchanged** first-tail window and no classical smuggle, the row stays **unresolved** with a named residual (not a silent false endpoint). Live decision residual under residual cell R is `unresolved_by_joint_cell_C1T2L1` when ranks match C1T2L1; underlying first-tail hard miss remains. Dual-gap D may still pass as a gate on the fixture; that pass is **measured**, not a universal law.
+- **Status:** measured on fixtures for the fitted gate + joint-cell residual package; neighborhood stability and D/R-as-law = **hypothesis** (`ACTIVE_GOAL_50bit_residual_discriminator.md`, `rsa-v3/output/residual_cell_C1T2L1/`)
+- **Check:** `python3 -m pytest research/06-cryptology-rsa/tests/test_a1_endpoint_resolver_unit.py -q` plus residual packages under `research/06-cryptology-rsa/experiments/live-solver/rsa-v3/`; constant-neighborhood sweep when harness lands (Schedule driver 3)
 - **Kill (honesty):** Endpoint class emit without new public geometry; residual changes only via window widen or classical gate
 - **Kill (neighborhood):** Some in-grid `(C1,α)` yields honest endpoint close with fixed first-tail window (then document the geometry or accept D-form break)
 

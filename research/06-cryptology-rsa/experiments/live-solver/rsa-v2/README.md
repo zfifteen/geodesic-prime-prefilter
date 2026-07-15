@@ -202,6 +202,12 @@ rsa_v2_50bit_static_001 -> unresolved_by_reciprocal_carrier_misalignment
 rsa_v2_64bit_static_001 -> endpoint_class_by_mutual_certificate_closure
 ```
 
+These residual/closure codes are the **rsa-v2 runner** pin. The 50-bit row stays
+unresolved (no public endpoint class). On the **rsa-v3** residual stack the same
+fixture migrates further under public geometry (dual-gap D → first-tail → joint
+cell `C1T2L1`) while remaining unresolved; see
+`../rsa-v3/output/residual_cell_C1T2L1/` and `../rsa-v3/RESIDUAL_TAXONOMY.md`.
+
 The runner still does not read audit factors. Downstream audit currently reports
 `factor_found = true` for the 40-bit and 64-bit rows. The 50-bit row is
 unresolved before audit and does not emit a public endpoint class.
