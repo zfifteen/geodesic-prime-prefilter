@@ -93,10 +93,10 @@ and without reopening dual-gap D. Live residual decision name changed with tests
 and a committed package.
 
 **It is not:** a theorem; a 50-bit residual close; an RSA-scale resolver; a revival
-of Super-Signal; a Reciprocal Transport Law on continuous DNI excess.
+of historical z≥4⇒g=2 claim; a Reciprocal Transport Law on continuous DNI excess.
 
 The rejected claim packaging in `2026-07-14-grok-heavy.md` (theorem inflation,
-Super-Signal foundation, empty evidence) remains rejected.
+historical z≥4⇒g=2 claim foundation, empty evidence) remains rejected.
 
 ## Repro
 
@@ -131,7 +131,7 @@ python3 -m pytest \
 **Review plan:**
 1. Claim alignment: residual subclass, not theorem
 2. Status table complete
-3. Super-Signal not used as foundation
+3. historical z≥4⇒g=2 claim not used as foundation
 4. 10^18 gate matches claim words
 5. Repro commands match artifacts
 6. 40-bit control + ADV-001 honesty

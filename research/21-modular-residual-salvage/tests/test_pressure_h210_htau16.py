@@ -44,7 +44,7 @@ def test_run_pressure_small_regime_returns_hypothesis_labels(pressure):
     """Drive shipped run_pressure on a tiny regime (real entry path)."""
     result = pressure.run_pressure(11, 5_000)
     assert result["status"] == "hypothesis_measured_pressure_only"
-    assert result["super_signal_universal_lock"] == "invalidated"
+    assert result["z4_universal_status_lock"] == "invalidated"
     assert "proved" not in result["claim_language"].lower()
     assert result["regime"]["p_min"] == 11
     assert result["regime"]["p_max"] == 5_000

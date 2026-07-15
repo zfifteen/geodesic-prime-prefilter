@@ -27,8 +27,8 @@ sufficiency.
 ### H-absolute (forcing sufficiency)
 
 **Status before this experiment:** already **invalidated** as a universal rule
-in `PROOF.md` (Twin-Prime Resonance / Super-Signal, certificates
-`ce_17666309`, `ce_22284029`).
+in `PROOF.md` (modular remainder facts / historical z≥4⇒g=2 claim, certificates
+`p=17666309`, `p=22284029`).
 
 Claim: if the GWR witness `w` (leftmost interior min-`tau`) satisfies
 `z(w) >= 4` on `M_v1 = (2, 3, 5, 7, 30, 210, 2310)`, then gap size `g = q - p = 2`.

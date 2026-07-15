@@ -43,11 +43,11 @@ def all_lane_agents() -> list[LaneAgent]:
             ),
         ),
         LaneAgent(
-            agent_id="super_signal_status",
-            lane_name="gwr_super_signal",
-            role="Record epistemic status of Twin-Prime Resonance (G2); no PROOF edits",
+            agent_id="modular_remainder_status",
+            lane_name="modular_remainder",
+            role="Record epistemic status of modular remainder facts (G2); no PROOF edits",
             collector_script="research/remainders/run_investigation.py (inline)",
-            output_artifact="research/remainders/correlations/investigation/super_signal_status.json",
+            output_artifact="research/remainders/correlations/investigation/modular_remainder_status.json",
             repro_command="see docs/proof-enhancements/goals.md G2",
         ),
         LaneAgent(

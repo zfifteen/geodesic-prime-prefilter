@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Residual-class surface for GWR remainder zeros (post Super-Signal kill).
+"""Residual-class surface for GWR remainder zeros (post historical z≥4⇒g=2 claim kill).
 
 PGS objects first:
   - consecutive prime gap (p, q)
@@ -10,7 +10,7 @@ PGS objects first:
   - tie count = number of interior n with tau(n) = tau(w)
 
 Purpose (measured residual map only; not a theorem):
-  Partition every gap by residual class so the invalidated Super-Signal rule
+  Partition every gap by residual class so the invalidated historical z≥4⇒g=2 claim rule
   cannot re-enter as soft "often twin" language.
 
 Classes (primary):
@@ -20,7 +20,7 @@ Classes (primary):
   D  z<4                                        (all other gaps)
 
 Status labels:
-  Super-Signal universal rule: invalidated (repo + public counterexample).
+  historical z≥4⇒g=2 claim universal rule: invalidated (repo + public counterexample).
   This probe: measured residual counts only.
 
 Classical sieve/tau construction is field computation for tau, not PGS
@@ -147,7 +147,7 @@ def run_probe(p_max: int, sample_cap: int = 25) -> dict:
     return {
         "status": "measured",
         "not_a_theorem": True,
-        "super_signal_universal": "invalidated",
+        "z4_universal_status": "invalidated",
         "moduli_M_v1": list(MODULI),
         "regime": {
             "left_prime_min": 11,
@@ -164,7 +164,7 @@ def run_probe(p_max: int, sample_cap: int = 25) -> dict:
         },
         "derived": {
             "z4_total": z4_total,
-            "bare_super_signal_false_positives": bare_ss_false,
+            "bare_z4_false_positives": bare_ss_false,
             "z4_twin_rate_among_z4": (
                 round(class_counts["A_z4_twin"] / z4_total, 6) if z4_total else None
             ),
@@ -181,7 +181,7 @@ def main() -> int:
         "--p-max",
         type=int,
         default=2_000_000,
-        help="Inclusive max left prime (default 2e6 = original Super-Signal claim surface)",
+        help="Inclusive max left prime (default 2e6 = original historical z≥4⇒g=2 claim claim surface)",
     )
     ap.add_argument("--sample-cap", type=int, default=25)
     ap.add_argument(
@@ -209,7 +209,7 @@ def main() -> int:
     ):
         print(f"  {k}: {counts.get(k, 0)}", flush=True)
     print(f"gaps: {out['regime']['gaps_scanned']}", flush=True)
-    print(f"bare Super-Signal FPs (B+C): {out['derived']['bare_super_signal_false_positives']}", flush=True)
+    print(f"bare z4 false positives (B+C): {out['derived']['bare_z4_false_positives']}", flush=True)
     print(f"seconds: {out['regime']['seconds']}", flush=True)
     print(f"wrote {args.out}", flush=True)
     return 0

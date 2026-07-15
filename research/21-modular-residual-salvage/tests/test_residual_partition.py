@@ -68,7 +68,7 @@ def test_two_ten_plus_minus_one_residual_open(rp):
         assert rp.residual_set(record["neighbor"], record["wheel"])
 
 
-def test_super_signal_ce_neighborhood_w_plus_one_open(rp):
+def test_z4_twin_lock_ce_neighborhood_w_plus_one_open(rp):
     """Pinned CE carrier: w=17666310, neighbor w+1 is residual-open.
 
     Does not claim primality; only residual-state under the wheel from zeros.

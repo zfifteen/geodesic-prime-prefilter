@@ -40,7 +40,7 @@
 
 - **Statement:** If GWR witness `w` has `z(w) >= 4` on `M_v1`, then `g = 2`.
 - **Status:** **invalidated**
-- **Evidence:** `PROOF.md` Super-Signal CEs `17666309`, `22284029`; reconfirm in `artifacts/results_pmax_25000000.json` (GWR mismatch count = 2).
+- **Evidence:** `PROOF.md` mod30-adjacent CEs `17666309`, `22284029`; reconfirm in `artifacts/results_pmax_25000000.json` (GWR mismatch count = 2).
 
 ### 2. H-comparative (selector necessity)
 
@@ -78,7 +78,7 @@
 | 5e4 | 5129 | 0 | 0 | 421 | smoke; counts from `results_pmax_50000.json` |
 | 1e5 | 9588 | 0 | 0 | 791 | multi-thousand-gap zero-mismatch arm for alt-A |
 | 2e6 | 148929 | 0 | 0 | 13708 | implementer + verifier mid-regime match |
-| 2e7 | 1270603 | 1 | 0 | 123393 | first Super-Signal CE; alt-A still 0 |
+| 2e7 | 1270603 | 1 | 0 | 123393 | first mod30-adjacent CE; alt-A still 0 |
 | 2.5e7 | 1565923 | 2 | 0 | 152620 | both pinned CEs; comparative **falsified** |
 
 Decisive z4 detail at `2.5e7`: GWR z4=43170 hit_twin=43168 mm=2; rightmost z4=43168 mm=0; first z4=195788 mm=152620.
@@ -109,12 +109,12 @@ Decisive z4 detail at `2.5e7`: GWR z4=43170 hit_twin=43168 mm=2; rightmost z4=43
 - [x] FINDINGS uses invalidated / falsified / measured only (no verified/validated)
 - [x] CONTINUITY_HANDOFF with next pressure and unresolved list
 - [x] Auditor re-audit: APPROVE with nits (nits fixed)
-- [x] Orchestrator final ack: do not amend `PROOF.md` beyond existing Super-Signal invalidated status
+- [x] Orchestrator final ack: do not amend `PROOF.md` beyond existing historical z≥4⇒g=2 claim invalidated status
 - [x] Orchestrator final ack: no program continuity center change unless user asks
 
 ## Unresolved (must stay labeled unresolved)
 
-- Any replacement residual forcing rule after Super-Signal and leftness necessity fail.
+- Any replacement residual forcing rule after residual-class and leftness necessity fail.
 - H-210 / H-tau>16 survivors at higher scale: **hypothesis / measured-on-regime only** until a named surface; **verified** requires executed `10^18`.
 - Whether a different non-leftmost min-`tau` operationalization (for example random among ties) changes comparative counts.
 - Whether rightmost min-`tau` remains zero-mismatch beyond `2.5e7` (measured absence only, not a theorem).

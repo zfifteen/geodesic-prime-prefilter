@@ -15,7 +15,7 @@ On the decisive regime `left prime p in [11, 2.5e7]` (1,565,923 consecutive gaps
 
 The share's own disconfirmation clause is met:
 
-1. GWR carries `z >= 4` with `g > 2` on the two pinned Super-Signal counterexamples (already in `PROOF.md`).
+1. GWR carries `z >= 4` with `g > 2` on the two pinned mod30-adjacent counterexamples (already in `PROOF.md`).
 2. Alternative (a) produces **strictly fewer** mismatches than leftmost-min (`0 < 2`).
 
 So leftmost position is **not** necessary for low mismatch count under the modular zero threshold. On this surface the rightmost min-`tau` probe is strictly cleaner than GWR. First-interior (b) is much worse, so tau-minimization still matters; leftmost bias does not.
@@ -131,7 +131,7 @@ H-comparative on this regime: **falsified_zero_mismatch_arm** (alt-A has zero mi
 | alt_a_unique_only | 4919 | 4919 | 0 | 1.0 |
 | alt_b_first | 18627 | 4919 | 13708 | 0.264079 |
 
-Same comparative kill of the "alt-A must mismatch" arm. Matches historical Super-Signal residual surface (GWR FPs appear only after 2e6).
+Same comparative kill of the "alt-A must mismatch" arm. Matches historical historical z≥4⇒g=2 claim residual surface (GWR FPs appear only after 2e6).
 
 ### Regime D (decisive): `p in [11, 2.5e7]`, 1565923 gaps
 
@@ -163,7 +163,7 @@ Gaps where rightmost min differs from GWR: **987,444** of 1,565,923.
 
 3. **Tau minimization still matters.** First-interior produces a huge mismatch load. The share is right that a non-minimal probe loses sufficiency. It is wrong that **leftmost** among minima is what creates the incompatibility.
 
-4. **Mechanism note (hypothesis-level, not theorem):** Super-Signal false positives sit on min-`tau` **ties** where the leftmost min is highly divisible by the primorial bases and a later min-`tau` point is not. Leftmost bias is what *creates* those particular mismatches, opposite to the share's causal story.
+4. **Mechanism note (hypothesis-level, not theorem):** z4 false positives sit on min-`tau` **ties** where the leftmost min is highly divisible by the primorial bases and a later min-`tau` point is not. Leftmost bias is what *creates* those particular mismatches, opposite to the share's causal story.
 
 5. **What survives:** GWR as a proved maximizer theorem; modular zero lemma; measured fact that min-`tau` witnesses with high `z` are often twins on finite regimes. None of that restores the insight's "leftmost is necessary for forcing" claim.
 

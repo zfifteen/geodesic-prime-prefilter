@@ -38,7 +38,7 @@ Examples from the salvage:
 | `{2, 3, 5}` | 30 |
 | `{2, 3, 5, 7}` | 210 |
 
-In the Super-Signal remainder vector, zeros on positions that force
+In the historical z≥4⇒g=2 claim remainder vector, zeros on positions that force
 `30 | w` already place the GWR seat on a 30-smooth modular class
 (proved modular lemma on `M_v1` in `PROOF.md`).
 
@@ -105,7 +105,7 @@ both `P#k +/- 1` holds only in a tiny regime (roughly through `30`). At
 `210` and above, residual is nonempty and grows quickly.
 
 **Implication:** ERMC explains the 29/31 twin toy cleanly. It is **not** a
-scalable Super-Signal replacement and must not be written as one.
+scalable historical z≥4⇒g=2 claim replacement and must not be written as one.
 
 ## Residual-open versus modular-closed (PGS state language)
 
@@ -133,7 +133,7 @@ carrier S from wheel W
 division as the generator path. Trial may appear only in audit sidecars or
 explicit classical comparison.
 
-## How this relates to Super-Signal and the CE
+## How this relates to historical z≥4⇒g=2 claim and the CE
 
 ### Surviving modular fact
 
@@ -146,7 +146,7 @@ z(w) >= 4  <=>  30 | w
 Proved in `PROOF.md`. The salvage's focus on "dense" multiples of small
 primes is adjacent to this modular seat, not a replacement for it.
 
-### Why Super-Signal still dies
+### Why historical z≥4⇒g=2 claim still dies
 
 The invalidated claim was:
 
@@ -201,7 +201,7 @@ emitting likelihood.
 | --- | --- |
 | ERMC implication (empty residual => prime) | proved as elementary certificate (classical) |
 | Residual-open / modular-closed partition language | design object for this chapter |
-| Use of residual partition to restore Super-Signal | **invalidated / not adopted** |
+| Use of residual partition to restore historical z≥4⇒g=2 claim | **invalidated / not adopted** |
 | Soft density salvage as inference | **rejected** |
 
 Next: buildable candidates and forbidden paths in

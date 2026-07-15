@@ -15,7 +15,7 @@ This report cross-examines pinned artifacts only. It does not re-collect data, e
 | Lane | Agent ID | Integrity verdict | Strongest defensible claim |
 |------|----------|-------------------|----------------------------|
 | Interior `R(n,M)` | `interior_rnm` | **Confirmed** (scaled surface) | 114,154 gaps; GWR-last 13.86%; MI 0.057; echo repeats 0 |
-| GWR Super-Signal | `super_signal_status` | **Epistemically open** (G2) | Measured: 3,842 GWR 4+ zero cases, all `g=2`; proof gaps remain |
+| Modular remainder zeros | `modular_remainder_status` | **Modular lemma proved** | Measured: 3,842 GWR 4+ zero cases on 1.5e6; modular $z\ge4\Leftrightarrow 30\mid w$ proved |
 | Endpoint `q mod` | `endpoint_mask` | **Confirmed** (two regimes, do not merge) | Fresh simple cert: 23.73%; hourly propagated mask ref: 100% |
 | `p mod 30` ridge | `mod30_ridge` | **Confirmed** (regime-specific) | Fresh 200k: global right-share 0.193; pinned 1e6 `p≡13` lift 1.576× |
 | State-budget cells | `state_budget` | **Inconclusive** | mod30: 230 decisive pairs, +40 advantage, verdict unresolved |
@@ -30,7 +30,7 @@ This report cross-examines pinned artifacts only. It does not re-collect data, e
 1. **Lane detectives** (six IDs in `DETECTIVE_TEAM_MANIFEST.md`) each audited one Super Team lane.
 2. **Evidence chain:** Super Team manifest → `SUPER_TEAM_RUN.json` / `RUN_LOG.json` → lane summary JSON → primary collector output.
 3. **Numeric spot-checks:** Seven claims verified by `forensic_verify.py` against primary JSON (see Verification section).
-4. **Epistemic audit:** Reconciled `PROOF.md` theorem wording vs theorem-stack table vs `README.md` marketing vs `goals.md` G2 open items.
+4. **Epistemic audit:** Reconciled modular zero lemma status in `PROOF.md` with measured remainder-lane counts.
 
 ### Gap-count semantics (canonical: not a contradiction)
 
@@ -69,8 +69,8 @@ python research/remainders/collect_remainder_stats.py \
 | MI(num_zeros, dist_bin) | 0.0568 (norm 0.0498) | `mi_num_zeros_vs_dist_bin` | **Confirmed**: weak signal |
 | Spearman(entropy, g) | 1.0000 | `spearman_entropy_vs_g` | **Confirmed**: definitional (entropy bins track g) |
 | GWR zero − gap avg | −0.670 | `avg_gwr_zero_minus_gap_avg` | **Confirmed** |
-| Super-signal @ GWR (4+ zeros) | 3,842 cases | `super_signal_at_gwr_count` | **Confirmed** |
-| All super-signal GWR in g=2 | 3,842 / 3,842 | `g2_with_super_signal_gwr` | **Confirmed**: conditional, not converse |
+| z4 residual @ GWR (4+ zeros) | 3,842 cases | `z4_at_gwr_count` | **Confirmed** |
+| GWR with 4+ zeros in g=2 (1.5e6) | 3,842 / 3,842 | `g2_with_z4_gwr` | **Confirmed**: measured conditional only |
 | Late echo repeats (vec[:6]) | 0 gaps | `repeat_stats.gaps_with_late_repeats` | **Confirmed** |
 | mod-2 even fraction | 0.541 | `mod2_even_fraction` | **Confirmed** |
 
@@ -78,43 +78,35 @@ python research/remainders/collect_remainder_stats.py \
 
 - Surface meets ≥10⁵ gap threshold (114,154 > 100,000). Legacy 1e6 surface (78,497 gaps) remains valid for cross-regime comparison.
 - GWR-last rate varies by regime: ~31% (tiny_val 108 gaps), ~14.2% (1e6), **13.86%** (1.5e6). Range is **measured**, not inconsistent counting.
-- Super-signal count (3,842) is a **subset** of GWR-last cases (15,824): rate `super_signal_at_gwr_rate` = 0.0337 among all gaps.
+- z4 residual count (3,842) is a **subset** of GWR-last cases (15,824): rate `z4_at_gwr_rate` = 0.0337 among all gaps.
 
 ### Lane verdict: **Confirmed** measured interior coordinate system; correlations are descriptive, not predictive theorems.
 
 ---
 
-## Lane 2: GWR Super-Signal (`super_signal_status`)
+## Lane 2: Modular remainder zeros (`modular_remainder_status`)
 
-**Detective:** `detective_super_signal`  
+**Detective:** `detective_modular_remainder`  
 **Super Team status:** `inline` (no subprocess)  
 **Primary artifacts:**
-- `research/remainders/correlations/investigation/super_signal_status.json`
-- `PROOF.md` § Twin-Prime Resonance
-- `docs/proof-enhancements/goals.md` G2
-- `README.md` § GWR Super-Signal
+- `research/remainders/correlations/investigation/modular_remainder_status.json`
+- `PROOF.md` § Modular zero lemma on remainder vector $M_{v1}$
 
 ### Forensic evidence table
 
 | Claim | Stated status | Source | Verdict |
 |-------|---------------|--------|---------|
-| Theorem-stack classification | `measured · corollary` | `super_signal_status.json`, `PROOF.md` table | **Confirmed** |
-| G2 open: 4+ zeros ⟺ mod 30 | Unproved exhaustive case | `super_signal_status.json` `open_g2_items` | **Epistemically open** |
-| G2 open: Step 3 informal | Needs explicit lemma | `goals.md` G2 | **Epistemically open** |
-| G2 open: No Lean mirror | : | `super_signal_status.json` | **Epistemically open** |
-| Measured: 4+ zeros @ GWR ⇒ all g=2 | 3,842 cases | `interior_placement_stats.json` | **Confirmed** (empirical) |
-| README: "absolute deterministic trigger" | Marketing language | `README.md` L96 | **Contradiction flagged**: overstates stack status |
+| Theorem-stack classification | `proved · modular lemma only` | `modular_remainder_status.json`, `PROOF.md` | **Aligned** |
+| Modular lemma $z\ge 4 \Leftrightarrow 30\mid w$ | proved case analysis | `PROOF.md` | **Confirmed** |
+| Measured: 4+ zeros @ GWR on 1.5e6 | 3,842 cases | `interior_placement_stats.json` | **Confirmed** (empirical surface only) |
+| Gap-size lock from remainder zeros | not in theorem stack | `PROOF.md` | **Confirmed absent** |
 
-### Internal contradiction (explicit)
+**Reconciled classification:**
+- **Proved:** modular zero lemma on fixed $M_{v1}$ only.
+- **Measured:** finite-surface counts of high-zero GWR witnesses.
+- **Not claimed:** any twin-gap or gap-size implication from remainder zeros.
 
-`PROOF.md` presents a full **Theorem** block with □ conclusion for Twin-Prime Resonance, while the same document's theorem-stack row and `super_signal_status.json` classify it as **`measured · corollary`**. `README.md` further claims an "absolute deterministic trigger" from 1M-gap measurement.
-
-**Reconciled classification (detective ruling):**
-- **Empirical observation (confirmed):** On the 1.5e6 surface, every GWR record with 4+ remainder zeros occurs in `g=2` gaps (3,842/3,842).
-- **Logical converse (not established):** High resonance does not predict termination in general; only documents the conditional in twin gaps.
-- **Proof status:** **Epistemically open** pending G2: either harden sub-claims or reclassify prose in `PROOF.md` / `README.md`.
-
-### Lane verdict: **Epistemically open**: strong measured conditional; proof/marketing misaligned with stack.
+### Lane verdict: **Modular lemma proved**; finite placement counts measured only.
 
 ---
 
@@ -294,13 +286,12 @@ Sources: `research/remainders/correlations/CORRELATION_REPORT.md`, `interior_pla
 
 | Source | What it claims | Stack truth | Detective ruling |
 |--------|----------------|-------------|------------------|
-| `PROOF.md` §627 to 655 | Full theorem + □ for Super-Signal | Table: `measured · corollary` | **Contradiction**: body overclaims vs stack |
-| `docs/proof-enhancements/goals.md` G2 | Harden or reclassify | Open checklist | **Epistemically open**: authoritative remediation path |
+| `PROOF.md` modular zero lemma | $z\ge 4 \Leftrightarrow 30\mid w$ on $M_{v1}$ | proved, modular only | **Aligned** |
+| `modular_remainder_status.json` | `proved · modular lemma only` | matches `PROOF.md` | **Aligned** |
 | `REMAINDER_LANES_SYNTHESIS.md` | Six-lane measured inventory | Aligned | **Confirmed** honest framing |
-| `README.md` L92 to 96 | "Absolute deterministic trigger" | Not in theorem stack | **Contradiction**: downgrade language recommended |
-| `super_signal_status.json` | `measured · corollary` + G2 items | Canonical for lane | **Confirmed** |
+| Finite 1.5e6 z4@GWR counts | 3,842 cases | measured surface only | **Confirmed** empirical |
 
-**Reconciled rule:** Measured conditionals (3,842/3,842 g=2) may be cited as **empirical**. Wording implying universal deterministic trigger must be tagged **`measured · corollary`** until G2 closes.
+**Reconciled rule:** Cite the modular zero lemma as proved. Cite finite high-zero GWR counts as measured on the named surface. Do not promote finite empty false-positive counts into a gap-size theorem.
 
 ---
 
@@ -309,7 +300,7 @@ Sources: `research/remainders/correlations/CORRELATION_REPORT.md`, `interior_pla
 | Agent | Collector | Status | Returncode |
 |-------|-----------|--------|------------|
 | `interior_rnm` | `collect_remainder_stats.py` | streamed | n/a |
-| `super_signal_status` | inline orchestrator | inline | n/a |
+| `modular_remainder_status` | inline orchestrator | inline | n/a |
 | `endpoint_mask` | `endpoint_residue_probe.py` | ok | **0** |
 | `mod30_ridge` | `mod30_ridge_probe.py` | ok | **0** |
 | `state_budget` | `state_budget_residue_matched_pair_test.py` | ok | **0** |
@@ -332,7 +323,7 @@ Fresh probes executed 2026-07-07T23:06Z (endpoint, mod30). Interior streamed fro
 
 1. **Interior coordinate:** `R(n,M_v1)` is a reproducible attachment to each interior record; weak MI(zeros, termination) ≈ 0.057 at 1.5e6.
 2. **GWR-last baseline:** ~14% of gaps (regime-dependent); not driven by late echo repeats at scale ≤1.5e6.
-3. **Super-signal conditional:** 4+ zeros at GWR ⇒ observed only in `g=2` (3,842 cases); empirical, not yet promoted to universal theorem.
+3. **z4 residual counts:** 4+ zeros at GWR on the 1.5e6 surface: 3,842 cases (measured only; modular lemma is separate and proved).
 4. **Mod-30 ridge:** Left-prime residue modulates right-edge share (e.g. p≡13 lift 1.576× @ 1e6).
 5. **Endpoint acceleration:** Propagated 96-open mask achieves 100% in-window resolution at 10^13 (reference); simple per-candidate cert ~24%.
 
@@ -350,7 +341,7 @@ Fresh probes executed 2026-07-07T23:06Z (endpoint, mod30). Interior streamed fro
 
 - Scales: 1.5e6 interior, 200k ridge fresh, 10k endpoint @ 10^13, 980 RSA toys.
 - No predictive ML or held-out validation in this Super Team pass.
-- Super-Signal proof/marketing gap (G2) blocks treating resonance as proved trigger.
+- Finite high-zero GWR counts are not a gap-size theorem.
 
 ---
 
@@ -358,8 +349,8 @@ Fresh probes executed 2026-07-07T23:06Z (endpoint, mod30). Interior streamed fro
 
 | Priority | Probe | Open question | Artifacts / command |
 |----------|-------|---------------|---------------------|
-| **P1** | G2 remediation | Prove 4+zeros⟺mod30 + Step 3 lemma, or reclassify `PROOF.md`/`README.md` | `docs/proof-enhancements/goals.md`, `super_signal_status.json` |
-| **P2** | Super-signal converse | Does g=2 twin gap always show 4+ zeros at GWR? (not measured here) | `interior_placement_stats.json`, extend collector |
+| **P1** | Modular lemma Lean mirror | Optional formalization of $z\ge4\Leftrightarrow 30\mid w$ on $M_{v1}$ | `PROOF.md`, `modular_remainder_status.json` |
+| **P2** | z4 residual converse | Does g=2 twin gap always show 4+ zeros at GWR? (not measured here) | `interior_placement_stats.json`, extend collector |
 | **P3** | Endpoint regime bridge | Quantify gap between 23.7% simple cert vs 100% propagated mask | `endpoint_lane_summary.json`, hourly doc |
 | **P4** | Ridge scale stability | Does p≡13 lift 1.576× persist at 1.5e6? | `mod30_ridge_probe.py --max-p 1500000` |
 | **P5** | State-budget resolution | Pre-register decisive-pair threshold; hold-out cells | `state_budget_lane_summary.json` |
@@ -376,7 +367,7 @@ python research/remainders/forensic_verify.py
 python -m pytest research/remainders/test_forensic_report.py -q
 ```
 
-Spot-checked numerics (primary JSON): `gaps_with_interiors=114154`, `gwr_last_rate≈0.1386`, `super_signal_at_gwr_count=3842`, `resolved_in_mask_fraction=0.2373`, `p≡13 right_lift=1.576×`, `mod30_decisive_pairs=230`, `best_factor_reach_recall=0.0`.
+Spot-checked numerics (primary JSON): `gaps_with_interiors=114154`, `gwr_last_rate≈0.1386`, `z4_at_gwr_count=3842`, `resolved_in_mask_fraction=0.2373`, `p≡13 right_lift=1.576×`, `mod30_decisive_pairs=230`, `best_factor_reach_recall=0.0`.
 
 ---
 

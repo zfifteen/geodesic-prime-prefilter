@@ -64,18 +64,12 @@ integer read, it does not replace the explicit formula proof machinery.
 
 ---
 
-## Super-signal hook (labeled, invalidated)
+## Modular zero lemma (supporting, not a twin-gap lock)
 
-The former Super-Signal claim was: when GWR witness $w$ has high primorial
-resonance ($w\equiv 0\pmod{30}$, 4+ remainder zeros), the gap terminates
-immediately ($q=w+1$). That universal twin-gap lock is **invalidated**
-([RH-005](../FINDINGS_INDEX.md); CEs $p=17666309$, $p=22284029$). Resonance
-remains a **measured pattern** in small regimes only, not a proved local
-termination of the oscillatory correction.
-
-Status: **invalidated** at L1 for the twin-gap implication; modular
-$z\ge 4\Leftrightarrow 30\mid w$ still proved; any L6 interpretive link is
-`narrative` only.
+On the fixed remainder vector $M_{v1}=\{2,3,5,7,30,210,2310\}$, four or more
+zeros occur if and only if $30\mid w$ ([RH-005](../FINDINGS_INDEX.md);
+`PROOF.md`). This is a modular lattice fact. It does not assert a gap-size
+lock and does not terminate the L6 oscillatory correction.
 
 ---
 

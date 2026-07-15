@@ -15,7 +15,7 @@ Mismatch (decision failure of "z >= 4 forces g = 2"):
   z(w) >= 4 and g > 2
 
 Status:
-  H-absolute (GWR Super-Signal universal): already invalidated in PROOF.md;
+  H-absolute (modular remainder facts universal): already invalidated in PROOF.md;
     reconfirmed here if any GWR mismatch appears.
   H-comparative: hypothesis until this probe reports measured outcomes.
 
@@ -36,7 +36,7 @@ MODULI = (2, 3, 5, 7, 30, 210, 2310)
 HERE = Path(__file__).resolve().parent
 ZERO_THRESHOLD = 4
 
-# Pinned Super-Signal counterexamples (PROOF.md certificates).
+# Pinned mod30-adjacent counterexamples (PROOF.md certificates).
 PINNED_GWR_CE = (
     {"p": 17_666_309, "q": 17_666_317, "g": 8, "w": 17_666_310, "z": 4},
     {"p": 22_284_029, "q": 22_284_037, "g": 8, "w": 22_284_030, "z": 4},
@@ -234,7 +234,7 @@ def run_probe(
 
     # H-absolute is already globally invalidated in PROOF.md.
     # Regime labels only reconfirm or note that known CEs lie outside the window.
-    # Never emit "not_falsified_in_tested_regime" for H-absolute (that reopens Super-Signal).
+    # Never emit "not_falsified_in_tested_regime" for H-absolute (that reopens historical z≥4⇒g=2 claim).
     pinned_in_regime = [ce for ce in PINNED_GWR_CE if ce["p"] <= p_max]
     if m_gwr > 0:
         h_absolute_status = "invalidated_reconfirmed_on_regime"
@@ -315,7 +315,7 @@ def run_probe(
                 "status": h_absolute_status,
                 "gwr_mismatch_count": m_gwr,
                 "note": (
-                    "Universal Super-Signal already invalidated in PROOF.md. "
+                    "Universal z4 twin lock already invalidated in PROOF.md. "
                     "Status enum is always invalidated_*; never reopened as open "
                     "on regimes that miss the pinned CEs."
                 ),

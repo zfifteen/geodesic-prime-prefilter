@@ -19,7 +19,7 @@ def test_zcount_on_multiple_of_30() -> None:
 
 
 def test_pinned_ce_gwr_is_mismatch() -> None:
-    """Pinned Super-Signal CE must classify as GWR mismatch."""
+    """Pinned mod30-adjacent CE must classify as GWR mismatch."""
     ce = PINNED_GWR_CE[0]
     hard = ce["q"] + 10
     tau = divisor_counts(hard)

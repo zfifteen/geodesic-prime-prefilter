@@ -1,0 +1,10 @@
+{
+  "lane": "modular_remainder",
+  "theorem_stack_status": "proved · modular lemma only",
+  "reference": "PROOF.md §Modular zero lemma on remainder vector M_v1",
+  "notes": [
+    "z >= 4 iff 30 | w on fixed M_v1 vector (proved case analysis)",
+    "No gap-size lock or twin-gap implication is part of the theorem stack",
+    "Optional Lean target: modular lemma only"
+  ]
+}

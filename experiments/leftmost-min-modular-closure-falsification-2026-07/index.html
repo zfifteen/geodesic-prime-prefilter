@@ -162,7 +162,7 @@ a { color: var(--accent); }
   <p style="margin:0.75rem 0 0">
     <span class="tag inv">invalidated</span>
     Absolute forcing <code>z(GWR) &gt;= 4 =&gt; g = 2</code> remains dead
-    (<code>PROOF.md</code> Super-Signal; reconfirmed here).
+    (<code>PROOF.md</code> historical z≥4⇒g=2 claim; reconfirmed here).
   </p>
   <p style="margin:0.75rem 0 0">
     <span class="tag inv">falsified</span>
@@ -172,7 +172,7 @@ a { color: var(--accent); }
   </p>
   <p style="margin:0.75rem 0 0">
     <span class="tag meas">mechanism</span>
-    Both Super-Signal counterexamples are multi-way min-tau ties: leftmost hits
+    Both mod30-adjacent counterexamples are multi-way min-tau ties: leftmost hits
     <code>z = 4</code>, rightmost hits <code>z = 1</code>. Leftmost bias creates
     those mismatches on this surface.
   </p>
@@ -205,7 +205,7 @@ a { color: var(--accent); }
 <p>
   What the decisive surface shows instead: when several interiors share the same
   minimum tau, the leftmost of them can sit on a highly divisible primorial-aligned
-  point while a later min-tau point does not. On the two known Super-Signal false
+  point while a later min-tau point does not. On the two known historical z≥4⇒g=2 claim false
   positives, leftmost is the bad modular witness and rightmost is not.
 </p>
 
@@ -213,7 +213,7 @@ a { color: var(--accent); }
 <ul>
   <li><strong>GWR / Leftmost Minimum-Divisor Rule:</strong> leftmost interior <code>n</code> achieving min <code>tau</code>.</li>
   <li><strong>Remainder-zero count <code>z(w)</code>:</strong> how many moduli in <code>M_v1</code> divide <code>w</code>.</li>
-  <li><strong>Super-Signal (historical):</strong> universal claim <code>z(GWR) &gt;= 4 =&gt; g = 2</code>.</li>
+  <li><strong>z4 twin lock (historical packaging):</strong> universal claim <code>z(GWR) &gt;= 4 =&gt; g = 2</code>.</li>
   <li><strong>Selectors:</strong>
     GWR (leftmost min-tau);
     alt-A (rightmost min-tau);
@@ -336,7 +336,7 @@ python3 experiments/leftmost-min-modular-closure-falsification-2026-07/probe_sel
     <code>p=22284029</code>, <code>q=22284037</code>, <code>g=8</code>, GWR <code>w=22284030</code>, <code>tau=16</code>, <code>z=4</code>
   </p>
   <p style="margin:0.65rem 0 0">
-    Both are Super-Signal certificates in <code>PROOF.md</code>.
+    Both are historical z≥4⇒g=2 claim certificates in <code>PROOF.md</code>.
     Min-tau is tied across several interiors.
     Leftmost min hits the high-z witness; rightmost min picks a different min-tau
     point with <code>z = 1</code> (no mismatch). Unique-only declines to fire (ties &gt; 1).
@@ -385,7 +385,7 @@ python3 experiments/leftmost-min-modular-closure-falsification-2026-07/probe_sel
     <tr>
       <td>Mechanism note</td>
       <td><span class="tag hyp">hypothesis</span> / <span class="tag meas">measured</span></td>
-      <td>Super-Signal FPs sit on min-tau ties where leftmost is highly divisible and a later min is not. Causal "leftmost creates incompatibility" story from the share does not hold as stated.</td>
+      <td>z4 FPs sit on min-tau ties where leftmost is highly divisible and a later min is not. Causal "leftmost creates incompatibility" story from the share does not hold as stated.</td>
     </tr>
     <tr>
       <td>Implementation</td>

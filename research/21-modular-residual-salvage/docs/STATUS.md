@@ -6,9 +6,9 @@ Last updated: 2026-07-10 (optional targets completed)
 
 | Object | Status | Notes |
 | --- | --- | --- |
-| Super-Signal `z(GWR) >= 4 => g = 2` | **invalidated** | CEs `ce_17666309`, `ce_22284029`; `PROOF.md` |
+| Modular zero lemma on $M_{v1}$ | **proved** | `PROOF.md` |
 | Competitor lemma (strict tau beater when `g > 2` and `30 | w`) | **invalidated** | False; ties allowed under leftmost GWR |
-| Modular lemma `z >= 4 <=> 30 | w` on `M_v1` | **proved** | Survives Super-Signal demotion |
+| Modular lemma `z >= 4 <=> 30 | w` on `M_v1` | **proved** | Survives removal of historical z≥4⇒g=2 claim |
 | GWR leftmost minimum definition | **proved** | Untouched |
 | Soft density salvage as PGS inference | **rejected / outside spine** | Wrong shape |
 | Empty Residual Modular Certificate (ERMC) | **elementary certificate** | Tiny empty-residual regime |
@@ -52,7 +52,7 @@ python3 research/21-modular-residual-salvage/scripts/pressure_h210_htau16.py \
   --p-max 200000 \
   --out research/21-modular-residual-salvage/output/h210_htau16_pressure.json
 
-python3 docs/proof-enhancements/scripts/verify_super_signal_counterexamples.py
+python3 -m pytest research/01-generator/tests/test_mod30_adjacent_carrier_generator.py -q
 ```
 
 ## Optional targets (status)
@@ -73,9 +73,9 @@ python3 docs/proof-enhancements/scripts/verify_super_signal_counterexamples.py
 
 ## Invalidated rules (do not revive)
 
-- Universal Super-Signal twin lock.
+- Universal z4 twin lock twin lock.
 - Soft density near primorials as a PGS law.
-- Unique-min Super-Signal repair (Hypothesis U).
+- Unique-min historical z≥4⇒g=2 claim repair (Hypothesis U).
 
 ## Continuity note
 

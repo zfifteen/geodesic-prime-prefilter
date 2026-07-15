@@ -15,16 +15,14 @@ finite certificates, and classical imports.
 | Universal bounded compression | Headline §3 | GWR; finite bases; square branch | CL-001 (gap bounds) |
 | Prime-Square Proximity | §Prime-Square Proximity | Near-root exclusion; modulus-link | CL-001 |
 
-## Corollaries (not headline pillars)
+## Supporting modular lemmas (not headline pillars)
 
 | Claim | PROOF.md anchor | Depends on | Status |
 | --- | --- | --- | --- |
-| Twin-Prime Resonance (GWR Super-Signal) universal implication | §Twin-Prime Resonance | GWR winner + remainder zeros | **invalidated** (CE certificates 2026-07-09) |
-| Modular zero lemma on $M_{v1}$ | §Twin-Prime Resonance (surviving) | remainder-vector case analysis | proved; not a twin-gap lock |
+| Modular zero lemma on $M_{v1}$ | §Modular zero lemma on remainder vector $M_{v1}$ | remainder-vector case analysis | proved; modular fact only |
 
-The universal Super-Signal twin-gap implication is **invalidated**. The modular
-lemma $z(w)\ge 4 \Leftrightarrow 30\mid w$ on $M_{v1}$ survives. Super-Signal
-is not a premise for the three headline pillars.
+The modular lemma $z(w)\ge 4 \Leftrightarrow 30\mid w$ on $M_{v1}$ is not a
+premise for the three headline pillars and asserts no gap-size lock.
 
 ## Finite-certified premises
 

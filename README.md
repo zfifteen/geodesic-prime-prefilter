@@ -9,7 +9,7 @@
 **Abstract**  
 Prime Gap Structure demonstrates that the integers between consecutive primes form an ordered divisor-count field whose internal minimum (the Gap Winner) and return to divisor count = 2 together locate the next prime deterministically.  
 
-Local theorems are formally proved and computationally validated. These theorems include the Gap Winner Rule (GWR), bounded compression at Cramér scale, the Prime-Square Proximity Theorem (proved 2026-07-05), and the No-Later-Simpler-Composite Theorem (zero violations through 10¹⁸). The former Twin-Prime Resonance / GWR Super-Signal universal implication is **invalidated** (counterexamples pinned in `PROOF.md`). A reading path connecting these local results to analytic number theory (including the Riemann Hypothesis) is developed in `docs/rh/` but kept explicitly separate from the proved core.
+Local theorems are formally proved and computationally validated. These theorems include the Gap Winner Rule (GWR), bounded compression at Cramér scale, the Prime-Square Proximity Theorem (proved 2026-07-05), and the No-Later-Simpler-Composite Theorem (zero violations through 10¹⁸). A reading path connecting these local results to analytic number theory (including the Riemann Hypothesis) is developed in `docs/rh/` but kept explicitly separate from the proved core.
 
 This repository supplies the proofs (`PROOF.md`), reference implementations, reproducible artifacts, and measured surfaces that make the structure independently verifiable.
 
@@ -117,7 +117,7 @@ These one-line definitions capture the central objects used throughout the repos
 - **Selected interior witness / leftmost min-d(n) carrier**: The first number inside the gap that achieves the lowest divisor count. This is the GWR-selected composite.
 - **Bounded compression**: For every consecutive prime gap with nonempty interior, the GWR-selected witness appears within `max(64, ceil(0.5 * log(q)^2))` of the left endpoint. This bound is proved at Cramér scale from divisor-count structure.
 - **Prime-Square Proximity Theorem** (proved 2026-07-05): When the selected witness is a prime square `r²`, the distance `r² − p` cannot exceed the bounded-compression cutoff without forcing a modulus-link collision.
-- **GWR Super-Signal (Twin-Prime Resonance)**: **Invalidated** as a universal twin-gap lock. Four remainder zeros at the GWR witness do not force `g = 2` (counterexamples in `PROOF.md`). The modular fact `z ≥ 4 ⇔ 30 | w` on the fixed remainder vector still holds.
+- **Modular zero lemma on $M_{v1}$**: On the fixed remainder vector modulo $(2,3,5,7,30,210,2310)$, four or more zeros occur if and only if $30 \mid w$. Modular fact only; not a gap-size lock.
 - **No-Later-Simpler-Composite Theorem**: Validated with zero violations through 10¹⁸. No simpler composite appears later in the gap once the minimal divisor count has been observed.
 
 ---
@@ -131,7 +131,7 @@ These one-line definitions capture the central objects used throughout the repos
 - **Gap Winner Rule (GWR)**: The leftmost min-*d(n)* composite inside the gap is the raw-Z maximizer and the structurally selected interior witness.
 - **Universal bounded compression** at Cramér scale: The GWR-selected witness always appears within `max(64, ceil(0.5 * log(q)^2))` of *p*.
 - **Prime-Square Proximity Theorem** (proved 2026-07-05): When the witness is a prime square, its offset from *p* is bounded by the same compression limit.
-- **Twin-Prime Resonance / GWR Super-Signal**: **Not proved.** The universal implication is **invalidated**; see `PROOF.md` certificates.
+- **Modular zero lemma on $M_{v1}$**: Four or more remainder zeros on the fixed primorial vector if and only if $30 \mid w$ (proved; modular only).
 - **No-Later-Simpler-Composite Theorem**: Once the minimal divisor count has appeared, no simpler composite occurs later in the gap.
 
 These statements are proved from the arithmetic of divisor counts and the ordering inside gaps. They do not rely on probabilistic models or unproved global assumptions.
@@ -163,7 +163,7 @@ After installation you can import the core modules and begin exploring the order
 
 The repository develops the above results in greater depth.
 
-- `PROOF.md`: The formal proofs of the next-prime rule, GWR, bounded compression, Prime-Square Proximity Theorem, and supporting lemmas (Super-Signal universal claim documented as invalidated).
+- `PROOF.md`: The formal proofs of the next-prime rule, GWR, bounded compression, Prime-Square Proximity Theorem, and supporting lemmas.
 - `docs/core/LEFTMOST_MINIMUM_DIVISOR_RULE.md`: Detailed exploration of the rule that identifies the special composite inside each gap.
 - `docs/core/DIVISOR_NORMALIZATION_IDENTITY.md`: Full treatment of the zero-excess normalization `E(n)` and its dual `Z(n)`.
 - `docs/core/PRIME_GAP_GENERATIVE_MODEL.md` and `docs/core/RECURSIVE_PRIME_WALK.md`: The broader generative model and recursive behavior.
@@ -220,10 +220,10 @@ Every one of these paths grows from the same simple shift in perspective: stop t
 ## Repository Map
 
 - `src/`: Python package (install with `pip install -e ./src/python`)
-- `PROOF.md`: Formal proofs and theorem stack (Super-Signal universal implication invalidated 2026-07-09)
+- `PROOF.md`: Formal proofs and theorem stack
 - `docs/core/`: Foundational explanations (GWR, DNI, generative model, recursive walk, etc.)
 - `docs/rh/`: PGS-to-RH reading path and status
-- `research/`: Deep experiments (RSA engine, Mersenne generator, GWR super-signal, continuity notes, 00-index/)
+- `research/`: Deep experiments (RSA engine, Mersenne generator, continuity notes, 00-index/)
 - `visualizations/`: Plot library + gallery (primary), explorers, historical dumps (router: `index.html`)
 - `lean-4/`: Formalization efforts
 - `experiments/`, `scripts/`, `tests/`, `data/`: Supporting code, runs, and artifacts

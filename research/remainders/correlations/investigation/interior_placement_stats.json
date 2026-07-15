@@ -4,9 +4,9 @@
   "gaps_with_interiors": 114154,
   "gwr_last_rate": 0.13861975927256162,
   "gwr_last_count": 15824,
-  "super_signal_at_gwr_count": 3842,
-  "super_signal_at_gwr_rate": 0.03365628887292605,
-  "g2_with_super_signal_gwr": 3842,
+  "z4_at_gwr_count": 3842,
+  "z4_at_gwr_rate": 0.03365628887292605,
+  "g2_with_z4_gwr": 3842,
   "mi_num_zeros_vs_dist_bin": {
     "mi": 0.05684728162947319,
     "n": 1385850,

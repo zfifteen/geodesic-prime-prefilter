@@ -10,7 +10,7 @@ Six lane detectives mirror the Super Team roster (`SUPER_TEAM_MANIFEST.md`). Eac
 | Detective ID | Lane audited | Primary evidence examined |
 |--------------|--------------|---------------------------|
 | `detective_interior` | Interior `R(n,M)` | `output/1.5e6/summary.json`, `interior_placement_stats.json` |
-| `detective_super_signal` | GWR Super-Signal (epistemic) | `super_signal_status.json`, `PROOF.md`, `goals.md` G2 |
+| `detective_modular_remainder` | modular remainder zeros (measured + modular lemma) | `modular_remainder_status.json`, `PROOF.md`, `PROOF.md modular zero lemma |
 | `detective_endpoint` | Endpoint `q mod` mask | `endpoint_residue_probe_fresh.json`, `endpoint_lane_summary.json` |
 | `detective_mod30` | Left-prime `p mod 30` ridge | `mod30_ridge_probe_fresh.json`, `mod30_ridge_lane_summary.json` |
 | `detective_state_budget` | State-budget residue cells | `state_budget_lane_summary.json` |

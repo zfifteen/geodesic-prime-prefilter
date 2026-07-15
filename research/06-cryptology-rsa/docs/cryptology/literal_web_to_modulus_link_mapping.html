@@ -102,7 +102,7 @@
     <h2>2. The Ordinary Mechanism (Why the Threads Cross)</h2>
     <p>Because $q$ is a prime number (and $q > 3$), it is wedged tightly between two highly composite numbers: $q-1$ and $q+1$.</p>
     
-    <p>By the fundamental properties of primes (and directly related to the Twin-Prime Resonance Theorem we formalized earlier), adjacent numbers $q \pm 1$ are guaranteed to absorb massive amounts of small prime divisibility. For instance, $q+1$ is always even (absorbing the thread for 2). Either $q-1$ or $q+1$ is heavily divisible by 3 (absorbing the thread for 3). </p>
+    <p>By the fundamental properties of primes, adjacent numbers $q \pm 1$ are guaranteed to absorb massive amounts of small prime divisibility. For instance, $q+1$ is always even (absorbing the thread for 2). Either $q-1$ or $q+1$ is heavily divisible by 3 (absorbing the thread for 3). </p>
 
     <p>When the visual geometry experiment demanded that threads from the left and right "cross" at $p$, it was unknowingly demanding that $p(q-1)$ and $p(q+1)$ contain small prime factors. It worked perfectly because <strong>they always do</strong>.</p>
 
@@ -124,8 +124,8 @@
     <div class="finding-box">
         <div class="finding-title">Implementation Plan (The Relaunch)</div>
         <p>1. <strong>Retire the array:</strong> Discard the <code>literal_web_hole_trace.py</code> script. Do not attempt to map arrays of size <code>6 * p</code>.<br>
-        2. <strong>Construct the Residual Vector:</strong> Take the RSA modulus $N$ and compute its remainder vector across the GWR Super-Signal bases (2, 3, 5, 7, 30, 210, 2310).<br>
-        3. <strong>Apply the Twin-Prime constraints:</strong> Calculate the exact offsets where the modulus-link residuals align with the forced composite constraints of $q \pm 1$.<br>
+        2. <strong>Construct the Residual Vector:</strong> Take the RSA modulus $N$ and compute its remainder vector across the primorial bases (2, 3, 5, 7, 30, 210, 2310).<br>
+        3. <strong>Apply the composite-adjacency constraints:</strong> Calculate the exact offsets where the modulus-link residuals align with the forced composite constraints of $q \pm 1$.<br>
         4. <strong>Emit the factor:</strong> The intersecting algebraic constraints directly reveal the distance to $p$ without any trial division or $O(\sqrt{N})$ geometric scanning.</p>
     </div>
 

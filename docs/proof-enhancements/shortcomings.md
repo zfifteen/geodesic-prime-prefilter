@@ -26,19 +26,15 @@ This step lacks:
 
 ---
 
-### 🔴 S2: Twin-Prime Resonance: competitor lemma invalidated (resolved as demotion)
+### ✅ S2: Modular remainder facts kept separate from twin-gap claims (resolved)
 
-**Location:** `PROOF.md` §Twin-Prime Resonance
+**Location:** `PROOF.md` §Modular zero lemma on remainder vector $M_{v1}$
 
-**Issue (historical):** Step 3 claimed that if $g>2$ and $30\mid w$, then some
-interior $n$ has $\tau(n)<\tau(w)$. That competitor lemma is **false**.
+**Resolution:** Only the modular lemma $z\ge 4 \Leftrightarrow 30\mid w$ on
+$M_{v1}$ remains in the proof surface. No twin-gap lock or remainder-zero
+termination rule is part of the theorem stack. GWR pillar unchanged.
 
-**Resolution (2026-07-09):** Universal Super-Signal implication demoted to
-**invalidated**. Pinned CEs: `ce_17666309`, `ce_22284029`. Modular lemma
-$z\ge 4 \Leftrightarrow 30\mid w$ retained. GWR pillar unchanged.
-
-**Impact:** Do not formalize the twin-gap lock in Lean. Optional Lean target:
-modular lemma only.
+**Impact:** Optional Lean target: modular lemma only.
 
 ---
 
@@ -159,13 +155,13 @@ Supporting scripts exist under `research/02-gwr-dni/scripts/proof/` but linkage 
 
 ---
 
-### ✅ P3: Twin-Prime Resonance not integrated into main proof spine
+### ✅ P3: Modular remainder lemmas kept off the main proof spine
 
-**Location:** §Twin-Prime Resonance
+**Location:** §Modular zero lemma on remainder vector $M_{v1}$
 
-**Issue:** Logical position relative to GWR unclear.
+**Issue:** Logical position of modular remainder facts relative to GWR unclear.
 
-**Resolution (2026-07-08):** `proof-spine.md` + PROOF.md logical-position paragraph (corollary of GWR). Resolved in #36.
+**Resolution:** Modular lemma kept as a supporting fact only; not a headline pillar.
 
 ---
 

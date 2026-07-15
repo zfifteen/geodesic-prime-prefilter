@@ -298,7 +298,7 @@ $w-p$. It does **not**:
 - `research/18-derived-half-coefficient/docs/FINDING_STATEMENT.md`. F18-001/002/003
 - `experiments/grok-share-509b8495/safari_transcript.txt`, deterministic replay transcript (provenance)
 - `docs/finite-verification-grok-509b8495.md`. F18-002 finite verification record
-- `research/twin-prime-resonance-technical-note-2026-07/TECHNICAL_NOTE.md`, bundle format reference
+- `PROOF.md bundle format reference
 
 ---
 

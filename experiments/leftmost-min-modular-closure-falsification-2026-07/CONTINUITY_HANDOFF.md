@@ -70,7 +70,7 @@ Decisive regime detail (`p in [11, 2.5e7]`):
 | alt-A unique-only | 43,168 | 43,168 | 0 | 1.0 |
 | alt-B first interior | 195,788 | 43,168 | 152,620 | 0.220483 |
 
-Pinned GWR mismatches (also Super-Signal certificates in `PROOF.md`):
+Pinned GWR mismatches (also historical z≥4⇒g=2 claim certificates in `PROOF.md`):
 
 ```text
 p=17666309  q=17666317  g=8  w=17666310  tau=16  z=4
@@ -106,7 +106,7 @@ Unit tests in package: **6** local tests (not a scale surface).
 
 Keep these labeled **unresolved** (or **hypothesis** / **measured-on-regime**):
 
-1. Any **replacement residual forcing rule** after Super-Signal and leftness
+1. Any **replacement residual forcing rule** after residual-class and leftness
    necessity both fail.
 2. Whether **rightmost** min-`tau` stays zero-mismatch **beyond** `2.5e7`
    (measured absence only; not a theorem).
@@ -150,7 +150,7 @@ Acceptance rules for that **new** package (sketch):
 
 ### What not to do next
 
-- Do not amend `PROOF.md` beyond existing Super-Signal **invalidated** status.
+- Do not amend `PROOF.md` beyond existing historical z≥4⇒g=2 claim **invalidated** status.
 - Do not route through May `core-insight-decisive-test` Stage 2.
 - Do not demote GWR maximizer or modular zero lemma.
 - Do not change program continuity center unless the user asks.

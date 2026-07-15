@@ -19,7 +19,7 @@ Not a clean full falsification of every residual sentence. The causal packaging 
 | Implementer | WEAKENED; residual endpoint/tie statement only |
 | Auditor | INVALIDATE framing of causal chain; NARROW FURTHER; block as new PGS law |
 | Verifier | Pred A definitional; Pred B survives at z4 on D; p+1-only z4 mass |
-| Scribe | Continuity for prior Super-Signal package; this package owns parity controls |
+| Scribe | Continuity for prior remainder residual package; this package owns parity controls |
 
 ## What was killed or definitionally collapsed
 
@@ -30,7 +30,7 @@ Not a clean full falsification of every residual sentence. The causal packaging 
 | General even interiors inflate z4 under GWR | **falsified (measured)** | All GWR z4 mass at `w = p+1`; other-even z4 = 0 on D |
 | Rightmost fewer mismatches as threshold-robust law | **falsified at z>=3 on fresh F** | F: left mm z3 335, right 357 |
 | Rightmost optimality / PGS selector law | **not claimed; rejected as law** | Sparse residual only |
-| Absolute Super-Signal `z(GWR)>=4 => g=2` | **invalidated** | Already `PROOF.md`; reconfirmed |
+| Absolute z4 twin lock `z(GWR)>=4 => g=2` | **invalidated** | Already `PROOF.md`; reconfirmed |
 
 ## What survives as measured residual only
 
@@ -50,11 +50,11 @@ On regimes D (`p in [11, 2.5e7]`, 1,565,923 gaps) and F (`p in (2.5e7, 5e7]`, 1,
 | Disconfirm (a) no even/odd difference | Not triggered (definitional difference exists) | Theater for "parity bias" insight |
 | Disconfirm (b) rightmost more mm | Not triggered at z4 | Does not prove rightmost law |
 
-Distinguishing signature in the user text (forced factor 2 at p+1) is **partly true as residual description** and **over-strong as causal novelty**: the operative modular object on the dead Super-Signal gate is `30 \| (p+1)`, not bare parity of arbitrary min-`tau` witnesses.
+Distinguishing signature in the user text (forced factor 2 at p+1) is **partly true as residual description** and **over-strong as causal novelty**: the operative modular object on the dead historical z≥4⇒g=2 claim gate is `30 \| (p+1)`, not bare parity of arbitrary min-`tau` witnesses.
 
 ## Allowed residual statement
 
-> Under gap-reading min-`tau` selection with residual metric `z >= 4` on `M_v1`, GWR false positives on tested regimes sit exclusively at left endpoint `p+1` on multi-way min-`tau` ties. Rightmost min-`tau` reduces (does not always eliminate) that z4 mismatch count. This is an endpoint / tie-break residual of an invalidated Super-Signal rule, not a general even-vs-odd preference among min-`tau` interiors, and not a proved selector law.
+> Under gap-reading min-`tau` selection with residual metric `z >= 4` on `M_v1`, GWR false positives on tested regimes sit exclusively at left endpoint `p+1` on multi-way min-`tau` ties. Rightmost min-`tau` reduces (does not always eliminate) that z4 mismatch count. This is an endpoint / tie-break residual of an invalidated historical z≥4⇒g=2 claim rule, not a general even-vs-odd preference among min-`tau` interiors, and not a proved selector law.
 
 ## Forbidden language (post-audit)
 
@@ -79,4 +79,4 @@ Distinguishing signature in the user text (forced factor 2 at p+1) is **partly t
 
 1. Stratify by `30 \| (p+1)` and min-`tau` tie rank (not parity alone).
 2. Pre-register effect-size thresholds; n is still small for z4 mm (2 on D, 3 on F leftmost).
-3. Do not optimize selectors against a dead Super-Signal residual as if it were a live PGS law.
+3. Do not optimize selectors against a dead historical z≥4⇒g=2 claim residual as if it were a live PGS law.

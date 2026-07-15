@@ -55,7 +55,7 @@ Or from tests: `test_official_127_audit_passes_on_first_passing_rung`.
   `experiments/live-solver/rsa-v2/ALGORITHM.md`.
 - Do **not** claim blind factorization or RSA break in artifacts.
 - Status separation: measured / audited only unless a new theorem is actually proved.
-- Super-Signal / twin-gap collapse: **out of scope** (0/12 on 127 corpus).
+- historical z≥4⇒g=2 claim / twin-gap collapse: **out of scope** (0/12 on 127 corpus).
 
 ## Execution log
 
@@ -253,7 +253,7 @@ PYTHONPATH=src/python python3 research/06-cryptology-rsa/scripts/pgs_geofac_scal
 | Fix 25% gap | Forensic probe **before** code; falsify seed hypothesis early |
 | Wire `C(q)` into windows | **Deferred** to Subgoal 5b only if 160-bit fails; integer offset ≠ bit width |
 | Scale corpus | **160-bit only** after 12/12; 256+ still prime-walk-only in harness |
-| Super-Signal | **Removed** from plan (irrelevant to semiprime track) |
+| historical z≥4⇒g=2 claim | **Removed** from plan (irrelevant to semiprime track) |
 | Parallel work | **Forbidden** on Subgoals 1 to 4 |
 | Acceptance at 75% | **Raise to 100%** once demonstrated; don't lower bar preemptively |
 | `_local_pgs_search` ignores `local_seed_budget` | Root bug; fixing is core of Subgoal 3 |
@@ -272,7 +272,7 @@ PYTHONPATH=src/python python3 research/06-cryptology-rsa/scripts/pgs_geofac_scal
 
 - RSA v2 reciprocal endpoint transport
 - Blind factoring / unknown-factor corpora
-- Twin-Prime Resonance generator optimization
+- modular remainder facts generator optimization
 - PROOF.md / Lean changes
 - `256+` scale-up recovery path (harness still router-only prime walk at ≥256)
 

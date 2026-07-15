@@ -729,37 +729,7 @@ r^2 - p <= max(64, ceil(0.5 * log(r^2)^2)).
 
 Because `r^2 < q`, this rigorously establishes the square-branch bounded-compression theorem.
 
-## Twin-Prime Resonance (GWR Super-Signal) — **invalidated**
-
-**Status (2026-07-09):** The **universal** implication
-
-$$
-z(w) \ge 4 \;\Longrightarrow\; g = 2
-$$
-
-is **invalidated**. It is **not** a proved corollary and must not be cited as one.
-
-**Logical position.** Historical packaging treated Super-Signal as a corollary of
-the [Interior Maximizer (GWR)](#interior-maximizer-theorem) winner definition
-plus remainder-vector analysis. That packaging is withdrawn for the twin-gap
-lock. The modular sub-lemma below survives. GWR itself is not demoted.
-
-**Certificates:**
-
-- [twin_prime_resonance_invalidated_v1.json](docs/proof-enhancements/certificates/twin_prime_resonance_invalidated_v1.json)
-- [ce_17666309.json](docs/proof-enhancements/certificates/counterexamples/ce_17666309.json)
-- [ce_22284029.json](docs/proof-enhancements/certificates/counterexamples/ce_22284029.json)
-- Repro: `python3 docs/proof-enhancements/scripts/verify_super_signal_counterexamples.py`
-
-### Historical claim (withdrawn)
-
-Let $G$ be a prime gap with interior $I = (p, q)$. Let $w \in I$ be the
-leftmost minimum divisor-count carrier (the GWR winner). Let $R(w)$ be the
-remainder vector of $w$ modulo the primorial bases $(2, 3, 5, 7, 30, 210, 2310)$.
-The withdrawn claim asserted: if $R(w)$ contains 4 or more zeros, then the gap
-size is $g=2$, and the next integer $w+1$ is identically the prime $q$.
-
-### Surviving modular lemma (proved)
+## Modular zero lemma on remainder vector $M_{v1}$
 
 **Lemma (4+ zeros on $M_{v1}$ iff $30 \mid w$).**
 Let the moduli be $M = \{2, 3, 5, 7, 30, 210, 2310\}$. A zero occurs at position
@@ -775,37 +745,15 @@ $30 = 2\cdot 3\cdot 5$, $210 = 2\cdot 3\cdot 5\cdot 7$.
 
 Hence $\ge 4$ zeros if and only if $30 \mid w$ on this fixed vector.
 
-### Broken competitor step (invalidated)
-
-The former competitor lemma claimed: if $g > 2$ and $w \equiv 0 \pmod{30}$,
-then there exists $n \in I$, $n \ne w$, with $\tau(n) < \tau(w)$.
-
-That lemma is **false**. GWR selects the **leftmost minimum**, not a unique
-strict minimum. Later interiors may **tie** $\tau(w)$ without beating it; the
-30-multiple can remain the GWR winner inside a non-twin gap.
-
-### Pinned counterexamples
-
-| $p$ | $q$ | $g$ | GWR $w$ | $\tau(w)$ | $z(w)$ |
-| ---: | ---: | ---: | ---: | ---: | ---: |
-| $17\,666\,309$ | $17\,666\,317$ | $8$ | $17\,666\,310$ | $16$ | $4$ |
-| $22\,284\,029$ | $22\,284\,037$ | $8$ | $22\,284\,030$ | $16$ | $4$ |
-
-On both gaps: $z(w) \ge 4$ is true, $g = 2$ is false. One valid counterexample
-suffices to kill the universal implication; two are pinned.
-
-### Measured residue (not a theorem)
-
-Finite scans can still show that resonant GWR witnesses are **often** twins
-below a stated bound (for example empty class-A false positives on
-$[11, 2\times 10^6)$). Empty finite scans do **not** restore universality and
-must not be written as proved twin-gap locks.
+This lemma is a modular fact on a fixed remainder vector. It does not assert any
+twin-gap lock, gap-size implication, or GWR termination rule.
 
 ### Implementation note
 
 Generator code may use a **guarded** truncation when $(p+1) \equiv 0 \pmod{30}$
 and $\tau(p+2)=2$. That is an implementation optimization with an explicit
-audit gate, not a citation of a proved Super-Signal theorem.
+audit gate: the bound shrinks only after the twin endpoint is confirmed by
+$\tau(p+2)=2$.
 
 ## Certified Finite Bases
 
@@ -881,7 +829,6 @@ listed separately.
 | Interior maximizer (GWR) | selected witness `w` | proved (`gwr_finite_base_v1` + analytic closure) | universal | in progress |
 | Prime-Square Proximity | `r^2 - p` on square branch | proved (analytic) | universal | in progress |
 | Universal bounded compression | selected-witness offset `w - p` | proved (`bounded_compression_base_v1`, `residual_k128_v1` + analytic closure) | universal | in progress |
-| Twin-Prime Resonance (Super-Signal) universal implication | $z(\mathrm{GWR})\ge 4 \Rightarrow g=2$ | **invalidated** (CE certificates) | withdrawn | n/a |
 | Modular zero lemma on $M_{v1}$ | $z(w)\ge 4 \Leftrightarrow 30\mid w$ | proved (case analysis) | vector $M_{v1}$ only | in progress |
 
 ### Certified finite premises

@@ -29,7 +29,7 @@ HERE = Path(__file__).resolve().parent
 ZERO_THRESHOLD_PRIMARY = 4
 ZERO_THRESHOLD_ALT = 3
 
-# Pinned Super-Signal counterexamples (PROOF.md certificates).
+# Pinned mod30-adjacent counterexamples (PROOF.md certificates).
 PINNED_GWR_CE = (
     {"p": 17_666_309, "q": 17_666_317, "g": 8, "w": 17_666_310, "z": 4},
     {"p": 22_284_029, "q": 22_284_037, "g": 8, "w": 22_284_030, "z": 4},

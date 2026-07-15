@@ -10,7 +10,7 @@ One counterexample in the regime falsifies that hypothesis for universality.
 Zero counterexamples yields verdict not_falsified_in_tested_regime only.
 
 Classical primality/tau locate GWR carriers (audit scan). This script does not
-wire residual trial into generator inference and does not restore Super-Signal.
+wire residual trial into generator inference and does not restore historical z≥4⇒g=2 claim.
 
 Repro:
   python3 research/21-modular-residual-salvage/scripts/pressure_h210_htau16.py
@@ -144,9 +144,9 @@ def run_pressure(p_min: int, p_max: int) -> dict:
         "status": "hypothesis_measured_pressure_only",
         "claim_language": (
             "Finite CE pressure on H-210 and H-tau16. Not theorems. "
-            "Empty regime is not a proof. Super-Signal remains invalidated."
+            "Empty regime is not a proof. z4 twin lock remains invalidated."
         ),
-        "super_signal_universal_lock": "invalidated",
+        "z4_universal_status_lock": "invalidated",
         "regime": {
             "p_min": p_min,
             "p_max": p_max,
@@ -174,7 +174,7 @@ def run_pressure(p_min: int, p_max: int) -> dict:
         },
         "control": {
             "gaps_scanned": gaps_scanned,
-            "bare_super_signal_false_positives_z4_g_gt_2": bare_ss_fps,
+            "bare_z4_false_positives_z4_g_gt_2": bare_ss_fps,
         },
         "elapsed_seconds": round(elapsed, 3),
     }
@@ -209,8 +209,8 @@ def main(argv: list[str] | None = None) -> int:
     print(f"regime: p in [{result['regime']['p_min']}, {result['regime']['p_max']})")
     print(f"gaps_scanned: {result['control']['gaps_scanned']}")
     print(
-        "bare_super_signal_fps_z4_g_gt_2: "
-        f"{result['control']['bare_super_signal_false_positives_z4_g_gt_2']}"
+        "bare_z4_twin_lock_fps_z4_g_gt_2: "
+        f"{result['control']['bare_z4_false_positives_z4_g_gt_2']}"
     )
     for key in ("H-210", "H-tau16"):
         h = result["hypotheses"][key]

@@ -70,7 +70,7 @@ The single most impactful next task for the Prime Gap Structure (PGS) research p
 This includes: (1) developing and rigorously validating the missing PGS-native discriminator to reliably distinguish true factor endpoint classes from rejected public closure candidates; (2) completing the residual taxonomy and automated emission of structural certificates (or well-typed unresolved states) with full reciprocal transport closure; (3) integrating high-scale execution (leveraging src/c/high-scale-pgs and the Python package) with the mandatory 10¹⁸ evidence surface policy; (4) producing reproducible artifacts, performance benchmarks against legacy prefilter, and audit-validated results on static and dynamic test moduli; and (5) feeding any discovered invariants or patterns back into core theory (e.g., refinements to endpoint structure laws or GWR carrier transport).
 Why This Task Is the Single Most Impactful
 
-The foundational layer is mature: the Divisor Normalization Identity (DNI), Gap Winner Rule (GWR), Universal Bounded Compression, Prime-Square Proximity Theorem (proved 2026-07-05), and No-Later-Simpler-Composite Theorem (zero violations through 10¹⁸) are established in PROOF.md with supporting finite bases and analytic closure. The Twin-Prime Resonance / GWR Super-Signal universal claim has been cleanly invalidated (2026-07-09) with documented counterexamples, while modular survivors (e.g., 
+The foundational layer is mature: the Divisor Normalization Identity (DNI), Gap Winner Rule (GWR), Universal Bounded Compression, Prime-Square Proximity Theorem (proved 2026-07-05), and No-Later-Simpler-Composite Theorem (zero violations through 10¹⁸) are established in PROOF.md with supporting finite bases and analytic closure. The modular remainder facts universal claim has been cleanly invalidated (2026-07-09) with documented counterexamples, while modular survivors (e.g., 
 z
 (
 w
@@ -338,7 +338,7 @@ Ordered prime-gap state around candidate endpoints or semiprime branches.
 DNI / Z(n) or E(n) coordinates for ranking carriers.
 GWR-selected witnesses and bounded-compression locality.
 Modulus-link reciprocal transport closure.
-Discriminator logic derived from proved invariants (e.g., leftmost min-d(n) properties, square-proximity constraints, No-Later-Simpler monotonicity, surviving modular lemmas post-Super-Signal invalidation).
+Discriminator logic derived from proved invariants (e.g., leftmost min-d(n) properties, square-proximity constraints, No-Later-Simpler monotonicity, surviving modular lemmas post-removal of historical z≥4⇒g=2 claim).
 Phases:
 Phase 0 (Foundation, 1–2 weeks): Audit current rsa-v3/ codebase, residual ledger, and endpoint law against latest PROOF.md and 10¹⁸ policy. Map every inference step to proved theorems. Update AGENTS.md-compliant documentation.
 Phase 1 (Discriminator Development): Design and implement the missing classifier using PGS objects (GWR carriers in transport, Z/E extremal properties, compression bounds, square-proximity). Prototype in Python package modules; port performance-critical paths to src/c/high-scale-pgs. Use adversarial auditor mindset to pressure-test against classical drift.

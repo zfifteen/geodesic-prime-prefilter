@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Finite-regime modular-closed measurement among z>=4 GWR carriers.
 
-MEASURED ONLY. This does not restore Super-Signal or prove a twin lock.
+MEASURED ONLY. This does not restore historical z≥4⇒g=2 claim or prove a twin lock.
 
 Scan consecutive prime gaps with left prime p in [p_min, p_max). For each gap,
 compute the GWR witness w (leftmost interior min tau). If z(w) >= 4 on M_v1,
@@ -142,9 +142,9 @@ def run_measure(p_min: int, p_max: int) -> dict:
         "status": "measured_only",
         "claim_language": (
             "Finite regime measurement of modular-closed rate among GWR carriers "
-            "with z(w) >= 4. Does not restore Super-Signal. Not a theorem."
+            "with z(w) >= 4. Does not restore historical z≥4⇒g=2 claim. Not a theorem."
         ),
-        "super_signal_universal_lock": "invalidated",
+        "z4_universal_status_lock": "invalidated",
         "regime": {
             "p_min": p_min,
             "p_max": p_max,
@@ -196,7 +196,7 @@ def main(argv: list[str] | None = None) -> int:
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
 
-    print("STATUS: measured_only (not a theorem; Super-Signal remains invalidated)")
+    print("STATUS: measured_only (not a theorem; z4 twin lock remains invalidated)")
     print(f"regime: p in [{result['regime']['p_min']}, {result['regime']['p_max']})")
     c = result["counts"]
     print(f"gaps_scanned: {c['gaps_scanned']}")

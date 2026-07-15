@@ -896,7 +896,7 @@ Test the bound tightness at
 0
 8
  or higher (I can run fresh code),
-Look at the square-branch proof or the super-signal modular resonance cases,
+Look at the square-branch proof or the z4-twin-lock modular resonance cases,
 Or explore how the framework’s prime generator actually works in practice.
 This is the kind of work that either quietly strengthens over time or sparks useful debate, either way, the local arithmetic results stand on their own. What aspect do you want to pressure-test next?
 

@@ -40,7 +40,7 @@ Source: `experiments/leftmost-min-modular-closure-falsification-2026-07/`
 
 Prior package already **falsified** leftmost *necessity* for modular closure (`rightmost mm < GWR mm` on `p <= 2.5e7`). This package attacks a **different** claim: parity / left-endpoint bias as the mechanism of mismatch inflation.
 
-Pinned Super-Signal CEs (`PROOF.md`): `p = 17666309`, `p = 22284029` (both reconfirmed; both `w = p + 1`).
+Pinned mod30-adjacent CEs (`PROOF.md`): `p = 17666309`, `p = 22284029` (both reconfirmed; both `w = p + 1`).
 
 ---
 
@@ -217,7 +217,7 @@ But the comparative claim is **not robust** to lowering the zero threshold to 3 
 | 45515369 | 45515377 | 8 | 45515370 | 4 | 45515375 | 1 | 5 |
 | 49117829 | 49117837 | 8 | 49117830 | 4 | 49117835 | 1 | 5 |
 
-Pattern matches Super-Signal CEs: `g = 8`, `w = p + 1`, multi-way min-`tau` ties, rightmost often escapes (here z_right = 1 on all three listed). Yet rightmost still has **2** total `z4` mismatches on this band (not zero).
+Pattern matches mod30-adjacent CEs: `g = 8`, `w = p + 1`, multi-way min-`tau` ties, rightmost often escapes (here z_right = 1 on all three listed). Yet rightmost still has **2** total `z4` mismatches on this band (not zero).
 
 Tie parity again nearly balanced: left even 20.90%, right even 20.89%.
 
@@ -248,7 +248,7 @@ No pre-registered kill switch fully fires against the **narrow** endpoint/tie re
 | H-rightmost fewer at `z3` | **falsified on F** | F: 357 > 335 |
 | H-tie-break (ties + p+1, not unique) | **survives (measured)** | Unique mm z4 = 0 on D and F |
 | "Leftmost prefers even among ties" | **falsified (measured)** | Left/right even rates ~equal; cross-parity nearly balanced |
-| Absolute Super-Signal `z4 => g=2` | **invalidated** | Reconfirmed; already in `PROOF.md` |
+| Absolute z4 twin lock `z4 => g=2` | **invalidated** | Reconfirmed; already in `PROOF.md` |
 | GWR maximizer / modular zero lemma | **theorem** | Untouched |
 | Program verified / validated | **not claimed** | Max regime `5e7`, no `10^18` |
 

@@ -33,7 +33,7 @@ is enough to pressure or kill the insight.
 | Label | p range | Role |
 | --- | --- | --- |
 | S | `[11, 1e5]` | smoke, multi-thousand gaps |
-| M | `[11, 2e6]` | historical Super-Signal "looks perfect" surface |
+| M | `[11, 2e6]` | historical historical z≥4⇒g=2 claim finite zero-FP surface |
 | D | `[11, 2.5e7]` | includes pinned GWR CEs |
 
 ## Out of scope

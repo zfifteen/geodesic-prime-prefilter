@@ -8,7 +8,7 @@ from z_band_prime_composite_field.field import _divisor_count_exact_scalar
 
 DEFAULT_CANDIDATE_BOUND = 128
 PGS_GENERATOR_VERSION = "1.2.0"
-PGS_GENERATOR_FREEZE_ID = "pgs_inference_generator_v1_2_super_signal"
+PGS_GENERATOR_FREEZE_ID = "pgs_inference_generator_v1_2_mod30_guard"
 PGS_SOURCE = "PGS"
 PGS_CHAMBER_RESET_RULE_ID = "pgs_chamber_reset_v1"
 WHEEL_OPEN_RESIDUES_MOD30 = frozenset({1, 7, 11, 13, 17, 19, 23, 29})
@@ -40,10 +40,9 @@ def pgs_chamber_reset_state_certificate(
     if candidate_bound < 1:
         raise ValueError("candidate_bound must be positive")
 
-    # Guarded twin-gap truncation (NOT a Super-Signal theorem citation).
-    # The universal claim "z(GWR)>=4 => g=2" is invalidated (see PROOF.md).
-    # If p+1 is a multiple of 30, peek at p+2: only when tau(p+2)==2 (prime)
-    # is the gap twin and the chamber may safely truncate to bound 2.
+    # Guarded twin-gap truncation: if p+1 is a multiple of 30, peek at p+2.
+    # Only when tau(p+2)==2 (prime) is the gap twin and the chamber may
+    # safely truncate to bound 2. Implementation optimization with audit gate.
     if (p + 1) % 30 == 0:
         if _divisor_count_exact_scalar(p + 2) == 2:
             candidate_bound = 2

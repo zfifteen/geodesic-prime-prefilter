@@ -84,7 +84,7 @@ Example smoke regime (when someone runs it): `a(1)=7`, `N=10^5`, `B=500`. Report
 
 - Category diagnosis: encounter map ≠ next-prime operator.
 - Efficiency dead end is structural under the audit/inference split.
-- Methodology: glamorous value patterns vs index/return residual (same honesty as Super-Signal kill and 50-bit first-tail pin).
+- Methodology: glamorous value patterns vs index/return residual (same honesty as historical z≥4⇒g=2 claim kill and 50-bit first-tail pin).
 - Coverage language: forced absence / unresolved-not-false / chain-blocked / unbounded-after-regime (2011), without mysticism.
 
 ## What PGS does not contribute

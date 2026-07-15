@@ -15,7 +15,7 @@ On the decisive regime (left prime `p` in `[11, 2.5e7]`, 1,565,923 consecutive g
 | alt-A (rightmost min-`tau`) | **0** |
 | alt-B (first interior `p+1`) | **152,620** |
 
-**Mechanism (measured on the two Super-Signal CEs):** both counterexample gaps are multi-way min-`tau` ties. Leftmost min hits a highly divisible witness (`z = 4`). Rightmost min hits a different min-`tau` point with `z = 1` (no mismatch). So leftmost bias is what *creates* those false positives on this surface, opposite to the share story that leftmost is necessary for clean modular closure.
+**Mechanism (measured on the two mod30-adjacent CEs):** both counterexample gaps are multi-way min-`tau` ties. Leftmost min hits a highly divisible witness (`z = 4`). Rightmost min hits a different min-`tau` point with `z = 1` (no mismatch). So leftmost bias is what *creates* those false positives on this surface, opposite to the share story that leftmost is necessary for clean modular closure.
 
 | Claim | Status |
 | --- | --- |

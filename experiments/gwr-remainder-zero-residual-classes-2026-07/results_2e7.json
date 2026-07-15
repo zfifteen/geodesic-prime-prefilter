@@ -1,7 +1,7 @@
 {
   "status": "measured",
   "not_a_theorem": true,
-  "super_signal_universal": "invalidated",
+  "z4_universal_status": "invalidated",
   "moduli_M_v1": [
     2,
     3,
@@ -30,7 +30,7 @@
   },
   "derived": {
     "z4_total": 35541,
-    "bare_super_signal_false_positives": 1,
+    "bare_z4_false_positives": 1,
     "z4_twin_rate_among_z4": 0.999972
   },
   "z_histogram": {

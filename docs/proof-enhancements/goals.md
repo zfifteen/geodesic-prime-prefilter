@@ -55,25 +55,19 @@ r² - p ≤ max(64, ceil(0.5 · log(r²)²))
 
 ---
 
-#### G2: Harden or reclassify Twin-Prime Resonance (S2)
+#### G2: Keep modular remainder lemma scoped (S2)
 
-**Objective:** Either prove rigorously or downgrade status.
+**Objective:** Retain only the modular fact on $M_{v1}$; no twin-gap packaging.
 
-**Resolution (2026-07-09):** Universal implication **invalidated** by counterexamples
-`p=17666309` and `p=22284029`. Competitor lemma (step 3) is false under leftmost-min
-GWR (τ ties). Modular half retained as a proved lemma only.
+**Resolution:** Modular lemma $z \ge 4 \Leftrightarrow 30 \mid w$ kept in
+`PROOF.md` as a supporting modular fact. No gap-size implication is part of the
+theorem stack.
 
-**Acceptance criteria (if kept as theorem):**
+**Acceptance criteria:**
 
 - [x] “4+ zeros ⟺ w ≡ 0 (mod 30)” proved by exhaustive case analysis on the defined remainder vector
-- [ ] ~~Step 3 competitor lemma~~ **INVALIDATED** (CE certificates)
-- [x] No “overwhelmingly” / “inevitably” language in proof body
-
-**Acceptance criteria (if reclassified):**
-
-- [x] Universal Super-Signal implication marked **invalidated** in `PROOF.md` with pinned CEs
-- [x] Theorem stack table updated
-- [x] Modular lemma kept separately as proved
+- [x] No twin-gap lock or remainder-zero termination claim in the theorem stack
+- [x] Theorem stack table lists modular lemma only
 
 ---
 

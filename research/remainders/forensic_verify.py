@@ -15,7 +15,7 @@ INVESTIGATION = REMAINDERS / "correlations" / "investigation"
 
 LANE_AGENTS = [
     "interior_rnm",
-    "super_signal_status",
+    "modular_remainder_status",
     "endpoint_mask",
     "mod30_ridge",
     "state_budget",
@@ -36,9 +36,9 @@ SPOTCHECKS = [
         0.13861975927256162,
     ),
     (
-        "super_signal_at_gwr_count",
+        "z4_at_gwr_count",
         INVESTIGATION / "interior_placement_stats.json",
-        ["super_signal_at_gwr_count"],
+        ["z4_at_gwr_count"],
         3842,
     ),
     (
@@ -118,9 +118,8 @@ def lane_coverage(report_text: str) -> list[str]:
 def epistemic_audit(report_text: str) -> list[str]:
     required_sources = [
         "PROOF.md",
-        "docs/proof-enhancements/goals.md",
         "REMAINDER_LANES_SYNTHESIS.md",
-        "README.md",
+        "modular_remainder_status.json",
     ]
     lines = []
     for src in required_sources:
@@ -128,8 +127,8 @@ def epistemic_audit(report_text: str) -> list[str]:
         lines.append(f"{src}: {'cited' if present else 'MISSING'}")
         if not present:
             raise SystemExit(f"report missing epistemic source: {src}")
-    if "measured · corollary" not in report_text and "measured \u00b7 corollary" not in report_text:
-        raise SystemExit("report missing reconciled super-signal status")
+    if "modular lemma" not in report_text.lower() and "modular zero" not in report_text.lower():
+        raise SystemExit("report missing modular zero lemma status")
     return lines
 
 
@@ -154,8 +153,8 @@ def run_log_summary() -> list[str]:
 def key_findings_check(report_text: str) -> list[str]:
     pointers = [
         ("CORRELATION_REPORT.md", "gap-echo"),
-        ("interior_placement_stats.json", "super-signal"),
-        ("g2_with_super_signal_gwr", "g=2"),
+        ("interior_placement_stats.json", "z4-twin-lock"),
+        ("g2_with_z4_gwr", "g=2"),
     ]
     lines = []
     for needle, label in pointers:

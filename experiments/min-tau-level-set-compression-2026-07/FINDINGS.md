@@ -52,7 +52,7 @@ did not produce that late reappearance on the tested surface.
 | Spill only on early `d=4` | **not claimed** | LSCD residual hypothesis |
 
 This is a residual geometry **after** the three universal pillars, not a repair
-of Super-Signal and not a promotion of measured spill structure to theorem.
+of historical z≥4⇒g=2 claim and not a promotion of measured spill structure to theorem.
 
 ## Measured surface (local / mid scale only)
 
@@ -102,7 +102,7 @@ alpha=2  right_off=69  C=64  util_L=0.031  util_R=1.078
 
 | Prior surface | Overlap | Difference |
 | --- | --- | --- |
-| Super-Signal / residual A/B/C (`z>=4` classes) | modular zeros vs twin | here the residual is **co-minimal geometry vs `C(q)`**, not remainder zeros |
+| historical z≥4⇒g=2 claim / residual A/B/C (`z>=4` classes) | modular zeros vs twin | here the residual is **co-minimal geometry vs `C(q)`**, not remainder zeros |
 | Hypothesis U (unique + z4 => twin) | already invalidated | LSCD does not revive twin locks |
 | CLHT / chamber-reset horizon | chamber tail envelopes | LSCD is consecutive-gap level-set vs proved cutoff |
 | Square-branch utilization audits | high `util_L` on square | LSCD concerns **right** co-minimal utilization spill on **d=4** |
