@@ -1,13 +1,13 @@
 {
-  "updated_at": "2026-07-15T11:58:12Z",
-  "job_id": "falsification-4e8-5e8",
+  "updated_at": "2026-07-15T20:04:48Z",
+  "job_id": "prefix-tau-extremal-rerun",
   "signature": {
-    "min_prime": 400000001,
-    "max_prime": 500000000,
-    "tested_prime_count": 5019541,
+    "min_prime": null,
+    "max_prime": null,
+    "tested_prime_count": null,
     "first_counterexample": null,
-    "max_dynamic_cutoff_utilization": 0.9341772151898734,
-    "max_p": 424171123,
-    "max_offset": 738
+    "max_dynamic_cutoff_utilization": null,
+    "max_p": null,
+    "max_offset": null
   }
 }
