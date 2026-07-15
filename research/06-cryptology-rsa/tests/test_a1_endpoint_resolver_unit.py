@@ -154,11 +154,13 @@ def test_tp_ut_006_stack_migrates_when_dual_gap_holds_but_lock_fails():
 
 
 def test_phase1_joint_diagnostics_50bit_pin_geometry():
-    """Phase-1: full component ledger on measured 50-bit residual geometry.
+    """Phase-1 + residual cell R: 50-bit pin migrates to joint cell C1T2L1.
 
-    Decision residual remains first-tail, but lock failure is still visible in
-    diagnostics when require_lock is true (co-primary honesty).
+    Dual-gap D holds; first-tail fails; lock fails. Residual vector R ranks
+    (1,2,1) name the joint residual subclass. 50-bit stays unresolved.
     """
+    from gwr_carrier_closure import residual_vector_R, is_joint_cell_C1T2L1
+
     n_value = 1027435935526951
     lower = {
         "carrier_w": 32047633,
@@ -187,7 +189,8 @@ def test_phase1_joint_diagnostics_50bit_pin_geometry():
         require_lock_and_profile=True,
     )
     assert holds is False
-    assert residual == "unresolved_by_first_tail_misalignment"
+    # Joint residual cell C1T2L1 (class B residual subclass migration).
+    assert residual == "unresolved_by_joint_cell_C1T2L1"
     by_name = {r.name: r for r in results}
     assert by_name["gwr_dual_gap_carrier_floor_transport_bound"].holds is True
     assert "delta=30" in by_name["gwr_dual_gap_carrier_floor_transport_bound"].detail
@@ -200,12 +203,88 @@ def test_phase1_joint_diagnostics_50bit_pin_geometry():
     assert "lock=6" in by_name["gwr_lower_lock_dominance"].detail
     assert "gap=24" in by_name["gwr_lower_lock_dominance"].detail
     assert "gwr_matched_profile_counts" in by_name
-    ledger = residual_component_ledger(results, decision_residual=residual)
+    assert "gwr_residual_cell_R" in by_name
+    assert "cell=C1T2L1" in by_name["gwr_residual_cell_R"].detail
+    assert "pinch_S=54" in by_name["gwr_residual_cell_R"].detail
+    rvec = residual_vector_R(n_value, lower, upper)
+    assert is_joint_cell_C1T2L1(rvec)
+    assert rvec["decision_cell"] == "C1T2L1"
+    assert rvec["pinch_S"] == 54
+    ledger = residual_component_ledger(
+        results, decision_residual=residual, residual_vector=rvec
+    )
     assert ledger["decision_residual"] == residual
+    assert ledger["residual_vector_R"]["decision_cell"] == "C1T2L1"
     comps = ledger["components"]
     assert comps["gwr_dual_gap_carrier_floor_transport_bound"]["holds"] is True
     assert comps["gwr_first_tail_reciprocal_proximity"]["holds"] is False
     assert comps["gwr_lower_lock_dominance"]["holds"] is False
+
+
+def test_residual_cell_R_separates_50bit_fp_from_64bit_tp():
+    """Measured residual breakthrough bar: C1T2L1 on 50-bit FP; C0T0L0 on 64-bit TP."""
+    from gwr_carrier_closure import residual_vector_R, is_joint_cell_C1T2L1
+
+    n50 = 1027435935526951
+    lower50 = {
+        "carrier_w": 32047633,
+        "carrier_d": 4,
+        "gap_offset": 24,
+        "lock_carrier_offset": 6,
+        "reset_endpoint": 32047651,
+        "reset_signature": "carrier_d=4;lock_carrier_d=4;threat=False;deadline=tail",
+        "tail_after_reset_offsets": [36],
+        "active_count": 1,
+        "unresolved_count": 6,
+    }
+    upper50 = {
+        "carrier_w": 32059621,
+        "carrier_d": 4,
+        "gap_offset": 14,
+        "anchor": 32059619,
+        "active_count": 1,
+        "unresolved_count": 6,
+    }
+    r50 = residual_vector_R(n50, lower50, upper50)
+    assert r50["r_carrier"] == 1
+    assert r50["r_tail"] == 2
+    assert r50["r_lock"] == 1
+    assert r50["decision_cell"] == "C1T2L1"
+    assert r50["pinch_S"] == 54
+    assert is_joint_cell_C1T2L1(r50)
+
+    n64 = 10376454699372036973
+    lower64 = {
+        "carrier_w": 3221225471,
+        "carrier_d": 4,
+        "gap_offset": 12,
+        "lock_carrier_offset": 10,
+        "reset_endpoint": 3221225473,
+        "reset_signature": "carrier_d=4;lock_carrier_d=4;threat=False;deadline=tail",
+        "tail_after_reset_offsets": [18],
+        "active_count": 1,
+        "unresolved_count": 6,
+    }
+    upper64 = {
+        "carrier_w": 3221275489,
+        "carrier_d": 4,
+        "gap_offset": 14,
+        "anchor": 3221275487,
+        "active_count": 1,
+        "unresolved_count": 6,
+    }
+    r64 = residual_vector_R(n64, lower64, upper64)
+    assert r64["r_carrier"] == 0
+    assert r64["r_tail"] == 0
+    assert r64["r_lock"] == 0
+    assert r64["decision_cell"] == "C0T0L0"
+    assert r64["pinch_S"] == 21
+    assert is_joint_cell_C1T2L1(r64) is False
+    holds64, _, residual64 = evaluate_gwr_carrier_transport_closure(
+        n64, lower64, upper64, require_lock_and_profile=True
+    )
+    assert holds64 is True
+    assert residual64 is None
 
 
 def test_phase1_anti_admission_historical_false_class():

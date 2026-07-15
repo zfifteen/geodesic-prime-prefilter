@@ -175,6 +175,14 @@ Merged from Claude rewrites (H1′-H4′). Prior soft H1-H4 rows are **replaced*
 - **Check:** Continuity review of any residual writeup for constellation slogan merge
 - **Kill:** N/A as math prediction; **documentation failure** if claims appear
 
+### H-cell. Joint residual cell R + pinch S (C1T2L1 breakthrough candidate)
+- **Statement:** Public residual geometry is ranked as `R = (r_carrier, r_tail, r_lock)` with decision cell `C*T*L*` and pinch `S = |T_c - upper.anchor| + |delta_t|` (floor transport only). On the golden 50-bit false pin the joint cell is **C1T2L1** with measured `pinch_S = 54`, and the decision residual migrates to taxonomy code `unresolved_by_joint_cell_C1T2L1` (not a silent endpoint class). On the 64-bit true close pin the cell is **C0T0L0** with measured `pinch_S = 21` and the closure stack holds. Dual-gap D may still hold on the false pin; the joint cell names the real obstruction. Rank cut thresholds and pinch as a separator on broader fixtures remain **hypothesis**.
+- **Status:** residual map + cell rule = **hypothesis**; 50-bit vs 64-bit unit-pin separation = **measured** on those fixtures only; implementation in rsa-v3 GWR stack. **Not** theorem. **Not** verified residual-family (no residual 10^18). **Not** RSA solve.
+- **Taxonomy:** `unresolved_by_joint_cell_C1T2L1` in `research/06-cryptology-rsa/experiments/live-solver/rsa-v3/RESIDUAL_TAXONOMY.md` and `residual.py` (present; no code-taxonomy lag). Continuity pin `ACTIVE_GOAL_50bit_residual_discriminator.md` updated 2026-07-14 for joint-cell decision residual (first-tail remains underlying fail).
+- **Check:** `python3 -m pytest research/06-cryptology-rsa/tests/test_a1_endpoint_resolver_unit.py -q`; collab writeup `experiments/residual-cell-R-breakthrough-collab-2026-07/FINDINGS.md`; e2e package re-run (Agy); constant-gaming sweep must not endpoint-emit on 50-bit (H2'/Claude)
+- **Kill:** C1T2L1 on a known true close under fixed first-tail window; constant-only endpoint emit on 50-bit; pinch fails to separate expanded true vs false sets; e2e residual code lag with only unit path green
+- **Collab charter:** `experiments/residual-cell-R-breakthrough-collab-2026-07/CHARTER.md`
+
 ---
 
 ## E. Explicit non-predictions (do not schedule as PGS forecasts)
@@ -223,6 +231,8 @@ Execution order this cycle. After a green run, use the **status after green** la
 
 **Secondary (not drivers 1-3):** T3/T4 audit corroboration on new regimes only; optional proof-spine/Lean hygiene for UBC/PSP without status flip.
 
+**Collab overlay (live):** residual cell R breakthrough (`H-cell`)  -  finish FINDINGS, expand fixtures, constant sweep, e2e joint residual emit. See `experiments/residual-cell-R-breakthrough-collab-2026-07/`. Does not replace drivers 1-3; sharpens driver 1.
+
 ---
 
 ## Paths cited
@@ -238,3 +248,7 @@ Execution order this cycle. After a green run, use the **status after green** la
 - `experiments/constellation-vs-pgs-next-prime-2026-07/COMPARISON.md`
 - `experiments/rowland-pgs-category-split-2026-07/COMPARISON.md`
 - `experiments/pgs-prediction-inventory-2026-07/ADVANCE_2026-07-14.md`
+- `experiments/residual-cell-R-breakthrough-collab-2026-07/CHARTER.md`
+- `experiments/residual-cell-R-breakthrough-collab-2026-07/FINDINGS.md`
+- `research/06-cryptology-rsa/experiments/live-solver/rsa-v3/RESIDUAL_TAXONOMY.md`
+- `research/06-cryptology-rsa/experiments/live-solver/rsa-v3/gwr_carrier_closure.py`
