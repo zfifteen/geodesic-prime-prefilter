@@ -387,25 +387,27 @@ The output stream is physically minimal:
 
 For each candidate exponent `e > p`, the live generator first measures
 `tau(e)`. If `tau(e) != 2`, the candidate exponent is excluded before the
-generator inspects `2^e - 1`.
+generator inspects the wall.
 
-If `tau(e) == 2`, the generator mirrors the PGSPG chamber-reset rule around the
-wall:
+If `tau(e) == 2`, the live rule applies residue-return pressure at offset `1`
+below the exponent wall:
 
 ```text
 W = 2^e
-candidate boundary = W - offset
+offset-1 cell = W - 1 = 2^e - 1
+pressure = tau(W - 1) - 2
 ```
 
-The v0.1 live rule scans leftward through wheel-open boundary candidates and
-emits the first exponent whose recovered boundary is at distance `1`.
+When pressure is `0`, the offset-1 cell is a divisor-count survivor and the
+Mersenne location is inferred at distance `1`. When pressure is positive, the
+candidate is deferred and the scan continues. The live successor path does not
+recover the full nearest-left prime for deferred exponents.
 
-That full boundary scan is an implementation detail of v0.1, not the permanent
-PGSMPG contract. The successor generator does not need the exact nearest-left
-prime for every rejected exponent. A rejected candidate exponent only needs
-enough PGS state to continue scanning.
+A full left-boundary scanner remains in the module for diagnostic use. It is
+off the live succession path (`boundary_tau_call_count = 0` on the committed
+baseline below).
 
-Default v0.1 run:
+Default v0.1 chain run:
 
 ```text
 start exponent: 2
@@ -444,70 +446,153 @@ emitted records after the PGS rows exist.
 
 ## PGSMPG Baseline Cost Stats
 
-The baseline stats harness measures the existing PGSMPG path unchanged.
-
-The measured value ceiling is:
-
-```text
-2^p - 1 <= 10^50
-```
-
-That gives the exponent ceiling:
+The baseline stats harness measures the **live** PGSMPG succession path
+(`exponent_attempt_row` → residue-return pressure). Re-run command:
 
 ```text
-p <= 166
+python3 research/09-exponents/validation/pgs_mersenne_prime_generator_baseline_stats.py \
+  --output-dir research/09-exponents/output/pgs_mersenne_prime_generator_baseline_stats
 ```
 
-The recovered Mersenne exponents under this ceiling are:
+Artifacts:
+
+```text
+research/09-exponents/output/pgs_mersenne_prime_generator_baseline_stats/summary.json
+research/09-exponents/output/pgs_mersenne_prime_generator_baseline_stats/transition_stats_rows.csv
+research/09-exponents/output/pgs_mersenne_prime_generator_baseline_stats/tau_call_rows.csv
+research/09-exponents/output/pgs_mersenne_prime_generator_baseline_stats/mersenne_exponents.jsonl
+```
+
+### Surface
+
+```text
+value ceiling: 2^p - 1 <= 10^50
+exponent ceiling: p <= 166
+live rule: residue-return pressure at offset 1
+candidate_bound: 4096 (API / diagnostic parameter; live succession inspects offset 1 only)
+```
+
+Recovered Mersenne exponents under this ceiling:
 
 ```text
 2, 3, 5, 7, 13, 17, 19, 31, 61, 89, 107, 127
 ```
 
-The harness also records the terminal unresolved scan from `127` through `166`,
-so the measurement means: find every PGSMPG Mersenne exponent under `10^50`,
-then stop at the ceiling.
+The harness also records the terminal unresolved scan from `127` through `166`:
+find every PGSMPG Mersenne exponent under `10^50`, then stop at the ceiling.
 
-Baseline with the current SymPy-backed `tau`:
+### Fresh live baseline (executed)
+
+Measured with the current SymPy-backed `tau` on the live residue-return path.
+Numbers below match
+`research/09-exponents/output/pgs_mersenne_prime_generator_baseline_stats/summary.json`
+and `transition_stats_rows.csv` from the re-run that wrote those artifacts.
 
 ```text
-candidate bound: 4096
+live_rule_id: pgsmpg_residue_return_pressure_v0_2
+live_path: residue_return_offset_1
 resolved transitions: 11
 terminal unresolved scans: 1
-tau calls: 695
-exponent tau calls: 164
-boundary tau calls: 531
-tau elapsed seconds: 69.73206145729637
-maximum tau call seconds: 9.69560304202605
-maximum boundary input bit length: 163
+tau calls: 201
+  exponent tau calls: 164
+  residue-return tau calls: 37
+  boundary tau calls: 0
+tau elapsed seconds: 16.344635256857146
+wall elapsed seconds: 16.34491191804409
+  resolved wall seconds: 0.47225508504197933
+  terminal wall seconds: 15.872656833002111
+maximum tau call seconds: 7.295124374999432
+maximum tau input bit length: 163
+maximum boundary input bit length: 0
 ```
 
-The terminal scan after `p = 127` dominates the boundary work:
+Role split confirms the live path: every hard cell is an offset-1
+residue-return `tau(2^e - 1)` call. Multi-offset left-boundary recovery does
+not run on succession (`boundary_tau_call_count = 0`).
+
+### Per-transition wall times (live)
+
+| p → q | attempts | exp τ | residue τ | boundary τ | wall seconds | max τ input bits |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| 2 → 3 | 1 | 1 | 1 | 0 | 0.000038 | 3 |
+| 3 → 5 | 2 | 2 | 1 | 0 | 0.000022 | 5 |
+| 5 → 7 | 2 | 2 | 1 | 0 | 0.000126 | 7 |
+| 7 → 13 | 6 | 6 | 2 | 0 | 0.000084 | 13 |
+| 13 → 17 | 4 | 4 | 1 | 0 | 0.000027 | 17 |
+| 17 → 19 | 2 | 2 | 1 | 0 | 0.000069 | 19 |
+| 19 → 31 | 12 | 12 | 3 | 0 | 0.000228 | 31 |
+| 31 → 61 | 30 | 30 | 7 | 0 | 0.002794 | 61 |
+| 61 → 89 | 28 | 28 | 6 | 0 | 0.060688 | 89 |
+| 89 → 107 | 18 | 18 | 4 | 0 | 0.284461 | 107 |
+| 107 → 127 | 20 | 20 | 3 | 0 | 0.123718 | 127 |
+| 127 → (terminal) | 39 | 39 | 7 | 0 | 15.872657 | 163 |
+
+Resolved transitions together are about **0.47 s** wall. The terminal scan
+`128..166` is about **15.87 s** wall and dominates the package.
+
+Terminal scan detail:
 
 ```text
-terminal scan attempted exponents: 128..166
-terminal scan tau calls: 194
-terminal scan boundary tau calls: 155
+attempted exponents: 128..166
+tau calls: 46
+  exponent: 39
+  residue-return: 7
+  boundary: 0
+wall seconds: 15.872657
+max single tau call seconds: 7.295124 (163-bit residue-return input)
 ```
 
-The generator and stats artifacts now store compact integer diagnostics:
-exponents, offsets, divisor counts, bit lengths, and timing. They do not write
-full `2^p`, `2^p - 1`, left-boundary, or per-candidate integers into sidecar
-records. The live scan also evaluates only admissible left offsets. Offsets
-that cannot be prime candidates do not receive a divisor-count call.
+### Comparison to the retired multi-offset baseline
 
-This keeps the rule scale-independent and prevents artifact size or impossible
-candidate offsets from becoming the limiting factor before arithmetic itself
-does.
+An older committed baseline measured full left-boundary recovery on the same
+ceiling and reported:
 
-## Direct Tau Replacement Result
+```text
+tau calls: 695
+  exponent: 164
+  boundary: 531
+  residue-return: (not used on that path)
+tau elapsed seconds: ~69.73
+```
+
+Live residue-return on the same surface:
+
+```text
+tau calls: 201  (about 3.5× fewer total calls)
+boundary tau calls: 0  (was 531)
+residue-return tau calls: 37
+tau / wall elapsed seconds: ~16.34  (about 4.3× lower package time on this machine)
+```
+
+Exponent-gate call count is unchanged (`164`). The cut is entirely from dropping
+multi-offset boundary work on deferred candidates.
+
+### Cost center (current)
+
+Hard work is `tau(2^e - 1)` on prime exponents (residue-return). Exponent-gate
+`tau(e)` on small integers is negligible. Package time is dominated by the
+terminal unresolved scan past `127`, not by the recovered chain through `127`.
+
+The generator and stats artifacts store compact integer diagnostics: exponents,
+offsets, divisor counts, bit lengths, and timing. They do not write full
+`2^p`, `2^p - 1`, or per-candidate giant integers into sidecar records.
+
+Status labels for this section:
+
+```text
+measured: live succession cost on ceiling 2^p-1 <= 10^50 (p <= 166)
+implementation: residue-return offset-1 succession
+audit: classical agreement on recovered exponents remains a separate validator step
+theorem: no theorem promotion from this baseline
+```
+
+## Direct Tau Replacement Result (historical)
 
 A direct thresholded `tau(n, 2)` replacement was tested and rejected as the next
-implementation path. This test was run before the admissible-offset cleanup, so
-its call count belongs to the earlier full-prefix scan, not the current
-optimized v0.1 baseline.
+implementation path. That test ran on an earlier full-prefix / multi-offset
+surface, not on the live residue-return baseline above.
 
-Measured on the same `10^18` surface:
+Measured on that older `10^18` surface:
 
 ```text
 same recovered exponent chain: 2, 3, 5, 7, 13, 17, 19, 31
@@ -521,44 +606,41 @@ The direct thresholded function reduced no candidate surface. It only changed
 how each candidate was certified. Prime boundary candidates still required a
 full absence-of-divisor check, and that dominated the run.
 
-The result is an invalidated implementation path:
+Invalidated implementation path:
 
 ```text
-Do not replace the current generator with a direct divisor scan for tau(n, 2).
+Do not replace the current generator with a direct divisor scan for tau(n, 2)
+as the sole next step.
 ```
 
-## Residue-Return Side Probe
+## Residue-Return Adoption (now live)
 
-A disposable side probe tested residue-return gating against the actual PGSMPG
-successor contract.
-
-Measured on the `10^18` surface:
+Residue-return gating was first measured as a disposable side probe against the
+older multi-offset successor path on the `10^18` surface:
 
 ```text
-current PGSMPG exponents: 2, 3, 5, 7, 13, 17, 19, 31
-residue-return gated exponents: 2, 3, 5, 7, 13, 17, 19, 31
-current boundary tau calls: 418
-residue-return gated boundary tau calls: 10
-boundary tau call reduction: 408
+exponents: 2, 3, 5, 7, 13, 17, 19, 31
+multi-offset boundary tau calls: 418
+residue-return boundary-equivalent calls: 10
+call reduction: 408
 ```
 
-The side probe preserved the successor output while avoiding exact boundary
-recovery for non-surviving candidate exponents. That matches the PGSMPG
-contract better than the v0.1 full-boundary scan.
+That probe is now the **live** succession rule (`pgsmpg_residue_return_pressure_v0_2`).
+The committed live baseline above is the source of truth for current cost.
 
-The next implementation target is therefore:
+Live succession rule:
 
 ```text
 accepted p
 scan e > p
 exclude e when tau(e) != 2
-test offset-1 survival for prime exponents
-use residue-return pressure to reject or defer non-survivors
-emit the first surviving e
+test offset-1 residue-return pressure for prime exponents
+defer when pressure > 0
+emit the first surviving e (pressure == 0)
 ```
 
-Do not compute exact nearest-left-prime distances for non-survivors in PGSMPG
-v0.2.
+Do not compute exact nearest-left-prime distances for deferred candidates on the
+succession path.
 
 ## Mersenne Order-Filter Validation
 
