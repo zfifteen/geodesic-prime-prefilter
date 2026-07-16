@@ -3785,3 +3785,69 @@ Artifacts:
 
 Next step:
 Queue falsification 500M-600M or draft Chamber-Reset Endpoint Resolution Lemma subsection.
+
+## 2026-07-16T00:07:04Z run
+
+Mechanism:
+Draft one subsection of the Chamber-Reset Endpoint Resolution Lemma on the
+selected-square branch (queue job `chamber-reset-lemma-draft`). Project terms:
+Claims S15-A / S15-B / S15-C, residual package RC45-RC47, MeanBodyPacking(r),
+ResetResidual^B(r).
+
+Method:
+Heavy analytic fan-out (16/16 specialists, ≥1 contrarian) then leader execute.
+PGS-first constructive draft under
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`.
+Reuse H1-H6; formalize prior measured RC45-RC47 as lemma subsection S15
+(distinct from S14 InteriorPacking). Companion FINDINGS under
+`experiments/square-branch-hourly-2026-07-15-s15/`. No classical gates; no
+theorem inflation; S1* remains UNRESOLVED. Contrarian slot recorded ratio-minting
+risk; stick-with-pattern decision for queue job continuity.
+
+Result:
+Constructive subsection S15 drafted with Claims S15-A/B/C and MeanBodyPacking
+extended chamber-reset residual. Residual panel RC45-RC47 re-checked:
+
+| Claim | Status | Notes |
+| --- | --- | --- |
+| S15-A min_over_mean | constructive | drafted |
+| S15-B dual_per_hit | constructive | drafted |
+| S15-C MeanBodyPacking / ResetResidual^B | constructive residual state | drafted |
+| RC45 min/mean floor | holds (audit) | [0.112, 0.223] on 8/8 |
+| RC46 dual/count | holds (audit) | [0.077, 0.415] on 8/8 |
+| RC47 max/body | holds (audit) | [0.041, 0.085] on 8/8 |
+| Target S1* | UNRESOLVED | PROOF.md §Square-Branch Reduction |
+| RC2 fixed-540 | falsified (retained) | D=738 |
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 3.04s
+```
+RC45 residual probe exit code: 0 (RC45-RC47 hold; RC2 retained falsified).
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New constructive lemma subsection S15 (mean-unit packing floor min/mean, Dual L1
+per Tau4 hit dual/count, peak desert body-share max/body) with Claims S15-A/B/C,
+MeanBodyPacking(r), ResetResidual^B(r), explicit falsification commands, and
+RC45-RC47 formalized under the lemma. Continuity: lemma through S15; residual
+package through RC47; proximity remains OPEN/UNRESOLVED. Distinct from S14
+InteriorPacking; not a promotion of packing ratios to theorem.
+
+Artifacts:
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html` (S15);
+`experiments/square-branch-hourly-2026-07-15-s15/FINDINGS.md`;
+`experiments/square-branch-hourly-2026-07-15-rc45/` (prior measured residual source)
+
+Next step:
+Queue falsification `5e8-6e8` (preferred holdout) or H_CTC square-branch probe.
+Re-check RC45-RC47 / MeanBodyPacking on any new util maximum. Prefer new-band
+holdout over further ratio minting on the same 7 chambers. Keep S15 residual only;
+do not promote min/mean, dual/count, or max/body to theorem; do not revive
+fixed-band 540 or d=4 SDA.
