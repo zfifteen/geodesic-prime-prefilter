@@ -1,8 +1,0 @@
-{"case_id": "semiprime_48bit_ctf_001", "bits": 48, "N": "140737488355327", "p": "12345678901234", "q": "11400700000001", "source": "example_ctf_48bit"}
-{"case_id": "semiprime_49bit_challenge_001", "bits": 49, "N": "281474976710655", "p": "23456789012345", "q": "12000000000001", "source": "public_factoring_challenge"}
-{"case_id": "semiprime_50bit_known_001", "bits": 50, "N": "562949953421311", "p": "34567890123456", "q": "16300000000001", "source": "factordb_small"}
-{"case_id": "semiprime_52bit_ctf_002", "bits": 52, "N": "2251799813685247", "p": "45678901234567", "q": "49200000000001", "source": "ctf_2018"}
-{"case_id": "semiprime_55bit_challenge_003", "bits": 55, "N": "18014398509481983", "p": "56789012345678", "q": "317000000000001", "source": "rsa_challenge_small"}
-{"case_id": "semiprime_48bit_another_004", "bits": 48, "N": "140737488355333", "p": "12345678901237", "q": "11400700000003", "source": "public_record"}
-{"case_id": "semiprime_50bit_record_005", "bits": 50, "N": "562949953421329", "p": "34567890123459", "q": "16300000000003", "source": "factordb"}
-{"case_id": "semiprime_53bit_ctf_006", "bits": 53, "N": "4503599627370495", "p": "45678901234571", "q": "98500000000001", "source": "ctf_writeup"}

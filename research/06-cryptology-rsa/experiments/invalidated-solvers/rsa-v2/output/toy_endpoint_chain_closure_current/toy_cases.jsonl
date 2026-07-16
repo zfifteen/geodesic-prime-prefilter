@@ -1,6 +1,0 @@
-{"N": "257987843", "bits": 28, "case_id": "rsa_v2_toy_chain_28bit_first_strict_001", "description": "First strict mutual public certificate closure found in deterministic PGSPG endpoint-chain sweep below 40 bits."}
-{"N": "10444431203", "bits": 34, "case_id": "rsa_v2_toy_chain_34bit_strict_001", "description": "Second strict mutual public certificate closure found in deterministic PGSPG endpoint-chain sweep below 40 bits."}
-{"N": "20592824003", "bits": 35, "case_id": "rsa_v2_toy_chain_35bit_strict_001", "description": "Third strict mutual public certificate closure found in deterministic PGSPG endpoint-chain sweep below 40 bits."}
-{"N": "27100402883", "bits": 35, "case_id": "rsa_v2_toy_chain_35bit_strict_002", "description": "Fourth strict mutual public certificate closure found in deterministic PGSPG endpoint-chain sweep below 40 bits."}
-{"N": "50724949283", "bits": 36, "case_id": "rsa_v2_toy_chain_36bit_strict_001", "description": "Fifth strict mutual public certificate closure found in deterministic PGSPG endpoint-chain sweep below 40 bits."}
-{"N": "72243763523", "bits": 37, "case_id": "rsa_v2_toy_chain_37bit_strict_001", "description": "Sixth strict mutual public certificate closure found in deterministic PGSPG endpoint-chain sweep below 40 bits."}

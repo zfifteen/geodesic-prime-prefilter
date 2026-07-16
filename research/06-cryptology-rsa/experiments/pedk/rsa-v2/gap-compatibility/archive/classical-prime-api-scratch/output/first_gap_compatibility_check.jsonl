@@ -1,3 +1,0 @@
-{"case_id": "rsa_v2_40bit_static_001", "bits": 40, "gap_N_reduced_state": "o8_d4_odd|d<=4", "gap_p_reduced_state": "o8_higher_divisor_odd|d<=4", "gap_q_reduced_state": "o6_higher_divisor_odd|d<=4", "gap_N_width": 22, "gap_p_width": 22, "gap_q_width": 18}
-{"case_id": "rsa_v2_50bit_static_001", "bits": 50, "gap_N_reduced_state": "o8_d4_odd|d<=4", "gap_p_reduced_state": "o8_higher_divisor_odd|d<=4", "gap_q_reduced_state": "o8_higher_divisor_odd|d<=4", "gap_N_width": 84, "gap_p_width": 30, "gap_q_width": 30}
-{"case_id": "rsa_v2_64bit_static_001", "bits": 64, "gap_N_reduced_state": "o8_d4_odd|d<=4", "gap_p_reduced_state": "o8_higher_divisor_odd|d<=4", "gap_q_reduced_state": "o8_higher_divisor_odd|d<=4", "gap_N_width": 108, "gap_p_width": 18, "gap_q_width": 44}

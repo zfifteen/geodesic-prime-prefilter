@@ -1,6 +1,0 @@
-{"N": "257987843", "bits": 28, "case_id": "rsa_v2_toy_chain_28bit_first_strict_001", "p": "16061", "q": "16063", "rule_id": "reciprocal_pgs_certificate_pair_v1", "status": "resolved"}
-{"N": "10444431203", "bits": 34, "case_id": "rsa_v2_toy_chain_34bit_strict_001", "p": "102197", "q": "102199", "rule_id": "reciprocal_pgs_certificate_pair_v1", "status": "resolved"}
-{"N": "20592824003", "bits": 35, "case_id": "rsa_v2_toy_chain_35bit_strict_001", "p": "143501", "q": "143503", "rule_id": "reciprocal_pgs_certificate_pair_v1", "status": "resolved"}
-{"N": "27100402883", "bits": 35, "case_id": "rsa_v2_toy_chain_35bit_strict_002", "p": "164621", "q": "164623", "rule_id": "reciprocal_pgs_certificate_pair_v1", "status": "resolved"}
-{"N": "50724949283", "bits": 36, "case_id": "rsa_v2_toy_chain_36bit_strict_001", "p": "225221", "q": "225223", "rule_id": "reciprocal_pgs_certificate_pair_v1", "status": "resolved"}
-{"N": "72243763523", "bits": 37, "case_id": "rsa_v2_toy_chain_37bit_strict_001", "p": "268781", "q": "268783", "rule_id": "reciprocal_pgs_certificate_pair_v1", "status": "resolved"}

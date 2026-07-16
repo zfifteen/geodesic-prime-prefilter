@@ -1,9 +1,0 @@
-{"p": 2, "q": 3, "source": "PGSMPG", "status": "resolved", "error": "", "attempt_count": 1, "rule_id": "pgsmpg_exponent_successor_v0_1"}
-{"p": 3, "q": 5, "source": "PGSMPG", "status": "resolved", "error": "", "attempt_count": 2, "rule_id": "pgsmpg_exponent_successor_v0_1"}
-{"p": 5, "q": 7, "source": "PGSMPG", "status": "resolved", "error": "", "attempt_count": 2, "rule_id": "pgsmpg_exponent_successor_v0_1"}
-{"p": 7, "q": 13, "source": "PGSMPG", "status": "resolved", "error": "", "attempt_count": 6, "rule_id": "pgsmpg_exponent_successor_v0_1"}
-{"p": 13, "q": 17, "source": "PGSMPG", "status": "resolved", "error": "", "attempt_count": 4, "rule_id": "pgsmpg_exponent_successor_v0_1"}
-{"p": 17, "q": 19, "source": "PGSMPG", "status": "resolved", "error": "", "attempt_count": 2, "rule_id": "pgsmpg_exponent_successor_v0_1"}
-{"p": 19, "q": 31, "source": "PGSMPG", "status": "resolved", "error": "", "attempt_count": 12, "rule_id": "pgsmpg_exponent_successor_v0_1"}
-{"p": 31, "q": 61, "source": "PGSMPG", "status": "resolved", "error": "", "attempt_count": 30, "rule_id": "pgsmpg_exponent_successor_v0_1"}
-{"p": 61, "q": 89, "source": "PGSMPG", "status": "resolved", "error": "", "attempt_count": 28, "rule_id": "pgsmpg_exponent_successor_v0_1"}

@@ -1,0 +1,22 @@
+[
+  {
+    "filename": "The_Mirror_and_the_Key.pdf",
+    "bytes": 410535,
+    "sha256": "abe6e501aeb77bfaa3bac9291c7b51f81a8d62595f5947d34a6e9ee117e57ff7",
+    "content_type": "application/octet-stream",
+    "source_record": "https://zenodo.org/records/21379262",
+    "download_url": "https://zenodo.org/records/21379262/files/The_Mirror_and_the_Key%20(2).pdf?download=1",
+    "final_url": "https://zenodo.org/records/21379262/files/The_Mirror_and_the_Key%20(2).pdf?download=1",
+    "magic": "255044462d312e35"
+  },
+  {
+    "filename": "The_Prime_Lattice_Coherence_Framework_A_Unified_Master_Document.pdf",
+    "bytes": 2051418,
+    "sha256": "1b82de7e621ae80100f56ec71afad815794436333ecf149ec9c40847e81f2d3e",
+    "content_type": "application/octet-stream",
+    "source_record": "https://zenodo.org/records/21317938",
+    "download_url": "https://zenodo.org/records/21317938/files/The_Prime_Lattice_Coherence_Framework__A_Unified_Master_Document5_Copy___Copy_%20(17).pdf?download=1",
+    "final_url": "https://zenodo.org/records/21317938/files/The_Prime_Lattice_Coherence_Framework__A_Unified_Master_Document5_Copy___Copy_%20(17).pdf?download=1",
+    "magic": "255044462d312e35"
+  }
+]

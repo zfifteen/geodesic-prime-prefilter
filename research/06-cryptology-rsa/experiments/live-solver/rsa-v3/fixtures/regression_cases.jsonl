@@ -1,2 +1,0 @@
-{"case_id": "rsa_v2_40bit_static_001", "bits": 40, "N": "1099507433251", "description": "Known resolved under v2 reciprocal deadline-signature correction (A1 golden resolved)."}
-{"case_id": "rsa_v2_50bit_static_001", "bits": 50, "N": "1027435935526951", "description": "Known honest unresolved residual class under reciprocal carrier misalignment (A1 golden unresolved)."}
