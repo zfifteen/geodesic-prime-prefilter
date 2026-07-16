@@ -38,6 +38,7 @@ TRANSITION_FIELDS = [
     "attempt_count",
     "attempted_exponents",
     "tau_call_count",
+    "exact_tau_call_count",
     "exponent_tau_call_count",
     "residue_return_tau_call_count",
     "boundary_tau_call_count",
@@ -56,6 +57,8 @@ TAU_CALL_FIELDS = [
     "tau",
     "elapsed_seconds",
     "call_role",
+    "work_kind",
+    "exact_divisor_count",
 ]
 
 
@@ -120,10 +123,29 @@ def measured_transition(
         nonlocal current_call_role
         previous_call_role = current_call_role
         current_call_role = "residue_return"
+        calls_before = len(tau_calls)
+        started = time.perf_counter()
         try:
-            return original_residue_return_pressure(exponent)
+            pressure = original_residue_return_pressure(exponent)
         finally:
             current_call_role = previous_call_role
+        # Thresholded pressure may settle without calling tau. Record one
+        # residue-return work row so cost roles still reflect offset-1 checks.
+        residue_tau_made = any(
+            row["call_role"] == "residue_return" for row in tau_calls[calls_before:]
+        )
+        if not residue_tau_made:
+            tau_calls.append(
+                {
+                    "bit_length": int(pressure["candidate_bit_length"]),
+                    "tau": int(pressure["candidate_divisor_count"]),
+                    "elapsed_seconds": time.perf_counter() - started,
+                    "call_role": "residue_return",
+                    "work_kind": "thresholded_scan",
+                    "exact_divisor_count": bool(pressure.get("exact_divisor_count", True)),
+                }
+            )
+        return pressure
 
     started = time.perf_counter()
     generator.tau = measured_tau
@@ -159,8 +181,11 @@ def measured_transition(
         row["transition_p"] = int(p)
         row["transition_status"] = status
         row["call_index"] = index
+        row.setdefault("work_kind", "exact_tau")
+        row.setdefault("exact_divisor_count", True)
 
     boundary_calls = [row for row in tau_calls if row["call_role"] == "boundary"]
+    exact_tau_calls = [row for row in tau_calls if row.get("work_kind", "exact_tau") == "exact_tau"]
     transition_row = {
         "p": int(p),
         "q": "" if q is None else int(q),
@@ -171,6 +196,7 @@ def measured_transition(
         "attempt_count": len(attempts),
         "attempted_exponents": ";".join(str(value) for value in attempted_exponents),
         "tau_call_count": len(tau_calls),
+        "exact_tau_call_count": len(exact_tau_calls),
         "exponent_tau_call_count": exponent_tau_call_count,
         "residue_return_tau_call_count": len(residue_return_calls),
         "boundary_tau_call_count": len(boundary_calls),
@@ -250,6 +276,12 @@ def summarize(
         "resolved_transition_count": len(resolved),
         "terminal_unresolved_count": len(terminal),
         "tau_call_count": len(tau_rows),
+        "exact_tau_call_count": sum(
+            1 for row in tau_rows if row.get("work_kind", "exact_tau") == "exact_tau"
+        ),
+        "thresholded_scan_call_count": sum(
+            1 for row in tau_rows if row.get("work_kind") == "thresholded_scan"
+        ),
         "exponent_tau_call_count": sum(
             1 for row in tau_rows if row["call_role"] == "exponent"
         ),

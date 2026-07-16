@@ -3,17 +3,26 @@
 
 from __future__ import annotations
 
+import math
+
 from sympy import divisor_count
 
 
 DEFAULT_CANDIDATE_BOUND = 4096
 DEFAULT_MAX_EXPONENT = 127
-PGSMPG_VERSION = "0.1.0"
+PGSMPG_VERSION = "0.1.1"
 PGSMPG_FREEZE_ID = "pgs_mersenne_prime_generator_v0_1"
 PGSMPG_SOURCE = "PGSMPG"
 PGSMPG_RULE_ID = "pgsmpg_exponent_successor_v0_1"
 PGSMPG_LEFT_BOUNDARY_RULE_ID = "pgsmpg_left_boundary_chamber_reset_v0_1"
-PGSMPG_RESIDUE_RETURN_RULE_ID = "pgsmpg_residue_return_pressure_v0_2"
+PGSMPG_RESIDUE_RETURN_RULE_ID = "pgsmpg_residue_return_pressure_v0_3"
+# Bounded small-divisor scan for thresholded divisor-state checks. Full exact
+# tau is used only when this bound does not settle the cell.
+SMALL_DIVISOR_SCAN_LIMIT = 50_000
+# Additional scan band for algebraic factor candidates of 2^e - 1 (form 2*k*e + 1).
+MERSENNE_FORM_DIVISOR_SCAN_LIMIT = 2_000_000
+# Known-composite lower bound written when exact tau is not computed.
+DEFERRED_DIVISOR_COUNT_LOWER_BOUND = 3
 WHEEL_OPEN_RESIDUES_MOD30 = frozenset({1, 7, 11, 13, 17, 19, 23, 29})
 LOW_PRIMES = frozenset({2, 3, 5})
 STATUS_EXPONENT_DIVISOR_COUNT_NOT_TWO = "exponent_divisor_count_not_two"
@@ -33,6 +42,92 @@ class PGSMPGUnresolvedError(RuntimeError):
 def tau(n: int) -> int:
     """Return exact divisor count."""
     return int(divisor_count(int(n)))
+
+
+def _small_divisor_scan_finds_proper_divisor(
+    n: int,
+    factor_limit: int = SMALL_DIVISOR_SCAN_LIMIT,
+) -> bool:
+    """Return True when a proper divisor is found by a bounded odd factor scan."""
+    n = int(n)
+    factor_limit = int(factor_limit)
+    if n < 2:
+        return True
+    if n == 2:
+        return False
+    if n % 2 == 0:
+        return True
+    root = math.isqrt(n)
+    limit = root if root <= factor_limit else factor_limit
+    factor = 3
+    while factor <= limit:
+        if n % factor == 0:
+            return True
+        factor += 2
+    return False
+
+
+def _mersenne_form_divisor_scan_finds_proper_divisor(
+    exponent: int,
+    candidate: int,
+    factor_limit: int = MERSENNE_FORM_DIVISOR_SCAN_LIMIT,
+) -> bool:
+    """Return True when a proper divisor of form 2*k*e+1 is found under the band.
+
+    This is divisor-state measurement on the offset-1 cell 2^e - 1, using the
+    algebraic shape of that cell. It is not a classical primality decision rule.
+    """
+    exponent = int(exponent)
+    candidate = int(candidate)
+    factor_limit = int(factor_limit)
+    if exponent < 2 or candidate < 2:
+        return True
+    # q = 2*k*e + 1, with q <= factor_limit and q < candidate.
+    max_q = min(factor_limit, candidate - 1)
+    if max_q < 3:
+        return False
+    k_max = (max_q - 1) // (2 * exponent)
+    for k in range(1, k_max + 1):
+        q = 2 * k * exponent + 1
+        if q >= 3 and candidate % q == 0:
+            return True
+    return False
+
+
+def _offset1_has_threshold_proper_divisor(exponent: int, candidate: int) -> bool:
+    """Return True when thresholded scans prove the offset-1 cell is composite."""
+    # General odd scan is useful on small cells. On large Mersenne cells the
+    # algebraic form scan is the high-leverage bounded check.
+    if int(candidate).bit_length() <= 40:
+        if _small_divisor_scan_finds_proper_divisor(candidate):
+            return True
+    return _mersenne_form_divisor_scan_finds_proper_divisor(exponent, candidate)
+
+
+def tau_equals_two(n: int, factor_limit: int = SMALL_DIVISOR_SCAN_LIMIT) -> bool:
+    """Return True iff n has exact divisor count 2 (PGS survivor state).
+
+    Uses a bounded small-divisor scan first. A proper divisor found in that
+    band settles the cell as non-survivor without a full exact tau inventory.
+    When the band does not settle the cell, exact tau finishes the proof.
+    """
+    n = int(n)
+    if n < 2:
+        return False
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+    root = math.isqrt(n)
+    limit = root if root <= int(factor_limit) else int(factor_limit)
+    factor = 3
+    while factor <= limit:
+        if n % factor == 0:
+            return False
+        factor += 2
+    if limit >= root:
+        return True
+    return tau(n) == 2
 
 
 def divisor_state_label(divisor_state: int) -> str:
@@ -104,21 +199,59 @@ def admissible_left_offsets(exponent: int, candidate_bound: int) -> list[int]:
 
 
 def residue_return_pressure(exponent: int) -> dict[str, object]:
-    """Return the offset-1 chamber pressure below one exponent wall."""
+    """Return the offset-1 chamber pressure below one exponent wall.
+
+    Live succession only needs pressure == 0 versus pressure > 0. Deferred
+    cells may stop once a proper divisor is known (thresholded divisor state).
+    Survivors still require a complete tau == 2 proof.
+    """
     exponent = int(exponent)
     if exponent < 2:
         raise ValueError("exponent must be at least 2")
 
-    candidate = 2**exponent - 1
+    candidate = (1 << exponent) - 1
+    bit_length = exponent
+    root = math.isqrt(candidate)
+
+    # Fast deferred path: proper divisor from bounded divisor-state scans.
+    if _offset1_has_threshold_proper_divisor(exponent, candidate):
+        return {
+            "rule_id": PGSMPG_RESIDUE_RETURN_RULE_ID,
+            "exponent": exponent,
+            "offset_from_power_of_two": 1,
+            "candidate_bit_length": bit_length,
+            "candidate_divisor_count": DEFERRED_DIVISOR_COUNT_LOWER_BOUND,
+            "pressure": 1,
+            "exact_divisor_count": False,
+            "status": STATUS_RESIDUE_RETURN_DEFERRED,
+            "used_forbidden_tool": False,
+        }
+
+    # Bounded scan already covered every factor candidate through isqrt(n).
+    if root <= SMALL_DIVISOR_SCAN_LIMIT:
+        return {
+            "rule_id": PGSMPG_RESIDUE_RETURN_RULE_ID,
+            "exponent": exponent,
+            "offset_from_power_of_two": 1,
+            "candidate_bit_length": bit_length,
+            "candidate_divisor_count": 2,
+            "pressure": 0,
+            "exact_divisor_count": True,
+            "status": STATUS_RESIDUE_RETURN_RESOLVED_SURVIVOR,
+            "used_forbidden_tool": False,
+        }
+
+    # Remaining hard cell: one exact tau settles survivor versus deferred.
     divisor_count_candidate = tau(candidate)
     pressure = divisor_count_candidate - 2
     return {
         "rule_id": PGSMPG_RESIDUE_RETURN_RULE_ID,
         "exponent": exponent,
         "offset_from_power_of_two": 1,
-        "candidate_bit_length": candidate.bit_length(),
+        "candidate_bit_length": bit_length,
         "candidate_divisor_count": divisor_count_candidate,
         "pressure": pressure,
+        "exact_divisor_count": True,
         "status": (
             STATUS_RESIDUE_RETURN_RESOLVED_SURVIVOR
             if pressure == 0
@@ -225,11 +358,11 @@ def exponent_attempt_row(
 ) -> dict[str, object]:
     """Return one candidate-exponent attempt row."""
     exponent = int(exponent)
-    exponent_d = tau(exponent)
-    if exponent_d != 2:
+    if not tau_equals_two(exponent):
+        # Exponents in the live scan are small; exact tau is cheap diagnostics.
         return {
             "exponent": exponent,
-            "exponent_divisor_count": exponent_d,
+            "exponent_divisor_count": tau(exponent),
             "status": STATUS_EXPONENT_DIVISOR_COUNT_NOT_TWO,
             "boundary_certificate": None,
             "residue_return_pressure": None,
@@ -241,7 +374,7 @@ def exponent_attempt_row(
     if pressure["status"] == STATUS_RESIDUE_RETURN_DEFERRED:
         return {
             "exponent": exponent,
-            "exponent_divisor_count": exponent_d,
+            "exponent_divisor_count": 2,
             "status": STATUS_RESIDUE_RETURN_DEFERRED,
             "boundary_certificate": None,
             "residue_return_pressure": pressure,
@@ -252,7 +385,7 @@ def exponent_attempt_row(
     certificate = residue_return_boundary_certificate(pressure, candidate_bound)
     return {
         "exponent": exponent,
-        "exponent_divisor_count": exponent_d,
+        "exponent_divisor_count": 2,
         "status": STATUS_MERSENNE_LOCATION_INFERRED,
         "boundary_certificate": certificate,
         "residue_return_pressure": pressure,
@@ -278,7 +411,7 @@ def pgs_mersenne_prime_certificate(
     attempt_count = 0
     for exponent in range(p + 1, max_exponent + 1):
         attempt_count += 1
-        if tau(exponent) != 2:
+        if not tau_equals_two(exponent):
             continue
         pressure = residue_return_pressure(exponent)
         if pressure["status"] == STATUS_RESIDUE_RETURN_DEFERRED:

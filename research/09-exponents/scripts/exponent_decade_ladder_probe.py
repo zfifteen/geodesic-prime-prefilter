@@ -34,6 +34,11 @@ def build_parser() -> argparse.ArgumentParser:
         type=float,
         default=pgs_mechanism.DEFAULT_CANDIDATE_SECONDS_LIMIT,
     )
+    parser.add_argument(
+        "--mersenne-inference",
+        choices=sorted(pgs_mechanism.VALID_MERSENNE_INFERENCE_MODES),
+        default=pgs_mechanism.DEFAULT_MERSENNE_INFERENCE,
+    )
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     return parser
 
@@ -44,22 +49,30 @@ def run_controller(
     candidate_bound: int,
     candidate_seconds_limit: float,
     output_dir: Path,
+    mersenne_inference: str = pgs_mechanism.DEFAULT_MERSENNE_INFERENCE,
 ) -> dict[str, object]:
     """Run the PGS ladder first, then validation."""
     output_dir.mkdir(parents=True, exist_ok=True)
-    pgs_rows = pgs_mechanism.collect_rows(rungs, candidate_bound, candidate_seconds_limit)
+    pgs_rows = pgs_mechanism.collect_rows(
+        rungs,
+        candidate_bound,
+        candidate_seconds_limit,
+        mersenne_inference,
+    )
     pgs_mechanism.write_outputs(
         output_dir,
         pgs_rows,
         rungs,
         candidate_bound,
         candidate_seconds_limit,
+        mersenne_inference,
     )
     pgs_summary = pgs_mechanism.summarize(
         pgs_rows,
         rungs,
         candidate_bound,
         candidate_seconds_limit,
+        mersenne_inference,
     )
 
     validation_rows = validator.validate_rows(
@@ -88,6 +101,7 @@ def main(argv: list[str] | None = None) -> int:
         candidate_bound=args.candidate_bound,
         candidate_seconds_limit=args.candidate_seconds_limit,
         output_dir=args.output_dir,
+        mersenne_inference=args.mersenne_inference,
     )
     return 0
 

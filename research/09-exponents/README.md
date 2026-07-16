@@ -300,9 +300,23 @@ Each row starts with the exponent itself. The first live measurement is
 `tau(e)`. If `tau(e) != 2`, the exponent is recorded as excluded and the
 mechanism does not inspect `2^e - 1`.
 
-If `tau(e) == 2`, the mechanism builds bounded wheel-open candidates less than
-`2^e` and stops at the first candidate with divisor count `2`. The measured
-distance is:
+### Phase 2 inference modes
+
+The ladder supports two Mersenne-inference modes via `--mersenne-inference`:
+
+| Mode | Default | Behavior |
+| --- | --- | --- |
+| `residue_return` | **yes** | Offset-1 pressure only, matching live PGSMPG v0.3 |
+| `left_prime` | no | Legacy multi-offset nearest-left recovery |
+
+**Default (`residue_return`):** for prime exponents, apply live
+`pgsmpg_residue_return_pressure_v0_3` at `2^e - 1`. Mersenne location is
+inferred exactly when pressure is `0` (distance-1 survivor). Deferred cells
+do not pay multi-offset left-prime recovery. Work limits apply to the single
+offset-1 pressure call.
+
+**Legacy (`left_prime`):** build bounded wheel-open candidates less than `2^e`
+and stop at the first candidate with divisor count `2`. Measured distance:
 
 ```text
 distance = 2^e - left prime
@@ -317,9 +331,17 @@ method.
 The ladder has the same three-part harness as the toy pass:
 
 ```text
-PGS mechanism: exponent gate, then bounded left-prime recovery
+PGS mechanism: exponent gate, then residue-return (default) or left-prime recovery
 validator: classical endpoint validation after PGS rows exist
 controller: runs PGS first, then validation
+```
+
+Reproduce:
+
+```text
+python3 research/09-exponents/scripts/exponent_decade_ladder_probe.py \
+  --mersenne-inference residue_return \
+  --output-dir research/09-exponents/output/exponent_decade_ladder_probe
 ```
 
 The ladder outputs are:
@@ -336,8 +358,10 @@ research/09-exponents/output/exponent_decade_ladder_probe/mersenne_location_infe
 research/09-exponents/output/exponent_decade_ladder_probe/pgs_unresolved_rows.csv
 ```
 
-Measured with `candidate_bound = 4096` and a `1.0` second per-candidate work
-limit:
+### Historical left_prime ladder surface (legacy mode)
+
+Measured with `left_prime`, `candidate_bound = 4096`, and a `1.0` second
+per-candidate work limit:
 
 ```text
 rungs: 31, 100, 1000
@@ -368,6 +392,57 @@ e <= 100:  10 inferred, 0 unresolved
 e <= 1000: 14 inferred, 134 unresolved
 ```
 
+### Phase 2 A/B: residue_return vs left_prime
+
+Executed comparison on non-cumulative windows through rungs `100,400`
+(`e` from `2` through `400`), `candidate_bound=4096`, work limit `1.0` s:
+
+```text
+python3 research/09-exponents/scripts/exponent_decade_ladder_ab_phase2.py \
+  --rungs 100,400 \
+  --output-dir research/09-exponents/output/exponent_decade_ladder_ab_phase2
+```
+
+Artifacts:
+
+```text
+research/09-exponents/output/exponent_decade_ladder_ab_phase2/ab_comparison.json
+research/09-exponents/output/exponent_decade_ladder_ab_phase2/ab_comparison_row.csv
+research/09-exponents/output/exponent_decade_ladder_ab_phase2/left_prime/
+research/09-exponents/output/exponent_decade_ladder_ab_phase2/residue_return/
+```
+
+Measured on this machine:
+
+```text
+wall seconds left_prime:        74.196
+wall seconds residue_return:     9.846
+wall speedup ratio:              7.535  (>= 3x acceptance target)
+candidate_checks sum left_prime: 525
+candidate_checks sum residue:     78
+inferred sets equal:             true
+inferred exponents both modes:   2,3,5,7,13,17,19,31,61,89,107,127
+classical false positives (B):   0
+classical false negatives (B):   0
+```
+
+Acceptance:
+
+```text
+zero false positives on residue_return: pass
+inferred sets equal: pass
+wall speedup >= 3x: pass
+```
+
+Status labels:
+
+```text
+measured: A/B on rungs 100,400 with 1.0s work limit
+implementation: default ladder inference is residue_return
+audit: classical agreement on both arms
+theorem: no theorem promotion
+```
+
 ## PGSMPG v0.1
 
 The Prime Gap Structure Mersenne Prime Generator starts from an accepted
@@ -385,22 +460,32 @@ The output stream is physically minimal:
 {"p": 31, "q": 61}
 ```
 
-For each candidate exponent `e > p`, the live generator first measures
-`tau(e)`. If `tau(e) != 2`, the candidate exponent is excluded before the
-generator inspects the wall.
+For each candidate exponent `e > p`, the live generator first checks whether
+`e` has divisor-count state `2` (`tau_equals_two(e)`). Composite exponents are
+excluded before the wall is inspected.
 
-If `tau(e) == 2`, the live rule applies residue-return pressure at offset `1`
-below the exponent wall:
+If the exponent is a survivor, the live rule applies **thresholded**
+residue-return pressure at offset `1` below the exponent wall
+(`pgsmpg_residue_return_pressure_v0_3`):
 
 ```text
 W = 2^e
 offset-1 cell = W - 1 = 2^e - 1
-pressure = tau(W - 1) - 2
 ```
 
+Pressure measurement order:
+
+1. Bounded small-divisor scan and algebraic form scan for divisors of shape
+   `2*k*e + 1` on the offset-1 cell.
+2. If a proper divisor is found, the cell is **deferred** with pressure `> 0`
+   without computing a full exact tau inventory
+   (`exact_divisor_count = false`).
+3. If the scans do not settle the cell, one exact `tau(2^e - 1)` finishes the
+   proof: pressure `0` means survivor (Mersenne location inferred); pressure
+   `> 0` means deferred with exact inventory.
+
 When pressure is `0`, the offset-1 cell is a divisor-count survivor and the
-Mersenne location is inferred at distance `1`. When pressure is positive, the
-candidate is deferred and the scan continues. The live successor path does not
+Mersenne location is inferred at distance `1`. The live successor path does not
 recover the full nearest-left prime for deferred exponents.
 
 A full left-boundary scanner remains in the module for diagnostic use. It is
@@ -468,7 +553,9 @@ research/09-exponents/output/pgs_mersenne_prime_generator_baseline_stats/mersenn
 ```text
 value ceiling: 2^p - 1 <= 10^50
 exponent ceiling: p <= 166
-live rule: residue-return pressure at offset 1
+live rule: thresholded residue-return pressure at offset 1
+rule id: pgsmpg_residue_return_pressure_v0_3
+generator version: 0.1.1
 candidate_bound: 4096 (API / diagnostic parameter; live succession inspects offset 1 only)
 ```
 
@@ -481,107 +568,105 @@ Recovered Mersenne exponents under this ceiling:
 The harness also records the terminal unresolved scan from `127` through `166`:
 find every PGSMPG Mersenne exponent under `10^50`, then stop at the ceiling.
 
-### Fresh live baseline (executed)
+### Fresh live baseline (Phase 1 thresholded pressure, executed)
 
-Measured with the current SymPy-backed `tau` on the live residue-return path.
-Numbers below match
+Measured on the live thresholded residue-return path. Numbers match
 `research/09-exponents/output/pgs_mersenne_prime_generator_baseline_stats/summary.json`
 and `transition_stats_rows.csv` from the re-run that wrote those artifacts.
 
 ```text
-live_rule_id: pgsmpg_residue_return_pressure_v0_2
+live_rule_id: pgsmpg_residue_return_pressure_v0_3
 live_path: residue_return_offset_1
 resolved transitions: 11
 terminal unresolved scans: 1
-tau calls: 201
-  exponent tau calls: 164
-  residue-return tau calls: 37
-  boundary tau calls: 0
-tau elapsed seconds: 16.344635256857146
-wall elapsed seconds: 16.34491191804409
-  resolved wall seconds: 0.47225508504197933
-  terminal wall seconds: 15.872656833002111
-maximum tau call seconds: 7.295124374999432
-maximum tau input bit length: 163
+work rows (tau_call_count): 164
+  exact_tau_call_count: 139
+  thresholded_scan_call_count: 25
+  exponent role rows: 127
+  residue-return role rows: 37
+  boundary role rows: 0
+wall elapsed seconds: 29.395610208943253
+  resolved wall seconds: 0.7543081249459647
+  terminal wall seconds: 28.64130208399729
+maximum work-row seconds: 12.908438124984968
+maximum work-row bit length: 163
 maximum boundary input bit length: 0
 ```
 
-Role split confirms the live path: every hard cell is an offset-1
-residue-return `tau(2^e - 1)` call. Multi-offset left-boundary recovery does
-not run on succession (`boundary_tau_call_count = 0`).
-
-### Per-transition wall times (live)
-
-| p → q | attempts | exp τ | residue τ | boundary τ | wall seconds | max τ input bits |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 2 → 3 | 1 | 1 | 1 | 0 | 0.000038 | 3 |
-| 3 → 5 | 2 | 2 | 1 | 0 | 0.000022 | 5 |
-| 5 → 7 | 2 | 2 | 1 | 0 | 0.000126 | 7 |
-| 7 → 13 | 6 | 6 | 2 | 0 | 0.000084 | 13 |
-| 13 → 17 | 4 | 4 | 1 | 0 | 0.000027 | 17 |
-| 17 → 19 | 2 | 2 | 1 | 0 | 0.000069 | 19 |
-| 19 → 31 | 12 | 12 | 3 | 0 | 0.000228 | 31 |
-| 31 → 61 | 30 | 30 | 7 | 0 | 0.002794 | 61 |
-| 61 → 89 | 28 | 28 | 6 | 0 | 0.060688 | 89 |
-| 89 → 107 | 18 | 18 | 4 | 0 | 0.284461 | 107 |
-| 107 → 127 | 20 | 20 | 3 | 0 | 0.123718 | 127 |
-| 127 → (terminal) | 39 | 39 | 7 | 0 | 15.872657 | 163 |
-
-Resolved transitions together are about **0.47 s** wall. The terminal scan
-`128..166` is about **15.87 s** wall and dominates the package.
-
-Terminal scan detail:
+Residue-return role split (offset-1 checks only):
 
 ```text
-attempted exponents: 128..166
-tau calls: 46
-  exponent: 39
-  residue-return: 7
-  boundary: 0
-wall seconds: 15.872657
-max single tau call seconds: 7.295124 (163-bit residue-return input)
+residue-return rows: 37
+  thresholded_scan (deferred without full exact tau): 25
+  exact_tau (SymPy divisor_count finish): 12
 ```
 
-### Comparison to the retired multi-offset baseline
+Multi-offset left-boundary recovery does not run on succession
+(`boundary_tau_call_count = 0`).
 
-An older committed baseline measured full left-boundary recovery on the same
-ceiling and reported:
+### Per-transition wall times (live, Phase 1)
 
-```text
-tau calls: 695
-  exponent: 164
-  boundary: 531
-  residue-return: (not used on that path)
-tau elapsed seconds: ~69.73
-```
+| p → q | attempts | work rows | exact τ rows | residue rows | wall seconds |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 2 → 3 | 1 | 1 | 0 | 1 | 0.000014 |
+| 3 → 5 | 2 | 2 | 1 | 1 | 0.000041 |
+| 5 → 7 | 2 | 2 | 1 | 1 | 0.000154 |
+| 7 → 13 | 6 | 6 | 4 | 2 | 0.000117 |
+| 13 → 17 | 4 | 4 | 3 | 1 | 0.000350 |
+| 17 → 19 | 2 | 2 | 1 | 1 | 0.001235 |
+| 19 → 31 | 12 | 12 | 9 | 3 | 0.009228 |
+| 31 → 61 | 30 | 30 | 24 | 7 | 0.002160 |
+| 61 → 89 | 28 | 28 | 24 | 6 | 0.017346 |
+| 89 → 107 | 18 | 18 | 17 | 4 | 0.443694 |
+| 107 → 127 | 20 | 20 | 19 | 3 | 0.279970 |
+| 127 → (terminal) | 39 | 39 | 36 | 7 | 28.641302 |
 
-Live residue-return on the same surface:
+Resolved transitions together are about **0.75 s** wall. The terminal scan
+`128..166` is about **28.64 s** wall and dominates the package.
 
-```text
-tau calls: 201  (about 3.5× fewer total calls)
-boundary tau calls: 0  (was 531)
-residue-return tau calls: 37
-tau / wall elapsed seconds: ~16.34  (about 4.3× lower package time on this machine)
-```
+Terminal hard cells that still require exact tau (examples from this run):
+bit lengths 149, 157, 137 with multi-second SymPy exact-tau finish. Those
+cells have no proper divisor inside the configured threshold scan bands.
 
-Exponent-gate call count is unchanged (`164`). The cut is entirely from dropping
-multi-offset boundary work on deferred candidates.
+### Comparison across generator generations
+
+| Generation | Residue path | Work rows | Boundary rows | Package wall (this machine class) |
+| --- | --- | ---: | ---: | ---: |
+| Retired multi-offset | full left-boundary | 695 | 531 | ~69.7 s |
+| Residue-return v0.2 (exact tau always) | offset-1 exact tau | 201 | 0 | ~16.3 s |
+| **Phase 1 v0.3 (thresholded)** | offset-1 scan then exact tau if needed | **164** | **0** | **~29.4 s** (this run) |
+
+Notes:
+
+- Phase 1 converts **25 / 37** residue-return checks into thresholded deferred
+  scans that skip full exact tau inventory.
+- Package wall remains dominated by a few **hard exact-tau** residue cells in
+  the terminal scan. SymPy finish time on those cells is noisy across runs
+  (often multi-second; prior v0.2 runs on this machine were sometimes ~16 s
+  package wall). Do not read a single wall-time ratio as a theorem.
+- The structural win is fewer full exact-tau inventories on deferred cells,
+  not automatic package wall reduction when the remaining hard cells dominate.
+- Resolved chain through 127 stays well under **1 s** on this machine.
+- Semantic successor set is unchanged:
+  `2, 3, 5, 7, 13, 17, 19, 31, 61, 89, 107, 127`.
 
 ### Cost center (current)
 
-Hard work is `tau(2^e - 1)` on prime exponents (residue-return). Exponent-gate
-`tau(e)` on small integers is negligible. Package time is dominated by the
-terminal unresolved scan past `127`, not by the recovered chain through `127`.
+1. Hard exact `tau(2^e - 1)` on residue cells that survive threshold scans
+   (package owner in the terminal band).
+2. Thresholded deferred scans (cheap; many terminal composites stop here).
+3. Exponent-gate work on small integers (minor).
 
 The generator and stats artifacts store compact integer diagnostics: exponents,
-offsets, divisor counts, bit lengths, and timing. They do not write full
+offsets, divisor counts / lower bounds, bit lengths, timing, and
+`work_kind` (`exact_tau` vs `thresholded_scan`). They do not write full
 `2^p`, `2^p - 1`, or per-candidate giant integers into sidecar records.
 
 Status labels for this section:
 
 ```text
 measured: live succession cost on ceiling 2^p-1 <= 10^50 (p <= 166)
-implementation: residue-return offset-1 succession
+implementation: thresholded residue-return offset-1 succession (v0.3)
 audit: classical agreement on recovered exponents remains a separate validator step
 theorem: no theorem promotion from this baseline
 ```
@@ -625,17 +710,19 @@ residue-return boundary-equivalent calls: 10
 call reduction: 408
 ```
 
-That probe is now the **live** succession rule (`pgsmpg_residue_return_pressure_v0_2`).
-The committed live baseline above is the source of truth for current cost.
+That probe is now the **live** succession rule, advanced in Phase 1 to
+thresholded pressure (`pgsmpg_residue_return_pressure_v0_3`). The committed
+live baseline above is the source of truth for current cost.
 
 Live succession rule:
 
 ```text
 accepted p
 scan e > p
-exclude e when tau(e) != 2
-test offset-1 residue-return pressure for prime exponents
-defer when pressure > 0
+exclude e when tau_equals_two(e) is false
+test offset-1 thresholded residue-return pressure for prime exponents
+  - bounded divisor scans may defer without full exact tau
+  - otherwise exact tau finishes survivor vs deferred
 emit the first surviving e (pressure == 0)
 ```
 
@@ -833,6 +920,10 @@ python3 research/09-exponents/validation/pgs_mersenne_order_filter_validation.py
 
 python3 research/09-exponents/validation/pgs_mersenne_prime_generator_baseline_stats.py \
   --output-dir research/09-exponents/output/pgs_mersenne_prime_generator_baseline_stats
+
+python3 research/09-exponents/scripts/exponent_decade_ladder_ab_phase2.py \
+  --rungs 100,400 \
+  --output-dir research/09-exponents/output/exponent_decade_ladder_ab_phase2
 ```
 
 ## Interpret
