@@ -3956,3 +3956,50 @@ Queue falsification `5e8-6e8` (preferred holdout). Re-check RC48-RC50 and
 RC45-RC47 on any new util maximum. Prefer new-band holdout over further residual
 minting on the same 7 chambers. Do not promote multiset occupancy metrics to
 theorem; do not revive fixed-band 540 or d=4 SDA.
+
+## 2026-07-16T12:15:08Z run
+
+Mechanism:
+Prefix tau-floor probe on the three latest segment extremal rows
+
+Method:
+deterministic dispatch: /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 experiments/square-branch-sda-invalidation-2026-06/square_branch_prefix_tau_floor_probe.py
+
+Result:
+Command exit code: 0
+stdout tail:
+```
+{
+  "d4_tau5_sda_route_transfers_to_square_branch": false,
+  "tau4_sda_binds_observed_offsets": false
+}
+```
+tested_prime_count: None
+first_counterexample: None
+max_utilization: None
+max_p: None
+max_offset: None
+elapsed_seconds: None
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.45s
+```
+
+Delta classification: summary signature changed versus prior/baseline
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+summary signature changed versus prior/baseline
+
+Artifacts:
+/Library/Frameworks/Python.framework/Versions/3.13/bin/python3 experiments/square-branch-sda-invalidation-2026-06/square_branch_prefix_tau_floor_probe.py; experiments/square-branch-sda-invalidation-2026-06/prefix_tau_floor_probe.json
+
+Next step:
+Queue falsification 500M-600M or draft Chamber-Reset Endpoint Resolution Lemma subsection.
