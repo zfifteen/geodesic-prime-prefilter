@@ -139,7 +139,7 @@
   <header>
     <p class="meta">research/04-bounded-compression/docs · 2026-07-16 · hourly analytic job <code>chamber-reset-lemma-draft</code></p>
     <h1>Chamber-Reset Endpoint Resolution Lemma</h1>
-    <p class="meta">Subsections: S1 endpoint identification · S2 band residual and chamber-prefix phase order · S3 right completion and chamber-reset residual · S4 interior τ4 field and chamber-cover residual · S5 quartile-balance residual on Tau4 · S6 late-trail dual markers · S7 Dual L1 / τ4 density dual-balance residual · S8 mean inter-hit gap / signed Dual / chamber open fraction · S9 successive-gap regularity / CV / Dual isolation in mean-gap units · S10 median-shape / sub-mean majority / Tau4 body early-mass residual · S11 robust IQR scale / trail-mean closing / Tau4 body last-quartile residual · S12 opening isolation in mean-gap units / peak-over-median / IQR-over-mean residual · S13 median Dual isolation (open/median, trail/median, dual/median) residual · S14 interior Tau4 packing floor / dynamic range / Dual-vs-peak-desert residual · S15 mean-unit packing floor / Dual-per-hit / peak-desert body-share residual</p>
+    <p class="meta">Subsections: S1 endpoint identification · S2 band residual and chamber-prefix phase order · S3 right completion and chamber-reset residual · S4 interior τ4 field and chamber-cover residual · S5 quartile-balance residual on Tau4 · S6 late-trail dual markers · S7 Dual L1 / τ4 density dual-balance residual · S8 mean inter-hit gap / signed Dual / chamber open fraction · S9 successive-gap regularity / CV / Dual isolation in mean-gap units · S10 median-shape / sub-mean majority / Tau4 body early-mass residual · S11 robust IQR scale / trail-mean closing / Tau4 body last-quartile residual · S12 opening isolation in mean-gap units / peak-over-median / IQR-over-mean residual · S13 median Dual isolation (open/median, trail/median, dual/median) residual · S14 interior Tau4 packing floor / dynamic range / Dual-vs-peak-desert residual · S15 mean-unit packing floor / Dual-per-hit / peak-desert body-share residual · S16 tight-pair multiset mass / peak-desert body locus / large-desert tail occupancy residual</p>
     <p>
       <span class="status status-open">Lemma target: UNRESOLVED</span>
       &nbsp;
@@ -499,6 +499,16 @@ and p = P(r<sup>2</sup>).</code></pre>
           <td>RC45–RC47</td>
           <td>min/mean packing floor; dual/count Dual-per-hit; max/body peak-desert body-share</td>
           <td>Measured holds as residual only (see S15)</td>
+        </tr>
+        <tr>
+          <td>S16-A / S16-B / S16-C</td>
+          <td>Tight-pair multiset mass; peak-desert body locus; large-desert tail share; MultisetOccupancy + ResetResidual^U</td>
+          <td>Constructive (this document); does not close S1*</td>
+        </tr>
+        <tr>
+          <td>RC48–RC50</td>
+          <td>tight_frac floor mass; desert_pos_frac body locus; large_frac tail occupancy</td>
+          <td>Measured holds as residual only (see S16)</td>
         </tr>
       </tbody>
     </table>
@@ -4494,6 +4504,302 @@ dual_l1(r) = dual_per_hit(r) · |Tau4(r)|.</code></pre>
   </section>
 
   <section>
+    <h2>Subsection S16 — Tight-pair multiset mass, peak-desert body locus, and large-desert tail residual</h2>
+    <p class="callout">
+      Sixteenth constructive subsection (this activation). Builds on Claims S1–S15.
+      It names successive-Tau4 multiset floor mass, ordered peak-desert body locus,
+      and large-desert tail share, then extends the chamber-reset residual by that
+      MultisetOccupancy package. It does not prove Target S1*.
+      <code>PROOF.md</code> §Square-Branch Reduction controls: prime-square
+      proximity remains <strong>UNRESOLVED</strong>. Attached residual claims
+      RC48–RC50 are audit only and are not promoted to theorem status.
+    </p>
+
+    <h3>Plain object</h3>
+    <p>
+      Claims S1–S15 identify the selected-square distance <code>D(r)</code>, the
+      residual open set <code>Annulus(r)</code>, the ordered field
+      <code>Tau4(r)</code>, Dual markers, successive-gap lists, and packing-scale
+      ratios (min/median, min/mean, max/body, dual/count). Those objects name
+      envelope scalars on the gap list. They do not yet name
+      <em>how much of the multiset</em> sits at the absolute packing floor
+      <code>g ≤ 2</code>, <em>where</em> the leftmost peak desert sits on the Tau4
+      body, or <em>how much of the multiset</em> forms a large-desert tail
+      <code>g ≥ 2 · median</code>. This subsection names those ordered multiset
+      occupancy residuals — still pure divisor-count geometry on the
+      selected-square chamber, still not a classical gate on <code>D(r)</code>,
+      and still not a proof that <code>Annulus(r)</code> is empty.
+    </p>
+
+    <h3>Hypotheses</h3>
+    <p>
+      Reuse <strong>H1–H6</strong> from Subsections S1, S3, and S4 without change.
+      No new hypothesis is introduced. Multiset occupancy residuals are defined on
+      the nonempty successive-gap list forced by H6 and Claims S4-A / S9-A / S10-A
+      together with Tau4 body support from Claim S8-A. When
+      <code>|Tau4(r)| &lt; 2</code>, successive gaps are empty and S16-A–S16-C are
+      undefined. When <code>|Tau4(r)| = 2</code> (one successive gap), floor mass and
+      large-tail mass are defined if stated, but peak-desert body locus requires
+      <code>body(r) &gt; 0</code>. Claims S16-A–S16-C state the constructive formulas
+      under <code>|Tau4(r)| ≥ 3</code>, <code>n_gaps ≥ 2</code>,
+      <code>body(r) &gt; 0</code>, and <code>median_gap(r) &gt; 0</code>, which holds
+      on every measured residual row attached to this subsection.
+    </p>
+
+    <h3>Constructive claim S16-A (tight-pair multiset mass)</h3>
+    <div class="panel">
+      <p><strong>Claim S16-A.</strong> Assume H1–H6 and Claims S4-A, S9-A, with
+      <code>D(r) ≥ 2</code>, <code>|Tau4(r)| ≥ 2</code>, and
+      <code>n_gaps = |Tau4(r)| − 1 ≥ 1</code>.</p>
+      <p>
+        Reuse the successive-gap multiset <code>gaps(r)</code> from Claim S9-A.
+        Define the tight-pair floor mass
+      </p>
+      <pre><code>tight_frac(r) = #{ g ∈ gaps(r) : g ≤ 2 } / n_gaps.</code></pre>
+      <p>
+        Then
+      </p>
+      <pre><code>0 ≤ tight_frac(r) ≤ 1,
+tight_frac(r) = (count of successive Tau4 steps of length 1 or 2) / n_gaps.</code></pre>
+      <p>
+        Relation to earlier claims: Claim S14-A scales the single tightest gap by
+        the median (<code>min_over_median</code>, RC42). Claim S15-A scales that same
+        minimum by the mean (<code>min_over_mean</code>, RC45). Claim S16-A counts
+        <em>multiset mass at the absolute floor</em> <code>g ≤ 2</code> — occupancy,
+        not height. A chamber can have a small minimum with thin floor mass, or many
+        floor pairs with the same minimum. This is not a bound on <code>D(r)</code>.
+        On measured residual rows the ratio sits in a finite envelope (RC48); that
+        envelope is residual audit only.
+      </p>
+      <p>
+        Status: constructive from Claims S4-A and S9-A. Not a bound on
+        <code>D(r)</code>. Target S1* remains <strong>UNRESOLVED</strong>.
+      </p>
+    </div>
+
+    <h3>Constructive claim S16-B (peak-desert body locus)</h3>
+    <div class="panel">
+      <p><strong>Claim S16-B.</strong> Assume H1–H6 and Claims S4-A, S8-A, S9-A, with
+      <code>D(r) ≥ 2</code>, <code>|Tau4(r)| ≥ 3</code>, <code>n_gaps ≥ 2</code>, and
+      <code>body(r) &gt; 0</code>.</p>
+      <p>
+        Let <code>Tau4(r) = {k₁ &lt; ⋯ &lt; kₘ}</code> and
+        <code>gᵢ = kᵢ₊₁ − kᵢ</code>. Let
+        <code>i* = min{ i : gᵢ = max_j gⱼ }</code> be the leftmost peak successive
+        desert index. Define the body midpoint of that desert and the locus residual
+      </p>
+      <pre><code>mid(i*) = (k_{i*} + k_{i*+1}) / 2,
+desert_pos_frac(r) = (mid(i*) − k₁) / body(r),
+body(r) = kₘ − k₁.</code></pre>
+      <p>
+        Then
+      </p>
+      <pre><code>0 ≤ desert_pos_frac(r) ≤ 1  (under body &gt; 0 and mid between first and last hit).</code></pre>
+      <p>
+        Relation to earlier claims: Claim S4-B / residual RC11 scale peak desert by
+        full chamber length <code>D(r)</code>. Claim S15-C scales peak desert by Tau4
+        body support (<code>max_over_body</code>, RC47). Claim S16-B records
+        <em>where</em> the leftmost peak desert sits on that body — position, not
+        size. The locus does not empty <code>Annulus(r)</code> and does not force
+        <code>D(r) ≤ C_dyn(r)</code>. On measured residual rows the locus sits in a
+        finite envelope (RC49); that envelope is residual audit only. Measured
+        panel rows all have strictly interior peak deserts
+        (<code>0 &lt; i* &lt; n_gaps − 1</code>); interiority is measured structure,
+        not part of the constructive definition.
+      </p>
+      <p>
+        Status: constructive from Claims S4-A, S8-A, and S9-A. Not a bound on
+        <code>D(r)</code>. Target S1* remains <strong>UNRESOLVED</strong>.
+      </p>
+    </div>
+
+    <h3>Constructive claim S16-C (large-desert tail; MultisetOccupancy residual)</h3>
+    <div class="panel">
+      <p><strong>Claim S16-C.</strong> Assume H1–H6 and Claims S9-A, S10-A, S16-A,
+      S16-B, with <code>D(r) ≥ 2</code>, <code>|Tau4(r)| ≥ 3</code>,
+      <code>n_gaps ≥ 2</code>, <code>body(r) &gt; 0</code>, and
+      <code>median_gap(r) &gt; 0</code>.</p>
+      <p>
+        Reuse successive gaps <code>gaps(r)</code> and median gap
+        <code>median_gap(r)</code> from Claims S9-A / S10-A. Define the large-desert
+        tail share
+      </p>
+      <pre><code>large_frac(r) = #{ g ∈ gaps(r) : g ≥ 2 · median_gap(r) } / n_gaps.</code></pre>
+      <p>
+        Define the <strong>multiset occupancy residual package</strong>
+      </p>
+      <pre><code>MultisetOccupancy(r) = (
+  tight_frac(r),
+  desert_pos_frac(r),
+  large_frac(r)
+).</code></pre>
+      <p>
+        Extend the chamber-reset residual of Claim S15-C by that package:
+      </p>
+      <pre><code>ResetResidual^U(r) = (
+  ResetResidual^B(r),
+  MultisetOccupancy(r)
+).</code></pre>
+      <p>
+        Chamber reset still accepts the right endpoint
+        <code>q = r<sup>2</sup> + F(r)</code> and restarts the next ordered search
+        at <code>q</code>. The multiset occupancy package is residual state of the
+        completed selected-square chamber under the stated domain; it is not a
+        classical inference gate and does not by itself empty
+        <code>Annulus(r)</code>.
+      </p>
+      <p>
+        Relation to earlier claims: Claim S9-A / residual RC27 scale peak gap by
+        mean; Claim S12-B / RC37 scale peak by median. Claim S16-C counts
+        <em>how many</em> successive gaps sit in the large-desert tail relative to
+        twice the median — tail occupancy, not peak height. On measured residual
+        rows <code>large_frac</code> sits in a finite envelope (RC50); that envelope
+        is residual audit only.
+      </p>
+      <p>
+        Status: constructive residual-state identification. Target S1* remains
+        <strong>UNRESOLVED</strong>.
+      </p>
+    </div>
+
+    <h3>Measured residual structure attached to S16 (audit only)</h3>
+    <p>
+      Residual claims RC48–RC50 refine multiset floor mass, peak-desert body locus,
+      and large-desert tail share on segment utilization maxima through
+      <code>4e8–5e8</code> plus the full <code>o_q ∈ {2,4,6}</code> branch-max panel
+      (8 evaluation rows; 7 unique chambers). They are not theorems. Fixed-band RC2
+      remains falsified. Invalidated d=4 SDA is not revived. Target S1* is not closed
+      by these rows. Prior residual package source:
+      <code>experiments/square-branch-hourly-2026-07-16-rc48/</code>.
+      RC45–RC47 are retained as non-primary surface (see S15).
+    </p>
+    <table>
+      <thead>
+        <tr><th>ID</th><th>Claim</th><th>Status on util maxima / o_q panel through 4e8–5e8</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>RC48</td>
+          <td>Tight-pair multiset mass <code>0.08 ≤ tight_frac ≤ 0.30</code></td>
+          <td>Holds (audit); observed range <code>[0.113, 0.231]</code> on unique chambers</td>
+        </tr>
+        <tr>
+          <td>RC49</td>
+          <td>Peak-desert body locus <code>0.25 ≤ desert_pos_frac ≤ 0.98</code></td>
+          <td>Holds (audit); observed range <code>[0.347, 0.933]</code>; all peaks interior</td>
+        </tr>
+        <tr>
+          <td>RC50</td>
+          <td>Large-desert tail share <code>0.08 ≤ large_frac ≤ 0.35</code></td>
+          <td>Holds (audit); observed range <code>[0.118, 0.288]</code> on unique chambers</td>
+        </tr>
+        <tr>
+          <td>RC2</td>
+          <td>Fixed band <code>D(r) ∈ [528, 552]</code> on util maxima is a law</td>
+          <td><strong>Falsified</strong> at <code>D=738</code></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Multiset occupancy evaluation of Claims S16-A–S16-C on the same three branch
+      maxima used in S3–S15:
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th><code>F(r)</code> (= o_q)</th>
+          <th><code>r</code></th>
+          <th><code>D(r)</code></th>
+          <th>tight_frac</th>
+          <th>desert_pos_frac</th>
+          <th>large_frac</th>
+          <th><code>D ∈ Annulus</code>?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2</td>
+          <td><code>468,917,503</code></td>
+          <td>542</td>
+          <td>0.186</td>
+          <td>0.405</td>
+          <td>0.271</td>
+          <td>no (audit row)</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><code>482,342,527</code></td>
+          <td>486</td>
+          <td>0.231</td>
+          <td>0.933</td>
+          <td>0.250</td>
+          <td>no (audit row)</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><code>424,171,123</code></td>
+          <td>738</td>
+          <td>0.211</td>
+          <td>0.347</td>
+          <td>0.242</td>
+          <td>no (audit row)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Reading: on the measured panel, about 0.11–0.23 of successive Tau4 steps sit
+      at the absolute packing floor <code>g ≤ 2</code> (tight-pair mass), the leftmost
+      peak desert sits between about 0.35 and 0.93 of Tau4 body support (ordered
+      locus), and about 0.12–0.29 of successive gaps form a large-desert tail at
+      twice the median. Escape from the recurring-540 band at the utilization
+      maximum (<code>D=738</code>) keeps all three residuals inside envelope. That is
+      residual audit structure under Claims S16-A–S16-C. It is not a proof that every
+      future root has empty <code>Annulus(r)</code>. Bounded multiset occupancy does
+      not force <code>D(r) ≤ C_dyn(r)</code>.
+    </p>
+
+    <h3>What S16 does not claim</h3>
+    <ul>
+      <li>No proof of Target S1* / prime-square proximity (still <strong>UNRESOLVED</strong> in <code>PROOF.md</code> §Square-Branch Reduction).</li>
+      <li>No occupancy theorem: tight_frac, desert_pos_frac, and large_frac are residual audit envelopes, not universal packing laws.</li>
+      <li>No claim that finite residual envelopes (or holds of RC48–RC50 on the measured panel) force empty <code>Annulus(r)</code> or <code>D(r) ≤ C_dyn(r)</code>.</li>
+      <li>No claim that <code>MultisetOccupancy(r)</code> or <code>ResetResidual^U(r)</code> forces <code>D(r) ∉ Annulus(r)</code>.</li>
+      <li>No claim that peak-desert locus is a proximity mechanism for endpoint distance.</li>
+      <li>No promotion of RC48–RC50 (or RC3–RC47) to theorem status.</li>
+      <li>No restatement of RC45–RC47 / MeanBodyPacking as the primary surface of this subsection (those remain S15).</li>
+      <li>No revival of fixed cutoff map <code>{2:44, 4:60, 6:60}</code>.</li>
+      <li>No revival of d=4 τ≥5 SDA transfer to the square branch (multiset occupancy is not SDA).</li>
+      <li>No revival of fixed-band near-540 as a law (RC2 remains falsified at <code>D=738</code>).</li>
+      <li>No residue-only or classical factor cover of <code>Annulus(r)</code>.</li>
+      <li>No classical primality, sieve, gcd, or Miller-Rabin gate as PGS inference.</li>
+    </ul>
+
+    <h3>Minimal falsification command</h3>
+    <p>
+      Target S1* (equivalently: emptiness of <code>Annulus(r)</code> for every
+      selected-square root) is falsified by any selected-square root with
+      <code>D(r) &gt; C_dyn(r)</code>. Minimal command on the next open regime
+      beyond the certified <code>4e8–5e8</code> surface:
+    </p>
+    <pre><code>python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py \
+  --min-prime 500000001 \
+  --max-prime 600000000 \
+  --output-dir research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_5e8_6e8</code></pre>
+    <p>
+      Decision rule: nonempty <code>first_counterexample</code> means some
+      measured <code>D(r) ∈ Annulus(r)</code> and Target S1* is falsified at that
+      root. A null counterexample is audit corroboration only — not a proof of
+      S1*, not a proof that every future annulus is empty, and not a promotion of
+      RC48–RC50.
+    </p>
+    <p>
+      Optional residual-panel check for RC48–RC50 / Claims S16-A–S16-C on the known
+      util-maxima and o_q branch-max panel (does not prove S1*):
+    </p>
+    <pre><code>python3 experiments/square-branch-hourly-2026-07-16-rc48/offset_540_residual_rc48_probe.py</code></pre>
+  </section>
+
+  <section>
     <h2>Status separation</h2>
     <table>
       <thead>
@@ -4544,6 +4850,9 @@ dual_l1(r) = dual_per_hit(r) · |Tau4(r)|.</code></pre>
         <tr><td>Claim S15-A mean-unit packing floor min over mean</td><td>Constructive subsection claim (this document)</td></tr>
         <tr><td>Claim S15-B Dual L1 per Tau4 hit</td><td>Constructive subsection claim (this document)</td></tr>
         <tr><td>Claim S15-C MeanBodyPacking and body-extended chamber-reset residual</td><td>Constructive subsection claim (this document)</td></tr>
+        <tr><td>Claim S16-A tight-pair multiset mass</td><td>Constructive subsection claim (this document)</td></tr>
+        <tr><td>Claim S16-B peak-desert body locus</td><td>Constructive subsection claim (this document)</td></tr>
+        <tr><td>Claim S16-C MultisetOccupancy and occupancy-extended chamber-reset residual</td><td>Constructive subsection claim (this document)</td></tr>
         <tr><td>Target S1* prime-square proximity</td><td><strong>Unresolved</strong> (<code>PROOF.md</code> §Square-Branch Reduction)</td></tr>
         <tr><td>All-scale bounded dynamic cutoff on square branch</td><td>Unresolved until S1* closes</td></tr>
         <tr><td>Measured surface <code>4e8-5e8</code></td><td>No counterexample; max util <code>0.934…</code> (audit)</td></tr>
@@ -4562,6 +4871,7 @@ dual_l1(r) = dual_per_hit(r) · |Tau4(r)|.</code></pre>
         <tr><td>RC39-RC41 open/median / trail/median / dual/median</td><td>Measured holds; residual only</td></tr>
         <tr><td>RC42-RC44 min/median packing floor / max/min range / dual/max_gap</td><td>Measured holds; residual only</td></tr>
         <tr><td>RC45-RC47 min/mean packing floor / dual/count / max/body</td><td>Measured holds; residual only</td></tr>
+        <tr><td>RC48-RC50 tight_frac floor mass / desert_pos_frac locus / large_frac tail occupancy</td><td>Measured holds; residual only</td></tr>
         <tr><td>d=4 SDA square transfer / fixed-540 band</td><td>Invalidated / falsified</td></tr>
       </tbody>
     </table>
@@ -4571,9 +4881,9 @@ dual_l1(r) = dual_per_hit(r) · |Tau4(r)|.</code></pre>
     <h2>Next pressure</h2>
     <ol>
       <li>Run the minimal falsification command on <code>5e8-6e8</code> (queue return): empty <code>Annulus(r)</code> on that surface or record a counterexample. Prefer this holdout over further ratio minting on the same 7 chambers.</li>
-      <li>Keep theorem pressure on <code>D(r)</code> under Claims S1, S2-B, S3-B, S4-C, S5-C, S6-C, S7-C, S8-C, S9-C, S10-C, S11-C, S12-C, S13-C, S14-C, and S15-C; do not rebuild residue covers or SDA ports.</li>
-      <li>Re-check RC9-RC47 / <code>Cover(r)</code> / <code>QuartileBalance(r)</code> / <code>Trail(r)</code> / <code>DualBalance(r)</code> / <code>SpacingBalance(r)</code> / <code>GapRegularity(r)</code> / <code>GapShape(r)</code> / <code>RobustScale(r)</code> / <code>OpeningScale(r)</code> / <code>MedianDual(r)</code> / <code>InteriorPacking(r)</code> / <code>MeanBodyPacking(r)</code> on any new utilization maximum; do not promote cover, quartile, trail, Dual L1, density, share, mean-gap, signed Dual, open-fraction, max/mean, CV, Dual-over-mean, median/mean, sub-mean majority, body early-mass, IQR/median, trail/mean, body last-quartile, open/mean, max/median, IQR/mean, open/median, trail/median, dual/median, min/median, max/min, dual/max_gap, min/mean, dual/count, or max/body residuals to theorem status.</li>
-      <li>Optional later subsection: a PGS-native mechanism that forces <code>D(r) ∉ Annulus(r)</code> from chamber invariants in <code>ResetResidual^B(r)</code> alone — only if those invariants are stated without classical gates and without promoting RC3-RC47. Prefer proximity-slack objects <code>u(r)=D(r)/C_dyn(r)</code> over further packing-ratio minting when deviating from the RC formalization ladder.</li>
+      <li>Keep theorem pressure on <code>D(r)</code> under Claims S1, S2-B, S3-B, S4-C, S5-C, S6-C, S7-C, S8-C, S9-C, S10-C, S11-C, S12-C, S13-C, S14-C, S15-C, and S16-C; do not rebuild residue covers or SDA ports.</li>
+      <li>Re-check RC9-RC50 / <code>Cover(r)</code> / <code>QuartileBalance(r)</code> / <code>Trail(r)</code> / <code>DualBalance(r)</code> / <code>SpacingBalance(r)</code> / <code>GapRegularity(r)</code> / <code>GapShape(r)</code> / <code>RobustScale(r)</code> / <code>OpeningScale(r)</code> / <code>MedianDual(r)</code> / <code>InteriorPacking(r)</code> / <code>MeanBodyPacking(r)</code> / <code>MultisetOccupancy(r)</code> on any new utilization maximum; do not promote cover, quartile, trail, Dual L1, density, share, mean-gap, signed Dual, open-fraction, max/mean, CV, Dual-over-mean, median/mean, sub-mean majority, body early-mass, IQR/median, trail/mean, body last-quartile, open/mean, max/median, IQR/mean, open/median, trail/median, dual/median, min/median, max/min, dual/max_gap, min/mean, dual/count, max/body, tight_frac, desert_pos_frac, or large_frac residuals to theorem status.</li>
+      <li>Optional later subsection: a PGS-native mechanism that forces <code>D(r) ∉ Annulus(r)</code> from chamber invariants in <code>ResetResidual^U(r)</code> alone — only if those invariants are stated without classical gates and without promoting RC3-RC50. Prefer proximity-slack objects <code>u(r)=D(r)/C_dyn(r)</code> or new-band holdout <code>5e8–6e8</code> over further multiset-ratio minting on the same 7 chambers.</li>
     </ol>
   </section>
 
@@ -4599,6 +4909,8 @@ dual_l1(r) = dual_per_hit(r) · |Tau4(r)|.</code></pre>
     <code>experiments/square-branch-hourly-2026-07-15-s14/FINDINGS.md</code>;
     <code>experiments/square-branch-hourly-2026-07-15-rc45/FINDINGS.md</code>;
     <code>experiments/square-branch-hourly-2026-07-15-s15/FINDINGS.md</code>;
+    <code>experiments/square-branch-hourly-2026-07-16-rc48/FINDINGS.md</code>;
+    <code>experiments/square-branch-hourly-2026-07-16-s16/FINDINGS.md</code>;
     <code>Agents.md</code> theorem-trust contract.
     Live proof status is never overridden by this draft.
   </footer>

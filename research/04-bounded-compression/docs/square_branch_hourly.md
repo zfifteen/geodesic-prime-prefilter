@@ -4003,3 +4003,62 @@ Artifacts:
 
 Next step:
 Queue falsification 500M-600M or draft Chamber-Reset Endpoint Resolution Lemma subsection.
+
+## 2026-07-16T16:17:39Z run
+
+Mechanism:
+Draft one subsection of the Chamber-Reset Endpoint Resolution Lemma on the
+selected-square branch (queue job `chamber-reset-lemma-draft`). Project terms:
+Claims S16-A/B/C, MultisetOccupancy, ResetResidual^U; residual package RC48–RC50.
+
+Method:
+Heavy analytic fan-out (16/16 specialists, ≥2 contrarians) then leader execute.
+Contrarian slots pressed residual minting theater and preferred proximity-slack
+`u(r)=D(r)/C_dyn(r)` / 5e8–6e8 holdout; job contract is lemma draft, so
+execution formalized already-measured RC48–RC50 into constructive S16 with
+explicit S1* falsification command and residual probe. No classical gates; no
+theorem inflation; S1* remains UNRESOLVED; RC2 retained falsified; d=4 SDA not
+revived.
+
+Result:
+Constructive lemma subsection S16 shipped under
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`:
+
+| Claim | Object | Status |
+| --- | --- | --- |
+| S16-A tight_frac | multiset floor mass g≤2 | constructive residual |
+| S16-B desert_pos_frac | peak-desert body locus | constructive residual |
+| S16-C MultisetOccupancy | large_frac + ResetResidual^U | constructive residual |
+| RC48–RC50 | audit envelopes on 7 chambers | holds (audit) |
+| Target S1* | Annulus emptiness / proximity | UNRESOLVED |
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.71s
+```
+RC48 residual probe exit code: 0 (RC48–RC50 hold; RC2 retained falsified).
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New constructive lemma subsection S16 (Claims S16-A/B/C): MultisetOccupancy
+residual package (tight_frac, desert_pos_frac, large_frac) and ResetResidual^U
+extending ResetResidual^B, with explicit S1* falsification command on 5e8–6e8
+and residual probe path. Distinct from S15 MeanBodyPacking; not 540-as-law; not
+d=4 SDA; not S1* closure.
+
+Artifacts:
+`research/04-bounded-compression/docs/chamber_reset_endpoint_resolution_lemma/index.html`;
+`experiments/square-branch-hourly-2026-07-16-s16/FINDINGS.md`;
+`experiments/square-branch-hourly-2026-07-16-rc48/` (measured residual source)
+
+Next step:
+Queue falsification `5e8–6e8` (preferred holdout). Re-check RC48–RC50 on any new
+util maximum. Prefer proximity-slack `u(r)=D(r)/C_dyn(r)` or new-band pressure
+over further multiset minting on the same 7 chambers. Do not promote MultisetOccupancy
+to theorem; do not revive fixed-band 540 or d=4 SDA.
