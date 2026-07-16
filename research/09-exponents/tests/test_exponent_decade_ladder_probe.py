@@ -60,20 +60,52 @@ def test_ladder_rows_are_non_cumulative_windows():
 
 
 def test_known_small_inferred_exponents_have_distance_one():
-    """Small inferred exponent rows should recover distance one."""
+    """Small inferred exponent rows should recover distance one under both modes."""
     mechanism = load_module(MECHANISM_PATH, "exponent_decade_ladder_pgs_mechanism")
 
-    for exponent in [31, 61, 127]:
-        row = mechanism.pgs_row(exponent, exponent, candidate_bound=4096)
-        assert row["exponent_status"] == mechanism.STATUS_LEFT_PRIME_RESOLVED
-        assert row["distance_to_left_prime"] == 1
-        assert row["mersenne_location_inferred"] is True
+    for mode in [
+        mechanism.INFERENCE_RESIDUE_RETURN,
+        mechanism.INFERENCE_LEFT_PRIME,
+    ]:
+        for exponent in [31, 61, 127]:
+            row = mechanism.pgs_row(
+                exponent,
+                exponent,
+                candidate_bound=4096,
+                mersenne_inference=mode,
+            )
+            assert row["exponent_status"] == mechanism.STATUS_LEFT_PRIME_RESOLVED
+            assert row["distance_to_left_prime"] == 1
+            assert row["mersenne_location_inferred"] is True
+            assert row["mersenne_inference_mode"] == mode
+
+
+def test_residue_return_defers_without_multi_offset_distance():
+    """Residue-return mode defers composite Mersenne cells without left-prime distance."""
+    mechanism = load_module(MECHANISM_PATH, "exponent_decade_ladder_pgs_mechanism")
+    row = mechanism.pgs_row(
+        11,
+        11,
+        candidate_bound=4096,
+        mersenne_inference=mechanism.INFERENCE_RESIDUE_RETURN,
+    )
+
+    assert row["exponent_status"] == mechanism.STATUS_LEFT_PRIME_RESOLVED
+    assert row["mersenne_location_inferred"] is False
+    assert row["distance_to_left_prime"] == ""
+    assert row["candidate_checks"] == 1
+    assert row["residue_return_status"] == "residue_return_deferred"
 
 
 def test_small_prime_exponent_can_resolve_without_inference():
     """A resolved prime exponent can still miss the distance-one condition."""
     mechanism = load_module(MECHANISM_PATH, "exponent_decade_ladder_pgs_mechanism")
-    row = mechanism.pgs_row(11, 11, candidate_bound=4096)
+    row = mechanism.pgs_row(
+        11,
+        11,
+        candidate_bound=4096,
+        mersenne_inference=mechanism.INFERENCE_LEFT_PRIME,
+    )
 
     assert row["exponent_status"] == mechanism.STATUS_LEFT_PRIME_RESOLVED
     assert row["distance_to_left_prime"] == 9
@@ -83,7 +115,12 @@ def test_small_prime_exponent_can_resolve_without_inference():
 def test_unresolved_rows_are_explicit_when_bound_is_too_small():
     """A small candidate bound should create an explicit unresolved row."""
     mechanism = load_module(MECHANISM_PATH, "exponent_decade_ladder_pgs_mechanism")
-    row = mechanism.pgs_row(11, 11, candidate_bound=2)
+    row = mechanism.pgs_row(
+        11,
+        11,
+        candidate_bound=2,
+        mersenne_inference=mechanism.INFERENCE_LEFT_PRIME,
+    )
 
     assert row["exponent_status"] == mechanism.STATUS_LEFT_PRIME_UNRESOLVED
     assert row["candidate_bound"] == 2
@@ -100,11 +137,39 @@ def test_unresolved_rows_are_explicit_when_work_limit_is_hit(monkeypatch):
         raise mechanism.CandidateWorkLimitReached
 
     monkeypatch.setattr(mechanism, "limited_tau", raise_work_limit)
-    row = mechanism.pgs_row(97, 97, candidate_bound=4096, candidate_seconds_limit=0.001)
+    row = mechanism.pgs_row(
+        97,
+        97,
+        candidate_bound=4096,
+        candidate_seconds_limit=0.001,
+        mersenne_inference=mechanism.INFERENCE_LEFT_PRIME,
+    )
 
     assert row["exponent_status"] == mechanism.STATUS_LEFT_PRIME_UNRESOLVED
     assert row["unresolved_reason"] == "candidate_work_limit"
     assert row["distance_to_left_prime"] == ""
+    assert row["mersenne_location_inferred"] is False
+
+
+def test_residue_return_work_limit_is_explicit(monkeypatch):
+    """Residue-return mode should surface offset-1 work-limit unresolved rows."""
+    mechanism = load_module(MECHANISM_PATH, "exponent_decade_ladder_pgs_mechanism")
+
+    def raise_work_limit(*_args, **_kwargs):
+        raise mechanism.CandidateWorkLimitReached
+
+    monkeypatch.setattr(mechanism, "limited_call", raise_work_limit)
+    row = mechanism.pgs_row(
+        97,
+        97,
+        candidate_bound=4096,
+        candidate_seconds_limit=0.001,
+        mersenne_inference=mechanism.INFERENCE_RESIDUE_RETURN,
+    )
+
+    assert row["exponent_status"] == mechanism.STATUS_LEFT_PRIME_UNRESOLVED
+    assert row["unresolved_reason"] == "candidate_work_limit"
+    assert row["unresolved_candidate_offset"] == 1
     assert row["mersenne_location_inferred"] is False
 
 
@@ -113,9 +178,24 @@ def test_validator_checks_after_pgs_rows():
     mechanism = load_module(MECHANISM_PATH, "exponent_decade_ladder_pgs_mechanism")
     validator = load_module(VALIDATOR_PATH, "exponent_decade_ladder_validator")
     pgs_rows = [
-        {key: str(value) for key, value in mechanism.pgs_row(31, 31, 4096).items()},
-        {key: str(value) for key, value in mechanism.pgs_row(11, 11, 4096).items()},
-        {key: str(value) for key, value in mechanism.pgs_row(100, 100, 4096).items()},
+        {
+            key: str(value)
+            for key, value in mechanism.pgs_row(
+                31, 31, 4096, mersenne_inference=mechanism.INFERENCE_RESIDUE_RETURN
+            ).items()
+        },
+        {
+            key: str(value)
+            for key, value in mechanism.pgs_row(
+                11, 11, 4096, mersenne_inference=mechanism.INFERENCE_RESIDUE_RETURN
+            ).items()
+        },
+        {
+            key: str(value)
+            for key, value in mechanism.pgs_row(
+                100, 100, 4096, mersenne_inference=mechanism.INFERENCE_RESIDUE_RETURN
+            ).items()
+        },
     ]
 
     rows = validator.validate_rows(pgs_rows)
@@ -138,6 +218,7 @@ def test_controller_outputs_reconcile_and_are_lf_terminated(tmp_path):
         candidate_bound=4096,
         candidate_seconds_limit=1.0,
         output_dir=out,
+        mersenne_inference="residue_return",
     )
 
     paths = [

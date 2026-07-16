@@ -154,10 +154,62 @@ def test_residue_return_pressure_resolves_offset_one_survivor():
 
     assert pressure["status"] == generator.STATUS_RESIDUE_RETURN_RESOLVED_SURVIVOR
     assert pressure["pressure"] == 0
+    assert pressure["candidate_divisor_count"] == 2
+    assert pressure["exact_divisor_count"] is True
+    assert pressure["rule_id"] == generator.PGSMPG_RESIDUE_RETURN_RULE_ID
     assert row["status"] == generator.STATUS_MERSENNE_LOCATION_INFERRED
     assert row["distance_to_left_boundary"] == 1
     assert row["boundary_certificate"]["candidate_state_count"] == 1
     assert row["boundary_certificate"]["residue_return_pressure"] == pressure
+
+
+def test_thresholded_deferred_skips_full_tau_when_small_factor_exists(monkeypatch):
+    """Deferred offset-1 cells with a small factor should not pay full exact tau."""
+    generator = load_module(GENERATOR_PATH, "pgs_mersenne_prime_generator")
+    calls: list[int] = []
+    original_tau = generator.tau
+
+    def counted_tau(n: int) -> int:
+        calls.append(int(n))
+        return original_tau(n)
+
+    monkeypatch.setattr(generator, "tau", counted_tau)
+    pressure = generator.residue_return_pressure(11)
+
+    assert pressure["status"] == generator.STATUS_RESIDUE_RETURN_DEFERRED
+    assert pressure["pressure"] > 0
+    assert pressure["candidate_divisor_count"] > 2
+    assert pressure["exact_divisor_count"] is False
+    assert calls == []
+
+
+def test_forbidden_tool_list_still_blocks_classical_inference_apis():
+    """Live source may use bounded divisor scans; classical inference APIs stay out."""
+    source = GENERATOR_PATH.read_text(encoding="utf-8")
+    for term in ("isprime", "nextprime", "prevprime", "KNOWN_MERSENNE", "Miller", "fallback", "random"):
+        assert term not in source
+
+
+def test_tau_equals_two_matches_exact_tau_on_small_surface():
+    """Thresholded survivor checks should match exact tau == 2 on a small band."""
+    generator = load_module(GENERATOR_PATH, "pgs_mersenne_prime_generator")
+
+    for n in range(2, 500):
+        assert generator.tau_equals_two(n) == (generator.tau(n) == 2)
+
+
+def test_phase1_successor_chain_through_127():
+    """Phase-1 thresholded pressure should preserve the known successor chain."""
+    generator = load_module(GENERATOR_PATH, "pgs_mersenne_prime_generator")
+    expected = [2, 3, 5, 7, 13, 17, 19, 31, 61, 89, 107, 127]
+    current = expected[0]
+    recovered = [current]
+    for target in expected[1:]:
+        record = generator.emit_record(current, max_exponent=127, candidate_bound=4096)
+        assert record == {"p": current, "q": target}
+        recovered.append(target)
+        current = target
+    assert recovered == expected
 
 
 def test_deferred_residue_return_candidate_does_not_run_full_boundary_scan(monkeypatch):

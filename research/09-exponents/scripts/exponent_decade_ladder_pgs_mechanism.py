@@ -17,6 +17,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
+import pgs_mersenne_prime_generator as pgsmpg
 import toy_exponent_wall_pgs_mechanism as toy_mechanism
 
 
@@ -29,6 +30,13 @@ NUMBER_FAMILY = "power_of_two"
 STATUS_EXPONENT_DIVISOR_COUNT_NOT_TWO = "exponent_divisor_count_not_two"
 STATUS_LEFT_PRIME_RESOLVED = "left_prime_resolved"
 STATUS_LEFT_PRIME_UNRESOLVED = "left_prime_unresolved"
+# Phase 2 default: Mersenne inference matches live PGSMPG residue-return.
+INFERENCE_RESIDUE_RETURN = "residue_return"
+INFERENCE_LEFT_PRIME = "left_prime"
+DEFAULT_MERSENNE_INFERENCE = INFERENCE_RESIDUE_RETURN
+VALID_MERSENNE_INFERENCE_MODES = frozenset(
+    {INFERENCE_RESIDUE_RETURN, INFERENCE_LEFT_PRIME}
+)
 
 
 PGS_FIELDNAMES = [
@@ -38,6 +46,7 @@ PGS_FIELDNAMES = [
     "exponent_divisor_count",
     "exponent_status",
     "number_family",
+    "mersenne_inference_mode",
     "left_prime_rule_id",
     "candidate_bound",
     "candidate_seconds_limit",
@@ -50,6 +59,8 @@ PGS_FIELDNAMES = [
     "distance_to_left_prime",
     "mersenne_location_inferred",
     "left_prime",
+    "residue_return_status",
+    "exact_divisor_count",
 ]
 
 
@@ -66,6 +77,15 @@ def build_parser() -> argparse.ArgumentParser:
         "--candidate-seconds-limit",
         type=float,
         default=DEFAULT_CANDIDATE_SECONDS_LIMIT,
+    )
+    parser.add_argument(
+        "--mersenne-inference",
+        choices=sorted(VALID_MERSENNE_INFERENCE_MODES),
+        default=DEFAULT_MERSENNE_INFERENCE,
+        help=(
+            "residue_return: offset-1 pressure only (live PGSMPG rule). "
+            "left_prime: multi-offset nearest-left recovery (legacy diagnostic)."
+        ),
     )
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     return parser
@@ -120,9 +140,12 @@ def rung_windows(rungs: list[int]) -> list[tuple[int, int]]:
     return windows
 
 
-def blank_boundary_fields() -> dict[str, object]:
+def blank_boundary_fields(
+    mersenne_inference_mode: str = DEFAULT_MERSENNE_INFERENCE,
+) -> dict[str, object]:
     """Return empty boundary fields for rows without boundary recovery."""
     return {
+        "mersenne_inference_mode": mersenne_inference_mode,
         "left_prime_rule_id": toy_mechanism.PGS_LEFT_PRIME_RULE_ID,
         "candidate_bound": "",
         "candidate_seconds_limit": "",
@@ -135,6 +158,8 @@ def blank_boundary_fields() -> dict[str, object]:
         "distance_to_left_prime": "",
         "mersenne_location_inferred": False,
         "left_prime": "",
+        "residue_return_status": "",
+        "exact_divisor_count": "",
     }
 
 
@@ -143,6 +168,7 @@ def excluded_exponent_row(
     rung_max_exponent: int,
     exponent: int,
     exponent_tau: int,
+    mersenne_inference_mode: str = DEFAULT_MERSENNE_INFERENCE,
 ) -> dict[str, object]:
     """Return a row excluded by exponent divisor count."""
     return {
@@ -152,11 +178,96 @@ def excluded_exponent_row(
         "exponent_divisor_count": exponent_tau,
         "exponent_status": STATUS_EXPONENT_DIVISOR_COUNT_NOT_TWO,
         "number_family": NUMBER_FAMILY,
-        **blank_boundary_fields(),
+        **blank_boundary_fields(mersenne_inference_mode),
     }
 
 
-def resolved_or_unresolved_row(
+def limited_call(seconds_limit: float, func, *args, **kwargs):
+    """Run one callable under an optional real-time work limit."""
+    if seconds_limit <= 0:
+        return func(*args, **kwargs)
+
+    def handler(_signum, _frame):
+        raise CandidateWorkLimitReached
+
+    previous_handler = signal.getsignal(signal.SIGALRM)
+    signal.signal(signal.SIGALRM, handler)
+    signal.setitimer(signal.ITIMER_REAL, seconds_limit)
+    try:
+        return func(*args, **kwargs)
+    finally:
+        signal.setitimer(signal.ITIMER_REAL, 0)
+        signal.signal(signal.SIGALRM, previous_handler)
+
+
+def residue_return_row(
+    rung_min_exponent: int,
+    rung_max_exponent: int,
+    exponent: int,
+    exponent_tau: int,
+    candidate_seconds_limit: float,
+) -> dict[str, object]:
+    """Return one prime-exponent row using live PGSMPG offset-1 residue-return."""
+    power_of_two = 1 << exponent
+    mersenne_number = power_of_two - 1
+    try:
+        pressure = limited_call(
+            candidate_seconds_limit,
+            pgsmpg.residue_return_pressure,
+            exponent,
+        )
+    except CandidateWorkLimitReached:
+        return {
+            "rung_min_exponent": rung_min_exponent,
+            "rung_max_exponent": rung_max_exponent,
+            "exponent": exponent,
+            "exponent_divisor_count": exponent_tau,
+            "exponent_status": STATUS_LEFT_PRIME_UNRESOLVED,
+            "number_family": NUMBER_FAMILY,
+            "mersenne_inference_mode": INFERENCE_RESIDUE_RETURN,
+            "left_prime_rule_id": pgsmpg.PGSMPG_RESIDUE_RETURN_RULE_ID,
+            "candidate_bound": "",
+            "candidate_seconds_limit": candidate_seconds_limit,
+            "candidate_checks": 1,
+            "rejected_candidate_offsets_before_left_prime": "",
+            "unresolved_reason": "candidate_work_limit",
+            "unresolved_candidate_offset": 1,
+            "power_of_two": power_of_two,
+            "mersenne_number": mersenne_number,
+            "distance_to_left_prime": "",
+            "mersenne_location_inferred": False,
+            "left_prime": "",
+            "residue_return_status": "",
+            "exact_divisor_count": "",
+        }
+
+    inferred = pressure["status"] == pgsmpg.STATUS_RESIDUE_RETURN_RESOLVED_SURVIVOR
+    return {
+        "rung_min_exponent": rung_min_exponent,
+        "rung_max_exponent": rung_max_exponent,
+        "exponent": exponent,
+        "exponent_divisor_count": exponent_tau,
+        "exponent_status": STATUS_LEFT_PRIME_RESOLVED,
+        "number_family": NUMBER_FAMILY,
+        "mersenne_inference_mode": INFERENCE_RESIDUE_RETURN,
+        "left_prime_rule_id": pgsmpg.PGSMPG_RESIDUE_RETURN_RULE_ID,
+        "candidate_bound": "",
+        "candidate_seconds_limit": candidate_seconds_limit,
+        "candidate_checks": 1,
+        "rejected_candidate_offsets_before_left_prime": "",
+        "unresolved_reason": "",
+        "unresolved_candidate_offset": "",
+        "power_of_two": power_of_two,
+        "mersenne_number": mersenne_number,
+        "distance_to_left_prime": 1 if inferred else "",
+        "mersenne_location_inferred": inferred,
+        "left_prime": mersenne_number if inferred else "",
+        "residue_return_status": pressure["status"],
+        "exact_divisor_count": bool(pressure.get("exact_divisor_count", True)),
+    }
+
+
+def left_prime_row(
     rung_min_exponent: int,
     rung_max_exponent: int,
     exponent: int,
@@ -164,7 +275,7 @@ def resolved_or_unresolved_row(
     candidate_bound: int,
     candidate_seconds_limit: float,
 ) -> dict[str, object]:
-    """Return one prime-exponent PGS row."""
+    """Return one prime-exponent row using multi-offset left-prime recovery."""
     power_of_two = 2**exponent
     rejected_offsets: list[int] = []
     for offset in toy_mechanism.left_prime_candidate_offsets(power_of_two, candidate_bound):
@@ -179,6 +290,7 @@ def resolved_or_unresolved_row(
                 "exponent_divisor_count": exponent_tau,
                 "exponent_status": STATUS_LEFT_PRIME_UNRESOLVED,
                 "number_family": NUMBER_FAMILY,
+                "mersenne_inference_mode": INFERENCE_LEFT_PRIME,
                 "left_prime_rule_id": toy_mechanism.PGS_LEFT_PRIME_RULE_ID,
                 "candidate_bound": candidate_bound,
                 "candidate_seconds_limit": candidate_seconds_limit,
@@ -193,6 +305,8 @@ def resolved_or_unresolved_row(
                 "distance_to_left_prime": "",
                 "mersenne_location_inferred": False,
                 "left_prime": "",
+                "residue_return_status": "",
+                "exact_divisor_count": "",
             }
         if candidate_tau == 2:
             distance = offset
@@ -203,6 +317,7 @@ def resolved_or_unresolved_row(
                 "exponent_divisor_count": exponent_tau,
                 "exponent_status": STATUS_LEFT_PRIME_RESOLVED,
                 "number_family": NUMBER_FAMILY,
+                "mersenne_inference_mode": INFERENCE_LEFT_PRIME,
                 "left_prime_rule_id": toy_mechanism.PGS_LEFT_PRIME_RULE_ID,
                 "candidate_bound": candidate_bound,
                 "candidate_seconds_limit": candidate_seconds_limit,
@@ -217,6 +332,8 @@ def resolved_or_unresolved_row(
                 "distance_to_left_prime": distance,
                 "mersenne_location_inferred": distance == 1,
                 "left_prime": candidate,
+                "residue_return_status": "",
+                "exact_divisor_count": True,
             }
         rejected_offsets.append(offset)
     return {
@@ -226,6 +343,7 @@ def resolved_or_unresolved_row(
         "exponent_divisor_count": exponent_tau,
         "exponent_status": STATUS_LEFT_PRIME_UNRESOLVED,
         "number_family": NUMBER_FAMILY,
+        "mersenne_inference_mode": INFERENCE_LEFT_PRIME,
         "left_prime_rule_id": toy_mechanism.PGS_LEFT_PRIME_RULE_ID,
         "candidate_bound": candidate_bound,
         "candidate_seconds_limit": candidate_seconds_limit,
@@ -240,6 +358,8 @@ def resolved_or_unresolved_row(
         "distance_to_left_prime": "",
         "mersenne_location_inferred": False,
         "left_prime": "",
+        "residue_return_status": "",
+        "exact_divisor_count": "",
     }
 
 
@@ -249,8 +369,14 @@ def pgs_row(
     candidate_bound: int,
     candidate_seconds_limit: float = DEFAULT_CANDIDATE_SECONDS_LIMIT,
     rung_min_exponent: int = 2,
+    mersenne_inference: str = DEFAULT_MERSENNE_INFERENCE,
 ) -> dict[str, object]:
     """Return one PGS ladder row."""
+    mode = str(mersenne_inference)
+    if mode not in VALID_MERSENNE_INFERENCE_MODES:
+        raise ValueError(
+            f"mersenne_inference must be one of {sorted(VALID_MERSENNE_INFERENCE_MODES)}"
+        )
     exponent_tau = tau(exponent)
     if exponent_tau != 2:
         return excluded_exponent_row(
@@ -258,8 +384,17 @@ def pgs_row(
             rung_max_exponent,
             exponent,
             exponent_tau,
+            mode,
         )
-    return resolved_or_unresolved_row(
+    if mode == INFERENCE_RESIDUE_RETURN:
+        return residue_return_row(
+            rung_min_exponent,
+            rung_max_exponent,
+            exponent,
+            exponent_tau,
+            candidate_seconds_limit,
+        )
+    return left_prime_row(
         rung_min_exponent,
         rung_max_exponent,
         exponent,
@@ -273,12 +408,18 @@ def collect_rows(
     rungs: list[int],
     candidate_bound: int,
     candidate_seconds_limit: float = DEFAULT_CANDIDATE_SECONDS_LIMIT,
+    mersenne_inference: str = DEFAULT_MERSENNE_INFERENCE,
 ) -> list[dict[str, object]]:
     """Return PGS rows for all ladder rungs."""
     if candidate_bound < 1:
         raise ValueError("candidate_bound must be positive")
     if candidate_seconds_limit < 0:
         raise ValueError("candidate_seconds_limit must be nonnegative")
+    mode = str(mersenne_inference)
+    if mode not in VALID_MERSENNE_INFERENCE_MODES:
+        raise ValueError(
+            f"mersenne_inference must be one of {sorted(VALID_MERSENNE_INFERENCE_MODES)}"
+        )
     rows: list[dict[str, object]] = []
     for start, rung in rung_windows(rungs):
         for exponent in range(start, rung + 1):
@@ -289,6 +430,7 @@ def collect_rows(
                     candidate_bound,
                     candidate_seconds_limit,
                     start,
+                    mode,
                 )
             )
     return rows
@@ -373,11 +515,13 @@ def summarize(
     rungs: list[int],
     candidate_bound: int,
     candidate_seconds_limit: float,
+    mersenne_inference: str = DEFAULT_MERSENNE_INFERENCE,
 ) -> dict[str, object]:
     """Return compact PGS ladder summary."""
     return {
         "rungs": rungs,
         "row_model": "non_cumulative_exponent_windows",
+        "mersenne_inference_mode": mersenne_inference,
         "candidate_bound": candidate_bound,
         "candidate_seconds_limit": candidate_seconds_limit,
         "row_count": len(rows),
@@ -427,6 +571,7 @@ def summarize(
                 row
                 for row in rows
                 if row["exponent_status"] == STATUS_LEFT_PRIME_RESOLVED
+                and row["distance_to_left_prime"] != ""
             ],
             "distance_to_left_prime",
         ),
@@ -455,6 +600,7 @@ def write_outputs(
     rungs: list[int],
     candidate_bound: int,
     candidate_seconds_limit: float,
+    mersenne_inference: str = DEFAULT_MERSENNE_INFERENCE,
 ) -> None:
     """Write PGS ladder outputs."""
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -500,7 +646,13 @@ def write_outputs(
     )
     (output_dir / "pgs_summary.json").write_text(
         json.dumps(
-            summarize(rows, rungs, candidate_bound, candidate_seconds_limit),
+            summarize(
+                rows,
+                rungs,
+                candidate_bound,
+                candidate_seconds_limit,
+                mersenne_inference,
+            ),
             indent=2,
         )
         + "\n",
@@ -512,13 +664,19 @@ def main(argv: list[str] | None = None) -> int:
     """Run the PGS exponent-decade ladder mechanism."""
     args = build_parser().parse_args(argv)
     rungs = parse_rungs(args.rungs)
-    rows = collect_rows(rungs, args.candidate_bound, args.candidate_seconds_limit)
+    rows = collect_rows(
+        rungs,
+        args.candidate_bound,
+        args.candidate_seconds_limit,
+        args.mersenne_inference,
+    )
     write_outputs(
         args.output_dir,
         rows,
         rungs,
         args.candidate_bound,
         args.candidate_seconds_limit,
+        args.mersenne_inference,
     )
     return 0
 
