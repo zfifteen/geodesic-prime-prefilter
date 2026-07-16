@@ -230,10 +230,21 @@ def summarize(
     residue_return_rows = [
         row for row in tau_rows if row["call_role"] == "residue_return"
     ]
+    wall_elapsed_seconds = sum(
+        float(row["wall_elapsed_seconds"]) for row in transition_rows
+    )
+    resolved_wall_elapsed_seconds = sum(
+        float(row["wall_elapsed_seconds"]) for row in resolved
+    )
+    terminal_wall_elapsed_seconds = sum(
+        float(row["wall_elapsed_seconds"]) for row in terminal
+    )
     return {
         "value_ceiling": int(value_ceiling),
         "max_exponent": max_exponent_for_value_ceiling(value_ceiling),
         "candidate_bound": int(candidate_bound),
+        "live_rule_id": generator.PGSMPG_RESIDUE_RETURN_RULE_ID,
+        "live_path": "residue_return_offset_1",
         "mersenne_exponents": exponents,
         "mersenne_exponent_count": len(exponents),
         "resolved_transition_count": len(resolved),
@@ -245,6 +256,9 @@ def summarize(
         "residue_return_tau_call_count": len(residue_return_rows),
         "boundary_tau_call_count": len(boundary_rows),
         "tau_elapsed_seconds": sum(float(row["elapsed_seconds"]) for row in tau_rows),
+        "wall_elapsed_seconds": wall_elapsed_seconds,
+        "resolved_wall_elapsed_seconds": resolved_wall_elapsed_seconds,
+        "terminal_wall_elapsed_seconds": terminal_wall_elapsed_seconds,
         "max_tau_call_seconds": (
             max(float(row["elapsed_seconds"]) for row in tau_rows) if tau_rows else 0.0
         ),
