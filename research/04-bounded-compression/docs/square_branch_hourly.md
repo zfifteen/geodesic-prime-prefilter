@@ -3895,3 +3895,64 @@ Artifacts:
 
 Next step:
 Structural audit of recurring offset 540 on new extremal rows if no counterexample.
+
+## 2026-07-16T08:14:39Z run
+
+Mechanism:
+PGS-native structural audit of recurring offset 540 and early-tau=4 /
+late-tau=3 chamber separation (queue job `offset-540-structural-audit`).
+Project terms: residual package RC48-RC50, tight_frac, desert_pos_frac,
+large_frac; Dual markers retained as side labels.
+
+Method:
+Heavy analytic fan-out (16/16 specialists, ≥1 contrarian) then leader execute.
+Read latest 4e8-5e8 falsification summary and prefix_tau_floor_probe.json.
+Contrarian slots rejected pure affine ratio minting and 540-as-law revival.
+Shipped multiset occupancy + ordered peak-desert locus residual package under
+`experiments/square-branch-hourly-2026-07-16-rc48/`. No classical gates; no
+theorem inflation; S1* remains UNRESOLVED; RC2 retained falsified; d=4 SDA
+not revived.
+
+Result:
+New residual claims RC48-RC50 hold on util-max + o_q panel through 4e8-5e8
+(8 rows / 7 unique chambers):
+
+| Claim | Status | Observed range |
+| --- | --- | --- |
+| RC48 tight_frac | holds | [0.113, 0.231] |
+| RC49 desert_pos_frac | holds | [0.347, 0.933] |
+| RC50 large_frac | holds | [0.118, 0.288] |
+| RC2 fixed-540 | falsified (retained) | D=738 |
+| RC45-RC47 | retained holds | not primary surface |
+| Target S1* | UNRESOLVED | PROOF.md §Square-Branch Reduction |
+
+All peak deserts interior on unique chambers. pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.61s
+```
+RC48 residual probe exit code: 0 (RC48-RC50 hold; RC2 retained falsified).
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New falsifiable residual claim table RC48-RC50: successive Tau4 gap multiset
+tight-pair mass (tight_frac), ordered peak-desert body locus (desert_pos_frac),
+and large-desert tail share (large_frac), with explicit falsification command.
+Distinct from RC45-RC47 envelope ratios; not 540-as-law; not d=4 SDA; not S1*
+closure.
+
+Artifacts:
+`experiments/square-branch-hourly-2026-07-16-rc48/offset_540_residual_rc48_probe.py`;
+`experiments/square-branch-hourly-2026-07-16-rc48/offset_540_rc48_prediction_table.json`;
+`experiments/square-branch-hourly-2026-07-16-rc48/FINDINGS.md`
+
+Next step:
+Queue falsification `5e8-6e8` (preferred holdout). Re-check RC48-RC50 and
+RC45-RC47 on any new util maximum. Prefer new-band holdout over further residual
+minting on the same 7 chambers. Do not promote multiset occupancy metrics to
+theorem; do not revive fixed-band 540 or d=4 SDA.
