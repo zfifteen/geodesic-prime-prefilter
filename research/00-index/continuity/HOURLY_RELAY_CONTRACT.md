@@ -1,6 +1,7 @@
 # Hourly Square-Branch Research Relay Contract
 
-**Updated:** 2026-07-13  
+**Updated:** 2026-07-16  
+**Ops status:** **DISABLED** (principal request 2026-07-16) — LaunchAgent unloaded; loaded plist renamed to `~/Library/LaunchAgents/com.velocityworks.pgs-hourly-advance.plist.disabled`. Repo template under `scripts/launchd/` remains for manual re-enable.  
 **LaunchAgent:** `com.velocityworks.pgs-hourly-advance`  
 **Task branch:** `codex/hourly-square-branch`  
 **Isolated root:** `~/pgs-hourly/prime-gap-structure`
