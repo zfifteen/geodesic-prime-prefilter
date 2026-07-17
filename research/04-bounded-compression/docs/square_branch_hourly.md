@@ -4096,7 +4096,7 @@ Research status:
 ADVANCE
 
 Ops status:
-OK
+FAILED
 
 Delta:
 new falsification regime through max_prime=500000000
@@ -4106,3 +4106,65 @@ Artifacts:
 
 Next step:
 Structural audit of recurring offset 540 on new extremal rows if no counterexample.
+
+## 2026-07-17T00:23:36Z run
+
+Mechanism:
+PGS-native structural audit of recurring offset 540 and early-tau=4 /
+late-tau=3 chamber separation (queue job `offset-540-structural-audit`).
+Project terms: proximity utilization u=D/C_dyn (RC51), absolute headroom
+h=C_dyn-D (RC52), high-pressure locus (RC53).
+
+Method:
+Heavy analytic fan-out (16/16 specialists, ≥2 contrarians) then leader
+execute. Contrarian slots pressed residual minting theater and preferred
+5e8–6e8 holdout alone as NO_DELTA. Leader shipped the one open residual
+object class named by S16 next pressure: endpoint budget u=D/C_dyn on the
+existing util-max + o_q panel (not Tau4 multiset renorm, not Dual/density
+replay). C_dyn from walk.dynamic_cutoff(previous_prime) matching the
+search script. No classical gates; no theorem inflation; S1* remains
+UNRESOLVED; RC2 retained falsified; d=4 SDA not revived.
+
+Result:
+New residual package RC51–RC53 under
+`experiments/square-branch-hourly-2026-07-16-rc51/`:
+
+| Claim | Object | Bound | Observed (7 unique) | Status |
+| --- | --- | --- | --- | --- |
+| RC51 / P55 | u = D/C_dyn | 0.55..0.98 | [0.6075, 0.9342] | holds |
+| RC52 / P56 | h = C_dyn − D | 45..350 | [52, 314] | holds |
+| RC53 / P57 | if u≥0.85 → o_q=6 and \|D−540\|≥150 | conditional | sole: r=424171123 D=738 | holds |
+| RC2 | fixed near-540 band | law on util max | D=738 witness | falsified (retained) |
+| RC48–RC50 | MultisetOccupancy | prior | retained | holds (retained) |
+
+pytest exit code: 0
+```
+....                                                                     [100%]
+4 passed in 2.44s
+```
+RC51 residual probe exit code: 0 (RC51–RC53 hold; RC2 retained falsified).
+
+Research status:
+ADVANCE
+
+Ops status:
+OK
+
+Delta:
+New residual claim package RC51–RC53 (proximity utilization, absolute
+headroom, high-pressure locus): endpoint-budget residual object class
+distinct from RC48–RC50 MultisetOccupancy and Dual/density ladder, with
+explicit residual falsification command and S1* primary holdout command
+on 5e8–6e8. High util sits far from historical 540 (supports RC2 death as
+geometry, not law). Target S1* remains UNRESOLVED.
+
+Artifacts:
+`experiments/square-branch-hourly-2026-07-16-rc51/offset_540_residual_rc51_probe.py`;
+`experiments/square-branch-hourly-2026-07-16-rc51/offset_540_rc51_prediction_table.json`;
+`experiments/square-branch-hourly-2026-07-16-rc51/FINDINGS.md`
+
+Next step:
+Queue falsification `5e8–6e8` (preferred holdout). Re-check RC51–RC53 and
+retained RC48–RC50 on any new util maximum. Prefer new-band pressure over
+further residual minting on the same 7 chambers. Do not promote u/h to
+theorem; do not revive fixed-band 540 or d=4 SDA.

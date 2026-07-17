@@ -1,0 +1,905 @@
+{
+  "inputs": {
+    "prior_prediction_table": "/Users/velocityworks/pgs-hourly/prime-gap-structure/experiments/square-branch-hourly-2026-07-10/offset_540_prediction_table.json",
+    "rc48_prediction_table": "/Users/velocityworks/pgs-hourly/prime-gap-structure/experiments/square-branch-hourly-2026-07-16-rc48/offset_540_rc48_prediction_table.json",
+    "falsification_summary_json": "/Users/velocityworks/pgs-hourly/prime-gap-structure/research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_4e8_5e8/square_branch_dynamic_cutoff_search_summary.json",
+    "prefix_tau_floor_probe": {
+      "path": "/Users/velocityworks/pgs-hourly/prime-gap-structure/experiments/square-branch-sda-invalidation-2026-06/prefix_tau_floor_probe.json",
+      "extremal_count": 3,
+      "d4_sda_transfers": false
+    },
+    "u_min": 0.55,
+    "u_max": 0.98,
+    "h_min": 45,
+    "h_max": 350,
+    "high_u_thresh": 0.85,
+    "high_u_abs_d_min": 150,
+    "near_540_center": 540,
+    "near_540_radius": 20,
+    "invalidated_route": "d=4 SDA transfer (not revived)",
+    "theorem_status": "Prime-square proximity / Target S1* (u<=1 for all selected square roots; Annulus emptiness) remains unresolved in PROOF.md section Square-Branch Reduction; residual audit only. Direct next-prime and Interior Maximizer remain proved. Panel envelope u<=0.98 is not S1*.",
+    "geometry_note": "RC51-RC53 measure endpoint budget D vs C_dyn(q) and where high utilization sits relative to historical offset 540. Not Tau4 multiset occupancy (RC48-RC50). Not Dual/density renorms (RC3-RC47). C_dyn from gwr_dni_recursive_walk.dynamic_cutoff(previous_prime), matching the search script."
+  },
+  "predictions": [
+    {
+      "id": "P55",
+      "name": "proximity_utilization_envelope",
+      "statement": "On segment utilization maxima through 4e8-5e8 and the 4e8-5e8 o_q branch-max panel, proximity utilization u(r) = D(r)/C_dyn(q) satisfies 0.55 <= u <= 0.98 (endpoint budget pressure; not Tau4 multiset RC48-RC50; not Dual renorm; residual panel audit only \u2014 not Target S1*).",
+      "falsifier": "any evaluated row with u < 0.55 or u > 0.98"
+    },
+    {
+      "id": "P56",
+      "name": "absolute_headroom_envelope",
+      "statement": "On the same surface, absolute headroom h(r) = C_dyn(q) - D(r) satisfies 45 <= h <= 350 (integer remaining budget to S1* breach line u=1; complement of RC51; residual audit only).",
+      "falsifier": "any evaluated row with h < 45 or h > 350"
+    },
+    {
+      "id": "P57",
+      "name": "high_pressure_locus",
+      "statement": "On the same surface, if u(r) >= 0.85, then o_q = 6 and |D(r) - 540| >= 150 (high proximity pressure sits outside the historical 540 cluster; supports RC2 falsification as structural reading, not a new law).",
+      "falsifier": "any row with u >= 0.85 and (o_q != 6 or |D-540| < 150)"
+    }
+  ],
+  "primary_rows": [
+    {
+      "segment": "3e7-1e8",
+      "r": 82357433,
+      "offset": 540,
+      "o_q": null,
+      "dynamic_cutoff": 665,
+      "proximity_slack_u": 0.8120300751879699,
+      "headroom_h": 125,
+      "abs_d_minus_540": 0,
+      "near_540": true,
+      "domain_ok": true
+    },
+    {
+      "segment": "1e8-2e8",
+      "r": 102017779,
+      "offset": 462,
+      "o_q": null,
+      "dynamic_cutoff": 681,
+      "proximity_slack_u": 0.6784140969162996,
+      "headroom_h": 219,
+      "abs_d_minus_540": 78,
+      "near_540": false,
+      "domain_ok": true
+    },
+    {
+      "segment": "2e8-3e8",
+      "r": 251066071,
+      "offset": 540,
+      "o_q": null,
+      "dynamic_cutoff": 749,
+      "proximity_slack_u": 0.7209612817089452,
+      "headroom_h": 209,
+      "abs_d_minus_540": 0,
+      "near_540": true,
+      "domain_ok": true
+    },
+    {
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "o_q": null,
+      "dynamic_cutoff": 776,
+      "proximity_slack_u": 0.7036082474226805,
+      "headroom_h": 230,
+      "abs_d_minus_540": 6,
+      "near_540": true,
+      "domain_ok": true
+    },
+    {
+      "segment": "4e8-5e8",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "dynamic_cutoff": 790,
+      "proximity_slack_u": 0.9341772151898734,
+      "headroom_h": 52,
+      "abs_d_minus_540": 198,
+      "near_540": false,
+      "domain_ok": true
+    }
+  ],
+  "oq_panel_rows": [
+    {
+      "segment": "4e8-5e8/o_q=2",
+      "r": 468917503,
+      "offset": 542,
+      "o_q": 2,
+      "dynamic_cutoff": 798,
+      "proximity_slack_u": 0.6791979949874687,
+      "headroom_h": 256,
+      "abs_d_minus_540": 2,
+      "near_540": true,
+      "domain_ok": true
+    },
+    {
+      "segment": "4e8-5e8/o_q=4",
+      "r": 482342527,
+      "offset": 486,
+      "o_q": 4,
+      "dynamic_cutoff": 800,
+      "proximity_slack_u": 0.6075,
+      "headroom_h": 314,
+      "abs_d_minus_540": 54,
+      "near_540": false,
+      "domain_ok": true
+    },
+    {
+      "segment": "4e8-5e8/o_q=6",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "dynamic_cutoff": 790,
+      "proximity_slack_u": 0.9341772151898734,
+      "headroom_h": 52,
+      "abs_d_minus_540": 198,
+      "near_540": false,
+      "domain_ok": true
+    }
+  ],
+  "prediction_results": [
+    {
+      "id": "P55",
+      "name": "proximity_utilization_envelope",
+      "statement": "On segment utilization maxima through 4e8-5e8 and the 4e8-5e8 o_q branch-max panel, proximity utilization u(r) = D(r)/C_dyn(q) satisfies 0.55 <= u <= 0.98 (endpoint budget pressure; not Tau4 multiset RC48-RC50; not Dual renorm; residual panel audit only \u2014 not Target S1*).",
+      "falsifier": "any evaluated row with u < 0.55 or u > 0.98",
+      "segment": "3e7-1e8",
+      "r": 82357433,
+      "offset": 540,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "proximity_slack_u": 0.8120300751879699,
+        "bound_min": 0.55,
+        "bound_max": 0.98,
+        "dynamic_cutoff": 665,
+        "D": 540
+      }
+    },
+    {
+      "id": "P55",
+      "name": "proximity_utilization_envelope",
+      "statement": "On segment utilization maxima through 4e8-5e8 and the 4e8-5e8 o_q branch-max panel, proximity utilization u(r) = D(r)/C_dyn(q) satisfies 0.55 <= u <= 0.98 (endpoint budget pressure; not Tau4 multiset RC48-RC50; not Dual renorm; residual panel audit only \u2014 not Target S1*).",
+      "falsifier": "any evaluated row with u < 0.55 or u > 0.98",
+      "segment": "1e8-2e8",
+      "r": 102017779,
+      "offset": 462,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "proximity_slack_u": 0.6784140969162996,
+        "bound_min": 0.55,
+        "bound_max": 0.98,
+        "dynamic_cutoff": 681,
+        "D": 462
+      }
+    },
+    {
+      "id": "P55",
+      "name": "proximity_utilization_envelope",
+      "statement": "On segment utilization maxima through 4e8-5e8 and the 4e8-5e8 o_q branch-max panel, proximity utilization u(r) = D(r)/C_dyn(q) satisfies 0.55 <= u <= 0.98 (endpoint budget pressure; not Tau4 multiset RC48-RC50; not Dual renorm; residual panel audit only \u2014 not Target S1*).",
+      "falsifier": "any evaluated row with u < 0.55 or u > 0.98",
+      "segment": "2e8-3e8",
+      "r": 251066071,
+      "offset": 540,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "proximity_slack_u": 0.7209612817089452,
+        "bound_min": 0.55,
+        "bound_max": 0.98,
+        "dynamic_cutoff": 749,
+        "D": 540
+      }
+    },
+    {
+      "id": "P55",
+      "name": "proximity_utilization_envelope",
+      "statement": "On segment utilization maxima through 4e8-5e8 and the 4e8-5e8 o_q branch-max panel, proximity utilization u(r) = D(r)/C_dyn(q) satisfies 0.55 <= u <= 0.98 (endpoint budget pressure; not Tau4 multiset RC48-RC50; not Dual renorm; residual panel audit only \u2014 not Target S1*).",
+      "falsifier": "any evaluated row with u < 0.55 or u > 0.98",
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "proximity_slack_u": 0.7036082474226805,
+        "bound_min": 0.55,
+        "bound_max": 0.98,
+        "dynamic_cutoff": 776,
+        "D": 546
+      }
+    },
+    {
+      "id": "P55",
+      "name": "proximity_utilization_envelope",
+      "statement": "On segment utilization maxima through 4e8-5e8 and the 4e8-5e8 o_q branch-max panel, proximity utilization u(r) = D(r)/C_dyn(q) satisfies 0.55 <= u <= 0.98 (endpoint budget pressure; not Tau4 multiset RC48-RC50; not Dual renorm; residual panel audit only \u2014 not Target S1*).",
+      "falsifier": "any evaluated row with u < 0.55 or u > 0.98",
+      "segment": "4e8-5e8",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "proximity_slack_u": 0.9341772151898734,
+        "bound_min": 0.55,
+        "bound_max": 0.98,
+        "dynamic_cutoff": 790,
+        "D": 738
+      }
+    },
+    {
+      "id": "P55",
+      "name": "proximity_utilization_envelope",
+      "statement": "On segment utilization maxima through 4e8-5e8 and the 4e8-5e8 o_q branch-max panel, proximity utilization u(r) = D(r)/C_dyn(q) satisfies 0.55 <= u <= 0.98 (endpoint budget pressure; not Tau4 multiset RC48-RC50; not Dual renorm; residual panel audit only \u2014 not Target S1*).",
+      "falsifier": "any evaluated row with u < 0.55 or u > 0.98",
+      "segment": "4e8-5e8/o_q=2",
+      "r": 468917503,
+      "offset": 542,
+      "o_q": 2,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "proximity_slack_u": 0.6791979949874687,
+        "bound_min": 0.55,
+        "bound_max": 0.98,
+        "dynamic_cutoff": 798,
+        "D": 542
+      }
+    },
+    {
+      "id": "P55",
+      "name": "proximity_utilization_envelope",
+      "statement": "On segment utilization maxima through 4e8-5e8 and the 4e8-5e8 o_q branch-max panel, proximity utilization u(r) = D(r)/C_dyn(q) satisfies 0.55 <= u <= 0.98 (endpoint budget pressure; not Tau4 multiset RC48-RC50; not Dual renorm; residual panel audit only \u2014 not Target S1*).",
+      "falsifier": "any evaluated row with u < 0.55 or u > 0.98",
+      "segment": "4e8-5e8/o_q=4",
+      "r": 482342527,
+      "offset": 486,
+      "o_q": 4,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "proximity_slack_u": 0.6075,
+        "bound_min": 0.55,
+        "bound_max": 0.98,
+        "dynamic_cutoff": 800,
+        "D": 486
+      }
+    },
+    {
+      "id": "P55",
+      "name": "proximity_utilization_envelope",
+      "statement": "On segment utilization maxima through 4e8-5e8 and the 4e8-5e8 o_q branch-max panel, proximity utilization u(r) = D(r)/C_dyn(q) satisfies 0.55 <= u <= 0.98 (endpoint budget pressure; not Tau4 multiset RC48-RC50; not Dual renorm; residual panel audit only \u2014 not Target S1*).",
+      "falsifier": "any evaluated row with u < 0.55 or u > 0.98",
+      "segment": "4e8-5e8/o_q=6",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "proximity_slack_u": 0.9341772151898734,
+        "bound_min": 0.55,
+        "bound_max": 0.98,
+        "dynamic_cutoff": 790,
+        "D": 738
+      }
+    },
+    {
+      "id": "P56",
+      "name": "absolute_headroom_envelope",
+      "statement": "On the same surface, absolute headroom h(r) = C_dyn(q) - D(r) satisfies 45 <= h <= 350 (integer remaining budget to S1* breach line u=1; complement of RC51; residual audit only).",
+      "falsifier": "any evaluated row with h < 45 or h > 350",
+      "segment": "3e7-1e8",
+      "r": 82357433,
+      "offset": 540,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "headroom_h": 125,
+        "bound_min": 45,
+        "bound_max": 350,
+        "dynamic_cutoff": 665,
+        "D": 540
+      }
+    },
+    {
+      "id": "P56",
+      "name": "absolute_headroom_envelope",
+      "statement": "On the same surface, absolute headroom h(r) = C_dyn(q) - D(r) satisfies 45 <= h <= 350 (integer remaining budget to S1* breach line u=1; complement of RC51; residual audit only).",
+      "falsifier": "any evaluated row with h < 45 or h > 350",
+      "segment": "1e8-2e8",
+      "r": 102017779,
+      "offset": 462,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "headroom_h": 219,
+        "bound_min": 45,
+        "bound_max": 350,
+        "dynamic_cutoff": 681,
+        "D": 462
+      }
+    },
+    {
+      "id": "P56",
+      "name": "absolute_headroom_envelope",
+      "statement": "On the same surface, absolute headroom h(r) = C_dyn(q) - D(r) satisfies 45 <= h <= 350 (integer remaining budget to S1* breach line u=1; complement of RC51; residual audit only).",
+      "falsifier": "any evaluated row with h < 45 or h > 350",
+      "segment": "2e8-3e8",
+      "r": 251066071,
+      "offset": 540,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "headroom_h": 209,
+        "bound_min": 45,
+        "bound_max": 350,
+        "dynamic_cutoff": 749,
+        "D": 540
+      }
+    },
+    {
+      "id": "P56",
+      "name": "absolute_headroom_envelope",
+      "statement": "On the same surface, absolute headroom h(r) = C_dyn(q) - D(r) satisfies 45 <= h <= 350 (integer remaining budget to S1* breach line u=1; complement of RC51; residual audit only).",
+      "falsifier": "any evaluated row with h < 45 or h > 350",
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "headroom_h": 230,
+        "bound_min": 45,
+        "bound_max": 350,
+        "dynamic_cutoff": 776,
+        "D": 546
+      }
+    },
+    {
+      "id": "P56",
+      "name": "absolute_headroom_envelope",
+      "statement": "On the same surface, absolute headroom h(r) = C_dyn(q) - D(r) satisfies 45 <= h <= 350 (integer remaining budget to S1* breach line u=1; complement of RC51; residual audit only).",
+      "falsifier": "any evaluated row with h < 45 or h > 350",
+      "segment": "4e8-5e8",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "headroom_h": 52,
+        "bound_min": 45,
+        "bound_max": 350,
+        "dynamic_cutoff": 790,
+        "D": 738
+      }
+    },
+    {
+      "id": "P56",
+      "name": "absolute_headroom_envelope",
+      "statement": "On the same surface, absolute headroom h(r) = C_dyn(q) - D(r) satisfies 45 <= h <= 350 (integer remaining budget to S1* breach line u=1; complement of RC51; residual audit only).",
+      "falsifier": "any evaluated row with h < 45 or h > 350",
+      "segment": "4e8-5e8/o_q=2",
+      "r": 468917503,
+      "offset": 542,
+      "o_q": 2,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "headroom_h": 256,
+        "bound_min": 45,
+        "bound_max": 350,
+        "dynamic_cutoff": 798,
+        "D": 542
+      }
+    },
+    {
+      "id": "P56",
+      "name": "absolute_headroom_envelope",
+      "statement": "On the same surface, absolute headroom h(r) = C_dyn(q) - D(r) satisfies 45 <= h <= 350 (integer remaining budget to S1* breach line u=1; complement of RC51; residual audit only).",
+      "falsifier": "any evaluated row with h < 45 or h > 350",
+      "segment": "4e8-5e8/o_q=4",
+      "r": 482342527,
+      "offset": 486,
+      "o_q": 4,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "headroom_h": 314,
+        "bound_min": 45,
+        "bound_max": 350,
+        "dynamic_cutoff": 800,
+        "D": 486
+      }
+    },
+    {
+      "id": "P56",
+      "name": "absolute_headroom_envelope",
+      "statement": "On the same surface, absolute headroom h(r) = C_dyn(q) - D(r) satisfies 45 <= h <= 350 (integer remaining budget to S1* breach line u=1; complement of RC51; residual audit only).",
+      "falsifier": "any evaluated row with h < 45 or h > 350",
+      "segment": "4e8-5e8/o_q=6",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "headroom_h": 52,
+        "bound_min": 45,
+        "bound_max": 350,
+        "dynamic_cutoff": 790,
+        "D": 738
+      }
+    },
+    {
+      "id": "P57",
+      "name": "high_pressure_locus",
+      "statement": "On the same surface, if u(r) >= 0.85, then o_q = 6 and |D(r) - 540| >= 150 (high proximity pressure sits outside the historical 540 cluster; supports RC2 falsification as structural reading, not a new law).",
+      "falsifier": "any row with u >= 0.85 and (o_q != 6 or |D-540| < 150)",
+      "segment": "3e7-1e8",
+      "r": 82357433,
+      "offset": 540,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "antecedent": false,
+        "proximity_slack_u": 0.8120300751879699,
+        "high_u_thresh": 0.85,
+        "note": "antecedent u>=thresh false; conditional auto-pass"
+      }
+    },
+    {
+      "id": "P57",
+      "name": "high_pressure_locus",
+      "statement": "On the same surface, if u(r) >= 0.85, then o_q = 6 and |D(r) - 540| >= 150 (high proximity pressure sits outside the historical 540 cluster; supports RC2 falsification as structural reading, not a new law).",
+      "falsifier": "any row with u >= 0.85 and (o_q != 6 or |D-540| < 150)",
+      "segment": "1e8-2e8",
+      "r": 102017779,
+      "offset": 462,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "antecedent": false,
+        "proximity_slack_u": 0.6784140969162996,
+        "high_u_thresh": 0.85,
+        "note": "antecedent u>=thresh false; conditional auto-pass"
+      }
+    },
+    {
+      "id": "P57",
+      "name": "high_pressure_locus",
+      "statement": "On the same surface, if u(r) >= 0.85, then o_q = 6 and |D(r) - 540| >= 150 (high proximity pressure sits outside the historical 540 cluster; supports RC2 falsification as structural reading, not a new law).",
+      "falsifier": "any row with u >= 0.85 and (o_q != 6 or |D-540| < 150)",
+      "segment": "2e8-3e8",
+      "r": 251066071,
+      "offset": 540,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "antecedent": false,
+        "proximity_slack_u": 0.7209612817089452,
+        "high_u_thresh": 0.85,
+        "note": "antecedent u>=thresh false; conditional auto-pass"
+      }
+    },
+    {
+      "id": "P57",
+      "name": "high_pressure_locus",
+      "statement": "On the same surface, if u(r) >= 0.85, then o_q = 6 and |D(r) - 540| >= 150 (high proximity pressure sits outside the historical 540 cluster; supports RC2 falsification as structural reading, not a new law).",
+      "falsifier": "any row with u >= 0.85 and (o_q != 6 or |D-540| < 150)",
+      "segment": "3e8-4e8",
+      "r": 358018553,
+      "offset": 546,
+      "o_q": null,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "antecedent": false,
+        "proximity_slack_u": 0.7036082474226805,
+        "high_u_thresh": 0.85,
+        "note": "antecedent u>=thresh false; conditional auto-pass"
+      }
+    },
+    {
+      "id": "P57",
+      "name": "high_pressure_locus",
+      "statement": "On the same surface, if u(r) >= 0.85, then o_q = 6 and |D(r) - 540| >= 150 (high proximity pressure sits outside the historical 540 cluster; supports RC2 falsification as structural reading, not a new law).",
+      "falsifier": "any row with u >= 0.85 and (o_q != 6 or |D-540| < 150)",
+      "segment": "4e8-5e8",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "antecedent": true,
+        "proximity_slack_u": 0.9341772151898734,
+        "o_q": 6,
+        "abs_d_minus_540": 198,
+        "require_o_q": 6,
+        "require_abs_d_min": 150
+      }
+    },
+    {
+      "id": "P57",
+      "name": "high_pressure_locus",
+      "statement": "On the same surface, if u(r) >= 0.85, then o_q = 6 and |D(r) - 540| >= 150 (high proximity pressure sits outside the historical 540 cluster; supports RC2 falsification as structural reading, not a new law).",
+      "falsifier": "any row with u >= 0.85 and (o_q != 6 or |D-540| < 150)",
+      "segment": "4e8-5e8/o_q=2",
+      "r": 468917503,
+      "offset": 542,
+      "o_q": 2,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "antecedent": false,
+        "proximity_slack_u": 0.6791979949874687,
+        "high_u_thresh": 0.85,
+        "note": "antecedent u>=thresh false; conditional auto-pass"
+      }
+    },
+    {
+      "id": "P57",
+      "name": "high_pressure_locus",
+      "statement": "On the same surface, if u(r) >= 0.85, then o_q = 6 and |D(r) - 540| >= 150 (high proximity pressure sits outside the historical 540 cluster; supports RC2 falsification as structural reading, not a new law).",
+      "falsifier": "any row with u >= 0.85 and (o_q != 6 or |D-540| < 150)",
+      "segment": "4e8-5e8/o_q=4",
+      "r": 482342527,
+      "offset": 486,
+      "o_q": 4,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "antecedent": false,
+        "proximity_slack_u": 0.6075,
+        "high_u_thresh": 0.85,
+        "note": "antecedent u>=thresh false; conditional auto-pass"
+      }
+    },
+    {
+      "id": "P57",
+      "name": "high_pressure_locus",
+      "statement": "On the same surface, if u(r) >= 0.85, then o_q = 6 and |D(r) - 540| >= 150 (high proximity pressure sits outside the historical 540 cluster; supports RC2 falsification as structural reading, not a new law).",
+      "falsifier": "any row with u >= 0.85 and (o_q != 6 or |D-540| < 150)",
+      "segment": "4e8-5e8/o_q=6",
+      "r": 424171123,
+      "offset": 738,
+      "o_q": 6,
+      "pass": true,
+      "status": "holds",
+      "detail": {
+        "antecedent": true,
+        "proximity_slack_u": 0.9341772151898734,
+        "o_q": 6,
+        "abs_d_minus_540": 198,
+        "require_o_q": 6,
+        "require_abs_d_min": 150
+      }
+    }
+  ],
+  "residual_claims": [
+    {
+      "id": "RC51",
+      "claim": "Proximity utilization envelope: on segment utilization maxima through 4e8-5e8 and the full o_q branch-max panel, 0.55 <= D/C_dyn <= 0.98 (endpoint budget residual; not S1* closure).",
+      "status": "holds",
+      "linked_prediction": "P55",
+      "evidence": {
+        "primary_rows": [
+          {
+            "segment": "3e7-1e8",
+            "r": 82357433,
+            "offset": 540,
+            "o_q": null,
+            "dynamic_cutoff": 665,
+            "proximity_slack_u": 0.8120300751879699,
+            "headroom_h": 125,
+            "abs_d_minus_540": 0,
+            "near_540": true,
+            "domain_ok": true
+          },
+          {
+            "segment": "1e8-2e8",
+            "r": 102017779,
+            "offset": 462,
+            "o_q": null,
+            "dynamic_cutoff": 681,
+            "proximity_slack_u": 0.6784140969162996,
+            "headroom_h": 219,
+            "abs_d_minus_540": 78,
+            "near_540": false,
+            "domain_ok": true
+          },
+          {
+            "segment": "2e8-3e8",
+            "r": 251066071,
+            "offset": 540,
+            "o_q": null,
+            "dynamic_cutoff": 749,
+            "proximity_slack_u": 0.7209612817089452,
+            "headroom_h": 209,
+            "abs_d_minus_540": 0,
+            "near_540": true,
+            "domain_ok": true
+          },
+          {
+            "segment": "3e8-4e8",
+            "r": 358018553,
+            "offset": 546,
+            "o_q": null,
+            "dynamic_cutoff": 776,
+            "proximity_slack_u": 0.7036082474226805,
+            "headroom_h": 230,
+            "abs_d_minus_540": 6,
+            "near_540": true,
+            "domain_ok": true
+          },
+          {
+            "segment": "4e8-5e8",
+            "r": 424171123,
+            "offset": 738,
+            "o_q": 6,
+            "dynamic_cutoff": 790,
+            "proximity_slack_u": 0.9341772151898734,
+            "headroom_h": 52,
+            "abs_d_minus_540": 198,
+            "near_540": false,
+            "domain_ok": true
+          }
+        ],
+        "oq_panel": [
+          {
+            "segment": "4e8-5e8/o_q=2",
+            "r": 468917503,
+            "offset": 542,
+            "o_q": 2,
+            "dynamic_cutoff": 798,
+            "proximity_slack_u": 0.6791979949874687,
+            "headroom_h": 256,
+            "abs_d_minus_540": 2,
+            "near_540": true,
+            "domain_ok": true
+          },
+          {
+            "segment": "4e8-5e8/o_q=4",
+            "r": 482342527,
+            "offset": 486,
+            "o_q": 4,
+            "dynamic_cutoff": 800,
+            "proximity_slack_u": 0.6075,
+            "headroom_h": 314,
+            "abs_d_minus_540": 54,
+            "near_540": false,
+            "domain_ok": true
+          },
+          {
+            "segment": "4e8-5e8/o_q=6",
+            "r": 424171123,
+            "offset": 738,
+            "o_q": 6,
+            "dynamic_cutoff": 790,
+            "proximity_slack_u": 0.9341772151898734,
+            "headroom_h": 52,
+            "abs_d_minus_540": 198,
+            "near_540": false,
+            "domain_ok": true
+          }
+        ],
+        "unique_chamber_count": 7,
+        "bound_min": 0.55,
+        "bound_max": 0.98,
+        "min_observed": 0.6075,
+        "max_observed": 0.9341772151898734
+      }
+    },
+    {
+      "id": "RC52",
+      "claim": "Absolute headroom envelope: 45 <= C_dyn - D <= 350 on util maxima + o_q panel (integer remaining budget to S1* breach line).",
+      "status": "holds",
+      "linked_prediction": "P56",
+      "evidence": {
+        "primary_rows": [
+          {
+            "segment": "3e7-1e8",
+            "r": 82357433,
+            "offset": 540,
+            "o_q": null,
+            "dynamic_cutoff": 665,
+            "proximity_slack_u": 0.8120300751879699,
+            "headroom_h": 125,
+            "abs_d_minus_540": 0,
+            "near_540": true,
+            "domain_ok": true
+          },
+          {
+            "segment": "1e8-2e8",
+            "r": 102017779,
+            "offset": 462,
+            "o_q": null,
+            "dynamic_cutoff": 681,
+            "proximity_slack_u": 0.6784140969162996,
+            "headroom_h": 219,
+            "abs_d_minus_540": 78,
+            "near_540": false,
+            "domain_ok": true
+          },
+          {
+            "segment": "2e8-3e8",
+            "r": 251066071,
+            "offset": 540,
+            "o_q": null,
+            "dynamic_cutoff": 749,
+            "proximity_slack_u": 0.7209612817089452,
+            "headroom_h": 209,
+            "abs_d_minus_540": 0,
+            "near_540": true,
+            "domain_ok": true
+          },
+          {
+            "segment": "3e8-4e8",
+            "r": 358018553,
+            "offset": 546,
+            "o_q": null,
+            "dynamic_cutoff": 776,
+            "proximity_slack_u": 0.7036082474226805,
+            "headroom_h": 230,
+            "abs_d_minus_540": 6,
+            "near_540": true,
+            "domain_ok": true
+          },
+          {
+            "segment": "4e8-5e8",
+            "r": 424171123,
+            "offset": 738,
+            "o_q": 6,
+            "dynamic_cutoff": 790,
+            "proximity_slack_u": 0.9341772151898734,
+            "headroom_h": 52,
+            "abs_d_minus_540": 198,
+            "near_540": false,
+            "domain_ok": true
+          }
+        ],
+        "oq_panel": [
+          {
+            "segment": "4e8-5e8/o_q=2",
+            "r": 468917503,
+            "offset": 542,
+            "o_q": 2,
+            "dynamic_cutoff": 798,
+            "proximity_slack_u": 0.6791979949874687,
+            "headroom_h": 256,
+            "abs_d_minus_540": 2,
+            "near_540": true,
+            "domain_ok": true
+          },
+          {
+            "segment": "4e8-5e8/o_q=4",
+            "r": 482342527,
+            "offset": 486,
+            "o_q": 4,
+            "dynamic_cutoff": 800,
+            "proximity_slack_u": 0.6075,
+            "headroom_h": 314,
+            "abs_d_minus_540": 54,
+            "near_540": false,
+            "domain_ok": true
+          },
+          {
+            "segment": "4e8-5e8/o_q=6",
+            "r": 424171123,
+            "offset": 738,
+            "o_q": 6,
+            "dynamic_cutoff": 790,
+            "proximity_slack_u": 0.9341772151898734,
+            "headroom_h": 52,
+            "abs_d_minus_540": 198,
+            "near_540": false,
+            "domain_ok": true
+          }
+        ],
+        "unique_chamber_count": 7,
+        "bound_min": 45,
+        "bound_max": 350,
+        "min_observed": 52.0,
+        "max_observed": 314.0
+      }
+    },
+    {
+      "id": "RC53",
+      "claim": "High-pressure locus: if u >= 0.85 on the panel, then o_q = 6 and |D-540| >= 150 (high util sits outside historical 540 cluster).",
+      "status": "holds",
+      "linked_prediction": "P57",
+      "evidence": {
+        "high_u_rows": [
+          {
+            "r": 424171123,
+            "offset": 738,
+            "o_q": 6,
+            "proximity_slack_u": 0.9341772151898734,
+            "abs_d_minus_540": 198
+          }
+        ],
+        "high_u_thresh": 0.85,
+        "require_o_q": 6,
+        "require_abs_d_min": 150,
+        "unique_chamber_count": 7
+      }
+    },
+    {
+      "id": "RC2_retained",
+      "claim": "Fixed near-540 band D(r) in [528, 552] on segment utilization maxima is not a law.",
+      "status": "falsified",
+      "linked_prediction": "P6 (prior)",
+      "evidence": {
+        "segment": "4e8-5e8",
+        "r": 424171123,
+        "offset": 738,
+        "proximity_slack_u": 0.9341772151898734
+      }
+    },
+    {
+      "id": "RC48_RC50_retained",
+      "claim": "Prior residual RC48-RC50 (tight_frac, desert_pos, large_frac) retained as measured holds; not re-proved as primary surface.",
+      "status": "holds (retained; not re-evaluated as primary surface)",
+      "linked_prediction": "P52-P54 (prior)",
+      "evidence": {
+        "path": "/Users/velocityworks/pgs-hourly/prime-gap-structure/experiments/square-branch-hourly-2026-07-16-rc48/offset_540_rc48_prediction_table.json",
+        "conclusion": {
+          "RC48_tight_pair_mass": "holds",
+          "RC49_peak_desert_body_locus": "holds",
+          "RC50_large_desert_tail_share": "holds",
+          "RC2_fixed_band": "falsified (retained)"
+        }
+      }
+    }
+  ],
+  "conclusion": {
+    "RC51_proximity_utilization_envelope": "holds",
+    "RC52_absolute_headroom_envelope": "holds",
+    "RC53_high_pressure_locus": "holds",
+    "RC2_fixed_band": "falsified (retained)",
+    "RC48_RC50_multiset": "holds (retained; not primary surface)",
+    "u_range_unique_chambers": [
+      0.6075,
+      0.9341772151898734
+    ],
+    "h_range_unique_chambers": [
+      52.0,
+      314.0
+    ],
+    "unique_chamber_count": 7,
+    "surface_row_count": 8,
+    "high_u_rows": [
+      {
+        "r": 424171123,
+        "offset": 738,
+        "o_q": 6,
+        "proximity_slack_u": 0.9341772151898734,
+        "abs_d_minus_540": 198
+      }
+    ],
+    "target_S1_star": "UNRESOLVED",
+    "advance_over_prior_hour": "New residual object class: proximity utilization u=D/C_dyn and headroom h=C-D on the util-max + o_q panel; high-pressure locus ties u>=0.85 to o_q=6 far from 540. Distinct from RC48-RC50 MultisetOccupancy and from Dual/density ladder.",
+    "d4_sda_revived": false,
+    "prefix_tau_d4_sda_transfers": false
+  },
+  "falsification_command": "python3 experiments/square-branch-hourly-2026-07-16-rc51/offset_540_residual_rc51_probe.py",
+  "s1_star_primary_falsifier": "python3 research/04-bounded-compression/scripts/square_branch_dynamic_cutoff_search.py --min-prime 500000001 --max-prime 600000000 --output-dir research/04-bounded-compression/output/square_branch_dynamic_cutoff_search_5e8_6e8"
+}
