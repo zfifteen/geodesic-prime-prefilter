@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informing the Multiplet Spine: A PGS Reading of Bounded Gaps and Admissible Forms | Prime Gap Structure</title>
+  <style>
+    :root {
+      --bg: #f7f6f2;
+      --paper: #ffffff;
+      --ink: #1a1a1a;
+      --muted: #5c5c5c;
+      --line: #d8d4cb;
+      --theorem: #0f3d2e;
+      --theorem-bg: #e8f3ee;
+      --measured: #1e3a5f;
+      --measured-bg: #e8eef6;
+      --hypothesis: #7a4a00;
+      --hypothesis-bg: #fff4e0;
+      --unresolved: #6b3a00;
+      --unresolved-bg: #fff8eb;
+      --audit: #444;
+      --audit-bg: #f0f0f0;
+      --danger: #7a1212;
+      --danger-bg: #f8e8e8;
+      --accent: #243b53;
+      --code-bg: #f1efe8;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 48px 22px 96px;
+    }
+
+    .paper {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+      padding: 48px 44px 56px;
+    }
+
+    @media (max-width: 720px) {
+      .paper { padding: 28px 18px 40px; }
+      body { font-size: 16.5px; }
+    }
+
+    .eyebrow {
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 12px;
+    }
+
+    h1 {
+      font-size: 1.85rem;
+      line-height: 1.22;
+      font-weight: 700;
+      margin: 0 0 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .subtitle {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin: 0 0 22px;
+      font-style: italic;
+    }
+
+    .meta {
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: 13px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 14px 0;
+      margin: 0 0 28px;
+      display: grid;
+      gap: 6px;
+    }
+
+    .meta strong { color: var(--ink); font-weight: 600; }
+
+    .finding {
+      background: var(--theorem-bg);
+      border-left: 4px solid var(--theorem);
+      padding: 16px 18px;
+      margin: 0 0 28px;
+    }
+
+    .finding h2 {
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0 0 8px;
+      color: var(--theorem);
+    }
+
+    .finding p { margin: 0; }
+
+    h2 {
+      font-size: 1.35rem;
+      margin: 2.2em 0 0.7em;
+      line-height: 1.25;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 0.35em;
+    }
+
+    h3 {
+      font-size: 1.08rem;
+      margin: 1.6em 0 0.55em;
+      line-height: 1.3;
+    }
+
+    h4 {
+      font-size: 0.98rem;
+      margin: 1.3em 0 0.4em;
+      font-weight: 700;
+    }
+
+    p { margin: 0 0 1em; }
+
+    a { color: var(--accent); }
+
+    ul, ol { margin: 0 0 1.1em; padding-left: 1.35em; }
+    li { margin: 0.28em 0; }
+
+    .toc {
+      background: #faf9f6;
+      border: 1px solid var(--line);
+      padding: 16px 18px 8px;
+      margin: 0 0 28px;
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: 14px;
+    }
+
+    .toc h2 {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 0;
+      margin: 0 0 10px;
+      padding: 0;
+      color: var(--muted);
+    }
+
+    .toc ol { margin: 0 0 10px; }
+    .toc a { text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+
+    .status-grid {
+      display: grid;
+      gap: 10px;
+      margin: 0 0 1.4em;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 1em;
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: 12px;
+    }
+
+    .chip {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .chip.theorem { background: var(--theorem-bg); color: var(--theorem); border-color: #b7d4c6; }
+    .chip.measured { background: var(--measured-bg); color: var(--measured); border-color: #b8c9de; }
+    .chip.hypothesis { background: var(--hypothesis-bg); color: var(--hypothesis); border-color: #e6c98a; }
+    .chip.unresolved { background: var(--unresolved-bg); color: var(--unresolved); border-color: #e0c48a; }
+    .chip.audit { background: var(--audit-bg); color: var(--audit); }
+    .chip.danger { background: var(--danger-bg); color: var(--danger); border-color: #e0b4b4; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      margin: 0 0 1.4em;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px 11px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: #f3f1ea;
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    tr:nth-child(even) td { background: #fcfbf8; }
+
+    .note, .warning, .status-box {
+      border: 1px solid var(--line);
+      padding: 14px 16px;
+      margin: 0 0 1.3em;
+      font-size: 0.95rem;
+    }
+
+    .note { background: var(--audit-bg); }
+    .warning { background: var(--danger-bg); border-color: #e0b4b4; }
+    .status-box { background: var(--hypothesis-bg); border-color: #e6c98a; }
+
+    .note strong, .warning strong, .status-box strong {
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    code, .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.88em;
+    }
+
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--line);
+      padding: 14px 16px;
+      overflow-x: auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      margin: 0 0 1.3em;
+    }
+
+    .formula {
+      display: block;
+      text-align: center;
+      margin: 1.1em 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.95rem;
+      padding: 10px;
+      background: #faf9f6;
+      border: 1px dashed var(--line);
+    }
+
+    figure {
+      margin: 1.4em 0 1.6em;
+      padding: 0;
+    }
+
+    figcaption {
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-top: 8px;
+      line-height: 1.45;
+    }
+
+    svg.diagram {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #fcfbf8;
+      border: 1px solid var(--line);
+    }
+
+    .refs ol { padding-left: 1.2em; }
+    .refs li { margin: 0.55em 0; }
+
+    footer.article-foot {
+      margin-top: 2.5em;
+      padding-top: 1em;
+      border-top: 1px solid var(--line);
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+
+    .qa {
+      margin-top: 2em;
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: 13px;
+    }
+
+    .qa table { font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <article class="paper">
+      <p class="eyebrow">Prime Gap Structure · Classical comparison essay · Research mode</p>
+      <h1>Informing the Multiplet Spine: A PGS Reading of Bounded Gaps, Admissible Forms, and the Twin Residual</h1>
+      <p class="subtitle">
+        How the divisor-count field, the GWR witness, and consecutive-gap chambers
+        reorganize James Maynard’s public argument without absorbing his multiplet theorems
+      </p>
+
+      <div class="meta">
+        <div><strong>Document type:</strong> long-form academic comparison essay (HTML)</div>
+        <div><strong>Primary classical source:</strong> James Maynard, public lecture on primes, patterns, and bounded gaps (YouTube id <span class="mono">ey_57qWhGEM</span>, ~58 min)</div>
+        <div><strong>Primary PGS source:</strong> repository <span class="mono">PROOF.md</span> (three universal local pillars) and twin/Polignac research track status</div>
+        <div><strong>Claim posture:</strong> ontological clarity and residual map · not a promotion of classical multiplet results into PGS theorems · not a twin-prime proof</div>
+        <div><strong>Date:</strong> 2026-07-18</div>
+        <div><strong>Location:</strong> <span class="mono">docs/essays/maynard-spine-pgs-clarity/index.html</span></div>
+      </div>
+
+      <div class="finding">
+        <h2>Plain-language finding</h2>
+        <p>
+          Maynard’s lecture builds one continuous story from “primes as multiplicative atoms”
+          through cryptography and Fermat’s Last Theorem to gaps, admissible linear forms,
+          weak multiplet theorems, and a sieve-based method with a hard twin barrier.
+          Prime Gap Structure (PGS) does not replace that classical multiplet spine.
+          It <em>cuts</em> the spine into distinct objects: a local next-prime rule from exact
+          divisor counts; an ordered interior field with a selected witness; a proved bound on
+          witness offset rather than raw gap width; and open recurrence problems for fixed-width
+          consecutive chambers (twins as the minimal positive even width). The clarity gain is
+          categorical. The theorem gain for twins, Sophie Germain infinitude, or full
+          Hardy-Littlewood k-tuples is zero unless a separate recurrence or multiplet theorem
+          is proved.
+        </p>
+      </div>
+
+      <div class="chip-row" aria-label="Status legend">
+        <span class="chip theorem">theorem</span>
+        <span class="chip measured">measured</span>
+        <span class="chip audit">audit / comparison</span>
+        <span class="chip hypothesis">hypothesis</span>
+        <span class="chip unresolved">unresolved</span>
+        <span class="chip danger">non-claim / invalidated move</span>
+      </div>
+
+      <nav class="toc" aria-label="Table of contents">
+        <h2>Contents</h2>
+        <ol>
+          <li><a href="#abstract">Abstract</a></li>
+          <li><a href="#status-ledger">Status ledger</a></li>
+          <li><a href="#maynard-spine">Reconstruction of Maynard’s spine</a></li>
+          <li><a href="#pgs-objects">PGS objects that matter for the comparison</a></li>
+          <li><a href="#clarity">Where PGS informs the spine</a></li>
+          <li><a href="#object-table">Object separation table</a></li>
+          <li><a href="#method">Almost primes versus the tau field</a></li>
+          <li><a href="#bounded">Bounded raw gaps versus bounded witness compression</a></li>
+          <li><a href="#patterns">Twins, Sophie Germain, and admissibility</a></li>
+          <li><a href="#crypto">Cryptography as motivation, not PGS inference</a></li>
+          <li><a href="#barriers">Two twin barriers, not one wall</a></li>
+          <li><a href="#rebuilt">A rebuilt layered spine</a></li>
+          <li><a href="#hypotheses">Research hypotheses and falsifiers</a></li>
+          <li><a href="#nonclaims">Explicit non-claims</a></li>
+          <li><a href="#conclusion">Conclusion</a></li>
+          <li><a href="#refs">References and repository anchors</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="abstract">1. Abstract</h2>
+      <p>
+        Analytic number theory’s modern bounded-gap story, as presented in Maynard’s public
+        exposition, is a multiplet argument: admissible systems of linear forms, weak
+        simultaneous primality for a subset of the forms, and a transfer to bounded differences
+        between primes. The technical engine is a probabilistic method under sieve weights
+        (“almost primes”), fed by arithmetic progressions information, with a density barrier
+        that blocks a pure-expectation proof of the twin prime conjecture inside that method
+        class.
+      </p>
+      <p>
+        This essay argues that Prime Gap Structure supplies a useful <em>ontological
+        pre-spine</em> for that story without claiming ownership of its multiplet theorems.
+        PGS begins from the ordered divisor-count field on the integers. Given a known prime
+        <span class="mono">p</span>, the next prime is the first later integer with divisor count
+        two. Between consecutive primes the interior is a complete composite field; the Gap
+        Winner Rule selects a canonical witness; universal bounded compression constrains the
+        selected-witness offset. These local facts rearrange Maynard’s motivation: the hard
+        open questions are not “what is the next prime in principle,” but pattern recurrence
+        across gaps and multiplets. The essay enforces strict status separation between
+        theorem, classical external theorem, hypothesis, and unresolved problem, and refuses
+        the category error that equates witness-offset bounds with raw gap bounds.
+      </p>
+
+      <h2 id="status-ledger">2. Status ledger</h2>
+      <p>
+        Mislabeling status is a research defect. The following ledger is load-bearing for the
+        entire essay.
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Claim class</th>
+            <th>Content</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Direct next-prime rule</td>
+            <td><span class="mono">q = min{n &gt; p : tau(n) = 2}</span></td>
+            <td><span class="chip theorem">theorem (PGS)</span></td>
+          </tr>
+          <tr>
+            <td>Interior maximizer (GWR)</td>
+            <td>Leftmost minimum-divisor interior integer maximizes F on the gap interior</td>
+            <td><span class="chip theorem">theorem (PGS)</span></td>
+          </tr>
+          <tr>
+            <td>Universal bounded compression</td>
+            <td><span class="mono">w − p ≤ max(64, ceil(0.5 log(q)²))</span> for GWR witness w</td>
+            <td><span class="chip theorem">theorem (PGS)</span></td>
+          </tr>
+          <tr>
+            <td>Scope of compression</td>
+            <td>Bound is on selected-witness offset, not raw consecutive gap <span class="mono">q − p</span></td>
+            <td><span class="chip theorem">theorem boundary (PGS)</span></td>
+          </tr>
+          <tr>
+            <td>Weak multiplet / bounded raw gaps</td>
+            <td>Zhang-Maynard-Tao line: infinitely often primes in bounded diameter multiplets</td>
+            <td><span class="chip theorem">theorem (classical external)</span></td>
+          </tr>
+          <tr>
+            <td>Twin prime infinitude</td>
+            <td>Infinitely many consecutive prime pairs with gap 2</td>
+            <td><span class="chip unresolved">unresolved</span></td>
+          </tr>
+          <tr>
+            <td>Full admissible k-tuples</td>
+            <td>All forms of an admissible system simultaneously prime infinitely often</td>
+            <td><span class="chip unresolved">unresolved</span></td>
+          </tr>
+          <tr>
+            <td>Sophie Germain infinitude</td>
+            <td>Infinitely many p with 2p+1 also prime</td>
+            <td><span class="chip unresolved">unresolved</span></td>
+          </tr>
+          <tr>
+            <td>RSA hardness</td>
+            <td>Factoring large semiprimes is infeasible at scale</td>
+            <td><span class="chip unresolved">engineering belief / non-theorem here</span></td>
+          </tr>
+          <tr>
+            <td>PGS clarifies Maynard’s spine</td>
+            <td>Object split, local field, residual map improve exposition and research design</td>
+            <td><span class="chip hypothesis">hypothesis / reading-path</span></td>
+          </tr>
+          <tr>
+            <td>PGS supersedes multiplet sieves</td>
+            <td>Local tau structure already implies weak multiplets or twin infinitude</td>
+            <td><span class="chip danger">non-claim / false as stated</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="warning">
+        <strong>Shape warning</strong>
+        Any prose that upgrades measured generator ladders, finite bases, or witness compression
+        into a proof of twin primes, Polignac, full k-tuples, RH, or RSA-scale factorization is
+        outside both <span class="mono">PROOF.md</span> and this essay’s contract.
+      </div>
+
+      <h2 id="maynard-spine">3. Reconstruction of Maynard’s spine</h2>
+      <p>
+        The lecture under discussion is a public synthesis, not a research preprint. Its value
+        for comparison is architectural: it shows how a leading multiplet theorist orders the
+        subject for a mixed audience.
+      </p>
+      <h3>3.1 Multiplicative atoms</h3>
+      <p>
+        Every integer greater than one factors uniquely into primes (fundamental theorem of
+        arithmetic). Hard multiplicative problems are therefore problems about primes and
+        their combinations. This is classical and correct. It does not yet specify a next-prime
+        operator, a gap interior law, or a multiplet theorem.
+      </p>
+      <h3>3.2 Two motivating branches that meet a common pattern</h3>
+      <p>
+        Maynard’s first branch is cryptographic. RSA-type schemes package products of large
+        primes. Pollard’s p−1 method exploits primes for which p−1 is smooth. Safe primes
+        (p such that (p−1)/2 is also prime) are one classical countermeasure idea, and they
+        immediately raise an infinitude question.
+      </p>
+      <p>
+        The second branch is pure: Fermat’s Last Theorem and Sophie Germain’s criterion.
+        If p and 2p+1 are both prime, certain first-case solutions to a^p + b^p = c^p are
+        obstructed. Again one meets the pattern “p and 2p+1 both prime.”
+      </p>
+      <p>
+        The pedagogical fusion is deliberate: applied security folklore and nineteenth-century
+        pure mathematics share a prime-pattern residue. The fusion is also a risk. Consecutive
+        twins (p and p+2) are not the same geometric object as Sophie Germain pairs.
+      </p>
+      <h3>3.3 Gaps as the distributional entry point</h3>
+      <p>
+        From patterns he moves to gaps. The prime number theorem implies that the average gap
+        near x is about log x and therefore grows. Growth of the average does not force growth
+        of every gap. Twin primes and other even fixed differences appear repeatedly in
+        computation and are conjectured to occur infinitely often. Odd differences are killed
+        by parity except for trivial edge cases.
+      </p>
+      <h3>3.4 Admissible linear forms</h3>
+      <p>
+        The unifying conjecture is the prime k-tuples conjecture in linear-form language:
+        choose forms L_i(n) = a_i n + b_i; call the system admissible if no fixed prime always
+        divides the product of the values; then for admissible systems one expects infinitely
+        many n making all L_i(n) prime simultaneously. Twins, prime triples in short intervals,
+        and Sophie Germain-type pairs are special cases.
+      </p>
+      <h3>3.5 Weak multiplets and bounded raw gaps</h3>
+      <p>
+        Full simultaneous primality remains open. The breakthrough is weaker: for sufficiently
+        large admissible systems, at least m of the forms are simultaneously prime infinitely
+        often. Specializing to shifts n + h_i yields infinitely many prime multiplets of bounded
+        diameter, hence infinitely many bounded gaps between primes. The concrete numerical
+        bound is an artifact of weights, packing, and arithmetic-progression input (Maynard’s
+        talk cites a figure in the 246-class packaging for a popular headline).
+      </p>
+      <h3>3.6 Method and barrier</h3>
+      <p>
+        The method is cast as a probabilistic method: sample n under a sieve weight that
+        concentrates on almost-prime tuples; show that the expected number of prime hits among
+        the forms exceeds a threshold; conclude existence. Uniform sampling fails because primes
+        are too sparse. Conditioning on full multiplet primality is circular. Almost-prime
+        weights interpolate. Historical path: standard weights fail; GPY approaches the
+        threshold from below; Zhang’s arithmetic-progression improvement crosses for large
+        bounds; Maynard’s reweighted forms give multiplet strength growing with system size.
+        A parity-type density barrier prevents forcing two-of-two primes by pure expectation
+        inside this method class. Conditional arithmetic-progression strengthenings recover
+        two-of-three and gap at most six in the usual packaging.
+      </p>
+
+      <h2 id="pgs-objects">4. PGS objects that matter for the comparison</h2>
+      <p>
+        PGS is a research program whose proved local core is recorded in
+        <span class="mono">PROOF.md</span>. The comparison uses only those objects that
+        reorganize Maynard’s spine.
+      </p>
+      <h3>4.1 Divisor-count field</h3>
+      <p>
+        For each integer n &gt; 1 let <span class="mono">tau(n)</span> (also written d(n)) be the
+        number of positive divisors. Then n is prime if and only if tau(n) = 2. This is not a
+        probabilistic primality test. It is the definition of primality restated in divisor
+        language.
+      </p>
+      <h3>4.2 Direct next-prime rule</h3>
+      <p class="formula">q = min{ n &gt; p : tau(n) = 2 }</p>
+      <p>
+        Given a known prime p, exact ordered inspection of divisor counts returns the next
+        prime. Status: universal theorem under its stated hypotheses in
+        <span class="mono">PROOF.md</span>.
+      </p>
+      <h3>4.3 Gap interior and GWR</h3>
+      <p>
+        If p and q are consecutive primes, the interior is the set of integers strictly between
+        them. Every interior integer is composite, so tau(n) ≥ 3 there. The Gap Winner Rule
+        (leftmost minimum-divisor maximizer) selects a canonical interior witness w and is
+        proved to maximize the comparison function F on the interior under the program’s
+        stated packaging.
+      </p>
+      <h3>4.4 Selected-witness offset and bounded compression</h3>
+      <p>
+        The selected-witness offset is w − p. Universal bounded compression asserts
+      </p>
+      <p class="formula">w − p ≤ max(64, ceil(0.5 · (log q)²))</p>
+      <p>
+        for every consecutive prime gap with nonempty interior. The square branch is closed by
+        the Prime-Square Proximity Theorem. The bound is deliberately <em>not</em> a theorem
+        about raw gap size q − p, and it is not a proof of RH, PNT, or every classical form of
+        Cramér’s gap conjecture.
+      </p>
+      <h3>4.5 Chambers and fixed-width recurrence</h3>
+      <p>
+        Research packaging for twins and Polignac treats a consecutive gap as a chamber:
+        left prime, interior divisor-count grammar, right prime. Twin primes become infinite
+        recurrence of width-2 chambers. That recurrence theorem is not proved. The track is
+        unresolved with probe artifacts; see the twin/Polignac research surfaces in the
+        repository.
+      </p>
+
+      <figure>
+        <svg class="diagram" viewBox="0 0 760 220" role="img" aria-label="Chamber diagram with p, interior, GWR witness w, and q">
+          <rect x="20" y="70" width="720" height="70" fill="#f3f1ea" stroke="#d8d4cb"/>
+          <rect x="20" y="70" width="36" height="70" fill="#0f3d2e"/>
+          <rect x="704" y="70" width="36" height="70" fill="#0f3d2e"/>
+          <text x="38" y="112" fill="#fff" font-family="ui-sans-serif,system-ui,sans-serif" font-size="16" text-anchor="middle">p</text>
+          <text x="722" y="112" fill="#fff" font-family="ui-sans-serif,system-ui,sans-serif" font-size="16" text-anchor="middle">q</text>
+          <line x1="140" y1="105" x2="140" y2="55" stroke="#7a4a00" stroke-width="2"/>
+          <circle cx="140" cy="105" r="7" fill="#7a4a00"/>
+          <text x="140" y="48" fill="#7a4a00" font-family="ui-sans-serif,system-ui,sans-serif" font-size="13" text-anchor="middle">w (GWR)</text>
+          <text x="380" y="112" fill="#5c5c5c" font-family="ui-sans-serif,system-ui,sans-serif" font-size="13" text-anchor="middle">interior: tau(n) ≥ 3</text>
+          <text x="100" y="175" fill="#1a1a1a" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12">offset w−p (theorem-bounded)</text>
+          <line x1="56" y1="160" x2="140" y2="160" stroke="#1a1a1a" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <text x="420" y="195" fill="#5c5c5c" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12">raw gap q−p (not the PGS compression object)</text>
+          <line x1="56" y1="205" x2="704" y2="205" stroke="#5c5c5c" stroke-width="1" stroke-dasharray="4 3"/>
+          <defs>
+            <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#1a1a1a"/>
+            </marker>
+          </defs>
+        </svg>
+        <figcaption>
+          Object: one consecutive prime chamber. Status: diagram is pedagogical.
+          The solid offset marks the proved compression quantity w−p.
+          The dashed full width marks raw gap q−p, which is a different object.
+        </figcaption>
+      </figure>
+
+      <h2 id="clarity">5. Where PGS informs the spine</h2>
+      <p>
+        “Inform” here means improve order, prevent category errors, and name residuals.
+        It does not mean “prove Maynard’s multiplet conclusions from tau alone.”
+      </p>
+      <h3>5.1 Split fused objects</h3>
+      <p>
+        Maynard’s narrative often fuses three questions that PGS keeps separate:
+      </p>
+      <ol>
+        <li>What is the next prime after a known prime? (local successor)</li>
+        <li>What ordered structure sits inside a consecutive gap? (interior field)</li>
+        <li>Which patterns of simultaneous primes recur infinitely often? (global multiplets / width recurrence)</li>
+      </ol>
+      <p>
+        Without the split, audiences hear “bounded gaps” as if one theorem owned construction,
+        interior law, and twin infinitude. With the split, the multiplet breakthrough is
+        correctly placed as progress on (3), not a redefinition of (1) or (2).
+      </p>
+      <h3>5.2 Replace motivational atoms with an operational successor</h3>
+      <p>
+        FTA is true and motivational. PGS adds the next operational sentence: walk forward
+        from p reading exact tau values; stop at the first tau = 2. The local successor problem
+        is closed as a deterministic rule before any multiplet conjecture is stated.
+      </p>
+      <div class="note">
+        <strong>Status note</strong>
+        The elementary equivalence “prime iff two positive divisors” is classical.
+        PGS’s research force is the decision to treat ordered tau structure, interior maximizers,
+        and witness compression as the first frame rather than sieves or probabilistic models.
+      </div>
+      <h3>5.3 Interior is not empty noise waiting for a sieve</h3>
+      <p>
+        Multiplet methods invent almost-prime scores because genuine primes are hard to count
+        in simultaneous patterns. On a single consecutive gap, PGS already has a complete
+        deterministic field: every interior point has an exact tau, and GWR names a canonical
+        witness. That does not count multiplets. It does stop the metaphor that the gap is
+        structureless space until analytic machinery arrives.
+      </p>
+      <h3>5.4 Separate consecutive width from non-consecutive forms</h3>
+      <p>
+        Safe primes / Sophie Germain pairs live on forms such as n and 2n+1.
+        Consecutive twins live on width 2 between successive primes.
+        Both are “patterns,” but they are not the same chamber geometry.
+        PGS chamber language makes the non-identity first-class.
+      </p>
+      <h3>5.5 Name the compression object correctly</h3>
+      <p>
+        When average gaps grow like log x while rare pairs stay close, classical language
+        emphasizes density fluctuations. PGS adds a different local fact: in every nonempty
+        consecutive gap, a canonical witness is compressed near the left endpoint at a
+        Cramér-scale envelope in the <em>witness</em> sense. That is structure near p, not a
+        proof that q is near p.
+      </p>
+
+      <h2 id="object-table">6. Object separation table</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Talk object</th>
+            <th>Classical packaging</th>
+            <th>PGS packaging</th>
+            <th>Status discipline</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Primes as atoms</td>
+            <td>FTA</td>
+            <td>tau(n)=2 locus in the divisor field</td>
+            <td>shared elementary fact; PGS uses it operationally</td>
+          </tr>
+          <tr>
+            <td>Next prime after p</td>
+            <td>often background / PNT scale</td>
+            <td>direct next-prime rule</td>
+            <td>PGS theorem</td>
+          </tr>
+          <tr>
+            <td>Gap interior</td>
+            <td>sieve survivors / almost primes</td>
+            <td>ordered tau field; GWR witness</td>
+            <td>PGS theorems for maximizer and offset</td>
+          </tr>
+          <tr>
+            <td>Average gap ~ log x</td>
+            <td>PNT consequence</td>
+            <td>not a PGS local pillar</td>
+            <td>classical; do not import as PGS theorem</td>
+          </tr>
+          <tr>
+            <td>Bounded raw gaps</td>
+            <td>weak multiplets</td>
+            <td>not the same as w−p compression</td>
+            <td>classical theorem; external to PGS pillars</td>
+          </tr>
+          <tr>
+            <td>Twin primes</td>
+            <td>n and n+2 both prime i.o.</td>
+            <td>width-2 chamber recurrence</td>
+            <td>unresolved in both frames</td>
+          </tr>
+          <tr>
+            <td>Sophie Germain</td>
+            <td>n and 2n+1 both prime i.o.</td>
+            <td>non-consecutive multiplet pattern</td>
+            <td>unresolved; not twin chamber</td>
+          </tr>
+          <tr>
+            <td>Almost primes</td>
+            <td>sieve weights</td>
+            <td>soft surrogate for divisor complexity</td>
+            <td>classical method; comparison only for PGS inference</td>
+          </tr>
+          <tr>
+            <td>RSA / p−1</td>
+            <td>hardness narrative</td>
+            <td>pattern geometry vs hardness belief split</td>
+            <td>no RSA solved claim</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="method">7. Almost primes versus the tau field</h2>
+      <p>
+        Maynard presents almost primes as scores that interpolate between integers (easy) and
+        primes (hard). The score depends heavily on small divisors. That is already a divisor
+        story. PGS makes the divisor story exact and local:
+      </p>
+      <ul>
+        <li>On the consecutive chain, tau is exact, not a weight class.</li>
+        <li>Primes are exactly the tau = 2 points (and zero-excess points in the DNI form used by the program).</li>
+        <li>Sieve weights remain powerful for <em>global multiplet counting</em>, where exact consecutive tau walks do not by themselves deliver infinitude theorems.</li>
+      </ul>
+      <p>
+        The correct comparison sentence is therefore:
+      </p>
+      <div class="status-box">
+        <strong>Hypothesis (method reading)</strong>
+        Almost-prime weights are truncated, calculable observations of divisor complexity
+        designed for expectation arguments over linear forms. The PGS tau field is the exact
+        local arithmetic field on consecutive integers. One is not a rewrite of the other.
+        Confusing them produces either false twin proofs or false dismissals of multiplet
+        theorems.
+      </div>
+      <p>
+        Classical AP estimates (Bombieri-Vinogradov type inputs, Zhang-type improvements,
+        Elliott-Halberstam type conjectures) stay on the multiplet side of the ledger. They are
+        not inputs to the proved PGS local pillars in <span class="mono">PROOF.md</span>.
+      </p>
+
+      <h2 id="bounded">8. Bounded raw gaps versus bounded witness compression</h2>
+      <p>
+        This section exists to prevent the single most damaging category error in any PGS
+        encounter with Maynard’s headline.
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Maynard multiplet line</th>
+            <th>PGS pillar 3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Primary quantity</td>
+            <td>raw multiplet diameter / consecutive gap scale infinitely often</td>
+            <td>selected-witness offset w − p for every nonempty gap</td>
+          </tr>
+          <tr>
+            <td>Quantifier</td>
+            <td>infinitely often</td>
+            <td>for every consecutive gap with nonempty interior</td>
+          </tr>
+          <tr>
+            <td>Engine</td>
+            <td>sieve weights + AP level + form packing</td>
+            <td>tau field + GWR + branch closure (incl. square proximity)</td>
+          </tr>
+          <tr>
+            <td>Popular number</td>
+            <td>method-artifact bound (e.g. 246-class packaging)</td>
+            <td>dynamic cutoff max(64, ceil(0.5 log(q)²))</td>
+          </tr>
+          <tr>
+            <td>Twin consequence</td>
+            <td>still open; conditional gap ≤ 6 under strong AP hypotheses</td>
+            <td>still open; compression never forces q = p+2</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        Both results can be true at once. Neither absorbs the other. A research culture that
+        says “we already bounded gaps because we bounded w − p” is not doing PGS; it is
+        laundering status.
+      </p>
+
+      <h2 id="patterns">9. Twins, Sophie Germain, and admissibility</h2>
+      <h3>9.1 Admissibility as local modular hygiene</h3>
+      <p>
+        A system of linear forms is admissible when it avoids a fixed prime divisor of the
+        product for every n. That is modular bookkeeping. It is necessary for any infinitude
+        hope and far from sufficient for a proof.
+      </p>
+      <h3>9.2 Consecutive twins as chamber words</h3>
+      <p>
+        In PGS packaging, twin primes are infinite recurrence of allowed width-2 chamber words:
+        left prime, empty or tightly constrained interior grammar, right prime at distance 2.
+        Missing theorem: a recurrence law that forces infinitely many such words without
+        classical density assumptions smuggled as PGS inference.
+      </p>
+      <h3>9.3 Sophie Germain is not a twin chamber</h3>
+      <p>
+        The pair (p, 2p+1) is a multiplet pattern on a stretched geometry. It can share modular
+        lessons with twins and still refuse identification. Any transport theorem that would
+        map consecutive width-2 recurrence to Sophie Germain infinitude (or prove no such map
+        exists) remains outside the present essay’s proved core.
+      </p>
+      <h3>9.4 Weak multiplets as classical progress on pattern (3)</h3>
+      <p>
+        “m of K forms prime infinitely often” is genuine progress toward k-tuples. PGS should
+        cite it as classical external theorem when the topic is multiplet infinitude. PGS should
+        not re-narrate it as a corollary of GWR.
+      </p>
+
+      <h2 id="crypto">10. Cryptography as motivation, not PGS inference</h2>
+      <p>
+        Maynard’s RSA and Pollard p−1 discussion is motivationally correct: multiplicative
+        cryptography routes through primes and prime patterns. PGS has a separate
+        factorization-adjacent research program phrased as endpoint-chain transport and
+        modulus-link residual state. That program is not “ordinary candidate factor search,”
+        and it is not a certificate that RSA is broken.
+      </p>
+      <ul>
+        <li>Safe primes: pattern class, unresolved infinitude.</li>
+        <li>Factoring hardness: external belief relative to this essay.</li>
+        <li>PGS cryptology track: residual and certificate language; unresolved where unresolved.</li>
+      </ul>
+      <p>
+        The clarity contribution is the split between pattern geometry and hardness belief.
+        The non-contribution is any security proof or break claim.
+      </p>
+
+      <h2 id="barriers">11. Two twin barriers, not one wall</h2>
+      <p>
+        Maynard’s method barrier is roughly: reasonable almost-prime weights cannot put density
+        more than one half on primes because of parity of the number of prime factors, so
+        two-of-two simultaneous primality cannot be forced by pure expectation. Conditional
+        strengthenings of primes in arithmetic progressions recover two-of-three and gap six.
+      </p>
+      <p>
+        PGS’s twin residual is different:
+      </p>
+      <pre>not: raise prime density inside a sieve weight until twins fall out
+but: prove infinite recurrence of width-2 consecutive chamber words / locks</pre>
+      <p>
+        Naming both barriers prevents two false comforts:
+      </p>
+      <ol>
+        <li>that improving multiplet constants is the only twin path;</li>
+        <li>that local witness compression is already a twin path.</li>
+      </ol>
+
+      <figure>
+        <svg class="diagram" viewBox="0 0 760 300" role="img" aria-label="Layered spine diagram">
+          <rect x="30" y="20" width="700" height="40" fill="#e8f3ee" stroke="#0f3d2e"/>
+          <text x="380" y="45" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="13" fill="#0f3d2e">Layer A · Local successor + interior field (PGS theorems)</text>
+
+          <rect x="30" y="80" width="700" height="40" fill="#e8eef6" stroke="#1e3a5f"/>
+          <text x="380" y="105" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="13" fill="#1e3a5f">Layer B · Classical multiplet infinitude / bounded raw gaps (external theorems)</text>
+
+          <rect x="30" y="140" width="340" height="56" fill="#fff8eb" stroke="#6b3a00"/>
+          <text x="200" y="165" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#6b3a00">Layer C1 · Width-2 chamber recurrence</text>
+          <text x="200" y="183" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#6b3a00">twins / Polignac (unresolved)</text>
+
+          <rect x="390" y="140" width="340" height="56" fill="#fff8eb" stroke="#6b3a00"/>
+          <text x="560" y="165" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#6b3a00">Layer C2 · Non-consecutive multiplets</text>
+          <text x="560" y="183" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#6b3a00">Sophie Germain / full k-tuples (unresolved)</text>
+
+          <rect x="30" y="220" width="700" height="48" fill="#f0f0f0" stroke="#444"/>
+          <text x="380" y="240" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#444">Layer D · Methods: sieves / APs (classical) · chamber probes (PGS) · comparison only across the fence</text>
+          <text x="380" y="258" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#444">Crypto hardness narratives stay off the theorem ledger</text>
+        </svg>
+        <figcaption>
+          Object: layered residual map for the Maynard spine under PGS ontology.
+          Status: reading-path diagram. Colors mark status classes, not proof strength ranks.
+        </figcaption>
+      </figure>
+
+      <h2 id="rebuilt">12. A rebuilt layered spine</h2>
+      <p>
+        The following is the same lecture arc with PGS object names and status tags inserted.
+        It is an expositional rebuild, not a new classical proof.
+      </p>
+      <pre>1. Multiplicative atoms
+   FTA + tau(n)=2 characterization
+   status: elementary / shared
+
+2. Local successor
+   q = first n &gt; p with tau(n)=2
+   status: PGS theorem
+
+3. Interior field
+   consecutive gap interior; GWR witness w; F / DNI structure
+   status: PGS theorems (maximizer; compression on w−p)
+
+4. Global open pattern questions (split)
+   4a consecutive fixed widths (twins, Polignac)     status: unresolved
+   4b non-consecutive multiplets (SG, full k-tuples) status: unresolved
+   4c factoring hardness                              status: non-theorem here
+
+5. Classical multiplet progress
+   m of K forms prime i.o. =&gt; bounded raw gaps
+   status: classical external theorem
+
+6. Classical method layer
+   almost primes + APs + expectation
+   status: classical method; comparison for PGS
+
+7. Barriers
+   sieve density barrier | missing width-2 recurrence theorem
+   status: both leave twins open</pre>
+
+      <h2 id="hypotheses">13. Research hypotheses and falsifiers</h2>
+      <p>
+        These items are research design hypotheses. None is a theorem.
+      </p>
+      <h3>H1. Dual ledger on every multiplet sentence</h3>
+      <p>
+        Tag each claim in the Maynard arc as one of: local consecutive field; multiplet
+        pattern; density/AP method; crypto hardness. Falsifier: a sentence that needs two tags
+        but is treated as a single theorem.
+      </p>
+      <h3>H2. Almost-prime scores as truncated divisor complexity</h3>
+      <p>
+        Interpret sieve weights as calculable partial observations of divisor structure.
+        Falsifier: multiplet successes driven by structure invisible to tau/DNI language even
+        after fair translation of the forms.
+      </p>
+      <h3>H3. Twin residual is recurrence, not bound sharpening</h3>
+      <p>
+        Classical path: reduce B toward 2. PGS path: prove infinite width-2 chamber recurrence.
+        Falsifier: a purported PGS twin proof that only uses “w is near p.”
+      </p>
+      <h3>H4. No silent SG = twin identification</h3>
+      <p>
+        Keep (n, 2n+1) off the consecutive twin ledger without an explicit transport theorem.
+        Falsifier: a proved PGS transport or a proved obstruction to transport.
+      </p>
+      <h3>H5. Clarity product before theorem inflation</h3>
+      <p>
+        The correct near-term deliverable of this comparison is a status-disciplined spine map
+        (this essay), not a claim of classical completion.
+      </p>
+
+      <h2 id="nonclaims">14. Explicit non-claims</h2>
+      <div class="warning">
+        <strong>Non-claims (do not cite this essay for these)</strong>
+        <ul>
+          <li>No proof of the twin prime conjecture or Polignac’s conjecture.</li>
+          <li>No proof of full admissible k-tuples or Sophie Germain infinitude.</li>
+          <li>No claim that PGS bounded compression implies bounded raw gaps infinitely often.</li>
+          <li>No claim that Maynard’s multiplet theorems are obsolete or incorrect.</li>
+          <li>No RH, PNT, or RSA-scale resolution.</li>
+          <li>No use of “verified” or “validated” for program-level implementation claims in this essay’s body; this document is conceptual comparison, not an evidence package with an executed 10^18 surface.</li>
+          <li>No endorsement of classical sieves, Miller-Rabin, or gcd search as PGS inference mechanisms.</li>
+        </ul>
+      </div>
+
+      <h2 id="conclusion">15. Conclusion</h2>
+      <p>
+        Maynard’s public spine is a coherent classical path from multiplicative motivation to
+        multiplet theorems and a method barrier. PGS does not swallow that path. It supplies a
+        sharper pre-spine: exact local succession, an ordered interior field, a proved witness
+        offset bound, and a residual language that keeps twins and Sophie Germain from collapsing
+        into one slogan.
+      </p>
+      <p>
+        The belief that “PGS can add clarity and inform the spine” is therefore defensible as a
+        research-design and exposition claim. It is indefensible as a silent theorem transfer.
+        The ethical and scientific standard for the program is the same here as everywhere else
+        in the repository: name the object, name the status, and refuse status laundering when
+        classical multiplet glory and local tau structure share the word “gap.”
+      </p>
+
+      <h2 id="refs">16. References and repository anchors</h2>
+      <div class="refs">
+        <ol>
+          <li>
+            Maynard, James. Public lecture on prime numbers, patterns, and bounded gaps.
+            Video: <a href="https://youtu.be/ey_57qWhGEM">https://youtu.be/ey_57qWhGEM</a>
+            (id <span class="mono">ey_57qWhGEM</span>). Used as the classical spine source for this essay.
+          </li>
+          <li>
+            Prime Gap Structure repository. <span class="mono">PROOF.md</span>.
+            Controls theorem status for the direct next-prime rule, GWR interior maximizer,
+            universal bounded compression, and Prime-Square Proximity.
+          </li>
+          <li>
+            Prime Gap Structure repository. <span class="mono">AGENTS.md</span>.
+            Operational contract: PGS-first frame, status separation, classical-method boundary,
+            mandatory 10^18 evidence surface for program-level verified/validated language.
+          </li>
+          <li>
+            Prime Gap Structure repository. <span class="mono">docs/RESULTS.md</span>.
+            Map of theorem foundation versus measured and audit surfaces.
+          </li>
+          <li>
+            Twin / Polignac research packaging.
+            <span class="mono">pgs-unsolved-problems/polignac-twin/</span> and
+            <span class="mono">research/10-twin-primes/</span>.
+            Fixed-width chamber recurrence remains unresolved.
+          </li>
+          <li>
+            Classical background named in the lecture spine (not re-proved here):
+            prime number theorem; Hardy-Littlewood / Dickson-type k-tuples conjectures;
+            Goldston-Pintz-Yıldırım method; Zhang bounded gaps; Maynard multiplet weights;
+            Bombieri-Vinogradov and Elliott-Halberstam type arithmetic-progression hypotheses;
+            Pollard p−1; Sophie Germain’s criterion related to Fermat’s Last Theorem.
+          </li>
+        </ol>
+      </div>
+
+      <div class="qa">
+        <h2>Document QA (closing gate)</h2>
+        <table>
+          <thead>
+            <tr><th>Criterion</th><th>Result</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>HTML self-contained (no required CDN assets)</td><td>pass</td><td>system fonts only</td></tr>
+            <tr><td>PGS-first object order</td><td>pass</td><td>finding + ledger before multiplet cheerleading</td></tr>
+            <tr><td>theorem / unresolved / hypothesis separation</td><td>pass</td><td>ledger + non-claims</td></tr>
+            <tr><td>w−p vs q−p boundary</td><td>pass</td><td>section 8 + figure</td></tr>
+            <tr><td>No twin / RH / RSA ownership</td><td>pass</td><td>explicit non-claims</td></tr>
+            <tr><td>No verified/validated program language without 10^18 package</td><td>pass</td><td>essay is conceptual</td></tr>
+            <tr><td>En dash grammar</td><td>pass</td><td>avoided in prose</td></tr>
+            <tr><td>Placement under docs/essays (not repo root)</td><td>pass</td><td>maynard-spine-pgs-clarity/</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <footer class="article-foot">
+        Prime Gap Structure · Essay series companion · Comparison document ·
+        Local theorems controlled by PROOF.md ·
+        Open file:// path:
+        docs/essays/maynard-spine-pgs-clarity/index.html
+      </footer>
+    </article>
+  </div>
+</body>
+</html>
