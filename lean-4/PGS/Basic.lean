@@ -37,6 +37,82 @@ theorem length_ge_two_of_two_distinct {α} :
     simp only [List.length]
     omega
 
+/-- Three distinct list members force length at least three. -/
+theorem length_ge_three_of_three_distinct {α} :
+    ∀ {l : List α} {a b c : α},
+      a ∈ l → b ∈ l → c ∈ l → a ≠ b → a ≠ c → b ≠ c → 3 ≤ l.length
+  | [], _, _, _, ha, _, _, _, _, _ => by simp at ha
+  | _ :: [], a, b, c, ha, hb, hc, hab, hac, hbc => by
+    simp only [List.mem_cons, List.mem_nil_iff, or_false] at ha hb hc
+    subst ha
+    exact absurd hb.symm hab
+  | x :: y :: [], a, b, c, ha, hb, hc, hab, hac, hbc => by
+    simp only [List.mem_cons, List.mem_nil_iff, or_false] at ha hb hc
+    rcases ha with rfl | rfl
+    · rcases hb with rfl | rfl
+      · exact (hab rfl).elim
+      · rcases hc with rfl | rfl
+        · exact (hac rfl).elim
+        · exact (hbc rfl).elim
+    · rcases hb with rfl | rfl
+      · rcases hc with rfl | rfl
+        · exact (hbc rfl).elim
+        · exact (hac rfl).elim
+      · exact (hab rfl).elim
+  | _ :: _ :: _ :: _, _, _, _, _, _, _, _, _, _ => by
+    simp only [List.length]
+    omega
+
+/-- `List.filter` preserves `Nodup` (core-only; no Mathlib). -/
+theorem nodup_filter {α} (p : α → Bool) :
+    ∀ {l : List α}, l.Nodup → (l.filter p).Nodup
+  | [], _ => by simp
+  | x :: xs, h => by
+    rw [List.nodup_cons] at h
+    simp only [List.filter]
+    split
+    · next _hp =>
+      rw [List.nodup_cons]
+      refine ⟨?_, nodup_filter p h.2⟩
+      intro hx
+      exact h.1 (List.mem_filter.mp hx).1
+    · next _hp =>
+      exact nodup_filter p h.2
+
+/--
+A `Nodup` list whose members all lie in `{a, b}` and which contains both `a` and `b`
+has length exactly 2.
+-/
+theorem length_eq_two_of_mem_pair_nodup {α} [BEq α] [LawfulBEq α]
+    {l : List α} {a b : α} (hab : a ≠ b)
+    (hsub : ∀ x, x ∈ l → x = a ∨ x = b)
+    (ha : a ∈ l) (hb : b ∈ l)
+    (hnodup : l.Nodup) : l.length = 2 := by
+  have hge : 2 ≤ l.length := length_ge_two_of_two_distinct ha hb hab
+  have hb_erase : b ∈ l.erase a := (List.mem_erase_of_ne hab.symm).mpr hb
+  have hlen1 : (l.erase a).length = l.length - 1 := List.length_erase_of_mem ha
+  have hlen2 : ((l.erase a).erase b).length = (l.erase a).length - 1 :=
+    List.length_erase_of_mem hb_erase
+  have hnodup_erase : (l.erase a).Nodup := hnodup.erase a
+  have hempty : (l.erase a).erase b = [] := by
+    apply List.eq_nil_of_subset_nil
+    intro x hx
+    have hx_ne_b : x ≠ b := by
+      intro hxb
+      subst hxb
+      exact hnodup_erase.not_mem_erase hx
+    have hx_in_erase_a : x ∈ l.erase a := (List.mem_erase_of_ne hx_ne_b).mp hx
+    have hx_ne_a : x ≠ a := by
+      intro hxa
+      subst hxa
+      exact hnodup.not_mem_erase hx_in_erase_a
+    have hx_l : x ∈ l := List.mem_of_mem_erase hx_in_erase_a
+    rcases hsub x hx_l with rfl | rfl
+    · exact (hx_ne_a rfl).elim
+    · exact (hx_ne_b rfl).elim
+  have hlen0 : ((l.erase a).erase b).length = 0 := by simp [hempty]
+  omega
+
 /-- For `n > 1`, divisors `1` and `n` are distinct members of the τ filter. -/
 theorem tau_ge_two_of_gt_one (n : Nat) (h : n > 1) : 2 ≤ tau n := by
   simp only [tau]
@@ -68,33 +144,44 @@ theorem not_compositeWitness_iff_tau_le_two (τ : Nat) :
   · intro h hgt
     exact Nat.not_le_of_gt hgt h
 
--- Pure-List counting argument (three distinct members in the explicit divisor filter ⇒ length ≥ 3).
---
--- DEFERRED (user decision 2026-06)
--- This is the precise remaining obligation for the bidirectional tau characterization
--- (PROOF.md lines 80-81).
---
--- Per formalization plan, this pure-List version proved more tedious than expected in the
--- self-contained skeleton. Deferred to Phase 2 when controlled Mathlib re-introduction
--- is permitted (see PGS_LEAN_FORMALIZATION_PLAN.md §4.2 and §7, and the Mathlib strategy table).
---
--- Status: Statement + full traceability complete. Implementation deferred.
--- The lemma may be used in downstream proofs (the `apply` will succeed; the `sorry` is
--- explicitly marked as deferred per LEAN_PGS_VERIFICATION_CONTRACT.md).
+/--
+PROOF.md lines 80-81 (tau / prime characterization support).
+
+If `n > 1` has a positive divisor `d` distinct from both `1` and `n`, then the
+explicit divisor filter contains at least the three distinct members `1`, `d`,
+and `n`, so `tau n ≥ 3`.
+
+Status: proved mirror (core List cardinality; no Mathlib; no axiom).
+-/
 theorem three_distinct_divisors_imply_tau_ge_three
     (n : Nat) (d : Nat) (h : n > 1) (hd : d ∣ n)
     (h1 : d ≠ 1) (h2 : d ≠ n) :
     3 ≤ tau n := by
-  /-
-  DEFERRED to Phase 2 (Mathlib).
+  simp only [tau]
+  have h_pos : 0 < n := Nat.zero_lt_of_lt h
+  have hn0 : n ≠ 0 := Nat.ne_of_gt h_pos
+  rw [if_neg hn0]
+  have hd_pos : 0 < d := Nat.pos_of_dvd_of_pos hd h_pos
+  have hd_le : d ≤ n := Nat.le_of_dvd h_pos hd
+  have one_mem := mem_div_filter_left h_pos
+    ⟨Nat.zero_lt_one, Nat.succ_le_of_lt h_pos, Nat.one_dvd _⟩
+  have n_mem := mem_div_filter_left h_pos
+    ⟨h_pos, Nat.le_refl _, Nat.dvd_refl _⟩
+  have d_mem := mem_div_filter_left h_pos ⟨hd_pos, hd_le, hd⟩
+  have one_ne_n : 1 ≠ n := by
+    rintro rfl
+    exact Nat.not_lt.mpr (Nat.le_refl 1) h
+  exact length_ge_three_of_three_distinct one_mem d_mem n_mem
+    (Ne.symm h1) one_ne_n h2
 
-  When re-introduced:
-  - Use Mathlib.Data.List or Finset cardinality lemmas for the clean counting step.
-  - Or keep a minimal custom lemma with full proof.
-  - Update this comment + all status surfaces at that time.
-  -/
-  sorry
+/--
+PROOF.md lines 80-81.
 
+For `n > 1`, `tau n = 2` if and only if the only positive divisors of `n` are
+`1` and `n`.
+
+Status: proved mirror (core List cardinality; no Mathlib; no axiom).
+-/
 theorem tau_eq_two_iff_only_divisors_are_1_and_n
     (n : Nat) (h : n > 1) :
     tau n = 2 ↔ (∀ d, d ∣ n → d = 1 ∨ d = n) := by
@@ -105,148 +192,63 @@ theorem tau_eq_two_iff_only_divisors_are_1_and_n
     · exact Or.inl h1
     · by_cases h2 : d = n
       · exact Or.inr h2
-      · -- Third distinct divisor d (distinct from 1 and n by the two by_cases).
-        -- Apply the deferred counting lemma (marked per user decision 2026-06, Phase 2 Mathlib).
-        -- This directly yields 3 ≤ tau n, contradicting h_tau : tau n = 2.
-        have : 3 ≤ tau n := three_distinct_divisors_imply_tau_ge_three n d h hd h1 h2
+      · have : 3 ≤ tau n := three_distinct_divisors_imply_tau_ge_three n d h hd h1 h2
         rw [h_tau] at this
         have : False := Nat.not_le_of_lt (by decide : 2 < 3) this
         contradiction
-
   · intro h_only
-    simp [tau]
-    /-
-    Scaffolding for the reverse direction (Phase 1, comments only, no tactics yet).
-
-    PROOF.md Reference: Lines 80-81
-    "An integer n > 1 is prime exactly when its only positive divisors are 1 and n.
-     Therefore tau(n) = 2 exactly when n is prime."
-
-    Goal of this direction:
-      Assume: ∀ d, d ∣ n → d = 1 ∨ d = n   (the "only 1 and n divide n" side)
-      Prove:  tau n = 2
-
-    Ordinary-language mechanism:
-      Start from the assumption that 1 and n are the *only* positive divisors.
-      The explicit filter used by our tau definition is:
-        (List.range (n+1)).filter (fun x => x > 0 && n % x == 0)
-      We must show this list has *exactly* two elements.
-
-    Intended proof structure (to be implemented later, one micro-unit at a time):
-      2. Show that n is always in the filter (for n > 1).
-         - n > 0, n ≤ n, and n % n = 0.
-         - Again, mem_div_filter_left or direct.
-
-      3. Show there cannot be any third element.
-         - Take an arbitrary x with 0 < x ≤ n and n % x == 0.
-         - By the assumption h_only, x must be 1 or n.
-         - Therefore no x with 1 < x < n can survive the filter.
-         - This shows the filter contains *at most* the two elements 1 and n.
-
-      4. Conclude that the filtered list has *exactly* length 2.
-         - Combine (1)+(2)+(3).
-         - Hence tau n = 2 (by definition of tau via the current List.range filter).
-
-    Edge cases & obligations to address during implementation:
-      - n > 1 is given by the outer hypothesis.
-      - The filter never contains 0 (guarded by x > 0).
-      - x > n is impossible because of the range (n+1).
-      - We stay with the current pure-List definition of tau (no Nat.divisors yet).
-      - The proof must remain downstream verification only, no new PGS rules invented here.
-
-    This direction is conceptually the "only-if" half of the prime characterization.
-    Once scaffolded and reviewed, it should be implemented incrementally (one sub-obligation at a time)
-    with immediate build checks after each unit.
-
-    Status: Scaffolding complete. Phase 3 incremental implementation started.
-    -/
-    -- Larger unit (replacing previous micro scaffolding): the "at most 2" (no third element in the filter)
-    -- is delivered by only_one_and_n_in_filter. The "at least 2" (1 and n are in the filter) is delivered
-    -- by the two memberships below. The final combination "therefore length exactly 2" is the pure-List
-    -- length upper-bound argument (image ⊆ {1, n}, distinct sublist of range, hits both). This is the
-    -- symmetric technical obligation to the deferred three_distinct... (user decision 2026-06, Phase 2
-    -- Mathlib re-introduction). Per the same rationale (self-contained pure-List skeleton), this length
-    -- detail is explicitly deferred. The reverse is complete up to the marked step. Forward is complete.
-    -- 1:1 with PROOF.md:80-81.
-
-    have only_one_and_n_in_filter : ∀ x, x ∈ (List.range (n + 1)).filter (fun x => x > 0 && n % x == 0) → x = 1 ∨ x = n := by
+    simp only [tau]
+    have hn0 : n ≠ 0 := Nat.ne_of_gt h_pos
+    rw [if_neg hn0]
+    let flt := (List.range (n + 1)).filter (fun x => x > 0 && n % x == 0)
+    have only_one_and_n_in_filter : ∀ x, x ∈ flt → x = 1 ∨ x = n := by
       intro x hx
-      simp [List.mem_filter, List.mem_range] at hx
-      have hx_pos : 0 < x := hx.2.1
+      simp [flt, List.mem_filter, List.mem_range] at hx
       have hx_mod_eq : n % x = 0 := hx.2.2
       have hx_dvd : x ∣ n := Nat.dvd_of_mod_eq_zero hx_mod_eq
       exact h_only x hx_dvd
-
-    have one_mem : 1 ∈ (List.range (n + 1)).filter (fun x => x > 0 && n % x == 0) := by
+    have one_mem : 1 ∈ flt := by
       apply mem_div_filter_left h_pos
       exact ⟨Nat.zero_lt_one, Nat.succ_le_of_lt h_pos, Nat.one_dvd _⟩
-
-    have n_mem : n ∈ (List.range (n + 1)).filter (fun x => x > 0 && n % x == 0) := by
+    have n_mem : n ∈ flt := by
       apply mem_div_filter_left h_pos
       exact ⟨h_pos, Nat.le_refl _, Nat.dvd_refl _⟩
+    have one_ne_n : 1 ≠ n := by
+      rintro rfl
+      exact Nat.not_lt.mpr (Nat.le_refl 1) h
+    have hnodup : flt.Nodup := nodup_filter _ List.nodup_range
+    exact length_eq_two_of_mem_pair_nodup one_ne_n only_one_and_n_in_filter
+      one_mem n_mem hnodup
 
-    -- The "at most 2" (no third element in the filter) is delivered by only_one_and_n_in_filter.
-    -- The "at least 2" (1 and n are in the filter, distinct) is delivered by one_mem and n_mem.
-    -- The final combination "therefore the filter has length exactly 2" (and thus tau n = 2) is the
-    -- pure-List length upper-bound argument from the image ⊆ {1, n} + distinct sublist of range + hits both.
-    -- This is the symmetric technical obligation to the deferred three_distinct_divisors_imply_tau_ge_three
-    -- (user decision 2026-06, Phase 2 Mathlib re-introduction per PGS_LEAN_FORMALIZATION_PLAN.md §4.2 and §7).
-    -- Per the same rationale (self-contained pure-List skeleton before controlled Mathlib), this length detail
-    -- is explicitly deferred. The reverse direction is complete up to this marked step.
-    -- The forward direction is complete (uses the other deferred lemma for its contradiction).
-    -- 1:1 traceability to PROOF.md lines 80-81 preserved.
+/--
+PROOF.md lines 80-81 (contrapositive form).
 
-    -- The "at most 2" (no third element in the filter) is delivered by only_one_and_n_in_filter.
-    -- The "at least 2" (1 and n are in the filter, distinct) is delivered by one_mem and n_mem.
-    -- The final combination "therefore the filter has length exactly 2" (and thus tau n = 2) is the
-    -- pure-List length upper-bound argument from the image ⊆ {1, n} + distinct sublist of range + hits both.
-    -- This is the symmetric technical obligation to the deferred three_distinct_divisors_imply_tau_ge_three
-    -- (user decision 2026-06, Phase 2 Mathlib re-introduction per PGS_LEAN_FORMALIZATION_PLAN.md §4.2 and §7).
-    -- Per the same rationale (self-contained pure-List skeleton before controlled Mathlib), this length detail
-    -- is explicitly deferred. The reverse direction is complete up to this marked step.
-    -- The forward direction is complete (uses the other deferred lemma for its contradiction).
-    -- 1:1 traceability to PROOF.md lines 80-81 preserved.
+For `n > 1`, `tau n > 2` if and only if `n` has a proper divisor `d`
+with `1 < d < n`.
 
-    let flt := (List.range (n + 1)).filter (fun x => x > 0 && n % x == 0)
-    have : flt.length = 2 := by
-      /-
-      DEFERRED (user decision 2026-06, consistent with three_distinct_divisors_imply_tau_ge_three).
-
-      The technical content is the pure-List proof that a distinct list whose elements all satisfy
-      "y = 1 ∨ y = n", and which contains both 1 and n, must have length exactly 2.
-
-      This is the dual of the deferred "three distinct divisors ⇒ length ≥ 3" argument.
-      Both are pure-List cardinality / pigeonhole obligations in the self-contained skeleton.
-
-      When Mathlib is re-introduced (Phase 2), both become routine with Finset.card or List.Nodup.card_le or
-      the existing Mathlib List/Finset cardinality lemmas for the image and the injection.
-
-      Status: "at most 2" (only_one_and_n_in_filter) and "at least 2" (one_mem, n_mem + distinct from h : n>1) delivered.
-      The final antisymmetry / length-equality step is the deferred counting detail.
-      -/
-      sorry
-
-    -- The goal is the tau n =2 (the if n=0 from the outer simp [tau] at the top of the branch is not present; the goal is the if from the theorem statement).
-    -- Use the outer h : n>1 to case the if.
-    by_cases hn0 : n = 0
-    · have : False := Nat.pos_iff_ne_zero.mp (Nat.zero_lt_of_lt h) hn0
-      exact False.elim this
-    · rw [if_neg hn0]
-      exact this
-
+Status: proved mirror (core List cardinality; no Mathlib; no axiom).
+-/
 theorem tau_gt_two_iff_has_proper_divisor (n : Nat) (h : n > 1) :
     tau n > 2 ↔ ∃ d, 1 < d ∧ d < n ∧ d ∣ n := by
-  /-
-  Contrapositive of tau_eq_two_iff_only_divisors_are_1_and_n (PROOF.md:80-81).
-
-  Forward: if tau n >2 then (by the main iff and the deferred counting) there is a proper divisor.
-
-  Reverse: if there is a proper divisor d (1 < d < n, d | n), then 1, d, n are three distinct positive divisors, so by the deferred counting lemma tau n ≥3 >2.
-
-  Both directions rely on the deferred pure-List counting argument (user decision 2026-06).
-  The lemma is stated for the smoke-test and plan traceability. Implementation deferred consistently.
-  -/
-  sorry
+  constructor
+  · intro htau
+    have hnot_only : ¬ ∀ d, d ∣ n → d = 1 ∨ d = n := by
+      intro h_only
+      have : tau n = 2 := (tau_eq_two_iff_only_divisors_are_1_and_n n h).mpr h_only
+      omega
+    obtain ⟨d, hd⟩ := Classical.not_forall.mp hnot_only
+    have hpair : d ∣ n ∧ ¬ (d = 1 ∨ d = n) := Classical.not_imp.mp hd
+    have hne : d ≠ 1 ∧ d ≠ n := not_or.mp hpair.2
+    have hd_pos : 0 < d := Nat.pos_of_dvd_of_pos hpair.1 (Nat.zero_lt_of_lt h)
+    have hd_le : d ≤ n := Nat.le_of_dvd (Nat.zero_lt_of_lt h) hpair.1
+    refine ⟨d, ?_, ?_, hpair.1⟩
+    · exact Nat.lt_of_le_of_ne (Nat.succ_le_of_lt hd_pos) (Ne.symm hne.1)
+    · exact Nat.lt_of_le_of_ne hd_le hne.2
+  · intro ⟨d, hd1, hdn, hdd⟩
+    have h1 : d ≠ 1 := Ne.symm (Nat.ne_of_lt hd1)
+    have h2 : d ≠ n := Nat.ne_of_lt hdn
+    have : 3 ≤ tau n := three_distinct_divisors_imply_tau_ge_three n d h hdd h1 h2
+    omega
 
 /-!
 =============================================================================

@@ -9,85 +9,59 @@ h1, h2 { color: #58a6ff; }
 table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
 th, td { border: 1px solid #30363d; padding: 0.5rem; text-align: left; }
 th { background: #161b22; }
-.status-proved { background: #1a472a; color: #56d364; }
-.status-inprogress { background: #3d2a1a; color: #d29922; }
-.status-blocked { background: #3d1f1f; color: #f85149; }
-.contract { background: #161b22; padding: 1rem; border-left: 4px solid #58a6ff; }
+.contract { background: #161b22; padding: 1rem; border-left: 4px solid #58a6ff; margin-bottom: 1.5rem; }
+.plain-english { font-size: 1.1em; margin-bottom: 2rem; }
+.ok { color: #3fb950; }
+.open { color: #d29922; }
 </style>
 </head>
 <body>
 
 <h1>PGS Lean 4 Formalization. Status Surface</h1>
 
-<p><strong>✅ PHASE 1. Core Characterization (Closed with Deferrals : 2026-06)</strong><br>
-<strong>✅ L5 CLOSED (2026-07-05)</strong>, weak_lfcl_ruleX_forces_next_prime proved (Lean mirror of weak sufficient-bound certificate law under PROOF.md hypotheses). Full replaySelectionAtBound port + #eval on p=11/gap=2 (returns correct q=13 cert). See lean-4/ and L5 plan.
-Phase 1 gate complete. Core structure, reverse helper lemma, memberships, and contrapositive delivered. The two pure-List counting obligations (forward + symmetric reverse length) explicitly deferred to Phase 2 per user decision 2026-06. All surfaces updated. Build clean. Ready for controlled Phase 2 (Mathlib path).</p>
-
 <div class="contract">
-<strong>Active Contracts</strong>: 
-<a href="../../../lean-4/LEAN_PGS_VERIFICATION_CONTRACT.md">LEAN_PGS_VERIFICATION_CONTRACT.md</a> • 
-<a href="../../../lean-4/PGS_LEAN_FORMALIZATION_PLAN.md">PGS_LEAN_FORMALIZATION_PLAN.md</a> • 
-<a href="PGS_LEAN_TRANSLATION_PLAN.html">Detailed Translation Plan (18.7 KB)</a>
+<strong>Owner</strong>: Hermes<br><br>
+<strong>Active Contracts & Verification Documents</strong>:<br>
+• <a href="../../../lean-4/DEFINITION_OF_DONE.md">Definition of Done (DoD)</a><br>
+• <a href="../../../lean-4/SORRY_AXIOM_INVENTORY.md">Sorry/Axiom Inventory</a><br>
+• <a href="../../../lean-4/LEAN_PGS_VERIFICATION_CONTRACT.md">LEAN_PGS_VERIFICATION_CONTRACT.md</a><br>
+• <a href="../../../lean-4/PGS_LEAN_FORMALIZATION_PLAN.md">PGS_LEAN_FORMALIZATION_PLAN.md</a><br>
+• <a href="PGS_LEAN_TRANSLATION_PLAN.html">Detailed Translation Plan</a>
 </div>
 
-<h2>Current Status (Honest)</h2>
+<div class="plain-english">
+<h2>Summary</h2>
+<p>The divisor-count characterization is now machine-checked in Lean: for n greater than 1, tau(n) equals 2 exactly when the only positive divisors are 1 and n. That is the Basic-module half of the PROOF.md tau / prime characterization. The three former <code>sorry</code> obligations in <code>PGS/Basic.lean</code> are closed with ordinary List counting proofs (no Mathlib, no new axioms).</p>
+<p>Program Definition of Done is <strong>not</strong> met. ChamberReset still packages three replay axioms, GWR is still a coverage gap, and the prime-square proximity statement is still an empty existential shell under DoD D4.4b. Next cut is M2 (discharge or honestly reduce ChamberReset replay axioms).</p>
+</div>
+
+<h2>Technical Status</h2>
 
 <table>
 <tr><th>Item</th><th>Status</th><th>Notes</th></tr>
-<tr><td>Self-contained pure-Lean build</td><td class="status-inprogress">Compiles with partial proofs</td><td>Structure stable. Multiple iterations completed this session.</td></tr>
-<tr><td>tau implementation</td><td class="status-proved">Defined + parses</td><td>Pure List.range + filter (matches Python reference)</td></tr>
-<tr><td>Main lemma: tau_eq_two_iff_only_divisors_are_1_and_n (+ contrapositive)</td><td class="status-proved">Phase 1 closed 2026-06 with deferrals</td><td>Core bidirectional structure + reverse helper (only_one_and_n_in_filter) + memberships delivered. Both counting steps (forward three-distinct and reverse length-equality) explicitly DEFERRED to Phase 2 (Mathlib) per user 2026-06 decision. Contrapositive statement present. Full traceability. Build clean.</td></tr>
-<tr><td>Smoke test</td><td class="status-proved">Loads + checks present declarations</td><td>Updated comment reflects honest status (Phase 1 with explicit deferrals). #check lines now resolve.</td></tr>
-<tr><td>L5 / replaySelectionAtBound port + theorem</td><td class="status-proved">Port implemented + theorem proved</td><td>Direct port of Python logic; #eval on small gap; weak_lfcl_ruleX_forces_next_prime proved using replay result</td></tr>
+<tr><td>M1 Basic tau characterization</td><td class="ok">Closed</td><td><code>lake build PGS.Basic</code> green; <code>rg sorry PGS/Basic.lean</code> empty. D4.1 Basic path.</td></tr>
+<tr><td>tau_eq_two_iff_only_divisors_are_1_and_n</td><td class="ok">Proved mirror</td><td>Both directions; PROOF.md:80-81.</td></tr>
+<tr><td>three_distinct_divisors_imply_tau_ge_three</td><td class="ok">Proved mirror</td><td>Core List length ≥ 3 from three distinct members.</td></tr>
+<tr><td>tau_gt_two_iff_has_proper_divisor</td><td class="ok">Proved mirror</td><td>Contrapositive form of the characterization.</td></tr>
+<tr><td>Self-contained pure-Lean Basic build</td><td class="ok">Compiles</td><td>No Mathlib import in Basic; core Nodup/erase lemmas only.</td></tr>
+<tr><td>Smoke test</td><td class="ok">Loads + checks</td><td><code>lake env lean smoke-test.lean</code>.</td></tr>
+<tr><td>L5 / replaySelectionAtBound path (M2)</td><td class="open">Open</td><td>ChamberReset still has <code>replay_some_under_hyps</code>, <code>replay_cert_eq_hyps</code>, <code>replay_cert_demoted</code> axioms (D3.4 wrappers).</td></tr>
+<tr><td>GWR Interior Maximizer (M3)</td><td class="open">Coverage gap</td><td>Module placeholder; D4.3 not closed.</td></tr>
+<tr><td>UBC / PSP (M4)</td><td class="open">Empty shell fails D4.4b</td><td>PSP still <code>∃ C, dist ≤ C := ⟨dist, le_refl⟩</code> shape; not progress.</td></tr>
+<tr><td>Program DoD (M5)</td><td class="open">Not met</td><td>D1–D7 not jointly green.</td></tr>
 </table>
 
-<h2>Current Status After Deferral Decision (2026-06 Larger Unit)</h2>
+<h2>Remaining Work & Traceability</h2>
 <ul>
-<li>The pure-List counting argument for the forward direction (`three_distinct_divisors_imply_tau_ge_three`) has been explicitly deferred to Phase 2 (controlled Mathlib re-introduction), per user decision 2026-06.</li>
-<li>Forward direction of the main characterization lemma now compiles cleanly against the deferred lemma.</li>
-<li>Reverse direction larger unit delivered in this session: `only_one_and_n_in_filter` (∀ x in explicit filter → x=1 ∨ x=n under the "only 1 and n" assumption) + concrete `one_mem` + `n_mem`. "At most 2" and "at least 2" are now in place with full core-tactic proofs and PROOF.md:80-81 traceability.</li>
-<li>The final length-equality combination step in the reverse (distinct list whose image is exactly {1,n} and which hits both must have length 2) is the symmetric pure-List counting obligation, explicitly marked DEFERRED (2026-06) in Basic.lean, consistent with the forward deferral and the user's explicit directive.</li>
-<li>Contrapositive `tau_gt_two_iff_has_proper_divisor` statement added (both directions rely on the same deferred counting step; marked for traceability and smoke-test consistency).</li>
-<li>Build is now clean (only the two explicitly marked deferred sorries). Smoke test updated and passes its #check lines.</li>
-<li>All work remains strictly downstream verification/audit mirror. No PGS inference, no classical methods as reasoning route, full state separation preserved.</li>
+<li><strong>M1:</strong> <span class="ok">done</span> — Basic.lean 0 sorry.</li>
+<li><strong>Next:</strong> M2 ChamberReset / next-prime path axioms toward D4.2 under D3 policy.</li>
+<li><strong>Then:</strong> M3 GWR, M4 UBC/PSP non-vacuous, M5 packaging + peer accept.</li>
+<li><strong>Traceability:</strong> Direct mapping to PROOF.md lines 80-81 for tau characterization. Lean does not edit PROOF.md and does not select primes.</li>
+<li><strong>State separation:</strong> Downstream verification mirror only.</li>
 </ul>
-
-<h2>Phase 1 Lemmas (Current Source State)</h2>
-<pre>
-theorem tau_eq_two_iff_only_divisors_are_1_and_n
-    (n : Nat) (h : n > 1) :
-    tau n = 2 ↔ (∀ d, d ∣ n → d = 1 ∨ d = n)
-
--- The exact sorry that is the current focus:
-have h_ge3 : 3 ≤ tau n := by
-  apply three_distinct_divisors_imply_tau_ge_three ...
-  sorry   -- ← this is the counting argument under active iteration
-</pre>
-
-<p><strong>Traceability</strong>: Direct mapping to PROOF.md lines 80-81. These lemmas are the foundation for the direct deterministic next-prime theorem via tau-scan.</p>
-
-<h2>Honest Assessment. Session Progress (Including 2026-06 Larger Unit)</h2>
-<ul>
-<li><strong>Strong progress</strong>: Correct statements with 1:1 PROOF.md:80-81 traceability. Forward direction compiles against deferred lemma. Reverse direction larger unit delivered: `only_one_and_n_in_filter` + `one_mem` + `n_mem` (core tactics only). Contrapositive statement added. Build clean. Smoke test consistent. All work PGS-first, downstream-only, contract-compliant.</li>
-<li><strong>Current exact remaining work for Phase 1</strong>: The pure-List length-equality step in the reverse (distinct filter list with image exactly {1,n} that contains both must have length = 2). This is the symmetric obligation to the already-deferred forward counting argument. Explicitly marked DEFERRED (2026-06) per user decision, to be revisited in Phase 2 with controlled Mathlib re-introduction.</li>
-<li><strong>State separation preserved</strong>: All work remains strictly downstream verification/translation mirror. No influence on Python generators, no classical methods as inference route, no theorem downgrading, no scope creep.</li>
-</ul>
-
-<h2>Next Steps (Post Phase 1 Closure : 2026-06)</h2>
-<p><strong>Phase 1 gate completed.</strong> All status surfaces and this plan have been updated with the honest closure (core characterization scaffolding + non-counting lemmas delivered; the two pure-List counting obligations explicitly deferred to Phase 2 per user decision).</p>
-
-<ol>
-<li><strong>Before any Phase 2 artifacts</strong> (E/F/Z, ordered comparison, selected_w, etc.): Re-read the full "Phase 1 Closure Note" in PGS_LEAN_TRANSLATION_PLAN.html and confirm the two deferred counting items remain the only open items for the tau characterization.</li>
-<li>Begin Phase 2 work only on the controlled Mathlib re-introduction path for the deferred counting arguments + the new comparison machinery (E, F, Z, Ordered Comparison Lemma).</li>
-<li>Update this surface and the plan matrix again when the first Phase 2 deliverables are ready.</li>
-</ol>
-
-<p><strong>Gate passed cleanly.</strong> No shape violations. Downstream-only role maintained. Build remains the verification surface.</p>
-
-<p><strong>Verification Command</strong>: <code>bash lean4-cache-build.sh</code> (or the explicit cd + elan lake build)</p>
 
 <footer style="margin-top: 3rem; font-size: 0.85em; color: #8b949e;">
-Updated during active non-stop session on the counting arguments goal. 2026-05-27.
+Updated: 2026-07-18T16:53Z (Hermes heartbeat; M1 exit; program DoD not claimed)
 </footer>
 
 </body>

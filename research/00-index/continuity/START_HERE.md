@@ -5,6 +5,29 @@ repository.
 
 If a session starts with limited chat context, read this file first.
 
+## Principal top priority (2026-07-18)
+
+**Full Lean 4 formalization of the core theorem stack** is the project top
+priority until the principal changes it.
+
+| Field | Path |
+| --- | --- |
+| Active target | `research/00-index/continuity/ACTIVE_TARGET.md` |
+| Continuity pin | `research/00-index/continuity/notes/TOP_PRIORITY_lean_core_stack_2026-07-18.md` |
+| HTML brief | `research/00-index/continuity/reports/lean-core-stack-priority/index.html` |
+| Source share | https://grok.com/share/bGVnYWN5_281f9afa-6f68-4981-9e49-27781caa0b9b |
+| Lean home | `lean-4/` |
+
+`PROOF.md` still controls theorem status. Lean is machine-checked audit only.
+
+**Second priority (2026-07-18):** public-facing docs open in plain conversational
+prose, then full technical depth; never label those layers; **`PROOF.md` tone
+unchanged**. Pin:
+`research/00-index/continuity/notes/SECOND_PRIORITY_public_readability_2026-07-18.md`.
+
+Other secondary: 50-bit residual pin; square-branch audit relay. Do not let those
+displace the top two without a new principal directive.
+
 ## First 60 Seconds
 
 1. Read `Agents.md` (repo root).
@@ -17,6 +40,7 @@ If a session starts with limited chat context, read this file first.
 
    | Newest request mentions | Start here | Status rule |
    | --- | --- | --- |
+   | Lean, formalization, core stack, machine-checked, top priority | `research/00-index/continuity/ACTIVE_TARGET.md`, `notes/TOP_PRIORITY_lean_core_stack_2026-07-18.md`, `lean-4/PGS_LEAN_FORMALIZATION_PLAN.md` | Audit/implementation only; never edit `PROOF.md` theorem status without human promotion. |
    | continuity, resume, routing, status map | `research/00-index/continuity/START_HERE.md`, `research/00-index/status-map.md` | Edit only the requested continuity surface unless the user expands scope. |
    | root docs, public framing, theorem wording, RH/PNT demotion | `research/15-documentation-correction/README.md`, `research/15-documentation-correction/index.html` | Keep PGS source structure before zeta, RH, PNT, statistics, and audit language. |
    | RH bridge / classical completion work (archived) | `research/archive/2026-05-classical-rh-bridge-completion-route/ARCHIVAL_HANDOFF.md` | Archived due to classical drift and prompt injection risk. Do not route new work here by default. See handoff for preserved PGS results. |
