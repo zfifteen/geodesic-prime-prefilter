@@ -1,8 +1,0 @@
-{
-  "audit_behavior": "canonical_membership_only",
-  "p_emitted": false,
-  "public_record_count": 8192,
-  "q_emitted": false,
-  "recovered_factor": null,
-  "status": "missed"
-}
