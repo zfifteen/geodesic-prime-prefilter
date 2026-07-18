@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PGS top priority — Lean 4 core theorem stack</title>
+<style>
+  :root { --bg:#0f1419; --card:#1a2332; --text:#e7ecf3; --muted:#9aa7b8; --accent:#6cb6ff; --ok:#3ecf8e; --warn:#f0b429; }
+  body { margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif; background:var(--bg); color:var(--text); line-height:1.5; }
+  main { max-width: 52rem; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; }
+  h1 { font-size: 1.45rem; margin: 0 0 0.35rem; }
+  h2 { font-size: 1.1rem; margin: 1.6rem 0 0.5rem; color: var(--accent); }
+  p, li { color: var(--text); }
+  .muted { color: var(--muted); font-size: 0.92rem; }
+  .card { background: var(--card); border-radius: 10px; padding: 1rem 1.1rem; margin: 1rem 0; }
+  .badge { display:inline-block; padding: 0.15rem 0.55rem; border-radius: 999px; background:#243247; color:var(--ok); font-size: 0.8rem; font-weight:600; }
+  table { width:100%; border-collapse: collapse; font-size: 0.92rem; }
+  th, td { text-align:left; padding: 0.45rem 0.5rem; border-bottom: 1px solid #2a3548; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--accent); }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.88em; }
+  .lead { font-size: 1.05rem; }
+  ul { padding-left: 1.2rem; }
+</style>
+</head>
+<body>
+<main>
+  <p class="badge">TOP PRIORITY · principal 2026-07-18</p>
+  <h1>Full Lean 4 formalization of the PGS core theorem stack</h1>
+  <p class="muted">Continuity brief for agents. Theorems stay in <code>PROOF.md</code>. Lean is machine-checked audit only.</p>
+
+  <div class="card">
+    <p class="lead"><strong>What to picture:</strong> the project already has prose proofs that the next prime and the gap “winner” are fixed by divisor-count structure, plus a proved prime-square proximity bound. Those words live in <code>PROOF.md</code>. The priority is to make a Lean 4 library that checks that same stack so a machine can refuse a wrong step — without letting Lean invent primes or rewrite theorem status.</p>
+  </div>
+
+  <h2>Source</h2>
+  <ul>
+    <li>Principal directive: top priority for prime-gap-structure</li>
+    <li>Shared Grok report: <a href="https://grok.com/share/bGVnYWN5_281f9afa-6f68-4981-9e49-27781caa0b9b">grok.com/share/…281f9afa…</a></li>
+    <li>Repo pin: <code>research/00-index/continuity/notes/TOP_PRIORITY_lean_core_stack_2026-07-18.md</code></li>
+    <li>Active target: <code>research/00-index/continuity/ACTIVE_TARGET.md</code></li>
+  </ul>
+
+  <h2>Goal (plain)</h2>
+  <p>Finish Lean 4 coverage for the <strong>entire core stack already proved in prose</strong>:</p>
+  <ul>
+    <li>Direct next-prime / tau-scan selection</li>
+    <li>GWR / leftmost minimum-divisor (Interior Maximizer)</li>
+    <li>Universal bounded compression including Prime-Square Proximity</li>
+    <li>Supporting lemmas named in PROOF.md</li>
+    <li>Classical imports only as audit premises (Bertrand, divisor-pair, etc.)</li>
+    <li>Honest packaging of certified finite bases as hypotheses, not “Lean discovers” them</li>
+  </ul>
+
+  <h2>Why this beats other open work right now</h2>
+  <p class="muted">July 2026 already closed major prose foundations (PSP, UBC). Downstream RSA residuals, hierarchical laws, and generative work all rest on that core. Partial Lean with axioms and <code>sorry</code> leaves a credibility and error-resistance gap that no new residual experiment closes.</p>
+
+  <h2>Live Lean state (implementation)</h2>
+  <table>
+    <thead><tr><th>Area</th><th>State</th></tr></thead>
+    <tbody>
+      <tr><td>Build / smoke</td><td>Skeleton path exists; see <code>lean-4/README.md</code></td></tr>
+      <tr><td><code>Basic.lean</code> tau characterization</td><td>Some <code>sorry</code> remain</td></tr>
+      <tr><td>ChamberReset weak L_FCL / audit demotion</td><td>Partial theorems; some axioms</td></tr>
+      <tr><td>PSP / near-root exclusion</td><td>Stated; not full discharge</td></tr>
+      <tr><td>GWR.lean</td><td>Phase 3 placeholder</td></tr>
+      <tr><td>PROOF.md theorems</td><td><strong>Unchanged theorem</strong> — Lean does not promote</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Ordered execution slices</h2>
+  <ol>
+    <li>Inventory every <code>sorry</code> / <code>axiom</code> against PROOF.md sections</li>
+    <li>Close Basic <code>tau = 2</code> characterization</li>
+    <li>Discharge bookkeeping ChamberReset axioms under honest hypotheses</li>
+    <li>GWR maximizer formalization</li>
+    <li>PSP path only with real supporting lemmas (no fake density)</li>
+    <li>Finite-base hypothesis packaging + HTML status updates</li>
+  </ol>
+
+  <h2>Secondary (not top)</h2>
+  <ul>
+    <li>50-bit residual cell C1T2L1 (hypothesis / unresolved)</li>
+    <li>Square-branch audit relay</li>
+    <li>Agency revenue Phase A (other room)</li>
+  </ul>
+
+  <h2>Hard rules</h2>
+  <ul>
+    <li>PGS-first: objects → invariants → rules → resolved/unresolved</li>
+    <li>No classical candidate-testing as PGS inference</li>
+    <li>No <code>PROOF.md</code> theorem edit without human-approved promotion</li>
+    <li>No verified/validated claim language without the program’s <code>10^18</code> evidence policy where it applies</li>
+  </ul>
+
+  <p class="muted">Hermes continuity brief · 2026-07-18 · file:// openable</p>
+</main>
+</body>
+</html>

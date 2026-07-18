@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.velocityworks.pgs-lean-heartbeat</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/velocityworks/IdeaProjects/prime-gap-structure/scripts/lean-heartbeat/lean-core-stack-heartbeat.sh</string>
+    </array>
+
+    <!-- Hourly while Lean core-stack program DoD is open (principal 2026-07-18) -->
+    <key>StartInterval</key>
+    <integer>3600</integer>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/velocityworks/logs/pgs-lean-heartbeat/launchd.stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/velocityworks/logs/pgs-lean-heartbeat/launchd.stderr.log</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/Users/velocityworks/.local/bin:/Users/velocityworks/.grok/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+        <key>HOME</key>
+        <string>/Users/velocityworks</string>
+        <key>REPO_ROOT</key>
+        <string>/Users/velocityworks/IdeaProjects/prime-gap-structure</string>
+        <key>LOG_DIR</key>
+        <string>/Users/velocityworks/logs/pgs-lean-heartbeat</string>
+        <key>RC_BASE</key>
+        <string>http://127.0.0.1:3000</string>
+        <key>PGS_LEAN_HB_RC_CHANNEL</key>
+        <string>Prime-Gap-Structure</string>
+        <key>PGS_LEAN_HB_ROOM_ID</key>
+        <string>6a4f9a42b0e299fde39d6a14</string>
+        <key>HERMES_BIN</key>
+        <string>/Users/velocityworks/.local/bin/hermes</string>
+        <key>HERMES_PROFILE</key>
+        <string>idea</string>
+        <key>PYTHON_BIN</key>
+        <string>/usr/bin/python3</string>
+    </dict>
+</dict>
+</plist>
