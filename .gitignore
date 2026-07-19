@@ -26,3 +26,5 @@ lean-4/lean_packages/
 **/*.hash
 media/
 *.log
+
+.lumos/
