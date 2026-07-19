@@ -208,7 +208,11 @@ def _presieve_interval(lo: int, hi: int) -> tuple[list[int], list[int]]:
     return partial_counts, residuals
 
 def _is_prime_miller_rabin(n: int) -> bool:
-    """Deterministic Miller-Rabin primality test for 64-bit integers."""
+    """Deterministic Miller-Rabin primality test for 64-bit integers.
+    
+    This set of bases is mathematically proven to be 100% deterministic
+    for all integers n < 2^64.
+    """
     if n < 2:
         return False
     if n in (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37):
@@ -282,12 +286,38 @@ def gwr_next_gap_profile_presieved(q: int, initial_cutoff: int | None = None) ->
     partial_counts: list[int] = []
     residuals: list[int] = []
     start_offset = 1
+    current_limit = 0
     
     while True:
         target_hi = q + cutoff
         if target_hi > current_hi:
             new_lo = current_hi + 1
             new_hi = target_hi
+            
+            # Compute new cube root limit
+            if USE_GMPY2:
+                new_limit = int(gmpy2.iroot(new_hi, 3)[0])
+            else:
+                new_limit = _integer_cube_root(new_hi)
+                
+            # If the cube root limit increased, divide new primes out of existing residuals
+            if new_limit > current_limit:
+                _ensure_trial_primes(new_limit)
+                new_primes = [p for p in _TRIAL_PRIMES if current_limit < p <= new_limit]
+                
+                # Apply new primes to existing residuals to keep them fully sieved
+                for p in new_primes:
+                    for i in range(len(residuals)):
+                        if residuals[i] % p == 0:
+                            exponent_factor = 1
+                            while residuals[i] % p == 0:
+                                residuals[i] //= p
+                                exponent_factor += 1
+                            partial_counts[i] *= exponent_factor
+                            
+                current_limit = new_limit
+                
+            # Now pre-sieve the new segment using the updated limit
             new_partials, new_residuals = _presieve_interval(new_lo, new_hi)
             partial_counts.extend(new_partials)
             residuals.extend(new_residuals)
@@ -338,13 +368,7 @@ def run_benchmark():
         primes = []
         curr = start
         while len(primes) < 100:
-            is_prime = gmpy2.is_prime(gmpy2.mpz(curr)) if USE_GMPY2 else True
-            if not USE_GMPY2:
-                # fallback check
-                for i in range(2, math.isqrt(curr) + 1):
-                    if curr % i == 0:
-                        is_prime = False
-                        break
+            is_prime = gmpy2.is_prime(gmpy2.mpz(curr)) if USE_GMPY2 else _is_prime_miller_rabin(curr)
             if is_prime:
                 primes.append(curr)
             curr += 2
