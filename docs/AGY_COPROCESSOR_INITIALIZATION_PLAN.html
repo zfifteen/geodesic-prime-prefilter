@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGY Co-Processor Initialization Plan</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --text-color: #f1f5f9;
+            --accent-color: #3b82f6;
+            --accent-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            --card-bg: #1e293b;
+            --border-color: #334155;
+            --success-color: #10b981;
+        }
+
+        body {
+            font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #e2e8f0;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            padding: 0.75rem;
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .checklist-item:hover {
+            border-color: var(--accent-color);
+            transform: translateX(4px);
+        }
+
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .checked {
+            border-color: var(--success-color);
+            background-color: var(--success-color);
+        }
+
+        .checked::after {
+            content: "✓";
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .label {
+            font-weight: 500;
+        }
+
+        .badge {
+            background: var(--accent-gradient);
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: auto;
+        }
+
+        .badge.success {
+            background: var(--success-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AGY Co-Processor Initialization</h1>
+        <p class="subtitle">Operational plan to bootstrap the AGY Protocol Co-Processor for prime-gap-structure</p>
+
+        <div class="section">
+            <h2>1. Core Objectives</h2>
+            <p>Establish persistent task tracking state and lock infrastructure to enable automated compliance loops, scaffolding checks, and transaction management under the local <code>AGENTS.md</code> contract.</p>
+        </div>
+
+        <div class="section">
+            <h2>2. Execution Checklist</h2>
+            <div class="checklist-item">
+                <div class="checkbox checked"></div>
+                <div class="label">Create initialization plan document</div>
+                <div class="badge success">DONE</div>
+            </div>
+            <div class="checklist-item">
+                <div class="checkbox checked"></div>
+                <div class="label">Run start_task command to initialize state ledger</div>
+                <div class="badge success">DONE</div>
+            </div>
+            <div class="checklist-item">
+                <div class="checkbox checked"></div>
+                <div class="label">Verify .agents_state.json initialization</div>
+                <div class="badge success">DONE</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>3. QA Acceptance Criteria</h2>
+            <ul>
+                <li>State file <code>.agents_state.json</code> exists and is valid JSON.</li>
+                <li>State file registers Phase 1 as active phase.</li>
+                <li>Plan file path is correctly linked in state ledger.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

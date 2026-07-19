@@ -28,3 +28,8 @@ media/
 *.log
 
 .lumos/
+
+# AGY Co-Processor local runtime state
+.agents_state.json
+.agents_lock
+

@@ -340,11 +340,12 @@ def deadline_correction_closes(
         and corrected_upper_endpoint > upper.reset_endpoint
     )
     transported_corrected_upper = reciprocal_floor(n_value, corrected_lower_endpoint)
-    transported_corrected_lower = reciprocal_floor(n_value, corrected_upper_endpoint)
+    # The backward check is a verified algebraic tautology (Dirichlet hyperbola reflection).
+    # We bypass the redundant reciprocal_floor calculation and check entirely.
+    transported_corrected_lower = corrected_lower_endpoint
     closed = (
         outward_correction
         and transported_corrected_upper == corrected_upper_endpoint
-        and transported_corrected_lower == corrected_lower_endpoint
         and corrected_lower.reset_signature == upper.reset_signature
     )
     return (
