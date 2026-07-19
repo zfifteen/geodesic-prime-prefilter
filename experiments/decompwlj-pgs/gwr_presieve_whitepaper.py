@@ -161,6 +161,25 @@ def gwr_next_gap_profile_baseline(q: int, block: int = 64) -> dict:
         cursor += block
         base_offset += block
 
+def _integer_cube_root(n: int) -> int:
+    """Return the integer cube root of non-negative integer n using binary search."""
+    if n < 0:
+        raise ValueError("n must be non-negative")
+    if n == 0:
+        return 0
+    low = 1
+    high = n
+    while low <= high:
+        mid = (low + high) // 2
+        mid3 = mid * mid * mid
+        if mid3 == n:
+            return mid
+        elif mid3 < n:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return high
+
 def _presieve_interval(lo: int, hi: int) -> tuple[list[int], list[int]]:
     """Perform interval pre-sieving through floor(cuberoot(hi))."""
     cutoff = hi - lo + 1
@@ -170,7 +189,7 @@ def _presieve_interval(lo: int, hi: int) -> tuple[list[int], list[int]]:
     if USE_GMPY2:
         cube_root_limit = int(gmpy2.iroot(hi, 3)[0])
     else:
-        cube_root_limit = int(math.pow(hi, 1.0/3.0))
+        cube_root_limit = _integer_cube_root(hi)
         
     _ensure_trial_primes(cube_root_limit)
 
