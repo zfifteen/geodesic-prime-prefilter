@@ -1,3 +1,17 @@
 {
-  "cases": []
+  "cases": [
+    {
+      "N": "1099507433251",
+      "balance_band": "2",
+      "bits": 40,
+      "case_id": "rsa_v2_40bit_static_001",
+      "center": "1048573",
+      "corrected_lower_certificate_present": true,
+      "endpoint_chain_steps": null,
+      "lower_certificate_present": true,
+      "public_closure_status": "endpoint_class_by_reciprocal_deadline_signature_correction",
+      "rule_id": "reciprocal_pgs_certificate_pair_v2",
+      "upper_certificate_present": true
+    }
+  ]
 }
