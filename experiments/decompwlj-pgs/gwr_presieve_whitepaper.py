@@ -155,7 +155,7 @@ def gwr_next_gap_profile_baseline(q: int, block: int = 64) -> dict:
                     "winner_d": best_d,
                     "winner_offset": best_offset,
                 }
-            if best_d is None or d < best_d or (d == best_d and offset < best_offset):
+            if best_d is None or d < best_d:
                 best_d = d
                 best_offset = offset
         cursor += block
@@ -208,7 +208,12 @@ def _presieve_interval(lo: int, hi: int) -> tuple[list[int], list[int]]:
     return partial_counts, residuals
 
 def _finish_tau_residual(partial_count: int, residual: int) -> int:
-    """Resolve final divisor count from partial count and residual cofactor."""
+    """Resolve final divisor count from partial count and residual cofactor.
+    
+    Since we pre-sieve through floor(cuberoot(hi)), the residual cofactor R(n)
+    cannot have 3 or more prime factors that are all > cuberoot(hi).
+    Thus, R(n) has at most 2 prime factors, and tau(R(n)) <= 4.
+    """
     divisor_count = partial_count
     if residual == 1:
         return divisor_count
@@ -245,8 +250,10 @@ def _finish_tau_residual(partial_count: int, residual: int) -> int:
             
     return divisor_count * 4
 
-def gwr_next_gap_profile_presieved(q: int, cutoff: int = 128) -> dict:
+def gwr_next_gap_profile_presieved(q: int, cutoff: int | None = None) -> dict:
     """Optimized GWR boundary scanner utilizing the pre-sieved heuristic."""
+    if cutoff is None:
+        cutoff = max(64, math.ceil(0.5 * math.log(q) ** 2))
     lo = q + 1
     hi = q + cutoff
     partial_counts, residuals = _presieve_interval(lo, hi)
