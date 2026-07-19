@@ -684,6 +684,7 @@ Corrective action:
 
 Future assistant sessions must read:
 
+- `.lumos/workspace_state.json` (Lumos workspace cache state - read first on startup);
 - `research/00-index/continuity/START_HERE.md`;
 - `research/00-index/continuity/continuity_and_shape_contract.md`;
 - `/Users/velocityworks/.codex/memories/continuity_and_shape_contract.md`;
