@@ -207,6 +207,36 @@ def _presieve_interval(lo: int, hi: int) -> tuple[list[int], list[int]]:
 
     return partial_counts, residuals
 
+def _is_prime_miller_rabin(n: int) -> bool:
+    """Deterministic Miller-Rabin primality test for 64-bit integers."""
+    if n < 2:
+        return False
+    if n in (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37):
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+        
+    d = n - 1
+    r = 0
+    while d % 2 == 0:
+        d //= 2
+        r += 1
+        
+    bases = (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37)
+    for a in bases:
+        if a >= n:
+            continue
+        x = pow(a, d, n)
+        if x == 1 or x == n - 1:
+            continue
+        for _ in range(r - 1):
+            x = pow(x, 2, n)
+            if x == n - 1:
+                break
+        else:
+            return False
+    return True
+
 def _finish_tau_residual(partial_count: int, residual: int) -> int:
     """Resolve final divisor count from partial count and residual cofactor.
     
@@ -227,62 +257,67 @@ def _finish_tau_residual(partial_count: int, residual: int) -> int:
             if gmpy2.is_prime(root):
                 return divisor_count * 3
     else:
-        # Fallback pure python primality and square check
+        # Fallback pure Python primality and square check
         # Check if square
         root = math.isqrt(residual)
         if root * root == residual:
-            # Check if root is prime
-            is_prime = True
-            for i in range(2, math.isqrt(root) + 1):
-                if root % i == 0:
-                    is_prime = False
-                    break
-            if is_prime and root > 1:
+            if _is_prime_miller_rabin(root):
                 return divisor_count * 3
         # Check if prime
-        is_prime = True
-        for i in range(2, math.isqrt(residual) + 1):
-            if residual % i == 0:
-                is_prime = False
-                break
-        if is_prime and residual > 1:
+        if _is_prime_miller_rabin(residual):
             return divisor_count * 2
             
     return divisor_count * 4
 
-def gwr_next_gap_profile_presieved(q: int, cutoff: int | None = None) -> dict:
+def gwr_next_gap_profile_presieved(q: int, initial_cutoff: int | None = None) -> dict:
     """Optimized GWR boundary scanner utilizing the pre-sieved heuristic."""
+    cutoff = initial_cutoff
     if cutoff is None:
         cutoff = max(64, math.ceil(0.5 * math.log(q) ** 2))
-    lo = q + 1
-    hi = q + cutoff
-    partial_counts, residuals = _presieve_interval(lo, hi)
+        
     best_d = None
     best_offset = None
+    lo = q + 1
+    current_hi = q
+    partial_counts: list[int] = []
+    residuals: list[int] = []
+    start_offset = 1
     
-    for index, partial_count in enumerate(partial_counts):
-        offset = index + 1
-        needs_endpoint_check = partial_count == 1
-        can_improve = best_d is None or partial_count < best_d
-        
-        # Skip residual classification if not required
-        if not needs_endpoint_check and not can_improve:
-            continue
+    while True:
+        target_hi = q + cutoff
+        if target_hi > current_hi:
+            new_lo = current_hi + 1
+            new_hi = target_hi
+            new_partials, new_residuals = _presieve_interval(new_lo, new_hi)
+            partial_counts.extend(new_partials)
+            residuals.extend(new_residuals)
+            current_hi = target_hi
             
-        d = _finish_tau_residual(partial_count, residuals[index])
-        if d == 2:
-            return {
-                "current_prime": q,
-                "next_prime": q + offset,
-                "gap_boundary_offset": offset,
-                "winner_d": best_d,
-                "winner_offset": best_offset,
-            }
-        if best_d is None or d < best_d:
-            best_d = d
-            best_offset = offset
+        end_offset = current_hi - q
+        for offset in range(start_offset, end_offset + 1):
+            index = offset - 1
+            partial_count = partial_counts[index]
+            needs_endpoint_check = partial_count == 1
+            can_improve = best_d is None or partial_count < best_d
             
-    return gwr_next_gap_profile_presieved(q, cutoff * 2)
+            if not needs_endpoint_check and not can_improve:
+                continue
+                
+            d = _finish_tau_residual(partial_count, residuals[index])
+            if d == 2:
+                return {
+                    "current_prime": q,
+                    "next_prime": q + offset,
+                    "gap_boundary_offset": offset,
+                    "winner_d": best_d,
+                    "winner_offset": best_offset,
+                }
+            if best_d is None or d < best_d:
+                best_d = d
+                best_offset = offset
+                
+        start_offset = end_offset + 1
+        cutoff *= 2
 
 # -----------------------------------------------------------------------------
 # 2. Benchmarking and Visualizations
