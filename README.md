@@ -1,7 +1,7 @@
 # Prime Gap Structure
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![Last Updated](https://img.shields.io/badge/Last%20Updated-2026--07--08-brightgreen)
+![Last Updated](https://img.shields.io/badge/Last%20Updated-2026--07--20-brightgreen)
 ![Python](https://img.shields.io/badge/Python-3.11%2B-blue)
 
 ![Prime Gap Structure hero](visualizations/conceptual/prime-gap-structure-hero.jpg)
@@ -22,7 +22,8 @@ This repository supplies the proofs (`PROOF.md`), reference implementations, rep
 - [2. Core Results: What Is Proved](#2-core-results--what-is-proved)
 - [3. Getting Started](#3-getting-started)
 - [4. Deeper Theory & Formal Proofs](#4-deeper-theory--formal-proofs)
-- [5. PGS-to-RH Reading Path & Open Questions](#5-pgs-to-rh-reading-path--open-questions)
+- [5. Machine-Checked Verification (Lean 4)](#5-machine-checked-verification-lean-4)
+- [6. PGS-to-RH Reading Path & Open Questions](#6-pgs-to-rh-reading-path--open-questions)
 - [A Different Way To Generate Primes](#a-different-way-to-generate-primes)
 - [Where This Leads](#where-this-leads)
 - [Repository Map](#repository-map)
@@ -173,7 +174,39 @@ Visualizations of the core objects live in `visualizations/`. Prefer the catalog
 
 ---
 
-## 5. PGS-to-RH Reading Path & Open Questions
+## 5. Machine-Checked Verification (Lean 4)
+
+In addition to the prose proofs in `PROOF.md` and large-scale computational validation, the project maintains a dedicated **Lean 4 formalization layer**. This serves as an independent, machine-checked audit of the core theorems.
+
+The Lean work is deliberately scoped as a **downstream verification layer only**. It translates and mechanically checks statements already established in `PROOF.md` rather than generating new results or serving as the primary reasoning surface. All formalization follows a strict **PGS-first** approach with explicit traceability back to the prose proofs.
+
+**Current Status (as of July 2026)**
+
+- Build is green and smoke tests pass.
+- **M0/M1/M2 closed**: The foundational characterization of primes via the divisor-count function (`tau(n) = 2`) has been fully formalized with zero `sorry` placeholders. All three ChamberReset replay axioms have been discharged into proved theorems (commit `688daa91`).
+- **L5 closed**: Key components of the weak linear functional closure and next-prime forcing lemmas have been verified.
+- The **Gap Winner Rule (GWR) / Interior Maximizer** formalization (M3) is unblocked and ready for work.
+- **UBC + Prime-Square Proximity** (M4) and **finite-base packaging** (M5) remain pending.
+
+The effort is governed by an explicit **Verification Contract** that enforces:
+
+- Strict separation between proved, measured, and audit artifacts
+- Mandatory traceability headers linking every definition and theorem back to `PROOF.md`
+- A clear **Definition of Done** with gates for build quality, zero `sorry` on core paths, and peer review
+
+**Key Files**
+
+- `lean-4/README.md` -- Full status, build instructions, and roadmap
+- `lean-4/LEAN_PGS_VERIFICATION_CONTRACT.md` -- Governance and scope rules
+- `lean-4/PGS_LEAN_FORMALIZATION_PLAN.md` -- Phased development plan
+- `lean-4/DEFINITION_OF_DONE.md` -- Milestone gates and acceptance criteria
+- `lean-4/PGS/Basic.lean` -- Core `tau` definitions and closed M1 lemmas
+
+This formalization layer provides an additional level of mechanical assurance for the deterministic structure claimed in the prime gap theory.
+
+---
+
+## 6. PGS-to-RH Reading Path & Open Questions
 
 The PGS-to-RH argument starts from the same observable object: divisor counts inside prime gaps and endpoint returns to `tau(n)=2`. The bridge coordinate is `H(n) = log n + E(n)`.
 
@@ -225,7 +258,7 @@ Every one of these paths grows from the same simple shift in perspective: stop t
 - `docs/rh/`: PGS-to-RH reading path and status
 - `research/`: Deep experiments (RSA engine, Mersenne generator, continuity notes, 00-index/)
 - `visualizations/`: Plot library + gallery (primary), explorers, historical dumps (router: `index.html`)
-- `lean-4/`: Formalization efforts
+- `lean-4/`: Lean 4 formalization layer (downstream machine-checked audit of core theorems)
 - `experiments/`, `scripts/`, `tests/`, `data/`: Supporting code, runs, and artifacts
 - `pgs-unsolved-problems/`: Open questions
 - `AGENTS.md`: Collaboration contract for agentic work
