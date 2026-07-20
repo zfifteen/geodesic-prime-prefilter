@@ -321,3 +321,44 @@ This is the authoritative planning artifact for the entire Lean translation trac
 - One status surface (lean-4/README.md) updated with dated entry. Remaining surfaces (index.html, translation plan matrix, status-map) updated in same larger-volume pass.
 - Build clean via project wrapper (only the two explicitly marked deferred sorries remain: forward counting + symmetric reverse length detail).
 - All work PGS-first, downstream-only audit mirror, strict state separation, no classical inference, no theorem downgrading, no scope creep. Per LEAN_PGS_VERIFICATION_CONTRACT.md and local AGENTS.md.
+
+## Lean 4 Formalization: M0/M1/M2 Closed (2026-07-20)
+
+**GitHub tracking:** parent #53 with sub-issues #54 (M0), #55 (M1), #56 (M2), #57 (M3), #58 (M4), #59 (M5).
+
+**M0 (baseline inventory):** `lean-4/SORRY_AXIOM_INVENTORY.md` is authoritative. Core-path obligations:
+- `PGS/Basic.lean`: **0 sorry** — M1 closed.
+- `PGS/ChamberReset.lean`: **0 axiom** — M2 closed.
+- `PGS/Placement.lean`: 1 axiom (`tau_prime_square_eq_three`, CL-003 audit premise) → M4.
+- `PGS/GWR.lean`: Phase-3 placeholder → M3 coverage gap.
+
+**M1 (Basic.lean tau characterization): CLOSED.** The 2026-06 "deferred counting obligations" were completed with core-only tactics — no Mathlib needed, no `sorry` remaining:
+- `three_distinct_divisors_imply_tau_ge_three` proved via `length_ge_three_of_three_distinct`.
+- `tau_eq_two_iff_only_divisors_are_1_and_n` proved both directions via `length_eq_two_of_mem_pair_nodup` + `nodup_filter`.
+- `tau_gt_two_iff_has_proper_divisor` proved (contrapositive).
+- D4.1 (tau / DNI coordinates + prime ↔ `tau = 2`) satisfied on the Basic path.
+
+**M2 (ChamberReset replay axiom discharge): CLOSED (2026-07-20, commit `688daa91`).** All 3 replay axioms discharged into proved theorems:
+- `replay_some_under_hyps` — proved. Under next-prime hypotheses the walk carrier accumulates the leftmost minimum-tau composite, the post-lock threat search finds nothing, and the resolved list is a singleton surviving post-processing.
+- `replay_cert_eq_hyps` — proved. Certificate fields (`p`, `q`, `gapOffset`, `resolvedCount`, `selection.status`) match hypotheses from the walk output.
+- `replay_cert_demoted` — proved. `DemotedZeroExcessSignature` holds for the resolved certificate.
+- Supporting infrastructure: `carrier_none_means_no_composite`, `cOff_offset_le`, `carrier_min_tau_prefix`, `carrier_min_tau_interior`, `threat_none_under_hyps`, `resolved_list_singleton`, `walkStep_keeps_cD_some`, `replayThreatOff`, `replayResolvedList`.
+- `weak_lfcl_ruleX_forces_next_prime` now calls proved theorems instead of axioms (packaging wrapper concern D3.4 resolved for the replay layer). Requires `hpp : tau p = 2` as additional hypothesis; derives `1 < gap` from even/odd parity.
+- `NextPrime.lean` passes through the new `hpp` hypothesis to `weak_lfcl_sufficient_bound`.
+
+**Build breakage fixed (2026-07-20):** `lean-4/.lake/packages/mathlib` had been silently corrupted (113 vendored files with mangled Unicode; `Mathlib/Tactic/Linter/TextBased/UnicodeLinter.lean` failed to parse, breaking the whole `lake build`). Root cause was local checkout corruption, **not** a toolchain/Mathlib version skew (both correctly pinned to `v4.30.0`). Fix: `git -C .lake/packages/mathlib checkout -- .` + clean rebuild. `lake build` now green across all 3070 modules; `lake env lean smoke-test.lean` passes.
+
+**Remaining milestones:**
+- M3 (GWR maximizer, D4.3): Not started — `PGS/GWR.lean` is a placeholder.
+- M4 (UBC + PSP, D4.4–D4.5): 1 axiom remains (`tau_prime_square_eq_three` in `Placement.lean`). Real theorems needed to replace the reflexivity/empty-shell stubs.
+- M5 (finite-base packaging + HTML status + D1–D7 green): Not started.
+
+**How to verify:**
+```bash
+cd lean-4
+lake build
+lake env lean smoke-test.lean
+rg 'sorry' PGS/Basic.lean   # expect: no matches
+rg -n '^\s*axiom ' PGS/ChamberReset.lean   # expect: no matches
+rg -n '^\s*axiom ' PGS/Placement.lean   # expect: tau_prime_square_eq_three only
+```
