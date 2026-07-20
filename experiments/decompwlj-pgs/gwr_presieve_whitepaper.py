@@ -356,11 +356,10 @@ def run_benchmark():
     """Run scalability benchmark across prime magnitude ranges."""
     print("Initializing benchmark suite...")
     
-    # Prime anchors near scaling coordinates
     scales = {
-        "10^5": 100003,
-        "10^6": 1000003,
-        "10^7": 10000019
+        "10^16": 10**16 + 37,
+        "10^17": 10**17 + 3,
+        "10^18": 10**18 + 3
     }
     
     scale_primes = {}
