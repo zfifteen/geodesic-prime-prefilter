@@ -183,7 +183,7 @@ The Lean work is deliberately scoped as a **downstream verification layer only**
 **Current Status (as of July 2026)**
 
 - Build is green and smoke tests pass.
-- **M0/M1/M2 closed**: The foundational characterization of primes via the divisor-count function (`tau(n) = 2`) has been fully formalized with zero `sorry` placeholders. All three ChamberReset replay axioms have been discharged into proved theorems (commit `688daa91`).
+- **M0/M1/M2 closed**: Foundational work including the divisor-count characterization (`tau(n) = 2`) and ChamberReset replay axioms has been fully formalized with zero `sorry` placeholders (commit `688daa91`).
 - **L5 closed**: Key components of the weak linear functional closure and next-prime forcing lemmas have been verified.
 - The **Gap Winner Rule (GWR) / Interior Maximizer** formalization (M3) is unblocked and ready for work.
 - **UBC + Prime-Square Proximity** (M4) and **finite-base packaging** (M5) remain pending.
@@ -202,7 +202,7 @@ The effort is governed by an explicit **Verification Contract** that enforces:
 - `lean-4/DEFINITION_OF_DONE.md` -- Milestone gates and acceptance criteria
 - `lean-4/PGS/Basic.lean` -- Core `tau` definitions and closed M1 lemmas
 
-This formalization layer provides an additional level of mechanical assurance for the deterministic structure claimed in the prime gap theory.
+This formalization layer provides an additional layer of mechanical assurance for the deterministic structure claimed in the prime gap theory.
 
 ---
 
