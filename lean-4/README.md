@@ -1,8 +1,8 @@
 # PGS Lean 4 Formalization
 
-**✅ Status: Skeleton complete and verified (2026-05-27).**
+**✅ Status: Build green and smoke test passing (verified 2026-07-20).**
 
-Build succeeds cleanly. Smoke test passes. Self-contained pure-Lean implementation for reliable operation.
+`lake build` succeeds across all 3070 modules; `lake env lean smoke-test.lean` passes. M1 (Basic.lean tau characterization) is closed with 0 `sorry`. Mathlib `v4.30.0` is active and the vendored tree is clean (was corrupted 2026-07-20, restored).
 
 This directory contains the machine-checked Lean 4 formalization of the core Prime Gap Structure (PGS) theorems from `PROOF.md`.
 
@@ -20,7 +20,7 @@ This is a **downstream verification and audit layer only**.
 - `PGS.lean` (root) + `PGS/Basic.lean`, tau (pure List.range impl), E/F/Z placeholders
 - `PGS/ChamberReset.lean`. Rule X replay types; **L4 audit demotion proved**
 - `PGS/NextPrime.lean`: weak L_FCL exports; **L5 closed** (weak_lfcl_ruleX_forces_next_prime proved as Lean mirror under hypotheses)
-- `PGS/GWR.lean`. Phase 3 placeholder
+- `PGS/GWR.lean`. Phase 3 placeholder (**M3 gap** — not yet a real maximizer proof)
 - `smoke-test.lean`. Automated verification that the library loads and basic defs work
 - Full contract and plan documents
 - [`PLACEMENT_FORMALIZATION_ROADMAP.md`](PLACEMENT_FORMALIZATION_ROADMAP.md), closure-order DAG for RH-080/081 ([#49](https://github.com/zfifteen/prime-gap-structure/issues/49))
@@ -82,19 +82,17 @@ See `PGS_LEAN_FORMALIZATION_PLAN.md` for the phased expansion roadmap.
 
 ## Phase 1 Update (2026-05-27: Active Non-Stop Session)
 
-**Status update (2026-06)**: The pure-List counting argument (`three_distinct_divisors_imply_tau_ge_three`) has been explicitly deferred to Phase 2 (Mathlib re-introduction) per user decision. Forward direction of the main lemma now compiles against the deferred lemma. Work continues on the reverse direction and contrapositive (still Phase 1). See `PGS/Basic.lean` for the deferral comment and the formalization plan for details.
+**Historical note (2026-05/06):** Early Phase-1 iterations deferred the pure-List counting obligations (`three_distinct_divisors_imply_tau_ge_three` and the `length=2` combination step) and recorded them as `sorry`. This was the working state at the 2026-06 gate.
 
-**Status**:
-- Statement of `tau_eq_two_iff_only_divisors_are_1_and_n` is solid and traceable to PROOF.md:80-81.
-- Forward direction has complete setup showing that a third distinct divisor produces three members in the explicit filter.
-- The precise remaining gap is the pure-Lean proof that "three distinct members in the filtered list ⇒ length ≥ 3".
-- Reverse direction skeleton is present.
-- Multiple iterations completed this session on exactly this counting obligation.
-- Build succeeds on structure; the mathematical counting steps remain as explicit `sorry`.
+**M1 CLOSED (verified 2026-07-20):** The deferred counting obligations were subsequently completed with core-only tactics — no Mathlib required, no `sorry` remaining. Current state:
 
-**Honest note**: The bare-List version of the "three distinct elements imply length ≥ 3" fact is more tedious than expected in a self-contained skeleton. Work continues on the user's explicit goal.
+- `three_distinct_divisors_imply_tau_ge_three` — **proved** (core List cardinality via `length_ge_three_of_three_distinct`).
+- `tau_eq_two_iff_only_divisors_are_1_and_n` — **proved** both directions; reverse direction uses `length_eq_two_of_mem_pair_nodup` + `nodup_filter`.
+- `tau_gt_two_iff_has_proper_divisor` — **proved** (contrapositive form).
+- `rg 'sorry' lean-4/PGS/Basic.lean` returns **no** matches. D4.1 (tau / DNI coordinates + prime ↔ `tau = 2` characterization) is closed on the Basic path.
+- `lake build` + `lake env lean smoke-test.lean` succeed (after the Mathlib vendored-tree corruption was restored — see Build note below).
 
-**Status update (larger unit, 2026-06)**: Reverse direction larger unit delivered: `only_one_and_n_in_filter` (∀ x ∈ filter → x=1 ∨ x=n under h_only) + concrete one_mem + n_mem. The "at most 2" and "at least 2" are in place. The final length=2 combination step (image ⊆ {1,n}, distinct sublist of range, hits both) is the symmetric pure-List counting obligation and is explicitly deferred (2026-06, consistent with the forward deferral and user decision). Contrapositive `tau_gt_two_iff_has_proper_divisor` stated (with deferral note). Smoke-test updated. Build clean (only the two marked deferred sorries). 1:1 PROOF.md:80-81 traceability preserved. PGS-first, downstream-only, per contract.
+E/F/Z Real hooks remain in `PGS.Placement` (out of M1 scope; Mathlib re-introduction is now active and the build is green).
 
-**Phase 1 Gate Closed (2026-06)**: Per the "update before new phase" rule in the translation plan, Phase 1 is now formally closed with the honest boundary documented in PGS_LEAN_TRANSLATION_PLAN.html (core non-counting work delivered; the two counting obligations deferred to Phase 2). All living surfaces updated. No new phase work (E/F/Z, ordered comparison) begins until this gate is acknowledged. Build remains the verification surface.
+**Build note (2026-07-20):** The `lean-4/.lake/packages/mathlib` checkout had been silently corrupted (113 vendored files with mangled Unicode, e.g. `Mathlib/Tactic/Linter/TextBased/UnicodeLinter.lean` failing to parse). Restoring the clean `v4.30.0` checkout (`git -C .lake/packages/mathlib checkout -- .` + rebuild) resolved it. The Mathlib pin and `leanprover/lean4:v4.30.0` toolchain are correctly matched; the breakage was local corruption, not a version skew. Do not re-pin without cause.
 

@@ -119,7 +119,7 @@ Milestones are **implementation** exits, not new theorems.
 
 | Location | Obligation |
 | --- | --- |
-| `PGS/Basic.lean` | ≥3 `sorry` (tau characterization path) |
+| `PGS/Basic.lean` | **M1 CLOSED** — 0 `sorry` (tau characterization path proved, 2026-07-20). No entry here. |
 | `PGS/ChamberReset.lean` | axioms `replay_some_under_hyps`, `replay_cert_eq_hyps`, `replay_cert_demoted`; L5 path historically sorry-noted |
 | `PGS/Placement.lean` | axiom `tau_prime_square_eq_three` |
 | `PGS/GWR.lean` | Phase 3 placeholder (coverage gap D4.3) |

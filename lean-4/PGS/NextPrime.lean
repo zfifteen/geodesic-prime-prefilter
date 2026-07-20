@@ -33,6 +33,7 @@ theorem weak_lfcl_audit_layer {c : ReplayCertificate}
 
 /-- Package next-prime hypotheses once Rule X replay is formalized. -/
 theorem weak_lfcl_sufficient_bound (p q gap : Nat)
+    (hpp : tau p = 2)
     (hp : p ≥ 11)
     (hnext : ∀ n, p < n → n < q → tau n ≠ 2)
     (hq : tau q = 2)
@@ -40,7 +41,7 @@ theorem weak_lfcl_sufficient_bound (p q gap : Nat)
     ∃ c : ReplayCertificate,
       ∃ h : DemotedZeroExcessSignature c,
         c.p = p ∧ c.q = q ∧ structuralUniqueResolved c := by
-  rcases weak_lfcl_ruleX_forces_next_prime p q gap hp hnext hq hgap with
+  rcases weak_lfcl_ruleX_forces_next_prime p q gap hpp hp hnext hq hgap with
     ⟨c, h, hp', hq', huniq⟩
   exact ⟨c, h, hp', hq', huniq⟩
 

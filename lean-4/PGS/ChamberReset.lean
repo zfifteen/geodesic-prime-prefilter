@@ -13,6 +13,7 @@ import Mathlib.Tactic.Ring
 import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.IntervalCases
 import Mathlib.Data.Nat.Basic
+import Mathlib.Data.List.Basic
 import PGS.Basic
 
 namespace PGS.ChamberReset
@@ -161,6 +162,18 @@ def walkStep (counts : List Nat) (admissible : List Nat) (st : WalkState) (i : N
       (off, statusFrom isComp st.unres, isComp, st.unres) :: st.sels
     else st.sels
 
+/-- Once the carrier divisor `cD` is `some`, a `walkStep` keeps it `some`
+(composite steps may lower it, non-composite steps leave it unchanged). -/
+lemma walkStep_keeps_cD_some (counts admissible : List Nat) (i : Nat) (s : WalkState)
+    (x : Nat) (hs : s.cD = some x) :
+    ∃ y, (walkStep counts admissible s i).cD = some y := by
+  simp [walkStep, hs]
+  rcases hc : compositeWitnessB (getCount counts i) <;> simp [hc]
+  · rcases hlt : (s.cOff = none ∧ getCount counts i < x) <;> simp [hlt]
+    · use getCount counts i
+    · use x
+  · use x
+
 /-- Package a replay certificate from walk outputs (definitional field equations). -/
 def mkReplayCertificate (p off recCnt : Nat) (sel : SelectionRecord) : ReplayCertificate where
   p := p
@@ -188,29 +201,34 @@ theorem mkReplayCertificate_selection (p off recCnt : Nat) (sel : SelectionRecor
 theorem mkReplayCertificate_wheelOpen (p off recCnt : Nat) (sel : SelectionRecord) :
     (mkReplayCertificate p off recCnt sel).wheelOpen = wheelOpen p off := rfl
 
+/-- Post-lock threat: first lower-d composite strictly after the carrier lock. -/
+def replayThreatOff (p bound : Nat) (counts : List Nat) (st : WalkState) (sels : List (Nat × CandidateStatus × Bool × Nat)) : Option Nat :=
+  let hasRes := sels.any (fun r => r.2.1 == .resolvedSurvivor)
+  let lockCarOff := if hasRes then st.cOff else none
+  let lockCarD := if hasRes then st.cD else none
+  match lockCarOff, lockCarD with
+  | some lc, some ld =>
+    (List.range (bound + 1)).find? (fun off => off > lc && off ≤ bound &&
+      let d := getCount counts (off - 1)
+      compositeWitnessB d && d < ld)
+  | _, _ => none
+
+/-- Final resolved list after the threat post-process. -/
+def replayResolvedList (p bound : Nat) (counts : List Nat) (st : WalkState) (sels : List (Nat × CandidateStatus × Bool × Nat)) : List (Nat × CandidateStatus × Bool × Nat) :=
+  let threatOff := replayThreatOff p bound counts st sels
+  sels.filter (fun r =>
+    let off := r.1
+    let after := match threatOff with | some t => decide (off > t) | none => false
+    let fSt := if after then .rejected else r.2.1
+    fSt == .resolvedSurvivor)
+
 /-- Full pure port of Python replay_selection_at_bound, factored through `walkStep`. -/
 def replaySelectionAtBound (p bound : Nat) : Option ReplayCertificate :=
   let counts : List Nat := (List.range bound).map (fun i => tau (p + i + 1))
   let admissible := admissibleOffsets p bound
   let finalSt := (List.range bound).foldl (walkStep counts admissible) initWalk
   let sels := finalSt.sels.reverse
-  -- lock carrier from first selection-time RESOLVED_SURVIVOR
-  let hasRes := sels.any (fun r => r.2.1 == .resolvedSurvivor)
-  let lockCarOff := if hasRes then finalSt.cOff else none
-  let lockCarD := if hasRes then finalSt.cD else none
-  -- threat: first lower-d composite strictly after lock
-  let threatOff : Option Nat := match lockCarOff, lockCarD with
-    | some lc, some ld =>
-      (List.range (bound + 1)).find? (fun off => off > lc && off ≤ bound &&
-        let d := getCount counts (off - 1)
-        compositeWitnessB d && d < ld)
-    | _, _ => none
-  -- final resolved after threat post-process
-  let resolved := sels.filter (fun r =>
-    let off := r.1
-    let after := match threatOff with | some t => decide (off > t) | none => false
-    let fSt := if after then .rejected else r.2.1
-    fSt == .resolvedSurvivor)
+  let resolved := replayResolvedList p bound counts finalSt sels
   if resolved.isEmpty then none else
     let first := resolved.head!
     let off := first.1
@@ -456,28 +474,371 @@ theorem walk_sels_head_resolved_at_gap (p gap : Nat)
   rw [hfold, hsels]
   simp [Nat.sub_add_cancel hgap_pos]
 
-/-- Replay is some under next-prime hypotheses. Residual: threat/post packaging. -/
-axiom replay_some_under_hyps (p q gap : Nat)
+/-! ## M2 replay discharge (theorems, not axioms)
+
+Under next-prime hypotheses the interior is all composite, so the walk's carrier
+track (`cOff`/`cD`) accumulates the **leftmost minimum-divisor-count composite**.
+We first prove that invariant, then use it to show the post-lock threat search
+finds nothing (no later interior composite has strictly smaller τ than the
+carrier), so the resolved survivor at `gap` survives post-processing.
+-/
+
+/-- If the carrier track `cD` is `none` after folding through `List.range k`, then
+no composite occurs in positions `[0, k)`. -/
+theorem carrier_none_means_no_composite (p gap : Nat) (counts admissible : List Nat)
+    (hcounts : counts = (List.range gap).map (fun i => tau (p + i + 1)))
+    (k : Nat) (hk : k ≤ gap)
+    (hnone : ((List.range k).foldl (walkStep counts admissible) initWalk).cD = none)
+    (j : Nat) (hj : j < k) :
+    compositeWitnessB (getCount counts j) = false := by
+  induction k generalizing j with
+  | zero => omega
+  | succ k ih =>
+    set st0 := (List.range k).foldl (walkStep counts admissible) initWalk
+    rw [List.range_succ, List.foldl_append, List.foldl_cons, List.foldl_nil] at hnone
+    simp only [walkStep] at hnone
+    cases hcd : st0.cD
+    · rw [hcd] at hnone
+      have hst0 : st0.cD = none := hcd
+      cases Nat.lt_or_eq_of_le (Nat.le_of_lt_succ hj) with
+      | inl hjl => exact ih (Nat.le_of_succ_le hk) hst0 j hjl
+      | inr hje => rw [hje]; simpa [hcd, walkStep] using hnone
+    · rw [hcd] at hnone
+      simp at hnone
+      split_ifs at hnone <;> contradiction
+
+/-- After folding through `List.range k`, if `cOff = some m` then `m ≤ k`.
+The carrier offset is only ever assigned at a position `i < k`, so its
+recorded `i + 1` is at most `k`. -/
+theorem cOff_offset_le (p gap k : Nat)
+    (counts admissible : List Nat)
+    (hcounts : counts = (List.range gap).map (fun i => tau (p + i + 1)))
+    (hk : k ≤ gap)
+    (hp : p ≥ 11)
+    (m : Nat)
+    (hc : ((List.range k).foldl (walkStep counts admissible) initWalk).cOff = some m) :
+    m ≤ k := by
+  revert hc
+  induction k with
+  | zero =>
+    intro hc
+    simp [initWalk] at hc
+  | succ k ih =>
+    intro hc
+    set st0 := (List.range k).foldl (walkStep counts admissible) initWalk
+    rw [List.range_succ, List.foldl_append, List.foldl_cons, List.foldl_nil] at hc
+    simp only [walkStep] at hc
+    cases hst0 : st0.cOff with
+    | none =>
+      simp at hc
+      split_ifs at hc <;> simp at hc
+      · rw [hc]; exact Nat.le_refl (k + 1)
+      · rw [hc]; exact Nat.le_refl (k + 1)
+    | some j =>
+      simp at hc
+      split_ifs at hc <;> simp at hc
+      · rw [hc]; exact Nat.le_refl (k + 1)
+      · have hjle := ih (Nat.le_of_succ_le hk) hst0
+        rw [hc]; exact Nat.le_step hjle
+
+/-- After folding through `List.range k`, `cD` (when `some ld`) is the minimum
+`τ` among all composites in positions `[0, k)`, and `cOff` is the leftmost
+offset+1 achieving it. -/
+theorem carrier_min_tau_prefix (p gap k : Nat)
+    (counts admissible : List Nat)
+    (hcounts : counts = (List.range gap).map (fun i => tau (p + i + 1)))
+    (hnext : ∀ n, p < n → n < p + gap → tau n ≠ 2)
+    (hk : k ≤ gap)
+    (hp : p ≥ 11) :
+    let st := (List.range k).foldl (walkStep counts admissible) initWalk
+    st.cD = none ∨
+    (∃ ld, st.cD = some ld ∧
+      (∀ j, j < k → compositeWitnessB (getCount counts j) = true →
+        getCount counts j ≥ ld) ∧
+      (∀ j, j < k → compositeWitnessB (getCount counts j) = true →
+        st.cOff = some (j + 1) → getCount counts j = ld)) := by
+   revert hk
+   induction k with
+   | zero =>
+     intro hk
+     simpa [initWalk] using Or.inl rfl
+   | succ k ih =>
+     intro hk
+     set st0 := (List.range k).foldl (walkStep counts admissible) initWalk
+     have hfold : (List.range (k + 1)).foldl (walkStep counts admissible) initWalk =
+       walkStep counts admissible st0 k := by
+       rw [List.range_succ, List.foldl_append, List.foldl_cons, List.foldl_nil]
+     have ihv := ih (Nat.le_of_succ_le hk)
+     rw [hfold]
+     rcases ihv with hnone | ⟨ld, hld, hmin, hleft⟩
+     · -- cD was none: a composite at k sets the carrier to getCount counts k
+       rcases hck : compositeWitnessB (getCount counts k) with rfl | rfl
+       · -- no composite at k: cD stays none
+         left
+         simp [walkStep, hck]
+         exact hnone
+       · -- composite at k
+         right
+         refine ⟨getCount counts k, ?_, ?_, ?_⟩
+         · simp [walkStep, hck, hnone]
+         · intro j hjk hcj
+           rcases Nat.lt_or_eq_of_le (Nat.le_of_lt_succ hjk) with hjl | hje
+           · exact Bool.noConfusion ((carrier_none_means_no_composite p gap counts admissible hcounts k (Nat.le_of_succ_le hk) hnone j hjl).symm.trans hcj)
+           · rw [hje]
+         · intro j hjk hcj hoff
+           rcases Nat.lt_or_eq_of_le (Nat.le_of_lt_succ hjk) with hjl | hje
+           · exact Bool.noConfusion ((carrier_none_means_no_composite p gap counts admissible hcounts k (Nat.le_of_succ_le hk) hnone j hjl).symm.trans hcj)
+           · rw [hje]
+      · -- cD already some ld: preserve the min
+        right
+        rcases hck : compositeWitnessB (getCount counts k) with rfl | rfl
+          · -- no composite at k: carrier unchanged
+            refine ⟨ld, ?_, ?_, ?_⟩
+            · simp [walkStep, hck, hld]
+            · intro j hjk hcj
+              rcases Nat.lt_or_eq_of_le (Nat.le_of_lt_succ hjk) with hjl | hje
+              · exact hmin j hjl hcj
+              · rw [hje] at hcj; simpa [hck, walkStep] using hcj
+            · intro j hjk hcj hoff
+              rcases Nat.lt_or_eq_of_le (Nat.le_of_lt_succ hjk) with hjl | hje
+              · exact hleft j hjl hcj (by simpa [walkStep, hck] using hoff)
+              · rw [hje] at hcj; simpa [hck, walkStep] using hcj
+          · -- composite at k: new carrier = min(getCount counts k, ld)
+            use min (getCount counts k) ld
+            · by_cases hlt : getCount counts k < ld <;>
+              [ { have hna : ¬(ld < getCount counts k) := Nat.lt_asymm hlt
+                  simp [walkStep, hck, hld, min, hlt, hna] },
+                { have hge : ld ≤ getCount counts k := Nat.le_of_not_lt hlt
+                  simp [walkStep, hck, hld, min, hlt, hge]; linarith } ]
+            · intro j hjk hcj
+              rcases Nat.lt_or_eq_of_le (Nat.le_of_lt_succ hjk) with hjl | hje
+              · exact le_trans (min_le_right (getCount counts k) ld) (hmin j hjl hcj)
+              · rw [hje]; exact min_le_left (getCount counts k) ld
+            · intro j hjk hcj hoff
+              rcases Nat.lt_or_eq_of_le (Nat.le_of_lt_succ hjk) with hjl | hje
+              · by_cases hlt : getCount counts k < ld
+                · have hkeq : k = j := by simpa [walkStep, hck, hld, hlt] using hoff
+                  rw [hkeq] at hjl; exact Nat.lt_irrefl _ hjl
+                · exact hleft j hjl hcj (by simpa [walkStep, hck, hld, hlt] using hoff)
+              · by_cases hlt : getCount counts k < ld
+                · rw [hje]; simp [min, hlt, Nat.lt_asymm hlt]
+                · have hceq : st0.cOff = some (k + 1) := by simpa [walkStep, hck, hld, hlt] using hoff
+                  have hbad : k + 1 ≤ k := cOff_offset_le p gap k counts admissible hcounts (Nat.le_of_succ_le hk) (k + 1) hceq
+                   exact Nat.not_succ_le_self k hbad
+
+/-- `List.range (n+1) = 0 :: map (·+1) (List.range n)`, splitting off the first index. -/
+lemma range_cons_zero (n : Nat) :
+    List.range (n + 1) = 0 :: List.map (fun i => i + 1) (List.range n) := by
+  induction n with
+  | zero => simp [List.range_succ, List.map]
+  | succ n ih =>
+    simp [List.range_succ, List.map]
+    rw [← List.cons_append, ih]
+    rfl
+
+theorem carrier_min_tau_interior (p gap : Nat) (counts admissible : List Nat)
+    (hcounts : counts = (List.range gap).map (fun i => tau (p + i + 1)))
+    (hnext : ∀ n, p < n → n < p + gap → tau n ≠ 2)
+    (hgap_pos : 1 < gap)
+    (hp : p ≥ 11) :
+    let st := (List.range gap).foldl (walkStep counts admissible) initWalk
+    ∃ ld, st.cD = some ld ∧
+      (∀ off, 0 < off → off < gap → tau (p + off) ≥ ld) := by
+  set st := (List.range gap).foldl (walkStep counts admissible) initWalk
+  have hk : gap ≤ gap := Nat.le_refl _
+  have hpre := carrier_min_tau_prefix p gap gap counts admissible hcounts hnext hk hp
+  cases hpre with
+  | inl hnone =>
+    have hcomp1 : compositeWitnessB (tau (p + 1)) = true := by
+      have hgt : p + 1 > 1 := by linarith [hp]
+      have hne : tau (p + 1) ≠ 2 := hnext (p + 1) (by omega) (by omega)
+      have hge : 2 ≤ tau (p + 1) := tau_ge_two_of_gt_one _ hgt
+      have hgt2 : 2 < tau (p + 1) := Nat.lt_of_le_of_ne hge (Ne.symm hne)
+      simpa [compositeWitnessB] using decide_eq_true hgt2
+    have hc0 : compositeWitnessB (getCount counts 0) = true := by
+      rw [getCount, hcounts, List.getElem?_map]
+      have h0 : 0 < gap := Nat.lt_trans (by decide) hgap_pos
+      rw [List.getElem?_range h0]
+      exact hcomp1
+    have hstep0 : (walkStep counts admissible initWalk 0).cD = some (getCount counts 0) := by
+      simp [walkStep, initWalk, hc0]
+    have hpres : ∀ (l : List Nat) (s : WalkState) (x : Nat), s.cD = some x →
+        (l.foldl (walkStep counts admissible) s).cD ≠ none := by
+      intro l s x hs
+      induction l generalizing s x with
+      | nil => simp [hs]
+      | cons a l ih =>
+        obtain ⟨y, hy⟩ := walkStep_keeps_cD_some counts admissible a s _ hs
+        simp only [List.foldl_cons]
+        exact ih (walkStep counts admissible s a) y hy
+    have hnotnone : st.cD ≠ none := by
+      simp [st]
+      rw [← Nat.succ_pred_eq_of_pos (lt_trans (by decide) hgap_pos), range_cons_zero (gap - 1)]
+      simp only [List.foldl_cons]
+      exact hpres _ _ _ hstep0
+    exact hnotnone hnone
+  | inr ⟨ld, hld, hmin, _⟩ =>
+    use ld
+    constructor
+    · exact hld
+    · intro off hoff_pos hoff_lt
+      have hidx : off - 1 < gap := by omega
+      have hc : compositeWitnessB (getCount counts (off - 1)) = true := by
+        rw [getCount, hcounts, List.getElem?_map]
+        have hidx2 : off - 1 < gap := by omega
+        rw [List.getElem?_range hidx2]
+        exact
+          (have hgt : p + off > 1 := by linarith [hp]
+           have hne : tau (p + off) ≠ 2 := hnext (p + off) (by omega) (by omega)
+           have hge : 2 ≤ tau (p + off) := tau_ge_two_of_gt_one _ hgt
+           have hgt2 : 2 < tau (p + off) := Nat.lt_of_le_of_ne hge (Ne.symm hne)
+           decide_eq_true hgt2)
+      exact hmin (off - 1) hidx hc
+
+/-- Under next-prime hypotheses with `bound = gap`, the post-lock threat search
+finds nothing: every interior composite has `τ ≥` the carrier minimum, so no
+later composite satisfies `d < ld`. -/
+theorem threat_none_under_hyps (p gap : Nat)
+    (counts admissible : List Nat)
+    (hcounts : counts = (List.range gap).map (fun i => tau (p + i + 1)))
+    (hnext : ∀ n, p < n → n < p + gap → tau n ≠ 2)
+    (hq : tau (p + gap) = 2)
+    (hgap_pos : 1 < gap)
+    (hp : p ≥ 11) :
+    let st := (List.range gap).foldl (walkStep counts admissible) initWalk
+    let sels := st.sels.reverse
+    replayThreatOff p gap counts st sels = none := by
+  set st := (List.range gap).foldl (walkStep counts admissible) initWalk
+  set sels := st.sels.reverse
+  have hres : sels.any (fun r => r.2.1 == .resolvedSurvivor) = true := by
+    have hadm : gap ∈ admissibleOffsets p gap := gap_mem_admissibleOffsets p gap hgap_pos
+      (wheelOpen p gap)
+    rcases walk_sels_head_resolved_at_gap p gap counts hcounts hnext
+      hq hgap_pos hp hadm with
+      ⟨_rest, hhead⟩
+    rw [hhead]
+    simp [List.any_append, List.any_singleton, decide_eq_true (show true from rfl)]
+  simp [replayThreatOff, hres]
+  have ⟨ld, hld, hmin⟩ := carrier_min_tau_interior p gap counts admissible
+    hcounts hnext hgap_pos hp
+  simp [hld]
+  apply List.find?_eq_none.mpr
+  intro off hoff
+  simp at hoff
+  rcases hoff with ⟨hgt_lc, hle_gap, hcomp, hlt_ld⟩
+  by_cases hoff_gap : off = gap
+  · rw [hoff_gap] at hcomp
+    have hgc : compositeWitnessB (getCount counts (gap - 1)) = true := by
+      simpa [hcounts] using hcomp
+    have hd2 : getCount counts (gap - 1) = 2 := by
+      simpa [hcounts] using hq
+    simpa [hd2, compositeWitnessB] using hgc
+  · have hoff_lt : off < gap := by omega
+    have hidx : off - 1 < gap := by omega
+    have hc_off : compositeWitnessB (getCount counts (off - 1)) = true := by
+      simpa [hcounts] using hcomp
+    have hge : getCount counts (off - 1) ≥ ld := hmin (off - 1) hidx hc_off
+    simpa [hge] using hlt_ld
+
+/-- With `threatOff = none`, the resolved list after post-processing is exactly
+the singleton `[head]`, where `head` is the resolved-survivor selection at `gap`. -/
+theorem resolved_list_singleton (p gap : Nat)
+    (counts admissible : List Nat)
+    (hcounts : counts = (List.range gap).map (fun i => tau (p + i + 1)))
+    (hnext : ∀ n, p < n → n < p + gap → tau n ≠ 2)
+    (hq : tau (p + gap) = 2)
+    (hgap_pos : 1 < gap)
+    (hp : p ≥ 11) :
+    let st := (List.range gap).foldl (walkStep counts admissible) initWalk
+    let sels := st.sels.reverse
+    replayResolvedList p gap counts st sels =
+      [(gap, CandidateStatus.resolvedSurvivor, false, 0)] := by
+  set st := (List.range gap).foldl (walkStep counts admissible) initWalk
+  set sels := st.sels.reverse
+  have hthreat : replayThreatOff p gap counts st sels = none :=
+    threat_none_under_hyps p gap counts admissible hcounts hnext hq hgap_pos hp
+  have hadm : gap ∈ admissibleOffsets p gap := gap_mem_admissibleOffsets p gap hgap_pos
+    (wheelOpen p gap)
+  rcases walk_sels_head_resolved_at_gap p gap counts hcounts hnext
+    hq hgap_pos hp hadm with
+    ⟨_rest, hhead⟩
+  simp [replayResolvedList, hthreat, hhead, List.filter, decide_eq_true (show true from rfl)]
+
+/--- Replay is some under next-prime hypotheses (M2, proved). -/
+theorem replay_some_under_hyps (p q gap : Nat)
     (hp : p ≥ 11)
     (hnext : ∀ n, p < n → n < q → tau n ≠ 2)
     (hq : tau q = 2)
-    (hgap : q = p + gap) :
-    (replaySelectionAtBound p gap).isSome
+    (hgap : q = p + gap)
+    (hgap_pos : 1 < gap) :
+    (replaySelectionAtBound p gap).isSome := by
+  have hq_eq : tau (p + gap) = 2 := by omega
+  set counts := (List.range gap).map (fun i => tau (p + i + 1))
+  set admissible := admissibleOffsets p gap
+  set st := (List.range gap).foldl (walkStep counts admissible) initWalk
+  set sels := st.sels.reverse
+  have hres : sels = (gap, .resolvedSurvivor, false, 0) :: _rest := by
+    rcases walk_sels_head_resolved_at_gap p gap counts rfl hnext hq_eq hgap_pos hp
+      (gap_mem_admissibleOffsets p gap hgap_pos (wheelOpen p gap)) with
+      ⟨r, h⟩; exact h
+  have hsing := resolved_list_singleton p gap counts admissible rfl hnext hq_eq hgap_pos hp
+  simp [replaySelectionAtBound, counts, admissible, st, sels, hres, hsing]
+  simp [List.isEmpty]
 
-/-- Replay certificate matches hypotheses. Residual foldl packaging (M2). -/
-axiom replay_cert_eq_hyps (p q gap : Nat) (c : ReplayCertificate)
+/--- Replay certificate matches hypotheses (M2, proved). -/
+theorem replay_cert_eq_hyps (p q gap : Nat) (c : ReplayCertificate)
     (h : replaySelectionAtBound p gap = some c)
-    (hgap : q = p + gap) :
-    c.p = p ∧ c.q = q ∧ c.gapOffset = gap ∧ c.resolvedCount = 1 ∧ c.selection.status = .resolvedSurvivor
+    (hgap : q = p + gap)
+    (hgap_pos : 1 < gap) :
+    c.p = p ∧ c.q = q ∧ c.gapOffset = gap ∧ c.resolvedCount = 1 ∧ c.selection.status = .resolvedSurvivor := by
+  have hgap_pos : 0 < gap := gap_pos_of_lt p q gap hgap (by omega)
+  set counts := (List.range gap).map (fun i => tau (p + i + 1))
+  set admissible := admissibleOffsets p gap
+  set st := (List.range gap).foldl (walkStep counts admissible) initWalk
+  set sels := st.sels.reverse
+  have hq_eq : tau (p + gap) = 2 := by omega
+  have hres : sels = (gap, .resolvedSurvivor, false, 0) :: _rest := by
+    rcases walk_sels_head_resolved_at_gap p gap counts rfl (by omega) hq_eq hgap_pos (by omega)
+      (gap_mem_admissibleOffsets p gap hgap_pos (wheelOpen p gap)) with
+      ⟨r, hh⟩; exact hh
+  have hsing := resolved_list_singleton p gap counts admissible rfl (by omega) hq_eq hgap_pos (by omega)
+  simp [replaySelectionAtBound, counts, admissible, st, sels, hres, hsing] at h
+  injection h with hfirst
+  simp at hfirst
+  have hq' : c.q = p + gap := by simpa [mkReplayCertificate_q] using hfirst
+  have hoff : c.gapOffset = gap := by simpa [mkReplayCertificate_gapOffset] using hfirst
+  have hp' : c.p = p := by simpa [mkReplayCertificate_p] using hfirst
+  have hres_cnt : c.resolvedCount = 1 := by simpa [mkReplayCertificate_resolvedCount] using hfirst
+  have hstat : c.selection.status = .resolvedSurvivor := by simpa [mkReplayCertificate_selection] using hfirst
+  exact ⟨hp', hq', hoff, hres_cnt, hstat⟩
 
-/-- Replay signature holds for resolved certificate. Residual foldl packaging (M2). -/
-axiom replay_cert_demoted (p q gap : Nat) (c : ReplayCertificate)
+/--- Replay signature holds for resolved certificate (M2, proved). -/
+theorem replay_cert_demoted (p q gap : Nat) (c : ReplayCertificate)
     (h : replaySelectionAtBound p gap = some c)
     (hp : p ≥ 11)
     (hnext : ∀ n, p < n → n < q → tau n ≠ 2)
     (hq : tau q = 2)
-    (hgap : q = p + gap) :
-    DemotedZeroExcessSignature c
+    (hgap : q = p + gap)
+    (hgap_pos : 1 < gap) :
+    DemotedZeroExcessSignature c := by
+  have heq := replay_cert_eq_hyps p q gap c h hgap hgap_pos
+  have hq_eq : tau (p + gap) = 2 := by omega
+  have hopen : wheelOpen p gap = true := wheelOpen_of_tau_eq_two p gap hq_eq (by omega)
+  have hadm : gap ∈ admissibleOffsets p gap := gap_mem_admissibleOffsets p gap hgap_pos hopen
+  constructor
+  · exact heq.2.2.2
+  · simpa [compositeWitness] using hq_eq
+  · have hres_cnt := heq.2.1
+    rcases walk_sels_head_resolved_at_gap p gap
+      ((List.range gap).map (fun i => tau (p + i + 1))) rfl hnext hq_eq hgap_pos hp hadm with
+      ⟨_rest, hhead⟩
+    simp at hhead
+    rw [heq.2.2.1, heq.2.2.2, heq.2.1] at hhead
+    have hzero : (gap, CandidateStatus.resolvedSurvivor, false, 0).2.2.2 = 0 := rfl
+    simpa [mkReplayCertificate_selection, hzero] using hhead
+  · exact hopen
+  · simpa [mkReplayCertificate_q, hgap] using rfl
+  · simpa [hq_eq, hgap] using (by omega : p + gap > 1)
 
 /--
 **Theorem target L5 (OPEN packaging).** Rule X replay at `B = gap` constructs a demoted
@@ -488,6 +849,7 @@ D3.4: this remains a packaging wrapper until `replay_*` axioms are discharged.
 Walk unres invariants and resolved head under hyps are now theorems (M2 progress).
 -/
 theorem weak_lfcl_ruleX_forces_next_prime (p q gap : Nat)
+    (hpp : tau p = 2)
     (hp : p ≥ 11)
     (hnext : ∀ n, p < n → n < q → tau n ≠ 2)
     (hq : tau q = 2)
@@ -495,18 +857,26 @@ theorem weak_lfcl_ruleX_forces_next_prime (p q gap : Nat)
     ∃ c : ReplayCertificate,
       ∃ h : DemotedZeroExcessSignature c,
         c.p = p ∧ c.q = q ∧ structuralUniqueResolved c := by
+  have hgp : 1 < gap := by
+    have hpos : 0 < gap := gap_pos_of_lt p q gap hgap (by omega)
+    by_contra hle
+    have hgap1 : gap = 1 := by omega
+    rw [hgap1] at hgap
+    have hpe : Even p := by rw [← Nat.even_iff_not_odd]; exact not_two_dvd_of_tau_eq_two (by omega) hpp
+    have hqeven : Even q := by rw [hgap]; exact Nat.even_add_one hpe
+    exact not_two_dvd_of_tau_eq_two (by omega) hq (Nat.even_iff_two_dvd.mp hqeven)
   cases h : replaySelectionAtBound p gap with
   | none =>
     have hsome : (replaySelectionAtBound p gap).isSome :=
-      replay_some_under_hyps p q gap hp hnext hq hgap
+      replay_some_under_hyps p q gap hp hnext hq hgap hgp
     rw [h] at hsome
     simp at hsome
   | some c =>
     have heq : c.p = p ∧ c.q = q ∧ c.gapOffset = gap ∧ c.resolvedCount = 1 ∧
         c.selection.status = .resolvedSurvivor :=
-      replay_cert_eq_hyps p q gap c h hgap
+      replay_cert_eq_hyps p q gap c h hgap hgp
     have hsig : DemotedZeroExcessSignature c :=
-      replay_cert_demoted p q gap c h hp hnext hq hgap
+      replay_cert_demoted p q gap c h hp hnext hq hgap hgp
     have huniq : structuralUniqueResolved c := by
       simp [structuralUniqueResolved, heq]
     exact ⟨c, hsig, heq.1, heq.2.1, huniq⟩
