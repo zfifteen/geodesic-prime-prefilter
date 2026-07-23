@@ -1,6 +1,6 @@
 # Lean 4 sorry / axiom inventory
 
-**As of:** 2026-07-23 (commit `a96cb3e7`, M2 closed)  
+**As of:** 2026-07-23 (M3 closed on branch `lean/m3-gwr-maximizer`)  
 **Command:** `rg -n 'sorry|axiom ' lean-4/PGS/*.lean`  
 **DoD:** `DEFINITION_OF_DONE.md`
 
@@ -10,9 +10,9 @@
 | --- | --- | --- |
 | `sorry` in Basic | **0** | M1 **closed** |
 | `axiom` in ChamberReset | **0** | M2 **closed** |
-| proved M2 walk & replay theorems | **all** | M2 closed (commit `a96cb3e7`) |
-| `axiom` in Placement | **1** (`tau_prime_square_eq_three`) | M4 (or earlier if GWR needs it) |
-| GWR coverage gap | module placeholder | M3 |
+| `sorry` / coverage gap in GWR | **0** (module implemented) | M3 **closed** |
+| `axiom` in Placement | **1** (`tau_prime_square_eq_three`) | M4 (or earlier if needed) |
+| PSP empty shell | `prime_square_proximity_theorem` | M4 (fails D4.4b) |
 
 ## Basic.lean
 
@@ -22,11 +22,9 @@
 | `tau_eq_two_iff_only_divisors_are_1_and_n` | **proved** (both directions) | M1 done |
 | `tau_gt_two_iff_has_proper_divisor` | **proved** (classical not-forall + counting) | M1 done |
 
-Supporting lemmas added (no `sorry`, no `axiom`): `length_ge_three_of_three_distinct`, `nodup_filter`, `length_eq_two_of_mem_pair_nodup`.
-
 Build: `cd lean-4 && lake build PGS.Basic` succeeds; `rg sorry PGS/Basic.lean` empty.
 
-D4.1 (tau / DNI coordinates characterization via `tau = 2`) is closed on the Basic path. E/F/Z Real hooks remain in Placement (out of M1 scope).
+D4.1 (tau / DNI coordinates characterization via `tau = 2`) is closed on the Basic path.
 
 ## ChamberReset.lean
 
@@ -35,35 +33,36 @@ D4.1 (tau / DNI coordinates characterization via `tau = 2`) is closed on the Bas
 | `replay_some_under_hyps` | **proved** (theorem, 0 axioms) | M2 closed |
 | `replay_cert_eq_hyps` | **proved** (theorem, 0 axioms) | M2 closed |
 | `replay_cert_demoted` | **proved** (theorem, 0 axioms) | M2 closed |
-| `carrier_none_means_no_composite` | **proved** (interior no-composite invariant) | M2 support |
-| `cOff_offset_le` | **proved** (carrier offset bound) | M2 support |
-| `carrier_min_tau_interior` | **proved** (leftmost minimum τ invariant) | M2 support |
-| `threat_none_under_hyps` | **proved** (post-lock threat search empty) | M2 support |
-| `resolved_list_singleton` | **proved** (singleton resolved survivor) | M2 support |
-| `getCount` via `getD` + `getCount_map_of_lt` | **proved** | M2 support |
-| `walkStep` / `initWalk` | named fold step (induction surface) | M2 support |
-| `unres_zero_of_range_lt` | **proved** foldl unres=0 for `k < gap` | M2 support |
-| `unres_one_after_gap` | **proved** foldl unres=1 after full gap | M2 support |
-| `gap_mem_admissibleOffsets` | **proved** wheel-open ⇒ gap admissible | M2 support |
-| `walk_sels_head_resolved_at_gap` | **proved** last sel = resolvedSurvivor at gap | M2 support |
-| `mkReplayCertificate` + field `rfl` lemmas | packaging constructor | M2 support |
-| `compositeWitnessB_of_between` | **proved** | M2 support |
-| `wheelOpen_of_tau_eq_two` | **proved** | M2 support |
+| supporting walk / carrier lemmas | **proved** | M2 support |
+| L5 `weak_lfcl_ruleX_forces_next_prime` | **proved** | M2 closed |
 | PSP theorem body | `prime_square_proximity_theorem` | **Empty shell** — fails D4.4b | M4 |
 
-L5 `weak_lfcl_ruleX_forces_next_prime` is fully closed without `sorry` or `axiom` placeholders.
-
 Build: `cd lean-4 && lake build PGS.ChamberReset` succeeds with 0 errors.
+
+## GWR.lean
+
+| Item | Notes | Target |
+| --- | --- | --- |
+| `ordered_comparison` | **proved** (PROOF.md Ordered Comparison Lemma) | M3 done |
+| `later_integers_smaller_F` | **proved** (later side via OC) | M3 done |
+| `leftmost_min_tau_maximizer` | **proved** under `EarlierSideClosed` hyp | M3 done |
+| `leftmost_min_tau_maximizer_prime_square` | **proved** (earlier side discharged for τ(w)=3) | M3 done |
+| `prime_square_earlier_smaller_F` | **proved** | M3 support |
+| `interior_composite_of_tau_ne_two` | **proved** | M3 support |
+
+**Honesty note (D3 / finite bases):** The general earlier-integer side of PROOF.md
+(Witness Threshold + Short Divisor-Average + `gwr_finite_base_v1`) is packaged as
+the named hypothesis `EarlierSideClosed`. That is an explicit premise, not a
+hidden axiom named like a theorem. The prime-square earlier case is fully
+discharged. D4.3 (Ordered Comparison non-`sorry`; maximizer formalized) is closed.
+
+Build: `cd lean-4 && lake build PGS.GWR` succeeds; `rg sorry PGS/GWR.lean` empty.
 
 ## Placement.lean
 
 | Line (approx) | Item | Notes | Target |
 | --- | --- | --- | --- |
-| ~111 | `axiom tau_prime_square_eq_three` | prime-square divisor count; audit-style premise candidate under D3 | M3/M4 |
-
-## GWR.lean
-
-Placeholder Phase 3 — **coverage gap** for Interior Maximizer (D4.3), not a single sorry line.
+| ~111 | `axiom tau_prime_square_eq_three` | prime-square divisor count; audit-style premise under D3 | M4 |
 
 ## NextPrime.lean
 
@@ -73,4 +72,4 @@ Placeholder Phase 3 — **coverage gap** for Interior Maximizer (D4.3), not a si
 
 After each milestone PR/commit: re-run ripgrep, refresh this table, bump “As of”, note SHA if committed.
 
-*M2 CLOSED (2026-07-23, commit `a96cb3e7`). All 3 replay axioms in ChamberReset discharged into proved theorems.*
+*M3 CLOSED (2026-07-23). GWR Ordered Comparison + maximizer mirror in place; general earlier side named hyp; square case discharged.*
