@@ -1,6 +1,6 @@
 # Lean 4 sorry / axiom inventory
 
-**As of:** 2026-07-23 (M5 program DoD exit on branch `lean/m5-dod-exit`)  
+**As of:** 2026-07-23 (M5 program DoD exit on `main`, merge `3d5b74c7` / PR #62)  
 **Command:** `rg -n 'sorry|^\s*axiom ' lean-4/PGS/*.lean`  
 **DoD:** `DEFINITION_OF_DONE.md` · Peer accept: `peer/M5_DOD_ACCEPT.md`
 

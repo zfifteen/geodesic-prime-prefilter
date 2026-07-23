@@ -69,8 +69,11 @@
 
 **Status: DONE (program DoD for Lean core-stack formalization M0–M5).**  
 
-Record merge SHA and date on parent #53 and in
-`research/00-index/continuity/notes/TOP_PRIORITY_lean_core_stack_2026-07-18.md`
-when this PR lands on `main`.
+| Field | Value |
+| --- | --- |
+| Main merge | `3d5b74c7` (PR #62) |
+| Parent issue | #53 closed DONE |
+| Sub-issue | #59 closed completed |
+| Continuity pin | `TOP_PRIORITY_lean_core_stack_2026-07-18.md` |
 
 *Peer adversarial pass: no open D1–D6 fail at M5.*
