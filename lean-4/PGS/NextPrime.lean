@@ -37,11 +37,12 @@ theorem weak_lfcl_sufficient_bound (p q gap : Nat)
     (hp : p ≥ 11)
     (hnext : ∀ n, p < n → n < q → tau n ≠ 2)
     (hq : tau q = 2)
-    (hgap : q = p + gap) :
+    (hgap : q = p + gap)
+    (hgt : p < q) :
     ∃ c : ReplayCertificate,
       ∃ h : DemotedZeroExcessSignature c,
         c.p = p ∧ c.q = q ∧ structuralUniqueResolved c := by
-  rcases weak_lfcl_ruleX_forces_next_prime p q gap hpp hp hnext hq hgap with
+  rcases weak_lfcl_ruleX_forces_next_prime p q gap hpp hp hnext hq hgap hgt with
     ⟨c, h, hp', hq', huniq⟩
   exact ⟨c, h, hp', hq', huniq⟩
 
