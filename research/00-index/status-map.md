@@ -330,7 +330,7 @@ This is the authoritative planning artifact for the entire Lean translation trac
 - `PGS/Basic.lean`: **0 sorry** — M1 closed.
 - `PGS/ChamberReset.lean`: **0 axiom** — M2 closed.
 - `PGS/Placement.lean`: 1 axiom (`tau_prime_square_eq_three`, CL-003 audit premise) → M4.
-- `PGS/GWR.lean`: Phase-3 placeholder → M3 coverage gap.
+- `PGS/GWR.lean`: **M3 closed** (2026-07-23, merge `1cfb5e5e` / PR #60) — Ordered Comparison + maximizer.
 
 **M1 (Basic.lean tau characterization): CLOSED.** The 2026-06 "deferred counting obligations" were completed with core-only tactics — no Mathlib needed, no `sorry` remaining:
 - `three_distinct_divisors_imply_tau_ge_three` proved via `length_ge_three_of_three_distinct`.
