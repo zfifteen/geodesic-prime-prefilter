@@ -4,15 +4,17 @@
 <meta charset="UTF-8">
 <title>PGS Lean 4 Verification. Status</title>
 <style>
-body { font-family: system-ui, sans-serif; margin: 2rem; line-height: 1.6; background: #0d1117; color: #c9d1d9; }
-h1, h2 { color: #58a6ff; }
+body { font-family: system-ui, sans-serif; margin: 2rem; line-height: 1.6; background: #0d1117; color: #c9d1d9; max-width: 56rem; }
+h1, h2, h3 { color: #58a6ff; }
 table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
-th, td { border: 1px solid #30363d; padding: 0.5rem; text-align: left; }
+th, td { border: 1px solid #30363d; padding: 0.5rem; text-align: left; vertical-align: top; }
 th { background: #161b22; }
 .contract { background: #161b22; padding: 1rem; border-left: 4px solid #58a6ff; margin-bottom: 1.5rem; }
 .plain-english { font-size: 1.1em; margin-bottom: 2rem; }
 .ok { color: #3fb950; }
 .open { color: #d29922; }
+code { background: #161b22; padding: 0.1em 0.35em; border-radius: 3px; }
+footer { margin-top: 3rem; font-size: 0.85em; color: #8b949e; }
 </style>
 </head>
 <body>
@@ -20,52 +22,81 @@ th { background: #161b22; }
 <h1>PGS Lean 4 Formalization. Status Surface</h1>
 
 <div class="contract">
-<strong>Owner</strong>: Hermes<br><br>
-<strong>Active Contracts & Verification Documents</strong>:<br>
-• <a href="../../../lean-4/DEFINITION_OF_DONE.md">Definition of Done (DoD)</a><br>
-• <a href="../../../lean-4/SORRY_AXIOM_INVENTORY.md">Sorry/Axiom Inventory</a><br>
-• <a href="../../../lean-4/LEAN_PGS_VERIFICATION_CONTRACT.md">LEAN_PGS_VERIFICATION_CONTRACT.md</a><br>
-• <a href="../../../lean-4/PGS_LEAN_FORMALIZATION_PLAN.md">PGS_LEAN_FORMALIZATION_PLAN.md</a><br>
-• <a href="PGS_LEAN_TRANSLATION_PLAN.html">Detailed Translation Plan</a>
+<strong>Owner</strong>: Hermes<br>
+<strong>Authority</strong>: <code>PROOF.md</code> controls theorem status. Lean is a downstream machine-checked mirror only.<br><br>
+<strong>Documents</strong>:<br>
+• <a href="../../../lean-4/DEFINITION_OF_DONE.md">Definition of Done</a><br>
+• <a href="../../../lean-4/SORRY_AXIOM_INVENTORY.md">Sorry / Axiom Inventory</a><br>
+• <a href="../../../lean-4/peer/M5_DOD_ACCEPT.md">M5 DoD peer accept</a><br>
+• <a href="../../../lean-4/LEAN_PGS_VERIFICATION_CONTRACT.md">Verification contract</a><br>
+• <a href="../../../lean-4/PGS/FiniteBases.lean">Finite base packages (D4.6)</a><br>
+• <a href="PGS_LEAN_TRANSLATION_PLAN.html">Translation plan</a>
 </div>
 
 <div class="plain-english">
 <h2>Summary</h2>
-<p>Four core-stack milestones are closed in Lean (M0–M4). Tau characterization, ChamberReset next-prime path, GWR Ordered Comparison / maximizer packaging, and non-vacuous Universal Bounded Compression plus Prime-Square Proximity live as machine-checked mirrors under named finite and analytic premises.</p>
-<p>Program Definition of Done is still <strong>not</strong> met: M5 finite-base packaging polish, full D1–D7 peer accept, and living inventory hygiene remain. The old PSP empty shell is gone; bounds use the concrete cutoff <code>C(n) = max(64, ceil(0.5 log(n)^2))</code>. Next cut is M5 (#59).</p>
+<p>The Lean library is a machine-checked mirror of the core stack already proved in prose: divisor-count (tau) characterization, deterministic next-prime packaging under tau-scan hypotheses, the ordered comparison that makes the leftmost min-tau interior integer maximize the logarithmic score, and selected-witness offset bounds of the form max(64, ceil of half the square of the log).</p>
+<p>Program Definition of Done for this track is <strong class="ok">met at M5</strong>: cold-checkout build and smoke pass; core path has zero <code>sorry</code>; the only core <code>axiom</code> is the labeled audit premise that prime squares have tau equal to three; finite certificates enter as named hypothesis bundles with pinned ids and artifact hashes; the public status page does not rewrite <code>PROOF.md</code>.</p>
+<p>Lean never selects primes and never feeds the generator.</p>
 </div>
 
-<h2>Technical Status</h2>
-
+<h2>Milestone map</h2>
 <table>
-<tr><th>Item</th><th>Status</th><th>Notes</th></tr>
-<tr><td>M0 Inventory</td><td class="ok">Closed</td><td><code>SORRY_AXIOM_INVENTORY.md</code> living map.</td></tr>
-<tr><td>M1 Basic tau characterization</td><td class="ok">Closed</td><td>D4.1; 0 <code>sorry</code> in <code>Basic.lean</code>.</td></tr>
-<tr><td>tau_eq_two_iff_only_divisors_are_1_and_n</td><td class="ok">Proved mirror</td><td>Both directions; PROOF.md.</td></tr>
-<tr><td>M2 ChamberReset / next-prime</td><td class="ok">Closed</td><td>Three replay axioms discharged; <code>weak_lfcl_ruleX_forces_next_prime</code> proved.</td></tr>
-<tr><td>M3 GWR Interior Maximizer</td><td class="ok">Closed</td><td><code>ordered_comparison</code> + <code>leftmost_min_tau_maximizer</code>; 0 <code>sorry</code>.</td></tr>
-<tr><td>Ordered Comparison Lemma</td><td class="ok">Proved mirror</td><td>Composites <code>a &lt; b</code>, <code>τ(a) ≤ τ(b)</code> ⇒ <code>F(a) &gt; F(b)</code>.</td></tr>
-<tr><td>Later integers</td><td class="ok">Proved mirror</td><td>Closed solely by Ordered Comparison.</td></tr>
-<tr><td>Earlier integers (general)</td><td class="open">Named hyp</td><td><code>EarlierSideClosed</code> packages Witness Threshold + SDA + <code>gwr_finite_base_v1</code>.</td></tr>
-<tr><td>Earlier integers (prime-square)</td><td class="ok">Discharged</td><td><code>leftmost_min_tau_maximizer_prime_square</code>.</td></tr>
-<tr><td>Smoke test</td><td class="ok">Loads + checks</td><td><code>lake env lean smoke-test.lean</code>.</td></tr>
+<tr><th>Milestone</th><th>Status</th><th>Notes</th></tr>
+<tr><td>M0 Inventory</td><td class="ok">Closed</td><td>Living inventory under <code>lean-4/</code>.</td></tr>
+<tr><td>M1 Basic tau</td><td class="ok">Closed</td><td>D4.1; 0 <code>sorry</code>.</td></tr>
+<tr><td>M2 ChamberReset / next-prime</td><td class="ok">Closed</td><td>Replay axioms discharged; weak L_FCL path.</td></tr>
+<tr><td>M3 GWR maximizer</td><td class="ok">Closed</td><td>Ordered Comparison + maximizer packaging.</td></tr>
 <tr><td>M4 UBC / PSP</td><td class="ok">Closed</td><td>Non-vacuous <code>dynamicCutoff</code>; empty shell removed.</td></tr>
-<tr><td>prime_square_proximity_theorem</td><td class="ok">Proved assembly</td><td><code>r*r - p ≤ C(r*r)</code> under <code>SquareBranchCapacityContra</code>.</td></tr>
-<tr><td>universal_bounded_compression</td><td class="ok">Proved assembly</td><td><code>w - p ≤ C(q)</code> under base + residual + analytic packages.</td></tr>
-<tr><td>tau_prime_square_eq_three</td><td class="open">Audit premise</td><td>Placement axiom CL-003; labeled only; does not smuggle UBC/PSP.</td></tr>
-<tr><td>Program DoD (M5)</td><td class="open">Not met</td><td>D1–D7 peer accept + packaging polish.</td></tr>
+<tr><td>M5 DoD exit</td><td class="ok">Closed</td><td>Finite-base bundles + D1–D7 recorded.</td></tr>
 </table>
 
-<h2>Remaining Work & Traceability</h2>
-<ul>
-<li><strong>M0–M4:</strong> <span class="ok">done</span>.</li>
-<li><strong>Next:</strong> M5 finite-base packaging + HTML/peer DoD exit (#59).</li>
-<li><strong>Traceability:</strong> UBC/PSP map to PROOF.md dynamic cutoff and finite certificates. Lean does not edit PROOF.md and does not select primes.</li>
-<li><strong>State separation:</strong> Downstream verification mirror only.</li>
-</ul>
+<h2>DoD gates (D1–D7)</h2>
+<table>
+<tr><th>Gate</th><th>Status</th><th>Evidence</th></tr>
+<tr><td>D1 Build + smoke</td><td class="ok">Pass</td><td><code>lake build</code>; <code>lake env lean smoke-test.lean</code></td></tr>
+<tr><td>D2 Zero core sorry / axiom allowlist</td><td class="ok">Pass</td><td>rg empty for sorry; one audit axiom listed</td></tr>
+<tr><td>D3 Honest axiom / finite-base policy</td><td class="ok">Pass</td><td><code>PGS/FiniteBases.lean</code> + inventory</td></tr>
+<tr><td>D4 Core stack coverage</td><td class="ok">Pass</td><td>M1–M4 mirrors; D4.4b non-vacuous</td></tr>
+<tr><td>D5 Traceability + HTML</td><td class="ok">Pass</td><td>This page + inventory</td></tr>
+<tr><td>D6 Contract</td><td class="ok">Pass</td><td>Audit-only; no PROOF.md status rewrite</td></tr>
+<tr><td>D7 Owner + peer accept</td><td class="ok">Pass</td><td><a href="../../../lean-4/peer/M5_DOD_ACCEPT.md">M5_DOD_ACCEPT.md</a></td></tr>
+</table>
 
-<footer style="margin-top: 3rem; font-size: 0.85em; color: #8b949e;">
-Updated: 2026-07-23 (M4 exit; program DoD not claimed)
+<h2>Finite bases (D4.6)</h2>
+<p>Lean packages the three certified premises. It does not re-run the exhaustions.</p>
+<table>
+<tr><th>Certificate id</th><th>Lean package</th><th>Range / content</th><th>Path</th></tr>
+<tr><td><code>gwr_finite_base_v1</code></td><td><code>GwrFiniteBaseV1</code></td><td><code>p &lt; 5_000_000_001</code> ⇒ earlier side closed</td><td><code>docs/proof-enhancements/certificates/gwr_finite_base_v1.json</code></td></tr>
+<tr><td><code>bounded_compression_base_v1</code></td><td><code>BoundedCompressionBaseV1</code></td><td><code>q &lt; 8_886_111</code> ⇒ <code>w−p ≤ 60</code></td><td><code>docs/proof-enhancements/certificates/bounded_compression_base_v1.json</code></td></tr>
+<tr><td><code>residual_k128_v1</code></td><td><code>ResidualK128Premise</code></td><td>K=128 residual first-d4 elimination token</td><td><code>docs/proof-enhancements/certificates/residual_k128_v1.json</code></td></tr>
+</table>
+<p>Unified carrier: <code>PGS.FiniteBases.FiniteBaseBundle</code>. UBC convenience: <code>universal_bounded_compression_of_bundle</code>.</p>
+
+<h2>Core theorem map (traceability)</h2>
+<table>
+<tr><th>PROOF.md block</th><th>Lean identifier</th><th>Status label</th></tr>
+<tr><td>tau / prime characterization</td><td><code>PGS.tau_eq_two_iff_only_divisors_are_1_and_n</code></td><td>proved mirror</td></tr>
+<tr><td>Direct next-prime / weak L_FCL</td><td><code>PGS.ChamberReset.weak_lfcl_ruleX_forces_next_prime</code></td><td>proved mirror under hyps</td></tr>
+<tr><td>Ordered Comparison</td><td><code>PGS.GWR.ordered_comparison</code></td><td>proved mirror</td></tr>
+<tr><td>Interior Maximizer</td><td><code>PGS.GWR.leftmost_min_tau_maximizer</code></td><td>proved mirror under <code>EarlierSideClosed</code></td></tr>
+<tr><td>Prime-Square Proximity</td><td><code>PGS.BoundedCompression.prime_square_proximity_theorem</code></td><td>proved assembly under capacity package</td></tr>
+<tr><td>Universal bounded compression</td><td><code>PGS.BoundedCompression.universal_bounded_compression</code></td><td>proved assembly under finite bases</td></tr>
+<tr><td>Near-root exclusion</td><td><code>PGS.ChamberReset.near_root_exclusion_bound</code></td><td>proved mirror (supporting)</td></tr>
+<tr><td>Bertrand (CL-001)</td><td><code>PGS.Placement.bertrand_postulate</code></td><td>proved mirror (Mathlib)</td></tr>
+<tr><td>Prime-square tau=3 (CL-003)</td><td><code>PGS.Placement.tau_prime_square_eq_three</code></td><td>audit premise (axiom)</td></tr>
+</table>
+
+<h2>How to verify</h2>
+<pre><code>cd lean-4
+lake build
+lake env lean smoke-test.lean
+rg 'sorry' PGS/*.lean
+rg -n '^\s*axiom ' PGS/*.lean
+</code></pre>
+
+<footer>
+Updated: 2026-07-23 — M5 program DoD exit recorded. Lean does not replace PROOF.md.
 </footer>
 
 </body>

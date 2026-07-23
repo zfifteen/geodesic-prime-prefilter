@@ -26,10 +26,11 @@ import Mathlib.Algebra.Order.Floor.Semiring
 import Mathlib.Tactic
 import PGS.Basic
 import PGS.GWR
+import PGS.FiniteBases
 
 namespace PGS.BoundedCompression
 
-open Real PGS PGS.GWR
+open Real PGS PGS.GWR PGS.FiniteBases
 
 /-! ## Dynamic cutoff `C(n)` (PROOF.md)
 
@@ -85,43 +86,17 @@ theorem full_row_activation {d C m : ℕ}
   have : 2 * m ≤ C := le_trans h2m h2M
   omega
 
-/-! ## Named finite-base hypothesis packages (PROOF.md certificates)
+/-! ## Named finite-base packages (re-export from `PGS.FiniteBases`)
 
-These are **finite-base hypotheses** / **analytic premise packages**, not silent
-smuggling of the headline bound. Lean does not re-prove the exhaustions.
+Canonical definitions live in `PGS.FiniteBases` (M5 / D4.6). Re-exported here
+so M4 call sites stay stable.
 -/
 
-/--
-`bounded_compression_base_v1` range: `q < ceil(exp(16)) = 8_886_111`.
-
-Certificate: `docs/proof-enhancements/certificates/bounded_compression_base_v1.json`
--/
-def boundedCompressionQMax : ℕ := 8886111
-
-/--
-Finite premise package: on consecutive-prime gaps with selected witness `w`
-and `q < 8_886_111`, the offset satisfies `w − p ≤ 60` (PROOF.md finite base;
-exhaustive certificate `bounded_compression_base_v1`).
--/
-def BoundedCompressionBaseV1 (p q w : ℕ) : Prop :=
-  q < boundedCompressionQMax → w - p ≤ 60
-
-/--
-Finite premise package `gwr_finite_base_v1`: earlier-integer GWR closure on the
-certified preceding-prime window (PROOF.md). Used as a DAG premise for UBC
-branch assembly, not as a classical search gate.
--/
-def GwrFiniteBaseV1 (p q w : ℕ) : Prop :=
-  p < 5000000001 → EarlierSideClosed p q w
-
-/-- Marker Prop for residual k128 certificate content (external finite catalog). -/
-def ResidualK128V1 : Prop := True
-
-/-- Token carrying the residual-k128 certificate as an assumed premise. -/
-structure ResidualK128Premise where
-  /-- Residual catalog eliminates listed odd-adjacent high-τ witness branches
-      on the certified windows (PROOF.md Residual K=128 table). -/
-  eliminates : ResidualK128V1 := trivial
+abbrev boundedCompressionQMax : ℕ := FiniteBases.boundedCompressionQMax
+abbrev BoundedCompressionBaseV1 := FiniteBases.BoundedCompressionBaseV1
+abbrev GwrFiniteBaseV1 := FiniteBases.GwrFiniteBaseV1
+abbrev ResidualK128Premise := FiniteBases.ResidualK128Premise
+abbrev FiniteBaseBundle := FiniteBases.FiniteBaseBundle
 
 /--
 Square-branch capacity contradiction (PROOF.md Corollary 4c.3 packaging).
@@ -229,6 +204,20 @@ theorem universal_bounded_compression
   by_cases hq : q < boundedCompressionQMax
   · exact ubc_of_finite_base hq1 hbase hq
   · exact hanalytic hq
+
+/--
+UBC assembled from a single `FiniteBaseBundle` (M5 packaging convenience).
+-/
+theorem universal_bounded_compression_of_bundle
+    {p q w : ℕ}
+    (hq1 : 1 < q)
+    (hpq : p < q)
+    (hw : IsLeftmostMinTau p q w)
+    (bundle : FiniteBaseBundle p q w)
+    (hanalytic : ¬ q < boundedCompressionQMax → AnalyticUBCClosure p q w hq1) :
+    w - p ≤ dynamicCutoff q hq1 :=
+  universal_bounded_compression hq1 hpq hw bundle.boundedCompression bundle.gwr
+    bundle.residual hanalytic
 
 /--
 Monotonicity of the log-half-square ceil for `1 < a ≤ b`.
