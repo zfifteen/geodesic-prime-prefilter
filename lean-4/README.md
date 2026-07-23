@@ -1,8 +1,8 @@
 # PGS Lean 4 Formalization
 
-**✅ Status: Build green and smoke test passing (verified 2026-07-20).**
+**✅ Status: Program DoD met (M0–M5, 2026-07-23). Build green and smoke test passing.**
 
-`lake build` succeeds across all 3070 modules; `lake env lean smoke-test.lean` passes. M1 (Basic.lean tau characterization) is closed with 0 `sorry`. Mathlib `v4.30.0` is active and the vendored tree is clean (was corrupted 2026-07-20, restored).
+`lake build` succeeds; `lake env lean smoke-test.lean` passes. Core path has 0 `sorry`. Finite bases live in `PGS/FiniteBases.lean`. Peer accept: `peer/M5_DOD_ACCEPT.md`. Mathlib `v4.30.0` pin.
 
 This directory contains the machine-checked Lean 4 formalization of the core Prime Gap Structure (PGS) theorems from `PROOF.md`.
 
@@ -22,7 +22,9 @@ This is a **downstream verification and audit layer only**.
 - `PGS/NextPrime.lean`: weak L_FCL exports; **L5 closed** (weak_lfcl_ruleX_forces_next_prime proved as Lean mirror under hypotheses)
 - `PGS/GWR.lean`. **M3 closed** — Ordered Comparison + Interior Maximizer (`leftmost_min_tau_maximizer`); earlier side named hyp / prime-square case discharged
 - `PGS/BoundedCompression.lean`. **M4 closed** — non-vacuous `dynamicCutoff`; UBC + Prime-Square Proximity under named finite-base / capacity premises (empty shell removed)
+- `PGS/FiniteBases.lean`. **M5 closed** — certificate-aligned finite-base hypothesis bundles (`FiniteBaseBundle`)
 - `smoke-test.lean`. Automated verification that the library loads and basic defs work
+- `peer/M5_DOD_ACCEPT.md`. Program D1–D7 peer accept
 - Full contract and plan documents
 - [`PLACEMENT_FORMALIZATION_ROADMAP.md`](PLACEMENT_FORMALIZATION_ROADMAP.md), closure-order DAG for RH-080/081 ([#49](https://github.com/zfifteen/prime-gap-structure/issues/49))
 
