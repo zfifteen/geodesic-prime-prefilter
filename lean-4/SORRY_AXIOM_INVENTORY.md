@@ -1,6 +1,6 @@
 # Lean 4 sorry / axiom inventory
 
-**As of:** 2026-07-23 (M3 closed on `main`, merge `1cfb5e5e` / PR #60)  
+**As of:** 2026-07-23 (M4 closed on branch `lean/m4-ubc-psp`)  
 **Command:** `rg -n 'sorry|axiom ' lean-4/PGS/*.lean`  
 **DoD:** `DEFINITION_OF_DONE.md`
 
@@ -10,66 +10,50 @@
 | --- | --- | --- |
 | `sorry` in Basic | **0** | M1 **closed** |
 | `axiom` in ChamberReset | **0** | M2 **closed** |
-| `sorry` / coverage gap in GWR | **0** (module implemented) | M3 **closed** |
-| `axiom` in Placement | **1** (`tau_prime_square_eq_three`) | M4 (or earlier if needed) |
-| PSP empty shell | `prime_square_proximity_theorem` | M4 (fails D4.4b) |
+| `sorry` in GWR | **0** | M3 **closed** |
+| empty-shell PSP | **removed** | M4 **closed** |
+| `axiom` in Placement | **1** (`tau_prime_square_eq_three`) | audit premise (D3.2); not a UBC/PSP smuggle |
 
 ## Basic.lean
 
-| Item | Notes | Target |
-| --- | --- | --- |
-| `three_distinct_divisors_imply_tau_ge_three` | **proved** (core List cardinality) | M1 done |
-| `tau_eq_two_iff_only_divisors_are_1_and_n` | **proved** (both directions) | M1 done |
-| `tau_gt_two_iff_has_proper_divisor` | **proved** (classical not-forall + counting) | M1 done |
-
-Build: `cd lean-4 && lake build PGS.Basic` succeeds; `rg sorry PGS/Basic.lean` empty.
-
-D4.1 (tau / DNI coordinates characterization via `tau = 2`) is closed on the Basic path.
+M1 closed: tau characterization path fully proved. D4.1 closed.
 
 ## ChamberReset.lean
 
-| Item | Notes | Target |
-| --- | --- | --- |
-| `replay_some_under_hyps` | **proved** (theorem, 0 axioms) | M2 closed |
-| `replay_cert_eq_hyps` | **proved** (theorem, 0 axioms) | M2 closed |
-| `replay_cert_demoted` | **proved** (theorem, 0 axioms) | M2 closed |
-| supporting walk / carrier lemmas | **proved** | M2 support |
-| L5 `weak_lfcl_ruleX_forces_next_prime` | **proved** | M2 closed |
-| PSP theorem body | `prime_square_proximity_theorem` | **Empty shell** — fails D4.4b | M4 |
-
-Build: `cd lean-4 && lake build PGS.ChamberReset` succeeds with 0 errors.
+M2 closed: replay axioms discharged. Empty-shell `prime_square_proximity_theorem` **removed**; non-vacuous PSP lives in `PGS/BoundedCompression.lean`. `near_root_exclusion_bound` remains proved geometric support for the square-branch spine.
 
 ## GWR.lean
 
+M3 closed: `ordered_comparison` + `leftmost_min_tau_maximizer` (earlier side named hyp / square case discharged).
+
+## BoundedCompression.lean (M4)
+
 | Item | Notes | Target |
 | --- | --- | --- |
-| `ordered_comparison` | **proved** (PROOF.md Ordered Comparison Lemma) | M3 done |
-| `later_integers_smaller_F` | **proved** (later side via OC) | M3 done |
-| `leftmost_min_tau_maximizer` | **proved** under `EarlierSideClosed` hyp | M3 done |
-| `leftmost_min_tau_maximizer_prime_square` | **proved** (earlier side discharged for τ(w)=3) | M3 done |
-| `prime_square_earlier_smaller_F` | **proved** | M3 support |
-| `interior_composite_of_tau_ne_two` | **proved** | M3 support |
+| `dynamicCutoff` | `max(64, ⌈½ (log n)²⌉)` — non-vacuous C(n) | M4 done |
+| `full_row_activation` | algebraic Step A: `d > C`, `m ≤ ⌊C/2⌋` ⇒ `2m < d` | M4 done |
+| `two_mul_halfCutoff_le` | `2·⌊C/2⌋ ≤ C` | M4 done |
+| `prime_square_proximity_theorem` | `r*r - p ≤ C(r*r)` under `SquareBranchCapacityContra` | M4 done (D4.4b) |
+| `universal_bounded_compression` | `w - p ≤ C(q)` under base + residual + analytic packages | M4 done |
+| `ubc_of_finite_base` | `q < 8_886_111` ⇒ ≤60 ≤ C(q) from `BoundedCompressionBaseV1` | M4 done |
+| `ubc_square_from_psp` | PSP + mono lifts square branch to `C(q)` | M4 done |
+| `dynamicCutoff_mono` | cutoff monotone for `1 < a ≤ b` | M4 support |
+| Named hyps | `BoundedCompressionBaseV1`, `GwrFiniteBaseV1`, `ResidualK128Premise`, `SquareBranchCapacityContra`, `AnalyticUBCClosure` | D3.2 / D4.6 packaging |
 
-**Honesty note (D3 / finite bases):** The general earlier-integer side of PROOF.md
-(Witness Threshold + Short Divisor-Average + `gwr_finite_base_v1`) is packaged as
-the named hypothesis `EarlierSideClosed`. That is an explicit premise, not a
-hidden axiom named like a theorem. The prime-square earlier case is fully
-discharged. D4.3 (Ordered Comparison non-`sorry`; maximizer formalized) is closed.
-
-Build: `cd lean-4 && lake build PGS.GWR` succeeds; `rg sorry PGS/GWR.lean` empty.
+**Honesty:** Finite bases and Corollary 4c.3 capacity discharge are **named premises** matching PROOF.md certificates; Lean does not re-run exhaustions or `audit_square_branches.py`. Bound shape is concrete `C(n)`, not `∃ C, dist ≤ C := dist`.
 
 ## Placement.lean
 
-| Line (approx) | Item | Notes | Target |
-| --- | --- | --- | --- |
-| ~111 | `axiom tau_prime_square_eq_three` | prime-square divisor count; audit-style premise under D3 | M4 |
+| Item | Notes | Target |
+| --- | --- | --- |
+| `axiom tau_prime_square_eq_three` | CL-003 classical import; **audit premise only** (D3.2) | stays labeled; does not smuggle UBC/PSP |
 
 ## NextPrime.lean
 
-`weak_lfcl_sufficient_bound` fully proved and exported. All ChamberReset dependencies closed.
+`weak_lfcl_sufficient_bound` proved (M2).
 
 ## Update rule
 
 After each milestone PR/commit: re-run ripgrep, refresh this table, bump “As of”, note SHA if committed.
 
-*M3 CLOSED (2026-07-23). GWR Ordered Comparison + maximizer mirror in place; general earlier side named hyp; square case discharged.*
+*M4 CLOSED (2026-07-23). Non-vacuous UBC + PSP under named finite/analytic premises; empty shell removed.*
