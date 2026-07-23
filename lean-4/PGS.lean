@@ -9,6 +9,7 @@ import PGS.ChamberReset
 import PGS.GWR
 import PGS.NextPrime
 import PGS.Placement
+import PGS.BoundedCompression
 
 /-!
 # Prime Gap Structure (PGS) Formalization Root
