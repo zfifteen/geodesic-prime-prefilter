@@ -120,10 +120,10 @@ Milestones are **implementation** exits, not new theorems.
 | Location | Obligation |
 | --- | --- |
 | `PGS/Basic.lean` | **M1 CLOSED** — 0 `sorry` (tau characterization path proved, 2026-07-20). No entry here. |
-| `PGS/ChamberReset.lean` | axioms `replay_some_under_hyps`, `replay_cert_eq_hyps`, `replay_cert_demoted`; L5 path historically sorry-noted |
+| `PGS/ChamberReset.lean` | **M2 CLOSED** — 0 `sorry`, 0 `axiom` (replay axioms discharged into proved theorems, commit `a96cb3e7`). |
 | `PGS/Placement.lean` | axiom `tau_prime_square_eq_three` |
 | `PGS/GWR.lean` | Phase 3 placeholder (coverage gap D4.3) |
-| `PGS/NextPrime.lean` | exports present; depends on ChamberReset discharge |
+| `PGS/NextPrime.lean` | **M2 CLOSED** — `weak_lfcl_sufficient_bound` fully proved and exported. |
 
 Exact line map: `lean-4/SORRY_AXIOM_INVENTORY.md` (maintained each milestone).
 
