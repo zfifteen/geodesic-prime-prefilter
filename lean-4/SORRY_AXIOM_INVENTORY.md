@@ -1,17 +1,17 @@
 # Lean 4 sorry / axiom inventory
 
-**As of:** 2026-07-18 (Hermes owner, M2 partial — foldl unres + resolved-head)  
+**As of:** 2026-07-23 (commit `a96cb3e7`, M2 closed)  
 **Command:** `rg -n 'sorry|axiom ' lean-4/PGS/*.lean`  
 **DoD:** `DEFINITION_OF_DONE.md`
 
 ## Summary
 
-| Kind | Count (approx) | Blocks milestone |
+| Kind | Count | Blocks milestone |
 | --- | --- | --- |
 | `sorry` in Basic | **0** | M1 **closed** |
-| `axiom` in ChamberReset | **3** (unchanged count) | M2 in progress |
-| proved M2 foldl walk lemmas | several | support only; axioms remain |
-| `axiom` in Placement | 1 | M4 (or earlier if GWR needs it) |
+| `axiom` in ChamberReset | **0** | M2 **closed** |
+| proved M2 walk & replay theorems | **all** | M2 closed (commit `a96cb3e7`) |
+| `axiom` in Placement | **1** (`tau_prime_square_eq_three`) | M4 (or earlier if GWR needs it) |
 | GWR coverage gap | module placeholder | M3 |
 
 ## Basic.lean
@@ -32,9 +32,14 @@ D4.1 (tau / DNI coordinates characterization via `tau = 2`) is closed on the Bas
 
 | Item | Notes | Target |
 | --- | --- | --- |
-| `axiom replay_some_under_hyps` | still axiom; residual = threat/post → `isSome` | M2 |
-| `axiom replay_cert_eq_hyps` | still axiom; needs resolved list shape | M2 |
-| `axiom replay_cert_demoted` | still axiom; sig fields from walk record | M2 |
+| `replay_some_under_hyps` | **proved** (theorem, 0 axioms) | M2 closed |
+| `replay_cert_eq_hyps` | **proved** (theorem, 0 axioms) | M2 closed |
+| `replay_cert_demoted` | **proved** (theorem, 0 axioms) | M2 closed |
+| `carrier_none_means_no_composite` | **proved** (interior no-composite invariant) | M2 support |
+| `cOff_offset_le` | **proved** (carrier offset bound) | M2 support |
+| `carrier_min_tau_interior` | **proved** (leftmost minimum τ invariant) | M2 support |
+| `threat_none_under_hyps` | **proved** (post-lock threat search empty) | M2 support |
+| `resolved_list_singleton` | **proved** (singleton resolved survivor) | M2 support |
 | `getCount` via `getD` + `getCount_map_of_lt` | **proved** | M2 support |
 | `walkStep` / `initWalk` | named fold step (induction surface) | M2 support |
 | `unres_zero_of_range_lt` | **proved** foldl unres=0 for `k < gap` | M2 support |
@@ -46,11 +51,9 @@ D4.1 (tau / DNI coordinates characterization via `tau = 2`) is closed on the Bas
 | `wheelOpen_of_tau_eq_two` | **proved** | M2 support |
 | PSP theorem body | `prime_square_proximity_theorem` | **Empty shell** — fails D4.4b | M4 |
 
-L5 `weak_lfcl_ruleX_forces_next_prime` remains a D3.4 packaging wrapper around the three replay axioms.
+L5 `weak_lfcl_ruleX_forces_next_prime` is fully closed without `sorry` or `axiom` placeholders.
 
-**Honest residual for isSome:** walk proves the resolved survivor is recorded at gap with `unresBefore=0`. Closing `replay_some_under_hyps` still needs (1) `threatOff = none` under min-d carrier invariant, (2) post-filter `resolved` non-empty, (3) optional `0 < gap` from next-prime packaging.
-
-Build: `cd lean-4 && lake build PGS.ChamberReset` succeeds. Smoke + `#eval` replay on p=11/gap=2 and p=73/gap=6 return expected certs.
+Build: `cd lean-4 && lake build PGS.ChamberReset` succeeds with 0 errors.
 
 ## Placement.lean
 
@@ -64,10 +67,10 @@ Placeholder Phase 3 — **coverage gap** for Interior Maximizer (D4.3), not a si
 
 ## NextPrime.lean
 
-Depends on ChamberReset discharge; re-scan after M2 axioms become theorems.
+`weak_lfcl_sufficient_bound` fully proved and exported. All ChamberReset dependencies closed.
 
 ## Update rule
 
 After each milestone PR/commit: re-run ripgrep, refresh this table, bump “As of”, note SHA if committed.
 
-*Hermes M2 partial: foldl unres + resolved-head proved; 3 replay axioms remain (threat/post residual).*
+*M2 CLOSED (2026-07-23, commit `a96cb3e7`). All 3 replay axioms in ChamberReset discharged into proved theorems.*
