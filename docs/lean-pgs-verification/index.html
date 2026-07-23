@@ -31,37 +31,39 @@ th { background: #161b22; }
 
 <div class="plain-english">
 <h2>Summary</h2>
-<p>The divisor-count characterization is now machine-checked in Lean: for n greater than 1, tau(n) equals 2 exactly when the only positive divisors are 1 and n. That is the Basic-module half of the PROOF.md tau / prime characterization. The three former <code>sorry</code> obligations in <code>PGS/Basic.lean</code> are closed with ordinary List counting proofs (no Mathlib, no new axioms).</p>
-<p>Program Definition of Done is <strong>not</strong> met. ChamberReset still packages three replay axioms, GWR is still a coverage gap, and the prime-square proximity statement is still an empty existential shell under DoD D4.4b. Next cut is M2 (discharge or honestly reduce ChamberReset replay axioms).</p>
+<p>Three core-stack milestones are closed in Lean. The divisor-count characterization (tau equals 2 exactly when the only positive divisors are 1 and n) is machine-checked. ChamberReset replay axioms are discharged into proved theorems, and the weak L_FCL next-prime path is a real theorem under its hypotheses. The Ordered Comparison Lemma and the Interior Maximizer packaging live in <code>PGS/GWR.lean</code> with zero <code>sorry</code>.</p>
+<p>Program Definition of Done is still <strong>not</strong> met. Universal Bounded Compression and Prime-Square Proximity remain open (PSP is still an empty existential shell under DoD D4.4b). The general earlier-integer side of the maximizer is an explicit named hypothesis matching PROOF.md finite-base packaging; the prime-square earlier case is fully discharged. Next cut is M4 (UBC + non-vacuous PSP).</p>
 </div>
 
 <h2>Technical Status</h2>
 
 <table>
 <tr><th>Item</th><th>Status</th><th>Notes</th></tr>
-<tr><td>M1 Basic tau characterization</td><td class="ok">Closed</td><td><code>lake build PGS.Basic</code> green; <code>rg sorry PGS/Basic.lean</code> empty. D4.1 Basic path.</td></tr>
-<tr><td>tau_eq_two_iff_only_divisors_are_1_and_n</td><td class="ok">Proved mirror</td><td>Both directions; PROOF.md:80-81.</td></tr>
-<tr><td>three_distinct_divisors_imply_tau_ge_three</td><td class="ok">Proved mirror</td><td>Core List length ≥ 3 from three distinct members.</td></tr>
-<tr><td>tau_gt_two_iff_has_proper_divisor</td><td class="ok">Proved mirror</td><td>Contrapositive form of the characterization.</td></tr>
-<tr><td>Self-contained pure-Lean Basic build</td><td class="ok">Compiles</td><td>No Mathlib import in Basic; core Nodup/erase lemmas only.</td></tr>
+<tr><td>M0 Inventory</td><td class="ok">Closed</td><td><code>SORRY_AXIOM_INVENTORY.md</code> living map.</td></tr>
+<tr><td>M1 Basic tau characterization</td><td class="ok">Closed</td><td>D4.1; 0 <code>sorry</code> in <code>Basic.lean</code>.</td></tr>
+<tr><td>tau_eq_two_iff_only_divisors_are_1_and_n</td><td class="ok">Proved mirror</td><td>Both directions; PROOF.md.</td></tr>
+<tr><td>M2 ChamberReset / next-prime</td><td class="ok">Closed</td><td>Three replay axioms discharged; <code>weak_lfcl_ruleX_forces_next_prime</code> proved.</td></tr>
+<tr><td>M3 GWR Interior Maximizer</td><td class="ok">Closed</td><td><code>ordered_comparison</code> + <code>leftmost_min_tau_maximizer</code>; 0 <code>sorry</code>.</td></tr>
+<tr><td>Ordered Comparison Lemma</td><td class="ok">Proved mirror</td><td>Composites <code>a &lt; b</code>, <code>τ(a) ≤ τ(b)</code> ⇒ <code>F(a) &gt; F(b)</code>.</td></tr>
+<tr><td>Later integers</td><td class="ok">Proved mirror</td><td>Closed solely by Ordered Comparison.</td></tr>
+<tr><td>Earlier integers (general)</td><td class="open">Named hyp</td><td><code>EarlierSideClosed</code> packages Witness Threshold + SDA + <code>gwr_finite_base_v1</code>.</td></tr>
+<tr><td>Earlier integers (prime-square)</td><td class="ok">Discharged</td><td><code>leftmost_min_tau_maximizer_prime_square</code>.</td></tr>
 <tr><td>Smoke test</td><td class="ok">Loads + checks</td><td><code>lake env lean smoke-test.lean</code>.</td></tr>
-<tr><td>L5 / replaySelectionAtBound path (M2)</td><td class="open">Open</td><td>ChamberReset still has <code>replay_some_under_hyps</code>, <code>replay_cert_eq_hyps</code>, <code>replay_cert_demoted</code> axioms (D3.4 wrappers).</td></tr>
-<tr><td>GWR Interior Maximizer (M3)</td><td class="open">Coverage gap</td><td>Module placeholder; D4.3 not closed.</td></tr>
-<tr><td>UBC / PSP (M4)</td><td class="open">Empty shell fails D4.4b</td><td>PSP still <code>∃ C, dist ≤ C := ⟨dist, le_refl⟩</code> shape; not progress.</td></tr>
+<tr><td>UBC / PSP (M4)</td><td class="open">Empty shell fails D4.4b</td><td>PSP still <code>∃ C, dist ≤ C := ⟨dist, le_refl⟩</code>.</td></tr>
 <tr><td>Program DoD (M5)</td><td class="open">Not met</td><td>D1–D7 not jointly green.</td></tr>
 </table>
 
 <h2>Remaining Work & Traceability</h2>
 <ul>
-<li><strong>M1:</strong> <span class="ok">done</span> — Basic.lean 0 sorry.</li>
-<li><strong>Next:</strong> M2 ChamberReset / next-prime path axioms toward D4.2 under D3 policy.</li>
-<li><strong>Then:</strong> M3 GWR, M4 UBC/PSP non-vacuous, M5 packaging + peer accept.</li>
-<li><strong>Traceability:</strong> Direct mapping to PROOF.md lines 80-81 for tau characterization. Lean does not edit PROOF.md and does not select primes.</li>
+<li><strong>M0–M3:</strong> <span class="ok">done</span>.</li>
+<li><strong>Next:</strong> M4 UBC + non-vacuous PSP (D4.4 / D4.4b); keep <code>tau_prime_square_eq_three</code> labeled.</li>
+<li><strong>Then:</strong> M5 finite-base packaging + peer accept (D1–D7).</li>
+<li><strong>Traceability:</strong> GWR theorems map to PROOF.md Interior Maximizer and Ordered Comparison. Lean does not edit PROOF.md and does not select primes.</li>
 <li><strong>State separation:</strong> Downstream verification mirror only.</li>
 </ul>
 
 <footer style="margin-top: 3rem; font-size: 0.85em; color: #8b949e;">
-Updated: 2026-07-18T16:53Z (Hermes heartbeat; M1 exit; program DoD not claimed)
+Updated: 2026-07-23 (M3 exit; program DoD not claimed)
 </footer>
 
 </body>
