@@ -22,7 +22,7 @@
 | Exit milestone | M5 (#59) |
 | Status | **DONE** under D1–D7 |
 | Peer accept | `lean-4/peer/M5_DOD_ACCEPT.md` |
-| Merge SHA | fill at PR merge on `main` (branch work on `lean/m5-dod-exit`) |
+| Merge SHA | `3d5b74c7` (PR #62 merge on `main`) |
 | Date | 2026-07-23 |
 
 Further analytic discharge of named packages is **extension** (DoD D7.3), not a reopening of this pin unless hollow-shell or silent-axiom regressions reappear.

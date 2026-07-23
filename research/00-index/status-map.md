@@ -369,7 +369,7 @@ This is the authoritative planning artifact for the entire Lean translation trac
 - HTML status: `docs/lean-pgs-verification/index.html` (plain prose then technical tables).
 - Peer accept: `lean-4/peer/M5_DOD_ACCEPT.md` (D2.1, D2.3, D4.4b re-check; H1–H3 retired).
 - Continuity DONE pin: `research/00-index/continuity/notes/TOP_PRIORITY_lean_core_stack_2026-07-18.md` + `ACTIVE_TARGET.md`.
-- Parent #53 program complete when M5 merges; extensions under D7.3 optional.
+- Parent #53 **DONE** on main (merge `3d5b74c7` / PR #62); extensions under D7.3 optional.
 
 **Remaining milestones:** none for core-stack program DoD. Optional extensions: full analytic discharge of named packages, Mathlib proof of CL-003.
 
