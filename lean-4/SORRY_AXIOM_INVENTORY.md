@@ -1,6 +1,6 @@
 # Lean 4 sorry / axiom inventory
 
-**As of:** 2026-07-23 (M3 closed on branch `lean/m3-gwr-maximizer`)  
+**As of:** 2026-07-23 (M3 closed on `main`, merge `1cfb5e5e` / PR #60)  
 **Command:** `rg -n 'sorry|axiom ' lean-4/PGS/*.lean`  
 **DoD:** `DEFINITION_OF_DONE.md`
 
