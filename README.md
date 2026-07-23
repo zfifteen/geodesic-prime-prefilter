@@ -1,8 +1,10 @@
 # Prime Gap Structure
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![Last Updated](https://img.shields.io/badge/Last%20Updated-2026--07--20-brightgreen)
+![Last Updated](https://img.shields.io/badge/Last%20Updated-2026--07--23-brightgreen)
 ![Python](https://img.shields.io/badge/Python-3.11%2B-blue)
+![Lean 4](https://img.shields.io/badge/Lean%204-core%20stack%20DoD%20DONE-success)
+![Lean](https://img.shields.io/badge/lean--toolchain-v4.30.0-purple)
 
 ![Prime Gap Structure hero](visualizations/conceptual/prime-gap-structure-hero.jpg)
 
@@ -11,7 +13,7 @@ Prime Gap Structure demonstrates that the integers between consecutive primes fo
 
 Local theorems are formally proved and computationally validated. These theorems include the Gap Winner Rule (GWR), bounded compression at Cramér scale, the Prime-Square Proximity Theorem (proved 2026-07-05), and the No-Later-Simpler-Composite Theorem (zero violations through 10¹⁸). A reading path connecting these local results to analytic number theory (including the Riemann Hypothesis) is developed in `docs/rh/` but kept explicitly separate from the proved core.
 
-This repository supplies the proofs (`PROOF.md`), reference implementations, reproducible artifacts, and measured surfaces that make the structure independently verifiable.
+This repository supplies the proofs (`PROOF.md`), reference implementations, reproducible artifacts, and measured surfaces that make the structure independently verifiable. The same core stack also has a **completed Lean 4 machine-checked mirror** under `lean-4/` (program Definition of Done M0–M5, 2026-07-23): an independent audit layer that does not select primes and does not rewrite theorem status in `PROOF.md`.
 
 ---
 
@@ -137,7 +139,7 @@ These one-line definitions capture the central objects used throughout the repos
 
 These statements are proved from the arithmetic of divisor counts and the ordering inside gaps. They do not rely on probabilistic models or unproved global assumptions.
 
-See `PROOF.md` for the complete formal stack and supporting lemmas.
+See `PROOF.md` for the complete formal stack and supporting lemmas. For the independent Lean 4 machine-checked mirror of that stack (program DoD complete), see [§5](#5-machine-checked-verification-lean-4) and open `docs/lean-pgs-verification/index.html`.
 
 ---
 
@@ -176,37 +178,51 @@ Visualizations of the core objects live in `visualizations/`. Prefer the catalog
 
 ## 5. Machine-Checked Verification (Lean 4)
 
-In addition to the prose proofs in `PROOF.md` and large-scale computational validation, the project maintains a dedicated **Lean 4 formalization layer**. This serves as an independent, machine-checked audit of the core theorems.
+**Status: complete (program Definition of Done, M0–M5, 2026-07-23).**
 
-The Lean work is deliberately scoped as a **downstream verification layer only**. It translates and mechanically checks statements already established in `PROOF.md` rather than generating new results or serving as the primary reasoning surface. All formalization follows a strict **PGS-first** approach with explicit traceability back to the prose proofs.
+In addition to the prose proofs in `PROOF.md` and large-scale computational surfaces, the repository ships a finished **Lean 4 machine-checked mirror** of the core theorem stack. That layer is a **downstream audit only**: it mechanically checks statements already established in `PROOF.md`. It does not generate primes, feed the generator, or rewrite theorem status.
 
-**Current Status (as of July 2026)**
+| What you get | Where |
+| --- | --- |
+| Public status surface (plain English first) | [`docs/lean-pgs-verification/index.html`](docs/lean-pgs-verification/index.html) |
+| One-command mechanical DoD checks | `bash scripts/lean4-dod-check.sh` |
+| Peer D1–D7 accept record | [`lean-4/peer/M5_DOD_ACCEPT.md`](lean-4/peer/M5_DOD_ACCEPT.md) |
+| Living `sorry` / axiom inventory | [`lean-4/SORRY_AXIOM_INVENTORY.md`](lean-4/SORRY_AXIOM_INVENTORY.md) |
+| Parent program tracker (closed DONE) | [GitHub issue #53](https://github.com/zfifteen/prime-gap-structure/issues/53) |
 
-- Build is green and smoke tests pass.
-- **M0–M5 closed (program DoD)**: Machine-checked mirror of the core stack under named finite/analytic premises (parent tracker [#53](https://github.com/zfifteen/prime-gap-structure/issues/53); peer accept `lean-4/peer/M5_DOD_ACCEPT.md`).
-- **L5 closed**: Weak L_FCL / next-prime packaging verified under hypotheses.
-- Finite bases: `PGS/FiniteBases.lean` packages `gwr_finite_base_v1`, `bounded_compression_base_v1`, `residual_k128_v1` as hypothesis bundles with pinned certificate paths/hashes.
-- Status HTML: `docs/lean-pgs-verification/index.html`.
+### Core stack mirrored in Lean
 
-The effort is governed by an explicit **Verification Contract** that enforces:
+| PROOF.md block | Lean surface | Milestone |
+| --- | --- | --- |
+| tau / prime characterization (`τ = 2`) | `PGS/Basic.lean` | M1 |
+| Deterministic next-prime / weak L_FCL packaging | `PGS/ChamberReset.lean`, `PGS/NextPrime.lean` | M2 |
+| Ordered Comparison + Interior Maximizer (GWR) | `PGS/GWR.lean` | M3 |
+| Universal bounded compression + Prime-Square Proximity (non-vacuous cutoff `C(n)`) | `PGS/BoundedCompression.lean` | M4 |
+| Certified finite bases as named hypothesis bundles | `PGS/FiniteBases.lean` | M5 |
 
-- Strict separation between proved, measured, and audit artifacts
-- Mandatory traceability headers linking every definition and theorem back to `PROOF.md`
-- A clear **Definition of Done** with gates for build quality, zero `sorry` on core paths, and peer review
+Finite premises (`gwr_finite_base_v1`, `bounded_compression_base_v1`, `residual_k128_v1`) enter Lean as **named packages** with pinned certificate paths and hashes. Lean does not re-run those exhaustions. The only core-path `axiom` is the labeled audit premise `tau_prime_square_eq_three` (CL-003). Core `sorry` count: **zero**.
 
-**Key Files**
+### Verify the Lean library locally
 
-- `lean-4/README.md` -- Full status, build instructions, and roadmap
-- `lean-4/LEAN_PGS_VERIFICATION_CONTRACT.md` -- Governance and scope rules
-- `lean-4/PGS_LEAN_FORMALIZATION_PLAN.md` -- Phased development plan
-- `lean-4/DEFINITION_OF_DONE.md` -- Milestone gates and acceptance criteria
-- `lean-4/PGS/Basic.lean` -- Core `tau` definitions and closed M1 lemmas
-- `lean-4/PGS/GWR.lean` -- Ordered Comparison + Interior Maximizer (M3 closed)
-- `lean-4/PGS/BoundedCompression.lean` -- UBC + Prime-Square Proximity (M4 closed)
-- `lean-4/PGS/FiniteBases.lean` -- finite-base packages (M5 / D4.6)
-- `docs/lean-pgs-verification/index.html` -- public status surface
+```bash
+# Full mechanical DoD gate (build, smoke, sorry, axiom allowlist, empty-shell scan)
+bash scripts/lean4-dod-check.sh
 
-This formalization layer provides an additional layer of mechanical assurance for the deterministic structure claimed in the prime gap theory.
+# Or step by step
+cd lean-4
+lake build
+lake env lean smoke-test.lean
+```
+
+Toolchain pin: Lean / Mathlib **v4.30.0** (`lean-4/lean-toolchain`).
+
+### Governance and contracts
+
+- [`lean-4/LEAN_PGS_VERIFICATION_CONTRACT.md`](lean-4/LEAN_PGS_VERIFICATION_CONTRACT.md) — audit-only scope, PGS-first frame
+- [`lean-4/DEFINITION_OF_DONE.md`](lean-4/DEFINITION_OF_DONE.md) — D1–D7 gates (program exit recorded)
+- [`lean-4/README.md`](lean-4/README.md) — build notes and module map
+
+Further analytic discharge of named packages is optional **extension** work (DoD D7.3). It does not reopen the completed core-stack program unless hollow-shell or silent-axiom regressions reappear.
 
 ---
 
@@ -257,12 +273,14 @@ Every one of these paths grows from the same simple shift in perspective: stop t
 ## Repository Map
 
 - `src/`: Python package (install with `pip install -e ./src/python`)
-- `PROOF.md`: Formal proofs and theorem stack
+- `PROOF.md`: Formal proofs and theorem stack (authority for theorem status)
 - `docs/core/`: Foundational explanations (GWR, DNI, generative model, recursive walk, etc.)
 - `docs/rh/`: PGS-to-RH reading path and status
+- `docs/lean-pgs-verification/`: Public Lean 4 status HTML (core-stack DoD complete)
 - `research/`: Deep experiments (RSA engine, Mersenne generator, continuity notes, 00-index/)
 - `visualizations/`: Plot library + gallery (primary), explorers, historical dumps (router: `index.html`)
-- `lean-4/`: Lean 4 formalization layer (downstream machine-checked audit of core theorems)
+- `lean-4/`: **Completed** Lean 4 machine-checked mirror of the core stack (M0–M5 DoD)
+- `scripts/lean4-dod-check.sh`: One-command Lean build / smoke / inventory gates
 - `experiments/`, `scripts/`, `tests/`, `data/`: Supporting code, runs, and artifacts
 - `pgs-unsolved-problems/`: Open questions
 - `AGENTS.md`: Collaboration contract for agentic work
@@ -271,6 +289,8 @@ Every one of these paths grows from the same simple shift in perspective: stop t
 
 ## Reading Further
 
+- `docs/lean-pgs-verification/index.html`: Lean 4 status surface (start here for the formalization track)
+- `lean-4/peer/M5_DOD_ACCEPT.md`: Program DoD peer accept (D1–D7)
 - `research/00-index/continuity/START_HERE.md`: Continuity and resume entrypoint for future sessions
 - `research/00-index/README.md`: Maps the research corpus by chapter and status
 - `docs/RESULTS.md`: Measured results and surfaces
