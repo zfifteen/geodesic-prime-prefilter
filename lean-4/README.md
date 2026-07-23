@@ -20,7 +20,7 @@ This is a **downstream verification and audit layer only**.
 - `PGS.lean` (root) + `PGS/Basic.lean`, tau (pure List.range impl), E/F/Z placeholders
 - `PGS/ChamberReset.lean`. Rule X replay types; **L4 audit demotion proved**
 - `PGS/NextPrime.lean`: weak L_FCL exports; **L5 closed** (weak_lfcl_ruleX_forces_next_prime proved as Lean mirror under hypotheses)
-- `PGS/GWR.lean`. Phase 3 placeholder (**M3 gap** — not yet a real maximizer proof)
+- `PGS/GWR.lean`. **M3 closed** — Ordered Comparison + Interior Maximizer (`leftmost_min_tau_maximizer`); earlier side named hyp / prime-square case discharged
 - `smoke-test.lean`. Automated verification that the library loads and basic defs work
 - Full contract and plan documents
 - [`PLACEMENT_FORMALIZATION_ROADMAP.md`](PLACEMENT_FORMALIZATION_ROADMAP.md), closure-order DAG for RH-080/081 ([#49](https://github.com/zfifteen/prime-gap-structure/issues/49))

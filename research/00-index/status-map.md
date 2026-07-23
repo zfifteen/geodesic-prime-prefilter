@@ -348,17 +348,24 @@ This is the authoritative planning artifact for the entire Lean translation trac
 
 **Build breakage fixed (2026-07-20):** `lean-4/.lake/packages/mathlib` had been silently corrupted (113 vendored files with mangled Unicode; `Mathlib/Tactic/Linter/TextBased/UnicodeLinter.lean` failed to parse, breaking the whole `lake build`). Root cause was local checkout corruption, **not** a toolchain/Mathlib version skew (both correctly pinned to `v4.30.0`). Fix: `git -C .lake/packages/mathlib checkout -- .` + clean rebuild. `lake build` now green across all 3070 modules; `lake env lean smoke-test.lean` passes.
 
+**M3 (GWR maximizer, D4.3): CLOSED (2026-07-23).** `PGS/GWR.lean` replaces the Phase-3 placeholder:
+- `ordered_comparison` — proved mirror of PROOF.md Ordered Comparison Lemma (0 `sorry`).
+- `later_integers_smaller_F` / `leftmost_min_tau_maximizes_on_right` — later side closed by Ordered Comparison alone.
+- `leftmost_min_tau_maximizer` — unique F-maximizer under named hypothesis `EarlierSideClosed` (packages PROOF.md earlier-integer side + `gwr_finite_base_v1`; not a silent axiom).
+- `leftmost_min_tau_maximizer_prime_square` / `prime_square_earlier_smaller_F` — prime-square earlier case fully discharged.
+- `interior_composite_of_tau_ne_two` — composite interior from next-prime tau-scan hypotheses.
+- Build: `lake build` + smoke test green; `rg sorry PGS/GWR.lean` empty.
+
 **Remaining milestones:**
-- M3 (GWR maximizer, D4.3): Not started — `PGS/GWR.lean` is a placeholder.
 - M4 (UBC + PSP, D4.4–D4.5): 1 axiom remains (`tau_prime_square_eq_three` in `Placement.lean`). Real theorems needed to replace the reflexivity/empty-shell stubs.
-- M5 (finite-base packaging + HTML status + D1–D7 green): Not started.
+- M5 (finite-base packaging + HTML status + D1–D7 green): Not started. HTML status surface refreshed through M3.
 
 **How to verify:**
 ```bash
 cd lean-4
 lake build
 lake env lean smoke-test.lean
-rg 'sorry' PGS/Basic.lean   # expect: no matches
+rg 'sorry' PGS/Basic.lean PGS/GWR.lean   # expect: no matches
 rg -n '^\s*axiom ' PGS/ChamberReset.lean   # expect: no matches
 rg -n '^\s*axiom ' PGS/Placement.lean   # expect: tau_prime_square_eq_three only
 ```
