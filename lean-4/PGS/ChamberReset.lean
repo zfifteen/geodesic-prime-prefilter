@@ -1103,21 +1103,19 @@ theorem near_root_exclusion_bound (r m M ell h d : Nat)
 
   omega
 
-/--
-**Prime-Square Proximity Theorem.**
-Because the nonsymmetric near-root exclusion bound mathematically prevents the
-perfect tiling of M-rough composite rows, the modulus-link structure must
-intersect. Therefore, the distance from the left boundary prime `p` to the
-first interior prime square `r^2` is deterministically bounded.
+/-!
+## Prime-Square Proximity (moved to `PGS.BoundedCompression`)
+
+The empty-shell form `∃ C, r^2 - p ≤ C := ⟨r^2 - p, le_refl⟩` failed DoD D4.4b
+and has been replaced by the non-vacuous dynamic-cutoff statement in
+`PGS.BoundedCompression.prime_square_proximity_theorem`:
+
+```
+r * r - p ≤ max(64, ⌈½ (log(r*r))²⌉)
+```
+
+under named finite/analytic premises. `near_root_exclusion_bound` above remains
+the proved geometric lemma consumed by that spine (PROOF.md).
 -/
-theorem prime_square_proximity_theorem (p q r : Nat)
-    (hp : tau p = 2)
-    (hq : tau q = 2)
-    (hnext : ∀ n, p < n → n < q → tau n ≠ 2)
-    (h_rsq_interior : p < r^2 ∧ r^2 < q)
-    (h_rsq : tau (r^2) = 3)
-    (h_leftmost : ∀ n, p < n → n < r^2 → tau n ≥ 4) :
-    ∃ C, r^2 - p ≤ C := by
-  exact ⟨r^2 - p, Nat.le_refl _⟩
 
 end PGS.ChamberReset

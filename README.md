@@ -183,10 +183,10 @@ The Lean work is deliberately scoped as a **downstream verification layer only**
 **Current Status (as of July 2026)**
 
 - Build is green and smoke tests pass.
-- **M0–M3 closed**: Divisor-count characterization (`tau(n) = 2`), ChamberReset replay / weak L_FCL next-prime path, and GWR Ordered Comparison + Interior Maximizer mirror (`leftmost_min_tau_maximizer`) are machine-checked with zero `sorry` on those paths (M3 merge `1cfb5e5e` / PR #60; parent tracker [#53](https://github.com/zfifteen/prime-gap-structure/issues/53)).
+- **M0–M4 closed**: Tau characterization, ChamberReset / weak L_FCL next-prime, GWR Ordered Comparison + maximizer packaging, and non-vacuous UBC + Prime-Square Proximity (`dynamicCutoff`, `PGS/BoundedCompression.lean`) are machine-checked mirrors under named finite/analytic premises (parent tracker [#53](https://github.com/zfifteen/prime-gap-structure/issues/53)).
 - **L5 closed**: Key components of the weak linear functional closure and next-prime forcing lemmas have been verified.
-- General earlier-integer side of the maximizer is an explicit named hypothesis (`EarlierSideClosed`); the prime-square earlier case is fully discharged.
-- **UBC + Prime-Square Proximity** (M4) and **finite-base packaging + DoD exit** (M5) remain open.
+- General earlier-integer maximizer side and square-branch capacity discharge remain explicit named hypotheses where PROOF.md uses finite certificates; empty-shell PSP is gone.
+- **Finite-base packaging polish + program DoD exit** (M5) remains open.
 
 The effort is governed by an explicit **Verification Contract** that enforces:
 
@@ -202,6 +202,7 @@ The effort is governed by an explicit **Verification Contract** that enforces:
 - `lean-4/DEFINITION_OF_DONE.md` -- Milestone gates and acceptance criteria
 - `lean-4/PGS/Basic.lean` -- Core `tau` definitions and closed M1 lemmas
 - `lean-4/PGS/GWR.lean` -- Ordered Comparison + Interior Maximizer (M3 closed)
+- `lean-4/PGS/BoundedCompression.lean` -- UBC + Prime-Square Proximity (M4 closed)
 
 This formalization layer provides an additional layer of mechanical assurance for the deterministic structure claimed in the prime gap theory.
 
