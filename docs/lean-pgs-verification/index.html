@@ -31,8 +31,8 @@ th { background: #161b22; }
 
 <div class="plain-english">
 <h2>Summary</h2>
-<p>Three core-stack milestones are closed in Lean. The divisor-count characterization (tau equals 2 exactly when the only positive divisors are 1 and n) is machine-checked. ChamberReset replay axioms are discharged into proved theorems, and the weak L_FCL next-prime path is a real theorem under its hypotheses. The Ordered Comparison Lemma and the Interior Maximizer packaging live in <code>PGS/GWR.lean</code> with zero <code>sorry</code>.</p>
-<p>Program Definition of Done is still <strong>not</strong> met. Universal Bounded Compression and Prime-Square Proximity remain open (PSP is still an empty existential shell under DoD D4.4b). The general earlier-integer side of the maximizer is an explicit named hypothesis matching PROOF.md finite-base packaging; the prime-square earlier case is fully discharged. Next cut is M4 (UBC + non-vacuous PSP).</p>
+<p>Four core-stack milestones are closed in Lean (M0–M4). Tau characterization, ChamberReset next-prime path, GWR Ordered Comparison / maximizer packaging, and non-vacuous Universal Bounded Compression plus Prime-Square Proximity live as machine-checked mirrors under named finite and analytic premises.</p>
+<p>Program Definition of Done is still <strong>not</strong> met: M5 finite-base packaging polish, full D1–D7 peer accept, and living inventory hygiene remain. The old PSP empty shell is gone; bounds use the concrete cutoff <code>C(n) = max(64, ceil(0.5 log(n)^2))</code>. Next cut is M5 (#59).</p>
 </div>
 
 <h2>Technical Status</h2>
@@ -49,21 +49,23 @@ th { background: #161b22; }
 <tr><td>Earlier integers (general)</td><td class="open">Named hyp</td><td><code>EarlierSideClosed</code> packages Witness Threshold + SDA + <code>gwr_finite_base_v1</code>.</td></tr>
 <tr><td>Earlier integers (prime-square)</td><td class="ok">Discharged</td><td><code>leftmost_min_tau_maximizer_prime_square</code>.</td></tr>
 <tr><td>Smoke test</td><td class="ok">Loads + checks</td><td><code>lake env lean smoke-test.lean</code>.</td></tr>
-<tr><td>UBC / PSP (M4)</td><td class="open">Empty shell fails D4.4b</td><td>PSP still <code>∃ C, dist ≤ C := ⟨dist, le_refl⟩</code>.</td></tr>
-<tr><td>Program DoD (M5)</td><td class="open">Not met</td><td>D1–D7 not jointly green.</td></tr>
+<tr><td>M4 UBC / PSP</td><td class="ok">Closed</td><td>Non-vacuous <code>dynamicCutoff</code>; empty shell removed.</td></tr>
+<tr><td>prime_square_proximity_theorem</td><td class="ok">Proved assembly</td><td><code>r*r - p ≤ C(r*r)</code> under <code>SquareBranchCapacityContra</code>.</td></tr>
+<tr><td>universal_bounded_compression</td><td class="ok">Proved assembly</td><td><code>w - p ≤ C(q)</code> under base + residual + analytic packages.</td></tr>
+<tr><td>tau_prime_square_eq_three</td><td class="open">Audit premise</td><td>Placement axiom CL-003; labeled only; does not smuggle UBC/PSP.</td></tr>
+<tr><td>Program DoD (M5)</td><td class="open">Not met</td><td>D1–D7 peer accept + packaging polish.</td></tr>
 </table>
 
 <h2>Remaining Work & Traceability</h2>
 <ul>
-<li><strong>M0–M3:</strong> <span class="ok">done</span>.</li>
-<li><strong>Next:</strong> M4 UBC + non-vacuous PSP (D4.4 / D4.4b); keep <code>tau_prime_square_eq_three</code> labeled.</li>
-<li><strong>Then:</strong> M5 finite-base packaging + peer accept (D1–D7).</li>
-<li><strong>Traceability:</strong> GWR theorems map to PROOF.md Interior Maximizer and Ordered Comparison. Lean does not edit PROOF.md and does not select primes.</li>
+<li><strong>M0–M4:</strong> <span class="ok">done</span>.</li>
+<li><strong>Next:</strong> M5 finite-base packaging + HTML/peer DoD exit (#59).</li>
+<li><strong>Traceability:</strong> UBC/PSP map to PROOF.md dynamic cutoff and finite certificates. Lean does not edit PROOF.md and does not select primes.</li>
 <li><strong>State separation:</strong> Downstream verification mirror only.</li>
 </ul>
 
 <footer style="margin-top: 3rem; font-size: 0.85em; color: #8b949e;">
-Updated: 2026-07-23 (M3 exit; program DoD not claimed)
+Updated: 2026-07-23 (M4 exit; program DoD not claimed)
 </footer>
 
 </body>

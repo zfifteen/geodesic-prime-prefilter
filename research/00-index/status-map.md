@@ -356,16 +356,23 @@ This is the authoritative planning artifact for the entire Lean translation trac
 - `interior_composite_of_tau_ne_two` — composite interior from next-prime tau-scan hypotheses.
 - Build: `lake build` + smoke test green; `rg sorry PGS/GWR.lean` empty.
 
+**M4 (UBC + PSP, D4.4 / D4.4b): CLOSED (2026-07-23).** New module `PGS/BoundedCompression.lean`:
+- `dynamicCutoff n = max(64, ⌈½ (log n)²⌉)` — non-vacuous C(n); empty existential shell removed from ChamberReset.
+- `full_row_activation`, `two_mul_halfCutoff_le` — algebraic Step A support.
+- `prime_square_proximity_theorem` — `r*r - p ≤ C(r*r)` under named `SquareBranchCapacityContra` (Corollary 4c.3 packaging).
+- `universal_bounded_compression` — `w - p ≤ C(q)` under `BoundedCompressionBaseV1` + `GwrFiniteBaseV1` + `ResidualK128Premise` + `AnalyticUBCClosure`.
+- `ubc_of_finite_base` — `q < 8_886_111` ⇒ ≤60 ≤ C(q).
+- `tau_prime_square_eq_three` remains a labeled audit premise only (does not smuggle UBC/PSP).
+
 **Remaining milestones:**
-- M4 (UBC + PSP, D4.4–D4.5): 1 axiom remains (`tau_prime_square_eq_three` in `Placement.lean`). Real theorems needed to replace the reflexivity/empty-shell stubs.
-- M5 (finite-base packaging + HTML status + D1–D7 green): Not started. HTML status surface refreshed through M3.
+- M5 (finite-base packaging polish + HTML status + D1–D7 green): open (#59).
 
 **How to verify:**
 ```bash
 cd lean-4
 lake build
 lake env lean smoke-test.lean
-rg 'sorry' PGS/Basic.lean PGS/GWR.lean   # expect: no matches
+rg 'sorry' PGS/Basic.lean PGS/GWR.lean PGS/BoundedCompression.lean   # expect: no matches
 rg -n '^\s*axiom ' PGS/ChamberReset.lean   # expect: no matches
 rg -n '^\s*axiom ' PGS/Placement.lean   # expect: tau_prime_square_eq_three only
 ```
