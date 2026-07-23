@@ -107,7 +107,7 @@ Each row must be a Lean `theorem` (or equivalent) with proof, traced to PROOF.md
 | **M0** | Inventory complete (this epoch) |
 | **M1** | Basic tau characterization: **0 sorry** in `Basic.lean` for D4.1 |
 | **M2** | ChamberReset / next-prime path: replay axioms discharged or reduced to D3-allowed hyps; D4.2 |
-| **M3** | GWR maximizer closed (D4.3) |
+| **M3** | GWR maximizer closed (D4.3) — **exit met 2026-07-23** |
 | **M4** | UBC/PSP closed under honest premises (D4.4–D4.5) |
 | **M5** | Finite-base packaging + HTML status + D1–D7 green |
 
@@ -122,7 +122,7 @@ Milestones are **implementation** exits, not new theorems.
 | `PGS/Basic.lean` | **M1 CLOSED** — 0 `sorry` (tau characterization path proved, 2026-07-20). No entry here. |
 | `PGS/ChamberReset.lean` | **M2 CLOSED** — 0 `sorry`, 0 `axiom` (replay axioms discharged into proved theorems, commit `a96cb3e7`). |
 | `PGS/Placement.lean` | axiom `tau_prime_square_eq_three` |
-| `PGS/GWR.lean` | Phase 3 placeholder (coverage gap D4.3) |
+| `PGS/GWR.lean` | **M3 CLOSED** — `ordered_comparison` + `leftmost_min_tau_maximizer` (0 `sorry`); earlier side named hyp / square case discharged. |
 | `PGS/NextPrime.lean` | **M2 CLOSED** — `weak_lfcl_sufficient_bound` fully proved and exported. |
 
 Exact line map: `lean-4/SORRY_AXIOM_INVENTORY.md` (maintained each milestone).
