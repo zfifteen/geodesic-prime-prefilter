@@ -1,39 +1,38 @@
 # Active Research Target
 
-**Updated:** 2026-07-18  
-**Program center:** **TOP PRIORITY — full Lean 4 formalization of the core theorem stack**
+**Updated:** 2026-07-23  
+**Program center:** Lean 4 core-stack formalization **program DoD met (M0–M5)**; public readability remains second priority.
 
 > **Principal directive (2026-07-18, #Prime-Gap-Structure):**  
-> Make the shared Grok impact task the project top priority:  
-> https://grok.com/share/bGVnYWN5_281f9afa-6f68-4981-9e49-27781caa0b9b  
+> Lean core-stack machine-checked mirror of `PROOF.md` (now **DONE** under D1–D7).  
 > Continuity pin: [notes/TOP_PRIORITY_lean_core_stack_2026-07-18.md](notes/TOP_PRIORITY_lean_core_stack_2026-07-18.md)  
-> HTML brief: [reports/lean-core-stack-priority/index.html](reports/lean-core-stack-priority/index.html)
+> Status HTML: [docs/lean-pgs-verification/index.html](../../../docs/lean-pgs-verification/index.html)  
+> Peer accept: [lean-4/peer/M5_DOD_ACCEPT.md](../../../lean-4/peer/M5_DOD_ACCEPT.md)
 
-## Top priority (do this first)
+## Lean core stack (DONE)
 
 ```text
-Complete machine-checked Lean 4 coverage of the entire core stack already
-proved in PROOF.md:
+Machine-checked Lean 4 mirror of the core stack already proved in PROOF.md:
 
-  - Direct deterministic next-prime (tau-scan)
-  - GWR / Interior Maximizer (leftmost min-divisor)
-  - Universal bounded compression + Prime-Square Proximity
-  - Supporting lemmas named in PROOF.md
+  - Direct deterministic next-prime (tau-scan) — M2
+  - GWR / Interior Maximizer (leftmost min-divisor) — M3
+  - Universal bounded compression + Prime-Square Proximity — M4
+  - Finite-base packages as named hypotheses — M5
   - Classical imports as audit premises only
-  - Finite-base facts packaged as hypotheses (not invented by Lean)
 ```
 
 | Field | Value |
 | --- | --- |
 | Status of laws in `PROOF.md` | **theorem** (unchanged) |
-| Lean track status | **implementation / audit** — partial; axioms and `sorry` remain |
+| Lean track status | **program DoD DONE** (M0–M5); extensions optional under D7.3 |
 | Home | `lean-4/` |
 | Plan | `lean-4/PGS_LEAN_FORMALIZATION_PLAN.md` |
 | Contract | `lean-4/LEAN_PGS_VERIFICATION_CONTRACT.md` |
-| Immediate next | **M1** clear `Basic.lean` sorry; hourly heartbeat `com.velocityworks.pgs-lean-heartbeat` |
+| Immediate next | Extensions only (analytic discharge of named packages); or second-priority public docs |
 | Definition of Done | `lean-4/DEFINITION_OF_DONE.md` |
 | Effort owner | **Hermes** |
 | Owner charter | `research/00-index/continuity/notes/LEAN_CORE_STACK_OWNER_CHARTER_2026-07-18.md` |
+| Peer accept | `lean-4/peer/M5_DOD_ACCEPT.md` |
 | Hourly heartbeat | `scripts/lean-heartbeat/HEARTBEAT.md` (auto-off on DONE) |
 
 Lean **never** chooses primes, never edits theorem status, never replaces generators.

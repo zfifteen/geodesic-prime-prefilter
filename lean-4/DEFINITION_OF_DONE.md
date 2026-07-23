@@ -109,24 +109,36 @@ Each row must be a Lean `theorem` (or equivalent) with proof, traced to PROOF.md
 | **M2** | ChamberReset / next-prime path: replay axioms discharged or reduced to D3-allowed hyps; D4.2 |
 | **M3** | GWR maximizer closed (D4.3) — **exit met 2026-07-23** |
 | **M4** | UBC/PSP closed under honest premises (D4.4–D4.5) — **exit met 2026-07-23** |
-| **M5** | Finite-base packaging + HTML status + D1–D7 green |
+| **M5** | Finite-base packaging + HTML status + D1–D7 green — **exit met 2026-07-23** |
 
 Milestones are **implementation** exits, not new theorems.
 
 ---
 
-## Baseline inventory (2026-07-18, pre-M1)
+## Baseline inventory (updated through M5)
 
 | Location | Obligation |
 | --- | --- |
-| `PGS/Basic.lean` | **M1 CLOSED** — 0 `sorry` (tau characterization path proved, 2026-07-20). No entry here. |
-| `PGS/ChamberReset.lean` | **M2 CLOSED** — 0 `sorry`, 0 `axiom` (replay axioms discharged into proved theorems, commit `a96cb3e7`). |
-| `PGS/Placement.lean` | axiom `tau_prime_square_eq_three` (**audit premise** CL-003; not a UBC/PSP smuggle) |
-| `PGS/GWR.lean` | **M3 CLOSED** — `ordered_comparison` + `leftmost_min_tau_maximizer` (0 `sorry`); earlier side named hyp / square case discharged. |
-| `PGS/BoundedCompression.lean` | **M4 CLOSED** — non-vacuous `dynamicCutoff`; `prime_square_proximity_theorem` + `universal_bounded_compression` under named finite/analytic premises. |
-| `PGS/NextPrime.lean` | **M2 CLOSED** — `weak_lfcl_sufficient_bound` fully proved and exported. |
+| `PGS/Basic.lean` | **M1 CLOSED** — 0 `sorry` (tau characterization path proved, 2026-07-20). |
+| `PGS/ChamberReset.lean` | **M2 CLOSED** — 0 `sorry`, 0 `axiom` (replay discharged). |
+| `PGS/Placement.lean` | axiom `tau_prime_square_eq_three` (**audit premise** CL-003). |
+| `PGS/GWR.lean` | **M3 CLOSED** — Ordered Comparison + maximizer packaging. |
+| `PGS/BoundedCompression.lean` | **M4 CLOSED** — non-vacuous UBC + PSP. |
+| `PGS/FiniteBases.lean` | **M5 CLOSED** — certificate-aligned finite-base bundles (D4.6). |
+| `PGS/NextPrime.lean` | **M2 CLOSED** — `weak_lfcl_sufficient_bound` export. |
 
 Exact line map: `lean-4/SORRY_AXIOM_INVENTORY.md` (maintained each milestone).
+
+---
+
+## Program DoD status (M5)
+
+**DONE** for the Lean core-stack formalization program under D1–D7 as recorded in
+`lean-4/peer/M5_DOD_ACCEPT.md` and `docs/lean-pgs-verification/index.html`.
+
+Further formalization (full analytic discharge of named packages, Mathlib CL-003
+proof, deeper D4.5 lemmas) is **extension work** under D7.3, not a reopening of
+program DoD unless hollow-shell or silent-axiom regressions reappear.
 
 ---
 

@@ -1,17 +1,31 @@
 # TOP PRIORITY — Full Lean 4 core theorem stack (principal 2026-07-18)
 
-**Status:** **Active top priority** (principal directive in #Prime-Gap-Structure)  
-**Set:** 2026-07-18  
+**Status:** **DONE (program DoD M0–M5)** — recorded 2026-07-23  
+**Set:** 2026-07-18 · **Exit:** M5 peer accept `lean-4/peer/M5_DOD_ACCEPT.md`  
 **Source share:** https://grok.com/share/bGVnYWN5_281f9afa-6f68-4981-9e49-27781caa0b9b  
 **Authority for theorems:** `PROOF.md` only (Lean is audit/verification, never promotes)  
 **Program pin:** [ACTIVE_TARGET.md](../ACTIVE_TARGET.md)  
 **Execution plan:** [lean-4/PGS_LEAN_FORMALIZATION_PLAN.md](../../../../lean-4/PGS_LEAN_FORMALIZATION_PLAN.md)  
 **Contract:** [lean-4/LEAN_PGS_VERIFICATION_CONTRACT.md](../../../../lean-4/LEAN_PGS_VERIFICATION_CONTRACT.md)  
+**HTML status:** [docs/lean-pgs-verification/index.html](../../../../docs/lean-pgs-verification/index.html)  
 **HTML brief:** [../reports/lean-core-stack-priority/index.html](../reports/lean-core-stack-priority/index.html)
 **Effort owner:** Hermes (principal 2026-07-18)  
 **Definition of Done:** [lean-4/DEFINITION_OF_DONE.md](../../../../lean-4/DEFINITION_OF_DONE.md)  
-**Inventory M0:** [lean-4/SORRY_AXIOM_INVENTORY.md](../../../../lean-4/SORRY_AXIOM_INVENTORY.md)  
+**Inventory:** [lean-4/SORRY_AXIOM_INVENTORY.md](../../../../lean-4/SORRY_AXIOM_INVENTORY.md)  
 **Owner charter:** [LEAN_CORE_STACK_OWNER_CHARTER_2026-07-18.md](LEAN_CORE_STACK_OWNER_CHARTER_2026-07-18.md)
+
+## Owner DONE pin (D7.1)
+
+| Field | Value |
+| --- | --- |
+| Program | Lean 4 core-stack formalization (GitHub #53) |
+| Exit milestone | M5 (#59) |
+| Status | **DONE** under D1–D7 |
+| Peer accept | `lean-4/peer/M5_DOD_ACCEPT.md` |
+| Merge SHA | fill at PR merge on `main` (branch work on `lean/m5-dod-exit`) |
+| Date | 2026-07-23 |
+
+Further analytic discharge of named packages is **extension** (DoD D7.3), not a reopening of this pin unless hollow-shell or silent-axiom regressions reappear.
 
 ## One-line goal
 
@@ -22,11 +36,11 @@ Complete a **machine-checked Lean 4 formalization of the entire core theorem sta
 | Block | PROOF.md object | Lean home (current) |
 | --- | --- | --- |
 | Next-prime / tau-scan | Direct deterministic next-prime | `lean-4/PGS/NextPrime.lean`, ChamberReset weak L_FCL |
-| GWR / Interior Maximizer | Leftmost min-divisor maximizer | `lean-4/PGS/GWR.lean` (Phase 3 placeholder) |
-| Universal bounded compression + PSP | Prime-Square Proximity + all-branch bound | `ChamberReset.lean` (`prime_square_proximity_theorem`, `near_root_exclusion_bound` still thin) |
-| Supporting lemmas | Ordered Comparison, Witness Threshold, Short Divisor-Average, Large-Divisor Adjacent Closure, … | Basic + Placement |
-| Classical imports used as **audit premises** only | Bertrand, divisor-pair bound, prime-square divisor count | `Placement.lean` (some axioms) |
-| Finite bases (integration, not re-proof of bases as “Lean discovers” them) | gwr_finite_base_v1, bounded_compression_base_v1, residual_k128_v1 | certificate hooks / hypothesis packaging |
+| GWR / Interior Maximizer | Leftmost min-divisor maximizer | `lean-4/PGS/GWR.lean` (**M3 closed**) |
+| Universal bounded compression + PSP | Prime-Square Proximity + all-branch bound | `PGS/BoundedCompression.lean` (**M4 closed**, non-vacuous `C(n)`) |
+| Supporting lemmas | Ordered Comparison, Witness Threshold, Short Divisor-Average, Large-Divisor Adjacent Closure, … | Basic + Placement + GWR (mapped; some still packaged) |
+| Classical imports used as **audit premises** only | Bertrand, divisor-pair bound, prime-square divisor count | `Placement.lean` (Bertrand theorem; one audit axiom) |
+| Finite bases (integration, not re-proof of bases as “Lean discovers” them) | gwr_finite_base_v1, bounded_compression_base_v1, residual_k128_v1 | `PGS/FiniteBases.lean` (**M5 closed**) |
 
 ## Explicit out of scope (do not steal this priority)
 
