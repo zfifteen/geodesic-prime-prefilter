@@ -138,6 +138,16 @@ The old fixed cutoff theorem `{2:44, 4:60, 6:60}` is false and invalidated. It f
 
 Under square exclusion, the GWR-selected integer is exactly the first interior integer with `d(n)=4`. This is exact on full scans through `2x10^7`.
 
+## Falsified interpretive claims (measured)
+
+These rows record killed interpretive extensions of proved local structure. They do not demote theorems in `PROOF.md`.
+
+| Date | Claim | Status | Regime / evidence |
+| --- | --- | --- | --- |
+| 2026-07-24 | Residual-mean elevation after Gap Winner: mean `tau` on residual `(w, q)` strictly exceeds mean `tau` on pre-valve `(p, w)` for every both-sided nonempty gap (and residual/pre ratio increases with `tau(w)`) | **Falsified** (H1 and H2). About 60–64% of eligible gaps reverse on mid-scale surfaces. NLS undercuts remain 0. | `p ≤ 2e6`; package `experiments/gap-winner-one-way-complexity-valve-falsification-2026-07/` |
+
+Truncation of residual search for lower-complexity certificates continues to rest on GWR, No-Later-Simpler-Composite, and bounded compression alone. It does not require residual mean elevation.
+
 ## Legacy Prefilter
 
 The Z-band cryptographic prefilter is a legacy validated artifact and a downstream engineering use of the normalization program.
@@ -198,3 +208,4 @@ Reference document:
 - [docs/PRIME_GAP_GENERATOR.md](docs/PRIME_GAP_GENERATOR.md) explains the minimal `{"p": ..., "q": ...}` generator.
 - [docs/core/PRIME_GAP_GENERATIVE_MODEL.md](docs/core/PRIME_GAP_GENERATIVE_MODEL.md) explains the reduced gap-type model.
 - [docs/core/RECURSIVE_PRIME_WALK.md](docs/core/RECURSIVE_PRIME_WALK.md) explains the recursive walk, closure condition, cutoff falsification, and dominant `d=4` regime.
+- [experiments/gap-winner-one-way-complexity-valve-falsification-2026-07/](../experiments/gap-winner-one-way-complexity-valve-falsification-2026-07/) records the mid-scale falsification of residual-mean elevation after the Gap Winner.
