@@ -16,11 +16,13 @@ Attempt to falsify U1–U3 (and report U4 contrast) from the Unique Floor Dichot
 
 ## Regimes
 
-| Label | \(p_{\max}\) |
-| --- | ---: |
-| A | \(2\cdot 10^6\) |
-| B | \(5\cdot 10^6\) |
-| C | \(10^7\) |
+| Label | Surface |
+| --- | --- |
+| A | Consecutive \(p_{\max}=2\cdot 10^6\) |
+| B | Consecutive \(p_{\max}=5\cdot 10^6\) |
+| C | Consecutive \(p_{\max}=10^7\) |
+| D | Decade ladder \(10^8..10^{18}\), 256 primes/decade (**mandatory \(10^{18}\) surface**) |
+| E | Optional large-gap CSV supplement (\(g\ge 100\), top 40 listed) |
 
 ## Commands
 
@@ -39,8 +41,12 @@ python3 experiments/unique-floor-dichotomy-falsification-2026-07/probe_unique_fl
   --p-max 10000000 \
   --out experiments/unique-floor-dichotomy-falsification-2026-07/artifacts/results_pmax_10000000.json \
   --csv-ce experiments/unique-floor-dichotomy-falsification-2026-07/artifacts/counterexamples_pmax_10000000.csv
+
+PYTHONPATH=src/python python3 experiments/unique-floor-dichotomy-falsification-2026-07/probe_unique_floor_decade_ladder.py \
+  --min-exp 8 --max-exp 18 --primes-per-decade 256 \
+  --out experiments/unique-floor-dichotomy-falsification-2026-07/artifacts/results_decade_ladder_1e8_1e18.json
 ```
 
 ## Reproducibility
 
-Python 3 stdlib only; deterministic; field prep by divisor accumulation only.
+Mid-scale probe: Python 3 stdlib sieve. Ladder probe: repo `divisor_counts_segment` / `gwr_boundary_walk` (deterministic given that field).

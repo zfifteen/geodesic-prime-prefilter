@@ -39,3 +39,21 @@ def test_outcomes_keys():
         "U4_square_long_unique_contrast",
     ):
         assert k in result["outcomes"]
+
+
+def test_decade_ladder_helpers_smoke():
+    """Local smoke: one tiny ladder decade uses high-scale field path."""
+    from probe_unique_floor_decade_ladder import (
+        analyze_gap_from_primes,
+        u1_ceiling_high,
+        walk_decade,
+    )
+
+    assert u1_ceiling_high(10**6) >= 48
+    # Tiny decade near 10^6 with only 4 primes (3 gaps)
+    block = walk_decade(1_000_000, primes_per_decade=4)
+    assert block["n_gaps"] == 3
+    assert block["first_p"] >= 1_000_000
+    row = analyze_gap_from_primes(block["gaps"][0]["p"], block["gaps"][0]["q"])
+    assert row["g"] == block["gaps"][0]["g"]
+    assert row["L_size"] >= 1

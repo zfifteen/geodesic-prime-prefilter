@@ -28,13 +28,19 @@ gap (p, q) -> tau field on interior
 
 ### Bound schedule for U1
 
-| \(p_{\max}\) | \(G_4\) (hard ceiling under test) |
-| ---: | ---: |
-| \(2\cdot 10^6\) | 40 |
-| \(5\cdot 10^6\) | 40 |
-| \(10^7\) | \(\max(48, \lfloor 0.5\cdot C(q)\rfloor)\) evaluated per row as \(g > \max(48, \lfloor 0.5\cdot C(q)\rfloor)\) |
+| Surface | \(G_4\) (hard ceiling under test) |
+| --- | --- |
+| Consecutive \(p_{\max}\le 5\cdot 10^6\) | 40 |
+| Consecutive \(p_{\max}=10^7\) | \(\max(48, \lfloor 0.5\cdot C(q)\rfloor)\) per row |
+| Decade ladder \(10^8..10^{18}\) | \(\max(48, \lfloor 0.5\cdot C(q)\rfloor)\) per row |
 
-Session pressure before this package: unique \(m=4\) max \(g=34\) at \(p\le 5\cdot 10^6\).
+### High-scale U3 ceiling (ladder)
+
+Unique \(m\ge 8\): \(g \le \max(16, \lfloor 0.15\cdot C(q)\rfloor)\).
+
+### Mandatory high-scale surface
+
+Program-style decade ladder: **256 consecutive primes per decade**, decades **\(10^8\) through \(10^{18}\)** (11 anchors). This is the package’s executed \(10^{18}\) surface for U1–U4 pressure. It is a sampled ladder, not a full consecutive scan of all primes to \(10^{18}\).
 
 \(C(q)=\max(64,\lceil 0.5\log(q)^2\rceil)\).
 
