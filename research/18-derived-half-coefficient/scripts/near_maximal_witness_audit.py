@@ -1,167 +1,450 @@
 #!/usr/bin/env python3
 """
-Near-Maximal Witness Offset Audit
----------------------------------
-Scans consecutive prime gaps up to LIMIT.
-For each gap p < q with nonempty interior:
-  - Finds GWR witness w = leftmost n in (p, q) with minimal tau(n)
-  - Computes d = tau(w), offset = w - p
-  - C = max(64, ceil(0.5 * log(q)**2))
+Near-maximal GWR witness-offset audit (F18-004 / RH-103).
+
+Status: measured / falsification surface (not a proof of F18-004).
+
+For each consecutive prime gap p < q with nonempty interior up to --limit:
+  - Locate GWR witness w = leftmost n in (p, q) with minimal tau(n)
+  - d = tau(w), offset = w - p
+  - C(q) = max(64, ceil(0.5 * log(q)^2))
   - ratio = offset / C
-Collects:
-  - Global max ratio and associated stats
-  - All cases with ratio >= 0.70 (near the bound)
-  - For those: reports d, offset, C, log(q), whether d<=5 or prime-square
-Falsification test for the "rough witness" prediction.
+
+F18-004 falsifier (non-square rough-witness claim):
+  ratio >= ratio_threshold
+  and q > q_min
+  and w is not a prime square
+  and d < max(6, floor(d_log_coeff * log q))
+
+Authority references:
+  - research/18-derived-half-coefficient/docs/FINDING_STATEMENT.md (F18-004)
+  - PROOF.md: Witness Threshold, Short Divisor-Average, Prime-Square Proximity
+  - Issue #45: promote F18-004 or produce explicit falsifier
+
+Repro:
+  PYTHONPATH=src/python python3 \\
+    research/18-derived-half-coefficient/scripts/near_maximal_witness_audit.py \\
+    --limit 1000000 --output research/18-derived-half-coefficient/output/audit_1M.json
 """
 
-import numpy as np
+from __future__ import annotations
+
+import argparse
+import json
 import math
-from math import log, ceil
+import sys
+from dataclasses import asdict, dataclass
+from math import ceil, floor, log
+from pathlib import Path
+from typing import Any
 
-LIMIT = 40_000_000   # Extended target for falsification attempt
-RATIO_THRESHOLD = 0.65
-PROGRESS_EVERY = 100_000  # primes
+import numpy as np
 
-def sieve_spf(limit):
+# Defaults match FINDING_STATEMENT.md F18-004 pinned campaign.
+DEFAULT_LIMIT = 40_000_000
+DEFAULT_RATIO_THRESHOLD = 0.65
+DEFAULT_Q_MIN = 10_000_000
+DEFAULT_D_LOG_COEFF = 0.75
+DEFAULT_PROGRESS_EVERY = 100_000
+REPO_DEFAULT_OUTPUT = (
+    Path(__file__).resolve().parents[1] / "output" / "near_maximal_audit_results.json"
+)
+
+
+@dataclass(frozen=True)
+class GapCase:
+    p: int
+    q: int
+    w: int
+    d: int
+    offset: int
+    C: int
+    ratio: float
+    logq: float
+    is_prime_square: bool
+
+    def rough_floor(self, d_log_coeff: float) -> int:
+        return max(6, floor(d_log_coeff * self.logq))
+
+    def is_f18_004_falsifier(
+        self,
+        ratio_threshold: float,
+        q_min: int,
+        d_log_coeff: float,
+    ) -> bool:
+        if self.ratio < ratio_threshold:
+            return False
+        if self.q <= q_min:
+            return False
+        if self.is_prime_square:
+            return False
+        return self.d < self.rough_floor(d_log_coeff)
+
+
+def sieve_spf(limit: int) -> np.ndarray:
+    """Smallest-prime-factor sieve on 0..limit (inclusive)."""
     spf = np.arange(limit + 1, dtype=np.int32)
-    for i in range(2, int(limit**0.5) + 1):
+    root = int(limit**0.5)
+    for i in range(2, root + 1):
         if spf[i] == i:
-            for j in range(i*i, limit + 1, i):
-                if spf[j] == j:
-                    spf[j] = i
+            start = i * i
+            spf[start : limit + 1 : i] = np.minimum(spf[start : limit + 1 : i], i)
     return spf
 
-def divisor_count(n, spf):
+
+def divisor_count(n: int, spf: np.ndarray) -> int:
+    """Exact tau(n) via SPF factorization."""
     if n <= 1:
         return 1
     cnt = 1
     while n > 1:
-        p = spf[n]
+        p = int(spf[n])
         exp = 0
         while n % p == 0:
             n //= p
             exp += 1
-        cnt *= (exp + 1)
+        cnt *= exp + 1
     return cnt
 
-def is_perfect_square(n):
+
+def is_perfect_square(n: int) -> bool:
     if n < 0:
         return False
     r = int(math.isqrt(n))
     return r * r == n
 
-def main():
-    print(f"Building SPF sieve up to {LIMIT}...")
-    spf = sieve_spf(LIMIT)
-    print("Extracting primes...")
-    primes = [i for i in range(2, LIMIT + 1) if spf[i] == i]
-    print(f"Found {len(primes)} primes. Starting gap scan...")
 
-    max_ratio = 0.0
-    max_case = None
-    near_max_cases = []
-    total_gaps_with_interior = 0
-    processed_primes = 0
+def is_prime_square_witness(w: int, d: int) -> bool:
+    """Prime squares are exactly the integers with tau = 3."""
+    return d == 3 and is_perfect_square(w)
+
+
+def compression_bound(q: int) -> int:
+    """C(q) = max(64, ceil(0.5 * (log q)^2)), matching PROOF.md packaging."""
+    lq = log(q)
+    return max(64, ceil(0.5 * lq * lq))
+
+
+def scan_gaps(
+    limit: int,
+    progress_every: int,
+) -> tuple[list[GapCase], GapCase | None, int]:
+    """
+    Exhaustive GWR replay on all gaps with q <= limit.
+
+    Returns (all_cases_with_interior, max_ratio_case, total_interior_gaps).
+    """
+    print(f"Building SPF sieve up to {limit}...", flush=True)
+    spf = sieve_spf(limit)
+    print("Extracting primes...", flush=True)
+    primes = [i for i in range(2, limit + 1) if int(spf[i]) == i]
+    print(f"Found {len(primes)} primes. Starting gap scan...", flush=True)
+
+    cases: list[GapCase] = []
+    max_case: GapCase | None = None
+    max_ratio = -1.0
+    total_gaps = 0
+    processed = 0
 
     for i in range(len(primes) - 1):
         p = primes[i]
         q = primes[i + 1]
-        if q > LIMIT:
+        if q > limit:
             break
         interior_start = p + 1
-        interior_end = q - 1   # inclusive
+        interior_end = q - 1
         if interior_start > interior_end:
             continue
-        total_gaps_with_interior += 1
-        processed_primes += 1
-        if processed_primes % PROGRESS_EVERY == 0:
-            print(f"  Processed {processed_primes:,} primes... (current q ≈ {q:,})")
 
-        # Find leftmost minimal tau
-        min_tau = None
-        w = None
+        total_gaps += 1
+        processed += 1
+        if progress_every > 0 and processed % progress_every == 0:
+            print(
+                f"  Processed {processed:,} interior gaps... (current q ≈ {q:,})",
+                flush=True,
+            )
+
+        min_tau: int | None = None
+        w: int | None = None
         for n in range(interior_start, interior_end + 1):
             tau = divisor_count(n, spf)
             if min_tau is None or tau < min_tau:
                 min_tau = tau
                 w = n
 
+        assert w is not None and min_tau is not None
         offset = w - p
-        Lq = log(q)
-        C = max(64, ceil(0.5 * Lq * Lq))
-        ratio = offset / C if C > 0 else 0.0
-
+        lq = log(q)
+        c_q = compression_bound(q)
+        ratio = offset / c_q if c_q > 0 else 0.0
+        case = GapCase(
+            p=p,
+            q=q,
+            w=w,
+            d=min_tau,
+            offset=offset,
+            C=c_q,
+            ratio=ratio,
+            logq=lq,
+            is_prime_square=is_prime_square_witness(w, min_tau),
+        )
+        cases.append(case)
         if ratio > max_ratio:
             max_ratio = ratio
-            max_case = {
-                'p': p, 'q': q, 'w': w, 'd': min_tau,
-                'offset': offset, 'C': C, 'ratio': ratio, 'logq': Lq
+            max_case = case
+
+    return cases, max_case, total_gaps
+
+
+def threshold_matrix(
+    cases: list[GapCase],
+    ratio_levels: list[float],
+    q_min: int,
+    d_log_coeff: float,
+) -> list[dict[str, Any]]:
+    """
+    For each ratio threshold, count high-ratio cases and F18-004 falsifiers.
+
+    Reports both unrestricted (all q) and q > q_min slices so small LIMIT
+    smokes remain informative when q_min is the campaign gate (10^7).
+    """
+    rows: list[dict[str, Any]] = []
+    for r in ratio_levels:
+        high = [c for c in cases if c.ratio >= r]
+        high_q = [c for c in high if c.q > q_min]
+        non_sq_all = [c for c in high if not c.is_prime_square]
+        non_sq = [c for c in high_q if not c.is_prime_square]
+        sq_all = [c for c in high if c.is_prime_square]
+        sq = [c for c in high_q if c.is_prime_square]
+        falsifiers = [
+            c
+            for c in cases
+            if c.is_f18_004_falsifier(r, q_min, d_log_coeff)
+        ]
+        # Legacy d<=5 non-square high-ratio count (FINDING_STATEMENT table).
+        legacy_low_d_all = [c for c in non_sq_all if c.d <= 5]
+        legacy_low_d = [c for c in non_sq if c.d <= 5]
+        min_d_non_sq_all = min((c.d for c in non_sq_all), default=None)
+        min_d_non_sq = min((c.d for c in non_sq), default=None)
+        min_floor = (
+            min((c.rough_floor(d_log_coeff) for c in non_sq_all), default=None)
+            if non_sq_all
+            else None
+        )
+        rows.append(
+            {
+                "ratio_threshold": r,
+                "high_ratio_total": len(high),
+                "high_ratio_q_gt_qmin": len(high_q),
+                "non_square_high_ratio_all_q": len(non_sq_all),
+                "non_square_high_ratio": len(non_sq),
+                "square_high_ratio_all_q": len(sq_all),
+                "square_high_ratio": len(sq),
+                "legacy_non_square_d_le_5_all_q": len(legacy_low_d_all),
+                "legacy_non_square_d_le_5": len(legacy_low_d),
+                "f18_004_falsifiers": len(falsifiers),
+                "min_d_non_square_high_ratio_all_q": min_d_non_sq_all,
+                "min_d_non_square_high_ratio": min_d_non_sq,
+                "min_rough_floor_among_non_square_all_q": min_floor,
             }
+        )
+    return rows
 
-        if ratio >= RATIO_THRESHOLD:
-            is_square = is_perfect_square(w) and min_tau == 3
-            near_max_cases.append({
-                'p': p, 'q': q, 'w': w, 'd': min_tau,
-                'offset': offset, 'C': C, 'ratio': ratio,
-                'logq': round(Lq, 2),
-                'is_prime_square': is_square,
-                'low_d': min_tau <= 5
-            })
 
-    print("\n=== AUDIT SUMMARY ===")
-    print(f"Total gaps with interior scanned: {total_gaps_with_interior}")
-    print(f"Global maximum ratio (w-p)/C : {max_ratio:.4f}")
-    if max_case:
-        print(f"  Achieved at p={max_case['p']}, q={max_case['q']}, w={max_case['w']}, d={max_case['d']}")
-        print(f"  offset={max_case['offset']}, C={max_case['C']}, log(q)≈{max_case['logq']:.2f}")
+def parse_ratio_levels(raw: str) -> list[float]:
+    parts = [p.strip() for p in raw.split(",") if p.strip()]
+    levels = [float(p) for p in parts]
+    if not levels:
+        raise ValueError("ratio levels list is empty")
+    for x in levels:
+        if not (0.0 < x <= 1.0):
+            raise ValueError(f"ratio level out of (0,1]: {x}")
+    return sorted(set(levels))
 
-    print(f"\nCases with ratio >= {RATIO_THRESHOLD}: {len(near_max_cases)}")
-    if near_max_cases:
-        print("Details (first 20 or all if fewer):")
-        for case in near_max_cases[:20]:
-            print(f"  q={case['q']}: ratio={case['ratio']:.3f}, d={case['d']}, "
-                  f"offset={case['offset']}/C={case['C']}, logq≈{case['logq']}, "
-                  f"prime_square={case['is_prime_square']}, d<=5={case['low_d']}")
-    else:
-        print("No near-maximal witness offsets found at this threshold.")
 
-    # Falsification check - strict for non-square low-d
-    non_square_falsifiers = [c for c in near_max_cases if (not c['is_prime_square']) and c['low_d']]
-    square_high_ratio = [c for c in near_max_cases if c['is_prime_square']]
+def build_results(
+    limit: int,
+    ratio_threshold: float,
+    q_min: int,
+    d_log_coeff: float,
+    cases: list[GapCase],
+    max_case: GapCase | None,
+    total_gaps: int,
+    ratio_levels: list[float],
+) -> dict[str, Any]:
+    primary_falsifiers = [
+        c
+        for c in cases
+        if c.is_f18_004_falsifier(ratio_threshold, q_min, d_log_coeff)
+    ]
+    high_primary = [c for c in cases if c.ratio >= ratio_threshold]
+    square_high = [c for c in high_primary if c.is_prime_square and c.q > q_min]
+    # Legacy table field: non-square, d<=5, ratio >= threshold (any q).
+    legacy = [
+        c
+        for c in high_primary
+        if (not c.is_prime_square) and c.d <= 5
+    ]
 
-    print(f"\n=== FALSIFICATION RESULTS ===")
-    print(f"Non-square low-d (d≤5) high-ratio cases: {len(non_square_falsifiers)}")
-    if non_square_falsifiers:
-        print("*** FALSIFIED *** Found non-square counterexamples:")
-        for f in non_square_falsifiers:
-            print(f"  q={f['q']}, d={f['d']}, ratio={f['ratio']:.3f} (threshold 0.65)")
-    else:
-        print("No non-square low-d falsifiers. Core rough-witness claim holds in scanned range.")
+    def case_dict(c: GapCase) -> dict[str, Any]:
+        d = asdict(c)
+        d["logq"] = round(c.logq, 6)
+        d["rough_floor"] = c.rough_floor(d_log_coeff)
+        d["low_d_legacy"] = c.d <= 5
+        return d
 
-    print(f"Prime-square high-ratio cases: {len(square_high_ratio)}")
-    if square_high_ratio:
-        max_square_ratio = max(c['ratio'] for c in square_high_ratio)
-        print(f"  Highest square ratio observed: {max_square_ratio:.4f}")
-        if max_square_ratio > 0.80:
-            print("  NOTE: Square achieved >80% of bound, challenges 'bounded away from 1.0' observation.")
-
-    # Save detailed results
-    import json
-    results = {
-        "limit": LIMIT,
-        "total_gaps": total_gaps_with_interior,
-        "max_ratio": max_ratio,
-        "max_case": max_case,
-        "near_max_count": len(near_max_cases),
-        "non_square_falsifiers_count": len(non_square_falsifiers),
-        "square_high_ratio_count": len(square_high_ratio),
-        "non_square_falsifiers": non_square_falsifiers,
-        "square_cases": square_high_ratio[:5] if square_high_ratio else []
+    return {
+        "status": "measured",
+        "claim": "F18-004 rough-witness signature",
+        "issue": 45,
+        "limit": limit,
+        "ratio_threshold": ratio_threshold,
+        "q_min": q_min,
+        "d_log_coeff": d_log_coeff,
+        "total_gaps": total_gaps,
+        "max_ratio": max_case.ratio if max_case else None,
+        "max_case": case_dict(max_case) if max_case else None,
+        "near_max_count": len(high_primary),
+        "non_square_falsifiers_count": len(legacy),
+        "f18_004_falsifiers_count": len(primary_falsifiers),
+        "square_high_ratio_count": len(square_high),
+        "non_square_falsifiers": [case_dict(c) for c in legacy[:50]],
+        "f18_004_falsifiers": [case_dict(c) for c in primary_falsifiers[:50]],
+        "square_cases": [case_dict(c) for c in square_high[:20]],
+        "threshold_matrix": threshold_matrix(
+            cases, ratio_levels, q_min, d_log_coeff
+        ),
+        "boundary": (
+            "Measured surface only. Does not promote F18-004 to theorem. "
+            "Not RH. Not a claim about all large gaps."
+        ),
     }
-    with open("/home/workdir/artifacts/near_maximal_audit_results.json", "w") as f:
+
+
+def print_summary(results: dict[str, Any]) -> None:
+    print("\n=== AUDIT SUMMARY ===")
+    print(f"LIMIT: {results['limit']:,}")
+    print(f"Total gaps with interior: {results['total_gaps']:,}")
+    print(f"Global max ratio (w-p)/C: {results['max_ratio']}")
+    mc = results.get("max_case")
+    if mc:
+        print(
+            f"  max at p={mc['p']}, q={mc['q']}, w={mc['w']}, d={mc['d']}, "
+            f"offset={mc['offset']}, C={mc['C']}"
+        )
+    print(
+        f"\nPrimary F18-004 falsifiers "
+        f"(ratio>={results['ratio_threshold']}, q>{results['q_min']}, "
+        f"non-square, d < max(6, floor({results['d_log_coeff']} log q))): "
+        f"{results['f18_004_falsifiers_count']}"
+    )
+    print(
+        f"Legacy non-square d<=5 high-ratio (any q): "
+        f"{results['non_square_falsifiers_count']}"
+    )
+    print(f"Prime-square high-ratio (q>q_min): {results['square_high_ratio_count']}")
+    print("\n=== THRESHOLD MATRIX ===")
+    for row in results["threshold_matrix"]:
+        print(
+            f"  r>={row['ratio_threshold']:.2f}: "
+            f"high_all={row['high_ratio_total']} "
+            f"(q>qmin={row['high_ratio_q_gt_qmin']}), "
+            f"non_sq_all={row['non_square_high_ratio_all_q']}, "
+            f"falsifiers={row['f18_004_falsifiers']}, "
+            f"min_d_non_sq_all={row['min_d_non_square_high_ratio_all_q']}, "
+            f"legacy_d<=5_all={row['legacy_non_square_d_le_5_all_q']}"
+        )
+    if results["f18_004_falsifiers_count"] > 0:
+        print("\n*** F18-004 FALSIFIED on this regime ***")
+    else:
+        print("\nNo F18-004 falsifier on this regime (measured pass only).")
+
+
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    p = argparse.ArgumentParser(
+        description="F18-004 near-maximal GWR witness-offset audit (measured)."
+    )
+    p.add_argument(
+        "--limit",
+        type=int,
+        default=DEFAULT_LIMIT,
+        help=f"Scan primes/gaps with q <= LIMIT (default {DEFAULT_LIMIT}).",
+    )
+    p.add_argument(
+        "--ratio-threshold",
+        type=float,
+        default=DEFAULT_RATIO_THRESHOLD,
+        help="Primary ratio threshold for F18-004 (default 0.65).",
+    )
+    p.add_argument(
+        "--q-min",
+        type=int,
+        default=DEFAULT_Q_MIN,
+        help="Only count F18-004 falsifiers with q > q_min (default 1e7).",
+    )
+    p.add_argument(
+        "--d-log-coeff",
+        type=float,
+        default=DEFAULT_D_LOG_COEFF,
+        help="Coefficient in floor(coeff * log q) rough floor (default 0.75).",
+    )
+    p.add_argument(
+        "--ratio-levels",
+        type=str,
+        default="0.50,0.55,0.60,0.65,0.70,0.75,0.80",
+        help="Comma-separated ratio thresholds for matrix output.",
+    )
+    p.add_argument(
+        "--progress-every",
+        type=int,
+        default=DEFAULT_PROGRESS_EVERY,
+        help="Progress print period in interior gaps (0 disables).",
+    )
+    p.add_argument(
+        "--output",
+        type=Path,
+        default=REPO_DEFAULT_OUTPUT,
+        help="JSON output path.",
+    )
+    return p.parse_args(argv)
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(argv)
+    if args.limit < 5:
+        print("LIMIT must be >= 5", file=sys.stderr)
+        return 2
+    if not (0.0 < args.ratio_threshold <= 1.0):
+        print("--ratio-threshold must be in (0,1]", file=sys.stderr)
+        return 2
+    if args.d_log_coeff <= 0:
+        print("--d-log-coeff must be positive", file=sys.stderr)
+        return 2
+
+    ratio_levels = parse_ratio_levels(args.ratio_levels)
+    if args.ratio_threshold not in ratio_levels:
+        ratio_levels = sorted(set(ratio_levels + [args.ratio_threshold]))
+
+    cases, max_case, total_gaps = scan_gaps(args.limit, args.progress_every)
+    results = build_results(
+        limit=args.limit,
+        ratio_threshold=args.ratio_threshold,
+        q_min=args.q_min,
+        d_log_coeff=args.d_log_coeff,
+        cases=cases,
+        max_case=max_case,
+        total_gaps=total_gaps,
+        ratio_levels=ratio_levels,
+    )
+    print_summary(results)
+
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    with args.output.open("w", encoding="utf-8") as f:
         json.dump(results, f, indent=2, default=str)
-    print("\nDetailed results saved to near_maximal_audit_results.json")
+        f.write("\n")
+    print(f"\nWrote {args.output}")
+    return 0
+
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

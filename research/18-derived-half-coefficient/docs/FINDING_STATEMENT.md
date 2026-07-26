@@ -60,15 +60,23 @@ This separation strengthens the claim that the \( \frac12 \) is arithmetically f
 
 ### Analytical Note on Threshold Sharpness
 
-From the Half-Scale Emergence Lemma,
+From the Large-Divisor Adjacent Closure packaging in `PROOF.md`,
 \[
 H = \Bigl\lfloor \frac{w L}{4(d-1)} \Bigr\rfloor, \qquad H \ge \frac{w L}{8(d-1)}
 \]
-in the active large-\( d \) regime. For a target ratio \( r \), the minimal \( d \) permitting \( H \ge r \cdot \frac12 L^2 \) (after packaging) satisfies a relation of the form
+in the active large-\(d\) regime, with offset control \(w-p\le H\).
+
+**Correction (issue #45, 2026-07-25):** that packaging yields an **upper** bound on \(d\) compatible with a large offset, of the form
 \[
-d-1 \;\gtrsim\; \frac{L}{c(r)}
+d-1 \;\lesssim\; \frac{w}{2 r L_q}
 \]
-where \( c(r) \) grows as \( r \) approaches the envelope allowed by the average bound. The conservative empirical floor \( 0.75 \log q \) already lies safely above the theoretical minimum required by the contradiction for \( r \ge 0.65 \) in the scanned regime. Future work can derive the exact \( c(r) \) curve; the present thresholds are deliberately loose for immediate falsifiability.
+when \(w-p\ge r\cdot C(q)\). It does **not** by itself force the F18-004 **lower** floor \(\max(6,\lfloor 0.75\log q\rfloor)\). The constant \(0.75\) remains a **deliberately conservative empirical** falsifiability threshold, not a derived half-scale corollary.
+
+Exact \(c(r)\) for a true lower bound
+\[
+\text{ratio}\ge r,\ \text{non-square}\ \Rightarrow\ \tau(w)\ge c(r)\log q
+\]
+is still **open**. See [f18_004_threshold_analysis.md](./f18_004_threshold_analysis.md).
 
 ### Boundary
 
