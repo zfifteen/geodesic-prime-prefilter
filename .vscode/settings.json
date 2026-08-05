@@ -1,0 +1,34 @@
+{
+  "files.watcherExclude": {
+    "**/lean-4/.lake/**": true,
+    "**/lean-4/lake-packages/**": true,
+    "**/lean-4/lean_packages/**": true,
+    "**/vendor/**": true,
+    "**/.gradle/**": true,
+    "**/media/**": true,
+    "**/output/**": true,
+    "**/scan_checkpoints_*/**": true,
+    "**/.venv/**": true,
+    "**/venv/**": true,
+    "**/__pycache__/**": true,
+    "**/.pytest_cache/**": true
+  },
+  "search.exclude": {
+    "**/lean-4/.lake/**": true,
+    "**/lean-4/lake-packages/**": true,
+    "**/lean-4/lean_packages/**": true,
+    "**/vendor/**": true,
+    "**/.gradle/**": true,
+    "**/media/**": true,
+    "**/output/**": true,
+    "**/scan_checkpoints_*/**": true,
+    "**/.venv/**": true,
+    "**/venv/**": true,
+    "**/__pycache__/**": true,
+    "**/.pytest_cache/**": true
+  },
+  "files.exclude": {
+    "**/lean-4/.lake": true,
+    "**/media": true
+  }
+}

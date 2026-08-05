@@ -1,0 +1,15 @@
+# Local build and vendor noise (IDE / Cursor indexing)
+lean-4/.lake/
+lean-4/lake-packages/
+lean-4/lean_packages/
+**/vendor/
+**/.gradle/
+media/
+**/output/
+**/scan_checkpoints_*/
+**/.venv/
+**/venv/
+**/__pycache__/
+**/.pytest_cache/
+**/*.olean
+**/*.ilean

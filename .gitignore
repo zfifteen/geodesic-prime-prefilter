@@ -33,3 +33,30 @@ media/
 .agents_state.json
 .agents_lock
 
+
+# --- Repo size reduction (Phase 4): stay thin ---
+**/scan_checkpoints_*/
+**/*.jsonl.gz
+**/public_result.json
+**/public_band_rows.*
+**/diagnostics.jsonl
+**/profile_rows.jsonl
+**/candidate_records.csv
+**/*_rows.jsonl
+docs/gap-structure-factor-brief-evidence/**/output/
+docs/gap-structure-factor-brief-evidence/multiplicative-web/**
+!docs/gap-structure-factor-brief-evidence/multiplicative-web/README.md
+research/**/output/**
+experiments/**/output/**
+research/06-cryptology-rsa/**/vendor/
+**/.gradle/
+*.olean
+*.ilean
+# large experiment result patterns
+experiments/**/gap_scan_details.csv
+experiments/**/offset_clouds.svg
+experiments/**/gap_simplest_composite_rows.csv
+experiments/**/alignment_probe*.json
+experiments/**/weight_gap_table_*.json
+experiments/**/hybrid_decomp_pgs_*.csv
+experiments/**/pgspg_law_matrix.csv

@@ -1,9 +1,0 @@
-{
-  "iteration": 1,
-  "radius": 16384,
-  "small_primes": [2, 3, 5],
-  "residual_limit": 32768,
-  "score_mode": "balanced_sources",
-  "top_k": 1000,
-  "design_reason": "Baseline true triangulation at a small auditable radius: cheap 2,3,5 stripping plus bounded residual cofactor threads that can cross the window. The first failed attempt at R=262144 was computationally too large before measurement, so this version establishes the measurable baseline first."
-}

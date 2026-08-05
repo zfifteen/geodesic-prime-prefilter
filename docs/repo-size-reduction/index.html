@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Repo Size Reduction Plan — Under 100 MB Clone</title>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --panel: #1a2332;
+      --panel2: #243044;
+      --text: #e7ecf3;
+      --muted: #9aa8bc;
+      --accent: #5eb1ff;
+      --good: #3ecf8e;
+      --warn: #f0b429;
+      --bad: #ff6b6b;
+      --border: #2f3b4f;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      --sans: "Segoe UI", system-ui, -apple-system, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      font-size: 16px;
+    }
+    header {
+      padding: 2rem 1.5rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, #152033 0%, var(--bg) 100%);
+    }
+    header h1 {
+      margin: 0 0 0.5rem;
+      font-size: 1.75rem;
+      letter-spacing: -0.02em;
+    }
+    header .meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .banner {
+      margin-top: 1rem;
+      padding: 0.85rem 1rem;
+      border-radius: 8px;
+      background: #2a1f0a;
+      border: 1px solid #6b4e12;
+      color: #ffd98a;
+      max-width: 58rem;
+    }
+    main {
+      max-width: 58rem;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+    h2 {
+      margin-top: 2.25rem;
+      margin-bottom: 0.75rem;
+      font-size: 1.35rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.35rem;
+    }
+    h3 {
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+      color: var(--accent);
+    }
+    p, li { color: var(--text); }
+    .muted { color: var(--muted); }
+    code, pre {
+      font-family: var(--mono);
+      font-size: 0.88em;
+    }
+    code {
+      background: var(--panel2);
+      padding: 0.1em 0.35em;
+      border-radius: 4px;
+    }
+    pre {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.9rem 1rem;
+      overflow-x: auto;
+      color: #d7e3f4;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.75rem 0 1.25rem;
+      font-size: 0.95rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.55rem 0.65rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: var(--panel2);
+      color: #c9d7ea;
+      font-weight: 600;
+    }
+    tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .tag-delete { background: #4a1a1a; color: #ff9b9b; }
+    .tag-move { background: #3a2e12; color: #ffd27a; }
+    .tag-keep { background: #143526; color: #7dffb5; }
+    .tag-local { background: #1a2a40; color: #9ec9ff; }
+    .phase {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.15rem 1.15rem;
+      margin: 1rem 0 1.5rem;
+    }
+    .phase h3 {
+      margin-top: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: baseline;
+    }
+    .phase .phase-num {
+      color: var(--warn);
+      font-family: var(--mono);
+      font-size: 0.9rem;
+    }
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0;
+    }
+    .checklist li {
+      padding: 0.4rem 0 0.4rem 1.7rem;
+      position: relative;
+      border-bottom: 1px solid rgba(47,59,79,0.6);
+    }
+    .checklist li:last-child { border-bottom: 0; }
+    .checklist li::before {
+      content: "☐";
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+    .gate {
+      margin-top: 0.75rem;
+      padding: 0.65rem 0.8rem;
+      border-left: 3px solid var(--good);
+      background: rgba(62,207,142,0.08);
+      border-radius: 0 6px 6px 0;
+      font-size: 0.95rem;
+    }
+    .gate strong { color: var(--good); }
+    .risk {
+      border-left-color: var(--bad);
+      background: rgba(255,107,107,0.08);
+    }
+    .risk strong { color: var(--bad); }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+    .stat {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.85rem;
+    }
+    .stat .label { color: var(--muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .stat .value { font-size: 1.35rem; font-weight: 700; margin-top: 0.25rem; }
+    .stat .sub { color: var(--muted); font-size: 0.85rem; margin-top: 0.2rem; }
+    .toc {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.9rem 1.1rem;
+    }
+    .toc ol { margin: 0.4rem 0 0; padding-left: 1.25rem; }
+    .toc a { color: var(--accent); text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+    footer {
+      max-width: 58rem;
+      margin: 0 auto;
+      padding: 0 1.5rem 2.5rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Repo size reduction plan</h1>
+    <div class="meta">
+      Goal: fresh <code>git clone</code> under <strong>100 MB</strong> ·
+      Status: plan only (not executed) ·
+      Measured baseline: 2026-08-04 ·
+      Repo: <code>prime-gap-structure</code>
+    </div>
+    <div class="banner">
+      <strong>Finding:</strong> The clone is hundreds of megabytes because experiment dumps,
+      evidence JSON, and old media blobs were committed into git. Most of that material is
+      regenerable output or archival bulk. It does not belong in the live research source tree.
+      Local disk is worse (~10 GB / ~185k files) because Mathlib and Java vendor trees sit
+      next to the project even when gitignored.
+    </div>
+  </header>
+
+  <main>
+    <nav class="toc" aria-label="Table of contents">
+      <strong>Contents</strong>
+      <ol>
+        <li><a href="#goal">Goal and success metric</a></li>
+        <li><a href="#baseline">Measured baseline</a></li>
+        <li><a href="#classify">Classification: delete / move / keep / local-only</a></li>
+        <li><a href="#junk">What is junk relative to this project</a></li>
+        <li><a href="#sibling">Sibling artifacts project</a></li>
+        <li><a href="#phases">Phased execution</a></li>
+        <li><a href="#verify">Verification commands</a></li>
+        <li><a href="#policy">Stay-thin policy (after cleanup)</a></li>
+        <li><a href="#out-of-scope">Out of scope</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="goal">1. Goal and success metric</h2>
+    <p>
+      Primary goal: a <strong>fresh clone of the remote</strong> is under
+      <strong>100 MB</strong> on disk for <code>.git</code> plus working tree of the default branch,
+      so tools such as Google Gemini web (100 MB repo import cap) and IDE indexing stay usable.
+    </p>
+    <table>
+      <thead>
+        <tr><th>Metric</th><th>Pass condition</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Clone size</td>
+          <td><code>du -sh .git</code> after fresh clone &lt; 100 MB (target: &lt; 80 MB headroom)</td>
+        </tr>
+        <tr>
+          <td>HEAD tree size</td>
+          <td>Tracked tip content roughly 15 to 45 MB (code + prose + small summaries)</td>
+        </tr>
+        <tr>
+          <td>Tracked file count</td>
+          <td>On the order of 1.5k-3k files (not 8k+)</td>
+        </tr>
+        <tr>
+          <td>History</td>
+          <td>Large blobs removed from all history, or published as a clean slim remote</td>
+        </tr>
+        <tr>
+          <td>Regrowth</td>
+          <td>Ignore rules + optional CI size gate prevent re-adding dumps</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="muted">
+      Removing files from the current branch tip alone is not enough. Git pack history still
+      holds ~2 GB of blobs and a ~469 MB pack. Phase 6 (history rewrite or clean remote) is
+      mandatory for the clone metric.
+    </p>
+
+    <h2 id="baseline">2. Measured baseline (2026-08-04)</h2>
+    <div class="stats">
+      <div class="stat">
+        <div class="label">Working tree</div>
+        <div class="value">~10 GB</div>
+        <div class="sub">~185,000 files</div>
+      </div>
+      <div class="stat">
+        <div class="label">Git pack</div>
+        <div class="value">~469 MB</div>
+        <div class="sub">clone transfer scale</div>
+      </div>
+      <div class="stat">
+        <div class="label">GitHub size</div>
+        <div class="value">~335 MB</div>
+        <div class="sub">api repos.size</div>
+      </div>
+      <div class="stat">
+        <div class="label">HEAD tracked</div>
+        <div class="value">~1.0 GB</div>
+        <div class="sub">8,212 files</div>
+      </div>
+      <div class="stat">
+        <div class="label">All history blobs</div>
+        <div class="value">~2.0 GB</div>
+        <div class="sub">includes deleted fat files</div>
+      </div>
+      <div class="stat">
+        <div class="label">Code + prose core</div>
+        <div class="value">~14 MB</div>
+        <div class="sub">~1,900 files (reachable target)</div>
+      </div>
+    </div>
+
+    <h3>Tracked size concentration</h3>
+    <table>
+      <thead>
+        <tr><th>Path / class</th><th>Approx size</th><th>Files</th><th>Disposition</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>docs/gap-structure-factor-brief-evidence/</code> bulk</td>
+          <td>~584 MB</td>
+          <td>~514</td>
+          <td><span class="tag tag-move">move</span> evidence dumps; keep thin prose</td>
+        </tr>
+        <tr>
+          <td><code>research/02-gwr-dni/</code> (mostly output)</td>
+          <td>~213 MB</td>
+          <td>~5,212</td>
+          <td><span class="tag tag-move">move</span> / <span class="tag tag-delete">delete</span> checkpoints</td>
+        </tr>
+        <tr>
+          <td>→ <code>scan_checkpoints_5e9</code></td>
+          <td>~147 MB</td>
+          <td>4,000</td>
+          <td><span class="tag tag-delete">junk</span> segment flood</td>
+        </tr>
+        <tr>
+          <td>→ <code>scan_checkpoints_1e9</code> + <code>1e8</code></td>
+          <td>~36 MB</td>
+          <td>~980</td>
+          <td><span class="tag tag-delete">junk</span> same pattern</td>
+        </tr>
+        <tr>
+          <td>All tracked <code>**/output/**</code></td>
+          <td>~852 MB</td>
+          <td>~5,798</td>
+          <td><span class="tag tag-move">move</span> or drop; align with ignore</td>
+        </tr>
+        <tr>
+          <td><code>experiments/</code> large CSV/SVG/JSON</td>
+          <td>~40 MB</td>
+          <td>~190</td>
+          <td><span class="tag tag-move">move</span> row dumps; keep scripts</td>
+        </tr>
+        <tr>
+          <td><code>visualizations/</code> images</td>
+          <td>~49 MB</td>
+          <td>~113</td>
+          <td><span class="tag tag-move">optional move</span> heavy PNG sets</td>
+        </tr>
+        <tr>
+          <td><code>website/</code> assets</td>
+          <td>~20 MB</td>
+          <td>~145</td>
+          <td><span class="tag tag-keep">keep thin</span> or externalize plates</td>
+        </tr>
+        <tr>
+          <td>History-only large jsonl / old mp4</td>
+          <td>~hundreds MB in pack</td>
+          <td>—</td>
+          <td><span class="tag tag-delete">purge from history</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Local-only bloat (not in clone, kills IDE)</h3>
+    <table>
+      <thead>
+        <tr><th>Path</th><th>Approx size</th><th>Files</th><th>Disposition</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>lean-4/.lake/</code> (Mathlib builds)</td>
+          <td>~7.1 GB</td>
+          <td>~120,000</td>
+          <td><span class="tag tag-local">local-only</span> already ignored; exclude from IDE; may delete and rebuild</td>
+        </tr>
+        <tr>
+          <td>BC Java <code>vendor/</code> + Gradle caches</td>
+          <td>~570 MB</td>
+          <td>~51,000</td>
+          <td><span class="tag tag-local">local-only</span> should not re-enter git</td>
+        </tr>
+        <tr>
+          <td><code>media/</code></td>
+          <td>~504 MB</td>
+          <td>~242</td>
+          <td><span class="tag tag-local">local / sibling</span> already gitignored</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="classify">3. Classification rules</h2>
+    <p>Every path falls into exactly one class before any phase runs:</p>
+    <table>
+      <thead>
+        <tr><th>Class</th><th>Meaning</th><th>Examples</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tag tag-keep">KEEP</span></td>
+          <td>Lives in main repo forever</td>
+          <td>Source, tests, PROOF.md, continuity, small summaries, Lean sources (not .lake)</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-move">MOVE</span></td>
+          <td>Preserve offline or in sibling artifacts project; drop from main git</td>
+          <td>Large evidence JSON, frozen public_result dumps, experiment row catalogs</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-delete">DELETE</span></td>
+          <td>Safe to drop; regenerable or zero research value as committed flood</td>
+          <td>scan_checkpoints_* segments, .pyc, intermediate diagnostics.jsonl, duplicate jars</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-local">LOCAL-ONLY</span></td>
+          <td>May exist on disk; never tracked</td>
+          <td>.lake, vendor, media, IDE caches</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Keep rules (affirmative)</h3>
+    <ul>
+      <li>Source: <code>src/</code>, research scripts (<code>*.py</code>, <code>*.c</code>, <code>*.lean</code>), tests, <code>scripts/</code>, <code>spec/</code></li>
+      <li>Authority prose: <code>PROOF.md</code>, <code>AGENTS.md</code>, continuity contracts, theorem docs</li>
+      <li>Small summary artifacts under ~100 to 200 KB that name regime + counts + hashes</li>
+      <li>Certificate JSON that is intentionally small and stable (proof-enhancements style)</li>
+      <li>Lean project metadata: <code>lakefile.lean</code>, <code>lean-toolchain</code>, <code>lake-manifest.json</code>, source modules</li>
+    </ul>
+
+    <h3>Move rules</h3>
+    <ul>
+      <li>Any single file &gt; 1 MB that is measured output rather than authored source</li>
+      <li>Any directory named <code>output/</code> with row-level dumps</li>
+      <li>Multi-iteration frozen probe trees under factor-brief evidence</li>
+      <li>Full media library and optional website plate packs</li>
+    </ul>
+
+    <h3>Delete rules (do not archive unless you enjoy pain)</h3>
+    <ul>
+      <li>Thousands of near-identical segment checkpoint JSON files</li>
+      <li>Python bytecode, pytest caches, <code>.DS_Store</code></li>
+      <li>Vendored dependency build products that a package manager can re-fetch</li>
+      <li>Duplicate large intermediate jsonl when a summary already exists</li>
+    </ul>
+
+    <h2 id="junk">4. What is junk relative to this project</h2>
+    <p>
+      “Junk” here means: material that is not part of the live PGS source-of-truth surface and
+      should not inflate every clone. It may still have historical value offline.
+    </p>
+    <table>
+      <thead>
+        <tr><th>Item</th><th>Why it is junk in-repo</th><th>Preferred fate</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>4,000+ <code>scan_checkpoints_*</code> segment JSON files</td>
+          <td>Per-segment scan shards; file-count bomb; summary certificates carry the claim</td>
+          <td>Delete from git; optional single archive tarball in sibling if needed once</td>
+        </tr>
+        <tr>
+          <td>~41 MB repeated <code>public_result.json</code> toys / continuations</td>
+          <td>Frozen probe payloads; prose + small summaries document the finding</td>
+          <td>Move to sibling artifacts</td>
+        </tr>
+        <tr>
+          <td>Multi-10 MB <code>diagnostics.jsonl</code> / <code>profile_rows.jsonl</code> (history)</td>
+          <td>Already gitignored for new adds; still bloating pack history</td>
+          <td>Purge from history</td>
+        </tr>
+        <tr>
+          <td>Tracked paths under <code>output/</code> despite <code>**/output/*</code> ignore</td>
+          <td>Policy says outputs are local; git still carries ~5.8k of them</td>
+          <td>Untrack; keep summaries only</td>
+        </tr>
+        <tr>
+          <td>Old <code>pgs-math-explainer/*.mp4</code> in history</td>
+          <td>Media belongs in media/sibling; videos are not research source</td>
+          <td>History purge; media sibling</td>
+        </tr>
+        <tr>
+          <td>BouncyCastle full trees + Gradle caches on disk</td>
+          <td>~51k files; local tooling noise</td>
+          <td>Local exclude/delete; never commit</td>
+        </tr>
+        <tr>
+          <td><code>lean-4/.lake</code> Mathlib tree</td>
+          <td>~120k files / 7 GB; rebuildable</td>
+          <td>Local exclude; optional delete/rebuild</td>
+        </tr>
+        <tr>
+          <td>Large experiment CSV/SVG clouds committed as “results”</td>
+          <td>Results belong as summary + hash + regen command</td>
+          <td>Move or delete after summary capture</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="sibling">5. Sibling artifacts project</h2>
+    <p>
+      Create a sibling directory (git repo or plain archive store) next to the main project:
+    </p>
+    <pre>IdeaProjects/
+  prime-gap-structure/                 # slim main repo (clone &lt; 100 MB)
+  prime-gap-structure-artifacts/       # bulk evidence, outputs, media
+    MANIFEST.md                        # path, sha256, source command, date
+    docs-evidence/
+    research-outputs/
+      02-gwr-dni/
+      01-generator/
+      ...
+    experiments-results/
+    media/
+    archives/                          # optional .tar.zst of checkpoint floods</pre>
+    <p>
+      Main repo keeps a thin pointer, for example
+      <code>artifacts/README.md</code>, describing where bulk lives and how to verify hashes.
+      Continuity docs may reference the sibling by relative path
+      <code>../prime-gap-structure-artifacts</code>.
+    </p>
+    <div class="gate risk">
+      <strong>Hard rule:</strong> sibling holds bulk. Main holds source, proofs, and summaries.
+      Do not symlink bulk back into tracked paths of the main repo.
+    </div>
+
+    <h2 id="phases">6. Phased execution</h2>
+    <p class="muted">
+      Execute in order. Each phase has a gate. Do not start history rewrite until tip is slim
+      and bulk is safely archived.
+    </p>
+
+    <div class="phase" id="phase-0">
+      <h3><span class="phase-num">Phase 0</span> Safety backup</h3>
+      <p>Protect against irreversible mistakes before any mass delete or rewrite.</p>
+      <ul class="checklist">
+        <li>Create a full mirror backup: <code>git clone --mirror</code> to a private backup remote or offline path</li>
+        <li>Tarball local extras you care about: <code>media/</code>, chosen large outputs, optional <code>.lake</code> only if rebuild cost is painful</li>
+        <li>Record baseline metrics into this folder as <code>baseline-metrics.md</code> (sizes, file counts, date, commit SHA)</li>
+        <li>Confirm no open process requires writing into the fat paths about to move</li>
+      </ul>
+      <div class="gate"><strong>Gate:</strong> backup restore spot-check succeeds; baseline metrics committed or saved offline.</div>
+    </div>
+
+    <div class="phase" id="phase-1">
+      <h3><span class="phase-num">Phase 1</span> Local IDE and disk relief (no git rewrite)</h3>
+      <p>Make the machine usable immediately. This phase does not fix Gemini clone size.</p>
+      <ul class="checklist">
+        <li>Exclude from IDE indexing: <code>lean-4/.lake/**</code>, <code>**/vendor/**</code>, <code>**/.gradle/**</code>, <code>media/**</code>, <code>**/output/**</code>, <code>**/scan_checkpoints_*/**</code></li>
+        <li>Optionally delete local <code>lean-4/.lake</code> (rebuild later with Lake)</li>
+        <li>Optionally delete BC vendor Gradle caches / full vendor trees if unused this week</li>
+        <li>Confirm IDE search returns in reasonable time on source paths</li>
+      </ul>
+      <div class="gate"><strong>Gate:</strong> IDE index no longer walks 100k+ Mathlib/Java files; disk reduced if deletes chosen.</div>
+    </div>
+
+    <div class="phase" id="phase-2">
+      <h3><span class="phase-num">Phase 2</span> Stand up sibling artifacts store</h3>
+      <ul class="checklist">
+        <li>Create <code>../prime-gap-structure-artifacts</code> (git init optional; private recommended)</li>
+        <li>Add <code>MANIFEST.md</code> template: path, sha256, bytes, source command, moved-from, date</li>
+        <li>Add category folders listed in section 5</li>
+        <li>Add thin <code>artifacts/README.md</code> in the main repo pointing at the sibling</li>
+      </ul>
+      <div class="gate"><strong>Gate:</strong> sibling exists; manifest template ready; main repo has pointer doc only.</div>
+    </div>
+
+    <div class="phase" id="phase-3">
+      <h3><span class="phase-num">Phase 3</span> Move or archive bulk from the working tree</h3>
+      <p>Physical move first (copy + hash), then remove from main tree. Prefer rsync + sha256.</p>
+      <h4>3A — Highest leverage (do first)</h4>
+      <ul class="checklist">
+        <li>Move <code>docs/gap-structure-factor-brief-evidence/multiplicative-web/**</code> large outputs and frozen public_result trees (~584 MB class)</li>
+        <li>Keep paragraph prose folders (<code>paragraph-0*</code>, thin README/index HTML) in main if they are small authored docs</li>
+        <li>Archive or delete <code>research/02-gwr-dni/output/gwr_proof/scan_checkpoints_*</code> (~5k files). Prefer one compressed archive in sibling if retention wanted</li>
+        <li>Move remaining large <code>research/**/output/**</code> row dumps; leave summary JSON/MD behind when present</li>
+      </ul>
+      <h4>3B — Experiment and media bulk</h4>
+      <ul class="checklist">
+        <li>Move multi-MB experiment CSV/SVG/JSON under <code>experiments/</code> that are pure results</li>
+        <li>Confirm <code>media/</code> lives only under sibling or local media store (already ignored)</li>
+        <li>Optional: move heavy generated PNGs under <code>visualizations/</code> if not needed for day-to-day docs</li>
+      </ul>
+      <h4>3C — Capture summaries before drop</h4>
+      <ul class="checklist">
+        <li>For each moved campaign, ensure a ≤200 KB summary remains in main (counts, regime, pass/fail, hash of full dump)</li>
+        <li>Update any continuity links that pointed at absolute bulk paths</li>
+      </ul>
+      <div class="gate"><strong>Gate:</strong> main working tree tip content (excluding local .lake/vendor/media) is on the order of tens of MB; sibling holds bulk with hashes.</div>
+    </div>
+
+    <div class="phase" id="phase-4">
+      <h3><span class="phase-num">Phase 4</span> Untrack fat paths and align <code>.gitignore</code></h3>
+      <p>Git still tracks ~5,798 files under <code>output/</code> even though ignore rules exist for new files.</p>
+      <ul class="checklist">
+        <li><code>git rm -r --cached</code> on moved/deleted bulk paths (preserve local archive copies as needed)</li>
+        <li>Remove scan checkpoint trees from the index entirely</li>
+        <li>Strengthen <code>.gitignore</code> (see block below)</li>
+        <li>Commit on a dedicated branch, e.g. <code>chore/repo-size-slim-tip</code></li>
+        <li>Measure HEAD size: target roughly &lt; 50 MB tracked tip</li>
+      </ul>
+      <pre># Suggested additions / enforcement (merge with existing rules)
+**/scan_checkpoints_*/
+**/*.jsonl.gz
+**/public_result.json
+**/public_band_rows.*
+**/diagnostics.jsonl
+**/profile_rows.jsonl
+**/candidate_records.csv
+**/*_rows.jsonl
+docs/gap-structure-factor-brief-evidence/**/output/
+research/**/output/**
+experiments/**/output/**
+research/06-cryptology-rsa/**/vendor/
+**/.gradle/
+*.olean
+*.ilean
+
+# Keep existing:
+# media/
+# **/output/*
+# *.jsonl
+# lean-4/.lake/</pre>
+      <div class="gate"><strong>Gate:</strong> <code>git ls-tree -r -l HEAD</code> sum &lt; ~50 MB; tracked file count roughly ≤ 3,000; no <code>scan_checkpoints_*</code> tracked.</div>
+      <div class="gate risk"><strong>Note:</strong> tip is slim; clone is still fat until Phase 6.</div>
+    </div>
+
+    <div class="phase" id="phase-5">
+      <h3><span class="phase-num">Phase 5</span> Optional website / viz trim</h3>
+      <p>Only if Phase 4 still leaves tip above budget or clone estimate needs more headroom.</p>
+      <ul class="checklist">
+        <li>Externalize large website plate PNGs if &gt; ~10 to 15 MB total is optional for research work</li>
+        <li>Keep generators for visualizations; store large rendered outputs in sibling</li>
+        <li>Re-measure tip size</li>
+      </ul>
+      <div class="gate"><strong>Gate:</strong> tip comfortably under 50 MB with clear role for remaining binaries.</div>
+    </div>
+
+    <div class="phase" id="phase-6">
+      <h3><span class="phase-num">Phase 6</span> History rewrite or clean slim remote (required for &lt;100 MB clone)</h3>
+      <p>Pick one strategy. Both achieve the clone metric.</p>
+
+      <h4>Strategy A — Rewrite history in place (keeps one remote URL)</h4>
+      <ul class="checklist">
+        <li>Install <code>git-filter-repo</code></li>
+        <li>From a fresh clone of the backup mirror, strip fat paths and/or blobs over a size threshold</li>
+        <li>Example intent: drop all historical paths under bulk evidence, outputs, media, explainer mp4s, scan_checkpoints</li>
+        <li>Force-push to origin only after principal approval</li>
+        <li>Notify any other clones that history SHAs changed</li>
+      </ul>
+      <pre># Conceptual only — run after explicit approval on a backup clone
+git filter-repo \
+  --path docs/gap-structure-factor-brief-evidence/multiplicative-web \
+  --path research/02-gwr-dni/output \
+  --invert-paths
+# Plus additional path strips / --strip-blobs-bigger-than 512K as needed
+git count-objects -vH   # expect pack well under 100 MiB</pre>
+
+      <h4>Strategy B — Publish a clean slim remote (simpler operationally)</h4>
+      <ul class="checklist">
+        <li>Create new orphan branch or new repository containing only the slim tip tree</li>
+        <li>Single root commit (or short clean history)</li>
+        <li>Point Gemini and tools at the slim remote; keep old remote as archive if desired</li>
+        <li>Document which remote is “live thin” vs “legacy fat archive”</li>
+      </ul>
+
+      <div class="gate"><strong>Gate:</strong> fresh clone of the published remote: <code>du -sh .git</code> &lt; 100 MB (prefer &lt; 80 MB).</div>
+      <div class="gate risk"><strong>Risk:</strong> force-push rewrites SHAs and breaks open PR bases. Strategy B avoids rewriting the old remote.</div>
+    </div>
+
+    <div class="phase" id="phase-7">
+      <h3><span class="phase-num">Phase 7</span> Verify + prevent regrowth</h3>
+      <ul class="checklist">
+        <li>Run verification command pack from section 7 on a clean clone</li>
+        <li>Import test into Gemini (or zip the slim tree) and confirm under 100 MB</li>
+        <li>Add optional CI check: fail if any tracked file &gt; 500 KB without allowlist</li>
+        <li>Add optional CI check: fail if any path matching <code>**/output/**</code> is tracked</li>
+        <li>Update continuity <code>START_HERE.md</code> with one paragraph: where bulk artifacts live</li>
+        <li>Close this plan’s checklist status in a short <code>STATUS.md</code> when complete</li>
+      </ul>
+      <div class="gate"><strong>Gate:</strong> clone &lt; 100 MB; Gemini import succeeds; size gate documented or automated.</div>
+    </div>
+
+    <h2 id="verify">7. Verification commands</h2>
+    <p>Run after Phase 4 (tip) and again after Phase 6 (clone).</p>
+    <pre># Tracked tip size and file count
+git ls-tree -r -l HEAD | awk '{s+=$4;n++} END {printf "HEAD: %.1f MB, %d files\n", s/1024/1024, n}'
+
+# Largest remaining tracked files
+git ls-tree -r -l HEAD | sort -k4 -n -r | head -20
+
+# Pack size (clone scale)
+git count-objects -vH
+
+# Fresh clone test (use slim remote URL after Phase 6)
+# du -sh .git
+
+# Confirm no scan checkpoints tracked
+git ls-files | grep scan_checkpoints || echo "OK: no scan_checkpoints"
+
+# Confirm output path count
+git ls-files | grep '/output/' | wc -l
+
+# IDE-relevant local noise (should be untracked / excluded)
+du -sh lean-4/.lake research/06-cryptology-rsa/legacy-prefilter media 2>/dev/null</pre>
+
+    <h3>Scenario math already measured (tip only)</h3>
+    <table>
+      <thead>
+        <tr><th>Action set</th><th>Approx HEAD size</th><th>Approx files</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Today</td><td>~1001 MB</td><td>8212</td></tr>
+        <tr><td>Drop factor-brief evidence bulk</td><td>~417 MB</td><td>~7700</td></tr>
+        <tr><td>+ drop all <code>**/output/**</code></td><td>~148 MB</td><td>~2155</td></tr>
+        <tr><td>+ drop large binaries/data</td><td>~43 MB</td><td>~2100</td></tr>
+        <tr><td>Code + prose core only</td><td>~14 MB</td><td>~1900</td></tr>
+      </tbody>
+    </table>
+    <p>
+      Phases 3 to 5 aim for the ~14 to 45 MB tip band. Phase 6 is what converts that tip into a
+      &lt;100 MB clone by removing historical blobs.
+    </p>
+
+    <h2 id="policy">8. Stay-thin policy (after cleanup)</h2>
+    <table>
+      <thead>
+        <tr><th>Rule</th><th>Practice</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Commit summaries, not oceans</td>
+          <td>Regime, counts, pass/fail, hash of full dump, regen command</td>
+        </tr>
+        <tr>
+          <td>Default output location</td>
+          <td>Write probes under untracked <code>output/</code> or into the sibling artifacts repo</td>
+        </tr>
+        <tr>
+          <td>File size ceiling</td>
+          <td>No new tracked file &gt; 500 KB without explicit principal approval</td>
+        </tr>
+        <tr>
+          <td>File count ceiling for dumps</td>
+          <td>Never commit per-segment checkpoint floods; one archive max, outside main git</td>
+        </tr>
+        <tr>
+          <td>Media</td>
+          <td>Stay in <code>media/</code> (ignored) or sibling; never re-add videos to git</td>
+        </tr>
+        <tr>
+          <td>Lean / Java tooling</td>
+          <td>Build products always local; sources and manifests only in git</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="out-of-scope">9. Out of scope for this plan</h2>
+    <ul>
+      <li>Changing theorem status, PROOF.md mathematical claims, or 10^18 evidence policy language</li>
+      <li>Deleting research prose or source that still defines active work</li>
+      <li>Rewriting Lean proofs or re-vendoring Mathlib as part of size work</li>
+      <li>Optimizing algorithm performance (this is storage layout only)</li>
+    </ul>
+
+    <h2>10. Recommended decision for the principal</h2>
+    <ol>
+      <li><strong>Yes</strong> to sibling artifacts project for evidence + outputs + media.</li>
+      <li><strong>Yes</strong> to deleting scan checkpoint segment floods from git (archive once if desired).</li>
+      <li><strong>Yes</strong> to untracking all <code>output/</code> dumps so policy matches reality.</li>
+      <li>Choose Phase 6 strategy:
+        <ul>
+          <li><strong>B (clean slim remote)</strong> if you want lower operational risk and a Gemini-ready URL fast.</li>
+          <li><strong>A (filter-repo + force-push)</strong> if one URL must stay canonical and history of fat files can die.</li>
+        </ul>
+      </li>
+    </ol>
+    <p>
+      Suggested execution order when you say go:
+      <strong>Phase 0 → 1 → 2 → 3A → 4 → 6 → 7</strong>,
+      with 3B/3C/5 as needed for headroom.
+    </p>
+  </main>
+
+  <footer>
+    Plan artifact: <code>docs/repo-size-reduction/index.html</code> ·
+    Baseline audit date: 2026-08-04 ·
+    Status: planning document only; no cleanup has been executed by writing this file.
+  </footer>
+</body>
+</html>
