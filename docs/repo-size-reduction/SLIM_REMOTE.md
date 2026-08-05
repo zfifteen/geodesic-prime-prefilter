@@ -4,26 +4,29 @@ The fat historical remote `zfifteen/prime-gap-structure` remains as archive hist
 
 ## Clone target for tools (Gemini, etc.)
 
-Prefer the **slim surface** with short history (single root commit, tip only):
+**Published slim remote:**
 
-- Local bare (this machine): `/var/folders/k_/spz3zlj566sc4qh29g0tk6jh0000gn/T/grok-goal-dca5e1f050ba/implementer/prime-gap-structure-slim.git`
-- Export working tree: `/var/folders/k_/spz3zlj566sc4qh29g0tk6jh0000gn/T/grok-goal-dca5e1f050ba/implementer/slim-export`
-- GitHub (if push succeeded): `https://github.com/zfifteen/prime-gap-structure-slim`
-
-## Metrics (measured)
-
-```
- 18M	.git
- 48M	.
-count: 2446
-size: 17.93 MiB
-in-pack: 0
-packs: 0
-size-pack: 0 bytes
-prune-packable: 0
-garbage: 0
-size-garbage: 0 bytes
-clone HEAD: 25.3 MB, 2029 files
+```text
+https://github.com/zfifteen/prime-gap-structure-slim
 ```
 
-Bulk dumps: `../prime-gap-structure-artifacts` (see MANIFEST.md).
+Clone:
+
+```bash
+git clone https://github.com/zfifteen/prime-gap-structure-slim.git
+```
+
+Measured fresh clone (2026-08-05):
+
+| Metric | Value |
+| --- | --- |
+| `.git` | **11 MB** |
+| `size-pack` | **10.89 MiB** |
+| Working tree | **41 MB** |
+| HEAD tip | **25.3 MB / 2034 files** |
+| `scan_checkpoints_*` | 0 |
+| `/output/` dumps | 0 |
+
+Bulk dumps: `../prime-gap-structure-artifacts` (see `MANIFEST.md`).
+
+Stay-thin gate in this tree: `python3 scripts/check_repo_thinness.py`.
