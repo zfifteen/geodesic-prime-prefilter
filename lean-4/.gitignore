@@ -1,4 +1,6 @@
 # Lean 4 + Lake build artifacts
+# Match directory or optional local symlink to external bulk storage.
+.lake
 .lake/
 lake-packages/
 lean_packages/

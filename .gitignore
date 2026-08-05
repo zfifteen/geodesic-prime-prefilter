@@ -18,6 +18,7 @@ docs/deprecated/AGENTS.bak
 **/output/*
 .playwright-cli/
 # Lean 4 formalization artifacts (lean-4/ subdirectory + any stray top-level builds)
+lean-4/.lake
 lean-4/.lake/
 lean-4/lake-packages/
 lean-4/lean_packages/
