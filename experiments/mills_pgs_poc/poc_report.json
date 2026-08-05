@@ -1,0 +1,102 @@
+{
+  "title": "PGS \u2192 Mills Constant Structural Bridge PoC",
+  "description": "Recovers classical Mills primes from successive cubes using only the ordered divisor-count field (PGS Gap Winner + return to d=2). Validates recovery and Bounded Compression on the early terms.",
+  "mills_primes_used": [
+    2,
+    11,
+    1361,
+    2521008887
+  ],
+  "transitions": [
+    {
+      "from_prime": 2,
+      "cube": 8,
+      "known_next": 11,
+      "recovered": 11,
+      "residual": 3,
+      "gap_winner": 9,
+      "gap_winner_d": 3,
+      "gwr_offset": 1,
+      "compression_bound": 64.0,
+      "recovery_ok": true,
+      "compression_ok": true,
+      "divisor_sequence": [
+        [9, 3],
+        [10, 4],
+        [11, 2]
+      ],
+      "notes": []
+    },
+    {
+      "from_prime": 11,
+      "cube": 1331,
+      "known_next": 1361,
+      "recovered": 1361,
+      "residual": 30,
+      "gap_winner": 1333,
+      "gap_winner_d": 4,
+      "gwr_offset": 2,
+      "compression_bound": 64.0,
+      "recovery_ok": true,
+      "compression_ok": true,
+      "divisor_sequence": [
+        [1332, 18],
+        [1333, 4],
+        [1334, 8],
+        [1335, 8],
+        [1336, 8],
+        [1337, 4],
+        [1338, 8],
+        [1339, 4],
+        [1340, 12],
+        [1341, 6],
+        [1342, 8],
+        [1343, 4],
+        [1344, 28],
+        [1345, 4],
+        [1346, 4],
+        [1347, 4],
+        [1348, 6],
+        [1349, 4],
+        [1350, 24],
+        [1351, 4],
+        [1352, 12],
+        [1353, 8],
+        [1354, 4],
+        [1355, 4],
+        [1356, 12],
+        [1357, 4],
+        [1358, 8],
+        [1359, 6],
+        [1360, 20],
+        [1361, 2]
+      ],
+      "notes": []
+    },
+    {
+      "from_prime": 1361,
+      "cube": 2521008881,
+      "known_next": 2521008887,
+      "recovered": 2521008887,
+      "residual": 6,
+      "gap_winner": 2521008883,
+      "gap_winner_d": 8,
+      "gwr_offset": 2,
+      "compression_bound": 235.0,
+      "recovery_ok": true,
+      "compression_ok": true,
+      "divisor_sequence": [
+        [2521008882, 96],
+        [2521008883, 8],
+        [2521008884, 12],
+        [2521008885, 8],
+        [2521008886, 16],
+        [2521008887, 2]
+      ],
+      "notes": []
+    }
+  ],
+  "all_recoveries_ok": true,
+  "all_compressions_ok": true,
+  "summary": "All early Mills transitions recovered exactly from the ordered divisor-count field after the cube. Gap Winner identified in each case; Bounded Compression holds (residuals are far smaller than the Cram\u00e9r-scale bound). This supplies an explicit local structural certificate for the classical Mills recurrence."
+}
