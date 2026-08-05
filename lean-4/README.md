@@ -32,16 +32,47 @@ This is a **downstream verification and audit layer only**.
 
 ## How to Build & Verify
 
-```bash
-# Recommended
-bash ../scripts/lean4-cache-build.sh
+**Fresh clone (default, zero extra configuration):**
 
-# Or manual
+```bash
+cd lean-4
+lake build
+lake env lean smoke-test.lean
+```
+
+Lake creates `lean-4/.lake/` inside the repo automatically. No symlinks, env vars,
+or external directories are required.
+
+**Recommended helper (same default paths):**
+
+```bash
+bash ../scripts/lean4-cache-build.sh
+```
+
+Or manual rebuild:
+
+```bash
 cd lean-4
 rm -rf .lake/build
 lake build
 lake env lean smoke-test.lean
 ```
+
+### Optional: park `.lake` outside the repo (disk / IDE only)
+
+Some machines keep Mathlib and Lake build trees outside the working tree via a
+symlink so the checkout stays smaller on disk. **This is optional.** New users
+must not run it unless they want that layout.
+
+```bash
+# From repo root — only if you want external bulk storage
+bash scripts/link-local-bulk.sh
+# optional: also link media/
+bash scripts/link-local-bulk.sh --with-media
+```
+
+Default bulk root: `~/IdeaProjects/pgs-local-bulk` (override with `PGS_LOCAL_BULK`).
+After linking, `lake build` still uses `lean-4/.lake` as usual (symlink target).
 
 ## Verified Smoke Test Output
 
