@@ -60,3 +60,10 @@ experiments/**/alignment_probe*.json
 experiments/**/weight_gap_table_*.json
 experiments/**/hybrid_decomp_pgs_*.csv
 experiments/**/pgspg_law_matrix.csv
+# Phase 5: keep multi-MB binaries out of git
+visualizations/**/generated/**
+visualizations/conceptual/**/*.png
+visualizations/conceptual/**/*.jpg
+visualizations/core-diagrams/**/*.gif
+website/assets/plates/**/*.png
+**/*.pptx
