@@ -28,6 +28,17 @@ unchanged**. Pin:
 Other secondary: 50-bit residual pin; square-branch audit relay. Do not let those
 displace the top two without a new principal directive.
 
+## Bulk artifacts and slim clone surface (2026-08-05)
+
+Large experiment dumps, factor-brief evidence trees, and scan checkpoints
+**do not live in git**. They were moved to the sibling store
+`../prime-gap-structure-artifacts` (see its `MANIFEST.md` for sha256 rows).
+
+For tool imports with a 100 MB repo cap (for example Gemini), clone the slim
+surface documented in `docs/repo-size-reduction/SLIM_REMOTE.md` and
+`docs/repo-size-reduction/STATUS.md` (GitHub: `zfifteen/prime-gap-structure-slim`).
+Stay-thin gate: `python3 scripts/check_repo_thinness.py`.
+
 ## First 60 Seconds
 
 1. Read `Agents.md` (repo root).
