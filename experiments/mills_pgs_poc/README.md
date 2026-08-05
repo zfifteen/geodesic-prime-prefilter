@@ -30,7 +30,7 @@ $$
 via the recurrence
 
 $$
-p_1 = 2,\qquad p_{n+1} = \operatorname{nextprime}(p_n^3).
+p_1 = 2,\qquad p_{n+1} = \mathrm{nextprime}(p_n^3).
 $$
 
 The existence proof rests on classical results guaranteeing at least one prime in every sufficiently large interval of the form $(x^3,(x+1)^3)$. Under RH the “sufficiently large” restriction can be removed and the sequence may begin at 2.
@@ -48,7 +48,7 @@ PGS supplies a deterministic local rule that *reads* the ordered divisor-count f
 No external PGS documentation is required. The following notions are defined here for the auditor.
 
 **Divisor count.**  
-$d(n) = \#\{k \in \mathbb{Z}^+ : k \mid n\}$.
+$d(n)$ is the number of positive divisors of $n$.
 
 **Ordered divisor-count field after a cube.**  
 Given a cube $c = p^3$, consider the sequence of pairs $(n,d(n))$ for $n = c+1, c+2, \dots$ until the first $n$ with $d(n)=2$.
@@ -124,7 +124,7 @@ All recoveries exact. All residuals match the classical sequence. Bounded Compre
 
 ## 6. What This Demonstrates for a Mills Expert
 
-- The classical recurrence $p_{n+1}=\operatorname{nextprime}(p_n^3)$ can be realised by a purely local arithmetic walk that never consults an external prime-table or probabilistic test; it only counts divisors and applies the leftmost-min-$d$ rule.
+- The classical recurrence $p_{n+1}=\mathrm{nextprime}(p_n^3)$ can be realised by a purely local arithmetic walk that never consults an external prime-table or probabilistic test; it only counts divisors and applies the leftmost-min-$d$ rule.
 - Each transition receives an explicit structural certificate: the complete (tiny) ordered divisor field together with a canonically chosen interior landmark (the Gap Winner).
 - The same local rules that the PGS project uses for ordinary successive primes also locate the special primes that appear in the Mills construction.
 - The experiment is fully reproducible and the certificates are machine-checkable.
