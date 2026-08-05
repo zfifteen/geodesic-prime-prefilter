@@ -9,29 +9,37 @@
 
 ## 1. Purpose and Scope
 
-Mills’ theorem (1947) asserts the existence of a real constant \(A > 1\) such that
-\[
+Mills’ theorem (1947) asserts the existence of a real constant $A > 1$ such that
+
+$$
 \lfloor A^{3^n} \rfloor
-\]
-is prime for every positive integer \(n\). The *least* such \(A\) (under the Riemann Hypothesis) begins
-\[
+$$
+
+is prime for every positive integer $n$. The *least* such $A$ (under the Riemann Hypothesis) begins
+
+$$
 1.30637788386308069046\ldots
-\]
+$$
+
 and generates the sequence of **Mills primes**
-\[
+
+$$
 2,\; 11,\; 1361,\; 2521008887,\; \ldots
-\]
+$$
+
 via the recurrence
-\[
-p_1 = 2,\qquad p_{n+1} = \text{nextprime}(p_n^3).
-\]
-The existence proof rests on classical results guaranteeing at least one prime in every sufficiently large interval of the form \((x^3,(x+1)^3)\). Under RH the “sufficiently large” restriction can be removed and the sequence may begin at 2.
+
+$$
+p_1 = 2,\qquad p_{n+1} = \operatorname{nextprime}(p_n^3).
+$$
+
+The existence proof rests on classical results guaranteeing at least one prime in every sufficiently large interval of the form $(x^3,(x+1)^3)$. Under RH the “sufficiently large” restriction can be removed and the sequence may begin at 2.
 
 This PoC does **not** claim a new proof of the short-interval estimates.  
 It demonstrates that the *local arithmetic structure* studied by the PGS project recovers exactly the same sequence when the walk is started from each successive cube, and that it supplies an explicit, inspectable structural certificate for each transition.
 
 In other words: the classical argument says “a prime exists inside the cube interval.”  
-PGS supplies a deterministic local rule that *reads* the ordered divisor-count field after the cube and identifies both a canonical interior landmark (the Gap Winner) and the endpoint prime (the first return of \(d(n)\) to 2).
+PGS supplies a deterministic local rule that *reads* the ordered divisor-count field after the cube and identifies both a canonical interior landmark (the Gap Winner) and the endpoint prime (the first return of $d(n)$ to 2).
 
 ---
 
@@ -40,24 +48,26 @@ PGS supplies a deterministic local rule that *reads* the ordered divisor-count f
 No external PGS documentation is required. The following notions are defined here for the auditor.
 
 **Divisor count.**  
-\(d(n) = \#\{k \in \mathbb{Z}^+ : k \mid n\}\).
+$d(n) = \#\{k \in \mathbb{Z}^+ : k \mid n\}$.
 
 **Ordered divisor-count field after a cube.**  
-Given a cube \(c = p^3\), consider the sequence of pairs \((n,d(n))\) for \(n = c+1, c+2, \dots\) until the first \(n\) with \(d(n)=2\).
+Given a cube $c = p^3$, consider the sequence of pairs $(n,d(n))$ for $n = c+1, c+2, \dots$ until the first $n$ with $d(n)=2$.
 
 **Gap Winner (GWR).**  
-Among the composite integers that appear before the first return to \(d=2\), the Gap Winner is the *leftmost* integer that realises the global minimum of \(d(n)\) in that initial segment.  
-(Equivalently, in the fuller PGS development it maximises the raw-\(Z\) score \(Z(n) = n^{1-d(n)/2}\); the leftmost-min-\(d\) characterisation is sufficient for this PoC.)
+Among the composite integers that appear before the first return to $d=2$, the Gap Winner is the *leftmost* integer that realises the global minimum of $d(n)$ in that initial segment.  
+(Equivalently, in the fuller PGS development it maximises the raw-$Z$ score $Z(n) = n^{1-d(n)/2}$; the leftmost-min-$d$ characterisation is sufficient for this PoC.)
 
 **Next prime rule (local).**  
-The first integer after the cube whose divisor count equals 2 is prime (by definition of \(d\)) and is the candidate for the next Mills prime.
+The first integer after the cube whose divisor count equals 2 is prime (by definition of $d$) and is the candidate for the next Mills prime.
 
 **Bounded Compression (statement used here).**  
 The offset of the Gap Winner from the left reference point satisfies
-\[
+
+$$
 \text{offset} \le \max\bigl(64,\lceil\tfrac12(\log q)^2\rceil\bigr),
-\]
-where \(q\) is the recovered prime. This is the quantitative form proved (and computationally validated to \(10^{18}\)) in the main PGS repository; the early Mills residuals are far smaller than the bound, so the check is trivial but still recorded.
+$$
+
+where $q$ is the recovered prime. This is the quantitative form proved (and computationally validated to $10^{18}$) in the main PGS repository; the early Mills residuals are far smaller than the bound, so the check is trivial but still recorded.
 
 These four notions are the only PGS machinery required for the experiment.
 
@@ -65,17 +75,17 @@ These four notions are the only PGS machinery required for the experiment.
 
 ## 3. Experimental Design
 
-1. Take the classical Mills primes (RH-dependent least sequence) up to the fourth term (the fifth term is \(\sim 10^{28}\) and is not walked).
-2. For each consecutive pair \(p \to p'\):
-   - Compute the cube \(c = p^3\).
-   - Walk \(n = c+1, c+2, \dots\), recording \(d(n)\), until \(d(n)=2\).
-   - Identify the Gap Winner by the leftmost-min-\(d\) rule.
+1. Take the classical Mills primes (RH-dependent least sequence) up to the fourth term (the fifth term is $\sim 10^{28}$ and is not walked).
+2. For each consecutive pair $p \to p'$:
+   - Compute the cube $c = p^3$.
+   - Walk $n = c+1, c+2, \dots$, recording $d(n)$, until $d(n)=2$.
+   - Identify the Gap Winner by the leftmost-min-$d$ rule.
    - Verify that the recovered integer equals the known next Mills prime.
    - Verify that the residual matches the known OEIS A108739 entry.
    - Verify that the Gap Winner offset satisfies the Bounded Compression inequality.
 3. Emit both a human-readable report and a machine-readable JSON certificate.
 
-The walks are tiny (residuals 3, 30 and 6 respectively), so the experiment is fully rigorous and independent of any external primality test beyond the definition \(d(n)=2\).
+The walks are tiny (residuals 3, 30 and 6 respectively), so the experiment is fully rigorous and independent of any external primality test beyond the definition $d(n)=2$.
 
 ---
 
@@ -102,11 +112,11 @@ and shows the three ordered divisor fields with the Gap Winner and the recovered
 
 ## 5. Results (verified on 2026-08-05)
 
-| Transition | Cube          | Residual | Gap Winner     | GWR \(d\) | Offset | Bound | Recovered prime   | Status |
-|------------|---------------|----------|----------------|-----------|--------|-------|-------------------|--------|
-| \(2\to11\) | 8             | 3        | 9              | 3         | 1      | 64    | 11                | PASS   |
-| \(11\to1361\) | 1331       | 30       | 1333           | 4         | 2      | 64    | 1361              | PASS   |
-| \(1361\to2521008887\) | 2521008881 | 6 | 2521008883 | 8     | 2      | 235   | 2521008887        | PASS   |
+| Transition | Cube          | Residual | Gap Winner     | GWR $d$ | Offset | Bound | Recovered prime   | Status |
+|------------|---------------|----------|----------------|---------|--------|-------|-------------------|--------|
+| $2\to11$ | 8             | 3        | 9              | 3         | 1      | 64    | 11                | PASS   |
+| $11\to1361$ | 1331       | 30       | 1333           | 4         | 2      | 64    | 1361              | PASS   |
+| $1361\to2521008887$ | 2521008881 | 6 | 2521008883 | 8     | 2      | 235   | 2521008887        | PASS   |
 
 All recoveries exact. All residuals match the classical sequence. Bounded Compression holds. The ordered fields are short enough to be inspected by hand.
 
@@ -114,7 +124,7 @@ All recoveries exact. All residuals match the classical sequence. Bounded Compre
 
 ## 6. What This Demonstrates for a Mills Expert
 
-- The classical recurrence \(p_{n+1}=\operatorname{nextprime}(p_n^3)\) can be realised by a purely local arithmetic walk that never consults an external prime-table or probabilistic test; it only counts divisors and applies the leftmost-min-\(d\) rule.
+- The classical recurrence $p_{n+1}=\operatorname{nextprime}(p_n^3)$ can be realised by a purely local arithmetic walk that never consults an external prime-table or probabilistic test; it only counts divisors and applies the leftmost-min-$d$ rule.
 - Each transition receives an explicit structural certificate: the complete (tiny) ordered divisor field together with a canonically chosen interior landmark (the Gap Winner).
 - The same local rules that the PGS project uses for ordinary successive primes also locate the special primes that appear in the Mills construction.
 - The experiment is fully reproducible and the certificates are machine-checkable.
@@ -135,7 +145,7 @@ It does **not** replace the analytic work that guarantees a prime exists inside 
 ## 8. Suggested Audit Checklist for a Third Party
 
 - [ ] Run the script; confirm all assertions pass and the printed residuals match OEIS A108739.
-- [ ] Manually recompute \(d(n)\) for the three short fields and verify the leftmost-min-\(d\) selection.
+- [ ] Manually recompute $d(n)$ for the three short fields and verify the leftmost-min-$d$ selection.
 - [ ] Confirm that the recovered integers are indeed the classical Mills primes.
 - [ ] Read the self-contained definitions in §2; decide whether they are unambiguous.
 - [ ] Decide whether the structural certificates add useful information beyond the bare residual sequence.
