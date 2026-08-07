@@ -61,17 +61,23 @@ committed ladder:
 
 ```text
 rsa_v2_40bit_static_001: factor_found = true
-rsa_v2_50bit_static_001: factor_found = false
+rsa_v2_50bit_static_001: factor_found = false   (v2 runner pin)
 rsa_v2_64bit_static_001: factor_found = true
 ```
 
 The 40-bit row is measured and audit-confirmed after public PGS endpoint-class
 inference. The 64-bit row is measured and audit-confirmed after public mutual
-certificate closure. The 50-bit row is unresolved before audit and emits no
-public endpoint class. On the rsa-v3 residual stack the same fixture’s residual
-code migrates under public geometry (carrier misalignment → first-tail → joint
-cell `C1T2L1`) while remaining **unresolved**; see
-`experiments/live-solver/rsa-v3/output/residual_cell_C1T2L1/`.
+certificate closure. The 50-bit row under the **v2 runner** remains unresolved
+before audit. On the **rsa-v3 residual stack**, V2 named joint cell C1T2L1;
+V3 carrier reciprocal closure (2026-08-07) finds the public pair
+`(32047633, 32059651)` with `N//L == U` and `N//U == L`, remainder 6170868,
+`delta_c = 30 ≤ boundD = 45`, deadline=tail signatures match, historical false
+class blocked. Emitted under `resolved_by = carrier_reciprocal_closure` and
+`closure_status = endpoint_class_by_reciprocal_deadline_signature_correction`.
+Status: **measured-on-regime-only / hypothesis**. Not a theorem. Not a
+factorisation claim. First-tail window fixed at `[-12, 6]`. See
+`experiments/live-solver/rsa-v3/residual_discriminator_v2/` and
+`experiments/live-solver/rsa-v3/output/DOCUMENTATION_LOCK_50BIT_V3.md`.
 
 256-bit expansion added rsa_v2_128bit_static_001 and rsa_v2_256bit_static_001
 (curated from scaleup corpus). Both return unresolved_by_missing_lower_certificate
@@ -82,7 +88,8 @@ Erratum: earlier OECC_LINEAR_V1 and OECC_RECURSIVE_V2 wording used `resolved`
 and `p` / `q` for audit-failing endpoint classes. That wording is invalidated.
 The historical 50-bit mutual-closure result is a rejected public-structure
 candidate, not a factor solve. The current live runner preserves the
-audit-confirmed 64-bit endpoint class and rejects the 50-bit false positive.
+audit-confirmed 64-bit endpoint class and rejects the 50-bit false positive
+under the v2 path; the rsa-v3 V3 probe supplies the measured reciprocal candidate.
 
 The former PGS-Shor HTML documentation is archived at
 `archive/2026-05-13-shor-order-entropy-sidecar/` because Shor is downstream
@@ -108,21 +115,23 @@ factorization result unless downstream audit reports `factor_found = true`.
 ## Unresolved State
 
 The RSA v2 factor-pair state remains unresolved where the audit says
-`factor_found = false`. The 50-bit row is unresolved before audit and is not a
-factor solve.
+`factor_found = false`. The 50-bit row under the **v2 runner** is unresolved
+before audit and is not a factor solve.
 
-**Measured residual progress (rsa-v3, still unresolved):** dual-gap residual
-discriminator D cleared the old carrier residual on the 50-bit pin; residual
-then named first-tail, then joint residual cell
-`unresolved_by_joint_cell_C1T2L1` with residual vector R = (1, 2, 1) and
-pinch_S = 54 (public certificate fields only). Residual maps remain
-**hypothesis**. Continuity pin:
+**Measured residual progress (rsa-v3):** dual-gap residual discriminator D
+cleared the old carrier residual on the 50-bit pin; residual then named
+first-tail, then joint residual cell `unresolved_by_joint_cell_C1T2L1` with
+residual vector R = (1, 2, 1) and pinch_S = 54. V3 carrier reciprocal closure
+(2026-08-07) finds a public reciprocal floor pair and emits under
+`resolved_by_carrier_reciprocal_closure`. Residual maps remain **hypothesis**.
+Continuity pin:
 `research/00-index/continuity/notes/ACTIVE_GOAL_50bit_residual_discriminator.md`.
 
 **Active residual pressure:** keep 50-bit honesty (no window widen, no classical
-smuggle, anti-admit false class `(32047651, 32059633)`); pressure joint residual
-geometry only with public fields. Separation of true public endpoint class from
-rejected closure candidates remains the open residual target.
+smuggle, anti-admit false class `(32047651, 32059633)`); integrate the V3 probe
+into the live resolver when ready. Separation of true public endpoint class from
+rejected closure candidates remains the open residual target under measured-only
+language.
 
 ## Reproduce
 
@@ -136,4 +145,4 @@ python3 -m pytest research/06-cryptology-rsa/tests/test_rsa_v2_scripts.py -q
 ## Provenance
 
 Created as a skeleton in Phase 1. Finalized as a mapped cryptology chapter in
-Phase 5 of the repository reorganization.
+Phase 5 of the repository reorganization. 50-bit V3 path recorded 2026-08-07.
