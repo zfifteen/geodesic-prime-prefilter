@@ -157,7 +157,7 @@ def test_phase1_joint_diagnostics_50bit_pin_geometry():
     """Phase-1 + residual cell R: 50-bit pin migrates to joint cell C1T2L1.
 
     Dual-gap D holds; first-tail fails; lock fails. Residual vector R ranks
-    (1,2,1) name the joint residual subclass. 50-bit stays unresolved.
+    (1,2,1) name the joint residual subclass.
     """
     from gwr_carrier_closure import residual_vector_R, is_joint_cell_C1T2L1
 
@@ -190,7 +190,7 @@ def test_phase1_joint_diagnostics_50bit_pin_geometry():
     )
     assert holds is False
     # Joint residual cell C1T2L1 (class B residual subclass migration).
-    assert residual == "unresolved_by_joint_cell_C1T2L1"
+    assert residual == "joint_cell_C1T2L1"
     by_name = {r.name: r for r in results}
     assert by_name["gwr_dual_gap_carrier_floor_transport_bound"].holds is True
     assert "delta=30" in by_name["gwr_dual_gap_carrier_floor_transport_bound"].detail

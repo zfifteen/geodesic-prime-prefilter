@@ -29,9 +29,9 @@ def evaluate_v2(
 ) -> dict[str, Any]:
     """PGS-native v2 residual refinement for joint cell C1T2L1.
 
-    Returns a residual package. 50-bit false geometry stays unresolved under
-    a sharper residual code that names the exact boundary obstruction.
-    Does not emit a resolved endpoint class for the 50-bit pin.
+    Returns a residual package. 50-bit false geometry receives a sharper
+    residual code that names the exact boundary obstruction.
+    Does not emit a resolved endpoint class for the 50-bit pin under V2.
     """
     # Public floor transport only (same primitive already used by gwr_carrier_closure).
     carrier_w = int(lower["carrier_w"])
@@ -143,8 +143,8 @@ def evaluate_v2(
     tail_at_minus_22_boundary = delta_t == -22
     carrier_loose = TIGHT < delta_c <= boundD
 
-    # v2 refinement: only when R == (1, 2, 1). Keep unresolved. Sharper code names
-    # the exact public geometry. No resolved emit for the 50-bit false pin.
+    # v2 refinement: only when R == (1, 2, 1). Sharper code names
+    # the exact public geometry. No resolved emit for the 50-bit false pin under V2.
     new_code: str | None
     if is_joint:
         if (
@@ -155,10 +155,10 @@ def evaluate_v2(
             and has_deadline_tail
         ):
             new_code = (
-                "unresolved_by_joint_cell_C1T2L1_v2_tail_boundary_lock_quarter_S54"
+                "joint_cell_C1T2L1_v2_tail_boundary_lock_quarter_S54"
             )
         else:
-            new_code = "unresolved_by_joint_cell_C1T2L1_v2_generic"
+            new_code = "joint_cell_C1T2L1_v2_generic"
     else:
         new_code = None
 
@@ -174,7 +174,7 @@ def evaluate_v2(
         "tail_offset": tail_offset_value,
         "reset_sig_contains_deadline_tail": has_deadline_tail,
         "is_joint_cell": is_joint,
-        "status": "unresolved" if new_code is not None else "not_c1t2l1",
+        "status": "residual" if new_code is not None else "not_c1t2l1",
         # Diagnostics only; not used for inference decisions.
         "existing_r": existing_r,
         "existing_s": existing_s,
@@ -300,7 +300,7 @@ def main() -> int:
     by_pin = {r["pin"]: r for r in rows}
     ok = True
     if by_pin["50bit_FP"].get("residual_code") != (
-        "unresolved_by_joint_cell_C1T2L1_v2_tail_boundary_lock_quarter_S54"
+        "joint_cell_C1T2L1_v2_tail_boundary_lock_quarter_S54"
     ):
         print("FAIL: 50-bit did not receive sharper v2 residual code")
         ok = False
