@@ -84,8 +84,11 @@ Live residual codes (honest subclass migration; all **hypothesis** residual maps
 | Later lock / profile fail when residual still open | corresponding lock/profile residual |
 
 Measured 50-bit pin (regression fixtures): residual migrates to
-`unresolved_by_joint_cell_C1T2L1` with `pinch_S = 54`; no endpoint class.
-Package: `output/residual_cell_C1T2L1/`.
+`unresolved_by_joint_cell_C1T2L1` with `pinch_S = 54` under the V1/V2 residual path.
+V3 carrier reciprocal closure (2026-08-07) finds public pair `(32047633, 32059651)`
+and emits under `resolved_by_carrier_reciprocal_closure`. Status:
+measured-on-regime-only / hypothesis. Package: `residual_discriminator_v2/` and
+`output/DOCUMENTATION_LOCK_50BIT_V3.md`.
 
 ### Stage 8: Emit
 
