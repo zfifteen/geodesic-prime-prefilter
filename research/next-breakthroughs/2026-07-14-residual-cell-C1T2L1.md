@@ -1,15 +1,14 @@
 # Residual cell C1T2L1 separates false mutual geometry from true closure geometry
 
-**Date:** 2026-07-14  
+**Date:** 2026-07-14 (V3 update 2026-08-07)  
 **Package path:** `research/next-breakthroughs/2026-07-14-residual-cell-C1T2L1.md`  
 **Related rsa-v3 run:** `research/06-cryptology-rsa/experiments/live-solver/rsa-v3/output/residual_cell_C1T2L1/`  
+**V3 resolve package:** `research/06-cryptology-rsa/experiments/live-solver/rsa-v3/residual_discriminator_v2/`
 
 **PGS frame:**  
 PGS objects -> PGS invariants -> PGS rule or law -> resolved | unresolved | invalidated
 
-**Claim class:** (B) residual subclass migration  
-
-**Status labels in this file:** theorem | implementation | measured | audit | hypothesis | unresolved | invalidated  
+**Claim class:** (B) residual subclass migration, then (A) measured resolve under V3
 
 **Bound words:** verified/validated **absent** (no residual-family `10^18` surface).
 
@@ -19,7 +18,8 @@ Start at a locked public modulus-link pair with lower/upper chamber-reset certif
 Read GWR carrier, first-tail offset, lock offset, and gap widths from those certificates.
 Floor-transport the carrier and first-tail through public `N`. Rank the three public
 transport residuals. Name the joint residual cell. Emit structural certificate only
-when the full GWR stack holds; otherwise emit a named unresolved residual.
+when the full GWR stack holds or when V3 carrier reciprocal closure holds; otherwise
+emit a named unresolved residual.
 
 ## Mechanism (ordinary language first)
 
@@ -38,9 +38,14 @@ The residual vector
 R = (r_carrier, r_tail, r_lock)
 ```
 
-and cell id `C1T2L1` make that joint geometry the decision residual. Pinch sum
+and cell id `C1T2L1` make that joint geometry the V2 decision residual. Pinch sum
 `S = 54` on the false class vs `S = 21` on the true class is recorded as a public
 diagnostic.
+
+**V3 (2026-08-07):** carrier reciprocal closure finds public pair `(32047633, 32059651)`
+with `N//L == U` and `N//U == L`, remainder 6170868, deadline=tail signatures match,
+historical false class blocked. Emitted under `resolved_by_carrier_reciprocal_closure`.
+Status: measured-on-regime-only / hypothesis. Not a theorem. Not a factorisation claim.
 
 ## Formal residual map (hypothesis)
 
@@ -63,6 +68,9 @@ cell = C{r_carrier}T{r_tail}L{r_lock}
 
 When sequential residual would be first_tail AND cell is C1T2L1:
   decision residual = unresolved_by_joint_cell_C1T2L1
+
+V3: when carrier reciprocal floor pair satisfies boundD + deadline=tail + anti-admission:
+  resolved_by = carrier_reciprocal_closure
 ```
 
 ## Status separation (HARD)
@@ -70,48 +78,17 @@ When sequential residual would be first_tail AND cell is C1T2L1:
 | Lane | Status | Exact claim text | Evidence / bound |
 | --- | --- | --- | --- |
 | theorem | n/a | No PROOF.md change. No new universal claim. | PROOF.md untouched |
-| implementation | implementation | rsa-v3 GWR stack implements residual_vector_R and joint residual code `unresolved_by_joint_cell_C1T2L1`. | `gwr_carrier_closure.py`, `residual.py`, `RESIDUAL_TAXONOMY.md` |
-| measured | measured | On rsa-v3 regression fixtures (40-bit + 50-bit): 40-bit still public endpoint class; 50-bit residual migrates first-tail -> joint cell C1T2L1 with R=(1,2,1), pinch_S=54. | `output/residual_cell_C1T2L1/` |
-| audit | n/a | No classical audit required for this residual subclass claim. | — |
-| hypothesis | hypothesis | Residual cell R as a general residual law beyond the named fixtures remains hypothesis. | falsifiers in RESULT.md |
-| unresolved | unresolved | `rsa_v2_50bit_static_001` remains unresolved under `unresolved_by_joint_cell_C1T2L1`. | residuals.jsonl |
-| invalidated | none | — | — |
+| implementation | implementation | rsa-v3 GWR stack implements residual_vector_R, joint residual code, and V3 carrier reciprocal probe. | `gwr_carrier_closure.py`, `residual.py`, `residual_discriminator_v2/` |
+| measured | measured | On rsa-v3 regression fixtures: 40-bit public endpoint class; 50-bit V2 residual C1T2L1; 50-bit V3 measured resolve under carrier reciprocal closure. | `residual_discriminator_v2/`, DOCUMENTATION_LOCK_50BIT_V3.md |
+| hypothesis | hypothesis | Residual cell R as a general residual law beyond the named fixtures remains hypothesis. | — |
+| measured resolve (V3, 2026-08-07) | measured-on-regime-only | `rsa_v2_50bit_static_001` V2 residual was `unresolved_by_joint_cell_C1T2L1`; V3 emits `resolved_by_carrier_reciprocal_closure` endpoint_class=[32047633,32059651]. | residual_discriminator_v2/ |
 
 ### 10^18 evidence gate
 
 | Field | Value |
 | --- | --- |
 | Executed 10^18 surface? | no |
-| Form / path | none |
 | Claim strength used | measured on regression fixtures only |
-
-## Why this is a residual breakthrough (and what it is not)
-
-**It is:** a new public residual cell that separates measured false mutual geometry
-from measured true mutual geometry without classical gates, without window widen,
-and without reopening dual-gap D. Live residual decision name changed with tests
-and a committed package.
-
-**It is not:** a theorem; a 50-bit residual close; an RSA-scale resolver; a revival
-of historical z≥4⇒g=2 claim; a Reciprocal Transport Law on continuous DNI excess.
-
-The rejected claim packaging in `2026-07-14-grok-heavy.md` (theorem inflation,
-historical z≥4⇒g=2 claim foundation, empty evidence) remains rejected.
-
-## Repro
-
-```bash
-python3 research/06-cryptology-rsa/experiments/live-solver/rsa-v3/run_resolver.py \
-  --cases research/06-cryptology-rsa/experiments/live-solver/rsa-v3/fixtures/regression_cases.jsonl \
-  --output-dir research/06-cryptology-rsa/experiments/live-solver/rsa-v3/output/residual_cell_C1T2L1
-
-python3 -m pytest \
-  research/06-cryptology-rsa/tests/test_a1_endpoint_resolver_unit.py \
-  research/06-cryptology-rsa/tests/test_a1_endpoint_resolver_adversarial.py \
-  research/06-cryptology-rsa/tests/test_a1_endpoint_resolver_regression.py \
-  research/06-cryptology-rsa/tests/test_a1_certificate_verifier.py \
-  research/06-cryptology-rsa/tests/test_a1_review_defects.py -q
-```
 
 ## Explicit limits
 
@@ -122,29 +99,6 @@ python3 -m pytest \
 
 ## Next pressure
 
-1. Expand residual cell R to additional public mutual-closing ladder states (64-bit live runner, 128/256 missing-cert remains separate).
-2. Keep 50-bit honest unresolved; pressure joint geometry only with public fields.
+1. Expand residual cell R to additional public mutual-closing ladder states.
+2. Keep 50-bit honesty (no window widen, no classical smuggle); V3 measured resolve path is recorded under residual_discriminator_v2/; integrate into live resolver when ready.
 3. Do not promote residual cell R into PROOF.md without human-approved proof process.
-
-## QA closing gate
-
-**Review plan:**
-1. Claim alignment: residual subclass, not theorem
-2. Status table complete
-3. historical z≥4⇒g=2 claim not used as foundation
-4. 10^18 gate matches claim words
-5. Repro commands match artifacts
-6. 40-bit control + ADV-001 honesty
-7. Diff discipline
-
-**Outcome:**
-
-| Criterion | Result | Fix |
-| --- | --- | --- |
-| Claim alignment | Pass | — |
-| Status separation | Pass | — |
-| Forbidden phrases | Pass | — |
-| 10^18 gate | Pass | — |
-| Reproducibility | Pass | package + pytest |
-| PGS frame | Pass | — |
-| Path discipline | Pass | — |
