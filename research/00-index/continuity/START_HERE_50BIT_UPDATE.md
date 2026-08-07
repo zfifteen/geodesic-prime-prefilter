@@ -4,8 +4,8 @@ This file is the canonical bootstrap. The 50-bit residual status has changed.
 
 ## 50-bit measured resolve (rsa-v3, 2026-08-07)
 
-V2 kept the pin unresolved under
-`unresolved_by_joint_cell_C1T2L1_v2_tail_boundary_lock_quarter_S54`.
+V2 residual geometry was named under
+`joint_cell_C1T2L1_v2_tail_boundary_lock_quarter_S54`.
 
 V3 carrier reciprocal closure finds public pair `(32047633, 32059651)`:
 - N//L == U and N//U == L

@@ -5,7 +5,7 @@ Status: measured-on-regime-only / hypothesis. No 10^18 surface claim. PROOF.md u
 
 ## Summary of V2 → V3 transition
 
-V2 named the exact residual geometry of the 50-bit joint cell C1T2L1 and kept the pin unresolved under the sharper code unresolved_by_joint_cell_C1T2L1_v2_tail_boundary_lock_quarter_S54. All ordered tail offsets (first and secondary, both directions) miss the fixed window [-12, 6].
+V2 named the exact residual geometry of the 50-bit joint cell C1T2L1 under residual code joint_cell_C1T2L1_v2_tail_boundary_lock_quarter_S54. All ordered tail offsets (first and secondary, both directions) miss the fixed window [-12, 6].
 
 V3 discovers a public reciprocal floor pair from the GWR carrier itself:
 
@@ -33,7 +33,7 @@ The carrier is already a PGS object (GWR leftmost minimum). Floor transport of t
 
 - Integration of the v3 probe logic into resolver.py (still additive only).
 - Full local pytest research/06-cryptology-rsa/tests/test_a1_* -q (pending complete checkout).
-- Human review before any promotion of the new residual code into PROOF.md.
+- Human review before any promotion of residual geometry language into PROOF.md.
 
 ## Contract statements that stay true
 

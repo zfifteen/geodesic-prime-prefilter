@@ -1,4 +1,4 @@
-# Continuity Note: 50-bit Joint Cell C1T2L1 - V2 Sharper Unresolved to V3 Carrier Reciprocal Resolved
+# Continuity Note: 50-bit Joint Cell C1T2L1 - V2 Sharper Residual to V3 Carrier Reciprocal Resolved
 
 Updated: 2026-08-07
 Status of this note: operational continuity (not a theorem surface). Measured-on-regime-only / hypothesis.
@@ -21,12 +21,12 @@ closure_status = endpoint_class_by_reciprocal_deadline_signature_correction
 
 ## V1
 
-unresolved_by_joint_cell_C1T2L1  
+joint_cell_C1T2L1  
 R=(1,2,1) S=54 delta_c=30 boundD=45 delta_t=-22 lock_at_quarter=True tail_at_boundary=True
 
 ## V2
 
-unresolved_by_joint_cell_C1T2L1_v2_tail_boundary_lock_quarter_S54  
+joint_cell_C1T2L1_v2_tail_boundary_lock_quarter_S54  
 Same geometry numbers.  
 Anti-admission (32047651,32059633): probe_emits_resolved=False.
 
@@ -65,8 +65,8 @@ Full pytest research/06-cryptology-rsa/tests/test_a1_* -q is pending a complete 
 
 ## Files and SHAs
 
-- residual_discriminator_v2/probe_c1t2l1_v2.py (blob 2b35cfd41f14877d97da3e1d88754a4de3e6fba4)
-- residual_discriminator_v2/probe_c1t2l1_v3_resolve.py (SHA-256 26938bb871a6f247e9d09b519835eab30bad86829a5199aa0ea761538afd7eca)
+- residual_discriminator_v2/probe_c1t2l1_v2.py
+- residual_discriminator_v2/probe_c1t2l1_v3_resolve.py
 - residual_discriminator_v2/RESIDUAL_TAXONOMY_V2_ADDENDUM.md
 - residual_discriminator_v2/CONTINUITY_NOTE.md (this file)
 - output/residual_discriminator_v2_report.html
