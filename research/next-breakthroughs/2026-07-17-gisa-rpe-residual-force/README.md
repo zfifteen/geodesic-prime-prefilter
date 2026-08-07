@@ -14,7 +14,7 @@ Two-part documentation of the residual-force breakthrough **candidate** selected
 ## Status ceiling (do not upgrade)
 
 - **hypothesis** residual-force law + **measured** pin arithmetic
-- 50-bit fixture still **unresolved**
+- 50-bit fixture: V2 residual unresolved under joint cell; V3 (2026-08-07) measured resolve under carrier reciprocal closure (measured-on-regime-only / hypothesis)
 - not a theorem; not RSA-scale resolution
 - no residual-family **verified/validated** language (no residual-family `10^18` surface)
 - residual cell `C1T2L1` is prior honesty packaging (2026-07-14), not rebranded as this novelty
