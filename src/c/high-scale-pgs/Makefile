@@ -7,8 +7,14 @@
 # Usage:
 #   make       - Build library, CLI, and tests
 #   make test  - Build and run tests
+#   make test-mpz-overflow - Build and run Phase 2 overflow boundary suite
 #   make clean - Clean build artifacts
 #   make info  - Show build configuration
+#
+# Phase 2 continuity (128-bit rung):
+#   First concrete deliverable is the mpz_t overflow suite for [2^63, 2^65].
+#   Run: make test-mpz-overflow
+#   Do not proceed to V3 reciprocal-closure wiring until that target is green.
 
 .DEFAULT_GOAL := all
 
@@ -69,6 +75,8 @@ TEST_WHEEL_SOURCE := $(TEST_DIR)/test_wheel.c
 TEST_WHEEL_OBJECT := $(BUILD_DIR)/test_wheel.o
 TEST_INTEGER_CHAMBER_SOURCE := $(TEST_DIR)/test_integer_chamber.c
 TEST_INTEGER_CHAMBER_OBJECT := $(BUILD_DIR)/test_integer_chamber.o
+TEST_MPZ_OVERFLOW_SOURCE := $(TEST_DIR)/test_mpz_overflow_boundary.c
+TEST_MPZ_OVERFLOW_OBJECT := $(BUILD_DIR)/test_mpz_overflow_boundary.o
 RESEARCH_BATCH_CLOSURE_SOURCE := $(RESEARCH_DIR)/batch_closure_chamber_probe.c
 RESEARCH_BATCH_CLOSURE_OBJECT := $(BUILD_DIR)/batch_closure_chamber_probe.o
 RESEARCH_DIVISOR_COST_SOURCE := $(RESEARCH_DIR)/gmp_divisor_state_cost_probe.c
@@ -91,6 +99,7 @@ TEST_SCAFFOLD_EXECUTABLE := $(BIN_DIR)/test_scaffold
 TEST_EMIT_EXECUTABLE := $(BIN_DIR)/test_emit
 TEST_WHEEL_EXECUTABLE := $(BIN_DIR)/test_wheel
 TEST_INTEGER_CHAMBER_EXECUTABLE := $(BIN_DIR)/test_integer_chamber
+TEST_MPZ_OVERFLOW_EXECUTABLE := $(BIN_DIR)/test_mpz_overflow_boundary
 RESEARCH_BATCH_CLOSURE_EXECUTABLE := $(BIN_DIR)/batch_closure_chamber_probe
 RESEARCH_DIVISOR_COST_EXECUTABLE := $(BIN_DIR)/gmp_divisor_state_cost_probe
 RESEARCH_OPTION_FEASIBILITY_EXECUTABLE := $(BIN_DIR)/pgs_option_feasibility_probe
@@ -170,6 +179,14 @@ $(TEST_INTEGER_CHAMBER_EXECUTABLE): $(TEST_INTEGER_CHAMBER_OBJECT) $(STATIC_LIB)
 	@echo "Linking test_integer_chamber executable..."
 	@$(CC) $(TEST_INTEGER_CHAMBER_OBJECT) $(STATIC_LIB) $(LDFLAGS) -o $@
 
+$(TEST_MPZ_OVERFLOW_OBJECT): $(TEST_MPZ_OVERFLOW_SOURCE) | $(BUILD_DIR)
+	@echo "Compiling test_mpz_overflow_boundary..."
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+$(TEST_MPZ_OVERFLOW_EXECUTABLE): $(TEST_MPZ_OVERFLOW_OBJECT) $(STATIC_LIB) | $(BIN_DIR)
+	@echo "Linking test_mpz_overflow_boundary executable..."
+	@$(CC) $(TEST_MPZ_OVERFLOW_OBJECT) $(STATIC_LIB) $(LDFLAGS) -o $@
+
 $(RESEARCH_BATCH_CLOSURE_OBJECT): $(RESEARCH_BATCH_CLOSURE_SOURCE) | $(BUILD_DIR)
 	@echo "Compiling batch_closure_chamber_probe..."
 	@$(CC) $(CFLAGS) -c $< -o $@
@@ -210,7 +227,7 @@ $(RESEARCH_WITNESS_MINER_EXECUTABLE): $(RESEARCH_WITNESS_MINER_OBJECT) $(STATIC_
 	@echo "Linking pgs_witness_miner_probe executable..."
 	@$(CC) $(RESEARCH_WITNESS_MINER_OBJECT) $(STATIC_LIB) $(LDFLAGS) -o $@
 
-.PHONY: all lib lib-shared dylib cli test-executables research test clean info help
+.PHONY: all lib lib-shared dylib cli test-executables research test test-mpz-overflow clean info help
 
 all: lib lib-shared cli test-executables
 	@echo "Build complete."
@@ -222,7 +239,7 @@ lib-shared dylib: $(DYNLIB)
 
 cli: $(CLI_EXECUTABLE)
 
-test-executables: $(TEST_PARSE_EXECUTABLE) $(TEST_SCAFFOLD_EXECUTABLE) $(TEST_EMIT_EXECUTABLE) $(TEST_WHEEL_EXECUTABLE) $(TEST_INTEGER_CHAMBER_EXECUTABLE)
+test-executables: $(TEST_PARSE_EXECUTABLE) $(TEST_SCAFFOLD_EXECUTABLE) $(TEST_EMIT_EXECUTABLE) $(TEST_WHEEL_EXECUTABLE) $(TEST_INTEGER_CHAMBER_EXECUTABLE) $(TEST_MPZ_OVERFLOW_EXECUTABLE)
 
 research: $(RESEARCH_BATCH_CLOSURE_EXECUTABLE) $(RESEARCH_DIVISOR_COST_EXECUTABLE) $(RESEARCH_OPTION_FEASIBILITY_EXECUTABLE) $(RESEARCH_CERTIFICATE_VERIFIER_EXECUTABLE) $(RESEARCH_WITNESS_MINER_EXECUTABLE)
 
@@ -246,11 +263,20 @@ test: test-executables
 	@echo "Running integer chamber tests..."
 	@$(TEST_INTEGER_CHAMBER_EXECUTABLE)
 	@echo ""
+	@echo "Running mpz overflow boundary tests (Phase 2)..."
+	@$(TEST_MPZ_OVERFLOW_EXECUTABLE)
+	@echo ""
 	@echo "Running CLI tests..."
 	@sh $(TEST_DIR)/test_cli.sh $(CLI_EXECUTABLE)
 	@echo ""
 	@echo "Running forbidden-symbol tests..."
 	@sh $(TEST_DIR)/test_forbidden_symbols.sh . $(CLI_EXECUTABLE) $(STATIC_LIB)
+
+# Phase 2 isolated target: prove 2^64 boundary arithmetic before any V3 wiring.
+test-mpz-overflow: $(TEST_MPZ_OVERFLOW_EXECUTABLE)
+	@echo ""
+	@echo "Running mpz overflow boundary tests (Phase 2 first deliverable)..."
+	@$(TEST_MPZ_OVERFLOW_EXECUTABLE)
 
 info:
 	@echo "High-Scale PGS Prime Generator Build Information (Apple Silicon only)"
@@ -274,7 +300,8 @@ help:
 	@echo "  lib-shared dylib - Build shared dylib (for python ctypes HighScaleBackend 128/256-bit)"
 	@echo "  cli              - Build CLI tool"
 	@echo "  research         - Build side research probes"
-	@echo "  test             - Build and run tests"
+	@echo "  test             - Build and run all tests (includes Phase 2 overflow suite)"
+	@echo "  test-mpz-overflow - Build and run only the Phase 2 mpz_t overflow suite"
 	@echo "  clean            - Remove build artifacts"
 	@echo "  info             - Show build configuration"
 	@echo "  help             - Show this help"
