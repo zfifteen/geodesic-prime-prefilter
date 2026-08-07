@@ -2,7 +2,7 @@
 
 ## Pre-register
 
-- Hypothesis: Named GWR-carrier transport closure does not resolve the 50-bit
+- Hypothesis (historical ADV-001 framing): Named GWR-carrier transport closure under the original residual path did not resolve the 50-bit
   golden residual by smuggling classical selection; residual remains honest.
 - Method: Run A1 resolver on `rsa_v2_50bit_static_001` and require residual
   taxonomy code in the carrier-misalignment family (or documented migration).
@@ -35,5 +35,7 @@ rows unless a future intentional public close is registered here.
 Joint residual diagnostics always record dual-gap, first-tail, and (when chain
 steps require lock) lock/profile components even after an early residual
 decision. Historical false endpoint class `(32047651, 32059633)` is
-anti-admitted on emit. First-tail window is **not** widened. 50-bit stays
-unresolved under ADV-001 honesty.
+anti-admitted on emit. First-tail window is **not** widened. ADV-001 honesty path keeps the classical
+false class blocked. Separate from ADV-001, the V3 carrier reciprocal path
+(2026-08-07) finds a measured public reciprocal pair under boundD and deadline=tail
+(measured-on-regime-only / hypothesis; not a factorisation claim).
