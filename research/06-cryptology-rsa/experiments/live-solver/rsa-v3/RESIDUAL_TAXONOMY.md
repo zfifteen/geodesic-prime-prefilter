@@ -11,7 +11,7 @@ Every residual code below may appear in inference outputs.
 | `unresolved_by_certificate_pair_not_closed` | Transport/certificates present but no reset or deadline closure | step_index, stage |
 | `unresolved_by_reciprocal_carrier_misalignment` | GWR-carrier floor transport bound failed | step_index, stage, carrier fields |
 | `unresolved_by_first_tail_misalignment` | First-tail reciprocal proximity failed | step_index, stage, tail fields |
-| `unresolved_by_joint_cell_C1T2L1` | Joint residual cell C1T2L1 (loose carrier under dual-gap D + hard first-tail + weak lock) | step_index, stage, residual_vector_R, pinch_S, carrier/tail/lock ranks |
+| `joint_cell_C1T2L1` | Joint residual cell C1T2L1 (loose carrier under dual-gap D + hard first-tail + weak lock) | step_index, stage, residual_vector_R, pinch_S, carrier/tail/lock ranks |
 | `unresolved_by_lower_lock_misalignment` | Lower lock dominance failed | step_index, stage, lock fields |
 | `unresolved_by_profile_count_mismatch` | Active/unresolved profile counts mismatched | step_index, stage, counts |
 | `unresolved_by_gwr_carrier_fields_absent` | Carrier fields required for GWR closure were missing | step_index, stage |

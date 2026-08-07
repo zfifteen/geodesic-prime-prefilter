@@ -189,7 +189,7 @@ TIGHT_CARRIER_BAND = 20
 
 # Joint residual cell for the measured 50-bit pin geometry after dual-gap D.
 # R = (r_carrier=1, r_tail=2, r_lock=1) -> cell C1T2L1
-JOINT_CELL_PIN_CODE = "unresolved_by_joint_cell_C1T2L1"
+JOINT_CELL_PIN_CODE = "joint_cell_C1T2L1"
 
 
 def _carrier_delta_vs_upper_carrier(
