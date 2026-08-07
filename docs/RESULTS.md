@@ -168,34 +168,42 @@ RSA moduli do expose deterministic endpoint structure. The live RSA v2 law is
 reciprocal deadline-signature correction plus oriented endpoint-chain closure,
 a public PGS endpoint-class resolver.
 
-On the current committed RSA v2 ladder:
+On the current committed RSA ladder:
 
 - `rsa_v2_40bit_static_001`: public reciprocal deadline-signature correction
   resolves the endpoint class as `(1048559, 1048589)`.
-- `rsa_v2_50bit_static_001`: refined public closure rejects the historical
-  mutual-closure candidate and emits **no public endpoint class**. The row
-  remains **unresolved** before audit.
+- `rsa_v2_50bit_static_001`: V2 residual path remained unresolved under joint cell
+  `C1T2L1`. V3 carrier reciprocal closure (2026-08-07) finds the public pair
+  `(32047633, 32059651)` with `N//L == U` and `N//U == L`, remainder 6170868,
+  `delta_c = 30 ≤ boundD = 45`, deadline=tail signatures match, historical false
+  class blocked. Emitted under `resolved_by = carrier_reciprocal_closure` and
+  `closure_status = endpoint_class_by_reciprocal_deadline_signature_correction`.
+  Status: **measured-on-regime-only / hypothesis**. Not a theorem. Not a
+  factorisation claim. First-tail window fixed at `[-12, 6]`.
 - `rsa_v2_64bit_static_001`: public mutual certificate closure resolves the
   endpoint class as `(3221225473, 3221275501)`.
 
 **Residual code history (measured, not theorem):**
 
-| Layer | 50-bit residual code (same fixture, still unresolved) |
+| Layer | 50-bit residual / resolve path |
 | --- | --- |
 | RSA v2 refined runner pin | `unresolved_by_reciprocal_carrier_misalignment` |
 | rsa-v3 after dual-gap D | `unresolved_by_first_tail_misalignment` |
-| rsa-v3 live residual cell R | `unresolved_by_joint_cell_C1T2L1` (R = (1,2,1), pinch_S = 54) |
+| rsa-v3 joint residual cell R | `unresolved_by_joint_cell_C1T2L1` (R = (1,2,1), pinch_S = 54) |
+| rsa-v3 V3 carrier reciprocal (2026-08-07) | `resolved_by_carrier_reciprocal_closure` → endpoint class `[32047633, 32059651]` |
 
-The public story is unchanged: 40/64-bit resolve under public rules; 50-bit stays
-unresolved and never emits the historical false class `(32047651, 32059633)`.
-Residual-map status for dual-gap D and cell R remains **hypothesis**. Packages:
-`research/06-cryptology-rsa/experiments/live-solver/rsa-v3/output/discriminator_D/`,
-`.../output/residual_cell_C1T2L1/`.
+40/64-bit resolve under public rules. 50-bit now has a measured reciprocal
+candidate under the same closure_status used by the 40-bit golden. Historical
+false class `(32047651, 32059633)` stays anti-admitted. Residual-map status for
+dual-gap D and cell R remains **hypothesis**. Packages:
+`research/06-cryptology-rsa/experiments/live-solver/rsa-v3/residual_discriminator_v2/`,
+`.../output/DOCUMENTATION_LOCK_50BIT_V3.md`,
+`.../output/residual_discriminator_v3_resolve_report.html`.
 
 This is a measured RSA endpoint-structure result, not a universal RSA-scale
 theorem. Audit confirms the exact 40-bit and 64-bit factor pairs after public
-inference. The 50-bit row is unresolved before audit and emits no public
-endpoint class. Audit does not define the inference rule.
+inference. The 50-bit V3 path is a public reciprocal floor pair, not a claim of
+integer factorisation. Audit does not define the inference rule.
 
 Reference document:
 `research/06-cryptology-rsa/docs/endpoint_structure_law.md`.
