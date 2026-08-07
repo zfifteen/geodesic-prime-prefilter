@@ -167,7 +167,7 @@ def try_carrier_reciprocal(
     if hit is not None and has_deadline:
         return hit
 
-    # Explicit unresolved under joint cell when ranks match and no reciprocal hit.
+    # Explicit residual under joint cell when ranks match and no reciprocal hit.
     if r == (1, 2, 1):
         return {
             "resolved_by": None,
@@ -182,8 +182,8 @@ def try_carrier_reciprocal(
             "product": None,
             "reciprocal_holds": False,
             "historical_false_blocked": True,
-            "residual_code": "unresolved_by_joint_cell_C1T2L1_v2_tail_boundary_lock_quarter_S54",
-            "status": "unresolved",
+            "residual_code": "joint_cell_C1T2L1_v2_tail_boundary_lock_quarter_S54",
+            "status": "residual",
         }
 
     return {

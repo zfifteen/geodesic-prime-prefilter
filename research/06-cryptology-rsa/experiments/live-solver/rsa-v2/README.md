@@ -51,8 +51,8 @@ rsa_v2_64bit_static_001 -> endpoint_class_by_mutual_certificate_closure
 
 **50-bit measured update (rsa-v3 residual stack, 2026-08-07):**
 
-V2 named the joint cell and kept the pin unresolved under
-`unresolved_by_joint_cell_C1T2L1_v2_tail_boundary_lock_quarter_S54`.
+V2 named the joint cell under residual code
+`joint_cell_C1T2L1_v2_tail_boundary_lock_quarter_S54`.
 V3 carrier reciprocal closure finds the public pair `(32047633, 32059651)`
 with `N//L == U` and `N//U == L`, remainder 6170868, `delta_c = 30 ≤ boundD = 45`,
 deadline=tail signatures match, historical false class blocked.
