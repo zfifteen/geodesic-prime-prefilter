@@ -60,8 +60,8 @@ Aligns with AGENTS.md Writing Standard (observable object → ordinary language 
 ### 50-bit residual (measured resolve under carrier reciprocal closure)
 
 50-bit fixture now carries a measured resolve path on the rsa-v3 residual stack
-(2026-08-07). V2 named the joint cell and kept the pin unresolved under
-`unresolved_by_joint_cell_C1T2L1_v2_tail_boundary_lock_quarter_S54`. V3 carrier
+(2026-08-07). V2 named the joint cell under residual code
+`joint_cell_C1T2L1_v2_tail_boundary_lock_quarter_S54`. V3 carrier
 reciprocal closure finds the public pair `(32047633, 32059651)` with
 `N//L == U` and `N//U == L`, remainder 6170868, `delta_c = 30 ≤ boundD = 45`,
 deadline=tail signatures match, historical false class blocked. Emitted under

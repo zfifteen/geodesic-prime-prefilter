@@ -18,7 +18,7 @@ by widening first-tail or classical smuggling.
 | Anti-admission of false class `(32047651, 32059633)` | done |
 | First-tail window not widened | confirmed (`delta=-22` still fails) |
 | 40-bit control still resolves | measured |
-| V2 sharper residual code | measured: unresolved_by_joint_cell_C1T2L1_v2_tail_boundary_lock_quarter_S54 |
+| V2 sharper residual code | measured: joint_cell_C1T2L1_v2_tail_boundary_lock_quarter_S54 |
 
 Underlying sequential fail remains first-tail hard miss. Residual ranks match
 joint cell C1T2L1:
@@ -29,7 +29,7 @@ dual-gap D: holds (delta_c=30 boundD=45 g_lo=24 g_up=14)
 lock dominance: fails (lock=6 gap=24)
 residual vector R: (1, 2, 1) -> cell C1T2L1
 pinch_S: 54
-decision residual (V2): unresolved_by_joint_cell_C1T2L1_v2_tail_boundary_lock_quarter_S54
+decision residual (V2): joint_cell_C1T2L1_v2_tail_boundary_lock_quarter_S54
 ```
 
 ## V3 measured resolve path (2026-08-07)
