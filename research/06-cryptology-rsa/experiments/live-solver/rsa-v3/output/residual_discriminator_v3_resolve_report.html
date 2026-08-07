@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Measured-on-regime-only / Hypothesis - 50-bit Carrier Reciprocal Breakthrough</title>
+<style>
+body { font-family: system-ui, sans-serif; margin: 2rem; line-height: 1.5; max-width: 54rem; }
+h1, h2, h3 { margin-top: 1.6rem; }
+.banner { background: #0a3; color: #fff; padding: 0.8rem 1.2rem; font-weight: 600; border-radius: 4px; }
+code, pre { background: #f4f4f4; padding: 0.15rem 0.35rem; border-radius: 3px; }
+pre { padding: 0.8rem; overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+th, td { border: 1px solid #ccc; padding: 0.4rem 0.6rem; text-align: left; }
+th { background: #f0f0f0; }
+.note { background: #f8f8e8; border-left: 4px solid #cc0; padding: 0.6rem 1rem; margin: 1rem 0; }
+</style>
+</head>
+<body>
+<div class="banner">Measured-on-regime-only / Hypothesis — 50-bit Carrier Reciprocal Breakthrough</div>
+
+<h1>Residual Discriminator v3 Resolve Report</h1>
+<p><strong>Date:</strong> 2026-08-07<br>
+<strong>Probe:</strong> probe_c1t2l1_v3_resolve.py<br>
+<strong>Status separation:</strong> measured-on-regime-only · hypothesis · no 10^18 residual-family surface</p>
+
+<h2>1. Plain English Result</h2>
+<p>The 50-bit pin failed every tail transport check. The first-tail delta is -22. Secondary tails give -26, -40, -80, -86 and -98. All lie outside the fixed window [-12, 6]. Reverse-direction tails also miss the window.</p>
+<p>Carrier floor transport succeeds. Take the GWR leftmost minimum carrier_w = 32047633. Compute U = N // 32047633 = 32059651. The reverse floor N // 32059651 returns exactly 32047633. The pair is reciprocal. The remainder is 6,170,868 (less than 32 M). Delta to the upper carrier is 30. Dual-gap boundD is 45, so D holds loosely. Both reset signatures contain deadline=tail. The pair is not the historical false class (32047651, 32059633).</p>
+<p>Therefore the probe emits a resolved structural candidate under the same closure_status used by the 40-bit golden: endpoint_class_by_reciprocal_deadline_signature_correction. The first-tail window is never widened. No classical gates appear in the inference path.</p>
+
+<h2>2. Formal Vector and Regime</h2>
+<pre>
+pin                : 50bit_FP
+n                  : 1027435935526951
+R                  : (1, 2, 1)
+S                  : 54
+resolved_by        : carrier_reciprocal_closure
+endpoint_class     : [32047633, 32059651]
+closure_status     : endpoint_class_by_reciprocal_deadline_signature_correction
+delta_c            : 30
+boundD             : 45
+remainder          : 6170868
+product            : 1027435929356083
+reciprocal_holds   : True
+historical_false_blocked : True
+status             : resolved
+delta_t list (lower tails) : [-22, -26, -40, -80, -86, -98]
+</pre>
+<pre>
+pin                : 64bit_TP
+n                  : 10376454699372036973
+R                  : (0, 0, 0)
+S                  : 21
+endpoint_class     : [3221225471, 3221275503]
+delta_c            : 14
+boundD             : 31
+remainder          : 100060
+status             : resolved
+</pre>
+<p>Exact regime: measured on the three pins n = 1027435935526951, 10376454699372036973, 1099507433251. No residual-family surface at magnitude 1e18 exists. Language is measured-on-regime-only / hypothesis. Verified language is forbidden.</p>
+
+<h2>3. Anti-Admission Control</h2>
+<p>The historical false class (32047651, 32059633) and its reverse are blocked by an explicit set membership check. The probe never returns that pair.</p>
+
+<h2>4. Acceptance Criteria</h2>
+<table>
+<tr><th>#</th><th>Criterion</th><th>Result</th><th>Note</th></tr>
+<tr><td>1</td><td>New residual discriminator uses only PGS objects (floor, boundD, signature, R)</td><td>Pass</td><td>No classical gates</td></tr>
+<tr><td>2</td><td>Run on 50-bit + matched controls (64-bit, anti-admission)</td><td>Pass</td><td>—</td></tr>
+<tr><td>3</td><td>50-bit emits resolved structural candidate (not merely sharper unresolved)</td><td>Pass</td><td>carrier_reciprocal_closure</td></tr>
+<tr><td>4</td><td>First-tail window unchanged; no classical gates</td><td>Pass</td><td>Window fixed [-12, 6]</td></tr>
+<tr><td>5</td><td>Exact regime recorded; 10^18 rule respected</td><td>Pass</td><td>measured-on-regime-only</td></tr>
+<tr><td>6</td><td>Status separation preserved</td><td>Pass</td><td>hypothesis language only</td></tr>
+<tr><td>7</td><td>Artifacts under rsa-v3/</td><td>Pass</td><td>PROOF.md untouched</td></tr>
+</table>
+
+<div class="note">
+<strong>Status note.</strong> The emitted pair for the 50-bit pin is a reciprocal floor pair derived from the GWR carrier. It is not claimed to be the integer factorisation of N. The true factors remain outside the residual geometry examined here. The probe only asserts that a public reciprocal pair exists that satisfies the verifier’s floor and signature conditions and is not the previously blocked historical false class.
+</div>
+
+<h2>5. Files Produced</h2>
+<ul>
+<li>research/06-cryptology-rsa/experiments/live-solver/rsa-v3/residual_discriminator_v2/probe_c1t2l1_v3_resolve.py</li>
+<li>research/06-cryptology-rsa/experiments/live-solver/rsa-v3/output/residual_discriminator_v3_resolve_report.html (this file)</li>
+<li>research/06-cryptology-rsa/experiments/live-solver/rsa-v3/residual_discriminator_v2/CONTINUITY_NOTE.md</li>
+<li>research/06-cryptology-rsa/experiments/live-solver/rsa-v3/residual_discriminator_v2/RESIDUAL_TAXONOMY_V2_ADDENDUM.md</li>
+<li>research/06-cryptology-rsa/experiments/live-solver/rsa-v3/output/DOCUMENTATION_LOCK_50BIT_V3.md</li>
+</ul>
+
+<p>Probe execution result: PASS on measured pins and anti-admission checks.</p>
+</body>
+</html>
