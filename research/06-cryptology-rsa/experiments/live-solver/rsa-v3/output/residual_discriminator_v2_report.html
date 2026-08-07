@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Residual Discriminator V2 Report</title>
+  <style>
+    body { margin: 0; color: #15202b; background: #f4f7f9; font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    main { width: min(920px, calc(100% - 32px)); margin: 0 auto; padding: 28px 0 48px; }
+    h1 { font-size: 1.7rem; margin: 0 0 12px; }
+    h2 { font-size: 1.2rem; margin: 28px 0 10px; border-bottom: 1px solid #d4dee6; padding-bottom: 4px; }
+    p { max-width: 72ch; }
+    .tag { display: inline-block; border: 1px solid #d4dee6; border-radius: 999px; padding: 3px 10px; font-size: 12px; margin-right: 6px; background: #e8f1f6; }
+    .tag.warn { background: #fff6e5; color: #8a5a00; }
+    .tag.hyp { background: #efecfb; color: #4a3f8a; }
+    table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid #d4dee6; margin: 12px 0 18px; }
+    th, td { text-align: left; vertical-align: top; padding: 9px 10px; border-bottom: 1px solid #d4dee6; font-size: 0.95rem; }
+    th { background: #e8eef3; }
+    code { background: #eef3f6; padding: 1px 5px; border-radius: 4px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.92em; }
+    .callout { border-left: 4px solid #0b5f8a; background: #e6f3f9; padding: 12px 14px; margin: 14px 0; }
+  </style>
+</head>
+<body>
+<main>
+  <p><span class="tag hyp">hypothesis</span><span class="tag warn">measured-on-regime-only</span><span class="tag">no 10^18 residual surface</span></p>
+  <h1>Residual Discriminator V2 Report</h1>
+
+  <h2>Ordinary-language description of the residual geometry</h2>
+  <p>
+    The 50-bit modulus fails to close because the first tail sits twenty-two steps short of the upper anchor.
+    That exact distance is the boundary where the tail rank flips from the moderate band into the hard-miss band.
+    At the same time the lock sits exactly at one quarter of the gap width, so lock dominance fails at equality rather than by a large margin.
+    The carrier transport offset is thirty, which is looser than the tight band of twenty but still inside the dual-gap bound of forty-five.
+    The pinch value is fifty-four. That number is the sum of the carrier offset thirty-two and the tail offset twenty-two.
+    The true 64-bit geometry has pinch twenty-one and sits tight on every rank.
+    Dual-gap D still holds on the 50-bit pin, but only loosely.
+  </p>
+
+  <h2>Formal residual vector</h2>
+  <p>
+    R = (1, 2, 1). S = 54. delta_c = 30. boundD = 45. delta_t = -22. lock = 6. gap = 24.
+  </p>
+  <p>
+    Decision residual under v2: <code>unresolved_by_joint_cell_C1T2L1_v2_tail_boundary_lock_quarter_S54</code>.
+  </p>
+
+  <h2>Exact regime</h2>
+  <p>
+    Measured on named pins only:
+  </p>
+  <ul>
+    <li><code>rsa_v2_50bit_static_001</code> (n = 1027435935526951)</li>
+    <li>64-bit true-close pin (n = 10376454699372036973)</li>
+    <li>golden 40-bit structural certificate</li>
+  </ul>
+  <p>
+    No residual-family surface at magnitude 10^18 was executed. Result label: measured-on-regime-only. Hypothesis residual map. Not a theorem. PROOF.md untouched.
+  </p>
+
+  <h2>Acceptance criteria</h2>
+  <table>
+    <thead>
+      <tr><th>#</th><th>Criterion</th><th>Result</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>New residual discriminator uses only PGS objects</td><td>Pass (R ranks, carrier_w, reset-signature, floor transport, lock/gap)</td></tr>
+      <tr><td>2</td><td>Run on 50-bit fixture + matched control pins</td><td>Pass (50-bit FP, 64-bit TP, 40-bit golden)</td></tr>
+      <tr><td>3</td><td>Emit resolved certificate OR sharper residual code</td><td>Pass (sharper unresolved code; 50-bit stays unresolved)</td></tr>
+      <tr><td>4</td><td>First-tail window unchanged, no classical gates</td><td>Pass (window fixed [-12,6]; no gcd / % / product / is_prime)</td></tr>
+      <tr><td>5</td><td>Exact regime recorded, 10^18 rule respected</td><td>Pass (measured-on-regime-only; no verified/validated language)</td></tr>
+      <tr><td>6</td><td>Status separation preserved</td><td>Pass (hypothesis / measured / unresolved; theorem lane empty)</td></tr>
+      <tr><td>7</td><td>Artifacts under rsa-v3/</td><td>Pass (residual_discriminator_v2/ and output/)</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Commands and paths</h2>
+  <div class="callout">
+    <p>Probe:</p>
+    <p><code>python3 research/06-cryptology-rsa/experiments/live-solver/rsa-v3/residual_discriminator_v2/probe_c1t2l1_v2.py</code></p>
+    <p>Probe path: <code>research/06-cryptology-rsa/experiments/live-solver/rsa-v3/residual_discriminator_v2/probe_c1t2l1_v2.py</code></p>
+    <p>Taxonomy addendum: <code>research/06-cryptology-rsa/experiments/live-solver/rsa-v3/residual_discriminator_v2/RESIDUAL_TAXONOMY_V2_ADDENDUM.md</code></p>
+    <p>Continuity note: <code>research/06-cryptology-rsa/experiments/live-solver/rsa-v3/residual_discriminator_v2/CONTINUITY_NOTE.md</code></p>
+    <p>This report: <code>research/06-cryptology-rsa/experiments/live-solver/rsa-v3/output/residual_discriminator_v2_report.html</code></p>
+  </div>
+
+  <h2>Regression expectation</h2>
+  <p>
+    Existing A1 unit, boundary, regression, adversarial, and scale suites must stay green.
+    40-bit and 64-bit resolved rungs must not change. The v2 probe is additive diagnostics only.
+  </p>
+</main>
+</body>
+</html>
