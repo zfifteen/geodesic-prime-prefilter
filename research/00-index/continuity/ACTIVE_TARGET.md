@@ -1,6 +1,6 @@
 # Active Research Target
 
-**Updated:** 2026-07-23  
+**Updated:** 2026-08-07  
 **Program center:** Lean 4 core-stack formalization **program DoD met (M0–M5)**; public readability remains second priority.
 
 > **Principal directive (2026-07-18, #Prime-Gap-Structure):**  
@@ -57,15 +57,24 @@ Aligns with AGENTS.md Writing Standard (observable object → ordinary language 
 
 ## Secondary tracks (alive, not top or second)
 
-### 50-bit residual (hypothesis / unresolved)
+### 50-bit residual (measured resolve under carrier reciprocal closure)
 
-50-bit fixture remains **unresolved**. Measured residual migration on rsa-v3:
-carrier misalignment → first-tail (dual-gap D) → joint cell
-`unresolved_by_joint_cell_C1T2L1` (residual vector R, pinch_S = 54). Residual
-maps stay **hypothesis**. Continuity pin:
-[notes/ACTIVE_GOAL_50bit_residual_discriminator.md](notes/ACTIVE_GOAL_50bit_residual_discriminator.md).
+50-bit fixture now carries a measured resolve path on the rsa-v3 residual stack
+(2026-08-07). V2 named the joint cell and kept the pin unresolved under
+`unresolved_by_joint_cell_C1T2L1_v2_tail_boundary_lock_quarter_S54`. V3 carrier
+reciprocal closure finds the public pair `(32047633, 32059651)` with
+`N//L == U` and `N//U == L`, remainder 6170868, `delta_c = 30 ≤ boundD = 45`,
+deadline=tail signatures match, historical false class blocked. Emitted under
+`endpoint_class_by_reciprocal_deadline_signature_correction`.
+
+Status: **measured-on-regime-only / hypothesis**. Not a theorem. Not a
+factorisation claim. First-tail window remains fixed at [-12, 6].
+
+Continuity pin:
+[notes/ACTIVE_GOAL_50bit_residual_discriminator.md](notes/ACTIVE_GOAL_50bit_residual_discriminator.md).  
 Package:
-`research/06-cryptology-rsa/experiments/live-solver/rsa-v3/output/residual_cell_C1T2L1/`.
+`research/06-cryptology-rsa/experiments/live-solver/rsa-v3/output/` and
+`residual_discriminator_v2/`.
 
 ### Square-branch audit relay
 
@@ -129,4 +138,4 @@ bash scripts/lean4-cache-build.sh
 cd lean-4 && lake build && lake env lean smoke-test.lean
 ```
 
-*Principal top-priority pin 2026-07-18 · Hermes.*
+*Principal top-priority pin 2026-07-18 · Hermes. 50-bit residual path updated 2026-08-07.*
