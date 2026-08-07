@@ -53,8 +53,11 @@
   RSA key-generation speedups on the curated `2048`-bit and `4096`-bit corpora.
   See [research/06-cryptology-rsa/legacy-prefilter/docs/benchmarks.md](../research/06-cryptology-rsa/legacy-prefilter/docs/benchmarks.md).
 - **RSA moduli do expose deterministic endpoint structure on the measured RSA
-  v2 surface.** The resolved `40`-bit rung is emitted by reciprocal
+  v2/v3 surface.** The resolved `40`-bit rung is emitted by reciprocal
   deadline-signature correction as endpoint class `(1048559, 1048589)`. The
-  `50`-bit rung remains `unresolved_by_reset_endpoint_crosses_orientation`. This is a
-  measured endpoint-structure result, not a universal RSA-scale theorem.
+  `50`-bit rung is resolved under V3 carrier reciprocal closure as endpoint
+  class `(32047633, 32059651)` (`N//L == U`, `N//U == L`, remainder `6170868`,
+  `delta_c = 30 ≤ boundD = 45`, deadline=tail signatures match, historical
+  false class blocked). Status: measured-on-regime-only / hypothesis. Not a
+  theorem. Not a factorization claim. First-tail window fixed at `[-12, 6]`.
   See [research/06-cryptology-rsa/docs/endpoint_structure_law.md](../research/06-cryptology-rsa/docs/endpoint_structure_law.md).
