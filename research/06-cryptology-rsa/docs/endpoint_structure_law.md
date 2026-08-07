@@ -4,7 +4,7 @@
 
 RSA moduli do expose deterministic endpoint structure.
 
-The active RSA v2 artifact defines one public endpoint-structure law over a
+The active RSA v2/v3 artifact defines one public endpoint-structure law over a
 transported certificate chain. The law is not a faster factoring method, a Shor
 optimization, a candidate search, or an audit trick. It is a public PGS
 endpoint-class resolver.
@@ -73,33 +73,48 @@ d = 1048589
 closure_status = resolved_by_reciprocal_deadline_signature_correction
 ```
 
-## Current Boundary (50-bit)
+## 50-bit Measured Resolve (V3 carrier reciprocal closure)
 
-The official 50-bit RSA v2 rung reaches a mutual certificate closure candidate
-inside the endpoint chain, but refined public geometry rejects that candidate.
-The **v2 runner** returns an **unresolved** structural state (no public endpoint class):
+The official 50-bit fixture is resolved under the rsa-v3 V3 carrier reciprocal
+path (2026-08-07):
 
 ```text
 case_id = rsa_v2_50bit_static_001
+N = 1027435935526951
+endpoint_class = (32047633, 32059651)
+N // L == U and N // U == L
+remainder = 6170868
+delta_c = 30 ≤ boundD = 45
+both reset signatures contain deadline=tail
+historical false class (32047651, 32059633) blocked
+resolved_by = carrier_reciprocal_closure
+closure_status = endpoint_class_by_reciprocal_deadline_signature_correction
+```
+
+Status: **measured-on-regime-only / hypothesis**. Not a theorem. Not a
+factorisation claim. First-tail window remains fixed at `[-12, 6]`. No classical
+gates enter the inference path. See
+`experiments/live-solver/rsa-v3/residual_discriminator_v2/` and
+`experiments/live-solver/rsa-v3/output/DOCUMENTATION_LOCK_50BIT_V3.md`.
+
+### Historical v2 residual path (superseded for this pin)
+
+Under the v2 runner the same fixture reached a mutual certificate closure
+candidate that refined public geometry rejected:
+
+```text
 endpoint_chain_steps = 350
 rejected_candidate = (32047651, 32059633)
 rsa-v2 residual pin = unresolved_by_reciprocal_carrier_misalignment
 ```
 
-**rsa-v3 residual refinement (same fixture):** dual-gap D holds
-on the public carrier transport; residual migrates first to
-`unresolved_by_first_tail_misalignment`, then to joint residual cell
-`unresolved_by_joint_cell_C1T2L1` with residual vector R = (1, 2, 1) and
-pinch_S = 54. Residual maps remain hypothesis. See
-`experiments/live-solver/rsa-v3/output/residual_cell_C1T2L1/` and
-`experiments/live-solver/rsa-v3/RESIDUAL_TAXONOMY.md`.
+rsa-v3 residual refinement then migrated through dual-gap D hold, first-tail
+misalignment, and joint residual cell `joint_cell_C1T2L1` with residual vector
+R = (1, 2, 1) and pinch_S = 54. Residual maps (D / cell R) remain **hypothesis**.
+Those residual layers are retained as measured geometry context; the V3
+reciprocal pair is the current measured disposition for this pin.
 
-**V3 update (2026-08-07):** carrier reciprocal closure finds public pair
-`(32047633, 32059651)` with `N//L == U` and `N//U == L`. Emitted under
-`resolved_by_carrier_reciprocal_closure`. Status: measured-on-regime-only /
-hypothesis. Not a theorem. Not a factorisation claim. First-tail window fixed.
-See `experiments/live-solver/rsa-v3/residual_discriminator_v2/` and
-`experiments/live-solver/rsa-v3/output/DOCUMENTATION_LOCK_50BIT_V3.md`.
+## 64-bit Confirmed Row
 
 The official 64-bit RSA v2 rung resolves by mutual closure:
 
