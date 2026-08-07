@@ -17,18 +17,38 @@ This yields 78 493 gaps.
 ## Key Empirical Facts
 
 - Median offset equals 2.
+- Mean offset approximately 3.15.
 - 84 percent of offsets are at most 5.
 - 99 percent of offsets are at most 10.
 - 99.98 percent of offsets are at most 20.
 - Maximum observed offset equals 48.
 - The proved bound max(64, 0.5 (ln q)^2) remains far above all measured points.
 
+Full numeric summary (from exact GWR selection on the surface):
+
+```json
+{
+  "num_gaps": 78493,
+  "max_offset": 48,
+  "mean_offset": 3.153313034283312,
+  "median_offset": 2.0,
+  "p90": 6.0,
+  "p95": 7.0,
+  "p99": 10.0,
+  "fraction_offset_le_5": 0.8427757889238531,
+  "fraction_offset_le_10": 0.9919738065814786,
+  "fraction_offset_le_20": 0.9998471201253615,
+  "max_lnq": 13.815493557819773,
+  "range": "primes 10 to 1e6"
+}
+```
+
 ## Contents
 
 - `docs/ANALYSIS.md` — detailed reading of the visual and numerical structure.
 - `docs/HEURISTICS.md` — six concrete heuristics that exploit the observed concentration.
+- `docs/PROVENANCE.md` — session origin.
 - `scripts/generate_witness_offset_plot.py` — reproducible generation code for the main plot and statistics.
-- `data/offset_stats_1e6.json` — summary statistics for the 10 to 10^6 range.
 
 ## Relation to Existing Work
 
