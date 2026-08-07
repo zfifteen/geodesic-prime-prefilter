@@ -1,8 +1,9 @@
 # Plan: Add the 128-bit Rung under the Resolved Residual Ladder
 
 **Date:** 2026-08-07  
-**Status:** Planning document (adversarial review applied)  
-**Location:** research/06-cryptology-rsa/docs/
+**Status:** Implementation in progress (Phase 2 first deliverable present)  
+**Location:** research/06-cryptology-rsa/docs/  
+**Continuity note:** `research/06-cryptology-rsa/docs/128-bit-rung-phase2-continuity.md`
 
 ---
 
@@ -86,7 +87,9 @@ Risk: too slow for dense segment scans at 64-bit scale.
 **Intermediate overflow near 2^64**
 - All internal C calculations that can produce values larger than 2^64 must use `mpz_t`.  
 - Native 64-bit registers are forbidden for intermediate values near the anchor boundary.  
-- Add explicit overflow tests in the C test suite for anchors in the range [2^63, 2^65].
+- Explicit overflow tests for the closed interval [2^63, 2^65] now exist in source:
+  - `src/c/high-scale-pgs/tests/test_mpz_overflow_boundary.c`
+  - Makefile target: `make test-mpz-overflow`
 
 **Theoretical purity versus computational budget**
 - Classical pre-filters remain forbidden.  
@@ -106,7 +109,8 @@ Risk: too slow for dense segment scans at 64-bit scale.
 - Diagnostic scripts (`diagnose_transport_metrics.py`)
 
 **Documentation and continuity**
-- Update `ARITHMETIC.md` with the new boundary.  
+- Continuity note: `research/06-cryptology-rsa/docs/128-bit-rung-phase2-continuity.md`  
+- Update `ARITHMETIC.md` with the new boundary after the first measured 128-bit result.  
 - Update `SESSION_BOOTSTRAP.md` and the resolved-ladder note after the first measured 128-bit result.  
 - Keep the public-versus-audit separation strict.  
 - Record any new unresolved predicate in the same style as the existing ones.
@@ -128,12 +132,14 @@ Risk: too slow for dense segment scans at 64-bit scale.
 - No change to inference results.
 
 **Phase 2 – Harden the C arithmetic core**  
-- Build the `mpz_t` overflow test suite for anchors in [2^63, 2^65].  
+- [DONE in source] Build the `mpz_t` overflow test suite for anchors in [2^63, 2^65].  
 - Enforce `mpz_t` for all intermediate calculations near the 64-bit boundary.  
 - Complete population of the final certificate struct (carrier, lock, threat, deadline, bounded tail).  
 - Keep the dense traversal loop entirely inside C.  
 - Return only the final certificate or an unresolved code to Python.  
 - Add instrumentation (call count, time, anchor size).
+
+**Gate:** `make test-mpz-overflow` must exit 0 on Apple Silicon before any further Phase 2 work.
 
 **Phase 3 – Interval backend maturity**  
 - Route 128-bit anchors through the completed high-scale path.  
@@ -163,9 +169,13 @@ Risk: too slow for dense segment scans at 64-bit scale.
 
 ## 7. Immediate Next Actions
 
-1. Inventory the high-scale certificate fields and the mpz-to-int conversion sites.  
-2. Confirm the C library builds cleanly on the current machine.  
-3. Build the `mpz_t` overflow test suite for the 2^64 boundary (first concrete task of Phase 2).  
-4. Produce a short cost-probe report for one 128-bit-scale anchor.
+1. On an Apple Silicon host with Homebrew GMP/MPFR, run:
+   ```bash
+   cd src/c/high-scale-pgs
+   make test-mpz-overflow
+   ```
+2. Confirm exit code 0 and the final PASS line.  
+3. Only after the suite is green, begin final certificate population under the C-side isolation contract.  
+4. Update the continuity note with the new stop/go gate after that step.
 
 This sequence keeps the existing resolved ladder intact while the arithmetic layer grows to support the next rung under a strict C-side evaluation contract.
