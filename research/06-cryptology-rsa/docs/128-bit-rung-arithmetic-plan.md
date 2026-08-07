@@ -1,7 +1,7 @@
 # Plan: Add the 128-bit Rung under the Resolved Residual Ladder
 
 **Date:** 2026-08-07  
-**Status:** Planning document  
+**Status:** Planning document (adversarial review applied)  
 **Location:** research/06-cryptology-rsa/docs/
 
 ---
@@ -40,29 +40,30 @@ Any change must keep this surface. Do not introduce per-rung branches.
 
 ---
 
-## 3. Arithmetic Library Options
+## 3. Arithmetic Library Options and Boundary Contract
 
 **Option A – Full gmpy2 path**  
-Keep all coordinates and interval work inside `gmpy2.mpz`. Replace the Python-int conversion with direct mpz calls.  
-Advantage: already present, simple API.  
+Keep all coordinates and interval work inside `gmpy2.mpz`.  
 Risk: pure-Python loops over large segments become slow.
 
-**Option B – Hybrid with C GMP**  
-Use the existing high-scale C library for all chamber and divisor-count work. Pass mpz values through the ctypes bridge.  
-Advantage: speed and existing certificate structs.  
-Risk: the current bridge still returns incomplete lower certificates; the tail and threat fields need completion.
+**Option B – Hybrid with C GMP (recommended)**  
+Use the existing high-scale C library for all chamber and divisor-count work.  
+Python receives only the final certificate or an unresolved status.  
+Dense phase-space traversal stays inside C memory.
 
 **Option C – Pure Python arbitrary integers**  
 Use built-in Python `int` for everything.  
-Advantage: no external dependency.  
 Risk: too slow for dense segment scans at 64-bit scale.
 
-**Recommended path**  
-Start with Option B. Complete the high-scale certificate extraction first. Keep Option A as a fallback for small segments and for regression tests on the 40/50/64-bit rungs.
+**Strict boundary contract**  
+- The entire phase-space traversal loop runs in C.  
+- Intermediate chamber states never cross the language boundary.  
+- Python acts only as orchestrator.  
+- Only the finalized certificate (or an unresolved code) returns to Python.
 
 ---
 
-## 4. Technical Considerations
+## 4. Technical Considerations (Adversarial Constraints)
 
 **Correctness**
 - Every nontrivial arithmetic step must keep a plain-language comment (see `ARITHMETIC.md`).
@@ -70,17 +71,31 @@ Start with Option B. Complete the high-scale certificate extraction first. Keep 
 - Do not introduce `gcd`, `%`, primality tests, or product checks inside the inference path.
 - Regression tests on the three resolved rungs must stay green.
 
-**Performance**
-- Measure cost per chamber certificate at anchors near 2^64.
+**Performance and serialization**
+- Dense evaluation stays inside C.  
+- The ctypes bridge is used only for the final result.  
+- Measure cost per chamber certificate at anchors near 2^64.  
 - Record time and memory for previous-endpoint discovery by contiguous chunks.
-- Expect chain length to grow; add a clean unresolved status if the chain exceeds a documented bound.
 
-**Memory**
-- Tail-offset lists and carrier fields can grow. Cap or stream them when needed.
-- Avoid materializing full dense divisor arrays for large intervals.
+**Memory and tail offsets**
+- Derive a fixed upper bound on tail-offset capacity from the measured V3 surface on the 40/50/64-bit rungs.  
+- Allocate the tail array once inside the C certificate struct.  
+- Copy only the used portion when the final certificate returns to Python.  
+- If the measured bound is exceeded, emit an explicit unresolved status. Do not truncate or stream.
+
+**Intermediate overflow near 2^64**
+- All internal C calculations that can produce values larger than 2^64 must use `mpz_t`.  
+- Native 64-bit registers are forbidden for intermediate values near the anchor boundary.  
+- Add explicit overflow tests in the C test suite for anchors in the range [2^63, 2^65].
+
+**Theoretical purity versus computational budget**
+- Classical pre-filters remain forbidden.  
+- The pure reciprocal rules must constrain the candidate set.  
+- If the projected candidate set exceeds a documented computational budget, the status is `unresolved_by_computational_budget`.  
+- Do not mask the failure with classical filters.
 
 **API stability**
-- The backend selection (`get_backend_for_anchor`) already routes on size. Extend it without adding bit-length special cases in the solver logic.
+- The backend selection (`get_backend_for_anchor`) already routes on size. Extend it without adding bit-length special cases in the solver logic.  
 - Keep public inference free of audit factors.
 
 **Integration points**
@@ -91,9 +106,9 @@ Start with Option B. Complete the high-scale certificate extraction first. Keep 
 - Diagnostic scripts (`diagnose_transport_metrics.py`)
 
 **Documentation and continuity**
-- Update `ARITHMETIC.md` with the new boundary.
-- Update `SESSION_BOOTSTRAP.md` and the resolved-ladder note after the first measured 128-bit result.
-- Keep the public-versus-audit separation strict.
+- Update `ARITHMETIC.md` with the new boundary.  
+- Update `SESSION_BOOTSTRAP.md` and the resolved-ladder note after the first measured 128-bit result.  
+- Keep the public-versus-audit separation strict.  
 - Record any new unresolved predicate in the same style as the existing ones.
 
 ---
@@ -112,16 +127,18 @@ Start with Option B. Complete the high-scale certificate extraction first. Keep 
 - Update the ladder fixtures only if provenance is already clean.  
 - No change to inference results.
 
-**Phase 2 – Complete the high-scale bridge**  
-- Populate the full certificate dict from the C struct.  
-- Remove or raise the hard size guard only after the fields are present.  
-- Add instrumentation (call count, time, anchor size).  
-- Verify that a single 128-bit lower certificate can be obtained.
+**Phase 2 – Harden the C arithmetic core**  
+- Build the `mpz_t` overflow test suite for anchors in [2^63, 2^65].  
+- Enforce `mpz_t` for all intermediate calculations near the 64-bit boundary.  
+- Complete population of the final certificate struct (carrier, lock, threat, deadline, bounded tail).  
+- Keep the dense traversal loop entirely inside C.  
+- Return only the final certificate or an unresolved code to Python.  
+- Add instrumentation (call count, time, anchor size).
 
 **Phase 3 – Interval backend maturity**  
 - Route 128-bit anchors through the completed high-scale path.  
 - Keep the small-regime path for the lower rungs.  
-- Add batch previous-endpoint measurement that stays inside mpz or C.  
+- Add batch previous-endpoint measurement that stays inside C.  
 - Run the 128-bit case end-to-end and capture the public status.
 
 **Phase 4 – Measurement and documentation**  
@@ -138,15 +155,17 @@ Start with Option B. Complete the high-scale certificate extraction first. Keep 
 - Do not weaken the public-inference contract.  
 - Do not optimize only for the curated 128-bit case and break the lower rungs.  
 - If the chamber cost is too high, emit an explicit unresolved status rather than a silent timeout.  
-- Keep classical factorization methods out of the inference path.
+- Keep classical factorization methods out of the inference path.  
+- Never return intermediate chamber states across the C-to-Python boundary.  
+- Never truncate tail data; exceed the measured bound and report unresolved.
 
 ---
 
 ## 7. Immediate Next Actions
 
 1. Inventory the high-scale certificate fields and the mpz-to-int conversion sites.  
-2. Write the Phase-0 notes into this planning document or a companion note.  
-3. Confirm the C library builds cleanly on the current machine.  
+2. Confirm the C library builds cleanly on the current machine.  
+3. Build the `mpz_t` overflow test suite for the 2^64 boundary (first concrete task of Phase 2).  
 4. Produce a short cost-probe report for one 128-bit-scale anchor.
 
-This sequence keeps the existing resolved ladder intact while the arithmetic layer grows to support the next rung.
+This sequence keeps the existing resolved ladder intact while the arithmetic layer grows to support the next rung under a strict C-side evaluation contract.
