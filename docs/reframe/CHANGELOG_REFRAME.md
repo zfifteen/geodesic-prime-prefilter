@@ -53,3 +53,15 @@ Branch: `docs/reframe-status-tiers`
   Lean inventory, or gallery assets.
 - Requested path `docs/dni_rh_bridge.md` does not exist. Banner applied to
   the live public bridge page instead.
+
+## 2026-08-13 follow-up: Lean README inventory
+
+Independent review of PR #80 (ChatGPT F1) asked for the Lean honesty
+surface to live on `lean-4/README.md` itself, not only on root README
+section 5.
+
+- Named finite premises: `gwr_finite_base_v1`, `bounded_compression_base_v1`,
+  `residual_k128_v1`.
+- Sole core-path axiom: `tau_prime_square_eq_three` (CL-003).
+- Core `sorry` count zero.
+- Link to `lean-4/SORRY_AXIOM_INVENTORY.md`.
