@@ -1,5 +1,15 @@
 # Cryptology And RSA
 
+> **Measured-on-regime-only / hypothesis. Not a factorization claim.**
+> No RSA-scale resolver theorem is claimed. See [docs/STATUS_TIERS.md](../../docs/STATUS_TIERS.md) Tier 3.
+>
+> Ledger reading rule: `rsa_v2_40bit_static_001` `factor_found=true` is an
+> audit-confirmed endpoint class only. `rsa_v2_50bit_static_001`
+> `factor_found=false` is the expected v2-runner baseline. `rsa_v2_64bit_static_001`
+> `factor_found=true` is an audit-confirmed endpoint class only. The 2026-08-07
+> V3 public pair `(32047633, 32059651)` is a `carrier_reciprocal_closure`
+> hypothesis, not a factor solve. Residual maps remain hypothesis.
+
 ## Object
 
 RSA v2/v3, modulus-link, semiprime, reciprocal closure, structural

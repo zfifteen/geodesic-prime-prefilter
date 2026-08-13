@@ -2,6 +2,9 @@
 
 This page is the master navigation hub for the `docs/` folder.
 
+## Status Tiers
+- [docs/STATUS_TIERS.md](STATUS_TIERS.md): Proved / Measured / Experimental. Read this before treating any public sentence as a theorem, a 10^18 measurement, or an experimental probe.
+
 ## Start Here for Core Theorems
 - [PROOF.md](../PROOF.md): The formal proofs of the direct next-prime rule, Gap Winner Rule (GWR), universal bounded compression, Prime-Square Proximity Theorem, and supporting modular lemmas.
 - [docs/core/](core/): Foundational explanations:
@@ -21,6 +24,7 @@ This page is the master navigation hub for the `docs/` folder.
 
 | Area                        | Location                                      | Purpose                                      |
 |-----------------------------|-----------------------------------------------|----------------------------------------------|
+| Status tiers                 | [docs/STATUS_TIERS.md](STATUS_TIERS.md) | Proved / Measured / Experimental             |
 | Core proofs & theorems      | [PROOF.md](../PROOF.md)                       | Formal statements and proofs                 |
 | Foundational explanations   | [docs/core/](core/)                   | Detailed walkthroughs of GWR, DNI, etc.      |
 | RH / analytic bridge        | [docs/rh/](rh/)                       | Proposed downstream reading path             |

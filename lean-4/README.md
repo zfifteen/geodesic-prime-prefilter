@@ -6,6 +6,8 @@
 
 This directory contains the machine-checked Lean 4 formalization of the core Prime Gap Structure (PGS) theorems from `PROOF.md`.
 
+**Audit-only scope.** This directory is a PGS-first machine-checked mirror of statements already proved in `PROOF.md`. It is not a self-contained replacement for the prose proofs. Finite bases enter as named hypothesis bundles. Lean does not rerun those exhaustions. Public claim status: [docs/STATUS_TIERS.md](../docs/STATUS_TIERS.md). Binding frame: [LEAN_PGS_VERIFICATION_CONTRACT.md](LEAN_PGS_VERIFICATION_CONTRACT.md).
+
 ## Guiding Principle (Non-Negotiable)
 
 This is a **downstream verification and audit layer only**.

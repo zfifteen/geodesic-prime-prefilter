@@ -1,5 +1,7 @@
 # DNI-To-Zeta Compression
 
+> **This page is a reading path, not an RH proof.** The bridge identities `D(s)=zeta(s)^2` and `(e^2/2) K(s)/D(s) = -zeta'/zeta` are classical. Our contribution is coefficient-side interpretation.
+
 [README](README.md) | [Pole placement](pole-placement.md) | [Off-critical pole exclusion](off-critical-pole-exclusion.md) | [Long bridge note](../../research/12-rh-bridge/docs/dni_rh_bridge.md)
 
 The bridge starts with divisor counts on integers, passes through the local

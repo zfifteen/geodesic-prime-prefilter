@@ -1,5 +1,7 @@
 # PGS to RH
 
+> **This folder is a reading path, not an RH proof.** The identities `D(s)=zeta(s)^2` and `(e^2/2) K(s)/D(s) = -zeta'/zeta` are classical. The PGS contribution is coefficient-side interpretation. `PROOF.md` does not prove RH.
+
 Exact divisor-count structure is the source; RH is the downstream
 pole-placement sentence after that structure is compressed into zeta language.
 
