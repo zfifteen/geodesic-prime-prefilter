@@ -65,3 +65,13 @@ section 5.
 - Sole core-path axiom: `tau_prime_square_eq_three` (CL-003).
 - Core `sorry` count zero.
 - Link to `lean-4/SORRY_AXIOM_INVENTORY.md`.
+
+## 2026-08-13 follow-up: generator selection wording
+
+Closed the leftover Miller-Rabin slogan on the public README.
+
+Replaced "No trial division, no Miller-Rabin rounds, no probabilistic
+guesses are needed to choose the answer" with a selection-versus-work
+split: `q` is the first later integer with divisor count 2; that is a
+selection rule, not a cheap-`tau` claim and not a replacement for a
+primality audit of the emitted `q`.

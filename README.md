@@ -278,7 +278,7 @@ The approach in this repository starts from a known prime and reads the factor s
 {"p": 89, "q": 97}
 ```
 
-That record simply says: start here, the next prime is there. No trial division, no Miller-Rabin rounds, no probabilistic guesses are needed to choose the answer. Verification testing follows as confirmation and is not part of selection, but primality audit is still required. The arithmetic structure itself shows where the gap ends.
+That record simply says: start here, the next prime is there. Selection is structural: `q` is the first later integer with divisor count 2. That is a selection rule, not a claim that those divisor counts are cheap to compute, and not a replacement for a primality audit of the emitted `q`. The walk does not use Miller-Rabin to choose among candidates. The arithmetic structure itself shows where the gap ends.
 
 The same principle extends to a dedicated Mersenne-prime generator. Instead of starting from an ordinary prime, the Mersenne variant starts from an accepted Mersenne exponent, reads the prime-gap structure around the exponent wall `2^e`, and emits the next exponent whose left boundary lands exactly at `2^e - 1`.
 
