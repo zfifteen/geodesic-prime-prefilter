@@ -1,19 +1,25 @@
 # Prime Gap Structure
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![Last Updated](https://img.shields.io/badge/Last%20Updated-2026--07--23-brightgreen)
+![Last Updated](https://img.shields.io/badge/Last%20Updated-2026--08--13-brightgreen)
 ![Python](https://img.shields.io/badge/Python-3.11%2B-blue)
-![Lean 4](https://img.shields.io/badge/Lean%204-core%20stack%20DoD%20DONE-success)
+![Lean 4](https://img.shields.io/badge/Lean%204-audit%20mirror%20M0--M5-success)
 ![Lean](https://img.shields.io/badge/lean--toolchain-v4.30.0-purple)
 
 ![Prime Gap Structure hero](visualizations/conceptual/prime-gap-structure-hero.jpg)
 
 **Abstract**  
-Prime Gap Structure demonstrates that the integers between consecutive primes form an ordered divisor-count field whose internal minimum (the Gap Winner) and return to divisor count = 2 together locate the next prime deterministically.  
+Prime Gap Structure studies the ordered divisor-count field inside prime gaps and builds an experimental engine that tries to use that field to walk to the next prime. Local theorems prove how the interior minimum (the Gap Winner) is selected and how the next prime is the first later return of divisor count 2. The same core stack has a completed Lean 4 audit mirror (program Definition of Done M0-M5). That mirror checks logical structure. It does not select primes and it does not rewrite theorem status in `PROOF.md`.
 
-Local theorems are formally proved and computationally validated. These theorems include the Gap Winner Rule (GWR), bounded compression at Cramér scale, the Prime-Square Proximity Theorem (proved 2026-07-05), and the No-Later-Simpler-Composite Theorem (zero violations through 10¹⁸). A reading path connecting these local results to analytic number theory (including the Riemann Hypothesis) is developed in `docs/rh/` but kept explicitly separate from the proved core.
+A 30-second status map lives in [`docs/STATUS_TIERS.md`](docs/STATUS_TIERS.md).
 
-This repository supplies the proofs (`PROOF.md`), reference implementations, reproducible artifacts, and measured surfaces that make the structure independently verifiable. The same core stack also has a **completed Lean 4 machine-checked mirror** under `lean-4/` (program Definition of Done M0–M5, 2026-07-23): an independent audit layer that does not select primes and does not rewrite theorem status in `PROOF.md`.
+| Tier | Meaning | In this repository |
+| --- | --- | --- |
+| **Proved** | Local integer theorems under `PROOF.md` | Next-prime rule, GWR, modular zero lemma, universal bounded compression, Prime-Square Proximity Theorem |
+| **Measured** | Finite executed surfaces, including `10^18` | No-Later-Simpler-Composite zero violations, generator decade ladder, RSA endpoint-class ledger |
+| **Experimental** | Hypothesis / probe / reading path | RSA v2/v3 reciprocal closure, Mersenne exponent wall, DNI-to-zeta and `docs/rh/` |
+
+These rows keep ambition. They add precision. They do not demote proved theorems.
 
 ---
 
@@ -21,7 +27,9 @@ This repository supplies the proofs (`PROOF.md`), reference implementations, rep
 
 - [1. Quick Intuitive Understanding](#1-quick-intuitive-understanding)
 - [Key Concepts (Mini-Glossary)](#key-concepts-mini-glossary)
-- [2. Core Results: What Is Proved](#2-core-results--what-is-proved)
+- [2. Core Results](#2-core-results)
+  - [2.1 What Is Proved](#21-what-is-proved)
+  - [2.2 What Is Measured](#22-what-is-measured)
 - [3. Getting Started](#3-getting-started)
 - [4. Deeper Theory & Formal Proofs](#4-deeper-theory--formal-proofs)
 - [5. Machine-Checked Verification (Lean 4)](#5-machine-checked-verification-lean-4)
@@ -121,25 +129,41 @@ These one-line definitions capture the central objects used throughout the repos
 - **Bounded compression**: For every consecutive prime gap with nonempty interior, the GWR-selected witness appears within `max(64, ceil(0.5 * log(q)^2))` of the left endpoint. This bound is proved at Cramér scale from divisor-count structure.
 - **Prime-Square Proximity Theorem** (proved 2026-07-05): When the selected witness is a prime square `r²`, the distance `r² − p` cannot exceed the bounded-compression cutoff without forcing a modulus-link collision.
 - **Modular zero lemma on $M_{v1}$**: On the fixed remainder vector modulo $(2,3,5,7,30,210,2310)$, four or more zeros occur if and only if $30 \mid w$. Modular fact only; not a gap-size lock.
-- **No-Later-Simpler-Composite Theorem**: Validated with zero violations through 10¹⁸. No simpler composite appears later in the gap once the minimal divisor count has been observed.
+- **No-Later-Simpler-Composite**: Immediate corollary of leftmost min-`d(n)` selection. The committed `10^18` stress surface records zero violations. That sweep is measured, not a separate infinite proof.
 
 ---
 
-## 2. Core Results: What Is Proved
+## 2. Core Results
 
-> **Proved Status (as of July 2026)**  
-> The following local theorems are formally proved in `PROOF.md` and have been computationally validated with zero violations through 10¹⁸. These results stand independently of any conjectures about the Riemann Hypothesis or global prime distribution.
+Public status is split on purpose. Proved statements live in `PROOF.md`.
+Measured surfaces live in `docs/RESULTS.md` and the 10^18 evidence package.
+The one-page map is [`docs/STATUS_TIERS.md`](docs/STATUS_TIERS.md).
 
-- **Next-prime rule** (deterministic): Given a prime *p*, the next prime *q* is the first integer after *p* whose divisor count returns to exactly 2.
-- **Gap Winner Rule (GWR)**: The leftmost min-*d(n)* composite inside the gap is the raw-Z maximizer and the structurally selected interior witness.
-- **Universal bounded compression** at Cramér scale: The GWR-selected witness always appears within `max(64, ceil(0.5 * log(q)^2))` of *p*.
-- **Prime-Square Proximity Theorem** (proved 2026-07-05): When the witness is a prime square, its offset from *p* is bounded by the same compression limit.
-- **Modular zero lemma on $M_{v1}$**: Four or more remainder zeros on the fixed primorial vector if and only if $30 \mid w$ (proved; modular only).
-- **No-Later-Simpler-Composite Theorem**: Once the minimal divisor count has appeared, no simpler composite occurs later in the gap.
+### 2.1 What Is Proved
 
-These statements are proved from the arithmetic of divisor counts and the ordering inside gaps. They do not rely on probabilistic models or unproved global assumptions.
+> **Proved status (as of July 2026, unchanged by this reframe)**  
+> The following local theorems are formally proved in `PROOF.md`. They stand independently of any conjectures about the Riemann Hypothesis or global prime distribution. They are not bounded by the 10^18 measured sweep.
 
-See `PROOF.md` for the complete formal stack and supporting lemmas. For the independent Lean 4 machine-checked mirror of that stack (program DoD complete), see [§5](#5-machine-checked-verification-lean-4) and open `docs/lean-pgs-verification/index.html`.
+- **Next-prime rule**: Given a prime *p*, the next prime *q* is the first integer after *p* whose divisor count returns to exactly 2. See `PROOF.md` Headline 1.
+- **Gap Winner Rule (GWR)**: The leftmost min-*d(n)* composite inside the gap is the raw-Z maximizer and the structurally selected interior witness. See `PROOF.md` Headline 2. The No-Later-Simpler-Composite condition (no later interior integer has strictly smaller `tau`) is an immediate corollary of this leftmost selection.
+- **Modular zero lemma on $M_{v1}$**: Four or more remainder zeros on the fixed primorial vector if and only if $30 \mid w$ (proved; modular only). See `PROOF.md` Modular zero lemma.
+
+#### Bounded Compression at the Cramér Scale
+
+- **Universal bounded compression** at Cramér scale: The GWR-selected witness always appears within `max(64, ceil(0.5 * log(q)^2))` of *p*. This is a proved bound on the selected-witness offset `w - p`, not on raw gap size `q - p`. See `PROOF.md` Headline 3.
+- **Prime-Square Proximity Theorem** (proved 2026-07-05): When the witness is a prime square, its offset from *p* is bounded by the same compression limit. This closes the square branch of universal bounded compression.
+
+These statements are proved from the arithmetic of divisor counts and the ordering inside gaps, together with the named finite premises and classical imports recorded in `PROOF.md`. They do not rely on probabilistic models or unproved global assumptions.
+
+See `PROOF.md` for the complete formal stack and supporting lemmas. For the independent Lean 4 audit mirror of that stack (program DoD M0-M5), see [§5](#5-machine-checked-verification-lean-4) and open `docs/lean-pgs-verification/index.html`.
+
+### 2.2 What Is Measured
+
+These are finite executed surfaces. They corroborate implementations and named stress conditions. They are not infinite proofs.
+
+- **No-Later-Simpler-Composite through 10^18**: Zero observed violations on the committed stress surface. Once the GWR-selected integer appears, no later interior composite with strictly smaller divisor count is seen before the next prime. Pointers: `docs/RESULTS.md`, `assert_results.tsv`, `visualizations/gallery/`.
+- **Generator decade ladder**: `2816 / 2816` exact `{"p", "q"}` records from `10^8` through `10^18`. Implementation evidence for the walk engine.
+- **RSA endpoint-class ledger**: Curated 40-bit and 64-bit rows are audit-confirmed endpoint classes. The 50-bit row remains unresolved under the v2 runner. See `research/06-cryptology-rsa/` and Tier 3 for the probe claim boundary.
 
 ---
 
@@ -178,7 +202,7 @@ Visualizations of the core objects live in `visualizations/`. Prefer the catalog
 
 ## 5. Machine-Checked Verification (Lean 4)
 
-**Status: complete (program Definition of Done, M0–M5, 2026-07-23).**
+**Status: Lean audit-program DoD met (M0-M5, 2026-07-23).** Lean checks logical structure. Finite premises `gwr_finite_base_v1`, `bounded_compression_base_v1`, and `residual_k128_v1` enter as named hypothesis bundles with pinned certificate paths and hashes. Lean does not rerun those exhaustions. The only core-path axiom is `tau_prime_square_eq_three` (CL-003). Core `sorry` count is zero. See [`lean-4/SORRY_AXIOM_INVENTORY.md`](lean-4/SORRY_AXIOM_INVENTORY.md).
 
 In addition to the prose proofs in `PROOF.md` and large-scale computational surfaces, the repository ships a finished **Lean 4 machine-checked mirror** of the core theorem stack. That layer is a **downstream audit only**: it mechanically checks statements already established in `PROOF.md`. It does not generate primes, feed the generator, or rewrite theorem status.
 
@@ -235,7 +259,7 @@ divisor counts → PGS local theorems → DNI-to-zeta compression
 → source-side residual closure → pole placement / RH sentence
 ```
 
-`PROOF.md` proves the local source theorems. It does not itself prove the Riemann Hypothesis.  
+`PROOF.md` proves the local source theorems. It does not itself prove the Riemann Hypothesis. `docs/rh/` is a reading path (Tier 3), not an RH proof.  
 `docs/rh/` carries the proposed reading path built on that source layer and maintains the current status ledger.
 
 Open questions and unsolved problems are tracked in `pgs-unsolved-problems/`.
@@ -254,11 +278,11 @@ The approach in this repository starts from a known prime and reads the factor s
 {"p": 89, "q": 97}
 ```
 
-That record simply says: start here, the next prime is there. No trial division, no Miller-Rabin rounds, no probabilistic guesses are needed to choose the answer. The arithmetic structure itself shows where the gap ends. Any verification testing that follows is only confirmation; it is not part of the generation step.
+That record simply says: start here, the next prime is there. No trial division, no Miller-Rabin rounds, no probabilistic guesses are needed to choose the answer. Verification testing follows as confirmation and is not part of selection, but primality audit is still required. The arithmetic structure itself shows where the gap ends.
 
 The same principle extends to a dedicated Mersenne-prime generator. Instead of starting from an ordinary prime, the Mersenne variant starts from an accepted Mersenne exponent, reads the prime-gap structure around the exponent wall `2^e`, and emits the next exponent whose left boundary lands exactly at `2^e - 1`.
 
-The same structural reading has been extended to RSA moduli. The program has completed the transition from rung-specific measured demonstrations to a general, deterministic PGS-native engine. Given an RSA modulus (or family of moduli), the engine traverses locked endpoint chains using only PGS objects and rules. These rules include GWR-selected carriers inside chamber-reset certificates, floor transport, reciprocal endpoint closure conditions, and modulus-link residual classification. It emits a public structural certificate when the invariants close to an oriented endpoint class, or an explicit, diagnosable "unresolved" state (with residual) when they do not. It scales to representative 256-bit, 512-bit, and 1024-bit+ examples while remaining strictly inside the generator contract and AGENTS.md cryptology contract. See `research/06-cryptology-rsa/experiments/live-solver/rsa-v2/`.
+The same structural reading has been extended to RSA moduli as a probe. The runner traverses locked endpoint chains, attempts floor transport and reciprocal closure, and emits a structural certificate or an explicit unresolved state with residual. It scales to curated 40, 50, 64, 128, and 256-bit examples as probe only. The 50-bit row remains unresolved under the v2 runner. The 40-bit and 64-bit rows are audit-confirmed endpoint classes only. See `research/06-cryptology-rsa/`. No RSA-scale resolver theorem is claimed. No factorization claim is made unless a named audit row reports `factor_found=true`.
 
 ---
 
@@ -275,11 +299,12 @@ Every one of these paths grows from the same simple shift in perspective: stop t
 - `src/`: Python package (install with `pip install -e ./src/python`)
 - `PROOF.md`: Formal proofs and theorem stack (authority for theorem status)
 - `docs/core/`: Foundational explanations (GWR, DNI, generative model, recursive walk, etc.)
-- `docs/rh/`: PGS-to-RH reading path and status
+- `docs/STATUS_TIERS.md`: Proved / Measured / Experimental map (start here for claim status)
+- `docs/rh/`: PGS-to-RH reading path and status (reading path, not an RH proof)
 - `docs/lean-pgs-verification/`: Public Lean 4 status HTML (core-stack DoD complete)
 - `research/`: Deep experiments (RSA engine, Mersenne generator, continuity notes, 00-index/)
 - `visualizations/`: Plot library + gallery (primary), explorers, historical dumps (router: `index.html`)
-- `lean-4/`: **Completed** Lean 4 machine-checked mirror of the core stack (M0–M5 DoD)
+- `lean-4/`: Lean 4 audit mirror of the core stack (M0-M5 DoD). Named finite bases. One core-path axiom.
 - `scripts/lean4-dod-check.sh`: One-command Lean build / smoke / inventory gates
 - `experiments/`, `scripts/`, `tests/`, `data/`: Supporting code, runs, and artifacts
 - `pgs-unsolved-problems/`: Open questions
@@ -289,7 +314,9 @@ Every one of these paths grows from the same simple shift in perspective: stop t
 
 ## Reading Further
 
-- `docs/lean-pgs-verification/index.html`: Lean 4 status surface (start here for the formalization track)
+- `docs/STATUS_TIERS.md`: What is proved, what is measured to 10^18, and what is experimental
+- `docs/reframe/AUDIT.md`: Quoted mixture sites that this reframe addresses
+- `docs/lean-pgs-verification/index.html`: Lean 4 audit-mirror status surface
 - `lean-4/peer/M5_DOD_ACCEPT.md`: Program DoD peer accept (D1–D7)
 - `research/00-index/continuity/START_HERE.md`: Continuity and resume entrypoint for future sessions
 - `research/00-index/README.md`: Maps the research corpus by chapter and status

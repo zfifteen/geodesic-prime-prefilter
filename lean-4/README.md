@@ -6,6 +6,8 @@
 
 This directory contains the machine-checked Lean 4 formalization of the core Prime Gap Structure (PGS) theorems from `PROOF.md`.
 
+**Audit-only scope.** This directory is a PGS-first machine-checked mirror of statements already proved in `PROOF.md`. It is not a self-contained replacement for the prose proofs. Finite premises `gwr_finite_base_v1`, `bounded_compression_base_v1`, and `residual_k128_v1` enter as named hypothesis bundles with pinned certificate paths and hashes. Lean does not rerun those exhaustions. The only core-path axiom is `tau_prime_square_eq_three` (CL-003). Core `sorry` count is zero. Inventory: [SORRY_AXIOM_INVENTORY.md](SORRY_AXIOM_INVENTORY.md). Public claim status: [docs/STATUS_TIERS.md](../docs/STATUS_TIERS.md). Binding frame: [LEAN_PGS_VERIFICATION_CONTRACT.md](LEAN_PGS_VERIFICATION_CONTRACT.md).
+
 ## Guiding Principle (Non-Negotiable)
 
 This is a **downstream verification and audit layer only**.
