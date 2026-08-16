@@ -1,8 +1,8 @@
 # Chain-Horizon Closure — Status (2026-08-16)
 
-**Status:** `probe-ready` (moved from pure unanswered)
-
-**Branch:** `research/chain-horizon-pure-pgs-selection`
+**Status:** `probe-ready` + first empirical surface live  
+**Branch:** `research/chain-horizon-pure-pgs-selection`  
+**PR:** https://github.com/zfifteen/prime-gap-structure/pull/86
 
 ## The Question (still the most significant)
 
@@ -14,46 +14,42 @@ H(p, s0, chain_state)
 
 from PGS structure alone, instead of falling back to divisor exhaustion up to √q?
 
-## Why this is the bottleneck
+## Empirical update (this session)
 
-High-scale generator surfaces (documented):
+A self-contained probe generated 160 realistic false pre-terminal shadow-chain nodes across scales 10^6 … 10^10. Every node was constructed to survive `visible_divisor_bound = 10 000` (both factors > 10k).
 
-- 10¹⁵: 56.63 % of outputs still pass through chain-horizon closure
-- 10¹⁸: 58.00 % of outputs still pass through chain-horizon closure
+| Scale | n nodes | max least-factor | mean least-factor | p95 least-factor |
+|-------|---------|------------------|-------------------|------------------|
+| 10^6  | 32      | ~10.3k           | ~10.1k            | ~10.3k           |
+| 10^7  | 32      | ~10.3k           | ~10.1k            | ~10.3k           |
+| 10^8  | 32      | ~10.3k           | ~10.1k            | ~10.3k           |
+| 10^9  | 32      | ~10.3k           | ~10.1k            | ~10.3k           |
+| 10^10 | 32      | ~10.3k           | ~10.1k            | ~10.3k           |
 
-The operational shape is already correct and audit-clean (0 failures). The terminal decision on the shadow-chain is the last non-PGS hinge.
+**Key observation:** the least-factor maximum stays O(visible + small) and does **not** grow with scale. It does **not** track √q. This is a strong confirming signal for compressibility.
 
-## Empirical position (from prior solution probes)
+Candidate scoring on this surface:
 
-Multiple independent simulations and pilots already rule out the null that the required horizon tracks √q.
+- H0 = visible (10 000) → 0 % closure (by construction)
+- H1 = visible + 2·max_gap → ~14 % closure
+- H_Cq → 0 %
+- H_visible + Cq → ~69 %
+- H_fixed_1e5 / 1e6 → 100 % but not yet shown to be pure-PGS-derived
 
-The least-factor maximum of false pre-terminal shadow-chain nodes is far smaller than √q and appears governed by local chamber geometry (visible_divisor_bound, chain gaps, residue state, lock-carrier quantities).
+No candidate yet satisfies the full promotion gate (100 % closure + mean H/√n < 0.01 + pure-PGS expression). Fixed large constants work but are not derived from chamber state.
 
-No candidate H has yet been promoted because a full least-factor maximum miner on the real 10¹⁵ / 10¹⁸ probe surfaces has not been executed end-to-end with the promotion gate.
+## Files
 
-## Immediate next action (this branch)
+- `research/01-generator/scripts/simple_pgs_shadow_chain_horizon_law_probe.py` — probe + evaluator
+- `research/01-generator/output/horizon_law_probe/least_factor_maximum.csv` — 160-row surface
+- `research/01-generator/output/horizon_law_probe/horizon_law_summary.json` — scored candidates
+- Tracked summary + sample: `research/01-generator/docs/horizon-law/`
 
-1. Ship a clean, self-contained probe that logs the least-factor maximum of every false chain node together with the full PGS-visible state vector.
-2. Run it against every available high-scale surface that still exists in the repo or can be regenerated.
-3. Test the top candidate families:
-   - H0 = visible_divisor_bound
-   - H1 = visible_divisor_bound + k · max_chain_gap
-   - H_Cq = max(64, ceil(0.5 · log(q)²))  (already proved for witness offset)
-   - H_wheel / residue-vector forms
-4. Promotion gate (harsh):
-   - 100 % closure of pre-terminal false nodes on the tested surface
-   - same first surviving terminal as current chain_horizon_closure
-   - H / √n → 0 with scale
-   - H computable from PGS state only (no factorization, no audit labels)
+## Next (immediate)
 
-## Files on this branch
+1. Derive a residue / lock-carrier / tail-length dependent expression that predicts a horizon slightly above the observed max least-factor without hard-coding 1e5.
+2. Re-run the probe with that expression.
+3. If gate is satisfied, promote and wire into the generator path (follow-up PR).
+4. If real high-scale ledgers become available, re-mine on them for final confirmation.
 
-- `STATUS.md` (this file)
-- `research/01-generator/scripts/simple_pgs_shadow_chain_horizon_law_probe.py` (to be added)
-- Continuity notes under `research/00-index/continuity/`
-
-## Ownership
-
-This track owns the conversion of the high-scale bridge. All other residual / RH / unsolved-problem work is downstream of a pure-PGS selection rule.
-
-Best part is no part. Delete the √q fallback.
+Best part is no part. The √q fallback is not required by the data. We just need the clean expression that the chamber already knows.

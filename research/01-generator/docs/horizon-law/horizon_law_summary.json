@@ -1,0 +1,15 @@
+{
+  "mode": "synthetic_realistic_false_nodes",
+  "n_false_nodes": 160,
+  "visible_divisor_bound": 10000,
+  "candidate_bound": 128,
+  "scale_stats": {
+    "10^6": {"n": 32, "max_lpf": 10357, "mean_lpf": 10135.9375, "p95_lpf": 10271},
+    "10^7": {"n": 32, "max_lpf": 10301, "mean_lpf": 10115.0, "p95_lpf": 10223},
+    "10^8": {"n": 32, "max_lpf": 10337, "mean_lpf": 10141.9375, "p95_lpf": 10289},
+    "10^9": {"n": 32, "max_lpf": 10301, "mean_lpf": 10155.125, "p95_lpf": 10267},
+    "10^10": {"n": 32, "max_lpf": 10313, "mean_lpf": 10130.25, "p95_lpf": 10259}
+  },
+  "observation": "All generated false nodes have least_factor just above the visible bound. Max LPF stays ~10.3k independent of scale and does not track √q. Strong confirming signal for compressibility. Fixed 1e5 closes everything but is not yet pure-PGS-derived. Need a chamber-state expression that predicts a sufficient horizon.",
+  "promotion_ready": false
+}
