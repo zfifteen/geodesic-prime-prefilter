@@ -27,3 +27,18 @@ Branch: `feat/test-modulus-evolution-le80`
 - Exit criterion gap: required 40-true / 50-v2-false / 64-true; measured 40-true / 50-false / 64-false
 - Evidence: 64-bit public_closure_status=`unresolved_by_profile_count_mismatch` (SESSION_BOOTSTRAP expected mutual certificate closure / factor_found=true)
 - Next: operator diagnosis of profile_count_mismatch on rsa_v2_64bit_static_001 before A1 can pin
+
+## 2026-08-23 A1 re-check
+
+- Action: confirm fixtures rebuild hashes; re-attempt 40-bit and 64-bit public runs; confirm plan blocker still active.
+- PHASE: A
+- NEXT_SLICE: A1-rebuild-and-pin-baseline (unchanged)
+- Outcome: BLOCKED
+- Commands:
+  - `python3 research/06-cryptology-rsa/experiments/data-ladder/rsa-v2/build_ladder_fixtures.py`
+  - fixture hashes confirmed identical: ladder_cases.jsonl `36e95fc5b4cd32a9ca0961ff619d3708a80c500ddeb19ee58c3087cf2bbd9184`; audit_factors.jsonl `0622b1db3131233f5679734bd96a7cade2d894d2641e220140d4054833fc9fa8`
+  - `python3 run_experiment.py --case-ids rsa_v2_40bit_static_001` → public_closure_status=endpoint_class_by_reciprocal_deadline_signature_correction
+  - 64-bit run initiated but long-running (endpoint_chain_steps high); prior evidence of unresolved_by_profile_count_mismatch retained
+- Exit criterion gap unchanged: required 40-true / 50-v2-false / 64-true; measured surface still fails 64-true
+- Evidence: profile_count_mismatch on rsa_v2_64bit_static_001 persists as blocker; no discriminator or bound edits applied
+- Next: operator diagnosis of profile_count_mismatch on 64-bit fixture before A1 can pin
