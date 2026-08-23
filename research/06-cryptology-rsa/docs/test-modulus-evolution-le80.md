@@ -103,3 +103,4 @@ Append every run to
 ## Blockers
 
 - 2026-08-22 A1: rsa_v2_64bit_static_001 public inference closed as `unresolved_by_profile_count_mismatch` (chain steps 1162); audit factor_found=false. Exit needs 64-true. Fixture rebuild hashes recorded in daily log. No discriminator edits. NEXT_SLICE remains A1-rebuild-and-pin-baseline.
+- 2026-08-23 A1: re-confirmed same profile_count_mismatch surface on rsa_v2_64bit_static_001; fixtures hashes stable; 40-bit closes as expected; no code or discriminator change. NEXT_SLICE remains A1-rebuild-and-pin-baseline.
