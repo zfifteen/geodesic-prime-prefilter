@@ -42,3 +42,18 @@ Branch: `feat/test-modulus-evolution-le80`
 - Exit criterion gap unchanged: required 40-true / 50-v2-false / 64-true; measured surface still fails 64-true
 - Evidence: profile_count_mismatch on rsa_v2_64bit_static_001 persists as blocker; no discriminator or bound edits applied
 - Next: operator diagnosis of profile_count_mismatch on 64-bit fixture before A1 can pin
+
+## 2026-08-24 A1 re-check
+
+- Action: rebuild fixtures; confirm hashes; re-run 40-bit public inference; code-path inspection of matched_profile_counts_hold; confirm 64-bit still subject to profile_count_mismatch rejection path.
+- PHASE: A
+- NEXT_SLICE: A1-rebuild-and-pin-baseline (unchanged)
+- Outcome: BLOCKED
+- Commands:
+  - `python3 research/06-cryptology-rsa/experiments/data-ladder/rsa-v2/build_ladder_fixtures.py`
+  - fixture hashes confirmed identical: ladder_cases.jsonl `36e95fc5b4cd32a9ca0961ff619d3708a80c500ddeb19ee58c3087cf2bbd9184`; audit_factors.jsonl `0622b1db3131233f5679734bd96a7cade2d894d2641e220140d4054833fc9fa8`
+  - `python3 run_experiment.py --case-ids rsa_v2_40bit_static_001` → public_closure_status=endpoint_class_by_reciprocal_deadline_signature_correction
+  - code inspection: matched_profile_counts_hold requires lower.active_count == upper.active_count and lower.unresolved_count == upper.unresolved_count; rejection path active for 64-bit after high chain steps
+- Exit criterion gap unchanged: required 40-true / 50-v2-false / 64-true; measured surface still fails 64-true
+- Evidence: profile_count_mismatch on rsa_v2_64bit_static_001 persists as blocker (SESSION_BOOTSTRAP expects mutual_certificate_closure); no discriminator, boundD, or window edits applied
+- Next: operator diagnosis of profile_count_mismatch / active_count mismatch on 64-bit fixture before A1 can pin
