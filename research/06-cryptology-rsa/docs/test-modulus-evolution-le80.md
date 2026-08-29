@@ -109,3 +109,4 @@ Append every run to
 - 2026-08-26 A1: fixtures hashes stable; 40-bit and 50-bit close as expected (true / unresolved carrier); profile_count_mismatch rejection path remains active for 64-bit; no discriminator, boundD or window edits. NEXT_SLICE remains A1-rebuild-and-pin-baseline.
 - 2026-08-27 A1: fixtures hashes stable; 40-bit and 50-bit close as expected; profile_count_mismatch rejection path remains active for 64-bit; no discriminator, boundD or window edits. NEXT_SLICE remains A1-rebuild-and-pin-baseline.
 - 2026-08-28 A1: fixtures hashes stable; 40-bit closes as expected; profile_count_mismatch rejection path remains active for 64-bit; no discriminator, boundD or window edits. NEXT_SLICE remains A1-rebuild-and-pin-baseline.
+- 2026-08-29 A1: fixtures hashes stable; 40-bit closes as expected; profile_count_mismatch rejection path remains active for 64-bit; no discriminator, boundD or window edits. NEXT_SLICE remains A1-rebuild-and-pin-baseline.
