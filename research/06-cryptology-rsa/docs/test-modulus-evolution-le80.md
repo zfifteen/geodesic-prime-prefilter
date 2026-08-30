@@ -67,27 +67,24 @@ Check a slice only after its exit criterion is met on this branch.
       `reciprocal_carrier_alignment_holds` with bound `max(20, 1.2*gap)`,
       and `lower_lock_dominance_holds`.
 - [ ] C2-sidecar-budget-probes
-      Run `transported_story_law_probe.py` and `transported_d4_budget_probe.py`
-      at `measured-rows=256`, `recursive-depth=4`. Record budget exhaustion
-      and exclusion debt. Do not promote sidecars into resolver logic.
+      Run sidecar probes only; record budget exhaustion and exclusion debt;
+      do not promote sidecars into the resolver.
 
-### Phase D. Evaluation ledger
+### Phase D. Recall and precision
 
-- [ ] D1-score-public-cases
-      Per case <=80-bit: endpoint-class recall, audit precision, false-positive
-      rate on historical false classes. A rung is resolved only if recall and
-      audit precision are both 1.0 on physically separate fixtures.
-- [ ] D2-close-or-hold
-      If D1 is complete, set `NEXT_SLICE: DONE`. No extrapolation above 80-bit.
+- [ ] D1-endpoint-class-recall
+      Endpoint-class recall, audit precision, historical false-class rate.
+      A rung is resolved only if recall and audit precision are both 1.0 on
+      physically separate fixtures.
 
 ## Forbidden
 
-- `gcd`, divisibility selectors, product closure, hidden factors, primality as inference
+- gcd, divisibility selectors, product closure, hidden factors, primality APIs
 - seeded factor-ratio anchors as general law
-- window widening, `boundD` edits, per-rung special cases
+- window widening, boundD edits, per-rung special cases
 - 128-bit, 256-bit, or production-grade moduli
 - RSA-scale theorem language
-- `verified` / `validated` without an executed `10^18` surface (this track does not earn those words)
+- the words verified or validated (this track has no executed 10^18 surface)
 
 ## Issue alignment
 
@@ -110,3 +107,4 @@ Append every run to
 - 2026-08-27 A1: fixtures hashes stable; 40-bit and 50-bit close as expected; profile_count_mismatch rejection path remains active for 64-bit; no discriminator, boundD or window edits. NEXT_SLICE remains A1-rebuild-and-pin-baseline.
 - 2026-08-28 A1: fixtures hashes stable; 40-bit closes as expected; profile_count_mismatch rejection path remains active for 64-bit; no discriminator, boundD or window edits. NEXT_SLICE remains A1-rebuild-and-pin-baseline.
 - 2026-08-29 A1: fixtures hashes stable; 40-bit closes as expected; profile_count_mismatch rejection path remains active for 64-bit; no discriminator, boundD or window edits. NEXT_SLICE remains A1-rebuild-and-pin-baseline.
+- 2026-08-30 A1: fixtures hashes stable; 40-bit closes as expected; profile_count_mismatch rejection path remains active for 64-bit; no discriminator, boundD or window edits. NEXT_SLICE remains A1-rebuild-and-pin-baseline.
